@@ -5,7 +5,7 @@
  * [possession, cultivation, enforcement, sharing, consumption, access]
  *
  * The home-page ranking and map still use the single national estimate in data.js.
- * Units have a short note rather than a full segment-by-segment write-up.
+ * Segment-by-segment explanations for each unit live in subunit-details.js.
  * Scores are editorial estimates, not legal advice.
  */
 
@@ -34,7 +34,7 @@ export const SUBUNITS = {
       u("ga", "Georgia", [1, 1, 2, 1, 1, 1], "illegal", "limited", "1 oz or less is a misdemeanour with up to a year in jail, though Atlanta and several cities have cut it to a small fine. Only low-THC oil is allowed medically."),
       u("hi", "Hawaii", [2, 1, 3, 1, 1, 3], "decrim", "yes", "Up to 3 g is a $130 violation; more is a misdemeanour. Medical cannabis is dispensed to card holders, who may also grow."),
       u("id", "Idaho", [1, 0, 1, 0, 1, 0], "illegal", "no", "No medical programme and no decriminalisation: under 3 oz is a misdemeanour with up to a year in jail and a mandatory minimum fine."),
-      u("il", "Illinois", [5, 2, 6, 5, 3, 6], "legal", "yes", "Residents may hold 30 g. Only medical patients may grow (five plants); for others a few plants is a $200 civil fine. Licensed shops since 2020."),
+      u("il", "Illinois", [5, 2, 6, 2, 3, 6], "legal", "yes", "Residents may hold 30 g. Only medical patients may grow (five plants); for others a few plants is a $200 civil fine. Licensed shops since 2020."),
       u("in", "Indiana", [1, 0, 2, 0, 1, 0], "illegal", "no", "Possession is a misdemeanour with up to 180 days in jail. No medical programme."),
       u("ia", "Iowa", [1, 0, 2, 0, 1, 1], "illegal", "limited", "A first offence carries up to six months in jail. A narrow medical programme caps THC per patient."),
       u("ks", "Kansas", [1, 0, 1, 0, 1, 0], "illegal", "no", "No medical programme. A first possession offence is a misdemeanour with up to six months in jail; later offences can be felonies."),
@@ -55,23 +55,23 @@ export const SUBUNITS = {
       u("nm", "New Mexico", [6, 4, 6, 5, 4, 6], "legal", "yes", "2 oz in public and no limit at home; six mature plants per adult, twelve per household. Shops and licensed consumption areas."),
       u("ny", "New York", [6, 4, 6, 5, 6, 6], "legal", "yes", "3 oz on you and 5 lb at home; six plants per adult. Uniquely, smoking cannabis is allowed almost anywhere tobacco smoking is."),
       u("nc", "North Carolina", [2, 1, 3, 1, 1, 0], "decrim", "no", "Up to ½ oz is a misdemeanour punished by a fine of up to $200 with no jail. No medical programme; the only legal shop is on Cherokee tribal land."),
-      u("nd", "North Dakota", [2, 1, 3, 1, 1, 3], "decrim", "yes", "Up to ½ oz is an infraction with a fine. Medical cannabis is available; voters rejected legalisation in 2018, 2022 and 2024."),
+      u("nd", "North Dakota", [2, 1, 3, 1, 0, 3], "decrim", "yes", "Up to ½ oz is an infraction with a fine. Medical cannabis is available; voters rejected legalisation in 2018, 2022 and 2024."),
       u("oh", "Ohio", [5, 4, 6, 5, 3, 6], "legal", "yes", "2.5 oz and six plants per adult, twelve per household. Licensed shops since August 2024; lawmakers have since tightened rules on public use."),
       u("ok", "Oklahoma", [1, 1, 2, 1, 1, 3], "illegal", "yes", "Without a card, possession is a misdemeanour. But the medical programme has no list of qualifying conditions and is among the easiest to join; patients may grow six mature plants."),
       u("or", "Oregon", [6, 4, 6, 5, 3, 6], "legal", "yes", "2 oz in public and 8 oz at home; four plants per household. Licensed shops since 2015."),
       u("pa", "Pennsylvania", [1, 1, 2, 1, 1, 3], "illegal", "yes", "30 g or less is a misdemeanour with up to 30 days in jail, cut to a small fine in Philadelphia, Pittsburgh and other cities. A large medical programme operates."),
-      u("ri", "Rhode Island", [6, 4, 6, 5, 3, 6], "legal", "yes", "1 oz in public and 10 oz at home; three mature plants. Licensed shops since December 2022."),
+      u("ri", "Rhode Island", [6, 4, 6, 5, 4, 6], "legal", "yes", "1 oz in public and 10 oz at home; three mature plants. Licensed shops since December 2022."),
       u("sc", "South Carolina", [1, 0, 2, 0, 1, 0], "illegal", "no", "1 oz or less is a misdemeanour with up to 30 days in jail. No medical programme."),
       u("sd", "South Dakota", [1, 1, 2, 1, 0, 3], "illegal", "yes", "Up to 2 oz is a misdemeanour with up to a year in jail, and ingesting cannabis is itself an offence. Medical cannabis is available to card holders."),
       u("tn", "Tennessee", [1, 0, 1, 0, 1, 0], "illegal", "no", "½ oz or less is a misdemeanour with up to a year in jail. Only low-THC oil is permitted for a few conditions."),
       u("tx", "Texas", [1, 0, 2, 0, 1, 1], "illegal", "limited", "2 oz or less is a misdemeanour with up to 180 days in jail; several cities no longer enforce it. A restricted low-THC medical programme was widened in 2025."),
       u("ut", "Utah", [1, 1, 2, 1, 1, 3], "illegal", "yes", "Under 1 oz is a misdemeanour with up to six months in jail. Medical cannabis is sold through licensed pharmacies; smoking it is not allowed."),
-      u("vt", "Vermont", [5, 4, 6, 5, 3, 6], "legal", "yes", "1 oz and two mature plus four immature plants per household. The first state to legalise through its legislature; shops since 2022."),
+      u("vt", "Vermont", [5, 4, 6, 5, 3, 6], "legal", "yes", "Small amounts and two mature plus four immature plants per household are legal. The first state to legalise through its legislature; shops since 2022."),
       u("va", "Virginia", [5, 4, 6, 5, 3, 3], "legal", "yes", "1 oz and four plants per household have been legal since 2021, but adult-use shops were repeatedly vetoed. Medical dispensaries are the only legal place to buy."),
       u("wa", "Washington", [5, 1, 6, 4, 3, 6], "legal", "yes", "1 oz is legal and shops have operated since 2014, but only medical patients may grow; for everyone else it is a felony."),
       u("wv", "West Virginia", [1, 1, 2, 1, 1, 3], "illegal", "yes", "Possession carries 90 days to six months in jail, with conditional discharge for a first offence. Medical dispensaries serve card holders; no flower smoking."),
       u("wi", "Wisconsin", [1, 0, 2, 0, 1, 0], "illegal", "no", "A first offence is a misdemeanour with up to six months in jail; a second is a felony. No medical programme, though Madison and Milwaukee impose only small fines."),
-      u("wy", "Wyoming", [1, 0, 1, 0, 0, 0], "illegal", "no", "Up to 3 oz is a misdemeanour with up to a year in jail, and being under the influence is a separate offence. No medical programme."),
+      u("wy", "Wyoming", [1, 1, 1, 0, 0, 0], "illegal", "no", "Up to 3 oz is a misdemeanour with up to a year in jail, and being under the influence is a separate offence. No medical programme."),
     ],
   },
 
@@ -81,17 +81,17 @@ export const SUBUNITS = {
     intro: "The federal Cannabis Act applies everywhere in Canada. Provinces and territories set the minimum age, where you may consume, how shops work, and whether you may grow at home.",
     sources: [
       ["Department of Justice Canada — Cannabis legalization and regulation", "https://www.justice.gc.ca/eng/cj-jp/cannabis/"],
-      ["Health Canada — Cannabis laws and regulations", "https://www.canada.ca/en/health-canada/services/drugs-medication/cannabis/laws-regulations.html"],
+      ["Health Canada — Cannabis in the provinces and territories", "https://www.canada.ca/en/health-canada/services/drugs-medication/cannabis/laws-regulations/provinces-territories.html"],
     ],
     units: [
       u("ab", "Alberta", [6, 4, 6, 5, 6, 6], "legal", "yes", "Minimum age 18, the lowest in Canada. Private shops; consumption allowed where tobacco is, subject to city by-laws."),
       u("bc", "British Columbia", [6, 4, 6, 5, 6, 6], "legal", "yes", "Age 19. Public and private shops; smoking generally allowed where tobacco is, except around children."),
       u("mb", "Manitoba", [6, 4, 6, 5, 3, 6], "legal", "yes", "Age 19. Private shops. Home growing was banned until May 2025; public consumption is prohibited."),
-      u("nb", "New Brunswick", [6, 4, 6, 5, 3, 6], "legal", "yes", "Age 19. Government-run Cannabis NB plus some private shops; consumption only in private."),
-      u("nl", "Newfoundland and Labrador", [6, 4, 6, 5, 3, 6], "legal", "yes", "Age 19. Private licensed shops; consumption only in private residences."),
-      u("ns", "Nova Scotia", [6, 4, 6, 5, 5, 6], "legal", "yes", "Age 19. Sold through the provincial liquor corporation; smoking follows tobacco rules."),
+      u("nb", "New Brunswick", [6, 4, 6, 5, 3, 6], "legal", "yes", "Age 19. Government-operated Cannabis NB shops; consumption only in private."),
+      u("nl", "Newfoundland and Labrador", [6, 4, 6, 5, 3, 6], "legal", "yes", "Age 19. Government and private licensed shops; consumption only in private residences."),
+      u("ns", "Nova Scotia", [6, 4, 6, 5, 5, 6], "legal", "yes", "Age 19. Sold only through the government-run provincial liquor corporation; smoking follows tobacco rules."),
       u("nt", "Northwest Territories", [6, 4, 6, 5, 4, 6], "legal", "yes", "Age 19. Government-run sales; communities may restrict or ban cannabis locally."),
-      u("nu", "Nunavut", [6, 4, 6, 5, 3, 6], "legal", "yes", "Age 19. Sales mostly online through the territorial agency, with few physical shops."),
+      u("nu", "Nunavut", [6, 4, 6, 5, 3, 6], "legal", "yes", "Age 19. Private licensed shops and online sales; consumption in private only."),
       u("on", "Ontario", [6, 4, 6, 5, 6, 6], "legal", "yes", "Age 19. The largest private retail market in the country; smoking allowed almost anywhere tobacco is."),
       u("pe", "Prince Edward Island", [6, 4, 6, 5, 3, 6], "legal", "yes", "Age 19. Government-run shops only; consumption limited to private residences."),
       u("qc", "Quebec", [5, 1, 6, 5, 3, 5], "legal", "yes", "The strictest province: age 21, no home growing, a 150 g cap at home, no public consumption, and sales only through the state-run SQDC with a narrower product range."),
@@ -106,7 +106,7 @@ export const SUBUNITS = {
     intro: "Each Australian state and territory has its own drug law. Medical cannabis is regulated federally and is available on prescription everywhere, mostly through telehealth clinics.",
     sources: [
       ["Wikipedia — Cannabis in Australia", "https://en.wikipedia.org/wiki/Cannabis_in_Australia"],
-      ["The Conversation — ACT cannabis laws come into effect", "https://theconversation.com/act-cannabis-laws-come-into-effect-on-friday-but-they-may-not-be-what-you-hoped-for-130050"],
+      ["Alcohol and Drug Foundation — Cannabis", "https://adf.org.au/drug-facts/cannabis/"],
     ],
     units: [
       u("act", "Australian Capital Territory", [5, 3, 6, 1, 3, 3], "legal", "yes", "Since 2020 adults may hold 50 g of dried cannabis and grow two plants each, four per household. Selling, gifting and even buying seeds remain illegal."),

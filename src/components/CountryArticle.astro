@@ -60,21 +60,32 @@ const circ = 2 * Math.PI * r;
   <div class="c-main">
     <h2 class="d-h">Score breakdown <span>▏world average</span></h2>
     {sub
-      ? <p class="d-hint">{group.intro} Segment-by-segment explanations are written at national level — <a href={countryUrl} data-subunit>see {c.name}</a>.</p>
+      ? <p class="d-hint">{group.intro} Select a segment to show or hide the rules.</p>
       : <p class="d-hint">Select a segment to show or hide the exact rules and sources.{d && ` Reviewed ${d.reviewed}.`}</p>}
     {sub && SEGMENTS.map((s, i) => (
-      <div class="segrow">
-        <div class="segrow-top">
-          <span>{s.name} <small>· {s.weight}%</small></span>
-          <b>{sub.s[i]}/10 <small class="vs">{c.name}: {c.s[i]}</small></b>
-        </div>
-        <div class="bar" title={`World average ${segAvg[i].toFixed(1)}/10`}>
-          <i style={`width:${sub.s[i] * 10}%;background:${tierColor(sub.s[i] * 10)}`}></i>
-          <span class="avg-tick" style={`left:calc(${segAvg[i] * 10}% - 1px)`}></span>
-        </div>
-        <div class="pts">adds {segmentPoints(i, sub.s[i]).toFixed(1)} of {segmentMax(i).toFixed(0)} points</div>
-      </div>
+      <details class="segrow" open>
+        <summary>
+          <div class="segrow-top">
+            <span>{s.name} <small>· {s.weight}%</small></span>
+            <b>{sub.s[i]}/10 <small class="vs">{c.name}: {c.s[i]}</small><i class="chev" aria-hidden="true"></i></b>
+          </div>
+          <div class="bar" title={`World average ${segAvg[i].toFixed(1)}/10`}>
+            <i style={`width:${sub.s[i] * 10}%;background:${tierColor(sub.s[i] * 10)}`}></i>
+            <span class="avg-tick" style={`left:calc(${segAvg[i] * 10}% - 1px)`}></span>
+          </div>
+          <div class="pts">adds {segmentPoints(i, sub.s[i]).toFixed(1)} of {segmentMax(i).toFixed(0)} points</div>
+        </summary>
+        {sub.seg && <div class="why"><p>{sub.seg[i]}</p></div>}
+      </details>
     ))}
+    {sub && (
+      <section class="c-unit-sources">
+        <h2 class="d-h">Sources</h2>
+        <ul class="srcs">
+          {sub.sources.map(([label, url]) => <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>)}
+        </ul>
+      </section>
+    )}
     {!sub && SEGMENTS.map((s, i) => {
       const seg = d?.seg[s.detail];
       return (
@@ -120,9 +131,11 @@ const circ = 2 * Math.PI * r;
             </li>
           ))}
         </ol>
-        <ul class="srcs">
-          {group.sources.map(([label, url]) => <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>)}
-        </ul>
+        {!sub && (
+          <ul class="srcs">
+            {group.sources.map(([label, url]) => <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>)}
+          </ul>
+        )}
       </section>
     )}
 

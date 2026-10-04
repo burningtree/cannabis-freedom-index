@@ -26,6 +26,7 @@ export const worldAvg = countries.reduce((a, c) => a + c.raw, 0) / countries.len
 
 // ── States, provinces and territories of federations ──
 import { SUBUNITS } from "../data/subunits.js";
+import { SUBUNIT_DETAILS, unitSource } from "../data/subunit-details.js";
 
 const scoreOf = (s) => s.reduce((a, v, i) => a + segmentPoints(i, v), 0);
 
@@ -37,7 +38,13 @@ export function subunitsOf(id) {
   const units = group.units
     .map((x) => {
       const raw = scoreOf(x.s);
-      return { ...x, raw, score: Math.round(raw), worldRank: 1 + countries.filter((c) => c.raw > raw).length };
+      const own = unitSource(id, x);
+      return {
+        ...x, raw, score: Math.round(raw),
+        worldRank: 1 + countries.filter((c) => c.raw > raw).length,
+        seg: SUBUNIT_DETAILS[id]?.[x.id] ?? null,           // six explanations, in SEGMENTS order
+        sources: [...(own ? [own] : []), ...group.sources],  // the unit's own source first
+      };
     })
     .sort((a, b) => b.raw - a.raw || a.name.localeCompare(b.name));
   units.forEach((x, i) => (x.rank = i + 1));
