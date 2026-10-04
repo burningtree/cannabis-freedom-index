@@ -45,12 +45,12 @@ const USE_SCALES = {
   },
 };
 ---
-<Base description="A 0–100 score of how free cannabis is in every country on Earth, built from six weighted segments of law and practice.">
+<Base description="A score from 0 to 100 for how free cannabis is in every country, with a map, rankings and the history of each country's laws.">
   <main id="top">
     <section class="hero">
       <p class="eyebrow">Global index · {DATA_SNAPSHOT} edition</p>
-      <h1>How free is cannabis,<br>country by country?</h1>
-      <p class="lede">One number from 0 to 100 for every country on Earth, measuring personal cannabis freedom: can you carry it, grow it, share it and use it — and what happens to you if you do. The bar is high: 100 means cannabis is treated like tomatoes. Nobody is close.</p>
+      <h1>How free is cannabis<br>in every country?</h1>
+      <p class="lede">Every country gets a score from 0 to 100. It shows how free you are to carry, grow, share and use cannabis. See the map, the rankings and how each country's laws changed over time.</p>
       <div class="stats">
         {stats.map(([n, label, tone]) => <div class={`stat ${tone ?? ""}`}><div class="big">{n}</div><div class="label">{label}</div></div>)}
       </div>
