@@ -638,3 +638,40 @@ th.num-col { text-align: right; }
 .confidence.c-checked > span { color: var(--t5); }
 .change-srcs { margin-top: 4px; font-size: 13.5px; }
 .c-changes-note { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+
+/* Five plain answers: the block on a country page and the Can I? table */
+.a-yes { --a: var(--t5); }
+.a-limited { --a: var(--t3); }
+.a-no { --a: var(--t1); }
+.answers { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 0 0 8px; }
+.answer { margin: 0; padding: 10px 12px; border: 1px solid color-mix(in srgb, var(--a) 30%, var(--border)); border-left: 3px solid var(--a); border-radius: 10px; background: color-mix(in srgb, var(--a) 12%, var(--surface)); }
+.answer dt { color: var(--text-2); font-size: 12.5px; margin-bottom: 4px; }
+.answer dd { margin: 0; display: flex; flex-direction: column; gap: 2px; }
+.answer dd b { font-size: 15px; }
+.answer dd span { color: var(--muted); font-size: 12.5px; line-height: 1.35; }
+.d-h span a { color: var(--text-2); }
+.cani-page { max-width: 1160px; margin: 0 auto; padding: 0 20px 64px; }
+.cani-filters {
+  align-items: center; margin: 0 -20px; padding: 10px 20px;
+  position: sticky; top: var(--hdr, 60px); z-index: 6;
+  background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px);
+}
+.cani-page .table-card { overflow: clip; }
+.cani-legend { border: 0; padding: 0; margin-left: auto; }
+.cani-legend .sw { background: var(--a); }
+/* The header row can only stick to the page while the table is not inside a scroll box,
+   so sideways scrolling is kept for narrow screens only. */
+@media (max-width: 899px) { .table-scroll { overflow-x: auto; } }
+@media (min-width: 900px) {
+  table.cani thead th { position: sticky; top: calc(var(--hdr, 60px) + var(--bar, 58px)); z-index: 5; background: var(--surface); box-shadow: 0 1px 0 var(--border); }
+}
+table.cani { min-width: 860px; }
+table.cani th { cursor: default; }
+table.cani th[scope="row"] { text-align: left; font-weight: 500; white-space: nowrap; padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text); text-transform: none; letter-spacing: 0; font-size: 14px; }
+table.cani th[scope="row"] a { color: inherit; text-decoration: none; }
+table.cani th[scope="row"] a:hover { text-decoration: underline; }
+table.cani td { border-left: 3px solid var(--a); vertical-align: top; background: color-mix(in srgb, var(--a) 14%, transparent); }
+table.cani tbody tr:hover td { background: color-mix(in srgb, var(--a) 22%, transparent); }
+table.cani td b { display: block; font-size: 13.5px; }
+table.cani td small { display: block; color: var(--text-2); font-size: 12px; line-height: 1.35; }
+table.cani tr[hidden] { display: none; }

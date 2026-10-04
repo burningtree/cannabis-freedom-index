@@ -5,6 +5,7 @@ import { SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, countries, changes, segAvg, s
 import { tierOf, tierColor } from "../lib/tiers.js";
 import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
+import { answersFor } from "../lib/answers.js";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
 const { c, sub } = Astro.props;
@@ -35,6 +36,7 @@ const travel = sub ? null : [
     ? `A prescription from another country is not recognised by itself. Within the Schengen area a patient can carry prescribed medicine for up to 30 days with a certificate issued by their home health authority; whether cannabis qualifies depends on both countries.`
     : `A prescription or medical card from another country is generally not recognised. Travellers who need a cannabis-based medicine should ask ${c.name}'s embassy before travelling.`,
 ].filter(Boolean);
+const answers = answersFor(v.s);
 const r = 42;
 const circ = 2 * Math.PI * r;
 ---
@@ -71,6 +73,16 @@ const circ = 2 * Math.PI * r;
     {c.disputed && !sub && (
       <p class="c-disputed"><strong>Disputed territory.</strong> {c.disputed.note} See also <a href={`${base}country/${c.disputed.country.slug}/`} data-country={c.disputed.country.id}>{c.disputed.country.flag} {c.disputed.country.name}</a>.</p>
     )}
+    <h2 class="d-h">In short <span><a href={`${base}can-i/`}>all countries →</a></span></h2>
+    <dl class="answers">
+      {answers.map((x) => (
+        <div class={`answer a-${x.answer}`}>
+          <dt>{x.q}</dt>
+          <dd><b>{x.label}</b><span>{x.text}</span></dd>
+        </div>
+      ))}
+    </dl>
+    <p class="d-hint">A rough guide read from the scores below, not legal advice. The details and the exceptions are in each segment.</p>
     {use && (
       <dl class="c-use">
         <div>

@@ -1,0 +1,86 @@
+---
+// Five plain-language answers for every country, side by side.
+import Base from "../layouts/Base.astro";
+import { places, regions } from "../lib/countries.js";
+import { answersFor, QUESTIONS, ANSWER_LABEL } from "../lib/answers.js";
+
+const base = import.meta.env.BASE_URL;
+const rows = [...places]
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((c) => ({ c, answers: answersFor(c.s) }));
+---
+<Base title="Can I?" description="Can I carry, grow, buy or use cannabis in public, and what happens if I'm caught? Five plain answers for every country.">
+  <main class="cani-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Can I?</p>
+      <h1>Five plain answers for every country</h1>
+      <p class="lede">Can you carry it, grow it, buy it or use it in public, and what happens if you are caught? The answers are read from each country's scores, so they are a rough guide, not legal advice. Open a country for the details.</p>
+    </section>
+
+    <div class="filters cani-filters">
+      <input id="caniSearch" type="search" placeholder="Search country…" aria-label="Search country">
+      <select id="caniRegion" aria-label="Region">
+        <option value="">All regions</option>
+        {regions.map((r) => <option value={r}>{r}</option>)}
+      </select>
+      <div class="legend cani-legend">
+        {Object.entries(ANSWER_LABEL).map(([k, label]) => <span><i class={`sw a-${k}`}></i>{label}</span>)}
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <div class="table-scroll">
+        <table class="cani" id="caniTable">
+          <thead>
+            <tr>
+              <th scope="col">Country</th>
+              {QUESTIONS.map((x) => <th scope="col">{x.q}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(({ c, answers }) => (
+              <tr data-name={c.name.toLowerCase()} data-region={c.region}>
+                <th scope="row"><a href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span> {c.name}</a></th>
+                {answers.map((x) => (
+                  <td class={`a-${x.answer}`} title={x.text}>
+                    <b>{x.label}</b>
+                    <small>{x.text}</small>
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="table-updated" id="caniCount">{rows.length} countries and territories</p>
+  </main>
+
+  <script>
+    const search = document.getElementById("caniSearch");
+    const region = document.getElementById("caniRegion");
+    const rows = [...document.querySelectorAll("#caniTable tbody tr")];
+    const count = document.getElementById("caniCount");
+    const apply = () => {
+      const q = search.value.trim().toLowerCase();
+      let shown = 0;
+      for (const tr of rows) {
+        const ok = tr.dataset.name.includes(q) && (!region.value || tr.dataset.region === region.value);
+        tr.hidden = !ok;
+        if (ok) shown++;
+      }
+      count.textContent = `${shown} of ${rows.length} countries and territories`;
+    };
+    // The filter bar and the table's header row stay in view while scrolling;
+    // they need to know how tall the bars above them are.
+    const measure = () => {
+      const root = document.documentElement.style;
+      root.setProperty("--hdr", `${document.querySelector(".topbar").offsetHeight}px`);
+      root.setProperty("--bar", `${document.querySelector(".cani-filters").offsetHeight}px`);
+    };
+    measure();
+    addEventListener("resize", measure);
+    search.addEventListener("input", apply);
+    region.addEventListener("change", apply);
+  </script>
+</Base>
