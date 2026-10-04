@@ -38,7 +38,7 @@ Built with [Astro](https://astro.build). Pushing to `main` deploys to GitHub Pag
 | `countries/de.yaml` | Everything about one country: scores, summary, explanations, sources |
 | `countries/us/` | A federation: `index.yaml` for the country, one file per state |
 | `segments.yaml` | The six segments, their weights and level descriptions |
-| `changes.yaml` | Laws and events that moved a country's score, with the scores before; the home page shows the latest four |
+| `changes.yaml` | The History page: laws and events that moved a country's score, with the scores before, plus treaties; the home page shows the latest four |
 | `src/` | The website: pages, components, styles |
 
 The build checks every data file against a schema (`src/content.config.ts`) and fails with a clear message if, say, a score is out of range or a segment cites a source that isn't defined.

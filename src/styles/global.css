@@ -393,26 +393,6 @@ td.num, th.num { width: 52px; color: var(--muted); }
 .dyk-fact a:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 640px) { .dyk-facts { min-height: 170px; } }
 
-/* ── Lore ───────────────────────────────────────────── */
-.lore-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 56px; align-items: start; }
-.lore-text h2 { font-size: clamp(26px, 3.4vw, 38px); line-height: 1.1; margin-bottom: 18px; }
-.lore-text p { color: var(--text-2); font-size: 16px; max-width: 58ch; }
-.lore-text p strong { color: var(--text); font-weight: 600; }
-.timeline { list-style: none; margin: 6px 0 0; padding: 0 0 0 22px; border-left: 2px solid var(--border); }
-.timeline li { position: relative; padding: 0 0 20px; }
-.timeline li:last-child { padding-bottom: 0; }
-.timeline li::before {
-  content: ""; position: absolute; left: -29px; top: 5px; width: 12px; height: 12px; border-radius: 50%;
-  background: var(--accent); border: 3px solid var(--bg);
-}
-.t-when { color: var(--accent); font-weight: 600; font-size: 13px; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
-.timeline h3 { margin: 2px 0 4px; font-size: 16px; }
-.timeline p { margin: 0; color: var(--text-2); font-size: 14px; }
-.lore-src { margin: 26px 0 0; color: var(--muted); font-size: 12.5px; }
-.lore-src a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
-.lore-src a:hover { color: var(--text); }
-@media (max-width: 860px) { .lore-grid { grid-template-columns: 1fr; } }
-
 /* ── States, provinces and territories ──────────────── */
 .sub-select { margin-top: 14px; flex-wrap: wrap; }
 .sub-select select { flex: 1; min-width: 200px; max-width: 100%; }
@@ -498,7 +478,12 @@ td.num, th.num { width: 52px; color: var(--muted); }
 /* ── World average chart ────────────────────────────── */
 .avg { margin-top: 24px; padding: 20px 22px 16px; max-width: 760px; display: flex; flex-direction: column; }
 .avg-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 8px 20px; margin-bottom: 18px; }
-.avg-head h2 { font-size: 18px; margin: 0; }
+.avg-head h2 { font-size: 18px; margin: 0 0 8px; }
+.avg-switch { display: inline-flex; padding: 2px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface-2); }
+.avg-switch button { padding: 3px 10px; border: 0; border-radius: 7px; background: none; color: var(--text-2); font: inherit; font-size: 12.5px; font-weight: 500; cursor: pointer; }
+.avg-switch button:hover { color: var(--text); }
+.avg-switch button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: 0 0 0 1px var(--border); }
+.avg-chart[hidden], .avg-now .delta[hidden] { display: none; }
 .avg-now { margin: 0; display: flex; align-items: baseline; gap: 10px; }
 .avg-now b { font-size: 32px; line-height: 1; font-variant-numeric: tabular-nums; }
 .avg-chart { flex: 1; display: grid; grid-template-columns: 34px 1fr; grid-template-rows: minmax(190px, 1fr) 24px; }
@@ -515,6 +500,9 @@ td.num, th.num { width: 52px; color: var(--muted); }
 .avg-dot::after { content: ""; position: absolute; inset: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1.5px var(--surface); transition: transform .12s; }
 .avg-dot.on::after, .avg-dot:focus-visible::after { transform: scale(1.8); }
 .avg-dot.on { z-index: 1; }
+/* on the world chart the dots stay hidden until one is hovered or focused */
+.avg .avg-dot::after { opacity: 0; }
+.avg .avg-dot.on::after, .avg .avg-dot:focus-visible::after { opacity: 1; }
 .avg-tip { position: absolute; z-index: 2; transform: translateX(-50%); width: max-content; max-width: min(260px, 100%); padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); box-shadow: var(--shadow); pointer-events: none; font-size: 13px; line-height: 1.35; }
 .avg-tip[hidden] { display: none; }
 .avg-tip small { display: block; color: var(--muted); }
@@ -525,6 +513,13 @@ td.num, th.num { width: 52px; color: var(--muted); }
 
 /* ── Changes on a country page ──────────────────────── */
 .c-changes { margin-top: 18px; }
+/* single column (phones, the drawer): under the score breakdown; two columns: in the side pane */
+.c-changes-side { display: none; }
+.c-changes-main { margin-top: 26px; }
+@media (min-width: 861px) {
+  .country-page .c-changes-side { display: block; }
+  .country-page .c-changes-main { display: none; }
+}
 .c-changes h2 { margin: 0 0 8px; color: var(--muted); font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
 .c-changes ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .c-changes a { display: grid; gap: 2px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); color: inherit; }
@@ -533,3 +528,12 @@ td.num, th.num { width: 52px; color: var(--muted); }
 .c-changes b { font-size: 14.5px; line-height: 1.3; }
 .c-change-score { color: var(--text-2); font-size: 13.5px; font-variant-numeric: tabular-nums; }
 .c-change-score .delta { margin-left: 6px; }
+
+/* ── Score over time on a country page ──────────────── */
+.c-chart { margin-top: 18px; }
+.c-chart h2 { margin: 0 0 22px; color: var(--muted); font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+.c-chart .avg-chart { grid-template-columns: 26px 1fr; grid-template-rows: 120px 22px; padding-right: 10px; }
+.c-chart-val { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, 5px); color: var(--text); font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.c-chart-val.below { bottom: auto; top: 100%; transform: translate(-50%, -5px); }
+.c-chart-val.start.below { top: auto; transform: translateY(4px); }
+.c-chart-val.start { left: 4px; bottom: auto; transform: translateY(calc(-100% - 4px)); color: var(--text-2); font-weight: 500; }

@@ -96,14 +96,20 @@ const changes = defineCollection({
   schema: z
     .object({
       id: z.string(),
-      date: z.string().regex(/^\d{4}-\d{2}(-\d{2})?$/, "use YYYY-MM-DD or YYYY-MM"),
-      country: z.string().regex(/^[a-z]{2}$/), // file name in /countries
+      date: z.string().regex(/^\d{4}(-\d{2}(-\d{2})?)?$/, "use YYYY-MM-DD, YYYY-MM or YYYY"),
+      // A change has `country` and `before`. Without `before` the entry is context that moves no
+      // score: a report or ruling in that country, or with no `country` a treaty or UN decision.
+      country: z.string().regex(/^[a-z]{2}$/).optional(), // file name in /countries
       title: z.string().min(1),
       description: z.string().min(1),
-      before: perSegment(score), // segment scores before the change
+      before: perSegment(score).optional(), // segment scores before the change
+      // true when no first law is known for the country: the change is assumed to have happened
+      // at some point between the 1925 and 1961 treaties, and `date` is the start of that window
+      estimate: z.boolean().optional(),
       source,
     })
-    .strict(),
+    .strict()
+    .refine((ch) => ch.country || !ch.before, { message: "`before` needs a `country`" }),
 });
 
 export const collections = { countries, units, segments, changes };

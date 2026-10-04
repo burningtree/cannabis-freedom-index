@@ -1,0 +1,25 @@
+---
+// A country's recorded changes, newest first. Placed twice in the country article: in the side
+// pane on wide screens, and under the score breakdown where the layout is a single column.
+import { changeDate } from "../lib/countries.js";
+
+const { history, place } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<div class={`c-changes c-changes-${place}`}>
+  <h2>History</h2>
+  <ul>
+    {history.map((ch) => (
+      <li>
+        <a href={`${base}history/${ch.id}/`}>
+          <time datetime={ch.date}>{changeDate(ch)}</time>
+          <b>{ch.title}</b>
+          {ch.score && <span class="c-change-score">
+            {ch.score.before} <span aria-hidden="true">→</span><span class="visually-hidden">to</span> {ch.score.after}
+            <span class={`delta ${ch.score.after >= ch.score.before ? "up" : "down"}`}>{ch.score.after >= ch.score.before ? "+" : "−"}{Math.abs(ch.score.after - ch.score.before)}</span>
+          </span>}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>

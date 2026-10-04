@@ -107,18 +107,24 @@ export function subunitsOf(id) {
 // ── Changes: developments that moved a score, newest first ──
 // Each entry records the segment scores before the change. The scores after it are the "before"
 // of the same country's next change, or the country's current scores if there is none.
-const changeEntries = (await getCollection("changes")).map(({ data }) => data).sort((a, b) => a.date.localeCompare(b.date));
+// Where a date falls on a time axis: the middle of the month or year when that is all we know.
+// Entries are ordered by this everywhere, so a bare year never sorts ahead of where it is drawn.
+export const dateTime = (iso) => Date.parse(iso.length === 4 ? `${iso}-07-01` : iso.length === 7 ? `${iso}-15` : iso);
+const changeEntries = (await getCollection("changes")).map(({ data }) => data).sort((a, b) => dateTime(a.date) - dateTime(b.date) || a.id.localeCompare(b.id));
 export const changes = changeEntries
   .map((data, i) => {
-    const country = countries.find((c) => c.slug === data.country);
-    if (!country) throw new Error(`changes.yaml: "${data.id}" refers to unknown country "${data.country}"`);
-    const next = changeEntries.slice(i + 1).find((x) => x.country === data.country);
+    const country = data.country ? countries.find((c) => c.slug === data.country) : null;
+    if (data.country && !country) throw new Error(`changes.yaml: "${data.id}" refers to unknown country "${data.country}"`);
+    // context only (a treaty, report or ruling): part of the history, but it moves no score
+    if (!data.before) return { ...data, country, place: country ?? { flag: "🌐", name: "International" }, source: pair(data.source), score: null, segments: [] };
+    const next = changeEntries.slice(i + 1).find((x) => x.country === data.country && x.before);
     const before = scoreList(data.before);
     const after = next ? scoreList(next.before) : country.s;
     if (before.every((v, k) => v === after[k])) throw new Error(`changes.yaml: "${data.id}" has the same scores before and after`);
     return {
       ...data,
       country,
+      place: country,
       latest: !next, // the country's most recent change: "after" is its current score
       source: pair(data.source),
       raw: { before: scoreOf(before), after: scoreOf(after) },
@@ -129,23 +135,38 @@ export const changes = changeEntries
   })
   .reverse();
 
+// Where no first law is known for a country, its first restriction is an estimate: it is assumed
+// to have come at some point between the 1925 Geneva convention and the 1961 Single Convention.
+export const ESTIMATE_WINDOW = [1925, 1961];
+
 // World average over time, oldest first, rebuilt by undoing the recorded changes one by one.
-// Only as complete as changes.yaml: countries with no recorded change are held at today's score.
+// A change with a known date is one step. An estimated one is spread evenly over the window,
+// a year at a time, so that a guess never shows up as a sudden drop on one day.
 export const averageHistory = (() => {
   const n = countries.length;
+  const [from, to] = ESTIMATE_WINDOW;
+  const scored = changes.filter((ch) => ch.score);
+  const events = scored.filter((ch) => !ch.estimate).map((ch) => ({ change: ch, date: ch.date, delta: ch.raw.after - ch.raw.before }));
+  // all the estimates together, as one small step per year of the window
+  const estimated = scored.filter((ch) => ch.estimate).reduce((a, ch) => a + ch.raw.after - ch.raw.before, 0);
+  for (let year = from + 1; year <= to; year++) events.push({ change: null, date: `${year}-01-01`, delta: estimated / (to - from) });
+  events.sort((a, b) => dateTime(b.date) - dateTime(a.date)); // newest first
   let sum = countries.reduce((a, c) => a + c.raw, 0);
-  const points = changes.map((ch) => {
+  const points = events.map((e) => {
     const after = sum / n;
-    sum -= ch.raw.after - ch.raw.before;
-    return { change: ch, date: ch.date, before: sum / n, after };
+    sum -= e.delta;
+    return { change: e.change, date: e.date, before: sum / n, after };
   });
   return points.reverse();
 })();
 
 // Review dates are stored as YYYY-MM-DD; this is how they are shown everywhere.
-// A date without a day ("2026-02") is shown as month and year.
+// A date without a day ("2026-02") is shown as month and year, and a bare year as the year.
 export const formatDate = (iso) =>
-  new Date(`${iso.length === 7 ? iso + "-01" : iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: iso.length === 7 ? undefined : "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+  iso.length === 4 ? iso : new Date(`${iso.length === 7 ? iso + "-01" : iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: iso.length === 7 ? undefined : "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+// How an entry's date is shown: an estimated one as its window.
+export const changeDate = (ch) => (ch.estimate ? `Between ${ESTIMATE_WINDOW[0]} and ${ESTIMATE_WINDOW[1]} (estimate)` : formatDate(ch.date));
+
 
 // The most recent review date across every country and state file.
 export const lastUpdated = [

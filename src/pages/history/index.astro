@@ -1,0 +1,45 @@
+---
+import Base from "../../layouts/Base.astro";
+import ScoreChange from "../../components/ScoreChange.astro";
+import { changes, formatDate } from "../../lib/countries.js";
+import { tierColor } from "../../lib/tiers.js";
+
+const base = import.meta.env.BASE_URL;
+// Newest first, grouped by year.
+// Estimated first restrictions have no real date, so they are left to the country pages.
+const dated = changes.filter((ch) => !ch.estimate);
+const years = [...new Set(dated.map((ch) => ch.date.slice(0, 4)))]
+  .map((year) => ({ year, items: dated.filter((ch) => ch.date.startsWith(year)) }));
+---
+<Base title="History" description="Laws, court rulings and treaties that shaped cannabis freedom, from the first bans to today, and how each one moved a country's score on the Cannabis Freedom Index.">
+  <main class="changes-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">History</p>
+      <h1>A history of cannabis law</h1>
+      <p class="lede">The laws, court rulings and other developments that changed a country's score, newest first, along with the international treaties that set the rules countries work within. Open one to see which segments moved and the source.</p>
+    </section>
+
+    <div class="chlog">
+      {years.map(({ year, items }) => (
+        <section aria-labelledby={`y${year}`}>
+          <h2 class="chl-year" id={`y${year}`}>{year}</h2>
+          <ol class="chl-list">
+            {items.map((ch) => (
+              <li class="chl-item" style={`--c:${ch.score ? tierColor(ch.score.after) : "var(--muted)"}`}>
+                <a class="card chl-card" href={`${base}history/${ch.id}/`}>
+                  <p class="change-meta">
+                    <time datetime={ch.date}>{formatDate(ch.date)}</time>
+                    <span>{ch.place.flag} {ch.place.name}</span>
+                  </p>
+                  <h3>{ch.title}</h3>
+                  <p class="chl-text">{ch.description}</p>
+                  {ch.score && <ScoreChange score={ch.score} />}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+    </div>
+  </main>
+</Base>

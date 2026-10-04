@@ -1,7 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
 import DidYouKnow from "../components/DidYouKnow.astro";
-import Lore from "../components/Lore.astro";
 import Changes from "../components/Changes.astro";
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, MED_LABEL, countries, regions, worldAvg, lastUpdated, formatDate } from "../lib/countries.js";
 import { TIERS, tierColor } from "../lib/tiers.js";
@@ -151,8 +150,8 @@ const mapData = countries.map(({ id, num, name, flag, raw, score, rank, s }) => 
       </div>
     </section>
 
-    <Lore />
     <DidYouKnow />
+
   </main>
 
   <dialog id="detail" class="drawer" aria-label="Country details">

@@ -3,6 +3,8 @@
 // drawer on the home page — so there is a single template for both views.
 import { SEGMENTS, REC_LABEL, MED_LABEL, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
 import { tierOf, tierColor } from "../lib/tiers.js";
+import CountryChanges from "./CountryChanges.astro";
+import CountryChart from "./CountryChart.astro";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
 const { c, sub } = Astro.props;
@@ -18,6 +20,7 @@ const updatedText = updated && formatDate(updated);
 const byName = group ? [...group.units].sort((a, b) => a.name.localeCompare(b.name)) : [];
 // Recorded changes to the national score, newest first (not shown for a single state).
 const history = sub ? [] : changes.filter((ch) => ch.country === c);
+const scored = history.filter((ch) => ch.score); // the ones that moved the score
 const r = 42;
 const circ = 2 * Math.PI * r;
 ---
@@ -49,25 +52,8 @@ const circ = 2 * Math.PI * r;
       <span class={`chip s-${v.med}`}>Medical: {MED_LABEL[v.med]}</span>
     </div>
     <p class="d-note">{v.note}</p>
-    {history.length > 0 && (
-      <div class="c-changes">
-        <h2>{history.length > 1 ? "Changes" : "Latest change"}</h2>
-        <ul>
-          {history.map((ch) => (
-            <li>
-              <a href={`${base}changes/${ch.id}/`}>
-                <time datetime={ch.date}>{formatDate(ch.date)}</time>
-                <b>{ch.title}</b>
-                <span class="c-change-score">
-                  {ch.score.before} <span aria-hidden="true">→</span><span class="visually-hidden">to</span> {ch.score.after}
-                  <span class={`delta ${ch.score.after >= ch.score.before ? "up" : "down"}`}>{ch.score.after >= ch.score.before ? "+" : "−"}{Math.abs(ch.score.after - ch.score.before)}</span>
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
+    {scored.length > 0 && <CountryChart history={scored} />}
+    {history.length > 0 && <CountryChanges history={history} place="side" />}
     {group && (
       <label class="field sub-select">
         <span>{group.label}</span>
@@ -136,6 +122,7 @@ const circ = 2 * Math.PI * r;
         </details>
       );
     })}
+    {history.length > 0 && <CountryChanges history={history} place="main" />}
 
     {group && (
       <section class="c-units">

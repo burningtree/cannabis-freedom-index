@@ -1,72 +1,107 @@
 ---
 // World average score over time: a step line that moves at each recorded change.
+// Two views are rendered, the whole history and the last ten years; a switch shows one of them.
 // The plot is a stretched SVG; labels and markers are HTML so they stay readable at any width.
-import { averageHistory, formatDate, lastUpdated } from "../lib/countries.js";
+import { averageHistory, formatDate, dateTime, lastUpdated } from "../lib/countries.js";
 
 // `note` adds the caveat under the chart.
 const { note = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const fmt = (v) => v.toFixed(1);
-const time = (iso) => Date.parse(iso.length === 7 ? `${iso}-15` : iso);
+const time = dateTime;
 
-const first = averageHistory[0];
 const now = averageHistory.at(-1).after;
-const startYear = Math.floor(+first.date.slice(0, 4) / 5) * 5; // start the axis on a round year
 const endYear = +lastUpdated.slice(0, 4);
-const t0 = Date.UTC(startYear, 0, 1);
 const t1 = time(lastUpdated);
-const x = (t) => ((t - t0) / (t1 - t0)) * 100;
 
-// y axis: half-point steps that enclose the data (the range is small, so it does not start at zero)
-const values = averageHistory.flatMap((p) => [p.before, p.after]);
-const yMin = Math.floor(Math.min(...values) * 2) / 2;
-const yMax = Math.ceil(Math.max(...values) * 2) / 2;
-const y = (v) => (1 - (v - yMin) / (yMax - yMin)) * 100;
-const ticks = Array.from({ length: Math.round((yMax - yMin) * 2) + 1 }, (_, i) => yMin + i / 2);
-// at most about a dozen year labels, on round steps
-const span = endYear - startYear;
-const step = span > 50 ? 10 : span > 20 ? 5 : span > 14 ? 2 : 1;
-const years = Array.from({ length: span + 1 }, (_, i) => startYear + i).filter((yr) => yr % step === 0);
+function view(id, label, startYear) {
+  const t0 = Date.UTC(startYear, 0, 1);
+  const x = (t) => ((t - t0) / (t1 - t0)) * 100;
+  const inRange = averageHistory.filter((p) => time(p.date) >= t0);
+  const start = inRange[0].before; // the average when the view begins
 
-const points = averageHistory.map((p) => ({ ...p, x: x(time(p.date)), y: y(p.after) }));
-const line = `M0,${y(first.before)}` + points.map((p) => `H${p.x}V${p.y}`).join("") + "H100";
-const delta = now - first.before;
+  // y axis: round steps that enclose the data (the range is small, so it does not start at zero)
+  const values = inRange.flatMap((p) => [p.before, p.after]);
+  const spread = Math.max(...values) - Math.min(...values);
+  const tick = spread > 50 ? 20 : spread > 25 ? 10 : spread > 12 ? 5 : spread > 6 ? 2 : spread > 3 ? 1 : 0.5;
+  const yMin = Math.floor(Math.min(...values) / tick) * tick;
+  const yMax = Math.ceil(Math.max(...values) / tick) * tick;
+  const y = (v) => (1 - (v - yMin) / (yMax - yMin)) * 100;
+  const ticks = Array.from({ length: Math.round((yMax - yMin) / tick) + 1 }, (_, i) => yMin + i * tick);
+
+  // at most about a dozen year labels, on round steps
+  const span = endYear - startYear;
+  const step = span > 50 ? 10 : span > 20 ? 5 : span > 14 ? 2 : 1;
+  const years = Array.from({ length: span + 1 }, (_, i) => startYear + i)
+    .filter((yr) => yr % step === 0)
+    .map((yr) => ({ yr, x: x(Date.UTC(yr, 0, 1)) }));
+
+  const steps = inRange.map((p) => ({ ...p, x: x(time(p.date)), y: y(p.after) }));
+  const line = `M0,${y(start)}` + steps.map((p) => `H${p.x}V${p.y}`).join("") + "H100";
+  const points = steps.filter((p) => p.change); // estimated changes move the line but get no dot
+  return { id, label, startYear, whole: tick >= 1, delta: now - start, ticks: ticks.map((t) => ({ t, y: y(t) })), years, points, line };
+}
+
+const views = [
+  view("all", "All", 1900), // a few bans are older; they are already counted in the starting value
+  view("10y", "Last 10 years", endYear - 10),
+];
 ---
-<section class="card avg" aria-labelledby="avgTitle">
+<section class="card avg" id="avgChart" aria-labelledby="avgTitle">
   <div class="avg-head">
-    <h2 id="avgTitle">World average score</h2>
-    <p class="avg-now"><b>{fmt(now)}</b><span class={`delta ${delta >= 0 ? "up" : "down"}`}>{delta >= 0 ? "+" : "−"}{fmt(Math.abs(delta))} since {startYear}</span></p>
+    <div>
+      <h2 id="avgTitle">World average score</h2>
+      <div class="avg-switch" role="group" aria-label="Period shown">
+        {views.map((v, i) => <button type="button" data-view={v.id} aria-pressed={i === 0 ? "true" : "false"}>{v.label}</button>)}
+      </div>
+    </div>
+    <p class="avg-now">
+      <b>{fmt(now)}</b>
+      {views.map((v, i) => (
+        <span class={`delta ${v.delta >= 0 ? "up" : "down"}`} data-view={v.id} hidden={i > 0}>{v.delta >= 0 ? "+" : "−"}{fmt(Math.abs(v.delta))} since {v.startYear}</span>
+      ))}
+    </p>
   </div>
 
-  <div class="avg-chart" id="avgChart">
-    <div class="avg-y" aria-hidden="true">
-      {ticks.map((t) => <span style={`top:${y(t)}%`}>{fmt(t)}</span>)}
+  {views.map((v, i) => (
+    <div class="avg-chart" data-view={v.id} hidden={i > 0}>
+      <div class="avg-y" aria-hidden="true">
+        {v.ticks.map(({ t, y }) => <span style={`top:${y}%`}>{v.whole ? t : fmt(t)}</span>)}
+      </div>
+      <div class="avg-plot">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          {v.ticks.map(({ y }) => <line class="grid" x1="0" x2="100" y1={y} y2={y} />)}
+          <path class="line" d={v.line} />
+        </svg>
+        {v.points.map((p) => (
+          <a class="avg-dot" href={`${base}history/${p.change.id}/`} style={`left:${p.x}%;top:${p.y}%`}
+            data-date={formatDate(p.date)} data-title={`${p.change.country.flag} ${p.change.title}`}
+            data-avg={`World average ${fmt(p.before)} → ${fmt(p.after)}`}
+            aria-label={`${formatDate(p.date)}: ${p.change.title}. World average ${fmt(p.before)} to ${fmt(p.after)}.`}></a>
+        ))}
+        <div class="avg-tip" hidden><small></small><b></b><span></span></div>
+      </div>
+      <div class="avg-x" aria-hidden="true">
+        {v.years.map(({ yr, x }) => <span style={`left:${x}%`}>{yr}</span>)}
+      </div>
     </div>
-    <div class="avg-plot">
-      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        {ticks.map((t) => <line class="grid" x1="0" x2="100" y1={y(t)} y2={y(t)} />)}
-        <path class="line" d={line} />
-      </svg>
-      {points.map((p) => (
-        <a class="avg-dot" href={`${base}changes/${p.change.id}/`} style={`left:${p.x}%;top:${p.y}%`}
-          data-date={formatDate(p.date)} data-title={`${p.change.country.flag} ${p.change.title}`}
-          data-avg={`World average ${fmt(p.before)} → ${fmt(p.after)}`}
-          aria-label={`${formatDate(p.date)}: ${p.change.title}. World average ${fmt(p.before)} to ${fmt(p.after)}.`}></a>
-      ))}
-      <div class="avg-tip" id="avgTip" hidden><small></small><b></b><span></span></div>
-    </div>
-    <div class="avg-x" aria-hidden="true">
-      {years.map((yr, i) => <span class={i % 2 ? "odd" : ""} style={`left:${x(Date.UTC(yr, 0, 1))}%`}>{yr}</span>)}
-    </div>
-  </div>
-  {note && <p class="avg-note">Rebuilt from the changes on this page, so it is only as complete as that list: a country with no recorded change is held at today's score for the whole period. The scale does not start at zero.</p>}
+  ))}
+  {note && <p class="avg-note">Rebuilt from the recorded changes, so it is only as complete as that list: a country with no recorded change is held at today's score for the whole period. The scale does not start at zero.</p>}
 </section>
 
 <script>
   const chart = document.querySelector("#avgChart");
-  const plot = chart?.querySelector(".avg-plot");
-  const tip = chart?.querySelector("#avgTip");
-  if (chart && plot && tip) {
+
+  // Period switch: show one view and its "since" figure.
+  chart?.querySelectorAll(".avg-switch button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      chart.querySelectorAll(".avg-switch button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      chart.querySelectorAll(".avg-chart, .avg-now .delta").forEach((el) => { el.hidden = el.dataset.view !== btn.dataset.view; });
+    });
+  });
+
+  chart?.querySelectorAll(".avg-plot").forEach((plot) => {
+    const tip = plot.querySelector(".avg-tip");
     const dots = [...plot.querySelectorAll(".avg-dot")];
     const [date, title, avg] = tip.children;
     let active = null;
@@ -108,5 +143,5 @@ const delta = now - first.before;
       dot.addEventListener("focus", () => show(dot));
       dot.addEventListener("blur", hide);
     });
-  }
+  });
 </script>

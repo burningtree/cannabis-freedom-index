@@ -1,0 +1,75 @@
+---
+// A country's index score over time: a step line that moves at each of its recorded changes.
+// No script, so it also works when the article is loaded into the drawer.
+import { changeDate, dateTime, lastUpdated, ESTIMATE_WINDOW } from "../lib/countries.js";
+
+const { history } = Astro.props; // the country's changes, newest first
+const base = import.meta.env.BASE_URL;
+const time = dateTime;
+
+const [estFrom, estTo] = ESTIMATE_WINDOW;
+// Where a change sits in time. An estimated one runs across the whole window.
+const span0 = (ch) => (ch.estimate ? [Date.UTC(estFrom, 0, 1), Date.UTC(estTo, 0, 1)] : [time(ch.date), time(ch.date)]);
+
+const all = [...history].reverse();
+// The axis never starts before 1900; older changes are folded into the starting value.
+const FLOOR = 1900;
+const changes = all.filter((ch) => +ch.date.slice(0, 4) >= FLOOR);
+const older = all.filter((ch) => +ch.date.slice(0, 4) < FLOOR);
+const startRaw = older.length ? older.at(-1).raw.after : all[0].raw.before;
+const startScore = older.length ? older.at(-1).score.after : all[0].score.before;
+const endYear = +lastUpdated.slice(0, 4);
+// a lead-in before the first change shows where the score started
+const firstYear = changes.length ? +changes[0].date.slice(0, 4) : endYear - 20;
+const startYear = Math.max(FLOOR, firstYear - Math.max(1, Math.round((endYear - firstYear) * 0.15)));
+const t0 = Date.UTC(startYear, 0, 1);
+const t1 = time(lastUpdated);
+const x = (t) => ((t - t0) / (t1 - t0)) * 100;
+
+// y axis from zero, with headroom for the labels above the dots
+const top = Math.max(startScore, ...changes.flatMap((ch) => [ch.score.before, ch.score.after]));
+const tick = top + 5 > 40 ? 20 : 10;
+const yMax = Math.min(100, Math.max(20, Math.ceil((top + 5) / tick) * tick)); // never zoom in further than 0–20
+const y = (v) => (1 - v / yMax) * 100;
+const ticks = Array.from({ length: yMax / tick + 1 }, (_, i) => i * tick);
+
+const span = endYear - startYear;
+const step = span > 50 ? 20 : span > 20 ? 5 : span > 8 ? 2 : 1;
+const years = Array.from({ length: span + 1 }, (_, i) => startYear + i).filter((yr) => yr % step === 0);
+
+const points = changes
+  .map((ch) => ({ ch, x0: x(span0(ch)[0]), x: x(span0(ch)[1]), y: y(ch.raw.after) }))
+  // where two changes sit close together, only the later one gets a number, so labels do not overlap
+  .map((p, i, list) => ({ ...p, label: !list[i + 1] || list[i + 1].x - p.x > 6 }));
+// Labels sit above a dot after a rise and below it after a fall; the starting value goes on the
+// other side of the line from the first dot's label, so the two never collide.
+const firstCh = changes[0];
+const startBelow = firstCh && firstCh.raw.after > firstCh.raw.before && startRaw / yMax >= 0.2;
+// a dated change is a vertical step; an estimated one slopes across its window
+const line = `M0,${y(startRaw)}` + points.map((p) => (p.ch.estimate ? `H${p.x0}L${p.x},${p.y}` : `H${p.x}V${p.y}`)).join("") + "H100";
+---
+<div class="c-chart">
+  <h2>Score over time</h2>
+  <div class="avg-chart">
+    <div class="avg-y" aria-hidden="true">
+      {ticks.map((t) => <span style={`top:${y(t)}%`}>{t}</span>)}
+    </div>
+    <div class="avg-plot">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        {ticks.map((t) => <line class="grid" x1="0" x2="100" y1={y(t)} y2={y(t)} />)}
+        <path class="line" d={line} />
+      </svg>
+      <span class={`c-chart-val start ${startBelow ? "below" : ""}`} style={`top:${y(startRaw)}%`} aria-hidden="true">{startScore}</span>
+      {points.map((p) => (
+        <a class="avg-dot" href={`${base}history/${p.ch.id}/`} style={`left:${p.x}%;top:${p.y}%`}
+          title={`${changeDate(p.ch)}: ${p.ch.title} (${p.ch.score.before} → ${p.ch.score.after})`}
+          aria-label={`${changeDate(p.ch)}: ${p.ch.title}. Score ${p.ch.score.before} to ${p.ch.score.after}.`}>
+          {p.label && <span class={`c-chart-val ${p.ch.raw.after < p.ch.raw.before ? "below" : ""}`} aria-hidden="true">{p.ch.score.after}</span>}
+        </a>
+      ))}
+    </div>
+    <div class="avg-x" aria-hidden="true">
+      {years.map((yr) => <span style={`left:${x(Date.UTC(yr, 0, 1))}%`}>{yr}</span>)}
+    </div>
+  </div>
+</div>
