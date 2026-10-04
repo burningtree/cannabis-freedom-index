@@ -3,7 +3,7 @@
 import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
 import { z } from "astro/zod";
-import { SEGMENT_IDS, CONTEXT_IDS } from "./lib/segment-ids.js";
+import { SEGMENT_IDS, CONTEXT_IDS, CHANGE_CATEGORIES } from "./lib/segment-ids.js";
 
 const score = z.number().int().min(0).max(10);
 const perSegment = <T extends z.ZodTypeAny>(value: T) =>
@@ -115,6 +115,7 @@ const changes = defineCollection({
     .object({
       id: z.string(),
       date: z.string().regex(/^\d{4}(-\d{2}(-\d{2})?)?$/, "use YYYY-MM-DD, YYYY-MM or YYYY"),
+      category: z.enum(Object.keys(CHANGE_CATEGORIES) as [string, ...string[]]), // what kind of event it is; see segment-ids.js
       // A change has `country` and `before`. Without `before` the entry is context that moves no
       // score: a report or ruling in that country, or with no `country` a treaty or UN decision.
       country: z.string().regex(/^[a-z]{2}$/).optional(), // file name in /countries

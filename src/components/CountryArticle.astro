@@ -68,6 +68,7 @@ const circ = 2 * Math.PI * r;
         <p>{use.estimate
           ? `An estimate: there is no national survey, so the median rate of surveyed countries in ${c.region} is assumed.`
           : `People who used cannabis in the past year, from a ${use.year} survey applied to today's population.`}</p>
+        <p class="c-use-src">Source: <a href="https://www.unodc.org/unodc/en/data-and-analysis/wdr2022_annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report</a> prevalence figures, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a>; population aged 15–64 from the <a href="https://data.worldbank.org/indicator/SP.POP.1564.TO" target="_blank" rel="noopener noreferrer">World Bank</a>.</p>
       </dl>
     )}
     {scored.length > 0 && <CountryChart history={scored} />}

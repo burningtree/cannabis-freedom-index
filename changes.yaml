@@ -3,6 +3,8 @@
 #
 #   id:      unique, short, lower-case
 #   date:    when the change took effect: "YYYY-MM-DD", or "YYYY-MM" / "YYYY" if that is all we know
+#   category: what kind of event it is: ban, tightening, death, easing, legalisation, medical,
+#            debate, international or other (see CHANGE_CATEGORIES in src/lib/segment-ids.js)
 #   country: the file name in /countries, e.g. "gd"
 #   before:  the six segment scores (0-10) before the change. The scores after it are taken from
 #            the same country's next change, or from the country file if this is its latest one.
@@ -16,6 +18,7 @@
 
 - id: thailand-cabinet-bill-2026
   date: "2026-09-22"
+  category: tightening
   country: th
   title: Thailand's cabinet approves a medical-only cannabis bill
   description: >-
@@ -27,6 +30,7 @@
 
 - id: brazil-cultivation-rules-2026
   date: "2026-08-04"
+  category: medical
   country: br
   title: Brazil's first legal cannabis cultivation rules take effect
   description: >-
@@ -38,6 +42,7 @@
 
 - id: saudi-arabia-ethiopian-hashish-executions-2026
   date: "2026-07-27"
+  category: death
   country: sa
   title: Saudi Arabia executes ten Ethiopians in hashish cases
   description: >-
@@ -50,6 +55,7 @@
 
 - id: singapore-cannabis-execution-2026
   date: "2026-04-16"
+  category: death
   country: sg
   title: Singapore carries out another cannabis execution
   description: >-
@@ -61,6 +67,7 @@
 
 - id: philippines-medical-cannabis-panel-2026
   date: "2026-02-24"
+  category: medical
   country: ph
   title: Philippine House panels revive medical-cannabis legislation
   description: >-
@@ -73,6 +80,7 @@
 
 - id: grenada-decriminalisation-2026
   date: "2026-02"
+  category: legalisation
   country: gd
   title: Grenada decriminalises cannabis
   description: >-
@@ -86,6 +94,7 @@
 
 - id: czechia-home-grow-2026
   date: "2026-01-01"
+  category: legalisation
   country: cz
   title: Czechia legalises possession and home growing
   description: >-
@@ -99,6 +108,7 @@
 
 - id: philippines-compassionate-permit-rules-2025
   date: "2025-12-10"
+  category: medical
   country: ph
   title: The Philippines updates its compassionate-permit rules
   description: >-
@@ -111,6 +121,7 @@
 
 - id: slovenia-medical-law-2025
   date: "2025-08-20"
+  category: medical
   country: si
   title: Slovenia's medical cannabis law takes effect
   description: >-
@@ -123,6 +134,7 @@
 
 - id: czechia-law-passed-2025
   date: "2025"
+  category: legalisation
   country: cz
   title: Czechia passes its cannabis reform
   description: >-
@@ -135,6 +147,7 @@
 
 - id: turkey-medical-products-2025
   date: "2025"
+  category: medical
   country: tr
   title: Turkey allows low-THC cannabis products in pharmacies
   description: >-
@@ -145,6 +158,7 @@
 
 - id: thailand-prescription-only-2025
   date: "2025-06-25"
+  category: tightening
   country: th
   title: Thailand goes prescription-only
   description: >-
@@ -158,6 +172,7 @@
 
 - id: croatia-medical-production-2025
   date: "2025-04"
+  category: medical
   country: hr
   title: Croatia allows domestic production of medical cannabis
   description: >-
@@ -169,6 +184,7 @@
 
 - id: hungary-constitutional-amendment-2025
   date: "2025-04-14"
+  category: tightening
   country: hu
   title: Hungary writes a drug ban into its constitution
   description: >-
@@ -181,6 +197,7 @@
 
 - id: italy-hemp-flower-ban-2025
   date: "2025-04-12"
+  category: other
   country: it
   title: Italy bans the hemp flower trade
   description: >-
@@ -192,6 +209,7 @@
 
 - id: saudi-arabia-iranian-hashish-executions-2025
   date: "2025-01-01"
+  category: death
   country: sa
   title: Saudi Arabia announces six executions for hashish smuggling
   description: >-
@@ -204,6 +222,7 @@
 
 - id: japan-use-criminalised-2024
   date: "2024-12-12"
+  category: tightening
   country: jp
   title: Japan makes cannabis use a crime
   description: >-
@@ -217,6 +236,7 @@
 
 - id: ukraine-medical-2024
   date: "2024-08-16"
+  category: medical
   country: ua
   title: Ukraine legalises medical cannabis
   description: >-
@@ -229,6 +249,7 @@
 
 - id: slovakia-penal-reform-2024
   date: "2024-08-06"
+  category: easing
   country: sk
   title: Slovakia cuts sentences for small amounts
   description: >-
@@ -241,6 +262,7 @@
 
 - id: philippines-house-medical-cannabis-2024
   date: "2024-07-30"
+  category: medical
   country: ph
   title: The Philippine House passes a medical-cannabis bill
   description: >-
@@ -253,6 +275,7 @@
 
 - id: germany-cultivation-associations-2024
   date: "2024-07-01"
+  category: legalisation
   country: de
   title: German cultivation associations become legal
   description: >-
@@ -264,6 +287,7 @@
 
 - id: bahamas-cannabis-act-2024
   date: "2024"
+  category: easing
   country: bs
   title: The Bahamas passes its Cannabis Act
   description: >-
@@ -276,6 +300,7 @@
 
 - id: brazil-supreme-court-2024
   date: "2024-06-26"
+  category: easing
   country: br
   title: Brazil's Supreme Court decriminalises personal possession
   description: >-
@@ -289,6 +314,7 @@
 
 - id: slovenia-referendum-2024
   date: "2024-06-09"
+  category: debate
   country: si
   title: Slovenians vote for legal cannabis
   description: >-
@@ -301,6 +327,7 @@
 
 - id: south-africa-private-purposes-act-2024
   date: "2024-05-28"
+  category: legalisation
   country: za
   title: South Africa signs the Cannabis for Private Purposes Act
   description: >-
@@ -313,6 +340,7 @@
 
 - id: denmark-pusher-street-closed-2024
   date: "2024-04-06"
+  category: tightening
   country: dk
   title: Christiania closes Pusher Street
   description: >-
@@ -325,6 +353,7 @@
 
 - id: germany-cannabis-act-2024
   date: "2024-04-01"
+  category: legalisation
   country: de
   title: Germany legalises possession and home growing
   description: >-
@@ -338,6 +367,7 @@
 
 - id: indonesia-medical-cannabis-ruling-2024
   date: "2024-03-20"
+  category: medical
   country: id
   title: Indonesia's Constitutional Court again rejects medical cannabis
   description: >-
@@ -350,6 +380,7 @@
 
 - id: germany-bundestag-vote-2024
   date: "2024-02-23"
+  category: legalisation
   country: de
   title: The Bundestag votes to legalise cannabis
   description: >-
@@ -361,6 +392,7 @@
 
 - id: malta-first-associations-2024
   date: "2024-01"
+  category: legalisation
   country: mt
   title: Malta's first cannabis associations open
   description: >-
@@ -372,6 +404,7 @@
 
 - id: ireland-citizens-assembly-2024
   date: "2024-01"
+  category: debate
   country: ie
   title: Ireland's Citizens' Assembly calls for a health-led approach
   description: >-
@@ -384,6 +417,7 @@
 
 - id: netherlands-supply-experiment-2023
   date: "2023-12-15"
+  category: legalisation
   country: nl
   title: The Netherlands starts supplying coffeeshops legally
   description: >-
@@ -396,6 +430,7 @@
 
 - id: ecuador-threshold-table-repealed-2023
   date: "2023-11-24"
+  category: tightening
   country: ec
   title: Ecuador repeals its personal-use thresholds
   description: >-
@@ -409,6 +444,7 @@
 
 - id: luxembourg-home-grow-2023
   date: "2023-07-21"
+  category: legalisation
   country: lu
   title: Luxembourg legalises home growing
   description: >-
@@ -422,6 +458,7 @@
 
 - id: switzerland-possession-legal-2023
   date: "2023-07"
+  category: easing
   country: ch
   title: "Swiss Federal Court: up to 10 g may not be confiscated"
   description: >-
@@ -433,6 +470,7 @@
 
 - id: ghana-licences-reinstated-2023
   date: "2023-07"
+  category: medical
   country: gh
   title: Ghana restores licences for industrial and medical cannabis
   description: >-
@@ -444,6 +482,7 @@
 
 - id: albania-medical-2023
   date: "2023-07"
+  category: medical
   country: al
   title: Albania legalises medical cannabis cultivation
   description: >-
@@ -455,6 +494,7 @@
 
 - id: malaysia-mandatory-death-abolished-2023
   date: "2023-07-04"
+  category: death
   country: my
   title: Malaysia ends the mandatory death penalty
   description: >-
@@ -466,6 +506,7 @@
 
 - id: romania-3-grams-rejected-2023
   date: "2023"
+  category: debate
   country: ro
   title: Romania's parliament rejects decriminalising 3 g
   description: >-
@@ -477,6 +518,7 @@
 
 - id: colombia-senate-vote-2023
   date: "2023-06-20"
+  category: debate
   country: co
   title: Colombia's Senate narrowly rejects a legal market
   description: >-
@@ -489,6 +531,7 @@
 
 - id: singapore-possession-penalties-2023
   date: "2023-06-01"
+  category: tightening
   country: sg
   title: Singapore raises penalties for possessing large amounts
   description: >-
@@ -501,6 +544,7 @@
 
 - id: uganda-court-nullifies-act-2023
   date: "2023-05-05"
+  category: other
   country: ug
   title: Uganda's Constitutional Court strikes down the 2015 drug law
   description: >-
@@ -513,6 +557,7 @@
 
 - id: singapore-tangaraju-execution-2023
   date: "2023-04-26"
+  category: death
   country: sg
   title: Singapore executes a man in a cannabis trafficking case
   description: >-
@@ -525,6 +570,7 @@
 
 - id: germany-two-pillar-plan-2023
   date: "2023-04-12"
+  category: debate
   country: de
   title: Germany drops its plan for licensed cannabis shops
   description: >-
@@ -537,6 +583,7 @@
 
 - id: switzerland-pilot-sales-2023
   date: "2023-01-31"
+  category: easing
   country: ch
   title: Switzerland starts regulated pilot sales
   description: >-
@@ -550,6 +597,7 @@
 
 - id: france-cbd-flower-2022
   date: "2022-12-29"
+  category: other
   country: fr
   title: France's top administrative court legalises CBD flower
   description: >-
@@ -561,6 +609,7 @@
 
 - id: saudi-arabia-drug-executions-resume-2022
   date: "2022-11-10"
+  category: death
   country: sa
   title: Saudi Arabia resumes executions for drug offences
   description: >-
@@ -573,6 +622,7 @@
 
 - id: guyana-no-jail-2022
   date: "2022-11-07"
+  category: easing
   country: gy
   title: Guyana ends jail for small amounts
   description: >-
@@ -586,6 +636,7 @@
 
 - id: us-biden-pardons-2022
   date: "2022-10-06"
+  category: easing
   country: us
   title: The US president pardons federal possession convictions
   description: >-
@@ -597,6 +648,7 @@
 
 - id: switzerland-medical-2022
   date: "2022-08-01"
+  category: medical
   country: ch
   title: Switzerland lifts its ban on medical cannabis
   description: >-
@@ -609,6 +661,7 @@
 
 - id: fiji-hemp-2022
   date: "2022-07"
+  category: other
   country: fj
   title: Fiji legalises industrial hemp
   description: >-
@@ -619,6 +672,7 @@
 
 - id: indonesia-medical-cannabis-ruling-2022
   date: "2022-07-20"
+  category: medical
   country: id
   title: Indonesia's Constitutional Court rejects medical cannabis
   description: >-
@@ -631,6 +685,7 @@
 
 - id: thailand-decriminalisation-2022
   date: "2022-06-09"
+  category: legalisation
   country: th
   title: Thailand removes cannabis from its narcotics list
   description: >-
@@ -644,6 +699,7 @@
 
 - id: norway-supreme-court-2022
   date: "2022-04-08"
+  category: easing
   country: no
   title: Norway's Supreme Court ends punishment for addicts
   description: >-
@@ -657,6 +713,7 @@
 
 - id: costa-rica-medical-2022
   date: "2022-03-02"
+  category: medical
   country: cr
   title: Costa Rica legalises medical cannabis and hemp
   description: >-
@@ -669,6 +726,7 @@
 
 - id: italy-referendum-blocked-2022
   date: "2022-02-16"
+  category: debate
   country: it
   title: Italy's Constitutional Court blocks a legalisation referendum
   description: >-
@@ -681,6 +739,7 @@
 
 - id: czechia-hemp-one-percent-2022
   date: "2022-01-01"
+  category: other
   country: cz
   title: Czechia raises the hemp limit to 1% THC
   description: >-
@@ -693,6 +752,7 @@
 
 - id: malta-legalisation-2021
   date: "2021-12-18"
+  category: legalisation
   country: mt
   title: Malta becomes the first EU country to legalise
   description: >-
@@ -706,6 +766,7 @@
 
 - id: luxembourg-plan-scaled-back-2021
   date: "2021-10-22"
+  category: debate
   country: lu
   title: Luxembourg scales back its legalisation plan
   description: >-
@@ -717,6 +778,7 @@
 
 - id: panama-medical-2021
   date: "2021-10"
+  category: medical
   country: pa
   title: Panama legalises medical cannabis
   description: >-
@@ -729,6 +791,7 @@
 
 - id: saint-lucia-decriminalisation-2021
   date: "2021-09-14"
+  category: legalisation
   country: lc
   title: Saint Lucia decriminalises 30 g
   description: >-
@@ -741,6 +804,7 @@
 
 - id: philippines-un-rescheduling-response-2021
   date: "2021-08-10"
+  category: debate
   country: ph
   title: UN rescheduling leaves Philippine cannabis law unchanged
   description: >-
@@ -753,6 +817,7 @@
 
 - id: morocco-law-13-21-2021
   date: "2021-07"
+  category: medical
   country: ma
   title: Morocco legalises cannabis for medical and industrial use
   description: >-
@@ -765,6 +830,7 @@
 
 - id: norway-reform-rejected-2021
   date: "2021"
+  category: debate
   country: no
   title: Norway's parliament rejects decriminalisation
   description: >-
@@ -776,6 +842,7 @@
 
 - id: mexico-supreme-court-2021
   date: "2021-06-28"
+  category: easing
   country: mx
   title: Mexico's Supreme Court strikes down the ban on personal use
   description: >-
@@ -789,6 +856,7 @@
 
 - id: rwanda-medical-2021
   date: "2021-06"
+  category: medical
   country: rw
   title: Rwanda allows medical cannabis production
   description: >-
@@ -800,6 +868,7 @@
 
 - id: switzerland-pilot-law-2021
   date: "2021-05-15"
+  category: legalisation
   country: ch
   title: Switzerland allows pilot trials of legal sales
   description: >-
@@ -811,6 +880,7 @@
 
 - id: slovakia-cbd-delisted-2021
   date: "2021-05-01"
+  category: other
   country: sk
   title: Slovakia takes CBD off its drug list
   description: >-
@@ -821,6 +891,7 @@
 
 - id: france-medical-experiment-2021
   date: "2021-03-26"
+  category: medical
   country: fr
   title: France begins a medical cannabis experiment
   description: >-
@@ -833,6 +904,7 @@
 
 - id: barbados-fines-2021
   date: "2021-03"
+  category: easing
   country: bb
   title: Barbados decriminalises 14 g
   description: >-
@@ -845,6 +917,7 @@
 
 - id: mexico-deputies-vote-2021
   date: "2021-03-10"
+  category: debate
   country: mx
   title: Mexico's lower house votes to legalise
   description: >-
@@ -856,6 +929,7 @@
 
 - id: saudi-arabia-drug-execution-moratorium-2021
   date: "2021-01"
+  category: death
   country: sa
   title: Saudi Arabia announces a moratorium on drug executions
   description: >-
@@ -868,6 +942,7 @@
 
 - id: ireland-adult-caution-2020
   date: "2020-12-14"
+  category: easing
   country: ie
   title: Ireland lets police caution for cannabis possession
   description: >-
@@ -880,6 +955,7 @@
 
 - id: un-cannabis-rescheduled-2020
   date: "2020-12-02"
+  category: international
   title: The UN removes cannabis from its strictest schedule
   description: >-
     On the advice of the World Health Organization, the Commission on Narcotic Drugs voted 27 to 25
@@ -892,6 +968,7 @@
 
 - id: argentina-reprocann-2020
   date: "2020-11-12"
+  category: medical
   country: ar
   title: Argentina lets registered patients grow their own
   description: >-
@@ -904,6 +981,7 @@
 
 - id: new-zealand-referendum-2020
   date: "2020-10-17"
+  category: debate
   country: nz
   title: New Zealand votes against legalisation
   description: >-
@@ -915,6 +993,7 @@
 
 - id: dominica-decriminalisation-2020
   date: "2020-10"
+  category: legalisation
   country: dm
   title: Dominica decriminalises small amounts
   description: >-
@@ -928,6 +1007,7 @@
 
 - id: france-fixed-fine-2020
   date: "2020-09-01"
+  category: easing
   country: fr
   title: France introduces a €200 on-the-spot fine
   description: >-
@@ -940,6 +1020,7 @@
 
 - id: lebanon-medical-cultivation-2020
   date: "2020-04-21"
+  category: medical
   country: lb
   title: Lebanon legalises growing cannabis for medicine
   description: >-
@@ -951,6 +1032,7 @@
 
 - id: new-zealand-medicinal-scheme-2020
   date: "2020-04-01"
+  category: medical
   country: nz
   title: New Zealand opens its medicinal cannabis scheme
   description: >-
@@ -963,6 +1045,7 @@
 
 - id: ghana-narcotics-commission-act-2020
   date: "2020-03-20"
+  category: easing
   country: gh
   title: Ghana treats drug use as a health issue
   description: >-
@@ -976,6 +1059,7 @@
 
 - id: saudi-arabia-flogging-abolished-2020
   date: "2020-02-18"
+  category: easing
   country: sa
   title: Saudi Arabia abolishes discretionary flogging
   description: >-
@@ -988,6 +1072,7 @@
 
 - id: saint-kitts-56-grams-2020
   date: "2020-02"
+  category: easing
   country: kn
   title: Saint Kitts and Nevis raises the limit to 56 g
   description: >-
@@ -1000,6 +1085,7 @@
 
 - id: malawi-medical-industrial-2020
   date: "2020-02"
+  category: medical
   country: mw
   title: Malawi legalises cannabis for medicine and industry
   description: >-
@@ -1011,6 +1097,7 @@
 
 - id: australia-act-legalises-2020
   date: "2020-01-31"
+  category: legalisation
   country: au
   title: The Australian Capital Territory legalises possession and growing
   description: >-
@@ -1022,6 +1109,7 @@
 
 - id: czechia-medical-insurance-2020
   date: "2020-01-01"
+  category: medical
   country: cz
   title: Czech health insurers start paying for medical cannabis
   description: >-
@@ -1033,6 +1121,7 @@
 
 - id: trinidad-decriminalisation-2019
   date: "2019-12-23"
+  category: legalisation
   country: tt
   title: Trinidad and Tobago decriminalises cannabis
   description: >-
@@ -1046,6 +1135,7 @@
 
 - id: italy-home-growing-2019
   date: "2019-12-19"
+  category: easing
   country: it
   title: Italy's top court allows minimal home growing
   description: >-
@@ -1058,6 +1148,7 @@
 
 - id: ecuador-medical-2019
   date: "2019-12"
+  category: medical
   country: ec
   title: Ecuador legalises medical cannabis and hemp
   description: >-
@@ -1070,6 +1161,7 @@
 
 - id: zambia-medical-export-2019
   date: "2019-12"
+  category: medical
   country: zm
   title: Zambia legalises cannabis for export and medicine
   description: >-
@@ -1080,6 +1172,7 @@
 
 - id: brazil-pharmacy-products-2019
   date: "2019-12-03"
+  category: medical
   country: br
   title: Brazil allows cannabis products in pharmacies
   description: >-
@@ -1092,6 +1185,7 @@
 
 - id: singapore-first-cannabinoid-medicine-2019
   date: "2019-12-01"
+  category: medical
   country: sg
   title: Singapore approves its first cannabinoid medicine
   description: >-
@@ -1104,6 +1198,7 @@
 
 - id: barbados-medical-2019
   date: "2019-11"
+  category: medical
   country: bb
   title: Barbados legalises medical and sacramental cannabis
   description: >-
@@ -1116,6 +1211,7 @@
 
 - id: canada-edibles-2019
   date: "2019-10-17"
+  category: legalisation
   country: ca
   title: Canada legalises edibles, extracts and vapes
   description: >-
@@ -1127,6 +1223,7 @@
 
 - id: new-zealand-police-discretion-2019
   date: "2019-08-13"
+  category: easing
   country: nz
   title: New Zealand tells police to consider health first
   description: >-
@@ -1140,6 +1237,7 @@
 
 - id: saint-kitts-decriminalisation-2019
   date: "2019-07"
+  category: easing
   country: kn
   title: Saint Kitts and Nevis decriminalises after a court ruling
   description: >-
@@ -1153,6 +1251,7 @@
 
 - id: finland-citizens-initiative-2019
   date: "2019"
+  category: debate
   country: fi
   title: A Finnish citizens' initiative calls for decriminalisation
   description: >-
@@ -1164,6 +1263,7 @@
 
 - id: ireland-medical-access-2019
   date: "2019-06"
+  category: medical
   country: ie
   title: Ireland starts its Medical Cannabis Access Programme
   description: >-
@@ -1176,6 +1276,7 @@
 
 - id: lithuania-medical-2019
   date: "2019-05"
+  category: medical
   country: lt
   title: Lithuania allows cannabis-based medicines
   description: >-
@@ -1187,6 +1288,7 @@
 
 - id: israel-fines-2019
   date: "2019-04-01"
+  category: easing
   country: il
   title: Israel replaces prosecution with fines
   description: >-
@@ -1200,6 +1302,7 @@
 
 - id: thailand-medical-2019
   date: "2019-02-19"
+  category: medical
   country: th
   title: Thailand legalises medical cannabis
   description: >-
@@ -1212,6 +1315,7 @@
 
 - id: cyprus-medical-expanded-2019
   date: "2019-02"
+  category: medical
   country: cy
   title: Cyprus widens medical cannabis
   description: >-
@@ -1224,6 +1328,7 @@
 
 - id: us-farm-bill-2018
   date: "2018-12-20"
+  category: other
   country: us
   title: The United States legalises hemp
   description: >-
@@ -1236,6 +1341,7 @@
 
 - id: antigua-cannabis-act-2018
   date: "2018-12"
+  category: easing
   country: ag
   title: Antigua and Barbuda passes its Cannabis Act
   description: >-
@@ -1248,6 +1354,7 @@
 
 - id: saint-vincent-medical-2018
   date: "2018-12-11"
+  category: medical
   country: vc
   title: Saint Vincent legalises a medical cannabis industry
   description: >-
@@ -1260,6 +1367,7 @@
 
 - id: france-fine-voted-2018
   date: "2018-11-23"
+  category: debate
   country: fr
   title: French deputies vote for a fixed fine
   description: >-
@@ -1271,6 +1379,7 @@
 
 - id: south-korea-medical-2018
   date: "2018-11-23"
+  category: medical
   country: kr
   title: South Korea legalises medical cannabis
   description: >-
@@ -1283,6 +1392,7 @@
 
 - id: uk-medical-cannabis-2018
   date: "2018-11-01"
+  category: medical
   country: gb
   title: The United Kingdom allows medical cannabis
   description: >-
@@ -1296,6 +1406,7 @@
 
 - id: mexico-jurisprudence-2018
   date: "2018-10-31"
+  category: easing
   country: mx
   title: Mexico's Supreme Court rules a fifth time against the ban
   description: >-
@@ -1307,6 +1418,7 @@
 
 - id: canada-cannabis-act-2018
   date: "2018-10-17"
+  category: legalisation
   country: ca
   title: Canada legalises cannabis nationwide
   description: >-
@@ -1320,6 +1432,7 @@
 
 - id: colombia-police-code-decree-2018
   date: "2018-10-01"
+  category: tightening
   country: co
   title: Colombia tells police to confiscate the personal dose
   description: >-
@@ -1332,6 +1445,7 @@
 
 - id: south-africa-constitutional-court-2018
   date: "2018-09-18"
+  category: legalisation
   country: za
   title: South Africa's top court protects private use and growing
   description: >-
@@ -1345,6 +1459,7 @@
 
 - id: georgia-constitutional-court-2018
   date: "2018-07-30"
+  category: easing
   country: ge
   title: Georgia's Constitutional Court ends punishment for use
   description: >-
@@ -1357,6 +1472,7 @@
 
 - id: saint-vincent-decriminalisation-2018
   date: "2018-07-25"
+  category: easing
   country: vc
   title: Saint Vincent decriminalises two ounces
   description: >-
@@ -1369,6 +1485,7 @@
 
 - id: caricom-commission-report-2018
   date: "2018-07"
+  category: international
   title: A Caribbean commission calls for an end to cannabis prohibition
   description: >-
     After four years of consultations across the region, the CARICOM Regional Commission on
@@ -1381,6 +1498,7 @@
 
 - id: portugal-medical-2018
   date: "2018-07"
+  category: medical
   country: pt
   title: Portugal legalises medical cannabis
   description: >-
@@ -1393,6 +1511,7 @@
 
 - id: luxembourg-medical-2018
   date: "2018-06"
+  category: medical
   country: lu
   title: Luxembourg legalises medical cannabis
   description: >-
@@ -1406,6 +1525,7 @@
 
 - id: zimbabwe-medical-2018
   date: "2018-04"
+  category: medical
   country: zw
   title: Zimbabwe legalises growing cannabis for medicine
   description: >-
@@ -1417,6 +1537,7 @@
 
 - id: malta-medical-2018
   date: "2018-03-27"
+  category: medical
   country: mt
   title: Malta legalises medical cannabis
   description: >-
@@ -1429,6 +1550,7 @@
 
 - id: antigua-decriminalisation-2018
   date: "2018-03"
+  category: easing
   country: ag
   title: Antigua and Barbuda decriminalises 15 g
   description: >-
@@ -1442,6 +1564,7 @@
 
 - id: jamaica-first-herb-house-2018
   date: "2018-03"
+  category: legalisation
   country: jm
   title: Jamaica's first licensed herb house opens
   description: >-
@@ -1453,6 +1576,7 @@
 
 - id: greece-medical-2018
   date: "2018-03"
+  category: medical
   country: gr
   title: Greece legalises medical cannabis
   description: >-
@@ -1465,6 +1589,7 @@
 
 - id: denmark-medical-pilot-2018
   date: "2018-01-01"
+  category: medical
   country: dk
   title: Denmark starts a medical cannabis pilot
   description: >-
@@ -1477,6 +1602,7 @@
 
 - id: paraguay-medical-2017
   date: "2017-12"
+  category: medical
   country: py
   title: Paraguay legalises medical cannabis
   description: >-
@@ -1489,6 +1615,7 @@
 
 - id: georgia-consumption-2017
   date: "2017-11-30"
+  category: easing
   country: ge
   title: Georgia's Constitutional Court ends criminal penalties for use
   description: >-
@@ -1501,6 +1628,7 @@
 
 - id: belize-decriminalisation-2017
   date: "2017-11"
+  category: easing
   country: bz
   title: Belize decriminalises 10 g
   description: >-
@@ -1513,6 +1641,7 @@
 
 - id: peru-medical-2017
   date: "2017-11"
+  category: medical
   country: pe
   title: Peru legalises medical cannabis
   description: >-
@@ -1525,6 +1654,7 @@
 
 - id: poland-medical-2017
   date: "2017-11-01"
+  category: medical
   country: pl
   title: Poland allows medical cannabis in pharmacies
   description: >-
@@ -1537,6 +1667,7 @@
 
 - id: switzerland-ten-grams-2017
   date: "2017-09-06"
+  category: easing
   country: ch
   title: "Swiss Federal Court: possessing up to 10 g is not punishable"
   description: >-
@@ -1549,6 +1680,7 @@
 
 - id: philippines-plea-bargaining-ruling-2017
   date: "2017-08-15"
+  category: easing
   country: ph
   title: The Supreme Court invalidates the drug-law plea-bargaining ban
   description: >-
@@ -1561,6 +1693,7 @@
 
 - id: indonesia-fidelis-case-2017
   date: "2017-08-02"
+  category: tightening
   country: id
   title: A man is jailed for growing cannabis to treat his wife
   description: >-
@@ -1573,6 +1706,7 @@
 
 - id: uruguay-pharmacy-sales-2017
   date: "2017-07-19"
+  category: legalisation
   country: uy
   title: Uruguay's pharmacies start selling cannabis
   description: >-
@@ -1587,6 +1721,7 @@
 
 - id: spain-catalonia-club-law-2017
   date: "2017"
+  category: legalisation
   country: es
   title: Catalonia regulates cannabis clubs
   description: >-
@@ -1599,6 +1734,7 @@
 
 - id: lesotho-first-licences-2017
   date: "2017"
+  category: medical
   country: ls
   title: Lesotho issues Africa's first medical cannabis licences
   description: >-
@@ -1610,6 +1746,7 @@
 
 - id: mexico-medical-2017
   date: "2017-06-19"
+  category: medical
   country: mx
   title: Mexico legalises medical cannabis
   description: >-
@@ -1621,6 +1758,7 @@
 
 - id: south-africa-western-cape-2017
   date: "2017-03-31"
+  category: easing
   country: za
   title: A South African high court declares the ban on private use invalid
   description: >-
@@ -1633,6 +1771,7 @@
 
 - id: argentina-medical-law-2017
   date: "2017-03"
+  category: medical
   country: ar
   title: Argentina passes a medical cannabis law
   description: >-
@@ -1645,6 +1784,7 @@
 
 - id: germany-medical-2017
   date: "2017-03-10"
+  category: medical
   country: de
   title: Germany legalises medical cannabis
   description: >-
@@ -1657,6 +1797,7 @@
 
 - id: cyprus-medical-oil-2017
   date: "2017-01"
+  category: medical
   country: cy
   title: Cyprus allows cannabis oil for cancer patients
   description: >-
@@ -1667,6 +1808,7 @@
 
 - id: lithuania-criminalisation-2017
   date: "2017-01-01"
+  category: tightening
   country: lt
   title: Lithuania makes any possession a crime
   description: >-
@@ -1679,6 +1821,7 @@
 
 - id: us-legalisation-wave-2016
   date: "2016-11-08"
+  category: legalisation
   country: us
   title: Four more US states legalise, including California
   description: >-
@@ -1692,6 +1835,7 @@
 
 - id: colombia-medical-2016
   date: "2016-07-06"
+  category: medical
   country: co
   title: Colombia legalises medical cannabis
   description: >-
@@ -1704,6 +1848,7 @@
 
 - id: philippines-drug-war-2016
   date: "2016-07-01"
+  category: tightening
   country: ph
   title: The Philippines launches a nationwide war on drugs
   description: >-
@@ -1716,6 +1861,7 @@
 
 - id: north-macedonia-medical-2016
   date: "2016"
+  category: medical
   country: mk
   title: North Macedonia legalises medical cannabis
   description: >-
@@ -1728,6 +1874,7 @@
 
 - id: turkey-cannabinoid-medicines-2016
   date: "2016"
+  category: medical
   country: tr
   title: Turkey allows cannabinoid medicines
   description: >-
@@ -1739,6 +1886,7 @@
 
 - id: australia-medical-2016
   date: "2016-02-24"
+  category: medical
   country: au
   title: Australia legalises medical cannabis
   description: >-
@@ -1751,6 +1899,7 @@
 
 - id: austria-therapy-2016
   date: "2016-01-01"
+  category: easing
   country: at
   title: Austria sends users to the health authority, not court
   description: >-
@@ -1763,6 +1912,7 @@
 
 - id: chile-medical-decree-2015
   date: "2015-12"
+  category: medical
   country: cl
   title: Chile allows cannabis medicines
   description: >-
@@ -1775,6 +1925,7 @@
 
 - id: mexico-smart-ruling-2015
   date: "2015-11-04"
+  category: easing
   country: mx
   title: Mexico's Supreme Court lets four people grow and use cannabis
   description: >-
@@ -1787,6 +1938,7 @@
 
 - id: georgia-no-prison-2015
   date: "2015-10-24"
+  category: easing
   country: ge
   title: Georgia's Constitutional Court rules out prison for 70 g
   description: >-
@@ -1799,6 +1951,7 @@
 
 - id: croatia-medical-2015
   date: "2015-10-15"
+  category: medical
   country: hr
   title: Croatia legalises medical cannabis
   description: >-
@@ -1811,6 +1964,7 @@
 
 - id: latvia-petition-2015
   date: "2015-09-03"
+  category: debate
   country: lv
   title: Latvia's parliament declines to decriminalise
   description: >-
@@ -1822,6 +1976,7 @@
 
 - id: colombia-twenty-plants-2015
   date: "2015-08"
+  category: easing
   country: co
   title: Colombia's Supreme Court protects growing up to 20 plants
   description: >-
@@ -1834,6 +1989,7 @@
 
 - id: spain-public-safety-law-2015
   date: "2015-07-01"
+  category: tightening
   country: es
   title: Spain raises fines for public possession
   description: >-
@@ -1846,6 +2002,7 @@
 
 - id: uganda-narcotics-act-2015
   date: "2015"
+  category: tightening
   country: ug
   title: Uganda passes a new narcotics law
   description: >-
@@ -1857,6 +2014,7 @@
 
 - id: chile-supreme-court-2015
   date: "2015-06"
+  category: easing
   country: cl
   title: Chile's Supreme Court accepts growing for personal use
   description: >-
@@ -1870,6 +2028,7 @@
 
 - id: jamaica-ganja-reform-2015
   date: "2015-04-15"
+  category: easing
   country: jm
   title: Jamaica decriminalises ganja
   description: >-
@@ -1883,6 +2042,7 @@
 
 - id: malta-depenalisation-2015
   date: "2015-04-15"
+  category: easing
   country: mt
   title: Malta stops prosecuting small possession
   description: >-
@@ -1896,6 +2056,7 @@
 
 - id: czechia-ten-grams-2014
   date: "2014-03"
+  category: tightening
   country: cz
   title: The Czech Supreme Court lowers the threshold to 10 g
   description: >-
@@ -1908,6 +2069,7 @@
 
 - id: italy-constitutional-court-2014
   date: "2014-02-12"
+  category: easing
   country: it
   title: Italy's Constitutional Court strikes down the 2006 drug law
   description: >-
@@ -1920,6 +2082,7 @@
 
 - id: romania-penal-code-2014
   date: "2014-02-01"
+  category: easing
   country: ro
   title: Romania's new penal code lowers the penalty for possession
   description: >-
@@ -1932,6 +2095,7 @@
 
 - id: uruguay-legalisation-2013
   date: "2013-12-23"
+  category: legalisation
   country: uy
   title: Uruguay becomes the first country to legalise
   description: >-
@@ -1945,6 +2109,7 @@
 
 - id: switzerland-fine-2013
   date: "2013-10-01"
+  category: easing
   country: ch
   title: Switzerland introduces a CHF 100 fine
   description: >-
@@ -1958,6 +2123,7 @@
 
 - id: us-cole-memo-2013
   date: "2013-08-29"
+  category: easing
   country: us
   title: The US Justice Department stands back from legal states
   description: >-
@@ -1970,6 +2136,7 @@
 
 - id: czechia-constitutional-court-2013
   date: "2013-07-23"
+  category: other
   country: cz
   title: The Czech Constitutional Court strikes down the threshold table
   description: >-
@@ -1982,6 +2149,7 @@
 
 - id: greece-law-4139-2013
   date: "2013"
+  category: easing
   country: gr
   title: Greece makes personal use a minor offence
   description: >-
@@ -1995,6 +2163,7 @@
 
 - id: hungary-criminal-code-2013
   date: "2013-07-01"
+  category: tightening
   country: hu
   title: Hungary's new criminal code makes consumption a crime again
   description: >-
@@ -2007,6 +2176,7 @@
 
 - id: slovenia-cannabinoids-2013
   date: "2013"
+  category: medical
   country: si
   title: Slovenia reclassifies cannabinoids for medical use
   description: >-
@@ -2019,6 +2189,7 @@
 
 - id: romania-medical-2013
   date: "2013"
+  category: medical
   country: ro
   title: Romania allows low-THC cannabis medicines
   description: >-
@@ -2030,6 +2201,7 @@
 
 - id: ecuador-threshold-table-2013
   date: "2013-06"
+  category: easing
   country: ec
   title: Ecuador sets personal-use thresholds
   description: >-
@@ -2042,6 +2214,7 @@
 
 - id: czechia-medical-2013
   date: "2013-04-01"
+  category: medical
   country: cz
   title: Czechia legalises medical cannabis
   description: >-
@@ -2054,6 +2227,7 @@
 
 - id: italy-medical-2013
   date: "2013-01-23"
+  category: medical
   country: it
   title: Italy legalises medical cannabis
   description: >-
@@ -2066,6 +2240,7 @@
 
 - id: singapore-death-penalty-discretion-2013
   date: "2013-01-01"
+  category: death
   country: sg
   title: Singapore narrows the mandatory death penalty
   description: >-
@@ -2079,6 +2254,7 @@
 
 - id: croatia-misdemeanour-2013
   date: "2013-01-01"
+  category: easing
   country: hr
   title: Croatia makes personal possession a misdemeanour
   description: >-
@@ -2091,6 +2267,7 @@
 
 - id: us-colorado-washington-2012
   date: "2012-11-06"
+  category: legalisation
   country: us
   title: Colorado and Washington become the first US states to legalise
   description: >-
@@ -2103,6 +2280,7 @@
 
 - id: netherlands-residents-only-2012
   date: "2012-05-01"
+  category: tightening
   country: nl
   title: The Netherlands restricts coffeeshops to residents
   description: >-
@@ -2114,6 +2292,7 @@
 
 - id: poland-prosecutor-discretion-2011
   date: "2011-12-09"
+  category: easing
   country: pl
   title: Poland lets prosecutors drop small cases
   description: >-
@@ -2126,6 +2305,7 @@
 
 - id: venezuela-drug-law-2010
   date: "2010-09-15"
+  category: other
   country: ve
   title: Venezuela's Organic Law on Drugs takes effect
   description: >-
@@ -2138,6 +2318,7 @@
 
 - id: saudi-arabia-implementing-regulations-2010
   date: "2010-05-24"
+  category: other
   country: sa
   title: Saudi Arabia issues detailed anti-narcotics regulations
   description: >-
@@ -2150,6 +2331,7 @@
 
 - id: indonesia-rehabilitation-guidance-2010
   date: "2010-04-07"
+  category: easing
   country: id
   title: Indonesia's Supreme Court issues rehabilitation guidance
   description: >-
@@ -2162,6 +2344,7 @@
 
 - id: czechia-thresholds-2010
   date: "2010-01-01"
+  category: easing
   country: cz
   title: Czechia sets decriminalised amounts
   description: >-
@@ -2174,6 +2357,7 @@
 
 - id: colombia-constitution-amended-2009
   date: "2009-12"
+  category: tightening
   country: co
   title: Colombia writes a ban on drug use into its constitution
   description: >-
@@ -2186,6 +2370,7 @@
 
 - id: indonesia-narcotics-law-2009
   date: "2009-10-12"
+  category: tightening
   country: id
   title: Indonesia adopts its current Narcotics Law
   description: >-
@@ -2198,6 +2383,7 @@
 
 - id: argentina-arriola-2009
   date: "2009-08-25"
+  category: easing
   country: ar
   title: Argentina's Supreme Court protects private use
   description: >-
@@ -2211,6 +2397,7 @@
 
 - id: mexico-small-amounts-2009
   date: "2009-08-21"
+  category: easing
   country: mx
   title: Mexico stops prosecuting up to 5 g
   description: >-
@@ -2223,6 +2410,7 @@
 
 - id: uk-class-b-2009
   date: "2009-01-26"
+  category: tightening
   country: gb
   title: The United Kingdom moves cannabis back to Class B
   description: >-
@@ -2236,6 +2424,7 @@
 
 - id: switzerland-hemp-initiative-2008
   date: "2008-11-30"
+  category: debate
   country: ch
   title: Swiss voters reject legalisation
   description: >-
@@ -2247,6 +2436,7 @@
 
 - id: austria-medical-cultivation-2008
   date: "2008"
+  category: medical
   country: at
   title: Austria allows cannabis to be grown for medicine
   description: >-
@@ -2259,6 +2449,7 @@
 
 - id: lesotho-drugs-of-abuse-act-2008
   date: "2008"
+  category: other
   country: ls
   title: Lesotho passes the Drugs of Abuse Act
   description: >-
@@ -2270,6 +2461,7 @@
 
 - id: israel-medical-programme-2007
   date: "2007"
+  category: medical
   country: il
   title: Israel sets up its medical cannabis programme
   description: >-
@@ -2282,6 +2474,7 @@
 
 - id: brazil-no-prison-for-users-2006
   date: "2006-08-23"
+  category: easing
   country: br
   title: Brazil ends prison for users
   description: >-
@@ -2295,6 +2488,7 @@
 
 - id: georgia-zero-tolerance-2006
   date: "2006"
+  category: tightening
   country: ge
   title: Georgia adopts zero tolerance
   description: >-
@@ -2307,6 +2501,7 @@
 
 - id: bulgaria-penal-code-2006
   date: "2006"
+  category: easing
   country: bg
   title: Bulgaria sets one to six years for possession
   description: >-
@@ -2319,6 +2514,7 @@
 
 - id: philippines-death-penalty-abolished-2006
   date: "2006-06-24"
+  category: death
   country: ph
   title: The Philippines abolishes the death penalty again
   description: >-
@@ -2331,6 +2527,7 @@
 
 - id: italy-fini-giovanardi-2006
   date: "2006-02-28"
+  category: tightening
   country: it
   title: Italy puts cannabis in the same class as hard drugs
   description: >-
@@ -2343,6 +2540,7 @@
 
 - id: russia-six-grams-2006
   date: "2006-02-07"
+  category: tightening
   country: ru
   title: Russia cuts the decriminalised amount to 6 g
   description: >-
@@ -2355,6 +2553,7 @@
 
 - id: saudi-arabia-anti-narcotics-law-2005
   date: "2005-08-13"
+  category: other
   country: sa
   title: Saudi Arabia codifies its modern anti-narcotics law
   description: >-
@@ -2367,6 +2566,7 @@
 
 - id: chile-law-20000-2005
   date: "2005-02-16"
+  category: other
   country: cl
   title: Chile passes Law 20.000
   description: >-
@@ -2379,6 +2579,7 @@
 
 - id: belgium-three-grams-2005
   date: "2005-01-25"
+  category: easing
   country: be
   title: Belgium fixes the limit at 3 g or one plant
   description: >-
@@ -2391,6 +2592,7 @@
 
 - id: bulgaria-personal-dose-abolished-2004
   date: "2004"
+  category: tightening
   country: bg
   title: Bulgaria abolishes the personal dose
   description: >-
@@ -2403,6 +2605,7 @@
 
 - id: algeria-law-04-18-2004
   date: "2004"
+  category: other
   country: dz
   title: Algeria passes its drug law
   description: >-
@@ -2414,6 +2617,7 @@
 
 - id: denmark-fines-2004
   date: "2004-06"
+  category: tightening
   country: dk
   title: Denmark replaces warnings with fines
   description: >-
@@ -2427,6 +2631,7 @@
 
 - id: russia-decriminalisation-2004
   date: "2004-05-12"
+  category: easing
   country: ru
   title: Russia decriminalises small amounts
   description: >-
@@ -2439,6 +2644,7 @@
 
 - id: uk-class-c-2004
   date: "2004-01-29"
+  category: easing
   country: gb
   title: The United Kingdom downgrades cannabis to Class C
   description: >-
@@ -2452,6 +2658,7 @@
 
 - id: netherlands-medical-2003
   date: "2003-09-01"
+  category: medical
   country: nl
   title: Dutch pharmacies start dispensing medical cannabis
   description: >-
@@ -2463,6 +2670,7 @@
 
 - id: belgium-law-2003
   date: "2003-05-03"
+  category: easing
   country: be
   title: Belgium writes the low priority into law
   description: >-
@@ -2476,6 +2684,7 @@
 
 - id: hungary-diversion-widened-2003
   date: "2003-03-01"
+  category: easing
   country: hu
   title: Hungary reopens diversion for all users
   description: >-
@@ -2488,6 +2697,7 @@
 
 - id: estonia-misdemeanour-2002
   date: "2002-09-01"
+  category: easing
   country: ee
   title: Estonia makes small amounts a misdemeanour
   description: >-
@@ -2500,6 +2710,7 @@
 
 - id: indonesia-war-on-drugs-2002
   date: "2002-03"
+  category: tightening
   country: id
   title: Indonesia launches a national war on drugs
   description: >-
@@ -2512,6 +2723,7 @@
 
 - id: philippines-drugs-act-2002
   date: "2002-06-07"
+  category: tightening
   country: ph
   title: The Philippines adopts its present drug law
   description: >-
@@ -2524,6 +2736,7 @@
 
 - id: canada-medical-access-2001
   date: "2001-07-30"
+  category: medical
   country: ca
   title: Canada opens legal medical access
   description: >-
@@ -2537,6 +2750,7 @@
 
 - id: portugal-decriminalisation-2001
   date: "2001-07-01"
+  category: easing
   country: pt
   title: Portugal decriminalises all drugs
   description: >-
@@ -2550,6 +2764,7 @@
 
 - id: jamaica-ganja-commission-2001
   date: "2001"
+  category: debate
   country: jm
   title: Jamaica's National Commission on Ganja recommends decriminalisation
   description: >-
@@ -2562,6 +2777,7 @@
 
 - id: spain-social-clubs-2001
   date: "2001"
+  category: easing
   country: es
   title: Cannabis social clubs take root in Spain
   description: >-
@@ -2575,6 +2791,7 @@
 
 - id: finland-summary-fines-2001
   date: "2001"
+  category: easing
   country: fi
   title: Finland starts handling drug use with on-the-spot fines
   description: >-
@@ -2587,6 +2804,7 @@
 
 - id: luxembourg-fines-2001
   date: "2001-04"
+  category: easing
   country: lu
   title: Luxembourg drops prison for personal use
   description: >-
@@ -2600,6 +2818,7 @@
 
 - id: poland-criminalisation-2000
   date: "2000-12"
+  category: tightening
   country: pl
   title: Poland makes all possession a crime
   description: >-
@@ -2612,6 +2831,7 @@
 
 - id: canada-parker-2000
   date: "2000-07-31"
+  category: medical
   country: ca
   title: An Ontario court rules the ban unconstitutional without a medical exemption
   description: >-
@@ -2624,6 +2844,7 @@
 
 - id: hungary-diversion-restricted-1999
   date: "1999-03-01"
+  category: tightening
   country: hu
   title: Hungary restricts diversion to addicts
   description: >-
@@ -2636,6 +2857,7 @@
 
 - id: czechia-recriminalisation-1999
   date: "1999-01-01"
+  category: tightening
   country: cz
   title: Czechia makes possession a crime again
   description: >-
@@ -2649,6 +2871,7 @@
 
 - id: singapore-overseas-consumption-1998
   date: "1998-07-20"
+  category: tightening
   country: sg
   title: Singapore criminalises residents' drug use abroad
   description: >-
@@ -2661,6 +2884,7 @@
 
 - id: uruguay-reasonable-quantity-1998
   date: "1998"
+  category: easing
   country: uy
   title: Uruguay widens the personal-use exemption
   description: >-
@@ -2672,6 +2896,7 @@
 
 - id: belgium-lowest-priority-1998
   date: "1998-04"
+  category: easing
   country: be
   title: Belgium gives cannabis possession the lowest priority
   description: >-
@@ -2685,6 +2910,7 @@
 
 - id: austria-narcotics-act-1998
   date: "1998-01-01"
+  category: easing
   country: at
   title: Austria adopts "therapy instead of punishment"
   description: >-
@@ -2697,6 +2923,7 @@
 
 - id: poland-drug-law-1997
   date: "1997-10"
+  category: tightening
   country: pl
   title: Poland criminalises possession, with an exception
   description: >-
@@ -2709,6 +2936,7 @@
 
 - id: indonesia-narcotics-law-1997
   date: "1997-09-01"
+  category: death
   country: id
   title: Indonesia introduces Class I and the death penalty
   description: >-
@@ -2723,6 +2951,7 @@
 
 - id: us-california-medical-1996
   date: "1996-11-05"
+  category: medical
   country: us
   title: California legalises medical cannabis
   description: >-
@@ -2736,6 +2965,7 @@
 
 - id: netherlands-five-grams-1996
   date: "1996-10"
+  category: tightening
   country: nl
   title: The Netherlands cuts the tolerated amount to 5 g
   description: >-
@@ -2748,6 +2978,7 @@
 
 - id: cambodia-ban-1996
   date: "1996"
+  category: ban
   country: kh
   title: Cambodia bans cannabis
   description: >-
@@ -2760,6 +2991,7 @@
 
 - id: laos-ban-1996
   date: "1996"
+  category: ban
   country: la
   title: Laos bans cannabis
   description: >-
@@ -2772,6 +3004,7 @@
 
 - id: chile-private-use-1995
   date: "1995"
+  category: easing
   country: cl
   title: Chile stops punishing private use
   description: >-
@@ -2784,6 +3017,7 @@
 
 - id: slovakia-possession-crime-1994
   date: "1994"
+  category: tightening
   country: sk
   title: Independent Slovakia makes possession a crime
   description: >-
@@ -2796,6 +3030,7 @@
 
 - id: colombia-personal-dose-1994
   date: "1994-05-05"
+  category: easing
   country: co
   title: Colombia's Constitutional Court protects the personal dose
   description: >-
@@ -2809,6 +3044,7 @@
 
 - id: germany-constitutional-court-1994
   date: "1994-03-09"
+  category: easing
   country: de
   title: Germany's Constitutional Court limits prosecution of small amounts
   description: >-
@@ -2822,6 +3058,7 @@
 
 - id: philippines-death-penalty-1993
   date: "1993-12-31"
+  category: death
   country: ph
   title: The Philippines restores capital punishment for major drug offences
   description: >-
@@ -2834,6 +3071,7 @@
 
 - id: singapore-cannabis-mixture-1993
   date: "1993-12-10"
+  category: death
   country: sg
   title: Singapore creates a capital offence for cannabis mixtures
   description: >-
@@ -2846,6 +3084,7 @@
 
 - id: hungary-diversion-1993
   date: "1993"
+  category: easing
   country: hu
   title: Hungary introduces treatment instead of punishment
   description: >-
@@ -2858,6 +3097,7 @@
 
 - id: sweden-prison-for-use-1993
   date: "1993-07-01"
+  category: tightening
   country: se
   title: Sweden adds prison as a penalty for drug use
   description: >-
@@ -2869,6 +3109,7 @@
 
 - id: italy-referendum-1993
   date: "1993-04-18"
+  category: easing
   country: it
   title: Italy votes to decriminalise personal use
   description: >-
@@ -2882,6 +3123,7 @@
 
 - id: portugal-decree-15-93-1993
   date: "1993-01-22"
+  category: easing
   country: pt
   title: Portugal softens the penalty for use
   description: >-
@@ -2894,6 +3136,7 @@
 
 - id: philippines-compassionate-permit-1992
   date: "1992-11-16"
+  category: medical
   country: ph
   title: The Philippines creates a compassionate-access permit
   description: >-
@@ -2906,6 +3149,7 @@
 
 - id: germany-section-31a-1992
   date: "1992-09"
+  category: easing
   country: de
   title: Germany lets prosecutors drop small cases
   description: >-
@@ -2918,6 +3162,7 @@
 
 - id: south-africa-drugs-act-1992
   date: "1992"
+  category: easing
   country: za
   title: South Africa replaces its apartheid-era drug law
   description: >-
@@ -2931,6 +3176,7 @@
 
 - id: lebanon-eradication-1992
   date: "1992"
+  category: tightening
   country: lb
   title: Lebanon cracks down on cannabis farming
   description: >-
@@ -2942,6 +3188,7 @@
 
 - id: spain-corcuera-law-1992
   date: "1992-02-21"
+  category: tightening
   country: es
   title: Spain starts fining possession and use in public
   description: >-
@@ -2955,6 +3202,7 @@
 
 - id: peru-penal-code-1991
   date: "1991-04"
+  category: easing
   country: pe
   title: Peru exempts possession for personal use
   description: >-
@@ -2967,6 +3215,7 @@
 
 - id: czechoslovakia-decriminalisation-1990
   date: "1990-07-01"
+  category: easing
   country: cz
   title: Czechoslovakia stops punishing possession for personal use
   description: >-
@@ -2979,6 +3228,7 @@
 
 - id: slovakia-decriminalisation-1990
   date: "1990-07-01"
+  category: easing
   country: sk
   title: Czechoslovakia's decriminalisation covers Slovakia
   description: >-
@@ -2991,6 +3241,7 @@
 
 - id: italy-criminalisation-1990
   date: "1990-06-26"
+  category: tightening
   country: it
   title: Italy makes personal use punishable
   description: >-
@@ -3004,6 +3255,7 @@
 
 - id: singapore-cannabis-death-penalty-1990
   date: "1990-01-15"
+  category: death
   country: sg
   title: Singapore adds capital thresholds for cannabis
   description: >-
@@ -3016,6 +3268,7 @@
 
 - id: argentina-law-23737-1989
   date: "1989-10"
+  category: tightening
   country: ar
   title: Argentina criminalises personal possession again
   description: >-
@@ -3029,6 +3282,7 @@
 
 - id: bangladesh-ban-1989
   date: "1989"
+  category: ban
   country: bd
   title: Bangladesh bans cannabis outright
   description: >-
@@ -3042,6 +3296,7 @@
 
 - id: iran-death-penalty-1989
   date: "1989"
+  category: death
   country: ir
   title: Iran sets the death penalty for hashish
   description: >-
@@ -3052,6 +3307,7 @@
 
 - id: un-trafficking-convention-1988
   date: "1988-12-20"
+  category: international
   title: The UN Convention against Illicit Traffic
   description: >-
     The third drug treaty went further than the first two: it asks states to make possession,
@@ -3064,6 +3320,7 @@
 
 - id: paraguay-ten-grams-1988
   date: "1988-11"
+  category: easing
   country: py
   title: Paraguay exempts 10 g for personal use
   description: >-
@@ -3077,6 +3334,7 @@
 
 - id: sweden-use-criminalised-1988
   date: "1988-07-01"
+  category: tightening
   country: se
   title: Sweden makes drug use itself a crime
   description: >-
@@ -3089,6 +3347,7 @@
 
 - id: bolivia-law-1008-1988
   date: "1988"
+  category: tightening
   country: bo
   title: Bolivia passes Law 1008
   description: >-
@@ -3101,6 +3360,7 @@
 
 - id: australia-expiation-1987
   date: "1987-04-30"
+  category: easing
   country: au
   title: South Australia starts fining instead of prosecuting
   description: >-
@@ -3114,6 +3374,7 @@
 
 - id: saudi-arabia-death-penalty-1987
   date: "1987-02"
+  category: death
   country: sa
   title: Saudi Arabia authorises death sentences for drug smuggling
   description: >-
@@ -3126,6 +3387,7 @@
 
 - id: us-anti-drug-abuse-act-1986
   date: "1986-10-27"
+  category: tightening
   country: us
   title: The United States brings back mandatory minimums
   description: >-
@@ -3139,6 +3401,7 @@
 
 - id: argentina-bazterrica-1986
   date: "1986-08-29"
+  category: easing
   country: ar
   title: Argentina's Supreme Court first protects personal use
   description: >-
@@ -3151,6 +3414,7 @@
 
 - id: colombia-law-30-1986
   date: "1986-01-31"
+  category: other
   country: co
   title: Colombia defines the personal dose
   description: >-
@@ -3163,6 +3427,7 @@
 
 - id: india-ndps-act-1985
   date: "1985-11-14"
+  category: ban
   country: in
   title: India bans ganja and charas nationwide
   description: >-
@@ -3177,6 +3442,7 @@
 
 - id: poland-drug-prevention-act-1985
   date: "1985"
+  category: other
   country: pl
   title: Poland passes its first drug prevention act
   description: >-
@@ -3188,6 +3454,7 @@
 
 - id: china-narcotic-1985
   date: "1985"
+  category: ban
   country: cn
   title: China classes cannabis as a narcotic
   description: >-
@@ -3200,6 +3467,7 @@
 
 - id: malaysia-mandatory-death-1983
   date: "1983"
+  category: death
   country: my
   title: Malaysia makes death mandatory for trafficking
   description: >-
@@ -3212,6 +3480,7 @@
 
 - id: spain-personal-use-1983
   date: "1983-06"
+  category: easing
   country: es
   title: Spain takes personal possession out of criminal law
   description: >-
@@ -3225,6 +3494,7 @@
 
 - id: philippines-penalties-raised-1982
   date: "1982-03-02"
+  category: tightening
   country: ph
   title: The Philippines makes six years the minimum for marijuana possession
   description: >-
@@ -3238,6 +3508,7 @@
 
 - id: germany-therapy-instead-of-punishment-1982
   date: "1982-01-01"
+  category: easing
   country: de
   title: West Germany adopts therapy instead of punishment
   description: >-
@@ -3249,6 +3520,7 @@
 
 - id: philippines-marijuana-seeds-1980
   date: "1980-08-08"
+  category: ban
   country: ph
   title: The Philippines brings marijuana seeds under the ban
   description: >-
@@ -3260,6 +3532,7 @@
 
 - id: thailand-narcotics-act-1979
   date: "1979-11-07"
+  category: tightening
   country: th
   title: Thailand passes the Narcotics Act
   description: >-
@@ -3272,6 +3545,7 @@
 
 - id: pakistan-prohibition-1979
   date: "1979-02-10"
+  category: ban
   country: pk
   title: Pakistan prohibits cannabis
   description: >-
@@ -3285,6 +3559,7 @@
 
 - id: comoros-ban-restored-1978
   date: "1978"
+  category: ban
   country: km
   title: The Comoros ban cannabis again
   description: >-
@@ -3297,6 +3572,7 @@
 
 - id: singapore-operation-ferret-1977
   date: "1977-04-01"
+  category: tightening
   country: sg
   title: Singapore launches Operation Ferret
   description: >-
@@ -3309,6 +3585,7 @@
 
 - id: ireland-misuse-of-drugs-1977
   date: "1977"
+  category: easing
   country: ie
   title: Ireland passes the Misuse of Drugs Act
   description: >-
@@ -3321,6 +3598,7 @@
 
 - id: cyprus-narcotics-act-1977
   date: "1977"
+  category: other
   country: cy
   title: Cyprus passes its Narcotic Drugs and Psychotropic Substances Act
   description: >-
@@ -3332,6 +3610,7 @@
 
 - id: netherlands-toleration-1976
   date: "1976-11-01"
+  category: easing
   country: nl
   title: The Netherlands separates cannabis from hard drugs
   description: >-
@@ -3345,6 +3624,7 @@
 
 - id: brazil-law-6368-1976
   date: "1976-10-21"
+  category: easing
   country: br
   title: Brazil separates users from traffickers again
   description: >-
@@ -3357,6 +3637,7 @@
 
 - id: nepal-narcotics-act-1976
   date: "1976-09-22"
+  category: ban
   country: np
   title: Nepal passes the Narcotic Drugs (Control) Act
   description: >-
@@ -3368,6 +3649,7 @@
 
 - id: south-korea-cannabis-control-act-1976
   date: "1976"
+  category: ban
   country: kr
   title: South Korea passes the Cannabis Control Act
   description: >-
@@ -3381,6 +3663,7 @@
 
 - id: indonesia-narcotics-law-1976
   date: "1976-07-26"
+  category: tightening
   country: id
   title: Independent Indonesia passes its first narcotics law
   description: >-
@@ -3394,6 +3677,7 @@
 
 - id: italy-modest-quantity-1975
   date: "1975-12-22"
+  category: easing
   country: it
   title: Italy stops punishing a modest quantity
   description: >-
@@ -3406,6 +3690,7 @@
 
 - id: switzerland-use-punishable-1975
   date: "1975-08-01"
+  category: tightening
   country: ch
   title: Switzerland makes consumption an offence
   description: >-
@@ -3418,6 +3703,7 @@
 
 - id: belgium-revision-1975
   date: "1975-07-09"
+  category: tightening
   country: be
   title: Belgium tightens its drug law
   description: >-
@@ -3429,6 +3715,7 @@
 
 - id: new-zealand-misuse-of-drugs-1975
   date: "1975"
+  category: easing
   country: nz
   title: New Zealand passes the Misuse of Drugs Act
   description: >-
@@ -3441,6 +3728,7 @@
 
 - id: singapore-death-penalty-1975
   date: "1975-12-12"
+  category: death
   country: sg
   title: Singapore introduces mandatory death sentences for drug trafficking
   description: >-
@@ -3453,6 +3741,7 @@
 
 - id: nigeria-death-penalty-removed-1975
   date: "1975"
+  category: death
   country: ng
   title: Nigeria removes the death penalty for growing hemp
   description: >-
@@ -3464,6 +3753,7 @@
 
 - id: comoros-legalisation-1975
   date: "1975"
+  category: legalisation
   country: km
   title: The Comoros legalise cannabis
   description: >-
@@ -3476,6 +3766,7 @@
 
 - id: uruguay-personal-use-1974
   date: "1974-10"
+  category: easing
   country: uy
   title: Uruguay stops punishing possession for personal use
   description: >-
@@ -3488,6 +3779,7 @@
 
 - id: argentina-recriminalisation-1974
   date: "1974-10"
+  category: tightening
   country: ar
   title: Argentina makes personal possession a crime again
   description: >-
@@ -3501,6 +3793,7 @@
 
 - id: myanmar-narcotics-law-1974
   date: "1974"
+  category: ban
   country: mm
   title: Burma bans cannabis again
   description: >-
@@ -3513,6 +3806,7 @@
 
 - id: us-oregon-decriminalisation-1973
   date: "1973-10-05"
+  category: easing
   country: us
   title: Oregon becomes the first US state to decriminalise
   description: >-
@@ -3525,6 +3819,7 @@
 
 - id: nepal-shops-closed-1973
   date: "1973-07-16"
+  category: ban
   country: np
   title: Nepal closes its legal cannabis shops
   description: >-
@@ -3538,6 +3833,7 @@
 
 - id: uk-misuse-of-drugs-act-1973
   date: "1973-07-01"
+  category: easing
   country: gb
   title: Britain's Misuse of Drugs Act takes effect
   description: >-
@@ -3550,6 +3846,7 @@
 
 - id: singapore-misuse-of-drugs-1973
   date: "1973-07-07"
+  category: tightening
   country: sg
   title: Singapore's Misuse of Drugs Act takes effect
   description: >-
@@ -3563,6 +3860,7 @@
 
 - id: afghanistan-ban-1973
   date: "1973"
+  category: ban
   country: af
   title: Afghanistan outlaws cannabis production
   description: >-
@@ -3575,6 +3873,7 @@
 
 - id: luxembourg-drug-law-1973
   date: "1973-02-19"
+  category: ban
   country: lu
   title: Luxembourg passes its drug law
   description: >-
@@ -3587,6 +3886,7 @@
 
 - id: jamaica-mandatory-prison-ended-1972
   date: "1972"
+  category: easing
   country: jm
   title: Jamaica drops mandatory prison for ganja
   description: >-
@@ -3599,6 +3899,7 @@
 
 - id: canada-le-dain-1972
   date: "1972"
+  category: debate
   country: ca
   title: Canada's Le Dain Commission recommends ending the possession offence
   description: >-
@@ -3611,6 +3912,7 @@
 
 - id: netherlands-baan-commission-1972
   date: "1972"
+  category: debate
   country: nl
   title: The Baan Commission proposes separating the drug markets
   description: >-
@@ -3623,6 +3925,7 @@
 
 - id: philippines-dangerous-drugs-act-1972
   date: "1972-03-30"
+  category: tightening
   country: ph
   title: The Philippines pass the Dangerous Drugs Act
   description: >-
@@ -3636,6 +3939,7 @@
 
 - id: finland-use-criminalised-1972
   date: "1972"
+  category: tightening
   country: fi
   title: Finland makes personal use a crime
   description: >-
@@ -3648,6 +3952,7 @@
 
 - id: germany-narcotics-law-1971
   date: "1971-12-22"
+  category: tightening
   country: de
   title: West Germany replaces the Opium Law with the Narcotics Law
   description: >-
@@ -3661,6 +3966,7 @@
 
 - id: singapore-cnb-established-1971
   date: "1971-11"
+  category: tightening
   country: sg
   title: Singapore establishes the Central Narcotics Bureau
   description: >-
@@ -3672,6 +3978,7 @@
 
 - id: south-africa-mandatory-minimums-1971
   date: "1971"
+  category: tightening
   country: za
   title: South Africa imposes mandatory prison for dagga
   description: >-
@@ -3685,6 +3992,7 @@
 
 - id: un-psychotropics-convention-1971
   date: "1971-02-21"
+  category: international
   title: The UN Convention on Psychotropic Substances
   description: >-
     The second drug treaty brought synthetic and isolated substances under international control.
@@ -3696,6 +4004,7 @@
 
 - id: france-use-criminalised-1970
   date: "1970-12-31"
+  category: tightening
   country: fr
   title: France makes private use a crime
   description: >-
@@ -3709,6 +4018,7 @@
 
 - id: us-controlled-substances-act-1970
   date: "1970-10-27"
+  category: easing
   country: us
   title: The United States passes the Controlled Substances Act
   description: >-
@@ -3722,6 +4032,7 @@
 
 - id: portugal-use-criminalised-1970
   date: "1970"
+  category: tightening
   country: pt
   title: Portugal makes drug use a crime
   description: >-
@@ -3734,6 +4045,7 @@
 
 - id: iceland-ban-1969
   date: "1969-10-14"
+  category: ban
   country: is
   title: Iceland bans cannabis
   description: >-
@@ -3745,6 +4057,7 @@
 
 - id: canada-summary-conviction-1969
   date: "1969-08"
+  category: easing
   country: ca
   title: Canada lets possession be dealt with by a fine
   description: >-
@@ -3759,6 +4072,7 @@
 
 - id: denmark-warnings-1969
   date: "1969-07"
+  category: easing
   country: dk
   title: Denmark tells police to warn, not prosecute
   description: >-
@@ -3771,6 +4085,7 @@
 
 - id: us-leary-1969
   date: "1969-05-19"
+  category: other
   country: us
   title: The US Supreme Court strikes down the Marihuana Tax Act
   description: >-
@@ -3783,6 +4098,7 @@
 
 - id: uk-wootton-report-1969
   date: "1969-01"
+  category: debate
   country: gb
   title: Britain's Wootton Report says cannabis is less harmful than assumed
   description: >-
@@ -3795,6 +4111,7 @@
 
 - id: brazil-users-as-traffickers-1968
   date: "1968-12-26"
+  category: tightening
   country: br
   title: Brazil's military government punishes users like traffickers
   description: >-
@@ -3807,6 +4124,7 @@
 
 - id: argentina-personal-use-1968
   date: "1968"
+  category: easing
   country: ar
   title: Argentina exempts possession for personal use
   description: >-
@@ -3819,6 +4137,7 @@
 
 - id: vietnam-ban-1968
   date: "1968"
+  category: ban
   country: vn
   title: South Vietnam outlaws cannabis
   description: >-
@@ -3831,6 +4150,7 @@
 
 - id: sweden-narcotics-penal-act-1968
   date: "1968"
+  category: tightening
   country: se
   title: Sweden passes the Narcotic Drugs Penal Act
   description: >-
@@ -3843,6 +4163,7 @@
 
 - id: uk-stop-and-search-1967
   date: "1967"
+  category: tightening
   country: gb
   title: Britain gives police the power to stop and search for drugs
   description: >-
@@ -3856,6 +4177,7 @@
 
 - id: spain-narcotics-law-1967
   date: "1967"
+  category: other
   country: es
   title: Spain adapts its law to the Single Convention
   description: >-
@@ -3867,6 +4189,7 @@
 
 - id: nigeria-indian-hemp-decree-1966
   date: "1966"
+  category: tightening
   country: ng
   title: Nigeria's military government issues the Indian Hemp Decree
   description: >-
@@ -3880,6 +4203,7 @@
 
 - id: finland-ban-1966
   date: "1966"
+  category: ban
   country: fi
   title: Finland prohibits cannabis
   description: >-
@@ -3892,6 +4216,7 @@
 
 - id: un-single-convention-in-force-1964
   date: "1964-12-13"
+  category: international
   title: The Single Convention enters into force
   description: >-
     The treaty took effect once forty countries had ratified it. Through the 1960s and 1970s most
@@ -3903,6 +4228,7 @@
 
 - id: uk-cultivation-offence-1964
   date: "1964"
+  category: tightening
   country: gb
   title: Britain makes growing cannabis an offence
   description: >-
@@ -3916,6 +4242,7 @@
 
 - id: czechoslovakia-criminal-code-1962
   date: "1962-01-01"
+  category: tightening
   country: cz
   title: Czechoslovakia's new criminal code punishes possession
   description: >-
@@ -3929,6 +4256,7 @@
 
 - id: slovakia-criminal-code-1962
   date: "1962-01-01"
+  category: tightening
   country: sk
   title: Czechoslovakia's criminal code punishes possession in Slovakia
   description: >-
@@ -3941,6 +4269,7 @@
 
 - id: canada-narcotic-control-act-1961
   date: "1961"
+  category: easing
   country: ca
   title: Canada passes the Narcotic Control Act
   description: >-
@@ -3955,6 +4284,7 @@
 
 - id: un-single-convention-1961
   date: "1961-03-30"
+  category: international
   title: The UN Single Convention on Narcotic Drugs
   description: >-
     The treaty that still frames cannabis law worldwide. It merged earlier agreements, placed
@@ -3966,6 +4296,7 @@
 
 - id: egypt-law-182-1960
   date: "1960"
+  category: tightening
   country: eg
   title: Egypt passes its narcotics law
   description: >-
@@ -3979,6 +4310,7 @@
 
 - id: philippines-marijuana-possession-1958
   date: "1958-06-13"
+  category: tightening
   country: ph
   title: The Philippines explicitly criminalises marijuana possession and use
   description: >-
@@ -3992,6 +4324,7 @@
 
 - id: south-korea-narcotics-act-1957
   date: "1957"
+  category: ban
   country: kr
   title: South Korea's Narcotics Act names Indian marijuana
   description: >-
@@ -4003,6 +4336,7 @@
 
 - id: us-narcotic-control-act-1956
   date: "1956-07-18"
+  category: tightening
   country: us
   title: The United States raises penalties again
   description: >-
@@ -4016,6 +4350,7 @@
 
 - id: morocco-kif-ban-1956
   date: "1956"
+  category: ban
   country: ma
   title: Independent Morocco bans kif
   description: >-
@@ -4029,6 +4364,7 @@
 
 - id: denmark-euphoriants-act-1955
   date: "1955"
+  category: ban
   country: dk
   title: Denmark passes the Euphoriant Substances Act
   description: >-
@@ -4041,6 +4377,7 @@
 
 - id: saudi-arabia-penalties-1955
   date: "1955"
+  category: tightening
   country: sa
   title: Saudi Arabia sets penalties for drug offences
   description: >-
@@ -4052,6 +4389,7 @@
 
 - id: italy-law-1041-1954
   date: "1954-10-22"
+  category: tightening
   country: it
   title: Italy treats users and dealers alike
   description: >-
@@ -4064,6 +4402,7 @@
 
 - id: who-no-medical-value-1954
   date: "1954"
+  category: international
   title: The WHO declares cannabis medically obsolete
   description: >-
     The World Health Organization's expert committee stated that cannabis preparations were
@@ -4075,6 +4414,7 @@
 
 - id: canada-trafficking-offence-1954
   date: "1954"
+  category: tightening
   country: ca
   title: Canada separates trafficking from possession
   description: >-
@@ -4087,6 +4427,7 @@
 
 - id: netherlands-possession-ban-1953
   date: "1953"
+  category: ban
   country: nl
   title: The Netherlands bans possession of cannabis
   description: >-
@@ -4100,6 +4441,7 @@
 
 - id: philippines-narcotic-drugs-law-1953
   date: "1953-06-20"
+  category: ban
   country: ph
   title: The Philippines adopts its first national marijuana controls
   description: >-
@@ -4113,6 +4455,7 @@
 
 - id: tunisia-takrouri-ban-1953
   date: "1953-04-23"
+  category: ban
   country: tn
   title: Tunisia ends legal cannabis sales
   description: >-
@@ -4125,6 +4468,7 @@
 
 - id: malaya-dangerous-drugs-1952
   date: "1952"
+  category: tightening
   country: my
   title: Malaya passes the Dangerous Drugs Ordinance
   description: >-
@@ -4137,6 +4481,7 @@
 
 - id: us-boggs-act-1951
   date: "1951-11-02"
+  category: tightening
   country: us
   title: The United States introduces mandatory minimum sentences
   description: >-
@@ -4150,6 +4495,7 @@
 
 - id: switzerland-narcotics-act-1951
   date: "1951-10-03"
+  category: ban
   country: ch
   title: Switzerland bans cannabis
   description: >-
@@ -4161,6 +4507,7 @@
 
 - id: singapore-dangerous-drugs-ordinance-1951
   date: "1951"
+  category: other
   country: sg
   title: Singapore codifies cannabis control in the Dangerous Drugs Ordinance
   description: >-
@@ -4173,6 +4520,7 @@
 
 - id: poland-narcotic-1951
   date: "1951"
+  category: ban
   country: pl
   title: Poland classifies cannabis as a narcotic
   description: >-
@@ -4186,6 +4534,7 @@
 
 - id: japan-cannabis-control-act-1948
   date: "1948-07-10"
+  category: ban
   country: jp
   title: Japan passes the Cannabis Control Act
   description: >-
@@ -4199,6 +4548,7 @@
 
 - id: un-commission-on-narcotic-drugs-1946
   date: "1946-02-16"
+  category: international
   title: The UN creates the Commission on Narcotic Drugs
   description: >-
     The new United Nations took over drug control from the League of Nations and set up the
@@ -4210,6 +4560,7 @@
 
 - id: us-la-guardia-report-1944
   date: "1944"
+  category: debate
   country: us
   title: New York's La Guardia report contradicts the official line
   description: >-
@@ -4222,6 +4573,7 @@
 
 - id: us-pharmacopeia-1942
   date: "1942"
+  category: medical
   country: us
   title: Cannabis is dropped from the US Pharmacopeia
   description: >-
@@ -4233,6 +4585,7 @@
 
 - id: jamaica-mandatory-prison-1941
   date: "1941"
+  category: tightening
   country: jm
   title: Jamaica makes prison mandatory for ganja
   description: >-
@@ -4246,6 +4599,7 @@
 
 - id: mexico-regulation-suspended-1940
   date: "1940-07"
+  category: tightening
   country: mx
   title: Mexico suspends its health-based drug rule
   description: >-
@@ -4259,6 +4613,7 @@
 
 - id: estonia-soviet-law-1940
   date: "1940"
+  category: ban
   country: ee
   title: Soviet drug law is imposed on Estonia
   description: >-
@@ -4271,6 +4626,7 @@
 
 - id: latvia-soviet-law-1940
   date: "1940"
+  category: ban
   country: lv
   title: Soviet drug law is imposed on Latvia
   description: >-
@@ -4283,6 +4639,7 @@
 
 - id: lithuania-soviet-law-1940
   date: "1940"
+  category: ban
   country: lt
   title: Soviet drug law is imposed on Lithuania
   description: >-
@@ -4295,6 +4652,7 @@
 
 - id: mexico-brief-legalisation-1940
   date: "1940-02-17"
+  category: easing
   country: mx
   title: Mexico briefly treats drug use as a health matter
   description: >-
@@ -4308,6 +4666,7 @@
 
 - id: malta-dangerous-drugs-1939
   date: "1939"
+  category: ban
   country: mt
   title: Malta passes the Dangerous Drugs Ordinance
   description: >-
@@ -4320,6 +4679,7 @@
 
 - id: colombia-restrictions-1939
   date: "1939"
+  category: ban
   country: co
   title: Colombia restricts cannabis
   description: >-
@@ -4331,6 +4691,7 @@
 
 - id: myanmar-licensed-1939
   date: "1939"
+  category: legalisation
   country: mm
   title: Burma legalises and taxes cannabis
   description: >-
@@ -4343,6 +4704,7 @@
 
 - id: czechoslovakia-opium-act-1938
   date: "1938"
+  category: ban
   country: cz
   title: Czechoslovakia passes its Opium Act
   description: >-
@@ -4356,6 +4718,7 @@
 
 - id: slovakia-opium-act-1938
   date: "1938"
+  category: ban
   country: sk
   title: Czechoslovakia's Opium Act covers Slovakia
   description: >-
@@ -4368,6 +4731,7 @@
 
 - id: us-marihuana-tax-act-1937
   date: "1937-10-01"
+  category: tightening
   country: us
   title: The United States passes the Marihuana Tax Act
   description: >-
@@ -4381,6 +4745,7 @@
 
 - id: ireland-ban-1937
   date: "1937-04-01"
+  category: ban
   country: ie
   title: Ireland bans cannabis
   description: >-
@@ -4393,6 +4758,7 @@
 
 - id: israel-dangerous-drugs-1936
   date: "1936"
+  category: ban
   country: il
   title: British Palestine passes the Dangerous Drugs Ordinance
   description: >-
@@ -4405,6 +4771,7 @@
 
 - id: palestine-dangerous-drugs-1936
   date: "1936"
+  category: ban
   country: ps
   title: British Palestine passes the Dangerous Drugs Ordinance
   description: >-
@@ -4416,6 +4783,7 @@
 
 - id: league-illicit-traffic-convention-1936
   date: "1936-06-26"
+  category: international
   title: The League of Nations convention on illicit traffic
   description: >-
     The first treaty to ask countries to make drug trafficking a serious crime under their own law.
@@ -4427,6 +4795,7 @@
 
 - id: nigeria-dangerous-drugs-1935
   date: "1935"
+  category: ban
   country: ng
   title: Nigeria passes the Dangerous Drugs Act
   description: >-
@@ -4439,6 +4808,7 @@
 
 - id: thailand-cannabis-act-1935
   date: "1935-05-05"
+  category: ban
   country: th
   title: Siam passes the Cannabis Act
   description: >-
@@ -4451,6 +4821,7 @@
 
 - id: saudi-arabia-first-anti-drug-law-1934
   date: "1934"
+  category: ban
   country: sa
   title: Saudi Arabia enacts its first anti-drug law
   description: >-
@@ -4463,6 +4834,7 @@
 
 - id: russia-soviet-ban-1934
   date: "1934"
+  category: ban
   country: ru
   title: The Soviet Union bans growing cannabis
   description: >-
@@ -4474,6 +4846,7 @@
 
 - id: ukraine-soviet-ban-1934
   date: "1934"
+  category: ban
   country: ua
   title: The Soviet ban on growing cannabis covers Ukraine
   description: >-
@@ -4486,6 +4859,7 @@
 
 - id: belarus-soviet-ban-1934
   date: "1934"
+  category: ban
   country: by
   title: The Soviet ban on growing cannabis covers Belarus
   description: >-
@@ -4498,6 +4872,7 @@
 
 - id: moldova-soviet-ban-1934
   date: "1934"
+  category: ban
   country: md
   title: The Soviet ban on growing cannabis covers Moldova
   description: >-
@@ -4510,6 +4885,7 @@
 
 - id: georgia-soviet-ban-1934
   date: "1934"
+  category: ban
   country: ge
   title: The Soviet ban on growing cannabis covers Georgia
   description: >-
@@ -4522,6 +4898,7 @@
 
 - id: armenia-soviet-ban-1934
   date: "1934"
+  category: ban
   country: am
   title: The Soviet ban on growing cannabis covers Armenia
   description: >-
@@ -4534,6 +4911,7 @@
 
 - id: azerbaijan-soviet-ban-1934
   date: "1934"
+  category: ban
   country: az
   title: The Soviet ban on growing cannabis covers Azerbaijan
   description: >-
@@ -4546,6 +4924,7 @@
 
 - id: kazakhstan-soviet-ban-1934
   date: "1934"
+  category: ban
   country: kz
   title: The Soviet ban on growing cannabis covers Kazakhstan
   description: >-
@@ -4558,6 +4937,7 @@
 
 - id: kyrgyzstan-soviet-ban-1934
   date: "1934"
+  category: ban
   country: kg
   title: The Soviet ban on growing cannabis covers Kyrgyzstan
   description: >-
@@ -4570,6 +4950,7 @@
 
 - id: tajikistan-soviet-ban-1934
   date: "1934"
+  category: ban
   country: tj
   title: The Soviet ban on growing cannabis covers Tajikistan
   description: >-
@@ -4582,6 +4963,7 @@
 
 - id: turkmenistan-soviet-ban-1934
   date: "1934"
+  category: ban
   country: tm
   title: The Soviet ban on growing cannabis covers Turkmenistan
   description: >-
@@ -4594,6 +4976,7 @@
 
 - id: uzbekistan-soviet-ban-1934
   date: "1934"
+  category: ban
   country: uz
   title: The Soviet ban on growing cannabis covers Uzbekistan
   description: >-
@@ -4606,6 +4989,7 @@
 
 - id: turkey-narcotics-law-1933
   date: "1933"
+  category: ban
   country: tr
   title: Turkey passes its narcotics control law
   description: >-
@@ -4618,6 +5002,7 @@
 
 - id: brazil-federal-ban-1932
   date: "1932-01"
+  category: ban
   country: br
   title: Brazil bans cannabis nationwide
   description: >-
@@ -4631,6 +5016,7 @@
 
 - id: sweden-narcotics-decree-1930
   date: "1930"
+  category: ban
   country: se
   title: Sweden brings cannabis under its narcotics rules
   description: >-
@@ -4642,6 +5028,7 @@
 
 - id: serbia-yugoslav-code-1930
   date: "1930-01-01"
+  category: ban
   country: rs
   title: Yugoslavia's criminal code covers Serbia
   description: >-
@@ -4655,6 +5042,7 @@
 
 - id: croatia-yugoslav-code-1930
   date: "1930-01-01"
+  category: ban
   country: hr
   title: Yugoslavia's criminal code covers Croatia
   description: >-
@@ -4668,6 +5056,7 @@
 
 - id: slovenia-yugoslav-code-1930
   date: "1930-01-01"
+  category: ban
   country: si
   title: Yugoslavia's criminal code covers Slovenia
   description: >-
@@ -4681,6 +5070,7 @@
 
 - id: bosnia-and-herzegovina-yugoslav-code-1930
   date: "1930-01-01"
+  category: ban
   country: ba
   title: Yugoslavia's criminal code covers Bosnia and Herzegovina
   description: >-
@@ -4694,6 +5084,7 @@
 
 - id: montenegro-yugoslav-code-1930
   date: "1930-01-01"
+  category: ban
   country: me
   title: Yugoslavia's criminal code covers Montenegro
   description: >-
@@ -4707,6 +5098,7 @@
 
 - id: north-macedonia-yugoslav-code-1930
   date: "1930-01-01"
+  category: ban
   country: mk
   title: Yugoslavia's criminal code covers North Macedonia
   description: >-
@@ -4720,6 +5112,7 @@
 
 - id: kosovo-yugoslav-code-1930
   date: "1930-01-01"
+  category: ban
   country: xk
   title: Yugoslavia's criminal code covers Kosovo
   description: >-
@@ -4733,6 +5126,7 @@
 
 - id: germany-opium-law-1929
   date: "1929-12-10"
+  category: ban
   country: de
   title: Germany adds cannabis to its Opium Law
   description: >-
@@ -4746,6 +5140,7 @@
 
 - id: bahamas-dangerous-drugs-1929
   date: "1929-02-27"
+  category: ban
   country: bs
   title: The Bahamas pass the Dangerous Drugs Act
   description: >-
@@ -4757,6 +5152,7 @@
 
 - id: uk-ban-1928
   date: "1928-09-28"
+  category: ban
   country: gb
   title: Britain bans cannabis
   description: >-
@@ -4769,6 +5165,7 @@
 
 - id: netherlands-import-ban-1928
   date: "1928"
+  category: ban
   country: nl
   title: The Netherlands restricts the cannabis trade
   description: >-
@@ -4781,6 +5178,7 @@
 
 - id: romania-narcotics-law-1928
   date: "1928"
+  category: ban
   country: ro
   title: Romania passes a narcotics law
   description: >-
@@ -4792,6 +5190,7 @@
 
 - id: indonesia-colonial-ban-1927
   date: "1927"
+  category: ban
   country: id
   title: The Dutch East Indies ban cannabis
   description: >-
@@ -4805,6 +5204,7 @@
 
 - id: new-zealand-dangerous-drugs-1927
   date: "1927"
+  category: ban
   country: nz
   title: New Zealand bans cannabis
   description: >-
@@ -4817,6 +5217,7 @@
 
 - id: argentina-possession-crime-1926
   date: "1926"
+  category: ban
   country: ar
   title: Argentina makes drug possession a crime
   description: >-
@@ -4829,6 +5230,7 @@
 
 - id: australia-ban-1926
   date: "1926"
+  category: ban
   country: au
   title: Australia begins banning cannabis
   description: >-
@@ -4841,6 +5243,7 @@
 
 - id: lebanon-hashish-ban-1926
   date: "1926"
+  category: ban
   country: lb
   title: Lebanon prohibits hashish
   description: >-
@@ -4853,6 +5256,7 @@
 
 - id: portugal-first-drug-law-1926
   date: "1926"
+  category: ban
   country: pt
   title: Portugal passes its first drug law
   description: >-
@@ -4865,6 +5269,7 @@
 
 - id: trinidad-ganja-ordinance-1925
   date: "1925"
+  category: ban
   country: tt
   title: Trinidad and Tobago bans ganja
   description: >-
@@ -4877,6 +5282,7 @@
 
 - id: ad-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ad
   title: Andorra first restricts cannabis
   description: >-
@@ -4891,6 +5297,7 @@
 
 - id: ae-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ae
   title: United Arab Emirates first restricts cannabis
   description: >-
@@ -4905,6 +5312,7 @@
 
 - id: ag-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ag
   title: Antigua and Barbuda first restricts cannabis
   description: >-
@@ -4919,6 +5327,7 @@
 
 - id: al-first-restriction-estimate
   date: "1925"
+  category: ban
   country: al
   title: Albania first restricts cannabis
   description: >-
@@ -4933,6 +5342,7 @@
 
 - id: ao-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ao
   title: Angola first restricts cannabis
   description: >-
@@ -4947,6 +5357,7 @@
 
 - id: at-first-restriction-estimate
   date: "1925"
+  category: ban
   country: at
   title: Austria first restricts cannabis
   description: >-
@@ -4961,6 +5372,7 @@
 
 - id: bb-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bb
   title: Barbados first restricts cannabis
   description: >-
@@ -4975,6 +5387,7 @@
 
 - id: bf-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bf
   title: Burkina Faso first restricts cannabis
   description: >-
@@ -4989,6 +5402,7 @@
 
 - id: bg-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bg
   title: Bulgaria first restricts cannabis
   description: >-
@@ -5003,6 +5417,7 @@
 
 - id: bh-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bh
   title: Bahrain first restricts cannabis
   description: >-
@@ -5017,6 +5432,7 @@
 
 - id: bi-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bi
   title: Burundi first restricts cannabis
   description: >-
@@ -5031,6 +5447,7 @@
 
 - id: bj-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bj
   title: Benin first restricts cannabis
   description: >-
@@ -5045,6 +5462,7 @@
 
 - id: bn-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bn
   title: Brunei first restricts cannabis
   description: >-
@@ -5059,6 +5477,7 @@
 
 - id: bo-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bo
   title: Bolivia first restricts cannabis
   description: >-
@@ -5073,6 +5492,7 @@
 
 - id: bt-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bt
   title: Bhutan first restricts cannabis
   description: >-
@@ -5087,6 +5507,7 @@
 
 - id: bw-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bw
   title: Botswana first restricts cannabis
   description: >-
@@ -5101,6 +5522,7 @@
 
 - id: bz-first-restriction-estimate
   date: "1925"
+  category: ban
   country: bz
   title: Belize first restricts cannabis
   description: >-
@@ -5115,6 +5537,7 @@
 
 - id: cd-first-restriction-estimate
   date: "1925"
+  category: ban
   country: cd
   title: DR Congo first restricts cannabis
   description: >-
@@ -5129,6 +5552,7 @@
 
 - id: cf-first-restriction-estimate
   date: "1925"
+  category: ban
   country: cf
   title: Central African Republic first restricts cannabis
   description: >-
@@ -5143,6 +5567,7 @@
 
 - id: cg-first-restriction-estimate
   date: "1925"
+  category: ban
   country: cg
   title: Congo first restricts cannabis
   description: >-
@@ -5157,6 +5582,7 @@
 
 - id: ci-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ci
   title: Côte d'Ivoire first restricts cannabis
   description: >-
@@ -5171,6 +5597,7 @@
 
 - id: cl-first-restriction-estimate
   date: "1925"
+  category: ban
   country: cl
   title: Chile first restricts cannabis
   description: >-
@@ -5185,6 +5612,7 @@
 
 - id: cm-first-restriction-estimate
   date: "1925"
+  category: ban
   country: cm
   title: Cameroon first restricts cannabis
   description: >-
@@ -5199,6 +5627,7 @@
 
 - id: cr-first-restriction-estimate
   date: "1925"
+  category: ban
   country: cr
   title: Costa Rica first restricts cannabis
   description: >-
@@ -5213,6 +5642,7 @@
 
 - id: cu-first-restriction-estimate
   date: "1925"
+  category: ban
   country: cu
   title: Cuba first restricts cannabis
   description: >-
@@ -5227,6 +5657,7 @@
 
 - id: cv-first-restriction-estimate
   date: "1925"
+  category: ban
   country: cv
   title: Cabo Verde first restricts cannabis
   description: >-
@@ -5241,6 +5672,7 @@
 
 - id: cy-first-restriction-estimate
   date: "1925"
+  category: ban
   country: cy
   title: Cyprus first restricts cannabis
   description: >-
@@ -5255,6 +5687,7 @@
 
 - id: dj-first-restriction-estimate
   date: "1925"
+  category: ban
   country: dj
   title: Djibouti first restricts cannabis
   description: >-
@@ -5269,6 +5702,7 @@
 
 - id: dm-first-restriction-estimate
   date: "1925"
+  category: ban
   country: dm
   title: Dominica first restricts cannabis
   description: >-
@@ -5283,6 +5717,7 @@
 
 - id: do-first-restriction-estimate
   date: "1925"
+  category: ban
   country: do
   title: Dominican Republic first restricts cannabis
   description: >-
@@ -5297,6 +5732,7 @@
 
 - id: ec-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ec
   title: Ecuador first restricts cannabis
   description: >-
@@ -5311,6 +5747,7 @@
 
 - id: er-first-restriction-estimate
   date: "1925"
+  category: ban
   country: er
   title: Eritrea first restricts cannabis
   description: >-
@@ -5325,6 +5762,7 @@
 
 - id: es-first-restriction-estimate
   date: "1925"
+  category: ban
   country: es
   title: Spain first restricts cannabis
   description: >-
@@ -5339,6 +5777,7 @@
 
 - id: et-first-restriction-estimate
   date: "1925"
+  category: ban
   country: et
   title: Ethiopia first restricts cannabis
   description: >-
@@ -5353,6 +5792,7 @@
 
 - id: fm-first-restriction-estimate
   date: "1925"
+  category: ban
   country: fm
   title: Micronesia first restricts cannabis
   description: >-
@@ -5367,6 +5807,7 @@
 
 - id: ga-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ga
   title: Gabon first restricts cannabis
   description: >-
@@ -5381,6 +5822,7 @@
 
 - id: gd-first-restriction-estimate
   date: "1925"
+  category: ban
   country: gd
   title: Grenada first restricts cannabis
   description: >-
@@ -5395,6 +5837,7 @@
 
 - id: gh-first-restriction-estimate
   date: "1925"
+  category: ban
   country: gh
   title: Ghana first restricts cannabis
   description: >-
@@ -5409,6 +5852,7 @@
 
 - id: gm-first-restriction-estimate
   date: "1925"
+  category: ban
   country: gm
   title: Gambia first restricts cannabis
   description: >-
@@ -5423,6 +5867,7 @@
 
 - id: gn-first-restriction-estimate
   date: "1925"
+  category: ban
   country: gn
   title: Guinea first restricts cannabis
   description: >-
@@ -5437,6 +5882,7 @@
 
 - id: gq-first-restriction-estimate
   date: "1925"
+  category: ban
   country: gq
   title: Equatorial Guinea first restricts cannabis
   description: >-
@@ -5451,6 +5897,7 @@
 
 - id: gt-first-restriction-estimate
   date: "1925"
+  category: ban
   country: gt
   title: Guatemala first restricts cannabis
   description: >-
@@ -5465,6 +5912,7 @@
 
 - id: gw-first-restriction-estimate
   date: "1925"
+  category: ban
   country: gw
   title: Guinea-Bissau first restricts cannabis
   description: >-
@@ -5479,6 +5927,7 @@
 
 - id: hn-first-restriction-estimate
   date: "1925"
+  category: ban
   country: hn
   title: Honduras first restricts cannabis
   description: >-
@@ -5493,6 +5942,7 @@
 
 - id: ht-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ht
   title: Haiti first restricts cannabis
   description: >-
@@ -5507,6 +5957,7 @@
 
 - id: hu-first-restriction-estimate
   date: "1925"
+  category: ban
   country: hu
   title: Hungary first restricts cannabis
   description: >-
@@ -5521,6 +5972,7 @@
 
 - id: iq-first-restriction-estimate
   date: "1925"
+  category: ban
   country: iq
   title: Iraq first restricts cannabis
   description: >-
@@ -5535,6 +5987,7 @@
 
 - id: ir-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ir
   title: Iran first restricts cannabis
   description: >-
@@ -5549,6 +6002,7 @@
 
 - id: jo-first-restriction-estimate
   date: "1925"
+  category: ban
   country: jo
   title: Jordan first restricts cannabis
   description: >-
@@ -5563,6 +6017,7 @@
 
 - id: ki-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ki
   title: Kiribati first restricts cannabis
   description: >-
@@ -5577,6 +6032,7 @@
 
 - id: km-first-restriction-estimate
   date: "1925"
+  category: ban
   country: km
   title: Comoros first restricts cannabis
   description: >-
@@ -5591,6 +6047,7 @@
 
 - id: kn-first-restriction-estimate
   date: "1925"
+  category: ban
   country: kn
   title: Saint Kitts and Nevis first restricts cannabis
   description: >-
@@ -5605,6 +6062,7 @@
 
 - id: kp-first-restriction-estimate
   date: "1925"
+  category: ban
   country: kp
   title: North Korea first restricts cannabis
   description: >-
@@ -5619,6 +6077,7 @@
 
 - id: kw-first-restriction-estimate
   date: "1925"
+  category: ban
   country: kw
   title: Kuwait first restricts cannabis
   description: >-
@@ -5633,6 +6092,7 @@
 
 - id: lc-first-restriction-estimate
   date: "1925"
+  category: ban
   country: lc
   title: Saint Lucia first restricts cannabis
   description: >-
@@ -5647,6 +6107,7 @@
 
 - id: li-first-restriction-estimate
   date: "1925"
+  category: ban
   country: li
   title: Liechtenstein first restricts cannabis
   description: >-
@@ -5661,6 +6122,7 @@
 
 - id: lr-first-restriction-estimate
   date: "1925"
+  category: ban
   country: lr
   title: Liberia first restricts cannabis
   description: >-
@@ -5675,6 +6137,7 @@
 
 - id: ls-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ls
   title: Lesotho first restricts cannabis
   description: >-
@@ -5689,6 +6152,7 @@
 
 - id: ly-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ly
   title: Libya first restricts cannabis
   description: >-
@@ -5703,6 +6167,7 @@
 
 - id: mc-first-restriction-estimate
   date: "1925"
+  category: ban
   country: mc
   title: Monaco first restricts cannabis
   description: >-
@@ -5717,6 +6182,7 @@
 
 - id: mh-first-restriction-estimate
   date: "1925"
+  category: ban
   country: mh
   title: Marshall Islands first restricts cannabis
   description: >-
@@ -5731,6 +6197,7 @@
 
 - id: ml-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ml
   title: Mali first restricts cannabis
   description: >-
@@ -5745,6 +6212,7 @@
 
 - id: mn-first-restriction-estimate
   date: "1925"
+  category: ban
   country: mn
   title: Mongolia first restricts cannabis
   description: >-
@@ -5759,6 +6227,7 @@
 
 - id: mr-first-restriction-estimate
   date: "1925"
+  category: ban
   country: mr
   title: Mauritania first restricts cannabis
   description: >-
@@ -5773,6 +6242,7 @@
 
 - id: mv-first-restriction-estimate
   date: "1925"
+  category: ban
   country: mv
   title: Maldives first restricts cannabis
   description: >-
@@ -5787,6 +6257,7 @@
 
 - id: mw-first-restriction-estimate
   date: "1925"
+  category: ban
   country: mw
   title: Malawi first restricts cannabis
   description: >-
@@ -5801,6 +6272,7 @@
 
 - id: mz-first-restriction-estimate
   date: "1925"
+  category: ban
   country: mz
   title: Mozambique first restricts cannabis
   description: >-
@@ -5815,6 +6287,7 @@
 
 - id: na-first-restriction-estimate
   date: "1925"
+  category: ban
   country: na
   title: Namibia first restricts cannabis
   description: >-
@@ -5829,6 +6302,7 @@
 
 - id: ne-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ne
   title: Niger first restricts cannabis
   description: >-
@@ -5843,6 +6317,7 @@
 
 - id: ni-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ni
   title: Nicaragua first restricts cannabis
   description: >-
@@ -5857,6 +6332,7 @@
 
 - id: no-first-restriction-estimate
   date: "1925"
+  category: ban
   country: no
   title: Norway first restricts cannabis
   description: >-
@@ -5871,6 +6347,7 @@
 
 - id: nr-first-restriction-estimate
   date: "1925"
+  category: ban
   country: nr
   title: Nauru first restricts cannabis
   description: >-
@@ -5885,6 +6362,7 @@
 
 - id: om-first-restriction-estimate
   date: "1925"
+  category: ban
   country: om
   title: Oman first restricts cannabis
   description: >-
@@ -5899,6 +6377,7 @@
 
 - id: pe-first-restriction-estimate
   date: "1925"
+  category: ban
   country: pe
   title: Peru first restricts cannabis
   description: >-
@@ -5911,22 +6390,132 @@
     title: Wikipedia — International Opium Convention
     url: https://en.wikipedia.org/wiki/International_Opium_Convention
 
-- id: pg-first-restriction-estimate
-  date: "1925"
+- id: papua-new-guinea-marijuana-sentence-2026
+  date: "2026-08-10"
+  category: tightening
   country: pg
-  title: Papua New Guinea first restricts cannabis
+  title: A court sets a K30,000 fine or 20 years for marijuana
   description: >-
-    No first law is recorded here for Papua New Guinea. Its first restrictions on cannabis are
-    assumed to date from between the 1925 Geneva convention, which put Indian hemp under
-    international control, and the 1961 Single Convention, which required a ban on non-medical use.
-  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
-  estimate: true
+    The Tari District Court convicted a man after police and soldiers found about 4.7 kg in
+    60 rolls. It ordered him to pay K30,000 or serve 20 years, illustrating the severe sentences
+    courts continued to impose under the 2021 regime.
   source:
-    title: Wikipedia — International Opium Convention
-    url: https://en.wikipedia.org/wiki/International_Opium_Convention
+    title: Royal Papua New Guinea Constabulary — man fined K30,000 or 20 years over marijuana
+    url: https://rpngc.gov.pg/man-fined-k30000-or-20-years-jail-over-marijuana/
+
+- id: papua-new-guinea-long-sentences-2025
+  date: "2025-05-17"
+  category: tightening
+  country: pg
+  title: Madang court gives two men 25 years for marijuana
+  description: >-
+    Six people were convicted under the Controlled Substance Act. Four received five years and two
+    received 25 years each for possessing 14–20 kg, with the court relying on the quantity and the
+    need for deterrence.
+  source:
+    title: NBC PNG — duo jailed for 25 years for drug offences
+    url: https://www.nbc.com.pg/post/20878/duo-jailed-for-25-years-for-drug-offences
+
+- id: papua-new-guinea-hemp-study-2024
+  date: "2024-09-18"
+  category: other
+  country: pg
+  title: National study says Papua New Guinea is not ready for hemp
+  description: >-
+    The National Research Institute reported demand for industrial-hemp products but little public
+    support for legal production and insufficient regulatory capacity. The government's development
+    plan still calls for a future hemp-policy framework; neither document legalised the crop.
+  source:
+    title: PNG National Research Institute — Papua New Guinea's drive to legalise industrial hemp
+    url: >-
+      https://pngnri.org/images/Publications/Spotlight_Vol17_Iss16_PAPUA_NEW_GUINEAS_DRIVE_TO_LEGALISE_THE_PRODUCTION_OF_INDUSTRIAL_HEMP-_ARE_WE_READY.pdf
+
+- id: papua-new-guinea-controlled-substance-act-2022
+  date: "2022-03-31"
+  category: tightening
+  country: pg
+  title: Papua New Guinea's new controlled-substances regime takes effect
+  description: >-
+    The Controlled Substance Act put cannabis, resin, oil and cannabis plants in Schedule I and
+    introduced quantity tiers. Ten grams or less can bring two years, more than 10 g but less than
+    2 kg up to 15 years, and more than 2 kg from 16 years to life; cultivation is graded by plant
+    count. A companion amendment had also raised the old Dangerous Drugs Act ceiling to 40 years.
+  before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 0}
+  source:
+    title: National Parliament — Controlled Substance Act 2021
+    url: https://www.parliament.gov.pg/uploads/acts/21A_26.pdf
+
+- id: papua-new-guinea-narcotics-board-1992
+  date: "1992-08-28"
+  category: other
+  country: pg
+  title: Papua New Guinea establishes a national narcotics board
+  description: >-
+    The National Narcotics Control Board Act created the Board and a National Narcotics Bureau to
+    coordinate drug policy, licensing, enforcement information, prevention and international
+    obligations. It did not soften the cannabis offences.
+  source:
+    title: National Narcotics Control Board Act 1992
+    url: https://vlex.com/vid/national-narcotics-control-board-923860640
+
+- id: papua-new-guinea-henderson-ruling-1973
+  date: "1973-04-05"
+  category: easing
+  country: pg
+  title: Supreme Court confirms alternatives to mandatory imprisonment
+  description: >-
+    Henderson v Blackwell held that the three-month minimum written into the 1970 possession law
+    did not stop a district court from imposing a fine or conditional discharge in an appropriate
+    marijuana case. The court remitted Henderson's sentence for rehearing.
+  source:
+    title: Henderson v Blackwell [1973] PNGLR 223
+    url: https://vlex.com/vid/henderson-v-blackwell-1973-922777644
+
+- id: papua-new-guinea-possession-act-1970
+  date: "1970"
+  category: ban
+  country: pg
+  title: Papua New Guinea closes the locally grown marijuana loophole
+  description: >-
+    A prosecution had exposed that people could possess or smoke locally grown marijuana despite
+    the territory's drug controls. The House of Assembly adopted the Dangerous Drugs (Possession)
+    Act, bringing possession, conveyance and cannabis plants within an offence carrying three
+    months to two years in prison.
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+  source:
+    title: United Nations — Papua New Guinea 1969–1970 report, chapter on drugs
+    url: https://digitallibrary.un.org/record/3900219/files/T_1733-EN.pdf
+
+- id: papua-new-guinea-unified-drug-law-1955
+  date: "1955-08-25"
+  category: other
+  country: pg
+  title: A single Dangerous Drugs Ordinance takes effect
+  description: >-
+    The 1952 Ordinance came into force across the combined Territory of Papua and New Guinea,
+    replacing the earlier separate territorial enactments. It controlled manufacture, export and
+    medicinal import, but did not yet clearly criminalise possession of locally grown marijuana.
+  source:
+    title: Dangerous Drugs Act 1952 — current consolidated text and legislative history
+    url: https://vlex.com/vid/dangerous-drugs-act-chapter-923861310
+
+- id: new-guinea-cannabis-extract-controls-1927
+  date: "1927"
+  category: ban
+  country: pg
+  title: The Territory of New Guinea restricts cannabis extracts
+  description: >-
+    The Dangerous Drugs Ordinance treated extracts and tinctures of Indian hemp as dangerous drugs,
+    prohibited their unlicensed import and limited licences to medicinal purposes. The restriction
+    covered the former Territory of New Guinea, not yet the whole of present-day Papua New Guinea,
+    and did not create a general offence for locally grown marijuana.
+  source:
+    title: Australian Commonwealth Gazette — Dangerous Drugs Ordinance 1927 (New Guinea)
+    url: https://www.legislation.gov.au/files/gazettes/historic/1927/1927GN85.pdf
 
 - id: pw-first-restriction-estimate
   date: "1925"
+  category: ban
   country: pw
   title: Palau first restricts cannabis
   description: >-
@@ -5941,6 +6530,7 @@
 
 - id: py-first-restriction-estimate
   date: "1925"
+  category: ban
   country: py
   title: Paraguay first restricts cannabis
   description: >-
@@ -5955,6 +6545,7 @@
 
 - id: qa-first-restriction-estimate
   date: "1925"
+  category: ban
   country: qa
   title: Qatar first restricts cannabis
   description: >-
@@ -5969,6 +6560,7 @@
 
 - id: rw-first-restriction-estimate
   date: "1925"
+  category: ban
   country: rw
   title: Rwanda first restricts cannabis
   description: >-
@@ -5983,6 +6575,7 @@
 
 - id: sb-first-restriction-estimate
   date: "1925"
+  category: ban
   country: sb
   title: Solomon Islands first restricts cannabis
   description: >-
@@ -5997,6 +6590,7 @@
 
 - id: sc-first-restriction-estimate
   date: "1925"
+  category: ban
   country: sc
   title: Seychelles first restricts cannabis
   description: >-
@@ -6011,6 +6605,7 @@
 
 - id: sm-first-restriction-estimate
   date: "1925"
+  category: ban
   country: sm
   title: San Marino first restricts cannabis
   description: >-
@@ -6025,6 +6620,7 @@
 
 - id: sn-first-restriction-estimate
   date: "1925"
+  category: ban
   country: sn
   title: Senegal first restricts cannabis
   description: >-
@@ -6039,6 +6635,7 @@
 
 - id: so-first-restriction-estimate
   date: "1925"
+  category: ban
   country: so
   title: Somalia first restricts cannabis
   description: >-
@@ -6053,6 +6650,7 @@
 
 - id: sr-first-restriction-estimate
   date: "1925"
+  category: ban
   country: sr
   title: Suriname first restricts cannabis
   description: >-
@@ -6067,6 +6665,7 @@
 
 - id: st-first-restriction-estimate
   date: "1925"
+  category: ban
   country: st
   title: São Tomé and Príncipe first restricts cannabis
   description: >-
@@ -6081,6 +6680,7 @@
 
 - id: sv-first-restriction-estimate
   date: "1925"
+  category: ban
   country: sv
   title: El Salvador first restricts cannabis
   description: >-
@@ -6095,6 +6695,7 @@
 
 - id: sy-first-restriction-estimate
   date: "1925"
+  category: ban
   country: sy
   title: Syria first restricts cannabis
   description: >-
@@ -6109,6 +6710,7 @@
 
 - id: sz-first-restriction-estimate
   date: "1925"
+  category: ban
   country: sz
   title: Eswatini first restricts cannabis
   description: >-
@@ -6123,6 +6725,7 @@
 
 - id: td-first-restriction-estimate
   date: "1925"
+  category: ban
   country: td
   title: Chad first restricts cannabis
   description: >-
@@ -6137,6 +6740,7 @@
 
 - id: tg-first-restriction-estimate
   date: "1925"
+  category: ban
   country: tg
   title: Togo first restricts cannabis
   description: >-
@@ -6151,6 +6755,7 @@
 
 - id: tl-first-restriction-estimate
   date: "1925"
+  category: ban
   country: tl
   title: Timor-Leste first restricts cannabis
   description: >-
@@ -6165,6 +6770,7 @@
 
 - id: to-first-restriction-estimate
   date: "1925"
+  category: ban
   country: to
   title: Tonga first restricts cannabis
   description: >-
@@ -6179,6 +6785,7 @@
 
 - id: tv-first-restriction-estimate
   date: "1925"
+  category: ban
   country: tv
   title: Tuvalu first restricts cannabis
   description: >-
@@ -6193,6 +6800,7 @@
 
 - id: tw-first-restriction-estimate
   date: "1925"
+  category: ban
   country: tw
   title: Taiwan first restricts cannabis
   description: >-
@@ -6207,6 +6815,7 @@
 
 - id: tz-first-restriction-estimate
   date: "1925"
+  category: ban
   country: tz
   title: Tanzania first restricts cannabis
   description: >-
@@ -6221,6 +6830,7 @@
 
 - id: uy-first-restriction-estimate
   date: "1925"
+  category: ban
   country: uy
   title: Uruguay first restricts cannabis
   description: >-
@@ -6235,6 +6845,7 @@
 
 - id: vc-first-restriction-estimate
   date: "1925"
+  category: ban
   country: vc
   title: Saint Vincent and the Grenadines first restricts cannabis
   description: >-
@@ -6250,6 +6861,7 @@
 
 - id: ve-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ve
   title: Venezuela first restricts cannabis
   description: >-
@@ -6264,6 +6876,7 @@
 
 - id: vu-first-restriction-estimate
   date: "1925"
+  category: ban
   country: vu
   title: Vanuatu first restricts cannabis
   description: >-
@@ -6278,6 +6891,7 @@
 
 - id: ws-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ws
   title: Samoa first restricts cannabis
   description: >-
@@ -6292,6 +6906,7 @@
 
 - id: ye-first-restriction-estimate
   date: "1925"
+  category: ban
   country: ye
   title: Yemen first restricts cannabis
   description: >-
@@ -6306,6 +6921,7 @@
 
 - id: zm-first-restriction-estimate
   date: "1925"
+  category: ban
   country: zm
   title: Zambia first restricts cannabis
   description: >-
@@ -6320,6 +6936,7 @@
 
 - id: zw-first-restriction-estimate
   date: "1925"
+  category: ban
   country: zw
   title: Zimbabwe first restricts cannabis
   description: >-
@@ -6334,6 +6951,7 @@
 
 - id: geneva-opium-convention-1925
   date: "1925-02-19"
+  category: international
   title: Cannabis enters international drug control
   description: >-
     At Egypt's request, the International Opium Convention signed in Geneva added "Indian hemp" to
@@ -6345,6 +6963,7 @@
 
 - id: sudan-ban-1924
   date: "1924"
+  category: ban
   country: sd
   title: Sudan bans cannabis
   description: >-
@@ -6356,6 +6975,7 @@
 
 - id: south-sudan-ban-1924
   date: "1924"
+  category: ban
   country: ss
   title: Sudan, then including the south, bans cannabis
   description: >-
@@ -6367,6 +6987,7 @@
 
 - id: panama-ban-1923
   date: "1923"
+  category: ban
   country: pa
   title: Panama bans cannabis
   description: >-
@@ -6378,6 +6999,7 @@
 
 - id: italy-first-drug-law-1923
   date: "1923"
+  category: ban
   country: it
   title: Italy passes its first drug law
   description: >-
@@ -6390,6 +7012,7 @@
 
 - id: canada-ban-1923
   date: "1923-04-23"
+  category: ban
   country: ca
   title: Canada bans cannabis
   description: >-
@@ -6403,6 +7026,7 @@
 
 - id: south-africa-national-ban-1922
   date: "1922"
+  category: ban
   country: za
   title: South Africa bans dagga nationwide
   description: >-
@@ -6416,6 +7040,7 @@
 
 - id: belgium-drug-law-1921
   date: "1921-02-24"
+  category: ban
   country: be
   title: Belgium passes its drug law
   description: >-
@@ -6428,6 +7053,7 @@
 
 - id: sierra-leone-ban-1920
   date: "1920"
+  category: ban
   country: sl
   title: Sierra Leone bans cannabis
   description: >-
@@ -6439,6 +7065,7 @@
 
 - id: mexico-ban-1920
   date: "1920-03-15"
+  category: ban
   country: mx
   title: Mexico bans marijuana
   description: >-
@@ -6451,6 +7078,7 @@
 
 - id: algeria-french-decrees-1916
   date: "1916-09-14"
+  category: ban
   country: dz
   title: France bans hashish in Algeria
   description: >-
@@ -6463,6 +7091,7 @@
 
 - id: france-first-drug-law-1916
   date: "1916-07-12"
+  category: ban
   country: fr
   title: France passes its first drug law
   description: >-
@@ -6475,6 +7104,7 @@
 
 - id: kenya-ban-1914
   date: "1914"
+  category: ban
   country: ke
   title: The East Africa Protectorate bans cannabis
   description: >-
@@ -6486,6 +7116,7 @@
 
 - id: jamaica-ganja-law-1913
   date: "1913"
+  category: ban
   country: jm
   title: Jamaica passes the Ganja Law
   description: >-
@@ -6498,6 +7129,7 @@
 
 - id: guyana-indian-hemp-ordinance-1913
   date: "1913"
+  category: ban
   country: gy
   title: British Guiana passes the Indian Hemp Ordinance
   description: >-
@@ -6510,6 +7142,7 @@
 
 - id: us-state-bans-1913
   date: "1913"
+  category: ban
   country: us
   title: American states begin banning cannabis
   description: >-
@@ -6523,6 +7156,7 @@
 
 - id: hague-opium-convention-1912
   date: "1912-01-23"
+  category: international
   title: The Hague Opium Convention
   description: >-
     The first international drug treaty covered opium, morphine and cocaine. Italy and the United
@@ -6534,6 +7168,7 @@
 
 - id: fiji-import-ban-1907
   date: "1907"
+  category: ban
   country: fj
   title: Fiji bans the import of Indian hemp
   description: >-
@@ -6546,6 +7181,7 @@
 
 - id: sri-lanka-indian-hemp-ordinance-1905
   date: "1905"
+  category: ban
   country: lk
   title: Ceylon passes the Indian Hemp Ordinance
   description: >-
@@ -6559,6 +7195,7 @@
 
 - id: uganda-ban-1902
   date: "1902"
+  category: ban
   country: ug
   title: The Uganda Protectorate bans cannabis
   description: >-
@@ -6571,6 +7208,7 @@
 
 - id: india-hemp-drugs-commission-1894
   date: "1894"
+  category: debate
   country: in
   title: The Indian Hemp Drugs Commission reports
   description: >-
@@ -6583,6 +7221,7 @@
 
 - id: myanmar-ban-1891
   date: "1891"
+  category: ban
   country: mm
   title: British Burma bans cannabis
   description: >-
@@ -6595,6 +7234,7 @@
 
 - id: greece-hashish-ban-1890
   date: "1890"
+  category: ban
   country: gr
   title: Greece bans hashish
   description: >-
@@ -6607,6 +7247,7 @@
 
 - id: egypt-import-ban-1879
   date: "1879"
+  category: ban
   country: eg
   title: Egypt bans the import of hashish
   description: >-
@@ -6620,6 +7261,7 @@
 
 - id: germany-pharmacy-only-1872
   date: "1872"
+  category: other
   country: de
   title: Germany restricts Indian hemp to pharmacies
   description: >-
@@ -6631,6 +7273,7 @@
 
 - id: south-africa-natal-1870
   date: "1870"
+  category: ban
   country: za
   title: Natal bans dagga for Indian workers
   description: >-
@@ -6643,6 +7286,7 @@
 
 - id: singapore-ban-1870
   date: "1870"
+  category: ban
   country: sg
   title: The Straits Settlements ban cannabis
   description: >-
@@ -6655,6 +7299,7 @@
 
 - id: malaysia-straits-ban-1870
   date: "1870"
+  category: ban
   country: my
   title: The Straits Settlements ban covers Penang and Malacca
   description: >-
@@ -6667,6 +7312,7 @@
 
 - id: sri-lanka-licensing-1867
   date: "1867"
+  category: ban
   country: lk
   title: Ceylon restricts cannabis sales to licensed dealers
   description: >-
@@ -6679,6 +7325,7 @@
 
 - id: guyana-licensing-1861
   date: "1861"
+  category: ban
   country: gy
   title: British Guiana regulates the sale of bhang
   description: >-
@@ -6690,6 +7337,7 @@
 
 - id: mauritius-ban-1840
   date: "1840"
+  category: ban
   country: mu
   title: Mauritius bans cannabis
   description: >-
@@ -6702,6 +7350,7 @@
 
 - id: madagascar-merina-ban-1787
   date: "1787"
+  category: ban
   country: mg
   title: The Merina kingdom bans cannabis
   description: >-

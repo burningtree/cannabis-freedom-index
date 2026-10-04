@@ -24,7 +24,7 @@ const shortDate = (iso) =>
             <time datetime={ch.date}>{shortDate(ch.date)}</time>
             <span class="mini-tl-body">
               <span class="mini-tl-country">{ch.country.flag} {ch.country.name}</span>
-              <b>{ch.title}</b>
+              <b><span class="kind" title={ch.kind.label} aria-hidden="true">{ch.kind.emoji}</span><span class="visually-hidden">{ch.kind.label}: </span>{ch.title}</b>
               <ScoreChange score={ch.score} />
             </span>
           </a>

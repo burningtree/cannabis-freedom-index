@@ -575,3 +575,15 @@ th.num-col { text-align: right; }
 .c-use dt { color: var(--muted); font-size: 12.5px; }
 .c-use dd { margin: 0; font-family: "Space Grotesk", Inter, system-ui, sans-serif; font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.2; }
 .c-use p { grid-column: 1 / -1; margin: 6px 0 0; color: var(--muted); font-size: 12.5px; }
+.c-use .c-use-src { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); font-size: 11.5px; line-height: 1.45; }
+.c-use-src a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
+.c-use-src a:hover { color: var(--text); text-decoration-color: currentColor; }
+
+/* ── History entry kinds ────────────────────────────── */
+.kind { margin-right: 6px; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; letter-spacing: 0; }
+/* the kinds double as filters: each leads to a page listing only that kind */
+.kinds { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; max-width: 760px; }
+.kinds a { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-2); font-size: 12.5px; white-space: nowrap; }
+.kinds a:hover { border-color: var(--muted); color: var(--text); }
+.kinds a[aria-current] { background: var(--surface-2); border-color: var(--muted); color: var(--text); font-weight: 600; }
+.kinds small { opacity: .7; font-weight: 400; font-variant-numeric: tabular-nums; }

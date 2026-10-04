@@ -21,7 +21,7 @@ const diff = (seg) => seg.after - seg.before;
     </div>
 
     <article class="change-detail">
-      <p class="eyebrow"><time datetime={ch.date}>{changeDate(ch)}</time> · {ch.place.name}</p>
+      <p class="eyebrow"><span title={ch.kind.help}>{ch.kind.emoji} {ch.kind.label}</span> · <time datetime={ch.date}>{changeDate(ch)}</time> · {ch.place.name}</p>
       <h1>{ch.title}</h1>
       <p class="lede">{ch.description}</p>
       <p class="change-source">Source: <a href={ch.source[1]} target="_blank" rel="noopener noreferrer">{ch.source[0]}</a></p>

@@ -13,7 +13,7 @@ const useNote = (c) => c.use.estimate
   ? `Estimate: no national survey, so the regional median of ${c.use.prevalence}% of people aged 15–64 is assumed`
   : `${c.use.prevalence}% of people aged 15–64 used cannabis in the past year (${c.use.year} survey)`;
 const stats = [
-  [worldAvg.toFixed(1), "world average, out of 100"],
+  [countries.length, "countries scored"],
   [count((c) => c.raw >= 60), "reach the “Free” tier (60+)"],
   [count((c) => c.raw >= 40), "score 40+: legal to possess and grow, with limits"],
   [count((c) => c.raw < 15), "score under 15: prison is a real risk"],
@@ -24,11 +24,19 @@ const legend = [...TIERS].reverse().map((t, i, arr) => ({
 }));
 const MED_ORDER = ["yes", "limited", "no"];
 // What the browser needs for the map: scores only, no prose.
-const mapData = countries.map(({ id, num, name, flag, raw, score, rank, s, use }) => ({ id, num, name, flag, raw, score, rank, s, use }));
+// `ratio` is the share of people who use cannabis divided by the index score: how far use runs
+// ahead of freedom. A score below 1 counts as 1, so that a zero does not divide.
+const mapData = countries.map(({ id, num, name, flag, raw, score, rank, s, use }) =>
+  ({ id, num, name, flag, raw, score, rank, s, use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2) } }));
 // Cannabis use on the map: one hue from light to dark, in five steps. Each step starts at `min`.
 const USE_SCALES = {
   users: { label: "Cannabis users", steps: [[0, "Under 10k"], [1e4, "10k–100k"], [1e5, "100k–1M"], [1e6, "1M–10M"], [1e7, "10M or more"]] },
   prevalence: { label: "Share who use cannabis", steps: [[0, "Under 1%"], [1, "1–3%"], [3, "3–7%"], [7, "7–15%"], [15, "15% or more"]] },
+  ratio: {
+    label: "Use relative to freedom",
+    steps: [[0, "Under 0.15"], [0.15, "0.15–0.3"], [0.3, "0.3–0.5"], [0.5, "0.5–1"], [1, "1 or more"]],
+    note: "Share of people aged 15–64 who use cannabis, divided by the index score. A high value means many people use cannabis where the law gives them little freedom to.",
+  },
 };
 ---
 <Base description="A 0–100 score of how free cannabis is in every country on Earth, built from six weighted segments of law and practice.">
@@ -47,7 +55,7 @@ const USE_SCALES = {
       <div class="section-head">
         <div>
           <h2>World map</h2>
-          <p class="sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
+          <p class="sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
         </div>
         <label class="field">
           <span>Colour by</span>
@@ -56,6 +64,7 @@ const USE_SCALES = {
             {SEGMENTS.map((s, i) => <option value={i}>{s.name}</option>)}
             <option value="users">Cannabis users (number)</option>
             <option value="prevalence">Cannabis users (share of adults)</option>
+            <option value="ratio">Share of users ÷ index</option>
           </select>
         </label>
       </div>
@@ -78,7 +87,7 @@ const USE_SCALES = {
           <div class="legend" data-legend={key} hidden>
             {scale.steps.map(([, text], i) => <span><i class="sw" style={`background:var(--u${i})`}></i>{text}</span>)}
             <span><i class="sw sw-nodata"></i>No data</span>
-            <span class="legend-note">People aged 15–64 who used cannabis in the past year. Figures marked ~ are regional estimates.</span>
+            <span class="legend-note">{scale.note ?? "People aged 15–64 who used cannabis in the past year. Figures marked ~ are regional estimates."}</span>
           </div>
         ))}
       </div>
@@ -234,7 +243,7 @@ const USE_SCALES = {
       const shown = isUse() ? metric : "score";
       document.querySelectorAll("[data-legend]").forEach((el) => { el.hidden = el.dataset.legend !== shown; });
       const sub = $("#mapSub");
-      sub.textContent = isUse() ? sub.dataset.use : sub.dataset.score;
+      sub.textContent = metric === "ratio" ? sub.dataset.ratio : isUse() ? sub.dataset.use : sub.dataset.score;
     }
     $("#metric").addEventListener("change", (e) => { metric = e.target.value; paintMap(); });
 
@@ -274,7 +283,12 @@ const USE_SCALES = {
         .attr("d", path)
         .on("pointermove", (e, d) => {
           const c = d.c;
-          tip.innerHTML = c && isUse()
+          tip.innerHTML = c && metric === "ratio"
+            ? `<strong>${c.flag} ${c.name}</strong>
+               <div class="row"><span>Share ÷ index</span><b>${c.use.estimate ? "~" : ""}${c.use.ratio}</b></div>
+               <div class="row"><span>Share aged 15–64</span><b>${c.use.estimate ? "~" : ""}${c.use.prevalence}%</b></div>
+               <div class="row"><span>Index</span><b>${c.score} / 100</b></div>`
+            : c && isUse()
             ? `<strong>${c.flag} ${c.name}</strong>
                <div class="row"><span>Users</span><b>${c.use.estimate ? "~" : ""}${compact(c.use.users)}</b></div>
                <div class="row"><span>Share aged 15–64</span><b>${c.use.estimate ? "~" : ""}${c.use.prevalence}%</b></div>

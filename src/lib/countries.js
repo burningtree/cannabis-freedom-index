@@ -1,7 +1,8 @@
 // Loads the YAML data (see /countries and /segments.yaml) and derives everything the
 // pages need: index scores, ranks, averages. Runs once at build time.
 import { getCollection } from "astro:content";
-import { SEGMENT_IDS } from "./segment-ids.js";
+import { CHANGE_CATEGORIES, SEGMENT_IDS } from "./segment-ids.js";
+export { CHANGE_CATEGORIES };
 
 export const DATA_SNAPSHOT = "2026";
 export const REC_LABEL = { legal: "Legal", partial: "Partly legal / tolerated", decrim: "Decriminalized", illegal: "Illegal", death: "Death penalty" };
@@ -129,13 +130,15 @@ export const changes = changeEntries
     const country = data.country ? countries.find((c) => c.slug === data.country) : null;
     if (data.country && !country) throw new Error(`changes.yaml: "${data.id}" refers to unknown country "${data.country}"`);
     // context only (a treaty, report or ruling): part of the history, but it moves no score
-    if (!data.before) return { ...data, country, place: country ?? { flag: "🌐", name: "International" }, source: pair(data.source), score: null, segments: [] };
+    const kind = CHANGE_CATEGORIES[data.category]; // { emoji, label, help }
+    if (!data.before) return { ...data, kind, country, place: country ?? { flag: "🌐", name: "International" }, source: pair(data.source), score: null, segments: [] };
     const next = changeEntries.slice(i + 1).find((x) => x.country === data.country && x.before);
     const before = scoreList(data.before);
     const after = next ? scoreList(next.before) : country.s;
     if (before.every((v, k) => v === after[k])) throw new Error(`changes.yaml: "${data.id}" has the same scores before and after`);
     return {
       ...data,
+      kind,
       country,
       place: country,
       latest: !next, // the country's most recent change: "after" is its current score

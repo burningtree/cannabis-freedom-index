@@ -1,0 +1,23 @@
+---
+// Every History entry of one kind, across all periods.
+import Base from "../../../layouts/Base.astro";
+import HistoryList from "../../../components/HistoryList.astro";
+import { CHANGE_CATEGORIES } from "../../../lib/countries.js";
+
+export function getStaticPaths() {
+  return Object.keys(CHANGE_CATEGORIES).map((kind) => ({ params: { kind } }));
+}
+
+const { kind } = Astro.params;
+const k = CHANGE_CATEGORIES[kind];
+---
+<Base title={`History: ${k.label}`} description={`${k.help}. Every such entry in the history of cannabis law, newest first.`}>
+  <main class="changes-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">History</p>
+      <h1>{k.emoji} {k.label}</h1>
+      <p class="lede">{k.help}.</p>
+    </section>
+    <HistoryList kind={kind} />
+  </main>
+</Base>
