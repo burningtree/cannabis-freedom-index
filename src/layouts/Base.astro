@@ -85,6 +85,15 @@ const fullTitle = title ? `${title} — Cannabis Freedom Index` : "Cannabis Free
       e.preventDefault();
       showSegment(link.closest("article.country"), link.dataset.segLink);
     });
+    // "Open all" above the score breakdown opens or closes every segment at once.
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-seg-toggle]");
+      if (!btn) return;
+      var open = btn.getAttribute("aria-expanded") !== "true";
+      btn.closest("article.country").querySelectorAll(".segrow[data-seg]").forEach(function (row) { row.open = open; });
+      btn.setAttribute("aria-expanded", String(open));
+      btn.textContent = open ? "Close all" : "Open all";
+    });
     // A link straight to a segment, e.g. /country/de/#seg-possession
     if (/^#seg-[a-z]+$/.test(location.hash)) showSegment(document.querySelector("article.country"), location.hash.slice(5));
   </script>

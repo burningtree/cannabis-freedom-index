@@ -5,12 +5,22 @@ records how the work has been done so far, what was learned, and what is still o
 
 ## The task in one paragraph
 
-The site scores cannabis freedom per country (`countries/*.yaml`) and keeps a history of every
-law, ruling and treaty that shaped it (`changes.yaml`). The job is to make both **complete and
-trustworthy**: every country should have its whole cannabis history, from the first restriction
-to today, each entry backed by a source that was actually read; and every country profile should
-say what the law is *now*. When research turns up something that changes a country's current
-situation, the profile and its scores are updated too, not only the history.
+The site holds three things per country, and they only make sense together:
+
+1. **What the law is now** — the profile in `countries/*.yaml`, with six segment scores that add
+   up to the country's index.
+2. **What happened** — the history in `changes.yaml`: every law, ruling and treaty that shaped
+   cannabis freedom there, from the first restriction to today.
+3. **How the score moved** — each event that changed the law also records the scores *before*
+   it. Strung together, these form one continuous score timeline per country, from the
+   unregulated state (98) down through the bans and back up through the reforms, ending exactly
+   at today's score. The country chart, the "29 → 44" on every event and the world-average chart
+   since 1900 are all drawn from it.
+
+The job is to make all three **complete, trustworthy and consistent with each other**. Every
+event needs a source that was actually read. Every score step needs to be explained by an event.
+And when research turns up something that changes a country's current situation, the profile,
+its scores and the timeline are updated together, never just one of them.
 
 ## Where things are
 
@@ -21,7 +31,7 @@ situation, the profile and its scores are updated too, not only the history.
 | `segments.yaml` | The six segments, their weights and what each score level means |
 | `src/content.config.ts` | The schema. The build fails with a clear message when data breaks it |
 | `scripts/history-batch.cjs` | Applies a batch of history edits from a JSON file (see below) |
-| `scripts/data-status.cjs` | Counts, and lists of what is unchecked, estimated, thin or weakly sourced |
+| `scripts/data-status.cjs` | Counts; lists of what is unchecked, estimated, thin or weakly sourced; and a check of every country's score timeline |
 
 Run everything from the project root. `npm run build` validates all data; run it after every
 batch. The dev server (`npm run dev`) does **not** pick up edits to `changes.yaml` or the schema
@@ -55,6 +65,42 @@ until it is restarted.
   date is unknown. Replace these with a dated law whenever one is found.
 - **`checked: true`** means: the date and the event were compared with a source that was read.
   A search-result summary is not a read source (see "What went wrong").
+
+## The score timeline must make sense
+
+Treat the timeline as a story someone will read off the chart. Check it whenever you add,
+move or re-score an event, and whenever you change a profile's scores:
+
+```bash
+node scripts/data-status.cjs chain        # every country with a step that looks wrong
+node scripts/data-status.cjs chain de     # one country's full timeline
+```
+
+- **It is continuous.** The "after" of each scored event is the "before" of the next one, and
+  the last "after" is the profile's current scores. Changing a profile score therefore changes
+  the "after" of that country's newest scored event: either that is right (the event explains
+  it), or you need a new scored event that explains the change, dated when it happened.
+- **It starts from freedom.** The first restriction normally has `before` = unregulated
+  (`"FREE"`: 10,10,10,10,10,8 = 98). A lower starting point is fine only when an earlier
+  licensed or taxed regime is documented (India, Morocco, Nepal, Tunisia, South Africa, …).
+- **Direction matches the event.** A ban, tightening or death-penalty law must not raise the
+  score; an easing, legalisation or medical law must not lower it. The script flags mismatches.
+- **Size matches the event.** A first total ban is a large drop. A new sentencing rule, a medical
+  programme or a court ruling is usually one point in one or two segments. Do not let a minor
+  event carry a big jump, and do not leave a big real change (decriminalisation, legalisation)
+  as a context entry.
+- **Every real change moves it; nothing else does.** If the law or the practice changed, the
+  entry is scored. Debates, failed bills, reports and announcements are context entries.
+- **Inserting an event in the middle re-bases its neighbours.** A new scored event between two
+  existing ones takes its "after" from the next event's `before`; choose its own `before` so the
+  earlier event's step still makes sense. The delta form in a batch file (`{"enforcement": 1}`)
+  does this arithmetic for you. Moving where a drop happens (for example to an earlier first
+  ban) means editing the `before` of the event that used to carry it.
+- **Segments, not just totals.** The six numbers should each be explainable by
+  `segments.yaml`: use criminalised → consumption; mandatory prison or death penalty →
+  enforcement; a prescription route → access; home growing allowed → cultivation; and so on.
+- **Estimates** are spread evenly over their window on the charts. Replacing one with a dated
+  law sharpens the country's line and the world average; that is the point of doing it.
 
 ## Workflow that has worked
 
@@ -103,7 +149,8 @@ until it is restarted.
    file: `recreational` / `medical`, the six `scores`, the `summary`, the segment or context
    texts, add the source under `sources`, and set `updated` to today. Keep the history chain
    consistent with the new scores.
-5. **Build, restart the preview, spot-check** one country page and `/history/`.
+5. **Check the score timeline** of every country you touched: `node scripts/data-status.cjs chain <id>`.
+6. **Build, restart the preview, spot-check** one country page (its chart and History) and `/history/`.
 
 ## Rules learned the hard way
 
@@ -166,8 +213,30 @@ Run `node scripts/data-status.cjs` for current numbers. As of 5 October 2026: 78
 8. **Egypt:** the 1868 first ban is a context entry; the score still drops at the 1879 import
    ban. Moving the drop to 1868 means re-basing the 1879 entry.
 
+## Progress log (5 October 2026, second session)
+
+**Weak-source profiles re-sourced from statutes** (text in the profile now cites the law that was read):
+Azerbaijan (possession only), Cameroon, Cabo Verde (court ruling, no statute), Chad (unverified),
+Angola, Burkina Faso, Niger, Libya, Yemen, Central African Republic (unverified), Congo, Eritrea,
+Micronesia, Comoros, Montenegro, Mongolia, Sudan (unverified). Scores changed for Burkina Faso, Libya,
+Yemen, Eritrea, Micronesia, Comoros, Montenegro, Mongolia. Segments marked "unverified" keep their old
+scores until a statute is found.
+
+**Lesson:** about two in three of the old profile figures disagreed with the statute, and some
+"checked" history entries were wrong (one Sudan entry was really about Brunei). Read the source, not
+the summary. `curl` often gets a block page; a Wayback copy
+(`https://web.archive.org/web/2024/<url>`) of the same page usually works, and PDFs fetched with
+`curl` can be read with `pdftotext -layout`. Europe PMC serves full text of open-access articles.
+
+**Entries on the "known to be unconfirmed" list** (open item 2) were opened: Senegal 1997/2007,
+Sierra Leone 2008, The Gambia 2003/2011/2014, Liberia 2014/2023, El Salvador 2003, Kazakhstan 2011,
+Mozambique 1914, Zambia 1926, Ghana 1935, Hungary 1930, Costa Rica 1928, Kiribati/Tuvalu 1948, St Kitts
+1937, Saint Lucia 1938 were confirmed or corrected. Eswatini 1922, Botswana 1922 and Iraq 1933 could not
+be opened and were set back to unchecked. The wider October 2026 batch of "checked" entries has not
+been audited yet.
+
 ## Reporting back
 
 After each pass, say: how many entries were added or corrected, which profiles and scores
-changed and why, which claims rest on sources that were read versus only summarised, and what
+changed and why, which score timelines were re-based, which claims rest on sources that were read versus only summarised, and what
 could not be confirmed. Nothing is committed or deployed unless the user asks.

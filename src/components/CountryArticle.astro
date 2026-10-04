@@ -45,10 +45,25 @@ const circ = 2 * Math.PI * r;
     <div class="d-head">
       <span class="d-flag">{c.flag}</span>
       <div>
-        <h1>{v.name}</h1>
-        <p class="sub">{sub ? `${group.label} · ${c.name}` : c.region}</p>
+        <h1>{c.name}</h1>
+        <p class="sub">{c.region}</p>
       </div>
     </div>
+    {group && (
+      <label class="field sub-select">
+        <span>{group.label}</span>
+        <select data-subunit-select aria-label={`Choose a ${group.label.toLowerCase()} of ${c.name}`}>
+          <option value={countryUrl} selected={!sub}>All of {c.name} (national estimate)</option>
+          {byName.map((x) => <option value={unitUrl(x)} selected={sub?.id === x.id}>{x.name} · {x.score}</option>)}
+        </select>
+      </label>
+    )}
+    {sub && (
+      <div class="d-unit">
+        <h2>{sub.name}</h2>
+        <p class="sub">{group.label} of {c.name}</p>
+      </div>
+    )}
     <div class="d-score">
       <svg class="ring" width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
         <circle cx="52" cy="52" r={r} fill="none" stroke="var(--border)" stroke-width="9" />
@@ -103,24 +118,15 @@ const circ = 2 * Math.PI * r;
       </dl>
     )}
     {scored.length > 0 && <CountryChart history={scored} />}
-    {group && (
-      <label class="field sub-select">
-        <span>{group.label}</span>
-        <select data-subunit-select aria-label={`Choose a ${group.label.toLowerCase()} of ${c.name}`}>
-          <option value={countryUrl} selected={!sub}>All of {c.name} (national estimate)</option>
-          {byName.map((x) => <option value={unitUrl(x)} selected={sub?.id === x.id}>{x.name} · {x.score}</option>)}
-        </select>
-      </label>
-    )}
   </div>
 
   <div class="c-main">
-    <h2 class="d-h">Score breakdown <span>▏world average</span></h2>
+    <h2 class="d-h">Score breakdown <span>▏world average <button type="button" class="seg-toggle" data-seg-toggle aria-expanded="false">Open all</button></span></h2>
     {sub
       ? <p class="d-hint">{group.intro} Select a segment to show or hide the rules.</p>
       : <p class="d-hint">Select a segment to show or hide the exact rules and sources.</p>}
     {sub && SEGMENTS.map((s, i) => (
-      <details class="segrow" data-seg={s.id} open>
+      <details class="segrow" data-seg={s.id}>
         <summary>
           <div class="segrow-top">
             <span>{s.name} <small>· {s.weight}%</small></span>
@@ -146,7 +152,7 @@ const circ = 2 * Math.PI * r;
     {!sub && SEGMENTS.map((s, i) => {
       const seg = d?.segments[i];
       return (
-        <details class="segrow" data-seg={s.id} open>
+        <details class="segrow" data-seg={s.id}>
           <summary>
             <div class="segrow-top">
               <span>{s.name} <small>· {s.weight}%</small></span>
