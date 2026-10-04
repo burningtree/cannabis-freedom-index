@@ -1,0 +1,17 @@
+---
+// A change in short: date, country, title and the overall score before → after.
+// The whole card links to the change's own page.
+import { formatDate } from "../lib/countries.js";
+import ScoreChange from "./ScoreChange.astro";
+
+const { ch } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<a class="card change" href={`${base}changes/${ch.id}/`}>
+  <p class="change-meta">
+    <time datetime={ch.date}>{formatDate(ch.date)}</time>
+    <span>{ch.country.flag} {ch.country.name}</span>
+  </p>
+  <h3>{ch.title}</h3>
+  <ScoreChange score={ch.score} />
+</a>

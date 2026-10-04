@@ -1,0 +1,43 @@
+---
+import Base from "../../layouts/Base.astro";
+import ScoreChange from "../../components/ScoreChange.astro";
+import { changes, formatDate } from "../../lib/countries.js";
+import { tierColor } from "../../lib/tiers.js";
+
+const base = import.meta.env.BASE_URL;
+// Newest first, grouped by year.
+const years = [...new Set(changes.map((ch) => ch.date.slice(0, 4)))]
+  .map((year) => ({ year, items: changes.filter((ch) => ch.date.startsWith(year)) }));
+---
+<Base title="Changes" description="New laws and other developments that moved a country's score on the Cannabis Freedom Index, newest first.">
+  <main class="changes-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Changes</p>
+      <h1>What moved the scores</h1>
+      <p class="lede">New laws and other important developments that changed a country's score, newest first. Open one to see which segments moved and the source.</p>
+    </section>
+
+    <div class="chlog">
+      {years.map(({ year, items }) => (
+        <section aria-labelledby={`y${year}`}>
+          <h2 class="chl-year" id={`y${year}`}>{year}</h2>
+          <ol class="chl-list">
+            {items.map((ch) => (
+              <li class="chl-item" style={`--c:${tierColor(ch.score.after)}`}>
+                <a class="card chl-card" href={`${base}changes/${ch.id}/`}>
+                  <p class="change-meta">
+                    <time datetime={ch.date}>{formatDate(ch.date)}</time>
+                    <span>{ch.country.flag} {ch.country.name}</span>
+                  </p>
+                  <h3>{ch.title}</h3>
+                  <p class="chl-text">{ch.description}</p>
+                  <ScoreChange score={ch.score} />
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+    </div>
+  </main>
+</Base>

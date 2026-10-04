@@ -104,9 +104,32 @@ export function subunitsOf(id) {
   return { label: meta.label, plural: meta.plural, intro: meta.intro, sources: groupSources, units };
 }
 
+// ── Changes: developments that moved a score, newest first ──
+export const changes = (await getCollection("changes"))
+  .map(({ data }) => {
+    const country = countries.find((c) => c.slug === data.country);
+    if (!country) throw new Error(`changes.yaml: "${data.id}" refers to unknown country "${data.country}"`);
+    const s = scoreList(data.before);
+    const before = Math.round(scoreOf(s));
+    return {
+      ...data,
+      country,
+      source: pair(data.source),
+      score: { before, after: country.score },
+      // every segment, with its score before and after
+      segments: SEGMENTS.map((seg, i) => ({ name: seg.name, weight: seg.weight, before: s[i], after: country.s[i] })),
+    };
+  })
+  .sort((a, b) => b.date.localeCompare(a.date));
+for (const ch of changes) {
+  if (changes.filter((x) => x.country === ch.country).length > 1) throw new Error(`changes.yaml: more than one change for "${ch.country.slug}" — keep only the latest`);
+  if (ch.segments.every((seg) => seg.before === seg.after)) throw new Error(`changes.yaml: "${ch.id}" has the same scores before and after`);
+}
+
 // Review dates are stored as YYYY-MM-DD; this is how they are shown everywhere.
+// A date without a day ("2026-02") is shown as month and year.
 export const formatDate = (iso) =>
-  new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+  new Date(`${iso.length === 7 ? iso + "-01" : iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: iso.length === 7 ? undefined : "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 // The most recent review date across every country and state file.
 export const lastUpdated = [

@@ -90,4 +90,20 @@ const segments = defineCollection({
     .strict(),
 });
 
-export const collections = { countries, units, segments };
+// changes.yaml — developments that moved a country's score
+const changes = defineCollection({
+  loader: file("changes.yaml"),
+  schema: z
+    .object({
+      id: z.string(),
+      date: z.string().regex(/^\d{4}-\d{2}(-\d{2})?$/, "use YYYY-MM-DD or YYYY-MM"),
+      country: z.string().regex(/^[a-z]{2}$/), // file name in /countries
+      title: z.string().min(1),
+      description: z.string().min(1),
+      before: perSegment(score), // segment scores before the change
+      source,
+    })
+    .strict(),
+});
+
+export const collections = { countries, units, segments, changes };

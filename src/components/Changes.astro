@@ -1,0 +1,16 @@
+---
+// The three most recent changes that moved a country's score (see /changes.yaml).
+import { changes } from "../lib/countries.js";
+import ChangeCard from "./ChangeCard.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+<section class="changes" aria-labelledby="changesTitle">
+  <div class="changes-head">
+    <h2 class="changes-title" id="changesTitle">Latest changes</h2>
+    <a href={`${base}changes/`}>All changes →</a>
+  </div>
+  <div class="changes-grid">
+    {changes.slice(0, 3).map((ch) => <ChangeCard ch={ch} />)}
+  </div>
+</section>
