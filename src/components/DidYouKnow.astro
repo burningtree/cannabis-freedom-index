@@ -1,0 +1,58 @@
+---
+// A rotating "Did you know?" card. Every fact is in the HTML; the script only
+// decides which one is visible, so the first fact still shows without JavaScript.
+import { getFacts } from "../lib/facts.js";
+
+const base = import.meta.env.BASE_URL;
+const facts = getFacts();
+---
+<section class="dyk card" id="dyk" aria-roledescription="carousel" aria-label="Did you know?">
+  <div class="dyk-top">
+    <p class="dyk-label"><span aria-hidden="true">💡</span> Did you know?</p>
+    <div class="dyk-nav">
+      <span class="dyk-count" id="dykCount">1 / {facts.length}</span>
+      <button class="icon-btn" id="dykPrev" aria-label="Previous fact">‹</button>
+      <button class="icon-btn" id="dykNext" aria-label="Next fact">›</button>
+    </div>
+  </div>
+  <div class="dyk-facts" aria-live="polite">
+    {facts.map((f, i) => (
+      <div class="dyk-fact" hidden={i !== 0}>
+        <p>{f.text}</p>
+        {f.country && (
+          <a href={`${base}country/${f.country.slug}/`} data-country={f.country.id}>
+            {f.country.flag} See {f.country.name} →
+          </a>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const root = document.getElementById("dyk");
+  const facts = [...root.querySelectorAll(".dyk-fact")];
+  const count = document.getElementById("dykCount");
+  let i = 0;
+  let timer = null;
+
+  function show(n) {
+    i = (n + facts.length) % facts.length;
+    facts.forEach((el, k) => (el.hidden = k !== i));
+    count.textContent = `${i + 1} / ${facts.length}`;
+  }
+  // Rotate slowly, but never while someone is reading or interacting, and not at all
+  // for people who have asked for reduced motion.
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function start() { if (!still && !timer) timer = setInterval(() => show(i + 1), 9000); }
+  function stop() { clearInterval(timer); timer = null; }
+
+  document.getElementById("dykPrev").addEventListener("click", () => { stop(); show(i - 1); });
+  document.getElementById("dykNext").addEventListener("click", () => { stop(); show(i + 1); });
+  root.addEventListener("pointerenter", stop);
+  root.addEventListener("pointerleave", start);
+  root.addEventListener("focusin", stop);
+
+  show(Math.floor(Math.random() * facts.length)); // a different fact on each visit
+  start();
+</script>

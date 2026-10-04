@@ -1,0 +1,227 @@
+---
+import Base from "../layouts/Base.astro";
+import { SEGMENTS, CONTEXT, REC_LABEL, MED_LABEL } from "../data/data.js";
+import { countries } from "../lib/countries.js";
+
+const light = countries.map(({ id, slug, name, flag, region, raw, score, rank, s, rec, med }) =>
+  ({ id, slug, name, flag, region, raw, score, rank, s, rec, med }));
+const meta = {
+  segments: SEGMENTS.map((s) => ({ name: s.name, weight: s.weight })),
+  context: CONTEXT.map(([name]) => name),
+  rec: REC_LABEL,
+  med: MED_LABEL,
+  total: countries.length,
+};
+const presets = [
+  ["The legal six", "CA,UY,ZA,CZ,DE,MT"],
+  ["Western Europe", "NL,ES,PT,DE,FR"],
+  ["North America", "CA,US,MX"],
+  ["Harshest regimes", "SG,SA,ID,PH"],
+];
+---
+<Base title="Compare countries" description="Compare cannabis freedom scores, rules and sources for several countries side by side.">
+  <main class="compare-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Compare</p>
+      <h1>Compare countries side by side</h1>
+      <p class="lede">Pick up to six countries to see their scores, the exact rules behind each segment, and the sources — in one table. The address bar updates as you go, so a comparison can be shared as a link.</p>
+    </section>
+
+    <div class="cmp-controls">
+      <label class="field cmp-add">
+        <span>Add a country</span>
+        <input type="search" id="cmpInput" list="cmpList" placeholder="Start typing a name…" autocomplete="off">
+        <datalist id="cmpList">
+          {countries.map((c) => <option value={c.name}></option>)}
+        </datalist>
+      </label>
+      <label class="cmp-toggle"><input type="checkbox" id="cmpText" checked> Show explanations and sources</label>
+      <button class="btn" id="cmpClear" hidden>Clear all</button>
+    </div>
+    <p class="cmp-msg" id="cmpMsg" role="status"></p>
+
+    <div class="cmp-empty card" id="cmpEmpty">
+      <h3>Nothing selected yet</h3>
+      <p>Add countries above, or start from one of these:</p>
+      <div class="cmp-presets">
+        {presets.map(([label, ids]) => <a class="btn" href={`?c=${ids.toLowerCase()}`} data-preset={ids}>{label}</a>)}
+      </div>
+    </div>
+
+    <div class="card cmp-card" id="cmpCard" hidden>
+      <table class="cmp" id="cmpTable"></table>
+    </div>
+  </main>
+
+  <script type="application/json" id="cmp-data" set:html={JSON.stringify(light)} />
+  <script type="application/json" id="cmp-meta" set:html={JSON.stringify(meta)} />
+
+  <script>
+    import { tierOf, tierColor } from "../lib/tiers.js";
+
+    const base = import.meta.env.BASE_URL;
+    const MAX = 6;
+    const $ = (sel) => document.querySelector(sel);
+    const COUNTRIES = JSON.parse($("#cmp-data").textContent);
+    const META = JSON.parse($("#cmp-meta").textContent);
+    const byId = new Map(COUNTRIES.map((c) => [c.id, c]));
+    const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+    const byName = new Map(COUNTRIES.map((c) => [norm(c.name), c]));
+    const esc = (s) => String(s).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+
+    let selected = [];
+    const details = new Map(); // id → explanations, fetched on demand
+
+    // ── State ↔ URL ───────────────────────────────────────
+    function readUrl() {
+      const raw = new URLSearchParams(location.search).get("c") || "";
+      selected = [...new Set(raw.toUpperCase().split(",").filter((id) => byId.has(id)))].slice(0, MAX);
+    }
+    function writeUrl() {
+      const q = selected.length ? "?c=" + selected.map((id) => id.toLowerCase()).join(",") : "";
+      history.replaceState(null, "", location.pathname + q);
+    }
+    function say(text) { $("#cmpMsg").textContent = text; }
+
+    function add(id) {
+      if (selected.includes(id)) return say(`${byId.get(id).name} is already in the comparison.`);
+      if (selected.length >= MAX) return say(`You can compare up to ${MAX} countries. Remove one to add another.`);
+      selected.push(id);
+      say("");
+      update();
+    }
+    function remove(id) {
+      selected = selected.filter((x) => x !== id);
+      say("");
+      update();
+    }
+
+    async function loadDetails(id) {
+      if (!details.has(id)) {
+        const res = await fetch(`${base}api/${id.toLowerCase()}.json`);
+        details.set(id, await res.json());
+      }
+    }
+
+    // ── Rendering ─────────────────────────────────────────
+    const bar = (v10) => `<div class="bar"><i style="width:${v10 * 10}%;background:${tierColor(v10 * 10)}"></i></div>`;
+    const sources = (entry) => entry.src.length
+      ? `<ul class="srcs">${entry.src.map(([label, url]) => `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a></li>`).join("")}</ul>`
+      : "";
+    const prose = (entry) => entry ? `<p class="cmp-text">${esc(entry.t)}</p>${sources(entry)}` : "";
+    // Mark the highest value in a row, unless everyone ties.
+    const bestOf = (values) => {
+      const max = Math.max(...values);
+      return values.length > 1 && values.some((v) => v !== max) ? max : null;
+    };
+
+    function render() {
+      const cs = selected.map((id) => byId.get(id));
+      const showText = $("#cmpText").checked;
+      const row = (label, cells, cls = "") =>
+        `<tr class="${cls}"><th scope="row">${label}</th>${cells.map((html) => `<td>${html}</td>`).join("")}</tr>`;
+
+      const head = `<thead><tr><th scope="col"><span class="visually-hidden">Segment</span></th>${cs.map((c) => `
+        <th scope="col">
+          <div class="cmp-head">
+            <span class="flag">${c.flag}</span>
+            <a href="${base}country/${c.slug}/">${esc(c.name)}</a>
+            <button class="cmp-x" data-remove="${c.id}" aria-label="Remove ${esc(c.name)}">✕</button>
+          </div>
+        </th>`).join("")}</tr></thead>`;
+
+      const bestScore = bestOf(cs.map((c) => c.score));
+      const rows = [
+        row("Index", cs.map((c) => `
+          <div class="cmp-score${c.score === bestScore ? " best" : ""}"><b>${c.score}</b><span>/ 100</span></div>
+          <div class="bar"><i style="width:${c.raw}%;background:${tierColor(c.raw)}"></i></div>
+          <div class="cmp-sub">${tierOf(c.raw).name}</div>`), "cmp-index"),
+        row("World rank", cs.map((c) => `#${c.rank} <span class="cmp-sub">of ${META.total}</span>`)),
+        row("Recreational", cs.map((c) => `<span class="chip s-${c.rec}">${META.rec[c.rec]}</span>`)),
+        row("Medical", cs.map((c) => `<span class="chip s-${c.med}">${META.med[c.med]}</span>`)),
+      ];
+      if (showText) rows.push(row("In short", cs.map((c) => `<p class="cmp-text">${esc(details.get(c.id)?.note ?? "")}</p>`)));
+
+      rows.push(`<tr class="cmp-divider"><th colspan="${cs.length + 1}">Scored segments</th></tr>`);
+      META.segments.forEach((seg, i) => {
+        const best = bestOf(cs.map((c) => c.s[i]));
+        rows.push(row(`${seg.name}<small>${seg.weight}% of the index</small>`, cs.map((c) => `
+          <div class="cmp-val${c.s[i] === best ? " best" : ""}"><b>${c.s[i]}</b><span>/10</span></div>
+          ${bar(c.s[i])}
+          ${showText ? prose(details.get(c.id)?.segments[i]) : ""}`)));
+      });
+
+      if (showText) {
+        rows.push(`<tr class="cmp-divider"><th colspan="${cs.length + 1}">More context — not part of the score</th></tr>`);
+        META.context.forEach((name, i) => {
+          rows.push(row(name, cs.map((c) => prose(details.get(c.id)?.context[i]))));
+        });
+      }
+
+      const table = $("#cmpTable");
+      table.style.setProperty("--cols", cs.length);
+      table.innerHTML = head + `<tbody>${rows.join("")}</tbody>`;
+    }
+
+    async function update() {
+      writeUrl();
+      const any = selected.length > 0;
+      $("#cmpEmpty").hidden = any;
+      $("#cmpCard").hidden = !any;
+      $("#cmpClear").hidden = !any;
+      if (!any) return;
+      render(); // scores first, text fills in once loaded
+      if ($("#cmpText").checked) {
+        const before = selected.join();
+        try {
+          await Promise.all(selected.map(loadDetails));
+        } catch (err) {
+          return say("The explanations could not be loaded. Scores are still shown.");
+        }
+        if (selected.join() === before) render();
+      }
+    }
+
+    // ── Events ────────────────────────────────────────────
+    const input = $("#cmpInput");
+    function tryAdd() {
+      const c = byName.get(norm(input.value));
+      if (!c) return false;
+      input.value = "";
+      add(c.id);
+      return true;
+    }
+    input.addEventListener("input", (e) => {
+      // Picking from the list adds at once. While typing, wait if a longer name could still
+      // follow ("Niger" → "Nigeria", "Guinea" → "Guinea-Bissau"); Enter confirms the short one.
+      const typing = e.inputType === "insertText" || e.inputType === "insertCompositionText";
+      const q = norm(input.value);
+      const longer = COUNTRIES.some((c) => norm(c.name) !== q && norm(c.name).startsWith(q));
+      if (!(typing && longer)) tryAdd();
+    });
+    input.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter") return;
+      e.preventDefault();
+      if (tryAdd()) return;
+      // Not an exact name: accept a unique prefix match.
+      const q = norm(input.value);
+      const hits = q ? COUNTRIES.filter((c) => norm(c.name).startsWith(q)) : [];
+      if (hits.length === 1) { input.value = ""; add(hits[0].id); }
+      else say(hits.length ? "Several countries match — pick one from the list." : "No country matches that name.");
+    });
+    $("#cmpTable").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-remove]");
+      if (btn) remove(btn.dataset.remove);
+    });
+    $("#cmpText").addEventListener("change", update);
+    $("#cmpClear").addEventListener("click", () => { selected = []; say(""); update(); });
+    document.querySelectorAll("[data-preset]").forEach((a) => a.addEventListener("click", (e) => {
+      e.preventDefault();
+      selected = a.dataset.preset.split(",");
+      update();
+    }));
+
+    readUrl();
+    update();
+  </script>
+</Base>

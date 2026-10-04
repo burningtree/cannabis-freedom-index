@@ -1,0 +1,100 @@
+---
+// Full write-up for one country. Rendered on its own page, and fetched into the
+// drawer on the home page — so there is a single template for both views.
+import { SEGMENTS, CONTEXT, REC_LABEL, MED_LABEL } from "../data/data.js";
+import { DETAILS } from "../data/details.js";
+import { countries, segAvg, segmentPoints, segmentMax } from "../lib/countries.js";
+import { tierOf, tierColor } from "../lib/tiers.js";
+
+const { c } = Astro.props;
+const d = DETAILS[c.id];
+const r = 42;
+const circ = 2 * Math.PI * r;
+---
+<article class="country" data-id={c.id}>
+  <div class="c-side">
+    <div class="d-head">
+      <span class="d-flag">{c.flag}</span>
+      <div>
+        <h1>{c.name}</h1>
+        <p class="sub">{c.region}</p>
+      </div>
+    </div>
+    <div class="d-score">
+      <svg class="ring" width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
+        <circle cx="52" cy="52" r={r} fill="none" stroke="var(--border)" stroke-width="9" />
+        <circle cx="52" cy="52" r={r} fill="none" stroke={tierColor(c.raw)} stroke-width="9" stroke-linecap="round"
+          stroke-dasharray={`${(c.raw / 100) * circ} ${circ}`} transform="rotate(-90 52 52)" />
+        <text x="52" y="62" text-anchor="middle">{c.score}</text>
+      </svg>
+      <div>
+        <div class="tier">{tierOf(c.raw).name}</div>
+        <p class="sub">#{c.rank} of {countries.length} worldwide<br>#{c.regionRank} of {c.regionCount} in {c.region}</p>
+      </div>
+    </div>
+    <div class="d-chips">
+      <span class={`chip s-${c.rec}`}>Recreational: {REC_LABEL[c.rec]}</span>
+      <span class={`chip s-${c.med}`}>Medical: {MED_LABEL[c.med]}</span>
+    </div>
+    <p class="d-note">{c.note}</p>
+  </div>
+
+  <div class="c-main">
+    <h2 class="d-h">Score breakdown <span>▏world average</span></h2>
+    <p class="d-hint">Select a segment to show or hide the exact rules and sources.{d && ` Reviewed ${d.reviewed}.`}</p>
+    {SEGMENTS.map((s, i) => {
+      const seg = d?.seg[s.detail];
+      return (
+        <details class="segrow" open>
+          <summary>
+            <div class="segrow-top">
+              <span>{s.name} <small>· {s.weight}%</small></span>
+              <b>{c.s[i]}/10<i class="chev" aria-hidden="true"></i></b>
+            </div>
+            <div class="bar" title={`World average ${segAvg[i].toFixed(1)}/10`}>
+              <i style={`width:${c.s[i] * 10}%;background:${tierColor(c.s[i] * 10)}`}></i>
+              <span class="avg-tick" style={`left:calc(${segAvg[i] * 10}% - 1px)`}></span>
+            </div>
+            <div class="pts">adds {segmentPoints(i, c.s[i]).toFixed(1)} of {segmentMax(i).toFixed(0)} points</div>
+          </summary>
+          {seg && (
+            <div class="why">
+              <p>{seg.t}</p>
+              <ul class="srcs">
+                {seg.src.map((k) => (
+                  <li><a href={d.sources[k][1]} target="_blank" rel="noopener noreferrer">{d.sources[k][0]}</a></li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </details>
+      );
+    })}
+
+    {d && (
+      <>
+        <h2 class="d-h">More context <span>not part of the score</span></h2>
+        {CONTEXT.map(([name, k]) => (
+          <div class="segrow">
+            <div class="segrow-top"><span>{name}</span></div>
+            <p class="ctx">{d.seg[k].t}</p>
+            <ul class="srcs">
+              {d.seg[k].src.map((x) => (
+                <li><a href={d.sources[x][1]} target="_blank" rel="noopener noreferrer">{d.sources[x][0]}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        <section class="c-sources">
+          <h2 class="d-h">All sources</h2>
+          <ol>
+            {Object.values(d.sources).map(([label, url]) => (
+              <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>
+            ))}
+          </ol>
+        </section>
+      </>
+    )}
+  </div>
+</article>

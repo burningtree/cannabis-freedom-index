@@ -1,0 +1,380 @@
+---
+import Base from "../layouts/Base.astro";
+import DidYouKnow from "../components/DidYouKnow.astro";
+import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, MED_LABEL } from "../data/data.js";
+import { countries, regions, worldAvg } from "../lib/countries.js";
+import { TIERS, tierColor } from "../lib/tiers.js";
+
+const base = import.meta.env.BASE_URL;
+const count = (fn) => countries.filter(fn).length;
+const stats = [
+  [countries.length, "countries scored"],
+  [Math.round(worldAvg), "world average, out of 100"],
+  [count((c) => c.raw >= 60), "reach the “Free” tier (60+)"],
+  [count((c) => c.raw >= 40), "score 40+: legal to possess and grow, with limits"],
+  [count((c) => c.raw < 15), "score under 15: prison is a real risk"],
+];
+const legend = [...TIERS].reverse().map((t, i, arr) => ({
+  name: t.name, min: t.min, max: i < arr.length - 1 ? arr[i + 1].min - 1 : 100, i,
+}));
+const REC_ORDER = ["legal", "partial", "decrim", "illegal"];
+const MED_ORDER = ["yes", "limited", "no"];
+// What the browser needs for the map: scores only, no prose.
+const mapData = countries.map(({ id, num, name, flag, raw, score, rank, s }) => ({ id, num, name, flag, raw, score, rank, s }));
+---
+<Base description="A 0–100 score of how free cannabis is in every country on Earth, built from six weighted segments of law and practice.">
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">Global index · {DATA_SNAPSHOT} edition</p>
+      <h1>How free is cannabis,<br>country by country?</h1>
+      <p class="lede">One number from 0 to 100 for every country on Earth, measuring personal cannabis freedom: can you carry it, grow it, share it and use it — and what happens to you if you do. The bar is high: 100 means cannabis is treated like tomatoes. Nobody is close.</p>
+      <div class="stats">
+        {stats.map(([n, label]) => <div class="stat"><div class="big">{n}</div><div class="label">{label}</div></div>)}
+      </div>
+      <DidYouKnow />
+    </section>
+
+    <section class="section" id="map">
+      <div class="section-head">
+        <div>
+          <h2>World map</h2>
+          <p class="sub">Red means prison risk, green means free. Select a country for its full breakdown.</p>
+        </div>
+        <label class="field">
+          <span>Colour by</span>
+          <select id="metric">
+            <option value="index">Overall index</option>
+            {SEGMENTS.map((s, i) => <option value={i}>{s.name}</option>)}
+          </select>
+        </label>
+      </div>
+      <div class="card map-card">
+        <div class="map-wrap" id="mapWrap">
+          <svg id="mapSvg" viewBox="0 0 960 480" role="img" aria-label="World map coloured by Cannabis Freedom Index"></svg>
+          <div class="map-zoom">
+            <button class="icon-btn" id="zoomIn" aria-label="Zoom in">+</button>
+            <button class="icon-btn" id="zoomOut" aria-label="Zoom out">−</button>
+            <button class="icon-btn" id="zoomReset" aria-label="Reset zoom">⟲</button>
+          </div>
+          <div class="tooltip" id="tooltip" hidden></div>
+          <p class="map-msg" id="mapMsg">Loading map…</p>
+        </div>
+        <div class="legend">
+          {legend.map((t) => <span><i class="sw" style={`background:var(--t${t.i})`}></i>{t.name} · {t.min}–{t.max}</span>)}
+          <span><i class="sw sw-nodata"></i>No data</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rankings">
+      <div class="section-head">
+        <div>
+          <h2>Rankings</h2>
+          <p class="sub"><span id="resultCount">{countries.length} of {countries.length} countries</span></p>
+        </div>
+        <div class="filters">
+          <input type="search" id="search" placeholder="Search country…" aria-label="Search country">
+          <select id="region" aria-label="Filter by region">
+            <option value="">All regions</option>
+            {regions.map((r) => <option>{r}</option>)}
+          </select>
+          <select id="recFilter" aria-label="Filter by recreational status">
+            <option value="">Any status</option>
+            {REC_ORDER.map((k) => <option value={k}>{REC_LABEL[k]}</option>)}
+          </select>
+        </div>
+      </div>
+      <div class="card table-card">
+        <table id="table">
+          <thead>
+            <tr>
+              <th data-sort="rank" class="num" aria-sort="ascending">#</th>
+              <th data-sort="name">Country</th>
+              <th data-sort="region" class="hide-sm">Region</th>
+              <th data-sort="rec" class="hide-sm">Recreational</th>
+              <th data-sort="med" class="hide-md">Medical</th>
+              <th data-sort="score" class="score-col">Index</th>
+            </tr>
+          </thead>
+          <tbody>
+            {countries.map((c) => (
+              <tr data-id={c.id} data-rank={c.rank} data-name={c.name} data-region={c.region}
+                  data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec}>
+                <td class="num">{c.rank}</td>
+                <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}</a></td>
+                <td class="hide-sm">{c.region}</td>
+                <td class="hide-sm"><span class={`chip s-${c.rec}`}>{REC_LABEL[c.rec]}</span></td>
+                <td class="hide-md"><span class={`chip s-${c.med}`}>{MED_LABEL[c.med]}</span></td>
+                <td>
+                  <div class="score-cell">
+                    <span class="score-val">{c.score}</span>
+                    <div class="bar"><i style={`width:${c.raw}%;background:${tierColor(c.raw)}`}></i></div>
+                  </div>
+                </td>
+              </tr>
+            ))}
+            <tr id="emptyRow" hidden><td colspan="6" class="empty">No countries match these filters.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="methodology">
+      <div class="section-head">
+        <div>
+          <h2>Methodology</h2>
+          <p class="sub">Six segments, each scored 0–10 against fixed levels, combined by weight into a 0–100 index. Half the score is simply whether you may possess and grow; a fifth is how hard users are punished. Rules for industry, products and medical programmes are not scored.</p>
+        </div>
+      </div>
+      <div class="card note-card tomato">
+        <h3>🍅 The tomato standard</h3>
+        <p>A 10 means no cannabis-specific rule at all: carry any amount, grow a whole field, give it away, buy it anywhere. Every cap, licence, registry and restricted zone costs points, because regulation is counted as unfreedom. Canada lets you carry 30 g and grow four plants — that is legal, but it is not unlimited, so it scores 6 and 4, not 9 and 8. This is why even the most liberal countries land around 50 and the “Free” tier is empty.</p>
+      </div>
+      <div class="weights" aria-hidden="true">
+        {SEGMENTS.map((s) => <div style={`flex:${s.weight}`} title={`${s.name} — ${s.weight}%`}>{s.weight}%</div>)}
+      </div>
+      <div class="seg-grid">
+        {SEGMENTS.map((s) => (
+          <div class="card seg">
+            <div class="seg-top"><h3>{s.name}</h3><span class="seg-w">{s.weight}%</span></div>
+            <p>{s.desc}</p>
+            <ul class="anchors">{s.levels.map(([n, t]) => <li><b>{n}</b>{t}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <div class="card note-card">
+        <h3>Read this before relying on it</h3>
+        <p>Scores are editorial estimates that blend the written law with how it is enforced in practice. Federal countries (United States, Australia, India) get a single national estimate that hides large internal differences. Scores between the listed levels mean a country sits between two descriptions. Every country has a written explanation and linked sources for each segment — select a country to read them. For many smaller countries the only sources available are secondary summaries, and the explanations say so where a figure could not be confirmed.</p>
+        <p>Laws change quickly and this is <strong>not legal advice</strong>. Always check current local law before travelling with, buying or growing cannabis.</p>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="detail" class="drawer" aria-label="Country details">
+    <div class="drawer-bar">
+      <a class="icon-btn" id="dCompare" href={`${base}compare/`} aria-label="Compare with other countries" title="Compare with other countries">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 20V9M12 20V4M19 20v-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </a>
+      <a class="icon-btn" id="dExpand" href={base} aria-label="Open full page" title="Open full page">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="icon-btn" id="dClose" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-inner" id="detailBody"></div>
+  </dialog>
+
+  <script type="application/json" id="cfi-data" set:html={JSON.stringify(mapData)} />
+  <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => s.name))} />
+
+  <script>
+    import { select, selectAll } from "d3-selection";
+    import { geoNaturalEarth1, geoPath } from "d3-geo";
+    import { zoom, zoomIdentity } from "d3-zoom";
+    import "d3-transition";
+    import { feature } from "topojson-client";
+    import atlasUrl from "world-atlas/countries-50m.json?url";
+    import { tierOf, tierColor } from "../lib/tiers.js";
+
+    const base = import.meta.env.BASE_URL;
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const COUNTRIES = JSON.parse($("#cfi-data").textContent);
+    const SEGMENT_NAMES = JSON.parse($("#cfi-segments").textContent);
+    const byId = new Map(COUNTRIES.map((c) => [c.id, c]));
+    const byNum = new Map(COUNTRIES.filter((c) => c.num != null).map((c) => [c.num, c]));
+    // Map features that inherit another entry's score (atlas name or numeric id → country id).
+    const ALIASES = { Kosovo: "XK", Somaliland: "SO", 304: "DK" };
+
+    // ── Map ───────────────────────────────────────────────
+    let metric = "index";
+    let paths = null;
+    const metricValue = (c) => (metric === "index" ? c.raw : c.s[+metric] * 10);
+    const metricLabel = () => (metric === "index" ? "Index" : SEGMENT_NAMES[+metric]);
+    const metricText = (c) => (metric === "index" ? `${c.score} / 100` : `${c.s[+metric]} / 10`);
+
+    function paintMap() {
+      if (paths) paths.attr("fill", (d) => (d.c ? tierColor(metricValue(d.c)) : "url(#hatch)"));
+    }
+    $("#metric").addEventListener("change", (e) => { metric = e.target.value; paintMap(); });
+
+    async function initMap() {
+      const svg = select("#mapSvg");
+      const msg = $("#mapMsg");
+      let world;
+      try {
+        world = await (await fetch(atlasUrl)).json();
+      } catch (err) {
+        msg.textContent = "The map could not be loaded. Rankings below still work.";
+        return;
+      }
+      msg.remove();
+
+      const features = feature(world, world.objects.countries).features.filter((f) => f.id !== "010");
+      features.forEach((f) => {
+        const alias = ALIASES[f.properties.name] || ALIASES[+f.id];
+        f.c = alias ? byId.get(alias) : byNum.get(+f.id);
+      });
+
+      const projection = geoNaturalEarth1().fitExtent([[8, 8], [952, 472]], { type: "Sphere" });
+      const path = geoPath(projection);
+
+      svg.append("defs").html(
+        `<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+           <rect width="5" height="5" fill="var(--nodata)"/><rect width="2" height="5" fill="var(--hatch)"/>
+         </pattern>`
+      );
+      const g = svg.append("g");
+      g.append("path").attr("class", "sphere").attr("d", path({ type: "Sphere" }));
+
+      const tip = $("#tooltip");
+      const wrap = $("#mapWrap");
+      paths = g.selectAll(".country-shape").data(features).join("path")
+        .attr("class", (d) => "country-shape" + (d.c ? " has-data" : ""))
+        .attr("d", path)
+        .on("pointermove", (e, d) => {
+          const c = d.c;
+          tip.innerHTML = c
+            ? `<strong>${c.flag} ${c.name}</strong>
+               <div class="row"><span>${metricLabel()}</span><b>${metricText(c)}</b></div>
+               <div class="row"><span>Tier</span><b>${tierOf(metricValue(c)).name}</b></div>
+               <div class="row"><span>World rank</span><b>#${c.rank}</b></div>`
+            : `<strong>${d.properties.name}</strong><div class="row"><span>No data</span></div>`;
+          tip.hidden = false;
+          const box = wrap.getBoundingClientRect();
+          const x = e.clientX - box.left, y = e.clientY - box.top;
+          tip.style.left = Math.min(x + 14, box.width - tip.offsetWidth - 8) + "px";
+          tip.style.top = Math.max(8, y - tip.offsetHeight - 12) + "px";
+        })
+        .on("pointerleave", () => (tip.hidden = true))
+        .on("click", (e, d) => d.c && openCountry(d.c.id));
+      paintMap();
+      markActive();
+
+      const z = zoom().scaleExtent([1, 10]).translateExtent([[0, 0], [960, 480]])
+        .on("zoom", (e) => g.attr("transform", e.transform));
+      svg.call(z);
+      $("#zoomIn").onclick = () => svg.transition().duration(250).call(z.scaleBy, 1.8);
+      $("#zoomOut").onclick = () => svg.transition().duration(250).call(z.scaleBy, 1 / 1.8);
+      $("#zoomReset").onclick = () => svg.transition().duration(250).call(z.transform, zoomIdentity);
+    }
+
+    // ── Rankings: the rows are in the HTML; we only filter and reorder them ──
+    const tbody = $("#table tbody");
+    const rows = [...tbody.querySelectorAll("tr[data-id]")];
+    const emptyRow = $("#emptyRow");
+    const state = { q: "", region: "", rec: "", sort: "rank", asc: true };
+    const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+    const num = (r, k) => +r.dataset[k];
+    const sorters = {
+      rank: (a, b) => num(a, "rank") - num(b, "rank"),
+      score: (a, b) => num(a, "rank") - num(b, "rank"),
+      name: (a, b) => a.dataset.name.localeCompare(b.dataset.name),
+      region: (a, b) => a.dataset.region.localeCompare(b.dataset.region) || num(a, "rank") - num(b, "rank"),
+      rec: (a, b) => num(a, "rec") - num(b, "rec") || num(a, "rank") - num(b, "rank"),
+      med: (a, b) => num(a, "med") - num(b, "med") || num(a, "rank") - num(b, "rank"),
+    };
+
+    function applyTable() {
+      const q = norm(state.q.trim());
+      const sorted = [...rows].sort(sorters[state.sort]);
+      if (!state.asc) sorted.reverse();
+      let shown = 0;
+      sorted.forEach((r) => {
+        const ok = (!q || norm(r.dataset.name).includes(q)) &&
+          (!state.region || r.dataset.region === state.region) &&
+          (!state.rec || r.dataset.reckey === state.rec);
+        r.hidden = !ok;
+        if (ok) shown++;
+        tbody.append(r);
+      });
+      tbody.append(emptyRow);
+      emptyRow.hidden = shown > 0;
+      $("#resultCount").textContent = `${shown} of ${rows.length} countries`;
+      document.querySelectorAll("#table th").forEach((th) => th.removeAttribute("aria-sort"));
+      $(`#table th[data-sort="${state.sort}"]`).setAttribute("aria-sort", state.asc ? "ascending" : "descending");
+    }
+
+    $("#search").addEventListener("input", (e) => { state.q = e.target.value; applyTable(); });
+    $("#region").addEventListener("change", (e) => { state.region = e.target.value; applyTable(); });
+    $("#recFilter").addEventListener("change", (e) => { state.rec = e.target.value; applyTable(); });
+    $("#table thead").addEventListener("click", (e) => {
+      const th = e.target.closest("th");
+      if (!th) return;
+      state.asc = state.sort === th.dataset.sort ? !state.asc : true;
+      state.sort = th.dataset.sort;
+      applyTable();
+    });
+    // A plain click opens the drawer; modified clicks (new tab etc.) follow the link to the full page.
+    tbody.addEventListener("click", (e) => {
+      const tr = e.target.closest("tr[data-id]");
+      if (!tr || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      openCountry(tr.dataset.id);
+    });
+
+    // ── Country drawer: shows the same article as the full country page ──
+    const dialog = $("#detail");
+    const body = $("#detailBody");
+    const pageUrl = (id) => `${base}country/${id.toLowerCase()}/`;
+    const cache = new Map();
+
+    async function loadArticle(id) {
+      if (!cache.has(id)) {
+        const html = await (await fetch(pageUrl(id))).text();
+        const article = new DOMParser().parseFromString(html, "text/html").querySelector("article.country");
+        // The full page shows every explanation; in the drawer they start collapsed.
+        article.querySelectorAll("details[open]").forEach((el) => el.removeAttribute("open"));
+        cache.set(id, article);
+      }
+      return cache.get(id).cloneNode(true);
+    }
+
+    function markActive() {
+      const id = currentId();
+      selectAll(".country-shape").classed("active", (d) => !!id && d.c && d.c.id === id);
+    }
+    const currentId = () => {
+      const m = location.hash.match(/^#\/([A-Z]{2})$/);
+      return m && byId.has(m[1]) ? m[1] : null;
+    };
+
+    function openCountry(id) {
+      if (location.hash !== "#/" + id) history.pushState(null, "", "#/" + id);
+      showFromHash();
+    }
+    async function showFromHash() {
+      const id = currentId();
+      markActive();
+      if (!id) return dialog.open && dialog.close();
+      $("#dExpand").href = pageUrl(id);
+      $("#dCompare").href = `${base}compare/?c=${id.toLowerCase()}`;
+      try {
+        const article = await loadArticle(id);
+        if (currentId() !== id) return;
+        body.replaceChildren(article);
+      } catch (err) {
+        location.href = pageUrl(id);
+        return;
+      }
+      if (!dialog.open) dialog.showModal();
+      dialog.scrollTop = 0;
+    }
+    // Country links elsewhere on the page (e.g. "Did you know?") open the drawer too.
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a[data-country]");
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      openCountry(a.dataset.country);
+    });
+    $("#dClose").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (e) => e.target === dialog && dialog.close());
+    dialog.addEventListener("close", () => {
+      if (location.hash.startsWith("#/")) history.pushState(null, "", location.pathname + location.search);
+      markActive();
+    });
+    window.addEventListener("hashchange", showFromHash);
+    window.addEventListener("popstate", showFromHash);
+
+    initMap();
+    showFromHash();
+  </script>
+</Base>
