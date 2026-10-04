@@ -1,7 +1,7 @@
 /* Cannabis Freedom Index — per-segment explanations and sources
  *
  * DETAILS[countryId] = {
- *   reviewed: "Month YYYY",
+ *   reviewed: "YYYY-MM-DD",
  *   sources:  { key: [label, url] },
  *   seg:      ten entries in SEGMENTS order, each { t: explanation, src: [source keys] }
  * }
@@ -11,7 +11,7 @@
 
 export const DETAILS = {
   CA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       justice: ["Department of Justice Canada — Cannabis legalization and regulation", "https://www.justice.gc.ca/eng/cj-jp/cannabis/"],
       act: ["Cannabis Act (S.C. 2018, c. 16)", "https://laws-lois.justice.gc.ca/eng/acts/c-24.5/"],
@@ -33,7 +33,7 @@ export const DETAILS = {
   },
 
   UY: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       law: ["Ley N° 19.172 — Regulación y control del cannabis (IMPO)", "https://www.impo.com.uy/bases/leyes/19172-2013"],
       ircca: ["IRCCA — Instituto de Regulación y Control del Cannabis", "https://www.ircca.gub.uy/"],
@@ -54,7 +54,7 @@ export const DETAILS = {
   },
 
   DE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       bmg: ["Bundesgesundheitsministerium — FAQ zum Cannabisgesetz", "https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz"],
       kcang: ["Konsumcannabisgesetz (KCanG) — full text", "https://www.gesetze-im-internet.de/kcang/"],
@@ -75,7 +75,7 @@ export const DETAILS = {
   },
 
   US: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       ncsl: ["National Conference of State Legislatures — State cannabis laws", "https://www.ncsl.org/health/state-medical-cannabis-laws"],
       norml: ["NORML — State-by-state laws", "https://norml.org/laws/"],
@@ -97,7 +97,7 @@ export const DETAILS = {
   },
 
   MT: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cap628: ["Authority on the Responsible Use of Cannabis Act (Cap. 628)", "https://legislation.mt/eli/cap/628/eng"],
       aruc: ["ARUC — Authority for the Responsible Use of Cannabis", "https://aruc.mt/"],
@@ -119,7 +119,7 @@ export const DETAILS = {
   },
 
   JM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       fact: ["Ministry of Justice — Dangerous Drugs (Amendment) Act 2015 fact sheet", "https://ncst.gov.jm/wp-content/uploads/2015/09/Ganja-FACT-SHEET-Amendment-to-Dangerous-Drug-ACT.pdf"],
       cla: ["Cannabis Licensing Authority", "https://www.cla.org.jm/"],
@@ -140,7 +140,7 @@ export const DETAILS = {
   },
 
   ZA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       act: ["Cannabis for Private Purposes Act 7 of 2024 — full text", "https://lawlibrary.org.za/akn/za/act/2024/7/eng@2024-06-03"],
       idpc: ["IDPC — South African president assents to the Cannabis for Private Purposes Bill", "https://idpc.net/news/2024/06/south-african-president-assents-to-the-cannabis-private-purposes-bill"],
@@ -162,7 +162,7 @@ export const DETAILS = {
   },
 
   CZ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       expats: ["Expats.cz — Inside Czechia's 2026 cannabis law", "https://www.expats.cz/czech-news/article/inside-czechia-s-2026-cannabis-laws-how-much-can-you-legally-grow-and-possess"],
       norml: ["NORML — Czech legislation takes effect legalizing personal possession", "https://norml.org/news/2026/01/08/czech-republic-legislation-takes-effect-legalizing-personal-marijuana-possession/"],
@@ -184,7 +184,7 @@ export const DETAILS = {
   },
 
   TH: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       thaiger: ["The Thaiger — Cannabis in Thailand 2026: the new medical-only rules", "https://thethaiger.com/guides/cannabis/cannabis-thailand-2026-medical-rules"],
       khaosod: ["Khaosod English — Thailand tightens controls on medical cannabis sales (May 2026)", "https://www.khaosodenglish.com/politics/2026/05/16/thailand-tightens-controls-on-medical-cannabis-sales/"],
@@ -205,7 +205,7 @@ export const DETAILS = {
   },
 
   NL: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       gov: ["Government of the Netherlands — Toleration policy regarding soft drugs and coffee shops", "https://www.government.nl/topics/drugs/toleration-policy-regarding-soft-drugs-and-coffee-shops"],
       exp: ["Vicente LLP — The Dutch experiment: transition to a regulated cannabis market", "https://vicentellp.com/insights/the-dutch-experiment-navigating-the-transition-to-a-regulated-cannabis-market-in-the-netherlands"],
@@ -226,7 +226,7 @@ export const DETAILS = {
   },
 
   LU: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       idpc: ["IDPC — Growing and smoking weed at home now legal in Luxembourg", "https://idpc.net/news/2023/07/growing-and-smoking-weed-at-home-now-legal-in-luxembourg"],
       cms: ["CMS Law — Luxembourg: special legislation on recreational cannabis", "https://cms.law/en/lux/legal-updates/luxembourg-special-legislation-on-recreational-cannabis"],
@@ -248,7 +248,7 @@ export const DETAILS = {
   },
 
   TT: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Trinidad and Tobago", "https://en.wikipedia.org/wiki/Cannabis_in_Trinidad_and_Tobago"],
       tni: ["TNI — Trinidad and Tobago lawmakers approve marijuana decriminalization bill", "https://ungassondrugs.org/en/site_content/item/9516-trinidad-and-tobago-lawmakers-approve-marijuana-decriminalization-bill.html"],
@@ -269,7 +269,7 @@ export const DETAILS = {
   },
 
   CH: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       chch: ["ch.ch (Swiss authorities) — Cannabis", "https://www.ch.ch/en/safety-and-justice/police/cannabis"],
       pp: ["Prohibition Partners — Switzerland adult-use overview", "https://insightshub.prohibitionpartners.com/switzerland-adult-use/"],
@@ -290,7 +290,7 @@ export const DETAILS = {
   },
 
   CO: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Colombia", "https://en.wikipedia.org/wiki/Cannabis_in_Colombia"],
       idpc: ["IDPC — Colombia decriminalises marijuana cultivation up to 20 plants", "https://idpc.net/news/2015/08/colombia-decriminalizes-marijuana-cultivation-up-to-20-plants"],
@@ -312,7 +312,7 @@ export const DETAILS = {
   },
 
   ES: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Spain", "https://en.wikipedia.org/wiki/Cannabis_in_Spain"],
       local: ["The Local — What are the penalties for drug possession in Spain?", "https://www.thelocal.es/20230119/what-are-the-penalties-for-drug-possession-in-spain"],
@@ -334,7 +334,7 @@ export const DETAILS = {
   },
 
   AG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Antigua and Barbuda", "https://en.wikipedia.org/wiki/Cannabis_in_Antigua_and_Barbuda"],
       idpc1: ["IDPC — Antigua and Barbuda set to decriminalise cannabis", "https://idpc.net/news/2018/02/antigua-and-barbuda-set-to-decriminalise-cannabis-as-pm-says-it-is-part-of-the-culture-of-the-country"],
@@ -355,7 +355,7 @@ export const DETAILS = {
   },
 
   PT: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       law: ["Lei n.º 30/2000 — regime jurídico do consumo de estupefacientes (Diário da República)", "https://diariodarepublica.pt/dr/detalhe/lei/30-2000-599720"],
       qmhc: ["The Portuguese experience — overview of the decriminalisation model (PDF)", "https://www.qmhc.qld.gov.au/sites/default/files/downloads/the_portuguese_experience_0.pdf"],
@@ -377,7 +377,7 @@ export const DETAILS = {
   },
 
   AR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       res: ["Resolución 1780/2025, Ministerio de Salud — REPROCANN rules", "https://www.argentina.gob.ar/normativa/nacional/norma-413121/texto"],
       sechat: ["Sechat — New REPROCANN rules for registration and cultivation (2025)", "https://sechat.com.br/en/noticia/new-reprocann-rules-for-registration-and-cultivation-of-medicinal-cannabis-in-argentina-to-change-by-2025"],
@@ -398,7 +398,7 @@ export const DETAILS = {
   },
 
   BZ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       act: ["Misuse of Drugs (Amendment) Act 2017, No. 47 of 2017 (PDF, via OAS)", "https://oas.org/ext/Portals/33/adam/Content/1LAvBxqRKUevbza4NS5FZw/Text/Act-No.-47-of-2017-Misuse-of-Drugs-Amendment-Act-2017.pdf"],
       wiki: ["Wikipedia — Cannabis in Belize", "https://en.wikipedia.org/wiki/Cannabis_in_Belize"],
@@ -419,7 +419,7 @@ export const DETAILS = {
   },
 
   CL: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       tni: ["Transnational Institute — Drug law reform in Chile: basic guide", "https://www.tni.org/en/node/16144"],
       dc: ["Diario Constitucional — Bill to regulate adult cannabis use in Chile (June 2025)", "https://www.diarioconstitucional.cl/2025/06/18/diputados-proponen-ley-para-regular-el-uso-adulto-del-cannabis-en-chile/"],
@@ -440,7 +440,7 @@ export const DETAILS = {
   },
 
   DM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Dominica", "https://en.wikipedia.org/wiki/Cannabis_in_Dominica"],
       tni: ["Jamaica Observer via TNI — Dominica parliament amends marijuana legislation", "https://www.ungassondrugs.org/en/site_content/item/9962-dominica-parliament-amends-marijuana-legislation.html"],
@@ -461,7 +461,7 @@ export const DETAILS = {
   },
 
   LC: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       law: ["Revised Laws of Saint Lucia — Drugs (Prevention of Misuse) Act, section 8A", "https://attorneygeneralchambers.com/laws-of-saint-lucia/drugs-prevention-of-misuse-act/section-8a/"],
       wiki: ["Wikipedia — Cannabis in Saint Lucia", "https://en.wikipedia.org/wiki/Cannabis_in_Saint_Lucia"],
@@ -483,7 +483,7 @@ export const DETAILS = {
   },
 
   KN: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Saint Kitts and Nevis", "https://en.wikipedia.org/wiki/Cannabis_in_Saint_Kitts_and_Nevis"],
       norml: ["NORML — Saint Kitts: court upholds right to consume marijuana in private", "https://norml.org/news/2019/05/16/saint-kitts-court-upholds-right-to-consume-marijuana-in-private/"],
@@ -505,7 +505,7 @@ export const DETAILS = {
   },
 
   IT: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       giq: ["GrowerIQ — Is weed legal in Italy? Cannabis laws guide", "https://groweriq.ca/is-weed-legal-in-italy/"],
       dpnsee: ["DPNSEE — Italy: the legal map on decriminalisation policies (PDF)", "https://dpnsee.org/wp-content/uploads/2020/11/Italy-The-legal-map-on-decriminalisation-policies.pdf"],
@@ -527,7 +527,7 @@ export const DETAILS = {
   },
 
   IL: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       chambers: ["Chambers Practice Guides — Medical cannabis and cannabinoid regulation 2024: Israel", "https://practiceguides.chambers.com/practice-guides/medical-cannabis-cannabinoid-regulation-2024/israel"],
       wiki: ["Wikipedia — Cannabis in Israel", "https://en.wikipedia.org/wiki/Cannabis_in_Israel"],
@@ -548,7 +548,7 @@ export const DETAILS = {
   },
 
   MX: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cms: ["CMS Expert Guide — Cannabis law and legislation in Mexico", "https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/mexico"],
       tms: ["Transcend Media Service — Supreme Court in Mexico declares cannabis prohibition unconstitutional", "https://www.transcend.org/tms/2021/07/supreme-court-in-mexico-declares-cannabis-prohibition-unconstitutional"],
@@ -570,7 +570,7 @@ export const DETAILS = {
   },
 
   BE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Belgium", "https://en.wikipedia.org/wiki/Cannabis_in_Belgium"],
       cms: ["CMS Expert Guide — Cannabis law and legislation in Belgium", "https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/belgium"],
@@ -591,7 +591,7 @@ export const DETAILS = {
   },
 
   CR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Costa Rica", "https://en.wikipedia.org/wiki/Cannabis_in_Costa_Rica"],
       law: ["Ley N° 10113 — cannabis for medicinal and therapeutic use and hemp (UNEP LEAP)", "https://leap.unep.org/en/countries/cr/national-legislation/ley-no-10113-ley-del-cannabis-para-uso-medicinal-y-terapeutico-y"],
@@ -613,7 +613,7 @@ export const DETAILS = {
   },
 
   GE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       idpc: ["IDPC — Cannabis use can no longer be punished in Georgia, court rules", "https://idpc.net/news/2018/08/cannabis-use-can-no-longer-be-punished-in-georgia-court-rules"],
       jam: ["JAMnews — Marijuana use in Georgia: what does the law say?", "https://jam-news.net/marijuana-use-in-georgia-what-does-the-new-law-say/"],
@@ -635,7 +635,7 @@ export const DETAILS = {
   },
 
   AU: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       conv: ["The Conversation — ACT cannabis laws come into effect, but they may not be what you hoped for", "https://theconversation.com/act-cannabis-laws-come-into-effect-on-friday-but-they-may-not-be-what-you-hoped-for-130050"],
       ct: ["The Canberra Times — ACT cannabis laws come into effect", "https://www.canberratimes.com.au/story/6601233/act-cannabis-laws-come-into-effect-on-friday-but-they-may-not-be-what-you-hoped-for/"],
@@ -657,7 +657,7 @@ export const DETAILS = {
   },
 
   SI: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Slovenia", "https://en.wikipedia.org/wiki/Cannabis_in_Slovenia"],
       sibiz: ["Sibiz — Slovenia legalizes medical cannabis: new law effective from August 20, 2025", "https://sibiz.eu/slovenia-legalizes-medical-cannabis-marijuana-new-law-effective-from-august-20-2025"],
@@ -679,7 +679,7 @@ export const DETAILS = {
   },
 
   VC: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       sl: ["Searchlight — No arrest for two ounces or less of cannabis (2019)", "https://www.searchlight.vc/searchlight/front-page/2019/08/02/no-arrest-for-two-ounces-or-less-of-cannabis/"],
       wiki: ["Wikipedia — Cannabis in Saint Vincent and the Grenadines", "https://en.wikipedia.org/wiki/Cannabis_in_Saint_Vincent_and_the_Grenadines"],
@@ -701,7 +701,7 @@ export const DETAILS = {
   },
 
   BR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       conectas: ["Conectas — Brazilian Supreme Court decriminalizes possession of marijuana for personal use", "https://conectas.org/en/noticias/nine-years-into-the-case-the-brazilian-federal-supreme-court-stf-decriminalizes-possession-of-marijuana-for-personal-use/"],
       gv: ["Global Voices — What changes will arise from the Supreme Court's ruling on personal marijuana use", "https://globalvoices.org/2024/11/14/what-will-the-brazilian-supreme-courts-ruling-on-personal-use-of-marijuana-change/"],
@@ -723,7 +723,7 @@ export const DETAILS = {
   },
 
   BS: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       mm: ["Marijuana Moment — Bahamas government unveils proposal to legalize marijuana for medical, religious and scientific use", "https://www.marijuanamoment.net/bahamas-government-unveils-proposal-to-legalize-marijuana-for-medical-religious-and-scientific-use/"],
       gleaner: ["Jamaica Gleaner — Bahamas introduces bills to legalise marijuana for medical and religious use", "https://jamaica-gleaner.com/article/caribbean/20230825/bahamas-introduces-bills-legalise-marijuana-medical-and-religious"],
@@ -744,7 +744,7 @@ export const DETAILS = {
   },
 
   BB: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       bill: ["Parliament of Barbados — Drug Abuse (Prevention and Control) (Amendment) Bill (PDF)", "https://www.barbadosparliament.com/uploads/bill_resolution/0ea7e3e8e12c3a619708f6b1f889679f.pdf"],
       gis: ["Barbados Government Information Service — Police official clarifies cannabis legislation", "https://gisbarbados.gov.bb/blog/police-official-clarifies-cannabis-legislation"],
@@ -766,7 +766,7 @@ export const DETAILS = {
   },
 
   AT: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Austria?", "https://www.cannabisregulations.ai/country-legality/austria-marijuana"],
       tb: ["TripBase — Austria cannabis laws", "https://www.tripbase.com/drug-laws/austria/cannabis/"],
@@ -787,7 +787,7 @@ export const DETAILS = {
   },
 
   PE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       np: ["New Peruvian — Is marijuana legal in Peru?", "https://newperuvian.com/is-marijuana-legal-in-peru/"],
       giq: ["GrowerIQ — How to get a cannabis license in Peru", "https://groweriq.ca/how-to-get-a-cannabis-license-in-peru/"],
@@ -808,7 +808,7 @@ export const DETAILS = {
   },
 
   HR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Croatia", "https://en.wikipedia.org/wiki/Cannabis_in_Croatia"],
       mjb: ["MJBizDaily — Croatia legalizes medical cannabis sales", "https://mjbizdaily.com/croatia-legalizes-medical-cannabis-sales/"],
@@ -829,7 +829,7 @@ export const DETAILS = {
   },
 
   EE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Estonia", "https://en.wikipedia.org/wiki/Cannabis_in_Estonia"],
       cann: ["The Cannigma — Cannabis laws in Estonia", "https://cannigma.com/regulation/cannabis-laws-in-estonia/"],
@@ -850,7 +850,7 @@ export const DETAILS = {
   },
 
   EC: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Ecuador", "https://en.wikipedia.org/wiki/Cannabis_in_Ecuador"],
       lc: ["LegalClarity — Cannabis laws in Ecuador: is it legal?", "https://legalclarity.org/cannabis-laws-in-ecuador-is-it-legal/"],
@@ -872,7 +872,7 @@ export const DETAILS = {
   },
 
   UA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Ukraine", "https://en.wikipedia.org/wiki/Cannabis_in_Ukraine"],
       rub: ["Rubryka — New law legalizing medical cannabis comes into effect (August 2024)", "https://rubryka.com/en/2024/08/16/v-ukrayini-nabuv-chynnosti-zakon-pro-legalizatsiyu-medychnogo-kanabisu-shho-zminytsya-dlya-patsiyentiv-ta-likariv/amp"],
@@ -894,7 +894,7 @@ export const DETAILS = {
   },
 
   NZ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       moh: ["NZ Ministry of Health — Misuse of Drugs Amendment Act 2019 post-implementation review (PDF)", "https://health.govt.nz/system/files/2021-11/misuse_of_drugs_amendment_act_2019_post-implementation_review.pdf"],
       ref: ["Wikipedia — 2020 New Zealand cannabis referendum", "https://en.wikipedia.org/wiki/2020_New_Zealand_cannabis_referendum"],
@@ -916,7 +916,7 @@ export const DETAILS = {
   },
 
   DK: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       lc: ["LegalClarity — Is weed illegal in Denmark? Laws and penalties", "https://legalclarity.org/is-weed-illegal-in-denmark-laws-and-penalties/"],
       boc: ["Business of Cannabis — Denmark: cannabis regulation overview", "https://businessofcannabis.com/eu-cannabis-regulation/denmark/"],
@@ -938,7 +938,7 @@ export const DETAILS = {
   },
 
   MD: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Moldova", "https://en.wikipedia.org/wiki/Cannabis_in_Moldova"],
       cann: ["The Cannigma — Cannabis laws in Moldova", "https://cannigma.com/regulation/cannabis-laws-in-moldova/"],
@@ -959,7 +959,7 @@ export const DETAILS = {
   },
 
   PY: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       iba: ["International Bar Association — Medical cannabis in Paraguay: regulatory framework", "https://prod-bo.ibanet.org/medical-cannabis-paraguay"],
       ferrere: ["Ferrere — Bill decriminalising sowing, use and possession of cannabis for medicinal purposes", "https://ferrere.com/en/news/house-of-representatives-passes-bill-that-decriminalizes-the-sowing-use-and-possession-of-cannabis-for-medicinal-purposes/"],
@@ -981,7 +981,7 @@ export const DETAILS = {
   },
 
   GR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       nk: ["Neos Kosmos — Hopes run high for marijuana law reform in Greece", "https://neoskosmos.com/en/2019/10/02/news/greece/hopes-run-high-for-marijuana-law-reform-in-greece"],
       mondaq: ["Mondaq — The new legislative regime on pharmaceutical cannabis (Greece)", "https://www.mondaq.com/life-sciences-biotechnology-nanotechnology/1097712/the-new-legislative-regime-on-pharmaceutical-cannabis"],
@@ -1002,7 +1002,7 @@ export const DETAILS = {
   },
 
   IE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       oe: ["Offaly Express — Penalty eased for first-offence cannabis possession for personal use", "https://www.offalyexpress.ie/news/penalty-eased-for-first-offence-cannabis-possession-for-personal-use-8022984"],
       ll: ["Letterkenny Live — Drug cautions 'clearly not working' as cannabis possession charges top 17,000", "https://www.letterkennylive.ie/news/national-news/1431425/drug-cautions-clearly-not-working-as-cannabis-possession-charges-top-17-000.html"],
@@ -1024,7 +1024,7 @@ export const DETAILS = {
   },
 
   KH: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       law: ["Law on Control of Drugs 2012 — English version (PDF, Sithi)", "https://www.sithi.org/medias/files/projects/sithi/law/Drug-Control-Law-2012-Final-English-Version.pdf"],
       lc: ["LegalClarity — Is weed legal in Cambodia? The law explained", "https://legalclarity.org/is-weed-legal-in-cambodia-the-law-explained/"],
@@ -1045,7 +1045,7 @@ export const DETAILS = {
   },
 
   MA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       anrac: ["Wikipedia — Cannabis in Morocco", "https://en.wikipedia.org/wiki/Cannabis_in_Morocco"],
       ata: ["Atalayar — Morocco issues more than 3,000 authorisations for the legal use of cannabis", "https://www.atalayar.com/en/articulo/society/morocco-issues-more-than-3000-authorisations-for-the-legal-use-of-cannabis/20240821115205204329.html"],
@@ -1067,7 +1067,7 @@ export const DETAILS = {
   },
 
   NP: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Nepal", "https://en.wikipedia.org/wiki/Cannabis_in_Nepal"],
       ok: ["Onlinekhabar — Narcotics law in Nepal: everything you need to know", "https://english.onlinekhabar.com/narcotics-law-in-nepal-everything-you-need-to-know-about.html"],
@@ -1089,7 +1089,7 @@ export const DETAILS = {
   },
 
   AM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       hca: ["Helsinki Citizens' Assembly Vanadzor — Cure or crime? Armenian lawmakers revise punishment for drug abusers", "https://archive.hcav.am/en/events/cure-or-crime-armenian-lawmakers-revise-punishment-for-drug-abusers/"],
       iwpr: ["IWPR — Armenia goes soft on drugs", "https://iwpr.net/pzil59xk"],
@@ -1110,7 +1110,7 @@ export const DETAILS = {
   },
 
   KG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Kyrgyzstan?", "https://www.cannabisregulations.ai/country-legality/kyrgyzstan-marijuana"],
       glepha: ["GLEPHA — Analysis of the current anti-drug legislation of the Kyrgyz Republic", "https://glepha.com/analysis-of-the-current-anti-drug-legislation-of-the-kyrgyz-republic-aleksandr-alex-zelichenko/"],
@@ -1131,7 +1131,7 @@ export const DETAILS = {
   },
 
   NO: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       sn: ["Science Norway — No decriminalisation of drugs in Norway yet", "https://sciencenorway.no/addiction-cannabis-crime/no-decriminalisation-of-drugs-in-norway-yet-being-caught-with-a-joint-can-still-have-major-consequences/2054646"],
       tni: ["TNI — How the punishment for drugs possession in Norway is changing", "https://ungassondrugs.org/en/site_content/item/10528-how-the-punishment-for-drugs-possession-in-norway-is-changing.html"],
@@ -1152,7 +1152,7 @@ export const DETAILS = {
   },
 
   GY: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       dpi: ["Guyana Department of Public Information — Narcotics amendment bill removes jail time for up to 30 grams of marijuana", "https://dpi.gov.gy/govts-narcotics-amendment-bill-removes-jail-time-for-up-to-30-grams-of-marijuana"],
       act: ["Wikipedia — Cannabis in Guyana", "https://en.wikipedia.org/wiki/Cannabis_in_Guyana"],
@@ -1173,7 +1173,7 @@ export const DETAILS = {
   },
 
   GH: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       idpc: ["IDPC — Parliament of Ghana passes historic new drug law", "https://idpc.net/blog/2020/04/parliament-of-ghana-passes-historic-new-drug-law-paving-the-way-for-a-west-african-approach"],
       act: ["Narcotics Control Commission Act, 2020 (Act 1019) — Parliament of Ghana (PDF)", "https://ir.parliament.gh/bitstream/handle/123456789/1921/NARCOTICS%20CONTROL%20COMMISSION%20ACT,%202020%20(ACT%201019).pdf"],
@@ -1194,7 +1194,7 @@ export const DETAILS = {
   },
 
   LV: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Latvia", "https://en.wikipedia.org/wiki/Cannabis_in_Latvia"],
       euda: ["EU Drugs Agency — Latvia country drug report 2019 (PDF)", "https://www.euda.europa.eu/system/files/media/publications/documents/11338/latvia-cdr-2019.pdf"],
@@ -1215,7 +1215,7 @@ export const DETAILS = {
   },
 
   VE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Venezuela", "https://en.wikipedia.org/wiki/Cannabis_in_Venezuela"],
       tni: ["Transnational Institute — Reforma de la ley de drogas en Venezuela: guía básica", "https://www.tni.org/es/publicaci%C3%B3n/reforma-de-la-ley-de-drogas-en-venezuela-guia-basica"],
@@ -1236,7 +1236,7 @@ export const DETAILS = {
   },
 
   LI: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Liechtenstein", "https://en.wikipedia.org/wiki/Cannabis_in_Liechtenstein"],
       cann: ["The Cannigma — Cannabis laws in Liechtenstein", "https://cannigma.com/regulation/cannabis-laws-in-liechtenstein/"],
@@ -1257,7 +1257,7 @@ export const DETAILS = {
   },
 
   GD: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       ng1: ["NOW Grenada — Government to table Drug Abuse (Prevention and Control) Amendment Bill (June 2025)", "https://nowgrenada.com/2025/06/government-to-table-drug-abuse-prevention-and-control-amendment-bill/"],
       ng2: ["NOW Grenada — Marijuana decriminalisation legislation to go before parliament no later than June 2025", "https://nowgrenada.com/2025/02/marijuana-decriminalisation-legislation-to-go-before-parliament-no-later-than-june-2025/"],
@@ -1278,7 +1278,7 @@ export const DETAILS = {
   },
 
   PK: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       shc: ["Sindh High Court — judgment applying the Control of Narcotic Substances (Amendment) Act 2022", "https://caselaw.shc.gov.pk/caselaw/view-file/MjE5MTk3Y2Ztcy1kYzgz"],
       wiki: ["Wikipedia — Cannabis in Pakistan", "https://en.wikipedia.org/wiki/Cannabis_in_Pakistan"],
@@ -1298,7 +1298,7 @@ export const DETAILS = {
   },
 
   IS: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       nsfk: ["Nordic Research Council for Criminology — Retreat or entrenchment? Drug policies in Iceland revisited", "https://nsfk.org/2021/09/25/retreat-or-entrenchment-drug-policies-in-iceland-revisited/"],
       cann: ["The Cannigma — Iceland cannabis laws", "https://cannigma.com/regulation/iceland-cannabis-laws/"],
@@ -1319,7 +1319,7 @@ export const DETAILS = {
   },
 
   GB: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       sa: ["Sentencing Academy — Possession of a Class B drug", "https://www.sentencingacademy.org.uk/snapshot/possession-of-a-class-b-drug/"],
       boc: ["Business of Cannabis — UK cannabis regulation overview", "https://businessofcannabis.com/eu-cannabis-regulation/uk/"],
@@ -1341,7 +1341,7 @@ export const DETAILS = {
   },
 
   AL: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       kp: ["Karanović & Partners — Albania: legalization of cannabis for medical and industrial purposes", "https://www.karanovicpartners.com/news/albania-legalization-of-cannabis-for-medical-and-industrial-purposes/"],
       mjb: ["MJBizDaily — Albania passes medical marijuana law", "https://mjbizdaily.com/albania-passes-medical-marijuana-law/"],
@@ -1362,7 +1362,7 @@ export const DETAILS = {
   },
 
   KZ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Kazakhstan?", "https://www.cannabisregulations.ai/country-legality/kazakhstan-marijuana"],
       zakon: ["Zakon.kz — Kazakhstan plans to change punishment for drug use", "https://www.zakon.kz/pravo/6529660-v-kazakhstane-planiruyut-izmenit-nakazanie-za-upotreblenie-narkotikov.html"],
@@ -1383,7 +1383,7 @@ export const DETAILS = {
   },
 
   PL: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       dr: ["Drugreporter — Polish drug policy by numbers", "https://drogriporter.hu/en/polish-drug-policy-by-numbers/"],
       ch: ["Chambers Practice Guides — Medical cannabis and cannabinoid regulation 2024: Poland", "https://practiceguides.chambers.com/practice-guides/medical-cannabis-cannabinoid-regulation-2024/poland"],
@@ -1405,7 +1405,7 @@ export const DETAILS = {
   },
 
   FI: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Finland", "https://en.wikipedia.org/wiki/Cannabis_in_Finland"],
       td: ["TalkingDrugs — Grassroots cannabis decriminalization campaign in Finland", "https://www.talkingdrugs.org/grassroots-cannabis-decriminalization-campaign-in-finland-pushing-towards-public-agenda"],
@@ -1426,7 +1426,7 @@ export const DETAILS = {
   },
 
   FR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cidj: ["CIDJ — Détention de cannabis, je risque quoi ?", "https://www.cidj.com/vie-quotidienne/justice/detention-de-cannabis-je-risque-quoi"],
       sp: ["Service-Public.fr — Therapeutic cannabis", "https://www.service-public.gouv.fr/particuliers/vosdroits/F35817?lang=en"],
@@ -1448,7 +1448,7 @@ export const DETAILS = {
   },
 
   IN: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       ipl: ["iPleaders — Is weed legal in India?", "https://blog.ipleaders.in/is-weed-legal-in-india/"],
       hg: ["Homegrown — A one-stop guide to marijuana laws in India", "https://homegrown.co.in/homegrown-voices/a-one-stop-homegrown-guide-to-marijuana-laws-in-india"],
@@ -1469,7 +1469,7 @@ export const DETAILS = {
   },
 
   LA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cms: ["CMS Expert Guide — Cannabis law and legislation in Laos", "https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/laos"],
       cl: ["Conventus Law — Laos approves hemp-related activities", "https://conventuslaw.com/report/laos-approves-hemp-related-activities/"],
@@ -1489,7 +1489,7 @@ export const DETAILS = {
   },
 
   SZ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       law: ["Opium and Habit-forming Drugs Act, 1922 (EswatiniLII)", "https://eswatinilii.org/akn/sz/act/1922/37"],
       cr: ["CannabisRegulations.ai — Is weed legal in Eswatini?", "https://www.cannabisregulations.ai/country-legality/eswatini-marijuana"],
@@ -1510,7 +1510,7 @@ export const DETAILS = {
   },
 
   SG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cnb: ["Central Narcotics Bureau — Singapore's anti-drug laws on cannabis", "https://www.cnb.gov.sg/educational-resources/myths-and-facts-about-drugs/cannabis/singapore's-anti-drug-laws-on-cannabis"],
       wiki: ["Wikipedia — Cannabis in Singapore", "https://en.wikipedia.org/wiki/Cannabis_in_Singapore"],
@@ -1531,7 +1531,7 @@ export const DETAILS = {
   },
 
   SC: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Seychelles", "https://en.wikipedia.org/wiki/Cannabis_in_Seychelles"],
       reg: ["Seychelles Gazette — Misuse of Drugs (Cannabidiol-based Products for Medical Purposes) Regulations 2020 (PDF)", "https://www.gazette.sc/sites/default/files/2020-12/SI%2025%202020%20-%20Misuse%20of%20Drugs%20Act%202020.pdf"],
@@ -1551,7 +1551,7 @@ export const DETAILS = {
   },
 
   MK: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       pp: ["Prohibition Partners — North Macedonia medical cannabis market overview 2025", "https://prohibitionpartners.com/2025/10/02/north-macedonia-medical-cannabis-market-overview-2025/"],
       gi: ["Global Initiative — Lessons learned from cannabis legalization in North Macedonia", "https://riskbulletins.globalinitiative.net/see-obs-005/04-lessons-learned-from-cannabis-legalization.html"],
@@ -1572,7 +1572,7 @@ export const DETAILS = {
   },
 
   PA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       hs: ["Harris Sliwoski — Panama issues medical cannabis regulations", "https://harris-sliwoski.com/cannalawblog/panama-issues-medical-cannabis-regs/"],
       cl: ["Central Law — Panama: legal framework for the use of cannabis", "https://central-law.com/en/?p=10110"],
@@ -1593,7 +1593,7 @@ export const DETAILS = {
   },
 
   LB: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       idpc: ["IDPC — Lebanon set to legalise medical, industrial cannabis cultivation", "https://idpc.net/news/2020/03/lebanon-set-to-legalise-medical-industrial-cannabis-cultivation"],
       mjb: ["MJBizDaily — Lebanon legalizes medical cannabis production", "https://mjbizdaily.com/lebanon-legalizes-medical-cannabis-production/"],
@@ -1614,7 +1614,7 @@ export const DETAILS = {
   },
 
   LS: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Lesotho", "https://en.wikipedia.org/wiki/Cannabis_in_Lesotho"],
       td: ["TalkingDrugs — Lesotho cannabis legalisation", "https://www.talkingdrugs.org/lesotho-cannabis-legalisation"],
@@ -1635,7 +1635,7 @@ export const DETAILS = {
   },
 
   LT: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       lrt1: ["LRT — Lithuanian parliament takes half step toward cannabis decriminalisation", "https://www.lrt.lt/en/news-in-english/19/1846058/lithuanian-parliament-takes-half-step-toward-cannabis-decriminalisation"],
       lrt2: ["LRT — Decriminalisation of cannabis gets fresh push in Lithuania after celebrity detention", "https://www.lrt.lt/en/news-in-english/19/1829548/decriminalisation-of-cannabis-gets-fresh-push-in-lithuania-after-celebrity-detention"],
@@ -1656,7 +1656,7 @@ export const DETAILS = {
   },
 
   MW: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       act: ["Cannabis Regulation Act, No. 6 of 2020 (UNEP LEAP)", "https://leap.unep.org/en/countries/mw/national-legislation/cannabis-regulation-act-no-6-2020"],
       giq: ["GrowerIQ — How to get a cannabis license in Malawi", "https://groweriq.ca/how-to-get-a-cannabis-license-in-malawi/"],
@@ -1677,7 +1677,7 @@ export const DETAILS = {
   },
 
   SM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in San Marino", "https://en.wikipedia.org/wiki/Cannabis_in_San_Marino"],
       cann: ["The Cannigma — Marijuana laws in San Marino", "https://cannigma.com/cannabis-news/marijuana-laws-san-marino/"],
@@ -1698,7 +1698,7 @@ export const DETAILS = {
   },
 
   SK: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       sp: ["The Slovak Spectator — Parliament approves milder punishments for marijuana", "https://spectator.sme.sk/c/22863398/parliament-approves-milder-punishments-for-marijuana.html"],
       wiki: ["Wikipedia — Cannabis in Slovakia", "https://en.wikipedia.org/wiki/Cannabis_in_Slovakia"],
@@ -1720,7 +1720,7 @@ export const DETAILS = {
   },
 
   VU: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       act: ["Industrial Hemp and Medical Cannabis Act No. 31 of 2021 (UNEP LEAP)", "https://leap.unep.org/en/countries/vu/national-legislation/industrial-hemp-and-medical-cannabis-act-no-31-2021"],
       ib: ["Islands Business — Vanuatu regulates cultivation of cannabis and hemp", "https://islandsbusiness.com/news-break/vanuatu-regulates-cultivation-of-cannabis-and-hemp/"],
@@ -1741,7 +1741,7 @@ export const DETAILS = {
   },
 
   AO: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Angola", "https://en.wikipedia.org/wiki/Cannabis_in_Angola"],
       cr: ["CannabisRegulations.ai — Is weed legal in Angola?", "https://www.cannabisregulations.ai/country-legality/angola-marijuana"],
@@ -1761,7 +1761,7 @@ export const DETAILS = {
   },
 
   AD: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Andorra?", "https://www.cannabisregulations.ai/country-legality/andorra-marijuana"],
       cann: ["The Cannigma — Cannabis laws in Andorra", "https://cannigma.com/regulation/cannabis-laws-in-andorra/"],
@@ -1782,7 +1782,7 @@ export const DETAILS = {
   },
 
   BA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Bosnia and Herzegovina", "https://en.wikipedia.org/wiki/Cannabis_in_Bosnia_and_Herzegovina"],
       cms: ["CMS Expert Guide — Cannabis law and legislation in Bosnia and Herzegovina", "https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/bosnia-and-herzegovina"],
@@ -1803,7 +1803,7 @@ export const DETAILS = {
   },
 
   SE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       nordic: ["Nordic Alcohol and Drug Policy Network — Sweden: cannabis", "https://nordicalcohol.org/sweden-cannabis"],
       scan: ["Scandification — Is weed legal in Sweden?", "https://scandification.com/is-weed-legal-in-sweden-marijuana-laws-in-sweden/"],
@@ -1824,7 +1824,7 @@ export const DETAILS = {
   },
 
   BO: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       tni: ["Transnational Institute — About drug law reform in Bolivia", "https://www.tni.org/en/publication/about-drug-law-reform-in-bolivia"],
       wiki: ["Wikipedia — Cannabis in Bolivia", "https://en.wikipedia.org/wiki/Cannabis_in_Bolivia"],
@@ -1845,7 +1845,7 @@ export const DETAILS = {
   },
 
   BF: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Burkina Faso?", "https://www.cannabisregulations.ai/country-legality/burkina-faso-marijuana"],
       ml: ["Mainline — Burkina Faso country sheet on drug policy (PDF)", "https://mainline.nl/wp-content/uploads/2025/08/Burkina-Faso.pdf"],
@@ -1865,7 +1865,7 @@ export const DETAILS = {
   },
 
   BJ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Benin", "https://en.wikipedia.org/wiki/Cannabis_in_Benin"],
       tb: ["TripBase — Benin cannabis laws", "https://www.tripbase.com/drug-laws/benin/cannabis/"],
@@ -1885,7 +1885,7 @@ export const DETAILS = {
   },
 
   UG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       act: ["Narcotic Drugs and Psychotropic Substances (Control) Act, 2024 (ULII)", "https://ulii.org/akn/ug/act/2024/2"],
       ab: ["African Business — Uganda: House passes new strict narcotics law after court ruling", "https://african.business/2023/08/apo-newsfeed/uganda-house-passes-new-strict-narcotics-law-after-court-ruling"],
@@ -1906,7 +1906,7 @@ export const DETAILS = {
   },
 
   CI: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Côte d'Ivoire?", "https://www.cannabisregulations.ai/country-legality/cote-d-ivoire-marijuana"],
       koaci: ["Koaci — Trafic et consommation de stupéfiants: peines de cinq à dix ans (2021)", "https://www.koaci.com/article/2021/10/13/cote-divoire/societe/cote-divoire-trafic-et-consommation-de-stupefiants-la-peine-demprisonnement-desormais-fixee-de-cinq-a-dix-ans-et-une-amende-de-500000-a-50000000-fcfa_154621.html"],
@@ -1927,7 +1927,7 @@ export const DETAILS = {
   },
 
   CV: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Cape Verde?", "https://www.cannabisregulations.ai/country-legality/cape-verde-marijuana"],
     },
@@ -1946,7 +1946,7 @@ export const DETAILS = {
   },
 
   BI: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Burundi?", "https://www.cannabisregulations.ai/country-legality/burundi-marijuana"],
       wiki: ["Wikipedia — Cannabis in Burundi", "https://en.wikipedia.org/wiki/Cannabis_in_Burundi"],
@@ -1967,7 +1967,7 @@ export const DETAILS = {
   },
 
   CM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Cameroon?", "https://www.cannabisregulations.ai/country-legality/cameroon-marijuana"],
       tb: ["TripBase — Cameroon cannabis laws", "https://www.tripbase.com/drug-laws/cameroon/cannabis/"],
@@ -1987,7 +1987,7 @@ export const DETAILS = {
   },
 
   CF: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in the Central African Republic?", "https://www.cannabisregulations.ai/country-legality/central-african-republic-marijuana"],
       wiki: ["Wikipedia — Cannabis in the Central African Republic", "https://en.wikipedia.org/wiki/Cannabis_in_the_Central_African_Republic"],
@@ -2007,7 +2007,7 @@ export const DETAILS = {
   },
 
   TD: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Chad?", "https://www.cannabisregulations.ai/country-legality/chad-marijuana"],
       tb: ["TripBase — Chad cannabis laws", "https://www.tripbase.com/drug-laws/chad/cannabis/"],
@@ -2027,7 +2027,7 @@ export const DETAILS = {
   },
 
   KM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in the Comoros", "https://en.wikipedia.org/wiki/Cannabis_in_the_Comoros"],
       cr: ["CannabisRegulations.ai — Is weed legal in Comoros?", "https://www.cannabisregulations.ai/country-legality/comoros-marijuana"],
@@ -2048,7 +2048,7 @@ export const DETAILS = {
   },
 
   CG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in the Republic of the Congo", "https://en.wikipedia.org/wiki/Cannabis_in_the_Republic_of_the_Congo"],
       cr: ["CannabisRegulations.ai — Is weed legal in the Republic of the Congo?", "https://www.cannabisregulations.ai/country-legality/republic-of-the-congo-marijuana"],
@@ -2068,7 +2068,7 @@ export const DETAILS = {
   },
 
   DJ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Djibouti", "https://en.wikipedia.org/wiki/Cannabis_in_Djibouti"],
       cr: ["CannabisRegulations.ai — Is weed legal in Djibouti?", "https://www.cannabisregulations.ai/country-legality/djibouti-marijuana"],
@@ -2088,7 +2088,7 @@ export const DETAILS = {
   },
 
   CD: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in the Democratic Republic of the Congo", "https://en.wikipedia.org/wiki/Cannabis_in_the_Democratic_Republic_of_the_Congo"],
       cr: ["CannabisRegulations.ai — Is weed legal in the Democratic Republic of the Congo?", "https://www.cannabisregulations.ai/country-legality/democratic-republic-of-the-congo-marijuana"],
@@ -2108,7 +2108,7 @@ export const DETAILS = {
   },
 
   JP: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       dia: ["DIA Global Forum — Cannabis-derived drugs in Japan: new legislation and outlook (2025)", "https://globalforum.diaglobal.org/issue/february-2025/cannabis-derived-drugs-in-japan-new-legislation-and-outlook/"],
       giq: ["GrowerIQ — Japan's cannabis law reform: criminalizing use while opening the door to medicine", "https://groweriq.ca/2026/04/09/japan-cannabis-law-reform-2024/"],
@@ -2129,7 +2129,7 @@ export const DETAILS = {
   },
 
   RU: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Russia", "https://en.wikipedia.org/wiki/Cannabis_in_Russia"],
       tb: ["TripBase — Russia cannabis laws", "https://www.tripbase.com/drug-laws/russia/cannabis/"],
@@ -2149,7 +2149,7 @@ export const DETAILS = {
   },
 
   TR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       bh: ["Bıçak Law — Narcotic drug offences in Turkish law", "https://bicakhukuk.com/en/?p=23271"],
       mondaq: ["Mondaq — Drug possession and criminal penalties in Turkey", "https://www.mondaq.com/turkey/cannabis-hemp/958784/drug-possession-and-criminal-penalties-in-turkey"],
@@ -2170,7 +2170,7 @@ export const DETAILS = {
   },
 
   CN: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in China", "https://en.wikipedia.org/wiki/Cannabis_in_China"],
       lc: ["LegalClarity — China's Public Security Punishments Law: cannabis penalties", "https://legalclarity.org/chinas-public-security-punishments-law-cannabis-penalties/"],
@@ -2191,7 +2191,7 @@ export const DETAILS = {
   },
 
   EG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       law: ["UNODC SHERLOC — Egypt, Law No. 182 of 1960 on narcotics (PDF, French)", "https://sherloc.unodc.org/cld/uploads/res/document/egy/loi-182_html/egypte-_Loi_No_182_de_1960-fr.pdf"],
       cr: ["CannabisRegulations.ai — Is weed legal in Egypt?", "https://www.cannabisregulations.ai/country-legality/egypt-marijuana"],
@@ -2212,7 +2212,7 @@ export const DETAILS = {
   },
 
   NG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       om: ["Wikipedia — Cannabis in Nigeria", "https://en.wikipedia.org/wiki/Cannabis_in_Nigeria"],
       lii: ["NigeriaLII — Ibrahim v Federal Republic of Nigeria (Court of Appeal, 2016)", "https://nigerialii.org/akn/ng/judgment/ngca/2016/37/eng@2016-02-18"],
@@ -2233,7 +2233,7 @@ export const DETAILS = {
   },
 
   KR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       kt1: ["The Korea Times — Koreans who smoke weed overseas to face criminal charges, government warns (2024)", "https://www.koreatimes.co.kr/amp/southkorea/law-crime/20240527/south-koreans-who-smoke-weed-overseas-to-face-criminal-charges-govt-warns"],
       kt2: ["The Korea Times — Customs service warns against products containing marijuana (2024)", "https://www.koreatimes.co.kr/southkorea/society/20240102/customs-service-warns-against-products-containing-marijuana"],
@@ -2255,7 +2255,7 @@ export const DETAILS = {
   },
 
   MY: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Malaysia", "https://en.wikipedia.org/wiki/Cannabis_in_Malaysia"],
       hrw: ["Human Rights Watch — Malaysia repeals mandatory death penalty (2023)", "https://www.hrw.org/news/2023/04/11/malaysia-repeals-mandatory-death-penalty"],
@@ -2276,7 +2276,7 @@ export const DETAILS = {
   },
 
   ID: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       tempo: ["Tempo — Indonesian Constitutional Court rejects medical cannabis appeal", "https://en.tempo.co/amp/1613994/indonesian-constitutional-court-reject-medical-cannabis-appeal"],
       gp: ["Ganjapreneur — Indonesia high court rejects medical cannabis use and upholds drug laws", "https://ganjapreneur.com/indonesia-high-court-rejects-medical-cannabis-use-and-upholds-drug-laws"],
@@ -2297,7 +2297,7 @@ export const DETAILS = {
   },
 
   PH: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       ra: ["Republic Act No. 9165 — Comprehensive Dangerous Drugs Act of 2002 (LawPhil)", "https://lawphil.net/statutes/repacts/ra2002/ra_9165_2002.html"],
       malaya: ["Malaya — House joint panel okays medical marijuana bill (2025)", "https://malaya.com.ph/news/house-joint-panel-okays-medical-marijuana-bill"],
@@ -2318,7 +2318,7 @@ export const DETAILS = {
   },
 
   RO: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       dr: ["Drugreporter — Romania: drug-related offences reduced as new criminal code is enforced", "https://drogriporter.hu/en/romania-drug-related-offenses-reduced-as-new-criminal-code-is-enforced/"],
       pp: ["Prohibition Partners — Romania medical cannabis market overview 2025", "https://prohibitionpartners.com/2025/10/05/romania-medical-cannabis-market-overview-2025/"],
@@ -2340,7 +2340,7 @@ export const DETAILS = {
   },
 
   HU: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cms: ["CMS Law — Hungary to introduce legislative package dramatically tightening drug laws", "https://cms.law/en/hun/legal-updates/hungary-to-introduce-legislative-package-dramatically-tightening-drug-laws"],
       boc: ["Business of Cannabis — Is the new government set to end Hungary's hostility to drugs?", "https://businessofcannabis.com/is-the-new-government-set-to-end-hungarys-hostility-to-drugs/"],
@@ -2361,7 +2361,7 @@ export const DETAILS = {
   },
 
   CY: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Cyprus", "https://en.wikipedia.org/wiki/Cannabis_in_Cyprus"],
       cm1: ["Cyprus Mail — Jail terms for cannabis possession (2021)", "https://cyprus-mail.com/2021/12/21/jail-terms-for-cannabis-possession"],
@@ -2383,7 +2383,7 @@ export const DETAILS = {
   },
 
   ZW: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       nr: ["Nehanda Radio — Smoking mbanje remains illegal (2018)", "https://nehandaradio.com/2018/05/03/smoking-mbanje-remains-illegal"],
       lex: ["LEX Africa — The unconstitutional incarceration of cannabis in Zimbabwe (2021)", "https://lexafrica.com/2021/08/the-unconstitutional-incarceration-of-cannabis-in-zimbabwe/"],
@@ -2405,7 +2405,7 @@ export const DETAILS = {
   },
 
   VN: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       ln1: ["LawNet — How is illegal possession of drugs dealt with in Vietnam?", "https://lawnet.vn/thong-tin-phap-luat/en/hinh-su/how-are-illegal-possession-of-drugs-dealt-with-in-vietnam-102903.html"],
       ln2: ["LawNet — Is cannabis considered a narcotic substance in Vietnam?", "https://lawnet.vn/ngan-hang-phap-luat/en/tu-van-phap-luat/trach-nhiem-hinh-su/is-cannabis-considered-a-narcotic-substance-in-vietnam-403021"],
@@ -2426,7 +2426,7 @@ export const DETAILS = {
   },
 
   IR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Iran", "https://en.wikipedia.org/wiki/Cannabis_in_Iran"],
       ihr: ["Iran Human Rights — Execution trends six months after the new Anti-Narcotics Law", "https://iranhr.net/en/print/5/3325/"],
@@ -2447,7 +2447,7 @@ export const DETAILS = {
   },
 
   TN: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       td: ["TalkingDrugs — Nine years after reform, Tunisia's drug law still fills its prisons", "https://www.talkingdrugs.org/nine-years-after-reform-tunisias-drug-law-still-fills-its-prisons/"],
       hrw: ["Human Rights Watch — report on Tunisia's Law 52 (PDF)", "https://www.hrw.org/sites/default/files/report_pdf/tunisia0216_web_1.pdf"],
@@ -2468,7 +2468,7 @@ export const DETAILS = {
   },
 
   AE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       mondaq: ["Mondaq — The UAE narcotics law explained", "https://www.mondaq.com/crime/1835052/the-uae-narcotics-law-explained"],
       ly: ["LY Lawyers — Possession of cannabis in the UAE", "https://lylawyers.com/blog/possession-of-cannabis-in-the-uae"],
@@ -2489,7 +2489,7 @@ export const DETAILS = {
   },
 
   TW: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       ts: ["Taiwan Scene — What's the deal with Taiwan's cannabis laws? (2022)", "https://taiwan-scene.com/2022/04/20/whats-the-deal-with-taiwans-cannabis-laws/"],
       tn: ["Taiwan News — amendment on growing marijuana for personal use", "https://www.taiwannews.com.tw/en/news/4512136"],
@@ -2510,7 +2510,7 @@ export const DETAILS = {
   },
 
   BY: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       lb: ["Legalize Belarus — Article 328 of the Criminal Code of the Republic of Belarus", "https://legalizebelarus.org/en/news/article-328-of-the-criminal-code-of-republic-of-belarus/"],
       kp: ["Krytyka Polityczna — Drug wars in Belarus: interview with Mothers on Strike", "https://krytykapolityczna.pl/political-critique-archive/drug-wars-in-belarus-interview-with-mothers-on-strike/"],
@@ -2531,7 +2531,7 @@ export const DETAILS = {
   },
 
   MU: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       mondaq: ["Mondaq — Medical cannabis in Mauritius", "https://www.mondaq.com/food-and-drugs-law/1269988/medical-cannabis-in-mauritius"],
       leaf: ["Leafwell — Is marijuana legal in Mauritius?", "https://leafwell.com/blog/is-marijuana-legal-in-mauritius"],
@@ -2553,7 +2553,7 @@ export const DETAILS = {
   },
 
   LK: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       law: ["Wikipedia — Cannabis in Sri Lanka", "https://en.wikipedia.org/wiki/Cannabis_in_Sri_Lanka"],
       leap: ["Poisons, Opium and Dangerous Drugs Ordinance, Chapter 218 (UNEP LEAP)", "https://leap.unep.org/en/countries/lk/national-legislation/poisons-opium-and-dangerous-drugs-ordinance-chapter-218"],
@@ -2573,7 +2573,7 @@ export const DETAILS = {
   },
 
   LY: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Libya?", "https://www.cannabisregulations.ai/country-legality/libya-marijuana"],
       law: ["DCAF Libya security legislation database — Law No. 19 of 1996 amending Law No. 7 of 1990 on narcotics", "https://security-legislation.ly/latest-laws/law-no-19-of-1996-amending-certain-provisions-of-law-no-7-of-1990-on-narcotics-and-psychotropic-substances/"],
@@ -2593,7 +2593,7 @@ export const DETAILS = {
   },
 
   SD: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Narcotic Drugs and Psychotropic Substances Act (Sudan)", "https://en.wikipedia.org/wiki/Narcotic_Drugs_and_Psychotropic_Substances_Act_(Sudan)"],
       cr: ["CannabisRegulations.ai — Is weed legal in Sudan?", "https://www.cannabisregulations.ai/country-legality/sudan-marijuana"],
@@ -2613,7 +2613,7 @@ export const DETAILS = {
   },
 
   ZM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       loc: ["Library of Congress — Zambia: Cannabis Act and Industrial Hemp Act enacted (2021)", "https://www.loc.gov/item/global-legal-monitor/2021-07-09/zambia-cannabis-act-and-industrial-hemp-act-enacted/"],
       act: ["Cannabis Act, 2021 (ZambiaLII)", "https://zambialii.org/akn/zm/act/2021/33/eng@2021-05-20"],
@@ -2634,7 +2634,7 @@ export const DETAILS = {
   },
 
   CU: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cn1: ["CubaNet — Juicios por marihuana en Cuba: largas condenas en una ofensiva ejemplarizante", "https://www.cubanet.org/juicios-por-marihuana-en-cuba-largas-condenas-en-el-marco-de-una-ofensiva-ejemplarizante/"],
       cn2: ["CubaNet — Santiago de Cuba: nueve años de prisión por tráfico de marihuana", "https://www.cubanet.org/santiago-de-cuba-imponen-nueve-anos-de-prision-a-ciudadano-por-trafico-de-marihuana/"],
@@ -2655,7 +2655,7 @@ export const DETAILS = {
   },
 
   BH: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Bahrain", "https://en.wikipedia.org/wiki/Cannabis_in_Bahrain"],
       cr: ["CannabisRegulations.ai — Is weed legal in Bahrain?", "https://www.cannabisregulations.ai/country-legality/bahrain-marijuana"],
@@ -2676,7 +2676,7 @@ export const DETAILS = {
   },
 
   IQ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       tnr: ["The New Region — reporting on Iraq's drug law and enforcement", "https://thenewregion.com/posts/3810"],
       hoc: ["Hands Off Cain — Iraq: three drug dealers sentenced to death", "https://handsoffcain.info/news/iraq-three-drug-dealers-sentenced-to-death-60482408"],
@@ -2697,7 +2697,7 @@ export const DETAILS = {
   },
 
   RW: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       ea: ["The East African — Rwanda legalises medical use of cannabis", "https://theeastafrican.co.ke/tea/news/east-africa/rwanda-legalises-medical-use-of-cannabis--3456728"],
       nation: ["Nation — Rwanda legalises medical, research use of marijuana", "https://nation.africa/kenya/news/africa/rwanda-permits-medical-use-of-marijuana-3456950"],
@@ -2717,7 +2717,7 @@ export const DETAILS = {
   },
 
   AF: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       am: ["Hasht-e Subh (8am.media) — The cultivation of marijuana in Afghanistan banned by Taliban", "https://8am.media/eng/the-cultivation-of-marijuana-in-afghanistan-banned-by-taliban/"],
       cann: ["The Cannigma — Cannabis laws in Afghanistan", "https://cannigma.com/regulation/cannabis-laws-in-afghanistan/"],
@@ -2738,7 +2738,7 @@ export const DETAILS = {
   },
 
   FJ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       sulua: ["PacLII — Fiji High Court judgment applying the Sulua sentencing guideline (2013)", "https://rms.paclii.org/fj/cases/FJHC/2013/209.html"],
       wiki: ["Wikipedia — Cannabis in Fiji", "https://en.wikipedia.org/wiki/Cannabis_in_Fiji"],
@@ -2758,7 +2758,7 @@ export const DETAILS = {
   },
 
   BT: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       tb1: ["The Bhutanese — Narcotics (Amendment) Bill passed with more clarity", "https://thebhutanese.bt/narcotics-amendment-bill-passed-with-more-clarity/"],
       tb2: ["The Bhutanese — Narcotics Drugs bill to penalize traffickers severely", "https://thebhutanese.bt/narcotics-drugs-bill-to-penalize-traffickers-severely/"],
@@ -2779,7 +2779,7 @@ export const DETAILS = {
   },
 
   KP: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in North Korea", "https://en.wikipedia.org/wiki/Cannabis_in_North_Korea"],
       ap: ["AP via Fox News — North Korea cheered as pot paradise, but evidence is hazy", "https://www.foxnews.com/world/north-korea-cheered-as-pot-paradise-but-evidence-is-hazy"],
@@ -2800,7 +2800,7 @@ export const DETAILS = {
   },
 
   OM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       gn: ["Gulf News — Oman's new anti-narcotics law introduces death penalty, fines of up to OMR 60,000", "https://gulfnews.com/world/gulf/oman/omans-new-anti-narcotics-law-introduces-death-penalty-fines-of-up-to-omr60000-1.500669684"],
       oo: ["Oman Observer — New law tightens penalties in drug crimes", "https://www.omanobserver.om/article/1195727/oman/new-law-tightens-penalties-in-drug-crimes"],
@@ -2821,7 +2821,7 @@ export const DETAILS = {
   },
 
   QA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cann: ["The Cannigma — Cannabis laws in Qatar", "https://cannigma.com/regulation/cannabis-laws-in-qatar/"],
       trip: ["TripBase — Qatar cannabis laws", "https://www.tripbase.com/drug-laws/qatar/cannabis/"],
@@ -2841,7 +2841,7 @@ export const DETAILS = {
   },
 
   TM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Turkmenistan", "https://en.wikipedia.org/wiki/Cannabis_in_Turkmenistan"],
       cr: ["CannabisRegulations.ai — Is weed legal in Turkmenistan?", "https://www.cannabisregulations.ai/country-legality/turkmenistan-marijuana"],
@@ -2862,7 +2862,7 @@ export const DETAILS = {
   },
 
   MV: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       mi: ["Maldives Independent — Death penalty for drug traffickers: what the new law says", "https://maldivesindependent.com/explainer/death-penalty-for-drug-traffickers-what-the-new-law-says-1715"],
       at: ["Atoll Times — President ratifies drug law with death penalty, full-life terms", "https://atolltimes.mv/post/news/14321"],
@@ -2883,7 +2883,7 @@ export const DETAILS = {
   },
 
   SA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Saudi Arabia", "https://en.wikipedia.org/wiki/Cannabis_in_Saudi_Arabia"],
       gdn: ["GDN Online — Saudi drug trafficker gets 10 years jail, 1,200 lashes", "https://www.gdnonline.com/Details/151533/Saudi-drug-trafficker-gets-10-years-jail,-1200-lashes"],
@@ -2904,7 +2904,7 @@ export const DETAILS = {
   },
 
   KW: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Kuwait", "https://en.wikipedia.org/wiki/Cannabis_in_Kuwait"],
       kt: ["Khaleej Times — Kuwait authorities bust marijuana farm owner", "https://www.khaleejtimes.com/world/gulf/kuwait-marijuana-farm-owner-seize-over-15000-dinars"],
@@ -2925,7 +2925,7 @@ export const DETAILS = {
   },
 
   BN: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Brunei", "https://en.wikipedia.org/wiki/Cannabis_in_Brunei"],
       trip: ["TripBase — Brunei cannabis laws", "https://www.tripbase.com/drug-laws/brunei/cannabis/"],
@@ -2946,7 +2946,7 @@ export const DETAILS = {
   },
 
   TZ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Tanzania", "https://en.wikipedia.org/wiki/Cannabis_in_Tanzania"],
       uk: ["Ultimate Kilimanjaro — Is cannabis or CBD legal in Tanzania?", "https://www.ultimatekilimanjaro.com/is-cannabis-or-cbd-legal-in-tanzania/"],
@@ -2967,7 +2967,7 @@ export const DETAILS = {
   },
 
   RS: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       trip: ["TripBase — Serbia drug laws", "https://www.tripbase.com/drug-laws/serbia/"],
       par: ["Paragraf — Krivični zakonik, član 246 (Serbian Criminal Code)", "https://www.paragraf.rs/propisi/clanovi/clan-246-krivicni-zakonik.html"],
@@ -2988,7 +2988,7 @@ export const DETAILS = {
   },
 
   ET: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Ethiopia?", "https://www.cannabisregulations.ai/country-legality/ethiopia-marijuana"],
       leaf: ["Leafwell — Is marijuana legal in Ethiopia?", "https://leafwell.com/blog/is-marijuana-legal-in-ethiopia"],
@@ -3008,7 +3008,7 @@ export const DETAILS = {
   },
 
   SN: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Senegal?", "https://www.cannabisregulations.ai/country-legality/senegal-marijuana"],
       mo: ["Mémoire Online — Les usagers de la drogue et la justice pénale au Sénégal", "https://www.memoireonline.com/04/10/3263/m_Les-usagers-de-la-drogue-et-la-justice-penale-au-Senegal17.html"],
@@ -3028,7 +3028,7 @@ export const DETAILS = {
   },
 
   BG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Bulgaria", "https://en.wikipedia.org/wiki/Cannabis_in_Bulgaria"],
       dr: ["Drugreporter — Legalisation of marijuana is a political taboo in Bulgaria", "https://drogriporter.hu/en/legalisation-of-marijuana-is-a-political-taboo-in-bulgaria/"],
@@ -3049,7 +3049,7 @@ export const DETAILS = {
   },
 
   KE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       act: ["Kenya Law — Narcotic Drugs and Psychotropic Substances (Control) Act", "https://new.kenyalaw.org/akn/ke/act/1994/4"],
       sn: ["Shahidi News — 30 years in prison or Sh30m fine if found with 100 grams of narcotic drugs (2022)", "https://shahidinews.co.ke/2022/03/28/30-years-in-prison-or-sh30m-fine-if-youre-found-with-100-grams-of-narcotic-drugs-in-kenya"],
@@ -3070,7 +3070,7 @@ export const DETAILS = {
   },
 
   DZ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Algeria", "https://en.wikipedia.org/wiki/Cannabis_in_Algeria"],
       mb: ["More Blossom — Algeria country report", "https://www.moreblossom.com/countries/algeria"],
@@ -3091,7 +3091,7 @@ export const DETAILS = {
   },
 
   BD: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Bangladesh", "https://en.wikipedia.org/wiki/Cannabis_in_Bangladesh"],
       netra: ["Netra News — Cops, camera, cannabis (2026)", "https://netra.news/2026/cannabis-war-bangladesh/"],
@@ -3112,7 +3112,7 @@ export const DETAILS = {
   },
 
   JO: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Jordan", "https://en.wikipedia.org/wiki/Cannabis_in_Jordan"],
       cr: ["CannabisRegulations.ai — Is weed legal in Jordan?", "https://www.cannabisregulations.ai/country-legality/jordan-marijuana"],
@@ -3133,7 +3133,7 @@ export const DETAILS = {
   },
 
   DO: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in the Dominican Republic", "https://en.wikipedia.org/wiki/Cannabis_in_the_Dominican_Republic"],
       fc: ["FC Abogados — Ley No. 50-88 sobre drogas y sustancias controladas", "https://fc-abogados.com/ley-no-50-88-sobre-drogas-y-sustancias-controladas-en-la-republica-dominicana-y-sus-modificaciones-contenidas-en-la-ley-35-90-del-7-de-junio-de-1990/"],
@@ -3154,7 +3154,7 @@ export const DETAILS = {
   },
 
   NI: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Nicaragua?", "https://www.cannabisregulations.ai/country-legality/nicaragua-marijuana"],
       clr: ["Cannabis Law Report — Cannabis policy in Nicaragua: de facto decriminalization, part 1", "https://journal.cannabislawreport.com/nicaragua-cannabis-policy-in-nicaragua-de-facto-decriminalization-part-1/"],
@@ -3174,7 +3174,7 @@ export const DETAILS = {
   },
 
   HN: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Honduras?", "https://www.cannabisregulations.ai/country-legality/honduras-marijuana"],
       law: ["Tribunal Superior de Cuentas — Ley sobre uso indebido y tráfico ilícito de drogas y sustancias psicotrópicas", "https://www.tsc.gob.hn/biblioteca/index.php/leyes/146-ley-sobre-uso-indebido-y-trafico-ilicito-de-drogas-y-sustancias-psicotropicas"],
@@ -3195,7 +3195,7 @@ export const DETAILS = {
   },
 
   XK: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Kosovo", "https://en.wikipedia.org/wiki/Cannabis_in_Kosovo"],
       cann: ["The Cannigma — Cannabis laws in Kosovo", "https://cannigma.com/regulation/cannabis-laws-in-kosovo/"],
@@ -3216,7 +3216,7 @@ export const DETAILS = {
   },
 
   ME: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Montenegro?", "https://www.cannabisregulations.ai/country-legality/montenegro-marijuana"],
       cann: ["The Cannigma — Cannabis laws in Montenegro", "https://cannigma.com/regulation/cannabis-laws-in-montenegro/"],
@@ -3236,7 +3236,7 @@ export const DETAILS = {
   },
 
   MC: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Monaco", "https://en.wikipedia.org/wiki/Cannabis_in_Monaco"],
       mt1: ["Monaco Tribune — Pensioner tried for possession of cannabis and CBD products (2025)", "https://www.monaco-tribune.com/en/2025/04/pensioner-tried-for-possession-of-cannabis-and-cbd-products/"],
@@ -3257,7 +3257,7 @@ export const DETAILS = {
   },
 
   GT: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       tni: ["Transnational Institute — Drug law reform in Guatemala: basic guide", "https://www.tni.org/en/node/16146"],
       lig: ["Living in Guatemala — Cannabis and CBD in Guatemala", "https://livinginguatemala.com/guides/cannabis-cbd-guatemala/"],
@@ -3278,7 +3278,7 @@ export const DETAILS = {
   },
 
   NA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Namibia", "https://en.wikipedia.org/wiki/Cannabis_in_Namibia"],
       nam1: ["The Namibian — High Court rejects bid to declare cannabis possession law unconstitutional (2026)", "https://www.namibian.com.na/high-court-rejects-bid-to-declare-cannabis-possession-law-unconstitutional/"],
@@ -3299,7 +3299,7 @@ export const DETAILS = {
   },
 
   SR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Suriname", "https://en.wikipedia.org/wiki/Cannabis_in_Suriname"],
       cr: ["CannabisRegulations.ai — Is weed legal in Suriname?", "https://www.cannabisregulations.ai/country-legality/suriname-marijuana"],
@@ -3319,7 +3319,7 @@ export const DETAILS = {
   },
 
   SV: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       edh: ["El Diario de Hoy — Condenan a dos jóvenes de Apopa que tenían droga (2025)", "https://www.eldiariodehoy.com/noticias/condenan-a-dos-jovenes-de-apopa-que-tenian-droga-valorada-en-mas-de-1000/49400/2025/"],
       em: ["Diario El Mundo — Condenan a sujeto a 6 años de cárcel por llevar marihuana en moto", "https://diario.elmundo.sv/nacionales/condenan-a-sujeto-6-anos-de-carcel-por-llevar-marihuana-en-moto"],
@@ -3339,7 +3339,7 @@ export const DETAILS = {
   },
 
   HT: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Haiti", "https://en.wikipedia.org/wiki/Cannabis_in_Haiti"],
       cr: ["CannabisRegulations.ai — Is weed legal in Haiti?", "https://www.cannabisregulations.ai/country-legality/haiti-marijuana"],
@@ -3360,7 +3360,7 @@ export const DETAILS = {
   },
 
   BW: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       law: ["Botswana Laws — Illicit Traffic in Narcotic Drugs and Psychotropic Substances Act", "https://botswanalaws.com/consolidated-statutes/principle-legislation/illicit-traffic-in-narcotic-drugs-and-psychotropic-substances"],
       dn: ["Botswana Daily News — court report on dagga possession", "https://dailynews.gov.bw/news-detail/53026"],
@@ -3381,7 +3381,7 @@ export const DETAILS = {
   },
 
   MN: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Mongolia?", "https://www.cannabisregulations.ai/country-legality/mongolia-marijuana"],
       vice: ["VICE — Portraits of young Mongolians arrested for smoking weed", "https://www.vice.com/en/article/dygvgj/portraits-young-mongolians-arrested-smoking-weed"],
@@ -3402,7 +3402,7 @@ export const DETAILS = {
   },
 
   PS: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       law: ["An-Najah University legal database — Decree-Law No. 18 of 2015 on narcotics, Article 16 (Arabic)", "https://maqam.najah.edu/legislation/72/item/4233/"],
       amend: ["DCAF Palestine security legislation database — Decree-Law No. 29 of 2020 amending the narcotics law", "https://security-legislation.ps/?p=13025"],
@@ -3423,7 +3423,7 @@ export const DETAILS = {
   },
 
   AZ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Azerbaijan?", "https://www.cannabisregulations.ai/country-legality/azerbaijan-marijuana"],
       trip: ["TripBase — Azerbaijan drug laws", "https://www.tripbase.com/drug-laws/azerbaijan/"],
@@ -3443,7 +3443,7 @@ export const DETAILS = {
   },
 
   UZ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       ecoi: ["ecoi.net — civil-society submission to the UN on drug policy in Uzbekistan", "https://www.ecoi.net/en/file/local/2068926/INT_CESCR_CSS_UZB_47615_E.doc"],
       kun: ["Kun.uz — Uzbekistan strengthens punishments for illegal promotion of potent substances (2024)", "https://kun.uz/en/news/2024/10/07/uzbekistan-strengthens-punishments-for-illegal-promotion-of-potent-substances"],
@@ -3463,7 +3463,7 @@ export const DETAILS = {
   },
 
   MM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       idpc: ["IDPC — Upper House moves to decriminalise some drug offences in Myanmar", "https://idpc.net/news/2017/09/upper-house-moves-to-decriminalise-some-drug-offences"],
       tni: ["TNI — Guiding drug law reform in Myanmar", "https://ungassondrugs.org/en/country-information/258-burmamyanmar/7993-guiding-drug-law-reform-in-myanmar.html"],
@@ -3484,7 +3484,7 @@ export const DETAILS = {
   },
 
   TL: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Timor-Leste", "https://en.wikipedia.org/wiki/Cannabis_in_Timor-Leste"],
       mb: ["Macau Business (Lusa) — Timor-Leste drug policy should distinguish cannabis from dangerous drugs, says president", "https://www.macaubusiness.com/timor-leste-drug-policy-should-distinguish-cannabis-from-dangerous-drugs-president/"],
@@ -3505,7 +3505,7 @@ export const DETAILS = {
   },
 
   SY: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Syria", "https://en.wikipedia.org/wiki/Cannabis_in_Syria"],
       cr: ["CannabisRegulations.ai — Is weed legal in Syria?", "https://www.cannabisregulations.ai/country-legality/syria-marijuana"],
@@ -3526,7 +3526,7 @@ export const DETAILS = {
   },
 
   TJ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Tajikistan", "https://en.wikipedia.org/wiki/Cannabis_in_Tajikistan"],
       cr: ["CannabisRegulations.ai — Is weed legal in Tajikistan?", "https://www.cannabisregulations.ai/country-legality/tajikistan-marijuana"],
@@ -3547,7 +3547,7 @@ export const DETAILS = {
   },
 
   YE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Yemen?", "https://www.cannabisregulations.ai/country-legality/yemen-marijuana"],
       trip: ["TripBase — Yemen drug laws", "https://www.tripbase.com/drug-laws/yemen/"],
@@ -3568,7 +3568,7 @@ export const DETAILS = {
   },
 
   PW: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       pit1: ["Pacific Island Times — The legality of cannabis in Pacific countries (2020)", "https://www.pacificislandtimes.com/post/2020/06/25/the-legality-of-cannabis-in-pacific-countries"],
       pit2: ["Pacific Island Times — Remengesau backs medical pot, bucks recreational use (2018)", "https://www.pacificislandtimes.com/post/2018/11/30/remengasau-backs-medical-pot-bucks-recreational-use"],
@@ -3589,7 +3589,7 @@ export const DETAILS = {
   },
 
   FM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in the Federated States of Micronesia?", "https://www.cannabisregulations.ai/country-legality/federated-states-of-micronesia-marijuana"],
       code: ["PacLII — FSM Code, Title 11 (Crimes), Controlled Substances chapter", "https://paclii.org/fm/legis/consol_act_2014/c61"],
@@ -3610,7 +3610,7 @@ export const DETAILS = {
   },
 
   TO: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       case: ["PacLII — Supreme Court of Tonga sentencing judgment (2021)", "https://rms.paclii.org/to/cases/TOSC/2021/118.html"],
       mt: ["Matangi Tonga — House passes amendment to Illicit Drugs Control Act (2020)", "https://matangitonga.to/print/25199"],
@@ -3630,7 +3630,7 @@ export const DETAILS = {
   },
 
   SB: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       case: ["PacLII — Solomon Islands Magistrates' Court judgment on marijuana possession (2016)", "https://pacliirms.paclii.org/sb/cases/SBMC/2016/6.html"],
       st: ["Solomon Times — Marijuana haul worth close to SBD 1 million", "https://www.solomontimes.com/news/marijuana-haul-worth-close-to-sbd1-million/9176"],
@@ -3651,7 +3651,7 @@ export const DETAILS = {
   },
 
   MH: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in the Marshall Islands", "https://en.wikipedia.org/wiki/Cannabis_in_the_Marshall_Islands"],
       law: ["PacLII — Narcotic Drugs (Prohibition and Control) Act 1987", "https://paclii.org/mh/legis/consol_act/ndaca1987390"],
@@ -3671,7 +3671,7 @@ export const DETAILS = {
   },
 
   PG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       act: ["PacLII — Dangerous Drugs (Amendment) Act 2021", "https://pacliirms.paclii.org/pg/legis/num_act/dda2021260"],
       case: ["PacLII — Papua New Guinea District Court judgment on drug possession (2021)", "https://rms.paclii.org/pg/cases/PGDC/2021/232.html"],
@@ -3691,7 +3691,7 @@ export const DETAILS = {
   },
 
   WS: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Samoa", "https://en.wikipedia.org/wiki/Cannabis_in_Samoa"],
       so1: ["Samoa Observer — Commission completes review of Narcotics Act", "https://www.samoaobserver.ws/category/samoa/26454"],
@@ -3712,7 +3712,7 @@ export const DETAILS = {
   },
 
   KI: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Kiribati", "https://en.wikipedia.org/wiki/Cannabis_in_Kiribati"],
       case: ["PacLII — High Court of Kiribati judgment under the Dangerous Drugs Ordinance (2018)", "https://rms.paclii.org/ki/cases/KIHC/2018/18.html"],
@@ -3732,7 +3732,7 @@ export const DETAILS = {
   },
 
   TV: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Tuvalu", "https://en.wikipedia.org/wiki/Cannabis_in_Tuvalu"],
       trip: ["TripBase — Tuvalu drug laws", "https://www.tripbase.com/drug-laws/tuvalu/"],
@@ -3752,7 +3752,7 @@ export const DETAILS = {
   },
 
   NR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       case: ["PacLII — Nauru District Court sentencing judgment for cannabis possession (2024)", "https://rms.paclii.org/nr/cases/NRDC/2024/11.html"],
       act: ["PacLII — Illicit Drugs Control Act 2004 (Nauru)", "https://paclii.org/nr/legis/num_act/idca2004242"],
@@ -3772,7 +3772,7 @@ export const DETAILS = {
   },
 
   GW: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Guinea-Bissau?", "https://www.cannabisregulations.ai/country-legality/guinea-bissau-marijuana"],
       un: ["UN Integrated Peacebuilding Office in Guinea-Bissau — Legislation on drugs (PDF)", "https://binuca.unmissions.org/sites/default/files/legislation_on_drugs.pdf"],
@@ -3792,7 +3792,7 @@ export const DETAILS = {
   },
 
   ER: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Eritrea?", "https://www.cannabisregulations.ai/country-legality/eritrea-marijuana"],
       wiki: ["Wikipedia — Cannabis in Eritrea", "https://en.wikipedia.org/wiki/Cannabis_in_Eritrea"],
@@ -3812,7 +3812,7 @@ export const DETAILS = {
   },
 
   MZ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       ref: ["REFORMAR — As problemáticas da criminalização do consumo de drogas ilícitas em Moçambique (PDF)", "https://reformar.co.mz/publicacoes/criminalizacao-do-consumo-de-droga-em-mocambique-artigo-23-04-2023-final.pdf/@@download/file/As%20Problem%C3%A1ticas%20da%20Criminaliza%C3%A7%C3%A3o%20do%20Consumo%20de%20Drogas%20Il%C3%ADcitas%20Em%20Mo%C3%A7ambique.pdf"],
       wiki: ["Wikipedia — Cannabis in Mozambique", "https://en.wikipedia.org/wiki/Cannabis_in_Mozambique"],
@@ -3833,7 +3833,7 @@ export const DETAILS = {
   },
 
   ST: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in São Tomé and Príncipe", "https://en.wikipedia.org/wiki/Cannabis_in_S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe"],
       cr: ["CannabisRegulations.ai — Is weed legal in São Tomé and Príncipe?", "https://www.cannabisregulations.ai/country-legality/sao-tome-and-principe-marijuana"],
@@ -3854,7 +3854,7 @@ export const DETAILS = {
   },
 
   GQ: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Equatorial Guinea", "https://en.wikipedia.org/wiki/Cannabis_in_Equatorial_Guinea"],
       iol: ["IOL — Sacred weed makes for happy Guineans (2000)", "https://www.iol.co.za/news/africa/sacred-weed-makes-for-happy-guineans-24968"],
@@ -3875,7 +3875,7 @@ export const DETAILS = {
   },
 
   LR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       nd: ["The New Dawn — Lawmakers pass non-bailable drug law", "https://thenewdawnliberia.com/lawmakers-pass-non-bailable-drug-law/"],
       idpc: ["IDPC — Liberia: legislative committee reports to Senate on Controlled Drug and Substance Act (amended)", "https://idpc.net/news/2022/08/liberia-legislative-committee-reports-to-senate-on-controlled-drug-substance-act-2014-amended"],
@@ -3895,7 +3895,7 @@ export const DETAILS = {
   },
 
   MG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Madagascar?", "https://www.cannabisregulations.ai/country-legality/madagascar-marijuana"],
       gi: ["Global Initiative — Madagascar's large-scale cannabis market", "https://riskbulletins.globalinitiative.net/esa-obs-018/02-madagascars-large-scale-cannabis-market-criminal-enterprise.html"],
@@ -3916,7 +3916,7 @@ export const DETAILS = {
   },
 
   GM: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       point: ["The Point — Penalty reduced for first-time cannabis offenders", "https://thepoint.gm/africa/gambia/article/penalty-reduced-for-first-time-cannabis-offenders"],
       gam: ["Gambiana — Man fined D150,000 for cannabis possession", "https://gambiana.com/man-fined-d150000-for-cannabis-possession/"],
@@ -3937,7 +3937,7 @@ export const DETAILS = {
   },
 
   NE: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       cr: ["CannabisRegulations.ai — Is weed legal in Niger?", "https://www.cannabisregulations.ai/country-legality/niger-marijuana"],
       law: ["UNODC SHERLOC — Niger, Ordonnance n° 99-42 relative à la lutte contre la drogue (PDF)", "https://sherloc.unodc.org/cld/uploads/res/document/ner/ordonnance-no--99-42_html/ORDONNANCE_No99-42.pdf"],
@@ -3957,7 +3957,7 @@ export const DETAILS = {
   },
 
   GN: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       gn1: ["Guinéenews — L'article 832 du code pénal pour sauver des présumés drogués (2019)", "https://guineenews.org/2019/01/17/justice-larticle-832-du-code-penal-pour-sauver-des-presumes-drogues/"],
       gn2: ["Guinéenews — Conakry: présentation de 225 kg de chanvre indien saisis (2023)", "https://guineenews.org/2023/01/17/conakry-presentation-de-225-kg-de-chanvre-indien-saisis-a-sinaya/"],
@@ -3977,7 +3977,7 @@ export const DETAILS = {
   },
 
   GA: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       gmt1: ["Gabon Media Time — Axe Oyem–Bitam, épicentre de la vente du chanvre", "https://gabonmediatime.com/gabon-axe-oyem-bitam-epicentre-de-la-vente-du-chanvre/"],
       gmt2: ["Gabon Media Time — Bitam: un dealer interpellé avec 14 kilos de chanvre indien", "https://gabonmediatime.com/bitam-un-dealer-interpelle-avec-14-kilos-de-chanvre-indien-dissimules-dans-des-sacs-de-carottes"],
@@ -3997,7 +3997,7 @@ export const DETAILS = {
   },
 
   ML: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Mali", "https://en.wikipedia.org/wiki/Cannabis_in_Mali"],
       law: ["UNODC SHERLOC — Mali, Loi n° 01-078 portant sur le contrôle des drogues (PDF)", "https://sherloc.unodc.org/cld/uploads/res/document/mli/loi-01-078_html/mali-loi_stupefiants_2.pdf"],
@@ -4018,7 +4018,7 @@ export const DETAILS = {
   },
 
   TG: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Togo", "https://en.wikipedia.org/wiki/Cannabis_in_Togo"],
       law: ["UNODC SHERLOC — Togo, Loi n° 98-008 portant contrôle des drogues (PDF)", "https://sherloc.unodc.org/cld/uploads/res/document/tgo/loi-no--98-008_html/Togo-Loi_98-008.pdf"],
@@ -4039,7 +4039,7 @@ export const DETAILS = {
   },
 
   MR: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Mauritania", "https://en.wikipedia.org/wiki/Cannabis_in_Mauritania"],
       gdpo: ["Global Drug Policy Observatory — July 2017 archive (Mauritania drug law)", "https://gdpo.swan.ac.uk/?m=201707"],
@@ -4060,7 +4060,7 @@ export const DETAILS = {
   },
 
   SL: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       act: ["National Drugs Control Act 2008 — Sierra Leone (PDF)", "https://policehumanrightsresources.org/content/uploads/2016/07/National-Drugs-Control-Act-Sierra-Leone-2008.pdf"],
       pm1: ["Premier Media — Youth sentenced to 25 years for possessing 30.5 grams of kush", "https://www.premiermedia-sl.com/?p=26921"],
@@ -4081,7 +4081,7 @@ export const DETAILS = {
   },
 
   SS: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       eye: ["Eye Radio — 10 young men sent to jail in Bor for possessing bhang", "https://www.eyeradio.org/10-young-men-sent-to-jail-in-bor-for-possessing-bhang/"],
       law: ["UNODC SHERLOC — South Sudan Penal Code Act 2008 (PDF)", "https://sherloc.unodc.org/cld/uploads/res/document/ssd/South_Sudan_Penal_Code_Act.pdf"],
@@ -4102,7 +4102,7 @@ export const DETAILS = {
   },
 
   SO: {
-    reviewed: "October 2026",
+    reviewed: "2026-10-04",
     sources: {
       wiki: ["Wikipedia — Cannabis in Somalia", "https://en.wikipedia.org/wiki/Cannabis_in_Somalia"],
       cr: ["CannabisRegulations.ai — Is weed legal in Somalia?", "https://www.cannabisregulations.ai/country-legality/somalia-marijuana"],

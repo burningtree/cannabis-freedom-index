@@ -15,6 +15,7 @@ export const SUBUNITS = {
   US: {
     label: "State",
     plural: "states",
+    reviewed: "2026-10-04",
     intro: "Federal law still prohibits non-medical cannabis everywhere in the United States; these scores describe state law. Counties and cities can add their own rules, and state law does not apply on federal land.",
     sources: [
       ["NORML — State-by-state laws", "https://norml.org/laws/"],
@@ -78,6 +79,7 @@ export const SUBUNITS = {
   CA: {
     label: "Province or territory",
     plural: "provinces and territories",
+    reviewed: "2026-10-04",
     intro: "The federal Cannabis Act applies everywhere in Canada. Provinces and territories set the minimum age, where you may consume, how shops work, and whether you may grow at home.",
     sources: [
       ["Department of Justice Canada — Cannabis legalization and regulation", "https://www.justice.gc.ca/eng/cj-jp/cannabis/"],
@@ -103,6 +105,7 @@ export const SUBUNITS = {
   AU: {
     label: "State or territory",
     plural: "states and territories",
+    reviewed: "2026-10-04",
     intro: "Each Australian state and territory has its own drug law. Medical cannabis is regulated federally and is available on prescription everywhere, mostly through telehealth clinics.",
     sources: [
       ["Wikipedia — Cannabis in Australia", "https://en.wikipedia.org/wiki/Cannabis_in_Australia"],

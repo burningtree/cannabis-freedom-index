@@ -3,7 +3,7 @@
 // drawer on the home page — so there is a single template for both views.
 import { SEGMENTS, CONTEXT, REC_LABEL, MED_LABEL } from "../data/data.js";
 import { DETAILS } from "../data/details.js";
-import { countries, segAvg, segmentPoints, segmentMax, subunitsOf } from "../lib/countries.js";
+import { countries, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
 import { tierOf, tierColor } from "../lib/tiers.js";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
@@ -14,6 +14,9 @@ const v = sub ?? c; // whichever entity's scores are on display
 const d = sub ? null : DETAILS[c.id];
 const countryUrl = `${base}country/${c.slug}/`;
 const unitUrl = (x) => `${countryUrl}${x.id}/`;
+// Date the entry was last reviewed, stored as YYYY-MM-DD and shown in full.
+const updated = sub ? group.reviewed : d?.reviewed;
+const updatedText = updated && formatDate(updated);
 const byName = group ? [...group.units].sort((a, b) => a.name.localeCompare(b.name)) : [];
 const r = 42;
 const circ = 2 * Math.PI * r;
@@ -61,7 +64,7 @@ const circ = 2 * Math.PI * r;
     <h2 class="d-h">Score breakdown <span>▏world average</span></h2>
     {sub
       ? <p class="d-hint">{group.intro} Select a segment to show or hide the rules.</p>
-      : <p class="d-hint">Select a segment to show or hide the exact rules and sources.{d && ` Reviewed ${d.reviewed}.`}</p>}
+      : <p class="d-hint">Select a segment to show or hide the exact rules and sources.</p>}
     {sub && SEGMENTS.map((s, i) => (
       <details class="segrow" open>
         <summary>
@@ -164,5 +167,6 @@ const circ = 2 * Math.PI * r;
         </section>
       </>
     )}
+    {updated && <p class="c-updated">Last updated: <time datetime={updated}>{updatedText}</time></p>}
   </div>
 </article>

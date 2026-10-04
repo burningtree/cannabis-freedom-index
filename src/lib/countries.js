@@ -27,8 +27,19 @@ export const worldAvg = countries.reduce((a, c) => a + c.raw, 0) / countries.len
 // ── States, provinces and territories of federations ──
 import { SUBUNITS } from "../data/subunits.js";
 import { SUBUNIT_DETAILS, unitSource } from "../data/subunit-details.js";
+import { DETAILS } from "../data/details.js";
 
 const scoreOf = (s) => s.reduce((a, v, i) => a + segmentPoints(i, v), 0);
+
+// Review dates are stored as YYYY-MM-DD; this is how they are shown everywhere.
+export const formatDate = (iso) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+
+// The most recent review date across every country and state entry.
+export const lastUpdated = [
+  ...Object.values(DETAILS).map((d) => d.reviewed),
+  ...Object.values(SUBUNITS).map((g) => g.reviewed),
+].filter(Boolean).sort().at(-1);
 
 // For a country id, returns { label, plural, intro, sources, units } with each unit scored,
 // ranked within its country, and placed where it would sit among countries. Undefined if none.

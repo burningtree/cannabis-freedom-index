@@ -1,14 +1,13 @@
 ---
 // Seven-leaflet cannabis leaf, drawn from one leaflet shape rotated and scaled
-// around the point where the leaflets meet the stem.
+// around the point where the leaflets meet. No stem; the fan is centred in the box.
 const { size = 22 } = Astro.props;
 const leaflets = [[0, 1], [-31, 0.9], [31, 0.9], [-63, 0.7], [63, 0.7], [-97, 0.43], [97, 0.43]];
 ---
 <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-  <g transform="translate(12 16.4) scale(1.28)" fill="currentColor">
+  <g transform="translate(12 18.25) scale(1.4)" fill="currentColor">
     {leaflets.map(([angle, k]) => (
       <path d="M0 0C1.9-2.6 1.5-7 0-10C-1.5-7-1.9-2.6 0 0Z" transform={`rotate(${angle}) scale(${k})`} />
     ))}
   </g>
-  <path d="M12 16.4V21.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
 </svg>
