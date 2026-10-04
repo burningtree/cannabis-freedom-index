@@ -1,9 +1,8 @@
 // "Did you know?" facts for the home page.
 // The first group is computed from the scores, so it stays true when the data changes.
 // The second group is curated from the country write-ups; keep each one in step with
-// the matching entry in src/data/details.js.
-import { SEGMENTS } from "../data/data.js";
-import { countries, regions, segAvg, worldAvg } from "./countries.js";
+// the matching file in /countries.
+import { SEGMENTS, countries, regions, segAvg, worldAvg } from "./countries.js";
 
 const seg = (id) => SEGMENTS.findIndex((s) => s.id === id);
 const P = seg("possession"), C = seg("cultivation"), S = seg("sharing"), A = seg("access");

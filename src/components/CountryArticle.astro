@@ -1,9 +1,7 @@
 ---
 // Full write-up for one country. Rendered on its own page, and fetched into the
 // drawer on the home page — so there is a single template for both views.
-import { SEGMENTS, CONTEXT, REC_LABEL, MED_LABEL } from "../data/data.js";
-import { DETAILS } from "../data/details.js";
-import { countries, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
+import { SEGMENTS, REC_LABEL, MED_LABEL, countries, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
 import { tierOf, tierColor } from "../lib/tiers.js";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
@@ -11,11 +9,11 @@ const { c, sub } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const group = subunitsOf(c.id);
 const v = sub ?? c; // whichever entity's scores are on display
-const d = sub ? null : DETAILS[c.id];
+const d = sub ? null : c.details;
 const countryUrl = `${base}country/${c.slug}/`;
 const unitUrl = (x) => `${countryUrl}${x.id}/`;
 // Date the entry was last reviewed, stored as YYYY-MM-DD and shown in full.
-const updated = sub ? group.reviewed : d?.reviewed;
+const updated = sub ? sub.reviewed : d?.reviewed;
 const updatedText = updated && formatDate(updated);
 const byName = group ? [...group.units].sort((a, b) => a.name.localeCompare(b.name)) : [];
 const r = 42;
@@ -90,7 +88,7 @@ const circ = 2 * Math.PI * r;
       </section>
     )}
     {!sub && SEGMENTS.map((s, i) => {
-      const seg = d?.seg[s.detail];
+      const seg = d?.segments[i];
       return (
         <details class="segrow" open>
           <summary>
@@ -108,8 +106,8 @@ const circ = 2 * Math.PI * r;
             <div class="why">
               <p>{seg.t}</p>
               <ul class="srcs">
-                {seg.src.map((k) => (
-                  <li><a href={d.sources[k][1]} target="_blank" rel="noopener noreferrer">{d.sources[k][0]}</a></li>
+                {seg.src.map(([label, url]) => (
+                  <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>
                 ))}
               </ul>
             </div>
@@ -145,13 +143,13 @@ const circ = 2 * Math.PI * r;
     {d && (
       <>
         <h2 class="d-h">More context <span>not part of the score</span></h2>
-        {CONTEXT.map(([name, k]) => (
+        {d.context.map((x) => (
           <div class="segrow">
-            <div class="segrow-top"><span>{name}</span></div>
-            <p class="ctx">{d.seg[k].t}</p>
+            <div class="segrow-top"><span>{x.name}</span></div>
+            <p class="ctx">{x.t}</p>
             <ul class="srcs">
-              {d.seg[k].src.map((x) => (
-                <li><a href={d.sources[x][1]} target="_blank" rel="noopener noreferrer">{d.sources[x][0]}</a></li>
+              {x.src.map(([label, url]) => (
+                <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>
               ))}
             </ul>
           </div>
@@ -160,7 +158,7 @@ const circ = 2 * Math.PI * r;
         <section class="c-sources">
           <h2 class="d-h">All sources</h2>
           <ol>
-            {Object.values(d.sources).map(([label, url]) => (
+            {d.sources.map(([label, url]) => (
               <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>
             ))}
           </ol>

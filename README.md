@@ -35,14 +35,32 @@ Built with [Astro](https://astro.build). Pushing to `main` deploys to GitHub Pag
 
 | Path | What |
 |---|---|
-| `src/data/data.js` | Segments, weights, and each country's scores and summary |
-| `src/data/details.js` | Per-segment explanations and sources for each country |
-| `src/lib/facts.js` | "Did you know?" facts |
-| `src/pages/` | Home, country pages, compare page |
+| `countries/de.yaml` | Everything about one country: scores, summary, explanations, sources |
+| `countries/us/` | A federation: `index.yaml` for the country, one file per state |
+| `segments.yaml` | The six segments, their weights and level descriptions |
+| `src/` | The website: pages, components, styles |
+
+The build checks every data file against a schema (`src/content.config.ts`) and fails with a clear message if, say, a score is out of range or a segment cites a source that isn't defined.
 
 ## Contributing
 
-Corrections are welcome — laws change and many entries rest on secondary sources. To fix a country, edit its row in `src/data/data.js` and its block in `src/data/details.js`, and include a source link. Or just [open an issue](https://github.com/burningtree/cannabis-freedom-index/issues).
+Corrections are welcome — laws change and many entries rest on secondary sources. To fix a country, edit its file in `countries/`:
+
+```yaml
+updated: 2026-10-04        # change this when you edit
+scores:
+  possession: 5            # 0–10, see segments.yaml for what each level means
+segments:
+  possession:
+    text: Adults may carry up to 25 g in public…
+    sources: [bmg]         # keys from the `sources` block below
+sources:
+  bmg:
+    title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz
+    url: https://…
+```
+
+Please include a source link. Or just [open an issue](https://github.com/burningtree/cannabis-freedom-index/issues).
 
 ## Disclaimer
 

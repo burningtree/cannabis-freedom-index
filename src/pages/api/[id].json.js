@@ -1,7 +1,5 @@
-// One small JSON file per country with its explanations and sources.
-// The compare page fetches these on demand instead of shipping every write-up up front.
-import { SEGMENTS, CONTEXT } from "../../data/data.js";
-import { DETAILS } from "../../data/details.js";
+// One small JSON file per country with its explanations and sources, generated from the
+// YAML in /countries. The compare page fetches these on demand.
 import { countries } from "../../lib/countries.js";
 
 export function getStaticPaths() {
@@ -10,14 +8,13 @@ export function getStaticPaths() {
 
 export function GET({ props }) {
   const { c } = props;
-  const d = DETAILS[c.id];
-  const entry = (k) => d && { t: d.seg[k].t, src: d.seg[k].src.map((key) => d.sources[key]) };
+  const entry = ({ t, src }) => ({ t, src });
   const body = {
     id: c.id,
     note: c.note,
-    reviewed: d?.reviewed ?? null,
-    segments: SEGMENTS.map((s) => entry(s.detail)),
-    context: CONTEXT.map(([, k]) => entry(k)),
+    reviewed: c.details.reviewed,
+    segments: c.details.segments.map(entry),
+    context: c.details.context.map(entry),
   };
   return new Response(JSON.stringify(body), { headers: { "Content-Type": "application/json" } });
 }

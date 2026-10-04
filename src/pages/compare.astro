@@ -1,13 +1,12 @@
 ---
 import Base from "../layouts/Base.astro";
-import { SEGMENTS, CONTEXT, REC_LABEL, MED_LABEL } from "../data/data.js";
-import { countries } from "../lib/countries.js";
+import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries } from "../lib/countries.js";
 
 const light = countries.map(({ id, slug, name, flag, region, raw, score, rank, s, rec, med }) =>
   ({ id, slug, name, flag, region, raw, score, rank, s, rec, med }));
 const meta = {
   segments: SEGMENTS.map((s) => ({ name: s.name, weight: s.weight })),
-  context: CONTEXT.map(([name]) => name),
+  context: CONTEXT_NAMES,
   rec: REC_LABEL,
   med: MED_LABEL,
   total: countries.length,

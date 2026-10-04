@@ -1,0 +1,102 @@
+# The six scored segments. Weights must add up to 100.
+# `levels` describe what a score means; values in between sit between two descriptions.
+- id: possession
+  name: Possession
+  weight: 25
+  description: Can an adult hold a small amount for personal use?
+  levels:
+    - score: 0
+      text: Prison is a realistic outcome for a small amount
+    - score: 1
+      text: A crime, but usually ends in a fine or diversion
+    - score: 3
+      text: "Decriminalised: at most an administrative fine"
+    - score: 5
+      text: Legal up to a small cap (around 30 g)
+    - score: 7
+      text: Legal with a generous cap or none at home
+    - score: 10
+      text: Unlimited — like any vegetable
+- id: cultivation
+  name: Personal cultivation
+  weight: 25
+  description: Can you grow your own plants at home?
+  levels:
+    - score: 0
+      text: Treated as drug production, prison
+    - score: 1
+      text: A crime, lesser penalties for a few plants
+    - score: 2
+      text: A few plants tolerated or decriminalised
+    - score: 4
+      text: Legal for a handful of plants (3–6)
+    - score: 6
+      text: Legal with no fixed plant cap, private only
+    - score: 10
+      text: Unlimited, indoors or out, no registration
+- id: enforcement
+  name: Punishment & enforcement
+  weight: 20
+  description: How hard does the law come down on personal users in practice?
+  levels:
+    - score: 0
+      text: Death penalty, corporal punishment or long sentences
+    - score: 1
+      text: Users are routinely jailed
+    - score: 2
+      text: Prison possible, fines typical
+    - score: 4
+      text: Fines or diversion only
+    - score: 6
+      text: Nothing inside the limits, prison for going beyond them
+    - score: 10
+      text: No cannabis offences at all
+- id: sharing
+  name: Sharing & gifting
+  weight: 10
+  description: Is passing cannabis to another adult, unpaid, treated differently from dealing?
+  levels:
+    - score: 0
+      text: Sharing equals trafficking
+    - score: 2
+      text: Illegal, but not pursued in practice
+    - score: 3
+      text: Legal grey area
+    - score: 5
+      text: Gifts between adults legal up to a cap
+    - score: 10
+      text: Give away any amount
+- id: consumption
+  name: Consumption
+  weight: 10
+  description: Is using itself an offence, and where may you do it?
+  levels:
+    - score: 0
+      text: Use itself is a crime
+    - score: 1
+      text: Illegal, lightly enforced
+    - score: 3
+      text: Legal or tolerated in private only
+    - score: 5
+      text: Legal in public with many restrictions
+    - score: 7
+      text: Allowed wherever tobacco is
+    - score: 10
+      text: No cannabis-specific rules
+- id: access
+  name: Legal access
+  weight: 10
+  description: Is there a lawful way to obtain cannabis without growing it yourself?
+  levels:
+    - score: 0
+      text: No lawful source
+    - score: 1
+      text: Medical route only, hard to use
+    - score: 3
+      text: Tolerated shops or clubs, or easy medical access
+    - score: 4
+      text: Legal clubs or state outlets with registration and caps
+    - score: 6
+      text: Licensed shops with purchase caps
+    - score: 10
+      text: Sold by anyone, no licence — like produce
