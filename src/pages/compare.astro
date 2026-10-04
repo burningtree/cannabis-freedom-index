@@ -153,7 +153,9 @@ const presets = [
       if (showText) {
         rows.push(`<tr class="cmp-divider"><th colspan="${cs.length + 1}">More context — not part of the score</th></tr>`);
         META.context.forEach((name, i) => {
-          rows.push(row(name, cs.map((c) => prose(details.get(c.id)?.context[i]))));
+          const cells = cs.map((c) => prose(details.get(c.id)?.context[i]));
+          // a section that none of the chosen countries has (the death penalty, usually) is left out
+          if (cells.some(Boolean)) rows.push(row(name, cells));
         });
       }
 

@@ -24,6 +24,7 @@ const diff = (seg) => seg.after - seg.before;
       <p class="eyebrow"><time datetime={ch.date}>{changeDate(ch)}</time> · {ch.place.name}</p>
       <h1>{ch.title}</h1>
       <p class="lede">{ch.description}</p>
+      <p class="change-source">Source: <a href={ch.source[1]} target="_blank" rel="noopener noreferrer">{ch.source[0]}</a></p>
 
       {ch.score && (
         <Fragment>
@@ -54,11 +55,6 @@ const diff = (seg) => seg.after - seg.before;
       {!ch.score && <p class="change-note">{c ? `Listed for context. No score change is recorded for ${c.name} here.` : "International agreements are listed for context. They bind governments, not people, so they move no country's score by themselves."}</p>}
 
       {ch.estimate && <p class="change-note">This entry is an estimate. No first law is recorded for {c.name}, so its first restrictions are assumed to have come at some point between the 1925 Geneva convention and the 1961 Single Convention. On the charts the change is spread evenly across those years.</p>}
-
-      <h2 class="d-h">Source</h2>
-      <ul class="srcs">
-        <li><a href={ch.source[1]} target="_blank" rel="noopener noreferrer">{ch.source[0]}</a></li>
-      </ul>
     </article>
 
     <nav class="pager" aria-label="Other entries">

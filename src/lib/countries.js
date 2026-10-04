@@ -4,14 +4,24 @@ import { getCollection } from "astro:content";
 import { SEGMENT_IDS } from "./segment-ids.js";
 
 export const DATA_SNAPSHOT = "2026";
-export const REC_LABEL = { legal: "Legal", partial: "Partly legal / tolerated", decrim: "Decriminalised", illegal: "Illegal" };
+export const REC_LABEL = { legal: "Legal", partial: "Partly legal / tolerated", decrim: "Decriminalized", illegal: "Illegal", death: "Death penalty" };
+// from most to least free; also what each status means, shown as a tooltip
+export const REC_ORDER = ["legal", "partial", "decrim", "illegal", "death"];
+export const REC_HELP = {
+  legal: "Adults may legally possess cannabis, within limits",
+  partial: "Legal in part of the country or in some settings, or openly tolerated",
+  decrim: "Still prohibited, but small amounts bring at most a fine",
+  illegal: "A crime, punished with anything from a fine to prison",
+  death: "A crime, and the law allows the death penalty for cannabis offences, in practice trafficking",
+};
 export const MED_LABEL = { yes: "Legal", limited: "Limited", no: "None" };
 // Explanations that exist for each country but are not part of the score.
-const CONTEXT = [["production", "Commercial production"], ["products", "Products"], ["medical", "Medical use"], ["consequences", "Other consequences"]];
+// "Death penalty" comes first and exists only for countries whose law provides for it
+const CONTEXT = [["death_penalty", "Death penalty"], ["production", "Commercial production"], ["products", "Products"], ["medical", "Medical use"], ["consequences", "Other consequences"]];
 export const CONTEXT_NAMES = CONTEXT.map(([, name]) => name);
 
 // File values → short codes used in class names and filters.
-const REC_CODE = { legal: "legal", partial: "partial", decriminalised: "decrim", illegal: "illegal" };
+const REC_CODE = { legal: "legal", partial: "partial", decriminalised: "decrim", illegal: "illegal", death: "death" };
 const MED_CODE = { legal: "yes", limited: "limited", none: "no" };
 const isoDate = (d) => d.toISOString().slice(0, 10);
 const pair = (s) => [s.title, s.url];
@@ -44,6 +54,9 @@ export const countries = (await getCollection("countries"))
       score: Math.round(raw),
       flag: flagOf(id),
       num: data.iso_numeric ?? null,
+      populationByYear: Object.entries(data.population).map(([y, v]) => [+y, v]).sort((a, b) => a[0] - b[0]),
+      population: data.population[Object.keys(data.population).sort().at(-1)], // the latest figure
+      use: data.cannabis_use, // { prevalence, year?, estimate?, users }
       name: data.name,
       region: data.region,
       rec: REC_CODE[data.recreational],
@@ -52,7 +65,7 @@ export const countries = (await getCollection("countries"))
       details: {
         reviewed: isoDate(data.updated),
         segments: SEGMENTS.map((seg) => cited(data.segments[seg.id])), // in SEGMENTS order
-        context: CONTEXT.map(([key, name]) => ({ name, ...cited(data.context[key]) })),
+        context: CONTEXT.map(([key, name]) => (data.context[key] ? { name, ...cited(data.context[key]) } : null)), // null: no such section
         sources: Object.values(data.sources).map(pair),
       },
       subunitMeta: data.subunits ?? null,
@@ -139,25 +152,101 @@ export const changes = changeEntries
 // to have come at some point between the 1925 Geneva convention and the 1961 Single Convention.
 export const ESTIMATE_WINDOW = [1925, 1961];
 
-// World average over time, oldest first, rebuilt by undoing the recorded changes one by one.
-// A change with a known date is one step. An estimated one is spread evenly over the window,
-// a year at a time, so that a guess never shows up as a sudden drop on one day.
-export const averageHistory = (() => {
-  const n = countries.length;
-  const [from, to] = ESTIMATE_WINDOW;
-  const scored = changes.filter((ch) => ch.score);
-  const events = scored.filter((ch) => !ch.estimate).map((ch) => ({ change: ch, date: ch.date, delta: ch.raw.after - ch.raw.before }));
-  // all the estimates together, as one small step per year of the window
-  const estimated = scored.filter((ch) => ch.estimate).reduce((a, ch) => a + ch.raw.after - ch.raw.before, 0);
-  for (let year = from + 1; year <= to; year++) events.push({ change: null, date: `${year}-01-01`, delta: estimated / (to - from) });
-  events.sort((a, b) => dateTime(b.date) - dateTime(a.date)); // newest first
-  let sum = countries.reduce((a, c) => a + c.raw, 0);
-  const points = events.map((e) => {
-    const after = sum / n;
-    sum -= e.delta;
-    return { change: e.change, date: e.date, before: sum / n, after };
+// A country's population at a moment in time, on a straight line between its snapshots.
+const MS_YEAR = 365.25 * 24 * 3600 * 1000;
+function populationAt(c, t) {
+  const year = 1970 + t / MS_YEAR;
+  const snaps = c.populationByYear;
+  if (year <= snaps[0][0]) return snaps[0][1];
+  if (year >= snaps.at(-1)[0]) return snaps.at(-1)[1];
+  const i = snaps.findIndex(([y]) => y > year);
+  const [y0, v0] = snaps[i - 1], [y1, v1] = snaps[i];
+  return v0 + ((v1 - v0) * (year - y0)) / (y1 - y0);
+}
+
+// A country's score at a moment in time, from its recorded changes. A change with a known date is
+// a step. An estimated one rises or falls in a straight line across the estimate window, so that
+// a guess never shows up as a sudden drop on one day.
+const [estFrom, estTo] = ESTIMATE_WINDOW.map((y) => Date.UTC(y, 0, 1));
+const scoredByCountry = new Map(countries.map((c) => [c, changes.filter((ch) => ch.country === c && ch.score).reverse()])); // oldest first
+function scoreAt(c, t) {
+  let value = c.raw;
+  const list = scoredByCountry.get(c);
+  if (list.length) value = list[0].raw.before;
+  for (const ch of list) {
+    if (ch.estimate) {
+      if (t <= estFrom) break;
+      value = t >= estTo ? ch.raw.after : ch.raw.before + ((ch.raw.after - ch.raw.before) * (t - estFrom)) / (estTo - estFrom);
+    } else if (t >= dateTime(ch.date)) value = ch.raw.after;
+    else break;
+  }
+  return value;
+}
+
+// World average over time, oldest first. `weight(country, time)` gives each country's share:
+// the same for all in the plain average, or its population at that time.
+// There is a point at every dated change, and one each New Year so that slow shifts (estimated
+// changes, and populations growing at different rates) show up as well.
+const CHART_FROM = 1900;
+function averageOverTime(weight) {
+  const at = (t) => {
+    let sum = 0, total = 0;
+    for (const c of countries) {
+      const w = weight(c, t);
+      sum += scoreAt(c, t) * w;
+      total += w;
+    }
+    return sum / total;
+  };
+  const events = changes.filter((ch) => ch.score && !ch.estimate).map((ch) => ({ change: ch, date: ch.date, t: dateTime(ch.date) }));
+  for (let year = CHART_FROM; year <= +DATA_SNAPSHOT; year++) events.push({ change: null, date: `${year}-01-01`, t: Date.UTC(year, 0, 1) });
+  events.sort((a, b) => a.t - b.t);
+  // changes on the same day are applied one after another, in a fixed order
+  return events.map((e) => {
+    if (!e.change) return { change: null, date: e.date, before: at(e.t - 1), after: at(e.t) };
+    const c = e.change.country;
+    const w = weight(c, e.t);
+    let total = 0;
+    for (const x of countries) total += weight(x, e.t);
+    const after = at(e.t);
+    return { change: e.change, date: e.date, before: after - ((e.change.raw.after - e.change.raw.before) * w) / total, after };
   });
-  return points.reverse();
+}
+export const averageHistory = averageOverTime(() => 1);
+export const averageHistoryByPopulation = averageOverTime(populationAt);
+
+// ── History pages ──
+// The History list is split into periods so that no page is too long or too short. It starts from
+// decades: a crowded decade is cut into two halves, and quiet decades are merged with their
+// neighbours until a page has enough on it. Estimated entries have no real date and are left out.
+const PAGE_MIN = 24, PAGE_MAX = 60;
+export const historyPeriods = (() => {
+  const dated = changes.filter((ch) => !ch.estimate); // newest first
+  const year = (ch) => +ch.date.slice(0, 4);
+  const thisYear = +DATA_SNAPSHOT;
+  const count = (from, to) => dated.filter((ch) => year(ch) >= from && year(ch) <= to).length;
+  // decades from the current one back to the oldest entry, crowded ones in two halves
+  const spans = [];
+  for (let d = Math.floor(thisYear / 10) * 10; d >= Math.floor(year(dated.at(-1)) / 10) * 10; d -= 10) {
+    if (count(d, d + 9) > PAGE_MAX) spans.push([d + 5, d + 9], [d, d + 4]);
+    else spans.push([d, d + 9]);
+  }
+  // merge quiet spans into the one before them in time order (walking from newest to oldest)
+  const merged = [];
+  for (const [from, to] of spans) {
+    const last = merged.at(-1);
+    if (last && count(last.from, last.to) < PAGE_MIN) last.from = from;
+    else merged.push({ from, to });
+  }
+  // a quiet tail (the oldest entries) joins the period after it
+  if (merged.length > 1 && count(merged.at(-1).from, merged.at(-1).to) < PAGE_MIN) merged.at(-2).from = merged.pop().from;
+  return merged.map(({ from, to }, i) => {
+    const items = dated.filter((ch) => year(ch) >= from && year(ch) <= to);
+    const first = i === merged.length - 1 ? year(items.at(-1)) : from; // the oldest page starts at its first entry
+    const end = Math.min(to, thisYear);
+    const label = first % 10 === 0 && end === first + 9 ? `${first}s` : `${first}–${end}`;
+    return { slug: `${first}-${end}`, label, from: first, to: end, items };
+  });
 })();
 
 // Review dates are stored as YYYY-MM-DD; this is how they are shown everywhere.

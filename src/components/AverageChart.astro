@@ -1,8 +1,9 @@
 ---
 // World average score over time: a step line that moves at each recorded change.
-// Two views are rendered, the whole history and the last fifteen years; a switch shows one of them.
+// Four views are rendered: the whole history or the last fifteen years, each averaged per country
+// or weighted by population. Two switches pick which one is shown.
 // The plot is a stretched SVG; labels and markers are HTML so they stay readable at any width.
-import { averageHistory, formatDate, dateTime, lastUpdated } from "../lib/countries.js";
+import { averageHistory, averageHistoryByPopulation, formatDate, dateTime, lastUpdated } from "../lib/countries.js";
 
 // `note` adds the caveat under the chart.
 const { note = false } = Astro.props;
@@ -10,14 +11,26 @@ const base = import.meta.env.BASE_URL;
 const fmt = (v) => v.toFixed(1);
 const time = dateTime;
 
-const now = averageHistory.at(-1).after;
 const endYear = +lastUpdated.slice(0, 4);
 const t1 = time(lastUpdated);
 
-function view(id, label, startYear) {
+// one chart for each combination of period and weighting
+const RANGES = [
+  { id: "all", label: "All", startYear: 1900 }, // a few bans are older; they are already counted in the starting value
+  { id: "15y", label: "Last 15 years", startYear: endYear - 15 },
+];
+const WEIGHTS = [
+  { id: "country", label: "By country", title: "Every country counts the same", history: averageHistory },
+  { id: "people", label: "By population", title: "Each country counts in proportion to its population today", history: averageHistoryByPopulation },
+];
+
+function view(range, weighting) {
+  const { startYear } = range;
+  const history = weighting.history;
+  const now = history.at(-1).after;
   const t0 = Date.UTC(startYear, 0, 1);
   const x = (t) => ((t - t0) / (t1 - t0)) * 100;
-  const inRange = averageHistory.filter((p) => time(p.date) >= t0);
+  const inRange = history.filter((p) => time(p.date) >= t0);
   const start = inRange[0].before; // the average when the view begins
 
   // y axis: round steps that enclose the data (the range is small, so it does not start at zero)
@@ -39,32 +52,35 @@ function view(id, label, startYear) {
   const steps = inRange.map((p) => ({ ...p, x: x(time(p.date)), y: y(p.after) }));
   const line = `M0,${y(start)}` + steps.map((p) => `H${p.x}V${p.y}`).join("") + "H100";
   const points = steps.filter((p) => p.change); // estimated changes move the line but get no dot
-  return { id, label, startYear, whole: tick >= 1, delta: now - start, ticks: ticks.map((t) => ({ t, y: y(t) })), years, points, line };
+  return { range: range.id, weight: weighting.id, startYear, now, whole: tick >= 1, delta: now - start, ticks: ticks.map((t) => ({ t, y: y(t) })), years, points, line };
 }
 
-const views = [
-  view("all", "All", 1900), // a few bans are older; they are already counted in the starting value
-  view("15y", "Last 15 years", endYear - 15),
-];
+const views = WEIGHTS.flatMap((w) => RANGES.map((r) => view(r, w)));
+const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // the view visible before any click
 ---
 <section class="card avg" id="avgChart" aria-labelledby="avgTitle">
   <div class="avg-head">
-    <div>
-      <h2 id="avgTitle">World average score</h2>
-      <div class="avg-switch" role="group" aria-label="Period shown">
-        {views.map((v, i) => <button type="button" data-view={v.id} aria-pressed={i === 0 ? "true" : "false"}>{v.label}</button>)}
-      </div>
-    </div>
+    <h2 id="avgTitle">World average score</h2>
     <p class="avg-now">
-      <b>{fmt(now)}</b>
-      {views.map((v, i) => (
-        <span class={`delta ${v.delta >= 0 ? "up" : "down"}`} data-view={v.id} hidden={i > 0}>{v.delta >= 0 ? "+" : "−"}{fmt(Math.abs(v.delta))} since {v.startYear}</span>
+      {views.map((v) => (
+        <span class="avg-figure" data-range={v.range} data-weight={v.weight} hidden={!shown(v)}>
+          <b>{fmt(v.now)}</b>
+          <span class={`delta ${v.delta >= 0 ? "up" : "down"}`}>{v.delta >= 0 ? "+" : "−"}{fmt(Math.abs(v.delta))} since {v.startYear}</span>
+        </span>
       ))}
     </p>
   </div>
+  <div class="avg-controls">
+    <div class="avg-switch" role="group" aria-label="Period shown" data-switch="range">
+      {RANGES.map((r, i) => <button type="button" data-value={r.id} aria-pressed={i === 0 ? "true" : "false"}>{r.label}</button>)}
+    </div>
+    <div class="avg-switch" role="group" aria-label="How countries are weighted" data-switch="weight">
+      {WEIGHTS.map((w, i) => <button type="button" data-value={w.id} title={w.title} aria-pressed={i === 0 ? "true" : "false"}>{w.label}</button>)}
+    </div>
+  </div>
 
-  {views.map((v, i) => (
-    <div class="avg-chart" data-view={v.id} hidden={i > 0}>
+  {views.map((v) => (
+    <div class="avg-chart" data-range={v.range} data-weight={v.weight} hidden={!shown(v)}>
       <div class="avg-y" aria-hidden="true">
         {v.ticks.map(({ t, y }) => <span style={`top:${y}%`}>{v.whole ? t : fmt(t)}</span>)}
       </div>
@@ -86,17 +102,23 @@ const views = [
       </div>
     </div>
   ))}
-  {note && <p class="avg-note">Rebuilt from the recorded changes, so it is only as complete as that list: a country with no recorded change is held at today's score for the whole period. The scale does not start at zero.</p>}
+  {note && <p class="avg-note">Rebuilt from the recorded changes, so it is only as complete as that list. The population-weighted line uses today's populations for every year. The scale does not start at zero.</p>}
 </section>
 
 <script>
   const chart = document.querySelector("#avgChart");
 
-  // Period switch: show one view and its "since" figure.
-  chart?.querySelectorAll(".avg-switch button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      chart.querySelectorAll(".avg-switch button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-      chart.querySelectorAll(".avg-chart, .avg-now .delta").forEach((el) => { el.hidden = el.dataset.view !== btn.dataset.view; });
+  // Two switches, period and weighting: show the one chart and figure that match both.
+  const state = { range: "all", weight: "country" };
+  chart?.querySelectorAll(".avg-switch").forEach((group) => {
+    group.querySelectorAll("button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state[group.dataset.switch] = btn.dataset.value;
+        group.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        chart.querySelectorAll(".avg-chart, .avg-figure").forEach((el) => {
+          el.hidden = el.dataset.range !== state.range || el.dataset.weight !== state.weight;
+        });
+      });
     });
   });
 

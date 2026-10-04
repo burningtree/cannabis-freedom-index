@@ -14,7 +14,7 @@ export function GET({ props }) {
     note: c.note,
     reviewed: c.details.reviewed,
     segments: c.details.segments.map(entry),
-    context: c.details.context.map(entry),
+    context: c.details.context.map((x) => x && entry(x)),
   };
   return new Response(JSON.stringify(body), { headers: { "Content-Type": "application/json" } });
 }

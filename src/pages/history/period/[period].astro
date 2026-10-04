@@ -1,0 +1,21 @@
+---
+// An older period of the History list.
+import Base from "../../../layouts/Base.astro";
+import HistoryList from "../../../components/HistoryList.astro";
+import { historyPeriods } from "../../../lib/countries.js";
+
+export function getStaticPaths() {
+  return historyPeriods.slice(1).map((period) => ({ params: { period: period.slug }, props: { period } }));
+}
+
+const { period } = Astro.props;
+---
+<Base title={`History, ${period.label}`} description={`Cannabis laws, court rulings and treaties from ${period.from} to ${period.to}, and how each one moved a country's score on the Cannabis Freedom Index.`}>
+  <main class="changes-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">History</p>
+      <h1>{period.label}</h1>
+    </section>
+    <HistoryList period={period} />
+  </main>
+</Base>

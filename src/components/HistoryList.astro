@@ -1,0 +1,54 @@
+---
+// One page of the History list: a period of entries, newest first, grouped by year, with links
+// to the other periods above and below.
+import ScoreChange from "./ScoreChange.astro";
+import { historyPeriods, formatDate } from "../lib/countries.js";
+import { tierColor } from "../lib/tiers.js";
+
+const { period } = Astro.props;
+const base = import.meta.env.BASE_URL;
+// the newest period lives at /history/ itself
+const href = (p) => (p === historyPeriods[0] ? `${base}history/` : `${base}history/period/${p.slug}/`);
+const index = historyPeriods.indexOf(period);
+const newer = historyPeriods[index - 1];
+const older = historyPeriods[index + 1];
+const years = [...new Set(period.items.map((ch) => ch.date.slice(0, 4)))]
+  .map((year) => ({ year, items: period.items.filter((ch) => ch.date.startsWith(year)) }));
+---
+<nav class="periods" aria-label="Periods">
+  {historyPeriods.map((p) => (
+    <a href={href(p)} aria-current={p === period ? "page" : undefined}>{p.label} <small>{p.items.length}</small></a>
+  ))}
+</nav>
+
+<div class="chlog">
+  {years.map(({ year, items }) => (
+    <section aria-labelledby={`y${year}`}>
+      <h2 class="chl-year" id={`y${year}`}>{year}</h2>
+      <ol class="chl-list">
+        {items.map((ch) => (
+          <li class="chl-item" style={`--c:${ch.score ? tierColor(ch.score.after) : "var(--muted)"}`}>
+            <a class="card chl-card" href={`${base}history/${ch.id}/`}>
+              <p class="change-meta">
+                <time datetime={ch.date}>{formatDate(ch.date)}</time>
+                <span>{ch.place.flag} {ch.place.name}</span>
+              </p>
+              <h3>{ch.title}</h3>
+              <p class="chl-text">{ch.description}</p>
+              {ch.score && <ScoreChange score={ch.score} />}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</div>
+
+<nav class="pager chl-pager" aria-label="Other periods">
+  {newer
+    ? <a href={href(newer)}><small>Newer</small><span>← {newer.label}</span></a>
+    : <span></span>}
+  {older
+    ? <a class="next" href={href(older)}><small>Older</small><span>{older.label} →</span></a>
+    : <span></span>}
+</nav>

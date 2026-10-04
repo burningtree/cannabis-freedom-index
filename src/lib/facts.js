@@ -15,7 +15,7 @@ function computed() {
   const growers = countries.filter((c) => c.s[C] >= 4);
   const noShop = countries.filter((c) => c.s[P] >= 5 && c.s[A] <= 1);
   const lowest = segAvg.indexOf(Math.min(...segAvg));
-  const medOnly = countries.filter((c) => c.rec === "illegal" && c.med !== "no");
+  const medOnly = countries.filter((c) => ["illegal", "death"].includes(c.rec) && c.med !== "no");
   const regionAvg = regions
     .map((r) => {
       const cs = countries.filter((c) => c.region === r);

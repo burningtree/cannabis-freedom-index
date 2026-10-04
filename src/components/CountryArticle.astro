@@ -1,7 +1,7 @@
 ---
 // Full write-up for one country. Rendered on its own page, and fetched into the
 // drawer on the home page — so there is a single template for both views.
-import { SEGMENTS, REC_LABEL, MED_LABEL, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
+import { SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
 import { tierOf, tierColor } from "../lib/tiers.js";
 import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
@@ -21,6 +21,9 @@ const byName = group ? [...group.units].sort((a, b) => a.name.localeCompare(b.na
 // Recorded changes to the national score, newest first (not shown for a single state).
 const history = sub ? [] : changes.filter((ch) => ch.country === c);
 const scored = history.filter((ch) => ch.score); // the ones that moved the score
+// 48,000,000 → "48 million", 770,000 → "770,000"
+const people = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)} million` : n.toLocaleString("en-GB"));
+const use = sub ? null : c.use;
 const r = 42;
 const circ = 2 * Math.PI * r;
 ---
@@ -48,10 +51,25 @@ const circ = 2 * Math.PI * r;
       </div>
     </div>
     <div class="d-chips">
-      <span class={`chip s-${v.rec}`}>Recreational: {REC_LABEL[v.rec]}</span>
+      <span class={`chip s-${v.rec}`} title={REC_HELP[v.rec]}>Recreational: {REC_LABEL[v.rec]}</span>
       <span class={`chip s-${v.med}`}>Medical: {MED_LABEL[v.med]}</span>
     </div>
     <p class="d-note">{v.note}</p>
+    {use && (
+      <dl class="c-use">
+        <div>
+          <dt>Cannabis users</dt>
+          <dd>{use.estimate ? "about " : ""}{people(use.users)}</dd>
+        </div>
+        <div>
+          <dt>Share aged 15–64</dt>
+          <dd>{use.estimate ? "about " : ""}{use.prevalence}%</dd>
+        </div>
+        <p>{use.estimate
+          ? `An estimate: there is no national survey, so the median rate of surveyed countries in ${c.region} is assumed.`
+          : `People who used cannabis in the past year, from a ${use.year} survey applied to today's population.`}</p>
+      </dl>
+    )}
     {scored.length > 0 && <CountryChart history={scored} />}
     {history.length > 0 && <CountryChanges history={history} place="side" />}
     {group && (
@@ -151,9 +169,9 @@ const circ = 2 * Math.PI * r;
     {d && (
       <>
         <h2 class="d-h">More context <span>not part of the score</span></h2>
-        {d.context.map((x) => (
+        {d.context.filter(Boolean).map((x) => (
           <div class="segrow">
-            <div class="segrow-top"><span>{x.name}</span></div>
+            <div class="segrow-top"><span>{x.name === "Death penalty" ? "☠️ " : ""}{x.name}</span></div>
             <p class="ctx">{x.t}</p>
             <ul class="srcs">
               {x.src.map(([label, url]) => (

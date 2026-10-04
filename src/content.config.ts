@@ -11,7 +11,8 @@ const perSegment = <T extends z.ZodTypeAny>(value: T) =>
 const source = z.object({ title: z.string().min(1), url: z.string().url() }).strict();
 const cited = z.object({ text: z.string().min(1), sources: z.array(z.string()) }).strict();
 const status = {
-  recreational: z.enum(["legal", "partial", "decriminalised", "illegal"]),
+  // "death": illegal, and the law allows the death penalty for cannabis offences, in practice trafficking.
+  recreational: z.enum(["legal", "partial", "decriminalised", "illegal", "death"]),
   medical: z.enum(["legal", "limited", "none"]),
 };
 
@@ -27,12 +28,26 @@ const countries = defineCollection({
       name: z.string().min(1),
       region: z.enum(["Africa", "Asia", "Europe", "North America", "South America", "Oceania"]),
       iso_numeric: z.number().int().optional(), // matches the country to its shape on the map
+      // Population by year: a snapshot every ten years from 1900 (Our World in Data) and the
+      // latest figure (World Bank). It weights the population-weighted world average.
+      population: z.record(z.string().regex(/^\d{4}$/), z.number().int().positive()),
+      // People who used cannabis in the past year. `prevalence` is the share of 15–64-year-olds,
+      // from the survey of `year` (UNODC World Drug Report figures); `users` is that share of the
+      // country's 15–64 population today. Where there is no survey, `estimate: true` and the
+      // prevalence is the median of the surveyed countries in the same region.
+      cannabis_use: z.object({
+        prevalence: z.number().min(0).max(100),
+        year: z.number().int().optional(),
+        estimate: z.boolean().optional(),
+        users: z.number().int().nonnegative(),
+      }).strict(),
       ...status,
       updated: z.coerce.date(),
       summary: z.string().min(1),
       scores: perSegment(score),
       segments: perSegment(cited),
-      context: z.object(Object.fromEntries(CONTEXT_IDS.map((id) => [id, cited]))).strict(),
+      // the four standard sections, plus `death_penalty` where the law provides for one
+      context: z.object({ death_penalty: cited.optional(), ...Object.fromEntries(CONTEXT_IDS.map((id) => [id, cited])) }).strict(),
       sources: z.record(z.string(), source),
       subunits: z
         .object({
@@ -47,6 +62,9 @@ const countries = defineCollection({
     .strict()
     .superRefine((data, ctx) => {
       // Every source key cited by a segment must be defined under `sources`.
+      if ((data.recreational === "death") !== Boolean(data.context.death_penalty)) {
+        ctx.addIssue({ code: "custom", message: 'a country marked "recreational: death" needs a context.death_penalty section, and only such a country may have one' });
+      }
       const blocks = { ...data.segments, ...data.context } as Record<string, { sources: string[] }>;
       for (const [name, block] of Object.entries(blocks)) {
         for (const key of block.sources) {
