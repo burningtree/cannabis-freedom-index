@@ -2,7 +2,7 @@
 
 A 0–100 score of personal cannabis freedom for every country — what you may carry, grow, share and use, and what happens to you if you do. Each score comes with a written explanation and linked sources.
 
-**Live site:** https://burningtree.github.io/cannabis-freedom-index/
+**Live site:** https://cannabisfreedom.fyi/
 
 ## How the score works
 
