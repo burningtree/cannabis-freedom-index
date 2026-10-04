@@ -23,3 +23,23 @@ countries.forEach((c) => {
 export const regions = [...new Set(countries.map((c) => c.region))].sort();
 export const segAvg = SEGMENTS.map((_, i) => countries.reduce((a, c) => a + c.s[i], 0) / countries.length);
 export const worldAvg = countries.reduce((a, c) => a + c.raw, 0) / countries.length;
+
+// ── States, provinces and territories of federations ──
+import { SUBUNITS } from "../data/subunits.js";
+
+const scoreOf = (s) => s.reduce((a, v, i) => a + segmentPoints(i, v), 0);
+
+// For a country id, returns { label, plural, intro, sources, units } with each unit scored,
+// ranked within its country, and placed where it would sit among countries. Undefined if none.
+export function subunitsOf(id) {
+  const group = SUBUNITS[id];
+  if (!group) return undefined;
+  const units = group.units
+    .map((x) => {
+      const raw = scoreOf(x.s);
+      return { ...x, raw, score: Math.round(raw), worldRank: 1 + countries.filter((c) => c.raw > raw).length };
+    })
+    .sort((a, b) => b.raw - a.raw || a.name.localeCompare(b.name));
+  units.forEach((x, i) => (x.rank = i + 1));
+  return { ...group, units };
+}

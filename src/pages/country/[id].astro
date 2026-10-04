@@ -30,4 +30,11 @@ const description = `${c.name} scores ${c.score} out of 100 on the Cannabis Free
         : <span></span>}
     </nav>
   </main>
+  <script>
+    // On a full page the state/province picker simply navigates.
+    document.addEventListener("change", (e) => {
+      const select = e.target.closest("select[data-subunit-select]");
+      if (select) location.href = select.value;
+    });
+  </script>
 </Base>

@@ -3,11 +3,18 @@
 // drawer on the home page — so there is a single template for both views.
 import { SEGMENTS, CONTEXT, REC_LABEL, MED_LABEL } from "../data/data.js";
 import { DETAILS } from "../data/details.js";
-import { countries, segAvg, segmentPoints, segmentMax } from "../lib/countries.js";
+import { countries, segAvg, segmentPoints, segmentMax, subunitsOf } from "../lib/countries.js";
 import { tierOf, tierColor } from "../lib/tiers.js";
 
-const { c } = Astro.props;
-const d = DETAILS[c.id];
+// `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
+const { c, sub } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const group = subunitsOf(c.id);
+const v = sub ?? c; // whichever entity's scores are on display
+const d = sub ? null : DETAILS[c.id];
+const countryUrl = `${base}country/${c.slug}/`;
+const unitUrl = (x) => `${countryUrl}${x.id}/`;
+const byName = group ? [...group.units].sort((a, b) => a.name.localeCompare(b.name)) : [];
 const r = 42;
 const circ = 2 * Math.PI * r;
 ---
@@ -16,33 +23,59 @@ const circ = 2 * Math.PI * r;
     <div class="d-head">
       <span class="d-flag">{c.flag}</span>
       <div>
-        <h1>{c.name}</h1>
-        <p class="sub">{c.region}</p>
+        <h1>{v.name}</h1>
+        <p class="sub">{sub ? `${group.label} · ${c.name}` : c.region}</p>
       </div>
     </div>
     <div class="d-score">
       <svg class="ring" width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
         <circle cx="52" cy="52" r={r} fill="none" stroke="var(--border)" stroke-width="9" />
-        <circle cx="52" cy="52" r={r} fill="none" stroke={tierColor(c.raw)} stroke-width="9" stroke-linecap="round"
-          stroke-dasharray={`${(c.raw / 100) * circ} ${circ}`} transform="rotate(-90 52 52)" />
-        <text x="52" y="62" text-anchor="middle">{c.score}</text>
+        <circle cx="52" cy="52" r={r} fill="none" stroke={tierColor(v.raw)} stroke-width="9" stroke-linecap="round"
+          stroke-dasharray={`${(v.raw / 100) * circ} ${circ}`} transform="rotate(-90 52 52)" />
+        <text x="52" y="62" text-anchor="middle">{v.score}</text>
       </svg>
       <div>
-        <div class="tier">{tierOf(c.raw).name}</div>
-        <p class="sub">#{c.rank} of {countries.length} worldwide<br>#{c.regionRank} of {c.regionCount} in {c.region}</p>
+        <div class="tier">{tierOf(v.raw).name}</div>
+        {sub
+          ? <p class="sub">#{sub.rank} of {group.units.length} in {c.name}<br>would rank #{sub.worldRank} among countries</p>
+          : <p class="sub">#{c.rank} of {countries.length} worldwide<br>#{c.regionRank} of {c.regionCount} in {c.region}</p>}
       </div>
     </div>
     <div class="d-chips">
-      <span class={`chip s-${c.rec}`}>Recreational: {REC_LABEL[c.rec]}</span>
-      <span class={`chip s-${c.med}`}>Medical: {MED_LABEL[c.med]}</span>
+      <span class={`chip s-${v.rec}`}>Recreational: {REC_LABEL[v.rec]}</span>
+      <span class={`chip s-${v.med}`}>Medical: {MED_LABEL[v.med]}</span>
     </div>
-    <p class="d-note">{c.note}</p>
+    <p class="d-note">{v.note}</p>
+    {group && (
+      <label class="field sub-select">
+        <span>{group.label}</span>
+        <select data-subunit-select aria-label={`Choose a ${group.label.toLowerCase()} of ${c.name}`}>
+          <option value={countryUrl} selected={!sub}>All of {c.name} (national estimate)</option>
+          {byName.map((x) => <option value={unitUrl(x)} selected={sub?.id === x.id}>{x.name} · {x.score}</option>)}
+        </select>
+      </label>
+    )}
   </div>
 
   <div class="c-main">
     <h2 class="d-h">Score breakdown <span>▏world average</span></h2>
-    <p class="d-hint">Select a segment to show or hide the exact rules and sources.{d && ` Reviewed ${d.reviewed}.`}</p>
-    {SEGMENTS.map((s, i) => {
+    {sub
+      ? <p class="d-hint">{group.intro} Segment-by-segment explanations are written at national level — <a href={countryUrl} data-subunit>see {c.name}</a>.</p>
+      : <p class="d-hint">Select a segment to show or hide the exact rules and sources.{d && ` Reviewed ${d.reviewed}.`}</p>}
+    {sub && SEGMENTS.map((s, i) => (
+      <div class="segrow">
+        <div class="segrow-top">
+          <span>{s.name} <small>· {s.weight}%</small></span>
+          <b>{sub.s[i]}/10 <small class="vs">{c.name}: {c.s[i]}</small></b>
+        </div>
+        <div class="bar" title={`World average ${segAvg[i].toFixed(1)}/10`}>
+          <i style={`width:${sub.s[i] * 10}%;background:${tierColor(sub.s[i] * 10)}`}></i>
+          <span class="avg-tick" style={`left:calc(${segAvg[i] * 10}% - 1px)`}></span>
+        </div>
+        <div class="pts">adds {segmentPoints(i, sub.s[i]).toFixed(1)} of {segmentMax(i).toFixed(0)} points</div>
+      </div>
+    ))}
+    {!sub && SEGMENTS.map((s, i) => {
       const seg = d?.seg[s.detail];
       return (
         <details class="segrow" open>
@@ -70,6 +103,28 @@ const circ = 2 * Math.PI * r;
         </details>
       );
     })}
+
+    {group && (
+      <section class="c-units">
+        <h2 class="d-h">{sub ? `Other ${group.plural}` : `By ${group.label.toLowerCase()}`} <span>{group.units.length} scored</span></h2>
+        {!sub && <p class="d-hint">{group.intro}</p>}
+        <ol class="units">
+          {group.units.map((x) => (
+            <li class={sub?.id === x.id ? "current" : undefined}>
+              <a href={unitUrl(x)} data-subunit>
+                <span class="u-rank">{x.rank}</span>
+                <span class="u-name">{x.name}</span>
+                <span class="u-score">{x.score}</span>
+                <span class="bar"><i style={`width:${x.raw}%;background:${tierColor(x.raw)}`}></i></span>
+              </a>
+            </li>
+          ))}
+        </ol>
+        <ul class="srcs">
+          {group.sources.map(([label, url]) => <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>)}
+        </ul>
+      </section>
+    )}
 
     {d && (
       <>

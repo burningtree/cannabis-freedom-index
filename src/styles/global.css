@@ -410,3 +410,19 @@ td.num, th.num { width: 52px; color: var(--muted); }
 .lore-src a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
 .lore-src a:hover { color: var(--text); }
 @media (max-width: 860px) { .lore-grid { grid-template-columns: 1fr; } }
+
+/* ── States, provinces and territories ──────────────── */
+.sub-select { margin-top: 14px; flex-wrap: wrap; }
+.sub-select select { flex: 1; min-width: 200px; max-width: 100%; }
+.d-hint a { color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
+.segrow-top .vs { color: var(--muted); font-weight: 400; margin-left: 8px; font-size: 12.5px; }
+.units { list-style: none; margin: 8px 0 12px; padding: 0; columns: 2; column-gap: 28px; }
+.drawer-inner .units { columns: 1; }
+.units li { break-inside: avoid; }
+.units a { display: grid; grid-template-columns: 26px minmax(0, 1fr) 30px 70px; gap: 8px; align-items: center; padding: 5px 8px; margin: 0 -8px; border-radius: 8px; font-size: 14px; }
+.units a:hover { background: var(--surface-2); }
+.units .current a { background: var(--surface-2); font-weight: 600; }
+.u-rank { color: var(--muted); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.u-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.u-score { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { .units { columns: 1; } }

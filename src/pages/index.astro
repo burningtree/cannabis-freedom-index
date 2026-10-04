@@ -320,16 +320,37 @@ const mapData = countries.map(({ id, num, name, flag, raw, score, rank, s }) => 
     const pageUrl = (id) => `${base}country/${id.toLowerCase()}/`;
     const cache = new Map();
 
-    async function loadArticle(id) {
-      if (!cache.has(id)) {
-        const html = await (await fetch(pageUrl(id))).text();
+    // Articles are cached by page address, which also covers states and provinces.
+    async function loadArticle(url) {
+      if (!cache.has(url)) {
+        const html = await (await fetch(url)).text();
         const article = new DOMParser().parseFromString(html, "text/html").querySelector("article.country");
         // The full page shows every explanation; in the drawer they start collapsed.
         article.querySelectorAll("details[open]").forEach((el) => el.removeAttribute("open"));
-        cache.set(id, article);
+        cache.set(url, article);
       }
-      return cache.get(id).cloneNode(true);
+      return cache.get(url).cloneNode(true);
     }
+    // Swap the drawer to another view of the same country (a state, or back to national).
+    async function showInDrawer(url) {
+      try {
+        body.replaceChildren(await loadArticle(url));
+        $("#dExpand").href = url;
+        dialog.scrollTop = 0;
+      } catch (err) {
+        location.href = url;
+      }
+    }
+    body.addEventListener("change", (e) => {
+      const select = e.target.closest("select[data-subunit-select]");
+      if (select) showInDrawer(select.value);
+    });
+    body.addEventListener("click", (e) => {
+      const a = e.target.closest("a[data-subunit]");
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      showInDrawer(a.getAttribute("href"));
+    });
 
     function markActive() {
       const id = currentId();
@@ -351,7 +372,7 @@ const mapData = countries.map(({ id, num, name, flag, raw, score, rank, s }) => 
       $("#dExpand").href = pageUrl(id);
       $("#dCompare").href = `${base}compare/?c=${id.toLowerCase()}`;
       try {
-        const article = await loadArticle(id);
+        const article = await loadArticle(pageUrl(id));
         if (currentId() !== id) return;
         body.replaceChildren(article);
       } catch (err) {

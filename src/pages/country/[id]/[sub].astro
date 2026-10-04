@@ -1,0 +1,32 @@
+---
+// One page per state, province or territory of a federation, e.g. /country/us/ca/.
+import Base from "../../../layouts/Base.astro";
+import CountryArticle from "../../../components/CountryArticle.astro";
+import { countries, subunitsOf } from "../../../lib/countries.js";
+import { tierOf } from "../../../lib/tiers.js";
+
+export function getStaticPaths() {
+  return countries.flatMap((c) =>
+    (subunitsOf(c.id)?.units ?? []).map((sub) => ({ params: { id: c.slug, sub: sub.id }, props: { c, sub } }))
+  );
+}
+
+const { c, sub } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const description = `${sub.name} (${c.name}) scores ${sub.score} out of 100 on the Cannabis Freedom Index (${tierOf(sub.raw).name}). ${sub.note}`;
+---
+<Base title={`${sub.name}, ${c.name}`} description={description}>
+  <main class="country-page">
+    <div class="page-bar">
+      <a class="back" href={`${base}country/${c.slug}/`}>← {c.flag} {c.name}</a>
+    </div>
+    <CountryArticle c={c} sub={sub} />
+  </main>
+  <script>
+    // On a full page the picker simply navigates.
+    document.addEventListener("change", (e) => {
+      const select = e.target.closest("select[data-subunit-select]");
+      if (select) location.href = select.value;
+    });
+  </script>
+</Base>
