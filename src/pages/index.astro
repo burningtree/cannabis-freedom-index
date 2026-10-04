@@ -73,9 +73,6 @@ const USE_SCALES = {
             <option value="ratio">Share of users ÷ index</option>
           </select>
         </label>
-        <label class="map-toggle" title="Show the United States, Canada and Australia state by state">
-          <input type="checkbox" id="showUnits"> States and provinces
-        </label>
       </div>
       <div class="card map-card">
         <div class="map-wrap" id="mapWrap">
@@ -99,6 +96,11 @@ const USE_SCALES = {
             <span class="legend-note">{scale.note ?? "People aged 15–64 who used cannabis in the past year. Figures marked ~ are regional estimates."}</span>
           </div>
         ))}
+        <div class="map-under">
+          <label class="map-toggle" title="Show the United States, Canada and Australia state by state">
+            <input type="checkbox" id="showUnits"> States and provinces
+          </label>
+        </div>
       </div>
     </section>
 
