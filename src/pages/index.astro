@@ -32,7 +32,6 @@ const mapData = countries.map(({ id, num, name, flag, raw, score, rank, s }) => 
       <div class="stats">
         {stats.map(([n, label]) => <div class="stat"><div class="big">{n}</div><div class="label">{label}</div></div>)}
       </div>
-      <DidYouKnow />
       <Changes />
     </section>
 
@@ -153,6 +152,7 @@ const mapData = countries.map(({ id, num, name, flag, raw, score, rank, s }) => 
     </section>
 
     <Lore />
+    <DidYouKnow />
   </main>
 
   <dialog id="detail" class="drawer" aria-label="Country details">

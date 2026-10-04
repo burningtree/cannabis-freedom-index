@@ -46,7 +46,7 @@ const diff = (seg) => seg.after - seg.before;
           ))}
         </tbody>
       </table>
-      <p class="change-note">Segments are scored from 0 to 10. The scores after the change are {c.name}'s current scores.</p>
+      <p class="change-note">Segments are scored from 0 to 10. {ch.latest ? `The scores after the change are ${c.name}'s current scores.` : `${c.name}'s scores have changed again since.`}</p>
 
       <h2 class="d-h">Source</h2>
       <ul class="srcs">

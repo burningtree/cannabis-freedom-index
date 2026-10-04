@@ -1,16 +1,36 @@
 ---
-// The three most recent changes that moved a country's score (see /changes.yaml).
+// Home page: the four most recent changes as a small vertical timeline (date on the left,
+// details on the right), next to the world average chart. See /changes.yaml.
 import { changes } from "../lib/countries.js";
-import ChangeCard from "./ChangeCard.astro";
+import { tierColor } from "../lib/tiers.js";
+import AverageChart from "./AverageChart.astro";
+import ScoreChange from "./ScoreChange.astro";
 
 const base = import.meta.env.BASE_URL;
+// "1 Jan 2026", or "Feb 2026" when the day is not known
+const shortDate = (iso) =>
+  new Date(`${iso.length === 7 ? iso + "-01" : iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: iso.length === 7 ? undefined : "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 ---
-<section class="changes" aria-labelledby="changesTitle">
-  <div class="changes-head">
-    <h2 class="changes-title" id="changesTitle">Latest changes</h2>
-    <a href={`${base}changes/`}>All changes →</a>
-  </div>
-  <div class="changes-grid">
-    {changes.slice(0, 3).map((ch) => <ChangeCard ch={ch} />)}
-  </div>
-</section>
+<div class="home-split">
+  <section class="card changes" aria-labelledby="changesTitle">
+    <div class="changes-head">
+      <h2 class="changes-title" id="changesTitle">Latest changes</h2>
+      <a href={`${base}changes/`}>All changes →</a>
+    </div>
+    <ol class="mini-tl">
+      {changes.slice(0, 4).map((ch) => (
+        <li style={`--c:${tierColor(ch.score.after)}`}>
+          <a href={`${base}changes/${ch.id}/`}>
+            <time datetime={ch.date}>{shortDate(ch.date)}</time>
+            <span class="mini-tl-body">
+              <span class="mini-tl-country">{ch.country.flag} {ch.country.name}</span>
+              <b>{ch.title}</b>
+              <ScoreChange score={ch.score} />
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+  <AverageChart />
+</div>

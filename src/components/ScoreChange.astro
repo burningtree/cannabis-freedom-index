@@ -9,5 +9,5 @@ const delta = score.after - score.before;
   <span class="pill" style={`--c:${tierColor(score.before)}`}>{score.before}</span>
   <span class="arrow" aria-hidden="true">→</span>
   <span class="pill" style={`--c:${tierColor(score.after)}`}>{score.after}</span>
-  <span class={`delta ${delta >= 0 ? "up" : "down"}`}>{delta >= 0 ? "+" : "−"}{Math.abs(delta)} points</span>
+  <span class={`delta ${delta >= 0 ? "up" : "down"}`}>{delta >= 0 ? "+" : "−"}{Math.abs(delta)} {Math.abs(delta) === 1 ? "point" : "points"}</span>
 </p>

@@ -105,26 +105,42 @@ export function subunitsOf(id) {
 }
 
 // ── Changes: developments that moved a score, newest first ──
-export const changes = (await getCollection("changes"))
-  .map(({ data }) => {
+// Each entry records the segment scores before the change. The scores after it are the "before"
+// of the same country's next change, or the country's current scores if there is none.
+const changeEntries = (await getCollection("changes")).map(({ data }) => data).sort((a, b) => a.date.localeCompare(b.date));
+export const changes = changeEntries
+  .map((data, i) => {
     const country = countries.find((c) => c.slug === data.country);
     if (!country) throw new Error(`changes.yaml: "${data.id}" refers to unknown country "${data.country}"`);
-    const s = scoreList(data.before);
-    const before = Math.round(scoreOf(s));
+    const next = changeEntries.slice(i + 1).find((x) => x.country === data.country);
+    const before = scoreList(data.before);
+    const after = next ? scoreList(next.before) : country.s;
+    if (before.every((v, k) => v === after[k])) throw new Error(`changes.yaml: "${data.id}" has the same scores before and after`);
     return {
       ...data,
       country,
+      latest: !next, // the country's most recent change: "after" is its current score
       source: pair(data.source),
-      score: { before, after: country.score },
+      raw: { before: scoreOf(before), after: scoreOf(after) },
+      score: { before: Math.round(scoreOf(before)), after: Math.round(scoreOf(after)) },
       // every segment, with its score before and after
-      segments: SEGMENTS.map((seg, i) => ({ name: seg.name, weight: seg.weight, before: s[i], after: country.s[i] })),
+      segments: SEGMENTS.map((seg, k) => ({ name: seg.name, weight: seg.weight, before: before[k], after: after[k] })),
     };
   })
-  .sort((a, b) => b.date.localeCompare(a.date));
-for (const ch of changes) {
-  if (changes.filter((x) => x.country === ch.country).length > 1) throw new Error(`changes.yaml: more than one change for "${ch.country.slug}" — keep only the latest`);
-  if (ch.segments.every((seg) => seg.before === seg.after)) throw new Error(`changes.yaml: "${ch.id}" has the same scores before and after`);
-}
+  .reverse();
+
+// World average over time, oldest first, rebuilt by undoing the recorded changes one by one.
+// Only as complete as changes.yaml: countries with no recorded change are held at today's score.
+export const averageHistory = (() => {
+  const n = countries.length;
+  let sum = countries.reduce((a, c) => a + c.raw, 0);
+  const points = changes.map((ch) => {
+    const after = sum / n;
+    sum -= ch.raw.after - ch.raw.before;
+    return { change: ch, date: ch.date, before: sum / n, after };
+  });
+  return points.reverse();
+})();
 
 // Review dates are stored as YYYY-MM-DD; this is how they are shown everywhere.
 // A date without a day ("2026-02") is shown as month and year.

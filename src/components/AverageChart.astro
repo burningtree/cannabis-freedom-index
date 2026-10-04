@@ -1,0 +1,109 @@
+---
+// World average score over time: a step line that moves at each recorded change.
+// The plot is a stretched SVG; labels and markers are HTML so they stay readable at any width.
+import { averageHistory, formatDate, lastUpdated } from "../lib/countries.js";
+
+// `note` adds the caveat under the chart.
+const { note = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const fmt = (v) => v.toFixed(1);
+const time = (iso) => Date.parse(iso.length === 7 ? `${iso}-15` : iso);
+
+const first = averageHistory[0];
+const now = averageHistory.at(-1).after;
+const startYear = +first.date.slice(0, 4);
+const endYear = +lastUpdated.slice(0, 4);
+const t0 = Date.UTC(startYear, 0, 1);
+const t1 = time(lastUpdated);
+const x = (t) => ((t - t0) / (t1 - t0)) * 100;
+
+// y axis: half-point steps that enclose the data (the range is small, so it does not start at zero)
+const values = averageHistory.flatMap((p) => [p.before, p.after]);
+const yMin = Math.floor(Math.min(...values) * 2) / 2;
+const yMax = Math.ceil(Math.max(...values) * 2) / 2;
+const y = (v) => (1 - (v - yMin) / (yMax - yMin)) * 100;
+const ticks = Array.from({ length: Math.round((yMax - yMin) * 2) + 1 }, (_, i) => yMin + i / 2);
+const years = Array.from({ length: endYear - startYear + 1 }, (_, i) => startYear + i);
+
+const points = averageHistory.map((p) => ({ ...p, x: x(time(p.date)), y: y(p.after) }));
+const line = `M0,${y(first.before)}` + points.map((p) => `H${p.x}V${p.y}`).join("") + "H100";
+const delta = now - first.before;
+---
+<section class="card avg" aria-labelledby="avgTitle">
+  <div class="avg-head">
+    <h2 id="avgTitle">World average score</h2>
+    <p class="avg-now"><b>{fmt(now)}</b><span class={`delta ${delta >= 0 ? "up" : "down"}`}>{delta >= 0 ? "+" : "−"}{fmt(Math.abs(delta))} since {startYear}</span></p>
+  </div>
+
+  <div class="avg-chart" id="avgChart">
+    <div class="avg-y" aria-hidden="true">
+      {ticks.map((t) => <span style={`top:${y(t)}%`}>{fmt(t)}</span>)}
+    </div>
+    <div class="avg-plot">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        {ticks.map((t) => <line class="grid" x1="0" x2="100" y1={y(t)} y2={y(t)} />)}
+        <path class="line" d={line} />
+      </svg>
+      {points.map((p) => (
+        <a class="avg-dot" href={`${base}changes/${p.change.id}/`} style={`left:${p.x}%;top:${p.y}%`}
+          data-date={formatDate(p.date)} data-title={`${p.change.country.flag} ${p.change.title}`}
+          data-avg={`World average ${fmt(p.before)} → ${fmt(p.after)}`}
+          aria-label={`${formatDate(p.date)}: ${p.change.title}. World average ${fmt(p.before)} to ${fmt(p.after)}.`}></a>
+      ))}
+      <div class="avg-tip" id="avgTip" hidden><small></small><b></b><span></span></div>
+    </div>
+    <div class="avg-x" aria-hidden="true">
+      {years.map((yr, i) => <span class={i % 2 ? "odd" : ""} style={`left:${x(Date.UTC(yr, 0, 1))}%`}>{yr}</span>)}
+    </div>
+  </div>
+  {note && <p class="avg-note">Rebuilt from the changes on this page, so it is only as complete as that list: a country with no recorded change is held at today's score for the whole period. The scale does not start at zero.</p>}
+</section>
+
+<script>
+  const chart = document.querySelector("#avgChart");
+  const plot = chart?.querySelector(".avg-plot");
+  const tip = chart?.querySelector("#avgTip");
+  if (chart && plot && tip) {
+    const dots = [...plot.querySelectorAll(".avg-dot")];
+    const [date, title, avg] = tip.children;
+    let active = null;
+    const show = (dot) => {
+      if (dot === active) return;
+      active?.classList.remove("on");
+      active = dot;
+      dot.classList.add("on");
+      date.textContent = dot.dataset.date;
+      title.textContent = dot.dataset.title;
+      avg.textContent = dot.dataset.avg;
+      tip.hidden = false;
+      // keep the tooltip inside the plot
+      const box = plot.getBoundingClientRect();
+      const d = dot.getBoundingClientRect();
+      const cx = d.left + d.width / 2 - box.left;
+      const half = tip.offsetWidth / 2;
+      tip.style.left = `${Math.min(Math.max(cx, half), box.width - half)}px`;
+      const above = d.top - box.top - tip.offsetHeight - 10;
+      tip.style.top = `${above >= -30 ? above : d.bottom - box.top + 10}px`;
+    };
+    const hide = () => {
+      active?.classList.remove("on");
+      active = null;
+      tip.hidden = true;
+    };
+    // pointer: the change nearest to the cursor along the time axis
+    plot.addEventListener("pointermove", (e) => {
+      let best = dots[0], dist = Infinity;
+      for (const dot of dots) {
+        const r = dot.getBoundingClientRect();
+        const dx = Math.abs(r.left + r.width / 2 - e.clientX);
+        if (dx < dist) { dist = dx; best = dot; }
+      }
+      show(best);
+    });
+    plot.addEventListener("pointerleave", hide);
+    dots.forEach((dot) => {
+      dot.addEventListener("focus", () => show(dot));
+      dot.addEventListener("blur", hide);
+    });
+  }
+</script>
