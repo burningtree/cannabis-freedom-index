@@ -1,9 +1,9 @@
 // One small JSON file per country with its explanations and sources, generated from the
 // YAML in /countries. The compare page fetches these on demand.
-import { countries } from "../../lib/countries.js";
+import { places } from "../../lib/countries.js";
 
 export function getStaticPaths() {
-  return countries.map((c) => ({ params: { id: c.slug }, props: { c } }));
+  return places.map((c) => ({ params: { id: c.slug }, props: { c } }));
 }
 
 export function GET({ props }) {

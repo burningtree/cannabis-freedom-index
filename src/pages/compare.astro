@@ -1,8 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
-import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries } from "../lib/countries.js";
+import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries, places } from "../lib/countries.js";
 
-const light = countries.map(({ id, slug, name, flag, region, raw, score, rank, s, rec, med }) =>
+const light = places.map(({ id, slug, name, flag, region, raw, score, rank, s, rec, med }) =>
   ({ id, slug, name, flag, region, raw, score, rank, s, rec, med }));
 const meta = {
   segments: SEGMENTS.map((s) => ({ name: s.name, weight: s.weight })),
@@ -31,7 +31,7 @@ const presets = [
         <span>Add a country</span>
         <input type="search" id="cmpInput" list="cmpList" placeholder="Start typing a name…" autocomplete="off">
         <datalist id="cmpList">
-          {countries.map((c) => <option value={c.name}></option>)}
+          {places.map((c) => <option value={c.name}></option>)}
         </datalist>
       </label>
       <label class="cmp-toggle"><input type="checkbox" id="cmpText" checked> Show explanations and sources</label>
@@ -135,7 +135,7 @@ const presets = [
           <div class="cmp-score${c.score === bestScore ? " best" : ""}"><b>${c.score}</b><span>/ 100</span></div>
           <div class="bar"><i style="width:${c.raw}%;background:${tierColor(c.raw)}"></i></div>
           <div class="cmp-sub">${tierOf(c.raw).name}</div>`), "cmp-index"),
-        row("World rank", cs.map((c) => `#${c.rank} <span class="cmp-sub">of ${META.total}</span>`)),
+        row("World rank", cs.map((c) => (c.rank ? `#${c.rank} <span class="cmp-sub">of ${META.total}</span>` : `<span class="cmp-sub">not ranked: disputed territory</span>`))),
         row("Recreational", cs.map((c) => `<span class="chip s-${c.rec}">${META.rec[c.rec]}</span>`)),
         row("Medical", cs.map((c) => `<span class="chip s-${c.med}">${META.med[c.med]}</span>`)),
       ];

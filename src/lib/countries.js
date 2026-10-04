@@ -44,7 +44,8 @@ const scoreList = (scores) => SEGMENTS.map((seg) => scores[seg.id]);
 const flagOf = (id) => String.fromCodePoint(...[...id].map((ch) => 0x1f1a5 + ch.charCodeAt(0)));
 
 // ── Countries ─────────────────────────────────────────
-export const countries = (await getCollection("countries"))
+// Every file in /countries, scored. Recognised countries and disputed territories are split below.
+const everyPlace = (await getCollection("countries"))
   .map(({ id: slug, data }) => {
     const id = slug.toUpperCase();
     const s = scoreList(data.scores);
@@ -53,7 +54,8 @@ export const countries = (await getCollection("countries"))
     return {
       id, slug, raw, s,
       score: Math.round(raw),
-      flag: flagOf(id),
+      flag: data.flag ?? flagOf(id),
+      disputed: data.disputed ?? null, // { part_of, note } for a territory that is not a recognised state
       num: data.iso_numeric ?? null,
       populationByYear: Object.entries(data.population).map(([y, v]) => [+y, v]).sort((a, b) => a[0] - b[0]),
       population: data.population[Object.keys(data.population).sort().at(-1)], // the latest figure
@@ -74,7 +76,18 @@ export const countries = (await getCollection("countries"))
   })
   .sort((a, b) => b.raw - a.raw || a.name.localeCompare(b.name));
 
+// The index ranks recognised countries. Disputed territories are scored the same way and shown
+// alongside, but they take no rank and do not count towards any average.
+export const countries = everyPlace.filter((c) => !c.disputed);
+export const territories = everyPlace.filter((c) => c.disputed);
+export const places = everyPlace; // both, by score: for pages, the map and the table
 countries.forEach((c, i) => (c.rank = i + 1));
+territories.forEach((t) => {
+  t.rank = null;
+  t.worldRank = 1 + countries.filter((c) => c.raw > t.raw).length; // where it would sit among countries
+  t.disputed.country = countries.find((c) => c.slug === t.disputed.part_of);
+  if (!t.disputed.country) throw new Error(`countries/${t.slug}.yaml: disputed.part_of "${t.disputed.part_of}" is not a country`);
+});
 countries.forEach((c) => {
   const inRegion = countries.filter((x) => x.region === c.region);
   c.regionRank = inRegion.indexOf(c) + 1;

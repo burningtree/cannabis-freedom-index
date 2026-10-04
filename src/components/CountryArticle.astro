@@ -47,7 +47,9 @@ const circ = 2 * Math.PI * r;
         <div class="tier">{tierOf(v.raw).name}</div>
         {sub
           ? <p class="sub">#{sub.rank} of {group.units.length} in {c.name}<br>would rank #{sub.worldRank} among countries</p>
-          : <p class="sub">#{c.rank} of {countries.length} worldwide<br>#{c.regionRank} of {c.regionCount} in {c.region}</p>}
+          : c.disputed
+            ? <p class="sub">Not ranked: disputed territory<br>would rank #{c.worldRank} among countries</p>
+            : <p class="sub">#{c.rank} of {countries.length} worldwide<br>#{c.regionRank} of {c.regionCount} in {c.region}</p>}
       </div>
     </div>
     <div class="d-chips">
@@ -55,6 +57,9 @@ const circ = 2 * Math.PI * r;
       <span class={`chip s-${v.med}`}>Medical: {MED_LABEL[v.med]}</span>
     </div>
     <p class="d-note">{v.note}</p>
+    {c.disputed && !sub && (
+      <p class="c-disputed"><strong>Disputed territory.</strong> {c.disputed.note} See also <a href={`${base}country/${c.disputed.country.slug}/`} data-country={c.disputed.country.id}>{c.disputed.country.flag} {c.disputed.country.name}</a>.</p>
+    )}
     {use && (
       <dl class="c-use">
         <div>

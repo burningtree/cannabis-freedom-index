@@ -1,18 +1,19 @@
 ---
 import Base from "../../layouts/Base.astro";
 import CountryArticle from "../../components/CountryArticle.astro";
-import { countries } from "../../lib/countries.js";
+import { countries, places } from "../../lib/countries.js";
 import { tierOf } from "../../lib/tiers.js";
 
 export function getStaticPaths() {
-  return countries.map((c) => ({ params: { id: c.slug }, props: { c } }));
+  return places.map((c) => ({ params: { id: c.slug }, props: { c } }));
 }
 
 const { c } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const prev = countries[c.rank - 2];
-const next = countries[c.rank];
-const description = `${c.name} scores ${c.score} out of 100 on the Cannabis Freedom Index (${tierOf(c.raw).name}, #${c.rank} of ${countries.length}). ${c.note}`;
+// a disputed territory has no rank, so no neighbours to page to
+const prev = c.rank ? countries[c.rank - 2] : null;
+const next = c.rank ? countries[c.rank] : null;
+const description = `${c.name} scores ${c.score} out of 100 on the Cannabis Freedom Index (${tierOf(c.raw).name}${c.rank ? `, #${c.rank} of ${countries.length}` : ""}). ${c.note}`;
 ---
 <Base title={c.name} description={description}>
   <main class="country-page">

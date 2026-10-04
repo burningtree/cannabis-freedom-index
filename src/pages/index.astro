@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
-import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, countries, regions, worldAvg, lastUpdated, formatDate } from "../lib/countries.js";
+import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places } from "../lib/countries.js";
 import { TIERS, tierColor } from "../lib/tiers.js";
 
 const base = import.meta.env.BASE_URL;
@@ -26,8 +26,14 @@ const MED_ORDER = ["yes", "limited", "no"];
 // What the browser needs for the map: scores only, no prose.
 // `ratio` is the share of people who use cannabis divided by the index score: how far use runs
 // ahead of freedom. A score below 1 counts as 1, so that a zero does not divide.
-const mapData = countries.map(({ id, num, name, flag, raw, score, rank, s, use }) =>
+const mapData = places.map(({ id, num, name, flag, raw, score, rank, s, use }) =>
   ({ id, num, name, flag, raw, score, rank, s, use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2) } }));
+// States, provinces and territories of the federations, for the map's "show states" switch.
+// Keyed like the shapes in src/data/subunits.geo.json: "us/ca".
+const unitData = Object.fromEntries(countries.flatMap((c) => {
+  const group = subunitsOf(c.id);
+  return group ? group.units.map((u) => [`${c.slug}/${u.id}`, { id: u.id, country: c.id, name: u.name, raw: u.raw, score: u.score, s: u.s, rank: u.rank, of: group.units.length }]) : [];
+}));
 // Cannabis use on the map: one hue from light to dark, in five steps. Each step starts at `min`.
 const USE_SCALES = {
   users: { label: "Cannabis users", steps: [[0, "Under 10k"], [1e4, "10k–100k"], [1e5, "100k–1M"], [1e6, "1M–10M"], [1e7, "10M or more"]] },
@@ -67,6 +73,9 @@ const USE_SCALES = {
             <option value="ratio">Share of users ÷ index</option>
           </select>
         </label>
+        <label class="map-toggle" title="Show the United States, Canada and Australia state by state">
+          <input type="checkbox" id="showUnits"> States and provinces
+        </label>
       </div>
       <div class="card map-card">
         <div class="map-wrap" id="mapWrap">
@@ -97,7 +106,7 @@ const USE_SCALES = {
       <div class="section-head">
         <div>
           <h2>Rankings</h2>
-          <p class="sub"><span id="resultCount">{countries.length} of {countries.length} countries</span></p>
+          <p class="sub"><span id="resultCount">{places.length} of {places.length} countries and territories</span></p>
         </div>
         <div class="filters">
           <input type="search" id="search" placeholder="Search country…" aria-label="Search country">
@@ -126,11 +135,11 @@ const USE_SCALES = {
             </tr>
           </thead>
           <tbody>
-            {countries.map((c) => (
-              <tr data-id={c.id} data-rank={c.rank} data-name={c.name} data-region={c.region}
+            {places.map((c) => (
+              <tr data-id={c.id} data-rank={c.rank ?? c.worldRank - 0.5} data-name={c.name} data-region={c.region}
                   data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users} data-share={c.use.prevalence}>
-                <td class="num">{c.rank}</td>
-                <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}</a></td>
+                <td class="num">{c.rank ?? "–"}</td>
+                <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}</a>{c.disputed && <span class="tag-disputed" title={c.disputed.note}>disputed</span>}</td>
                 <td class="hide-sm">{c.region}</td>
                 <td class="num-col hide-md" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{compact(c.use.users)}</td>
                 <td class="num-col hide-md" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{c.use.prevalence.toFixed(1)}%</td>
@@ -199,6 +208,7 @@ const USE_SCALES = {
   </dialog>
 
   <script type="application/json" id="cfi-data" set:html={JSON.stringify(mapData)} />
+  <script type="application/json" id="cfi-units" set:html={JSON.stringify(unitData)} />
   <script type="application/json" id="cfi-use-scales" set:html={JSON.stringify(USE_SCALES)} />
   <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => s.name))} />
 
@@ -209,6 +219,8 @@ const USE_SCALES = {
     import "d3-transition";
     import { feature } from "topojson-client";
     import atlasUrl from "world-atlas/countries-50m.json?url";
+    import unitsUrl from "../data/subunits.geo.json?url";
+    import territoryShapes from "../data/territories.geo.json";
     import { tierOf, tierColor } from "../lib/tiers.js";
 
     const base = import.meta.env.BASE_URL;
@@ -218,7 +230,7 @@ const USE_SCALES = {
     const byId = new Map(COUNTRIES.map((c) => [c.id, c]));
     const byNum = new Map(COUNTRIES.filter((c) => c.num != null).map((c) => [c.num, c]));
     // Map features that inherit another entry's score (atlas name or numeric id → country id).
-    const ALIASES = { Kosovo: "XK", Somaliland: "SO", 304: "DK" };
+    const ALIASES = { Kosovo: "XK", Somaliland: "XS", "N. Cyprus": "XN", 304: "DK" };
 
     // ── Map ───────────────────────────────────────────────
     let metric = "index";
@@ -238,14 +250,37 @@ const USE_SCALES = {
       return `var(--u${i})`;
     };
 
+    // States and provinces: drawn on request, in place of their federation's single shape.
+    const UNITS = JSON.parse($("#cfi-units").textContent);
+    const FEDERATIONS = new Set(Object.values(UNITS).map((u) => u.country));
+    let unitPaths = null;   // the state shapes, once loaded
+    let showUnits = false;
+    let drawUnits = null;   // set by initMap: loads and draws the shapes
+
     function paintMap() {
-      if (paths) paths.attr("fill", (d) => (!d.c ? "url(#hatch)" : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
+      if (paths) {
+        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
+        // a federation's own shape steps aside while its states are shown
+        paths.style("display", (d) => (showUnits && unitPaths && d.c && FEDERATIONS.has(d.c.id) ? "none" : null));
+      }
+      if (unitPaths) {
+        unitPaths.style("display", showUnits ? null : "none");
+        // cannabis use is only known nationally, so a state takes its country's colour for those
+        unitPaths.attr("fill", (d) => (isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
+      }
       const shown = isUse() ? metric : "score";
       document.querySelectorAll("[data-legend]").forEach((el) => { el.hidden = el.dataset.legend !== shown; });
       const sub = $("#mapSub");
       sub.textContent = metric === "ratio" ? sub.dataset.ratio : isUse() ? sub.dataset.use : sub.dataset.score;
     }
     $("#metric").addEventListener("change", (e) => { metric = e.target.value; paintMap(); });
+    $("#showUnits").addEventListener("change", async (e) => {
+      showUnits = e.target.checked;
+      if (showUnits && !unitPaths && drawUnits) {
+        try { await drawUnits(); } catch (err) { e.target.checked = showUnits = false; }
+      }
+      paintMap();
+    });
 
     async function initMap() {
       const svg = select("#mapSvg");
@@ -259,11 +294,17 @@ const USE_SCALES = {
       }
       msg.remove();
 
-      const features = feature(world, world.objects.countries).features.filter((f) => f.id !== "010");
+      const features = feature(world, world.objects.countries).features;
+      const ANTARCTICA = "010"; // not a country: drawn as a plain grey shape
       features.forEach((f) => {
         const alias = ALIASES[f.properties.name] || ALIASES[+f.id];
         f.c = alias ? byId.get(alias) : byNum.get(+f.id);
       });
+
+      // Disputed territories the atlas has no shape for (Transnistria, Abkhazia) come from a small
+      // file of their own and are drawn last, on top of the country they are carved out of.
+      territoryShapes.features.forEach((f) => { f.c = byId.get(f.id); });
+      features.push(...territoryShapes.features.filter((f) => f.c));
 
       const projection = geoNaturalEarth1().fitExtent([[8, 8], [952, 472]], { type: "Sphere" });
       const path = geoPath(projection);
@@ -278,12 +319,18 @@ const USE_SCALES = {
 
       const tip = $("#tooltip");
       const wrap = $("#mapWrap");
-      paths = g.selectAll(".country-shape").data(features).join("path")
-        .attr("class", (d) => "country-shape" + (d.c ? " has-data" : ""))
-        .attr("d", path)
-        .on("pointermove", (e, d) => {
-          const c = d.c;
-          tip.innerHTML = c && metric === "ratio"
+      // what the hover box says about a country, or about one of its states (`u`)
+      const describe = (d) => {
+        const c = d.c;
+        if (d.u && !isUse()) {
+          const u = d.u, home = byId.get(u.country);
+          return `<strong>${home.flag} ${u.name}</strong>
+               <div class="row"><span>${metricLabel()}</span><b>${metricText(u)}</b></div>
+               <div class="row"><span>Tier</span><b>${tierOf(metricValue(u)).name}</b></div>
+               <div class="row"><span>Rank in ${home.name}</span><b>#${u.rank} of ${u.of}</b></div>`;
+        }
+        if (d.u) return describe({ c: byId.get(d.u.country), properties: d.properties }) + `<div class="row"><span>${d.u.name}</span><b>national figure</b></div>`;
+        return c && metric === "ratio"
             ? `<strong>${c.flag} ${c.name}</strong>
                <div class="row"><span>Share ÷ index</span><b>${c.use.estimate ? "~" : ""}${c.use.ratio}</b></div>
                <div class="row"><span>Share aged 15–64</span><b>${c.use.estimate ? "~" : ""}${c.use.prevalence}%</b></div>
@@ -297,16 +344,34 @@ const USE_SCALES = {
             ? `<strong>${c.flag} ${c.name}</strong>
                <div class="row"><span>${metricLabel()}</span><b>${metricText(c)}</b></div>
                <div class="row"><span>Tier</span><b>${tierOf(metricValue(c)).name}</b></div>
-               <div class="row"><span>World rank</span><b>#${c.rank}</b></div>`
+               <div class="row"><span>World rank</span><b>${c.rank ? "#" + c.rank : "not ranked"}</b></div>`
             : `<strong>${d.properties.name}</strong><div class="row"><span>No data</span></div>`;
-          tip.hidden = false;
-          const box = wrap.getBoundingClientRect();
-          const x = e.clientX - box.left, y = e.clientY - box.top;
-          tip.style.left = Math.min(x + 14, box.width - tip.offsetWidth - 8) + "px";
-          tip.style.top = Math.max(8, y - tip.offsetHeight - 12) + "px";
-        })
+      };
+      const showTip = (e, d) => {
+        tip.innerHTML = describe(d);
+        tip.hidden = false;
+        const box = wrap.getBoundingClientRect();
+        const x = e.clientX - box.left, y = e.clientY - box.top;
+        tip.style.left = Math.min(x + 14, box.width - tip.offsetWidth - 8) + "px";
+        tip.style.top = Math.max(8, y - tip.offsetHeight - 12) + "px";
+      };
+      paths = g.selectAll(".country-shape").data(features).join("path")
+        .attr("class", (d) => "country-shape" + (d.c ? " has-data" : "") + (d.id === ANTARCTICA ? " land-only" : ""))
+        .attr("d", path)
+        .on("pointermove", showTip)
         .on("pointerleave", () => (tip.hidden = true))
         .on("click", (e, d) => d.c && openCountry(d.c.id));
+
+      drawUnits = async () => {
+        const shapes = (await (await fetch(unitsUrl)).json()).features.filter((f) => UNITS[f.id]);
+        shapes.forEach((f) => { f.u = UNITS[f.id]; });
+        unitPaths = g.selectAll(".unit-shape").data(shapes).join("path")
+          .attr("class", "country-shape unit-shape has-data")
+          .attr("d", path)
+          .on("pointermove", showTip)
+          .on("pointerleave", () => (tip.hidden = true))
+          .on("click", (e, d) => openUnit(d.u.country, d.u.id));
+      };
       paintMap();
       markActive();
 
@@ -351,7 +416,7 @@ const USE_SCALES = {
       });
       tbody.append(emptyRow);
       emptyRow.hidden = shown > 0;
-      $("#resultCount").textContent = `${shown} of ${rows.length} countries`;
+      $("#resultCount").textContent = `${shown} of ${rows.length} countries and territories`;
       document.querySelectorAll("#table th").forEach((th) => th.removeAttribute("aria-sort"));
       $(`#table th[data-sort="${state.sort}"]`).setAttribute("aria-sort", state.asc ? "ascending" : "descending");
     }
@@ -421,6 +486,11 @@ const USE_SCALES = {
       return m && byId.has(m[1]) ? m[1] : null;
     };
 
+    // Open a federation's drawer on one of its states.
+    async function openUnit(countryId, unitId) {
+      openCountry(countryId);
+      await showInDrawer(`${pageUrl(countryId)}${unitId}/`);
+    }
     function openCountry(id) {
       if (location.hash !== "#/" + id) history.pushState(null, "", "#/" + id);
       showFromHash();

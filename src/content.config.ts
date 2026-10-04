@@ -28,6 +28,11 @@ const countries = defineCollection({
       name: z.string().min(1),
       region: z.enum(["Africa", "Asia", "Europe", "North America", "South America", "Oceania"]),
       iso_numeric: z.number().int().optional(), // matches the country to its shape on the map
+      // A territory that governs itself but is not generally recognised as a state. It gets a page
+      // and a score, but no rank, and it is left out of the world averages. `part_of` is the file
+      // name of the country it is internationally regarded as part of.
+      disputed: z.object({ part_of: z.string().regex(/^[a-z]{2}$/), note: z.string().min(1) }).strict().optional(),
+      flag: z.string().optional(), // an emoji to show when the two-letter code has no flag of its own
       // Population by year: a snapshot every ten years from 1900 (Our World in Data) and the
       // latest figure (World Bank). It weights the population-weighted world average.
       population: z.record(z.string().regex(/^\d{4}$/), z.number().int().positive()),
