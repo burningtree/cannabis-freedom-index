@@ -1,0 +1,45 @@
+---
+// A short history: how long people and cannabis have been together, and how recent prohibition is.
+// Every dated claim has a source in the list at the bottom.
+const timeline = [
+  ["c. 10,000 BCE", "Domesticated in East Asia", "Genome studies trace all of today's hemp and drug varieties back to plants first cultivated in early Neolithic East Asia — making cannabis one of humanity's oldest crops, grown for fibre, seed and oil."],
+  ["c. 500 BCE", "Smoked in the Pamir mountains", "Wooden braziers from a 2,500-year-old cemetery in western China still carry residue of high-THC cannabis — the earliest direct chemical evidence of people using it for its effect on the mind."],
+  ["1961", "Banned by treaty", "The UN Single Convention on Narcotic Drugs places cannabis in its strictest category, alongside heroin. Most national prohibitions date from this century, not earlier."],
+  ["1964 – 1992", "The body's own cannabinoids", "Chemists in Israel isolate THC in 1964. Researchers then find receptors for it in the brain and, in 1992, a molecule the body makes itself to fit them. They name it anandamide, from the Sanskrit for bliss."],
+  ["2013", "The first country legalises", "Uruguay becomes the first nation to make cannabis legal for adults. A handful of others have followed."],
+  ["2020", "The UN steps back", "After 59 years, a UN commission votes 27 to 25 to remove cannabis from the treaty's most restrictive schedule, recognising its medical use."],
+];
+const sources = [
+  ["Ren et al. 2021, Science Advances — domestication history of Cannabis sativa", "https://doi.org/10.1126/sciadv.abg2286"],
+  ["Ren et al. 2019, Science Advances — the origins of cannabis smoking in the Pamirs", "https://doi.org/10.1126/sciadv.aaw1391"],
+  ["Gaoni & Mechoulam 1964, J. Am. Chem. Soc. — isolation of THC", "https://doi.org/10.1021/ja01062a046"],
+  ["Devane et al. 1992, Science — discovery of anandamide", "https://doi.org/10.1126/science.1470919"],
+  ["UN News, December 2020 — UN commission reclassifies cannabis", "https://news.un.org/en/story/2020/12/1079132"],
+];
+---
+<section class="section lore" id="story">
+  <div class="lore-grid">
+    <div class="lore-text">
+      <p class="eyebrow">The long story</p>
+      <h2>Twelve thousand years together.<br>One century apart.</h2>
+      <p>People have grown cannabis for about as long as they have grown anything. It gave rope, cloth, food and oil long before anyone wrote laws, and it travelled with farmers, traders and healers across Asia, Africa, Europe and the Americas.</p>
+      <p>The connection runs deeper than farming. Every human body has an <strong>endocannabinoid system</strong>: a network of receptors and home-made signalling molecules that helps regulate mood, appetite, pain, memory and sleep. It evolved for the body's own chemistry, hundreds of millions of years before the plant existed — but the plant's compounds happen to fit the same receptors. That is why cannabis affects us at all.</p>
+      <p>Against that history, prohibition is new. The worldwide ban is barely a lifetime old, and this index measures how much of it is still standing.</p>
+    </div>
+    <ol class="timeline">
+      {timeline.map(([when, title, text]) => (
+        <li>
+          <span class="t-when">{when}</span>
+          <h3>{title}</h3>
+          <p>{text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+  <p class="lore-src">
+    Sources:
+    {sources.map(([label, url], i) => (
+      <>{i > 0 && " · "}<a href={url} target="_blank" rel="noopener noreferrer">{label}</a></>
+    ))}
+  </p>
+</section>

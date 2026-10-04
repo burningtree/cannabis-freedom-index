@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import DidYouKnow from "../components/DidYouKnow.astro";
+import Lore from "../components/Lore.astro";
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, MED_LABEL } from "../data/data.js";
 import { countries, regions, worldAvg } from "../lib/countries.js";
 import { TIERS, tierColor } from "../lib/tiers.js";
@@ -148,6 +149,8 @@ const mapData = countries.map(({ id, num, name, flag, raw, score, rank, s }) => 
         <p>Laws change quickly and this is <strong>not legal advice</strong>. Always check current local law before travelling with, buying or growing cannabis.</p>
       </div>
     </section>
+
+    <Lore />
   </main>
 
   <dialog id="detail" class="drawer" aria-label="Country details">

@@ -390,3 +390,23 @@ td.num, th.num { width: 52px; color: var(--muted); }
 .dyk-fact a { color: var(--accent); font-weight: 500; font-size: 14px; }
 .dyk-fact a:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 640px) { .dyk-facts { min-height: 170px; } }
+
+/* ── Lore ───────────────────────────────────────────── */
+.lore-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 56px; align-items: start; }
+.lore-text h2 { font-size: clamp(26px, 3.4vw, 38px); line-height: 1.1; margin-bottom: 18px; }
+.lore-text p { color: var(--text-2); font-size: 16px; max-width: 58ch; }
+.lore-text p strong { color: var(--text); font-weight: 600; }
+.timeline { list-style: none; margin: 6px 0 0; padding: 0 0 0 22px; border-left: 2px solid var(--border); }
+.timeline li { position: relative; padding: 0 0 20px; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before {
+  content: ""; position: absolute; left: -29px; top: 5px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); border: 3px solid var(--bg);
+}
+.t-when { color: var(--accent); font-weight: 600; font-size: 13px; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+.timeline h3 { margin: 2px 0 4px; font-size: 16px; }
+.timeline p { margin: 0; color: var(--text-2); font-size: 14px; }
+.lore-src { margin: 26px 0 0; color: var(--muted); font-size: 12.5px; }
+.lore-src a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.lore-src a:hover { color: var(--text); }
+@media (max-width: 860px) { .lore-grid { grid-template-columns: 1fr; } }
