@@ -66,6 +66,27 @@ const fullTitle = title ? `${title} — Cannabis Freedom Index` : "Cannabis Free
       root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
       try { localStorage.setItem("cfi-theme", root.dataset.theme); } catch (e) {}
     });
+
+    // "In short" answers on a country article: go to the segment they were read from,
+    // open it and light it up. Works on the country page and inside the home page drawer,
+    // so the address is left alone (the drawer uses it to know which country is open).
+    function showSegment(article, id) {
+      var row = article && article.querySelector('.segrow[data-seg="' + id + '"]');
+      if (!row) return;
+      row.open = true;
+      row.classList.remove("flash");
+      void row.offsetWidth; // restart the animation when the same answer is chosen twice
+      row.classList.add("flash");
+      row.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }
+    document.addEventListener("click", function (e) {
+      var link = e.target.closest("a[data-seg-link]");
+      if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      showSegment(link.closest("article.country"), link.dataset.segLink);
+    });
+    // A link straight to a segment, e.g. /country/de/#seg-possession
+    if (/^#seg-[a-z]+$/.test(location.hash)) showSegment(document.querySelector("article.country"), location.hash.slice(5));
   </script>
 </body>
 </html>

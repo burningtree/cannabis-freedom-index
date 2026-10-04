@@ -74,15 +74,18 @@ const circ = 2 * Math.PI * r;
       <p class="c-disputed"><strong>Disputed territory.</strong> {c.disputed.note} See also <a href={`${base}country/${c.disputed.country.slug}/`} data-country={c.disputed.country.id}>{c.disputed.country.flag} {c.disputed.country.name}</a>.</p>
     )}
     <h2 class="d-h">In short <span><a href={`${base}can-i/`}>all countries →</a></span></h2>
-    <dl class="answers">
+    <ul class="answers">
       {answers.map((x) => (
-        <div class={`answer a-${x.answer}`}>
-          <dt>{x.q}</dt>
-          <dd><b>{x.label}</b><span>{x.text}</span></dd>
-        </div>
+        <li>
+          <a class={`answer a-${x.answer}`} href={`#seg-${x.seg}`} data-seg-link={x.seg} title="Show the rules and sources">
+            <span class="q">{x.q}</span>
+            <b>{x.label}</b>
+            <span class="t">{x.text}</span>
+          </a>
+        </li>
       ))}
-    </dl>
-    <p class="d-hint">A rough guide read from the scores below, not legal advice. The details and the exceptions are in each segment.</p>
+    </ul>
+    <p class="d-hint">A rough guide read from the scores below, not legal advice. The details and the exceptions are in each segment: select an answer to jump to it.</p>
     {use && (
       <dl class="c-use">
         <div>
@@ -100,7 +103,6 @@ const circ = 2 * Math.PI * r;
       </dl>
     )}
     {scored.length > 0 && <CountryChart history={scored} />}
-    {history.length > 0 && <CountryChanges history={history} place="side" />}
     {group && (
       <label class="field sub-select">
         <span>{group.label}</span>
@@ -118,7 +120,7 @@ const circ = 2 * Math.PI * r;
       ? <p class="d-hint">{group.intro} Select a segment to show or hide the rules.</p>
       : <p class="d-hint">Select a segment to show or hide the exact rules and sources.</p>}
     {sub && SEGMENTS.map((s, i) => (
-      <details class="segrow" open>
+      <details class="segrow" data-seg={s.id} open>
         <summary>
           <div class="segrow-top">
             <span>{s.name} <small>· {s.weight}%</small></span>
@@ -144,7 +146,7 @@ const circ = 2 * Math.PI * r;
     {!sub && SEGMENTS.map((s, i) => {
       const seg = d?.segments[i];
       return (
-        <details class="segrow" open>
+        <details class="segrow" data-seg={s.id} open>
           <summary>
             <div class="segrow-top">
               <span>{s.name} <small>· {s.weight}%</small></span>
@@ -169,7 +171,6 @@ const circ = 2 * Math.PI * r;
         </details>
       );
     })}
-    {history.length > 0 && <CountryChanges history={history} place="main" />}
 
     {group && (
       <section class="c-units">
@@ -230,6 +231,7 @@ const circ = 2 * Math.PI * r;
         </section>
       </>
     )}
+    {history.length > 0 && <CountryChanges history={history} />}
     {updated && <p class="c-updated">Last updated: <time datetime={updated}>{updatedText}</time>{d && ` · ${d.sources.length} sources`}{scored.length > 0 && ` · history: ${history.filter((ch) => ch.confidence.key === "checked").length} of ${history.length} entries checked`}</p>}
   </div>
 </article>

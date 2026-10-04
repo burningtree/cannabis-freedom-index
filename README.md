@@ -40,6 +40,8 @@ Built with [Astro](https://astro.build). Pushing to `main` deploys to GitHub Pag
 | `segments.yaml` | The six segments, their weights and level descriptions |
 | `changes.yaml` | The History page: laws and events that moved a country's score, with the scores before, plus treaties; the home page shows the latest four |
 | `src/` | The website: pages, components, styles |
+| `docs/DATA-MAINTENANCE.md` | How the country profiles and the history are checked and extended, and what is still open |
+| `scripts/` | Helpers for that work: apply a batch of history edits, list what still needs a source |
 
 The build checks every data file against a schema (`src/content.config.ts`) and fails with a clear message if, say, a score is out of range or a segment cites a source that isn't defined.
 

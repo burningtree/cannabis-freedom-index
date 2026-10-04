@@ -2,6 +2,8 @@
 // Scores are in the order of segments.yaml: possession, cultivation, enforcement,
 // sharing, consumption, access. See segments.yaml for what each level means.
 
+import { SEGMENT_IDS } from "./segment-ids.js";
+
 export const ANSWER_LABEL = { yes: "Yes", limited: "Limited", no: "No" };
 
 const pick = (score, steps) => steps.find(([min]) => score >= min).slice(1);
@@ -41,9 +43,10 @@ export const QUESTIONS = [
 ];
 
 // `s` is the array of six segment scores of a country, state or province.
+// `seg` in the result is the id of the segment the answer was read from.
 export const answersFor = (s) =>
   QUESTIONS.map(({ id, q, seg, steps }) => {
     const [answer, text, label = ANSWER_LABEL[answer]] = pick(s[seg], steps);
-    return { id, q, answer, text, label };
+    return { id, q, answer, text, label, seg: SEGMENT_IDS[seg] };
   });
 

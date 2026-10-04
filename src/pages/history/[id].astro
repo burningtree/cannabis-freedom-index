@@ -1,8 +1,8 @@
 ---
 import Base from "../../layouts/Base.astro";
 import ScoreChange from "../../components/ScoreChange.astro";
-import { changes, formatDate, changeDate } from "../../lib/countries.js";
-import { tierColor } from "../../lib/tiers.js";
+import { changes, countries, changeDate, REC_LABEL, REC_HELP, MED_LABEL } from "../../lib/countries.js";
+import { tierOf, tierColor } from "../../lib/tiers.js";
 
 export function getStaticPaths() {
   return changes.map((ch, i) => ({ params: { id: ch.id }, props: { ch, newer: changes[i - 1], older: changes[i + 1] } }));
@@ -12,14 +12,20 @@ const { ch, newer, older } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const c = ch.country;
 const diff = (seg) => seg.after - seg.before;
+// The country's other entries closest in time to this one, for the side panel.
+const own = c ? changes.filter((x) => x.country === c && !x.estimate) : [];
+const at = own.indexOf(ch);
+const nearby = own.slice(Math.max(0, at - 3), at + 4);
+const r = 30;
+const circ = 2 * Math.PI * r;
 ---
 <Base title={ch.title} description={ch.score ? `${ch.title}: ${c.name} moved from ${ch.score.before} to ${ch.score.after} on the Cannabis Freedom Index. ${ch.description}` : `${ch.title}. ${ch.description}`}>
   <main class="change-page">
     <div class="page-bar">
       <a class="back" href={`${base}history/`}>← History</a>
-      {c && <a class="btn" href={`${base}country/${c.slug}/`}>{c.flag} {c.name} in full</a>}
     </div>
 
+    <div class={`change-layout${c ? "" : " no-aside"}`}>
     <article class="change-detail">
       <p class="eyebrow"><span title={ch.kind.help}>{ch.kind.emoji} {ch.kind.label}</span> · <time datetime={ch.date}>{changeDate(ch)}</time> · {ch.place.name}</p>
       <h1>{ch.title}</h1>
@@ -60,6 +66,52 @@ const diff = (seg) => seg.after - seg.before;
 
       {ch.estimate && <p class="change-note">This entry is an estimate. No first law is recorded for {c.name}, so its first restrictions are assumed to have come at some point between {ch.window[0]} and {ch.window[1]}. On the charts the change is spread evenly across those years.</p>}
     </article>
+
+    {c && (
+      <aside class="change-aside" aria-label={`About ${c.name}`}>
+        <div class="card ca-card">
+          <a class="ca-head" href={`${base}country/${c.slug}/`}>
+            <span class="ca-flag">{c.flag}</span>
+            <span><b>{c.name}</b><small>{c.region}</small></span>
+          </a>
+          <div class="ca-score">
+            <svg class="ring" width="76" height="76" viewBox="0 0 76 76" aria-hidden="true">
+              <circle cx="38" cy="38" r={r} fill="none" stroke="var(--border)" stroke-width="7" />
+              <circle cx="38" cy="38" r={r} fill="none" stroke={tierColor(c.raw)} stroke-width="7" stroke-linecap="round"
+                stroke-dasharray={`${(c.raw / 100) * circ} ${circ}`} transform="rotate(-90 38 38)" />
+              <text x="38" y="46" text-anchor="middle">{c.score}</text>
+            </svg>
+            <div>
+              <div class="tier">{tierOf(c.raw).name}</div>
+              <p class="sub">{c.disputed ? "Not ranked: disputed territory" : `#${c.rank} of ${countries.length} today`}</p>
+            </div>
+          </div>
+          <div class="d-chips">
+            <span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>Recreational: {REC_LABEL[c.rec]}</span>
+            <span class={`chip s-${c.med}`}>Medical: {MED_LABEL[c.med]}</span>
+          </div>
+          <p class="ca-note">{c.note}</p>
+          <a class="btn btn-primary ca-open" href={`${base}country/${c.slug}/`}>Open {c.name} <span aria-hidden="true">→</span></a>
+        </div>
+
+        {nearby.length > 1 && (
+          <div class="ca-more">
+            <h2>More from {c.name}</h2>
+            <ol>
+              {nearby.map((x) => (
+                <li class={x === ch ? "current" : undefined}>
+                  {x === ch
+                    ? <span><time datetime={x.date}>{changeDate(x)}</time><b>{x.kind.emoji} {x.title}</b></span>
+                    : <a href={`${base}history/${x.id}/`}><time datetime={x.date}>{changeDate(x)}</time><b>{x.kind.emoji} {x.title}</b></a>}
+                </li>
+              ))}
+            </ol>
+            {own.length > nearby.length && <p class="ca-all"><a href={`${base}country/${c.slug}/`}>All {own.length} entries for {c.name} →</a></p>}
+          </div>
+        )}
+      </aside>
+    )}
+    </div>
 
     <nav class="pager" aria-label="Other entries">
       {newer

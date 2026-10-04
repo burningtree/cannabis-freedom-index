@@ -3,11 +3,20 @@
 import Base from "../layouts/Base.astro";
 import { places, regions } from "../lib/countries.js";
 import { answersFor, QUESTIONS, ANSWER_LABEL } from "../lib/answers.js";
+import { SEGMENTS } from "../lib/countries.js";
+import { SEGMENT_IDS } from "../lib/segment-ids.js";
 
 const base = import.meta.env.BASE_URL;
 const rows = [...places]
   .sort((a, b) => a.name.localeCompare(b.name))
-  .map((c) => ({ c, answers: answersFor(c.s) }));
+  .map((c) => ({
+    c,
+    // Each answer also carries the explanation of the segment it was read from, for the tooltip.
+    answers: answersFor(c.s).map((x) => {
+      const i = SEGMENT_IDS.indexOf(x.seg);
+      return { ...x, name: SEGMENTS[i].name, score: c.s[i], why: c.details?.segments[i]?.t ?? "" };
+    }),
+  }));
 ---
 <Base title="Can I?" description="Can I carry, grow, buy or use cannabis in public, and what happens if I'm caught? Five plain answers for every country.">
   <main class="cani-page">
@@ -42,9 +51,11 @@ const rows = [...places]
               <tr data-name={c.name.toLowerCase()} data-region={c.region}>
                 <th scope="row"><a href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span> {c.name}</a></th>
                 {answers.map((x) => (
-                  <td class={`a-${x.answer}`} title={x.text}>
-                    <b>{x.label}</b>
-                    <small>{x.text}</small>
+                  <td class={`a-${x.answer}`}>
+                    <a href={`${base}country/${c.slug}/#seg-${x.seg}`} data-tip={x.why} data-tip-head={`${c.name} · ${x.name} ${x.score}/10`}>
+                      <b>{x.label}</b>
+                      <small>{x.text}</small>
+                    </a>
                   </td>
                 ))}
               </tr>
@@ -53,6 +64,7 @@ const rows = [...places]
         </table>
       </div>
     </div>
+    <div class="cani-tip" id="caniTip" role="tooltip" hidden><b></b><p></p><small>Select to open the details</small></div>
     <p class="table-updated" id="caniCount">{rows.length} countries and territories</p>
   </main>
 
@@ -71,6 +83,31 @@ const rows = [...places]
       }
       count.textContent = `${shown} of ${rows.length} countries and territories`;
     };
+    // Hovering or focusing an answer shows the explanation from the country's score breakdown.
+    const tip = document.getElementById("caniTip");
+    const table = document.getElementById("caniTable");
+    const showTip = (a) => {
+      tip.querySelector("b").textContent = a.dataset.tipHead;
+      tip.querySelector("p").textContent = a.dataset.tip;
+      tip.hidden = false;
+      const cell = a.getBoundingClientRect();
+      const box = tip.getBoundingClientRect();
+      const left = Math.min(Math.max(8, cell.left), innerWidth - box.width - 8);
+      // Below the cell, or above it when there is no room underneath.
+      const top = cell.bottom + box.height + 8 > innerHeight ? cell.top - box.height - 6 : cell.bottom + 6;
+      tip.style.left = `${left}px`;
+      tip.style.top = `${Math.max(8, top)}px`;
+    };
+    const hideTip = () => { tip.hidden = true; };
+    table.addEventListener("mouseover", (e) => {
+      const a = e.target.closest("a[data-tip]");
+      if (a) showTip(a); else hideTip();
+    });
+    table.addEventListener("mouseleave", hideTip);
+    table.addEventListener("focusin", (e) => { const a = e.target.closest("a[data-tip]"); if (a) showTip(a); });
+    table.addEventListener("focusout", hideTip);
+    addEventListener("scroll", hideTip, { passive: true });
+
     // The filter bar and the table's header row stay in view while scrolling;
     // they need to know how tall the bars above them are.
     const measure = () => {

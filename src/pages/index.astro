@@ -201,9 +201,6 @@ const USE_SCALES = {
       <a class="icon-btn" id="dCompare" href={`${base}compare/`} aria-label="Compare with other countries" title="Compare with other countries">
         <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 20V9M12 20V4M19 20v-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
       </a>
-      <a class="icon-btn" id="dExpand" href={base} aria-label="Open full page" title="Open full page">
-        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
       <button class="icon-btn" id="dClose" aria-label="Close">✕</button>
     </div>
     <div class="drawer-inner" id="detailBody"></div>
@@ -458,11 +455,17 @@ const USE_SCALES = {
       }
       return cache.get(url).cloneNode(true);
     }
+    // The drawer is a preview: a big button under the summary leads to the full page.
+    function withOpenButton(article, url) {
+      const open = Object.assign(document.createElement("a"), { className: "btn btn-primary drawer-open", href: url });
+      open.innerHTML = 'Open full page <span aria-hidden="true">→</span>';
+      (article.querySelector(".c-disputed") ?? article.querySelector(".d-note")).after(open);
+      return article;
+    }
     // Swap the drawer to another view of the same country (a state, or back to national).
     async function showInDrawer(url) {
       try {
-        body.replaceChildren(await loadArticle(url));
-        $("#dExpand").href = url;
+        body.replaceChildren(withOpenButton(await loadArticle(url), url));
         dialog.scrollTop = 0;
       } catch (err) {
         location.href = url;
@@ -501,12 +504,11 @@ const USE_SCALES = {
       const id = currentId();
       markActive();
       if (!id) return dialog.open && dialog.close();
-      $("#dExpand").href = pageUrl(id);
       $("#dCompare").href = `${base}compare/?c=${id.toLowerCase()}`;
       try {
         const article = await loadArticle(pageUrl(id));
         if (currentId() !== id) return;
-        body.replaceChildren(article);
+        body.replaceChildren(withOpenButton(article, pageUrl(id)));
       } catch (err) {
         location.href = pageUrl(id);
         return;
