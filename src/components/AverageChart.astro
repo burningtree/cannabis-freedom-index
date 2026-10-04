@@ -1,6 +1,6 @@
 ---
 // World average score over time: a step line that moves at each recorded change.
-// Two views are rendered, the whole history and the last ten years; a switch shows one of them.
+// Two views are rendered, the whole history and the last fifteen years; a switch shows one of them.
 // The plot is a stretched SVG; labels and markers are HTML so they stay readable at any width.
 import { averageHistory, formatDate, dateTime, lastUpdated } from "../lib/countries.js";
 
@@ -44,7 +44,7 @@ function view(id, label, startYear) {
 
 const views = [
   view("all", "All", 1900), // a few bans are older; they are already counted in the starting value
-  view("10y", "Last 10 years", endYear - 10),
+  view("15y", "Last 15 years", endYear - 15),
 ];
 ---
 <section class="card avg" id="avgChart" aria-labelledby="avgTitle">
