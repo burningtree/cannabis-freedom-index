@@ -599,3 +599,31 @@ th.num-col { text-align: right; }
 .c-disputed { margin: 12px 0 0; padding: 10px 14px; border: 1px dashed var(--border); border-radius: 12px; color: var(--text-2); font-size: 13.5px; }
 .c-disputed strong { color: var(--text); }
 .c-disputed a { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+
+/* general guidance inside a context section */
+.ctx + .ctx { margin-top: 8px; }
+.ctx-general { color: var(--muted); font-size: 12.5px; }
+
+/* ── Changelog, downloads, licence ──────────────────── */
+.page-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.lede a, .prose a { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.log-card { margin-top: 24px; overflow-x: auto; }
+.log td { font-size: 14px; }
+.log th { cursor: default; }
+.log-date, .log-place { white-space: nowrap; color: var(--text-2); }
+.log a { color: var(--text); }
+.log a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.downloads { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 24px; }
+.download { padding: 20px 22px; }
+.download h2 { font-size: 20px; margin: 0 0 6px; }
+.download p { margin: 0; color: var(--text-2); font-size: 14.5px; }
+.download .download-meta { margin-top: 8px; color: var(--muted); font-size: 13px; }
+.download details { margin-top: 12px; font-size: 13px; color: var(--muted); }
+.download summary { cursor: pointer; }
+.download .download-cols { margin-top: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; overflow-wrap: anywhere; }
+.prose { max-width: 720px; margin-top: 40px; }
+.prose h2 { font-size: 22px; margin: 28px 0 8px; }
+.prose p { color: var(--text-2); margin: 0 0 10px; }
+.prose strong { color: var(--text); }
+.footer-links a { color: var(--text-2); }
+@media (max-width: 640px) { .log-place { white-space: normal; } }

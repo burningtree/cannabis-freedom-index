@@ -24,6 +24,17 @@ const scored = history.filter((ch) => ch.score); // the ones that moved the scor
 // 48,000,000 → "48 million", 770,000 → "770,000"
 const people = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)} million` : n.toLocaleString("en-GB"));
 const use = sub ? null : c.use;
+// Crossing a border with cannabis. This is general guidance, the same rule almost everywhere,
+// worded for the country's status; it is not country-specific research.
+const SCHENGEN = new Set("AT BE BG HR CZ DK EE FI FR DE GR HU IS IT LV LI LT LU MT NL NO PL PT RO SK SI ES SE CH".split(" "));
+const travel = sub ? null : [
+  `Taking cannabis into or out of ${c.name} is a separate offence from possessing it, normally charged as smuggling or trafficking, with far heavier penalties. That holds almost everywhere, including between two places where cannabis is legal.`,
+  ["legal", "partial", "decrim"].includes(c.rec) && `The rules that allow or tolerate small amounts inside ${c.name} do not cover the border, an airport or the post.`,
+  c.rec === "death" && `In ${c.name} the heaviest penalties, up to the death penalty, are aimed at trafficking, and bringing drugs across the border is treated as trafficking.`,
+  SCHENGEN.has(c.id)
+    ? `A prescription from another country is not recognised by itself. Within the Schengen area a patient can carry prescribed medicine for up to 30 days with a certificate issued by their home health authority; whether cannabis qualifies depends on both countries.`
+    : `A prescription or medical card from another country is generally not recognised. Travellers who need a cannabis-based medicine should ask ${c.name}'s embassy before travelling.`,
+].filter(Boolean);
 const r = 42;
 const circ = 2 * Math.PI * r;
 ---
@@ -186,6 +197,16 @@ const circ = 2 * Math.PI * r;
             </ul>
           </div>
         ))}
+        {travel && (
+          <div class="segrow">
+            <div class="segrow-top"><span>🛂 Crossing the border</span></div>
+            {travel.map((line) => <p class="ctx">{line}</p>)}
+            <p class="ctx ctx-general">General guidance that applies to almost every country, not a check of {c.name}'s customs rules.</p>
+            <ul class="srcs">
+              <li><a href="https://www.incb.org/incb/en/travellers/index.html" target="_blank" rel="noopener noreferrer">International Narcotics Control Board — Travellers carrying medicines containing controlled substances</a></li>
+            </ul>
+          </div>
+        )}
 
         <section class="c-sources">
           <h2 class="d-h">All sources</h2>

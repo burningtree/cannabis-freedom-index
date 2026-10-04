@@ -15,6 +15,7 @@ const fullTitle = title ? `${title} — Cannabis Freedom Index` : "Cannabis Free
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
   <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`}>
+  <link rel="alternate" type="application/rss+xml" title="Cannabis Freedom Index: score changes" href={`${base}rss.xml`}>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -54,6 +55,7 @@ const fullTitle = title ? `${title} — Cannabis Freedom Index` : "Cannabis Free
 
   <footer class="footer">
     <p>Cannabis Freedom Index · Informational only, not legal advice · Map data © Natural Earth</p>
+    <p class="footer-links"><a href={`${base}changelog/`}>Changelog</a> · <a href={`${base}rss.xml`}>RSS</a> · <a href={`${base}data/`}>Download the data</a> · <a href={`${base}data/#licence`}>Licence: data CC BY 4.0, code MIT</a></p>
     <p>Open source — the scores, explanations and code are on <a href={repo} target="_blank" rel="noopener noreferrer">GitHub</a>. Spotted a mistake or a law that changed? <a href={`${repo}/issues`} target="_blank" rel="noopener noreferrer">Open an issue</a> or send a pull request.</p>
   </footer>
 

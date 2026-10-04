@@ -1,0 +1,38 @@
+---
+// Every change that moved a country's score, newest first, as one compact table.
+import Base from "../layouts/Base.astro";
+import { scoreChanges, formatDate } from "../lib/exports.js";
+
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Changelog" description="Every change to a country's score on the Cannabis Freedom Index, newest first, with an RSS feed.">
+  <main class="changes-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Changelog</p>
+      <h1>Score changes</h1>
+      <p class="lede">Every law or ruling that moved a country's score, newest first: {scoreChanges.length} in all. For the full story of each, with context and treaties, see the <a href={`${base}history/`}>History</a>.</p>
+      <p class="page-links"><a class="btn" href={`${base}rss.xml`}>RSS feed</a> <a class="btn" href={`${base}data/`}>Download the data</a></p>
+    </section>
+
+    <div class="card table-card log-card">
+      <table class="log">
+        <thead>
+          <tr><th scope="col">Date</th><th scope="col">Country</th><th scope="col">Change</th><th scope="col" class="num-col">Score</th></tr>
+        </thead>
+        <tbody>
+          {scoreChanges.map((ch) => {
+            const delta = ch.score.after - ch.score.before;
+            return (
+              <tr>
+                <td class="log-date"><time datetime={ch.date}>{formatDate(ch.date)}</time></td>
+                <td class="log-place">{ch.country.flag} {ch.country.name}</td>
+                <td><a href={`${base}history/${ch.id}/`}><span class="kind" aria-hidden="true">{ch.kind.emoji}</span>{ch.title}</a></td>
+                <td class="num-col">{ch.score.before} → {ch.score.after} <span class={`delta ${delta >= 0 ? "up" : "down"}`}>{delta >= 0 ? "+" : "−"}{Math.abs(delta)}</span></td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </main>
+</Base>

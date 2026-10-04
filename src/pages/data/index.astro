@@ -1,0 +1,50 @@
+---
+// Downloads: the scores and the history as CSV and JSON, with the licence.
+import Base from "../../layouts/Base.astro";
+import { scoreRows, historyRows } from "../../lib/exports.js";
+import { lastUpdated, formatDate } from "../../lib/countries.js";
+
+const base = import.meta.env.BASE_URL;
+const repo = "https://github.com/burningtree/cannabis-freedom-index";
+const files = [
+  { name: "scores", title: "Scores", rows: scoreRows, about: "One row per country or disputed territory: index score, the six segment scores, rank, tier, legal status, population and estimated cannabis users." },
+  { name: "history", title: "History", rows: historyRows, about: "One row per history entry: date, country, category, title, description, the score before and after, and the source." },
+];
+---
+<Base title="Data and licence" description="Download the Cannabis Freedom Index scores and history as CSV or JSON. Data is CC BY 4.0, code is MIT.">
+  <main class="changes-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Data</p>
+      <h1>Download the data</h1>
+      <p class="lede">Everything on this site is built from open files. Take the scores and the history as a spreadsheet or as JSON, or read the source files on GitHub. Last updated {formatDate(lastUpdated)}.</p>
+    </section>
+
+    <div class="downloads">
+      {files.map((f) => (
+        <section class="card download">
+          <h2>{f.title}</h2>
+          <p>{f.about}</p>
+          <p class="download-meta">{f.rows.length} rows · {Object.keys(f.rows[0]).length} columns</p>
+          <p class="page-links">
+            <a class="btn" href={`${base}data/${f.name}.csv`} download>{f.name}.csv</a>
+            <a class="btn" href={`${base}data/${f.name}.json`} download>{f.name}.json</a>
+          </p>
+          <details>
+            <summary>Columns</summary>
+            <p class="download-cols">{Object.keys(f.rows[0]).join(", ")}</p>
+          </details>
+        </section>
+      ))}
+    </div>
+
+    <section class="prose" id="licence">
+      <h2>Licence</h2>
+      <p><strong>The data</strong> (scores, explanations, history) is published under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0</a>. You may copy, adapt and republish it, including commercially, as long as you credit "Cannabis Freedom Index" and link to this site.</p>
+      <p><strong>The code</strong> is under the <a href={`${repo}/blob/main/LICENSE`} target="_blank" rel="noopener noreferrer">MIT licence</a>.</p>
+      <p><strong>Data from others</strong> keeps its own terms: population figures come from the World Bank and Our World in Data (both CC BY 4.0), cannabis-use rates from the UN's World Drug Report as collected on Wikipedia, and map shapes from Natural Earth (public domain).</p>
+      <p>Scores are editorial estimates and many entries rest on secondary sources. This is not legal advice.</p>
+      <h2>Stay up to date</h2>
+      <p>The <a href={`${base}changelog/`}>changelog</a> lists every score change, and the <a href={`${base}rss.xml`}>RSS feed</a> carries the latest fifty. The source files, one per country, are on <a href={repo} target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+    </section>
+  </main>
+</Base>

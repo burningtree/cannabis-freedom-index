@@ -66,3 +66,11 @@ Please include a source link. Or just [open an issue](https://github.com/burning
 ## Disclaimer
 
 Scores are editorial estimates, not legal advice. Check current local law before travelling with, buying or growing cannabis.
+
+## Licence
+
+- **Code:** [MIT](LICENSE).
+- **Data** (everything in `countries/`, `changes.yaml` and `segments.yaml`): [CC BY 4.0](LICENSE-DATA). Credit "Cannabis Freedom Index" and link to https://cannabisfreedom.fyi/.
+- Data from others keeps its own terms: population from the World Bank and Our World in Data (CC BY 4.0), cannabis-use rates from the UN World Drug Report as collected on Wikipedia, map shapes from Natural Earth (public domain).
+
+The scores and history can be downloaded as CSV or JSON at https://cannabisfreedom.fyi/data/, and score changes are listed in the [changelog](https://cannabisfreedom.fyi/changelog/) and its RSS feed.
