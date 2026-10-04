@@ -30,7 +30,7 @@ function computed() {
     { text: `Legal to have, nowhere to buy: ${noShop.length} countries let adults possess cannabis but offer no real legal way to obtain it — among them ${list(noShop.slice(0, 4).map((c) => c.name))}.`, id: noShop[0]?.id },
     { text: `${SEGMENTS[lowest].name} is the rarest freedom. The world average is ${segAvg[lowest].toFixed(1)} out of 10, lower than for any other segment.` },
     { text: `${medOnly.length} countries allow some medical use of cannabis while keeping recreational use fully illegal.` },
-    { text: `${regionAvg[0].r} is the freest region, averaging ${Math.round(regionAvg[0].avg)}. ${regionAvg.at(-1).r} is the strictest at ${Math.round(regionAvg.at(-1).avg)}. The world average is ${Math.round(worldAvg)}.` },
+    { text: `${regionAvg[0].r} is the freest region, averaging ${Math.round(regionAvg[0].avg)}. ${regionAvg.at(-1).r} is the strictest at ${Math.round(regionAvg.at(-1).avg)}. The world average is ${worldAvg.toFixed(1)}.` },
   ];
 }
 

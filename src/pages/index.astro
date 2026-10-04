@@ -10,7 +10,7 @@ const base = import.meta.env.BASE_URL;
 const count = (fn) => countries.filter(fn).length;
 const stats = [
   [countries.length, "countries scored"],
-  [Math.round(worldAvg), "world average, out of 100"],
+  [worldAvg.toFixed(1), "world average, out of 100"],
   [count((c) => c.raw >= 60), "reach the “Free” tier (60+)"],
   [count((c) => c.raw >= 40), "score 40+: legal to possess and grow, with limits"],
   [count((c) => c.raw < 15), "score under 15: prison is a real risk"],

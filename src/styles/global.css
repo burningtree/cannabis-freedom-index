@@ -510,10 +510,10 @@ td.num, th.num { width: 52px; color: var(--muted); }
 .avg-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .avg-plot .grid { stroke: var(--border); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .avg-plot .line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-/* a 24px hit target around a 9px dot with a surface ring */
+/* a 24px hit target around a 6px dot with a surface ring */
 .avg-dot { position: absolute; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; }
-.avg-dot::after { content: ""; position: absolute; inset: 7.5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 2px var(--surface); transition: transform .12s; }
-.avg-dot.on::after, .avg-dot:focus-visible::after { transform: scale(1.5); }
+.avg-dot::after { content: ""; position: absolute; inset: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1.5px var(--surface); transition: transform .12s; }
+.avg-dot.on::after, .avg-dot:focus-visible::after { transform: scale(1.8); }
 .avg-dot.on { z-index: 1; }
 .avg-tip { position: absolute; z-index: 2; transform: translateX(-50%); width: max-content; max-width: min(260px, 100%); padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); box-shadow: var(--shadow); pointer-events: none; font-size: 13px; line-height: 1.35; }
 .avg-tip[hidden] { display: none; }
