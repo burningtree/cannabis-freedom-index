@@ -24,7 +24,11 @@ const diff = (seg) => seg.after - seg.before;
       <p class="eyebrow"><span title={ch.kind.help}>{ch.kind.emoji} {ch.kind.label}</span> · <time datetime={ch.date}>{changeDate(ch)}</time> · {ch.place.name}</p>
       <h1>{ch.title}</h1>
       <p class="lede">{ch.description}</p>
-      <p class="change-source">Source: <a href={ch.source[1]} target="_blank" rel="noopener noreferrer">{ch.source[0]}</a></p>
+      <p class={`confidence c-${ch.confidence.key}`}><span aria-hidden="true">{ch.confidence.mark}</span> <strong>{ch.confidence.label}.</strong> {ch.confidence.help}.{ch.score ? " The score before the change is an editorial estimate." : ""}</p>
+      <p class="change-source">{ch.sources.length > 1 ? "Sources" : "Source"}:</p>
+      <ul class="srcs change-srcs">
+        {ch.sources.map(([label, url]) => <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>)}
+      </ul>
 
       {ch.score && (
         <Fragment>
@@ -54,7 +58,7 @@ const diff = (seg) => seg.after - seg.before;
       )}
       {!ch.score && <p class="change-note">{c ? `Listed for context. No score change is recorded for ${c.name} here.` : "International agreements are listed for context. They bind governments, not people, so they move no country's score by themselves."}</p>}
 
-      {ch.estimate && <p class="change-note">This entry is an estimate. No first law is recorded for {c.name}, so its first restrictions are assumed to have come at some point between the 1925 Geneva convention and the 1961 Single Convention. On the charts the change is spread evenly across those years.</p>}
+      {ch.estimate && <p class="change-note">This entry is an estimate. No first law is recorded for {c.name}, so its first restrictions are assumed to have come at some point between {ch.window[0]} and {ch.window[1]}. On the charts the change is spread evenly across those years.</p>}
     </article>
 
     <nav class="pager" aria-label="Other entries">

@@ -130,7 +130,12 @@ const changes = defineCollection({
       // true when no first law is known for the country: the change is assumed to have happened
       // at some point between the 1925 and 1961 treaties, and `date` is the start of that window
       estimate: z.boolean().optional(),
-      source,
+      // the years an estimated change is assumed to fall between, when better than the default window
+      window: z.tuple([z.number().int(), z.number().int()]).optional(),
+      // true once the entry's date and event have been compared with a source that was actually
+      // read. Without it the entry is listed as "not yet checked": it may rest on memory.
+      checked: z.boolean().optional(),
+      sources: z.array(source).min(1), // the more the better; the first is shown where there is room for one
     })
     .strict()
     .refine((ch) => ch.country || !ch.before, { message: "`before` needs a `country`" }),

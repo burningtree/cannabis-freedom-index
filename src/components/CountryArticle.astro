@@ -218,6 +218,6 @@ const circ = 2 * Math.PI * r;
         </section>
       </>
     )}
-    {updated && <p class="c-updated">Last updated: <time datetime={updated}>{updatedText}</time></p>}
+    {updated && <p class="c-updated">Last updated: <time datetime={updated}>{updatedText}</time>{d && ` · ${d.sources.length} sources`}{scored.length > 0 && ` · history: ${history.filter((ch) => ch.confidence.key === "checked").length} of ${history.length} entries checked`}</p>}
   </div>
 </article>

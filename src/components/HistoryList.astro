@@ -45,7 +45,7 @@ const years = [...new Set(items.map((ch) => ch.date.slice(0, 4)))]
             <a class="card chl-card" href={`${base}history/${ch.id}/`}>
               <p class="change-meta">
                 <time datetime={ch.date}>{formatDate(ch.date)}</time>
-                <span>{ch.place.flag} {ch.place.name}</span>
+                <span>{ch.place.flag} {ch.place.name} <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span></span>
               </p>
               <h3><span class="kind" title={ch.kind.label} aria-hidden="true">{ch.kind.emoji}</span><span class="visually-hidden">{ch.kind.label}: </span>{ch.title}</h3>
               <p class="chl-text">{ch.description}</p>

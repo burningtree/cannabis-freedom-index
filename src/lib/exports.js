@@ -35,9 +35,10 @@ export const historyRows = changes.map((ch) => ({
   description: ch.description,
   score_before: ch.score?.before ?? "",
   score_after: ch.score?.after ?? "",
+  confidence: ch.confidence.key,
   date_estimated: Boolean(ch.estimate),
-  source_title: ch.source[0],
-  source_url: ch.source[1],
+  sources: ch.sources.map(([title]) => title).join(" | "),
+  source_urls: ch.sources.map(([, url]) => url).join(" | "),
 }));
 
 // Changes that moved a score and have a real date: the changelog and the feed.

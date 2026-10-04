@@ -131,6 +131,16 @@ export function subunitsOf(id) {
   return { label: meta.label, plural: meta.plural, intro: meta.intro, sources: groupSources, units };
 }
 
+// Where no first law is known for a country, its first restriction is an estimate: it is assumed
+// to have come by default between the 1925 Geneva convention and the 1961 Single Convention.
+// An entry can narrow this with its own `window`.
+export const ESTIMATE_WINDOW = [1925, 1961];
+// How far an entry can be trusted. Before-scores are editorial estimates in every case.
+export const CONFIDENCE = {
+  checked: { key: "checked", mark: "✓", label: "Checked", help: "The date and the event were compared with a source that was read" },
+  unchecked: { key: "unchecked", mark: "?", label: "Not yet checked", help: "Written from general knowledge; the source listed has not been checked against it" },
+  estimated: { key: "estimated", mark: "≈", label: "Estimated", help: "No first law is recorded; the date is an assumption" },
+};
 // ── Changes: developments that moved a score, newest first ──
 // Each entry records the segment scores before the change. The scores after it are the "before"
 // of the same country's next change, or the country's current scores if there is none.
@@ -144,7 +154,7 @@ export const changes = changeEntries
     if (data.country && !country) throw new Error(`changes.yaml: "${data.id}" refers to unknown country "${data.country}"`);
     // context only (a treaty, report or ruling): part of the history, but it moves no score
     const kind = CHANGE_CATEGORIES[data.category]; // { emoji, label, help }
-    if (!data.before) return { ...data, kind, country, place: country ?? { flag: "🌐", name: "International" }, source: pair(data.source), score: null, segments: [] };
+    if (!data.before) return { ...data, kind, country, place: country ?? { flag: "🌐", name: "International" }, sources: data.sources.map(pair), source: pair(data.sources[0]), confidence: CONFIDENCE[data.estimate ? "estimated" : data.checked ? "checked" : "unchecked"], score: null, segments: [] };
     const next = changeEntries.slice(i + 1).find((x) => x.country === data.country && x.before);
     const before = scoreList(data.before);
     const after = next ? scoreList(next.before) : country.s;
@@ -152,10 +162,11 @@ export const changes = changeEntries
     return {
       ...data,
       kind,
+      window: data.estimate ? data.window ?? ESTIMATE_WINDOW : null, // the years an estimate is spread over
       country,
       place: country,
       latest: !next, // the country's most recent change: "after" is its current score
-      source: pair(data.source),
+      sources: data.sources.map(pair), source: pair(data.sources[0]), confidence: CONFIDENCE[data.estimate ? "estimated" : data.checked ? "checked" : "unchecked"],
       raw: { before: scoreOf(before), after: scoreOf(after) },
       score: { before: Math.round(scoreOf(before)), after: Math.round(scoreOf(after)) },
       // every segment, with its score before and after
@@ -164,9 +175,6 @@ export const changes = changeEntries
   })
   .reverse();
 
-// Where no first law is known for a country, its first restriction is an estimate: it is assumed
-// to have come at some point between the 1925 Geneva convention and the 1961 Single Convention.
-export const ESTIMATE_WINDOW = [1925, 1961];
 
 // A country's population at a moment in time, on a straight line between its snapshots.
 const MS_YEAR = 365.25 * 24 * 3600 * 1000;
@@ -183,7 +191,6 @@ function populationAt(c, t) {
 // A country's score at a moment in time, from its recorded changes. A change with a known date is
 // a step. An estimated one rises or falls in a straight line across the estimate window, so that
 // a guess never shows up as a sudden drop on one day.
-const [estFrom, estTo] = ESTIMATE_WINDOW.map((y) => Date.UTC(y, 0, 1));
 const scoredByCountry = new Map(countries.map((c) => [c, changes.filter((ch) => ch.country === c && ch.score).reverse()])); // oldest first
 function scoreAt(c, t) {
   let value = c.raw;
@@ -191,8 +198,9 @@ function scoreAt(c, t) {
   if (list.length) value = list[0].raw.before;
   for (const ch of list) {
     if (ch.estimate) {
-      if (t <= estFrom) break;
-      value = t >= estTo ? ch.raw.after : ch.raw.before + ((ch.raw.after - ch.raw.before) * (t - estFrom)) / (estTo - estFrom);
+      const [from, to] = ch.window.map((y) => Date.UTC(y, 0, 1));
+      if (t <= from) break;
+      value = t >= to ? ch.raw.after : ch.raw.before + ((ch.raw.after - ch.raw.before) * (t - from)) / (to - from);
     } else if (t >= dateTime(ch.date)) value = ch.raw.after;
     else break;
   }
@@ -270,7 +278,7 @@ export const historyPeriods = (() => {
 export const formatDate = (iso) =>
   iso.length === 4 ? iso : new Date(`${iso.length === 7 ? iso + "-01" : iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: iso.length === 7 ? undefined : "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 // How an entry's date is shown: an estimated one as its window.
-export const changeDate = (ch) => (ch.estimate ? `Between ${ESTIMATE_WINDOW[0]} and ${ESTIMATE_WINDOW[1]} (estimate)` : formatDate(ch.date));
+export const changeDate = (ch) => (ch.estimate ? `Between ${ch.window[0]} and ${ch.window[1]} (estimate)` : formatDate(ch.date));
 
 
 // The most recent review date across every country and state file.

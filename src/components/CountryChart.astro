@@ -1,15 +1,14 @@
 ---
 // A country's index score over time: a step line that moves at each of its recorded changes.
 // No script, so it also works when the article is loaded into the drawer.
-import { changeDate, dateTime, lastUpdated, ESTIMATE_WINDOW } from "../lib/countries.js";
+import { changeDate, dateTime, lastUpdated } from "../lib/countries.js";
 
 const { history } = Astro.props; // the country's changes, newest first
 const base = import.meta.env.BASE_URL;
 const time = dateTime;
 
-const [estFrom, estTo] = ESTIMATE_WINDOW;
 // Where a change sits in time. An estimated one runs across the whole window.
-const span0 = (ch) => (ch.estimate ? [Date.UTC(estFrom, 0, 1), Date.UTC(estTo, 0, 1)] : [time(ch.date), time(ch.date)]);
+const span0 = (ch) => (ch.estimate ? ch.window.map((y) => Date.UTC(y, 0, 1)) : [time(ch.date), time(ch.date)]);
 
 const all = [...history].reverse();
 // The axis never starts before 1900; older changes are folded into the starting value.
