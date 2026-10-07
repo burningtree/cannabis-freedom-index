@@ -4,6 +4,7 @@ import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places } from "../lib/countries.js";
 import { TIERS, tierColor } from "../lib/tiers.js";
+import { PLANTING_STATUS, PLANTING_TRADE } from "../lib/segment-ids.js";
 import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor } from "../lib/prices.js";
 import { SHOW_PRICES } from "../lib/config.js";
 
@@ -15,7 +16,7 @@ const useNote = (c) => c.use.estimate
   ? `Estimate: no national survey, so the regional median of ${c.use.prevalence}% of people aged 15–64 is assumed`
   : `${c.use.prevalence}% of people aged 15–64 used cannabis in the past year (${c.use.year} survey)`;
 const stats = [
-  [countries.length, "countries scored"],
+  [places.length, "territories scored"],
   [count((c) => c.raw >= 60), "reach the “Free” tier (60+)"],
   [count((c) => c.raw >= 40), "score 40+: legal to possess and grow, with limits"],
   [count((c) => c.raw < 15), "score under 15: prison is a real risk"],
@@ -28,8 +29,8 @@ const MED_ORDER = ["yes", "limited", "no"];
 // What the browser needs for the map: scores only, no prose.
 // `ratio` is the share of people who use cannabis divided by the index score: how far use runs
 // ahead of freedom. A score below 1 counts as 1, so that a zero does not divide.
-const mapData = places.map(({ id, num, name, flag, raw, score, rank, s, use }) =>
-  ({ id, num, name, flag, raw, score, rank, s, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {}, use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2) } }));
+const mapData = places.map(({ id, num, name, flag, raw, score, rank, s, use, planting }) =>
+  ({ id, num, name, flag, raw, score, rank, s, planting, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {}, use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2) } }));
 // States, provinces and territories of the federations, for the map's "show states" switch.
 // Keyed like the shapes in src/data/subunits.geo.json: "us/ca".
 const unitData = Object.fromEntries(countries.flatMap((c) => {
@@ -50,6 +51,12 @@ const PRICE_SCALE = {
   steps: [[0, "Under $5/g"], [5, "$5–10/g"], [10, "$10–15/g"], [15, "$15–20/g"], [20, "$20/g or more"]],
   note: "Latest sourced flower price, normalised to US dollars per gram. Street and medical markets are kept separate.",
 };
+// Seeds and clones on the map: one option per field, coloured by the status' tone.
+const PLANTING_FIELDS = { seeds: "Seeds", seeds_trade: "Seed sales", clones: "Clones", clones_trade: "Clone sales" };
+// Each status gets its own step of the tier colours, so that no two legend entries look alike.
+const PLANTING_COLOR = { legal: 5, licensed: 4, grey: 3, illegal: 0, open: 5, regulated: 4, gift: 3, unclear: 2, banned: 0 };
+const plantingScale = (statuses) => Object.fromEntries(Object.entries(statuses).map(([k, v]) => [k, { label: v.label, color: `var(--t${PLANTING_COLOR[k]})` }]));
+const PLANTING_SCALES = { status: plantingScale(PLANTING_STATUS), trade: plantingScale(PLANTING_TRADE) };
 const streetFlower = (c) => latestPricesFor(c.id).street;
 ---
 <Base description={`A score from 0 to 100 for how free cannabis is in every country, with a map, rankings${SHOW_PRICES ? ", retail prices" : ""} and legal history.`}>
@@ -68,7 +75,7 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
       <div class="section-head">
         <div>
           <h2>World map</h2>
-          <p class="sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown." data-price="Pale yellow means cheaper, violet means more expensive. Countries without a sourced price are hatched.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
+          <p class="sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown." data-price="Pale yellow means cheaper, violet means more expensive. Countries without a sourced price are hatched." data-planting="Green means legal or sold freely, red means illegal or banned. Hatched countries have not been researched yet. Not part of the score.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
         </div>
         <label class="field">
           <span>Colour by</span>
@@ -79,6 +86,7 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
             <option value="prevalence">Cannabis users (share of adults)</option>
             <option value="ratio">Share of users ÷ index</option>
             {SHOW_PRICES && PRICE_MARKETS.map((market) => <option value={`price:${market}`}>{PRICE_MARKET_LABEL[market]} price</option>)}
+            {Object.entries(PLANTING_FIELDS).map(([field, label]) => <option value={`plant:${field}`}>{label}</option>)}
           </select>
         </label>
       </div>
@@ -109,6 +117,13 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
           <span><i class="sw sw-nodata"></i>No data</span>
           <span class="legend-note">{PRICE_SCALE.note}</span>
         </div>}
+        {Object.entries(PLANTING_SCALES).map(([key, scale]) => (
+          <div class="legend" data-legend={`plant-${key}`} hidden>
+            {Object.values(scale).map((v) => <span><i class="sw" style={`background:${v.color}`}></i>{v.label}</span>)}
+            <span><i class="sw sw-nodata"></i>Not researched yet</span>
+            <span class="legend-note">Seed and clone rules are shown for context and are not part of the score. States and provinces take their country's status.</span>
+          </div>
+        ))}
         <div class="map-under">
           <label class="map-toggle" title="Show the United States, Canada and Australia state by state">
             <input type="checkbox" id="showUnits"> States and provinces
@@ -225,6 +240,7 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
   <script type="application/json" id="cfi-units" set:html={JSON.stringify(unitData)} />
   <script type="application/json" id="cfi-use-scales" set:html={JSON.stringify(USE_SCALES)} />
   <script type="application/json" id="cfi-price-scale" set:html={JSON.stringify(PRICE_SCALE)} />
+  <script type="application/json" id="cfi-planting" set:html={JSON.stringify({ fields: PLANTING_FIELDS, scales: PLANTING_SCALES })} />
   <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => s.name))} />
 
   <script>
@@ -254,6 +270,12 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
     const PRICE_SCALE = JSON.parse($("#cfi-price-scale").textContent);
     const isUse = () => metric in USE_SCALES; // coloured by cannabis use, not by a score
     const isPrice = () => metric.startsWith("price:");
+    const PLANTING = JSON.parse($("#cfi-planting").textContent);
+    const isPlant = () => metric.startsWith("plant:"); // coloured by a seed or clone status
+    const plantField = () => metric.split(":")[1];
+    const plantScale = (field) => PLANTING.scales[field.endsWith("_trade") ? "trade" : "status"];
+    const plantOf = (c, field = plantField()) => plantScale(field)[c.planting?.[field]];
+    const plantColor = (c) => plantOf(c)?.color ?? "url(#hatch)";
     const priceMarket = () => metric.split(":")[1];
     const priceOf = (c) => c.prices[priceMarket()];
     const metricValue = (c) => (metric === "index" ? c.raw : c.s[+metric] * 10);
@@ -286,19 +308,19 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
 
     function paintMap() {
       if (paths) {
-        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isPrice() ? priceColor(d.c) : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
+        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isPlant() ? plantColor(d.c) : isPrice() ? priceColor(d.c) : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
         // a federation's own shape steps aside while its states are shown
         paths.style("display", (d) => (showUnits && unitPaths && d.c && FEDERATIONS.has(d.c.id) ? "none" : null));
       }
       if (unitPaths) {
         unitPaths.style("display", showUnits ? null : "none");
         // cannabis use is only known nationally, so a state takes its country's colour for those
-        unitPaths.attr("fill", (d) => (isPrice() ? priceColor(byId.get(d.u.country)) : isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
+        unitPaths.attr("fill", (d) => (isPlant() ? plantColor(byId.get(d.u.country)) : isPrice() ? priceColor(byId.get(d.u.country)) : isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
       }
-      const shown = isPrice() ? "price" : isUse() ? metric : "score";
+      const shown = isPlant() ? (plantField().endsWith("_trade") ? "plant-trade" : "plant-status") : isPrice() ? "price" : isUse() ? metric : "score";
       document.querySelectorAll("[data-legend]").forEach((el) => { el.hidden = el.dataset.legend !== shown; });
       const sub = $("#mapSub");
-      sub.textContent = isPrice() ? sub.dataset.price : metric === "ratio" ? sub.dataset.ratio : isUse() ? sub.dataset.use : sub.dataset.score;
+      sub.textContent = isPlant() ? sub.dataset.planting : isPrice() ? sub.dataset.price : metric === "ratio" ? sub.dataset.ratio : isUse() ? sub.dataset.use : sub.dataset.score;
     }
     $("#metric").addEventListener("change", (e) => { metric = e.target.value; paintMap(); });
     $("#showUnits").addEventListener("change", async (e) => {
@@ -349,7 +371,7 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
       // what the hover box says about a country, or about one of its states (`u`)
       const describe = (d) => {
         const c = d.c;
-        if (d.u && !isUse() && !isPrice()) {
+        if (d.u && !isUse() && !isPrice() && !isPlant()) {
           const u = d.u, home = byId.get(u.country);
           return `<strong>${home.flag} ${u.name}</strong>
                <div class="row"><span>${metricLabel()}</span><b>${metricText(u)}</b></div>
@@ -357,6 +379,11 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
                <div class="row"><span>Rank in ${home.name}</span><b>#${u.rank} of ${u.of}</b></div>`;
         }
         if (d.u) return describe({ c: byId.get(d.u.country), properties: d.properties }) + `<div class="row"><span>${d.u.name}</span><b>national figure</b></div>`;
+        if (c && isPlant()) {
+          const rows = Object.entries(PLANTING.fields).map(([field, label]) =>
+            `<div class="row"><span>${label}</span><b>${plantOf(c, field)?.label ?? "—"}</b></div>`).join("");
+          return `<strong>${c.flag} ${c.name}</strong>${c.planting ? rows : `<div class="row"><span>Seeds and clones</span><b>Not researched yet</b></div>`}`;
+        }
         if (c && isPrice()) {
           const p = priceOf(c);
           return `<strong>${c.flag} ${c.name}</strong>
