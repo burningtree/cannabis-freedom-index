@@ -8,7 +8,7 @@ import { SHOW_PRICES } from "../../lib/config.js";
 const base = import.meta.env.BASE_URL;
 const repo = "https://github.com/burningtree/cannabis-freedom-index";
 const files = [
-  { name: "scores", title: "Scores", rows: scoreRows, about: "One row per country or disputed territory: index score, the six segment scores, rank, tier, legal status, population and estimated cannabis users." },
+  { name: "scores", title: "Scores", rows: scoreRows, about: "One row per country or disputed territory: index score, the six segment scores, rank, tier, legal status, seed and clone status where researched, population and estimated cannabis users." },
   { name: "history", title: "History", rows: historyRows, about: "One row per history entry: date, country, category, title, description, the score before and after, how far it has been checked, and its sources." },
   { name: "prices", title: "Flower prices", rows: priceRows, about: "One row per sourced flower-price observation: country, date, street or medical market, local price and US dollars per gram." },
 ].filter((f) => SHOW_PRICES || f.name !== "prices");

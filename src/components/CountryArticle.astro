@@ -7,6 +7,7 @@ import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
 import PricePanel from "./PricePanel.astro";
 import { SHOW_PRICES } from "../lib/config.js";
+import { PLANTING_STATUS, PLANTING_TRADE } from "../lib/segment-ids.js";
 import { answersFor } from "../lib/answers.js";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
@@ -211,6 +212,14 @@ const circ = 2 * Math.PI * r;
         {d.context.filter(Boolean).map((x) => (
           <div class="segrow">
             <div class="segrow-top"><span>{x.name === "Death penalty" ? "☠️ " : ""}{x.name}</span></div>
+            {x.seeds && (
+              <div class="d-chips">
+                <span class={`chip s-${PLANTING_STATUS[x.seeds].tone}`} title={PLANTING_STATUS[x.seeds].help[0]}>Seeds: {PLANTING_STATUS[x.seeds].label}</span>
+                <span class={`chip s-${PLANTING_TRADE[x.seeds_trade].tone}`} title={PLANTING_TRADE[x.seeds_trade].help[0]}>Seed sales: {PLANTING_TRADE[x.seeds_trade].label}</span>
+                <span class={`chip s-${PLANTING_STATUS[x.clones].tone}`} title={PLANTING_STATUS[x.clones].help[1]}>Clones: {PLANTING_STATUS[x.clones].label}</span>
+                <span class={`chip s-${PLANTING_TRADE[x.clones_trade].tone}`} title={PLANTING_TRADE[x.clones_trade].help[1]}>Clone sales: {PLANTING_TRADE[x.clones_trade].label}</span>
+              </div>
+            )}
             <p class="ctx">{x.t}</p>
             <ul class="srcs">
               {x.src.map(([label, url]) => (

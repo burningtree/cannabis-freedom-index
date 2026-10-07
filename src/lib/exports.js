@@ -18,6 +18,10 @@ export const scoreRows = places.map((c) => ({
   ...Object.fromEntries(SEGMENTS.map((seg, i) => [seg.id, c.s[i]])),
   recreational: REC_LABEL[c.rec],
   medical: MED_LABEL[c.med],
+  seeds: c.planting?.seeds ?? "", // empty until researched; see PLANTING_STATUS and PLANTING_TRADE
+  seeds_trade: c.planting?.seeds_trade ?? "",
+  clones: c.planting?.clones ?? "",
+  clones_trade: c.planting?.clones_trade ?? "",
   population: c.population,
   users: c.use.users,
   users_share_percent: c.use.prevalence,

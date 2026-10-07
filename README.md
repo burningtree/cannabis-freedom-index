@@ -35,7 +35,7 @@ Built with [Astro](https://astro.build). Pushing to `main` deploys to GitHub Pag
 
 | Path | What |
 |---|---|
-| `countries/de.yaml` | Everything about one country: scores, summary, explanations, sources |
+| `countries/de.yaml` | Everything about one country: scores, summary, explanations, sources, and optionally its seed and clone law (unscored) |
 | `countries/us/` | A federation: `index.yaml` for the country, one file per state |
 | `segments.yaml` | The six segments, their weights and level descriptions |
 | `changes.yaml` | The History page: laws and events that moved a country's score, with the scores before, plus treaties; the home page shows the latest four |

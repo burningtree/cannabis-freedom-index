@@ -10,7 +10,7 @@ export function getStaticPaths() {
 
 export function GET({ props }) {
   const { c } = props;
-  const entry = ({ t, src }) => ({ t, src });
+  const entry = ({ t, src, seeds, seeds_trade, clones, clones_trade }) => ({ t, src, ...(seeds && { seeds, seeds_trade, clones, clones_trade }) });
   const body = {
     id: c.id,
     note: c.note,

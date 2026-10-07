@@ -25,6 +25,8 @@ its scores and the timeline are updated together, never just one of them.
 Flower prices are a fourth, independent data set. They provide market context but do not affect
 the freedom score.
 
+Seed and clone law is an optional, unscored section of the profile (see "Seeds and clones").
+
 ## Where things are
 
 | Path | What |
@@ -35,7 +37,7 @@ the freedom score.
 | `segments.yaml` | The six segments, their weights and what each score level means |
 | `src/content.config.ts` | The schema. The build fails with a clear message when data breaks it |
 | `scripts/history-batch.cjs` | Applies a batch of history edits from a JSON file (see below) |
-| `scripts/data-status.cjs` | Counts; lists of what is unchecked, estimated, thin or weakly sourced; and a check of every country's score timeline |
+| `scripts/data-status.cjs` | Counts; lists of what is unchecked, estimated, thin or weakly sourced; which profiles have a seeds-and-clones section; and a check of every country's score timeline |
 
 Run everything from the project root. `npm run build` validates all data; run it after every
 batch. The dev server (`npm run dev`) does **not** pick up edits to `changes.yaml` or the schema
@@ -134,6 +136,71 @@ by the ECB, cite the alternative exchange-rate source in the observation note.
 - Run `npm run build` after editing. The schema rejects invalid markets, dates and values.
 - Spot-check `/data/prices.json`, `/api/<country>.json`, the country page, rankings and both price
   map modes.
+
+## Seeds and clones
+
+Seed and clone law often differs from the plant's. The 1961 Single Convention leaves seeds out of
+its definition of cannabis, so many countries that ban growing still let seeds be sold, while
+clones are living plants and usually fall under the cultivation rules. The profile records this in
+an optional section under `context`. **It is never part of the score** and no history `before`
+changes because of it.
+
+```yaml
+context:
+  planting:
+    seeds: grey             # may an adult have and plant them: legal | grey | licensed | illegal
+    seeds_trade: open       # may they be sold or handed on: open | regulated | gift | unclear | banned
+    clones: illegal         # same four values as seeds
+    clones_trade: banned    # same five values as seeds_trade
+    text: >-
+      The Misuse of Drugs Act's definition of cannabis leaves out the seed, so buying and holding
+      seeds is not an offence. Cultivating any plant of the genus Cannabis is unlawful without a
+      licence, which covers germinating seeds and keeping cuttings.
+    sources:
+      - mda                 # a key defined under the profile's `sources`
+```
+
+| Value | Seeds | Clones |
+|---|---|---|
+| `legal` | Adults may buy, hold and sow them | Adults may buy and keep cuttings |
+| `grey` | Sold or held openly, but germinating is an offence, or the law is silent | Tolerated, or legal only until the plant flowers |
+| `licensed` | Only for licensed growers (hemp, medical, registered clubs) | Same |
+| `illegal` | Treated as cannabis or expressly banned | Treated as plants under the cultivation ban |
+
+Having them and trading them are separate questions, so each gets its own status. Seeds are often
+lawful to sell where sowing them is not, and a country that lets adults grow may still allow no one
+to sell them a plant.
+
+| Trade value | Meaning |
+|---|---|
+| `open` | Anyone may sell them, in shops or online |
+| `regulated` | Only licensed sellers, clubs or the state may sell or hand them out, often with limits |
+| `gift` | May be given away between adults, but not sold |
+| `unclear` | The law does not say whether they may be sold |
+| `banned` | Selling or handing them on is an offence |
+
+How to decide:
+
+- Read the statute's **definition of cannabis**. If it excludes the seed and nothing else bans
+  seeds, seeds are `grey` where growing is illegal and `legal` where adults may grow.
+- For clones, read the **cultivation offence** and any rule on plants that are not flowering. A
+  cutting is a plant unless the law says otherwise.
+- For the trade status, look for who may sell: nobody (`banned`), a licence holder or club
+  (`regulated`), anyone (`open`). Where seeds are simply outside the definition of cannabis and no
+  other rule restricts them, the trade is `open`. Use `unclear` when the law allows having them but
+  is silent on selling, and say so in the text.
+- Keep it consistent with the profile's cultivation segment: if a few plants are tolerated, clones
+  are `grey`, not `legal`.
+- Leave the section out when no source was read. Do not guess from neighbouring countries.
+
+A law that changes seed or clone rules goes into `changes.yaml` as a context entry (category
+`other`, or `easing` / `tightening` when it clearly is one), with no `before`.
+
+`node scripts/data-status.cjs planting` shows which profiles have the section and lists the rest by
+score, highest first. State and province files do not carry it yet. The statuses and their labels
+are defined once in `PLANTING_STATUS` in `src/lib/segment-ids.js`; the country page, the compare
+table, the per-country JSON and `scores.csv` (columns `seeds`, `seeds_trade`, `clones`, `clones_trade`)
+all read from there, together with `PLANTING_TRADE`.
 
 ## How a history entry works
 

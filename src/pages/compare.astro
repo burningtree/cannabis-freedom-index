@@ -3,12 +3,15 @@ import Base from "../layouts/Base.astro";
 import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries, places } from "../lib/countries.js";
 import { flatLatestPricesFor } from "../lib/prices.js";
 import { SHOW_PRICES } from "../lib/config.js";
+import { PLANTING_STATUS, PLANTING_TRADE } from "../lib/segment-ids.js";
 
 const light = places.map(({ id, slug, name, flag, region, raw, score, rank, s, rec, med }) =>
   ({ id, slug, name, flag, region, raw, score, rank, s, rec, med, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {} }));
 const meta = {
   segments: SEGMENTS.map((s) => ({ name: s.name, weight: s.weight })),
   context: CONTEXT_NAMES,
+  planting: PLANTING_STATUS,
+  plantingTrade: PLANTING_TRADE,
   rec: REC_LABEL,
   med: MED_LABEL,
   total: countries.length,
@@ -109,7 +112,10 @@ const presets = [
     const sources = (entry) => entry.src.length
       ? `<ul class="srcs">${entry.src.map(([label, url]) => `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a></li>`).join("")}</ul>`
       : "";
-    const prose = (entry) => entry ? `<p class="cmp-text">${esc(entry.t)}</p>${sources(entry)}` : "";
+    // seeds and clones carry a status chip each, above the text
+    const plantingChip = (what, set, key, i) => `<span class="chip s-${set[key].tone}" title="${esc(set[key].help[i])}">${what}: ${set[key].label}</span>`;
+    const statusChips = (entry) => entry.seeds ? `<div class="d-chips">${plantingChip("Seeds", META.planting, entry.seeds, 0)}${plantingChip("Seed sales", META.plantingTrade, entry.seeds_trade, 0)}${plantingChip("Clones", META.planting, entry.clones, 1)}${plantingChip("Clone sales", META.plantingTrade, entry.clones_trade, 1)}</div>` : "";
+    const prose = (entry) => entry ? `${statusChips(entry)}<p class="cmp-text">${esc(entry.t)}</p>${sources(entry)}` : "";
     const priceCell = (p) => p
       ? `<div class="cmp-val"><b>$${p.usd.toFixed(2)}</b><span>/g</span></div><div class="cmp-sub">${p.price} ${p.currency}/g · ${p.date}</div>`
       : `<span class="cmp-sub">No data</span>`;

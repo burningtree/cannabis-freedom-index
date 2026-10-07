@@ -17,8 +17,9 @@ export const REC_HELP = {
 };
 export const MED_LABEL = { yes: "Legal", limited: "Limited", no: "None" };
 // Explanations that exist for each country but are not part of the score.
-// "Death penalty" comes first and exists only for countries whose law provides for it
-const CONTEXT = [["death_penalty", "Death penalty"], ["production", "Commercial production"], ["products", "Products"], ["medical", "Medical use"], ["consequences", "Other consequences"]];
+// "Death penalty" comes first and exists only for countries whose law provides for it;
+// "Seeds and clones" exists only where it has been researched and carries a status for each.
+const CONTEXT = [["death_penalty", "Death penalty"], ["production", "Commercial production"], ["products", "Products"], ["planting", "Seeds and clones"], ["medical", "Medical use"], ["consequences", "Other consequences"]];
 export const CONTEXT_NAMES = CONTEXT.map(([, name]) => name);
 
 // File values → short codes used in class names and filters.
@@ -26,6 +27,7 @@ const REC_CODE = { legal: "legal", partial: "partial", decriminalised: "decrim",
 const MED_CODE = { legal: "yes", limited: "limited", none: "no" };
 const isoDate = (d) => d.toISOString().slice(0, 10);
 const pair = (s) => [s.title, s.url];
+const plantingOf = ({ seeds, seeds_trade, clones, clones_trade }) => ({ seeds, seeds_trade, clones, clones_trade });
 
 // ── Segments ──────────────────────────────────────────
 // Collections come back in no particular order, so put the segments in display order.
@@ -68,9 +70,10 @@ const everyPlace = (await getCollection("countries"))
       details: {
         reviewed: isoDate(data.updated),
         segments: SEGMENTS.map((seg) => cited(data.segments[seg.id])), // in SEGMENTS order
-        context: CONTEXT.map(([key, name]) => (data.context[key] ? { name, ...cited(data.context[key]) } : null)), // null: no such section
+        context: CONTEXT.map(([key, name]) => (data.context[key] ? { name, ...cited(data.context[key]), ...(key === "planting" && plantingOf(data.context[key])) } : null)), // null: no such section
         sources: Object.values(data.sources).map(pair),
       },
+      planting: data.context.planting ? plantingOf(data.context.planting) : null,
       subunitMeta: data.subunits ?? null,
     };
   })

@@ -1,4 +1,4 @@
-// Where the data stands: node scripts/data-status.cjs [unchecked|estimates|thin|weak|chain [id]]
+// Where the data stands: node scripts/data-status.cjs [unchecked|estimates|thin|weak|planting|chain [id]]
 // Run from the project root. Needs js-yaml (already in node_modules).
 const fs = require("fs"), y = require("js-yaml");
 const changes = y.load(fs.readFileSync("changes.yaml", "utf8"));
@@ -13,6 +13,15 @@ console.log(`history: ${changes.length} entries | checked ${changes.filter((e) =
 
 if (what === "unchecked") for (const e of unchecked) console.log([e.country || "--", e.date, e.id, e.sources[0].url].join(" | "));
 if (what === "estimates") console.log(estimates.map((e) => `${e.country}${e.window ? `[${e.window}]` : ""}`).join(" "));
+if (what === "planting") {
+  // Seeds and clones: which profiles have the section, and which are still to do, best score first.
+  const W = Object.fromEntries(y.load(fs.readFileSync("segments.yaml", "utf8")).map((s) => [s.id, s.weight]));
+  const total = (id) => Object.entries(country[id].scores).reduce((a, [k, v]) => a + (W[k] * v) / 10, 0);
+  const has = ids.filter((id) => country[id].context.planting);
+  console.log(`seeds and clones: ${has.length} of ${ids.length} profiles`);
+  for (const id of has) console.log(`  ${id} ${country[id].name}: seeds ${country[id].context.planting.seeds} / sale ${country[id].context.planting.seeds_trade}, clones ${country[id].context.planting.clones} / sale ${country[id].context.planting.clones_trade}`);
+  console.log("to do:", ids.filter((id) => !country[id].context.planting).sort((a, b) => total(b) - total(a)).map((id) => `${id}:${country[id].name}`).join(", "));
+}
 if (what === "thin") {
   const n = {};
   for (const e of changes) if (e.country) n[e.country] = (n[e.country] || 0) + 1;

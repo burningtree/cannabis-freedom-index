@@ -3,13 +3,18 @@
 import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
 import { z } from "astro/zod";
-import { SEGMENT_IDS, CONTEXT_IDS, CHANGE_CATEGORIES } from "./lib/segment-ids.js";
+import { SEGMENT_IDS, CONTEXT_IDS, CHANGE_CATEGORIES, PLANTING_STATUS, PLANTING_TRADE } from "./lib/segment-ids.js";
 
 const score = z.number().int().min(0).max(10);
 const perSegment = <T extends z.ZodTypeAny>(value: T) =>
   z.object(Object.fromEntries(SEGMENT_IDS.map((id) => [id, value])) as Record<string, T>).strict();
 const source = z.object({ title: z.string().min(1), url: z.string().url() }).strict();
 const cited = z.object({ text: z.string().min(1), sources: z.array(z.string()) }).strict();
+// seeds and clones: the same cited text, plus for each a status for having and planting them
+// (PLANTING_STATUS) and one for selling or handing them on (PLANTING_TRADE)
+const plantingStatus = z.enum(Object.keys(PLANTING_STATUS) as [string, ...string[]]);
+const plantingTrade = z.enum(Object.keys(PLANTING_TRADE) as [string, ...string[]]);
+const planting = z.object({ seeds: plantingStatus, seeds_trade: plantingTrade, clones: plantingStatus, clones_trade: plantingTrade, text: z.string().min(1), sources: z.array(z.string()) }).strict();
 const status = {
   // "death": illegal, and the law allows the death penalty for cannabis offences, in practice trafficking.
   recreational: z.enum(["legal", "partial", "decriminalised", "illegal", "death"]),
@@ -51,8 +56,9 @@ const countries = defineCollection({
       summary: z.string().min(1),
       scores: perSegment(score),
       segments: perSegment(cited),
-      // the four standard sections, plus `death_penalty` where the law provides for one
-      context: z.object({ death_penalty: cited.optional(), ...Object.fromEntries(CONTEXT_IDS.map((id) => [id, cited])) }).strict(),
+      // the four standard sections, plus `death_penalty` where the law provides for one and
+      // `planting` (seeds and clones) where it has been researched
+      context: z.object({ death_penalty: cited.optional(), planting: planting.optional(), ...Object.fromEntries(CONTEXT_IDS.map((id) => [id, cited])) }).strict(),
       sources: z.record(z.string(), source),
       subunits: z
         .object({
