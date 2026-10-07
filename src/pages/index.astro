@@ -4,6 +4,8 @@ import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places } from "../lib/countries.js";
 import { TIERS, tierColor } from "../lib/tiers.js";
+import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor } from "../lib/prices.js";
+import { SHOW_PRICES } from "../lib/config.js";
 
 const base = import.meta.env.BASE_URL;
 const count = (fn) => countries.filter(fn).length;
@@ -27,7 +29,7 @@ const MED_ORDER = ["yes", "limited", "no"];
 // `ratio` is the share of people who use cannabis divided by the index score: how far use runs
 // ahead of freedom. A score below 1 counts as 1, so that a zero does not divide.
 const mapData = places.map(({ id, num, name, flag, raw, score, rank, s, use }) =>
-  ({ id, num, name, flag, raw, score, rank, s, use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2) } }));
+  ({ id, num, name, flag, raw, score, rank, s, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {}, use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2) } }));
 // States, provinces and territories of the federations, for the map's "show states" switch.
 // Keyed like the shapes in src/data/subunits.geo.json: "us/ca".
 const unitData = Object.fromEntries(countries.flatMap((c) => {
@@ -44,13 +46,18 @@ const USE_SCALES = {
     note: "Share of people aged 15–64 who use cannabis, divided by the index score. A high value means many people use cannabis where the law gives them little freedom to.",
   },
 };
+const PRICE_SCALE = {
+  steps: [[0, "Under $5/g"], [5, "$5–10/g"], [10, "$10–15/g"], [15, "$15–20/g"], [20, "$20/g or more"]],
+  note: "Latest sourced flower price, normalised to US dollars per gram. Street and medical markets are kept separate.",
+};
+const streetFlower = (c) => latestPricesFor(c.id).street;
 ---
-<Base description="A score from 0 to 100 for how free cannabis is in every country, with a map, rankings and the history of each country's laws.">
+<Base description={`A score from 0 to 100 for how free cannabis is in every country, with a map, rankings${SHOW_PRICES ? ", retail prices" : ""} and legal history.`}>
   <main id="top">
     <section class="hero">
       <p class="eyebrow">Global index · {DATA_SNAPSHOT} edition</p>
       <h1>How free is cannabis<br>in every country?</h1>
-      <p class="lede">Every country gets a score from 0 to 100. It shows how free you are to carry, grow, share and use cannabis. See the map, the rankings and how each country's laws changed over time.</p>
+      <p class="lede">Every country gets a score from 0 to 100. It shows how free you are to carry, grow, share and use cannabis. See the map, rankings{SHOW_PRICES && ", sourced retail prices"} and how each country's laws changed over time.</p>
       <div class="stats">
         {stats.map(([n, label, tone]) => <div class={`stat ${tone ?? ""}`}><div class="big">{n}</div><div class="label">{label}</div></div>)}
       </div>
@@ -61,7 +68,7 @@ const USE_SCALES = {
       <div class="section-head">
         <div>
           <h2>World map</h2>
-          <p class="sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
+          <p class="sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown." data-price="Pale yellow means cheaper, violet means more expensive. Countries without a sourced price are hatched.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
         </div>
         <label class="field">
           <span>Colour by</span>
@@ -71,6 +78,7 @@ const USE_SCALES = {
             <option value="users">Cannabis users (number)</option>
             <option value="prevalence">Cannabis users (share of adults)</option>
             <option value="ratio">Share of users ÷ index</option>
+            {SHOW_PRICES && PRICE_MARKETS.map((market) => <option value={`price:${market}`}>{PRICE_MARKET_LABEL[market]} price</option>)}
           </select>
         </label>
       </div>
@@ -96,6 +104,11 @@ const USE_SCALES = {
             <span class="legend-note">{scale.note ?? "People aged 15–64 who used cannabis in the past year. Figures marked ~ are regional estimates."}</span>
           </div>
         ))}
+        {SHOW_PRICES && <div class="legend" data-legend="price" hidden>
+          {PRICE_SCALE.steps.map(([, text], i) => <span><i class="sw" style={`background:var(--p${i})`}></i>{text}</span>)}
+          <span><i class="sw sw-nodata"></i>No data</span>
+          <span class="legend-note">{PRICE_SCALE.note}</span>
+        </div>}
         <div class="map-under">
           <label class="map-toggle" title="Show the United States, Canada and Australia state by state">
             <input type="checkbox" id="showUnits"> States and provinces
@@ -131,6 +144,7 @@ const USE_SCALES = {
               <th data-sort="region" class="hide-sm">Region</th>
               <th data-sort="users" class="num-col hide-md" title="People who used cannabis in the past year">Users</th>
               <th data-sort="share" class="num-col hide-md" title="Share of people aged 15–64 who used cannabis in the past year">Share</th>
+              {SHOW_PRICES && <th data-sort="price" class="num-col hide-md" title="Latest sourced street-flower price, normalised to US dollars per gram">Price/g</th>}
               <th data-sort="rec" class="hide-sm">Recreational</th>
               <th data-sort="med" class="hide-md">Medical</th>
               <th data-sort="score" class="score-col">Index</th>
@@ -139,12 +153,13 @@ const USE_SCALES = {
           <tbody>
             {places.map((c) => (
               <tr data-id={c.id} data-rank={c.rank ?? c.worldRank - 0.5} data-name={c.name} data-region={c.region}
-                  data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users} data-share={c.use.prevalence}>
+                  data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users} data-share={c.use.prevalence} data-price={SHOW_PRICES ? streetFlower(c)?.usd ?? -1 : undefined}>
                 <td class="num">{c.rank ?? "–"}</td>
                 <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}</a>{c.disputed && <span class="tag-disputed" title={c.disputed.note}>disputed</span>}</td>
                 <td class="hide-sm">{c.region}</td>
                 <td class="num-col hide-md" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{compact(c.use.users)}</td>
                 <td class="num-col hide-md" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{c.use.prevalence.toFixed(1)}%</td>
+                {SHOW_PRICES && <td class="num-col hide-md">{streetFlower(c) ? `$${streetFlower(c).usd.toFixed(2)}` : "—"}</td>}
                 <td class="hide-sm"><span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>{REC_LABEL[c.rec]}</span></td>
                 <td class="hide-md"><span class={`chip s-${c.med}`}>{MED_LABEL[c.med]}</span></td>
                 <td>
@@ -155,7 +170,7 @@ const USE_SCALES = {
                 </td>
               </tr>
             ))}
-            <tr id="emptyRow" hidden><td colspan="8" class="empty">No countries match these filters.</td></tr>
+            <tr id="emptyRow" hidden><td colspan="9" class="empty">No countries match these filters.</td></tr>
           </tbody>
         </table>
       </div>
@@ -209,6 +224,7 @@ const USE_SCALES = {
   <script type="application/json" id="cfi-data" set:html={JSON.stringify(mapData)} />
   <script type="application/json" id="cfi-units" set:html={JSON.stringify(unitData)} />
   <script type="application/json" id="cfi-use-scales" set:html={JSON.stringify(USE_SCALES)} />
+  <script type="application/json" id="cfi-price-scale" set:html={JSON.stringify(PRICE_SCALE)} />
   <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => s.name))} />
 
   <script>
@@ -235,10 +251,15 @@ const USE_SCALES = {
     let metric = "index";
     let paths = null;
     const USE_SCALES = JSON.parse($("#cfi-use-scales").textContent);
+    const PRICE_SCALE = JSON.parse($("#cfi-price-scale").textContent);
     const isUse = () => metric in USE_SCALES; // coloured by cannabis use, not by a score
+    const isPrice = () => metric.startsWith("price:");
+    const priceMarket = () => metric.split(":")[1];
+    const priceOf = (c) => c.prices[priceMarket()];
     const metricValue = (c) => (metric === "index" ? c.raw : c.s[+metric] * 10);
-    const metricLabel = () => (metric === "index" ? "Index" : SEGMENT_NAMES[+metric]);
-    const metricText = (c) => (metric === "index" ? `${c.score} / 100` : `${c.s[+metric]} / 10`);
+    const titleCase = (s) => s[0].toUpperCase() + s.slice(1);
+    const metricLabel = () => isPrice() ? `${titleCase(priceMarket())} flower` : metric === "index" ? "Index" : SEGMENT_NAMES[+metric];
+    const metricText = (c) => isPrice() ? (priceOf(c) ? `$${priceOf(c).usd.toFixed(2)} / g` : "No data") : metric === "index" ? `${c.score} / 100` : `${c.s[+metric]} / 10`;
     const compact = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)}M` : n >= 1e3 ? `${+(n / 1e3).toPrecision(2)}k` : String(n));
     // the darkest step whose threshold the country reaches
     const useColor = (c) => {
@@ -247,6 +268,13 @@ const USE_SCALES = {
       let i = 0;
       while (i < steps.length - 1 && v >= steps[i + 1][0]) i++;
       return `var(--u${i})`;
+    };
+    const priceColor = (c) => {
+      const v = priceOf(c)?.usd;
+      if (v == null) return "url(#hatch)";
+      let i = 0;
+      while (i < PRICE_SCALE.steps.length - 1 && v >= PRICE_SCALE.steps[i + 1][0]) i++;
+      return `var(--p${i})`;
     };
 
     // States and provinces: drawn on request, in place of their federation's single shape.
@@ -258,19 +286,19 @@ const USE_SCALES = {
 
     function paintMap() {
       if (paths) {
-        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
+        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isPrice() ? priceColor(d.c) : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
         // a federation's own shape steps aside while its states are shown
         paths.style("display", (d) => (showUnits && unitPaths && d.c && FEDERATIONS.has(d.c.id) ? "none" : null));
       }
       if (unitPaths) {
         unitPaths.style("display", showUnits ? null : "none");
         // cannabis use is only known nationally, so a state takes its country's colour for those
-        unitPaths.attr("fill", (d) => (isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
+        unitPaths.attr("fill", (d) => (isPrice() ? priceColor(byId.get(d.u.country)) : isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
       }
-      const shown = isUse() ? metric : "score";
+      const shown = isPrice() ? "price" : isUse() ? metric : "score";
       document.querySelectorAll("[data-legend]").forEach((el) => { el.hidden = el.dataset.legend !== shown; });
       const sub = $("#mapSub");
-      sub.textContent = metric === "ratio" ? sub.dataset.ratio : isUse() ? sub.dataset.use : sub.dataset.score;
+      sub.textContent = isPrice() ? sub.dataset.price : metric === "ratio" ? sub.dataset.ratio : isUse() ? sub.dataset.use : sub.dataset.score;
     }
     $("#metric").addEventListener("change", (e) => { metric = e.target.value; paintMap(); });
     $("#showUnits").addEventListener("change", async (e) => {
@@ -321,7 +349,7 @@ const USE_SCALES = {
       // what the hover box says about a country, or about one of its states (`u`)
       const describe = (d) => {
         const c = d.c;
-        if (d.u && !isUse()) {
+        if (d.u && !isUse() && !isPrice()) {
           const u = d.u, home = byId.get(u.country);
           return `<strong>${home.flag} ${u.name}</strong>
                <div class="row"><span>${metricLabel()}</span><b>${metricText(u)}</b></div>
@@ -329,6 +357,13 @@ const USE_SCALES = {
                <div class="row"><span>Rank in ${home.name}</span><b>#${u.rank} of ${u.of}</b></div>`;
         }
         if (d.u) return describe({ c: byId.get(d.u.country), properties: d.properties }) + `<div class="row"><span>${d.u.name}</span><b>national figure</b></div>`;
+        if (c && isPrice()) {
+          const p = priceOf(c);
+          return `<strong>${c.flag} ${c.name}</strong>
+            <div class="row"><span>${metricLabel()}</span><b>${p ? `$${p.usd.toFixed(2)}/g` : "No data"}</b></div>
+            ${p ? `<div class="row"><span>Local price</span><b>${p.price} ${p.currency}/g</b></div>
+                    <div class="row"><span>Observation</span><b>${p.date}</b></div>` : ""}`;
+        }
         return c && metric === "ratio"
             ? `<strong>${c.flag} ${c.name}</strong>
                <div class="row"><span>Share ÷ index</span><b>${c.use.estimate ? "~" : ""}${c.use.ratio}</b></div>
@@ -398,6 +433,7 @@ const USE_SCALES = {
       med: (a, b) => num(a, "med") - num(b, "med") || num(a, "rank") - num(b, "rank"),
       users: (a, b) => num(b, "users") - num(a, "users"), // most users first
       share: (a, b) => num(b, "share") - num(a, "share"), // highest share first
+      price: (a, b) => num(b, "price") - num(a, "price"), // highest observed street-flower price first
     };
 
     function applyTable() {
@@ -445,16 +481,28 @@ const USE_SCALES = {
     const cache = new Map();
 
     // Articles are cached by page address, which also covers states and provinces.
-    async function loadArticle(url) {
+    // The cache holds the download itself, so a hover and the click that follows share one request.
+    function fetchArticle(url) {
       if (!cache.has(url)) {
-        const html = await (await fetch(url)).text();
-        const article = new DOMParser().parseFromString(html, "text/html").querySelector("article.country");
-        // The full page shows every explanation; in the drawer they start collapsed.
-        article.querySelectorAll("details[open]").forEach((el) => el.removeAttribute("open"));
-        cache.set(url, article);
+        const pending = fetch(url).then((r) => r.text()).then((html) => {
+          const article = new DOMParser().parseFromString(html, "text/html").querySelector("article.country");
+          // The full page shows every explanation; in the drawer they start collapsed.
+          article.querySelectorAll("details[open]").forEach((el) => el.removeAttribute("open"));
+          return article;
+        });
+        pending.catch(() => cache.delete(url));
+        cache.set(url, pending);
       }
-      return cache.get(url).cloneNode(true);
+      return cache.get(url);
     }
+    const loadArticle = async (url) => (await fetchArticle(url)).cloneNode(true);
+    // Start the download as soon as the pointer reaches a row or a country link.
+    const prefetch = (e) => {
+      const id = e.target.closest?.("tr[data-id]")?.dataset.id ?? e.target.closest?.("a[data-country]")?.dataset.country;
+      if (id) fetchArticle(pageUrl(id)).catch(() => {});
+    };
+    document.addEventListener("pointerover", prefetch);
+    document.addEventListener("touchstart", prefetch, { passive: true });
     // The drawer is a preview: a big button under the summary leads to the full page.
     function withOpenButton(article, url) {
       const open = Object.assign(document.createElement("a"), { className: "btn btn-primary drawer-open", href: url });
@@ -505,16 +553,19 @@ const USE_SCALES = {
       markActive();
       if (!id) return dialog.open && dialog.close();
       $("#dCompare").href = `${base}compare/?c=${id.toLowerCase()}`;
+      // Open at once; the article replaces the placeholder when it arrives.
+      const loading = Object.assign(document.createElement("p"), { className: "drawer-loading", textContent: `Loading ${byId.get(id).name}…` });
+      loading.setAttribute("role", "status");
+      body.replaceChildren(loading);
+      if (!dialog.open) dialog.showModal();
+      dialog.scrollTop = 0;
       try {
         const article = await loadArticle(pageUrl(id));
         if (currentId() !== id) return;
         body.replaceChildren(withOpenButton(article, pageUrl(id)));
       } catch (err) {
         location.href = pageUrl(id);
-        return;
       }
-      if (!dialog.open) dialog.showModal();
-      dialog.scrollTop = 0;
     }
     // Country links elsewhere on the page (e.g. "Did you know?") open the drawer too.
     document.addEventListener("click", (e) => {

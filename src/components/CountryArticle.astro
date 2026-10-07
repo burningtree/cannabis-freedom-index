@@ -5,6 +5,8 @@ import { SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, countries, changes, segAvg, s
 import { tierOf, tierColor } from "../lib/tiers.js";
 import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
+import PricePanel from "./PricePanel.astro";
+import { SHOW_PRICES } from "../lib/config.js";
 import { answersFor } from "../lib/answers.js";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
@@ -117,6 +119,7 @@ const circ = 2 * Math.PI * r;
         <p class="c-use-src">Source: <a href="https://www.unodc.org/unodc/en/data-and-analysis/wdr2022_annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report</a> prevalence figures, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a>; population aged 15–64 from the <a href="https://data.worldbank.org/indicator/SP.POP.1564.TO" target="_blank" rel="noopener noreferrer">World Bank</a>.</p>
       </dl>
     )}
+    {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
     {scored.length > 0 && <CountryChart history={scored} />}
   </div>
 

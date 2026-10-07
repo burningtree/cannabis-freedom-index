@@ -141,4 +141,23 @@ const changes = defineCollection({
     .refine((ch) => ch.country || !ch.before, { message: "`before` needs a `country`" }),
 });
 
-export const collections = { countries, units, segments, changes };
+// prices.yaml — one sourced flower-price observation. Add older observations at any time;
+// the site derives the latest street and medical value for every country.
+const prices = defineCollection({
+  loader: file("prices.yaml"),
+  schema: z
+    .object({
+      id: z.string().regex(/^[a-z0-9-]+$/),
+      country: z.string().regex(/^[a-z]{2}$/),
+      date: z.string().regex(/^\d{4}(-\d{2}(-\d{2})?)?$/, "use YYYY-MM-DD, YYYY-MM or YYYY"),
+      market: z.enum(["street", "medical"]),
+      currency: z.string().regex(/^[A-Z]{3}$/),
+      price: z.number().positive(), // price per gram in `currency`
+      usd: z.number().positive(),   // same observation normalised to USD per gram
+      note: z.string().min(1).optional(),
+      source,
+    })
+    .strict(),
+});
+
+export const collections = { countries, units, segments, changes, prices };

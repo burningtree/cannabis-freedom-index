@@ -1,9 +1,11 @@
 ---
 import Base from "../layouts/Base.astro";
 import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries, places } from "../lib/countries.js";
+import { flatLatestPricesFor } from "../lib/prices.js";
+import { SHOW_PRICES } from "../lib/config.js";
 
 const light = places.map(({ id, slug, name, flag, region, raw, score, rank, s, rec, med }) =>
-  ({ id, slug, name, flag, region, raw, score, rank, s, rec, med }));
+  ({ id, slug, name, flag, region, raw, score, rank, s, rec, med, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {} }));
 const meta = {
   segments: SEGMENTS.map((s) => ({ name: s.name, weight: s.weight })),
   context: CONTEXT_NAMES,
@@ -18,12 +20,12 @@ const presets = [
   ["Harshest regimes", "SG,SA,ID,PH"],
 ];
 ---
-<Base title="Compare countries" description="Compare cannabis freedom scores, rules and sources for several countries side by side.">
+<Base title="Compare countries" description={`Compare cannabis freedom scores${SHOW_PRICES ? ", prices" : ""}, rules and sources for several countries side by side.`}>
   <main class="compare-page">
     <section class="hero hero-sm">
       <p class="eyebrow">Compare</p>
       <h1>Compare countries side by side</h1>
-      <p class="lede">Pick up to six countries to see their scores, the exact rules behind each segment, and the sources — in one table. The address bar updates as you go, so a comparison can be shared as a link.</p>
+      <p class="lede">Pick up to six countries to see their scores{SHOW_PRICES && ", latest sourced prices"}, exact rules and sources — in one table. The address bar updates as you go, so a comparison can be shared as a link.</p>
     </section>
 
     <div class="cmp-controls">
@@ -108,6 +110,9 @@ const presets = [
       ? `<ul class="srcs">${entry.src.map(([label, url]) => `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a></li>`).join("")}</ul>`
       : "";
     const prose = (entry) => entry ? `<p class="cmp-text">${esc(entry.t)}</p>${sources(entry)}` : "";
+    const priceCell = (p) => p
+      ? `<div class="cmp-val"><b>$${p.usd.toFixed(2)}</b><span>/g</span></div><div class="cmp-sub">${p.price} ${p.currency}/g · ${p.date}</div>`
+      : `<span class="cmp-sub">No data</span>`;
     // Mark the highest value in a row, unless everyone ties.
     const bestOf = (values) => {
       const max = Math.max(...values);
@@ -140,6 +145,15 @@ const presets = [
         row("Medical", cs.map((c) => `<span class="chip s-${c.med}">${META.med[c.med]}</span>`)),
       ];
       if (showText) rows.push(row("In short", cs.map((c) => `<p class="cmp-text">${esc(details.get(c.id)?.note ?? "")}</p>`)));
+
+      const priceRows = [
+        ["Street flower", "street"],
+        ["Medical flower", "medical"],
+      ].filter(([, key]) => cs.some((c) => c.prices[key]));
+      if (priceRows.length) {
+        rows.push(`<tr class="cmp-divider"><th colspan="${cs.length + 1}">Latest prices · per gram</th></tr>`);
+        priceRows.forEach(([label, key]) => rows.push(row(label, cs.map((c) => priceCell(c.prices[key])))));
+      }
 
       rows.push(`<tr class="cmp-divider"><th colspan="${cs.length + 1}">Scored segments</th></tr>`);
       META.segments.forEach((seg, i) => {

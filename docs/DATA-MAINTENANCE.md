@@ -1,11 +1,11 @@
-# Maintaining the data: country profiles and history
+# Maintaining the data: country profiles, history and prices
 
-How to check, correct and extend the two data sets behind the site. Written as a handover: it
+How to check, correct and extend the data sets behind the site. Written as a handover: it
 records how the work has been done so far, what was learned, and what is still open.
 
 ## The task in one paragraph
 
-The site holds three things per country, and they only make sense together:
+The legal index holds three connected things per country:
 
 1. **What the law is now** — the profile in `countries/*.yaml`, with six segment scores that add
    up to the country's index.
@@ -22,12 +22,16 @@ event needs a source that was actually read. Every score step needs to be explai
 And when research turns up something that changes a country's current situation, the profile,
 its scores and the timeline are updated together, never just one of them.
 
+Flower prices are a fourth, independent data set. They provide market context but do not affect
+the freedom score.
+
 ## Where things are
 
 | Path | What |
 |---|---|
 | `countries/<id>.yaml`, `countries/{us,ca,au}/index.yaml` | One profile per country: status, six scores, a text and sources per segment, context, sources |
 | `changes.yaml` | The history, newest first. The header comment documents every field |
+| `prices.yaml` | Flower-price observations, kept separately for street and medical markets |
 | `segments.yaml` | The six segments, their weights and what each score level means |
 | `src/content.config.ts` | The schema. The build fails with a clear message when data breaks it |
 | `scripts/history-batch.cjs` | Applies a batch of history edits from a JSON file (see below) |
@@ -36,6 +40,100 @@ its scores and the timeline are updated together, never just one of them.
 Run everything from the project root. `npm run build` validates all data; run it after every
 batch. The dev server (`npm run dev`) does **not** pick up edits to `changes.yaml` or the schema
 until it is restarted.
+
+## Adding prices
+
+Prices are deliberately simple: **street flower** and **medical flower**, always per gram. Do not
+add resin, hash, rosin, oil, edibles or a separate recreational category.
+
+- `street` means illicit or otherwise non-prescribed flower.
+- `medical` means prescribed flower supplied through the medical system.
+
+Append a new observation to `prices.yaml`; do not replace an older valid value. The newest date
+for each country and market is shown on the map, rankings and country page. Older observations
+remain available as price history.
+
+### Required fields
+
+```yaml
+- id: cz-street-2023
+  country: cz           # lowercase ISO 3166-1 alpha-2 code
+  date: "2023"          # YYYY, YYYY-MM or YYYY-MM-DD
+  market: street        # street or medical
+  currency: CZK
+  price: 200            # per gram in the original currency
+  usd: 9.17             # normalized USD per gram
+  note: Most commonly reported national price; based on 266 police records.
+  source:
+    title: Report title
+    url: https://example.com/report
+```
+
+Use a unique id in the form `<country>-<market>-<date>`, adding a short suffix only when needed.
+Keep the source's own statistical description in the note: mean, median, mode, listed pharmacy
+price or derived price. If a package or ounce price is converted to one gram, say so in the note.
+
+### Choosing a price
+
+Prefer, in order:
+
+1. National statistics, drug observatories, health ministries or official pharmacy lists.
+2. EUDA, UN or a national survey with a stated method.
+3. A peer-reviewed study or a transparent national market dataset.
+
+Use a national figure where possible. Do not use one city, one shop, one police seizure, a bulk
+trafficking valuation or an anonymous anecdote as the country's price. Do not turn a range into a
+midpoint unless the source itself reports that midpoint as its estimate. If only a range or weak
+source exists, leave the country as **No data**.
+
+For medical flower, say whether the figure includes tax, pharmacy preparation, consultation,
+prescription or delivery fees. When several current flower products are listed, a simple average
+is acceptable if the note explains exactly which products and package prices were included.
+
+### Known bulk sources
+
+- **EUDA Statistical Bulletin** (price, purity and potency, retail herbal cannabis, mean) covers most
+  European countries. The site blocks scripted downloads; open it in a normal browser and use the
+  table's "Download as Excel" option or read the table view.
+- **UNODC World Drug Report annex 8.1** (`WDR_2026/Annex/8.1_Prices_and_purities_of_drugs.xlsx`,
+  government submissions for 2020–2024; the 2024 edition covers 2018–2022) covers many non-European countries. Use rows with
+  `Cannabis herb`, `Retail`, unit `Grams` and a `Typical` value; skip rows with only a min/max
+  range. Prices are already in USD at the time's exchange rate, so record `currency: USD` and say so
+  in the note. Treat outliers against the country's earlier submissions with suspicion (several
+  countries report a figure that jumps tenfold between years).
+
+- **Older UNODC annexes.** The World Drug Report 2020 annex PDF
+  (`wdr.unodc.org/wdr2020/field/Annex/8.1._Prices_and_Purities_of_drugs.pdf`, 2014–2018, in local
+  currency) and the 2017 cannabis sheet (`unodc.org/wdr2017/field/8.2_Price_Purity_Cannabis.xlsx`,
+  the latest figure per country back to 2004) fill countries the newer editions miss. All editions
+  from 2017 to 2026 have been mined for countries without a price.
+- **Blocked:** EUDA pages and PDFs, the CICAD supply report and tandfonline sit behind a bot check
+  or return 403 to both `curl` and the in-app browser. Save the file into the project to read it.
+
+### Normalizing to US dollars
+
+`price` always preserves the source currency. `usd` is the comparison value used by the map and
+rankings. Use the common exchange-rate date documented at the top of `prices.yaml`, not the
+historical exchange rate from the observation's year. Round `usd` to two decimal places.
+
+ECB rates are quoted as currency units per euro. Convert with:
+
+```text
+usd = price / local_currency_per_eur * usd_per_eur
+```
+
+For euro prices, multiply directly by the documented EUR/USD rate. If the currency is not covered
+by the ECB, cite the alternative exchange-rate source in the observation note.
+
+### Updating and checking
+
+- A newly published price is a new observation; keep the old one for history.
+- A factual correction to an existing observation should edit that observation rather than add a
+  duplicate.
+- Never mix street and medical observations when deciding which value is newest.
+- Run `npm run build` after editing. The schema rejects invalid markets, dates and values.
+- Spot-check `/data/prices.json`, `/api/<country>.json`, the country page, rankings and both price
+  map modes.
 
 ## How a history entry works
 
@@ -171,6 +269,11 @@ node scripts/data-status.cjs chain de     # one country's full timeline
   national timeline unless the national picture really shifts.
 - **Search tool limits:** more than about ten web searches in one go start failing with
   rate-limit errors. Batches of five work.
+- **UN documents load through the official document system.** `digitallibrary.un.org` is blocked,
+  but `https://documents.un.org/api/symbol/access?s=<symbol>&l=en&t=pdf` returns the PDF for a
+  document symbol and `pdftotext` reads it. The 1955–58 cannabis surveys are E/CN.7/286 (South
+  Africa) and Add.1–12 (Basutoland, Bechuanaland, Swaziland, the Rhodesias, Brazil, Angola,
+  Mozambique, Morocco, India); each has a "National legal provisions" part listing the laws.
 - **Blocked sources:** the UN Digital Library (403), UNODC Bulletin on Narcotics pages (404),
   Library of Congress (403), TNI Spanish pages (403) and most PDFs cannot be read by the fetch
   tool. If the user saves such a PDF into the project it can be read from disk.
@@ -234,6 +337,15 @@ Mozambique 1914, Zambia 1926, Ghana 1935, Hungary 1930, Costa Rica 1928, Kiribat
 1937, Saint Lucia 1938 were confirmed or corrected. Eswatini 1922, Botswana 1922 and Iraq 1933 could not
 be opened and were set back to unchecked. The wider October 2026 batch of "checked" entries has not
 been audited yet.
+
+**Unchecked list (open item 3), worked through in the same session:** 22 of 41 entries are now checked,
+most after corrections (see git diff of `changes.yaml`). Still unchecked, with the reason:
+Papua New Guinea 1970 and 2022 (source PDFs blocked; The National, 3 Dec 2021, confirms Parliament passed
+the Controlled Substance Bill), Djibouti 1996 (law number only on cannabisregulations.ai), Iran 1959
+(Sensi Seeds only), Estonia/Latvia/Lithuania 1940 (no source says when Soviet drug law applied),
+Iraq 1933, Eswatini 1922, Botswana 1922 (sources blocked), Germany 1872 (no source found).
+Two entries were rebuilt around what the source actually says: Laos 1996 became an estimated first
+restriction, and the Norway "1965 tinctures" entry became Norway's first cannabis seizure of 1965.
 
 ## Reporting back
 

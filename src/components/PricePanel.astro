@@ -1,0 +1,47 @@
+---
+// What a gram of flower costs, in the same box style as the cannabis-users figures.
+// Shown only when at least one sourced price exists for the country.
+import { PRICE_MARKETS, priceHistoryFor, latestPricesFor, formatPrice } from "../lib/prices.js";
+
+const { id } = Astro.props;
+const history = priceHistoryFor(id);
+const latest = latestPricesFor(id);
+const older = history.filter((p) => latest[p.market] !== p);
+const LABEL = { street: "Street price", medical: "Medical price" };
+const year = (p) => p.date.slice(0, 4);
+const shown = PRICE_MARKETS.filter((m) => latest[m]);
+---
+{history.length > 0 && (
+  <dl class="c-use c-price">
+    {PRICE_MARKETS.map((market) => {
+      const p = latest[market];
+      return (
+        <div>
+          <dt>{LABEL[market]}</dt>
+          {p
+            ? <dd title={p.note}>${p.usd.toFixed(2)}<small> / g</small></dd>
+            : <dd class="none">no data</dd>}
+          {p && <span class="c-price-local">{p.currency !== "USD" ? `${formatPrice(p).replace("/g", "")} · ` : ""}{year(p)}</span>}
+        </div>
+      );
+    })}
+    <p>One gram of flower, the latest figure found, converted to US dollars.</p>
+    {older.length > 0 && (
+      <details class="c-price-older">
+        <summary>Earlier prices ({older.length})</summary>
+        <ul>
+          {older.map((p) => (
+            <li>
+              <span>{year(p)} · {p.market}</span>
+              <b>${p.usd.toFixed(2)}</b>
+              <a href={p.source.url} target="_blank" rel="noopener noreferrer">source</a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    )}
+    <p class="c-use-src">Source: {shown.map((m, i) => (
+      <Fragment>{i > 0 && "; "}<a href={latest[m].source.url} target="_blank" rel="noopener noreferrer">{latest[m].source.title}</a>{shown.length > 1 && ` (${m})`}</Fragment>
+    ))}.</p>
+  </dl>
+)}

@@ -1,6 +1,7 @@
 // The data offered for download and in the feed, built from the same objects the pages use.
 import { SEGMENTS, REC_LABEL, MED_LABEL, places, changes, formatDate, dateTime } from "./countries.js";
 import { tierOf } from "./tiers.js";
+import { priceObservations } from "./prices.js";
 
 export const SITE = "https://cannabisfreedom.fyi";
 
@@ -39,6 +40,20 @@ export const historyRows = changes.map((ch) => ({
   date_estimated: Boolean(ch.estimate),
   sources: ch.sources.map(([title]) => title).join(" | "),
   source_urls: ch.sources.map(([, url]) => url).join(" | "),
+}));
+
+// One row per sourced price observation, newest first. Older rows form the price history.
+export const priceRows = priceObservations.map((p) => ({
+  country: p.country.slug,
+  place: p.country.name,
+  date: p.date,
+  market: p.market,
+  price_per_gram: p.price,
+  currency: p.currency,
+  usd_per_gram: p.usd,
+  note: p.note ?? "",
+  source: p.source.title,
+  source_url: p.source.url,
 }));
 
 // Changes that moved a score and have a real date: the changelog and the feed.
