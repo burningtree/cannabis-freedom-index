@@ -22,9 +22,9 @@ cannabis_use:
   users: 240000
 recreational: illegal
 medical: legal
-updated: 2026-10-04
+updated: 2026-10-08
 summary: >-
-  Possession is punished with fines. The medical cannabis pilot programme was made permanent, and
+  Possession is punished with fines. The medical cannabis programme became permanent in 2026, and
   Denmark hosts licensed producers. Christiania's open market was shut down in 2024.
 scores:
   possession: 2
@@ -37,75 +37,113 @@ segments:
   possession:
     text: >-
       Possession of any amount is an offence. For small amounts for personal use the standard
-      outcome is a fine that rises with repeat offences; larger amounts or signs of dealing bring
-      prison. Fines are doubled in designated zones such as around Christiania.
+      outcome is a fine that rises with repeat offences; larger amounts or signs of dealing can
+      bring prison. The guideline fine for up to 9.9 g of hash is DKK 2,000 for a first offence,
+      DKK 3,000 for a second and DKK 4,000 thereafter.
     sources:
-      - lc
-      - boc
+      - prosecutor
   cultivation:
     text: >-
       Growing cannabis for its THC is illegal and prosecuted; penalties scale with the number of
-      plants.
+      plants. Licensed medical production and permitted industrial-hemp growing are exceptions.
     sources:
-      - lc
+      - order2026
+      - prosecutor
   enforcement:
     text: Fines for users; prison for cultivation and dealing, with long sentences for organised trade.
     sources:
-      - lc
+      - prosecutor
   sharing:
     text: Supply is a crime, with prison for anything beyond trivial amounts.
     sources:
-      - lc
+      - order2026
+      - prosecutor
   consumption:
     text: Use is not itself named as an offence, but possession is, so users are fined when caught.
     sources:
-      - lc
-      - boc
+      - order2026
+      - prosecutor
   access:
     text: >-
       No legal adult-use source. Copenhagen's open hash market on Christiania's Pusher Street was
       dug up and closed in 2024. Medical cannabis is dispensed by pharmacies on prescription.
     sources:
-      - boc
-      - pp
+      - pusher
+      - medical
 context:
   production:
     text: >-
       Denmark licenses cultivation and manufacture of medical cannabis and hosts several
       export-oriented producers.
     sources:
-      - pp
-      - sten
+      - bulk
+      - law439
   products:
     text: Prescription flower and oils under the medical scheme; low-THC products up to 0.2%.
     sources:
-      - pp
-      - boc
+      - medical
+      - seed_answer
   medical:
     text: >-
       A pilot programme that began in 2018 let any doctor prescribe cannabis products not otherwise
       approved as medicines. Parliament made it permanent from 1 January 2026, with partial
       reimbursement.
     sources:
-      - sten
-      - boc
+      - medical
+      - law439
   consequences:
     text: >-
-      Fines for possession can appear on a criminal record for a period. Driving has a very low THC
-      blood limit with licence suspension.
+      A fine solely under the controlled-substances law does not appear on either the private or
+      public criminal-record certificate, although a prison sentence does. Driving is illegal above
+      0.001 mg THC per kg of blood; higher levels can bring conditional or unconditional licence
+      disqualification.
     sources:
-      - lc
+      - record
+      - traffic
+  planting:
+    seeds: grey
+    seeds_trade: open
+    clones: licensed
+    clones_trade: regulated
+    text: >-
+      Cannabis seeds are excluded from the controlled-substances order, so possession and sale are
+      lawful; germinating them is not, unless the resulting cultivation is licensed or permitted.
+      Cuttings are cannabis plant material and therefore controlled. Licensed medical businesses
+      may propagate and distribute plants or plant parts to licensed growers, while low-THC
+      industrial hemp may be grown under permit. Clones are consequently confined to regulated
+      licensed channels.
+    sources:
+      - order2026
+      - seed_answer
+      - seed_trade
 sources:
-  lc:
-    title: LegalClarity — Is weed illegal in Denmark? Laws and penalties
-    url: https://legalclarity.org/is-weed-illegal-in-denmark-laws-and-penalties/
-  boc:
-    title: "Business of Cannabis — Denmark: cannabis regulation overview"
-    url: https://businessofcannabis.com/eu-cannabis-regulation/denmark/
-  sten:
-    title: Stenocare (Cision) — Medical cannabis made permanent in Denmark
-    url: >-
-      https://news.cision.com/stenocare/r/medical-cannabis-made-permanent-in-denmark--major-milestone-for-patients-and-stenocare,c4144567
-  pp:
-    title: Prohibition Partners — Denmark overview
-    url: https://insightshub.prohibitionpartners.com/denmark/
+  order2026:
+    title: Controlled Substances Order No. 405 of 26 March 2026 (Retsinformation)
+    url: https://www.retsinformation.dk/eli/lta/2026/405
+  prosecutor:
+    title: Director of Public Prosecutions — Narcotics charging guidance (2026)
+    url: https://www.retsinformation.dk/eli/retsinfo/2026/9741
+  medical:
+    title: Danish Medicines Agency — The medical cannabis scheme
+    url: https://laegemiddelstyrelsen.dk/da/special/medicinsk-cannabis/ordningen-med-medicinsk-cannabis/
+  law439:
+    title: Act No. 439 of 6 May 2025 making the medical-cannabis scheme permanent
+    url: https://www.retsinformation.dk/eli/lta/2025/439
+  bulk:
+    title: Order No. 1607 of 5 December 2025 on cannabis bulk and starting products
+    url: https://www.retsinformation.dk/eli/lta/2025/1607
+  pusher:
+    title: City of Copenhagen — Briefing on the permanent closure of Pusher Street
+    url: https://www.kk.dk/sites/default/files/agenda/d27a47dc-302a-4c67-9312-c1deb82e0367/92d51cb6-293d-4d77-bb23-80f2f7118d21-bilag-19_0.pdf
+  seed_answer:
+    title: Health minister's answer on cannabis seeds and THC limits (18 August 2025)
+    url: https://www.ft.dk/samling/20241/almdel/mof/bilag/0/3056412.pdf
+  seed_trade:
+    title: Justice minister's answer on possession and sale of cannabis seeds (19 June 2007)
+    url: https://www.ft.dk/samling/20061/spoergsmaal/s4878/svar/341922/383774.pdf
+  record:
+    title: Danish Police — Private criminal-record certificates
+    url: https://politi.dk/service-og-tilladelser/straffeattest/bestil-privat-straffeattest
+  traffic:
+    title: Road Traffic Act, Sections 54, 125 and 126 (Retsinformation)
+    url: https://www.retsinformation.dk/eli/lta/2021/1710
