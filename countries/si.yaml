@@ -22,7 +22,7 @@ cannabis_use:
   users: 80000
 recreational: decriminalised
 medical: legal
-updated: 2026-10-04
+updated: 2026-10-08
 summary: >-
   Possession for personal use is a minor offence punished by a fine. Voters backed medical and
   personal use in 2024 referendums, and a 2025 law set up a full medical cannabis system.
@@ -75,19 +75,18 @@ segments:
       medical route opened in August 2025.
     sources:
       - boc
-      - sibiz
+      - medical_act
 context:
   production:
     text: >-
       The 2025 Medical and Scientific Cannabis Act allows licensed cultivation and processing for
       medical and research purposes. Nothing for adult use.
     sources:
-      - sibiz
+      - medical_act
   products:
     text: Medical flower and preparations on prescription; low-THC hemp products.
     sources:
-      - sibiz
-      - wiki
+      - medical_act
   medical:
     text: >-
       Since 20 August 2025 any physician may prescribe cannabis for any condition on their
@@ -95,19 +94,40 @@ context:
       self-paid. This is one of Europe's most open medical laws on paper; supply is still being
       built up.
     sources:
-      - sibiz
+      - medical_act
   consequences:
     text: A misdemeanour fine is not a criminal conviction. Drug-driving is tested and penalised.
     sources:
       - wiki
+  planting:
+    seeds: grey
+    seeds_trade: regulated
+    clones: licensed
+    clones_trade: regulated
+    text: >-
+      The controlled-cannabis definition excludes seeds, so possessing seed is not itself a drug
+      offence, but germinating a high-THC variety remains unlawful outside licensed medical or
+      scientific production. Seed intended for lawful hemp planting must meet agricultural seed
+      and variety rules. Living propagation material and seedlings are regulated, and may be
+      produced or marketed only through authorised hemp, medical or scientific channels.
+    sources:
+      - definition
+      - hemp_rule
+      - medical_act
 sources:
+  medical_act:
+    title: Official Gazette — Medical and Scientific Cannabis Act (ZKMZN), 2025
+    url: >-
+      https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-2341/zakon-o-konoplji-za-medicinske-in-znanstvene-namene-zkmzn
+  hemp_rule:
+    title: Official Gazette — Rules on marketing cannabis propagation material and seedlings, 2022
+    url: https://www.uradni-list.si/_pdf/2022/Ur/u2022045.pdf
+  definition:
+    title: Government of Slovenia — Use of cannabis and cannabidiol in cosmetic products
+    url: https://www.gov.si/novice/2020-03-05-uporaba-konoplje-in-kanabidiola-v-kozmeticnih-izdelkih/
   wiki:
     title: Wikipedia — Cannabis in Slovenia
     url: https://en.wikipedia.org/wiki/Cannabis_in_Slovenia
-  sibiz:
-    title: "Sibiz — Slovenia legalizes medical cannabis: new law effective from August 20, 2025"
-    url: >-
-      https://sibiz.eu/slovenia-legalizes-medical-cannabis-marijuana-new-law-effective-from-august-20-2025
   boc:
     title: Business of Cannabis — Slovenia takes steps toward cannabis legalisation
     url: https://businessofcannabis.com/slovenia-takes-steps-toward-cannabis-legalisation/

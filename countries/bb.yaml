@@ -22,7 +22,7 @@ cannabis_use:
   users: 15000
 recreational: decriminalised
 medical: legal
-updated: 2026-10-04
+updated: 2026-10-08
 summary: >-
   Up to 14 g is a fixable fine; a medical industry is licensed and Rastafari sacramental use is
   permitted.
@@ -47,7 +47,7 @@ segments:
       Not permitted for personal use. Cultivation is lawful only under a medicinal cannabis licence,
       or for registered Rastafari worship.
     sources:
-      - cijn
+      - mci_act
       - gis
   enforcement:
     text: >-
@@ -73,24 +73,38 @@ segments:
   access:
     text: No adult-use sales. The medicinal industry created in 2019 supplies patients on prescription.
     sources:
-      - cijn
+      - mci_act
 context:
+  planting:
+    seeds: licensed
+    seeds_trade: regulated
+    clones: licensed
+    clones_trade: regulated
+    text: >-
+      Cannabis seeds and immature plants are medicinal cannabis under the licensed system. Growing
+      requires a cultivator licence, while importing seeds, plants or tissue culture requires an
+      import licence, an approval certificate for the shipment and a plant-protection permit.
+    sources:
+      - bmcla
+      - import_process
   production:
     text: >-
       The Medicinal Cannabis Industry Act 2019 set up a licensing authority for cultivation,
       processing, retail and export.
     sources:
-      - cijn
+      - mci_act
   products:
-    text: Prescription medicinal products only.
+    text: Prescription medicinal products through licensed therapeutic dispensaries.
     sources:
-      - cijn
+      - mci_act
+      - first_dispensary
   medical:
     text: >-
-      Legal since 2019 on prescription from a medical practitioner, dispensed through licensed
-      outlets.
+      Legal under the 2019 Act on prescription from a medical practitioner. The first licensed
+      medicinal dispensary opened on 14 June 2025.
     sources:
-      - cijn
+      - mci_act
+      - first_dispensary
   consequences:
     text: Paying the fixed penalty discharges liability without a criminal conviction.
     sources:
@@ -109,3 +123,15 @@ sources:
   cijn:
     title: Caribbean Investigative Journalism Network — Legislation and decriminalisation
     url: https://www.cijn.org/legislation-and-decriminalisation/
+  mci_act:
+    title: Barbados Parliament — Medicinal Cannabis Industry Act 2019
+    url: https://www.barbadosparliament.com/uploads/bill_resolution/525f81ef27c236e8645cecf1bb5258c7.pdf
+  bmcla:
+    title: Barbados Medicinal Cannabis Licensing Authority — regulatory guidance
+    url: https://www.bmcla.bb/
+  import_process:
+    title: BMCLA — Import and export of cannabis process information
+    url: https://www.bmcla.bb/attachment?file=Attachments%2FBMCLA+Import+%2B+Export+Authorization+Certificate+Process+Information.pdf&id=19&name=BMCLA+Import+%2B+Export+Authorization+Certificate+Process+Information
+  first_dispensary:
+    title: BMCLA — Island Therapeutics launch, Barbados' first licensed medicinal cannabis dispensary
+    url: https://www.bmcla.bb/News/Latest/Island-Therapeutics-Launch-Barbado

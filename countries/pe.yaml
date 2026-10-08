@@ -22,7 +22,7 @@ cannabis_use:
   users: 370000
 recreational: decriminalised
 medical: legal
-updated: 2026-10-04
+updated: 2026-10-08
 summary: >-
   Possession of up to 8 g is not punishable. Medical cannabis is legal since 2017, with
   patient-association cultivation added in 2021.
@@ -37,73 +37,105 @@ segments:
   possession:
     text: >-
       Article 299 of the Penal Code makes possession for one's own immediate use not punishable up
-      to 8 g of marijuana or 2 g of its derivatives. The exemption is lost if you carry two or more
-      different drugs. In practice police often detain people while they verify the amount.
+      to 8 g of marijuana or 2 g of its derivatives. The exemption is lost if the person possesses
+      two or more types of controlled drug.
     sources:
-      - np
-      - cr
+      - penal
   cultivation:
     text: >-
-      Growing for personal use is a crime. The only lawful cultivation is licensed medical
-      production and, since 2021–2023 rules, registered patient associations growing for their
-      members.
+      Growing for personal use is a crime: the Penal Code provides two to six years even where the
+      crop does not exceed 100 plants. The exceptions are licensed medical or scientific production
+      and registered patient associations growing for their members.
     sources:
-      - giq
-      - cr
+      - penal
+      - law31312
   enforcement:
     text: >-
-      Small possession is not punished by law, but unlicensed cultivation and sale carry eight to
-      fifteen years.
+      Small possession is not punished by law. Unlicensed cultivation carries two to six years for
+      up to 100 plants and eight to fifteen years otherwise; trafficking also carries prison.
     sources:
-      - cr
-      - np
+      - penal
   sharing:
     text: Any supply is trafficking.
     sources:
-      - cr
+      - penal
   consumption:
     text: >-
-      Use is not an offence, and the possession exemption covers immediate personal consumption.
-      Public use attracts police attention.
+      Use is not a separate offence, and Article 299 protects possession within the limits for one's
+      own immediate consumption.
     sources:
-      - np
+      - penal
   access:
     text: >-
       No adult-use sales. Licensed pharmacies sell medical cannabis products on prescription to
       registered patients.
     sources:
-      - giq
-      - np
+      - digemid
 context:
   production:
     text: >-
       Licences exist for medical production, import and sale; patient associations can be authorised
-      to cultivate.
+      to cultivate. Law 32195 created a separate framework for industrial hemp below 1% THC, but its
+      implementing regulation remained at draft stage after public consultation.
     sources:
-      - giq
-      - cr
+      - reg2023
+      - law31312
+      - hemp_law
+      - hemp_draft
   products:
-    text: Prescription oils and other medical preparations.
+    text: Registered medicines, exceptional patient imports and pharmacy-compounded preparations.
     sources:
-      - giq
+      - digemid
   medical:
     text: >-
       Legal since Law 30681 of 2017, on prescription with patients listed in a national registry;
       association growing was added to improve access and affordability.
     sources:
-      - giq
-      - cr
+      - law30681
+      - law31312
+      - digemid
   consequences:
     text: No conviction for possession within the limit.
     sources:
-      - np
+      - penal
+  planting:
+    seeds: licensed
+    seeds_trade: regulated
+    clones: licensed
+    clones_trade: regulated
+    text: >-
+      Unlicensed transfer of cannabis seed is a crime, while the medical regulation defines seed to
+      include any botanical structure intended for sexual or asexual propagation. Licensed medical
+      producers may acquire, propagate, store and transport seeds and seedlings. Commercial seed
+      sales are restricted to licensed cultivators and regulated under the General Seed Law;
+      licensed patient associations must obtain seed from an authorised producer. Seeds and clones
+      are therefore confined to licensed or authorised medical and industrial-hemp cultivation and
+      regulated supply channels; the detailed hemp rules remain pending.
+    sources:
+      - penal
+      - reg2023
+      - hemp_law
+      - hemp_draft
 sources:
-  np:
-    title: New Peruvian — Is marijuana legal in Peru?
-    url: https://newperuvian.com/is-marijuana-legal-in-peru/
-  giq:
-    title: GrowerIQ — How to get a cannabis license in Peru
-    url: https://groweriq.ca/how-to-get-a-cannabis-license-in-peru/
-  cr:
-    title: CannabisRegulations.ai — Is weed legal in Peru?
-    url: https://www.cannabisregulations.ai/country-legality/peru-marijuana
+  penal:
+    title: Penal Code, Articles 296-A and 299 (Congress of Peru)
+    url: >-
+      https://www2.congreso.gob.pe/sicr/cendocbib/con6_uibd.nsf/DB60F84B5D157DD605258AB3005DEC4B/$FILE/codigo_penal.pdf
+  law30681:
+    title: Law No. 30681 regulating medicinal and therapeutic cannabis (Congress of Peru)
+    url: https://leyes.congreso.gob.pe/Documentos/2016_2021/ADLP/Normas_Legales/30681-LEY.pdf
+  law31312:
+    title: Law No. 31312 on patient-association cultivation (Congress of Peru)
+    url: https://leyes.congreso.gob.pe/Documentos/2016_2021/ADLP/Texto_Consolidado/31312-TXM.pdf
+  reg2023:
+    title: Supreme Decree No. 004-2023-SA, medicinal-cannabis regulation (Ministry of Health)
+    url: https://cdn.www.gob.pe/uploads/document/file/4446164/Decreto%20Supremo%20N%C2%B0%20004-2023-SA.pdf
+  digemid:
+    title: DIGEMID — Medicinal cannabis and its derivatives
+    url: https://www.digemid.minsa.gob.pe/webDigemid/uso-medicinal-del-cannabis-y-sus-derivados/
+  hemp_law:
+    title: Law No. 32195 on agricultural development of industrial hemp (Congress of Peru)
+    url: https://leyes.congreso.gob.pe/Documentos/2021_2026/ADLP/Texto_Consolidado/32195-TXM.pdf
+  hemp_draft:
+    title: MIDAGRI — Public consultation on the draft regulation of Law No. 32195
+    url: https://www.gob.pe/institucion/midagri/campa%C3%B1as/131515-consulta-publica-proyecto-del-d-s-que-aprueba-el-reglamento-de-la-ley-n-32195

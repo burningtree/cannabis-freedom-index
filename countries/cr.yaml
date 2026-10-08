@@ -22,11 +22,13 @@ cannabis_use:
   users: 180000
 recreational: decriminalised
 medical: limited
-updated: 2026-10-04
-summary: Personal use is not penalised. A 2022 law legalised medical cannabis and hemp.
+updated: 2026-10-08
+summary: >-
+  Personal possession is not penalised, and courts require evidence of trafficking before
+  punishing home cultivation. A 2022 law legalised medical cannabis and hemp.
 scores:
   possession: 3
-  cultivation: 1
+  cultivation: 2
   enforcement: 4
   sharing: 1
   consumption: 3
@@ -38,31 +40,34 @@ segments:
       amount for your own consumption carries no criminal penalty. The law never defines 'small',
       leaving it to police and prosecutors, and the cannabis is confiscated.
     sources:
-      - wiki
+      - law8204
       - obs
   cultivation:
     text: >-
-      Not legal. The law does not say whether growing for yourself is allowed, and provisions that
-      would have let patients grow a few plants were removed from the 2022 medical law before it
-      passed. Courts have occasionally acquitted small home growers.
+      Law 8204 lists unauthorised cultivation among trafficking offences, but the Supreme Court let
+      a 2016 home-grow acquittal stand because prosecutors had not shown that the plants were meant
+      for sale or distribution. Personal cultivation is therefore tolerated case by case, without
+      a statutory plant limit or an affirmative right to grow.
     sources:
-      - wiki
-      - obs
+      - law8204
+      - court2018
   enforcement:
-    text: Users are not prosecuted. Trafficking and cultivation carry eight to fifteen years in prison.
+    text: >-
+      Users are not prosecuted. Cultivation or possession proved to be for trafficking, and
+      unauthorised supply, carry eight to fifteen years in prison.
     sources:
-      - wiki
-      - obs
+      - law8204
+      - court2018
   sharing:
     text: Any supply to another person is trafficking.
     sources:
-      - wiki
+      - law8204
   consumption:
     text: >-
       Personal use is not punished. Smoking in public can lead to confiscation and police
       intervention but not criminal charges.
     sources:
-      - wiki
+      - law8204
       - obs
   access:
     text: >-
@@ -77,31 +82,54 @@ context:
       Law 10113 of March 2022 created licences for medicinal cannabis cultivation and processing,
       and freed hemp for food and industrial use.
     sources:
-      - law
-      - obs
+      - law10113
+      - mag
   products:
     text: Hemp and CBD products, and medicinal products under the 2022 law.
     sources:
-      - law
+      - law10113
   medical:
     text: >-
       Legal since 2022 on prescription, with licensed production and pharmacy dispensing. The market
       is still small.
     sources:
-      - law
+      - law10113
       - obs
   consequences:
     text: No criminal record for personal use.
     sources:
-      - wiki
+      - law8204
+  planting:
+    seeds: grey
+    seeds_trade: regulated
+    clones: grey
+    clones_trade: regulated
+    text: >-
+      Courts require evidence of trafficking before punishing cultivation for personal use, so
+      possessing and planting one's own seed or cutting sits in the same case-specific grey area.
+      Commercial propagation is regulated: Law 10113 covers seeds, seedlings and cuttings, and
+      licensed medical or authorised hemp growers must use lawful, registered material. The
+      Agriculture Ministry says there is no domestic commercial seed supplier, so seed must be
+      imported under seed and plant-health rules.
+    sources:
+      - court2018
+      - law10113
+      - mag
 sources:
-  wiki:
-    title: Wikipedia — Cannabis in Costa Rica
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Costa_Rica
-  law:
-    title: Ley N° 10113 — cannabis for medicinal and therapeutic use and hemp (UNEP LEAP)
+  law8204:
+    title: Costa Rica Legislative Assembly — Law 8204, narcotic drugs and unauthorised-use drugs
     url: >-
-      https://leap.unep.org/en/countries/cr/national-legislation/ley-no-10113-ley-del-cannabis-para-uso-medicinal-y-terapeutico-y
+      https://www.asamblea.go.cr/sd/Documents/BIBLIOTECADIGITAL/DOCUMENTOS/LEYES/Ley%208204%20Reforma%20Integral%20de%20la%20Ley%20Sobre%20Estupefacientes%20Sustancias%20Psicotropicas%20Drogas%20de%20uso%20No%20Autorizado.pdf
+  court2018:
+    title: Costa Rica Supreme Court, Criminal Chamber — Resolution 00481-2018
+    url: https://nexuspj.poder-judicial.go.cr/document/sen-1-0034-848558
+  law10113:
+    title: IAFA — Law 10113 on medical and therapeutic cannabis and industrial hemp
+    url: >-
+      https://iafa.go.cr/wp-content/uploads/2025/01/Ley-del-Cannabis-para-Uso-Medicinal-y-Terapeutico-y-del-Canamo-para-uso-Alimentario-e-Industrial.pdf
+  mag:
+    title: Ministry of Agriculture and Livestock — Hemp and cannabis authorisations and licences
+    url: https://mag.go.cr/extension-agropecuaria/dnea_canamo-cannabis/
   obs:
     title: "El Observador — Marihuana legal en Costa Rica: normas y problemas"
     url: https://observador.cr/marihuana-legal-en-costa-rica-normas-y-problemas/
