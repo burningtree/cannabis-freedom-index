@@ -2,7 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import CountryArticle from "../../components/CountryArticle.astro";
 import { countries, places } from "../../lib/countries.js";
-import { tierOf } from "../../lib/tiers.js";
+import { countrySeo } from "../../lib/seo.js";
 
 export function getStaticPaths() {
   return places.map((c) => ({ params: { id: c.slug }, props: { c } }));
@@ -13,9 +13,9 @@ const base = import.meta.env.BASE_URL;
 // a disputed territory has no rank, so no neighbours to page to
 const prev = c.rank ? countries[c.rank - 2] : null;
 const next = c.rank ? countries[c.rank] : null;
-const description = `${c.name} scores ${c.score} out of 100 on the Cannabis Freedom Index (${tierOf(c.raw).name}${c.rank ? `, #${c.rank} of ${countries.length}` : ""}). ${c.note}`;
+const seo = countrySeo(c, Astro.site);
 ---
-<Base title={c.name} description={description}>
+<Base title={c.name} seoTitle={seo.seoTitle} description={seo.description} jsonld={seo.jsonld} type="article">
   <main class="country-page">
     <div class="page-bar">
       <a class="back" href={`${base}#rankings`}>← All countries</a>

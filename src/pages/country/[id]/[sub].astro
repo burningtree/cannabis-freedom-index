@@ -4,6 +4,7 @@ import Base from "../../../layouts/Base.astro";
 import CountryArticle from "../../../components/CountryArticle.astro";
 import { countries, subunitsOf } from "../../../lib/countries.js";
 import { tierOf } from "../../../lib/tiers.js";
+import { subunitSeo } from "../../../lib/seo.js";
 
 export function getStaticPaths() {
   return countries.flatMap((c) =>
@@ -15,7 +16,7 @@ const { c, sub } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const description = `${sub.name} (${c.name}) scores ${sub.score} out of 100 on the Cannabis Freedom Index (${tierOf(sub.raw).name}). ${sub.note}`;
 ---
-<Base title={`${sub.name}, ${c.name}`} description={description}>
+<Base title={`${sub.name}, ${c.name}`} description={description} {...subunitSeo(c, sub, Astro.site)} type="article">
   <main class="country-page">
     <div class="page-bar">
       <a class="back" href={`${base}country/${c.slug}/`}>← {c.flag} {c.name}</a>

@@ -9,6 +9,7 @@ import { defineConfig } from "astro/config";
 const base = (process.env.BASE_PATH || "").replace(/\/+$/, "") + "/";
 
 export default defineConfig({
-  site: process.env.SITE || undefined,
+  // also the address used in canonical links, the sitemap and structured data
+  site: process.env.SITE || "https://cannabisfreedom.fyi",
   base,
 });

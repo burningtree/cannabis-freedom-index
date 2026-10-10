@@ -2,10 +2,16 @@
 import "../styles/global.css";
 import Leaf from "../components/Leaf.astro";
 
-const { title, description } = Astro.props;
+// `seoTitle` replaces the whole <title> (search-result wording); `jsonld` is one schema.org
+// object or a list of them; `type` is the Open Graph type of the page.
+const { title, seoTitle, description, jsonld, type = "website" } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const repo = "https://github.com/burningtree/cannabis-freedom-index";
-const fullTitle = title ? `${title} — Cannabis Freedom Index` : "Cannabis Freedom Index";
+const siteName = "Cannabis Freedom Index";
+const fullTitle = seoTitle ?? (title ? `${title} — ${siteName}` : `${siteName}: cannabis laws and legality in every country`);
+// the address search engines should index: no query string, no hash
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://cannabisfreedom.fyi").href;
+const schemas = jsonld ? [jsonld].flat() : [];
 ---
 <!doctype html>
 <html lang="en">
@@ -14,6 +20,19 @@ const fullTitle = title ? `${title} — Cannabis Freedom Index` : "Cannabis Free
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+  <meta name="robots" content="index, follow, max-snippet:-1">
+  <meta property="og:site_name" content={siteName}>
+  <meta property="og:type" content={type}>
+  <meta property="og:title" content={seoTitle ?? title ?? fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:locale" content="en">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content={seoTitle ?? title ?? fullTitle}>
+  <meta name="twitter:description" content={description}>
+  <link rel="sitemap" type="application/xml" href={`${base}sitemap.xml`}>
+  {schemas.map((x) => <script type="application/ld+json" is:inline set:html={JSON.stringify(x).replace(/</g, "\\u003c")} />)}
   <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`}>
   <link rel="alternate" type="application/rss+xml" title="Cannabis Freedom Index: score changes" href={`${base}rss.xml`}>
   <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -19,7 +19,7 @@ const nearby = own.slice(Math.max(0, at - 3), at + 4);
 const r = 30;
 const circ = 2 * Math.PI * r;
 ---
-<Base title={ch.title} description={ch.score ? `${ch.title}: ${c.name} moved from ${ch.score.before} to ${ch.score.after} on the Cannabis Freedom Index. ${ch.description}` : `${ch.title}. ${ch.description}`}>
+<Base type="article" title={ch.title} description={ch.score ? `${ch.title}: ${c.name} moved from ${ch.score.before} to ${ch.score.after} on the Cannabis Freedom Index. ${ch.description}` : `${ch.title}. ${ch.description}`}>
   <main class="change-page">
     <div class="page-bar">
       <a class="back" href={`${base}history/`}>← History</a>

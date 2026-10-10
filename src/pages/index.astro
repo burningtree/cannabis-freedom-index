@@ -7,6 +7,7 @@ import { TIERS, tierColor } from "../lib/tiers.js";
 import { PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "../lib/segment-ids.js";
 import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor } from "../lib/prices.js";
 import { SHOW_PRICES } from "../lib/config.js";
+import { homeSeo } from "../lib/seo.js";
 
 const base = import.meta.env.BASE_URL;
 const count = (fn) => countries.filter(fn).length;
@@ -101,7 +102,7 @@ const EXTRA_COLUMNS = [
 ];
 const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", "People", "Context"].map((g) => [g, EXTRA_COLUMNS.filter((x) => x.group === g)])];
 ---
-<Base description={`A score from 0 to 100 for how free cannabis is in every country, with a map, rankings${SHOW_PRICES ? ", retail prices" : ""} and legal history.`}>
+<Base description={`Where is cannabis legal? Cannabis laws in ${countries.length} countries, each scored from 0 to 100 for possession, home growing, penalties and legal access, with a world map, rankings${SHOW_PRICES ? ", retail prices" : ""} and legal history.`} jsonld={homeSeo(Astro.site, countries.length)}>
   <main id="top">
     <section class="hero">
       <p class="eyebrow">Global index · {DATA_SNAPSHOT} edition</p>
