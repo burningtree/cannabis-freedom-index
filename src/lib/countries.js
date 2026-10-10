@@ -291,6 +291,17 @@ export const formatDate = (iso) =>
 export const changeDate = (ch) => (ch.estimate ? `Between ${ch.window[0]} and ${ch.window[1]} (estimate)` : formatDate(ch.date));
 
 
+// How far a country's score moved over the last `years` years: { delta, since, last } or null
+// when nothing moved it. `last` is the most recent change in that window.
+export const TREND_YEARS = 10;
+export function trendOf(c, years = TREND_YEARS) {
+  const since = +lastUpdated.slice(0, 4) - years;
+  const moved = changes.filter((ch) => ch.country === c && ch.score && !ch.estimate && +ch.date.slice(0, 4) >= since); // newest first
+  if (!moved.length) return null;
+  const delta = Math.round(c.raw - moved.at(-1).raw.before);
+  return delta ? { delta, since, last: moved[0] } : null;
+}
+
 // The most recent review date across every country and state file.
 export const lastUpdated = [
   ...countries.map((c) => c.details.reviewed),

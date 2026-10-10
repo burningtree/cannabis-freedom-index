@@ -187,6 +187,12 @@ tbody tr:last-child td { border-bottom: 0; }
 td.num, th.num { width: 52px; color: var(--muted); }
 .cname { display: flex; align-items: center; gap: 10px; font-weight: 500; }
 .flag { font-size: 20px; line-height: 1; }
+/* how far the score moved over the last ten years, after the country's name */
+.trend { margin-left: -3px; font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; cursor: help; }
+.table-updated.trend-note { text-align: left; }
+.trend-note .trend { margin: 0; cursor: default; }
+.trend.up { color: var(--t5); }
+.trend.down { color: var(--t1); }
 .score-col { width: 34%; min-width: 150px; }
 .score-cell { display: flex; align-items: center; gap: 12px; }
 .score-cell .bar { flex: none; width: 110px; }
@@ -559,11 +565,6 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 /* on the world chart the dots stay hidden until one is hovered or focused */
 .avg .avg-dot::after { opacity: 0; }
 .avg .avg-dot.on::after, .avg .avg-dot:focus-visible::after { opacity: 1; }
-.avg-tip { position: absolute; z-index: 2; transform: translateX(-50%); width: max-content; max-width: min(260px, 100%); padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); box-shadow: var(--shadow); pointer-events: none; font-size: 13px; line-height: 1.35; }
-.avg-tip[hidden] { display: none; }
-.avg-tip small { display: block; color: var(--muted); }
-.avg-tip b { display: block; }
-.avg-tip span { color: var(--text-2); font-variant-numeric: tabular-nums; }
 .avg-note { margin: 12px 0 0; color: var(--muted); font-size: 12.5px; }
 @media (max-width: 640px) { .avg-x .odd { display: none; } }
 
@@ -582,6 +583,15 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 .c-chart-val { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, 5px); color: var(--text); font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
 .c-chart-val.below { bottom: auto; top: 100%; transform: translate(-50%, -5px); }
 .c-chart-val.start.below { top: auto; transform: translateY(4px); }
+/* history entries that moved no score: hollow marks on the line */
+.avg-dot.nomove { width: 16px; height: 16px; margin: -8px 0 0 -8px; }
+.avg-dot.nomove::after { inset: 5px; background: var(--surface); box-shadow: 0 0 0 1.5px var(--muted); }
+/* the seeker: a vertical line under the pointer, with what happened there */
+.c-seek { position: absolute; top: 0; bottom: 0; width: 1px; margin-left: -.5px; background: var(--muted); pointer-events: none; }
+.c-seek-tip { position: absolute; bottom: calc(100% + 6px); z-index: 3; width: max-content; max-width: min(260px, 100%); padding: 7px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); box-shadow: 0 6px 18px rgb(0 0 0 / .18); color: var(--text-2); font-size: 12px; line-height: 1.4; pointer-events: none; }
+.c-seek-tip b { color: var(--text); font-variant-numeric: tabular-nums; }
+.c-seek-tip p { margin: 4px 0 0; }
+.c-seek-tip small { display: block; color: var(--muted); font-size: 11px; }
 .c-chart-val.start { left: 4px; bottom: auto; transform: translateY(calc(-100% - 4px)); color: var(--text-2); font-weight: 500; }
 
 /* ── History periods ────────────────────────────────── */

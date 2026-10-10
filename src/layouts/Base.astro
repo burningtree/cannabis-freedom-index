@@ -113,6 +113,74 @@ const schemas = jsonld ? [jsonld].flat() : [];
       btn.setAttribute("aria-expanded", String(open));
       btn.textContent = open ? "Close all" : "Open all";
     });
+    // "Score over time" on a country article and the world average on the home page: a vertical seeker follows the pointer and says
+    // what the score was then and which history entries sit at that point. It snaps to an entry
+    // that is close. Works in the drawer too, since it listens on the document.
+    var seekPlot = null;
+    function hideSeek() {
+      if (!seekPlot) return;
+      seekPlot.querySelector(".c-seek").hidden = seekPlot.querySelector(".c-seek-tip").hidden = true;
+      seekPlot.querySelectorAll(".avg-dot.on").forEach(function (dot) { dot.classList.remove("on"); });
+      seekPlot = null;
+    }
+    function seek(e) {
+      var plot = e.target.closest && e.target.closest(".avg-plot[data-seek]");
+      if (plot !== seekPlot) hideSeek();
+      if (!plot) return;
+      seekPlot = plot;
+      var data = plot._seek || (plot._seek = JSON.parse(plot.dataset.seek));
+      var dots = plot._dots || (plot._dots = Array.prototype.slice.call(plot.querySelectorAll(".avg-dot")));
+      // the world chart keeps its entries on the dots themselves
+      if (data.dots && !data.events) data.events = dots.map(function (dot) { return { x: parseFloat(dot.style.left), d: dot.dataset.date, t: dot.dataset.title, own: dot.dataset.avg }; });
+      var box = plot.getBoundingClientRect();
+      var px = Math.max(0, Math.min(100, ((e.clientX - box.left) / box.width) * 100));
+      // snap to the nearest entry within 7 pixels, and list the ones that share its place
+      var near = null;
+      data.events.forEach(function (ev) { if (!near || Math.abs(ev.x - px) < Math.abs(near.x - px)) near = ev; });
+      var here = [];
+      if (near && (Math.abs(near.x - px) * box.width) / 100 <= 7) {
+        px = near.x;
+        here = data.events.filter(function (ev) { return (Math.abs(ev.x - px) * box.width) / 100 <= (data.dots ? 1.5 : 4); }); // the world chart is dense
+      }
+      dots.forEach(function (dot) { dot.classList.toggle("on", here.length > 0 && Math.abs(parseFloat(dot.style.left) - px) < 0.001); });
+      var score = data.start;
+      for (var i = 0; i < data.steps.length; i++) {
+        var s = data.steps[i]; // [start of the step, end, score before, score after]
+        if (px >= s[1]) score = s[3];
+        else { if (px > s[0]) score = s[2] + ((s[3] - s[2]) * (px - s[0])) / (s[1] - s[0]); break; }
+      }
+      var year = new Date(data.t0 + ((data.t1 - data.t0) * px) / 100).getUTCFullYear();
+      var line = plot.querySelector(".c-seek"), tip = plot.querySelector(".c-seek-tip");
+      tip.replaceChildren();
+      var head = document.createElement("b");
+      head.textContent = year + " · " + (data.unit || "score") + " " + (data.dp ? score.toFixed(data.dp) : Math.round(score));
+      tip.append(head);
+      here.slice(0, data.dots ? 3 : 4).forEach(function (ev) {
+        var p = document.createElement("p"), when = document.createElement("small");
+        when.textContent = ev.d + " · " + (ev.own || (ev.s ? "score " + ev.s : "no change in score"));
+        p.append(when, (ev.k ? ev.k + " " : "") + ev.t);
+        tip.append(p);
+      });
+      if (here.length > (data.dots ? 3 : 4)) {
+        var more = document.createElement("p");
+        more.textContent = "and " + (here.length - (data.dots ? 3 : 4)) + " more";
+        tip.append(more);
+      }
+      line.style.left = px + "%";
+      tip.style.left = px + "%";
+      tip.style.transform = "translateX(-" + px + "%)"; // slides from left- to right-aligned, so it stays inside
+      if (data.y) {
+        // a tall plot: keep the box inside it, under the line where the line runs high and above it elsewhere
+        var at = (1 - (score - data.y[0]) / (data.y[1] - data.y[0])) * 100;
+        tip.style.top = at < 50 ? "calc(" + at + "% + 12px)" : "auto";
+        tip.style.bottom = at < 50 ? "auto" : "calc(" + (100 - at) + "% + 12px)";
+      }
+      line.hidden = tip.hidden = false;
+    }
+    document.addEventListener("pointermove", seek);
+    document.addEventListener("pointerdown", seek);
+    document.addEventListener("pointerleave", hideSeek);
+
     // A link straight to a segment, e.g. /country/de/#seg-possession
     if (/^#seg-[a-z_-]+$/.test(location.hash)) showSegment(document.querySelector("article.country"), location.hash.slice(5));
   </script>

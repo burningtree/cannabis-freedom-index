@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
-import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places } from "../lib/countries.js";
+import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places, trendOf, changeDate, TREND_YEARS } from "../lib/countries.js";
 import { TIERS, tierColor } from "../lib/tiers.js";
 import { PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "../lib/segment-ids.js";
 import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor } from "../lib/prices.js";
@@ -250,7 +250,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
                   data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users} data-share={c.use.prevalence} data-price={SHOW_PRICES ? streetFlower(c)?.usd ?? -1 : undefined}
                   {...Object.fromEntries(EXTRA_COLUMNS.map((col) => [`data-${col.key}`, col.sort(c)]))}>
                 <td class="num">{c.rank ?? "–"}</td>
-                <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}</a>{c.disputed && <span class="tag-disputed" title={c.disputed.note}>disputed</span>}</td>
+                <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}{trendOf(c) && ((t) => <span class={`trend ${t.delta > 0 ? "up" : "down"}`} title={`${t.delta > 0 ? "+" : "−"}${Math.abs(t.delta)} ${Math.abs(t.delta) === 1 ? "point" : "points"} since ${t.since}. Latest change: ${t.last.title} (${changeDate(t.last)})`}>{t.delta > 0 ? "▲" : "▼"}{Math.abs(t.delta)}</span>)(trendOf(c))}</a>{c.disputed && <span class="tag-disputed" title={c.disputed.note}>disputed</span>}</td>
                 <td class="hide-sm" data-col="region">{c.region}</td>
                 <td class="num-col hide-md" data-col="users" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{compact(c.use.users)}</td>
                 <td class="num-col hide-md" data-col="share" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{c.use.prevalence.toFixed(1)}%</td>
@@ -280,6 +280,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           </tbody>
         </table>
       </div>
+      <p class="table-updated trend-note"><span class="trend up">▲</span> <span class="trend down">▼</span> after a name: points the score gained or lost since {+lastUpdated.slice(0, 4) - TREND_YEARS}. No mark means it did not move. Hover a mark to see the latest change.</p>
       <p class="table-updated">Last updated: <time datetime={lastUpdated}>{formatDate(lastUpdated)}</time></p>
     </section>
 

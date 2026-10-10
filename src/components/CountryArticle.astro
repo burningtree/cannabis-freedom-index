@@ -134,7 +134,7 @@ const circ = 2 * Math.PI * r;
     )}
     {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
     {/* in the drawer the chart stays in this column; on the full page it moves under the breakdown */}
-    {scored.length > 0 && <div class="chart-in-side"><CountryChart history={scored} /></div>}
+    {scored.length > 0 && <div class="chart-in-side"><CountryChart history={scored} context={history.filter((ch) => !ch.score)} /></div>}
   </div>
 
   <div class="c-main">
@@ -194,7 +194,7 @@ const circ = 2 * Math.PI * r;
         </details>
       );
     })}
-    {scored.length > 0 && <div class="chart-in-main"><CountryChart history={scored} /></div>}
+    {scored.length > 0 && <div class="chart-in-main"><CountryChart history={scored} context={history.filter((ch) => !ch.score)} /></div>}
 
     {group && (
       <section class="c-units">

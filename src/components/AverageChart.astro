@@ -52,7 +52,10 @@ function view(range, weighting) {
   const steps = inRange.map((p) => ({ ...p, x: x(time(p.date)), y: y(p.after) }));
   const line = `M0,${y(start)}` + steps.map((p) => `H${p.x}V${p.y}`).join("") + "H100";
   const points = steps.filter((p) => p.change); // estimated changes move the line but get no dot
-  return { range: range.id, weight: weighting.id, startYear, now, whole: tick >= 1, delta: now - start, ticks: ticks.map((t) => ({ t, y: y(t) })), years, points, line };
+  // for the seeker (the script is in Base.astro): the axis and the steps of the line; the entries
+  // it lists are read from the dots
+  const seek = JSON.stringify({ t0, t1, start, unit: "average", dp: 1, dots: true, y: [yMin, yMax], steps: steps.map((p) => [p.x, p.x, p.before, p.after]) });
+  return { seek, range: range.id, weight: weighting.id, startYear, now, whole: tick >= 1, delta: now - start, ticks: ticks.map((t) => ({ t, y: y(t) })), years, points, line };
 }
 
 const views = WEIGHTS.flatMap((w) => RANGES.map((r) => view(r, w)));
@@ -84,7 +87,7 @@ const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // 
       <div class="avg-y" aria-hidden="true">
         {v.ticks.map(({ t, y }) => <span style={`top:${y}%`}>{v.whole ? t : fmt(t)}</span>)}
       </div>
-      <div class="avg-plot">
+      <div class="avg-plot" data-seek={v.seek}>
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           {v.ticks.map(({ y }) => <line class="grid" x1="0" x2="100" y1={y} y2={y} />)}
           <path class="line" d={v.line} />
@@ -95,7 +98,8 @@ const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // 
             data-avg={`World average ${fmt(p.before)} → ${fmt(p.after)}`}
             aria-label={`${formatDate(p.date)}: ${p.change.title}. World average ${fmt(p.before)} to ${fmt(p.after)}.`}></a>
         ))}
-        <div class="avg-tip" hidden><small></small><b></b><span></span></div>
+        <span class="c-seek" hidden></span>
+        <div class="c-seek-tip" hidden></div>
       </div>
       <div class="avg-x" aria-hidden="true">
         {v.years.map(({ yr, x }) => <span style={`left:${x}%`}>{yr}</span>)}
@@ -119,51 +123,6 @@ const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // 
           el.hidden = el.dataset.range !== state.range || el.dataset.weight !== state.weight;
         });
       });
-    });
-  });
-
-  chart?.querySelectorAll(".avg-plot").forEach((plot) => {
-    const tip = plot.querySelector(".avg-tip");
-    const dots = [...plot.querySelectorAll(".avg-dot")];
-    const [date, title, avg] = tip.children;
-    let active = null;
-    const show = (dot) => {
-      if (dot === active) return;
-      active?.classList.remove("on");
-      active = dot;
-      dot.classList.add("on");
-      date.textContent = dot.dataset.date;
-      title.textContent = dot.dataset.title;
-      avg.textContent = dot.dataset.avg;
-      tip.hidden = false;
-      // keep the tooltip inside the plot
-      const box = plot.getBoundingClientRect();
-      const d = dot.getBoundingClientRect();
-      const cx = d.left + d.width / 2 - box.left;
-      const half = tip.offsetWidth / 2;
-      tip.style.left = `${Math.min(Math.max(cx, half), box.width - half)}px`;
-      const above = d.top - box.top - tip.offsetHeight - 10;
-      tip.style.top = `${above >= -30 ? above : d.bottom - box.top + 10}px`;
-    };
-    const hide = () => {
-      active?.classList.remove("on");
-      active = null;
-      tip.hidden = true;
-    };
-    // pointer: the change nearest to the cursor along the time axis
-    plot.addEventListener("pointermove", (e) => {
-      let best = dots[0], dist = Infinity;
-      for (const dot of dots) {
-        const r = dot.getBoundingClientRect();
-        const dx = Math.abs(r.left + r.width / 2 - e.clientX);
-        if (dx < dist) { dist = dx; best = dot; }
-      }
-      show(best);
-    });
-    plot.addEventListener("pointerleave", hide);
-    dots.forEach((dot) => {
-      dot.addEventListener("focus", () => show(dot));
-      dot.addEventListener("blur", hide);
     });
   });
 </script>
