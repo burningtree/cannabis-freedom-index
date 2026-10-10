@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
-import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places } from "../lib/countries.js";
+import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places } from "../lib/countries.js";
 import { TIERS, tierColor } from "../lib/tiers.js";
 import { PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "../lib/segment-ids.js";
 import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor } from "../lib/prices.js";
@@ -66,7 +66,7 @@ const LAW_SECTIONS = {
     tiers: { legal: 5, partial: 4, decrim: 3, illegal: 1, death: 0 },
     sub: "Green means adults may legally have cannabis, yellow that small amounts bring at most a fine, red that it is a crime; the darkest red marks laws with a death penalty.",
     note: "The legal status of cannabis for adults. The index score measures much more than this one label." },
-  med: { name: "Medical status", complete: true, statuses: Object.fromEntries(MED_ORDER.map((k) => [k, { label: MED_LABEL[k], help: "" }])),
+  med: { name: "Medical status", complete: true, statuses: Object.fromEntries(MED_ORDER.map((k) => [k, { label: MED_LABEL[k], help: MED_HELP[k] }])),
     tiers: { yes: 5, limited: 3, no: 0 },
     sub: "Green means a medical cannabis programme is legal, yellow that access is limited, red that there is none.",
     note: "Whether patients can get cannabis legally. Medical programmes are not part of the score." },
@@ -256,7 +256,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
                 <td class="num-col hide-md" data-col="share" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{c.use.prevalence.toFixed(1)}%</td>
                 {SHOW_PRICES && <td class="num-col hide-md" data-col="price">{streetFlower(c) ? `$${streetFlower(c).usd.toFixed(2)}` : "—"}</td>}
                 <td class="hide-sm" data-col="rec"><span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>{REC_LABEL[c.rec]}</span></td>
-                <td class="hide-md" data-col="med"><span class={`chip s-${c.med}`}>{MED_LABEL[c.med]}</span></td>
+                <td class="hide-md" data-col="med"><span class={`chip s-${c.med}`} title={MED_HELP[c.med]}>{MED_LABEL[c.med]}</span></td>
                 {EXTRA_COLUMNS.map((col) => {
                   const chip = col.chip?.(c);
                   return (

@@ -1,7 +1,7 @@
 ---
 // Full write-up for one country. Rendered on its own page, and fetched into the
 // drawer on the home page — so there is a single template for both views.
-import { SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
+import { SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
 import { tierOf, tierColor } from "../lib/tiers.js";
 import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
@@ -85,7 +85,7 @@ const circ = 2 * Math.PI * r;
     </div>
     <div class="d-chips">
       <span class={`chip s-${v.rec}`} title={REC_HELP[v.rec]}>Recreational: {REC_LABEL[v.rec]}</span>
-      <span class={`chip s-${v.med}`}>Medical: {MED_LABEL[v.med]}</span>
+      <span class={`chip s-${v.med}`} title={MED_HELP[v.med]}>Medical: {MED_LABEL[v.med]}</span>
     </div>
     {d && d.context.some((x) => x && (x.status || x.seeds)) && (
       <div class="d-chips d-chips-ctx">

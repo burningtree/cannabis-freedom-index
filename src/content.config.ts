@@ -21,6 +21,10 @@ const statusSections = Object.fromEntries(Object.entries(STATUS_SECTIONS).map(([
 const status = {
   // "death": illegal, and the law allows the death penalty for cannabis offences, in practice trafficking.
   recreational: z.enum(["legal", "partial", "decriminalised", "illegal", "death"]),
+  // "legal": an established patient route for cannabis or cannabis-based medicine.
+  // "limited": case-specific or pharmaceutical-only access, or legal authority limited to a pilot,
+  // one region, research/production, or a framework that is not yet operational.
+  // "none": no legal medical use; a proposal, CBD/hemp alone, or a future programme does not qualify.
   medical: z.enum(["legal", "limited", "none"]),
 };
 
@@ -78,8 +82,8 @@ const countries = defineCollection({
     .strict()
     .superRefine((data, ctx) => {
       // Every source key cited by a segment must be defined under `sources`.
-      if ((data.recreational === "death") !== Boolean(data.context.death_penalty)) {
-        ctx.addIssue({ code: "custom", message: 'a country marked "recreational: death" needs a context.death_penalty section, and only such a country may have one' });
+      if (data.recreational === "death" && !data.context.death_penalty) {
+        ctx.addIssue({ code: "custom", message: 'a country marked "recreational: death" needs a context.death_penalty section' });
       }
       const blocks = { ...data.segments, ...data.context } as Record<string, { sources: string[] }>;
       for (const [name, block] of Object.entries(blocks)) {

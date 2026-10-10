@@ -32,7 +32,7 @@ scores:
   enforcement: 1
   sharing: 0
   consumption: 0
-  access: 0
+  access: 1
 segments:
   possession:
     text: >-
@@ -69,9 +69,12 @@ segments:
       - kt1
       - filter
   access:
-    text: None.
+    text: >-
+      A patient may apply through the state orphan-drug centre to import a small number of
+      foreign-approved cannabis medicines for self-treatment. The route requires medical records,
+      a doctor's opinion and approval for each import.
     sources:
-      - slg
+      - mfds
 context:
   production:
     text: Hemp is grown under permit for fibre and seed in designated areas; no other production.
@@ -87,6 +90,7 @@ context:
       medicines, but only a handful of approved pharmaceuticals for conditions such as severe
       epilepsy, imported patient by patient through a state orphan-drug centre.
     sources:
+      - mfds
       - slg
       - filter
   consequences:
@@ -126,6 +130,9 @@ context:
       - slg
       - fcdo
 sources:
+  mfds:
+    title: Ministry of Food and Drug Safety — Applications to import cannabis medicines for self-treatment (12 March 2019)
+    url: https://impfood.mfds.go.kr/CFBBB01F02/getCntntsDetail?cntntsMngId=00032&cntntsSn=279510
   fcdo:
     title: "GOV.UK (FCDO) — Foreign travel advice: South Korea, safety and security"
     url: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security

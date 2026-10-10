@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import ScoreChange from "../../components/ScoreChange.astro";
-import { changes, countries, changeDate, REC_LABEL, REC_HELP, MED_LABEL } from "../../lib/countries.js";
+import { changes, countries, changeDate, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP } from "../../lib/countries.js";
 import { tierOf, tierColor } from "../../lib/tiers.js";
 
 export function getStaticPaths() {
@@ -88,7 +88,7 @@ const circ = 2 * Math.PI * r;
           </div>
           <div class="d-chips">
             <span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>Recreational: {REC_LABEL[c.rec]}</span>
-            <span class={`chip s-${c.med}`}>Medical: {MED_LABEL[c.med]}</span>
+            <span class={`chip s-${c.med}`} title={MED_HELP[c.med]}>Medical: {MED_LABEL[c.med]}</span>
           </div>
           <p class="ca-note">{c.note}</p>
           <a class="btn btn-primary ca-open" href={`${base}country/${c.slug}/`}>Open {c.name} <span aria-hidden="true">→</span></a>

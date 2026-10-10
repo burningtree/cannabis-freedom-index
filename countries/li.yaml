@@ -23,14 +23,14 @@ cannabis_use:
 recreational: illegal
 medical: limited
 updated: 2026-10-10
-summary: Illegal, with small-quantity cases usually diverted.
+summary: Illegal, with small-quantity cases usually diverted; authorised cannabinoid medicines are prescribable.
 scores:
   possession: 1
   cultivation: 1
   enforcement: 3
   sharing: 1
   consumption: 1
-  access: 0
+  access: 1
 segments:
   possession:
     text: >-
@@ -59,9 +59,13 @@ segments:
       - law
       - cann
   access:
-    text: No legal source. Residents are not covered by neighbouring Switzerland's pilot trials.
+    text: >-
+      There is no general medical-cannabis programme, but authorised cannabinoid medicines can be
+      prescribed. The government specifically identifies Sativex as authorised for medical use in
+      Liechtenstein. Residents are not covered by neighbouring Switzerland's cannabis pilot trials.
     sources:
       - cann
+      - govt_drug_policy
 context:
   production:
     text: No licensed production; industrial hemp has been restricted since 2005.
@@ -76,6 +80,7 @@ context:
     sources:
       - cann
       - wiki
+      - govt_drug_policy
   consequences:
     text: A conviction is a criminal record.
     sources:
@@ -126,3 +131,6 @@ sources:
   law:
     title: Betäubungsmittelgesetz (BMG) — consolidated text (gesetze.li, PDF)
     url: https://www.gesetze.li/konso/pdf/1983038000?version=13
+  govt_drug_policy:
+    title: Liechtenstein Government — Drug Policy Principles 2020
+    url: https://www.regierung.li/files/attachments/suchtpolitische-grundsaetze-2020-638354087178188334.pdf
