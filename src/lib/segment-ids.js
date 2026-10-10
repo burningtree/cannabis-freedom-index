@@ -26,6 +26,31 @@ export const CLUBS_STATUS = {
   underground: { label: "Underground", tone: "partial", help: "Clubs exist but are treated as illegal: they are raided or their organisers prosecuted" },
   none: { label: "None known", tone: "illegal", help: "No clubs are known, or the law leaves no room for them" },
 };
+// Driving after use: what the law needs to convict a driver. Not part of the score.
+export const DRIVING_STATUS = {
+  impairment: { label: "Impairment must be shown", tone: "legal", help: "Driving is an offence only when the driver is shown to be impaired" },
+  limit: { label: "Fixed THC limit", tone: "decrim", help: "A set THC level in blood or saliva is an offence by itself, whether or not the driver is impaired" },
+  zero: { label: "Zero tolerance", tone: "illegal", help: "Any detectable THC is an offence, however long ago the cannabis was used" },
+};
+// Visitors and foreigners: whether someone who does not live in the country can get cannabis legally.
+export const VISITORS_STATUS = {
+  open: { label: "Same as residents", tone: "legal", help: "Visitors may buy and carry cannabis on the same terms as residents" },
+  residents: { label: "Residents only", tone: "partial", help: "Legal supply is reserved for residents; a visitor has no legal way to buy" },
+  none: { label: "No legal access", tone: "illegal", help: "There is no legal recreational supply for anyone; visitors face the same penalties as locals, often with deportation on top" },
+};
+// Context sections that carry one status each: the label on the page, the vocabulary, the map
+// colour of each status (a tier number, 5 green to 0 red) and the wording around the map.
+export const STATUS_SECTIONS = {
+  clubs: { name: "Cannabis clubs", chip: "Clubs", statuses: CLUBS_STATUS, tiers: { regulated: 5, tolerated: 4, underground: 2, none: 0 },
+    sub: "Green means cannabis clubs are regulated or tolerated, orange that they work underground, red that none are known.",
+    note: "The footing cannabis clubs stand on. Licensed shops and pharmacies are not counted as clubs." },
+  driving: { name: "Driving", chip: "Driving", statuses: DRIVING_STATUS, tiers: { impairment: 5, limit: 3, zero: 0 },
+    sub: "Green means a driver must be shown to be impaired, yellow that a fixed THC limit applies, red that any trace of THC is an offence.",
+    note: "What the law needs to convict a driver who has used cannabis." },
+  visitors: { name: "Visitors and foreigners", chip: "Visitors", statuses: VISITORS_STATUS, tiers: { open: 5, residents: 3, none: 0 },
+    sub: "Green means visitors can buy on the same terms as residents, yellow that legal supply is for residents only, red that nobody has legal access.",
+    note: "Whether someone who does not live in the country can get cannabis legally." },
+};
 // What kind of event a History entry is, in the order the legend lists them.
 export const CHANGE_CATEGORIES = {
   ban: { emoji: "⛔", label: "Ban", help: "Cannabis is prohibited or restricted for the first time, or banned again" },

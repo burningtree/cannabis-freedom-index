@@ -26,7 +26,8 @@ Flower prices are a fourth, independent data set. They provide market context bu
 the freedom score.
 
 Seed and clone law is an optional, unscored section of the profile (see "Seeds and clones"),
-as are cannabis clubs and the black market (see "Cannabis clubs and the black market").
+as are cannabis clubs and the black market (see "Cannabis clubs and the black market") and
+driving rules, access for visitors and arrest figures (see "Driving, visitors and arrests").
 
 ## Where things are
 
@@ -174,6 +175,51 @@ context:
 - Neither section moves a score. If research for them shows the law or practice differs from a
   scored segment, fix the segment and add a history entry as usual.
 - `node scripts/data-status.cjs clubs` and `… black_market` list what is done and what is left.
+
+
+## Driving, visitors and arrests
+
+Three more optional, unscored sections under `context`, written like the two above. `driving` and
+`visitors` carry a `status` that colours a map option and shows as a chip; `arrests` is plain cited
+text.
+
+```yaml
+context:
+  driving:
+    status: limit           # impairment | limit | zero
+    text: >-
+      A driver with 3.5 ng of THC per millilitre of blood serum commits an offence …
+    sources:
+      - key
+  visitors:
+    status: residents       # open | residents | none
+    text: >-
+      Clubs may only admit people who have lived in the country for six months …
+    sources:
+      - key
+  arrests:
+    text: >-
+      Police recorded 12,300 cannabis offences in 2024, 80% of them for possession …
+    sources:
+      - key
+```
+
+- **`driving.status`** is what the law needs to convict a driver: `impairment` (the driver must be
+  shown to be impaired), `limit` (a set THC level in blood or saliva is an offence by itself) or
+  `zero` (any detectable THC). Give the limit and its unit, the penalty and licence consequences,
+  and any separate rule for medical patients, novice or professional drivers.
+- **`visitors.status`** is whether someone who does not live in the country can get cannabis
+  legally: `open` (same terms as residents), `residents` (legal supply is for residents only) or
+  `none` (no legal recreational supply for anyone). Say also what a visitor may possess or use,
+  and what happens to a foreigner who is caught: deportation, entry bans, visa consequences.
+- **`arrests`** is for published counts: arrests, recorded offences, fines, convictions or people
+  in prison for cannabis, with the year and who counted. Prefer police, justice-ministry or
+  statistics-office figures; say when a figure covers all drugs and not cannabis alone.
+- As everywhere, describe the whole country and leave the section out when nothing reliable is
+  found.
+
+`node scripts/data-status.cjs driving` (or `visitors`, `arrests`) lists what is done and what is
+still to do.
 
 ## Seeds and clones
 

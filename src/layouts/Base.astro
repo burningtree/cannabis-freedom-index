@@ -95,7 +95,7 @@ const fullTitle = title ? `${title} — Cannabis Freedom Index` : "Cannabis Free
       btn.textContent = open ? "Close all" : "Open all";
     });
     // A link straight to a segment, e.g. /country/de/#seg-possession
-    if (/^#seg-[a-z]+$/.test(location.hash)) showSegment(document.querySelector("article.country"), location.hash.slice(5));
+    if (/^#seg-[a-z_-]+$/.test(location.hash)) showSegment(document.querySelector("article.country"), location.hash.slice(5));
   </script>
 </body>
 </html>

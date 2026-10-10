@@ -22,7 +22,7 @@ cannabis_use:
   users: 340000
 recreational: decriminalised
 medical: legal
-updated: 2026-10-07
+updated: 2026-10-10
 summary: >-
   All drugs were decriminalised in 2001: up to 25 g of flower is an administrative matter for a
   dissuasion commission. Cultivation remains a crime. Portugal is a major medical exporter.
@@ -32,7 +32,7 @@ scores:
   enforcement: 5
   sharing: 1
   consumption: 3
-  access: 0
+  access: 1
 segments:
   possession:
     text: >-
@@ -74,7 +74,9 @@ segments:
   access:
     text: >-
       No legal source for adult use: no shops, no clubs, no home growing. Bills to regulate have
-      been debated without passing.
+      been debated without passing. The only lawful route is medical: since 2018 a doctor may
+      prescribe approved cannabis preparations, dispensed in pharmacies, but few products are
+      authorised and take-up is low.
     sources:
       - grow
       - qmhc
@@ -118,7 +120,68 @@ context:
     sources:
       - hemp_rules
       - cannabis_rules
+  driving:
+    status: zero
+    text: >-
+      No THC limit is set: under the road law the offence is committed if a narcotic or
+      psychotropic substance is detected. Police may stop at random and test on suspicion,
+      with a roadside oral-fluid test and blood taken at a hospital. The road-law penalty is a
+      fine of 500 to 2,500 euros and a ban of two months to two years; where danger is caused
+      the criminal code allows up to three years in prison.
+    sources:
+      - euda_dd
+  arrests:
+    text: >-
+      The EU drugs agency's statistical bulletin records 12,109 cannabis-related drug law
+      offences in Portugal in 2024, against 16,304 in 2023. Of the 2024 total, 6,637 were for
+      use or possession for use. Use is an administrative matter handled by dissuasion
+      commissions, and the agency warns that the 2017 to 2021 figures are incomplete.
+      Countries count these differently (offences or offenders, criminal or administrative),
+      so the figure is not comparable across borders.
+    sources:
+      - euda_dlo
+  clubs:
+    status: underground
+    text: >-
+      The sources disagree. A Europe-wide survey of cannabis social clubs carried out in 2018
+      and 2019 found, after online searches and contact with people in the field, that there
+      did not seem to be any active club in Portugal. A 2024 trade-press guide describes
+      private member associations that grow collectively for their members and operate
+      discreetly in a legal grey area, mainly in Lisbon and Porto and reportedly in the
+      Algarve; joining takes a referral from a member, often proof of Portuguese residency and
+      an annual fee of 50 to 150 euros, and clubs vet newcomers carefully to avoid police
+      attention. The authorities have not endorsed the clubs' reading of the law, and the
+      model is prohibited throughout the European Union.
+    sources:
+      - pardal20
+      - giq24
+  visitors:
+    status: none
+    text: >-
+      There is no legal recreational supply for anyone. British travel advice says illegal
+      drugs, including cannabis, carry severe penalties and tells travellers to expect a long
+      jail sentence and heavy fines for smuggling them, also in transit. Airport scanners are
+      also used on the baggage of passengers in transit.
+    sources:
+      - grow
+      - qmhc
+      - fcdo
 sources:
+  fcdo:
+    title: "GOV.UK (FCDO) — Foreign travel advice: Portugal, safety and security"
+    url: https://www.gov.uk/foreign-travel-advice/portugal/safety-and-security
+  giq24:
+    title: GrowerIQ — Portugal cannabis café and social club guide (25 September 2024)
+    url: https://groweriq.ca/2024/09/25/portugal-cannabiscafe/
+  pardal20:
+    title: Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe, European Journal of Criminology (2020, PDF)
+    url: https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
+  euda_dlo:
+    title: "EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)"
+    url: https://www.euda.europa.eu/data/stats2026/dlo_en
+  euda_dd:
+    title: EUDA — Legal approaches to drugs and driving, country table (last updated May 2025)
+    url: https://www.euda.europa.eu/publications/topic-overviews/legal-approaches-to-drugs-and-driving/html_en
   law:
     title: Lei n.º 30/2000 — regime jurídico do consumo de estupefacientes (Diário da República)
     url: https://diariodarepublica.pt/dr/detalhe/lei/30-2000-599720

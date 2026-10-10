@@ -1,7 +1,7 @@
 // Loads the YAML data (see /countries and /segments.yaml) and derives everything the
 // pages need: index scores, ranks, averages. Runs once at build time.
 import { getCollection } from "astro:content";
-import { CHANGE_CATEGORIES, SEGMENT_IDS } from "./segment-ids.js";
+import { CHANGE_CATEGORIES, SEGMENT_IDS, STATUS_SECTIONS } from "./segment-ids.js";
 export { CHANGE_CATEGORIES };
 
 export const DATA_SNAPSHOT = "2026";
@@ -19,7 +19,7 @@ export const MED_LABEL = { yes: "Legal", limited: "Limited", no: "None" };
 // Explanations that exist for each country but are not part of the score.
 // "Death penalty" comes first and exists only for countries whose law provides for it;
 // "Seeds and clones" exists only where it has been researched and carries a status for each.
-const CONTEXT = [["death_penalty", "Death penalty"], ["production", "Commercial production"], ["products", "Products"], ["planting", "Seeds and clones"], ["medical", "Medical use"], ["clubs", "Cannabis clubs"], ["black_market", "Black market"], ["consequences", "Other consequences"]];
+const CONTEXT = [["death_penalty", "Death penalty"], ["production", "Commercial production"], ["products", "Products"], ["planting", "Seeds and clones"], ["medical", "Medical use"], ["clubs", "Cannabis clubs"], ["black_market", "Black market"], ["driving", "Driving"], ["visitors", "Visitors and foreigners"], ["arrests", "Arrests and prisoners"], ["consequences", "Other consequences"]];
 export const CONTEXT_NAMES = CONTEXT.map(([, name]) => name);
 
 // File values → short codes used in class names and filters.
@@ -70,11 +70,12 @@ const everyPlace = (await getCollection("countries"))
       details: {
         reviewed: isoDate(data.updated),
         segments: SEGMENTS.map((seg) => cited(data.segments[seg.id])), // in SEGMENTS order
-        context: CONTEXT.map(([key, name]) => (data.context[key] ? { name, ...cited(data.context[key]), ...(key === "planting" && plantingOf(data.context[key])), ...(key === "clubs" && { clubs: data.context[key].status }) } : null)), // null: no such section
+        context: CONTEXT.map(([key, name]) => (data.context[key] ? { key, name, ...cited(data.context[key]), ...(key === "planting" && plantingOf(data.context[key])), ...(STATUS_SECTIONS[key] && { kind: key, status: data.context[key].status }) } : null)), // null: no such section
         sources: Object.values(data.sources).map(pair),
       },
       planting: data.context.planting ? plantingOf(data.context.planting) : null,
-      clubs: data.context.clubs?.status ?? null, // a key of CLUBS_STATUS, or null until researched
+      // one status per section in STATUS_SECTIONS (clubs, driving, visitors), null until researched
+      ...Object.fromEntries(Object.keys(STATUS_SECTIONS).map((key) => [key, data.context[key]?.status ?? null])),
       subunitMeta: data.subunits ?? null,
     };
   })

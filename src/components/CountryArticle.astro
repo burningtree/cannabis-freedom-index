@@ -7,7 +7,7 @@ import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
 import PricePanel from "./PricePanel.astro";
 import { SHOW_PRICES } from "../lib/config.js";
-import { PLANTING_STATUS, CLUBS_STATUS, PLANTING_TRADE } from "../lib/segment-ids.js";
+import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
 import { answersFor } from "../lib/answers.js";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
@@ -87,6 +87,18 @@ const circ = 2 * Math.PI * r;
       <span class={`chip s-${v.rec}`} title={REC_HELP[v.rec]}>Recreational: {REC_LABEL[v.rec]}</span>
       <span class={`chip s-${v.med}`}>Medical: {MED_LABEL[v.med]}</span>
     </div>
+    {d && d.context.some((x) => x && (x.status || x.seeds)) && (
+      <div class="d-chips d-chips-ctx">
+        {d.context.filter((x) => x && (x.status || x.seeds)).map((x) => x.seeds ? (
+          <>
+            <a class={`chip s-${PLANTING_STATUS[x.seeds].tone}`} href={`#seg-ctx-${x.key}`} data-seg-link={`ctx-${x.key}`} title={PLANTING_STATUS[x.seeds].help[0]}>Seeds: {PLANTING_STATUS[x.seeds].label}</a>
+            <a class={`chip s-${PLANTING_STATUS[x.clones].tone}`} href={`#seg-ctx-${x.key}`} data-seg-link={`ctx-${x.key}`} title={PLANTING_STATUS[x.clones].help[1]}>Clones: {PLANTING_STATUS[x.clones].label}</a>
+          </>
+        ) : (
+          <a class={`chip s-${STATUS_SECTIONS[x.kind].statuses[x.status].tone}`} href={`#seg-ctx-${x.key}`} data-seg-link={`ctx-${x.key}`} title={STATUS_SECTIONS[x.kind].statuses[x.status].help}>{STATUS_SECTIONS[x.kind].chip}: {STATUS_SECTIONS[x.kind].statuses[x.status].label}</a>
+        ))}
+      </div>
+    )}
     <p class="d-note">{v.note}</p>
     {c.disputed && !sub && (
       <p class="c-disputed"><strong>Disputed territory.</strong> {c.disputed.note} See also <a href={`${base}country/${c.disputed.country.slug}/`} data-country={c.disputed.country.id}>{c.disputed.country.flag} {c.disputed.country.name}</a>.</p>
@@ -212,11 +224,11 @@ const circ = 2 * Math.PI * r;
       <>
         <h2 class="d-h">More context <span>not part of the score</span></h2>
         {d.context.filter(Boolean).map((x) => (
-          <div class="segrow">
+          <div class="segrow" data-seg={`ctx-${x.key}`} id={`seg-ctx-${x.key}`}>
             <div class="segrow-top"><span>{x.name === "Death penalty" ? "☠️ " : ""}{x.name}</span></div>
-            {x.clubs && (
+            {x.status && (
               <div class="d-chips">
-                <span class={`chip s-${CLUBS_STATUS[x.clubs].tone}`} title={CLUBS_STATUS[x.clubs].help}>Clubs: {CLUBS_STATUS[x.clubs].label}</span>
+                <span class={`chip s-${STATUS_SECTIONS[x.kind].statuses[x.status].tone}`} title={STATUS_SECTIONS[x.kind].statuses[x.status].help}>{STATUS_SECTIONS[x.kind].chip}: {STATUS_SECTIONS[x.kind].statuses[x.status].label}</span>
               </div>
             )}
             {x.seeds && (
