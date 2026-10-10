@@ -7,7 +7,7 @@ import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
 import PricePanel from "./PricePanel.astro";
 import { SHOW_PRICES } from "../lib/config.js";
-import { PLANTING_STATUS, PLANTING_TRADE } from "../lib/segment-ids.js";
+import { PLANTING_STATUS, CLUBS_STATUS, PLANTING_TRADE } from "../lib/segment-ids.js";
 import { answersFor } from "../lib/answers.js";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
@@ -121,7 +121,8 @@ const circ = 2 * Math.PI * r;
       </dl>
     )}
     {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
-    {scored.length > 0 && <CountryChart history={scored} />}
+    {/* in the drawer the chart stays in this column; on the full page it moves under the breakdown */}
+    {scored.length > 0 && <div class="chart-in-side"><CountryChart history={scored} /></div>}
   </div>
 
   <div class="c-main">
@@ -181,6 +182,7 @@ const circ = 2 * Math.PI * r;
         </details>
       );
     })}
+    {scored.length > 0 && <div class="chart-in-main"><CountryChart history={scored} /></div>}
 
     {group && (
       <section class="c-units">
@@ -212,6 +214,11 @@ const circ = 2 * Math.PI * r;
         {d.context.filter(Boolean).map((x) => (
           <div class="segrow">
             <div class="segrow-top"><span>{x.name === "Death penalty" ? "☠️ " : ""}{x.name}</span></div>
+            {x.clubs && (
+              <div class="d-chips">
+                <span class={`chip s-${CLUBS_STATUS[x.clubs].tone}`} title={CLUBS_STATUS[x.clubs].help}>Clubs: {CLUBS_STATUS[x.clubs].label}</span>
+              </div>
+            )}
             {x.seeds && (
               <div class="d-chips">
                 <span class={`chip s-${PLANTING_STATUS[x.seeds].tone}`} title={PLANTING_STATUS[x.seeds].help[0]}>Seeds: {PLANTING_STATUS[x.seeds].label}</span>

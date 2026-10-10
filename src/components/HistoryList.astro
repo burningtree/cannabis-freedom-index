@@ -3,7 +3,7 @@
 // (`period`) or every entry of one kind (`kind`, a key of CHANGE_CATEGORIES). The period links
 // and the kind filters above the list lead to the other pages.
 import ScoreChange from "./ScoreChange.astro";
-import { changes, historyPeriods, formatDate, CHANGE_CATEGORIES } from "../lib/countries.js";
+import { changes, places, historyPeriods, formatDate, CHANGE_CATEGORIES } from "../lib/countries.js";
 import { tierColor } from "../lib/tiers.js";
 
 const { period, kind } = Astro.props;
@@ -19,6 +19,24 @@ const items = kind ? dated.filter((ch) => ch.category === kind) : period.items;
 const kindCount = (key) => dated.filter((ch) => ch.category === key).length;
 const years = [...new Set(items.map((ch) => ch.date.slice(0, 4)))]
   .map((year) => ({ year, items: items.filter((ch) => ch.date.startsWith(year)) }));
+// The whole history in numbers, for the side panel. The same on every page of the list.
+const num = (n) => n.toLocaleString("en-GB");
+const perPlace = new Map();
+for (const ch of changes) if (ch.country) perPlace.set(ch.country, (perPlace.get(ch.country) ?? 0) + 1);
+const stats = {
+  total: changes.length,
+  scored: dated.filter((ch) => ch.score).length,
+  context: dated.filter((ch) => !ch.score).length,
+  estimated: changes.length - dated.length,
+  checked: dated.filter((ch) => ch.checked).length,
+  international: dated.filter((ch) => !ch.country).length,
+  places: perPlace.size,
+  oldest: dated.at(-1),
+  newest: dated[0],
+  top: [...perPlace].sort((x, y) => y[1] - x[1] || x[0].name.localeCompare(y[0].name)).slice(0, 8),
+  // every place, also those with no entry at all
+  fewest: places.map((c) => [c, perPlace.get(c) ?? 0]).sort((x, y) => x[1] - y[1] || x[0].name.localeCompare(y[0].name)).slice(0, 8),
+};
 ---
 <nav class="periods" aria-label="Periods">
   {historyPeriods.map((p) => (
@@ -35,6 +53,7 @@ const years = [...new Set(items.map((ch) => ch.date.slice(0, 4)))]
   ))}
 </nav>
 
+<div class="change-layout hist-layout">
 <div class="chlog">
   {years.map(({ year, items }) => (
     <section aria-labelledby={`y${year}`}>
@@ -56,6 +75,39 @@ const years = [...new Set(items.map((ch) => ch.date.slice(0, 4)))]
       </ol>
     </section>
   ))}
+</div>
+
+<aside class="change-aside hist-aside" aria-label="History in numbers">
+  <div class="card ca-card">
+    <h2 class="hs-title">History in numbers</h2>
+    <dl class="hs-grid">
+      <div><dt>Entries in total</dt><dd>{num(stats.total)}</dd></div>
+      <div><dt>{kind ? "Of this kind" : "In this period"}</dt><dd>{num(items.length)}</dd></div>
+      <div><dt>Moved a score</dt><dd>{num(stats.scored)}</dd></div>
+      <div><dt>Context only</dt><dd>{num(stats.context)}</dd></div>
+      <div><dt>Countries and territories</dt><dd>{num(stats.places)}</dd></div>
+      <div><dt>Tied to no country</dt><dd>{num(stats.international)}</dd></div>
+    </dl>
+    <p class="ca-note">{num(stats.checked)} of the {num(dated.length)} dated entries ({Math.round((stats.checked / dated.length) * 100)}%) were checked against a source that was read. Another {num(stats.estimated)} are estimated first bans with no known date; they are not listed here.</p>
+    <p class="ca-note">The oldest entry is from <a href={`${base}history/${stats.oldest.id}/`}>{stats.oldest.date.slice(0, 4)}</a>, the newest from <a href={`${base}history/${stats.newest.id}/`}>{formatDate(stats.newest.date)}</a>.</p>
+  </div>
+  <div class="ca-more hs-top">
+    <h2>Most entries</h2>
+    <ol>
+      {stats.top.map(([c, n]) => (
+        <li><a href={`${base}country/${c.slug}/`}><b>{c.flag} {c.name}</b><time>{n} entries</time></a></li>
+      ))}
+    </ol>
+  </div>
+  <div class="ca-more hs-top">
+    <h2>Fewest entries</h2>
+    <ol>
+      {stats.fewest.map(([c, n]) => (
+        <li><a href={`${base}country/${c.slug}/`}><b>{c.flag} {c.name}</b><time>{n === 1 ? "1 entry" : `${n} entries`}</time></a></li>
+      ))}
+    </ol>
+  </div>
+</aside>
 </div>
 
 {period && <nav class="pager chl-pager" aria-label="Other periods">

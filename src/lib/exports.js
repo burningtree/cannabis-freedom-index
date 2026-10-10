@@ -22,6 +22,7 @@ export const scoreRows = places.map((c) => ({
   seeds_trade: c.planting?.seeds_trade ?? "",
   clones: c.planting?.clones ?? "",
   clones_trade: c.planting?.clones_trade ?? "",
+  clubs: c.clubs ?? "", // empty until researched; see CLUBS_STATUS
   population: c.population,
   users: c.use.users,
   users_share_percent: c.use.prevalence,

@@ -18,6 +18,14 @@ export const PLANTING_TRADE = {
   unclear: { label: "Not settled", tone: "decrim", help: ["The law does not say whether they may be sold", "The law does not say whether they may be sold"] },
   banned: { label: "Banned", tone: "illegal", help: ["Selling or handing them on is an offence", "Selling or handing them on is an offence"] },
 };
+// Cannabis clubs: an optional context section with one status, the footing clubs stand on.
+// Not part of the score. Licensed shops and pharmacies are not clubs.
+export const CLUBS_STATUS = {
+  regulated: { label: "Regulated by law", tone: "legal", help: "A law provides for clubs: they are licensed or registered and work within set limits" },
+  tolerated: { label: "Tolerated", tone: "decrim", help: "No law provides for clubs, but they operate fairly openly and are mostly left alone" },
+  underground: { label: "Underground", tone: "partial", help: "Clubs exist but are treated as illegal: they are raided or their organisers prosecuted" },
+  none: { label: "None known", tone: "illegal", help: "No clubs are known, or the law leaves no room for them" },
+};
 // What kind of event a History entry is, in the order the legend lists them.
 export const CHANGE_CATEGORIES = {
   ban: { emoji: "⛔", label: "Ban", help: "Cannabis is prohibited or restricted for the first time, or banned again" },

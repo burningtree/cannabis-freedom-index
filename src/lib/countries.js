@@ -19,7 +19,7 @@ export const MED_LABEL = { yes: "Legal", limited: "Limited", no: "None" };
 // Explanations that exist for each country but are not part of the score.
 // "Death penalty" comes first and exists only for countries whose law provides for it;
 // "Seeds and clones" exists only where it has been researched and carries a status for each.
-const CONTEXT = [["death_penalty", "Death penalty"], ["production", "Commercial production"], ["products", "Products"], ["planting", "Seeds and clones"], ["medical", "Medical use"], ["consequences", "Other consequences"]];
+const CONTEXT = [["death_penalty", "Death penalty"], ["production", "Commercial production"], ["products", "Products"], ["planting", "Seeds and clones"], ["medical", "Medical use"], ["clubs", "Cannabis clubs"], ["black_market", "Black market"], ["consequences", "Other consequences"]];
 export const CONTEXT_NAMES = CONTEXT.map(([, name]) => name);
 
 // File values → short codes used in class names and filters.
@@ -70,10 +70,11 @@ const everyPlace = (await getCollection("countries"))
       details: {
         reviewed: isoDate(data.updated),
         segments: SEGMENTS.map((seg) => cited(data.segments[seg.id])), // in SEGMENTS order
-        context: CONTEXT.map(([key, name]) => (data.context[key] ? { name, ...cited(data.context[key]), ...(key === "planting" && plantingOf(data.context[key])) } : null)), // null: no such section
+        context: CONTEXT.map(([key, name]) => (data.context[key] ? { name, ...cited(data.context[key]), ...(key === "planting" && plantingOf(data.context[key])), ...(key === "clubs" && { clubs: data.context[key].status }) } : null)), // null: no such section
         sources: Object.values(data.sources).map(pair),
       },
       planting: data.context.planting ? plantingOf(data.context.planting) : null,
+      clubs: data.context.clubs?.status ?? null, // a key of CLUBS_STATUS, or null until researched
       subunitMeta: data.subunits ?? null,
     };
   })
@@ -153,7 +154,7 @@ export const dateTime = (iso) => Date.parse(iso.length === 4 ? `${iso}-07-01` : 
 const changeEntries = (await getCollection("changes")).map(({ data }) => data).sort((a, b) => dateTime(a.date) - dateTime(b.date) || a.id.localeCompare(b.id));
 export const changes = changeEntries
   .map((data, i) => {
-    const country = data.country ? countries.find((c) => c.slug === data.country) : null;
+    const country = data.country ? places.find((c) => c.slug === data.country) : null; // a country or a disputed territory
     if (data.country && !country) throw new Error(`changes.yaml: "${data.id}" refers to unknown country "${data.country}"`);
     // context only (a treaty, report or ruling): part of the history, but it moves no score
     const kind = CHANGE_CATEGORIES[data.category]; // { emoji, label, help }
@@ -225,7 +226,7 @@ function averageOverTime(weight) {
     }
     return sum / total;
   };
-  const events = changes.filter((ch) => ch.score && !ch.estimate).map((ch) => ({ change: ch, date: ch.date, t: dateTime(ch.date) }));
+  const events = changes.filter((ch) => ch.score && !ch.estimate && !ch.country.disputed).map((ch) => ({ change: ch, date: ch.date, t: dateTime(ch.date) }));
   for (let year = CHART_FROM; year <= +DATA_SNAPSHOT; year++) events.push({ change: null, date: `${year}-01-01`, t: Date.UTC(year, 0, 1) });
   events.sort((a, b) => a.t - b.t);
   // changes on the same day are applied one after another, in a fixed order

@@ -1,4 +1,4 @@
-// Where the data stands: node scripts/data-status.cjs [unchecked|estimates|thin|weak|planting|chain [id]]
+// Where the data stands: node scripts/data-status.cjs [unchecked|estimates|thin|weak|planting|clubs|black_market|chain [id]]
 // Run from the project root. Needs js-yaml (already in node_modules).
 const fs = require("fs"), y = require("js-yaml");
 const changes = y.load(fs.readFileSync("changes.yaml", "utf8"));
@@ -13,6 +13,14 @@ console.log(`history: ${changes.length} entries | checked ${changes.filter((e) =
 
 if (what === "unchecked") for (const e of unchecked) console.log([e.country || "--", e.date, e.id, e.sources[0].url].join(" | "));
 if (what === "estimates") console.log(estimates.map((e) => `${e.country}${e.window ? `[${e.window}]` : ""}`).join(" "));
+if (what === "clubs" || what === "black_market") {
+  // An optional context section: which profiles have it, and which are still to do, most people first.
+  const pop = (id) => { const p = country[id].population; return p[Object.keys(p).sort().at(-1)]; };
+  const has = ids.filter((id) => country[id].context[what]);
+  console.log(`${what}: ${has.length} of ${ids.length} profiles`);
+  console.log("done:", has.map((id) => (what === "clubs" ? `${id}:${country[id].context.clubs.status}` : id)).join(" "));
+  console.log("to do:", ids.filter((id) => !country[id].context[what]).sort((a, b) => pop(b) - pop(a)).map((id) => `${id}:${country[id].name}`).join(", "));
+}
 if (what === "planting") {
   // Seeds and clones: which profiles have the section, and which are still to do, best score first.
   const W = Object.fromEntries(y.load(fs.readFileSync("segments.yaml", "utf8")).map((s) => [s.id, s.weight]));

@@ -4,7 +4,7 @@ import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places } from "../lib/countries.js";
 import { TIERS, tierColor } from "../lib/tiers.js";
-import { PLANTING_STATUS, PLANTING_TRADE } from "../lib/segment-ids.js";
+import { PLANTING_STATUS, PLANTING_TRADE, CLUBS_STATUS } from "../lib/segment-ids.js";
 import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor } from "../lib/prices.js";
 import { SHOW_PRICES } from "../lib/config.js";
 
@@ -29,8 +29,8 @@ const MED_ORDER = ["yes", "limited", "no"];
 // What the browser needs for the map: scores only, no prose.
 // `ratio` is the share of people who use cannabis divided by the index score: how far use runs
 // ahead of freedom. A score below 1 counts as 1, so that a zero does not divide.
-const mapData = places.map(({ id, num, name, flag, raw, score, rank, s, use, planting }) =>
-  ({ id, num, name, flag, raw, score, rank, s, planting, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {}, use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2) } }));
+const mapData = places.map(({ id, num, name, flag, raw, score, rank, s, use, planting, clubs }) =>
+  ({ id, num, name, flag, raw, score, rank, s, planting, clubs, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {}, use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2) } }));
 // States, provinces and territories of the federations, for the map's "show states" switch.
 // Keyed like the shapes in src/data/subunits.geo.json: "us/ca".
 const unitData = Object.fromEntries(countries.flatMap((c) => {
@@ -57,7 +57,36 @@ const PLANTING_FIELDS = { seeds: "Seeds", seeds_trade: "Seed sales", clones: "Cl
 const PLANTING_COLOR = { legal: 5, licensed: 4, grey: 3, illegal: 0, open: 5, regulated: 4, gift: 3, unclear: 2, banned: 0 };
 const plantingScale = (statuses) => Object.fromEntries(Object.entries(statuses).map(([k, v]) => [k, { label: v.label, color: `var(--t${PLANTING_COLOR[k]})` }]));
 const PLANTING_SCALES = { status: plantingScale(PLANTING_STATUS), trade: plantingScale(PLANTING_TRADE) };
+// Cannabis clubs on the map: one option, coloured by the footing clubs stand on.
+const CLUBS_COLOR = { regulated: 5, tolerated: 4, underground: 2, none: 0 };
+const CLUBS_SCALE = Object.fromEntries(Object.entries(CLUBS_STATUS).map(([k, v]) => [k, { label: v.label, help: v.help, color: `var(--t${CLUBS_COLOR[k]})` }]));
 const streetFlower = (c) => latestPricesFor(c.id).street;
+
+// Rankings columns the reader can switch on and off. `on` marks the ones shown by default.
+// Extra columns sort on a number kept on the row: higher means freer (or bigger), -1 means no data.
+const order = (keys) => Object.fromEntries(keys.map((k, i) => [k, keys.length - i]));
+const STATUS_RANK = { ...order(Object.keys(PLANTING_STATUS)), ...order(["open", "regulated", "gift", "unclear", "banned"]) };
+const CLUBS_RANK = order(Object.keys(CLUBS_STATUS));
+const statusCol = (key, label, vocab, helpIndex) => ({
+  key, label, group: "Context",
+  sort: (c) => STATUS_RANK[c.planting?.[key]] ?? -1,
+  chip: (c) => c.planting && { ...vocab[c.planting[key]], help: vocab[c.planting[key]].help[helpIndex] },
+});
+const BASE_COLUMNS = [
+  { key: "region", label: "Region" }, { key: "users", label: "Users" }, { key: "share", label: "Share of adults" },
+  ...(SHOW_PRICES ? [{ key: "price", label: "Price per gram" }] : []),
+  { key: "rec", label: "Recreational" }, { key: "med", label: "Medical" },
+];
+const EXTRA_COLUMNS = [
+  ...SEGMENTS.map((s, i) => ({ key: `s${i}`, label: s.name, group: "Score segments", sort: (c) => c.s[i], score: (c) => c.s[i] })),
+  { key: "pop", label: "Population", group: "People", sort: (c) => c.population, text: (c) => compact(c.population) },
+  statusCol("seeds", "Seeds", PLANTING_STATUS, 0),
+  statusCol("seeds_trade", "Seed sales", PLANTING_TRADE, 0),
+  statusCol("clones", "Clones", PLANTING_STATUS, 1),
+  statusCol("clones_trade", "Clone sales", PLANTING_TRADE, 1),
+  { key: "clubs", label: "Cannabis clubs", group: "Context", sort: (c) => CLUBS_RANK[c.clubs] ?? -1, chip: (c) => c.clubs && CLUBS_STATUS[c.clubs] },
+];
+const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", "People", "Context"].map((g) => [g, EXTRA_COLUMNS.filter((x) => x.group === g)])];
 ---
 <Base description={`A score from 0 to 100 for how free cannabis is in every country, with a map, rankings${SHOW_PRICES ? ", retail prices" : ""} and legal history.`}>
   <main id="top">
@@ -75,21 +104,33 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
       <div class="section-head">
         <div>
           <h2>World map</h2>
-          <p class="sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown." data-price="Pale yellow means cheaper, violet means more expensive. Countries without a sourced price are hatched." data-planting="Green means legal or sold freely, red means illegal or banned. Hatched countries have not been researched yet. Not part of the score.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
         </div>
-        <label class="field">
-          <span>Colour by</span>
-          <select id="metric">
-            <option value="index">Overall index</option>
-            {SEGMENTS.map((s, i) => <option value={i}>{s.name}</option>)}
-            <option value="users">Cannabis users (number)</option>
-            <option value="prevalence">Cannabis users (share of adults)</option>
-            <option value="ratio">Share of users ÷ index</option>
-            {SHOW_PRICES && PRICE_MARKETS.map((market) => <option value={`price:${market}`}>{PRICE_MARKET_LABEL[market]} price</option>)}
-            {Object.entries(PLANTING_FIELDS).map(([field, label]) => <option value={`plant:${field}`}>{label}</option>)}
-          </select>
-        </label>
       </div>
+      <div class="metric-bar" id="metric" role="group" aria-label="Colour the map by">
+        <div class="metric-group">
+          <span>Freedom</span>
+          <button type="button" data-metric="index" aria-pressed="true">Overall index</button>
+          {SEGMENTS.map((s, i) => <button type="button" data-metric={i} aria-pressed="false">{s.name}</button>)}
+        </div>
+        <div class="metric-group">
+          <span>Use</span>
+          <button type="button" data-metric="users" aria-pressed="false">Number of users</button>
+          <button type="button" data-metric="prevalence" aria-pressed="false">Share of adults</button>
+          <button type="button" data-metric="ratio" aria-pressed="false">Share of users ÷ index</button>
+        </div>
+        {SHOW_PRICES && (
+          <div class="metric-group">
+            <span>Price</span>
+            {PRICE_MARKETS.map((market) => <button type="button" data-metric={`price:${market}`} aria-pressed="false">{PRICE_MARKET_LABEL[market]}</button>)}
+          </div>
+        )}
+        <div class="metric-group">
+          <span>Context</span>
+          {Object.entries(PLANTING_FIELDS).map(([field, label]) => <button type="button" data-metric={`plant:${field}`} aria-pressed="false">{label}</button>)}
+          <button type="button" data-metric="clubs" aria-pressed="false">Cannabis clubs</button>
+        </div>
+      </div>
+      <p class="sub map-sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown." data-price="Pale yellow means cheaper, violet means more expensive. Countries without a sourced price are hatched." data-planting="Green means legal or sold freely, red means illegal or banned. Hatched countries have not been researched yet. Not part of the score." data-clubs="Green means cannabis clubs are regulated or tolerated, orange that they work underground, red that none are known. Hatched countries have not been researched yet. Not part of the score.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
       <div class="card map-card">
         <div class="map-wrap" id="mapWrap">
           <svg id="mapSvg" viewBox="0 0 960 480" role="img" aria-label="World map coloured by Cannabis Freedom Index"></svg>
@@ -117,14 +158,19 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
           <span><i class="sw sw-nodata"></i>No data</span>
           <span class="legend-note">{PRICE_SCALE.note}</span>
         </div>}
+        <div class="legend" data-legend="clubs" hidden>
+          {Object.values(CLUBS_SCALE).map((v) => <span title={v.help}><i class="sw" style={`background:${v.color}`}></i>{v.label}</span>)}
+          <span><i class="sw sw-nodata"></i>Not researched yet</span>
+          <span class="legend-note">The footing cannabis clubs stand on, shown for context and not part of the score. Licensed shops and pharmacies are not counted as clubs.</span>
+        </div>
         {Object.entries(PLANTING_SCALES).map(([key, scale]) => (
           <div class="legend" data-legend={`plant-${key}`} hidden>
             {Object.values(scale).map((v) => <span><i class="sw" style={`background:${v.color}`}></i>{v.label}</span>)}
             <span><i class="sw sw-nodata"></i>Not researched yet</span>
-            <span class="legend-note">Seed and clone rules are shown for context and are not part of the score. States and provinces take their country's status.</span>
+            <span class="legend-note">Seed and clone rules are shown for context and are not part of the score.</span>
           </div>
         ))}
-        <div class="map-under">
+        <div class="map-under" id="mapUnder">
           <label class="map-toggle" title="Show the United States, Canada and Australia state by state">
             <input type="checkbox" id="showUnits"> States and provinces
           </label>
@@ -148,6 +194,18 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
             <option value="">Any status</option>
             {REC_ORDER.map((k) => <option value={k}>{REC_LABEL[k]}</option>)}
           </select>
+          <details class="col-menu" id="colMenu">
+            <summary>Columns</summary>
+            <div class="col-panel">
+              {columnGroups.map(([group, cols], g) => (
+                <fieldset>
+                  <legend>{group}</legend>
+                  {cols.map((col) => <label><input type="checkbox" data-col={col.key} checked={g === 0}> {col.label}</label>)}
+                </fieldset>
+              ))}
+              <button type="button" class="btn" id="colReset">Reset</button>
+            </div>
+          </details>
         </div>
       </div>
       <div class="card table-card">
@@ -156,27 +214,40 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
             <tr>
               <th data-sort="rank" class="num" aria-sort="ascending">#</th>
               <th data-sort="name">Country</th>
-              <th data-sort="region" class="hide-sm">Region</th>
-              <th data-sort="users" class="num-col hide-md" title="People who used cannabis in the past year">Users</th>
-              <th data-sort="share" class="num-col hide-md" title="Share of people aged 15–64 who used cannabis in the past year">Share</th>
-              {SHOW_PRICES && <th data-sort="price" class="num-col hide-md" title="Latest sourced street-flower price, normalised to US dollars per gram">Price/g</th>}
-              <th data-sort="rec" class="hide-sm">Recreational</th>
-              <th data-sort="med" class="hide-md">Medical</th>
+              <th data-sort="region" data-col="region" class="hide-sm">Region</th>
+              <th data-sort="users" data-col="users" class="num-col hide-md" title="People who used cannabis in the past year">Users</th>
+              <th data-sort="share" data-col="share" class="num-col hide-md" title="Share of people aged 15–64 who used cannabis in the past year">Share</th>
+              {SHOW_PRICES && <th data-sort="price" data-col="price" class="num-col hide-md" title="Latest sourced street-flower price, normalised to US dollars per gram">Price/g</th>}
+              <th data-sort="rec" data-col="rec" class="hide-sm">Recreational</th>
+              <th data-sort="med" data-col="med" class="hide-md">Medical</th>
+              {EXTRA_COLUMNS.map((col) => <th data-sort={col.key} data-col={col.key} class:list={["col-off", { "num-col": !col.chip }]}>{col.label}</th>)}
               <th data-sort="score" class="score-col">Index</th>
             </tr>
           </thead>
           <tbody>
             {places.map((c) => (
               <tr data-id={c.id} data-rank={c.rank ?? c.worldRank - 0.5} data-name={c.name} data-region={c.region}
-                  data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users} data-share={c.use.prevalence} data-price={SHOW_PRICES ? streetFlower(c)?.usd ?? -1 : undefined}>
+                  data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users} data-share={c.use.prevalence} data-price={SHOW_PRICES ? streetFlower(c)?.usd ?? -1 : undefined}
+                  {...Object.fromEntries(EXTRA_COLUMNS.map((col) => [`data-${col.key}`, col.sort(c)]))}>
                 <td class="num">{c.rank ?? "–"}</td>
                 <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}</a>{c.disputed && <span class="tag-disputed" title={c.disputed.note}>disputed</span>}</td>
-                <td class="hide-sm">{c.region}</td>
-                <td class="num-col hide-md" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{compact(c.use.users)}</td>
-                <td class="num-col hide-md" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{c.use.prevalence.toFixed(1)}%</td>
-                {SHOW_PRICES && <td class="num-col hide-md">{streetFlower(c) ? `$${streetFlower(c).usd.toFixed(2)}` : "—"}</td>}
-                <td class="hide-sm"><span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>{REC_LABEL[c.rec]}</span></td>
-                <td class="hide-md"><span class={`chip s-${c.med}`}>{MED_LABEL[c.med]}</span></td>
+                <td class="hide-sm" data-col="region">{c.region}</td>
+                <td class="num-col hide-md" data-col="users" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{compact(c.use.users)}</td>
+                <td class="num-col hide-md" data-col="share" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{c.use.prevalence.toFixed(1)}%</td>
+                {SHOW_PRICES && <td class="num-col hide-md" data-col="price">{streetFlower(c) ? `$${streetFlower(c).usd.toFixed(2)}` : "—"}</td>}
+                <td class="hide-sm" data-col="rec"><span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>{REC_LABEL[c.rec]}</span></td>
+                <td class="hide-md" data-col="med"><span class={`chip s-${c.med}`}>{MED_LABEL[c.med]}</span></td>
+                {EXTRA_COLUMNS.map((col) => {
+                  const chip = col.chip?.(c);
+                  return (
+                    <td data-col={col.key} class:list={["col-off", { "num-col": !col.chip }]}>
+                      {col.score ? <span class="pill" style={`--c:${tierColor(col.score(c) * 10)}`}>{col.score(c)}</span>
+                        : col.text ? col.text(c)
+                        : chip ? <span class={`chip s-${chip.tone}`} title={chip.help}>{chip.label}</span>
+                        : <span class="muted">—</span>}
+                    </td>
+                  );
+                })}
                 <td>
                   <div class="score-cell">
                     <span class="score-val">{c.score}</span>
@@ -185,7 +256,7 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
                 </td>
               </tr>
             ))}
-            <tr id="emptyRow" hidden><td colspan="9" class="empty">No countries match these filters.</td></tr>
+            <tr id="emptyRow" hidden><td colspan="40" class="empty">No countries match these filters.</td></tr>
           </tbody>
         </table>
       </div>
@@ -240,7 +311,7 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
   <script type="application/json" id="cfi-units" set:html={JSON.stringify(unitData)} />
   <script type="application/json" id="cfi-use-scales" set:html={JSON.stringify(USE_SCALES)} />
   <script type="application/json" id="cfi-price-scale" set:html={JSON.stringify(PRICE_SCALE)} />
-  <script type="application/json" id="cfi-planting" set:html={JSON.stringify({ fields: PLANTING_FIELDS, scales: PLANTING_SCALES })} />
+  <script type="application/json" id="cfi-planting" set:html={JSON.stringify({ fields: PLANTING_FIELDS, scales: PLANTING_SCALES, clubs: CLUBS_SCALE })} />
   <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => s.name))} />
 
   <script>
@@ -276,6 +347,9 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
     const plantScale = (field) => PLANTING.scales[field.endsWith("_trade") ? "trade" : "status"];
     const plantOf = (c, field = plantField()) => plantScale(field)[c.planting?.[field]];
     const plantColor = (c) => plantOf(c)?.color ?? "url(#hatch)";
+    const isClubs = () => metric === "clubs"; // coloured by the footing of cannabis clubs
+    const clubsOf = (c) => PLANTING.clubs[c.clubs];
+    const clubsColor = (c) => clubsOf(c)?.color ?? "url(#hatch)";
     const priceMarket = () => metric.split(":")[1];
     const priceOf = (c) => c.prices[priceMarket()];
     const metricValue = (c) => (metric === "index" ? c.raw : c.s[+metric] * 10);
@@ -306,23 +380,34 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
     let showUnits = false;
     let drawUnits = null;   // set by initMap: loads and draws the shapes
 
+    // states and provinces carry scores only, so they are offered on the Freedom options alone
+    const isScore = () => !isClubs() && !isPlant() && !isPrice() && !isUse();
+    const unitsOn = () => showUnits && isScore();
+
     function paintMap() {
       if (paths) {
-        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isPlant() ? plantColor(d.c) : isPrice() ? priceColor(d.c) : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
+        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isClubs() ? clubsColor(d.c) : isPlant() ? plantColor(d.c) : isPrice() ? priceColor(d.c) : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
         // a federation's own shape steps aside while its states are shown
-        paths.style("display", (d) => (showUnits && unitPaths && d.c && FEDERATIONS.has(d.c.id) ? "none" : null));
+        paths.style("display", (d) => (unitsOn() && unitPaths && d.c && FEDERATIONS.has(d.c.id) ? "none" : null));
       }
       if (unitPaths) {
-        unitPaths.style("display", showUnits ? null : "none");
+        unitPaths.style("display", unitsOn() ? null : "none");
         // cannabis use is only known nationally, so a state takes its country's colour for those
-        unitPaths.attr("fill", (d) => (isPlant() ? plantColor(byId.get(d.u.country)) : isPrice() ? priceColor(byId.get(d.u.country)) : isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
+        unitPaths.attr("fill", (d) => (isClubs() ? clubsColor(byId.get(d.u.country)) : isPlant() ? plantColor(byId.get(d.u.country)) : isPrice() ? priceColor(byId.get(d.u.country)) : isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
       }
-      const shown = isPlant() ? (plantField().endsWith("_trade") ? "plant-trade" : "plant-status") : isPrice() ? "price" : isUse() ? metric : "score";
+      $("#mapUnder").hidden = !isScore();
+      const shown = isClubs() ? "clubs" : isPlant() ? (plantField().endsWith("_trade") ? "plant-trade" : "plant-status") : isPrice() ? "price" : isUse() ? metric : "score";
       document.querySelectorAll("[data-legend]").forEach((el) => { el.hidden = el.dataset.legend !== shown; });
       const sub = $("#mapSub");
-      sub.textContent = isPlant() ? sub.dataset.planting : isPrice() ? sub.dataset.price : metric === "ratio" ? sub.dataset.ratio : isUse() ? sub.dataset.use : sub.dataset.score;
+      sub.textContent = isClubs() ? sub.dataset.clubs : isPlant() ? sub.dataset.planting : isPrice() ? sub.dataset.price : metric === "ratio" ? sub.dataset.ratio : isUse() ? sub.dataset.use : sub.dataset.score;
     }
-    $("#metric").addEventListener("change", (e) => { metric = e.target.value; paintMap(); });
+    $("#metric").addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-metric]");
+      if (!btn) return;
+      metric = btn.dataset.metric;
+      for (const b of $("#metric").querySelectorAll("button")) b.setAttribute("aria-pressed", String(b === btn));
+      paintMap();
+    });
     $("#showUnits").addEventListener("change", async (e) => {
       showUnits = e.target.checked;
       if (showUnits && !unitPaths && drawUnits) {
@@ -371,7 +456,7 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
       // what the hover box says about a country, or about one of its states (`u`)
       const describe = (d) => {
         const c = d.c;
-        if (d.u && !isUse() && !isPrice() && !isPlant()) {
+        if (d.u && !isUse() && !isPrice() && !isPlant() && !isClubs()) {
           const u = d.u, home = byId.get(u.country);
           return `<strong>${home.flag} ${u.name}</strong>
                <div class="row"><span>${metricLabel()}</span><b>${metricText(u)}</b></div>
@@ -379,6 +464,7 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
                <div class="row"><span>Rank in ${home.name}</span><b>#${u.rank} of ${u.of}</b></div>`;
         }
         if (d.u) return describe({ c: byId.get(d.u.country), properties: d.properties }) + `<div class="row"><span>${d.u.name}</span><b>national figure</b></div>`;
+        if (c && isClubs()) return `<strong>${c.flag} ${c.name}</strong><div class="row"><span>Cannabis clubs</span><b>${clubsOf(c)?.label ?? "Not researched yet"}</b></div>`;
         if (c && isPlant()) {
           const rows = Object.entries(PLANTING.fields).map(([field, label]) =>
             `<div class="row"><span>${label}</span><b>${plantOf(c, field)?.label ?? "—"}</b></div>`).join("");
@@ -465,7 +551,8 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
 
     function applyTable() {
       const q = norm(state.q.trim());
-      const sorted = [...rows].sort(sorters[state.sort]);
+      // extra columns sort on a number kept on the row, highest first, then by rank
+      const sorted = [...rows].sort(sorters[state.sort] ?? ((a, b) => num(b, state.sort) - num(a, state.sort) || num(a, "rank") - num(b, "rank")));
       if (!state.asc) sorted.reverse();
       let shown = 0;
       sorted.forEach((r) => {
@@ -486,6 +573,27 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
     $("#search").addEventListener("input", (e) => { state.q = e.target.value; applyTable(); });
     $("#region").addEventListener("change", (e) => { state.region = e.target.value; applyTable(); });
     $("#recFilter").addEventListener("change", (e) => { state.rec = e.target.value; applyTable(); });
+    // Columns: the reader's choice is kept in this browser.
+    const colBoxes = [...document.querySelectorAll("#colMenu input[data-col]")];
+    const colDefaults = Object.fromEntries(colBoxes.map((b) => [b.dataset.col, b.checked]));
+    const showColumn = (key, on) => document.querySelectorAll(`#table [data-col="${key}"]`).forEach((cell) => cell.classList.toggle("col-off", !on));
+    const saveColumns = () => { try { localStorage.setItem("rankColumns", JSON.stringify(colBoxes.filter((b) => b.checked).map((b) => b.dataset.col))); } catch {} };
+    try {
+      const saved = JSON.parse(localStorage.getItem("rankColumns"));
+      if (Array.isArray(saved)) colBoxes.forEach((b) => { b.checked = saved.includes(b.dataset.col); showColumn(b.dataset.col, b.checked); });
+    } catch {}
+    $("#colMenu").addEventListener("change", (e) => {
+      if (!e.target.dataset.col) return;
+      showColumn(e.target.dataset.col, e.target.checked);
+      if (!e.target.checked && state.sort === e.target.dataset.col) { state.sort = "rank"; state.asc = true; applyTable(); }
+      saveColumns();
+    });
+    $("#colReset").addEventListener("click", () => {
+      colBoxes.forEach((b) => { b.checked = colDefaults[b.dataset.col]; showColumn(b.dataset.col, b.checked); });
+      try { localStorage.removeItem("rankColumns"); } catch {}
+    });
+    document.addEventListener("click", (e) => { if (!e.target.closest("#colMenu")) $("#colMenu").open = false; });
+
     $("#table thead").addEventListener("click", (e) => {
       const th = e.target.closest("th");
       if (!th) return;

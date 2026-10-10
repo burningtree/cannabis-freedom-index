@@ -25,7 +25,8 @@ its scores and the timeline are updated together, never just one of them.
 Flower prices are a fourth, independent data set. They provide market context but do not affect
 the freedom score.
 
-Seed and clone law is an optional, unscored section of the profile (see "Seeds and clones").
+Seed and clone law is an optional, unscored section of the profile (see "Seeds and clones"),
+as are cannabis clubs and the black market (see "Cannabis clubs and the black market").
 
 ## Where things are
 
@@ -137,6 +138,43 @@ by the ECB, cite the alternative exchange-rate source in the observation note.
 - Spot-check `/data/prices.json`, `/api/<country>.json`, the country page, rankings and both price
   map modes.
 
+## Cannabis clubs and the black market
+
+Two more optional, unscored sections under `context`. Each is a plain cited text, like
+`production` or `medical`; leave a section out until something reliable is found.
+
+```yaml
+context:
+  clubs:
+    status: tolerated       # regulated | tolerated | underground | none
+    text: >-
+      Around 1,000 to 1,500 private associations grow for their members in a legal grey area …
+    sources:
+      - key
+  black_market:
+    text: >-
+      Most cannabis is still bought illegally; a gram costs about …
+    sources:
+      - key
+```
+
+- **`clubs`**: do cannabis clubs (social clubs, associations, members-only lounges) exist, and on
+  what footing? The interest is in unregulated or lightly regulated ones: how they work around the
+  law, how many there are, how membership works, how often they are raided. Licensed shops and
+  pharmacies belong in the access segment, not here. Where none are known, say so only if a source
+  says so.
+- **`clubs.status`** is required with the section and colours the "Cannabis clubs" map option:
+  `regulated` (a law provides for clubs: licensed or registered, within set limits), `tolerated`
+  (no law, but they operate fairly openly and are mostly left alone), `underground` (they exist
+  but are treated as illegal: raided, organisers prosecuted), `none` (none known, or the law
+  leaves no room; use only when a source supports it). Judge the country as a whole, not one city.
+- **`black_market`**: the state of the illegal market: how large it is next to any legal supply,
+  where the cannabis comes from, typical prices if sourced, how openly it is sold, and how
+  violent or organised it is. Prefer surveys, police and UN figures over anecdotes.
+- Neither section moves a score. If research for them shows the law or practice differs from a
+  scored segment, fix the segment and add a history entry as usual.
+- `node scripts/data-status.cjs clubs` and `… black_market` list what is done and what is left.
+
 ## Seeds and clones
 
 Seed and clone law often differs from the plant's. The 1961 Single Convention leaves seeds out of
@@ -228,6 +266,8 @@ all read from there, together with `PLANTING_TRADE`.
   amount (usually one point in one or two segments).
 - **`estimate: true`** (with an optional `window: [from, to]`) marks a first restriction whose
   date is unknown. Replace these with a dated law whenever one is found.
+- **`country`** may also be a disputed territory (`xa`, `xn`, `xs`, `xt`). Its entries show on its
+  page and in the history list, but its scored changes never move the world average.
 - **`checked: true`** means: the date and the event were compared with a source that was read.
   A search-result summary is not a read source (see "What went wrong").
 

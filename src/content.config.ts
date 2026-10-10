@@ -3,7 +3,7 @@
 import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
 import { z } from "astro/zod";
-import { SEGMENT_IDS, CONTEXT_IDS, CHANGE_CATEGORIES, PLANTING_STATUS, PLANTING_TRADE } from "./lib/segment-ids.js";
+import { SEGMENT_IDS, CONTEXT_IDS, CHANGE_CATEGORIES, PLANTING_STATUS, PLANTING_TRADE, CLUBS_STATUS } from "./lib/segment-ids.js";
 
 const score = z.number().int().min(0).max(10);
 const perSegment = <T extends z.ZodTypeAny>(value: T) =>
@@ -15,6 +15,8 @@ const cited = z.object({ text: z.string().min(1), sources: z.array(z.string()) }
 const plantingStatus = z.enum(Object.keys(PLANTING_STATUS) as [string, ...string[]]);
 const plantingTrade = z.enum(Object.keys(PLANTING_TRADE) as [string, ...string[]]);
 const planting = z.object({ seeds: plantingStatus, seeds_trade: plantingTrade, clones: plantingStatus, clones_trade: plantingTrade, text: z.string().min(1), sources: z.array(z.string()) }).strict();
+// cannabis clubs: the cited text plus the footing they stand on (CLUBS_STATUS)
+const clubs = z.object({ status: z.enum(Object.keys(CLUBS_STATUS) as [string, ...string[]]), text: z.string().min(1), sources: z.array(z.string()) }).strict();
 const status = {
   // "death": illegal, and the law allows the death penalty for cannabis offences, in practice trafficking.
   recreational: z.enum(["legal", "partial", "decriminalised", "illegal", "death"]),
@@ -56,9 +58,10 @@ const countries = defineCollection({
       summary: z.string().min(1),
       scores: perSegment(score),
       segments: perSegment(cited),
-      // the four standard sections, plus `death_penalty` where the law provides for one and
-      // `planting` (seeds and clones) where it has been researched
-      context: z.object({ death_penalty: cited.optional(), planting: planting.optional(), ...Object.fromEntries(CONTEXT_IDS.map((id) => [id, cited])) }).strict(),
+      // the four standard sections, plus `death_penalty` where the law provides for one and,
+      // where they have been researched, `planting` (seeds and clones), `clubs` (cannabis clubs,
+      // above all unregulated or lightly regulated ones) and `black_market` (the illegal market)
+      context: z.object({ death_penalty: cited.optional(), planting: planting.optional(), clubs: clubs.optional(), black_market: cited.optional(), ...Object.fromEntries(CONTEXT_IDS.map((id) => [id, cited])) }).strict(),
       sources: z.record(z.string(), source),
       subunits: z
         .object({
