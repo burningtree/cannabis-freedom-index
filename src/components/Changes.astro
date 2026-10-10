@@ -1,9 +1,8 @@
 ---
-// Home page: the four most recent changes as a small vertical timeline (date on the left,
-// details on the right), next to the world average chart. See /changes.yaml.
+// Home page: the four most recent changes as a ledger, one row each: date, country, what
+// happened, and the score before and after. See /changes.yaml.
 import { changes } from "../lib/countries.js";
 import { tierColor } from "../lib/tiers.js";
-import AverageChart from "./AverageChart.astro";
 import ScoreChange from "./ScoreChange.astro";
 
 const base = import.meta.env.BASE_URL;
@@ -11,26 +10,21 @@ const base = import.meta.env.BASE_URL;
 const shortDate = (iso) =>
   iso.length === 4 ? iso : new Date(`${iso.length === 7 ? iso + "-01" : iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: iso.length === 7 ? undefined : "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 ---
-<div class="home-split">
-  <section class="card changes" aria-labelledby="changesTitle">
-    <div class="changes-head">
-      <h2 class="changes-title" id="changesTitle">Latest changes</h2>
-      <a href={`${base}history/`}>Full history →</a>
-    </div>
-    <ol class="mini-tl">
-      {changes.filter((ch) => ch.score).slice(0, 4).map((ch) => (
-        <li style={`--c:${tierColor(ch.score.after)}`}>
-          <a href={`${base}history/${ch.id}/`}>
-            <time datetime={ch.date}>{shortDate(ch.date)}</time>
-            <span class="mini-tl-body">
-              <span class="mini-tl-country">{ch.country.flag} {ch.country.name}</span>
-              <b><span class="kind" title={ch.kind.label} aria-hidden="true">{ch.kind.emoji}</span><span class="visually-hidden">{ch.kind.label}: </span>{ch.title}</b>
-              <ScoreChange score={ch.score} />
-            </span>
-          </a>
-        </li>
-      ))}
-    </ol>
-  </section>
-  <AverageChart />
-</div>
+<section class="ledger" aria-labelledby="changesTitle">
+  <div class="ledger-head">
+    <h2 id="changesTitle">Latest changes</h2>
+    <a href={`${base}history/`}>Full history →</a>
+  </div>
+  <ol>
+    {changes.filter((ch) => ch.score).slice(0, 4).map((ch) => (
+      <li style={`--c:${tierColor(ch.score.after)}`}>
+        <a href={`${base}history/${ch.id}/`}>
+          <time datetime={ch.date}>{shortDate(ch.date)}</time>
+          <span class="ledger-place">{ch.country.flag} {ch.country.name}</span>
+          <b><span class="visually-hidden">{ch.kind.label}: </span>{ch.title}</b>
+          <ScoreChange score={ch.score} />
+        </a>
+      </li>
+    ))}
+  </ol>
+</section>

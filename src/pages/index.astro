@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
+import AverageChart from "../components/AverageChart.astro";
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places, trendOf, changeDate, TREND_YEARS } from "../lib/countries.js";
 import { TIERS, tierColor } from "../lib/tiers.js";
 import { PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "../lib/segment-ids.js";
@@ -104,12 +105,18 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
 ---
 <Base description={`Where is cannabis legal? Cannabis laws in ${countries.length} countries, each scored from 0 to 100 for possession, home growing, penalties and legal access, with a world map, rankings${SHOW_PRICES ? ", retail prices" : ""} and legal history.`} jsonld={homeSeo(Astro.site, countries.length)}>
   <main id="top">
-    <section class="hero">
-      <p class="eyebrow">Global index · {DATA_SNAPSHOT} edition</p>
-      <h1>How free is cannabis<br>in every country?</h1>
-      <p class="lede">Every country gets a score from 0 to 100. It shows how free you are to carry, grow, share and use cannabis. See the map, rankings{SHOW_PRICES && ", sourced retail prices"} and how each country's laws changed over time.</p>
-      <div class="stats">
-        {stats.map(([n, label, tone]) => <div class={`stat ${tone ?? ""}`}><div class="big">{n}</div><div class="label">{label}</div></div>)}
+    {/* The opening: the question, the answer in one number with its history, then what just changed. */}
+    <section class="front">
+      <p class="eyebrow">Cannabis Freedom Index <span>{DATA_SNAPSHOT} edition</span></p>
+      <h1>How free is cannabis <em>in every country?</em></h1>
+      <div class="front-grid">
+        <div class="front-intro">
+          <p class="lede">Every country gets a score from 0 to 100 for how free you are to carry, grow, share and use cannabis. Below: the map, the rankings{SHOW_PRICES && ", sourced retail prices"} and how each country's law got where it is.</p>
+          <dl class="front-stats">
+            {stats.map(([n, label, tone]) => <div class={tone ?? ""}><dt>{n}</dt><dd>{label}</dd></div>)}
+          </dl>
+        </div>
+        <AverageChart />
       </div>
       <Changes />
     </section>
