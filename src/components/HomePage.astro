@@ -4,6 +4,7 @@ import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
 import ProjectNumbers from "../components/ProjectNumbers.astro";
 import Tools from "./Tools.astro";
+import { survey } from "../lib/survey.js";
 import AverageChart from "../components/AverageChart.astro";
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places, trendOf, changeDate, TREND_YEARS } from "../lib/countries.js";
 import { TIERS, tierColor, tierOf } from "../lib/tiers.js";
@@ -129,6 +130,15 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     )}
     {/* The opening: the question, the answer in one number with its history, then what just changed. */}
     {!view && <section class="front">
+      {/* While the yearly survey is open, the page starts with an invitation to it. A browser that
+          has already answered is shown the way back to its answers instead (see the script). */}
+      {survey.open && (
+        <a class="front-call" id="frontCall" href={`${base}survey/take/`} data-edition={survey.edition}>
+          <span class="fc-tag">New · {survey.edition}</span>
+          <span class="fc-text"><strong>State of Cannabis is open.</strong> <span data-fc-more>Tell us how cannabis really is where you live: ten minutes, no account, answers encrypted.</span></span>
+          <span class="fc-go"><span data-fc-go>Take the survey</span> <span aria-hidden="true">→</span></span>
+        </a>
+      )}
       <p class="eyebrow">Cannabis Freedom Index <span>{DATA_SNAPSHOT} edition</span></p>
       <h1>How free is cannabis <em>in every country?</em></h1>
       <div class="front-grid">
@@ -373,6 +383,24 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         <p>Laws change quickly and this is <strong>not legal advice</strong>. Always check current local law before travelling with, buying or growing cannabis.</p>
       </div>
     </section>}
+
+    {!view && survey.open && (
+      <script is:inline>
+        // Someone who has already answered the survey gets a link to their answers, not an invitation.
+        (function () {
+          var a = document.getElementById("frontCall");
+          try {
+            var items = (JSON.parse(localStorage.getItem("cfi-survey-" + a.dataset.edition + "-mine") || "null") || {}).items || [];
+            if (!items.length) return;
+            a.href = a.href.replace(/take\/$/, "me/");
+            a.querySelector("strong").textContent = "Thank you for answering State of Cannabis.";
+            a.querySelector("[data-fc-more]").textContent = "You can add places and prices, or change your answers, at any time.";
+            a.querySelector("[data-fc-go]").textContent = "Your submissions";
+            a.querySelector(".fc-tag").textContent = "Survey · " + a.dataset.edition;
+          } catch (e) {}
+        })();
+      </script>
+    )}
 
     {!view && <Tools />}
 
