@@ -84,7 +84,8 @@ const schemas = jsonld ? [jsonld].flat() : [];
       <kbd>esc</kbd>
     </form>
     <ol class="search-results" id="searchResults" role="listbox"></ol>
-    <p class="search-hint" id="searchHint">Type a country, a year or a few words. <span><kbd>↑</kbd><kbd>↓</kbd> to move, <kbd>↵</kbd> to open.</span></p>
+    <p class="search-none" id="searchNone" hidden></p>
+    <p class="search-hint" id="searchHint"><span id="searchCount" aria-live="polite"></span> <span><kbd>↑</kbd><kbd>↓</kbd> to move, <kbd>↵</kbd> to open.</span></p>
   </dialog>
 
   <footer class="footer">
@@ -104,7 +105,7 @@ const schemas = jsonld ? [jsonld].flat() : [];
     // then entries with an article, then the rest of the history, newest first.
     (function () {
       var dialog = document.getElementById("siteSearch"), input = document.getElementById("searchInput");
-      var list = document.getElementById("searchResults"), hint = document.getElementById("searchHint");
+      var list = document.getElementById("searchResults"), hint = document.getElementById("searchHint"), none = document.getElementById("searchNone"), count = document.getElementById("searchCount");
       var rows = null, fuse = null, loading = null, shown = [], active = 0;
       var KIND = { c: "Country", p: "Page", a: "Article", h: "History" }, ORDER = { c: 0, p: 1, a: 2, h: 3 };
       function fold(s) { return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
@@ -115,18 +116,21 @@ const schemas = jsonld ? [jsonld].flat() : [];
           // `k` is the name, `h` the name and second line together, so words may be spread over both
           fuse = new got[1](rows, { keys: [{ name: "k", weight: 2 }, { name: "h", weight: 1 }], useExtendedSearch: true, ignoreLocation: true, threshold: 0.3, minMatchCharLength: 2, includeScore: true });
           render();
-        }).catch(function () { hint.textContent = "The search index could not be loaded."; });
+        }).catch(function () { none.textContent = "The search index could not be loaded."; none.hidden = false; });
         return loading;
       }
       function render() {
         var words = fold(input.value).split(/\s+/).filter(Boolean);
-        if (!fuse || !words.length) { shown = []; list.innerHTML = ""; hint.hidden = false; return; }
+        if (!fuse || !words.length) { shown = []; list.innerHTML = ""; count.textContent = ""; if (fuse) none.hidden = true; return; }
         // In Fuse's extended search, words separated by spaces must all match (each one fuzzily).
         var q = words.join(" ");
         function rank(x) { var r = x.item; return x.score + ORDER[r.t] * 0.05 + (r.k === q ? -1 : r.k.indexOf(q) === 0 ? -0.5 : 0); }
         var found = fuse.search(q).sort(function (a, b) { return rank(a) - rank(b) || a.item.i - b.item.i; });
-        shown = found.slice(0, 40).map(function (x) { return x.item; }); active = 0; hint.hidden = shown.length > 0;
-        if (!shown.length) hint.textContent = "Nothing found for “" + input.value + "”.";
+        shown = found.slice(0, 40).map(function (x) { return x.item; }); active = 0;
+        // the line under the box appears only when a search comes back empty; the key hints stay put
+        none.hidden = shown.length > 0;
+        count.textContent = !found.length ? "" : found.length > shown.length ? "First " + shown.length + " of " + found.length + " results" : found.length + (found.length === 1 ? " result" : " results");
+        if (!shown.length) none.textContent = "Nothing found for “" + input.value + "”.";
         list.innerHTML = shown.map(function (r, i) {
           return '<li role="option" id="sr' + i + '"' + (i === 0 ? ' aria-selected="true"' : "") + '><a href="' + esc(dialog.dataset.base + r.u) + '" tabindex="-1">' +
             '<span class="sr-flag" aria-hidden="true">' + esc(r.f || "") + '</span><span class="sr-name">' + esc(r.n) + '</span>' +
