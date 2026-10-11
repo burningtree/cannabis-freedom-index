@@ -102,9 +102,11 @@ function parse(text) {
 }
 
 export function getFacts() {
-  return [...fromHistory, ...curated, ...computed()].map((f) => {
+  // `group` says where a fact comes from; the /did-you-know/ page lists them under it.
+  const all = [...fromHistory.map((f) => ({ ...f, group: "history" })), ...curated.map((f) => ({ ...f, group: "countries" })), ...computed().map((f) => ({ ...f, group: "scores" }))];
+  return all.map((f) => {
     const history = f.history ? changes.find((ch) => ch.id === f.history) : null;
     if (f.history && !history) throw new Error(`facts.js: unknown history entry "${f.history}"`);
-    return { kicker: f.kicker, parts: parse(f.text), history };
+    return { kicker: f.kicker, parts: parse(f.text), history, group: f.group };
   });
 }

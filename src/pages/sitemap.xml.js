@@ -12,6 +12,7 @@ export function GET({ site }) {
     ["can-i/", latest, 0.8],
     ["history/", latest, 0.8],
     ["compare/", latest, 0.6],
+    ["did-you-know/", latest, 0.5],
     ["changelog/", latest, 0.5],
     ["data/", latest, 0.5],
     ...MAP_VIEWS.map((v) => [v.slug ? `map/${v.slug}/` : "map/", latest, 0.7]),

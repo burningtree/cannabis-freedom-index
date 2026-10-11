@@ -1,0 +1,44 @@
+---
+// Every "Did you know?" case on one page, grouped by where it comes from. The home page shows
+// the same cases three at a time, shuffled; here they are all open and in a fixed order.
+import Base from "../layouts/Base.astro";
+import { getFacts } from "../lib/facts.js";
+
+const base = import.meta.env.BASE_URL;
+const facts = getFacts();
+const groups = [
+  ["history", "From the history", "Moments from two centuries of cannabis law, oldest first."],
+  ["countries", "From the country profiles", "Rules that are odd, generous or harsh in one particular place."],
+  ["scores", "From the scores", "Worked out from today's scores, so they change when the data does."],
+].map(([id, name, sub]) => ({ id, name, sub, facts: facts.filter((f) => f.group === id) }));
+---
+<Base title="Did you know?" description={`${facts.length} curious cases from the Cannabis Freedom Index: strange rules, forgotten laws and what the scores show, each linked to its source page.`}>
+  <main class="changes-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Cannabis Freedom Index</p>
+      <h1>Did you know?</h1>
+      <p class="lede">{facts.length} curious cases from the index: strange rules, forgotten laws and what the scores show. Each one links to the country or the <a href={`${base}history/`}>history</a> entry it comes from.</p>
+    </section>
+    {groups.map((g) => (
+      <section class="section" id={g.id}>
+        <div class="section-head"><div>
+          <h2>{g.name} <span class="dyk-n">{g.facts.length}</span></h2>
+          <p class="sub">{g.sub}</p>
+        </div></div>
+        <ol class="dyk-facts dyk-all">
+          {g.facts.map((f) => (
+            <li class="dyk-fact">
+              <p class="dyk-kicker">{f.kicker}</p>
+              <p class="dyk-text">
+                {f.parts.map((part) => typeof part === "string" ? part
+                  : part.country ? <a href={`${base}country/${part.country.slug}/`}>{part.label}</a>
+                  : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
+              </p>
+              {f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </main>
+</Base>
