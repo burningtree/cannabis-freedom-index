@@ -1,0 +1,348 @@
+# State of Cannabis: the questionnaire of one edition.
+# The form (/survey/take/), the results page (/survey/) and scripts/survey-*.cjs all read this file.
+#
+# Question ids are the keys under which answers are stored and counted. Keep an id and its option
+# ids unchanged from one edition to the next wherever the question is the same, so that years can
+# be compared; add new ids for new questions rather than changing the meaning of an old one.
+#
+#   type: single   one option            multi   any number of options
+#         scale    1 to 5, with the two ends labelled by `low` and `high`
+#         text     free text; never published or counted, read by the researchers only
+#         country  one country of the index
+#         number   a positive number      currency  one of survey/currencies.yaml
+#   if:   show the question (or the whole section) only when an earlier answer includes one of
+#         the listed options, e.g. `if: {relation: [use, past]}`
+
+edition: 2026
+title: State of Cannabis 2026
+
+# Nothing is sent anywhere while `open` is false: answers are then kept in the browser only.
+# To open the survey, generate a Nostr key pair for the project, keep the secret key offline, put
+# the public key (hex) and a few relays here, and set `open: true`. See "The survey" in
+# docs/DATA-MAINTENANCE.md.
+open: true
+nostr:
+  kind: 30078         # NIP-78 application data: a replaceable event per `d` tag, so answers can be edited
+  topic: state-of-cannabis-2026
+  pubkey: 003e28de17d8ee6a917672fcfd392855970cf7a0bb32a248a0095fc70b684c20  # hex public key of the project; answers are encrypted to it
+  relays: [wss://nos.lol, wss://relay.primal.net, wss://nostr.mom]
+
+sections:
+  - id: about
+    title: About you
+    intro: A few broad facts, so that answers can be compared between groups. Nothing here identifies you.
+    questions:
+      - id: age
+        text: How old are you?
+        type: single
+        required: true
+        options: {a18: 18 to 24, a25: 25 to 34, a35: 35 to 44, a45: 45 to 54, a55: 55 to 64, a65: 65 or older}
+      - id: gender
+        text: Gender
+        type: single
+        options: {woman: Woman, man: Man, other: Non-binary or other, skip: Prefer not to say}
+      - id: residence
+        text: Which country do you live in?
+        type: country
+        required: true
+      - id: setting
+        text: Where do you live?
+        type: single
+        options: {city: A large city, town: A town, rural: A village or the countryside}
+      - id: relation
+        text: What is your relation to cannabis?
+        help: Choose all that apply. People who have never used it are as welcome here as people who grow it.
+        type: multi
+        required: true
+        options:
+          use: I use it
+          past: I used it in the past
+          never: I have never used it
+          grow: I grow it
+          patient: I use it as medicine
+          work: I work with it
+          research: I study it
+
+  - id: use
+    title: Use
+    intro: How, how often and why.
+    if: {relation: [use, past, patient]}
+    questions:
+      - id: frequency
+        text: How often have you used cannabis in the past year?
+        type: single
+        options: {daily: Daily or almost daily, weekly: Every week, monthly: Every month, yearly: A few times, none: Not in the past year}
+      - id: first_age
+        text: How old were you the first time?
+        type: single
+        options: {u15: Under 15, a15: 15 to 17, a18: 18 to 20, a21: 21 to 25, o25: Over 25}
+      - id: methods
+        text: How do you usually take it?
+        type: multi
+        options:
+          joint_tobacco: Joint with tobacco
+          joint_pure: Joint without tobacco
+          pipe: Pipe or bong
+          vaporiser: Vaporiser
+          edibles: Food or drink
+          oil: Oil or tincture
+          concentrates: Concentrates
+      - id: products
+        text: Which products do you use?
+        type: multi
+        options: {flower: Flower, hashish: Hashish, edibles: Edibles, cartridges: Vape cartridges, extracts: Extracts, cbd: CBD products}
+      - id: reasons
+        text: Why do you use it?
+        type: multi
+        options:
+          relax: To relax
+          social: With other people
+          sleep: To sleep
+          pain: For pain or an illness
+          creative: For work or creativity
+          ritual: For spiritual or ritual reasons
+          habit: Out of habit
+      - id: company
+        text: With whom do you usually use it?
+        type: single
+        options: {alone: Mostly alone, others: Mostly with others, both: Both about equally}
+
+  - id: growing
+    title: Growing
+    intro: For people who grow, whatever the scale.
+    if: {relation: [grow]}
+    questions:
+      - id: grow_years
+        text: How long have you been growing?
+        type: single
+        options: {y1: Less than a year, y3: 1 to 3 years, y10: 4 to 10 years, y10p: More than 10 years}
+      - id: grow_where
+        text: Where do you grow?
+        type: multi
+        options: {indoor: Indoors, balcony: Balcony or greenhouse, outdoor: Outdoors}
+      - id: grow_plants
+        text: How many plants at a time?
+        type: single
+        options: {p2: 1 or 2, p5: 3 to 5, p10: 6 to 10, p10p: More than 10}
+      - id: grow_reasons
+        text: Why do you grow?
+        type: multi
+        options:
+          quality: To know what I am getting
+          cost: It is cheaper
+          market: To stay away from dealers
+          enjoy: I enjoy growing
+          medical: For medical use
+          share: To share with friends
+      - id: grow_challenges
+        text: What makes it hard?
+        type: multi
+        options:
+          law: The law
+          neighbours: Neighbours and smell
+          pests: Pests and mould
+          cost: Cost of equipment
+          knowledge: Lack of knowledge
+          seeds: Getting seeds or cuttings
+      - id: grow_legal
+        text: Is your growing legal where you live?
+        type: single
+        options: {legal: Yes, tolerated: Not legal but tolerated, illegal: 'No', unsure: I am not sure}
+
+  - id: money
+    title: Money and access
+    intro: Where cannabis comes from and what it costs you.
+    if: {relation: [use, patient]}
+    questions:
+      - id: source
+        text: Where does your cannabis come from?
+        type: multi
+        options:
+          shop: A legal shop or pharmacy
+          club: A club or association
+          own: I grow my own
+          gift: Friends, as a gift
+          friends: Friends, for money
+          dealer: A dealer
+          online: Online
+      - id: spend
+        text: Roughly how much do you spend on cannabis in a month?
+        help: In US dollars, converted roughly.
+        type: single
+        options: {s0: Nothing, s25: Up to $25, s75: $25 to $75, s150: $75 to $150, s150p: More than $150}
+      - id: affordable
+        text: How affordable is cannabis for you?
+        type: scale
+        low: A real strain
+        high: No concern at all
+
+  - id: culture
+    title: Culture
+    intro: What the people around you think, whatever the law says.
+    questions:
+      - id: acceptance
+        text: How accepted is cannabis use where you live?
+        type: scale
+        low: Strongly condemned
+        high: Fully accepted
+      - id: versus_alcohol
+        text: Compared with drinking alcohol, using cannabis where you live is…
+        type: single
+        options: {more: More accepted, same: About as accepted, less: Less accepted}
+      - id: family
+        text: Does your family know about your use?
+        type: single
+        if: {relation: [use, past, patient, grow]}
+        options: {open: 'Yes, openly', some: Some of them, hidden: 'No', na: Does not apply}
+      - id: work
+        text: Could you mention it at work without consequences?
+        type: single
+        if: {relation: [use, past, patient, grow]}
+        options: {yes: 'Yes', maybe: Depends on who is listening, 'no': 'No', na: Does not apply}
+      - id: stigma
+        text: Has cannabis ever cost you any of these?
+        type: multi
+        if: {relation: [use, past, patient, grow]}
+        options:
+          none: None of these
+          family: A conflict in the family
+          job: Trouble at work or a lost job
+          doctor: Being judged by a doctor
+          housing: Trouble with housing
+          friends: Lost friendships
+      - id: tradition
+        text: Is there an older local tradition of cannabis where you live?
+        help: Religious, medicinal, farming or festive.
+        type: single
+        options: {yes: 'Yes', 'no': 'No', unsure: I do not know}
+      - id: tradition_text
+        text: What is it?
+        type: text
+        if: {tradition: [yes]}
+      - id: generations
+        text: Compared with your parents' generation, people your age are…
+        type: single
+        options: {more: More accepting of cannabis, same: About the same, less: Less accepting}
+
+  - id: law
+    title: Law and authority
+    intro: What you know of the law, what you think of it, and what you do about it.
+    questions:
+      - id: law_known
+        text: How well do you know the cannabis law where you live?
+        type: scale
+        low: Not at all
+        high: In detail
+      - id: law_fair
+        text: The cannabis law where I live is fair.
+        type: scale
+        low: Strongly disagree
+        high: Strongly agree
+      - id: obey
+        text: When a law seems unjust to you, what do you do?
+        type: single
+        options:
+          obey: Obey it anyway
+          risk: Obey it when the risk is real
+          quiet: Ignore it quietly
+          open: Break it openly
+      - id: police_trust
+        text: How much do you trust the police where you live?
+        type: scale
+        low: Not at all
+        high: Completely
+      - id: police_contact
+        text: What is the most that has happened to you over cannabis?
+        type: single
+        options:
+          none: Nothing
+          stopped: Stopped or searched
+          fined: Fined or cautioned
+          arrested: Arrested
+          convicted: Convicted
+      - id: who_decides
+        text: Who should decide whether an adult may use cannabis?
+        type: single
+        options:
+          person: The person
+          doctors: Doctors
+          voters: Voters, directly
+          parliament: Parliament
+          tradition: Religious or traditional authorities
+      - id: policy
+        text: What should the law be?
+        type: single
+        options:
+          ban: Prohibited
+          medical: Medical use only
+          decrim: Not punished, but not sold
+          regulated: Legal and regulated
+          free: Legal like any other plant
+
+  - id: view
+    title: Your view
+    intro: Optional, and in your own words. These answers are read by the researchers and are never published as they stand.
+    questions:
+      - id: opinion_change
+        text: Over the years, has your view of cannabis become…
+        type: single
+        options: {more: More favourable, same: Unchanged, less: Less favourable}
+      - id: story
+        text: What changed it, or what formed it?
+        type: text
+      - id: anything
+        text: Is there something about cannabis where you live that a law or a statistic would miss?
+        type: text
+
+# One of these is filled in for each country the respondent wants to describe. Each is stored as
+# its own entry under the respondent's key, beside the personal answers.
+territory:
+  title: Places you know
+  intro: Describe any country you live in, have lived in or have visited. Add as many as you like; each is stored as its own entry, which you can change or delete later.
+  questions:
+    - id: country
+      text: Country
+      type: country
+      required: true
+    - id: tie
+      text: How do you know it?
+      type: single
+      required: true
+      options: {live: I live there, lived: I lived there, visited: I visited}
+    - id: when
+      text: When were you last there?
+      type: single
+      options: {now: This year or last, y5: 2 to 5 years ago, older: Longer ago}
+    - id: t_acceptance
+      text: How accepted is cannabis use there?
+      type: scale
+      low: Strongly condemned
+      high: Fully accepted
+    - id: t_enforcement
+      text: How strictly is the law enforced in practice?
+      type: scale
+      low: Ignored
+      high: Strictly
+    - id: t_access
+      text: How easy is it to get cannabis there?
+      type: scale
+      low: Very hard
+      high: Very easy
+    - id: t_public
+      text: How is it used in public?
+      type: single
+      options: {open: Openly, discreet: Discreetly, hidden: Only out of sight, rare: Hardly at all}
+    - id: t_price
+      text: Price of a gram of flower
+      help: In your own currency or in US dollars. Leave empty if you do not know.
+      type: number
+    - id: t_currency
+      text: Currency of that price
+      type: currency
+    - id: t_price_source
+      text: Bought from
+      type: single
+      options: {legal: A legal seller, illegal: An illegal seller}
+    - id: t_note
+      text: Anything else about cannabis there?
+      type: text

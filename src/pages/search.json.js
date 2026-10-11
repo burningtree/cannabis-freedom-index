@@ -15,7 +15,7 @@ const rows = [
     ["Map", "World map of scores", "#map"], ["Rankings", "Every country by score", "#rankings"], ["Methodology", "How the scores are made", "#methodology"],
     ["History", "Laws, rulings and treaties", "history/"], ["Can I?", "Plain answers per country", "can-i/"], ["Compare", "Countries side by side", "compare/"],
     ["Download the data", "Scores, history and yearly panel", "data/"], ["Changelog", "Every score change", "changelog/"],
-    ["Articles", "The longer reads on single events", "articles/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["Culture", "The people behind the laws", "culture/"], ["Sources", "Every source the index cites", "sources/"],
+    ["Articles", "The longer reads on single events", "articles/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "The people behind the laws", "culture/"], ["Sources", "Every source the index cites", "sources/"],
   ].map(([n, s, u]) => ({ t: "p", n, s, u })),
   // every map view, history kind and history period has its own page
   ...MAP_VIEWS.filter((v) => v.slug).map((v) => ({ t: "p", n: v.title, s: "Map", u: `map/${v.slug}/` })),

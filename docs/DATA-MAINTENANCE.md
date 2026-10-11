@@ -599,3 +599,48 @@ node scripts/archive-sources.cjs save 20     # ask the Archive to save what it d
 The number caps one run. `check` only reads; `save` asks the Internet Archive to fetch the page,
 which it limits to a few requests a minute, so run it in small batches. Run `check` after adding
 sources, and `save` for the ones that come back without a copy.
+
+## The survey (State of Cannabis)
+
+`/survey/` shows the counted results of the yearly survey and `/survey/take/` is the form. Survey
+is in the main menu, after History.
+
+| File | What it is |
+|---|---|
+| `survey/2026.yaml` | The questionnaire of the edition: sections, questions, options, conditions, and the Nostr settings. The form and the results page are built from it. |
+| `survey/results-2026.json` | The counted results the site shows and offers at `/data/survey.json`. Counts only. `"mock": true` means invented numbers, and the page says so. |
+| `scripts/survey-lib.cjs` | Cleans answers against the questionnaire and counts them. A group is published only with 30 respondents, a country only with 5 observations. |
+| `scripts/survey-mock.cjs` | Writes invented results, for designing the page before the survey opens. |
+| `scripts/survey-collect.cjs` | Fetches the real answers, decrypts them and writes the counted results. |
+| `src/lib/survey-client.js` | The browser side: the respondent's key, their stored submissions, signing and the relays. |
+| `scripts/survey-keygen.cjs` | Prints a new key pair for the project. |
+
+**How an answer travels.** The first time someone submits, their browser makes a Nostr key and
+keeps it in its local storage. The personal answers and each place described become one
+replaceable event each (NIP-78, kind 30078, one `d` tag per part), signed with that key, encrypted
+between it and the project's key (NIP-44) and sent to the relays listed in the questionnaire file.
+Submitting again replaces a part; deleting publishes an empty replacement and a NIP-09 deletion
+request. `/survey/me/` shows a browser its own submissions and lets it change them, delete them,
+back up the key or restore one. The key is a pseudonym: it ties one person's parts together but
+not to the person. While `open` is false, or no public key and relays are set, nothing is sent
+and submissions wait in the browser.
+
+**To try it before opening.** Run a relay of your own, then in the browser's console set
+`localStorage["cfi-survey-test"] = JSON.stringify({pubkey: "<hex>", relays: ["ws://localhost:7447"]})`.
+That browser alone then submits to that relay.
+
+**To open the survey.** Make a Nostr key pair for the project (`node scripts/survey-keygen.cjs`) and keep the secret key off this
+repository and off any server. Put the public key (hex) and two or three relays under `nostr:` in
+`survey/2026.yaml`, set `open: true`, and deploy. To publish results, run
+`SURVEY_SECRET_KEY=<hex> node scripts/survey-collect.cjs` on your own machine and commit the
+rewritten `survey/results-2026.json`. Add `--text` to read the free-text answers in the terminal;
+they are stored nowhere.
+
+**Keeping years comparable.** A new edition is a new `survey/<year>.yaml` and results file. Keep
+question ids and option ids unchanged wherever the question is the same.
+
+**Known limits.** Anyone can make as many keys as they like, so one person can still answer many
+times; the collector counts one set of answers per key. Relays see the address a message comes
+from. A relay may ignore deletion requests, which is why a deleted part is also overwritten with
+an empty one. Someone who clears their browser without a backup of the key can no longer change
+their answers.

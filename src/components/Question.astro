@@ -1,0 +1,43 @@
+---
+// One question of the survey form (survey/<year>.yaml), as a labelled field. The form's script
+// reads the answer from `data-q`/`data-type`; `data-if` holds the condition for showing it.
+import { countries } from "../lib/countries.js";
+import { currencies } from "../lib/survey.js";
+
+const { q } = Astro.props;
+const byName = [...countries].sort((a, b) => a.name.localeCompare(b.name));
+const options = q.options ? Object.entries(q.options) : [];
+---
+<div class="sv-field" data-q={q.id} data-type={q.type} data-label={q.text} data-required={q.required ? "" : undefined} data-if={q.if ? JSON.stringify(q.if) : undefined}>
+  <p class="sv-qtext" id={`q-${q.id}`}>{q.text}{q.required && <span class="sv-req" title="Required"> *</span>}</p>
+  {q.help && <p class="sv-help">{q.help}</p>}
+  {(q.type === "single" || q.type === "multi") && (
+    <div class="sv-options" role={q.type === "single" ? "radiogroup" : "group"} aria-labelledby={`q-${q.id}`}>
+      {options.map(([value, label]) => (
+        <label><input type={q.type === "single" ? "radio" : "checkbox"} name={q.id} value={value} /> <span>{label}</span></label>
+      ))}
+    </div>
+  )}
+  {q.type === "scale" && (
+    <div class="sv-scale" role="radiogroup" aria-labelledby={`q-${q.id}`}>
+      <span class="sv-end">{q.low}</span>
+      {[1, 2, 3, 4, 5].map((k) => <label><input type="radio" name={q.id} value={k} /> <span>{k}</span></label>)}
+      <span class="sv-end">{q.high}</span>
+    </div>
+  )}
+  {q.type === "country" && (
+    <select name={q.id} aria-labelledby={`q-${q.id}`}>
+      <option value="">Choose a country…</option>
+      {/* the name comes first, so that typing a letter jumps to the country */}
+      {byName.map((c) => <option value={c.id}>{c.name} {c.flag}</option>)}
+    </select>
+  )}
+  {/* a text box, so that "6,5" and "6.5" are both accepted; the form's script reads the number */}
+  {q.type === "number" && <input type="text" class="sv-number" name={q.id} inputmode="decimal" autocomplete="off" maxlength="12" aria-labelledby={`q-${q.id}`} />}
+  {q.type === "currency" && (
+    <select name={q.id} aria-labelledby={`q-${q.id}`}>
+      {currencies.map(([code, name]) => <option value={code}>{code} · {name}</option>)}
+    </select>
+  )}
+  {q.type === "text" && <textarea name={q.id} rows="4" maxlength="4000" aria-labelledby={`q-${q.id}`}></textarea>}
+</div>

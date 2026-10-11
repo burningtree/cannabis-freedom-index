@@ -12,4 +12,8 @@ export default defineConfig({
   // also the address used in canonical links, the sitemap and structured data
   site: process.env.SITE || "https://cannabisfreedom.fyi",
   base,
+  // A build keeps its own Vite cache. Sharing the dev server's would wipe the dependencies the
+  // running dev server has prepared (Fuse, nostr-tools), and its lazy imports would then fail
+  // until it is restarted.
+  vite: { cacheDir: process.argv.includes("build") ? "node_modules/.vite-build" : "node_modules/.vite" },
 });

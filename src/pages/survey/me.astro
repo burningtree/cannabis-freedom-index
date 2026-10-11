@@ -1,0 +1,201 @@
+---
+// State of Cannabis: what this browser has submitted. Everything on the page is read from the
+// browser's own storage (and, when the survey is open, from the relays under the browser's key);
+// the server knows nothing about it, so the page is the same file for everyone.
+import Base from "../../layouts/Base.astro";
+import { survey, submitConfig } from "../../lib/survey.js";
+import { countries } from "../../lib/countries.js";
+
+const base = import.meta.env.BASE_URL;
+// what the script needs to print an answer in words
+const label = (q) => ({ text: q.text, type: q.type, options: q.options, low: q.low, high: q.high });
+const questions = Object.fromEntries([...survey.sections.flatMap((s) => s.questions), ...survey.territory.questions].map((q) => [q.id, label(q)]));
+const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name}`]));
+---
+<Base title="Your submissions" description="The answers this browser has submitted to the State of Cannabis survey: read them, change them, delete them, or back up the key they are signed with.">
+  <main class="changes-page survey sv-me" data-config={JSON.stringify(submitConfig)} data-questions={JSON.stringify(questions)} data-names={JSON.stringify(names)}>
+    <section class="hero hero-sm">
+      <p class="eyebrow"><a href={`${base}survey/`}>State of Cannabis</a> <span>{survey.edition} edition</span></p>
+      <h1>Your submissions</h1>
+      <p class="lede">What this browser has submitted to the survey. It is found by a key kept in this browser's storage and nowhere else; nobody but you can open this page with your answers in it.</p>
+    </section>
+
+    <p class="sv-mock" role="note" id="meStatus" hidden></p>
+
+    <div class="sv-me-grid">
+      <section id="meItems" aria-live="polite">
+        <p class="sub">Looking in this browser…</p>
+      </section>
+
+      <aside class="sv-key" id="meKey">
+        <h2>Your key</h2>
+        <div id="meKeyBody"></div>
+      </aside>
+    </div>
+    <dialog id="meDrawer" class="drawer sv-drawer" aria-label="Submission">
+      <div class="drawer-bar"><button class="icon-btn" id="meDrawerClose" aria-label="Close">✕</button></div>
+      <div class="drawer-inner" id="meDrawerBody"></div>
+    </dialog>
+    <noscript><p>This page needs JavaScript: your submissions are stored in your browser, not on our server.</p></noscript>
+  </main>
+
+  <script>
+    const root = document.querySelector(".sv-me");
+    const base = JSON.parse(root.dataset.config), Q = JSON.parse(root.dataset.questions), NAMES = JSON.parse(root.dataset.names);
+    const items = document.getElementById("meItems"), keyBody = document.getElementById("meKeyBody"), status = document.getElementById("meStatus");
+    const esc = (s) => String(s).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
+    const day = (t) => new Date(t * 1000).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+    const client = await import("../../lib/survey-client.js");
+    const cfg = client.effective(base);
+
+    // an answer in words, as the form asked it
+    function words(id, v) {
+      const q = Q[id];
+      if (!q) return esc(v);
+      if (q.type === "scale") return `${v} of 5 <small>(1 ${esc(q.low)}, 5 ${esc(q.high)})</small>`;
+      if (q.type === "country") return esc(NAMES[v] ?? v);
+      if (q.type === "number") return esc(v.toLocaleString("en-GB"));
+      if (q.options) return [].concat(v).map((x) => esc(q.options[x] ?? x)).join(", ");
+      return esc(v);
+    }
+    const where = (i) => (i.relays > 0 ? `<span class="sv-chip ok">${i.relays} relay${i.relays === 1 ? "" : "s"}</span>` : `<span class="sv-chip">This browser</span>`);
+
+    // what this browser stored for other editions (each edition has its own entry in storage)
+    function earlier() {
+      const out = [];
+      try {
+        for (let k = 0; k < localStorage.length; k++) {
+          const year = localStorage.key(k).match(/^cfi-survey-(\d{4})-mine$/)?.[1];
+          if (year && +year !== cfg.edition) for (const i of JSON.parse(localStorage.getItem(localStorage.key(k)))?.items ?? []) out.push({ ...i, past: +year });
+        }
+      } catch {}
+      return out.sort((a, b) => b.past - a.past);
+    }
+
+    // ── The drawer: one submission in full ──
+    const shown = new Map(); // row key → { i, title }
+    const drawer = document.getElementById("meDrawer"), drawerBody = document.getElementById("meDrawerBody");
+    function open(key) {
+      const { i, title } = shown.get(key);
+      const r = i.past ? null : client.reference(cfg, i);
+      drawerBody.innerHTML = `
+        <p class="eyebrow">${i.type === "response" ? "Report" : "Place"} <span>${i.past ?? cfg.edition} edition</span></p>
+        <h2 class="sv-d-title">${title}</h2>
+        <p class="sv-meta">${where(i)} · changed ${day(i.updated)}</p>
+        ${i.past ? `<p class="sv-small">From the ${i.past} edition, which is closed. It is kept here to read.</p>`
+          : `<p class="sv-actions"><a class="go solid" href="../take/${i.type === "response" ? "#edit" : `#place-${esc(i.id)}`}">Edit ${i.type === "response" ? "this report" : "this place"} →</a> <button type="button" class="go" data-do="delete" data-id="${esc(i.id)}">Delete</button></p>`}
+        <dl class="sv-d-list">${Object.entries(i.answers).map(([id, v]) => `<div><dt>${esc(Q[id]?.text ?? id)}</dt><dd>${words(id, v)}</dd></div>`).join("")}</dl>
+        ${r ? `<p class="sv-event"><span>Event</span> <code>${r.id}</code>${i.relays > 0 ? ` <a href="${r.url}" target="_blank" rel="noopener noreferrer">Open on njump ↗</a>` : ` <small>not sent yet</small>`}</p>` : ""}`;
+      if (!drawer.open) drawer.showModal();
+      drawerBody.scrollTop = 0;
+    }
+    document.getElementById("meDrawerClose").addEventListener("click", () => drawer.close());
+    drawer.addEventListener("click", (e) => { if (e.target === drawer) drawer.close(); });
+
+    function draw() {
+      const store = client.mine(cfg), me = client.identity();
+      status.hidden = cfg.open && !cfg.test;
+      status.innerHTML = cfg.test ? `<strong>Test mode.</strong> Using the relays set under <code>cfi-survey-test</code> in this browser: ${esc(cfg.relays.join(", "))}.`
+        : `<strong>The survey is not open yet.</strong> Anything you submit is kept in this browser and has not been sent anywhere.`;
+
+      // ── the submissions ──
+      if (!store.items.length && !earlier().length) {
+        items.innerHTML = `<h2>Nothing yet</h2><p class="sub">This browser has not submitted anything${me ? " under its key" : ""}.</p>
+          <p class="sv-actions"><a class="go solid" href="../take/">Take the survey →</a>${me && cfg.open ? ' <button type="button" class="go" data-do="sync">Look on the relays</button>' : ""}</p>`;
+      } else {
+        // One report per yearly edition. Reports of earlier editions that this browser still
+        // holds are listed under the current one, newest first, to read but not to change.
+        const all = [...store.items, ...earlier()];
+        const reports = all.filter((i) => i.type === "response"), places = all.filter((i) => i.type === "observation");
+        const unsent = store.items.filter((i) => !i.relays).length;
+        // one table row per part; a click opens its answers in the drawer
+        const n = (i) => Object.keys(i.answers).length;
+        shown.clear();
+        const row = (i, title, about) => {
+          const key = `${i.past ?? ""}:${i.id}`;
+          shown.set(key, { i, title });
+          return `<button type="button" class="sv-row" data-open="${esc(key)}"><span class="sv-row-title">${title}</span><span class="sv-row-about">${about}</span><span>${where(i)}</span><span class="sv-row-date">${day(i.updated)}</span></button>`;
+        };
+        const head = (first) => `<div class="sv-rows-head"><span>${first}</span><span>Summary</span><span>Stored on</span><span>Changed</span></div>`;
+        const tie = (p) => Q.tie.options[p.answers.tie] ?? "";
+        items.innerHTML = `
+          <p class="sv-actions sv-top">
+            ${cfg.open && unsent ? `<button type="button" class="go" data-do="send">Send ${unsent} unsent part${unsent === 1 ? "" : "s"}</button>` : ""}
+            ${cfg.open ? '<button type="button" class="go" data-do="sync">Check the relays</button>' : ""}
+            <button type="button" class="go" data-do="delete-all">Delete everything</button></p>
+          <p class="sv-msg" id="meMsg" role="status"></p>
+          <h2 class="sv-h">Your reports</h2>
+          ${reports.length ? `<div class="sv-rows">${head("Edition")}${reports.map((r) => row(r, `${r.past ?? cfg.edition} report`, `${n(r)} question${n(r) === 1 ? "" : "s"} answered`)).join("")}</div>` : `<p class="sub">No report for ${cfg.edition} yet.</p>`}
+          <h2 class="sv-h sv-h-row">Places you described <a class="sv-link" href="../take/#place-new">+ Add a place</a></h2>
+          ${places.length ? `<div class="sv-rows">${head("Country")}${places.map((p) => row(p, esc(NAMES[p.answers.country] ?? p.answers.country), `${p.past ?? cfg.edition} · ${esc(tie(p))} · ${n(p) - 2} more answer${n(p) - 2 === 1 ? "" : "s"}`)).join("")}</div>` : `<p class="sub">None. <a href="../take/">Add a place →</a></p>`}`;
+      }
+
+      // ── the key ──
+      keyBody.innerHTML = me
+        ? `<p class="sv-npub" title="${me.npub}">${me.npub.slice(0, 14)}…${me.npub.slice(-6)}</p>
+           <p class="sv-small">A random key made in this browser. It is your only link to your answers: it lets you change or delete them, and it is stored nowhere else.</p>
+           <p class="sv-actions"><button type="button" class="go" data-do="backup">Back up the key</button></p>
+           <div id="meBackup" hidden><p class="sv-small">Keep this somewhere safe and private. Anyone who has it can read, change and delete your answers.</p><textarea readonly rows="3" id="meNsec"></textarea><p class="sv-actions"><button type="button" class="sv-link" data-do="copy">Copy</button></p></div>
+           <p class="sv-actions"><button type="button" class="sv-link" data-do="forget">Forget the key in this browser</button></p>`
+        : `<p class="sv-small">This browser has no key yet. One is made the first time you submit.</p>`;
+      keyBody.innerHTML += `<details class="sv-restore"><summary>Use a key from a backup</summary>
+          <p class="sv-small">Paste a key you saved from another browser (it starts with <code>nsec1</code>). It replaces the key in this browser.</p>
+          <textarea rows="3" id="meRestore" spellcheck="false" autocomplete="off"></textarea>
+          <p class="sv-actions"><button type="button" class="go" data-do="restore">Use this key</button></p></details>`;
+    }
+    const say = (text) => { const m = document.getElementById("meMsg") ?? status; m.hidden = false; m.textContent = text; };
+
+    async function remove(ids) {
+      const store = client.mine(cfg), gone = store.items.filter((i) => ids.includes(i.id));
+      if (cfg.open && gone.some((i) => i.relays > 0)) {
+        say("Deleting on the relays…");
+        // an empty replacement overwrites each part; the deletion request is for relays that honour it
+        await client.publish(cfg, [...gone.map((i) => client.sign(cfg, i, true)), client.deletion(cfg, gone.map((i) => i.event))]);
+      }
+      client.remember(cfg, { items: store.items.filter((i) => !ids.includes(i.id)) });
+      draw();
+      say(`Deleted ${gone.length} part${gone.length === 1 ? "" : "s"}.`);
+    }
+
+    root.addEventListener("click", (e) => { const r = e.target.closest("[data-open]"); if (r) open(r.dataset.open); });
+    document.addEventListener("click", async (e) => {
+      const b = e.target.closest("[data-do]");
+      if (!b) return;
+      const act = b.dataset.do;
+      try {
+        if (act === "delete") { if (confirm("Delete this for good? It cannot be brought back.")) { drawer.close(); await remove([b.dataset.id]); } }
+        else if (act === "delete-all") { if (confirm("Delete everything you submitted? It cannot be brought back.")) await remove(client.mine(cfg).items.map((i) => i.id)); }
+        else if (act === "send") {
+          const store = client.mine(cfg), waiting = store.items.filter((i) => !i.relays);
+          say("Sending…");
+          // sign again, so the message carries today's date and the open survey's settings
+          for (const i of waiting) { i.event = client.sign(cfg, i); i.updated = i.event.created_at; }
+          const sent = await client.publish(cfg, waiting.map((i) => i.event));
+          waiting.forEach((i, k) => (i.relays = sent[k].relays));
+          client.remember(cfg, store);
+          draw();
+          say(waiting.every((i) => i.relays) ? "Sent." : "Some parts were not accepted by any relay. Try again later.");
+        } else if (act === "sync") {
+          say("Asking the relays…");
+          const found = await client.fetchMine(cfg), store = client.mine(cfg);
+          // what the relays hold wins over an older local copy; unsent local parts are kept
+          const merged = [...found, ...store.items.filter((i) => !i.relays && !found.some((f) => f.id === i.id))];
+          client.remember(cfg, { items: merged });
+          draw();
+          say(`The relays hold ${found.length} part${found.length === 1 ? "" : "s"} under your key.`);
+        } else if (act === "backup") { document.getElementById("meBackup").hidden = false; document.getElementById("meNsec").value = client.backup(); }
+        else if (act === "copy") { await navigator.clipboard.writeText(document.getElementById("meNsec").value); b.textContent = "Copied"; }
+        else if (act === "forget") {
+          if (confirm("Forget the key in this browser? Unless you backed it up, you will never be able to change or delete your answers again.")) { client.forget(); client.remember(cfg, { items: [] }); draw(); }
+        } else if (act === "restore") {
+          client.restore(document.getElementById("meRestore").value);
+          client.remember(cfg, { items: [] });
+          draw();
+          if (cfg.open) root.querySelector('[data-do="sync"]')?.click(); else say("Key replaced.");
+        }
+      } catch (err) { say(`That did not work: ${err.message}`); }
+    });
+
+    draw();
+  </script>
+</Base>
