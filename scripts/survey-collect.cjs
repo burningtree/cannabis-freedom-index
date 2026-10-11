@@ -39,7 +39,7 @@ async function fetchEvents() {
 }
 
 (async () => {
-  const responses = [], observations = [], texts = [];
+  const responses = [], observations = [], prices = [], texts = [];
   const dropped = { invalid: 0, superseded: 0, deleted: 0, unreadable: 0, other: 0 };
   // Each part of a submission is a replaceable event: only the newest version under one key and
   // one `d` tag counts, whatever older copies a relay still returns.
@@ -68,13 +68,17 @@ async function fetchEvents() {
       const o = clean(survey.territory.questions, payload.answers, countries);
       if (!o.country || !o.tie) { dropped.other++; continue; }
       observations.push(o);
+    } else if (payload.type === "price") {
+      const pr = clean(survey.prices.questions, payload.answers, countries);
+      if (!pr.p_country || !pr.p_price) { dropped.other++; continue; }
+      prices.push(pr);
     } else { dropped.other++; continue; }
-    for (const q of [...survey.all, ...survey.territory.questions].filter((q) => q.type === "text")) if (payload.answers[q.id]) texts.push([q.id, String(payload.answers[q.id]).slice(0, 4000)]);
+    for (const q of [...survey.all, ...survey.territory.questions, ...survey.prices.questions].filter((q) => q.type === "text")) if (payload.answers[q.id]) texts.push([q.id, String(payload.answers[q.id]).slice(0, 4000)]);
   }
   const min = args.includes("--min") ? Math.max(1, +args[args.indexOf("--min") + 1] || 1) : null;
-  const out = aggregate(survey, responses, observations, countries, { mock: false, generated: new Date().toISOString().slice(0, 10) }, min ? { segment: min, territory: min } : {});
+  const out = aggregate(survey, responses, observations, prices, countries, { mock: false, generated: new Date().toISOString().slice(0, 10) }, min ? { segment: min, territory: min } : {});
   const file = args.includes("--out") ? args[args.indexOf("--out") + 1] : path.join(ROOT, "survey", `results-${EDITION}.json`);
   fs.writeFileSync(file, JSON.stringify(out, null, 1) + "\n");
-  console.log(`collected: ${responses.length} responses, ${observations.length} observations | dropped: ${JSON.stringify(dropped)} → ${path.relative(ROOT, file)}`);
+  console.log(`collected: ${responses.length} responses, ${observations.length} place reports, ${prices.length} price reports | dropped: ${JSON.stringify(dropped)} → ${path.relative(ROOT, file)}`);
   if (args.includes("--text")) for (const [id, text] of texts) console.log(`\n[${id}] ${text}`);
 })();

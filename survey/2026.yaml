@@ -12,6 +12,13 @@
 #         number   a positive number      currency  one of survey/currencies.yaml
 #   if:   show the question (or the whole section) only when an earlier answer includes one of
 #         the listed options, e.g. `if: {relation: [use, past]}`
+#   excludes: on a `multi` question, options that cannot stand together, e.g.
+#         `excludes: {never: [use, grow]}`; choosing one side unticks the other
+#
+# A respondent contributes three separate things, each stored and counted by itself:
+#   sections   the yearly personal survey: what they do and what they believe
+#   territory  reports on places they know: what they observed in a society
+#   prices     price observations, as many as they have
 
 edition: 2026
 title: State of Cannabis 2026
@@ -30,7 +37,7 @@ nostr:
 sections:
   - id: about
     title: About you
-    intro: A few broad facts, so that answers can be compared between groups. Nothing here identifies you.
+    intro: A few broad facts, so that answers can be compared between groups. No name, email or account is asked for.
     questions:
       - id: age
         text: How old are you?
@@ -54,6 +61,7 @@ sections:
         help: Choose all that apply. People who have never used it are as welcome here as people who grow it.
         type: multi
         required: true
+        excludes: {never: [use, past, grow, patient], past: [use]}
         options:
           use: I use it
           past: I used it in the past
@@ -203,6 +211,7 @@ sections:
         text: Has cannabis ever cost you any of these?
         type: multi
         if: {relation: [use, past, patient, grow]}
+        excludes: {none: [family, job, doctor, housing, friends]}
         options:
           none: None of these
           family: A conflict in the family
@@ -224,6 +233,44 @@ sections:
         type: single
         options: {more: More accepting of cannabis, same: About the same, less: Less accepting}
 
+  - id: beliefs
+    title: Where beliefs come from
+    intro: How you came to think what you think about cannabis, and what moves a society's view.
+    questions:
+      - id: taught
+        text: Who first shaped what you thought about cannabis?
+        help: Choose all that apply, whether the message was that it is dangerous, wrong or fine.
+        type: multi
+        options:
+          family: Family
+          school: School
+          religion: Religion
+          media: News, films and music
+          friends: Friends
+          state: Police or government campaigns
+          doctors: Doctors
+          self: My own experience
+      - id: taught_message
+        text: What was the message you grew up with?
+        type: single
+        options: {dangerous: It is dangerous, immoral: It is wrong, mixed: Mixed messages, fine: It is acceptable, silence: Nobody spoke of it}
+      - id: law_moral
+        text: Did the fact that it was illegal, or legal, shape whether you saw it as right or wrong?
+        type: single
+        options: {much: 'Yes, a lot', some: Somewhat, 'no': 'No', opposite: 'It made me doubt the law, not the plant'}
+      - id: abroad
+        text: Has time in another country changed how you see cannabis?
+        type: single
+        options: {more: 'Yes, I became more accepting', less: 'Yes, I became less accepting', 'no': 'No', never: I have not been anywhere it is different}
+      - id: law_or_attitudes
+        text: Which comes first, in your view?
+        type: single
+        options:
+          law: A change in the law changes what people think
+          attitudes: A change in what people think changes the law
+          both: Each pushes the other
+          neither: Neither follows from the other
+
   - id: law
     title: Law and authority
     intro: What you know of the law, what you think of it, and what you do about it.
@@ -243,9 +290,12 @@ sections:
         type: single
         options:
           obey: Obey it anyway
+          change: Obey it and work to change it
+          protest: Protest against it, peacefully
           risk: Obey it when the risk is real
           quiet: Ignore it quietly
           open: Break it openly
+          depends: It depends on the law
       - id: police_trust
         text: How much do you trust the police where you live?
         type: scale
@@ -298,7 +348,7 @@ sections:
 # its own entry under the respondent's key, beside the personal answers.
 territory:
   title: Places you know
-  intro: Describe any country you live in, have lived in or have visited. Add as many as you like; each is stored as its own entry, which you can change or delete later.
+  intro: Report on any country you live in, have lived in or have visited. Add as many as you like; each is stored as its own entry, which you can change or delete later.
   questions:
     - id: country
       text: Country
@@ -309,10 +359,15 @@ territory:
       type: single
       required: true
       options: {live: I live there, lived: I lived there, visited: I visited}
+    - id: t_duration
+      text: How long have you spent there in all?
+      help: A weekend and ten years are both welcome, and are weighed differently.
+      type: single
+      options: {days: A few days, weeks: A few weeks, months: Several months, years: 1 to 5 years, long: More than 5 years}
     - id: when
       text: When were you last there?
       type: single
-      options: {now: This year or last, y5: 2 to 5 years ago, older: Longer ago}
+      options: {y0: This year, y1: Last year, y5: 2 to 5 years ago, y10: 6 to 10 years ago, older: Longer ago}
     - id: t_acceptance
       text: How accepted is cannabis use there?
       type: scale
@@ -332,17 +387,41 @@ territory:
       text: How is it used in public?
       type: single
       options: {open: Openly, discreet: Discreetly, hidden: Only out of sight, rare: Hardly at all}
-    - id: t_price
-      text: Price of a gram of flower
-      help: In your own currency or in US dollars. Leave empty if you do not know.
-      type: number
-    - id: t_currency
-      text: Currency of that price
-      type: currency
-    - id: t_price_source
-      text: Bought from
-      type: single
-      options: {legal: A legal seller, illegal: An illegal seller}
     - id: t_note
       text: Anything else about cannabis there?
       type: text
+
+# A price observation: one price, in one place, at one time. Someone may know several for the
+# same country, from different years or sellers, so they are separate from the place reports.
+prices:
+  title: Prices you know
+  intro: Report any price you paid or saw. Add as many as you like, including older ones for the same country.
+  questions:
+    - id: p_country
+      text: Country
+      type: country
+      required: true
+    - id: p_product
+      text: What was it?
+      type: single
+      options: {flower: Flower, hashish: Hashish}
+    - id: p_price
+      text: Price paid
+      help: In your own currency or in US dollars.
+      type: number
+      required: true
+    - id: p_currency
+      text: Currency of that price
+      type: currency
+    - id: p_grams
+      text: For how many grams?
+      help: Leave empty for one gram.
+      type: number
+    - id: p_market
+      text: Bought from
+      type: single
+      options: {shop: A legal shop or pharmacy, club: A club or association, dealer: A dealer, friend: A friend}
+    - id: p_when
+      text: When?
+      type: single
+      options: {y0: This year, y1: Last year, y5: 2 to 5 years ago, older: Longer ago}

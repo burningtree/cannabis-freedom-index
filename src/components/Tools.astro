@@ -1,0 +1,29 @@
+---
+// "Tools" on the home page, after the methodology: the pages that answer a question of the
+// reader's own instead of showing the whole index. They are not in the top menu.
+const base = import.meta.env.BASE_URL;
+const tools = [
+  ["Can I?", "can-i/", "Pick a country and get plain answers: can I carry it, grow it, buy it, use it in public, and what happens if I am caught?", "Ask about a country"],
+  ["Compare", "compare/", "Put up to six countries side by side: their scores, exact rules and sources in one table, with a link you can share.", "Compare countries"],
+  ["Download the data", "data/", "Scores, history and a yearly panel since 1900 as CSV and JSON, free to reuse with attribution.", "Get the files"],
+];
+---
+<section class="section tools" id="tools">
+  <div class="section-head">
+    <div>
+      <h2>Tools</h2>
+      <p class="sub">Three ways to put the index to work on a question of your own.</p>
+    </div>
+  </div>
+  <ul class="tools-grid">
+    {tools.map(([name, href, text, go]) => (
+      <li>
+        <a href={`${base}${href}`}>
+          <h3>{name}</h3>
+          <p>{text}</p>
+          <span class="tools-go">{go} <span aria-hidden="true">→</span></span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>

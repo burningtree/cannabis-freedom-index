@@ -56,14 +56,16 @@ export function restore(text) {
 export const forget = () => set(KEY, null);
 
 // ── What this browser knows about its own submissions ──
-// { items: [{ type: "response" | "observation", id, answers, updated, event, relays }] }
+// { items: [{ type: "response" | "observation" | "price", id, answers, updated, event, relays }] }
 const storeKey = (cfg) => `cfi-survey-${cfg.edition}-mine`;
 export function mine(cfg) { try { return JSON.parse(get(storeKey(cfg)) ?? "null") ?? { items: [] }; } catch { return { items: [] }; } }
 export const remember = (cfg, store) => set(storeKey(cfg), JSON.stringify(store));
 export const newId = () => toHex(crypto.getRandomValues(new Uint8Array(6)));
 
 // ── Events ──
-const dTag = (cfg, item) => `${cfg.topic}:${item.type === "response" ? "response" : `place:${item.id}`}`;
+// one `d` tag per part: the yearly survey, each place report, each price report
+const SLOT = { observation: "place", price: "price" };
+const dTag = (cfg, item) => `${cfg.topic}:${item.type === "response" ? "response" : `${SLOT[item.type]}:${item.id}`}`;
 // `removed` signs an empty replacement, which overwrites the earlier version on the relays
 export function sign(cfg, item, removed = false) {
   const sk = secret(true);
@@ -127,7 +129,7 @@ export async function fetchMine(cfg) {
     try {
       const p = JSON.parse(event.content.startsWith("{") ? event.content : decrypt(event.content, getConversationKey(sk, cfg.pubkey)));
       if (p.deleted || p.edition !== cfg.edition) continue;
-      out.push({ type: p.type, id: p.type === "response" ? "response" : d.split(":place:")[1], answers: p.answers, updated: event.created_at, event, relays });
+      out.push({ type: p.type, id: p.type === "response" ? "response" : d.split(/:(?:place|price):/)[1], answers: p.answers, updated: event.created_at, event, relays });
     } catch {}
   }
   return out;

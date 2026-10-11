@@ -8,7 +8,7 @@ const { q } = Astro.props;
 const byName = [...countries].sort((a, b) => a.name.localeCompare(b.name));
 const options = q.options ? Object.entries(q.options) : [];
 ---
-<div class="sv-field" data-q={q.id} data-type={q.type} data-label={q.text} data-required={q.required ? "" : undefined} data-if={q.if ? JSON.stringify(q.if) : undefined}>
+<div class="sv-field" data-q={q.id} data-type={q.type} data-label={q.text} data-required={q.required ? "" : undefined} data-if={q.if ? JSON.stringify(q.if) : undefined} data-excludes={q.excludes ? JSON.stringify(q.excludes) : undefined}>
   <p class="sv-qtext" id={`q-${q.id}`}>{q.text}{q.required && <span class="sv-req" title="Required"> *</span>}</p>
   {q.help && <p class="sv-help">{q.help}</p>}
   {(q.type === "single" || q.type === "multi") && (

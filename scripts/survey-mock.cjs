@@ -37,7 +37,7 @@ const basePrice = Object.fromEntries(Object.keys(ANY).map((id) => [id, clamp(13 
 
 // each country also differs from what its law predicts, so the dots do not fall on a line
 const quirk = Object.fromEntries(Object.keys(ANY).map((id) => [id, { a: gauss() * 0.55, e: gauss() * 0.6, x: gauss() * 0.5 }]));
-const responses = [], observations = [];
+const responses = [], observations = [], prices = [];
 for (let i = 0; i < N; i++) {
   const home = pick(HOME), s = score(home) / 100; // 0–1, how free the law is at home
   const liberal = gauss(); // the person's own leaning
@@ -84,9 +84,14 @@ for (let i = 0; i < N; i++) {
   }
   r.tradition = ["IN", "MA", "JM", "NP", "ZA", "MX", "TH", "NG"].includes(home) ? pick({ yes: 65, no: 15, unsure: 20 }) : pick({ yes: 12, no: 55, unsure: 33 });
   r.generations = pick({ more: 70, same: 22, less: 8 });
+  r.taught = some({ family: 0.55, school: 0.45, religion: 0.15 + (1 - s) * 0.15, media: 0.5, friends: 0.6, state: 0.3 + (1 - s) * 0.2, doctors: 0.1, self: uses ? 0.7 : 0.1 });
+  r.taught_message = pick({ dangerous: 45 - s * 20, immoral: 14 - s * 8, mixed: 22, fine: 5 + s * 20, silence: 14 });
+  r.law_moral = uses ? pick({ much: 8, some: 22, no: 40, opposite: 30 }) : pick({ much: 30, some: 35, no: 28, opposite: 7 });
+  r.abroad = pick({ more: 38, less: 3, no: 34, never: 25 });
+  r.law_or_attitudes = pick({ law: 18, attitudes: 34, both: 42, neither: 6 });
   r.law_known = scale(3.4 + (uses ? 0.5 : -0.4) + gauss() * 0.9);
   r.law_fair = scale(1.3 + s * 2.6 - liberal * 0.5 + (kind === "never" ? 1 : 0) + gauss() * 0.8);
-  r.obey = uses ? pick({ obey: 4, risk: 30, quiet: 54, open: 12 }) : pick({ obey: 40, risk: 38, quiet: 19, open: 3 });
+  r.obey = uses ? pick({ obey: 2, change: 9, protest: 6, risk: 22, quiet: 40, open: 8, depends: 13 }) : pick({ obey: 26, change: 24, protest: 8, risk: 18, quiet: 8, open: 1, depends: 15 });
   r.police_trust = scale(3 - (uses ? 0.6 : 0) - (1 - s) * 0.6 + gauss());
   r.police_contact = uses ? pick({ none: 52 + s * 20, stopped: 24 - s * 8, fined: 14 - s * 6, arrested: 7 - s * 4, convicted: 3 - s * 2 }) : pick({ none: 92, stopped: 6, fined: 2 });
   r.who_decides = pick({ person: 55 + liberal * 12, doctors: 12, voters: 14, parliament: 16, tradition: 3 });
@@ -99,20 +104,24 @@ for (let i = 0; i < N; i++) {
   for (const [id, tie] of places) {
     if (id === home && tie !== "live") continue;
     const t = score(id) / 100, legal = countries[id].scores.access >= 4;
-    const o = { country: id, tie, when: tie === "live" ? "now" : pick({ now: 40, y5: 40, older: 20 }) };
+    const o = { country: id, tie, when: tie === "live" ? "y0" : pick({ y0: 22, y1: 22, y5: 32, y10: 14, older: 10 }) };
+    o.t_duration = tie === "visited" ? pick({ days: 45, weeks: 40, months: 15 }) : pick({ months: 8, years: 27, long: 65 });
     o.t_acceptance = scale(1.6 + t * 3 + quirk[id].a + gauss() * 0.8);
     o.t_enforcement = scale(4.3 - t * 3 + quirk[id].e + gauss() * 0.8);
     o.t_access = scale(2.2 + t * 2.6 + quirk[id].x + gauss() * 0.8);
     o.t_public = pick({ open: 4 + t * 55, discreet: 30, hidden: 45 - t * 35, rare: 21 - t * 18 });
-    if (rnd() < 0.6) {
-      o.t_price_source = legal && rnd() < 0.6 ? "legal" : "illegal";
-      o.t_price = Math.round(clamp(basePrice[id] * (o.t_price_source === "legal" ? 0.9 : 1) * (1 + gauss() * 0.25), 0.5, 60) * 10) / 10;
+    // price reports are separate: some people give one, a few give several, some an odd one out
+    for (let k = rnd() < 0.55 ? (rnd() < 0.15 ? 2 : 1) : 0; k > 0; k--) {
+      const market = legal && rnd() < 0.6 ? pick({ shop: 80, club: 20 }) : pick({ dealer: 65, friend: 35 });
+      const grams = pick({ 1: 60, 3.5: 12, 5: 14, 10: 10, 28: 4 }) * 1;
+      const perGram = clamp(basePrice[id] * (["shop", "club"].includes(market) ? 0.9 : 1) * (1 + gauss() * 0.25) * (rnd() < 0.02 ? 6 : 1), 0.5, 150);
+      prices.push(clean(survey.prices.questions, { p_country: id, p_product: rnd() < 0.9 ? "flower" : "hashish", p_price: Math.round(perGram * grams * 10) / 10, p_currency: "USD", p_grams: grams, p_market: market, p_when: pick({ y0: 45, y1: 30, y5: 20, older: 5 }) }, countries));
     }
     observations.push(clean(survey.territory.questions, o, countries));
   }
 }
 
-const out = aggregate(survey, responses, observations, countries, { mock: true, generated: "2026-10-12" });
+const out = aggregate(survey, responses, observations, prices, countries, { mock: true, generated: "2026-10-12" });
 const file = path.join(ROOT, "survey", `results-${EDITION}.json`);
 fs.writeFileSync(file, JSON.stringify(out, null, 1) + "\n");
-console.log(`mock: ${out.respondents} respondents, ${out.observations} observations, ${out.territories.length} countries published → ${path.relative(ROOT, file)} (${Math.round(fs.statSync(file).size / 1024)} KB)`);
+console.log(`mock: ${out.respondents} respondents, ${out.observations} place reports, ${out.price_reports} price reports, ${out.territories.length} countries published → ${path.relative(ROOT, file)} (${Math.round(fs.statSync(file).size / 1024)} KB)`);

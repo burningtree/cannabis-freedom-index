@@ -9,7 +9,7 @@ import { countries } from "../../lib/countries.js";
 const base = import.meta.env.BASE_URL;
 // what the script needs to print an answer in words
 const label = (q) => ({ text: q.text, type: q.type, options: q.options, low: q.low, high: q.high });
-const questions = Object.fromEntries([...survey.sections.flatMap((s) => s.questions), ...survey.territory.questions].map((q) => [q.id, label(q)]));
+const questions = Object.fromEntries([...survey.sections.flatMap((s) => s.questions), ...survey.territory.questions, ...survey.prices.questions].map((q) => [q.id, label(q)]));
 const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name}`]));
 ---
 <Base title="Your submissions" description="The answers this browser has submitted to the State of Cannabis survey: read them, change them, delete them, or back up the key they are signed with.">
@@ -72,6 +72,13 @@ const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name
       return out.sort((a, b) => b.past - a.past);
     }
 
+    // the three kinds of contribution, as they are named on this page
+    const KIND = {
+      response: { label: "Survey", this: "this survey" },
+      observation: { label: "Place report", this: "this place", hash: "place" },
+      price: { label: "Price report", this: "this price", hash: "price" },
+    };
+
     // ── The drawer: one submission in full ──
     const shown = new Map(); // row key → { i, title }
     const drawer = document.getElementById("meDrawer"), drawerBody = document.getElementById("meDrawerBody");
@@ -79,11 +86,11 @@ const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name
       const { i, title } = shown.get(key);
       const r = i.past ? null : client.reference(cfg, i);
       drawerBody.innerHTML = `
-        <p class="eyebrow">${i.type === "response" ? "Report" : "Place"} <span>${i.past ?? cfg.edition} edition</span></p>
+        <p class="eyebrow">${KIND[i.type].label} <span>${i.past ?? cfg.edition} edition</span></p>
         <h2 class="sv-d-title">${title}</h2>
         <p class="sv-meta">${where(i)} · changed ${day(i.updated)}</p>
         ${i.past ? `<p class="sv-small">From the ${i.past} edition, which is closed. It is kept here to read.</p>`
-          : `<p class="sv-actions"><a class="go solid" href="../take/${i.type === "response" ? "#edit" : `#place-${esc(i.id)}`}">Edit ${i.type === "response" ? "this report" : "this place"} →</a> <button type="button" class="go" data-do="delete" data-id="${esc(i.id)}">Delete</button></p>`}
+          : `<p class="sv-actions"><a class="go solid" href="../take/${i.type === "response" ? "#edit" : `#${KIND[i.type].hash}-${esc(i.id)}`}">Edit ${KIND[i.type].this} →</a> <button type="button" class="go" data-do="delete" data-id="${esc(i.id)}">Delete</button></p>`}
         <dl class="sv-d-list">${Object.entries(i.answers).map(([id, v]) => `<div><dt>${esc(Q[id]?.text ?? id)}</dt><dd>${words(id, v)}</dd></div>`).join("")}</dl>
         ${r ? `<p class="sv-event"><span>Event</span> <code>${r.id}</code>${i.relays > 0 ? ` <a href="${r.url}" target="_blank" rel="noopener noreferrer">Open on njump ↗</a>` : ` <small>not sent yet</small>`}</p>` : ""}`;
       if (!drawer.open) drawer.showModal();
@@ -106,7 +113,7 @@ const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name
         // One report per yearly edition. Reports of earlier editions that this browser still
         // holds are listed under the current one, newest first, to read but not to change.
         const all = [...store.items, ...earlier()];
-        const reports = all.filter((i) => i.type === "response"), places = all.filter((i) => i.type === "observation");
+        const reports = all.filter((i) => i.type === "response"), places = all.filter((i) => i.type === "observation"), prices = all.filter((i) => i.type === "price");
         const unsent = store.items.filter((i) => !i.relays).length;
         // one table row per part; a click opens its answers in the drawer
         const n = (i) => Object.keys(i.answers).length;
@@ -118,16 +125,20 @@ const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name
         };
         const head = (first) => `<div class="sv-rows-head"><span>${first}</span><span>Summary</span><span>Stored on</span><span>Changed</span></div>`;
         const tie = (p) => Q.tie.options[p.answers.tie] ?? "";
+        // "150 CZK for 1 g"
+        const amount = (p) => `${p.answers.p_price.toLocaleString("en-GB")} ${p.answers.p_currency ?? "USD"} for ${p.answers.p_grams ?? 1} g`;
         items.innerHTML = `
           <p class="sv-actions sv-top">
             ${cfg.open && unsent ? `<button type="button" class="go" data-do="send">Send ${unsent} unsent part${unsent === 1 ? "" : "s"}</button>` : ""}
             ${cfg.open ? '<button type="button" class="go" data-do="sync">Check the relays</button>' : ""}
             <button type="button" class="go" data-do="delete-all">Delete everything</button></p>
           <p class="sv-msg" id="meMsg" role="status"></p>
-          <h2 class="sv-h">Your reports</h2>
-          ${reports.length ? `<div class="sv-rows">${head("Edition")}${reports.map((r) => row(r, `${r.past ?? cfg.edition} report`, `${n(r)} question${n(r) === 1 ? "" : "s"} answered`)).join("")}</div>` : `<p class="sub">No report for ${cfg.edition} yet.</p>`}
-          <h2 class="sv-h sv-h-row">Places you described <a class="sv-link" href="../take/#place-new">+ Add a place</a></h2>
-          ${places.length ? `<div class="sv-rows">${head("Country")}${places.map((p) => row(p, esc(NAMES[p.answers.country] ?? p.answers.country), `${p.past ?? cfg.edition} · ${esc(tie(p))} · ${n(p) - 2} more answer${n(p) - 2 === 1 ? "" : "s"}`)).join("")}</div>` : `<p class="sub">None. <a href="../take/">Add a place →</a></p>`}`;
+          <h2 class="sv-h">Your yearly survey</h2>
+          ${reports.length ? `<div class="sv-rows">${head("Edition")}${reports.map((r) => row(r, `${r.past ?? cfg.edition} survey`, `${n(r)} question${n(r) === 1 ? "" : "s"} answered`)).join("")}</div>` : `<p class="sub">No survey for ${cfg.edition} yet. <a href="../take/">Take it →</a></p>`}
+          <h2 class="sv-h sv-h-row">Places you reported on <a class="sv-link" href="../take/#place-new">+ Add a place</a></h2>
+          ${places.length ? `<div class="sv-rows">${head("Country")}${places.map((p) => row(p, esc(NAMES[p.answers.country] ?? p.answers.country), `${p.past ?? cfg.edition} · ${esc(tie(p))} · ${Math.max(0, n(p) - 2)} more answer${n(p) - 2 === 1 ? "" : "s"}`)).join("")}</div>` : `<p class="sub">None. <a href="../take/#place-new">Add a place →</a></p>`}
+          <h2 class="sv-h sv-h-row">Prices you reported <a class="sv-link" href="../take/#price-new">+ Add a price</a></h2>
+          ${prices.length ? `<div class="sv-rows">${head("Country")}${prices.map((p) => row(p, esc(NAMES[p.answers.p_country] ?? p.answers.p_country), `${p.past ?? cfg.edition} · ${esc(amount(p))}`)).join("")}</div>` : `<p class="sub">None. <a href="../take/#price-new">Add a price →</a></p>`}`;
       }
 
       // ── the key ──

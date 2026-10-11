@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
 import ProjectNumbers from "../components/ProjectNumbers.astro";
+import Tools from "./Tools.astro";
 import AverageChart from "../components/AverageChart.astro";
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places, trendOf, changeDate, TREND_YEARS } from "../lib/countries.js";
 import { TIERS, tierColor, tierOf } from "../lib/tiers.js";
@@ -372,6 +373,8 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         <p>Laws change quickly and this is <strong>not legal advice</strong>. Always check current local law before travelling with, buying or growing cannabis.</p>
       </div>
     </section>}
+
+    {!view && <Tools />}
 
     {!view && <ProjectNumbers />}
 

@@ -615,8 +615,17 @@ is in the main menu, after History.
 | `src/lib/survey-client.js` | The browser side: the respondent's key, their stored submissions, signing and the relays. |
 | `scripts/survey-keygen.cjs` | Prints a new key pair for the project. |
 
+**Three kinds of contribution.** The questionnaire file has three parts, stored and counted
+separately: `sections` is the yearly personal survey (what a person does and believes), `territory`
+is a report on one country they know (what they observed), and `prices` is one price observation.
+A person sends one survey and any number of place and price reports. Country averages weigh a
+place report by how long its author has spent there (a visit of days counts 1, residence of more
+than five years counts 4). Country prices are the median of the price reports for flower,
+converted to US dollars per gram with `survey/currencies.yaml`, after leaving out values far from
+the rest.
+
 **How an answer travels.** The first time someone submits, their browser makes a Nostr key and
-keeps it in its local storage. The personal answers and each place described become one
+keeps it in its local storage. The survey, each place report and each price report become one
 replaceable event each (NIP-78, kind 30078, one `d` tag per part), signed with that key, encrypted
 between it and the project's key (NIP-44) and sent to the relays listed in the questionnaire file.
 Submitting again replaces a part; deleting publishes an empty replacement and a NIP-09 deletion

@@ -42,7 +42,9 @@ function clean(questions, raw, countries) {
     if (v == null || v === "") continue;
     if (q.type === "single" && typeof v === "string" && v in q.options) out[q.id] = v;
     else if (q.type === "multi" && Array.isArray(v)) {
-      const xs = [...new Set(v.filter((x) => typeof x === "string" && x in q.options))];
+      let xs = [...new Set(v.filter((x) => typeof x === "string" && x in q.options))];
+      // options that cannot stand together: the excluding one gives way ("never used it" beside "I use it")
+      for (const [one, others] of Object.entries(q.excludes ?? {})) if (xs.includes(one) && others.some((o) => xs.includes(o))) xs = xs.filter((x) => x !== one);
       if (xs.length) out[q.id] = xs;
     } else if (q.type === "scale" && Number.isInteger(v) && v >= 1 && v <= 5) out[q.id] = v;
     else if (q.type === "number" && typeof v === "number" && v > 0 && v < 1e7) out[q.id] = v;
@@ -60,8 +62,21 @@ const median = (xs) => {
 const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
 const round = (x, d = 2) => Math.round(x * 10 ** d) / 10 ** d;
 
-// responses: cleaned personal answers; observations: cleaned territory observations
-function aggregate(survey, responses, observations, countries, extra = {}, limits = {}) {
+// How much a place report counts towards its country's averages: someone who lived there for
+// years has seen more than a weekend visitor. Without a stated duration, the tie decides.
+const WEIGHT = { days: 1, weeks: 1, months: 2, years: 3, long: 4 };
+const weightOf = (o) => WEIGHT[o.t_duration] ?? (o.tie === "visited" ? 1 : 3);
+const quantile = (sorted, q) => { const i = (sorted.length - 1) * q, lo = Math.floor(i); return sorted[lo] + (sorted[Math.min(lo + 1, sorted.length - 1)] - sorted[lo]) * (i - lo); };
+// Prices far from the rest (beyond 1.5 times the middle spread) are left out once there are
+// enough to judge by; one slip or one joke should not move a country's median.
+function trimmed(xs) {
+  if (xs.length < 8) return xs;
+  const s = [...xs].sort((a, b) => a - b), q1 = quantile(s, 0.25), q3 = quantile(s, 0.75), reach = 1.5 * (q3 - q1);
+  return s.filter((x) => x >= q1 - reach && x <= q3 + reach);
+}
+
+// responses: cleaned personal answers; observations: cleaned place reports; prices: cleaned price reports
+function aggregate(survey, responses, observations, prices, countries, extra = {}, limits = {}) {
   const MIN_SEGMENT = limits.segment ?? DEFAULTS.segment, MIN_TERRITORY = limits.territory ?? DEFAULTS.territory;
   const segmentsOf = (r) => {
     const rel = r.relation ?? [];
@@ -98,33 +113,45 @@ function aggregate(survey, responses, observations, countries, extra = {}, limit
     questions[q.id] = entry;
   }
 
-  const byCountry = {};
+  const byCountry = {}, pricesBy = {};
   for (const o of observations) (byCountry[o.country] ??= []).push(o);
-  const avg = (os, id) => { const xs = os.map((o) => o[id]).filter((v) => v != null); return xs.length ? round(mean(xs)) : null; };
-  const territories = Object.entries(byCountry)
-    .filter(([, os]) => os.length >= MIN_TERRITORY)
-    .map(([country, os]) => {
-      // every price in US dollars at the rates on file; a price with no currency was asked in
-      // dollars, and one outside 20 cents to 200 dollars a gram is taken for a slip and left out
-      const prices = (src) => os.filter((o) => o.t_price != null && (!src || o.t_price_source === src))
-        .map((o) => o.t_price * USD[o.t_currency ?? "USD"]).filter((usd) => usd >= 0.2 && usd <= 200);
+  // a price per gram of flower in US dollars at the rates on file; a price with no currency was
+  // given in dollars; hashish and anything outside 20 cents to 200 dollars a gram are left out
+  for (const p of prices) {
+    const usd = (p.p_price * USD[p.p_currency ?? "USD"]) / (p.p_grams ?? 1);
+    if ((p.p_product ?? "flower") === "flower" && usd >= 0.2 && usd <= 200) (pricesBy[p.p_country] ??= []).push({ usd, legal: ["shop", "club"].includes(p.p_market), known: Boolean(p.p_market) });
+  }
+  // averages of the 1–5 scales, weighted by how well the reporter knows the place
+  const avg = (os, id) => {
+    const xs = os.filter((o) => o[id] != null);
+    const w = xs.reduce((a, o) => a + weightOf(o), 0);
+    return xs.length ? round(xs.reduce((a, o) => a + o[id] * weightOf(o), 0) / w) : null;
+  };
+  const med = (xs) => (xs.length >= MIN_TERRITORY ? round(median(trimmed(xs))) : null);
+  const territories = [...new Set([...Object.keys(byCountry), ...Object.keys(pricesBy)])]
+    .map((country) => ({ country, os: byCountry[country] ?? [], ps: pricesBy[country] ?? [] }))
+    .filter(({ os, ps }) => os.length >= MIN_TERRITORY || ps.length >= MIN_TERRITORY)
+    .map(({ country, os, ps }) => {
+      const enough = os.length >= MIN_TERRITORY;
       const count = (id) => { const c = {}; for (const o of os) if (o[id]) c[o[id]] = (c[o[id]] ?? 0) + 1; return c; };
       return {
-        country, n: os.length, tie: count("tie"),
-        acceptance: avg(os, "t_acceptance"), enforcement: avg(os, "t_enforcement"), access: avg(os, "t_access"),
-        public: count("t_public"),
-        price: prices().length >= MIN_TERRITORY ? round(median(prices())) : null, price_n: prices().length,
-        price_legal: prices("legal").length >= MIN_TERRITORY ? round(median(prices("legal"))) : null,
-        price_illegal: prices("illegal").length >= MIN_TERRITORY ? round(median(prices("illegal"))) : null,
+        country, n: os.length, tie: enough ? count("tie") : {},
+        // how many of the reports come from people who lived there, not passed through
+        residents: os.filter((o) => o.tie !== "visited").length,
+        acceptance: enough ? avg(os, "t_acceptance") : null, enforcement: enough ? avg(os, "t_enforcement") : null, access: enough ? avg(os, "t_access") : null,
+        public: enough ? count("t_public") : {},
+        price: med(ps.map((p) => p.usd)), price_n: ps.length,
+        price_legal: med(ps.filter((p) => p.known && p.legal).map((p) => p.usd)),
+        price_illegal: med(ps.filter((p) => p.known && !p.legal).map((p) => p.usd)),
       };
     })
-    .sort((a, b) => b.n - a.n);
+    .sort((a, b) => b.n - a.n || b.price_n - a.price_n);
 
   return {
     edition: survey.edition, ...extra,
-    respondents: responses.length, observations: observations.length,
+    respondents: responses.length, observations: observations.length, price_reports: prices.length,
     countries_lived: new Set(responses.map((r) => r.residence).filter(Boolean)).size,
-    countries_described: Object.keys(byCountry).length,
+    countries_described: new Set([...Object.keys(byCountry), ...Object.keys(pricesBy)]).size,
     thresholds: { segment: MIN_SEGMENT, territory: MIN_TERRITORY }, rates_date: money.date,
     segments, questions, territories,
   };

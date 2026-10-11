@@ -10,7 +10,7 @@ import Question from "../../components/Question.astro";
 const base = import.meta.env.BASE_URL;
 const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
 ---
-<Base title={`Take the survey: ${survey.title}`} description="Answer the State of Cannabis survey: anonymous, no account, about ten minutes. Describe how you use, grow or think about cannabis, and what the countries you know are like.">
+<Base title={`Take the survey: ${survey.title}`} description="Answer the State of Cannabis survey: no account, encrypted, about ten minutes. Describe how you use, grow or think about cannabis, and what the countries you know are like.">
   <main class="changes-page survey sv-take">
     <section class="hero hero-sm">
       <p class="eyebrow"><a href={`${base}survey/`}>State of Cannabis</a> <span>{survey.edition} edition</span></p>
@@ -27,8 +27,10 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
       <section class="sv-step" data-step="start" data-title="Start">
         <h2>Before you begin</h2>
         <ul class="sv-points">
-          <li>It takes about ten minutes. Every question except four is optional, and whole sections are skipped when they do not apply to you.</li>
-          <li>There is no account, no email and no cookie. A draft is kept in this browser only, so you can come back to it.</li>
+          <li>It takes about ten minutes. Almost every question is optional, and whole sections are skipped when they do not apply to you.</li>
+          <li>There are three parts: a yearly survey about you, reports on places you know, and prices you know. You can do any of them, and add places and prices later.</li>
+          <li>There is no account, no email and no cookie, and your answers are stored encrypted under a random key. That makes the survey pseudonymous, not perfectly anonymous: a rare combination of country, age and experience can still narrow down who answered, so leave out anything you would not want guessed.</li>
+          <li>A draft is kept in this browser only, so you can come back to it.</li>
           <li>You can change or delete your answers later, from this browser.</li>
           <li>People who have never used cannabis are as welcome as people who grow it.</li>
           <li>Only counts are published. What you write in text boxes is read by the researchers and never published as it stands.</li>
@@ -45,18 +47,21 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         </section>
       ))}
 
-      <section class="sv-step" data-step="places" data-title={survey.territory.title} hidden>
-        <h2>{survey.territory.title}</h2>
-        <p class="sub">{survey.territory.intro}</p>
-        <div id="svPlaces"></div>
-        <p><button type="button" class="go" id="svAddPlace">+ Add a place</button></p>
-        <template id="svPlaceTpl">
-          <fieldset class="sv-place">
-            <legend>Place <span data-nr></span> <button type="button" class="sv-remove" data-remove>Remove</button></legend>
-            {survey.territory.questions.map((q) => <Question q={q} />)}
-          </fieldset>
-        </template>
-      </section>
+      {/* The two repeatable kinds of report: places, then prices. Each block is its own entry. */}
+      {[["places", "place", survey.territory], ["prices", "price", survey.prices]].map(([step, noun, part]) => (
+        <section class="sv-step" data-step={step} data-title={part.title} hidden>
+          <h2>{part.title}</h2>
+          <p class="sub">{part.intro}</p>
+          <div class="sv-blocks" data-holder={step}></div>
+          <p><button type="button" class="go" data-add={step}>+ Add a {noun}</button></p>
+          <template data-tpl={step}>
+            <fieldset class="sv-place" data-kind={step}>
+              <legend><span class="sv-noun">{noun}</span> <span data-nr></span> <button type="button" class="sv-remove" data-remove>Remove</button></legend>
+              {part.questions.map((q) => <Question q={q} />)}
+            </fieldset>
+          </template>
+        </section>
+      ))}
 
       <section class="sv-step" data-step="send" data-title="Submit" hidden>
         <h2>Submit</h2>
@@ -64,8 +69,8 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         <h3>What happens when you press the button</h3>
         <ul class="sv-points">
           <li>The first time, your browser makes a random key and keeps it in its own storage. It is a pseudonym: it carries no name, email or account, and nobody can tell whose it is.</li>
-          <li>Your personal answers and each place you described are signed with that key and encrypted so that only you and this project can read them. They are sent to public <a href="https://nostr.com/" target="_blank" rel="noopener noreferrer">Nostr</a> relays, which store them. A relay, like any server, can see the address you connect from; use a VPN or Tor if that matters to you.</li>
-          <li>Because the key stays in this browser, you can come back to <a href={`${base}survey/me/`}>your submissions</a> to change or delete them. Everything signed with one key belongs together, so your places are linked to your personal answers, but not to you.</li>
+          <li>Your survey, each place report and each price are signed with that key and encrypted so that only you and this project can read them. They are sent to public <a href="https://nostr.com/" target="_blank" rel="noopener noreferrer">Nostr</a> relays, which store them. A relay, like any server, can see the address you connect from; use a VPN or Tor if that matters to you.</li>
+          <li>Because the key stays in this browser, you can come back to <a href={`${base}survey/me/`}>your submissions</a> to change or delete them. Everything signed with one key belongs together, so your places and prices are linked to your survey answers, though not to your name.</li>
           <li>If you clear this browser's data without backing the key up, your answers stay in the survey and you can no longer change them.</li>
         </ul>
         <p><button type="submit" class="go solid" id="svSubmit">Submit survey <span aria-hidden="true">→</span></button></p>
@@ -87,7 +92,13 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
     const $ = (sel, root = form) => root.querySelector(sel);
     const $$ = (sel, root = form) => [...root.querySelectorAll(sel)];
     const steps = $$(".sv-step");
-    const places = document.getElementById("svPlaces");
+    // The repeatable reports: where their blocks live, what they are stored as, and the question
+    // that makes a block count (an untouched block is not a report).
+    const REPEATS = [
+      { step: "places", type: "observation", key: "country", noun: "place" },
+      { step: "prices", type: "price", key: "p_country", noun: "price" },
+    ].map((r) => ({ ...r, holder: form.querySelector(`[data-holder="${r.step}"]`), tpl: form.querySelector(`[data-tpl="${r.step}"]`) }));
+    const repeat = (step) => REPEATS.find((r) => r.step === step);
     const error = document.getElementById("svError");
     let current = 0;
 
@@ -118,9 +129,12 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         else $("select, textarea, input", el).value = v;
       }
     }
-    const own = steps.filter((s) => !["start", "places", "send"].includes(s.dataset.step));
+    const own = steps.filter((s) => !["start", "places", "prices", "send"].includes(s.dataset.step));
     const personal = () => Object.assign({}, ...own.map((s) => read(s)));
-    const described = () => $$(".sv-place", places).map((el) => ({ id: el.dataset.id, answers: read(el) })).filter((p) => p.answers.country);
+    const blocksOf = (r) => $$(".sv-place", r.holder);
+    // every filled-in report, of both kinds, ready to be stored
+    const reports = (r) => blocksOf(r).map((el) => ({ type: r.type, id: el.dataset.id, answers: read(el) })).filter((x) => x.answers[r.key]);
+    const allReports = () => REPEATS.flatMap(reports);
 
     // ── Conditions: `data-if` holds {question: [options]}; any match shows the element ──
     function applies(el, answers) {
@@ -150,8 +164,8 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
       next.firstChild.textContent = i === 0 ? "Start " : on[i + 1]?.dataset.step === "send" ? "Review and submit " : "Next ";
       error.textContent = "";
       if (step.dataset.step === "send") {
-        const a = Object.keys(personal()).length, p = described().length;
-        document.getElementById("svSummary").textContent = `You answered ${a} question${a === 1 ? "" : "s"} and described ${p} place${p === 1 ? "" : "s"}.`;
+        const a = Object.keys(personal()).length, [p, m] = REPEATS.map((r) => reports(r).length);
+        document.getElementById("svSummary").textContent = `You answered ${a} question${a === 1 ? "" : "s"}, reported on ${p} place${p === 1 ? "" : "s"} and gave ${m} price${m === 1 ? "" : "s"}.`;
       }
       drawSteps();
       form.scrollIntoView({ block: "start" });
@@ -159,7 +173,8 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
     // a section may be left only when its required questions are answered
     function missing(step) {
       if (step.dataset.step === "start") return document.getElementById("svAdult").checked ? null : "Please confirm that you are 18 or older.";
-      const blocks = step.dataset.step === "places" ? $$(".sv-place", places).filter((p) => Object.keys(read(p)).length) : [step];
+      const r = repeat(step.dataset.step);
+      const blocks = r ? blocksOf(r).filter((b) => Object.keys(read(b)).length) : [step];
       for (const b of blocks) {
         const got = read(b);
         const need = $$('.sv-field[data-required]', b).find((el) => !el.hidden && got[el.dataset.q] == null);
@@ -176,29 +191,45 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
     });
     document.getElementById("svBack").addEventListener("click", () => { const on = active(); show(on[on.indexOf(steps[current]) - 1]); });
 
-    // ── Places: a repeatable block ──
-    let placeCount = 0;
-    function addPlace(answers, id) {
-      const node = document.getElementById("svPlaceTpl").content.cloneNode(true);
-      const n = ++placeCount;
-      // radio groups must not be shared between two places
-      for (const i of $$("input[name]", node)) i.name = `${i.name}__${n}`;
-      for (const l of $$("[for]", node)) l.htmlFor = `${l.htmlFor}__${n}`;
+    // ── Repeatable blocks: places and prices ──
+    let blockCount = 0;
+    function add(r, answers, id) {
+      const node = r.tpl.content.cloneNode(true);
+      const n = ++blockCount;
+      // radio groups and labels must not be shared between two blocks
+      for (const i of $$("input[name], select[name], textarea[name]", node)) i.name = `${i.name}__${n}`;
       for (const i of $$("[id]", node)) i.id = `${i.id}__${n}`;
       for (const i of $$("[aria-labelledby]", node)) i.setAttribute("aria-labelledby", `${i.getAttribute("aria-labelledby")}__${n}`);
-      places.append(node);
-      // the id under which this place is stored and, later, replaced
-      places.lastElementChild.dataset.id = id ?? [...crypto.getRandomValues(new Uint8Array(6))].map((b) => b.toString(16).padStart(2, "0")).join("");
-      if (answers) write(places.lastElementChild, answers);
-      renumber();
+      r.holder.append(node);
+      const block = r.holder.lastElementChild;
+      // the id under which this report is stored and, later, replaced
+      block.dataset.id = id ?? [...crypto.getRandomValues(new Uint8Array(6))].map((b) => b.toString(16).padStart(2, "0")).join("");
+      if (answers) { write(block, answers); const money = $('[data-type="currency"] select', block); if (money && answers.p_currency) money.dataset.chosen = "1"; }
+      renumber(r);
+      return block;
     }
-    const renumber = () => $$(".sv-place", places).forEach((p, i) => ($("[data-nr]", p).textContent = i + 1));
-    document.getElementById("svAddPlace").addEventListener("click", () => addPlace());
-    places.addEventListener("click", (e) => { if (e.target.closest("[data-remove]")) { e.target.closest(".sv-place").remove(); renumber(); save(); } });
+    const renumber = (r) => blocksOf(r).forEach((b, i) => ($("[data-nr]", b).textContent = i + 1));
+    form.addEventListener("click", (e) => {
+      const adder = e.target.closest("[data-add]"), remover = e.target.closest("[data-remove]");
+      if (adder) add(repeat(adder.dataset.add));
+      if (remover) { const block = remover.closest(".sv-place"), r = repeat(block.dataset.kind); block.remove(); renumber(r); save(); }
+    });
+    // Options that cannot stand together ("I have never used it" beside "I use it"): ticking
+    // one side unticks the other.
+    form.addEventListener("change", (e) => {
+      const field = e.target.closest(".sv-field[data-excludes]");
+      if (!field || !e.target.checked) return;
+      const v = e.target.value, untick = (values) => $$("input", field).forEach((i) => { if (values.includes(i.value)) i.checked = false; });
+      for (const [one, others] of Object.entries(JSON.parse(field.dataset.excludes))) {
+        if (v === one) untick(others);
+        else if (others.includes(v)) untick([one]);
+      }
+    }, true);
 
     // ── Draft, in this browser only ──
     function save() {
-      try { localStorage.setItem(DRAFT, JSON.stringify({ adult: document.getElementById("svAdult").checked, answers: personal(), places: $$(".sv-place", places).map((el) => ({ id: el.dataset.id, answers: read(el) })) })); } catch {}
+      const blocks = Object.fromEntries(REPEATS.map((r) => [r.step, blocksOf(r).map((el) => ({ id: el.dataset.id, answers: read(el) }))]));
+      try { localStorage.setItem(DRAFT, JSON.stringify({ adult: document.getElementById("svAdult").checked, answers: personal(), ...blocks })); } catch {}
     }
     // What was submitted from this browser before, if anything (written by survey-client.js).
     function submitted() { try { return JSON.parse(localStorage.getItem(`cfi-survey-${cfg.edition}-mine`) ?? "null")?.items ?? []; } catch { return []; } }
@@ -208,7 +239,8 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         const before = submitted();
         if (before.length) {
           // editing: start from what was submitted, unless a newer draft is in progress
-          d ??= { adult: true, answers: before.find((i) => i.type === "response")?.answers ?? {}, places: before.filter((i) => i.type === "observation").map((i) => ({ id: i.id, answers: i.answers })) };
+          const of = (type) => before.filter((i) => i.type === type).map((i) => ({ id: i.id, answers: i.answers }));
+          d ??= { adult: true, answers: before.find((i) => i.type === "response")?.answers ?? {}, places: of("observation"), prices: of("price") };
           const note = document.getElementById("svEditing");
           note.hidden = false;
           note.innerHTML = `You have already submitted from this browser. You are <strong>editing those answers</strong>: submitting again replaces them. <a href="../me/">Your submissions →</a>`;
@@ -216,18 +248,18 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         if (!d) return;
         document.getElementById("svAdult").checked = Boolean(d.adult);
         for (const s of steps) write(s, d.answers ?? {});
-        for (const p of d.places ?? []) addPlace(p.answers ?? p, p.id);
+        for (const r of REPEATS) for (const b of d[r.step] ?? []) add(r, b.answers ?? b, b.id);
       } catch {}
     }
     form.addEventListener("change", () => { refresh(); save(); });
     form.addEventListener("input", (e) => { if (e.target.matches("textarea, .sv-number")) save(); });
     // Choosing a country suggests its currency for the price, until the respondent picks one.
     const CURRENCY = JSON.parse(form.dataset.currency);
-    places.addEventListener("change", (e) => {
+    form.addEventListener("change", (e) => {
       const block = e.target.closest(".sv-place"), money = block && $('[data-type="currency"] select', block);
       if (!money) return;
       if (e.target === money) money.dataset.chosen = "1";
-      else if (e.target.name?.startsWith("country") && !money.dataset.chosen && !$(".sv-number", block).value) money.value = CURRENCY[e.target.value] ?? "USD";
+      else if (e.target.name?.startsWith("p_country") && !money.dataset.chosen && !$(".sv-number", block).value) money.value = CURRENCY[e.target.value] ?? "USD";
     });
 
     // ── Submit ──
@@ -240,8 +272,8 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         const client = await import("../../lib/survey-client.js");
         const live = client.effective(cfg);
         const now = Math.floor(Date.now() / 1000);
-        const items = [{ type: "response", id: "response", answers: personal() }, ...described().map((p) => ({ type: "observation", id: p.id, answers: p.answers }))];
-        // places that were submitted before and are no longer in the form are removed
+        const items = [{ type: "response", id: "response", answers: personal() }, ...allReports()];
+        // reports that were submitted before and are no longer in the form are removed
         const gone = client.mine(live).items.filter((old) => !items.some((i) => i.id === old.id));
         for (const i of items) { i.event = client.sign(live, i); i.updated = now; i.relays = 0; }
         const removals = gone.map((old) => client.sign(live, old, true));
@@ -272,16 +304,17 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
 
     try { if (JSON.parse(localStorage.getItem("cfi-survey-test") ?? "null")?.relays?.length) { const b = document.getElementById("svClosed"); if (b) b.innerHTML = "<strong>Test mode.</strong> Answers are sent to the relays set under <code>cfi-survey-test</code> in this browser's storage."; } } catch {}
     restore();
-    if (!$$(".sv-place", places).length) addPlace();
+    for (const r of REPEATS) if (!blocksOf(r).length) add(r);
     refresh();
-    // "Edit" links from /survey/me/ open the form where the editing is to happen:
-    // #edit the first section of the report, #place-<id> that place, #place-new a fresh one.
-    const target = location.hash.slice(1);
-    if (submitted().length && target === "edit") show(own[0]);
-    else if (submitted().length && target.startsWith("place-")) {
-      show(steps.find((s) => s.dataset.step === "places"));
-      let block = $$(".sv-place", places).find((p) => p.dataset.id === target.slice(6));
-      if (target === "place-new") { if (Object.keys(read(places.lastElementChild)).length) addPlace(); block = places.lastElementChild; }
+    // "Edit" links from /survey/me/ open the form where the editing is to happen: #edit the first
+    // section of the survey, #place-<id> or #price-<id> that report, #place-new or #price-new a fresh one.
+    const [what, which] = location.hash.slice(1).split(/-(.*)/);
+    const r = REPEATS.find((x) => x.noun === what);
+    if (submitted().length && what === "edit") show(own[0]);
+    else if (submitted().length && r) {
+      show(steps.find((s) => s.dataset.step === r.step));
+      let block = blocksOf(r).find((b) => b.dataset.id === which);
+      if (which === "new") block = Object.keys(read(r.holder.lastElementChild)).length ? add(r) : r.holder.lastElementChild;
       block?.scrollIntoView({ block: "start" });
       block?.classList.add("sv-focus");
     } else show(steps[0]);
