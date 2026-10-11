@@ -2,6 +2,15 @@
 model: opus-5.5
 written: 2026-10-11
 sources:
+  - type: chapter
+    title: "Sub-Saharan Africa, Cannabis, and Contemporary Drug Policy"
+    authors: [Neil Carrier]
+    container: "Cannabis: Global Histories"
+    editors: [Lucas Richert, James H. Mills]
+    publisher: MIT Press
+    year: 2021
+    isbn: "9780262366137"
+    locator: "p. 323"
   - title: "Wikipedia — Cannabis in Madagascar"
     url: https://en.wikipedia.org/wiki/Cannabis_in_Madagascar
   - title: "Wikipedia — Timeline of cannabis law"
@@ -21,11 +30,23 @@ The reason recorded is a judgement about what it did to people. The king is repo
 have said that when you smoke hemp, "you become half-witted". The ban was not aimed at
 strangers: use was widespread among his own courtiers.
 
+This was a royal prohibition in the Merina kingdom, not legislation passed for the borders
+of the present republic. The distinction matters: the index associates the event with
+Madagascar's history, but the sources do not establish that the order was enforced across
+the entire island. The article therefore treats 1787 as the earliest documented political
+ban there, not as proof of uniform national policing.
+
 ## What came before
 
-Cannabis had been on the island for a very long time. Pollen about two thousand years
-old has been cited as evidence for the first arrival of the Malagasy people, and foreign
-visitors described local use through the 1700s and 1800s.
+Cannabis use on the island predated the royal ban by well over a century. Neil Carrier's
+chapter in *Cannabis: Global Histories* says consumption in Madagascar was known from
+the mid-seventeenth century and places it within the plant's long history in eastern and
+southern Africa.
+
+Later accounts use several names for the plant. The country overview records *rangani* and
+*zamal*, while nineteenth-century visitors continued to report local use. Together those
+references show why the 1787 order belongs in a history of regulation: it responded to an
+existing practice rather than introducing cannabis to the island.
 
 ## What remains
 

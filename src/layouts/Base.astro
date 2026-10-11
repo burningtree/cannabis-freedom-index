@@ -93,32 +93,39 @@ const schemas = jsonld ? [jsonld].flat() : [];
     <p>Open source — the scores, explanations and code are on <a href={repo} target="_blank" rel="noopener noreferrer">GitHub</a>. Spotted a mistake or a law that changed? <a href={`${repo}/issues`} target="_blank" rel="noopener noreferrer">Open an issue</a> or send a pull request.</p>
   </footer>
 
+  <script>
+    // Fuse.js is bundled as its own file and fetched only when the search dialog is first opened.
+    window.cfiFuse = () => import("fuse.js").then((m) => m.default);
+  </script>
   <script is:inline>
-    // Search dialog. The index is loaded on first use. Every word typed must appear in a row's
-    // name or its second line; countries and pages come first, then entries with an article,
-    // then the rest of the history, newest first.
+    // Search dialog. The index and Fuse.js (fuzzy matching, so a typo or a missing accent still
+    // finds its row) are loaded on first use. Every word typed must match a row's name or its
+    // second line; the closest matches come first, and among equals countries and pages lead,
+    // then entries with an article, then the rest of the history, newest first.
     (function () {
       var dialog = document.getElementById("siteSearch"), input = document.getElementById("searchInput");
       var list = document.getElementById("searchResults"), hint = document.getElementById("searchHint");
-      var rows = null, loading = null, shown = [], active = 0;
+      var rows = null, fuse = null, loading = null, shown = [], active = 0;
       var KIND = { c: "Country", p: "Page", a: "Article", h: "History" }, ORDER = { c: 0, p: 1, a: 2, h: 3 };
       function fold(s) { return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
       function esc(s) { return String(s).replace(/[&<>"]/g, function (ch) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]; }); }
       function load() {
-        if (!loading) loading = fetch(dialog.dataset.index).then(function (r) { return r.json(); }).then(function (data) {
-          rows = data.map(function (r, i) { r.i = i; r.k = fold(r.n); r.h = r.k + " " + fold(r.s); return r; });
+        if (!loading) loading = Promise.all([fetch(dialog.dataset.index).then(function (r) { return r.json(); }), window.cfiFuse()]).then(function (got) {
+          rows = got[0].map(function (r, i) { r.i = i; r.k = fold(r.n); r.h = r.k + " " + fold(r.s); return r; });
+          // `k` is the name, `h` the name and second line together, so words may be spread over both
+          fuse = new got[1](rows, { keys: [{ name: "k", weight: 2 }, { name: "h", weight: 1 }], useExtendedSearch: true, ignoreLocation: true, threshold: 0.3, minMatchCharLength: 2, includeScore: true });
           render();
         }).catch(function () { hint.textContent = "The search index could not be loaded."; });
         return loading;
       }
       function render() {
         var words = fold(input.value).split(/\s+/).filter(Boolean);
-        if (!rows || !words.length) { shown = []; list.innerHTML = ""; hint.hidden = false; return; }
-        var found = rows.filter(function (r) { return words.every(function (w) { return r.h.indexOf(w) >= 0; }); });
+        if (!fuse || !words.length) { shown = []; list.innerHTML = ""; hint.hidden = false; return; }
+        // In Fuse's extended search, words separated by spaces must all match (each one fuzzily).
         var q = words.join(" ");
-        function rank(r) { return ORDER[r.t] * 10 + (r.k === q ? 0 : r.k.indexOf(q) === 0 ? 1 : r.k.indexOf(q) > 0 ? 2 : 3); }
-        found.sort(function (a, b) { return rank(a) - rank(b) || a.i - b.i; });
-        shown = found.slice(0, 40); active = 0; hint.hidden = shown.length > 0;
+        function rank(x) { var r = x.item; return x.score + ORDER[r.t] * 0.05 + (r.k === q ? -1 : r.k.indexOf(q) === 0 ? -0.5 : 0); }
+        var found = fuse.search(q).sort(function (a, b) { return rank(a) - rank(b) || a.item.i - b.item.i; });
+        shown = found.slice(0, 40).map(function (x) { return x.item; }); active = 0; hint.hidden = shown.length > 0;
         if (!shown.length) hint.textContent = "Nothing found for “" + input.value + "”.";
         list.innerHTML = shown.map(function (r, i) {
           return '<li role="option" id="sr' + i + '"' + (i === 0 ? ' aria-selected="true"' : "") + '><a href="' + esc(dialog.dataset.base + r.u) + '" tabindex="-1">' +
