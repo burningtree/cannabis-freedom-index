@@ -16,7 +16,7 @@ const t1 = time(lastUpdated);
 
 // one chart for each combination of period and weighting
 const RANGES = [
-  { id: "all", label: "All", startYear: 1900 }, // a few bans are older; they are already counted in the starting value
+  { id: "all", label: "All", startYear: 1860 }, // the handful of older bans are already counted in the starting value
   { id: "15y", label: "Last 15 years", startYear: endYear - 15 },
 ];
 const WEIGHTS = [
@@ -44,7 +44,7 @@ function view(range, weighting) {
 
   // at most about a dozen year labels, on round steps
   const span = endYear - startYear;
-  const step = span > 50 ? 10 : span > 20 ? 5 : span > 14 ? 2 : 1;
+  const step = span > 120 ? 20 : span > 50 ? 10 : span > 20 ? 5 : span > 14 ? 2 : 1;
   const years = Array.from({ length: span + 1 }, (_, i) => startYear + i)
     .filter((yr) => yr % step === 0)
     .map((yr) => ({ yr, x: x(Date.UTC(yr, 0, 1)) }));

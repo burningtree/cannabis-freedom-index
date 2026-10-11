@@ -15,7 +15,7 @@ a single unanimous judgment, with no limit in grams.
 ## A century of dagga law
 
 Restrictions began in [Natal in 1870](/history/south-africa-natal-1870/), aimed at
-Indian labourers, and reached the [Cape in 1891](/history/south-africa-cape-ban-1891/).
+Indian labourers. The Orange River Colony [banned supplying it](/history/orange-river-colony-dagga-ordinance-1903/) in 1903, and the Cape [listed it as a poison](/history/cape-colony-dagga-poison-listing-1905/) in 1905.
 A [national ban](/history/south-africa-national-ban-1922/) followed in 1922, and the
 next year South Africa [asked the League of Nations](/history/south-africa-league-request-1923/)
 to control cannabis internationally.

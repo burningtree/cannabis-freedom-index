@@ -226,7 +226,9 @@ function scoreAt(c, t) {
 // the same for all in the plain average, or its population at that time.
 // There is a point at every dated change, and one each New Year so that slow shifts (estimated
 // changes, and populations growing at different rates) show up as well.
-const CHART_FROM = 1900;
+// The chart starts in 1860, before the first colonial bans. Population figures begin in 1900, so
+// for earlier years the by-population average uses each country's 1900 population.
+const CHART_FROM = 1860;
 function averageOverTime(weight) {
   const at = (t) => {
     let sum = 0, total = 0;

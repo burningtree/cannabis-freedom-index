@@ -1,0 +1,147 @@
+---
+// Every source the index cites, counted. Books first, then websites by domain: the ones cited
+// for several countries one by one, and the local ones (cited for a single country) grouped
+// under that country. The page is not in the menu.
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { places } from "../../lib/countries.js";
+
+const base = import.meta.env.BASE_URL;
+const num = (n) => n.toLocaleString("en-GB");
+const placeOf = new Map(places.map((c) => [c.slug, c]));
+
+// One citation = one source listed by one owner (a country profile, a history entry or an article).
+// `where` is the country it was cited for, or "" for international entries.
+const cites = [];
+for (const { id, data } of await getCollection("countries")) {
+  const slug = id.split("/")[0];
+  for (const s of Object.values(data.sources)) cites.push({ s, where: slug });
+  for (const s of data.subunits?.sources ?? []) cites.push({ s, where: slug });
+}
+const changes = (await getCollection("changes")).map((x) => x.data);
+const countryOfChange = new Map(changes.map((ch) => [ch.id, ch.country ?? ""]));
+for (const ch of changes) for (const s of ch.sources) cites.push({ s, where: ch.country ?? "" });
+for (const a of await getCollection("articles")) for (const s of a.data.sources) cites.push({ s, where: countryOfChange.get(a.id) ?? "" });
+
+// ── Books: anything with a container or typed as a book or chapter ──
+const isBook = (s) => s.type === "book" || s.type === "chapter" || Boolean(s.container);
+const books = new Map(); // book title → { meta, chapters: Map(chapter title → { authors, locator, n }), n }
+for (const { s } of cites.filter((x) => isBook(x.s))) {
+  const title = s.container ?? s.title;
+  const b = books.get(title) ?? { title, editors: s.editors, authors: s.container ? undefined : s.authors, publisher: s.publisher, year: s.year, isbn: s.isbn, chapters: new Map(), n: 0 };
+  b.n++;
+  if (s.container) {
+    const ch = b.chapters.get(s.title) ?? { title: s.title, authors: s.authors ?? [], page: Infinity, n: 0 };
+    ch.n++;
+    // citations give the pages they rely on, so the lowest one seen puts the chapters in book order
+    ch.page = Math.min(ch.page, parseInt((s.locator ?? "").replace(/\D+/, "")) || Infinity);
+    b.chapters.set(s.title, ch);
+  }
+  books.set(title, b);
+}
+const bookList = [...books.values()].sort((x, y) => y.n - x.n);
+
+// ── Websites, by domain ──
+const domainOf = (url) => new URL(url).hostname.replace(/^www\./, "");
+const domains = new Map(); // domain → { urls: Set, n, where: Map(slug → n) }
+for (const { s, where } of cites.filter((x) => !isBook(x.s) && x.s.url)) {
+  const d = domainOf(s.url);
+  const row = domains.get(d) ?? { domain: d, urls: new Set(), n: 0, where: new Map() };
+  row.urls.add(s.url);
+  row.n++;
+  row.where.set(where, (row.where.get(where) ?? 0) + 1);
+  domains.set(d, row);
+}
+const all = [...domains.values()];
+// local: cited for exactly one country and nothing international
+const isLocal = (r) => r.where.size === 1 && ![...r.where.keys()].includes("");
+const wide = all.filter((r) => !isLocal(r)).sort((x, y) => y.n - x.n || x.domain.localeCompare(y.domain));
+const local = new Map(); // slug → rows
+for (const r of all.filter(isLocal)) {
+  const slug = [...r.where.keys()][0];
+  local.set(slug, [...(local.get(slug) ?? []), r]);
+}
+const localRows = [...local]
+  .map(([slug, rows]) => ({ c: placeOf.get(slug), rows: rows.sort((x, y) => y.n - x.n || x.domain.localeCompare(y.domain)), n: rows.reduce((a, r) => a + r.n, 0) }))
+  .filter((x) => x.c)
+  .sort((x, y) => x.c.name.localeCompare(y.c.name));
+const urlCount = new Set(cites.filter((x) => x.s.url).map((x) => x.s.url)).size;
+const stats = [
+  [num(cites.length), "Citations"],
+  [num(urlCount), "Web pages cited"],
+  [num(all.length), "Websites"],
+  [num(wide.length), "Cited for several countries"],
+  [num(all.length - wide.length), "Local, for one country"],
+  [num(bookList.length), bookList.length === 1 ? "Book" : "Books"],
+];
+---
+<Base title="Sources" description={`The ${num(urlCount)} web pages and ${bookList.length} books cited by the Cannabis Freedom Index, counted by website and by country.`}>
+  <main class="changes-page sources-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Sources</p>
+      <h1>What the index is built on</h1>
+      <p class="lede">Every score, explanation and history entry cites where it comes from. This page counts those sources: books first, then websites, with the local ones grouped under the country they were used for. A citation is one source listed once by a country profile, a history entry or an article.</p>
+    </section>
+
+    <dl class="hist-stats">
+      {stats.map(([n, label]) => <div><dt>{label}</dt><dd>{n}</dd></div>)}
+    </dl>
+
+    <section class="section" id="books">
+      <div class="section-head"><div>
+        <h2>Books</h2>
+        <p class="sub">Printed sources, with the chapters that are cited and how often.</p>
+      </div></div>
+      {bookList.map((b) => (
+        <div class="src-book">
+          <h3>{b.title}</h3>
+          <p class="src-meta">{[b.editors && `Edited by ${b.editors.join(" and ")}`, b.authors && b.authors.join(", "), b.publisher, b.year, b.isbn && `ISBN ${b.isbn}`].filter(Boolean).join(" · ")} <b>{b.n} {b.n === 1 ? "citation" : "citations"}</b></p>
+          {b.chapters.size > 0 && (
+            <table class="src-table">
+              <thead><tr><th>Chapter</th><th>Author</th><th class="num">Cited</th></tr></thead>
+              <tbody>
+                {[...b.chapters.values()].sort((x, y) => x.page - y.page).map((ch) => (
+                  <tr><td>{ch.title}</td><td>{ch.authors.join(", ")}</td><td class="num">{ch.n}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      ))}
+    </section>
+
+    <section class="section" id="websites">
+      <div class="section-head"><div>
+        <h2>Websites cited for several countries</h2>
+        <p class="sub">{num(wide.length)} sites used for more than one country, or for international entries, most cited first.</p>
+      </div></div>
+      <table class="src-table">
+        <thead><tr><th>Website</th><th class="num">Pages</th><th class="num">Citations</th><th class="num">Countries</th></tr></thead>
+        <tbody>
+          {wide.map((r) => (
+            <tr><td><a href={`https://${r.domain}/`} target="_blank" rel="noopener noreferrer">{r.domain}</a></td><td class="num">{num(r.urls.size)}</td><td class="num">{num(r.n)}</td><td class="num">{[...r.where.keys()].filter(Boolean).length}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="local">
+      <div class="section-head"><div>
+        <h2>Local sources, by country</h2>
+        <p class="sub">{num(all.length - wide.length)} sites cited for one country only: its laws, courts, ministries and press. The number after a site is how often it is cited.</p>
+      </div></div>
+      <table class="src-table src-local">
+        <thead><tr><th>Country</th><th>Websites</th><th class="num">Citations</th></tr></thead>
+        <tbody>
+          {localRows.map(({ c, rows, n }) => (
+            <tr>
+              <th scope="row"><a href={`${base}country/${c.slug}/`}>{c.flag} {c.name}</a></th>
+              <td>{rows.map((r, i) => <><a href={`https://${r.domain}/`} target="_blank" rel="noopener noreferrer">{r.domain}</a>{r.n > 1 && <small> {r.n}</small>}{i < rows.length - 1 && <span class="sep"> · </span>}</>)}</td>
+              <td class="num">{n}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  </main>
+</Base>

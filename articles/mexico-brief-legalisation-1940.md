@@ -5,7 +5,7 @@ sources:
   - title: Wikipedia — Cannabis in Mexico
     url: https://en.wikipedia.org/wiki/Cannabis_in_Mexico
   - type: chapter
-    title: "Reefer Madness Past and Present: Dr. Leopoldo Salazar Viniegra, Mexico, and the United States"
+    title: "Reefer Madness Past and Present: Dr. Leopoldo Salazar Viniegra, Mexico, and the United States, ca. 1938–2018"
     authors: [Isaac Campos]
     container: "Cannabis: Global Histories"
     editors: [Lucas Richert, James H. Mills]
