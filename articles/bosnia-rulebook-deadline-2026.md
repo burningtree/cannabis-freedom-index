@@ -4,6 +4,8 @@ written: 2026-10-11
 sources:
   - title: Paragraf.ba — Deadline agreed for amending the rulebook on cannabis-based medicines (14 July 2026)
     url: https://www.paragraf.ba/dnevne-vijesti/14072026/14072026-vijest4.html
+  - title: Bosnia and Herzegovina Ministry of Civil Affairs — second follow-up meeting on medical cannabis (22 September 2026)
+    url: https://www.mcp.gov.ba/hr/portal/objava/odrzan-drugi-follow-up-sastanak-o-primjeni-kanabisa-u-medicinske-svrhe-1790073591914
 ---
 
 Bosnia and Herzegovina approved cannabis-based medicines at the end of 2025. Six
@@ -56,9 +58,14 @@ drug-resistant epilepsy, for whom such medicines have been used elsewhere in Eur
 for years. Once the framework exists, the pharmacy chambers said, they could prepare
 matching formulations for both entities without delay.
 
-No report found says whether the August deadline was met.
+The August deadline was not met. At a second follow-up meeting on 21 September,
+the Federation health ministry said consultations had produced a draft and sent it
+to the minister's cabinet. It would not amend the existing rulebook during 2026,
+however, and instead planned a replacement in the first quarter of 2027.
 
 ## In the index
 
 This is why [Bosnia and Herzegovina's](/country/ba/) access score stays at 0
-despite the December decision. The index counts a route once a patient can use it.
+despite the December decision. The later delay is recorded
+[separately](/history/bosnia-rulebook-delayed-2026/). The index counts a route
+once a patient can use it.
