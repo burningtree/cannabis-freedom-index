@@ -5,6 +5,7 @@
 import Base from "../../layouts/Base.astro";
 import { getCollection } from "astro:content";
 import { places } from "../../lib/countries.js";
+import { archivedUrl } from "../../lib/archive.js";
 
 const base = import.meta.env.BASE_URL;
 const num = (n) => n.toLocaleString("en-GB");
@@ -65,10 +66,17 @@ const localRows = [...local]
   .map(([slug, rows]) => ({ c: placeOf.get(slug), rows: rows.sort((x, y) => y.n - x.n || x.domain.localeCompare(y.domain)), n: rows.reduce((a, r) => a + r.n, 0) }))
   .filter((x) => x.c)
   .sort((x, y) => x.c.name.localeCompare(y.c.name));
-const urlCount = new Set(cites.filter((x) => x.s.url).map((x) => x.s.url)).size;
+// Site icons come from DuckDuckGo's icon service and are not stored here; a missing one is hidden.
+const icon = (d) => `https://icons.duckduckgo.com/ip3/${d}.ico`;
+const urls = new Set(cites.filter((x) => x.s.url).map((x) => x.s.url));
+const urlCount = urls.size;
+// pages with a copy recorded in the Internet Archive (see source-archive.json)
+const archivedOf = (set) => [...set].filter((u) => archivedUrl(u)).length;
+const archived = archivedOf(urls);
 const stats = [
   [num(cites.length), "Citations"],
   [num(urlCount), "Web pages cited"],
+  [`${num(archived)}`, `Archived (${Math.round((archived / urlCount) * 100)}%)`],
   [num(all.length), "Websites"],
   [num(wide.length), "Cited for several countries"],
   [num(all.length - wide.length), "Local, for one country"],
@@ -81,6 +89,7 @@ const stats = [
       <p class="eyebrow">Sources</p>
       <h1>What the index is built on</h1>
       <p class="lede">Every score, explanation and history entry cites where it comes from. This page counts those sources: books first, then websites, with the local ones grouped under the country they were used for. A citation is one source listed once by a country profile, a history entry or an article.</p>
+      <p class="lede">{num(archived)} of the {num(urlCount)} web pages have a copy saved in the Internet Archive, so a dead link does not take the evidence with it. The rest are being saved in batches.</p>
     </section>
 
     <dl class="hist-stats">
@@ -90,24 +99,30 @@ const stats = [
     <section class="section" id="books">
       <div class="section-head"><div>
         <h2>Books</h2>
-        <p class="sub">Printed sources, with the chapters that are cited and how often.</p>
+        <p class="sub">Printed sources, most cited first. Open a book to see which chapters are cited and how often.</p>
       </div></div>
-      {bookList.map((b) => (
-        <div class="src-book">
-          <h3>{b.title}</h3>
-          <p class="src-meta">{[b.editors && `Edited by ${b.editors.join(" and ")}`, b.authors && b.authors.join(", "), b.publisher, b.year, b.isbn && `ISBN ${b.isbn}`].filter(Boolean).join(" · ")} <b>{b.n} {b.n === 1 ? "citation" : "citations"}</b></p>
-          {b.chapters.size > 0 && (
-            <table class="src-table">
-              <thead><tr><th>Chapter</th><th>Author</th><th class="num">Cited</th></tr></thead>
-              <tbody>
-                {[...b.chapters.values()].sort((x, y) => x.page - y.page).map((ch) => (
-                  <tr><td>{ch.title}</td><td>{ch.authors.join(", ")}</td><td class="num">{ch.n}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
-      ))}
+      <div class="src-books">
+        {bookList.map((b) => (
+          <details class="src-book">
+            <summary>
+              <span class="src-book-title">{b.title}</span>
+              <span class="src-book-by">{[b.editors && `Ed. ${b.editors.join(" and ")}`, b.authors && b.authors.join(", "), b.publisher, b.year].filter(Boolean).join(" · ")}</span>
+              <span class="src-book-n">{b.chapters.size > 0 && `${b.chapters.size} chapters · `}{b.n} {b.n === 1 ? "citation" : "citations"}</span>
+            </summary>
+            {b.isbn && <p class="src-meta">ISBN {b.isbn}</p>}
+            {b.chapters.size > 0 && (
+              <table class="src-table">
+                <thead><tr><th>Chapter</th><th>Author</th><th class="num">Cited</th></tr></thead>
+                <tbody>
+                  {[...b.chapters.values()].sort((x, y) => x.page - y.page).map((ch) => (
+                    <tr><td>{ch.title}</td><td>{ch.authors.join(", ")}</td><td class="num">{ch.n}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </details>
+        ))}
+      </div>
     </section>
 
     <section class="section" id="websites">
@@ -116,10 +131,10 @@ const stats = [
         <p class="sub">{num(wide.length)} sites used for more than one country, or for international entries, most cited first.</p>
       </div></div>
       <table class="src-table">
-        <thead><tr><th>Website</th><th class="num">Pages</th><th class="num">Citations</th><th class="num">Countries</th></tr></thead>
+        <thead><tr><th>Website</th><th class="num">Pages</th><th class="num">Archived</th><th class="num">Citations</th><th class="num">Countries</th></tr></thead>
         <tbody>
           {wide.map((r) => (
-            <tr><td><a href={`https://${r.domain}/`} target="_blank" rel="noopener noreferrer">{r.domain}</a></td><td class="num">{num(r.urls.size)}</td><td class="num">{num(r.n)}</td><td class="num">{[...r.where.keys()].filter(Boolean).length}</td></tr>
+            <tr><td><a href={`https://${r.domain}/`} target="_blank" rel="noopener noreferrer"><img class="src-ico" src={icon(r.domain)} alt="" width="16" height="16" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" />{r.domain}</a></td><td class="num">{num(r.urls.size)}</td><td class="num">{num(archivedOf(r.urls))}</td><td class="num">{num(r.n)}</td><td class="num">{[...r.where.keys()].filter(Boolean).length}</td></tr>
           ))}
         </tbody>
       </table>
@@ -131,12 +146,14 @@ const stats = [
         <p class="sub">{num(all.length - wide.length)} sites cited for one country only: its laws, courts, ministries and press. The number after a site is how often it is cited.</p>
       </div></div>
       <table class="src-table src-local">
-        <thead><tr><th>Country</th><th>Websites</th><th class="num">Citations</th></tr></thead>
+        <thead><tr><th>Country</th><th>Websites</th><th class="num">Pages</th><th class="num">Archived</th><th class="num">Citations</th></tr></thead>
         <tbody>
           {localRows.map(({ c, rows, n }) => (
             <tr>
               <th scope="row"><a href={`${base}country/${c.slug}/`}>{c.flag} {c.name}</a></th>
-              <td>{rows.map((r, i) => <><a href={`https://${r.domain}/`} target="_blank" rel="noopener noreferrer">{r.domain}</a>{r.n > 1 && <small> {r.n}</small>}{i < rows.length - 1 && <span class="sep"> · </span>}</>)}</td>
+              <td>{rows.map((r, i) => <><a class="src-site" href={`https://${r.domain}/`} target="_blank" rel="noopener noreferrer"><img class="src-ico" src={icon(r.domain)} alt="" width="16" height="16" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" />{r.domain}</a>{r.n > 1 && <small> {r.n}</small>}{i < rows.length - 1 && <span class="sep"> · </span>}</>)}</td>
+              <td class="num">{rows.reduce((a, r) => a + r.urls.size, 0)}</td>
+              <td class="num">{rows.reduce((a, r) => a + archivedOf(r.urls), 0)}</td>
               <td class="num">{n}</td>
             </tr>
           ))}

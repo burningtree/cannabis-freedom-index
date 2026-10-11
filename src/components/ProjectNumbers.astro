@@ -21,7 +21,7 @@ const stats = [
   [num(dated.length), "History entries", `${base}history/`],
   [num(dated.filter((ch) => ch.score).length), "Of them moved a score", `${base}history/?only=scored`],
   [num(articles.size), "Articles", `${base}articles/`],
-  [num(sourceKeys.size), "Sources cited", `${base}data/`],
+  [num(sourceKeys.size), "Sources cited", `${base}sources/`],
   [num(explanations), "Written explanations", `${base}data/`],
   [num(+DATA_SNAPSHOT - oldest), `Years covered, from ${oldest}`, `${base}history/?order=oldest`],
   [`${Math.round((dated.filter((ch) => ch.checked).length / dated.length) * 100)}%`, "Of history checked against a source", `${base}history/`],
