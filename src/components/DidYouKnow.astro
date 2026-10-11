@@ -1,58 +1,57 @@
 ---
-// A rotating "Did you know?" card. Every fact is in the HTML; the script only
-// decides which one is visible, so the first fact still shows without JavaScript.
+// "Did you know?": curious cases from the scores, the country write-ups and the history,
+// three at a time. Every case is in the HTML and its links work without JavaScript; the
+// script only decides which three are showing. Country links open the drawer on the home page.
 import { getFacts } from "../lib/facts.js";
 
 const base = import.meta.env.BASE_URL;
 const facts = getFacts();
+const PER_PAGE = 3;
 ---
-<section class="dyk card" id="dyk" aria-roledescription="carousel" aria-label="Did you know?">
+<section class="dyk" id="dyk" aria-label="Did you know?" data-per-page={PER_PAGE}>
   <div class="dyk-top">
-    <p class="dyk-label"><span aria-hidden="true">💡</span> Did you know?</p>
+    <h2>Did you know?</h2>
     <div class="dyk-nav">
-      <span class="dyk-count" id="dykCount">1 / {facts.length}</span>
-      <button class="icon-btn" id="dykPrev" aria-label="Previous fact">‹</button>
-      <button class="icon-btn" id="dykNext" aria-label="Next fact">›</button>
+      <span class="dyk-count" id="dykCount">1 / {Math.ceil(facts.length / PER_PAGE)}</span>
+      <button type="button" id="dykPrev" aria-label="Previous three">←</button>
+      <button type="button" id="dykNext" aria-label="Next three">→</button>
     </div>
   </div>
-  <div class="dyk-facts" aria-live="polite">
+  <ol class="dyk-facts" aria-live="polite">
     {facts.map((f, i) => (
-      <div class="dyk-fact" hidden={i !== 0}>
-        <p>{f.text}</p>
-        {f.country && (
-          <a href={`${base}country/${f.country.slug}/`} data-country={f.country.id}>
-            {f.country.flag} See {f.country.name} →
-          </a>
-        )}
-      </div>
+      <li class="dyk-fact" hidden={i >= PER_PAGE}>
+        <p class="dyk-kicker">{f.kicker}</p>
+        <p class="dyk-text">
+          {f.parts.map((part) => typeof part === "string" ? part
+            : part.country ? <a href={`${base}country/${part.country.slug}/`} data-country={part.country.id}>{part.label}</a>
+            : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
+        </p>
+        {f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
+      </li>
     ))}
-  </div>
+  </ol>
 </section>
 
 <script>
   const root = document.getElementById("dyk");
   const facts = [...root.querySelectorAll(".dyk-fact")];
   const count = document.getElementById("dykCount");
-  let i = 0;
-  let timer = null;
-
-  function show(n) {
-    i = (n + facts.length) % facts.length;
-    facts.forEach((el, k) => (el.hidden = k !== i));
-    count.textContent = `${i + 1} / ${facts.length}`;
+  const per = +root.dataset.perPage;
+  // shuffle once per visit, so every page of three is a different mix
+  for (let k = facts.length - 1; k > 0; k--) {
+    const j = Math.floor(Math.random() * (k + 1));
+    [facts[k], facts[j]] = [facts[j], facts[k]];
   }
-  // Rotate slowly, but never while someone is reading or interacting, and not at all
-  // for people who have asked for reduced motion.
-  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function start() { if (!still && !timer) timer = setInterval(() => show(i + 1), 9000); }
-  function stop() { clearInterval(timer); timer = null; }
-
-  document.getElementById("dykPrev").addEventListener("click", () => { stop(); show(i - 1); });
-  document.getElementById("dykNext").addEventListener("click", () => { stop(); show(i + 1); });
-  root.addEventListener("pointerenter", stop);
-  root.addEventListener("pointerleave", start);
-  root.addEventListener("focusin", stop);
-
-  show(Math.floor(Math.random() * facts.length)); // a different fact on each visit
-  start();
+  const list = root.querySelector(".dyk-facts");
+  facts.forEach((el) => list.append(el));
+  const pages = Math.ceil(facts.length / per);
+  let page = 0;
+  function show(n) {
+    page = (n + pages) % pages;
+    facts.forEach((el, k) => (el.hidden = Math.floor(k / per) !== page));
+    count.textContent = `${page + 1} / ${pages}`;
+  }
+  document.getElementById("dykPrev").addEventListener("click", () => show(page - 1));
+  document.getElementById("dykNext").addEventListener("click", () => show(page + 1));
+  show(0);
 </script>

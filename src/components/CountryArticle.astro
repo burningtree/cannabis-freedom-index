@@ -40,11 +40,10 @@ const travel = sub ? null : [
     : `A prescription or medical card from another country is generally not recognised. Travellers who need a cannabis-based medicine should ask ${c.name}'s embassy before travelling.`,
 ].filter(Boolean);
 const answers = answersFor(v.s);
-const r = 42;
-const circ = 2 * Math.PI * r;
 ---
 <article class="country" data-id={c.id}>
-  <div class="c-side">
+  {/* The masthead: name, verdict and the one big number; then the five plain answers. */}
+  <div class="c-top">
     <div class="d-head">
       <span class="d-flag">{c.flag}</span>
       <div>
@@ -67,13 +66,9 @@ const circ = 2 * Math.PI * r;
         <p class="sub">{group.label} of {c.name}</p>
       </div>
     )}
-    <div class="d-score">
-      <svg class="ring" width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
-        <circle cx="52" cy="52" r={r} fill="none" stroke="var(--border)" stroke-width="9" />
-        <circle cx="52" cy="52" r={r} fill="none" stroke={tierColor(v.raw)} stroke-width="9" stroke-linecap="round"
-          stroke-dasharray={`${(v.raw / 100) * circ} ${circ}`} transform="rotate(-90 52 52)" />
-        <text x="52" y="62" text-anchor="middle">{v.score}</text>
-      </svg>
+    <div class="d-score" style={`--c:${tierColor(v.raw)}`}>
+      <p class="d-num" aria-label={`Score ${v.score} out of 100`}><b>{v.score}</b><span>/100</span></p>
+      <div class="d-meter" aria-hidden="true"><i style={`width:${v.raw}%`}></i></div>
       <div>
         <div class="tier">{tierOf(v.raw).name}</div>
         {sub
@@ -83,6 +78,7 @@ const circ = 2 * Math.PI * r;
             : <p class="sub">#{c.rank} of {countries.length} worldwide<br>#{c.regionRank} of {c.regionCount} in {c.region}</p>}
       </div>
     </div>
+    <p class="d-note">{v.note}</p>
     <div class="d-chips">
       <span class={`chip s-${v.rec}`} title={REC_HELP[v.rec]}>Recreational: {REC_LABEL[v.rec]}</span>
       <span class={`chip s-${v.med}`} title={MED_HELP[v.med]}>Medical: {MED_LABEL[v.med]}</span>
@@ -99,7 +95,6 @@ const circ = 2 * Math.PI * r;
         ))}
       </div>
     )}
-    <p class="d-note">{v.note}</p>
     {c.disputed && !sub && (
       <p class="c-disputed"><strong>Disputed territory.</strong> {c.disputed.note} See also <a href={`${base}country/${c.disputed.country.slug}/`} data-country={c.disputed.country.id}>{c.disputed.country.flag} {c.disputed.country.name}</a>.</p>
     )}
@@ -116,6 +111,10 @@ const circ = 2 * Math.PI * r;
       ))}
     </ul>
     <p class="d-hint">A rough guide read from the scores below, not legal advice. The details and the exceptions are in each segment: select an answer to jump to it.</p>
+  </div>
+
+  {/* Figures at a glance: users, prices and the score over time. A sticky rail on the full page. */}
+  <div class="c-rail">
     {use && (
       <dl class="c-use">
         <div>
@@ -133,8 +132,7 @@ const circ = 2 * Math.PI * r;
       </dl>
     )}
     {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
-    {/* in the drawer the chart stays in this column; on the full page it moves under the breakdown */}
-    {scored.length > 0 && <div class="chart-in-side"><CountryChart history={scored} context={history.filter((ch) => !ch.score)} /></div>}
+    {scored.length > 0 && <CountryChart history={scored} context={history.filter((ch) => !ch.score)} />}
   </div>
 
   <div class="c-main">
@@ -194,8 +192,6 @@ const circ = 2 * Math.PI * r;
         </details>
       );
     })}
-    {scored.length > 0 && <div class="chart-in-main"><CountryChart history={scored} context={history.filter((ch) => !ch.score)} /></div>}
-
     {group && (
       <section class="c-units">
         <h2 class="d-h">{sub ? `Other ${group.plural}` : `By ${group.label.toLowerCase()}`} <span>{group.units.length} scored</span></h2>

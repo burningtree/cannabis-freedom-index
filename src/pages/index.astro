@@ -4,7 +4,7 @@ import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
 import AverageChart from "../components/AverageChart.astro";
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places, trendOf, changeDate, TREND_YEARS } from "../lib/countries.js";
-import { TIERS, tierColor } from "../lib/tiers.js";
+import { TIERS, tierColor, tierOf } from "../lib/tiers.js";
 import { PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "../lib/segment-ids.js";
 import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor } from "../lib/prices.js";
 import { SHOW_PRICES } from "../lib/config.js";
@@ -118,6 +118,27 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         </div>
         <AverageChart />
       </div>
+      {/* The two ends of the ranking, side by side: the leader of each list is set largest. */}
+      <div class="extremes">
+        {[["Freest", countries.slice(0, 5)], ["Least free", countries.slice(-5).reverse()]].map(([label, list]) => (
+          <section aria-label={label}>
+            <h2>{label}</h2>
+            <ol>
+              {list.map((c) => (
+                <li>
+                  <a href={`${base}country/${c.slug}/`} data-country={c.id} style={`--c:${tierColor(c.score)}`}>
+                    <span class="ext-rank">{String(c.rank).padStart(2, "0")}</span>
+                    <span class="ext-name"><span class="flag">{c.flag}</span>{c.name}</span>
+                    <span class="ext-tier">{tierOf(c.raw).name}</span>
+                    <b>{c.score}</b>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </div>
+      <DidYouKnow />
       <Changes />
     </section>
 
@@ -298,30 +319,30 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           <p class="sub">Six segments, each scored 0–10 against fixed levels, combined by weight into a 0–100 index. Half the score is simply whether you may possess and grow; a fifth is how hard users are punished. Rules for industry, products and medical programmes are not scored.</p>
         </div>
       </div>
-      <div class="card note-card tomato">
-        <h3>🍅 The tomato standard</h3>
-        <p>A 10 means no cannabis-specific rule at all: carry any amount, grow a whole field, give it away, buy it anywhere. Every cap, licence, registry and restricted zone costs points, because regulation is counted as unfreedom. Canada lets you carry 30 g and grow four plants — that is legal, but it is not unlimited, so it scores 6 and 4, not 9 and 8. This is why even the most liberal countries land around 50 and the “Free” tier is empty.</p>
+      {/* The rule behind every score, said large; then how the 100 points are divided. */}
+      <div class="tomato">
+        <p class="tomato-label">🍅 The tomato standard</p>
+        <p class="tomato-big">A 10 means <em>no cannabis-specific rule at all</em>: carry any amount, grow a whole field, give it away, buy it anywhere.</p>
+        <p>Every cap, licence, registry and restricted zone costs points, because regulation is counted as unfreedom. Canada lets you carry 30 g and grow four plants — that is legal, but it is not unlimited, so it scores 6 and 4, not 9 and 8. This is why even the most liberal countries land around 50 and the “Free” tier is empty.</p>
       </div>
       <div class="weights" aria-hidden="true">
-        {SEGMENTS.map((s) => <div style={`flex:${s.weight}`} title={`${s.name} — ${s.weight}%`}>{s.weight}%</div>)}
+        {SEGMENTS.map((s) => <div style={`flex:${s.weight}`} title={`${s.name} — ${s.weight}%`}><b>{s.weight}</b><span>{s.name}</span></div>)}
       </div>
       <div class="seg-grid">
         {SEGMENTS.map((s) => (
-          <div class="card seg">
+          <div class="seg">
             <div class="seg-top"><h3>{s.name}</h3><span class="seg-w">{s.weight}%</span></div>
             <p>{s.desc}</p>
             <ul class="anchors">{s.levels.map(([n, t]) => <li><b>{n}</b>{t}</li>)}</ul>
           </div>
         ))}
       </div>
-      <div class="card note-card">
+      <div class="note-card">
         <h3>Read this before relying on it</h3>
         <p>Scores are editorial estimates that blend the written law with how it is enforced in practice. Federal countries (United States, Australia, India) get a single national estimate that hides large internal differences. Scores between the listed levels mean a country sits between two descriptions. Every country has a written explanation and linked sources for each segment — select a country to read them. For many smaller countries the only sources available are secondary summaries, and the explanations say so where a figure could not be confirmed.</p>
         <p>Laws change quickly and this is <strong>not legal advice</strong>. Always check current local law before travelling with, buying or growing cannabis.</p>
       </div>
     </section>
-
-    <DidYouKnow />
 
   </main>
 
@@ -671,7 +692,10 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     function withOpenButton(article, url) {
       const open = Object.assign(document.createElement("a"), { className: "btn btn-primary drawer-open", href: url });
       open.innerHTML = 'Open full page <span aria-hidden="true">→</span>';
-      (article.querySelector(".c-disputed") ?? article.querySelector(".d-note")).after(open);
+      // after the summary and the status chips, just above "In short"
+      const short = article.querySelector(".c-top > .d-h");
+      if (short) short.before(open);
+      else (article.querySelector(".c-disputed") ?? article.querySelector(".d-note")).after(open);
       return article;
     }
     // Swap the drawer to another view of the same country (a state, or back to national).
