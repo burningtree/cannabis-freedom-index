@@ -152,7 +152,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
             <ol>
               {list.map((c) => (
                 <li>
-                  <a href={`${base}country/${c.slug}/`} data-country={c.id} style={`--c:${tierColor(c.score)}`}>
+                  <a href={`${base}country/${c.slug}/`} style={`--c:${tierColor(c.score)}`}>
                     <span class="ext-rank">{String(c.rank).padStart(2, "0")}</span>
                     <span class="ext-name"><span class="flag">{c.flag}</span>{c.name}</span>
                     <span class="ext-tier">{tierOf(c.raw).name}</span>
