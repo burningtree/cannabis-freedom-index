@@ -2,6 +2,7 @@
 // pages need: index scores, ranks, averages. Runs once at build time.
 import { getCollection } from "astro:content";
 import { CHANGE_CATEGORIES, SEGMENT_IDS, STATUS_SECTIONS } from "./segment-ids.js";
+import { sourceTuple } from "./sources.js";
 export { CHANGE_CATEGORIES };
 
 export const DATA_SNAPSHOT = "2026";
@@ -31,7 +32,7 @@ export const CONTEXT_NAMES = CONTEXT.map(([, name]) => name);
 const REC_CODE = { legal: "legal", partial: "partial", decriminalised: "decrim", illegal: "illegal", death: "death" };
 const MED_CODE = { legal: "yes", limited: "limited", none: "no" };
 const isoDate = (d) => d.toISOString().slice(0, 10);
-const pair = (s) => [s.title, s.url];
+const pair = sourceTuple;
 const plantingOf = ({ seeds, seeds_trade, clones, clones_trade }) => ({ seeds, seeds_trade, clones, clones_trade });
 
 // ── Segments ──────────────────────────────────────────
@@ -185,6 +186,10 @@ export const changes = changeEntries
   })
   .reverse();
 
+
+// Long reads: articles/<change id>.md. Every article must belong to a history entry.
+export const articles = new Map((await getCollection("articles")).map((a) => [a.id, a]));
+for (const id of articles.keys()) if (!changes.some((ch) => ch.id === id)) throw new Error(`articles/${id}.md: there is no history entry "${id}" in changes.yaml`);
 
 // A country's population at a moment in time, on a straight line between its snapshots.
 const MS_YEAR = 365.25 * 24 * 3600 * 1000;

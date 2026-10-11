@@ -1,8 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
-import ScoreChange from "../../components/ScoreChange.astro";
-import { changes, countries, changeDate, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP } from "../../lib/countries.js";
+import { render } from "astro:content";
+import { changes, articles, countries, changeDate, formatDate, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP } from "../../lib/countries.js";
 import { tierOf, tierColor } from "../../lib/tiers.js";
+import { sourceTuple } from "../../lib/sources.js";
+import SourceCitation from "../../components/SourceCitation.astro";
+
+// One history entry: what happened, large; the score before and after when it moved one; how
+// each segment moved; the sources; and, beside it, the country today and its entries around this one.
 
 export function getStaticPaths() {
   return changes.map((ch, i) => ({ params: { id: ch.id }, props: { ch, newer: changes[i - 1], older: changes[i + 1] } }));
@@ -12,105 +17,127 @@ const { ch, newer, older } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const c = ch.country;
 const diff = (seg) => seg.after - seg.before;
+// the long read, when this entry has one: articles/<id>.md
+const article = articles.get(ch.id);
+const Article = article ? (await render(article)).Content : null;
+// The entry's own sources, then the article's, each work/address once.
+const sources = [...ch.sources, ...(article?.data.sources ?? []).map(sourceTuple)].filter((x, i, all) => all.findIndex((other) => other[3] === x[3]) === i);
 // The country's other entries closest in time to this one, for the side panel.
-const own = c ? changes.filter((x) => x.country === c && !x.estimate) : [];
+// An entry tied to no country gets the international entries instead: the treaties in order.
+const own = changes.filter((x) => x.country === c && !x.estimate);
 const at = own.indexOf(ch);
-const nearby = own.slice(Math.max(0, at - 3), at + 4);
-const r = 30;
-const circ = 2 * Math.PI * r;
+const nearby = c ? own.slice(Math.max(0, at - 3), at + 4) : own.slice(Math.max(0, at - 5), at + 6);
 ---
 <Base type="article" title={ch.title} description={ch.score ? `${ch.title}: ${c.name} moved from ${ch.score.before} to ${ch.score.after} on the Cannabis Freedom Index. ${ch.description}` : `${ch.title}. ${ch.description}`}>
-  <main class="change-page">
+  <main class="change-page ev">
     <div class="page-bar">
       <a class="back" href={`${base}history/`}>← History</a>
     </div>
 
-    <div class={`change-layout${c ? "" : " no-aside"}`}>
-    <article class="change-detail">
-      <p class="eyebrow"><span title={ch.kind.help}>{ch.kind.emoji} {ch.kind.label}</span> · <time datetime={ch.date}>{changeDate(ch)}</time> · {ch.place.name}</p>
-      <h1>{ch.title}</h1>
-      <p class="lede">{ch.description}</p>
-      <p class={`confidence c-${ch.confidence.key}`}><span aria-hidden="true">{ch.confidence.mark}</span> <strong>{ch.confidence.label}.</strong> {ch.confidence.help}.{ch.score ? " The score before the change is an editorial estimate." : ""}</p>
-      <p class="change-source">{ch.sources.length > 1 ? "Sources" : "Source"}:</p>
-      <ul class="srcs change-srcs">
-        {ch.sources.map(([label, url]) => <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>)}
-      </ul>
-
+    <header class={`ev-top${ch.score ? "" : " ev-plain"}`}>
+      <div>
+        <p class="eyebrow"><a href={`${base}history/kind/${ch.category}/`} title={ch.kind.help}>{ch.kind.emoji} {ch.kind.label}</a> <span><time datetime={ch.date}>{changeDate(ch)}</time></span> <span>{c ? <a href={`${base}country/${c.slug}/`}>{c.flag} {c.name}</a> : ch.place.name}</span></p>
+        <h1>{ch.title}</h1>
+        <p class="lede">{ch.description}</p>
+      </div>
       {ch.score && (
-        <Fragment>
-          <h2 class="d-h">Index score</h2>
-          <ScoreChange score={ch.score} />
-
-          <h2 class="d-h">Score by segment</h2>
-          <table class="change-table">
-            <thead>
-              <tr><th scope="col">Segment</th><th scope="col">Before</th><th scope="col">After</th><th scope="col">Change</th></tr>
-            </thead>
-            <tbody>
-              {ch.segments.map((seg) => (
-                <tr class={diff(seg) === 0 ? "same" : ""}>
-                  <th scope="row">{seg.name}<small>{seg.weight}% of the index</small></th>
-                  <td><span class="dot" style={`background:${tierColor(seg.before * 10)}`}></span>{seg.before}</td>
-                  <td><span class="dot" style={`background:${tierColor(seg.after * 10)}`}></span>{seg.after}</td>
-                  <td>{diff(seg) === 0
-                    ? "—"
-                    : <span class={`delta ${diff(seg) > 0 ? "up" : "down"}`}>{diff(seg) > 0 ? "+" : "−"}{Math.abs(diff(seg))}</span>}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p class="change-note">Segments are scored from 0 to 10. {ch.latest ? `The scores after the change are ${c.name}'s current scores.` : `${c.name}'s scores have changed again since.`}</p>
-        </Fragment>
+        <div class="ev-move" aria-label={`Index score from ${ch.score.before} to ${ch.score.after}`}>
+          <p class="ev-label">Index score</p>
+          <p class="ev-figures">
+            <b style={`--c:${tierColor(ch.score.before)}`}>{ch.score.before}</b>
+            <span aria-hidden="true">→</span>
+            <b style={`--c:${tierColor(ch.score.after)}`}>{ch.score.after}</b>
+          </p>
+          <p class={`ev-delta delta ${ch.score.after >= ch.score.before ? "up" : "down"}`}>{ch.score.after >= ch.score.before ? "+" : "−"}{Math.abs(ch.score.after - ch.score.before)} {Math.abs(ch.score.after - ch.score.before) === 1 ? "point" : "points"}</p>
+        </div>
       )}
-      {!ch.score && <p class="change-note">{c ? `Listed for context. No score change is recorded for ${c.name} here.` : "International agreements are listed for context. They bind governments, not people, so they move no country's score by themselves."}</p>}
+    </header>
 
+    <div class="ev-body">
+    <article class="ev-main">
+      {article && (
+        <section class="ev-article">
+          <p class="ev-label">The story{article.data.model && <span class="ev-by"> · written by {article.data.model}{article.data.written && <>, <time datetime={article.data.written.toISOString().slice(0, 10)}>{formatDate(article.data.written.toISOString().slice(0, 10))}</time></>}</span>}</p>
+          {article.data.image && (
+            <figure>
+              <img src={article.data.image.src} alt={article.data.image.alt} loading="lazy" />
+              <figcaption>{article.data.image.caption} <span>{article.data.image.credit_url ? <a href={article.data.image.credit_url} target="_blank" rel="noopener noreferrer">{article.data.image.credit}</a> : article.data.image.credit}</span></figcaption>
+            </figure>
+          )}
+          <div class="prose"><Article /></div>
+        </section>
+      )}
+      {ch.score && (
+        <section>
+          <h2 class="d-h">Score by segment <span>0 to 10</span></h2>
+          <ol class="ev-segs">
+            {ch.segments.map((seg) => (
+              <li class={diff(seg) === 0 ? "same" : ""}>
+                <div class="ev-seg-top">
+                  <span>{seg.name} <small>· {seg.weight}%</small></span>
+                  <b>{seg.before} <i aria-hidden="true">→</i> {seg.after}{diff(seg) !== 0 && <em class={`delta ${diff(seg) > 0 ? "up" : "down"}`}>{diff(seg) > 0 ? "+" : "−"}{Math.abs(diff(seg))}</em>}</b>
+                </div>
+                <div class="ev-track" aria-hidden="true">
+                  <i style={`width:${seg.after * 10}%;background:${tierColor(seg.after * 10)}`}></i>
+                  <span style={`left:calc(${seg.before * 10}% - 1px)`} title={`Before: ${seg.before}`}></span>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <p class="change-note">The bar shows the score after the change; the tick marks where it stood before. {ch.latest ? `The scores after the change are ${c.name}'s current scores.` : `${c.name}'s scores have changed again since.`}</p>
+        </section>
+      )}
+      {!ch.score && c && <p class="change-note">Listed for context. No score change is recorded for {c.name} here.</p>}
       {ch.estimate && <p class="change-note">This entry is an estimate. No first law is recorded for {c.name}, so its first restrictions are assumed to have come at some point between {ch.window[0]} and {ch.window[1]}. On the charts the change is spread evenly across those years.</p>}
+
+      <section>
+        <h2 class="d-h">{sources.length > 1 ? "Sources" : "Source"}</h2>
+        <ul class="srcs change-srcs">
+          {sources.map((source) => <SourceCitation source={source} archive />)}
+        </ul>
+        <p class={`confidence c-${ch.confidence.key}`}><span aria-hidden="true">{ch.confidence.mark}</span> <strong>{ch.confidence.label}.</strong> {ch.confidence.help}.{ch.score ? " The score before the change is an editorial estimate." : ""}</p>
+      </section>
     </article>
 
-    {c && (
-      <aside class="change-aside" aria-label={`About ${c.name}`}>
-        <div class="card ca-card">
-          <a class="ca-head" href={`${base}country/${c.slug}/`}>
-            <span class="ca-flag">{c.flag}</span>
-            <span><b>{c.name}</b><small>{c.region}</small></span>
-          </a>
-          <div class="ca-score">
-            <svg class="ring" width="76" height="76" viewBox="0 0 76 76" aria-hidden="true">
-              <circle cx="38" cy="38" r={r} fill="none" stroke="var(--border)" stroke-width="7" />
-              <circle cx="38" cy="38" r={r} fill="none" stroke={tierColor(c.raw)} stroke-width="7" stroke-linecap="round"
-                stroke-dasharray={`${(c.raw / 100) * circ} ${circ}`} transform="rotate(-90 38 38)" />
-              <text x="38" y="46" text-anchor="middle">{c.score}</text>
-            </svg>
-            <div>
-              <div class="tier">{tierOf(c.raw).name}</div>
-              <p class="sub">{c.disputed ? "Not ranked: disputed territory" : `#${c.rank} of ${countries.length} today`}</p>
-            </div>
-          </div>
+      <aside class="ev-rail" aria-label={c ? `About ${c.name}` : "International entries"}>
+        {c ? (
+        <section class="ev-country" style={`--c:${tierColor(c.raw)}`}>
+          <p class="ev-label">{c.region} · today</p>
+          <a class="ev-name" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}</a>
+          <p class="d-num"><b>{c.score}</b><span>/100</span></p>
+          <div class="d-meter" aria-hidden="true"><i style={`width:${c.raw}%`}></i></div>
+          <p class="ev-tier">{tierOf(c.raw).name} <small>{c.disputed ? "Not ranked: disputed territory" : `#${c.rank} of ${countries.length}`}</small></p>
           <div class="d-chips">
             <span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>Recreational: {REC_LABEL[c.rec]}</span>
             <span class={`chip s-${c.med}`} title={MED_HELP[c.med]}>Medical: {MED_LABEL[c.med]}</span>
           </div>
           <p class="ca-note">{c.note}</p>
-          <a class="btn btn-primary ca-open" href={`${base}country/${c.slug}/`}>Open {c.name} <span aria-hidden="true">→</span></a>
-        </div>
+          <a class="ev-open" href={`${base}country/${c.slug}/`}>Open {c.name} →</a>
+        </section>
+        ) : (
+        <section class="ev-country ev-intl">
+          <p class="ev-label">Tied to no country</p>
+          <p class="ev-name"><span class="flag">{ch.place.flag}</span>International</p>
+          <p class="ca-note">Treaties and decisions of international bodies set the rules countries work within. They bind governments, not people, so they move no score until a national law follows.</p>
+        </section>
+        )}
 
         {nearby.length > 1 && (
-          <div class="ca-more">
-            <h2>More from {c.name}</h2>
+          <section class="ev-more">
+            <h2 class="ev-label">{c ? `More from ${c.name}` : "The treaties in order"}</h2>
             <ol>
               {nearby.map((x) => (
                 <li class={x === ch ? "current" : undefined}>
                   {x === ch
-                    ? <span><time datetime={x.date}>{changeDate(x)}</time><b>{x.kind.emoji} {x.title}</b></span>
-                    : <a href={`${base}history/${x.id}/`}><time datetime={x.date}>{changeDate(x)}</time><b>{x.kind.emoji} {x.title}</b></a>}
+                    ? <span><time datetime={x.date}>{changeDate(x)}</time><b>{x.title}</b></span>
+                    : <a href={`${base}history/${x.id}/`}><time datetime={x.date}>{changeDate(x)}</time><b>{x.title}</b></a>}
                 </li>
               ))}
             </ol>
-            {own.length > nearby.length && <p class="ca-all"><a href={`${base}country/${c.slug}/`}>All {own.length} entries for {c.name} →</a></p>}
-          </div>
+            {own.length > nearby.length && <p class="ca-all"><a href={c ? `${base}country/${c.slug}/` : `${base}history/kind/international/`}>{c ? `All ${own.length} entries for ${c.name}` : "All international entries"} →</a></p>}
+          </section>
         )}
       </aside>
-    )}
     </div>
 
     <nav class="pager" aria-label="Other entries">

@@ -1,6 +1,7 @@
 // Every page of the site, for search engines. Linked from robots.txt.
 import { places, countries, changes, subunitsOf, historyPeriods, CHANGE_CATEGORIES } from "../lib/countries.js";
 import { SITE } from "../lib/exports.js";
+import { MAP_VIEWS } from "../lib/map-views.js";
 
 export function GET({ site }) {
   const root = (site?.href ?? SITE + "/").replace(/\/$/, "") + import.meta.env.BASE_URL;
@@ -13,6 +14,7 @@ export function GET({ site }) {
     ["compare/", latest, 0.6],
     ["changelog/", latest, 0.5],
     ["data/", latest, 0.5],
+    ...MAP_VIEWS.map((v) => [v.slug ? `map/${v.slug}/` : "map/", latest, 0.7]),
     ...places.map((c) => [`country/${c.slug}/`, c.details.reviewed, 0.9]),
     ...countries.flatMap((c) => (subunitsOf(c.id)?.units ?? []).map((sub) => [`country/${c.slug}/${sub.id}/`, c.details.reviewed, 0.7])),
     ...historyPeriods.slice(1).map((p) => [`history/period/${p.slug}/`, null, 0.4]),

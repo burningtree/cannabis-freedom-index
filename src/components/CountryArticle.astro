@@ -6,6 +6,7 @@ import { tierOf, tierColor } from "../lib/tiers.js";
 import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
 import PricePanel from "./PricePanel.astro";
+import SourceCitation from "./SourceCitation.astro";
 import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
 import { answersFor } from "../lib/answers.js";
@@ -160,7 +161,7 @@ const answers = answersFor(v.s);
       <section class="c-unit-sources">
         <h2 class="d-h">Sources</h2>
         <ul class="srcs">
-          {sub.sources.map(([label, url]) => <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>)}
+          {sub.sources.map((source) => <SourceCitation source={source} />)}
         </ul>
       </section>
     )}
@@ -183,9 +184,7 @@ const answers = answersFor(v.s);
             <div class="why">
               <p>{seg.t}</p>
               <ul class="srcs">
-                {seg.src.map(([label, url]) => (
-                  <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>
-                ))}
+                {seg.src.map((source) => <SourceCitation source={source} />)}
               </ul>
             </div>
           )}
@@ -210,7 +209,7 @@ const answers = answersFor(v.s);
         </ol>
         {!sub && (
           <ul class="srcs">
-            {group.sources.map(([label, url]) => <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>)}
+            {group.sources.map((source) => <SourceCitation source={source} />)}
           </ul>
         )}
       </section>
@@ -237,9 +236,7 @@ const answers = answersFor(v.s);
             )}
             <p class="ctx">{x.t}</p>
             <ul class="srcs">
-              {x.src.map(([label, url]) => (
-                <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>
-              ))}
+              {x.src.map((source) => <SourceCitation source={source} />)}
             </ul>
           </div>
         ))}
@@ -257,9 +254,7 @@ const answers = answersFor(v.s);
         <section class="c-sources">
           <h2 class="d-h">All sources</h2>
           <ol>
-            {d.sources.map(([label, url]) => (
-              <li><a href={url} target="_blank" rel="noopener noreferrer">{label}</a></li>
-            ))}
+            {d.sources.map((source) => <SourceCitation source={source} />)}
           </ol>
         </section>
       </>

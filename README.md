@@ -64,7 +64,7 @@ sources:
     url: https://…
 ```
 
-Please include a source link. Or just [open an issue](https://github.com/burningtree/cannabis-freedom-index/issues).
+Please include a source link or a complete bibliographic citation. Or just [open an issue](https://github.com/burningtree/cannabis-freedom-index/issues).
 
 ### Contributing flower prices
 
@@ -78,6 +78,16 @@ example, source-quality rules, currency conversion and validation checklist.
 ## Disclaimer
 
 Scores are editorial estimates, not legal advice. Check current local law before travelling with, buying or growing cannabis.
+
+## Data for research
+
+- `/data/panel.csv`: a score for every place in every year since 1900, with the six segment scores, rebuilt from the history. The `basis` column separates recorded years from assumptions.
+- `/data/history.csv`, `/data/scores.csv`: every history entry with its sources, and today's scores with ISO numeric codes for joining.
+- `source-archive.json`: copies of the sources in the Internet Archive, kept up to date with `node scripts/archive-sources.cjs`.
+
+- `/llms.txt` and `/llms-full.txt`: a guide for language models, and the methodology with every country profile as one Markdown file. Both are generated from the data at build time (`src/lib/llms.js`).
+
+See the [data page](https://cannabisfreedom.fyi/data/) for the columns and how to cite.
 
 ## Licence
 

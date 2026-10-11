@@ -356,6 +356,9 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 .srcs li::before { content: "↗"; position: absolute; left: 0; color: var(--muted); }
 .srcs a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; overflow-wrap: anywhere; }
 .srcs a:hover { color: var(--text); text-decoration-color: currentColor; }
+.srcs cite { color: var(--text-2); font-style: normal; }
+.srcs .src-meta { display: block; margin-top: 2px; color: var(--muted); line-height: 1.45; }
+.srcs li.source-print::before { content: "◇"; }
 .ctx { margin: 0 0 6px; color: var(--text-2); font-size: 14px; }
 .sub-head { margin-bottom: 12px; }
 .sub-head h3 { margin: 0; }
@@ -372,6 +375,8 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 .c-sources li { padding: 3px 0; }
 .c-sources a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; overflow-wrap: anywhere; }
 .c-sources a:hover { color: var(--text); text-decoration-color: currentColor; }
+.c-sources cite { color: var(--text-2); font-style: normal; }
+.c-sources .src-meta { display: block; color: var(--muted); line-height: 1.45; }
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 44px; }
 .pager a { display: grid; gap: 2px; padding: 14px 18px; border: 1px solid var(--border); border-radius: var(--r); background: var(--surface); }
 .pager a:hover { border-color: var(--muted); }
@@ -752,10 +757,18 @@ table.cani tr[hidden] { display: none; }
 .metric-bar { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0 0 14px; }
 .metric-group { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .metric-group > span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-right: 2px; }
-.metric-group button { padding: 5px 11px; border-radius: var(--r); border: 1px solid var(--border); background: var(--surface); color: var(--text-2); font: inherit; font-size: 13px; cursor: pointer; }
-.metric-group button:hover { border-color: var(--muted); color: var(--text); }
-.metric-group button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.metric-group a, .metric-group button { padding: 5px 11px; border-radius: var(--r); border: 1px solid var(--border); background: var(--surface); color: var(--text-2); font: inherit; font-size: 13px; cursor: pointer; }
+.metric-group a:hover, .metric-group button:hover { border-color: var(--muted); color: var(--text); }
+.metric-group a[aria-current], .metric-group button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
 .map-sub { margin: 0 0 14px; }
+/* "Expand" beside the World map title opens the current view on a page of its own */
+.map-expand { font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.map-expand:hover { color: var(--text); text-decoration: underline; text-underline-offset: 5px; }
+/* a map page: just the map, as wide as the window allows */
+.map-page { max-width: none; }
+.map-page #map { padding-top: 28px; }
+.map-page .hero-sm { padding-top: 32px; }
+.map-page .hero-sm h1 { font-size: clamp(32px, 4.4vw, 60px); }
 
 /* Rankings: choose which columns to show */
 .col-off { display: none !important; }
@@ -824,6 +837,15 @@ h3 { font-size: 22px; }
 .hero .lede { margin-top: 20px; }
 .front-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px clamp(32px, 6vw, 96px); margin-top: clamp(36px, 6vw, 72px); align-items: end; }
 .front .lede { font-size: 17px; line-height: 1.5; color: var(--text); max-width: 44ch; margin: 0 0 28px; }
+.front .lede { margin-bottom: 20px; }
+.front-go { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+.front-go .go { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid var(--text); border-radius: var(--r); font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text); }
+.front-go .go.solid { background: var(--text); color: var(--bg); }
+.front-go .go:hover { background: var(--text); color: var(--bg); }
+.front-go .go.solid:hover { opacity: .85; }
+.front-how { margin: 14px 0 0; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.front-how a { color: var(--text-2); }
+.front-how a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
 .front-stats { margin: 0; border-top: 1px solid var(--border); }
 .front-stats div { display: grid; grid-template-columns: 4.5ch 1fr; gap: 16px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--border); }
 .front-stats dt { font: 500 15px var(--mono); text-align: right; }
@@ -902,9 +924,9 @@ h3 { font-size: 22px; }
 .change-score .delta { font-size: 12px; font-weight: 400; }
 
 /* controls: outlined, squared */
-.btn, select, input[type="search"], .metric-group button, .seg-toggle, .kinds a, .periods a, .col-menu > summary { background: none; }
-.metric-group button { padding: 4px 10px; font-size: 12.5px; }
-.metric-group button[aria-pressed="true"], .periods a[aria-current="page"], .btn-primary { background: var(--text); border-color: var(--text); color: var(--bg); font-weight: 500; }
+.btn, select, input[type="search"], .metric-group a, .metric-group button, .seg-toggle, .kinds a, .periods a, .col-menu > summary { background: none; }
+.metric-group a, .metric-group button { padding: 4px 10px; font-size: 12.5px; }
+.metric-group a[aria-current], .metric-group button[aria-pressed="true"], .periods a[aria-current="page"], .btn-primary { background: var(--text); border-color: var(--text); color: var(--bg); font-weight: 500; }
 .chip { background: none; padding: 1px 8px; font-size: 12px; }
 .tag-disputed { border-radius: var(--r); }
 
@@ -997,3 +1019,225 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
   .country-page .c-rail { position: sticky; top: 76px; }
   .country-page .c-main > .d-h:first-child { margin-top: 0; }
 }
+
+/* ══ History ═════════════════════════════════════════════════════════════════
+   The history in numbers, the periods as a histogram you can click, the kinds as
+   filters, then a ledger of entries with each year set large beside its rows. */
+.changes-page .hero-sm .lede { max-width: 62ch; }
+.hist { margin-top: clamp(28px, 4vw, 48px); }
+.hist-stats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0 24px; margin: 0; border-top: 1px solid var(--text); }
+.hist-stats div { padding: 12px 0 14px; display: flex; flex-direction: column-reverse; gap: 6px; }
+.hist-stats dt { font: 400 10.5px/1.35 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.hist-stats dd { margin: 0; font: 400 clamp(26px, 3vw, 40px)/1 var(--mono); letter-spacing: -.05em; }
+.hist-note { margin: 0; padding: 12px 0 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 12.5px; max-width: 96ch; }
+.hist-note a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+/* periods: one column each, as tall as its number of entries */
+.reads ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0 24px; border-top: 1px solid var(--text); }
+.reads li { border-bottom: 1px solid var(--border); }
+.reads li a { display: block; height: 100%; padding: 14px 0 18px; }
+.reads time { font: 400 10.5px var(--mono); letter-spacing: .06em; color: var(--muted); }
+.reads h3 { font: 400 21px/1.15 var(--display); margin: 6px 0 8px; text-wrap: balance; }
+.reads li p { margin: 0; font-size: 12.5px; color: var(--muted); }
+.reads li a:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
+.reads .sub a { text-decoration: underline; text-underline-offset: 3px; }
+.hist-periods { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 4px; align-items: end; height: 150px; margin-top: clamp(36px, 5vw, 60px); border-bottom: 1px solid var(--text); }
+.hist-periods a { display: grid; grid-template-rows: auto 1fr auto; align-items: end; height: 100%; min-width: 0; color: var(--muted); }
+.hist-periods i { display: block; align-self: end; background: var(--border); }
+.hist-periods .hp-n { font: 400 10.5px var(--mono); padding-bottom: 4px; text-align: center; }
+.hist-periods .hp-label { position: relative; height: 0; font: 400 10px var(--mono); letter-spacing: .02em; text-align: center; white-space: nowrap; }
+.hist-periods .hp-label { top: 8px; }
+.hist-periods a:hover { color: var(--text); }
+.hist-periods a:hover i { background: var(--muted); }
+.hist-periods a[aria-current] { color: var(--text); }
+.hist-periods a[aria-current] i { background: var(--text); }
+.hist-kinds { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 44px; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.hist-kinds a { color: var(--muted); padding-bottom: 3px; border-bottom: 1px solid transparent; white-space: nowrap; }
+.hist-kinds a:hover { color: var(--text); }
+.hist-kinds a[aria-current] { color: var(--text); border-bottom-color: var(--text); }
+.hist-kinds small { font-size: inherit; opacity: .7; }
+/* reading order: newest first, or oldest first to read it as it happened */
+.hist-tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 40px; }
+.hist-order { display: flex; gap: 18px; margin-top: 22px; }
+.hist-order button small { font: inherit; color: var(--muted); margin-left: 4px; }
+/* "Score changes only": entries and whole years without one drop out, and the year counts switch */
+.hist-years[data-only="scored"] li:not([data-scored]), .hist-years[data-only="scored"] .hist-year:not([data-scored]) { display: none; }
+.hist-year h2 .n-scored, .hist-years[data-only="scored"] .hist-year h2 .n-all { display: none; }
+.hist-years[data-only="scored"] .hist-year h2 .n-scored { display: block; }
+.hist-order button { padding: 0 0 3px; border: 0; border-bottom: 1px solid transparent; background: none; color: var(--muted); font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+.hist-order button:hover { color: var(--text); }
+.hist-order button[aria-pressed="true"] { color: var(--text); border-bottom-color: var(--text); }
+/* the ledger: the year large on the left, its entries ruled on the right */
+.hist-years { margin-top: 22px; }
+.hist-year { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 0 clamp(24px, 4vw, 56px); border-top: 1px solid var(--text); padding-bottom: clamp(32px, 5vw, 64px); }
+.hist-year h2 { position: sticky; top: 64px; align-self: start; margin: 0; padding-top: 10px; font-size: clamp(56px, 8vw, 120px); line-height: .9; letter-spacing: -.03em; }
+.hist-year h2 small { display: block; margin-top: 10px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.hist-year ol { list-style: none; margin: 0; padding: 0; }
+.hist-year li + li { border-top: 1px solid var(--border); }
+.hist-year li a { display: grid; grid-template-columns: 12ch minmax(0, 1fr) auto; gap: 4px 20px; align-items: baseline; padding: 16px 0 18px; }
+.hist-year time { color: var(--muted); font-size: 11.5px; white-space: nowrap; }
+.he-place { margin: 0 0 6px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.he-kind { color: var(--muted); margin-left: 10px; }
+.hist-year h3 { margin: 0 0 6px; font-size: clamp(21px, 2.1vw, 27px); line-height: 1.12; }
+.hist-year li a:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.he-text { margin: 0; color: var(--text-2); font-size: 14.5px; max-width: 70ch; }
+.hist-year .change-score { justify-content: flex-end; white-space: nowrap; }
+.hist .chl-pager { max-width: none; margin-top: 0; }
+/* who has the most history, and the least */
+.hist-tops { display: grid; grid-template-columns: 1fr 1fr; gap: 40px clamp(32px, 6vw, 96px); margin-top: clamp(44px, 7vw, 88px); }
+.hist-tops section { border-top: 1px solid var(--text); }
+.hist-tops h2 { font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; margin: 0; padding: 12px 0; }
+.hist-tops ol { list-style: none; margin: 0; padding: 0; }
+.hist-tops a { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 8px 0; border-top: 1px solid var(--border); }
+.hist-tops span { font: 400 21px/1.15 var(--display); }
+.hist-tops b { font: 500 13px var(--mono); }
+.hist-tops a:hover span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+@media (max-width: 900px) {
+  .hist-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hist-periods .hp-label, .hist-periods .hp-n { visibility: hidden; }
+  .hist-periods a[aria-current] .hp-label, .hist-periods a[aria-current] .hp-n { visibility: visible; }
+  .hist-year { grid-template-columns: 1fr; }
+  .hist-year h2 { position: static; font-size: 56px; padding-bottom: 12px; }
+  .hist-year li a { grid-template-columns: 1fr auto; }
+  .hist-year .he-body { grid-column: 1 / -1; grid-row: 2; }
+  .hist-tops { grid-template-columns: 1fr; }
+}
+
+/* ══ A country's history, and one history entry ══════════════════════════════ */
+/* the ledger at the end of a country profile: the same rows as the History page */
+.c-ledger { list-style: none; margin: 0; padding: 0; }
+.c-ledger li + li { border-top: 1px solid var(--border); }
+.c-ledger li a { display: grid; grid-template-columns: 13ch minmax(0, 1fr) auto; gap: 4px 20px; align-items: baseline; padding: 14px 0 16px; }
+.c-ledger time { color: var(--muted); font-size: 11.5px; }
+.c-ledger h3 { margin: 0 0 6px; font-size: 21px; line-height: 1.15; }
+.c-ledger li a:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.c-ledger .he-kind { margin-left: 0; }
+.c-ledger .change-score { justify-content: flex-end; white-space: nowrap; }
+.drawer-inner .c-ledger li a { grid-template-columns: 1fr auto; }
+.drawer-inner .c-ledger .he-body { grid-column: 1 / -1; grid-row: 2; }
+@media (max-width: 700px) {
+  .c-ledger li a { grid-template-columns: 1fr auto; }
+  .c-ledger .he-body { grid-column: 1 / -1; grid-row: 2; }
+}
+
+/* one entry: the event large, the score it moved beside it, then segments, sources and the country */
+.ev-top { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: 32px clamp(32px, 6vw, 96px); align-items: end; padding-bottom: clamp(32px, 5vw, 56px); }
+.ev-top.ev-plain { grid-template-columns: minmax(0, 1fr); }
+.ev-top .eyebrow a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.ev-top h1 { font-size: clamp(40px, 6.4vw, 92px); line-height: .95; letter-spacing: -.02em; margin: 16px 0 0; text-wrap: balance; }
+.ev-top .lede { font-size: 19px; line-height: 1.5; color: var(--text); max-width: 60ch; margin: 24px 0 0; }
+.ev-label { margin: 0; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.ev-move { border-top: 1px solid var(--text); padding-top: 12px; }
+.ev-figures { margin: 14px 0 0; display: flex; align-items: baseline; gap: 16px; font: 400 clamp(64px, 8vw, 120px)/.85 var(--mono); letter-spacing: -.07em; }
+.ev-figures b { font-weight: 400; padding-bottom: 12px; border-bottom: 4px solid var(--c); }
+.ev-figures span { font-size: .35em; color: var(--muted); letter-spacing: 0; }
+.ev-delta { margin: 14px 0 0; font-size: 13px; }
+.ev-body { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: 40px clamp(32px, 6vw, 96px); align-items: start; }
+.ev-body.no-aside { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
+.ev .d-h { margin: 0 0 8px; padding-top: 12px; border-top: 1px solid var(--text); font-size: 26px; }
+.ev-main section + section, .ev-main .change-note + section { margin-top: 44px; }
+.ev-segs { list-style: none; margin: 0; padding: 0; }
+.ev-segs li { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.ev-seg-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+.ev-seg-top > span { font: 400 21px/1.15 var(--display); }
+.ev-seg-top small { font: 400 11px var(--mono); color: var(--muted); }
+.ev-seg-top b { font: 500 14px var(--mono); white-space: nowrap; }
+.ev-seg-top b i { font-style: normal; color: var(--muted); }
+.ev-seg-top em { font-style: normal; margin-left: 10px; }
+.ev-segs .same .ev-seg-top > span, .ev-segs .same b { color: var(--muted); }
+.ev-track { position: relative; height: 4px; background: var(--border); }
+.ev-track i { position: absolute; inset: 0 auto 0 0; min-width: 3px; }
+.ev-track span { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--text); }
+.ev .confidence { margin-top: 16px; }
+.ev-rail { position: sticky; top: 76px; display: grid; gap: 40px; }
+.ev-country { border-top: 1px solid var(--text); padding-top: 12px; display: grid; gap: 12px; }
+.ev-name { font: 400 34px/1 var(--display); display: flex; align-items: baseline; gap: 12px; }
+.ev-name .flag { font-size: .6em; }
+.ev-name:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.ev-country .d-num b { font-size: 56px; }
+.ev-country .d-meter { margin: 0; }
+.ev-tier { margin: 0; font: 400 22px/1.1 var(--display); }
+.ev-tier small { display: block; margin-top: 4px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.ev-country .d-chips { margin: 0; }
+.ev-open { font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.ev-open:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.ev-more { border-top: 1px solid var(--text); padding-top: 12px; }
+.ev-more ol { list-style: none; margin: 10px 0 0; padding: 0; }
+.ev-more li > * { display: grid; gap: 3px; padding: 9px 0; border-top: 1px solid var(--border); color: var(--text-2); }
+.ev-more time { color: var(--muted); font-size: 10.5px; }
+.ev-more b { font: 400 17px/1.2 var(--display); }
+.ev-more li a:hover b { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.ev-more li.current > * { color: var(--text); }
+.ev-more li.current b::before { content: "→ "; font-family: var(--mono); font-size: .75em; }
+.ev .pager { margin-top: clamp(48px, 7vw, 88px); }
+@media (max-width: 900px) {
+  .ev-top, .ev-body, .ev-body.no-aside { grid-template-columns: minmax(0, 1fr); }
+  .ev-rail { position: static; }
+}
+
+/* a long read inside a history entry (articles/<id>.md) */
+.ev-article { margin-bottom: 52px; border-top: 1px solid var(--text); padding-top: 12px; }
+.ev-article > .ev-label { margin-bottom: 14px; }
+.ev-article figure { margin: 0 0 28px; }
+.ev-article img { display: block; width: 100%; height: auto; max-height: 520px; object-fit: cover; background: var(--surface-2); }
+.ev-article figcaption { margin-top: 8px; font: 400 10.5px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); }
+.ev-article figcaption span { color: var(--muted); margin-left: 8px; }
+.ev-article figcaption a { text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.prose { font-size: 17px; line-height: 1.6; max-width: 66ch; }
+.prose > p:first-child { font-size: 20px; line-height: 1.5; }
+.prose p { margin: 0 0 1.1em; }
+.prose h2 { font-size: 30px; line-height: 1.1; margin: 1.6em 0 .5em; }
+.prose h3 { font-size: 22px; margin: 1.4em 0 .4em; }
+.prose a { text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: var(--muted); text-underline-offset: 3px; }
+.prose a:hover { text-decoration-color: currentColor; }
+.prose blockquote { margin: 1.6em 0; padding: 0 0 0 20px; border-left: 2px solid var(--text); font: italic 400 clamp(24px, 2.6vw, 32px)/1.2 var(--display); }
+.prose blockquote p { margin: 0; }
+.prose ul, .prose ol { margin: 0 0 1.1em; padding-left: 1.2em; }
+.prose li { margin-bottom: .4em; }
+.prose img { max-width: 100%; height: auto; }
+.prose strong { font-weight: 600; }
+/* tables in an article: ruled, figures in the text face, headers as small labels */
+.prose table { width: 100%; max-width: none; margin: 1.6em 0; border-collapse: collapse; border-top: 1px solid var(--text); font-size: 14.5px; line-height: 1.4; }
+.prose th { padding: 9px 14px 8px 0; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); text-align: left; vertical-align: bottom; white-space: normal; cursor: default; border-bottom: 1px solid var(--border); }
+.prose th:empty { padding: 0; border: 0; }
+.prose td { padding: 9px 14px 9px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+.prose td:first-child { color: var(--text-2); width: 30%; }
+.prose tbody tr:hover { background: none; }
+.prose td a, .prose li a { white-space: normal; }
+@media (max-width: 700px) { .prose table { display: block; overflow-x: auto; } .prose td:first-child { width: auto; } }
+/* in the ledgers: this entry has a long read */
+.he-article { margin-left: 12px; padding: 1px 6px; border: 1px solid var(--muted); font: 400 9.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); vertical-align: middle; white-space: nowrap; }
+
+/* a saved copy of a source, beside the original link */
+.src-archived { margin-left: 8px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.src-archived:hover { color: var(--text); }
+
+/* Compare: one flat ruled table. Row labels are small mono captions like everywhere else, the
+   label column has no fill of its own, and a column never grows wider than a readable line, so
+   one or two countries do not stretch across the whole page. */
+.cmp-card { border: 0; border-radius: 0; background: none; }
+.cmp thead th { border-top: 1px solid var(--text); }
+.cmp { width: min(100%, calc(190px + var(--cols, 1) * 440px)); }
+.cmp th, .cmp td { padding: 16px 20px 16px 0; }
+.cmp td, .cmp thead th + th { padding-left: 20px; }
+.cmp tbody th { width: 190px; background: var(--bg); font: 400 11.5px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.cmp tbody th small { font: 400 10.5px/1.5 var(--mono); text-transform: none; letter-spacing: 0; margin-top: 4px; }
+.cmp thead th { background: var(--bg); }
+.cmp thead th:first-child { width: 190px; }
+.cmp-head a { font-size: 26px; line-height: 1.1; }
+.cmp-head .flag { font-size: 18px; }
+.cmp-score b { font: 400 44px/1 var(--mono); letter-spacing: -.05em; }
+.cmp-val b { font: 500 18px var(--mono); }
+.cmp .best b { color: var(--text); }
+.cmp-divider th { background: none; color: var(--text); font: 400 11.5px var(--mono); letter-spacing: .06em; padding: 28px 0 10px; border-bottom: 1px solid var(--text); }
+.cmp-empty { border: 0; border-top: 1px solid var(--text); border-radius: 0; background: none; padding: 20px 0; }
+@media (max-width: 640px) {
+  .cmp tbody th, .cmp thead th:first-child { width: 120px; }
+}
+
+/* The project in numbers, at the end of the home page: the history strip, four to a row, each
+   number a link to what it counts */
+.numbers-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.numbers-grid div { border-bottom: 1px solid var(--border); padding: 16px 0 18px; }
+.numbers-grid dd { font-size: clamp(34px, 4.4vw, 60px); }
+.numbers-grid dd a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+@media (max-width: 760px) { .numbers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

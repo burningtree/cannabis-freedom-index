@@ -1,0 +1,20 @@
+---
+// The history entries that have a full article, oldest first: the list on /articles/.
+import { changes, articles } from "../lib/countries.js";
+
+const base = import.meta.env.BASE_URL;
+const items = changes.filter((ch) => articles.has(ch.id)).sort((x, y) => x.date.localeCompare(y.date));
+---
+<section class="reads" id="articles">
+  <ol>
+    {items.map((ch) => (
+      <li>
+        <a href={`${base}history/${ch.id}/`}>
+          <time datetime={ch.date}>{ch.date.slice(0, 4)}</time>
+          <h3>{ch.title}</h3>
+          <p>{ch.place.flag} {ch.place.name}{articles.get(ch.id).data.model && <span> · {articles.get(ch.id).data.model}</span>}</p>
+        </a>
+      </li>
+    ))}
+  </ol>
+</section>

@@ -1,0 +1,812 @@
+---
+import Base from "../layouts/Base.astro";
+import DidYouKnow from "../components/DidYouKnow.astro";
+import Changes from "../components/Changes.astro";
+import ProjectNumbers from "../components/ProjectNumbers.astro";
+import AverageChart from "../components/AverageChart.astro";
+import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places, trendOf, changeDate, TREND_YEARS } from "../lib/countries.js";
+import { TIERS, tierColor, tierOf } from "../lib/tiers.js";
+import { PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "../lib/segment-ids.js";
+import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor } from "../lib/prices.js";
+import { SHOW_PRICES } from "../lib/config.js";
+import { homeSeo } from "../lib/seo.js";
+import { viewByMetric } from "../lib/map-views.js";
+
+// The home page, or, with `view`, just the map on a page of its own (see /map/).
+const { view = null } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+// where each map option lives: its own page, or the home page for the overall index
+const viewHref = (metric) => `${base}map/${viewByMetric[metric].slug ? viewByMetric[metric].slug + "/" : ""}`;
+const current = view ? view.metric : "index";
+// one option of the map: on the home page it recolours the map in place; on a map page it is a
+// plain link to that view's page
+const viewAttrs = (metric) => ({ href: viewHref(metric), "data-metric": metric, "aria-current": current === metric ? "true" : undefined });
+const count = (fn) => countries.filter(fn).length;
+// 48,000,000 → "48M", 770,000 → "770k"
+const compact = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)}M` : n >= 1e3 ? `${+(n / 1e3).toPrecision(2)}k` : String(n));
+const useNote = (c) => c.use.estimate
+  ? `Estimate: no national survey, so the regional median of ${c.use.prevalence}% of people aged 15–64 is assumed`
+  : `${c.use.prevalence}% of people aged 15–64 used cannabis in the past year (${c.use.year} survey)`;
+const stats = [
+  [places.length, "territories scored"],
+  [count((c) => c.raw >= 60), "reach the “Free” tier (60+)"],
+  [count((c) => c.raw >= 40), "score 40+: legal to possess and grow, with limits"],
+  [count((c) => c.raw < 15), "score under 15: prison is a real risk"],
+  [count((c) => c.rec === "death"), "keep the death penalty for cannabis offences", "danger"],
+];
+const legend = [...TIERS].reverse().map((t, i, arr) => ({
+  name: t.name, min: t.min, max: i < arr.length - 1 ? arr[i + 1].min - 1 : 100, i,
+}));
+const MED_ORDER = ["yes", "limited", "no"];
+// What the browser needs for the map: scores only, no prose.
+// `ratio` is the share of people who use cannabis divided by the index score: how far use runs
+// ahead of freedom. A score below 1 counts as 1, so that a zero does not divide.
+const mapData = places.map(({ id, num, name, flag, raw, score, rank, s, use, planting, clubs, driving, visitors, rec, med }) =>
+  ({ id, num, name, flag, raw, score, rank, s, planting, clubs, driving, visitors, rec, med, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {}, use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2) } }));
+// States, provinces and territories of the federations, for the map's "show states" switch.
+// Keyed like the shapes in src/data/subunits.geo.json: "us/ca".
+const unitData = Object.fromEntries(countries.flatMap((c) => {
+  const group = subunitsOf(c.id);
+  return group ? group.units.map((u) => [`${c.slug}/${u.id}`, { id: u.id, country: c.id, name: u.name, raw: u.raw, score: u.score, s: u.s, rank: u.rank, of: group.units.length }]) : [];
+}));
+// Cannabis use on the map: one hue from light to dark, in five steps. Each step starts at `min`.
+const USE_SCALES = {
+  users: { label: "Cannabis users", steps: [[0, "Under 10k"], [1e4, "10k–100k"], [1e5, "100k–1M"], [1e6, "1M–10M"], [1e7, "10M or more"]] },
+  prevalence: { label: "Share who use cannabis", steps: [[0, "Under 1%"], [1, "1–3%"], [3, "3–7%"], [7, "7–15%"], [15, "15% or more"]] },
+  ratio: {
+    label: "Use relative to freedom",
+    steps: [[0, "Under 0.15"], [0.15, "0.15–0.3"], [0.3, "0.3–0.5"], [0.5, "0.5–1"], [1, "1 or more"]],
+    note: "Share of people aged 15–64 who use cannabis, divided by the index score. A high value means many people use cannabis where the law gives them little freedom to.",
+  },
+};
+const PRICE_SCALE = {
+  steps: [[0, "Under $5/g"], [5, "$5–10/g"], [10, "$10–15/g"], [15, "$15–20/g"], [20, "$20/g or more"]],
+  note: "Latest sourced flower price, normalised to US dollars per gram. Street and medical markets are kept separate.",
+};
+// Seeds and clones on the map: one option per field, coloured by the status' tone.
+const PLANTING_FIELDS = { seeds: "Seeds", seeds_trade: "Seed sales", clones: "Clones", clones_trade: "Clone sales" };
+// Each status gets its own step of the tier colours, so that no two legend entries look alike.
+const PLANTING_COLOR = { legal: 5, licensed: 4, grey: 3, illegal: 0, open: 5, regulated: 4, gift: 3, unclear: 2, banned: 0 };
+const plantingScale = (statuses) => Object.fromEntries(Object.entries(statuses).map(([k, v]) => [k, { label: v.label, color: `var(--t${PLANTING_COLOR[k]})` }]));
+const PLANTING_SCALES = { status: plantingScale(PLANTING_STATUS), trade: plantingScale(PLANTING_TRADE) };
+// Sections with one status (clubs, driving, visitors) on the map: one option each.
+// The two headline statuses of every profile, offered on the map the same way. `complete` marks
+// sections every country has, so their legend needs no "not researched" entry.
+const LAW_SECTIONS = {
+  rec: { name: "Recreational status", complete: true, statuses: Object.fromEntries(REC_ORDER.map((k) => [k, { label: REC_LABEL[k], help: REC_HELP[k] }])),
+    tiers: { legal: 5, partial: 4, decrim: 3, illegal: 1, death: 0 },
+    sub: "Green means adults may legally have cannabis, yellow that small amounts bring at most a fine, red that it is a crime; the darkest red marks laws with a death penalty.",
+    note: "The legal status of cannabis for adults. The index score measures much more than this one label." },
+  med: { name: "Medical status", complete: true, statuses: Object.fromEntries(MED_ORDER.map((k) => [k, { label: MED_LABEL[k], help: MED_HELP[k] }])),
+    tiers: { yes: 5, limited: 3, no: 0 },
+    sub: "Green means a medical cannabis programme is legal, yellow that access is limited, red that there is none.",
+    note: "Whether patients can get cannabis legally. Medical programmes are not part of the score." },
+};
+const MAP_SECTIONS = { ...LAW_SECTIONS, ...STATUS_SECTIONS };
+const STATUS_SCALES = Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, { name: section.name,
+  scale: Object.fromEntries(Object.entries(section.statuses).map(([k, v]) => [k, { label: v.label, help: v.help, color: `var(--t${section.tiers[k]})` }])) }]));
+const streetFlower = (c) => latestPricesFor(c.id).street;
+
+// Rankings columns the reader can switch on and off. `on` marks the ones shown by default.
+// Extra columns sort on a number kept on the row: higher means freer (or bigger), -1 means no data.
+const order = (keys) => Object.fromEntries(keys.map((k, i) => [k, keys.length - i]));
+const STATUS_RANK = { ...order(Object.keys(PLANTING_STATUS)), ...order(["open", "regulated", "gift", "unclear", "banned"]) };
+const statusCol = (key, label, vocab, helpIndex) => ({
+  key, label, group: "Context",
+  sort: (c) => STATUS_RANK[c.planting?.[key]] ?? -1,
+  chip: (c) => c.planting && { ...vocab[c.planting[key]], help: vocab[c.planting[key]].help[helpIndex] },
+});
+const BASE_COLUMNS = [
+  { key: "region", label: "Region" }, { key: "users", label: "Users" }, { key: "share", label: "Share of adults" },
+  ...(SHOW_PRICES ? [{ key: "price", label: "Price per gram" }] : []),
+  { key: "rec", label: "Recreational" }, { key: "med", label: "Medical" },
+];
+const EXTRA_COLUMNS = [
+  ...SEGMENTS.map((s, i) => ({ key: `s${i}`, label: s.name, group: "Score segments", sort: (c) => c.s[i], score: (c) => c.s[i] })),
+  { key: "pop", label: "Population", group: "People", sort: (c) => c.population, text: (c) => compact(c.population) },
+  statusCol("seeds", "Seeds", PLANTING_STATUS, 0),
+  statusCol("seeds_trade", "Seed sales", PLANTING_TRADE, 0),
+  statusCol("clones", "Clones", PLANTING_STATUS, 1),
+  statusCol("clones_trade", "Clone sales", PLANTING_TRADE, 1),
+  ...Object.entries(STATUS_SECTIONS).map(([key, section]) => ({ key, label: section.name, group: "Context",
+    sort: (c) => order(Object.keys(section.statuses))[c[key]] ?? -1, chip: (c) => c[key] && section.statuses[c[key]] })),
+];
+const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", "People", "Context"].map((g) => [g, EXTRA_COLUMNS.filter((x) => x.group === g)])];
+---
+<Base
+  title={view ? view.title : undefined}
+  description={view ? view.lede : `Where is cannabis legal? Cannabis laws in ${countries.length} countries, each scored from 0 to 100 for possession, home growing, penalties and legal access, with a world map, rankings${SHOW_PRICES ? ", retail prices" : ""} and legal history.`}
+  jsonld={view ? undefined : homeSeo(Astro.site, countries.length)}>
+  <main id="top" class:list={{ "map-page": view }}>
+    {view && (
+      <section class="hero hero-sm">
+        <p class="eyebrow"><a href={base}>← Cannabis Freedom Index</a> <span>World map</span></p>
+        <h1>{view.title}</h1>
+        <p class="lede">{view.lede}</p>
+      </section>
+    )}
+    {/* The opening: the question, the answer in one number with its history, then what just changed. */}
+    {!view && <section class="front">
+      <p class="eyebrow">Cannabis Freedom Index <span>{DATA_SNAPSHOT} edition</span></p>
+      <h1>How free is cannabis <em>in every country?</em></h1>
+      <div class="front-grid">
+        <div class="front-intro">
+          <p class="lede">Every country gets a score from 0 to 100 for how free you are to carry, grow, share and use cannabis. Below: the map, the rankings{SHOW_PRICES && ", sourced retail prices"} and how each country's law got where it is.</p>
+          <p class="front-go">
+            <a class="go solid" href="#map">See the map <span aria-hidden="true">↓</span></a>
+            <a class="go" href="#rankings">Rankings <span aria-hidden="true">↓</span></a>
+          </p>
+          <dl class="front-stats">
+            {stats.map(([n, label, tone]) => <div class={tone ?? ""}><dt>{n}</dt><dd>{label}</dd></div>)}
+          </dl>
+          <p class="front-how"><a href="#methodology">How the scores are made <span aria-hidden="true">→</span></a></p>
+        </div>
+        <AverageChart />
+      </div>
+      {/* The two ends of the ranking, side by side: the leader of each list is set largest. */}
+      <div class="extremes">
+        {[["Freest", countries.slice(0, 5)], ["Least free", countries.slice(-5).reverse()]].map(([label, list]) => (
+          <section aria-label={label}>
+            <h2>{label}</h2>
+            <ol>
+              {list.map((c) => (
+                <li>
+                  <a href={`${base}country/${c.slug}/`} data-country={c.id} style={`--c:${tierColor(c.score)}`}>
+                    <span class="ext-rank">{String(c.rank).padStart(2, "0")}</span>
+                    <span class="ext-name"><span class="flag">{c.flag}</span>{c.name}</span>
+                    <span class="ext-tier">{tierOf(c.raw).name}</span>
+                    <b>{c.score}</b>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </div>
+      <DidYouKnow />
+      <Changes />
+    </section>}
+
+    <section class="section" id="map">
+      {!view && (
+        <div class="section-head">
+          <div>
+            <h2>World map</h2>
+          </div>
+          <a class="map-expand" id="mapExpand" href={viewHref(current)} title="Open this map on a page of its own">Expand <span aria-hidden="true">↗</span></a>
+        </div>
+      )}
+      <nav class="metric-bar" id="metric" aria-label="Colour the map by" data-initial={current} data-page={view ? "" : undefined}>
+        <div class="metric-group">
+          <span>Freedom</span>
+          <a {...viewAttrs("index")}>Overall index</a>
+          {SEGMENTS.map((s, i) => <a {...viewAttrs(String(i))}>{s.name}</a>)}
+        </div>
+        <div class="metric-group">
+          <span>Use</span>
+          <a {...viewAttrs("users")}>Number of users</a>
+          <a {...viewAttrs("prevalence")}>Share of adults</a>
+          <a {...viewAttrs("ratio")}>Share of users ÷ index</a>
+        </div>
+        <div class="metric-group">
+          <span>Law</span>
+          {Object.entries(LAW_SECTIONS).map(([key, section]) => <a {...viewAttrs(`status:${key}`)}>{section.name}</a>)}
+        </div>
+        {SHOW_PRICES && (
+          <div class="metric-group">
+            <span>Price</span>
+            {PRICE_MARKETS.map((market) => <a {...viewAttrs(`price:${market}`)}>{PRICE_MARKET_LABEL[market]}</a>)}
+          </div>
+        )}
+        <div class="metric-group">
+          <span>Context</span>
+          {Object.entries(PLANTING_FIELDS).map(([field, label]) => <a {...viewAttrs(`plant:${field}`)}>{label}</a>)}
+          {Object.entries(STATUS_SECTIONS).map(([key, section]) => <a {...viewAttrs(`status:${key}`)}>{section.name}</a>)}
+        </div>
+      </nav>
+      <p class="sub map-sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown." data-price="Pale yellow means cheaper, violet means more expensive. Countries without a sourced price are hatched." data-planting="Green means legal or sold freely, red means illegal or banned. Hatched countries have not been researched yet. Not part of the score.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
+      <div class="card map-card">
+        <div class="map-wrap" id="mapWrap">
+          <svg id="mapSvg" viewBox="0 0 960 480" role="img" aria-label="World map coloured by Cannabis Freedom Index"></svg>
+          <div class="map-zoom">
+            <button class="icon-btn" id="zoomIn" aria-label="Zoom in">+</button>
+            <button class="icon-btn" id="zoomOut" aria-label="Zoom out">−</button>
+            <button class="icon-btn" id="zoomReset" aria-label="Reset zoom">⟲</button>
+          </div>
+          <div class="tooltip" id="tooltip" hidden></div>
+          <p class="map-msg" id="mapMsg">Loading map…</p>
+        </div>
+        <div class="legend" data-legend="score">
+          {legend.map((t) => <span><i class="sw" style={`background:var(--t${t.i})`}></i>{t.name} · {t.min}–{t.max}</span>)}
+          <span><i class="sw sw-nodata"></i>No data</span>
+        </div>
+        {Object.entries(USE_SCALES).map(([key, scale]) => (
+          <div class="legend" data-legend={key} hidden>
+            {scale.steps.map(([, text], i) => <span><i class="sw" style={`background:var(--u${i})`}></i>{text}</span>)}
+            <span><i class="sw sw-nodata"></i>No data</span>
+            <span class="legend-note">{scale.note ?? "People aged 15–64 who used cannabis in the past year. Figures marked ~ are regional estimates."}</span>
+          </div>
+        ))}
+        {SHOW_PRICES && <div class="legend" data-legend="price" hidden>
+          {PRICE_SCALE.steps.map(([, text], i) => <span><i class="sw" style={`background:var(--p${i})`}></i>{text}</span>)}
+          <span><i class="sw sw-nodata"></i>No data</span>
+          <span class="legend-note">{PRICE_SCALE.note}</span>
+        </div>}
+        {Object.entries(MAP_SECTIONS).map(([key, section]) => (
+          <div class="legend" data-legend={`status:${key}`} hidden>
+            {Object.values(STATUS_SCALES[key].scale).map((v) => <span title={v.help || undefined}><i class="sw" style={`background:${v.color}`}></i>{v.label}</span>)}
+            {!section.complete && <span><i class="sw sw-nodata"></i>Not researched yet</span>}
+            <span class="legend-note">{section.complete ? section.note : `${section.note} Shown for context and not part of the score.`}</span>
+          </div>
+        ))}
+        {Object.entries(PLANTING_SCALES).map(([key, scale]) => (
+          <div class="legend" data-legend={`plant-${key}`} hidden>
+            {Object.values(scale).map((v) => <span><i class="sw" style={`background:${v.color}`}></i>{v.label}</span>)}
+            <span><i class="sw sw-nodata"></i>Not researched yet</span>
+            <span class="legend-note">Seed and clone rules are shown for context and are not part of the score.</span>
+          </div>
+        ))}
+        <div class="map-under" id="mapUnder">
+          <label class="map-toggle" title="Show the United States, Canada and Australia state by state">
+            <input type="checkbox" id="showUnits"> States and provinces
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rankings" hidden={!!view}>
+      <div class="section-head">
+        <div>
+          <h2>Rankings</h2>
+          <p class="sub"><span id="resultCount">{places.length} of {places.length} countries and territories</span></p>
+        </div>
+        <div class="filters">
+          <input type="search" id="search" placeholder="Search country…" aria-label="Search country">
+          <select id="region" aria-label="Filter by region">
+            <option value="">All regions</option>
+            {regions.map((r) => <option>{r}</option>)}
+          </select>
+          <select id="recFilter" aria-label="Filter by recreational status">
+            <option value="">Any status</option>
+            {REC_ORDER.map((k) => <option value={k}>{REC_LABEL[k]}</option>)}
+          </select>
+          <details class="col-menu" id="colMenu">
+            <summary>Columns</summary>
+            <div class="col-panel">
+              {columnGroups.map(([group, cols], g) => (
+                <fieldset>
+                  <legend>{group}</legend>
+                  {cols.map((col) => <label><input type="checkbox" data-col={col.key} checked={g === 0}> {col.label}</label>)}
+                </fieldset>
+              ))}
+              <button type="button" class="btn" id="colReset">Reset</button>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="card table-card">
+        <table id="table">
+          <thead>
+            <tr>
+              <th data-sort="rank" class="num" aria-sort="ascending">#</th>
+              <th data-sort="name">Country</th>
+              <th data-sort="region" data-col="region" class="hide-sm">Region</th>
+              <th data-sort="users" data-col="users" class="num-col hide-md" title="People who used cannabis in the past year">Users</th>
+              <th data-sort="share" data-col="share" class="num-col hide-md" title="Share of people aged 15–64 who used cannabis in the past year">Share</th>
+              {SHOW_PRICES && <th data-sort="price" data-col="price" class="num-col hide-md" title="Latest sourced street-flower price, normalised to US dollars per gram">Price/g</th>}
+              <th data-sort="rec" data-col="rec" class="hide-sm">Recreational</th>
+              <th data-sort="med" data-col="med" class="hide-md">Medical</th>
+              {EXTRA_COLUMNS.map((col) => <th data-sort={col.key} data-col={col.key} class:list={["col-off", { "num-col": !col.chip }]}>{col.label}</th>)}
+              <th data-sort="score" class="score-col">Index</th>
+            </tr>
+          </thead>
+          <tbody>
+            {places.map((c) => (
+              <tr data-id={c.id} data-rank={c.rank ?? c.worldRank - 0.5} data-name={c.name} data-region={c.region}
+                  data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users} data-share={c.use.prevalence} data-price={SHOW_PRICES ? streetFlower(c)?.usd ?? -1 : undefined}
+                  {...Object.fromEntries(EXTRA_COLUMNS.map((col) => [`data-${col.key}`, col.sort(c)]))}>
+                <td class="num">{c.rank ?? "–"}</td>
+                <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}{trendOf(c) && ((t) => <span class={`trend ${t.delta > 0 ? "up" : "down"}`} title={`${t.delta > 0 ? "+" : "−"}${Math.abs(t.delta)} ${Math.abs(t.delta) === 1 ? "point" : "points"} since ${t.since}. Latest change: ${t.last.title} (${changeDate(t.last)})`}>{t.delta > 0 ? "▲" : "▼"}{Math.abs(t.delta)}</span>)(trendOf(c))}</a>{c.disputed && <span class="tag-disputed" title={c.disputed.note}>disputed</span>}</td>
+                <td class="hide-sm" data-col="region">{c.region}</td>
+                <td class="num-col hide-md" data-col="users" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{compact(c.use.users)}</td>
+                <td class="num-col hide-md" data-col="share" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{c.use.prevalence.toFixed(1)}%</td>
+                {SHOW_PRICES && <td class="num-col hide-md" data-col="price">{streetFlower(c) ? `$${streetFlower(c).usd.toFixed(2)}` : "—"}</td>}
+                <td class="hide-sm" data-col="rec"><span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>{REC_LABEL[c.rec]}</span></td>
+                <td class="hide-md" data-col="med"><span class={`chip s-${c.med}`} title={MED_HELP[c.med]}>{MED_LABEL[c.med]}</span></td>
+                {EXTRA_COLUMNS.map((col) => {
+                  const chip = col.chip?.(c);
+                  return (
+                    <td data-col={col.key} class:list={["col-off", { "num-col": !col.chip }]}>
+                      {col.score ? <span class="pill" style={`--c:${tierColor(col.score(c) * 10)}`}>{col.score(c)}</span>
+                        : col.text ? col.text(c)
+                        : chip ? <span class={`chip s-${chip.tone}`} title={chip.help}>{chip.label}</span>
+                        : <span class="muted">—</span>}
+                    </td>
+                  );
+                })}
+                <td>
+                  <div class="score-cell">
+                    <span class="score-val">{c.score}</span>
+                    <div class="bar"><i style={`width:${c.raw}%;background:${tierColor(c.raw)}`}></i></div>
+                  </div>
+                </td>
+              </tr>
+            ))}
+            <tr id="emptyRow" hidden><td colspan="40" class="empty">No countries match these filters.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-updated trend-note"><span class="trend up">▲</span> <span class="trend down">▼</span> after a name: points the score gained or lost since {+lastUpdated.slice(0, 4) - TREND_YEARS}. No mark means it did not move. Hover a mark to see the latest change.</p>
+      <p class="table-updated">Last updated: <time datetime={lastUpdated}>{formatDate(lastUpdated)}</time></p>
+    </section>
+
+    {!view && <section class="section" id="methodology">
+      <div class="section-head">
+        <div>
+          <h2>Methodology</h2>
+          <p class="sub">Six segments, each scored 0–10 against fixed levels, combined by weight into a 0–100 index. Half the score is simply whether you may possess and grow; a fifth is how hard users are punished. Rules for industry, products and medical programmes are not scored.</p>
+        </div>
+      </div>
+      {/* The rule behind every score, said large; then how the 100 points are divided. */}
+      <div class="tomato">
+        <p class="tomato-label">🍅 The tomato standard</p>
+        <p class="tomato-big">A 10 means <em>no cannabis-specific rule at all</em>: carry any amount, grow a whole field, give it away, buy it anywhere.</p>
+        <p>Every cap, licence, registry and restricted zone costs points, because regulation is counted as unfreedom. Canada lets you carry 30 g and grow four plants — that is legal, but it is not unlimited, so it scores 6 and 4, not 9 and 8. This is why even the most liberal countries land around 50 and the “Free” tier is empty.</p>
+      </div>
+      <div class="weights" aria-hidden="true">
+        {SEGMENTS.map((s) => <div style={`flex:${s.weight}`} title={`${s.name} — ${s.weight}%`}><b>{s.weight}</b><span>{s.name}</span></div>)}
+      </div>
+      <div class="seg-grid">
+        {SEGMENTS.map((s) => (
+          <div class="seg">
+            <div class="seg-top"><h3>{s.name}</h3><span class="seg-w">{s.weight}%</span></div>
+            <p>{s.desc}</p>
+            <ul class="anchors">{s.levels.map(([n, t]) => <li><b>{n}</b>{t}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <div class="note-card">
+        <h3>Read this before relying on it</h3>
+        <p>Scores are editorial estimates that blend the written law with how it is enforced in practice. Federal countries (United States, Australia, India) get a single national estimate that hides large internal differences. Scores between the listed levels mean a country sits between two descriptions. Every country has a written explanation and linked sources for each segment — select a country to read them. For many smaller countries the only sources available are secondary summaries, and the explanations say so where a figure could not be confirmed.</p>
+        <p>Laws change quickly and this is <strong>not legal advice</strong>. Always check current local law before travelling with, buying or growing cannabis.</p>
+      </div>
+    </section>}
+
+    {!view && <ProjectNumbers />}
+
+  </main>
+
+  <dialog id="detail" class="drawer" aria-label="Country details">
+    <div class="drawer-bar">
+      <a class="icon-btn" id="dCompare" href={`${base}compare/`} aria-label="Compare with other countries" title="Compare with other countries">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 20V9M12 20V4M19 20v-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </a>
+      <button class="icon-btn" id="dClose" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-inner" id="detailBody"></div>
+  </dialog>
+
+  <script type="application/json" id="cfi-data" set:html={JSON.stringify(mapData)} />
+  <script type="application/json" id="cfi-units" set:html={JSON.stringify(unitData)} />
+  <script type="application/json" id="cfi-use-scales" set:html={JSON.stringify(USE_SCALES)} />
+  <script type="application/json" id="cfi-price-scale" set:html={JSON.stringify(PRICE_SCALE)} />
+  <script type="application/json" id="cfi-planting" set:html={JSON.stringify({ fields: PLANTING_FIELDS, scales: PLANTING_SCALES, sections: STATUS_SCALES, subs: Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, section.complete ? section.sub : `${section.sub} Hatched countries have not been researched yet. Not part of the score.`])) })} />
+  <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => s.name))} />
+
+  <script>
+    import { select, selectAll } from "d3-selection";
+    import { geoNaturalEarth1, geoPath } from "d3-geo";
+    import { zoom, zoomIdentity } from "d3-zoom";
+    import "d3-transition";
+    import { feature } from "topojson-client";
+    import atlasUrl from "world-atlas/countries-50m.json?url";
+    import unitsUrl from "../data/subunits.geo.json?url";
+    import territoryShapes from "../data/territories.geo.json";
+    import { tierOf, tierColor } from "../lib/tiers.js";
+
+    const base = import.meta.env.BASE_URL;
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const COUNTRIES = JSON.parse($("#cfi-data").textContent);
+    const SEGMENT_NAMES = JSON.parse($("#cfi-segments").textContent);
+    const byId = new Map(COUNTRIES.map((c) => [c.id, c]));
+    const byNum = new Map(COUNTRIES.filter((c) => c.num != null).map((c) => [c.num, c]));
+    // Map features that inherit another entry's score (atlas name or numeric id → country id).
+    const ALIASES = { Kosovo: "XK", Somaliland: "XS", "N. Cyprus": "XN", 304: "DK" };
+
+    // ── Map ───────────────────────────────────────────────
+    let metric = $("#metric").dataset.initial; // the view this page opens on
+    let paths = null;
+    const USE_SCALES = JSON.parse($("#cfi-use-scales").textContent);
+    const PRICE_SCALE = JSON.parse($("#cfi-price-scale").textContent);
+    const isUse = () => metric in USE_SCALES; // coloured by cannabis use, not by a score
+    const isPrice = () => metric.startsWith("price:");
+    const PLANTING = JSON.parse($("#cfi-planting").textContent);
+    const isPlant = () => metric.startsWith("plant:"); // coloured by a seed or clone status
+    const plantField = () => metric.split(":")[1];
+    const plantScale = (field) => PLANTING.scales[field.endsWith("_trade") ? "trade" : "status"];
+    const plantOf = (c, field = plantField()) => plantScale(field)[c.planting?.[field]];
+    const plantColor = (c) => plantOf(c)?.color ?? "url(#hatch)";
+    const isClubs = () => metric.startsWith("status:"); // coloured by a section's one status: clubs, driving, visitors
+    const statusKey = () => metric.split(":")[1];
+    const clubsOf = (c) => PLANTING.sections[statusKey()].scale[c[statusKey()]];
+    const clubsColor = (c) => clubsOf(c)?.color ?? "url(#hatch)";
+    const priceMarket = () => metric.split(":")[1];
+    const priceOf = (c) => c.prices[priceMarket()];
+    const metricValue = (c) => (metric === "index" ? c.raw : c.s[+metric] * 10);
+    const titleCase = (s) => s[0].toUpperCase() + s.slice(1);
+    const metricLabel = () => isPrice() ? `${titleCase(priceMarket())} flower` : metric === "index" ? "Index" : SEGMENT_NAMES[+metric];
+    const metricText = (c) => isPrice() ? (priceOf(c) ? `$${priceOf(c).usd.toFixed(2)} / g` : "No data") : metric === "index" ? `${c.score} / 100` : `${c.s[+metric]} / 10`;
+    const compact = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)}M` : n >= 1e3 ? `${+(n / 1e3).toPrecision(2)}k` : String(n));
+    // the darkest step whose threshold the country reaches
+    const useColor = (c) => {
+      const steps = USE_SCALES[metric].steps;
+      const v = c.use[metric];
+      let i = 0;
+      while (i < steps.length - 1 && v >= steps[i + 1][0]) i++;
+      return `var(--u${i})`;
+    };
+    const priceColor = (c) => {
+      const v = priceOf(c)?.usd;
+      if (v == null) return "url(#hatch)";
+      let i = 0;
+      while (i < PRICE_SCALE.steps.length - 1 && v >= PRICE_SCALE.steps[i + 1][0]) i++;
+      return `var(--p${i})`;
+    };
+
+    // States and provinces: drawn on request, in place of their federation's single shape.
+    const UNITS = JSON.parse($("#cfi-units").textContent);
+    const FEDERATIONS = new Set(Object.values(UNITS).map((u) => u.country));
+    let unitPaths = null;   // the state shapes, once loaded
+    let showUnits = false;
+    let drawUnits = null;   // set by initMap: loads and draws the shapes
+
+    // states and provinces carry scores only, so they are offered on the Freedom options alone
+    const isScore = () => !isClubs() && !isPlant() && !isPrice() && !isUse();
+    const unitsOn = () => showUnits && isScore();
+
+    function paintMap() {
+      if (paths) {
+        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isClubs() ? clubsColor(d.c) : isPlant() ? plantColor(d.c) : isPrice() ? priceColor(d.c) : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
+        // a federation's own shape steps aside while its states are shown
+        paths.style("display", (d) => (unitsOn() && unitPaths && d.c && FEDERATIONS.has(d.c.id) ? "none" : null));
+      }
+      if (unitPaths) {
+        unitPaths.style("display", unitsOn() ? null : "none");
+        // cannabis use is only known nationally, so a state takes its country's colour for those
+        unitPaths.attr("fill", (d) => (isClubs() ? clubsColor(byId.get(d.u.country)) : isPlant() ? plantColor(byId.get(d.u.country)) : isPrice() ? priceColor(byId.get(d.u.country)) : isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
+      }
+      $("#mapUnder").hidden = !isScore();
+      const shown = isClubs() ? metric : isPlant() ? (plantField().endsWith("_trade") ? "plant-trade" : "plant-status") : isPrice() ? "price" : isUse() ? metric : "score";
+      document.querySelectorAll("[data-legend]").forEach((el) => { el.hidden = el.dataset.legend !== shown; });
+      const sub = $("#mapSub");
+      sub.textContent = isClubs() ? PLANTING.subs[statusKey()] : isPlant() ? sub.dataset.planting : isPrice() ? sub.dataset.price : metric === "ratio" ? sub.dataset.ratio : isUse() ? sub.dataset.use : sub.dataset.score;
+    }
+    // On the home page an option recolours the map in place, and "Expand" then points at that
+    // view's own page. On a map page the options are ordinary links to the other map pages.
+    $("#metric").addEventListener("click", (e) => {
+      const link = e.target.closest("a[data-metric]");
+      if (!link || "page" in $("#metric").dataset || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      metric = link.dataset.metric;
+      for (const a of $("#metric").querySelectorAll("a")) a.toggleAttribute("aria-current", a === link);
+      $("#mapExpand").href = link.href;
+      paintMap();
+    });
+    $("#showUnits").addEventListener("change", async (e) => {
+      showUnits = e.target.checked;
+      if (showUnits && !unitPaths && drawUnits) {
+        try { await drawUnits(); } catch (err) { e.target.checked = showUnits = false; }
+      }
+      paintMap();
+    });
+
+    async function initMap() {
+      const svg = select("#mapSvg");
+      const msg = $("#mapMsg");
+      let world;
+      try {
+        world = await (await fetch(atlasUrl)).json();
+      } catch (err) {
+        msg.textContent = "The map could not be loaded. Rankings below still work.";
+        return;
+      }
+      msg.remove();
+
+      const features = feature(world, world.objects.countries).features;
+      const ANTARCTICA = "010"; // not a country: drawn as a plain grey shape
+      features.forEach((f) => {
+        const alias = ALIASES[f.properties.name] || ALIASES[+f.id];
+        f.c = alias ? byId.get(alias) : byNum.get(+f.id);
+      });
+
+      // Disputed territories the atlas has no shape for (Transnistria, Abkhazia) come from a small
+      // file of their own and are drawn last, on top of the country they are carved out of.
+      territoryShapes.features.forEach((f) => { f.c = byId.get(f.id); });
+      features.push(...territoryShapes.features.filter((f) => f.c));
+
+      const projection = geoNaturalEarth1().fitExtent([[8, 8], [952, 472]], { type: "Sphere" });
+      const path = geoPath(projection);
+
+      svg.append("defs").html(
+        `<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+           <rect width="5" height="5" fill="var(--nodata)"/><rect width="2" height="5" fill="var(--hatch)"/>
+         </pattern>`
+      );
+      const g = svg.append("g");
+      g.append("path").attr("class", "sphere").attr("d", path({ type: "Sphere" }));
+
+      const tip = $("#tooltip");
+      const wrap = $("#mapWrap");
+      // what the hover box says about a country, or about one of its states (`u`)
+      const describe = (d) => {
+        const c = d.c;
+        if (d.u && !isUse() && !isPrice() && !isPlant() && !isClubs()) {
+          const u = d.u, home = byId.get(u.country);
+          return `<strong>${home.flag} ${u.name}</strong>
+               <div class="row"><span>${metricLabel()}</span><b>${metricText(u)}</b></div>
+               <div class="row"><span>Tier</span><b>${tierOf(metricValue(u)).name}</b></div>
+               <div class="row"><span>Rank in ${home.name}</span><b>#${u.rank} of ${u.of}</b></div>`;
+        }
+        if (d.u) return describe({ c: byId.get(d.u.country), properties: d.properties }) + `<div class="row"><span>${d.u.name}</span><b>national figure</b></div>`;
+        if (c && isClubs()) return `<strong>${c.flag} ${c.name}</strong><div class="row"><span>${PLANTING.sections[statusKey()].name}</span><b>${clubsOf(c)?.label ?? "Not researched yet"}</b></div>`;
+        if (c && isPlant()) {
+          const rows = Object.entries(PLANTING.fields).map(([field, label]) =>
+            `<div class="row"><span>${label}</span><b>${plantOf(c, field)?.label ?? "—"}</b></div>`).join("");
+          return `<strong>${c.flag} ${c.name}</strong>${c.planting ? rows : `<div class="row"><span>Seeds and clones</span><b>Not researched yet</b></div>`}`;
+        }
+        if (c && isPrice()) {
+          const p = priceOf(c);
+          return `<strong>${c.flag} ${c.name}</strong>
+            <div class="row"><span>${metricLabel()}</span><b>${p ? `$${p.usd.toFixed(2)}/g` : "No data"}</b></div>
+            ${p ? `<div class="row"><span>Local price</span><b>${p.price} ${p.currency}/g</b></div>
+                    <div class="row"><span>Observation</span><b>${p.date}</b></div>` : ""}`;
+        }
+        return c && metric === "ratio"
+            ? `<strong>${c.flag} ${c.name}</strong>
+               <div class="row"><span>Share ÷ index</span><b>${c.use.estimate ? "~" : ""}${c.use.ratio}</b></div>
+               <div class="row"><span>Share aged 15–64</span><b>${c.use.estimate ? "~" : ""}${c.use.prevalence}%</b></div>
+               <div class="row"><span>Index</span><b>${c.score} / 100</b></div>`
+            : c && isUse()
+            ? `<strong>${c.flag} ${c.name}</strong>
+               <div class="row"><span>Users</span><b>${c.use.estimate ? "~" : ""}${compact(c.use.users)}</b></div>
+               <div class="row"><span>Share aged 15–64</span><b>${c.use.estimate ? "~" : ""}${c.use.prevalence}%</b></div>
+               <div class="row"><span>${c.use.estimate ? "Regional estimate" : "Survey year"}</span><b>${c.use.estimate ? "no survey" : c.use.year}</b></div>`
+            : c
+            ? `<strong>${c.flag} ${c.name}</strong>
+               <div class="row"><span>${metricLabel()}</span><b>${metricText(c)}</b></div>
+               <div class="row"><span>Tier</span><b>${tierOf(metricValue(c)).name}</b></div>
+               <div class="row"><span>World rank</span><b>${c.rank ? "#" + c.rank : "not ranked"}</b></div>`
+            : `<strong>${d.properties.name}</strong><div class="row"><span>No data</span></div>`;
+      };
+      const showTip = (e, d) => {
+        tip.innerHTML = describe(d);
+        tip.hidden = false;
+        const box = wrap.getBoundingClientRect();
+        const x = e.clientX - box.left, y = e.clientY - box.top;
+        tip.style.left = Math.min(x + 14, box.width - tip.offsetWidth - 8) + "px";
+        tip.style.top = Math.max(8, y - tip.offsetHeight - 12) + "px";
+      };
+      paths = g.selectAll(".country-shape").data(features).join("path")
+        .attr("class", (d) => "country-shape" + (d.c ? " has-data" : "") + (d.id === ANTARCTICA ? " land-only" : ""))
+        .attr("d", path)
+        .on("pointermove", showTip)
+        .on("pointerleave", () => (tip.hidden = true))
+        .on("click", (e, d) => d.c && openCountry(d.c.id));
+
+      drawUnits = async () => {
+        const shapes = (await (await fetch(unitsUrl)).json()).features.filter((f) => UNITS[f.id]);
+        shapes.forEach((f) => { f.u = UNITS[f.id]; });
+        unitPaths = g.selectAll(".unit-shape").data(shapes).join("path")
+          .attr("class", "country-shape unit-shape has-data")
+          .attr("d", path)
+          .on("pointermove", showTip)
+          .on("pointerleave", () => (tip.hidden = true))
+          .on("click", (e, d) => openUnit(d.u.country, d.u.id));
+      };
+      paintMap();
+      markActive();
+
+      const z = zoom().scaleExtent([1, 10]).translateExtent([[0, 0], [960, 480]])
+        .on("zoom", (e) => g.attr("transform", e.transform));
+      svg.call(z);
+      $("#zoomIn").onclick = () => svg.transition().duration(250).call(z.scaleBy, 1.8);
+      $("#zoomOut").onclick = () => svg.transition().duration(250).call(z.scaleBy, 1 / 1.8);
+      $("#zoomReset").onclick = () => svg.transition().duration(250).call(z.transform, zoomIdentity);
+    }
+
+    // ── Rankings: the rows are in the HTML; we only filter and reorder them ──
+    const tbody = $("#table tbody");
+    const rows = [...tbody.querySelectorAll("tr[data-id]")];
+    const emptyRow = $("#emptyRow");
+    const state = { q: "", region: "", rec: "", sort: "rank", asc: true };
+    const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+    const num = (r, k) => +r.dataset[k];
+    const sorters = {
+      rank: (a, b) => num(a, "rank") - num(b, "rank"),
+      score: (a, b) => num(a, "rank") - num(b, "rank"),
+      name: (a, b) => a.dataset.name.localeCompare(b.dataset.name),
+      region: (a, b) => a.dataset.region.localeCompare(b.dataset.region) || num(a, "rank") - num(b, "rank"),
+      rec: (a, b) => num(a, "rec") - num(b, "rec") || num(a, "rank") - num(b, "rank"),
+      med: (a, b) => num(a, "med") - num(b, "med") || num(a, "rank") - num(b, "rank"),
+      users: (a, b) => num(b, "users") - num(a, "users"), // most users first
+      share: (a, b) => num(b, "share") - num(a, "share"), // highest share first
+      price: (a, b) => num(b, "price") - num(a, "price"), // highest observed street-flower price first
+    };
+
+    function applyTable() {
+      const q = norm(state.q.trim());
+      // extra columns sort on a number kept on the row, highest first, then by rank
+      const sorted = [...rows].sort(sorters[state.sort] ?? ((a, b) => num(b, state.sort) - num(a, state.sort) || num(a, "rank") - num(b, "rank")));
+      if (!state.asc) sorted.reverse();
+      let shown = 0;
+      sorted.forEach((r) => {
+        const ok = (!q || norm(r.dataset.name).includes(q)) &&
+          (!state.region || r.dataset.region === state.region) &&
+          (!state.rec || r.dataset.reckey === state.rec);
+        r.hidden = !ok;
+        if (ok) shown++;
+        tbody.append(r);
+      });
+      tbody.append(emptyRow);
+      emptyRow.hidden = shown > 0;
+      $("#resultCount").textContent = `${shown} of ${rows.length} countries and territories`;
+      document.querySelectorAll("#table th").forEach((th) => th.removeAttribute("aria-sort"));
+      $(`#table th[data-sort="${state.sort}"]`).setAttribute("aria-sort", state.asc ? "ascending" : "descending");
+    }
+
+    $("#search").addEventListener("input", (e) => { state.q = e.target.value; applyTable(); });
+    $("#region").addEventListener("change", (e) => { state.region = e.target.value; applyTable(); });
+    $("#recFilter").addEventListener("change", (e) => { state.rec = e.target.value; applyTable(); });
+    // Columns: the reader's choice is kept in this browser.
+    const colBoxes = [...document.querySelectorAll("#colMenu input[data-col]")];
+    const colDefaults = Object.fromEntries(colBoxes.map((b) => [b.dataset.col, b.checked]));
+    const showColumn = (key, on) => document.querySelectorAll(`#table [data-col="${key}"]`).forEach((cell) => cell.classList.toggle("col-off", !on));
+    const saveColumns = () => { try { localStorage.setItem("rankColumns", JSON.stringify(colBoxes.filter((b) => b.checked).map((b) => b.dataset.col))); } catch {} };
+    try {
+      const saved = JSON.parse(localStorage.getItem("rankColumns"));
+      if (Array.isArray(saved)) colBoxes.forEach((b) => { b.checked = saved.includes(b.dataset.col); showColumn(b.dataset.col, b.checked); });
+    } catch {}
+    $("#colMenu").addEventListener("change", (e) => {
+      if (!e.target.dataset.col) return;
+      showColumn(e.target.dataset.col, e.target.checked);
+      if (!e.target.checked && state.sort === e.target.dataset.col) { state.sort = "rank"; state.asc = true; applyTable(); }
+      saveColumns();
+    });
+    $("#colReset").addEventListener("click", () => {
+      colBoxes.forEach((b) => { b.checked = colDefaults[b.dataset.col]; showColumn(b.dataset.col, b.checked); });
+      try { localStorage.removeItem("rankColumns"); } catch {}
+    });
+    document.addEventListener("click", (e) => { if (!e.target.closest("#colMenu")) $("#colMenu").open = false; });
+
+    $("#table thead").addEventListener("click", (e) => {
+      const th = e.target.closest("th");
+      if (!th) return;
+      state.asc = state.sort === th.dataset.sort ? !state.asc : true;
+      state.sort = th.dataset.sort;
+      applyTable();
+    });
+    // A plain click opens the drawer; modified clicks (new tab etc.) follow the link to the full page.
+    tbody.addEventListener("click", (e) => {
+      const tr = e.target.closest("tr[data-id]");
+      if (!tr || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      openCountry(tr.dataset.id);
+    });
+
+    // ── Country drawer: shows the same article as the full country page ──
+    const dialog = $("#detail");
+    const body = $("#detailBody");
+    const pageUrl = (id) => `${base}country/${id.toLowerCase()}/`;
+    const cache = new Map();
+
+    // Articles are cached by page address, which also covers states and provinces.
+    // The cache holds the download itself, so a hover and the click that follows share one request.
+    function fetchArticle(url) {
+      if (!cache.has(url)) {
+        const pending = fetch(url).then((r) => r.text()).then((html) => {
+          const article = new DOMParser().parseFromString(html, "text/html").querySelector("article.country");
+          // The full page shows every explanation; in the drawer they start collapsed.
+          article.querySelectorAll("details[open]").forEach((el) => el.removeAttribute("open"));
+          return article;
+        });
+        pending.catch(() => cache.delete(url));
+        cache.set(url, pending);
+      }
+      return cache.get(url);
+    }
+    const loadArticle = async (url) => (await fetchArticle(url)).cloneNode(true);
+    // Start the download as soon as the pointer reaches a row or a country link.
+    const prefetch = (e) => {
+      const id = e.target.closest?.("tr[data-id]")?.dataset.id ?? e.target.closest?.("a[data-country]")?.dataset.country;
+      if (id) fetchArticle(pageUrl(id)).catch(() => {});
+    };
+    document.addEventListener("pointerover", prefetch);
+    document.addEventListener("touchstart", prefetch, { passive: true });
+    // The drawer is a preview: a big button under the summary leads to the full page.
+    function withOpenButton(article, url) {
+      const open = Object.assign(document.createElement("a"), { className: "btn btn-primary drawer-open", href: url });
+      open.innerHTML = 'Open full page <span aria-hidden="true">→</span>';
+      // after the summary and the status chips, just above "In short"
+      const short = article.querySelector(".c-top > .d-h");
+      if (short) short.before(open);
+      else (article.querySelector(".c-disputed") ?? article.querySelector(".d-note")).after(open);
+      return article;
+    }
+    // Swap the drawer to another view of the same country (a state, or back to national).
+    async function showInDrawer(url) {
+      try {
+        body.replaceChildren(withOpenButton(await loadArticle(url), url));
+        dialog.scrollTop = 0;
+      } catch (err) {
+        location.href = url;
+      }
+    }
+    body.addEventListener("change", (e) => {
+      const select = e.target.closest("select[data-subunit-select]");
+      if (select) showInDrawer(select.value);
+    });
+    body.addEventListener("click", (e) => {
+      const a = e.target.closest("a[data-subunit]");
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      showInDrawer(a.getAttribute("href"));
+    });
+
+    function markActive() {
+      const id = currentId();
+      selectAll(".country-shape").classed("active", (d) => !!id && d.c && d.c.id === id);
+    }
+    const currentId = () => {
+      const m = location.hash.match(/^#\/([A-Z]{2})$/);
+      return m && byId.has(m[1]) ? m[1] : null;
+    };
+
+    // Open a federation's drawer on one of its states.
+    async function openUnit(countryId, unitId) {
+      openCountry(countryId);
+      await showInDrawer(`${pageUrl(countryId)}${unitId}/`);
+    }
+    function openCountry(id) {
+      if (location.hash !== "#/" + id) history.pushState(null, "", "#/" + id);
+      showFromHash();
+    }
+    async function showFromHash() {
+      const id = currentId();
+      markActive();
+      if (!id) return dialog.open && dialog.close();
+      $("#dCompare").href = `${base}compare/?c=${id.toLowerCase()}`;
+      // Open at once; the article replaces the placeholder when it arrives.
+      const loading = Object.assign(document.createElement("p"), { className: "drawer-loading", textContent: `Loading ${byId.get(id).name}…` });
+      loading.setAttribute("role", "status");
+      body.replaceChildren(loading);
+      if (!dialog.open) dialog.showModal();
+      dialog.scrollTop = 0;
+      try {
+        const article = await loadArticle(pageUrl(id));
+        if (currentId() !== id) return;
+        body.replaceChildren(withOpenButton(article, pageUrl(id)));
+      } catch (err) {
+        location.href = pageUrl(id);
+      }
+    }
+    // Country links elsewhere on the page (e.g. "Did you know?") open the drawer too.
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a[data-country]");
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      openCountry(a.dataset.country);
+    });
+    $("#dClose").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (e) => e.target === dialog && dialog.close());
+    dialog.addEventListener("close", () => {
+      if (location.hash.startsWith("#/")) history.pushState(null, "", location.pathname + location.search);
+      markActive();
+    });
+    window.addEventListener("hashchange", showFromHash);
+    window.addEventListener("popstate", showFromHash);
+
+    initMap();
+    showFromHash();
+  </script>
+</Base>

@@ -12,7 +12,8 @@
 # An entry without `before` is context that moves no score: a report or court ruling in a country,
 # or, with no `country` either, a treaty or UN decision.
 #
-#   sources: one or more {title, url}. Add every source that supports the entry.
+#   sources: one or more source records. Web sources use {title, url}; books and chapters may omit
+#            url and add type, authors/editors, container, publisher, year, isbn and locator.
 #   checked: true once the date and the event have been compared with a source that was read.
 #            Leave it out otherwise: the site then shows the entry as "not yet checked".
 #
@@ -227,6 +228,21 @@
     - title: The Tribune — 'Measure twice, cut once' medical cannabis approach (22 July 2026)
       url: http://www.tribune242.com/news/2026/jul/22/measure-twice-cut-once-medical-cannabis-approach/
 
+- id: bosnia-rulebook-deadline-2026
+  date: "2026-07-06"
+  category: medical
+  country: ba
+  title: Bosnia sets a deadline for its stalled medical cannabis rules
+  description: >-
+    Six months after cannabis-based medicines were approved, a meeting called by the Ministry of
+    Civil Affairs found that nothing had been done to amend the prescribing rulebook. The
+    Federation's health ministry was given until 1 August to draft the changes; without them the
+    medicines agency cannot file the estimate needed before imports are approved.
+  checked: true
+  sources:
+    - title: "Paragraf.ba — Deadline agreed for amending the rulebook on cannabis-based medicines (14 July 2026)"
+      url: https://www.paragraf.ba/dnevne-vijesti/14072026/14072026-vijest4.html
+
 - id: france-reimbursement-decree-2026
   date: "2026-07-02"
   category: medical
@@ -269,6 +285,42 @@
   sources:
     - title: Dublin People — Committee backs major overhaul of Irish drug laws (1 July 2026)
       url: https://dublinpeople.com/news/dublin/articles/2026/07/01/committee-backs-major-overhaul-of-irish-drug-laws/
+
+- id: czechia-tightening-plan-2026
+  date: "2026-06-08"
+  category: debate
+  country: cz
+  title: Czechia's new government announces a tougher drug policy
+  description: >-
+    Prime Minister Andrej Babiš said after a cabinet meeting that he would not run a liberal
+    drug policy and announced 18 measures across four laws. As reported by ČTK they include
+    cutting the THC limit for hemp from 1% to 0.3%, banning CBD products, taking kratom off sale
+    and making some conduct a crime again. The former drug coordinator Jindřich Vobořil called
+    it a return to before 1989. None of it had been adopted.
+  checked: true
+  sources:
+    - title: Advokátní deník (ČTK) — Navrhovaná změna protidrogové politiky představuje návrat před rok 1989 (10 June 2026)
+      url: https://advokatnidenik.cz/2026/06/10/navrhovana-zmena-protidrogove-politiky-predstavuje-navrat-pred-rok-1989/
+
+- id: chile-drug-law-reform-2026
+  date: "2026-05-23"
+  category: tightening
+  country: cl
+  title: Chile lets trafficking penalties reach small amounts
+  description: >-
+    Law 21.817, passed by the Chamber of Deputies on 23 March by 130 votes to 12 and published on
+    23 May, adds a rule to Law 20.000: small quantities of substances that a regulation lists as
+    capable of serious harm are punished as trafficking. The ministry has six months to write
+    that list. Cannabis is not named, but the existing decree classes it with the most harmful
+    drugs, and 37 deputies challenged the rule at the Constitutional Court for that reason.
+  checked: true
+  sources:
+    - title: Diario Oficial de la República de Chile — Ley Núm. 21.817 (23 May 2026)
+      url: https://www.diariooficial.interior.gob.cl/publicaciones/2026/05/23/44456/01/2814381.pdf
+    - title: El Planteo — Chile aprobó penas más duras para el cannabis. El Tribunal Constitucional podría anularlas (8 May 2026)
+      url: https://elplanteo.com/chile-aprobo-penas-mas-duras-para-el-cannabis-el-tribunal-constitucional-podria-anularlas/
+    - title: Cámara de Diputadas y Diputados — Respaldan agravantes a ley sobre tráfico de estupefacientes (23 March 2026)
+      url: https://www.camara.cl/cms/2026/03/23/respaldan-agravantes-a-ley-sobre-trafico-de-estupefacientes/
 
 - id: greece-hemp-flower-ban-2026
   date: "2026-05-20"
@@ -380,23 +432,6 @@
   sources:
     - title: CNB — Execution of a convicted drug importer, 16 April 2026
       url: https://www.cnb.gov.sg/mediaroom/news/execution-of-a-convicted-drug-importer---16-april-2026/
-
-- id: chile-drug-law-reform-2026
-  date: "2026-04"
-  category: tightening
-  country: cl
-  title: Chile lets trafficking penalties reach small amounts
-  description: >-
-    A reform of Law 20.000, passed by Congress on 23 March and in force since April, shifts the
-    law's test from the quantity seized to the potential harm of the substance: trafficking
-    penalties can apply to small amounts of a drug judged capable of serious harm, a class in which
-    the regulations place cannabis. On 2 May the Supreme Court still downgraded one
-    micro-trafficking case to personal use for lack of proof of intent.
-  before: {possession: 3, cultivation: 2, enforcement: 4, sharing: 1, consumption: 3, access: 1}
-  checked: true
-  sources:
-    - title: El Planteo — Chile aprobó penas más duras para el cannabis. El Tribunal Constitucional podría anularlas (8 May 2026)
-      url: https://elplanteo.com/chile-aprobo-penas-mas-duras-para-el-cannabis-el-tribunal-constitucional-podria-anularlas/
 
 - id: chile-drug-law-reform-challenged-2026
   date: "2026-04-13"
@@ -601,9 +636,10 @@
   country: cz
   title: Czechia legalises possession and home growing
   description: >-
-    A criminal-code reform took effect on 1 January. Adults 21 and over may grow three plants and
-    keep 100 g at home or 25 g in public; before, small amounts were only an administrative offence.
-    Shops and clubs are still not allowed.
+    Act No. 270/2025, a reform of the criminal code, took effect on 1 January. Adults 21 and over
+    may grow three plants and keep 100 g at home or 25 g in public; before, small amounts were only
+    an administrative offence. Four or five plants, or up to twice those amounts, is an
+    administrative offence, and more is a crime. Shops and clubs are still not allowed.
   before: {possession: 3, cultivation: 2, enforcement: 5, sharing: 1, consumption: 4, access: 1}
   checked: true
   sources:
@@ -627,6 +663,43 @@
       url: https://www.retsinformation.dk/eli/lta/2025/439/pdf
     - title: Danish Medicines Agency — The medical cannabis scheme
       url: https://laegemiddelstyrelsen.dk/da/special/medicinsk-cannabis/ordningen-med-medicinsk-cannabis/
+
+- id: china-violation-records-sealed-2026
+  date: "2026-01-01"
+  category: easing
+  country: cn
+  title: China seals records of drug-use penalties
+  description: >-
+    The revised Public Security Administration Punishments Law, passed on 27 June 2025, took
+    effect. Article 136 seals records of public-security violations, drug use included: they may
+    not be given out or published, except to state organs handling a case or bodies entitled to
+    check under national rules. After a public outcry in late 2025 the legislature's legal
+    commission said that sealing does not delete a record, and that drug use remains an offence
+    punished under the same law.
+  checked: true
+  sources:
+    - title: Yicai (Xinhua) — legislative commission answers questions on sealing public-security violation records (24 December 2025)
+      url: https://www.yicai.com/news/102972507.html
+
+- id: bosnia-medical-use-approved-2025
+  date: "2025-12-29"
+  category: medical
+  country: ba
+  title: Bosnia and Herzegovina approves cannabis-based medicines
+  description: >-
+    The Council of Ministers unanimously moved cannabis, its resin, extracts and tinctures from the
+    table of prohibited substances to the table of substances under strict control, so that
+    cannabis-based medicines can be prescribed. Growing cannabis for medicine stays prohibited.
+    Prescribing depends on rulebooks that had still not been amended in July 2026, so no patient
+    had been treated and the score has not moved.
+  checked: true
+  sources:
+    - title: Paragraf.ba — Council of Ministers amends the list of narcotic drugs to allow medical cannabis (31 December 2025)
+      url: https://www.paragraf.ba/dnevne-vijesti/31122025/31122025-vijest2.html
+    - title: Paragraf.ba — Deadline agreed for amending the rulebook on cannabis-based medicines (14 July 2026)
+      url: https://www.paragraf.ba/dnevne-vijesti/14072026/14072026-vijest4.html
+    - title: Global Initiative — How cannabis legalization reshaped illicit markets in the Western Balkans
+      url: https://globalinitiative.net/analysis/cannabis-legalization-illicit-markets-western-balkans/
 
 - id: us-executive-order-14370-2025
   date: "2025-12-18"
@@ -655,21 +728,6 @@
   sources:
     - title: PSM News — Maldives President approves capital punishment for drug traffickers
       url: https://psmnews.mv/en/170157
-
-- id: bosnia-medical-use-approved-2025
-  date: "2025-12"
-  category: medical
-  country: ba
-  title: Bosnia and Herzegovina approves cannabis-based medicines
-  description: >-
-    Medical use was approved, with the Agency for Medicines and Medical Devices overseeing import
-    and distribution. The rules allow only pharmaceutical preparations prescribed by a doctor;
-    growing cannabis for medicine stays prohibited.
-  before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 0}
-  checked: true
-  sources:
-    - title: Global Initiative — How cannabis legalization reshaped illicit markets in the Western Balkans
-      url: https://globalinitiative.net/analysis/cannabis-legalization-illicit-markets-western-balkans/
 
 - id: kuwait-drug-law-2025
   date: "2025-12-14"
@@ -885,6 +943,20 @@
     - title: Altaveu — El Constitucional s'escuda en la protecció del dret a la vida per defensar la il·legalitat del CBD (23 July 2025)
       url: https://www.altaveu.com/actualitat/justicia/constitucional-escuda-en-proteccio-dret-vida-defensar-illegalitat-cbd_68265_102.html
 
+- id: slovenia-personal-use-bill-2025
+  date: "2025-07"
+  category: debate
+  country: si
+  title: Two Slovenian coalition parties table a personal-use bill
+  description: >-
+    The Freedom Movement and the Left submitted a bill to carry out the 2024 referendum: four plants
+    per adult and six per household, 7 g in public and 150 g at home, unpaid sharing of small
+    amounts, and no sales. The Social Democrats had not endorsed it and it has not been enacted.
+  checked: true
+  sources:
+    - title: "Business of Cannabis — Slovenia takes steps toward cannabis legalisation (1 August 2025)"
+      url: https://businessofcannabis.com/slovenia-takes-steps-toward-cannabis-legalisation/
+
 - id: iceland-consumption-rooms-widened-2025
   date: "2025-07-04"
   category: easing
@@ -1020,6 +1092,20 @@
     - title: "Tengrinews — Требования к выращиванию конопли утвердили в Казахстане: чего делать нельзя (30 September 2025)"
       url: https://tengrinews.kz/kazakhstan_news/trebovaniya-vyiraschivaniyu-konopli-utverdili-kazahstane-582004/
 
+- id: nigeria-ndlea-bill-assent-declined-2025
+  date: "2025-06-26"
+  category: other
+  country: ng
+  title: Nigeria's president declines to sign the drug agency bill
+  description: >-
+    President Tinubu refused assent to the NDLEA Amendment Bill, 2025. His letter, read in the
+    House of Representatives, objected to letting the agency keep part of the proceeds of drug
+    crime, which the law requires to be paid into a central forfeiture account.
+  checked: true
+  sources:
+    - title: 21st Century Chronicle — Tinubu rejects NDLEA amendment bill (26 June 2025)
+      url: https://21stcenturychronicle.com/tinubu-rejects-ndlea-amendment-bill/
+
 - id: thailand-prescription-only-2025
   date: "2025-06-25"
   category: tightening
@@ -1126,6 +1212,21 @@
     - title: NBC PNG — duo jailed for 25 years for drug offences
       url: https://www.nbc.com.pg/post/20878/duo-jailed-for-25-years-for-drug-offences
 
+- id: russia-supreme-court-proposal-2025
+  date: "2025-05"
+  category: debate
+  country: ru
+  title: Russia's Supreme Court proposes softer penalties for personal possession
+  description: >-
+    The plenum of Russia's Supreme Court put forward a bill to soften the punishment for keeping
+    drugs for personal use and, in some cases, to replace prison with treatment for addiction.
+    In 2024 about 50,800 people had been convicted under Article 228, roughly one in ten of all
+    convictions.
+  checked: true
+  sources:
+    - title: Kommersant — drug convictions in 2024 and the Supreme Court's proposal to soften Article 228 (14 December 2025)
+      url: https://www.kommersant.ru/doc/8272083
+
 - id: malta-cannabis-amendments-2025
   date: "2025-05-12"
   category: tightening
@@ -1144,6 +1245,20 @@
       url: https://www.independent.com.mt/articles/2025-05-12/local-news/Parliament-unanimously-passes-new-cannabis-legislation-amendments-6736270062
     - title: Newsbook — €235 fine introduced for cannabis smell nuisance (15 May 2025)
       url: https://newsbook.com.mt/en/e235-fine-introduced-for-cannabis-smell-nuisance/
+
+- id: georgia-drug-laws-tightened-2025
+  date: "2025-04"
+  category: tightening
+  country: ge
+  title: Georgia lengthens sentences and makes refusing a drug test a crime
+  description: >-
+    Three months before it brought back prison for cannabis possession, the governing Georgian Dream
+    party amended the drug laws to add longer prison terms and higher fines, criminal liability for
+    refusing a drug test and mandatory treatment for users.
+  checked: true
+  sources:
+    - title: "OC Media — Georgia to introduce 6-year prison sentence for possession of over 5 grams of marijuana"
+      url: https://oc-media.org/georgia-to-introduce-6-year-prison-sentence-for-possession-of-over-5-grams-of-marijuana/
 
 - id: hungary-constitutional-amendment-2025
   date: "2025-04-14"
@@ -1201,6 +1316,20 @@
   sources:
     - title: Government of the Netherlands — Experimental phase of the closed coffee shop chain experiment to begin in April
       url: https://www.government.nl/latest/news/2024/12/10/experimental-phase-of-the-closed-coffee-shop-chain-experiment-weed-experiment-to-begin-in-april
+
+- id: czechia-general-practitioners-2025
+  date: "2025-04-01"
+  category: medical
+  country: cz
+  title: Czechia lets general practitioners prescribe medical cannabis
+  description: >-
+    General practitioners became eligible to prescribe medical cannabis for chronic intractable
+    pain. A prescription could also cover up to three months of treatment instead of one, while the
+    existing monthly quantity limits remained in place.
+  checked: true
+  sources:
+    - title: SÚKL — Konopí pro léčebné použití v praxi (November 2025, PDF)
+      url: https://sukl.gov.cz/wp-content/uploads/2025/11/Farmakoterapeuticke-informace-11_2025-%E2%80%93-Konopi-pro-lecebne-pouziti-v-praxi.pdf
 
 - id: canada-streamlined-regulations-2025
   date: "2025-03-12"
@@ -1398,6 +1527,33 @@
   sources:
     - title: Bahamas Laws Online — Cannabis Act, 2024 (Appointed Day) Notice, 2024 (S.I. 72 of 2024)
       url: https://laws.bahamas.gov.bs/cms/images/LEGISLATION/SUBORDINATE/2024/2024-0072/2024-0072.pdf
+
+- id: china-cbd-precursor-controls-2024
+  date: "2024-08-25"
+  category: tightening
+  country: cn
+  title: China puts cannabidiol under its precursor-chemical rules
+  description: >-
+    Six government departments issued an announcement on seven substances, cannabidiol among
+    them, bringing their production, trade and transport under the Regulations on the
+    Administration of Precursor Chemicals.
+  checked: true
+  sources:
+    - title: CMS — Cannabis law and legislation in China
+      url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/china
+
+- id: germany-driving-limit-2024
+  date: "2024-08-22"
+  category: other
+  country: de
+  title: Germany sets a THC limit for drivers
+  description: >-
+    A limit of 3.5 nanograms of THC per millilitre of blood serum took effect, with a ban on any
+    cannabis for novice drivers and on combining it with alcohol.
+  checked: true
+  sources:
+    - title: "Bundesgesundheitsministerium — Fragen und Antworten zum Cannabisgesetz"
+      url: https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz
 
 - id: morocco-royal-pardon-2024
   date: "2024-08-19"
@@ -1597,6 +1753,21 @@
       url: https://b360nepal.com/detail/22579/fy-202425-budget-govt-to-legalise-marijuana-for-medicinal-purpose-2024-May-28-216600
     - title: Business 360 Nepal — Finance minister urges further study before legalising cannabis production (21 August 2026)
       url: https://www.b360nepal.com/detail/29814/finance-minister-urges-further-study-before-legalising-cannabis-production
+
+- id: nigeria-senate-death-penalty-vote-2024
+  date: "2024-05-09"
+  category: death
+  country: ng
+  title: Nigeria's Senate votes for the death penalty for drug trafficking
+  description: >-
+    Passing a bill to amend the NDLEA Act, the Senate adopted a floor amendment replacing life
+    imprisonment with death as the penalty for drug traffickers. A first voice vote seemed to go
+    against it; the Deputy Senate President called a second and ruled it carried, over protests
+    from some senators. The bill still needed agreement with the House of Representatives.
+  checked: true
+  sources:
+    - title: Channels Television — Senate okays death penalty for drug traffickers (9 May 2024)
+      url: https://www.channelstv.com/2024/05/09/senate-okays-death-penalty-for-drug-traffickers/
 
 - id: sierra-leone-drug-emergency-2024
   date: "2024-04"
@@ -1885,6 +2056,20 @@
     - title: Wikipedia — Cannabis in Ecuador
       url: https://en.wikipedia.org/wiki/Cannabis_in_Ecuador
 
+- id: bosnia-medical-cannabis-conference-2023
+  date: "2023-11-23"
+  category: debate
+  country: ba
+  title: Bosnian officials back medical cannabis at a Sarajevo conference
+  description: >-
+    The head of the medicines agency, the Federation's health minister and the MP Saša Magazinović
+    all supported legalising cannabis for medical use, saying seriously ill people were buying
+    cannabis oil of unknown quality on the black market. The decision followed two years later.
+  checked: true
+  sources:
+    - title: "Radio Slobodna Evropa — Sarajevo conference on legalising cannabis for medical purposes (23 November 2023)"
+      url: https://www.slobodnaevropa.org/a/sarajevo-konferencija-legalizacija-kanabis/32696861.html
+
 - id: azerbaijan-narcotics-law-amended-2023
   date: "2023-11-21"
   category: other
@@ -2140,6 +2325,20 @@
     - title: MHA — Commencement of the Misuse of Drugs (Amendment) Act 2023
       url: https://www.mha.gov.sg/media-room/newsroom/commencement-of-the-misuse-of-drugs-act-2023/
 
+- id: ghana-supreme-court-review-2023
+  date: "2023-05-24"
+  category: other
+  country: gh
+  title: Ghana's Supreme Court refuses to revisit its cannabis ruling
+  description: >-
+    A nine-judge panel voted five to four to dismiss the Attorney-General's application for
+    review, leaving the licensing clause struck down. Parliament restored licensing by amending
+    the law that July.
+  checked: true
+  sources:
+    - title: Ghanaian Times — SC affirms judgement denying licence to cultivate cannabis (25 May 2023)
+      url: https://ghanaiantimes.com.gh/sc-affirms-judgement-denying-licence-to-cultivate-cannabis-but-a-g-seeks-review/
+
 - id: chile-medical-growing-2023
   date: "2023-05-23"
   category: medical
@@ -2240,6 +2439,19 @@
   sources:
     - title: St Kitts and Nevis Information Service — Cannabis Act now fully activated
       url: https://www.sknis.gov.kn/2023/04/21/cannabis-act-now-fully-activated/
+
+- id: canada-murray-hall-2023
+  date: "2023-04"
+  category: other
+  country: ca
+  title: Canada's Supreme Court lets provinces ban home growing
+  description: >-
+    In Murray-Hall v Quebec the court held that Quebec's ban on growing cannabis at home, although
+    the federal Act allows four plants, was a valid use of provincial powers.
+  checked: true
+  sources:
+    - title: "Wikipedia — Cannabis Act (Canada)"
+      url: https://en.wikipedia.org/wiki/Cannabis_Act_(Canada)
 
 - id: germany-two-pillar-plan-2023
   date: "2023-04-12"
@@ -2461,21 +2673,6 @@
     - title: Wikipedia — Cannabis in East Timor
       url: https://en.wikipedia.org/wiki/Cannabis_in_East_Timor
 
-- id: russia-supreme-court-proposal-2025
-  date: "2025-05"
-  category: debate
-  country: ru
-  title: Russia's Supreme Court proposes softer penalties for personal possession
-  description: >-
-    The plenum of Russia's Supreme Court put forward a bill to soften the punishment for keeping
-    drugs for personal use and, in some cases, to replace prison with treatment for addiction.
-    In 2024 about 50,800 people had been convicted under Article 228, roughly one in ten of all
-    convictions.
-  checked: true
-  sources:
-    - title: Kommersant — drug convictions in 2024 and the Supreme Court's proposal to soften Article 228 (14 December 2025)
-      url: https://www.kommersant.ru/doc/8272083
-
 - id: russia-griner-sentence-2022
   date: "2022-08"
   category: other
@@ -2502,6 +2699,21 @@
   sources:
     - title: Wikipedia — Cannabis in Switzerland
       url: https://en.wikipedia.org/wiki/Cannabis_in_Switzerland
+
+- id: ghana-supreme-court-section-43-2022
+  date: "2022-07-28"
+  category: tightening
+  country: gh
+  title: Ghana's Supreme Court strikes down the cannabis licensing clause
+  description: >-
+    By four votes to three the court declared section 43 of the Narcotics Control Commission
+    Act, 2020 null and void. The section let the minister license cannabis with no more than
+    0.3% THC for fibre, seed or medicine. In a case brought by Ezuame Mannan, the court held
+    that Parliament had not followed the constitution's procedure for passing bills.
+  checked: true
+  sources:
+    - title: Graphic Online — Law on licence to grow cannabis unconstitutional, Supreme Court declares (28 July 2022)
+      url: https://www.graphic.com.gh/news/general-news/law-on-licence-to-grow-cannabis-unconstitutional-supreme-court-declares.html
 
 - id: indonesia-medical-cannabis-ruling-2022
   date: "2022-07-20"
@@ -2809,14 +3021,28 @@
   country: cz
   title: Czechia raises the hemp limit to 1% THC
   description: >-
-    Cannabis with up to 1% THC, up from 0.3%, stopped counting as a controlled drug. It is the
-    highest limit in the European Union and opened the way for low-THC flower and extracts to be
-    sold freely.
+    The amendment raised the threshold for technical hemp from 0.3% to 1% THC, removed its permit
+    requirement and simplified proof of compliance for growers. Farms larger than 100 square metres
+    still had to report specified information to customs.
   checked: true
   sources:
     - title: Wikipedia — Cannabis in the Czech Republic
       url: https://en.wikipedia.org/wiki/Cannabis_in_the_Czech_Republic
     - title: epravo.cz — Uvolnění regulace při pěstování konopí
+      url: https://www.epravo.cz/top/clanky/uvolneni-regulace-pri-pestovani-konopi-114409.html
+
+- id: czechia-medical-cultivation-opened-2022
+  date: "2022-01-01"
+  category: medical
+  country: cz
+  title: Czechia opens medical cultivation to multiple licensees
+  description: >-
+    Czechia replaced the system in which a single tendered supplier grew for the state agency.
+    Any applicant meeting the statutory conditions could seek a cultivation licence and a permit
+    to handle controlled substances, then supply Czech pharmacies or export with permission.
+  checked: true
+  sources:
+    - title: epravo.cz — Uvolnění regulace při pěstování konopí (11 March 2022)
       url: https://www.epravo.cz/top/clanky/uvolneni-regulace-pri-pestovani-konopi-114409.html
 
 - id: malta-legalisation-2021
@@ -2892,6 +3118,20 @@
   sources:
     - title: Wikipedia — Cannabis in Lithuania
       url: https://en.wikipedia.org/wiki/Cannabis_in_Lithuania
+
+- id: india-decriminalisation-consensus-2021
+  date: "2021-11-10"
+  category: debate
+  country: in
+  title: Indian ministries discuss ending prison for personal use
+  description: >-
+    A meeting of government stakeholders reached a consensus to remove imprisonment and fines for
+    personal consumption by amending Section 27 of the narcotics law, after the social justice
+    ministry recommended decriminalisation. The law has not been changed.
+  checked: true
+  sources:
+    - title: "Wikipedia — Narcotic Drugs and Psychotropic Substances Act, 1985"
+      url: https://en.wikipedia.org/wiki/Narcotic_Drugs_and_Psychotropic_Substances_Act,_1985
 
 - id: luxembourg-plan-scaled-back-2021
   date: "2021-10-22"
@@ -3033,6 +3273,35 @@
     - title: Wikipedia — Cannabis in Colombia
       url: https://en.wikipedia.org/wiki/Cannabis_in_Colombia
 
+- id: china-synthetic-cannabinoids-2021
+  date: "2021-07-01"
+  category: tightening
+  country: cn
+  title: China controls synthetic cannabinoids as a whole class
+  description: >-
+    The National Narcotics Control Commission announced on 11 May 2021 that synthetic
+    cannabinoids would be placed under national control by a generic definition covering the
+    whole class, together with 18 other substances listed one by one. The control took effect on
+    1 July.
+  checked: true
+  sources:
+    - title: "UNODC Early Warning Advisory — China: generic control of synthetic cannabinoids (May 2021)"
+      url: https://unodc.org/LSS/Announcement/Details/ff032a29-2e14-4dab-b7d8-ab86d355c809
+
+- id: grenada-bill-2021
+  date: "2021"
+  category: debate
+  country: gd
+  title: Grenada's first decriminalisation bill is tabled and lapses
+  description: >-
+    Agriculture minister Peter David laid a bill before the House that would have let anyone over 18
+    hold 28 g and each homeowner grow five plants, and allowed Rastafarian use in places of worship.
+    It died when Parliament was dissolved before the June 2022 election.
+  checked: true
+  sources:
+    - title: "NOW Grenada — Marijuana decriminalisation legislation to go before Parliament no later than June 2025 (26 February 2025)"
+      url: https://nowgrenada.com/2025/02/marijuana-decriminalisation-legislation-to-go-before-parliament-no-later-than-june-2025/
+
 - id: mexico-supreme-court-2021
   date: "2021-06-28"
   category: easing
@@ -3077,6 +3346,20 @@
   sources:
     - title: Wikipedia — Cannabis in Rwanda
       url: https://en.wikipedia.org/wiki/Cannabis_in_Rwanda
+
+- id: china-cosmetics-hemp-ban-2021
+  date: "2021-05-26"
+  category: tightening
+  country: cn
+  title: China bans cannabis ingredients in cosmetics
+  description: >-
+    New catalogues of prohibited cosmetic ingredients listed cannabis sativa fruit, seed oil and
+    leaf extract, and prohibited cannabidiol in cosmetics, the main legal outlet for Chinese-
+    made CBD.
+  checked: true
+  sources:
+    - title: CMS — Cannabis law and legislation in China
+      url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/china
 
 - id: zambia-cannabis-act-2021
   date: "2021-05-20"
@@ -3216,6 +3499,19 @@
     - title: Wikipedia — Cannabis in the Democratic Republic of the Congo
       url: https://en.wikipedia.org/wiki/Cannabis_in_the_Democratic_Republic_of_the_Congo
 
+- id: malta-legalisation-announced-2021
+  date: "2021-02-18"
+  category: debate
+  country: mt
+  title: Malta's prime minister announces a cannabis law
+  description: >-
+    Robert Abela announced plans to legalise possession of small amounts of cannabis and plants for
+    personal use. Parliament passed the law on 14 December.
+  checked: true
+  sources:
+    - title: "Wikipedia — Cannabis in Malta"
+      url: https://en.wikipedia.org/wiki/Cannabis_in_Malta
+
 - id: comoros-penal-code-2021
   date: "2021-02-16"
   category: tightening
@@ -3288,6 +3584,20 @@
   sources:
     - title: Searchlight — SVG launches first medicinal cannabis pharmacy (29 January 2021)
       url: https://searchlight.vc/news/2021/01/29/svg-launches-first-medicinal-cannabis-pharmacy
+
+- id: nepal-cnd-vote-2020
+  date: "2020-12"
+  category: international
+  country: np
+  title: Nepal votes at the UN to ease the treaty status of cannabis
+  description: >-
+    Nepal was among the countries on the UN Commission on Narcotic Drugs that voted to remove
+    cannabis from Schedule IV of the 1961 Single Convention, the list of drugs considered most
+    dangerous.
+  checked: true
+  sources:
+    - title: "The Farsight Nepal — Cannabis in Nepal: in between legal lacuna (10 September 2022)"
+      url: https://farsightnepal.com/news/80
 
 - id: ireland-adult-caution-2020
   date: "2020-12-14"
@@ -3600,6 +3910,22 @@
     - title: Proclamation — Act No. 10 of 2019 commenced on 3 March 2020
       url: https://mca.vc/wp-content/uploads/2026/05/Proclamation-DrugsPrevention-of-Misuse-Amendment-Act-No.-10-of-2019.pdf
 
+- id: nepal-tamang-bill-2020
+  date: "2020-03-02"
+  category: debate
+  country: np
+  title: A former law minister registers a bill to legalise cannabis farming in Nepal
+  description: >-
+    Sher Bahadur Tamang's private bill would have licensed farmers to grow cannabis, let them
+    export it, and allowed sale to patients on a doctor's prescription and to drug makers. The
+    draft also let a household grow six plants without a licence. It was never put to a vote.
+  checked: true
+  sources:
+    - title: The Himalayan Times — Bill to legalise marijuana cultivation and sale registered (3 March 2020)
+      url: https://thehimalayantimes.com/kathmandu/bill-to-legalise-marijuana-cultivation-and-sale-registered
+    - title: "The Farsight Nepal — Cannabis in Nepal: in between legal lacuna (10 September 2022)"
+      url: https://farsightnepal.com/news/80
+
 - id: cabo-verde-drug-law-reform-vetoed-2020
   date: "2020-02-20"
   category: debate
@@ -3863,20 +4189,6 @@
     - title: Wikipedia — Cannabis in Canada
       url: https://en.wikipedia.org/wiki/Cannabis_in_Canada
 
-- id: ecuador-medical-2019
-  date: "2019-09"
-  category: medical
-  country: ec
-  title: Ecuador legalises medical cannabis and hemp
-  description: >-
-    A reform of the criminal code took cannabis with less than 1% THC out of the list of controlled
-    substances and allowed cannabis medicines on prescription.
-  before: {possession: 3, cultivation: 1, enforcement: 4, sharing: 1, consumption: 3, access: 0}
-  checked: true
-  sources:
-    - title: Wikipedia — Cannabis in Ecuador
-      url: https://en.wikipedia.org/wiki/Cannabis_in_Ecuador
-
 - id: estonia-epidyolex-2019
   date: "2019-09-19"
   category: medical
@@ -3893,6 +4205,20 @@
       url: https://www.ema.europa.eu/en/medicines/human/EPAR/epidyolex
     - title: Estonian State Agency of Medicines — Cannabis, THC and CBD
       url: https://www.ravimiamet.ee/en/node/83
+
+- id: ecuador-medical-2019
+  date: "2019-09"
+  category: medical
+  country: ec
+  title: Ecuador legalises medical cannabis and hemp
+  description: >-
+    A reform of the criminal code took cannabis with less than 1% THC out of the list of controlled
+    substances and allowed cannabis medicines on prescription.
+  before: {possession: 3, cultivation: 1, enforcement: 4, sharing: 1, consumption: 3, access: 0}
+  checked: true
+  sources:
+    - title: Wikipedia — Cannabis in Ecuador
+      url: https://en.wikipedia.org/wiki/Cannabis_in_Ecuador
 
 - id: belize-industrial-hemp-regulations-2019
   date: "2019-08-17"
@@ -4024,64 +4350,6 @@
     - title: AFEW — In Kyrgyzstan, fines for drug-related offences will grow 30-fold
       url: https://afew.org/kyrgyzstan-fines-growth-eng/
 
-- id: nigeria-senate-death-penalty-vote-2024
-  date: "2024-05-09"
-  category: death
-  country: ng
-  title: Nigeria's Senate votes for the death penalty for drug trafficking
-  description: >-
-    Passing a bill to amend the NDLEA Act, the Senate adopted a floor amendment replacing life
-    imprisonment with death as the penalty for drug traffickers. A first voice vote seemed to go
-    against it; the Deputy Senate President called a second and ruled it carried, over protests
-    from some senators. The bill still needed agreement with the House of Representatives.
-  checked: true
-  sources:
-    - title: Channels Television — Senate okays death penalty for drug traffickers (9 May 2024)
-      url: https://www.channelstv.com/2024/05/09/senate-okays-death-penalty-for-drug-traffickers/
-
-- id: nigeria-ndlea-bill-assent-declined-2025
-  date: "2025-06-26"
-  category: other
-  country: ng
-  title: Nigeria's president declines to sign the drug agency bill
-  description: >-
-    President Tinubu refused assent to the NDLEA Amendment Bill, 2025. His letter, read in the
-    House of Representatives, objected to letting the agency keep part of the proceeds of drug
-    crime, which the law requires to be paid into a central forfeiture account.
-  checked: true
-  sources:
-    - title: 21st Century Chronicle — Tinubu rejects NDLEA amendment bill (26 June 2025)
-      url: https://21stcenturychronicle.com/tinubu-rejects-ndlea-amendment-bill/
-
-- id: ghana-supreme-court-section-43-2022
-  date: "2022-07-28"
-  category: tightening
-  country: gh
-  title: Ghana's Supreme Court strikes down the cannabis licensing clause
-  description: >-
-    By four votes to three the court declared section 43 of the Narcotics Control Commission
-    Act, 2020 null and void. The section let the minister license cannabis with no more than
-    0.3% THC for fibre, seed or medicine. In a case brought by Ezuame Mannan, the court held
-    that Parliament had not followed the constitution's procedure for passing bills.
-  checked: true
-  sources:
-    - title: Graphic Online — Law on licence to grow cannabis unconstitutional, Supreme Court declares (28 July 2022)
-      url: https://www.graphic.com.gh/news/general-news/law-on-licence-to-grow-cannabis-unconstitutional-supreme-court-declares.html
-
-- id: ghana-supreme-court-review-2023
-  date: "2023-05-24"
-  category: other
-  country: gh
-  title: Ghana's Supreme Court refuses to revisit its cannabis ruling
-  description: >-
-    A nine-judge panel voted five to four to dismiss the Attorney-General's application for
-    review, leaving the licensing clause struck down. Parliament restored licensing by amending
-    the law that July.
-  checked: true
-  sources:
-    - title: Ghanaian Times — SC affirms judgement denying licence to cultivate cannabis (25 May 2023)
-      url: https://ghanaiantimes.com.gh/sc-affirms-judgement-denying-licence-to-cultivate-cannabis-but-a-g-seeks-review/
-
 - id: nigeria-ondo-proposal-2019
   date: "2019"
   category: debate
@@ -4136,6 +4404,21 @@
       url: https://en.wikipedia.org/wiki/Cannabis_in_Ireland
     - title: Law Society Gazette — Access to medicinal cannabis now allowed under Irish law
       url: https://lawsociety.ie/gazette/top-stories/2019/06-june/access-to-medicinal-cannabis-now-allowed-under-irish-law
+
+- id: colombia-public-use-ruling-2019
+  date: "2019-06-06"
+  category: easing
+  country: co
+  title: Colombia's Constitutional Court strikes down the ban on public use
+  description: >-
+    In ruling C-253 of 2019 the court struck the words covering alcohol and psychoactive substances
+    out of two articles of the 2016 police code, one on consumption in public space and one on
+    stadiums, sports centres and parks. It held that a broad, general prohibition violates the
+    right to free development of personality.
+  checked: true
+  sources:
+    - title: Corte Constitucional — Sentencia C-253 de 2019
+      url: https://www.corteconstitucional.gov.co/relatoria/2019/C-253-19.htm
 
 - id: lithuania-medical-2019
   date: "2019-05"
@@ -4361,13 +4644,22 @@
     Specialist doctors may prescribe cannabis-based medicines. In practice almost all prescriptions
     come from private clinics, as the health service funds very few. Recreational law did not
     change.
-  before: {possession: 1, cultivation: 1, enforcement: 3, sharing: 1, consumption: 1, access: 0}
+  before: {possession: 1, cultivation: 1, enforcement: 3, sharing: 1, consumption: 1, access: 1}
   checked: true
   sources:
     - title: BMJ — Medical cannabis, patients turn to private clinics because of NHS void (PDF)
       url: https://www.bmj.com/content/366/bmj.l5290.full.pdf
     - title: Wikipedia — Cannabis in the United Kingdom
       url: https://en.wikipedia.org/wiki/Cannabis_in_the_United_Kingdom
+    - type: chapter
+      title: "Forces of Necessity: Lay Advocacy and the Remedicalization of Cannabis in the UK, 1973–2004"
+      authors: [Suzanne Taylor]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 341–361"
 
 - id: mexico-jurisprudence-2018
   date: "2018-10-31"
@@ -4398,21 +4690,6 @@
       url: https://www.justice.gc.ca/eng/cj-jp/cannabis/
     - title: Wikipedia — Cannabis in Canada
       url: https://en.wikipedia.org/wiki/Cannabis_in_Canada
-
-- id: colombia-public-use-ruling-2019
-  date: "2019-06-06"
-  category: easing
-  country: co
-  title: Colombia's Constitutional Court strikes down the ban on public use
-  description: >-
-    In ruling C-253 of 2019 the court struck the words covering alcohol and psychoactive substances
-    out of two articles of the 2016 police code, one on consumption in public space and one on
-    stadiums, sports centres and parks. It held that a broad, general prohibition violates the
-    right to free development of personality.
-  checked: true
-  sources:
-    - title: Corte Constitucional — Sentencia C-253 de 2019
-      url: https://www.corteconstitucional.gov.co/relatoria/2019/C-253-19.htm
 
 - id: colombia-police-code-decree-2018
   date: "2018-10-01"
@@ -4632,6 +4909,15 @@
   sources:
     - title: Wikipedia — Cannabis in Zimbabwe
       url: https://en.wikipedia.org/wiki/Cannabis_in_Zimbabwe
+    - type: chapter
+      title: "Sub-Saharan Africa, Cannabis, and Contemporary Drug Policy"
+      authors: [Neil Carrier]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 321–339"
 
 - id: malta-medical-2018
   date: "2018-03-27"
@@ -4712,6 +4998,21 @@
       url: https://www.mondaq.com/life-sciences-biotechnology-nanotechnology/1097712/the-new-legislative-regime-on-pharmaceutical-cannabis
     - title: Wikipedia — Cannabis in Greece
       url: https://en.wikipedia.org/wiki/Cannabis_in_Greece
+
+- id: nepal-shivaratri-arrests-2018
+  date: "2018-02-11"
+  category: tightening
+  country: np
+  title: Nepal's police say they will arrest cannabis users at Shivaratri
+  description: >-
+    Ahead of Mahashivaratri the Pashupatinath trust and police announced that visitors caught
+    smoking or holding cannabis at the temple would be arrested, ending the tolerance long shown
+    on the festival day. Sadhus stayed exempt but were told not to sell or offer it to visitors.
+    Police said they had rounded up about 300 people for cannabis in the five months before.
+  checked: true
+  sources:
+    - title: Kathmandu Post — Police to arrest cannabis users at Pashupati this Mahashivaratri festival (11 February 2018)
+      url: https://kathmandupost.com/valley/2018/02/11/police-to-arrest-cannabis-users-at-pashupati-this-mahashivaratri-festival
 
 - id: samoa-legalisation-rejected-2018
   date: "2018-01"
@@ -4980,6 +5281,15 @@
   sources:
     - title: Wikipedia — Cannabis in Lesotho
       url: https://en.wikipedia.org/wiki/Cannabis_in_Lesotho
+    - type: chapter
+      title: "Sub-Saharan Africa, Cannabis, and Contemporary Drug Policy"
+      authors: [Neil Carrier]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 321–339"
 
 - id: samoa-law-reform-2017
   date: "2017"
@@ -5063,6 +5373,22 @@
   sources:
     - title: Wikipedia — Cannabis in Malaysia
       url: https://en.wikipedia.org/wiki/Cannabis_in_Malaysia
+
+- id: china-heilongjiang-hemp-2017
+  date: "2017"
+  category: other
+  country: cn
+  title: Heilongjiang opens industrial hemp growing
+  description: >-
+    Heilongjiang became the second Chinese province, after Yunnan, to allow industrial hemp to
+    be grown, processed and sold. Jilin planned a hemp chapter in its anti-drug regulations in
+    2018, but the version adopted in 2022 left it out.
+  checked: true
+  sources:
+    - title: China Daily — Jilin to become the third province to deregulate industrial hemp cultivation (19 February 2019)
+      url: https://chinaservicesinfo.com/s/201902/19/WS5c6bc080498e27e338038956/jilin-to-become-the-third-province-to-deregulate-industrial-hemp-cultivation.html
+    - title: CMS — Cannabis law and legislation in China
+      url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/china
 
 - id: serbia-medical-bill-2017
   date: "2017-06-23"
@@ -5282,6 +5608,22 @@
     - title: Wikipedia — Cannabis in Georgia (country)
       url: https://en.wikipedia.org/wiki/Cannabis_in_Georgia_(country)
 
+- id: canada-task-force-2016
+  date: "2016-12-13"
+  category: debate
+  country: ca
+  title: Canada's task force sets out a plan for legalisation
+  description: >-
+    A task force appointed by the Trudeau government after the 2015 election published a 106-page
+    report on how to legalise and regulate cannabis. Bill C-45 was introduced four months later, on
+    13 April 2017.
+  checked: true
+  sources:
+    - title: "Wikipedia — Cannabis in Canada"
+      url: https://en.wikipedia.org/wiki/Cannabis_in_Canada
+    - title: "Wikipedia — Cannabis Act (Canada)"
+      url: https://en.wikipedia.org/wiki/Cannabis_Act_(Canada)
+
 - id: us-legalisation-wave-2016
   date: "2016-11-08"
   category: legalisation
@@ -5460,6 +5802,20 @@
   sources:
     - title: Nouveau Code pénal de la République de Guinée, février 2016 (Police and Human Rights Resources copy)
       url: https://policehumanrightsresources.org/content/uploads/2019/07/NOUVEAU-CODE-PENAL-DE-LA-REPUBLIQUE-DE-GUINEE-Fevrier-2016.pdf
+
+- id: czechia-first-domestic-medical-cannabis-2016
+  date: "2016-03-22"
+  category: medical
+  country: cz
+  title: The first Czech-grown medical cannabis reaches distribution
+  description: >-
+    The State Institute for Drug Control took delivery of the first batch grown in Czechia under
+    its public contract and released it into the pharmacy distribution network. The batch was
+    Cannabis sativa with 19% THC and less than 1% CBD.
+  checked: true
+  sources:
+    - title: SÚKL — Do lékáren může zamířit první české léčebné konopí (22 March 2016)
+      url: https://sukl.gov.cz/media/tiskove-zpravy/do-lekaren-muze-zamirit-prvni-ceske-lecebne-konopi/
 
 - id: australia-medical-2016
   date: "2016-02-24"
@@ -5736,6 +6092,27 @@
     - title: Business of Cannabis — Is cannabis legal in Spain? Clubs, courts and a market in limbo (2 October 2026)
       url: https://businessofcannabis.com/is-cannabis-legal-in-spain-clubs-courts-and-a-market-in-limbo
 
+- id: kenya-legalisation-petition-2015
+  date: "2015"
+  category: debate
+  country: ke
+  title: Kenya's Senate receives a cannabis legalisation petition
+  description: >-
+    Gwada Ogot petitioned the Senate to remove cannabis from the scheduled-substances list and
+    establish a regulator for a legal market. Senators debated the petition in 2017, but it did not
+    change the law, so the index does not move.
+  checked: true
+  sources:
+    - type: chapter
+      title: "The Cannabis Trade in Africa"
+      authors: [Neil Carrier]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 321–339"
+
 - id: belgium-sativex-2015
   date: "2015-06-11"
   category: medical
@@ -5825,6 +6202,35 @@
   sources:
     - title: Wikipedia — Cannabis in Paraguay
       url: https://en.wikipedia.org/wiki/Cannabis_in_Paraguay
+
+- id: uruguay-club-registry-2014
+  date: "2014-10-30"
+  category: other
+  country: uy
+  title: Uruguay starts registering cannabis clubs
+  description: >-
+    The regulator announced it would register membership clubs of 15 to 45 members growing up to 99
+    plants. A club must first be a civil association, keep all activity on its own premises and
+    stand at least 150 metres from schools and rehabilitation centres.
+  checked: true
+  sources:
+    - title: "Brookings / WOLA — Walsh and Ramsey, Uruguay's Drug Policy: Major Innovations, Major Challenges (2015)"
+      url: https://www.brookings.edu/wp-content/uploads/2016/07/Walsh-Uruguay-final.pdf
+
+- id: uruguay-home-grow-registry-2014
+  date: "2014-08-27"
+  category: other
+  country: uy
+  title: Uruguay opens its register of home growers
+  description: >-
+    The regulator IRCCA began registering households growing up to six flowering plants, the first
+    part of the 2013 law to operate. A year later 2,743 growers were registered.
+  checked: true
+  sources:
+    - title: "Brookings / WOLA — Walsh and Ramsey, Uruguay's Drug Policy: Major Innovations, Major Challenges (2015)"
+      url: https://www.brookings.edu/wp-content/uploads/2016/07/Walsh-Uruguay-final.pdf
+    - title: "Wikipedia — Cannabis in Uruguay"
+      url: https://en.wikipedia.org/wiki/Cannabis_in_Uruguay
 
 - id: kyrgyzstan-legalisation-proposal-2014
   date: "2014"
@@ -5924,6 +6330,20 @@
     - title: Wikipedia — Cannabis in El Salvador
       url: https://en.wikipedia.org/wiki/Cannabis_in_El_Salvador
 
+- id: uruguay-regulations-2014
+  date: "2014-05"
+  category: other
+  country: uy
+  title: Uruguay publishes the rules for its cannabis law
+  description: >-
+    The regulations set a weekly limit of 10 g in pharmacies and made the three routes exclusive: a
+    person may register for the pharmacy, a club or home growing, but not more than one. Surplus
+    harvests are to be handed to the regulator.
+  checked: true
+  sources:
+    - title: "Brookings / WOLA — Walsh and Ramsey, Uruguay's Drug Policy: Major Innovations, Major Challenges (2015)"
+      url: https://www.brookings.edu/wp-content/uploads/2016/07/Walsh-Uruguay-final.pdf
+
 - id: czechia-ten-grams-2014
   date: "2014-03"
   category: tightening
@@ -5939,6 +6359,20 @@
       url: https://en.wikipedia.org/wiki/Cannabis_in_the_Czech_Republic
     - title: Seznam Zprávy — Už žádné množství větší než malé? Soud chce změnit přístup ke konopí
       url: https://www.seznamzpravy.cz/clanek/uz-zadne-mnozstvi-vetsi-nez-male-soud-chce-zmenit-pristup-ke-konopi-124670
+
+- id: india-ndps-amendment-2014
+  date: "2014-03-07"
+  category: easing
+  country: in
+  title: India amends its narcotics law
+  description: >-
+    The amendment removed the mandatory death sentence for repeat large-quantity trafficking,
+    allowing thirty years in prison instead, and eased access to morphine and other opioids for pain
+    relief. It raised the maximum for small-quantity offences from six months to one year.
+  checked: true
+  sources:
+    - title: "Wikipedia — Narcotic Drugs and Psychotropic Substances Act, 1985"
+      url: https://en.wikipedia.org/wiki/Narcotic_Drugs_and_Psychotropic_Substances_Act,_1985
 
 - id: italy-constitutional-court-2014
   date: "2014-02-12"
@@ -5972,13 +6406,28 @@
     - title: "IDPC — Romania: Drug-related offenses reduced as new criminal code is enforced"
       url: https://idpc.net/news/2014/12/romania-drug-related-offenses-reduced-as-new-criminal-code-is-enforced
 
+- id: us-colorado-first-shops-2014
+  date: "2014-01-01"
+  category: other
+  country: us
+  title: The first licensed cannabis shops open in Colorado
+  description: >-
+    Thirteen months after the vote, Colorado's first stores for adults opened. Sales exceeded 996
+    million dollars in 2015 and brought in 135 million in taxes. By April 2017, 176 of the state's
+    272 municipalities had chosen to prohibit retail cannabis.
+  checked: true
+  sources:
+    - title: "Wikipedia — Colorado Amendment 64"
+      url: https://en.wikipedia.org/wiki/Colorado_Amendment_64
+
 - id: uruguay-legalisation-2013
   date: "2013-12-23"
   category: legalisation
   country: uy
   title: Uruguay becomes the first country to legalise
   description: >-
-    President Mujica signed Law 19.172, which put the whole chain under state control. Registered
+    President Mujica signed Law 19.172, passed by the Senate on 10 December by 16 votes to 13, which
+    put the whole chain under state control. Registered
     residents choose one of three routes: growing six plants at home, joining a club, or buying up
     to 40 g a month in pharmacies. Possession for personal use had not been a crime since 1974.
   before: {possession: 5, cultivation: 1, enforcement: 5, sharing: 1, consumption: 6, access: 0}
@@ -5989,6 +6438,23 @@
     - title: Wikipedia — Cannabis in Uruguay
       url: https://en.wikipedia.org/wiki/Cannabis_in_Uruguay
 
+- id: uruguay-incb-criticism-2013
+  date: "2013-12-11"
+  category: international
+  country: uy
+  title: The UN drug control board says Uruguay broke the treaty
+  description: >-
+    The day after the Senate vote, the International Narcotics Control Board said the law
+    contravened the 1961 Single Convention. Its president, Raymond Yans, said it would encourage
+    early experimentation. President Mujica answered that he should stop lying, and Uruguay argued
+    that its human rights obligations take precedence over drug control.
+  checked: true
+  sources:
+    - title: "Fox News / AP — Uruguay's marijuana law challenged by watchdog group (11 December 2013)"
+      url: https://www.foxnews.com/world/uruguays-marijuana-law-challenged-by-watchdog-group-claims-it-violates-drug-control-convention
+    - title: "Brookings / WOLA — Walsh and Ramsey, Uruguay's Drug Policy: Major Innovations, Major Challenges (2015)"
+      url: https://www.brookings.edu/wp-content/uploads/2016/07/Walsh-Uruguay-final.pdf
+
 - id: switzerland-fine-2013
   date: "2013-10-01"
   category: easing
@@ -5996,15 +6462,16 @@
   title: Switzerland introduces a CHF 100 fine
   description: >-
     Under an amendment passed in 2012, adults caught using cannabis with up to 10 g on them pay a
-    fixed CHF 100 fine and are not prosecuted. Courts later held that simply possessing up to 10 g
-    is not punishable at all.
+    fixed CHF 100 fine instead of entering ordinary criminal proceedings. The amendment also defined
+    10 g as a minor quantity; courts later clarified that possession alone within the limit is not
+    punishable.
   before: {possession: 2, cultivation: 1, enforcement: 3, sharing: 1, consumption: 1, access: 0}
   checked: true
   sources:
-    - title: ch.ch (Swiss authorities) — Cannabis
-      url: https://www.ch.ch/en/safety-and-justice/police/cannabis
-    - title: Wikipedia — Cannabis in Switzerland
-      url: https://en.wikipedia.org/wiki/Cannabis_in_Switzerland
+    - title: Swiss Federal Council — Fixed fine for cannabis consumption
+      url: https://www.admin.ch/de/nsb?id=49053
+    - title: Federal Office of Public Health — Evaluation of fixed fines for cannabis consumption
+      url: https://www.bag.admin.ch/dam/de/sd-web/kxNoVQ8Nn2ws/amendes-d-ordre-pour-consommation-de-cannabis.pdf
 
 - id: us-cole-memo-2013
   date: "2013-08-29"
@@ -6019,6 +6486,22 @@
   sources:
     - title: Wikipedia — Legal history of cannabis in the United States
       url: https://en.wikipedia.org/wiki/Legal_history_of_cannabis_in_the_United_States
+
+- id: uruguay-chamber-vote-2013
+  date: "2013-07-31"
+  category: debate
+  country: uy
+  title: Uruguay's lower house passes the cannabis bill with no vote to spare
+  description: >-
+    The Chamber of Deputies approved the regulation bill with 50 votes, the minimum it needed. Every
+    deputy of the governing Broad Front voted for it and every other deputy against. The Senate
+    followed on 10 December by 16 votes to 13.
+  checked: true
+  sources:
+    - title: "Wikipedia — Cannabis in Uruguay"
+      url: https://en.wikipedia.org/wiki/Cannabis_in_Uruguay
+    - title: "Brookings / WOLA — Walsh and Ramsey, Uruguay's Drug Policy: Major Innovations, Major Challenges (2015)"
+      url: https://www.brookings.edu/wp-content/uploads/2016/07/Walsh-Uruguay-final.pdf
 
 - id: czechia-constitutional-court-2013
   date: "2013-07-23"
@@ -6335,6 +6818,23 @@
     - title: Wikipedia — Cannabis in Belize
       url: https://en.wikipedia.org/wiki/Cannabis_in_Belize
 
+- id: uruguay-strategy-for-life-2012
+  date: "2012-06-20"
+  category: debate
+  country: uy
+  title: Mujica's government proposes state-run cannabis sales
+  description: >-
+    In a fifteen-point security plan called the Strategy for Life and Coexistence, the government
+    proposed legalising and controlling the sale of cannabis, with the state producing it. The bill
+    sent to parliament in August had a single article, a poll found 66% opposed, and the president
+    put it on hold for a period of debate.
+  checked: true
+  sources:
+    - title: "Brookings / WOLA — Walsh and Ramsey, Uruguay's Drug Policy: Major Innovations, Major Challenges (2015)"
+      url: https://www.brookings.edu/wp-content/uploads/2016/07/Walsh-Uruguay-final.pdf
+    - title: "Wikipedia — Cannabis in Uruguay"
+      url: https://en.wikipedia.org/wiki/Cannabis_in_Uruguay
+
 - id: slovakia-fico-proposal-2012
   date: "2012-04"
   category: debate
@@ -6470,6 +6970,36 @@
     - title: EMCDDA (Wayback copy) — Overview of the drug situation in Kazakhstan (2014)
       url: https://web.archive.org/web/2024/https://www.euda.europa.eu/publications/country-overviews/kazakhstan-2014_en
 
+- id: uruguay-home-grow-bill-2010
+  date: "2010-11"
+  category: debate
+  country: uy
+  title: A conservative deputy files Uruguay's first home-growing bill
+  description: >-
+    Luis Alberto Lacalle Pou of the National Party presented the first bill in Uruguay's history to
+    legalise growing cannabis at home for personal use. It set no limit on plants or on the amount
+    counted as personal. By early 2012 a cross-party bill for eight plants and 25 g looked set to
+    pass.
+  checked: true
+  sources:
+    - title: "Brookings / WOLA — Walsh and Ramsey, Uruguay's Drug Policy: Major Innovations, Major Challenges (2015)"
+      url: https://www.brookings.edu/wp-content/uploads/2016/07/Walsh-Uruguay-final.pdf
+
+- id: us-california-proposition-19-2010
+  date: "2010-11"
+  category: debate
+  country: us
+  title: California's Proposition 19 narrowly fails
+  description: >-
+    The Regulate, Control and Tax Cannabis Act would have let adults over 21 hold an ounce and grow
+    limited amounts, with cities and counties regulating sales. It lost by 53.5 per cent to 46.5. A
+    post-election poll found half of voters thought cannabis should be legal but disliked the
+    details.
+  checked: true
+  sources:
+    - title: "TNI / GDPO — The Rise and Decline of Cannabis Prohibition (2014)"
+      url: https://www.tni.org/files/download/rise_and_decline_web.pdf
+
 - id: venezuela-drug-law-2010
   date: "2010-09-15"
   category: other
@@ -6559,6 +7089,19 @@
     - title: Wikipedia — Cannabis in the Czech Republic
       url: https://en.wikipedia.org/wiki/Cannabis_in_the_Czech_Republic
 
+- id: china-yunnan-hemp-2010
+  date: "2010-01-01"
+  category: other
+  country: cn
+  title: Yunnan becomes China's first province to license industrial hemp
+  description: >-
+    A provincial regulation took effect that allows industrial hemp, defined as cannabis plants
+    and extracts with less than 0.3% THC, to be grown and processed.
+  checked: true
+  sources:
+    - title: China Daily — Jilin to become the third province to deregulate industrial hemp cultivation (19 February 2019)
+      url: https://chinaservicesinfo.com/s/201902/19/WS5c6bc080498e27e338038956/jilin-to-become-the-third-province-to-deregulate-industrial-hemp-cultivation.html
+
 - id: colombia-constitution-amended-2009
   date: "2009-12"
   category: tightening
@@ -6619,10 +7162,8 @@
   before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 0}
   checked: true
   sources:
-    - title: CMS Expert Guide — Cannabis law and legislation in Mexico
-      url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/mexico
-    - title: Wikipedia — Cannabis in Mexico
-      url: https://en.wikipedia.org/wiki/Cannabis_in_Mexico
+    - title: Diario Oficial de la Federación — Drug-law reform decree of 20 August 2009
+      url: https://sidof.segob.gob.mx/notas/docFuente/5106093
 
 - id: armenia-use-decriminalised-2009
   date: "2009"
@@ -6693,6 +7234,20 @@
     - title: Кодекс України про адміністративні правопорушення, № 8073-X, Article 106-2 (Verkhovna Rada)
       url: https://zakon.rada.gov.ua/laws/show/80731-10
 
+- id: south-africa-dagga-party-2009
+  date: "2009-02"
+  category: debate
+  country: za
+  title: The Dagga Party is founded in South Africa
+  description: >-
+    Jeremy Acton founded the Dagga Party to campaign for legal cannabis. He was one of the three
+    applicants, with Gareth Prince and Jonathan Rubin, whose case led to the 2017 and 2018 rulings
+    protecting private use.
+  checked: true
+  sources:
+    - title: "Wikipedia — Cannabis in South Africa"
+      url: https://en.wikipedia.org/wiki/Cannabis_in_South_Africa
+
 - id: uk-class-b-2009
   date: "2009-01-26"
   category: tightening
@@ -6702,7 +7257,7 @@
     Five years after downgrading it, the government returned cannabis to Class B against the advice
     of its own drugs advisory council. The maximum for possession went back up from two to five
     years in prison.
-  before: {possession: 2, cultivation: 1, enforcement: 4, sharing: 1, consumption: 2, access: 0}
+  before: {possession: 2, cultivation: 1, enforcement: 4, sharing: 1, consumption: 2, access: 1}
   checked: true
   sources:
     - title: Wikipedia — Cannabis in the United Kingdom
@@ -6832,6 +7387,21 @@
     - title: iWitness News — Ganja penalties toughen as attitudes soften, lawyer says (6 October 2020)
       url: https://www.iwnsvg.com/2020/10/06/ganja-penalties-toughen-as-attitudes-soften-lawyer-says/
 
+- id: china-narcotics-control-law-2008
+  date: "2008-06-01"
+  category: other
+  country: cn
+  title: China's Narcotics Control Law takes effect
+  description: >-
+    The law, adopted on 29 December 2007, replaced the 1990 decision. It lists cannabis among
+    the drugs, has police register drug users, and sets community rehabilitation at three years
+    and compulsory isolated rehabilitation at two, which can be extended by one more. A user who
+    comes forward to register or seeks treatment is not punished for the use.
+  checked: true
+  sources:
+    - title: Narcotics Control Law of the People's Republic of China (Wikisource)
+      url: https://zh.wikisource.org/wiki/中华人民共和国禁毒法
+
 - id: kosovo-narcotics-law-2008
   date: "2008-02-19"
   category: tightening
@@ -6890,22 +7460,6 @@
   sources:
     - title: Searchlight — RSS swoops down on marijuana farms (28 September 2007)
       url: https://searchlight.vc/front-page/2007/09/28/rss-swoops-down-on-marijuana-farms
-
-- id: israel-attorney-general-directive-1985
-  date: "1985"
-  category: easing
-  country: il
-  title: Israel's attorney general tells police not to arrest first-time users
-  description: >-
-    Under attorney general's directives issued in 1985 and renewed in 2003, people caught with a
-    small amount of cannabis were not supposed to be arrested for a first offence, and police had
-    discretion over later ones. The law itself still allowed up to three years in prison for
-    possessing up to 15 g.
-  before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 0}
-  checked: true
-  sources:
-    - title: Reason — Israel Moves Toward Decriminalizing Marijuana Use (27 January 2017)
-      url: https://reason.com/2017/01/27/israel-moves-toward-decriminalizing-mari/
 
 - id: israel-medical-programme-2007
   date: "2007"
@@ -7007,6 +7561,21 @@
   sources:
     - title: LawPhil — Republic Act No. 9346
       url: https://lawphil.net/statutes/repacts/ra2006/ra_9346_2006.html
+
+- id: china-public-security-law-2006
+  date: "2006-03-01"
+  category: other
+  country: cn
+  title: China moves the penalty for drug use into its public security law
+  description: >-
+    The Public Security Administration Punishments Law, adopted on 28 August 2005, took effect.
+    Article 72 punishes using drugs or possessing a small amount with 10 to 15 days' detention
+    and a fine of up to 2,000 yuan, or up to 5 days or 500 yuan in minor cases; Article 71 sets
+    the same detention for growing a small number of drug plants.
+  checked: true
+  sources:
+    - title: Congressional-Executive Commission on China — Public Security Administration Punishment Law (text)
+      url: https://www.cecc.gov/resources/legal-provisions/public-security-administration-punishment-law-chinese-text
 
 - id: italy-fini-giovanardi-2006
   date: "2006-02"
@@ -7284,7 +7853,7 @@
     Cannabis moved from Class B to Class C. The maximum for possession fell from five to two years,
     and police were told that adults caught with a small amount should normally get a warning, not
     be arrested.
-  before: {possession: 1, cultivation: 1, enforcement: 3, sharing: 1, consumption: 1, access: 0}
+  before: {possession: 1, cultivation: 1, enforcement: 3, sharing: 1, consumption: 1, access: 1}
   checked: true
   sources:
     - title: Wikipedia — Cannabis in the United Kingdom
@@ -7634,6 +8203,20 @@
     - title: Wikipedia — Cannabis in Finland
       url: https://en.wikipedia.org/wiki/Cannabis_in_Finland
 
+- id: us-oakland-cooperative-2001
+  date: "2001"
+  category: other
+  country: us
+  title: The US Supreme Court rejects a medical necessity defence
+  description: >-
+    In United States v. Oakland Cannabis Buyers' Cooperative the court held that federal drug law
+    leaves no room for a defence of medical necessity, so a state-legal cooperative could still be
+    shut down under federal law.
+  checked: true
+  sources:
+    - title: "Wikipedia — 1996 California Proposition 215"
+      url: https://en.wikipedia.org/wiki/1996_California_Proposition_215
+
 - id: luxembourg-fines-2001
   date: "2001-04"
   category: easing
@@ -7792,6 +8375,21 @@
   sources:
     - title: Gulf News — Qaboos approves amendments to Oman drug law
       url: https://gulfnews.com/world/gulf/oman/qaboos-approves-ammendments-to-oman-drug-law-1.1596990
+
+- id: portugal-national-strategy-1999
+  date: "1999"
+  category: debate
+  country: pt
+  title: Portugal adopts a national drug strategy built on health
+  description: >-
+    With an estimated 50,000 to 100,000 heroin users and the highest HIV rate among injecting drug
+    users in the European Union, the government adopted a strategy that expanded harm reduction and
+    doubled spending on treatment and prevention. Decriminalisation of use followed from it two
+    years later.
+  checked: true
+  sources:
+    - title: "Wikipedia — Drug policy of Portugal"
+      url: https://en.wikipedia.org/wiki/Drug_policy_of_Portugal
 
 - id: moldova-narcotics-law-1999
   date: "1999-05-06"
@@ -8089,6 +8687,23 @@
     - title: Wikipedia — Cannabis in Poland
       url: https://en.wikipedia.org/wiki/Cannabis_in_Poland
 
+- id: china-criminal-law-1997
+  date: "1997-10-01"
+  category: tightening
+  country: cn
+  title: China's revised Criminal Law takes over the drug offences
+  description: >-
+    The Criminal Law revised on 14 March 1997 absorbed the 1990 decision. Article 357 lists
+    cannabis among the drugs, Article 351 orders unlicensed cannabis plants uprooted, and
+    Article 347 punishes trafficking whatever the quantity, with the death penalty available for
+    the most serious cases.
+  checked: true
+  sources:
+    - title: Criminal Law of the People's Republic of China, 1997 (Wikisource)
+      url: https://zh.wikisource.org/wiki/中华人民共和国刑法_(1997年)
+    - title: State Council Information Office — Narcotics Control in China, white paper (June 2000)
+      url: https://www.mfa.gov.cn/web/ziliao_674904/zt_674979/ywzt_675099/wzzt_675579/2296_675789/200207/t20020705_7961979.shtml
+
 - id: indonesia-narcotics-law-1997
   date: "1997-09-01"
   category: death
@@ -8175,6 +8790,21 @@
   sources:
     - title: REFORMAR — As problemáticas da criminalização do consumo de drogas ilícitas em Moçambique
       url: https://reformar.co.mz/publicacoes/criminalizacao-do-consumo-de-droga-em-mocambique-artigo-23-04-2023-final.pdf/@@download/file/As%20Problem%C3%A1ticas%20da%20Criminaliza%C3%A7%C3%A3o%20do%20Consumo%20de%20Drogas%20Il%C3%ADcitas%20Em%20Mo%C3%A7ambique.pdf
+
+- id: us-federal-warning-doctors-1996
+  date: "1996-12-30"
+  category: tightening
+  country: us
+  title: Washington threatens doctors who recommend cannabis
+  description: >-
+    Eight weeks after California's vote, the health secretary, the attorney general and the drug
+    czar Barry McCaffrey announced plans to prosecute those involved in prescribing medical
+    marijuana. Doctors sued with the American Civil Liberties Union and won in federal court and on
+    appeal; the Supreme Court declined to hear the government's appeal in 2003.
+  checked: true
+  sources:
+    - title: "Wikipedia — 1996 California Proposition 215"
+      url: https://en.wikipedia.org/wiki/1996_California_Proposition_215
 
 - id: cambodia-ban-1996
   date: "1996-12-09"
@@ -8333,6 +8963,20 @@
     - title: Comoros — Penal Code, Act 95-012/AF (English translation, policehumanrightsresources.org)
       url: https://policehumanrightsresources.org/content/uploads/2016/03/Penal-Code-Comoros-1981.pdf
 
+- id: nepal-pashupati-distribution-ended-1995
+  date: "1995"
+  category: tightening
+  country: np
+  title: Pashupatinath's trust stops handing out cannabis to holy men
+  description: >-
+    Until 1995 the trust that runs the Pashupatinath temple gave sadhus marijuana at the
+    Shivaratri festival, taken from the Home Ministry's confiscated stock. The practice ended on
+    King Birendra's instruction, according to the trust's director.
+  checked: true
+  sources:
+    - title: Kathmandu Post — Police to arrest cannabis users at Pashupati this Mahashivaratri festival (11 February 2018)
+      url: https://kathmandupost.com/valley/2018/02/11/police-to-arrest-cannabis-users-at-pashupati-this-mahashivaratri-festival
+
 - id: slovakia-possession-crime-1994
   date: "1994-10-01"
   category: tightening
@@ -8409,15 +9053,13 @@
   title: Germany's Constitutional Court limits prosecution of small amounts
   description: >-
     The court upheld the ban on cannabis but said that cases involving a small amount for occasional
-    personal use should generally not be prosecuted. Each state then set its own threshold, mostly
-    around 6 g.
+    personal use and no danger to others should generally not be prosecuted. It required enforcement
+    authorities in the states to apply that principle in an essentially uniform way.
   before: {possession: 1, cultivation: 1, enforcement: 3, sharing: 1, consumption: 3, access: 0}
   checked: true
   sources:
-    - title: Wikipedia — Cannabis in Germany
-      url: https://en.wikipedia.org/wiki/Cannabis_in_Germany
-    - title: Wikipedia (German) — Cannabis-Beschluss
-      url: https://de.wikipedia.org/wiki/Cannabis-Beschluss
+    - title: Federal Constitutional Court — Order of 9 March 1994, 2 BvL 43/92 and others
+      url: https://www.bundesverfassungsgericht.de/SharedDocs/Entscheidungen/DE/1994/03/ls19940309_2bvl004392.html
 
 - id: philippines-death-penalty-1993
   date: "1993-12-31"
@@ -8819,6 +9461,26 @@
     - title: Penal Code, original Article 299 and amendment history (Congress of Peru)
       url: https://www2.congreso.gob.pe/sicr/cendocbib/con6_uibd.nsf/DB60F84B5D157DD605258AB3005DEC4B/$FILE/codigo_penal.pdf
 
+- id: china-decision-on-narcotics-1990
+  date: "1990-12-28"
+  category: tightening
+  country: cn
+  title: China names cannabis as a drug and punishes using it
+  description: >-
+    A decision of the National People's Congress Standing Committee defined drugs as opium,
+    heroin, morphine, cannabis, cocaine and other controlled substances. Using drugs brought up
+    to 15 days' detention and a fine of up to 2,000 yuan, with compulsory treatment for addicts
+    and re-education through labour for those who relapsed. Poppy, cannabis and other drug
+    plants were to be uprooted without exception, and a small plot meant up to 15 days'
+    detention.
+  before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 0}
+  checked: true
+  sources:
+    - title: National People's Congress Standing Committee — Decision on the Prohibition of Narcotic Drugs, 28 December 1990 (Wikisource)
+      url: https://zh.wikisource.org/wiki/全国人民代表大会常务委员会关于禁毒的决定
+    - title: State Council Information Office — Narcotics Control in China, white paper (June 2000)
+      url: https://www.mfa.gov.cn/web/ziliao_674904/zt_674979/ywzt_675099/wzzt_675579/2296_675789/200207/t20020705_7961979.shtml
+
 - id: czechoslovakia-decriminalisation-1990
   date: "1990-07-01"
   category: easing
@@ -8924,6 +9586,20 @@
   sources:
     - title: Law and World — The changes in drug laws to apply the death penalty for drug-related offences in Vietnam
       url: https://lawandworld.ge/index.php/law/article/view/572
+
+- id: single-convention-phase-out-1989
+  date: "1989-12"
+  category: international
+  title: The Single Convention's deadline for ending traditional cannabis use passes
+  description: >-
+    Article 49 let countries keep non-medical use of cannabis for a transitional period of at most
+    25 years from the treaty's entry into force. India, Nepal, Pakistan and later Bangladesh had
+    claimed it. The period ran out in December 1989; bhang, made from leaves the treaty does not
+    count as cannabis, was not affected.
+  checked: true
+  sources:
+    - title: "TNI / GDPO — The Rise and Decline of Cannabis Prohibition (2014)"
+      url: https://www.tni.org/files/download/rise_and_decline_web.pdf
 
 - id: argentina-law-23737-1989
   date: "1989-10"
@@ -9211,6 +9887,20 @@
     - title: Sandra G. Edwards — Una breve historia de la legislación ecuatoriana de drogas y su impacto sobre la población penal en el país (TNI/WOLA)
       url: https://ungassondrugs.org/images/stories/documents/Sistemas_sobrecargados/Completos/sistemas%20sobrecargados%20-%20completo%20ecuador.pdf
 
+- id: uruguay-addiction-commission-1987
+  date: "1987"
+  category: debate
+  country: uy
+  title: Uruguay's lower house sets up a drug commission
+  description: >-
+    Two years after the return to democracy, the Chamber of Representatives created a Special
+    Commission on Drug Addiction, prompted mainly by a rise in cannabis use. It reviewed drug policy
+    for years; the first change to the law came in 1998.
+  checked: true
+  sources:
+    - title: "Brookings / WOLA — Walsh and Ramsey, Uruguay's Drug Policy: Major Innovations, Major Challenges (2015)"
+      url: https://www.brookings.edu/wp-content/uploads/2016/07/Walsh-Uruguay-final.pdf
+
 - id: australia-expiation-1987
   date: "1987-04-30"
   category: easing
@@ -9305,191 +9995,21 @@
     - title: Narcotic Drugs and Psychotropic Substances Act, 1985, section 2 (text as reproduced by AdvocateKhoj)
       url: https://www.advocatekhoj.com/library/bareacts/narcoticdrugs/2.php?Title=Narcotic%20Drugs%20and%20Psychotropic%20Substances%20Act,%201985&STitle=Definitions
 
-- id: china-criminal-law-1979
-  date: "1979-07-01"
-  category: other
-  country: cn
-  title: China's first Criminal Law punishes making and trafficking drugs
+- id: israel-attorney-general-directive-1985
+  date: "1985"
+  category: easing
+  country: il
+  title: Israel's attorney general tells police not to arrest first-time users
   description: >-
-    The Criminal Law adopted on 1 July 1979 set out the crimes of manufacturing, selling and
-    transporting narcotics and their penalties. Rules on using and possessing drugs came later,
-    in 1990.
-  checked: true
-  sources:
-    - title: State Council Information Office — Narcotics Control in China, white paper (June 2000)
-      url: https://www.mfa.gov.cn/web/ziliao_674904/zt_674979/ywzt_675099/wzzt_675579/2296_675789/200207/t20020705_7961979.shtml
-
-- id: china-decision-on-narcotics-1990
-  date: "1990-12-28"
-  category: tightening
-  country: cn
-  title: China names cannabis as a drug and punishes using it
-  description: >-
-    A decision of the National People's Congress Standing Committee defined drugs as opium,
-    heroin, morphine, cannabis, cocaine and other controlled substances. Using drugs brought up
-    to 15 days' detention and a fine of up to 2,000 yuan, with compulsory treatment for addicts
-    and re-education through labour for those who relapsed. Poppy, cannabis and other drug
-    plants were to be uprooted without exception, and a small plot meant up to 15 days'
-    detention.
+    Under attorney general's directives issued in 1985 and renewed in 2003, people caught with a
+    small amount of cannabis were not supposed to be arrested for a first offence, and police had
+    discretion over later ones. The law itself still allowed up to three years in prison for
+    possessing up to 15 g.
   before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 0}
   checked: true
   sources:
-    - title: National People's Congress Standing Committee — Decision on the Prohibition of Narcotic Drugs, 28 December 1990 (Wikisource)
-      url: https://zh.wikisource.org/wiki/全国人民代表大会常务委员会关于禁毒的决定
-    - title: State Council Information Office — Narcotics Control in China, white paper (June 2000)
-      url: https://www.mfa.gov.cn/web/ziliao_674904/zt_674979/ywzt_675099/wzzt_675579/2296_675789/200207/t20020705_7961979.shtml
-
-- id: china-criminal-law-1997
-  date: "1997-10-01"
-  category: tightening
-  country: cn
-  title: China's revised Criminal Law takes over the drug offences
-  description: >-
-    The Criminal Law revised on 14 March 1997 absorbed the 1990 decision. Article 357 lists
-    cannabis among the drugs, Article 351 orders unlicensed cannabis plants uprooted, and
-    Article 347 punishes trafficking whatever the quantity, with the death penalty available for
-    the most serious cases.
-  checked: true
-  sources:
-    - title: Criminal Law of the People's Republic of China, 1997 (Wikisource)
-      url: https://zh.wikisource.org/wiki/中华人民共和国刑法_(1997年)
-    - title: State Council Information Office — Narcotics Control in China, white paper (June 2000)
-      url: https://www.mfa.gov.cn/web/ziliao_674904/zt_674979/ywzt_675099/wzzt_675579/2296_675789/200207/t20020705_7961979.shtml
-
-- id: china-public-security-law-2006
-  date: "2006-03-01"
-  category: other
-  country: cn
-  title: China moves the penalty for drug use into its public security law
-  description: >-
-    The Public Security Administration Punishments Law, adopted on 28 August 2005, took effect.
-    Article 72 punishes using drugs or possessing a small amount with 10 to 15 days' detention
-    and a fine of up to 2,000 yuan, or up to 5 days or 500 yuan in minor cases; Article 71 sets
-    the same detention for growing a small number of drug plants.
-  checked: true
-  sources:
-    - title: Congressional-Executive Commission on China — Public Security Administration Punishment Law (text)
-      url: https://www.cecc.gov/resources/legal-provisions/public-security-administration-punishment-law-chinese-text
-
-- id: china-narcotics-control-law-2008
-  date: "2008-06-01"
-  category: other
-  country: cn
-  title: China's Narcotics Control Law takes effect
-  description: >-
-    The law, adopted on 29 December 2007, replaced the 1990 decision. It lists cannabis among
-    the drugs, has police register drug users, and sets community rehabilitation at three years
-    and compulsory isolated rehabilitation at two, which can be extended by one more. A user who
-    comes forward to register or seeks treatment is not punished for the use.
-  checked: true
-  sources:
-    - title: Narcotics Control Law of the People's Republic of China (Wikisource)
-      url: https://zh.wikisource.org/wiki/中华人民共和国禁毒法
-
-- id: china-yunnan-hemp-2010
-  date: "2010-01-01"
-  category: other
-  country: cn
-  title: Yunnan becomes China's first province to license industrial hemp
-  description: >-
-    A provincial regulation took effect that allows industrial hemp, defined as cannabis plants
-    and extracts with less than 0.3% THC, to be grown and processed.
-  checked: true
-  sources:
-    - title: China Daily — Jilin to become the third province to deregulate industrial hemp cultivation (19 February 2019)
-      url: https://chinaservicesinfo.com/s/201902/19/WS5c6bc080498e27e338038956/jilin-to-become-the-third-province-to-deregulate-industrial-hemp-cultivation.html
-
-- id: china-heilongjiang-hemp-2017
-  date: "2017"
-  category: other
-  country: cn
-  title: Heilongjiang opens industrial hemp growing
-  description: >-
-    Heilongjiang became the second Chinese province, after Yunnan, to allow industrial hemp to
-    be grown, processed and sold. Jilin planned a hemp chapter in its anti-drug regulations in
-    2018, but the version adopted in 2022 left it out.
-  checked: true
-  sources:
-    - title: China Daily — Jilin to become the third province to deregulate industrial hemp cultivation (19 February 2019)
-      url: https://chinaservicesinfo.com/s/201902/19/WS5c6bc080498e27e338038956/jilin-to-become-the-third-province-to-deregulate-industrial-hemp-cultivation.html
-    - title: CMS — Cannabis law and legislation in China
-      url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/china
-
-- id: china-cosmetics-hemp-ban-2021
-  date: "2021-05-26"
-  category: tightening
-  country: cn
-  title: China bans cannabis ingredients in cosmetics
-  description: >-
-    New catalogues of prohibited cosmetic ingredients listed cannabis sativa fruit, seed oil and
-    leaf extract, and prohibited cannabidiol in cosmetics, the main legal outlet for Chinese-
-    made CBD.
-  checked: true
-  sources:
-    - title: CMS — Cannabis law and legislation in China
-      url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/china
-
-- id: china-synthetic-cannabinoids-2021
-  date: "2021-07-01"
-  category: tightening
-  country: cn
-  title: China controls synthetic cannabinoids as a whole class
-  description: >-
-    The National Narcotics Control Commission announced on 11 May 2021 that synthetic
-    cannabinoids would be placed under national control by a generic definition covering the
-    whole class, together with 18 other substances listed one by one. The control took effect on
-    1 July.
-  checked: true
-  sources:
-    - title: "UNODC Early Warning Advisory — China: generic control of synthetic cannabinoids (May 2021)"
-      url: https://unodc.org/LSS/Announcement/Details/ff032a29-2e14-4dab-b7d8-ab86d355c809
-
-- id: china-cbd-precursor-controls-2024
-  date: "2024-08-25"
-  category: tightening
-  country: cn
-  title: China puts cannabidiol under its precursor-chemical rules
-  description: >-
-    Six government departments issued an announcement on seven substances, cannabidiol among
-    them, bringing their production, trade and transport under the Regulations on the
-    Administration of Precursor Chemicals.
-  checked: true
-  sources:
-    - title: CMS — Cannabis law and legislation in China
-      url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/china
-
-- id: china-violation-records-sealed-2026
-  date: "2026-01-01"
-  category: easing
-  country: cn
-  title: China seals records of drug-use penalties
-  description: >-
-    The revised Public Security Administration Punishments Law, passed on 27 June 2025, took
-    effect. Article 136 seals records of public-security violations, drug use included: they may
-    not be given out or published, except to state organs handling a case or bodies entitled to
-    check under national rules. After a public outcry in late 2025 the legislature's legal
-    commission said that sealing does not delete a record, and that drug use remains an offence
-    punished under the same law.
-  checked: true
-  sources:
-    - title: Yicai (Xinhua) — legislative commission answers questions on sealing public-security violation records (24 December 2025)
-      url: https://www.yicai.com/news/102972507.html
-
-- id: china-narcotic-1985
-  date: "1985-06"
-  category: ban
-  country: cn
-  title: China classes cannabis as a narcotic
-  description: >-
-    On joining the UN drug conventions, China listed marijuana as a dangerous narcotic. Hemp for
-    fibre and seed had been grown across the country for thousands of years and still is.
-  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
-  checked: true
-  sources:
-    - title: Wikipedia — Cannabis in China
-      url: https://en.wikipedia.org/wiki/Cannabis_in_China
-    - title: State Council Information Office — Narcotics Control in China, white paper (June 2000)
-      url: https://www.mfa.gov.cn/web/ziliao_674904/zt_674979/ywzt_675099/wzzt_675579/2296_675789/200207/t20020705_7961979.shtml
+    - title: Reason — Israel Moves Toward Decriminalizing Marijuana Use (27 January 2017)
+      url: https://reason.com/2017/01/27/israel-moves-toward-decriminalizing-mari/
 
 - id: japan-supreme-court-upholds-ban-1985
   date: "1985"
@@ -9518,6 +10038,22 @@
   sources:
     - title: Micronesian Seminar — Marijuana in Chuuk, by Innocente I. Oneisom (Micronesian Counselor No. 3, June 1991)
       url: https://micsem.org/micronesian-counselo/marijuana-in-chuuk/
+
+- id: china-narcotic-1985
+  date: "1985-06"
+  category: ban
+  country: cn
+  title: China classes cannabis as a narcotic
+  description: >-
+    On joining the UN drug conventions, China listed marijuana as a dangerous narcotic. Hemp for
+    fibre and seed had been grown across the country for thousands of years and still is.
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+  checked: true
+  sources:
+    - title: Wikipedia — Cannabis in China
+      url: https://en.wikipedia.org/wiki/Cannabis_in_China
+    - title: State Council Information Office — Narcotics Control in China, white paper (June 2000)
+      url: https://www.mfa.gov.cn/web/ziliao_674904/zt_674979/ywzt_675099/wzzt_675579/2296_675789/200207/t20020705_7961979.shtml
 
 - id: poland-drug-prevention-act-1985
   date: "1985-01-31"
@@ -9653,6 +10189,28 @@
     - title: Wikipedia — Cannabis in Liechtenstein
       url: https://en.wikipedia.org/wiki/Cannabis_in_Liechtenstein
 
+- id: uk-nabilone-licensed-1982
+  date: "1982"
+  category: medical
+  country: gb
+  title: The United Kingdom licenses nabilone
+  description: >-
+    The United Kingdom licensed the synthetic cannabinoid nabilone for treating side effects from
+    cancer chemotherapy. It restored narrow legal access to a cannabis-based medicine, while herbal
+    cannabis remained prohibited.
+  before: {possession: 1, cultivation: 1, enforcement: 3, sharing: 1, consumption: 1, access: 0}
+  checked: true
+  sources:
+    - type: chapter
+      title: "Forces of Necessity: Lay Advocacy and the Remedicalization of Cannabis in the UK, 1973–2004"
+      authors: [Suzanne Taylor]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 341–361"
+
 - id: philippines-penalties-raised-1982
   date: "1982-03-02"
   category: tightening
@@ -9753,6 +10311,20 @@
     - title: Wikipedia — Cannabis in Thailand
       url: https://en.wikipedia.org/wiki/Cannabis_in_Thailand
 
+- id: china-criminal-law-1979
+  date: "1979-07-01"
+  category: other
+  country: cn
+  title: China's first Criminal Law punishes making and trafficking drugs
+  description: >-
+    The Criminal Law adopted on 1 July 1979 set out the crimes of manufacturing, selling and
+    transporting narcotics and their penalties. Rules on using and possessing drugs came later,
+    in 1990.
+  checked: true
+  sources:
+    - title: State Council Information Office — Narcotics Control in China, white paper (June 2000)
+      url: https://www.mfa.gov.cn/web/ziliao_674904/zt_674979/ywzt_675099/wzzt_675579/2296_675789/200207/t20020705_7961979.shtml
+
 - id: australia-royal-commission-1979
   date: "1979"
   category: debate
@@ -9823,6 +10395,27 @@
   sources:
     - title: Wikipedia — Cannabis in Brunei
       url: https://en.wikipedia.org/wiki/Cannabis_in_Brunei
+
+- id: us-carter-decriminalisation-message-1977
+  date: "1977-08"
+  category: debate
+  country: us
+  title: Carter backs state cannabis decriminalisation
+  description: >-
+    President Jimmy Carter used a message to Congress to support expanding state-level
+    decriminalisation. Federal cannabis law did not change, so the event provides political context
+    without moving the index.
+  checked: true
+  sources:
+    - type: chapter
+      title: "PRIDE International and Drug War Diplomacy: The Parent Movement's Global Battle against Marijuana in the United States, ca. 1970–1985"
+      authors: [Emily Dufton]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 297–319"
 
 - id: ireland-misuse-of-drugs-1977
   date: "1977"
@@ -9899,65 +10492,6 @@
     - title: Wikipedia — Cannabis no Brasil
       url: https://pt.wikipedia.org/wiki/Cannabis_no_Brasil
 
-- id: nepal-pashupati-distribution-ended-1995
-  date: "1995"
-  category: tightening
-  country: np
-  title: Pashupatinath's trust stops handing out cannabis to holy men
-  description: >-
-    Until 1995 the trust that runs the Pashupatinath temple gave sadhus marijuana at the
-    Shivaratri festival, taken from the Home Ministry's confiscated stock. The practice ended on
-    King Birendra's instruction, according to the trust's director.
-  checked: true
-  sources:
-    - title: Kathmandu Post — Police to arrest cannabis users at Pashupati this Mahashivaratri festival (11 February 2018)
-      url: https://kathmandupost.com/valley/2018/02/11/police-to-arrest-cannabis-users-at-pashupati-this-mahashivaratri-festival
-
-- id: nepal-shivaratri-arrests-2018
-  date: "2018-02-11"
-  category: tightening
-  country: np
-  title: Nepal's police say they will arrest cannabis users at Shivaratri
-  description: >-
-    Ahead of Mahashivaratri the Pashupatinath trust and police announced that visitors caught
-    smoking or holding cannabis at the temple would be arrested, ending the tolerance long shown
-    on the festival day. Sadhus stayed exempt but were told not to sell or offer it to visitors.
-    Police said they had rounded up about 300 people for cannabis in the five months before.
-  checked: true
-  sources:
-    - title: Kathmandu Post — Police to arrest cannabis users at Pashupati this Mahashivaratri festival (11 February 2018)
-      url: https://kathmandupost.com/valley/2018/02/11/police-to-arrest-cannabis-users-at-pashupati-this-mahashivaratri-festival
-
-- id: nepal-tamang-bill-2020
-  date: "2020-03-02"
-  category: debate
-  country: np
-  title: A former law minister registers a bill to legalise cannabis farming in Nepal
-  description: >-
-    Sher Bahadur Tamang's private bill would have licensed farmers to grow cannabis, let them
-    export it, and allowed sale to patients on a doctor's prescription and to drug makers. The
-    draft also let a household grow six plants without a licence. It was never put to a vote.
-  checked: true
-  sources:
-    - title: The Himalayan Times — Bill to legalise marijuana cultivation and sale registered (3 March 2020)
-      url: https://thehimalayantimes.com/kathmandu/bill-to-legalise-marijuana-cultivation-and-sale-registered
-    - title: "The Farsight Nepal — Cannabis in Nepal: in between legal lacuna (10 September 2022)"
-      url: https://farsightnepal.com/news/80
-
-- id: nepal-cnd-vote-2020
-  date: "2020-12"
-  category: international
-  country: np
-  title: Nepal votes at the UN to ease the treaty status of cannabis
-  description: >-
-    Nepal was among the countries on the UN Commission on Narcotic Drugs that voted to remove
-    cannabis from Schedule IV of the 1961 Single Convention, the list of drugs considered most
-    dangerous.
-  checked: true
-  sources:
-    - title: "The Farsight Nepal — Cannabis in Nepal: in between legal lacuna (10 September 2022)"
-      url: https://farsightnepal.com/news/80
-
 - id: nepal-narcotics-act-1976
   date: "1976-09-22"
   category: ban
@@ -10007,6 +10541,15 @@
       url: https://www.government.nl/topics/drugs/toleration-policy-regarding-soft-drugs-and-coffee-shops
     - title: Wikipedia — Opium Law
       url: https://en.wikipedia.org/wiki/Opium_Law
+    - type: chapter
+      title: "Cannabis, Counterculture, and Criminals: The Rise of Smuggling in the Netherlands, ca. 1962–1976"
+      authors: [Stephen Snelders]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 247–268"
 
 - id: south-korea-cannabis-control-act-1976
   date: "1976"
@@ -10125,6 +10668,15 @@
   sources:
     - title: Wikipedia — Cannabis in Nigeria
       url: https://en.wikipedia.org/wiki/Cannabis_in_Nigeria
+    - type: chapter
+      title: "The Origins of Cannabis Prohibition in Nigeria and the Indian Hemp Decree of 1966"
+      authors: [Gernot Klantschnig]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 225–246"
 
 - id: comoros-legalisation-1975
   date: "1975"
@@ -10256,6 +10808,21 @@
     - title: UNODC Bulletin on Narcotics (1985) — Drug abuse control in Burma
       url: https://www.unodc.org/unodc/en/data-and-analysis/bulletin/bulletin_1985-01-01_2_page012.html
 
+- id: netherlands-memorandum-1974
+  date: "1974-01"
+  category: debate
+  country: nl
+  title: The Dutch government says it would legalise cannabis if the treaty allowed
+  description: >-
+    A government memorandum stated that use of cannabis and possession for personal use should be
+    removed from criminal justice as soon as possible, but that this would conflict with treaty
+    obligations. It promised to explore amending the Single Convention; the idea was not pursued,
+    and the 1976 law used non-prosecution instead.
+  checked: true
+  sources:
+    - title: "TNI / GDPO — The Rise and Decline of Cannabis Prohibition (2014)"
+      url: https://www.tni.org/files/download/rise_and_decline_web.pdf
+
 - id: us-oregon-decriminalisation-1973
   date: "1973-10-05"
   category: easing
@@ -10329,7 +10896,7 @@
   description: >-
     Under pressure from the United States, which paid for the eradication campaign, King Zahir Shah
     banned growing cannabis and opium. Afghanistan had been a main stop on the hippie trail.
-  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+  before: {possession: 1, cultivation: 1, enforcement: 0, sharing: 1, consumption: 1, access: 0}
   checked: true
   sources:
     - title: Wikipedia — Timeline of cannabis law
@@ -10362,6 +10929,49 @@
     - title: UNODC SHERLOC — Bahrain, Decretal Law No. 4 of 1973 (E/NL.1985/2)
       url: https://sherloc.unodc.org/cld/uploads/res/document/decretal-law-no-4-of-1973-on-controlling-the-use-and-circulation-of-narcotic-substances-and-preparations_html/Decretal_Law_No_4_of_1973_on_Controlling_the_Use_and_Circulation_of_Narcotic_Substances_and_Preparations.pdf
 
+- id: germany-gdr-narcotic-drugs-act-1973
+  date: "1973"
+  category: ban
+  country: de
+  title: East Germany passes a Narcotic Drugs Act
+  description: >-
+    The East German Volkskammer passed a Narcotic Drugs Act that criminalised the production,
+    trafficking and consumption of cannabis and other drugs. It replaced reliance on the 1929
+    opium law, which the Soviet occupation authority had reinstated in 1945. This regional event
+    does not move the Germany-wide index series.
+  checked: true
+  sources:
+    - type: chapter
+      title: "Cannabis behind the Iron Curtain: Drugs and Drug Policy in the German Democratic Republic"
+      authors: [Ned Richardson-Little]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 205–224"
+
+- id: uk-cannabis-medicines-withdrawn-1973
+  date: "1973"
+  category: tightening
+  country: gb
+  title: Cannabis medicines are withdrawn in the United Kingdom
+  description: >-
+    Cannabis-based medicines were finally withdrawn in the United Kingdom after decades of
+    declining medical use. Recreational prohibitions were already in place, and the entry records
+    medical context without a separate score movement.
+  checked: true
+  sources:
+    - type: chapter
+      title: "Forces of Necessity: Lay Advocacy and the Remedicalization of Cannabis in the UK, 1973–2004"
+      authors: [Suzanne Taylor]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 341–361"
+
 - id: papua-new-guinea-henderson-ruling-1973
   date: "1973-04-05"
   category: easing
@@ -10389,6 +10999,20 @@
   sources:
     - title: Wikipedia — Cannabis in Luxembourg
       url: https://en.wikipedia.org/wiki/Cannabis_in_Luxembourg
+
+- id: us-california-legalisation-vote-1972
+  date: "1972-11"
+  category: debate
+  country: us
+  title: California voters reject legalisation
+  description: >-
+    The first ballot initiative to legalise cannabis in an American state lost by 66 per cent to 33.
+    Later attempts failed in Oregon in 1986, Alaska in 2004, Nevada and Colorado in 2006 and
+    California again in 2010, before Colorado and Washington passed theirs in 2012.
+  checked: true
+  sources:
+    - title: "TNI / GDPO — The Rise and Decline of Cannabis Prohibition (2014)"
+      url: https://www.tni.org/files/download/rise_and_decline_web.pdf
 
 - id: jamaica-mandatory-prison-ended-1972
   date: "1972"
@@ -10462,6 +11086,15 @@
   sources:
     - title: Wikipedia — Legal history of cannabis in the United States
       url: https://en.wikipedia.org/wiki/Legal_history_of_cannabis_in_the_United_States
+    - type: chapter
+      title: "PRIDE International and Drug War Diplomacy: The Parent Movement's Global Battle against Marijuana in the United States, ca. 1970–1985"
+      authors: [Emily Dufton]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 297–319"
 
 - id: philippines-dangerous-drugs-act-1972
   date: "1972-03-30"
@@ -10522,6 +11155,21 @@
   sources:
     - title: CNB — Our history
       url: https://www.cnb.gov.sg/about-us/who-we-are/our-history/
+
+- id: netherlands-hulsman-commission-1971
+  date: "1971-10"
+  category: debate
+  country: nl
+  title: The Hulsman Commission proposes taking cannabis out of criminal law
+  description: >-
+    A commission set up by the national federation of mental health organisations and chaired by the
+    criminal law professor Louk Hulsman argued that forcing users of different drugs into one
+    criminal subculture exposed cannabis users to harder drugs. It recommended removing use and
+    small possession of cannabis from criminal law.
+  checked: true
+  sources:
+    - title: "CEDRO — Peter Cohen, The case of the two Dutch drug policy commissions (1994)"
+      url: https://cedro-uva.org/lib/cohen.case.html
 
 - id: south-africa-mandatory-minimums-1971
   date: "1971"
@@ -10592,8 +11240,10 @@
   before: {possession: 2, cultivation: 1, enforcement: 3, sharing: 1, consumption: 2, access: 0}
   checked: true
   sources:
-    - title: Wikipedia — Cannabis in France
-      url: https://en.wikipedia.org/wiki/Cannabis_in_France
+    - title: Légifrance — Law No. 70-1320 of 31 December 1970
+      url: https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000321402/
+    - title: CNCDH — Opinion on drug use and human rights
+      url: https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000034134859
 
 - id: us-controlled-substances-act-1970
   date: "1970-10-27"
@@ -10670,6 +11320,21 @@
   sources:
     - title: Sandra G. Edwards — Una breve historia de la legislación ecuatoriana de drogas y su impacto sobre la población penal en el país (TNI/WOLA)
       url: https://ungassondrugs.org/images/stories/documents/Sistemas_sobrecargados/Completos/sistemas%20sobrecargados%20-%20completo%20ecuador.pdf
+
+- id: us-egeberg-recommendation-1970
+  date: "1970"
+  category: other
+  country: us
+  title: A US health official proposes Schedule I for marijuana as a stopgap
+  description: >-
+    While the Controlled Substances Act was being drafted, Assistant Secretary of Health Roger
+    Egeberg recommended placing marijuana in Schedule I temporarily, until the commission the Act
+    created had reported. The commission recommended decriminalisation in 1972; the classification
+    was not changed.
+  checked: true
+  sources:
+    - title: "Wikipedia — National Commission on Marihuana and Drug Abuse"
+      url: https://en.wikipedia.org/wiki/National_Commission_on_Marihuana_and_Drug_Abuse
 
 - id: iceland-ban-1969
   date: "1969-10-14"
@@ -10930,13 +11595,22 @@
   title: Nigeria's military government issues the Indian Hemp Decree
   description: >-
     Months after taking power, the military government replaced colonial-era fines with some of the
-    harshest penalties in the world: at least ten years in prison for possession, and death or 21
-    years for growing. The death penalty was later removed, but long mandatory sentences remain.
+    harshest penalties in the world: the death penalty for cultivation, 21 years for importation,
+    and severe penalties for use and possession. The death penalty was later removed.
   before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 0}
   checked: true
   sources:
     - title: Wikipedia — Cannabis in Nigeria
       url: https://en.wikipedia.org/wiki/Cannabis_in_Nigeria
+    - type: chapter
+      title: "The Origins of Cannabis Prohibition in Nigeria and the Indian Hemp Decree of 1966"
+      authors: [Gernot Klantschnig]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 225–246"
 
 - id: finland-ban-1966
   date: "1966"
@@ -11170,13 +11844,20 @@
   country: ir
   title: Iran declares cannabis illegal
   description: >-
-    The government declared cannabis an illegal substance in 1959, ahead of signing the 1961 Single
-    Convention. The same source says a 1926 penal law had already set prison terms and fines for
-    cannabis use, so the first restriction may be older.
+    In May 1959, the government added cannabis and its derivatives to the list of illegal drugs and
+    applied the same sanctions used for opium.
   before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+  checked: true
   sources:
-    - title: "Sensi Seeds — Cannabis in Iran: laws, use and history"
-      url: https://sensiseeds.com/en/blog/countries/cannabis-in-iran-laws-use-history/
+    - type: chapter
+      title: "High on Modernity: Cannabis and the Quest for the Sublime in Iran"
+      authors: [Maziyar Ghiabi]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 271–296"
 
 - id: bahrain-control-of-dangerous-drugs-1959
   date: "1959"
@@ -11224,14 +11905,24 @@
   date: "1957"
   category: ban
   country: af
-  title: Afghanistan makes cannabis nominally illegal
+  title: Afghanistan adopts another nominal cannabis ban
   description: >-
-    The ban, reportedly adopted under American pressure, was not enforced, and hashish stayed openly
-    available until the crackdown of 1973.
+    A 1957 measure, reportedly adopted under American pressure, was not enforced, and hashish stayed
+    openly available until the crackdown of 1973. It was not the country's first legal restriction:
+    the 1924–1925 penal code had already forbidden domestic production and use.
   checked: true
   sources:
     - title: Wikipedia — Cannabis in Afghanistan
       url: https://en.wikipedia.org/wiki/Cannabis_in_Afghanistan
+    - type: chapter
+      title: "Smuggler's Paradise: The Hash Trade and Drug Control in the Building of the Afghan State, ca. 1923–1974"
+      authors: [James Bradford]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 185–203"
 
 - id: ethiopia-penal-code-1957
   date: "1957"
@@ -11453,13 +12144,22 @@
   title: The Netherlands bans possession of cannabis
   description: >-
     Import and export had been restricted since 1928. An amendment to the Opium Act now made
-    possessing, producing and selling cannabis offences too, just over twenty years before the
-    country became known for tolerating it.
+    possessing, producing, selling and using cannabis offences too, with a maximum four-year prison
+    term, just over twenty years before the country became known for tolerating it.
   before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
   checked: true
   sources:
     - title: Wikipedia — Cannabis in the Netherlands
       url: https://en.wikipedia.org/wiki/Cannabis_in_the_Netherlands
+    - type: chapter
+      title: "Cannabis, Counterculture, and Criminals: The Rise of Smuggling in the Netherlands, ca. 1962–1976"
+      authors: [Stephen Snelders]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 247–268"
 
 - id: france-medical-ban-1953
   date: "1953"
@@ -11626,17 +12326,33 @@
 
 - id: mauritius-dangerous-drugs-ordinance-1950
   date: "1950-11-13"
-  category: other
+  category: ban
   country: mu
-  title: Mauritius rewrites its Dangerous Drugs Ordinance
+  title: Mauritius prohibits cannabis again
   description: >-
-    Ordinance No. 55 of 1950 regulated the importation, exportation, manufacture, sale and use of
-    opium and other dangerous drugs. It defined gandia as bhang and all narcotic parts of the
-    Cannabis sativa plant, and hashish or charras as its resin.
+    Ordinance No. 55 prohibited buying, selling, supplying, procuring, distributing or possessing
+    gandia, hashish and charras, and separately prohibited planting, growing or cultivating
+    Cannabis sativa. This ended the legal regime created in 1883.
+  before: {possession: 10, cultivation: 1, enforcement: 10, sharing: 10, consumption: 10, access: 8}
   checked: true
   sources:
     - title: "United Nations — Laws and regulations communicated on narcotic drugs: Mauritius, E/NL.1951/16"
       url: https://documents.un.org/api/symbol/access?s=E/NL.1951/16&l=en&t=pdf
+
+- id: us-sanchez-1950
+  date: "1950-11-13"
+  category: other
+  country: us
+  title: The US Supreme Court upholds the marihuana tax
+  description: >-
+    In United States v. Sanchez the court held that the tax of $100 an ounce on transfers to
+    unregistered persons was a valid use of the taxing power even though its purpose was to
+    regulate. It quoted the Senate report's aim of making cannabis extremely difficult to acquire
+    for illicit uses.
+  checked: true
+  sources:
+    - title: "Legal Information Institute — United States v. Sanchez, 340 U.S. 42 (1950)"
+      url: https://www.law.cornell.edu/supremecourt/text/340/42
 
 - id: yugoslavia-narcotic-drugs-act-1950-rs
   date: "1950-01-23"
@@ -11928,6 +12644,21 @@
     - title: ACCC Oncology Issues — Medical marijuana and cannabinoid-derived products
       url: https://www.accc-cancer.org/docs/documents/oncology-issues/articles/mj20/mj20-medical-marijuana-cannabinoid-derived-products-for-cancer-patients.pdf
 
+- id: us-hemp-for-victory-1942
+  date: "1942"
+  category: other
+  country: us
+  title: The US government asks farmers to grow hemp for the war
+  description: >-
+    After Japan took the Philippines and cut off the supply of fibre, the Department of Agriculture
+    and the army urged farmers to grow hemp and released the film Hemp for Victory. Tax stamps were
+    issued and about 400,000 acres were grown between 1942 and 1945, without any change to the
+    Marihuana Tax Act.
+  checked: true
+  sources:
+    - title: "Wikipedia — Marihuana Tax Act of 1937"
+      url: https://en.wikipedia.org/wiki/Marihuana_Tax_Act_of_1937
+
 - id: mozambique-pharmacy-regulations-1941
   date: "1941-12-24"
   category: tightening
@@ -11965,16 +12696,24 @@
   country: mx
   title: Mexico suspends its health-based drug rule
   description: >-
-    Five months after it began, the regulation that let doctors prescribe drugs to users was
-    suspended under pressure from the United States, which had stopped exports of medical narcotics
-    to Mexico. Possession went back to being a crime.
-  before: {possession: 3, cultivation: 1, enforcement: 4, sharing: 1, consumption: 3, access: 2}
+    Five months after it began, Mexico suspended a regulation that had let doctors prescribe
+    controlled doses to people dependent on drugs. The programme principally supplied morphine;
+    the contemporary cannabis proposals described in the historical literature never became law.
   checked: true
   sources:
     - title: Wikipedia — Cannabis in Mexico
       url: https://en.wikipedia.org/wiki/Cannabis_in_Mexico
     - title: Foro Internacional — The United States and the promulgation and suspension in Mexico of the 1940 Regulation of Drug Addiction
       url: https://forointernacional.colmex.mx/index.php/fi/en/article/view/2775
+    - type: chapter
+      title: "Reefer Madness Past and Present: Dr. Leopoldo Salazar Viniegra, Mexico, and the United States"
+      authors: [Isaac Campos]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 157–181"
 
 - id: estonia-soviet-law-1940
   date: "1940"
@@ -12024,16 +12763,26 @@
   country: mx
   title: Mexico briefly treats drug use as a health matter
   description: >-
-    Under President Cárdenas a new federal regulation let doctors prescribe drugs to users and set
-    up state dispensaries, taking users out of criminal law. The United States responded by cutting
-    off medical drug exports, and Mexico suspended the rule within months.
-  before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 0}
+    Under President Cárdenas a new federal regulation let doctors prescribe controlled doses to
+    people dependent on drugs and created a state morphine programme. It did not legalise cannabis:
+    the historian Isaac Campos writes that the government's marijuana initiative never advanced
+    beyond research and publicity. The United States pressured Mexico to suspend the rule within
+    months.
   checked: true
   sources:
     - title: Wikipedia — Cannabis in Mexico
       url: https://en.wikipedia.org/wiki/Cannabis_in_Mexico
     - title: Foro Internacional — The United States and the promulgation and suspension in Mexico of the 1940 Regulation of Drug Addiction
       url: https://forointernacional.colmex.mx/index.php/fi/en/article/view/2775
+    - type: chapter
+      title: "Reefer Madness Past and Present: Dr. Leopoldo Salazar Viniegra, Mexico, and the United States"
+      authors: [Isaac Campos]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 157–181"
 
 - id: new-hebrides-dangerous-drugs-1939
   date: "1939-12-01"
@@ -12122,6 +12871,21 @@
     - title: United Nations — Survey of the cannabis situation in Brazil, E/CN.7/286/Add.8 (1955)
       url: https://documents.un.org/api/symbol/access?s=E/CN.7/286/Add.8&l=en&t=pdf
 
+- id: canada-cultivation-ban-1938
+  date: "1938"
+  category: tightening
+  country: ca
+  title: Canada prohibits unlicensed cannabis cultivation
+  description: >-
+    Section 3 of the amended Opium and Narcotic Drug Act prohibited growing cannabis without a
+    federal health permit. The new offence carried the same penalties as trafficking and simple
+    possession and ended the country's remaining lawful commercial hemp cultivation.
+  before: {possession: 1, cultivation: 10, enforcement: 1, sharing: 1, consumption: 1, access: 0}
+  checked: true
+  sources:
+    - title: "Senate of Canada — Cannabis: Our Position for a Canadian Public Policy, Volume II"
+      url: https://sencanada.ca/en/content/sen/committee/371/ille/rep/repfinalvol2-e
+
 - id: saint-lucia-dangerous-drugs-1938
   date: "1938"
   category: ban
@@ -12196,6 +12960,23 @@
   sources:
     - title: "United Nations — Laws and regulations communicated on narcotic drugs: Fiji, E/NL.1948/45"
       url: https://documents.un.org/api/symbol/access?s=E/NL.1948/45&l=en&t=pdf
+
+- id: us-first-tax-act-convictions-1937
+  date: "1937-10-05"
+  category: other
+  country: us
+  title: A Denver court hands down the first Marihuana Tax Act sentences
+  description: >-
+    Samuel Caldwell, a labourer in his late fifties, was arrested at a Denver hotel on 2 October,
+    the day after the Act took effect, while selling cannabis to Moses Baca. Three days later Judge
+    Foster Symes gave Caldwell four years in Leavenworth and a $1,000 fine, and Baca eighteen months
+    for possession.
+  checked: true
+  sources:
+    - title: "Wikipedia — Samuel R. Caldwell"
+      url: https://en.wikipedia.org/wiki/Samuel_R._Caldwell
+    - title: "Wikipedia — Marihuana Tax Act of 1937"
+      url: https://en.wikipedia.org/wiki/Marihuana_Tax_Act_of_1937
 
 - id: us-marihuana-tax-act-1937
   date: "1937-10-01"
@@ -12438,17 +13219,26 @@
 
 - id: nigeria-dangerous-drugs-1935
   date: "1935"
-  category: ban
+  category: other
   country: ng
   title: Nigeria passes the Dangerous Drugs Act
   description: >-
-    The British colonial government restricted cannabis for the first time, with fines and short
-    prison terms.
-  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+    The colonial government replaced its 1927 Dangerous Drugs Ordinance with a slightly amended
+    law. The earlier ordinance had already restricted cannabis use and trade to medical and
+    scientific purposes; the 1935 version remained in force until the late 1980s.
   checked: true
   sources:
     - title: Wikipedia — Cannabis in Nigeria
       url: https://en.wikipedia.org/wiki/Cannabis_in_Nigeria
+    - type: chapter
+      title: "The Origins of Cannabis Prohibition in Nigeria and the Indian Hemp Decree of 1966"
+      authors: [Gernot Klantschnig]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 225–246"
 
 - id: gold-coast-dangerous-drugs-1935
   date: "1935"
@@ -12856,6 +13646,28 @@
     - title: UN Bulletin on Narcotics — Use of maconha (Cannabis sativa L.) in Brazil, 1955, issue 2
       url: https://www.unodc.org/unodc/en/data-and-analysis/bulletin/bulletin_1955-01-01_2_page003.html
 
+- id: mexico-federal-penal-code-1931
+  date: "1931"
+  category: tightening
+  country: mx
+  title: Mexico's Penal Code consolidates cannabis crimes
+  description: >-
+    The new federal code set prison sentences of up to five years for planting, cultivating,
+    trading, possessing, buying, selling or supplying prohibited seeds and plants, and expressly
+    listed marijuana. It consolidated criminalisation already established by the 1926 sanitary
+    code and the 1929 penal code, so it does not create a separate index step.
+  checked: true
+  sources:
+    - type: chapter
+      title: "A Historical Approach to the Criminalization of Marijuana Use in Mexico"
+      authors: [José Domingo Schievenini]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 131–156"
+
 - id: belgium-royal-order-1930
   date: "1930-12-31"
   category: other
@@ -12868,6 +13680,22 @@
   sources:
     - title: "United Nations — Laws and regulations communicated on narcotic drugs: Belgium, E/NL.1952/68"
       url: https://documents.un.org/api/symbol/access?s=E/NL.1952/68&l=en&t=pdf
+
+- id: us-federal-bureau-of-narcotics-1930
+  date: "1930-08-12"
+  category: other
+  country: us
+  title: Harry Anslinger becomes the first US narcotics commissioner
+  description: >-
+    Treasury Secretary Andrew Mellon appointed Anslinger to head the new Federal Bureau of
+    Narcotics. Cannabis was not at first a concern of his; he came to treat it as a serious threat
+    in 1934, and three years later his bureau drafted the Marihuana Tax Act.
+  checked: true
+  sources:
+    - title: "Wikipedia — Harry J. Anslinger"
+      url: https://en.wikipedia.org/wiki/Harry_J._Anslinger
+    - title: "Wikipedia — Marihuana Tax Act of 1937"
+      url: https://en.wikipedia.org/wiki/Marihuana_Tax_Act_of_1937
 
 - id: sweden-narcotics-decree-1930
   date: "1930"
@@ -13038,6 +13866,28 @@
     - title: Wikipedia (German) — Betäubungsmittelgesetz
       url: https://de.wikipedia.org/wiki/Bet%C3%A4ubungsmittelgesetz_(Deutschland)
 
+- id: mexico-federal-penal-code-1929
+  date: "1929"
+  category: tightening
+  country: mx
+  title: Mexico makes cannabis use and cultivation federal crimes
+  description: >-
+    A new federal penal code placed marijuana activities under "Crimes Against Health" and made
+    any use, simple possession and cultivation federal crimes. The 1926 sanitary code had already
+    prohibited possession and consumption, so this entry supplies legal context without moving the
+    index again.
+  checked: true
+  sources:
+    - type: chapter
+      title: "A Historical Approach to the Criminalization of Marijuana Use in Mexico"
+      authors: [José Domingo Schievenini]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 131–156"
+
 - id: spain-first-restrictions-1929
   date: "1929"
   category: ban
@@ -13187,6 +14037,38 @@
       url: https://en.wikipedia.org/wiki/Cannabis_in_the_Netherlands
     - title: Wikipedia — Opium Law
       url: https://en.wikipedia.org/wiki/Opium_Law
+    - type: chapter
+      title: "Cannabis, Counterculture, and Criminals: The Rise of Smuggling in the Netherlands, ca. 1962–1976"
+      authors: [Stephen Snelders]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 247–268"
+
+- id: nigeria-dangerous-drugs-ordinance-1927
+  date: "1927"
+  category: ban
+  country: ng
+  title: Nigeria's first Dangerous Drugs Ordinance restricts cannabis
+  description: >-
+    The colonial ordinance restricted cannabis use and trade to medical and scientific purposes
+    under the chief medical officer's supervision, criminalising other unlicensed use and trade.
+    It implemented the 1925 Geneva Convention rather than responding to a perceived Nigerian drug
+    problem.
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+  checked: true
+  sources:
+    - type: chapter
+      title: "The Origins of Cannabis Prohibition in Nigeria and the Indian Hemp Decree of 1966"
+      authors: [Gernot Klantschnig]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 225–246"
 
 - id: indonesia-colonial-ban-1927
   date: "1927"
@@ -13266,6 +14148,28 @@
       url: https://en.wikipedia.org/wiki/Cannabis_in_Argentina
     - title: Pensamiento Penal — Evolución de la legislación argentina sobre estupefacientes
       url: https://mail.pensamientopenal.com.ar/system/files/2015/05/doctrina41155.pdf
+
+- id: mexico-sanitary-code-1926
+  date: "1926"
+  category: tightening
+  country: mx
+  title: Mexico's Sanitary Code prohibits possession and consumption
+  description: >-
+    The code prohibited importing, exporting, processing, possessing, using or consuming marijuana
+    in any form, including cannabis extract. It also provided for users of controlled drugs to be
+    confined in a federal drug-treatment hospital.
+  before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 3, access: 0}
+  checked: true
+  sources:
+    - type: chapter
+      title: "A Historical Approach to the Criminalization of Marijuana Use in Mexico"
+      authors: [José Domingo Schievenini]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 131–156"
 
 - id: australia-ban-1926
   date: "1926"
@@ -14077,6 +14981,15 @@
       url: https://en.wikipedia.org/wiki/International_Opium_Convention
     - title: Wikipedia — Second International Opium Convention
       url: https://en.wikipedia.org/wiki/Second_International_Opium_Convention
+    - type: chapter
+      title: "Squaring a Circle: Cannabis and the Dubious Legacy of the League of Nations"
+      authors: [Haggai Ram]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 109–129"
 
 - id: geneva-egypt-proposal-1924
   date: "1924-12"
@@ -14092,6 +15005,15 @@
   sources:
     - title: "Addiction — Kendell, Cannabis condemned: the proscription of Indian hemp (2003)"
       url: https://onlinelibrary.wiley.com/doi/10.1046/j.1360-0443.2003.00273.x
+    - type: chapter
+      title: "Squaring a Circle: Cannabis and the Dubious Legacy of the League of Nations"
+      authors: [Haggai Ram]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 109–129"
 
 - id: sudan-ban-1924
   date: "1924"
@@ -14120,6 +15042,29 @@
   sources:
     - title: Wikipedia — Timeline of cannabis law
       url: https://en.wikipedia.org/wiki/Timeline_of_cannabis_law
+
+- id: afghanistan-penal-code-1924
+  date: "1924"
+  category: ban
+  country: af
+  title: Afghanistan's Penal Code forbids domestic cannabis production and use
+  description: >-
+    Article 125 of the 1924–1925 penal code forbade producing and using charse and bhang for the
+    domestic market. Users under 25 faced 25 to 39 lashes and older users 50 to 75, although the
+    chapter says there is little evidence about enforcement. Cannabis intended for export was
+    exempt and taxed.
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+  checked: true
+  sources:
+    - type: chapter
+      title: "Smuggler's Paradise: The Hash Trade and Drug Control in the Building of the Afghan State, ca. 1923–1974"
+      authors: [James Bradford]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 185–203"
 
 - id: panama-ban-1923
   date: "1923"
@@ -14160,6 +15105,15 @@
   sources:
     - title: Points — How cannabis became a "drug" in South Africa
       url: https://www.pointshistory.org/post/how-cannabis-became-a-drug-in-south-africa
+    - type: chapter
+      title: "Dagga: How South Africa Made a Dangerous Drug, 1902–1928"
+      authors: [Thembisa Waetjen]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 83–107"
 
 - id: papua-dangerous-drugs-ordinance-1923
   date: "1923"
@@ -14179,16 +15133,17 @@
   date: "1923-04-23"
   category: ban
   country: ca
-  title: Canada bans cannabis
+  title: Canada places cannabis under its narcotics law
   description: >-
-    Cannabis was added to the schedule of the Opium and Narcotic Drug Act without debate in
-    Parliament. Nobody has established why: there was almost no use in Canada, and the first seizure
-    was not until 1932.
+    Cannabis was added to the schedule of the Opium and Narcotic Drug Act with almost no
+    parliamentary explanation. Archival research has not established why: non-medical use was
+    virtually unknown in Canada and not considered a problem. Cultivation was prohibited separately
+    in 1938.
   before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
   checked: true
   sources:
-    - title: Wikipedia — Cannabis in Canada
-      url: https://en.wikipedia.org/wiki/Cannabis_in_Canada
+    - title: "Senate of Canada — Cannabis: Our Position for a Canadian Public Policy, Volume II"
+      url: https://sencanada.ca/en/content/sen/committee/371/ille/rep/repfinalvol2-e
 
 - id: south-africa-national-ban-1922
   date: "1922"
@@ -14204,6 +15159,15 @@
   sources:
     - title: Wikipedia — Cannabis in South Africa
       url: https://en.wikipedia.org/wiki/Cannabis_in_South_Africa
+    - type: chapter
+      title: "Dagga: How South Africa Made a Dangerous Drug, 1902–1928"
+      authors: [Thembisa Waetjen]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 83–107"
 
 - id: swaziland-habit-forming-drugs-act-1922
   date: "1922"
@@ -14332,13 +15296,23 @@
   country: mx
   title: Mexico bans marijuana
   description: >-
-    A federal health decree prohibited growing and selling marijuana, seventeen years before the
-    United States acted. It had been restricted in Mexico City since the 1880s.
-  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+    A federal decree removed marijuana from the medicines recognised by the sanitary code and
+    penalised unauthorised sale and possession with a fine or, if the fine could not be paid,
+    fifteen days in jail. Its title also placed cultivation under the new national policy.
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 1}
   checked: true
   sources:
     - title: Wikipedia — Cannabis in Mexico
       url: https://en.wikipedia.org/wiki/Cannabis_in_Mexico
+    - type: chapter
+      title: "A Historical Approach to the Criminalization of Marijuana Use in Mexico"
+      authors: [José Domingo Schievenini]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 131–156"
 
 - id: monaco-poisonous-substances-law-1918
   date: "1918-08-14"
@@ -14526,6 +15500,15 @@
       url: https://en.wikipedia.org/wiki/Cannabis_in_France
     - title: Wikipedia — Cannabis en France
       url: https://fr.wikipedia.org/wiki/Cannabis_en_France
+    - type: chapter
+      title: "Taming the Orient: France and the First Global Movement to Medicalize Cannabis, ca. 1800–1850"
+      authors: [David A. Guba Jr.]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 3–27"
 
 - id: trinidad-ganja-licensing-1915
   date: "1915"
@@ -14602,6 +15585,15 @@
   sources:
     - title: Wikipedia — Cannabis in Jamaica
       url: https://en.wikipedia.org/wiki/Cannabis_in_Jamaica
+    - type: chapter
+      title: "Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912"
+      authors: [Jamie Banks]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 57–80"
 
 - id: guyana-indian-hemp-ordinance-1913
   date: "1913"
@@ -15074,6 +16066,27 @@
     - title: Chris S. Duvall — The African Roots of Marijuana (Duke University Press, 2019)
       url: https://www.jstor.org/stable/j.ctv11hpqx7
 
+- id: trinidad-repeal-1899
+  date: "1899"
+  category: legalisation
+  country: tt
+  title: Trinidad repeals its restrictive cultivation ordinance
+  description: >-
+    Trinidad repealed the 1885 ordinance that had imposed heavy licence duties on cannabis
+    cultivation. The asylum superintendent continued to argue for restriction after the repeal.
+  before: {possession: 10, cultivation: 3, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+  checked: true
+  sources:
+    - type: chapter
+      title: "Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912"
+      authors: [Jamie Banks]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 57–80"
+
 - id: sri-lanka-import-ban-1897
   date: "1897"
   category: tightening
@@ -15145,6 +16158,28 @@
     - title: Transnational Institute — The Rise and Decline of Cannabis Prohibition, chapter 1
       url: https://www.tni.org/files/download/rise_and_decline_ch1.pdf
 
+- id: mexico-sanitary-code-1891
+  date: "1891"
+  category: tightening
+  country: mx
+  title: Mexico places medical cannabis in the pharmacy system
+  description: >-
+    The first of three national sanitary codes, followed by codes in 1894 and 1902, recognised
+    cannabis medicines but restricted them to licensed medical and pharmacy practice. Gatherers
+    could sell marijuana only to pharmacists, and patients needed a physician's prescription.
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+  checked: true
+  sources:
+    - type: chapter
+      title: "A Historical Approach to the Criminalization of Marijuana Use in Mexico"
+      authors: [José Domingo Schievenini]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 131–156"
+
 - id: myanmar-ban-1891
   date: "1891"
   category: ban
@@ -15158,6 +16193,20 @@
   sources:
     - title: Wikipedia — Cannabis in Myanmar
       url: https://en.wikipedia.org/wiki/Cannabis_in_Myanmar
+
+- id: south-africa-cape-ban-1891
+  date: "1891"
+  category: ban
+  country: za
+  title: The Cape Colony prohibits cannabis
+  description: >-
+    Act 34 of 1891 prohibited cannabis in the Cape Colony, twenty-one years after Natal restricted
+    it for Indian workers. The Free State outlawed dealing in it in 1903, and a national ban
+    followed in 1922.
+  checked: true
+  sources:
+    - title: "Wikipedia — Cannabis in South Africa"
+      url: https://en.wikipedia.org/wiki/Cannabis_in_South_Africa
 
 - id: greece-hashish-ban-1890
   date: "1890"
@@ -15214,6 +16263,27 @@
     - title: Transnational Institute — The Rise and Decline of Cannabis Prohibition (2014, PDF)
       url: https://www.tni.org/files/download/rise_and_decline_web.pdf
 
+- id: trinidad-cultivation-licence-1885
+  date: "1885"
+  category: tightening
+  country: tt
+  title: Trinidad imposes heavy licence duties on cannabis cultivation
+  description: >-
+    Ordinance No. 13 imposed heavy licence duties on growing cannabis. The chapter describes the
+    measure as intended to be effectively, though not literally, prohibitive.
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
+  checked: true
+  sources:
+    - type: chapter
+      title: "Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912"
+      authors: [Jamie Banks]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 57–80"
+
 - id: tunisia-hemp-decree-1884
   date: "1884-10-03"
   category: other
@@ -15239,6 +16309,29 @@
   sources:
     - title: Wikipedia — Cannabis in Egypt
       url: https://en.wikipedia.org/wiki/Cannabis_in_Egypt
+
+- id: mauritius-legalisation-1883
+  date: "1883"
+  category: legalisation
+  country: mu
+  title: Mauritius repeals its cannabis prohibition
+  description: >-
+    After the prosecutor general called the law manifestly inoperative and an 1882 repeal vote
+    failed, Ordinance No. 25 of 1883 legalised the importation, sale and possession of cannabis.
+    The chapter does not say that the ordinance legalised cultivation, so that score remains
+    restricted.
+  before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 0}
+  checked: true
+  sources:
+    - type: chapter
+      title: "Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912"
+      authors: [Jamie Banks]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 57–80"
 
 - id: seychelles-ban-1882
   date: "1882"
@@ -15402,12 +16495,44 @@
   country: gy
   title: British Guiana regulates the sale of bhang
   description: >-
-    An ordinance to regulate the sale of opium and bhang restricted cannabis to licensed sellers.
+    Ordinance No. 22 licensed the sale of ganja and bhang. The chapter describes the measure as
+    anticipatory: officials introduced it before cannabis was treated as a significant local
+    problem.
   before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
   checked: true
   sources:
     - title: Wikipedia — Cannabis in Guyana
       url: https://en.wikipedia.org/wiki/Cannabis_in_Guyana
+    - type: chapter
+      title: "Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912"
+      authors: [Jamie Banks]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 57–80"
+
+- id: mauritius-possession-tightened-1848
+  date: "1848"
+  category: tightening
+  country: mu
+  title: Mauritius tightens possession restrictions
+  description: >-
+    A new law augmented the 1840 prohibition with further restrictions on possessing "gandia" and
+    poisons including stramonium. It adds detail to the existing prohibition and does not create a
+    separate index step.
+  checked: true
+  sources:
+    - type: chapter
+      title: "Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912"
+      authors: [Jamie Banks]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 57–80"
 
 - id: mauritius-ban-1840
   date: "1840"
@@ -15415,8 +16540,8 @@
   country: mu
   title: Mauritius bans cannabis
   description: >-
-    The British colony prohibited cannabis, which had arrived with Indian indentured labourers. It
-    was among the first colonial bans.
+    Ordinance No. 2 prohibited cannabis amid official concern that it was used in robberies. An
+    1848 law later added further restrictions on possession of "gandia" and other poisons.
   before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 8}
   checked: true
   sources:
@@ -15424,6 +16549,15 @@
       url: https://en.wikipedia.org/wiki/Timeline_of_cannabis_law
     - title: Wikipedia — Cannabis in Mauritius
       url: https://en.wikipedia.org/wiki/Cannabis_in_Mauritius
+    - type: chapter
+      title: "Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912"
+      authors: [Jamie Banks]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 57–80"
 
 - id: brazil-rio-pango-ban-1830
   date: "1830"

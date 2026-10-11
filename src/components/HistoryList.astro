@@ -1,9 +1,10 @@
 ---
 // One page of the History list, newest first and grouped by year. It shows either a period
-// (`period`) or every entry of one kind (`kind`, a key of CHANGE_CATEGORIES). The period links
-// and the kind filters above the list lead to the other pages.
+// (`period`) or every entry of one kind (`kind`, a key of CHANGE_CATEGORIES).
+// Top to bottom: the history in numbers, the periods as a small histogram that doubles as
+// navigation, the kinds as filters, then the entries as a ledger with the year set large beside them.
 import ScoreChange from "./ScoreChange.astro";
-import { changes, places, historyPeriods, formatDate, CHANGE_CATEGORIES } from "../lib/countries.js";
+import { changes, articles, places, historyPeriods, formatDate, CHANGE_CATEGORIES } from "../lib/countries.js";
 import { tierColor } from "../lib/tiers.js";
 
 const { period, kind } = Astro.props;
@@ -37,14 +38,31 @@ const stats = {
   // every place, also those with no entry at all
   fewest: places.map((c) => [c, perPlace.get(c) ?? 0]).sort((x, y) => x[1] - y[1] || x[0].name.localeCompare(y[0].name)).slice(0, 8),
 };
+// the tallest period sets the scale of the histogram
+const most = Math.max(...historyPeriods.map((p) => p.items.length));
 ---
-<nav class="periods" aria-label="Periods">
-  {historyPeriods.map((p) => (
-    <a href={href(p)} aria-current={p === period ? "page" : undefined}>{p.label} <small>{p.items.length}</small></a>
+<div class="hist">
+<dl class="hist-stats" aria-label="History in numbers">
+  <div><dt>Entries in total</dt><dd>{num(stats.total)}</dd></div>
+  <div><dt>{kind ? "Of this kind" : "In this period"}</dt><dd>{num(items.length)}</dd></div>
+  <div><dt>Moved a score</dt><dd>{num(stats.scored)}</dd></div>
+  <div><dt>Context only</dt><dd>{num(stats.context)}</dd></div>
+  <div><dt>Countries and territories</dt><dd>{num(stats.places)}</dd></div>
+  <div><dt>Tied to no country</dt><dd>{num(stats.international)}</dd></div>
+</dl>
+<p class="hist-note">{num(stats.checked)} of the {num(dated.length)} dated entries ({Math.round((stats.checked / dated.length) * 100)}%) were checked against a source that was read. Another {num(stats.estimated)} are estimated first bans with no known date; they are not listed here. The oldest entry is from <a href={`${base}history/${stats.oldest.id}/`}>{stats.oldest.date.slice(0, 4)}</a>, the newest from <a href={`${base}history/${stats.newest.id}/`}>{formatDate(stats.newest.date)}</a>.</p>
+
+<nav class="hist-periods" aria-label="Periods">
+  {[...historyPeriods].reverse().map((p) => (
+    <a href={href(p)} aria-current={p === period ? "page" : undefined} title={`${p.label}: ${p.items.length} entries`}>
+      <span class="hp-n">{p.items.length}</span>
+      <i style={`height:${Math.max(3, (p.items.length / most) * 100)}%`}></i>
+      <span class="hp-label">{p.label}</span>
+    </a>
   ))}
 </nav>
 
-<nav class="kinds" aria-label="Filter by kind of event">
+<nav class="hist-kinds" aria-label="Filter by kind of event">
   <a href={`${base}history/`} aria-current={kind ? undefined : "true"}>All kinds</a>
   {Object.entries(CHANGE_CATEGORIES).map(([key, k]) => (
     <a href={`${base}history/kind/${key}/`} title={k.help} aria-current={key === kind ? "page" : undefined}>
@@ -53,61 +71,38 @@ const stats = {
   ))}
 </nav>
 
-<div class="change-layout hist-layout">
-<div class="chlog">
+<div class="hist-tools">
+  <div class="hist-order" role="group" aria-label="Order of the entries">
+    <button type="button" data-order="newest" aria-pressed="true">Newest first</button>
+    <button type="button" data-order="oldest" aria-pressed="false">Oldest first</button>
+  </div>
+  <div class="hist-order hist-only" role="group" aria-label="Which entries to show">
+    <button type="button" data-only="all" aria-pressed="true">All entries <small>{items.length}</small></button>
+    <button type="button" data-only="scored" aria-pressed="false">Score changes only <small>{items.filter((ch) => ch.score).length}</small></button>
+  </div>
+</div>
+
+<div class="hist-years" data-order="newest" data-only="all">
   {years.map(({ year, items }) => (
-    <section aria-labelledby={`y${year}`}>
-      <h2 class="chl-year" id={`y${year}`}>{year}</h2>
-      <ol class="chl-list">
+    <section class="hist-year" aria-labelledby={`y${year}`} data-scored={items.some((ch) => ch.score) ? "" : undefined}>
+      <h2 id={`y${year}`}>{year}<small class="n-all">{items.length === 1 ? "1 entry" : `${items.length} entries`}</small><small class="n-scored">{items.filter((ch) => ch.score).length === 1 ? "1 score change" : `${items.filter((ch) => ch.score).length} score changes`}</small></h2>
+      <ol>
         {items.map((ch) => (
-          <li class="chl-item" style={`--c:${ch.score ? tierColor(ch.score.after) : "var(--muted)"}`}>
-            <a class="card chl-card" href={`${base}history/${ch.id}/`}>
-              <p class="change-meta">
-                <time datetime={ch.date}>{formatDate(ch.date)}</time>
-                <span>{ch.place.flag} {ch.place.name} <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span></span>
-              </p>
-              <h3><span class="kind" title={ch.kind.label} aria-hidden="true">{ch.kind.emoji}</span><span class="visually-hidden">{ch.kind.label}: </span>{ch.title}</h3>
-              <p class="chl-text">{ch.description}</p>
-              {ch.score && <ScoreChange score={ch.score} />}
+          <li data-scored={ch.score ? "" : undefined}>
+            <a href={`${base}history/${ch.id}/`}>
+              <time datetime={ch.date}>{ch.date.length === 4 ? "" : formatDate(ch.date).replace(` ${year}`, "")}</time>
+              <div class="he-body">
+                <p class="he-place">{ch.place.flag} {ch.place.name} <span class="he-kind"><span aria-hidden="true">{ch.kind.emoji}</span> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span></p>
+                <h3>{ch.title}{articles.has(ch.id) && <span class="he-article">Article</span>}</h3>
+                <p class="he-text">{ch.description}</p>
+              </div>
+              {ch.score ? <ScoreChange score={ch.score} /> : <span></span>}
             </a>
           </li>
         ))}
       </ol>
     </section>
   ))}
-</div>
-
-<aside class="change-aside hist-aside" aria-label="History in numbers">
-  <div class="card ca-card">
-    <h2 class="hs-title">History in numbers</h2>
-    <dl class="hs-grid">
-      <div><dt>Entries in total</dt><dd>{num(stats.total)}</dd></div>
-      <div><dt>{kind ? "Of this kind" : "In this period"}</dt><dd>{num(items.length)}</dd></div>
-      <div><dt>Moved a score</dt><dd>{num(stats.scored)}</dd></div>
-      <div><dt>Context only</dt><dd>{num(stats.context)}</dd></div>
-      <div><dt>Countries and territories</dt><dd>{num(stats.places)}</dd></div>
-      <div><dt>Tied to no country</dt><dd>{num(stats.international)}</dd></div>
-    </dl>
-    <p class="ca-note">{num(stats.checked)} of the {num(dated.length)} dated entries ({Math.round((stats.checked / dated.length) * 100)}%) were checked against a source that was read. Another {num(stats.estimated)} are estimated first bans with no known date; they are not listed here.</p>
-    <p class="ca-note">The oldest entry is from <a href={`${base}history/${stats.oldest.id}/`}>{stats.oldest.date.slice(0, 4)}</a>, the newest from <a href={`${base}history/${stats.newest.id}/`}>{formatDate(stats.newest.date)}</a>.</p>
-  </div>
-  <div class="ca-more hs-top">
-    <h2>Most entries</h2>
-    <ol>
-      {stats.top.map(([c, n]) => (
-        <li><a href={`${base}country/${c.slug}/`}><b>{c.flag} {c.name}</b><time>{n} entries</time></a></li>
-      ))}
-    </ol>
-  </div>
-  <div class="ca-more hs-top">
-    <h2>Fewest entries</h2>
-    <ol>
-      {stats.fewest.map(([c, n]) => (
-        <li><a href={`${base}country/${c.slug}/`}><b>{c.flag} {c.name}</b><time>{n === 1 ? "1 entry" : `${n} entries`}</time></a></li>
-      ))}
-    </ol>
-  </div>
-</aside>
 </div>
 
 {period && <nav class="pager chl-pager" aria-label="Other periods">
@@ -118,3 +113,55 @@ const stats = {
     ? <a class="next" href={href(older)}><small>Older</small><span>{older.label} →</span></a>
     : <span></span>}
 </nav>}
+
+<div class="hist-tops">
+  {[["Most entries", stats.top], ["Fewest entries", stats.fewest]].map(([label, list]) => (
+    <section aria-label={label}>
+      <h2>{label}</h2>
+      <ol>
+        {list.map(([c, n]) => (
+          <li><a href={`${base}country/${c.slug}/`}><span>{c.flag} {c.name}</span><b>{n}</b></a></li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</div>
+</div>
+
+<script>
+  // Reading order: the page is written newest first; "Oldest first" turns the years and the
+  // entries inside each year around, to read the period as it happened. The choice is kept in
+  // this browser, and ?order=oldest in the address asks for it directly.
+  const years = document.querySelector(".hist-years");
+  const buttons = [...document.querySelectorAll(".hist-order button[data-order]")];
+  function setOrder(order) {
+    if (years.dataset.order !== order) {
+      years.append(...[...years.children].reverse());
+      for (const list of years.querySelectorAll("ol")) list.append(...[...list.children].reverse());
+      years.dataset.order = order;
+    }
+    for (const b of buttons) b.setAttribute("aria-pressed", String(b.dataset.order === order));
+  }
+  let wanted = new URLSearchParams(location.search).get("order");
+  try { wanted ??= localStorage.getItem("histOrder"); } catch {}
+  if (wanted === "oldest") setOrder("oldest");
+  for (const b of buttons) b.addEventListener("click", () => {
+    setOrder(b.dataset.order);
+    try { localStorage.setItem("histOrder", b.dataset.order); } catch {}
+  });
+
+  // Which entries: all of them, or only those that moved a score. The rest is hidden by the
+  // style sheet. Kept in this browser like the order, and ?only=scored asks for it directly.
+  const only = [...document.querySelectorAll(".hist-order button[data-only]")];
+  function setOnly(value) {
+    years.dataset.only = value;
+    for (const b of only) b.setAttribute("aria-pressed", String(b.dataset.only === value));
+  }
+  let show = new URLSearchParams(location.search).get("only");
+  try { show ??= localStorage.getItem("histOnly"); } catch {}
+  if (show === "scored") setOnly("scored");
+  for (const b of only) b.addEventListener("click", () => {
+    setOnly(b.dataset.only);
+    try { localStorage.setItem("histOnly", b.dataset.only); } catch {}
+  });
+</script>

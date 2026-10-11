@@ -8,7 +8,21 @@ import { SEGMENT_IDS, CONTEXT_IDS, CHANGE_CATEGORIES, PLANTING_STATUS, PLANTING_
 const score = z.number().int().min(0).max(10);
 const perSegment = <T extends z.ZodTypeAny>(value: T) =>
   z.object(Object.fromEntries(SEGMENT_IDS.map((id) => [id, value])) as Record<string, T>).strict();
-const source = z.object({ title: z.string().min(1), url: z.string().url() }).strict();
+// A source may be a webpage or a publication with no public URL. The bibliographic fields let
+// books and chapters be cited precisely instead of inventing a link or hiding everything in title.
+const source = z.object({
+  type: z.enum(["web", "book", "chapter", "journal", "report", "law", "other"]).optional(),
+  title: z.string().min(1),
+  url: z.string().url().optional(),
+  authors: z.array(z.string().min(1)).optional(),
+  editors: z.array(z.string().min(1)).optional(),
+  container: z.string().min(1).optional(),
+  publisher: z.string().min(1).optional(),
+  year: z.number().int().min(1000).max(3000).optional(),
+  isbn: z.string().min(1).optional(),
+  locator: z.string().min(1).optional(),
+}).strict();
+const webSource = source.refine((s) => Boolean(s.url), { message: "price sources need a URL" });
 const cited = z.object({ text: z.string().min(1), sources: z.array(z.string()) }).strict();
 // seeds and clones: the same cited text, plus for each a status for having and planting them
 // (PLANTING_STATUS) and one for selling or handing them on (PLANTING_TRADE)
@@ -170,9 +184,24 @@ const prices = defineCollection({
       price: z.number().positive(), // price per gram in `currency`
       usd: z.number().positive(),   // same observation normalised to USD per gram
       note: z.string().min(1).optional(),
-      source,
+      source: webSource,
     })
     .strict(),
 });
 
-export const collections = { countries, units, segments, changes, prices };
+// articles/<change id>.md: an optional long read for a history entry. The entry in changes.yaml
+// keeps its title and short description; the article adds the full story in Markdown, an
+// optional lead image with its credit, further sources, and who wrote it and when.
+const articles = defineCollection({
+  loader: glob({ base: "./articles", pattern: "*.md" }),
+  schema: z
+    .object({
+      image: z.object({ src: z.string().min(1), alt: z.string().min(1), caption: z.string().optional(), credit: z.string().min(1), credit_url: z.string().url().optional() }).strict().optional(),
+      model: z.string().min(1).optional(), // which model wrote it, with its effort where known: "opus-5.5", "gpt-5.6-sol-medium"
+      written: z.coerce.date().optional(), // the day it was written
+      sources: z.array(source).default([]),
+    })
+    .strict(),
+});
+
+export const collections = { countries, units, segments, changes, prices, articles };

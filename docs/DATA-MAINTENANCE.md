@@ -303,6 +303,29 @@ all read from there, together with `PLANTING_TRADE`.
       url: https://…
 ```
 
+Sources do not have to be webpages. For a book or a chapter, omit `url` and give enough
+bibliographic information for a reader to find the passage:
+
+```yaml
+  sources:
+    - type: chapter
+      title: "Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912"
+      authors: [Jamie Banks]
+      container: "Cannabis: Global Histories"
+      editors: [Lucas Richert, James H. Mills]
+      publisher: MIT Press
+      year: 2021
+      isbn: "9780262366137"
+      locator: "pp. 57–80"
+```
+
+Use `type: book` for a whole book and `type: chapter` for a chapter in an edited volume. The
+other accepted types are `web`, `journal`, `report`, `law` and `other`. `authors`, `editors`,
+`container`, `publisher`, `year`, `isbn` and `locator` are optional, but include every field the
+source provides and make `locator` as precise as practical. Print sources render as citations
+rather than dead links and have no Internet Archive copy. Price observations remain web-only and
+still require a URL.
+
 - **`before`** is the six scores *before* the event. The scores after it are the `before` of the
   same country's next scored entry, or the country's current scores. So the chain must be
   consistent: the newest scored entry's "after" is the profile's current scores.
@@ -505,3 +528,74 @@ restriction, and the Norway "1965 tinctures" entry became Norway's first cannabi
 After each pass, say: how many entries were added or corrected, which profiles and scores
 changed and why, which score timelines were re-based, which claims rest on sources that were read versus only summarised, and what
 could not be confirmed. Nothing is committed or deployed unless the user asks.
+
+## Long reads for history entries
+
+An important history entry can have a full article. The entry in `changes.yaml` stays as it is
+(title, short description, sources); the article is a Markdown file named after the entry's id:
+
+```
+articles/russia-griner-sentence-2022.md
+```
+
+```markdown
+---
+image:                       # optional lead picture
+  src: https://upload.wikimedia.org/…/1280px-Example.jpg   # or a path under /public
+  alt: What the picture shows
+  caption: One line under the picture.
+  credit: Author, licence, via Wikimedia Commons
+  credit_url: https://commons.wikimedia.org/wiki/File:Example.jpg
+model: opus-5.5              # which model wrote it, with its effort where known (gpt-5.6-sol-medium)
+written: 2026-10-11          # the day it was written
+sources:                     # added to the entry's own sources
+  - title: Publisher — headline (date)
+    url: https://…
+  - type: book              # print sources use the same structure as changes.yaml
+    title: Book title
+    authors: [Author Name]
+    publisher: Publisher
+    year: 2021
+    isbn: "9780000000000"
+    locator: "pp. 10–14"
+---
+
+The story in Markdown: paragraphs, `## Subheadings`, `> quotes`, lists, links and pictures.
+```
+
+Rules: write only what the listed sources say. Keep it compact: about 350 to 500 words, a short
+opening, three to five short sections and at most one small table. Side events belong in their
+own `changes.yaml` entries, linked from the article, not narrated in it. A picture is optional and most articles should
+have none: use one only when it shows the subject itself (the person, the place, the object), never
+a parliament or court building as a stand-in. Use pictures whose licence allows it and always
+give the credit; link to country profiles as `/country/ru/` and to other entries as
+`/history/<id>/`. The build fails if the file name matches no entry. Entries with an article get
+an "Article" tag in the history lists.
+
+## Data for research: the yearly panel and archived sources
+
+Two things make the data usable beyond the site.
+
+**The panel** (`/data/panel.csv` and `.json`) is generated at build time from `changes.yaml`: one
+row per place and year since 1900, with the six segment scores and the index score in force on
+31 December. Nothing is maintained by hand. The column `basis` marks each row as `recorded`,
+`interpolated` (inside the window of an estimated first restriction) or `baseline` (before the
+place's first recorded change). It gets better only by improving the history: replace estimates
+with dated entries, and check that every `before` matches the entry that precedes it
+(`node scripts/data-status.cjs chain`). The code is in `src/lib/exports.js`.
+
+**Archived web sources.** `source-archive.json` maps a source address to its copy in the Internet
+Archive. The site shows an "archived" link beside the source on history pages, and the history
+download carries the copies in `source_archive_urls`. Books and other sources without URLs keep
+their bibliographic citation in `source_citations` and are deliberately skipped by the archive
+script. The file is written by a script, never by hand:
+
+```
+node scripts/archive-sources.cjs status      # how many sources have a recorded copy
+node scripts/archive-sources.cjs check 200   # record the copies the Archive already holds
+node scripts/archive-sources.cjs save 20     # ask the Archive to save what it does not hold
+```
+
+The number caps one run. `check` only reads; `save` asks the Internet Archive to fetch the page,
+which it limits to a few requests a minute, so run it in small batches. Run `check` after adding
+sources, and `save` for the ones that come back without a copy.

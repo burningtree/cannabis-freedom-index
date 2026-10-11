@@ -1,0 +1,13 @@
+---
+import { archivedUrl } from "../lib/archive.js";
+
+const { source, archive = false } = Astro.props;
+const [label, url, bibliography] = source;
+---
+<li class:list={{ "source-print": !url }}>
+  {url
+    ? <a href={url} target="_blank" rel="noopener noreferrer">{label}</a>
+    : <cite>{label}</cite>}
+  {bibliography && <small class="src-meta">{bibliography}</small>}
+  {archive && url && archivedUrl(url) && <a class="src-archived" href={archivedUrl(url)} target="_blank" rel="noopener noreferrer" title="A copy saved in the Internet Archive">archived</a>}
+</li>

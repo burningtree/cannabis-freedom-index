@@ -1,0 +1,11 @@
+---
+// One page per way of colouring the world map, e.g. /map/clubs/: just the map, large, opened on
+// that view. See src/lib/map-views.js.
+import HomePage from "../../components/HomePage.astro";
+import { MAP_VIEWS } from "../../lib/map-views.js";
+
+export function getStaticPaths() {
+  return MAP_VIEWS.filter((view) => view.slug).map((view) => ({ params: { view: view.slug }, props: { view } }));
+}
+---
+<HomePage view={Astro.props.view} />

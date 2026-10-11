@@ -1,0 +1,40 @@
+---
+// The project in numbers, at the end of the home page: how much is scored, how much history is
+// recorded and how much of it is sourced. Each number links to where that material can be seen.
+import { SEGMENTS, DATA_SNAPSHOT, places, countries, changes, articles } from "../lib/countries.js";
+import { archivedCount } from "../lib/archive.js";
+import { sourceKey } from "../lib/sources.js";
+
+const base = import.meta.env.BASE_URL;
+const num = (n) => n.toLocaleString("en-GB");
+const dated = changes.filter((ch) => !ch.estimate);
+// Every distinct source once, including books that have no URL.
+const sourceKeys = new Set();
+for (const c of places) for (const source of c.details.sources) sourceKeys.add(source[3]);
+for (const ch of changes) for (const source of ch.sources) sourceKeys.add(source[3]);
+for (const a of articles.values()) for (const s of a.data.sources) sourceKeys.add(sourceKey(s));
+// the written parts of a profile: one explanation per scored segment, plus its context sections
+const explanations = places.reduce((n, c) => n + SEGMENTS.length + c.details.context.filter(Boolean).length, 0);
+const oldest = +dated.at(-1).date.slice(0, 4);
+const stats = [
+  [num(places.length), "Countries and territories scored", `${base}#rankings`],
+  [num(dated.length), "History entries", `${base}history/`],
+  [num(dated.filter((ch) => ch.score).length), "Of them moved a score", `${base}history/?only=scored`],
+  [num(articles.size), "Articles", `${base}articles/`],
+  [num(sourceKeys.size), "Sources cited", `${base}data/`],
+  [num(explanations), "Written explanations", `${base}data/`],
+  [num(+DATA_SNAPSHOT - oldest), `Years covered, from ${oldest}`, `${base}history/?order=oldest`],
+  [`${Math.round((dated.filter((ch) => ch.checked).length / dated.length) * 100)}%`, "Of history checked against a source", `${base}history/`],
+];
+---
+<section class="section numbers" id="numbers">
+  <div class="section-head">
+    <div>
+      <h2>The project in numbers</h2>
+      <p class="sub">Everything here is built from open files that anyone can read, check and correct. {archivedCount > 0 && `${num(archivedCount)} of the sources have a copy saved in the Internet Archive.`}</p>
+    </div>
+  </div>
+  <dl class="hist-stats numbers-grid">
+    {stats.map(([n, label, href]) => <div><dt>{label}</dt><dd><a href={href}>{n}</a></dd></div>)}
+  </dl>
+</section>

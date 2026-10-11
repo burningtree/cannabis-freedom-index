@@ -1,0 +1,6 @@
+---
+// The world map on its own, coloured by the overall index. The other views are at /map/<view>/.
+import HomePage from "../../components/HomePage.astro";
+import { MAP_VIEWS } from "../../lib/map-views.js";
+---
+<HomePage view={MAP_VIEWS.find((v) => v.metric === "index")} />
