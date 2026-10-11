@@ -7,9 +7,9 @@ import { getFacts } from "../lib/facts.js";
 const base = import.meta.env.BASE_URL;
 const facts = getFacts();
 const groups = [
-  ["history", "From the history", "Moments from two centuries of cannabis law, oldest first."],
-  ["countries", "From the country profiles", "Rules that are odd, generous or harsh in one particular place."],
   ["scores", "From the scores", "Worked out from today's scores, so they change when the data does."],
+  ["countries", "From the country profiles", "Rules that are odd, generous or harsh in one particular place."],
+  ["history", "From the history", "Moments from two centuries of cannabis law, oldest first."],
 ].map(([id, name, sub]) => ({ id, name, sub, facts: facts.filter((f) => f.group === id) }));
 ---
 <Base title="Did you know?" description={`${facts.length} curious cases from the Cannabis Freedom Index: strange rules, forgotten laws and what the scores show, each linked to its source page.`}>
