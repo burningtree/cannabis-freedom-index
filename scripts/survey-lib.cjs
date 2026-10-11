@@ -7,8 +7,9 @@ const path = require("path");
 const yaml = require("js-yaml");
 
 const ROOT = path.join(__dirname, "..");
-const MIN_SEGMENT = 30; // a filter (e.g. one region) is published only with this many respondents
-const MIN_TERRITORY = 5; // a country only with this many observations
+// What is published: a filter (e.g. one region) only with this many respondents, a country only
+// with this many observations. survey-collect.cjs can lower them for a look at early answers.
+const DEFAULTS = { segment: 30, territory: 5 };
 
 // US dollars for one unit of each currency a price may be given in (survey/currencies.yaml)
 const money = yaml.load(fs.readFileSync(path.join(ROOT, "survey", "currencies.yaml"), "utf8"));
@@ -60,7 +61,8 @@ const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
 const round = (x, d = 2) => Math.round(x * 10 ** d) / 10 ** d;
 
 // responses: cleaned personal answers; observations: cleaned territory observations
-function aggregate(survey, responses, observations, countries, extra = {}) {
+function aggregate(survey, responses, observations, countries, extra = {}, limits = {}) {
+  const MIN_SEGMENT = limits.segment ?? DEFAULTS.segment, MIN_TERRITORY = limits.territory ?? DEFAULTS.territory;
   const segmentsOf = (r) => {
     const rel = r.relation ?? [];
     const out = ["all"];

@@ -3,6 +3,8 @@
 //   node scripts/survey-collect.cjs --from events.jsonl   read saved events instead
 // The secret key is read from SURVEY_SECRET_KEY, in the environment or in the git-ignored .env.
 // Add --out <file> to write somewhere other than survey/results-<year>.json.
+// Add --min <n> to publish groups and countries with as few as n answers, for a look at the first
+// answers while testing. With real respondents leave it out: small groups can identify a person.
 // Every event is checked (signature, kind, topic), decrypted with the project's secret key, cleaned
 // against the questionnaire and counted by survey-lib.cjs. Only survey/results-<year>.json is
 // written: counts, never single answers. Free text is printed to the terminal with --text, for
@@ -69,7 +71,8 @@ async function fetchEvents() {
     } else { dropped.other++; continue; }
     for (const q of [...survey.all, ...survey.territory.questions].filter((q) => q.type === "text")) if (payload.answers[q.id]) texts.push([q.id, String(payload.answers[q.id]).slice(0, 4000)]);
   }
-  const out = aggregate(survey, responses, observations, countries, { mock: false, generated: new Date().toISOString().slice(0, 10) });
+  const min = args.includes("--min") ? Math.max(1, +args[args.indexOf("--min") + 1] || 1) : null;
+  const out = aggregate(survey, responses, observations, countries, { mock: false, generated: new Date().toISOString().slice(0, 10) }, min ? { segment: min, territory: min } : {});
   const file = args.includes("--out") ? args[args.indexOf("--out") + 1] : path.join(ROOT, "survey", `results-${EDITION}.json`);
   fs.writeFileSync(file, JSON.stringify(out, null, 1) + "\n");
   console.log(`collected: ${responses.length} responses, ${observations.length} observations | dropped: ${JSON.stringify(dropped)} → ${path.relative(ROOT, file)}`);

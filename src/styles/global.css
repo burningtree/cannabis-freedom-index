@@ -1516,3 +1516,9 @@ button.sv-row .sv-chip { font: 400 10.5px var(--mono); text-transform: uppercase
   button.sv-row > span:not(.sv-row-title) { grid-column: 1; }
   button.sv-row::after { grid-row: 1; grid-column: 2; }
 }
+.sv-empty-note { margin: 0; padding: 18px 0; border-top: 1px solid var(--text); border-bottom: 1px solid var(--border); color: var(--text-2); max-width: 80ch; }
+.sv-plots[hidden], .sv-table-wrap[hidden] { display: none; }
+/* /survey/ with invented numbers: SAMPLE across the page, and a tag in the sticky bar */
+.sv-results { position: relative; }
+.sv-watermark { position: absolute; inset: 0; z-index: 4; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='300'%3E%3Ctext x='210' y='160' text-anchor='middle' transform='rotate(-24 210 150)' font-family='ui-monospace,Menlo,monospace' font-size='44' font-weight='700' letter-spacing='10' fill='%23808080' fill-opacity='.17'%3ESAMPLE%3C/text%3E%3C/svg%3E"); background-size: 420px 300px; }
+.sv-sample-tag { padding: 4px 9px; margin-right: 10px; background: var(--t2); color: #0c0c0b; font: 600 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; border-radius: var(--r); }

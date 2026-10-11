@@ -18,7 +18,7 @@ const pct = (count, n) => (n ? Math.round((count / n) * 100) : 0);
 // ── Law against experience: one dot per country described often enough ──
 const places = results.territories.map((t) => ({ ...t, c: byId.get(t.country) })).filter((t) => t.c);
 const maxScore = Math.max(60, ...places.map((t) => t.c.score));
-const maxPrice = Math.ceil(Math.max(...places.map((t) => t.price ?? 0)) / 5) * 5;
+const maxPrice = Math.max(5, Math.ceil(Math.max(0, ...places.map((t) => t.price ?? 0)) / 5) * 5);
 const W = 340, H = 240, PAD = { l: 34, r: 12, t: 12, b: 30 };
 const plots = [
   { id: "acceptance", title: "Social acceptance", sub: "1 condemned, 5 fully accepted", lo: 1, hi: 5, ticks: [1, 2, 3, 4, 5] },
@@ -32,9 +32,13 @@ const plots = [
   const mx = pts.reduce((a, t) => a + t.c.score, 0) / pts.length, my = pts.reduce((a, t) => a + t[p.id], 0) / pts.length;
   const cov = pts.reduce((a, t) => a + (t.c.score - mx) * (t[p.id] - my), 0);
   const r = cov / Math.sqrt(pts.reduce((a, t) => a + (t.c.score - mx) ** 2, 0) * pts.reduce((a, t) => a + (t[p.id] - my) ** 2, 0));
-  return { ...p, pts, x, y, r };
+  // a correlation needs a few countries to mean anything
+  return { ...p, pts, x, y, r: pts.length >= 3 && Number.isFinite(r) ? r : null };
 });
 const fmt = (v) => (v == null ? "–" : v.toFixed(1));
+// shown in place of the country charts and table until a country has enough descriptions
+const need = results.thresholds.territory;
+const waiting = `No country has been described by ${need} ${need === 1 ? "person" : "people"} yet, which is the least we publish. ${num(results.observations)} ${results.observations === 1 ? "place has" : "places have"} been described so far, in ${results.countries_described} ${results.countries_described === 1 ? "country" : "countries"}.`;
 ---
 <Base title={survey.title} description={`${survey.title}: an anonymous, community survey of how people use, grow and think about cannabis, set against the law in each country.`}>
   <main class="changes-page survey">
@@ -60,9 +64,18 @@ const fmt = (v) => (v == null ? "–" : v.toFixed(1));
       <div><dt>Countries described</dt><dd>{results.countries_described}</dd></div>
     </dl>
 
+    {!results.mock && results.respondents < results.thresholds.segment && (
+      <p class="sv-mock" role="note"><strong>Early days.</strong> {results.respondents === 1 ? "One person has" : `${num(results.respondents)} people have`} answered so far. The charts below show their answers, but nothing can be read from so few. Country figures appear once {need} people have described the same country.</p>
+    )}
+
     <p class="sv-note">People chose to answer this survey; nobody was sampled. The figures describe the {num(results.respondents)} people who took part, most of whom use cannabis, and not the population of any country. A group is shown only when at least {results.thresholds.segment} people are in it, and a country only when at least {results.thresholds.territory} people described it.</p>
 
+    {/* While the numbers are invented, the word SAMPLE lies across the results (the charts and
+        the country table, nothing else) and stays in the bar that follows the reader down. */}
+    <div class="sv-results">
+    {results.mock && <div class="sv-watermark" aria-hidden="true"></div>}
     <div class="sv-filter" id="svFilter" role="group" aria-label="Show answers from">
+      {results.mock && <strong class="sv-sample-tag">Sample data, not findings</strong>}
       <span>Answers from</span>
       {results.segments.map((s, i) => (
         <button type="button" class:list={["sv-seg", { on: i === 0 }]} data-seg={s.id} aria-pressed={i === 0 ? "true" : "false"}>{s.label} <small>{num(s.n)}</small></button>
@@ -113,7 +126,8 @@ const fmt = (v) => (v == null ? "–" : v.toFixed(1));
         <h2>The law against the experience</h2>
         <p class="sub">Each dot is a country, placed by its <a href={`${base}#rankings`}>index score</a> from left (strict) to right (free) and by what the people who described it reported. Where the dots follow a line, life follows the law; where they scatter, it does not.</p>
       </div></div>
-      <div class="sv-plots">
+      {places.length === 0 && <p class="sv-empty-note">{waiting}</p>}
+      <div class="sv-plots" hidden={places.length === 0}>
         {plots.map((p) => (
           <figure>
             <figcaption><b>{p.title}</b><span>{p.sub}</span></figcaption>
@@ -128,7 +142,7 @@ const fmt = (v) => (v == null ? "–" : v.toFixed(1));
                 </a>
               ))}
             </svg>
-            <p class="sv-meta">Index score → · correlation {p.r.toFixed(2)} · {p.pts.length} countries</p>
+            <p class="sv-meta">Index score →{p.r != null && ` · correlation ${p.r.toFixed(2)}`} · {p.pts.length} {p.pts.length === 1 ? "country" : "countries"}</p>
           </figure>
         ))}
       </div>
@@ -139,7 +153,8 @@ const fmt = (v) => (v == null ? "–" : v.toFixed(1));
         <h2>Places, as described</h2>
         <p class="sub">What residents and visitors reported about each country, beside its score. Scales run from 1 to 5. Prices are the median reported for a gram of flower, converted to US dollars at the European Central Bank rates of {results.rates_date}.</p>
       </div></div>
-      <div class="sv-table-wrap">
+      {places.length === 0 && <p class="sv-empty-note">{waiting}</p>}
+      <div class="sv-table-wrap" hidden={places.length === 0}>
         <table class="src-table sv-table">
           <thead><tr><th>Country</th><th class="num">Index</th><th class="num">People</th><th class="num">Accepted</th><th class="num">Enforced</th><th class="num">Easy to get</th><th class="num">Used openly</th><th class="num">Gram</th></tr></thead>
           <tbody>
@@ -159,6 +174,8 @@ const fmt = (v) => (v == null ? "–" : v.toFixed(1));
         </table>
       </div>
     </section>
+
+    </div>
 
     <section class="section" id="method">
       <div class="section-head"><div>
