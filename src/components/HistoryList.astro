@@ -92,8 +92,8 @@ const most = Math.max(...historyPeriods.map((p) => p.items.length));
             <a href={`${base}history/${ch.id}/`}>
               <time datetime={ch.date}>{ch.date.length === 4 ? "" : formatDate(ch.date).replace(` ${year}`, "")}</time>
               <div class="he-body">
-                <p class="he-place">{ch.place.flag} {ch.place.name} <span class="he-kind"><span aria-hidden="true">{ch.kind.emoji}</span> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span></p>
-                <h3>{ch.title}{articles.has(ch.id) && <span class="he-article">Article</span>}</h3>
+                <p class="he-place">{ch.place.flag} {ch.place.name} <span class="he-kind"><span aria-hidden="true">{ch.kind.emoji}</span> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
+                <h3>{ch.title}</h3>
                 <p class="he-text">{ch.description}</p>
               </div>
               {ch.score ? <ScoreChange score={ch.score} /> : <span></span>}
