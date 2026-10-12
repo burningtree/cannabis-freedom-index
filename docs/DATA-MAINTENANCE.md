@@ -613,6 +613,7 @@ script. The file is written by a script, never by hand:
 node scripts/archive-sources.cjs status      # how many sources have a recorded copy
 node scripts/archive-sources.cjs check 200   # record the copies the Archive already holds
 node scripts/archive-sources.cjs save 20     # ask the Archive to save what it does not hold
+node scripts/archive-sources.cjs save 20 --random   # the same, picking the addresses at random
 ```
 
 The number caps one run. `check` only reads; `save` asks the Internet Archive to fetch the page,
@@ -774,3 +775,65 @@ A seventh driving pass added Albania, Montenegro, Ukraine, Kosovo and Seychelles
 Ukraine’s different appellate evidence outcomes, and marks Seychelles’ older
 official publication as a qualified baseline needing current amendment checks.
 No articles were changed; see the research note for remaining gaps and sources.
+
+An eighth driving pass added Greece, Andorra, North Macedonia and San Marino:
+102 of 200 sections (51%). It distinguishes drug and alcohol penalties, verifies
+commencement exceptions and deferred replacements, and separates approval of a
+screening instrument from a presence-based offence. Current criminal-amendment
+and penalty-consolidation gaps remain explicit. No articles were changed.
+
+A ninth driving pass added five profiles, reaching 107 of 200 (53.5%). It reads
+Saint Kitts and Nevis’s final 2025 penalty amendment, separates refusal evidence
+from automatic impairment findings, and resolves Bhutan’s blank PDF commencement
+field with the authority’s notice. Dominica/Grenada older penalty baselines and
+Antigua’s commencement/device-approval gaps remain explicit. No articles changed.
+
+
+A tenth driving pass added Tuvalu, Nauru and Palau: 110 of 200 sections (55%).
+It uses Tuvalu's catalogue-confirmed current edition, Nauru's September 2026
+Service 6 consolidation and Palau's October 2026 code. Palau's new drug field
+sobriety/refusal provisions are distinguished from implementation of the required
+rules. Nauru's alcohol-specific penalty cross-reference remains unresolved for
+drugs. No articles were changed; see the research note for source limits.
+
+## Recent law-news scan (12 October 2026)
+
+Added five primary-sourced context events: Ireland's October medical-access
+review timetable, Canada's October regulatory commencement and September
+tracking consultation, NSW medical-driving assent, and Mauritius's reform report.
+See [the news research note](research/law-news-2026-10-12.md) for dates, legal
+stages and unresolved implementation. Updated AU/IE context and corrected Germany's
+flower-reimbursement event/profile date to 29 July. Scores were preserved.
+No articles were created or modified in this pass; Germany's existing article
+already had the ministry's correct date.
+
+A second law-news pass added four unscored events: Manitoba store-safety Bill 56,
+Cayman's October reform timetable, Queensland driving-law assent with December
+commencement, and DC's medical-licensing emergency Act with an October expiry.
+Corrected AU driving commencement wording and added the Manitoba proposal to
+its unit profile. The news note records jurisdiction scope, conditional versus
+operating licences, fine-only sentencing exceptions, and remaining proclamation
+checks. Scores were preserved; no articles were touched.
+
+An eleventh driving pass added Namibia, Lesotho, Eswatini and Gambia: 114 of 200
+sections (57%). The research note separates older statutory baselines from current
+penalty certification, explains Lesotho's refusal evidence and the engine-running
+versus stopped distinction, and records Gambia's main-text/schedule mismatch.
+Relevant Gambia scans were visually inspected, catching an incorrectly indexed
+fine row. Full current amendments and drug-testing practice remain explicit
+follow-ups. No articles were changed.
+
+A twelfth driving pass added Liberia, Sierra Leone and Oman: 117 of 200 sections
+(58.5%). It reads complete relevant primary provisions and distinguishes lawful
+use from a defence, habitual drug use from contemporaneous impairment, revocation
+from automatic reinstatement, ordinary offences from harm tiers, and alcohol
+specimen procedures from drug testing. Current old-text tariffs, toxicology and
+later regulatory gaps remain explicit. No articles were changed.
+
+A thirteenth driving pass added Bahrain and Kuwait: 119 of 200 sections (59.5%).
+It checks Bahrain's final 2025 replacement against the old official English text,
+separates administrative and judicial licence periods, and records Kuwait's 2025
+court ranges with the provenance limit of the reproduced statutory compilation.
+The old Kuwait police tariff is marked as superseded. Jordan's 2026 amendment
+requires full-text retrieval before a driving addition. Scores were preserved;
+no articles were touched.

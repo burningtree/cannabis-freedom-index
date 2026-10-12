@@ -1,4 +1,4 @@
-// Archived copies of the sources: node scripts/archive-sources.cjs [status|check|save] [limit]
+// Archived copies of the sources: node scripts/archive-sources.cjs [status|check|save] [limit] [--random]
 // Run from the project root. Needs js-yaml (already in node_modules) and Node 18+ (fetch).
 //
 //   status  how many source addresses there are and how many have a recorded copy (no network)
@@ -9,13 +9,26 @@
 // run it again to continue. Results go to source-archive.json, which the site reads:
 //   { "<url>": { "archived": "https://web.archive.org/web/<timestamp>/<url>", "checked": "YYYY-MM-DD" } }
 // An address with no copy is recorded with "archived": null and is tried again after 30 days.
+// `--random` takes the addresses of a run in random order instead of the order they appear in the
+// data. `save` always starts from the same addresses otherwise, so the ones the Archive keeps
+// refusing would fill every run.
 const fs = require("fs"), path = require("path"), y = require("js-yaml");
 const FILE = "source-archive.json";
 const archive = fs.existsSync(FILE) ? JSON.parse(fs.readFileSync(FILE, "utf8")) : {};
-const what = process.argv[2] || "status";
-const limit = +process.argv[3] || 50;
+const args = process.argv.slice(2);
+const random = args.includes("--random");
+const [what = "status", count] = args.filter((a) => !a.startsWith("--"));
+const limit = +count || 50;
 const today = new Date().toISOString().slice(0, 10);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// Fisher–Yates
+const shuffle = (xs) => {
+  for (let i = xs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [xs[i], xs[j]] = [xs[j], xs[i]];
+  }
+  return xs;
+};
 
 // every source address in the data: history entries, country profiles and articles
 const urls = new Set();
@@ -51,7 +64,8 @@ async function lookup(url) {
 (async () => {
   if (what === "status") return;
   if (!["check", "save"].includes(what)) return console.log("unknown command: use status, check or save");
-  const todo = all.filter(what === "check" ? stale : (u) => !archive[u]?.archived).slice(0, limit);
+  const pending = all.filter(what === "check" ? stale : (u) => !archive[u]?.archived);
+  const todo = (random ? shuffle(pending) : pending).slice(0, limit);
   let found = 0, failed = 0;
   for (const url of todo) {
     try {
