@@ -14,6 +14,7 @@ export function GET({ site }) {
     ["compare/", latest, 0.6],
     ["survey/", latest, 0.6],
     ["survey/take/", latest, 0.5],
+    ["about/", latest, 0.6],
     ["did-you-know/", latest, 0.5],
     ["changelog/", latest, 0.5],
     ["data/", latest, 0.5],

@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
-import ProjectNumbers from "../components/ProjectNumbers.astro";
+import AboutHint from "../components/AboutHint.astro";
 import Tools from "./Tools.astro";
 import { survey } from "../lib/survey.js";
 import AverageChart from "../components/AverageChart.astro";
@@ -157,7 +157,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
       </div>
       {/* The two ends of the ranking, side by side: the leader of each list is set largest. */}
       <div class="extremes">
-        {[["Freest", countries.slice(0, 5)], ["Least free", countries.slice(-5).reverse()]].map(([label, list]) => (
+        {[["Freest", countries.slice(0, 5), "asc", "Full rankings"], ["Least free", countries.slice(-5).reverse(), "desc", "Full rankings, least free first"]].map(([label, list, order, more]) => (
           <section aria-label={label}>
             <h2>{label}</h2>
             <ol>
@@ -172,6 +172,8 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
                 </li>
               ))}
             </ol>
+            {/* down to the rankings table, sorted the way this list reads (see the table script) */}
+            <p class="ext-more"><a class="go" href="#rankings" data-rank-order={order}>{more} <span aria-hidden="true">↓</span></a></p>
           </section>
         ))}
       </div>
@@ -404,7 +406,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
 
     {!view && <Tools />}
 
-    {!view && <ProjectNumbers />}
+    {!view && <AboutHint />}
 
   </main>
 
@@ -715,6 +717,15 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
       if (!th) return;
       state.asc = state.sort === th.dataset.sort ? !state.asc : true;
       state.sort = th.dataset.sort;
+      applyTable();
+    });
+    // "Full rankings" under the two top lists: put the table in rank order, best first or worst
+    // first, before the link scrolls down to it.
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a[data-rank-order]");
+      if (!link) return;
+      state.sort = "rank";
+      state.asc = link.dataset.rankOrder === "asc";
       applyTable();
     });
     // A plain click opens the drawer; modified clicks (new tab etc.) follow the link to the full page.

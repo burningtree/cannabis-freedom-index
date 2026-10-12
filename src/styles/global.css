@@ -1047,11 +1047,13 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .reads li a:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
 .reads .sub a { text-decoration: underline; text-underline-offset: 3px; }
 .hist-periods { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 4px; align-items: end; height: 150px; margin-top: clamp(36px, 5vw, 60px); border-bottom: 1px solid var(--text); }
-.hist-periods a { display: grid; grid-template-rows: auto 1fr auto; align-items: end; height: 100%; min-width: 0; color: var(--muted); }
+.hist-periods a { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr auto; align-items: end; height: 100%; min-width: 0; color: var(--muted); }
 .hist-periods i { display: block; align-self: end; background: var(--border); }
 .hist-periods .hp-n { font: 400 10.5px var(--mono); padding-bottom: 4px; text-align: center; }
 .hist-periods .hp-label { position: relative; height: 0; font: 400 10px var(--mono); letter-spacing: .02em; text-align: center; white-space: nowrap; }
 .hist-periods .hp-label { top: 8px; }
+/* the column is narrower than its number and its label: both stay centred over it */
+.hist-periods .hp-n, .hist-periods .hp-label { justify-self: center; }
 .hist-periods a:hover { color: var(--text); }
 .hist-periods a:hover i { background: var(--muted); }
 .hist-periods a[aria-current] { color: var(--text); }
@@ -1101,6 +1103,11 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
   .hist-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .hist-periods .hp-label, .hist-periods .hp-n { visibility: hidden; }
   .hist-periods a[aria-current] .hp-label, .hist-periods a[aria-current] .hp-n { visibility: visible; }
+  /* on a narrow screen the label of the chosen period sits under the middle of the chart */
+  .hist-periods { position: relative; gap: 2px; }
+  .hist-periods a:not([aria-current]) .hp-label { display: none; }
+  .hist-periods a:not([aria-current]) .hp-n { max-width: 100%; overflow: hidden; }
+  .hist-periods a[aria-current] .hp-label { position: absolute; left: 0; right: 0; top: 100%; margin-top: 8px; height: auto; font-size: 11px; }
   .hist-year { grid-template-columns: 1fr; }
   .hist-year h2 { position: static; font-size: 56px; padding-bottom: 12px; }
   .hist-year li a { grid-template-columns: 1fr auto; }
@@ -1585,3 +1592,29 @@ button.sv-row .sv-chip { font: 400 10.5px var(--mono); text-transform: uppercase
 .sv-credit { margin: 26px 0 0; font-size: 12px; color: var(--muted); }
 .sv-credit a { text-decoration: underline; text-underline-offset: 3px; }
 .sv-credit + .sv-nav { margin-top: 12px; }
+/* "Full rankings" under the freest and least free lists */
+.ext-more { margin: 0; padding: 16px 0 0; border-top: 1px solid var(--border); }
+.extremes .ext-more a.go { display: inline-flex; grid-template-columns: none; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid var(--text); border-radius: var(--r); font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text); }
+.extremes .ext-more a.go:hover { background: var(--text); color: var(--bg); }
+/* /about/ */
+.about .hero .lede + .lede { color: var(--text); }
+.about .hist-stats { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.about-prose { max-width: 70ch; display: grid; gap: 16px; font-size: 17px; line-height: 1.6; border-top: 1px solid var(--text); padding-top: 20px; }
+.about-prose p { margin: 0; text-wrap: pretty; }
+.about-prose a, .about .culture-themes dd a { text-decoration: underline; text-underline-offset: 3px; }
+.about-layers a { grid-template-columns: 4ch 24ch 1fr; }
+.about-layers span { color: var(--text); }
+.about-layers p { font: 400 16px/1.55 var(--sans, inherit); color: var(--text-2); }
+.about-layers a:hover p { text-decoration: none; }
+.about-layers a:hover span { text-decoration: underline; text-underline-offset: 4px; }
+.about-commitments { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.about-commitments dd { max-width: 56ch; }
+@media (max-width: 900px) { .about .hist-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } .about-commitments { grid-template-columns: 1fr; } .about-layers a { grid-template-columns: 4ch 1fr; } }
+/* the hint at the About page that closes the home page */
+.about-hint-body { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 24px clamp(28px, 6vw, 96px); align-items: start; border-top: 1px solid var(--text); padding-top: 22px; }
+.about-hint-lede { margin: 0; font: 400 clamp(26px, 3vw, 40px)/1.15 var(--display); text-wrap: balance; }
+.about-hint-body > div p { margin: 0 0 20px; color: var(--text-2); font-size: 16.5px; line-height: 1.55; max-width: 48ch; }
+.about-hint .front-go { margin: 0; }
+@media (max-width: 900px) { .about-hint-body { grid-template-columns: 1fr; } }
+.about .numbers-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 760px) { .about .numbers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

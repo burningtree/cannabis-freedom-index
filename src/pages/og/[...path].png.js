@@ -46,6 +46,7 @@ const surveyFacts = results.mock ? [] : [[num(results.respondents), "RESPONDENTS
 const cards = {
   index: page("How free is cannabis in every country?", "Every country scored from 0 to 100 for how free you are to carry, grow, share and use cannabis.", indexFacts),
   history: page("A history of cannabis law", "The laws, court rulings and treaties that made cannabis legal or illegal, and how each moved a country's score.", historyFacts),
+  about: page("What this is, and what it is for", "The law in every country, its history and the lives lived under it: sourced, open and corrected in public.", indexFacts, `ABOUT · ${BRAND}`),
   "can-i": page("Can I?", "Pick a country and get plain answers: can I carry it, grow it, buy it, use it in public, and what happens if I am caught?"),
   compare: page("Compare countries", "Up to six countries side by side: their scores, exact rules and sources in one table."),
   changelog: page("Changelog", "Every change to a score, newest first.", [[num(scored), "SCORE CHANGES"]]),

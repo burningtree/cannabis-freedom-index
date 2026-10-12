@@ -1,0 +1,123 @@
+---
+// About: what the project is, what it is for, where it is meant to go and what it commits to.
+// The figures are counted from the data at build time, so the page stays true as the data grows.
+import Base from "../layouts/Base.astro";
+import ProjectNumbers from "../components/ProjectNumbers.astro";
+import { SEGMENTS, DATA_SNAPSHOT, places, countries, changes, articles } from "../lib/countries.js";
+import { archivedCount } from "../lib/archive.js";
+import { sourceKey } from "../lib/sources.js";
+import { survey } from "../lib/survey.js";
+
+const base = import.meta.env.BASE_URL;
+const repo = "https://github.com/burningtree/cannabis-freedom-index";
+const num = (n) => n.toLocaleString("en-GB");
+const dated = changes.filter((ch) => !ch.estimate);
+const sources = new Set();
+for (const c of places) for (const s of c.details.sources) sources.add(s[3]);
+for (const ch of changes) for (const s of ch.sources) sources.add(s[3]);
+for (const a of articles.values()) for (const s of a.data.sources) sources.add(sourceKey(s));
+const oldest = dated.at(-1).date.slice(0, 4);
+const checked = Math.round((dated.filter((ch) => ch.checked).length / dated.length) * 100);
+
+// What exists today, layer by layer, and what each is meant to become.
+const layers = [
+  ["The law today", `${base}#rankings`, `A score from 0 to 100 for each of ${places.length} countries and territories, built from ${SEGMENTS.length} questions a person actually faces: may I carry it, grow it, share it, use it, buy it, and what happens if I am caught. Every score comes with the rule it rests on and the source for that rule.`],
+  ["How it got that way", `${base}history/`, `${num(dated.length)} dated laws, court rulings and treaties since ${oldest}, each showing whether and how it moved a country's score. ${num(articles.size)} of them are told in full as articles.`],
+  ["Life under the law", `${base}survey/`, `State of Cannabis, a yearly survey of what people do, what they believe and what they see in the countries they know. The index measures the statute; this measures what it is like to live with it.`],
+  ["The people and beliefs behind it", `${base}culture/`, `A slower strand of work on stigma, tradition, obedience and resistance: why a law nobody respects is still obeyed, and why one everybody breaks is still on the books.`],
+  ["Data anyone can build on", `${base}data/`, `Every score, every history entry and a yearly panel since 1900 as open files, for researchers, journalists and other projects.`],
+];
+const commitments = [
+  ["Every claim has a source", `The rule is that nothing is scored or stated from memory or from a search summary. Each rule and each event cites where it comes from, with primary law preferred over commentary. ${num(sources.size)} sources are cited so far, and ${checked}% of history entries have been checked against a source that was opened and read.`],
+  ["Sources are kept from disappearing", `Links die. ${archivedCount > 0 ? `${num(archivedCount)} of the cited pages already have a copy saved in the Internet Archive, and the rest are being saved.` : "Cited pages are being saved in the Internet Archive."}`],
+  ["Open by default", `The data is free to reuse under CC BY 4.0 and the code under the MIT licence. The files, the methodology and the questionnaire are public, so any figure can be checked and any judgment disputed.`],
+  ["Mistakes are corrected in the open", `Laws change and this project gets things wrong. Every change to a score is logged with its date, and anyone can report an error or a new law.`],
+  ["The reader's side, not the industry's", `The index asks what a person is free to do. It does not measure market size, investment climate or how friendly a country is to cannabis businesses.`],
+  ["Scores are judgments, and say so", `A number cannot hold a legal system. The method is published, the weights are stated, and each score can be traced to the text it was read from. Where the law on paper and the practice differ, both are described.`],
+  ["Respondents are protected", `The survey asks for no name, email or account. Answers are encrypted, only counts are published, and small groups are never shown.`],
+  ["Machine help is disclosed", `Research and drafting are done with the help of AI models. Articles are labelled with the model that wrote them and the date, and the rule that every statement must rest on a source that was read applies to machines as it does to people.`],
+];
+---
+<Base title="About" description="What the Cannabis Freedom Index is, what it is for, where it is going and what it commits to: sourced, open, corrected in public.">
+  <main class="changes-page culture about">
+    <section class="hero hero-sm">
+      <p class="eyebrow">About <span>{DATA_SNAPSHOT} edition</span></p>
+      <h1>What this is, and what it is for</h1>
+      <p class="lede">The Cannabis Freedom Index sets out, for every country in the world, how free a person is to carry, grow, share and use cannabis, and how the law came to be what it is.</p>
+      <p class="lede">The aim is larger than a ranking. It is to become the most complete and most trustworthy source of knowledge on cannabis law and cannabis freedom anywhere: the law as written, the law as enforced, its history, and the lives lived under it, all sourced, all open, all in one place.</p>
+    </section>
+
+    <ProjectNumbers />
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>Why it exists</h2>
+      </div></div>
+      <div class="about-prose">
+        <p>Cannabis law is scattered across some two hundred legal systems, written in dozens of languages, amended constantly and reported badly. The simple question, <em>what am I allowed to do here?</em>, usually has no simple, reliable answer. What can be found is often out of date, copied from somewhere else, or written to sell something.</p>
+        <p>The usual labels do not help much either. "Legal", "decriminalised" and "illegal" hide more than they show: a country can let adults possess cannabis and give them no lawful way to obtain it; another can ban it on paper and never enforce the ban; a third can license exports while jailing its own citizens for a gram. The index looks past the label to what a person is, in fact, free to do.</p>
+        <p>And a law is never only a law. It has a history, usually longer and stranger than expected, and it lands on real people who obey it, ignore it or resist it. Understanding cannabis freedom means holding all of that together. That is the work.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>What it covers</h2>
+        <p class="sub">Five layers, each built on the one before. Together they are meant to answer not only what the law says, but why, since when, and with what effect.</p>
+      </div></div>
+      <ol class="culture-threads about-layers">
+        {layers.map(([name, href, text], i) => (
+          <li>
+            <a href={href}>
+              <time>{String(i + 1).padStart(2, "0")}</time>
+              <span>{name}</span>
+              <p>{text}</p>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>Where it is going</h2>
+      </div></div>
+      <div class="about-prose">
+        <p>The intention is breadth and depth at once. Breadth means every country, including the ones nobody writes about, described as a whole and not by one city or one headline. Depth means going back to the statute and the court ruling, following each law to its origin, and recording how it is applied in practice: arrests, prices, clubs, the black market, what happens to a visitor or a driver.</p>
+        <p>Three things are being built towards. First, a complete legal record: the present law of every country resting on primary sources, and its history traced back as far as the record goes. Second, evidence of reality beside the record: what people report, year after year, through the <a href={`${base}survey/`}>State of Cannabis</a> survey, so that the distance between law and life can be measured and watched over time. Third, a dataset good enough to study: consistent across countries and across decades, documented, citable and permanent.</p>
+        <p>None of this is finished, and parts of it are thin. The page on <a href={`${base}#methodology`}>how the scores are made</a> says how each judgment is reached; the <a href={`${base}changelog/`}>changelog</a> shows what has been corrected.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>What it commits to</h2>
+        <p class="sub">The standards the project holds itself to. They are the reason to trust it, and the measure to hold it against.</p>
+      </div></div>
+      <dl class="culture-themes about-commitments">
+        {commitments.map(([name, text]) => <div><dt>{name}</dt><dd>{text}</dd></div>)}
+      </dl>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>What it is not</h2>
+      </div></div>
+      <div class="about-prose">
+        <p>It is not legal advice. Laws change faster than any index, enforcement varies from one town and one police officer to the next, and nothing here should be relied on in front of a court or a border guard. Check the current law, and ask a lawyer where it matters.</p>
+        <p>It is not an encouragement to use cannabis, and not a campaign for any particular law. A score describes freedom, not wisdom; a low score is a description of a legal system, not a verdict on a country. The survey, likewise, describes the people who chose to answer it and not the population of any country.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>How to help</h2>
+      </div></div>
+      <dl class="culture-themes three">
+        <div><dt>Correct it</dt><dd>Found a mistake, or a law that changed? <a href={`${repo}/issues`} target="_blank" rel="noopener noreferrer">Open an issue</a> or send a pull request. A link to the law itself is the most useful thing you can bring.</dd></div>
+        <div><dt>Tell it what you know</dt><dd>{survey.open ? <><a href={`${base}survey/take/`}>Take the survey</a>, and report on the places and prices you know. No account is needed.</> : <>The <a href={`${base}survey/`}>State of Cannabis</a> survey opens soon: answers from people who live under these laws.</>}</dd></div>
+        <div><dt>Use it</dt><dd><a href={`${base}data/`}>Download the data</a>, cite it, build on it. It is open so that it can be checked, and so that it outlasts this website. The project lives on <a href={repo} target="_blank" rel="noopener noreferrer">GitHub</a>.</dd></div>
+      </dl>
+    </section>
+  </main>
+</Base>

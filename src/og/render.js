@@ -39,7 +39,8 @@ export function flagOf(id) {
 // finished image is kept in .cache/og (git-ignored; the deploy workflow saves and restores it) under a hash of everything that went into
 // it (the template, the props, this file), and reused while that hash stays the same.
 const CACHE = path.join(ROOT, ".cache", "og");
-const self = readFileSync(new URL(import.meta.url));
+// this file as written, not the bundle it is built into, which changes with unrelated code
+const self = readFileSync(path.join(ROOT, "src", "og", "render.js"));
 // The template's text reaches satori as HTML, where ' " & < > arrive as entities that satori
 // draws letter for letter ("d&#39;Ivoire"). Typographic forms of the same characters pass through.
 const plain = (v) => typeof v === "string" ? v.replace(/'/g, "\u2019").replace(/"([^"]*)"/g, "\u201C$1\u201D").replace(/"/g, "\u201D").replace(/ & /g, " and ").replace(/&/g, "+").replace(/</g, "\u2039").replace(/>/g, "\u203A")
