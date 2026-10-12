@@ -1572,3 +1572,11 @@ button.sv-row .sv-chip { font: 400 10.5px var(--mono); text-transform: uppercase
 .sv-about { max-width: 68ch; display: grid; gap: 12px; margin: 10px 0 6px; font-size: 16.5px; line-height: 1.55; }
 .sv-about p { margin: 0; }
 .sv-about a { text-decoration: underline; text-underline-offset: 3px; }
+/* /survey/scan/: what the relays show to anyone */
+.sv-scan .hist-stats { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.sv-scan-table { min-width: 760px; }
+.sv-scan-table td small { font: 400 10.5px var(--mono); color: var(--t5); text-transform: uppercase; letter-spacing: .05em; margin-left: 6px; }
+.sv-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; }
+.sv-own td { background: color-mix(in srgb, var(--t4) 8%, transparent); }
+.sv-bad { color: var(--t1); }
+@media (max-width: 900px) { .sv-scan .hist-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

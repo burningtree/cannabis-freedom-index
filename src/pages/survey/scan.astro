@@ -1,0 +1,91 @@
+---
+// State of Cannabis: the public scanner. It asks the survey's relays for every submission and
+// shows exactly what anyone on the internet can see of them without a key: how many there are,
+// under which pseudonymous keys, of which kind, how large and when. The answers themselves are
+// encrypted and stay unreadable here. The page is not linked from the menu and not indexed.
+import Base from "../../layouts/Base.astro";
+import { survey, submitConfig } from "../../lib/survey.js";
+
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Submission scanner" description="What the public Nostr relays hold of the State of Cannabis survey, as anyone can see it." noindex>
+  <main class="changes-page survey sv-scan" data-config={JSON.stringify(submitConfig)}>
+    <section class="hero hero-sm">
+      <p class="eyebrow"><a href={`${base}survey/`}>State of Cannabis</a> <span>{survey.edition} edition</span></p>
+      <h1>Submission scanner</h1>
+      <p class="lede">A live look at the survey's public relays: every submission they hold, as any stranger can see it. The answers are encrypted, so what shows is only that a message exists, which random key signed it, what kind of part it is, how big it is and when it was last changed.</p>
+      <p class="front-go"><button type="button" class="go solid" id="scanRun">Scan the relays</button></p>
+    </section>
+
+    <p class="sv-mock" role="note" id="scanNote" hidden></p>
+
+    <dl class="hist-stats" id="scanStats" hidden></dl>
+
+    <section class="section" id="scanRelaysBox" hidden>
+      <div class="section-head"><div><h2>Relays</h2><p class="sub">Each relay is asked by itself. A message should be on all of them.</p></div></div>
+      <table class="src-table"><thead><tr><th>Relay</th><th>Answer</th><th class="num">Messages</th><th class="num">Time</th></tr></thead><tbody id="scanRelays"></tbody></table>
+    </section>
+
+    <section class="section" id="scanEventsBox" hidden>
+      <div class="section-head"><div><h2>Submissions</h2><p class="sub" id="scanSub"></p></div></div>
+      <div class="sv-table-wrap">
+        <table class="src-table sv-scan-table"><thead><tr><th>Changed</th><th>Key</th><th>Part</th><th class="num">Size</th><th class="num">Relays</th><th>Event</th></tr></thead><tbody id="scanEvents"></tbody></table>
+      </div>
+    </section>
+    <noscript><p>This page needs JavaScript: it asks the relays from your browser.</p></noscript>
+  </main>
+
+  <script>
+    const root = document.querySelector(".sv-scan");
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => String(s).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
+    const when = (t) => new Date(t * 1000).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+    const PART = { response: "Survey", place: "Place report", price: "Price report" };
+    const button = $("scanRun"), note = $("scanNote");
+
+    async function run() {
+      button.disabled = true;
+      button.textContent = "Scanning…";
+      note.hidden = true;
+      try {
+        const client = await import("../../lib/survey-client.js");
+        const cfg = client.effective(JSON.parse(root.dataset.config));
+        if (!cfg.open) { note.hidden = false; note.innerHTML = "<strong>The survey is not open.</strong> No relays are set, so there is nothing to scan."; return; }
+        const { relays, events, stale } = await client.scan(cfg);
+        const keys = new Set(events.map((e) => e.pubkey));
+        const count = (part) => events.filter((e) => e.part === part).length;
+        const mine = client.identity()?.pubkey;
+
+        $("scanStats").hidden = false;
+        $("scanStats").innerHTML = [[events.length, "Messages"], [keys.size, "Keys"], [count("response"), "Surveys"], [count("place"), "Place reports"], [count("price"), "Price reports"], [`${relays.filter((r) => r.ok).length}/${relays.length}`, "Relays answering"]]
+          .map(([n, label]) => `<div><dt>${label}</dt><dd>${n}</dd></div>`).join("");
+
+        $("scanRelaysBox").hidden = false;
+        $("scanRelays").innerHTML = relays.map((r) => `<tr><td class="mono">${esc(r.url)}</td><td>${r.ok ? "OK" : `<span class="sv-bad">${esc(r.error)}</span>`}</td><td class="num">${r.ok ? r.count : "–"}</td><td class="num">${r.ms} ms</td></tr>`).join("");
+
+        $("scanEventsBox").hidden = false;
+        $("scanSub").textContent = events.length
+          ? `The newest version of each part, newest first.${stale ? ` ${stale} older version${stale === 1 ? " is" : "s are"} still held by a relay and not shown.` : ""} A key is a random pseudonym; messages with the same key come from one browser.${mine ? " Yours are marked." : ""}`
+          : "The relays hold no submissions yet.";
+        // the same short colour for the same key, so one browser's parts can be told at a glance
+        const tint = (pk) => `hsl(${parseInt(pk.slice(0, 6), 16) % 360} 55% 55%)`;
+        $("scanEvents").innerHTML = events.map((e) => `<tr${e.pubkey === mine ? ' class="sv-own"' : ""}>
+            <td class="mono">${when(e.created_at)}</td>
+            <td class="mono"><span class="sv-dot" style="background:${tint(e.pubkey)}"></span><span title="${e.npub}">${e.npub.slice(0, 12)}…${e.npub.slice(-4)}</span>${e.pubkey === mine ? ' <small>you</small>' : ""}</td>
+            <td>${esc(PART[e.part] ?? e.part)}</td>
+            <td class="num">${e.encrypted ? `${e.bytes.toLocaleString("en-GB")} B` : '<span class="sv-bad">not encrypted</span>'}</td>
+            <td class="num">${e.relays.length}/${relays.length}</td>
+            <td class="mono"><a href="${e.url}" target="_blank" rel="noopener noreferrer" title="${e.id}">${e.id.slice(0, 10)}… ↗</a></td>
+          </tr>`).join("");
+      } catch (err) {
+        note.hidden = false;
+        note.textContent = `The scan failed: ${err.message}`;
+      } finally {
+        button.disabled = false;
+        button.textContent = "Scan again";
+      }
+    }
+    button.addEventListener("click", run);
+    run();
+  </script>
+</Base>

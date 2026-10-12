@@ -134,3 +134,34 @@ export async function fetchMine(cfg) {
   }
   return out;
 }
+
+// ── The public view ──
+// Everything a stranger can learn from the relays without any key: which messages exist, under
+// which pseudonymous keys, of which kind, how large and when. Used by /survey/scan/. Each relay
+// is asked by itself and timed; the contents stay encrypted and are not touched.
+export async function scan(cfg) {
+  const filter = { kinds: [cfg.kind], "#t": [cfg.topic] };
+  const relays = await Promise.all(cfg.relays.map(async (url) => {
+    const pool = new SimplePool(), started = Date.now();
+    try { const events = await within(pool.querySync([url], filter), 10000); return { url, ok: true, ms: Date.now() - started, events }; }
+    catch (e) { return { url, ok: false, ms: Date.now() - started, error: String(e.message ?? e), events: [] }; }
+    finally { pool.close([url]); }
+  }));
+  const byId = new Map();
+  for (const r of relays) for (const e of r.events) {
+    const d = e.tags.find((t) => t[0] === "d")?.[1] ?? "";
+    const part = d.slice(cfg.topic.length + 1).split(":")[0]; // response | place | price
+    const row = byId.get(e.id) ?? {
+      id: e.id, pubkey: e.pubkey, npub: npubEncode(e.pubkey), created_at: e.created_at, part, d,
+      bytes: e.content.length, encrypted: !e.content.startsWith("{"), relays: [],
+      url: `https://njump.me/${naddrEncode({ kind: e.kind, pubkey: e.pubkey, identifier: d, relays: [r.url] })}`,
+    };
+    row.relays.push(r.url);
+    byId.set(e.id, row);
+  }
+  // a replaced version may linger on one relay: keep only the newest message per key and part
+  const newest = new Map();
+  for (const row of byId.values()) { const slot = `${row.pubkey}:${row.d}`; if (!newest.has(slot) || newest.get(slot).created_at < row.created_at) newest.set(slot, row); }
+  const events = [...newest.values()].sort((a, b) => b.created_at - a.created_at);
+  return { relays: relays.map(({ events: found, ...r }) => ({ ...r, count: found.length })), events, stale: byId.size - events.length };
+}
