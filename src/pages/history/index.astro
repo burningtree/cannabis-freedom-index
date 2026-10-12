@@ -3,10 +3,18 @@
 import Base from "../../layouts/Base.astro";
 import HistoryList from "../../components/HistoryList.astro";
 import { historyPeriods } from "../../lib/countries.js";
+import { researchTotals } from "../../lib/research.js";
+
+const base = import.meta.env.BASE_URL;
 ---
 <Base title="History" description="Laws, court rulings and treaties that shaped cannabis freedom, from the first bans to today, and how each one moved a country's score on the Cannabis Freedom Index.">
   <main class="changes-page">
-    <section class="hero hero-sm">
+    <section class="hero hero-sm hero-progress">
+      <a class="rs-pill" href={`${base}research/`} title={`Average research progress over ${researchTotals.places} countries and territories. Open the details.`}>
+        <span>Research progress</span>
+        <i style={`--p:${researchTotals.average}%`}></i>
+        <b>{researchTotals.average}%</b>
+      </a>
       <p class="eyebrow">History</p>
       <h1>A history of cannabis law</h1>
       <p class="lede">The laws, court rulings and other developments that changed a country's score, newest first, along with the international treaties that set the rules countries work within. Open one to see which segments moved and the source.</p>

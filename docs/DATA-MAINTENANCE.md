@@ -661,3 +661,22 @@ times; the collector counts one set of answers per key. Relays see the address a
 from. A relay may ignore deletion requests, which is why a deleted part is also overwritten with
 an empty one. Someone who clears their browser without a backup of the key can no longer change
 their answers.
+
+## Research progress (/research/)
+
+A hidden page, not linked, not in the search or the sitemap and not indexed. It shows for each
+country how far the research has come: a percentage, the same split into profile and history,
+the number of entries, scored entries and articles, the year of the first ban, the decades with
+no entry and the longest gap between two entries. Clicking a row lists what is missing.
+
+The checks and their points are in `src/lib/research.js`. For the profile: every score cited,
+every score resting on more than Wikipedia or a weak site, the ten context sections, a measured
+figure for use, a review in the last year, sources archived. For the history: a dated first
+restriction, entries checked, a score timeline with no flag, no decade without an entry, an
+entry in the last three years, fifteen entries or more, entries resting on more than Wikipedia,
+an article for every score change.
+
+The checks see only what is in the files, so they stop at 99%. A country reaches 100% only when
+every check passes and its file carries `complete: YYYY-MM-DD`, set by hand by whoever went
+through the country and found nothing left to add. An empty decade is a prompt to look, not
+proof of a gap: some decades had no event.

@@ -58,6 +58,7 @@ const cards = {
   survey: page("State of Cannabis", "A yearly survey of what people do with cannabis, what they believe about it, and what they see in the countries they know.", surveyFacts, `SURVEY · ${survey.edition} EDITION`),
   "survey/take": page("Take the survey", "State of Cannabis: about ten minutes, no account, answers encrypted.", [], `STATE OF CANNABIS · ${survey.edition}`),
   "survey/me": page("Your submissions", "State of Cannabis: read, change or delete what you sent.", [], `STATE OF CANNABIS · ${survey.edition}`),
+  research: page("Research progress", "How much of each country's profile and history has been researched.", [], `INTERNAL · ${BRAND}`),
   "survey/scan": page("Submission scanner", "What the survey's public relays hold, as anyone can see it.", [], `STATE OF CANNABIS · ${survey.edition}`),
 };
 for (const v of MAP_VIEWS) cards[v.slug ? `map/${v.slug}` : "map"] = page(v.title, v.lede, [], `MAP · ${BRAND}`);

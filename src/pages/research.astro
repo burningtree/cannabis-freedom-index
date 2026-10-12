@@ -1,0 +1,140 @@
+---
+// Research progress: how much of each country's profile and history has been filled in, and what
+// is still missing. An internal working page: not linked from the menu, the search or the
+// sitemap, and not indexed. The checks and their weights are in src/lib/research.js.
+import Base from "../layouts/Base.astro";
+import { research, researchTotals as T } from "../lib/research.js";
+
+const base = import.meta.env.BASE_URL;
+const num = (n) => n.toLocaleString("en-US");
+const example = research[0].checks;
+const points = (part) => example.filter((c) => c.part === part).reduce((a, c) => a + c.of, 0);
+const stats = [
+  [`${T.average}%`, "Average"],
+  [`${T.byPopulation}%`, "Weighted by population"],
+  [num(T.complete), "Complete (100%)"],
+  [num(T.good), "At 75% or more"],
+  [num(T.poor), "Below 40%"],
+  [num(T.estimates), "First ban only estimated"],
+];
+---
+<Base title="Research progress" description="How much of each country's profile and history has been researched, and what is still missing." noindex>
+  <main class="changes-page research-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Internal</p>
+      <h1>Research progress</h1>
+      <p class="lede">For each of the {num(T.places)} countries and territories: how much of the profile is filled in and sourced, how many history entries there are, and how complete that history looks. The figure is the share of points a country has out of {points("profile")} for its profile and {points("history")} for its history.</p>
+      <p class="lede">The checks only see what is in the files. They cannot know that nothing is missing, so they stop at 99%. A country shows 100% only when every check passes and someone has signed it off by hand, with <code>complete: YYYY-MM-DD</code> in its file.</p>
+    </section>
+
+    <dl class="hist-stats">
+      {stats.map(([n, label]) => <div><dt>{label}</dt><dd>{n}</dd></div>)}
+    </dl>
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>What is counted</h2>
+        <p class="sub">Each check gives points; a partly met check gives part of them.</p>
+      </div></div>
+      <div class="rs-checks">
+        {["profile", "history"].map((part) => (
+          <table class="src-table">
+            <thead><tr><th>{part === "profile" ? "Profile" : "History"}</th><th class="num">Points</th></tr></thead>
+            <tbody>{example.filter((c) => c.part === part).map((c) => <tr><td>{c.label}</td><td class="num">{c.of}</td></tr>)}</tbody>
+          </table>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>By country</h2>
+        <p class="sub">Click a column to sort by it, and a row to see what is missing.</p>
+      </div>
+        <input type="search" id="rsFind" placeholder="Filter by name or region" aria-label="Filter countries" />
+      </div>
+      <div class="rs-scroll"><table class="src-table rs-table" id="rsTable">
+        <thead><tr>
+          <th data-sort="name">Country</th>
+          <th class="num" data-sort="pct" aria-sort="descending">Research</th>
+          <th class="num" data-sort="profile">Profile</th>
+          <th class="num" data-sort="history">History</th>
+          <th class="num" data-sort="entries">Entries</th>
+          <th class="num" data-sort="scored" title="Entries that moved a score">Scored</th>
+          <th class="num" data-sort="articles">Articles</th>
+          <th class="num" data-sort="first" title="Year of the first recorded restriction">First ban</th>
+          <th class="num" data-sort="silent" title="Decades since the first entry (1900 at the earliest) with no entry">Empty decades</th>
+          <th class="num" data-sort="gap" title="Longest stretch of years between two entries">Longest gap</th>
+          <th class="num" data-sort="reviewed">Reviewed</th>
+        </tr></thead>
+        {research.map((r) => (
+          <tbody data-name={r.name.toLowerCase()} data-region={r.region.toLowerCase()} data-pct={r.pct} data-profile={r.profile} data-history={r.history} data-entries={r.entries} data-scored={r.scored} data-articles={r.articles} data-first={r.first === "est." ? 9998 : r.first === "—" ? 9999 : r.first} data-silent={r.silent} data-gap={r.gap ?? -1} data-reviewed={r.reviewed}>
+            <tr class="rs-row" tabindex="0" aria-expanded="false">
+              <th scope="row"><a href={`${base}country/${r.slug}/`}>{r.flag} {r.name}</a>{r.disputed && <small> territory</small>}</th>
+              <td class="num"><span class="rs-bar" style={`--p:${r.pct}%`}><b>{r.pct}%</b></span></td>
+              <td class="num">{r.profile}%</td>
+              <td class="num">{r.history}%</td>
+              <td class="num">{r.entries}</td>
+              <td class="num">{r.scored}</td>
+              <td class="num">{r.articles}</td>
+              <td class="num">{r.first}</td>
+              <td class="num">{r.silent}</td>
+              <td class="num">{r.gap ?? "—"}</td>
+              <td class="num mono">{r.reviewed}</td>
+            </tr>
+            <tr class="rs-more" hidden><td colspan="11">
+              <div class="rs-missing">
+                {["profile", "history"].map((part) => (
+                  <div>
+                    <h3>{part === "profile" ? "Profile" : "History"}</h3>
+                    <ul>
+                      {r.checks.filter((c) => c.part === part).map((c) => (
+                        <li class={c.got >= c.of ? "ok" : ""}>
+                          <span>{c.got >= c.of ? "✓" : "·"} {c.label} <small>{Math.round(c.got * 10) / 10} of {c.of}</small></span>
+                          {c.missing.length > 0 && <em>{c.missing.slice(0, 12).join("; ")}{c.missing.length > 12 && `; and ${c.missing.length - 12} more`}</em>}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <p class="rs-sign">{r.signed ? `Signed off as complete on ${r.signed}.` : "Not signed off as complete."} <a href={`${base}country/${r.slug}/`}>Open the country page</a></p>
+            </td></tr>
+          </tbody>
+        ))}
+      </table></div>
+    </section>
+  </main>
+
+  <script is:inline>
+    (() => {
+      const table = document.getElementById("rsTable");
+      const bodies = () => [...table.tBodies];
+      const open = (row) => {
+        const more = row.nextElementSibling;
+        more.hidden = !more.hidden;
+        row.setAttribute("aria-expanded", String(!more.hidden));
+      };
+      table.addEventListener("click", (e) => {
+        const th = e.target.closest("th[data-sort]");
+        if (th) {
+          const key = th.dataset.sort, text = key === "name" || key === "reviewed";
+          const now = th.getAttribute("aria-sort");
+          const down = now ? now === "ascending" : !text; // numbers start from the top, names from A
+          table.querySelectorAll("th[aria-sort]").forEach((x) => x.removeAttribute("aria-sort"));
+          th.setAttribute("aria-sort", down ? "descending" : "ascending");
+          const val = (b) => (text ? b.dataset[key] : +b.dataset[key]);
+          bodies().sort((a, b) => (val(a) < val(b) ? -1 : val(a) > val(b) ? 1 : 0) * (down ? -1 : 1)).forEach((b) => table.appendChild(b));
+          return;
+        }
+        const row = e.target.closest(".rs-row");
+        if (row && !e.target.closest("a")) open(row);
+      });
+      table.addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.classList.contains("rs-row")) open(e.target); });
+      document.getElementById("rsFind").addEventListener("input", (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        for (const b of bodies()) b.hidden = Boolean(q) && !b.dataset.name.includes(q) && !b.dataset.region.includes(q);
+      });
+    })();
+  </script>
+</Base>

@@ -74,6 +74,9 @@ const countries = defineCollection({
       }).strict(),
       ...status,
       updated: z.coerce.date(),
+      // set by hand, once someone has gone through the country and found nothing left to add:
+      // only then can the research page show 100% (see src/lib/research.js)
+      complete: z.coerce.date().optional(),
       summary: z.string().min(1),
       scores: perSegment(score),
       segments: perSegment(cited),
