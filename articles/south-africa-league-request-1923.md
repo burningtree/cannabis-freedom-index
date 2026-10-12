@@ -13,6 +13,13 @@ sources:
     locator: "pp. 98–100"
   - title: "TNI / GDPO — The Rise and Decline of Cannabis Prohibition (2014)"
     url: https://www.tni.org/files/download/rise_and_decline_web.pdf
+  - type: book
+    title: "Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928"
+    authors: [James H. Mills]
+    publisher: Oxford University Press
+    year: 2003
+    isbn: "0-19-924938-5"
+    locator: "pp. 160–162"
 ---
 
 Cannabis reached the agenda of the League of Nations because South Africa put it there.

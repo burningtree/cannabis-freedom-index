@@ -6,6 +6,13 @@ sources:
     url: https://en.wikipedia.org/wiki/Indian_Hemp_Drugs_Commission
   - title: TNI / GDPO — The Rise and Decline of Cannabis Prohibition (2014)
     url: https://www.tni.org/files/download/rise_and_decline_web.pdf
+  - type: book
+    title: "Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928"
+    authors: [James H. Mills]
+    publisher: Oxford University Press
+    year: 2003
+    isbn: "0-19-924938-5"
+    locator: "pp. 92–123"
 ---
 
 One of the most exhaustive official studies of cannabis ever made was finished in

@@ -4,6 +4,13 @@ written: 2026-10-11
 sources:
   - title: TNI / GDPO — The Rise and Decline of Cannabis Prohibition (2014)
     url: https://www.tni.org/files/download/rise_and_decline_web.pdf
+  - type: book
+    title: "Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928"
+    authors: [James H. Mills]
+    publisher: Oxford University Press
+    year: 2003
+    isbn: "0-19-924938-5"
+    locator: "pp. 162–187"
 ---
 
 Cannabis came under international control almost by accident. It was not on the

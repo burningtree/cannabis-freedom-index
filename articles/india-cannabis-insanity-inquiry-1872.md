@@ -20,6 +20,13 @@ sources:
     year: 2021
     isbn: "9780262366137"
     locator: "pp. 63"
+  - type: book
+    title: "Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928"
+    authors: [James H. Mills]
+    publisher: Oxford University Press
+    year: 2003
+    isbn: "0-19-924938-5"
+    locator: "pp. 82–91"
 ---
 
 The idea that cannabis causes insanity became official doctrine in British India in

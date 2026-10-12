@@ -13,6 +13,13 @@ sources:
     year: 2021
     isbn: "9780262366137"
     locator: "pp. 109–113"
+  - type: book
+    title: "Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928"
+    authors: [James H. Mills]
+    publisher: Oxford University Press
+    year: 2003
+    isbn: "0-19-924938-5"
+    locator: "pp. 162–187"
 ---
 
 Cannabis became a matter of international law because of a speech. It was given in

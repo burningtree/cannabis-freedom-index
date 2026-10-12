@@ -6,9 +6,16 @@ sources:
     url: https://pmc.ncbi.nlm.nih.gov/articles/PMC10087031/
   - title: Transnational Institute — The Rise and Decline of Cannabis Prohibition (2014, PDF)
     url: https://www.druglawreform.info/images/stories/documents/Rise_and_Decline_Web-1.pdf
+  - type: book
+    title: "Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928"
+    authors: [James H. Mills]
+    publisher: Oxford University Press
+    year: 2003
+    isbn: "0-19-924938-5"
+    locator: "pp. 188–189, 207"
 ---
 
-Britain brought cannabis into its dangerous-drugs system in September 1928. The change followed the 1925 Geneva convention and passed through Parliament with little debate, despite Britain having no comparable domestic cannabis problem.
+Britain brought cannabis into its dangerous-drugs system in September 1928. The change followed the 1925 Geneva convention and passed through Parliament with little debate, after cannabis sales had already entered the separate Poisons Schedule in 1925.
 
 ## A treaty-driven bill
 
