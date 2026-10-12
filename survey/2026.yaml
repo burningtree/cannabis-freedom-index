@@ -10,6 +10,9 @@
 #         text     free text; never published or counted, read by the researchers only
 #         country  one country of the index
 #         number   a positive number      currency  one of survey/currencies.yaml
+#         region   a state or province of the country answered in `of`; asked only for the
+#                  federations the index scores state by state (US, Canada, Australia)
+#         city     a city of the country answered in `of`, suggested from public/survey-cities/
 #   if:   show the question (or the whole section) only when an earlier answer includes one of
 #         the listed options, e.g. `if: {relation: [use, past]}`
 #   excludes: on a `multi` question, options that cannot stand together, e.g.
@@ -55,6 +58,12 @@ sections:
       - id: residence
         text: Which country do you live in?
         type: country
+        required: true
+      - id: residence_region
+        text: Which state or province?
+        help: The law differs from one to the next, so the answer is needed to place yours.
+        type: region
+        of: residence
         required: true
       - id: setting
         text: Where do you live?
@@ -358,6 +367,16 @@ territory:
       text: Country
       type: country
       required: true
+    - id: t_region
+      text: Which state or province?
+      type: region
+      of: country
+      required: true
+    - id: t_city
+      text: City or town
+      help: Optional. Start typing and pick from the list, or write your own. Leave it out if the place is small enough to point to you.
+      type: city
+      of: country
     - id: tie
       text: How do you know it?
       type: single
@@ -405,6 +424,16 @@ prices:
       text: Country
       type: country
       required: true
+    - id: p_region
+      text: Which state or province?
+      type: region
+      of: p_country
+      required: true
+    - id: p_city
+      text: City or town
+      help: Optional. Prices differ between cities; leave it out if the place is small enough to point to you.
+      type: city
+      of: p_country
     - id: p_product
       text: What was it?
       type: single

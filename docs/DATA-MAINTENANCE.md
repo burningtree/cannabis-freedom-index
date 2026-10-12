@@ -614,6 +614,7 @@ is in the main menu, after History.
 | `scripts/survey-collect.cjs` | Fetches the real answers, decrypts them and writes the counted results. |
 | `src/lib/survey-client.js` | The browser side: the respondent's key, their stored submissions, signing and the relays. |
 | `scripts/survey-keygen.cjs` | Prints a new key pair for the project. |
+| `scripts/survey-cities.cjs` | Rebuilds the city suggestion lists in `public/survey-cities/`. |
 
 **Three kinds of contribution.** The questionnaire file has three parts, stored and counted
 separately: `sections` is the yearly personal survey (what a person does and believes), `territory`
@@ -623,6 +624,14 @@ place report by how long its author has spent there (a visit of days counts 1, r
 than five years counts 4). Country prices are the median of the price reports for flower,
 converted to US dollars per gram with `survey/currencies.yaml`, after leaving out values far from
 the rest.
+
+**States and cities.** Where the chosen country is one the index scores state by state (United
+States, Canada, Australia), the form requires the state or province: in "About you", in a place
+report and in a price report. Place and price reports also take an optional city. The suggestions
+come from `public/survey-cities/<ID>.json`, one file per country, built by
+`node scripts/survey-cities.cjs` from the world-cities dataset (cities above 15,000 inhabitants,
+GeoNames, CC BY 4.0); anything typed is accepted. Neither is shown on the results page yet. A city
+makes a respondent easier to single out, and the form says so.
 
 **How an answer travels.** The first time someone submits, their browser makes a Nostr key and
 keeps it in its local storage. The survey, each place report and each price report become one

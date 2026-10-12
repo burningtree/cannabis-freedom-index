@@ -6,8 +6,11 @@
 import Base from "../../layouts/Base.astro";
 import { survey, submitConfig, currencyOf } from "../../lib/survey.js";
 import Question from "../../components/Question.astro";
+import { countries, subunitsOf } from "../../lib/countries.js";
 
 const base = import.meta.env.BASE_URL;
+// the states and provinces asked for when a federation is chosen: { US: [[id, name], …] }
+const regions = Object.fromEntries(countries.filter((c) => subunitsOf(c.id)).map((c) => [c.id, subunitsOf(c.id).units.map((u) => [u.id, u.name]).sort((a, b) => a[1].localeCompare(b[1]))]));
 const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
 ---
 <Base title={`Take the survey: ${survey.title}`} description="Answer the State of Cannabis survey: no account, encrypted, about ten minutes. Describe how you use, grow or think about cannabis, and what the countries you know are like.">
@@ -21,7 +24,7 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
       <p class="sv-mock" role="note" id="svClosed"><strong>Not open yet.</strong> You can go through the whole questionnaire. Pressing Submit keeps your answers in this browser and sends nothing; you can send them once the survey opens.</p>
     )}
 
-    <form id="svForm" class="sv-form" novalidate data-config={JSON.stringify(submitConfig)} data-currency={JSON.stringify(currencyOf)}>
+    <form id="svForm" class="sv-form" novalidate data-config={JSON.stringify(submitConfig)} data-currency={JSON.stringify(currencyOf)} data-regions={JSON.stringify(regions)} data-cities={`${base}survey-cities/`}>
       <ol class="sv-steps" id="svSteps" aria-label="Sections"></ol>
 
       <section class="sv-step" data-step="start" data-title="Start">
@@ -82,6 +85,7 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         <div id="svResult" class="sv-result" aria-live="polite"></div>
       </section>
 
+      <p class="sv-credit">City suggestions come from <a href="https://github.com/datasets/world-cities" target="_blank" rel="noopener noreferrer">world-cities</a>, built on <a href="https://www.geonames.org/" target="_blank" rel="noopener noreferrer">GeoNames</a> (CC BY 4.0).</p>
       <p class="sv-nav">
         <button type="button" class="go" id="svBack" hidden>← Back</button>
         <button type="button" class="go solid" id="svNext">Start <span aria-hidden="true">→</span></button>
@@ -120,6 +124,7 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         else if (type === "scale") { const v = $("input:checked", el)?.value; if (v) out[id] = +v; }
         else if (type === "number") { const v = parseFloat($("input", el).value.replace(/\s/g, "").replace(",", ".")); if (v > 0) out[id] = v; }
         // a currency says nothing without the price it belongs to
+        else if (type === "city") { const v = $("input", el).value.trim(); if (v) out[id] = v; }
         else if (type === "currency") { if (parseFloat($(".sv-number", root)?.value.replace(",", ".")) > 0) out[id] = $("select", el).value; }
         else { const v = $("select, textarea", el).value.trim(); if (v) out[id] = v; }
       }
@@ -130,6 +135,7 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         const v = answers[el.dataset.q];
         if (v == null) continue;
         const values = [].concat(v).map(String);
+        if (el.dataset.type === "region") fillRegion(el, el.closest(".sv-place") ?? root); // its options depend on the country just written
         if (["multi", "single", "scale"].includes(el.dataset.type)) for (const i of $$("input", el)) i.checked = values.includes(i.value);
         else $("select, textarea, input", el).value = v;
       }
@@ -140,6 +146,45 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
     // every filled-in report, of both kinds, ready to be stored
     const reports = (r) => blocksOf(r).map((el) => ({ type: r.type, id: el.dataset.id, answers: read(el) })).filter((x) => x.answers[r.key]);
     const allReports = () => REPEATS.flatMap(reports);
+
+    // ── State and city: both depend on the country chosen beside them ──
+    const REGIONS = JSON.parse(form.dataset.regions), CITIES = form.dataset.cities;
+    const scopeOf = (el) => el.closest(".sv-place") ?? el.closest(".sv-step");
+    const countryIn = (scope, of) => $(`.sv-field[data-q="${of}"] select`, scope)?.value ?? "";
+    const cityLists = new Map(); // country → promise of [[city, state], …], fetched once
+    const citiesOf = (country) => {
+      if (!cityLists.has(country)) cityLists.set(country, fetch(`${CITIES}${country}.json`).then((r) => (r.ok ? r.json() : [])).catch(() => []));
+      return cityLists.get(country);
+    };
+    // the state question lists the states of the chosen country, and is asked only for a federation
+    function fillRegion(field, scope) {
+      const country = countryIn(scope, field.dataset.of), list = REGIONS[country], select = $("select", field);
+      if (select.dataset.country !== country) {
+        select.dataset.country = country;
+        select.innerHTML = '<option value="">Choose…</option>' + (list ?? []).map(([id, name]) => `<option value="${id}">${name}</option>`).join("");
+      }
+      field.hidden = !list;
+      field.dataset.off = list ? "" : "1";
+    }
+    // the city box suggests that country's cities, narrowed to the chosen state where there is one
+    async function fillCities(field, scope) {
+      const country = countryIn(scope, field.dataset.of);
+      field.hidden = !country;
+      field.dataset.off = country ? "" : "1";
+      if (!country) return;
+      const state = $('.sv-field[data-type="region"] select', scope), stateName = state?.selectedOptions[0]?.value ? state.selectedOptions[0].textContent : "";
+      const list = (await citiesOf(country)).filter(([, sub]) => !stateName || sub === stateName);
+      const seen = new Set();
+      $("datalist", field).innerHTML = list.filter(([name]) => !seen.has(name) && seen.add(name)).map(([name, sub]) => `<option value="${name.replace(/"/g, "&quot;")}">${sub}</option>`).join("");
+    }
+    function syncPlace(scope) {
+      for (const f of $$('.sv-field[data-type="region"]', scope)) fillRegion(f, scope);
+      for (const f of $$('.sv-field[data-type="city"]', scope)) fillCities(f, scope);
+    }
+    form.addEventListener("change", (e) => {
+      const field = e.target.closest(".sv-field");
+      if (field && ["country", "region"].includes(field.dataset.type)) syncPlace(scopeOf(field));
+    });
 
     // ── Conditions: `data-if` holds {question: [options]}; any match shows the element ──
     function applies(el, answers) {
@@ -205,11 +250,13 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
       for (const i of $$("input[name], select[name], textarea[name]", node)) i.name = `${i.name}__${n}`;
       for (const i of $$("[id]", node)) i.id = `${i.id}__${n}`;
       for (const i of $$("[aria-labelledby]", node)) i.setAttribute("aria-labelledby", `${i.getAttribute("aria-labelledby")}__${n}`);
+      for (const i of $$("input[list]", node)) i.setAttribute("list", `${i.getAttribute("list")}__${n}`);
       r.holder.append(node);
       const block = r.holder.lastElementChild;
       // the id under which this report is stored and, later, replaced
       block.dataset.id = id ?? [...crypto.getRandomValues(new Uint8Array(6))].map((b) => b.toString(16).padStart(2, "0")).join("");
-      if (answers) { write(block, answers); const money = $('[data-type="currency"] select', block); if (money && answers.p_currency) money.dataset.chosen = "1"; }
+      syncPlace(block);
+      if (answers) { write(block, answers); syncPlace(block); const money = $('[data-type="currency"] select', block); if (money && answers.p_currency) money.dataset.chosen = "1"; }
       renumber(r);
       return block;
     }
@@ -257,7 +304,7 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
       } catch {}
     }
     form.addEventListener("change", () => { refresh(); save(); });
-    form.addEventListener("input", (e) => { if (e.target.matches("textarea, .sv-number")) save(); });
+    form.addEventListener("input", (e) => { if (e.target.matches("textarea, .sv-number, .sv-city")) save(); });
     // Choosing a country suggests its currency for the price, until the respondent picks one.
     const CURRENCY = JSON.parse(form.dataset.currency);
     form.addEventListener("change", (e) => {
@@ -310,6 +357,7 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
     try { if (JSON.parse(localStorage.getItem("cfi-survey-test") ?? "null")?.relays?.length) { const b = document.getElementById("svClosed"); if (b) b.innerHTML = "<strong>Test mode.</strong> Answers are sent to the relays set under <code>cfi-survey-test</code> in this browser's storage."; } } catch {}
     restore();
     for (const r of REPEATS) if (!blocksOf(r).length) add(r);
+    own.forEach(syncPlace);
     refresh();
     // "Edit" links from /survey/me/ open the form where the editing is to happen: #edit the first
     // section of the survey, #place-<id> or #price-<id> that report, #place-new or #price-new a fresh one.

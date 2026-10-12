@@ -34,6 +34,10 @@ function loadRegions() {
   return out;
 }
 
+// the states and provinces of the federations the index scores one by one: { US: Set(ak, al, …) }
+const FEDERATIONS = Object.fromEntries(fs.readdirSync(path.join(ROOT, "countries"), { withFileTypes: true }).filter((d) => d.isDirectory())
+  .map((d) => [d.name.toUpperCase(), new Set(fs.readdirSync(path.join(ROOT, "countries", d.name)).filter((f) => f !== "index.yaml").map((f) => f.replace(/\.yaml$/, "")))]));
+
 // Keep only what the questionnaire allows: known ids, known options, numbers in range.
 function clean(questions, raw, countries) {
   const out = {};
@@ -51,6 +55,9 @@ function clean(questions, raw, countries) {
     else if (q.type === "currency" && typeof v === "string" && USD[v]) out[q.id] = v;
     else if (q.type === "country" && typeof v === "string" && countries[v.toUpperCase()]) out[q.id] = v.toUpperCase();
     else if (q.type === "text" && typeof v === "string") out[q.id] = v.slice(0, 4000);
+    // a state must belong to the country answered just before it; a city is free text, kept short
+    else if (q.type === "region" && typeof v === "string" && FEDERATIONS[out[q.of]]?.has(v.toLowerCase())) out[q.id] = v.toLowerCase();
+    else if (q.type === "city" && typeof v === "string" && v.trim()) out[q.id] = v.trim().replace(/\s+/g, " ").slice(0, 80);
   }
   return out;
 }
@@ -97,7 +104,7 @@ function aggregate(survey, responses, observations, prices, countries, extra = {
     .sort((a, b) => (a.id.startsWith("region:") - b.id.startsWith("region:")) || b.n - a.n);
 
   const questions = {};
-  for (const q of survey.all.filter((q) => q.type !== "text")) {
+  for (const q of survey.all.filter((q) => !["text", "region", "city"].includes(q.type))) {
     const entry = { n: {}, counts: {} };
     if (q.type === "scale") entry.mean = {};
     for (const { id } of segments) {

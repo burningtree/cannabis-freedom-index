@@ -4,16 +4,18 @@
 // the server knows nothing about it, so the page is the same file for everyone.
 import Base from "../../layouts/Base.astro";
 import { survey, submitConfig } from "../../lib/survey.js";
-import { countries } from "../../lib/countries.js";
+import { countries, subunitsOf } from "../../lib/countries.js";
 
 const base = import.meta.env.BASE_URL;
 // what the script needs to print an answer in words
-const label = (q) => ({ text: q.text, type: q.type, options: q.options, low: q.low, high: q.high });
+const label = (q) => ({ text: q.text, type: q.type, options: q.options, low: q.low, high: q.high, of: q.of });
 const questions = Object.fromEntries([...survey.sections.flatMap((s) => s.questions), ...survey.territory.questions, ...survey.prices.questions].map((q) => [q.id, label(q)]));
 const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name}`]));
+// state and province names, by country: { US: { ca: "California" } }
+const regions = Object.fromEntries(countries.filter((c) => subunitsOf(c.id)).map((c) => [c.id, Object.fromEntries(subunitsOf(c.id).units.map((u) => [u.id, u.name]))]));
 ---
 <Base title="Your submissions" description="The answers this browser has submitted to the State of Cannabis survey: read them, change them, delete them, or back up the key they are signed with.">
-  <main class="changes-page survey sv-me" data-config={JSON.stringify(submitConfig)} data-questions={JSON.stringify(questions)} data-names={JSON.stringify(names)}>
+  <main class="changes-page survey sv-me" data-config={JSON.stringify(submitConfig)} data-questions={JSON.stringify(questions)} data-names={JSON.stringify(names)} data-regions={JSON.stringify(regions)}>
     <section class="hero hero-sm">
       <p class="eyebrow"><a href={`${base}survey/`}>State of Cannabis</a> <span>{survey.edition} edition</span></p>
       <h1>Your submissions</h1>
@@ -41,7 +43,7 @@ const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name
 
   <script>
     const root = document.querySelector(".sv-me");
-    const base = JSON.parse(root.dataset.config), Q = JSON.parse(root.dataset.questions), NAMES = JSON.parse(root.dataset.names);
+    const base = JSON.parse(root.dataset.config), Q = JSON.parse(root.dataset.questions), NAMES = JSON.parse(root.dataset.names), REGIONS = JSON.parse(root.dataset.regions);
     const items = document.getElementById("meItems"), keyBody = document.getElementById("meKeyBody"), status = document.getElementById("meStatus");
     const esc = (s) => String(s).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
     const day = (t) => new Date(t * 1000).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
@@ -49,9 +51,10 @@ const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name
     const cfg = client.effective(base);
 
     // an answer in words, as the form asked it
-    function words(id, v) {
+    function words(id, v, answers = {}) {
       const q = Q[id];
       if (!q) return esc(v);
+      if (q.type === "region") return esc(REGIONS[answers[q.of]]?.[v] ?? v);
       if (q.type === "scale") return `${v} of 5 <small>(1 ${esc(q.low)}, 5 ${esc(q.high)})</small>`;
       if (q.type === "country") return esc(NAMES[v] ?? v);
       if (q.type === "number") return esc(v.toLocaleString("en-GB"));
@@ -91,7 +94,7 @@ const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name
         <p class="sv-meta">${where(i)} · changed ${day(i.updated)}</p>
         ${i.past ? `<p class="sv-small">From the ${i.past} edition, which is closed. It is kept here to read.</p>`
           : `<p class="sv-actions"><a class="go solid" href="../take/${i.type === "response" ? "#edit" : `#${KIND[i.type].hash}-${esc(i.id)}`}">Edit ${KIND[i.type].this} →</a> <button type="button" class="go" data-do="delete" data-id="${esc(i.id)}">Delete</button></p>`}
-        <dl class="sv-d-list">${Object.entries(i.answers).map(([id, v]) => `<div><dt>${esc(Q[id]?.text ?? id)}</dt><dd>${words(id, v)}</dd></div>`).join("")}</dl>
+        <dl class="sv-d-list">${Object.entries(i.answers).map(([id, v]) => `<div><dt>${esc(Q[id]?.text ?? id)}</dt><dd>${words(id, v, i.answers)}</dd></div>`).join("")}</dl>
         ${r ? `<p class="sv-event"><span>Event</span> <code>${r.id}</code>${i.relays > 0 ? ` <a href="${r.url}" target="_blank" rel="noopener noreferrer">Open on njump ↗</a>` : ` <small>not sent yet</small>`}</p>` : ""}`;
       if (!drawer.open) drawer.showModal();
       drawerBody.scrollTop = 0;

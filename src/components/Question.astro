@@ -8,7 +8,7 @@ const { q } = Astro.props;
 const byName = [...countries].sort((a, b) => a.name.localeCompare(b.name));
 const options = q.options ? Object.entries(q.options) : [];
 ---
-<div class="sv-field" data-q={q.id} data-type={q.type} data-label={q.text} data-required={q.required ? "" : undefined} data-if={q.if ? JSON.stringify(q.if) : undefined} data-excludes={q.excludes ? JSON.stringify(q.excludes) : undefined}>
+<div class="sv-field" data-q={q.id} data-type={q.type} data-of={q.of} data-label={q.text} data-required={q.required ? "" : undefined} data-if={q.if ? JSON.stringify(q.if) : undefined} data-excludes={q.excludes ? JSON.stringify(q.excludes) : undefined}>
   <p class="sv-qtext" id={`q-${q.id}`}>{q.text}{q.required && <span class="sv-req" title="Required"> *</span>}</p>
   {q.help && <p class="sv-help">{q.help}</p>}
   {(q.type === "single" || q.type === "multi") && (
@@ -38,6 +38,18 @@ const options = q.options ? Object.entries(q.options) : [];
     <select name={q.id} aria-labelledby={`q-${q.id}`}>
       {currencies.map(([code, name]) => <option value={code}>{code} · {name}</option>)}
     </select>
+  )}
+  {/* filled by the form's script once the country it depends on is chosen */}
+  {q.type === "region" && (
+    <select name={q.id} aria-labelledby={`q-${q.id}`}>
+      <option value="">Choose…</option>
+    </select>
+  )}
+  {q.type === "city" && (
+    <>
+      <input type="text" class="sv-city" name={q.id} list={`cities-${q.id}`} maxlength="80" autocomplete="off" aria-labelledby={`q-${q.id}`} />
+      <datalist id={`cities-${q.id}`}></datalist>
+    </>
   )}
   {q.type === "text" && <textarea name={q.id} rows="4" maxlength="4000" aria-labelledby={`q-${q.id}`}></textarea>}
 </div>

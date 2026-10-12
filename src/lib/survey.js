@@ -15,6 +15,6 @@ export const currencyOf = Object.fromEntries(Object.entries(money.country).flatM
 export const ratesDate = money.date;
 export { results };
 // every question that is counted, in order, with the section it belongs to
-export const counted = survey.sections.flatMap((s) => s.questions.filter((q) => q.type !== "text").map((q) => ({ ...q, section: s.id })));
+export const counted = survey.sections.flatMap((s) => s.questions.filter((q) => !["text", "region", "city"].includes(q.type)).map((q) => ({ ...q, section: s.id })));
 // what the form needs to know to send answers: nothing secret
 export const submitConfig = { edition: survey.edition, min_age: survey.min_age, open: survey.open && Boolean(survey.nostr.pubkey) && survey.nostr.relays.length > 0, ...survey.nostr };
