@@ -761,3 +761,16 @@ A fifth pass added Monaco, Paraguay, Liechtenstein, Costa Rica, Ecuador, Mexico 
 Panama: 86 of 200 driving sections (43%). The research note records current versus
 deferred amendments, the scope of Mexico’s federal-road rule, prescription
 evidential exceptions and source-access limits. Scores and articles were unchanged.
+
+A sixth pass added seven profiles, reaching 93 of 200 driving sections (46.5%).
+It distinguishes presence-based saliva/blood/urine rules from impairment, preserves
+mandatory versus discretionary licence bans, and records older consolidation
+limits. Rwanda, Tonga and Guatemala require further offence verification; Sri
+Lanka’s proposed testing regulations require adoption/commencement evidence.
+No scores or articles were changed. See the same research note.
+
+A seventh driving pass added Albania, Montenegro, Ukraine, Kosovo and Seychelles:
+98 of 200 sections (49%). It checks Montenegro’s August 2026 amendment, separates
+Ukraine’s different appellate evidence outcomes, and marks Seychelles’ older
+official publication as a qualified baseline needing current amendment checks.
+No articles were changed; see the research note for remaining gaps and sources.

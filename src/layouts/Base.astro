@@ -1,5 +1,10 @@
 ---
+import "../styles/fonts.css";
 import "../styles/global.css";
+// the three font files every page needs at once: preloaded so text does not wait for the stylesheet
+import fontText from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
+import fontDisplay from "@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url";
+import fontDisplayItalic from "@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2?url";
 import Leaf from "../components/Leaf.astro";
 
 // `seoTitle` replaces the whole <title> (search-result wording); `jsonld` is one schema.org
@@ -47,9 +52,7 @@ const schemas = jsonld ? [jsonld].flat() : [];
   <link rel="icon" type="image/png" sizes="32x32" href={`${base}favicon-32.png`}>
   <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`}>
   <link rel="alternate" type="application/rss+xml" title="Cannabis Freedom Index: score changes" href={`${base}rss.xml`}>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  {[fontText, fontDisplay, fontDisplayItalic].map((href) => <link rel="preload" as="font" type="font/woff2" href={href} crossorigin>)}
   <script is:inline>
     // Set the theme before first paint to avoid a flash.
     (function () {

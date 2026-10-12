@@ -6,7 +6,10 @@
 import { averageHistory, averageHistoryByPopulation, formatDate, dateTime, lastUpdated } from "../lib/countries.js";
 
 // `note` adds the caveat under the chart.
-const { note = false } = Astro.props;
+// Only the view visible before any click is part of the page. The other three, about 400 kB of
+// markers between them, are served by src/pages/fragments/avg-chart.astro (`part="rest"`) and
+// fetched when a switch is first used.
+const { note = false, part = "main" } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const fmt = (v) => v.toFixed(1);
 const time = dateTime;
@@ -61,7 +64,31 @@ function view(range, weighting) {
 const views = WEIGHTS.flatMap((w) => RANGES.map((r) => view(r, w)));
 const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // the view visible before any click
 ---
-<section class="card avg" id="avgChart" aria-labelledby="avgTitle">
+{part === "rest" ? views.filter((v) => !shown(v)).map((v) => (
+    <div class="avg-chart" data-range={v.range} data-weight={v.weight} hidden={!shown(v)}>
+      <div class="avg-y" aria-hidden="true">
+        {v.ticks.map(({ t, y }) => <span style={`top:${y}%`}>{v.whole ? t : fmt(t)}</span>)}
+      </div>
+      <div class="avg-plot" data-seek={v.seek}>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          {v.ticks.map(({ y }) => <line class="grid" x1="0" x2="100" y1={y} y2={y} />)}
+          <path class="line" d={v.line} />
+        </svg>
+        {v.points.map((p) => (
+          <a class="avg-dot" href={`${base}history/${p.change.id}/`} style={`left:${p.x}%;top:${p.y}%`}
+            data-date={formatDate(p.date)} data-title={`${p.change.country.flag} ${p.change.title}`}
+            data-avg={`World average ${fmt(p.before)} → ${fmt(p.after)}`}
+            aria-label={`${formatDate(p.date)}: ${p.change.title}. World average ${fmt(p.before)} to ${fmt(p.after)}.`}></a>
+        ))}
+        <span class="c-seek" hidden></span>
+        <div class="c-seek-tip" hidden></div>
+      </div>
+      <div class="avg-x" aria-hidden="true">
+        {v.years.map(({ yr, x }) => <span style={`left:${x}%`}>{yr}</span>)}
+      </div>
+    </div>
+)) : (
+<section class="card avg" id="avgChart" aria-labelledby="avgTitle" data-more={`${base}fragments/avg-chart/`}>
   <div class="avg-head">
     <h2 id="avgTitle">World average score</h2>
     <p class="avg-now">
@@ -82,7 +109,8 @@ const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // 
     </div>
   </div>
 
-  {views.map((v) => (
+  <div class="avg-views">
+  {views.filter(shown).map((v) => (
     <div class="avg-chart" data-range={v.range} data-weight={v.weight} hidden={!shown(v)}>
       <div class="avg-y" aria-hidden="true">
         {v.ticks.map(({ t, y }) => <span style={`top:${y}%`}>{v.whole ? t : fmt(t)}</span>)}
@@ -106,22 +134,32 @@ const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // 
       </div>
     </div>
   ))}
+  </div>
   {note && <p class="avg-note">Rebuilt from the recorded changes, so it is only as complete as that list. The population-weighted line uses today's populations for every year. The scale does not start at zero.</p>}
 </section>
+)}
 
 <script>
   const chart = document.querySelector("#avgChart");
 
   // Two switches, period and weighting: show the one chart and figure that match both.
   const state = { range: "all", weight: "country" };
+  const show = () => chart.querySelectorAll(".avg-chart, .avg-figure").forEach((el) => {
+    el.hidden = el.dataset.range !== state.range || el.dataset.weight !== state.weight;
+  });
+  // the three views that are not in the page: fetched once, on the first click
+  let rest;
+  const loadRest = () => rest ??= fetch(chart.dataset.more)
+    .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
+    .then((html) => chart.querySelector(".avg-views").insertAdjacentHTML("beforeend", html))
+    .catch(() => { rest = undefined; });
   chart?.querySelectorAll(".avg-switch").forEach((group) => {
     group.querySelectorAll("button").forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", async () => {
         state[group.dataset.switch] = btn.dataset.value;
         group.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-        chart.querySelectorAll(".avg-chart, .avg-figure").forEach((el) => {
-          el.hidden = el.dataset.range !== state.range || el.dataset.weight !== state.weight;
-        });
+        await loadRest();
+        show();
       });
     });
   });

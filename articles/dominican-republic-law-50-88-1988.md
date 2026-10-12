@@ -2,6 +2,8 @@
 sources:
   - title: Dominican Republic — Law No. 50-88 on Drugs and Controlled Substances, WTO copy (PDF)
     url: https://www.importlicensing.wto.org/sites/default/files/members/44/Ley%20No.50%20-%20Drogas%20y%20sustancias%20controladas_30.05.1988.pdf
+  - title: FC Abogados — text of Ley No. 50-88 with the amendments of Ley 35-90
+    url: https://fc-abogados.com/ley-no-50-88-sobre-drogas-y-sustancias-controladas-en-la-republica-dominicana-y-sus-modificaciones-contenidas-en-la-ley-35-90-del-7-de-junio-de-1990/
 ---
 
 The Dominican Republic's central drug law does not ask whether a small amount of cannabis was
@@ -37,6 +39,11 @@ The law prohibits sowing, cultivating, producing and harvesting cannabis through
 Growing marijuana without permission—or possessing more than one pound of its seed—is classified
 as trafficking, with five to twenty years in prison. Illicit crops and the land used to grow them
 may be confiscated.
+
+Two paragraphs of the same Article 64 grade the penalty by the number of plants. Up to twenty
+plants brings two to five years in prison and a fine of 2,000 to 10,000 pesos; more than twenty
+and up to a hundred brings three to ten years and 10,000 to 50,000 pesos. Only above that does
+the full trafficker's sentence apply.
 
 This remains the foundation of the strict present-day profile for the
 [Dominican Republic](/country/do/). Medical cannabis and an adult legal market have not replaced

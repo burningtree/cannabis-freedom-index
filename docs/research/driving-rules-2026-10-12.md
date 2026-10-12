@@ -240,3 +240,118 @@ Validation: `npm run build` passed (1,884 pages). All seven profiles retain thei
 pre-edit scores, have the stated review date and render every driving citation.
 The three new consumption entries render the correct label; the homepage legend
 also passed the output check. Staged and unstaged whitespace checks passed.
+
+## Sixth driving pass
+
+Added Papua New Guinea, Zimbabwe, Dominican Republic, Armenia, Vanuatu, Kiribati
+and Bolivia. Coverage is now **93 of 200 profiles (46.5%)**, up from 86. This counts
+sourced sections, with unresolved current penalties and procedures stated in the
+profiles; it does not certify every provision as comprehensively reviewed. Scores
+and unrelated profile data were preserved. No articles were created or modified.
+
+| Profile | Sources | Limits |
+|---|---|---|
+| Papua New Guinea | [Papua New Guinea Road Traffic Authority — Road Traffic Act 2014 (PDF)](https://rta.gov.pg/pdfs/resources/legislation/acts-of-parliament/RoadTrafficAct2014.pdf); [Papua New Guinea Road Traffic Authority — Road User Rules 2017 (PDF)](https://www.rta.gov.pg/pdfs/resources/legislation/rules/RTR_RoadUserRules2017.pdf) | Read the authority’s Act and 2017 Road User Rules; court maxima and mandatory minimum bans distinguished. |
+| Zimbabwe | [Zimbabwe Ministry of Transport — published Road Traffic Act, Chapter 13:11](https://testdomain8.gov.zw/download/road-traffic-act-chapter-13-11-updated/) | Ministry upload dated February 2026 lists consolidation amendments through 2009. Fine-level conversions and later changes remain follow-up targets. |
+| Dominican Republic | [Dominican Republic DGII — Law 63-17 on mobility, road transport, traffic and road safety (PDF)](https://dgii.gov.do/vehiculosMotor/legislacion/Documents/Ley63-17.pdf) | Current peso conversion, exact point deductions and suspension duration not established. The preventive-test heading is qualified by symptoms in its text. |
+| Armenia | [Armenia ARLIS — Administrative Offences Code, official consolidated English text](https://arlis.am/en/acts/224995) | Official English version includes the March 2025 amendment. Blood/urine drug content and medical examination distinguished from alcohol fines. |
+| Vanuatu | [Vanuatu Official Gazette No. 2, 15 January 2021 — approved Road Traffic (Control) Act, consolidated edition 2020 (scanned PDF)](https://grt.gov.vu/images/docs/Acts/official-gazette-no_-2-of-2021-dated-15-january-2021.pdf); [Vanuatu Supreme Court — Toa v Tabi](https://judiciary.gov.vu/court-activity/judgments/1523) | Read the scanned approved 2020 consolidation visually; judicial treatment of owner versus driver and public-transport process checked separately. |
+| Kiribati | [Kiribati Land Transport Authority — signed Traffic Act 2017 (scanned PDF)](https://klta.gov.ki/wp-content/uploads/2026/08/Traffic-Act-2017-signed-by-the-President.pdf); [Kiribati Land Transport Authority — official Traffic Act resource summary](https://klta.gov.ki/resources/) | Read signed scanned pages 21–24; the authority’s web summary alone would omit the statutory positive-saliva evidential rule. |
+| Bolivia | [Bolivia SEGIP — Traffic Code, official licensing-authority publication (PDF)](https://www.segip.gob.bo/fuent/2025/09/Codigo-de-Transito-16-de-febrero-de-1973.pdf); [Bolivian Police — Traffic Code and Regulations, official document catalogue](https://www.policia.bo/normativa-nacional/) | SEGIP confirms the underlying prohibition. Police publication contains older schedules and later public-transport material; current drug tariffs not inferred. |
+
+Kiribati and Armenia are classified as `zero` on their express presence-based
+evidential provisions. The profiles identify the specimen and legal wording rather
+than assume that every inactive metabolite satisfies the rule. Kiribati’s section
+47 has inconsistent breath/saliva wording; its medical-inability defence is
+retained, but application to a particular refusal should be verified.
+
+Vanuatu’s ordinary section 16 court ceiling must not be replaced by its separate
+public-transport compounding figure. Papua New Guinea’s bodily-injury offence
+and ordinary offence have different prison maxima and minimum disqualifications.
+Zimbabwe’s special-circumstances exception concerns the offence, not personal
+circumstances; the published ban paragraph also has an internal subsection
+cross-reference defect, so a fresh authenticated consolidation remains useful.
+
+Additional findings retained for later work:
+
+- **Rwanda:** read the [10 March 2026 gazette](https://police.gov.rw/uploads/tx_download/OG_n___Special_of_10.03.2026__Ikoreshwa_ry_umuhanda.pdf),
+  Law 014/2026. Article 10 authorises testing and accredited-laboratory review;
+  articles 27–28 provide licensing powers and delegate details to ministerial orders.
+  Those powers alone do not resolve the cannabis offence trigger or applicable
+  penalty, so no driving classification was added.
+- **Tonga:** read the [Traffic Act 2020](https://www.ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/2020/2020-0058/TrafficAct2020_1.pdf).
+  Section 49(n) concerns animals and vehicles **other than motor vehicles**. Its
+  drug wording must not be repurposed as a motor-car offence. Obtain the relevant
+  current rule, including amendments, before assigning a driving category.
+- **Guatemala:** the judiciary’s code includes the 2016 amendment in its index,
+  but full retrieval was blocked. The old 2013 government PDF is insufficient
+  for current article 157 penalties.
+- **Sri Lanka follow-up:** a [Cabinet decision](https://www.cabinetoffice.gov.lk/cab/index.php?Itemid=49&dID=13528&id=16&lang=en&option=com_content&view=article)
+  discusses submitting 2025 motor-traffic drug regulations for parliamentary approval.
+  It does not establish commencement by itself. Obtain the gazette, adopted
+  regulations and commencement evidence before replacing the current profile’s
+  statement that an operative THC cutoff has not yet been verified.
+
+Validation: `npm run build` passed (1,884 pages), and all seven driving sections
+render their citations and stated review date. Armenia and Kiribati render the
+presence-based status label. Staged and unstaged whitespace checks passed. The
+insertion routine verified that each driving addition left unrelated data intact
+at write time. During the pass, a separate workspace edit changed the Dominican
+Republic cultivation score from 0 to 1; that edit was preserved, so the final
+snapshot comparison does not claim that every score in the workspace is unchanged.
+
+## Seventh driving pass
+
+Added Albania, Montenegro, Ukraine, Kosovo and Seychelles, reaching **98 of 200
+profiles (49%)**, up from 93. This measures sourced driving sections, not a
+completed review of every current penalty and testing rule. Seychelles is an
+explicitly qualified statutory baseline from an older official publication.
+No articles were created or modified in this pass.
+
+| Profile | Sources | Limits |
+|---|---|---|
+| Albania | [Albania DPSHTRR — Road Code, Law 8378 of 22 July 1998, consolidated through Law 58/2026 (PDF)](https://www.dpshtrr.al/sites/default/files/downloads/dokumente/Ligji%20nr.8378%2C%20dat%C3%AB%2022.07.1988%20%20%E2%80%9CKodi%20Rrugor%20i%20Republik%C3%ABs%20s%C3%AB%20Shqip%C3%ABris%C3%AB%E2%80%9D%2C%20i%20ndryshuar.pdf) | June 2026 consolidation read. Article 185 cross-references only selected alcohol provisions; current drug fine and toxicology protocol remain unresolved. |
+| Montenegro | [University of Montenegro — Road Safety Law, consolidation including Gazette 111/2026 (PDF)](https://ucg.ac.me/skladiste/blog_19351/objava_213798/fajlovi/Zakon%20o%20bezbjednosti%20saobracaja%20na%20putevima%202026.pdf); [Montenegro Official Gazette — 2026 amendment to Road Safety Law, Gazette 111/2026](https://www.sluzbenilist.me/propisi/396630?page=16) | University-hosted consolidation includes Gazette 111/2026; commencement checked in the official Gazette. Presence rule and new prison, points and ban provisions read together. |
+| Ukraine | [Ukraine judiciary — Khmelnytskyi appellate drug-driving case summary, 25 February 2026](https://www.supreme.court.gov.ua/press/news/1977773/); [Rivne Court of Appeal — laboratory confirmation and defective rapid-test evidence, 21 September 2026](https://rva.court.gov.ua/sud4815/pres-centr/general/2099738/); [Ukraine judiciary — Kherson Court of Appeal on refusal of intoxication examination, 30 July 2026](https://court.gov.ua/press/news/2073041) | Three 2026 appellate summaries distinguish intoxication, lawful refusal and deficient rapid-test evidence. A complete current code consolidation and repeat-offence schedule remain follow-ups. |
+| Kosovo | [Kosovo Police — Official Gazette Law 08/L-186 on Road Traffic Provisions (PDF)](https://www.kosovopolice.com/wp-content/uploads/2024/03/LAW-NO.-08-L-186-ON-ROAD-TRAFFIC-PROVISIONS.pdf); [Kosovo Police — clarification of enforcement powers under Law 08/L-186, May 2026](https://www.kosovopolice.com/en/information-on-the-competencies-of-the-kosovo-police-in-the-implementation-of-the-law-on-minor-offenses-and-road-traffic/) | Police-hosted English Gazette read; May 2026 statement confirms continued implementation. Drug-presence evidence, ordinary offence and motor-driver refusal tariffs distinguished. |
+| Seychelles | [Seychelles Attorney General — Laws of Seychelles, linked Road Transport Act Cap. 206, 2010 edition (scanned PDF)](https://attorneygeneraloffice.gov.sc/index.php/resources/online-publications/laws-of-seychelles) | Attorney General’s public Google Drive link retrieved and scanned 2010 edition read visually. Later amendments and current penalty/testing details remain unverified; baseline is explicitly qualified. |
+
+Montenegro’s article 182 expressly treats detected psychoactive-substance
+presence as influence; its August 2026 article 317a penalty is imprisonment,
+not the older alternative fine. Kosovo’s articles 232 and 234 use drug-presence
+evidence without a numerical allowance; its status records that rule and does
+not assume a specific assay cutoff or metabolite panel. Both render as `zero`.
+Albania remains `consumption`: neither the influence heading nor the ban on a
+drug user driving establishes a statutory detectable-THC test by itself.
+
+The Ukrainian appellate summaries have materially different outcomes. The
+February account upheld an intoxication finding despite a rapid-test objection;
+the September account rejected a rapid test lacking mandatory laboratory
+confirmation, alongside other medical-report defects. They are attributed
+separately, rather than collapsed into a claim that every positive screen proves
+intoxication or that one later regional case settles all courts’ practice.
+The July refusal case had alcohol facts but explains the independent article
+130 refusal rule. No THC concentration or safe waiting interval was inferred.
+
+Additional work retained for the next pass:
+
+- **Greece:** located the [Parliament record for Law 5209/2025](https://www.hellenicparliament.gr/Nomothetiko-Ergo/Anazitisi-Nomothetikou-Ergou?law_id=7377b0f9-4ac6-404a-9f2d-b2ee000f5b7f)
+  and a [November 2025 ministerial reply on driver drug testing](https://www.hellenicparliament.gr/UserFiles/67715b2c-ec81-4f0c-ad6a-476a34d732bd/13104286.pdf).
+  Full PDF retrieval failed; final article 46 and later amendments must be read
+  before adding a classification or using alcohol sanctions for drugs.
+- **North Macedonia:** the [Interior Ministry’s January 2026 enforcement report](https://mvr.gov.mk/mk-MK/odnosi-so-javnost/novosti/vo-mesec-januari-15943-soobrakjajni-prekrsoci-liseni-od-sloboda-74-lica-za-bezobdzirno-upravuvanje-na-vozilo-soglasno-clen-297-a-od-krivicniot-zakonik)
+  identifies a drug-related arrest under Criminal Code article 297-a. That
+  confirms enforcement, but the full offence elements, amendments and sanctions
+  remain to be verified before a profile classification.
+- **Seychelles:** the transport ministry’s public download redirected to login.
+  The Attorney General’s separate public linked copy was retrieved without an
+  account and read visually; no authenticated area was accessed. Obtain later
+  amendments and testing provisions to replace the qualified 2010 baseline.
+
+Validation: `npm run build` passed (1,886 pages). All five new driving
+sections render their citations and have the 12 October 2026 review date.
+Montenegro and Kosovo render the presence-based label; Albania renders the
+consumption label. The insertion routine verified that unrelated profile data
+was unchanged at write time, and all five profiles retain their pre-edit scores
+in the final comparison. Staged and unstaged whitespace checks passed. Existing
+workspace changes were preserved. There are 102 profiles without driving sections.

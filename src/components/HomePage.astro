@@ -893,7 +893,14 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     window.addEventListener("hashchange", showFromHash);
     window.addEventListener("popstate", showFromHash);
 
-    initMap();
+    // The map's shapes are a 750 kB file. On a phone the map sits below the first screen, so the
+    // file is fetched when the map comes near the viewport and does not compete with the first paint.
+    if ("IntersectionObserver" in window) {
+      const near = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) { near.disconnect(); initMap(); }
+      }, { rootMargin: "600px" });
+      near.observe($("#mapWrap"));
+    } else initMap();
     showFromHash();
   </script>
 </Base>
