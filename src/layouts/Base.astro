@@ -12,6 +12,10 @@ const siteName = "Cannabis Freedom Index";
 const fullTitle = seoTitle ?? (title ? `${title} — ${siteName}` : `${siteName}: cannabis laws and legality in every country`);
 // the address search engines should index: no query string, no hash
 const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://cannabisfreedom.fyi").href;
+// the page's social preview image, drawn at build time by src/pages/og/[...path].png.js:
+// /country/de/ → /og/country/de.png, the home page → /og/index.png
+const ogPath = Astro.url.pathname.slice(base.length).replace(/\/$/, "") || "index";
+const ogImage = new URL(`${base}og/${ogPath}.png`, Astro.site ?? "https://cannabisfreedom.fyi").href;
 const schemas = jsonld ? [jsonld].flat() : [];
 ---
 <!doctype html>
@@ -29,7 +33,12 @@ const schemas = jsonld ? [jsonld].flat() : [];
   <meta property="og:description" content={description}>
   <meta property="og:url" content={canonical}>
   <meta property="og:locale" content="en">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content={seoTitle ?? title ?? fullTitle}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content={ogImage}>
   <meta name="twitter:title" content={seoTitle ?? title ?? fullTitle}>
   <meta name="twitter:description" content={description}>
   <link rel="sitemap" type="application/xml" href={`${base}sitemap.xml`}>

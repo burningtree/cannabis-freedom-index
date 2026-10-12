@@ -1,0 +1,40 @@
+---
+// Social preview of a history entry: where and when, what happened, and how the score moved.
+const { eyebrow, flag, place, date, kind, title, score, article } = Astro.props;
+const size = title.length > 90 ? 50 : title.length > 60 ? 60 : title.length > 36 ? 72 : 86;
+---
+<div style="display:flex;flex-direction:column;width:1200px;height:630px;background:#0c0c0b;color:#f2f0e9;padding:52px 64px 48px;font-family:Inter">
+  <div style="display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono';font-size:19px;letter-spacing:2px;color:#a9a79d">
+    <div style="display:flex">{eyebrow}</div>
+    <div style="display:flex">CANNABISFREEDOM.FYI</div>
+  </div>
+
+  <div style="display:flex;align-items:center;margin-top:38px;font-family:'JetBrains Mono';font-size:22px;letter-spacing:2px;color:#a9a79d">
+    {flag && <img src={flag} style="width:44px;height:33px;margin-right:16px;border-radius:2px" />}
+    <div style="display:flex;color:#f2f0e9">{place}</div>
+    <div style="display:flex;margin:0 14px">·</div>
+    <div style="display:flex">{date}</div>
+    <div style="display:flex;margin:0 14px">·</div>
+    <div style="display:flex">{kind}</div>
+    {article && <div style="display:flex;margin-left:18px;padding:3px 10px;border:1px solid #a9a79d;font-size:16px">ARTICLE</div>}
+  </div>
+
+  <div style={`display:flex;margin-top:22px;font-family:'Instrument Serif';font-size:${size}px;line-height:1.05;letter-spacing:-1px`}>{title}</div>
+
+  <div style="display:flex;align-items:center;margin-top:auto;border-top:1px solid #f2f0e9;padding-top:24px;font-family:'JetBrains Mono'">
+    {score ? (
+      <div style="display:flex;align-items:center">
+        <div style="display:flex;flex-direction:column;margin-right:36px;font-size:17px;letter-spacing:2px;color:#a9a79d">
+          <div style="display:flex">INDEX SCORE</div>
+          <div style="display:flex">OUT OF 100</div>
+        </div>
+        <div style={`display:flex;font-size:76px;font-weight:500;padding-bottom:4px;border-bottom:6px solid ${score.beforeColor}`}>{score.before}</div>
+        <svg width="64" height="40" viewBox="0 0 64 40" style="margin:0 26px"><path d="M2 20h56M42 5l17 15-17 15" fill="none" stroke="#a9a79d" stroke-width="4" /></svg>
+        <div style={`display:flex;font-size:76px;font-weight:500;padding-bottom:4px;border-bottom:6px solid ${score.afterColor}`}>{score.after}</div>
+        <div style={`display:flex;font-size:34px;margin-left:34px;color:${score.delta >= 0 ? "#9ccc55" : "#dc4a2a"}`}>{score.label}</div>
+      </div>
+    ) : (
+      <div style="display:flex;font-size:22px;letter-spacing:2px;color:#a9a79d">NO CHANGE TO THE SCORE</div>
+    )}
+  </div>
+</div>

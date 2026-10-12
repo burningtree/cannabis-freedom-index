@@ -1,0 +1,43 @@
+---
+// Social preview of a country (or one of its states): 1200 × 630, drawn by satori through x-satori.
+// Satori lays out with flexbox only, so every box with several children says `display:flex`.
+const { eyebrow, name, flag, score, tier, color, rank, segments, statuses } = Astro.props;
+---
+<div style="display:flex;flex-direction:column;width:1200px;height:630px;background:#0c0c0b;color:#f2f0e9;padding:52px 64px 48px;font-family:Inter">
+  <div style="display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono';font-size:19px;letter-spacing:2px;color:#a9a79d">
+    <div style="display:flex">{eyebrow}</div>
+    <div style="display:flex">CANNABISFREEDOM.FYI</div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:34px">
+    <div style="display:flex;flex-direction:column;max-width:780px">
+      <div style="display:flex;align-items:center">
+        {flag && <img src={flag} style="width:92px;height:69px;margin-right:26px;border-radius:4px" />}
+        <div style={`display:flex;font-family:'Instrument Serif';font-size:${name.length > 22 ? 62 : name.length > 14 ? 78 : 104}px;line-height:1;letter-spacing:-2px`}>{name}</div>
+      </div>
+      <div style="display:flex;margin-top:22px;font-size:27px;color:#a9a79d">{statuses}</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end">
+      <div style="display:flex;align-items:flex-end;font-family:'JetBrains Mono'">
+        <div style="display:flex;font-size:150px;line-height:0.9;font-weight:500">{score}</div>
+        <div style="display:flex;font-size:30px;color:#a9a79d;margin-left:8px;margin-bottom:10px">/100</div>
+      </div>
+      <div style={`display:flex;width:100%;height:8px;margin-top:14px;background:${color}`}></div>
+      <div style="display:flex;margin-top:12px;font-family:'JetBrains Mono';font-size:19px;letter-spacing:2px;color:#f2f0e9">{tier}{rank ? ` · ${rank}` : ""}</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;margin-top:auto;border-top:1px solid #f2f0e9;padding-top:22px">
+    {segments.map((s) => (
+      <div style="display:flex;flex-direction:column;width:33.33%;padding-right:36px;margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono';font-size:17px;letter-spacing:1px;color:#a9a79d">
+          <div style="display:flex">{s.name}</div>
+          <div style="display:flex;color:#f2f0e9">{s.value}/10</div>
+        </div>
+        <div style="display:flex;width:100%;height:10px;margin-top:8px;background:#2a2a27">
+          <div style={`display:flex;width:${s.value * 10}%;height:10px;background:${s.color}`}></div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

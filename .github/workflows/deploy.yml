@@ -28,6 +28,15 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v6
       - run: npm ci
+      # The social preview images (one per page) take minutes to draw and rarely change. Each is
+      # kept under a hash of its own content, so restoring the folder redraws only what is new.
+      - uses: actions/cache@v4
+        with:
+          path: .cache/og
+          key: og-${{ hashFiles('src/og/**', 'package-lock.json') }}-${{ github.run_id }}
+          restore-keys: |
+            og-${{ hashFiles('src/og/**', 'package-lock.json') }}-
+            og-
       # The site URL and sub-path come from the repository's Pages settings, so the
       # same build works for user.github.io/repo and for a custom domain.
       - run: npm run build
