@@ -1,7 +1,4 @@
 ---
-title: Azerbaijan draws a line between small and criminal cultivation
-date: "2001-12-01"
-country: az
 sources:
   - title: Azerbaijan — Code of Administrative Offences (2000 code, English translation)
     url: https://extranet.who.int/fctcapps/sites/default/files/2023-04/azerbaijan_2012_annex1_code_on_administrative_offences_2000.pdf
