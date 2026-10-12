@@ -459,14 +459,13 @@ node scripts/data-status.cjs chain de     # one country's full timeline
 Run `node scripts/data-status.cjs` for current numbers. As of 5 October 2026: 784 entries,
 673 checked, 38 unchecked, 73 estimated first bans.
 
-1. **Profiles resting on unreliable sites — the most important item.**
-   `node scripts/data-status.cjs weak` lists 61 profiles where at least one scored segment
-   cites only `cannabisregulations.ai` or `tripbase.com`. Worst: Azerbaijan, Cameroon, Cabo
-   Verde, Chad (all six segments); Angola, Burkina Faso, Central African Republic, Congo,
-   Eritrea, Micronesia, Comoros, Libya, Montenegro, Mongolia, Niger, Sudan, Yemen. For several
-   the real statute is already cited in the history (Cameroon Law 97/019, Burkina Faso Law
-   017-99/AN, Niger Ordinance 99-42, Angola Law 3/99, Libya Law 7/1990, Yemen Law 3/1993) and
-   can be reused. Re-source, and correct scores if the statute says something different.
+1. **Profiles with missing or unreliable sources — the most important item.**
+   All `cannabisregulations.ai` citations were removed on 12 October 2026. Where it had been the
+   only source, required context sections now state that reliable information has not been
+   established; optional unsupported sections were removed. `node scripts/data-status.cjs weak`
+   lists scored segments that now have no citation, as well as those resting only on another
+   unreliable site such as `tripbase.com`. Re-source them from statutes or authoritative reporting,
+   and correct scores if the better source says something different.
 2. **Entries that rest on summaries only.** Many entries added in October 2026 are marked
    checked on the strength of a search summary. Open their sources; downgrade or correct.
    Known to be unconfirmed: Senegal 1997/2007, Sierra Leone 2008, The Gambia 2003/2011/2014,

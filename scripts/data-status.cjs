@@ -36,12 +36,12 @@ if (what === "thin") {
   for (const k of [0, 1, 2]) console.log(`${k} entries:`, ids.filter((id) => (n[id] || 0) === k).map((id) => `${id}:${country[id].name}`).join(", "));
 }
 if (what === "weak") {
-  // Profiles whose scored segments rest only on sites that proved unreliable.
+  // Profiles whose scored segments have no citation or rest only on sites that proved unreliable.
   const weak = /cannabisregulations\.ai|tripbase\.com/;
   for (const id of ids) {
     const c = country[id];
     const bad = Object.entries(c.sources || {}).filter(([, s]) => weak.test(s.url)).map(([k]) => k);
-    const only = Object.entries(c.segments || {}).filter(([, s]) => s.sources?.length && s.sources.every((k) => bad.includes(k))).map(([k]) => k);
+    const only = Object.entries(c.segments || {}).filter(([, s]) => !s.sources?.length || s.sources.every((k) => bad.includes(k))).map(([k]) => k);
     if (only.length) console.log(`${id} ${c.name}: ${only.join(", ")}`);
   }
 }
