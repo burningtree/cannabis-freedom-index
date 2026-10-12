@@ -1,51 +1,38 @@
 ---
 sources:
-  - title: Amnesty International — Syria, proposed expansion of the scope of the death penalty (6 April 1993)
-    url: https://www.amnesty.org/en/documents/mde24/002/1993/en/
-  - title: Harm Reduction International — The Death Penalty for Drug Offences, Global Overview 2010
-    url: https://hri.global/wp-content/uploads/2022/10/IHRA_DeathPenaltyReport_Web-1.pdf
+  - title: قانون المخدرات السوري رقم 2 لعام 1993 — text as reproduced by Lawyer Egypt
+    url: https://lawyeregypt.net/uncategorized/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D9%85%D8%AE%D8%AF%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D9%88%D8%B1%D9%89-%D8%B1%D9%82%D9%85-2-%D9%84%D8%B9%D8%A7%D9%85-1993/
+  - title: Amnesty International — Syria, death penalty for drug offences (MDE 24/002/1993, 6 April 1993)
+    url: https://www.amnesty.org/es/documents/MDE24/002/1993/en/
+  - title: The Syrian Observer, translating Al-Watan — on drug cases before the courts (2 July 2014)
+    url: https://syrianobserver.com/?p=32505
 ---
 
-Syria's Law No. 2 of 12 April 1993 made capital punishment available for major drug offences,
-including unauthorised cultivation of scheduled plants. It turned an existing prohibition into a
-system in which a non-violent drug conviction could carry a death sentence.
+On 12 April 1993 Syria issued a new drug law. It has been the basis of the country's drug control since, and it does two things at once: it puts farmers who grow cannabis under the same article as smugglers, with death as the penalty, and it offers people who use drugs a way out of the courts.
 
-## The bill and the enacted law
+## From bill to law
 
-Amnesty International reported on 6 April 1993 that Syria's National Assembly had approved a bill
-including death for drug farmers, dealers and manufacturers. It urged President Hafez al-Assad
-not to sign the capital clause. Law No. 2 was nevertheless enacted on 12 April.
+The People's Assembly approved the bill on 31 March 1993. On 6 April Amnesty International appealed to President Hafez al-Assad not to sign the clause that extended the death penalty to "farmers, dealers and manufacturers of drugs". The law was issued six days later, to take effect ninety days after publication. It repealed the drug law of 1960, which dated from Syria's union with Egypt.
 
-Harm Reduction International later reproduced the substance of Article 39. Capital punishment
-applies to anyone who smuggles narcotic drugs, manufactures them outside the law, or unlawfully
-cultivates a plant listed in Schedule No. 4. Smuggling those plants at any stage of growth—or
-smuggling their seeds—is included as well.
+## The scale of penalties
 
-The accessible secondary sources do not reproduce Schedule No. 4 in full. The cannabis connection
-therefore rests on the site's separately sourced record of Syria's earlier cultivation ban and on
-the classification used in the existing history entry, not on a schedule visible in these two
-documents.
+| Article | Act | Penalty |
+|---|---|---|
+| 39 | Smuggling, making drugs, growing the listed plants | Death |
+| 40 | Selling, or possessing or carrying for sale | Life, and a fine of 1 to 5 million pounds |
+| 42 | Giving drugs to someone without payment | At least 10 years |
+| 43 | Having or buying drugs for personal use | A term of detention, and a fine of 100,000 to 500,000 pounds |
 
-## Death was not the only possible sentence
+Death under Article 39 is not always final. A court that finds mitigating grounds may reduce it to life imprisonment or to no less than twenty years. It may not do so for a repeat offender, an official charged with fighting drugs, someone who used a minor, or a member of an international smuggling gang.
 
-Article 39 allowed mitigating circumstances, with imprisonment and a substantial fine as the
-alternative. Harm Reduction International says that mitigation was unavailable in specified
-cases, including when the offender was a public official assigned to combat drugs, used a minor,
-or participated in an international smuggling organisation.
+Growing has no lighter form. Article 43, on personal use, covers having, buying and carrying, not planting. In 2014 a judicial source put it plainly to a government newspaper: whoever plants cannabis is considered a drug trader.
 
-That distinction matters: the statute authorised capital punishment, but it did not mean every
-drug case automatically ended in execution. Nor does the source support treating personal
-possession as a capital offence.
+## The door left open for users
 
-## Evidence of later use
+The same Article 43 lets a court suspend the sentence of a person shown to be addicted and send them to a clinic, for at least three months and at most a year. A committee of a health official, a prosecutor, a drug-control officer and a doctor proposes the release. Nobody may be sent a third time.
 
-The 2010 review records a publicised 2008 crackdown in which the government announced seven death
-sentences for drug traffickers. It also stresses the scarcity of reliable information about
-Syria's use of the death penalty and reports concerns about detention and trial safeguards.
+A user who goes to the authorities for treatment unprompted, or whose spouse or close relative asks for it, is not prosecuted at all, unless already caught in the act. Whoever reveals that a person was treated can be jailed for up to a year. The judicial source of 2014 summed up the idea: the law regards addicts as the victims of dealers.
 
-The law explains the extreme enforcement setting shown on the current [Syria profile](/country/sy/),
-after the country's [1943 cultivation ban](/history/syria-cultivation-ban-1943/).
+## Why the index did not move
 
-In the index, the 1993 law does not create a separate score step. Syria's earlier prohibition
-already carries the strict baseline, and the available record does not establish the exact six
-scores immediately before the capital law.
+[Syria's](/country/sy/) scores were already at or near the bottom before [this law](/history/syria-death-penalty-1993/): growing had been banned [since 1943](/history/syria-cultivation-ban-1943/), and the 1993 law replaced an existing drug law, not a gap. The death penalty for growers is recorded in the profile and in the country's status, which the six scores do not change.

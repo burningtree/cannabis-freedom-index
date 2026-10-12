@@ -13,6 +13,17 @@ import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor
 import { SHOW_PRICES } from "../lib/config.js";
 import { homeSeo } from "../lib/seo.js";
 import { viewByMetric } from "../lib/map-views.js";
+import { panelRows, PANEL_FROM } from "../lib/exports.js";
+
+// Rankings by year: for each place, the years in which its index score changed and the score from
+// then on ([[1900, 98.4], [1937, 11.2], …]), taken from the yearly panel. The table reads it when
+// another year is chosen.
+const yearScores = {};
+for (const r of panelRows) {
+  const list = (yearScores[r.id] ??= []);
+  if (!list.length || list.at(-1)[1] !== r.score) list.push([r.year, r.score]);
+}
+const rankYears = Array.from({ length: +DATA_SNAPSHOT - PANEL_FROM + 1 }, (_, i) => +DATA_SNAPSHOT - i);
 
 // The home page, or, with `view`, just the map on a page of its own (see /map/).
 const { view = null } = Astro.props;
@@ -275,7 +286,9 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           <p class="sub"><span id="resultCount">{places.length} of {places.length} countries and territories</span></p>
         </div>
         <div class="filters">
-          <input type="search" id="search" placeholder="Search country…" aria-label="Search country">
+          <select id="rankYear" aria-label="Year of the ranking" title="Show the ranking as it stood at the end of a year">
+            {rankYears.map((y, i) => <option value={y}>{i === 0 ? `${y} (latest)` : y}</option>)}
+          </select>
           <select id="region" aria-label="Filter by region">
             <option value="">All regions</option>
             {regions.map((r) => <option>{r}</option>)}
@@ -298,6 +311,8 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           </details>
         </div>
       </div>
+      <p class="year-note" id="yearNote" hidden>Scores and ranks as they stood at the end of <b></b>, rebuilt from each country's history. Before a country's first recorded change the table shows its starting scores, and where the first ban has no known date the score is spread across the estimated period. Columns that describe today are hidden. <a href="#rankings" id="yearBack">Back to the latest year</a></p>
+      <script type="application/json" id="rankYears" set:html={JSON.stringify(yearScores)}></script>
       <div class="card table-card">
         <table id="table">
           <thead>
@@ -316,7 +331,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           </thead>
           <tbody>
             {places.map((c) => (
-              <tr data-id={c.id} data-rank={c.rank ?? c.worldRank - 0.5} data-name={c.name} data-region={c.region}
+              <tr data-id={c.id} data-rank={c.rank ?? c.worldRank - 0.5} data-territory={c.rank ? undefined : ""} data-name={c.name} data-region={c.region}
                   data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users} data-share={c.use.prevalence} data-price={SHOW_PRICES ? streetFlower(c)?.usd ?? -1 : undefined}
                   {...Object.fromEntries(EXTRA_COLUMNS.map((col) => [`data-${col.key}`, col.sort(c)]))}>
                 <td class="num">{c.rank ?? "–"}</td>
@@ -652,8 +667,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     const tbody = $("#table tbody");
     const rows = [...tbody.querySelectorAll("tr[data-id]")];
     const emptyRow = $("#emptyRow");
-    const state = { q: "", region: "", rec: "", sort: "rank", asc: true };
-    const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+    const state = { region: "", rec: "", sort: "rank", asc: true };
     const num = (r, k) => +r.dataset[k];
     const sorters = {
       rank: (a, b) => num(a, "rank") - num(b, "rank"),
@@ -668,14 +682,12 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     };
 
     function applyTable() {
-      const q = norm(state.q.trim());
       // extra columns sort on a number kept on the row, highest first, then by rank
       const sorted = [...rows].sort(sorters[state.sort] ?? ((a, b) => num(b, state.sort) - num(a, state.sort) || num(a, "rank") - num(b, "rank")));
       if (!state.asc) sorted.reverse();
       let shown = 0;
       sorted.forEach((r) => {
-        const ok = (!q || norm(r.dataset.name).includes(q)) &&
-          (!state.region || r.dataset.region === state.region) &&
+        const ok = (!state.region || r.dataset.region === state.region) &&
           (!state.rec || r.dataset.reckey === state.rec);
         r.hidden = !ok;
         if (ok) shown++;
@@ -688,7 +700,40 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
       $(`#table th[data-sort="${state.sort}"]`).setAttribute("aria-sort", state.asc ? "ascending" : "descending");
     }
 
-    $("#search").addEventListener("input", (e) => { state.q = e.target.value; applyTable(); });
+    // ── Another year: the same rows with the score and rank they had at the end of that year ──
+    const YEAR_SCORES = JSON.parse($("#rankYears").textContent);
+    const yearSel = $("#rankYear"), yearNote = $("#yearNote");
+    const LATEST = +yearSel.options[0].value;
+    const today = new Map(rows.map((r) => [r, { rank: r.dataset.rank, cell: r.cells[0].textContent, val: r.querySelector(".score-val").textContent, bar: r.querySelector(".bar i").getAttribute("style") }]));
+    const scoreIn = (id, year) => { let v = YEAR_SCORES[id][0][1]; for (const [y, s] of YEAR_SCORES[id]) { if (y > year) break; v = s; } return v; };
+    function setYear(year) {
+      const past = year !== LATEST;
+      $("#table").classList.toggle("past-year", past);
+      yearNote.hidden = !past;
+      yearNote.querySelector("b").textContent = year;
+      if (!past) {
+        for (const [r, t] of today) { r.dataset.rank = t.rank; r.cells[0].textContent = t.cell; r.querySelector(".score-val").textContent = t.val; r.querySelector(".bar i").setAttribute("style", t.bar); }
+      } else {
+        const scored = rows.map((r) => ({ r, v: scoreIn(r.dataset.id, year), territory: "territory" in r.dataset }));
+        // countries take the ranks; a territory sits where its score would put it, without one
+        const ranked = scored.filter((x) => !x.territory).sort((a, b) => b.v - a.v || a.r.dataset.name.localeCompare(b.r.dataset.name));
+        ranked.forEach((x, i) => { x.r.dataset.rank = i + 1; x.r.cells[0].textContent = i + 1; });
+        for (const x of scored.filter((x) => x.territory)) x.r.dataset.rank = ranked.filter((c) => c.v > x.v).length + 0.5;
+        for (const x of scored) {
+          x.r.querySelector(".score-val").textContent = Math.round(x.v);
+          x.r.querySelector(".bar i").setAttribute("style", `width:${x.v}%;background:${tierColor(x.v)}`);
+        }
+      }
+      const url = new URL(location.href);
+      if (past) url.searchParams.set("year", year); else url.searchParams.delete("year");
+      history.replaceState(null, "", url);
+      applyTable();
+    }
+    yearSel.addEventListener("change", () => setYear(+yearSel.value));
+    $("#yearBack").addEventListener("click", () => { yearSel.value = LATEST; setYear(LATEST); });
+    const wanted = +new URLSearchParams(location.search).get("year");
+    if (wanted >= +yearSel.options[yearSel.options.length - 1].value && wanted < LATEST) { yearSel.value = wanted; setYear(wanted); }
+
     $("#region").addEventListener("change", (e) => { state.region = e.target.value; applyTable(); });
     $("#recFilter").addEventListener("change", (e) => { state.rec = e.target.value; applyTable(); });
     // Columns: the reader's choice is kept in this browser.
