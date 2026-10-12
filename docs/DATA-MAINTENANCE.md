@@ -460,12 +460,12 @@ Run `node scripts/data-status.cjs` for current numbers. As of 5 October 2026: 78
 673 checked, 38 unchecked, 73 estimated first bans.
 
 1. **Profiles with missing or unreliable sources — the most important item.**
-   All `cannabisregulations.ai` citations were removed on 12 October 2026. Where it had been the
-   only source, required context sections now state that reliable information has not been
-   established; optional unsupported sections were removed. `node scripts/data-status.cjs weak`
-   lists scored segments that now have no citation, as well as those resting only on another
-   unreliable site such as `tripbase.com`. Re-source them from statutes or authoritative reporting,
-   and correct scores if the better source says something different.
+   All `cannabisregulations.ai` and `tripbase.com` citations were removed on 12 October 2026. Where
+   either had been the only source, required context sections now state that reliable information
+   has not been established; optional unsupported sections were removed. `node
+   scripts/data-status.cjs weak` lists scored segments that now have no citation and continues to
+   detect either domain if one is added again. Re-source gaps from statutes or authoritative
+   reporting, and correct scores if the better source says something different.
 2. **Entries that rest on summaries only.** Many entries added in October 2026 are marked
    checked on the strength of a search summary. Open their sources; downgrade or correct.
    Known to be unconfirmed: Senegal 1997/2007, Sierra Leone 2008, The Gambia 2003/2011/2014,

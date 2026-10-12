@@ -24,13 +24,13 @@ recreational: illegal
 medical: none
 updated: 2026-10-12
 summary: >-
-  Small amounts of drugs lead to administrative liability; larger amounts are a crime under
-  Article 234 of the Criminal Code.
+  Personal-use amounts and small-scale cultivation are administrative offences that can still
+  bring up to two months' detention; larger amounts are crimes.
 scores:
   possession: 1
-  cultivation: 0
+  cultivation: 2
   enforcement: 2
-  sharing: 0
+  sharing: 1
   consumption: 1
   access: 0
 segments:
@@ -45,9 +45,14 @@ segments:
       - osce2011
   cultivation:
     text: >-
-      The retained sources do not establish the precise cultivation offence or penalty; this
-      segment needs a replacement legal source.
-    sources: []
+      Small-scale cultivation is an administrative offence under Article 208: the penalty is a
+      200–300 manat fine or, when the court considers a fine insufficient, up to two months of
+      administrative detention. Article 237 of the Criminal Code applies above the statutory
+      threshold, with a 3,000–6,000 manat fine, restriction of liberty for one to three years, or
+      up to three years in prison; aggravated cases carry three to ten years.
+    sources:
+      - admin
+      - criminal
   enforcement:
     text: >-
       British travel advice says possession or use of illegal drugs, including cannabis, carries
@@ -57,9 +62,13 @@ segments:
       - fcdo
   sharing:
     text: >-
-      The retained sources do not establish the precise cannabis-supply offence or penalty; this
-      segment needs a replacement legal source.
-    sources: []
+      Article 234.2 punishes possession, production, transport or sending with intent to sell, and
+      sale itself, with three to seven years in prison. The narcotics law defines sale as a paid or
+      barter transaction; the sources read do not identify a separate lesser rule for an unpaid
+      gift.
+    sources:
+      - criminal
+      - mia
   consumption:
     text: >-
       Use is an offence. British travel advice says use of illegal drugs, including cannabis,
@@ -74,18 +83,32 @@ segments:
       - fcdo
 context:
   production:
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
-  medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
-  consequences:
-    text: Users can be placed on a narcological register.
+    text: >-
+      Cultivation and production of narcotic plants are prohibited except where needed to prepare
+      experimental samples of medicines; experimental production is reserved to competent state
+      authorities.
     sources:
-      - trip
+      - mia
+  products:
+    text: >-
+      Controlled narcotic medicines may be supplied by licensed pharmacies and medical
+      institutions. The law does not establish a legal retail market for cannabis products.
+    sources:
+      - mia
+  medical:
+    text: >-
+      The narcotics law permits controlled drugs for medical needs through licensed pharmacies and
+      medical institutions, but the sources read do not establish a patient-access programme for
+      cannabis itself.
+    sources:
+      - mia
+  consequences:
+    text: >-
+      People convicted of illicit drug trafficking may not work in organisations that handle
+      controlled drugs, while separate employment restrictions may be imposed on people diagnosed
+      with drug dependence in specified occupations or work involving dangerous facilities.
+    sources:
+      - mia
   visitors:
     status: none
     text: >-
@@ -97,6 +120,15 @@ context:
     sources:
       - fcdo
 sources:
+  admin:
+    title: Central Bank of Azerbaijan — Code of Administrative Offences, Articles 206 and 208
+    url: https://www.cbar.az/law-170/code-of-administrative-offenses-of-the-republic-of-azerbaijan
+  criminal:
+    title: Azerbaijan — Criminal Code, consolidated text (e-Qanun), Articles 234 and 237
+    url: https://frameworks.e-qanun.az/46/f_46947.html
+  mia:
+    title: Ministry of Internal Affairs — Law on narcotic drugs, psychotropic substances and precursors
+    url: https://mia.gov.az/en/legislation/1/view/44/
   fcdo:
     title: "GOV.UK (FCDO) — Foreign travel advice: Azerbaijan, safety and security"
     url: https://www.gov.uk/foreign-travel-advice/azerbaijan/safety-and-security
@@ -106,6 +138,3 @@ sources:
   osce2011:
     title: Permanent Mission of Azerbaijan to the OSCE — Statement PC.DEL/461/11, 20 May 2011
     url: https://www.osce.org/files/f/documents/4/7/81191.pdf
-  trip:
-    title: TripBase — Azerbaijan drug laws
-    url: https://www.tripbase.com/drug-laws/azerbaijan/
