@@ -1,6 +1,6 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6.1-sol-medium
+written: 2026-10-12
 sources:
   - type: chapter
     title: "Forces of Necessity: Lay Advocacy and the Remedicalization of Cannabis in the UK, 1973–2004"
@@ -22,7 +22,8 @@ Cannabis-based medicines were
 [withdrawn](/history/uk-cannabis-medicines-withdrawn-1973/) in the United Kingdom in
 1973. A synthetic cannabinoid, nabilone, was
 [licensed](/history/uk-nabilone-licensed-1982/) in 1982 for the side effects of cancer
-treatment. For everyone else there was nothing lawful.
+treatment. The licence did not permit patients to possess herbal cannabis. Taylor also describes
+exceptional named-patient prescribing of nabilone for other symptoms.
 
 ## Clare Hodges
 
@@ -56,10 +57,12 @@ and 1970s, which had failed, was the Alliance's strength. So was her respectabil
 
 The Alliance and the MS Society gave evidence to a
 [House of Lords committee](/history/uk-lords-therapeutic-cannabis-inquiry-1997/) in the
-late 1990s, putting patients' experience before parliament. The two groups differed:
+1998 inquiry, putting patients' experience before parliament. The two groups differed:
 the Alliance wanted access to herbal cannabis while trials ran, and the Society would
-not press for it. Clinical trials followed, and with them the cannabis-based spray
-Sativex.
+not press for it. The [1994 delegation](/history/uk-act-health-delegation-1994/) and
+[1997 conference](/history/uk-cannabis-clinical-trials-conference-1997/) helped connect
+advocacy with research. Later [CAMS results](/history/uk-cams-trial-results-2003/)
+showed why patient experience and clinical outcome measures remained contested.
 
 The plant itself stayed illegal for patients until
 [2018](/history/uk-medical-cannabis-2018/), after the cases of two children with severe

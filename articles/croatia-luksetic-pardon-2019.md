@@ -2,9 +2,9 @@
 sources:
   - title: Index.hr — Huanito mora u zatvor (25 January 2019)
     url: https://www.index.hr/vijesti/clanak/huanito-ide-u-zatvor/2059032.aspx
-  - title: Novi list — Potvrđena presuda Huanitu Luksetiću (25 January 2019)
+  - title: Novi list — report on the confirmed sentence of Huanito Luksetić (25 January 2019)
     url: https://www.novilist.hr/?p=7748
-  - title: Novi list — Predsjednica najavila pomilovanje (27 January 2019)
+  - title: Novi list — report on the president's promise of a pardon (27 January 2019)
     url: https://www.novilist.hr/?p=8005
   - title: Novi list — Potpuni oprost za Huanita Luksetića (2 March 2019)
     url: https://www.novilist.hr/?p=13592

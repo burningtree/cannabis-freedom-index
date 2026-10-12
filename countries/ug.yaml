@@ -22,7 +22,7 @@ cannabis_use:
   users: 870000
 recreational: illegal
 medical: limited
-updated: 2026-10-10
+updated: 2026-10-12
 summary: A handful of licences exist for medical cultivation for export; personal use is illegal.
 scores:
   possession: 1
@@ -34,19 +34,23 @@ scores:
 segments:
   possession:
     text: >-
-      Possession is a crime under the Narcotic Drugs and Psychotropic Substances (Control) Act 2024,
-      re-enacted after the Constitutional Court annulled the 2016 law for lack of a quorum. It
-      carries heavy fines and prison terms measured in years.
+      Section 4 of the Narcotic Drugs and Psychotropic Substances (Control) Act 2024 makes
+      possession of a narcotic drug an offence with a fine of up to 50,000 currency points, a
+      billion shillings, or three times the drug's market value if that is more, up to twenty
+      years in prison, or both. No lesser tier is set for a small amount or for personal use.
+      The Act was re-enacted after the Constitutional Court annulled the 2016 law for lack of a
+      quorum.
     sources:
-      - act
+      - gaz24
       - ab
   cultivation:
     text: >-
-      Unauthorised growing of cannabis is specifically penalised, with lengthy prison terms and
-      forfeiture of property.
+      Section 11 forbids knowingly cultivating or gathering a prohibited plant without a licence
+      from the health minister. The penalty is a fine of up to 120 currency points, 2.4 million
+      shillings, or three times the market value of the plants if that is more, up to five years
+      in prison, or both; a second or later offence brings imprisonment for life.
     sources:
-      - ab
-      - act
+      - gaz24
   enforcement:
     text: >-
       One of East Africa's stricter laws, combining long sentences, large fines and asset
@@ -55,14 +59,19 @@ segments:
       - ab
       - ml
   sharing:
-    text: Trafficking carries very long sentences, up to life.
+    text: >-
+      Trafficking carries a fine of up to 50,000 currency points or three times the drug's
+      market value, imprisonment for life, or both (Section 5).
     sources:
-      - act
+      - gaz24
   consumption:
-    text: Use is an offence; smoking and being found in a place used for smoking are both punishable.
+    text: >-
+      Section 6 makes it an offence to smoke, inhale, sniff, chew or otherwise use a narcotic
+      drug, to be found without excuse in a place people use for it, or to possess a pipe or
+      other utensil for it: a fine of up to 50,000 currency points, up to ten years in prison,
+      or both.
     sources:
-      - act
-      - ml
+      - gaz24
   access:
     text: No legal source.
     sources:
@@ -111,16 +120,40 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says penalties
-      for possession and trafficking are severe: the maximum sentence is 20 years for
-      possession and life imprisonment for trafficking.
+      There is no legal recreational supply for anyone. The 2024 Act sets up to twenty years in
+      prison for possession, up to ten for using a drug or being found where it is used, and
+      life for trafficking.
     sources:
-      - ab
-      - fcdo
+      - gaz24
+  driving:
+    status: impairment
+    text: >-
+      Section 112 of the Traffic and Road Safety Act prohibits driving or attempting to drive
+      under drug influence. It expressly includes pharmaceutical and prescribed drugs, with
+      no numerical THC allowance stated. Conviction carries up to 300 currency points
+      (UGX6 million), up to three years' imprisonment, or both. Section 113 permits blood
+      or urine testing on reasonable suspicion; refusal of a required blood specimen carries
+      up to 100 currency points and is prima facie evidence of drug influence or excess
+      alcohol. The 2023 Regulations allow police to escort a suspected drug-influenced driver
+      for a medical test and impound the vehicle. A fixed cannabis-specific licence-ban
+      duration was not established: the consolidated Act's section 46 contains an alcohol
+      condition alongside a cross-reference to section 112, which must not be presented
+      as an unconditional drug-driving ban.
+    sources:
+      - trafficact
+      - drugtraffic2023
 sources:
-  fcdo:
-    title: "GOV.UK (FCDO) — Foreign travel advice: Uganda, safety and security"
-    url: https://www.gov.uk/foreign-travel-advice/uganda/safety-and-security
+  trafficact:
+    title: "ULII — Traffic and Road Safety Act 1998, consolidated through the 2020 amendment"
+    url: https://ulii.org/en/akn/ug/act/1998/15/eng%402020-05-22
+    locator: "Sections 46, 112–113; First Schedule"
+  drugtraffic2023:
+    title: "Uganda Ministry of Works and Transport — Prohibited Drugs and Alcohol Limit Regulations 2023 (PDF)"
+    url: https://works.go.ug/wp-content/uploads/2026/04/Traffic-and-Road-Safety-Prohibited-Drugs-and-Alcohol-Limit-Regulations-2023.pdf
+    locator: "Regulations 6–7"
+  gaz24:
+    title: "Uganda — Narcotic Drugs and Psychotropic Substances (Control) Act, 2024 (Act 2 of 2024), Gazette text (ULII, PDF)"
+    url: https://media.ulii.org/media/legislation/109240/source_file/9ca5653ec0919d44/ug-act-2024-2-publication-document.pdf
   ndps24:
     title: Narcotic Drugs and Psychotropic Substances (Control) Act, 2024, section 2 (Uganda Legal Information Institute)
     url: https://ulii.org/en/akn/ug/act/2024/2/eng@2024-02-23

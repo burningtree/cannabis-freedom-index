@@ -1,6 +1,6 @@
 ---
 sources:
-  - title: Tengrinews — Russia lifts ban on Wikipedia (25 August 2015)
+  - title: Tengrinews — report on the lifting of the Wikipedia block (25 August 2015)
     url: https://en.tengrinews.kz/news/261791
   - title: Meduza — Welcome to Chyorny Yar (20 November 2015)
     url: https://meduza.io/en/galleries/2015/11/20/welcome-to-chyorny-yar

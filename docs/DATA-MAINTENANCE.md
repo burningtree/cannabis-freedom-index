@@ -436,6 +436,24 @@ node scripts/data-status.cjs chain de     # one country's full timeline
 - **Distrust `cannabisregulations.ai` and `tripbase.com`.** The first one described a 2024
   legalisation in Palau that never happened. Do not use either as the only source for anything.
   Sensi Seeds country blogs are weak too.
+- **GOV.UK travel advice is a source only for the United Kingdom and for closed countries.** The
+  early profiles leaned on the Foreign Office's travel advice ("British travel advice says …")
+  for visitors sections and sometimes for penalties. Do not add it anywhere new. It is acceptable
+  for the UK itself and for countries whose own law texts and press cannot be reached (North
+  Korea, Turkmenistan, Eritrea and the like). Elsewhere it is being phased out gradually:
+  whenever a profile is edited, replace what rests on it and delete the `fcdo` source once
+  nothing cites it. `grep -l "gov.uk/foreign-travel-advice" -r countries | wc -l` counts what is
+  left (147 files on 12 October 2026).
+- **Removing a GOV.UK sentence means replacing its content, not dropping it.** Above all a
+  statement about prison: if the travel advice was the only place a profile said how long a
+  person can be jailed, find the same fact in the country's statute, its regulator or courts, a
+  legal review or local press, and cite that. A filler sentence ("there are severe penalties") can
+  go only when the possession section already gives the penalty from a local source. Do not
+  replace it with an inference such as "the same penalties apply to visitors"; write what the
+  law says.
+- **Current law comes first.** When extending the research, the priority is the present state of
+  the law and the history of prohibition: the six scored sections checked against the statute
+  itself, then dated legal changes. Culture, science and industry milestones are secondary.
 - **Wikipedia is fine for dates and events, weak for first bans.** Colonial first restrictions
   usually need a statute database, a UN document or an academic paper.
 - **A statute's date is not always the first ban.** A country's "first narcotics law" may come
@@ -680,3 +698,53 @@ The checks see only what is in the files, so they stop at 99%. A country reaches
 every check passes and its file carries `complete: YYYY-MM-DD`, set by hand by whoever went
 through the country and found nothing left to add. An empty decade is a prompt to look, not
 proof of a gap: some decades had no event.
+
+
+## Book research intake: Jack Herer (12 October 2026)
+
+The supplied *The Emperor Wears No Clothes* EPUB has been used for a targeted historical
+research pass. See [the intake note](research/jack-herer-emperor.md) for edition limits,
+chapter locators, verified additions, existing coverage and remaining leads. Three
+context entries and accompanying articles were added (USDA Bulletin 404, the Siler
+report, and *Vernonia*); the 1985 book entry and 1942 film sourcing were revised. No
+adult scores changed. Treat Herer's industrial-causation and broad scientific claims
+as attributed advocacy until their underlying evidence has been checked.
+
+
+A second Herer pass added Schlichten's 1919 patent, the 1938 Popular Mechanics article,
+the California panel's report for 1989 and the later *Earls* school-testing ruling.
+Each has an article and primary-document or reproduced-original sourcing. The intake
+note records reproduction limits and unresolved dates. All nine articles touched in
+these passes carry `model: gpt-6.1-sol-medium`, as requested. Scores remain unchanged.
+
+
+## Cannabis: Global Histories — second pass (12 October 2026)
+
+A [second research pass](research/cannabis-global-histories-second-pass.md) inventoried
+103 existing book-citing entries and revisited chapters 9, 11 and 15. It added seven
+context events with articles, corrected the Lords medical-cannabis report to
+11 November 1998 while retaining its existing page ID, and separated the 1997 clinical
+trials conference. The note distinguishes book-only accounts from parliamentary
+records and the CAMS abstract, and records remaining verification limits. Eight new
+and two modified articles carry `model: gpt-6.1-sol-medium`. No adult scores changed.
+
+## Driving research batch (12 October 2026)
+
+Added India, Indonesia and Vietnam; expanded Germany, the UK and Czechia from official
+traffic laws and guidance. See the [driving research note](research/driving-rules-2026-10-12.md)
+for source limits and distinctions between specimen matrices, screening, statutory
+fine ceilings, medical defences and regional rules. These context updates do not move
+scores. The UK text now includes Scotland and distinguishes Northern Ireland.
+
+A second driving pass added Nigeria and Malaysia and expanded the Philippines,
+including differences between court penalties and scheduled payments, harm-dependent
+penalties, professional licences and test refusal. The research note retains
+Bangladesh and Sri Lanka findings pending verification of their evidential rules;
+a consumption-based prohibition alone does not establish a detectable-THC offence.
+Coverage is now 60 of 200 profiles. No scores or articles changed in this pass.
+
+A third pass added Jamaica, Brunei, and Trinidad and Tobago, bringing driving coverage
+to 63 of 200. It distinguishes Jamaica's smoking offence and ticket/court penalties,
+Brunei's ban commencement after imprisonment, and Trinidad and Tobago's separate
+alcohol-limit amendment. Ghana's new 2026 regime remains a primary-source follow-up.
+See the same research note for citations and unresolved testing details.

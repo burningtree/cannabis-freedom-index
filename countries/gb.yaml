@@ -22,7 +22,7 @@ cannabis_use:
   users: 3100000
 recreational: illegal
 medical: limited
-updated: 2026-10-11
+updated: 2026-10-12
 summary: >-
   A Class B drug; small amounts often end in a warning or community resolution. Medical cannabis is
   legal since 2018 but almost exclusively through private clinics.
@@ -151,16 +151,23 @@ context:
   driving:
     status: limit
     text: >-
-      It is an offence to drive with more than 2 micrograms of THC per litre of blood, whether
-      or not driving is affected; the government describes the limits for illegal drugs as a
-      zero-tolerance approach. The limits apply in England
-      and Wales. Police can use a roadside kit that screens for cannabis and require a blood
-      or urine sample at a station. A conviction brings a driving ban of at least a year, an
-      unlimited fine, up to six months in prison and a criminal record, and stays on the
-      licence for 11 years.
+      The THC limit is 2 micrograms per litre of whole blood in England and Wales and, since 21
+      October 2019, Scotland. Exceeding the limit can be an offence without proof of impaired
+      driving. A roadside saliva screen for cannabis is followed by evidential testing; a positive
+      screen alone is not the measured blood concentration. Patients taking a lawfully supplied
+      medicine as instructed can raise a medical defence to the specified-limit offence, but not
+      to driving while impaired. GOV.UK lists a minimum one-year driving ban, an unlimited fine
+      and up to six months in prison, with the conviction recorded on the licence for eleven
+      years. Northern Ireland instead prosecutes driving while unfit through drugs, with a
+      minimum one-year ban and a fine of up to £5,000; these Great Britain blood limits do not
+      apply there.
     sources:
       - govdd
       - govlim
+      - scot_driving
+      - drug_medical
+      - ni_driving
+
   visitors:
     status: none
     text: >-
@@ -170,7 +177,17 @@ context:
     sources:
       - pp
       - bmj
+
 sources:
+  ni_driving:
+    title: Northern Ireland government — Drug driving
+    url: https://www.nidirect.gov.uk/articles/drug-driving
+  scot_driving:
+    title: "Scottish Government — Drug driving and medicine: drug limits"
+    url: https://www.gov.scot/publications/drug-driving-advice-for-healthcare-professionals/pages/drug-limits/
+  drug_medical:
+    title: "Department for Transport — Drug driving guidance for healthcare professionals"
+    url: https://www.gov.uk/government/publications/drug-driving-and-medicine-advice-for-healthcare-professionals/drug-driving-guidance-for-healthcare-professionals
   cgh:
     type: chapter
     title: "Forces of Necessity: Lay Advocacy and the Remedicalization of Cannabis in the UK, 1973–2004"

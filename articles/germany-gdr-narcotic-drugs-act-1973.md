@@ -1,6 +1,6 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6.1-sol-medium
+written: 2026-10-12
 sources:
   - type: chapter
     title: "“Hashers Don’t Read Das Kapital”: East Germany, Socialist Prohibition, and Global Cannabis"
@@ -60,7 +60,9 @@ including the theory of cannabis as a gateway to heroin.
 The Stasi folded drugs into its view of the border, linking hashish smugglers with
 people who helped East Germans escape. When the Wall opened in November 1989, cannabis
 arrived with everything else, and in early 1990 the interim government admitted that
-drug imports had become a public health problem it had not prepared for.
+drug imports had become a public health problem it had not prepared for. East Berlin
+police created a [narcotics working group](/history/germany-east-berlin-narcotics-group-1990/)
+that year.
 
 The index records the 1973 Act for [Germany](/country/de/) as context for the East; the
 national score follows West German law.

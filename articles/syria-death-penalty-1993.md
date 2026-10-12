@@ -2,7 +2,7 @@
 sources:
   - title: قانون المخدرات السوري رقم 2 لعام 1993 — text as reproduced by Lawyer Egypt
     url: https://lawyeregypt.net/uncategorized/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D9%85%D8%AE%D8%AF%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D9%88%D8%B1%D9%89-%D8%B1%D9%82%D9%85-2-%D9%84%D8%B9%D8%A7%D9%85-1993/
-  - title: Amnesty International — Syria, death penalty for drug offences (MDE 24/002/1993, 6 April 1993)
+  - title: Amnesty International — document MDE 24/002/1993 on Syria's death penalty for drug offences (6 April 1993)
     url: https://www.amnesty.org/es/documents/MDE24/002/1993/en/
   - title: The Syrian Observer, translating Al-Watan — on drug cases before the courts (2 July 2014)
     url: https://syrianobserver.com/?p=32505

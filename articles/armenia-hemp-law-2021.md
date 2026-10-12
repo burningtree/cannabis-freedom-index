@@ -4,7 +4,7 @@ sources:
     url: https://evnreport.com/?p=12172
   - title: OC Media — Getting Hye, Armenia to legalise industrial hemp cultivation (5 February 2021)
     url: https://oc-media.org/getting-hye-armenia-to-legalise-industrial-hemp-cultivation
-  - title: PanARMENIAN.Net — Government approves draft law on industrial hemp (29 April 2021)
+  - title: PanARMENIAN.Net — report on the government's approval of the industrial hemp bill (29 April 2021)
     url: https://www.pan.am/en/292489
   - title: Balant et al. — Bridging past and present, exploring Cannabis traditions in Armenia, Journal of Cannabis Research 7:8 (2025)
     url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11780856/
