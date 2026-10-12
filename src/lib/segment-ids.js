@@ -28,8 +28,9 @@ export const CLUBS_STATUS = {
 };
 // Driving after use: what the law needs to convict a driver. Not part of the score.
 export const DRIVING_STATUS = {
-  impairment: { label: "Impairment must be shown", tone: "legal", help: "Driving is an offence only when the driver is shown to be impaired" },
+  impairment: { label: "Impairment must be shown", tone: "legal", help: "The reviewed driving offence requires evidence of drug influence or impairment; additional offences may apply" },
   limit: { label: "Fixed THC limit", tone: "decrim", help: "A set THC level in blood or saliva is an offence by itself, whether or not the driver is impaired" },
+  consumption: { label: "After consumption", tone: "partial", help: "The statute prohibits driving after drug consumption; this does not establish a laboratory THC cutoff" },
   zero: { label: "Zero tolerance", tone: "illegal", help: "Any detectable THC is an offence, however long ago the cannabis was used" },
 };
 // Visitors and foreigners: whether someone who does not live in the country can get cannabis legally.
@@ -44,8 +45,8 @@ export const STATUS_SECTIONS = {
   clubs: { name: "Cannabis clubs", chip: "Clubs", statuses: CLUBS_STATUS, tiers: { regulated: 5, tolerated: 4, underground: 2, none: 0 },
     sub: "Green means cannabis clubs are regulated or tolerated, orange that they work underground, red that none are known.",
     note: "The footing cannabis clubs stand on. Licensed shops and pharmacies are not counted as clubs." },
-  driving: { name: "Driving", chip: "Driving", statuses: DRIVING_STATUS, tiers: { impairment: 5, limit: 3, zero: 0 },
-    sub: "Green means a driver must be shown to be impaired, yellow that a fixed THC limit applies, red that any trace of THC is an offence.",
+  driving: { name: "Driving", chip: "Driving", statuses: DRIVING_STATUS, tiers: { impairment: 5, limit: 3, consumption: 2, zero: 0 },
+    sub: "Green marks a drug-influence or impairment offence, yellow a fixed THC limit, orange a prohibition after consumption, and red a detectable-THC offence. Read each profile for additional rules.",
     note: "What the law needs to convict a driver who has used cannabis." },
   visitors: { name: "Visitors and foreigners", chip: "Visitors", statuses: VISITORS_STATUS, tiers: { open: 5, residents: 3, none: 0 },
     sub: "Green means visitors can buy on the same terms as residents, yellow that legal supply is for residents only, red that nobody has legal access.",

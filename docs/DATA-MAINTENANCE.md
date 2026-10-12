@@ -186,7 +186,7 @@ text.
 ```yaml
 context:
   driving:
-    status: limit           # impairment | limit | zero
+    status: limit           # impairment | limit | consumption | zero
     text: >-
       A driver with 3.5 ng of THC per millilitre of blood serum commits an offence …
     sources:
@@ -204,9 +204,11 @@ context:
       - key
 ```
 
-- **`driving.status`** is what the law needs to convict a driver: `impairment` (the driver must be
-  shown to be impaired), `limit` (a set THC level in blood or saliva is an offence by itself) or
-  `zero` (any detectable THC). Give the limit and its unit, the penalty and licence consequences,
+- **`driving.status`** describes the reviewed offence trigger: `impairment` (evidence of drug
+  influence or impaired driving), `limit` (a set THC level in blood or saliva is an offence by itself),
+  `consumption` (a prohibition after drug consumption without a verified laboratory THC cutoff)
+  or `zero` (any detectable THC). Do not infer a detectable-THC offence merely from a prohibition
+  after consumption. Give the limit and its unit, the penalty and licence consequences,
   and any separate rule for medical patients, novice or professional drivers.
 - **`visitors.status`** is whether someone who does not live in the country can get cannabis
   legally: `open` (same terms as residents), `residents` (legal supply is for residents only) or
@@ -748,3 +750,14 @@ to 63 of 200. It distinguishes Jamaica's smoking offence and ticket/court penalt
 Brunei's ban commencement after imprisonment, and Trinidad and Tobago's separate
 alcohol-limit amendment. Ghana's new 2026 regime remains a primary-source follow-up.
 See the same research note for citations and unresolved testing details.
+
+A fourth driving pass added sixteen profiles, reaching 79 of 200 (39.5%). The shared
+`consumption` status now represents Bangladesh, Sri Lanka and Ethiopia without
+claiming a laboratory THC cutoff. Primary-text reviews preserve judicial exceptions,
+regional scope and court-versus-ticket distinctions; unresolved penalties and source
+access are recorded in the same research note. No articles were changed in this pass.
+
+A fifth pass added Monaco, Paraguay, Liechtenstein, Costa Rica, Ecuador, Mexico and
+Panama: 86 of 200 driving sections (43%). The research note records current versus
+deferred amendments, the scope of Mexico’s federal-road rule, prescription
+evidential exceptions and source-access limits. Scores and articles were unchanged.
