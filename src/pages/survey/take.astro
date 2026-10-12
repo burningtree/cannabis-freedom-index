@@ -36,7 +36,7 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
           <li>Only counts are published. What you write in text boxes is read by the researchers and never published as it stands.</li>
         </ul>
         <p class="sv-editing" id="svEditing" hidden></p>
-        <label class="sv-check"><input type="checkbox" id="svAdult" /> <span>I am 18 or older and I am answering for myself.</span></label>
+        <label class="sv-check"><input type="checkbox" id="svAdult" /> <span>I am {survey.min_age} or older and I am answering for myself.</span></label>
       </section>
 
       {survey.sections.map((s) => (
@@ -172,7 +172,7 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
     }
     // a section may be left only when its required questions are answered
     function missing(step) {
-      if (step.dataset.step === "start") return document.getElementById("svAdult").checked ? null : "Please confirm that you are 18 or older.";
+      if (step.dataset.step === "start") return document.getElementById("svAdult").checked ? null : `Please confirm that you are ${cfg.min_age} or older.`;
       const r = repeat(step.dataset.step);
       const blocks = r ? blocksOf(r).filter((b) => Object.keys(read(b)).length) : [step];
       for (const b of blocks) {

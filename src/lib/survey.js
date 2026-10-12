@@ -17,4 +17,4 @@ export { results };
 // every question that is counted, in order, with the section it belongs to
 export const counted = survey.sections.flatMap((s) => s.questions.filter((q) => q.type !== "text").map((q) => ({ ...q, section: s.id })));
 // what the form needs to know to send answers: nothing secret
-export const submitConfig = { edition: survey.edition, open: survey.open && Boolean(survey.nostr.pubkey) && survey.nostr.relays.length > 0, ...survey.nostr };
+export const submitConfig = { edition: survey.edition, min_age: survey.min_age, open: survey.open && Boolean(survey.nostr.pubkey) && survey.nostr.relays.length > 0, ...survey.nostr };

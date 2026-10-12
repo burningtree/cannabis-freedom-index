@@ -42,7 +42,7 @@ for (let i = 0; i < N; i++) {
   const home = pick(HOME), s = score(home) / 100; // 0–1, how free the law is at home
   const liberal = gauss(); // the person's own leaning
   const r = { residence: home };
-  r.age = pick({ a18: 22, a25: 34, a35: 22, a45: 12, a55: 7, a65: 3 });
+  r.age = pick({ a16: 3, a18: 21, a25: 33, a35: 21, a45: 12, a55: 7, a65: 3 });
   r.gender = pick({ man: 62, woman: 30, other: 4, skip: 4 });
   r.setting = pick({ city: 52, town: 33, rural: 15 });
   const kind = pick({ use: 68, past: 12, never: 14, study: 6 });

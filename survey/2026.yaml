@@ -22,6 +22,10 @@
 
 edition: 2026
 title: State of Cannabis 2026
+# The youngest age the form accepts. 16 is the highest age of digital consent in any EU country,
+# so a respondent of that age can agree for themselves everywhere in the EU. Lowering it means
+# collecting from children who, in most countries, cannot consent without a parent.
+min_age: 16
 
 # Nothing is sent anywhere while `open` is false: answers are then kept in the browser only.
 # To open the survey, generate a Nostr key pair for the project, keep the secret key offline, put
@@ -43,7 +47,7 @@ sections:
         text: How old are you?
         type: single
         required: true
-        options: {a18: 18 to 24, a25: 25 to 34, a35: 35 to 44, a45: 45 to 54, a55: 55 to 64, a65: 65 or older}
+        options: {a16: 16 to 17, a18: 18 to 24, a25: 25 to 34, a35: 35 to 44, a45: 45 to 54, a55: 55 to 64, a65: 65 or older}
       - id: gender
         text: Gender
         type: single
