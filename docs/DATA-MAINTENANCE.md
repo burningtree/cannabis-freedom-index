@@ -878,3 +878,11 @@ through the 1946 Protocol or joined it as amended before 1961 (treaty 5 of the s
 The League-era ratification dates of the 1920s and 1930s are not in that table and were not
 added. The 1971 Convention on Psychotropic Substances (treaty 16, which schedules THC) was
 left out on purpose, to keep the timelines from filling with treaty boilerplate.
+
+The Protocol of 25 March 1972 amending the Single Convention (treaty 17) was added later the
+same day: 86 entries, ids ending `-single-convention-protocol-<year>`. It matters to the index
+because it lets parties offer treatment and rehabilitation as an alternative to punishing
+users. The 39 countries whose Protocol date is the same day as a treaty entry they already had
+(mostly those that acceded to the amended convention in one step) got no separate entry, by
+the same rule as above. Like the other treaty entries these are unscored and can be removed
+by their id pattern.
