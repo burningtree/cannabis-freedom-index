@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: "Wikipedia (Portuguese) — Cannabis no Brasil"
     url: https://pt.wikipedia.org/wiki/Cannabis_no_Brasil

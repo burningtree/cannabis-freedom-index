@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Global Drug Policy Observatory, Swansea University (Maria-Goretti Ane) — Ghana Strives for a More Humane Drug Policy, June 2018 (PDF)
     url: https://iss-www-00.swan.ac.uk/media/Ghana-Strives-for-a-More-Humane-Drug-Policy.pdf

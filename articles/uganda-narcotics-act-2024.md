@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Uganda — Narcotic Drugs and Psychotropic Substances (Control) Act, 2024 (Act 2 of 2024), Gazette text (ULII, PDF)
     url: https://media.ulii.org/media/legislation/109240/source_file/9ca5653ec0919d44/ug-act-2024-2-publication-document.pdf

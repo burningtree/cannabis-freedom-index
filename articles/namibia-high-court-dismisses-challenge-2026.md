@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: The Namibian (Werner Menges) — Attempt to legalise cannabis fails in High Court (12 July 2026)
     url: https://www.namibian.com.na/attempt-to-legalise-cannabis-fails-in-high-court/

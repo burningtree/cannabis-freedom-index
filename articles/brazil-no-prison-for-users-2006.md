@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Lei nº 11.343, de 23 de agosto de 2006 (Planalto, consolidated text)
     url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11343.htm

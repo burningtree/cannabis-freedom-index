@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Government of the Russian Federation — Resolution No. 76 of 7 February 2006 (text at legalacts.ru)
     url: https://legalacts.ru/doc/postanovlenie-pravitelstva-rf-ot-07022006-n-76/

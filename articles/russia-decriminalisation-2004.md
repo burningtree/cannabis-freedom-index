@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: "Kommersant (Yulia Osipova) — Для России это был слишком большой рывок вперед (21 May 2005)"
     url: https://www.kommersant.ru/doc/579582

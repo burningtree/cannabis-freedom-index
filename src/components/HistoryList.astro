@@ -57,7 +57,7 @@ const most = Math.max(...historyPeriods.map((p) => p.items.length));
     <a href={href(p)} aria-current={p === period ? "page" : undefined} title={`${p.label}: ${p.items.length} entries`}>
       <span class="hp-n">{p.items.length}</span>
       <i style={`height:${Math.max(3, (p.items.length / most) * 100)}%`}></i>
-      <span class="hp-label">{p.label}</span>
+      <span class="hp-label">{p.short}</span>
     </a>
   ))}
 </nav>

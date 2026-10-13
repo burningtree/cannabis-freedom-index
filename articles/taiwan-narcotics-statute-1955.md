@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Wikisource — 戡亂時期肅清煙毒條例 (民國44年), promulgated 3 June 1955
     url: https://zh.wikisource.org/wiki/%E6%88%A1%E4%BA%82%E6%99%82%E6%9C%9F%E8%82%85%E6%B8%85%E7%85%99%E6%AF%92%E6%A2%9D%E4%BE%8B_(%E6%B0%91%E5%9C%8B44%E5%B9%B4)

@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: "Wikipedia — Legalization of non-medical cannabis in the United States"
     url: https://en.wikipedia.org/wiki/Legalization_of_non-medical_cannabis_in_the_United_States

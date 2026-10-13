@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: "Wikipedia (Italian) — Decreto del presidente della Repubblica 9 ottobre 1990, n. 309"
     url: https://it.wikipedia.org/wiki/Decreto_del_presidente_della_Repubblica_9_ottobre_1990,_n._309

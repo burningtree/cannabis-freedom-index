@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: "Prothom Alo — কোন মাদকের জন্য কী সাজা (what sentence for which drug), 28 October 2018"
     url: https://www.prothomalo.com/bangladesh/কোন-মাদকের-জন্য-কী-সাজা

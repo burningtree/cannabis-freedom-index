@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Botswana Daily News (BOPA, Thato Mosinyi) — report on the Court of Appeal ruling in the Fresh Standard case (8 November 2022)
     url: https://dailynews.gov.bw/news-detail/70087

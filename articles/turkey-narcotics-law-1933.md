@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Türkiye — Law No. 2313 on the Control of Narcotic Substances, consolidated text with amendment notes (Mevzuat Bilgi Sistemi)
     url: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2313&MevzuatTur=1&MevzuatTertip=3

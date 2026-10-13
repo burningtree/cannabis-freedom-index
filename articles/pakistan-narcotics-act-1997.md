@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Pakistan — Control of Narcotic Substances Act, 1997, consolidated with amendments to Federal Act XXXVIII of 2023 (Sindh Judicial Academy, PDF)
     url: https://sja.gos.pk/assets/Updated_Laws/Control%20of%20Narcotic%20Substances%20Act%2C%201997%20%28Amendments%20upto%20date%29.pdf

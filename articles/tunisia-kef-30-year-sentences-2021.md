@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Meshkal (Ghaya Ben Mbarek) — After 30-year jail sentence for cannabis users, protesters demand decriminalization (22 February 2021)
     url: https://meshkal.org/after-30-year-jail-sentence-for-cannabis-users-protesters-demand-decriminalization/

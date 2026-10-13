@@ -175,6 +175,24 @@ context:
 - Neither section moves a score. If research for them shows the law or practice differs from a
   scored segment, fix the segment and add a history entry as usual.
 - `node scripts/data-status.cjs clubs` and `… black_market` list what is done and what is left.
+- **Seizure figures in bulk (13 October 2026).** Two official tables gave about a hundred
+  profiles a first, minimal `black_market` section: kilograms of herbal cannabis and resin
+  seized in the latest year against the year before. They are a floor, not the full picture;
+  replace or extend them when a country gets real market research.
+  - *Europe*, source key `euda_szr`: the EUDA Statistical Bulletin, seizures page
+    (`euda.europa.eu/data/stats2026/szr_en`). The page loads each table from
+    `/modules/sbdata/SBDataService2026.cfc?method=fetchxml&tableid=…` (herbal kg `SZR-2-1-2`,
+    resin kg `SZR-2-1-1`, number of seizures `SZR-1-1-2` and `SZR-1-1-1`, plants `SZR-2-1-3`).
+    It answers a browser but refuses plain fetches. The offence tables (`DLO-03-1-0` total,
+    `DLO-03-2-0` use) are empty for Denmark, Estonia, Finland, Ireland, Romania, Sweden and
+    Norway.
+  - *Rest of the world*, source key `unodc_szr`: the UNODC data portal's drug-seizure
+    dashboard (`data.unodc.org/datareport/drug-seizure`), figures as reported by governments
+    in kilogram equivalents, 2018 onwards. Read it in a browser; nothing needs downloading.
+    Some reported values are plainly wrong units: a country was skipped when its latest
+    figure was more than fifty times above or below the year before (Afghanistan, Bosnia,
+    Cabo Verde, Israel, Montenegro) or implausibly small (Uganda, Trinidad, Suriname,
+    Mauritania). Plant counts there are converted to kilograms and were left out.
 
 
 ## Driving, visitors and arrests
@@ -837,3 +855,26 @@ court ranges with the provenance limit of the reproduced statutory compilation.
 The old Kuwait police tariff is marked as superseded. Jordan's 2026 amendment
 requires full-text retrieval before a driving addition. Scores were preserved;
 no articles were touched.
+
+## Treaty accession entries (13 October 2026)
+
+Every country now has, where the United Nations Treaty Collection lists it, a context entry for
+the day it joined the Single Convention of 1961 (or the convention as amended in 1972, for
+countries that only ever joined the amended text) and one for the 1988 trafficking convention:
+362 entries, category `international`, ids ending `-single-convention-<year>` and
+`-1988-convention-<year>`. They are not scored. The dates come from the status tables at
+`treaties.un.org` (chapter VI, treaties 15, 18 and 19), read in a browser; `a` is accession,
+`d` succession, no letter ratification. Eleven countries already had a Single Convention entry
+and were skipped. Where a country joined two conventions on the same day (34 cases, mostly
+successor states and late joiners) the two are one entry, titled "… joins two UN drug
+conventions on one day", so the timeline does not show what looks like a duplicate. Successor states carry the date they deposited their succession, not the
+date their predecessor joined (Czechia 1993, Croatia 1993, Serbia 2001), and Russia, Belarus
+and Ukraine carry the Soviet-era ratifications of 1964.
+
+A further 54 entries, ids ending `-opium-convention-protocol-<year>` or
+`-opium-convention-<year>`, record the International Opium Convention of 1925 (the first
+treaty to control Indian hemp) for the countries that carried it over to the United Nations
+through the 1946 Protocol or joined it as amended before 1961 (treaty 5 of the same chapter).
+The League-era ratification dates of the 1920s and 1930s are not in that table and were not
+added. The 1971 Convention on Psychotropic Substances (treaty 16, which schedules THC) was
+left out on purpose, to keep the timelines from filling with treaty boilerplate.

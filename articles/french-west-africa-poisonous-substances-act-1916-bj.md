@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: "United Nations — Laws and regulations communicated on narcotic drugs: French West Africa, E/NL.1953/57"
     url: https://documents.un.org/api/symbol/access?s=E/NL.1953/57&l=en&t=pdf

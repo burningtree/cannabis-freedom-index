@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Undang-Undang Republik Indonesia Nomor 22 Tahun 1997 tentang Narkotika (Wikisource)
     url: https://id.wikisource.org/wiki/Undang-Undang_Republik_Indonesia_Nomor_22_Tahun_1997

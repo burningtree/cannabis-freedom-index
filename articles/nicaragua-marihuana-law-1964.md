@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Leybook — Ley No. 1034, Disposiciones relativas a las hierbas marihuana y adormidera (La Gaceta No. 286, 14 December 1964)
     url: https://www.leybook.com/doc/213

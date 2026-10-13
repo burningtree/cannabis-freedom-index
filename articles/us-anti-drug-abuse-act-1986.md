@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: "Wikipedia — Anti-Drug Abuse Act of 1986"
     url: https://en.wikipedia.org/wiki/Anti-Drug_Abuse_Act_of_1986

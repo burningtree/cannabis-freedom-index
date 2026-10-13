@@ -286,7 +286,11 @@ export const historyPeriods = (() => {
     const first = i === merged.length - 1 ? year(items.at(-1)) : from; // the oldest page starts at its first entry
     const end = Math.min(to, thisYear);
     const label = first % 10 === 0 && end === first + 9 ? `${first}s` : `${first}–${end}`;
-    return { slug: `${first}-${end}`, label, from: first, to: end, items };
+    // under a bar of the histogram there is room for seven characters: "1925–29", "1890–09", "to 1869"
+    const short = label.endsWith("s") ? label
+      : i === merged.length - 1 ? `to ${end}`
+      : end - first < 100 ? `${first}–${String(end).slice(2)}` : label;
+    return { slug: `${first}-${end}`, label, short, from: first, to: end, items };
   });
 })();
 

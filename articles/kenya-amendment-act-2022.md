@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Kenya Law — Narcotic Drugs and Psychotropic Substances (Control) Act, text as amended by Act No. 4 of 2022
     url: https://new.kenyalaw.org/akn/ke/act/1994/4/eng@2022-12-31

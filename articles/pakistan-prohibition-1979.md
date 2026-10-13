@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Prohibition (Enforcement of Hadd) Order, 1979 (President's Order No. 4 of 1979), text at pakistani.org
     url: https://pakistani.org/pakistan/legislation/zia_po_1979/po4_1979.html

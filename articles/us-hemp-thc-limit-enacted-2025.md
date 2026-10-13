@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: DLA Piper — New federal restrictions on hemp and hemp-derived products, top points (18 November 2025)
     url: https://www.dlapiper.com/insights/publications/2025/11/new-federal-restrictions-on-hemp-and-hemp-derived-products

@@ -1052,6 +1052,8 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .hist-periods .hp-n { font: 400 10.5px var(--mono); padding-bottom: 4px; text-align: center; }
 .hist-periods .hp-label { position: relative; height: 0; font: 400 10px var(--mono); letter-spacing: .02em; text-align: center; white-space: nowrap; }
 .hist-periods .hp-label { top: 8px; }
+/* between phone and wide desktop the columns are narrower than a label: every second one is shown */
+@media (max-width: 1560px) { .hist-periods a:nth-child(even):not([aria-current]) .hp-label { visibility: hidden; } }
 /* the column is narrower than its number and its label: both stay centred over it */
 .hist-periods .hp-n, .hist-periods .hp-label { justify-self: center; }
 .hist-periods a:hover { color: var(--text); }

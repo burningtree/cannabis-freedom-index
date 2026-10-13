@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: National People's Congress Standing Committee — Decision on the Prohibition of Narcotic Drugs, 28 December 1990 (Wikisource)
     url: https://zh.wikisource.org/wiki/全国人民代表大会常务委员会关于禁毒的决定

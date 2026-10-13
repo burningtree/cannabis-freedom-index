@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: "Wikipedia (French) — Cannabis en France"
     url: https://fr.wikipedia.org/wiki/Cannabis_en_France

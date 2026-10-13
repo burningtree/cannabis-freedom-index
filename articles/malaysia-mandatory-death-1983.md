@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Malaysia — Dangerous Drugs Act 1952 (Act 234), incorporating amendments up to Act 846 (Ministry of Health, PDF)
     url: https://pharmacy.moh.gov.my/sites/default/files/document-upload/dangerous-drugs-act-1952-act-234.pdf

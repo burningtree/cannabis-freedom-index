@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: Law No. 9 of 1987 on combating narcotic drugs and dangerous psychotropic substances, unofficial Arabic copy (Mohamah.net)
     url: https://www.mohamah.net/law/?p=47317

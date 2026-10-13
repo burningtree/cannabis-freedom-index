@@ -1,4 +1,6 @@
 ---
+model: opus-5.5
+written: 2026-10-12
 sources:
   - title: "Wikipedia — Boggs Act of 1951"
     url: https://en.wikipedia.org/wiki/Boggs_Act_of_1951
