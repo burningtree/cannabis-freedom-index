@@ -1,6 +1,6 @@
 ---
 title: Esrar
-summary: The everyday Turkish word for cannabis means "secrets". A dervish poet was already using it for the drug before 1444, and it named the hashish dens that Ottoman and Republican police spent a century trying to close.
+summary: The everyday Turkish word for cannabis means "secrets". A medieval dervish poet was already using it for the drug, and it named the hashish dens that Ottoman and Republican police spent a century trying to close.
 origin: Turkish, from Arabic asrār, "secrets"
 spelling:
   - { text: "esrar", lang: Turkish }
@@ -10,9 +10,20 @@ countries: [tr]
 history: [turkey-esrar-tekkes-closed-1857, turkey-esrar-sale-ban-1863, turkey-police-regulation-1913, turkey-narcotics-law-1933]
 history_cards: [turkey-esrar-sale-ban-1863]
 related: [language/hashish, traditions/rebetiko-and-the-tekes, traditions/hashish-in-egypt]
-model: opus-5.5
+image:
+  src: ../../src/assets/culture/esrar-bektashi-dervish-1868.jpg
+  fit: contain
+  alt: Nineteenth-century engraving of a seated Ottoman Bektashi dervish smoking hashish through a pipe.
+  caption: A Bektashi dervish smoking hashish in an 1868 engraving, documenting the Ottoman tradition of esrar consumption.
+  credit: "John P. Brown, The Dervishes; or, Oriental Spiritualism (1868), p. 310. Public domain; via Internet Archive / Princeton Theological Seminary Library."
+  credit_url: https://archive.org/details/dervishesororien00brow/page/310/mode/2up
+model: gpt-6
 written: 2026-10-14
 sources:
+  - title: "John P. Brown — The Dervishes; or, Oriental Spiritualism (1868), p. 310"
+    url: https://archive.org/details/dervishesororien00brow
+  - title: "İstanbul Ansiklopedisi — Esrar, Esrarkeşlik, Esrarkeşler"
+    url: https://istanbulansiklopedisi.org/handle/rek/10394
   - title: Nişanyan Sözlük — esrar
     url: https://www.nisanyansozluk.com/kelime/esrar
   - title: Nişanyan Sözlük — esrarengiz
@@ -33,9 +44,9 @@ How "secrets" came to mean hashish is not explained by the dictionaries. What th
 
 ## From secrets to the drug
 
-The etymological dictionary of Sevan Nişanyan derives *esrar* from Arabic *asrār*, the plural of *sirr*, "secret", from the root s-r-r. Its first Turkish quotation, from a translation of 1341, uses it in that sense: the secrets of the saints. The next, from the poems of Kaygusuz Abdal, who died about 1444, already means the drug. In it someone is forever *esrār yiyüp*, "eating esrar", and shaving his beard.
+The [etymological dictionary of Sevan Nişanyan](https://www.nisanyansozluk.com/kelime/esrar) derives *esrar* from Arabic *asrār*, the plural of *sirr*, "secret", from the root s-r-r. Its first Turkish quotation, from a translation of 1341, uses it in that sense: the secrets of the saints. The next, from the poems of Kaygusuz Abdal, whose death is traditionally dated to 1444, already means the drug. In it someone is forever *esrār yiyüp*, "eating esrar", and shaving his beard.
 
-The verb is worth noticing. Before tobacco reached the Ottoman world, cannabis was mostly eaten, in pastes and pills, or its leaves were burnt and the smoke breathed; mixing it with tobacco in a water pipe came later. By 1900, when Şemseddin Sami compiled his Turkish dictionary, the user was an *esrarkeş*, one who "draws" esrar, as one draws on a pipe.
+Before tobacco arrived, cannabis was eaten in pastes and pills or its smoke inhaled; tobacco mixtures in water pipes came later. Şemseddin Sami’s 1900 dictionary called the user an *esrarkeş*, one who “draws” esrar, as on a pipe.
 
 ## The dervishes' green leaves
 
@@ -47,7 +58,9 @@ Two cautions belong here. Karamustafa writes that it is possible the leaves had 
 
 ## Dens, guilds and names
 
-Later the word moved into the city. The seventeenth-century traveller Evliya Çelebi described a guild in Istanbul that prepared pastes, ointments and syrups from esrar in the shops of the Addicts' Market near the Süleymaniye mosque. By the nineteenth century there were *esrar tekkeleri*. Despite the name, which is also the word for a dervish lodge, they were not religious houses but coffeehouse rooms where the owner sold a smoke of esrar in a water pipe or a gourd pipe called a *kabak*. In the Greek-speaking towns of Ottoman Anatolia the hashish dens were called *tekédes*, and they appear in the history of [rebetiko](/culture/traditions/rebetiko-and-the-tekes/).
+[John P. Brown’s *The Dervishes; or, Oriental Spiritualism*](https://archive.org/details/dervishesororien00brow), published in 1868, includes the engraving “A Bektash Dervish Inhaling Hasheesh” on page 310. Its seated smoker illustrates how a nineteenth-century author represented hashish use among dervishes. It is an engraving, not a documentary photograph or evidence that every Bektashi followed the practice.
+
+Later the word moved into the city. The seventeenth-century traveller Evliya Çelebi described a guild in Istanbul that prepared pastes, ointments and syrups from esrar in the shops of the Addicts' Market near the Süleymaniye mosque. By the nineteenth century there were *esrar tekkeleri*. Despite the name, which is also the word for a dervish lodge, they were not religious houses but specialized cannabis-smoking coffeehouse rooms, also called *esrar kahvehaneleri*. These should not be confused with ordinary Ottoman coffeehouses serving tobacco. The [*İstanbul Ansiklopedisi* entry](https://istanbulansiklopedisi.org/handle/rek/10394) records the name *tekke* for such rooms and describes a *kabak* made from a hollowed coconut shell, with a bowl and reed mouthpiece. Its account concerns specifically hashish-smoking establishments. In the Greek-speaking towns of Ottoman Anatolia the hashish dens were called *tekédes*, and they appear in the history of [rebetiko](/culture/traditions/rebetiko-and-the-tekes/).
 
 | Word | Meaning |
 |---|---|

@@ -1,0 +1,11 @@
+# Esrar: Brown's 1868 engraving
+
+Extracted “A Bektash Dervish Inhaling Hasheesh” directly from Internet Archive's Princeton Theological Seminary Library scan of John P. Brown, *The Dervishes; or, Oriental Spiritualism* (London: Trübner, 1868). Inspected the original illustration and title before captioning. Contrary to the suggested facing-plate locator, this edition prints the engraving within page 310. The illustration list also associates it with 310.
+
+Source file: `https://archive.org/download/dervishesororien00brow/dervishesororien00brow_jp2.zip/dervishesororien00brow_jp2/dervishesororien00brow_0330.jp2` (2067 × 3292). Cropped the illustration and its original caption at x270/y450, 790 × 970 pixels; no upscaling, recolouring or reconstruction. Retained all visible figure, pipe, smoke and surrounding objects. Local asset: `src/assets/culture/esrar-bektashi-dervish-1868.jpg`.
+
+The archive records publication in 1868, author John Porter Brown (1814–1872), and `NOT_IN_COPYRIGHT`. Credit identifies Brown's publication, rather than inventing an engraver. The Library of Congress alternative returned 403 and was not used. Brown's prose includes nineteenth-century Orientalist generalizations and botanical errors; it is used to identify the representation, not as modern pharmacological or ethnographic authority.
+
+Added the user’s caption and alt text and a link to the original book. Text explicitly identifies the engraving as a nineteenth-century representation. Qualified Kaygusuz Abdal's death as traditionally dated to 1444. Retained the existing etymology and historical research citations. Read the Istanbul Encyclopedia's transcribed entry, which specifically calls cannabis-smoking coffeehouses *tekke* and describes coconut-shell *kabak* water pipes. Used that narrow material while avoiding its stigmatizing claims as factual descriptions of users. The 2024 Kızılkaya/Özkan research abstract was also opened; it confirms continued Ottoman and Republican suppression of these establishments.
+
+Verification: local crop visually inspected. Set `fit: contain` so the portrait engraving and printed title remain visible in the landscape-shaped lead-image area. Body is 890 words. Build passed (2,764 pages); browser confirmed the image loads and requested alt, caption and credit render. `git diff --check` passed.

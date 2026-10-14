@@ -6,9 +6,18 @@ countries: [cn]
 history: [china-yanghai-cannabis-study-2008, china-jiayi-cannabis-shroud-2016, china-jirzankal-study-2019, china-xinjiang-hashish-trade-ended-1934, china-narcotic-1985]
 history_cards: [china-yanghai-cannabis-study-2008, china-jiayi-cannabis-shroud-2016, china-jirzankal-study-2019]
 related: [traditions/the-scythian-vapour-bath, traditions/hemp-in-the-taoist-censer, language/ma]
-model: opus-5.5
+image:
+  src: ../../src/assets/culture/jiayi-cannabis-burial-2016.jpg
+  fit: contain
+  alt: Overhead archaeological photograph of a 2,500-year-old grave in Xinjiang containing human skeletal remains and thirteen preserved cannabis plants laid across the body.
+  caption: Cannabis plants arranged over a human burial at Jiayi Cemetery, Xinjiang, approximately 2,500 years ago. Archaeological photograph published by Jiang et al., 2016.
+  credit: Jiang et al., Economic Botany (2016), tomb M231, panel (a); via Live Science.
+  credit_url: https://doi.org/10.1007/s12231-016-9351-1
+model: gpt-6
 written: 2026-10-14
 sources:
+  - title: Live Science — 2,500-Year-Old Burial Hints at Ancient Cannabis Use (24 October 2016), excavation figure credited to Jiang et al.
+    url: https://www.livescience.com/56596-cannabis-shroud-found-in-ancient-grave.html
   - title: Journal of Experimental Botany — Russo et al., Phytochemical and genetic analyses of ancient cannabis from Central Asia (2008)
     url: https://academic.oup.com/jxb/article/59/15/4171/488356
   - title: Economic Botany — Jiang et al., Ancient Cannabis Burial Shroud in a Central Eurasian Cemetery (2016)
@@ -19,9 +28,9 @@ sources:
     url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6561734/
 ---
 
-In the dry basins and high valleys of Xinjiang, in China's far west, archaeologists have found cannabis in graves of the first millennium BCE. At Yanghai a man was buried with a basket and a bowl of ground plant. At Jiayi thirteen whole plants were laid across a man's body. At Jirzankal, high in the Pamirs, the mourners burnt cannabis on hot stones in wooden braziers. Desert air kept what would have rotted anywhere else.
+In Xinjiang, in [China](/country/cn/)’s far west, archaeologists have found cannabis in first-millennium BCE graves. Yanghai held a basket and bowl of plant material; Jiayi held thirteen nearly complete plants across a man’s body. At Jirzankal, wooden braziers preserved residues of burnt cannabis.
 
-The finds matter because they are things, not stories. The oldest written account of people using cannabis for its effect is Herodotus' description of the [Scythians](/culture/traditions/the-scythian-vapour-bath/), a traveller's report at second hand. These graves show what was actually put beside the dead. They do not show what the people who put it there believed, and the scientists who studied them are careful to say so.
+These are physical finds, distinct from written accounts such as Herodotus’ description of the [Scythians](/culture/traditions/the-scythian-vapour-bath/). They reveal materials placed with the dead, while beliefs and purposes require interpretation.
 
 ## Three cemeteries
 
@@ -41,13 +50,13 @@ How the man or his people took it is unknown. No pipe or brazier was found with 
 
 ## A shroud of whole plants
 
-The Jiayi cemetery, also in the Turpan basin, belonged to the people archaeologists call the Subeixi culture, pastoralists who later took to farming as well. One of its 240 graves held a man of about 35, his head on a willow pillow. Thirteen cannabis plants, nearly whole, had been laid diagonally across his chest, their roots under his pelvis and their tops reaching up beside his face.
+[Jiang and colleagues’ study](https://link.springer.com/article/10.1007/s12231-016-9351-1) associates Jiayi with the Subeixi culture in the Turpan Basin. Radiocarbon dating places the burial approximately 2,800–2,400 years ago. One of its 240 graves held a man of about 35, his head on a reed pillow. Thirteen cannabis plants, nearly whole, had been laid diagonally across his chest, their roots under his pelvis and their tops reaching up beside his face.
 
 The flower heads were almost ripe, so the burial probably took place in late summer, and the plants seem to have been grown nearby. The team led by Hongen Jiang noted that no hemp cloth had been found in the Turpan burials and that the seeds were too small to be worth eating. Their conclusion was ritual or medicinal use, perhaps both.
 
 ## Smoke at the graveside
 
-![Wooden braziers and burnt stones from the Jirzankal tombs, with a plan and aerial view of the cemetery](../../src/assets/culture/jirzankal-braziers.jpg "The Jirzankal cemetery and the braziers found in its tombs. | Ren et al., Science Advances 2019, CC BY-NC 4.0 | https://pmc.ncbi.nlm.nih.gov/articles/PMC6561734/")
+![Wooden braziers and burnt stones from the Jirzankal tombs, with a plan and aerial view of the cemetery](../../src/assets/culture/jirzankal-braziers.jpg "The Jirzankal cemetery and the braziers found in its tombs. | X. Wu, Institute of Archaeology, Chinese Academy of Social Sciences; Ren et al., Science Advances 2019, CC BY-NC 4.0 | https://pmc.ncbi.nlm.nih.gov/articles/PMC6561734/")
 
 Jirzankal lies on the Tashkurgan river in the Pamirs, a passage between China, Central Asia and south-west Asia. Its tombs contained glass beads, silk and angular harps. Ten wooden braziers came from eight of them, holding stones blackened by fire. When chemists tested the charred insides, nine of the ten carried traces of cannabis, and so did two of the stones. The outsides, used as a control, carried none. The residue was richer in the products of THC than wild plants usually are, which suggests that stronger plants were chosen, or that the mountains produced them.
 
@@ -57,8 +66,4 @@ The authors read the braziers as part of the funeral itself: hot stones laid on 
 
 None of the three sites tells us what the plant meant. The words "shaman" and "ritual" are inferences from grave goods. The chemistry shows that the plants were drug types, not how much anyone felt, how often the living used them, or whether the custom reached beyond a few families of rank. The three finds also come from different communities: the Turpan graves from oasis people, Jirzankal from a mountain cemetery where ten of the 34 people tested had grown up elsewhere.
 
-What they do show together is that by the first millennium BCE people in this region grew, or at least chose, drug-type cannabis, and gave it to the dead.
-
-## The same ground, later
-
-The region kept its association with the drug. Xinjiang's hashish was exported legally to British India under a tariff until [China ended the trade in 1934](/history/china-xinjiang-hashish-trade-ended-1934/). Since [1985](/history/china-narcotic-1985/) China has listed cannabis as a narcotic, while hemp for fibre and seed is still grown. When the Yanghai study appeared in 2008, its authors knew of no older documentation of cannabis as a pharmacologically active plant anywhere.
+The region later retained its association with cannabis. Xinjiang's hashish was exported legally to British India under a tariff until [China ended the trade in 1934](/history/china-xinjiang-hashish-trade-ended-1934/). Since [1985](/history/china-narcotic-1985/) China has listed cannabis as a narcotic, while hemp for fibre and seed is still grown.

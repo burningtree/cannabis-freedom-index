@@ -1,0 +1,9 @@
+# Dope: 1954 tabloid artifact
+
+Downloaded the preferred newspaper clipping from the image URL supplied by the user and visually inspected it. Local asset: `src/assets/culture/dope-street-the-people-1954.png`, original 1015 × 749 pixels. Preserved the entire supplied clipping: prominent headline, Duncan Webb byline, text, street photograph, scan imperfections and existing cut edges. No restoration, crop or reconstruction. `fit: contain` prevents the site's lead-image display from cutting away the headline.
+
+Opened Alex Brown's *Cannabis in the 1950s British Tabloids*, Points, 10 September 2020 (updated 13 August 2023). Reference 9 identifies Duncan Webb, “London’s Drug Fiends Exposed: Dope Street”, *The People*, 20 June 1954, page 3. The clipping visibly discusses marijuana and jazz musicians. Added the requested caption and alt text and credited the newspaper, reporter and reproducing history blog. No open licence or reproduction permission verified, and none claimed; local implementation follows the user's relaxed image policy. Alternative book cover not needed.
+
+Read Etymonline and Oxford Learner's Dictionary: Dutch dipping-sauce origin, opium-related narcotic sense by 1889, and geographically variable cannabis/heroin meanings are retained. Added a section connecting the pictured artifact to Brown's analysis of jazz, immigration, racial mixing and moral panic. Racist and sensational claims are attributed to tabloid framing, not adopted as descriptions of the community. No inference that all uses of “dope” meant cannabis. No score or timeline changes; no generic atlas-card association added.
+
+Verification: build passed (2,764 pages); browser confirmed the image loads with `contain`, original headline and clipping composition preserved, and requested caption/alt/credit rendered. Body is 519 words. `git diff --check` passed.

@@ -1,0 +1,11 @@
+# Zatla: Tunisian legalization activists
+
+Used the preferred UltraTunisia photograph from its 18 February 2021 interview with Karim Chiair. The original article caption identifies Karim Chiair and Saber Abidi as activists in the coalition for regulating cannabis. The image shows two men with a banner contrasting a UN emblem plus cannabis with “LEGAL”, and Tunisia's flag plus cannabis with handcuffs. The article distinguishes that advocacy message from actual law and makes no universal-legality claim.
+
+The direct URL returned access-denied HTML in curl. The normal browser loaded the article and its image; downloaded the observed image using the browser's media-download API and copied the original 966 × 543 WebP into `src/assets/culture/zatla-tunisian-activists-2021.webp`. Visually inspected before captioning. No crop, recolouring or reconstruction. Set `fit: contain` to preserve the banner and both participants. User's requested caption and alt text included; credit links to the actual interview rather than the homepage. Photo publication date is confirmed; no exact capture date or city inferred.
+
+No named photographer or open licence verified. Attribution is to UltraTunisia as requested; no Creative Commons or permission claim invented. Unconfirmed reuse terms do not block this local implementation under the user's expressly relaxed image policy and the repository's documented rule.
+
+Read UltraTunisia's interview for the contemporary word/resin distinction and advocacy context; do not adopt its unsupported health or market claims. HRW's 2016 report supports the historical imprisonment and urine-testing account. Opened the enacted Law 2017-39 in DCAF's legal database: amended article 12 permits Penal Code article 53 mitigation for Law 52 articles 4 and 8. Text now describes judicial discretion without equating the reform to legalization or implying an automatic treatment entitlement. Existing protectorate history and 1953 prohibition remain linked. No score or history-card changes.
+
+Verification: build passed (2,764 pages); browser confirmed that the image loads with the full banner and both participants visible, and that the requested caption, alt and credit render. Body is 579 words. `git diff --check` passed.

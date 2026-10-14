@@ -5,9 +5,19 @@ also: [hemp-seed charm, Halloween, Robert Burns]
 countries: [gb]
 history: [uk-burns-halloween-1786, uk-ban-1928]
 history_cards: [uk-burns-halloween-1786]
+image:
+  src: ../../src/assets/culture/halloween-william-strang-1884.jpg
+  fit: contain
+  alt: Dark nineteenth-century Scottish etching showing villagers gathered around a traditional Halloween fortune-telling ritual.
+  caption: Scottish Halloween fortune-telling traditions illustrated by William Strang in 1884, inspired by Robert Burns’s Hallowe’en (1786).
+  credit: "William Strang, Illustration to Poems by Robert Burns: Hallowe’en (1884), P 2333.208. National Galleries of Scotland collection; photo, National Galleries of Scotland."
+  credit_url: https://www.nationalgalleries.org/art-and-artists/32384
+  license_url: https://www.nationalgalleries.org/art-and-artists/32384
 model: gpt-6
 written: 2026-10-14
 sources:
+  - title: "National Galleries of Scotland — William Strang, Illustration to Poems by Robert Burns: Hallowe’en (1884), P 2333.208"
+    url: https://www.nationalgalleries.org/art-and-artists/32384
   - title: Robert Burns — Halloween, poem and author's explanatory notes
     url: https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Halloween
   - title: University of Glasgow, Corpus of Modern Scottish Writing — Burns's Kilmarnock edition
@@ -18,7 +28,7 @@ sources:
 
 In a Scottish Halloween courtship charm recorded by Robert Burns, a person scattered hemp seed in the hope of seeing a future lover. The imagined figure would follow behind, gathering the hemp. Cannabis appears here through agricultural work and expectations of marriage, rather than through a preparation to smoke or eat.
 
-Burns's poem *Halloween* and its explanatory notes are direct literary evidence for the custom. They are also a particular author's presentation of rural life, with jokes, scepticism and a carefully constructed scene. They do not prove that everyone in Scotland observed the practice, or that it survives widely today.
+Burns’s poem *Hallowe’en*, first published in *Poems, Chiefly in the Scottish Dialect* (1786), and its explanatory notes are direct literary evidence for the custom. They are also a particular author's presentation of rural life, with jokes, scepticism and a carefully constructed scene. They do not prove that everyone in Scotland observed the practice, or that it survives widely today.
 
 ## A future partner in the hemp field
 
@@ -33,6 +43,12 @@ In the poem, Jamie Fleck initially dismisses frightening stories. When he ventur
 Reading the episode alongside the note preserves both parts of the evidence: Burns records the belief and turns a character's response to it into comedy. Treating the episode as proof of a hidden cannabis intoxication ritual would lose the distinction the text itself makes.
 
 The poem appeared in the [1786 Kilmarnock collection](/history/uk-burns-halloween-1786/), digitised by the University of Glasgow. Publication gives a secure point by which the custom was in print, rather than a date when it began.
+
+## A later artist pictures the gathering
+
+[William Strang’s 1884 etching](https://www.nationalgalleries.org/art-and-artists/32384) was made as an illustration to Burns’s poem. The National Galleries of Scotland holds it as accession P 2333.208. Its dark interior, clustered villagers and finely worked shadows evoke the wider fortune-telling gathering described in the poem.
+
+It is a later artistic interpretation of that world, not a picture specifically identified as hemp-seed sowing. The plate can illustrate the custom’s literary and seasonal setting without serving as eyewitness documentation of Jamie Fleck or evidence of cannabis consumption.
 
 ## A familiar crop before prohibition
 
