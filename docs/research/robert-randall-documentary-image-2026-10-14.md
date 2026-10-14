@@ -1,0 +1,15 @@
+# Robert Randall documentary portrait, 14 October 2026
+
+Used the requested November 1976 first-legal-supply photograph, hosted and captioned by Alice O’Leary Randall / Project 50. Direct URL: https://images.squarespace-cdn.com/content/v1/5fe3a7ba055f7d36f4df463c/c2fb1429-68c8-4936-895b-e1829ed07555/Bob1stLegal.jpg
+
+The response is a 1962 × 1410 WebP despite its .jpg URL. Preserved as `src/assets/culture/robert-randall-first-legal-1976.webp`, visually inspected, and retained the entire composition with contain fitting. Randall, glasses, containers and cannabis cigarettes remain visible. No artificial colourisation, crop or reconstruction. Photographer unidentified; archive credit is not an invented photographer attribution. No open licence or reproduction permission was established; used the explicitly requested archival image under the user's documentary-image preference, with source credit and no licence claim.
+
+Read the archive's About Robert page and Alice's 24 November 2021 *Forty-five years!* memoir excerpt. Both date the photograph to November 1976; the memoir quotes the ruling and describes Merritt's tests with recently received cannabis on the morning of the decision. The archive biography incorrectly says Randall was 24 in 1976 despite giving his birth year as 1948; no such age was copied.
+
+Read Lewis A. Grossman's 2019 Food and Drug Law Journal article, pp. 292–295. It distinguishes the 1975 arrest, initial IND supply, the 1978 civil litigation/settlement, and later patient advocacy. A reference there describing November as the month before acquittal conflicts with the contemporaneous ruling date quoted in Alice's memoir. Retained the verified 24 November 1976 date and did not repeat the conflicting relative month.
+
+Read Alice's Summary of Life Experience and her Project 50/Substack account *Convergence, Medical Marijuana Comes Together*. These place ACT's founding in 1980 and public launch in September 1980, agreeing with Grossman. Corrected the entry's old 1981 date. Added unscored 1978 settlement and September 1980 ACT launch events; updated the 1976 event to identify D.C. Superior Court, rather than a federal court. Kept the necessity ruling distinct from continued supply. Corrected the associated 1976 history article's court identification, charge wording, supply chronology and unsupported assertion of a score change. No country scores changed.
+
+Sources are linked in the entry and relevant history events. Existing programme counts and later closure references were retained from the previously listed sources. No claim that cannabis was legally unavailable to all Americans after 1937 was carried into the revised opening; the focus is Randall's unusual modern federally authorised patient status.
+
+Validation: final production build passed (2,797 pages), United States score chain reported zero flagged steps, and whitespace check passed. The portrait loaded with contain fitting and visible medical supply. Verified the culture entry and all three directly associated history pages, each with the relevant Randall cultural-atlas card. Culture body is 559 words and corrected history article is 413 words.

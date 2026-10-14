@@ -1,0 +1,33 @@
+# Cuba: propaganda, treaties and criminal law
+
+Researched Cuba and added four history articles: Gil Carballo's 1937 book, the 1962 Single Convention accession, Law 87 of 1999 and the 2022 replacement Penal Code. Added checked context records for the book and replacement code; expanded existing treaty and enforcement records. Followed `docs/DATA-MAINTENANCE.md` and the Culture image guidance.
+
+## Findings and corrections
+
+**1937:** Hash Marihuana & Hemp Museum's collection record and Open Library catalog independently identify Antonio Gil Carballo's *Expendedores y viciosos*, Havana, 1937, 212 pages. Catalog notes the Geneva convention text on pp. 169–212. Omar Pérez's *Veneno* discusses its mixture of official documents, anecdotes and moral campaigning. The book documents pre-revolutionary anti-cannabis rhetoric, not a cannabis law enacted in 1937. A commercial cannabis page incorrectly relocates the US Marihuana Tax Act to Cuba and mistranslates the book title; rejected as evidence. Did not infer a first-ban date from publication.
+
+**1962:** Read UN depositary table: Cuba acceded **30 August 1962**. International commencement **13 December 1964** is a separate date. Read certified original text, especially articles 4, 28, 36 and 41. Article 28 excludes cultivation exclusively for fibre, seed and horticultural purposes from the convention; this creates no automatic domestic cultivation right. Treaty obligations do not prescribe a Cuban death sentence. Rechecked the 1972 Protocol participant record: Cuba acceded **14 December 1989**, VI-17. No amendment to that existing date was necessary.
+
+**1999:** Downloaded and read the official Gazette facsimile from CEPAL; compared WIPO Lex's annotated consolidated code. Law 87 adopted **16 February 1999**, published and effective **15 March 1999** under final provision 2. Article 10 rewrites article 190: ordinary 4–10 years, relatively large quantities 8–20, specified aggravated circumstances 15–30 or death. Seeds, plant parts and land consequences are expressly included. Article 191's distinct simple-possession range predates this amendment: 6 months–2 years, fine or both for cannabis. No execution for a cannabis offence established.
+
+**2022:** Downloaded and read Law 151's official Gazette facsimile, hosted by BWC Implementation, No. 93 of **1 September 2022**. Adoption **15 May**; final provision 2 sets a 90-day delay; elTOQUE's contemporaneous legal explanation confirms commencement **1 December 2022**. Drug provisions on printed pp. **2632–2634**, final provisions p. **2692**. Article 235(1)(d): cultivation and knowing seed/plant-part possession, 4–10 years; article 236(b): simple cannabis or derivative possession, 6 months–2 years or fine of 200–500 quotas or both. Do not turn quotas into peso figures. Aggravated article 235(2): 10–30 years, life or death; expanded listed circumstances, including under-18 involvement, institutions/youth settings, organised crime, relatively large quantities and similar prior convictions. Do not describe this as capital punishment automatically attaching to simple possession.
+
+Corrected Cuba profile's conflation of simple possession with trafficking and replaced outdated 1999 planting wording with the read 2022 provision. Clarified provision of drugs to another person and consumption-premises offences. A prescription exception in criminal law is not proof of an operational cannabis medical programme. Current medical access remains unestablished. Personal-use segment scores remain unchanged: prison is still realistic, cultivation and sharing remain offences, and no legal access route was established. The replacement code broadens aggravated liability, but does not establish a new personal-use freedom score step.
+
+**2023 reporting:** Read OnCuba/EFE report of the 28 November broadcast. Its 689 sanctioned people and 92% imprisonment figure concern drug-trafficking-linked offences generally; 77 cannabis-growing cases are separately identified. Changed the existing event category from tightening to other because the event records a report rather than an enacted restriction. Qualified its broad account of maximum penalties against the actual code. Corrected profile aggregates so they are not described as cannabis-only counts.
+
+## Unresolved and excluded claims
+
+- First domestic cannabis prohibition remains unknown. Retained `cu-first-restriction-estimate`; a propaganda book cannot replace it with a checked legal date.
+- The often-repeated **1793 hemp introduction** was traced to Ernest Abel's book via Wikipedia, but the underlying passage was not independently read. No new checked event or article written from that claim.
+- Wikipedia's **1949 journal** description actually cites Pablo Osvaldo Wolff's *Marihuana in Latin America: The Threat It Constitutes*, a book. Underlying pp. 36–38 not independently retrieved. No article misidentifying it as a UN journal or relying on its claims about supply.
+- Museum's sweeping claim that all drug users entered revolutionary re-education camps needs separate archival evidence. Not reproduced as established fact.
+- CubaNet pages returned 403 during this pass. Removed an unsupported broad claim that a 2025 cannabinoid ruling established stricter cannabis prosecution from the enforcement segment, replacing it with the read 2023 report. Retained older source records where other existing profile context uses them; did not invent a ruling or universal cannabis sentencing practice.
+
+## Illustration
+
+1937 book-cover JPEG, **849 × 1280**, retrieved from the museum's browser page assets, original displayed URL `https://hashmuseum.com/wp-content/uploads/viciosos-1-849x1280.jpg`. Visually inspected: worn blue cover, title, drug list, author, seated man, skeleton and syringe. Stored locally, full composition retained with `fit: contain`. Credit museum as reproducing collection; cover artist unidentified. Museum invites reproduction enquiries, but no open licence confirmed. Applied user's relaxed reuse preference, accurately credited and recorded uncertainty. No generic Cuban street or cannabis photographs added to legal articles.
+
+## Validation
+
+Production build passed: 2,791 pages. Four article bodies are 404–487 whitespace-counted words, within the 350–500 guideline. Cuba score chain reports no flagged steps and retains its existing 3/100 score. Native-browser checks confirmed all four articles, their headings, the complete book cover (`object-fit: contain`, successfully loaded), and country timeline links. `git diff --check` passed. No commit, deployment or publication requested.

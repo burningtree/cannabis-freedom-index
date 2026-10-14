@@ -6,11 +6,25 @@ spelling:
   - { text: "mota", lang: Spanish, say: "ˈmota" }
 also: [moto, motorolo, pacheco, churro, toque, grifo, tabique, bareta, maría, juana]
 countries: [mx, gt, sv, cr]
-history: [mexico-ban-1920, mexico-supreme-court-2021]
+history: [mexico-ban-1920, mexico-mota-comix-launch-2017, mexico-supreme-court-2021]
+history_cards: [mexico-mota-comix-launch-2017]
 related: [language/marijuana, language/maconha, language/grass]
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
+image:
+  src: ../../src/assets/culture/mota-comix-8-cover.jpg
+  fit: contain
+  alt: Colorful psychedelic Mexican underground comic-book cover with fantastical characters, surreal illustrations, cannabis imagery, and the title MOTA Comix.
+  caption: MOTA Comix, an independent Mexican underground comic publication using cannabis slang as a symbol of cultural expression and resistance to prohibition.
+  credit: Editorial PirataZ / MOTA Comix
+  credit_url: https://panteracomics.com/products/mota-8-revista-mexicana-muy-rara-solo-5000-copias
 sources:
+  - title: Pantera Comics — Mota Comix No. 8, original cover image
+    url: https://panteracomics.com/products/mota-8-revista-mexicana-muy-rara-solo-5000-copias
+  - title: MOTA Comix / Editorial PirataZ — Quienes somos
+    url: https://motacomix.com/quienes-somos
+  - title: "VICE México — Mota Comix: historietas mexicanas para pachequearte y cuestionar el universo (11 July 2018)"
+    url: https://www.vice.com/es/article/mota-comix-historietas-mexicanas-para-pachequearte-y-cuestionar-el-universo/
   - title: Real Academia Española — Diccionario de la lengua española, mota
     url: https://dle.rae.es/mota
   - title: Real Academia Española — Diccionario de la lengua española, bareta
@@ -29,7 +43,7 @@ It is also a much older Spanish word that meant something else entirely. The Aca
 
 In general Spanish, a *mota* is a small thing that does not belong. The Academy's first senses are a little knot that forms in woollen cloth and has to be picked off with tweezers, a bit of thread that sticks to clothes, a small dot or spot, and a slight flaw. In Mexico it is also the fluff on wool or cotton, a ball of cotton, and a powder puff.
 
-The linguist Luis Fernando Lara, author of the *Diccionario del español de México* at El Colegio de México, found Spaniards using the word in the eighteenth century for the fuzz left over from making linen. The drug sense comes later. "I don't know how it arrived in Mexico," he told the news agency AFP in 2016, but from the end of the nineteenth century it meant marijuana, and it still does.
+The linguist Luis Fernando Lara, author of the *Diccionario del español de México* at El Colegio de México, told [AFP in 2016](https://www.malaymail.com/news/read/2016/08/08/narco-cultura-mexicos-drug-slang-enters-dictionary/1178625) that the word appeared in eighteenth-century Spain for residue from linen production. He placed its established Mexican cannabis meaning at the end of the nineteenth century, while acknowledging that the connection remained unknown.
 
 A connection between fluff and dried, crumbled leaves is easy to imagine, and so is one with a small amount. Neither has been documented, and the dictionaries do not offer one.
 
@@ -49,6 +63,14 @@ Lara was adding about fifty words from the drug world to the second edition of h
 | *maría*, *juana* | Marijuana | Listed by the Academy as synonyms |
 
 The Academy treats *mota*, *bareta*, *maría* and *juana* as synonyms of *marihuana*. It records the marijuana sense of *mota* only for the four countries above, and gives *bareta* as Colombian slang.
+
+## A word on an underground cover
+
+*MOTA Comix* is an independent Mexican publication from Editorial PirataZ. It [began in 2017](/history/mexico-mota-comix-launch-2017/), combining underground comics, cannabis culture, satire and criticism of prohibition.
+
+In its [own account of the project](https://motacomix.com/quienes-somos), the publisher connects freedom to consume and cultivate with individual liberty. It describes humour directed at prohibition and the criminalisation of consumers, alongside space for Mexican artists and alternative graphic expression.
+
+The cover of No. 8 puts *MOTA* across the top in oversized illustrated letters, above a crowded scene of fantastical characters and surreal imagery. The ordinary slang becomes a public title rather than a word spoken privately. The comic did not invent it: Lara’s account places the cannabis meaning more than a century before the publication began.
 
 ## The law's word
 

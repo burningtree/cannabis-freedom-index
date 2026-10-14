@@ -1,6 +1,6 @@
 ---
 title: Matekoane
-summary: The Sesotho word for cannabis, Lesotho's most important cash crop for generations before it became a licensed one.
+summary: The Sesotho word for cannabis connects generations of Basotho smallholder cultivation with South Africa’s market and Lesotho’s newer licensed medical industry.
 origin: Sesotho
 also: [khomo ea fatše, likata, kakana]
 spelling:
@@ -8,9 +8,20 @@ spelling:
 countries: [ls]
 related: [language/dagga, language/mbanje, language/chamba]
 history: [basutoland-habit-forming-drugs-1922, basutoland-chiefs-ordered-to-destroy-cannabis-1945, basutoland-un-survey-1955, lesotho-drugs-of-abuse-act-2008, lesotho-first-licences-2017, lesotho-dangerous-medicines-act-1973]
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
+image:
+  src: ../../src/assets/culture/matekoane-lesotho-bloomer-2015.jpg
+  fit: contain
+  alt: Cannabis plants growing on a steep hillside overlooking the rugged mountains and agricultural valleys of Lesotho.
+  caption: "Matekoane growing on the hillsides of Lesotho during drought conditions, December 2015. Photograph by Julian Bloomer."
+  credit: Julian Bloomer / EchoGéo, 2019
+  credit_url: https://journals.openedition.org/echogeo/17612
 sources:
+  - title: "Julian Bloomer — Turning Cannabis Into Cash: Agrarian Change and Lesotho’s Evolving Experience, EchoGéo 48 (2019), Illustration 4"
+    url: https://journals.openedition.org/echogeo/17612
+  - title: "Regina M. Thetsane — Envisaging challenges for the emerging medicinal Cannabis sector in Lesotho, Journal of Cannabis Research (2024)"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11097424/
   - title: Wikipedia — Cannabis in Lesotho
     url: https://en.wikipedia.org/wiki/Cannabis_in_Lesotho
   - title: United Nations — Survey of the cannabis situation in Basutoland, E/CN.7/286/Add.1 (1955)
@@ -19,14 +30,14 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_South_Africa
 ---
 
-*Matekoane* is the Sesotho word for cannabis. In Lesotho the plant has been a field crop for centuries and the country's most important source of cash for generations, almost all of it grown against the law and sold across the border. Since 2017 the same plant has also been a licensed export, grown by foreign companies under another name.
+*Matekoane* is the Sesotho word for cannabis. Basotho farming communities have cultivated it for generations as a household cash crop, with much of the harvest sold across the border into South Africa. Since 2017 Lesotho has also licensed commercial medical cultivation, creating a different market from the one traditional growers have long supplied.
 
 ## The names
 
 | Name | Note |
 |---|---|
 | Matekoane | The usual Sesotho word |
-| Khomo ea fatše | Another Sesotho name |
+| Khomo ea fatše | Literally “the cow of the ground”, a name recorded in farmers’ oral testimony |
 | Likata, kakana | Other names in use |
 | Dagga | The South African word, used in the colonial laws |
 
@@ -48,14 +59,18 @@ Basutoland was a British protectorate, and its drug law followed South Africa's.
 
 The 1955 survey describes the trade as it has been ever since: small patches hidden among the food crops, grown mainly for sale in South Africa, with chiefs and headmen held answerable for rooting it out.
 
-## The cash crop
+## Fields and household livelihoods
 
-Independent Lesotho kept the ban, in the [Dangerous Medicines Act of 1973](/history/lesotho-dangerous-medicines-act-1973/) and the [Drugs of Abuse Act of 2008](/history/lesotho-drugs-of-abuse-act-2008/). The crop grew regardless. In the 2000s an estimated 70% of the cannabis in South Africa came from Lesotho, and one joint police operation in 2006 seized 47 tons. Cultivation is for the most part tolerated, because the country is poor and the trade is what many rural households live on.
+Independent Lesotho kept the ban, in the [Dangerous Medicines Act of 1973](/history/lesotho-dangerous-medicines-act-1973/) and the [Drugs of Abuse Act of 2008](/history/lesotho-drugs-of-abuse-act-2008/). The crop grew regardless. In the 2000s an estimated 70% of the cannabis in South Africa came from Lesotho, and one joint police operation in 2006 seized 47 tons. Enforcement has not eliminated the rural trade. National production totals remain difficult to establish, and a seizure figure cannot measure the entire crop.
 
-## Two crops with one plant
+[Bloomer’s field research](https://journals.openedition.org/echogeo/17612) describes rain-fed cultivation, saved seed, and intercropping with maize and beans. Harvesting can involve extended families or paid labour. His December 2015 photograph documents a hillside field during drought, with green plants overlooking dry mountain country.
 
-In 2017 Lesotho became [the first African country to license cannabis growing](/history/lesotho-first-licences-2017/) for medicine. The licences went to companies, and several were quickly bought, wholly or in part, by Canadian and other foreign firms.
+The household field and the licensed commercial greenhouse represent different ways of organising work, land and access to a market.
 
-The reform changed nothing for the people who grow matekoane. Scholars have asked whether the government acted "with due regard for its most vulnerable rural households, who have now long depended on cannabis cultivation". Activists put it more bluntly: citizens "continue to be arrested on the street and in their homes whilst large quantities of Cannabis cross the border every day".
+## Two markets for the same plant
 
-There is a further complaint. The local varieties, tended for generations, are collected by outsiders and exported, "most often with no benefit to the local communities". The licensed industry says *cannabis*; the hillside still says *matekoane*.
+In 2017 Lesotho became [the first African country to issue commercial medical cannabis cultivation licences](/history/lesotho-first-licences-2017/). The new industry attracted international investment; it did not generally bring existing smallholders into the legal market.
+
+Bloomer identifies costly licences as a barrier and questions whether investment would benefit rural households already dependent on cannabis. Traditional hillside cultivation and internationally financed production consequently coexist under unequal conditions.
+
+[A 2024 study by Regina Thetsane](https://pmc.ncbi.nlm.nih.gov/articles/PMC11097424/), based on interviews with three cannabis-company managers, likewise identifies regulatory difficulties and limited opportunities for small, medium and micro enterprises. Its small interview sample supplies an industry perspective, rather than a census of growers. For the [Lesotho profile](/country/ls/), commercial licensing remains distinct from permission for unlicensed personal cultivation or recreational supply.

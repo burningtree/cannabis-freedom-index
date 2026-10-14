@@ -1,0 +1,11 @@
+# Matekoane documentary image, 14 October 2026
+
+Added the user's preferred Julian Bloomer photograph, Illustration 4 in *Turning Cannabis Into Cash: Agrarian Change and Lesotho’s Evolving Experience*, EchoGéo 48 (2019). The original 600 × 800 JPEG was retrieved from https://journals.openedition.org/echogeo/docannexe/image/17612/img-4.jpg and visually inspected. It shows cannabis on a steep hillside with dry mountains and cultivated valleys beyond. The source caption identifies drought conditions, December 2015, and J. Bloomer. Retained the complete composition with contain fitting; no colour alteration or crop.
+
+The academic PDF was retrieved from https://journals.openedition.org/echogeo/pdf/17612 and read with pdftotext, especially the image caption and paragraphs 22–34. The HTML page presented an automated-access challenge; the direct PDF and original JPEG were available normally.
+
+**Image rights:** the PDF explicitly states that CC BY-NC-ND 4.0 applies to the text only; illustrations and imported files are all rights reserved unless otherwise stated. No separate open licence for this photograph was found. Do not label the image Creative Commons. Used the specifically requested original with Julian Bloomer / EchoGéo credit and source link under the user's preference to accept relevant documentary imagery without an open licence. No licence URL was added and reproduction permission was not obtained.
+
+Revised the entry's unsupported superlative about the country's most important cash crop, added documented agricultural context, and replaced unattributed quotations with sourced descriptions of smallholder exclusion. Added Thetsane's 2024 research (https://pmc.ncbi.nlm.nih.gov/articles/PMC11097424/), identifying its three-manager sample rather than treating it as a national census. Preserved existing historical timeline links and regional names. No country scores or dated events changed.
+
+Validation: production build passed (2,794 pages); whitespace check passed. Local rendered entry shows the requested caption, alt text and linked credit. The optimised image loaded with contain fitting and the complete original landscape visible. Entry remains within the 500–900 word Culture range and has five sections.
