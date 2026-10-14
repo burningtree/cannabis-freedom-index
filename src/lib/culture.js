@@ -7,12 +7,13 @@ import { sourceTuple } from "./sources.js";
 
 // The parts of the atlas, in menu order. `entries: true` means the section is made of files in
 // /culture/<id>/; the others are single pages. `soon` marks a part with nothing to read yet.
+// `short` is the one line shown for the part on the Culture page; `lede` heads its own page.
 export const CULTURE_SECTIONS = [
-  { id: "language", name: "Language", entries: true, one: "word", lede: "Bhang, charas, dagga, ganja, kif, 420: the words people have for the plant, where each comes from and where it is said.", intro: "A name for cannabis is rarely only a name. It says which part of the plant is meant, who brought it, and often what the people in charge thought of those who used it." },
-  { id: "traditions", name: "Traditions", entries: true, one: "tradition", lede: "Rituals, religion, ceremonies and traditional uses, and what the law made of each.", intro: "Where cannabis belongs to a festival, a faith or a daily habit, the law has had to decide what to do about it: write an exception, look away, or prosecute." },
-  { id: "history", name: "History", lede: "Social attitudes, propaganda and counterculture: the places where the record of laws shows what people thought." },
-  { id: "people", name: "People", soon: true, lede: "Cultural icons, activists and historical figures." },
-  { id: "stories", name: "Stories", lede: "Personal experiences and ethnographic accounts, gathered from the people who live with these laws." },
+  { id: "language", name: "Language", short: "Words for the plant, where they come from and where they are said.",  entries: true, one: "word", lede: "Bhang, charas, dagga, ganja, kif, 420: the words people have for the plant, where each comes from and where it is said.", intro: "A name for cannabis is rarely only a name. It says which part of the plant is meant, who brought it, and often what the people in charge thought of those who used it." },
+  { id: "traditions", name: "Traditions", short: "Rituals, customs and places shaped by cannabis.",  entries: true, one: "tradition", lede: "Rituals, faiths, customs and gathering places, and what the law made of each.", intro: "Where cannabis belongs to a festival, a faith, a daily habit or a neighbourhood's social life, the law has had to decide what to do about it: write an exception, look away, or prosecute." },
+  { id: "history", name: "History", short: "Attitudes, propaganda and counterculture in the record of laws.",  lede: "Social attitudes, propaganda and counterculture: the places where the record of laws shows what people thought." },
+  { id: "people", name: "People", short: "Icons, activists and historical figures.",  soon: true, lede: "Cultural icons, activists and historical figures." },
+  { id: "stories", name: "Stories", short: "Experiences told by the people who live with these laws.",  lede: "Personal experiences and ethnographic accounts, gathered from the people who live with these laws." },
 ];
 export const cultureSection = (id) => CULTURE_SECTIONS.find((s) => s.id === id);
 

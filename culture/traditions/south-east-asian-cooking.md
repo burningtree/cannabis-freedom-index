@@ -1,7 +1,7 @@
 ---
-title: Cannabis in the kitchen
-summary: In Cambodia and Thailand the leaf was a cooking herb long before it was a crime. "Happy" restaurants still serve it.
-also: [happy pizza, kancha]
+title: Cannabis in South-East Asian cooking
+summary: "In Cambodia, Laos, Thailand and Vietnam the leaf was a seasoning and a household medicine long before it was a crime. The \"happy\" restaurants of the tourist towns are what is left in plain sight."
+also: [happy pizza, kancha, cooking with cannabis]
 countries: [kh, th, la, vn]
 history: [thailand-cannabis-act-1935, cambodia-ban-1996, thailand-decriminalisation-2022, thailand-narcotics-act-1979, laos-law-on-narcotics-2007, vietnam-ban-1968, vietnam-eradication-1969, cambodia-drug-campaign-2017, thailand-medical-2019, thailand-prescription-only-2025]
 model: opus-5.5
@@ -43,6 +43,10 @@ The Vietnamese case shows how the plant looked from the village. When American o
 In Phnom Penh, Siem Reap and Sihanoukville, restaurants with "Happy" in the name sell pizza and other dishes cooked with cannabis, or with it as a garnish. The same is found at Vang Vieng in Laos, where bars offer a "happy" menu.
 
 They are commonest where the tourists are. They grew up in countries where cooking with cannabis was already ordinary and the ban was not enforced. The United Nations drugs office said in 2009 that cannabis cultivation had "ceased to be a major concern" in Cambodia. Since 2017 Cambodia has run [harder anti-drug campaigns](/history/cambodia-drug-campaign-2017/), and Laos applies the death penalty in some drug cases.
+
+## Elsewhere
+
+Cooking with cannabis is not peculiar to the region. It has its own entries where it belongs to a particular custom: the drinks and sweets of [bhang at Holi](/culture/traditions/bhang-at-holi/) in India, Morocco's *majoun* (see [kif and the sebsi](/culture/traditions/kif-and-the-sebsi/)), the hashish sweets of [Egypt](/culture/traditions/hashish-in-egypt/), and the hemp-seed soup of Silesia, [siemieniotka](/culture/traditions/siemieniotka/). What sets South-East Asia apart is that the leaf was an everyday seasoning, not a festival food or a preparation for its effect.
 
 ## Thailand comes back to it
 

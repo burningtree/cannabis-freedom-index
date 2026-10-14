@@ -5,9 +5,18 @@ origin: Russian, from Uzbek and Tajik
 spelling:
   - { text: "анаша", lang: Russian, say: "anashá" }
   - { text: "nasha", lang: Uzbek }
+  - { text: "нашъа", lang: Tajik, say: "nash’a" }
 also: [dichka, nasha]
 countries: [ru, kz, kg, uz, tj]
 history: [kazakhstan-hemp-registered-1926, russia-soviet-ban-1934, kazakhstan-soviet-ban-1934, russia-rsfsr-article-225-1960, kazakhstan-wild-cannabis-narcotic-1969, kazakhstan-narcotics-law-1998, kazakhstan-operation-poppy-2009, kyrgyzstan-legalisation-proposal-2014]
+image:
+  src: ../../src/assets/culture/anasha-baum-grove-almaty-2023.jpg
+  fit: contain
+  alt: Wild cannabis growing naturally in Baum Grove, Almaty, Kazakhstan.
+  caption: Wild-growing cannabis in Kazakhstan, reflecting the Central Asian roots of the Russian term anasha (анаша).
+  credit: Nikolai Bulykin, CC BY-SA 4.0, via Wikimedia Commons
+  credit_url: "https://commons.wikimedia.org/wiki/File:Алматы,_роща_Баума,_Cannabis_sativa_(1).jpg"
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
 model: opus-5.5
 written: 2026-10-14
 sources:
@@ -21,14 +30,14 @@ sources:
     url: https://en.wikipedia.org/wiki/Chüy_Valley
 ---
 
-*Anasha* is Russian slang for cannabis and hashish. It is a borrowing from Central Asia, from Uzbek *nasha* or Tajik *nash'a*, words for intoxication. In the Soviet Union it was the name for the drug that came from the south, from the republics where hemp grew wild in enormous quantities. The best known of those places is the Chuy valley, on the border of Kazakhstan and Kyrgyzstan.
+*Anasha* (анаша) is Russian slang for cannabis and hashish, borrowed from Central Asian languages, particularly Uzbek *nasha* and Tajik нашъа (*nash’a*), words for intoxication. In the Soviet Union it was the name for the drug that came from the south, from the republics where hemp grew wild in enormous quantities. The best known of those places is the Chuy valley, on the border of Kazakhstan and Kyrgyzstan.
 
 ## The word
 
 | Language | Word |
 |---|---|
 | Uzbek | *nasha* |
-| Tajik | *nash'a* |
+| Tajik | нашъа, *nash’a* |
 | Russian | анаша, *anashá* |
 | Soviet slang for the wild plant | *dichka* |
 

@@ -194,7 +194,7 @@ const prices = defineCollection({
 
 // A picture with who made it and under which licence: the lead image of an article or culture entry.
 // `src` is a file in src/assets, given relative to the Markdown file, so that Astro can optimise it.
-const picture = (image: () => z.ZodTypeAny) => z.object({ src: image(), alt: z.string().min(1), caption: z.string().optional(), credit: z.string().min(1), credit_url: z.string().url().optional() }).strict();
+const picture = (image: () => z.ZodTypeAny) => z.object({ src: image(), alt: z.string().min(1), caption: z.string().optional(), fit: z.enum(["cover", "contain"]).optional(), credit: z.string().min(1), credit_url: z.string().url().optional(), license_url: z.string().url().optional() }).strict();
 
 // articles/<change id>.md: an optional long read for a history entry. The entry in changes.yaml
 // keeps its title and short description; the article adds the full story in Markdown, an

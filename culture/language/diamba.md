@@ -5,6 +5,13 @@ origin: Central African
 also: [liamba, riamba]
 countries: [sl, ao, br]
 history: [angola-livingstone-observation-1857, sierra-leone-ban-1920, brazil-decree-law-891-1938, angola-portuguese-ban-1913, brazil-rio-pango-ban-1830]
+image:
+  src: ../../src/assets/culture/diamba-angola-1890.jpg
+  fit: contain
+  alt: Historical photograph of a leaf-wrapped cannabis bundle above a specimen label reading Hemp for smoking (diamba), Songo, Angola, and July 25, 1890
+  caption: '“Hemp for smoking (diamba)”, wrapped in banana leaves. The specimen label records the Songo people, Angola, and 25 July 1890; collector H. Chatelain.'
+  credit: Historical specimen photograph, reproduced by Alchimia
+  credit_url: https://www.alchimiaweb.com/blogen/malawi-cob-fermented-cannabis/
 model: opus-5.5
 written: 2026-10-14
 sources:

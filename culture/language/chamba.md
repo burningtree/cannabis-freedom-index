@@ -4,6 +4,12 @@ summary: Malawi's word for cannabis, one of the country's three famous C's along
 also: [Malawi Gold]
 countries: [mw]
 history: [nyasaland-noxious-weeds-1936, malawi-medical-industrial-2020, malawi-local-chamba-2024, malawi-hemp-proposal-2000, malawi-hemp-campaign-2015]
+image:
+  src: "../../src/assets/culture/malawi-gold-2016.jpg"
+  alt: "A dried Malawi cannabis flower beside rolling paper and a jar"
+  caption: "Malawi #1 cannabis in Lilongwe, 2016."
+  credit: "Stevef199, CC BY-SA 4.0, via Wikimedia Commons"
+  credit_url: "https://commons.wikimedia.org/wiki/File:A_bud_of_malawi_gold_cannabis_strain_20160813_125335.jpg"
 model: opus-5.5
 written: 2026-10-14
 sources:

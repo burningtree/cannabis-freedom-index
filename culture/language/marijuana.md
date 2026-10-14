@@ -9,6 +9,12 @@ spelling:
 countries: [mx, us]
 featured: 4
 history: [us-marihuana-tax-act-1937, mexico-salazar-marijuana-myth-1938, us-leary-1969, mexico-city-marijuana-regulations-1869, mexico-ban-1920, us-first-tax-act-convictions-1937, us-controlled-substances-act-1970]
+image:
+  src: "../../src/assets/culture/marihuana-tax-stamp-1937.jpg"
+  alt: "Two green one-dollar US revenue stamps labelled Marihuana Tax Act of 1937"
+  caption: "One-dollar revenue stamps issued under the Marihuana Tax Act of 1937."
+  credit: "U.S. Bureau of Engraving and Printing; image by Gwillhickers, public domain, via Wikimedia Commons"
+  credit_url: "https://commons.wikimedia.org/wiki/File:Marihuana_revenue_stamp_$1_1937_issue.jpg"
 model: opus-5.5
 written: 2026-10-14
 sources:

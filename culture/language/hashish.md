@@ -39,6 +39,8 @@ In modern usage, and in law, hashish is the resin. The 1961 [Single Convention](
 
 ## How Europe met it
 
+The [Club des Hashischins](/culture/traditions/club-des-hashischins/) entry follows the Paris gatherings and distinguishes their documentary record from the literary legend.
+
 Hashish reached Europe from the East in the eighteenth century, and Napoleon's campaign in Egypt introduced French troops to it. The soldiers took to it so readily that their commanders [banned it in 1800](/history/egypt-french-ban-1800/).
 
 In France it became a subject of science and of letters.

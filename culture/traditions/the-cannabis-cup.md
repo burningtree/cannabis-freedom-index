@@ -4,6 +4,12 @@ summary: A yearly contest in Amsterdam, founded in 1988 by an American magazine,
 also: [High Times Cannabis Cup, Counterculture Hall of Fame]
 countries: [nl, us]
 history: [netherlands-cannabis-cup-1988, netherlands-toleration-1976, netherlands-residents-only-2012, us-colorado-washington-2012]
+image:
+  src: "../../src/assets/culture/cannabis-cup-amsterdam-awards-2014.jpg"
+  alt: "Cannabis Cup trophies arranged on a table covered with a High Times banner"
+  caption: "Trophies at the 27th High Times Cannabis Cup awards ceremony in Amsterdam, November 2014."
+  credit: "Cannabis Culture, CC BY 2.0, via Flickr"
+  credit_url: "https://www.flickr.com/photos/cannabisculture/15954007425/"
 model: opus-5.5
 written: 2026-10-14
 sources:
@@ -20,6 +26,8 @@ The Cannabis Cup is a festival and competition run by the American magazine [*Hi
 The Cup was founded by Steven Hager, the *High Times* editor who also [traced the word 420](/culture/language/420/) to the Waldos. It was held in Amsterdam, where since the [law of 1976](/history/netherlands-toleration-1976/) the [coffeeshops](/culture/traditions/the-coffeeshop/) could sell cannabis openly.
 
 The first Cup was held in [November 1988](/history/netherlands-cannabis-cup-1988/).
+
+Other competitions developed their own audiences and venues. The separate Highlife Cup has been held at [Ruigoord](/culture/traditions/ruigoord/), an artists' village linked to Christiania through the European freetown movement.
 
 ## The contest
 

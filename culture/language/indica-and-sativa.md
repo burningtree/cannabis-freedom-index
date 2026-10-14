@@ -9,11 +9,11 @@ also: [hybrid, landrace]
 countries: [af, in, pk, nl, us]
 history: [netherlands-cannabis-cup-1988]
 image:
-  src: ../../src/assets/culture/row-purple-kush.jpg
-  alt: A row of tall, dense cannabis plants grown as a hedge
-  caption: Purple Kush, a broad-leafed variety of the kind sold as indica, grown into a hedge nearly six feet tall.
-  credit: hexthat, CC BY 3.0, via Wikimedia Commons
-  credit_url: "https://commons.wikimedia.org/wiki/File:Row(Purple_Kush).jpg"
+  src: ../../src/assets/culture/sativa-vs-indica-comparison.webp
+  alt: Two flowering cannabis plants side by side, with a slender stem and narrow leaves on the left and denser growth on the right
+  caption: A side-by-side comparison of the plant forms sold as sativa and indica.
+  credit: Blimburn Seeds
+  credit_url: https://blimburnseeds.com/wp-content/uploads/2021/12/sativa-vs-indica-comparison.webp
 model: opus-5.5
 written: 2026-10-14
 sources:

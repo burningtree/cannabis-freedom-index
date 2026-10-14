@@ -4,6 +4,12 @@ summary: A yearly protest and festival on the Seattle waterfront that grew from 
 also: [Seattle Hempfest, Washington Hemp Expo]
 countries: [us]
 history: [us-colorado-washington-2012]
+image:
+  src: "../../src/assets/culture/hempfest-beach-2007.jpg"
+  alt: "A large crowd along the rocky beach at Seattle Hempfest"
+  caption: "Seattle Hempfest at Myrtle Edwards Park, 2007."
+  credit: "Joe Mabel, CC BY-SA 3.0, via Wikimedia Commons"
+  credit_url: "https://commons.wikimedia.org/wiki/File:Seattle_Hempfest_2007_-_033.jpg"
 model: opus-5.5
 written: 2026-10-14
 sources:

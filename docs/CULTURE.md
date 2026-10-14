@@ -27,6 +27,7 @@ Ask what the subject is.
 | A word, name, spelling or piece of slang | Language | ganja, dagga, 420, sinsemilla |
 | The name of a thing whose interest is the thing itself | Traditions | the sebsi, sambe, the coffeeshop |
 | A practice repeated by a group: a ritual, festival, craft, dish, remedy, yearly gathering, social institution | Traditions | bhang at Holi, Hash Bash, cannabis social clubs |
+| A place whose importance is a sustained cannabis-related social practice or community | Traditions | Pusher Street, Freak Street, the gatherings at Hôtel Pimodan |
 | One dated event: a law, ruling, report, arrest, a single demonstration | `changes.yaml` (the history), with an article in `articles/` if it deserves one | Jamaica's 2015 act, the first Global Marijuana March |
 | What people thought of cannabis and its users at some time and place | A history entry, then a line in `/culture/history/` | the 1894 Hemp Drugs Commission |
 | One person | People, when it opens. Until then, mention them in the entries they belong to | Leonard Howell, John Sinclair |
@@ -163,7 +164,7 @@ who is speaking.
 converts them at build time: the lead picture is drawn with `<Picture>`, the cards and the
 country pages with `<Image>`, and pictures in the text are optimised the same way.
 
-1. Download the file from its Wikimedia Commons page (the 1280-pixel version is enough) into
+1. Download the file from its original source (prefer Wikimedia Commons; the 1280-pixel version is enough) into
    `src/assets/culture/`, with a short lower-case name: `nepal-charas.jpg`.
 2. Lead picture: put its relative path in the front matter, as above.
 3. Further pictures go in the text where they belong, as a Markdown image whose title holds the
@@ -177,7 +178,12 @@ The site turns that into a figure with the caption and credit underneath. Rules:
 
 - A picture must show the subject itself: the thing, the act, the place or the people. No
   buildings of institutions, no generic leaves, no portraits of officials.
-- Free licences only, with author and licence in the credit and a link to the file's page.
+- Prefer openly licensed or public-domain images when a good, relevant one is available.
+  If no suitable open image is found, a well-sourced photograph or illustration may be used
+  without a confirmed open licence; do not hold up the entry solely for that reason.
+- Always credit the photographer or creator when known and link to the original source.
+  Include the licence and its link when verified; never invent a licence or imply that
+  attribution itself grants permission. Record unconfirmed reuse terms in the research notes.
 - Look at the downloaded file before writing the caption.
 - Write the caption from what the file's own description says. Do not guess a place or a date.
 - Two to four pictures in a long entry is plenty. None is better than a wrong one.

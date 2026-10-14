@@ -1301,14 +1301,19 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .culture .hero .lede a { text-decoration: underline; text-underline-offset: 3px; }
 .culture .page-bar { margin: 26px 0 0; }
 .section.cu-first { padding-top: clamp(28px, 4vw, 48px); }
-.cu-sections a, .cu-sections .cu-row { grid-template-columns: 12ch 1fr auto; padding: 18px 0; }
-.cu-sections .cu-row { display: grid; gap: 20px; align-items: baseline; border-bottom: 1px solid var(--border); }
-.cu-sections li span { order: -1; font: 400 30px/1 var(--display); text-transform: none; letter-spacing: 0; color: var(--text); }
-.cu-sections li p { font: 400 15px/1.5 Inter, sans-serif; color: var(--text-2); max-width: 70ch; }
+/* the five parts side by side, each a short column: name and count, then one or two lines */
+.culture-threads.cu-sections { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; }
+.cu-sections li { border-left: 1px solid var(--border); }
+.cu-sections li:first-child { border-left: 0; }
+.cu-sections a, .cu-sections .cu-row { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 14px 16px 16px; border-bottom: 0; }
+.cu-sections li:first-child a, .cu-sections li:first-child .cu-row { padding-left: 0; }
+.cu-sections li span { order: -2; font: 400 24px/1 var(--display); text-transform: none; letter-spacing: 0; color: var(--text); }
+.cu-sections time { order: -1; font: 400 10px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); white-space: nowrap; }
+.cu-sections li p { margin: 2px 0 0; font: 400 13px/1.45 Inter, sans-serif; color: var(--text-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .cu-sections .cu-row span, .cu-sections .cu-row p { color: var(--muted); }
 .cu-sections a:hover p { text-decoration: none; }
-.cu-sections time { order: 1; text-align: right; white-space: nowrap; }
 .cu-sections a:hover span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.cu-sections { border-bottom: 1px solid var(--border); }
 .cu-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 24px; border-top: 1px solid var(--text); }
 .cu-cards li { border-bottom: 1px solid var(--border); }
 .cu-cards a { display: block; height: 100%; padding: 16px 0 20px; }
@@ -1366,8 +1371,11 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 @media (max-width: 760px) {
   .culture-themes { grid-template-columns: 1fr; }
   .culture-threads a { grid-template-columns: 6ch 1fr; }
-  .cu-sections a, .cu-sections .cu-row { grid-template-columns: 1fr auto; gap: 6px 16px; }
-  .cu-sections li p { grid-column: 1 / -1; order: 3; }
+  .culture-threads.cu-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cu-sections li { border-left: 0; border-bottom: 1px solid var(--border); }
+  .cu-sections li:nth-child(even) a, .cu-sections li:nth-child(even) .cu-row { padding-left: 14px; }
+  .cu-sections li:nth-child(odd) a, .cu-sections li:nth-child(odd) .cu-row { padding-left: 0; }
+  .cu-sections { border-bottom: 0; }
   .cu-by { columns: 1; }
   .cu-by li { grid-template-columns: 1fr; gap: 2px; }
   .culture-threads p { grid-column: 1 / -1; }
@@ -1417,6 +1425,7 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .search-results a { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; grid-template-areas: "flag name kind" "flag sub kind"; column-gap: 10px; align-items: baseline; padding: 9px 16px; border-bottom: 1px solid var(--border); color: var(--text); }
 .search-results li[aria-selected="true"] a, .search-results a:hover { background: var(--surface-2); }
 .sr-flag { grid-area: flag; align-self: center; font-size: 17px; }
+.sr-img { grid-area: flag; align-self: center; width: 26px; height: 26px; object-fit: cover; border-radius: 2px; background: var(--surface-2); }
 .sr-name { grid-area: name; font: 400 19px/1.2 var(--display); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sr-sub { grid-area: sub; font-size: 12.5px; color: var(--muted); }
 .sr-kind { grid-area: kind; align-self: center; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }

@@ -17,13 +17,19 @@ sources:
     url: https://en.wikipedia.org/wiki/Freetown_Christiania
   - title: Wikipedia — Cannabis in Denmark
     url: https://en.wikipedia.org/wiki/Cannabis_in_Denmark
+  - title: Christianias Kulturforening — Visit to Ruigoord and Free Cultural Spaces symposium
+    url: https://www.christiania.org/artikler/rapport-om-christianias-kulturforenings-cakfs-rejse-til-50-aars-jubilaeet-for-kunstnerbyen-ruigoord-i-holland-christianias-soesterby-samtidigt-afholdtes-det-10ende-seminar-for-f/
 ---
 
 Pusher Street was the main street of [Freetown Christiania](https://en.wikipedia.org/wiki/Freetown_Christiania), the self-governing commune in a former army barracks in the Christianshavn district of Copenhagen. From the 1970s until 2024, hashish and marijuana were sold there openly from stalls, in a country where they were illegal. It was one of Copenhagen's best-known sights. It ended when the residents, after a series of shootings, closed it themselves.
 
 ## The freetown
 
+Kathmandu's [Freak Street](/culture/traditions/freak-street/) offers a different history of a famous cannabis district: its shops operated under licences before Nepal closed the market.
+
 Christiania began in September 1971, when squatters occupied an abandoned military base and declared it a free town. The authorities first looked away, then went to court, and in 1989 parliament gave the community a legal footing.
+
+It also belongs to a European network of free cultural spaces. Christiania's cultural association calls the Dutch artists' village [Ruigoord](/culture/traditions/ruigoord/) its sister community. Its account of a delegation to Ruigoord's fiftieth anniversary describes a Free Cultural Spaces symposium and earlier meetings in Christiania. These ties concern art, self-organisation and protecting communal space as well as cannabis. Ljubljana's [Metelkova](/culture/traditions/metelkova/) offers another autonomous cultural setting, with a different legal and social history.
 
 The cannabis trade was there from the start, on a street the residents' council called the "Green Light District". Its defenders argued that concentrating the trade in one place kept it out of the rest of society and kept users away from harder drugs, the same reasoning as the Dutch [coffeeshop](/culture/traditions/the-coffeeshop/). Its opponents said the ban should be enforced in Christiania as everywhere else.
 

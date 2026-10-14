@@ -4,10 +4,21 @@ summary: For Rastafari, ganja is a holy herb smoked in shared reasoning. Several
 also: [ganja, chalice, reasoning]
 countries: [jm, ag, bb, kn, vc, et, it, ke]
 featured: 2
-history: [ethiopia-shashamane-settlement-1965, italy-rastafari-ruling-2008, jamaica-ganja-reform-2015, antigua-cannabis-act-2018, barbados-medical-2019, jamaica-ganja-arrives-1855, jamaica-ganja-law-1913, jamaica-mandatory-prison-1941, saint-kitts-freedom-of-conscience-2023, saint-vincent-religious-bill-dropped-2018, kenya-high-court-rastafari-petition-2026]
+history: [ethiopia-shashamane-settlement-1965, italy-rastafari-ruling-2008, jamaica-ganja-reform-2015, antigua-cannabis-act-2018, antigua-rastafari-sacramental-authorizations-2023, barbados-medical-2019, jamaica-ganja-arrives-1855, jamaica-ganja-law-1913, jamaica-mandatory-prison-1941, saint-kitts-freedom-of-conscience-2023, saint-vincent-religious-bill-dropped-2018, kenya-high-court-rastafari-petition-2026]
+image:
+  src: ../../src/assets/culture/rastafari-lighting-chalice-comitas-1969.jpg
+  fit: contain
+  alt: Historical photograph of two Rastafari participants lighting and smoking a communal cannabis chalice during a religious ceremony in Kingston.
+  caption: Lighting the sacred chalice during a Rastafari ceremony in Kingston, Jamaica, August 1969. Photograph by Lambros Comitas.
+  credit: Lambros Comitas / Comitas Institute for Anthropological Study · JA–RT 004
+  credit_url: https://www.cifas.us/comitas-gallery-jamaica
 model: opus-5.5
 written: 2026-10-14
 sources:
+  - title: Comitas Institute for Anthropological Study — Lighting the Chalice, JA–RT 004 (5 August 1969)
+    url: https://www.cifas.us/comitas-gallery-jamaica
+  - title: Antigua and Barbuda Medicinal Cannabis Authority — Sacramental Rights
+    url: https://mca.gov.ag/sacramental-rights/
   - title: Wikipedia — Entheogenic use of cannabis
     url: https://en.wikipedia.org/wiki/Entheogenic_use_of_cannabis
   - title: Ministry of Justice of Jamaica — Dangerous Drugs (Amendment) Act 2015 fact sheet
@@ -24,7 +35,7 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Jamaica
 ---
 
-For Rastafari, smoking ganja is the principal ritual of the faith. The herb is a sacrament, smoked in company with prayer and long discussion, and held to be commended by the Bible. For most of the movement's history that made every observant Rasta a criminal. Since 2015 a number of Caribbean states have written the sacrament into their law, and one Rastafari community has refused the offer.
+For many Rastafari, ganja is a sacred herb used for meditation, prayer, spiritual communion and collective reasoning. Smoking it together is a religious practice, held to be commended by the Bible. For much of the movement's history, prohibition criminalised that practice. Since 2015 a number of Caribbean states have written the sacrament into their law, and one Rastafari community has refused the offer.
 
 ## The herb
 
@@ -34,14 +45,16 @@ Not every Rasta smokes. Many who abstain say they have reached a state of awaren
 
 ## How it is smoked
 
-The setting is a *grounding*: a gathering in a yard or commune, presided over by an elder, with drumming, chanting, hymns and poetry. Its centre is *reasoning*, an unhurried discussion of the faith and of the news in which each speaker is meant to carry the group's understanding a little further.
+The setting is a *grounding*: a gathering in a yard or commune, presided over by an elder, with drumming, chanting, hymns and poetry. Its centre is *reasoning*: communal discussion, reflection and exchange of spiritual or social ideas. Participants consider the faith and the news together, each speaker carrying the group's understanding further.
 
 | Form | What it is |
 |---|---|
 | [Spliff](/culture/language/spliff/) | A large hand-rolled cigarette. A prayer to Jah is said while it is rolled, and it is lit only when the prayer is finished |
-| Chalice | A water pipe; kinds include the kutchie, the chillum and the steamer |
+| Chalice | A traditional water pipe shared ceremonially among participants; the herb is held in its cup, or cutchie |
 
 The pipe goes round the circle counter-clockwise.
+
+The photograph records this shared rite at The Dungle, off Salt Lane in Kingston, on August 5, 1969. Anthropologist Lambros Comitas photographed Brother Morgan drawing from the chalice while another participant lit its ceremonial cup. The [archive identifies it as *Lighting the Chalice*, JA–RT 004](https://www.cifas.us/comitas-gallery-jamaica), in a sequence documenting preparation, blessing and communion organised by Rastafari elder Mortimo Planno.
 
 The largest gatherings, once called groundations and now Nyabinghi Issemblies, last from three to seven days in the open air: food, ganja and reasoning by day, drumming and dancing round fires at night. They are held on dates tied to Ethiopia and to Haile Selassie, among them his birthday on 23 July and his coronation day on 2 November.
 
@@ -62,10 +75,15 @@ Rastas came to see smoking as itself a protest against the laws of "Babylon". In
 | Country | Year | What the law does |
 |---|---|---|
 | [Italy](/country/it/) | [2008](/history/italy-rastafari-ruling-2008/) | The highest court acquitted a Rastafarian caught with 97 grams, accepting that he smoked it as a meditative herb |
-| [Jamaica](/country/jm/) | [2015](/history/jamaica-ganja-reform-2015/) | Rastafari may use ganja as a sacrament |
+| [Jamaica](/country/jm/) | [2015](/history/jamaica-ganja-reform-2015/) | Sacramental possession is protected; smoking is permitted at registered Rastafari places of worship, with cultivation and exempt events subject to authorization |
 | [Antigua and Barbuda](/country/ag/) | [2018](/history/antigua-cannabis-act-2018/) | Religious bodies, Rastafari included, may register to grow and hold more than the ordinary limits |
+| [Antigua and Barbuda](/country/ag/) | [2023](/history/antigua-rastafari-sacramental-authorizations-2023/) | Three Rastafari communities received authorizations to cultivate and use cannabis for religious purposes |
 | [Barbados](/country/bb/) | [2019](/history/barbados-medical-2019/) | Sacramental use at places of worship |
 | [Saint Kitts and Nevis](/country/kn/) | [2023](/history/saint-kitts-freedom-of-conscience-2023/) | Registered groups may grow and use it at their places of assembly; the prime minister apologised to the community |
+
+Jamaica's Dangerous Drugs (Amendment) Act 2015 recognised sacramental use under these specified conditions. It allowed Rastafari adults and organisations to apply for religious cultivation and for qualifying gatherings to be declared exempt events. Authorized sacramental cultivation did not permit commercial sales or export.
+
+Antigua and Barbuda's legal framework came earlier than its first sacramental authorizations. In March 2023, the Medicinal Cannabis Authority issued them to Nyabinghi Theocracy Church Inc., Rasfreeman Foundation for Unification of Rastafari and Wan Love Chant. The authorizations cover religious cultivation and ceremonial use, subject to approved quantities and locations.
 
 Not everyone wanted this. In [Saint Vincent](/country/vc/) in 2018, Rastafari representatives [told parliament to drop its religious-use bill](/history/saint-vincent-religious-bill-dropped-2018/): the state, they said, cannot grant a right to their sacrament.
 

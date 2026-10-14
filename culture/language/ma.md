@@ -9,6 +9,12 @@ spelling:
   - { text: "大麻", lang: Japanese, say: "taima" }
 countries: [cn, jp]
 history: [china-xinjiang-hashish-trade-ended-1934, japan-hemp-farms-1950, china-narcotic-1985, china-jirzankal-study-2019, china-yunnan-eradication-1998, china-yunnan-hemp-2010, china-heilongjiang-hemp-2017, japan-cannabis-control-act-1948]
+image:
+  src: "../../src/assets/culture/ma-bronze.png"
+  alt: "The Chinese character for hemp, 麻, in bronze script"
+  caption: "Má (麻), the character for hemp, in bronze script."
+  credit: "Chanueting, public domain, via Wikimedia Commons; rendered on white"
+  credit_url: "https://commons.wikimedia.org/wiki/File:%E9%BA%BB-bronze.svg"
 model: opus-5.5
 written: 2026-10-14
 sources:

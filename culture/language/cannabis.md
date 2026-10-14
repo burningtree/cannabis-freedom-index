@@ -11,6 +11,12 @@ spelling:
 countries: [gr, it, de, gb, ru, cz, lt, lv, ro, al, am, tr]
 featured: 6
 history: [czechia-hemp-one-percent-2022]
+image:
+  src: "../../src/assets/culture/cannabis-thome-1885.jpg"
+  alt: "Botanical illustration of hemp with flowering stems and enlarged details of flowers and seeds"
+  caption: "Cannabis sativa in Otto Wilhelm Thomé’s Flora von Deutschland, Österreich und der Schweiz (1885)."
+  credit: "Otto Wilhelm Thomé, public domain, via Wikimedia Commons"
+  credit_url: "https://commons.wikimedia.org/wiki/File:Illustration_Cannabis_sativa0.jpg"
 model: opus-5.5
 written: 2026-10-14
 sources:
@@ -37,6 +43,8 @@ The Greeks learned of the plant's use by watching Scythian funerals. [Herodotus]
 Assyrian texts of the first millennium BCE have a word *qunnabu* for a source of oil, fibre and medicine, which belongs to the same family.
 
 ## Hemp is the same word
+
+The separate [hemp entry](/culture/language/hemp/) follows the word from its material uses to modern legal definitions.
 
 English *hemp*, Old English *hænep*, goes back to a Germanic form *hanapiz*. By the sound change known as [Grimm's law](https://en.wikipedia.org/wiki/Grimm%27s_law), an original *k* became *h* in the Germanic languages. So *hanap-* points back to *kanab-*. The borrowing must have happened before that change, no later than about 500 BCE: the Germanic peoples had the word, and presumably the plant, long before they had any contact with Rome.
 

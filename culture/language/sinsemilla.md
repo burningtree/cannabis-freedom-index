@@ -7,6 +7,12 @@ spelling:
   - { text: "sin semilla", lang: Spanish, say: "[sinseˈmiʝa]" }
 countries: [mx, us]
 history: [us-operation-green-merchant-1989]
+image:
+  src: "../../src/assets/culture/sinsemilla-drying-room.jpg"
+  alt: "Harvested cannabis plants hanging upside down from lines in a drying room"
+  caption: "Harvested cannabis plants hung up to dry."
+  credit: "Beeblebrox, CC BY-SA 4.0, via Wikimedia Commons"
+  credit_url: "https://commons.wikimedia.org/wiki/File:Cannabis_drying_room.jpg"
 model: opus-5.5
 written: 2026-10-14
 sources:

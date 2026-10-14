@@ -1,12 +1,22 @@
 ---
 title: Siemieniotka
 summary: In Silesia, hemp-seed soup is one of the dishes of Christmas Eve.
-also: [Wigilia, hemp seed]
+also: [konopiotka, siemieniatka, Wigilia, hemp seed]
 countries: [pl]
 history: [poland-narcotics-act-1923, poland-narcotic-1951, poland-drug-prevention-act-1985, poland-drug-law-1997, poland-hemp-act-2022]
+image:
+  src: ../../src/assets/culture/siemieniotka-slaskie-smaki.jpg
+  alt: Traditional Silesian hemp-seed soup in a white bowl, served with toasted bread.
+  caption: Siemieniotka, a traditional Silesian hemp-seed soup served during Christmas Eve celebrations in Poland.
+  credit: Śląskie Smaki / ŚOT; photograph by Havve
+  credit_url: https://www.slaskiesmaki.pl/dish/512120/siemieniotka-zupa-wigilijna
 model: opus-5.5
 written: 2026-10-14
 sources:
+  - title: Śląskie Smaki — Siemieniotka (zupa wigilijna)
+    url: https://www.slaskiesmaki.pl/dish/512120/siemieniotka-zupa-wigilijna
+  - title: Śląskie Smaki — Siemieniatka/siemieniotka/konopiotka
+    url: https://slaskiesmaki.pl/staticcontent/141243/siemieniatka-siemieniotka-konopiotka
   - title: Wikipedia — Siemieniotka
     url: https://en.wikipedia.org/wiki/Siemieniotka
   - title: "Wikipedia — Wigilia"
@@ -21,7 +31,9 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Japan
 ---
 
-*Siemieniotka* is a soup made of hemp seed. It comes from Silesia, in southern Poland, and it is eaten once a year, at the supper of Christmas Eve. It is a dish from the time when hemp was an ordinary crop.
+*Siemieniotka*, also called *konopiotka* or *siemieniatka*, is a traditional hemp-seed soup from Silesia, Poland, served at the Christmas Eve supper, *Wigilia*. It carries on the centuries-old culinary use of hemp as food rather than as an intoxicant, from a time when hemp was an ordinary crop.
+
+[Śląskie Smaki](https://slaskiesmaki.pl/staticcontent/141243/siemieniatka-siemieniotka-konopiotka), the region’s culinary tourism project, records descriptions of the soup in Silesian accounts from 1887 and 1888. The dish is still served at Christmas Eve suppers, with recipes passed from one generation to the next.
 
 ## The dish
 
@@ -68,3 +80,5 @@ Dishes of the same family exist elsewhere on the old hemp-growing map of Europe 
 | Shichimi | Japan | A seven-spice mixture that includes hemp seed |
 
 They have in common that they use the seed, and that they belong to regions where hemp was a household crop.
+
+Latvian [hemp-seed butter](/culture/traditions/latvian-hemp-seed-butter/) offers another Baltic food tradition in which cannabis seeds are prepared for nourishment.

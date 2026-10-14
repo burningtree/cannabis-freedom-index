@@ -11,7 +11,7 @@ const countryCount = new Set(cultureEntries.flatMap((e) => e.countries)).size;
 // The hub shows the five most important entries of each part (their `featured` rank), the first
 // as a large lead card; the rest are a click away.
 const preview = (id) => cultureIn(id).slice(0, 5);
-const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).length === 1 ? "entry" : "entries"}` : s.soon ? "In preparation" : "");
+const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).length === 1 ? "entry" : "entries"}` : s.soon ? "In preparation" : s.id === "stories" ? "Collecting soon" : "From the record");
 ---
 <Base title="Culture" description="A cultural atlas of cannabis around the world: the words people have for it, the rituals and traditions it belongs to, and the people behind the laws.">
   <main class="changes-page culture">
@@ -26,8 +26,8 @@ const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).l
         {CULTURE_SECTIONS.map((s) => (
           <li>
             {s.soon
-              ? <div class="cu-row"><time>{count(s)}</time><span>{s.name}</span><p>{s.lede}</p></div>
-              : <a href={`${base}culture/${s.id}/`}><time>{count(s)}</time><span>{s.name}</span><p>{s.lede}</p></a>}
+              ? <div class="cu-row"><time>{count(s)}</time><span>{s.name}</span><p>{s.short}</p></div>
+              : <a href={`${base}culture/${s.id}/`}><time>{count(s)}</time><span>{s.name}</span><p>{s.short}</p></a>}
           </li>
         ))}
       </ol>

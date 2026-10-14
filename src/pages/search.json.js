@@ -1,12 +1,14 @@
 // What the search dialog (⌘K, in Base.astro) looks through: every country and state, every history
 // entry and every page (map views, history kinds and periods included), as short rows. Fetched once, the first time the dialog is opened.
-//   t: kind (c country, a history entry with an article, h history entry, p page)
+//   t: kind (c country, a history entry with an article, h history entry, p page, u culture entry)
+//   img: a small picture, shown in place of the flag (culture entries)
 //   n: what is shown and matched   s: the smaller second line, matched too   u: address under the site root
 import { places, countries, subunitsOf, changes, articles, historyPeriods, CHANGE_CATEGORIES } from "../lib/countries.js";
 import { MAP_VIEWS } from "../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries, cultureSection } from "../lib/culture.js";
 import { tierOf } from "../lib/tiers.js";
 import { file } from "../lib/exports.js";
+import { getImage } from "astro:assets";
 
 const rows = [
   ...places.map((c) => ({ t: "c", n: c.name, s: `${c.score}/100 · ${tierOf(c.raw).name}`, u: `country/${c.slug}/`, f: c.flag })),
@@ -20,7 +22,11 @@ const rows = [
   ].map(([n, s, u]) => ({ t: "p", n, s, u })),
   // the cultural atlas: its parts that hold entries, then every word and tradition, findable by its other names too
   ...CULTURE_SECTIONS.filter((x) => x.entries).map((x) => ({ t: "p", n: `Culture: ${x.name}`, s: x.lede, u: `culture/${x.id}/` })),
-  ...cultureEntries.map((e) => ({ t: "p", n: e.title, s: [`Culture · ${cultureSection(e.section).name}`, ...(e.spelling ?? []).map((w) => w.text), ...(e.also ?? [])].join(" · "), u: e.url, f: e.countries[0].flag })),
+  // culture entries show their picture, small, where they have one
+  ...(await Promise.all(cultureEntries.map(async (e) => ({
+    t: "u", n: e.title, s: [cultureSection(e.section).name, ...(e.spelling ?? []).map((w) => w.text), ...(e.also ?? [])].join(" · "), u: e.url, f: e.countries[0].flag,
+    ...(e.image && { img: (await getImage({ src: e.image.src, width: 96, height: 96, fit: "cover", format: "webp" })).src }),
+  })))),
   // every map view, history kind and history period has its own page
   ...MAP_VIEWS.filter((v) => v.slug).map((v) => ({ t: "p", n: v.title, s: "Map", u: `map/${v.slug}/` })),
   ...Object.entries(CHANGE_CATEGORIES).map(([kind, k]) => ({ t: "p", n: `History: ${k.label}`, s: k.help, u: `history/kind/${kind}/`, f: k.emoji })),

@@ -610,7 +610,9 @@ Rules: write only what the listed sources say. Keep it compact: about 350 to 500
 opening, three to five short sections and at most one small table. Side events belong in their
 own `changes.yaml` entries, linked from the article, not narrated in it. A picture is optional and most articles should
 have none: use one only when it shows the subject itself (the person, the place, the object), never
-a parliament or court building as a stand-in. Use pictures whose licence allows it and always
+a parliament or court building as a stand-in. Prefer openly licensed or public-domain pictures. If no good, relevant open image is available,
+a well-sourced picture may be used without a confirmed open licence. Record unconfirmed reuse
+terms in the research notes, never invent a licence, and always
 give the credit; link to country profiles as `/country/ru/` and to other entries as
 `/history/<id>/`. The build fails if the file name matches no entry. Entries with an article get
 an "Article" tag in the history lists.
