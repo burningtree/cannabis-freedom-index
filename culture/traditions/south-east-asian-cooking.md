@@ -17,6 +17,15 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Laos
   - title: "Wikipedia — Cannabis in Vietnam"
     url: https://en.wikipedia.org/wiki/Cannabis_in_Vietnam
+  - type: "chapter"
+    title: "Ethnobotanical Aspects of Cannabis in Southeast Asia"
+    authors: ["Marie Alexandrine Martin"]
+    container: "Cannabis and Culture"
+    editors: ["Vera Rubin"]
+    publisher: "Mouton"
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: "pp. 63–67, 73"
 image:
   src: "../../src/assets/culture/thai-cannabis-stir-fry-2021.jpg"
   fit: "contain"
@@ -38,12 +47,14 @@ In Cambodia it stayed a common ingredient in food, and Cambodians think of it as
 
 [Austin Bush’s 2021 reporting](https://www.atlasobscura.com/articles/cannabis-marijuana-in-thai-food) identifies an eel curry calling for tender cannabis leaves in *Mae Khrua Hua Pa*, first printed in 1908 and generally considered Thailand’s oldest published cookbook. The recipe places cannabis among ordinary ingredients rather than presenting it as a novelty. Thai cooks used it in soups, curries and stir-fries for fragrance and savoury flavour; intoxication was not necessarily the purpose.
 
+Marie Alexandrine Martin’s chapter in *Cannabis and Culture* (1975) supplies earlier field documentation, principally from Cambodia. She describes roasted cannabis leaves flavouring *sngao moan*, a chicken soup, and fresh leaves accompanying curries, vegetables and vermicelli soup. She also records leaves in fritters with *prahok*, fish paste, and stems used in Lao soups. Her explanation includes the flavour imparted to food, alongside reported psychoactive purposes. These are period observations, not a claim that the same practices occur throughout the region today.
+
 ## Outlawed on paper
 
-| Country | First ban | In practice |
+| Country | Restrictions in the historical record | In practice |
 |---|---|---|
 | [Thailand](/country/th/) | The [Cannabis Act of 1935](/history/thailand-cannabis-act-1935/) made possessing, growing, selling and using it crimes | Followed by the [Narcotics Act of 1979](/history/thailand-narcotics-act-1979/) |
-| [Cambodia](/country/kh/) | Formally by 1961, to comply with the Single Convention; then by [a drug law in 1996](/history/cambodia-ban-1996/) | Unenforced for decades. Cannabis was sold openly in markets |
+| [Cambodia](/country/kh/) | Martin reports an earlier cultivation prohibition; [a general drug law followed in 1996](/history/cambodia-ban-1996/) | Martin nevertheless observed open market sales in her early-1970s field account |
 | [Laos](/country/la/) | Illegal under the [Law on Narcotics](/history/laos-law-on-narcotics-2007/) | Openly sold in some businesses despite the law |
 | [Vietnam](/country/vn/) | South Vietnam [condemned it in 1968](/history/vietnam-ban-1968/) and American advisers began [spraying fields in 1969](/history/vietnam-eradication-1969/) | The spraying was resented, and was called off in areas whose loyalty the government needed |
 

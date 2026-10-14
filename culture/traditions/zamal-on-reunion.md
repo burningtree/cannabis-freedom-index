@@ -11,7 +11,7 @@ image:
   caption: A fire-walk at a Hindu ceremony on Réunion, 2004. Benoist compared the priest's indifference to zamal with this test of the possessed.
   credit: tirados joselito, CC BY 2.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Marche_sur_le_feu.jpg
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: "Jean Benoist, À la Réunion : le cannabis dans une société pluriculturelle et polyethnique, in Vera Rubin (ed.), Cannabis and Culture (1975), pp. 227–234 (French text, Les Classiques des sciences sociales)"
@@ -20,6 +20,15 @@ sources:
     url: https://www.ofdt.fr/BDD/publications/docs/syntheseTREND2021_Reunion.pdf
   - title: Wikipedia — Cannabis in Réunion
     url: https://en.wikipedia.org/wiki/Cannabis_in_R%C3%A9union
+  - type: chapter
+    title: "Réunion: Cannabis in a Pluricultural and Polyethnic Society"
+    authors: [Jean Benoist]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 227–234, especially pp. 229–231
 ---
 
 Réunion, a French island in the Indian Ocean, was settled from the late seventeenth century by Europeans, by enslaved Africans and Malagasy, and after slavery by indentured labourers, most of them from south India. Cannabis, called [*zamal*](/culture/language/zamal/), was present by 1770, when it was pressed in a herbarium. The French drug observatory says it came with slavery and indenture, and that people from Africa, Madagascar, the Comoros, China and India treated themselves with plants including zamal, following the knowledge of the places they came from.
@@ -30,13 +39,13 @@ The fullest account of what each community did with it is by the physician and a
 
 The people of Malagasy descent on Réunion had married widely into the Creole population and did not form a separate community. Some still gathered for magical rites and, more and more rarely, for annual feasts with the sacrifice of cattle. At those feasts, Benoist wrote, cannabis cigarettes were smoked together.
 
-Creoles held that this made the Malagasy violent, and the Creole phrase for losing one's temper is *son zamal y monte*, "his zamal is rising". In the few districts where people of Malagasy descent were numerous, Benoist found the use regular, though hidden, and a source of supply for passing travellers.
+Benoist recorded a Creole stereotype that cannabis made Malagasy people violent; this was a social judgement, not a demonstrated effect. He also noted that and the Creole phrase for losing one's temper is *son zamal y monte*, "his zamal is rising". In the few districts where people of Malagasy descent were numerous, Benoist found the use regular, though hidden, and a source of supply for passing travellers.
 
 ## A cigarette for the god
 
 The Indian community, mostly descended from Tamil labourers, kept an active religious life in temples across the island, attended by people of every origin. Its gods were those of Tamil village religion: Mariamman, Madurai Veeran, Karuppuswami and the Muni. In some ceremonies the priest-healer is possessed, and only then does cannabis appear.
 
-The first words of the spirit speaking through the priest are a demand for *candia*, from ganja. An assistant quickly puts one to three cigarettes into the priest's mouth, and he smokes them very fast. Usually they are tobacco. Only when the priest is possessed by Madurai Veeran or by a Muni is the cigarette made of zamal, and then it is called *ciga*. Smoking zamal is as natural for the gods as tobacco is for people, Benoist explained, so the possessed priest must show no effect at all. His indifference is the proof that the god is in him, a test like walking on fire or dancing on the blade of a cutlass.
+In Benoist’s account, the spirit speaking through the priest demands *candia*, a cigarette offered to the deity. An assistant quickly puts one to three cigarettes into the priest's mouth, and he smokes them very fast. Usually they are tobacco. Only when the priest is possessed by Madurai Veeran or by a Muni is the cigarette made of zamal, and then it is called *ciga*. Smoking zamal is as natural for the gods as tobacco is for people, Benoist explained, so the possessed priest must show no effect at all. His apparent indifference was understood by participants as proof that the god was in him, a test like walking on fire or dancing on the blade of a cutlass.
 
 That sacred role, and the fear that went with it, kept most Tamils away from the plant outside the temple. A few young men might finish a *ciga* the priest had begun. Benoist remembered old men from the Calcutta region who had smoked for pleasure in a small coconut water pipe, but that habit had gone.
 

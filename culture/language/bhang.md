@@ -16,7 +16,7 @@ image:
   caption: A bhang shop in Jaisalmer, Rajasthan, November 2008.
   credit: Satish Krishnamurthy, CC BY 2.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Bhang_shop_in_Jaisalmer,_Rajasthan,_India_on_November_15,_2008.jpg
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipedia — Bhang
@@ -29,9 +29,25 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Nepal
   - title: "Wikipedia — Thandai"
     url: https://en.wikipedia.org/wiki/Thandai
+  - type: chapter
+    title: "Social Aspects of the Use of Cannabis in India"
+    authors: [Khwaja A. Hasan]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 235–246, especially pp. 238–243
+  - type: book
+    title: 'Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928'
+    authors: [James H. Mills]
+    publisher: Oxford University Press
+    year: 2003
+    isbn: 0-19-924938-5
+    locator: A Note on Terms, pp. x–xi, quoting the Indian Hemp Drugs Commission
 ---
 
-Bhang is the leaf of the cannabis plant, ground to a green paste and eaten or drunk. It is the mildest of the three Indian preparations and the only one that India's national drug law leaves alone.
+Bhang is the leaf of the cannabis plant, ground to a green paste and eaten or drunk. Indian terminology distinguishes it from the flowering tops and resin; the national law also treats those materials differently.
 
 ## Leaf, flower, resin
 
@@ -45,9 +61,13 @@ Indian usage divides the plant in three, and the law follows the words.
 
 The [Narcotic Drugs and Psychotropic Substances Act](/history/india-ndps-act-1985/) defines cannabis as charas and ganja, and expressly leaves out "the seeds and leaves when not accompanied by the tops". The wording is copied from the [1961 Single Convention](https://en.wikipedia.org/wiki/Single_Convention_on_Narcotic_Drugs), and it is there because [India's delegates insisted on it](/history/india-bhang-exemption-1961/).
 
+Historical usage was less exact than the statutory distinction. Mills reproduces the 1894 commission's warning that *bhang* could name a drink made from flowering material as well as leaves. The commissioners also found regional differences, including places where *ganja* was the more general word. An old reference to bhang therefore does not establish its botanical ingredients or its status under a later law.
+
 ## How it is made
 
 The leaves are ground with a mortar and pestle. For a drink the paste is stirred into milk, strained, and flavoured with sugar, fruit and spices. The best-known drinks are bhang [thandai](https://en.wikipedia.org/wiki/Thandai), a cold milk drink with almonds, fennel, pepper, cardamom and saffron, and bhang [lassi](https://en.wikipedia.org/wiki/Lassi), made with curd.
+
+Khwaja A. Hasan’s 1975 chapter describes [thandai gatherings](/culture/traditions/thandai-gatherings/) where relatives or friends ground ingredients together while discussing household matters and prices. His account also records caste boundaries between groups. It describes social preparation in particular north Indian settings, not an undifferentiated national custom.
 
 It is also eaten. Mixed with ghee and sugar it becomes a halva; rolled into peppery balls it is *goli*, which means pill; and at Holi it goes into fried pakoras. In Nepal the seeds are ground into a pickle with potato, *bhang ko achar*.
 

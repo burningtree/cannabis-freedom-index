@@ -16,7 +16,7 @@ image:
   caption: A march against the prohibition of cannabis, Cape Town, 9 May 2015.
   credit: Robvanvee, CC BY-SA 4.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Cape_Town_cannabis_march_2015_May_9.jpg
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipedia — Dagga
@@ -35,6 +35,15 @@ sources:
     url: https://en.wikipedia.org/wiki/Dagga_Couple
   - title: "Wikipedia — Dagga Party"
     url: https://en.wikipedia.org/wiki/Dagga_Party
+  - type: "chapter"
+    title: "Dagga: The History and Ethnographic Setting of Cannabis sativa in Southern Africa"
+    authors: ["Brian M. du Toit"]
+    container: "Cannabis and Culture"
+    editors: ["Vera Rubin"]
+    publisher: "Mouton"
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: "pp. 92–97"
 ---
 
 Dagga is what cannabis is called in South Africa and its neighbours. It is a Khoekhoe word, taken up by the Dutch at the Cape in the seventeenth century, written into colonial law in the nineteenth, turned into a word of contempt in the twentieth, and deliberately taken back in the twenty-first.
@@ -44,6 +53,8 @@ Dagga is what cannabis is called in South Africa and its neighbours. It is a Kho
 The source is the Khoekhoe *daxa*, said with the rasping sound that survives in the Afrikaans *g*. The Khoekhoe used it for cannabis and also for species of [*Leonotis*](https://en.wikipedia.org/wiki/Leonotis_leonurus), the shrub still called wild dagga, whose leaves resemble those of cannabis. According to the Oxford dictionary the word also described the feeling of intoxication.
 
 Its first appearance in writing is in the journal of [Jan van Riebeeck](https://en.wikipedia.org/wiki/Jan_van_Riebeeck), commander of the Dutch station at the Cape, in 1658. He ordered that "daccha" be bought in Natal to trade with the Khoekhoe. He may have meant the wild plant; some scholars doubt that anyone could confuse two plants with such different flowers.
+
+Brian du Toit’s chapter in *Cannabis and Culture* (1975) stresses the identification problem in these early accounts. Descriptions of chewing roots or making small cakes may refer to *Leonotis* or other plants, while later descriptions explicitly identify hemp. A colonial spelling of *dagga* is therefore evidence for the word, but not always secure evidence for the botanical species.
 
 Where the Khoekhoe word itself comes from is argued over.
 

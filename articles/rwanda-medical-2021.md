@@ -1,6 +1,6 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6
+written: 2026-10-14
 sources:
   - title: "KT Press — Rwanda moves closer to mass production of cannabis following approval of new law (June 2021)"
     url: https://www.ktpress.rw/2021/06/rwanda-moves-closer-to-mass-production-of-cannabis-following-approval-of-new-law/
@@ -8,6 +8,15 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Rwanda
   - title: "Rwanda National Police — Gasabo: suspected drug dealer arrested with 60 kg of cannabis"
     url: https://www.police.gov.rw/media-archives/news-detail/news/gasabo-suspected-drug-dealer-arrested-with-60kgs-of-cannabis/
+  - type: "chapter"
+    title: "The Social and Cultural Context of Cannabis Use in Rwanda"
+    authors: ["Helen Codere"]
+    container: "Cannabis and Culture"
+    editors: ["Vera Rubin"]
+    publisher: "Mouton"
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: "pp. 217–226, especially pp. 219–223"
 ---
 
 Rwanda treats cannabis as one of the most serious drugs in its penal law, and at the
@@ -51,7 +60,10 @@ under which the scheme operates still lists cannabis as an illegal narcotic. The
 development board expects export income and jobs, and a special export levy is
 planned.
 
-A study of 1959 to 1960 found cannabis use in Rwanda confined to the Twa minority. A
+Helen Codere’s 1959–60 research, published in *Cannabis and Culture* (1975), found
+that photo-questionnaire respondents mostly associated cannabis with Twa men, while
+also mentioning other users. This was evidence of social attitudes, not a national
+prevalence survey or proof that use was exclusively confined to one community. A
 health minister first proposed medical use in 2010.
 
 The order changes no score for [Rwanda](/country/rw/): nothing in it reaches a person

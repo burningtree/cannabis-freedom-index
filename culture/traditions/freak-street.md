@@ -24,6 +24,15 @@ sources:
     url: https://kathmandupost.com/21/2019/11/21/snowman-cafe-the-final-bastion-of-freak-street
   - title: Wikimedia Commons — Legal hashish shop in Kathmandu, Nepal in 1973
     url: https://commons.wikimedia.org/wiki/File:Legal_hashish_shop_in_Kathmandu,_Nepal_in_1973.jpg
+  - type: chapter
+    title: "Cannabis in Nepal: An Overview"
+    authors: [James Fisher]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 247–255, especially pp. 249–254
 ---
 
 *Freak Street* is the travellers' name for Jhochhen in Kathmandu. During the 1960s and early 1970s, its lodges, cafés and licensed cannabis shops became a destination on the overland hippie trail. People came to buy hashish, stay cheaply and meet other travellers. Nepali shopkeepers and café owners built businesses around that demand.
@@ -47,6 +56,8 @@ Those recollections are accounts of a particular era. They do not describe a cus
 ## Licences cancelled, then a wider ban
 
 Nepal [revoked cannabis cultivation and trading licences on July 16, 1973](/history/nepal-shops-closed-1973/). The [1976 Narcotic Drugs (Control) Act](/history/nepal-narcotics-act-1976/) followed with a broader prohibition. Closing the licensed market and criminalising personal conduct were separate steps.
+
+Fisher’s contemporary account also looks beyond Kathmandu. Cannabis had provided cash income in the western hills, and some dealers responded to the loss of licences by diversifying into handicrafts. The closure affected an agricultural and trading network, not only a tourist street.
 
 That sequence distinguishes Freak Street from Copenhagen's [Pusher Street](/culture/traditions/pusher-street/). Both became internationally recognised cannabis places, but Kathmandu's shops had operated under licences; Christiania's stalls operated despite prohibition. Visibility alone does not tell us the legal position of a market.
 

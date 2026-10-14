@@ -19,7 +19,7 @@ image:
   caption: A ganja farm in Westmoreland, Jamaica.
   credit: Cannabis Pictures, CC BY 2.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Cannabis_Ganja_Farm_(18272580718).jpg
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipedia — Ganja
@@ -32,15 +32,42 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Trinidad_and_Tobago
   - title: "Wikipedia — Cannabis in Thailand"
     url: https://en.wikipedia.org/wiki/Cannabis_in_Thailand
+  - type: "chapter"
+    title: "The Social Nexus of Ganja in Jamaica"
+    authors: ["Lambros Comitas"]
+    container: "Cannabis and Culture"
+    editors: ["Vera Rubin"]
+    publisher: "Mouton"
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: "pp. 119–132, especially pp. 119–126 and 128–131"
+  - type: "chapter"
+    title: "Ethnobotanical Aspects of Cannabis in Southeast Asia"
+    authors: ["Marie Alexandrine Martin"]
+    container: "Cannabis and Culture"
+    editors: ["Vera Rubin"]
+    publisher: "Mouton"
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: "pp. 63–67, 73"
+  - type: book
+    title: 'Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928'
+    authors: [James H. Mills]
+    publisher: Oxford University Press
+    year: 2003
+    isbn: 0-19-924938-5
+    locator: A Note on Terms, pp. x–xi, quoting the Indian Hemp Drugs Commission
 ---
 
 Ganja is the Hindi word for the flowering tops of the cannabis plant. It is one of the oldest names for cannabis in English, and one of the most travelled: carried west to the Caribbean by Indian labourers and east across South-East Asia, it is today the ordinary word for the plant from Kingston to Bangkok.
 
 ## What it names
 
-In India the word is exact. *Gāñjā* is the flowering or fruiting top, as against [bhang](/culture/language/bhang/), the leaf, and [charas](/culture/language/charas/), the resin. India's [narcotics act of 1985](/history/india-ndps-act-1985/) uses the word as a legal term and defines it that way.
+In the terminology reflected by modern Indian law, the word is specific. *Gāñjā* is the flowering or fruiting top, as against [bhang](/culture/language/bhang/), the leaf, and [charas](/culture/language/charas/), the resin. India's [narcotics act of 1985](/history/india-ndps-act-1985/) uses the word as a legal term and defines it that way.
 
 It comes from Sanskrit *gañjā*. English had borrowed it by 1689.
+
+The 1894 commission also recorded exceptions to this vocabulary. In the passage reproduced by James H. Mills, flowering material made into a drink could be called *bhang*, while *ganja* sometimes had a broader regional meaning. Historical product names should therefore be read in their local context rather than treated as uniform botanical definitions.
 
 ## A government crop
 
@@ -57,6 +84,10 @@ The colonial laws took the name. Trinidad's [Ganja Ordinance of 1915](https://en
 The [Rastafari](/culture/traditions/rastafari-sacrament/), whose movement arose in Jamaica in the 1930s, made the plant a sacrament and kept the Indian word. Reggae then carried it around the world: Peter Tosh's "Legalize It" of 1976 is a song about ganja by name.
 
 ![A man smoking ganja from a clay chillum](../../src/assets/culture/ganja-smoking-gangasagar-fair-transit-camp-kolkata-2013-01-12-2646.jpg "Smoking ganja at the transit camp for the Gangasagar fair, Kolkata, 2013. | Biswarup Ganguly, CC BY 3.0, via Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Ganja_Smoking_-_Gangasagar_Fair_Transit_Camp_-_Kolkata_2013-01-12_2646.JPG")
+
+Lambros Comitas’s 1975 chapter treats Jamaican ganja as a social institution rather than only a smoking habit. His early-1970s research distinguishes smoking, medicinal teas and tonics, external applications and occasional food uses. The Indian-derived word had entered a much broader Afro-Jamaican household vocabulary; the study does not establish modern national prevalence or the effectiveness of those remedies.
+
+The chapter also records [herb camps and yards](/culture/traditions/jamaican-herb-camps/), where the word belonged to neighbourhood trade and company. Users described ganja as helping them work, while people seeking higher status might avoid the same practice as a class marker. Those are documented beliefs and social judgements, not proof of a work-enhancing drug effect.
 
 ## To South-East Asia
 

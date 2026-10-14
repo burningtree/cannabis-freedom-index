@@ -24,6 +24,15 @@ sources:
     url: https://www.scottishcorpus.ac.uk/cmsw/burns/
   - title: UK legislation — Misuse of Drugs Act 1971, section 37
     url: https://www.legislation.gov.uk/ukpga/1971/38/section/37
+  - type: "chapter"
+    title: "Early Diffusion and Folk Uses of Hemp"
+    authors: ["Sula Benet"]
+    container: "Cannabis and Culture"
+    editors: ["Vera Rubin"]
+    publisher: "Mouton"
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: "pp. 43–44"
 ---
 
 In a Scottish Halloween courtship charm recorded by Robert Burns, a person scattered hemp seed in the hope of seeing a future lover. The imagined figure would follow behind, gathering the hemp. Cannabis appears here through agricultural work and expectations of marriage, rather than through a preparation to smoke or eat.
@@ -49,6 +58,8 @@ The poem appeared in the [1786 Kilmarnock collection](/history/uk-burns-hallowee
 [William Strang’s 1884 etching](https://www.nationalgalleries.org/art-and-artists/32384) was made as an illustration to Burns’s poem. The National Galleries of Scotland holds it as accession P 2333.208. Its dark interior, clustered villagers and finely worked shadows evoke the wider fortune-telling gathering described in the poem.
 
 It is a later artistic interpretation of that world, not a picture specifically identified as hemp-seed sowing. The plate can illustrate the custom’s literary and seasonal setting without serving as eyewitness documentation of Jamie Fleck or evidence of cannabis consumption.
+
+Sula Benet’s comparative survey in *Cannabis and Culture* (1975) records another marriage-divination setting: hemp associated with St Andrew’s Eve in Poland and seed-sowing charms in Ukraine. These are related examples of an agricultural plant used to imagine a future spouse, not evidence that Burns’s Scottish Halloween rite was identical or that cannabis was consumed.
 
 ## A familiar crop before prohibition
 

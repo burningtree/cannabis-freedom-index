@@ -15,13 +15,22 @@ image:
   caption: Cannabis fields in the Rif, northern Morocco.
   credit: Michel Benoist, CC BY-SA 3.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Haschisch_rif_maroc.JPG
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipedia — Kief
     url: https://en.wikipedia.org/wiki/Kief
   - title: Wikipedia — Cannabis in Morocco
     url: https://en.wikipedia.org/wiki/Cannabis_in_Morocco
+  - type: "chapter"
+    title: "The Economic Significance of Cannabis sativa in the Moroccan Rif"
+    authors: ["Roger Joseph"]
+    container: "Cannabis and Culture"
+    editors: ["Vera Rubin"]
+    publisher: "Mouton"
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: "pp. 185–193, especially pp. 187–190"
 ---
 
 Kif comes from the Arabic *kīf*: joy, pleasure, well-being. The word named the feeling before it named anything that causes it. In Morocco it is the old word for cannabis and for the mixture in which it is smoked; in English, respelled *kief*, it has come to mean something else again.
@@ -33,6 +42,8 @@ Kif comes from the Arabic *kīf*: joy, pleasure, well-being. The word named the 
 | Morocco, traditionally | The best parts of the plant, chopped fine and mixed with local black tobacco, for smoking in the [sebsi](/culture/traditions/kif-and-the-sebsi/) |
 | Morocco, loosely | Cannabis in general, the crop of the Rif |
 | English ("kief", "keef") | The powder of resin glands sieved from dried flowers, the raw material of [hashish](/culture/language/hashish/) |
+
+Roger Joseph’s field study, published in *Cannabis and Culture* (1975), provides a precise earlier use of the word. In his account of the Rif economy in 1965–66, *kif* could name the harvested plant, the chopped material or its tobacco mixture. That vocabulary belongs to a particular local market and period; it is not simply the modern English name for loose resin glands.
 
 The English sense comes from the Rif as well, by a different road. In making Moroccan hashish, dried stalks are beaten over a fine cloth and the dust that falls through is collected; the first beating gives the best, and growers call that powder kif too. Pressed and warmed, it becomes the slab that is exported.
 

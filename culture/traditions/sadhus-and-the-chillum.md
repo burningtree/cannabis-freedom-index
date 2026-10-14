@@ -4,14 +4,14 @@ summary: Hindu ascetics devoted to Shiva smoke cannabis as part of their worship
 also: [Maha Shivaratri, Pashupatinath]
 countries: [in, np]
 featured: 6
-history: [nepal-pashupati-distribution-ended-1995, nepal-shivaratri-arrests-2018, india-ndps-act-1985]
+history: [nepal-pashupati-distribution-ended-1995, nepal-shivaratri-arrests-2018, india-ndps-act-1985, nepal-shops-closed-1973, nepal-narcotics-act-1976]
 image:
   src: ../../src/assets/culture/naga-sadhu-smoking-ganja-gangasagar-fair-transit-camp-kolkata-2013-01.jpg
   alt: A sadhu smoking a chillum
   caption: A Naga sadhu smoking ganja at the transit camp for the Gangasagar fair, Kolkata, January 2013.
   credit: Biswarup Ganguly, CC BY 3.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Naga_Sadhu_Smoking_Ganja_-_Gangasagar_Fair_Transit_Camp_-_Kolkata_2013-01-12_2573.JPG
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipedia — Charas
@@ -28,15 +28,24 @@ sources:
     url: https://en.wikipedia.org/wiki/Chillum
   - title: "Wikipedia — Kumbh Mela"
     url: https://en.wikipedia.org/wiki/Kumbh_Mela
+  - type: chapter
+    title: "Cannabis in Nepal: An Overview"
+    authors: [James Fisher]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 247–255, especially pp. 249–254
 ---
 
-Sadhus are Hindu ascetics who have left family and property behind. Among those devoted to Shiva, smoking cannabis is part of the religious life: an offering to the god, an aid to meditation, and a bond between the men who share the pipe. India and Nepal both ban the plant. Neither has seriously tried to stop the sadhus.
+Sadhus are Hindu ascetics who have left family and property behind. Among those devoted to Shiva, smoking cannabis is part of the religious life: an offering to the god, an aid to meditation, and a bond between the men who share the pipe. India and Nepal prohibit charas and ganja, but the enforcement described at religious gatherings has sometimes allowed sadhus to smoke openly.
 
 ## Who smokes
 
-The custom belongs to the Shaiva orders. The Naga sadhus, the Aghoris and the Tantric Bhairava sects are said to smoke freely as an integral part of their practice. What they smoke is [charas](/culture/language/charas/), the hand-rubbed resin of the Himalaya, or [ganja](/culture/language/ganja/). Charas is venerated by some as an aspect of Shiva himself.
+The custom is prominent among Shaiva orders, but is not confined to them. James Fisher’s interviews at Pashupatinath, reported in 1975, found cannabis-smoking sadhus from a wide range of Hindu sects. The Naga sadhus, the Aghoris and the Tantric Bhairava sects are said to smoke freely as an integral part of their practice. What they smoke is [charas](/culture/language/charas/), the hand-rubbed resin of the Himalaya, or [ganja](/culture/language/ganja/). Charas is venerated by some as an aspect of Shiva himself.
 
-Lay devotion surrounds it. It is said that many households in India keep a cannabis plant in order to have something to give a passing sadhu, and that at some evening devotional gatherings everyone present smokes.
+Lay devotion surrounds it. Fisher described Nepali households keeping plants to offer cannabis to passing sadhus, an act considered meritorious. His account also distinguishes ascetics from householders at [Kathmandu’s bhajan gatherings](/culture/traditions/bhajan-circles-in-kathmandu/): sharing the pipe there expressed fellowship, but was optional. The singers worshipped several deities, not only Shiva.
 
 ## The pipe
 
@@ -54,7 +63,7 @@ The largest Shivaratri gathering is at the [Pashupatinath temple](https://en.wik
 
 ## Nepal: from handing it out to looking away
 
-Until the 1970s charas was sold in Nepal by licensed dealers, and Kathmandu became the last stop of the hippie trail. Under foreign pressure the government cancelled the licences in 1973 and banned the plant in 1976.
+Until the 1970s charas was sold in Nepal by licensed dealers, and Kathmandu became the last stop of the hippie trail. Under foreign pressure the government [cancelled the licences in 1973](/history/nepal-shops-closed-1973/) and [enacted a broader prohibition in 1976](/history/nepal-narcotics-act-1976/).
 
 The temple took longer to change.
 

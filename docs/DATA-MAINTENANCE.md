@@ -898,3 +898,28 @@ users. The 39 countries whose Protocol date is the same day as a treaty entry th
 (mostly those that acceded to the amended convention in one step) got no separate entry, by
 the same rule as above. Like the other treaty entries these are unscored and can be removed
 by their id pattern.
+
+A 14 October research pass added driving context for Botswana, Tanzania (including
+Zanzibar's separate published law) and Mauritius. The current repository count
+rises from 122 to 125 of 200 profiles (62.5%). It also corrects Botswana's small
+possession penalties using Act 26/2025, adds a dated history event and article,
+and qualifies an inaccurate implication in the existing 2026 driving announcement.
+See [the research note](research/research-coverage-2026-10-14.md) for statutory
+sources, unresolved licence provisions, phased commencement and current-tariff
+gaps. Scores were preserved.
+
+A further 14 October pass added Morocco and Algeria: 127 of 200 driving sections
+(63.5%). Morocco uses the official July 2024 consolidated code; Algeria uses the
+replacement Law 26-09 published in May 2026, with a new unscored event and article.
+Tunisia remains pending because the retrieved official 2012 text does not establish
+a current cannabis-specific offence. See [the North Africa note](research/north-africa-driving-2026-10-14.md)
+for source dates, testing gaps and Morocco's pre-existing historical-chain warning.
+
+## Locally supplied books
+
+Related books may be added to ignored `books/` for research. Keep the files and full
+extractions local; cite relevant chapters publicly through the existing print-source
+schema with authors, editor, edition and printed page locators. Track local filenames,
+pagination, pages actually reviewed and future leads in [books.yaml](books.yaml).
+See [BOOKS.md](BOOKS.md) for the workflow. An indexed book is not automatically read,
+and a 1975 ethnography does not establish current law or medical efficacy.

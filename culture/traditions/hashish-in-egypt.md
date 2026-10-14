@@ -5,7 +5,7 @@ also: [gozah, manzul, Sufi]
 countries: [eg]
 featured: 8
 related: [language/hashish, language/zatla, traditions/rebetiko-and-the-tekes]
-history: [egypt-french-ban-1800, egypt-first-ban-1868, egypt-destruction-order-1877, egypt-import-ban-1879, egypt-russell-hashish-report-1930, egypt-import-tax-1874, egypt-cultivation-ban-1884, egypt-law-182-1960, egypt-caillard-regulation-proposal-1892, egypt-warnock-asylum-statistics-1895, egypt-sinai-eradication-1994]
+history: [egypt-french-ban-1800, egypt-first-ban-1868, egypt-destruction-order-1877, egypt-import-ban-1879, egypt-russell-hashish-report-1930, egypt-import-tax-1874, egypt-cultivation-ban-1884, egypt-law-182-1960, egypt-caillard-regulation-proposal-1892, egypt-warnock-asylum-statistics-1895, egypt-sinai-eradication-1994, egypt-soueif-prison-study-1971]
 history_cards: [egypt-french-ban-1800, egypt-first-ban-1868, egypt-russell-hashish-report-1930, egypt-caillard-regulation-proposal-1892, egypt-warnock-asylum-statistics-1895]
 image:
   src: ../../src/assets/culture/egyptian-type-e-scenes-hashishe-smokers-n-d-front-timea.jpg
@@ -13,13 +13,24 @@ image:
   caption: An undated Egyptian postcard titled "Hashishe Smokers".
   credit: M. Castro, CC BY-SA 2.5, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Egyptian_Type_e_Scenes._-_%22Hashishe_Smokers%22_(n.d.)_-_front_-_TIMEA.jpg
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipedia — Cannabis in Egypt
     url: https://en.wikipedia.org/wiki/Cannabis_in_Egypt
   - title: Transnational Institute — The Rise and Decline of Cannabis Prohibition, chapter 1
     url: https://www.tni.org/files/download/rise_and_decline_ch1.pdf
+  - type: chapter
+    title: Traditional Patterns of Hashish Use in Egypt
+    authors: [Ahmad M. Khalifa]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 195–205, especially pp. 200–203
+  - title: "M. I. Soueif — The use of cannabis in Egypt: A behavioural study, Bulletin on Narcotics 23(4), 17–28 (1971)"
+    url: https://www.unodc.org/unodc/en/data-and-analysis/bulletin/bulletin_1971-01-01_4_page004.html
 ---
 
 Egypt has used hashish for eight or nine hundred years and has been trying to stop for at least six hundred. The habit arrived with Sufi mystics and became part of the life of the café; the campaign against it runs from medieval rulers who had users' teeth pulled out to a modern law that allows the death penalty for trafficking.
@@ -36,8 +47,12 @@ About 1525 a rabbi of Cairo, David ibn Abi Zimra, wrote that people in Egypt ate
 |---|---|
 | Eaten | In the early centuries hashish was eaten. A report of 1925 describes it "mixed with sugar and cooked with butter and flavoring" into sweets called *manzul*, *maagun* and *garawish* |
 | Drunk | French soldiers in 1800 noted a beverage made from hemp |
-| Smoked in the *gozah* | The gozah is the traditional Egyptian water pipe. In a study of 1980, 89.4% of users smoked, most of them with it |
+| Smoked in the *gozah* | The gozah is the traditional Egyptian water pipe. In a study published in 1971, 89.4% of the selected prisoner users reported smoking without oral consumption; the water pipe was the commonest method |
 | Mixed | *Bosa* combined cannabis with darnel; a water-pipe blend added henbane |
+
+The figures come from M. I. Soueif’s [1971 study](/history/egypt-soueif-prison-study-1971/) of 850 male cannabis users imprisoned in 1967–68, compared with 839 non-user prisoners. Another 9.3% combined smoking with oral consumption. These are descriptions of a selected prison sample, not estimates for all Egyptians.
+
+In his 1975 chapter, Ahmad M. Khalifa describes shared sessions with a supervisor called the *Sultan*, who took the first draw from each fresh load. An attendant tended the water, fire and pipe as it passed around the circle. This records one account of sociability under prohibition, rather than a protocol followed by every smoker.
 
 ## Six centuries of bans
 

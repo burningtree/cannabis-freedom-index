@@ -22,10 +22,10 @@ cannabis_use:
   users: 51000
 recreational: illegal
 medical: limited
-updated: 2026-10-13
+updated: 2026-10-14
 summary: >-
-  Under 60 g carries a fine of up to 20,000 pula or up to three years; most small cases end in
-  fines. A 2025 Act allows licensed medical, research and industrial cannabis.
+  Possession of 60 g or less remains an offence, but a December 2025 amendment excludes prison
+  and caps the fine at P10,000. Licensed medical, research and industrial cannabis is permitted.
 scores:
   possession: 1
   cultivation: 1
@@ -36,13 +36,17 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis (dagga, or motokwane) is prohibited by the Illicit Traffic in Narcotic Drugs and
-      Psychotropic Substances Act 2018. Possession of less than 60 g carries a fine of up to 20,000
-      pula or up to three years in prison, or both; more than 60 g carries a fine of up to 500,000
-      pula or up to ten years.
+      Under the amended Illicit Traffic in Narcotic Drugs and Psychotropic Substances Act,
+      possession of 60 g or less of cannabis (dagga, or motokwane) is a low-level offence with a
+      fine up to P10,000 or prescribed alternatives; the person shall not be imprisoned.
+      A notice requires payment within 21 days, with mandatory rehabilitation as prescribed.
+      Above 60 g but below 1 kg, the published law provides up to P20,000, three years, or both;
+      above 1 kg, up to P500,000, ten years, or both. The text does not resolve exactly 1 kg.
+      Cannabis preparations have a separate provision carrying up to P20,000, three years, or both.
     sources:
-      - dn
-      - law
+      - drug_amend25
+      - drug_current
+      - drug_commence25
   cultivation:
     text: Unlawful cultivation carries a fine of up to 500,000 pula or up to twenty years.
     sources:
@@ -50,10 +54,14 @@ segments:
       - law
   enforcement:
     text: >-
-      Magistrates' courts hear a steady stream of small dagga cases, most ending in fines with
-      prison in default of payment.
+      Older court reporting describes fines with prison in default of payment. The amendment
+      effective 22 December 2025 instead excludes imprisonment for low-level cannabis possession,
+      including nonpayment, and provides prescribed alternatives and rehabilitation. Implementation
+      of those programmes and post-amendment sentencing practice remain unverified.
     sources:
       - dn
+      - drug_amend25
+      - drug_commence25
   sharing:
     text: Trafficking carries long prison terms.
     sources:
@@ -114,12 +122,13 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession of less than 60 g carries a
-      fine of up to 20,000 pula or up to three years in prison, or both, under the Illicit
-      Traffic in Narcotic Drugs and Psychotropic Substances Act 2018.
+      There is no legal recreational supply. The amended Act treats possession of 60 g or less
+      as a low-level offence with a fine up to P10,000 or prescribed alternatives, mandatory
+      rehabilitation as prescribed, and no imprisonment. This does not authorise purchase,
+      cultivation, sale or importation, and no separate exemption for visitors was verified.
     sources:
-      - dn
-      - law
+      - drug_amend25
+      - drug_current
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 1,268 kg of herbal
@@ -128,7 +137,41 @@ context:
       comparable across borders.
     sources:
       - unodc_szr
+  driving:
+    status: impairment
+    text: >-
+      Road Traffic Act section 46(2) prohibits driving or attempting to drive while unfit through
+      drugs. Section 46(4) provides P5,000–10,000, two–five years in prison, or both; being in charge
+      without driving is a separate offence. Section 48 permits drug-analysis evidence from
+      specimens taken within three hours and gives refusal evidential consequences. The published
+      section 53 contains overlapping licence provisions: subsection (3) specifies two–five years
+      for section 46(2), while (3A) specifies one–three years for section 46 generally. Their
+      application needs judicial clarification. The February 2026 announcement of a proposed
+      drug-driving ban does not establish that existing section 46 excludes drugs. No numerical
+      THC cutoff or current roadside cannabis-testing practice was verified.
+    sources:
+      - traffic
+      - driving26
 sources:
+  traffic:
+    title: "Botswana Attorney General's Chambers — Road Traffic Act, Chapter 69:01, published consolidation"
+    url: https://e-laws.botswanalaws.com/principal-legislation/road-traffic/
+    locator: "Sections 46–48, 53 and 85; amendment annotations through Act 27 of 2008. Overlapping section 53 licence ranges retained as an unresolved issue."
+  driving26:
+    title: "Botswana Daily News — proposed Road Traffic Act amendments (25 February 2026)"
+    url: https://dailynews.gov.bw/news-detail/90251
+  drug_amend25:
+    title: "Botswana Attorney General's Chambers — Illicit Traffic in Narcotic Drugs and Psychotropic Substances (Amendment) Act 26 of 2025"
+    url: https://e-laws.botswanalaws.com/PDF/Bulletin/Botswana2025pdf/026.pdf
+    locator: "Section 4, particularly inserted subsections 4(2A)–(2E); scanned pages 2–3 read."
+  drug_current:
+    title: "Botswana Attorney General's Chambers — Illicit Traffic in Narcotic Drugs and Psychotropic Substances Act, as amended in 2025"
+    url: https://e-laws.botswanalaws.com/principal-legislation/illicit-traffic-in-narcotic-drugs-and-psychotropic-substances/
+    locator: "Section 4; low-level possession, larger quantities and cannabis preparations are distinct provisions."
+  drug_commence25:
+    title: "Botswana Attorney General's Chambers — Act 26 of 2025 commencement record"
+    url: https://e-laws.botswanalaws.com/act-bulletin-2025/act-26-of-2025-illicit-traffic-in-narcotic-drugs-and-psychotropic-substances-amendment-act/
+    locator: "Commencement on 22 December 2025 through S.I. 163/2025."
   ca25:
     title: Cannabis Act, 2025 (Act No. 20 of 2025), including section 48 (Attorney General's Chambers, scanned PDF)
     url: https://e-laws.botswanalaws.com/PDF/Bulletin/Botswana2025pdf/020.pdf

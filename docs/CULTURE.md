@@ -270,3 +270,11 @@ The site turns that into a figure with the caption and credit underneath. Rules:
 2. The entry page, its card and the profiles of its countries have been looked at.
 3. Every picture is a local file and shows on the page.
 4. Each country in `countries` and each id in `history` is mentioned in the text.
+
+## Local book research
+
+Use locally supplied books in ignored `books/` as reference sources, following
+[BOOKS.md](BOOKS.md) and its tracked [catalogue](books.yaml). Cite the chapter author
+and exact printed pages in the entry's existing `sources` structure, without a local
+file URL. Record what was actually read and distinguish observations, informants'
+accounts and the author's interpretation. Local copies are not website assets.

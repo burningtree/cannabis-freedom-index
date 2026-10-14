@@ -10,7 +10,7 @@ image:
   caption: Siemieniotka, a traditional Silesian hemp-seed soup served during Christmas Eve celebrations in Poland.
   credit: Śląskie Smaki / ŚOT; photograph by Havve
   credit_url: https://www.slaskiesmaki.pl/dish/512120/siemieniotka-zupa-wigilijna
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Śląskie Smaki — Siemieniotka (zupa wigilijna)
@@ -29,11 +29,22 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Nepal
   - title: "Wikipedia — Cannabis in Japan"
     url: https://en.wikipedia.org/wiki/Cannabis_in_Japan
+  - type: "chapter"
+    title: "Early Diffusion and Folk Uses of Hemp"
+    authors: ["Sula Benet"]
+    container: "Cannabis and Culture"
+    editors: ["Vera Rubin"]
+    publisher: "Mouton"
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: "pp. 43–44"
 ---
 
 *Siemieniotka*, also called *konopiotka* or *siemieniatka*, is a traditional hemp-seed soup from Silesia, Poland, served at the Christmas Eve supper, *Wigilia*. It carries on the centuries-old culinary use of hemp as food rather than as an intoxicant, from a time when hemp was an ordinary crop.
 
 [Śląskie Smaki](https://slaskiesmaki.pl/staticcontent/141243/siemieniatka-siemieniotka-konopiotka), the region’s culinary tourism project, records descriptions of the soup in Silesian accounts from 1887 and 1888. The dish is still served at Christmas Eve suppers, with recipes passed from one generation to the next.
+
+Sula Benet’s 1975 survey adds a different kind of evidence. She records hemp-seed Christmas Eve soup, spelling it *semieniatka*, in Poland and Lithuania and formerly Russia, and interprets the meal in relation to beliefs about deceased relatives visiting their families. This is her comparative folklore account, rather than proof that every contemporary Silesian household gives the soup the same meaning.
 
 ## The dish
 

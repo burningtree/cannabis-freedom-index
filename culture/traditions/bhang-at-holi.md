@@ -10,7 +10,7 @@ image:
   caption: Thandai poured at a stall during Holi, with customers crowding the counter. Bhang is added for those who ask.
   credit: Kaushalspeed, CC BY-SA 4.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Bhang-and-Thandai.jpg
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipedia — Bhang
@@ -23,6 +23,15 @@ sources:
     url: https://en.wikipedia.org/wiki/Thandai
   - title: "Wikipedia — Single Convention on Narcotic Drugs"
     url: https://en.wikipedia.org/wiki/Single_Convention_on_Narcotic_Drugs
+  - type: chapter
+    title: "Social Aspects of the Use of Cannabis in India"
+    authors: [Khwaja A. Hasan]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 235–246, especially pp. 238–243
 ---
 
 At Holi, the spring festival of colours, much of north India drinks cannabis. The leaf is ground to a paste and stirred into sweet spiced milk, and in some states it is sold in shops that hold a government licence. India shaped an international treaty so that this could go on.
@@ -46,6 +55,8 @@ The custom is strongest in the north, where Holi itself is biggest. In Mathura, 
 ![A nineteenth-century Indian painting of men grinding bhang and drinking it](../../src/assets/culture/gouache-by-an-amritsar-artist-depicting-the-preparation-and-consumptio.jpg "The preparation and drinking of bhang, a nineteenth-century gouache by an Amritsar artist. | Unknown artist, public domain, via Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Gouache_by_an_Amritsar_artist_depicting_the_preparation_and_consumption_of_Indian_hemp_(bhang).jpg")
 
 ![Balls of green bhang paste in a tray beside a bag of dried leaves](../../src/assets/culture/bhang-4381292529.jpg "Bhang paste rolled into balls, ready to be mixed into lassi. | Reuben Strayer, CC BY-SA 2.0, via Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Bhang_(4381292529).jpg")
+
+Hasan’s account in *Cannabis and Culture* (1975) places preparation itself at the centre of social life. At the [thandai gatherings he describes](/culture/traditions/thandai-gatherings/), conversation continued through the slow grinding of ingredients. Such meetings could be organised by kinship, friendship or caste, and caste groups did not necessarily share a gathering. This is a historical account of sociability, not proof that every Holi celebration followed the same rules.
 
 ## Not only Hindus, not only Holi
 

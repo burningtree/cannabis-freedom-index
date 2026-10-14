@@ -7,7 +7,7 @@ spelling:
   - { text: hænep, lang: Old English }
 also: [industrial hemp, hempen, Hanf, hampr]
 countries: [us]
-history: [us-farm-bill-2018, us-hemp-thc-limit-enacted-2025]
+history: [us-farm-bill-2018, us-hemp-thc-limit-enacted-2025, france-rabelais-pantagruelion-1546]
 history_cards: [us-farm-bill-2018, us-hemp-thc-limit-enacted-2025]
 image:
   src: ../../src/assets/culture/hemp-rope.jpg
@@ -25,6 +25,13 @@ sources:
     url: https://en.wikipedia.org/wiki/Hemp
   - title: Wikimedia Commons — Hemp-rope.jpg
     url: https://commons.wikimedia.org/wiki/File:Hemp-rope.jpg
+  - type: book
+    title: 'Cannabis: A History'
+    authors: [Martin Booth]
+    publisher: Thomas Dunne Books / St. Martin’s Press
+    year: 2015
+    isbn: 978-1-250-08219-0
+    locator: 'ch. 6, The Herb Pantagruelion (EPUB; original work copyright 2003)'
 ---
 
 *Hemp* is an old English name for cannabis and for the fibre obtained from its stems. Today it usually means the crop grown for fibre, seed or other industrial uses. It is also a legal category: a plant or product must satisfy a jurisdiction's definition before it can be treated as hemp. The everyday word, the agricultural crop and the statutory category overlap, but are not identical.
@@ -44,6 +51,8 @@ Hemp stems contain long outer fibres and a woody inner core. The fibres can be s
 Nor does every material sold under a name containing hemp come from cannabis. Manila hemp is abacá, a banana relative. Names of commercial fibres can group useful materials together without expressing botanical relationships.
 
 The cultural atlas includes several examples of the distinction. Korean [sambe](/culture/traditions/sambe/) is hemp cloth associated with funerals; [Hmong hemp cloth](/culture/traditions/hmong-hemp-cloth/) belongs to a textile tradition; and [siemieniotka](/culture/traditions/siemieniotka/) is a Silesian soup made from the seed. None of these customs requires the crop to be understood primarily as an intoxicant.
+
+European literature also celebrated that material world. In the [Third Book of Pantagruel, published in 1546](/history/france-rabelais-pantagruelion-1546/), François Rabelais praises a plant called Pantagruelion, identified by Martin Booth as hemp. The episode concerns useful fibre and its many applications. It is a literary counterpart to the everyday crop, rather than evidence that Rabelais smoked cannabis.
 
 ## A threshold written into law
 

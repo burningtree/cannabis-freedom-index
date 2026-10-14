@@ -14,7 +14,7 @@ image:
   caption: Jack Herer in September 1989.
   credit: Carolmooredc, CC BY-SA 3.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:JackHerer-9-23-1989.jpg
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipedia — Jack Herer
@@ -22,7 +22,7 @@ sources:
   - type: book
     title: The Emperor Wears No Clothes
     authors: [Jack Herer]
-    locator: "Introduction; Chapter 2, Our Challenge to the World"
+    locator: "Undated EPUB; chapter 1; opening challenge in chapter 2; prologue by Michael E. Rose, dated 13 May 1998"
 ---
 
 Jack Herer turned the case against cannabis prohibition into a story about hemp. His book *The Emperor Wears No Clothes*, which he published himself in [1985](/history/us-emperor-wears-no-clothes-1985/), argued that the same plant banned as a drug could supply fibre, paper, fuel, food and medicine, and that the government had kept the evidence of this from its own citizens. By 2020 it was in its fourteenth edition, having never gone out of print.
@@ -38,6 +38,14 @@ Herer says he had been collecting information on cannabis since 1973 when he fin
 | Hemp yields far more than other crops | The Dutch agronomist Hayo van der Werf found that maize, sugar beet or potato give similar dry yields in good conditions, while hemp does better in poor ones |
 | Hemp hurds are 77 per cent cellulose | Measured values are 32 to 38 per cent; the figure may confuse the woody core with the bark |
 | Hemp could replace timber and fossil fuels | The author's claims, repeated widely, not established findings |
+
+## An argument built from many names
+
+The opening chapter deliberately assembles words such as hemp, marijuana, ganja and bhang as names for one plant. This is a campaigning device: it asks readers familiar with a prohibited drug to reconsider the ordinary crop behind the name. The argument moves between American colonial cultivation, medicines and industrial uses to make prohibition seem inconsistent with that longer history.
+
+Those names do not always identify the same product. [Bhang](/culture/language/bhang/), flowering tops, resin and fibre have different preparations and legal histories. Herer's rhetorical unity should not erase those distinctions or turn every historical claim in the opening chapter into a verified fact.
+
+The book also contains other voices. A prologue in the available later text is signed by lawyer Michael E. Rose on 13 May 1998. Its account of arrests and sentencing is Rose's intervention in the debate, not a passage written by Herer in the original 1985 edition.
 
 ## The movement
 

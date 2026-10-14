@@ -15,7 +15,7 @@ image:
   caption: The Marcha da Maconha in Rio de Janeiro, 10 May 2014.
   credit: Tomaz Silva/Agência Brasil, CC BY 3.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Marijuana_march_Rio_de_Janeiro_2014_May_10_Brazil_marcha_maconha.jpg
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipédia — Cannabis (psicotrópico), Etimologia
@@ -30,6 +30,15 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Brazil
   - title: "Wikipedia — Global Marijuana March"
     url: https://en.wikipedia.org/wiki/Global_Marijuana_March
+  - type: chapter
+    title: Patterns of Marihuana Use in Brazil
+    authors: [Harry William Hutchinson]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 173–183, especially pp. 174–179
 ---
 
 *Maconha* is the Brazilian word for cannabis. It is African: from *ma'kaña* in Kimbundu, a language of Angola. The plant and its name came to Brazil with enslaved people, and for most of Brazilian history the laws against it were, in so many words, laws about them.
@@ -63,6 +72,8 @@ Whether any of these were enforced is unclear. Rio's is among the earliest canna
 Slavery ended in 1888, and the association outlived it. In 1915 the psychiatrist [Rodrigues Dória](/history/brazil-doria-paper-1915/), a former governor of Sergipe, told a scientific congress in Washington that smoking maconha was a degenerate vice, the revenge of enslaved Africans on those who had enslaved them. His paper was the reference for Brazilian studies for decades.
 
 The national ban followed in [1932](/history/brazil-federal-ban-1932/). The narcotics decree of [1938](/history/brazil-decree-law-891-1938/) named "maconha, diamba and liamba" and set five years for growing it. When the United Nations [surveyed Brazil in 1955](/history/brazil-un-survey-1955/), clandestine growing was centred on the north-east, along the São Francisco river, and smoking had spread from there to Rio and São Paulo. In the capital, cannabis accounted for twelve seizures for every one of any other narcotic.
+
+Harry William Hutchinson’s 1975 chapter questions the evidence behind that reputation. He found that a 1958 government collection largely recycled older medical and police reports, while social research was scarce. His own work in Bahia did not substantiate claims that cannabis belonged generally to Afro-Brazilian religious ceremonies. The names *diamba*, *liamba* and *pango* document regional vocabulary; they do not establish a single custom shared by every community associated with them.
 
 ## A word you could be jailed for
 

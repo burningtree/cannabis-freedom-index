@@ -4,7 +4,7 @@ summary: Early Daoist and medical texts associate cannabis with incense, visions
 also: [Shangqing, Tao Hongjing]
 countries: [cn]
 history: [china-jirzankal-study-2019, china-narcotic-1985, china-public-security-law-2006]
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 image:
   src: ../../src/assets/culture/boshanlu-cleveland-1986-46.jpg
@@ -25,6 +25,15 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_China
   - title: Wikipedia — Entheogenic use of cannabis
     url: https://en.wikipedia.org/wiki/Entheogenic_use_of_cannabis
+  - type: chapter
+    title: "The Origin and Use of Cannabis in Eastern Asia: Their Linguistic-Cultural Implications"
+    authors: [Hui-Lin Li]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 51–62, especially pp. 53–57
 ---
 
 Hemp, [*má*](/culture/language/ma/), was an ordinary material for cloth, rope and food in ancient China. Some Daoist and medical texts also describe cannabis in connection with ritual incense, visions and encounters with spirits. These passages document religious and medical ideas; interpreting them as evidence of particular psychoactive practices requires care.

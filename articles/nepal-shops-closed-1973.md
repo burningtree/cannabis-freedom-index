@@ -2,8 +2,15 @@
 sources:
   - title: Journal of Cannabis Research — Revealed reality of cultivation and licit/illicit use of Cannabis in the western mid-hills of Nepal (2025)
     url: https://link.springer.com/article/10.1186/s42238-025-00276-w
-  - title: James Fisher — Cannabis in Nepal, an overview (1975; OFDT bibliographic record and abstract)
-    url: https://bdoc.ofdt.fr/index.php?id=60909&lvl=notice_display
+  - type: chapter
+    title: "Cannabis in Nepal: An Overview"
+    authors: [James Fisher]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 247–255, especially pp. 249–254
 ---
 
 Until July 1973, Nepal taxed and licensed a legal cannabis trade. Farmers could cultivate commercially, dealers sold marijuana and hashish, and Kathmandu's licensed shops became a famous destination on the overland “hippie trail.” Then the government revoked every cannabis licence.

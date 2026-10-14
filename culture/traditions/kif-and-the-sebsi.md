@@ -11,7 +11,7 @@ image:
   caption: A sebsi.
   credit: Oursencolere, CC BY-SA 3.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Sebse.jpg
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipedia — Sebsi
@@ -22,6 +22,15 @@ sources:
     url: https://en.wikipedia.org/wiki/Majoun
   - title: "Wikipedia — Hashish"
     url: https://en.wikipedia.org/wiki/Hashish
+  - type: "chapter"
+    title: "The Economic Significance of Cannabis sativa in the Moroccan Rif"
+    authors: ["Roger Joseph"]
+    container: "Cannabis and Culture"
+    editors: ["Vera Rubin"]
+    publisher: "Mouton"
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: "pp. 185–193, especially pp. 187–190"
 ---
 
 The sebsi is Morocco's cannabis pipe: a long thin stem of wood with a clay bowl no bigger than a thimble. It belongs to a way of smoking that is slow, sociable and mild, and that is older than the hashish trade for which the country is now known.
@@ -42,7 +51,9 @@ Before the 1960s, cannabis in Morocco was grown in small quantities and used at 
 | [Majoun](https://en.wikipedia.org/wiki/Majoun) | A sweet paste or ball of cannabis with honey, nuts and dried fruit. The name is Arabic for "kneaded". A report of 1957 mentions versions with opium and datura seed as well |
 | In food | Mixed into ordinary dishes |
 
-Kif also had an occasional place in Sufi religious ritual.
+Roger Joseph described the pipe as *sibsa* in his Rif field study published in 1975: a walnut-wood stem that could be dismantled into two connecting sections, fitted with a baked-clay bowl. Rural traders supplied cafés at weekly markets, where small portions of the chopped mixture were sold in empty matchboxes. These observations document the local preparation and social setting rather than a modern tourist presentation.
+
+Joseph also cautioned against treating this Rif custom as inherently mystical. In the communities he studied, smoking was associated especially with middle-aged and older men, and prominent local religious brotherhoods often disapproved. His account should not be generalised to every Moroccan community or every period.
 
 Hashish, the pressed resin, is a late arrival. Before the first Western travellers came, only small pieces of Lebanese hashish were to be found in the country. It is widely believed that Moroccans began making it during the years of the visitors' influence, and there are competing legends about who taught whom.
 

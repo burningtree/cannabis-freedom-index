@@ -16,7 +16,7 @@ image:
   caption: A hashish shop in Kathmandu in 1973, when the trade was still legal in Nepal.
   credit: Roger McLassus, CC BY-SA 3.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Legal_hashish_shop_in_Kathmandu,_Nepal_in_1973.jpg
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
   - title: Wikipedia — Hashish
@@ -27,6 +27,15 @@ sources:
     url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6153265/
   - title: "Wikipedia — Single Convention on Narcotic Drugs"
     url: https://en.wikipedia.org/wiki/Single_Convention_on_Narcotic_Drugs
+  - type: chapter
+    title: The Traditional Role and Symbolism of Hashish among Moroccan Jews in Israel and the Effect of Acculturation
+    authors: [Phyllis Palgi]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 207–216, especially pp. 210–215
 ---
 
 *Ḥashīsh* is an ordinary Arabic word for dried grass or fodder. As the name of a drug it means the resin of the cannabis plant, collected and pressed, and it is the word under which Europe first learned that cannabis could be eaten or smoked for its effect. It names the product from Morocco to Afghanistan, and it gave the West a second word, *assassin*, on the strength of a nineteenth-century theory about a medieval sect.
@@ -71,6 +80,8 @@ At the start of the twentieth century most hashish in Europe came from Kashmir a
 | [Afghanistan](/country/af/) | A main source from the late 1960s. The king [urged farmers to grow more](/history/afghanistan-hashish-fertiliser-edicts-1969/) in 1969 and [banned it under American pressure](/history/afghanistan-ban-1973/) in 1973. Now reckoned the largest producer |
 | [Morocco](/country/ma/) | Mass production for export began only in the 1960s, with Western visitors. By the 1990s it had a near monopoly of the European market |
 | [Iran](/country/ir/), [Pakistan](/country/pk/), [India](/country/in/) | Long traditions of use under the names bang and charas |
+
+The social meaning was not uniform even within Morocco. In a chapter published in 1975, Phyllis Palgi reports that Moroccan Jewish informants in Israel described avoiding hashish in Morocco as a boundary between Jewish and Muslim social life. Some adopted it after migration as older relationships changed. This was an interpretation of particular informants and marginal groups, not evidence of a universal Moroccan-Jewish smoking tradition or a measure of prevalence.
 
 ## The word now
 
