@@ -77,7 +77,7 @@ Dishes of the same family exist elsewhere on the old hemp-growing map of Europe 
 | Siemieniotka | Silesia, Poland | Hemp-seed soup with milk and honey |
 | *Bhang ko achar* | Nepal | A pickle of ground hemp seed with potato |
 | Bhang chutney | Kumaon, India | Seeds ground with mint, tomato and spices |
-| Shichimi | Japan | A seven-spice mixture that includes hemp seed |
+| [Shichimi](/culture/traditions/hemp-seed-in-shichimi/) | Japan | A seven-spice mixture that includes hemp seed |
 
 They have in common that they use the seed, and that they belong to regions where hemp was a household crop.
 

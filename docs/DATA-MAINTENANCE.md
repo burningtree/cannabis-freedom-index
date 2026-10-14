@@ -463,7 +463,7 @@ node scripts/data-status.cjs chain de     # one country's full timeline
   Korea, Turkmenistan, Eritrea and the like). Elsewhere it is being phased out gradually:
   whenever a profile is edited, replace what rests on it and delete the `fcdo` source once
   nothing cites it. `grep -l "gov.uk/foreign-travel-advice" -r countries | wc -l` counts what is
-  left (147 files on 12 October 2026).
+  left (147 files on 12 October 2026, 29 on 14 October 2026).
 - **Removing a GOV.UK sentence means replacing its content, not dropping it.** Above all a
   statement about prison: if the travel advice was the only place a profile said how long a
   person can be jailed, find the same fact in the country's statute, its regulator or courts, a
@@ -481,6 +481,10 @@ node scripts/data-status.cjs chain de     # one country's full timeline
   as a context entry and leave the estimate in place.
 - **Federations:** state-level changes (US, Australia, Canada, India) are context entries on the
   national timeline unless the national picture really shifts.
+- **`history-batch.cjs` re-sorts the whole of `changes.yaml`.** The file is not kept in the
+  script's sort order, so one run rewrote about 41,000 lines (14 October 2026). Check `git diff
+  --stat changes.yaml` after a run; if it is more than the new entries, put the original text
+  back and insert the new blocks by hand next to entries of the same date.
 - **Search tool limits:** more than about ten web searches in one go start failing with
   rate-limit errors. Batches of five work.
 - **UN documents load through the official document system.** `digitallibrary.un.org` is blocked,
