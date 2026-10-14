@@ -4,6 +4,7 @@ summary: In the 1970s one branch of the Brazilian ayahuasca religion Santo Daime
 also: [Santa Maria, marianos, CEFLURIS, ICEFLU, Colônia Cinco Mil, Céu do Mapiá, Padrinho Sebastião]
 countries: [br]
 history: [brazil-law-6368-1976, brazil-cinco-mil-raid-1983, brazil-conad-ayahuasca-2010, brazil-supreme-court-2024]
+history_cards: [brazil-cinco-mil-raid-1983]
 related: [traditions/rastafari-sacrament, traditions/ethiopian-zion-coptic-church, language/maconha]
 image:
   src: ../../src/assets/culture/padrinho-sebastiao.jpg

@@ -8,6 +8,7 @@ spelling:
 countries: [ma]
 featured: 8
 history: [morocco-hassan-regulations-1890, morocco-rif-republic-kif-ban-1923, morocco-french-zone-ban-1954, morocco-kif-ban-1956, morocco-spanish-zone-kif-1917, morocco-french-zone-decree-1932, morocco-french-zone-survey-1956, morocco-cultivation-survey-2003, morocco-law-13-21-2021, morocco-royal-pardon-2024, morocco-spanish-zone-decree-1935, morocco-kif-seizures-1949]
+history_cards: [morocco-hassan-regulations-1890, morocco-rif-republic-kif-ban-1923]
 image:
   src: ../../src/assets/culture/haschisch-rif-maroc.jpg
   alt: Cannabis fields on terraced hillsides in the Rif mountains

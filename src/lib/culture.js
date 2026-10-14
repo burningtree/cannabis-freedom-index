@@ -33,12 +33,18 @@ export const cultureEntries = (await getCollection("culture"))
       if (!ch) throw new Error(`${file}: there is no history entry "${id}"`);
       return ch;
     }).sort((a, b) => a.date.localeCompare(b.date));
+    const historyCards = d.history_cards.map((id) => {
+      const ch = changes.find((x) => x.id === id);
+      if (!ch) throw new Error(`${file}: history_cards names an unknown history entry "${id}"`);
+      if (!d.history.includes(id)) throw new Error(`${file}: history_cards entry "${id}" must also be in history`);
+      return ch;
+    });
     // links in the text to pages of this site must lead somewhere
     for (const [, kind, id] of (entry.body ?? "").matchAll(/\]\(\/(history|country)\/([^/)#]+)\/?[^)]*\)/g)) {
       const found = kind === "history" ? changes.some((x) => x.id === id) : places.some((x) => x.slug === id);
       if (!found) throw new Error(`${file}: the text links to /${kind}/${id}/, which does not exist`);
     }
-    return { entry, section, slug, url: `culture/${section}/${slug}/`, ...d, countries, history, sources: d.sources.map(sourceTuple) };
+    return { entry, section, slug, url: `culture/${section}/${slug}/`, ...d, countries, history, historyCards, sources: d.sources.map(sourceTuple) };
   })
   // featured entries first, by rank; then the rest alphabetically
   .sort((a, b) => (a.featured ?? Infinity) - (b.featured ?? Infinity) || a.title.localeCompare(b.title));
@@ -72,7 +78,8 @@ for (const e of cultureEntries) {
 }
 
 export const cultureIn = (section) => cultureEntries.filter((e) => e.section === section);
-// the atlas entries a history entry belongs to: named in their `history`, or linked from their text
-export const cultureOfChange = (ch) => cultureEntries.filter((e) => e.history.includes(ch) || (e.entry.body ?? "").includes(`](/history/${ch.id}/`));
+// Reverse cards are editorial: background citations and incidental body links do not make
+// an atlas entry the subject of an event. Keep those links on the atlas page itself.
+export const cultureOfChange = (ch) => cultureEntries.filter((e) => e.historyCards.includes(ch));
 // what the atlas has on one country, for its page
 export const cultureOf = (c) => cultureEntries.filter((e) => e.countries.includes(c));

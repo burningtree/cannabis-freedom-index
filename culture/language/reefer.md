@@ -5,6 +5,7 @@ origin: American English slang
 also: [muggles, tea, viper, mezz, Reefer Madness]
 countries: [us]
 history: [us-massachusetts-first-state-1911, us-el-paso-ban-1915, us-marihuana-tax-act-1937, us-first-tax-act-convictions-1937, us-la-guardia-report-1944, us-reefer-madness-1938, us-assassin-of-youth-1937]
+history_cards: [us-reefer-madness-1938, us-assassin-of-youth-1937]
 image:
   src: ../../src/assets/culture/reefer-madness-1936.jpg
   alt: A lurid film poster for Reefer Madness

@@ -4,6 +4,7 @@ summary: Three cemeteries in western China, 2,800 to 2,400 years old, hold canna
 also: [Yanghai, Jiayi, Jirzankal, Turpan, Subeixi, Tashkurgan]
 countries: [cn]
 history: [china-yanghai-cannabis-study-2008, china-jiayi-cannabis-shroud-2016, china-jirzankal-study-2019, china-xinjiang-hashish-trade-ended-1934, china-narcotic-1985]
+history_cards: [china-yanghai-cannabis-study-2008, china-jiayi-cannabis-shroud-2016, china-jirzankal-study-2019]
 related: [traditions/the-scythian-vapour-bath, traditions/hemp-in-the-taoist-censer, language/ma]
 model: opus-5.5
 written: 2026-10-14

@@ -7,7 +7,7 @@ import { tierOf, tierColor } from "../../lib/tiers.js";
 import { sourceTuple } from "../../lib/sources.js";
 import SourceCitation from "../../components/SourceCitation.astro";
 import { Image } from "astro:assets";
-import { cultureEntries, cultureOfChange, cultureSection } from "../../lib/culture.js";
+import { cultureOfChange, cultureSection } from "../../lib/culture.js";
 import { relatedTo } from "../../lib/related.js";
 
 // One history entry: what happened, large; the score before and after when it moved one; how
@@ -31,12 +31,8 @@ const sources = [...ch.sources, ...(article?.data.sources ?? []).map(sourceTuple
 // An entry tied to no country gets the international entries instead: the treaties in order.
 const own = changes.filter((x) => x.country === c && !x.estimate).reverse();
 const at = own.indexOf(ch);
-// The atlas entries this one belongs to, and those its article links to.
+// Only atlas subjects explicitly selected for this event. Body links remain ordinary links.
 const culture = cultureOfChange(ch);
-for (const [, path] of (article?.body ?? "").matchAll(/\]\(\/(culture\/(?:language|traditions)\/[^/)#]+)/g)) {
-  const e = cultureEntries.find((x) => x.url === path + "/");
-  if (e && !culture.includes(e)) culture.push(e);
-}
 const span = c ? 3 : 5;
 const nearby = at < 0 ? [] : own.slice(Math.max(0, Math.min(at - span, own.length - 2 * span - 1)), Math.max(at + span + 1, 2 * span + 1));
 const related = relatedTo(ch, nearby);

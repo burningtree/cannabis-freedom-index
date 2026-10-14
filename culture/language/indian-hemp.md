@@ -5,6 +5,7 @@ origin: English, from botanical Latin
 also: [Cannabis indica, hemp drugs]
 countries: [in, gb, ng, jm, bs, fj, km, ru]
 history: [india-oshaughnessy-cannabis-tincture-1839, uk-doctors-take-up-indian-hemp-1843, uk-royal-physician-indian-hemp-1890, india-hemp-drugs-commission-1894, geneva-egypt-proposal-1924, geneva-opium-convention-1925, russia-soviet-ban-1934, fiji-dangerous-drugs-ordinance-1938, russia-rsfsr-article-225-1960, bahamas-indian-hemp-definition-1962, nigeria-indian-hemp-decree-1966, nigeria-death-penalty-removed-1975, comoros-penal-code-1995]
+history_cards: [india-oshaughnessy-cannabis-tincture-1839, uk-doctors-take-up-indian-hemp-1843, uk-royal-physician-indian-hemp-1890, nigeria-indian-hemp-decree-1966]
 image:
   src: ../../src/assets/culture/mature-cannabis-tree-in-india.jpg
   alt: A tall cannabis plant growing in India

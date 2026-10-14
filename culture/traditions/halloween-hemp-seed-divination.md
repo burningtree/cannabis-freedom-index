@@ -4,6 +4,7 @@ summary: Robert Burns recorded a Scottish courtship charm in which sowing hemp s
 also: [hemp-seed charm, Halloween, Robert Burns]
 countries: [gb]
 history: [uk-burns-halloween-1786, uk-ban-1928]
+history_cards: [uk-burns-halloween-1786]
 model: gpt-6
 written: 2026-10-14
 sources:

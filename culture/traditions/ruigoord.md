@@ -4,6 +4,7 @@ summary: An artists' village beside Amsterdam's harbour, linked to Christiania t
 also: [Landjuweel, Free Cultural Spaces, vrijplaats]
 countries: [nl, dk]
 history: [netherlands-ruigoord-saved-1973, netherlands-ruigoord-highlife-cup-2011, netherlands-toleration-1976]
+history_cards: [netherlands-ruigoord-saved-1973, netherlands-ruigoord-highlife-cup-2011]
 image:
   src: ../../src/assets/culture/ruigoord-village-2007.jpg
   alt: A frozen ditch and trees beside the old church and village buildings at Ruigoord.

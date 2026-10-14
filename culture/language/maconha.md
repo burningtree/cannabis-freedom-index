@@ -8,6 +8,7 @@ spelling:
 countries: [br, ao]
 featured: 10
 history: [brazil-rio-pango-ban-1830, angola-livingstone-observation-1857, brazil-federal-ban-1932, brazil-un-survey-1955, brazil-sao-luis-directive-1886, brazil-doria-paper-1915, brazil-decree-law-891-1938, brazil-planet-hemp-arrest-1997, brazil-supreme-court-2024]
+history_cards: [brazil-doria-paper-1915, brazil-planet-hemp-arrest-1997]
 image:
   src: ../../src/assets/culture/marijuana-march-rio-de-janeiro-2014-may-10-brazil-marcha-maconha.jpg
   alt: Demonstrators at the Marcha da Maconha in Rio de Janeiro

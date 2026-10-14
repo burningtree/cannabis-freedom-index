@@ -8,6 +8,7 @@ spelling:
 also: [esrarkeş, esrar tekkesi, esrarhane, beng, haşiş, asrār, sır, gubar]
 countries: [tr]
 history: [turkey-esrar-tekkes-closed-1857, turkey-esrar-sale-ban-1863, turkey-police-regulation-1913, turkey-narcotics-law-1933]
+history_cards: [turkey-esrar-sale-ban-1863]
 related: [language/hashish, traditions/rebetiko-and-the-tekes, traditions/hashish-in-egypt]
 model: opus-5.5
 written: 2026-10-14

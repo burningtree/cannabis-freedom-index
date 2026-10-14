@@ -5,6 +5,7 @@ also: [Malawi Gold]
 countries: [mw]
 related: [language/dagga, language/mbanje, language/matekoane, language/bangi]
 history: [nyasaland-noxious-weeds-1936, malawi-medical-industrial-2020, malawi-local-chamba-2024, malawi-hemp-proposal-2000, malawi-hemp-campaign-2015]
+history_cards: [malawi-local-chamba-2024]
 image:
   src: "../../src/assets/culture/malawi-gold-2016.jpg"
   alt: "A dried Malawi cannabis flower beside rolling paper and a jar"

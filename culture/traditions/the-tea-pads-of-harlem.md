@@ -4,6 +4,7 @@ summary: In New York between the wars, cannabis was smoked in rented rooms calle
 also: [tea pad, tea, vipers, muggles, gage, reefer, sass-fras, gungeon]
 countries: [us]
 history: [us-marihuana-tax-act-1937, us-la-guardia-report-1944]
+history_cards: [us-la-guardia-report-1944]
 related: [language/reefer, language/marijuana, traditions/the-coffeeshop]
 image:
   src: ../../src/assets/culture/louis-armstrong-1946.jpg

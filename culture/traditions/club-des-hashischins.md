@@ -5,6 +5,7 @@ also: [Club des hachichins, Hôtel Pimodan, Hôtel de Lauzun, dawamesk]
 countries: [fr]
 related: [language/hashish, traditions/hashish-in-egypt, traditions/rebetiko-and-the-tekes]
 history: [france-club-des-hashischins-1844, france-moreau-du-hachisch-1845, france-paradis-artificiels-1860, france-first-drug-law-1916]
+history_cards: [france-club-des-hashischins-1844]
 image:
   src: ../../src/assets/culture/hotel-lauzun-atget-1905.jpg
   fit: contain

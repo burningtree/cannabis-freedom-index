@@ -5,6 +5,7 @@ also: [tekes, tekedes, hasiklidika, mangas]
 countries: [gr, tr]
 related: [language/hashish, traditions/club-des-hashischins, traditions/hashish-in-egypt]
 history: [greece-hashish-ban-1890, greece-cultivation-ban-1920, greece-stocks-law-1932, greece-law-4139-2013]
+history_cards: [greece-hashish-ban-1890]
 image:
   src: ../../src/assets/culture/rembetes-karaiskaki-1933.jpg
   alt: Four rebetiko musicians posed with bouzouki and guitar

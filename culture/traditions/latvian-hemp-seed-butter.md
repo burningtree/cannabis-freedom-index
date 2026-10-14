@@ -4,6 +4,7 @@ summary: Roasted, ground hemp seeds become a relish or spread for rye bread in L
 also: [kaņepju sviests, kaņepju aizdars, hemp relish, pavalgs]
 countries: [lv]
 history: [latvia-hemp-revival-2009, latvia-hemp-woman-2018]
+history_cards: [latvia-hemp-woman-2018]
 model: gpt-6
 written: 2026-10-14
 sources:

@@ -122,6 +122,7 @@ spelling:                          # language entries: the word in its own scrip
 also: [bangue, bang]               # other spellings, related words, names to be found by
 countries: [in, ir]                # file names in /countries, the most closely tied first
 history: [india-bhang-exemption-1961, india-ndps-act-1985]   # ids in changes.yaml
+history_cards: [india-bhang-exemption-1961]                 # only events directly about this atlas subject
 related: [traditions/bhang-at-holi, language/ganja]          # optional: closest atlas entries first
 image:                             # the lead picture, optional
   src: ../../src/assets/culture/example.jpg   # a local file, relative to this Markdown file
@@ -211,11 +212,16 @@ The site turns that into a figure with the caption and credit underneath. Rules:
   up as a wrong claim about that country.
 - A country may be listed for a law about the custom (Italy for its Rastafari ruling) when the
   text says so.
-- `history` lists the entries the text mentions or relies on, and every history entry that is
-  about the word or the custom itself (a coffeeshop law belongs to The coffeeshop even when the
-  text does not mention it). Each one listed shows the atlas entry beside it on its history page,
-  so a reader who opens the law finds the culture behind it. If the text names a law that has no
-  history entry, add the entry to `changes.yaml` first.
+- `history` lists the entries the text mentions or relies on, including legal background. These
+  appear in the atlas entry's history list. If the text names a law that has no history entry,
+  add the entry to `changes.yaml` first.
+- `history_cards` selects which of those events should show this entry under **In the cultural
+  atlas** on the history page. Use it only when the event is specifically about the word,
+  preparation, community, place or institution. Each selected id must also be in `history`.
+  A background citation, a shared country or an incidental link in a history article is not
+  enough. Omission means no reverse cards. The first Cannabis Cup shows The Cannabis Cup,
+  not Indica and sativa or Kush; a general national cannabis ban should not show every local
+  dish, slang word or tradition that mentions it.
 - Beside each entry the page lists up to eight related words and traditions. They are worked out
   on their own: entries the text links to or that link to it, entries sharing history entries,
   and entries kept in two or more of the same countries. Use `related` to put the closest ones

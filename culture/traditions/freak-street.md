@@ -4,6 +4,7 @@ summary: Kathmandu's Jhochhen became a meeting place for overland travellers, li
 also: [Jhochhen, Jhochhen Tole, Old Freak Street, Eden Hashish Centre]
 countries: [np]
 history: [nepal-shops-closed-1973, nepal-narcotics-act-1976]
+history_cards: [nepal-shops-closed-1973]
 image:
   src: ../../src/assets/culture/legal-hashish-shop-in-kathmandu-nepal-in-1973.jpg
   fit: contain

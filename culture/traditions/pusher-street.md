@@ -4,6 +4,7 @@ summary: For half a century hashish was sold openly from stalls on one street of
 also: [Christiania, Green Light District]
 countries: [dk]
 history: [denmark-medical-pilot-2018, denmark-euphoriants-act-1955, denmark-christiania-junk-blockade-1979, denmark-christiania-biker-gang-1984, denmark-pusher-street-closed-2024, denmark-fight-against-drugs-plan-2003]
+history_cards: [denmark-christiania-junk-blockade-1979, denmark-christiania-biker-gang-1984, denmark-pusher-street-closed-2024]
 image:
   src: ../../src/assets/culture/cph-pusherstreet.jpg
   alt: A cobbled street in Christiania lined with stalls and old buildings

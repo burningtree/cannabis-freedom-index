@@ -9,6 +9,7 @@ countries: [eg, lb, ma, af, gr, ir, pk, in, np, fr]
 featured: 2
 related: [traditions/hashish-in-egypt, traditions/club-des-hashischins, language/charas, language/zatla]
 history: [egypt-first-ban-1868, iran-penal-law-1926, afghanistan-hashish-fertiliser-edicts-1969, egypt-french-ban-1800, france-sacy-assassins-lecture-1809, france-club-des-hashischins-1844, france-moreau-du-hachisch-1845, france-paradis-artificiels-1860, greece-hashish-ban-1890, lebanon-hashish-ban-1926, nepal-shops-closed-1973, afghanistan-ban-1973, uk-hashish-poets-1896]
+history_cards: [france-sacy-assassins-lecture-1809]
 image:
   src: ../../src/assets/culture/legal-hashish-shop-in-kathmandu-nepal-in-1973.jpg
   alt: The painted signboard of a hashish shop on a street in Kathmandu
@@ -74,3 +75,5 @@ At the start of the twentieth century most hashish in Europe came from Kashmir a
 ## The word now
 
 Western Europe remains the largest market for the resin. In the United States it has lost ground to flower and to more potent modern extracts.
+
+[Brick weed](/culture/traditions/brick-weed/) describes compressed cannabis plant material, a form also known as *prensado*. Its blocks should be distinguished from pressed resin.

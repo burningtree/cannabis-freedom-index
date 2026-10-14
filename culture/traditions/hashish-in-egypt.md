@@ -6,6 +6,7 @@ countries: [eg]
 featured: 8
 related: [language/hashish, language/zatla, traditions/rebetiko-and-the-tekes]
 history: [egypt-french-ban-1800, egypt-first-ban-1868, egypt-destruction-order-1877, egypt-import-ban-1879, egypt-russell-hashish-report-1930, egypt-import-tax-1874, egypt-cultivation-ban-1884, egypt-law-182-1960, egypt-caillard-regulation-proposal-1892, egypt-warnock-asylum-statistics-1895, egypt-sinai-eradication-1994]
+history_cards: [egypt-french-ban-1800, egypt-first-ban-1868, egypt-russell-hashish-report-1930, egypt-caillard-regulation-proposal-1892, egypt-warnock-asylum-statistics-1895]
 image:
   src: ../../src/assets/culture/egyptian-type-e-scenes-hashishe-smokers-n-d-front-timea.jpg
   alt: An old postcard of two men smoking long pipes in front of a white fence

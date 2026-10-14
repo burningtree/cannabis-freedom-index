@@ -228,6 +228,7 @@ const culture = defineCollection({
       spelling: z.array(z.object({ text: z.string().min(1), lang: z.string().min(1), say: z.string().min(1).optional() }).strict()).optional(),
       countries: z.array(z.string().regex(/^[a-z]{2}$/)).min(1), // file names in /countries, the most closely tied first
       history: z.array(z.string()).default([]), // ids in changes.yaml
+      history_cards: z.array(z.string()).default([]), // events specifically about this subject; reverse cards on history pages
       // other atlas entries to show beside this one, as "<section>/<slug>", closest first.
       // Links in the text and shared history entries add more on their own; see docs/CULTURE.md.
       related: z.array(z.string().regex(/^(language|traditions)\/[a-z0-9-]+$/)).default([]),

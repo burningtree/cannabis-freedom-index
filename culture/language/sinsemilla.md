@@ -7,6 +7,7 @@ spelling:
   - { text: "sin semilla", lang: Spanish, say: "[sinseˈmiʝa]" }
 countries: [mx, us]
 history: [us-operation-green-merchant-1989]
+history_cards: [us-operation-green-merchant-1989]
 image:
   src: "../../src/assets/culture/sinsemilla-drying-room.jpg"
   alt: "Harvested cannabis plants hanging upside down from lines in a drying room"

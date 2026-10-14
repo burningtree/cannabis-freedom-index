@@ -4,6 +4,7 @@ summary: A yearly contest in Amsterdam, founded in 1988 by an American magazine,
 also: [High Times Cannabis Cup, Counterculture Hall of Fame]
 countries: [nl, us]
 history: [netherlands-cannabis-cup-1988, netherlands-toleration-1976, netherlands-residents-only-2012, us-colorado-washington-2012]
+history_cards: [netherlands-cannabis-cup-1988]
 image:
   src: "../../src/assets/culture/cannabis-cup-amsterdam-awards-2014.jpg"
   alt: "Cannabis Cup trophies arranged on a table covered with a High Times banner"
@@ -13,6 +14,10 @@ image:
 model: opus-5.5
 written: 2026-10-14
 sources:
+  - title: Cannabis Cup — Welcome to Amsterdam, Birthplace of the Cannabis Cup
+    url: https://cannabiscup.com/welcome-amsterdam-birthplace-cannabis-cup/
+  - title: Sensi Seeds — Sensi Seeds at 40
+    url: https://sensiseeds.com/en/blog/40-years-sensi-seeds/
   - title: Wikipedia — Cannabis Cup
     url: https://en.wikipedia.org/wiki/Cannabis_Cup
   - title: Wikipedia — Coffeeshop (Netherlands)
@@ -25,7 +30,7 @@ The Cannabis Cup is a festival and competition run by the American magazine [*Hi
 
 The Cup was founded by Steven Hager, the *High Times* editor who also [traced the word 420](/culture/language/420/) to the Waldos. It was held in Amsterdam, where since the [law of 1976](/history/netherlands-toleration-1976/) the [coffeeshops](/culture/traditions/the-coffeeshop/) could sell cannabis openly.
 
-The first Cup was held in [November 1988](/history/netherlands-cannabis-cup-1988/).
+The first official Cup is conventionally dated to [1988](/history/netherlands-cannabis-cup-1988/). The organiser's retrospective uses that year, while Ben Dronkers's account published by Sensi Seeds describes an earlier gathering in 1987. The historical article sets out the disagreement.
 
 Other competitions developed their own audiences and venues. The separate Highlife Cup has been held at [Ruigoord](/culture/traditions/ruigoord/), an artists' village linked to Christiania through the European freetown movement.
 

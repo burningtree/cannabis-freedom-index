@@ -8,6 +8,7 @@ spelling:
 also: [industrial hemp, hempen, Hanf, hampr]
 countries: [us]
 history: [us-farm-bill-2018, us-hemp-thc-limit-enacted-2025]
+history_cards: [us-farm-bill-2018, us-hemp-thc-limit-enacted-2025]
 image:
   src: ../../src/assets/culture/hemp-rope.jpg
   alt: Close view of twisted brown hemp rope with loose fibres along its strands

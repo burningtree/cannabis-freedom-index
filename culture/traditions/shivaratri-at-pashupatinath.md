@@ -4,6 +4,7 @@ summary: Cannabis accompanies some holy men's observance of Shiva's great night 
 also: [Maha Shivaratri, Mahashivaratri, शिवरात्रि, Pashupati]
 countries: [np]
 history: [nepal-narcotics-act-1976, nepal-pashupati-distribution-ended-1995, nepal-shivaratri-arrests-2018, nepal-shivaratri-observed-2026]
+history_cards: [nepal-pashupati-distribution-ended-1995, nepal-shivaratri-arrests-2018, nepal-shivaratri-observed-2026]
 image:
   src: ../../src/assets/culture/shivaratri-pashupatinath-sadhu.jpg
   fit: contain

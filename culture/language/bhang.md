@@ -9,6 +9,7 @@ spelling:
 countries: [in, ir]
 featured: 3
 history: [india-bhang-tax-1798, india-hemp-drugs-commission-1894, india-bhang-exemption-1961, india-ndps-act-1985, india-gujarat-bhang-2017, iran-penal-law-1926, india-assam-ganja-bhang-act-1958, malaya-bhang-tax-1826, guyana-licensing-1861, india-bombay-abkari-act-1878, india-bombay-possession-limit-1913, india-state-prohibition-laws-1949, single-convention-phase-out-1989, india-karnataka-bhang-ruling-2022]
+history_cards: [india-bhang-tax-1798, india-bhang-exemption-1961, india-assam-ganja-bhang-act-1958, india-gujarat-bhang-2017, india-karnataka-bhang-ruling-2022]
 image:
   src: ../../src/assets/culture/bhang-shop-in-jaisalmer-rajasthan-india-on-november-15-2008.jpg
   alt: The front of a bhang shop in Jaisalmer

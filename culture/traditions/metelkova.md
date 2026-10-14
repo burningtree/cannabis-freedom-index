@@ -4,6 +4,7 @@ summary: Ljubljana's former military barracks became an autonomous cultural zone
 also: [Metelkova mesto, autonomous cultural zone]
 countries: [si]
 history: [slovenia-metelkova-occupation-1993, slovenia-referendum-2024]
+history_cards: [slovenia-metelkova-occupation-1993]
 image:
   src: ../../src/assets/culture/metelkova-mesto-2012.jpg
   alt: A graffiti-covered wall and sculptural metal structure at Metelkova in Ljubljana.

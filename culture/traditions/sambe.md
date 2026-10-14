@@ -4,6 +4,7 @@ summary: Korea dresses its dead, and those who mourn them, in hemp cloth. The pl
 also: [삼베, andongpo, hemp cloth]
 countries: [kr]
 history: [south-korea-cannabis-control-act-1976, south-korea-andong-hemp-zone-2020, south-korea-narcotics-act-1957, south-korea-entertainers-arrested-1975, south-korea-acts-merged-2000, south-korea-abroad-warning-2018]
+history_cards: [south-korea-andong-hemp-zone-2020]
 image:
   src: ../../src/assets/culture/sambe.jpg
   alt: A folded length of coarse, pale yellow hemp cloth

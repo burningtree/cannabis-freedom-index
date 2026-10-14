@@ -5,6 +5,7 @@ also: [Million Marijuana March, Marcha da Maconha, Hanfwandertag]
 countries: [us, ca, br, at, fr, dk, nz, jp]
 featured: 5
 history: [global-marijuana-march-1999, brazil-planet-hemp-arrest-1997, germany-hanfparade-1997]
+history_cards: [global-marijuana-march-1999, germany-hanfparade-1997]
 image:
   src: ../../src/assets/culture/calgary-alberta-canada-may-5-2007-global-marijuana-march.jpg
   alt: Marchers with banners on a city street

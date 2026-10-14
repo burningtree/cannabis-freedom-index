@@ -5,6 +5,7 @@ also: [sons of hemp, riamba, Bashilenge]
 countries: [cd]
 related: [language/diamba, language/bangi, traditions/the-morning-pipe]
 history: [dr-congo-bena-riamba-1881, congo-free-state-hemp-ordinance-1903]
+history_cards: [dr-congo-bena-riamba-1881]
 image:
   src: ../../src/assets/culture/bena-riamba-am-kongo-1891.jpg
   fit: contain
