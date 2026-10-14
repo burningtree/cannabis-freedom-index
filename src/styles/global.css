@@ -2036,3 +2036,15 @@ button.sv-row .sv-chip { font: 400 10.5px var(--mono); text-transform: uppercase
 }
 .legend-poster { margin-left: auto; color: var(--text-2); text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; }
 .legend-poster:hover { color: var(--text); }
+
+/* The hero's word for cannabis, cycling through the atlas's names for it (HomePage.astro), with
+   the language each comes from set small beside it. The question's second half keeps its line. */
+.front h1 em { display: block; }
+.hero-word { position: relative; display: inline-block; color: inherit; }
+.hw-w { display: inline-block; transition: opacity .38s ease, transform .38s ease, filter .38s ease; }
+.hero-word.out .hw-w { opacity: 0; transform: translateY(.14em); filter: blur(6px); }
+.hero-word:hover .hw-w { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .1em; text-decoration-color: var(--muted); }
+.hw-note { position: absolute; left: 100%; top: .32em; margin-left: .45em; font: 400 11.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; transition: opacity .38s ease; }
+.hero-word.out .hw-note { opacity: 0; }
+@media (max-width: 700px) { .hw-note { left: auto; right: 0; top: auto; bottom: 100%; margin: 0 0 2px; font-size: 10px; } }
+@media (prefers-reduced-motion: reduce) { .hw-w, .hw-note { transition: none; } }

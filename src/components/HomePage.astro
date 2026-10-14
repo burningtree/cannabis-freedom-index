@@ -13,7 +13,7 @@ import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor
 import { SHOW_PRICES } from "../lib/config.js";
 import { homeSeo } from "../lib/seo.js";
 import { viewByMetric } from "../lib/map-views.js";
-import { cultureOf } from "../lib/culture.js";
+import { cultureOf, cultureEntries } from "../lib/culture.js";
 import { panelRows, PANEL_FROM } from "../lib/exports.js";
 
 // Rankings by year: for each place, the years in which its index score changed and the score from
@@ -30,6 +30,15 @@ const rankYears = Array.from({ length: +DATA_SNAPSHOT - PANEL_FROM + 1 }, (_, i)
 const { view = null } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
+// The hero's "cannabis" cycles through other names for the plant from the atlas, each with the
+// language it comes from and a link to its entry. Only names for the plant itself, not for a
+// joint, a strain or a deal.
+const HERO_WORDS = ["cannabis", "ganja", "marijuana", "dagga", "kif", "maconha", "esrar", "mota", "anasha", "chamba", "wiet", "zatla", "pakalolo", "mbanje", "hashish", "matekoane", "zamal", "bangi", "diamba", "charas", "bhang", "grass", "pot", "dope"];
+const heroWords = HERO_WORDS.map((slug) => {
+  const e = cultureEntries.find((x) => x.url === `culture/language/${slug}/`);
+  if (!e) throw new Error(`HomePage: no atlas entry "language/${slug}" for the hero`);
+  return { word: e.title.toLowerCase(), note: e.origin ? e.origin.split(",")[0] : e.countries[0].name, href: `${base}${e.url}` };
+});
 // where each map option lives: its own page, or the home page for the overall index
 const viewHref = (metric) => `${base}map/${viewByMetric[metric].slug ? viewByMetric[metric].slug + "/" : ""}`;
 const current = view ? view.metric : "index";
@@ -164,7 +173,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         </a>
       )}
       <p class="eyebrow">Cannabis Freedom Index <span>{DATA_SNAPSHOT} edition</span></p>
-      <h1>How free is cannabis <em>in every country?</em></h1>
+      <h1>How free is <span class="visually-hidden">cannabis</span><a class="hero-word" id="heroWord" href={heroWords[0].href} aria-hidden="true" tabindex="-1" data-words={JSON.stringify(heroWords)}><span class="hw-w">{heroWords[0].word}</span><small class="hw-note">{heroWords[0].note}</small></a> <em>in every country?</em></h1>
       <div class="front-grid">
         <div class="front-intro">
           <p class="lede">Every country gets a score from 0 to 100 for how free you are to carry, grow, share and use cannabis. Below: the map, the rankings{SHOW_PRICES && ", sourced retail prices"} and how each country's law got where it is.</p>
@@ -942,3 +951,27 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     showFromHash();
   </script>
 </Base>
+
+<script>
+  // The hero's word for cannabis: a new one every few seconds, held while the pointer is on it,
+  // and still for anyone who prefers less motion.
+  const hw = document.getElementById("heroWord");
+  if (hw && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const words = JSON.parse(hw.dataset.words);
+    const word = hw.querySelector(".hw-w"), note = hw.querySelector(".hw-note");
+    let i = 0, held = false;
+    hw.addEventListener("mouseenter", () => (held = true));
+    hw.addEventListener("mouseleave", () => (held = false));
+    setInterval(() => {
+      if (held || document.hidden) return;
+      i = (i + 1) % words.length;
+      hw.classList.add("out");
+      setTimeout(() => {
+        word.textContent = words[i].word;
+        note.textContent = words[i].note;
+        hw.href = words[i].href;
+        hw.classList.remove("out");
+      }, 380);
+    }, 2800);
+  }
+</script>
