@@ -4,9 +4,11 @@ summary: "In Cambodia, Laos, Thailand and Vietnam the leaf was a seasoning and a
 also: [happy pizza, kancha, cooking with cannabis]
 countries: [kh, th, la, vn]
 history: [thailand-cannabis-act-1935, cambodia-ban-1996, thailand-decriminalisation-2022, thailand-narcotics-act-1979, laos-law-on-narcotics-2007, vietnam-ban-1968, vietnam-eradication-1969, cambodia-drug-campaign-2017, thailand-medical-2019, thailand-prescription-only-2025]
-model: opus-5.5
+model: gpt-6
 written: 2026-10-14
 sources:
+  - title: "Austin Bush — In Thailand, Traditional Cannabis Cuisine Is Back on the Menu (Gastro Obscura, 8 April 2021)"
+    url: https://www.atlasobscura.com/articles/cannabis-marijuana-in-thai-food
   - title: Wikipedia — Cannabis in Cambodia
     url: https://en.wikipedia.org/wiki/Cannabis_in_Cambodia
   - title: Wikipedia — Cannabis in Thailand
@@ -15,9 +17,16 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Laos
   - title: "Wikipedia — Cannabis in Vietnam"
     url: https://en.wikipedia.org/wiki/Cannabis_in_Vietnam
+image:
+  src: "../../src/assets/culture/thai-cannabis-stir-fry-2021.jpg"
+  fit: "contain"
+  alt: "Thai minced pork and basil stir-fry served in a white bowl, garnished with a fresh cannabis leaf."
+  caption: "Traditional Thai stir-fried pork with holy basil and cannabis leaves, served at Ban Lao Reung restaurant in Prachinburi, Thailand. Photograph by Austin Bush, 2021."
+  credit: "Austin Bush / Gastro Obscura"
+  credit_url: "https://www.atlasobscura.com/articles/cannabis-marijuana-in-thai-food"
 ---
 
-In mainland South-East Asia cannabis was a kitchen plant before it was a drug in anyone's law. It was a seasoning and a household medicine. Prohibition arrived from outside, in the twentieth century, and was enforced late or not at all. The "happy" restaurants that tourists know are the visible end of an older and quieter custom.
+In mainland South-East Asia cannabis was a kitchen plant before it was a drug in anyone's law. It was a seasoning and a household medicine. Twentieth-century prohibition, shaped by international drug control, changed the legal position of these older practices. Enforcement differed between countries and periods. The "happy" restaurants that tourists know are the visible end of an older and quieter custom.
 
 ## A herb among herbs
 
@@ -26,6 +35,8 @@ Cannabis is thought to have come to South-East Asia from India around the sixtee
 It had four uses: an ingredient and condiment in cooking, a medicine, a source of fibre, and a comfort for hard work. Labourers took it to relax their muscles. It was given to women to ease the pain of childbirth.
 
 In Cambodia it stayed a common ingredient in food, and Cambodians think of it as something for older people; it is not popular with the young.
+
+[Austin Bush’s 2021 reporting](https://www.atlasobscura.com/articles/cannabis-marijuana-in-thai-food) identifies an eel curry calling for tender cannabis leaves in *Mae Khrua Hua Pa*, first printed in 1908 and generally considered Thailand’s oldest published cookbook. The recipe places cannabis among ordinary ingredients rather than presenting it as a novelty. Thai cooks used it in soups, curries and stir-fries for fragrance and savoury flavour; intoxication was not necessarily the purpose.
 
 ## Outlawed on paper
 
@@ -44,9 +55,11 @@ In Phnom Penh, Siem Reap and Sihanoukville, restaurants with "Happy" in the name
 
 They are commonest where the tourists are. They grew up in countries where cooking with cannabis was already ordinary and the ban was not enforced. The United Nations drugs office said in 2009 that cannabis cultivation had "ceased to be a major concern" in Cambodia. Since 2017 Cambodia has run [harder anti-drug campaigns](/history/cambodia-drug-campaign-2017/), and Laos applies the death penalty in some drug cases.
 
-## Elsewhere
+## A photographed revival
 
-Cooking with cannabis is not peculiar to the region. It has its own entries where it belongs to a particular custom: the drinks and sweets of [bhang at Holi](/culture/traditions/bhang-at-holi/) in India, Morocco's *majoun* (see [kif and the sebsi](/culture/traditions/kif-and-the-sebsi/)), the hashish sweets of [Egypt](/culture/traditions/hashish-in-egypt/), and the hemp-seed soup of Silesia, [siemieniotka](/culture/traditions/siemieniotka/). What sets South-East Asia apart is that the leaf was an everyday seasoning, not a festival food or a preparation for its effect.
+The lead photograph records a modern revival of this cooking, not a historical meal. Bush photographed minced pork with holy basil and dried cannabis leaves at Ban Lao Reung in Prachinburi in 2021. The fresh leaf on top is visible, while the source identifies dried leaves among the cooked ingredients.
+
+His visit also documented soups seasoned with leaf powder and cooks returning cannabis to noodle broth. These are regional dishes prepared in a working restaurant. Cambodia’s tourist-oriented happy pizzas belong to a different setting, even when both draw on the region’s longer familiarity with cannabis as food.
 
 ## Thailand comes back to it
 
