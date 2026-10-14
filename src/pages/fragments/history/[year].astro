@@ -1,0 +1,13 @@
+---
+// One year of the History ledger, without a layout: fetched by the continuous list at /history/
+// as the reader scrolls or jumps to a decade.
+import HistoryYears from "../../../components/HistoryYears.astro";
+import { historyYears } from "../../../lib/countries.js";
+export const partial = true;
+
+export function getStaticPaths() {
+  return historyYears.map((y) => ({ params: { year: String(y.year) }, props: { y } }));
+}
+const { y } = Astro.props;
+---
+<HistoryYears years={[y]} />

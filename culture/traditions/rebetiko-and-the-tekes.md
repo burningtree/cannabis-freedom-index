@@ -3,6 +3,7 @@ title: Rebetiko and the tekés
 summary: The Greek urban blues was born in hashish dens. Its songs about smoking were sung by refugees from Asia Minor, censored by a dictator and banned from the radio, and then sung again.
 also: [tekes, tekedes, hasiklidika, mangas]
 countries: [gr, tr]
+related: [language/hashish, traditions/club-des-hashischins, traditions/hashish-in-egypt]
 history: [greece-hashish-ban-1890, greece-cultivation-ban-1920, greece-stocks-law-1932, greece-law-4139-2013]
 image:
   src: ../../src/assets/culture/rembetes-karaiskaki-1933.jpg

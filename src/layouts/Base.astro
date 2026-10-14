@@ -422,5 +422,18 @@ const schemas = jsonld ? [jsonld].flat() : [];
       window.addEventListener("scroll", hide, { passive: true, capture: true });
     })();
   </script>
+  <script is:inline>
+    // Side panes stick beside the text only when the whole pane fits the window; otherwise its end
+    // could never be reached until the page ends.
+    (() => {
+      const rails = document.querySelectorAll(".ev-rail, .c-rail");
+      if (!rails.length) return;
+      const fit = () => rails.forEach((r) => r.classList.toggle("too-tall", r.scrollHeight > innerHeight - 92));
+      fit();
+      addEventListener("resize", fit);
+      addEventListener("load", fit);
+      if (window.ResizeObserver) { const ro = new ResizeObserver(fit); rails.forEach((r) => ro.observe(r)); }
+    })();
+  </script>
 </body>
 </html>

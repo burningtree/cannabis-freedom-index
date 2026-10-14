@@ -257,42 +257,28 @@ export const averageHistory = averageOverTime(() => 1);
 export const averageHistoryByPopulation = averageOverTime(populationAt);
 
 // ── History pages ──
-// The History list is split into periods so that no page is too long or too short. It starts from
-// decades: a crowded decade is cut into two halves, and quiet decades are merged with their
-// neighbours until a page has enough on it. Estimated entries have no real date and are left out.
-const PAGE_MIN = 24, PAGE_MAX = 60;
+// The History list reads as one continuous ledger at /history/, loaded a year at a time. Each decade
+// also has a page of its own, /history/period/1890s/, which can be linked and read without scripts.
+// The few entries before the first colonial bans share one page. Estimated entries have no real date
+// and are left out. Both lists are newest first.
+export const HISTORY_FROM = 1860;
+const datedChanges = changes.filter((ch) => !ch.estimate);
+const entryYear = (ch) => +ch.date.slice(0, 4);
+export const historyYears = [...new Set(datedChanges.map((ch) => entryYear(ch)))]
+  .map((year) => ({ year, items: datedChanges.filter((ch) => entryYear(ch) === year) }));
 export const historyPeriods = (() => {
-  const dated = changes.filter((ch) => !ch.estimate); // newest first
-  const year = (ch) => +ch.date.slice(0, 4);
   const thisYear = +DATA_SNAPSHOT;
-  const count = (from, to) => dated.filter((ch) => year(ch) >= from && year(ch) <= to).length;
-  // decades from the current one back to the oldest entry, crowded ones in two halves
-  const spans = [];
-  for (let d = Math.floor(thisYear / 10) * 10; d >= Math.floor(year(dated.at(-1)) / 10) * 10; d -= 10) {
-    if (count(d, d + 9) > PAGE_MAX) spans.push([d + 5, d + 9], [d, d + 4]);
-    else spans.push([d, d + 9]);
+  const periods = [];
+  for (let d = Math.floor(thisYear / 10) * 10; d >= HISTORY_FROM; d -= 10) {
+    const to = Math.min(d + 9, thisYear);
+    periods.push({ slug: `${d}s`, label: `${d}s`, short: `${d}s`, from: d, to, items: datedChanges.filter((ch) => entryYear(ch) >= d && entryYear(ch) <= to) });
   }
-  // merge quiet spans into the one before them in time order (walking from newest to oldest)
-  const merged = [];
-  for (const [from, to] of spans) {
-    const last = merged.at(-1);
-    if (last && count(last.from, last.to) < PAGE_MIN) last.from = from;
-    else merged.push({ from, to });
-  }
-  // a quiet tail (the oldest entries) joins the period after it
-  if (merged.length > 1 && count(merged.at(-1).from, merged.at(-1).to) < PAGE_MIN) merged.at(-2).from = merged.pop().from;
-  return merged.map(({ from, to }, i) => {
-    const items = dated.filter((ch) => year(ch) >= from && year(ch) <= to);
-    const first = i === merged.length - 1 ? year(items.at(-1)) : from; // the oldest page starts at its first entry
-    const end = Math.min(to, thisYear);
-    const label = first % 10 === 0 && end === first + 9 ? `${first}s` : `${first}–${end}`;
-    // under a bar of the histogram there is room for seven characters: "1925–29", "1890–09", "to 1869"
-    const short = label.endsWith("s") ? label
-      : i === merged.length - 1 ? `to ${end}`
-      : end - first < 100 ? `${first}–${String(end).slice(2)}` : label;
-    return { slug: `${first}-${end}`, label, short, from: first, to: end, items };
-  });
+  const early = datedChanges.filter((ch) => entryYear(ch) < HISTORY_FROM);
+  if (early.length) periods.push({ slug: `before-${HISTORY_FROM}`, label: `Before ${HISTORY_FROM}`, short: "Earlier", from: entryYear(early.at(-1)), to: HISTORY_FROM - 1, items: early });
+  return periods;
 })();
+// the period an entry or a year belongs to
+export const periodOfYear = (year) => historyPeriods.find((p) => year >= p.from && year <= p.to) ?? historyPeriods.at(-1);
 
 // Review dates are stored as YYYY-MM-DD; this is how they are shown everywhere.
 // A date without a day ("2026-02") is shown as month and year, and a bare year as the year.

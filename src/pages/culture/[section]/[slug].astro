@@ -5,6 +5,7 @@ import Base from "../../../layouts/Base.astro";
 import { render } from "astro:content";
 import { Picture } from "astro:assets";
 import SourceCitation from "../../../components/SourceCitation.astro";
+import CultureList from "../../../components/CultureList.astro";
 import { cultureEntries, cultureIn, cultureSection } from "../../../lib/culture.js";
 import { changeDate, formatDate } from "../../../lib/countries.js";
 import { tierColor } from "../../../lib/tiers.js";
@@ -59,7 +60,7 @@ const written = e.written?.toISOString().slice(0, 10);
         </section>
       </article>
 
-      <aside class="ev-rail" aria-label="Countries and history">
+      <aside class="ev-rail" aria-label="Countries, related entries and history">
         <section class="ev-more">
           <h2 class="ev-label">{s.id === "language" ? "Where it is said" : "Where it is kept"}</h2>
           <ul class="cu-places">
@@ -68,6 +69,7 @@ const written = e.written?.toISOString().slice(0, 10);
             ))}
           </ul>
         </section>
+        {e.relatedEntries.length > 0 && <CultureList entries={e.relatedEntries} heading={s.id === "language" ? "Related words and traditions" : "Related traditions and words"} />}
         {e.history.length > 0 && (
           <section class="ev-more">
             <h2 class="ev-label">In the history</h2>

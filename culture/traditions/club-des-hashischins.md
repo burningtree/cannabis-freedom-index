@@ -3,6 +3,7 @@ title: The Club des Hashischins
 summary: Writers, artists and a physician experimented with hashish at Paris's Hôtel Pimodan in the 1840s. Gautier's fantastic account made the gatherings seem more like a secret society than the evidence warrants.
 also: [Club des hachichins, Hôtel Pimodan, Hôtel de Lauzun, dawamesk]
 countries: [fr]
+related: [language/hashish, traditions/hashish-in-egypt, traditions/rebetiko-and-the-tekes]
 history: [france-club-des-hashischins-1844, france-moreau-du-hachisch-1845, france-paradis-artificiels-1860, france-first-drug-law-1916]
 image:
   src: ../../src/assets/culture/hotel-lauzun-atget-1905.jpg

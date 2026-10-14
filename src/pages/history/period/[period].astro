@@ -1,11 +1,11 @@
 ---
-// An older period of the History list.
+// One decade of the History list, complete: the page that a decade's bar in the chart links to.
 import Base from "../../../layouts/Base.astro";
 import HistoryList from "../../../components/HistoryList.astro";
 import { historyPeriods } from "../../../lib/countries.js";
 
 export function getStaticPaths() {
-  return historyPeriods.slice(1).map((period) => ({ params: { period: period.slug }, props: { period } }));
+  return historyPeriods.map((period) => ({ params: { period: period.slug }, props: { period } }));
 }
 
 const { period } = Astro.props;

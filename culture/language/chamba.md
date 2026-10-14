@@ -3,6 +3,7 @@ title: Chamba
 summary: Malawi's word for cannabis, one of the country's three famous C's along with its fish and its tea.
 also: [Malawi Gold]
 countries: [mw]
+related: [language/dagga, language/mbanje, language/matekoane, language/bangi]
 history: [nyasaland-noxious-weeds-1936, malawi-medical-industrial-2020, malawi-local-chamba-2024, malawi-hemp-proposal-2000, malawi-hemp-campaign-2015]
 image:
   src: "../../src/assets/culture/malawi-gold-2016.jpg"

@@ -7,7 +7,8 @@ spelling:
   - { text: "حشيش", lang: Arabic, say: "ḥashīsh" }
 countries: [eg, lb, ma, af, gr, ir, pk, in, np, fr]
 featured: 2
-history: [egypt-first-ban-1868, iran-penal-law-1926, afghanistan-hashish-fertiliser-edicts-1969, egypt-french-ban-1800, france-sacy-assassins-lecture-1809, france-club-des-hashischins-1844, france-moreau-du-hachisch-1845, france-paradis-artificiels-1860, greece-hashish-ban-1890, lebanon-hashish-ban-1926, nepal-shops-closed-1973, afghanistan-ban-1973]
+related: [traditions/hashish-in-egypt, traditions/club-des-hashischins, language/charas, language/zatla]
+history: [egypt-first-ban-1868, iran-penal-law-1926, afghanistan-hashish-fertiliser-edicts-1969, egypt-french-ban-1800, france-sacy-assassins-lecture-1809, france-club-des-hashischins-1844, france-moreau-du-hachisch-1845, france-paradis-artificiels-1860, greece-hashish-ban-1890, lebanon-hashish-ban-1926, nepal-shops-closed-1973, afghanistan-ban-1973, uk-hashish-poets-1896]
 image:
   src: ../../src/assets/culture/legal-hashish-shop-in-kathmandu-nepal-in-1973.jpg
   alt: The painted signboard of a hashish shop on a street in Kathmandu

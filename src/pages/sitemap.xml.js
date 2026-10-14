@@ -25,7 +25,7 @@ export function GET({ site }) {
     ...MAP_VIEWS.map((v) => [v.slug ? `map/${v.slug}/` : "map/", latest, 0.7]),
     ...places.map((c) => [`country/${c.slug}/`, c.details.reviewed, 0.9]),
     ...countries.flatMap((c) => (subunitsOf(c.id)?.units ?? []).map((sub) => [`country/${c.slug}/${sub.id}/`, c.details.reviewed, 0.7])),
-    ...historyPeriods.slice(1).map((p) => [`history/period/${p.slug}/`, null, 0.4]),
+    ...historyPeriods.map((p) => [`history/period/${p.slug}/`, null, 0.4]),
     ...Object.keys(CHANGE_CATEGORIES).map((kind) => [`history/kind/${kind}/`, null, 0.4]),
     ...changes.map((ch) => [`history/${ch.id}/`, null, 0.5]),
   ];

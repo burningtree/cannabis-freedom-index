@@ -3,6 +3,7 @@ title: The Italian hemp rope-makers
 summary: In Carmagnola and Castelponzone, museums preserve the tools, long working paths and local vocabulary of the cordai, the craftspeople who turned hemp into rope.
 also: [cordai, canapa, sentè, sentèer]
 countries: [it]
+related: [language/hemp, traditions/hmong-hemp-cloth, traditions/hemp-in-shinto]
 history: [italy-hemp-law-2016]
 image:
   src: ../../src/assets/culture/carmagnola-hemp-ropewalk.jpg

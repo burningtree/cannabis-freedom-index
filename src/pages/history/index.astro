@@ -1,8 +1,8 @@
 ---
-// The newest period of the History list. Older periods are at /history/period/<years>/.
+// The whole History list, newest or oldest first, loaded as the reader scrolls. Each decade also
+// has its own page at /history/period/<decade>/.
 import Base from "../../layouts/Base.astro";
 import HistoryList from "../../components/HistoryList.astro";
-import { historyPeriods } from "../../lib/countries.js";
 import { researchTotals } from "../../lib/research.js";
 
 const base = import.meta.env.BASE_URL;
@@ -17,8 +17,8 @@ const base = import.meta.env.BASE_URL;
       </a>
       <p class="eyebrow">History</p>
       <h1>A history of cannabis law</h1>
-      <p class="lede">The laws, court rulings and other developments that changed a country's score, newest first, along with the international treaties that set the rules countries work within. Open one to see which segments moved and the source.</p>
+      <p class="lede">The laws, court rulings and other developments that changed a country's score, along with the international treaties that set the rules countries work within, from the newest back to the oldest, or the other way round. Open one to see which segments moved and the source.</p>
     </section>
-    <HistoryList period={historyPeriods[0]} />
+    <HistoryList />
   </main>
 </Base>

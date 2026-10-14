@@ -7,6 +7,7 @@ spelling:
   - { text: "زطلة", lang: Tunisian Arabic, say: "zaṭla" }
   - { text: "تكروري", lang: Arabic, say: "takrūrī" }
 countries: [tn]
+related: [language/kif, language/hashish, traditions/kif-and-the-sebsi, traditions/hashish-in-egypt]
 history: [tunisia-hemp-decree-1884, tunisia-takrouri-ban-1953, tunisia-law-52-1992, tunisia-kef-30-year-sentences-2021, tunisia-law-52-amended-2017, tunisia-kef-sentences-reduced-2021, tunisia-law-52-committee-hearing-2026]
 model: opus-5.5
 written: 2026-10-14

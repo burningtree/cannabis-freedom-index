@@ -4,7 +4,7 @@ summary: For Rastafari, ganja is a holy herb smoked in shared reasoning. Several
 also: [ganja, chalice, reasoning]
 countries: [jm, ag, bb, kn, vc, et, it, ke]
 featured: 2
-history: [ethiopia-shashamane-settlement-1965, italy-rastafari-ruling-2008, jamaica-ganja-reform-2015, antigua-cannabis-act-2018, antigua-rastafari-sacramental-authorizations-2023, barbados-medical-2019, jamaica-ganja-arrives-1855, jamaica-ganja-law-1913, jamaica-mandatory-prison-1941, saint-kitts-freedom-of-conscience-2023, saint-vincent-religious-bill-dropped-2018, kenya-high-court-rastafari-petition-2026]
+history: [ethiopia-shashamane-settlement-1965, italy-rastafari-ruling-2008, jamaica-ganja-reform-2015, antigua-cannabis-act-2018, antigua-rastafari-sacramental-authorizations-2023, barbados-medical-2019, jamaica-ganja-arrives-1855, jamaica-ganja-law-1913, jamaica-mandatory-prison-1941, saint-kitts-freedom-of-conscience-2023, saint-vincent-religious-bill-dropped-2018, kenya-high-court-rastafari-petition-2026, jamaica-ganja-commission-2001, ethiopia-criminal-code-2005, ethiopia-us-warning-rastafari-2005, namibia-constitutional-challenge-2021, grenada-bill-2021]
 image:
   src: ../../src/assets/culture/rastafari-lighting-chalice-comitas-1969.jpg
   fit: contain

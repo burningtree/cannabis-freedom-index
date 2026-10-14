@@ -6,6 +6,7 @@ also: [khomo ea fatše, likata, kakana]
 spelling:
   - { text: "matekoane", lang: Sesotho }
 countries: [ls]
+related: [language/dagga, language/mbanje, language/chamba]
 history: [basutoland-habit-forming-drugs-1922, basutoland-chiefs-ordered-to-destroy-cannabis-1945, basutoland-un-survey-1955, lesotho-drugs-of-abuse-act-2008, lesotho-first-licences-2017, lesotho-dangerous-medicines-act-1973]
 model: opus-5.5
 written: 2026-10-14

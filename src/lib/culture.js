@@ -47,6 +47,32 @@ for (const e of cultureEntries) for (const [, path] of (e.entry.body ?? "").matc
   if (!cultureEntries.some((x) => x.url === path + "/")) throw new Error(`culture/${e.entry.id}.md: the text links to /${path}/, which does not exist`);
 }
 
+// Related entries, for the side of each entry page: the ones named in `related` first, in their
+// order; then those the text links to or that link here, those sharing history entries, and those
+// kept in two or more of the same countries. Weighed together, at most eight.
+const links = (e) => [...(e.entry.body ?? "").matchAll(/\]\(\/culture\/((?:language|traditions)\/[^/)#]+)/g)].map((m) => m[1]);
+for (const e of cultureEntries) {
+  const named = e.related.map((id) => {
+    const r = cultureEntries.find((x) => `${x.section}/${x.slug}` === id);
+    if (!r) throw new Error(`culture/${e.entry.id}.md: related names "${id}", which does not exist`);
+    return r;
+  });
+  const out = links(e);
+  const weigh = (x) => {
+    const id = `${x.section}/${x.slug}`;
+    const shared = x.countries.filter((c) => e.countries.includes(c)).length;
+    return (out.includes(id) ? 6 : 0) + (links(x).includes(e.entry.id) ? 4 : 0)
+      + 3 * x.history.filter((ch) => e.history.includes(ch)).length
+      + (shared >= 2 ? shared : 0);
+  };
+  const rest = cultureEntries.filter((x) => x !== e && !named.includes(x))
+    .map((x) => [x, weigh(x)]).filter(([, w]) => w > 0)
+    .sort((a, b) => b[1] - a[1] || (a[0].featured ?? Infinity) - (b[0].featured ?? Infinity));
+  e.relatedEntries = [...named, ...rest.map(([x]) => x)].slice(0, Math.max(8, named.length));
+}
+
 export const cultureIn = (section) => cultureEntries.filter((e) => e.section === section);
+// the atlas entries a history entry belongs to: named in their `history`, or linked from their text
+export const cultureOfChange = (ch) => cultureEntries.filter((e) => e.history.includes(ch) || (e.entry.body ?? "").includes(`](/history/${ch.id}/`));
 // what the atlas has on one country, for its page
 export const cultureOf = (c) => cultureEntries.filter((e) => e.countries.includes(c));

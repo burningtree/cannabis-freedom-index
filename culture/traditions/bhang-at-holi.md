@@ -3,7 +3,7 @@ title: Bhang at Holi
 summary: At the spring festival of colours, north India drinks cannabis in milk. India had the world treaty worded so that it could go on doing so.
 countries: [in]
 featured: 1
-history: [india-hemp-drugs-commission-1894, india-bhang-exemption-1961, india-ndps-act-1985, india-gujarat-bhang-2017, india-assam-ganja-bhang-act-1958]
+history: [india-hemp-drugs-commission-1894, india-bhang-exemption-1961, india-ndps-act-1985, india-gujarat-bhang-2017, india-assam-ganja-bhang-act-1958, single-convention-phase-out-1989, india-karnataka-bhang-ruling-2022]
 image:
   src: ../../src/assets/culture/bhang-and-thandai.jpg
   alt: A man pours thandai from a metal pot into a row of glasses while customers hold out banknotes

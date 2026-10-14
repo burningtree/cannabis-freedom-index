@@ -3,6 +3,7 @@ title: Nimbin MardiGrass
 summary: Every May since 1993, a small town in the hills of New South Wales holds a festival and protest for cannabis law reform. It began as a protest against police raids.
 also: [Nimbin HEMP Embassy, Aquarius Festival]
 countries: [au]
+related: [traditions/hempfest, traditions/global-marijuana-march, traditions/hash-bash]
 history: [australia-ban-1926, australia-royal-commission-1979, australia-act-legalises-2020, australia-legalising-cannabis-bill-2023, australia-senate-rejects-legalisation-2024]
 image:
   src: ../../src/assets/culture/mardigrass-parade.jpg

@@ -1,66 +1,53 @@
 ---
-// One page of the History list, newest first and grouped by year. It shows either a period
-// (`period`) or every entry of one kind (`kind`, a key of CHANGE_CATEGORIES).
-// Top to bottom: the history in numbers, the periods as a small histogram that doubles as
-// navigation, the kinds as filters, then the entries as a ledger with the year set large beside them.
-import ScoreChange from "./ScoreChange.astro";
-import { changes, articles, places, historyPeriods, formatDate, CHANGE_CATEGORIES } from "../lib/countries.js";
-import { tierColor } from "../lib/tiers.js";
+// The History list, grouped by year. Three uses:
+// - with nothing: the continuous list at /history/. The newest years are in the page; the rest are
+//   fetched a year at a time (src/pages/fragments/history/[year].astro) as the reader scrolls, in
+//   either order, from the newest entry to the oldest. ?from=1894 opens it at a year, and every year's
+//   heading links there, so each year has a permanent address.
+// - with `period`: one decade, complete, for linking and for reading without scripts.
+// - with `kind` (a key of CHANGE_CATEGORIES): every entry of that kind.
+// Top to bottom: the chart of the world average with the entries per decade (which doubles as
+// navigation), the kinds as filters, then the ledger.
+import HistoryChart from "./HistoryChart.astro";
+import HistoryYears from "./HistoryYears.astro";
+import { changes, places, historyPeriods, historyYears, CHANGE_CATEGORIES } from "../lib/countries.js";
 
 const { period, kind } = Astro.props;
+const feed = !period && !kind;
 const base = import.meta.env.BASE_URL;
-// the newest period lives at /history/ itself
-const href = (p) => (p === historyPeriods[0] ? `${base}history/` : `${base}history/period/${p.slug}/`);
 const index = historyPeriods.indexOf(period);
 const newer = historyPeriods[index - 1];
 const older = historyPeriods[index + 1];
 // estimated entries have no real date, so they are not listed
 const dated = changes.filter((ch) => !ch.estimate);
-const items = kind ? dated.filter((ch) => ch.category === kind) : period.items;
+const byYear = (items) => [...new Set(items.map((ch) => +ch.date.slice(0, 4)))]
+  .map((year) => ({ year, items: items.filter((ch) => +ch.date.slice(0, 4) === year) }));
+// the continuous list starts with the newest years, enough of them to fill a screen or two
+const FIRST = 40;
+const firstYears = [];
+for (const y of historyYears) { if (firstYears.reduce((n, x) => n + x.items.length, 0) >= FIRST) break; firstYears.push(y); }
+const years = feed ? firstYears : byYear(kind ? dated.filter((ch) => ch.category === kind) : period.items);
+const items = years.flatMap((y) => y.items);
 const kindCount = (key) => dated.filter((ch) => ch.category === key).length;
-const years = [...new Set(items.map((ch) => ch.date.slice(0, 4)))]
-  .map((year) => ({ year, items: items.filter((ch) => ch.date.startsWith(year)) }));
-// The whole history in numbers, for the side panel. The same on every page of the list.
+// every year with entries, newest first, with its counts: [year, all, moved a score]
+const yearIndex = JSON.stringify(historyYears.map((y) => [y.year, y.items.length, y.items.filter((ch) => ch.score).length]));
+// Figures for the filters and the lists of most and fewest entries. The same on every page.
 const num = (n) => n.toLocaleString("en-GB");
 const perPlace = new Map();
 for (const ch of changes) if (ch.country) perPlace.set(ch.country, (perPlace.get(ch.country) ?? 0) + 1);
 const stats = {
-  total: changes.length,
   scored: dated.filter((ch) => ch.score).length,
-  context: dated.filter((ch) => !ch.score).length,
-  estimated: changes.length - dated.length,
-  checked: dated.filter((ch) => ch.checked).length,
-  international: dated.filter((ch) => !ch.country).length,
-  places: perPlace.size,
   oldest: dated.at(-1),
   newest: dated[0],
   top: [...perPlace].sort((x, y) => y[1] - x[1] || x[0].name.localeCompare(y[0].name)).slice(0, 8),
   // every place, also those with no entry at all
   fewest: places.map((c) => [c, perPlace.get(c) ?? 0]).sort((x, y) => x[1] - y[1] || x[0].name.localeCompare(y[0].name)).slice(0, 8),
 };
-// the tallest period sets the scale of the histogram
-const most = Math.max(...historyPeriods.map((p) => p.items.length));
+const all = feed ? dated.length : items.length;
+const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
 ---
 <div class="hist">
-<dl class="hist-stats" aria-label="History in numbers">
-  <div><dt>Entries in total</dt><dd>{num(stats.total)}</dd></div>
-  <div><dt>{kind ? "Of this kind" : "In this period"}</dt><dd>{num(items.length)}</dd></div>
-  <div><dt>Moved a score</dt><dd>{num(stats.scored)}</dd></div>
-  <div><dt>Context only</dt><dd>{num(stats.context)}</dd></div>
-  <div><dt>Countries and territories</dt><dd>{num(stats.places)}</dd></div>
-  <div><dt>Tied to no country</dt><dd>{num(stats.international)}</dd></div>
-</dl>
-<p class="hist-note">{num(stats.checked)} of the {num(dated.length)} dated entries ({Math.round((stats.checked / dated.length) * 100)}%) were checked against a source that was read. Another {num(stats.estimated)} are estimated first bans with no known date; they are not listed here. The oldest entry is from <a href={`${base}history/${stats.oldest.id}/`}>{stats.oldest.date.slice(0, 4)}</a>, the newest from <a href={`${base}history/${stats.newest.id}/`}>{formatDate(stats.newest.date)}</a>.</p>
-
-<nav class="hist-periods" aria-label="Periods">
-  {[...historyPeriods].reverse().map((p) => (
-    <a href={href(p)} aria-current={p === period ? "page" : undefined} title={`${p.label}: ${p.items.length} entries`}>
-      <span class="hp-n">{p.items.length}</span>
-      <i style={`height:${Math.max(3, (p.items.length / most) * 100)}%`}></i>
-      <span class="hp-label">{p.short}</span>
-    </a>
-  ))}
-</nav>
+<HistoryChart current={period} />
 
 <nav class="hist-kinds" aria-label="Filter by kind of event">
   <a href={`${base}history/`} aria-current={kind ? undefined : "true"}>All kinds</a>
@@ -77,42 +64,31 @@ const most = Math.max(...historyPeriods.map((p) => p.items.length));
     <button type="button" data-order="oldest" aria-pressed="false">Oldest first</button>
   </div>
   <div class="hist-order hist-only" role="group" aria-label="Which entries to show">
-    <button type="button" data-only="all" aria-pressed="true">All entries <small>{items.length}</small></button>
-    <button type="button" data-only="scored" aria-pressed="false">Score changes only <small>{items.filter((ch) => ch.score).length}</small></button>
+    <button type="button" data-only="all" aria-pressed="true">All entries <small>{num(all)}</small></button>
+    <button type="button" data-only="scored" aria-pressed="false">Score changes only <small>{num(scoredAll)}</small></button>
   </div>
+  <a class="hist-reset" href={`${base}history/`} hidden={feed} title="Back to every entry, newest first">× Reset</a>
 </div>
 
-<div class="hist-years" data-order="newest" data-only="all">
-  {years.map(({ year, items }) => (
-    <section class="hist-year" aria-labelledby={`y${year}`} data-scored={items.some((ch) => ch.score) ? "" : undefined}>
-      <h2 id={`y${year}`}>{year}<small class="n-all">{items.length === 1 ? "1 entry" : `${items.length} entries`}</small><small class="n-scored">{items.filter((ch) => ch.score).length === 1 ? "1 score change" : `${items.filter((ch) => ch.score).length} score changes`}</small></h2>
-      <ol>
-        {items.map((ch) => (
-          <li data-scored={ch.score ? "" : undefined}>
-            <a href={`${base}history/${ch.id}/`}>
-              <time datetime={ch.date}>{ch.date.length === 4 ? "" : formatDate(ch.date).replace(` ${year}`, "")}</time>
-              <div class="he-body">
-                <p class="he-place">{ch.place.flag} {ch.place.name} <span class="he-kind"><span aria-hidden="true">{ch.kind.emoji}</span> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
-                <h3>{ch.title}</h3>
-                <p class="he-text">{ch.description}</p>
-              </div>
-              {ch.score ? <ScoreChange score={ch.score} /> : <span></span>}
-            </a>
-          </li>
-        ))}
-      </ol>
-    </section>
-  ))}
+{feed && <button type="button" class="hist-more hist-more-top" hidden>Show earlier in this order</button>}
+<div class="hist-years" data-order="newest" data-only="all" data-feed={feed ? "" : undefined} data-years={feed ? yearIndex : undefined} data-fragments={feed ? `${base}fragments/history/` : undefined}>
+  <HistoryYears years={years} />
 </div>
+{feed && <>
+  <div class="hist-sentinel" aria-hidden="true"></div>
+  <p class="hist-status" role="status" aria-live="polite"></p>
+  <noscript><p class="hist-status">Older entries are on the pages of each decade: <a href={`${base}history/period/${historyPeriods[1]?.slug}/`}>{historyPeriods[1]?.label}</a> and earlier, from the chart above.</p></noscript>
+</>}
 
-{period && <nav class="pager chl-pager" aria-label="Other periods">
+{period && <nav class="pager chl-pager" aria-label="Other decades">
   {newer
-    ? <a href={href(newer)}><small>Newer</small><span>← {newer.label}</span></a>
+    ? <a href={`${base}history/period/${newer.slug}/`}><small>Newer</small><span>← {newer.label}</span></a>
     : <span></span>}
   {older
-    ? <a class="next" href={href(older)}><small>Older</small><span>{older.label} →</span></a>
+    ? <a class="next" href={`${base}history/period/${older.slug}/`}><small>Older</small><span>{older.label} →</span></a>
     : <span></span>}
 </nav>}
+{period && <p class="hist-continue"><a href={`${base}history/?from=${period.to}`}>Read on from here in the whole history →</a></p>}
 
 <div class="hist-tops">
   {[["Most entries", stats.top], ["Fewest entries", stats.fewest]].map(([label, list]) => (
@@ -129,39 +105,179 @@ const most = Math.max(...historyPeriods.map((p) => p.items.length));
 </div>
 
 <script>
-  // Reading order: the page is written newest first; "Oldest first" turns the years and the
-  // entries inside each year around, to read the period as it happened. The choice is kept in
-  // this browser, and ?order=oldest in the address asks for it directly.
-  const years = document.querySelector(".hist-years");
-  const buttons = [...document.querySelectorAll(".hist-order button[data-order]")];
-  function setOrder(order) {
-    if (years.dataset.order !== order) {
-      years.append(...[...years.children].reverse());
-      for (const list of years.querySelectorAll("ol")) list.append(...[...list.children].reverse());
-      years.dataset.order = order;
-    }
-    for (const b of buttons) b.setAttribute("aria-pressed", String(b.dataset.order === order));
+  // Order and filter, on every list. The page is written newest first; "Oldest first" turns it
+  // round. The choices are kept in this browser, and ?order=oldest and ?only=scored ask for them.
+  // On the continuous list (data-feed) the years are loaded as needed instead: a year at a time
+  // from fragments, at the bottom as the reader nears it, and at the top on request after a jump.
+  const box = document.querySelector(".hist-years");
+  const params = new URLSearchParams(location.search);
+  const remember = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
+  const recall = (key) => { try { return localStorage.getItem(key); } catch { return null; } };
+  const orderButtons = [...document.querySelectorAll(".hist-order button[data-order]")];
+  const onlyButtons = [...document.querySelectorAll(".hist-order button[data-only]")];
+  const press = (buttons, key, value) => { for (const b of buttons) b.setAttribute("aria-pressed", String(b.dataset[key] === value)); };
+  const flip = (section) => { const ol = section.querySelector("ol"); ol.append(...[...ol.children].reverse()); };
+
+  function setOnly(value) {
+    box.dataset.only = value;
+    press(onlyButtons, "only", value);
+    refresh();
   }
-  let wanted = new URLSearchParams(location.search).get("order");
-  try { wanted ??= localStorage.getItem("histOrder"); } catch {}
-  if (wanted === "oldest") setOrder("oldest");
-  for (const b of buttons) b.addEventListener("click", () => {
-    setOrder(b.dataset.order);
-    try { localStorage.setItem("histOrder", b.dataset.order); } catch {}
+  // Reset shows whenever the view is not the default one: every entry, newest first, from the
+  // newest year. On a decade or kind page it is a link back to /history/.
+  const reset = document.querySelector(".hist-reset");
+  function refresh() {
+    if (box.dataset.feed === undefined) return;
+    reset.hidden = box.dataset.order !== "oldest" && box.dataset.only !== "scored" && !new URLSearchParams(location.search).get("from");
+  }
+  reset.addEventListener("click", (e) => {
+    try { localStorage.removeItem("histOrder"); localStorage.removeItem("histOnly"); } catch {}
+    if (!feed) return;
+    e.preventDefault();
+    setOnly("all");
+    order = "newest";
+    press(orderButtons, "order", order);
+    history.replaceState(null, "", location.pathname);
+    feed.start(null);
+    document.querySelector(".hist-kinds").scrollIntoView({ block: "start" });
+  });
+  if ((params.get("only") ?? recall("histOnly")) === "scored") setOnly("scored");
+  for (const b of onlyButtons) b.addEventListener("click", () => {
+    setOnly(b.dataset.only);
+    remember("histOnly", b.dataset.only);
+    if (feed) fill();
   });
 
-  // Which entries: all of them, or only those that moved a score. The rest is hidden by the
-  // style sheet. Kept in this browser like the order, and ?only=scored asks for it directly.
-  const only = [...document.querySelectorAll(".hist-order button[data-only]")];
-  function setOnly(value) {
-    years.dataset.only = value;
-    for (const b of only) b.setAttribute("aria-pressed", String(b.dataset.only === value));
+  const feed = box.dataset.feed !== undefined ? makeFeed() : null;
+  let order = params.get("order") ?? recall("histOrder") ?? "newest";
+  if (order !== "oldest") order = "newest";
+  press(orderButtons, "order", order);
+  if (feed) {
+    const from = +params.get("from");
+    if (from || order === "oldest") feed.start(from || null);
+  } else if (order === "oldest") {
+    box.append(...[...box.children].reverse());
+    box.querySelectorAll(".hist-year").forEach(flip);
+    box.dataset.order = "oldest";
   }
-  let show = new URLSearchParams(location.search).get("only");
-  try { show ??= localStorage.getItem("histOnly"); } catch {}
-  if (show === "scored") setOnly("scored");
-  for (const b of only) b.addEventListener("click", () => {
-    setOnly(b.dataset.only);
-    try { localStorage.setItem("histOnly", b.dataset.only); } catch {}
+  for (const b of orderButtons) b.addEventListener("click", () => {
+    if (b.dataset.order === order) return;
+    order = b.dataset.order;
+    remember("histOrder", order);
+    press(orderButtons, "order", order);
+    if (feed) feed.start(null);
+    else {
+      box.append(...[...box.children].reverse());
+      box.querySelectorAll(".hist-year").forEach(flip);
+      box.dataset.order = order;
+    }
   });
+
+  function fill() { feed?.fill(); }
+
+  function makeFeed() {
+    const years = JSON.parse(box.dataset.years); // newest first: [year, all, scored]
+    const status = document.querySelector(".hist-status");
+    const topButton = document.querySelector(".hist-more-top");
+    const sentinel = document.querySelector(".hist-sentinel");
+    const cache = new Map();
+    // the loaded years are a run of the index from `lo` to `hi`, whatever the order
+    let lo = 0, hi = box.children.length - 1, busy = false, run = 0;
+    const step = () => (order === "newest" ? 1 : -1);
+    const bottom = () => (order === "newest" ? hi + 1 : lo - 1);
+    const top = () => (order === "newest" ? lo - 1 : hi + 1);
+    const exists = (i) => i >= 0 && i < years.length;
+    const counts = (i) => (box.dataset.only === "scored" ? years[i][2] : years[i][1]);
+    const get = (i) => {
+      const year = years[i][0];
+      if (!cache.has(year)) cache.set(year, fetch(`${box.dataset.fragments}${year}/`).then((r) => (r.ok ? r.text() : Promise.reject(r.status))).catch((e) => { cache.delete(year); throw e; }));
+      return cache.get(year);
+    };
+    const parse = (html) => {
+      const t = document.createElement("template");
+      t.innerHTML = html;
+      const section = t.content.querySelector(".hist-year");
+      if (order === "oldest") flip(section);
+      return section;
+    };
+    // the next years in one direction, until about 30 entries are added or the list ends
+    async function load(where) {
+      if (busy) return false;
+      const next = where === "bottom" ? bottom : top;
+      if (!exists(next())) return false;
+      busy = true;
+      const id = run;
+      const want = [];
+      let n = 0;
+      for (let i = next(); exists(i) && n < 30; i += where === "bottom" ? step() : -step()) { want.push(i); n += counts(i); }
+      status.textContent = "Loading…";
+      try {
+        const html = await Promise.all(want.map(get));
+        if (id !== run) return false; // the list was started again meanwhile
+        const sections = html.map(parse);
+        if (where === "bottom") box.append(...sections);
+        else {
+          const before = document.documentElement.scrollHeight;
+          box.prepend(...sections.reverse());
+          window.scrollBy(0, document.documentElement.scrollHeight - before);
+        }
+        for (const i of want) { lo = Math.min(lo, i); hi = Math.max(hi, i); }
+        status.textContent = exists(bottom()) ? "" : order === "newest" ? `The oldest entry, from ${years.at(-1)[0]}.` : "The newest entry.";
+      } catch {
+        status.textContent = "Could not load more entries.";
+        return false;
+      } finally {
+        busy = false;
+        topButton.hidden = !exists(top());
+      }
+      return true;
+    }
+    // keep loading while the end of the list is in or near view
+    async function fill() {
+      while (sentinel.getBoundingClientRect().top < innerHeight + 1200 && await load("bottom")) {}
+    }
+    new IntersectionObserver((e) => { if (e[0].isIntersecting) fill(); }, { rootMargin: "1200px 0px" }).observe(sentinel);
+    topButton.addEventListener("click", () => load("top"));
+    // start again: from the given year (or the nearest one with entries), or from the first in the order
+    async function start(year) {
+      run++;
+      busy = false;
+      // newest first: the first year at or before the one asked for; oldest first: the first at or after it
+      let i = order === "newest" ? 0 : years.length - 1;
+      if (year) {
+        i = order === "newest" ? years.findIndex(([y]) => y <= year) : years.findLastIndex(([y]) => y >= year);
+        if (i < 0) i = order === "newest" ? years.length - 1 : 0;
+      }
+      box.replaceChildren();
+      box.dataset.order = order;
+      // an empty run whose next year at the bottom is i
+      if (order === "newest") { lo = i; hi = i - 1; } else { lo = i + 1; hi = i; }
+      topButton.hidden = true;
+      const url = new URL(location.href);
+      if (year) url.searchParams.set("from", String(years[i][0])); else url.searchParams.delete("from");
+      history.replaceState(null, "", url);
+      // the decade being read is marked in the chart
+      for (const a of document.querySelectorAll(".hy-bars a")) a.toggleAttribute("aria-current", !!year && years[i][0] >= +a.dataset.from && years[i][0] <= +a.dataset.to);
+      refresh();
+      await load("bottom");
+      if (year) {
+        history.scrollRestoration = "manual";
+        requestAnimationFrame(() => document.getElementById(`y${years[i][0]}`)?.scrollIntoView({ block: "start" }));
+      }
+      fill();
+    }
+    // the chart's decades and the years' own links jump within the list instead of leaving it
+    document.querySelectorAll(".hy-bars a").forEach((a) => a.addEventListener("click", (e) => {
+      e.preventDefault();
+      start(order === "newest" ? +a.dataset.to : +a.dataset.from);
+    }));
+    box.addEventListener("click", (e) => {
+      const link = e.target.closest(".hist-year h2 a");
+      if (!link) return;
+      e.preventDefault();
+      start(+link.closest(".hist-year").dataset.year);
+    });
+    topButton.hidden = true;
+    return { start, fill };
+  }
 </script>

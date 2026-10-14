@@ -1,0 +1,19 @@
+---
+// Social preview of a culture entry with a lead picture: its name and summary on the left, the
+// picture on the right, with its credit. Entries without a picture use page.astro.
+const { eyebrow, title, text, photo, credit } = Astro.props;
+const size = title.length > 40 ? 58 : title.length > 22 ? 74 : 92;
+const lede = text.length > 190 ? 24 : 27;
+---
+<div style="display:flex;width:1200px;height:630px;background:#f4f2eb;color:#11110f;font-family:Inter">
+  <div style="display:flex;flex-direction:column;width:690px;height:630px;padding:52px 48px 48px 64px">
+    <div style="display:flex;font-family:'JetBrains Mono';font-size:19px;letter-spacing:2px;color:#4b4a43">{eyebrow}</div>
+    <div style={`display:flex;margin-top:46px;font-family:'Instrument Serif';font-size:${size}px;line-height:1.02;letter-spacing:-1.5px`}>{title}</div>
+    <div style={`display:flex;margin-top:24px;font-size:${lede}px;line-height:1.38;color:#4b4a43`}>{text}</div>
+    <div style="display:flex;margin-top:auto;border-top:1px solid #11110f;padding-top:20px;font-family:'JetBrains Mono';font-size:19px;letter-spacing:2px;color:#4b4a43">CANNABISFREEDOM.FYI</div>
+  </div>
+  <div style="display:flex;flex-direction:column;width:510px;height:630px;position:relative">
+    <img src={photo} width={510} height={630} style="width:510px;height:630px;object-fit:cover" />
+    {credit && <div style="display:flex;position:absolute;left:0;right:0;bottom:0;padding:10px 16px;background:rgba(244,242,235,0.86);font-family:'JetBrains Mono';font-size:13px;color:#4b4a43">{credit}</div>}
+  </div>
+</div>

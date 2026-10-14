@@ -1,6 +1,7 @@
 // The social preview image of every page, at /og/<page path>.png (the home page is /og/index.png).
 // Base.astro points each page's og:image here. Countries and states get their score, rank and
-// six segment bars; history entries get the date, the place and how the score moved; every other
+// six segment bars; history entries get the date, the place and how the score moved; culture
+// entries with a lead picture get it beside their name and summary; every other
 // page gets its name and a line about it. Drawn by src/og/render.js.
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, MED_LABEL, countries, places, changes, articles, subunitsOf, worldAvg, changeDate, historyPeriods, CHANGE_CATEGORIES } from "../../lib/countries.js";
 import { tierOf, tierIndex } from "../../lib/tiers.js";
@@ -8,7 +9,7 @@ import { MAP_VIEWS } from "../../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries, cultureIn, cultureSection } from "../../lib/culture.js";
 import { survey, results } from "../../lib/survey.js";
 import { getFacts } from "../../lib/facts.js";
-import { renderOg, flagOf, TIER_HEX } from "../../og/render.js";
+import { renderOg, flagOf, photoOf, TIER_HEX } from "../../og/render.js";
 
 const BRAND = `CANNABIS FREEDOM INDEX · ${DATA_SNAPSHOT}`;
 const num = (n) => n.toLocaleString("en-GB");
@@ -65,10 +66,16 @@ const cards = {
   "survey/scan": page("Submission scanner", "What the survey's public relays hold, as anyone can see it.", [], `STATE OF CANNABIS · ${survey.edition}`),
 };
 for (const sec of CULTURE_SECTIONS.filter((x) => x.entries)) cards[`culture/${sec.id}`] = page(sec.name, sec.lede, [[String(cultureIn(sec.id).length), "ENTRIES"]], `CULTURE · ${BRAND}`);
-for (const e of cultureEntries) cards[e.url.slice(0, -1)] = page(e.title, e.summary, [], `CULTURE · ${cultureSection(e.section).name.toUpperCase()}`);
+// entries with a lead picture show it beside the text; the picture is read and shrunk when the image is drawn
+for (const e of cultureEntries) {
+  const eyebrow = `CULTURE · ${cultureSection(e.section).name.toUpperCase()}`;
+  cards[e.url.slice(0, -1)] = e.image?.src?.fsPath
+    ? ["culture", { eyebrow, title: e.title, text: e.summary, photo: { file: e.image.src.fsPath, fit: e.image.fit }, credit: e.image.credit }]
+    : page(e.title, e.summary, [], eyebrow);
+}
 for (const v of MAP_VIEWS) cards[v.slug ? `map/${v.slug}` : "map"] = page(v.title, v.lede, [], `MAP · ${BRAND}`);
 for (const [kind, k] of Object.entries(CHANGE_CATEGORIES)) cards[`history/kind/${kind}`] = page(k.label, `${k.help}. Every such entry in the history of cannabis law.`, [[num(dated.filter((ch) => ch.category === kind).length), "ENTRIES"]], "HISTORY OF CANNABIS LAW");
-for (const p of historyPeriods.slice(1)) cards[`history/period/${p.slug}`] = page(`History, ${p.label}`, `Cannabis laws, court rulings and treaties from ${p.from} to ${p.to}.`, [], "HISTORY OF CANNABIS LAW");
+for (const p of historyPeriods) cards[`history/period/${p.slug}`] = page(`History, ${p.label}`, `Cannabis laws, court rulings and treaties from ${p.from} to ${p.to}.`, [], "HISTORY OF CANNABIS LAW");
 for (const ch of changes) cards[`history/${ch.id}`] = historyCard(ch); // estimated first bans have a page too
 for (const c of places) {
   cards[`country/${c.slug}`] = countryCard(c);
@@ -77,4 +84,5 @@ for (const c of places) {
 
 export const getStaticPaths = () => Object.entries(cards).map(([path, card]) => ({ params: { path }, props: { card } }));
 
-export const GET = async ({ props }) => new Response(await renderOg(...props.card), { headers: { "Content-Type": "image/png", "Cache-Control": "public, max-age=86400" } });
+const draw = async ([kind, props]) => kind === "culture" ? renderOg(kind, { ...props, photo: await photoOf(props.photo.file, props.photo.fit) }) : renderOg(kind, props);
+export const GET = async ({ props }) => new Response(await draw(props.card), { headers: { "Content-Type": "image/png", "Cache-Control": "public, max-age=86400" } });

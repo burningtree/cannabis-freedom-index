@@ -3,6 +3,7 @@ title: Mbanje
 summary: Zimbabwe's word for a crop that has grown there for centuries. Near the Mozambican border, and across it, the name is suruma.
 also: [suruma, dagga]
 countries: [zw, mz]
+related: [language/dagga, language/chamba, language/matekoane]
 history: [mozambique-portaria-2054-1914, southern-rhodesia-un-survey-1955, mozambique-un-survey-1957, zimbabwe-medical-2018, zimbabwe-hemp-regulations-2020, mozambique-nyusi-legalisation-studies-2024]
 model: opus-5.5
 written: 2026-10-14

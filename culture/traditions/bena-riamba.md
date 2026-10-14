@@ -3,6 +3,7 @@ title: The Bena Riamba
 summary: A late nineteenth-century religious and political movement among Luba-speaking communities of the Kasai, known as the Sons of Hemp. Shared pipes expressed friendship and belonging, in a history recorded chiefly by European outsiders.
 also: [sons of hemp, riamba, Bashilenge]
 countries: [cd]
+related: [language/diamba, language/bangi, traditions/the-morning-pipe]
 history: [dr-congo-bena-riamba-1881, congo-free-state-hemp-ordinance-1903]
 image:
   src: ../../src/assets/culture/bena-riamba-am-kongo-1891.jpg

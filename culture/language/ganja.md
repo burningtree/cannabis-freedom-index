@@ -11,7 +11,7 @@ spelling:
   - { text: "cần sa", lang: Vietnamese }
 countries: [in, bd, jm, tt, th, id, my, kh, la, vn]
 featured: 1
-history: [bangladesh-ganja-society-1917, jamaica-ganja-law-1913, trinidad-ganja-ordinance-1925, india-ndps-act-1985, jamaica-ganja-reform-2015, bangladesh-naogaon-cultivation-1906, bangladesh-cultivation-ban-1987, bangladesh-ban-1989, india-bhang-tax-1798, thailand-decriminalisation-2022]
+history: [bangladesh-ganja-society-1917, jamaica-ganja-law-1913, trinidad-ganja-ordinance-1925, india-ndps-act-1985, jamaica-ganja-reform-2015, bangladesh-naogaon-cultivation-1906, bangladesh-cultivation-ban-1987, bangladesh-ban-1989, india-bhang-tax-1798, thailand-decriminalisation-2022, guyana-licensing-1861, suriname-ganja-petition-1921, jamaica-ganja-commission-2001]
 image:
   src: ../../src/assets/culture/cannabis-ganja-farm-18272580718.jpg
   alt: Cannabis plants growing on a farm in Jamaica

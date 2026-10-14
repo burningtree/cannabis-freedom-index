@@ -4,7 +4,8 @@ summary: In Spain, users found a gap in the law and grew their cannabis together
 also: [CSC, asociación cannábica, ARSEC]
 countries: [es, uy, mt, de, ch, za]
 featured: 4
-history: [spain-arsec-conviction-1997, spain-social-clubs-2001, uruguay-club-registry-2014, spain-supreme-court-clubs-2015, spain-catalonia-club-law-2017, spain-barcelona-clubs-2023, malta-legalisation-2021, switzerland-pilot-law-2021, germany-cultivation-associations-2024, spain-smokers-club-exemption-draft-2026]
+related: [traditions/the-coffeeshop, traditions/global-marijuana-march]
+history: [spain-arsec-conviction-1997, spain-social-clubs-2001, uruguay-club-registry-2014, spain-supreme-court-clubs-2015, spain-catalonia-club-law-2017, spain-barcelona-clubs-2023, malta-legalisation-2021, switzerland-pilot-law-2021, germany-cultivation-associations-2024, spain-smokers-club-exemption-draft-2026, spain-canamo-magazine-1993, belgium-trekt-uw-plant-2006, spain-rasquera-plantation-2012, malta-first-associations-2024, malta-cannabis-amendments-2025]
 image:
   src: ../../src/assets/culture/dr-dou-social-club.webp
   alt: The lounge of a cannabis social club, with leather armchairs, exposed brick, coloured lanterns and a bar

@@ -167,6 +167,7 @@ const changes = defineCollection({
       // true once the entry's date and event have been compared with a source that was actually
       // read. Without it the entry is listed as "not yet checked": it may rest on memory.
       checked: z.boolean().optional(),
+      related: z.array(z.string()).optional(), // ids of other entries that tell the same story; shown as related on both pages
       sources: z.array(source).min(1), // the more the better; the first is shown where there is room for one
     })
     .strict()
@@ -227,6 +228,9 @@ const culture = defineCollection({
       spelling: z.array(z.object({ text: z.string().min(1), lang: z.string().min(1), say: z.string().min(1).optional() }).strict()).optional(),
       countries: z.array(z.string().regex(/^[a-z]{2}$/)).min(1), // file names in /countries, the most closely tied first
       history: z.array(z.string()).default([]), // ids in changes.yaml
+      // other atlas entries to show beside this one, as "<section>/<slug>", closest first.
+      // Links in the text and shared history entries add more on their own; see docs/CULTURE.md.
+      related: z.array(z.string().regex(/^(language|traditions)\/[a-z0-9-]+$/)).default([]),
       image: picture(image).optional(),
       // the entry's rank among the most important of its part (1 = first); see docs/CULTURE.md.
       // Featured entries lead the Culture page and their section; the rest follow alphabetically.

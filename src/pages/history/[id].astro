@@ -6,9 +6,13 @@ import { changes, articles, countries, changeDate, formatDate, REC_LABEL, REC_HE
 import { tierOf, tierColor } from "../../lib/tiers.js";
 import { sourceTuple } from "../../lib/sources.js";
 import SourceCitation from "../../components/SourceCitation.astro";
+import { Image } from "astro:assets";
+import { cultureEntries, cultureOfChange, cultureSection } from "../../lib/culture.js";
+import { relatedTo } from "../../lib/related.js";
 
 // One history entry: what happened, large; the score before and after when it moved one; how
-// each segment moved; the sources; and, beside it, the country today and its entries around this one.
+// each segment moved; the sources; related entries from anywhere; and, beside it, the country today
+// and its entries around this one in date order.
 
 export function getStaticPaths() {
   return changes.map((ch, i) => ({ params: { id: ch.id }, props: { ch, newer: changes[i - 1], older: changes[i + 1] } }));
@@ -23,11 +27,19 @@ const article = articles.get(ch.id);
 const Article = article ? (await render(article)).Content : null;
 // The entry's own sources, then the article's, each work/address once.
 const sources = [...ch.sources, ...(article?.data.sources ?? []).map(sourceTuple)].filter((x, i, all) => all.findIndex((other) => other[3] === x[3]) === i);
-// The country's other entries closest in time to this one, for the side panel.
+// The country's other entries closest in time to this one, oldest first, for the side panel.
 // An entry tied to no country gets the international entries instead: the treaties in order.
-const own = changes.filter((x) => x.country === c && !x.estimate);
+const own = changes.filter((x) => x.country === c && !x.estimate).reverse();
 const at = own.indexOf(ch);
-const nearby = c ? own.slice(Math.max(0, at - 3), at + 4) : own.slice(Math.max(0, at - 5), at + 6);
+// The atlas entries this one belongs to, and those its article links to.
+const culture = cultureOfChange(ch);
+for (const [, path] of (article?.body ?? "").matchAll(/\]\(\/(culture\/(?:language|traditions)\/[^/)#]+)/g)) {
+  const e = cultureEntries.find((x) => x.url === path + "/");
+  if (e && !culture.includes(e)) culture.push(e);
+}
+const span = c ? 3 : 5;
+const nearby = at < 0 ? [] : own.slice(Math.max(0, Math.min(at - span, own.length - 2 * span - 1)), Math.max(at + span + 1, 2 * span + 1));
+const related = relatedTo(ch, nearby);
 ---
 <Base type="article" title={ch.title} description={ch.score ? `${ch.title}: ${c.name} moved from ${ch.score.before} to ${ch.score.after} on the Cannabis Freedom Index. ${ch.description}` : `${ch.title}. ${ch.description}`}>
   <main class="change-page ev">
@@ -56,6 +68,21 @@ const nearby = c ? own.slice(Math.max(0, at - 3), at + 4) : own.slice(Math.max(0
 
     <div class="ev-body">
     <article class="ev-main">
+      {culture.length > 0 && (
+        <section class="ev-culture" aria-label="In the cultural atlas">
+          <p class="ev-label">In the cultural atlas</p>
+          <ul>
+            {culture.map((e) => (
+              <li>
+                <a href={`${base}${e.url}`}>
+                  {e.image ? <Image src={e.image.src} alt="" width={240} height={160} fit="cover" /> : <span class="ev-culture-none" aria-hidden="true">{e.title.slice(0, 1)}</span>}
+                  <span><small>{cultureSection(e.section).name}{e.origin && ` · ${e.origin}`}</small><b>{e.title}</b><span>{e.summary}</span></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       {article && (
         <section class="ev-article">
           <p class="ev-label">The story{article.data.model && <span class="ev-by"> · written by {article.data.model}{article.data.written && <>, <time datetime={article.data.written.toISOString().slice(0, 10)}>{formatDate(article.data.written.toISOString().slice(0, 10))}</time></>}</span>}</p>
@@ -98,6 +125,21 @@ const nearby = c ? own.slice(Math.max(0, at - 3), at + 4) : own.slice(Math.max(0
         </ul>
         <p class={`confidence c-${ch.confidence.key}`}><span aria-hidden="true">{ch.confidence.mark}</span> <strong>{ch.confidence.label}.</strong> {ch.confidence.help}.{ch.score ? " The score before the change is an editorial estimate." : ""}</p>
       </section>
+
+      {related.length > 0 && (
+        <section class="ev-related">
+          <h2 class="d-h">Related</h2>
+          <ol>
+            {related.map((x) => (
+              <li><a href={`${base}history/${x.id}/`}>
+                <time datetime={x.date}>{changeDate(x)} · {x.place.flag} {x.place.name}</time>
+                <b>{x.title}</b>
+                <span>{x.kind.emoji} {x.kind.label}{x.score && <> · {x.score.before} → {x.score.after}</>}</span>
+              </a></li>
+            ))}
+          </ol>
+        </section>
+      )}
     </article>
 
       <aside class="ev-rail" aria-label={c ? `About ${c.name}` : "International entries"}>
@@ -125,7 +167,7 @@ const nearby = c ? own.slice(Math.max(0, at - 3), at + 4) : own.slice(Math.max(0
 
         {nearby.length > 1 && (
           <section class="ev-more">
-            <h2 class="ev-label">{c ? `More from ${c.name}` : "The treaties in order"}</h2>
+            <h2 class="ev-label">{c ? `${c.name}, in order` : "The treaties in order"}</h2>
             <ol>
               {nearby.map((x) => (
                 <li class={x === ch ? "current" : undefined}>
@@ -138,6 +180,7 @@ const nearby = c ? own.slice(Math.max(0, at - 3), at + 4) : own.slice(Math.max(0
             {own.length > nearby.length && <p class="ca-all"><a href={c ? `${base}country/${c.slug}/` : `${base}history/kind/international/`}>{c ? `All ${own.length} entries for ${c.name}` : "All international entries"} →</a></p>}
           </section>
         )}
+
       </aside>
     </div>
 

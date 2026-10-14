@@ -4,7 +4,7 @@ summary: Morocco's long thin pipe holds a pinch of kif at a time. It belongs to 
 also: [sebsi, skuff, majoun]
 countries: [ma]
 featured: 9
-history: [morocco-hassan-regulations-1890, morocco-french-zone-ban-1954, morocco-kif-ban-1956, morocco-spanish-zone-dahir-1954, morocco-law-13-21-2021]
+history: [morocco-hassan-regulations-1890, morocco-french-zone-ban-1954, morocco-kif-ban-1956, morocco-spanish-zone-dahir-1954, morocco-law-13-21-2021, morocco-spanish-zone-decree-1935, morocco-kif-seizures-1949]
 image:
   src: ../../src/assets/culture/sebse.jpg
   alt: A sebsi, a long thin wooden pipe with a small clay bowl

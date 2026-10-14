@@ -4,6 +4,7 @@ summary: In Japan hemp fibre stands for purity. Priests purify with it, while th
 also: [taima, ōnusa, shimenawa]
 countries: [jp]
 featured: 10
+related: [language/ma, traditions/hmong-hemp-cloth, traditions/hemp-in-the-taoist-censer]
 history: [japan-hemp-farms-1950, japan-cannabis-control-act-1948, japan-use-criminalised-2024]
 image:
   src: ../../src/assets/culture/shinto-oonusa-whole-hemp.jpg

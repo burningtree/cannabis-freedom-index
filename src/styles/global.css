@@ -1059,20 +1059,66 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .reads li p { margin: 0; font-size: 12.5px; color: var(--muted); }
 .reads li a:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
 .reads .sub a { text-decoration: underline; text-underline-offset: 3px; }
-.hist-periods { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 4px; align-items: end; height: 150px; margin-top: clamp(36px, 5vw, 60px); border-bottom: 1px solid var(--text); }
-.hist-periods a { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr auto; align-items: end; height: 100%; min-width: 0; color: var(--muted); }
-.hist-periods i { display: block; align-self: end; background: var(--border); }
-.hist-periods .hp-n { font: 400 10.5px var(--mono); padding-bottom: 4px; text-align: center; }
-.hist-periods .hp-label { position: relative; height: 0; font: 400 10px var(--mono); letter-spacing: .02em; text-align: center; white-space: nowrap; }
-.hist-periods .hp-label { top: 8px; }
-/* between phone and wide desktop the columns are narrower than a label: every second one is shown */
-@media (max-width: 1560px) { .hist-periods a:nth-child(even):not([aria-current]) .hp-label { visibility: hidden; } }
-/* the column is narrower than its number and its label: both stay centred over it */
-.hist-periods .hp-n, .hist-periods .hp-label { justify-self: center; }
-.hist-periods a:hover { color: var(--text); }
-.hist-periods a:hover i { background: var(--muted); }
-.hist-periods a[aria-current] { color: var(--text); }
-.hist-periods a[aria-current] i { background: var(--text); }
+/* the overview: the world average as a line, the entries per decade as bars on the same time axis */
+.hy { margin-top: clamp(36px, 5vw, 60px); }
+.hy-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 20px; margin-bottom: 14px; }
+.hy-head h2 { margin: 0; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.hy-head h2 span { color: var(--muted); }
+.hy-now { margin: 0; display: flex; align-items: baseline; gap: 10px; color: var(--muted); font-size: 13px; }
+.hy-now b { font: 400 32px var(--display); color: var(--text); font-variant-numeric: tabular-nums; }
+.hy-chart { display: grid; grid-template-columns: 34px minmax(0, 1fr) 40px; grid-template-rows: 280px 28px; }
+.hy-y, .hy-y2 { position: relative; color: var(--muted); font: 400 10.5px var(--mono); font-variant-numeric: tabular-nums; }
+.hy-y span { position: absolute; right: 8px; transform: translateY(-50%); }
+.hy-y2 span { position: absolute; left: 8px; transform: translateY(-50%); }
+.hy-plot { position: relative; border-bottom: 1px solid var(--text-2); }
+.hy-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.hy-plot .grid { stroke: var(--border); stroke-width: 1; stroke-opacity: .7; vector-effect: non-scaling-stroke; }
+.hy-plot .halo { fill: none; stroke: var(--bg); stroke-width: 7; stroke-linejoin: round; stroke-opacity: .85; vector-effect: non-scaling-stroke; }
+.hy-plot .line { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.hy-bars { position: absolute; inset: 0; }
+.hy-bars a { position: absolute; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; padding: 0 2px; color: var(--muted); }
+.hy-bars a > i { position: relative; display: flex; flex-direction: column; justify-content: flex-end; background: var(--border); }
+.hy-bars a > i > i { background: var(--muted); }
+.hy-n { font: 400 10.5px var(--mono); text-align: center; padding-bottom: 3px; font-variant-numeric: tabular-nums; }
+.hy-label { position: absolute; left: 0; right: 0; bottom: -21px; font: 400 10px var(--mono); text-align: center; white-space: nowrap; }
+.hy-bars a:hover, .hy-bars a[aria-current] { color: var(--text); }
+.hy-bars a:hover > i, .hy-bars a[aria-current] > i { background: color-mix(in srgb, var(--muted) 55%, var(--border)); }
+.hy-bars a:hover > i > i, .hy-bars a[aria-current] > i > i { background: var(--text-2); }
+.hy-key { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 10px 0 0 34px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.hy-key span { display: inline-block; width: 10px; height: 10px; margin-left: 10px; }
+.hy-key span:first-child { margin-left: 0; }
+.hy-key .k-scored { background: var(--muted); }
+.hy-key .k-context { background: var(--border); }
+.hy-key .k-line { height: 2px; background: var(--accent); }
+/* below a desktop width the decades are too narrow for their labels and counts: every second label, no counts */
+@media (max-width: 900px) {
+  .hy-bars a:nth-child(even):not([aria-current]) .hy-label { visibility: hidden; }
+  .hy-n { display: none; }
+  .hy-chart { grid-template-columns: 28px minmax(0, 1fr) 30px; grid-template-rows: 220px 28px; }
+  .hy-key { margin-left: 28px; }
+}
+/* on a phone, one label in four (1860s, 1900s, 1940s, 1980s, 2020s), and the decade being shown
+   with the two on each side of it cleared */
+@media (max-width: 560px) {
+  .hy-bars a:nth-child(4n + 2):not([aria-current]) .hy-label { visibility: visible; }
+  .hy-bars a:not(:nth-child(4n + 2)) .hy-label { visibility: hidden; }
+  .hy-bars a[aria-current] + a .hy-label, .hy-bars a[aria-current] + a + a .hy-label,
+  .hy-bars a:has(+ a[aria-current]) .hy-label, .hy-bars a:has(+ a + a[aria-current]) .hy-label { visibility: hidden; }
+  .hy-bars a[aria-current] .hy-label { visibility: visible; }
+}
+/* the continuous list: each year's heading is its permalink; load the other way, and say where it ends */
+.hist-year h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; }
+.hist-reset { align-self: end; margin-top: 22px; padding-bottom: 3px; border-bottom: 1px solid var(--text); color: var(--text); font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
+.hist-reset:hover { color: var(--text-2); border-bottom-color: var(--text-2); }
+.hist-reset[hidden] { display: none; }
+.hist-more { display: block; width: 100%; margin-top: 22px; padding: 12px 0; border: 1px solid var(--border); background: none; color: var(--text-2); font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+.hist-more:hover { border-color: var(--muted); color: var(--text); }
+.hist-more[hidden] { display: none; }
+.hist-sentinel { height: 1px; }
+.hist-status { margin: 0 0 clamp(32px, 5vw, 64px); color: var(--muted); font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.hist-status:empty { margin: 0; }
+.hist-continue { margin: 14px 0 0; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.hist-continue a { border-bottom: 1px solid var(--muted); }
 .hist-kinds { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 44px; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
 .hist-kinds a { color: var(--muted); padding-bottom: 3px; border-bottom: 1px solid transparent; white-space: nowrap; }
 .hist-kinds a:hover { color: var(--text); }
@@ -1091,6 +1137,7 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .hist-order button[aria-pressed="true"] { color: var(--text); border-bottom-color: var(--text); }
 /* the ledger: the year large on the left, its entries ruled on the right */
 .hist-years { margin-top: 22px; }
+.hist-year { scroll-margin-top: 56px; }
 .hist-year { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 0 clamp(24px, 4vw, 56px); border-top: 1px solid var(--text); padding-bottom: clamp(32px, 5vw, 64px); }
 .hist-year h2 { position: sticky; top: 64px; align-self: start; margin: 0; padding-top: 10px; font-size: clamp(56px, 8vw, 120px); line-height: .9; letter-spacing: -.03em; }
 .hist-year h2 small { display: block; margin-top: 10px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
@@ -1116,13 +1163,6 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .hist-tops a:hover span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 @media (max-width: 900px) {
   .hist-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .hist-periods .hp-label, .hist-periods .hp-n { visibility: hidden; }
-  .hist-periods a[aria-current] .hp-label, .hist-periods a[aria-current] .hp-n { visibility: visible; }
-  /* on a narrow screen the label of the chosen period sits under the middle of the chart */
-  .hist-periods { position: relative; gap: 2px; }
-  .hist-periods a:not([aria-current]) .hp-label { display: none; }
-  .hist-periods a:not([aria-current]) .hp-n { max-width: 100%; overflow: hidden; }
-  .hist-periods a[aria-current] .hp-label { position: absolute; left: 0; right: 0; top: 100%; margin-top: 8px; height: auto; font-size: 11px; }
   .hist-year { grid-template-columns: 1fr; }
   .hist-year h2 { position: static; font-size: 56px; padding-bottom: 12px; }
   .hist-year li a { grid-template-columns: 1fr auto; }
@@ -1196,13 +1236,34 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .ev-more li a:hover b { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .ev-more li.current > * { color: var(--text); }
 .ev-more li.current b::before { content: "→ "; font-family: var(--mono); font-size: .75em; }
+.ev-related ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 0 28px; }
+.ev-related li a { display: grid; gap: 4px; height: 100%; padding: 12px 0 14px; border-top: 1px solid var(--border); }
+.ev-related time, .ev-related span { font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.ev-related b { font: 400 19px/1.2 var(--display); color: var(--text); }
+.ev-related a:hover b { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .ev .pager { margin-top: clamp(48px, 7vw, 88px); }
 @media (max-width: 900px) {
   .ev-top, .ev-body, .ev-body.no-aside { grid-template-columns: minmax(0, 1fr); }
   .ev-rail { position: static; }
 }
+/* a side pane stays in view only while it fits the window; a taller one scrolls with the page (Base.astro) */
+.ev-rail.too-tall, .country-page .c-rail.too-tall { position: static; }
 
 /* a long read inside a history entry (articles/<id>.md) */
+/* the atlas entries a history entry belongs to, at the top of its page */
+.ev-culture { margin-bottom: 40px; }
+.ev-culture .ev-label { margin-bottom: 10px; }
+.ev-culture ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ev-culture a { display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: center; padding: 10px; border: 1px solid var(--border); background: var(--surface); }
+.ev-culture a:hover { border-color: var(--text-2); }
+.ev-culture img, .ev-culture-none { width: 120px; height: 80px; object-fit: cover; background: var(--surface-2); }
+.ev-culture-none { display: grid; place-items: center; font: italic 400 30px var(--display); color: var(--muted); }
+.ev-culture a > span { display: grid; gap: 3px; min-width: 0; }
+.ev-culture small { font: 400 10px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.ev-culture b { font: 400 22px/1.15 var(--display); }
+.ev-culture a:hover b { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.ev-culture a > span > span { font-size: 14px; line-height: 1.45; color: var(--text-2); }
+@media (max-width: 560px) { .ev-culture a { grid-template-columns: 84px 1fr; gap: 12px; } .ev-culture img, .ev-culture-none { width: 84px; height: 84px; } .ev-culture a > span > span { display: none; } }
 .ev-article { margin-bottom: 52px; border-top: 1px solid var(--text); padding-top: 12px; }
 .ev-article > .ev-label { margin-bottom: 14px; }
 .ev-article figure { margin: 0 0 28px; }
@@ -1368,6 +1429,15 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .c-culture li b { font: 400 19px/1.15 var(--display); }
 .c-culture li b i { font: 400 13px Inter, sans-serif; color: var(--muted); margin-left: 4px; }
 .c-culture li a:hover b { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+/* in the side rail of an entry page the list takes the rail's form: a dark rule above, the label,
+   then rows ruled like the places and the history beside it */
+.ev-rail .c-culture { margin-top: 0; border-top: 1px solid var(--text); padding-top: 12px; }
+.ev-rail .c-culture ul { margin-top: 10px; border-top: 0; }
+.ev-rail .c-culture h2 { margin: 0; }
+.ev-rail .c-culture li a { grid-template-columns: 36px 1fr; padding: 8px 0; border-top: 1px solid var(--border); border-bottom: 0; }
+.ev-rail .c-culture img, .ev-rail .c-culture-none { width: 36px; height: 36px; }
+.ev-rail .c-culture-none { font-size: 18px; }
+.ev-rail .c-culture li b { font-size: 17px; line-height: 1.2; }
 @media (max-width: 760px) {
   .culture-themes { grid-template-columns: 1fr; }
   .culture-threads a { grid-template-columns: 6ch 1fr; }

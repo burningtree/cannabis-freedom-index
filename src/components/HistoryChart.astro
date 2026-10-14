@@ -1,0 +1,72 @@
+---
+// The History overview in one plot: one bar per decade counting the entries, the part that moved a
+// score drawn darker, and over them the world average score since 1860 as a line. The score is
+// read on the left axis, the number of entries on the right. Each bar links to its decade's page; on the continuous list at /history/ a script jumps
+// to that decade in place instead. `current` marks the decade being shown.
+import { averageHistory, historyPeriods, HISTORY_FROM, dateTime, lastUpdated } from "../lib/countries.js";
+
+const { current } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const num = (n) => n.toLocaleString("en-GB");
+
+// one slot per decade on the time axis, the entries before 1860 in a slot of their own before it
+const X0 = HISTORY_FROM - 10;
+const X1 = historyPeriods[0].from + 10;
+const x = (yearFraction) => ((yearFraction - X0) / (X1 - X0)) * 100;
+const yearOf = (iso) => { const d = new Date(dateTime(iso)); return d.getUTCFullYear() + d.getUTCMonth() / 12 + (d.getUTCDate() - 1) / 365; };
+
+// the line, as in AverageChart: a step at each recorded change
+const points = averageHistory.filter((p) => +p.date.slice(0, 4) >= HISTORY_FROM);
+const start = points[0].before;
+const now = points.at(-1).after;
+const values = points.flatMap((p) => [p.before, p.after]);
+const yMin = Math.floor(Math.min(...values) / 10) * 10;
+const yMax = Math.ceil(Math.max(...values) / 10) * 10;
+const y = (v) => (1 - (v - yMin) / (yMax - yMin)) * 100;
+const ticks = Array.from({ length: (yMax - yMin) / 10 + 1 }, (_, i) => yMin + i * 10);
+const line = `M${x(HISTORY_FROM)},${y(start)}` + points.map((p) => `H${x(yearOf(p.date))}V${y(p.after)}`).join("") + `H${x(yearOf(lastUpdated))}`;
+
+const most = Math.max(...historyPeriods.map((p) => p.items.length));
+// the right axis: round steps for the number of entries
+const countStep = most > 400 ? 100 : most > 200 ? 50 : most > 80 ? 20 : 10;
+const countMax = Math.ceil(most / countStep) * countStep;
+const countTicks = Array.from({ length: countMax / countStep + 1 }, (_, i) => i * countStep);
+const bars = [...historyPeriods].reverse().map((p) => {
+  const slot = p.from < HISTORY_FROM ? X0 : p.from;
+  const scored = p.items.filter((ch) => ch.score).length;
+  return {
+    p, scored, all: p.items.length,
+    left: x(slot), width: x(slot + 10) - x(slot),
+    height: (p.items.length / countMax) * 100,
+    title: `${p.label}: ${num(p.items.length)} ${p.items.length === 1 ? "entry" : "entries"}, ${num(scored)} moved a score`,
+  };
+});
+---
+<section class="hy" aria-labelledby="hyTitle">
+  <div class="hy-head">
+    <h2 id="hyTitle">World average score <span>and entries per decade</span></h2>
+    <p class="hy-now"><b>{now.toFixed(1)}</b> <span>today, from {start.toFixed(1)} in {HISTORY_FROM}</span></p>
+  </div>
+  <div class="hy-chart">
+    <div class="hy-y" aria-hidden="true">{ticks.map((t) => <span style={`top:${y(t)}%`}>{t}</span>)}</div>
+    <div class="hy-plot">
+      <nav class="hy-bars" aria-label="Decades">
+        {bars.map((b) => (
+          <a href={`${base}history/period/${b.p.slug}/`} data-from={b.p.from} data-to={b.p.to} title={b.title} aria-label={b.title}
+            aria-current={b.p === current ? "page" : undefined} style={`left:${b.left}%;width:${b.width}%`}>
+            <span class="hy-n">{b.all}</span>
+            <i style={`height:${Math.max(1, b.height)}%`}><i style={`height:${b.all ? (b.scored / b.all) * 100 : 0}%`}></i></i>
+            <span class="hy-label">{b.p.short}</span>
+          </a>
+        ))}
+      </nav>
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        {ticks.map((t) => <line class="grid" x1="0" x2="100" y1={y(t)} y2={y(t)} />)}
+        <path class="halo" d={line} />
+        <path class="line" d={line} />
+      </svg>
+    </div>
+    <div class="hy-y2" aria-hidden="true">{countTicks.map((t) => <span style={`top:${100 - (t / countMax) * 100}%`}>{num(t)}</span>)}</div>
+  </div>
+  <p class="hy-key"><span class="k-line"></span> World average score, every country counted the same (left) <span class="k-scored"></span> Entries that moved a score <span class="k-context"></span> Context only (right)</p>
+</section>

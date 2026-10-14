@@ -3,6 +3,7 @@ title: The elder's morning pipe
 summary: In Zululand and the eastern Cape, smoking dagga was a privilege of grown men. South Africa's first national ban was quietly not enforced against it.
 also: [dagga, insangu]
 countries: [za]
+related: [language/dagga, language/matekoane, language/mbanje, traditions/bena-riamba]
 history: [natal-dube-insangu-editorial-1907, transvaal-mine-dagga-survey-1908, south-africa-enforcement-compromise-1922, south-africa-natal-1870, natal-wragg-commission-1887, cape-colony-dagga-poison-listing-1905, transvaal-second-dagga-survey-1911, south-africa-national-ban-1922, south-africa-constitutional-court-2018]
 image:
   src: ../../src/assets/culture/old-zulu-man-his-pipe-ravenscroft.jpg

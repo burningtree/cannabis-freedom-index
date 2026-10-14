@@ -122,6 +122,7 @@ spelling:                          # language entries: the word in its own scrip
 also: [bangue, bang]               # other spellings, related words, names to be found by
 countries: [in, ir]                # file names in /countries, the most closely tied first
 history: [india-bhang-exemption-1961, india-ndps-act-1985]   # ids in changes.yaml
+related: [traditions/bhang-at-holi, language/ganja]          # optional: closest atlas entries first
 image:                             # the lead picture, optional
   src: ../../src/assets/culture/example.jpg   # a local file, relative to this Markdown file
   alt: What the picture shows
@@ -210,8 +211,15 @@ The site turns that into a figure with the caption and credit underneath. Rules:
   up as a wrong claim about that country.
 - A country may be listed for a law about the custom (Italy for its Rastafari ruling) when the
   text says so.
-- `history` lists the entries the text mentions or relies on. If the text names a law that has
-  no history entry, add the entry to `changes.yaml` first.
+- `history` lists the entries the text mentions or relies on, and every history entry that is
+  about the word or the custom itself (a coffeeshop law belongs to The coffeeshop even when the
+  text does not mention it). Each one listed shows the atlas entry beside it on its history page,
+  so a reader who opens the law finds the culture behind it. If the text names a law that has no
+  history entry, add the entry to `changes.yaml` first.
+- Beside each entry the page lists up to eight related words and traditions. They are worked out
+  on their own: entries the text links to or that link to it, entries sharing history entries,
+  and entries kept in two or more of the same countries. Use `related` to put the closest ones
+  first, or to tie in an entry the rules above miss (Chamba to Dagga, Zatla to Kif).
 
 ## Sources and care
 

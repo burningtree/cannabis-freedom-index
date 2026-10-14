@@ -3,18 +3,18 @@
 const { eyebrow, title, text, facts = [] } = Astro.props;
 const size = title.length > 48 ? 70 : title.length > 28 ? 92 : 116;
 ---
-<div style="display:flex;flex-direction:column;width:1200px;height:630px;background:#0c0c0b;color:#f2f0e9;padding:52px 64px 48px;font-family:Inter">
-  <div style="display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono';font-size:19px;letter-spacing:2px;color:#a9a79d">
+<div style="display:flex;flex-direction:column;width:1200px;height:630px;background:#f4f2eb;color:#11110f;padding:52px 64px 48px;font-family:Inter">
+  <div style="display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono';font-size:19px;letter-spacing:2px;color:#4b4a43">
     <div style="display:flex">{eyebrow}</div>
     <div style="display:flex">CANNABISFREEDOM.FYI</div>
   </div>
   <div style={`display:flex;margin-top:54px;font-family:'Instrument Serif';font-size:${size}px;line-height:1;letter-spacing:-2px`}>{title}</div>
-  <div style="display:flex;margin-top:26px;max-width:960px;font-size:30px;line-height:1.35;color:#a9a79d">{text}</div>
-  <div style="display:flex;margin-top:auto;border-top:1px solid #f2f0e9;padding-top:22px;font-family:'JetBrains Mono'">
+  <div style="display:flex;margin-top:26px;max-width:960px;font-size:30px;line-height:1.35;color:#4b4a43">{text}</div>
+  <div style="display:flex;margin-top:auto;border-top:1px solid #11110f;padding-top:22px;font-family:'JetBrains Mono'">
     {facts.map((f) => (
       <div style="display:flex;flex-direction:column;margin-right:64px">
         <div style="display:flex;font-size:46px;font-weight:500">{f[0]}</div>
-        <div style="display:flex;margin-top:4px;font-size:16px;letter-spacing:2px;color:#a9a79d">{f[1]}</div>
+        <div style="display:flex;margin-top:4px;font-size:16px;letter-spacing:2px;color:#4b4a43">{f[1]}</div>
       </div>
     ))}
   </div>

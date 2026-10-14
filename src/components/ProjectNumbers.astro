@@ -1,7 +1,9 @@
 ---
-// The project in numbers, on the About page: how much is scored, how much history is
-// recorded and how much of it is sourced. Each number links to where that material can be seen.
-import { SEGMENTS, DATA_SNAPSHOT, places, countries, changes, articles } from "../lib/countries.js";
+// The project in numbers, on the About page: how much is scored, how much history and culture
+// is recorded and how much of it is sourced. Each number links to where that material can be seen.
+import { SEGMENTS, DATA_SNAPSHOT, places, countries, changes, articles, subunitsOf } from "../lib/countries.js";
+import { MAP_VIEWS } from "../lib/map-views.js";
+import { cultureIn } from "../lib/culture.js";
 import { archivedCount } from "../lib/archive.js";
 import { sourceKey } from "../lib/sources.js";
 
@@ -18,9 +20,13 @@ const explanations = places.reduce((n, c) => n + SEGMENTS.length + c.details.con
 const oldest = +dated.at(-1).date.slice(0, 4);
 const stats = [
   [num(places.length), "Countries and territories scored", `${base}#rankings`],
+  [num(places.reduce((n, c) => n + (subunitsOf(c.id)?.units.length ?? 0), 0)), "States and provinces scored", `${base}#rankings`],
+  [num(MAP_VIEWS.length), "World maps", `${base}map/`],
   [num(dated.length), "History entries", `${base}history/`],
   [num(dated.filter((ch) => ch.score).length), "Of them moved a score", `${base}history/?only=scored`],
   [num(articles.size), "Articles", `${base}articles/`],
+  [num(cultureIn("language").length), "Words for the plant", `${base}culture/language/`],
+  [num(cultureIn("traditions").length), "Traditions", `${base}culture/traditions/`],
   [num(sourceKeys.size), "Sources cited", `${base}sources/`],
   [num(explanations), "Written explanations", `${base}data/`],
   [num(+DATA_SNAPSHOT - oldest), `Years covered, from ${oldest}`, `${base}history/?order=oldest`],
