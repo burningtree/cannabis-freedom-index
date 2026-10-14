@@ -761,6 +761,7 @@ table.cani tr[hidden] { display: none; }
 .metric-group a[aria-current], .metric-group button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
 .map-sub { margin: 0 0 14px; }
 /* "Expand" beside the World map title opens the current view on a page of its own */
+.map-links { display: flex; gap: 22px; align-items: baseline; }
 .map-expand { font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
 .map-expand:hover { color: var(--text); text-decoration: underline; text-underline-offset: 5px; }
 /* a map page: just the map, as wide as the window allows */
@@ -1949,3 +1950,89 @@ button.sv-row .sv-chip { font: 400 10.5px var(--mono); text-transform: uppercase
 .avg-band { position: absolute; left: 8px; transform: translateY(-50%); font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: color-mix(in srgb, var(--c) 70%, var(--text)); pointer-events: none; white-space: nowrap; }
 .avg-tier { font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; padding-left: 8px; border-left: 3px solid var(--c); color: var(--text-2); }
 @media (max-width: 600px) { .avg-band { font-size: 9.5px; } }
+
+/* ══ Map poster (/map/poster/) ═════════════════════════════════════════════════
+   One sheet in paper colours in both themes, as it prints; the bar above it is for the screen. */
+.poster-page { max-width: 1240px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 64px; }
+.poster-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.poster-bar .back { width: 100%; }
+.poster-pick { display: flex; flex-wrap: wrap; border: 1px solid var(--border); }
+.poster-pick button { padding: 9px 14px; border: 0; border-left: 1px solid var(--border); background: none; color: var(--text-2); font: inherit; font-size: 14px; cursor: pointer; }
+.poster-pick button:first-child { border-left: 0; }
+.poster-pick button:hover { color: var(--text); }
+.poster-pick button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+.poster-pick small { margin-left: 6px; font: 400 11px var(--mono); opacity: .7; }
+.poster-go { min-width: 10em; text-align: center; justify-content: center; }
+.poster-use { margin: 10px 0 20px; font-size: 13px; color: var(--muted); }
+.poster-image { margin: 0; text-align: center; }
+.poster-image img { display: block; max-width: 100%; max-height: 78vh; width: auto; height: auto; margin: 0 auto; border: 1px solid var(--border); box-shadow: 0 18px 50px rgba(0, 0, 0, .12); }
+.poster-image figcaption { margin-top: 10px; font: 400 11.5px var(--mono); color: var(--muted); }
+.poster[hidden], .poster-image[hidden] { display: none; }
+.poster {
+  --ink: #11110f; --ink-2: #4b4a43; --rule: #d9d5c8;
+  display: flex; flex-direction: column; gap: clamp(14px, 2vw, 22px);
+  padding: clamp(18px, 3.4vw, 44px) clamp(18px, 3.6vw, 48px) clamp(16px, 2.6vw, 32px);
+  background: #f4f2eb; color: var(--ink); border: 1px solid var(--border);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .12);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.poster-eyebrow { display: flex; justify-content: space-between; gap: 16px; margin: 0; font: 400 clamp(10px, 1.1vw, 12.5px) var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); }
+.poster-title { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-top: clamp(10px, 1.6vw, 18px); }
+.poster-title h1 { margin: 0; font: 400 clamp(40px, 6vw, 76px)/1 var(--display); letter-spacing: -.02em; }
+.poster-title p { margin: 10px 0 0; max-width: 56ch; font-size: clamp(14px, 1.4vw, 17px); color: var(--ink-2); }
+.poster-title .poster-avg { display: flex; flex-direction: column; align-items: flex-end; flex: none; margin: 0; }
+.poster-avg b { font: 400 clamp(34px, 5vw, 64px)/1 var(--mono); letter-spacing: -.05em; }
+.poster-avg span { margin-top: 6px; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); }
+.poster-map { display: block; width: 100%; height: auto; }
+.poster-map path { stroke: #f4f2eb; stroke-width: .5; stroke-linejoin: round; }
+.poster-map circle { stroke: #f4f2eb; stroke-width: .8; }
+.poster-tiers { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px 16px; margin: 0; padding: 14px 0 0; list-style: none; border-top: 1px solid var(--ink); }
+.poster-tiers li { display: flex; gap: 9px; align-items: flex-start; }
+.poster-tiers i { flex: none; width: 14px; height: 14px; margin-top: 3px; }
+.poster-tiers b { display: block; font-size: 14.5px; font-weight: 600; line-height: 1.25; }
+.poster-tiers small { display: block; margin-top: 2px; font: 400 11.5px var(--mono); color: var(--ink-2); }
+.poster-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(24px, 4vw, 56px); padding-top: 14px; border-top: 1px solid var(--rule); }
+.poster-lists h2 { margin: 0 0 6px; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); }
+.poster-lists ol { margin: 0; padding: 0; list-style: none; }
+.poster-lists li { display: flex; align-items: baseline; gap: 10px; padding: 4px 0; }
+.poster-rank { width: 2.4em; font: 400 12px var(--mono); color: var(--ink-2); }
+.poster-name { flex: 1; min-width: 0; font: 400 clamp(17px, 1.8vw, 22px)/1.2 var(--display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.poster-lists b { font: 500 15px var(--mono); border-bottom: 3px solid; }
+.poster-foot { display: flex; justify-content: space-between; gap: 16px; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
+@media (max-width: 760px) {
+  .poster-pick, .poster-go { width: 100%; }
+  .poster-pick button { flex: 1 1 45%; border-top: 1px solid var(--border); }
+  .poster-tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .poster-title { flex-direction: column; align-items: flex-start; }
+  .poster-title .poster-avg { align-items: flex-start; }
+  .poster-lists { grid-template-columns: 1fr; gap: 14px; }
+  .poster-foot { flex-direction: column; gap: 4px; }
+}
+@media print {
+  /* one A4 landscape sheet: the poster fills the page and keeps its paper colour to the edge */
+  @page { size: A4 landscape; margin: 0; }
+  html:has(.poster), body:has(.poster) { background: #f4f2eb !important; }
+  body:has(.poster) .topbar, body:has(.poster) .footer, .poster-bar, .poster-use, .poster-image { display: none !important; }
+  .poster[hidden] { display: flex !important; }
+  .poster-page { max-width: none; margin: 0; padding: 0; }
+  .poster { box-sizing: border-box; width: 297mm; height: 210mm; padding: 9mm 11mm 7mm; gap: 3mm; border: 0; box-shadow: none; overflow: hidden; }
+  .poster-eyebrow { font-size: 8pt; }
+  .poster-title { flex-direction: row; align-items: flex-end; margin-top: 2mm; }
+  .poster-title h1 { font-size: 36pt; }
+  .poster-title p { font-size: 10.5pt; margin-top: 1.5mm; }
+  .poster-title .poster-avg { align-items: flex-end; }
+  .poster-avg b { font-size: 30pt; }
+  .poster-avg span { font-size: 7pt; }
+  .poster-map { width: auto; height: 100mm; margin: 0 auto; }
+  .poster-tiers { grid-template-columns: repeat(6, minmax(0, 1fr)); padding-top: 2.5mm; }
+  .poster-tiers b { font-size: 9.5pt; }
+  .poster-tiers small { font-size: 7.5pt; }
+  .poster-lists { grid-template-columns: 1fr 1fr; gap: 0 12mm; padding-top: 2.5mm; }
+  .poster-lists h2 { font-size: 7pt; margin-bottom: 1mm; }
+  .poster-lists li { padding: .5mm 0; }
+  .poster-name { font-size: 12pt; }
+  .poster-rank, .poster-lists b { font-size: 8.5pt; }
+  .poster-foot { flex-direction: row; font-size: 7pt; margin-top: auto; }
+}
+.legend-poster { margin-left: auto; color: var(--text-2); text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; }
+.legend-poster:hover { color: var(--text); }

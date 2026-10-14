@@ -211,7 +211,10 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           <div>
             <h2>World map</h2>
           </div>
-          <a class="map-expand" id="mapExpand" href={viewHref(current)} title="Open this map on a page of its own">Expand <span aria-hidden="true">↗</span></a>
+          <div class="map-links">
+            <a class="map-expand" href={`${base}map/poster/`}>Print or share →</a>
+            <a class="map-expand" id="mapExpand" href={viewHref(current)} title="Open this map on a page of its own">Expand <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       )}
       <nav class="metric-bar" id="metric" aria-label="Colour the map by" data-initial={current} data-page={view ? "" : undefined}>
@@ -261,6 +264,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         <div class="legend" data-legend="score">
           {legend.map((t) => <span><i class="sw" style={`background:var(--t${t.i})`}></i>{t.name} · {t.min}–{t.max}</span>)}
           <span><i class="sw sw-nodata"></i>No data</span>
+          {view && <a class="legend-poster" href={`${base}map/poster/`}>Print or share this map →</a>}
         </div>
         {Object.entries(USE_SCALES).map(([key, scale]) => (
           <div class="legend" data-legend={key} hidden>

@@ -1,0 +1,61 @@
+---
+// The world map as an image to share (/map/poster/<size>.png): title, the map coloured by tier,
+// the tiers with how many countries are in each. A square or portrait image also lists the
+// most and least free; the wide one has no room for them.
+const { W, H, wide, eyebrow, title, sub, map, mapW, mapH, tiers, top, bottom, avg, site, note } = Astro.props;
+const pad = wide ? 56 : 52;
+const titleSize = wide ? 64 : 62;
+---
+<div style={`display:flex;flex-direction:column;width:${W}px;height:${H}px;background:#f4f2eb;color:#11110f;padding:${pad - 10}px ${pad}px ${pad - 12}px;font-family:Inter`}>
+  <div style="display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono';font-size:17px;letter-spacing:2px;color:#4b4a43">
+    <div style="display:flex">{eyebrow}</div>
+    <div style="display:flex">{site}</div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:22px">
+    <div style="display:flex;flex-direction:column;flex:1;min-width:0">
+      <div style={`display:flex;font-family:'Instrument Serif';font-size:${titleSize}px;line-height:1;letter-spacing:-1.5px`}>{title}</div>
+      <div style={`display:flex;margin-top:10px;font-size:21px;line-height:1.35;color:#4b4a43;max-width:${wide ? 1100 : 640}px`}>{sub}</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;margin-left:32px">
+      <div style="display:flex;font-family:'JetBrains Mono';font-size:54px;font-weight:500;letter-spacing:-3px;line-height:1">{avg}</div>
+      <div style="display:flex;margin-top:6px;font-family:'JetBrains Mono';font-size:14px;letter-spacing:2px;color:#4b4a43">WORLD AVERAGE OF 100</div>
+    </div>
+  </div>
+  <div style="display:flex;flex:1;align-items:center;justify-content:center">
+    <img src={map} style={`width:${mapW}px;height:${mapH}px`} />
+  </div>
+  <div style="display:flex;flex-wrap:wrap;border-top:1px solid #11110f;padding-top:16px">
+    {tiers.map((t) => (
+      <div style={`display:flex;align-items:flex-start;width:${wide ? "16.66%" : "33.33%"};margin-bottom:${wide ? 0 : 14}px`}>
+        <div style={`display:flex;width:16px;height:16px;margin-top:3px;margin-right:9px;background:${t.color}`}></div>
+        <div style="display:flex;flex-direction:column">
+          <div style="display:flex;font-size:17px;font-weight:600">{t.name}</div>
+          <div style="display:flex;margin-top:3px;font-family:'JetBrains Mono';font-size:14px;color:#4b4a43">{t.range} · {t.count}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+  {!wide && (
+    <div style="display:flex;margin-top:12px;border-top:1px solid #d9d5c8;padding-top:16px">
+      {[["MOST FREE", top], ["LEAST FREE", bottom]].map(([label, list]) => (
+        <div style="display:flex;flex-direction:column;width:50%;padding-right:24px">
+          <div style="display:flex;font-family:'JetBrains Mono';font-size:14px;letter-spacing:2px;color:#4b4a43;margin-bottom:8px">{label}</div>
+          {list.map((c) => (
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0">
+              <div style="display:flex;align-items:center">
+                <div style="display:flex;width:30px;font-family:'JetBrains Mono';font-size:14px;color:#4b4a43">{c.rank}</div>
+                {c.flag && <img src={c.flag} style="width:26px;height:19px;margin-right:10px" />}
+                <div style="display:flex;font-family:'Instrument Serif';font-size:27px;line-height:1">{c.name}</div>
+              </div>
+              <div style={`display:flex;font-family:'JetBrains Mono';font-size:20px;font-weight:500;border-bottom:3px solid ${c.color}`}>{c.score}</div>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  )}
+  <div style="display:flex;justify-content:space-between;margin-top:14px;font-family:'JetBrains Mono';font-size:13px;letter-spacing:1px;color:#4b4a43">
+    <div style="display:flex">{note}</div>
+    <div style="display:flex">CC BY 4.0</div>
+  </div>
+</div>

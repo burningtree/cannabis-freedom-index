@@ -1,0 +1,111 @@
+---
+// The world map as a poster: one sheet that prints on A4 or A3 landscape, with the tiers, the
+// most and least free and the date of the data. The same poster comes as images to share, drawn
+// by ./[size].png.js. The sheet keeps the paper colours in the dark theme too, as printed.
+import Base from "../../../layouts/Base.astro";
+import { DATA_SNAPSHOT } from "../../../lib/countries.js";
+import { worldMap, posterFacts, MAP_RATIO } from "../../../lib/world-map.js";
+
+const base = import.meta.env.BASE_URL;
+const MAP_W = 1000;
+const MAP_H = Math.round(MAP_W / MAP_RATIO);
+const map = worldMap(MAP_W, MAP_H, 0);
+const f = posterFacts();
+const host = new URL(Astro.site ?? "https://cannabisfreedom.fyi").host;
+// the image sizes: id, name, pixels, where they fit
+const images = [
+  ["wide", "Wide", "1600 × 900", "X, LinkedIn, slides"],
+  ["square", "Square", "1080 × 1080", "Instagram, Mastodon"],
+  ["portrait", "Portrait", "1080 × 1350", "Instagram"],
+];
+---
+<Base title="World map poster" description={`The Cannabis Freedom Index world map as a poster to print or share: ${f.total} countries scored from 0 to 100, by tier.`} image={["map/poster/wide.png", 1600, 900]}>
+  <main class="poster-page">
+    <div class="poster-bar">
+      <a class="back" href={`${base}map/`}>← The interactive map</a>
+      <div class="poster-pick" role="group" aria-label="Format">
+        <button type="button" aria-pressed="true" data-format="print">Print <small>A4 landscape</small></button>
+        {images.map(([id, label, size]) => (
+          <button type="button" aria-pressed="false" data-format={id} data-href={`${base}map/poster/${id}.png`}
+            data-file={`cannabis-freedom-index-map-${DATA_SNAPSHOT}-${id}.png`} data-size={size}>{label} <small>{size}</small></button>
+        ))}
+      </div>
+      <a class="btn btn-primary poster-go" id="posterGo" href={`${base}map/poster/wide.png`}>Print</a>
+    </div>
+    <p class="poster-use" id="posterUse">Prints on one A4 landscape sheet. Choose an image size instead to share it.</p>
+
+    {images.map(([id, label, size, use]) => (
+      <figure class="poster-image" data-format={id} hidden>
+        <img src={`${base}map/poster/${id}.png`} alt={`The poster as a ${label.toLowerCase()} image, ${size} pixels`} loading="lazy"
+          width={size.split(" × ")[0]} height={size.split(" × ")[1]} />
+        <figcaption>{size} pixels · for {use}</figcaption>
+      </figure>
+    ))}
+
+    <article class="poster" data-format="print" aria-labelledby="posterTitle">
+      <header class="poster-head">
+        <p class="poster-eyebrow"><span>Cannabis Freedom Index · {DATA_SNAPSHOT} edition</span><span>{host}</span></p>
+        <div class="poster-title">
+          <div>
+            <h1 id="posterTitle">How free is cannabis?</h1>
+            <p>{f.total} countries scored from 0 to 100 for how free you are to carry, grow, share and use it.</p>
+          </div>
+          <p class="poster-avg"><b>{f.avg}</b><span>World average of 100</span></p>
+        </div>
+      </header>
+
+      <svg class="poster-map" viewBox={`0 0 ${MAP_W} ${MAP_H}`} role="img" aria-label="World map of the countries coloured by their tier on the index">
+        {map.shapes.map((s) => <path d={s.d} fill={s.fill} />)}
+        {map.dots.map((d) => <circle cx={d.x} cy={d.y} r={map.r} fill={d.fill} />)}
+      </svg>
+
+      <ul class="poster-tiers">
+        {f.tiers.map((t) => (
+          <li><i style={`background:${t.color}`}></i><span><b>{t.name}</b><small>{t.range} · {t.count} {t.count === 1 ? "country" : "countries"}</small></span></li>
+        ))}
+      </ul>
+
+      <div class="poster-lists">
+        {[["Most free", f.top], ["Least free", f.bottom]].map(([label, list]) => (
+          <section>
+            <h2>{label}</h2>
+            <ol>
+              {list.map((r) => (
+                <li><span class="poster-rank">{r.rank}</span><span class="poster-name">{r.c.flag} {r.c.name}</span><b style={`border-color:${r.color}`}>{r.score}</b></li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </div>
+
+      <footer class="poster-foot">
+        <span>Data as of {f.date} · {host}/map/ · each country's rules and sources are on its page</span>
+        <span>CC BY 4.0</span>
+      </footer>
+    </article>
+  </main>
+  <script>
+    // Pick a format, see it, then print or download it: the sheet is the print version, the
+    // images are the drawn PNGs.
+    const go = document.getElementById("posterGo");
+    const use = document.getElementById("posterUse");
+    const picks = [...document.querySelectorAll(".poster-pick button")];
+    const views = [...document.querySelectorAll(".poster, .poster-image")];
+    function choose(btn) {
+      picks.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      views.forEach((v) => (v.hidden = v.dataset.format !== btn.dataset.format));
+      const print = btn.dataset.format === "print";
+      go.textContent = print ? "Print" : "Download image";
+      if (print) go.removeAttribute("download");
+      else { go.href = btn.dataset.href; go.download = btn.dataset.file; }
+      use.textContent = print ? "Prints on one A4 landscape sheet. Choose an image size instead to share it."
+        : `A ${btn.dataset.size} PNG, ready to post.`;
+    }
+    picks.forEach((b) => b.addEventListener("click", () => choose(b)));
+    go.addEventListener("click", (e) => {
+      if (document.querySelector('.poster-pick [aria-pressed="true"]')?.dataset.format !== "print") return;
+      e.preventDefault();
+      window.print();
+    });
+  </script>
+</Base>
