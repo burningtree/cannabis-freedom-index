@@ -228,6 +228,9 @@ const culture = defineCollection({
       countries: z.array(z.string().regex(/^[a-z]{2}$/)).min(1), // file names in /countries, the most closely tied first
       history: z.array(z.string()).default([]), // ids in changes.yaml
       image: picture(image).optional(),
+      // the entry's rank among the most important of its part (1 = first); see docs/CULTURE.md.
+      // Featured entries lead the Culture page and their section; the rest follow alphabetically.
+      featured: z.number().int().positive().optional(),
       model: z.string().min(1).optional(),
       written: z.coerce.date().optional(),
       sources: z.array(source).min(1),

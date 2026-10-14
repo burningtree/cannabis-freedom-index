@@ -3,6 +3,7 @@ title: Kif and the sebsi
 summary: Morocco's long thin pipe holds a pinch of kif at a time. It belongs to a way of smoking that is older than the hashish trade.
 also: [sebsi, skuff, majoun]
 countries: [ma]
+featured: 9
 history: [morocco-hassan-regulations-1890, morocco-french-zone-ban-1954, morocco-kif-ban-1956, morocco-spanish-zone-dahir-1954, morocco-law-13-21-2021]
 image:
   src: ../../src/assets/culture/sebse.jpg

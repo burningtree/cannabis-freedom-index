@@ -3,7 +3,14 @@ title: Cannabis social clubs
 summary: In Spain, users found a gap in the law and grew their cannabis together in members-only associations. Uruguay later wrote the model into law.
 also: [CSC, asociación cannábica, ARSEC]
 countries: [es, uy, mt, de, ch, za]
+featured: 4
 history: [spain-arsec-conviction-1997, spain-social-clubs-2001, uruguay-club-registry-2014, spain-supreme-court-clubs-2015, spain-catalonia-club-law-2017, spain-barcelona-clubs-2023, malta-legalisation-2021, switzerland-pilot-law-2021, germany-cultivation-associations-2024, spain-smokers-club-exemption-draft-2026]
+image:
+  src: ../../src/assets/culture/dr-dou-social-club.webp
+  alt: The lounge of a cannabis social club, with leather armchairs, exposed brick, coloured lanterns and a bar
+  caption: The lounge of Dr. Dou, a cannabis social club in Barcelona.
+  credit: Photo published by Cannabis BCN
+  credit_url: https://cannabisbcn.com/
 model: opus-5.5
 written: 2026-10-14
 sources:

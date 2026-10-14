@@ -78,7 +78,6 @@ const schemas = jsonld ? [jsonld].flat() : [];
     <nav class="nav" id="siteNav" aria-label="Main">
       <a href={`${base}#map`}>Map</a>
       <a href={`${base}#rankings`}>Rankings</a>
-      <a href={`${base}#methodology`}>Methodology</a>
       <a href={`${base}history/`}>History</a>
       <a href={`${base}culture/`}>Culture</a>
       <a href={`${base}survey/`}>Survey</a>
@@ -331,6 +330,97 @@ const schemas = jsonld ? [jsonld].flat() : [];
     // or to a tab: /country/de/#history
     if (/^#(context|history|sources)$/.test(location.hash) && showTab(document.querySelector("article.country"), location.hash.slice(1))) document.querySelector("article.country .c-main").scrollIntoView({ block: "start" });
     if (/^#seg-[a-z_-]+$/.test(location.hash)) showSegment(document.querySelector("article.country"), location.hash.slice(5));
+  </script>
+  <script is:inline>
+    // Hover previews. A link in the page to a country, a history entry or a culture entry shows a
+    // small card with what is behind it. The data is /previews/<kind>.json, fetched the first time a
+    // link of that kind is hovered or focused. Not on touch, not in the menus, and not on cards or list rows that already show the same.
+    (function () {
+      var base = (document.getElementById("siteSearch") || {}).dataset ? document.getElementById("siteSearch").dataset.base : "/";
+      var cache = {}, tip = null, timer = 0, current = null;
+      var esc = function (t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+      function kindOf(a) {
+        if (!a || a.closest("header, footer, nav, svg, .cu-cards, .reads, .search, .hc, .avg-chart, .c-chart, [data-no-preview]")) return null;
+        // A row of a list (history, changes, the side lists) already shows what the card would show:
+        // only links in running text and short labels get a preview.
+        if (a.querySelector("h1, h2, h3, h4, p, div, time, ul, ol, figure, img")) return null;
+        var u; try { u = new URL(a.href, location.href); } catch (e) { return null; }
+        if (u.origin !== location.origin || u.pathname.indexOf(base) !== 0 || u.pathname === location.pathname) return null;
+        var p = u.pathname.slice(base.length);
+        if (/^country\/[a-z]{2}\/$/.test(p)) return ["country", p];
+        if (/^history\/[^/]+\/$/.test(p)) return ["history", p];
+        if (/^culture\/(language|traditions)\/[^/]+\/$/.test(p)) return ["culture", p];
+        return null;
+      }
+      function load(kind) {
+        return cache[kind] || (cache[kind] = fetch(base + "previews/" + kind + ".json").then(function (r) { return r.json(); }).catch(function () { delete cache[kind]; return {}; }));
+      }
+      function card(kind, d) {
+        if (kind === "country") return '<p class="hc-eyebrow">' + esc(d.r) + ' · ' + (d.k ? "#" + d.k + " of " + d.of : "not ranked") + '</p>' +
+          '<div class="hc-head"><span class="hc-flag">' + d.f + '</span><b class="hc-title">' + esc(d.n) + '</b><span class="hc-score" style="--c:' + d.c + '">' + d.s + '<small>/100</small></span></div>' +
+          '<div class="hc-meter" style="--c:' + d.c + '"><i style="width:' + d.s + '%"></i></div>' +
+          '<p class="hc-chips"><span class="chip s-' + d.rec[1] + '">Recreational: ' + esc(d.rec[0]) + '</span><span class="chip s-' + d.med[1] + '">Medical: ' + esc(d.med[0]) + '</span></p>' +
+          '<p class="hc-text">' + esc(d.x) + '</p><p class="hc-foot">' + esc(d.t) + (d.h ? " · " + d.h + " history entries" : "") + '</p>';
+        if (kind === "history") return '<p class="hc-eyebrow">' + esc(d.k) + ' · ' + esc(d.d) + '</p>' +
+          '<p class="hc-place">' + esc(d.p) + '</p><b class="hc-title">' + esc(d.t) + '</b>' +
+          (d.b ? '<p class="hc-move"><b style="--c:' + d.b[1] + '">' + d.b[0] + '</b><span>→</span><b style="--c:' + d.a[1] + '">' + d.a[0] + '</b><small>index score</small></p>' : '') +
+          '<p class="hc-text">' + esc(d.x) + '</p><p class="hc-foot"><span class="conf-mark c-' + d.cf[2] + '">' + esc(d.cf[0]) + '</span> ' + esc(d.cf[1]) + (d.ar ? ' · <span class="he-article">Article</span>' : '') + '</p>';
+        return (d.i ? '<img class="hc-img" src="' + esc(d.i) + '" alt="" width="360" height="180">' : '') +
+          '<p class="hc-eyebrow">Culture · ' + esc(d.sec) + (d.o ? ' · ' + esc(d.o) : '') + '</p>' +
+          '<b class="hc-title">' + esc(d.t) + (d.sp ? ' <span class="hc-native">' + esc(d.sp) + '</span>' : '') + '</b>' +
+          '<p class="hc-text">' + esc(d.x) + '</p><p class="hc-foot hc-flags">' + d.fl + (d.n > 10 ? " +" + (d.n - 10) : "") + '</p>';
+      }
+      // Place the card under the line of the link that the pointer is on, starting where the pointer
+      // is, so that a link spanning a whole row (as in the lists of changes) does not throw the card
+      // to the row's far edge. A tall block link uses the pointer's height instead of its bottom.
+      // Keyboard focus has no pointer, so then the card goes under the start of the link.
+      var pt = null;
+      document.addEventListener("pointermove", function (e) { pt = { x: e.clientX, y: e.clientY }; }, { passive: true });
+      function place(a, byPointer) {
+        var rects = a.getClientRects(), r = null, i, w = tip.offsetWidth, h = tip.offsetHeight, m = 10;
+        if (byPointer && pt) for (i = 0; i < rects.length; i++) if (pt.y >= rects[i].top - 2 && pt.y <= rects[i].bottom + 2) r = rects[i];
+        r = r || rects[0] || a.getBoundingClientRect();
+        var top = r.top, bottom = r.bottom, x = r.left;
+        if (byPointer && pt) {
+          x = pt.x - 24;
+          if (r.height > 48) { top = pt.y - 14; bottom = pt.y + 18; }
+        }
+        x = Math.min(Math.max(m, x), window.innerWidth - w - m);
+        var below = bottom + 8 + h < window.innerHeight || top - 8 - h < 0;
+        tip.style.left = x + "px";
+        tip.style.top = (below ? bottom + 8 : top - 8 - h) + "px";
+      }
+      function show(a, byPointer) {
+        var k = kindOf(a); if (!k) return;
+        current = a;
+        load(k[0]).then(function (data) {
+          var d = data[k[1]]; if (!d || current !== a) return;
+          if (!tip) { tip = document.createElement("div"); tip.className = "hc"; tip.setAttribute("role", "tooltip"); }
+          (a.closest("dialog[open]") || document.body).appendChild(tip);
+          tip.className = "hc hc-" + k[0];
+          tip.innerHTML = card(k[0], d);
+          tip.hidden = false;
+          place(a, byPointer);
+          var img = tip.querySelector("img"); if (img) img.onload = function () { if (current === a) place(a, byPointer); };
+        });
+      }
+      function hide() { clearTimeout(timer); current = null; if (tip) tip.hidden = true; }
+      document.addEventListener("pointerover", function (e) {
+        if (e.pointerType === "touch") return;
+        var a = e.target.closest && e.target.closest("a[href]");
+        if (!a || a === current) return;
+        clearTimeout(timer); hide();
+        if (kindOf(a)) timer = setTimeout(function () { show(a, true); }, 220);
+      });
+      document.addEventListener("pointerout", function (e) {
+        var a = e.target.closest && e.target.closest("a[href]");
+        if (a && !a.contains(e.relatedTarget)) hide();
+      });
+      document.addEventListener("focusin", function (e) { var a = e.target.closest && e.target.closest("a[href]"); if (a && kindOf(a) && !a.matches(":hover")) { hide(); show(a, false); } });
+      document.addEventListener("focusout", hide);
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(); });
+      window.addEventListener("scroll", hide, { passive: true, capture: true });
+    })();
   </script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+---
+// Where a score sits on its segment's fixed scale: the level it reaches and the next one up, with
+// a link to the whole scale in the methodology on the home page. Shown at the foot of each opened
+// segment of a country's score breakdown.
+const { segment, score } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const reached = [...segment.levels].reverse().find(([n]) => n <= score) ?? segment.levels[0];
+const next = segment.levels.find(([n]) => n > score);
+---
+<div class="seg-scale">
+  <p class="ev-label">On the scale <a href={`${base}#method-${segment.id}`}>All levels of {segment.name.toLowerCase()} →</a></p>
+  <dl>
+    <div class="here"><dt>{reached[0]}</dt><dd>{reached[1]}</dd></div>
+    {next && <div><dt>{next[0]}</dt><dd>{next[1]}</dd></div>}
+  </dl>
+</div>

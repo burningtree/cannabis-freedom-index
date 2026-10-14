@@ -7,6 +7,7 @@ spelling:
   - { text: "marihuana", lang: Spanish }
   - { text: "marijuana", lang: English }
 countries: [mx, us]
+featured: 4
 history: [us-marihuana-tax-act-1937, mexico-salazar-marijuana-myth-1938, us-leary-1969, mexico-city-marijuana-regulations-1869, mexico-ban-1920, us-first-tax-act-convictions-1937, us-controlled-substances-act-1970]
 model: opus-5.5
 written: 2026-10-14

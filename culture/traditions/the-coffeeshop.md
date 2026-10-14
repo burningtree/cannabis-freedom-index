@@ -3,6 +3,7 @@ title: The coffeeshop
 summary: In the Netherlands, selling cannabis over a counter is illegal but not punished. Half a century of rules has grown up around that sentence.
 also: [back door, wiettop]
 countries: [nl]
+featured: 3
 history: [netherlands-baan-commission-1972, netherlands-toleration-1976, netherlands-dealers-not-prosecuted-1980, netherlands-five-grams-1996, netherlands-residents-only-2012, netherlands-supply-experiment-2023, netherlands-regulated-supply-only-2025]
 image:
   src: ../../src/assets/culture/coffeeshop-reefer.jpg

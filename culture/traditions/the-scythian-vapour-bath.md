@@ -3,6 +3,7 @@ title: The Scythian vapour bath
 summary: The oldest description of people using cannabis for pleasure, by Herodotus about 440 BCE. Archaeology has since found the tents and the braziers.
 also: [Herodotus, Pazyryk]
 countries: [ua, ru, cn]
+featured: 7
 history: [china-jirzankal-study-2019]
 image:
   src: ../../src/assets/culture/pazyryk-barrows.jpg

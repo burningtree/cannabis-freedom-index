@@ -39,7 +39,8 @@ export const cultureEntries = (await getCollection("culture"))
     }
     return { entry, section, slug, url: `culture/${section}/${slug}/`, ...d, countries, history, sources: d.sources.map(sourceTuple) };
   })
-  .sort((a, b) => a.title.localeCompare(b.title));
+  // featured entries first, by rank; then the rest alphabetically
+  .sort((a, b) => (a.featured ?? Infinity) - (b.featured ?? Infinity) || a.title.localeCompare(b.title));
 // and so must links from one entry to another
 for (const e of cultureEntries) for (const [, path] of (e.entry.body ?? "").matchAll(/\]\(\/(culture\/(?:language|traditions)\/[^/)#]+)\/?[^)]*\)/g)) {
   if (!cultureEntries.some((x) => x.url === path + "/")) throw new Error(`culture/${e.entry.id}.md: the text links to /${path}/, which does not exist`);

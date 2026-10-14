@@ -3,6 +3,7 @@ title: The Rastafari sacrament
 summary: For Rastafari, ganja is a holy herb smoked in shared reasoning. Several Caribbean countries have now written that into law.
 also: [ganja, chalice, reasoning]
 countries: [jm, ag, bb, kn, vc, et, it, ke]
+featured: 2
 history: [ethiopia-shashamane-settlement-1965, italy-rastafari-ruling-2008, jamaica-ganja-reform-2015, antigua-cannabis-act-2018, barbados-medical-2019, jamaica-ganja-arrives-1855, jamaica-ganja-law-1913, jamaica-mandatory-prison-1941, saint-kitts-freedom-of-conscience-2023, saint-vincent-religious-bill-dropped-2018, kenya-high-court-rastafari-petition-2026]
 model: opus-5.5
 written: 2026-10-14

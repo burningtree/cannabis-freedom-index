@@ -1,20 +1,23 @@
 ---
 // Entries of the cultural atlas as cards: the picture when there is one, the title, a line of
-// explanation and the countries it belongs to.
+// explanation and the countries it belongs to. With `lead`, the first card is drawn large: the
+// entries come most important first (see `featured` in docs/CULTURE.md).
 import { Image } from "astro:assets";
 import { cultureSection } from "../lib/culture.js";
 
-const { entries, label = false } = Astro.props; // label: say which section each card is from
+const { entries, label = false, lead = false, id } = Astro.props; // label: say which section each card is from
 const base = import.meta.env.BASE_URL;
 ---
-<ol class="cu-cards">
-  {entries.map((e) => (
-    <li>
+<ol class:list={["cu-cards", { "cu-lead": lead }]} {...(id && { id })}>
+  {entries.map((e, i) => (
+    <li class={lead && i === 0 ? "cu-first-card" : undefined} data-rank={i} data-name={e.title.toLowerCase()}>
       <a href={`${base}${e.url}`}>
         {e.image
-          ? <Image src={e.image.src} alt={e.image.alt} width={600} height={400} fit="cover" widths={[300, 600]} sizes="(max-width: 600px) 100vw, 300px" />
+          ? (lead && i === 0
+            ? <Image src={e.image.src} alt={e.image.alt} width={1200} height={760} fit="cover" widths={[600, 900, 1200]} sizes="(max-width: 900px) 100vw, 600px" loading="eager" />
+            : <Image src={e.image.src} alt={e.image.alt} width={600} height={400} fit="cover" widths={[300, 600]} sizes="(max-width: 600px) 100vw, 300px" />)
           : <span class="cu-word" aria-hidden="true">{e.title}</span>}
-        <p class="ev-label">{label ? cultureSection(e.section).name : (e.origin ?? e.countries[0].name)}</p>
+        <p class="ev-label">{lead && i === 0 && e.featured && <span class="cu-pick">Start here · </span>}{label ? cultureSection(e.section).name : (e.origin ?? e.countries[0].name)}</p>
         <h3>{e.title}{e.spelling && e.spelling[0].text.toLowerCase() !== e.title.toLowerCase() && <span class="cu-native"> {e.spelling[0].text}</span>}</h3>
         <p class="cu-sum">{e.summary}</p>
         <p class="cu-flags" title={e.countries.map((c) => c.name).join(", ")}>{e.countries.slice(0, 8).map((c) => c.flag).join(" ")}{e.countries.length > 8 && ` +${e.countries.length - 8}`}</p>

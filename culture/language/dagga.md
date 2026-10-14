@@ -7,6 +7,7 @@ spelling:
   - { text: "dagga", lang: Afrikaans, say: "[ˈdaχa]" }
   - { text: "insangu", lang: isiZulu }
 countries: [za, ls, bw]
+featured: 9
 history: [south-africa-dagga-party-2009, south-africa-natal-1870, cape-colony-dagga-poison-listing-1905, natal-dube-insangu-editorial-1907, transvaal-mine-dagga-survey-1908, south-africa-enforcement-compromise-1922, orange-river-colony-dagga-ordinance-1903, south-africa-habit-forming-drugs-bill-1916, south-africa-national-ban-1922, south-africa-league-request-1923, south-africa-dagga-committee-1952, south-africa-constitutional-court-2018, south-africa-private-purposes-act-2024]
 image:
   src: ../../src/assets/culture/cape-town-cannabis-march-2015-may-9.jpg

@@ -8,8 +8,9 @@ import { CULTURE_SECTIONS, cultureEntries, cultureIn } from "../../lib/culture.j
 
 const base = import.meta.env.BASE_URL;
 const countryCount = new Set(cultureEntries.flatMap((e) => e.countries)).size;
-// The hub shows four entries of each part, those with a picture first; the rest are a click away.
-const preview = (id) => [...cultureIn(id)].sort((a, b) => Boolean(b.image) - Boolean(a.image)).slice(0, 4);
+// The hub shows the five most important entries of each part (their `featured` rank), the first
+// as a large lead card; the rest are a click away.
+const preview = (id) => cultureIn(id).slice(0, 5);
 const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).length === 1 ? "entry" : "entries"}` : s.soon ? "In preparation" : "");
 ---
 <Base title="Culture" description="A cultural atlas of cannabis around the world: the words people have for it, the rituals and traditions it belongs to, and the people behind the laws.">
@@ -38,7 +39,7 @@ const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).l
           <h2>{s.name}</h2>
           <p class="sub">{s.intro}</p>
         </div></div>
-        <CultureCards entries={preview(s.id)} />
+        <CultureCards entries={preview(s.id)} lead />
         <p class="cu-all front-go"><a class="go" href={`${base}culture/${s.id}/`}>All {cultureIn(s.id).length} {s.id === "language" ? "words" : "traditions"} <span aria-hidden="true">→</span></a></p>
       </section>
     ))}

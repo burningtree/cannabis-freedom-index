@@ -10,6 +10,7 @@ import SourceCitation from "./SourceCitation.astro";
 import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
 import { answersFor } from "../lib/answers.js";
+import SegmentScale from "./SegmentScale.astro";
 import { Image } from "astro:assets";
 import { cultureOf, cultureSection } from "../lib/culture.js";
 
@@ -43,6 +44,9 @@ const travel = sub ? null : [
     : `A prescription or medical card from another country is generally not recognised. Travellers who need a cannabis-based medicine should ask ${c.name}'s embassy before travelling.`,
 ].filter(Boolean);
 const answers = answersFor(v.s);
+// The methodology lives on the home page: its section, or the description of one segment there.
+const method = (segId) => `${base}#${segId ? `method-${segId}` : "methodology"}`;
+
 // The right-hand side is split into tabs so that the history is one click away instead of at
 // the bottom of a long page: [id, label, count]. A single state has only its score breakdown.
 const tabs = [
@@ -174,8 +178,8 @@ const culture = sub ? [] : cultureOf(c);
     <div class="c-panel" id="panel-score" data-panel="score" role={tabs.length > 1 ? "tabpanel" : undefined} aria-labelledby={tabs.length > 1 ? "tab-score" : undefined}>
     <h2 class="d-h">Score breakdown <span>▏world average <button type="button" class="seg-toggle" data-seg-toggle aria-expanded="false">Open all</button></span></h2>
     {sub
-      ? <p class="d-hint">{group.intro} Select a segment to show or hide the rules.</p>
-      : <p class="d-hint">Select a segment to show or hide the exact rules and sources.</p>}
+      ? <p class="d-hint">{group.intro} Select a segment to show or hide the rules. <a href={method()}>How the scores are made →</a></p>
+      : <p class="d-hint">Select a segment to show or hide the exact rules and sources. <a href={method()}>How the scores are made →</a></p>}
     {sub && SEGMENTS.map((s, i) => (
       <details class="segrow" data-seg={s.id}>
         <summary>
@@ -189,7 +193,10 @@ const culture = sub ? [] : cultureOf(c);
           </div>
           <div class="pts">adds {segmentPoints(i, sub.s[i]).toFixed(1)} of {segmentMax(i).toFixed(0)} points</div>
         </summary>
-        {sub.seg && <div class="why"><p>{sub.seg[i]}</p></div>}
+        <div class="why">
+          {sub.seg && <p>{sub.seg[i]}</p>}
+          <SegmentScale segment={s} score={sub.s[i]} />
+        </div>
       </details>
     ))}
     {sub && (
@@ -221,6 +228,7 @@ const culture = sub ? [] : cultureOf(c);
               <ul class="srcs">
                 {seg.src.map((source) => <SourceCitation source={source} />)}
               </ul>
+              <SegmentScale segment={s} score={c.s[i]} />
             </div>
           )}
         </details>

@@ -7,6 +7,7 @@ spelling:
   - { text: "भांग", lang: Hindi, say: "bhāṅg" }
   - { text: "بنگ", lang: Persian, say: "bang" }
 countries: [in, ir]
+featured: 3
 history: [india-bhang-tax-1798, india-hemp-drugs-commission-1894, india-bhang-exemption-1961, india-ndps-act-1985, india-gujarat-bhang-2017, iran-penal-law-1926, india-assam-ganja-bhang-act-1958]
 image:
   src: ../../src/assets/culture/bhang-shop-in-jaisalmer-rajasthan-india-on-november-15-2008.jpg

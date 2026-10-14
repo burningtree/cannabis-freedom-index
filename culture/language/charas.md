@@ -7,6 +7,7 @@ spelling:
   - { text: "चरस", lang: Hindi, say: "caras" }
   - { text: "چرس", lang: Urdu, say: "charas" }
 countries: [in, np, pk, ir]
+featured: 7
 history: [india-bhang-tax-1798, india-central-provinces-charas-1925, iran-penal-law-1926, pakistan-prohibition-1979, india-ndps-act-1985, china-xinjiang-hashish-trade-ended-1934]
 image:
   src: ../../src/assets/culture/local-villagers-make-charas-in-tosh-village-parvati-valley-himachal-pr.jpg

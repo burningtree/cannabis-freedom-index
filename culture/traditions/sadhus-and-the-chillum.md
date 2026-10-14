@@ -3,6 +3,7 @@ title: Sadhus and the chillum
 summary: Hindu ascetics devoted to Shiva smoke cannabis as part of their worship. At Nepal's greatest Shiva temple the police arrest visitors who smoke, but not the holy men.
 also: [Maha Shivaratri, Pashupatinath]
 countries: [in, np]
+featured: 6
 history: [nepal-pashupati-distribution-ended-1995, nepal-shivaratri-arrests-2018, india-ndps-act-1985]
 image:
   src: ../../src/assets/culture/naga-sadhu-smoking-ganja-gangasagar-fair-transit-camp-kolkata-2013-01.jpg

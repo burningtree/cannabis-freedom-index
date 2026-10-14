@@ -9,6 +9,7 @@ spelling:
   - { text: "конопля", lang: Russian, say: "konoplyá" }
   - { text: "Hanf", lang: German }
 countries: [gr, it, de, gb, ru, cz, lt, lv, ro, al, am, tr]
+featured: 6
 history: [czechia-hemp-one-percent-2022]
 model: opus-5.5
 written: 2026-10-14

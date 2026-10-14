@@ -2,13 +2,14 @@
 title: Bhang at Holi
 summary: At the spring festival of colours, north India drinks cannabis in milk. India had the world treaty worded so that it could go on doing so.
 countries: [in]
+featured: 1
 history: [india-hemp-drugs-commission-1894, india-bhang-exemption-1961, india-ndps-act-1985, india-gujarat-bhang-2017, india-assam-ganja-bhang-act-1958]
 image:
-  src: ../../src/assets/culture/bhang-4381292529.jpg
-  alt: Balls of green bhang paste beside a bag of dried leaves
-  caption: Bhang paste rolled into balls, ready to be mixed into lassi.
-  credit: Reuben Strayer, CC BY-SA 2.0, via Wikimedia Commons
-  credit_url: https://commons.wikimedia.org/wiki/File:Bhang_(4381292529).jpg
+  src: ../../src/assets/culture/bhang-and-thandai.jpg
+  alt: A man pours thandai from a metal pot into a row of glasses while customers hold out banknotes
+  caption: Thandai poured at a stall during Holi, with customers crowding the counter. Bhang is added for those who ask.
+  credit: Kaushalspeed, CC BY-SA 4.0, via Wikimedia Commons
+  credit_url: https://commons.wikimedia.org/wiki/File:Bhang-and-Thandai.jpg
 model: opus-5.5
 written: 2026-10-14
 sources:
@@ -43,6 +44,8 @@ The custom is strongest in the north, where Holi itself is biggest. In Mathura, 
 | Halva | The paste cooked with ghee and sugar |
 
 ![A nineteenth-century Indian painting of men grinding bhang and drinking it](../../src/assets/culture/gouache-by-an-amritsar-artist-depicting-the-preparation-and-consumptio.jpg "The preparation and drinking of bhang, a nineteenth-century gouache by an Amritsar artist. | Unknown artist, public domain, via Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Gouache_by_an_Amritsar_artist_depicting_the_preparation_and_consumption_of_Indian_hemp_(bhang).jpg")
+
+![Balls of green bhang paste in a tray beside a bag of dried leaves](../../src/assets/culture/bhang-4381292529.jpg "Bhang paste rolled into balls, ready to be mixed into lassi. | Reuben Strayer, CC BY-SA 2.0, via Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Bhang_(4381292529).jpg")
 
 ## Not only Hindus, not only Holi
 

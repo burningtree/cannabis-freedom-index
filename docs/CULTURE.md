@@ -90,6 +90,25 @@ the law so often failed to tell the two apart.
 
 Not for Traditions: a single event, a company, a piece of legislation as such.
 
+## Which entries are featured
+
+Each part has a short ranked list of its most important entries, set with `featured: 1`, `2`, …
+in the front matter. They come first on the part's page in that order, and the first five are
+shown on the Culture page, the first of them as a large card. Everything else follows
+alphabetically.
+
+An entry deserves a place by importance to a reader who knows nothing yet, in roughly this order:
+
+1. **Reach.** Words and customs known across many countries (*ganja*, *hashish*, *marijuana*),
+   or practised by large numbers of people (bhang at Holi, the Rastafari sacrament).
+2. **Weight in law.** Entries that a law was written around or because of: an exemption, a
+   named statute, a court ruling (bhang and the 1961 treaty, the coffeeshop).
+3. **Explanatory power.** Entries that make other entries make sense (*cannabis*, the Scythian
+   vapour bath as the oldest account).
+
+Keep each list to about ten. Number 1 must have a picture. Change the ranks when a better entry
+is written; do not add ties.
+
 ## The shape of an entry
 
 ```markdown
@@ -108,6 +127,7 @@ image:                             # the lead picture, optional
   caption: One line under the picture.
   credit: Author, licence, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Example.jpg
+featured: 3                        # optional: rank among the part's most important entries
 model: opus-5.5
 written: 2026-10-14
 sources:
@@ -172,6 +192,7 @@ The site turns that into a figure with the caption and credit underneath. Rules:
 - Link to this site with an address that starts with a slash: `[the 1985 act](/history/india-ndps-act-1985/)`,
   `[ganja](/culture/language/ganja/)`, `[Jamaica](/country/jm/)`. Culture entries should link
   to one another wherever one explains a word the other uses.
+- Links to countries, history entries and culture entries get a hover preview on the site (data in `/previews/*.json`), so a reader can check what is behind a link without leaving the page. Link the precise history entry, not the history index.
 - A link is not a source. What the text states must still rest on the `sources` list.
 - Only link a page that was opened and exists.
 

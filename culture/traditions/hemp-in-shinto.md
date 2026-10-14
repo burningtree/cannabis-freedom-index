@@ -3,6 +3,7 @@ title: Hemp in Shinto
 summary: In Japan hemp fibre stands for purity. Priests purify with it, while the plant itself is under one of the strictest laws in the world.
 also: [taima, ōnusa, shimenawa]
 countries: [jp]
+featured: 10
 history: [japan-hemp-farms-1950, japan-cannabis-control-act-1948, japan-use-criminalised-2024]
 image:
   src: ../../src/assets/culture/shinto-oonusa-whole-hemp.jpg

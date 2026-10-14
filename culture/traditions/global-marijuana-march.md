@@ -3,6 +3,7 @@ title: The Global Marijuana March
 summary: On the first Saturday of May, people in hundreds of cities march for legal cannabis. Brazil's supreme court had to rule that doing so is free speech.
 also: [Million Marijuana March, Marcha da Maconha, Hanfwandertag]
 countries: [us, ca, br, at, fr, dk, nz, jp]
+featured: 5
 history: [global-marijuana-march-1999, brazil-planet-hemp-arrest-1997, germany-hanfparade-1997]
 image:
   src: ../../src/assets/culture/calgary-alberta-canada-may-5-2007-global-marijuana-march.jpg

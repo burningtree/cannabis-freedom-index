@@ -369,6 +369,16 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
       <p class="table-updated">Last updated: <time datetime={lastUpdated}>{formatDate(lastUpdated)}</time></p>
     </section>
 
+    {!view && (
+      <script is:inline>
+        // Arriving from a country's score breakdown at #method-<segment> (or #methodology): the map
+        // and charts above change the page's height as they load, so scroll again once they have.
+        if (/^#method/.test(location.hash)) window.addEventListener("load", function () {
+          var t = document.getElementById(location.hash.slice(1));
+          if (t) requestAnimationFrame(function () { t.scrollIntoView({ block: "start" }); });
+        });
+      </script>
+    )}
     {!view && <section class="section" id="methodology">
       <div class="section-head">
         <div>
@@ -387,7 +397,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
       </div>
       <div class="seg-grid">
         {SEGMENTS.map((s) => (
-          <div class="seg">
+          <div class="seg" id={`method-${s.id}`}>
             <div class="seg-top"><h3>{s.name}</h3><span class="seg-w">{s.weight}%</span></div>
             <p>{s.desc}</p>
             <ul class="anchors">{s.levels.map(([n, t]) => <li><b>{n}</b>{t}</li>)}</ul>
