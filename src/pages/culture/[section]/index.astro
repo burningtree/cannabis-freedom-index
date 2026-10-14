@@ -1,0 +1,47 @@
+---
+// One part of the cultural atlas that is made of entries: /culture/language/, /culture/traditions/.
+import Base from "../../../layouts/Base.astro";
+import CultureCards from "../../../components/CultureCards.astro";
+import { CULTURE_SECTIONS, cultureIn } from "../../../lib/culture.js";
+
+export function getStaticPaths() {
+  return CULTURE_SECTIONS.filter((s) => s.entries).map((s) => ({ params: { section: s.id }, props: { s } }));
+}
+const { s } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const entries = cultureIn(s.id);
+// the same entries by country, most entries first: the way in for someone who starts from a place
+const byCountry = [...new Set(entries.flatMap((e) => e.countries))]
+  .map((c) => ({ c, entries: entries.filter((e) => e.countries.includes(c)) }))
+  .sort((a, b) => b.entries.length - a.entries.length || a.c.name.localeCompare(b.c.name));
+---
+<Base title={`${s.name} · Culture`} description={s.lede}>
+  <main class="changes-page culture">
+    <div class="page-bar"><a class="back" href={`${base}culture/`}>← Culture</a></div>
+    <section class="hero hero-sm">
+      <p class="eyebrow">Culture <span>{entries.length} entries</span></p>
+      <h1>{s.name}</h1>
+      <p class="lede">{s.lede}</p>
+      <p class="lede">{s.intro}</p>
+    </section>
+
+    <section class="section cu-first">
+      <CultureCards entries={entries} />
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>By country</h2>
+        <p class="sub">Where each {s.one} is {s.id === "language" ? "said" : "kept"}. A country's name opens its page in the index.</p>
+      </div></div>
+      <ul class="cu-by">
+        {byCountry.map(({ c, entries }) => (
+          <li>
+            <a class="cu-place" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}</a>
+            <span>{entries.map((e, i) => <>{i > 0 && ", "}<a href={`${base}${e.url}`}>{e.title}</a></>)}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Base>

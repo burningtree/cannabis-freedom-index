@@ -4,6 +4,7 @@
 //   n: what is shown and matched   s: the smaller second line, matched too   u: address under the site root
 import { places, countries, subunitsOf, changes, articles, historyPeriods, CHANGE_CATEGORIES } from "../lib/countries.js";
 import { MAP_VIEWS } from "../lib/map-views.js";
+import { CULTURE_SECTIONS, cultureEntries, cultureSection } from "../lib/culture.js";
 import { tierOf } from "../lib/tiers.js";
 import { file } from "../lib/exports.js";
 
@@ -15,8 +16,11 @@ const rows = [
     ["Map", "World map of scores", "#map"], ["Rankings", "Every country by score", "#rankings"], ["Methodology", "How the scores are made", "#methodology"],
     ["History", "Laws, rulings and treaties", "history/"], ["Can I?", "Plain answers per country", "can-i/"], ["Compare", "Countries side by side", "compare/"],
     ["Download the data", "Scores, history and yearly panel", "data/"], ["Changelog", "Every score change", "changelog/"],
-    ["Articles", "The longer reads on single events", "articles/"], ["About", "What the project is, its aims and commitments", "about/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "The people behind the laws", "culture/"], ["Sources", "Every source the index cites", "sources/"],
+    ["Articles", "The longer reads on single events", "articles/"], ["About", "What the project is, its aims and commitments", "about/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "A cultural atlas of cannabis", "culture/"], ["Culture: History", "Attitudes, propaganda and counterculture in the record of laws", "culture/history/"], ["Culture: Stories", "The people behind the laws", "culture/stories/"], ["Sources", "Every source the index cites", "sources/"],
   ].map(([n, s, u]) => ({ t: "p", n, s, u })),
+  // the cultural atlas: its parts that hold entries, then every word and tradition, findable by its other names too
+  ...CULTURE_SECTIONS.filter((x) => x.entries).map((x) => ({ t: "p", n: `Culture: ${x.name}`, s: x.lede, u: `culture/${x.id}/` })),
+  ...cultureEntries.map((e) => ({ t: "p", n: e.title, s: [`Culture · ${cultureSection(e.section).name}`, ...(e.spelling ?? []).map((w) => w.text), ...(e.also ?? [])].join(" · "), u: e.url, f: e.countries[0].flag })),
   // every map view, history kind and history period has its own page
   ...MAP_VIEWS.filter((v) => v.slug).map((v) => ({ t: "p", n: v.title, s: "Map", u: `map/${v.slug}/` })),
   ...Object.entries(CHANGE_CATEGORIES).map(([kind, k]) => ({ t: "p", n: `History: ${k.label}`, s: k.help, u: `history/kind/${kind}/`, f: k.emoji })),

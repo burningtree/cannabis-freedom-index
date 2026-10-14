@@ -1,0 +1,51 @@
+---
+// Stories: the announcement page for the participatory research that is to sit beside the index,
+// one part of Culture. Nothing is collected here yet: the page says what the project asks and
+// how the material will be gathered.
+import Base from "../../layouts/Base.astro";
+
+const base = import.meta.env.BASE_URL;
+// What the project wants to understand, in the owner's own terms.
+const themes = [
+  ["Attitudes", "What people in a country actually think of cannabis and of those who use it, and how far that is from what the law says."],
+  ["Stigma", "Who is judged for using it, by whom, and what it costs them at work, in the family and in public."],
+  ["Traditions", "Where cannabis belongs to religion, medicine, farming or celebration, and what happened to those customs under prohibition."],
+  ["Obedience and authority", "Why people follow a law they do not believe in, and who they think has the right to decide."],
+  ["Resistance", "How people get around a ban, organise against it or simply ignore it, and what they risk."],
+  ["Generations", "What changed between grandparents, parents and children, and what did not."],
+];
+---
+<Base title="Stories · Culture" description="Stories is a participatory anthropology project beside the Cannabis Freedom Index: how cannabis shapes, and is shaped by, society, through anonymous surveys, personal stories and community research.">
+  <main class="changes-page culture">
+    <div class="page-bar"><a class="back" href={`${base}culture/`}>← Culture</a></div>
+    <section class="hero hero-sm">
+      <p class="eyebrow">Culture <span>Stories</span> <span>in preparation</span></p>
+      <h1>The people behind the laws</h1>
+      <p class="lede">Stories is a participatory anthropology project exploring how cannabis shapes, and is shaped by, society. Through anonymous surveys, personal stories and community research, it examines cultural attitudes, stigma, traditions, obedience, authority and resistance across different countries and generations.</p>
+      <p class="lede">While the Freedom Index maps laws, this part of <a href={`${base}culture/`}>Culture</a> explores the people, beliefs and social forces behind them.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>What it asks</h2>
+        <p class="sub">A score says what a person is allowed to do. It does not say what their neighbours think, what their grandmother grew, or why a law nobody respects is still obeyed.</p>
+      </div></div>
+      <dl class="culture-themes">
+        {themes.map(([name, text]) => <div><dt>{name}</dt><dd>{text}</dd></div>)}
+      </dl>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div>
+        <h2>How it will work</h2>
+        <p class="sub">Three kinds of material, gathered from the people who live with these laws. None of it is open yet; this page will say when it is.</p>
+      </div></div>
+      <dl class="culture-themes three">
+        <div><dt>Anonymous surveys</dt><dd>Short sets of questions, the same in every country, so that answers can be compared with each other and with the index. The first, <a href={`${base}survey/`}>State of Cannabis</a>, can already be previewed.</dd></div>
+        <div><dt>Personal stories</dt><dd>Accounts in a person's own words: an arrest, a family argument, a harvest, a ritual.</dd></div>
+        <div><dt>Community research</dt><dd>Local knowledge that no statute records, collected and checked by people who know the place.</dd></div>
+      </dl>
+    </section>
+
+  </main>
+</Base>

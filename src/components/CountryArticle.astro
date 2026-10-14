@@ -10,6 +10,8 @@ import SourceCitation from "./SourceCitation.astro";
 import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
 import { answersFor } from "../lib/answers.js";
+import { Image } from "astro:assets";
+import { cultureOf, cultureSection } from "../lib/culture.js";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
 const { c, sub } = Astro.props;
@@ -41,6 +43,16 @@ const travel = sub ? null : [
     : `A prescription or medical card from another country is generally not recognised. Travellers who need a cannabis-based medicine should ask ${c.name}'s embassy before travelling.`,
 ].filter(Boolean);
 const answers = answersFor(v.s);
+// The right-hand side is split into tabs so that the history is one click away instead of at
+// the bottom of a long page: [id, label, count]. A single state has only its score breakdown.
+const tabs = [
+  ["score", "Score breakdown"],
+  d && ["context", "More context"],
+  history.length > 0 && ["history", "History", history.length],
+  d && ["sources", "Sources", d.sources.length],
+].filter(Boolean);
+// words and traditions of the cultural atlas that belong to this country
+const culture = sub ? [] : cultureOf(c);
 ---
 <article class="country" data-id={c.id}>
   {/* The masthead: name, verdict and the one big number; then the five plain answers. */}
@@ -134,9 +146,32 @@ const answers = answersFor(v.s);
     )}
     {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
     {scored.length > 0 && <CountryChart history={scored} context={history.filter((ch) => !ch.score)} />}
+    {culture.length > 0 && (
+      <section class="c-culture">
+        <h2>Culture <a href={`${base}culture/`}>The atlas →</a></h2>
+        <ul>
+          {culture.map((e) => (
+            <li>
+              <a href={`${base}${e.url}`} title={e.summary}>
+                {e.image ? <Image src={e.image.src} alt="" width={104} height={104} fit="cover" /> : <span class="c-culture-none" aria-hidden="true">{e.title.slice(0, 1)}</span>}
+                <span><small>{cultureSection(e.section).name}</small><b>{e.title}{e.spelling && e.spelling[0].text.toLowerCase() !== e.title.toLowerCase() && <i> {e.spelling[0].text}</i>}</b></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
   </div>
 
   <div class="c-main">
+    {tabs.length > 1 && (
+      <nav class="c-tabs" role="tablist" aria-label={`${c.name}: parts of the profile`}>
+        {tabs.map(([id, label, count], i) => (
+          <button type="button" role="tab" id={`tab-${id}`} data-tab={id} aria-controls={`panel-${id}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>{label}{count != null && <small> {count}</small>}</button>
+        ))}
+      </nav>
+    )}
+    <div class="c-panel" id="panel-score" data-panel="score" role={tabs.length > 1 ? "tabpanel" : undefined} aria-labelledby={tabs.length > 1 ? "tab-score" : undefined}>
     <h2 class="d-h">Score breakdown <span>▏world average <button type="button" class="seg-toggle" data-seg-toggle aria-expanded="false">Open all</button></span></h2>
     {sub
       ? <p class="d-hint">{group.intro} Select a segment to show or hide the rules.</p>
@@ -215,8 +250,10 @@ const answers = answersFor(v.s);
       </section>
     )}
 
+    </div>
+
     {d && (
-      <>
+      <div class="c-panel" id="panel-context" data-panel="context" role="tabpanel" aria-labelledby="tab-context" hidden>
         <h2 class="d-h">More context <span>not part of the score</span></h2>
         {d.context.filter(Boolean).map((x) => (
           <div class="segrow" data-seg={`ctx-${x.key}`} id={`seg-ctx-${x.key}`}>
@@ -250,16 +287,24 @@ const answers = answersFor(v.s);
             </ul>
           </div>
         )}
-
+      </div>
+    )}
+    {history.length > 0 && (
+      <div class="c-panel" id="panel-history" data-panel="history" role="tabpanel" aria-labelledby="tab-history" hidden>
+        <CountryChanges history={history} />
+      </div>
+    )}
+    {d && (
+      <div class="c-panel" id="panel-sources" data-panel="sources" role="tabpanel" aria-labelledby="tab-sources" hidden>
         <section class="c-sources">
-          <h2 class="d-h">All sources</h2>
+          <h2 class="d-h">All sources <span>{d.sources.length} cited in this profile</span></h2>
           <ol>
             {d.sources.map((source) => <SourceCitation source={source} />)}
           </ol>
         </section>
-      </>
+      </div>
     )}
-    {history.length > 0 && <CountryChanges history={history} />}
+    {tabs.length > 1 && <noscript><style>{`.c-panel[hidden]{display:block}.c-tabs{display:none}`}</style></noscript>}
     {updated && <p class="c-updated">Last updated: <time datetime={updated}>{updatedText}</time>{d && ` · ${d.sources.length} sources`}{scored.length > 0 && ` · history: ${history.filter((ch) => ch.confidence.key === "checked").length} of ${history.length} entries checked`}</p>}
   </div>
 </article>

@@ -5,6 +5,7 @@
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, MED_LABEL, countries, places, changes, articles, subunitsOf, worldAvg, changeDate, historyPeriods, CHANGE_CATEGORIES } from "../../lib/countries.js";
 import { tierOf, tierIndex } from "../../lib/tiers.js";
 import { MAP_VIEWS } from "../../lib/map-views.js";
+import { CULTURE_SECTIONS, cultureEntries, cultureIn, cultureSection } from "../../lib/culture.js";
 import { survey, results } from "../../lib/survey.js";
 import { getFacts } from "../../lib/facts.js";
 import { renderOg, flagOf, TIER_HEX } from "../../og/render.js";
@@ -53,7 +54,9 @@ const cards = {
   data: page("Download the data", "Scores, history and a yearly panel since 1900 as CSV and JSON, free to reuse with attribution."),
   "did-you-know": page("Did you know?", "Strange rules, forgotten laws and what the scores show.", [[String(getFacts().length), "CURIOUS CASES"]]),
   articles: page("Articles", "Moments from the history of cannabis law told in full.", [[num(articles.size), "ARTICLES"]]),
-  culture: page("The people behind the laws", "A participatory anthropology project on how cannabis shapes, and is shaped by, society."),
+  culture: page("A cultural atlas of cannabis", "The words people have for the plant, the rituals and traditions it belongs to, and the people behind the laws.", [[String(cultureEntries.length), "ENTRIES"]]),
+  "culture/history": page("Culture in the history", "Social attitudes, propaganda and counterculture: where the record of laws shows what people thought.", [], `CULTURE · ${BRAND}`),
+  "culture/stories": page("The people behind the laws", "A participatory anthropology project on how cannabis shapes, and is shaped by, society.", [], `CULTURE · ${BRAND}`),
   sources: page("What the index is built on", "Every source the index cites, counted by website and by country."),
   survey: page("State of Cannabis", "A yearly survey of what people do with cannabis, what they believe about it, and what they see in the countries they know.", surveyFacts, `SURVEY · ${survey.edition} EDITION`),
   "survey/take": page("Take the survey", "State of Cannabis: about ten minutes, no account, answers encrypted.", [], `STATE OF CANNABIS · ${survey.edition}`),
@@ -61,6 +64,8 @@ const cards = {
   research: page("Research progress", "How much of each country's profile and history has been researched.", [], `INTERNAL · ${BRAND}`),
   "survey/scan": page("Submission scanner", "What the survey's public relays hold, as anyone can see it.", [], `STATE OF CANNABIS · ${survey.edition}`),
 };
+for (const sec of CULTURE_SECTIONS.filter((x) => x.entries)) cards[`culture/${sec.id}`] = page(sec.name, sec.lede, [[String(cultureIn(sec.id).length), "ENTRIES"]], `CULTURE · ${BRAND}`);
+for (const e of cultureEntries) cards[e.url.slice(0, -1)] = page(e.title, e.summary, [], `CULTURE · ${cultureSection(e.section).name.toUpperCase()}`);
 for (const v of MAP_VIEWS) cards[v.slug ? `map/${v.slug}` : "map"] = page(v.title, v.lede, [], `MAP · ${BRAND}`);
 for (const [kind, k] of Object.entries(CHANGE_CATEGORIES)) cards[`history/kind/${kind}`] = page(k.label, `${k.help}. Every such entry in the history of cannabis law.`, [[num(dated.filter((ch) => ch.category === kind).length), "ENTRIES"]], "HISTORY OF CANNABIS LAW");
 for (const p of historyPeriods.slice(1)) cards[`history/period/${p.slug}`] = page(`History, ${p.label}`, `Cannabis laws, court rulings and treaties from ${p.from} to ${p.to}.`, [], "HISTORY OF CANNABIS LAW");

@@ -1,0 +1,46 @@
+---
+// Culture: the way in to what the site knows about cannabis in culture. The index maps laws;
+// this is about the words, customs and people behind them. Five parts, of which Language and
+// Traditions are made of entries (/culture/<section>/*.md, see src/lib/culture.js).
+import Base from "../../layouts/Base.astro";
+import CultureCards from "../../components/CultureCards.astro";
+import { CULTURE_SECTIONS, cultureEntries, cultureIn } from "../../lib/culture.js";
+
+const base = import.meta.env.BASE_URL;
+const countryCount = new Set(cultureEntries.flatMap((e) => e.countries)).size;
+// The hub shows four entries of each part, those with a picture first; the rest are a click away.
+const preview = (id) => [...cultureIn(id)].sort((a, b) => Boolean(b.image) - Boolean(a.image)).slice(0, 4);
+const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).length === 1 ? "entry" : "entries"}` : s.soon ? "In preparation" : "");
+---
+<Base title="Culture" description="A cultural atlas of cannabis around the world: the words people have for it, the rituals and traditions it belongs to, and the people behind the laws.">
+  <main class="changes-page culture">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Culture <span>{cultureEntries.length} entries · {countryCount} countries</span></p>
+      <h1>A cultural atlas of cannabis</h1>
+      <p class="lede">The Freedom Index maps laws. Culture is about what the laws were written over: the words people have for the plant, the festivals and faiths it belongs to, and the people who kept using it. Every entry says where it is from and links to the countries concerned.</p>
+    </section>
+
+    <section class="section cu-first">
+      <ol class="culture-threads cu-sections">
+        {CULTURE_SECTIONS.map((s) => (
+          <li>
+            {s.soon
+              ? <div class="cu-row"><time>{count(s)}</time><span>{s.name}</span><p>{s.lede}</p></div>
+              : <a href={`${base}culture/${s.id}/`}><time>{count(s)}</time><span>{s.name}</span><p>{s.lede}</p></a>}
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    {CULTURE_SECTIONS.filter((s) => s.entries).map((s) => (
+      <section class="section">
+        <div class="section-head"><div>
+          <h2>{s.name}</h2>
+          <p class="sub">{s.intro}</p>
+        </div></div>
+        <CultureCards entries={preview(s.id)} />
+        <p class="cu-all front-go"><a class="go" href={`${base}culture/${s.id}/`}>All {cultureIn(s.id).length} {s.id === "language" ? "words" : "traditions"} <span aria-hidden="true">→</span></a></p>
+      </section>
+    ))}
+  </main>
+</Base>

@@ -80,6 +80,7 @@ const schemas = jsonld ? [jsonld].flat() : [];
       <a href={`${base}#rankings`}>Rankings</a>
       <a href={`${base}#methodology`}>Methodology</a>
       <a href={`${base}history/`}>History</a>
+      <a href={`${base}culture/`}>Culture</a>
       <a href={`${base}survey/`}>Survey</a>
     </nav>
     <a class="icon-btn" href={repo} target="_blank" rel="noopener noreferrer" aria-label="Source code on GitHub" title="Source code on GitHub">
@@ -205,12 +206,44 @@ const schemas = jsonld ? [jsonld].flat() : [];
     function showSegment(article, id) {
       var row = article && article.querySelector('.segrow[data-seg="' + id + '"]');
       if (!row) return;
+      var panel = row.closest(".c-panel");
+      if (panel) showTab(article, panel.dataset.panel);
       row.open = true;
       row.classList.remove("flash");
       void row.offsetWidth; // restart the animation when the same answer is chosen twice
       row.classList.add("flash");
       row.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     }
+    // The tabs of a country article: score breakdown, more context, history, sources. One panel
+    // shows at a time. On the country's own page the tab is kept in the address (#history), so it
+    // can be linked and survives a reload; in the drawer the address belongs to the drawer.
+    function showTab(article, id, focus) {
+      var tab = article && article.querySelector('.c-tabs [data-tab="' + id + '"]');
+      if (!tab) return false;
+      article.querySelectorAll(".c-tabs [data-tab]").forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
+      });
+      article.querySelectorAll(".c-panel").forEach(function (p) { p.hidden = p.dataset.panel !== id; });
+      if (focus) tab.focus();
+      return true;
+    }
+    document.addEventListener("click", function (e) {
+      var tab = e.target.closest(".c-tabs [data-tab]");
+      if (!tab) return;
+      var article = tab.closest("article.country");
+      showTab(article, tab.dataset.tab);
+      if (!article.closest("dialog")) history.replaceState(null, "", tab.dataset.tab === "score" ? location.pathname + location.search : "#" + tab.dataset.tab);
+      // a tab chosen from far down a long panel: bring the top of the new one into view
+      var main = article.querySelector(".c-main");
+      if (main.getBoundingClientRect().top < 0) main.scrollIntoView({ block: "start" });
+    });
+    document.addEventListener("keydown", function (e) {
+      var tab = e.target.closest && e.target.closest(".c-tabs [data-tab]");
+      if (!tab || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
+      var all = Array.prototype.slice.call(tab.parentElement.children), next = all[(all.indexOf(tab) + (e.key === "ArrowRight" ? 1 : all.length - 1)) % all.length];
+      e.preventDefault(); showTab(tab.closest("article.country"), next.dataset.tab, true);
+    });
     document.addEventListener("click", function (e) {
       var link = e.target.closest("a[data-seg-link]");
       if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
@@ -295,6 +328,8 @@ const schemas = jsonld ? [jsonld].flat() : [];
     document.addEventListener("pointerleave", hideSeek);
 
     // A link straight to a segment, e.g. /country/de/#seg-possession
+    // or to a tab: /country/de/#history
+    if (/^#(context|history|sources)$/.test(location.hash) && showTab(document.querySelector("article.country"), location.hash.slice(1))) document.querySelector("article.country .c-main").scrollIntoView({ block: "start" });
     if (/^#seg-[a-z_-]+$/.test(location.hash)) showSegment(document.querySelector("article.country"), location.hash.slice(5));
   </script>
 </body>

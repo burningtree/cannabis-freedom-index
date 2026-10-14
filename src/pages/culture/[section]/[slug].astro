@@ -1,0 +1,89 @@
+---
+// One entry of the cultural atlas: a word or a custom, explained, with its picture; beside it the
+// countries where it is said or kept, each with its score today, and the history entries it touches.
+import Base from "../../../layouts/Base.astro";
+import { render } from "astro:content";
+import { Picture } from "astro:assets";
+import SourceCitation from "../../../components/SourceCitation.astro";
+import { cultureEntries, cultureIn, cultureSection } from "../../../lib/culture.js";
+import { changeDate, formatDate } from "../../../lib/countries.js";
+import { tierColor } from "../../../lib/tiers.js";
+
+export function getStaticPaths() {
+  return cultureEntries.map((e) => ({ params: { section: e.section, slug: e.slug }, props: { e } }));
+}
+const { e } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const s = cultureSection(e.section);
+const { Content } = await render(e.entry);
+const siblings = cultureIn(e.section);
+const at = siblings.indexOf(e);
+const prev = siblings[at - 1], next = siblings[at + 1];
+const written = e.written?.toISOString().slice(0, 10);
+---
+<Base type="article" title={`${e.title} · ${s.name}`} description={e.summary}>
+  <main class="change-page ev culture-entry">
+    <div class="page-bar"><a class="back" href={`${base}culture/${s.id}/`}>← {s.name}</a></div>
+
+    <header class="ev-top ev-plain">
+      <div>
+        <p class="eyebrow"><a href={`${base}culture/`}>Culture</a> <span><a href={`${base}culture/${s.id}/`}>{s.name}</a></span>{e.origin && <span>{e.origin}</span>}</p>
+        <h1>{e.title}</h1>
+        <p class="lede">{e.summary}</p>
+        {e.spelling && (
+          <dl class="cu-spell">
+            {e.spelling.map((w) => <div><dt>{w.lang}</dt><dd><span>{w.text}</span>{w.say && <small>{w.say}</small>}</dd></div>)}
+          </dl>
+        )}
+        {e.also && <p class="cu-also"><span class="ev-label">Also</span> {e.also.join(" · ")}</p>}
+      </div>
+    </header>
+
+    <div class="ev-body">
+      <article class="ev-main">
+        <section class="ev-article">
+          <p class="ev-label">{s.id === "language" ? "The word" : "The tradition"}{e.model && <span class="ev-by"> · written by {e.model}{written && <>, <time datetime={written}>{formatDate(written)}</time></>}</span>}</p>
+          {e.image && (
+            <figure>
+              <Picture src={e.image.src} alt={e.image.alt} formats={["webp"]} widths={[480, 800, 1280]} sizes="(max-width: 900px) 100vw, 760px" />
+              <figcaption>{e.image.caption} <span>{e.image.credit_url ? <a href={e.image.credit_url} target="_blank" rel="noopener noreferrer">{e.image.credit}</a> : e.image.credit}</span></figcaption>
+            </figure>
+          )}
+          <div class="prose"><Content /></div>
+        </section>
+        <section>
+          <h2 class="d-h">{e.sources.length > 1 ? "Sources" : "Source"}</h2>
+          <ul class="srcs change-srcs">
+            {e.sources.map((source) => <SourceCitation source={source} archive />)}
+          </ul>
+        </section>
+      </article>
+
+      <aside class="ev-rail" aria-label="Countries and history">
+        <section class="ev-more">
+          <h2 class="ev-label">{s.id === "language" ? "Where it is said" : "Where it is kept"}</h2>
+          <ul class="cu-places">
+            {e.countries.map((c) => (
+              <li><a href={`${base}country/${c.slug}/`}><span><span class="flag">{c.flag}</span>{c.name}</span><b style={`--c:${tierColor(c.raw)}`} title="Index score today">{c.score}</b></a></li>
+            ))}
+          </ul>
+        </section>
+        {e.history.length > 0 && (
+          <section class="ev-more">
+            <h2 class="ev-label">In the history</h2>
+            <ol>
+              {e.history.map((ch) => (
+                <li><a href={`${base}history/${ch.id}/`}><time datetime={ch.date}>{changeDate(ch)} · {ch.place.flag} {ch.place.name}</time><b>{ch.title}</b></a></li>
+              ))}
+            </ol>
+          </section>
+        )}
+      </aside>
+    </div>
+
+    <nav class="pager" aria-label="Other entries">
+      {prev ? <a href={`${base}${prev.url}`}><small>Previous</small><span>{prev.title}</span></a> : <span></span>}
+      {next ? <a class="next" href={`${base}${next.url}`}><small>Next</small><span>{next.title}</span></a> : <span></span>}
+    </nav>
+  </main>
+</Base>

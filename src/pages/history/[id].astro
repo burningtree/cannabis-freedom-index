@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { render } from "astro:content";
+import { Picture } from "astro:assets";
 import { changes, articles, countries, changeDate, formatDate, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP } from "../../lib/countries.js";
 import { tierOf, tierColor } from "../../lib/tiers.js";
 import { sourceTuple } from "../../lib/sources.js";
@@ -60,7 +61,7 @@ const nearby = c ? own.slice(Math.max(0, at - 3), at + 4) : own.slice(Math.max(0
           <p class="ev-label">The story{article.data.model && <span class="ev-by"> · written by {article.data.model}{article.data.written && <>, <time datetime={article.data.written.toISOString().slice(0, 10)}>{formatDate(article.data.written.toISOString().slice(0, 10))}</time></>}</span>}</p>
           {article.data.image && (
             <figure>
-              <img src={article.data.image.src} alt={article.data.image.alt} loading="lazy" />
+              <Picture src={article.data.image.src} alt={article.data.image.alt} formats={["webp"]} widths={[480, 800, 1280]} sizes="(max-width: 900px) 100vw, 760px" />
               <figcaption>{article.data.image.caption} <span>{article.data.image.credit_url ? <a href={article.data.image.credit_url} target="_blank" rel="noopener noreferrer">{article.data.image.credit}</a> : article.data.image.credit}</span></figcaption>
             </figure>
           )}

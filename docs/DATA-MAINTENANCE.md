@@ -566,6 +566,12 @@ After each pass, say: how many entries were added or corrected, which profiles a
 changed and why, which score timelines were re-based, which claims rest on sources that were read versus only summarised, and what
 could not be confirmed. Nothing is committed or deployed unless the user asks.
 
+## Culture entries
+
+The cultural atlas (`/culture/`, files in `culture/language/` and `culture/traditions/`) has its own
+guide: `docs/CULTURE.md`. It says what belongs in each part, what an entry focuses on and how long
+it is.
+
 ## Long reads for history entries
 
 An important history entry can have a full article. The entry in `changes.yaml` stays as it is

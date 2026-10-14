@@ -192,14 +192,18 @@ const prices = defineCollection({
     .strict(),
 });
 
+// A picture with who made it and under which licence: the lead image of an article or culture entry.
+// `src` is a file in src/assets, given relative to the Markdown file, so that Astro can optimise it.
+const picture = (image: () => z.ZodTypeAny) => z.object({ src: image(), alt: z.string().min(1), caption: z.string().optional(), credit: z.string().min(1), credit_url: z.string().url().optional() }).strict();
+
 // articles/<change id>.md: an optional long read for a history entry. The entry in changes.yaml
 // keeps its title and short description; the article adds the full story in Markdown, an
 // optional lead image with its credit, further sources, and who wrote it and when.
 const articles = defineCollection({
   loader: glob({ base: "./articles", pattern: "*.md" }),
-  schema: z
+  schema: ({ image }) => z
     .object({
-      image: z.object({ src: z.string().min(1), alt: z.string().min(1), caption: z.string().optional(), credit: z.string().min(1), credit_url: z.string().url().optional() }).strict().optional(),
+      image: picture(image).optional(),
       model: z.string().min(1).optional(), // which model wrote it, with its effort where known: "opus-5.5", "gpt-5.6-sol-medium"
       written: z.coerce.date().optional(), // the day it was written
       sources: z.array(source).default([]),
@@ -207,4 +211,28 @@ const articles = defineCollection({
     .strict(),
 });
 
-export const collections = { countries, units, segments, changes, prices, articles };
+// culture/<section>/<slug>.md: one entry of the cultural atlas, a word for cannabis (language) or
+// a custom around it (traditions). The Markdown is the explanation; the front matter says where
+// it is said or practised and which history entries it touches, so that the pages can link both ways.
+const culture = defineCollection({
+  loader: glob({ base: "./culture", pattern: "*/*.md" }),
+  schema: ({ image }) => z
+    .object({
+      title: z.string().min(1),
+      summary: z.string().min(1), // one or two sentences, shown on cards and under the title
+      origin: z.string().min(1).optional(), // language: where the word comes from, in a few words
+      also: z.array(z.string().min(1)).optional(), // other spellings and related words
+      // how the word is written where it is used: the spelling in its own script, the language, and
+      // optionally how it is said (IPA or a romanisation)
+      spelling: z.array(z.object({ text: z.string().min(1), lang: z.string().min(1), say: z.string().min(1).optional() }).strict()).optional(),
+      countries: z.array(z.string().regex(/^[a-z]{2}$/)).min(1), // file names in /countries, the most closely tied first
+      history: z.array(z.string()).default([]), // ids in changes.yaml
+      image: picture(image).optional(),
+      model: z.string().min(1).optional(),
+      written: z.coerce.date().optional(),
+      sources: z.array(source).min(1),
+    })
+    .strict(),
+});
+
+export const collections = { countries, units, segments, changes, prices, articles, culture };

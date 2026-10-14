@@ -2,6 +2,7 @@
 import { places, countries, changes, subunitsOf, historyPeriods, CHANGE_CATEGORIES } from "../lib/countries.js";
 import { SITE } from "../lib/exports.js";
 import { MAP_VIEWS } from "../lib/map-views.js";
+import { CULTURE_SECTIONS, cultureEntries } from "../lib/culture.js";
 
 export function GET({ site }) {
   const root = (site?.href ?? SITE + "/").replace(/\/$/, "") + import.meta.env.BASE_URL;
@@ -15,6 +16,9 @@ export function GET({ site }) {
     ["survey/", latest, 0.6],
     ["survey/take/", latest, 0.5],
     ["about/", latest, 0.6],
+    ["culture/", latest, 0.7],
+    ...CULTURE_SECTIONS.filter((x) => !x.soon).map((x) => [`culture/${x.id}/`, latest, 0.6]),
+    ...cultureEntries.map((e) => [e.url, e.written?.toISOString().slice(0, 10) ?? null, 0.6]),
     ["did-you-know/", latest, 0.5],
     ["changelog/", latest, 0.5],
     ["data/", latest, 0.5],

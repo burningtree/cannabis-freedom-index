@@ -2,7 +2,7 @@
 model: opus-5.5
 written: 2026-10-11
 image:
-  src: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Brittney_Griner_3.jpg/1280px-Brittney_Griner_3.jpg
+  src: ../src/assets/articles/brittney-griner-3.jpg
   alt: Brittney Griner in a Phoenix Mercury jersey during a game in 2019
   caption: Brittney Griner playing for the Phoenix Mercury in Minneapolis, July 2019.
   credit: Lorie Shaull, CC BY-SA 4.0, via Wikimedia Commons
