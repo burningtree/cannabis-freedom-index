@@ -1,6 +1,8 @@
 ---
+import { tierColor } from "../../lib/tiers.js";
 import Base from "../../layouts/Base.astro";
 import CountryArticle from "../../components/CountryArticle.astro";
+import CountryFacts from "../../components/CountryFacts.astro";
 import { countries, places } from "../../lib/countries.js";
 import { countrySeo } from "../../lib/seo.js";
 
@@ -16,12 +18,14 @@ const next = c.rank ? countries[c.rank] : null;
 const seo = countrySeo(c, Astro.site);
 ---
 <Base title={c.name} seoTitle={seo.seoTitle} description={seo.description} jsonld={seo.jsonld} type="article">
+  <a slot="here" class="topbar-here" href="#top" style={`--c:${tierColor(c.raw)}`}><span aria-hidden="true">{c.flag}</span><span class="here-name">{c.name}</span><b>{c.score}</b></a>
   <main class="country-page">
     <div class="page-bar">
       <a class="back" href={`${base}#rankings`}>← All countries</a>
       <a class="btn" href={`${base}compare/?c=${c.slug}`}>Compare with other countries</a>
     </div>
     <CountryArticle c={c} />
+    <CountryFacts c={c} />
     <nav class="pager" aria-label="Neighbouring countries by rank">
       {prev
         ? <a href={`${base}country/${prev.slug}/`}><small>#{prev.rank} · ranked higher</small><span>{prev.flag} {prev.name}</span></a>

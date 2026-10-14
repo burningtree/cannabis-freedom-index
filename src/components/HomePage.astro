@@ -13,6 +13,7 @@ import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor
 import { SHOW_PRICES } from "../lib/config.js";
 import { homeSeo } from "../lib/seo.js";
 import { viewByMetric } from "../lib/map-views.js";
+import { cultureOf } from "../lib/culture.js";
 import { panelRows, PANEL_FROM } from "../lib/exports.js";
 
 // Rankings by year: for each place, the years in which its index score changed and the score from
@@ -55,8 +56,15 @@ const MED_ORDER = ["yes", "limited", "no"];
 // What the browser needs for the map: scores only, no prose.
 // `ratio` is the share of people who use cannabis divided by the index score: how far use runs
 // ahead of freedom. A score below 1 counts as 1, so that a zero does not divide.
-const mapData = places.map(({ id, num, name, flag, raw, score, rank, s, use, planting, clubs, driving, visitors, rec, med }) =>
-  ({ id, num, name, flag, raw, score, rank, s, planting, clubs, driving, visitors, rec, med, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {}, use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2) } }));
+// `culture` is how many atlas entries a country appears in, with the names of the first few
+// (most important first), for the map's Culture view.
+const mapData = places.map((c) => {
+  const { id, num, name, flag, raw, score, rank, s, use, planting, clubs, driving, visitors, rec, med } = c;
+  const atlas = cultureOf(c);
+  return { id, num, name, flag, raw, score, rank, s, planting, clubs, driving, visitors, rec, med, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {},
+    use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2), culture: atlas.length },
+    atlas: atlas.slice(0, 4).map((e) => e.title) };
+});
 // States, provinces and territories of the federations, for the map's "show states" switch.
 // Keyed like the shapes in src/data/subunits.geo.json: "us/ca".
 const unitData = Object.fromEntries(countries.flatMap((c) => {
@@ -71,6 +79,11 @@ const USE_SCALES = {
     label: "Use relative to freedom",
     steps: [[0, "Under 0.15"], [0.15, "0.15–0.3"], [0.3, "0.3–0.5"], [0.5, "0.5–1"], [1, "1 or more"]],
     note: "Share of people aged 15–64 who use cannabis, divided by the index score. A high value means many people use cannabis where the law gives them little freedom to.",
+  },
+  culture: {
+    label: "Entries in the cultural atlas",
+    steps: [[0, "None yet"], [1, "1"], [2, "2–3"], [4, "4–6"], [7, "7 or more"]],
+    note: "Words, traditions and people in the cultural atlas that belong to each country. The atlas is growing: a pale country may simply not have been written about yet.",
   },
 };
 const PRICE_SCALE = {
@@ -214,6 +227,10 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           <a {...viewAttrs("ratio")}>Share of users ÷ index</a>
         </div>
         <div class="metric-group">
+          <span>Culture</span>
+          <a {...viewAttrs("culture")}>Atlas entries</a>
+        </div>
+        <div class="metric-group">
           <span>Law</span>
           {Object.entries(LAW_SECTIONS).map(([key, section]) => <a {...viewAttrs(`status:${key}`)}>{section.name}</a>)}
         </div>
@@ -229,7 +246,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           {Object.entries(STATUS_SECTIONS).map(([key, section]) => <a {...viewAttrs(`status:${key}`)}>{section.name}</a>)}
         </div>
       </nav>
-      <p class="sub map-sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown." data-price="Pale yellow means cheaper, violet means more expensive. Countries without a sourced price are hatched." data-planting="Green means legal or sold freely, red means illegal or banned. Hatched countries have not been researched yet. Not part of the score.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
+      <p class="sub map-sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown." data-culture="The stronger the blue, the more of the country's words, customs and people the cultural atlas covers. Select a country for its entries." data-price="Pale yellow means cheaper, violet means more expensive. Countries without a sourced price are hatched." data-planting="Green means legal or sold freely, red means illegal or banned. Hatched countries have not been researched yet. Not part of the score.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
       <div class="card map-card">
         <div class="map-wrap" id="mapWrap">
           <svg id="mapSvg" viewBox="0 0 960 480" role="img" aria-label="World map coloured by Cannabis Freedom Index"></svg>
@@ -538,7 +555,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
       const shown = isClubs() ? metric : isPlant() ? (plantField().endsWith("_trade") ? "plant-trade" : "plant-status") : isPrice() ? "price" : isUse() ? metric : "score";
       document.querySelectorAll("[data-legend]").forEach((el) => { el.hidden = el.dataset.legend !== shown; });
       const sub = $("#mapSub");
-      sub.textContent = isClubs() ? PLANTING.subs[statusKey()] : isPlant() ? sub.dataset.planting : isPrice() ? sub.dataset.price : metric === "ratio" ? sub.dataset.ratio : isUse() ? sub.dataset.use : sub.dataset.score;
+      sub.textContent = isClubs() ? PLANTING.subs[statusKey()] : isPlant() ? sub.dataset.planting : isPrice() ? sub.dataset.price : metric === "ratio" ? sub.dataset.ratio : metric === "culture" ? sub.dataset.culture : isUse() ? sub.dataset.use : sub.dataset.score;
     }
     // On the home page an option recolours the map in place, and "Expand" then points at that
     // view's own page. On a map page the options are ordinary links to the other map pages.
@@ -619,6 +636,13 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
             <div class="row"><span>${metricLabel()}</span><b>${p ? `$${p.usd.toFixed(2)}/g` : "No data"}</b></div>
             ${p ? `<div class="row"><span>Local price</span><b>${p.price} ${p.currency}/g</b></div>
                     <div class="row"><span>Observation</span><b>${p.date}</b></div>` : ""}`;
+        }
+        if (c && metric === "culture") {
+          const n = c.use.culture;
+          return `<strong>${c.flag} ${c.name}</strong>
+            <div class="row"><span>Atlas entries</span><b>${n || "None yet"}</b></div>
+            ${c.atlas.map((t) => `<div class="row"><span>${t}</span></div>`).join("")}
+            ${n > c.atlas.length ? `<div class="row"><span>and ${n - c.atlas.length} more</span></div>` : ""}`;
         }
         return c && metric === "ratio"
             ? `<strong>${c.flag} ${c.name}</strong>

@@ -1,0 +1,31 @@
+---
+// "Did you know?" at the foot of a country page: every case that belongs to the country, all
+// open across the full width. Nothing is shown for a country without one.
+import { factsOf } from "../lib/facts.js";
+
+const { c } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const facts = factsOf(c);
+---
+{facts.length > 0 && (
+  <section class="dyk dyk-country" aria-label={`Did you know? ${c.name}`}>
+    <div class="dyk-top">
+      <h2>Did you know? <span class="dyk-n">{facts.length}</span></h2>
+      <div class="dyk-nav"><a class="dyk-all-link" href={`${base}did-you-know/`}>All cases →</a></div>
+    </div>
+    <ol class="dyk-facts dyk-all">
+      {facts.map((f) => (
+        <li class="dyk-fact">
+          <p class="dyk-kicker">{f.kicker}</p>
+          <p class="dyk-text">
+            {f.parts.map((part) => typeof part === "string" ? part
+              : part.country ? (part.country.id === c.id ? <b>{part.label}</b> : <a href={`${base}country/${part.country.slug}/`}>{part.label}</a>)
+              : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
+              : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
+          </p>
+          {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
+        </li>
+      ))}
+    </ol>
+  </section>
+)}

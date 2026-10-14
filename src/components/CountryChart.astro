@@ -4,6 +4,7 @@
 // with the year, the score then and the entries at that point; the script for it is in
 // Base.astro, so it also works when the article is loaded into the drawer.
 import { changeDate, dateTime, lastUpdated } from "../lib/countries.js";
+import { TIERS, tierColor } from "../lib/tiers.js";
 
 const { history, context = [] } = Astro.props; // the country's score changes and its other history entries, newest first
 const base = import.meta.env.BASE_URL;
@@ -33,6 +34,10 @@ const tick = top + 5 > 40 ? 20 : 10;
 const yMax = Math.min(100, Math.max(20, Math.ceil((top + 5) / tick) * tick)); // never zoom in further than 0–20
 const y = (v) => (1 - v / yMax) * 100;
 const ticks = Array.from({ length: yMax / tick + 1 }, (_, i) => i * tick);
+// the score tiers as faint bands behind the line, as on the world average chart
+const bands = TIERS.map((t, i) => [t.min, Math.min(i ? TIERS[i - 1].min : 100, yMax), t])
+  .filter(([lo, hi]) => hi > lo)
+  .map(([lo, hi, t]) => ({ color: tierColor(t.min), top: y(hi), height: y(lo) - y(hi) }));
 
 const span = endYear - startYear;
 const step = span > 50 ? 20 : span > 20 ? 5 : span > 8 ? 2 : 1;
@@ -57,17 +62,29 @@ const rawAt = (px) => {
   return v;
 };
 // entries that moved no score sit on the line at their date
-const marks = [...context].reverse()
+const context_ = [...context].reverse()
   .filter((ch) => time(ch.date) >= t0 && time(ch.date) <= t1)
   .map((ch) => ({ ch, x: x(time(ch.date)) }))
   .map((m) => ({ ...m, y: y(rawAt(m.x)) }));
+// Dots closer than this (in % of the width) would overlap. A hollow mark that close to a score
+// dot is left out, and a run of close marks becomes one; the seeker still lists every entry.
+const NEAR = 3.5;
+const marks = context_
+  .filter((m) => !points.some((p) => Math.abs(p.x - m.x) < NEAR))
+  .reduce((runs, m) => {
+    const run = runs.at(-1);
+    if (run && m.x - run.at(-1).x < NEAR && Math.abs(m.y - run.at(-1).y) < 4) run.push(m);
+    else runs.push([m]);
+    return runs;
+  }, [])
+  .map((run) => ({ ...run.at(-1), n: run.length })); // at the latest, so the seeker can light it
 // what the seeker needs: the axis, the steps of the line and every entry
 const seek = JSON.stringify({
   t0, t1, start: startRaw,
   steps: points.map((p) => [p.x0, p.x, p.ch.raw.before, p.ch.raw.after]),
   events: [
     ...points.map((p) => ({ x: p.x, d: changeDate(p.ch), t: p.ch.title, k: p.ch.kind.emoji, s: `${p.ch.score.before} → ${p.ch.score.after}` })),
-    ...marks.map((m) => ({ x: m.x, d: changeDate(m.ch), t: m.ch.title, k: m.ch.kind.emoji })),
+    ...context_.map((m) => ({ x: m.x, d: changeDate(m.ch), t: m.ch.title, k: m.ch.kind.emoji })),
   ].sort((a, b) => a.x - b.x),
 });
 const line = `M0,${y(startRaw)}` + points.map((p) => (p.ch.estimate ? `H${p.x0}L${p.x},${p.y}` : `H${p.x}V${p.y}`)).join("") + "H100";
@@ -80,19 +97,20 @@ const line = `M0,${y(startRaw)}` + points.map((p) => (p.ch.estimate ? `H${p.x0}L
     </div>
     <div class="avg-plot" data-seek={seek}>
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        {bands.map((b) => <rect class="band" x="0" width="100" y={b.top} height={b.height} style={`fill:${b.color}`} />)}
         {ticks.map((t) => <line class="grid" x1="0" x2="100" y1={y(t)} y2={y(t)} />)}
         <path class="line" d={line} />
       </svg>
       <span class={`c-chart-val start ${startBelow ? "below" : ""}`} style={`top:${y(startRaw)}%`} aria-hidden="true">{startScore}</span>
+      {marks.map((m) => (
+        <a class="avg-dot nomove" href={`${base}history/${m.ch.id}/`} style={`left:${m.x}%;top:${m.y}%`}
+          aria-label={m.n > 1 ? `${m.n} entries around ${changeDate(m.ch)}, the latest: ${m.ch.title}. No change in score.` : `${changeDate(m.ch)}: ${m.ch.title}. No change in score.`}></a>
+      ))}
       {points.map((p) => (
         <a class="avg-dot" href={`${base}history/${p.ch.id}/`} style={`left:${p.x}%;top:${p.y}%`}
           aria-label={`${changeDate(p.ch)}: ${p.ch.title}. Score ${p.ch.score.before} to ${p.ch.score.after}.`}>
           {p.label && <span class={`c-chart-val ${p.ch.raw.after < p.ch.raw.before ? "below" : ""}`} aria-hidden="true">{p.ch.score.after}</span>}
         </a>
-      ))}
-      {marks.map((m) => (
-        <a class="avg-dot nomove" href={`${base}history/${m.ch.id}/`} style={`left:${m.x}%;top:${m.y}%`}
-          aria-label={`${changeDate(m.ch)}: ${m.ch.title}. No change in score.`}></a>
       ))}
       <span class="c-seek" hidden></span>
       <div class="c-seek-tip" hidden></div>

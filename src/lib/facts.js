@@ -124,7 +124,7 @@ const fromCulture = [
   { kicker: "Words · Hawaiian", culture: "language/pakalolo", text: "The Hawaiian name for cannabis, [[c:language/pakalolo|pakalolo]], means ‘numbing tobacco’." },
   { kicker: "Words · Réunion", culture: "language/zamal", text: "On Réunion, part of [[FR|France]], cannabis is [[c:language/zamal|zamal]], and a man losing his temper is said to have ‘his zamal rising’." },
   { kicker: "Words · Malawi", culture: "language/chamba", text: "[[MW|Malawi]] has three famous C's: its fish, its tea and its [[c:language/chamba|chamba]], the country's word for cannabis." },
-  { kicker: "Words · Mezz", culture: "language/reefer", text: "In the jazz slang of the 1930s, cannabis could be called ‘mezz’, after Mezz Mezzrow, a clarinettist at least as well known in the jazz world for supplying it. See [[c:language/reefer|reefer]]." },
+  { kicker: "Words · Mezz", culture: "language/reefer", text: "In the jazz slang of the 1930s, cannabis could be called ‘mezz’, after [[c:people/mezz-mezzrow|Mezz Mezzrow]], a clarinettist at least as well known in the jazz world for supplying it. See [[c:language/reefer|reefer]]." },
   { kicker: "Religion · Brazil", culture: "traditions/santa-maria-in-santo-daime", text: "One branch of [[BR|Brazil]]'s ayahuasca church, Santo Daime, took up cannabis in the 1970s and named it [[c:traditions/santa-maria-in-santo-daime|Santa Maria]], after the Virgin. Its users called themselves marianos." },
   { kicker: "Religion · Réunion", culture: "traditions/zamal-on-reunion", text: "In Tamil temples on Réunion, a possessed priest smokes cannabis the gods ask for, and must show no effect at all: [[c:traditions/zamal-on-reunion|his indifference proves the god is in him]]." },
   { kicker: "Religion · Japan", culture: "traditions/hemp-in-shinto", text: "Shinto priests in [[JP|Japan]] [[c:traditions/hemp-in-shinto|purify with hemp fibre]], the symbol of purity, while the plant itself is under one of the strictest drug laws in the world." },
@@ -142,6 +142,10 @@ const fromCulture = [
   { kicker: "People · Mexico", culture: "people/leopoldo-salazar-viniegra", history: "mexico-salazar-marijuana-myth-1938", text: "In 1938 [[c:people/leopoldo-salazar-viniegra|a Mexican psychiatrist]] told the Academy of Medicine that marijuana madness was a myth. A newspaper reported that he ended by handing his colleagues cigarettes that turned out to contain it." },
   { kicker: "People · India", culture: "people/william-oshaughnessy", text: "[[c:people/william-oshaughnessy|The doctor who brought cannabis into Western medicine]], in Calcutta in 1839, was knighted not for that but for building [[IN|India]]'s telegraph." },
   { kicker: "People · Uruguay", culture: "people/jose-mujica", history: "uruguay-incb-criticism-2013", text: "When the head of the UN drug board said [[UY|Uruguay]]'s cannabis law showed a ‘pirate attitude’, its president, [[c:people/jose-mujica|José Mujica]], told him to stop lying and come and see for himself." },
+  { kicker: "People · Egypt", culture: "people/russell-pasha", history: "league-russell-anslinger-exchange-1938", text: "When Harry Anslinger told the League of Nations in 1938 that marihuana led to murder and rape, [[c:people/russell-pasha|Egypt's own drug police chief]] answered that the hashish addict was a tiresome individual, not a dangerous criminal." },
+  { kicker: "People · Comoros", culture: "people/ali-soilih", history: "comoros-legalisation-1975", text: "The [[KM|Comoros]] [[h:comoros-legalisation-1975|legalised cannabis]] in 1975 under [[c:people/ali-soilih|Ali Soilih]], a revolutionary president who also lowered the voting age to fourteen. He was overthrown and killed in 1978, and the ban came back." },
+  { kicker: "People · Canada", culture: "people/marc-emery", history: "canada-emery-arrest-2005", text: "From 1998 [[c:people/marc-emery|Marc Emery]] declared his mail-order cannabis seed sales to the tax office in [[CA|Canada]], paying nearly 600,000 dollars. Canada never charged him; it extradited him to the United States, which jailed him for five years." },
+  { kicker: "People · United States", culture: "people/mezz-mezzrow", text: "[[c:people/mezz-mezzrow|Mezz Mezzrow]], a jazz clarinettist, was arrested in 1940 with sixty joints at the New York World's Fair. In jail he insisted he was Black, and was moved to the Black block and asked to lead the prison band." },
 ];
 
 // Turn the inline [[…|…]] links into parts the component can render, checking each target.
@@ -175,4 +179,15 @@ export function getFacts() {
     if (f.culture && !culture) throw new Error(`facts.js: unknown atlas entry "${f.culture}"`);
     return { kicker: f.kicker, parts: parse(f.text), history, culture, group: f.group };
   });
+}
+
+// The cases that belong to one country, for the panel at the foot of its page: those that link
+// the country, whose history entry (or a linked one) is set there, or whose atlas entry is kept
+// there alone. Atlas entries shared by many countries would put a case on every one of them.
+export function factsOf(c) {
+  const here = (code) => !!code && [c.id, c.slug].map((x) => String(x).toLowerCase()).includes(String(code).toLowerCase());
+  return getFacts().filter((f) =>
+    f.parts.some((p) => p.country?.id === c.id || here(p.change?.country)) ||
+    here(f.history?.country) ||
+    (f.culture?.countries.length === 1 && f.culture.countries[0].id === c.id));
 }

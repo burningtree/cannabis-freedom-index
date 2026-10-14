@@ -39,7 +39,7 @@ The words come from the jazz world between the wars, before cannabis was a feder
 | Viper | A smoker of it, as in the Stuff Smith song "If You're a Viper" |
 | Mezz | Cannabis, after Mezz Mezzrow |
 
-The last is a person. [Mezz Mezzrow](https://en.wikipedia.org/wiki/Mezz_Mezzrow), born Milton Mesirow in Chicago, was a clarinettist and saxophonist who organised recording sessions for Sidney Bechet and Tommy Ladnier. He was at least as well known in the jazz world as a supplier of cannabis, so well known that his nickname became a word for it. He was called the Muggles King, and Louis Armstrong was one of his best customers; a letter Armstrong wrote from England in 1932 tells Mezzrow where and how to send it.
+The last is a person. [Mezz Mezzrow](/culture/people/mezz-mezzrow/), born Milton Mesirow in Chicago, was a clarinettist and saxophonist who organised recording sessions for Sidney Bechet and Tommy Ladnier. He was at least as well known in the jazz world as a supplier of cannabis, so well known that his nickname became a word for it. He was called the Muggles King, and Louis Armstrong was one of his best customers; a letter Armstrong wrote from England in 1932 tells Mezzrow where and how to send it.
 
 In 1940 Mezzrow was arrested with sixty joints at the entrance to a jazz club at the New York World's Fair. In jail he insisted that he was Black, and was moved to the Black section of the segregated prison. He told the story in his memoir *Really the Blues* in 1946, and spent the last twenty years of his life in France.
 

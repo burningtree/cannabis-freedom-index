@@ -4,6 +4,7 @@
 // or weighted by population. Two switches pick which one is shown.
 // The plot is a stretched SVG; labels and markers are HTML so they stay readable at any width.
 import { averageHistory, averageHistoryByPopulation, formatDate, dateTime, lastUpdated } from "../lib/countries.js";
+import { TIERS, tierOf, tierColor } from "../lib/tiers.js";
 
 // `note` adds the caveat under the chart.
 // Only the view visible before any click is part of the page. The other three, about 400 kB of
@@ -44,6 +45,10 @@ function view(range, weighting) {
   const yMax = Math.ceil(Math.max(...values) / tick) * tick;
   const y = (v) => (1 - (v - yMin) / (yMax - yMin)) * 100;
   const ticks = Array.from({ length: Math.round((yMax - yMin) / tick) + 1 }, (_, i) => yMin + i * tick);
+  // the score tiers behind the line, cut to the visible range, so the reader sees which band the world is in
+  const bands = TIERS.map((t, i) => [Math.max(t.min, yMin), Math.min(i ? TIERS[i - 1].min : 100, yMax), t])
+    .filter(([lo, hi]) => hi > lo)
+    .map(([lo, hi, t]) => ({ name: t.name, color: tierColor(t.min), top: y(hi), height: y(lo) - y(hi) }));
 
   // at most about a dozen year labels, on round steps
   const span = endYear - startYear;
@@ -58,7 +63,7 @@ function view(range, weighting) {
   // for the seeker (the script is in Base.astro): the axis and the steps of the line; the entries
   // it lists are read from the dots
   const seek = JSON.stringify({ t0, t1, start, unit: "average", dp: 1, dots: true, y: [yMin, yMax], steps: steps.map((p) => [p.x, p.x, p.before, p.after]) });
-  return { seek, range: range.id, weight: weighting.id, startYear, now, whole: tick >= 1, delta: now - start, ticks: ticks.map((t) => ({ t, y: y(t) })), years, points, line };
+  return { seek, range: range.id, weight: weighting.id, startYear, now, bands, whole: tick >= 1, delta: now - start, ticks: ticks.map((t) => ({ t, y: y(t) })), years, points, line };
 }
 
 const views = WEIGHTS.flatMap((w) => RANGES.map((r) => view(r, w)));
@@ -71,6 +76,7 @@ const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // 
       </div>
       <div class="avg-plot" data-seek={v.seek}>
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          {v.bands.map((b) => <rect class="band" x="0" width="100" y={b.top} height={b.height} style={`fill:${b.color}`} />)}
           {v.ticks.map(({ y }) => <line class="grid" x1="0" x2="100" y1={y} y2={y} />)}
           <path class="line" d={v.line} />
         </svg>
@@ -80,6 +86,7 @@ const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // 
             data-avg={`World average ${fmt(p.before)} → ${fmt(p.after)}`}
             aria-label={`${formatDate(p.date)}: ${p.change.title}. World average ${fmt(p.before)} to ${fmt(p.after)}.`}></a>
         ))}
+        {v.bands.filter((b) => b.height >= 9).map((b) => <span class="avg-band" aria-hidden="true" style={`top:${b.top + b.height / 2}%;--c:${b.color}`}>{b.name}</span>)}
         <span class="c-seek" hidden></span>
         <div class="c-seek-tip" hidden></div>
       </div>
@@ -95,6 +102,7 @@ const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // 
       {views.map((v) => (
         <span class="avg-figure" data-range={v.range} data-weight={v.weight} hidden={!shown(v)}>
           <b>{fmt(v.now)}</b>
+          <span class="avg-tier" style={`--c:${tierColor(v.now)}`}>{tierOf(v.now).name}</span>
           <span class={`delta ${v.delta >= 0 ? "up" : "down"}`}>{v.delta >= 0 ? "+" : "−"}{fmt(Math.abs(v.delta))} since {v.startYear}</span>
         </span>
       ))}
@@ -117,6 +125,7 @@ const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // 
       </div>
       <div class="avg-plot" data-seek={v.seek}>
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          {v.bands.map((b) => <rect class="band" x="0" width="100" y={b.top} height={b.height} style={`fill:${b.color}`} />)}
           {v.ticks.map(({ y }) => <line class="grid" x1="0" x2="100" y1={y} y2={y} />)}
           <path class="line" d={v.line} />
         </svg>
@@ -126,6 +135,7 @@ const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // 
             data-avg={`World average ${fmt(p.before)} → ${fmt(p.after)}`}
             aria-label={`${formatDate(p.date)}: ${p.change.title}. World average ${fmt(p.before)} to ${fmt(p.after)}.`}></a>
         ))}
+        {v.bands.filter((b) => b.height >= 9).map((b) => <span class="avg-band" aria-hidden="true" style={`top:${b.top + b.height / 2}%;--c:${b.color}`}>{b.name}</span>)}
         <span class="c-seek" hidden></span>
         <div class="c-seek-tip" hidden></div>
       </div>
