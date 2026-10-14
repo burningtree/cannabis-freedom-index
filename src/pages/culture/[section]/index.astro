@@ -1,5 +1,5 @@
 ---
-// One part of the cultural atlas that is made of entries: /culture/language/, /culture/traditions/.
+// One part of the cultural atlas that is made of entries: /culture/language/, /culture/traditions/, /culture/people/.
 import Base from "../../../layouts/Base.astro";
 import CultureCards from "../../../components/CultureCards.astro";
 import { CULTURE_SECTIONS, cultureIn } from "../../../lib/culture.js";
@@ -72,7 +72,7 @@ const byCountry = [...new Set(entries.flatMap((e) => e.countries))]
     <section class="section">
       <div class="section-head"><div>
         <h2>By country</h2>
-        <p class="sub">Where each {s.one} is {s.id === "language" ? "said" : "kept"}. A country's name opens its page in the index.</p>
+        <p class="sub">Where each {s.one} {s.id === "language" ? "is said" : s.id === "people" ? "worked" : "is kept"}. A country's name opens its page in the index.</p>
       </div></div>
       <ul class="cu-by">
         {byCountry.map(({ c, entries }) => (

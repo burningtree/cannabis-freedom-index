@@ -1,22 +1,30 @@
 ---
 // A short list of atlas entries with their pictures: on a country page, a history entry and
-// beside another atlas entry. `more` is the link in the heading, as [label, href].
+// beside another atlas entry. `more` is the link in the heading, as [label, href]. With `limit`,
+// only that many are shown at first and the rest open from a "Show all" line.
 import { Image } from "astro:assets";
 import { cultureSection } from "../lib/culture.js";
 
-const { entries, heading, more } = Astro.props;
+const { entries, heading, more, limit } = Astro.props;
+const first = limit && entries.length > limit + 1 ? entries.slice(0, limit) : entries;
+const groups = [first, entries.slice(first.length)];
 const base = import.meta.env.BASE_URL;
 ---
 <section class="c-culture">
   <h2>{heading}{more && <a href={more[1]}>{more[0]}</a>}</h2>
-  <ul>
-    {entries.map((e) => (
-      <li>
-        <a href={`${base}${e.url}`} title={e.summary}>
-          {e.image ? <Image src={e.image.src} alt="" width={104} height={104} fit="cover" /> : <span class="c-culture-none" aria-hidden="true">{e.title.slice(0, 1)}</span>}
-          <span><small>{cultureSection(e.section).name}</small><b>{e.title}{e.spelling && e.spelling[0].text.toLowerCase() !== e.title.toLowerCase() && <i> {e.spelling[0].text}</i>}</b></span>
-        </a>
-      </li>
-    ))}
-  </ul>
+  {groups.map((list, g) => list.length > 0 && (() => {
+    const rows = (
+      <ul>
+        {list.map((e) => (
+          <li>
+            <a href={`${base}${e.url}`} title={e.summary}>
+              {e.image ? <Image src={e.image.src} alt="" width={104} height={104} fit="cover" /> : <span class="c-culture-none" aria-hidden="true">{e.title.slice(0, 1)}</span>}
+              <span><small>{cultureSection(e.section).name}</small><b>{e.title}{e.spelling && e.spelling[0].text.toLowerCase() !== e.title.toLowerCase() && <i> {e.spelling[0].text}</i>}</b></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    );
+    return g === 0 ? rows : <details class="c-culture-more"><summary>Show all {entries.length} →</summary>{rows}</details>;
+  })())}
 </section>

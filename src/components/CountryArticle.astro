@@ -150,7 +150,7 @@ const culture = sub ? [] : cultureOf(c);
     )}
     {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
     {scored.length > 0 && <CountryChart history={scored} context={history.filter((ch) => !ch.score)} />}
-    {culture.length > 0 && <CultureList entries={culture} heading="Culture" more={["The atlas →", `${base}culture/`]} />}
+    {culture.length > 0 && <CultureList entries={culture} heading="Culture" more={["The atlas →", `${base}culture/`]} limit={6} />}
   </div>
 
   <div class="c-main">

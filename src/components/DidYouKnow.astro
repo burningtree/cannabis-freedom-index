@@ -1,18 +1,21 @@
 ---
-// "Did you know?": curious cases from the scores, the country write-ups and the history,
+// "Did you know?": curious cases from the scores, the country write-ups, the history and the atlas,
 // three at a time. Every case is in the HTML and its links work without JavaScript; the
 // script only decides which three are showing. Country links open the drawer on the home page.
 import { getFacts } from "../lib/facts.js";
 
 const base = import.meta.env.BASE_URL;
-const facts = getFacts();
+// `group` limits the cases to one source ("culture" on the Culture page); the link then opens
+// that part of the full list.
+const { group } = Astro.props;
+const facts = getFacts().filter((f) => !group || f.group === group);
 const PER_PAGE = 3;
 ---
 <section class="dyk" id="dyk" aria-label="Did you know?" data-per-page={PER_PAGE}>
   <div class="dyk-top">
     <h2>Did you know?</h2>
     <div class="dyk-nav">
-      <a class="dyk-all-link" href={`${base}did-you-know/`}>All {facts.length} →</a>
+      <a class="dyk-all-link" href={`${base}did-you-know/${group ? `#${group}` : ""}`}>All {facts.length} →</a>
       <span class="dyk-count" id="dykCount">1 / {Math.ceil(facts.length / PER_PAGE)}</span>
       <button type="button" id="dykPrev" aria-label="Previous three">←</button>
       <button type="button" id="dykNext" aria-label="Next three">→</button>
@@ -25,9 +28,11 @@ const PER_PAGE = 3;
         <p class="dyk-text">
           {f.parts.map((part) => typeof part === "string" ? part
             : part.country ? <a href={`${base}country/${part.country.slug}/`} data-country={part.country.id}>{part.label}</a>
-            : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
+            : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
+            : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
+          : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
         </p>
-        {f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
+        {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
       </li>
     ))}
   </ol>

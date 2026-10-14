@@ -56,7 +56,6 @@ const cards = {
   "did-you-know": page("Did you know?", "Strange rules, forgotten laws and what the scores show.", [[String(getFacts().length), "CURIOUS CASES"]]),
   articles: page("Articles", "Moments from the history of cannabis law told in full.", [[num(articles.size), "ARTICLES"]]),
   culture: page("A cultural atlas of cannabis", "The words people have for the plant, the rituals and traditions it belongs to, and the people behind the laws.", [[String(cultureEntries.length), "ENTRIES"]]),
-  "culture/history": page("Culture in the history", "Social attitudes, propaganda and counterculture: where the record of laws shows what people thought.", [], `CULTURE · ${BRAND}`),
   "culture/stories": page("The people behind the laws", "A participatory anthropology project on how cannabis shapes, and is shaped by, society.", [], `CULTURE · ${BRAND}`),
   sources: page("What the index is built on", "Every source the index cites, counted by website and by country."),
   survey: page("State of Cannabis", "A yearly survey of what people do with cannabis, what they believe about it, and what they see in the countries they know.", surveyFacts, `SURVEY · ${survey.edition} EDITION`),

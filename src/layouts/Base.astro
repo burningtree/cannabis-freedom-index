@@ -349,7 +349,7 @@ const schemas = jsonld ? [jsonld].flat() : [];
         var p = u.pathname.slice(base.length);
         if (/^country\/[a-z]{2}\/$/.test(p)) return ["country", p];
         if (/^history\/[^/]+\/$/.test(p)) return ["history", p];
-        if (/^culture\/(language|traditions)\/[^/]+\/$/.test(p)) return ["culture", p];
+        if (/^culture\/(language|traditions|people)\/[^/]+\/$/.test(p)) return ["culture", p];
         return null;
       }
       function load(kind) {

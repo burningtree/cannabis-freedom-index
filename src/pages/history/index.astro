@@ -4,16 +4,25 @@
 import Base from "../../layouts/Base.astro";
 import HistoryList from "../../components/HistoryList.astro";
 import { researchTotals } from "../../lib/research.js";
+import { changes, places } from "../../lib/countries.js";
 
 const base = import.meta.env.BASE_URL;
+// the history in figures, under the research progress
+const num = (n) => n.toLocaleString("en-GB");
+const dated = changes.filter((ch) => !ch.estimate);
+const figures = [
+  [dated.length, "entries"],
+  [dated.filter((ch) => ch.score).length, "moved a score"],
+  [new Set(changes.filter((ch) => ch.country).map((ch) => ch.country)).size, `of ${places.length} places`],
+  [`${Math.round((dated.filter((ch) => ch.checked).length / dated.length) * 100)}%`, "checked"],
+];
 ---
 <Base title="History" description="Laws, court rulings and treaties that shaped cannabis freedom, from the first bans to today, and how each one moved a country's score on the Cannabis Freedom Index.">
   <main class="changes-page">
     <section class="hero hero-sm hero-progress">
       <a class="rs-pill" href={`${base}research/`} title={`Average research progress over ${researchTotals.places} countries and territories. Open the details.`}>
-        <span>Research progress</span>
-        <i style={`--p:${researchTotals.average}%`}></i>
-        <b>{researchTotals.average}%</b>
+        <span class="rs-top"><span>Research progress</span><i style={`--p:${researchTotals.average}%`}></i><b>{researchTotals.average}%</b></span>
+        <span class="rs-figs">{figures.map(([n, label]) => <span><b>{typeof n === "number" ? num(n) : n}</b> {label}</span>)}</span>
       </a>
       <p class="eyebrow">History</p>
       <h1>A history of cannabis law</h1>

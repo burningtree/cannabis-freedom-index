@@ -221,7 +221,8 @@ const culture = defineCollection({
     .object({
       title: z.string().min(1),
       summary: z.string().min(1), // one or two sentences, shown on cards and under the title
-      origin: z.string().min(1).optional(), // language: where the word comes from, in a few words
+      origin: z.string().min(1).optional(), // language: where the word comes from, in a few words; people: what they were
+      life: z.string().min(1).optional(), // people: the years of their life, "1892–1975"
       also: z.array(z.string().min(1)).optional(), // other spellings and related words
       // how the word is written where it is used: the spelling in its own script, the language, and
       // optionally how it is said (IPA or a romanisation)
@@ -231,7 +232,7 @@ const culture = defineCollection({
       history_cards: z.array(z.string()).default([]), // events specifically about this subject; reverse cards on history pages
       // other atlas entries to show beside this one, as "<section>/<slug>", closest first.
       // Links in the text and shared history entries add more on their own; see docs/CULTURE.md.
-      related: z.array(z.string().regex(/^(language|traditions)\/[a-z0-9-]+$/)).default([]),
+      related: z.array(z.string().regex(/^(language|traditions|people)\/[a-z0-9-]+$/)).default([]),
       image: picture(image).optional(),
       // the entry's rank among the most important of its part (1 = first); see docs/CULTURE.md.
       // Featured entries lead the Culture page and their section; the rest follow alphabetically.

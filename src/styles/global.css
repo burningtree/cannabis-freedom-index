@@ -278,7 +278,6 @@ th.num-col { text-align: right; }
 .drawer-inner { padding: 22px 24px 40px; }
 .drawer-inner .d-head { padding-right: 92px; }
 .drawer-inner .drawer-open { display: flex; justify-content: center; padding: 12px 16px; font-size: 15px; margin: 22px 0 0; }
-.drawer-inner .c-sources { display: none; }
 /* Shown while the article downloads; fades in late so a fast load never flashes it. */
 .drawer-loading {
   display: flex; flex-direction: column; align-items: center; gap: 14px;
@@ -1363,7 +1362,7 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .culture .page-bar { margin: 26px 0 0; }
 .section.cu-first { padding-top: clamp(28px, 4vw, 48px); }
 /* the five parts side by side, each a short column: name and count, then one or two lines */
-.culture-threads.cu-sections { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; }
+.culture-threads.cu-sections { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
 .cu-sections li { border-left: 1px solid var(--border); }
 .cu-sections li:first-child { border-left: 0; }
 .cu-sections a, .cu-sections .cu-row { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 14px 16px 16px; border-bottom: 0; }
@@ -1429,6 +1428,20 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .c-culture li b { font: 400 19px/1.15 var(--display); }
 .c-culture li b i { font: 400 13px Inter, sans-serif; color: var(--muted); margin-left: 4px; }
 .c-culture li a:hover b { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+/* on a country profile: compact rows, in two columns where the rail is wide enough (the drawer,
+   or one column on a narrow screen), the first few shown and the rest behind "Show all" */
+.c-rail .c-culture { margin-bottom: 36px; }
+.c-rail .c-culture ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); column-gap: 24px; }
+.c-rail .c-culture li a { grid-template-columns: 40px 1fr; gap: 12px; padding: 7px 0; }
+.c-rail .c-culture img, .c-rail .c-culture-none { width: 40px; height: 40px; }
+.c-rail .c-culture-none { font-size: 19px; }
+.c-rail .c-culture li b { font-size: 17px; line-height: 1.2; }
+.c-culture-more summary { list-style: none; cursor: pointer; padding: 10px 0 0; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.c-culture-more summary::-webkit-details-marker { display: none; }
+.c-culture-more summary:hover { color: var(--text); }
+.c-culture-more[open] summary { display: none; }
+.c-culture-more ul { border-top: 0; }
+.c-culture-more:not([open]) > ul { display: none; }
 /* in the side rail of an entry page the list takes the rail's form: a dark rule above, the label,
    then rows ruled like the places and the history beside it */
 .ev-rail .c-culture { margin-top: 0; border-top: 1px solid var(--text); padding-top: 12px; }
@@ -1831,10 +1844,13 @@ button.sv-row .sv-chip { font: 400 10.5px var(--mono); text-transform: uppercase
 }
 /* the same figure, small, at the top right of the History page */
 .hero-progress { position: relative; }
-.rs-pill { position: absolute; top: clamp(28px, 5vw, 52px); right: 0; display: flex; align-items: center; gap: 10px; padding: 6px 10px; border: 1px solid var(--border); font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.rs-pill { position: absolute; top: clamp(28px, 5vw, 52px); right: 0; display: grid; gap: 8px; padding: 8px 12px 9px; border: 1px solid var(--border); font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .rs-pill:hover { border-color: var(--muted); color: var(--text); }
 .rs-pill i { width: 64px; height: 4px; background: linear-gradient(to right, var(--text) var(--p), var(--border) var(--p)); }
 .rs-pill b { font-weight: 500; font-size: 12px; color: var(--text); }
+.rs-top { display: flex; align-items: center; gap: 10px; }
+.rs-figs { display: grid; grid-template-columns: repeat(2, auto); justify-content: start; gap: 3px 16px; padding-top: 7px; border-top: 1px solid var(--border); text-transform: none; letter-spacing: .02em; }
+.rs-figs b { font-size: 11.5px; }
 @media (max-width: 700px) { .rs-pill { position: static; width: fit-content; margin-bottom: 16px; } }
 
 /* ── Rankings for another year: only what the history can rebuild is shown ── */
@@ -1910,3 +1926,6 @@ button.sv-row .sv-chip { font: 400 10.5px var(--mono); text-transform: uppercase
   .cu-as-list .cu-sum, .cu-as-list .cu-flags { display: none; }
 }
 .cu-cards:not(.cu-lead) .cu-pick { display: none; }
+/* the culture-only "Did you know?" on the Culture page: one gap above it, not the section's and the box's together */
+.cu-dyk { padding-top: clamp(32px, 4vw, 48px); }
+.cu-dyk .dyk { margin-top: 0; }

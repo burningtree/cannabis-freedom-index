@@ -11,8 +11,7 @@ import { sourceTuple } from "./sources.js";
 export const CULTURE_SECTIONS = [
   { id: "language", name: "Language", short: "Words for the plant, where they come from and where they are said.",  entries: true, one: "word", lede: "Bhang, charas, dagga, ganja, kif, 420: the words people have for the plant, where each comes from and where it is said.", intro: "A name for cannabis is rarely only a name. It says which part of the plant is meant, who brought it, and often what the people in charge thought of those who used it." },
   { id: "traditions", name: "Traditions", short: "Rituals, customs and places shaped by cannabis.",  entries: true, one: "tradition", lede: "Rituals, faiths, customs and gathering places, and what the law made of each.", intro: "Where cannabis belongs to a festival, a faith, a daily habit or a neighbourhood's social life, the law has had to decide what to do about it: write an exception, look away, or prosecute." },
-  { id: "history", name: "History", short: "Attitudes, propaganda and counterculture in the record of laws.",  lede: "Social attitudes, propaganda and counterculture: the places where the record of laws shows what people thought." },
-  { id: "people", name: "People", short: "Icons, activists and historical figures.",  soon: true, lede: "Cultural icons, activists and historical figures." },
+  { id: "people", name: "People", short: "Who made the laws, who broke them, and who changed what was known.",  entries: true, one: "person", lede: "Officials, preachers, scientists and presidents: the people whose work shaped what the law did with cannabis.", intro: "Laws have authors and opponents. These are people whose campaigns, faith, research or politics changed what was allowed, told from the record and tied to the laws they touched." },
   { id: "stories", name: "Stories", short: "Experiences told by the people who live with these laws.",  lede: "Personal experiences and ethnographic accounts, gathered from the people who live with these laws." },
 ];
 export const cultureSection = (id) => CULTURE_SECTIONS.find((s) => s.id === id);
@@ -49,14 +48,14 @@ export const cultureEntries = (await getCollection("culture"))
   // featured entries first, by rank; then the rest alphabetically
   .sort((a, b) => (a.featured ?? Infinity) - (b.featured ?? Infinity) || a.title.localeCompare(b.title));
 // and so must links from one entry to another
-for (const e of cultureEntries) for (const [, path] of (e.entry.body ?? "").matchAll(/\]\(\/(culture\/(?:language|traditions)\/[^/)#]+)\/?[^)]*\)/g)) {
+for (const e of cultureEntries) for (const [, path] of (e.entry.body ?? "").matchAll(/\]\(\/(culture\/(?:language|traditions|people)\/[^/)#]+)\/?[^)]*\)/g)) {
   if (!cultureEntries.some((x) => x.url === path + "/")) throw new Error(`culture/${e.entry.id}.md: the text links to /${path}/, which does not exist`);
 }
 
 // Related entries, for the side of each entry page: the ones named in `related` first, in their
 // order; then those the text links to or that link here, those sharing history entries, and those
 // kept in two or more of the same countries. Weighed together, at most eight.
-const links = (e) => [...(e.entry.body ?? "").matchAll(/\]\(\/culture\/((?:language|traditions)\/[^/)#]+)/g)].map((m) => m[1]);
+const links = (e) => [...(e.entry.body ?? "").matchAll(/\]\(\/culture\/((?:language|traditions|people)\/[^/)#]+)/g)].map((m) => m[1]);
 for (const e of cultureEntries) {
   const named = e.related.map((id) => {
     const r = cultureEntries.find((x) => `${x.section}/${x.slug}` === id);

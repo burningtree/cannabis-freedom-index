@@ -1,5 +1,5 @@
 ---
-// Every "Did you know?" case on one page, grouped by where it comes from. The home page shows
+// Every "Did you know?" case on one page, grouped by where it comes from, the cultural atlas last. The home page shows
 // the same cases three at a time, shuffled; here they are all open and in a fixed order.
 import Base from "../layouts/Base.astro";
 import { getFacts } from "../lib/facts.js";
@@ -10,6 +10,7 @@ const groups = [
   ["scores", "From the scores", "Worked out from today's scores, so they change when the data does."],
   ["countries", "From the country profiles", "Rules that are odd, generous or harsh in one particular place."],
   ["history", "From the history", "Moments from two centuries of cannabis law, oldest first."],
+  ["culture", "From the culture", "Words, customs, faiths and people from the cultural atlas."],
 ].map(([id, name, sub]) => ({ id, name, sub, facts: facts.filter((f) => f.group === id) }));
 ---
 <Base title="Did you know?" description={`${facts.length} curious cases from the Cannabis Freedom Index: strange rules, forgotten laws and what the scores show, each linked to its source page.`}>
@@ -17,7 +18,7 @@ const groups = [
     <section class="hero hero-sm">
       <p class="eyebrow">Cannabis Freedom Index</p>
       <h1>Did you know?</h1>
-      <p class="lede">{facts.length} curious cases from the index: strange rules, forgotten laws and what the scores show. Each one links to the country or the <a href={`${base}history/`}>history</a> entry it comes from.</p>
+      <p class="lede">{facts.length} curious cases from the index: strange rules, forgotten laws, what the scores show and what the culture keeps. Each one links to the country, the <a href={`${base}history/`}>history</a> entry or the <a href={`${base}culture/`}>atlas</a> entry it comes from.</p>
     </section>
     {groups.map((g) => (
       <section class="section" id={g.id}>
@@ -32,9 +33,11 @@ const groups = [
               <p class="dyk-text">
                 {f.parts.map((part) => typeof part === "string" ? part
                   : part.country ? <a href={`${base}country/${part.country.slug}/`}>{part.label}</a>
-                  : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
+                  : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
+            : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
+          : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
               </p>
-              {f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
+              {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
             </li>
           ))}
         </ol>

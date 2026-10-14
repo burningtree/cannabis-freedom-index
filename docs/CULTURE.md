@@ -8,14 +8,13 @@ in each part, what an entry should focus on, and how to write one.
 Read it together with `docs/DATA-MAINTENANCE.md`. The rules there about sources, pictures and
 history entries apply here too.
 
-## The five parts
+## The four parts
 
 | Part | Address | What it holds | Made of |
 |---|---|---|---|
 | Language | `/culture/language/` | Words for the plant, its products, its tools and the acts around it | `culture/language/*.md` |
 | Traditions | `/culture/traditions/` | Things a community does with cannabis, again and again | `culture/traditions/*.md` |
-| History | `/culture/history/` | Attitudes, propaganda, counterculture, as they show in the record of laws | A hand-picked list of history entries, in `src/pages/culture/history.astro` |
-| People | not open yet | Cultural icons, activists, historical figures | — |
+| People | `/culture/people/` | People whose campaigns, faith, research or politics changed what the law did with cannabis | `culture/people/*.md` |
 | Stories | `/culture/stories/` | Personal experiences and ethnographic accounts, gathered from the public | The participatory project; nothing is collected yet |
 
 ## Where does it go?
@@ -29,8 +28,8 @@ Ask what the subject is.
 | A practice repeated by a group: a ritual, festival, craft, dish, remedy, yearly gathering, social institution | Traditions | bhang at Holi, Hash Bash, cannabis social clubs |
 | A place whose importance is a sustained cannabis-related social practice or community | Traditions | Pusher Street, Freak Street, the gatherings at Hôtel Pimodan |
 | One dated event: a law, ruling, report, arrest, a single demonstration | `changes.yaml` (the history), with an article in `articles/` if it deserves one | Jamaica's 2015 act, the first Global Marijuana March |
-| What people thought of cannabis and its users at some time and place | A history entry, then a line in `/culture/history/` | the 1894 Hemp Drugs Commission |
-| One person | People, when it opens. Until then, mention them in the entries they belong to | Leonard Howell, John Sinclair |
+| What people thought of cannabis and its users at some time and place | A history entry | the 1894 Hemp Drugs Commission |
+| One person whose work changed what the law did | People | Harry Anslinger, Leonard Howell, Raphael Mechoulam |
 | A first-hand account | Stories, when it opens | — |
 | A strain, brand, shop or product review | Nowhere | — |
 
@@ -66,6 +65,21 @@ Give the `spelling`: the word in its own script, the language and, where known, 
 
 Not for Language: strain names, product names, and slang that has no history beyond "people say
 it".
+
+## What People is about
+
+An entry is about a person because of what they did to, with or against the law on cannabis:
+wrote it, enforced it, defied it, studied the plant it bans, or changed it. Fame alone is not a
+reason. An entry answers:
+
+1. **What they did that touched the law,** with dates, and the history entries that record it.
+2. **Why,** in their own words where a source gives them, and what their contemporaries said.
+3. **What came of it:** the law, the ruling, the discovery, the movement, and how it is judged now.
+   Where a person's claims were wrong or their methods harmful, say so on the evidence.
+
+Give `life` ("1892–1975") and, in `origin`, what they were ("American narcotics official").
+`countries` are the countries where they worked. A portrait is the right picture here. Do not
+write about private life beyond what explains the public work.
 
 ## What Traditions is about
 
@@ -179,7 +193,7 @@ country pages with `<Image>`, and pictures in the text are optimised the same wa
 The site turns that into a figure with the caption and credit underneath. Rules:
 
 - A picture must show the subject itself: the thing, the act, the place or the people. No
-  buildings of institutions, no generic leaves, no portraits of officials.
+  buildings of institutions, no generic leaves, no portraits of officials (except in People, where the person is the subject).
 - Prefer openly licensed or public-domain images when a good, relevant one is available.
   If no suitable open image is found, a well-sourced photograph or illustration may be used
   without a confirmed open licence; do not hold up the entry solely for that reason.

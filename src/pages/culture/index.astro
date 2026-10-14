@@ -1,9 +1,10 @@
 ---
 // Culture: the way in to what the site knows about cannabis in culture. The index maps laws;
-// this is about the words, customs and people behind them. Five parts, of which Language and
-// Traditions are made of entries (/culture/<section>/*.md, see src/lib/culture.js).
+// this is about the words, customs and people behind them. Four parts, of which Language,
+// Traditions and People are made of entries (/culture/<section>/*.md, see src/lib/culture.js).
 import Base from "../../layouts/Base.astro";
 import CultureCards from "../../components/CultureCards.astro";
+import DidYouKnow from "../../components/DidYouKnow.astro";
 import { CULTURE_SECTIONS, cultureEntries, cultureIn } from "../../lib/culture.js";
 
 const base = import.meta.env.BASE_URL;
@@ -11,7 +12,7 @@ const countryCount = new Set(cultureEntries.flatMap((e) => e.countries)).size;
 // The hub shows the five most important entries of each part (their `featured` rank), the first
 // as a large lead card; the rest are a click away.
 const preview = (id) => cultureIn(id).slice(0, 5);
-const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).length === 1 ? "entry" : "entries"}` : s.soon ? "In preparation" : s.id === "stories" ? "Collecting soon" : "From the record");
+const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).length === 1 ? "entry" : "entries"}` : s.soon ? "In preparation" : "Collecting soon");
 ---
 <Base title="Culture" description="A cultural atlas of cannabis around the world: the words people have for it, the rituals and traditions it belongs to, and the people behind the laws.">
   <main class="changes-page culture">
@@ -33,6 +34,8 @@ const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).l
       </ol>
     </section>
 
+    <section class="section cu-dyk"><DidYouKnow group="culture" /></section>
+
     {CULTURE_SECTIONS.filter((s) => s.entries).map((s) => (
       <section class="section">
         <div class="section-head"><div>
@@ -40,7 +43,7 @@ const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).l
           <p class="sub">{s.intro}</p>
         </div></div>
         <CultureCards entries={preview(s.id)} lead />
-        <p class="cu-all front-go"><a class="go" href={`${base}culture/${s.id}/`}>All {cultureIn(s.id).length} {s.id === "language" ? "words" : "traditions"} <span aria-hidden="true">→</span></a></p>
+        <p class="cu-all front-go"><a class="go" href={`${base}culture/${s.id}/`}>All {cultureIn(s.id).length} {{ language: "words", traditions: "traditions", people: "people" }[s.id]} <span aria-hidden="true">→</span></a></p>
       </section>
     ))}
   </main>

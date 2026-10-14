@@ -1,5 +1,5 @@
 ---
-// One entry of the cultural atlas: a word or a custom, explained, with its picture; beside it the
+// One entry of the cultural atlas: a word, a custom or a person, explained, with its picture; beside it the
 // countries where it is said or kept, each with its score today, and the history entries it touches.
 import Base from "../../../layouts/Base.astro";
 import { render } from "astro:content";
@@ -28,7 +28,7 @@ const written = e.written?.toISOString().slice(0, 10);
 
     <header class="ev-top ev-plain">
       <div>
-        <p class="eyebrow"><a href={`${base}culture/`}>Culture</a> <span><a href={`${base}culture/${s.id}/`}>{s.name}</a></span>{e.origin && <span>{e.origin}</span>}</p>
+        <p class="eyebrow"><a href={`${base}culture/`}>Culture</a> <span><a href={`${base}culture/${s.id}/`}>{s.name}</a></span>{e.origin && <span>{e.origin}</span>}{e.life && <span>{e.life}</span>}</p>
         <h1>{e.title}</h1>
         <p class="lede">{e.summary}</p>
         {e.spelling && (
@@ -43,7 +43,7 @@ const written = e.written?.toISOString().slice(0, 10);
     <div class="ev-body">
       <article class="ev-main">
         <section class="ev-article">
-          <p class="ev-label">{s.id === "language" ? "The word" : "The tradition"}{e.model && <span class="ev-by"> · written by {e.model}{written && <>, <time datetime={written}>{formatDate(written)}</time></>}</span>}</p>
+          <p class="ev-label">{s.id === "language" ? "The word" : s.id === "people" ? "The life" : "The tradition"}{e.model && <span class="ev-by"> · written by {e.model}{written && <>, <time datetime={written}>{formatDate(written)}</time></>}</span>}</p>
           {e.image && (
             <figure>
               <Picture src={e.image.src} alt={e.image.alt} style={e.image.fit === "contain" ? "object-fit: contain" : undefined} formats={["webp"]} widths={[480, 800, 1280]} sizes="(max-width: 900px) 100vw, 760px" />
@@ -62,14 +62,14 @@ const written = e.written?.toISOString().slice(0, 10);
 
       <aside class="ev-rail" aria-label="Countries, related entries and history">
         <section class="ev-more">
-          <h2 class="ev-label">{s.id === "language" ? "Where it is said" : "Where it is kept"}</h2>
+          <h2 class="ev-label">{s.id === "language" ? "Where it is said" : s.id === "people" ? "Where they worked" : "Where it is kept"}</h2>
           <ul class="cu-places">
             {e.countries.map((c) => (
               <li><a href={`${base}country/${c.slug}/`}><span><span class="flag">{c.flag}</span>{c.name}</span><b style={`--c:${tierColor(c.raw)}`} title="Index score today">{c.score}</b></a></li>
             ))}
           </ul>
         </section>
-        {e.relatedEntries.length > 0 && <CultureList entries={e.relatedEntries} heading={s.id === "language" ? "Related words and traditions" : "Related traditions and words"} />}
+        {e.relatedEntries.length > 0 && <CultureList entries={e.relatedEntries} heading={s.id === "language" ? "Related words and traditions" : s.id === "people" ? "In the atlas" : "Related traditions and words"} />}
         {e.history.length > 0 && (
           <section class="ev-more">
             <h2 class="ev-label">In the history</h2>

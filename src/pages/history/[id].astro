@@ -72,7 +72,7 @@ const related = relatedTo(ch, nearby);
               <li>
                 <a href={`${base}${e.url}`}>
                   {e.image ? <Image src={e.image.src} alt="" width={240} height={160} fit="cover" /> : <span class="ev-culture-none" aria-hidden="true">{e.title.slice(0, 1)}</span>}
-                  <span><small>{cultureSection(e.section).name}{e.origin && ` · ${e.origin}`}</small><b>{e.title}</b><span>{e.summary}</span></span>
+                  <span><small>{cultureSection(e.section).name}{e.origin && ` · ${e.origin}`}{e.life && ` · ${e.life}`}</small><b>{e.title}</b><span>{e.summary}</span></span>
                 </a>
               </li>
             ))}
