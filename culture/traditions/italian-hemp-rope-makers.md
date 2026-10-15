@@ -4,7 +4,7 @@ summary: In Carmagnola and Castelponzone, museums preserve the tools, long worki
 also: [cordai, canapa, sentè, sentèer]
 countries: [it]
 related: [language/hemp, traditions/hmong-hemp-cloth, traditions/hemp-in-shinto]
-history: [italy-hemp-law-2016]
+history: [italy-assocanapa-founded-1998, italy-hemp-law-2016]
 image:
   src: ../../src/assets/culture/carmagnola-hemp-ropewalk.jpg
   alt: Coils of rope, a wooden rope-making tool and a thick twisted rope displayed at Carmagnola's hemp museum.
@@ -24,6 +24,15 @@ sources:
     url: https://www.borgodicastelponzone.it/museo/la-canapa/
   - title: Gazzetta Ufficiale — Legge 2 dicembre 2016, n. 242
     url: https://www.gazzettaufficiale.it/atto/vediMenuHTML?atto.codiceRedazionale=16G00258&atto.dataPubblicazioneGazzetta=2016-12-30&tipoSerie=serie_generale&tipoVigenza=originario
+  - type: book
+    title: 'Cannabis: non solo fumo'
+    authors:
+      - Bernardo Parrella
+    publisher: Stampa Alternativa
+    year: 2014
+    locator: Il caso italiano — Hemp, cibo e imprenditoria nostrane
+  - title: Assocanapa — Chi siamo
+    url: https://www.assocanapa.org/assocanapa-chi-siamo/
 ---
 
 The Italian *cordai*, or rope-makers, worked cannabis into an everyday material: hemp cordage. Two local museum traditions preserve this history particularly clearly. Carmagnola, in Piedmont, maintains an ecomuseum of hemp working; Castelponzone, in Lombardy, has a museum dedicated to the rope-makers themselves.
@@ -49,6 +58,8 @@ The Castelponzone museum explains the preparation of hemp fibres through combing
 Its decline was not simply a story of prohibition. The museum describes competition from other cordage fibres, including sisal and Manila hemp. Despite its English trade name, Manila hemp is abacá, a different plant; sisal also comes from a different crop. Substitution could change the material while leaving a recognisable occupation and some of its techniques in place.
 
 ## An agricultural plant under cannabis law
+
+The later agricultural revival also had an organised base. [Assocanapa](https://www.assocanapa.org/assocanapa-chi-siamo/) dates its [foundation in Carmagnola to 1998](/history/italy-assocanapa-founded-1998/). Parrella’s 2014 account describes work on seed supply, Italian varieties and processing equipment. These efforts concerned the crop’s renewed industrial use; they do not establish a revival of the older rope-making occupation.
 
 Italy's [2016 hemp law](/history/italy-hemp-law-2016/) established a framework supporting cultivation and processing of qualifying industrial hemp. That modern framework is distinct from the older craft and from rules governing intoxicating cannabis. The museums explain why a history written only around smoking would miss an important part of the plant's place in Italy.
 

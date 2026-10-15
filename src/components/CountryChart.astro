@@ -14,16 +14,13 @@ const time = dateTime;
 const span0 = (ch) => (ch.estimate ? ch.window.map((y) => Date.UTC(y, 0, 1)) : [time(ch.date), time(ch.date)]);
 
 const all = [...history].reverse();
-// The axis never starts before 1900; older changes are folded into the starting value.
-const FLOOR = 1900;
-const changes = all.filter((ch) => +ch.date.slice(0, 4) >= FLOOR);
-const older = all.filter((ch) => +ch.date.slice(0, 4) < FLOOR);
-const startRaw = older.length ? older.at(-1).raw.after : all[0].raw.before;
-const startScore = older.length ? older.at(-1).score.after : all[0].score.before;
+const changes = all;
+const startRaw = all[0].raw.before;
+const startScore = all[0].score.before;
 const endYear = +lastUpdated.slice(0, 4);
 // a lead-in before the first change shows where the score started
 const firstYear = changes.length ? +changes[0].date.slice(0, 4) : endYear - 20;
-const startYear = Math.max(FLOOR, firstYear - Math.max(1, Math.round((endYear - firstYear) * 0.15)));
+const startYear = firstYear - Math.max(1, Math.round((endYear - firstYear) * 0.15));
 const t0 = Date.UTC(startYear, 0, 1);
 const t1 = time(lastUpdated);
 const x = (t) => ((t - t0) / (t1 - t0)) * 100;
@@ -40,7 +37,7 @@ const bands = TIERS.map((t, i) => [t.min, Math.min(i ? TIERS[i - 1].min : 100, y
   .map(([lo, hi, t]) => ({ color: tierColor(t.min), top: y(hi), height: y(lo) - y(hi) }));
 
 const span = endYear - startYear;
-const step = span > 50 ? 20 : span > 20 ? 5 : span > 8 ? 2 : 1;
+const step = span > 150 ? 50 : span > 50 ? 20 : span > 20 ? 5 : span > 8 ? 2 : 1;
 const years = Array.from({ length: span + 1 }, (_, i) => startYear + i).filter((yr) => yr % step === 0);
 
 const points = changes

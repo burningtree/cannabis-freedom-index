@@ -46,7 +46,7 @@ const written = e.written?.toISOString().slice(0, 10);
           <p class="ev-label">{s.id === "language" ? "The word" : s.id === "people" ? "The life" : "The tradition"}{e.model && <span class="ev-by"> · written by {e.model}{written && <>, <time datetime={written}>{formatDate(written)}</time></>}</span>}</p>
           {e.image && (
             <figure>
-              <Picture src={e.image.src} alt={e.image.alt} style={e.image.fit === "contain" ? "object-fit: contain" : undefined} formats={["webp"]} widths={[480, 800, 1280]} sizes="(max-width: 900px) 100vw, 760px" />
+              <Picture src={e.image.src} alt={e.image.alt} {...(e.image.aspect_ratio ? { width: e.image.src.width, height: Math.round(e.image.src.width / e.image.aspect_ratio), fit: "cover", position: e.image.position ?? "center" } : {})} style={e.image.fit === "contain" ? "object-fit: contain" : undefined} formats={["webp"]} widths={[480, 800, 1280]} sizes="(max-width: 900px) 100vw, 760px" />
               <figcaption>{e.image.caption} <span>{e.image.credit_url ? <a href={e.image.credit_url} target="_blank" rel="noopener noreferrer">{e.image.credit}</a> : e.image.credit}{e.image.license_url && <> · <a href={e.image.license_url} target="_blank" rel="noopener noreferrer">Licence</a></>}</span></figcaption>
             </figure>
           )}

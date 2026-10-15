@@ -7,7 +7,7 @@ also: [Winston Hubert McIntosh, Legalize It, Bush Doctor, the Wailers, One Love 
 countries: [jm]
 history: [jamaica-mandatory-prison-ended-1972, jamaica-legalize-it-1976, jamaica-tosh-peace-concert-1978, jamaica-ganja-commission-2001, jamaica-ganja-reform-2015]
 history_cards: [jamaica-legalize-it-1976, jamaica-tosh-peace-concert-1978]
-related: [traditions/rastafari-sacrament, language/ganja, language/spliff, people/leonard-howell]
+related: [traditions/rastafari-sacrament, people/bob-marley, language/ganja, language/spliff, people/leonard-howell]
 image:
   src: ../../src/assets/culture/peter-tosh-1978.jpg
   alt: A man with long locks playing a guitar at a microphone on a dim stage

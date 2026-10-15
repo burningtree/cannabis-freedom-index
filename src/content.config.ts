@@ -168,6 +168,9 @@ const changes = defineCollection({
       // read. Without it the entry is listed as "not yet checked": it may rest on memory.
       checked: z.boolean().optional(),
       related: z.array(z.string()).optional(), // ids of other entries that tell the same story; shown as related on both pages
+      // 1–10, set by hand only where the computed ranking in scripts/article-backlog.cjs is wrong;
+      // it decides which entries get articles first and is not shown on the site
+      importance: z.number().int().min(1).max(10).optional(),
       sources: z.array(source).min(1), // the more the better; the first is shown where there is room for one
     })
     .strict()
@@ -195,7 +198,7 @@ const prices = defineCollection({
 
 // A picture with who made it and under which licence: the lead image of an article or culture entry.
 // `src` is a file in src/assets, given relative to the Markdown file, so that Astro can optimise it.
-const picture = (image: () => z.ZodTypeAny) => z.object({ src: image(), alt: z.string().min(1), caption: z.string().optional(), fit: z.enum(["cover", "contain"]).optional(), credit: z.string().min(1), credit_url: z.string().url().optional(), license_url: z.string().url().optional() }).strict();
+const picture = (image: () => z.ZodTypeAny) => z.object({ src: image(), alt: z.string().min(1), caption: z.string().optional(), aspect_ratio: z.number().positive().optional(), position: z.enum(["center", "top", "right", "bottom", "left"]).optional(), fit: z.enum(["cover", "contain"]).optional(), credit: z.string().min(1), credit_url: z.string().url().optional(), license_url: z.string().url().optional() }).strict();
 
 // articles/<change id>.md: an optional long read for a history entry. The entry in changes.yaml
 // keeps its title and short description; the article adds the full story in Markdown, an

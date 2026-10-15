@@ -2,9 +2,11 @@
 sources:
   - title: PacLII — Tuvalu, Dangerous Drugs Ordinance
     url: https://paclii.org/tv/legis/consol_act/ddo233
+  - title: Tuvalu Government — Dangerous Drugs (Amendment) Act 2025
+    url: https://tuvalu-legislation.tv/cms/images/LEGISLATION/AMENDING/2025/2025-0009/2025-0009.pdf
 ---
 
-Modern Tuvalu still carries a cannabis law that began under British colonial rule. The Dangerous
+Tuvalu’s cannabis legislation began under British colonial rule. The Dangerous
 Drugs Ordinance commenced on 20 October 1948, when the islands formed part of the Gilbert and
 Ellice Islands colony.
 
@@ -18,7 +20,7 @@ Import and export are prohibited. A separate section bars importing or exporting
 alongside opium-poppy and coca seeds. Unlawfully imported or exported material is seized and
 forfeited.
 
-## A complete prohibition
+## The original prohibition
 
 The cultivation rule is short and absolute: no person may cultivate Indian hemp in Tuvalu. The
 offence applies whether cultivation is for private use or otherwise.
@@ -36,10 +38,9 @@ the act occurred without their knowledge or consent.
 
 ## From colony to country
 
-The current consolidated version is titled under the Laws of Tuvalu and says it is enacted by
+The 2022 consolidated version is titled under the Laws of Tuvalu and says it is enacted by
 Tuvalu's Parliament, but it retains the 1948 commencement date and the enactment's amendment
-history. It is therefore both a current national statute and a surviving piece of the territory's
-colonial legal inheritance.
+history. It preserves the territory’s colonial legal inheritance. A [2025 amendment](/history/tuvalu-drug-amendment-2025/) subsequently added minimum prison terms and a medical/scientific licensing power; the earlier provisions described here should be read in that historical context.
 
 The corresponding law remains in [Kiribati](/history/gilbert-islands-dangerous-drugs-1948/), the
 former Gilbert Islands. The two countries now publish separate consolidated texts of the same

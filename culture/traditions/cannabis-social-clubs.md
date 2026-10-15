@@ -2,11 +2,11 @@
 title: Cannabis social clubs
 summary: In Spain, users found a gap in the law and grew their cannabis together in members-only associations. Uruguay later wrote the model into law.
 also: [CSC, asociación cannábica, ARSEC]
-countries: [es, uy, mt, de, ch, za]
+countries: [es, uy, mt, de, ch, za, it]
 featured: 4
 related: [traditions/the-coffeeshop, traditions/global-marijuana-march]
-history: [spain-arsec-conviction-1997, spain-social-clubs-2001, uruguay-club-registry-2014, spain-supreme-court-clubs-2015, spain-catalonia-club-law-2017, spain-barcelona-clubs-2023, malta-legalisation-2021, switzerland-pilot-law-2021, germany-cultivation-associations-2024, spain-smokers-club-exemption-draft-2026, spain-canamo-magazine-1993, belgium-trekt-uw-plant-2006, spain-rasquera-plantation-2012, malta-first-associations-2024, malta-cannabis-amendments-2025]
-history_cards: [spain-arsec-conviction-1997, spain-social-clubs-2001, uruguay-club-registry-2014, spain-supreme-court-clubs-2015, spain-catalonia-club-law-2017, spain-barcelona-clubs-2023, germany-cultivation-associations-2024, spain-smokers-club-exemption-draft-2026, belgium-trekt-uw-plant-2006, spain-rasquera-plantation-2012, malta-first-associations-2024]
+history: [italy-racale-patient-club-2013, spain-arsec-conviction-1997, spain-social-clubs-2001, uruguay-club-registry-2014, spain-supreme-court-clubs-2015, spain-catalonia-club-law-2017, spain-barcelona-clubs-2023, malta-legalisation-2021, switzerland-pilot-law-2021, germany-cultivation-associations-2024, spain-smokers-club-exemption-draft-2026, spain-canamo-magazine-1993, belgium-trekt-uw-plant-2006, spain-rasquera-plantation-2012, malta-first-associations-2024, malta-cannabis-amendments-2025]
+history_cards: [italy-racale-patient-club-2013, spain-arsec-conviction-1997, spain-social-clubs-2001, uruguay-club-registry-2014, spain-supreme-court-clubs-2015, spain-catalonia-club-law-2017, spain-barcelona-clubs-2023, germany-cultivation-associations-2024, spain-smokers-club-exemption-draft-2026, belgium-trekt-uw-plant-2006, spain-rasquera-plantation-2012, malta-first-associations-2024]
 image:
   src: ../../src/assets/culture/dr-dou-social-club.webp
   alt: The lounge of a cannabis social club, with leather armchairs, exposed brick, coloured lanterns and a bar
@@ -22,6 +22,13 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Spain
   - title: Brookings / WOLA — Walsh and Ramsey, Uruguay's Drug Policy, Major Innovations, Major Challenges (2015)
     url: https://www.brookings.edu/wp-content/uploads/2016/07/Walsh-Uruguay-final.pdf
+  - type: book
+    title: 'Cannabis: non solo fumo'
+    authors:
+      - Bernardo Parrella
+    publisher: Stampa Alternativa
+    year: 2014
+    locator: Il caso italiano — Cannabis Social Club e terapie collaborative
 ---
 
 A cannabis social club is a private, non-profit association whose members grow cannabis together and share it among themselves. Nothing is sold to outsiders. The idea was worked out by users in Spain in the 1990s, in a gap left by Spanish law, and it has since been written into the laws of Uruguay, Malta and Germany as a way of allowing cannabis without allowing a market.
@@ -71,6 +78,8 @@ What Spain tolerated, other countries regulated.
 | [Germany](/country/de/) | [2024](/history/germany-cultivation-associations-2024/) | Cultivation associations of up to 500 members; up to 25 grams a day and 50 grams a month each |
 
 In South Africa, clubs calling themselves Dagga Private Clubs have appeared since the Constitutional Court's ruling of 2018, in a legal grey area like Spain's.
+
+In [Italy](/country/it/), the name also became a vehicle for patient campaigning. On [15 January 2013](/history/italy-racale-patient-club-2013/), Lucia Spiri and Andrea Trisciuoglio founded LaPianTiamo in Racale, Puglia. Parrella’s 2014 account describes their aim as collective cultivation for patients facing delays and costs in obtaining imported cannabis medicines. Their association sought a lawful supply route; its founding did not itself authorise a shared crop. This was a therapeutic campaign, with a different emphasis from the adult-use associations in Spain.
 
 ## An older ancestor
 

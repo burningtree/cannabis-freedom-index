@@ -7,7 +7,7 @@ also: [Mechoulam, THC, CBD, anandamide, 2-AG, endocannabinoid system]
 countries: [il]
 history: [israel-mechoulam-thc-1964, anandamide-discovered-1992, second-endocannabinoid-2ag-1995, israel-first-medical-permits-1992]
 history_cards: [israel-mechoulam-thc-1964, anandamide-discovered-1992, second-endocannabinoid-2ag-1995]
-related: [language/hashish, language/cannabis]
+related: [language/hashish, language/cannabis, people/lumir-hanus]
 image:
   src: ../../src/assets/culture/raphael-mechoulam-2017.jpg
   alt: An elderly man speaking at a lectern in front of a projected slide

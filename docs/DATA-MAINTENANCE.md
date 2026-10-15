@@ -578,7 +578,21 @@ it is.
 
 ## Long reads for history entries
 
-An important history entry can have a full article. The entry in `changes.yaml` stays as it is
+An important history entry can have a full article. To choose which, run
+
+```
+npm run articles:backlog            # top 50 entries without an article
+npm run articles:backlog -- 100     # more
+npm run articles:backlog -- --country mt
+npm run articles:backlog -- --all   # include entries that already have one
+```
+
+It ranks every entry from what the data already says: the size of its score step, its kind, whether it
+is a country's first ban or the change behind today's score, the population affected, how many atlas
+entries, articles and related entries point to it, and whether a book is among its sources. Copies of
+one event filed under several countries count once. The scale and points are at the top of
+`scripts/article-backlog.cjs`. Where the ranking is wrong, set `importance: 1–10` on the entry in
+`changes.yaml`; the listing marks hand-set values with `*`. The field is not shown on the site. The entry in `changes.yaml` stays as it is
 (title, short description, sources); the article is a Markdown file named after the entry's id:
 
 ```

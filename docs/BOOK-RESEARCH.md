@@ -4,30 +4,31 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 
 **Read** means the recorded chapter was read; **partial** means only the named pages or sections were examined; **indexed** means a contents entry only. Counts include introductions where catalogued. They are not percentages of pages or proof that a whole book is covered. Applied targets count distinct recorded content/event references, not independent findings.
 
-**16 catalogued books**; 14 with recorded substantive reading; 1 awaiting bibliography verification.
+**17 catalogued books**; 15 with recorded substantive reading; 1 awaiting bibliography verification.
 
 | Book | Bibliography | Fully read / listed units | Partial | Indexed only | Applied targets | Illustrations | Local file |
 |---|---|---:|---:|---:|---:|---:|---|
-| [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 14 / 36 | 4 | 18 | 34 | 0 | matches recorded hash |
-| [Cannabis: A History](#booth-cannabis-history-2003) | verified | 1 / 26 | 0 | 25 | 2 | 0 | matches recorded hash |
-| [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 3 | 6 | 6 | 0 | matches recorded hash |
+| [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 14 / 36 | 5 | 17 | 39 | 0 | matches recorded hash |
+| [Cannabis: A History](#booth-cannabis-history-2003) | verified | 1 / 26 | 1 | 24 | 5 | 0 | matches recorded hash |
+| [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 6 | 3 | 11 | 0 | matches recorded hash |
 | [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 1 | 12 | 3 | 0 | matches recorded hash |
-| [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 1 | 8 | 43 | 0 | matches recorded hash |
+| [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 1 | 8 | 44 | 0 | matches recorded hash |
 | [Reefer Wellness: Understanding Cannabis Science, Culture, and Medicine](#kirk-reefer-wellness-2025) | verified | 0 / 8 | 0 | 8 | 0 | 0 | matches recorded hash |
 | [The Emperor Wears No Clothes](#herer-emperor-wears-no-clothes-undated) | verified | 1 / 16 | 1 | 14 | 1 | 0 | matches recorded hash |
-| [The African Roots of Marijuana](#duvall-african-roots-marijuana-2019) | verified | 4 / 10 | 2 | 4 | 18 | 4 | matches recorded hash |
+| [The African Roots of Marijuana](#duvall-african-roots-marijuana-2019) | verified | 4 / 10 | 3 | 3 | 28 | 4 | matches recorded hash |
 | [Cannabis: Evolution and Ethnobotany](#cannabis-evolution-and-ethnobotany) | awaiting_verification | not indexed | 0 | 0 | 0 | 0 | matches recorded hash |
 | [Commodifying Cannabis: A Cultural History of a Complex Plant in the Atlantic World](#commodifying-cannabis-a-cultural-history-of-a-complex-plant-in-the-atlantic-world) | verified | 0 / 9 | 2 | 7 | 0 | 0 | matches recorded hash |
 | [Ganja in Jamaica: The Effects of Marijuana Use](#ganja-in-jamaica-the-effects-of-marijuana-use) | verified | 3 / 14 | 1 | 10 | 14 | 0 | matches recorded hash |
 | [Home Grown: Marijuana and the Origins of Mexico’s War on Drugs](#home-grown-marijuana-and-the-origins-of-mexico-s-war-on-drugs) | verified | 1 / 11 | 1 | 9 | 6 | 0 | matches recorded hash |
-| [Intoxicating Zion: A Social History of Hashish in Mandatory Palestine and Israel](#intoxicating-zion-a-social-history-of-hashish-in-mandatory-palestine-and-israel) | verified | 0 / 8 | 6 | 2 | 12 | 0 | matches recorded hash |
+| [Intoxicating Zion: A Social History of Hashish in Mandatory Palestine and Israel](#intoxicating-zion-a-social-history-of-hashish-in-mandatory-palestine-and-israel) | verified | 0 / 8 | 6 | 2 | 17 | 0 | matches recorded hash |
 | [The Flowers of Good: The Science and the History of Marijuana Liberation](#the-flowers-of-good-the-science-and-the-history-of-marijuana-liberation) | verified | 1 / 15 | 1 | 13 | 10 | 0 | matches recorded hash |
 | [The Marijuana Conviction: A History of Marijuana Prohibition in the United States](#the-marijuana-conviction-a-history-of-marijuana-prohibition-in-the-united-states) | verified | 7 / 16 | 4 | 5 | 43 | 0 | matches recorded hash |
 | [História da maconha no Brasil](#franca-historia-maconha-brasil-unverified) | verified | 2 / 5 | 1 | 2 | 22 | 0 | matches recorded hash |
+| [Cannabis: non solo fumo](#parrella-cannabis-non-solo-fumo-2014) | verified | 3 / 8 | 0 | 5 | 20 | 0 | matches recorded hash |
 
 ## Inventory alerts
 
-- New book awaiting cataloguing: `Cannabis non solo fumo (Bernardo Parrella [Parrella, Bernardo]).epub`
+No uncatalogued PDF/EPUB files in this snapshot.
 
 Missing local books are expected on other checkouts. A changed hash requires edition/page-map review; never carry progress silently to a replacement file.
 
@@ -65,7 +66,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | The "Ganja Vision" in Jamaica | read | pp. 257–266 | articles/jamaica-ganja-vision-study-1975.md; changes.yaml#jamaica-ganja-vision-study-1975 | Complete chapter read, ending at printed p. 266 before the plates/part divider. Ten personal vision accounts within a selected sixty-man sample; other reports were hearsay. Vision-quest comparison is an analogy, not historical diffusion or shared religion. Do not import old universal pharmacological or ancient chronology claims. |
 | Cannabis sativa L. (Marihuana): VI. Variations in Marihuana Preparations and Usage — Chemical and Pharmacological Consequences | indexed_only | — | — | — |
 | Social and Medical Aspects of the Use of Cannabis in Brazil | indexed_only | — | — | — |
-| Sociocultural and Epidemiological Aspects of Hashish Use in Greece | indexed_only | — | — | — |
+| Sociocultural and Epidemiological Aspects of Hashish Use in Greece | selected_pages_read | pp. 303–317 | changes.yaml#greece-hashish-ban-1890; articles/greece-hashish-ban-1890.md; changes.yaml#greece-orchomenus-hashish-report-1887; changes.yaml#greece-asia-minor-refugees-1922; changes.yaml#greece-police-hashish-archives-1973 | Gives the 1890 measure as an Interior Ministry circular of 27 March 1890 (the site had followed Wikipedia's 'royal decree'). The 1932–1970 laws are summarised only; find the statutes. Pp. 318–326 (archive statistics) unread. |
 | Marihuana and Genetic Studies in Colombia: The Problem in the City and in the Country | indexed_only | — | — | — |
 | Cannabis Usage in Pakistan: A Pilot Study of Long Term Effects on Social Status and Physical Health | indexed_only | — | — | — |
 | The Significance of Marihuana in a Small Agricultural Community in Jamaica | indexed_only | — | — | — |
@@ -111,7 +112,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | 18. Turning On, Tuning In And Riding The Bus | indexed_only | — | — | — |
 | 19. Ashrams And The Agents Of Change | indexed_only | — | — | — |
 | 20. The Times They Were Adjusting | indexed_only | — | — | — |
-| 21. Island In The Sun | indexed_only | — | — | — |
+| 21. Island In The Sun | selected_sections_read | the Bob Marley passages (EPUB page markers 319–322) | culture/people/bob-marley.md; changes.yaml#jamaica-marley-arrest-1968; changes.yaml#uk-marley-cannabis-fine-1977 | Booth gives Marley's birthplace as "Santa Anna" and his father as a white Jamaican; the entry follows Wikipedia (Nine Mile, Saint Ann; an Englishman). The 1968 one-month jail term rests on Booth alone. |
 | 22. Swinging In London, Stoned In Amsterdam | indexed_only | — | — | — |
 | 23. The Universal Friend | indexed_only | — | — | — |
 | 24. The Balm Of Hope | indexed_only | — | — | — |
@@ -132,11 +133,11 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | 1. Introduction | indexed_only | — | — | — |
 | 2. Imperial Merchants, Victorian Science, and Hemp to 1842 | indexed_only | — | — | — |
 | 3. Smuggling, Trade and Taxation in Nineteenth-Century British India | selected_pages_read | pp. 47–65 | — | No new legal events (1854 and Act II of 1876 already have entries). Rich material on cultivation in the Ganja Mahal (the poddar or "ganja-doctor", trampling, flat and round ganja, the bow to the crop) for a possible culture entry. |
-| 4. Medicine, Murder, and Madness in Mid-century | indexed_only | — | — | — |
+| 4. Medicine, Murder, and Madness in Mid-century | selected_pages_read | pp. 83–84 | changes.yaml#burma-hemp-drugs-prohibited-1874; articles/burma-hemp-drugs-prohibited-1874.md | — |
 | 5. Ganja in Parliament, 1891–1894 | selected_pages_read | pp. 93–98 | articles/india-commons-ganja-question-1891.md | — |
 | 6. Reports, Experiments, and Hallucinations, 1894–1912 | selected_pages_read | pp. 123 (n. 78)–138 | changes.yaml#india-bengal-public-warehouses-1904; articles/india-bengal-public-warehouses-1904.md; changes.yaml#india-assam-ganja-report-1918; changes.yaml#india-hemp-drugs-revenue-1921; changes.yaml#guyana-indian-hemp-ordinance-1913 | Mills (p. 123 n. 78, p. 139) describes British Guiana's 1913 Indian Hemp Ordinance as a licensed bonded-warehouse system, while the site scores it as a ban (49 → 9). Check the ordinance text before changing the gy chain. |
-| 7. The League of Nations and British Legislation, 1912–1928 | indexed_only | — | — | — |
-| 8. DORA, the First World War, and the Domestic Drug Scares of the 1920s | indexed_only | — | — | — |
+| 7. The League of Nations and British Legislation, 1912–1928 | selected_pages_read | pp. 154, 157 (Germany at The Hague; Versailles Article 295) | changes.yaml#germany-opium-law-1920; articles/germany-opium-law-1929.md | — |
+| 8. DORA, the First World War, and the Domestic Drug Scares of the 1920s | selected_pages_read | pp. 193 | changes.yaml#egypt-tanti-hashish-cafe-1914 | — |
 | 9. Conclusion: Cannabis and British Government, 1800–1928 | indexed_only | — | — | — |
 
 <a id="abel-marihuana-first-twelve-thousand-years-1980"></a>
@@ -183,7 +184,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | 6. 6 A Historical Approach to the Criminalization of Marijuana Use in Mexico | indexed_only | — | — | — |
 | 7. 7 Reefer Madness Past and Present: Dr. Leopoldo Salazar Viniegra, Mexico, and the United States, ca. 1938–2018 | indexed_only | — | — | — |
 | 8. 8 Smuggler’s Paradise: The Hash Trade and Drug Control in the Building of the Afghan State, ca. 1923–1974 | read | Entire chapter and notes 1–62; no verified print-page mapping. | culture/traditions/chicken-street.md; articles/afghanistan-penal-code-1924.md; articles/afghanistan-embassy-press-campaign-1972.md; articles/afghanistan-smuggling-crackdown-1972.md; articles/afghanistan-hashish-fertiliser-edicts-1969.md; changes.yaml#afghanistan-penal-code-1924; changes.yaml#afghanistan-hashish-fertiliser-edicts-1969; changes.yaml#afghanistan-smuggling-crackdown-1972 | See docs/research/bradford-afghanistan-reading-2026-10-15.md. Original penal-code editions and fertiliser edicts remain unexamined. Article numbering varies. December 1972 diplomatic evidence does not attribute all annual arrests to Shafiq. Baba Ku introduction stories are legends; practical tolerance is not legal exemption. |
-| 9. 9 “Hashers Don’t Read Das Kapital”: East Germany, Socialist Prohibition, and Global Cannabis | read | Entire chapter and notes 1–70; no verified print-page mapping. | culture/language/hasch.md; articles/germany-gdr-hashers-capital-1970.md; articles/germany-gdr-transit-hashish-seizures-1970.md; articles/germany-east-berlin-narcotics-group-1990.md; changes.yaml#germany-gdr-hashers-capital-1970; changes.yaml#germany-gdr-transit-hashish-seizures-1970; changes.yaml#germany-east-berlin-narcotics-group-1990 | See docs/research/richardson-little-gdr-reading-2026-10-15.md. Original newspaper heading, byline and date checked; full article requires subscription. The earlier konkret phrase remains a lead. Transit seizures are not East German consumption; a low domestic cannabis supply did not imply absence of alcohol or medicine misuse. |
+| 9. 9 “Hashers Don’t Read Das Kapital”: East Germany, Socialist Prohibition, and Global Cannabis | read | Entire chapter and notes 1–70; no verified print-page mapping. | culture/language/hasch.md; articles/germany-gdr-hashers-capital-1970.md; articles/germany-gdr-transit-hashish-seizures-1970.md; articles/germany-east-berlin-narcotics-group-1990.md; changes.yaml#germany-gdr-hashers-capital-1970; changes.yaml#germany-gdr-transit-hashish-seizures-1970; changes.yaml#germany-east-berlin-narcotics-group-1990; articles/germany-opium-law-1929.md | See docs/research/richardson-little-gdr-reading-2026-10-15.md. Original newspaper heading, byline and date checked; full article requires subscription. The earlier konkret phrase remains a lead. Transit seizures are not East German consumption; a low domestic cannabis supply did not imply absence of alcohol or medicine misuse. |
 | 10. 10 The Origins of Cannabis Prohibition in Nigeria and the Indian Hemp Decree of 1966 | read | Entire chapter and notes 1–83; no verified print-page mapping. | culture/people/thomas-adeoye-lambo.md; articles/nigeria-police-narcotics-squad-1953.md; articles/nigeria-cannabis-seizures-jump-1962.md; articles/nigeria-lambo-addiction-study-1965.md; changes.yaml#nigeria-police-narcotics-squad-1953; changes.yaml#nigeria-cannabis-seizures-jump-1962; changes.yaml#nigeria-lambo-addiction-study-1965 | See docs/research/klantschnig-nigeria-reading-2026-10-15.md. The 1965 Lambo papers and underlying police/newspaper archives have not been independently examined. Lagos music, toye, Orlando Owoh and Fela Kuti are leads for primary cultural documentation. Seizure data are not prevalence; period psychiatric diagnoses are not current advice. |
 | 11. 11 Cannabis, Counterculture, and Criminals: The Rise of Smuggling in the Netherlands, ca. 1962–1976 | selected_sections_read | Introductory discussion; The Explosion in Demand; notes 14–28 | culture/traditions/the-coffeeshop.md; articles/netherlands-cannabis-offences-surge-1967.md; changes.yaml#netherlands-cannabis-offences-surge-1967 | Remaining supply sections and notes not reviewed. Do not equate police offence counts, seizure totals, survey prevalence and reconstructed import volumes. One-in-ten interception is an assumption. |
 | 12. 12 “We Smoke Flowers”: On “Being High” in Postrevolutionary Iran | read | Entire chapter and notes 1–50; no verified print-page mapping. | culture/language/gol.md; culture/language/hashish.md; articles/iran-gol-second-drug-2017.md; changes.yaml#iran-gol-second-drug-2017 | See docs/research/ghiabi-iran-reading-2026-10-15.md. ADNA's original July 3, 2017 report remains unexamined; the 2018 research paper was read. Informal tolerance is not legal exemption or current travel advice. Verify early medical names and textual identifications before reuse: the chapter conflates Ibn Rushd and Rhazes. |
@@ -260,7 +261,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | 6. Society Overturned: The Bena Riamba | read | pp. 112–124; chapter notes 280–286 | culture/traditions/bena-riamba.md; culture/people/sangula-meta.md; articles/dr-congo-bena-riamba-1881.md; changes.yaml#dr-congo-bena-riamba-1881 | Primary accounts conflict about names, kinship and succession. Do not turn approximate reconstruction into precisely dated events. Notes 21 and 35 qualify translations and kinship. |
 | 7. Cannabis Crosses the Atlantic | selected_pages_read | pp. 125–139; selected notes pp. 291–293 (notes 60–104) | culture/language/maconha.md; culture/language/diamba.md; articles/sierra-leone-cannabis-long-in-use-1851.md; changes.yaml#sierra-leone-cannabis-long-in-use-1851 | Resume p. 140; remaining body and notes unread. Maconha is placed within a wider Bantu vocabulary with shifting botanical meanings. Rio 1830 penalties conflict with existing site account: verify original before revision. Clarke’s 1851 primary report pp. 9–11 separately read and checked. |
 | 8. Working under the Influence | indexed_only | — | — | — |
-| 9. Buying and Banning | indexed_only | — | — | — |
+| 9. Buying and Banning | selected_pages_read | pp. note 95 (p. 319) and the Tunisian passage it annotates; pp. 192–195 (Maghreb monopolies) | changes.yaml#malta-hashish-to-tunisia-1895; culture/language/qanneb.md; changes.yaml#morocco-hassan-kif-ban-1888; changes.yaml#morocco-monopolies-restored-1896; changes.yaml#morocco-kif-state-farm-1914; changes.yaml#morocco-hashish-import-ban-1922; changes.yaml#tunisia-cultivation-ban-1875; changes.yaml#tunisia-takrouri-monopoly-1890; articles/morocco-kif-ban-1956.md; articles/tunisia-takrouri-ban-1953.md | — |
 | 10. Rethinking Marijuana | indexed_only | — | — | — |
 
 ### Illustration provenance
@@ -369,8 +370,8 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
 | Introduction | indexed_only | — | — | — |
-| 1. The Drug Trade in the Levant | selected_sections_read | Ottoman Syria; British attitudes to the Egyptian ban (Cromer, Kitchener); Geneva 1924–25; heroin, the CNIB and Russell Pasha | changes.yaml#turkey-ottoman-hashish-decree-1725; changes.yaml#egypt-kitchener-hashish-report-1914; changes.yaml#egypt-drug-law-1925 | — |
-| 2. Smuggling in Mandatory Palestine | selected_sections_read | smugglers and routes; enforcement, the Palestine Police and the Dangerous Drugs Ordinances | changes.yaml#israel-mandate-ordinance-1925; changes.yaml#palestine-mandate-ordinance-1925; changes.yaml#israel-dangerous-drugs-1936; changes.yaml#palestine-dangerous-drugs-1936 | — |
+| 1. The Drug Trade in the Levant | selected_sections_read | Ottoman Syria; British attitudes to the Egyptian ban (Cromer, Kitchener); Geneva 1924–25; heroin, the CNIB and Russell Pasha; Lebanon, Syria, and Palestine Step In (French-mandate Levant, notes 90–115) | changes.yaml#turkey-ottoman-hashish-decree-1725; changes.yaml#egypt-kitchener-hashish-report-1914; changes.yaml#egypt-drug-law-1925; changes.yaml#lebanon-hashish-growing-begins-1907; changes.yaml#lebanon-landowners-resist-destruction-1929; changes.yaml#lebanon-narcotics-decree-1934; articles/lebanon-hashish-ban-1926.md | — |
+| 2. Smuggling in Mandatory Palestine | selected_sections_read | smugglers and routes; enforcement, the Palestine Police and the Dangerous Drugs Ordinances | changes.yaml#israel-mandate-ordinance-1925; articles/israel-military-hashish-ban-1919.md; changes.yaml#palestine-mandate-ordinance-1925; changes.yaml#israel-dangerous-drugs-1936; changes.yaml#palestine-dangerous-drugs-1936 | — |
 | 3. The Underworld of Users | selected_sections_read | interwar use; hashish cafés and article 14 of the 1936 ordinance | changes.yaml#israel-dangerous-drugs-1936; changes.yaml#palestine-dangerous-drugs-1936 | — |
 | 4. Jews and Interwar Oriental Fantasies | indexed_only | — | — | — |
 | 5. Hashish Trafficking in Israel | selected_sections_read | police reports to the CND 1948–1962; Knesset Internal Affairs Committee 1956 | — | Southern smuggling routes and army seizures not yet applied. |
@@ -454,3 +455,25 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | Diambismo: um flagelo social | read | whole chapter, with its notes 1–42 | changes.yaml#brazil-poisons-law-1921; changes.yaml#brazil-geneva-delegate-1925; changes.yaml#brazil-federal-ban-1932; articles/brazil-federal-ban-1932.md; changes.yaml#brazil-penal-code-1940; changes.yaml#brazil-narcotics-commission-1941; changes.yaml#brazil-maconha-collection-1953; changes.yaml#brazil-maynard-myth-1959; articles/brazil-maconha-collection-1953.md; changes.yaml#brazil-users-as-traffickers-1968; articles/brazil-users-as-traffickers-1968.md | — |
 | O canabismo dos hippies e dos excluídos | selected_sections_read | opening; the 1976 law; the Gil and Rita Lee arrests; Mayrink da Costa and the USP debate | changes.yaml#brazil-law-6368-1976; changes.yaml#brazil-gilberto-gil-arrest-1976; articles/brazil-gilberto-gil-arrest-1976.md; changes.yaml#brazil-mayrink-acquittal-1979; changes.yaml#brazil-usp-decriminalisation-debate-1980 | — |
 | Canabismo, um hábito economicamente viável | indexed_only | — | — | — |
+
+<a id="parrella-cannabis-non-solo-fumo-2014"></a>
+
+## Cannabis: non solo fumo
+
+- **ID:** `parrella-cannabis-non-solo-fumo-2014`
+- **Local file:** `books/Cannabis non solo fumo (Bernardo Parrella [Parrella, Bernardo]).epub`
+- **Last recorded review:** 2026-10-15
+- **Coverage:** Cover, internal title, rights statement, prologue dated February 2014 and NCX/spine examined. Prologue, the complete Il caso italiano chapter and the complete Scenari per il nuovo millennio chapter read across three passes. The local EPUB has misleading 1999/9788872264638 OPF metadata. The cover and updated text identify the 2014 work; no format-specific EPUB ISBN verified. The 2014 print record lists ISBN 9788862223782, which is not assigned here to the EPUB.
+- **Next:** Read La Notte dei Tempi or L’era proibizionista next. Verify the 1998 Italian prescribing framework and 2013 constitutional referrals against originals. Global chapter contains date errors and overstates some legal permissions; consult the latest audit before reusing its claims.
+- **Reading notes:** [parrella-italy-patient-access-2026-10-15.md](research/parrella-italy-patient-access-2026-10-15.md), [parrella-italy-industry-reform-2026-10-15.md](research/parrella-italy-industry-reform-2026-10-15.md), [parrella-global-scenarios-2026-10-15.md](research/parrella-global-scenarios-2026-10-15.md)
+
+| Chapter / unit | Status | Actually examined | Applied to | Next research |
+|---|---|---|---|---|
+| Prologo | read | Complete prologue, including the preceding 12 February 2014 campaign statement | — | — |
+| La Notte dei Tempi | indexed_only | — | — | — |
+| L’era proibizionista | indexed_only | — | — | — |
+| Scenari per il nuovo millennio | read | Complete chapter: L’uso terapeutico; Attivismo alla riscossa; Hemp for Victory; Nuove applicazioni e ricerche mediche; USA: prove generali di legalizzazione?; I dinamismi del quadro globale. Reflowable EPUB; no verified print-page mapping. | changes.yaml#canada-industrial-hemp-regulations-1998; articles/canada-industrial-hemp-regulations-1998.md; changes.yaml#us-vermont-civil-possession-2013; articles/us-vermont-civil-possession-2013.md; changes.yaml#us-vha-medical-marijuana-directive-2010; changes.yaml#nepal-italy-hemp-solidarity-project-2011; articles/nepal-italy-hemp-solidarity-project-2011.md; changes.yaml#france-medicines-decree-2013; articles/france-medicines-decree-2013.md | Medical efficacy assertions, reported market figures, French club prosecutions, Malaysia’s 2013 proposals and US event dates remain leads. The Nepal trade-project account is attributed to the book; no independent outcome or volume audit was obtained. |
+| Il caso italiano | read | Complete chapter (all seven sections), including the concluding interviews with Giancarlo Cecconi, Alessandro Buccolieri and Fabrizio Dentini | changes.yaml#italy-tuscany-cannabinoid-law-2012; changes.yaml#italy-racale-patient-club-2013; changes.yaml#italy-sativex-authorisation-2013; changes.yaml#italy-regional-cannabinoid-ruling-2013; culture/traditions/cannabis-social-clubs.md; changes.yaml#italy-liberta-droga-congress-1973; changes.yaml#italy-assocanapa-founded-1998; changes.yaml#italy-cannabinoid-medicines-decree-2007; changes.yaml#italy-hemp-seed-food-circular-2009; changes.yaml#italy-indica-sativa-trade-2013; culture/traditions/italian-hemp-rope-makers.md | Primary decree confirms 18 April 2007, published 28 April; book conflates these dates. The 2009 circular concerns seed-food permission and safety, not therapeutic endorsement. Congress corroborated as a national meeting; avoid the book’s international/first-campaign claims. Fair is its first edition, not demonstrably Italy’s first hemp fair. Unverified prevalence, nutrition, Amnesia and environmental comparisons not imported. |
+| Bibliografia ragionata | indexed_only | — | — | — |
+| Siti web e risorse online | indexed_only | — | — | — |
+| Documenti | indexed_only | — | — | — |

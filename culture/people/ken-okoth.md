@@ -10,7 +10,20 @@ history_cards: [kenya-marijuana-control-bill-2018]
 related: [language/bangi]
 model: gpt-6
 written: 2026-10-15
+image:
+  src: ../../src/assets/culture/ken-okoth-2018.jpg
+  fit: contain
+  alt: Kenyan parliamentarian Ken Okoth seated outdoors wearing glasses and a dark blazer, gesturing with one hand while holding a tablet.
+  caption: "Ken Okoth (1978–2019), the Kenyan parliamentarian who proposed the Marijuana Control Bill in 2018, seeking cannabis regulation, taxation, and relief from previous criminal convictions."
+  credit: The Standard, photograph credited as Courtesy, published 21 September 2018; photographer unidentified
+  credit_url: https://www.standardmedia.co.ke/article/2001296438/kibra-mp-okoth-tables-bid-for-legalisation-of-marijuana
 sources:
+  - title: The Standard — MP Okoth tables four-point bid to have bhang legalized
+    authors: [Japheth Ogila]
+    year: 2018
+    url: https://www.standardmedia.co.ke/article/2001296438/kibra-mp-okoth-tables-bid-for-legalisation-of-marijuana
+  - title: Marijuana Moment — Lawmaker Pushes For Marijuana Legalization In Kenya (24 September 2018)
+    url: https://www.marijuanamoment.net/lawmaker-pushes-for-marijuana-legalization-in-kenya/
   - type: chapter
     title: Sub-Saharan Africa, Cannabis, and Contemporary Drug Policy
     authors: [Neil Carrier]
@@ -26,7 +39,7 @@ sources:
     url: https://www.knchr.org/Articles/ArtMID/2432/ArticleID/1082/Tribute-Hon-Ken-Okoth-1978-2019
 ---
 
-Ken Okoth was the member of Kenya's National Assembly for Kibra who sought a regulated cannabis market rather than continued prohibition. His proposed [Marijuana Control Bill of 2018](/history/kenya-marijuana-control-bill-2018/) brought together cultivation, research, taxation and the consequences of criminal convictions. He died in 2019 before the proposal became law.
+Kenneth Odhiambo Okoth (1978–2019), known as Ken Okoth, served as the member of Kenya's National Assembly for Kibra, Nairobi, from 2013 until his death in July 2019. In September 2018, he proposed replacing cannabis prohibition with a regulated framework for cultivation, production, distribution and consumption. His proposed [Marijuana Control Bill of 2018](/history/kenya-marijuana-control-bill-2018/) brought together cultivation, research, taxation and the consequences of criminal convictions. His initiative did not result in cannabis legalization before his death.
 
 His place in cannabis history rests on that legislative initiative. Anthropologist Neil Carrier places it within a broader Kenyan argument about whether an established but prohibited crop could become a legitimate source of medicine and income.
 
@@ -40,13 +53,13 @@ That record provides context for his attention to criminal convictions in the ca
 
 Carrier records Okoth contrasting cannabis's potential with the difficulties of sugarcane farming. The argument was about changing the economic treatment of a plant, rather than simply tolerating individual smoking.
 
-In reporting on his letter to Speaker Justin Muturi, *The Star* described proposals for taxation and jobs across the production chain. Okoth also raised research, industrial uses and protection of Kenyan knowledge and plant resources. Those were objectives for a proposed industry, not evidence that a legal export market already existed.
+In reporting on his letter to Speaker Justin Muturi, *The Star* described proposals for progressive taxation and jobs across the production chain. Okoth also raised medical and industrial research, and protection of Kenyan genetic resources and traditional knowledge. Cannabis reform was an economic and social policy question for him, extending beyond individual consumption. Those were objectives for a proposed industry, not evidence that a legal export market already existed.
 
 Carrier's wider analysis asks who would benefit from such changes. A licensed market could generate income while also excluding small growers through costs or access to capital. That is a question for assessing a reform's design, not an outcome established for Okoth's unpassed proposal.
 
 ## Regulation and the criminal record
 
-The reported plan envisaged registration of growers, producers, manufacturers and users, with protection of children. It also sought relief for people carrying records from previous cannabis-use convictions.
+The reported plan envisaged registration of growers, producers, manufacturers and users, with protection of children. It also proposed amnesty and clearing previous cannabis-related criminal records, addressing the continuing consequences of convictions for cannabis use.
 
 These elements distinguish a regulatory proposal from the claim that cannabis should be beyond all rules. They also broaden the question beyond access to the substance: changing future offences does not automatically remove the consequences of earlier convictions.
 

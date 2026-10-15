@@ -2,6 +2,11 @@
 sources:
   - title: PacLII — Kiribati, Dangerous Drugs Ordinance
     url: https://paclii.org/ki/legis/consol_act/ddo233
+  - title: Kiribati Government Trade Portal — Dangerous Drugs Ordinance, Revised Edition 1977
+    url: https://kiribati.tradeportal.org/media/Dangerous%20Drugs%20Ordinance,%201948.pdf
+    locator: Scanned pages 3, 5–8, 16–17 and 26
+  - title: Kiribati Government Trade Portal — Dangerous Drugs Regulations, L.N. 19/80
+    url: https://kiribati.tradeportal.org/media/Dangerous%20Drugs%20Regulation.pdf
 ---
 
 Kiribati's cannabis prohibition began before Kiribati existed as an independent state. A British
@@ -48,5 +53,8 @@ conviction. Articles involved in the offence are forfeited.
 The same 1948 enactment also survives in [Tuvalu](/history/ellice-islands-dangerous-drugs-1948/),
 which separated from the Gilbert Islands before independence.
 
-This event moves every segment of Kiribati's index down from the pre-prohibition state: the law
-restricted possession, cultivation, enforcement, sharing, consumption and access at once.
+The index uses this dated ordinance as Kiribati's first documented restriction and reconstructs
+a low freedom score after it. The cannabis provisions expressly cover possession, cultivation,
+giving and sale; this is not a finding that consumption itself is a separately worded cannabis
+offence. The later [1980 prescription regulations](/history/kiribati-drug-prescription-regulations-1980/)
+establish a limited framework for preparations, without proving that patients could obtain them.
