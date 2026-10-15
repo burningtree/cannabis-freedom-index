@@ -17,8 +17,16 @@ image:
   credit: Bart Wursten / Flora of Mozambique, 9 March 2008.
   credit_url: https://www.mozambiqueflora.com/cult/image-display.php?image_id=1&species_id=120470
 model: gpt-6
-written: 2026-10-14
+written: 2026-10-15
 sources:
+  - type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: '9781478004530'
+    locator: 'ch. 4, pp. 74–76 and 86–89; notes 16–21, p. 260'
+    url: https://www.dukeupress.edu/the-african-roots-of-marijuana
   - title: Flora of Mozambique — Cannabis sativa, Bart Wursten, Ndundu Lodge, Vumba (9 March 2008)
     url: https://www.mozambiqueflora.com/cult/image-display.php?image_id=1&species_id=120470
   - title: VaShona Dictionary — mbanje
@@ -49,7 +57,9 @@ The [botanical photograph](https://www.mozambiqueflora.com/cult/image-display.ph
 
 ## How long it has been there
 
-Cannabis reached this part of Africa centuries ago. In Zimbabwe the first archaeological evidence is put at around 1200, and there is evidence of its use under the Kingdom of Zimbabwe and, later, the Kingdom of Mutapa.
+Cannabis cultivation and use have a long regional history, but the archaeological claim needs care. Duvall discusses pipe bowls from Zimbabwe estimated to date to the thirteenth century through archaeological context. A pipe establishes smoking technology; without identified residues it does not establish that cannabis was smoked in it. He presents circulation under the Kingdom of Zimbabwe as a reconstruction, rather than a securely dated first cannabis find.
+
+*Suruma* also reaches beyond a single modern border. Duvall compares it with Malagasy *soróma* and records related vocabulary from Mozambique and northern Tanzania. These names suggest historical exchange, but he leaves the exact direction and timing unresolved.
 
 For Mozambique the usual account is that the plant came from India, with Arab traders or with the Portuguese. The earliest written notice is from the 1580s, when the Dominican missionary João dos Santos recorded that people there used it to suppress hunger.
 

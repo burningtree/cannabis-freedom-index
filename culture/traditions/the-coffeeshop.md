@@ -12,8 +12,8 @@ image:
   caption: Coffeeshop Reefer in Amsterdam.
   credit: APK, CC BY-SA 4.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Coffeeshop_Reefer.jpg
-model: opus-5.5
-written: 2026-10-14
+model: gpt-6
+written: 2026-10-15
 sources:
   - title: Wikipedia — Coffeeshop (Netherlands)
     url: https://en.wikipedia.org/wiki/Coffeeshop_(Netherlands)
@@ -21,6 +21,15 @@ sources:
     url: https://en.wikipedia.org/wiki/Opium_Law
   - title: "Wikipedia — Drug policy of the Netherlands"
     url: https://en.wikipedia.org/wiki/Drug_policy_of_the_Netherlands
+  - type: chapter
+    title: 'Cannabis, Counterculture, and Criminals: The Rise of Smuggling in the Netherlands, ca. 1962–1976'
+    authors: [Stephen Snelders]
+    container: 'Cannabis: Global Histories'
+    editors: [Lucas Richert, James H. Mills]
+    publisher: MIT Press
+    year: 2021
+    isbn: '9780262045209'
+    locator: 'ch. 11, introductory discussion and The Explosion in Demand (EPUB)'
 ---
 
 A Dutch coffeeshop is a café where adults can buy and smoke small amounts of cannabis. It has existed since the 1970s, and it has never been legal. The shop is tolerated: the sale is, in the Dutch phrase, illegal but not punishable. Half a century of rules, habits and arguments has grown up around that sentence.
@@ -30,6 +39,10 @@ A Dutch coffeeshop is a café where adults can buy and smoke small amounts of ca
 The idea came from a government commission. In [1972 the Baan Commission](/history/netherlands-baan-commission-1972/) argued that drugs should be ranked by risk, and that keeping cannabis users away from the sellers of heroin mattered more than punishing them. The [Opium Act of 1976](/history/netherlands-toleration-1976/) put cannabis on a list of its own. In 1980 the government [published the guidelines](/history/netherlands-dealers-not-prosecuted-1980/) under which shops selling small amounts would be left alone.
 
 The policy has a name, *gedoogbeleid*, the policy of tolerance: an official set of instructions to prosecutors saying when an offence is not to be pursued. Dutch courts have long treated it as decriminalisation in fact. The statute itself stays on the books, largely because the international treaties require it.
+
+Stephen Snelders’s history adds the supply side to this account. Imported cannabis was already reaching Dutch users through networks linked to countercultural circles and maritime trading communities before the later retail policy. His argument is that established relationships and environments helped make those networks effective. A reform of possession rules did not create the supply chain from nothing.
+
+The chapter also distinguishes the rise in recorded offences and seizures from estimates of users or total imports. That matters when describing the growth of the market: a police count measures what authorities recorded, while a model of undetected trade depends on assumptions.
 
 ## The house rules
 

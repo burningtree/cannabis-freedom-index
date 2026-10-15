@@ -1,9 +1,9 @@
 ---
 title: The Bena Riamba
-summary: A late nineteenth-century religious and political movement among Luba-speaking communities of the Kasai, known as the Sons of Hemp. Shared pipes expressed friendship and belonging, in a history recorded chiefly by European outsiders.
+summary: A cannabis-centred movement in the nineteenth-century Kasai whose shared pipes expressed friendship and allegiance. Its history also involves trade, political rivalry, coercion and colonial alliances.
 also: [sons of hemp, riamba, Bashilenge]
 countries: [cd]
-related: [language/diamba, language/bangi, traditions/the-morning-pipe]
+related: [language/diamba, traditions/the-morning-pipe, people/sangula-meta]
 history: [dr-congo-bena-riamba-1881, congo-free-state-hemp-ordinance-1903]
 history_cards: [dr-congo-bena-riamba-1881]
 image:
@@ -14,8 +14,8 @@ image:
   credit: Hermann von Wissmann et al., Im Innern Afrikas (1891), Smithsonian Libraries; public domain / CC0; margins cropped
   credit_url: https://archive.org/details/iminnernafrikasd00wiss
   license_url: https://creativecommons.org/publicdomain/zero/1.0/
-model: opus-5.5
-written: 2026-10-14
+model: gpt-6
+written: 2026-10-15
 sources:
   - type: book
     title: Im Innern Afrikas — die Erforschung des Kassai während der Jahre 1883, 1884 und 1885
@@ -30,7 +30,7 @@ sources:
     publisher: Duke University Press
     year: 2019
     isbn: "9781478003946"
-    locator: "pp. 20–22, figure 1.4"
+    locator: "pp. 20–22, figure 1.4; ch. 6, pp. 112–124 and notes pp. 280–286"
     url: https://assets-us-01.kc-usercontent.com/f7ca9afb-82c2-002a-a423-84e111d5b498/9d65da15-ba28-46d3-aacd-425f5269973d/978-1-4780-0394-6_601.pdf
   - type: chapter
     title: Sub-Saharan Africa, Cannabis, and Contemporary Drug Policy
@@ -47,41 +47,38 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_the_Democratic_Republic_of_the_Congo
 ---
 
-*Bena Riamba*, commonly translated as “Sons of Hemp”, was a cannabis-centred religious and political movement among Luba-speaking communities of the Kasai region, in what is now the Democratic Republic of the Congo, during the late nineteenth century. Cannabis smoking and shared ceremonial pipes expressed belonging and friendship, while also becoming part of political alliances and preparations for travel and war.
+*Bena Riamba* was a cannabis-centred religious and political movement among Luba-speaking communities of the Kasai region, in present-day Democratic Republic of the Congo. It flourished in the Lulua Valley during the 1870s and 1880s. Shared smoking expressed friendship and allegiance, but the movement also participated in warfare, commerce in captives and alliances with European colonial agents.
 
-The engraving *Am Kongo*, published in *Im Innern Afrikas* in 1891, depicts the movement’s leaders alongside European explorers. Historian Chris S. Duvall identifies the seated men, from left to right, as Chingenge, Sangula and Mukenge. Mukenge, labelled “Kalamba” on the original plate, holds a large calabash water pipe between his legs.
+“Sons of Hemp” is its familiar translation. Geographer Chris S. Duvall prefers “people of the riamba”: European observers could not reliably distinguish the local words for people and children, and later writers supplied competing translations. The familiar English name should not decide who belonged or what they believed.
 
-## The colonial record
+## Trade and the first gardens
 
-What is known comes from outsiders. The German explorers [Paul Pogge](https://en.wikipedia.org/wiki/Paul_Pogge) and [Hermann Wissmann](https://en.wikipedia.org/wiki/Hermann_von_Wissmann) reached these Kasai communities in 1881, and their accounts, written on the eve of colonial rule, are the main source. The pipe-maker Alfred Dunhill, writing in 1924, added that by 1884 a king in the region had set up a "riamba" cult "in place of fetish-worship". No account by a member survives in the sources used here, and everything below should be read with that in mind.
+Duvall traces the movement's origins to an encounter around 1864 between Mukwajanga, a Cokwe elephant hunter and trading intermediary from Angola, and Chishimbi, a Luba-speaking leader. In that reconstruction, they smoked together and Chishimbi planted cannabis after trying it. Their relationship opened access to firearms, cloth and other goods.
 
-*Bashilenge* is a historical ethnographic designation used in these accounts, not necessarily the communities’ own preferred name. The engraving is likewise a colonial documentary image: European travellers selected the scene and framed the people they depended on as guards, porters and political allies. Their descriptions of friendship do not establish an entirely peaceful or egalitarian society. Leadership, warfare and unequal relations belong to this history too.
+The account comes through later sources, particularly the Portuguese traveller Henrique Dias de Carvalho. Its approximate date concerns this local political story, rather than the first arrival of cannabis anywhere in the Congo Basin. It offers no basis for assigning the movement's origins to Swahili traders arriving from Zanzibar.
 
-## How it began
+Chishimbi credited the plant with his trading success. His *lubuku*, a society of friendship, joined smoking to a programme of commercial openness and greater political centralisation. The greeting *moyo* signified an oath or life in Duvall's account; it should not simply be translated as hemp. *Riamba* belongs to the regional family of words that includes [diamba](/culture/language/diamba/).
 
-Cannabis was new to the region. It may have been brought to the Congo basin only in the 1850s, by Swahili traders from Zanzibar; the word *riamba* is of the same family as the Angolan [diamba](/culture/language/diamba/).
+## A movement divided
 
-According to the explorers, it began with small clubs of smokers bound to one another by friendship. The clubs grew into a movement and the movement into something like a religion. The accounts describe adherents calling themselves Bena Riamba and using *Lubuku*, friendship, for their country. They greeted one another with the word *moio*, which meant both hemp and life.
+Chishimbi died around 1873. Sources disagree about the succession, the relationships between leaders, and even whether particular terms were names or titles. Mukenge and Chingenge emerged as competing authorities. [Sangula Meta](/culture/people/sangula-meta/) sustained the movement's religious teachings; her precise family relationship to the men remains uncertain.
 
-## What was done
+The German explorers Paul Pogge and Hermann von Wissmann were interested participants in this politics. Their African allies supplied guards, porters and access to the region. Wissmann favoured Mukenge, while Dias de Carvalho's account favoured Chingenge. Reading only the Germans makes their preferred leader appear more representative than the evidence warrants.
 
-| Occasion | The place of hemp |
-|---|---|
-| Joining | New members were initiated with the pipe, usually before a war or a long journey |
-| Daily life | Each man was expected to take part and to show his devotion by smoking often |
-| Travel and war | Taken before setting out; it was held to protect against every kind of harm |
-| Trade and peace | No holiday, no trade agreement and no peace treaty was concluded without it |
+*Bashilenge*, prominent in European descriptions, was not a neutral community name. Duvall notes that the people so designated disliked it and identified as Baluba. Labels hardened through warfare and colonial administration, obscuring a shared language beneath competing political identities.
 
-The pipe was a great gourd. Pogge and Wissmann found large plots of hemp planted round the villages to supply it.
+## Smoking, belonging and authority
 
-The explorers reported that the Bena Riamba attributed universal powers to the plant. Later writers compared the pipe to the peace pipe of North America. Shared smoking could signal friendship or agreement, but the same accounts also describe its use before war; the comparison should not turn a political movement into a story of universal peace.
+Accounts describe followers gathering to smoke, sing, dance and share food. Large cannabis gardens surrounded settlements. The calabash water pipe could affirm friendship and trust, including during dealings with outsiders.
 
-## The law that followed
+Smoking also served coercive purposes. Duvall describes judicial ordeals in which participants continued until someone lost consciousness, and humiliating initiation procedures imposed on defeated leaders. Accounts of rejecting older weapons coexist with the acquisition of rifles. Rhetoric about peace did not prevent warfare or the sale of women and children to trading partners.
 
-The region was absorbed into King Leopold's Congo Free State within a few years of the explorers' visit. The new state took a different view. An order of 1899 dealt with the destruction of confiscated hemp, and in 1903 an [ordinance "against the use of smoking hemp"](/history/congo-free-state-hemp-ordinance-1903/) prohibited growing, selling, carrying, possessing and using it. Offenders faced a fine of 100 to 1,000 francs and from fifteen days to a year of penal servitude. Village chiefs were made jointly liable for the fines.
+These reports require care: surviving descriptions are partial, frequently sensationalised and written by observers with interests of their own. They nevertheless contradict the later image of a universally peaceful cannabis society. Religious fellowship and authoritarian power could inhabit the same institution.
 
-Nothing in the sources used here says how the movement ended.
+## What the engraving records
 
-## Now
+The *Am Kongo* engraving, published in *Im Innern Afrikas* in 1891, places Chingenge, Sangula and Mukenge alongside European explorers. Duvall identifies those three seated figures from left to right. Mukenge, labelled “Kalamba” on the plate, holds a large calabash water pipe.
 
-The Democratic Republic of the Congo still prohibits cannabis for anything but medicine, industry and science, which a directive of 2021 allows under licence. In short histories of cannabis in the country the movement survives as a single line: in the 1880s the "People of Cannabis" popularised its ritual use in the south-west.
+The image preserves named participants and their material culture through a colonial documentary frame. It does not give an unmediated view of a ceremony. The [1881 encounter](/history/dr-congo-bena-riamba-1881/) is a moment in that record, not the movement's founding date.
+
+The movement fragmented as conflict intensified and the Congo Free State expanded its power. Duvall traces reports into the 1890s, rather than a single agreed ending. The later [1903 ordinance against smoking hemp](/history/congo-free-state-hemp-ordinance-1903/) belongs to a distinct phase of colonial control; it should not stand in for an explanation of the movement's decline.

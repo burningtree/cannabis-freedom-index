@@ -1,61 +1,69 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6
+written: 2026-10-15
 sources:
   - type: chapter
-    title: "The Origins of Cannabis Prohibition in Nigeria and the Indian Hemp Decree of 1966"
+    title: The Origins of Cannabis Prohibition in Nigeria and the Indian Hemp Decree of 1966
     authors: [Gernot Klantschnig]
-    container: "Cannabis: Global Histories"
+    container: 'Cannabis: Global Histories'
     editors: [Lucas Richert, James H. Mills]
     publisher: MIT Press
     year: 2021
-    isbn: "9780262366137"
-    locator: "pp. 232–238"
+    isbn: '9780262045209'
+    locator: 'ch. 10, Doctors and Addiction; Failed Medicalization: Soldiers, Coups, and Crisis; notes 48–74 (EPUB)'
 ---
 
-A year before Nigeria made growing cannabis a capital crime, its most eminent
-psychiatrist published a study arguing that drug use was a social problem with social
-causes. The soldiers who wrote the law did not use it.
+In 1965, Nigerian psychiatrist [Thomas Adeoye Lambo](/culture/people/thomas-adeoye-lambo/)
+published a study of drug addiction in West Africa. It appeared in the *West African
+Medical Journal* and the United Nations' *Bulletin on Narcotics*, helping establish
+cannabis use as a medical question in the region.
 
-## The man
+Historian Gernot Klantschnig places the study within a contest over how independent
+Nigeria would understand drugs: as a problem of social conditions and health, or as
+an expression of criminality and disorder.
 
-Thomas Adeoye Lambo is regarded as the founder of African psychiatry. He was among the
-first doctors in West Africa to treat patients who used cannabis and to ask how
-dependent they really were, and he had noted its use among Africans as early as 1955.
+## A question about definitions
 
-## The study
+Lambo doubted whether the cannabis users he treated met the accepted addiction
+criteria of his time. Klantschnig records his uncertainty about applying definitions
+based on dependence, increasing doses and withdrawal to those patients.
 
-In 1965 his work on addiction in West Africa appeared in the region's leading medical
-journal and in the United Nations' bulletin on narcotics. It established cannabis as a
-medical question there.
+He broadened his account to include disruption of work and social life. Migration,
+economic change, group identification and access to substances all contributed to
+his explanation. Neither criminal psychology nor the mere availability of drugs
+was enough on its own.
 
-Lambo rejected the two explanations then current in the press and the police: that
-users were criminal types, or that drugs were simply too easy to get. Addiction, he
-wrote, "like crime, is the product of many variables". He pointed to rapid social
-change, migration to the cities, and the loss of the controls of village life. The
-people most at risk were those he called "marginal Africans": migrant workers,
-ex-soldiers, political thugs.
+He also distinguished possible mental impairment in some patients from a claim that
+prolonged cannabis use necessarily caused permanent personality disturbance. These
+were historical clinical judgments, not present-day medical advice.
 
-On the question that dominated public debate he was careful. Long-term use, he said,
-"does not necessarily produce permanent disturbance of personality", though in some
-people it impaired mental health.
+## The patients his categories obscured
 
-## What he left out
+Lambo emphasised people he described as “marginal Africans,” including migrant
+workers, former soldiers and political thugs. Klantschnig challenges the fit between
+that model and the clinic: students and other respectable groups made up more than
+a third of Lambo's own patients by 1965.
 
-His picture was tidier than his clinic. By 1965 students and other respectable people
-made up more than a third of his own patients, and some of his colleagues admitted to
-having smoked. Lambo classified those patients in ways that kept them out of sight,
-because they did not fit his theory.
+The historian argues that Lambo's classifications obscured patients who did not fit
+his theory. His study complicated public stereotypes while retaining assumptions
+about class and social belonging.
 
-## Why it lost
+## A public message with unintended effects
 
-His remedy mixed medicine, education, law and long-term economic change. It could not
-be issued as an order. In 1966 a military government took power amid political
-violence that the press had linked to cannabis, and reached for something that could:
-the [Indian Hemp Decree](/history/nigeria-indian-hemp-decree-1966/), with death for
-cultivation.
+Psychiatrists' interventions helped bring cannabis onto the national policy agenda.
+Yet newspaper discussion could turn their warnings into apparent confirmation that
+cannabis caused madness, a claim more sweeping than Lambo's account.
 
-From then on drug control in Nigeria belonged to the police. The medical approach
-Lambo had opened was set aside.
+Nor was a medical approach automatically free of coercion. Klantschnig notes forced
+admission among the repressive features of psychiatric drug treatment.
 
-The index lists the study for context; it moved no score for [Nigeria](/country/ng/).
+## The law that followed
+
+Lambo's proposed response combined medicine, education, law and longer-term social
+change. The military government that took power in 1966 pursued discipline and
+immediate control. Its [Indian Hemp Decree](/history/nigeria-indian-hemp-decree-1966/)
+made cannabis cultivation punishable by death and gave little expression to his
+multifaceted approach.
+
+The study is recorded as a contribution to debate, rather than a legal reform. It
+changed no score for [Nigeria](/country/ng/).

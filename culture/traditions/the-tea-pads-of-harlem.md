@@ -1,6 +1,6 @@
 ---
 title: The tea pads of Harlem
-summary: In New York between the wars, cannabis was smoked in rented rooms called tea pads, most of them in Harlem, with a radio or a nickelodeon playing. The city's own investigators counted about 500 and found them calmer than the newspapers said.
+summary: In New York between the wars, cannabis was smoked in rented rooms called tea pads, most of them in Harlem, with a radio or a nickelodeon playing. The city's own investigators estimated about 500 and found them calmer than the newspapers said.
 also: [tea pad, tea, vipers, muggles, gage, reefer, sass-fras, gungeon]
 countries: [us]
 history: [us-marihuana-tax-act-1937, us-la-guardia-report-1944]
@@ -12,8 +12,8 @@ image:
   caption: Louis Armstrong at the Aquarium club, New York, about July 1946. He called cannabis "gage" and recorded "Muggles" in 1928.
   credit: William P. Gottlieb, public domain, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Louis_Armstrong,_Aquarium,_New_York,_N.Y.,_ca._July_1946_(William_P._Gottlieb_00231)_-_Cropped.jpg
-model: opus-5.5
-written: 2026-10-14
+model: gpt-6
+written: 2026-10-15
 sources:
   - title: "Mayor's Committee on Marihuana, The Marihuana Problem in the City of New York (1944), sociological study, as reprinted by Beyond THC — New York smokers get bolder"
     url: https://beyondthc.com/new-york-smokers-get-bolder/
@@ -23,11 +23,18 @@ sources:
     url: https://www.louisarmstronghouse.org/west-end-blog/high-times-of-louis-armstrong/
   - title: Wikipedia — Mezz Mezzrow
     url: https://en.wikipedia.org/wiki/Mezz_Mezzrow
+  - type: book
+    title: 'Marihuana: The First Twelve Thousand Years'
+    authors: [Ernest L. Abel]
+    publisher: Plenum Press; Springer facsimile
+    year: 1980
+    isbn: 978-1-4899-2189-5
+    locator: pp. 219–220, The Jazz Era
 ---
 
 In the slang of the jazz age cannabis was *tea*, and a *tea pad* was a room or an apartment where people gathered to smoke it. Most were in Harlem. They were rented rooms, not shops, and they were known to everyone who needed to know: the investigators who surveyed them for the city thought that the landlord, the agent or the janitor usually knew what the room was for.
 
-What we know of them in detail comes from an unusual source. Fiorello La Guardia, the mayor of New York, had a committee of the New York Academy of Medicine study cannabis in the city, and its report of 1944 includes a sociological study made by a squad of six police officers, two women and four men, who worked undercover in bars, dance halls, theatres and parks. They counted about 500 tea pads in Harlem and at least as many peddlers.
+What we know of them in detail comes from an unusual source. Fiorello La Guardia, the mayor of New York, had a committee of the New York Academy of Medicine study cannabis in the city, and its report of 1944 includes a sociological study made by a squad of six police officers, two women and four men, who worked undercover in bars, dance halls, theatres and parks. They estimated about 500 tea pads in Harlem and at least as many peddlers, drawing on observations and conversations with sellers and operators. This was an informed estimate, not a complete census.
 
 ## Inside a pad
 
@@ -42,6 +49,8 @@ The cigarettes had grades and prices, and the smokers knew the difference as a c
 | Sass-fras | The United States | About three for 50 cents |
 | Panatella, or meserole | Central and South America | About 25 cents |
 | Gungeon | Africa, by common opinion | About a dollar, for richer customers |
+
+Ernest L. Abel’s 1980 history retells the distinction between these market grades and connects the middle-priced cigarette with Mezz Mezzrow’s reputation. The names and claimed origins belonged to a trading vocabulary; they were not verified genetic varieties or a laboratory ranking of national cannabis potency.
 
 The common names for the cigarettes were muggles, reefers, Indian hemp, weed, tea, gage and sticks. Peddlers wrapped them in foreign cigarette paper to suggest that the tea was "right from the boat".
 

@@ -16,8 +16,16 @@ image:
   credit: Tomaz Silva/Agência Brasil, CC BY 3.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Marijuana_march_Rio_de_Janeiro_2014_May_10_Brazil_marcha_maconha.jpg
 model: gpt-6
-written: 2026-10-14
+written: 2026-10-15
 sources:
+  - type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: '9781478004530'
+    locator: 'ch. 7, pp. 125–139, especially pp. 133–139; notes 63 and 88–90, pp. 291–293'
+    url: https://www.dukeupress.edu/the-african-roots-of-marijuana
   - title: Wikipédia — Cannabis (psicotrópico), Etimologia
     url: https://pt.wikipedia.org/wiki/Cannabis_(psicotr%C3%B3pico)
   - title: Chris S. Duvall — Decriminalization doesn't address marijuana's standing as a drug of the poor, The Conversation (2015)
@@ -41,7 +49,7 @@ sources:
     locator: pp. 173–183, especially pp. 174–179
 ---
 
-*Maconha* is the Brazilian word for cannabis. It is African: from *ma'kaña* in Kimbundu, a language of Angola. The plant and its name came to Brazil with enslaved people, and for most of Brazilian history the laws against it were, in so many words, laws about them.
+*Maconha* is the Brazilian word for cannabis, conventionally traced to Kimbundu, a language of Angola. Its history belongs to a wider Central African vocabulary carried through Atlantic commerce and forced migration. Brazilian prohibitions repeatedly singled out enslaved people and their descendants, but that association should not turn a varied linguistic history into the custom of one undifferentiated community.
 
 ## The names
 
@@ -52,7 +60,9 @@ sources:
 | Pango, *pito de pango* | — | The word of the first bans, for cannabis smoked in a pipe |
 | Cânhamo | Spanish *cáñamo* | Hemp, the fibre plant |
 
-The geographer Chris Duvall has pointed out that the earliest and most numerous cannabis users in the Americas were enslaved people from western Central Africa, and that their words for it survive wherever they were taken.
+Chris S. Duvall places *maconha* within a wider set of Central African Bantu words, rather than treating it only as a uniquely Kimbundu name for cannabis. He interprets the word as a plural associated with plant leaves or smokable herbs; related forms could designate tobacco in Africa while naming cannabis in Atlantic communities. A word's later botanical meaning need not be its only earlier one.
+
+In Sierra Leone, Clarke's [1851 report](/history/sierra-leone-cannabis-long-in-use-1851/) used *Maconie* for a flower-and-seed preparation. That comparison supplies evidence for an Atlantic vocabulary, not proof that identical preparations or customs existed everywhere. Duvall combines linguistic evidence with migration records, while distinguishing the first surviving notice from a plant's arrival.
 
 ## Laws that named the slave
 

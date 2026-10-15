@@ -6,6 +6,12 @@ countries: [jm]
 history: [jamaica-ganja-law-1913, jamaica-ganja-reform-2015, jamaica-first-herb-house-2018]
 history_cards: []
 related: [language/ganja, language/spliff, traditions/rastafari-sacrament]
+image:
+  src: ../../src/assets/culture/jbc-strike-dominoes-1964.jpg
+  alt: Historical black-and-white photograph of Jamaican men gathered around a domino table in a modest wooden shelter in 1964.
+  caption: Jamaican men playing dominoes during the 1964 JBC strike. Informal games and conversation were also characteristic of the herb camps described by Lambros Comitas in the early 1970s.
+  credit: Public Broadcasting Corporation of Jamaica / JBC historical archive
+  credit_url: https://www.libraryatpbcj.com/post/the-1964-jbc-strike
 model: gpt-6
 written: 2026-10-14
 sources:
@@ -18,11 +24,13 @@ sources:
     year: 1975
     isbn: 90-279-7669-4
     locator: pp. 119–132, especially pp. 125–131
+  - title: Library at PBCJ — The 1964 JBC strike (17 March 2025)
+    url: https://www.libraryatpbcj.com/post/the-1964-jbc-strike
 ---
 
 In the Jamaican communities described by anthropologist Lambros Comitas, a *herb camp* was more than a place to buy [ganja](/culture/language/ganja/). A vendor might provide dominoes, recorded music and drinks near his home. A *herb yard* was simpler: somewhere people could gather to smoke, without the additional facilities.
 
-Comitas documented these settings in an early-1970s research programme, published in *Cannabis and Culture* (1975). They belong to his wider account of working-class social life under prohibition. They should not be confused with today's licensed dispensaries, or treated as religious institutions merely because cannabis was present.
+Comitas documented these settings in an early-1970s research programme, published in *Cannabis and Culture* (1975). No photograph of a herb camp from those years is known to this site. The picture above is context, not evidence: it shows workers of the Jamaica Broadcasting Corporation passing the time with dominoes during their 97-day strike in 1964, the kind of game that also filled the camps, and nothing in it concerns cannabis. They belong to his wider account of working-class social life under prohibition. They should not be confused with today's licensed dispensaries, or treated as religious institutions merely because cannabis was present.
 
 ## A distinction within informal trade
 

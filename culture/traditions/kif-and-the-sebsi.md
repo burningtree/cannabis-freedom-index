@@ -3,6 +3,7 @@ title: Kif and the sebsi
 summary: Morocco's long thin pipe holds a pinch of kif at a time. It belongs to a way of smoking that is older than the hashish trade.
 also: [sebsi, skuff, majoun]
 countries: [ma]
+related: [traditions/the-heddawa, language/kif]
 featured: 9
 history: [morocco-hassan-regulations-1890, morocco-french-zone-ban-1954, morocco-kif-ban-1956, morocco-spanish-zone-dahir-1954, morocco-law-13-21-2021, morocco-spanish-zone-decree-1935, morocco-kif-seizures-1949]
 image:
@@ -12,8 +13,16 @@ image:
   credit: Oursencolere, CC BY-SA 3.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Sebse.jpg
 model: gpt-6
-written: 2026-10-14
+written: 2026-10-15
 sources:
+  - type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: '9781478004530'
+    locator: 'ch. 5, pp. 96–102; notes 14–44, pp. 271–273'
+    url: https://www.dukeupress.edu/the-african-roots-of-marijuana
   - title: Wikipedia — Sebsi
     url: https://en.wikipedia.org/wiki/Sebsi
   - title: Wikipedia — Cannabis in Morocco
@@ -43,7 +52,7 @@ What goes in it is [kif](/culture/language/kif/): the best parts of the plant, c
 
 ## Smoked and eaten
 
-Before the 1960s, cannabis in Morocco was grown in small quantities and used at home. It was smoked in the sebsi, and it was eaten.
+Before the expansion of export hashish production, cannabis in Morocco supplied domestic smoking and edible preparations. Its use was not confined to the household: cafés, markets and particular religious communities also belonged to that history.
 
 | Form | What it is |
 |---|---|
@@ -53,9 +62,9 @@ Before the 1960s, cannabis in Morocco was grown in small quantities and used at 
 
 Roger Joseph described the pipe as *sibsa* in his Rif field study published in 1975: a walnut-wood stem that could be dismantled into two connecting sections, fitted with a baked-clay bowl. Rural traders supplied cafés at weekly markets, where small portions of the chopped mixture were sold in empty matchboxes. These observations document the local preparation and social setting rather than a modern tourist presentation.
 
-Joseph also cautioned against treating this Rif custom as inherently mystical. In the communities he studied, smoking was associated especially with middle-aged and older men, and prominent local religious brotherhoods often disapproved. His account should not be generalised to every Moroccan community or every period.
+Joseph also cautioned against treating this Rif custom as inherently mystical. In the communities he studied, smoking was associated especially with middle-aged and older men, and prominent local religious brotherhoods often disapproved. His account should not be generalised to every Moroccan community or every period. Duvall describes a contrasting case in the [Heddawa brotherhood](/culture/traditions/the-heddawa/), whose followers incorporated kif into devotional chanting and movement. A specific religious tradition can coexist with secular café smoking and religious opposition elsewhere.
 
-Hashish, the pressed resin, is a late arrival. Before the first Western travellers came, only small pieces of Lebanese hashish were to be found in the country. It is widely believed that Moroccans began making it during the years of the visitors' influence, and there are competing legends about who taught whom.
+Large-scale hashish production is a later development than the herbal kif tradition. Duvall notes that an often-cited 1921 account actually concerns Algeria; extending that date to Moroccan manufacture is an inference. By Paul Bowles's account, resin was still rarely sold in Morocco in 1961. These observations qualify stories that assign a single inventor or introduction date to the country's hashish industry.
 
 ## A habit the state once sold
 

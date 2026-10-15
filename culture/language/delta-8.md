@@ -10,15 +10,24 @@ countries: [us]
 history: [us-farm-bill-2018, us-delta-8-appeals-ruling-2022, us-hemp-thc-limit-enacted-2025]
 history_cards: [us-delta-8-appeals-ruling-2022]
 related: [language/cbd, language/hemp]
+image:
+  src: ../../src/assets/culture/delta-8-sign-richmond-2021.jpg
+  alt: Colorful hand-painted storefront sign in Richmond, Virginia, showing a cartoon cannabis leaf smoking a joint beneath the words DELTA 8 THC NOW HERE.
+  caption: Delta-8 THC advertised outside a tobacco shop in Richmond, Virginia, in 2021. A little-known cannabinoid became a familiar retail product after the 2018 Farm Bill.
+  credit: Ben Paviour / VPM News, 2021
+  credit_url: https://www.vpm.org/news/2021-09-01/with-legal-weed-hard-to-buy-in-virginia-delta-8-fills-the-void
 model: opus-5.5
 written: 2026-10-14
 sources:
+  - title: VPM News — With legal weed hard to buy in Virginia, delta-8 fills the void (1 September 2021)
+    url: https://www.vpm.org/news/2021-09-01/with-legal-weed-hard-to-buy-in-virginia-delta-8-fills-the-void
   - title: Wikipedia — Δ8-Tetrahydrocannabinol
     url: https://en.wikipedia.org/wiki/%CE%948-Tetrahydrocannabinol
 ---
 
 *Delta-8* is short for Δ8-tetrahydrocannabinol, a close chemical relative of the familiar THC,
-delta-9. It is moderately less potent, but it intoxicates. The plant makes only a little of it. What made *delta-8* a word that ordinary
+delta-9. It is moderately less potent, but it is psychoactive and it intoxicates. The plant makes only
+traces of it. What made *delta-8* a word that ordinary
 Americans knew was not the plant but a law.
 
 ## A chemists' compound
@@ -33,10 +42,20 @@ mattered mostly as an impurity to be measured in the pharmaceutical THC sold as 
 
 The [2018 Farm Bill](/history/us-farm-bill-2018/) defined hemp as the cannabis plant and "all
 derivatives, extracts, cannabinoids, isomers" with no more than 0.3 per cent of *delta-9* THC. It
-said nothing about delta-8. Producers began converting cannabidiol from legal hemp into delta-8 by
-acid-catalysed cyclisation, and selling it as distillate, vape cartridges and edibles, marketed as
+said nothing about delta-8. Because hemp holds so little delta-8, producers began converting the
+plentiful [cannabidiol](/culture/language/cbd/) from legal hemp into delta-8 by acid-catalysed
+cyclisation, and selling it as distillate, vape cartridges and edibles, marketed as
 legal alternatives to cannabis. It reached head shops, smoke shops, dispensaries, petrol stations
 and convenience stores.
+
+Virginia shows how fast it happened. The state legalised adult possession of small amounts of
+cannabis in July 2021, but left no legal way to buy it outside four medical dispensaries. By
+September, VPM News found delta-8 in petrol stations and head shops, and a hand-painted sign
+outside Katra Gala, a Richmond tobacco shop, announcing "Delta 8 THC now here". A worker there
+said its sales had overtaken CBD's. A forensic scientist at Virginia Commonwealth University
+explained to the station that the delta-8 sold in shops "is synthetically generated", made by
+putting CBD in strong acid. A state legislator who wanted it regulated said she had never seen
+anything spread so fast, "not even kombucha".
 
 | Year | |
 |---|---|

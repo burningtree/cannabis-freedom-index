@@ -6,6 +6,13 @@ sources:
     url: https://www.tni.org/files/download/rise_and_decline_ch1.pdf
   - title: "Wikipedia (Portuguese) — Cannabis no Brasil"
     url: https://pt.wikipedia.org/wiki/Cannabis_no_Brasil
+  - type: book
+    title: "História da maconha no Brasil"
+    authors: [Jean Marcel Carvalho França]
+    publisher: Editora Jandaíra
+    year: 2022
+    isbn: "9786550940133"
+    locator: "chapter 3, “Diambismo: um flagelo social”"
 ---
 
 On 11 January 1932 the provisional government of Getúlio Vargas issued Decree 20.930, which classed cannabis as a "toxic narcotic substance". It was the first national prohibition in a country where local bans were a century old, and it took in the whole plant: even hemp fibre for cloth and rope fell under it.
@@ -37,7 +44,7 @@ His paper was the reference for almost every Brazilian study for decades. Its sc
 
 ## From classification to prison
 
-The 1932 decree classified. A decree-law of 25 November 1938, under the Estado Novo, banned sale and use definitively, and the Penal Code of 1940 set the penalty: one to five years and a fine.
+The 1932 decree, number 20.930, listed *Cannabis indica* among the narcotics; holding it above a therapeutic dose without a prescription carried three to nine months in prison and a fine. A decree-law of 25 November 1938, under the Estado Novo, banned sale and use definitively, and the Penal Code of 1940 set the penalty: one to five years and a fine.
 
 ## Why the index moved
 

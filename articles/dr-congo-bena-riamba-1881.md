@@ -1,58 +1,41 @@
 ---
+model: gpt-6
+written: 2026-10-15
 sources:
-  - type: chapter
-    title: "Sub-Saharan Africa, Cannabis, and Contemporary Drug Policy"
-    authors: [Neil Carrier]
-    container: "Cannabis: Global Histories"
-    editors: [Lucas Richert, James H. Mills]
-    publisher: MIT Press
-    year: 2021
-    isbn: "9780262366137"
-    locator: "p. 323"
-  - title: Wikipedia — Entheogenic use of cannabis
-    url: https://en.wikipedia.org/wiki/Entheogenic_use_of_cannabis
+  - type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: '9781478004530'
+    locator: 'ch. 6, pp. 112–124; notes pp. 280–286; figure 1.4, p. 21'
+    url: https://www.dukeupress.edu/the-african-roots-of-marijuana
 ---
 
-Before the Congo Free State prohibited cannabis, nineteenth-century visitors recorded a Central
-African movement in which hemp represented friendship, protection and collective identity.
+When Paul Pogge and Hermann von Wissmann encountered the Bena Riamba in 1881, they found cannabis gardens, shared pipes and a political movement already shaped by years of conflict. Their observations became the best-known account of the movement, but their interests also shaped what later readers inherited.
 
-## The “sons of hemp”
+## An encounter, not a beginning
 
-In 1881, the explorers Paul Pogge and Hermann Wissmann encountered the Bashilenge. Their account,
-as summarized in later histories, described large plots around villages devoted to hemp.
+Chris S. Duvall traces the movement's roots to an encounter around 1864 between Chishimbi, a leader in the Lulua Valley, and Mukwajanga, a Cokwe trading intermediary from Angola. Shared cannabis smoking accompanied a relationship that opened access to firearms and other goods.
 
-Small associations of smokers had developed into a wider movement. Participants called themselves
-*Bena Riamba*—“sons of hemp”—and called their land *Lubuku*, meaning friendship. Their greeting,
-*moio*, could mean both hemp and life.
+That reconstruction relies on later accounts. It does not establish the first arrival of cannabis in the Congo Basin. By the time the Germans arrived, Chishimbi had died and rival leaders had developed their own claims to authority.
 
-## More than intoxication
+## A society of friendship and allegiance
 
-Cannabis was woven into public and ceremonial life. Members were expected to participate and to
-smoke as an expression of devotion. They attributed protective or magical powers to the plant and
-used it before war and travel. Initiations could precede a campaign or a long journey.
+Adherents linked smoking with membership in a new order. Large gardens supplied the communal calabash pipes. Gatherings included singing, dancing and shared meals, while smoking could affirm trust in dealings with outsiders.
 
-The communal pipe acquired a diplomatic meaning. The later account says holidays, trade
-agreements and peace settlements were not concluded without it. This was not simply a report of
-individual drug use; it described cannabis as part of a social and political order.
+“Bena Riamba” is often translated as “Sons of Hemp”. Duvall instead favours “people of the riamba”, preserving uncertainty about words European listeners did not reliably distinguish. He describes *lubuku* as a society of friendship, rather than simply a name for the country.
 
-The movement's name is rendered in more than one way. Carrier uses *Bene Diamba* and explains
-*diamba* as a Central African term for cannabis; the later reference account uses *Bena Riamba*.
-Both translate the name as “children” or “sons” of hemp. Keeping both spellings visible helps
-connect records that otherwise appear to describe different groups.
+Religious authority included [Sangula Meta](/culture/people/sangula-meta/), whose role complicates accounts focused exclusively on male rulers and explorers.
 
-Neil Carrier's chapter in *Cannabis: Global Histories* places the movement within a longer African
-history. Cannabis was known in Madagascar by the mid-seventeenth century, while the Bashilenge
-example shows it integrated into a charismatic movement in Central Africa by the nineteenth.
+## The explorers needed allies
 
-## Prohibition followed
+Wissmann depended on local guards, porters and political protection. He favoured Mukenge, while Portuguese accounts favoured the rival Chingenge. Neither perspective supplies an impartial account of the whole movement.
 
-The legal direction soon reversed. In 1903 the Congo Free State
-[banned hemp for smoking](/history/congo-free-state-hemp-ordinance-1903/), including cultivation,
-sale, transport, possession and use. That ordinance is the first score-changing cannabis law the
-index currently records for the territory of today's [DR Congo](/country/cd/).
+The label “Bashilenge” likewise requires qualification. Duvall records that the people so designated disliked it and identified as Baluba. Treating the label as a timeless tribal identity conceals the political circumstances in which outsiders used it.
 
-The 1881 account cannot describe every community in the vast modern country, and it should not be
-read as doing so. Its importance is narrower: it documents a prominent cannabis-centred movement
-before colonial prohibition.
+## Beyond the peaceful brotherhood
 
-This entry adds historical context but no `before` scores. It therefore leaves the index unchanged.
+Cannabis could express friendship while also enforcing obedience. Duvall describes compulsory smoking ordeals, coercion and warfare, alongside trade in captives and the acquisition of rifles. Rejecting older weapons did not mean rejecting armed power.
+
+The [Bena Riamba movement](/culture/traditions/bena-riamba/) therefore offers evidence of cannabis within a particular political order, rather than proof that smoking produces peace. Its decline unfolded through regional conflict and colonial expansion. The Congo Free State's [1903 prohibition](/history/congo-free-state-hemp-ordinance-1903/) came later; it cannot explain the meaning of every pipe the explorers had seen.

@@ -14,8 +14,8 @@ image:
   caption: Russell Pasha, head of Egypt's Central Narcotics Intelligence Bureau, about 1933.
   credit: Central Narcotics Intelligence Bureau of Egypt, public domain, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Russell_Pasha.jpg
-model: opus-5.5
-written: 2026-10-14
+model: gpt-6
+written: 2026-10-15
 sources:
   - title: Wikipedia — Thomas Wentworth Russell
     url: https://en.wikipedia.org/wiki/Thomas_Wentworth_Russell
@@ -26,8 +26,8 @@ sources:
     editors: [Lucas Richert, James H. Mills]
     publisher: MIT Press
     year: 2021
-    isbn: "9780262366137"
-    locator: "pp. 113, 118–120"
+    isbn: '9780262045209'
+    locator: 'ch. 5, The League of Nations Subcommittee on Cannabis: Hitting a Glass Ceiling of Preconceptions; Conclusion; notes 64–85 (EPUB)'
 ---
 
 Thomas Wentworth Russell spent forty-four years in the Egyptian police, and for the last seventeen he ran the country's campaign against drugs. He was a prohibitionist by office and by conviction. Yet when the League of Nations turned to cannabis, Egypt's own drug police chief told it, more than once, that hashish was not the problem.
@@ -53,7 +53,7 @@ Egypt had asked for cannabis to be controlled. In [1924](/history/geneva-egypt-p
 
 His associate Baron Harry d'Erlanger later wrote that Russell had considered legalising hashish and taxing it, as British officials had proposed in the [1890s](/history/egypt-caillard-regulation-proposal-1892/) on the model of India. He never did; the ban stayed, and his bureau enforced it.
 
-In [1938](/history/league-russell-anslinger-exchange-1938/) the American observer at the League, [Harry Anslinger](/culture/people/harry-anslinger/), said that marihuana carried a tradition of murder, assault and rape. Russell replied that hashish addiction was not leading to any crime wave in Egypt: the addict was a tiresome individual, not a dangerous criminal. It changed nothing. The League's cannabis committee stopped work when the war began.
+In [1938](/history/league-russell-anslinger-exchange-1938/) the American observer at the League, [Harry Anslinger](/culture/people/harry-anslinger/), said that marihuana carried a tradition of murder, assault and rape. Russell replied that hashish addiction was not leading to any crime wave in Egypt: the addict was a tiresome individual, not a dangerous criminal. He also disputed Bouquet's portrayal of cannabis use as an expression of fixed Arab or Muslim traits. Russell pointed instead to particular conditions in Egypt, including irrigation and parasitic illness. Ram judges that historical approach significant but its explanation questionable. The dispute did not amount to a finding that cannabis was harmless, and Russell remained an enforcer of prohibition. The League's cannabis committee stopped work when the war began.
 
 ## Afterwards
 

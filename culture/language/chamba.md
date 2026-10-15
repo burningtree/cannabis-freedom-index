@@ -12,9 +12,17 @@ image:
   caption: "Malawi #1 cannabis in Lilongwe, 2016."
   credit: "Stevef199, CC BY-SA 4.0, via Wikimedia Commons"
   credit_url: "https://commons.wikimedia.org/wiki/File:A_bud_of_malawi_gold_cannabis_strain_20160813_125335.jpg"
-model: opus-5.5
-written: 2026-10-14
+model: gpt-6
+written: 2026-10-15
 sources:
+  - type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: '9781478004530'
+    locator: 'ch. 5, pp. 102–105; notes 78–83, pp. 274–275'
+    url: https://www.dukeupress.edu/the-african-roots-of-marijuana
   - title: Wikipedia — Cannabis in Malawi
     url: https://en.wikipedia.org/wiki/Cannabis_in_Malawi
   - title: Voice of America — Malawi parliament to debate cannabis farming
@@ -39,7 +47,11 @@ The joke rests on a fact. The illegal trade in chamba has been put at 0.2% of th
 
 Chamba is grown mainly in remote parts of the central and northern regions: in the Likwawa hills of Mzimba, and in Nkhotakota, whose crop from near the Lupache river is held to be the best. Fields are small and out of the way, on hillsides, in the bush, or planted in among other crops.
 
-The work is divided. Women do most of the cultivation and men most of the selling. The harvest is cured in a way particular to Malawi: the flowering tops are bound tightly in banana or maize leaves into a hard bundle called a cob, *mfani* or *bola* in Chichewa, and it is by the cob that chamba is sold.
+The work is divided. Women do most of the cultivation and men most of the selling. The flowering tops are bound tightly in banana or maize leaves into a hard bundle called a cob, *mfani* or *bola* in Chichewa, and it is by the cob that chamba is sold.
+
+Duvall places these packets within a broader African history. His sources describe cannabis wrapped in leaves in Angola, banana leaves in western Tanzania and cornhusks in southern Africa. In a Chichewa dictionary published in 1892, he identifies packet terms *mfani* and *mpaka*. These comparisons qualify the idea of an entirely unique Malawian technique without erasing local names and practices.
+
+Packaging and curing should also be distinguished. Duvall discusses fermentation in cornhusk packets in the lower Zambezi Valley, but a historical reference to a compressed or leaf-wrapped parcel does not by itself establish that it was fermented. His account of different subjective effects is not a basis for assigning a uniform potency or chemical profile to all cobs.
 
 A United Nations report of the late 1990s guessed that as much as 156,000 hectares might be under the crop. Most of it leaves the country, through Mozambique and Zimbabwe to South Africa, and to Kenya and Tanzania. The grower gets about a fifth of the final price.
 

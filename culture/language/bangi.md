@@ -1,7 +1,7 @@
 ---
 title: Bangi
-summary: The Swahili word, from the Indian bhang. It probably came to the East African coast with traders across the Indian Ocean.
-origin: Swahili, from Hindi
+summary: The Swahili word for cannabis, linked to bhang and Indian Ocean exchange. Its immediate source and route inland are less certain than a simple borrowing from Hindi suggests.
+origin: Swahili; related to Hindi, Persian and Arabic cannabis vocabulary
 also: [bhang, banghi]
 spelling:
   - { text: "bangi", lang: Swahili }
@@ -13,9 +13,17 @@ image:
   caption: Hadza men smoking cannabis in northern Tanzania.
   credit: kiwiexplorer, CC BY-SA 2.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Hadzabe-1.jpg
-model: opus-5.5
-written: 2026-10-14
+model: gpt-6
+written: 2026-10-15
 sources:
+  - type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: '9781478004530'
+    locator: 'ch. 4, pp. 78–79 and 84–86; notes 24–27, p. 260'
+    url: https://www.dukeupress.edu/the-african-roots-of-marijuana
   - title: Wikipedia — Cannabis in Tanzania
     url: https://en.wikipedia.org/wiki/Cannabis_in_Tanzania
   - title: Wikipedia — Cannabis in Kenya
@@ -24,11 +32,13 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_the_Democratic_Republic_of_the_Congo
 ---
 
-*Bangi* is the Swahili word for cannabis, and in the English of Kenya and Tanzania the plant is still called *bhang*. The word is Indian. It crossed the ocean with the trade of the Swahili coast, and on the way it changed its meaning: in India [bhang](/culture/language/bhang/) is a leaf that is eaten, and in East Africa it became a plant that is smoked.
+*Bangi* is the Swahili word for cannabis, while Kenyan and Tanzanian English also use *bhang*. It belongs to a wider vocabulary linking East Africa with South Asia and the Arabian Sea. That connection does not establish a single voyage, borrowing language or date of arrival. Nor does the word alone identify whether the plant was eaten or smoked.
 
-## From Hindi to Swahili
+## An Indian Ocean word
 
-Cannabis may have reached the Swahili coast by about the year 1000, presumably with traders who spoke Hindi, Persian or Arabic. The same word exists in all three worlds: *bhang* in Hindi, *bang* in Persian.
+In *The African Roots of Marijuana*, Chris S. Duvall treats Hindi *bhang*, Persian *bang* and Arabic *banj* as possible sources for Swahili *bangi*. Maritime exchange provides a plausible setting, but the resemblance cannot identify the immediate intermediary.
+
+The names could also change independently of the plant. In some East African languages, Duvall finds *bangi* alongside unrelated cannabis names, suggesting that a newer trading word sometimes replaced an older local one. A borrowed name is not necessarily evidence that cannabis itself had just arrived.
 
 | Form | Where |
 |---|---|
@@ -36,13 +46,12 @@ Cannabis may have reached the Swahili coast by about the year 1000, presumably w
 | Bhang, banghi | Kenyan and Tanzanian English, including official usage |
 | Bangi | Juba, [South Sudan](/country/ss/), where the cannabis [seized in a raid of 2026](/history/south-sudan-juba-raids-2026/) was reported under that name |
 
-From the coast the plant went inland. It may have been Swahili traders from Zanzibar who carried it to the Congo basin in the 1850s, where within a generation it became the centre of the [Bena Riamba](/culture/traditions/bena-riamba/) movement.
+Nineteenth-century caravans carried the word inland, but Duvall distinguishes merchants from the porters and paddlers who transported goods and smoked cannabis. He also traces a different westward history for the *diamba* family of names. The [Bena Riamba](/culture/traditions/bena-riamba/) movement should not be presented as the direct result of a documented Zanzibar introduction in the 1850s.
 
 ## A trade before the colonies
 
 By the nineteenth century cannabis was part of the folk medicine of many East African peoples, and a long-distance trade had grown up around it. Cannabis grown by the Ngoni was carried to the port of Kilwa. Under German rule, small Nyamwezi traders took it from Unyamwezi, in the interior, to the coast and to Zanzibar. The few accounts from the period suggest that in East Africa it was mainly smoked.
 
-![Hadza men seated on the ground, smoking](../../src/assets/culture/hadzabe-1.jpg "Hadza men smoking cannabis, northern Tanzania. | kiwiexplorer, CC BY-SA 2.0, via Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Hadzabe-1.jpg")
 
 ## The colonial bans
 

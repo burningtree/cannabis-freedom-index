@@ -9,34 +9,61 @@ also: [cannabidiol, CBD oil, CBD flower, Epidiolex, Epidyolex, novel food, hemp 
 countries: [us, fr, sk, bg, ad, cn, tw, se]
 history: [us-farm-bill-2018, us-hemp-thc-limit-enacted-2025, bulgaria-cbd-certificate-2019, taiwan-cbd-rule-2020, slovakia-cbd-delisted-2021, france-cbd-flower-2022, china-cbd-precursor-controls-2024, andorra-cbd-ruling-2025]
 history_cards: [bulgaria-cbd-certificate-2019, taiwan-cbd-rule-2020, slovakia-cbd-delisted-2021, france-cbd-flower-2022, china-cbd-precursor-controls-2024, andorra-cbd-ruling-2025]
-related: [language/hemp, language/cannabis, people/raphael-mechoulam]
+related: [language/hemp, language/cannabis, people/raphael-mechoulam, language/delta-8]
+image:
+  src: ../../src/assets/culture/cbd-adams-patent-1942.jpg
+  alt: Original 1942 United States Patent Office document titled Isolation of Cannabidiol, showing inventor Roger Adams, the patent number, and an early chemical structure.
+  caption: Isolation of Cannabidiol — Roger Adams's 1942 U.S. patent, documenting the chemistry of a cannabis compound that would become a global commercial phenomenon decades later.
+  credit: Roger Adams / United States Patent Office, 1942 (US 2,304,669), public domain, via Google Patents
+  credit_url: https://patents.google.com/patent/US2304669A/en
 model: opus-5.5
 written: 2026-10-14
 sources:
+  - title: Roger Adams — Isolation of cannabidiol, US Patent 2,304,669 (filed 16 August 1940, issued 8 December 1942)
+    url: https://patents.google.com/patent/US2304669A/en
+  - title: Adams, Hunt and Clark — Structure of cannabidiol, a product isolated from the marihuana extract of Minnesota wild hemp. I, Journal of the American Chemical Society 62 (1940)
+    url: https://doi.org/10.1021/ja01858a058
+  - title: Jacob and Todd — Cannabidiol and cannabinol, constituents of Cannabis indica resin, Nature 145 (1940)
+    url: https://doi.org/10.1038/145350a0
+  - title: "Mechoulam and Shvo — Hashish I: The structure of cannabidiol, Tetrahedron 19 (1963)"
+    url: https://doi.org/10.1016/0040-4020(63)85022-X
   - title: Wikipedia — Cannabidiol
     url: https://en.wikipedia.org/wiki/Cannabidiol
 ---
 
-*CBD* stands for cannabidiol, one of the compounds of the cannabis plant. It is not the one that
-intoxicates; that is THC. For most of its history the word was known only to chemists. Since the
-late 2010s it has been printed on oils, sweets, drinks, creams and flowers sold in ordinary shops,
-and it has become one of the hardest words for the law to place.
+*CBD* is the abbreviation of cannabidiol, a cannabinoid that the cannabis plant makes on its own,
+often in large amounts in hemp. Unlike THC, it does not produce the intoxication cannabis is known
+for. For most of its history the word was known only to chemists. Since the late 2010s it has been
+printed on oils, sweets, drinks, creams, flowers and prescription medicines, and it has become one
+of the hardest words for the law to place.
 
 ## In the laboratory
 
-Chemists tried to isolate the active ingredients of cannabis in the nineteenth century. Cannabidiol
-was studied in 1940, from wild hemp gathered in Minnesota and from Egyptian cannabis resin, and its
-structure and stereochemistry were worked out in 1963, by
-[Raphael Mechoulam](/culture/people/raphael-mechoulam/). *Cannabidiol* is its international
-non-proprietary name, the official generic name of a medicine; *CBD* is the shorthand that went
-to market.
+Chemists tried to isolate the active ingredients of cannabis in the nineteenth century, and mostly
+got mixtures. Cannabidiol was first isolated in 1940, independently, by two groups: Roger Adams's
+at the University of Illinois, working from the "red oil" of wild hemp gathered in Minnesota, and
+Alexander Todd's at Manchester, working from cannabis resin. Adams's team published in the
+*Journal of the American Chemical Society* in January 1940, and that August he filed a patent for
+the method. It was issued on 8 December 1942 as US 2,304,669, *Isolation of Cannabidiol*: the red
+oil is turned into a crystalline ester, which ammonia then splits to give the pure compound.
+
+The patent prints a structural formula, and says plainly that it is incomplete: "with the
+exception of the position of the double bond in the left hand cycle", the structure was taken as
+established. It also records that cannabidiol is "physiologically inactive so far as marihuana
+activity is concerned", and that acids turn it into tetrahydrocannabinols that do have that
+activity. The 1942 drawing is not the modern structure. That was established in 1963 by
+[Raphael Mechoulam](/culture/people/raphael-mechoulam/) and Yuval Shvo in Israel, using nuclear
+magnetic resonance, and the stereochemistry followed. *Cannabidiol* is now also the compound's
+international non-proprietary name, the official generic name of a medicine; *CBD* is the
+shorthand that went to market.
 
 ## From hemp to the high street
 
 In the United States the [2018 Farm Bill](/history/us-farm-bill-2018/) removed hemp, defined as
 cannabis with no more than 0.3 per cent THC, together with its extracts and cannabinoids, from the
-federal drug law. The same year the Food and Drug Administration approved a cannabidiol medicine,
-Epidiolex, for two forms of epilepsy. CBD foods and drinks had been on sale since about 2017. But
+federal drug law. Six months earlier, in June 2018, the Food and Drug Administration had approved a
+cannabidiol medicine, Epidiolex, for two rare forms of childhood epilepsy, Lennox-Gastaut and
+Dravet syndromes. Neither step made every CBD product legal. CBD foods and drinks had been on sale since about 2017. But
 CBD itself was never declared safe as a food ingredient, so selling it in food or as a dietary
 supplement stayed illegal under federal food law, and the FDA sent dozens of warning letters to
 companies selling it as a cure. Its own tests found many products mislabelled; in 2020 half of 147
@@ -47,6 +74,9 @@ during the pandemic and by 2024 had collapsed, for want of investors, of an FDA 
 consistent state laws.
 
 ## What the law calls it
+
+The same molecule is a medicine in one place, a food in another, a hemp product in a third and,
+under some conditions, a controlled drug.
 
 | Place | Year | What CBD became |
 |---|---|---|

@@ -4,7 +4,8 @@ summary: A Central African word for cannabis that turns up on three coasts of th
 origin: Central African
 also: [liamba, riamba]
 countries: [sl, ao, br]
-history: [angola-livingstone-observation-1857, sierra-leone-ban-1920, brazil-decree-law-891-1938, angola-portuguese-ban-1913, brazil-rio-pango-ban-1830]
+history: [sierra-leone-cannabis-long-in-use-1851, angola-livingstone-observation-1857, sierra-leone-ban-1920, brazil-decree-law-891-1938, angola-portuguese-ban-1913, brazil-rio-pango-ban-1830]
+history_cards: [sierra-leone-cannabis-long-in-use-1851]
 image:
   src: ../../src/assets/culture/diamba-angola-1890.jpg
   fit: contain
@@ -12,9 +13,24 @@ image:
   caption: '“Hemp for smoking (diamba)”, wrapped in banana leaves. The specimen label records the Songo people, Angola, and 25 July 1890; collector H. Chatelain.'
   credit: Historical specimen photograph, reproduced by Alchimia
   credit_url: https://www.alchimiaweb.com/blogen/malawi-cob-fermented-cannabis/
-model: opus-5.5
-written: 2026-10-14
+model: gpt-6
+written: 2026-10-15
 sources:
+  - type: journal
+    title: Short notice of the African Plant Diamba, commonly called Congo Tobacco
+    authors: [R. O. Clarke]
+    container: "Hooker's Journal of Botany and Kew Garden Miscellany"
+    year: 1851
+    locator: 'vol. 3, pp. 9–11'
+    url: https://bsi.gov.in/uploads/userfiles/file/Rare%20Books/Hooker%E2%80%99s%20Journal%20Of%20Botany%20And%20Kew%20Garden%20Miscellany%20Vol.%203.pdf
+  - type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: '9781478004530'
+    locator: 'ch. 4, pp. 89–94, especially pp. 89–92; notes 121–161, pp. 267–270'
+    url: https://www.dukeupress.edu/the-african-roots-of-marijuana
   - title: Wikipedia — Cannabis in Sierra Leone
     url: https://en.wikipedia.org/wiki/Cannabis_in_Sierra_Leone
   - title: Transnational Institute — The Rise and Decline of Cannabis Prohibition, chapter 1
@@ -38,17 +54,23 @@ sources:
 | Riamba | The Kasai, in what is now the DR Congo, where the [Bena Riamba](/culture/traditions/bena-riamba/) took their name from it |
 | [Maconha](/culture/language/maconha/) | Brazil; from Kimbundu *ma'kaña* |
 
-*Liamba* is from Kimbundu, a language of Angola. The geographer [Chris Duvall](https://theconversation.com/decriminalization-doesnt-address-marijuanas-standing-as-a-drug-of-the-poor-42345) has argued that the earliest and most numerous users of cannabis in the Americas were enslaved people from this region, between modern Gabon and Angola, and that their words for the plant are now used in nearly every place they were taken. He derives even the Spanish [marihuana](/culture/language/marijuana/) from a Kimbundu word, *mariamba*.
+*Liamba* is from Kimbundu, a language of Angola. The geographer [Chris Duvall](https://theconversation.com/decriminalization-doesnt-address-marijuanas-standing-as-a-drug-of-the-poor-42345) has argued that the earliest and most numerous users of cannabis in the Americas were enslaved people from this region, between modern Gabon and Angola, and that their words for the plant are now used in nearly every place they were taken. He also proposes a Kimbundu connection for Spanish [marihuana](/culture/language/marijuana/); that is an etymological argument, rather than a settled origin.
+
+The spellings are not necessarily names for distinct plants. Duvall finds *diamba*, *liamba*, *riamba* and related forms across several Central African languages, with European listeners representing unfamiliar initial sounds differently. Such variation can reflect pronunciation and transcription rather than a change in meaning. He places these names within a wider set resembling *chamba*, while distinguishing that proposed family from the *bangi* vocabulary associated with Swahili commerce.
 
 ## Angola
 
-In Angola the plant is still called diamba or liamba. The explorer David Livingstone noted in 1857 that under the Portuguese, "the use of it by a slave is considered a crime", while it was used freely among the peoples of the interior. Another traveller [recorded](/history/angola-livingstone-observation-1857/) that although slaves were forbidden it, diamba was sold openly in the market at Luanda and grown round the huts of almost every village.
+In Angola the plant is still called diamba or liamba. Its written record is later than its probable arrival: Duvall identifies an 1803 administrative complaint about cultivation for smoking, while reconstructing earlier movements from regional trade and language geography. The date of a surviving observation is not a date of introduction.
+
+Nineteenth-century accounts place cannabis among ordinary garden crops. One observer in northern Angola described small family plots with manioc, maize and vegetables, including only two liamba plants. That is a particular contemporary description, not a standard planting rule. It shows why a valued crop could be widespread without covering large fields. The explorer David Livingstone noted in 1857 that under the Portuguese, "the use of it by a slave is considered a crime", while it was used freely among the peoples of the interior. Another traveller [recorded](/history/angola-livingstone-observation-1857/) that although slaves were forbidden it, diamba was sold openly in the market at Luanda and grown round the huts of almost every village.
 
 Portugal [banned it outright in 1913](/history/angola-portuguese-ban-1913/), aiming at colonial troops and hoping to push farmers towards tobacco. It remains the most common illegal drug in the country, grown in almost every province.
 
 ## Sierra Leone
 
-Sierra Leone's word for cannabis is diamba, and the plant took root there well before it was common elsewhere in West Africa. A journal article of 1851 explains how. The seeds, it says, were brought to the colony by "Congoes captured by one of our cruisers": apparently Central Africans taken from a slave ship by a British warship. By then cannabis had been "long in use" in the interior.
+Sierra Leone's word for cannabis is diamba, and the plant took root there well before it was common elsewhere in West Africa. Clarke’s [botanical report of 1851](/history/sierra-leone-cannabis-long-in-use-1851/) gives a contemporary account. The seeds, it says, were brought to the colony by "Congoes captured by one of our cruisers": apparently Central Africans taken from a slave ship by a British warship. By then cannabis had been "long in use" in the interior. Clarke described cultivation among several communities, rather than only the people he grouped as “Congoes”. His labels reflect colonial classifications, not necessarily a single language or ethnic identity.
+
+He also distinguished *Maconie*, a preparation using flowers and seeds, from *Makiah*, made from leaves. These were names within a local market and practice; they should not be treated as exact synonyms for every form of diamba. The journal editor’s suggestion of transmission from Egypt or Arabia was speculation, separate from Clarke’s reported account of seeds carried by displaced Central Africans.
 
 It found local uses. Midwives gave it in childbirth, and fishermen took it to get through their work. Sierra Leonean sailors and dockers then carried the habit along the coast, to Ghana and the Gambia.
 

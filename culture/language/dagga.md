@@ -17,8 +17,16 @@ image:
   credit: Robvanvee, CC BY-SA 4.0, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Cape_Town_cannabis_march_2015_May_9.jpg
 model: gpt-6
-written: 2026-10-14
+written: 2026-10-15
 sources:
+  - type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: '9781478004530'
+    locator: 'ch. 4, pp. 86–89; note 93, p. 265'
+    url: https://www.dukeupress.edu/the-african-roots-of-marijuana
   - title: Wikipedia — Dagga
     url: https://en.wikipedia.org/wiki/Dagga
   - title: Wikipedia — Cannabis in South Africa
@@ -55,6 +63,8 @@ The source is the Khoekhoe *daxa*, said with the rasping sound that survives in 
 Its first appearance in writing is in the journal of [Jan van Riebeeck](https://en.wikipedia.org/wiki/Jan_van_Riebeeck), commander of the Dutch station at the Cape, in 1658. He ordered that "daccha" be bought in Natal to trade with the Khoekhoe. He may have meant the wild plant; some scholars doubt that anyone could confuse two plants with such different flowers.
 
 Brian du Toit’s chapter in *Cannabis and Culture* (1975) stresses the identification problem in these early accounts. Descriptions of chewing roots or making small cakes may refer to *Leonotis* or other plants, while later descriptions explicitly identify hemp. A colonial spelling of *dagga* is therefore evidence for the word, but not always secure evidence for the botanical species.
+
+Duvall adds another warning: *dagga* can also mean building mortar. In a note to his 2019 book, he corrects a photograph caption in his earlier *Cannabis* (2015), acknowledging that men shown “Making Dagga” were preparing adobe, not cannabis for storage. An archival title containing the word therefore needs its material context checked before it becomes cannabis evidence.
 
 Where the Khoekhoe word itself comes from is argued over.
 

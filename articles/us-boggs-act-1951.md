@@ -6,36 +6,66 @@ sources:
     url: https://en.wikipedia.org/wiki/Boggs_Act_of_1951
   - title: "Wikipedia — Legal history of cannabis in the United States"
     url: https://en.wikipedia.org/wiki/Legal_history_of_cannabis_in_the_United_States
+  - type: book
+    title: "The Marijuana Conviction: A History of Marijuana Prohibition in the United States"
+    authors: [Richard J. Bonnie, Charles H. Whitebread II]
+    publisher: The Lindesmith Center
+    year: 1999
+    isbn: "1891385062"
+    locator: "chapter 11, pp. 204–215"
 ---
 
-On 2 November 1951 President Truman signed a law that took sentencing for drug offences out of the judge's hands. The Boggs Act, named for its sponsor, the Louisiana Democrat Hale Boggs, set mandatory minimum sentences for drug convictions, and it drew no line between marijuana and heroin.
+On 2 November 1951 Congress passed the Boggs Act, named for its sponsor, the Louisiana Democrat Hale
+Boggs. For the first time federal law set one scale of penalties for marijuana and for heroin, and for
+repeat offenders it took sentencing out of the judge's hands.
 
-## Two years for a first offence
+## A heroin scare
 
-The act amended the Narcotic Drugs Import and Export Act. A first conviction for possessing cannabis now carried a minimum of two years in prison and a maximum of ten, with a fine of up to $20,000.
+The law was aimed at opiates, not marijuana. Between 1948 and 1951 arrests and admissions of young addicts
+rose sharply. Boggs told the House that in the first half of 1950, 766 patients under 21 had been admitted
+to the federal hospital at Lexington, against three in the same period of 1946. Congress blamed lenient
+judges, and the Federal Bureau of Narcotics, in a survey of its own, found that the average federal
+narcotics sentence had barely changed since 1935.
 
-Before it, federal marijuana law had been a tax statute. The Marihuana Tax Act of 1937 prohibited the drug by taxing it.
+Marijuana was swept in because it was already part of the federal drug laws. At the hearings Harris
+Isbell, research director at Lexington, testified that marijuana smokers were usually mildly intoxicated,
+harmed no one and developed no dependence. Harry Anslinger answered that over half of the young heroin
+addicts had started on marijuana. He had rejected this stepping-stone argument in 1937; now it became the
+official case for punishing marijuana like heroin.
 
-On 4 January 1952, two months after the signing, more than 500 people were arrested under the new provisions in a single day.
+## The penalties
 
-## Five years later, more
-
-| | Year | What it did |
+| Conviction | Prison | Probation or parole |
 |---|---|---|
-| Boggs Act | 1951 | mandatory minimums for all drug convictions |
-| Narcotic Control Act | 1956 | higher penalties, including for cannabis possession |
-| Controlled Substances Act | 1970 | mandatory minimums repealed; simple possession a misdemeanour |
+| First | 2–5 years | Possible |
+| Second | 5–10 years | Not available |
+| Third and later | 10–20 years | Not available |
 
-The Narcotic Control Act of 1956 went further. The Federal Bureau of Narcotics told Congress that strict federal law had sharply reduced the number of addicts, and Congress responded by adding penalties for every violation of the Marihuana Tax Act.
+Every offence also carried a fine of up to $2,000. Boggs argued that the law could not draw a line between
+possession and peddling without opening it to abuse.
 
-The 1956 act was the high point of federal severity.
+## Little Boggs acts
+
+The bureau urged the states to follow. By 1953 seventeen states and the territory of Alaska had passed
+"little Boggs acts", and eleven more raised penalties by 1956. Ohio set twenty to forty years for selling
+narcotics, and Louisiana five to ninety-nine years without parole for selling, possessing or administering a
+narcotic drug.
+
+Judges objected. On 27 May 1954 the district and circuit judges of the Fifth Circuit unanimously asked
+Congress to remove the mandatory minimums. Boggs called it a shortsighted recommendation. Two years later
+Congress went the other way with the [Narcotic Control Act](/history/us-narcotic-control-act-1956/),
+which raised the fine to $20,000 and barred probation and parole for everyone except first-time
+possessors.
 
 ## Undone in 1970
 
-They lasted less than twenty years. The Controlled Substances Act of 1970 placed cannabis in Schedule I, prohibited for any use, and in the same stroke eliminated the Boggs Act's mandatory minimums and reduced simple possession from a felony to a misdemeanour.
-
-Mandatory federal sentences returned in 1986, this time tied to quantity and aimed at large-scale distribution.
+The [Controlled Substances Act](/history/us-controlled-substances-act-1970/) of 1970 placed cannabis in
+Schedule I, removed the mandatory minimums and made simple possession a misdemeanour. Mandatory federal
+sentences returned in 1986, this time tied to quantity.
 
 ## Why the index moved
 
-The [Boggs Act](/history/us-boggs-act-1951/) lowered the [United States](/country/us/) total from 11 to 9, with enforcement falling from 2 to 1: a fixed two-year minimum for a first possession offence is a law under which users go to prison as a matter of course. The [1956 act](/history/us-narcotic-control-act-1956/) took the total to 7, the lowest it has been, and the 1970 act brought it back to 11.
+The [Boggs Act](/history/us-boggs-act-1951/) lowered the [United States](/country/us/) total from 11 to 9,
+with enforcement falling from 2 to 1: two to five years for a first possession offence, and prison
+without probation for any repeat, mean that users go to prison as a matter of course. The
+[1956 act](/history/us-narcotic-control-act-1956/) took the total to 7, the lowest it has been.

@@ -1266,7 +1266,9 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .ev-article { margin-bottom: 52px; border-top: 1px solid var(--text); padding-top: 12px; }
 .ev-article > .ev-label { margin-bottom: 14px; }
 .ev-article figure { margin: 0 0 28px; }
-.ev-article img, .ev-article picture { display: block; width: 100%; height: auto; max-height: 520px; object-fit: cover; background: var(--surface-2); }
+/* Show the whole picture: a tall portrait or drawing is fitted inside the 520px frame on the
+   panel colour, rather than cropped to a wide strip. */
+.ev-article img, .ev-article picture { display: block; width: 100%; height: auto; max-height: 520px; object-fit: contain; background: var(--surface-2); }
 .ev-article figcaption { margin-top: 8px; font: 400 10.5px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); }
 .ev-article figcaption span { color: var(--muted); margin-left: 8px; }
 .ev-article figcaption a { text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
@@ -1291,7 +1293,7 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 /* a picture placed inside the text of an article or culture entry */
 .prose figure { margin: 1.8em 0; }
 .prose figure > p { margin: 0; }
-.prose figure img { display: block; width: 100%; object-fit: cover; background: var(--surface-2); }
+.prose figure img { display: block; width: 100%; object-fit: contain; background: var(--surface-2); }
 .prose figcaption { margin-top: 8px; font: 400 10.5px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); }
 .prose figcaption span { color: var(--muted); margin-left: 8px; }
 .prose figcaption a { text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }

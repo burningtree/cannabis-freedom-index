@@ -2,9 +2,10 @@
 
 Put related books in `books/`. The entire directory is ignored by Git, including
 PDFs and other formats. It is a local research library, not a website asset folder.
-Do not copy books, full extracted text or scanned pages into `public/`, `src/assets/`
-or tracked data files. Temporary extraction and page renders belong in ignored
-`tmp/` directories.
+Do not copy whole books, full extracted text or complete scanned pages into `public/`,
+`src/assets/` or tracked data files. Selected illustrations may be extracted or cropped
+to accompany articles, as authorised by the user; follow the illustration workflow below.
+Temporary extraction and page renders belong in ignored `tmp/` directories.
 
 The tracked catalogue is [books.yaml](books.yaml). It records a stable book ID,
 bibliography, relative local filename, edition/file identity, pagination and research
@@ -77,3 +78,49 @@ numbers from reader screens, metadata page counts or a print index. Record the
 internal EPUB chapter files only in the local-library catalogue, never as public
 source URLs. Split XHTML files can form one chapter; reading its first file alone
 does not establish that the entire chapter has been read.
+
+## Coverage dashboard
+
+[BOOK-RESEARCH.md](BOOK-RESEARCH.md) is the generated library overview. The single
+source of truth remains `books.yaml`; do not maintain reading counts by hand.
+
+- `npm run books:status` reads the catalogue and scans local PDF/EPUB files without writing.
+- `npm run books:report` refreshes the tracked report after every research pass.
+- `npm run books:check` checks report freshness, unlisted books, changed hashes and missing reading locators.
+- `npm run books:test` verifies the tracking logic.
+
+New books are visible as inventory alerts immediately. Add a stable ID, local filename
+and SHA-256 with `metadata_status: awaiting_verification` until the internal title,
+copyright and contents have been checked. Filename-derived titles are provisional;
+an inventory entry is not a bibliographic source. Use `metadata_status: verified`
+after that check. Existing verified entries may omit this field for compatibility.
+
+For each chapter record `indexed_only`, `selected_pages_read`, `selected_sections_read`
+or `read`, with the pages/sections actually examined. Update `applied_to`, remaining
+`follow_up` questions and `reviewed` after a pass. Add `research_notes` links when useful.
+Full and partial chapter counts stay separate: chapter lengths vary, so no automatic
+percentage of the book is claimed. Public references added before this catalogue may
+exist without a recorded reading pass; audit them before crediting research coverage.
+The report detects replacement files by hash; verify edition and page mapping before
+transferring old coverage. Missing local files on another checkout do not erase it.
+
+## Illustrations from books and reference pages
+
+Use selected authentic images to add information: an identified person, object, map,
+scene or artifact relevant to the article. Extract the original embedded figure where
+possible; otherwise render and crop the illustration, retaining significant details.
+Inspect the source page and the resulting asset. Keep the whole book and full page
+renders local. Do not reconstruct historical evidence or invent an open licence.
+
+Record each extracted illustration under the book's `illustrations`: `title`, `locator`
+(printed and PDF pages), `asset`, `credit`, `extraction` and `rights`. Record the original
+work and its date separately from the modern book reproducing it. For web crops, keep
+an equivalent provenance note with the original URL and crop details. Public captions
+must distinguish documentary photographs, engravings, later illustrations and modern
+revivals, and explain any uncertainty about identification or contents.
+
+Prefer open licences and public-domain originals. The user also accepts relevant
+images whose reuse terms are unverified: retain attribution and source links, record
+that uncertainty honestly, and do not block research merely because no open licence
+is supplied. This does not make an unknown licence open. Use an uncropped composition
+when its labels, setting or surrounding objects provide useful context.

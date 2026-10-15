@@ -13,11 +13,18 @@ image:
   caption: Mezz Mezzrow in his office, New York, about November 1946.
   credit: William P. Gottlieb, public domain, via Wikimedia Commons
   credit_url: https://commons.wikimedia.org/wiki/File:Mezz_Mezzrow_in_his_office,_New_York,_N.Y.,_ca._Nov._1946_(William_P._Gottlieb_06151).jpg
-model: opus-5.5
-written: 2026-10-14
+model: gpt-6
+written: 2026-10-15
 sources:
   - title: Wikipedia — Mezz Mezzrow
     url: https://en.wikipedia.org/wiki/Mezz_Mezzrow
+  - type: book
+    title: 'Marihuana: The First Twelve Thousand Years'
+    authors: [Ernest L. Abel]
+    publisher: Plenum Press; Springer facsimile
+    year: 1980
+    isbn: 978-1-4899-2189-5
+    locator: pp. 219–220, The Jazz Era
 ---
 
 Few people have given their name to cannabis. Milton Mesirow, a Jewish clarinettist from Chicago who called himself Mezz Mezzrow, did. In the jazz world of the 1930s he was so well known as a seller of marijuana that *mezz* became slang for it, alongside [*reefer*, *muggles* and *tea*](/culture/language/reefer/). The Stuff Smith song "If You're a Viper" used the word, and Mezzrow was called the Muggles King.
@@ -40,6 +47,10 @@ Armstrong was one of his biggest customers. A letter of 1932, written from Engla
 | Tea | Marijuana |
 
 In 1940 he was arrested with sixty joints at the entrance to a jazz club at the New York World's Fair, and charged with intent to distribute. He lived in Harlem with his wife, Johnnie Mae, called himself a "voluntary Negro", and in jail insisted he was Black. The deputy studied his face, agreed to send him to the Black block, and asked him to lead the prison band. He told the story in his memoir *Really the Blues*, written with Bernard Wolfe and published in 1946.
+
+Ernest L. Abel’s history, published in 1980, shows how that reputation entered the vocabulary of the market. He records *mezzrole* or *messrole* for a well-filled cannabis cigarette and reports that *mezz* could also mean something genuine or superior. Those were social meanings attached to a supplier’s name, rather than names for a genetically defined strain.
+
+Abel quotes Mezzrow’s own account of suddenly becoming popular in Harlem. It is a retrospective autobiographical claim, which helps explain the public identity he fashioned. It should be distinguished from an independently measured account of how much of the city’s cannabis trade he supplied.
 
 ## France
 

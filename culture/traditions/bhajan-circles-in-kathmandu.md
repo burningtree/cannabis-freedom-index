@@ -6,9 +6,17 @@ countries: [np]
 history: [nepal-shops-closed-1973, nepal-narcotics-act-1976]
 history_cards: []
 related: [traditions/sadhus-and-the-chillum, traditions/shivaratri-at-pashupatinath, language/ganja]
+image:
+  src: ../../src/assets/culture/bhajan-jan-bahal-2015.jpg
+  alt: Documentary color photograph of Nepali men seated together on floor mats inside a Kathmandu devotional gathering space, with religious pictures on the walls.
+  caption: A traditional bhajan gathering in Kathmandu, documented by ECS Nepal in 2015. Anthropological accounts from the 1970s describe similar devotional circles where participants sometimes shared cannabis.
+  credit: ECS Nepal, 2015
+  credit_url: https://ecs.com.np/features/the-songs-of-the-past
 model: gpt-6
 written: 2026-10-14
 sources:
+  - title: ECS Nepal — Srizu Bajracharya, The songs of the past (issue 160, March 2015)
+    url: https://ecs.com.np/features/the-songs-of-the-past
   - type: chapter
     title: "Cannabis in Nepal: An Overview"
     authors: [James Fisher]
@@ -20,7 +28,9 @@ sources:
     locator: pp. 247–255, especially pp. 250–251 and 252–254
 ---
 
-In Kathmandu, *bhajans* brought people together to sing Hindu devotional hymns. Anthropologist James Fisher's account in *Cannabis and Culture* (1975) describes evening gatherings where some singers and musicians also shared [ganja](/culture/language/ganja/) in a clay pipe. Farmers and businessmen could spend the day working and the night in devotional company.
+A *bhajan* is a devotional song, sung together rather than performed to an audience: one voice
+leads, the group answers, and a harmonium, a tabla and small hand cymbals keep the time. In
+Kathmandu, *bhajans* brought people together to sing Hindu devotional hymns. Anthropologist James Fisher's account in *Cannabis and Culture* (1975) describes evening gatherings where some singers and musicians also shared [ganja](/culture/language/ganja/) in a clay pipe. Farmers and businessmen could spend the day working and the night in devotional company.
 
 This was a practice among householders, distinct from the religious lives of wandering [sadhus](/culture/traditions/sadhus-and-the-chillum/). Fisher presents it in a deliberately provisional overview of cannabis in Nepal. His account documents a setting in the period around prohibition; it does not establish how common cannabis smoking is in Kathmandu's bhajans today, or suggest that all devotional singing involves it.
 
@@ -47,6 +57,18 @@ Participants could belong to several castes, but the shared pipe did not dissolv
 His account also distinguishes respect for a devotee from approval of heavy cannabis use. A layman described as a *ganjari*, someone using ganja excessively, could attract mild disapproval even where the devotional gathering was familiar and publicly known.
 
 These details resist a picture of unrestricted communal equality. Fellowship existed within social rules governing who could share, what conduct was admired and what behaviour drew criticism.
+
+## The singing goes on
+
+The circles outlived the cannabis market. In 2015 the writer Srizu Bajracharya sat in on the
+morning bhajan at Jan Bahal, near Asan bazaar, for *ECS Nepal*. Its leader, Man Krishna Wawa, had
+sung there for more than forty years, and had taken over the group when he was young; he played
+the harmonium, a companion the tabla, and the rest followed. The first song was always for Ganesh,
+then the singing moved on to Govinda, Kali, Shiva and Saraswati, much the range of deities Fisher
+had listed. Asked what he got from it, Wawa said he sang because he enjoyed it and came away
+feeling serene. The feature worried that the old songs and the stories behind them were being
+forgotten. It says nothing about cannabis, and the photographs of the group show none: whether any
+of today's circles still pass a chilam, as some did in Fisher's time, is not known from it.
 
 ## A record at the edge of prohibition
 

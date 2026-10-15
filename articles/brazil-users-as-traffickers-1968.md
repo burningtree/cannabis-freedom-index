@@ -4,6 +4,13 @@ written: 2026-10-12
 sources:
   - title: "Wikipedia (Portuguese) — Cannabis no Brasil"
     url: https://pt.wikipedia.org/wiki/Cannabis_no_Brasil
+  - type: book
+    title: "História da maconha no Brasil"
+    authors: [Jean Marcel Carvalho França]
+    publisher: Editora Jandaíra
+    year: 2022
+    isbn: "9786550940133"
+    locator: "chapter 3, “Diambismo: um flagelo social”"
 ---
 
 On 26 December 1968, days after Brazil's military government suspended civil liberties, it issued Decree-Law 385. One of its effects lasted eight years: a person caught with a drug for their own use was to be punished exactly like the person who sold it.
@@ -18,7 +25,7 @@ The dictatorship tightened drug law three times.
 | 26 December 1968 | Decree-Law 385 equates the user with the trafficker | Costa e Silva |
 | 29 October 1971 | Law 5.726 confirms the rule | Médici |
 
-The Penal Code they amended dated from 1940. Its Article 281 set one to five years of reclusion and a fine of ten to fifty times the highest minimum wage for narcotics offences.
+The Penal Code they amended dated from 1940. Its Article 281 set one to five years of reclusion and a fine, originally two to ten contos de réis; the 1968 wording fixed the fine at ten to fifty times the highest minimum wage.
 
 After 1968 the same article reached the user. There was no smaller offence for holding a drug to take oneself.
 

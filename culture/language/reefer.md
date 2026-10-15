@@ -12,8 +12,8 @@ image:
   caption: A promotional poster for Reefer Madness, originally titled Tell Your Children.
   credit: Motion Picture Ventures, public domain, via Wikimedia Commons
   credit_url: "https://commons.wikimedia.org/wiki/File:Reefer_Madness_(1936).jpg"
-model: opus-5.5
-written: 2026-10-14
+model: gpt-6
+written: 2026-10-15
 sources:
   - title: Wikipedia — Reefer Madness
     url: https://en.wikipedia.org/wiki/Reefer_Madness
@@ -23,6 +23,13 @@ sources:
     url: https://en.wikipedia.org/wiki/Glossary_of_cannabis_terms
   - title: Wikipedia — Reefer
     url: https://en.wikipedia.org/wiki/Reefer
+  - type: book
+    title: 'Marihuana: The First Twelve Thousand Years'
+    authors: [Ernest L. Abel]
+    publisher: Plenum Press; Springer facsimile
+    year: 1980
+    isbn: 978-1-4899-2189-5
+    locator: pp. 219–220, The Jazz Era
 ---
 
 *Reefer* is American slang for a cannabis cigarette, or for cannabis itself. It belongs to the vocabulary of the jazz musicians of the 1920s and 1930s, along with *muggles*, *tea*, *viper* and *mezz*. It is remembered now partly because of one film. Made in the 1930s to frighten parents, *Reefer Madness* later became a joke that cannabis users told against the people who had banned it.
@@ -44,6 +51,8 @@ The last is a person. [Mezz Mezzrow](/culture/people/mezz-mezzrow/), born Milton
 In 1940 Mezzrow was arrested with sixty joints at the entrance to a jazz club at the New York World's Fair. In jail he insisted that he was Black, and was moved to the Black section of the segregated prison. He told the story in his memoir *Really the Blues* in 1946, and spent the last twenty years of his life in France.
 
 ![Mezz Mezzrow seated at a desk in his office](../../src/assets/culture/mezz-mezzrow-1946.jpg "Mezz Mezzrow in his office, New York, about November 1946. | William P. Gottlieb, public domain, via Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Mezz_Mezzrow_in_his_office,_New_York,_N.Y.,_ca._Nov._1946_(William_P._Gottlieb_06151).jpg")
+
+Abel’s account places this vocabulary in a commercial musical world as well as a private smoking circle. His examples include Armstrong’s “Muggles,” Calloway’s “That Funny Reefer Man” and titles using *viper* or *tea*. Records and performances gave listeners a shared vocabulary. The songs document cultural expression; they do not establish how often every musician or audience member used cannabis.
 
 ## The law arrives
 

@@ -1,6 +1,6 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6
+written: 2026-10-15
 sources:
   - type: chapter
     title: "Smuggler’s Paradise: The Hash Trade and Drug Control in the Building of the Afghan State, ca. 1923–1974"
@@ -9,12 +9,13 @@ sources:
     editors: [Lucas Richert, James H. Mills]
     publisher: MIT Press
     year: 2021
-    isbn: "9780262366137"
-    locator: "pp. 187–197"
+    isbn: '9780262045209'
+    locator: 'ch. 8, The West Comes to Afghanistan (EPUB)'
 ---
 
-In 1969 the king of Afghanistan issued an edict telling farmers to use fertiliser. The
-crop he wanted more of was hashish.
+According to historian James Bradford, Afghanistan's king issued an edict in 1969
+encouraging farmers to use fertiliser to increase hashish production. A further
+order followed in 1970.
 
 ## An old export
 
@@ -29,9 +30,9 @@ In the 1960s a new kind of buyer arrived. Western travellers on the overland rou
 India found Afghan hashish cheap and plentiful, and some started carrying it home. In
 1971 alone almost sixty thousand tourists came to Kabul, many of them for the hash.
 
-They changed what Afghan producers thought the market was. Until then the main customer
-had been Iran, for opium. Now there were buyers from Europe and America, and they
-wanted quantity.
+They widened the markets available to Afghan producers. The older regional trade
+included opium exports to Iran; buyers from Europe and America now created further
+demand for hashish, increasingly in large quantities.
 
 ## The edicts
 
@@ -52,12 +53,13 @@ return at 80,000 dollars for every 50 kilos sold in New York or Montreal.
 
 ## The reversal
 
-The United States posted a narcotics agent to Kabul in late 1970. In
-[1972](/history/afghanistan-smuggling-crackdown-1972/) a new prime minister moved drug
-control to the interior ministry, and arrests of smugglers rose from 72 in 1971 to 584
-in 1973. That year the king [banned](/history/afghanistan-ban-1973/) the crop he had
-promoted four years earlier.
+The United States posted a narcotics agent to Kabul in late 1970. The
+[1972 enforcement drive](/history/afghanistan-smuggling-crackdown-1972/) included new
+anti-smuggling units, while a late-year government promised stronger measures.
+Reported smuggler arrests rose from 72 in 1971 to 584 in 1973. The
+[1973 cultivation ban](/history/afghanistan-ban-1973/) marked a further restriction.
 
-The index lists the edicts for context. They are a reminder that a government's view
-of cannabis can turn completely in the time it takes a crop to become a foreign-policy
-problem. [Afghanistan](/country/af/) has been at the bottom of the index since.
+The index lists the edicts for context, with no score change. Bradford traces a
+conflict between income from the trade and international pressure to suppress it.
+The chapter cites Robert Connell Clarke for the edicts; the original orders remain
+a source to examine, rather than documents newly inspected here.
