@@ -4,13 +4,13 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 
 **Read** means the recorded chapter was read; **partial** means only the named pages or sections were examined; **indexed** means a contents entry only. Counts include introductions where catalogued. They are not percentages of pages or proof that a whole book is covered. Applied targets count distinct recorded content/event references, not independent findings.
 
-**16 catalogued books**; 13 with recorded substantive reading; 2 awaiting bibliography verification.
+**16 catalogued books**; 14 with recorded substantive reading; 1 awaiting bibliography verification.
 
 | Book | Bibliography | Fully read / listed units | Partial | Indexed only | Applied targets | Illustrations | Local file |
 |---|---|---:|---:|---:|---:|---:|---|
-| [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 14 / 36 | 3 | 19 | 31 | 0 | matches recorded hash |
+| [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 14 / 36 | 4 | 18 | 34 | 0 | matches recorded hash |
 | [Cannabis: A History](#booth-cannabis-history-2003) | verified | 1 / 26 | 0 | 25 | 2 | 0 | matches recorded hash |
-| [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 1 | 8 | 1 | 0 | matches recorded hash |
+| [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 3 | 6 | 6 | 0 | matches recorded hash |
 | [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 1 | 12 | 3 | 0 | matches recorded hash |
 | [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 1 | 8 | 43 | 0 | matches recorded hash |
 | [Reefer Wellness: Understanding Cannabis Science, Culture, and Medicine](#kirk-reefer-wellness-2025) | verified | 0 / 8 | 0 | 8 | 0 | 0 | matches recorded hash |
@@ -18,11 +18,11 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 | [The African Roots of Marijuana](#duvall-african-roots-marijuana-2019) | verified | 4 / 10 | 2 | 4 | 18 | 4 | matches recorded hash |
 | [Cannabis: Evolution and Ethnobotany](#cannabis-evolution-and-ethnobotany) | awaiting_verification | not indexed | 0 | 0 | 0 | 0 | matches recorded hash |
 | [Commodifying Cannabis: A Cultural History of a Complex Plant in the Atlantic World](#commodifying-cannabis-a-cultural-history-of-a-complex-plant-in-the-atlantic-world) | verified | 0 / 9 | 2 | 7 | 0 | 0 | matches recorded hash |
-| [Ganja in Jamaica: The Effects of Marijuana Use](#ganja-in-jamaica-the-effects-of-marijuana-use) | verified | 3 / 14 | 0 | 11 | 11 | 0 | matches recorded hash |
+| [Ganja in Jamaica: The Effects of Marijuana Use](#ganja-in-jamaica-the-effects-of-marijuana-use) | verified | 3 / 14 | 1 | 10 | 14 | 0 | matches recorded hash |
 | [Home Grown: Marijuana and the Origins of Mexico’s War on Drugs](#home-grown-marijuana-and-the-origins-of-mexico-s-war-on-drugs) | verified | 1 / 11 | 1 | 9 | 6 | 0 | matches recorded hash |
 | [Intoxicating Zion: A Social History of Hashish in Mandatory Palestine and Israel](#intoxicating-zion-a-social-history-of-hashish-in-mandatory-palestine-and-israel) | verified | 0 / 8 | 6 | 2 | 12 | 0 | matches recorded hash |
-| [The Flowers of Good: The Science and the History of Marijuana Liberation](#the-flowers-of-good-the-science-and-the-history-of-marijuana-liberation) | awaiting_verification | not indexed | 0 | 0 | 0 | 0 | matches recorded hash |
-| [The Marijuana Conviction: A History of Marijuana Prohibition in the United States](#the-marijuana-conviction-a-history-of-marijuana-prohibition-in-the-united-states) | verified | 7 / 16 | 4 | 5 | 40 | 0 | matches recorded hash |
+| [The Flowers of Good: The Science and the History of Marijuana Liberation](#the-flowers-of-good-the-science-and-the-history-of-marijuana-liberation) | verified | 1 / 15 | 1 | 13 | 10 | 0 | matches recorded hash |
+| [The Marijuana Conviction: A History of Marijuana Prohibition in the United States](#the-marijuana-conviction-a-history-of-marijuana-prohibition-in-the-united-states) | verified | 7 / 16 | 4 | 5 | 43 | 0 | matches recorded hash |
 | [História da maconha no Brasil](#franca-historia-maconha-brasil-unverified) | verified | 2 / 5 | 1 | 2 | 22 | 0 | matches recorded hash |
 
 ## Inventory alerts
@@ -53,7 +53,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | Dagga: The History and Ethnographic Setting of Cannabis sativa in Southern Africa | selected_pages_read | pp. 92–97 | culture/language/dagga.md | Remaining pages may support matekoane, mbanje and Bena Riamba. Check colonial documentary sources and botanical identifications. |
 | The Social Nexus of Ganja in Jamaica | read | pp. 119–132 | culture/language/ganja.md; culture/language/spliff.md; culture/traditions/jamaican-herb-camps.md | Completed the previously selected chapter review. Applied camp/yard distinctions, trusted distribution networks and adult smoking circles. Work-enhancement and medicinal claims are informants’ beliefs, not clinical findings. No current prevalence inference. |
 | The Ritual Use of Cannabis in Mexico | read | pp. 133–145 | culture/traditions/la-santa-rosa.md | — |
-| Cannabis and Cultural Groups in a Colombian Municipio | indexed_only | — | — | Potential Colombia culture/social-class material; not yet read. |
+| Cannabis and Cultural Groups in a Colombian Municipio | selected_pages_read | pp. 147–163 | changes.yaml#colombia-first-marijuana-law-1928; changes.yaml#colombia-santa-marta-cannabis-economy-1973; articles/colombia-santa-marta-cannabis-economy-1973.md | Partridge cites Patiño, Ardila and Torres for a 1928 Colombian marijuana law; find the statute before moving Colombia's first ban (now 1939). Pages 161–172 (consumption groups, la mona) unread; good culture material. |
 | Patterns of Marihuana Use in Brazil | read | pp. 173–183 | culture/language/maconha.md | Check the underlying reports before a Club de Diambistas entry. Do not import the unverified 1549 introduction date, slave-doll seed story or the erroneous date assigned to Carlota Joaquina’s death. Claims of cannabis use in Afro-Brazilian religions are disputed within the chapter. |
 | The Economic Significance of Cannabis sativa in the Moroccan Rif | read | pp. 185–193 | culture/language/kif.md; culture/traditions/kif-and-the-sebsi.md | — |
 | Traditional Patterns of Hashish Use in Egypt | read | pp. 195–205 | culture/traditions/hashish-in-egypt.md; articles/egypt-soueif-prison-study-1971.md | Read Soueif’s original 1971 report: a selected male prison sample collected June 1967–March 1968, not national prevalence. Khalifa prints 10.5% for cigarette-only use; the original report prints 10.6%. Do not generalise clinical claims or treat the session description as universal. |
@@ -125,16 +125,16 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 - **ID:** `mills-cannabis-britannica-2003`
 - **Local file:** `books/Cannabis Britannica  empire, trade, and prohibition, 1800-1928 (Mills, James H., 1970-).pdf`
 - **Last recorded review:** 2026-10-14
-- **Coverage:** Title, copyright and contents examined; A Note on Terms (x–xi) and chapter 5 pp. 93–98 read. Other chapter text not yet reviewed.
+- **Coverage:** Title, copyright and contents examined; A Note on Terms (x–xi), chapter 5 pp. 93–98 and 117–123, chapter 3 pp. 47–65 and chapter 6 pp. 124–138 read (2026-10-15). Many history entries elsewhere cite other pages of chapters 2, 4, 5, 6, 7 and 8 from earlier sessions without being recorded here; reconcile them.
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
 | 1. Introduction | indexed_only | — | — | — |
 | 2. Imperial Merchants, Victorian Science, and Hemp to 1842 | indexed_only | — | — | — |
-| 3. Smuggling, Trade and Taxation in Nineteenth-Century British India | indexed_only | — | — | — |
+| 3. Smuggling, Trade and Taxation in Nineteenth-Century British India | selected_pages_read | pp. 47–65 | — | No new legal events (1854 and Act II of 1876 already have entries). Rich material on cultivation in the Ganja Mahal (the poddar or "ganja-doctor", trampling, flat and round ganja, the bow to the crop) for a possible culture entry. |
 | 4. Medicine, Murder, and Madness in Mid-century | indexed_only | — | — | — |
 | 5. Ganja in Parliament, 1891–1894 | selected_pages_read | pp. 93–98 | articles/india-commons-ganja-question-1891.md | — |
-| 6. Reports, Experiments, and Hallucinations, 1894–1912 | indexed_only | — | — | — |
+| 6. Reports, Experiments, and Hallucinations, 1894–1912 | selected_pages_read | pp. 123 (n. 78)–138 | changes.yaml#india-bengal-public-warehouses-1904; articles/india-bengal-public-warehouses-1904.md; changes.yaml#india-assam-ganja-report-1918; changes.yaml#india-hemp-drugs-revenue-1921; changes.yaml#guyana-indian-hemp-ordinance-1913 | Mills (p. 123 n. 78, p. 139) describes British Guiana's 1913 Indian Hemp Ordinance as a licensed bonded-warehouse system, while the site scores it as a ban (49 → 9). Check the ordinance text before changing the gy chain. |
 | 7. The League of Nations and British Legislation, 1912–1928 | indexed_only | — | — | — |
 | 8. DORA, the First World War, and the Domestic Drug Scares of the 1920s | indexed_only | — | — | — |
 | 9. Conclusion: Cannabis and British Government, 1800–1928 | indexed_only | — | — | — |
@@ -316,8 +316,8 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
 | Introduction | indexed_only | — | — | — |
-| Notes on the ethnohistory of cannabis | indexed_only | — | — | — |
-| Ganja legislation | read | pp. 21–36 | changes.yaml#jamaica-ganja-law-1913; changes.yaml#jamaica-dangerous-drugs-law-1924; changes.yaml#jamaica-mandatory-prison-1941; changes.yaml#jamaica-calver-crime-report-1950; changes.yaml#jamaica-dealing-penalties-1961; changes.yaml#jamaica-mandatory-minimum-1964; changes.yaml#jamaica-ganja-study-published-1972; changes.yaml#jamaica-mandatory-prison-ended-1972; changes.yaml#jamaica-trafficking-bill-1974; articles/jamaica-ganja-law-1913.md; articles/jamaica-mandatory-minimum-1964.md | — |
+| Notes on the ethnohistory of cannabis | selected_pages_read | pp. 16–17 | changes.yaml#jamaica-indian-labourers-arrive-1845 | — |
+| Ganja legislation | read | pp. 21–36 | changes.yaml#jamaica-ganja-law-1913; changes.yaml#jamaica-dangerous-drugs-law-1924; changes.yaml#jamaica-mandatory-prison-1941; changes.yaml#jamaica-calver-crime-report-1950; changes.yaml#jamaica-dealing-penalties-1961; articles/jamaica-dealing-penalties-1961.md; changes.yaml#jamaica-mandatory-minimum-1964; changes.yaml#jamaica-ganja-study-published-1972; changes.yaml#jamaica-mandatory-prison-ended-1972; articles/jamaica-mandatory-prison-ended-1972.md; changes.yaml#jamaica-trafficking-bill-1974; articles/jamaica-ganja-law-1913.md; articles/jamaica-mandatory-minimum-1964.md | — |
 | The ganja complex | indexed_only | — | — | — |
 | Acute effects of ganja smoking in a natural setting | indexed_only | — | — | — |
 | The clinical studies | indexed_only | — | — | — |
@@ -383,9 +383,28 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 
 - **ID:** `the-flowers-of-good-the-science-and-the-history-of-marijuana-liberation`
 - **Local file:** `books/The Flowers of Good The Science and the History of Marijuana Liberation (Sidarta Ribeiro Daniel Hahn).epub`
-- **Last recorded review:** none
-- **Coverage:** Inventory only. Display title inferred from filename; title/copyright/contents and edition not yet examined. No reading coverage claimed.
-- **Next:** Verify internal bibliography and contents, index chapters, then choose research passages against existing site coverage.
+- **Last recorded review:** 2026-10-15
+- **Coverage:** Copyright page (Soft Skull Press, New York, 2026; © Sidarta Ribeiro, translation © Daniel Hahn; ISBN 978-1-59376-811-9; EPUB metadata gives 9781593768126) and contents examined. Chapter 2 read in full; chapters 1, 8 and 11 scanned for dated events. An advocacy and popular-science book by a participant (the author co-signed the 2010 SBNeC note and is honorary president of FACT); attribute evaluative claims and association figures to him or to the groups cited.
+- **Next:** Science chapters (4–7, 10, 12–13) are not legal history; use only with primary studies. Bill 399/2015 and the 2015 Supreme Court appeal (chapter 8) could be linked to existing entries.
+- **Reading notes:** [ribeiro-flowers-of-good-brazil-2026-10-15.md](research/ribeiro-flowers-of-good-brazil-2026-10-15.md)
+
+| Chapter / unit | Status | Actually examined | Applied to | Next research |
+|---|---|---|---|---|
+| Introduction | indexed_only | — | — | — |
+| Marijuana Wins by Ippon | indexed_only | — | — | — |
+| Brazil Is Still Lagging, but It’s Making Progress | read | whole chapter | changes.yaml#brazil-marijuana-march-repression-2008; changes.yaml#brazil-stf-marijuana-march-2011; changes.yaml#brazil-first-cultivation-habeas-corpus-2016; articles/brazil-first-cultivation-habeas-corpus-2016.md; changes.yaml#brazil-abrace-authorised-2017; changes.yaml#brazil-fact-federation-2019; changes.yaml#brazil-apepi-authorised-2020; changes.yaml#brazil-stj-home-growing-2022; changes.yaml#brazil-anvisa-research-cultivation-2022 | — |
+| The Flower of the Ganges Was Born in China | indexed_only | — | — | — |
+| The Science of the Flowers | indexed_only | — | — | — |
+| Yang, Yin, and Many Other Molecules Besides | indexed_only | — | — | — |
+| Marijuana Doesn’t Kill Neurons, It Makes Them Flourish | indexed_only | — | — | — |
+| Living with the Flowers | indexed_only | — | — | — |
+| Free Canine-nabis! | indexed_only | — | — | — |
+| Maturana, Marijuana, and the Green Frog | indexed_only | — | — | — |
+| Loving the Flowers Too Much | indexed_only | — | — | — |
+| Banning the Flowers | selected_sections_read | scanned for dated events | changes.yaml#brazil-sbpc-legalisation-motion-2018 | — |
+| Getting Old with the Flowers | indexed_only | — | — | — |
+| Dying and Being Reborn with the Flowers | indexed_only | — | — | — |
+| Epilogue | indexed_only | — | — | — |
 
 <a id="the-marijuana-conviction-a-history-of-marijuana-prohibition-in-the-united-states"></a>
 
@@ -402,8 +421,8 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 |---|---|---|---|---|
 | Prologue | indexed_only | — | — | — |
 | The Narcotics Consensus Is Born | indexed_only | — | — | — |
-| The Alien Weed | read | pp. 32–52 | changes.yaml#us-new-york-city-cannabis-code-1914; changes.yaml#us-utah-ban-1915; changes.yaml#us-colorado-ban-1917; changes.yaml#us-texas-narcotics-law-1919; changes.yaml#us-louisiana-dowling-warning-1920; changes.yaml#us-fort-sam-houston-order-1921; changes.yaml#us-new-orleans-roundup-1926; articles/us-new-orleans-roundup-1926.md; changes.yaml#us-new-york-habit-forming-law-1927; changes.yaml#us-chicago-marijuana-raids-1929; changes.yaml#us-el-paso-ban-1915; changes.yaml#us-massachusetts-first-state-1911; changes.yaml#mexico-ban-1920 | — |
-| Washington Resists the Temptation | read | pp. 53–78 | changes.yaml#us-treasury-import-ban-1915; articles/us-treasury-import-ban-1915.md; changes.yaml#us-narcotic-farms-act-1929; changes.yaml#us-sheppard-bill-1929; changes.yaml#us-anslinger-crime-claim-1931; changes.yaml#us-colorado-ban-1917 | — |
+| The Alien Weed | read | pp. 32–52 | changes.yaml#us-new-york-city-cannabis-code-1914; changes.yaml#us-utah-ban-1915; changes.yaml#us-colorado-ban-1917; articles/us-colorado-ban-1917.md; changes.yaml#us-texas-narcotics-law-1919; changes.yaml#us-louisiana-dowling-warning-1920; changes.yaml#us-fort-sam-houston-order-1921; changes.yaml#us-new-orleans-roundup-1926; articles/us-new-orleans-roundup-1926.md; changes.yaml#us-new-york-habit-forming-law-1927; changes.yaml#us-chicago-marijuana-raids-1929; articles/us-chicago-marijuana-raids-1929.md; changes.yaml#us-el-paso-ban-1915; changes.yaml#us-massachusetts-first-state-1911; changes.yaml#mexico-ban-1920 | — |
+| Washington Resists the Temptation | read | pp. 53–78 | changes.yaml#us-treasury-import-ban-1915; articles/us-treasury-import-ban-1915.md; changes.yaml#us-narcotic-farms-act-1929; changes.yaml#us-sheppard-bill-1929; articles/us-sheppard-bill-1929.md; changes.yaml#us-anslinger-crime-claim-1931; changes.yaml#us-colorado-ban-1917 | — |
 | The Uniform Act and the Marihuana Compromise | read | pp. 79–91 | changes.yaml#us-uniform-state-narcotic-act-1932; changes.yaml#us-anslinger-crime-claim-1931 | — |
 | Marihuana Becomes a “National Monster” | read | pp. 92–117 | changes.yaml#us-virginia-marihuana-act-1936; articles/us-uniform-state-narcotic-act-1932.md | — |
 | The Federal Bureaucracy Finds a Way | read | pp. 118–126 | changes.yaml#us-tax-bill-introduced-1937 | — |
