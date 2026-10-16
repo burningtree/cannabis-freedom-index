@@ -10,7 +10,7 @@ sources:
     publisher: Mouton
     year: 1975
     isbn: 90-279-7669-4
-    locator: pp. 147–163
+    locator: pp. 147–170
 ---
 
 In July 1972 the anthropologist William Partridge began fieldwork in a municipality on Colombia's
@@ -60,3 +60,10 @@ the country's [first marijuana law](/history/colombia-first-marijuana-law-1928/)
 plantations made the news from about 1945. [Colombia](/country/co/) banned growing and trading marijuana
 [in 1949](/history/colombia-decree-923-1949/), but Partridge's account shows how little the law reached a
 remote mountain valley a generation later.
+
+
+## Workers and the label of the user
+
+The later part of Partridge’s chapter distinguishes the stigma of the *marihuanero* from the social lives of consumers. Workers who smoked also supported households and participated in ordinary exchanges and obligations. Some learned through mobile, unrelated work groups and continued after acquiring farms of their own. The [tradition entry](/culture/traditions/cannabis-in-colombian-work-groups/) follows these practices more closely.
+
+Partridge marked his conclusions as preliminary while data collection continued. His account challenges a particular local stereotype; it is not a controlled test of productivity or a description of all Colombian consumers.

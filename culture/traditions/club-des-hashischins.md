@@ -25,6 +25,13 @@ sources:
     url: https://fr.wikisource.org/wiki/Le_Club_des_hachichins
   - title: Wikimedia Commons — Eugène Atget, Hôtel de Lauzun, 1905
     url: https://commons.wikimedia.org/wiki/File:Eug%C3%A8ne_Atget,_H%C3%B4tel_de_Lauzun,_1905.jpg
+  - type: chapter
+    title: The Club of Assassins
+    authors: [Théophile Gautier]
+    container: Hashish, Wine, Opium
+    publisher: Oneworld Classics
+    year: 2009
+    locator: "Maurice Stang translation; sections 1 (The Hotel Pimodan) and 3 (Agape); original work 1846"
 ---
 
 The *Club des Hashischins* names a circle associated with experiments in hashish among Parisian writers, artists and physicians in the 1840s. Its setting was Hôtel Pimodan, now usually called Hôtel de Lauzun, on the Île Saint-Louis. The physician Jacques-Joseph Moreau de Tours and writer Théophile Gautier are central to its history.
@@ -42,6 +49,8 @@ The [BnF's bibliographic account](https://catalogue.bnf.fr/ark:/12148/cb47598038
 ## Gautier's dinner
 
 In [*Le Club des Haschischins*](https://fr.wikisource.org/wiki/Le_Club_des_hachichins), Gautier describes arriving at an elaborate old interior, receiving a portion of green paste and sitting down to dinner. Taste, appearance and time become unstable. The narrator's surroundings pass from luxurious amusement into fantastic and troubling transformations.
+
+Maurice Stang’s translation preserves the sequence of the meal: the doctor distributes the green preparation on small saucers, coffee with grounds and without sugar follows, and only then does dinner begin. Gautier’s narrator explicitly draws attention to this reversal of the usual order of sweets and coffee. The description makes the gathering a staged social occasion as well as a story about altered perception.
 
 The work appeared in the *Revue des Deux Mondes* in February 1846. It is a literary text, shaped by humour and the fantastic, rather than a clinical transcript of a meeting. Its elaborate effects should not be presented as a reliable prediction of what cannabis does to every person.
 

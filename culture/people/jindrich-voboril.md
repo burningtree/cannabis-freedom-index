@@ -1,6 +1,6 @@
 ---
 title: Jindřich Vobořil
-summary: Czechia's national drug coordinator in 2010–2018 and 2022–2024, who tried to make it the first EU country with a licensed commercial cannabis market. The market was dropped, but his think tank drafted the home-growing rules that took effect in 2026.
+summary: Czechia's national drug coordinator in 2010–2018 and 2022–2024, who promoted home growing, cannabis associations and licensed commercial sales. Political opposition blocked the market; the narrower reform enacted in 2025 legalised limited personal cultivation and possession from January 2026.
 origin: Czech drug-policy official and harm-reduction worker
 life: 1966–
 also: [národní protidrogový koordinátor, national anti-drug coordinator, Podané ruce, Racionální politiky závislostí, regulated cannabis market, psychomodulatory substances]
@@ -8,9 +8,30 @@ countries: [cz]
 history: [czechia-thresholds-2010, czechia-regulated-market-plan-2022, czechia-cannabis-draft-2024, czechia-voboril-steps-down-2024, czechia-law-passed-2025, czechia-home-grow-2026, czechia-tightening-plan-2026]
 history_cards: [czechia-regulated-market-plan-2022, czechia-cannabis-draft-2024]
 related: [people/lumir-hanus, traditions/cannabis-social-clubs]
+image:
+  src: ../../src/assets/culture/jindrich-voboril-radek-cepelak.jpg
+  fit: contain
+  alt: Czech drug policy expert Jindřich Vobořil wearing glasses and a dark suit, speaking into a microphone and gesturing with his hand.
+  caption: Jindřich Vobořil, Czech national drug coordinator and architect of proposals for a regulated cannabis market, speaking at a public event. Photograph by Radek Čepelák.
+  credit: Radek Čepelák / Česká justice.
+  credit_url: https://www.ceska-justice.cz/2024/08/voboril-zkritizoval-vysoke-mnozstvi-veznu-pykajicich-za-konopi-a-dalsi-drogy/
 model: opus-5.5
 written: 2026-10-15
 sources:
+  - title: Česká justice — Vobořil zkritizoval vysoké množství vězňů pykajících za konopí a další drogy (29 August 2024)
+    url: https://www.ceska-justice.cz/2024/08/voboril-zkritizoval-vysoke-mnozstvi-veznu-pykajicich-za-konopi-a-dalsi-drogy/
+  - title: Jindřich Vobořil — Profil
+    url: https://jindrichvoboril.cz/profil
+  - title: Czech Government — Samopěstování, konopné kluby nebo regulovaný trh? (12 September 2024)
+    url: https://vlada.gov.cz/scripts/detail.php?id=215426&tmplid=50
+  - title: Think Tank for Rational Addiction Policy — About the organisation
+    url: https://addiction-policy.eu/
+  - type: law
+    title: Act No. 270/2025 — cannabis personal-use exemptions effective 1 January 2026
+    publisher: Czech Republic, via Ministry of Agriculture
+    year: 2025
+    locator: "Act No. 167/1998, section 5(12)–(13), as amended"
+    url: https://mze.gov.cz/public/portal/mze/legislativa/vap46725-2715
   - title: Wikipedie — Jindřich Vobořil (úředník)
     url: https://cs.wikipedia.org/wiki/Jind%C5%99ich_Vobo%C5%99il_(%C3%BA%C5%99edn%C3%ADk)
   - title: "Radio Prague International — Anti-drug coordinator: Czechia could soon legalise sale and growing of marijuana (2022)"
@@ -30,8 +51,9 @@ sources:
 Jindřich Vobořil was twice Czechia's national drug coordinator, the official who steers the
 government's drug policy. In his second term, from 2022 to 2024, he set out to make the country the first
 in the European Union to license the growing and sale of cannabis for adults.
-Coalition politicians would not go that far, and he left office under pressure. A year later his think
-tank drafted the amendment behind Czechia's legal home growing, which took effect in 2026.
+Coalition politicians would not go that far, and he left office under pressure. Parliament adopted a
+narrower personal-use reform in 2025, effective from 1 January 2026. His think tank's claimed role in
+drafting an amendment became a public dispute; the enacted legislation was not his work alone.
 
 ## From harm reduction to government
 
@@ -63,9 +85,15 @@ licensed home and commercial growing. He admitted that another member state migh
 European Court of Justice, since no other EU government planned a commercial market. Prohibition, he
 said, had failed.
 
-The coalition did not agree. The [draft presented in January 2024](/history/czechia-cannabis-draft-2024/)
-kept home growing, clubs, licensed sales, exports and taxes, but not the open commercial market.
-"I am not giving up. There is a chance," he said.
+His broader approach had three pillars: personal cultivation, cannabis associations growing for
+members, and licensed commercial sales in specialist shops. The aim was to replace the illicit market
+with a strictly regulated legal framework, with controls on supply and access.
+
+Political opposition within the coalition, particularly from the Christian Democrats (KDU-ČSL),
+prevented adoption of the commercial market. The [January 2024 draft](/history/czechia-cannabis-draft-2024/)
+reflected the coalition's disagreement over sales. Vobořil continued to argue for a comprehensive
+model: the Government Office's September 2024 account still described all three pillars of his
+proposal, while reporting government agreement only on personal cultivation.
 
 He applied the same idea to new substances. He pushed an amendment creating a category of
 "psychomodulatory substances", so that products such as kratom and HHC could be regulated rather than
@@ -79,14 +107,22 @@ Christian Democrats had long demanded it, and the opposition leader Andrej Babi�
 "magor", a nutcase. Vobořil said he had faced pressure from big industries in gambling, tobacco and
 drugs, and had received threats. Fiala kept him on as an expert adviser.
 
-He carried on through his think tank, Racionální politiky závislostí (Rational Addiction Policies). In 2025
-parliament passed a reform of the criminal code with an amendment that set limits for possessing and
-growing cannabis for personal use, made growing three plants legal and abolished the offence of holding
-drugs for someone else. According to Seznam Zprávy, his think tank had drafted it. When deputies of the
-Mayors and Independents (STAN) submitted it, he accused them of crudely stealing it. STAN's Barbora
-Urbanová called the accusation a lie. "I'm glad it passed," Vobořil said.
+He carried on through the Think Tank for Rational Addiction Policy, *Racionální politiky
+závislostí*, which he founded in 2017. It promotes evidence-based addiction policy and harm reduction,
+including regulated alternatives to prohibition.
 
-[The new rules](/history/czechia-home-grow-2026/) took effect on 1 January 2026: adults may grow three
-plants and keep 100 grams at home. In June 2026 Babiš, now prime minister again,
+In 2025 parliament passed a criminal-code reform allowing limited cannabis cultivation and
+possession for personal use. Seznam Zprávy reported that his think tank had drafted the relevant
+amendment. Vobořil accused Mayors and Independents (STAN) deputies of taking it without credit;
+STAN's Barbora Urbanová disputed his accusation. That contested drafting history does not make
+Vobořil or the think tank the sole author of the legislation parliament enacted.
+
+[The new rules](/history/czechia-home-grow-2026/) took effect on 1 January 2026. For adults over 21,
+the personal-use limits are **three cannabis plants**, **100 grams at home** and **25 grams outside
+the home**. Cultivation must take place in property the grower owns or has another legal right to
+use. The reform did not establish his proposed licensed commercial market or cannabis associations;
+it was a narrower change to home cultivation and possession.
+
+In June 2026 Babiš, now prime minister again,
 [announced a tougher drug policy](/history/czechia-tightening-plan-2026/). Vobořil called it a return to
 before 1989.

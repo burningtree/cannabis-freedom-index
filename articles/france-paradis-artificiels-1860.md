@@ -10,6 +10,13 @@ sources:
     url: https://fr.wikisource.org/wiki/Les_Paradis_artificiels/Le_Po%C3%A8me_du_haschisch/V
   - title: Charles Baudelaire — Les Paradis artificiels, Un mangeur d'opium, I
     url: https://fr.wikisource.org/wiki/Les_Paradis_artificiels/Un_mangeur_d%E2%80%99opium/I
+  - type: chapter
+    title: Wine and Hashish Compared as Means for the Multiplication of the Personality
+    authors: [Charles Baudelaire]
+    container: Hashish, Wine, Opium
+    publisher: Oneworld Classics
+    year: 2009
+    locator: "Maurice Stang translation; sections 6–7; original essay 1851"
 ---
 
 Charles Baudelaire published *Les Paradis artificiels, opium et haschisch* in Paris in 1860. The Bibliothèque nationale de France records the edition issued by Poulet-Malassis et de Broise. The book placed hashish and opium inside an argument about imagination, desire and the will.
@@ -39,3 +46,10 @@ Hashish and opium occupy the same book but remain different substances and diffe
 The book belongs beside the [Club des Hashischins](/culture/traditions/club-des-hashischins/) in the history of French cannabis culture. Its publication changed neither possession rules nor medical access. It supplied a durable literary argument about intoxication and creative freedom.
 
 Reading it through its own text preserves its ambivalence. Baudelaire understood the appeal of the artificial paradise while questioning whether the person who entered it retained the power to act outside it.
+
+
+## An earlier comparison
+
+Baudelaire had already set out a related argument in his 1851 essay *Wine and Hashish*, collected in Maurice Stang’s translation in *Hashish, Wine, Opium*. In section 6 he favours wine as a companion to work and sociability, while portraying hashish as an escape that weakens the will to act. Section 7 endorses the musical theorist Barbereau’s preference for imagination exercised through willpower rather than intoxication.
+
+This earlier essay helps explain why the 1860 title should not be read as a simple celebration of drugs. The comparison expresses Baudelaire’s moral and aesthetic hierarchy; its claims about the health effects of either substance are nineteenth-century assertions, not present-day medical findings. The translated collection also includes works by Théophile Gautier, whose voice should be distinguished from Baudelaire’s.

@@ -14,6 +14,8 @@ image:
 model: opus-5.5
 written: 2026-10-14
 sources:
+  - title: Nimbin MardiGrass — official 2008 programme, Hemp Olympix
+    url: https://www.nimbinmardigrass.com/archives-history/2008/program08.html
   - title: Wikipedia — Cannabis in Australia
     url: https://en.wikipedia.org/wiki/Cannabis_in_Australia
   - title: Wikipedia — MardiGrass

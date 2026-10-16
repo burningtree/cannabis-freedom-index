@@ -69,7 +69,7 @@ The [Club des Hashischins](/culture/traditions/club-des-hashischins/) entry foll
 
 Hashish reached Europe from the East in the eighteenth century, and Napoleon's campaign in Egypt introduced French troops to it. The soldiers took to it so readily that their commanders [banned it in 1800](/history/egypt-french-ban-1800/). The expedition's scholars wrote about it, and for the rest of the century Cairo's hashish dens and sellers were a fixture of European travel writing and Orientalist art; the Maltese painter Amedeo Preziosi, whose lithograph of Cairo's hashish merchants heads this page, made his living selling scenes of the East to European travellers.
 
-The word came with the stories. It was spelled the way each language heard it: *hachisch* in French, *Haschisch* in German, *hasj* in Dutch, *hashish* in English, clipped in American slang of the 1950s and 1960s to *hash*, and in German to [*Hasch*](/culture/language/hasch/).
+The word came with the stories. It was spelled the way each language heard it: *hachisch* in French, *Haschisch* in German, *hasj* in Dutch, *hashish* in English, clipped in American slang of the 1950s and 1960s to *hash*, and in German to [*Hasch*](/culture/traditions/hasch-in-the-gdr/).
 
 In France it became a subject of science and of letters.
 

@@ -19,6 +19,10 @@ image:
 model: gpt-6
 written: 2026-10-14
 sources:
+  - title: Royal Botanic Gardens, Kew — Musa textilis, Plants of the World Online
+    url: https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:797617-1/general-information
+  - title: Museo dei Cordai — La canapa e la fabbricazione della corda
+    url: https://www.borgodicastelponzone.it/museo/la-canapa/
   - title: Online Etymology Dictionary — Hemp
     url: https://www.etymonline.com/word/hemp
   - title: Wikipedia — Hemp

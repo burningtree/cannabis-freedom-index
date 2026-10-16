@@ -27,7 +27,7 @@ For East Germany's ruling Socialist Unity Party, that claim inverted the proper 
 
 Richardson-Little notes that the phrase came from the West German magazine *konkret*. Its reuse by the East German press shows an argument crossing the border even as it served opposing political settings.
 
-The chapter does not establish the original *konkret* item's date, and it has not been independently examined here. October 27 dates Böhme's newspaper article, not the invention of the phrase or the first German use of [Hasch](/culture/language/hasch/).
+The chapter does not establish the original *konkret* item's date, and it has not been independently examined here. October 27 dates Böhme's newspaper article, not the invention of the phrase or the first German use of [Hasch](/culture/traditions/hasch-in-the-gdr/).
 
 ## A wider propaganda vocabulary
 

@@ -4,11 +4,17 @@ summary: A Rwandan name for cannabis documented in 1959–60 interviews. The rec
 origin: Kinyarwanda
 spelling:
   - { text: injaga, lang: Kinyarwanda }
-also: [urumogi]
 countries: [rw]
 history: [rwanda-penal-law-2018, rwanda-medical-2021]
 history_cards: []
 related: [language/bangi, language/diamba, language/dagga]
+image:
+  src: ../../src/assets/culture/injaga-codere-plate-1-1975.png
+  fit: contain
+  alt: Historical black-and-white ethnographic photograph of a Twa man in Rwanda holding a traditional gourd water pipe, used in anthropological interviews about cannabis in 1959–60.
+  caption: A Twa man holding a traditional gourd water pipe in Rwanda, in the photograph used during Helen Codere's research, 1959–60. The image prompted interviews revealing the relationship between cannabis and social prejudice.
+  credit: Institut pour la recherche scientifique en Afrique centrale; Helen Codere's research, reproduced in Cannabis and Culture (1975), Plate 1.
+  credit_url: https://www.degruyterbrill.com/document/doi/10.1515/9783110812060/html
 model: gpt-6
 written: 2026-10-14
 sources:
@@ -20,7 +26,8 @@ sources:
     publisher: Mouton
     year: 1975
     isbn: 90-279-7669-4
-    locator: pp. 217–226, especially pp. 219–225
+    locator: "pp. 217–226, especially pp. 219–225; Plate 1, plate page x, between pp. 266–267"
+    url: https://cannalib.eu/wp-content/uploads/2024/11/Cannabis-and-Culture-1975.pdf
 ---
 
 *Injaga* is a name for cannabis recorded in Rwanda by anthropologist Helen Codere during research in 1959–60. Her chapter in *Cannabis and Culture* (1975) documents the word through comments on a photograph of a man holding a gourd water pipe.
@@ -37,15 +44,17 @@ Codere does not provide an etymology or establish when *injaga* first entered Ki
 
 ## What the questionnaire could establish
 
-The study involved 252 respondents, including adults and children. A photograph of a Twa man with the pipe prompted comments about cannabis from 113 of them. Participants were invited to say what they wished about the pictures, rather than being asked a standard sequence of questions about their own drug use.
+The study invited 252 Rwandans, including adults and children, to comment on six photographs of different social situations. The photograph of a Twa man holding a traditional gourd water pipe prompted cannabis-related responses from 113 participants. Of those responses, 99 expressed strong disapproval, 13 were mixed and one was unqualifiedly favourable. These are counts of opinions about the photograph, not admissions of cannabis use.
 
-Most associated *injaga* smoking with Twa men. Some also mentioned Twa women, smokers from other communities and medicinal uses. Those qualifications are important: even the chapter’s own evidence does not support an absolute statement that only Twa people used cannabis.
+Participants were invited to say what they wished about each picture, rather than being asked a standard sequence of questions about their own drug use. The image reproduced here is Codere's Plate 1. Its printed credit names the Institut pour la recherche scientifique en Afrique centrale; no individual photographer or capture date is established. The dates 1959–60 refer to Codere's fieldwork.
+
+Most associated *injaga* smoking with Twa men. Some also mentioned Twa women, smokers from other communities and medicinal uses. The account does not establish that every Twa person consumed cannabis, or that its use was exclusive to that community.
 
 The material is especially informative about how people identified a smoker and explained their opinions. It is much less secure as a measure of who consumed the plant or how frequently they did so.
 
 ## The social meaning attached to the name
 
-The responses contain claims about strength, courage, irrationality and violence. Many are hostile. Some respondents presented themselves as witnesses; others repeated general beliefs about a socially marginalised community.
+The responses contain claims about strength, courage, irrationality and violence. The 99 disapproving responses reveal stigma linked to the marginalised Twa community within Rwanda's historical social hierarchy. Some respondents presented themselves as witnesses; others repeated general beliefs. Their accusations are evidence of attitudes and prejudice, not objective descriptions of cannabis effects.
 
 Codere herself notes that accounts of internal effects could be hearsay or repetitions of stereotypes. Her wider interpretation nevertheless uses strongly generalising social categories and language characteristic of its period. Neither the respondents’ accusations nor the author’s terminology should be adopted as neutral descriptions of Twa people.
 

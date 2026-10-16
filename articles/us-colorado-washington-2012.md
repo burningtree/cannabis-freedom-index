@@ -8,6 +8,15 @@ sources:
     url: https://en.wikipedia.org/wiki/Colorado_Amendment_64
   - title: Wikipedia — Washington Initiative 502
     url: https://en.wikipedia.org/wiki/Washington_Initiative_502
+  - type: report
+    title: Guidance Regarding Marijuana Enforcement — memorandum to all United States Attorneys
+    authors:
+      - James M. Cole
+    year: 2013
+    locator: 29 August 2013, pp. 1–4
+    url: https://www.justice.gov/iso/opa/resources/3052013829132756857467.pdf
+  - title: Seattle Police Department — Marijwhatnow? A Guide to Legal Marijuana Use in Seattle (9 November 2012)
+    url: https://spdblotter.seattle.gov/2012/11/09/marijwhatnow-a-guide-to-legal-marijuana-use-in-seattle/
 ---
 
 On 6 November 2012 two American states did what no jurisdiction in the world had
@@ -40,7 +49,7 @@ Colorado's measure was an amendment to the state constitution, and let towns opt
 out. Washington's was a statute whose campaign was led by a lawyer on loan from the
 American Civil Liberties Union.
 
-Possession became legal within weeks, on 9 December in Washington and 10 December in
+Possession became legal within weeks, on 6 December in Washington and 10 December in
 Colorado. Colorado's governor, John Hickenlooper, said: "This will be a complicated process, but we intend to follow through."
 
 ## Washington's silence
@@ -50,7 +59,7 @@ Both laws contradicted the federal
 president of the UN's drug control board said they violated the 1961 treaty.
 President Obama said the matter was not a high priority. In
 [August 2013](/history/us-cole-memo-2013/) the Justice Department announced that it
-would not sue the two states.
+was deferring challenges to the two states’ laws while expecting effective regulation and retaining federal enforcement authority.
 
 The [first shops](/history/us-colorado-first-shops-2014/) opened in Colorado on
 1 January 2014. Sales reached almost a billion dollars in 2015. Even so, by 2017
@@ -59,9 +68,7 @@ nearly two thirds of Colorado's municipalities had banned retail cannabis.
 ## What followed
 
 Four more states voted yes in [2016](/history/us-legalisation-wave-2016/), including
-California. And the federal government's decision not to act left it unable to
-object when [Uruguay](/history/uruguay-legalisation-2013/) legalised a year after
-the two states.
+California. The Cole guidance allowed room for state experimentation while preserving federal authority. [Uruguay’s 2013 law](/history/uruguay-legalisation-2013/) was a separate national reform.
 
 The index scores the [United States](/country/us/) as one country, so two states
 moved it only a little: possession from 2 to 3, growing, sharing and consumption

@@ -4,18 +4,18 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 
 **Read** means the recorded chapter was read; **partial** means only the named pages or sections were examined; **indexed** means a contents entry only. Counts include introductions where catalogued. They are not percentages of pages or proof that a whole book is covered. Applied targets count distinct recorded content/event references, not independent findings.
 
-**17 catalogued books**; 15 with recorded substantive reading; 1 awaiting bibliography verification.
+**23 catalogued books**; 20 with recorded substantive reading; 1 awaiting bibliography verification.
 
 | Book | Bibliography | Fully read / listed units | Partial | Indexed only | Applied targets | Illustrations | Local file |
 |---|---|---:|---:|---:|---:|---:|---|
-| [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 14 / 36 | 5 | 17 | 39 | 0 | matches recorded hash |
+| [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 15 / 36 | 4 | 17 | 40 | 0 | matches recorded hash |
 | [Cannabis: A History](#booth-cannabis-history-2003) | verified | 1 / 26 | 1 | 24 | 5 | 0 | matches recorded hash |
 | [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 6 | 3 | 11 | 0 | matches recorded hash |
 | [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 2 | 11 | 6 | 0 | matches recorded hash |
-| [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 2 | 7 | 46 | 0 | matches recorded hash |
+| [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 3 | 6 | 54 | 0 | matches recorded hash |
 | [Reefer Wellness: Understanding Cannabis Science, Culture, and Medicine](#kirk-reefer-wellness-2025) | verified | 0 / 8 | 0 | 8 | 0 | 0 | matches recorded hash |
 | [The Emperor Wears No Clothes](#herer-emperor-wears-no-clothes-undated) | verified | 1 / 16 | 1 | 14 | 1 | 0 | matches recorded hash |
-| [The African Roots of Marijuana](#duvall-african-roots-marijuana-2019) | verified | 4 / 10 | 3 | 3 | 28 | 4 | matches recorded hash |
+| [The African Roots of Marijuana](#duvall-african-roots-marijuana-2019) | verified | 4 / 10 | 3 | 3 | 27 | 4 | matches recorded hash |
 | [Cannabis: Evolution and Ethnobotany](#cannabis-evolution-and-ethnobotany) | awaiting_verification | not indexed | 0 | 0 | 0 | 0 | matches recorded hash |
 | [Commodifying Cannabis: A Cultural History of a Complex Plant in the Atlantic World](#commodifying-cannabis-a-cultural-history-of-a-complex-plant-in-the-atlantic-world) | verified | 0 / 9 | 2 | 7 | 0 | 0 | matches recorded hash |
 | [Ganja in Jamaica: The Effects of Marijuana Use](#ganja-in-jamaica-the-effects-of-marijuana-use) | verified | 3 / 14 | 1 | 10 | 14 | 0 | matches recorded hash |
@@ -23,8 +23,14 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 | [Intoxicating Zion: A Social History of Hashish in Mandatory Palestine and Israel](#intoxicating-zion-a-social-history-of-hashish-in-mandatory-palestine-and-israel) | verified | 0 / 8 | 6 | 2 | 17 | 0 | matches recorded hash |
 | [The Flowers of Good: The Science and the History of Marijuana Liberation](#the-flowers-of-good-the-science-and-the-history-of-marijuana-liberation) | verified | 1 / 15 | 1 | 13 | 10 | 0 | matches recorded hash |
 | [The Marijuana Conviction: A History of Marijuana Prohibition in the United States](#the-marijuana-conviction-a-history-of-marijuana-prohibition-in-the-united-states) | verified | 7 / 16 | 4 | 5 | 43 | 0 | matches recorded hash |
-| [História da maconha no Brasil](#franca-historia-maconha-brasil-unverified) | verified | 2 / 5 | 1 | 2 | 22 | 0 | matches recorded hash |
+| [História da maconha no Brasil](#franca-historia-maconha-brasil-unverified) | verified | 3 / 5 | 1 | 1 | 26 | 0 | matches recorded hash |
 | [Cannabis: non solo fumo](#parrella-cannabis-non-solo-fumo-2014) | verified | 4 / 8 | 0 | 4 | 22 | 0 | matches recorded hash |
+| [A Narco History: How the United States and Mexico Jointly Created the “Mexican Drug War”](#boullosa-wallace-narco-history-2015) | verified | 4 / 13 | 1 | 8 | 8 | 0 | matches recorded hash |
+| [Cannabis: A History (first US edition)](#booth-cannabis-history-us-2004) | verified | 1 / 27 | 0 | 26 | 0 | 0 | matches recorded hash |
+| [Cannabis Culture: A Journey through Disputed Territory](#matthews-cannabis-culture-1999) | verified | 0 / 13 | 0 | 13 | 0 | 0 | matches recorded hash |
+| [Cannabis Culture (newly updated edition)](#matthews-cannabis-culture-2003) | verified | 1 / 15 | 2 | 12 | 4 | 0 | matches recorded hash |
+| [Drogas: A história do proibicionismo](#carneiro-drogas-proibicionismo-2019) | verified | 1 / 11 | 2 | 8 | 0 | 0 | matches recorded hash |
+| [Hashish, Wine, Opium](#gautier-baudelaire-hashish-wine-opium-2009) | verified | 0 / 5 | 2 | 3 | 2 | 0 | matches recorded hash |
 
 ## Inventory alerts
 
@@ -38,9 +44,10 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 
 - **ID:** `rubin-cannabis-and-culture-1975`
 - **Local file:** `books/Cannabis and Culture (Vera Rubin (editor)).pdf`
-- **Last recorded review:** 2026-10-14
-- **Coverage:** Selective chapter and page review; not a cover-to-cover reading.
+- **Last recorded review:** 2026-10-16
+- **Coverage:** Selective chapter and page review; Partridge’s Colombia chapter completed across passes, including pp. 161–172 examined on 16 October 2026. Not a cover-to-cover reading.
 - **Next:** Visually verify all remaining chapter-author spellings and their title pages before citation.; Do not treat chapter boundaries from the contents as proof that every page contains chapter text.; Clinical and non-cannabis comparative chapters are indexed for navigation, not endorsed or reviewed.
+- **Reading notes:** [brazil-colombia-library-2026-10-16.md](research/brazil-colombia-library-2026-10-16.md)
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
@@ -54,7 +61,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | Dagga: The History and Ethnographic Setting of Cannabis sativa in Southern Africa | selected_pages_read | pp. 92–97 | culture/language/dagga.md | Remaining pages may support matekoane, mbanje and Bena Riamba. Check colonial documentary sources and botanical identifications. |
 | The Social Nexus of Ganja in Jamaica | read | pp. 119–132 | culture/language/ganja.md; culture/language/spliff.md; culture/traditions/jamaican-herb-camps.md | Completed the previously selected chapter review. Applied camp/yard distinctions, trusted distribution networks and adult smoking circles. Work-enhancement and medicinal claims are informants’ beliefs, not clinical findings. No current prevalence inference. |
 | The Ritual Use of Cannabis in Mexico | read | pp. 133–145 | culture/traditions/la-santa-rosa.md | — |
-| Cannabis and Cultural Groups in a Colombian Municipio | selected_pages_read | pp. 147–163 | changes.yaml#colombia-first-marijuana-law-1928; changes.yaml#colombia-santa-marta-cannabis-economy-1973; articles/colombia-santa-marta-cannabis-economy-1973.md | Partridge cites Patiño, Ardila and Torres for a 1928 Colombian marijuana law; find the statute before moving Colombia's first ban (now 1939). Pages 161–172 (consumption groups, la mona) unread; good culture material. |
+| Cannabis and Cultural Groups in a Colombian Municipio | read | pp. 147–172 (earlier pass 147–163; completion pass 161–172, including references) | changes.yaml#colombia-first-marijuana-law-1928; changes.yaml#colombia-santa-marta-cannabis-economy-1973; articles/colombia-santa-marta-cannabis-economy-1973.md; culture/traditions/cannabis-in-colombian-work-groups.md | Completed chapter. The cigarette is described as shared on p. 162 but not passed on p. 163; do not impose a single passing ritual. Work/health claims are informant beliefs. Conclusions explicitly preliminary (p. 169, note 12). Verify original Decree 1699/1964 before adding the chapter’s legal penalties as an event; the 1928 law lead remains open. |
 | Patterns of Marihuana Use in Brazil | read | pp. 173–183 | culture/language/maconha.md | Check the underlying reports before a Club de Diambistas entry. Do not import the unverified 1549 introduction date, slave-doll seed story or the erroneous date assigned to Carlota Joaquina’s death. Claims of cannabis use in Afro-Brazilian religions are disputed within the chapter. |
 | The Economic Significance of Cannabis sativa in the Moroccan Rif | read | pp. 185–193 | culture/language/kif.md; culture/traditions/kif-and-the-sebsi.md | — |
 | Traditional Patterns of Hashish Use in Egypt | read | pp. 195–205 | culture/traditions/hashish-in-egypt.md; articles/egypt-soueif-prison-study-1971.md | Read Soueif’s original 1971 report: a selected male prison sample collected June 1967–March 1968, not national prevalence. Khalifa prints 10.5% for cigarette-only use; the original report prints 10.6%. Do not generalise clinical claims or treat the session description as universal. |
@@ -171,20 +178,20 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 
 - **ID:** `richert-mills-cannabis-global-histories-2021`
 - **Local file:** `books/Cannabis Global Histories (Lucas Richert and James H. Mills).epub`
-- **Last recorded review:** 2026-10-15
-- **Coverage:** Title, copyright and contents examined; chapter 11 introductory discussion, The Explosion in Demand and notes 14–28 read. Chapters 5, 8, 9, 10, 12 and 14 read in full, including their notes. Chapter 3’s Mauritius section and notes 71–75 also read. Other chapter bodies indexed, not reviewed in this copy.
+- **Last recorded review:** 2026-10-16
+- **Coverage:** Title, copyright and contents examined; chapter 11 introductory discussion, The Explosion in Demand and notes 14–28 read. Chapters 5, 8, 9, 10, 12 and 14 read in full, including their notes. Chapter 3’s Mauritius section and notes 71–75 also read. Other chapter bodies indexed, not reviewed in this copy. On 16 October, chapter 3 printed-page markers 63–66 and 70–71 with related notes, and chapter 4 p. 86 with notes 8–12, were reviewed for the indenture/regulation pass.
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
 | 1. 1 Taming the Orient: France and the First Global Movement to Medicalize Cannabis, ca. 1800–1850 | indexed_only | — | — | — |
 | 2. 2 Ganja and the Government of India: Cannabis, Excise, and Colonial Administration in the Late Nineteenth Century | indexed_only | — | — | — |
-| 3. 3 Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912 | selected_sections_read | Chapter 3, Ganja Madness in Mauritius and Jamaica (Mauritius discussion), and notes 71–75. Selected reading only; reflowable EPUB without verified print mapping. | articles/mauritius-ban-1840.md; changes.yaml#mauritius-ban-1840 | Read remaining sections and inspect Ordinance No. 2 of 1840 itself; see docs/research/earliest-ban-articles-2026-10-15.md. |
-| 4. 4 Dagga: How South Africa Made a Dangerous Drug, 1902–1928 | indexed_only | — | — | — |
+| 3. 3 Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912 | selected_sections_read | Chapter 3, Ganja Madness in Mauritius and Jamaica (Mauritius discussion), and notes 71–75. Additional review on 16 October: EPUB printed-page markers 63–66 and 70–71; notes 35, 50, 58–61 and 87. Original archival ordinances not inspected. | articles/mauritius-ban-1840.md; changes.yaml#mauritius-ban-1840; changes.yaml#trinidad-prohibition-1894; changes.yaml#trinidad-repeal-1899; articles/trinidad-prohibition-1894.md; articles/trinidad-repeal-1899.md | Read remaining sections and inspect Ordinance No. 2 of 1840 itself; see docs/research/earliest-ban-articles-2026-10-15.md. Retrieve Trinidad Ordinances No. 22 (1894) and No. 10 (1899); see docs/research/pre-1900-indentured-regulations-2026-10-16.md. |
+| 4. 4 Dagga: How South Africa Made a Dangerous Drug, 1902–1928 | selected_sections_read | Dagga and Colonial Governance in Natal, EPUB printed-page marker 86, with notes 8–12. Remaining sections not reviewed in this pass. | changes.yaml#south-africa-natal-1870; changes.yaml#natal-law-tightened-1887; articles/south-africa-natal-1870.md; articles/natal-law-tightened-1887.md | Retrieve the original 1870 section and implementing notices. Distinguish Waetjen's description as prohibition from Paterson's enabling-power account; see docs/research/pre-1900-indentured-regulations-2026-10-16.md. |
 | 5. 5 Squaring a Circle: Cannabis and the Dubious Legacy of the League of Nations | read | Entire chapter and notes 1–89; no verified print-page mapping. | articles/league-advisory-committee-report-1934.md; articles/egypt-russell-hashish-report-1930.md; articles/league-russell-anslinger-exchange-1938.md; culture/people/russell-pasha.md; changes.yaml#league-advisory-committee-report-1934; changes.yaml#egypt-russell-hashish-report-1930; changes.yaml#league-russell-anslinger-exchange-1938 | See docs/research/ram-league-reading-2026-10-15.md. Original League reports and proceedings remain unexamined; the 1935 summary event has an unresolved date. The chapter's June 1938 discussion cites a June 1937 minute for one sarcastic quotation; that quip is not assigned to 1938 in the rewritten article. Treaty controls should not be described as a universal domestic ban. |
 | 6. 6 A Historical Approach to the Criminalization of Marijuana Use in Mexico | indexed_only | — | — | — |
 | 7. 7 Reefer Madness Past and Present: Dr. Leopoldo Salazar Viniegra, Mexico, and the United States, ca. 1938–2018 | indexed_only | — | — | — |
 | 8. 8 Smuggler’s Paradise: The Hash Trade and Drug Control in the Building of the Afghan State, ca. 1923–1974 | read | Entire chapter and notes 1–62; no verified print-page mapping. | culture/traditions/chicken-street.md; articles/afghanistan-penal-code-1924.md; articles/afghanistan-embassy-press-campaign-1972.md; articles/afghanistan-smuggling-crackdown-1972.md; articles/afghanistan-hashish-fertiliser-edicts-1969.md; changes.yaml#afghanistan-penal-code-1924; changes.yaml#afghanistan-hashish-fertiliser-edicts-1969; changes.yaml#afghanistan-smuggling-crackdown-1972 | See docs/research/bradford-afghanistan-reading-2026-10-15.md. Original penal-code editions and fertiliser edicts remain unexamined. Article numbering varies. December 1972 diplomatic evidence does not attribute all annual arrests to Shafiq. Baba Ku introduction stories are legends; practical tolerance is not legal exemption. |
-| 9. 9 “Hashers Don’t Read Das Kapital”: East Germany, Socialist Prohibition, and Global Cannabis | read | Entire chapter and notes 1–70; no verified print-page mapping. | culture/language/hasch.md; articles/germany-gdr-hashers-capital-1970.md; articles/germany-gdr-transit-hashish-seizures-1970.md; articles/germany-east-berlin-narcotics-group-1990.md; changes.yaml#germany-gdr-hashers-capital-1970; changes.yaml#germany-gdr-transit-hashish-seizures-1970; changes.yaml#germany-east-berlin-narcotics-group-1990; articles/germany-opium-law-1929.md | See docs/research/richardson-little-gdr-reading-2026-10-15.md. Original newspaper heading, byline and date checked; full article requires subscription. The earlier konkret phrase remains a lead. Transit seizures are not East German consumption; a low domestic cannabis supply did not imply absence of alcohol or medicine misuse. |
+| 9. 9 “Hashers Don’t Read Das Kapital”: East Germany, Socialist Prohibition, and Global Cannabis | read | Entire chapter and notes 1–70; no verified print-page mapping. | culture/traditions/hasch-in-the-gdr.md; articles/germany-gdr-hashers-capital-1970.md; articles/germany-gdr-transit-hashish-seizures-1970.md; articles/germany-east-berlin-narcotics-group-1990.md; changes.yaml#germany-gdr-hashers-capital-1970; changes.yaml#germany-gdr-transit-hashish-seizures-1970; changes.yaml#germany-east-berlin-narcotics-group-1990; articles/germany-opium-law-1929.md | See docs/research/richardson-little-gdr-reading-2026-10-15.md. Original newspaper heading, byline and date checked; full article requires subscription. The earlier konkret phrase remains a lead. Transit seizures are not East German consumption; a low domestic cannabis supply did not imply absence of alcohol or medicine misuse. |
 | 10. 10 The Origins of Cannabis Prohibition in Nigeria and the Indian Hemp Decree of 1966 | read | Entire chapter and notes 1–83; no verified print-page mapping. | culture/people/thomas-adeoye-lambo.md; articles/nigeria-police-narcotics-squad-1953.md; articles/nigeria-cannabis-seizures-jump-1962.md; articles/nigeria-lambo-addiction-study-1965.md; changes.yaml#nigeria-police-narcotics-squad-1953; changes.yaml#nigeria-cannabis-seizures-jump-1962; changes.yaml#nigeria-lambo-addiction-study-1965 | See docs/research/klantschnig-nigeria-reading-2026-10-15.md. The 1965 Lambo papers and underlying police/newspaper archives have not been independently examined. Lagos music, toye, Orlando Owoh and Fela Kuti are leads for primary cultural documentation. Seizure data are not prevalence; period psychiatric diagnoses are not current advice. |
 | 11. 11 Cannabis, Counterculture, and Criminals: The Rise of Smuggling in the Netherlands, ca. 1962–1976 | selected_sections_read | Introductory discussion; The Explosion in Demand; notes 14–28 | culture/traditions/the-coffeeshop.md; articles/netherlands-cannabis-offences-surge-1967.md; changes.yaml#netherlands-cannabis-offences-surge-1967 | Remaining supply sections and notes not reviewed. Do not equate police offence counts, seizure totals, survey prevalence and reconstructed import volumes. One-in-ten interception is an assumption. |
 | 12. 12 “We Smoke Flowers”: On “Being High” in Postrevolutionary Iran | read | Entire chapter and notes 1–50; no verified print-page mapping. | culture/language/gol.md; culture/language/hashish.md; articles/iran-gol-second-drug-2017.md; changes.yaml#iran-gol-second-drug-2017 | See docs/research/ghiabi-iran-reading-2026-10-15.md. ADNA's original July 3, 2017 report remains unexamined; the 2018 research paper was read. Informal tolerance is not legal exemption or current travel advice. Verify early medical names and textual identifications before reuse: the chapter conflates Ibn Rushd and Rhazes. |
@@ -255,7 +262,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 |---|---|---|---|---|
 | 1. Cannabis and Africa | selected_pages_read | pp. 3–6, 18–22 | — | Remainder of chapter unread; figure 1.4 identifies seated Bena Riamba leaders. |
 | 2. Race and Plant Evolution | indexed_only | — | — | — |
-| 3. Roots of African Cannabis Cultures | read | pp. 53–71; chapter notes 250–258 | culture/language/cachimbo.md; culture/traditions/the-calabash-water-pipe.md; articles/us-water-pipe-patent-1980.md; changes.yaml#us-water-pipe-patent-1980 | Original patent text verified independently. Treat Duvall’s African technological genealogy as an argument; comparison of designs does not establish copying or patent invalidity. Original 1890 book page not separately examined. |
+| 3. Roots of African Cannabis Cultures | read | pp. 53–71; chapter notes 250–258 | culture/traditions/the-calabash-water-pipe.md; articles/us-water-pipe-patent-1980.md; changes.yaml#us-water-pipe-patent-1980 | Original patent text verified independently. Treat Duvall’s African technological genealogy as an argument; comparison of designs does not establish copying or patent invalidity. Original 1890 book page not separately examined. |
 | 4. Cannabis Colonizes the Continent | read | pp. 72–94; selected notes on pp. 260–261, 265–266, 268–270 | culture/language/bangi.md; culture/language/diamba.md; culture/language/mbanje.md; culture/language/dagga.md | Unreviewed chapter notes remain leads. Bangi immediate donor language uncertain; pipe finds do not identify cannabis without residues. Do not convert inferred dispersals into first-arrival dates; revisit THCV selection claims with current primary research before use. |
 | 5. A Convenient Crop | read | pp. 95–111; selected notes pp. 271–276 (notes 8–107) | culture/traditions/the-heddawa.md; culture/traditions/kif-and-the-sebsi.md; culture/language/chamba.md | Remaining notes not read. The 1921 resin-production reference concerns Algeria, not a verified Moroccan start date. Do not identify the men in figure 5.1 as Heddawa; use the separately attributed 1955 gallery. Treat origin legends and outsider judgments as such. |
 | 6. Society Overturned: The Bena Riamba | read | pp. 112–124; chapter notes 280–286 | culture/traditions/bena-riamba.md; culture/people/sangula-meta.md; articles/dr-congo-bena-riamba-1881.md; changes.yaml#dr-congo-bena-riamba-1881 | Primary accounts conflict about names, kinship and succession. Do not turn approximate reconstruction into precisely dated events. Notes 21 and 35 qualify translations and kinship. |
@@ -443,10 +450,10 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 
 - **ID:** `franca-historia-maconha-brasil-unverified`
 - **Local file:** `books/História da maconha no Brasil (Jean Marcel Carvalho França).epub`
-- **Last recorded review:** 2026-10-15
-- **Coverage:** Title, copyright (© 2015 and 2022; São Paulo: Jandaíra, 2022; ISBN 978-65-5094-013-3) and contents examined. Chapters 2 and 3 read in full for nineteenth- and twentieth-century prohibition; chapter 4 read in selected passages (the 1976 law, the Gil and Rita Lee cases, 1979–80 reform debate). Chapters 1 and 5 indexed.
-- **Next:** França quotes eight days for the 1830 Rio penalty, but Camargo’s report of Avelar distinguishes three days in 1830 from eight in 1854. Compare original code editions; see earliest-ban-articles-2026-10-15.md. Chapter 4's 1966 public-security congress and the 1986 Diamba Sarabamba anthology could become entries. Chapter 5 (1990s–2010s) unread.
-- **Reading notes:** [franca-historia-maconha-prohibition-2026-10-15.md](research/franca-historia-maconha-prohibition-2026-10-15.md)
+- **Last recorded review:** 2026-10-16
+- **Coverage:** Title, copyright and contents verified. Chapters 2, 3 and 5 read in full; selected chapter-4 passages read. Chapter 5 applied to the 2011 documentary and January 2015 CBD reclassification, checked against ANCINE and Anvisa records. EPUB has no verified print pagination.
+- **Next:** Chapter 1 remains unread. Chapter 5’s media and clinical claims are reported discourse, not current medical evidence. Check originals before using the 1995/2000 magazine stories or claiming inevitable reform.
+- **Reading notes:** [franca-historia-maconha-prohibition-2026-10-15.md](research/franca-historia-maconha-prohibition-2026-10-15.md), [brazil-colombia-library-2026-10-16.md](research/brazil-colombia-library-2026-10-16.md)
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
@@ -454,7 +461,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | O vício dos pretos? | read | whole chapter, with its notes 1–52 | changes.yaml#brazil-rio-pango-ban-1830; articles/brazil-rio-pango-ban-1830.md; changes.yaml#brazil-santos-ban-1870; changes.yaml#brazil-iglesias-diamba-essay-1918; changes.yaml#brazil-igreja-nova-raid-1924; changes.yaml#brazil-elegant-vices-warning-1924 | — |
 | Diambismo: um flagelo social | read | whole chapter, with its notes 1–42 | changes.yaml#brazil-poisons-law-1921; changes.yaml#brazil-geneva-delegate-1925; changes.yaml#brazil-federal-ban-1932; articles/brazil-federal-ban-1932.md; changes.yaml#brazil-penal-code-1940; changes.yaml#brazil-narcotics-commission-1941; changes.yaml#brazil-maconha-collection-1953; changes.yaml#brazil-maynard-myth-1959; articles/brazil-maconha-collection-1953.md; changes.yaml#brazil-users-as-traffickers-1968; articles/brazil-users-as-traffickers-1968.md | — |
 | O canabismo dos hippies e dos excluídos | selected_sections_read | opening; the 1976 law; the Gil and Rita Lee arrests; Mayrink da Costa and the USP debate | changes.yaml#brazil-law-6368-1976; changes.yaml#brazil-gilberto-gil-arrest-1976; articles/brazil-gilberto-gil-arrest-1976.md; changes.yaml#brazil-mayrink-acquittal-1979; changes.yaml#brazil-usp-decriminalisation-debate-1980 | — |
-| Canabismo, um hábito economicamente viável | indexed_only | — | — | — |
+| Canabismo, um hábito economicamente viável | read | Whole chapter, including notes 1–16: media coverage, patient campaigns, cultivation websites, 2006 law, CBD reclassification and Quebrando o tabu | changes.yaml#brazil-cbd-controlled-substance-2015; articles/brazil-cbd-controlled-substance-2015.md; changes.yaml#brazil-quebrando-o-tabu-2011; articles/brazil-quebrando-o-tabu-2011.md | No media health claims, market forecasts or present-day legal summaries adopted. Exact CBD publication day remains unverified in this pass. |
 
 <a id="parrella-cannabis-non-solo-fumo-2014"></a>
 
@@ -477,3 +484,171 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | Bibliografia ragionata | indexed_only | — | — | — |
 | Siti web e risorse online | indexed_only | — | — | — |
 | Documenti | indexed_only | — | — | — |
+
+<a id="boullosa-wallace-narco-history-2015"></a>
+
+## A Narco History: How the United States and Mexico Jointly Created the “Mexican Drug War”
+
+- **ID:** `boullosa-wallace-narco-history-2015`
+- **Local file:** `books/A Narco History How the United States and Mexico Jointly Created the Mexican Drug War (2014) (Carmen Boullosa, Mike Wallace).epub`
+- **Last recorded review:** 2026-10-16
+- **Coverage:** Internal bibliography verified. Chapters 2, 3, 5 and 12 read in full; selected chapter-1 passages examined. Chapter 12 applied to the 2009/2011 commissions and the Cole memo, checked against original reports and the memo scan. No current legal or clinical claims imported.
+- **Next:** Read chapter 11 on 2012–2014 Mexico next. Verify 2006 Fox legislation, Washington home-growing, the Kerry/OAS chronology and Brownfield quotation before reuse. Chapter 12 includes compressed legal descriptions and predictions, not later outcomes.
+- **Reading notes:** [new-library-intake-2026-10-16.md](research/new-library-intake-2026-10-16.md), [matthews-boullosa-wallace-policing-2026-10-16.md](research/matthews-boullosa-wallace-policing-2026-10-16.md), [carneiro-narco-reform-2026-10-16.md](research/carneiro-narco-reform-2026-10-16.md)
+
+| Chapter / unit | Status | Actually examined | Applied to | Next research |
+|---|---|---|---|---|
+| Introduction: The Forty-Three | indexed_only | — | — | — |
+| 1. 1910s–1930s | selected_sections_read | Opening US prohibition discussion; Mexican lower-class use and 1925 enforcement; 1937 tax act, Salazar Viniegra and La Guardia passages | — | Narrative compresses proposal, clinics and embargo; verify dates independently. |
+| 2. 1940s–1950s | read | Whole chapter | — | — |
+| 3. 1960s–1970s | read | Whole chapter, including notes 7–9; Operation Intercept, Cooperation/CANADOR, Condor and trafficking networks | changes.yaml#mexico-operation-intercept-1969; articles/mexico-operation-intercept-1969.md | Condor dates, troop counts, crop percentages, allegations of protected plantations and specific abuses need original records. Correct the chapter’s compressed 1971/1972 Shafer chronology before any separate use. |
+| 4. 1980s | indexed_only | — | — | — |
+| 5. 1988 | read | Whole chapter | — | — |
+| 6. 1990s | indexed_only | — | — | — |
+| 7. 2000–2006 | indexed_only | — | — | — |
+| 8. 2006 | indexed_only | — | — | — |
+| 9. 2006–2012 | indexed_only | — | — | — |
+| 10. 2012 | indexed_only | — | — | — |
+| 11. 2012– | indexed_only | — | — | — |
+| 12. New Directions | read | Whole chapter, including notes 54–59; reform chronology, commission reports and future scenarios | changes.yaml#latin-american-drugs-democracy-report-2009; articles/latin-american-drugs-democracy-report-2009.md; changes.yaml#global-commission-drug-policy-report-2011; articles/global-commission-drug-policy-report-2011.md; changes.yaml#us-cole-memo-2013; articles/us-cole-memo-2013.md | Use primary reports for recommendations; the Cole memo preserves federal discretion. Do not adopt predictions as events, universal collateral-consequence claims, mortality comparisons or generalisations about Washington home cultivation. |
+
+<a id="booth-cannabis-history-us-2004"></a>
+
+## Cannabis: A History (first US edition)
+
+- **ID:** `booth-cannabis-history-us-2004`
+- **Local file:** `books/Cannabis  a history (Booth, Martin).pdf`
+- **Last recorded review:** 2026-10-16
+- **Coverage:** Title, copyright (first US edition June 2004; copyright 2003), contents and preface inspected. Same work as the existing Booth EPUB; separate file/edition record, without transferred reading credit.
+- **Next:** Useful print pagination for future Booth citations. Verify each passage against this edition before mapping EPUB reading or citations.
+- **Reading notes:** [new-library-intake-2026-10-16.md](research/new-library-intake-2026-10-16.md)
+
+| Chapter / unit | Status | Actually examined | Applied to | Next research |
+|---|---|---|---|---|
+| Preface | read | pp. xi–xii | — | — |
+| 1. The Fragrant Cane | indexed_only | — | — | — |
+| 2. Out Of The Land Of Mulberry And Hemp | indexed_only | — | — | — |
+| 3. A Fibre For All Seasons | indexed_only | — | — | — |
+| 4. The Shrub Of Emotion, The Morsel Of Thought | indexed_only | — | — | — |
+| 5. Myths And Murderers | indexed_only | — | — | — |
+| 6. The Herb Pantagruelion | indexed_only | — | — | — |
+| 7. A La Mode Du Hachisch | indexed_only | — | — | — |
+| 8. The Pastor’S Son From Poughkeepsie | indexed_only | — | — | — |
+| 9. Cannabis Rx | indexed_only | — | — | — |
+| 10. Loosening The Girders Of The Soul | indexed_only | — | — | — |
+| 11. Conventions, Commissions And Contraband | indexed_only | — | — | — |
+| 12. Mary Jane, Cockroaches And The Blues | indexed_only | — | — | — |
+| 13. When The Legend Becomes Fact, Print The Legend | indexed_only | — | — | — |
+| 14. New York, New York | indexed_only | — | — | — |
+| 15. Star-Busters | indexed_only | — | — | — |
+| 16. Dora, Bebop And The Vipers Of London | indexed_only | — | — | — |
+| 17. The Beats | indexed_only | — | — | — |
+| 18. Turning On, Tuning In And Riding The Bus | indexed_only | — | — | — |
+| 19. Ashrams And The Agents Of Change | indexed_only | — | — | — |
+| 20. The Times They Were Adjusting | indexed_only | — | — | — |
+| 21. Island In The Sun | indexed_only | — | — | — |
+| 22. Swinging In London, Stoned In Amsterdam | indexed_only | — | — | — |
+| 23. The Universal Friend | indexed_only | — | — | — |
+| 24. The Balm Of Hope | indexed_only | — | — | — |
+| 25. The Industry Of Dreams And Dollars | indexed_only | — | — | — |
+| 26. Fudge, Counter-Fudge And The Future | indexed_only | — | — | — |
+
+<a id="matthews-cannabis-culture-1999"></a>
+
+## Cannabis Culture: A Journey through Disputed Territory
+
+- **ID:** `matthews-cannabis-culture-1999`
+- **Local file:** `books/Cannabis culture  a journey through disputed territory , None (Matthews, Patrick, 1953-, None).pdf`
+- **Last recorded review:** 2026-10-16
+- **Coverage:** Title, copyright, contents and acknowledgements inspected. Main chapters indexed only; no reading credit transferred from the 2003 edition.
+- **Next:** Retain as original edition for comparison. Some interviewees use pseudonyms, as the acknowledgements explain.
+- **Reading notes:** [new-library-intake-2026-10-16.md](research/new-library-intake-2026-10-16.md)
+
+| Chapter / unit | Status | Actually examined | Applied to | Next research |
+|---|---|---|---|---|
+| Wine of Haydar | indexed_only | — | — | — |
+| Mugglesborough | indexed_only | — | — | — |
+| ‘Medi-Pot’ | indexed_only | — | — | — |
+| The Hard Science | indexed_only | — | — | — |
+| Arouser of Thought | indexed_only | — | — | — |
+| Objects Tilt to the Left | indexed_only | — | — | — |
+| The Religion of Hemp | indexed_only | — | — | — |
+| Strains and Stresses | indexed_only | — | — | — |
+| Cup Fever | indexed_only | — | — | — |
+| Pot of Gold | indexed_only | — | — | — |
+| Conspiracies | indexed_only | — | — | — |
+| Luck of the Draw | indexed_only | — | — | — |
+| Postscript | indexed_only | — | — | — |
+
+<a id="matthews-cannabis-culture-2003"></a>
+
+## Cannabis Culture (newly updated edition)
+
+- **ID:** `matthews-cannabis-culture-2003`
+- **Local file:** `books/Cannabis culture (Matthews, Patrick).pdf`
+- **Last recorded review:** 2026-10-16
+- **Coverage:** Title, copyright, contents, preface and acknowledgements examined. Selected pages of Cup Fever and printed pp. 223–236 of A Potted Sequel read. Afterword opening checked against PDF 235–236: begins on unnumbered p. [223], despite contents listing 225. UK policing passages compared with parliamentary records.
+- **Next:** Finish A Potted Sequel pp. 237–254 and Cup Fever pp. 161–164. The 2003 afterword anticipates Class C and reverses the June-election/July-pilot sequence; use official records for legal commencement and dates. Clinical and potency claims remain unverified.
+- **Reading notes:** [new-library-intake-2026-10-16.md](research/new-library-intake-2026-10-16.md), [matthews-boullosa-wallace-policing-2026-10-16.md](research/matthews-boullosa-wallace-policing-2026-10-16.md)
+
+| Chapter / unit | Status | Actually examined | Applied to | Next research |
+|---|---|---|---|---|
+| Preface to the 2003 Edition | read | pp. ix | — | — |
+| Wine of Haydar | indexed_only | — | — | — |
+| Mugglesborough | indexed_only | — | — | — |
+| ‘Medi-Pot’ | indexed_only | — | — | — |
+| The Hard Science | indexed_only | — | — | — |
+| Arouser of Thought | indexed_only | — | — | — |
+| Objects Tilt to the Left | indexed_only | — | — | — |
+| The Religion of Hemp | indexed_only | — | — | — |
+| Strains and Stresses | indexed_only | — | — | — |
+| Cup Fever | selected_pages_read | pp. 155–160, 165–171 | culture/traditions/the-cannabis-cup.md | Read pp. 161–164; do not treat complaints about voting as independently established corruption. |
+| Pot of Gold | indexed_only | — | — | — |
+| Conspiracies | indexed_only | — | — | — |
+| Luck of the Draw | indexed_only | — | — | — |
+| Postscript | indexed_only | — | — | — |
+| Afterword: A Potted Sequel | selected_pages_read | pp. [223]–236 | changes.yaml#uk-lambeth-cannabis-warning-pilot-2001; articles/uk-lambeth-cannabis-warning-pilot-2001.md; articles/uk-class-c-2004.md | Contents says 225; actual opening leaf precedes printed 224. 2003 prose says cannabis is already Class C, but statutory commencement was 29 January 2004. Do not infer causality from the author’s visit to Brixton. |
+
+<a id="carneiro-drogas-proibicionismo-2019"></a>
+
+## Drogas: A história do proibicionismo
+
+- **ID:** `carneiro-drogas-proibicionismo-2019`
+- **Local file:** `books/Drogas - A História do Proibicionismo (Henrique Carneiro).epub`
+- **Last recorded review:** 2026-10-16
+- **Coverage:** Internal bibliography checked. Chapter 2 read in full, including notes 58–78: comparative history of tobacco, tea, coffee and alcohol, without a cannabis-specific application. Selected chapter-5 conclusion and chapter-9 Cuba/marxism passage examined. No full-book reading.
+- **Next:** Read chapter 8 and more of chapter 9. Locate Carlos Franqui 1981 p. 98 and Padura 2013 p. 93 before dating or reusing the Cuba anecdotes. Do not convert tobacco/coffee restrictions into cannabis events.
+- **Reading notes:** [new-library-intake-2026-10-16.md](research/new-library-intake-2026-10-16.md), [carneiro-narco-reform-2026-10-16.md](research/carneiro-narco-reform-2026-10-16.md)
+
+| Chapter / unit | Status | Actually examined | Applied to | Next research |
+|---|---|---|---|---|
+| Prefácio | indexed_only | — | — | — |
+| Introdução | indexed_only | — | — | — |
+| 1. O antiproibicionismo filosófico | indexed_only | — | — | — |
+| 2. Os primeiros proibicionismos na Europa | read | Whole chapter: introductory comparison; O pecado da Nicotiana Tabacum; A concorrência do chá; As bebidas da burguesia em ascensão; notes 58–78 | — | Comparative context only. This chapter supplies no verified early cannabis prohibition. |
+| 3. O proibicionismo do ópio na China | indexed_only | — | — | — |
+| 4. A política antialcoolista na França | indexed_only | — | — | — |
+| 5. Proibicionismo e regulação estatal no Canadá | selected_sections_read | O fim dos monopólios ou sua extensão à maconha? (concluding section, including proposed LCBO/SAQ cannabis branches and note 270) | — | — |
+| 6. O proibicionismo do álcool nos Estados Unidos | indexed_only | — | — | — |
+| 7. O alcoolismo e o proibicionismo na Rússia | indexed_only | — | — | — |
+| 8. A revolução psicoativa moderna e o capitalismo aditivo | indexed_only | — | — | — |
+| 9. Teorias sociológicas do consumo de drogas | selected_sections_read | Opening of O marxismo, o estado e a regulação das drogas through the Cuba/Franqui/Padura discussion before Gramsci; notes 539–540 | — | Second-hand memoir quotations; find originals before assigning a date to Ginsberg’s reported question or treating guerrilla-era cultivation as a legal exemption. |
+
+<a id="gautier-baudelaire-hashish-wine-opium-2009"></a>
+
+## Hashish, Wine, Opium
+
+- **ID:** `gautier-baudelaire-hashish-wine-opium-2009`
+- **Local file:** `books/Hashish, Wine, Opium (Charles Baudelaire).epub`
+- **Last recorded review:** 2026-10-16
+- **Coverage:** Internal title, copyright and contents checked. Translation first published in 1972; copyright identifies this edition as 2009, with Alma Classics imprint/address in the file. Printed ISBN retained as such; no format-specific EPUB ISBN verified. Selected Gautier and Baudelaire sections examined; not the 1860 Les Paradis artificiels.
+- **Next:** Finish the remaining sections of The Club of Assassins and Wine and Hashish. Gautier’s Assassins story is literary framing. Baudelaire’s statement about an Egyptian prohibition is an unattributed contemporary assertion, not a verified decree or first-ban date.
+- **Reading notes:** [new-library-intake-2026-10-16.md](research/new-library-intake-2026-10-16.md)
+
+| Chapter / unit | Status | Actually examined | Applied to | Next research |
+|---|---|---|---|---|
+| Introduction | indexed_only | — | — | — |
+| The Opium Pipe | indexed_only | — | — | — |
+| The Club of Assassins | selected_sections_read | 1 The Hotel Pimodan; 3 Agape; 9 Don’t Trust Chronometers | culture/traditions/club-des-hashischins.md | — |
+| Hashish | indexed_only | — | — | — |
+| Wine and Hashish Compared as Means for the Multiplication of the Personality | selected_sections_read | Sections 5–7, especially section 6 on wine, willpower and Egyptian prohibition | articles/france-paradis-artificiels-1860.md | — |

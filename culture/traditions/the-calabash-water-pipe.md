@@ -3,7 +3,7 @@ title: The Calabash Water Pipe
 summary: A hollow gourd made into a smoking vessel, documented in nineteenth-century Angola and across much of Africa. Its air-control opening also challenges histories that begin with the modern bong.
 also: [mutopa, nkondo, gourd pipe]
 countries: [ao, cd]
-related: [language/diamba, language/cachimbo, traditions/bena-riamba, traditions/the-morning-pipe]
+related: [language/diamba, traditions/bena-riamba, traditions/the-morning-pipe]
 history: [dr-congo-bena-riamba-1881, us-water-pipe-patent-1980]
 image:
   src: ../../src/assets/culture/mutopa-calabash-pipe-1890.jpg

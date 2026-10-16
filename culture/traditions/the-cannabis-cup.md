@@ -22,6 +22,13 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_Cup
   - title: Wikipedia — Coffeeshop (Netherlands)
     url: https://en.wikipedia.org/wiki/Coffeeshop_(Netherlands)
+  - type: book
+    title: Cannabis Culture
+    authors: [Patrick Matthews]
+    publisher: Bloomsbury
+    year: 2003
+    isbn: 0-7475-6614-3
+    locator: "Cup Fever, pp. 155–160, 165–171"
 ---
 
 The Cannabis Cup is a festival and competition run by the American magazine [*High Times*](https://en.wikipedia.org/wiki/High_Times). Every year since 1988, usually in November and usually in Amsterdam, judges have sampled the cannabis entered by seed companies and coffeeshops and awarded trophies for the best. It gave the new trade of cannabis breeding its prizes and its celebrities, and it fixed the names by which much of the world's cannabis is still sold.
@@ -55,6 +62,14 @@ The winners show the history of the plant over a decade.
 | 1998, 1999 | Super Silver Haze |
 
 A Hindu Kush cross took the "Master Kush" prize in 1992 and 1993 (see [kush](/culture/language/kush/)). The judging categories follow the trade's division into [indica and sativa](/culture/language/indica-and-sativa/).
+
+## Inside the 1998 Cup
+
+Wine writer Patrick Matthews attended the 1998 competition and described a week spread across several settings. The Pax Party House held the trade exhibition, with hemp clothing, books, smoking equipment and coffeeshop stands. Buses took visitors to coffeeshops and seed businesses; the awards ceremony took place at the Melkweg. At the Sensi Seeds stand, [Jack Herer](/culture/people/jack-herer/) signed hemp-paper copies of his campaigning book to raise money for legalisation.
+
+Matthews also recorded the tension between a festival and a product competition. Coffeeshop representatives complained about the expense of parties, giveaways and promotion. He questioned how visitors could compare so many samples in a week without blind tasting. These are his observations and the complaints of named participants, rather than an independent finding that a result was bought.
+
+His description distinguishes what he saw from what he read: he missed the judges’ Council sessions and described their intended group discussion from the event programme. The account gives a particular late-1990s Cup its social setting; it does not establish the procedure at every later competition.
 
 ## Trouble at home
 

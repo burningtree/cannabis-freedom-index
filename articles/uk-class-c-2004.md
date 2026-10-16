@@ -6,6 +6,16 @@ sources:
     url: https://www.legislation.gov.uk/uksi/2003/3201/made
   - title: "Wikipedia — Cannabis classification in the United Kingdom"
     url: https://en.wikipedia.org/wiki/Cannabis_classification_in_the_United_Kingdom
+  - title: 'Police Foundation — Drugs and the law: independent inquiry report, published 28 March 2000'
+    url: https://www.police-foundation.org.uk/publication/inquiry-into-drugs-and-the-law/
+  - type: book
+    title: Cannabis Culture
+    authors:
+      - Patrick Matthews
+    publisher: Bloomsbury
+    year: 2003
+    isbn: 0-7475-6614-3
+    locator: 'Afterword: A Potted Sequel, pp. 226–234'
 ---
 
 On 29 January 2004 cannabis became a Class C drug in the United Kingdom. It had been in Class B since the class system began.
@@ -23,7 +33,9 @@ For possession, the maximum sentence fell from five years to two.
 
 ## How it came about
 
-The Home Secretary, David Blunkett, announced the plan in 2001. The government's own Advisory Council on the Misuse of Drugs had recommended the lower class as early as 1979, and an independent inquiry, the Runciman Report, endorsed it in 1999. A poll at the time found 49% of adults in favour of decriminalising cannabis and 36% against.
+The Home Secretary, David Blunkett, announced the plan in 2001. The government's own Advisory Council on the Misuse of Drugs had recommended the lower class as early as 1979, and an independent inquiry, the Runciman Report, published in March 2000, also backed reclassification. A poll at the time found 49% of adults in favour of decriminalising cannabis and 36% against.
+
+The [Lambeth warning pilot of July 2001](/history/uk-lambeth-cannabis-warning-pilot-2001/) explored a less time-consuming response to personal possession under existing police discretion. It preceded the national change. Matthews’s 2003 afterword describes the debate and its political compromises, but sometimes speaks of Class C as already in place; the statutory order fixes the commencement at 29 January 2004.
 
 The stated purpose was practical: to let the police concentrate on more serious offences and harder drugs. The transfer was held back until the penalties for supplying Class C drugs had been stiffened.
 

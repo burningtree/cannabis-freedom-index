@@ -17,6 +17,8 @@ image:
 model: opus-5.5
 written: 2026-10-14
 sources:
+  - title: Online Etymology Dictionary — Sinsemilla
+    url: https://www.etymonline.com/word/sinsemilla
   - title: Wikipedia — Sinsemilla
     url: https://en.wikipedia.org/wiki/Sinsemilla
 ---

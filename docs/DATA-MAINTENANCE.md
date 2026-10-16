@@ -1049,3 +1049,49 @@ using the original 1899 amendment and 1894 principal Act. It distinguishes licen
 sales controls and medicinal exceptions from a general ban, and labels the date as
 assent. A Washington State lead was rejected after the original 1899 text failed
 to name cannabis; a later codification was not backdated. No scores changed.
+
+A [Spanish pharmacy and Austrian branded-cigarette pass](research/pre-1900-spain-austria-pharmacy-2026-10-16.md)
+on 16 October 2026 replaced Spain's generic 1860 account with the original
+hashish poison-catalogue and signed-order rules, removing unsupported enforcement
+claims. It added Austria's 1882 import prohibition targeting Grimault's named
+cigarette products. Both have articles based on original instruments, with
+instrument/publication-date limits stated. No scores changed.
+
+A [Russian import and German warning pass](research/pre-1900-russia-imports-german-warning-2026-10-16.md)
+on 16 October 2026 added an 1878 contemporary report of Russia's cannabis-cigarette
+import prohibition, corroborated by an 1886 Swiss trade-gazette list. It also added
+Darmstadt's dated 1886 republication of a Karlsruhe warning about Grimault's
+cigarettes. Both have articles. Report, notice and publication dates are distinguished
+from unverified commencement dates; the German warning is not called a ban.
+No scores changed.
+
+A [Hessian pharmacy pass](research/pre-1900-hesse-pharmacy-2026-10-16.md)
+on 16 October 2026 added the 1896 dispensing rules commencing on 1 October,
+including an express external-use exception for Indian-hemp extract. It also
+corrected the existing German 1890 ordinance entry to its 1 May commencement
+and explained its wholesale/institutional exceptions. Both have articles.
+Scheduled repeat-dispensing quantities are distinguished from possession limits;
+no first-ever control or nationwide 1896 commencement is claimed. Scores were preserved.
+
+A [Portuguese pharmacopoeia pass](research/pre-1900-portugal-pharmacopoeia-2026-10-16.md)
+on 16 October 2026 added the 1876 royal approval of official cannabis identity,
+extract and tincture standards, with an article. The original decree's six-month
+transition from gazette publication is stated; the approval date is not treated
+as immediate commencement. An Italian 1892 lead did not establish a medicinal
+cannabis listing and was not added. No scores changed.
+
+An [early-1900s proprietary-medicine pass](research/early-1900-proprietary-medicine-controls-2026-10-16.md)
+on 16 October 2026 added Germany's 1907 Bromidia written-order and public-advertising
+controls, using the original Federal Council text reproduced in a contemporary
+journal. It corrected the U.S. 1906 Act entry to its 1 January 1907 commencement
+and replaced Wikipedia sources with the original statute and FDA history.
+Both have articles; named-product restrictions and disputed cannabis content are
+distinguished from cannabis-wide prohibition. No scores changed.
+
+An [Austrian hemp-cigarette trade and pharmacy pass](research/early-1900-austrian-hemp-cigarettes-2026-10-16.md)
+on 16 October 2026 added the reported 12 April 1905 fiscal clarification separating
+domestic manufacture/sale from controlled imports, and Trnkóczy's 22 March 1907
+prescription pharmacy authorization. Both have articles based on contemporary
+notices. The original wording corrects a sale/use translation ambiguity and a
+printed-page citation. Reported order dates are distinguished from commencement;
+neither entry implies cannabis-wide legalization. No scores changed.
