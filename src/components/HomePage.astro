@@ -104,7 +104,7 @@ const PRICE_SCALE = {
 const PLANTING_FIELDS = { seeds: "Seeds", seeds_trade: "Seed sales", clones: "Clones", clones_trade: "Clone sales" };
 // Each status gets its own step of the tier colours, so that no two legend entries look alike.
 const PLANTING_COLOR = { legal: 5, licensed: 4, grey: 3, illegal: 0, open: 5, regulated: 4, gift: 3, unclear: 2, banned: 0 };
-const plantingScale = (statuses) => Object.fromEntries(Object.entries(statuses).map(([k, v]) => [k, { label: v.label, color: `var(--t${PLANTING_COLOR[k]})` }]));
+const plantingScale = (statuses) => Object.fromEntries(Object.entries(statuses).map(([k, v]) => [k, { label: v.label, help: v.help, color: `var(--t${PLANTING_COLOR[k]})` }]));
 const PLANTING_SCALES = { status: plantingScale(PLANTING_STATUS), trade: plantingScale(PLANTING_TRADE) };
 // Sections with one status (clubs, driving, visitors) on the map: one option each.
 // The two headline statuses of every profile, offered on the map the same way. `complete` marks
@@ -481,7 +481,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
   <script type="application/json" id="cfi-use-scales" set:html={JSON.stringify(USE_SCALES)} />
   <script type="application/json" id="cfi-price-scale" set:html={JSON.stringify(PRICE_SCALE)} />
   <script type="application/json" id="cfi-planting" set:html={JSON.stringify({ fields: PLANTING_FIELDS, scales: PLANTING_SCALES, sections: STATUS_SCALES, subs: Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, section.complete ? section.sub : `${section.sub} Hatched countries have not been researched yet. Not part of the score.`])) })} />
-  <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => s.name))} />
+  <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => ({ name: s.name, desc: s.desc, levels: s.levels })))} />
 
   <script>
     import { select, selectAll } from "d3-selection";
@@ -497,7 +497,8 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     const base = import.meta.env.BASE_URL;
     const $ = (sel, root = document) => root.querySelector(sel);
     const COUNTRIES = JSON.parse($("#cfi-data").textContent);
-    const SEGMENT_NAMES = JSON.parse($("#cfi-segments").textContent);
+    const SEGMENT_INFO = JSON.parse($("#cfi-segments").textContent); // [{ name, desc, levels: [[score, text], …] }]
+    const SEGMENT_NAMES = SEGMENT_INFO.map((s) => s.name);
     const byId = new Map(COUNTRIES.map((c) => [c.id, c]));
     const byNum = new Map(COUNTRIES.filter((c) => c.num != null).map((c) => [c.num, c]));
     // Map features that inherit another entry's score (atlas name or numeric id → country id).
@@ -627,61 +628,110 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
 
       const tip = $("#tooltip");
       const wrap = $("#mapWrap");
+      // The words in the hover box (summaries and segment explanations) come from map-notes.json,
+      // fetched the first time anything is hovered; until it arrives the box shows numbers only.
+      let notes = null, notesLoading = null, lastTip = null;
+      const loadNotes = () => (notesLoading ??= fetch(`${base}map-notes.json`).then((r) => r.json()).then((n) => {
+        notes = n;
+        if (lastTip && !tip.hidden) showTip(...lastTip);
+      }).catch(() => {}));
+      const esc = (t) => String(t).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
+      const noteOf = (key) => notes?.[key];
+      const para = (text, cls = "tip-note") => (text ? `<p class="${cls}">${esc(text)}</p>` : "");
+      const row = (label, value, sw) => `<div class="row"><span>${label}</span><b>${sw ? `<i class="sw" style="background:${sw}"></i>` : ""}${value}</b></div>`;
+      const head = (flag, name, chip, color) =>
+        `<div class="tip-head"><strong>${flag ? `<span class="tip-flag">${flag}</span>` : ""}${esc(name)}</strong>${chip != null ? `<span class="tip-chip"${color ? ` style="--chip:${color}"` : ""}>${chip}</span>` : ""}</div>`;
+      const bar = (value, color) => `<div class="tip-bar"><i style="width:${Math.max(2, Math.min(100, value))}%;background:${color}"></i></div>`;
+      const foot = (c) => (c ? `<div class="tip-foot">Click for the full profile</div>` : "");
+      // what a segment score means, from segments.yaml; a score between two levels sits between them
+      const levelText = (seg, v) => {
+        const levels = SEGMENT_INFO[seg].levels;
+        let i = 0;
+        while (i < levels.length - 1 && v >= levels[i + 1][0]) i++;
+        return levels[i][0] === v || i === levels.length - 1 ? levels[i][1] : `Between “${levels[i][1]}” and “${levels[i + 1][1]}”`;
+      };
+      const rankText = (c) => (c.rank ? `#${c.rank}` : "not ranked");
+      // a scored place: the whole index, or one segment of it (`n` holds its notes)
+      const describeScore = (place, n, sub) => {
+        const v = metricValue(place), color = tierColor(v), tier = tierOf(v).name;
+        if (metric === "index") {
+          return `<div class="tip-meta">${tier} · ${sub}</div>${bar(v, color)}${para(n?.n)}`;
+        }
+        const seg = +metric, raw = place.s[seg];
+        return `<div class="tip-meta">${SEGMENT_NAMES[seg]} · ${tier}</div>${bar(v, color)}
+          ${para(levelText(seg, raw), "tip-level")}${para(n?.s?.[seg])}
+          ${row("Index", `${place.score} / 100 · ${sub}`)}`;
+      };
       // what the hover box says about a country, or about one of its states (`u`)
       const describe = (d) => {
         const c = d.c;
-        if (d.u && !isUse() && !isPrice() && !isPlant() && !isClubs()) {
+        if (d.u && isScore()) {
           const u = d.u, home = byId.get(u.country);
-          return `<strong>${home.flag} ${u.name}</strong>
-               <div class="row"><span>${metricLabel()}</span><b>${metricText(u)}</b></div>
-               <div class="row"><span>Tier</span><b>${tierOf(metricValue(u)).name}</b></div>
-               <div class="row"><span>Rank in ${home.name}</span><b>#${u.rank} of ${u.of}</b></div>`;
+          return head(home.flag, u.name, metric === "index" ? u.score : `${u.s[+metric]}<small>/10</small>`, tierColor(metricValue(u)))
+            + describeScore(u, noteOf(d.id), `#${u.rank} of ${u.of} in ${esc(home.name)}`)
+            + foot(home);
         }
-        if (d.u) return describe({ c: byId.get(d.u.country), properties: d.properties }) + `<div class="row"><span>${d.u.name}</span><b>national figure</b></div>`;
-        if (c && isClubs()) return `<strong>${c.flag} ${c.name}</strong><div class="row"><span>${PLANTING.sections[statusKey()].name}</span><b>${clubsOf(c)?.label ?? "Not researched yet"}</b></div>`;
-        if (c && isPlant()) {
-          const rows = Object.entries(PLANTING.fields).map(([field, label]) =>
-            `<div class="row"><span>${label}</span><b>${plantOf(c, field)?.label ?? "—"}</b></div>`).join("");
-          return `<strong>${c.flag} ${c.name}</strong>${c.planting ? rows : `<div class="row"><span>Seeds and clones</span><b>Not researched yet</b></div>`}`;
+        if (d.u) return describe({ c: byId.get(d.u.country), properties: d.properties }).replace(`<div class="tip-foot">`, `<div class="tip-meta">National figure, shown for ${esc(d.u.name)}</div><div class="tip-foot">`);
+        if (!c) return head(null, d.properties.name) + `<div class="tip-meta">Not scored</div>`;
+        const n = noteOf(c.id);
+        if (isClubs()) {
+          const key = statusKey(), st = clubsOf(c);
+          const text = key === "rec" ? n?.n : key === "med" ? n?.x?.medical : n?.x?.[key];
+          return head(c.flag, c.name)
+            + row(PLANTING.sections[key].name, st?.label ?? "Not researched yet", st?.color)
+            + para(st?.help, "tip-level") + para(st && text) + foot(c);
         }
-        if (c && isPrice()) {
+        if (isPlant()) {
+          if (!c.planting) return head(c.flag, c.name) + row("Seeds and clones", "Not researched yet") + foot(c);
+          const field = plantField(), st = plantOf(c);
+          const rows = Object.entries(PLANTING.fields).map(([f, label]) => {
+            const s = plantOf(c, f);
+            return `<div class="row${f === field ? " on" : ""}"><span>${label}</span><b>${s ? `<i class="sw" style="background:${s.color}"></i>${s.label}` : "—"}</b></div>`;
+          }).join("");
+          const help = st?.help?.[field.startsWith("clones") ? 1 : 0];
+          return head(c.flag, c.name) + rows + para(help, "tip-level") + para(n?.x?.planting) + foot(c);
+        }
+        if (isPrice()) {
           const p = priceOf(c);
-          return `<strong>${c.flag} ${c.name}</strong>
-            <div class="row"><span>${metricLabel()}</span><b>${p ? `$${p.usd.toFixed(2)}/g` : "No data"}</b></div>
-            ${p ? `<div class="row"><span>Local price</span><b>${p.price} ${p.currency}/g</b></div>
-                    <div class="row"><span>Observation</span><b>${p.date}</b></div>` : ""}`;
+          return head(c.flag, c.name, p ? `$${p.usd.toFixed(2)}<small>/g</small>` : null, p ? priceColor(c) : null)
+            + row(metricLabel(), p ? `$${p.usd.toFixed(2)} / g` : "No data")
+            + (p ? row("Local price", `${p.price} ${p.currency} / g`) + row("Observed", p.date) : "") + foot(c);
         }
-        if (c && metric === "culture") {
-          const n = c.use.culture;
-          return `<strong>${c.flag} ${c.name}</strong>
-            <div class="row"><span>Atlas entries</span><b>${n || "None yet"}</b></div>
-            ${c.atlas.map((t) => `<div class="row"><span>${t}</span></div>`).join("")}
-            ${n > c.atlas.length ? `<div class="row"><span>and ${n - c.atlas.length} more</span></div>` : ""}`;
+        if (metric === "culture") {
+          const k = c.use.culture;
+          return head(c.flag, c.name, k || "0", useColor(c))
+            + `<div class="tip-meta">${k ? `${k} atlas ${k === 1 ? "entry" : "entries"}` : "No atlas entries yet"}</div>`
+            + (c.atlas.length ? `<ul class="tip-list">${c.atlas.map((t) => `<li>${esc(t)}</li>`).join("")}${k > c.atlas.length ? `<li class="more">and ${k - c.atlas.length} more</li>` : ""}</ul>` : "") + foot(c);
         }
-        return c && metric === "ratio"
-            ? `<strong>${c.flag} ${c.name}</strong>
-               <div class="row"><span>Share ÷ index</span><b>${c.use.estimate ? "~" : ""}${c.use.ratio}</b></div>
-               <div class="row"><span>Share aged 15–64</span><b>${c.use.estimate ? "~" : ""}${c.use.prevalence}%</b></div>
-               <div class="row"><span>Index</span><b>${c.score} / 100</b></div>`
-            : c && isUse()
-            ? `<strong>${c.flag} ${c.name}</strong>
-               <div class="row"><span>Users</span><b>${c.use.estimate ? "~" : ""}${compact(c.use.users)}</b></div>
-               <div class="row"><span>Share aged 15–64</span><b>${c.use.estimate ? "~" : ""}${c.use.prevalence}%</b></div>
-               <div class="row"><span>${c.use.estimate ? "Regional estimate" : "Survey year"}</span><b>${c.use.estimate ? "no survey" : c.use.year}</b></div>`
-            : c
-            ? `<strong>${c.flag} ${c.name}</strong>
-               <div class="row"><span>${metricLabel()}</span><b>${metricText(c)}</b></div>
-               <div class="row"><span>Tier</span><b>${tierOf(metricValue(c)).name}</b></div>
-               <div class="row"><span>World rank</span><b>${c.rank ? "#" + c.rank : "not ranked"}</b></div>`
-            : `<strong>${d.properties.name}</strong><div class="row"><span>No data</span></div>`;
+        const est = c.use.estimate ? "~" : "";
+        if (metric === "ratio") {
+          return head(c.flag, c.name, `${est}${c.use.ratio}`, useColor(c))
+            + row("Share aged 15–64", `${est}${c.use.prevalence}%`) + row("Index", `${c.score} / 100`)
+            + para(USE_SCALES.ratio.note) + foot(c);
+        }
+        if (isUse()) {
+          return head(c.flag, c.name, metric === "users" ? `${est}${compact(c.use.users)}` : `${est}${c.use.prevalence}%`, useColor(c))
+            + row("Users", `${est}${compact(c.use.users)}`) + row("Share aged 15–64", `${est}${c.use.prevalence}%`)
+            + row(c.use.estimate ? "Source" : "Survey year", c.use.estimate ? "regional estimate" : c.use.year) + foot(c);
+        }
+        const chip = metric === "index" ? c.score : `${c.s[+metric]}<small>/10</small>`;
+        const extra = metric === "index"
+          ? row("Recreational", PLANTING.sections.rec.scale[c.rec]?.label ?? "—", PLANTING.sections.rec.scale[c.rec]?.color)
+            + row("Medical", PLANTING.sections.med.scale[c.med]?.label ?? "—", PLANTING.sections.med.scale[c.med]?.color)
+          : "";
+        return head(c.flag, c.name, chip, tierColor(metricValue(c))) + describeScore(c, n, c.rank ? `World rank ${rankText(c)}` : "Not ranked") + extra + foot(c);
       };
+      // above the pointer where there is room, below it otherwise; never past the map's edges
       const showTip = (e, d) => {
+        lastTip = [e, d];
+        if (!notes) loadNotes();
         tip.innerHTML = describe(d);
         tip.hidden = false;
         const box = wrap.getBoundingClientRect();
         const x = e.clientX - box.left, y = e.clientY - box.top;
-        tip.style.left = Math.min(x + 14, box.width - tip.offsetWidth - 8) + "px";
-        tip.style.top = Math.max(8, y - tip.offsetHeight - 12) + "px";
+        const w = tip.offsetWidth, h = tip.offsetHeight;
+        tip.style.left = Math.max(8, Math.min(x + 16, box.width - w - 8)) + "px";
+        tip.style.top = (y - h - 14 >= 8 ? y - h - 14 : Math.min(y + 18, box.height - h - 8)) + "px";
       };
       paths = g.selectAll(".country-shape").data(features).join("path")
         .attr("class", (d) => "country-shape" + (d.c ? " has-data" : "") + (d.id === ANTARCTICA ? " land-only" : ""))

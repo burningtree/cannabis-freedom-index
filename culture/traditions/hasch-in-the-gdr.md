@@ -7,15 +7,19 @@ history: [germany-gdr-hashers-capital-1970, germany-gdr-transit-hashish-seizures
 history_cards: [germany-gdr-hashers-capital-1970]
 related: [language/hashish, language/reefer]
 image:
-  src: ../../src/assets/culture/gdr-suchtmittelgesetz-1973-section-1.png
+  src: ../../src/assets/culture/gdr-customs-dog-berlin-1989-uhlemann.jpg
   fit: contain
-  alt: Original 1973 East German government gazette page containing the Suchtmittelgesetz, including Section 1 explicitly naming Cannabis, Haschisch and Marihuana.
-  caption: The GDR's Suchtmittelgesetz of December 1973 explicitly prohibited cannabis, hashish and marijuana, reflecting the state's restrictive drug policy.
-  credit: Gesetzblatt der Deutschen Demokratischen Republik, 1973 / GVOON historical archive.
-  credit_url: https://www.gvoon.de/gesetzblatt-gbl-ddr-teil-1-1973/seite-572-423475.html
+  alt: Black-and-white photograph of an East German customs officer with a drug-detection dog inspecting a car at Berlin's Heinrich-Heine-Straße border crossing in November 1989.
+  caption: An East German customs officer and drug-detection dog inspect a car at Berlin's Heinrich-Heine-Straße border crossing, 28 November 1989. The original archive caption reports that no drugs were found in this spot check.
+  credit: Bundesarchiv, Bild 183-1989-1128-012 / Thomas Uhlemann / CC BY-SA 3.0 DE.
+  credit_url: https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-1989-1128-012,_Berlin,_Rauschgiftspürhund_im_Einsatz.jpg
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
 model: gpt-6
 written: 2026-10-15
 sources:
+  - title: Bundesarchiv — Berlin, Rauschgiftspürhund im Einsatz, Thomas Uhlemann (28 November 1989)
+    locator: "Bild 183-1989-1128-012; original caption and licensing via Wikimedia Commons"
+    url: https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-1989-1128-012,_Berlin,_Rauschgiftspürhund_im_Einsatz.jpg
   - type: law
     title: Gesetz über den Verkehr mit Suchtmitteln – Suchtmittelgesetz
     publisher: Staatsverlag der Deutschen Demokratischen Republik, Berlin
@@ -92,7 +96,9 @@ used and the limited availability of cannabis.
 
 ## Cannabis in the socialist state's law
 
-The [1973 Suchtmittelgesetz](/history/germany-gdr-narcotic-drugs-act-1973/), reproduced above,
+![Original 1973 East German government gazette page containing the Suchtmittelgesetz, including Section 1 explicitly naming Cannabis, Haschisch and Marihuana.](../../src/assets/culture/gdr-suchtmittelgesetz-1973-section-1.png "The GDR's Suchtmittelgesetz of December 1973 explicitly prohibited cannabis, hashish and marijuana, reflecting the state's restrictive drug policy. | Gesetzblatt der Deutschen Demokratischen Republik, 1973 / GVOON historical archive. | https://www.gvoon.de/gesetzblatt-gbl-ddr-teil-1-1973/seite-572-423475.html")
+
+The [1973 Suchtmittelgesetz](/history/germany-gdr-narcotic-drugs-act-1973/)
 was dated **19 December 1973** and published in *Gesetzblatt*, Part I, no. 58, on **21 December**.
 Section 1(3) explicitly prohibited circulation of "Cannabis (Haschisch, Marihuana)" alongside
 heroin and LSD. Section 3(2) defined circulation broadly, including production, acquisition,
