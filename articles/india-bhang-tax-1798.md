@@ -1,57 +1,41 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6.1-sol
+written: '2026-10-16'
 sources:
-  - title: "Wikipedia — Cannabis in India"
-    url: https://en.wikipedia.org/wiki/Cannabis_in_India
-  - type: chapter
-    title: "Ganja and the Government of India: Cannabis, Excise, and Colonial Administration in the Late Nineteenth Century"
-    authors: [Peter Hynd]
-    container: "Cannabis: Global Histories"
-    editors: [Lucas Richert, James H. Mills]
-    publisher: MIT Press
-    year: 2021
-    isbn: "9780262366137"
-    locator: "pp. 30–44"
+  - type: report
+    title: Report of the Indian Hemp Drugs Commission, 1893–94, Vol. I
+    authors:
+      - Indian Hemp Drugs Commission
+    publisher: Government Central Printing Office, Simla
+    year: 1894
+    locator: >-
+      Chapter XIV, paragraph 556; reproduces Bengal Board letter No. 22 of 29 May 1798 and Finance
+      Department Resolution No. 3773 of 17 December 1873
+    url: https://abuse-drug.com/lib/Indian-Hemp-Commission-Report/chapter-xiv.html
 ---
 
-The first thing the British did about cannabis in India was to tax it. They went on
-taxing it for a century and a half, and never banned it.
+On 29 May 1798, Bengal’s Board advised the Governor-General in Council against altogether prohibiting the intoxicants it had examined. The recommendation favoured restricting use and raising revenue through suitable taxes. It is an early statement of colonial regulatory policy, rather than evidence of a British parliamentary cannabis-tax act passed that day.
 
-## The tax
+## The document behind the date
 
-In 1798 the British Parliament imposed a tax on bhang, ganja and charas. The stated aim
-was to reduce consumption, for the sake of the health and sanity of the people who used
-them. Attempts to make cannabis a crime were made or discussed in 1838, 1871 and 1877.
-None was enacted.
+The Indian Hemp Drugs Commission reproduced the conclusion in paragraph 556 of its 1894 report. It identified Board letter No. 22 and supplied its date. The inquiry considered several intoxicants, including ganja, bhang and charas, alongside substances such as opium, tobacco and toddy.
 
-## How it worked
+The original 1798 letter has not been independently inspected here. The account rests on its reproduction by the later official commission, with the distinction between the two documents retained in the citation.
 
-For the first half of the nineteenth century the tax was loosely run. In Bengal the
-right to sell ganja was auctioned to the highest bidder, who then traded with little
-interference.
+## Why the Board opposed total prohibition
 
-From [1854](/history/india-bengal-ganja-mahal-1854/) Bengal replaced this with close
-control: one licensed growing tract, a government warehouse, duty paid before sale.
-Officials summed up the aim in a phrase first used in Bombay in 1838, "maximum revenue
-from minimum consumption". Raise the duty until people use less, and collect more while
-they do. Bengal's excise reports recorded exactly that: consumption fell and revenue
-rose.
+The reproduced reasoning considered the practical difficulty of permitting original substances while prohibiting preparations made from them. It also recognized uses in medicine or otherwise and did not recommend altogether prohibiting sales of the substances examined.
 
-## Why not a ban
+These are the Board’s historical arguments. The account does not establish that all preparations were harmless, that every form of use was officially approved, or that no prohibition could ever be introduced elsewhere. A recommendation concerning the substances under examination has a particular institutional and geographical setting.
 
-The question was put directly in
-[1871–72](/history/india-cannabis-insanity-inquiry-1872/), when the government of India
-asked every province whether to prohibit cannabis. Most answered that hemp grew wild,
-that a ban could not be enforced, and that users would turn to something worse. The
-[Hemp Drugs Commission](/history/india-hemp-drugs-commission-1894/) reached the same
-conclusion in 1894 after hearing almost 1,200 witnesses.
+## Taxation as a proposed instrument
 
-## What it left
+The Board proposed considering taxes suited to restraining use and improving revenue. That identifies both a regulatory objective and a fiscal one.
 
-A system of licences and duties, province by province, that independent India inherited
-and kept until the [1985 Act](/history/india-ndps-act-1985/). Even that Act left bhang
-alone.
+The passage does not, by itself, enact a tariff, identify a particular rate or establish the day on which collectors began receiving a new tax. Turning the recommendation into a completed tax statute would collapse an important distinction between advice and implementation.
 
-The index lists the 1798 tax for context. A tax limits access a little and freedom
-hardly at all, so it moves no score for [India](/country/in/).
+## Correcting the older account
+
+This page previously described a British parliamentary tax on bhang, ganja and charas in 1798. The inspected passage supports a Bengal Board recommendation to the Governor-General in Council. The title, date and description now follow that evidence, while the original page identifier is preserved.
+
+The event is recorded as debate and policy context for [India](/country/in/). It does not establish the first taxation of cannabis, a single arrangement across the subcontinent, or an uninterrupted regulatory regime lasting into modern times. Specific tax enactments and territorial rules still require their own sources and dates.

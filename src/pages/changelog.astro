@@ -1,6 +1,7 @@
 ---
 // Every change that moved a country's score, newest first, as one compact table.
 import Base from "../layouts/Base.astro";
+import { Icon } from "astro-icon/components";
 import { scoreChanges, formatDate } from "../lib/exports.js";
 
 const base = import.meta.env.BASE_URL;
@@ -26,7 +27,7 @@ const base = import.meta.env.BASE_URL;
               <tr>
                 <td class="log-date"><time datetime={ch.date}>{formatDate(ch.date)}</time></td>
                 <td class="log-place">{ch.country.flag} {ch.country.name}</td>
-                <td><a href={`${base}history/${ch.id}/`}><span class="kind" aria-hidden="true">{ch.kind.emoji}</span>{ch.title}</a></td>
+                <td><a href={`${base}history/${ch.id}/`}><Icon name={ch.kind.icon} class="ico kind" aria-hidden="true" />{ch.title}</a></td>
                 <td class="num-col">{ch.score.before} → {ch.score.after} <span class={`delta ${delta >= 0 ? "up" : "down"}`}>{delta >= 0 ? "+" : "−"}{Math.abs(delta)}</span></td>
               </tr>
             );

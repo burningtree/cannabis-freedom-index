@@ -1,68 +1,54 @@
 ---
-model: opus-5.5
-written: 2026-10-15
+model: gpt-6.1-sol
+written: '2026-10-16'
 sources:
   - type: chapter
-    title: "Sociocultural and Epidemiological Aspects of Hashish Use in Greece"
-    authors: [C. Stefanis, C. Ballas, D. Madianou]
-    container: Cannabis and Culture
-    editors: [Vera Rubin]
-    publisher: Mouton
-    year: 1975
-    isbn: 90-279-7669-4
-    locator: pp. 310–315
-  - type: book
-    title: "Marihuana: The First Twelve Thousand Years"
-    authors: [Ernest L. Abel]
-    publisher: Springer Science+Business Media (facsimile of Plenum Press edition)
-    year: 1980
-    isbn: 978-1-4899-2189-5
-    locator: pp. 134–135
+    title: Les acteurs sur scène (1875-1920)
+    authors:
+      - Konstantinos Gkotsinas
+    container: 'Poisons sociaux: Histoire des stupéfiants en Grèce (1875-1950)'
+    publisher: École française d’Athènes
+    year: 2022
+    isbn: 978-2-86958-575-1
+    locator: >-
+      chapter 1, paragraphs 44–48, especially paragraph 45 and notes 108–110; online edition
+      published 2023
+    url: https://books.openedition.org/efa/15566
+  - type: report
+    title: Report of the Indian Hemp Drugs Commission, volume I
+    authors:
+      - Indian Hemp Drugs Commission
+    year: 1894
+    locator: >-
+      chapter XIV, paragraphs 557, 560 and 562; summarizes British diplomatic correspondence of 1892
+      concerning Greece
+    url: https://abuse-drug.com/lib/Indian-Hemp-Commission-Report/chapter-xiv.html
 ---
 
-On 27 March 1890, after a decision of its Medical Council, the Greek Interior Ministry issued a circular
-banning the import, growing and use of hashish as an imminent threat to society. Greece was one of the
-first countries in Europe to outlaw the drug. The ban stayed on the books until 1920, and for most of
-those years hashish was smoked almost openly.
+Greece’s Interior Ministry issued a hashish circular on 27 March 1890, according to the historical accounts consulted. Recent archival scholarship describes it as an instruction to obtain local police orders against use, rather than an enactment prohibiting all cannabis cultivation and commerce nationwide.
 
-## A new habit from the ports
+## What the ministry requested
 
-Greeks had known hemp as a fibre and a seed, not a drug. The first Greek pharmacopoeia of 1837,
-translated from a Bavarian text, listed only cannabis seed, and a pharmacology textbook did not call
-cannabis a narcotic until 1875. Hashish smoking arrived with trade. Stefanis and his colleagues trace it
-to the busy port of Hermoupolis on Syros after 1850, and to Piraeus in the 1870s and 1880s, where dock
-labourers, boatmen, porters and carters took it up. People called it the "weed of the poor".
+Konstantinos Gkotsinas identifies Interior Minister Stéphanos Dragoumis as the author of a circular addressed to prefects. Following medical advice, he asked them to obtain orders from municipal and police authorities prohibiting hashish use in cafés and elsewhere.
 
-Growing followed. In [1887](/history/greece-orchomenus-hashish-report-1887/) the mayor of Orchomenus in
-Arcadia reported that immigrants from Egypt, Cyprus and the East had taught local farmers to grow and
-process hashish about ten years earlier, for local use and for export.
+The distinction between a ministerial request and a subsequent local order matters. The circular directed officials toward a restrictive policy; it does not, on the evidence examined here, establish every offence later attributed to a national 1890 ban.
 
-| Year | Step |
-|---|---|
-| 1837 | First Greek pharmacopoeia lists only cannabis seed |
-| about 1875 | Hashish growing begins in the Peloponnese |
-| 1890 | Import, growing and use banned |
-| 1912 | First hashish users admitted to the Dromokaiteion asylum, by the authors' count |
-| 1920 | [Growing banned](/history/greece-cultivation-ban-1920/) by a new law |
-| 1922 | [Refugees and soldiers](/history/greece-asia-minor-refugees-1922/) return from Asia Minor |
+The date is retained as reported in the sources. It has not been independently normalized between the Greek calendar then in use and the Gregorian calendar.
 
-## A ban without teeth
+## A contemporary account of the narrower rule
 
-Middle-class Greeks saw hashish as a danger and its users as degenerates; according to M. G.
-Stringaris, cited by Abel, "criminal" itself became a word for a smoker. Yet the 1890 circular changed
-little. Hashish was smoked in the *tekedes*, cafés in the harbour of Piraeus and in central Athens, whose
-regulars were mostly young, jobless men living by their wits and known as *manges*. Rebetiko, a music
-Stefanis and his colleagues compare to the American blues, grew up in the same rooms, and they link the
-two closely.
+The Indian Hemp Drugs Commission’s 1894 report summarizes diplomatic information supplied in 1892. Paragraph 560 describes a police order of 1891 prohibiting sale and consumption in small cafés in Athens and Piraeus. It also reports that the product could be traded as merchandise.
 
-The habit spread further in the 1920s, when soldiers came home from the war in Asia Minor and around a
-million and a half refugees were resettled in the slums of Athens and Piraeus. In those years, Abel writes,
-Greece became a major producer.
+That account supports distinguishing public-premises restrictions from a general cultivation or commerce ban. It has limits of its own: the commission was summarizing diplomatic correspondence, not reproducing a complete Greek legislative code.
 
-## Later
+## Why the older description needs qualification
 
-The 1920 law banned growing, and from [1932](/history/greece-stocks-law-1932/) the laws grew steadily
-harsher. Stefanis and his colleagues write that they were not strictly enforced until the end of the
-civil war in 1950. By the early 1970s [police files](/history/greece-police-hashish-archives-1973/)
-recorded about three thousand hashish users, and the law allowed up to ten years in prison.
-[Greece](/country/gr/) allowed [medical cannabis](/history/greece-medical-2018/) only in 2018.
+Older accounts attached to this history entry, including the 1975 chapter by Stefanis, Ballas and Madianou, described the 1890 measure more broadly. They remain in the event’s bibliography as part of the source history.
+
+Gkotsinas’s more recent reconstruction traces the circular to a contemporary agricultural periodical and separates it from the [Athens–Piraeus order of 1891](/history/greece-athens-piraeus-public-hashish-order-1891/). The contemporary commission provides additional evidence against treating the entire cannabis trade as already prohibited.
+
+## A restriction whose implementation must be traced
+
+The later police order addressed public use, establishments and equipment. A [further order in 1897](/history/greece-athens-piraeus-hashish-order-renewal-1897/) repeated its content, according to Gkotsinas.
+
+This article corrects the scope of the 1890 event while preserving its existing identifier. The historical score values have not been reconstructed: narrowing the legal claim also means their allocation needs separate review. The original circular and local instruments remain targets for direct inspection.

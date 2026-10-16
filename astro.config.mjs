@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import icon from "astro-icon";
 
 // Fully static output: one HTML file per page, including one per country.
 //
@@ -53,6 +54,9 @@ export default defineConfig({
   // also the address used in canonical links, the sitemap and structured data
   site: process.env.SITE || "https://cannabisfreedom.fyi",
   base,
+  // Icons are Iconoir (https://iconoir.com/), through astro-icon and Iconify: `<Icon name="iconoir:…" />`
+  // inlines the SVG at build time, so only the icons a page uses end up in it.
+  integrations: [icon()],
   markdown: { remarkPlugins: [markdownFigures], rehypePlugins: [markdownLinks] },
   // pictures in Markdown get a set of widths, so a phone does not download the 1280-pixel file
   image: { layout: "constrained" },

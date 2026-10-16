@@ -598,7 +598,7 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 .c-price-older a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
 
 /* ── History entry kinds ────────────────────────────── */
-.kind { margin-right: 6px; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; letter-spacing: 0; }
+.kind { margin-right: 6px; color: var(--muted); }
 /* the kinds double as filters: each leads to a page listing only that kind */
 .kinds { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; max-width: 760px; }
 .kinds a { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border: 1px solid var(--border); border-radius: var(--r); color: var(--text-2); font-size: 12.5px; white-space: nowrap; }
@@ -2050,3 +2050,18 @@ button.sv-row .sv-chip { font: 400 10.5px var(--mono); text-transform: uppercase
 .hero-word.out .hw-note { opacity: 0; }
 @media (max-width: 700px) { .hw-note { left: auto; right: 0; top: auto; bottom: 100%; margin: 0 0 2px; font-size: 10px; } }
 @media (prefers-reduced-motion: reduce) { .hw-w, .hw-note { transition: none; } }
+
+/* Iconoir icons (astro-icon): sized by the text around them and drawn in its colour. */
+.ico { width: 1.15em; height: 1.15em; vertical-align: -.2em; flex: none; }
+h1 .ico { width: .75em; height: .75em; vertical-align: -.02em; }
+.icon-btn .ico { width: 19px; height: 19px; vertical-align: 0; }
+.theme-sun { display: none; }
+:root[data-theme="dark"] .theme-sun { display: inline; }
+:root[data-theme="dark"] .theme-moon { display: none; }
+.search-box > .ico { width: 19px; height: 19px; color: var(--muted); }
+.sr-kind { display: inline-flex; align-items: center; gap: 5px; }
+.sr-kind .ico { width: 14px; height: 14px; vertical-align: 0; }
+.sr-icon { position: relative; display: inline-flex; width: 26px; height: 26px; align-items: center; justify-content: center; color: var(--muted); }
+.sr-icon .ico { width: 21px; height: 21px; }
+/* a history entry: its kind's icon, with the country's flag small in the bottom right corner */
+.sr-badge { position: absolute; right: -5px; bottom: -4px; font-size: 11px; line-height: 1; }

@@ -1,67 +1,41 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6.1-sol
+written: '2026-10-16'
 sources:
-  - title: TNI / GDPO — The Rise and Decline of Cannabis Prohibition (2014)
-    url: https://www.tni.org/files/download/rise_and_decline_web.pdf
-  - title: Wikipedia — Cannabis in Egypt
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Egypt
+  - type: report
+    title: Report of the Indian Hemp Drugs Commission, 1893–94, Vol. I
+    authors:
+      - Indian Hemp Drugs Commission
+    publisher: Government Central Printing Office, Simla
+    year: 1894
+    locator: >-
+      Chapter XIV, paragraph 559; Egyptian prohibitions and March 1884 disposal of confiscated
+      hashish; account quoting customs director Caillard
+    url: https://abuse-drug.com/lib/Indian-Hemp-Commission-Report/chapter-xiv.html
 ---
 
-The modern prohibition of cannabis did not begin in Washington or Geneva. It began
-in Cairo, half a century earlier, and it failed there first.
+The Indian Hemp Drugs Commission’s 1894 account places an Egyptian prohibition on both hashish importation and cultivation in March 1879. That chronology corrects the earlier implication on this page that cultivation first became prohibited five years later.
 
-## An old habit, an old quarrel
+## A decree described by a later report
 
-Hashish reached Egypt in the twelfth century, by one account with Sufi travellers
-from Syria, and its use among Sufis is documented from the thirteenth. Authorities
-regarded it as the habit of the poor and the mystic, and tried to punish it as early
-as the fourteenth century.
+Paragraph 559 identifies a Khedivial decree and gives March 1879 as the date of the importation and cultivation prohibition. The original Egyptian decree has not been independently inspected for this article.
 
-The first penal law came from an occupier. Napoleon's army, cut off from wine, took
-to hashish, and in [October 1800](/history/egypt-french-ban-1800/) the French
-command banned smoking it and drinking preparations made from it, with three months
-in prison. Cafes that sold it were boarded up and their owners jailed. The troops
-mostly ignored the order, and took hashish home with them in 1801.
+The report is an official contemporary retrospective account. It supplies a stronger basis for describing the nineteenth-century chronology than an uncited modern summary, while remaining distinct from direct examination of the full law. It does not establish every definition, exception or penalty in the original instrument.
 
-## A ban in instalments
+## Earlier restrictions and changing arrangements
 
-Egypt's own rulers then tried repeatedly.
+The same account describes earlier prohibitions and an intervening period in which hashish could be imported on payment of duty. That sequence matters because a later decree need not be the first occasion on which authorities attempted to restrict cannabis.
 
-| Year | Measure |
-|---|---|
-| [1868](/history/egypt-first-ban-1868/) | Cultivation, use and import forbidden |
-| [1874](/history/egypt-import-tax-1874/) | A tax placed on imports that were already illegal |
-| [1877](/history/egypt-destruction-order-1877/) | The Ottoman sultan orders all hashish in Egypt destroyed |
-| 1879 | A new law bans cultivation and import |
-| [1884](/history/egypt-cultivation-ban-1884/) | Cultivation made a criminal offence |
+The event should consequently be read as one stage in changing regulation. A sequence of prohibitions, revenue arrangements and enforcement measures cannot safely be compressed into a single claim that cannabis became illegal once and remained under an identical system thereafter.
 
-The bans were reissued in 1891 and 1894. The index dates Egypt's prohibition from
-1879, the law that stayed on the books.
+## Why 1884 needs separate treatment
 
-## Why it did not work
+The report associates March 1884 with permission to [sell confiscated hashish for delivery abroad](/history/egypt-seized-hashish-export-sales-1884/), using proceeds for enforcement rewards. That is a customs disposal measure with a particular export condition.
 
-Hashish was cheap, easy to grow and easy to smuggle from Greece. The rules exempted
-foreigners. And the 1884 law let customs officers sell seized hashish abroad to pay informers
-and themselves, instead of destroying it.
+The older [1884 cultivation record](/history/egypt-cultivation-ban-1884/) now states the dating problem explicitly. An original instrument is still needed to determine whether a distinct cultivation measure was introduced then and, if so, what it added to the earlier prohibition.
 
-Use among the urban and rural poor carried on much as before. In
-[1892](/history/egypt-caillard-regulation-proposal-1892/) the British head of
-customs reported that prohibition had produced trafficking and proposed the Indian
-system instead: license it and tax it. A law was drafted and never applied.
+## What the correction does
 
-## From Cairo to Geneva
+The database now dates this event to March 1879 and identifies both activities named in the report. It avoids assigning an exact day or a penalty unsupported by the inspected passage.
 
-Unable to stop the supply at home, Egypt pressed its neighbours. Greece, Cyprus,
-Turkey, Sudan, Syria, Lebanon and Palestine were all asked to restrict growing and
-trade, and Greece [banned hashish](/history/greece-hashish-ban-1890/) in 1890 while
-remaining a major exporter into the 1920s.
-
-That frustration is what the Egyptian delegate carried to the
-[Geneva conference of 1925](/history/geneva-opium-convention-1925/), where he asked
-the world to do what Egypt could not. Egypt's own law hardened in
-[1960](/history/egypt-law-182-1960/), with the death penalty for trafficking.
-
-A century and a half after the first ban, cannabis in [Egypt](/country/eg/) is by
-one description "widely used privately and informally tolerated in some regions",
-and the country scores close to zero on the index.
+The existing score values for [Egypt](/country/eg/) are preserved. This content correction does not certify that the earlier restrictions have been fully reconstructed or that the scored chain captures every nineteenth-century legal change. It makes the evidence and its limitations visible while leaving a broader score reconstruction for a separate source-based assessment. The immediate result is a more accurate distinction between prohibition and the administration of seized goods.

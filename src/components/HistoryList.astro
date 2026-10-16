@@ -10,6 +10,7 @@
 // navigation), the kinds as filters, then the ledger.
 import HistoryChart from "./HistoryChart.astro";
 import HistoryYears from "./HistoryYears.astro";
+import { Icon } from "astro-icon/components";
 import { changes, places, historyPeriods, historyYears, CHANGE_CATEGORIES } from "../lib/countries.js";
 
 const { period, kind } = Astro.props;
@@ -53,7 +54,7 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
   <a href={`${base}history/`} aria-current={kind ? undefined : "true"}>All kinds</a>
   {Object.entries(CHANGE_CATEGORIES).map(([key, k]) => (
     <a href={`${base}history/kind/${key}/`} title={k.help} aria-current={key === kind ? "page" : undefined}>
-      <span aria-hidden="true">{k.emoji}</span> {k.label} <small>{kindCount(key)}</small>
+      <Icon name={k.icon} class="ico" aria-hidden="true" /> {k.label} <small>{kindCount(key)}</small>
     </a>
   ))}
 </nav>

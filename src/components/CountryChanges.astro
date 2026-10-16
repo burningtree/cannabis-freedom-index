@@ -2,6 +2,7 @@
 // A country's recorded changes, newest first, at the end of the country article.
 // The same ledger rows as the History page: date, what happened, and the score before and after.
 import ScoreChange from "./ScoreChange.astro";
+import { Icon } from "astro-icon/components";
 import { changeDate, articles } from "../lib/countries.js";
 
 const { history } = Astro.props;
@@ -15,7 +16,7 @@ const base = import.meta.env.BASE_URL;
         <a href={`${base}history/${ch.id}/`}>
           <time datetime={ch.date}>{changeDate(ch)}</time>
           <div class="he-body">
-            <p class="he-place"><span class="he-kind"><span aria-hidden="true">{ch.kind.emoji}</span> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
+            <p class="he-place"><span class="he-kind"><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
             <h3>{ch.title}</h3>
             <p class="he-text">{ch.description}</p>
           </div>

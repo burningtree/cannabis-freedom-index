@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import { render } from "astro:content";
 import { Picture } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import { changes, articles, countries, changeDate, formatDate, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP } from "../../lib/countries.js";
 import { tierOf, tierColor } from "../../lib/tiers.js";
 import { sourceTuple } from "../../lib/sources.js";
@@ -45,7 +46,7 @@ const related = relatedTo(ch, nearby);
 
     <header class={`ev-top${ch.score ? "" : " ev-plain"}`}>
       <div>
-        <p class="eyebrow"><a href={`${base}history/kind/${ch.category}/`} title={ch.kind.help}>{ch.kind.emoji} {ch.kind.label}</a> <span><time datetime={ch.date}>{changeDate(ch)}</time></span> <span>{c ? <a href={`${base}country/${c.slug}/`}>{c.flag} {c.name}</a> : ch.place.name}</span></p>
+        <p class="eyebrow"><a href={`${base}history/kind/${ch.category}/`} title={ch.kind.help}><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</a> <span><time datetime={ch.date}>{changeDate(ch)}</time></span> <span>{c ? <a href={`${base}country/${c.slug}/`}>{c.flag} {c.name}</a> : ch.place.name}</span></p>
         <h1>{ch.title}</h1>
         <p class="lede">{ch.description}</p>
       </div>
@@ -130,7 +131,7 @@ const related = relatedTo(ch, nearby);
               <li><a href={`${base}history/${x.id}/`}>
                 <time datetime={x.date}>{changeDate(x)} · {x.place.flag} {x.place.name}</time>
                 <b>{x.title}</b>
-                <span>{x.kind.emoji} {x.kind.label}{x.score && <> · {x.score.before} → {x.score.after}</>}</span>
+                <span><Icon name={x.kind.icon} class="ico" aria-hidden="true" /> {x.kind.label}{x.score && <> · {x.score.before} → {x.score.after}</>}</span>
               </a></li>
             ))}
           </ol>

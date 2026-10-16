@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Base from "../layouts/Base.astro";
 import DidYouKnow from "../components/DidYouKnow.astro";
 import Changes from "../components/Changes.astro";
@@ -468,9 +469,9 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
   <dialog id="detail" class="drawer" aria-label="Country details">
     <div class="drawer-bar">
       <a class="icon-btn" id="dCompare" href={`${base}compare/`} aria-label="Compare with other countries" title="Compare with other countries">
-        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 20V9M12 20V4M19 20v-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <Icon name="iconoir:stats-report" class="ico" aria-hidden="true" />
       </a>
-      <button class="icon-btn" id="dClose" aria-label="Close">✕</button>
+      <button class="icon-btn" id="dClose" aria-label="Close"><Icon name="iconoir:xmark" class="ico" aria-hidden="true" /></button>
     </div>
     <div class="drawer-inner" id="detailBody"></div>
   </dialog>

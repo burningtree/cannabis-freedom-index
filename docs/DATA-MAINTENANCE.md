@@ -306,6 +306,16 @@ are defined once in `PLANTING_STATUS` in `src/lib/segment-ids.js`; the country p
 table, the per-country JSON and `scores.csv` (columns `seeds`, `seeds_trade`, `clones`, `clones_trade`)
 all read from there, together with `PLANTING_TRADE`.
 
+## Research scope beyond law
+
+The history also covers cannabis cultivation, food, fibre, medicine, trade, science,
+art and everyday culture. Do not limit research to bans and legal reform. Record a
+dated publication, excavation report or other event in `changes.yaml`, normally as
+unscored `other`; recurring practices belong in the cultural atlas as described in
+[CULTURE.md](CULTURE.md). Keep the date of a modern discovery separate from the age
+of the evidence it describes. Do not infer intoxication from every seed or textile,
+or present historical therapeutic claims as established efficacy.
+
 ## How a history entry works
 
 ```yaml
@@ -565,6 +575,77 @@ Two entries were rebuilt around what the source actually says: Laos 1996 became 
 restriction, and the Norway "1965 tinctures" entry became Norway's first cannabis seizure of 1965.
 
 ## Reporting back
+
+15 October 2026: an [earliest-ban research pass](research/earliest-cannabis-bans-2026-10-15.md)
+added four attributed medieval context records, corrected Menou's 1800 decree date
+and article, and qualified the 1868 Egypt title. The note records dating problems,
+sources actually read, existing coverage and why no continuous score regime was inferred.
+
+A follow-up [article and source pass](research/earliest-ban-articles-2026-10-15.md)
+added five articles and revised three across the eight early-ban records. Translated
+al-Maqrizi passages support Cafour's destruction by 1244; later scholarship places
+Baybars's broad prohibition in 1266. Existing page IDs are retained. The note records
+remaining calendar, penalty and jurisdiction uncertainties; scores were not changed.
+
+A [source-diversity continuation](research/earliest-bans-different-sources-2026-10-15.md)
+added Safavid Iran (1534–1535) and Jahangir’s bazaar sales ban (1609), each with
+an article, using the imperial memoir and scholarship by Matthee, Calmard and Kazemi.
+It also removed the unsupported assignment of a later Ottoman cultivation circular
+to 1725. No profiles or scores changed; India’s existing score-chain warning remains.
+
+A [broader cannabis-history pass](research/cannabis-beyond-bans-2026-10-15.md)
+added four entries and articles covering Culpeper's 1652 herbal, Scandinavian
+textiles, domestication genetics and Bronze Age Haimenkou seeds. The source base
+is a primary early modern transcription and three original research papers.
+No country profiles, scores or score baselines changed.
+
+A [pre-1900 regulatory pass](research/pre-1900-regulations-2026-10-15.md)
+added five records and articles for New York (1860/1862), Berar (1875/1884)
+and Baroda (1892). It corrected the commencement of Berar's 1897 law to
+1 April 1898 and added its article. Morocco's claimed 1890 privileges are now
+explicitly unresolved and no longer marked checked, following Chouvy's later
+source criticism. All changes are regional or historical context; scores are unchanged.
+
+A [16 October pre-1900 continuation](research/pre-1900-regulations-2026-10-16.md)
+added Sweden's 1876 Indian-hemp supply restriction, India's 1873 administrative
+resolution and Egypt's 1884 confiscated-hashish disposal rule. It corrected Bengal's
+1798 recommendation, separated the 1871–1872 inquiry from the 1873 response, and
+qualified the claim that Egyptian cultivation prohibition began only in 1884.
+Existing IDs and score values were retained; Egypt's 1879 event now has month precision.
+
+A [US pre-1900 continuation](research/pre-1900-us-regulations-2026-10-16.md)
+added Wisconsin’s 1862 poison-sales control, with explicit limits on the secondary
+evidence, and the 1891 Bromidia trademark injunction, checked against the original
+reporter. Both have articles and are unscored. Country profiles and existing records
+were unchanged.
+
+A [colonial-commerce pass](research/pre-1900-colonial-commerce-2026-10-16.md)
+added two Ceylon licensing records (1893) and three articles from original gazettes.
+It expanded the 1897 import-only entry to include verified possession and sale
+prohibition and corrected the 1905 chronology, removing that entry’s checked flag
+until its own original instrument is read. Score values were preserved; the research
+note flags the historical allocation of the 1867–1905 score changes for review.
+
+A [Straits and North Borneo pass](research/pre-1900-straits-borneo-2026-10-16.md)
+corrected both 1870 blanket-ban entries to licensed bhang-monopoly controls using
+the official 1886 statutory compilation. It added the reported North Borneo 1891
+licensing/monopoly law from the League’s 1922 government-reply summary. All three
+entries gained articles. Existing score values were preserved, with the timing and
+allocation of prohibition scores explicitly left for historical review.
+
+A [Mediterranean customs pass](research/pre-1900-mediterranean-customs-2026-10-16.md)
+added two Egyptian treaty-context records and articles: the Greek convention
+operative 20 March 1884, with the related British acceptance, and the US extension
+operative 18 March 1885. Official gazette and US treaty texts explicitly reserve
+hashish controls and establish search procedures. These are foreign-commerce
+enforcement arrangements; no domestic national ban or score change was inferred.
+
+A [Greek public-orders pass](research/pre-1900-greek-public-orders-2026-10-16.md)
+separated the 1890 ministerial circular from the 1891 Athens–Piraeus police order
+and its reported 1897 repetition. Two new entries/articles and a rewritten 1890
+article use Gkotsinas’s archival history and the contemporary Indian commission.
+The prison circular’s date remains unresolved and was not added. Existing score
+values were preserved; their allocation to a supposed blanket 1890 ban needs review.
 
 After each pass, say: how many entries were added or corrected, which profiles and scores
 changed and why, which score timelines were re-based, which claims rest on sources that were read versus only summarised, and what
@@ -937,3 +1018,34 @@ schema with authors, editor, edition and printed page locators. Track local file
 pagination, pages actually reviewed and future leads in [books.yaml](books.yaml).
 See [BOOKS.md](BOOKS.md) for the workflow. An indexed book is not automatically read,
 and a 1975 ethnography does not establish current law or medical efficacy.
+
+A [colonial labour and medical-exceptions pass](research/pre-1900-indentured-regulations-2026-10-16.md)
+on 16 October 2026 added Natal's unsuccessful 1884 prohibition proposal and
+Trinidad's separate 1894 prohibition, with articles. It corrected Natal's 1870
+and 1887 descriptions to distinguish executive powers and recommendations from
+verified implementing rules, and qualified Trinidad's 1899 repeal. Five articles
+were added. Original instruments and the historical score allocation remain
+retrieval/reconstruction tasks; existing scores were preserved.
+
+A [Ceylon medicinal-exception and consolidation pass](research/pre-1900-ceylon-medical-and-consolidation-2026-10-16.md)
+on 16 October 2026 added the 1878 bhang licensing/medicinal provisions, verified
+through a contemporary court report, and the original 1899 consolidation retaining
+bhang and ganja prohibition. Both have articles. The court decision is dated 1891,
+although its volume was published in 1892; its actual prosecution concerned opium.
+Trinidad originals remain retrieval leads. Existing score allocations were preserved
+and their historical limitations recorded.
+
+A [New Zealand brewing-law pass](research/pre-1900-new-zealand-brewing-2026-10-16.md)
+on 16 October 2026 added cannabis restrictions commencing on 1 January 1869
+under the Distillation Act 1868, with an article. The original gazette reproduction
+verifies brewing, trader-possession and supplier offences, their different purpose
+exceptions and penalties. This is a trade-specific regime, not a general possession
+ban. No scores changed; generic poison-law leads without verified cannabis coverage
+were not added.
+
+A [Western Australian poison-schedule pass](research/pre-1900-western-australia-poisons-2026-10-16.md)
+on 16 October 2026 added the express 1899 Cannabis Indicus listing and an article,
+using the original 1899 amendment and 1894 principal Act. It distinguishes licensed
+sales controls and medicinal exceptions from a general ban, and labels the date as
+assent. A Washington State lead was rejected after the original 1899 text failed
+to name cannabis; a later codification was not backdated. No scores changed.

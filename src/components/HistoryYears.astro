@@ -3,6 +3,7 @@
 // Used by the decade and kind pages, and by the year fragments that the continuous list at
 // /history/ loads as the reader scrolls (src/pages/fragments/history/[year].astro).
 import ScoreChange from "./ScoreChange.astro";
+import { Icon } from "astro-icon/components";
 import { articles, formatDate } from "../lib/countries.js";
 
 const { years } = Astro.props; // [{ year, items }]
@@ -18,7 +19,7 @@ const scoredIn = (items) => items.filter((ch) => ch.score).length;
           <a href={`${base}history/${ch.id}/`}>
             <time datetime={ch.date}>{ch.date.length === 4 ? "" : formatDate(ch.date).replace(` ${year}`, "")}</time>
             <div class="he-body">
-              <p class="he-place">{ch.place.flag} {ch.place.name} <span class="he-kind"><span aria-hidden="true">{ch.kind.emoji}</span> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
+              <p class="he-place">{ch.place.flag} {ch.place.name} <span class="he-kind"><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
               <h3>{ch.title}</h3>
               <p class="he-text">{ch.description}</p>
             </div>

@@ -1,37 +1,58 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6.1-sol
+written: '2026-10-16'
 sources:
   - type: chapter
-    title: "Ganja and the Government of India: Cannabis, Excise, and Colonial Administration in the Late Nineteenth Century"
-    authors: [Peter Hynd]
-    container: "Cannabis: Global Histories"
-    editors: [Lucas Richert, James H. Mills]
+    title: >-
+      Ganja and the Government of India: Cannabis, Excise, and Colonial Administration in the Late
+      Nineteenth Century
+    authors:
+      - Peter Hynd
+    container: 'Cannabis: Global Histories'
+    editors:
+      - Lucas Richert
+      - James H. Mills
     publisher: MIT Press
     year: 2021
-    isbn: "9780262366137"
-    locator: "pp. 42–44"
+    isbn: '9780262366137'
+    locator: pp. 42–44
   - type: chapter
-    title: "Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912"
-    authors: [Jamie Banks]
-    container: "Cannabis: Global Histories"
-    editors: [Lucas Richert, James H. Mills]
+    title: >-
+      Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad,
+      1881–1912
+    authors:
+      - Jamie Banks
+    container: 'Cannabis: Global Histories'
+    editors:
+      - Lucas Richert
+      - James H. Mills
     publisher: MIT Press
     year: 2021
-    isbn: "9780262366137"
-    locator: "pp. 63"
+    isbn: '9780262366137'
+    locator: pp. 63
   - type: book
-    title: "Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928"
-    authors: [James H. Mills]
+    title: 'Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928'
+    authors:
+      - James H. Mills
     publisher: Oxford University Press
     year: 2003
-    isbn: "0-19-924938-5"
-    locator: "pp. 82–91"
+    isbn: 0-19-924938-5
+    locator: pp. 82–91
+  - type: report
+    title: Report of the Indian Hemp Drugs Commission, 1893–94, Vol. I
+    authors:
+      - Indian Hemp Drugs Commission
+    publisher: Government Central Printing Office, Simla
+    year: 1894
+    locator: >-
+      Chapter XIV, paragraph 556; reproduces Bengal Board letter No. 22 of 29 May 1798 and Finance
+      Department Resolution No. 3773 of 17 December 1873
+    url: https://abuse-drug.com/lib/Indian-Hemp-Commission-Report/chapter-xiv.html
 ---
 
-The idea that cannabis causes insanity became official doctrine in British India in
-1872, on evidence that the historian who has studied it calls spurious. Most of the
-officials asked to act on it refused.
+In 1871–1872 the Government of India collected provincial opinions on hemp drugs. The
+formal policy response reproduced by the later Hemp Drugs Commission is dated
+17 December 1873; the inquiry period and the resolution should not be conflated.
 
 ## The question
 
@@ -42,7 +63,8 @@ prohibited outright?
 
 ## The verdict
 
-The government concluded that the link between cannabis and insanity was real. The
+The [resolution of 17 December 1873](/history/india-hemp-restriction-resolution-1873/)
+asserted a link between cannabis and insanity. That was an official historical claim. The
 governor-general called on the provinces to discourage the use of ganja and bhang by
 restricting their cultivation, preparation and sale, and by taxing them as heavily as
 could be done without driving the trade underground.
@@ -75,7 +97,7 @@ forced a proper inquiry. The
 statistics were compiled and found the effect of hemp on insanity "greatly
 exaggerated".
 
-By then the 1872 conclusion had travelled. Colonial doctors in
+The belief also travelled beyond India. Colonial doctors in
 [Trinidad](/history/trinidad-cultivation-licence-1885/) and British Guiana cited Indian
 opinion when they blamed ganja for filling their asylums.
 

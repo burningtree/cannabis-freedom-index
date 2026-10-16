@@ -52,15 +52,16 @@ export const STATUS_SECTIONS = {
     sub: "Green means visitors can buy on the same terms as residents, yellow that legal supply is for residents only, red that nobody has legal access.",
     note: "Whether someone who does not live in the country can get cannabis legally." },
 };
-// What kind of event a History entry is, in the order the legend lists them.
+// What kind of event a History entry is, in the order the legend lists them. `icon` is shown on
+// the site; `emoji` stands in where only text fits (the chart tooltips, previews, OG pictures).
 export const CHANGE_CATEGORIES = {
-  ban: { emoji: "⛔", label: "Ban", help: "Cannabis is prohibited or restricted for the first time, or banned again" },
-  tightening: { emoji: "👎", label: "Tightening", help: "Harsher penalties, new offences or a crackdown" },
-  death: { emoji: "☠️", label: "Death penalty", help: "The death penalty is introduced, used, limited or removed" },
-  easing: { emoji: "👍", label: "Easing", help: "Decriminalisation, lighter penalties or a ruling that protects users" },
-  legalisation: { emoji: "✅", label: "Legalisation", help: "Possession, growing or sales become legal for adults" },
-  medical: { emoji: "💊", label: "Medical", help: "Medical cannabis is allowed, widened or refused" },
-  debate: { emoji: "🗳️", label: "Debate", help: "Reports, commissions, votes and plans that changed no rule by themselves" },
-  international: { emoji: "🌐", label: "International", help: "Treaties and decisions of international bodies" },
-  other: { emoji: "📜", label: "Other law", help: "Other laws and rulings, including hemp, CBD and seed rules" },
+  ban: { emoji: "⛔", icon: "iconoir:prohibition", label: "Ban", help: "Cannabis is prohibited or restricted for the first time, or banned again" },
+  tightening: { emoji: "👎", icon: "iconoir:thumbs-down", label: "Tightening", help: "Harsher penalties, new offences or a crackdown" },
+  death: { emoji: "☠️", icon: "iconoir:warning-triangle", label: "Death penalty", help: "The death penalty is introduced, used, limited or removed" },
+  easing: { emoji: "👍", icon: "iconoir:thumbs-up", label: "Easing", help: "Decriminalisation, lighter penalties or a ruling that protects users" },
+  legalisation: { emoji: "✅", icon: "iconoir:check-circle", label: "Legalisation", help: "Possession, growing or sales become legal for adults" },
+  medical: { emoji: "💊", icon: "iconoir:pharmacy-cross-circle", label: "Medical", help: "Medical cannabis is allowed, widened or refused" },
+  debate: { emoji: "🗳️", icon: "iconoir:chat-lines", label: "Debate", help: "Reports, commissions, votes and plans that changed no rule by themselves" },
+  international: { emoji: "🌐", icon: "iconoir:globe", label: "International", help: "Treaties and decisions of international bodies" },
+  other: { emoji: "📜", icon: "iconoir:page", label: "Other law", help: "Other laws and rulings, including hemp, CBD and seed rules" },
 };

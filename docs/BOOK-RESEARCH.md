@@ -11,8 +11,8 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 | [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 14 / 36 | 5 | 17 | 39 | 0 | matches recorded hash |
 | [Cannabis: A History](#booth-cannabis-history-2003) | verified | 1 / 26 | 1 | 24 | 5 | 0 | matches recorded hash |
 | [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 6 | 3 | 11 | 0 | matches recorded hash |
-| [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 1 | 12 | 3 | 0 | matches recorded hash |
-| [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 1 | 8 | 44 | 0 | matches recorded hash |
+| [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 2 | 11 | 6 | 0 | matches recorded hash |
+| [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 2 | 7 | 46 | 0 | matches recorded hash |
 | [Reefer Wellness: Understanding Cannabis Science, Culture, and Medicine](#kirk-reefer-wellness-2025) | verified | 0 / 8 | 0 | 8 | 0 | 0 | matches recorded hash |
 | [The Emperor Wears No Clothes](#herer-emperor-wears-no-clothes-undated) | verified | 1 / 16 | 1 | 14 | 1 | 0 | matches recorded hash |
 | [The African Roots of Marijuana](#duvall-african-roots-marijuana-2019) | verified | 4 / 10 | 3 | 3 | 28 | 4 | matches recorded hash |
@@ -24,7 +24,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 | [The Flowers of Good: The Science and the History of Marijuana Liberation](#the-flowers-of-good-the-science-and-the-history-of-marijuana-liberation) | verified | 1 / 15 | 1 | 13 | 10 | 0 | matches recorded hash |
 | [The Marijuana Conviction: A History of Marijuana Prohibition in the United States](#the-marijuana-conviction-a-history-of-marijuana-prohibition-in-the-united-states) | verified | 7 / 16 | 4 | 5 | 43 | 0 | matches recorded hash |
 | [História da maconha no Brasil](#franca-historia-maconha-brasil-unverified) | verified | 2 / 5 | 1 | 2 | 22 | 0 | matches recorded hash |
-| [Cannabis: non solo fumo](#parrella-cannabis-non-solo-fumo-2014) | verified | 3 / 8 | 0 | 5 | 20 | 0 | matches recorded hash |
+| [Cannabis: non solo fumo](#parrella-cannabis-non-solo-fumo-2014) | verified | 4 / 8 | 0 | 4 | 22 | 0 | matches recorded hash |
 
 ## Inventory alerts
 
@@ -147,12 +147,12 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 - **ID:** `abel-marihuana-first-twelve-thousand-years-1980`
 - **Local file:** `books/Marihuana The First Twelve Thousand Years (Ernest L. Abel (auth.)).pdf`
 - **Last recorded review:** 2026-10-15
-- **Coverage:** Title, copyright and contents examined; selected pp. 214–220 in chapter 12 read. Other chapter bodies not yet reviewed.
+- **Coverage:** Title, copyright and contents examined; selected pp. 214–220 in chapter 12 and pp. 41–43 in chapter 2 read. Other chapter bodies not yet reviewed.
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
 | 1. Cannabis in the Ancient World | indexed_only | — | — | — |
-| 2. Hashish and the Arabs | indexed_only | — | — | — |
+| 2. Hashish and the Arabs | selected_pages_read | pp. 41–43; printed 42–43 visually inspected (PDF 51–52) | articles/egypt-cafour-cannabis-destruction-1253.md; articles/egypt-cairo-cannabis-destruction-1324.md; articles/egypt-hashish-suppression-1378.md | See docs/research/earliest-ban-articles-2026-10-15.md. Abel’s 1253 date conflicts with the pre-1244 recital in de Sacy’s translated al-Maqrizi. Wider siege/crop-campaign claims need comparison with Rosenthal and the underlying Arabic histories. |
 | 3. Rope and Riches | indexed_only | — | — | — |
 | 4. Cannabis Comes to the New World | indexed_only | — | — | — |
 | 5. New Uses for the Old Hemp Plant | indexed_only | — | — | — |
@@ -172,13 +172,13 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 - **ID:** `richert-mills-cannabis-global-histories-2021`
 - **Local file:** `books/Cannabis Global Histories (Lucas Richert and James H. Mills).epub`
 - **Last recorded review:** 2026-10-15
-- **Coverage:** Title, copyright and contents examined; chapter 11 introductory discussion, The Explosion in Demand and notes 14–28 read. Chapters 5, 8, 9, 10, 12 and 14 read in full, including their notes. Other chapter bodies indexed, not reviewed in this copy.
+- **Coverage:** Title, copyright and contents examined; chapter 11 introductory discussion, The Explosion in Demand and notes 14–28 read. Chapters 5, 8, 9, 10, 12 and 14 read in full, including their notes. Chapter 3’s Mauritius section and notes 71–75 also read. Other chapter bodies indexed, not reviewed in this copy.
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
 | 1. 1 Taming the Orient: France and the First Global Movement to Medicalize Cannabis, ca. 1800–1850 | indexed_only | — | — | — |
 | 2. 2 Ganja and the Government of India: Cannabis, Excise, and Colonial Administration in the Late Nineteenth Century | indexed_only | — | — | — |
-| 3. 3 Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912 | indexed_only | — | — | — |
+| 3. 3 Ganja Madness: Cannabis, Insanity, and Indentured Labor in British Guiana and Trinidad, 1881–1912 | selected_sections_read | Chapter 3, Ganja Madness in Mauritius and Jamaica (Mauritius discussion), and notes 71–75. Selected reading only; reflowable EPUB without verified print mapping. | articles/mauritius-ban-1840.md; changes.yaml#mauritius-ban-1840 | Read remaining sections and inspect Ordinance No. 2 of 1840 itself; see docs/research/earliest-ban-articles-2026-10-15.md. |
 | 4. 4 Dagga: How South Africa Made a Dangerous Drug, 1902–1928 | indexed_only | — | — | — |
 | 5. 5 Squaring a Circle: Cannabis and the Dubious Legacy of the League of Nations | read | Entire chapter and notes 1–89; no verified print-page mapping. | articles/league-advisory-committee-report-1934.md; articles/egypt-russell-hashish-report-1930.md; articles/league-russell-anslinger-exchange-1938.md; culture/people/russell-pasha.md; changes.yaml#league-advisory-committee-report-1934; changes.yaml#egypt-russell-hashish-report-1930; changes.yaml#league-russell-anslinger-exchange-1938 | See docs/research/ram-league-reading-2026-10-15.md. Original League reports and proceedings remain unexamined; the 1935 summary event has an unresolved date. The chapter's June 1938 discussion cites a June 1937 minute for one sarcastic quotation; that quip is not assigned to 1938 in the rewritten article. Treaty controls should not be described as a universal domestic ban. |
 | 6. 6 A Historical Approach to the Criminalization of Marijuana Use in Mexico | indexed_only | — | — | — |
@@ -364,8 +364,8 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 - **Local file:** `books/Intoxicating Zion A Social History of Hashish in Mandatory Palestine and Israel (Haggai Ram).epub`
 - **Last recorded review:** 2026-10-15
 - **Coverage:** Title, copyright (LCCN 2020025589, ebook ISBN 9781503613928) and contents examined. Selected sections of chapters 1, 2, 3, 5, 6 and the conclusion read for legal and prohibition events; no chapter read cover to cover. Public locators use chapter and section, since the EPUB has no verified print-page mapping.
-- **Next:** Read chapters 3–6 in full. Check the 1925, 1928 and 1932 Palestine ordinances in the Palestine Gazette before adding the amendment years as separate entries. Ram's notes cite the 1725 Ottoman decree through secondary works; the original firman was not examined.
-- **Reading notes:** [ram-intoxicating-zion-prohibition-2026-10-15.md](research/ram-intoxicating-zion-prohibition-2026-10-15.md)
+- **Next:** Read chapters 3–6 in full. Check the 1925, 1928 and 1932 Palestine ordinances in the Palestine Gazette before adding the amendment years as separate entries. Ram's notes cite the 1725 Ottoman decree through secondary works; the original firman was not examined. Note 16 cites a separate 1876 newspaper report; do not date the provincial cultivation circular to 1725.
+- **Reading notes:** [ram-intoxicating-zion-prohibition-2026-10-15.md](research/ram-intoxicating-zion-prohibition-2026-10-15.md), [earliest-bans-different-sources-2026-10-15.md](research/earliest-bans-different-sources-2026-10-15.md)
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
@@ -445,7 +445,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 - **Local file:** `books/História da maconha no Brasil (Jean Marcel Carvalho França).epub`
 - **Last recorded review:** 2026-10-15
 - **Coverage:** Title, copyright (© 2015 and 2022; São Paulo: Jandaíra, 2022; ISBN 978-65-5094-013-3) and contents examined. Chapters 2 and 3 read in full for nineteenth- and twentieth-century prohibition; chapter 4 read in selected passages (the 1976 law, the Gil and Rita Lee cases, 1979–80 reform debate). Chapters 1 and 5 indexed.
-- **Next:** The 1830 Rio penalty is now given as eight days, from França's quotation of the 1830 code (p. 9 of the Código de posturas); a facsimile of the code would settle it. Chapter 4's 1966 public-security congress and the 1986 Diamba Sarabamba anthology could become entries. Chapter 5 (1990s–2010s) unread.
+- **Next:** França quotes eight days for the 1830 Rio penalty, but Camargo’s report of Avelar distinguishes three days in 1830 from eight in 1854. Compare original code editions; see earliest-ban-articles-2026-10-15.md. Chapter 4's 1966 public-security congress and the 1986 Diamba Sarabamba anthology could become entries. Chapter 5 (1990s–2010s) unread.
 - **Reading notes:** [franca-historia-maconha-prohibition-2026-10-15.md](research/franca-historia-maconha-prohibition-2026-10-15.md)
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
@@ -463,15 +463,15 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 - **ID:** `parrella-cannabis-non-solo-fumo-2014`
 - **Local file:** `books/Cannabis non solo fumo (Bernardo Parrella [Parrella, Bernardo]).epub`
 - **Last recorded review:** 2026-10-15
-- **Coverage:** Cover, internal title, rights statement, prologue dated February 2014 and NCX/spine examined. Prologue, the complete Il caso italiano chapter and the complete Scenari per il nuovo millennio chapter read across three passes. The local EPUB has misleading 1999/9788872264638 OPF metadata. The cover and updated text identify the 2014 work; no format-specific EPUB ISBN verified. The 2014 print record lists ISBN 9788862223782, which is not assigned here to the EPUB.
-- **Next:** Read La Notte dei Tempi or L’era proibizionista next. Verify the 1998 Italian prescribing framework and 2013 constitutional referrals against originals. Global chapter contains date errors and overstates some legal permissions; consult the latest audit before reusing its claims.
-- **Reading notes:** [parrella-italy-patient-access-2026-10-15.md](research/parrella-italy-patient-access-2026-10-15.md), [parrella-italy-industry-reform-2026-10-15.md](research/parrella-italy-industry-reform-2026-10-15.md), [parrella-global-scenarios-2026-10-15.md](research/parrella-global-scenarios-2026-10-15.md)
+- **Coverage:** Cover, internal title, rights statement, prologue dated February 2014 and NCX/spine examined. Prologue, the complete Il caso italiano chapter and the complete Scenari per il nuovo millennio chapter read across three passes. L’era proibizionista subsequently read in full. The local EPUB has misleading 1999/9788872264638 OPF metadata. The cover and updated text identify the 2014 work; no format-specific EPUB ISBN verified. The 2014 print record lists ISBN 9788862223782, which is not assigned here to the EPUB.
+- **Next:** Read La Notte dei Tempi next. Audit unverified historical quotations, dates and causal claims from L’era proibizionista before reusing them; earlier Italian primary-source leads remain open.
+- **Reading notes:** [parrella-italy-patient-access-2026-10-15.md](research/parrella-italy-patient-access-2026-10-15.md), [parrella-italy-industry-reform-2026-10-15.md](research/parrella-italy-industry-reform-2026-10-15.md), [parrella-global-scenarios-2026-10-15.md](research/parrella-global-scenarios-2026-10-15.md), [parrella-prohibition-cabo-verde-2026-10-15.md](research/parrella-prohibition-cabo-verde-2026-10-15.md)
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
 | Prologo | read | Complete prologue, including the preceding 12 February 2014 campaign statement | — | — |
 | La Notte dei Tempi | indexed_only | — | — | — |
-| L’era proibizionista | indexed_only | — | — | — |
+| L’era proibizionista | read | Complete chapter, all three sections: Tra disinformazione e sensazionalismo; Società e politica alle strette; Niente di nuovo dall’era Obama? Reflowable EPUB; no print-page mapping. | changes.yaml#us-carter-decriminalisation-message-1977; changes.yaml#us-pew-legalisation-majority-2013 | Other historical dates, attributed quotations and statistics remain unverified leads; no causal conspiracy claims or clinical conclusions imported. |
 | Scenari per il nuovo millennio | read | Complete chapter: L’uso terapeutico; Attivismo alla riscossa; Hemp for Victory; Nuove applicazioni e ricerche mediche; USA: prove generali di legalizzazione?; I dinamismi del quadro globale. Reflowable EPUB; no verified print-page mapping. | changes.yaml#canada-industrial-hemp-regulations-1998; articles/canada-industrial-hemp-regulations-1998.md; changes.yaml#us-vermont-civil-possession-2013; articles/us-vermont-civil-possession-2013.md; changes.yaml#us-vha-medical-marijuana-directive-2010; changes.yaml#nepal-italy-hemp-solidarity-project-2011; articles/nepal-italy-hemp-solidarity-project-2011.md; changes.yaml#france-medicines-decree-2013; articles/france-medicines-decree-2013.md | Medical efficacy assertions, reported market figures, French club prosecutions, Malaysia’s 2013 proposals and US event dates remain leads. The Nepal trade-project account is attributed to the book; no independent outcome or volume audit was obtained. |
 | Il caso italiano | read | Complete chapter (all seven sections), including the concluding interviews with Giancarlo Cecconi, Alessandro Buccolieri and Fabrizio Dentini | changes.yaml#italy-tuscany-cannabinoid-law-2012; changes.yaml#italy-racale-patient-club-2013; changes.yaml#italy-sativex-authorisation-2013; changes.yaml#italy-regional-cannabinoid-ruling-2013; culture/traditions/cannabis-social-clubs.md; changes.yaml#italy-liberta-droga-congress-1973; changes.yaml#italy-assocanapa-founded-1998; changes.yaml#italy-cannabinoid-medicines-decree-2007; changes.yaml#italy-hemp-seed-food-circular-2009; changes.yaml#italy-indica-sativa-trade-2013; culture/traditions/italian-hemp-rope-makers.md | Primary decree confirms 18 April 2007, published 28 April; book conflates these dates. The 2009 circular concerns seed-food permission and safety, not therapeutic endorsement. Congress corroborated as a national meeting; avoid the book’s international/first-campaign claims. Fair is its first edition, not demonstrably Italy’s first hemp fair. Unverified prevalence, nutrition, Amnesia and environmental comparisons not imported. |
 | Bibliografia ragionata | indexed_only | — | — | — |

@@ -1,68 +1,51 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6.1-sol
+written: '2026-10-11'
 sources:
-  - type: chapter
-    title: "Sub-Saharan Africa, Cannabis, and Contemporary Drug Policy"
-    authors: [Neil Carrier]
-    container: "Cannabis: Global Histories"
-    editors: [Lucas Richert, James H. Mills]
-    publisher: MIT Press
-    year: 2021
-    isbn: "9780262366137"
-    locator: "p. 323"
-  - title: "Wikipedia — Cannabis in Madagascar"
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Madagascar
-  - title: "Wikipedia — Timeline of cannabis law"
-    url: https://en.wikipedia.org/wiki/Timeline_of_cannabis_law
+  - type: book
+    title: La conception malgache du monde, du surnaturel et de l’homme en Imerina, tome 1
+    authors:
+      - Louis Molet
+    publisher: L’Harmattan
+    year: 1979
+    locator: p. 214, Le chanvre; citing Tantara, p. 674
+    url: https://horizon.documentation.ird.fr/exl-doc/pleins_textes/divers14-04/09821.pdf
+  - type: book
+    title: Fokon’olona et collectivités rurales en Imerina
+    authors:
+      - Georges Condominas
+    publisher: Berger-Levrault
+    year: 1960
+    locator: p. 51; royal capital offences and note 2 citing G. Julien
+    url: https://horizon.documentation.ird.fr/exl-doc/pleins_textes/divers11-03/22732.pdf
 ---
 
-The oldest ban in the index's history comes from a kingdom in the highlands of
-Madagascar, thirteen years before Napoleon's army banned hashish in Egypt.
+King Andrianampoinimerina prohibited cannabis smoking in the Merina kingdom of Madagascar. Later historical accounts associate the offence with severe punishment, including death. They also preserve an important distinction: cultivation for cloth and rope was allowed. The conventional date 1787 does not come with a verified day or surviving decree examined here.
 
-## The king's law
+## Smoking and useful cultivation
 
-Andrianampoinimerina ruled the Merina kingdom at the end of the eighteenth century.
-Under him, consuming cannabis became a capital
-crime. The timeline the index follows dates the prohibition to 1787.
+Louis Molet reproduces a royal statement, citing the Tantara collection of Merina history. The speaker prohibits consuming or smoking hemp in the heart of Imerina while expressly permitting people to cultivate it for textiles and cordage.
 
-The reason recorded is a judgement about what it did to people. The king is reported to
-have said that when you smoke hemp, "you become half-witted". The ban was not aimed at
-strangers: use was widespread among his own courtiers.
+This distinction changes the meaning of the familiar phrase “the king banned cannabis.” The plant had several uses, and the reported command treated them differently. It supports a restriction on intoxicating consumption; it does not establish that every hemp field or fibre use was outlawed.
 
-This was a royal prohibition in the Merina kingdom, not legislation passed for the borders
-of the present republic. The distinction matters: the index associates the event with
-Madagascar's history, but the sources do not establish that the order was enforced across
-the entire island. The article therefore treats 1787 as the earliest documented political
-ban there, not as proof of uniform national policing.
+The royal explanation links smoking with loss of reason. That is evidence of the ruler’s stated justification as transmitted through later texts, rather than a present-day medical assessment.
 
-## What came before
+## Punishment and royal authority
 
-Cannabis use on the island predated the royal ban by well over a century. Neil Carrier's
-chapter in *Cannabis: Global Histories* says consumption in Madagascar was known from
-the mid-seventeenth century and places it within the plant's long history in eastern and
-southern Africa.
+Georges Condominas places hemp smoking among capital offences in his discussion of Andrianampoinimerina’s monarchy. His account connects the king’s rules about personal conduct with measures protecting royal authority and the unity of the kingdom.
 
-Later accounts use several names for the plant. The country overview records *rangani* and
-*zamal*, while nineteenth-century visitors continued to report local use. Together those
-references show why the 1787 order belongs in a history of regulation: it responded to an
-existing practice rather than introducing cannabis to the island.
+Condominas also describes tobacco and alcohol restrictions in that political setting. His rhetoric about intoxication and the previous court reflects the perspective of his historical account. It should not be mistaken for independent clinical evidence about the effects of cannabis.
 
-## What remains
+Together, the two sources strengthen the identification of a royal restriction while showing why its scope needs precision. Neither passage supplies a detailed record of cannabis prosecutions or a count of executions.
 
-The ban outlived the kingdom in form and failed in substance. Cannabis is illegal in
-[Madagascar](/country/mg/) today and, by the same account, used everywhere. It is grown
-mainly for local consumption, around Mahajanga and Antsiranana in the north and Toliara
-and Fianarantsoa in the south, with some export to neighbouring countries.
+## A kingdom and an uncertain year
 
-## Why it matters
+The relevant jurisdiction was Imerina under the king’s authority. It was not identical to the territory of the present Republic of Madagascar. A statement about the heart of the kingdom cannot establish uniform policing across the whole island.
 
-Histories of prohibition usually begin with empires and treaties:
-[Egypt in 1868](/history/egypt-first-ban-1868/), the
-[Geneva convention of 1925](/history/geneva-opium-convention-1925/). The Merina law is a
-reminder that a state could decide to ban cannabis on its own account, for its own
-reasons, long before anyone asked it to.
+The existing history entry uses 1787 as its conventional date. The additional passages examined here support attribution to the reign, but do not independently fix enactment to that year. The article therefore treats the precise date as unresolved.
 
-The index records it as the first step down from an unregulated state, though it covers
-one kingdom and not the whole island; the sources read give no detail of how it was
-enforced.
+## What this history does establish
+
+The episode records a locally articulated prohibition before the modern international drug-control system. It cannot be called the oldest ban in this index now that medieval restrictions are included.
+
+It also cannot establish a continuous legal regime from the king’s reign to contemporary [Madagascar](/country/mg/). The historical consumption ban and the continuing usefulness of hemp need to remain visible as separate parts of the record.

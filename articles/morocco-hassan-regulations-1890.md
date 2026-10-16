@@ -1,53 +1,53 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6.1-sol
+written: '2026-10-15'
 sources:
-  - title: "Wikipedia — Cannabis in Morocco"
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Morocco
-  - title: "TNI / GDPO — The Rise and Decline of Cannabis Prohibition (2014)"
-    url: https://www.tni.org/files/download/rise_and_decline_web.pdf
+  - type: journal
+    title: Moroccan hashish as an example of a cannabis terroir product
+    authors:
+      - Pierre-Arnaud Chouvy
+    container: GeoJournal
+    year: 2022
+    locator: >-
+      author-hosted published-version PDF, PDF pp. 11–12; discussion of the alleged five douars and lack
+      of historical written evidence; DOI 10.1007/s10708-022-10791-5
+    url: >-
+      https://www.geopium.org/wp-content/uploads/2022/11/Chouvy-2022-Moroccan-hashish-as-an-example-of-a-cannabis-terroir-product.pdf
+  - type: journal
+    title: 'Production de cannabis et de haschich au Maroc : contexte et enjeux'
+    authors:
+      - Pierre-Arnaud Chouvy
+    container: L’Espace Politique
+    year: 2008
+    locator: >-
+      author-hosted PDF, historical discussion of Hassan I and five douars; DOI
+      10.4000/espacepolitique.59
+    url: >-
+      https://www.geopium.org/wp-content/uploads/2019/06/Chouvy_2008_EP_2008_Cannabis_Hashish_Maroc.pdf
 ---
 
-Morocco's cannabis heartland owes its position to a decision made in 1890. A sultan
-restricted the crop everywhere, and made an exception for the mountains that still grow
-it.
+Accounts of Morocco’s cannabis history commonly attribute cultivation privileges in five Rif villages to Sultan Hassan I. Often placed around 1890, the story has helped explain a supposed historical exception for the region. Later scholarship challenges how securely that account is documented.
 
-## The decree
+## An influential historical account
 
-Cannabis had been grown on a small scale across Morocco since the sixteenth century,
-and by the eighteenth the north-west was known for it. In 1890 Sultan Hassan I put
-strict rules on cultivation and trade, while granting the right to produce to several
-tribes of the Rif.
+In a 2008 article, Pierre-Arnaud Chouvy repeated the account of Hassan I authorizing local cannabis cultivation in five villages associated with Rif tribes. His historical discussion placed the episode within the ruler’s nineteenth-century reign and the politics of governing the region.
 
-It was regulation by privilege. The crop was not banned; it was reserved.
+That account helps explain how the story circulated through research and later summaries. It does not, by itself, supply an original decree with a verified date, a list of beneficiaries and an independently established legal scope.
 
-## Under the protectorates
+## A later qualification
 
-The colonial powers kept the principle and fought over the detail. Kif was sold through
-a monopoly, the Régie. In 1932 France, citing its obligations under the
-[Geneva convention](/history/geneva-opium-convention-1925/), prohibited growing in its
-zone except for the monopoly's own supply around Kenitra and Marrakech. In the Spanish
-zone licensed cultivation continued, and a decree of 1935 confined it to the villages
-of Ketama, Beni Seddat and Beni Khaled.
+Chouvy’s 2022 study revisits the supposed historical growing zone and the five villages. He questions whether the sultan ever granted those specific privileges and points to the absence of a historical written source explicitly identifying them.
 
-France banned all cultivation in its zone in 1954. The Spanish zone still licensed it
-that year.
+The change in assessment matters. Repetition of an account across publications can make it seem independently confirmed even when writers rely on the same earlier claims. The newer discussion also identifies confusion between tribal names and the names of particular villages.
 
-## After independence
+## What remains uncertain
 
-The Rif tribes' rights had been reconfirmed in the early 1950s, during a period of
-tension in the region. In 1956 the newly independent kingdom prohibited cannabis
-nationwide, and narcotics legislation of 1974 repeated the ban.
+The database retains 1890 as the conventional reference year associated with the earlier entry. It does not now present that year as the verified date of a recovered decree. The title and description have been revised to make the attribution and uncertainty visible.
 
-The mountains went on growing. Demand from Western visitors in the 1960s and 1970s
-pushed farmers to produce on a larger scale, and by 2003 Morocco supplied an estimated
-70 per cent of the hashish used in Europe.
+The entry is also no longer marked checked. The sources have been read, but the claimed instrument, its exact date and its beneficiaries remain unresolved. A historical order or another contemporary record would be needed to strengthen the legal claim.
 
-## Full circle
+## Avoiding an invented continuous privilege
 
-In 2021 Morocco legalised cannabis for medical and industrial use under licence, and in
-[2024](/history/morocco-royal-pardon-2024/) the king pardoned more than 4,800 growers.
-Licensed growing has returned, 131 years after the first licence.
+Evidence that cannabis cultivation has a long history in the Rif does not automatically establish that a particular set of villages held an enduring legal exemption. Nor does later tolerance prove the contents of a nineteenth-century order.
 
-The index lists the 1890 regulations for context; the scored history of
-[Morocco](/country/ma/) begins with the later bans.
+This article therefore records an important claim in the history of [Morocco](/country/ma/) together with the evidence problem attached to it. It replaces the earlier confident narrative of a precisely dated licence system. No current country score is changed, and no continuous legal entitlement is inferred from a story whose documentary basis is disputed.

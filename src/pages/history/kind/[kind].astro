@@ -2,6 +2,7 @@
 // Every History entry of one kind, across all periods.
 import Base from "../../../layouts/Base.astro";
 import HistoryList from "../../../components/HistoryList.astro";
+import { Icon } from "astro-icon/components";
 import { CHANGE_CATEGORIES } from "../../../lib/countries.js";
 
 export function getStaticPaths() {
@@ -15,7 +16,7 @@ const k = CHANGE_CATEGORIES[kind];
   <main class="changes-page">
     <section class="hero hero-sm">
       <p class="eyebrow">History</p>
-      <h1>{k.emoji} {k.label}</h1>
+      <h1><Icon name={k.icon} class="ico" aria-hidden="true" /> {k.label}</h1>
       <p class="lede">{k.help}.</p>
     </section>
     <HistoryList kind={kind} />
