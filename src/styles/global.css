@@ -1483,20 +1483,46 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 /* books: one ruled line each; the chapters open underneath */
 .src-books { border-top: 1px solid var(--text); }
 .src-book { border-bottom: 1px solid var(--border); }
-.src-book summary { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) auto; gap: 4px 24px; align-items: baseline; padding: 10px 0; cursor: pointer; list-style: none; }
+.src-book summary { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 12px 0; cursor: pointer; list-style: none; }
 .src-book summary::-webkit-details-marker { display: none; }
+.src-cover { display: block; width: 48px; height: 72px; object-fit: cover; border-radius: 2px 4px 4px 2px; background: var(--surface-2); box-shadow: inset 3px 0 0 rgb(0 0 0 / .18), 0 1px 3px rgb(0 0 0 / .3); }
+/* a drawn cover: cloth colour, the kind of print above, the first letter of the title below */
+.src-cover-drawn { display: flex; flex-direction: column; justify-content: space-between; padding: 6px 5px 5px 8px; color: rgb(255 255 255 / .85); }
+.src-cover-drawn small { font: 400 7px var(--mono); text-transform: uppercase; letter-spacing: .08em; opacity: .8; }
+.src-cover-drawn span { font: 400 26px/1 var(--display); }
+.cloth-0 { background: #5a3d33; } .cloth-1 { background: #34483c; } .cloth-2 { background: #2f3f52; }
+.cloth-3 { background: #5b5032; } .cloth-4 { background: #4a3550; } .cloth-5 { background: #45474a; }
+.src-book-main { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .src-book-title { font: 400 20px/1.2 var(--display); }
 .src-book summary:hover .src-book-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-.src-book-by { color: var(--text-2); font-size: 13.5px; }
-.src-book-n { font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); white-space: nowrap; text-align: right; }
-.src-book-n::after { content: " +"; }
-.src-book[open] .src-book-n::after { content: " −"; }
-.src-book .src-table { border-top: 0; margin: 0 0 14px; font-size: 13.5px; }
+.src-book-by { color: var(--muted); font-size: 13.5px; }
+.src-book-n { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding-right: 0; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); white-space: nowrap; text-align: right; }
+.src-book-n b { font: 400 20px/1 var(--display); letter-spacing: 0; color: var(--text); margin-right: 2px; }
+.src-book-cites::after { content: "+"; display: inline-block; width: 1.4em; text-align: right; font-size: 13px; }
+.src-book[open] .src-book-cites::after { content: "−"; }
+.src-book[open] summary { padding-bottom: 8px; }
+/* an opened book: its ISBN and chapters line up with the title, right of the cover */
+.src-book > .src-meta { margin-left: 66px; }
+.src-book .src-table { border-top: 0; margin: 0 0 14px 66px; width: calc(100% - 66px); font-size: 13.5px; }
 .src-book .src-table tr:last-child td { border-bottom: 0; }
 .src-meta { margin: 0 0 6px; color: var(--text-2); font-size: 13px; }
-@media (max-width: 760px) { .src-book summary { grid-template-columns: 1fr; } .src-book-n { text-align: left; } }
+@media (max-width: 760px) { .src-book summary { grid-template-columns: 40px minmax(0, 1fr); gap: 14px; } .src-cover { width: 40px; height: 60px; } .src-book-n { grid-column: 2; flex-direction: row; align-items: baseline; gap: 8px; } .src-book-n b { font-size: 15px; } .src-book > .src-meta { margin-left: 0; } .src-book .src-table { margin-left: 0; width: 100%; } }
 .src-meta b { font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-left: 10px; }
-.sources-page .hist-stats { margin-top: 8px; }
+/* /sources/: the totals, then a card for each part of the page, linking down to it */
+.src-totals, .src-parts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 24px; }
+.src-totals { margin: 8px 0 0; border-top: 1px solid var(--text); }
+.src-totals div { display: grid; grid-template-rows: auto auto auto; align-content: start; gap: 6px; padding: 14px 0 18px; }
+.src-totals dt { order: 2; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.src-totals dd { order: 1; margin: 0; font: 400 clamp(30px, 3.4vw, 44px)/1 var(--mono); letter-spacing: -.05em; }
+.src-totals .src-totals-sub { order: 3; font-size: 13px; line-height: 1.4; font-family: inherit; letter-spacing: 0; color: var(--muted); }
+.src-parts { margin-top: 6px; }
+.src-parts a { display: grid; gap: 6px; align-content: start; padding: 16px 18px 18px; border: 1px solid var(--border); border-radius: var(--r); color: var(--text); background: var(--surface); transition: border-color .15s; }
+.src-parts a:hover { border-color: var(--muted); }
+.src-parts b { font: 400 30px/1 var(--display); }
+.src-parts-label { font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.src-parts-label span { color: var(--muted); }
+.src-parts small { color: var(--muted); font-size: 13px; line-height: 1.4; }
+.sources-page .section[id] { scroll-margin-top: 56px; }
 
 /* Search dialog (⌘K): a flat ruled sheet near the top of the window */
 .search { width: min(680px, calc(100vw - 32px)); max-height: min(70vh, 640px); margin: 12vh auto 0; padding: 0; border: 1px solid var(--text); border-radius: var(--r); background: var(--bg); color: var(--text); overflow: hidden; }
@@ -2065,3 +2091,50 @@ h1 .ico { width: .75em; height: .75em; vertical-align: -.02em; }
 .sr-icon .ico { width: 21px; height: 21px; }
 /* a history entry: its kind's icon, with the country's flag small in the bottom right corner */
 .sr-badge { position: absolute; right: -5px; bottom: -4px; font-size: 11px; line-height: 1; }
+
+/* /sources/: where a book or website is cited */
+/* a row that opens: click anywhere on it; the sign at its end is the same as on the books */
+.cited-tr { cursor: pointer; }
+.cited-tr:hover > *, .cited-tr.is-open > * { background: var(--surface); }
+.cited-tr.is-open > * { border-bottom-color: transparent; }
+.src-table .cited-cell { width: 1%; padding: 9px 0 9px 14px; text-align: right; }
+.cited-toggle { border: 0; background: none; padding: 0; width: 1.4em; color: var(--muted); font: 400 13px/1.4 var(--mono); cursor: pointer; }
+.cited-tr:hover .cited-toggle, .cited-toggle[aria-expanded="true"] { color: var(--text); }
+.cited-row > td { padding: 6px 0 20px; background: var(--surface); }
+.cited-row .cited { padding: 0 16px; }
+/* the two site tables: room around the text of a shaded row; on a phone, only the counts that matter */
+#websites .src-table :is(th, td):first-child, #local .src-table :is(th, td):first-child { padding-left: 10px; }
+@media (max-width: 760px) { .src-totals, .src-parts { grid-template-columns: 1fr; gap: 8px; } .src-totals div { grid-template-columns: 96px 1fr; grid-template-rows: auto auto; column-gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); } .src-totals dd:first-of-type { grid-row: 1 / 3; font-size: 28px; align-self: center; } .src-totals dt, .src-totals .src-totals-sub { grid-column: 2; } }
+@media (max-width: 760px) {
+  .sources-page .src-table .opt { display: none; }
+  .src-table .num { padding-left: 12px; }
+  .cited-row .cited { padding: 0 10px; }
+  /* local sources: the country and its count on one line, its sites across the width below */
+  .src-local thead { display: none; }
+  .src-local tr.cited-tr { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; border-bottom: 1px solid var(--border); }
+  .src-local tr.cited-tr > * { border-bottom: 0; }
+  .src-local tr.cited-tr > th { width: auto; white-space: normal; padding-bottom: 2px; }
+  .src-local tr.cited-tr > td:nth-child(2) { grid-column: 1 / -1; order: 1; padding: 0 10px 10px; line-height: 1.6; }
+  .src-local tr.cited-tr > .num { padding-bottom: 2px; }
+  .src-local .cited-row > td { display: block; }
+  .src-local .src-site { white-space: normal; overflow-wrap: anywhere; }
+  /* a long domain is cut short rather than pushed under its numbers */
+  #websites tbody td:first-child { width: 100%; max-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+
+.src-book .cited { margin: 4px 0 18px 66px; }
+.cited { columns: 2 320px; column-gap: 40px; font-size: 13.5px; }
+.cited-title { column-span: all; margin: 0 0 6px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.cited-domain { column-span: all; margin: 14px 0 4px; font: 400 15px var(--display); }
+.cited-domain:first-child { margin-top: 0; }
+.cited-h { break-after: avoid; margin: 12px 0 4px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.cited-h small { font-size: inherit; opacity: .7; }
+.cited ul { list-style: none; margin: 0; padding: 0; }
+.cited li { break-inside: avoid; padding: 4px 0; border-bottom: 1px dotted var(--border); line-height: 1.4; }
+.cited li > a { color: var(--text); }
+.cited-sub, .cited-at { color: var(--muted); font-size: 12.5px; }
+.cited-at::before { content: "· "; }
+.cited-d { display: block; color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+.cited-page { color: var(--muted); margin-right: 8px; }
+.cited-page:hover { color: var(--text); }
+@media (max-width: 760px) { .src-book .cited { margin-left: 0; } }

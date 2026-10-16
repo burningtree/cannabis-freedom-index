@@ -3,34 +3,22 @@
 // for several countries one by one, and the local ones (cited for a single country) grouped
 // under that country. The page is not in the menu.
 import Base from "../../layouts/Base.astro";
-import { getCollection } from "astro:content";
 import { places } from "../../lib/countries.js";
 import { archivedUrl } from "../../lib/archive.js";
+import { cites, isBook, bookSlug, domainOf } from "../../lib/citations.js";
+import { Image } from "astro:assets";
 
 const base = import.meta.env.BASE_URL;
 const num = (n) => n.toLocaleString("en-GB");
 const placeOf = new Map(places.map((c) => [c.slug, c]));
 
-// One citation = one source listed by one owner (a country profile, a history entry or an article).
-// `where` is the country it was cited for, or "" for international entries.
-const cites = [];
-for (const { id, data } of await getCollection("countries")) {
-  const slug = id.split("/")[0];
-  for (const s of Object.values(data.sources)) cites.push({ s, where: slug });
-  for (const s of data.subunits?.sources ?? []) cites.push({ s, where: slug });
-}
-const changes = (await getCollection("changes")).map((x) => x.data);
-const countryOfChange = new Map(changes.map((ch) => [ch.id, ch.country ?? ""]));
-for (const ch of changes) for (const s of ch.sources) cites.push({ s, where: ch.country ?? "" });
-for (const a of await getCollection("articles")) for (const s of a.data.sources) cites.push({ s, where: countryOfChange.get(a.id) ?? "" });
-
 // ── Books: anything with a container or typed as a book or chapter ──
-const isBook = (s) => s.type === "book" || s.type === "chapter" || Boolean(s.container);
 const books = new Map(); // book title → { meta, chapters: Map(chapter title → { authors, locator, n }), n }
 for (const { s } of cites.filter((x) => isBook(x.s))) {
   const title = s.container ?? s.title;
-  const b = books.get(title) ?? { title, editors: s.editors, authors: s.container ? undefined : s.authors, publisher: s.publisher, year: s.year, isbn: s.isbn, chapters: new Map(), n: 0 };
+  const b = books.get(title) ?? { title, editors: s.editors, authors: s.container ? undefined : s.authors, publisher: s.publisher, year: s.year, isbn: s.isbn, types: new Set(), chapters: new Map(), n: 0 };
   b.n++;
+  b.types.add(s.type ?? "book");
   if (s.container) {
     const ch = b.chapters.get(s.title) ?? { title: s.title, authors: s.authors ?? [], page: Infinity, n: 0 };
     ch.n++;
@@ -41,9 +29,15 @@ for (const { s } of cites.filter((x) => isBook(x.s))) {
   books.set(title, b);
 }
 const bookList = [...books.values()].sort((x, y) => y.n - x.n);
+// Covers fetched by scripts/book-covers.cjs, found by the same slug of the title. A book without one,
+// and every journal, gazette and report, gets a plain printed cover drawn here instead.
+const covers = Object.fromEntries(Object.entries(import.meta.glob("../../assets/book-covers/*.jpg", { eager: true, import: "default" })).map(([f, img]) => [f.split("/").pop().replace(/\.jpg$/, ""), img]));
+const KIND_LABEL = { journal: "Journal", law: "Law", report: "Report", other: "Print" };
+const kindOf = (b) => (b.types.has("book") || b.types.has("chapter") ? "Book" : KIND_LABEL[[...b.types][0]] ?? "Print");
+// the drawn covers take one of a few muted cloth colours, the same one for a title every time
+const cloth = (t) => [...t].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7) % 6;
 
 // ── Websites, by domain ──
-const domainOf = (url) => new URL(url).hostname.replace(/^www\./, "");
 const domains = new Map(); // domain → { urls: Set, n, where: Map(slug → n) }
 for (const { s, where } of cites.filter((x) => !isBook(x.s) && x.s.url)) {
   const d = domainOf(s.url);
@@ -73,41 +67,56 @@ const urlCount = urls.size;
 // pages with a copy recorded in the Internet Archive (see source-archive.json)
 const archivedOf = (set) => [...set].filter((u) => archivedUrl(u)).length;
 const archived = archivedOf(urls);
-const stats = [
-  [num(cites.length), "Citations"],
-  [num(urlCount), "Web pages cited"],
-  [`${num(archived)}`, `Archived (${Math.round((archived / urlCount) * 100)}%)`],
-  [num(all.length), "Websites"],
-  [num(wide.length), "Cited for several countries"],
-  [num(all.length - wide.length), "Local, for one country"],
-  [num(bookList.length), bookList.length === 1 ? "Book" : "Books"],
+const pct = Math.round((archived / urlCount) * 100);
+// the whole: citations and web pages; then each part of the page, as a link down to it
+const totals = [
+  [num(cites.length), "Citations", "of books and websites, by every page of the site"],
+  [num(urlCount), "Web pages cited", `on ${num(all.length)} websites`],
+  [`${pct}%`, "Archived", `${num(archived)} pages have a copy in the Internet Archive, so a dead link keeps its evidence; the rest are saved in batches`],
 ];
----
+const parts = [
+  ["#books", num(bookList.length), "Books", `and other printed sources, ${num(bookList.reduce((a, b) => a + b.n, 0))} citations`],
+  ["#websites", num(wide.length), "Websites for several countries", `or for international entries, ${num(wide.reduce((a, r) => a + r.n, 0))} citations`],
+  ["#local", num(all.length - wide.length), "Local websites", `each cited for one country, across ${num(localRows.length)} countries`],
+];
+------
 <Base title="Sources" description={`The ${num(urlCount)} web pages and ${bookList.length} books cited by the Cannabis Freedom Index, counted by website and by country.`}>
   <main class="changes-page sources-page">
     <section class="hero hero-sm">
       <p class="eyebrow">Sources</p>
       <h1>What the index is built on</h1>
-      <p class="lede">Every score, explanation and history entry cites where it comes from. This page counts those sources: books first, then websites, with the local ones grouped under the country they were used for. A citation is one source listed once by a country profile, a history entry or an article.</p>
-      <p class="lede">{num(archived)} of the {num(urlCount)} web pages have a copy saved in the Internet Archive, so a dead link does not take the evidence with it. The rest are being saved in batches.</p>
+      <p class="lede">Every score, explanation and history entry cites where it comes from. This page counts those sources: books first, then websites, with the local ones grouped under the country they were used for. A citation is one source listed once by a country profile, a state or province, a history entry, an article or a culture entry. Open a book or a website to see exactly where it is cited.</p>
     </section>
 
-    <dl class="hist-stats">
-      {stats.map(([n, label]) => <div><dt>{label}</dt><dd>{n}</dd></div>)}
+    <dl class="src-totals">
+      {totals.map(([n, label, sub]) => <div><dt>{label}</dt><dd>{n}</dd><dd class="src-totals-sub">{sub}</dd></div>)}
     </dl>
+    <nav class="src-parts" aria-label="Parts of this page">
+      {parts.map(([href, n, label, sub]) => (
+        <a href={href}><b>{n}</b><span class="src-parts-label">{label} <span aria-hidden="true">↓</span></span><small>{sub}</small></a>
+      ))}
+    </nav>
 
     <section class="section" id="books">
       <div class="section-head"><div>
         <h2>Books</h2>
-        <p class="sub">Printed sources, most cited first. Open a book to see which chapters are cited and how often.</p>
+        <p class="sub">Printed sources, most cited first. Open a book to see which chapters are cited, and where.</p>
       </div></div>
       <div class="src-books">
         {bookList.map((b) => (
           <details class="src-book">
             <summary>
-              <span class="src-book-title">{b.title}</span>
-              <span class="src-book-by">{[b.editors && `Ed. ${b.editors.join(" and ")}`, b.authors && b.authors.join(", "), b.publisher, b.year].filter(Boolean).join(" · ")}</span>
-              <span class="src-book-n">{b.chapters.size > 0 && `${b.chapters.size} chapters · `}{b.n} {b.n === 1 ? "citation" : "citations"}</span>
+              {covers[bookSlug(b.title)]
+                ? <Image class="src-cover" src={covers[bookSlug(b.title)]} alt="" width={48} height={72} fit="cover" loading="lazy" />
+                : <span class={`src-cover src-cover-drawn cloth-${cloth(b.title)}`} aria-hidden="true"><small>{kindOf(b)}</small><span>{b.title.replace(/^(The|A|An|La|Le|Les|Il) /, "")[0]}</span></span>}
+              <span class="src-book-main">
+                <span class="src-book-title">{b.title}</span>
+                <span class="src-book-by">{[b.editors && `Ed. ${b.editors.join(" and ")}`, b.authors && b.authors.join(", "), b.publisher, b.year].filter(Boolean).join(" · ")}</span>
+              </span>
+              <span class="src-book-n">
+                <span class="src-book-cites"><b>{b.n}</b> {b.n === 1 ? "citation" : "citations"}</span>
+                {b.chapters.size > 1 && <span>{b.chapters.size} chapters</span>}
+              </span>
             </summary>
             {b.isbn && <p class="src-meta">ISBN {b.isbn}</p>}
             {b.chapters.size > 0 && (
@@ -120,6 +129,7 @@ const stats = [
                 </tbody>
               </table>
             )}
+            <div class="cited" data-cited="b" data-key={bookSlug(b.title)}></div>
           </details>
         ))}
       </div>
@@ -131,10 +141,10 @@ const stats = [
         <p class="sub">{num(wide.length)} sites used for more than one country, or for international entries, most cited first.</p>
       </div></div>
       <table class="src-table">
-        <thead><tr><th>Website</th><th class="num">Pages</th><th class="num">Archived</th><th class="num">Citations</th><th class="num">Countries</th></tr></thead>
+        <thead><tr><th>Website</th><th class="num opt">Pages</th><th class="num opt">Archived</th><th class="num">Citations</th><th class="num">Countries</th><th><span class="visually-hidden">Where</span></th></tr></thead>
         <tbody>
           {wide.map((r) => (
-            <tr><td><a href={`https://${r.domain}/`} target="_blank" rel="noopener noreferrer"><img class="src-ico" src={icon(r.domain)} alt="" width="16" height="16" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" />{r.domain}</a></td><td class="num">{num(r.urls.size)}</td><td class="num">{num(archivedOf(r.urls))}</td><td class="num">{num(r.n)}</td><td class="num">{[...r.where.keys()].filter(Boolean).length}</td></tr>
+            <tr class="cited-tr"><td><a href={`https://${r.domain}/`} target="_blank" rel="noopener noreferrer"><img class="src-ico" src={icon(r.domain)} alt="" width="16" height="16" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" />{r.domain}</a></td><td class="num opt">{num(r.urls.size)}</td><td class="num opt">{num(archivedOf(r.urls))}</td><td class="num">{num(r.n)}</td><td class="num">{[...r.where.keys()].filter(Boolean).length}</td><td class="cited-cell"><button type="button" class="cited-toggle" data-cited="w" data-key={r.domain} aria-expanded="false" aria-label={`Where ${r.domain} is cited`} title="Where it is cited">+</button></td></tr>
           ))}
         </tbody>
       </table>
@@ -146,19 +156,74 @@ const stats = [
         <p class="sub">{num(all.length - wide.length)} sites cited for one country only: its laws, courts, ministries and press. The number after a site is how often it is cited.</p>
       </div></div>
       <table class="src-table src-local">
-        <thead><tr><th>Country</th><th>Websites</th><th class="num">Pages</th><th class="num">Archived</th><th class="num">Citations</th></tr></thead>
+        <thead><tr><th>Country</th><th>Websites</th><th class="num opt">Pages</th><th class="num opt">Archived</th><th class="num">Citations</th><th><span class="visually-hidden">Where</span></th></tr></thead>
         <tbody>
           {localRows.map(({ c, rows, n }) => (
-            <tr>
+            <tr class="cited-tr">
               <th scope="row"><a href={`${base}country/${c.slug}/`}>{c.flag} {c.name}</a></th>
               <td>{rows.map((r, i) => <><a class="src-site" href={`https://${r.domain}/`} target="_blank" rel="noopener noreferrer"><img class="src-ico" src={icon(r.domain)} alt="" width="16" height="16" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" />{r.domain}</a>{r.n > 1 && <small> {r.n}</small>}{i < rows.length - 1 && <span class="sep"> · </span>}</>)}</td>
-              <td class="num">{rows.reduce((a, r) => a + r.urls.size, 0)}</td>
-              <td class="num">{rows.reduce((a, r) => a + archivedOf(r.urls), 0)}</td>
+              <td class="num opt">{rows.reduce((a, r) => a + r.urls.size, 0)}</td>
+              <td class="num opt">{rows.reduce((a, r) => a + archivedOf(r.urls), 0)}</td>
               <td class="num">{n}</td>
+              <td class="cited-cell"><button type="button" class="cited-toggle" data-cited="w" data-key={rows.map((r) => r.domain).join(" ")} aria-expanded="false" aria-label={`Where ${c.name}’s sites is cited`} title="Where it is cited">+</button></td>
             </tr>
           ))}
         </tbody>
       </table>
     </section>
   </main>
+  <script is:inline define:vars={{ base }}>
+    // "Cited in": where a book or website is cited, from /sources/cited-books.json and
+    // cited-sites.json, each loaded the first time one of its lists is opened.
+    // A book fills the box at the end of its details; a website row, opened by a click anywhere on it
+    // but its links, gets a row of its own under it.
+    (function () {
+      var data = {}, loading = {}, FILE = { b: "books", w: "sites" };
+      var GROUP = { country: "Countries and states", history: "History", article: "Articles", culture: "Culture" };
+      function esc(s) { return String(s).replace(/[&<>"]/g, function (ch) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]; }); }
+      function load(kind) { return loading[kind] || (loading[kind] = fetch(base + "sources/cited-" + FILE[kind] + ".json").then(function (r) { return r.json(); }).then(function (d) { data[kind] = d; })); }
+      // a website's page is shown by its address without the domain
+      function page(u) { try { var x = new URL(u); return decodeURI(x.pathname + x.search).replace(/\/$/, "") || "/"; } catch (e) { return u; } }
+      function list(kind, key) {
+        var d = data[kind], rows = d.k[key] || [], html = "", last = null, open = false;
+        rows.forEach(function (r) {
+          var o = d.o[r[0]];
+          if (o[4] !== last) { if (open) html += "</ul>"; last = o[4]; open = true; html += '<p class="cited-h">' + GROUP[o[4]] + " <small>" + rows.filter(function (x) { return d.o[x[0]][4] === o[4]; }).length + "</small></p><ul>"; }
+          var details = kind === "w"
+            ? r[2].map(function (u) { return '<a class="cited-page" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + esc(page(u)) + "</a>"; }).join(" ")
+            : esc(r[2].join(" · "));
+          html += '<li><a href="' + esc(base + o[0]) + '"><span aria-hidden="true">' + esc(o[3]) + "</span> " + esc(o[1]) + "</a>" +
+            (o[2] ? ' <span class="cited-sub">' + esc(o[2]) + "</span>" : "") + (r[1] ? ' <span class="cited-at">' + esc(r[1]) + "</span>" : "") +
+            (details ? '<span class="cited-d">' + details + "</span>" : "") + "</li>";
+        });
+        return html + (open ? "</ul>" : "");
+      }
+      function fill(box, kind, keys) {
+        box.innerHTML = '<p class="cited-h">Loading…</p>';
+        load(kind).then(function () {
+          box.innerHTML = keys.length > 1
+            ? keys.map(function (k) { return '<p class="cited-domain">' + esc(k) + "</p>" + list(kind, k); }).join("")
+            : '<p class="cited-title">Cited in</p>' + list(kind, keys[0]);
+        }).catch(function () { box.innerHTML = '<p class="cited-h">The list could not be loaded.</p>'; });
+      }
+      document.querySelectorAll("details.src-book").forEach(function (d) {
+        d.addEventListener("toggle", function () { var box = d.querySelector(".cited"); if (d.open && !box.childElementCount) fill(box, "b", [box.dataset.key]); });
+      });
+      document.addEventListener("click", function (e) {
+        var tr = e.target.closest("tr.cited-tr");
+        if (!tr || (e.target.closest("a") && !e.target.closest(".cited-toggle"))) return;
+        var btn = tr.querySelector(".cited-toggle");
+        var next = tr.nextElementSibling, open = btn.getAttribute("aria-expanded") !== "true";
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.textContent = open ? "−" : "+";
+        tr.classList.toggle("is-open", open);
+        if (next && next.classList.contains("cited-row")) { next.hidden = !open; return; }
+        var row = document.createElement("tr"), cell = document.createElement("td");
+        row.className = "cited-row"; cell.colSpan = tr.children.length;
+        var box = document.createElement("div"); box.className = "cited"; cell.appendChild(box); row.appendChild(cell);
+        tr.after(row);
+        fill(box, "w", btn.dataset.key.split(" "));
+      });
+    })();
+  </script>
 </Base>
