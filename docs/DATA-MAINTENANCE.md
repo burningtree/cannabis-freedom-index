@@ -367,6 +367,21 @@ still require a URL.
   date is unknown. Replace these with a dated law whenever one is found.
 - **`country`** may also be a disputed territory (`xa`, `xn`, `xs`, `xt`). Its entries show on its
   page and in the history list, but its scored changes never move the world average.
+- **Dependencies with laws of their own** have their own profiles where they matter enough:
+  Jersey (`je`), Guernsey (`gg`), the Isle of Man (`im`), Bermuda (`bm`), the Cayman Islands
+  (`ky`), Gibraltar (`gi`) and the British Virgin Islands (`vg`) under the UK, and Greenland (`gl`)
+  and the Faroe Islands (`fo`) under Denmark, French Polynesia (`pf`) under France, and Puerto Rico
+  (`pr`), Guam (`gu`), the Northern Mariana Islands (`mp`) and the US Virgin Islands (`vi`) under
+  the United States. A profile marks this with
+  `dependency: {of: gb, kind: "Crown Dependency", note: …}`;
+  like a disputed territory it is scored and drawn on the map but takes no rank and stays out of
+  the averages. Their history entries use their own code.
+- **A place without a profile of its own** goes under the country that answers for it
+  internationally: the Falklands and the other British Overseas Territories under `gb`; French
+  overseas territories such as New Caledonia under `fr`; American Samoa under `us`. Leaving `country` out files the entry as
+  International, which is only for treaties, UN decisions and other events that belong to no one
+  country. Such entries are normally context entries: they must not move the profile's scores.
+  When a place has gathered enough to deserve a profile, give it one as above and move its entries.
 - **`checked: true`** means: the date and the event were compared with a source that was read.
   A search-result summary is not a read source (see "What went wrong").
 
@@ -922,6 +937,19 @@ rules. Nauru's alcohol-specific penalty cross-reference remains unresolved for
 drugs. No articles were changed; see the research note for source limits.
 
 ## Recent law-news scan (12 October 2026)
+
+A [17 October follow-up](research/law-news-2026-10-17.md) adds four official-source
+context entries for Virginia's hemp cap and retail-rule draft, Jersey's planned
+prescriber oversight, and Bermuda's medical/hemp timetable. Virginia's profile
+now gives the scheduled retail start date and hemp restriction. Announcements
+and drafts remain distinguished from operating rules; scores were preserved.
+The build passed with 3,102 pages.
+
+The Canada follow-up in the same note adds Nova Scotia's June fine increases,
+the April veterans' reimbursement reduction, and the earlier commercial-edible
+classification guidance raised by a cooking-policy lead. Canada and Nova Scotia
+profiles were updated together. The guidance is dated to its verified September
+2024 announcement, not presented as a new 2026 cooking ban. Scores were preserved.
 
 Added five primary-sourced context events: Ireland's October medical-access
 review timetable, Canada's October regulatory commencement and September

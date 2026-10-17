@@ -9,7 +9,7 @@ import { SHOW_PRICES } from "../../lib/config.js";
 const base = import.meta.env.BASE_URL;
 const repo = "https://github.com/burningtree/cannabis-freedom-index";
 const files = [
-  { name: "scores", title: "Scores", rows: scoreRows, about: "One row per country or disputed territory: index score, the six segment scores, rank, tier, legal status, seed and clone status where researched, population and estimated cannabis users." },
+  { name: "scores", title: "Scores", rows: scoreRows, about: "One row per country, disputed territory or dependency (Crown Dependencies and overseas territories, with dependency_of naming the country that answers for them): index score, the six segment scores, rank, tier, legal status, seed and clone status where researched, population and estimated cannabis users." },
   { name: "panel", title: "Scores by year", rows: panelRows, about: `One row per place and year from ${PANEL_FROM} to ${DATA_SNAPSHOT}: the index score and the six segment scores as they stood at the end of each year, rebuilt from the history. Made for joining with other country-year data.` },
   { name: "history", title: "History", rows: historyRows, about: "One row per history entry: date, country, category, title, description, the score before and after, how far it has been checked, and its sources." },
   { name: "prices", title: "Flower prices", rows: priceRows, about: "One row per sourced flower-price observation: country, date, street or medical market, local price and US dollars per gram." },
@@ -50,7 +50,7 @@ const files = [
         <li><code>interpolated</code>: no first law is recorded for the place, so its first restriction is assumed to have come between {ESTIMATE_WINDOW[0]} and {ESTIMATE_WINDOW[1]}, and the scores move in a straight line across those years. This is an assumption, not a finding.</li>
         <li><code>baseline</code>: years before the place's first recorded change. The scores are its starting point, usually no cannabis-specific rules at all.</li>
       </ul>
-      <p>Scores before each change are editorial estimates in every case. Places are identified by a two-letter code (<code>id</code>) and by the ISO 3166-1 numeric code (<code>iso_numeric</code>), which is empty for disputed territories. Borders are today's: a country that was part of another state carries the law that applied on its territory.</p>
+      <p>Scores before each change are editorial estimates in every case. Places are identified by a two-letter code (<code>id</code>) and by the ISO 3166-1 numeric code (<code>iso_numeric</code>), which is empty for disputed territories. Disputed territories and dependencies are scored but not ranked, and are left out of every average. Borders are today's: a country that was part of another state carries the law that applied on its territory.</p>
       <h2>How to cite</h2>
       <p>Cannabis Freedom Index, {DATA_SNAPSHOT} edition, cannabisfreedom.fyi, retrieved on the date of download. The data changes as laws do, so keep the file you used; the <a href={`${base}changelog/`}>changelog</a> lists every score change since.</p>
       <h2>Sources that last</h2>

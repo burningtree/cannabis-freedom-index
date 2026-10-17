@@ -64,6 +64,11 @@ const everyPlace = (await getCollection("countries"))
       score: Math.round(raw),
       flag: data.flag ?? flagOf(id),
       disputed: data.disputed ?? null, // { part_of, note } for a territory that is not a recognised state
+      dependency: data.dependency ?? null, // { of, kind, note } for a Crown Dependency or overseas territory
+      // what an unranked place is, for both kinds: { kind (to start a sentence), label (inside one),
+      // tag, note, of (file name), country (set below) }
+      territory: data.disputed ? { kind: "Disputed territory", label: "disputed territory", tag: "disputed", note: data.disputed.note, of: data.disputed.part_of }
+        : data.dependency ? { kind: data.dependency.kind, label: data.dependency.kind, tag: "dependency", note: data.dependency.note, of: data.dependency.of } : null,
       num: data.iso_numeric ?? null,
       populationByYear: Object.entries(data.population).map(([y, v]) => [+y, v]).sort((a, b) => a[0] - b[0]),
       population: data.population[Object.keys(data.population).sort().at(-1)], // the latest figure
@@ -87,17 +92,19 @@ const everyPlace = (await getCollection("countries"))
   })
   .sort((a, b) => b.raw - a.raw || a.name.localeCompare(b.name));
 
-// The index ranks recognised countries. Disputed territories are scored the same way and shown
-// alongside, but they take no rank and do not count towards any average.
-export const countries = everyPlace.filter((c) => !c.disputed);
-export const territories = everyPlace.filter((c) => c.disputed);
+// The index ranks recognised countries. Disputed territories and dependencies with laws of their
+// own are scored the same way and shown alongside, but they take no rank and do not count towards
+// any average.
+export const countries = everyPlace.filter((c) => !c.territory);
+export const territories = everyPlace.filter((c) => c.territory);
 export const places = everyPlace; // both, by score: for pages, the map and the table
 countries.forEach((c, i) => (c.rank = i + 1));
 territories.forEach((t) => {
   t.rank = null;
   t.worldRank = 1 + countries.filter((c) => c.raw > t.raw).length; // where it would sit among countries
-  t.disputed.country = countries.find((c) => c.slug === t.disputed.part_of);
-  if (!t.disputed.country) throw new Error(`countries/${t.slug}.yaml: disputed.part_of "${t.disputed.part_of}" is not a country`);
+  t.territory.country = countries.find((c) => c.slug === t.territory.of);
+  if (!t.territory.country) throw new Error(`countries/${t.slug}.yaml: "${t.territory.of}" (disputed.part_of or dependency.of) is not a country`);
+  if (t.disputed) t.disputed.country = t.territory.country;
 });
 countries.forEach((c) => {
   const inRegion = countries.filter((x) => x.region === c.region);
@@ -239,7 +246,7 @@ function averageOverTime(weight) {
     }
     return sum / total;
   };
-  const events = changes.filter((ch) => ch.score && !ch.estimate && !ch.country.disputed).map((ch) => ({ change: ch, date: ch.date, t: dateTime(ch.date) }));
+  const events = changes.filter((ch) => ch.score && !ch.estimate && !ch.country.territory).map((ch) => ({ change: ch, date: ch.date, t: dateTime(ch.date) }));
   for (let year = CHART_FROM; year <= +DATA_SNAPSHOT; year++) events.push({ change: null, date: `${year}-01-01`, t: Date.UTC(year, 0, 1) });
   events.sort((a, b) => a.t - b.t);
   // changes on the same day are applied one after another, in a fixed order

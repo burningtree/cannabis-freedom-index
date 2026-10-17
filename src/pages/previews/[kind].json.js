@@ -18,7 +18,7 @@ async function build(kind) {
     for (const ch of changes) if (ch.country && !ch.estimate) entries.set(ch.country.slug, (entries.get(ch.country.slug) ?? 0) + 1);
     return Object.fromEntries(places.map((c) => [`country/${c.slug}/`, {
       f: c.flag, n: c.name, r: c.region, s: c.score, c: tierColor(c.raw), t: tierOf(c.raw).name,
-      k: c.disputed ? null : c.rank, of: places.filter((x) => !x.disputed).length,
+      k: c.territory ? null : c.rank, of: places.filter((x) => !x.territory).length,
       rec: [REC_LABEL[c.rec], c.rec], med: [MED_LABEL[c.med], c.med], x: cut(c.note, 230), h: entries.get(c.slug) ?? 0,
     }]));
   }

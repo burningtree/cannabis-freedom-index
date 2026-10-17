@@ -16,7 +16,7 @@ export const PAPER = { bg: "#f4f2eb", ink: "#11110f", muted: "#4b4a43", nodata: 
 const byId = new Map(places.map((c) => [c.id, c]));
 const byNum = new Map(places.filter((c) => c.num != null).map((c) => [c.num, c]));
 // atlas shapes that take another entry's score, as on the home page
-const ALIASES = { Kosovo: "XK", Somaliland: "XS", "N. Cyprus": "XN", 304: "DK" };
+const ALIASES = { Kosovo: "XK", Somaliland: "XS", "N. Cyprus": "XN" };
 const ANTARCTICA = "010";
 
 const shapes = feature(world, world.objects.countries).features.map((f) => {

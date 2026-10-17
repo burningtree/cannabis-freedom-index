@@ -10,7 +10,7 @@ const scored = changes.filter((ch) => ch.score && !ch.estimate);
 
 const intro = (root) => `# Cannabis Freedom Index
 
-> A score from 0 to 100 for every country, for how free a person is to possess, grow, share and use cannabis. ${countries.length} countries and ${territories.length} disputed territories are scored, each with a written explanation, sources and a dated history of how its law changed. ${DATA_SNAPSHOT} edition, last updated ${formatDate(lastUpdated)}.
+> A score from 0 to 100 for every country, for how free a person is to possess, grow, share and use cannabis. ${countries.length} countries and ${territories.length} disputed territories and dependencies are scored, each with a written explanation, sources and a dated history of how its law changed. ${DATA_SNAPSHOT} edition, last updated ${formatDate(lastUpdated)}.
 
 Important when using this data:
 
@@ -64,7 +64,7 @@ ${countries.map((c) => `- [${c.name}](${root}country/${c.slug}/): ${c.score}/100
 export function llmsFull(root) {
   const profile = (c) => `### ${c.name}
 
-Score ${c.score}/100 (${tierOf(c.raw).name})${c.disputed ? ", disputed territory, not ranked" : `, rank ${c.rank} of ${countries.length}`}. Recreational: ${REC_LABEL[c.rec]}. Medical: ${MED_LABEL[c.med]}. Reviewed ${c.details.reviewed}. Page: ${root}country/${c.slug}/
+Score ${c.score}/100 (${tierOf(c.raw).name})${c.territory ? `, ${c.territory.label}, not ranked` : `, rank ${c.rank} of ${countries.length}`}. Recreational: ${REC_LABEL[c.rec]}. Medical: ${MED_LABEL[c.med]}. Reviewed ${c.details.reviewed}. Page: ${root}country/${c.slug}/
 
 ${one(c.note)}
 

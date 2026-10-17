@@ -78,7 +78,7 @@ export const research = (await getCollection("countries")).map(({ id: slug, data
   const pct = signed && share() === 1 ? 100 : Math.min(99, Math.floor(share() * 100));
   const gaps = years.slice(1).map((y, i) => y - years[i]);
   return {
-    slug, name: data.name, flag: data.flag ?? flagOf(slug), region: data.region, disputed: Boolean(data.disputed),
+    slug, name: data.name, flag: data.flag ?? flagOf(slug), region: data.region, disputed: Boolean(data.disputed || data.dependency),
     population: data.population[Object.keys(data.population).sort().at(-1)],
     pct, profile: Math.floor(share("profile") * 100), history: Math.floor(share("history") * 100), signed,
     entries: own.length, scored: scored.length, articles: own.filter((e) => articles.has(e.id)).length,

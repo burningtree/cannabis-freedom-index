@@ -6,13 +6,14 @@ import { priceObservations } from "./prices.js";
 
 export const SITE = "https://cannabisfreedom.fyi";
 
-// One row per country or disputed territory.
+// One row per country, disputed territory or dependency.
 export const scoreRows = places.map((c) => ({
   id: c.id,
   iso_numeric: c.num ?? "", // ISO 3166-1 numeric, for joining with other datasets; empty for disputed territories
   name: c.name,
   region: c.region,
   disputed: Boolean(c.disputed),
+  dependency_of: c.dependency?.of ?? "", // a Crown Dependency or overseas territory: the country that answers for it
   rank: c.rank ?? "",
   score: c.score,
   score_exact: c.raw,
@@ -95,6 +96,7 @@ export const panelRows = places.flatMap((c) => {
       ...Object.fromEntries(SEGMENTS.map((seg, k) => [seg.id, round(s[k], 2)])),
       basis,
       disputed: Boolean(c.disputed),
+      dependency_of: c.dependency?.of ?? "",
     });
   }
   return rows;

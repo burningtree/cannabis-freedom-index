@@ -146,7 +146,7 @@ const related = relatedTo(ch, nearby);
           <a class="ev-name" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}</a>
           <p class="d-num"><b>{c.score}</b><span>/100</span></p>
           <div class="d-meter" aria-hidden="true"><i style={`width:${c.raw}%`}></i></div>
-          <p class="ev-tier">{tierOf(c.raw).name} <small>{c.disputed ? "Not ranked: disputed territory" : `#${c.rank} of ${countries.length}`}</small></p>
+          <p class="ev-tier">{tierOf(c.raw).name} <small>{c.territory ? `Not ranked: ${c.territory.label}` : `#${c.rank} of ${countries.length}`}</small></p>
           <div class="d-chips">
             <span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>Recreational: {REC_LABEL[c.rec]}</span>
             <span class={`chip s-${c.med}`} title={MED_HELP[c.med]}>Medical: {MED_LABEL[c.med]}</span>

@@ -58,6 +58,11 @@ const countries = defineCollection({
       // and a score, but no rank, and it is left out of the world averages. `part_of` is the file
       // name of the country it is internationally regarded as part of.
       disputed: z.object({ part_of: z.string().regex(/^[a-z]{2}$/), note: z.string().min(1) }).strict().optional(),
+      // A dependency with its own laws, outside the country that answers for it internationally
+      // (a Crown Dependency or an overseas territory). Shown and scored like a disputed territory:
+      // a page, no rank, no part in the averages. `of` is that country's file name; `kind` is how
+      // the place is described ("Crown Dependency", "British Overseas Territory").
+      dependency: z.object({ of: z.string().regex(/^[a-z]{2}$/), kind: z.string().min(1), note: z.string().min(1) }).strict().optional(),
       flag: z.string().optional(), // an emoji to show when the two-letter code has no flag of its own
       // Population by year: a snapshot every ten years from 1900 (Our World in Data) and the
       // latest figure (World Bank). It weights the population-weighted world average.

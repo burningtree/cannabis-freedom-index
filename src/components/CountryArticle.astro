@@ -90,8 +90,8 @@ const culture = sub ? [] : cultureOf(c);
         <div class="tier">{tierOf(v.raw).name}</div>
         {sub
           ? <p class="sub">#{sub.rank} of {group.units.length} in {c.name}<br>would rank #{sub.worldRank} among countries</p>
-          : c.disputed
-            ? <p class="sub">Not ranked: disputed territory<br>would rank #{c.worldRank} among countries</p>
+          : c.territory
+            ? <p class="sub">Not ranked: {c.territory.label}<br>would rank #{c.worldRank} among countries</p>
             : <p class="sub">#{c.rank} of {countries.length} worldwide<br>#{c.regionRank} of {c.regionCount} in {c.region}</p>}
       </div>
     </div>
@@ -112,8 +112,8 @@ const culture = sub ? [] : cultureOf(c);
         ))}
       </div>
     )}
-    {c.disputed && !sub && (
-      <p class="c-disputed"><strong>Disputed territory.</strong> {c.disputed.note} See also <a href={`${base}country/${c.disputed.country.slug}/`} data-country={c.disputed.country.id}>{c.disputed.country.flag} {c.disputed.country.name}</a>.</p>
+    {c.territory && !sub && (
+      <p class="c-disputed"><strong>{c.territory.kind}.</strong> {c.territory.note} See also <a href={`${base}country/${c.territory.country.slug}/`} data-country={c.territory.country.id}>{c.territory.country.flag} {c.territory.country.name}</a>.</p>
     )}
     <h2 class="d-h">In short <span><a href={`${base}can-i/`}>all countries →</a></span></h2>
     <ul class="answers">
