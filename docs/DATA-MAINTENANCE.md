@@ -591,6 +591,29 @@ restriction, and the Norway "1965 tinctures" entry became Norway's first cannabi
 
 ## Reporting back
 
+A [2000–2009 history pass](research/history-2000s-2026-10-17.md) on 17 October
+2026 adds Canada's 2002 Senate report and 2003 Bill C-38, Germany's 2005
+exceptional-permit judgment, and England and Wales's 2005 Quayle appeals. It
+corrects the Swedish industrial-hemp event from 2005 to the verified January
+2003 Hammarsten ruling, preserving its page ID. Primary or reproduced-original
+sources distinguish recommendations, reconsideration and rejected defences from
+enacted access. No scores or articles changed. The build passed (3,162 pages).
+
+A second pass in the same note adds five records: NSW's 2000 cautioning trial
+and 2001 second-caution education requirement, New Zealand's 2003 inquiry report
+and 2009 impairment-testing provisions, and the EU's 2004 trafficking framework.
+It distinguishes police discretion from legalisation, a divided inquiry from an
+adopted reform, impairment tests from later saliva screening, and the EU's
+personal-consumption exclusion from national decriminalisation. No scores,
+profiles or articles changed. The build passed (3,167 pages).
+
+A third pass adds five North American records: Hawaii's 2000 medical law,
+Conant (2002), Malmo-Levine/Caine (2003), Sfetkopoulos (2008), and Michigan's
+2008 medical law. Reproduced judgments and official records distinguish speech
+protection, existing criminal offences, licensing restrictions and programme
+commencement. Hawaii retains year precision because original-act retrieval was
+inconsistent. No profiles, scores or articles changed. The build passed (3,172 pages).
+
 15 October 2026: an [earliest-ban research pass](research/earliest-cannabis-bans-2026-10-15.md)
 added four attributed medieval context records, corrected Menou's 1800 decree date
 and article, and qualified the 1868 Egypt title. The note records dating problems,

@@ -2,6 +2,10 @@
 model: opus-5.5
 written: 2026-10-11
 sources:
+  - title: Algeria Official Gazette No. 8 of 17 February 1985 — original Law 85-05
+    url: https://www.joradp.dz/FTP/jo-francais/1985/F1985008.pdf
+  - title: Algeria Official Gazette No. 83 of 26 December 2004 — original Law 04-18
+    url: https://www.joradp.dz/FTP/jo-francais/2004/F2004083.pdf
   - title: Le Matin d'Algérie — Trafic de drogue, neuf condamnations à mort, première application de la nouvelle loi (5 October 2026)
     url: https://lematindalgerie.com/trafic-de-drogue-neuf-condamnations-a-mort-premiere-application-de-la-nouvelle-loi/
 ---
@@ -15,11 +19,18 @@ fifteen months earlier.
 Hashish has been prohibited in Algeria since
 [French decrees of 1916](/history/algeria-french-decrees-1916/). The country's own
 [drug law of 2004](/history/algeria-law-04-18-2004/) banned growing, trading and
-possessing cannabis, and let a user who accepted treatment avoid prosecution.
+possessing cannabis. It provided non-prosecution under conditions involving
+completed treatment, detoxification or medical supervision. Agreeing to treatment
+alone was not the full statutory condition. It replaced the drug provisions of
+the [1985 health law](/history/algeria-health-law-drug-framework-1985/), which had
+also combined punishment with treatment routes. That earlier law even permitted
+capital punishment in specified cases under Article 248; the 2025 law was not
+Algeria's first historical provision for capital drug offences.
 
-Two amendments then raised the stakes. In
-[2023](/history/algeria-law-23-05-2023/) personal use was set at two months to two
-years in prison, and trafficking by an organised gang at life. On
+Two amendments followed. The two-month-to-two-year personal-use prison range
+already appeared in the original 2004 law. The
+[2023 amendment](/history/algeria-law-23-05-2023/) provided life imprisonment
+for trafficking by an organised gang. On
 [1 July 2025](/history/algeria-law-25-03-2025/) Law 25-03 added the death penalty
 for aggravated cases:
 
