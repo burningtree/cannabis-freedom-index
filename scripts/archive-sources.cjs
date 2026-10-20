@@ -53,9 +53,22 @@ const write = () => {
   fs.writeFileSync(FILE + ".tmp", JSON.stringify(Object.fromEntries(Object.entries(archive).sort(([a], [b]) => a.localeCompare(b))), null, 1) + "\n");
   fs.renameSync(FILE + ".tmp", FILE);
 };
+// fetch, waiting and trying again while the Archive answers 429 (too many requests) or 5xx;
+// it waits as long as Retry-After asks, otherwise 30 s, 60 s, 120 s, 240 s
+class Throttled extends Error {}
+async function politeFetch(address, options) {
+  for (let attempt = 0; ; attempt++) {
+    const r = await fetch(address, options);
+    if (r.status !== 429 && r.status < 500) return r;
+    if (attempt === 4) throw new (r.status === 429 ? Throttled : Error)(`${r.status} after ${attempt + 1} tries`);
+    const wait = (+r.headers.get("retry-after") || 30 * 2 ** attempt) * 1000;
+    console.log(`  ${r.status}, waiting ${wait / 1000} s`);
+    await sleep(wait);
+  }
+}
 // the newest copy the Internet Archive holds, or null
 async function lookup(url) {
-  const r = await fetch(`https://archive.org/wayback/available?url=${encodeURIComponent(url)}`);
+  const r = await politeFetch(`https://archive.org/wayback/available?url=${encodeURIComponent(url)}`);
   if (!r.ok) throw new Error(`availability ${r.status}`);
   const snap = (await r.json()).archived_snapshots?.closest;
   return snap?.available && String(snap.status).startsWith("2") ? snap.url.replace(/^http:/, "https:") : null;
@@ -72,7 +85,7 @@ async function lookup(url) {
       let copy = await lookup(url);
       if (!copy && what === "save") {
         // Save Page Now: without an account the Archive accepts only a few requests a minute
-        const r = await fetch(`https://web.archive.org/save/${url}`, { redirect: "follow" });
+        const r = await politeFetch(`https://web.archive.org/save/${url}`, { redirect: "follow" });
         console.log(`  save ${r.status} ${url}`);
         await sleep(15000);
         copy = await lookup(url);
@@ -82,9 +95,14 @@ async function lookup(url) {
     } catch (e) {
       failed++;
       console.log(`  failed ${url}: ${e.message}`);
+      // still throttled after the long waits: stop instead of failing every address that is left
+      if (e instanceof Throttled) {
+        console.log("  the Archive keeps refusing requests; stopping. Run again later.");
+        break;
+      }
     }
     write();
-    await sleep(what === "check" ? 1200 : 1000);
+    await sleep(what === "check" ? 3000 : 1000);
   }
   console.log(`${what}: handled ${todo.length} | copies recorded ${found} | failed ${failed} | still to do ${all.filter(what === "check" ? stale : (u) => !archive[u]?.archived).length}`);
 })();
