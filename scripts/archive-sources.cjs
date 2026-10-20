@@ -12,7 +12,13 @@
 // `--random` takes the addresses of a run in random order instead of the order they appear in the
 // data. `save` always starts from the same addresses otherwise, so the ones the Archive keeps
 // refusing would fill every run.
+// With IA_ACCESS_KEY and IA_SECRET_KEY in .env (keys from archive.org/account/s3.php), `save` uses the
+// logged-in Save Page Now, which accepts far more captures, and skips the availability lookup.
 const fs = require("fs"), path = require("path"), y = require("js-yaml");
+try {
+  process.loadEnvFile(".env");
+} catch {}
+const KEYS = process.env.IA_ACCESS_KEY && process.env.IA_SECRET_KEY ? `LOW ${process.env.IA_ACCESS_KEY}:${process.env.IA_SECRET_KEY}` : null;
 const FILE = "source-archive.json";
 const archive = fs.existsSync(FILE) ? JSON.parse(fs.readFileSync(FILE, "utf8")) : {};
 const args = process.argv.slice(2);
@@ -53,13 +59,14 @@ const write = () => {
   fs.writeFileSync(FILE + ".tmp", JSON.stringify(Object.fromEntries(Object.entries(archive).sort(([a], [b]) => a.localeCompare(b))), null, 1) + "\n");
   fs.renameSync(FILE + ".tmp", FILE);
 };
-// fetch, waiting and trying again while the Archive answers 429 (too many requests) or 5xx;
-// it waits as long as Retry-After asks, otherwise 30 s, 60 s, 120 s, 240 s
+// fetch, waiting and trying again while the Archive answers 429 (too many requests) or 5xx
+// (or the connection drops); it waits as long as Retry-After asks, otherwise 30 s, 60 s, 120 s, 240 s
 class Throttled extends Error {}
 async function politeFetch(address, options) {
   for (let attempt = 0; ; attempt++) {
-    const r = await fetch(address, options);
-    if (r.status !== 429 && r.status < 500) return r;
+    // a dropped connection is tried again like a 5xx
+    const r = await fetch(address, options).catch((e) => ({ status: e.cause?.code || e.message, headers: new Headers() }));
+    if (typeof r.status === "number" && r.status !== 429 && r.status < 500) return r;
     if (attempt === 4) throw new (r.status === 429 ? Throttled : Error)(`${r.status} after ${attempt + 1} tries`);
     const wait = (+r.headers.get("retry-after") || 30 * 2 ** attempt) * 1000;
     console.log(`  ${r.status}, waiting ${wait / 1000} s`);
@@ -74,16 +81,42 @@ async function lookup(url) {
   return snap?.available && String(snap.status).startsWith("2") ? snap.url.replace(/^http:/, "https:") : null;
 }
 
+// logged-in Save Page Now: start a capture, then follow it until it ends; the new copy or null
+async function saveLoggedIn(url) {
+  const headers = { Accept: "application/json", Authorization: KEYS };
+  const r = await politeFetch("https://web.archive.org/save", {
+    method: "POST",
+    headers: { ...headers, "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ url, if_not_archived_within: "30d" }),
+  });
+  const job = await r.json().catch(() => ({}));
+  if (!job.job_id) {
+    console.log(`  save refused ${url}: ${job.message || r.status}`);
+    return null;
+  }
+  for (let i = 0; i < 30; i++) {
+    await sleep(5000);
+    const st = await (await politeFetch(`https://web.archive.org/save/status/${job.job_id}`, { headers })).json();
+    if (st.status === "pending") continue;
+    console.log(`  save ${st.status} ${url}${st.message ? ": " + st.message : ""}`);
+    return st.status === "success" && st.timestamp ? `https://web.archive.org/web/${st.timestamp}/${st.original_url || url}` : null;
+  }
+  console.log(`  save still pending after 150 s ${url}`);
+  return null;
+}
+
 (async () => {
   if (what === "status") return;
+  if (what === "save") console.log(KEYS ? "save: logged in" : "save: anonymous (no IA_ACCESS_KEY / IA_SECRET_KEY in .env)");
   if (!["check", "save"].includes(what)) return console.log("unknown command: use status, check or save");
   const pending = all.filter(what === "check" ? stale : (u) => !archive[u]?.archived);
   const todo = (random ? shuffle(pending) : pending).slice(0, limit);
   let found = 0, failed = 0;
   for (const url of todo) {
     try {
-      let copy = await lookup(url);
-      if (!copy && what === "save") {
+      // logged in, the save itself reports a copy the Archive already holds, so no lookup is needed
+      let copy = what === "save" && KEYS ? await saveLoggedIn(url) : await lookup(url);
+      if (!copy && what === "save" && !KEYS) {
         // Save Page Now: without an account the Archive accepts only a few requests a minute
         const r = await politeFetch(`https://web.archive.org/save/${url}`, { redirect: "follow" });
         console.log(`  save ${r.status} ${url}`);
