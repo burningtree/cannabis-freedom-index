@@ -1184,3 +1184,13 @@ commercial or export-only licensing in Lebanon and Lesotho. India's Act XII of 1
 read the act to see whether it applied to all of British India before scoring it. Türkiye's 2014
 rewrite of Penal Code Article 191 (two to five years, with compulsory deferral of prosecution) is
 not yet in the history. Current scores did not change.
+
+The third score-triage batch, on 20 October 2026, covered Bosnia and Herzegovina, Iran, Syria,
+Taiwan and Albania. Yugoslavia's 1950 Narcotic Drugs Act, which banned growing Indian hemp outside
+scientific institutions, is now scored for all seven successor states with the same step
+(cultivation one point lower). Serbia's 1932 resin-growing ban stays context, since the general
+ban came in 1950. Iran's 1988 law and Syria's 1993 law, both bringing the death penalty, take
+enforcement one point lower, and Syria's also takes cultivation to 0 (death for growers). Taiwan's
+2022 cultivation amendment stays context: one to seven years still matches Japan at 0. Albania's
+and Syria's raids and campaigns, Bosnia's medical approval (no prescribing rules yet) and
+Albania's export licensing got `unscored` reasons. Current scores did not change.
