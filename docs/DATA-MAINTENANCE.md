@@ -1194,3 +1194,21 @@ enforcement one point lower, and Syria's also takes cultivation to 0 (death for 
 2022 cultivation amendment stays context: one to seven years still matches Japan at 0. Albania's
 and Syria's raids and campaigns, Bosnia's medical approval (no prescribing rules yet) and
 Albania's export licensing got `unscored` reasons. Current scores did not change.
+
+The fourth score-triage batch, on 20 October 2026, covered Brunei, Belarus, Algeria, Libya and
+Mali. Belarus gained a 1974 entry for the Soviet decree that made possession a crime, scored as
+for Russia and Armenia (19 → 8), and its 2014 Decree No. 6 now carries the drop to 0. Part of
+that drop may belong to the 1999 Criminal Code, whose original Article 328 could not be read.
+Death-penalty laws in Brunei (1992), Algeria (2025, aggravated cases including firearms and
+transnational groups, under a moratorium since 1993) and Libya (1990) each take enforcement one
+point lower. Mali's 1983 law (five to ten years' forced labour for use) takes possession and
+enforcement one point lower; its 2001 law could not be read (UNODC returned 403). Ten entries
+got `unscored` reasons. Current scores did not change. Ukraine, Kazakhstan, Uzbekistan,
+Lithuania, Estonia, Moldova, Azerbaijan, Kyrgyzstan, Tajikistan, Turkmenistan and Georgia still
+lack the 1974 Soviet possession step that Russia, Latvia, Armenia and Belarus have.
+
+A [curious-cases pass](research/curious-cases-2026-10-20.md) on 20 October 2026 added Health
+Canada's cannabis grown in the Flin Flon mine, R. v. J.P. (no valid possession offence in Ontario
+from July 2001 to October 2003), Washington, DC's Initiative 71 and its gift economy, Arizona's
+1996 "prescribe" initiative and Robert Mitchum's 1948 arrest. The first three have articles, and
+four are new curious-case cards. No scores changed. The build passed (3,326 pages).
