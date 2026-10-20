@@ -17,7 +17,7 @@ const figures = [
   [`${Math.round((dated.filter((ch) => ch.checked).length / dated.length) * 100)}%`, "checked"],
 ];
 ---
-<Base title="History" description="Laws, court rulings and treaties that shaped cannabis freedom, from the first bans to today, and how each one moved a country's score on the Cannabis Freedom Index.">
+<Base title="History" description="The history of cannabis country by country: laws, court rulings and treaties, raids and campaigns, trade, medicine and culture, from medieval bans to this year, each dated and sourced, with the changes that moved a country's score on the Cannabis Freedom Index.">
   <main class="changes-page">
     <section class="hero hero-sm hero-progress">
       <a class="rs-pill" href={`${base}research/`} title={`Average research progress over ${researchTotals.places} countries and territories. Open the details.`}>
@@ -25,8 +25,8 @@ const figures = [
         <span class="rs-figs">{figures.map(([n, label]) => <span><b>{typeof n === "number" ? num(n) : n}</b> {label}</span>)}</span>
       </a>
       <p class="eyebrow">History</p>
-      <h1>A history of cannabis law</h1>
-      <p class="lede">The laws, court rulings and other developments that changed a country's score, along with the international treaties that set the rules countries work within, from the newest back to the oldest, or the other way round. Open one to see which segments moved and the source.</p>
+      <h1>A history of cannabis</h1>
+      <p class="lede">How people have grown, traded, used and fought over cannabis, country by country: the laws, court rulings and treaties, but also the raids and trials, campaigns, medicine, science, trade and culture around them. Every entry is dated and sourced; those that changed a country's score show by how much.</p>
     </section>
     <HistoryList />
   </main>

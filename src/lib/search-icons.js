@@ -13,10 +13,10 @@ export const PAGE_ICONS = {
   "did-you-know/": "iconoir:light-bulb", "survey/": "iconoir:graph-up", "survey/take/": "iconoir:edit-pencil",
   "culture/": "iconoir:palette", "culture/people/": "iconoir:community", "culture/stories/": "iconoir:book", "sources/": "iconoir:bookmark-book",
 };
-// pages that come in families: a part of the cultural atlas, a map view, a history period
-export const CULTURE_SECTION_ICON = "iconoir:palette", MAP_VIEW_ICON = "iconoir:map", PERIOD_ICON = "iconoir:calendar";
+// pages that come in families: a part of the cultural atlas, a map view, a history period, a history tag
+export const CULTURE_SECTION_ICON = "iconoir:palette", MAP_VIEW_ICON = "iconoir:map", PERIOD_ICON = "iconoir:calendar", TAG_ICON = "iconoir:hashtag";
 
 export const SEARCH_ICONS = [...new Set([
-  ...Object.values(RESULT_KIND_ICONS), ...Object.values(PAGE_ICONS), CULTURE_SECTION_ICON, MAP_VIEW_ICON, PERIOD_ICON,
+  ...Object.values(RESULT_KIND_ICONS), ...Object.values(PAGE_ICONS), CULTURE_SECTION_ICON, MAP_VIEW_ICON, PERIOD_ICON, TAG_ICON,
   ...Object.values(CHANGE_CATEGORIES).map((k) => k.icon),
 ])];

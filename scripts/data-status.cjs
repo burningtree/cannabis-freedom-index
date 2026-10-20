@@ -5,6 +5,12 @@ const changes = y.load(fs.readFileSync("changes.yaml", "utf8"));
 const file = (id) => (fs.existsSync(`countries/${id}.yaml`) ? `countries/${id}.yaml` : `countries/${id}/index.yaml`);
 const ids = fs.readdirSync("countries").map((f) => f.replace(".yaml", ""));
 const country = Object.fromEntries(ids.map((id) => [id, y.load(fs.readFileSync(file(id), "utf8"))]));
+// the latest population of each country, from datasets/population.csv (country,year,population)
+const latestPop = {};
+for (const line of fs.readFileSync("datasets/population.csv", "utf8").trim().split("\n").slice(1)) {
+  const [id, year, n] = line.split(",");
+  if (!latestPop[id] || +year > latestPop[id][0]) latestPop[id] = [+year, +n];
+}
 const what = process.argv[2];
 
 const unchecked = changes.filter((e) => !e.checked && !e.estimate);
@@ -15,7 +21,7 @@ if (what === "unchecked") for (const e of unchecked) console.log([e.country || "
 if (what === "estimates") console.log(estimates.map((e) => `${e.country}${e.window ? `[${e.window}]` : ""}`).join(" "));
 if (["clubs", "driving", "visitors", "black_market", "arrests"].includes(what)) {
   // An optional context section: which profiles have it, and which are still to do, most people first.
-  const pop = (id) => { const p = country[id].population; return p[Object.keys(p).sort().at(-1)]; };
+  const pop = (id) => latestPop[id]?.[1] ?? 0;
   const has = ids.filter((id) => country[id].context[what]);
   console.log(`${what}: ${has.length} of ${ids.length} profiles`);
   console.log("done:", has.map((id) => (country[id].context[what].status ? `${id}:${country[id].context[what].status}` : id)).join(" "));

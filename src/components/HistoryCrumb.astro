@@ -1,0 +1,16 @@
+---
+// The top of a filtered History page (a kind or a tag): where it sits under History, and what the
+// filter holds, so the page reads as part of the whole history rather than a page of its own.
+// Two parts: `part="crumb"` above the title, `part="figures"` under the lede.
+const { what, items, part = "crumb" } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const num = (n) => n.toLocaleString("en-GB");
+const scored = items.filter((ch) => ch.score).length;
+const years = items.map((ch) => +ch.date.slice(0, 4));
+---
+{part === "crumb" && <nav class="hist-crumb" aria-label="Breadcrumb">
+  <a href={`${base}history/`}>History</a><span aria-hidden="true">/</span><span>{what}</span>
+</nav>}
+{part === "figures" && <p class="hist-crumb-figs">
+  {num(items.length)} {items.length === 1 ? "entry" : "entries"}{items.length > 0 && <>, {Math.min(...years)}–{Math.max(...years)}</>} · {num(scored)} moved a score · <a href={`${base}history/`}>back to the whole history</a>
+</p>}

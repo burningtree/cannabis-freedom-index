@@ -3,7 +3,7 @@ import Base from "../../layouts/Base.astro";
 import { render } from "astro:content";
 import { Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { changes, articles, countries, changeDate, formatDate, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP } from "../../lib/countries.js";
+import { changes, articles, countries, changeDate, formatDate, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP, estimateNote, subunitsOf } from "../../lib/countries.js";
 import { tierOf, tierColor } from "../../lib/tiers.js";
 import { sourceTuple } from "../../lib/sources.js";
 import SourceCitation from "../../components/SourceCitation.astro";
@@ -37,6 +37,12 @@ const culture = cultureOfChange(ch);
 const span = c ? 3 : 5;
 const nearby = at < 0 ? [] : own.slice(Math.max(0, Math.min(at - span, own.length - 2 * span - 1)), Math.max(at + span + 1, 2 * span + 1));
 const related = relatedTo(ch, nearby);
+// an entry about one state or province: that state's card beside it, its country's under it
+const unitGroup = ch.unit ? subunitsOf(c.id) : null;
+const unit = unitGroup?.units.find((x) => x.id === ch.unit.id);
+// Without an article the description is the story: it moves from under the title into the body,
+// so the title stands alone at the top and the page does not leave a gap beside a long lede.
+const ledeInBody = !article;
 ---
 <Base type="article" title={ch.title} description={ch.score ? `${ch.title}: ${c.name} moved from ${ch.score.before} to ${ch.score.after} on the Cannabis Freedom Index. ${ch.description}` : `${ch.title}. ${ch.description}`}>
   <main class="change-page ev">
@@ -46,13 +52,18 @@ const related = relatedTo(ch, nearby);
 
     <header class={`ev-top${ch.score ? "" : " ev-plain"}`}>
       <div>
-        <p class="eyebrow"><a href={`${base}history/kind/${ch.category}/`} title={ch.kind.help}><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</a> <span><time datetime={ch.date}>{changeDate(ch)}</time></span> <span>{c ? <a href={`${base}country/${c.slug}/`}>{c.flag} {c.name}</a> : ch.place.name}</span></p>
+        <p class="eyebrow"><a href={`${base}history/kind/${ch.category}/`} title={ch.kind.help}><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</a> <span><time datetime={ch.date}>{changeDate(ch)}</time></span> <span>{c ? <a href={`${base}country/${c.slug}/`}>{c.flag} {c.name}</a> : ch.place.name}{ch.unit && <> · <a href={`${base}${ch.unit.url}`}>{ch.unit.name}</a></>}</span></p>
         <h1>{ch.title}</h1>
-        <p class="lede">{ch.description}</p>
+        {!ledeInBody && <p class="lede">{ch.description}</p>}
+        {!ledeInBody && ch.tags.length > 0 && (
+          <ul class="ev-tags" aria-label="Tags">
+            {ch.tags.map((t) => <li><a href={`${base}history/tag/${t.key}/`} title={t.help}>{t.label}</a></li>)}
+          </ul>
+        )}
       </div>
       {ch.score && (
         <div class="ev-move" aria-label={`Index score from ${ch.score.before} to ${ch.score.after}`}>
-          <p class="ev-label">Index score</p>
+          <p class="ev-label">{ch.unit ? `${c.name}, national score` : "Index score"}</p>
           <p class="ev-figures">
             <b style={`--c:${tierColor(ch.score.before)}`}>{ch.score.before}</b>
             <span aria-hidden="true">→</span>
@@ -65,6 +76,16 @@ const related = relatedTo(ch, nearby);
 
     <div class="ev-body">
     <article class="ev-main">
+      {ledeInBody && (
+        <section class="ev-lede">
+          <p>{ch.description}</p>
+          {ch.tags.length > 0 && (
+            <ul class="ev-tags" aria-label="Tags">
+              {ch.tags.map((t) => <li><a href={`${base}history/tag/${t.key}/`} title={t.help}>{t.label}</a></li>)}
+            </ul>
+          )}
+        </section>
+      )}
       {culture.length > 0 && (
         <section class="ev-culture" aria-label="In the cultural atlas">
           <p class="ev-label">In the cultural atlas</p>
@@ -140,13 +161,30 @@ const related = relatedTo(ch, nearby);
     </article>
 
       <aside class="ev-rail" aria-label={c ? `About ${c.name}` : "International entries"}>
-        {c ? (
+        {unit && (
+        <section class="ev-country" style={`--c:${tierColor(unit.raw)}`}>
+          <p class="ev-label">{unitGroup.label} of {c.name} · today</p>
+          <a class="ev-name" href={`${base}${ch.unit.url}`}><span class="flag">{c.flag}</span>{unit.name}</a>
+          <p class="d-num"><b>{unit.score}</b><span>/100</span></p>
+          <div class="d-meter" aria-hidden="true"><i style={`width:${unit.raw}%`}></i></div>
+          <p class="ev-tier">{tierOf(unit.raw).name} <small>#{unit.rank} of {unitGroup.units.length} in {c.name}</small></p>
+          <div class="d-chips">
+            <span class={`chip s-${unit.rec}`} title={REC_HELP[unit.rec]}>Recreational: {REC_LABEL[unit.rec]}</span>
+            <span class={`chip s-${unit.med}`} title={MED_HELP[unit.med]}>Medical: {MED_LABEL[unit.med]}</span>
+          </div>
+          <p class="ca-note">{unit.note}</p>
+          <a class="ev-open" href={`${base}${ch.unit.url}`}>Open {unit.name} →</a>
+          <p class="ev-est ev-also">{c.flag} <a href={`${base}country/${c.slug}/`}>{c.name}</a>: {c.score}/100, national estimate{ch.score && ". The score change above is the national one"}</p>
+        </section>
+        )}
+        {unit ? null : c ? (
         <section class="ev-country" style={`--c:${tierColor(c.raw)}`}>
           <p class="ev-label">{c.region} · today</p>
           <a class="ev-name" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}</a>
           <p class="d-num"><b>{c.score}</b><span>/100</span></p>
           <div class="d-meter" aria-hidden="true"><i style={`width:${c.raw}%`}></i></div>
           <p class="ev-tier">{tierOf(c.raw).name} <small>{c.territory ? `Not ranked: ${c.territory.label}` : `#${c.rank} of ${countries.length}`}</small></p>
+          {estimateNote(c) && <p class="ev-est">{estimateNote(c)}</p>}
           <div class="d-chips">
             <span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>Recreational: {REC_LABEL[c.rec]}</span>
             <span class={`chip s-${c.med}`} title={MED_HELP[c.med]}>Medical: {MED_LABEL[c.med]}</span>

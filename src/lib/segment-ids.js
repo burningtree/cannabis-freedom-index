@@ -54,14 +54,58 @@ export const STATUS_SECTIONS = {
 };
 // What kind of event a History entry is, in the order the legend lists them. `icon` is shown on
 // the site; `emoji` stands in where only text fits (the chart tooltips, previews, OG pictures).
+// `help` says what the kind is in a few words; `includes` lists what is filed under it, for the
+// filter's tooltip and the top of the kind's page
 export const CHANGE_CATEGORIES = {
-  ban: { emoji: "⛔", icon: "iconoir:prohibition", label: "Ban", help: "Cannabis is prohibited or restricted for the first time, or banned again" },
-  tightening: { emoji: "👎", icon: "iconoir:thumbs-down", label: "Tightening", help: "Harsher penalties, new offences or a crackdown" },
-  death: { emoji: "☠️", icon: "iconoir:warning-triangle", label: "Death penalty", help: "The death penalty is introduced, used, limited or removed" },
-  easing: { emoji: "👍", icon: "iconoir:thumbs-up", label: "Easing", help: "Decriminalisation, lighter penalties or a ruling that protects users" },
-  legalisation: { emoji: "✅", icon: "iconoir:check-circle", label: "Legalisation", help: "Possession, growing or sales become legal for adults" },
-  medical: { emoji: "💊", icon: "iconoir:pharmacy-cross-circle", label: "Medical", help: "Medical cannabis is allowed, widened or refused" },
-  debate: { emoji: "🗳️", icon: "iconoir:chat-lines", label: "Debate", help: "Reports, commissions, votes and plans that changed no rule by themselves" },
-  international: { emoji: "🌐", icon: "iconoir:globe", label: "International", help: "Treaties and decisions of international bodies" },
-  other: { emoji: "📜", icon: "iconoir:page", label: "Other law", help: "Other laws and rulings, including hemp, CBD and seed rules" },
+  ban: { emoji: "⛔", icon: "iconoir:prohibition", label: "Ban", help: "Cannabis is prohibited or restricted for the first time, or banned again", includes: "First national or colonial bans, and bans brought back after a legal period" },
+  tightening: { emoji: "👎", icon: "iconoir:thumbs-down", label: "Tightening", help: "Harsher penalties, new offences or a crackdown", includes: "Higher penalties, new offences, lower thresholds, and rulings or decrees that make the law harsher" },
+  death: { emoji: "☠️", icon: "iconoir:warning-triangle", label: "Death penalty", help: "The death penalty is introduced, used, limited or removed", includes: "The death penalty for cannabis introduced, extended, carried out, limited or abolished" },
+  enforcement: { emoji: "🚔", icon: "iconoir:shield-alert", label: "Enforcement", help: "Raids, seizures, arrests, single cases and how a law was applied, without a change in the law", includes: "Raids and seizures, arrest and prosecution figures, single cases and sentences, police practice" },
+  easing: { emoji: "👍", icon: "iconoir:thumbs-up", label: "Easing", help: "Decriminalisation, lighter penalties or a ruling that protects users", includes: "Decriminalisation, lighter penalties, fines instead of prison, and rulings that protect users" },
+  legalisation: { emoji: "✅", icon: "iconoir:check-circle", label: "Legalisation", help: "Possession, growing or sales become legal for adults", includes: "Legal possession, home growing, clubs or shops for adults" },
+  medical: { emoji: "💊", icon: "iconoir:pharmacy-cross-circle", label: "Medical", help: "Medical cannabis is allowed, widened or refused", includes: "Medical programmes, prescriptions, cannabis medicines, and patient access widened, narrowed or refused" },
+  hemp: { emoji: "🌿", icon: "iconoir:leaf", label: "Hemp", help: "Fibre and food hemp, CBD, low-THC products and seeds: their rules and their industry", includes: "Fibre and food hemp, THC limits, CBD and low-THC products, seed rules and the hemp industry" },
+  debate: { emoji: "🗳️", icon: "iconoir:chat-lines", label: "Debate", help: "Reports, commissions, votes and plans that changed no rule by themselves", includes: "Bills and drafts, reports and commissions, campaigns and marches, referendums and failed votes" },
+  culture: { emoji: "📚", icon: "iconoir:book", label: "Culture & science", help: "Traditions, trade, books, research, discoveries and organisations", includes: "Traditions, trade and markets, books, films and music, research, discoveries and archaeology" },
+  international: { emoji: "🌐", icon: "iconoir:globe", label: "International", help: "Treaties and decisions of international bodies", includes: "UN and League of Nations treaties, countries joining them, and decisions of the UN, WHO and other bodies" },
+  other: { emoji: "📜", icon: "iconoir:page", label: "Other law", help: "Laws and rulings that do not clearly make things harsher or milder", includes: "New drug laws and codes that keep the same rules, reorganised agencies and mixed reforms" },
+};
+// Optional tags on a history entry, for grouping deeper than its one category. An entry may have
+// several. Only these keys are accepted, so the same thing is always tagged the same way; add a
+// key here before using it. Each tag has its own page at /history/tag/<key>/.
+export const CHANGE_TAGS = {
+  court: { label: "Court ruling", help: "A court decides a case or the validity of a law" },
+  referendum: { label: "Referendum", help: "A popular vote or a petition for one" },
+  ratification: { label: "Treaty ratification", help: "A country joins or leaves an international drug treaty" },
+  trafficking: { label: "Trafficking", help: "Trafficking and smuggling: the laws against it, its penalties and its cases" },
+  trade: { label: "Imports and exports", help: "Cannabis trade across borders: import bans, export licences and trade routes" },
+  thresholds: { label: "Thresholds", help: "Gram and plant limits, personal doses and the quantities that divide users from dealers" },
+  hemp: { label: "Hemp", help: "Fibre, food or industrial hemp and its THC limits" },
+  cbd: { label: "CBD", help: "CBD and low-THC products" },
+  seeds: { label: "Seeds", help: "Selling, holding or planting cannabis seeds" },
+  food: { label: "Food", help: "Cannabis or hemp in food and drink" },
+  "home-growing": { label: "Home growing", help: "Growing cannabis at home for yourself" },
+  clubs: { label: "Cannabis clubs", help: "Social clubs and collective growing" },
+  retail: { label: "Shops and sales", help: "Coffeeshops, dispensaries, licensed sales and their rules" },
+  taxes: { label: "Taxes and monopolies", help: "Taxes on cannabis and state monopolies over its trade" },
+  advertising: { label: "Advertising and paraphernalia", help: "Bans on promoting cannabis, and on pipes, grow shops and literature" },
+  enforcement: { label: "Enforcement", help: "Arrests, raids, seizures, crackdowns and how a law was applied" },
+  "police-powers": { label: "Police powers", help: "Searches, drug dogs, surveillance and drug tests" },
+  eradication: { label: "Eradication", help: "Destroying cannabis crops, and plans to replace them" },
+  sentencing: { label: "Sentencing", help: "Prison terms and fines given or set for cannabis" },
+  amnesty: { label: "Amnesty and pardons", help: "Pardons, amnesties, resentencing and clearing records" },
+  patients: { label: "Patients", help: "People using cannabis as medicine: their cases, groups and campaigns" },
+  treatment: { label: "Treatment", help: "Forced or offered treatment for drug users" },
+  driving: { label: "Driving", help: "Cannabis and driving" },
+  youth: { label: "Youth", help: "Young people, students, minors and age limits" },
+  visitors: { label: "Visitors", help: "Rules for tourists and foreigners" },
+  traditional: { label: "Traditional use", help: "Local cannabis cultures and preparations: bhang, ganja, kif, dagga, takrouri, religious and ritual use" },
+  religion: { label: "Religion", help: "Religious use of cannabis and religious rules on it" },
+  race: { label: "Race and migration", help: "Laws and fears aimed at immigrants and minorities" },
+  colonial: { label: "Colonial rule", help: "Laws made or enforced by a colonial power" },
+  military: { label: "Military", help: "Armies and soldiers, military governments and war" },
+  madness: { label: "Madness and psychiatry", help: "Claims that cannabis causes insanity, asylums and psychiatry" },
+  campaign: { label: "Campaigns", help: "Activists, parties and movements for or against reform" },
+  famous: { label: "Famous people", help: "Well-known people and cannabis: arrests, trials and campaigns" },
+  science: { label: "Science and medicine", help: "Research, studies and medical knowledge" },
 };

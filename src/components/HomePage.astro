@@ -7,7 +7,7 @@ import AboutHint from "../components/AboutHint.astro";
 import Tools from "./Tools.astro";
 import { survey } from "../lib/survey.js";
 import AverageChart from "../components/AverageChart.astro";
-import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places, trendOf, changeDate, TREND_YEARS } from "../lib/countries.js";
+import { useAges, SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places, trendOf, changeDate, TREND_YEARS, estimateNote } from "../lib/countries.js";
 import { TIERS, tierColor, tierOf } from "../lib/tiers.js";
 import { PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "../lib/segment-ids.js";
 import { PRICE_MARKETS, PRICE_MARKET_LABEL, flatLatestPricesFor, latestPricesFor } from "../lib/prices.js";
@@ -16,6 +16,7 @@ import { homeSeo } from "../lib/seo.js";
 import { viewByMetric } from "../lib/map-views.js";
 import { cultureOf, cultureEntries } from "../lib/culture.js";
 import { panelRows, PANEL_FROM } from "../lib/exports.js";
+import { MAPPED, datasetScales, datasetMapValues } from "../lib/datasets.js";
 
 // Rankings by year: for each place, the years in which its index score changed and the score from
 // then on ([[1900, 98.4], [1937, 11.2], …]), taken from the yearly panel. The table reads it when
@@ -51,7 +52,7 @@ const count = (fn) => countries.filter(fn).length;
 const compact = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)}M` : n >= 1e3 ? `${+(n / 1e3).toPrecision(2)}k` : String(n));
 const useNote = (c) => c.use.estimate
   ? `Estimate: no national survey, so the regional median of ${c.use.prevalence}% of people aged 15–64 is assumed`
-  : `${c.use.prevalence}% of people aged 15–64 used cannabis in the past year (${c.use.year} survey)`;
+  : `${c.use.prevalence}% of people aged ${useAges(c.use)} used cannabis in the past year (${c.use.period ?? c.use.year} survey)`;
 const stats = [
   [places.length, "territories scored"],
   [count((c) => c.raw >= 60), "reach the “Free” tier (60+)"],
@@ -68,12 +69,13 @@ const MED_ORDER = ["yes", "limited", "no"];
 // ahead of freedom. A score below 1 counts as 1, so that a zero does not divide.
 // `culture` is how many atlas entries a country appears in, with the names of the first few
 // (most important first), for the map's Culture view.
+// `ds` holds the country's figures from the outside datasets (datasets.js), for the Society views.
 const mapData = places.map((c) => {
   const { id, num, name, flag, raw, score, rank, s, use, planting, clubs, driving, visitors, rec, med } = c;
   const atlas = cultureOf(c);
-  return { id, num, name, flag, raw, score, rank, s, planting, clubs, driving, visitors, rec, med, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {},
-    use: { ...use, ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2), culture: atlas.length },
-    atlas: atlas.slice(0, 4).map((e) => e.title) };
+  return { id, num, name, flag, raw, score, rank, s, planting, clubs, driving, visitors, rec, med, fe: estimateNote(c), prices: SHOW_PRICES ? flatLatestPricesFor(id) : {},
+    use: { ...use, ages: useAges(use), ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2), culture: atlas.length },
+    atlas: atlas.slice(0, 4).map((e) => e.title), ds: datasetMapValues(c) };
 });
 // States, provinces and territories of the federations, for the map's "show states" switch.
 // Keyed like the shapes in src/data/subunits.geo.json: "us/ca".
@@ -88,7 +90,7 @@ const USE_SCALES = {
   ratio: {
     label: "Use relative to freedom",
     steps: [[0, "Under 0.15"], [0.15, "0.15–0.3"], [0.3, "0.3–0.5"], [0.5, "0.5–1"], [1, "1 or more"]],
-    note: "Share of people aged 15–64 who use cannabis, divided by the index score. A high value means many people use cannabis where the law gives them little freedom to.",
+    note: "Share of adults who use cannabis, divided by the index score. A high value means many people use cannabis where the law gives them little freedom to.",
   },
   culture: {
     label: "Entries in the cultural atlas",
@@ -238,14 +240,20 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           <a {...viewAttrs("users")}>Number of users</a>
           <a {...viewAttrs("prevalence")}>Share of adults</a>
           <a {...viewAttrs("ratio")}>Share of users ÷ index</a>
+          {MAPPED.filter((ds) => ds.map.group === "Use").map((ds) => <a {...viewAttrs(`data:${ds.id}`)}>{ds.map.label}</a>)}
         </div>
         <div class="metric-group">
           <span>Culture</span>
           <a {...viewAttrs("culture")}>Atlas entries</a>
         </div>
         <div class="metric-group">
+          <span>Society</span>
+          {MAPPED.filter((ds) => ds.map.group === "Society").map((ds) => <a {...viewAttrs(`data:${ds.id}`)}>{ds.map.label}</a>)}
+        </div>
+        <div class="metric-group">
           <span>Law</span>
           {Object.entries(LAW_SECTIONS).map(([key, section]) => <a {...viewAttrs(`status:${key}`)}>{section.name}</a>)}
+          {MAPPED.filter((ds) => ds.map.group === "Law").map((ds) => <a {...viewAttrs(`data:${ds.id}`)}>{ds.map.label}</a>)}
         </div>
         {SHOW_PRICES && (
           <div class="metric-group">
@@ -280,7 +288,14 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           <div class="legend" data-legend={key} hidden>
             {scale.steps.map(([, text], i) => <span><i class="sw" style={`background:var(--u${i})`}></i>{text}</span>)}
             <span><i class="sw sw-nodata"></i>No data</span>
-            <span class="legend-note">{scale.note ?? "People aged 15–64 who used cannabis in the past year. Figures marked ~ are regional estimates."}</span>
+            <span class="legend-note">{scale.note ?? "Adults who used cannabis in the past year, from each country's latest survey (most ask ages 15–64). Figures marked ~ are regional estimates."}</span>
+          </div>
+        ))}
+        {Object.entries(datasetScales).map(([key, scale]) => (
+          <div class="legend" data-legend={`data:${key}`} hidden>
+            {scale.steps.map(([, text], i) => <span><i class="sw" style={`background:var(--u${i})`}></i>{text}</span>)}
+            <span><i class="sw sw-nodata"></i>Not covered</span>
+            <span class="legend-note">{scale.note}</span>
           </div>
         ))}
         {SHOW_PRICES && <div class="legend" data-legend="price" hidden>
@@ -352,7 +367,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
               <th data-sort="name">Country</th>
               <th data-sort="region" data-col="region" class="hide-sm">Region</th>
               <th data-sort="users" data-col="users" class="num-col hide-md" title="People who used cannabis in the past year">Users</th>
-              <th data-sort="share" data-col="share" class="num-col hide-md" title="Share of people aged 15–64 who used cannabis in the past year">Share</th>
+              <th data-sort="share" data-col="share" class="num-col hide-md" title="Share of adults who used cannabis in the past year, mostly aged 15–64">Share</th>
               {SHOW_PRICES && <th data-sort="price" data-col="price" class="num-col hide-md" title="Latest sourced street-flower price, normalised to US dollars per gram">Price/g</th>}
               <th data-sort="rec" data-col="rec" class="hide-sm">Recreational</th>
               <th data-sort="med" data-col="med" class="hide-md">Medical</th>
@@ -366,7 +381,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
                   data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users} data-share={c.use.prevalence} data-price={SHOW_PRICES ? streetFlower(c)?.usd ?? -1 : undefined}
                   {...Object.fromEntries(EXTRA_COLUMNS.map((col) => [`data-${col.key}`, col.sort(c)]))}>
                 <td class="num">{c.rank ?? "–"}</td>
-                <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}{trendOf(c) && ((t) => <span class={`trend ${t.delta > 0 ? "up" : "down"}`} title={`${t.delta > 0 ? "+" : "−"}${Math.abs(t.delta)} ${Math.abs(t.delta) === 1 ? "point" : "points"} since ${t.since}. Latest change: ${t.last.title} (${changeDate(t.last)})`}>{t.delta > 0 ? "▲" : "▼"}{Math.abs(t.delta)}</span>)(trendOf(c))}</a>{c.territory && <span class="tag-disputed" title={`${c.territory.kind}. ${c.territory.note}`}>{c.territory.tag}</span>}</td>
+                <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}{trendOf(c) && ((t) => <span class={`trend ${t.delta > 0 ? "up" : "down"}`} title={`${t.delta > 0 ? "+" : "−"}${Math.abs(t.delta)} ${Math.abs(t.delta) === 1 ? "point" : "points"} since ${t.since}. Latest change: ${t.last.title} (${changeDate(t.last)})`}>{t.delta > 0 ? "▲" : "▼"}{Math.abs(t.delta)}</span>)(trendOf(c))}</a>{c.territory && <span class="tag-disputed" title={`${c.territory.kind}. ${c.territory.note}`}>{c.territory.tag}</span>}{estimateNote(c) && <span class="tag-disputed" title={estimateNote(c)}>national estimate</span>}</td>
                 <td class="hide-sm" data-col="region">{c.region}</td>
                 <td class="num-col hide-md" data-col="users" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{compact(c.use.users)}</td>
                 <td class="num-col hide-md" data-col="share" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{c.use.prevalence.toFixed(1)}%</td>
@@ -479,6 +494,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
   <script type="application/json" id="cfi-data" set:html={JSON.stringify(mapData)} />
   <script type="application/json" id="cfi-units" set:html={JSON.stringify(unitData)} />
   <script type="application/json" id="cfi-use-scales" set:html={JSON.stringify(USE_SCALES)} />
+  <script type="application/json" id="cfi-datasets" set:html={JSON.stringify(datasetScales)} />
   <script type="application/json" id="cfi-price-scale" set:html={JSON.stringify(PRICE_SCALE)} />
   <script type="application/json" id="cfi-planting" set:html={JSON.stringify({ fields: PLANTING_FIELDS, scales: PLANTING_SCALES, sections: STATUS_SCALES, subs: Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, section.complete ? section.sub : `${section.sub} Hatched countries have not been researched yet. Not part of the score.`])) })} />
   <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => ({ name: s.name, desc: s.desc, levels: s.levels })))} />
@@ -521,6 +537,18 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     const statusKey = () => metric.split(":")[1];
     const clubsOf = (c) => PLANTING.sections[statusKey()].scale[c[statusKey()]];
     const clubsColor = (c) => clubsOf(c)?.color ?? "url(#hatch)";
+    // coloured by a figure from an outside dataset (Pew, Human Freedom Index): see datasets.js
+    const DATA_SCALES = JSON.parse($("#cfi-datasets").textContent);
+    const isData = () => metric.startsWith("data:");
+    const dataKey = () => metric.split(":")[1];
+    const dataColor = (c) => {
+      const d = c?.ds[dataKey()];
+      if (!d) return "url(#hatch)";
+      const steps = DATA_SCALES[dataKey()].steps;
+      let i = 0;
+      while (i < steps.length - 1 && d.v >= steps[i + 1][0]) i++;
+      return `var(--u${i})`;
+    };
     const priceMarket = () => metric.split(":")[1];
     const priceOf = (c) => c.prices[priceMarket()];
     const metricValue = (c) => (metric === "index" ? c.raw : c.s[+metric] * 10);
@@ -552,25 +580,25 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     let drawUnits = null;   // set by initMap: loads and draws the shapes
 
     // states and provinces carry scores only, so they are offered on the Freedom options alone
-    const isScore = () => !isClubs() && !isPlant() && !isPrice() && !isUse();
+    const isScore = () => !isData() && !isClubs() && !isPlant() && !isPrice() && !isUse();
     const unitsOn = () => showUnits && isScore();
 
     function paintMap() {
       if (paths) {
-        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isClubs() ? clubsColor(d.c) : isPlant() ? plantColor(d.c) : isPrice() ? priceColor(d.c) : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
+        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isData() ? dataColor(d.c) : isClubs() ? clubsColor(d.c) : isPlant() ? plantColor(d.c) : isPrice() ? priceColor(d.c) : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
         // a federation's own shape steps aside while its states are shown
         paths.style("display", (d) => (unitsOn() && unitPaths && d.c && FEDERATIONS.has(d.c.id) ? "none" : null));
       }
       if (unitPaths) {
         unitPaths.style("display", unitsOn() ? null : "none");
         // cannabis use is only known nationally, so a state takes its country's colour for those
-        unitPaths.attr("fill", (d) => (isClubs() ? clubsColor(byId.get(d.u.country)) : isPlant() ? plantColor(byId.get(d.u.country)) : isPrice() ? priceColor(byId.get(d.u.country)) : isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
+        unitPaths.attr("fill", (d) => (isData() ? dataColor(byId.get(d.u.country)) : isClubs() ? clubsColor(byId.get(d.u.country)) : isPlant() ? plantColor(byId.get(d.u.country)) : isPrice() ? priceColor(byId.get(d.u.country)) : isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
       }
       $("#mapUnder").hidden = !isScore();
-      const shown = isClubs() ? metric : isPlant() ? (plantField().endsWith("_trade") ? "plant-trade" : "plant-status") : isPrice() ? "price" : isUse() ? metric : "score";
+      const shown = isData() || isClubs() ? metric : isPlant() ? (plantField().endsWith("_trade") ? "plant-trade" : "plant-status") : isPrice() ? "price" : isUse() ? metric : "score";
       document.querySelectorAll("[data-legend]").forEach((el) => { el.hidden = el.dataset.legend !== shown; });
       const sub = $("#mapSub");
-      sub.textContent = isClubs() ? PLANTING.subs[statusKey()] : isPlant() ? sub.dataset.planting : isPrice() ? sub.dataset.price : metric === "ratio" ? sub.dataset.ratio : metric === "culture" ? sub.dataset.culture : isUse() ? sub.dataset.use : sub.dataset.score;
+      sub.textContent = isData() ? DATA_SCALES[dataKey()].sub : isClubs() ? PLANTING.subs[statusKey()] : isPlant() ? sub.dataset.planting : isPrice() ? sub.dataset.price : metric === "ratio" ? sub.dataset.ratio : metric === "culture" ? sub.dataset.culture : isUse() ? sub.dataset.use : sub.dataset.score;
     }
     // On the home page an option recolours the map in place, and "Expand" then points at that
     // view's own page. On a map page the options are ordinary links to the other map pages.
@@ -674,6 +702,19 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         if (d.u) return describe({ c: byId.get(d.u.country), properties: d.properties }).replace(`<div class="tip-foot">`, `<div class="tip-meta">National figure, shown for ${esc(d.u.name)}</div><div class="tip-foot">`);
         if (!c) return head(null, d.properties.name) + `<div class="tip-meta">Not scored</div>`;
         const n = noteOf(c.id);
+        if (isData()) {
+          const key = dataKey(), d = c.ds[key], scale = DATA_SCALES[key];
+          if (!d) return head(c.flag, c.name) + `<div class="tip-meta">${esc(scale.missing)}</div>` + row("Cannabis index", `${c.score} / 100`) + foot(c);
+          const rows = key === "pew_marijuana"
+            ? `<div class="tip-meta">Using marijuana is…</div>` + row("Morally unacceptable", `${d.unacceptable}%`, dataColor(c)) + row("Morally acceptable", `${d.acceptable}%`) + row("Not a moral issue", `${d.not_moral}%`)
+            : key === "youth_use"
+            ? row("Past year", `${d.past_year}%`, dataColor(c)) + (d.lifetime !== undefined ? row("Ever", `${d.lifetime}%`) : "") + (d.past_month !== undefined ? row("Past month", `${d.past_month}%`) : "") + row("Survey", d.year)
+            : key === "police_possession"
+            ? row("Per 100,000 people", d.t, dataColor(c)) + row("People", d.persons.toLocaleString("en-GB")) + row("Year", d.year) + `<div class="tip-meta">All drugs together; countries count differently</div>`
+            : row("Human freedom", `${d.human.toFixed(2)} / 10`, dataColor(c)) + (d.human_rank ? row("Rank", `#${d.human_rank} of ${scale.total}`) : "")
+              + (d.personal != null ? row("Personal freedom", `${d.personal.toFixed(2)} / 10`) : "") + (d.economic != null ? row("Economic freedom", `${d.economic.toFixed(2)} / 10`) : "");
+          return head(c.flag, c.name, d.t, dataColor(c)) + rows + row("Cannabis index", `${c.score} / 100 · ${rankText(c)}`) + foot(c);
+        }
         if (isClubs()) {
           const key = statusKey(), st = clubsOf(c);
           const text = key === "rec" ? n?.n : key === "med" ? n?.x?.medical : n?.x?.[key];
@@ -706,20 +747,22 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         const est = c.use.estimate ? "~" : "";
         if (metric === "ratio") {
           return head(c.flag, c.name, `${est}${c.use.ratio}`, useColor(c))
-            + row("Share aged 15–64", `${est}${c.use.prevalence}%`) + row("Index", `${c.score} / 100`)
+            + row(`Share aged ${c.use.ages}`, `${est}${c.use.prevalence}%`) + row("Index", `${c.score} / 100`)
             + para(USE_SCALES.ratio.note) + foot(c);
         }
         if (isUse()) {
           return head(c.flag, c.name, metric === "users" ? `${est}${compact(c.use.users)}` : `${est}${c.use.prevalence}%`, useColor(c))
-            + row("Users", `${est}${compact(c.use.users)}`) + row("Share aged 15–64", `${est}${c.use.prevalence}%`)
-            + row(c.use.estimate ? "Source" : "Survey year", c.use.estimate ? "regional estimate" : c.use.year) + foot(c);
+            + row("Users", `${est}${compact(c.use.users)}`) + row(`Share aged ${c.use.ages}`, `${est}${c.use.prevalence}%`)
+            + row(c.use.estimate ? "Source" : "Survey year", c.use.estimate ? "regional estimate" : c.use.period ?? c.use.year)
+            + (c.use.source === "earlier" ? row("Source", "earlier figure, not in UNODC's 2026 table") : "") + foot(c);
         }
         const chip = metric === "index" ? c.score : `${c.s[+metric]}<small>/10</small>`;
         const extra = metric === "index"
           ? row("Recreational", PLANTING.sections.rec.scale[c.rec]?.label ?? "—", PLANTING.sections.rec.scale[c.rec]?.color)
             + row("Medical", PLANTING.sections.med.scale[c.med]?.label ?? "—", PLANTING.sections.med.scale[c.med]?.color)
           : "";
-        return head(c.flag, c.name, chip, tierColor(metricValue(c))) + describeScore(c, n, c.rank ? `World rank ${rankText(c)}` : "Not ranked") + extra + foot(c);
+        return head(c.flag, c.name, chip, tierColor(metricValue(c))) + describeScore(c, n, c.rank ? `World rank ${rankText(c)}` : "Not ranked") + extra
+          + (c.fe ? `<div class="tip-meta">${esc(c.fe)}</div>` : "") + foot(c);
       };
       // above the pointer where there is room, below it otherwise; never past the map's edges
       const showTip = (e, d) => {

@@ -1,0 +1,26 @@
+---
+// Every History entry with one tag, across all periods.
+import Base from "../../../layouts/Base.astro";
+import HistoryList from "../../../components/HistoryList.astro";
+import HistoryCrumb from "../../../components/HistoryCrumb.astro";
+import { CHANGE_TAGS, changes } from "../../../lib/countries.js";
+
+export function getStaticPaths() {
+  return Object.keys(CHANGE_TAGS).map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const t = CHANGE_TAGS[tag];
+const items = changes.filter((ch) => !ch.estimate && ch.tags.some((x) => x.key === tag));
+---
+<Base title={`History: ${t.label}`} description={`${t.help}. Every entry with this tag in the history of cannabis, newest first.`}>
+  <main class="changes-page">
+    <section class="hero hero-sm">
+      <HistoryCrumb what="Tag" items={items} />
+      <h1>{t.label}</h1>
+      <p class="lede">{t.help}.</p>
+      <HistoryCrumb part="figures" items={items} />
+    </section>
+    <HistoryList tag={tag} />
+  </main>
+</Base>

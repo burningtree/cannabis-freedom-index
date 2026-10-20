@@ -6,15 +6,17 @@
 //   heading links there, so each year has a permanent address.
 // - with `period`: one decade, complete, for linking and for reading without scripts.
 // - with `kind` (a key of CHANGE_CATEGORIES): every entry of that kind.
-// Top to bottom: the chart of the world average with the entries per decade (which doubles as
-// navigation), the kinds as filters, then the ledger.
+// - with `tag` (a key of CHANGE_TAGS): every entry with that tag.
+// Top to bottom: the filters (kinds, then tags), the chart of the world average with the entries per
+// decade (which doubles as navigation; on a kind or tag page it counts only those entries and is drawn
+// as a low strip), then the ledger.
 import HistoryChart from "./HistoryChart.astro";
 import HistoryYears from "./HistoryYears.astro";
 import { Icon } from "astro-icon/components";
-import { changes, places, historyPeriods, historyYears, CHANGE_CATEGORIES } from "../lib/countries.js";
+import { changes, places, historyPeriods, historyYears, CHANGE_CATEGORIES, CHANGE_TAGS } from "../lib/countries.js";
 
-const { period, kind } = Astro.props;
-const feed = !period && !kind;
+const { period, kind, tag } = Astro.props;
+const feed = !period && !kind && !tag;
 const base = import.meta.env.BASE_URL;
 const index = historyPeriods.indexOf(period);
 const newer = historyPeriods[index - 1];
@@ -27,9 +29,14 @@ const byYear = (items) => [...new Set(items.map((ch) => +ch.date.slice(0, 4)))]
 const FIRST = 40;
 const firstYears = [];
 for (const y of historyYears) { if (firstYears.reduce((n, x) => n + x.items.length, 0) >= FIRST) break; firstYears.push(y); }
-const years = feed ? firstYears : byYear(kind ? dated.filter((ch) => ch.category === kind) : period.items);
+const years = feed ? firstYears : byYear(kind ? dated.filter((ch) => ch.category === kind) : tag ? dated.filter((ch) => ch.tags.some((t) => t.key === tag)) : period.items);
 const items = years.flatMap((y) => y.items);
 const kindCount = (key) => dated.filter((ch) => ch.category === key).length;
+// the tags in use, most used first
+const tagCounts = Object.entries(CHANGE_TAGS)
+  .map(([key, t]) => ({ key, ...t, n: dated.filter((ch) => ch.tags.some((x) => x.key === key)).length }))
+  .filter((t) => t.n > 0)
+  .sort((x, y) => y.n - x.n || x.label.localeCompare(y.label));
 // every year with entries, newest first, with its counts: [year, all, moved a score]
 const yearIndex = JSON.stringify(historyYears.map((y) => [y.year, y.items.length, y.items.filter((ch) => ch.score).length]));
 // Figures for the filters and the lists of most and fewest entries. The same on every page.
@@ -48,16 +55,52 @@ const all = feed ? dated.length : items.length;
 const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
 ---
 <div class="hist">
-<HistoryChart current={period} />
-
-<nav class="hist-kinds" aria-label="Filter by kind of event">
-  <a href={`${base}history/`} aria-current={kind ? undefined : "true"}>All kinds</a>
-  {Object.entries(CHANGE_CATEGORIES).map(([key, k]) => (
-    <a href={`${base}history/kind/${key}/`} title={k.help} aria-current={key === kind ? "page" : undefined}>
-      <Icon name={k.icon} class="ico" aria-hidden="true" /> {k.label} <small>{kindCount(key)}</small>
-    </a>
-  ))}
+<nav class="hist-filter" aria-label="Filter the history">
+  <div class="hf-row">
+    <span class="hf-label">Kind</span>
+    <div class="hist-kinds">
+      <a href={`${base}history/`} aria-current={kind || tag ? undefined : "true"}>All</a>
+      {Object.entries(CHANGE_CATEGORIES).map(([key, k]) => (
+        <a class="has-tip" href={`${base}history/kind/${key}/`} aria-current={key === kind ? "page" : undefined} aria-describedby={`tip-kind-${key}`}>
+          <Icon name={k.icon} class="ico" aria-hidden="true" /> {k.label} <small>{kindCount(key)}</small>
+          <span class="hist-tip" role="tooltip" id={`tip-kind-${key}`}>{k.includes}.</span>
+        </a>
+      ))}
+    </div>
+  </div>
+  {tagCounts.length > 0 && (
+    <div class="hf-row">
+      <span class="hf-label">Tag</span>
+      <div>
+      {/* closed until asked for, except on a tag's own page */}
+      <button type="button" class="hf-toggle" aria-expanded={tag ? "true" : "false"} aria-controls="histTags" data-show={`Show all ${tagCounts.length}`}>{tag ? "Hide" : `Show all ${tagCounts.length}`}</button>
+      <div class="hist-tags" id="histTags" hidden={!tag}>
+        {tagCounts.map((t) => (
+          <a class="has-tip" href={`${base}history/tag/${t.key}/`} aria-current={t.key === tag ? "page" : undefined} aria-describedby={`tip-tag-${t.key}`}>
+            {t.label} <small>{t.n}</small>
+            <span class="hist-tip" role="tooltip" id={`tip-tag-${t.key}`}>{t.help}.</span>
+          </a>
+        ))}
+      </div>
+      </div>
+    </div>
+  )}
+  <div class="hf-row">
+    <span class="hf-label">Country</span>
+    <div>
+      <button type="button" class="hf-toggle" aria-expanded="false" aria-controls="histCountry" data-show="Choose a country">Choose a country</button>
+      {/* a country's history lives on its profile, with the same filters for that country alone */}
+      <div id="histCountry" class="hist-country" hidden>
+        <select aria-label="A country's history" data-history-country>
+          <option value="">Choose…</option>
+          {[...perPlace].sort((x, y) => x[0].name.localeCompare(y[0].name)).map(([c, n]) => <option value={`${base}country/${c.slug}/#history`}>{c.flag} {c.name} · {n}</option>)}
+        </select>
+      </div>
+    </div>
+  </div>
 </nav>
+
+<HistoryChart current={period} only={kind || tag ? new Set(items.map((ch) => ch.id)) : undefined} label={kind ? CHANGE_CATEGORIES[kind].label : tag ? CHANGE_TAGS[tag].label : undefined} />
 
 <div class="hist-tools">
   <div class="hist-order" role="group" aria-label="Order of the entries">
@@ -72,7 +115,7 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
 </div>
 
 {feed && <button type="button" class="hist-more hist-more-top" hidden>Show earlier in this order</button>}
-<div class="hist-years" data-order="newest" data-only="all" data-feed={feed ? "" : undefined} data-years={feed ? yearIndex : undefined} data-fragments={feed ? `${base}fragments/history/` : undefined}>
+<div class="hist-years" data-order="newest" data-start-oldest={period ? "" : undefined} data-only="all" data-feed={feed ? "" : undefined} data-years={feed ? yearIndex : undefined} data-fragments={feed ? `${base}fragments/history/` : undefined}>
   <HistoryYears years={years} />
 </div>
 {feed && <>
@@ -110,14 +153,56 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
   // round. The choices are kept in this browser, and ?order=oldest and ?only=scored ask for them.
   // On the continuous list (data-feed) the years are loaded as needed instead: a year at a time
   // from fragments, at the bottom as the reader nears it, and at the top on request after a jump.
+  // Tooltips of the kinds and tags open to the left when they would run off the right edge.
+  for (const link of document.querySelectorAll(".hist-kinds .has-tip, .hist-tags .has-tip")) {
+    const place = () => {
+      const tip = link.querySelector(".hist-tip");
+      tip.classList.remove("flip");
+      if (tip.getBoundingClientRect().right > document.documentElement.clientWidth - 16) tip.classList.add("flip");
+    };
+    link.addEventListener("mouseenter", place);
+    link.addEventListener("focus", place);
+  }
+
   const box = document.querySelector(".hist-years");
+
+  // the tags and the country picker open and close under their toggles
+  for (const toggle of document.querySelectorAll(".hist-filter .hf-toggle")) toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.textContent = open ? "Hide" : toggle.dataset.show;
+    document.getElementById(toggle.getAttribute("aria-controls")).hidden = !open;
+  });
+  // choosing a country opens its history
+  document.querySelector("[data-history-country]")?.addEventListener("change", (e) => { if (e.target.value) location.href = e.target.value; });
+
+  // In a year divided into months, the month index beside it marks the month being read: the last
+  // one whose start has passed the top of the screen.
+  let spying = false;
+  addEventListener("scroll", () => {
+    if (spying) return;
+    spying = true;
+    requestAnimationFrame(() => {
+      spying = false;
+      for (const year of box.querySelectorAll(".hist-year")) {
+        const nav = year.querySelector(".hist-mnav");
+        if (!nav) continue;
+        const r = year.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) continue;
+        const months = [...year.querySelectorAll(".hm")].filter((m) => m.offsetParent);
+        const current = months.filter((m) => m.getBoundingClientRect().top <= 160).at(-1) ?? months[0];
+        for (const a of nav.querySelectorAll("a")) a.toggleAttribute("aria-current", a.hash === `#${current?.id}`);
+      }
+    });
+  }, { passive: true });
   const params = new URLSearchParams(location.search);
   const remember = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
   const recall = (key) => { try { return localStorage.getItem(key); } catch { return null; } };
   const orderButtons = [...document.querySelectorAll(".hist-order button[data-order]")];
   const onlyButtons = [...document.querySelectorAll(".hist-order button[data-only]")];
   const press = (buttons, key, value) => { for (const b of buttons) b.setAttribute("aria-pressed", String(b.dataset[key] === value)); };
-  const flip = (section) => { const ol = section.querySelector("ol"); ol.append(...[...ol.children].reverse()); };
+  // turn a year round: its months, and the entries within each month
+  const flip = (section) => { for (const ol of section.querySelectorAll("ol")) ol.append(...[...ol.children].reverse()); };
 
   function setOnly(value) {
     box.dataset.only = value;
@@ -140,7 +225,7 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
     press(orderButtons, "order", order);
     history.replaceState(null, "", location.pathname);
     feed.start(null);
-    document.querySelector(".hist-kinds").scrollIntoView({ block: "start" });
+    document.querySelector(".hist-filter").scrollIntoView({ block: "start" });
   });
   if ((params.get("only") ?? recall("histOnly")) === "scored") setOnly("scored");
   for (const b of onlyButtons) b.addEventListener("click", () => {
@@ -150,7 +235,8 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
   });
 
   const feed = box.dataset.feed !== undefined ? makeFeed() : null;
-  let order = params.get("order") ?? recall("histOrder") ?? "newest";
+  // a decade's own page opens oldest first, to be read as it happened, unless the address says otherwise
+  let order = params.get("order") ?? (box.dataset.startOldest !== undefined ? "oldest" : recall("histOrder")) ?? "newest";
   if (order !== "oldest") order = "newest";
   press(orderButtons, "order", order);
   if (feed) {
@@ -161,18 +247,39 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
     box.querySelectorAll(".hist-year").forEach(flip);
     box.dataset.order = "oldest";
   }
+  // the order in the address, so that a link or a reload keeps it
+  const orderInUrl = () => {
+    const url = new URL(location.href);
+    if (order === "oldest") url.searchParams.set("order", "oldest"); else url.searchParams.delete("order");
+    history.replaceState(null, "", url);
+  };
+  // on a list that is complete in the page, turning it round is enough
+  function turn(value) {
+    if (value === order) return;
+    order = value;
+    press(orderButtons, "order", order);
+    box.append(...[...box.children].reverse());
+    box.querySelectorAll(".hist-year").forEach(flip);
+    box.dataset.order = order;
+  }
   for (const b of orderButtons) b.addEventListener("click", () => {
     if (b.dataset.order === order) return;
-    order = b.dataset.order;
-    remember("histOrder", order);
-    press(orderButtons, "order", order);
-    if (feed) feed.start(null);
-    else {
-      box.append(...[...box.children].reverse());
-      box.querySelectorAll(".hist-year").forEach(flip);
-      box.dataset.order = order;
-    }
+    remember("histOrder", b.dataset.order);
+    if (feed) {
+      order = b.dataset.order;
+      press(orderButtons, "order", order);
+      orderInUrl();
+      feed.start(null);
+    } else turn(b.dataset.order);
   });
+  // Opening a decade from the chart reads it as it happened: the list turns to oldest first and
+  // starts at the decade's first year. On the continuous list the feed does that (see makeFeed).
+  if (!feed) document.querySelectorAll(".hy-bars a[href]").forEach((a) => a.addEventListener("click", (e) => {
+    e.preventDefault();
+    turn("oldest");
+    const first = [...box.querySelectorAll(".hist-year")].find((s) => +s.dataset.year >= +a.dataset.from && +s.dataset.year <= +a.dataset.to);
+    if (first) { history.replaceState(null, "", `#${first.id}`); first.scrollIntoView({ block: "start" }); }
+  }));
 
   function fill() { feed?.fill(); }
 
@@ -270,7 +377,10 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
     // the chart's decades and the years' own links jump within the list instead of leaving it
     document.querySelectorAll(".hy-bars a").forEach((a) => a.addEventListener("click", (e) => {
       e.preventDefault();
-      start(order === "newest" ? +a.dataset.to : +a.dataset.from);
+      order = "oldest";
+      press(orderButtons, "order", order);
+      orderInUrl();
+      start(+a.dataset.from);
     }));
     box.addEventListener("click", (e) => {
       const link = e.target.closest(".hist-year h2 a");

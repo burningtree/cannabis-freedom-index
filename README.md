@@ -53,6 +53,7 @@ Built with [Astro](https://astro.build). Pushing to `main` deploys to GitHub Pag
 | `survey/` | The State of Cannabis questionnaire (`2026.yaml`) and its published, counted results |
 | `src/` | The website: pages, components, styles |
 | `docs/DATA-MAINTENANCE.md` | How the country profiles and the history are checked and extended, and what is still open |
+| `docs/WRITING.md` | How to write history titles, descriptions and articles so they read well |
 | `docs/CULTURE.md` | What belongs in each part of the cultural atlas and how to write an entry |
 | `docs/BOOKS.md`, `docs/books.yaml` | How the research books are read and cited, and the catalogue of what has been read; the books themselves sit in `books/`, which is not in Git |
 | `docs/research/` | Dated research notes behind new entries and changes |

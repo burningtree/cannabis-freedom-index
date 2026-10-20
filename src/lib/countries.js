@@ -1,9 +1,10 @@
 // Loads the YAML data (see /countries and /segments.yaml) and derives everything the
 // pages need: index scores, ranks, averages. Runs once at build time.
 import { getCollection } from "astro:content";
-import { CHANGE_CATEGORIES, SEGMENT_IDS, STATUS_SECTIONS } from "./segment-ids.js";
+import { CHANGE_CATEGORIES, CHANGE_TAGS, SEGMENT_IDS, STATUS_SECTIONS } from "./segment-ids.js";
 import { sourceTuple } from "./sources.js";
-export { CHANGE_CATEGORIES };
+import { datasetsOf } from "./datasets.js";
+export { CHANGE_CATEGORIES, CHANGE_TAGS };
 
 export const DATA_SNAPSHOT = "2026";
 export const REC_LABEL = { legal: "Legal", partial: "Partly legal / tolerated", decrim: "Decriminalized", illegal: "Illegal", death: "Death penalty" };
@@ -49,6 +50,20 @@ export const segmentPoints = (segIndex, value) => (SEGMENTS[segIndex].weight * v
 export const segmentMax = (segIndex) => (SEGMENTS[segIndex].weight / totalWeight) * 100;
 const scoreOf = (s) => s.reduce((a, v, i) => a + segmentPoints(i, v), 0);
 const scoreList = (scores) => SEGMENTS.map((seg) => scores[seg.id]);
+// the age band a cannabis-use figure is for: the survey's own, or 15–64 where none is given
+export const useAges = (use) => (use.ages ? use.ages.replace("-", "–") : "15–64");
+// cannabis use comes from its dataset, which must have a row for every place
+const useOf = (slug) => {
+  const use = datasetsOf(slug).cannabis_use;
+  if (!use) throw new Error(`datasets/unodc-cannabis-use.csv: no row for "${slug}"`);
+  return use;
+};
+// population by year, from datasets/population.csv, oldest first; also needed for every place
+const populationOf = (slug) => {
+  const rows = datasetsOf(slug).population;
+  if (!rows?.length) throw new Error(`datasets/population.csv: no rows for "${slug}"`);
+  return rows;
+};
 const flagOf = (id) => String.fromCodePoint(...[...id].map((ch) => 0x1f1a5 + ch.charCodeAt(0)));
 
 // ── Countries ─────────────────────────────────────────
@@ -70,9 +85,10 @@ const everyPlace = (await getCollection("countries"))
       territory: data.disputed ? { kind: "Disputed territory", label: "disputed territory", tag: "disputed", note: data.disputed.note, of: data.disputed.part_of }
         : data.dependency ? { kind: data.dependency.kind, label: data.dependency.kind, tag: "dependency", note: data.dependency.note, of: data.dependency.of } : null,
       num: data.iso_numeric ?? null,
-      populationByYear: Object.entries(data.population).map(([y, v]) => [+y, v]).sort((a, b) => a[0] - b[0]),
-      population: data.population[Object.keys(data.population).sort().at(-1)], // the latest figure
-      use: data.cannabis_use, // { prevalence, year?, estimate?, users }
+      populationByYear: populationOf(slug).map((r) => [r.year, r.population]),
+      population: populationOf(slug).at(-1).population, // the latest figure
+      use: useOf(slug), // { prevalence, year?, estimate?, users }, from datasets/unodc-cannabis-use.csv
+      datasets: datasetsOf(slug), // figures from the outside datasets in /datasets, see datasets.js
       name: data.name,
       region: data.region,
       rec: REC_CODE[data.recreational],
@@ -142,12 +158,23 @@ export function subunitsOf(id) {
         worldRank: 1 + countries.filter((c) => c.raw > raw).length,
         seg: SEGMENTS.map((seg) => data.segments[seg.id]),          // six explanations, in SEGMENTS order
         sources: [...data.sources.map(pair), ...groupSources],      // the unit's own source first
+        use: data.use ? { ...data.use, source: pair(data.use.source) } : null, // past-year use from its country's survey
       };
     })
     .sort((a, b) => b.raw - a.raw || a.name.localeCompare(b.name));
   units.forEach((x, i) => (x.rank = i + 1));
   return { label: meta.label, plural: meta.plural, intro: meta.intro, sources: groupSources, units };
 }
+
+// A federation's own score is an estimate for the country as a whole, not an average of its states
+// or provinces. Wherever it stands alone it says so, with the range of the parts:
+// "National estimate; states 12–80". Null for every other country.
+export const estimateNote = (c) => {
+  const group = c?.subunitMeta ? subunitsOf(c.id) : null;
+  if (!group?.units.length) return null;
+  const scores = group.units.map((x) => x.score);
+  return `National estimate; ${group.plural} ${Math.min(...scores)}–${Math.max(...scores)}`;
+};
 
 // Where no first law is known for a country, its first restriction is an estimate: it is assumed
 // to have come by default between the 1925 Geneva convention and the 1961 Single Convention.
@@ -164,6 +191,15 @@ export const CONFIDENCE = {
 // of the same country's next change, or the country's current scores if there is none.
 // Where a date falls on a time axis: the middle of the month or year when that is all we know.
 // Entries are ordered by this everywhere, so a bare year never sorts ahead of where it is drawn.
+// A history entry's state, province or territory, looked up once per country.
+const unitGroups = new Map();
+function unitOf(country, id, entry) {
+  if (!unitGroups.has(country?.id)) unitGroups.set(country?.id, country ? subunitsOf(country.id) : null);
+  const group = unitGroups.get(country?.id);
+  const unit = group?.units.find((x) => x.id === id);
+  if (!unit) throw new Error(`changes.yaml: "${entry}" names subunit "${id}", which ${country?.name ?? "its country"} does not have`);
+  return { id: unit.id, name: unit.name, label: group.label, url: `country/${country.slug}/${unit.id}/` };
+}
 export const dateTime = (iso) => Date.parse(iso.length === 4 ? `${iso}-07-01` : iso.length === 7 ? `${iso}-15` : iso);
 const changeEntries = (await getCollection("changes")).map(({ data }) => data).sort((a, b) => dateTime(a.date) - dateTime(b.date) || a.id.localeCompare(b.id));
 export const changes = changeEntries
@@ -172,7 +208,10 @@ export const changes = changeEntries
     if (data.country && !country) throw new Error(`changes.yaml: "${data.id}" refers to unknown country "${data.country}"`);
     // context only (a treaty, report or ruling): part of the history, but it moves no score
     const kind = CHANGE_CATEGORIES[data.category]; // { emoji, label, help }
-    if (!data.before) return { ...data, kind, country, place: country ?? { flag: "🌐", name: "International" }, sources: data.sources.map(pair), source: pair(data.sources[0]), confidence: CONFIDENCE[data.estimate ? "estimated" : data.checked ? "checked" : "unchecked"], score: null, segments: [] };
+    const tags = (data.tags ?? []).map((key) => ({ key, ...CHANGE_TAGS[key] })); // { key, label, help }
+    // the state, province or territory it is mainly about: { id, name, label, url } or null
+    const unit = data.subunit ? unitOf(country, data.subunit, data.id) : null;
+    if (!data.before) return { ...data, kind, tags, unit, country, place: country ?? { flag: "🌐", name: "International" }, sources: data.sources.map(pair), source: pair(data.sources[0]), confidence: CONFIDENCE[data.estimate ? "estimated" : data.checked ? "checked" : "unchecked"], score: null, segments: [] };
     const next = changeEntries.slice(i + 1).find((x) => x.country === data.country && x.before);
     const before = scoreList(data.before);
     const after = next ? scoreList(next.before) : country.s;
@@ -180,6 +219,8 @@ export const changes = changeEntries
     return {
       ...data,
       kind,
+      tags,
+      unit,
       window: data.estimate ? data.window ?? ESTIMATE_WINDOW : null, // the years an estimate is spread over
       country,
       place: country,

@@ -40,7 +40,13 @@ const ids = fs.readdirSync("countries").map((f) => f.replace(".yaml", ""));
 const country = Object.fromEntries(ids.map((id) => [id, y.load(fs.readFileSync(file(id), "utf8"))]));
 const total = (s) => segs.reduce((sum, seg) => sum + (s[seg.id] * seg.weight) / 10, 0);
 const T = (d) => Date.parse(d.length === 4 ? d + "-07-01" : d.length === 7 ? d + "-15" : d);
-const pop = (id) => { const p = country[id]?.population; return p ? p[Object.keys(p).sort().at(-1)] : 0; };
+// the latest population of each country, from datasets/population.csv (country,year,population)
+const latestPop = {};
+for (const line of fs.readFileSync("datasets/population.csv", "utf8").trim().split("\n").slice(1)) {
+  const [id, year, n] = line.split(",");
+  if (!latestPop[id] || +year > latestPop[id][0]) latestPop[id] = [+year, +n];
+}
+const pop = (id) => latestPop[id]?.[1] ?? 0;
 
 // Score steps, and each country's first and latest scored entry.
 const step = {}, first = new Set(), latest = new Set();
@@ -86,7 +92,7 @@ for (const g of Object.values(groups)) {
   for (const e of g) if (e !== main) copyOf[e.id] = main.id;
 }
 
-const KIND = { legalisation: 20, ban: 15, death: 15, easing: 12, tightening: 10, medical: 8, debate: 6, other: 4, international: 2 };
+const KIND = { legalisation: 20, ban: 15, death: 15, easing: 12, tightening: 10, medical: 8, debate: 6, hemp: 5, enforcement: 4, culture: 4, other: 4, international: 2 };
 const rows = changes.map((e) => {
   const why = [];
   let pts = 0;

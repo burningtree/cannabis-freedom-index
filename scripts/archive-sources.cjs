@@ -74,11 +74,26 @@ async function politeFetch(address, options) {
   }
 }
 // the newest copy the Internet Archive holds, or null
+// (from the CDX index: the availability API answers 429 far sooner, logged in or not)
 async function lookup(url) {
-  const r = await politeFetch(`https://archive.org/wayback/available?url=${encodeURIComponent(url)}`);
-  if (!r.ok) throw new Error(`availability ${r.status}`);
-  const snap = (await r.json()).archived_snapshots?.closest;
-  return snap?.available && String(snap.status).startsWith("2") ? snap.url.replace(/^http:/, "https:") : null;
+  const q = new URLSearchParams({ url, output: "json", filter: "statuscode:2..", limit: "-1", fl: "timestamp,original" });
+  const r = await politeFetch(`https://web.archive.org/cdx/search/cdx?${q}`, KEYS ? { headers: { Authorization: KEYS } } : undefined);
+  if (!r.ok) throw new Error(`cdx ${r.status}`);
+  const text = await r.text();
+  const [, row] = text.trim() ? JSON.parse(text) : [];
+  return row ? `https://web.archive.org/web/${row[0]}/${row[1]}` : null;
+}
+
+// A refusal because the Archive captured the page recently ("The same snapshot had been made 130
+// hours, 9 minutes ago") means a copy exists: take it from the index, or, while the index has not
+// caught up, address it by the time the message gives (the Wayback Machine opens the nearest copy).
+async function recentCopy(url, message) {
+  const m = /same snapshot had been made (?:(\d+) hours?)?,? ?(?:(\d+) minutes?)? ago/i.exec(message || "");
+  if (!m) return null;
+  const found = await lookup(url).catch(() => null);
+  if (found) return found;
+  const at = new Date(Date.now() - ((+m[1] || 0) * 60 + (+m[2] || 0)) * 60000);
+  return `https://web.archive.org/web/${at.toISOString().replace(/\D/g, "").slice(0, 14)}/${url}`;
 }
 
 // logged-in Save Page Now: start a capture, then follow it until it ends; the new copy or null
@@ -91,15 +106,17 @@ async function saveLoggedIn(url) {
   });
   const job = await r.json().catch(() => ({}));
   if (!job.job_id) {
-    console.log(`  save refused ${url}: ${job.message || r.status}`);
-    return null;
+    const recent = await recentCopy(url, job.message);
+    console.log(`  save refused ${url}: ${job.message || r.status}${recent ? " (recorded the existing copy)" : ""}`);
+    return recent;
   }
   for (let i = 0; i < 30; i++) {
     await sleep(5000);
     const st = await (await politeFetch(`https://web.archive.org/save/status/${job.job_id}`, { headers })).json();
     if (st.status === "pending") continue;
     console.log(`  save ${st.status} ${url}${st.message ? ": " + st.message : ""}`);
-    return st.status === "success" && st.timestamp ? `https://web.archive.org/web/${st.timestamp}/${st.original_url || url}` : null;
+    if (st.status === "success" && st.timestamp) return `https://web.archive.org/web/${st.timestamp}/${st.original_url || url}`;
+    return recentCopy(url, st.message);
   }
   console.log(`  save still pending after 150 s ${url}`);
   return null;

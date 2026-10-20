@@ -1,11 +1,15 @@
 ---
-// The History overview in one plot: one bar per decade counting the entries, the part that moved a
-// score drawn darker, and over them the world average score since 1860 as a line. The score is
-// read on the left axis, the number of entries on the right. Each bar links to its decade's page; on the continuous list at /history/ a script jumps
-// to that decade in place instead. `current` marks the decade being shown.
+// The History overview in one low strip: one bar per decade counting the entries, with the count
+// over it and the part that moved a score drawn lighter, and over them the world average score
+// since 1860 as a line labelled at its two ends. No axes or grid. Each bar links to its decade's
+// page; on the continuous list at /history/ a script jumps to that decade in place instead.
+// `current` marks the decade being shown. With `only` (a set of entry ids) and `label`, the bars
+// count only those entries, as on the page of a kind or a tag, and each bar jumps to its decade in
+// the list below.
 import { averageHistory, historyPeriods, HISTORY_FROM, dateTime, lastUpdated } from "../lib/countries.js";
 
-const { current } = Astro.props;
+const { current, only, label } = Astro.props;
+const inView = (p) => (only ? p.items.filter((ch) => only.has(ch.id)) : p.items);
 const base = import.meta.env.BASE_URL;
 const num = (n) => n.toLocaleString("en-GB");
 
@@ -23,50 +27,59 @@ const values = points.flatMap((p) => [p.before, p.after]);
 const yMin = Math.floor(Math.min(...values) / 10) * 10;
 const yMax = Math.ceil(Math.max(...values) / 10) * 10;
 const y = (v) => (1 - (v - yMin) / (yMax - yMin)) * 100;
-const ticks = Array.from({ length: (yMax - yMin) / 10 + 1 }, (_, i) => yMin + i * 10);
 const line = `M${x(HISTORY_FROM)},${y(start)}` + points.map((p) => `H${x(yearOf(p.date))}V${y(p.after)}`).join("") + `H${x(yearOf(lastUpdated))}`;
 
-const most = Math.max(...historyPeriods.map((p) => p.items.length));
-// the right axis: round steps for the number of entries
-const countStep = most > 400 ? 100 : most > 200 ? 50 : most > 80 ? 20 : 10;
-const countMax = Math.ceil(most / countStep) * countStep;
-const countTicks = Array.from({ length: countMax / countStep + 1 }, (_, i) => i * countStep);
+// the world average as it stood at a given moment, for the decades' tooltips
+const scoreAt = (yearFraction) => points.filter((p) => yearOf(p.date) < yearFraction).at(-1)?.after ?? start;
+
+// the tallest bar leaves room above it for its count
+const most = Math.max(1, ...historyPeriods.map((p) => inView(p).length));
+const countMax = most * 1.15;
 const bars = [...historyPeriods].reverse().map((p) => {
   const slot = p.from < HISTORY_FROM ? X0 : p.from;
-  const scored = p.items.filter((ch) => ch.score).length;
+  const items = inView(p);
+  const scored = items.filter((ch) => ch.score).length;
+  // on a filtered page the bar leads to the decade's newest year in the list, if it has any entries
+  const newest = items.find((ch) => !ch.estimate);
+  const href = only ? (newest ? `#y${newest.date.slice(0, 4)}` : undefined) : `${base}history/period/${p.slug}/`;
+  const from = Math.max(p.from, HISTORY_FROM);
   return {
-    p, scored, all: p.items.length,
+    p, scored, all: items.length, href,
+    // the world average at the start and end of the decade (the slot before 1860 has no line)
+    scores: p.from < HISTORY_FROM ? null : [scoreAt(from), scoreAt(Math.min(p.to + 1, yearOf(lastUpdated)))],
     left: x(slot), width: x(slot + 10) - x(slot),
-    height: (p.items.length / countMax) * 100,
-    title: `${p.label}: ${num(p.items.length)} ${p.items.length === 1 ? "entry" : "entries"}, ${num(scored)} moved a score`,
+    height: (items.length / countMax) * 100,
+    title: `${p.label}: ${num(items.length)} ${items.length === 1 ? "entry" : "entries"}, ${num(scored)} moved a score`,
   };
 });
 ---
 <section class="hy" aria-labelledby="hyTitle">
   <div class="hy-head">
-    <h2 id="hyTitle">World average score <span>and entries per decade</span></h2>
+    <h2 id="hyTitle">World average score <span>and {label ? <>{label} entries</> : "entries"} per decade</span></h2>
     <p class="hy-now"><b>{now.toFixed(1)}</b> <span>today, from {start.toFixed(1)} in {HISTORY_FROM}</span></p>
   </div>
-  <div class="hy-chart">
-    <div class="hy-y" aria-hidden="true">{ticks.map((t) => <span style={`top:${y(t)}%`}>{t}</span>)}</div>
-    <div class="hy-plot">
-      <nav class="hy-bars" aria-label="Decades">
-        {bars.map((b) => (
-          <a href={`${base}history/period/${b.p.slug}/`} data-from={b.p.from} data-to={b.p.to} title={b.title} aria-label={b.title}
-            aria-current={b.p === current ? "page" : undefined} style={`left:${b.left}%;width:${b.width}%`}>
-            <span class="hy-n">{b.all}</span>
-            <i style={`height:${Math.max(1, b.height)}%`}><i style={`height:${b.all ? (b.scored / b.all) * 100 : 0}%`}></i></i>
-            <span class="hy-label">{b.p.short}</span>
-          </a>
-        ))}
-      </nav>
-      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        {ticks.map((t) => <line class="grid" x1="0" x2="100" y1={y(t)} y2={y(t)} />)}
-        <path class="halo" d={line} />
-        <path class="line" d={line} />
-      </svg>
-    </div>
-    <div class="hy-y2" aria-hidden="true">{countTicks.map((t) => <span style={`top:${100 - (t / countMax) * 100}%`}>{num(t)}</span>)}</div>
+  <div class="hy-plot">
+    <nav class="hy-bars" aria-label="Decades">
+      {bars.map((b, i) => (
+        <a href={b.href} data-from={b.p.from} data-to={b.p.to} aria-label={b.title}
+          aria-current={b.p === current ? "page" : undefined} style={`left:${b.left}%;width:${b.width}%`}>
+          <span class="hy-n">{b.all}</span>
+          <i style={`height:${Math.max(1, b.height)}%`}><i style={`height:${b.all ? (b.scored / b.all) * 100 : 0}%`}></i></i>
+          <span class="hy-label">{b.p.short}</span>
+          <span class={`hy-tip${i < 3 ? " at-start" : i >= bars.length - 3 ? " at-end" : ""}`} style={`bottom:calc(${Math.max(1, b.height)}% + 22px)`} aria-hidden="true">
+            <b>{b.p.label}</b>
+            <span>{num(b.all)} {label ? `${label} ` : ""}{b.all === 1 ? "entry" : "entries"}<em> · {num(b.scored)} moved a score</em></span>
+            {b.scores && <span>World average {b.scores[0].toFixed(1)} → {b.scores[1].toFixed(1)}</span>}
+            {b.href && <small>{only ? "Click to jump to this decade" : "Click to open this decade"}</small>}
+          </span>
+        </a>
+      ))}
+    </nav>
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <path class="line" d={line} />
+    </svg>
+    <span class="hy-end hy-start" style={`left:${x(HISTORY_FROM)}%;top:${y(start)}%`} aria-hidden="true">{start.toFixed(0)}</span>
+    <span class="hy-end hy-last" style={`left:${x(yearOf(lastUpdated))}%;top:${y(now)}%`} aria-hidden="true">{now.toFixed(1)}</span>
   </div>
-  <p class="hy-key"><span class="k-line"></span> World average score, every country counted the same (left) <span class="k-scored"></span> Entries that moved a score <span class="k-context"></span> Context only (right)</p>
+  <p class="hy-key"><span class="k-line"></span> World average score, every country counted the same <span class="k-scored"></span> Entries that moved a score <span class="k-context"></span> Context only</p>
 </section>

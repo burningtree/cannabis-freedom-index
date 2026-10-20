@@ -467,6 +467,10 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 
 /* ── States, provinces and territories ──────────────── */
 .sub-select { margin: 14px 0 18px; flex-wrap: wrap; }
+.hc-est, .ev-est { margin: 6px 0 0; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.d-estimate { margin: 0 0 2px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.d-head .sub a { color: inherit; border-bottom: 1px solid var(--muted); }
+.d-head .sub a:hover { color: var(--text); }
 .d-unit { margin: 0 0 14px; }
 .d-unit h2 { font-size: clamp(24px, 3vw, 32px); line-height: 1.1; margin: 0 0 2px; }
 .d-unit .sub { margin: 0; color: var(--muted); font-size: 13.5px; }
@@ -564,6 +568,34 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 
 /* ── Changes on a country page ──────────────────────── */
 .c-changes { margin-top: 30px; }
+/* a country's history: filters by kind and tag, then the decade strip, both for this country alone */
+.ch-toggle { margin-top: 12px; }
+.ch-more { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+.ch-more a { color: var(--text-2); border-bottom: 1px solid var(--muted); }
+.he-unit { margin-right: 10px; color: var(--text-2); }
+.ch-active { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 14px 0 4px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.ch-active[hidden] { display: none; }
+.ch-chip { padding: 3px 8px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-2); color: var(--text); font: inherit; cursor: pointer; }
+.ch-chip:hover { border-color: var(--text-2); }
+.ch-clear { margin-left: auto; padding: 0 0 2px; border: 0; border-bottom: 1px solid var(--muted); background: none; color: var(--text-2); font: inherit; cursor: pointer; }
+.ch-clear:hover { color: var(--text); border-bottom-color: var(--text); }
+.ch-filter[hidden] { display: none; }
+.ch-filter { margin: 12px 0 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.ch-frow { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 4px 12px; align-items: baseline; padding: 10px 0; }
+.ch-frow + .ch-frow { border-top: 1px dashed var(--border); }
+.ch-chips { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.ch-chips button { padding: 0 0 2px; border: 0; border-bottom: 1px solid transparent; background: none; color: var(--muted); font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; cursor: pointer; }
+.ch-chips button:hover { color: var(--text); }
+.ch-chips button[aria-pressed="true"] { color: var(--text); border-bottom-color: var(--text); }
+.ch-chips small { font-size: inherit; opacity: .7; }
+.ch-chips .ico { width: 1.1em; height: 1.1em; vertical-align: -2px; }
+.ch-chart.hy { margin-top: 28px; margin-bottom: 8px; }
+.ch-chart .hy-plot { height: 110px; }
+.ch-chart-h { margin: 0; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.ch-chart-h span { color: var(--muted); }
+.ch-chart .hy-now b { font-size: 20px; }
+.hy-bars a[data-empty], .hy-bars a:not([href]) { cursor: default; }
+@media (max-width: 600px) { .ch-frow { grid-template-columns: minmax(0, 1fr); } }
 .c-changes .chl-list { margin-bottom: 8px; }
 .c-changes .chl-card h3 { font-size: 16.5px; }
 .c-changes .chl-text { font-size: 14px; }
@@ -1027,6 +1059,54 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .c-use { grid-template-columns: 1fr 1fr; padding: 14px 0; margin-top: 0; }
 .c-use dt { font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
 .c-use dd { font: 400 22px/1.15 var(--mono); letter-spacing: -.04em; }
+/* where a figure comes from: an "i" in the block's top right corner, its note below it
+   (SourceTip.astro). The padding on the note keeps the pointer inside on its way down. */
+.c-use, .cd-block { position: relative; }
+.src-tip { position: absolute; top: 12px; right: 0; z-index: 4; }
+.src-tip-btn { display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; background: none; color: var(--muted); cursor: pointer; border-radius: var(--r); }
+.src-tip-btn svg { width: 16px; height: 16px; }
+.src-tip-btn:hover, .src-tip.open .src-tip-btn, .src-tip-btn:focus-visible { color: var(--text); }
+.src-tip-pop { display: none; position: absolute; top: 100%; right: 0; width: min(300px, calc(100vw - 40px)); padding: 10px 12px; margin-top: 6px; border: 1px solid var(--border); border-radius: var(--r); background: var(--surface); box-shadow: var(--shadow); color: var(--muted); font-size: 12px; line-height: 1.5; text-align: left; }
+.src-tip-pop::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 8px; }
+.src-tip-pop b { display: block; margin-bottom: 3px; color: var(--text); font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.src-tip-pop a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
+.src-tip-pop a:hover { color: var(--text); text-decoration-color: currentColor; }
+@media (hover: hover) { .src-tip:hover .src-tip-pop { display: block; } }
+.src-tip.open .src-tip-pop, .src-tip:has(.src-tip-btn:focus-visible) .src-tip-pop { display: block; }
+.cd-block h3 { padding-right: 32px; }
+.cd-block p.cd-more { margin-top: 6px; font-size: 12px; }
+.cd-more a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
+.cd-more a:hover { color: var(--text); text-decoration-color: currentColor; }
+/* other datasets in the rail (CountryDatasets.astro): one block per dataset */
+.c-data h2 { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 0; padding-bottom: 4px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.c-data h2 span { color: var(--muted); opacity: .8; }
+.c-data h2 a { color: var(--text-2); }
+.c-data h2 a:hover { color: var(--text); }
+/* the Datasets tab (CountryDatasetTab.astro): a ruled list, one row per dataset. The name, a
+   line of figures and where it comes from on the left; one headline figure on the right. */
+.ds-list { margin: 8px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--text); }
+.ds-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); scroll-margin-top: calc(var(--hdr, 57px) + 52px); }
+.ds-main { min-width: 0; }
+.ds-row h3 { margin: 0; font: 400 20px/1.2 var(--display); }
+.ds-details { margin: 4px 0 0; color: var(--text-2); font-size: 13.5px; line-height: 1.5; }
+.ds-meta { margin: 6px 0 0; font: 400 10.5px/1.6 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.ds-meta a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
+.ds-meta a:hover { color: var(--text); text-decoration-color: currentColor; }
+.ds-headline { margin: 0; text-align: right; color: var(--muted); font-size: 13px; white-space: nowrap; }
+.ds-headline b { display: block; color: var(--text); font: 400 24px/1.1 var(--mono); letter-spacing: -.04em; }
+@media (max-width: 640px) { .ds-row { grid-template-columns: 1fr; } .ds-headline { order: -1; text-align: left; } .ds-headline b { display: inline; margin-right: 6px; font-size: 20px; } }
+.cd-block { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.cd-block h3 { margin: 0 0 8px; font: 400 18px/1.2 var(--display); }
+.cd-block p { margin: 8px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+.cd-block p.cd-big { margin: 0 0 10px; color: var(--text); font-size: 13.5px; }
+.cd-big b { font: 400 22px/1 var(--mono); letter-spacing: -.04em; margin-right: 4px; }
+.cd-stack { display: flex; height: 10px; overflow: hidden; border-radius: var(--r); background: var(--border); }
+.cd-stack i { display: block; height: 100%; }
+.cd-stack i + i { box-shadow: inset 1px 0 0 var(--bg); }
+.cd-key { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 8px 0 0; padding: 0; list-style: none; font-size: 12px; color: var(--muted); }
+.cd-key li { display: flex; align-items: center; gap: 6px; }
+.cd-key .sw { width: 10px; height: 10px; }
+.cd-key b { color: var(--text); font: 500 12px var(--mono); }
 /* the tabs over a country's right-hand side; they stay in reach while the panel scrolls */
 .c-main { scroll-margin-top: var(--hdr, 57px); }
 .drawer .c-main { scroll-margin-top: 0; }
@@ -1044,6 +1124,8 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 @media print { .c-tabs { display: none; } .c-panel[hidden] { display: block !important; } }
 .c-rail > * + * { margin-top: 22px; }
 .c-rail .c-chart { margin-top: 28px; }
+.c-rail .c-chart:first-child { margin-top: 0; }
+.c-rail .c-chart + .c-use { margin-top: 28px; }
 
 @media (min-width: 900px) {
   .country-page .country { display: grid; grid-template-columns: minmax(260px, 320px) minmax(0, 1fr); gap: 0 clamp(40px, 6vw, 96px); align-items: start; }
@@ -1090,46 +1172,58 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .hy-head h2 { margin: 0; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
 .hy-head h2 span { color: var(--muted); }
 .hy-now { margin: 0; display: flex; align-items: baseline; gap: 10px; color: var(--muted); font-size: 13px; }
-.hy-now b { font: 400 32px var(--display); color: var(--text); font-variant-numeric: tabular-nums; }
-.hy-chart { display: grid; grid-template-columns: 34px minmax(0, 1fr) 40px; grid-template-rows: 280px 28px; }
-.hy-y, .hy-y2 { position: relative; color: var(--muted); font: 400 10.5px var(--mono); font-variant-numeric: tabular-nums; }
-.hy-y span { position: absolute; right: 8px; transform: translateY(-50%); }
-.hy-y2 span { position: absolute; left: 8px; transform: translateY(-50%); }
-.hy-plot { position: relative; border-bottom: 1px solid var(--text-2); }
-.hy-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.hy-plot .grid { stroke: var(--border); stroke-width: 1; stroke-opacity: .7; vector-effect: non-scaling-stroke; }
-.hy-plot .halo { fill: none; stroke: var(--bg); stroke-width: 7; stroke-linejoin: round; stroke-opacity: .85; vector-effect: non-scaling-stroke; }
-.hy-plot .line { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.hy-now b { font: 400 24px var(--display); color: var(--text); font-variant-numeric: tabular-nums; }
+.hy-plot { position: relative; height: 150px; margin-bottom: 26px; border-bottom: 1px solid var(--border); }
+/* the score line at half strength, so the counts over the bars show through where it crosses them */
+.hy-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; opacity: .5; }
+.hy-plot .line { fill: none; stroke: var(--accent); stroke-width: 1.75; stroke-opacity: .85; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .hy-bars { position: absolute; inset: 0; }
-.hy-bars a { position: absolute; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; padding: 0 2px; color: var(--muted); }
-.hy-bars a > i { position: relative; display: flex; flex-direction: column; justify-content: flex-end; background: var(--border); }
+.hy-bars a { position: absolute; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; padding: 0 3px; color: var(--muted); }
+.hy-bars a > i { position: relative; display: flex; flex-direction: column; justify-content: flex-end; background: var(--border); border-radius: 3px 3px 0 0; overflow: hidden; }
 .hy-bars a > i > i { background: var(--muted); }
 .hy-n { font: 400 10.5px var(--mono); text-align: center; padding-bottom: 3px; font-variant-numeric: tabular-nums; }
 .hy-label { position: absolute; left: 0; right: 0; bottom: -21px; font: 400 10px var(--mono); text-align: center; white-space: nowrap; }
 .hy-bars a:hover, .hy-bars a[aria-current] { color: var(--text); }
+/* a decade's tooltip, over its bar */
+.hy-tip { position: absolute; z-index: 5; left: 50%; transform: translateX(-50%); display: none; flex-direction: column; gap: 3px; width: max-content; max-width: 240px; padding: 10px 12px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; box-shadow: var(--shadow); color: var(--text-2); font: 400 12.5px/1.4 Inter, sans-serif; text-align: left; pointer-events: none; }
+.hy-tip.at-start { left: 0; transform: none; }
+.hy-tip.at-end { left: auto; right: 0; transform: none; }
+.hy-tip b { font: 500 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text); }
+.hy-tip em { font-style: normal; color: var(--muted); }
+.hy-tip small { margin-top: 2px; font-size: 11px; color: var(--muted); }
+.hy-bars a:hover .hy-tip, .hy-bars a:focus-visible .hy-tip { display: flex; animation: hy-tip-in .12s ease-out .1s both; }
+@keyframes hy-tip-in { from { opacity: 0; } }
 .hy-bars a:hover > i, .hy-bars a[aria-current] > i { background: color-mix(in srgb, var(--muted) 55%, var(--border)); }
 .hy-bars a:hover > i > i, .hy-bars a[aria-current] > i > i { background: var(--text-2); }
-.hy-key { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 10px 0 0 34px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.hy-key { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 10px 0 0; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
 .hy-key span { display: inline-block; width: 10px; height: 10px; margin-left: 10px; }
 .hy-key span:first-child { margin-left: 0; }
 .hy-key .k-scored { background: var(--muted); }
 .hy-key .k-context { background: var(--border); }
 .hy-key .k-line { height: 2px; background: var(--accent); }
-/* below a desktop width the decades are too narrow for their labels and counts: every second label, no counts */
+/* the score line's two ends, labelled */
+.hy-end { position: absolute; transform: translate(-50%, calc(-100% - 6px)); padding: 1px 5px; border-radius: 3px; background: var(--bg); color: var(--text); font: 400 10.5px var(--mono); font-variant-numeric: tabular-nums; pointer-events: none; }
+.hy-start { transform: translate(0, calc(-100% - 6px)); }
+.hy-last { transform: translate(-100%, calc(-100% - 6px)); }
+.hy-end::after { content: ""; position: absolute; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); top: calc(100% + 3px); }
+.hy-start::after { left: -2px; }
+.hy-last::after { right: -2px; }
+/* the same space under the chart as above it, down to the order buttons (which bring 22px of their own) */
+.hy + .hist-tools { margin-top: clamp(14px, calc(5vw - 22px), 38px); }
+/* below a desktop width the decades are too narrow for their labels and counts: every second label, no counts
+   (a country's strip picks its own labels; see CountryChanges.astro) */
 @media (max-width: 900px) {
-  .hy-bars a:nth-child(even):not([aria-current]) .hy-label { visibility: hidden; }
-  .hy-n { display: none; }
-  .hy-chart { grid-template-columns: 28px minmax(0, 1fr) 30px; grid-template-rows: 220px 28px; }
-  .hy-key { margin-left: 28px; }
+  .hy:not(.ch-chart) .hy-bars a:nth-child(even):not([aria-current]) .hy-label { visibility: hidden; }
+  .hy:not(.ch-chart) .hy-n { display: none; }
 }
 /* on a phone, one label in four (1860s, 1900s, 1940s, 1980s, 2020s), and the decade being shown
    with the two on each side of it cleared */
 @media (max-width: 560px) {
-  .hy-bars a:nth-child(4n + 2):not([aria-current]) .hy-label { visibility: visible; }
-  .hy-bars a:not(:nth-child(4n + 2)) .hy-label { visibility: hidden; }
-  .hy-bars a[aria-current] + a .hy-label, .hy-bars a[aria-current] + a + a .hy-label,
-  .hy-bars a:has(+ a[aria-current]) .hy-label, .hy-bars a:has(+ a + a[aria-current]) .hy-label { visibility: hidden; }
-  .hy-bars a[aria-current] .hy-label { visibility: visible; }
+  .hy:not(.ch-chart) .hy-bars a:nth-child(4n + 2):not([aria-current]) .hy-label { visibility: visible; }
+  .hy:not(.ch-chart) .hy-bars a:not(:nth-child(4n + 2)) .hy-label { visibility: hidden; }
+  .hy:not(.ch-chart) .hy-bars a[aria-current] + a .hy-label, .hy:not(.ch-chart) .hy-bars a[aria-current] + a + a .hy-label,
+  .hy:not(.ch-chart) .hy-bars a:has(+ a[aria-current]) .hy-label, .hy:not(.ch-chart) .hy-bars a:has(+ a + a[aria-current]) .hy-label { visibility: hidden; }
+  .hy:not(.ch-chart) .hy-bars a[aria-current] .hy-label { visibility: visible; }
 }
 /* the continuous list: each year's heading is its permalink; load the other way, and say where it ends */
 .hist-year h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; }
@@ -1144,11 +1238,39 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .hist-status:empty { margin: 0; }
 .hist-continue { margin: 14px 0 0; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
 .hist-continue a { border-bottom: 1px solid var(--muted); }
-.hist-kinds { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 44px; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
-.hist-kinds a { color: var(--muted); padding-bottom: 3px; border-bottom: 1px solid transparent; white-space: nowrap; }
-.hist-kinds a:hover { color: var(--text); }
-.hist-kinds a[aria-current] { color: var(--text); border-bottom-color: var(--text); }
-.hist-kinds small { font-size: inherit; opacity: .7; }
+/* the top of a kind or tag page: History / Kind, and what it holds */
+.hist-crumb { display: flex; gap: 10px; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.hist-crumb a { color: var(--text-2); border-bottom: 1px solid var(--muted); }
+.hist-crumb a:hover { color: var(--text); }
+.hist-crumb-figs { margin: 16px 0 0; font: 400 11.5px var(--mono); letter-spacing: .04em; color: var(--muted); }
+.hist-crumb-figs a { color: var(--text-2); border-bottom: 1px solid var(--muted); }
+/* the filters: a row of kinds and a row of tags, each with its label in a column of its own */
+.hist-filter { margin-top: clamp(28px, 4vw, 44px); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.hf-row { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 4px 16px; align-items: baseline; padding: 14px 0; }
+.hf-row + .hf-row { border-top: 1px dashed var(--border); }
+.hf-label { font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.hist-kinds, .hist-tags { display: flex; flex-wrap: wrap; gap: 8px 20px; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.hist-kinds a, .hist-tags a { color: var(--muted); padding-bottom: 3px; border-bottom: 1px solid transparent; white-space: nowrap; }
+.hist-kinds a:hover, .hist-tags a:hover { color: var(--text); }
+.hist-kinds a[aria-current], .hist-tags a[aria-current] { color: var(--text); border-bottom-color: var(--text); }
+.hist-kinds small, .hist-tags small { font-size: inherit; opacity: .7; }
+.hf-toggle { padding: 0 0 3px; border: 0; border-bottom: 1px solid var(--muted); background: none; color: var(--text-2); font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+.hf-toggle:hover { color: var(--text); border-bottom-color: var(--text); }
+.hf-toggle::after { content: " ▾"; }
+.hf-toggle[aria-expanded="true"]::after { content: " ▴"; }
+.hf-toggle[aria-expanded="true"] + .hist-tags { margin-top: 12px; }
+.hist-tags[hidden] { display: none; }
+.hist-country { margin-top: 12px; }
+.hist-country[hidden] { display: none; }
+.hist-country select { max-width: 100%; min-width: 260px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text); font: 400 14px Inter, sans-serif; }
+@media (max-width: 600px) { .hf-row { grid-template-columns: minmax(0, 1fr); } }
+/* what a kind or tag includes, under its link on hover or keyboard focus */
+.has-tip { position: relative; }
+.hist-tip { position: absolute; z-index: 20; top: calc(100% + 8px); left: 0; width: max-content; max-width: min(300px, calc(100vw - 32px)); padding: 10px 12px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; box-shadow: var(--shadow); color: var(--text-2); font: 400 13px/1.45 Inter, sans-serif; text-transform: none; letter-spacing: 0; white-space: normal; display: none; pointer-events: none; }
+.hist-tip b { color: var(--text); font-weight: 500; }
+.hist-tip.flip { left: auto; right: 0; }
+.has-tip:hover .hist-tip, .has-tip:focus-visible .hist-tip { display: block; animation: tip-in .12s ease-out .15s both; }
+@keyframes tip-in { from { opacity: 0; transform: translateY(-4px); } }
 /* reading order: newest first, or oldest first to read it as it happened */
 .hist-tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 40px; }
 .hist-order { display: flex; gap: 18px; margin-top: 22px; }
@@ -1164,10 +1286,22 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .hist-years { margin-top: 22px; }
 .hist-year { scroll-margin-top: 56px; }
 .hist-year { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 0 clamp(24px, 4vw, 56px); border-top: 1px solid var(--text); padding-bottom: clamp(32px, 5vw, 64px); }
-.hist-year h2 { position: sticky; top: 64px; align-self: start; margin: 0; padding-top: 10px; font-size: clamp(56px, 8vw, 120px); line-height: .9; letter-spacing: -.03em; }
+.hist-side { position: sticky; top: 64px; align-self: start; max-height: calc(100vh - 80px); overflow: auto; scrollbar-width: none; }
+.hist-year h2 { margin: 0; padding-top: 10px; font-size: clamp(56px, 8vw, 120px); line-height: .9; letter-spacing: -.03em; }
 .hist-year h2 small { display: block; margin-top: 10px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .hist-year ol { list-style: none; margin: 0; padding: 0; }
 .hist-year li + li { border-top: 1px solid var(--border); }
+/* a busy year's months, under the year in the sticky left pane: a link to each, the one in view marked */
+.hist-year .hist-mnav { max-width: 220px; margin-top: 22px; padding-top: 6px; border-top: 1px solid var(--border); }
+.hist-year .hist-mnav li { border: 0; }
+.hist-year .hist-mnav a { display: flex; gap: 8px; padding: 4px 0; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.hist-mnav a:hover { color: var(--text); }
+.hist-mnav a[aria-current] { color: var(--text); }
+.hist-mnav a[aria-current]::before { content: "→"; margin-right: -4px; }
+.hist-mnav small { font: inherit; opacity: .7; margin-left: auto; }
+.hist-mnav .n-scored, .hist-years[data-only="scored"] .hist-mnav .n-all { display: none; }
+.hist-years[data-only="scored"] .hist-mnav .n-scored { display: inline; }
+.hm { scroll-margin-top: 64px; }
 .hist-year li a { display: grid; grid-template-columns: 12ch minmax(0, 1fr) auto; gap: 4px 20px; align-items: baseline; padding: 16px 0 18px; }
 .hist-year time { color: var(--muted); font-size: 11.5px; white-space: nowrap; }
 .he-place { margin: 0 0 6px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
@@ -1189,7 +1323,9 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 @media (max-width: 900px) {
   .hist-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .hist-year { grid-template-columns: 1fr; }
-  .hist-year h2 { position: static; font-size: 56px; padding-bottom: 12px; }
+  .hist-side { position: static; max-height: none; }
+  .hist-year h2 { font-size: 56px; padding-bottom: 12px; }
+  .hist-mnav { display: none; }
   .hist-year li a { grid-template-columns: 1fr auto; }
   .hist-year .he-body { grid-column: 1 / -1; grid-row: 2; }
   .hist-tops { grid-template-columns: 1fr; }
@@ -1217,7 +1353,13 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .ev-top.ev-plain { grid-template-columns: minmax(0, 1fr); }
 .ev-top .eyebrow a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
 .ev-top h1 { font-size: clamp(40px, 6.4vw, 92px); line-height: .95; letter-spacing: -.02em; margin: 16px 0 0; text-wrap: balance; }
+.ev-lede p { margin: 0; font-size: 19px; line-height: 1.55; color: var(--text); max-width: 62ch; }
+.ev-lede .ev-tags { margin-top: 18px; }
+.ev-also a { color: var(--text-2); border-bottom: 1px solid var(--muted); }
 .ev-top .lede { font-size: 19px; line-height: 1.5; color: var(--text); max-width: 60ch; margin: 24px 0 0; }
+.ev-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.ev-tags a { display: block; padding: 4px 9px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-2); }
+.ev-tags a:hover { color: var(--text); border-color: var(--text-2); }
 .ev-label { margin: 0; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .ev-move { border-top: 1px solid var(--text); padding-top: 12px; }
 .ev-figures { margin: 14px 0 0; display: flex; align-items: baseline; gap: 16px; font: 400 clamp(64px, 8vw, 120px)/.85 var(--mono); letter-spacing: -.07em; }
@@ -1446,7 +1588,8 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .c-culture h2 a:hover { color: var(--text); }
 .c-culture ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
 .c-culture li a { display: grid; grid-template-columns: 52px 1fr; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
-.c-culture img, .c-culture-none { width: 52px; height: 52px; object-fit: cover; background: var(--surface-2); }
+.c-culture img, .c-culture-note { margin: 4px 0 10px; color: var(--muted); font-size: 12.5px; }
+.c-culture-none { width: 52px; height: 52px; object-fit: cover; background: var(--surface-2); }
 .c-culture-none { display: grid; place-items: center; font: italic 400 24px var(--display); color: var(--muted); }
 .c-culture li span { display: grid; gap: 2px; min-width: 0; }
 .c-culture li small { font: 400 10px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
@@ -1546,6 +1689,31 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .src-parts-label span { color: var(--muted); }
 .src-parts small { color: var(--muted); font-size: 13px; line-height: 1.4; }
 .sources-page .section[id] { scroll-margin-top: 56px; }
+.src-parts { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+/* the outside datasets: a row each, like the books, opened for the details */
+.src-datasets { border-top: 1px solid var(--text); }
+.src-dataset { border-bottom: 1px solid var(--border); scroll-margin-top: 56px; }
+.src-dataset summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 12px 0; cursor: pointer; list-style: none; }
+.src-dataset summary::-webkit-details-marker { display: none; }
+.src-ds-main { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.src-ds-title { font: 400 20px/1.2 var(--display); }
+.src-dataset summary:hover .src-ds-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.src-ds-by { color: var(--muted); font-size: 13.5px; }
+.src-ds-n { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); white-space: nowrap; text-align: right; }
+.src-ds-n b { font: 400 20px/1 var(--display); letter-spacing: 0; color: var(--text); margin-right: 2px; }
+.src-ds-count::after { content: "+"; display: inline-block; width: 1.4em; text-align: right; font-size: 13px; }
+.src-dataset[open] .src-ds-count::after { content: "−"; }
+.src-dataset[open] { padding-bottom: 18px; }
+.src-dataset > p { max-width: 70ch; margin: 2px 0 0; color: var(--text-2); font-size: 14px; }
+.src-ds-facts { display: grid; gap: 0; margin: 14px 0 0; border-top: 1px solid var(--border); }
+.src-ds-facts > div { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.src-ds-facts dt { font: 400 10.5px/1.9 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.src-ds-facts dd { margin: 0; font-size: 13.5px; line-height: 1.55; overflow-wrap: anywhere; }
+.src-ds-facts code, .src-ds-fields code { font: 400 12px var(--mono); }
+.src-ds-facts a, .src-ds-notes a { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
+.src-ds-fields { margin-top: 14px; font-size: 13.5px; }
+.src-ds-notes { margin: 12px 0 0; padding-left: 18px; color: var(--text-2); font-size: 13.5px; }
+@media (max-width: 640px) { .src-ds-facts > div { grid-template-columns: 1fr; gap: 2px; } }
 
 /* Search dialog (⌘K): a flat ruled sheet near the top of the window */
 .search { width: min(680px, calc(100vw - 32px)); max-height: min(70vh, 640px); margin: 12vh auto 0; padding: 0; border: 1px solid var(--text); border-radius: var(--r); background: var(--bg); color: var(--text); overflow: hidden; }

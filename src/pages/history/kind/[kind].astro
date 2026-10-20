@@ -2,8 +2,9 @@
 // Every History entry of one kind, across all periods.
 import Base from "../../../layouts/Base.astro";
 import HistoryList from "../../../components/HistoryList.astro";
+import HistoryCrumb from "../../../components/HistoryCrumb.astro";
 import { Icon } from "astro-icon/components";
-import { CHANGE_CATEGORIES } from "../../../lib/countries.js";
+import { CHANGE_CATEGORIES, changes } from "../../../lib/countries.js";
 
 export function getStaticPaths() {
   return Object.keys(CHANGE_CATEGORIES).map((kind) => ({ params: { kind } }));
@@ -11,13 +12,15 @@ export function getStaticPaths() {
 
 const { kind } = Astro.params;
 const k = CHANGE_CATEGORIES[kind];
+const items = changes.filter((ch) => !ch.estimate && ch.category === kind);
 ---
-<Base title={`History: ${k.label}`} description={`${k.help}. Every such entry in the history of cannabis law, newest first.`}>
+<Base title={`History: ${k.label}`} description={`${k.help}. Every such entry in the history of cannabis, newest first.`}>
   <main class="changes-page">
     <section class="hero hero-sm">
-      <p class="eyebrow">History</p>
+      <HistoryCrumb what="Kind of event" items={items} />
       <h1><Icon name={k.icon} class="ico" aria-hidden="true" /> {k.label}</h1>
-      <p class="lede">{k.help}.</p>
+      <p class="lede">{k.includes}.</p>
+      <HistoryCrumb part="figures" items={items} />
     </section>
     <HistoryList kind={kind} />
   </main>

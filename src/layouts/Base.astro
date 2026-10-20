@@ -130,6 +130,21 @@ const schemas = jsonld ? [jsonld].flat() : [];
     <p>Open source — the scores, explanations and code are on <a href={repo} target="_blank" rel="noopener noreferrer">GitHub</a>. Spotted a mistake or a law that changed? <a href={`${repo}/issues`} target="_blank" rel="noopener noreferrer">Open an issue</a> or send a pull request.</p>
   </footer>
 
+  <script is:inline>
+    // Source notes (SourceTip.astro): a click or tap on the "i" keeps its note open until a click
+    // elsewhere. Listens on the document, so it also works in articles loaded into the drawer.
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest && e.target.closest(".src-tip-btn");
+      document.querySelectorAll(".src-tip.open").forEach(function (t) {
+        if (btn && t.contains(btn)) return;
+        if (!t.contains(e.target)) { t.classList.remove("open"); t.firstElementChild.setAttribute("aria-expanded", "false"); }
+      });
+      if (btn) {
+        var open = btn.parentNode.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+    });
+  </script>
   <script>
     // Fuse.js is bundled as its own file and fetched only when the search dialog is first opened.
     window.cfiFuse = () => import("fuse.js").then((m) => m.default);
@@ -150,8 +165,8 @@ const schemas = jsonld ? [jsonld].flat() : [];
       function esc(s) { return String(s).replace(/[&<>"]/g, function (ch) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]; }); }
       function load() {
         if (!loading) loading = Promise.all([fetch(dialog.dataset.index).then(function (r) { return r.json(); }), window.cfiFuse()]).then(function (got) {
-          rows = got[0].map(function (r, i) { r.i = i; r.k = fold(r.n); r.h = r.k + " " + fold(r.s); return r; });
-          // `k` is the name, `h` the name and second line together, so words may be spread over both
+          rows = got[0].map(function (r, i) { r.i = i; r.k = fold(r.n); r.h = r.k + " " + fold(r.s) + (r.g ? " " + fold(r.g) : ""); return r; });
+          // `k` is the name, `h` the name, second line and hidden words (an entry's tags) together, so words may be spread over them
           fuse = new got[1](rows, { keys: [{ name: "k", weight: 2 }, { name: "h", weight: 1 }], useExtendedSearch: true, ignoreLocation: true, threshold: 0.3, minMatchCharLength: 2, includeScore: true });
           render();
         }).catch(function () { none.textContent = "The search index could not be loaded."; none.hidden = false; });
@@ -250,10 +265,20 @@ const schemas = jsonld ? [jsonld].flat() : [];
       if (!tab) return;
       var article = tab.closest("article.country");
       showTab(article, tab.dataset.tab);
-      if (!article.closest("dialog")) history.replaceState(null, "", tab.dataset.tab === "score" ? location.pathname + location.search : "#" + tab.dataset.tab);
+      if (!article.closest("dialog")) history.replaceState(null, "", tab.dataset.tab === (article.dataset.defaultTab || "score") ? location.pathname + location.search : "#" + tab.dataset.tab);
       // a tab chosen from far down a long panel: bring the top of the new one into view
       var main = article.querySelector(".c-main");
       if (main.getBoundingClientRect().top < 0) main.scrollIntoView({ block: "start" });
+    });
+    // a link to a tab from elsewhere in the article ("All datasets →" in the side column)
+    document.addEventListener("click", function (e) {
+      var link = e.target.closest && e.target.closest("a[data-tab-link]");
+      if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      var article = link.closest("article.country");
+      if (!showTab(article, link.dataset.tabLink)) return;
+      e.preventDefault();
+      if (!article.closest("dialog")) history.replaceState(null, "", "#" + link.dataset.tabLink);
+      article.querySelector(".c-main").scrollIntoView({ block: "start" });
     });
     document.addEventListener("keydown", function (e) {
       var tab = e.target.closest && e.target.closest(".c-tabs [data-tab]");
@@ -346,7 +371,7 @@ const schemas = jsonld ? [jsonld].flat() : [];
 
     // A link straight to a segment, e.g. /country/de/#seg-possession
     // or to a tab: /country/de/#history
-    if (/^#(context|history|sources)$/.test(location.hash) && showTab(document.querySelector("article.country"), location.hash.slice(1))) document.querySelector("article.country .c-main").scrollIntoView({ block: "start" });
+    if (/^#(context|history|datasets|sources)$/.test(location.hash) && showTab(document.querySelector("article.country"), location.hash.slice(1))) document.querySelector("article.country .c-main").scrollIntoView({ block: "start" });
     if (/^#seg-[a-z_-]+$/.test(location.hash)) showSegment(document.querySelector("article.country"), location.hash.slice(5));
   </script>
   <script is:inline>
@@ -376,7 +401,7 @@ const schemas = jsonld ? [jsonld].flat() : [];
       function card(kind, d) {
         if (kind === "country") return '<p class="hc-eyebrow">' + esc(d.r) + ' · ' + (d.k ? "#" + d.k + " of " + d.of : "not ranked") + '</p>' +
           '<div class="hc-head"><span class="hc-flag">' + d.f + '</span><b class="hc-title">' + esc(d.n) + '</b><span class="hc-score" style="--c:' + d.c + '">' + d.s + '<small>/100</small></span></div>' +
-          '<div class="hc-meter" style="--c:' + d.c + '"><i style="width:' + d.s + '%"></i></div>' +
+          '<div class="hc-meter" style="--c:' + d.c + '"><i style="width:' + d.s + '%"></i></div>' + (d.fe ? '<p class="hc-est">' + esc(d.fe) + '</p>' : '') +
           '<p class="hc-chips"><span class="chip s-' + d.rec[1] + '">Recreational: ' + esc(d.rec[0]) + '</span><span class="chip s-' + d.med[1] + '">Medical: ' + esc(d.med[0]) + '</span></p>' +
           '<p class="hc-text">' + esc(d.x) + '</p><p class="hc-foot">' + esc(d.t) + (d.h ? " · " + d.h + " history entries" : "") + '</p>';
         if (kind === "history") return '<p class="hc-eyebrow">' + esc(d.k) + ' · ' + esc(d.d) + '</p>' +

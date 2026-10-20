@@ -3,7 +3,7 @@
 import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
 import { z } from "astro/zod";
-import { SEGMENT_IDS, CONTEXT_IDS, CHANGE_CATEGORIES, PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "./lib/segment-ids.js";
+import { SEGMENT_IDS, CONTEXT_IDS, CHANGE_CATEGORIES, CHANGE_TAGS, PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "./lib/segment-ids.js";
 
 const score = z.number().int().min(0).max(10);
 const perSegment = <T extends z.ZodTypeAny>(value: T) =>
@@ -64,19 +64,6 @@ const countries = defineCollection({
       // the place is described ("Crown Dependency", "British Overseas Territory").
       dependency: z.object({ of: z.string().regex(/^[a-z]{2}$/), kind: z.string().min(1), note: z.string().min(1) }).strict().optional(),
       flag: z.string().optional(), // an emoji to show when the two-letter code has no flag of its own
-      // Population by year: a snapshot every ten years from 1900 (Our World in Data) and the
-      // latest figure (World Bank). It weights the population-weighted world average.
-      population: z.record(z.string().regex(/^\d{4}$/), z.number().int().positive()),
-      // People who used cannabis in the past year. `prevalence` is the share of 15–64-year-olds,
-      // from the survey of `year` (UNODC World Drug Report figures); `users` is that share of the
-      // country's 15–64 population today. Where there is no survey, `estimate: true` and the
-      // prevalence is the median of the surveyed countries in the same region.
-      cannabis_use: z.object({
-        prevalence: z.number().min(0).max(100),
-        year: z.number().int().optional(),
-        estimate: z.boolean().optional(),
-        users: z.number().int().nonnegative(),
-      }).strict(),
       ...status,
       updated: z.coerce.date(),
       // set by hand, once someone has gone through the country and found nothing left to add:
@@ -132,6 +119,20 @@ const units = defineCollection({
       scores: perSegment(score),
       segments: perSegment(z.string().min(1)),
       sources: z.array(source),
+      // optional: how many people used cannabis in the past year, from the country's own survey.
+      // The age band is the survey's (NSDUH 12+, Canadian Cannabis Survey 16+, NDSHS 14+), so it is
+      // shown with the figure and not compared with the countries' 15–64.
+      use: z
+        .object({
+          share: z.number().min(0).max(100), // per cent
+          ages: z.string().min(1), // e.g. "12+"
+          year: z.string().min(4), // survey year or years, e.g. "2022–2023"
+          users: z.number().int().positive().optional(), // people, where the survey gives a count
+          note: z.string().min(1).optional(), // e.g. when the survey publishes several parts together
+          source: source,
+        })
+        .strict()
+        .optional(),
     })
     .strict(),
 });
@@ -161,6 +162,9 @@ const changes = defineCollection({
       // A change has `country` and `before`. Without `before` the entry is context that moves no
       // score: a report or ruling in that country, or with no `country` a treaty or UN decision.
       country: z.string().regex(/^[a-z]{2}$/).optional(), // file name in /countries
+      // optional: the state, province or territory the entry is mainly about, a file name in
+      // /countries/<country>/ (e.g. "on" with country "ca"). It still belongs to the country.
+      subunit: z.string().regex(/^[a-z]{2,3}$/).optional(),
       title: z.string().min(1),
       description: z.string().min(1),
       before: perSegment(score).optional(), // segment scores before the change
@@ -173,6 +177,8 @@ const changes = defineCollection({
       // read. Without it the entry is listed as "not yet checked": it may rest on memory.
       checked: z.boolean().optional(),
       related: z.array(z.string()).optional(), // ids of other entries that tell the same story; shown as related on both pages
+      // optional tags for grouping deeper than `category`; keys of CHANGE_TAGS in segment-ids.js
+      tags: z.array(z.enum(Object.keys(CHANGE_TAGS) as [string, ...string[]])).min(1).optional(),
       // 1–10, set by hand only where the computed ranking in scripts/article-backlog.cjs is wrong;
       // it decides which entries get articles first and is not shown on the site
       importance: z.number().int().min(1).max(10).optional(),
@@ -182,7 +188,8 @@ const changes = defineCollection({
       sources: z.array(source).min(1), // the more the better; the first is shown where there is room for one
     })
     .strict()
-    .refine((ch) => ch.country || !ch.before, { message: "`before` needs a `country`" }),
+    .refine((ch) => ch.country || !ch.before, { message: "`before` needs a `country`" })
+    .refine((ch) => ch.country || !ch.subunit, { message: "`subunit` needs a `country`" }),
 });
 
 // prices.yaml — one sourced flower-price observation. Add older observations at any time;
@@ -255,4 +262,48 @@ const culture = defineCollection({
     .strict(),
 });
 
-export const collections = { countries, units, segments, changes, prices, articles, culture };
+// datasets/datasets.yaml — what each outside dataset (a CSV in /datasets) is and how to read it;
+// src/lib/datasets.js reads the CSVs themselves
+const column = z.object({
+  column: z.string().min(1), decimals: z.number().int().min(0).optional(), type: z.enum(["number", "boolean", "text"]).default("number"), about: z.string().min(1).optional(),
+  format: z.enum(["number", "percent", "decimal", "rank", "text"]).optional(), values: z.record(z.string(), z.string()).optional(),
+}).strict();
+const datasets = defineCollection({
+  loader: file("datasets/datasets.yaml"),
+  schema: z
+    .object({
+      id: z.string().regex(/^[a-z0-9_]+$/),
+      file: z.string().regex(/^[\w.-]+\.csv$/),
+      rail: z.boolean().default(false), // also shown in the profile's side column
+      // how it reads in the profile's Datasets tab: {field} templates, see datasets.yaml
+      profile: z.object({ headline: z.string().min(1), details: z.string().optional(), years: z.array(z.number().int()).optional() }).strict(),
+      origin: z.string().min(1), // how the file was made: downloaded as published or transcribed, and when
+      original: z.string().regex(/^[\w.-]+\.(xlsx|xls|csv)$/).optional(), // the publisher's file an extract was made from
+      name: z.string().min(1),
+      publisher: z.string().min(1),
+      credit: z.string().min(1).optional(), // a short name for the publisher
+      title: z.string().min(1),
+      url: z.string().url(),
+      data_url: z.string().url().optional(),
+      data_label: z.string().min(1).optional(),
+      when: z.string().min(1),
+      about: z.string().min(1),
+      notes: z.record(z.string(), z.string()).default({}), // by country file name
+      country: z.object({ column: z.string().min(1), by: z.enum(["id", "name"]), aliases: z.record(z.string(), z.string()).default({}) }).strict(),
+      year: z.object({ column: z.string().min(1), keep: z.enum(["latest", "all"]).default("latest") }).strict().optional(),
+      fields: z.record(z.string(), column),
+      pages: z.array(z.object({ label: z.string().min(1), path: z.string() }).strict()).optional(),
+      also: z.string().min(1).optional(),
+      map: z.object({
+        field: z.string(), format: z.enum(["percent", "decimal", "rate"]),
+        per: z.number().positive().optional(), group: z.enum(["Use", "Society", "Law"]).default("Society"),
+        slug: z.string().regex(/^[a-z0-9-]+$/), label: z.string(), missing: z.string(),
+        steps: z.array(z.tuple([z.number(), z.string()])).length(5),
+        title: z.string(), lede: z.string(), sub: z.string(), note: z.string(),
+      }).strict().optional(),
+    })
+    .strict()
+    .refine((d) => !d.map || d.map.field in d.fields, { message: "map.field must be one of the fields" }),
+});
+
+export const collections = { countries, units, segments, changes, prices, articles, culture, datasets };

@@ -29,7 +29,7 @@ function countryCard(c, sub) {
 function historyCard(ch) {
   const delta = ch.score ? ch.score.after - ch.score.before : 0;
   return ["history", {
-    eyebrow: "HISTORY OF CANNABIS LAW",
+    eyebrow: "HISTORY OF CANNABIS",
     flag: ch.country ? flagOf(ch.country.id) : null, place: ch.place.name.toUpperCase(),
     date: changeDate(ch).toUpperCase(), kind: ch.kind.label.toUpperCase(),
     title: ch.title, article: articles.has(ch.id),
@@ -47,7 +47,7 @@ const surveyFacts = results.mock ? [] : [[num(results.respondents), "RESPONDENTS
 // path (as in the address, without slashes at the ends) → [template, props]
 const cards = {
   index: page("How free is cannabis in every country?", "Every country scored from 0 to 100 for how free you are to carry, grow, share and use cannabis.", indexFacts),
-  history: page("A history of cannabis law", "The laws, court rulings and treaties that made cannabis legal or illegal, and how each moved a country's score.", historyFacts),
+  history: page("A history of cannabis", "Laws, rulings and treaties, raids, campaigns, trade and culture, country by country, and how each change moved a country's score.", historyFacts),
   about: page("What this is, and what it is for", "The law in every country, its history and the lives lived under it: sourced, open and corrected in public.", indexFacts, `ABOUT · ${BRAND}`),
   "can-i": page("Can I?", "Pick a country and get plain answers: can I carry it, grow it, buy it, use it in public, and what happens if I am caught?"),
   compare: page("Compare countries", "Up to six countries side by side: their scores, exact rules and sources in one table."),
@@ -73,8 +73,8 @@ for (const e of cultureEntries) {
     : page(e.title, e.summary, [], eyebrow);
 }
 for (const v of MAP_VIEWS) cards[v.slug ? `map/${v.slug}` : "map"] = page(v.title, v.lede, [], `MAP · ${BRAND}`);
-for (const [kind, k] of Object.entries(CHANGE_CATEGORIES)) cards[`history/kind/${kind}`] = page(k.label, `${k.help}. Every such entry in the history of cannabis law.`, [[num(dated.filter((ch) => ch.category === kind).length), "ENTRIES"]], "HISTORY OF CANNABIS LAW");
-for (const p of historyPeriods) cards[`history/period/${p.slug}`] = page(`History, ${p.label}`, `Cannabis laws, court rulings and treaties from ${p.from} to ${p.to}.`, [], "HISTORY OF CANNABIS LAW");
+for (const [kind, k] of Object.entries(CHANGE_CATEGORIES)) cards[`history/kind/${kind}`] = page(k.label, `${k.help}. Every such entry in the history of cannabis.`, [[num(dated.filter((ch) => ch.category === kind).length), "ENTRIES"]], "HISTORY OF CANNABIS");
+for (const p of historyPeriods) cards[`history/period/${p.slug}`] = page(`History, ${p.label}`, `Cannabis laws, court rulings and treaties from ${p.from} to ${p.to}.`, [], "HISTORY OF CANNABIS");
 for (const ch of changes) cards[`history/${ch.id}`] = historyCard(ch); // estimated first bans have a page too
 for (const c of places) {
   cards[`country/${c.slug}`] = countryCard(c);

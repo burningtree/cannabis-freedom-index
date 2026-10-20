@@ -2,7 +2,7 @@
 // the first time a link of that kind is hovered. Keys are the part of the address after the base.
 //   country:  country/de/             history: history/<id>/        culture: culture/language/bhang/
 import { getImage } from "astro:assets";
-import { places, changes, articles, changeDate, REC_LABEL, MED_LABEL } from "../../lib/countries.js";
+import { places, changes, articles, changeDate, REC_LABEL, MED_LABEL, estimateNote } from "../../lib/countries.js";
 import { cultureEntries, cultureSection } from "../../lib/culture.js";
 import { tierOf, tierColor } from "../../lib/tiers.js";
 import { file } from "../../lib/exports.js";
@@ -19,12 +19,12 @@ async function build(kind) {
     return Object.fromEntries(places.map((c) => [`country/${c.slug}/`, {
       f: c.flag, n: c.name, r: c.region, s: c.score, c: tierColor(c.raw), t: tierOf(c.raw).name,
       k: c.territory ? null : c.rank, of: places.filter((x) => !x.territory).length,
-      rec: [REC_LABEL[c.rec], c.rec], med: [MED_LABEL[c.med], c.med], x: cut(c.note, 230), h: entries.get(c.slug) ?? 0,
+      rec: [REC_LABEL[c.rec], c.rec], med: [MED_LABEL[c.med], c.med], x: cut(c.note, 230), h: entries.get(c.slug) ?? 0, ...(estimateNote(c) && { fe: estimateNote(c) }),
     }]));
   }
   if (kind === "history") {
     return Object.fromEntries(changes.map((ch) => [`history/${ch.id}/`, {
-      d: changeDate(ch), k: `${ch.kind.emoji} ${ch.kind.label}`, p: `${ch.place.flag} ${ch.place.name}`, t: ch.title, x: cut(ch.description, 240),
+      d: changeDate(ch), k: `${ch.kind.emoji} ${ch.kind.label}`, p: `${ch.place.flag} ${ch.place.name}${ch.unit ? ` · ${ch.unit.name}` : ""}`, t: ch.title, x: cut(ch.description, 240),
       ...(ch.score && { b: [ch.score.before, tierColor(ch.score.before)], a: [ch.score.after, tierColor(ch.score.after)] }),
       ...(articles.has(ch.id) && { ar: 1 }), cf: [ch.confidence.mark, ch.confidence.label, ch.confidence.key],
     }]));

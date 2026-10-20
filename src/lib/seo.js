@@ -1,13 +1,15 @@
 // Wording and structured data for search engines: titles that match what people type
 // ("is weed legal in Germany"), and schema.org objects for the pages.
-import { REC_LABEL, REC_HELP, MED_LABEL } from "./countries.js";
+import { REC_LABEL, REC_HELP, MED_LABEL, estimateNote } from "./countries.js";
 import { SEGMENT_IDS } from "./segment-ids.js";
 import { answersFor } from "./answers.js";
 import { SITE } from "./exports.js";
 
 const THE = /^(United |Netherlands|Bahamas|Philippines|Maldives|Gambia|Dominican Republic|Central African Republic|Comoros|Seychelles|Solomon Islands|Marshall Islands|DR Congo)/;
+// "the Netherlands", "Germany"
+export const theName = (name) => `${THE.test(name) ? "the " : ""}${name}`;
 // "in the Netherlands", "in Germany"
-export const inPlace = (name) => `in ${THE.test(name) ? "the " : ""}${name}`;
+export const inPlace = (name) => `in ${theName(name)}`;
 
 const root = (site) => (site?.href ?? SITE + "/").replace(/\/$/, "") + import.meta.env.BASE_URL;
 const QUESTION = {
@@ -39,7 +41,7 @@ export function countrySeo(c, site) {
   };
   return {
     seoTitle: `Is weed legal ${where}? Cannabis laws ${year}`,
-    description: `${status} ${c.note} Cannabis freedom score: ${c.score} out of 100${c.rank ? `, #${c.rank} in the world` : ""}.`,
+    description: `${status} ${c.note} Cannabis freedom score: ${c.score} out of 100${estimateNote(c) ? " (national estimate)" : ""}${c.rank ? `, #${c.rank} in the world` : ""}.`,
     jsonld: [faq, crumbs(site, [["Cannabis Freedom Index", ""], [c.name, `country/${c.slug}/`]])],
   };
 }

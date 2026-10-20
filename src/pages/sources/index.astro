@@ -1,12 +1,15 @@
 ---
-// Every source the index cites, counted. Books first, then websites by domain: the ones cited
-// for several countries one by one, and the local ones (cited for a single country) grouped
-// under that country. The page is not in the menu.
+// Every source the index cites, counted. The outside datasets first, each with its file and how
+// it is read; then books, then websites by domain: the ones cited for several countries one by
+// one, and the local ones (cited for a single country) grouped under that country. The page is
+// not in the menu.
 import Base from "../../layouts/Base.astro";
 import { places } from "../../lib/countries.js";
 import { archivedUrl } from "../../lib/archive.js";
 import { cites, isBook, bookSlug, domainOf } from "../../lib/citations.js";
 import { Image } from "astro:assets";
+import { DATASETS } from "../../lib/datasets.js";
+import { viewByMetric } from "../../lib/map-views.js";
 
 const base = import.meta.env.BASE_URL;
 const num = (n) => n.toLocaleString("en-GB");
@@ -74,7 +77,12 @@ const totals = [
   [num(urlCount), "Web pages cited", `on ${num(all.length)} websites`],
   [`${pct}%`, "Archived", `${num(archived)} pages have a copy in the Internet Archive, so a dead link keeps its evidence; the rest are saved in batches`],
 ];
+// ── Outside datasets (datasets/datasets.yaml), each published as its file ──
+const datasets = Object.values(DATASETS);
+const kb = (n) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1e3))} kB`);
+const placeName = (slug) => placeOf.get(slug)?.name ?? slug.toUpperCase();
 const parts = [
+  ["#datasets", num(datasets.length), "Datasets", `published in full, ${num(datasets.reduce((a, d) => a + d.count, 0))} country figures`],
   ["#books", num(bookList.length), "Books", `and other printed sources, ${num(bookList.reduce((a, b) => a + b.n, 0))} citations`],
   ["#websites", num(wide.length), "Websites for several countries", `or for international entries, ${num(wide.reduce((a, r) => a + r.n, 0))} citations`],
   ["#local", num(all.length - wide.length), "Local websites", `each cited for one country, across ${num(localRows.length)} countries`],
@@ -85,7 +93,7 @@ const parts = [
     <section class="hero hero-sm">
       <p class="eyebrow">Sources</p>
       <h1>What the index is built on</h1>
-      <p class="lede">Every score, explanation and history entry cites where it comes from. This page counts those sources: books first, then websites, with the local ones grouped under the country they were used for. A citation is one source listed once by a country profile, a state or province, a history entry, an article or a culture entry. Open a book or a website to see exactly where it is cited.</p>
+      <p class="lede">Every score, explanation and history entry cites where it comes from. This page counts those sources: the outside datasets shown beside the index, each published here in full, then books, then websites, with the local ones grouped under the country they were used for. A citation is one source listed once by a country profile, a state or province, a history entry, an article or a culture entry. Open a book or a website to see exactly where it is cited.</p>
     </section>
 
     <dl class="src-totals">
@@ -96,6 +104,56 @@ const parts = [
         <a href={href}><b>{n}</b><span class="src-parts-label">{label} <span aria-hidden="true">↓</span></span><small>{sub}</small></a>
       ))}
     </nav>
+
+    <section class="section" id="datasets">
+      <div class="section-head"><div>
+        <h2>Datasets</h2>
+        <p class="sub">Figures from other organisations, shown on the map and on the country profiles beside the index and never part of its score. Each file is published here exactly as the site reads it, with where it came from, what was done to it and which of its columns are used. How the site reads them is set out in <a href={`${base}data/datasets/datasets.yaml`}>datasets.yaml</a>. The files belong to their publishers and keep their terms, not this site's licence: cite the publisher when you use them.</p>
+      </div></div>
+      <div class="src-datasets">
+        {datasets.map((d) => (
+          <details class="src-dataset" id={`dataset-${d.id}`}>
+            <summary>
+              <span class="src-ds-main">
+                <span class="src-ds-title">{d.name}</span>
+                <span class="src-ds-by">{d.publisher} · {d.when}</span>
+              </span>
+              <span class="src-ds-n">
+                <span class="src-ds-count"><b>{num(d.count)}</b> {d.count === 1 ? "country" : "countries"}</span>
+                <span>{d.file.split(".").pop()} · {kb(d.fileInfo.bytes)}</span>
+              </span>
+            </summary>
+            <p>{d.about}</p>
+            <dl class="src-ds-facts">
+              <div><dt>Covers</dt><dd>{num(d.count)} countries and territories on this site{d.total !== d.count && `, of ${num(d.total)} in the file`}</dd></div>
+              <div><dt>File</dt><dd><a href={`${base}data/datasets/${d.file}`} download>{d.file}</a> · {kb(d.fileInfo.bytes)} · {num(d.fileInfo.rows)} rows · {d.fileInfo.columns} columns{d.fileInfo.years && ` · ${d.fileInfo.years[0]}–${d.fileInfo.years[1]}${d.year.keep === "all" ? "" : ", latest year used"}`}</dd></div>
+              <div><dt>SHA-256</dt><dd><code>{d.fileInfo.sha256}</code></dd></div>
+              {d.original && <div><dt>Original file</dt><dd><a href={`${base}data/datasets/${d.original}`} download>{d.original}</a> · {kb(d.fileInfo.original.bytes)} · as published · SHA-256 <code>{d.fileInfo.original.sha256}</code></dd></div>}
+              <div><dt>Published by</dt><dd><a href={d.url} target="_blank" rel="noopener noreferrer">{d.title}</a>{d.data_url && <> · <a href={d.data_url} target="_blank" rel="noopener noreferrer">{d.data_label ?? "original data"}</a></>}</dd></div>
+              <div><dt>How the file was made</dt><dd>{d.origin}</dd></div>
+              <div><dt>Shown on</dt><dd>{d.map
+                ? <><a href={`${base}map/${viewByMetric[`data:${d.id}`].slug}/`}>the world map</a> and the profile of each country it covers, under “Beyond the law”</>
+                : <>{(d.pages ?? []).map((p, i, all) => <><a href={`${base}${p.path}`}>{p.label}</a>{i < all.length - 1 && ", "}</>)}{d.also && ` ${d.also}`}</>}</dd></div>
+            </dl>
+            <table class="src-table src-ds-fields">
+              <thead><tr><th>On this site</th><th>Column in the file</th><th>Used for</th></tr></thead>
+              <tbody>
+                {d.year && <tr><td><code>year</code></td><td><code>{d.year.column}</code></td><td>{d.year.keep === "all" ? "Every year is kept, as a series" : "Only the latest year is read"}</td></tr>}
+                <tr><td><code>country</code></td><td><code>{d.country.column}</code></td><td>{d.country.by === "id" ? "Our two-letter country code" : `Country name, matched to ours${Object.keys(d.country.aliases).length ? ` (${Object.keys(d.country.aliases).length} names spelled differently are mapped in datasets.yaml)` : ""}`}</td></tr>
+                {Object.entries(d.fields).map(([name, f]) => (
+                  <tr><td><code>{name}</code></td><td><code>{f.column}</code></td><td>{f.about ?? (name === d.map?.field ? "Map colour and profile" : "Profile")}{f.decimals != null && `, rounded to ${f.decimals} decimals`}</td></tr>
+                ))}
+              </tbody>
+            </table>
+            {Object.keys(d.notes).length > 0 && (
+              <ul class="src-ds-notes">
+                {Object.entries(d.notes).map(([slug, note]) => <li><b>{placeName(slug)}:</b> {note}</li>)}
+              </ul>
+            )}
+          </details>
+        ))}
+      </div>
+    </section>
 
     <section class="section" id="books">
       <div class="section-head"><div>
@@ -206,6 +264,9 @@ const parts = [
             : '<p class="cited-title">Cited in</p>' + list(kind, keys[0]);
         }).catch(function () { box.innerHTML = '<p class="cited-h">The list could not be loaded.</p>'; });
       }
+      // a link to one dataset (#dataset-hfi) opens it
+      var ds = location.hash && document.getElementById(location.hash.slice(1));
+      if (ds && ds.matches("details.src-dataset")) ds.open = true;
       document.querySelectorAll("details.src-book").forEach(function (d) {
         d.addEventListener("toggle", function () { var box = d.querySelector(".cited"); if (d.open && !box.childElementCount) fill(box, "b", [box.dataset.key]); });
       });

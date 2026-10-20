@@ -1,0 +1,340 @@
+# Outside datasets: what each CSV file in this folder is and how to read it. The site reads the
+# files as they are at build time (src/lib/datasets.js); nothing is copied into the country files.
+# A dataset whose file is missing is left out of the site with a warning, so a definition can wait
+# here for its file.
+#
+#   file      the CSV in this folder, published unchanged at /data/datasets/<file>
+#   origin    how the file was made: downloaded as published, or transcribed, and when
+#   original  optional: the publisher's own file, kept and published beside an extract made from it
+#   country   which column names the country, and whether it holds our file names (`by: id`,
+#             "de", "us") or country names (`by: name`, matched to the `name:` of each country
+#             file, ignoring accents and punctuation); `aliases` maps names that differ
+#   year      optional: a column with the year. Only the latest year is used, unless
+#             `keep: all`, which keeps every year as a series
+#   fields    our name for each figure → the column it is read from, its decimals, `type: boolean`
+#             for a column that is "true" or empty or `text`, and `about`, what the site uses it
+#             for, and how it is written on a profile: `format` (number, percent, decimal, rank or
+#             text; `values` names the codes of a text field)
+#   credit    optional: a short name for the publisher, for the profile's Datasets tab
+#   profile   how the dataset reads in the profile's Datasets tab: a `headline` and a line of
+#             `details`, with {field} for a figure ({per} for the rate per `map.per` people).
+#             A part of the details whose figure is missing is left out. For a series, `years`
+#             picks the years listed in the details
+#   rail      true for the few datasets also shown in the profile's side column ("Beyond the
+#             law"); every dataset is listed in the profile's Datasets tab
+#   map       optional: how one field colours the world map, on a view of its own in `group`
+#             (Society by default): `steps` are where each of the five colours starts; `format`
+#             is percent, decimal or rate; `per` divides the field by the country's population
+#             and multiplies by it (100000: per 100,000 people)
+#   pages     optional: the pages that show the dataset, for one with views of its own, and
+#             `also`, words after them
+# Everything shown on the site is never part of the score.
+
+- id: cannabis_use
+  file: unodc-cannabis-use.csv
+  original: unodc-wdr2026-1.2-prevalence-national.xlsx
+  name: Cannabis use
+  publisher: United Nations Office on Drugs and Crime (UNODC)
+  credit: UNODC
+  title: UNODC — World Drug Report 2026, statistical annex, table 1.2 Prevalence of drug use in the general population, national data
+  url: https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html
+  data_url: https://www.unodc.org/documents/data-and-analysis/WDR_2026/Annex/1.2_prevalence_of_drug_use_in_the_general_population_national_data.xlsx
+  data_label: table 1.2, spreadsheet
+  when: national surveys from 1995 to 2024
+  about: >-
+    The share of adults who used cannabis in the past year, from each country's most recent
+    national survey as reported to UNODC, and the number of people that share stands for today.
+    Most surveys ask people aged 15 to 64; where a survey used another age band, the band is
+    given with the figure. Every country and territory on the site has a row.
+  origin: >-
+    Rebuilt on 21 October 2026 by scripts/extract-unodc.py from UNODC's spreadsheet, which is
+    published here unchanged: sheet "Cannabis", the best estimate of the latest survey for each
+    country (a survey period such as 2022/23 counts as its last year). The United Kingdom is
+    represented by England and Wales. Where the table has no figure, `source` says what was used
+    instead: "earlier" keeps the figure this site had before, taken from Wikipedia's list of
+    older UNODC figures; "estimate" is the median of the measured countries in the same region.
+    `users` is the share applied to the population aged 15 to 64 from the World Bank
+    (SP.POP.1564.TO, fetched the same day), to two significant figures; places the World Bank
+    does not list keep the population used before.
+  profile:
+    headline: "{prevalence} of adults"
+    details: "{users} people · survey {period} · ages {ages} · {source}"
+  country: { column: country, by: id }
+  fields:
+    prevalence: { column: prevalence, format: percent, about: "Share of adults: map, rankings, profile" }
+    users: { column: users, about: "Number of users: map, rankings, profile" }
+    year: { column: year, about: "Survey year (the last year of a period), empty for estimates" }
+    period: { column: period, type: text, about: "Survey year or period as UNODC gives it" }
+    ages: { column: ages, type: text, about: "The survey's age band, shown with the figure" }
+    source: { column: source, type: text, about: "wdr2026, earlier or estimate", values: { wdr2026: "UNODC 2026", earlier: "earlier figure, not in UNODC 2026", estimate: "regional estimate, no survey" } }
+    estimate: { column: estimate, type: boolean, about: "Marks a regional estimate (shown with ~)" }
+    population_15_64: { column: population_15_64, about: "What users are worked out from" }
+  pages:
+    - { label: the map of users, path: map/users/ }
+    - { label: the map of the share of adults, path: map/share-of-adults/ }
+    - { label: the map of use against freedom, path: map/use-against-freedom/ }
+    - { label: the rankings, path: "#rankings" }
+  also: and every country profile
+
+- id: population
+  file: population.csv
+  name: Population
+  publisher: Our World in Data and the World Bank
+  credit: Our World in Data, World Bank
+  title: Our World in Data — Population (long-run estimates)
+  url: https://ourworldindata.org/population-sources
+  data_url: https://data.worldbank.org/indicator/SP.POP.TOTL
+  data_label: World Bank — Population, total
+  when: 1900 to 2025
+  about: >-
+    How many people live in each country and territory: a figure every ten years from 1900 to
+    2020 and the latest one. It weights the population-weighted world average, shown beside the
+    plain one, and sorts the rankings by population.
+  origin: >-
+    Compiled for this site on 4 October 2026 and moved into this file on 20 October 2026. For 196
+    countries the figures from 1900 to 2020 are Our World in Data's long-run series and the latest
+    (mostly 2025) is the World Bank's. 23 dependencies and disputed territories have a single
+    recent figure only. Borders are today's. Not a copy of a published file.
+  profile:
+    headline: "{population} people in {year}"
+    years: [1900, 1950, 2000]
+  country: { column: country, by: id }
+  year: { column: year, keep: all }
+  fields:
+    population: { column: population, about: "People living there in that year" }
+  pages:
+    - { label: the world average by population, path: "" }
+    - { label: the population column of the rankings, path: "#rankings" }
+    - { label: research progress weighted by population, path: research/ }
+
+- id: pew_marijuana
+  file: pew-marijuana-morality-2026.csv
+  rail: true
+  origin: >-
+    Transcribed by hand on 20 October 2026 from the "Total" row of each country in the topline
+    PDF (question 17g, "Using marijuana"). The columns are the per cent of adults answering
+    morally acceptable, morally unacceptable, not a moral issue, depends on the situation
+    (volunteered) and don't know or refused, and the number of people asked.
+  name: Is using marijuana morally wrong?
+  publisher: Pew Research Center
+  title: Pew Research Center — In 25-country survey, Americans especially likely to view fellow citizens as morally bad (5 March 2026)
+  url: https://www.pewresearch.org/religion/2026/03/05/in-25-country-survey-americans-especially-likely-to-view-fellow-citizens-as-morally-bad/
+  data_url: https://www.pewresearch.org/wp-content/uploads/sites/20/2026/03/pr_2026.03.05_international-morality_topline.pdf
+  data_label: topline, question 17g
+  when: surveyed January to May 2025
+  about: >-
+    Adults were asked whether using marijuana is morally acceptable, morally unacceptable, or not
+    a moral issue. Nationally representative samples of about 1,000 people or more in each of 25
+    countries.
+  notes:
+    us: In the United States the question said “morally wrong” instead of “morally unacceptable”.
+  profile:
+    headline: "{unacceptable} call it immoral"
+    details: "{acceptable} acceptable · {not_moral} not a moral issue · {sample} people asked"
+  country: { column: country, by: id }
+  fields:
+    unacceptable: { column: unacceptable, format: percent }
+    acceptable: { column: acceptable, format: percent }
+    not_moral: { column: not_moral, format: percent }
+    depends: { column: depends, format: percent }
+    unsure: { column: unsure, format: percent }
+    sample: { column: n }
+  map:
+    field: unacceptable
+    format: percent
+    slug: marijuana-morality
+    label: Says marijuana is immoral
+    missing: Not among the 25 countries Pew surveyed
+    steps: [[0, "Under 20%"], [20, "20–35%"], [35, "35–50%"], [50, "50–70%"], [70, "70% or more"]]
+    title: Is using marijuana morally wrong? Views in 25 countries
+    lede: >-
+      The share of adults who say using marijuana is morally unacceptable, from Pew Research
+      Center's 2025 survey of 25 countries. The stronger the blue, the more people disapprove.
+    sub: >-
+      The stronger the blue, the more adults say using marijuana is morally unacceptable. Only 25
+      countries were surveyed; the rest are hatched.
+    note: >-
+      Pew Research Center, 2025 survey of 25 countries, published March 2026. Moral views are shown
+      for context and are not part of the score.
+
+- id: hfi
+  file: hfi-2025.csv
+  rail: true
+  origin: >-
+    The official data file as published by the Cato Institute, saved on 20 October 2026 and not
+    edited. It has a row for every jurisdiction and year from 2000 to 2023; the site uses the
+    overall, personal and economic freedom scores and the overall rank for 2023.
+  name: Human Freedom Index
+  publisher: Cato Institute and Fraser Institute
+  credit: Cato and Fraser Institutes
+  title: Cato Institute and Fraser Institute — The Human Freedom Index 2025
+  url: https://www.cato.org/human-freedom-index/2025
+  when: data for 2023
+  about: >-
+    A score from 0 to 10 for personal, civil and economic freedom, built from 87 indicators such
+    as the rule of law, freedom of movement, religion, expression and association, and the size of
+    government, trade and regulation. It covers 165 jurisdictions.
+  profile:
+    headline: "{human} of 10"
+    details: "rank {human_rank} · personal freedom {personal} · economic freedom {economic}"
+  country:
+    column: countries
+    by: name
+    aliases:
+      "Bahamas, The": bs
+      Brunei Darussalam: bn
+      "Congo, Dem. Rep.": cd
+      "Congo, Rep.": cg
+      Czech Republic: cz
+      "Egypt, Arab Rep.": eg
+      "Gambia, The": gm
+      "Hong Kong SAR, China": hk
+      "Iran, Islamic Rep.": ir
+      "Korea, Rep.": kr
+      Kyrgyz Republic: kg
+      Lao PDR: la
+      Russian Federation: ru
+      Slovak Republic: sk
+      Syrian Arab Republic: sy
+      "Venezuela, RB": ve
+      "Yemen, Rep.": ye
+      Turkey: tr
+      Turkiye: tr
+      Macedonia: mk
+      Swaziland: sz
+      Cape Verde: cv
+      Burma: mm
+      Viet Nam: vn
+      East Timor: tl
+      "Micronesia, Fed. Sts.": fm
+      St. Lucia: lc
+      St. Kitts and Nevis: kn
+      St. Vincent and the Grenadines: vc
+      Sao Tome and Principe: st
+      West Bank and Gaza: ps
+  year: { column: year }
+  fields:
+    human: { column: hf_score, decimals: 2, format: decimal }
+    human_rank: { column: hf_rank, format: rank }
+    personal: { column: pf_score, decimals: 2, format: decimal }
+    economic: { column: ef_score, decimals: 2, format: decimal }
+  map:
+    field: human
+    format: decimal
+    slug: human-freedom
+    label: Human Freedom Index
+    missing: Not covered by the Human Freedom Index
+    steps: [[0, "Under 5"], [5, "5–6"], [6, "6–7"], [7, "7–8"], [8, "8 or more"]]
+    title: Human Freedom Index by country, beside cannabis freedom
+    lede: >-
+      Personal, civil and economic freedom in 165 countries, scored from 0 to 10 by the Cato
+      Institute and the Fraser Institute. The stronger the blue, the freer the country by that
+      measure.
+    sub: >-
+      The stronger the blue, the freer the country by the Human Freedom Index. Countries it does
+      not cover are hatched.
+    note: >-
+      Human Freedom Index 2025 (Cato Institute and Fraser Institute), data for 2023. Shown for
+      context and not part of the score.
+
+- id: police_possession
+  file: unodc-drug-possession-police.csv
+  original: unodc-wdr2026-10.1-drug-related-crimes.xlsx
+  name: Police contact for drug use or possession
+  publisher: United Nations Office on Drugs and Crime (UNODC)
+  credit: UNODC
+  title: UNODC — World Drug Report 2026, statistical annex, table 10.1 Drug-related crimes
+  url: https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html
+  data_url: https://www.unodc.org/documents/data-and-analysis/WDR_2026/Annex/10.1_drug_related_crimes.xlsx
+  data_label: table 10.1, spreadsheet
+  when: latest year reported, mostly 2024
+  about: >-
+    People brought into formal contact with the police, such as being suspected, arrested or
+    cautioned, for offences of drug use or possession, as each government reports them to UNODC.
+    All illicit drugs are counted together: cannabis is not reported separately. Countries
+    define and record these offences differently, and some include administrative fines, so
+    compare with care. Shown per 100,000 people using today's population.
+  origin: >-
+    The publisher's spreadsheet was downloaded on 21 October 2026 and is published here
+    unchanged. The CSV is extracted from it by scripts/extract-unodc.py (offences): sheet "Formal
+    contact", offences related to drug use and/or possession, any illicit drug, the latest year
+    with a figure for each country. The United Kingdom reports the year ending March 2025.
+  profile:
+    headline: "{per} per 100,000 people"
+    details: "{persons} people in {year} · all drugs together"
+  country: { column: country, by: id }
+  fields:
+    persons: { column: persons, about: "Number of people: map colour (per 100,000) and profile" }
+    year: { column: year, format: text, about: "Year of the figure" }
+  map:
+    field: persons
+    per: 100000
+    format: rate
+    group: Law
+    slug: drug-possession-police
+    label: Police contact for possession
+    missing: Not reported to UNODC
+    steps: [[0, "Under 10"], [10, "10–50"], [50, "50–100"], [100, "100–250"], [250, "250 or more"]]
+    title: Police contact for drug use or possession, by country
+    lede: >-
+      How many people per 100,000 were brought into contact with the police for using or
+      possessing drugs, in the latest year each country reported to UNODC. All drugs together,
+      cannabis included. The stronger the blue, the more people.
+    sub: >-
+      The stronger the blue, the more people per 100,000 the police dealt with for drug use or
+      possession. All drugs together; countries count differently. Countries that do not report
+      are hatched.
+    note: >-
+      UNODC World Drug Report 2026, table 10.1: persons in formal contact with the police for
+      drug use or possession, all drugs, latest year reported. Not part of the score.
+
+- id: youth_use
+  file: unodc-cannabis-use-youth.csv
+  original: unodc-wdr2026-1.4-prevalence-youth.xlsx
+  name: Cannabis use at 15 and 16
+  publisher: United Nations Office on Drugs and Crime (UNODC)
+  credit: UNODC
+  title: UNODC — World Drug Report 2026, statistical annex, table 1.4 Prevalence of drug use in the youth population, national data
+  url: https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html
+  data_url: https://www.unodc.org/documents/data-and-analysis/WDR_2026/Annex/1.4_prevalence_of_drug_use_in_the_youth_population_national_data_national_data.xlsx
+  data_label: table 1.4, spreadsheet
+  when: school surveys from 2003 to 2024
+  about: >-
+    The share of 15- and 16-year-olds who used cannabis in the past year, mostly from school
+    surveys such as ESPAD, as each government reports them to UNODC. Only surveys of this age
+    group are used, so that countries can be compared: some large countries, Germany, France and
+    Spain among them, report only other age bands and are left out.
+  origin: >-
+    The publisher's spreadsheet was downloaded on 21 October 2026 and is published here
+    unchanged. The CSV is extracted from it by scripts/extract-unodc.py (youth): sheet "Cannabis",
+    rows covering ages 15 to 16 with a past-year figure, the latest survey for each country. Rows
+    about herb or resin only, or about one part of a country, are left out, and UNODC's age
+    group is written out ("(SS) 15 - 16" as "ages 15–16, school survey").
+  profile:
+    headline: "{past_year} in the past year"
+    details: "{lifetime} ever · {past_month} in the past month · {year} · {coverage}"
+  country: { column: country, by: id }
+  fields:
+    past_year: { column: past_year, format: percent, about: "Map colour and profile" }
+    lifetime: { column: lifetime, format: percent }
+    past_month: { column: past_month, format: percent }
+    year: { column: year, format: text }
+    coverage: { column: coverage, type: text, about: "Age group, and whether it was a school survey" }
+  map:
+    field: past_year
+    format: percent
+    group: Use
+    slug: youth-cannabis-use
+    label: Use at 15 and 16
+    missing: No survey of 15- and 16-year-olds reported to UNODC
+    steps: [[0, "Under 3%"], [3, "3–7%"], [7, "7–12%"], [12, "12–18%"], [18, "18% or more"]]
+    title: Cannabis use among 15- and 16-year-olds, by country
+    lede: >-
+      The share of 15- and 16-year-olds who used cannabis in the past year, from the latest school
+      survey each country reported to UNODC. The stronger the blue, the higher the share.
+    sub: >-
+      The stronger the blue, the more 15- and 16-year-olds used cannabis in the past year.
+      Countries without a survey of this age group are hatched.
+    note: >-
+      UNODC World Drug Report 2026, table 1.4: past-year use among 15- and 16-year-olds, latest
+      survey reported. Survey years differ between countries.

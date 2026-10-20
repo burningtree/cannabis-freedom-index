@@ -5,13 +5,14 @@
 import { Image } from "astro:assets";
 import { cultureSection } from "../lib/culture.js";
 
-const { entries, heading, more, limit } = Astro.props;
+const { entries, heading, more, limit, note } = Astro.props; // `note`: one line under the heading
 const first = limit && entries.length > limit + 1 ? entries.slice(0, limit) : entries;
 const groups = [first, entries.slice(first.length)];
 const base = import.meta.env.BASE_URL;
 ---
 <section class="c-culture">
   <h2>{heading}{more && <a href={more[1]}>{more[0]}</a>}</h2>
+  {note && <p class="c-culture-note">{note}</p>}
   {groups.map((list, g) => list.length > 0 && (() => {
     const rows = (
       <ul>

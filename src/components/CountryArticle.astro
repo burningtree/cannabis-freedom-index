@@ -1,11 +1,15 @@
 ---
 // Full write-up for one country. Rendered on its own page, and fetched into the
 // drawer on the home page — so there is a single template for both views.
-import { SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
+import { useAges, SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
 import { tierOf, tierColor } from "../lib/tiers.js";
 import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
 import PricePanel from "./PricePanel.astro";
+import CountryDatasets from "./CountryDatasets.astro";
+import CountryDatasetTab from "./CountryDatasetTab.astro";
+import { datasetsOf } from "../lib/datasets.js";
+import SourceTip from "./SourceTip.astro";
 import SourceCitation from "./SourceCitation.astro";
 import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
@@ -26,12 +30,16 @@ const unitUrl = (x) => `${countryUrl}${x.id}/`;
 const updated = sub ? sub.reviewed : d?.reviewed;
 const updatedText = updated && formatDate(updated);
 const byName = group ? [...group.units].sort((a, b) => a.name.localeCompare(b.name)) : [];
-// Recorded changes to the national score, newest first (not shown for a single state).
-const history = sub ? [] : changes.filter((ch) => ch.country === c);
-const scored = history.filter((ch) => ch.score); // the ones that moved the score
+// the spread of the states' or provinces' scores, shown beside the national estimate
+const unitRange = group ? `${Math.min(...group.units.map((x) => x.score))}–${Math.max(...group.units.map((x) => x.score))}` : "";
+// The country's history, newest first; on a state's or province's page only the entries about it.
+const history = changes.filter((ch) => ch.country === c && (!sub || ch.unit?.id === sub.id));
+const nationalCount = sub ? changes.filter((ch) => ch.country === c).length : 0;
+const scored = sub ? [] : history.filter((ch) => ch.score); // the ones that moved the score (the national one)
 // 48,000,000 → "48 million", 770,000 → "770,000"
 const people = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)} million` : n.toLocaleString("en-GB"));
 const use = sub ? null : c.use;
+const unitUse = sub?.use ?? null; // a state's or province's own survey figure
 // Crossing a border with cannabis. This is general guidance, the same rule almost everywhere,
 // worded for the country's status; it is not country-specific research.
 const SCHENGEN = new Set("AT BE BG HR CZ DK EE FI FR DE GR HU IS IT LV LI LT LU MT NL NO PL PT RO SK SI ES SE CH".split(" "));
@@ -47,25 +55,40 @@ const answers = answersFor(v.s);
 // The methodology lives on the home page: its section, or the description of one segment there.
 const method = (segId) => `${base}#${segId ? `method-${segId}` : "methodology"}`;
 
+// outside datasets with figures for the country, listed in their own tab
+const datasetCount = sub ? 0 : Object.keys(datasetsOf(c.slug)).length;
 // The right-hand side is split into tabs so that the history is one click away instead of at
 // the bottom of a long page: [id, label, count]. A single state has only its score breakdown.
-const tabs = [
-  ["score", "Score breakdown"],
-  d && ["context", "More context"],
-  history.length > 0 && ["history", "History", history.length],
-  d && ["sources", "Sources", d.sources.length],
-].filter(Boolean);
-// words and traditions of the cultural atlas that belong to this country
-const culture = sub ? [] : cultureOf(c);
+// A federation opens on its states or provinces, the national estimate after them; a single state
+// or province has its own breakdown, its history and the others of its country.
+const tabs = (sub
+  ? [
+      ["score", "Score breakdown"],
+      history.length > 0 && ["history", "History", history.length],
+      ["units", `Other ${group.plural}`, group.units.length - 1],
+    ]
+  : [
+      group && ["units", group.label === "State" ? "States" : group.plural[0].toUpperCase() + group.plural.slice(1), group.units.length],
+      ["score", group ? "National estimate" : "Score breakdown"],
+      d && ["context", "More context"],
+      history.length > 0 && ["history", "History", history.length],
+      d && datasetCount > 0 && ["datasets", "Datasets", datasetCount],
+      d && ["sources", "Sources", d.sources.length],
+    ]).filter(Boolean);
+const firstTab = tabs[0][0];
+// words and traditions of the cultural atlas that belong to this country; a state shows its country's
+const culture = cultureOf(c);
 ---
-<article class="country" data-id={c.id}>
+<article class="country" data-id={c.id} data-default-tab={firstTab}>
   {/* The masthead: name, verdict and the one big number; then the five plain answers. */}
   <div class="c-top">
     <div class="d-head">
       <span class="d-flag">{c.flag}</span>
       <div>
-        <h1>{c.name}</h1>
-        <p class="sub">{c.region}</p>
+        {/* a state or province is the page's subject: its name is the title, its country the line under it */}
+        {sub
+          ? <><h1>{sub.name}</h1><p class="sub">{group.label} of <a href={countryUrl}>{c.name}</a> · {c.region}</p></>
+          : <><h1>{c.name}</h1><p class="sub">{c.region}</p></>}
       </div>
     </div>
     {group && (
@@ -77,16 +100,11 @@ const culture = sub ? [] : cultureOf(c);
         </select>
       </label>
     )}
-    {sub && (
-      <div class="d-unit">
-        <h2>{sub.name}</h2>
-        <p class="sub">{group.label} of {c.name}</p>
-      </div>
-    )}
     <div class="d-score" style={`--c:${tierColor(v.raw)}`}>
       <p class="d-num" aria-label={`Score ${v.score} out of 100`}><b>{v.score}</b><span>/100</span></p>
       <div class="d-meter" aria-hidden="true"><i style={`width:${v.raw}%`}></i></div>
       <div>
+        {group && !sub && <p class="d-estimate" title={`A separate estimate for the country as a whole, not an average of its ${group.plural}`}>National estimate · {group.plural} {unitRange}</p>}
         <div class="tier">{tierOf(v.raw).name}</div>
         {sub
           ? <p class="sub">#{sub.rank} of {group.units.length} in {c.name}<br>would rank #{sub.worldRank} among countries</p>
@@ -130,8 +148,9 @@ const culture = sub ? [] : cultureOf(c);
     <p class="d-hint">A rough guide read from the scores below, not legal advice. The details and the exceptions are in each segment: select an answer to jump to it.</p>
   </div>
 
-  {/* Figures at a glance: users, prices and the score over time. A sticky rail on the full page. */}
+  {/* Figures at a glance: the score over time, users, other datasets and prices. A sticky rail on the full page. */}
   <div class="c-rail">
+    {scored.length > 0 && <CountryChart history={scored} context={history.filter((ch) => !ch.score)} />}
     {use && (
       <dl class="c-use">
         <div>
@@ -139,18 +158,38 @@ const culture = sub ? [] : cultureOf(c);
           <dd>{use.estimate ? "about " : ""}{people(use.users)}</dd>
         </div>
         <div>
-          <dt>Share aged 15–64</dt>
+          <dt>Share aged {useAges(use)}</dt>
           <dd>{use.estimate ? "about " : ""}{use.prevalence}%</dd>
         </div>
         <p>{use.estimate
           ? `An estimate: there is no national survey, so the median rate of surveyed countries in ${c.region} is assumed.`
-          : `People who used cannabis in the past year, from a ${use.year} survey applied to today's population.`}</p>
-        <p class="c-use-src">Source: <a href="https://www.unodc.org/unodc/en/data-and-analysis/wdr2022_annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report</a> prevalence figures, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a>; population aged 15–64 from the <a href="https://data.worldbank.org/indicator/SP.POP.1564.TO" target="_blank" rel="noopener noreferrer">World Bank</a>.</p>
+          : `People who used cannabis in the past year, from a ${use.period ?? use.year} survey applied to today's population${use.source === "earlier" ? ". An earlier figure: UNODC's 2026 table has none for this country" : ""}.`}</p>
+        <SourceTip>{use.source === "wdr2026"
+          ? <><a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>, annex table 1.2</>
+          : use.source === "earlier"
+            ? <>An earlier UNODC figure, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a></>
+            : <>The median of surveyed countries in {c.region}, from <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a> figures</>}; users from the population aged 15–64 (<a href="https://data.worldbank.org/indicator/SP.POP.1564.TO" target="_blank" rel="noopener noreferrer">World Bank</a>). <a href={`${base}sources/#dataset-cannabis_use`}>The whole dataset →</a></SourceTip>
       </dl>
     )}
+    {unitUse && (
+      <dl class="c-use">
+        {unitUse.users && (
+          <div>
+            <dt>Cannabis users</dt>
+            <dd>{people(unitUse.users)}</dd>
+          </div>
+        )}
+        <div>
+          <dt>Share aged {unitUse.ages}</dt>
+          <dd>{unitUse.share}%</dd>
+        </div>
+        <p>People who used cannabis in the past year, {unitUse.year}.{unitUse.note && ` ${unitUse.note}`} The survey's own age band, so not directly comparable with the national figures.</p>
+        <SourceTip>{unitUse.source[1] ? <a href={unitUse.source[1]} target="_blank" rel="noopener noreferrer">{unitUse.source[0]}</a> : unitUse.source[0]}</SourceTip>
+      </dl>
+    )}
+    {!sub && <CountryDatasets c={c} all={datasetCount} />}
     {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
-    {scored.length > 0 && <CountryChart history={scored} context={history.filter((ch) => !ch.score)} />}
-    {culture.length > 0 && <CultureList entries={culture} heading="Culture" more={["The atlas →", `${base}culture/`]} limit={6} />}
+    {culture.length > 0 && <CultureList entries={culture} heading="Culture" more={["The atlas →", `${base}culture/`]} limit={6} note={sub ? `These belong to the whole country, not to ${sub.name} alone.` : null} />}
   </div>
 
   <div class="c-main">
@@ -161,11 +200,36 @@ const culture = sub ? [] : cultureOf(c);
         ))}
       </nav>
     )}
-    <div class="c-panel" id="panel-score" data-panel="score" role={tabs.length > 1 ? "tabpanel" : undefined} aria-labelledby={tabs.length > 1 ? "tab-score" : undefined}>
-    <h2 class="d-h">Score breakdown <span>▏world average <button type="button" class="seg-toggle" data-seg-toggle aria-expanded="false">Open all</button></span></h2>
+    {group && (
+      <div class="c-panel" id="panel-units" data-panel="units" role="tabpanel" aria-labelledby="tab-units" hidden={firstTab !== "units"}>
+      <section class="c-units">
+        <h2 class="d-h">{sub ? `Other ${group.plural}` : `By ${group.label.toLowerCase()}`} <span>{group.units.length} scored · national estimate {c.score}</span></h2>
+        {!sub && <p class="d-hint">{group.intro}</p>}
+        <ol class="units">
+          {group.units.map((x) => (
+            <li class={sub?.id === x.id ? "current" : undefined}>
+              <a href={unitUrl(x)} data-subunit>
+                <span class="u-rank">{x.rank}</span>
+                <span class="u-name">{x.name}</span>
+                <span class="u-score">{x.score}</span>
+                <span class="bar"><i style={`width:${x.raw}%;background:${tierColor(x.raw)}`}></i></span>
+              </a>
+            </li>
+          ))}
+        </ol>
+        {!sub && (
+          <ul class="srcs">
+            {group.sources.map((source) => <SourceCitation source={source} />)}
+          </ul>
+        )}
+      </section>
+      </div>
+    )}
+    <div class="c-panel" id="panel-score" data-panel="score" role={tabs.length > 1 ? "tabpanel" : undefined} aria-labelledby={tabs.length > 1 ? "tab-score" : undefined} hidden={firstTab !== "score"}>
+    <h2 class="d-h">{group && !sub ? "National estimate" : "Score breakdown"} <span>▏world average <button type="button" class="seg-toggle" data-seg-toggle aria-expanded="false">Open all</button></span></h2>
     {sub
       ? <p class="d-hint">{group.intro} Select a segment to show or hide the rules. <a href={method()}>How the scores are made →</a></p>
-      : <p class="d-hint">Select a segment to show or hide the exact rules and sources. <a href={method()}>How the scores are made →</a></p>}
+      : <p class="d-hint">{group && `One estimate for ${c.name} as a whole: federal law and what holds in most ${group.plural}. It is not an average of the ${group.plural}, which run from ${unitRange}. `}Select a segment to show or hide the exact rules and sources. <a href={method()}>How the scores are made →</a></p>}
     {sub && SEGMENTS.map((s, i) => (
       <details class="segrow" data-seg={s.id}>
         <summary>
@@ -220,29 +284,6 @@ const culture = sub ? [] : cultureOf(c);
         </details>
       );
     })}
-    {group && (
-      <section class="c-units">
-        <h2 class="d-h">{sub ? `Other ${group.plural}` : `By ${group.label.toLowerCase()}`} <span>{group.units.length} scored</span></h2>
-        {!sub && <p class="d-hint">{group.intro}</p>}
-        <ol class="units">
-          {group.units.map((x) => (
-            <li class={sub?.id === x.id ? "current" : undefined}>
-              <a href={unitUrl(x)} data-subunit>
-                <span class="u-rank">{x.rank}</span>
-                <span class="u-name">{x.name}</span>
-                <span class="u-score">{x.score}</span>
-                <span class="bar"><i style={`width:${x.raw}%;background:${tierColor(x.raw)}`}></i></span>
-              </a>
-            </li>
-          ))}
-        </ol>
-        {!sub && (
-          <ul class="srcs">
-            {group.sources.map((source) => <SourceCitation source={source} />)}
-          </ul>
-        )}
-      </section>
-    )}
 
     </div>
 
@@ -285,7 +326,13 @@ const culture = sub ? [] : cultureOf(c);
     )}
     {history.length > 0 && (
       <div class="c-panel" id="panel-history" data-panel="history" role="tabpanel" aria-labelledby="tab-history" hidden>
-        <CountryChanges history={history} />
+        <CountryChanges history={history} unitLabel={!sub && group ? group.label : null} showUnit={!sub} scoreLine={!sub}
+          more={sub ? <>Only the entries about {sub.name}. <a href={`${countryUrl}#history`}>All {nationalCount} entries on the national page →</a></> : null} />
+      </div>
+    )}
+    {d && datasetCount > 0 && (
+      <div class="c-panel" id="panel-datasets" data-panel="datasets" role="tabpanel" aria-labelledby="tab-datasets" hidden>
+        <CountryDatasetTab c={c} />
       </div>
     )}
     {d && (

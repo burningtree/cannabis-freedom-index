@@ -1,12 +1,12 @@
 ---
 import Base from "../layouts/Base.astro";
-import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries, places } from "../lib/countries.js";
+import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries, places, estimateNote } from "../lib/countries.js";
 import { flatLatestPricesFor } from "../lib/prices.js";
 import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
 
 const light = places.map(({ id, slug, name, flag, region, raw, score, rank, s, rec, med, territory }) =>
-  ({ id, slug, name, flag, region, raw, score, rank, s, rec, med, kind: territory?.label, prices: SHOW_PRICES ? flatLatestPricesFor(id) : {} }));
+  ({ id, slug, name, flag, region, raw, score, rank, s, rec, med, kind: territory?.label, fe: estimateNote(places.find((x) => x.id === id)), prices: SHOW_PRICES ? flatLatestPricesFor(id) : {} }));
 const meta = {
   segments: SEGMENTS.map((s) => ({ name: s.name, weight: s.weight })),
   context: CONTEXT_NAMES,
@@ -147,7 +147,7 @@ const presets = [
         row("Index", cs.map((c) => `
           <div class="cmp-score${c.score === bestScore ? " best" : ""}"><b>${c.score}</b><span>/ 100</span></div>
           <div class="bar"><i style="width:${c.raw}%;background:${tierColor(c.raw)}"></i></div>
-          <div class="cmp-sub">${tierOf(c.raw).name}</div>`), "cmp-index"),
+          <div class="cmp-sub">${tierOf(c.raw).name}</div>${c.fe ? `<div class="cmp-sub">${esc(c.fe)}</div>` : ""}`), "cmp-index"),
         row("World rank", cs.map((c) => (c.rank ? `#${c.rank} <span class="cmp-sub">of ${META.total}</span>` : `<span class="cmp-sub">not ranked: ${c.kind}</span>`))),
         row("Recreational", cs.map((c) => `<span class="chip s-${c.rec}">${META.rec[c.rec]}</span>`)),
         row("Medical", cs.map((c) => `<span class="chip s-${c.med}">${META.med[c.med]}</span>`)),

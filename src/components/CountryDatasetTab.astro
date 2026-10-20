@@ -1,0 +1,67 @@
+---
+// The profile's Datasets tab: every outside dataset that covers the country (src/lib/datasets.js),
+// one row each: its name, one headline figure and a line of further figures, written as set
+// under `profile` in datasets.yaml, with where it comes from and links to its map and its entry
+// on the sources page.
+import { DATASETS, datasetsOf } from "../lib/datasets.js";
+import { viewByMetric } from "../lib/map-views.js";
+
+const { c } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const own = datasetsOf(c.slug);
+const num = (n) => n.toLocaleString("en-GB");
+const FORMAT = {
+  number: (v) => num(v),
+  percent: (v) => `${v}%`,
+  decimal: (v) => v.toFixed(2),
+  rank: (v, d) => `#${v} of ${d.total}`,
+  text: (v, d, f) => f.values?.[v] ?? String(v).replace(/(\d)-(\d)/g, "$1–$2"),
+};
+// one figure of a row, written out; undefined when the row lacks it
+const figure = (d, row, name) => {
+  if (name === "per") return d.map?.per ? d.map.format(d.map.value(row, c)) : undefined;
+  const f = d.fields[name];
+  if (!f) return row[name] != null ? String(row[name]) : undefined; // a series' year
+  return row[name] == null ? undefined : FORMAT[f.format ?? (f.type === "text" ? "text" : "number")](row[name], d, f);
+};
+// a template such as "{users} people · survey {period}": each part whose figures are all there
+const fill = (d, row, template = "") => template.split(" · ").map((part) => {
+  let missing = false;
+  const text = part.replace(/\{(\w+)\}/g, (_, name) => figure(d, row, name) ?? ((missing = true), ""));
+  return missing ? null : text.trim();
+}).filter(Boolean).join(" · ");
+// the headline's first figure is set large: [figure, the words after it]
+const headline = (d, row) => {
+  const m = d.profile.headline.match(/^\{(\w+)\}(.*)$/);
+  return m ? [figure(d, row, m[1]), fill(d, row, m[2])] : ["", fill(d, row, d.profile.headline)];
+};
+const mapHref = (d) => (d.map ? `${base}map/${viewByMetric[`data:${d.id}`].slug}/` : (d.pages ?? []).filter((p) => p.path.startsWith("map/")).map((p) => `${base}${p.path}`)[0]);
+
+const rows = Object.values(DATASETS).filter((d) => own[d.id]).map((d) => {
+  const data = own[d.id];
+  const series = Array.isArray(data) ? data : null;
+  const row = series ? series.at(-1) : data;
+  // a series also lists a few earlier years, oldest first
+  const earlier = series ? [...(d.profile.years ?? [])].sort((a, b) => a - b).map((y) => series.find((r) => r.year === y)).filter(Boolean).map((r) => `${figure(d, r, Object.keys(d.fields)[0])} in ${r.year}`) : [];
+  return { d, head: headline(d, row), details: [fill(d, row, d.profile.details), ...earlier].filter(Boolean).join(" · "), note: d.notes[c.slug] };
+});
+---
+{rows.length > 0 && (
+  <section class="c-ds">
+    <h2 class="d-h">Datasets <span>{rows.length} with figures for {c.name} · not part of the score</span></h2>
+    <p class="d-hint">What other organisations publish about {c.name}. Every file is published in full on the <a href={`${base}sources/#datasets`}>sources page</a>.</p>
+    <ol class="ds-list">
+      {rows.map(({ d, head, details, note }) => (
+        <li class="ds-row" id={`ds-${d.id}`}>
+          <div class="ds-main">
+            <h3>{d.name}</h3>
+            {details && <p class="ds-details">{details}</p>}
+            {note && <p class="ds-details">{note}</p>}
+            <p class="ds-meta">{d.credit ?? d.publisher}{mapHref(d) && <> · <a href={mapHref(d)}>Map</a></>} · <a href={`${base}sources/#dataset-${d.id}`}>About</a></p>
+          </div>
+          <p class="ds-headline"><b>{head[0]}</b>{head[1] && ` ${head[1]}`}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+)}

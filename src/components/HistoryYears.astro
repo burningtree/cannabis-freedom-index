@@ -1,5 +1,6 @@
 ---
-// Years of the History ledger, newest first: the year set large, its entries ruled beside it.
+// Years of the History ledger, newest first: the year set large, its entries ruled beside it, a
+// busy year divided into months, listed under the year as a sticky index that marks the month in view.
 // Used by the decade and kind pages, and by the year fragments that the continuous list at
 // /history/ loads as the reader scrolls (src/pages/fragments/history/[year].astro).
 import ScoreChange from "./ScoreChange.astro";
@@ -9,24 +10,56 @@ import { articles, formatDate } from "../lib/countries.js";
 const { years } = Astro.props; // [{ year, items }]
 const base = import.meta.env.BASE_URL;
 const scoredIn = (items) => items.filter((ch) => ch.score).length;
+const count = (n, one, many) => (n === 1 ? `1 ${one}` : `${n} ${many}`);
+// A busy year is split into months: from MONTHS_FROM entries, when they fall in more than one month.
+// Entries dated only by the year form a group of their own, "Month not known".
+const MONTHS_FROM = 4;
+const monthName = (year, m) => new Date(Date.UTC(year, m - 1)).toLocaleString("en-GB", { month: "long", timeZone: "UTC" });
+const monthsOf = (year, items) => {
+  const groups = new Map();
+  for (const ch of items) {
+    const key = ch.date.length > 4 ? ch.date.slice(5, 7) : "";
+    if (!groups.has(key)) groups.set(key, { key, label: key ? monthName(year, +key) : "Month unknown", items: [] });
+    groups.get(key).items.push(ch);
+  }
+  // newest month first, as the entries are; the undated ones last
+  const list = [...groups.values()].sort((a, b) => (!a.key) - (!b.key) || b.key.localeCompare(a.key));
+  return items.length >= MONTHS_FROM && list.length > 1 ? list : null;
+};
 ---
-{years.map(({ year, items }) => (
-  <section class="hist-year" id={`y${year}`} data-year={year} aria-labelledby={`yh${year}`} data-scored={scoredIn(items) ? "" : undefined}>
-    <h2 id={`yh${year}`}><a href={`${base}history/?from=${year}`} title={`Link to ${year}`}>{year}</a><small class="n-all">{items.length === 1 ? "1 entry" : `${items.length} entries`}</small><small class="n-scored">{scoredIn(items) === 1 ? "1 score change" : `${scoredIn(items)} score changes`}</small></h2>
-    <ol>
-      {items.map((ch) => (
-        <li data-scored={ch.score ? "" : undefined}>
-          <a href={`${base}history/${ch.id}/`}>
-            <time datetime={ch.date}>{ch.date.length === 4 ? "" : formatDate(ch.date).replace(` ${year}`, "")}</time>
-            <div class="he-body">
-              <p class="he-place">{ch.place.flag} {ch.place.name} <span class="he-kind"><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
-              <h3>{ch.title}</h3>
-              <p class="he-text">{ch.description}</p>
-            </div>
-            {ch.score ? <ScoreChange score={ch.score} /> : <span></span>}
-          </a>
-        </li>
-      ))}
-    </ol>
-  </section>
-))}
+{years.map(({ year, items }) => {
+  const months = monthsOf(year, items);
+  const monthId = (m) => `m${year}-${m.key || "x"}`;
+  const entries = (list) => list.map((ch) => (
+    <li data-scored={ch.score ? "" : undefined}>
+      <a href={`${base}history/${ch.id}/`}>
+        <time datetime={ch.date}>{ch.date.length === 4 ? "" : formatDate(ch.date).replace(` ${year}`, "")}</time>
+        <div class="he-body">
+          <p class="he-place">{ch.place.flag} {ch.place.name}{ch.unit && ` · ${ch.unit.name}`} <span class="he-kind"><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
+          <h3>{ch.title}</h3>
+          <p class="he-text">{ch.description}</p>
+        </div>
+        {ch.score ? <ScoreChange score={ch.score} /> : <span></span>}
+      </a>
+    </li>
+  ));
+  return (
+    <section class="hist-year" id={`y${year}`} data-year={year} aria-labelledby={`yh${year}`} data-scored={scoredIn(items) ? "" : undefined}>
+      <div class="hist-side">
+        <h2 id={`yh${year}`}><a href={`${base}history/?from=${year}`} title={`Link to ${year}`}>{year}</a><small class="n-all">{count(items.length, "entry", "entries")}</small><small class="n-scored">{count(scoredIn(items), "score change", "score changes")}</small></h2>
+        {months && (
+          <ol class="hist-mnav" aria-label={`Months of ${year}`}>
+            {months.map((m) => (
+              <li data-scored={scoredIn(m.items) ? "" : undefined}><a href={`#${monthId(m)}`}>{m.label}<small class="n-all">{m.items.length}</small><small class="n-scored">{scoredIn(m.items)}</small></a></li>
+            ))}
+          </ol>
+        )}
+      </div>
+      {months ? (
+        <ol class="hist-months">
+          {months.map((m) => <li class="hm" id={monthId(m)} data-scored={scoredIn(m.items) ? "" : undefined}><ol>{entries(m.items)}</ol></li>)}
+        </ol>
+      ) : <ol>{entries(items)}</ol>}
+    </section>
+  );
+})}

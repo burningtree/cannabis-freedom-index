@@ -299,7 +299,8 @@ How to decide:
 - Leave the section out when no source was read. Do not guess from neighbouring countries.
 
 A law that changes seed or clone rules goes into `changes.yaml` as a context entry (category
-`other`, or `easing` / `tightening` when it clearly is one), with no `before`.
+`hemp`, or `easing` / `tightening` when it clearly changes what a cannabis user may do), with no
+`before`, tagged `seeds`.
 
 `node scripts/data-status.cjs planting` shows which profiles have the section and lists the rest by
 score, highest first. State and province files do not carry it yet. The statuses and their labels
@@ -312,21 +313,75 @@ all read from there, together with `PLANTING_TRADE`.
 The history also covers cannabis cultivation, food, fibre, medicine, trade, science,
 art and everyday culture. Do not limit research to bans and legal reform. Record a
 dated publication, excavation report or other event in `changes.yaml`, normally as
-unscored `other`; recurring practices belong in the cultural atlas as described in
+unscored `culture`; recurring practices belong in the cultural atlas as described in
 [CULTURE.md](CULTURE.md). Keep the date of a modern discovery separate from the age
 of the evidence it describes. Do not infer intoxication from every seed or textile,
 or present historical therapeutic claims as established efficacy.
+
+## Outside datasets
+
+Figures from other organisations' datasets stay in their own files in `/datasets`, as CSV,
+and are read at build time; nothing is copied into the country files. They are shown in the
+profile's rail ("Beyond the law"), get a view of their own on the world map (the Society
+group) and are never part of the score.
+
+- `datasets/datasets.yaml` defines each dataset: its file, source and citation, which column
+  names the country (by our file name or by country name, with aliases for names that
+  differ), an optional year column (only the latest year is used), the fields to read and
+  how one of them colours the map. The format is described at the top of that file and
+  checked by `src/content.config.ts`; the reading is done by `src/lib/datasets.js`.
+- Every file and `datasets.yaml` itself are published unchanged at `/data/datasets/<file>`
+  and described on the sources page (`/sources/#datasets`): publisher, coverage, size, rows,
+  SHA-256, the columns used and `origin`, which must say honestly how the file was made
+  (downloaded as published, or transcribed, and on what date). These files keep their
+  publishers' terms, not the site's CC BY licence.
+- A dataset whose file is missing is left out with a warning. Country names that match no
+  country file are listed in the build output: add an alias in `datasets.yaml`.
+- To update a dataset, replace its CSV with the new edition (and the file name and
+  citation in `datasets.yaml` if they change).
+- `unodc-cannabis-use.csv`: cannabis use for every country (share of adults, survey year or
+  period, age band, number of users). Rebuilt by `python3 scripts/extract-unodc.py use` from
+  the UNODC spreadsheet kept beside it (`unodc-wdr2026-1.2-prevalence-national.xlsx`, World
+  Drug Report 2026 annex, table 1.2), with the World Bank's population aged 15–64 fetched when
+  it runs. `source` says where each row comes from: `wdr2026`, `earlier` (a figure the table
+  lacks, kept from Wikipedia's list of older UNODC figures) or `estimate` (regional median). It
+  feeds the Use views of the map, the rankings and the profiles, so every country file needs a
+  row; the build stops if one is missing. A new country gets one when the script runs again.
+- `unodc-cannabis-use-youth.csv`: past-year cannabis use among 15- and 16-year-olds, from
+  `python3 scripts/extract-unodc.py youth` and the UNODC spreadsheet beside it
+  (`unodc-wdr2026-1.4-prevalence-youth.xlsx`, table 1.4). Only that age group is kept, so that
+  countries compare; countries reporting other bands (Germany, France, Spain) are left out.
+- `population.csv`: population by year for every country (`country,year,population`), a figure
+  every ten years from 1900 to 2020 and the latest one. It weights the population-weighted
+  average and is read by `scripts/article-backlog.cjs` and `scripts/data-status.cjs`; every
+  country needs at least one row.
+- `unodc-drug-possession-police.csv`: people brought into contact with the police for drug use
+  or possession (all drugs), extracted by `python3 scripts/extract-unodc.py offences` from the
+  UNODC spreadsheet kept beside it (`unodc-wdr2026-10.1-drug-related-crimes.xlsx`, World Drug
+  Report 2026 annex, table 10.1). For a new edition, replace the spreadsheet, update `original`,
+  `title` and `data_url` in `datasets.yaml`, and run the script again. Shown per 100,000
+  people (`map.per`), using the latest population.
+- `pew-marijuana-morality-2026.csv`: Pew Research Center, "Using marijuana" (Q17g), the
+  "Total" rows of the 2026 international morality topline, transcribed by hand.
+- `hfi-2025.csv`: Human Freedom Index 2025 (Cato and Fraser Institutes), the official CSV
+  as downloaded. Both sites block scripted downloads, so it has to be saved from a browser.
+
+To add a dataset: put its CSV in `/datasets` and add a definition to `datasets.yaml`; the map
+view follows from that. The profile block is written for each dataset in
+`src/components/CountryDatasets.astro`.
 
 ## How a history entry works
 
 ```yaml
 - id: tunisia-law-52-amended-2017     # also the page address; never reuse or rename lightly
   date: "2017-04-25"                  # YYYY-MM-DD, YYYY-MM or YYYY, as precise as the source
-  category: easing                    # ban tightening death easing legalisation medical debate international other
+  category: easing                    # see "Choosing the category" below
+  tags: [court]                       # optional; keys of CHANGE_TAGS in src/lib/segment-ids.js
   country: tn                         # omit for international entries
+  subunit: on                         # optional, in a federation: the state or province it is about
   title: Tunisia gives judges discretion in drug cases
   description: >-
-    One to three sentences. Only what the source states.
+    Two to four sentences. Only what the source states. How to write it: docs/WRITING.md.
   before: {possession: 0, cultivation: 0, enforcement: 0, sharing: 0, consumption: 1, access: 0}
   checked: true                       # only when the source was opened and read
   sources:
@@ -356,6 +411,47 @@ other accepted types are `web`, `journal`, `report`, `law` and `other`. `authors
 source provides and make `locator` as precise as practical. Print sources render as citations
 rather than dead links and have no Internet Archive copy. Price observations remain web-only and
 still require a URL.
+
+### Choosing the category
+
+Every entry has exactly one `category`. Go down this list and take the **first** that fits:
+
+1. **`death`**: the death penalty for cannabis is introduced, used, limited or removed.
+2. **`legalisation`**: possession, growing or sales become legal for adults.
+3. **`ban`**: cannabis is restricted for the first time, or banned again after being legal.
+4. **`medical`**: medical cannabis is allowed, widened, narrowed or refused, including
+   cannabis medicines such as Sativex or dronabinol.
+5. **`tightening`** / **`easing`**: a law, decree or ruling makes things harsher or milder for
+   people who use, grow or sell cannabis (penalties, offences, thresholds, a ruling that
+   protects users). A court ruling goes here when it changes how the law is applied.
+6. **`hemp`**: fibre and food hemp, CBD and low-THC products, and seeds: their rules and their
+   industry, when they do not change what a cannabis user may do. A hemp flower ban that closes
+   shops is `tightening`. Hemp in old texts and traditions is `culture`, tagged `hemp`.
+7. **`international`**: treaties, a country joining or leaving one (tag `ratification`), and
+   decisions of UN or other international bodies.
+8. **`debate`**: a bill, report, commission, campaign, referendum petition or vote, or a court
+   refusing to rule, that changed no rule by itself.
+9. **`enforcement`**: raids, seizures, arrests, crackdowns, a single case or sentence,
+   statistics on arrests: how a law was applied, without a change in the law.
+10. **`culture`**: traditions, trade, markets, fairs, books, research, discoveries, patents,
+    surveys of use, and organisations that are not campaigns.
+11. **`other`**: a law or ruling that does not clearly make things harsher or milder: a new code
+    that keeps the same rules, a change of the responsible authority, or a mixed reform.
+
+Steps 1 to 6 are for rules that actually changed. A bill, plan, draft or promise about any of
+them is `debate` until it is passed.
+
+`other` is the last resort, not the default. Topics that cut across categories (a court, a
+referendum, home growing, religion, colonial rule) go in `tags`, not in the category.
+
+### States and provinces
+
+In the United States, Canada and Australia, set `subunit` when an entry is about one state,
+province or territory: its own law, court ruling, ballot vote, regulator, programme or a case
+tried there. Leave it out for federal law, national bodies and courts (a US Supreme Court ruling
+on a case from one state is still federal), and for events that span several states. The entry
+keeps its `country`, and a `before` on it is still about the national score. It is listed on the
+country's History tab, labelled with its state, and on the state's own page.
 
 - **`before`** is the six scores *before* the event. The scores after it are the `before` of the
   same country's next scored entry, or the country's current scores. So the chain must be
@@ -754,7 +850,7 @@ sources:                     # added to the entry's own sources
 The story in Markdown: paragraphs, `## Subheadings`, `> quotes`, lists, links and pictures.
 ```
 
-Rules: write only what the listed sources say. Keep it compact: about 350 to 500 words, a short
+Rules: write only what the listed sources say, in plain words for a reader who is not a lawyer (`docs/WRITING.md`). Keep it compact: about 350 to 500 words, a short
 opening, three to five short sections and at most one small table. Side events belong in their
 own `changes.yaml` entries, linked from the article, not narrated in it. A picture is optional and most articles should
 have none: use one only when it shows the subject itself (the person, the place, the object), never

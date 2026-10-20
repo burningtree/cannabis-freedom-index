@@ -1,22 +1,140 @@
 ---
 // A country's recorded changes, newest first, at the end of the country article.
 // The same ledger rows as the History page: date, what happened, and the score before and after.
+// Over them, as on the History page but for this country alone: a low strip with its entries per
+// decade and its own score as a line, and filters by kind and tag that work in place, the bars
+// following the filter.
 import ScoreChange from "./ScoreChange.astro";
 import { Icon } from "astro-icon/components";
-import { changeDate, articles } from "../lib/countries.js";
+import { changeDate, articles, HISTORY_FROM, dateTime, lastUpdated, CHANGE_CATEGORIES } from "../lib/countries.js";
 
-const { history } = Astro.props;
+// `history`: newest first. `unitLabel`: on a federation's page, the name of its parts ("State"), for
+// a filter by state; `showUnit`: label each entry with its state. `scoreLine`: draw the score (false
+// on a state's page, where the score is the country's). `more`: a link to the country's full history.
+const { history, unitLabel = null, showUnit = false, scoreLine = true, more = null } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const num = (n) => n.toLocaleString("en-GB");
+const yearOfEntry = (ch) => +ch.date.slice(0, 4);
+const decadeOf = (ch) => (yearOfEntry(ch) < HISTORY_FROM ? 0 : Math.floor(yearOfEntry(ch) / 10) * 10); // 0: before 1860
+
+// the decades shown: from the first one with an entry to this one, with a slot for anything before 1860
+const dated = history.filter((ch) => !ch.estimate);
+const thisDecade = Math.floor(new Date(lastUpdated).getUTCFullYear() / 10) * 10;
+const firstDecade = Math.max(HISTORY_FROM, Math.min(thisDecade, ...dated.map(decadeOf).filter(Boolean)));
+const decades = [...(dated.some((ch) => decadeOf(ch) === 0) ? [0] : [])];
+for (let d = firstDecade; d <= thisDecade; d += 10) decades.push(d);
+const slots = decades.length;
+const label = (d) => (d === 0 ? "Earlier" : `${d}s`);
+// the panel is narrow: about six decade labels, evenly spaced, always the last
+const every = Math.ceil(slots / 6);
+const labelled = (i) => (slots - 1 - i) % every === 0;
+const bars = decades.map((d, i) => {
+  const items = dated.filter((ch) => decadeOf(ch) === d);
+  return { d, i, all: items.length, scored: items.filter((ch) => ch.score).length };
+});
+const most = Math.max(1, ...bars.map((b) => b.all)) * 1.15;
+
+// the country's score as a step line on a 0–100 scale, from its first decade on the axis to now
+const x0 = decades[0] === 0 ? firstDecade - 10 : firstDecade;
+const x1 = thisDecade + 10;
+const yearOf = (iso) => { const t = new Date(dateTime(iso)); return t.getUTCFullYear() + t.getUTCMonth() / 12 + t.getUTCDate() / 365; };
+const x = (yr) => ((Math.max(yr, x0) - x0) / (x1 - x0)) * 100;
+const y = (v) => 100 - v;
+const steps = [...history].filter((ch) => ch.score && !ch.estimate).reverse(); // oldest first
+const start = steps[0]?.raw.before;
+const now = steps.at(-1)?.raw.after;
+const line = scoreLine && steps.length ? `M0,${y(start)}` + steps.map((ch) => `H${x(yearOf(ch.date))}V${y(ch.raw.after)}`).join("") + `H${x(yearOf(lastUpdated))}` : null;
+
+// the kinds and tags that occur here, with their counts
+const kinds = Object.entries(CHANGE_CATEGORIES).map(([key, k]) => ({ key, ...k, n: history.filter((ch) => ch.category === key).length })).filter((k) => k.n);
+const tagMap = new Map();
+for (const ch of history) for (const t of ch.tags) tagMap.set(t.key, { ...t, n: (tagMap.get(t.key)?.n ?? 0) + 1 });
+const tags = [...tagMap.values()].sort((a, b) => b.n - a.n || a.label.localeCompare(b.label));
+// the states or provinces with entries of their own, most first
+const unitMap = new Map();
+for (const ch of history) if (ch.unit) unitMap.set(ch.unit.id, { ...ch.unit, n: (unitMap.get(ch.unit.id)?.n ?? 0) + 1 });
+const units = unitLabel ? [...unitMap.values()].sort((a, b) => b.n - a.n || a.name.localeCompare(b.name)) : [];
 ---
-<div class="c-changes">
+<div class="c-changes ch-hist">
   <h2 class="d-h">History <span>{history.filter((ch) => ch.confidence.key === "checked").length} of {history.length} checked against a source</span></h2>
+
+  {history.length > 3 && (
+    <button type="button" class="hf-toggle ch-toggle" aria-expanded="false" aria-controls={`chFilter-${history[0].country?.slug ?? "x"}`} data-text={units.length ? `Filter by kind, ${unitLabel.toLowerCase()} or tag` : "Filter by kind or tag"}>{units.length ? `Filter by kind, ${unitLabel.toLowerCase()} or tag` : "Filter by kind or tag"}</button>
+  )}
+  {history.length > 3 && (
+    <nav class="ch-filter" id={`chFilter-${history[0].country?.slug ?? "x"}`} aria-label="Filter this country's history" hidden>
+      <div class="ch-frow">
+        <span class="hf-label">Kind</span>
+        <div class="ch-chips">
+          <button type="button" data-f="" aria-pressed="true">All <small>{history.length}</small></button>
+          {kinds.map((k) => <button type="button" data-f={`k:${k.key}`} data-label={k.label} aria-pressed="false" title={k.includes}><Icon name={k.icon} class="ico" aria-hidden="true" /> {k.label} <small>{k.n}</small></button>)}
+        </div>
+      </div>
+      {units.length > 0 && (
+        <div class="ch-frow">
+          <span class="hf-label">{unitLabel.split(" ")[0]}</span>
+          <div class="ch-chips">
+            <button type="button" data-f="u:" data-label={`Federal and national`} aria-pressed="false" title="Entries about the country as a whole">National <small>{history.filter((ch) => !ch.unit).length}</small></button>
+            {units.map((u) => <button type="button" data-f={`u:${u.id}`} data-label={u.name} aria-pressed="false">{u.name} <small>{u.n}</small></button>)}
+          </div>
+        </div>
+      )}
+      {tags.length > 0 && (
+        <div class="ch-frow">
+          <span class="hf-label">Tag</span>
+          <div class="ch-chips">
+            {tags.map((t) => <button type="button" data-f={`t:${t.key}`} data-label={t.label} aria-pressed="false" title={t.help}>{t.label} <small>{t.n}</small></button>)}
+          </div>
+        </div>
+      )}
+    </nav>
+  )}
+
+  {dated.length > 3 && (
+    <section class="hy ch-chart" aria-label={`Entries per decade${line ? " and the score" : ""}`}>
+      <div class="hy-head">
+        <h3 class="ch-chart-h">{line ? <>Score <span>and entries per decade</span></> : "Entries per decade"}</h3>
+        {line && <p class="hy-now"><b>{Math.round(now)}</b> <span>today, from {Math.round(start)} before its first recorded change</span></p>}
+      </div>
+      <div class="hy-plot">
+        <nav class="hy-bars" aria-label="Decades">
+          {bars.map((b) => (
+            <a href={b.all ? "#" : undefined} data-decade={b.d} style={`left:${(b.i / slots) * 100}%;width:${100 / slots}%`} aria-label={`${label(b.d)}: ${b.all} ${b.all === 1 ? "entry" : "entries"}`}>
+              <span class="hy-n">{b.all || ""}</span>
+              <i style={`height:${(b.all / most) * 100}%`}><i style={`height:${b.all ? (b.scored / b.all) * 100 : 0}%`}></i></i>
+              <span class="hy-label">{labelled(b.i) ? label(b.d) : ""}</span>
+              {b.all > 0 && (
+                <span class={`hy-tip${b.i < 2 ? " at-start" : b.i >= slots - 2 ? " at-end" : ""}`} style={`bottom:calc(${(b.all / most) * 100}% + 22px)`} aria-hidden="true">
+                  <b>{b.d === 0 ? `Before ${HISTORY_FROM}` : `${b.d}s`}</b>
+                  <span class="ch-tip-n">{num(b.all)} {b.all === 1 ? "entry" : "entries"}<em> · {num(b.scored)} moved the score</em></span>
+                  <small>Click to show only this decade</small>
+                </span>
+              )}
+            </a>
+          ))}
+        </nav>
+        {line && (
+          <>
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="line" d={line} /></svg>
+            <span class="hy-end hy-last" style={`left:${x(yearOf(lastUpdated))}%;top:${y(now)}%`} aria-hidden="true">{Math.round(now)}</span>
+          </>
+        )}
+      </div>
+      <p class="hy-key">{line && <><span class="k-line"></span> This country's score </>}<span class="k-scored"></span> Entries that moved the score <span class="k-context"></span> Context only</p>
+    </section>
+  )}
+
+  <p class="ch-active" aria-live="polite" hidden></p>
+
+  {more && <p class="ch-more">{more}</p>}
+
   <ol class="c-ledger">
     {history.map((ch) => (
-      <li>
+      <li data-kind={ch.category} data-unit={ch.unit?.id ?? ""} data-tags={ch.tags.map((t) => t.key).join(" ")} data-decade={ch.estimate ? undefined : decadeOf(ch)} data-scored={ch.score ? "" : undefined}>
         <a href={`${base}history/${ch.id}/`}>
           <time datetime={ch.date}>{changeDate(ch)}</time>
           <div class="he-body">
-            <p class="he-place"><span class="he-kind"><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
+            <p class="he-place">{showUnit && ch.unit && <span class="he-unit">{ch.unit.name}</span>} <span class="he-kind"><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
             <h3>{ch.title}</h3>
             <p class="he-text">{ch.description}</p>
           </div>
@@ -26,3 +144,101 @@ const base = import.meta.env.BASE_URL;
     ))}
   </ol>
 </div>
+
+<script>
+  // Filter the ledger in place by one kind or one tag, and by one decade from the bars. The bars show
+  // what the kind or tag filter leaves, so the other decades stay in view to pick from; the chosen
+  // decade is marked, and clicking it again shows every decade.
+  for (const box of document.querySelectorAll(".ch-hist")) {
+    const rows = [...box.querySelectorAll(".c-ledger > li")];
+    const buttons = [...box.querySelectorAll(".ch-chips button")];
+    const bars = [...box.querySelectorAll(".hy-bars a")];
+    let filter = "", decade = null;
+    const matches = (li) => {
+      if (!filter) return true;
+      const [type, key] = filter.split(":");
+      return type === "k" ? li.dataset.kind === key : type === "u" ? li.dataset.unit === key : ` ${li.dataset.tags} `.includes(` ${key} `);
+    };
+    // the filters open under their toggle, which names the filter in force while they are closed
+    const toggle = box.querySelector(".ch-toggle");
+    const panel = box.querySelector(".ch-filter");
+    const name = () => {
+      if (!toggle) return;
+      const on = buttons.find((x) => x.dataset.f && x.dataset.f === filter);
+      const open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.textContent = on && !open ? `Filter: ${on.dataset.label}` : toggle.dataset.text;
+    };
+    toggle?.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") !== "true";
+      toggle.setAttribute("aria-expanded", String(open));
+      panel.hidden = !open;
+      name();
+    });
+    // under the chart: how much is shown, each filter in force with a × to drop it, and Clear all
+    const active = box.querySelector(".ch-active");
+    const decadeName = (d) => (d === "0" ? "Before 1860" : `${d}s`);
+    function showActive() {
+      const on = buttons.find((x) => x.dataset.f && x.dataset.f === filter);
+      active.hidden = !on && decade === null;
+      if (active.hidden) return active.replaceChildren();
+      const chip = (text, drop) => {
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "ch-chip"; b.textContent = `${text} ×`; b.title = `Remove the filter: ${text}`;
+        b.addEventListener("click", drop);
+        return b;
+      };
+      const count = document.createElement("span");
+      count.textContent = `Showing ${rows.filter((li) => !li.hidden).length} of ${rows.length}`;
+      const parts = [count];
+      if (on) parts.push(chip(on.dataset.label, () => { filter = ""; apply(); }));
+      if (decade !== null) parts.push(chip(decadeName(decade), () => { decade = null; apply(); }));
+      const all = document.createElement("button");
+      all.type = "button"; all.className = "ch-clear"; all.textContent = "Clear all";
+      all.addEventListener("click", () => { filter = ""; decade = null; apply(); });
+      parts.push(all);
+      active.replaceChildren(...parts);
+    }
+    function apply() {
+      for (const li of rows) li.hidden = !matches(li) || (decade !== null && li.dataset.decade !== decade);
+      for (const x of buttons) x.setAttribute("aria-pressed", String(x.dataset.f === filter));
+      const per = new Map(), scoredPer = new Map();
+      for (const li of rows) {
+        if (!matches(li) || li.dataset.decade === undefined) continue;
+        per.set(li.dataset.decade, (per.get(li.dataset.decade) ?? 0) + 1);
+        if (li.dataset.scored !== undefined) scoredPer.set(li.dataset.decade, (scoredPer.get(li.dataset.decade) ?? 0) + 1);
+      }
+      // a chosen decade with nothing left under the new filter is let go
+      if (decade !== null && !per.get(decade)) { decade = null; return apply(); }
+      const most = Math.max(1, ...per.values()) * 1.15;
+      for (const a of bars) {
+        const n = per.get(a.dataset.decade) ?? 0, s = scoredPer.get(a.dataset.decade) ?? 0;
+        const bar = a.querySelector("i"), h = `${(n / most) * 100}%`;
+        bar.style.height = h;
+        bar.firstElementChild.style.height = n ? `${(s / n) * 100}%` : "0";
+        a.querySelector(".hy-n").textContent = n || "";
+        const tip = a.querySelector(".hy-tip");
+        if (tip) {
+          tip.style.bottom = `calc(${h} + 22px)`;
+          tip.querySelector(".ch-tip-n").innerHTML = `${n} ${n === 1 ? "entry" : "entries"}<em> · ${s} moved the score</em>`;
+          tip.querySelector("small").textContent = a.dataset.decade === decade ? "Click to show every decade" : "Click to show only this decade";
+          tip.hidden = !n;
+        }
+        a.toggleAttribute("data-empty", !n);
+        a.toggleAttribute("aria-current", a.dataset.decade === decade);
+      }
+      name();
+      showActive();
+    }
+    for (const b of buttons) b.addEventListener("click", () => {
+      filter = b.dataset.f === filter ? "" : b.dataset.f;
+      apply();
+    });
+    for (const a of bars) a.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (a.hasAttribute("data-empty")) return;
+      decade = a.dataset.decade === decade ? null : a.dataset.decade;
+      apply();
+      box.querySelector(".c-ledger").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
+    });
+  }
+</script>

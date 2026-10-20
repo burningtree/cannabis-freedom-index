@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import icon from "astro-icon";
 
 // Fully static output: one HTML file per page, including one per country.
@@ -57,11 +58,16 @@ export default defineConfig({
   // Icons are Iconoir (https://iconoir.com/), through astro-icon and Iconify: `<Icon name="iconoir:…" />`
   // inlines the SVG at build time, so only the icons a page uses end up in it.
   integrations: [icon()],
-  markdown: { remarkPlugins: [markdownFigures], rehypePlugins: [markdownLinks] },
+  markdown: {
+    processor: unified({ remarkPlugins: [markdownFigures], rehypePlugins: [markdownLinks] }),
+  },
   // pictures in Markdown get a set of widths, so a phone does not download the 1280-pixel file
   image: { layout: "constrained" },
   // A build keeps its own Vite cache. Sharing the dev server's would wipe the dependencies the
   // running dev server has prepared (Fuse, nostr-tools), and its lazy imports would then fail
   // until it is restarted.
-  vite: { cacheDir: process.argv.includes("build") ? "node_modules/.vite-build" : "node_modules/.vite" },
+  vite: {
+    cacheDir: process.argv.includes("build") ? "node_modules/.vite-build" : "node_modules/.vite",
+    server: { watch: { ignored: ["**/tmp/**"] } },
+  },
 });
