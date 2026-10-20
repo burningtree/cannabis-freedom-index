@@ -40,6 +40,7 @@ driving rules, access for visitors and arrest figures (see "Driving, visitors an
 | `src/content.config.ts` | The schema. The build fails with a clear message when data breaks it |
 | `scripts/history-batch.cjs` | Applies a batch of history edits from a JSON file (see below) |
 | `scripts/data-status.cjs` | Counts; lists of what is unchecked, estimated, thin or weakly sourced; which profiles have a seeds-and-clones section; and a check of every country's score timeline |
+| `scripts/score-triage.cjs` | Context entries whose category says the law changed (ban, tightening, easing, …): each still to be scored or marked `unscored` (see "The score timeline must make sense") |
 
 Run everything from the project root. `npm run build` validates all data; run it after every
 batch. The dev server (`npm run dev`) does **not** pick up edits to `changes.yaml` or the schema
@@ -410,6 +411,16 @@ node scripts/data-status.cjs chain de     # one country's full timeline
   as a context entry.
 - **Every real change moves it; nothing else does.** If the law or the practice changed, the
   entry is scored. Debates, failed bills, reports and announcements are context entries.
+  A context entry filed as a ban, tightening, death, easing, legalisation or medical law needs a
+  reason: give it `unscored: <one line>` (re-enacted the same penalties, never enforced, one
+  region only, too small to move a whole point, …) or score it. The number of entries never moves
+  a score by itself: a well-researched country must not drift away from an equal one that is not.
+
+  ```bash
+  npm run scores:triage              # countries with open entries, fewest scored steps first
+  npm run scores:triage -- de        # one country: scored steps and open entries in order
+  npm run scores:triage -- batch 5   # the next five countries' timelines, for a review batch
+  ```
 - **Inserting an event in the middle re-bases its neighbours.** A new scored event between two
   existing ones takes its "after" from the next event's `before`; choose its own `before` so the
   earlier event's step still makes sense. The delta form in a batch file (`{"enforcement": 1}`)
@@ -1146,3 +1157,30 @@ prescription pharmacy authorization. Both have articles based on contemporary
 notices. The original wording corrects a sale/use translation ambiguity and a
 printed-page citation. Reported order dates are distinguished from commencement;
 neither entry implies cannabis-wide legalization. No scores changed.
+
+The first [score-triage](../scripts/score-triage.cjs) batch on 20 October 2026 reviewed the six
+profiles with no scored steps. New steps: Hong Kong's 1928 Indian-hemp ban (the first ban, from
+the unregulated state), Macau's 2016 personal-use penalties (enforcement 3 → 2), Abkhazia's 2020
+death penalty for large-scale dealing (enforcement 2 → 1, as for Oman and Vietnam), and the Isle
+of Man's 2022 pharmacy pilot and 2024 opening to all pharmacies (access 0 → 1 → 2). Guernsey gained
+two entries: the 2019 rescheduling, which no Bailiwick specialist used, and the 2020 import and
+GP-prescribing changes (access 0 → 2). Eleven entries got `unscored` reasons, including every
+French Polynesia medical or hemp step, since no medicine is available there yet. Current scores
+did not change. The build passed (3,319 pages).
+
+French Polynesia, left with no scored step by the first batch, got an estimated first restriction
+(`pf-first-restriction-estimate`) so that it has a timeline; its first instrument was not found.
+
+The second score-triage batch, on 20 October 2026, covered India, Türkiye, Saudi Arabia, Lebanon and
+Lesotho. New steps: India's 2001 NDPS amendment (possession 0 → 1: before it, any amount of ganja
+carried up to five years' rigorous imprisonment, per the original section 20 as quoted by the
+Supreme Court); Türkiye's 2006 treatment-and-probation reform (enforcement 1 → 2); Saudi Arabia's
+1987 death penalty for smuggling (enforcement 1 → 0, as for other death-penalty laws); Lebanon's
+1946 cultivation ban (cultivation 2 → 1); Basutoland's 1945 order to destroy cannabis (cultivation
+2 → 1) and 1951 penalties (enforcement 3 → 2). Forty-five entries got `unscored` reasons: India's
+provincial excise measures and state bans (the federation rule), the Ottoman orders (Turkish
+scholarship finds esrar was sold freely until 1933), Saudi executions under the existing law, and
+commercial or export-only licensing in Lebanon and Lesotho. India's Act XII of 1896 stays open:
+read the act to see whether it applied to all of British India before scoring it. Türkiye's 2014
+rewrite of Penal Code Article 191 (two to five years, with compulsory deferral of prosecution) is
+not yet in the history. Current scores did not change.

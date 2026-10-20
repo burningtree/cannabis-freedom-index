@@ -2,11 +2,15 @@
 model: opus-5.5
 written: 2026-10-13
 sources:
+  - title: "Costa Rica Procuraduría — Law 8204, annotated text"
+    url: https://www.pgrweb.go.cr/DOCS/NORMAS/1/VIGENTE/L/2000-2009/2000-2004/2001/BD08/F2790.HTML
+  - title: "Costa Rica ICD — institutional history and Gazette publication date"
+    url: https://icd.go.cr/portalicd/index.php?Itemid=812
   - title: "TNI — About drug law reform in Costa Rica"
     url: https://www.tni.org/en/publication/about-drug-law-reform-in-costa-rica
 ---
 
-Costa Rica's drug law has been rewritten more than once since [1988](/history/costa-rica-law-7093-1988/), when the first version took drug use out of the criminal law and made it an administrative matter punished with day-fines. The version of 26 December 2001, Law 8204, is the one still in force. According to the Transnational Institute's review, it removed the remaining sanction and decriminalised drug use completely.
+Costa Rica's drug law has been rewritten more than once since [1988](/history/costa-rica-law-7093-1988/), when the first version took drug use out of the criminal law and made it an administrative matter punished with day-fines. Law 8204, signed on 26 December 2001, revised Law 7786 and took effect on publication in La Gaceta on 11 January 2002. According to the Transnational Institute's review, it removed the remaining sanction and decriminalised drug use completely.
 
 ## What the law says
 

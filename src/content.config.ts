@@ -176,6 +176,9 @@ const changes = defineCollection({
       // 1–10, set by hand only where the computed ranking in scripts/article-backlog.cjs is wrong;
       // it decides which entries get articles first and is not shown on the site
       importance: z.number().int().min(1).max(10).optional(),
+      // why a ban, tightening, easing, legalisation, medical or death-penalty entry moves no score;
+      // marks it as reviewed for scripts/score-triage.cjs and is not shown on the site
+      unscored: z.string().min(1).optional(),
       sources: z.array(source).min(1), // the more the better; the first is shown where there is room for one
     })
     .strict()
