@@ -1,6 +1,6 @@
 ---
 model: gpt-6.1-sol
-written: '2026-10-11'
+written: '2026-10-21'
 sources:
   - type: book
     title: La conception malgache du monde, du surnaturel et de l’homme en Imerina, tome 1
@@ -18,34 +18,41 @@ sources:
     year: 1960
     locator: p. 51; royal capital offences and note 2 citing G. Julien
     url: https://horizon.documentation.ird.fr/exl-doc/pleins_textes/divers11-03/22732.pdf
+  - type: book
+    title: Le Livre de la Sagesse Malgache
+    authors: [Paul de Veyrières, Guy de Méritens]
+    publisher: Éditions Maritimes et d’Outre-Mer
+    year: 1967
+    locator: Proverb 5371, Fon’ ny mpifoka rongony; transcription and commentary
+    url: https://malagasyworld.org/bins/ohabolana/rongony
 ---
 
-King Andrianampoinimerina prohibited cannabis smoking in the Merina kingdom of Madagascar. Later historical accounts associate the offence with severe punishment, including death. They also preserve an important distinction: cultivation for cloth and rope was allowed. The conventional date 1787 does not come with a verified day or surviving decree examined here.
+King Andrianampoinimerina prohibited cannabis smoking in central Imerina while allowing people to grow hemp for cloth and rope. Historical accounts describe death as a penalty for smoking, but a collection of Malagasy proverbs says the rule was applied only briefly. The episode belongs to the history of a royal highland kingdom whose territory differed from modern Madagascar.
 
-## Smoking and useful cultivation
+## Grow hemp, but do not smoke it
 
-Louis Molet reproduces a royal statement, citing the Tantara collection of Merina history. The speaker prohibits consuming or smoking hemp in the heart of Imerina while expressly permitting people to cultivate it for textiles and cordage.
+Louis Molet reproduces a royal statement drawn from the Tantara collection of Merina history. The king addresses people growing cannabis for textiles and cordage, approving those uses while threatening punishment for smoking it in the heart of Imerina.
 
-This distinction changes the meaning of the familiar phrase “the king banned cannabis.” The plant had several uses, and the reported command treated them differently. It supports a restriction on intoxicating consumption; it does not establish that every hemp field or fibre use was outlawed.
+For growers, that distinction mattered: the same plant supplied useful fibre and an intoxicating preparation. The reported command left room for hemp fields and the work of making cloth and rope. Its target was smoking.
 
-The royal explanation links smoking with loss of reason. That is evidence of the ruler’s stated justification as transmitted through later texts, rather than a present-day medical assessment.
+The king's explanation connected smoking with loss of reason. The surviving account places the restriction within royal efforts to regulate behaviour, alongside rules about alcohol.
 
-## Punishment and royal authority
+## Death as a punishment, briefly applied
 
-Georges Condominas places hemp smoking among capital offences in his discussion of Andrianampoinimerina’s monarchy. His account connects the king’s rules about personal conduct with measures protecting royal authority and the unity of the kingdom.
+Georges Condominas lists hemp smoking among capital offences under Andrianampoinimerina. His discussion connects rules governing personal conduct with the protection of royal authority and the unity of the kingdom.
 
-Condominas also describes tobacco and alcohol restrictions in that political setting. His rhetoric about intoxication and the previous court reflects the perspective of his historical account. It should not be mistaken for independent clinical evidence about the effects of cannabis.
+A different perspective survives in the commentary attached to a proverb about a hemp smoker's heart. In *Le Livre de la Sagesse Malgache*, Paul de Veyrières and Guy de Méritens describe the king introducing death as a punishment to discourage smoking. They add that the law was applied only briefly.
 
-Together, the two sources strengthen the identification of a royal restriction while showing why its scope needs precision. Neither passage supplies a detailed record of cannabis prosecutions or a count of executions.
+That recollection makes enforcement part of the story. The royal threat was severe, but the proverb's commentary describes a short period of application, without supplying dates or a count of executions.
 
-## A kingdom and an uncertain year
+## Imerina and the conventional date
 
-The relevant jurisdiction was Imerina under the king’s authority. It was not identical to the territory of the present Republic of Madagascar. A statement about the heart of the kingdom cannot establish uniform policing across the whole island.
+The history entry is conventionally dated 1787. The examined historical passages attribute the ban to Andrianampoinimerina, while leaving its precise year unresolved.
 
-The existing history entry uses 1787 as its conventional date. The additional passages examined here support attribution to the reign, but do not independently fix enactment to that year. The article therefore treats the precise date as unresolved.
+Molet's reproduced statement specifically addresses central Imerina. Its geography matters when comparing this royal restriction with later laws issued for the whole colony and its dependencies. The highland smoking ban forms an early regional chapter in Madagascar's cannabis history.
 
-## What this history does establish
+## A colony-wide ban followed in 1915
 
-The episode records a locally articulated prohibition before the modern international drug-control system. It cannot be called the oldest ban in this index now that medieval restrictions are included.
+The [colonial decree of October 1915](/history/madagascar-colonial-rongony-ban-1915/) prohibited preparation, peddling, sale and consumption of smoking cannabis throughout Madagascar and its dependencies. Its penalties reached one year in prison, with a fine possible instead of or alongside custody.
 
-It also cannot establish a continuous legal regime from the king’s reign to contemporary [Madagascar](/country/mg/). The historical consumption ban and the continuing usefulness of hemp need to remain visible as separate parts of the record.
+[Growing and possession offences followed in 1958](/history/madagascar-cultivation-possession-penalties-1958/), before the [1960 government raised penalties](/history/madagascar-rongony-penalties-raised-1960/) to as much as five years. Those dated laws trace the later expansion of cannabis controls in [Madagascar](/country/mg/).

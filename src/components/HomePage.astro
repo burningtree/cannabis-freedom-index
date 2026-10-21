@@ -1044,6 +1044,15 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     if (wanted >= +yearSel.options[yearSel.options.length - 1].value && wanted < LATEST) { yearSel.value = wanted; setYear(wanted); }
 
     $("#region").addEventListener("change", (e) => { state.region = e.target.value; applyTable(); });
+    // a link to the rankings of one region: /?region=Europe#rankings
+    {
+      const wantedRegion = new URLSearchParams(location.search).get("region");
+      if (wantedRegion && [...$("#region").options].some((o) => o.value === wantedRegion)) {
+        $("#region").value = wantedRegion;
+        state.region = wantedRegion;
+        applyTable();
+      }
+    }
     $("#recFilter").addEventListener("change", (e) => { state.rec = e.target.value; applyTable(); });
     // Columns: the reader's choice is kept in this browser.
     const colBoxes = [...document.querySelectorAll("#colMenu input[data-col]")];

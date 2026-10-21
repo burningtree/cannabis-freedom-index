@@ -1,39 +1,65 @@
 ---
-model: opus-5.5
-written: 2026-10-13
+model: gpt-6
+written: '2026-10-21'
 sources:
-  - title: "The Point — Penalty reduced for first-time cannabis offenders (27 August 2014)"
+  - type: law
+    title: The Gambia Gazette — Drug Control (Amendment) Act 2014, Act 9, 9 October 2014
+    url: >-
+      https://ons.gov.gm/security-legislation/wp-content/uploads/2022/10/Drug-Control-Amendment-Act-2014.pdf
+    locator: >-
+      Complete four-page text; section 5 has 1–2, 2–5 and 3–10 year prison ranges, each with a fine
+      alternative
+  - title: The Point — Penalty reduced for first-time cannabis offenders, 27 August 2014
     url: https://thepoint.gm/africa/gambia/article/penalty-reduced-for-first-time-cannabis-offenders
-  - title: "International Drug Policy Consortium and West Africa Commission on Drugs — Drug laws in West Africa, annex of country profiles, November 2017 (PDF)"
-    url: https://cdn.sanity.io/files/6u5teakk/production/559d15d25cdb6c043b435899a1926f1abcb7f8f6.pdf?dl=
-  - title: "The Point — Gambians lead in drug abuse cases, says DLEAG DG (27 June 2025)"
-    url: https://thepoint.gm/africa/gambia/headlines/gambians-lead-in-drug-abuse-cases-says-dleag-dg
+    locator: >-
+      Minister Ousman Sonko’s explanation and prison-pressure context; enacted tariff taken from the
+      Gazette
+  - type: law
+    title: The Gambia — Drug Control Act 2003, consolidated with the 2005 amendments, Issue 1/2009
+    url: https://ons.gov.gm/security-legislation/wp-content/uploads/2022/06/DROG-CONTROL-ACT.pdf
+    locator: >-
+      Commencement; sections 2, 4–5, 33–36, 43 and 139; First Schedule; scanned text, not an unamended
+      2003 original
+  - type: report
+    title: Drug Law Enforcement Agency, The Gambia — Five-Year Strategy Plan 2019–2023
+    year: 2019
+    url: >-
+      https://ons.gov.gm/security-legislation/wp-content/uploads/2023/04/NATIONAL-DRUG-CONTROL-STRATEGY.pdf
+    locator: >-
+      Printed pp. 13–17, 33–34, 37–38 and 44; institutional history and proposed alternatives to
+      imprisonment
 ---
 
-In August 2014 The Gambia's National Assembly passed the Drug Control (Amendment) Act, which lowered the penalties for a first offence of possessing cannabis.
+Gambia introduced a separate penalty scale for first-time cannabis possession in October 2014. A person holding 0.1–150 grams could receive a fine of 50,000–100,000 dalasi, one to two years in prison, or both. Larger quantities brought higher fines and longer prison ranges.
 
-## The new scale
+## Heavy fines were filling prisons
 
-The amendment to the Drug Control Act of 2003 set three tiers for a first-time offender caught with cannabis.
+Interior Minister Ousman Sonko presented the reform as a response to the imprisonment of young people who could not pay existing fines. He argued that reducing their punishment would ease pressure on prisons and cut the public costs of keeping them there.
 
-| Quantity | Fine in dalasi | Prison |
+The [earlier drug law](/history/gambia-drug-control-act-2003/) set a minimum fine of 250,000 dalasi or at least three years in prison for unauthorised cannabis possession, with both punishments possible. The new amendment separated first-time cannabis offenders from that general rule.
+
+Parliament passed the amendment in August. President Yahya Jammeh assented on 9 October, the date stated in the enacted law.
+
+## Three quantity bands set the punishment
+
+The new scale distinguished smaller holdings from larger ones. Each band allowed the court to choose a fine, imprisonment, or both.
+
+| Cannabis quantity | Fine in dalasi | Prison range |
 |---|---|---|
-| 0.1 g to 150 g | 50,000 to 100,000 | 6 months to 1 year |
-| 151 g to 500 g | 100,000 to 150,000 | 1 to 2 years |
-| 501 g and above | 150,000 to 250,000 | 2 to 3 years |
+| 0.1–150 grams | 50,000–100,000 | 1–2 years |
+| 151–500 grams | 100,000–150,000 | 2–5 years |
+| 501 grams and above | 150,000–250,000 | 3–10 years |
 
-A court may impose the fine, the prison term, or both. The same act renamed the National Drug Enforcement Agency the Drug Law Enforcement Agency.
+The lower band substantially reduced the minimum fine facing a first offender. A custodial sentence remained available throughout the scale, and the highest band allowed a prison term reaching ten years.
 
-## The reasons given
+## The amendment also changed enforcement rules
 
-The interior minister, Ousman Sonko, told the Assembly that the bill separated out the punishment for first-time offenders. He pointed to the number of young people being arrested and convicted, 1,538 between 2010 and 2013, and said the aims were to avoid jailing more of them, to relieve crowded prisons and to cut public spending. He also said the existing fines could be too heavy for Gambian youths.
+The same law renamed the National Drug Enforcement Agency as the Drug Law Enforcement Agency, The Gambia. It also expanded several cultivation, production and other drug provisions to refer expressly to prohibited drugs alongside controlled drugs.
 
-A regional review of drug laws published in 2017 describes the amendment the same way: it reduced prison terms for small amounts so that people could return to society after serving a sentence. The review adds that a fine remained the only alternative to prison, and that it did not apply in every case.
+Those changes connected the reform to the wider operation of the drug-control law. Cannabis and cannabis resin were listed as prohibited drugs, a classification that remained in place as the new possession bands were introduced.
 
-## What it did not change
+## The debate continued after the lower scale
 
-Possession of any amount without a licence stayed a crime, and the lowest fine on the new scale, 50,000 dalasi, is beyond the means of most people, so many serve the prison term in default. Possession for trafficking can bring ten years or more, according to the same review. Ten years on, the drug agency reported 1,219 people arrested in 2024, with cannabis making up more than half of all seizures.
+The agency’s [2019–2023 strategy plan](/history/gambia-drug-strategy-rehabilitation-2019/) described continued problems with burdensome fines, prison sentences and limited rehabilitation. It called for a review of drug laws and alternatives such as community service for young and first-time offenders.
 
-## Why the index moved
-
-The index moved [The Gambia](/country/gm/) from 7 to 9 with the [2014 amendment](/history/gambia-first-offenders-2014/). Only enforcement changed, from 0 to 1: a first offence with a small amount now has its own lower scale of months or a fine. Possession stays at 1 because it remains a crime at every quantity.
+The plan also proposed counselling, skills training and rehabilitation facilities. The first-offender scale had reduced some penalties, while the question of how to help people avoid repeated imprisonment remained part of drug-policy debate in [Gambia](/country/gm/).

@@ -824,3 +824,198 @@
     - { label: the world average by population, path: "" }
     - { label: the population column of the rankings, path: "#rankings" }
     - { label: research progress weighted by population, path: research/ }
+- id: espad_availability
+  file: espad-2024-cannabis-availability.csv
+  name: Is cannabis easy to get? (students, Europe)
+  publisher: ESPAD Group and the European Union Drugs Agency (EUDA)
+  credit: ESPAD
+  title: ESPAD Report 2024 — Results from the European School Survey Project on Alcohol and Other Drugs, table 3b
+  url: https://www.espad.org/espad-report-2024
+  data_url: https://www.euda.europa.eu/system/files/documents/2025-10/espad-2024-report-source-tables.xlsx.zip
+  data_label: source tables, spreadsheet (table 3b)
+  when: surveyed in 2024
+  about: >-
+    The per cent of students aged 15 to 16 who say cannabis would be "fairly easy" or "very easy"
+    to get if they wanted it, overall and for boys and girls, in 37 European countries. A school
+    survey with the same questionnaire everywhere.
+  origin: >-
+    The EUDA's site refuses scripted downloads, so the spreadsheet of source tables was opened in
+    a browser on 21 October 2026 and the cannabis columns of table 3b were read from it and
+    written here, rounded to two decimals.
+  profile:
+    headline: "{easy} of students say it is easy to get"
+    details: "{easy_boys} of boys · {easy_girls} of girls · aged 15–16 · 2024"
+  country: { column: country, by: id }
+  fields:
+    easy: { column: easy, format: percent, decimals: 1, about: "Students who say cannabis is easy to get: Charts page and profile" }
+    easy_boys: { column: easy_boys, format: percent, decimals: 1 }
+    easy_girls: { column: easy_girls, format: percent, decimals: 1 }
+  map:
+    field: easy
+    format: percent
+    group: Use
+    slug: easy-to-get
+    label: Students who say cannabis is easy to get
+    missing: Not in the 2024 ESPAD school survey
+    steps: [[0, "Under 15%"], [15, "15–22%"], [22, "22–29%"], [29, "29–36%"], [36, "36% or more"]]
+    title: How easy is cannabis to get? Students in Europe
+    lede: >-
+      The share of students aged 15 to 16 who say cannabis would be fairly or very easy to get,
+      from the 2024 ESPAD school survey in 37 European countries. The stronger the blue, the
+      easier it is to get.
+    sub: >-
+      The stronger the blue, the more students aged 15 to 16 say cannabis would be easy to get.
+      Countries outside the ESPAD survey are hatched.
+    note: >-
+      ESPAD Report 2024, table 3b: students answering "fairly easy" or "very easy". Not part of
+      the score.
+  pages:
+    - { label: its map, path: map/easy-to-get/ }
+    - { label: the Charts page, path: charts/#easy-to-get }
+- id: wastewater
+  file: euda-wastewater-cannabis.csv
+  original: euda-wastewater-cannabis-cities.csv
+  name: Cannabis in wastewater
+  publisher: European Union Drugs Agency (EUDA) and the SCORE group
+  credit: EUDA
+  title: EUDA — Drugs in municipal wastewater in Europe, source data (2025), tables 1 and 2
+  url: https://www.euda.europa.eu/data/repository/drugs-municipal-wastewater-europe-source-data-2025_en
+  data_url: https://www.euda.europa.eu/sites/default/files/data/data-nodes/32462/versions/20/ww2025-all-data_en.csv
+  data_label: table 2, all data (CSV)
+  when: 2011 to 2024
+  about: >-
+    THC-COOH, the main substance the body makes from cannabis, measured in the sewage of cities
+    over one week a year: milligrams a day per 1,000 people served. Not a count of users, as the
+    load depends on how much and how often people use; but it measures what is used rather than
+    what people admit. A country's figure is the mean of its measured cities, weighted by the
+    people each plant serves; one city may stand for a whole country.
+  origin: >-
+    The EUDA's site refuses scripted downloads, so its tables 1 and 2 were read in a browser on
+    21 October 2026; the cannabis rows, with each site's population, are kept in
+    euda-wastewater-cannabis-cities.csv. scripts/extract-wastewater.py averages them by country
+    and year.
+  profile:
+    headline: "{thc_cooh} mg of THC-COOH a day per 1,000 people"
+    details: "{cities} cities measured · {year}"
+    each: "{thc_cooh} in {year}"
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    thc_cooh: { column: thc_cooh, format: decimal, about: "Milligrams of THC-COOH a day per 1,000 people: Charts page and profile" }
+    cities: { column: cities, about: "How many cities were measured" }
+    served: { column: population, about: "How many people the measured plants serve" }
+  map:
+    field: thc_cooh
+    format: rate
+    group: Use
+    since: 2020
+    slug: wastewater
+    label: Cannabis in wastewater
+    missing: No city measured for cannabis since 2020
+    steps: [[0, "Under 30"], [30, "30–60"], [60, "60–100"], [100, "100–200"], [200, "200 or more"]]
+    title: Cannabis in city sewage
+    lede: >-
+      THC-COOH, the substance the body makes from cannabis, in the sewage of measured cities:
+      milligrams a day per 1,000 people, latest year since 2020. The stronger the blue, the more
+      cannabis was used there.
+    sub: >-
+      The stronger the blue, the more THC-COOH a day per 1,000 people. One or a few cities stand
+      for each country; countries with none measured since 2020 are hatched.
+    note: >-
+      EUDA and SCORE group, wastewater monitoring, one week a year; cities averaged by the people
+      each plant serves. Not part of the score.
+  pages:
+    - { label: its map, path: map/wastewater/ }
+    - { label: the Charts page, path: charts/#wastewater }
+- id: colonial_links
+  file: cepii-colonial-links.csv
+  original: geo_cepii.xls
+  name: Former colonial rulers
+  publisher: CEPII
+  title: CEPII — GeoDist, country file (geo_cepii), Mayer and Zignago (2011)
+  url: https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=6
+  data_url: https://www.cepii.fr/distance/geo_cepii.xls
+  data_label: geo_cepii.xls
+  when: compiled 2011
+  about: >-
+    The countries that ruled each country as a colony for a long time, as CEPII records them for
+    its trade studies, up to four per country; those whose rule was short or light are listed
+    apart. Licensed under Etalab 2.0.
+  origin: >-
+    Downloaded unchanged on 21 October 2026. scripts/extract-cepii.py keeps one row per country
+    and writes the colonisers as country file names.
+  profile:
+    headline: "Once ruled by {colonizer_names}"
+  country: { column: country, by: id, aliases: { tp: tl, yu: rs, zr: cd } }
+  fields:
+    colonizers: { column: colonizers, type: text, about: "Former colonial rulers, as country file names: Charts page" }
+    colonizer_names: { column: colonizer_names, type: text, format: text, about: "Their names, for the profile" }
+  pages:
+    - { label: the Charts page, path: charts/#empire }
+- id: canada_sourcing
+  file: health-canada-cannabis-sourcing.csv
+  original: health-canada-cannabis-usual-source.csv
+  name: Where people in Canada get their cannabis
+  publisher: Health Canada
+  title: Health Canada — Cannabis use (non-medical) in Canada, Canadian Cannabis Survey, figure 3 (usual source)
+  url: https://health-infobase.canada.ca/cannabis/
+  data_url: https://health-infobase.canada.ca/src/data/cannabis-use/cannabisUsualSource.csv
+  data_label: figure 3 data (CSV)
+  when: 2018 to 2024
+  about: >-
+    The usual source of cannabis of people who used it in the past year, in per cent: a legal
+    store or website, friends and family (social), an illegal seller, growing it themselves, or
+    another source. The 2018 survey came before the first legal stores opened, so it has no legal
+    figure.
+  origin: >-
+    The CSV behind the figure was downloaded unchanged on 21 October 2026 and is kept as
+    health-canada-cannabis-usual-source.csv; scripts/extract-canada.py (sourcing) writes one row
+    per year.
+  profile:
+    headline: "{legal} bought from a legal source"
+    details: "{social} from friends and family · {illegal} illegally · {grown} grew it · {year}"
+    each: "{legal} in {year}"
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    legal: { column: legal, format: percent, about: "Bought from a legal store or website: Charts page and profile" }
+    social: { column: social, format: percent }
+    illegal: { column: illegal, format: percent }
+    grown: { column: grown, format: percent }
+    other: { column: other, format: percent }
+  pages:
+    - { label: the Charts page, path: charts/#sourcing }
+- id: canada_revenue
+  file: statcan-cannabis-revenue.csv
+  original: statcan-10100165.csv
+  name: Government revenue from cannabis in Canada
+  publisher: Statistics Canada
+  title: Statistics Canada — Table 10-10-0165-01, Net income of cannabis authorities and government revenue from the sale of cannabis
+  url: https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1010016501
+  data_url: https://www150.statcan.gc.ca/n1/tbl/csv/10100165-eng.zip
+  data_label: full table (CSV)
+  when: fiscal years 2021/2022 to 2024/2025
+  about: >-
+    What Canada's governments took from the legal cannabis trade in each fiscal year from April,
+    in thousands of Canadian dollars: the profit of the provincial cannabis authorities, the
+    federal and provincial excise taxes, sales taxes and other revenue. `year` is the year the
+    fiscal year starts.
+  origin: >-
+    Statistics Canada's site was unavailable on 21 October 2026, so the table is the Internet
+    Archive's copy of its CSV download of 11 October 2026, kept unchanged as
+    statcan-10100165.csv; scripts/extract-canada.py (revenue) keeps Canada's lines.
+  profile:
+    headline: "C${revenue} thousand to governments in {fiscal_year}"
+    details: "{sales} thousand in sales by the cannabis authorities · {year}"
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    revenue: { column: revenue, about: "Net income of the authorities plus taxes and other revenue: Charts page and profile" }
+    sales: { column: sales }
+    net_income: { column: net_income }
+    federal_excise: { column: federal_excise }
+    provincial_excise: { column: provincial_excise }
+    taxes: { column: taxes }
+    fiscal_year: { column: fiscal_year, type: text, format: text }
+  pages:
+    - { label: the Charts page, path: charts/#state-merchant }

@@ -8,8 +8,10 @@
 import { averageHistory, averageHistoryByPopulation, bandHistory, bandHistoryByPopulation, countries, dateTime, lastUpdated } from "../lib/countries.js";
 import { TIERS, tierOf, tierColor } from "../lib/tiers.js";
 
-// `note` adds the caveat under the chart.
-const { note = false } = Astro.props;
+// `note` adds the caveat under the chart; `wide` draws it across the page and taller, with the two
+// figures in one row and no card around it (the Charts page).
+// `figures={false}` leaves out the two headline numbers, where the page says it otherwise.
+const { note = false, wide = false, figures = true } = Astro.props;
 const fmt = (v) => v.toFixed(1);
 const time = dateTime;
 const endYear = +lastUpdated.slice(0, 4);
@@ -65,11 +67,12 @@ function view(range, weighting) {
 
 const views = WEIGHTS.flatMap((w) => RANGES.map((r) => view(r, w)));
 const shown = (v) => v.range === RANGES[0].id && v.weight === WEIGHTS[0].id; // the view visible before any click
+const base = import.meta.env.BASE_URL;
 const signed = (n, unit = "") => `${n > 0 ? "+" : n < 0 ? "−" : "±"}${Math.abs(n)}${unit}`;
 ---
-<section class="card avg" id="avgChart" aria-labelledby="avgTitle">
+<section class:list={["avg", wide ? "avg-wide" : "card"]} id="avgChart" aria-labelledby="avgTitle" data-base={base}>
   {/* two figures: the world average score, and the share under prohibition or worse */}
-  <div class="avg-head">
+  <div class="avg-head" hidden={!figures}>
     <h2 id="avgTitle" class="visually-hidden">Cannabis freedom in the world over time</h2>
     <div class="avg-stat">
       <p class="avg-label">World average score</p>
@@ -150,19 +153,23 @@ const signed = (n, unit = "") => `${n > 0 ? "+" : n < 0 ? "−" : "±"}${Math.ab
     });
   });
 
-  // The year under the pointer: the world average, and the share in each band.
+  // The year under the pointer: the world average, and the share in each band. A click opens that
+  // year in the history.
   const NAMES = ["Severe prohibition", "Prohibition", "Restrictive", "Tolerant", "Legal with limits", "Free"];
   chart?.querySelectorAll(".avg-plot[data-bands]").forEach((plot) => {
     const d = JSON.parse(plot.dataset.bands), tip = plot.querySelector(".bands-tip"), seek = plot.querySelector(".bands-seek");
+    let year = d.y0;
     const at = (e) => {
       const box = plot.getBoundingClientRect();
       const f = Math.min(1, Math.max(0, (e.clientX - box.left) / box.width));
       const i = Math.round(f * (d.rows.length - 1));
-      const shares = d.rows[i], year = d.y0 + i;
+      const shares = d.rows[i];
+      year = d.y0 + i;
       const amount = (v) => (d.unit ? `${Math.round((v / 1000) * d.unit)}` : `${(v / 10).toFixed(v < 100 ? 1 : 0)}%`);
       tip.innerHTML = `<b>${year}</b><span class="tip-avg">World average<em>${(d.avg[i] / 10).toFixed(1)}</em></span>`
         + NAMES.map((n, k) => [n, shares[k], k]).reverse().filter(([, v]) => v > 0)
-          .map(([n, v, k]) => `<span><i style="background:var(--t${k})"></i>${n}<em>${amount(v)}</em></span>`).join("");
+          .map(([n, v, k]) => `<span><i style="background:var(--t${k})"></i>${n}<em>${amount(v)}</em></span>`).join("")
+        + `<span class="tip-go">Click to read ${year} in the history →</span>`;
       const x = (i / (d.rows.length - 1)) * 100;
       seek.style.left = `${x}%`;
       seek.hidden = tip.hidden = false;
@@ -173,5 +180,6 @@ const signed = (n, unit = "") => `${n > 0 ? "+" : n < 0 ? "−" : "±"}${Math.ab
     };
     plot.addEventListener("pointermove", at);
     plot.addEventListener("pointerleave", () => { seek.hidden = tip.hidden = true; });
+    plot.addEventListener("click", (e) => { at(e); location.href = `${chart.dataset.base}history/?from=${year}`; });
   });
 </script>

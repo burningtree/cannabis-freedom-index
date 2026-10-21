@@ -12,6 +12,7 @@ export function GET({ site }) {
     ["", latest, 1],
     ["can-i/", latest, 0.8],
     ["history/", latest, 0.8],
+    ["charts/", latest, 0.7],
     ["compare/", latest, 0.6],
     ["survey/", latest, 0.6],
     ["survey/take/", latest, 0.5],

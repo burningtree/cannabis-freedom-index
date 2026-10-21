@@ -2397,3 +2397,297 @@ h1 .ico { width: .75em; height: .75em; vertical-align: -.02em; }
 .cited-page { color: var(--muted); margin-right: 8px; }
 .cited-page:hover { color: var(--text); }
 @media (max-width: 760px) { .src-book .cited { margin-left: 0; } }
+
+/* ── Charts page (charts.astro): one section per chart, the finding as its headline ── */
+.ch-toc { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px 28px; margin: 6px 0 10px; padding: 18px 0; border-top: 1px solid var(--text); border-bottom: 1px solid var(--border); }
+.ch-toc-group { display: flex; flex-direction: column; gap: 5px; }
+.ch-toc-group p { margin: 0 0 3px; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.ch-chapter { margin: 56px 0 0; padding-top: 14px; border-top: 2px solid var(--text); font: 400 11.5px var(--mono) !important; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.ch-chapter + .ch { border-top: 0; padding-top: 22px; }
+.ch-toc a { display: flex; align-items: baseline; gap: 8px; color: var(--text-2); font-size: 14px; }
+.ch-toc a:hover { color: var(--text); }
+.ch-toc b { font: 400 11px var(--mono); color: var(--muted); }
+.ch { padding: 48px 0 8px; scroll-margin-top: 64px; }
+.ch + .ch { border-top: 1px solid var(--border); }
+.ch-kicker { margin: 0; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+.ch-kicker a { color: var(--muted); }
+.ch-kicker a:hover { color: var(--text); }
+.ch h2 { max-width: 30ch; margin: 10px 0 0; font: 400 clamp(28px, 3.4vw, 42px)/1.08 var(--display); letter-spacing: -.01em; }
+.ch-dek { max-width: 68ch; margin: 12px 0 22px; color: var(--text-2); }
+.ch-source { margin: 14px 0 0; color: var(--muted); font-size: 12.5px; }
+.ch-source a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
+.charts-page #avgChart { margin-top: 0; }
+.ch-frame { position: relative; }
+.ch-plot { position: relative; }
+.ch-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ch-grid { stroke: var(--border); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.ch-axis { stroke: var(--muted); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.ch-x { position: relative; height: 24px; color: var(--muted); font: 400 11.5px var(--mono); }
+.ch-x span { position: absolute; top: 7px; transform: translateX(-50%); }
+.ch-x span.first { transform: none; }
+.ch-x span.last { transform: translateX(-100%); }
+.ch-y { position: absolute; left: 0; top: 0; bottom: 24px; width: 30px; color: var(--muted); font: 400 11.5px var(--mono); }
+.ch-y span { position: absolute; right: 6px; transform: translateY(-50%); }
+/* waves */
+.ch-waves .ch-plot { height: 300px; }
+.ch-up { fill: var(--t4); }
+.ch-down { fill: var(--t1); }
+.ch-side { position: absolute; left: 0; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+.ch-side-up { top: 6px; }
+.ch-side-down { bottom: 6px; }
+.ch-mark { position: absolute; top: 0; padding-left: 6px; border-left: 1px dashed var(--muted); height: 46%; font: 400 11px var(--mono); color: var(--text-2); white-space: nowrap; }
+.ch-mark b { color: var(--text); font-weight: 500; }
+.ch-mark.end { padding: 0 6px 0 0; border-left: 0; border-right: 1px dashed var(--muted); transform: translateX(-100%); text-align: right; }
+/* from prohibition to the top: one row per country, its 1961 score and an arrow to today's */
+.ch-dumbbell ol { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+.ch-dumbbell li, .ch-db-axis { display: grid; grid-template-columns: 200px minmax(0, 1fr) 120px; align-items: center; gap: 16px; }
+.ch-dumbbell li { padding: 7px 0; border-bottom: 1px solid var(--border); }
+.ch-dumbbell li a:not(.ch-db-track) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); font-size: 14px; }
+.ch-dumbbell li a:not(.ch-db-track):hover { text-decoration: underline; text-underline-offset: 3px; }
+.ch-db-axis { margin-bottom: 6px; font: 400 11px var(--mono); color: var(--muted); }
+.ch-db-axis div { position: relative; height: 14px; }
+.ch-db-axis div span { position: absolute; transform: translateX(-50%); }
+.ch-db-track { position: relative; height: 18px; }
+.ch-db-grid { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--border); }
+.ch-db-bar { position: absolute; top: 50%; height: 2px; margin-top: -1px; background: var(--text-2); }
+.ch-db-bar::after { content: ""; position: absolute; right: -1px; top: -4px; border: 5px solid transparent; border-left: 7px solid var(--text-2); border-right: 0; }
+.ch-db-bar.down::after { right: auto; left: -1px; border-left: 0; border-right: 7px solid var(--text-2); }
+.ch-db-then, .ch-db-now { position: absolute; top: 50%; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; }
+.ch-db-then { background: var(--muted); }
+.ch-db-now { background: var(--c); box-shadow: 0 0 0 2px var(--bg); }
+.ch-db-num { font: 400 13px var(--mono); color: var(--muted); text-align: right; white-space: nowrap; }
+.ch-db-num b { color: var(--text); font-weight: 500; }
+.ch-db-num em { font-style: normal; font-size: 11px; }
+/* regions */
+.ch-regions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 28px; }
+.ch-region { display: block; margin: 0; color: inherit; }
+.ch-region .ch-cap { display: flex; flex-direction: column; gap: 2px; margin-bottom: 10px; }
+.ch-region .ch-cap b { font: 400 22px var(--display); }
+.ch-region .ch-cap span { font: 400 11.5px var(--mono); color: var(--muted); }
+.ch-region .ch-cap em { font-style: normal; font-weight: 600; }
+.ch-region .ch-plot { height: 150px; }
+.ch-region .ch-cap i { font-style: normal; font-size: 16px; color: var(--muted); opacity: 0; transition: opacity .15s; }
+.ch-region:hover .ch-cap i, .ch-region:focus-visible .ch-cap i { opacity: 1; }
+.ch-region:hover .ch-region-line { stroke-width: 3; }
+.ch-world { fill: none; stroke: var(--muted); stroke-width: 1; opacity: .5; vector-effect: non-scaling-stroke; }
+.ch-region-line { fill: none; stroke: var(--text); stroke-width: 2; vector-effect: non-scaling-stroke; }
+/* freedom */
+.ch-scatter { padding-left: 30px; }
+.ch-scatter .ch-plot { height: 440px; }
+.ch-fit { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+.ch-dot { position: absolute; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1.5px var(--bg); }
+.ch-dot:hover { transform: scale(1.5); z-index: 2; }
+.ch-dot span { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); white-space: nowrap; font-size: 12px; color: var(--text); }
+.ch-dot.left span { left: auto; right: 12px; }
+.ch-axis-label { margin: 2px 0 0; text-align: center; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+/* first restrictions: a beeswarm per region */
+.ch-swarm-row { display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: center; gap: 12px; }
+.ch-swarm-row + .ch-swarm-row { border-top: 1px solid var(--border); }
+.ch-swarm { --lane: 10px; }
+.ch-swarm-row .ch-plot { height: calc(var(--lanes) * 2 * var(--lane) + 22px); }
+.ch-swarm-name { font: 400 18px var(--display); }
+.ch-swarm-axis { border-top: 0 !important; }
+.ch-vline { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1px dashed var(--border); }
+.ch-swarm .ch-dot { width: 9px; height: 9px; }
+/* the world's people: a waffle of 100 squares */
+.ch-people { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: 40px; align-items: center; }
+.ch-waffle { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
+.ch-waffle a { aspect-ratio: 1; border-radius: 3px; background: var(--c); transition: transform .15s, opacity .15s; }
+.ch-waffle:has(.on) a:not(.on) { opacity: .35; }
+.ch-waffle a.on { transform: scale(1.06); }
+.ch-people-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+.ch-people-list li { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 6px; border-bottom: 1px solid var(--border); border-radius: 3px; }
+.ch-people-list li.on { background: color-mix(in srgb, var(--text) 6%, transparent); }
+.ch-people-list i { width: 12px; height: 12px; border-radius: 3px; }
+.ch-people-list b { display: block; font-weight: 500; }
+.ch-people-list small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: 12px; }
+.ch-people-list em { font: 400 26px var(--display); font-style: normal; }
+/* recreational × medical: circles sized by the number of countries */
+.ch-law { --rec-legal: var(--t5); --rec-partial: var(--t4); --rec-decrim: var(--t3); --rec-illegal: var(--t1); --rec-death: var(--t0); }
+.ch-law-head, .ch-law-row { display: grid; grid-template-columns: 200px repeat(3, minmax(0, 1fr)); align-items: center; }
+.ch-law-head span { padding-bottom: 8px; text-align: center; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+.ch-law-row { border-top: 1px solid var(--border); }
+.ch-law-row:last-child { border-bottom: 1px solid var(--border); }
+.ch-law-name { font-size: 14px; }
+.ch-law-cell { position: relative; display: grid; place-items: center; height: 92px; color: var(--muted); }
+.ch-law-cell i { position: absolute; width: calc(var(--d) * 84px); height: calc(var(--d) * 84px); min-width: 10px; min-height: 10px; border-radius: 50%; background: color-mix(in srgb, var(--c) 82%, transparent); transition: transform .15s; }
+.ch-law-cell b { position: relative; font: 500 13px var(--mono); color: var(--text); text-shadow: 0 0 6px var(--bg); }
+a.ch-law-cell:hover i, a.ch-law-cell:focus-visible i { transform: scale(1.08); box-shadow: 0 0 0 2px var(--text); }
+.ch-law-cell.empty { font: 400 12px var(--mono); opacity: .5; }
+/* use and the law: a swarm per band with its middle value */
+.ch-use { --lane: 9px; padding-left: 38px; }
+.ch-use .ch-y { width: 38px; bottom: auto; height: 380px; }
+.ch-use .ch-plot { height: 380px; }
+.ch-use .ch-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; }
+.ch-median { position: absolute; width: 96px; height: 0; margin-left: -48px; border-top: 2px solid var(--text); z-index: 1; pointer-events: none; }
+.ch-median b { position: absolute; left: 100%; top: -9px; padding-left: 6px; font: 500 12px var(--mono); }
+.ch-use-x { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding-top: 8px; text-align: center; }
+.ch-use-x b { display: block; font-weight: 500; font-size: 13px; }
+.ch-use-x small { color: var(--muted); font: 400 11px var(--mono); }
+.ch-tip-list { color: var(--text-2); line-height: 1.45; }
+/* every country, every year: the stripes */
+.ch-stripes .ch-plot { height: clamp(460px, 62vh, 640px); }
+.ch-stripes svg { overflow: hidden; border-radius: 4px; }
+.ch-stripes-hit { position: absolute; inset: 0; cursor: pointer; }
+.ch-vline.strong { border-left: 1px solid color-mix(in srgb, var(--bg) 70%, transparent); }
+.ch-vline.strong b { position: absolute; top: -18px; left: -14px; font: 500 11px var(--mono); color: var(--muted); }
+.ch-stripes .ch-plot { margin-top: 20px; }
+.ch-stripes .ch-seek { background: var(--bg); width: 2px; margin-left: -1px; }
+.ch-row-mark { position: absolute; left: 0; right: 0; min-height: 2px; outline: 1.5px solid var(--bg); pointer-events: none; }
+.ch-row-mark[hidden] { display: none; }
+.ch-stripes-ends { display: flex; justify-content: space-between; color: var(--muted); font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .07em; }
+/* the history by decade: a streamgraph */
+.ch-stream .ch-plot { height: 340px; }
+.ch-stream-band { stroke: var(--bg); stroke-width: .6; vector-effect: non-scaling-stroke; transition: opacity .15s; }
+.ch-stream .ch-hits { bottom: 0; }
+.ch-stream .ch-hits a:hover { background: color-mix(in srgb, var(--text) 7%, transparent); }
+.ch-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 12px 0 0; font-size: 12.5px; color: var(--text-2); }
+.ch-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.ch-legend i, .ch-key { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+.ch-legend em { font: 400 11.5px var(--mono); font-style: normal; color: var(--muted); }
+.ch-tip-row .ch-key { align-self: center; margin-right: -6px; }
+/* how the scores spread: a ridgeline */
+.ch-ridge-defs { position: absolute; }
+.ch-ridge-wrap, .ch-ridge-x { display: grid; grid-template-columns: 48px minmax(0, 1fr); }
+.ch-ridge-wrap .ch-plot { height: clamp(420px, 56vh, 560px); }
+.ch-ridge-years { position: relative; }
+.ch-ridge-years span { position: absolute; right: 10px; transform: translateY(-100%); font: 400 11.5px var(--mono); color: var(--muted); }
+.ch-ridge-area { fill: url(#ridgeFill); opacity: .9; }
+.ch-ridge-line { fill: none; stroke: var(--text); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.ch-ridge { transition: opacity .15s; }
+.ch-ridges:has(.ch-ridge.on) .ch-ridge:not(.on) { opacity: .3; }
+.ch-ridge-hit { position: absolute; left: 0; right: 0; }
+/* the datasets against the law */
+.charts-page { --rec-legal: var(--t5); --rec-partial: var(--t4); --rec-decrim: var(--t3); --rec-illegal: var(--t1); --rec-death: var(--t0); }
+.ch-plot-short { height: 380px !important; }
+.ch-opinion .ch-plot { height: 420px; }
+.ch-quad { fill: color-mix(in srgb, var(--t1) 9%, transparent); }
+.ch-quad-label { position: absolute; padding: 6px 8px; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .07em; color: var(--t1); }
+.ch-bars { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+.ch-bars li a, .ch-bars-axis { display: grid; grid-template-columns: 200px minmax(0, 1fr) 80px; gap: 14px; align-items: center; padding: 5px 0; color: var(--text); }
+.ch-bars li { border-bottom: 1px solid var(--border); }
+.ch-bars li a:hover { background: color-mix(in srgb, var(--text) 5%, transparent); }
+.ch-bar-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13.5px; }
+.ch-bar-track { position: relative; height: 14px; }
+.ch-bar { position: absolute; left: 0; top: 0; bottom: 0; min-width: 2px; border-radius: 0 3px 3px 0; background: var(--c); }
+.ch-bar-num { font: 400 12.5px var(--mono); text-align: right; color: var(--text-2); }
+.ch-bars-axis { color: var(--muted); font: 400 11px var(--mono); }
+.ch-bars-axis .ch-bar-track span { position: absolute; transform: translateX(-50%); }
+.ch-bars-axis .ch-bar-track span:first-child { transform: none; }
+.ch-thc .ch-plot { height: 340px; }
+.ch-thc { padding-left: 30px; }
+.ch-thc-country { fill: none; stroke: var(--muted); stroke-width: 1; opacity: .35; vector-effect: non-scaling-stroke; }
+.ch-thc-area { fill: color-mix(in srgb, var(--t4) 22%, transparent); }
+.ch-thc-median { fill: none; stroke: var(--text); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+.ch-thc-hit { position: absolute; inset: 0; }
+.ch-research .ch-median b { white-space: nowrap; }
+/* Canada: sources as columns, and two panels on one timeline */
+.ch-cols { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 14px; height: 340px; }
+.ch-col { display: grid; grid-template-rows: 1fr 24px; color: var(--text); }
+.ch-col-stack { display: flex; flex-direction: column-reverse; overflow: hidden; border-radius: 4px; }
+.ch-col-stack i { display: grid; place-items: center; min-height: 1px; border-top: 1px solid var(--bg); }
+.ch-col-stack b { font: 500 12px var(--mono); color: #1a1a1a; }
+.ch-col:hover .ch-col-stack { box-shadow: 0 0 0 2px var(--text); }
+.ch-col-year { padding-top: 6px; text-align: center; font: 400 11.5px var(--mono); color: var(--muted); }
+.ch-merchant { padding-left: 44px; }
+.ch-merchant-panel { position: relative; }
+.ch-merchant-panel .ch-y { bottom: 0; width: 44px; left: -44px; }
+.ch-merchant-panel .ch-plot { height: 220px; }
+.ch-merchant-bars { margin-top: 26px; }
+.ch-merchant-bars .ch-plot { height: 170px; border-bottom: 1px solid var(--border); }
+.ch-merchant-x { margin-left: 0; }
+.ch-merchant-x > span { display: none; }
+.ch-line { fill: none; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+.ch-line.legal { stroke: var(--t5); }
+.ch-line.social { stroke: var(--t3); }
+.ch-line-label { position: absolute; transform: translate(-100%, -150%); font: 500 12px var(--mono); white-space: nowrap; }
+.ch-line-label.legal { color: var(--t5); }
+.ch-line-label.social { color: color-mix(in srgb, var(--t3) 70%, var(--text)); transform: translate(-100%, 40%); }
+.ch-rev { position: absolute; bottom: 0; width: 9%; margin-left: -4.5%; border-radius: 4px 4px 0 0; background: var(--t4); display: flex; justify-content: center; }
+.ch-rev b { margin-top: -20px; font: 500 12px var(--mono); color: var(--text); }
+.ch-rev:hover { background: var(--t5); }
+/* empire: rows of former colonies with the ruler's own year */
+.ch-wide-y { padding-left: 40px; }
+.ch-wide-y .ch-y { width: 40px; }
+.ch-swarm-name small { display: block; font: 400 11px var(--mono); color: var(--muted); }
+.ch-ruler { position: absolute; top: 0; bottom: 0; border-left: 2px solid var(--text); pointer-events: none; }
+.ch-ruler b { position: absolute; top: 0; left: 4px; font: 500 11px var(--mono); }
+/* links and hover cards: each mark leads on to the page behind it */
+.ch-hits { position: absolute; inset: 0 0 24px; }
+.ch-hits a { position: absolute; top: 0; bottom: 0; }
+.ch-hits a:hover, .ch-hits a:focus-visible { background: color-mix(in srgb, var(--text) 9%, transparent); }
+a.ch-db-track { display: block; border-radius: 3px; }
+a.ch-db-track:hover { background: color-mix(in srgb, var(--text) 6%, transparent); }
+.ch-seek { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--text-2); pointer-events: none; }
+.ch-seek[hidden], .ch-tip[hidden] { display: none; }
+.ch-dot:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.ch-tip { position: fixed; z-index: 50; display: grid; gap: 4px; width: max-content; max-width: min(340px, calc(100vw - 16px)); padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--r); background: var(--surface); box-shadow: var(--shadow); font-size: 12.5px; pointer-events: none; }
+.ch-tip b { font: 500 13px var(--mono); }
+.ch-tip ul { display: grid; gap: 4px; margin: 2px 0; padding: 0; list-style: none; }
+.ch-tip li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 6px; color: var(--text); line-height: 1.35; }
+.ch-tip li em { font: 500 11.5px var(--mono); font-style: normal; color: var(--muted); }
+.ch-tip li em.up { color: var(--t4); }
+.ch-tip li em.down { color: var(--t1); }
+.ch-tip li i { font: 400 11px var(--mono); font-style: normal; color: var(--muted); white-space: nowrap; }
+.ch-tip-sub { color: var(--muted); font-size: 12px; }
+.ch-tip-row { display: flex; gap: 14px; color: var(--text-2); }
+.ch-tip-row em { margin-left: auto; font: 500 12px var(--mono); font-style: normal; color: var(--text); }
+.ch-tip-go, .bands-tip .tip-go { margin-top: 3px; padding-top: 6px; border-top: 1px solid var(--border); color: var(--muted); font-size: 11.5px; }
+.ch-more { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 10px 0 0; font-size: 13px; }
+.ch-more span { color: var(--muted); }
+.ch-more a { color: var(--text-2); }
+.ch-more a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+.avg-plot[data-bands] { cursor: pointer; }
+@media (hover: none) { .ch-tip { display: none !important; } .bands-tip .tip-go { display: none; } }
+@media (max-width: 760px) {
+  .ch-cols { gap: 6px; height: 280px; }
+  .ch-col-stack b { font-size: 10px; }
+  .ch-merchant { padding-left: 36px; }
+  .ch-merchant-panel .ch-y { width: 36px; left: -36px; }
+  .ch-rev b { font-size: 10px; }
+  .ch-bars li a, .ch-bars-axis { grid-template-columns: 112px minmax(0, 1fr) 52px; gap: 8px; }
+  .ch-bar-name { font-size: 12px; }
+  .ch-bar-num { font-size: 11px; }
+  .ch-opinion .ch-plot, .ch-plot-short, .ch-thc .ch-plot { height: 320px !important; }
+  .ch-quad-label { font-size: 9.5px; }
+  .ch-stripes .ch-plot { height: 420px; }
+  .ch-stream .ch-plot { height: 260px; }
+  .ch-ridge-wrap, .ch-ridge-x { grid-template-columns: 38px minmax(0, 1fr); }
+  .ch-ridge-wrap .ch-plot { height: 380px; }
+  .ch-ridge-years span { font-size: 10px; right: 6px; }
+  .ch-swarm-row { grid-template-columns: 1fr; gap: 2px; padding-top: 8px; }
+  .ch-swarm { --lane: 6px; }
+  .ch-swarm .ch-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; }
+  .ch-swarm-name { font-size: 15px; }
+  .ch-people { grid-template-columns: 1fr; gap: 20px; }
+  .ch-law-head, .ch-law-row { grid-template-columns: 92px repeat(3, minmax(0, 1fr)); }
+  .ch-law-name { font-size: 12.5px; }
+  .ch-law-cell { height: 70px; }
+  .ch-law-cell i { width: calc(var(--d) * 62px); height: calc(var(--d) * 62px); }
+  .ch-law-head span { font-size: 9.5px; }
+  .ch-median { width: 40px; margin-left: -20px; }
+  .ch-use { --lane: 4.5px; }
+  .ch-median b { left: 50%; top: -17px; padding: 0; transform: translateX(-50%); font-size: 10px; text-shadow: 0 0 3px var(--bg), 0 0 3px var(--bg); }
+  .ch-use-x small { display: none; }
+  .ch-use-x b { font-size: 11px; }
+  .ch-use .ch-plot, .ch-use .ch-y { height: 320px; }
+  .ch-use .ch-dot { width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; }
+  .ch-regions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 18px; }
+  .ch-dumbbell li, .ch-db-axis { grid-template-columns: 112px minmax(0, 1fr) 76px; gap: 10px; }
+  .ch-dumbbell li a { font-size: 12.5px; }
+  .ch-db-num { font-size: 11.5px; }
+  .ch-mark { font-size: 10px; }
+  .ch-mark span { display: none; }
+  .ch-waves .ch-plot { height: 240px; }
+  .ch-scatter .ch-plot { height: 360px; }
+  .ch-dot span { font-size: 10.5px; }
+}
+
+/* the world chart drawn wide (AverageChart.astro with `wide`, on the Charts page) */
+.avg.avg-wide { max-width: none; margin-top: 0; padding: 0; }
+.avg-wide .avg-head { grid-template-columns: repeat(2, minmax(0, max-content)) !important; justify-content: start; gap: 12px 96px !important; margin-bottom: 22px; }
+.avg-wide .avg-now b { font-size: clamp(52px, 6vw, 88px) !important; }
+.avg-wide .avg-chart { grid-template-rows: clamp(280px, 38vh, 380px) 24px; }
+.avg-wide .avg-legend { margin-top: 16px; }
+@media (max-width: 760px) { .avg-wide .avg-head { gap: 12px 28px !important; } .avg-wide .avg-chart { grid-template-rows: 240px 24px; } }
+#avgChart .avg-head[hidden] { display: none; }

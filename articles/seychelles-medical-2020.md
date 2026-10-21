@@ -1,33 +1,53 @@
 ---
-model: opus-5.5
-written: 2026-10-13
+model: gpt-6
+written: '2026-10-21'
 sources:
-  - title: "Misuse of Drugs (Cannabidiol-based Products for Medical Purposes) Regulations 2020, S.I. 25 of 2020 (Seychelles Official Gazette, PDF)"
-    url: https://www.gazette.sc/sites/default/files/2020-12/SI%2025%202020%20-%20Misuse%20of%20Drugs%20Act%202020.pdf
+  - type: law
+    title: Seychelles Official Gazette — Cannabidiol-based Products for Medical Purposes Regulations 2020, S.I. 25
+    url: >-
+      https://www.gazette.sc/sites/default/files/2020-12/SI%2025%202020%20-%20Misuse%20of%20Drugs%20Act%202020.pdf
+    locator: Complete Regulations 1–20 and Schedule 1; gazette pp. 165–186
+  - type: law
+    title: >-
+      Seychelles Constitutional Court — Volcere v Minister for Home Affairs and others, signed judgment, 31
+      May 2019
+    url: https://seylii.org/akn/sc/judgment/sccc/2019/2/eng%402019-05-30
+    locator: >-
+      Majority paragraphs 1–46, especially 13, 24–32, 40–46; signed/delivered 31 May despite catalogue date 30
+      May
+  - title: >-
+      Seychelles Nation — Seychelles Kanabis Association decries sentencing for cannabis-related offences, 30
+      January 2023
+    url: >-
+      https://nation.sc/articles/16645/seychelles-kanabis-association-decries-sentencing-for-cannabis-related-offences
 ---
 
-On 28 February 2020 the minister responsible for home affairs, Macsuzy Mondon, signed regulations under section 54 of the Misuse of Drugs Act 2016, made in consultation with the health minister. They came into operation on 1 July 2020. Their stated object is "lawful access to medicinal cannabis as an alternative treatment", and they tie it to the right to the protection of health in Article 29 of the Constitution.
+Patients in Seychelles could apply for approval to obtain prescribed CBD medicines under rules that took effect on 1 July 2020. Access depended on a specialist’s assessment and a permit from the Public Health Authority. The permitted products were tightly defined, while smoking and growing cannabis remained prohibited.
 
-## A narrow product
+## A family’s court case preceded the rules
 
-The regulations use the words "medicinal cannabis", but the definition is tight. The product must be made from cannabidiol, and any THC-type substance in it may be no more than 2% of the amount of cannabidiol. It must be meant for use "other than by smoking": edibles, ointments and tinctures are named. The definition adds that cannabidiol "shall not include any form of cannabis that gives a psychoactive effect".
+The [2016 drug law](/history/seychelles-misuse-of-drugs-2016/) allowed controlled drugs to be used medically under regulations. [Ralph Volcere challenged the absence of new rules](/history/seychelles-volcere-medical-rules-2019/) while seeking access for his mother, who had Alzheimer’s disease.
 
-## The route to a prescription
+In May 2019 the Constitutional Court ordered ministers to issue regulations within twenty-four months, leaving their content to the government. Home Affairs Minister Macsuzy Mondon made the CBD rules the following February, in consultation with the minister responsible for health.
 
-| Step | Rule |
-|---|---|
-| Who applies | A specialist, for a patient in continuing care (regulation 7) |
-| Test | Other treatments have failed and benefits likely outweigh risks |
-| Who decides | The Public Health Authority, with the Medical and Dental Council |
-| Result | Patient entered in a confidential register and given a permit |
-| Dispensing | A Health Care Agency pharmacy or one it authorises, no more than a 30-day supply |
+## Only defined CBD medicines qualified
 
-Only the Health Care Agency may import the products without a licence. A patient may not enter or leave Seychelles with them without written authorisation, though the regulations recognise a "visiting qualifying patient" holding an equivalent foreign document.
+The regulations covered products made from cannabidiol, including edible preparations, ointments and tinctures intended for use without smoking. Their definition excluded forms of cannabis producing a psychoactive effect.
 
-## What stayed forbidden
+THC and the related substances specified in the rules could together amount to no more than two per cent of the CBD content. The two-per-cent limit was measured against the amount of CBD in the product.
 
-Regulation 19 says, "for the avoidance of any doubt", that a person shall not cultivate or smoke cannabis of any form or type, and lets police arrest a suspect without a warrant. Using the medicinal product without the Authority's permission is an offence too, with a fine of up to 10,000 rupees or up to six months in prison. A doctor who makes a false statement on a certification faces a fine of at least 20,000 rupees or up to two years.
+The Health Care Agency could import medicines for its pharmacies or authorised pharmacies. Other importers needed a licence. Patients, including qualifying visitors, needed prior written permission to enter or leave Seychelles with the medicine.
 
-## Why the index moved
+## Approval came before a prescription
 
-Before July 2020 nothing derived from cannabis could lawfully be obtained in Seychelles. The regulations opened one supervised channel, for cannabidiol products with almost no THC, so access rose from zero to one. They left the rest alone and restated it: growing and smoking cannabis remain offences, so no other score changed.
+A specialist had to assess the patient and conclude that earlier prescribed treatments had been ineffective, that CBD medicine might help, and that likely benefits outweighed the risks. The application also required a plan for continued care.
+
+The Public Health Authority reviewed the certification with the Medical and Dental Council. Approval led to confidential registration and a permit, followed by a prescription. Pharmacies could dispense no more than a thirty-day supply at a time.
+
+The rules allowed designated caregivers to obtain and administer medicine for a patient. They also provided extra consent and approval requirements for children.
+
+## Patients still faced strict boundaries
+
+Using the medicine without authorisation could bring a fine of up to 10,000 rupees, up to six months in prison, or both. The regulations expressly prohibited cultivating or smoking any form of cannabis and allowed police to arrest suspects without a warrant.
+
+In [January 2023, the Seychelles Kanabis Association criticised the rules](/history/seychelles-kanabis-association-sentencing-2023/) as unfit for patients’ needs, linking difficulties obtaining treatment to the risk of criminal punishment. Its intervention kept patient access part of the wider cannabis-law debate in [Seychelles](/country/sc/).
