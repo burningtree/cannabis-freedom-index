@@ -3,13 +3,14 @@ region: Africa
 iso_numeric: 854
 recreational: illegal
 medical: none
-updated: 2026-10-13
+updated: 2026-10-21
 summary: >-
-  Personal use or possession of drugs is punishable by two to five years in prison and a fine under
-  the 1999 drug code.
+  Cannabis use is criminalised and drug users face jail. The 2018 Penal Code set shorter prison
+  ranges for small personal possession and growing, alongside fines. Parliament adopted a further
+  replacement code on 20 October 2026.
 scores:
   possession: 0
-  cultivation: 0
+  cultivation: 1
   enforcement: 1
   sharing: 1
   consumption: 0
@@ -17,44 +18,45 @@ scores:
 segments:
   possession:
     text: >-
-      Under Article 47 of the 1999 drug code (Law 017-99/AN), using or holding high-risk drugs for
-      personal consumption carries 2 to 5 years in prison and a fine of 1,000,000 to 5,000,000 CFA
-      francs, or one of the two. For drugs in the lower "risk" class, Article 51 sets the same 2 to
-      5 years for personal use or possession, with a fine of 500,000 to 2,000,000 CFA francs. The schedules were not read, so which class cannabis falls in is not confirmed here.
-    sources:
-      - code99
+      The 2018 Penal Code sets a separate penalty for small quantities bought or held for personal
+      consumption. High-risk plants or substances, including cannabis oil, carry one month to one
+      year and a fine of 250,000–600,000 CFA francs; cannabis derivatives other than oil carry
+      one to six months and the same fine. It gives no gram limit. General personal possession
+      of high-risk drugs carries two to five years and a fine of 1–5 million francs.
+    sources: [code18]
   cultivation:
     text: >-
-      Growing high-risk drugs carries 10 to 20 years and a fine of 5,000,000 to 25,000,000 CFA
-      francs (Article 44); growing drugs in the lower class carries 5 to 10 years (Article 51).
-      No lighter tier for growing for personal use appears in these articles.
-    sources:
-      - code99
+      Small personal cultivation falls under the same shorter penalty tiers as small personal
+      possession in the 2018 code. There is no fixed plant limit. Ordinary high-risk cultivation
+      and production carry eleven to twenty-one years and a fine of 5–25 million CFA francs.
+      The 1999 drug code already distinguished small personal growing from ordinary production.
+    sources: [code18, code99]
   enforcement:
     text: >-
-      A 2025 Mainline country sheet reports that drug use is severely repressed by the police and
-      courts, that people who use drugs are jailed, and that a judge may order treatment instead.
-    sources:
-      - ml
+      Mainline's 2025 country sheet reports severe repression by police and courts and imprisonment
+      of drug users. Courts can order treatment in place of or alongside punishment, but the
+      report describes missing protocols, facilities and clear responsibilities that leave this
+      alternative rarely implemented.
+    sources: [ml, code18]
   sharing:
     text: >-
-      Giving or offering a high-risk drug to a person for their own use carries 2 to 5 years and a
-      fine of 500,000 to 2,000,000 CFA francs (Article 50). Selling, distributing or delivering
-      carries 10 to 20 years (Article 46).
-    sources:
-      - code99
+      Giving or offering a high-risk drug directly for another person's consumption carries two
+      to five years and a fine of 500,000–2 million CFA francs in the 2018 code. General local
+      trafficking carries eleven to twenty-one years and a fine of 5–25 million francs.
+    sources: [code18]
   consumption:
     text: >-
-      Using high-risk drugs for personal consumption is punished by Article 47 (2 to 5 years); the
-      lower class is punished by Article 51 (also 2 to 5 years).
-    sources:
-      - code99
+      The 2018 code prohibits using controlled drugs outside a medical prescription. Its general
+      offence of personal use of high-risk drugs carries two to five years and a fine of
+      1–5 million CFA francs. The small-quantity rule expressly covers buying, possession and
+      growing; it does not expressly list use itself.
+    sources: [code18]
   access:
     text: >-
-      No lawful source is shown in the articles read. The sale, supply and holding of drugs is
-      punished under Articles 44 to 51.
-    sources:
-      - code99
+      Recreational supply is prohibited. The 1999 code restricts controlled-drug commerce to
+      authorised purposes and licensed operators; the 2018 code sets criminal penalties for
+      unauthorised production and supply.
+    sources: [code99, code18]
 context:
   production:
     text: Reliable national information about lawful cannabis production was not established by the retained sources.
@@ -66,38 +68,51 @@ context:
     text: The retained sources do not establish whether a medical cannabis programme operates.
     sources: []
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      For specified production, supply and related offences, the 2018 code allows additional
+      penalties such as loss of civic rights, professional bans and restrictions on travel or
+      residence. Courts may order treatment in place of or alongside punishment for a dependent
+      person convicted of the offences listed in its treatment rule, including small personal
+      quantities and drug-impaired driving.
+      Parliament adopted a further replacement Penal Code on 20 October 2026.
+    sources: [code18, parliament26]
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
-    sources:
-      - code99
+      No cannabis clubs are known. Growing cannabis and supplying it to another person remain
+      prohibited; the small-personal-quantity tier still sets criminal penalties.
+    sources: [code99, code18]
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under Article 47 of the 1999 drug code,
-      using or holding a high-risk drug for personal consumption carries two to five years in
-      prison and a fine of one to five million CFA francs, or one of the two.
-    sources:
-      - code99
+      Visitors have no lawful recreational supply route. For specified production and supply
+      offences, the 2018 code allows courts to exclude a convicted foreigner permanently or
+      for ten years or more. Its additional-penalty clause covers Articles 381-1–384-5, while
+      small personal quantities have a separate rule in Article 385-2.
+    sources: [code18]
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 11,734 kg of herbal
       cannabis seized in 2024, against 18,985 kg in 2023. The UN publishes them as
       kilogram equivalents, and countries count seizures differently, so the figures are
       not comparable across borders.
-    sources:
-      - unodc_szr
+    sources: [unodc_szr]
 sources:
   code99:
-    title: UNODC SHERLOC — Burkina Faso, Loi No. 17/99 portant Code des Drogues, Articles 44-55
-    url: https://sherloc.unodc.org/cld/en/legislation/bfa/loi_no._1799_portant_code_des_drogues/articles_44-55/loi_1799.html
+    title: Burkina Faso — Drug Code of 29 April 1999, complete text held by UNODC
+    url: https://sherloc.unodc.org/cld/uploads/res/document/bfa/loi-17-99_html/loi_17-99.pdf
+    locator: Articles 11–14 and 61; penalty Articles 44–72 and 82 repealed by the 2018 Penal Code
+  code18:
+    title: Burkina Faso — Penal Code of 31 May 2018, complete text held by UNODC
+    url: https://www.unodc.org/cld/uploads/res/loi-no-025-2018-an-portant-code-pnal_html/LOI_N2018-025-AN.pdf
+    locator: Articles 381-1–381-7, 385-1–385-3, 387-7–387-10 and 900-2
+  parliament26:
+    title: Burkina Faso parliament — Adoption of a replacement Penal Code, 20 October 2026
+    url: https://assembleenationale.bf/972
   ml:
-    title: Mainline — Burkina Faso country sheet on drug policy (PDF)
+    title: Mainline — Burkina Faso country sheet on drug policy
     url: https://mainline.nl/wp-content/uploads/2025/08/Burkina-Faso.pdf
+    locator: Policies section
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure

@@ -3,14 +3,17 @@
 # A dataset whose file is missing is left out of the site with a warning, so a definition can wait
 # here for its file.
 #
-#   file      the CSV in this folder, published unchanged at /data/datasets/<file>
+#   file      the CSV in this folder, published unchanged at /data/datasets/<file>; or, for a
+#             dataset published as a new file each time (a yearly survey), a list of
+#             { file, edition }, one per edition, whose rows take the edition's year
 #   origin    how the file was made: downloaded as published, or transcribed, and when
 #   original  optional: the publisher's own file, kept and published beside an extract made from it
 #   country   which column names the country, and whether it holds our file names (`by: id`,
 #             "de", "us") or country names (`by: name`, matched to the `name:` of each country
 #             file, ignoring accents and punctuation); `aliases` maps names that differ
-#   year      optional: a column with the year. Only the latest year is used, unless
-#             `keep: all`, which keeps every year as a series
+#   year      optional: a column with the year of each row. Every dataset is kept as a series,
+#             one row per country and year, so that profiles can chart it; the site's own
+#             figures and the map use the latest year
 #   fields    our name for each figure → the column it is read from, its decimals, `type: boolean`
 #             for a column that is "true" or empty or `text`, and `about`, what the site uses it
 #             for, and how it is written on a profile: `format` (number, percent, decimal, rank or
@@ -76,39 +79,60 @@
     - { label: the rankings, path: "#rankings" }
   also: and every country profile
 
-- id: population
-  file: population.csv
-  name: Population
-  publisher: Our World in Data and the World Bank
-  credit: Our World in Data, World Bank
-  title: Our World in Data — Population (long-run estimates)
-  url: https://ourworldindata.org/population-sources
-  data_url: https://data.worldbank.org/indicator/SP.POP.TOTL
-  data_label: World Bank — Population, total
-  when: 1900 to 2025
+- id: youth_use
+  file: unodc-cannabis-use-youth.csv
+  original: unodc-wdr2026-1.4-prevalence-youth.xlsx
+  name: Cannabis use at 15 and 16
+  publisher: United Nations Office on Drugs and Crime (UNODC)
+  credit: UNODC
+  title: UNODC — World Drug Report 2026, statistical annex, table 1.4 Prevalence of drug use in the youth population, national data
+  url: https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html
+  data_url: https://www.unodc.org/documents/data-and-analysis/WDR_2026/Annex/1.4_prevalence_of_drug_use_in_the_youth_population_national_data_national_data.xlsx
+  data_label: table 1.4, spreadsheet
+  when: school surveys from 2003 to 2024
   about: >-
-    How many people live in each country and territory: a figure every ten years from 1900 to
-    2020 and the latest one. It weights the population-weighted world average, shown beside the
-    plain one, and sorts the rankings by population.
+    The share of 15- and 16-year-olds who used cannabis in the past year, mostly from school
+    surveys such as ESPAD, as each government reports them to UNODC. Only surveys of this age
+    group are used, so that countries can be compared: some large countries, Germany, France and
+    Spain among them, report only other age bands and are left out.
   origin: >-
-    Compiled for this site on 4 October 2026 and moved into this file on 20 October 2026. For 196
-    countries the figures from 1900 to 2020 are Our World in Data's long-run series and the latest
-    (mostly 2025) is the World Bank's. 23 dependencies and disputed territories have a single
-    recent figure only. Borders are today's. Not a copy of a published file.
+    The publisher's spreadsheet was downloaded on 21 October 2026 and is published here
+    unchanged. The CSV is extracted from it by scripts/extract-unodc.py (youth): sheet "Cannabis",
+    rows covering ages 15 to 16 with a past-year figure, the latest survey for each country. Rows
+    about herb or resin only, or about one part of a country, are left out, and UNODC's age
+    group is written out ("(SS) 15 - 16" as "ages 15–16, school survey").
   profile:
-    headline: "{population} people in {year}"
-    years: [1900, 1950, 2000]
+    headline: "{past_year} in the past year"
+    details: "{lifetime} ever · {past_month} in the past month · {year} · {coverage}"
   country: { column: country, by: id }
-  year: { column: year, keep: all }
   fields:
-    population: { column: population, about: "People living there in that year" }
-  pages:
-    - { label: the world average by population, path: "" }
-    - { label: the population column of the rankings, path: "#rankings" }
-    - { label: research progress weighted by population, path: research/ }
+    past_year: { column: past_year, format: percent, about: "Map colour and profile" }
+    lifetime: { column: lifetime, format: percent }
+    past_month: { column: past_month, format: percent }
+    year: { column: year, format: text }
+    coverage: { column: coverage, type: text, about: "Age group, and whether it was a school survey" }
+  map:
+    field: past_year
+    format: percent
+    group: Use
+    slug: youth-cannabis-use
+    label: Use at 15 and 16
+    missing: No survey of 15- and 16-year-olds reported to UNODC
+    steps: [[0, "Under 3%"], [3, "3–7%"], [7, "7–12%"], [12, "12–18%"], [18, "18% or more"]]
+    title: Cannabis use among 15- and 16-year-olds, by country
+    lede: >-
+      The share of 15- and 16-year-olds who used cannabis in the past year, from the latest school
+      survey each country reported to UNODC. The stronger the blue, the higher the share.
+    sub: >-
+      The stronger the blue, the more 15- and 16-year-olds used cannabis in the past year.
+      Countries without a survey of this age group are hatched.
+    note: >-
+      UNODC World Drug Report 2026, table 1.4: past-year use among 15- and 16-year-olds, latest
+      survey reported. Survey years differ between countries.
 
 - id: pew_marijuana
-  file: pew-marijuana-morality-2026.csv
+  file:
+    - { file: pew-marijuana-morality-2026.csv, edition: 2025 }
   rail: true
   origin: >-
     Transcribed by hand on 20 October 2026 from the "Total" row of each country in the topline
@@ -156,6 +180,490 @@
     note: >-
       Pew Research Center, 2025 survey of 25 countries, published March 2026. Moral views are shown
       for context and are not part of the score.
+
+- id: cannabis_offences
+  file: euda-cannabis-use-offences.csv
+  original: euda-sb2026-dlo-03-2-0-cannabis-use-offences.xml
+  name: Offences for cannabis use or possession
+  publisher: European Union Drugs Agency (EUDA)
+  credit: EUDA
+  title: EUDA — Statistical Bulletin 2026, drug law offences, cannabis, use (table DLO-03-2-0)
+  url: https://www.euda.europa.eu/data/stats2026/dlo_en#displayTable:DLO-03-2-0
+  data_url: https://www.euda.europa.eu/modules/sbdata/SBDataService2026.cfc?method=fetchxlsx&tableid=DLO-03-2-0
+  data_label: table DLO-03-2-0, spreadsheet
+  when: 2007 to 2024
+  about: >-
+    Offences of using or possessing cannabis recorded each year, as European countries report
+    them to the EUDA: cannabis alone, unlike UNODC's figures for all drugs. Countries record
+    offences or offenders, and define them, in different ways, so compare a country with itself
+    over time rather than with its neighbours. The EUDA notes that Slovenia counted only
+    use-related offences in 2023, that Portugal's figures for 2017 to 2021 lack one police force,
+    and that Greece's include all cannabis products since 2018. Shown per 100,000 people using
+    today's population.
+  origin: >-
+    The EUDA's site refuses scripted downloads, so the table was read in a browser on 21 October
+    2026 from its data service (the XML behind the table) and saved unchanged; its SHA-256 was
+    checked against the browser's copy. scripts/extract-euda.py (cannabis_offences) turns it into
+    one row per country and year with a figure.
+  profile:
+    headline: "{per} per 100,000 people"
+    details: "{offences} offences in {year}"
+    each: "{offences} in {year}"
+    years: [2010, 2020]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    offences: { column: offences, about: "Offences recorded: map colour (per 100,000) and profile" }
+  map:
+    field: offences
+    per: 100000
+    format: rate
+    group: Law
+    since: 2020
+    slug: cannabis-offences-europe
+    label: Cannabis offences (Europe)
+    missing: No cannabis-use offences reported to the EUDA since 2020
+    steps: [[0, "Under 10"], [10, "10–50"], [50, "50–100"], [100, "100–250"], [250, "250 or more"]]
+    title: Offences for cannabis use or possession in Europe
+    lede: >-
+      Offences of using or possessing cannabis per 100,000 people, in the latest year each
+      European country reported to the EUDA since 2020. The stronger the blue, the more offences.
+    sub: >-
+      The stronger the blue, the more cannabis use or possession offences per 100,000 people.
+      Countries count differently; those without a report since 2020 are hatched.
+    note: >-
+      EUDA Statistical Bulletin 2026, table DLO-03-2-0: cannabis use offences, latest year since
+      2020, per 100,000 people. Not part of the score.
+
+- id: police_possession
+  file: unodc-drug-possession-police.csv
+  original: unodc-wdr2026-10.1-drug-related-crimes.xlsx
+  name: Police contact for drug use or possession
+  publisher: United Nations Office on Drugs and Crime (UNODC)
+  credit: UNODC
+  title: UNODC — World Drug Report 2026, statistical annex, table 10.1 Drug-related crimes
+  url: https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html
+  data_url: https://www.unodc.org/documents/data-and-analysis/WDR_2026/Annex/10.1_drug_related_crimes.xlsx
+  data_label: table 10.1, spreadsheet
+  when: latest year reported, mostly 2024
+  about: >-
+    People brought into formal contact with the police, such as being suspected, arrested or
+    cautioned, for offences of drug use or possession, as each government reports them to UNODC.
+    All illicit drugs are counted together: cannabis is not reported separately. Countries
+    define and record these offences differently, and some include administrative fines, so
+    compare with care. Shown per 100,000 people using today's population.
+  origin: >-
+    The publisher's spreadsheet was downloaded on 21 October 2026 and is published here
+    unchanged. The CSV is extracted from it by scripts/extract-unodc.py (offences): sheet "Formal
+    contact", offences related to drug use and/or possession, any illicit drug, the latest year
+    with a figure for each country. The United Kingdom reports the year ending March 2025.
+  profile:
+    headline: "{per} per 100,000 people"
+    details: "{persons} people in {year} · all drugs together"
+  country: { column: country, by: id }
+  fields:
+    persons: { column: persons, about: "Number of people: map colour (per 100,000) and profile" }
+    year: { column: year, format: text, about: "Year of the figure" }
+  map:
+    field: persons
+    per: 100000
+    format: rate
+    group: Law
+    slug: drug-possession-police
+    label: Police contact for possession
+    missing: Not reported to UNODC
+    steps: [[0, "Under 10"], [10, "10–50"], [50, "50–100"], [100, "100–250"], [250, "250 or more"]]
+    title: Police contact for drug use or possession, by country
+    lede: >-
+      How many people per 100,000 were brought into contact with the police for using or
+      possessing drugs, in the latest year each country reported to UNODC. All drugs together,
+      cannabis included. The stronger the blue, the more people.
+    sub: >-
+      The stronger the blue, the more people per 100,000 the police dealt with for drug use or
+      possession. All drugs together; countries count differently. Countries that do not report
+      are hatched.
+    note: >-
+      UNODC World Drug Report 2026, table 10.1: persons in formal contact with the police for
+      drug use or possession, all drugs, latest year reported. Not part of the score.
+
+- id: seizures
+  file: unodc-cannabis-seizures.csv
+  original: unodc-wdr2026-7.1-drug-seizures.xlsx
+  name: Cannabis seized
+  publisher: United Nations Office on Drugs and Crime (UNODC)
+  credit: UNODC
+  title: UNODC — World Drug Report 2026, statistical annex, table 7.1 Drug seizures 2015–2024
+  url: https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html
+  data_url: https://www.unodc.org/documents/data-and-analysis/WDR_2026/Annex/7.1_Drug_seizures_2015-2024.xlsx
+  data_label: table 7.1, spreadsheet
+  when: 2015 to 2024
+  about: >-
+    Kilograms of cannabis herb and cannabis resin seized by the authorities each year, as
+    reported to UNODC. Seizures show where enforcement and trafficking routes are, not how much
+    cannabis is used: a transit country can seize far more than it consumes. Figures are as
+    reported, and some countries appear to count plants destroyed in the field as herb, which
+    makes their totals very large. Plants, oil and seeds are left out.
+  origin: >-
+    The publisher's spreadsheet was downloaded on 21 October 2026 and is published here
+    unchanged. The CSV is extracted from it by scripts/extract-unodc.py (seizures): herb and resin
+    in kilograms for every country and year, adding up rows of the same kind, with UNODC's source
+    for each figure (ARQ: the government's annual questionnaire; GOV: another government source;
+    AU: the African Union; INCSR: the US State Department).
+  profile:
+    headline: "{total_kg} kg in {year}"
+    details: "{herb_kg} kg of herb · {resin_kg} kg of resin"
+    each: "{total_kg} kg in {year}"
+    years: [2015, 2020]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    total_kg: { column: total_kg, about: "Herb and resin together: map colour and profile" }
+    herb_kg: { column: herb_kg, about: "Kilograms of herb" }
+    resin_kg: { column: resin_kg, about: "Kilograms of resin" }
+    reported_by: { column: reported_by, type: text, about: "UNODC's source for the figures" }
+  map:
+    field: total_kg
+    format: number
+    group: Law
+    since: 2020
+    slug: cannabis-seizures
+    label: Cannabis seized
+    missing: No seizures reported to UNODC since 2020
+    steps: [[0, "Under 100 kg"], [100, "100 kg–1 t"], [1000, "1–10 t"], [10000, "10–100 t"], [100000, "100 t or more"]]
+    title: Cannabis seized by the authorities, by country
+    lede: >-
+      Kilograms of cannabis herb and resin seized in the latest year each country reported to
+      UNODC. Seizures follow enforcement and trafficking routes, not use. The stronger the blue,
+      the more was seized.
+    sub: >-
+      The stronger the blue, the more cannabis herb and resin was seized. Figures as reported;
+      countries that have not reported since 2020 are hatched.
+    note: >-
+      UNODC World Drug Report 2026, table 7.1: cannabis herb and resin seized, latest year since
+      2020. Not part of the score.
+
+- id: prices_europe
+  file: euda-cannabis-prices.csv
+  original: [euda-sb2026-ppp-02-1-1-2-3-herb-price.xml, euda-sb2026-ppp-02-1-1-1-3-resin-price.xml]
+  name: Street price of cannabis (Europe)
+  publisher: European Union Drugs Agency (EUDA)
+  credit: EUDA
+  title: EUDA — Statistical Bulletin 2026, price, purity and potency, retail price of cannabis herb and resin, mean (tables PPP-02-1-1-2-3 and PPP-02-1-1-1-3)
+  url: https://www.euda.europa.eu/data/stats2026/ppp_en
+  data_url: https://www.euda.europa.eu/modules/sbdata/SBDataService2026.cfc?method=fetchxlsx&tableid=PPP-02-1-1-2-3
+  data_label: herb price table, spreadsheet
+  when: 2002 to 2024
+  about: >-
+    The mean retail price of a gram of cannabis herb and of cannabis resin, in euros, as each
+    country reports it to the EUDA from police purchases, seizures or surveys. Where a country
+    reports several studies in a year, their means are averaged. The EUDA notes that Dutch
+    prices are for cannabis bought anonymously in coffeeshops, not on the street, and that
+    Türkiye reports one price for herb and resin together. Prices are not adjusted for
+    inflation.
+  origin: >-
+    The EUDA's site refuses scripted downloads, so both tables were read in a browser on 21
+    October 2026 from its data service, sent compressed and saved unchanged; each file's SHA-256
+    matches the browser's copy. scripts/extract-euda.py (prices) turns them into one row per
+    country and year.
+  profile:
+    headline: "€{herb_eur} a gram of herb"
+    details: "€{resin_eur} a gram of resin · {year}"
+    each: "€{herb_eur} in {year}"
+    years: [2010, 2015]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    herb_eur: { column: herb_eur, format: decimal, about: "Euros per gram of herb: map colour and profile" }
+    resin_eur: { column: resin_eur, format: decimal, about: "Euros per gram of resin" }
+    herb_eur_studies: { column: herb_eur_studies, about: "How many studies the herb price averages" }
+    resin_eur_studies: { column: resin_eur_studies, about: "How many studies the resin price averages" }
+  map:
+    field: herb_eur
+    format: decimal
+    group: Context
+    since: 2020
+    slug: cannabis-price-europe
+    label: Street price (Europe)
+    missing: No herb price reported to the EUDA since 2020
+    steps: [[0, "Under €6/g"], [6, "€6–9/g"], [9, "€9–12/g"], [12, "€12–20/g"], [20, "€20/g or more"]]
+    title: The street price of cannabis in Europe
+    lede: >-
+      The mean retail price of a gram of cannabis herb, in euros, in the latest year each European
+      country reported to the EUDA since 2020. The stronger the blue, the dearer.
+    sub: >-
+      The stronger the blue, the more a gram of cannabis herb costs. Countries without a reported
+      price since 2020 are hatched.
+    note: >-
+      EUDA Statistical Bulletin 2026: mean retail price of cannabis herb, euros per gram, latest
+      year since 2020. Not part of the score.
+
+- id: potency_europe
+  file: euda-cannabis-potency.csv
+  original: [euda-sb2026-ppp-01-1-1-1-2-3-herb-thc.xml, euda-sb2026-ppp-01-1-1-1-1-3-resin-thc.xml]
+  name: THC in cannabis sold (Europe)
+  publisher: European Union Drugs Agency (EUDA)
+  credit: EUDA
+  title: EUDA — Statistical Bulletin 2026, price, purity and potency, THC content of cannabis herb and resin at retail level, mean (tables PPP-01-1-1-1-2-3 and PPP-01-1-1-1-1-3)
+  url: https://www.euda.europa.eu/data/stats2026/ppp_en
+  data_url: https://www.euda.europa.eu/modules/sbdata/SBDataService2026.cfc?method=fetchxlsx&tableid=PPP-01-1-1-1-2-3
+  data_label: herb potency table, spreadsheet
+  when: 2002 to 2024
+  about: >-
+    The mean THC content, in per cent, of cannabis herb and resin tested at retail level, mostly
+    from seized samples, as each country reports it to the EUDA. Where a country reports several
+    studies in a year, their means are averaged. Samples, methods and what counts as herb differ
+    between countries, so compare a country with itself over time.
+  origin: >-
+    The EUDA's site refuses scripted downloads, so both tables were read in a browser on 21
+    October 2026 from its data service, sent compressed and saved unchanged; each file's SHA-256
+    matches the browser's copy. scripts/extract-euda.py (potency) turns them into one row per
+    country and year.
+  profile:
+    headline: "{herb_thc} THC in herb"
+    details: "{resin_thc} in resin · {year}"
+    each: "{herb_thc} in {year}"
+    years: [2010, 2015]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    herb_thc: { column: herb_thc, format: percent, about: "Per cent THC in herb: map colour and profile" }
+    resin_thc: { column: resin_thc, format: percent, about: "Per cent THC in resin" }
+    herb_thc_studies: { column: herb_thc_studies, about: "How many studies the herb figure averages" }
+    resin_thc_studies: { column: resin_thc_studies, about: "How many studies the resin figure averages" }
+  map:
+    field: herb_thc
+    format: percent
+    group: Context
+    since: 2020
+    slug: thc-potency-europe
+    label: THC potency (Europe)
+    missing: No herb potency reported to the EUDA since 2020
+    steps: [[0, "Under 6%"], [6, "6–9%"], [9, "9–12%"], [12, "12–15%"], [15, "15% or more"]]
+    title: How strong cannabis sold in Europe is
+    lede: >-
+      The mean THC content of cannabis herb at retail level, in the latest year each European
+      country reported to the EUDA since 2020. The stronger the blue, the stronger the cannabis.
+    sub: >-
+      The stronger the blue, the more THC in the cannabis herb sold. Countries without a reported
+      figure since 2020 are hatched.
+    note: >-
+      EUDA Statistical Bulletin 2026: mean THC content of cannabis herb at retail level, latest
+      year since 2020. Not part of the score.
+
+- id: osm_shops
+  file:
+    - { file: osm-cannabis-shops-2026-10-21.csv, edition: 2026 }
+  name: Cannabis shops on the map
+  publisher: OpenStreetMap contributors
+  credit: OpenStreetMap
+  title: "OpenStreetMap contributors — places tagged shop=cannabis, via the Overpass API (data © OpenStreetMap contributors, ODbL)"
+  url: https://wiki.openstreetmap.org/wiki/Tag:shop%3Dcannabis
+  data_url: https://overpass-api.de/
+  data_label: Overpass API
+  when: counted October 2026
+  about: >-
+    How many places volunteers have tagged as cannabis shops in OpenStreetMap, the open map of
+    the world, inside each country's borders: dispensaries, licensed shops, coffeeshops and CBD
+    shops alike, wherever mappers used the tag. It shows where cannabis is sold openly, but also
+    how thoroughly an area is mapped: Thailand, with thousands of shops, has only a few hundred
+    tagged. Each count is a dated edition; counting again later adds a new one, so the trend
+    builds up over time. Shown per million people.
+  origin: >-
+    Counted on 21 October 2026 through the Overpass API by scripts/fetch-open-data.py (osm): for
+    each country, the elements tagged shop=cannabis inside its boundary (ISO 3166-1 code, admin
+    level 2). Countries without such a boundary in OpenStreetMap, such as the disputed
+    territories, are left out. Map data © OpenStreetMap contributors, under the Open Database
+    Licence.
+  profile:
+    headline: "{shops} shops mapped"
+    details: "{per} per million people · {year}"
+    each: "{shops} in {year}"
+  country: { column: country, by: id }
+  fields:
+    shops: { column: shops, about: "Places tagged shop=cannabis: map colour (per million people) and profile" }
+    points: { column: points, about: "Of them, mapped as a point" }
+    buildings: { column: buildings, about: "Of them, mapped as a building or area" }
+  map:
+    field: shops
+    per: 1000000
+    format: rate
+    group: Context
+    slug: cannabis-shops-mapped
+    label: Shops on the map
+    missing: No cannabis shops tagged in OpenStreetMap
+    steps: [[0, "Under 1"], [1, "1–5"], [5, "5–20"], [20, "20–50"], [50, "50 or more"]]
+    title: Cannabis shops mapped in OpenStreetMap
+    lede: >-
+      Places tagged as cannabis shops in OpenStreetMap, per million people. It shows where
+      cannabis is sold openly, and how well each country is mapped. The stronger the blue, the
+      more shops.
+    sub: >-
+      The stronger the blue, the more cannabis shops per million people are tagged in
+      OpenStreetMap. Mapping is uneven, so a pale country may simply be less mapped.
+    note: >-
+      © OpenStreetMap contributors (ODbL): elements tagged shop=cannabis, counted October 2026,
+      per million people. Not part of the score.
+
+- id: gbif_plant
+  file: gbif-cannabis-records.csv
+  name: Records of the cannabis plant
+  publisher: Global Biodiversity Information Facility (GBIF)
+  credit: GBIF
+  title: "GBIF.org (21 October 2026), GBIF Occurrence Search, genus Cannabis"
+  url: https://www.gbif.org/occurrence/search?taxon_key=2984538
+  data_url: https://api.gbif.org/v1/occurrence/search?taxonKey=2984538&facet=country&limit=0
+  data_label: GBIF occurrence API
+  when: records from 1500 to 2026
+  about: >-
+    Every record of the cannabis plant that herbaria, museums, botanical surveys and citizen
+    scientists have shared through GBIF, by the country where the plant was found: wild, feral or
+    grown. Old herbarium sheets show where the plant was collected centuries ago; recent records
+    are mostly photographs from apps such as iNaturalist. The numbers say as much about who
+    records plants as about where cannabis grows. The map and charts count records with a date;
+    many have none, and those are given separately.
+  origin: >-
+    Counted on 21 October 2026 through GBIF's public API by scripts/fetch-open-data.py (gbif):
+    the genus Cannabis with all its species and synonyms, faceted by country and then by year.
+    The individual records keep the licences their publishers chose (CC0, CC BY or CC BY-NC);
+    only counts are kept here.
+  profile:
+    headline: "{records_total} dated records"
+    details: "{undated} more without a date · {records} in {year}"
+    each: "{records_total} by {year}"
+    years: [1900, 1960, 2000]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    records_total: { column: records_total, about: "Dated records up to that year: map colour and profile" }
+    records: { column: records, about: "Records from that year" }
+    undated: { column: undated, about: "Records without a year, on a country's last row" }
+  map:
+    field: records_total
+    format: number
+    group: Context
+    slug: cannabis-plant-records
+    label: Plant records
+    missing: No dated records of cannabis in GBIF
+    steps: [[0, "Under 10"], [10, "10–50"], [50, "50–200"], [200, "200–1,000"], [1000, "1,000 or more"]]
+    title: Where the cannabis plant has been recorded
+    lede: >-
+      Dated records of the cannabis plant shared through GBIF: herbarium sheets, botanical
+      surveys and citizen-science photographs, by the country where the plant was found. The
+      stronger the blue, the more records.
+    sub: >-
+      The stronger the blue, the more dated records of the cannabis plant. Countries with none are
+      hatched. Use the slider to see how the records built up over the centuries.
+    note: >-
+      GBIF.org, genus Cannabis, dated records up to the year shown. Not part of the score.
+
+- id: hemp
+  file: faostat-hemp.csv
+  name: Hemp grown
+  publisher: Food and Agriculture Organization of the United Nations (FAO)
+  credit: FAO
+  title: "FAOSTAT — Production: Crops and livestock products (QCL), hemp fibre and hempseed"
+  url: https://www.fao.org/faostat/en/#data/QCL
+  data_url: https://bulks-faostat.fao.org/production/Production_Crops_Livestock_E_All_Data_(Normalized).zip
+  data_label: bulk download, all crops and livestock
+  when: 1961 to 2024
+  about: >-
+    How much hemp each country grows for fibre and for seed, in hectares harvested and tonnes
+    produced, every year since 1961, as governments report them to FAO. It shows the crop itself,
+    not cannabis use: industrial hemp has little THC. Fibre and seed areas overlap where one crop
+    gives both, so the area shown is the larger of the two, not their sum. Records are patchy:
+    some countries report only fibre or only seed, some only area, and many stop for years.
+  origin: >-
+    FAO's bulk file (last updated 23 December 2025, about 34 MB) was downloaded on 21 October 2026
+    and read by scripts/extract-faostat-hemp.py, which keeps the hemp rows: "True hemp, raw or
+    retted" (fibre) and "Hempseed", production and area harvested, every year, with FAO's flag
+    for each figure (A official, E estimated, I imputed, X another international body). The bulk
+    file is too large to keep here. Countries are matched by their M49 code; FAO's "China"
+    aggregate is left out in favour of mainland China, and former states (the USSR,
+    Czechoslovakia, Yugoslavia) are kept in the file without a country, so the site does not show
+    them.
+  profile:
+    headline: "{hemp_ha} ha in {year}"
+    details: "{fibre_t} t of fibre · {seed_t} t of seed"
+    each: "{hemp_ha} ha in {year}"
+    years: [1961, 1980, 2000]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    hemp_ha: { column: hemp_ha, about: "Hectares of hemp: map colour and profile" }
+    fibre_t: { column: fibre_t, about: "Tonnes of hemp fibre" }
+    seed_t: { column: seed_t, about: "Tonnes of hempseed" }
+    fibre_ha: { column: fibre_ha, about: "Hectares harvested for fibre" }
+    seed_ha: { column: seed_ha, about: "Hectares harvested for seed" }
+  map:
+    field: hemp_ha
+    format: number
+    group: Context
+    since: 2015
+    slug: hemp-grown
+    label: Hemp grown
+    missing: No hemp reported to FAO since 2015
+    steps: [[0, "Under 100 ha"], [100, "100–1,000 ha"], [1000, "1,000–5,000 ha"], [5000, "5,000–20,000 ha"], [20000, "20,000 ha or more"]]
+    title: Where hemp is grown, by country
+    lede: >-
+      Hectares of hemp harvested for fibre or seed in the latest year each country reported to
+      FAO, since 2015. Hemp is the same plant as cannabis, grown for its stalks and seeds rather
+      than for THC. The stronger the blue, the more hemp.
+    sub: >-
+      The stronger the blue, the more hectares of hemp, for fibre or seed. Countries that have not
+      reported hemp to FAO since 2015 are hatched.
+    note: >-
+      FAOSTAT, hemp fibre and hempseed, area harvested, latest year reported since 2015. Not part
+      of the score.
+
+- id: research_papers
+  file: openalex-cannabis-papers.csv
+  name: Research on cannabis
+  publisher: OpenAlex (OurResearch)
+  credit: OpenAlex
+  title: OpenAlex — works mentioning cannabis, marijuana, marihuana or cannabinoids in their title or abstract, by author country
+  url: https://openalex.org/
+  data_url: https://api.openalex.org/works?filter=title_and_abstract.search:cannabis%7Cmarijuana%7Cmarihuana%7Ccannabinoid&group_by=authorships.countries
+  data_label: OpenAlex API
+  when: 1950 to 2025
+  about: >-
+    How many research papers about cannabis have authors working in each country, every year
+    since 1950: papers whose title or abstract mentions cannabis, marijuana, marihuana or a
+    cannabinoid, in OpenAlex's open catalogue of scholarly works. A paper with authors in
+    several countries counts for each. It shows where cannabis is studied, which laws can make
+    easier or harder. Shown per million people using today's population.
+  origin: >-
+    Counted on 21 October 2026 through OpenAlex's public API by scripts/fetch-open-data.py
+    (openalex): one query per year, grouped by the countries of the authors' institutions. The
+    current year, still incomplete, is left out. OpenAlex data is CC0.
+  profile:
+    headline: "{per} papers per million people"
+    details: "{papers} papers in {year}"
+    each: "{papers} in {year}"
+    years: [1970, 1990, 2010]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    papers: { column: papers, about: "Papers that year: map colour (per million people) and profile" }
+  map:
+    field: papers
+    per: 1000000
+    format: rate
+    since: 2024
+    slug: cannabis-research
+    label: Cannabis research
+    missing: No cannabis papers in OpenAlex in the latest year
+    steps: [[0, "Under 1"], [1, "1–3"], [3, "3–10"], [10, "10–30"], [30, "30 or more"]]
+    title: Where cannabis is studied
+    lede: >-
+      Research papers about cannabis per million people, by the countries their authors work in,
+      in the latest full year, from OpenAlex's open catalogue. The stronger the blue, the more
+      research.
+    sub: >-
+      The stronger the blue, the more papers about cannabis per million people. Use the slider to
+      go back to 1950.
+    note: >-
+      OpenAlex, papers mentioning cannabis by author country, per million people (today's
+      population). Not part of the score.
 
 - id: hfi
   file: hfi-2025.csv
@@ -237,104 +745,82 @@
       Human Freedom Index 2025 (Cato Institute and Fraser Institute), data for 2023. Shown for
       context and not part of the score.
 
-- id: police_possession
-  file: unodc-drug-possession-police.csv
-  original: unodc-wdr2026-10.1-drug-related-crimes.xlsx
-  name: Police contact for drug use or possession
-  publisher: United Nations Office on Drugs and Crime (UNODC)
-  credit: UNODC
-  title: UNODC — World Drug Report 2026, statistical annex, table 10.1 Drug-related crimes
-  url: https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html
-  data_url: https://www.unodc.org/documents/data-and-analysis/WDR_2026/Annex/10.1_drug_related_crimes.xlsx
-  data_label: table 10.1, spreadsheet
-  when: latest year reported, mostly 2024
+- id: civil_liberties
+  file: vdem-civil-liberties.csv
+  original: owid-civil-liberties-vdem.csv
+  name: Civil liberties
+  publisher: V-Dem Institute, via Our World in Data
+  credit: V-Dem, Our World in Data
+  title: "V-Dem (2026), Democracy report v16, processed by Our World in Data — Human rights index (V-Dem's civil liberties index)"
+  url: https://ourworldindata.org/grapher/civil-liberties-index-vdem
+  data_url: https://ourworldindata.org/grapher/civil-liberties-index-vdem.csv?v=1&csvType=full&useColumnShortNames=true
+  data_label: OWID chart data, CSV
+  when: 1900 to 2025
   about: >-
-    People brought into formal contact with the police, such as being suspected, arrested or
-    cautioned, for offences of drug use or possession, as each government reports them to UNODC.
-    All illicit drugs are counted together: cannabis is not reported separately. Countries
-    define and record these offences differently, and some include administrative fines, so
-    compare with care. Shown per 100,000 people using today's population.
+    How free people are from government torture, political killings and forced labour, and how
+    far they have property rights and freedom of movement, religion, expression and association,
+    from 0 (none) to 1, every year, as estimated by V-Dem's country experts. Our World in Data
+    publishes it as its "human rights index". V-Dem scores West and East Germany separately from
+    1949 to 1990, so Germany has no figures for those years.
   origin: >-
-    The publisher's spreadsheet was downloaded on 21 October 2026 and is published here
-    unchanged. The CSV is extracted from it by scripts/extract-unodc.py (offences): sheet "Formal
-    contact", offences related to drug use and/or possession, any illicit drug, the latest year
-    with a figure for each country. The United Kingdom reports the year ending March 2025.
+    OWID's chart file (V-Dem version 16, OWID update of 17 March 2026) was downloaded on 21
+    October 2026 and is published here unchanged. scripts/extract-owid.py (civil_liberties) keeps
+    every year from 1900 for the countries this site covers, matching OWID's three-letter codes to
+    ours through the World Bank's country list; historical states and regions are left out.
   profile:
-    headline: "{per} per 100,000 people"
-    details: "{persons} people in {year} · all drugs together"
+    headline: "{civil_liberties} of 1 in {year}"
+    each: "{civil_liberties} in {year}"
+    years: [1925, 1961, 1990]
   country: { column: country, by: id }
+  year: { column: year }
   fields:
-    persons: { column: persons, about: "Number of people: map colour (per 100,000) and profile" }
-    year: { column: year, format: text, about: "Year of the figure" }
+    civil_liberties: { column: civil_liberties, format: decimal, about: "0 to 1: map colour and profile" }
   map:
-    field: persons
-    per: 100000
-    format: rate
-    group: Law
-    slug: drug-possession-police
-    label: Police contact for possession
-    missing: Not reported to UNODC
-    steps: [[0, "Under 10"], [10, "10–50"], [50, "50–100"], [100, "100–250"], [250, "250 or more"]]
-    title: Police contact for drug use or possession, by country
+    field: civil_liberties
+    format: decimal
+    since: 2020
+    slug: civil-liberties
+    label: Civil liberties
+    missing: Not scored by V-Dem
+    steps: [[0, "Under 0.2"], [0.2, "0.2–0.4"], [0.4, "0.4–0.6"], [0.6, "0.6–0.8"], [0.8, "0.8 or more"]]
+    title: Civil liberties by country, beside cannabis freedom
     lede: >-
-      How many people per 100,000 were brought into contact with the police for using or
-      possessing drugs, in the latest year each country reported to UNODC. All drugs together,
-      cannabis included. The stronger the blue, the more people.
+      V-Dem's civil liberties index, from 0 to 1: freedom from torture and political killings,
+      property rights, and freedom of movement, religion, expression and association. The
+      stronger the blue, the freer.
     sub: >-
-      The stronger the blue, the more people per 100,000 the police dealt with for drug use or
-      possession. All drugs together; countries count differently. Countries that do not report
-      are hatched.
+      The stronger the blue, the more civil liberties people have by V-Dem's estimate. Places V-Dem
+      does not score are hatched.
     note: >-
-      UNODC World Drug Report 2026, table 10.1: persons in formal contact with the police for
-      drug use or possession, all drugs, latest year reported. Not part of the score.
+      V-Dem (2026), processed by Our World in Data, latest year. Not part of the score.
 
-- id: youth_use
-  file: unodc-cannabis-use-youth.csv
-  original: unodc-wdr2026-1.4-prevalence-youth.xlsx
-  name: Cannabis use at 15 and 16
-  publisher: United Nations Office on Drugs and Crime (UNODC)
-  credit: UNODC
-  title: UNODC — World Drug Report 2026, statistical annex, table 1.4 Prevalence of drug use in the youth population, national data
-  url: https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html
-  data_url: https://www.unodc.org/documents/data-and-analysis/WDR_2026/Annex/1.4_prevalence_of_drug_use_in_the_youth_population_national_data_national_data.xlsx
-  data_label: table 1.4, spreadsheet
-  when: school surveys from 2003 to 2024
+- id: population
+  file: population.csv
+  name: Population
+  publisher: Our World in Data and the World Bank
+  credit: Our World in Data, World Bank
+  title: Our World in Data — Population (long-run estimates)
+  url: https://ourworldindata.org/population-sources
+  data_url: https://data.worldbank.org/indicator/SP.POP.TOTL
+  data_label: World Bank — Population, total
+  when: 1900 to 2025
   about: >-
-    The share of 15- and 16-year-olds who used cannabis in the past year, mostly from school
-    surveys such as ESPAD, as each government reports them to UNODC. Only surveys of this age
-    group are used, so that countries can be compared: some large countries, Germany, France and
-    Spain among them, report only other age bands and are left out.
+    How many people live in each country and territory: a figure every ten years from 1900 to
+    2020 and the latest one. It weights the population-weighted world average, shown beside the
+    plain one, and sorts the rankings by population.
   origin: >-
-    The publisher's spreadsheet was downloaded on 21 October 2026 and is published here
-    unchanged. The CSV is extracted from it by scripts/extract-unodc.py (youth): sheet "Cannabis",
-    rows covering ages 15 to 16 with a past-year figure, the latest survey for each country. Rows
-    about herb or resin only, or about one part of a country, are left out, and UNODC's age
-    group is written out ("(SS) 15 - 16" as "ages 15–16, school survey").
+    Compiled for this site on 4 October 2026 and moved into this file on 20 October 2026. For 196
+    countries the figures from 1900 to 2020 are Our World in Data's long-run series and the latest
+    (mostly 2025) is the World Bank's. 23 dependencies and disputed territories have a single
+    recent figure only. Borders are today's. Not a copy of a published file.
   profile:
-    headline: "{past_year} in the past year"
-    details: "{lifetime} ever · {past_month} in the past month · {year} · {coverage}"
+    headline: "{population} people in {year}"
+    years: [1900, 1950, 2000]
   country: { column: country, by: id }
+  year: { column: year }
   fields:
-    past_year: { column: past_year, format: percent, about: "Map colour and profile" }
-    lifetime: { column: lifetime, format: percent }
-    past_month: { column: past_month, format: percent }
-    year: { column: year, format: text }
-    coverage: { column: coverage, type: text, about: "Age group, and whether it was a school survey" }
-  map:
-    field: past_year
-    format: percent
-    group: Use
-    slug: youth-cannabis-use
-    label: Use at 15 and 16
-    missing: No survey of 15- and 16-year-olds reported to UNODC
-    steps: [[0, "Under 3%"], [3, "3–7%"], [7, "7–12%"], [12, "12–18%"], [18, "18% or more"]]
-    title: Cannabis use among 15- and 16-year-olds, by country
-    lede: >-
-      The share of 15- and 16-year-olds who used cannabis in the past year, from the latest school
-      survey each country reported to UNODC. The stronger the blue, the higher the share.
-    sub: >-
-      The stronger the blue, the more 15- and 16-year-olds used cannabis in the past year.
-      Countries without a survey of this age group are hatched.
-    note: >-
-      UNODC World Drug Report 2026, table 1.4: past-year use among 15- and 16-year-olds, latest
-      survey reported. Survey years differ between countries.
+    population: { column: population, about: "People living there in that year" }
+  pages:
+    - { label: the world average by population, path: "" }
+    - { label: the population column of the rankings, path: "#rankings" }
+    - { label: research progress weighted by population, path: research/ }

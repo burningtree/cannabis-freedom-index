@@ -1,33 +1,74 @@
 ---
-model: opus-5.5
-written: 2026-10-13
+model: gpt-6
+written: 2026-10-21
 sources:
-  - title: "Amnesty International — The Death Penalty: No Solution to Illicit Drugs (ACT 51/02/95, October 1995)"
+  - type: law
+    title: Hashish and Opium Ordinance 1924, Amendment 1 of 1989 — UN English translation
+    authors: [Sudan]
+    year: 1989
+    container: E/NL.1990/12, communicated by the Government of Sudan
+    locator: Complete indexed legislative text, pp. 1–2; replacement articles 4 and 7; signature and commencement 27 July 1989
+    url: https://digitallibrary.un.org/record/94705/files/e-nl-1990-12-e.pdf
+  - type: report
+    title: The Death Penalty — No Solution to Illicit Drugs
+    authors: [Amnesty International]
+    year: 1995
+    locator: Sudan, printed p. 69
     url: https://www.amnesty.org/es/wp-content/uploads/2021/06/act510021995en.pdf
 ---
 
-In June 1989 a military coup overthrew Sudan's elected civilian government. In July the body that replaced it, the National Salvation Revolution Command Council, introduced a new narcotics act. Amnesty International's 1995 survey of the death penalty for drug offences records what set it apart: the act "provides for the death penalty for offences involving the illegal production of and trading in hashish and opium".
+Sudan's military rulers allowed death sentences for hashish trafficking
+in July 1989, weeks after overthrowing the elected government. The same
+amendment set three to seven years in prison for smoking, ordinary
+possession and possessing equipment used to smoke or prepare the drug.
 
-## A wider pattern
+## The military amended an existing law
 
-Amnesty placed Sudan in a list. Its report counted the countries that had added capital punishment for drug offences during the 1980s and named Sudan and Guyana for 1989, after Bangladesh in 1988. The organisation's argument, given in the report's title, was that the penalty had been adopted in many countries with little debate and without evidence that it deterred trafficking better than other punishments.
+The Command Council of the National Salvation Revolution changed the
+[hashish and opium law dating from 1924](/history/sudan-ban-1924/).
+Omar Hassan al-Bashir signed the amendment on 27 July 1989, and its
+commencement clause brought it into force on signature.
 
-## The first cases
+The distinction between supply and personal conduct was written into
+separate parts of the replacement offence. Trafficking, cultivation,
+processing or possession for trafficking, and importing, exporting or
+transporting the drugs were prohibited. The transport ban included
+shipments passing through Sudan on their way elsewhere.
 
-| Date | Case |
-|---|---|
-| 7 September 1989 | Jalal Ahmed Bane sentenced to death by a special court in Blue Nile region for drug trafficking |
-| 23 October 1989 | Sayed Ahmed Ali Gaballa, of Egyptian origin, convicted of dealing in heroin by a special court in Khartoum; executed on 17 December 1989 |
-| 18 February 1990 | Hani Mohamed Hamed convicted in Omdurman of dealing in hashish and sentenced to death |
-| July 1994 | four Nigerians found with heroin reported sentenced to death |
-| 7 June 1995 | officials announce that nine women have been sentenced to death for trafficking in hashish, according to Reuters |
+## The harsher penalty reached beyond a completed sale
 
-The sentences were passed by special courts. For the 1994 and 1995 cases Amnesty said it did not know whether they had been carried out.
+For the listed supply offences, the law allowed death or a prison term
+of ten to twenty years. Smoking and ordinary possession appeared in a
+separate paragraph carrying three to seven years. Pipes and other
+equipment used for smoking or preparing hashish or opium carried that
+same prison range.
 
-## What the source does not say
+The amendment also reached people responsible for restaurants, cafés
+and similar public premises. An owner, manager, guard or other responsible
+person who committed, helped or permitted a drug offence there could
+face death or ten to twenty years in prison.
 
-Amnesty's entry on Sudan is short. It describes the capital offences, production and trade, and gives no account of what the act says about possessing or using hashish. This article therefore covers only the death penalty provision.
+Courts could withdraw a premises licence and prohibit use of the place
+for up to a year. Keeping it open against that order exposed the
+responsible person to a daily fine.
 
-## Why the index moved
+## Special courts began passing death sentences
 
-Sudan had [banned hashish in 1924](/history/sudan-ban-1924/), and most of its scores were already at the floor. The 1989 act lowers enforcement from 2 to 1: producing or trading in hashish could now end in a death sentence handed down by a special court, and within months such sentences were being passed. The total moves from 5 to 3.
+Amnesty International recorded a trafficking death sentence against
+Jalal Ahmed Bane in September 1989. In February 1990, a special court
+in Omdurman convicted Hani Mohamed Hamed of dealing in hashish and
+sentenced him to death.
+
+The organisation also documented the execution of Sayed Ahmed Ali
+Gaballa in December 1989 after a heroin conviction. That case showed
+the new government's use of capital punishment for drug offences
+alongside the hashish sentences.
+
+## A replacement law followed in 1994
+
+Sudan later [replaced the colonial hashish and opium law](/history/sudan-narcotics-act-1994/)
+with a narcotics and psychotropic substances statute. It continued to
+distinguish personal use from supply and trafficking, with capital
+punishment available in specified aggravated cases. The 1989 amendment
+had made both the supply chain and places used for consumption part
+of [Sudan's capital drug-law history](/country/sd/).

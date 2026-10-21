@@ -268,17 +268,21 @@ const column = z.object({
   column: z.string().min(1), decimals: z.number().int().min(0).optional(), type: z.enum(["number", "boolean", "text"]).default("number"), about: z.string().min(1).optional(),
   format: z.enum(["number", "percent", "decimal", "rank", "text"]).optional(), values: z.record(z.string(), z.string()).optional(),
 }).strict();
+const csvFile = z.string().regex(/^[\w.-]+\.csv$/);
+const originalFile = z.string().regex(/^[\w.-]+\.(xlsx|xls|csv|xml)$/);
 const datasets = defineCollection({
   loader: file("datasets/datasets.yaml"),
   schema: z
     .object({
       id: z.string().regex(/^[a-z0-9_]+$/),
-      file: z.string().regex(/^[\w.-]+\.csv$/),
+      // one CSV, or one per edition of a dataset published as a new file each time
+      file: z.union([csvFile, z.array(z.object({ file: csvFile, edition: z.number().int() }).strict()).min(1)]),
       rail: z.boolean().default(false), // also shown in the profile's side column
       // how it reads in the profile's Datasets tab: {field} templates, see datasets.yaml
-      profile: z.object({ headline: z.string().min(1), details: z.string().optional(), years: z.array(z.number().int()).optional() }).strict(),
+      profile: z.object({ headline: z.string().min(1), details: z.string().optional(), years: z.array(z.number().int()).optional(), each: z.string().optional() }).strict(),
       origin: z.string().min(1), // how the file was made: downloaded as published or transcribed, and when
-      original: z.string().regex(/^[\w.-]+\.(xlsx|xls|csv)$/).optional(), // the publisher's file an extract was made from
+      // the publisher's file (or files) an extract was made from
+      original: z.union([originalFile, z.array(originalFile).min(1)]).optional(),
       name: z.string().min(1),
       publisher: z.string().min(1),
       credit: z.string().min(1).optional(), // a short name for the publisher
@@ -290,13 +294,15 @@ const datasets = defineCollection({
       about: z.string().min(1),
       notes: z.record(z.string(), z.string()).default({}), // by country file name
       country: z.object({ column: z.string().min(1), by: z.enum(["id", "name"]), aliases: z.record(z.string(), z.string()).default({}) }).strict(),
-      year: z.object({ column: z.string().min(1), keep: z.enum(["latest", "all"]).default("latest") }).strict().optional(),
+      year: z.object({ column: z.string().min(1) }).strict().optional(), // a column with the year of each row
       fields: z.record(z.string(), column),
       pages: z.array(z.object({ label: z.string().min(1), path: z.string() }).strict()).optional(),
       also: z.string().min(1).optional(),
       map: z.object({
-        field: z.string(), format: z.enum(["percent", "decimal", "rate"]),
-        per: z.number().positive().optional(), group: z.enum(["Use", "Society", "Law"]).default("Society"),
+        field: z.string(), format: z.enum(["number", "percent", "decimal", "rate"]),
+        per: z.number().positive().optional(), group: z.enum(["Use", "Society", "Law", "Context"]).default("Society"),
+        since: z.number().int().optional(), // a series: its latest year must be this recent to be shown
+        window: z.number().int().positive().optional(), // the year slider: how many years back a figure still counts (5)
         slug: z.string().regex(/^[a-z0-9-]+$/), label: z.string(), missing: z.string(),
         steps: z.array(z.tuple([z.number(), z.string()])).length(5),
         title: z.string(), lede: z.string(), sub: z.string(), note: z.string(),

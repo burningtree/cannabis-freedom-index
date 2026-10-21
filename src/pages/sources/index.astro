@@ -120,25 +120,26 @@ const parts = [
               </span>
               <span class="src-ds-n">
                 <span class="src-ds-count"><b>{num(d.count)}</b> {d.count === 1 ? "country" : "countries"}</span>
-                <span>{d.file.split(".").pop()} · {kb(d.fileInfo.bytes)}</span>
+                <span>{d.fileInfo.years ? `${d.fileInfo.years[0]}–${d.fileInfo.years[1]}` : "csv"} · {kb(d.fileInfo.files.reduce((a, f) => a + f.bytes, 0))}</span>
               </span>
             </summary>
             <p>{d.about}</p>
             <dl class="src-ds-facts">
               <div><dt>Covers</dt><dd>{num(d.count)} countries and territories on this site{d.total !== d.count && `, of ${num(d.total)} in the file`}</dd></div>
-              <div><dt>File</dt><dd><a href={`${base}data/datasets/${d.file}`} download>{d.file}</a> · {kb(d.fileInfo.bytes)} · {num(d.fileInfo.rows)} rows · {d.fileInfo.columns} columns{d.fileInfo.years && ` · ${d.fileInfo.years[0]}–${d.fileInfo.years[1]}${d.year.keep === "all" ? "" : ", latest year used"}`}</dd></div>
-              <div><dt>SHA-256</dt><dd><code>{d.fileInfo.sha256}</code></dd></div>
-              {d.original && <div><dt>Original file</dt><dd><a href={`${base}data/datasets/${d.original}`} download>{d.original}</a> · {kb(d.fileInfo.original.bytes)} · as published · SHA-256 <code>{d.fileInfo.original.sha256}</code></dd></div>}
+              {d.fileInfo.files.map((f) => (
+                <div><dt>{f.edition ? `File, ${f.edition} edition` : "File"}</dt><dd><a href={`${base}data/datasets/${f.name}`} download>{f.name}</a> · {kb(f.bytes)} · {num(f.rows)} rows · {f.columns} columns{f.years && ` · ${f.years[0] === f.years[1] ? f.years[0] : `${f.years[0]}–${f.years[1]}`}`}<br />SHA-256 <code>{f.sha256}</code></dd></div>
+              ))}
+              {d.fileInfo.originals.length > 0 && <div><dt>{d.fileInfo.originals.length > 1 ? "Original files" : "Original file"}</dt><dd>{d.fileInfo.originals.map((o, i) => <>{i > 0 && <br />}<a href={`${base}data/datasets/${o.name}`} download>{o.name}</a> · {kb(o.bytes)} · as published · SHA-256 <code>{o.sha256}</code></>)}</dd></div>}
               <div><dt>Published by</dt><dd><a href={d.url} target="_blank" rel="noopener noreferrer">{d.title}</a>{d.data_url && <> · <a href={d.data_url} target="_blank" rel="noopener noreferrer">{d.data_label ?? "original data"}</a></>}</dd></div>
               <div><dt>How the file was made</dt><dd>{d.origin}</dd></div>
               <div><dt>Shown on</dt><dd>{d.map
-                ? <><a href={`${base}map/${viewByMetric[`data:${d.id}`].slug}/`}>the world map</a> and the profile of each country it covers, under “Beyond the law”</>
+                ? <><a href={`${base}map/${viewByMetric[`data:${d.id}`].slug}/`}>the world map</a> and the Datasets tab of each country it covers</>
                 : <>{(d.pages ?? []).map((p, i, all) => <><a href={`${base}${p.path}`}>{p.label}</a>{i < all.length - 1 && ", "}</>)}{d.also && ` ${d.also}`}</>}</dd></div>
             </dl>
             <table class="src-table src-ds-fields">
               <thead><tr><th>On this site</th><th>Column in the file</th><th>Used for</th></tr></thead>
               <tbody>
-                {d.year && <tr><td><code>year</code></td><td><code>{d.year.column}</code></td><td>{d.year.keep === "all" ? "Every year is kept, as a series" : "Only the latest year is read"}</td></tr>}
+                {d.year && <tr><td><code>year</code></td><td><code>{d.year.column}</code></td><td>Every year is kept, for the charts on the profiles; the map and other figures use the latest</td></tr>}
                 <tr><td><code>country</code></td><td><code>{d.country.column}</code></td><td>{d.country.by === "id" ? "Our two-letter country code" : `Country name, matched to ours${Object.keys(d.country.aliases).length ? ` (${Object.keys(d.country.aliases).length} names spelled differently are mapped in datasets.yaml)` : ""}`}</td></tr>
                 {Object.entries(d.fields).map(([name, f]) => (
                   <tr><td><code>{name}</code></td><td><code>{f.column}</code></td><td>{f.about ?? (name === d.map?.field ? "Map colour and profile" : "Profile")}{f.decimals != null && `, rounded to ${f.decimals} decimals`}</td></tr>

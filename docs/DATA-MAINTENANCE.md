@@ -13,7 +13,7 @@ The legal index holds three connected things per country:
    cannabis freedom there, from the first restriction to today.
 3. **How the score moved** — each event that changed the law also records the scores *before*
    it. Strung together, these form one continuous score timeline per country, from the
-   unregulated state (98) down through the bans and back up through the reforms, ending exactly
+   unregulated state (100) down through the bans and back up through the reforms, ending exactly
    at today's score. The country chart, the "29 → 44" on every event and the world-average chart
    since 1900 are all drawn from it.
 
@@ -335,6 +335,20 @@ group) and are never part of the score.
   SHA-256, the columns used and `origin`, which must say honestly how the file was made
   (downloaded as published, or transcribed, and on what date). These files keep their
   publishers' terms, not the site's CC BY licence.
+- Every dataset is kept as a series, one row per country and year, so that each profile's
+  Datasets tab can chart it; the map, the headline figures and the side column use the
+  latest year. Keep every year an extract has: do not filter to the latest when adding one.
+- A dataset view on the map with more than one year gets a year slider and a play button.
+  The yearly figures are published per dataset at `/map-series/<id>.json` and loaded only for
+  the open view. A chosen year shows each country's figure for that year, or its latest from
+  the `map.window` years before (5 by default); `?year=` in a map page's address opens it there.
+- The Freedom views (index and segments) use the same control with the scores at the end of
+  each year since 1900, rebuilt from the history like the yearly panel and published at
+  `/map-series/freedom.json`. Their bars count the countries whose score changed each year by a
+  recorded change. States and provinces have no history, so they are shown only for today.
+- A dataset published as a new file each time (a yearly survey, a new index edition) lists
+  its files in `file` as `{ file, edition }`. To add an edition, put the new CSV beside the
+  old ones and add a line; the site joins them into one series. The old files stay.
 - A dataset whose file is missing is left out with a warning. Country names that match no
   country file are listed in the build output: add an alias in `datasets.yaml`.
 - To update a dataset, replace its CSV with the new edition (and the file name and
@@ -351,10 +365,40 @@ group) and are never part of the score.
   `python3 scripts/extract-unodc.py youth` and the UNODC spreadsheet beside it
   (`unodc-wdr2026-1.4-prevalence-youth.xlsx`, table 1.4). Only that age group is kept, so that
   countries compare; countries reporting other bands (Germany, France, Spain) are left out.
+- `unodc-cannabis-seizures.csv`: kilograms of cannabis herb and resin seized, every year from
+  2015, from `python3 scripts/extract-unodc.py seizures` and the UNODC spreadsheet beside it
+  (`unodc-wdr2026-7.1-drug-seizures.xlsx`, table 7.1). Figures are as reported; some very large
+  ones (Namibia, Tanzania) appear to include plants destroyed in the field.
+- `faostat-hemp.csv`: hemp grown for fibre and for seed, every year since 1961, from FAOSTAT's
+  crops file. Download the bulk zip named in `datasets.yaml` (about 34 MB, not kept here) and
+  run `python3 scripts/extract-faostat-hemp.py <zip>`. Former states (USSR, Czechoslovakia,
+  Yugoslavia) stay in the file without a country. The map shows only figures since 2015
+  (`map.since`); the profile lists the series.
+- `vdem-civil-liberties.csv`: V-Dem's civil liberties index (0 to 1) every year from 1900,
+  from Our World in Data's chart file kept beside it (`owid-civil-liberties-vdem.csv`) by
+  `python3 scripts/extract-owid.py civil_liberties`. For a new V-Dem release, download the
+  chart CSV again from the `data_url` in `datasets.yaml` and rerun.
+- `gbif-cannabis-records.csv`, `openalex-cannabis-papers.csv`: open, non-governmental data fetched
+  from public APIs by `python3 scripts/fetch-open-data.py` (`gbif`, `openalex`), rewritten whole.
+- `osm-cannabis-shops-<date>.csv`: places tagged `shop=cannabis` in OpenStreetMap, counted by
+  country with `node scripts/osm-shops.mjs`: one worldwide Overpass query, then each place is put
+  in a country with the map's own shapes (seconds, not hours). Each run writes a new dated file:
+  add it to the `file` list of `osm_shops` as a new edition and keep the old ones, so that the
+  shop counts become a trend.
 - `population.csv`: population by year for every country (`country,year,population`), a figure
   every ten years from 1900 to 2020 and the latest one. It weights the population-weighted
   average and is read by `scripts/article-backlog.cjs` and `scripts/data-status.cjs`; every
   country needs at least one row.
+- `euda-cannabis-use-offences.csv`: offences for using or possessing cannabis in European
+  countries, 2007–2024, from the EUDA Statistical Bulletin table DLO-03-2-0. The EUDA's site
+  refuses scripts: open the table in a browser, read the XML its data service returns (the
+  `fetchxml` address in `scripts/extract-euda.py`), save it unchanged over the XML in
+  /datasets, check its SHA-256 against the browser's copy and run
+  `python3 scripts/extract-euda.py cannabis_offences`.
+- `euda-cannabis-prices.csv`, `euda-cannabis-potency.csv`: mean retail price (euros per gram)
+  and mean THC content of cannabis herb and resin in Europe, 2002–2024, from four EUDA tables
+  saved the same way (`python3 scripts/extract-euda.py prices` and `potency`). The XML can be
+  passed from the browser gzipped and base64-encoded, then decoded and checked by SHA-256.
 - `unodc-drug-possession-police.csv`: people brought into contact with the police for drug use
   or possession (all drugs), extracted by `python3 scripts/extract-unodc.py offences` from the
   UNODC spreadsheet kept beside it (`unodc-wdr2026-10.1-drug-related-crimes.xlsx`, World Drug
@@ -497,7 +541,7 @@ node scripts/data-status.cjs chain de     # one country's full timeline
   the "after" of that country's newest scored event: either that is right (the event explains
   it), or you need a new scored event that explains the change, dated when it happened.
 - **It starts from freedom.** The first restriction normally has `before` = unregulated
-  (`"FREE"`: 10,10,10,10,10,8 = 98). A lower starting point is fine only when an earlier
+  (`"FREE"`: 10 in every segment = 100). A lower starting point is fine only when an earlier
   licensed or taxed regime is documented (India, Morocco, Nepal, Tunisia, South Africa, …).
 - **Direction matches the event.** A ban, tightening or death-penalty law must not raise the
   score; an easing, legalisation or medical law must not lower it. The script flags mismatches.
@@ -889,6 +933,19 @@ node scripts/archive-sources.cjs save 20 --random   # the same, picking the addr
 The number caps one run. `check` only reads; `save` asks the Internet Archive to fetch the page,
 which it limits to a few requests a minute, so run it in small batches. Run `check` after adding
 sources, and `save` for the ones that come back without a copy.
+
+Some sites refuse scripts and archivers, or have lost the page. `probe` opens each source without a
+copy as a browser would and marks those in `source-archive.json` with
+`"dead": { "reason": "blocked" | "gone" | "unreachable", "status": 403, "seen": "YYYY-MM-DD" }`;
+a failed `save` whose Archive error names such a reason marks it too. Marked addresses are
+skipped by `check`, `save` and `probe` for 90 days, then tried again (`--include-dead` tries them
+at once), and a copy clears the mark. The source stays in the data and on the site: `blocked`
+pages usually still open in a browser. `gone` and `unreachable` ones are worth replacing with a
+working address or an archived copy found by hand.
+
+```
+node scripts/archive-sources.cjs probe 200   # mark the sources whose site refuses or has lost them
+```
 
 ## The survey (State of Cannabis)
 

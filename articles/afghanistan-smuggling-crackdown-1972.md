@@ -1,6 +1,6 @@
 ---
 model: gpt-6
-written: 2026-10-15
+written: 2026-10-21
 sources:
   - type: chapter
     title: 'Smuggler’s Paradise: The Hash Trade and Drug Control in the Building of the Afghan State, ca. 1923–1974'
@@ -15,30 +15,61 @@ sources:
     url: https://history.state.gov/historicaldocuments/frus1969-76ve07/d372
 ---
 
-During 1972, Afghanistan strengthened its response to drug smuggling as American officials pressed for greater action. Historian James Bradford describes the reassignment of counternarcotics work to the interior ministry, new anti-smuggling units and increasing arrests.
+During 1972, Afghanistan put more effort into pursuing drug smugglers,
+with new anti-smuggling units and rising arrests. The campaign developed
+as foreign demand connected the country's hashish trade to larger
+international markets and American officials pressed for stronger action.
 
-His figures rise from seventy-two arrests in 1971 to 221 in 1972 and 584 in 1973. Those totals concern drug smugglers in the chapter's account; they should not be read as cannabis-only convictions or as a measure of the whole trade.
+## Hashish joined international trading networks
 
-## Different priorities across borders
+Historian James Bradford describes a change in the people buying Afghan
+hashish. Travellers buying small amounts were joined by organised,
+well-financed groups seeking substantial supplies for Western markets.
+Some buyers wanted hash oil, which could concentrate the product and
+make it easier to transport and conceal.
 
-Afghan opium was important to the Iranian market, while American agents were increasingly concerned about hashish reaching Western consumers. Bradford argues that these different priorities complicated cooperation.
+This demand mattered to farmers and merchants as well as foreign
+consumers. The market around [Chicken Street](/culture/traditions/chicken-street/)
+formed part of a trade reaching beyond Afghanistan's neighbouring
+countries. Rural producers encountered buyers capable of financing
+larger operations.
 
-Foreign buyers had become more organised and better financed. The market that travellers encountered around [Chicken Street](/culture/traditions/chicken-street/) now included connections capable of moving substantial quantities abroad. Cannabis was part of an expanding international drug economy, alongside older regional commerce.
+## New units pursued smugglers
 
-## A late-year commitment
+Bradford records the transfer of counternarcotics work to the interior
+ministry and the creation of units tasked with pursuing Afghan traffickers.
+Reported drug-smuggler arrests rose from 72 in 1971 to 221 in 1972
+and 584 in 1973.
 
-A State Department memorandum dated December 18, 1972 records Prime Minister Musa Shafiq promising stronger measures against narcotics trafficking in his parliamentary programme. It separately mentions a proposed programme against illicit opium cultivation with foreign assistance.
+The different substances also drew different outside interests.
+Afghan opium was important to the Iranian market, while American
+agents increasingly focused on hashish reaching Western consumers.
+Bradford argues that the priorities complicated cooperation between
+enforcement authorities.
 
-The American author credited embassy pressure for the priority given to drugs. That is the assessment of an interested official, not independent proof of what caused the Afghan government's decision. The document also places Shafiq's new-government commitment near the end of the year; it does not establish that he directed every arrest recorded during 1972.
+The [1970 Kabul hotel raid](/history/afghanistan-kabul-hotel-raid-1970/)
+had already brought foreign nationals into the enforcement story.
+Increasing arrests now placed Afghan smugglers more visibly within it.
 
-## Enforcement and an enduring market
+## Shafiq promised stronger action late in the year
 
-Bradford finds that rising arrests did little to stop the trade overall. Farmers and merchants continued to encounter foreign demand, while the government faced pressure to demonstrate control and maintain international support.
+A State Department memorandum dated 18 December 1972 recorded new
+prime minister Musa Shafiq's parliamentary promise of stronger measures
+against narcotics trafficking. He also proposed a programme against
+illicit opium cultivation with foreign assistance.
 
-His chapter treats this as a problem of state-building and economic opportunity as well as policing. An arrest series can describe increasing intervention without establishing that trafficking declined by a corresponding amount.
+The American author credited embassy pressure for the priority Shafiq
+gave drugs. The memorandum captures that assessment and the government's
+public commitment near the end of the year.
 
-## What the event records
+## A larger campaign left an enduring market
 
-The [1973 cultivation ban](/history/afghanistan-ban-1973/) was a further development, rather than the first-ever restriction on Afghan cannabis. The [1924–1925 penal code](/history/afghanistan-penal-code-1924/) had already limited domestic production and use.
+Bradford concludes that the rising arrests did little to stop the
+trade overall. Foreign demand, opportunities for farmers and merchants,
+and the government's need for outside support continued to shape
+enforcement.
 
-The 1972 entry records an enforcement drive and the late-year political commitment that accompanied it. It does not turn those earlier restrictions into evidence of continuous, effective enforcement.
+The [renewed prohibition reported in 1973](/history/afghanistan-ban-1973/)
+followed that increase in arrests and political attention. Enforcement
+was becoming more visible while the economic connections sustaining
+[Afghanistan's cannabis trade](/country/af/) continued to develop.

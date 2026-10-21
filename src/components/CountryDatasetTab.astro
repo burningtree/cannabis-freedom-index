@@ -30,28 +30,48 @@ const fill = (d, row, template = "") => template.split(" · ").map((part) => {
   const text = part.replace(/\{(\w+)\}/g, (_, name) => figure(d, row, name) ?? ((missing = true), ""));
   return missing ? null : text.trim();
 }).filter(Boolean).join(" · ");
-// the headline's first figure is set large: [figure, the words after it]
+// the headline's first figure, with any sign before it ("€"), is set large: [figure, the words after it]
 const headline = (d, row) => {
-  const m = d.profile.headline.match(/^\{(\w+)\}(.*)$/);
-  return m ? [figure(d, row, m[1]), fill(d, row, m[2])] : ["", fill(d, row, d.profile.headline)];
+  const m = d.profile.headline.match(/^([^{]*)\{(\w+)\}(.*)$/);
+  return m ? [m[1] + (figure(d, row, m[2]) ?? ""), fill(d, row, m[3])] : ["", fill(d, row, d.profile.headline)];
 };
+// the field a headline is about
+const headField = (d) => (d.profile.headline.match(/\{(\w+)\}/) ?? [])[1];
 const mapHref = (d) => (d.map ? `${base}map/${viewByMetric[`data:${d.id}`].slug}/` : (d.pages ?? []).filter((p) => p.path.startsWith("map/")).map((p) => `${base}${p.path}`)[0]);
+
+// The headline's figure over the years, for a small line chart: [{ year, v, t }] with at least two
+// years, or null. `v` is the number drawn, `t` how it is written.
+const W = 160, H = 44, PAD = 3;
+const trend = (d, series) => {
+  const name = headField(d);
+  const points = series.filter((r) => r.year != null && figure(d, r, name) != null)
+    .map((r) => ({ year: r.year, v: name === "per" ? d.map.value(r, c) : r[name], t: figure(d, r, name) }));
+  if (new Set(points.map((p) => p.year)).size < 2) return null;
+  const years = points.map((p) => p.year), vs = points.map((p) => p.v);
+  const [y0, y1] = [Math.min(...years), Math.max(...years)];
+  // the scale starts at zero, so that a change looks as big as it is
+  const top = Math.max(...vs) || 1;
+  const x = (y) => PAD + ((y - y0) / (y1 - y0)) * (W - 2 * PAD);
+  const y = (v) => H - PAD - (v / top) * (H - 2 * PAD);
+  return { points: points.map((p) => ({ ...p, x: +x(p.year).toFixed(1), y: +y(p.v).toFixed(1) })), y0, y1 };
+};
 
 const rows = Object.values(DATASETS).filter((d) => own[d.id]).map((d) => {
   const data = own[d.id];
   const series = Array.isArray(data) ? data : null;
-  const row = series ? series.at(-1) : data;
+  // a series is shown by its latest year with the headline's figure
+  const row = series ? series.findLast((r) => r[headField(d)] != null) ?? series.at(-1) : data;
   // a series also lists a few earlier years, oldest first
-  const earlier = series ? [...(d.profile.years ?? [])].sort((a, b) => a - b).map((y) => series.find((r) => r.year === y)).filter(Boolean).map((r) => `${figure(d, r, Object.keys(d.fields)[0])} in ${r.year}`) : [];
-  return { d, head: headline(d, row), details: [fill(d, row, d.profile.details), ...earlier].filter(Boolean).join(" · "), note: d.notes[c.slug] };
+  const earlier = series ? [...(d.profile.years ?? [])].filter((y) => y < row.year).sort((a, b) => a - b).map((y) => series.find((r) => r.year === y)).filter(Boolean).map((r) => fill(d, r, d.profile.each ?? `{${Object.keys(d.fields)[0]}} in {year}`)) : [];
+  return { d, head: headline(d, row), details: [fill(d, row, d.profile.details), ...earlier].filter(Boolean).join(" · "), note: d.notes[c.slug], chart: series && trend(d, series) };
 });
 ---
 {rows.length > 0 && (
   <section class="c-ds">
-    <h2 class="d-h">Datasets <span>{rows.length} with figures for {c.name} · not part of the score</span></h2>
+    <h2 class="d-h">Datasets <span>not part of the score</span></h2>
     <p class="d-hint">What other organisations publish about {c.name}. Every file is published in full on the <a href={`${base}sources/#datasets`}>sources page</a>.</p>
     <ol class="ds-list">
-      {rows.map(({ d, head, details, note }) => (
+      {rows.map(({ d, head, details, note, chart }) => (
         <li class="ds-row" id={`ds-${d.id}`}>
           <div class="ds-main">
             <h3>{d.name}</h3>
@@ -59,7 +79,21 @@ const rows = Object.values(DATASETS).filter((d) => own[d.id]).map((d) => {
             {note && <p class="ds-details">{note}</p>}
             <p class="ds-meta">{d.credit ?? d.publisher}{mapHref(d) && <> · <a href={mapHref(d)}>Map</a></>} · <a href={`${base}sources/#dataset-${d.id}`}>About</a></p>
           </div>
-          <p class="ds-headline"><b>{head[0]}</b>{head[1] && ` ${head[1]}`}</p>
+          <div class="ds-side">
+            <p class="ds-headline"><b>{head[0]}</b>{head[1] && ` ${head[1]}`}</p>
+            {chart && (
+              <figure class="ds-trend">
+                <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} role="img" aria-label={`${d.name}, ${chart.y0} to ${chart.y1}: ${chart.points.map((p) => `${p.t} in ${p.year}`).join(", ")}`}>
+                  <line x1="0" x2={W} y1={H - PAD} y2={H - PAD} class="ds-trend-base" />
+                  <polyline points={chart.points.map((p) => `${p.x},${p.y}`).join(" ")} class="ds-trend-line" />
+                  {chart.points.map((p, i) => (
+                    <circle cx={p.x} cy={p.y} r={i === chart.points.length - 1 ? 2.6 : 1.6} class:list={["ds-trend-dot", { last: i === chart.points.length - 1 }]}><title>{p.t} in {p.year}</title></circle>
+                  ))}
+                </svg>
+                <figcaption><span>{chart.y0}</span><span>{chart.y1}</span></figcaption>
+              </figure>
+            )}
+          </div>
         </li>
       ))}
     </ol>

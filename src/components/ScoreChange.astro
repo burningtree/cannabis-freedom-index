@@ -2,10 +2,13 @@
 // Overall index score before → after, with the difference in points.
 import { tierColor } from "../lib/tiers.js";
 
-const { score } = Astro.props;
+// `of`: whose score it is, when that is not obvious from the page (a state's page lists its
+// country's national score changes)
+const { score, of = null } = Astro.props;
 const delta = score.after - score.before;
 ---
-<p class="change-score" aria-label={`Score changed from ${score.before} to ${score.after}`}>
+<p class="change-score" aria-label={`${of ? `${of} score` : "Score"} changed from ${score.before} to ${score.after}`}>
+  {of && <span class="change-of">{of}</span>}
   <span class="pill" style={`--c:${tierColor(score.before)}`}>{score.before}</span>
   <span class="arrow" aria-hidden="true">→</span>
   <span class="pill" style={`--c:${tierColor(score.after)}`}>{score.after}</span>

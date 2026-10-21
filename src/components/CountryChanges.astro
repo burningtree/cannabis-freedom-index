@@ -138,7 +138,7 @@ const units = unitLabel ? [...unitMap.values()].sort((a, b) => b.n - a.n || a.na
             <h3>{ch.title}</h3>
             <p class="he-text">{ch.description}</p>
           </div>
-          {ch.score ? <ScoreChange score={ch.score} /> : <span></span>}
+          {ch.score ? <ScoreChange score={ch.score} of={scoreLine ? null : `${ch.country?.name ?? "National"}, national`} /> : <span></span>}
         </a>
       </li>
     ))}

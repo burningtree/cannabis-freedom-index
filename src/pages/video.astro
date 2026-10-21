@@ -1,0 +1,226 @@
+---
+// A world map of cannabis freedom from 1800 to today, drawn for video: a fixed 1080 × 1350 frame
+// (4:5, for social feeds) with the year, captions for turning points, and a chart of how many
+// places stood in each tier. Not linked anywhere and not indexed. Nothing moves on its own:
+// window.render(t) draws the exact frame at t seconds, so scripts/render-video.mjs can capture
+// it frame by frame and make an MP4. Open /video/?t=30 to see one frame, ?play to watch it.
+import "../styles/fonts.css";
+import { places, changes } from "../lib/countries.js";
+import { TIERS } from "../lib/tiers.js";
+
+const base = import.meta.env.BASE_URL;
+// turning points shown as captions, by history entry id; the caption is written for the video
+const MOMENTS = [
+  ["madagascar-merina-ban-1787", "Madagascar's king bans cannabis"],
+  ["egypt-import-ban-1879", "Egypt bans growing and importing hashish"],
+  ["greece-hashish-ban-1890", "Greece moves against hashish"],
+  ["india-hemp-drugs-commission-1894", "A British inquiry finds moderate use in India harmless"],
+  ["jamaica-ganja-law-1913", "Jamaica bans ganja"],
+  ["south-africa-national-ban-1922", "South Africa bans dagga"],
+  ["geneva-opium-convention-1925", "Cannabis enters international drug control"],
+  ["us-marihuana-tax-act-1937", "The United States bans cannabis through a tax"],
+  ["un-single-convention-1961", "The UN Single Convention: a ban everywhere"],
+  ["netherlands-toleration-1976", "The Netherlands tolerates coffeeshops"],
+  ["portugal-decriminalisation-2001", "Portugal decriminalises all drugs"],
+  ["us-colorado-washington-2012", "Colorado and Washington legalise"],
+  ["uruguay-legalisation-2013", "Uruguay becomes the first country to legalise"],
+  ["canada-cannabis-act-2018", "Canada legalises"],
+  ["malta-legalisation-2021", "Malta, first in the EU to legalise"],
+  ["thailand-decriminalisation-2022", "Thailand takes cannabis off its narcotics list"],
+  ["germany-cannabis-act-2024", "Germany legalises possession and home growing"],
+];
+const moments = MOMENTS.map(([id, text]) => {
+  const ch = changes.find((c) => c.id === id);
+  if (!ch) throw new Error(`video.astro: no history entry "${id}"`);
+  const [y, m = 7, d = 1] = String(ch.date).split("-").map(Number);
+  return { at: y + (m - 1) / 12 + (d - 1) / 365, year: y, flag: ch.country?.flag ?? "🌐", place: ch.country?.name ?? "World", text };
+});
+const placeList = places.map((c) => ({ id: c.id, num: c.num ?? null }));
+const tiers = TIERS.map((t) => t.min).reverse(); // lowest first, as --t0…--t5
+const tierNames = TIERS.map((t) => t.name).reverse();
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex" />
+  <meta name="viewport" content="width=1080" />
+  <title>Cannabis freedom, 1800 to today (video)</title>
+  <style is:global>
+    :root { --bg: #0c0c0b; --text: #f2efe6; --muted: #8d897d; --border: #2a2925; --land: #1c1c1a; --nodata: #1a1a18;
+      --t0: #a3121f; --t1: #dc4a2a; --t2: #f08c3a; --t3: #f0cf4a; --t4: #9ccc55; --t5: #2e9e4f;
+      --display: "Instrument Serif", Georgia, serif; --mono: "JetBrains Mono", Menlo, monospace; --sans: "Inter", system-ui, sans-serif; }
+    * { box-sizing: border-box; margin: 0; }
+    html, body { width: 1080px; height: 1350px; overflow: hidden; background: var(--bg); color: var(--text); font-family: var(--sans); }
+    .frame { position: relative; width: 1080px; height: 1350px; padding: 64px 64px 56px; display: flex; flex-direction: column; }
+    .brand { display: flex; justify-content: space-between; font: 400 17px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .title { margin-top: 26px; font: 400 64px/1.02 var(--display); letter-spacing: -.01em; }
+    .title em { color: var(--muted); font-style: italic; }
+    .year { position: absolute; right: 60px; top: 112px; font: 400 168px/1 var(--display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+    .map { margin: 40px -40px 0; height: 640px; }
+    .map svg { width: 100%; height: 100%; overflow: visible; }
+    .caption { height: 120px; margin-top: 8px; position: relative; }
+    .cap { position: absolute; inset: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 22px; align-content: start; opacity: 0; }
+    .cap .y { grid-row: span 2; font: 400 56px/1 var(--display); color: var(--muted); padding-top: 4px; }
+    .cap .p { font: 400 17px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .cap .t { font: 500 34px/1.18 var(--sans); letter-spacing: -.01em; }
+    .chart { margin-top: auto; }
+    .chart-head { display: flex; justify-content: space-between; font: 400 15px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .chart svg { display: block; width: 952px; height: 150px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font: 400 15px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+    .legend i { display: inline-block; width: 13px; height: 13px; border-radius: 2px; margin-right: 8px; vertical-align: -1px; }
+    .end { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 18px; background: rgba(12, 12, 11, .82); opacity: 0; }
+    .end b { font: 400 92px/1 var(--display); }
+    .end span { font: 400 26px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="brand"><span>Cannabis Freedom Index</span><span>cannabisfreedom.fyi</span></div>
+    <h1 class="title">Cannabis freedom<br /><em>around the world</em></h1>
+    <div class="year" id="year">1800</div>
+    <div class="map"><svg id="map" viewBox="0 0 960 500"></svg></div>
+    <div class="caption" id="caption"></div>
+    <div class="chart">
+      <div class="chart-head"><span>Places in each band</span><span id="count"></span></div>
+      <svg id="chart" viewBox="0 0 952 150" preserveAspectRatio="none"></svg>
+      <div class="legend">{tierNames.map((n, i) => <span><i style={`background:var(--t${i})`}></i>{n}</span>).reverse()}</div>
+    </div>
+    <div class="end" id="end"><b>Where is it free today?</b><span>cannabisfreedom.fyi</span></div>
+  </div>
+  <script type="application/json" id="video-data" set:html={JSON.stringify({ places: placeList, moments, tiers, series: `${base}map-series/freedom.json` })} />
+  <script>
+    import { geoNaturalEarth1, geoPath } from "d3-geo";
+    import { interpolateRgb } from "d3-interpolate";
+    import { feature } from "topojson-client";
+    import atlasUrl from "world-atlas/countries-50m.json?url";
+    import territoryShapes from "../data/territories.geo.json";
+
+    const DATA = JSON.parse(document.getElementById("video-data").textContent);
+    const TIER_COLORS = ["#a3121f", "#dc4a2a", "#f08c3a", "#f0cf4a", "#9ccc55", "#2e9e4f"];
+    const tierOf = (v) => { let i = 0; while (i < DATA.tiers.length - 1 && v >= DATA.tiers[i + 1]) i++; return i; };
+    const FROM = 1800, TO = 2026;
+
+    // Pacing: video seconds to (fractional) years. Quiet centuries pass quickly; the years of the
+    // treaties and of the recent reforms slowly. After the last year the frame holds.
+    const PACE = [[0, 1800], [1.5, 1800], [7, 1900], [13, 1925], [27, 1961], [36, 2000], [52, 2026.5]];
+    export const DURATION = 60;
+    const yearAt = (t) => {
+      if (t <= PACE[0][0]) return PACE[0][1];
+      for (let i = 1; i < PACE.length; i++) if (t <= PACE[i][0]) {
+        const [t0, y0] = PACE[i - 1], [t1, y1] = PACE[i];
+        return y0 + ((t - t0) / (t1 - t0)) * (y1 - y0);
+      }
+      return PACE.at(-1)[1];
+    };
+    // the real time a fractional year is reached, for captions
+    const timeAt = (year) => {
+      for (let i = 1; i < PACE.length; i++) if (year <= PACE[i][1] && PACE[i][1] > PACE[i - 1][1]) {
+        const [t0, y0] = PACE[i - 1], [t1, y1] = PACE[i];
+        return t0 + ((year - y0) / (y1 - y0)) * (t1 - t0);
+      }
+      return PACE.at(-1)[0];
+    };
+    const smooth = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
+
+    // scores at the end of each year for every place: [year, index, …], only where it changed
+    let series, paths, chartYears;
+    const scoreAtYearEnd = (points, year) => { let v = points[0][1]; for (const p of points) { if (p[0] > year) break; v = p[1]; } return v; };
+
+    async function load() {
+      const [world, s] = await Promise.all([fetch(atlasUrl).then((r) => r.json()), fetch(DATA.series).then((r) => r.json())]);
+      series = s;
+      const byNum = new Map(DATA.places.filter((p) => p.num != null).map((p) => [p.num, p.id]));
+      const ALIASES = { Kosovo: "XK", Somaliland: "XS", "N. Cyprus": "XN" };
+      const features = feature(world, world.objects.countries).features;
+      for (const f of features) f.id2 = ALIASES[f.properties.name] ?? byNum.get(+f.id);
+      for (const f of territoryShapes.features) { f.id2 = f.id; features.push(f); }
+      // Antarctica is left out, so the inhabited world fills the frame
+      const land = features.filter((f) => f.id !== "010");
+      const projection = geoNaturalEarth1().fitExtent([[0, 0], [960, 500]], { type: "FeatureCollection", features: land });
+      const path = geoPath(projection);
+      const svg = document.getElementById("map");
+      const ns = "http://www.w3.org/2000/svg";
+      paths = land.map((f) => {
+        const el = document.createElementNS(ns, "path");
+        el.setAttribute("d", path(f));
+        el.setAttribute("stroke", "#0c0c0b");
+        el.setAttribute("stroke-width", "0.5");
+        el.setAttribute("fill", "#1a1a18");
+        svg.appendChild(el);
+        return { el, points: f.id2 && series[f.id2] };
+      });
+      // the chart: how many places stood in each tier at the end of each year
+      const ids = Object.keys(series);
+      chartYears = [];
+      for (let y = FROM; y <= TO; y++) {
+        const counts = new Array(6).fill(0);
+        for (const id of ids) counts[tierOf(scoreAtYearEnd(series[id], y))]++;
+        chartYears.push(counts);
+      }
+      document.getElementById("caption").innerHTML = DATA.moments.map((m, i) =>
+        `<div class="cap" data-i="${i}"><span class="y">${m.year}</span><span class="p">${m.flag} ${m.place}</span><span class="t">${m.text}</span></div>`).join("");
+    }
+
+    function drawChart(year) {
+      const svg = document.getElementById("chart"), W = 952, H = 150, n = TO - FROM;
+      const total = chartYears[0].reduce((a, b) => a + b, 0);
+      const upto = Math.max(0, Math.min(n, Math.floor(year - FROM)));
+      const x = (i) => (i / n) * W;
+      let html = "";
+      // stacked from the freest band at the bottom to the strictest on top
+      let below = new Array(upto + 1).fill(0);
+      for (let k = 5; k >= 0; k--) {
+        const top = below.map((b, i) => b + chartYears[i][k]);
+        const pts = top.map((v, i) => `${x(i).toFixed(1)},${(H - (v / total) * H).toFixed(1)}`).concat(below.map((v, i) => `${x(i).toFixed(1)},${(H - (v / total) * H).toFixed(1)}`).reverse());
+        html += `<polygon points="${pts.join(" ")}" fill="${TIER_COLORS[k]}" />`;
+        below = top;
+      }
+      html += `<line x1="${x(upto)}" x2="${x(upto)}" y1="0" y2="${H}" stroke="#f2efe6" stroke-width="2" />`;
+      svg.innerHTML = html;
+      // the two red bands: prohibition and severe prohibition
+      const banned = chartYears[upto][0] + chartYears[upto][1];
+      document.getElementById("count").textContent = `${banned} of ${total} under prohibition`;
+    }
+
+    // Draw the exact frame at t seconds.
+    window.render = (t) => {
+      const year = Math.min(yearAt(t), TO + 0.999);
+      const Y = Math.floor(year), f = year - Y;
+      document.getElementById("year").textContent = Math.min(Y, TO);
+      for (const p of paths) {
+        if (!p.points) continue;
+        // a change during a year fades in over the second half of it, with a brief light outline
+        const before = scoreAtYearEnd(p.points, Y - 1), after = scoreAtYearEnd(p.points, Y);
+        const k = smooth((f - 0.3) / 0.6);
+        const c0 = TIER_COLORS[tierOf(before)], c1 = TIER_COLORS[tierOf(after)];
+        p.el.setAttribute("fill", c0 === c1 ? c1 : interpolateRgb(c0, c1)(k));
+        const glow = c0 !== c1 ? Math.sin(Math.PI * Math.min(1, Math.max(0, (f - 0.2) / 0.8))) : 0;
+        p.el.setAttribute("stroke", glow > 0.02 ? `rgba(242,239,230,${(0.9 * glow).toFixed(2)})` : "#0c0c0b");
+        p.el.setAttribute("stroke-width", glow > 0.02 ? "1.4" : "0.5");
+      }
+      drawChart(year);
+      // captions: each held for 3 seconds from the moment it is reached, cut short by the next
+      const caps = [...document.querySelectorAll(".cap")];
+      DATA.moments.forEach((m, i) => {
+        const start = Math.max(timeAt(m.at), 0.2), next = DATA.moments[i + 1] ? Math.max(timeAt(DATA.moments[i + 1].at), 0.2) : Infinity;
+        const end = Math.min(start + 3.2, next);
+        const a = Math.min(smooth((t - start) / 0.35), 1 - smooth((t - (end - 0.35)) / 0.35));
+        caps[i].style.opacity = Math.max(0, a).toFixed(3);
+        caps[i].style.transform = `translateY(${((1 - Math.max(0, a)) * 10).toFixed(1)}px)`;
+      });
+      document.getElementById("end").style.opacity = smooth((t - 55) / 1.5).toFixed(3);
+    };
+    window.DURATION = DURATION;
+
+    window.ready = load().then(() => {
+      const q = new URLSearchParams(location.search);
+      if (q.has("play")) {
+        const start = performance.now();
+        const tick = () => { const t = (performance.now() - start) / 1000; window.render(t % DURATION); requestAnimationFrame(tick); };
+        tick();
+      } else window.render(+(q.get("t") ?? 0));
+    });
+  </script>
+</body>
+</html>

@@ -7,7 +7,7 @@ import { getCollection } from "astro:content";
 import { SEGMENTS, dateTime, articles } from "./countries.js";
 import { CONTEXT_IDS, STATUS_SECTIONS } from "./segment-ids.js";
 import { archivedUrl } from "./archive.js";
-import { datasetsOf } from "./datasets.js";
+import { datasetsOf, latestOf } from "./datasets.js";
 
 // sites that proved unreliable, and the encyclopedia: fine as a lead, not enough on their own
 const WEAK = /cannabisregulations\.ai|tripbase\.com|sensiseeds\.com/;
@@ -34,7 +34,7 @@ export const research = (await getCollection("countries")).map(({ id: slug, data
   add("profile", "Every score rests on more than Wikipedia", SEGMENTS.length - uncited.length - soft.length, SEGMENTS.length, soft.map((s) => `${s.name}: only Wikipedia or a weak site`));
   const empty = SECTIONS.filter((k) => !data.context[k]?.sources.length);
   add("profile", "Context sections researched", SECTIONS.length - empty.length, SECTIONS.length, empty.map((k) => `${k.replace("_", " ")}: ${data.context[k] ? "no source" : "missing"}`));
-  const use = datasetsOf(slug).cannabis_use ?? {};
+  const use = latestOf(slug).cannabis_use ?? {};
   add("profile", "Use is a measured figure", use.year && !use.estimate ? 1 : 0, 1, use.year && !use.estimate ? [] : ["prevalence of use is an estimate"]);
   const age = (NOW - data.updated) / 864e5;
   add("profile", "Reviewed in the last year", age <= 365 ? 1 : 0, 1, age <= 365 ? [] : [`last reviewed ${data.updated.toISOString().slice(0, 10)}`]);

@@ -27,6 +27,8 @@ Six segments, each scored 0–10 and combined by weight:
 
 A 10 means no cannabis-specific rule at all — treated like tomatoes. Every cap, licence and registry costs points, so even the most liberal countries land around 50.
 
+Scores over time are rebuilt from each country's history in `changes.yaml`. Before its first rule on cannabis a country scores **100**: no rule at all, the tomato standard. The first rule that limited cannabis counts as the first change, even if it was not a cannabis law as such (a poisons or pharmacy act naming it, licences to sell or grow, a state monopoly, a ban on growing, a colonial power's drug law extended to a territory). A country with no known first law gets an estimated one, spread across 1925–1961.
+
 ## Run it
 
 Needs Node 22+.

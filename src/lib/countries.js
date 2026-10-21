@@ -3,7 +3,8 @@
 import { getCollection } from "astro:content";
 import { CHANGE_CATEGORIES, CHANGE_TAGS, SEGMENT_IDS, STATUS_SECTIONS } from "./segment-ids.js";
 import { sourceTuple } from "./sources.js";
-import { datasetsOf } from "./datasets.js";
+import { datasetsOf, latestOf } from "./datasets.js";
+import { TIERS, tierIndex } from "./tiers.js";
 export { CHANGE_CATEGORIES, CHANGE_TAGS };
 
 export const DATA_SNAPSHOT = "2026";
@@ -54,7 +55,7 @@ const scoreList = (scores) => SEGMENTS.map((seg) => scores[seg.id]);
 export const useAges = (use) => (use.ages ? use.ages.replace("-", "–") : "15–64");
 // cannabis use comes from its dataset, which must have a row for every place
 const useOf = (slug) => {
-  const use = datasetsOf(slug).cannabis_use;
+  const use = latestOf(slug).cannabis_use;
   if (!use) throw new Error(`datasets/unodc-cannabis-use.csv: no row for "${slug}"`);
   return use;
 };
@@ -88,7 +89,8 @@ const everyPlace = (await getCollection("countries"))
       populationByYear: populationOf(slug).map((r) => [r.year, r.population]),
       population: populationOf(slug).at(-1).population, // the latest figure
       use: useOf(slug), // { prevalence, year?, estimate?, users }, from datasets/unodc-cannabis-use.csv
-      datasets: datasetsOf(slug), // figures from the outside datasets in /datasets, see datasets.js
+      datasets: latestOf(slug), // the latest figures from the outside datasets in /datasets, see datasets.js
+      series: datasetsOf(slug), // and every year of them
       name: data.name,
       region: data.region,
       rec: REC_CODE[data.recreational],
@@ -303,6 +305,27 @@ function averageOverTime(weight) {
 }
 export const averageHistory = averageOverTime(() => 1);
 export const averageHistoryByPopulation = averageOverTime(populationAt);
+
+// The world in score bands, year by year: for each year from 1860 the share of countries (or of
+// the world's people) in each tier at the end of that year, as [year, [severe … free]] with shares
+// adding up to 1. Drawn as stacked bands beside the average.
+function bandsOverTime(weight) {
+  const out = [];
+  for (let year = CHART_FROM; year <= +DATA_SNAPSHOT; year++) {
+    const t = Date.UTC(year, 11, 31, 23, 59, 59);
+    const shares = new Array(TIERS.length).fill(0);
+    let total = 0;
+    for (const c of countries) {
+      const w = weight(c, t);
+      shares[tierIndex(scoreAt(c, t))] += w;
+      total += w;
+    }
+    out.push([year, shares.map((v) => v / total)]);
+  }
+  return out;
+}
+export const bandHistory = bandsOverTime(() => 1);
+export const bandHistoryByPopulation = bandsOverTime(populationAt);
 
 // ── History pages ──
 // The History list reads as one continuous ledger at /history/, loaded a year at a time. Each decade

@@ -3,16 +3,18 @@
   python3 scripts/extract-unodc.py offences
   python3 scripts/extract-unodc.py use
   python3 scripts/extract-unodc.py youth
+  python3 scripts/extract-unodc.py seizures
 
 The spreadsheets are kept in /datasets as downloaded from
 https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html
 
 offences  table 10.1, sheet "Formal contact": persons brought into contact with the police for
-          "Offences related to drug use and/or drug possession", any illicit drug, the latest
-          year with a figure for each country. Writes datasets/unodc-drug-possession-police.csv.
+          "Offences related to drug use and/or drug possession", any illicit drug, every year
+          with a figure for each country. Writes datasets/unodc-drug-possession-police.csv.
 
-use       table 1.2, sheet "Cannabis": past-year cannabis use, the latest survey for each
-          country. Rewrites datasets/unodc-cannabis-use.csv, one row for every country file:
+use       table 1.2, sheet "Cannabis": past-year cannabis use, every survey for each country
+          (one per year). Rewrites datasets/unodc-cannabis-use.csv: the earlier surveys, then
+          one headline row for every country file, the latest, which alone carries users:
             source  "wdr2026" from the table; "earlier" a figure from before this table was
                     used (Wikipedia's list of older UNODC figures), kept where the table has
                     none; "estimate" the median of the measured countries in the same region
@@ -20,11 +22,18 @@ use       table 1.2, sheet "Cannabis": past-year cannabis use, the latest survey
                     (fetched when the script runs), to two significant figures
           Places the World Bank does not list keep the population the file already had.
 
-youth     table 1.4, sheet "Cannabis": cannabis use among 15- and 16-year-olds, the latest
-          survey with a past-year figure for each country. Rows about one kind of cannabis
+youth     table 1.4, sheet "Cannabis": cannabis use among 15- and 16-year-olds, every survey
+          with a past-year figure for each country (the first listed, where a year has two). Rows about one kind of cannabis
           (herb or resin only) or one part of a country are left out; the age group is
           written out ("(SS) 15 - 16" becomes "ages 15–16, school survey"). Writes
           datasets/unodc-cannabis-use-youth.csv.
+
+seizures  table 7.1, sheet "Seizures": kilograms of cannabis herb and of cannabis resin seized,
+          every year reported (2015 to 2024). Plants, oil and seeds are left out: they are
+          counted in different ways and cannot be added to weights. `reported_by` is UNODC's
+          source for the figures (ARQ, ARQMSC: the government's annual report questionnaire; GOV:
+          another government source; AU: the African Union; INCSR: the US State Department).
+          Writes datasets/unodc-cannabis-seizures.csv, one row per country and year.
 
 Python's standard library only. A country name that matches no country file is listed, so that
 an alias can be added below. Run from the project root.
@@ -140,10 +149,10 @@ def offences():
                 continue
             year = found[-1]
         cid = match(r[at["Country"]])
-        if cid and (cid not in latest or int(year) > int(latest[cid][2])):
-            latest[cid] = [cid, r[at["Country"]], year, int(float(total)), note]
+        if cid:
+            latest[(cid, int(year))] = [cid, r[at["Country"]], int(year), int(float(total)), note]
     write("datasets/unodc-drug-possession-police.csv", ["country", "unodc_name", "year", "persons", "year_note"], sorted(latest.values()))
-    print(f"{len(latest)} countries written")
+    print(f"{len(latest)} rows for {len({k[0] for k in latest})} countries written")
     return missed
 
 
@@ -174,8 +183,9 @@ def use():
     files = country_files()
     missed = set()
     match = matcher(files, missed)
-    # the latest survey per country; a period such as "2022/23" counts as its last year
-    surveys = {}
+    # every survey per country, one per year (a period such as "2022/23" counts as its last year;
+    # where a year has several, the one for ages 15 to 64 is kept); the latest is the headline
+    history = {}
     for r in rows[3:]:
         r = r + [""] * (len(head) - len(r))
         name, best, period = r[at["Country/Territory"]], r[at["Best"]], str(r[at["Year"]]).strip()
@@ -184,11 +194,19 @@ def use():
         end = re.findall(r"\d{2,4}", period)[-1]
         year = int(end) if len(end) == 4 else int(period[:2] + end)
         cid = match(name)
-        if cid and (cid not in surveys or year > surveys[cid]["year"]):
-            surveys[cid] = {"prevalence": round(float(best), 2), "year": year, "period": period,
-                            "ages": r[at["Age"]].strip(), "unodc_name": name.strip()}
+        if not cid:
+            continue
+        survey = {"prevalence": round(float(best), 2), "year": year, "period": period, "ages": r[at["Age"]].strip(), "unodc_name": name.strip()}
+        known = history.setdefault(cid, {}).get(year)
+        if not known or (survey["ages"] == "15-64" and known["ages"] != "15-64"):
+            history[cid][year] = survey
+    surveys = {cid: by_year[max(by_year)] for cid, by_year in history.items()}
     # what the file had before: earlier figures, and a population for places the World Bank lacks
-    before = {r["country"]: r for r in csv.DictReader(open("datasets/unodc-cannabis-use.csv", encoding="utf-8"))}
+    # (the file has a row per survey: the latest one carries the users and population)
+    before = {}
+    for r in csv.DictReader(open("datasets/unodc-cannabis-use.csv", encoding="utf-8")):
+        if r["users"] or r["country"] not in before:
+            before[r["country"]] = r
     wb = world_bank_15_64()
     out = {}
     for cid in files:
@@ -218,13 +236,18 @@ def use():
     lines = []
     for cid in sorted(out):
         r = out[cid]
+        # the earlier surveys, oldest first, without users: today's population says nothing of them
+        for year in sorted(history.get(cid, {})):
+            e = history[cid][year]
+            if r["source"] == "wdr2026" and year < r["year"]:
+                lines.append([cid, files[cid][0], e["unodc_name"], e["prevalence"], year, e["period"], e["ages"], "", "wdr2026", "", "", ""])
         users = two_figures(r["population_15_64"] * r["prevalence"] / 100)
         lines.append([cid, files[cid][0], r.get("unodc_name", ""), r["prevalence"], r.get("year", ""), r.get("period", ""), r.get("ages", ""),
                       "true" if r["source"] == "estimate" else "", r["source"], r["population_15_64"] or "", r["population_year"], users])
     write("datasets/unodc-cannabis-use.csv",
           ["country", "name", "unodc_name", "prevalence", "year", "period", "ages", "estimate", "source", "population_15_64", "population_year", "users"], lines)
     counts = {s: sum(1 for r in out.values() if r["source"] == s) for s in ("wdr2026", "earlier", "estimate")}
-    print(f"{len(out)} countries written: {counts}")
+    print(f"{len(out)} countries, {len(lines)} rows written: {counts}")
     return missed
 
 
@@ -257,15 +280,45 @@ def youth():
             continue
         cid = match(name)
         year = int(years[-1])
-        if cid and (cid not in latest or year > latest[cid][3]):
+        if cid and (cid, year) not in latest:
             num = lambda v: round(float(v), 2) if v.strip() else ""
-            latest[cid] = [cid, name.strip(), readable(coverage), year, num(r[at["Lifetime"]]), num(past_year), num(r[at["Past Month"]]), r[at["Source"]].strip(), note]
+            latest[(cid, year)] = [cid, name.strip(), readable(coverage), year, num(r[at["Lifetime"]]), num(past_year), num(r[at["Past Month"]]), r[at["Source"]].strip(), note]
     write("datasets/unodc-cannabis-use-youth.csv", ["country", "unodc_name", "coverage", "year", "lifetime", "past_year", "past_month", "source", "note"], sorted(latest.values()))
-    print(f"{len(latest)} countries written")
+    print(f"{len(latest)} rows for {len({k[0] for k in latest})} countries written")
     return missed
 
 
-TASKS = {"offences": offences, "use": use, "youth": youth}
+def seizures():
+    rows = read_sheet("datasets/unodc-wdr2026-7.1-drug-seizures.xlsx", "Seizures")
+    head = rows[1]
+    at = {h: i for i, h in enumerate(head)}
+    missed = set()
+    match = matcher(country_files(), missed)
+    kinds = {"Cannabis herb (marijuana)": "herb_kg", "Cannabis resin (hashish)": "resin_kg"}
+    out = {}
+    for r in rows[2:]:
+        r = r + [""] * (len(head) - len(r))
+        kind = kinds.get(r[at["DrugSubGroup"]])
+        kg, year = r[at["Kilograms"]], r[at["Reference year"]]
+        if not kind or kg == "" or not year.isdigit():
+            continue
+        cid = match(r[at["Country"]])
+        if not cid:
+            continue
+        row = out.setdefault((cid, int(year)), {"country": cid, "unodc_name": r[at["Country"]].strip(), "year": int(year)})
+        row[kind] = row.get(kind, 0) + float(kg)  # a country may report one kind in several rows
+        row.setdefault("sources", set()).add(r[at["Source"]].strip())
+    lines = []
+    for (cid, year), row in sorted(out.items()):
+        herb, resin = row.get("herb_kg"), row.get("resin_kg")
+        total = (herb or 0) + (resin or 0)
+        lines.append([cid, row["unodc_name"], year, "" if herb is None else round(herb), "" if resin is None else round(resin), round(total), "; ".join(sorted(row["sources"] - {""}))])
+    write("datasets/unodc-cannabis-seizures.csv", ["country", "unodc_name", "year", "herb_kg", "resin_kg", "total_kg", "reported_by"], lines)
+    print(f"{len(lines)} rows for {len({k[0] for k in out})} countries written")
+    return missed
+
+
+TASKS = {"offences": offences, "use": use, "youth": youth, "seizures": seizures}
 if len(sys.argv) != 2 or sys.argv[1] not in TASKS:
     sys.exit(f"usage: python3 scripts/extract-unodc.py {'|'.join(TASKS)}")
 missed = TASKS[sys.argv[1]]()

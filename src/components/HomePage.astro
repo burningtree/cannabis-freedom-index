@@ -15,17 +15,28 @@ import { SHOW_PRICES } from "../lib/config.js";
 import { homeSeo } from "../lib/seo.js";
 import { viewByMetric } from "../lib/map-views.js";
 import { cultureOf, cultureEntries } from "../lib/culture.js";
-import { panelRows, PANEL_FROM } from "../lib/exports.js";
+import { panelRows, mapRows, PANEL_FROM, MAP_FROM } from "../lib/exports.js";
 import { MAPPED, datasetScales, datasetMapValues } from "../lib/datasets.js";
 
 // Rankings by year: for each place, the years in which its index score changed and the score from
-// then on ([[1900, 98.4], [1937, 11.2], …]), taken from the yearly panel. The table reads it when
+// then on ([[1900, 100], [1937, 11.2], …]), taken from the yearly panel. The table reads it when
 // another year is chosen.
 const yearScores = {};
 for (const r of panelRows) {
   const list = (yearScores[r.id] ??= []);
   if (!list.length || list.at(-1)[1] !== r.score) list.push([r.year, r.score]);
 }
+// For the year control on the Freedom views: the years of the panel and, for each, how many places'
+// scores changed in it by a recorded change (an assumed window spreading a first ban does not count).
+const FREEDOM_YEARS = (() => {
+  const counts = new Array(+DATA_SNAPSHOT - MAP_FROM + 1).fill(0);
+  const before = {};
+  for (const r of mapRows) {
+    if (before[r.id] != null && before[r.id] !== r.score && r.basis === "recorded") counts[r.year - MAP_FROM]++;
+    before[r.id] = r.score;
+  }
+  return { years: [MAP_FROM, +DATA_SNAPSHOT], coverage: counts };
+})();
 const rankYears = Array.from({ length: +DATA_SNAPSHOT - PANEL_FROM + 1 }, (_, i) => +DATA_SNAPSHOT - i);
 
 // The home page, or, with `view`, just the map on a page of its own (see /map/).
@@ -124,6 +135,17 @@ const LAW_SECTIONS = {
 const MAP_SECTIONS = { ...LAW_SECTIONS, ...STATUS_SECTIONS };
 const STATUS_SCALES = Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, { name: section.name,
   scale: Object.fromEntries(Object.entries(section.statuses).map(([k, v]) => [k, { label: v.label, help: v.help, color: `var(--t${section.tiers[k]})` }])) }]));
+// the map's views in groups, as [metric, label]: the tabs and rows of the view picker
+const datasetViews = (group) => MAPPED.filter((ds) => ds.map.group === group).map((ds) => [`data:${ds.id}`, ds.map.label]);
+const MAP_GROUPS = [
+  { name: "Freedom", views: [["index", "Overall index"], ...SEGMENTS.map((s, i) => [String(i), s.name])] },
+  { name: "Use", views: [["users", "Number of users"], ["prevalence", "Share of adults"], ["ratio", "Share of users ÷ index"], ...datasetViews("Use")] },
+  { name: "Law", views: [...Object.entries(LAW_SECTIONS).map(([key, section]) => [`status:${key}`, section.name]), ...datasetViews("Law")] },
+  { name: "Society", views: [...datasetViews("Society"), ["culture", "Atlas entries"]] },
+  ...(SHOW_PRICES ? [{ name: "Price", views: PRICE_MARKETS.map((market) => [`price:${market}`, PRICE_MARKET_LABEL[market]]) }] : []),
+  { name: "Context", views: [...Object.entries(PLANTING_FIELDS).map(([field, label]) => [`plant:${field}`, label]), ...datasetViews("Context"), ...Object.entries(STATUS_SECTIONS).map(([key, section]) => [`status:${key}`, section.name])] },
+];
+const currentGroup = (MAP_GROUPS.find((g) => g.views.some(([m]) => m === current)) ?? MAP_GROUPS[0]).name;
 const streetFlower = (c) => latestPricesFor(c.id).street;
 
 // Rankings columns the reader can switch on and off. `on` marks the ones shown by default.
@@ -229,43 +251,17 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           </div>
         </div>
       )}
+      {/* The views of the map in groups: a row of group tabs, then the chosen group's views in
+          one row. The group of the current view is open; the others are a click away. */}
       <nav class="metric-bar" id="metric" aria-label="Colour the map by" data-initial={current} data-page={view ? "" : undefined}>
-        <div class="metric-group">
-          <span>Freedom</span>
-          <a {...viewAttrs("index")}>Overall index</a>
-          {SEGMENTS.map((s, i) => <a {...viewAttrs(String(i))}>{s.name}</a>)}
+        <div class="metric-tabs" role="tablist" aria-label="Groups of map views">
+          {MAP_GROUPS.map((g) => <button type="button" role="tab" data-group-tab={g.name} aria-selected={g.name === currentGroup ? "true" : "false"}>{g.name}</button>)}
         </div>
-        <div class="metric-group">
-          <span>Use</span>
-          <a {...viewAttrs("users")}>Number of users</a>
-          <a {...viewAttrs("prevalence")}>Share of adults</a>
-          <a {...viewAttrs("ratio")}>Share of users ÷ index</a>
-          {MAPPED.filter((ds) => ds.map.group === "Use").map((ds) => <a {...viewAttrs(`data:${ds.id}`)}>{ds.map.label}</a>)}
-        </div>
-        <div class="metric-group">
-          <span>Culture</span>
-          <a {...viewAttrs("culture")}>Atlas entries</a>
-        </div>
-        <div class="metric-group">
-          <span>Society</span>
-          {MAPPED.filter((ds) => ds.map.group === "Society").map((ds) => <a {...viewAttrs(`data:${ds.id}`)}>{ds.map.label}</a>)}
-        </div>
-        <div class="metric-group">
-          <span>Law</span>
-          {Object.entries(LAW_SECTIONS).map(([key, section]) => <a {...viewAttrs(`status:${key}`)}>{section.name}</a>)}
-          {MAPPED.filter((ds) => ds.map.group === "Law").map((ds) => <a {...viewAttrs(`data:${ds.id}`)}>{ds.map.label}</a>)}
-        </div>
-        {SHOW_PRICES && (
-          <div class="metric-group">
-            <span>Price</span>
-            {PRICE_MARKETS.map((market) => <a {...viewAttrs(`price:${market}`)}>{PRICE_MARKET_LABEL[market]}</a>)}
+        {MAP_GROUPS.map((g) => (
+          <div class="metric-group" data-group={g.name} role="tabpanel" aria-label={g.name} hidden={g.name !== currentGroup}>
+            {g.views.map(([metric, label]) => <a {...viewAttrs(metric)}>{label}</a>)}
           </div>
-        )}
-        <div class="metric-group">
-          <span>Context</span>
-          {Object.entries(PLANTING_FIELDS).map(([field, label]) => <a {...viewAttrs(`plant:${field}`)}>{label}</a>)}
-          {Object.entries(STATUS_SECTIONS).map(([key, section]) => <a {...viewAttrs(`status:${key}`)}>{section.name}</a>)}
-        </div>
+        ))}
       </nav>
       <p class="sub map-sub" id="mapSub" data-score="Red means prison risk, green means free. Select a country for its full breakdown." data-use="The stronger the blue, the more people use cannabis. Select a country for its full breakdown." data-ratio="The stronger the blue, the further cannabis use runs ahead of the freedom to use it. Select a country for its full breakdown." data-culture="The stronger the blue, the more of the country's words, customs and people the cultural atlas covers. Select a country for its entries." data-price="Pale yellow means cheaper, violet means more expensive. Countries without a sourced price are hatched." data-planting="Green means legal or sold freely, red means illegal or banned. Hatched countries have not been researched yet. Not part of the score.">Red means prison risk, green means free. Select a country for its full breakdown.</p>
       <div class="card map-card">
@@ -275,6 +271,16 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
             <button class="icon-btn" id="zoomIn" aria-label="Zoom in">+</button>
             <button class="icon-btn" id="zoomOut" aria-label="Zoom out">−</button>
             <button class="icon-btn" id="zoomReset" aria-label="Reset zoom">⟲</button>
+          </div>
+          {/* the year of a dataset view with several years: play, a scrubber over bars that show how
+              many countries have a figure each year, and the year shown (the latest by default) */}
+          <div class="map-time" id="mapYears" hidden>
+            <button type="button" class="mt-play" id="mapYearPlay" aria-label="Play through the years" title="Play through the years">▶</button>
+            <div class="mt-scrub">
+              <svg class="mt-bars" id="mapYearBars" preserveAspectRatio="none" aria-hidden="true"></svg>
+              <input type="range" id="mapYearRange" step="1" aria-label="Year shown on the map" />
+            </div>
+            <output id="mapYearOut" for="mapYearRange"></output>
           </div>
           <div class="tooltip" id="tooltip" hidden></div>
           <p class="map-msg" id="mapMsg">Loading map…</p>
@@ -451,6 +457,10 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         ))}
       </div>
       <div class="note-card">
+        <h3>Scores over time: starting at 100</h3>
+        <p>The history rebuilds every country's score year by year from its recorded changes. Before a country's first rule on cannabis, it scores <strong>100</strong>: with no rule at all, cannabis met the tomato standard. The first rule that limited it is recorded as the first change, even when it was not a law about cannabis as such: a poisons or pharmacy act that named it, licences to sell or grow it, a state monopoly, a ban on growing, or a colonial power's drug law extended to a territory. Where no first law is known at all, the first restriction is assumed to have come between the 1925 Geneva convention and the 1961 Single Convention and is spread across those years.</p>
+      </div>
+      <div class="note-card">
         <h3>Read this before relying on it</h3>
         <p>Scores are editorial estimates that blend the written law with how it is enforced in practice. Federal countries (United States, Australia, India) get a single national estimate that hides large internal differences. Scores between the listed levels mean a country sits between two descriptions. Every country has a written explanation and linked sources for each segment — select a country to read them. For many smaller countries the only sources available are secondary summaries, and the explanations say so where a figure could not be confirmed.</p>
         <p>Laws change quickly and this is <strong>not legal advice</strong>. Always check current local law before travelling with, buying or growing cannabis.</p>
@@ -495,6 +505,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
   <script type="application/json" id="cfi-units" set:html={JSON.stringify(unitData)} />
   <script type="application/json" id="cfi-use-scales" set:html={JSON.stringify(USE_SCALES)} />
   <script type="application/json" id="cfi-datasets" set:html={JSON.stringify(datasetScales)} />
+  <script type="application/json" id="cfi-freedom-years" set:html={JSON.stringify(FREEDOM_YEARS)} />
   <script type="application/json" id="cfi-price-scale" set:html={JSON.stringify(PRICE_SCALE)} />
   <script type="application/json" id="cfi-planting" set:html={JSON.stringify({ fields: PLANTING_FIELDS, scales: PLANTING_SCALES, sections: STATUS_SCALES, subs: Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, section.complete ? section.sub : `${section.sub} Hatched countries have not been researched yet. Not part of the score.`])) })} />
   <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => ({ name: s.name, desc: s.desc, levels: s.levels })))} />
@@ -541,8 +552,26 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     const DATA_SCALES = JSON.parse($("#cfi-datasets").textContent);
     const isData = () => metric.startsWith("data:");
     const dataKey = () => metric.split(":")[1];
+    // The year slider: null shows each country's latest figure; a year shows the figure of that
+    // year, or the latest of the `window` years before it. Each dataset's years load on first use.
+    let dataYear = null;
+    const yearSeries = {}, yearLoading = {};
+    const loadYears = (key) => (yearLoading[key] ??= fetch(`${base}map-series/${key}.json`).then((r) => r.json()).then((j) => { yearSeries[key] = j; }).catch(() => { delete yearLoading[key]; }));
+    const dataPoint = (c) => {
+      const key = dataKey();
+      if (!c) return null;
+      if (dataYear == null) return c.ds[key] ?? null;
+      const points = yearSeries[key]?.[c.id];
+      if (!points) return null;
+      const win = DATA_SCALES[key].window;
+      for (let i = points.length - 1; i >= 0; i--) {
+        const [year, v, t] = points[i];
+        if (year <= dataYear) return year > dataYear - win ? { year, v, t } : null;
+      }
+      return null;
+    };
     const dataColor = (c) => {
-      const d = c?.ds[dataKey()];
+      const d = dataPoint(c);
       if (!d) return "url(#hatch)";
       const steps = DATA_SCALES[dataKey()].steps;
       let i = 0;
@@ -551,7 +580,23 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     };
     const priceMarket = () => metric.split(":")[1];
     const priceOf = (c) => c.prices[priceMarket()];
-    const metricValue = (c) => (metric === "index" ? c.raw : c.s[+metric] * 10);
+    // The Freedom views (the index and its six segments) have a time series too: the scores at the
+    // end of each year, rebuilt from the history. At a chosen year a place takes its score then.
+    const FREEDOM = JSON.parse($("#cfi-freedom-years").textContent);
+    const isFreedom = () => metric === "index" || /^\d$/.test(metric);
+    const freedomPast = (c) => {
+      if (dataYear == null || !isFreedom() || !c?.id) return null;
+      const points = yearSeries.freedom?.[c.id];
+      if (!points) return null;
+      let at = points[0];
+      for (const p of points) { if (p[0] > dataYear) break; at = p; }
+      return at;
+    };
+    const metricValue = (c) => {
+      const past = freedomPast(c);
+      if (past) return metric === "index" ? past[1] : past[2 + +metric] * 10;
+      return metric === "index" ? c.raw : c.s[+metric] * 10;
+    };
     const titleCase = (s) => s[0].toUpperCase() + s.slice(1);
     const metricLabel = () => isPrice() ? `${titleCase(priceMarket())} flower` : metric === "index" ? "Index" : SEGMENT_NAMES[+metric];
     const metricText = (c) => isPrice() ? (priceOf(c) ? `$${priceOf(c).usd.toFixed(2)} / g` : "No data") : metric === "index" ? `${c.score} / 100` : `${c.s[+metric]} / 10`;
@@ -581,7 +626,8 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
 
     // states and provinces carry scores only, so they are offered on the Freedom options alone
     const isScore = () => !isData() && !isClubs() && !isPlant() && !isPrice() && !isUse();
-    const unitsOn = () => showUnits && isScore();
+    // states and provinces have no history of their own, so they show only the latest year
+    const unitsOn = () => showUnits && isScore() && dataYear == null;
 
     function paintMap() {
       if (paths) {
@@ -594,7 +640,8 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         // cannabis use is only known nationally, so a state takes its country's colour for those
         unitPaths.attr("fill", (d) => (isData() ? dataColor(byId.get(d.u.country)) : isClubs() ? clubsColor(byId.get(d.u.country)) : isPlant() ? plantColor(byId.get(d.u.country)) : isPrice() ? priceColor(byId.get(d.u.country)) : isUse() ? useColor(byId.get(d.u.country)) : tierColor(metricValue(d.u))));
       }
-      $("#mapUnder").hidden = !isScore();
+      $("#mapUnder").hidden = !isScore() || dataYear != null;
+      showYears();
       const shown = isData() || isClubs() ? metric : isPlant() ? (plantField().endsWith("_trade") ? "plant-trade" : "plant-status") : isPrice() ? "price" : isUse() ? metric : "score";
       document.querySelectorAll("[data-legend]").forEach((el) => { el.hidden = el.dataset.legend !== shown; });
       const sub = $("#mapSub");
@@ -606,10 +653,101 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
       const link = e.target.closest("a[data-metric]");
       if (!link || "page" in $("#metric").dataset || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
       e.preventDefault();
+      const before = timeKey();
       metric = link.dataset.metric;
+      // a year chosen on one Freedom view stays when moving to another; a new series starts at its latest
+      if (timeKey() !== before) { stopPlay(); dataYear = null; }
       for (const a of $("#metric").querySelectorAll("a")) a.toggleAttribute("aria-current", a === link);
       $("#mapExpand").href = link.href;
       paintMap();
+    });
+    // the year control, for a view with a series: a dataset with several years, or a Freedom view
+    const timeKey = () => (isData() ? (DATA_SCALES[dataKey()].years ? dataKey() : null) : isFreedom() ? "freedom" : null);
+    const timeScale = () => (timeKey() === "freedom" ? FREEDOM : timeKey() ? DATA_SCALES[dataKey()] : null);
+    const yearsEl = $("#mapYears"), range = $("#mapYearRange");
+    const pageView = "page" in $("#metric").dataset; // a map page of its own keeps the year in its address
+    let playing = null;
+    function showYears() {
+      const years = timeScale()?.years;
+      yearsEl.hidden = !years;
+      if (!years) return;
+      loadYears(timeKey());
+      range.min = years[0];
+      range.max = years[1];
+      range.value = dataYear ?? years[1];
+      $("#mapYearOut").textContent = dataYear == null ? "Latest" : dataYear;
+      const win = timeScale().window;
+      yearsEl.title = timeKey() === "freedom"
+        ? (dataYear == null ? `Today's scores. Drag back to ${years[0]}; the bars count the countries whose score changed each year.` : `Scores at the end of ${dataYear}, rebuilt from each country's history`)
+        : dataYear == null ? `Each country's latest figure. Drag back to ${years[0]} to see earlier years.` : `${dataYear}, or a country's latest figure from the ${win} years before it`;
+      drawBars(years, timeScale().coverage);
+      if (pageView) {
+        const url = new URL(location.href);
+        if (dataYear == null) url.searchParams.delete("year"); else url.searchParams.set("year", dataYear);
+        history.replaceState(null, "", url);
+        // the links to the other Freedom views keep the year
+        if (timeKey() === "freedom") for (const link of $("#metric").querySelectorAll("a[data-metric]")) {
+          if (link.dataset.metric !== "index" && !/^\d$/.test(link.dataset.metric)) continue;
+          const to = new URL(link.href);
+          if (dataYear == null) to.searchParams.delete("year"); else to.searchParams.set("year", dataYear);
+          link.href = to;
+        }
+      }
+    }
+    // one bar per year, as tall as the number of countries with a figure; the year shown is marked
+    let barsFor = null;
+    function drawBars(years, coverage) {
+      const svg = $("#mapYearBars"), n = coverage.length, top = Math.max(...coverage) || 1;
+      if (barsFor !== timeKey()) {
+        barsFor = timeKey();
+        svg.setAttribute("viewBox", `0 0 ${n} 1`);
+        svg.innerHTML = coverage.map((k, i) => `<rect x="${i + 0.15}" width="0.7" y="${1 - Math.max(k / top, k ? 0.06 : 0)}" height="${Math.max(k / top, k ? 0.06 : 0)}"></rect>`).join("");
+      }
+      const at = dataYear == null ? n - 1 : dataYear - years[0];
+      svg.querySelectorAll("rect").forEach((r, i) => r.classList.toggle("on", i <= at));
+    }
+    async function setMapYear(year) {
+      const years = timeScale()?.years;
+      if (!years) return;
+      year = Math.max(years[0], year);
+      dataYear = year >= years[1] ? null : year; // the last year is the latest view
+      if (dataYear != null) await loadYears(timeKey());
+      paintMap();
+    }
+    range.addEventListener("input", () => setMapYear(+range.value));
+    // a map page opened at a year: /map/hemp-grown/?year=1990
+    {
+      const wanted = +new URLSearchParams(location.search).get("year"), years = timeScale()?.years;
+      if (years && wanted >= years[0] && wanted < years[1]) { dataYear = wanted; loadYears(timeKey()).then(() => paintMap()); }
+    }
+    function stopPlay() {
+      clearInterval(playing);
+      playing = null;
+      $("#mapYearPlay").textContent = "▶";
+      $("#mapYearPlay").setAttribute("aria-label", "Play through the years");
+    }
+    $("#mapYearPlay").addEventListener("click", async () => {
+      if (playing) return stopPlay();
+      const years = timeScale().years;
+      await loadYears(timeKey());
+      let year = dataYear == null || dataYear >= years[1] ? years[0] : dataYear;
+      $("#mapYearPlay").textContent = "❚❚";
+      $("#mapYearPlay").setAttribute("aria-label", "Pause");
+      setMapYear(year);
+      // about four seconds for the whole range, at most a third of a second a year
+      const step = Math.max(1, Math.ceil((years[1] - years[0]) / 40));
+      playing = setInterval(() => {
+        year += step;
+        if (year >= years[1]) { stopPlay(); setMapYear(years[1]); return; }
+        setMapYear(year);
+      }, 320);
+    });
+    // the group tabs of the view picker only open a group; choosing a view is a link in it
+    $("#metric").addEventListener("click", (e) => {
+      const tab = e.target.closest("[data-group-tab]");
+      if (!tab) return;
+      for (const t of $("#metric").querySelectorAll("[data-group-tab]")) t.setAttribute("aria-selected", t === tab ? "true" : "false");
+      for (const g of $("#metric").querySelectorAll("[data-group]")) g.hidden = g.dataset.group !== tab.dataset.groupTab;
     });
     $("#showUnits").addEventListener("change", async (e) => {
       showUnits = e.target.checked;
@@ -704,11 +842,35 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         const n = noteOf(c.id);
         if (isData()) {
           const key = dataKey(), d = c.ds[key], scale = DATA_SCALES[key];
+          if (dataYear != null) {
+            const p = dataPoint(c);
+            if (!p) return head(c.flag, c.name) + `<div class="tip-meta">No figure for ${dataYear}</div>` + foot(c);
+            return head(c.flag, c.name, p.t, dataColor(c)) + row(esc(scale.label), p.t, dataColor(c)) + row("Year", p.year)
+              + (p.year !== dataYear ? `<div class="tip-meta">The latest figure before ${dataYear}</div>` : "") + foot(c);
+          }
           if (!d) return head(c.flag, c.name) + `<div class="tip-meta">${esc(scale.missing)}</div>` + row("Cannabis index", `${c.score} / 100`) + foot(c);
           const rows = key === "pew_marijuana"
             ? `<div class="tip-meta">Using marijuana is…</div>` + row("Morally unacceptable", `${d.unacceptable}%`, dataColor(c)) + row("Morally acceptable", `${d.acceptable}%`) + row("Not a moral issue", `${d.not_moral}%`)
+            : key === "seizures"
+            ? row("Seized", `${d.t} kg`, dataColor(c)) + (d.herb_kg !== undefined ? row("Herb", `${d.herb_kg.toLocaleString("en-GB")} kg`) : "") + (d.resin_kg !== undefined ? row("Resin", `${d.resin_kg.toLocaleString("en-GB")} kg`) : "") + row("Year", d.year)
+            : key === "civil_liberties"
+            ? row("Civil liberties", `${d.t} of 1`, dataColor(c)) + row("Year", d.year)
+            : key === "prices_europe"
+            ? row("Herb", `€${d.t} a gram`, dataColor(c)) + (d.resin_eur !== undefined ? row("Resin", `€${d.resin_eur.toFixed(2)} a gram`) : "") + row("Year", d.year)
+            : key === "potency_europe"
+            ? row("THC in herb", d.t, dataColor(c)) + (d.resin_thc !== undefined ? row("THC in resin", `${d.resin_thc}%`) : "") + row("Year", d.year)
+            : key === "osm_shops"
+            ? row("Per million people", d.t, dataColor(c)) + row("Shops tagged", d.shops.toLocaleString("en-GB")) + row("Counted", d.year)
+            : key === "gbif_plant"
+            ? row("Dated records", d.t, dataColor(c)) + (d.undated ? row("Without a date", d.undated.toLocaleString("en-GB")) : "") + row("Up to", d.year)
+            : key === "research_papers"
+            ? row("Per million people", d.t, dataColor(c)) + row("Papers", d.papers.toLocaleString("en-GB")) + row("Year", d.year)
+            : key === "hemp"
+            ? row("Hemp grown", `${d.t} ha`, dataColor(c)) + (d.fibre_t !== undefined ? row("Fibre", `${d.fibre_t.toLocaleString("en-GB")} t`) : "") + (d.seed_t !== undefined ? row("Seed", `${d.seed_t.toLocaleString("en-GB")} t`) : "") + row("Year", d.year)
             : key === "youth_use"
             ? row("Past year", `${d.past_year}%`, dataColor(c)) + (d.lifetime !== undefined ? row("Ever", `${d.lifetime}%`) : "") + (d.past_month !== undefined ? row("Past month", `${d.past_month}%`) : "") + row("Survey", d.year)
+            : key === "cannabis_offences"
+            ? row("Per 100,000 people", d.t, dataColor(c)) + row("Offences", d.offences.toLocaleString("en-GB")) + row("Year", d.year) + `<div class="tip-meta">Cannabis only; countries count differently</div>`
             : key === "police_possession"
             ? row("Per 100,000 people", d.t, dataColor(c)) + row("People", d.persons.toLocaleString("en-GB")) + row("Year", d.year) + `<div class="tip-meta">All drugs together; countries count differently</div>`
             : row("Human freedom", `${d.human.toFixed(2)} / 10`, dataColor(c)) + (d.human_rank ? row("Rank", `#${d.human_rank} of ${scale.total}`) : "")
@@ -755,6 +917,12 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
             + row("Users", `${est}${compact(c.use.users)}`) + row(`Share aged ${c.use.ages}`, `${est}${c.use.prevalence}%`)
             + row(c.use.estimate ? "Source" : "Survey year", c.use.estimate ? "regional estimate" : c.use.period ?? c.use.year)
             + (c.use.source === "earlier" ? row("Source", "earlier figure, not in UNODC's 2026 table") : "") + foot(c);
+        }
+        const past = freedomPast(c);
+        if (past) {
+          const v = metricValue(c), shown = metric === "index" ? Math.round(past[1]) : `${+past[2 + +metric].toFixed(1)}<small>/10</small>`;
+          return head(c.flag, c.name, shown, tierColor(v)) + `<div class="tip-meta">${tierOf(v).name} · end of ${dataYear}${metric === "index" ? "" : ` · ${SEGMENT_NAMES[+metric]}`}</div>`
+            + bar(v, tierColor(v)) + row("Today", metric === "index" ? `${c.score} / 100` : `${c.s[+metric]} / 10`) + foot(c);
         }
         const chip = metric === "index" ? c.score : `${c.s[+metric]}<small>/10</small>`;
         const extra = metric === "index"

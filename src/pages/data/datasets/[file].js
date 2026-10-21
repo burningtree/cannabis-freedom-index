@@ -3,10 +3,10 @@
 import fs from "node:fs";
 import { DATASETS } from "../../../lib/datasets.js";
 
-const TYPES = { csv: "text/csv", yaml: "text/yaml", xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", xls: "application/vnd.ms-excel" };
-const TEXT = new Set(["csv", "yaml"]);
+const TYPES = { csv: "text/csv", yaml: "text/yaml", xml: "application/xml", xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", xls: "application/vnd.ms-excel" };
+const TEXT = new Set(["csv", "yaml", "xml"]);
 
-export const getStaticPaths = () => ["datasets.yaml", ...Object.values(DATASETS).flatMap((d) => [d.file, d.original].filter(Boolean))].map((file) => ({ params: { file } }));
+export const getStaticPaths = () => ["datasets.yaml", ...Object.values(DATASETS).flatMap((d) => [...d.files, ...d.fileInfo.originals.map((o) => o.name)])].map((file) => ({ params: { file } }));
 
 export const GET = ({ params }) => new Response(fs.readFileSync(`datasets/${params.file}`), {
   headers: { "Content-Type": ((ext) => TEXT.has(ext) ? `${TYPES[ext]}; charset=utf-8` : TYPES[ext])(params.file.split(".").pop()) },

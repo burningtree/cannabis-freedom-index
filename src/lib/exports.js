@@ -65,6 +65,8 @@ export const historyRows = changes.map((ch) => ({
 //                 scores move in a straight line across the window (see ESTIMATE_WINDOW)
 //   baseline      before the place's first recorded change: its starting scores, an assumption
 export const PANEL_FROM = 1900;
+// The map's year control goes further back, to the first bans of the nineteenth century.
+export const MAP_FROM = 1800;
 const scoredOf = new Map(places.map((c) => [c, changes.filter((ch) => ch.country === c && ch.score).reverse()])); // oldest first
 function segmentsAt(c, t) {
   const list = scoredOf.get(c);
@@ -85,9 +87,9 @@ function segmentsAt(c, t) {
   return { s, basis };
 }
 const round = (v, digits) => Math.round(v * 10 ** digits) / 10 ** digits;
-export const panelRows = places.flatMap((c) => {
+const yearlyRows = (from) => places.flatMap((c) => {
   const rows = [];
-  for (let year = PANEL_FROM; year <= +DATA_SNAPSHOT; year++) {
+  for (let year = from; year <= +DATA_SNAPSHOT; year++) {
     const { s, basis } = segmentsAt(c, Date.UTC(year, 11, 31, 23, 59, 59));
     rows.push({
       id: c.id,
@@ -102,7 +104,10 @@ export const panelRows = places.flatMap((c) => {
     });
   }
   return rows;
-});
+});export const panelRows = yearlyRows(PANEL_FROM);
+// the same from 1800, for the map (not published as a download)
+export const mapRows = yearlyRows(MAP_FROM);
+
 
 // One row per sourced price observation, newest first. Older rows form the price history.
 export const priceRows = priceObservations.map((p) => ({

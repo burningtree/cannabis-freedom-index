@@ -13,7 +13,7 @@ const edit=(id,fn)=>{const [i,j]=block(id);text=text.slice(0,i)+fn(text.slice(i,
 const wrap=(t,w=96)=>{const out=[];let line="";for(const word of t.split(" ")){if((line+" "+word).trim().length>w){out.push(line);line=word}else line=(line+" "+word).trim()}out.push(line);return out.map(l=>"    "+l).join("\n")};
 const q=t=>(/: |^["'\[{>|*&!%@`]| #/.test(t)?JSON.stringify(t):t);
 const src=(page)=>/^https?:/.test(page[1]||"")?page:["Wikipedia — "+decodeURIComponent(page).replace(/_/g," "),"https://en.wikipedia.org/wiki/"+page];
-const PRESET={FREE:[10,10,10,10,10,8],REG:[6,3,6,3,5,6]};
+const PRESET={FREE:[10,10,10,10,10,10],REG:[6,3,6,3,5,6]};
 const fmt=b=>"{"+K.map((k,i)=>`${k}: ${b[i]}`).join(", ")+"}";
 for(const [id,page,date] of data.checks||[]) edit(id,b=>{
   if(date) b=b.replace(/  date: "[^"]+"/,`  date: "${date}"`);

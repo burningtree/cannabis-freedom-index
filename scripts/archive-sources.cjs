@@ -1,14 +1,27 @@
-// Archived copies of the sources: node scripts/archive-sources.cjs [status|check|save] [limit] [--random]
+// Archived copies of the sources: node scripts/archive-sources.cjs [status|check|save|probe] [limit] [--random] [--include-dead]
 // Run from the project root. Needs js-yaml (already in node_modules) and Node 18+ (fetch).
 //
 //   status  how many source addresses there are and how many have a recorded copy (no network)
 //   check   ask the Internet Archive which sources it already holds, and record those copies
 //   save    ask the Internet Archive to save the sources it does not hold yet, then record them
+//   probe   open the sources that have no copy yet, as a browser would, and record the ones whose
+//           site refuses or has lost them (see "dead" below)
 //
 // `limit` caps how many addresses one run handles (default 50), so a run stays short and polite;
 // run it again to continue. Results go to source-archive.json, which the site reads:
 //   { "<url>": { "archived": "https://web.archive.org/web/<timestamp>/<url>", "checked": "YYYY-MM-DD" } }
 // An address with no copy is recorded with "archived": null and is tried again after 30 days.
+//
+// An address whose site cannot be reached is marked, so that runs skip it instead of failing on it
+// every time; the source itself stays in the data and on the site:
+//   "dead": { "reason": "blocked" | "gone" | "unreachable", "status": 403, "seen": "YYYY-MM-DD" }
+//   blocked      the site refuses scripts and archivers (401, 403, 429 or 451, or the Archive's
+//                save reports the site blocked it); a person in a browser may still open it
+//   gone         the page is not there (404, 410)
+//   unreachable  the address does not resolve or the connection fails
+// `probe` and failed saves set it, a later success clears it, and `check`, `save` and `probe` skip
+// a marked address for 90 days after it was seen, then try it again. `--include-dead` tries
+// marked addresses anyway.
 // `--random` takes the addresses of a run in random order instead of the order they appear in the
 // data. `save` always starts from the same addresses otherwise, so the ones the Archive keeps
 // refusing would fill every run.
@@ -23,6 +36,7 @@ const FILE = "source-archive.json";
 const archive = fs.existsSync(FILE) ? JSON.parse(fs.readFileSync(FILE, "utf8")) : {};
 const args = process.argv.slice(2);
 const random = args.includes("--random");
+const includeDead = args.includes("--include-dead");
 const [what = "status", count] = args.filter((a) => !a.startsWith("--"));
 const limit = +count || 50;
 const today = new Date().toISOString().slice(0, 10);
@@ -50,9 +64,20 @@ for (const f of fs.existsSync("articles") ? walk("articles").filter((f) => f.end
   for (const s of (head && y.load(head[1])?.sources) || []) if (s.url) urls.add(s.url);
 }
 const all = [...urls].filter((u) => /^https?:\/\//.test(u) && !u.includes("web.archive.org"));
-const stale = (u) => !archive[u] || (!archive[u].archived && Date.now() - Date.parse(archive[u].checked) > 30 * 864e5);
+const DEAD_DAYS = 90;
+// marked dead and seen within the last 90 days: skipped by every run
+const resting = (u) => !includeDead && archive[u]?.dead && Date.now() - Date.parse(archive[u].dead.seen) < DEAD_DAYS * 864e5;
+const stale = (u) => !resting(u) && (!archive[u] || (!archive[u].archived && Date.now() - Date.parse(archive[u].checked) > 30 * 864e5));
 const have = all.filter((u) => archive[u]?.archived).length;
-console.log(`sources: ${all.length} addresses | with a recorded copy ${have} | without ${all.length - have}`);
+const dead = {};
+for (const u of all) if (archive[u]?.dead) dead[archive[u].dead.reason] = (dead[archive[u].dead.reason] || 0) + 1;
+console.log(`sources: ${all.length} addresses | with a recorded copy ${have} | without ${all.length - have}`
+  + (Object.keys(dead).length ? ` | marked ${Object.entries(dead).map(([k, n]) => `${k} ${n}`).join(", ")}` : ""));
+// the reason a site answers with this status, or null when it is reachable
+const deadReason = (status) => (typeof status !== "number" ? "unreachable" : [401, 403, 429, 451].includes(status) ? "blocked" : [404, 410].includes(status) ? "gone" : null);
+const markDead = (url, reason, status) => {
+  archive[url] = { ...(archive[url] || { archived: null }), checked: archive[url]?.checked || today, dead: { reason, ...(status != null && { status }), seen: today } };
+};
 
 // written to a temporary file first and then renamed, so a full disk or a crash cannot leave half a file
 const write = () => {
@@ -116,6 +141,11 @@ async function saveLoggedIn(url) {
     if (st.status === "pending") continue;
     console.log(`  save ${st.status} ${url}${st.message ? ": " + st.message : ""}`);
     if (st.status === "success" && st.timestamp) return `https://web.archive.org/web/${st.timestamp}/${st.original_url || url}`;
+    // the Archive's own reasons for a failed capture (status_ext), for the dead mark
+    const ext = st.status_ext || "";
+    const reason = /blocked|no-access|http-40[13]|http-451|too-many-requests/.test(ext) ? "blocked"
+      : /not-found|http-404|http-410/.test(ext) ? "gone" : /invalid-host-resolution|invalid-server-response|connection|ssl/.test(ext) ? "unreachable" : null;
+    if (reason) markDead(url, reason, +(/http-(\d{3})/.exec(ext)?.[1]) || undefined);
     return recentCopy(url, st.message);
   }
   console.log(`  save still pending after 150 s ${url}`);
@@ -125,8 +155,9 @@ async function saveLoggedIn(url) {
 (async () => {
   if (what === "status") return;
   if (what === "save") console.log(KEYS ? "save: logged in" : "save: anonymous (no IA_ACCESS_KEY / IA_SECRET_KEY in .env)");
-  if (!["check", "save"].includes(what)) return console.log("unknown command: use status, check or save");
-  const pending = all.filter(what === "check" ? stale : (u) => !archive[u]?.archived);
+  if (!["check", "save", "probe"].includes(what)) return console.log("unknown command: use status, check, save or probe");
+  if (what === "probe") return probe();
+  const pending = all.filter(what === "check" ? stale : (u) => !archive[u]?.archived && !resting(u));
   const todo = (random ? shuffle(pending) : pending).slice(0, limit);
   let found = 0, failed = 0;
   for (const url of todo) {
@@ -140,7 +171,9 @@ async function saveLoggedIn(url) {
         await sleep(15000);
         copy = await lookup(url);
       }
-      archive[url] = { archived: copy, checked: today };
+      // a copy clears a dead mark; a failed save keeps the one it set
+      const { dead: mark } = archive[url] || {};
+      archive[url] = { archived: copy, checked: today, ...(!copy && mark && { dead: mark }) };
       if (copy) found++;
     } catch (e) {
       failed++;
@@ -154,5 +187,29 @@ async function saveLoggedIn(url) {
     write();
     await sleep(what === "check" ? 3000 : 1000);
   }
-  console.log(`${what}: handled ${todo.length} | copies recorded ${found} | failed ${failed} | still to do ${all.filter(what === "check" ? stale : (u) => !archive[u]?.archived).length}`);
+  console.log(`${what}: handled ${todo.length} | copies recorded ${found} | failed ${failed} | still to do ${all.filter(what === "check" ? stale : (u) => !archive[u]?.archived && !resting(u)).length}`);
 })();
+
+// Open each source without a copy as a browser would, and mark the ones that refuse or are gone.
+// One request per site at a time, a second apart; a site that answers HEAD wrongly gets a GET.
+async function probe() {
+  const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128 Safari/537.36";
+  const todo = all.filter((u) => !archive[u]?.archived && !resting(u)).slice(0, limit);
+  const counts = { ok: 0, blocked: 0, gone: 0, unreachable: 0 };
+  for (const url of todo) {
+    let status;
+    for (const method of ["HEAD", "GET"]) {
+      status = await fetch(url, { method, redirect: "follow", signal: AbortSignal.timeout(20000), headers: { "User-Agent": UA, Accept: "text/html,application/pdf,*/*" } })
+        .then((r) => r.status).catch((e) => e.cause?.code || e.name);
+      if (!(method === "HEAD" && (typeof status !== "number" || status === 405 || status >= 400))) break;
+    }
+    const reason = deadReason(status);
+    if (reason) markDead(url, reason, typeof status === "number" ? status : undefined);
+    else if (archive[url]?.dead) delete archive[url].dead;
+    counts[reason || "ok"]++;
+    console.log(`  ${reason || "ok"} ${status} ${url}`);
+    write();
+    await sleep(1000);
+  }
+  console.log(`probe: handled ${todo.length} | ${Object.entries(counts).map(([k, n]) => `${k} ${n}`).join(" | ")}`);
+}
