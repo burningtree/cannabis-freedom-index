@@ -58,19 +58,20 @@ const method = (segId) => `${base}#${segId ? `method-${segId}` : "methodology"}`
 // outside datasets with figures for the country, listed in their own tab
 const datasetCount = sub ? 0 : Object.keys(datasetsOf(c.slug)).length;
 // The right-hand side is split into tabs so that the history is one click away instead of at
-// the bottom of a long page: [id, label, count]. A single state has only its score breakdown.
+// the bottom of a long page: [id, label, count]. Labels are kept short so that the row fits; the
+// panels' headings say it in full ("provinces and territories", "national estimate"). A single state has only its score breakdown.
 // A federation opens on its states or provinces, the national estimate after them; a single state
 // or province has its own breakdown, its history and the others of its country.
 const tabs = (sub
   ? [
       ["score", "Score breakdown"],
       history.length > 0 && ["history", "History", history.length],
-      ["units", `Other ${group.plural}`, group.units.length - 1],
+      ["units", `Other ${group.plural.split(" ")[0]}`, group.units.length - 1],
     ]
   : [
-      group && ["units", group.label === "State" ? "States" : group.plural[0].toUpperCase() + group.plural.slice(1), group.units.length],
-      ["score", group ? "National estimate" : "Score breakdown"],
-      d && ["context", "More context"],
+      group && ["units", group.plural[0].toUpperCase() + group.plural.split(" ")[0].slice(1), group.units.length],
+      ["score", group ? "National" : "Score breakdown"],
+      d && ["context", "Context"],
       history.length > 0 && ["history", "History", history.length],
       d && datasetCount > 0 && ["datasets", "Datasets", datasetCount],
       d && ["sources", "Sources", d.sources.length],
