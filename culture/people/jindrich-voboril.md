@@ -51,8 +51,8 @@ sources:
 Jindřich Vobořil was twice Czechia's national drug coordinator, the official who steers the
 government's drug policy. In his second term, from 2022 to 2024, he set out to make the country the first
 in the European Union to license the growing and sale of cannabis for adults.
-Coalition politicians would not go that far, and he left office under pressure. Parliament adopted a
-narrower personal-use reform in 2025, effective from 1 January 2026. His think tank's claimed role in
+Coalition politicians would not go that far, and he [left office under pressure](/history/czechia-voboril-steps-down-2024/). Parliament [adopted a
+narrower personal-use reform](/history/czechia-law-passed-2025/) in 2025, effective from 1 January 2026. His think tank's claimed role in
 drafting an amendment became a public dispute; the enacted legislation was not his work alone.
 
 ## From harm reduction to government

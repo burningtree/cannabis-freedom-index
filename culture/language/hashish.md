@@ -49,6 +49,13 @@ sources:
     year: 2021
     isbn: '9780262045209'
     locator: 'ch. 12, Hashish Versus Marijuana: Class(ist), Gender(ed) Environments of Consumption (EPUB)'
+  - type: book
+    title: "Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928"
+    authors: [James H. Mills]
+    publisher: Oxford University Press
+    year: 2003
+    isbn: "0-19-924938-5"
+    locator: "pp. 149–150"
 ---
 
 *Ḥashīsh* is an ordinary Arabic word for dried grass or fodder. As the name of a drug it means the resin of the cannabis plant, collected and pressed, and it is the word under which Europe first learned that cannabis could be eaten or smoked for its effect. It names the product from Morocco to Afghanistan, and it gave the West a second word, *assassin*, on the strength of a nineteenth-century theory about a medieval sect.
@@ -80,6 +87,8 @@ In France it became a subject of science and of letters.
 | [1845](/history/france-moreau-du-hachisch-1845/) | The psychiatrist Moreau de Tours proposed hashish as a means of studying mental illness |
 | [1860](/history/france-paradis-artificiels-1860/) | Baudelaire published *Les Paradis artificiels* |
 
+Britain had no such circle of note. In [1896](/history/uk-hashish-poets-1896/) a temperance journal mentioned "a club founded in London for hashish smoking", probably the poets of the Rhymers' Club, Yeats and Dowson among them, but use stayed confined to a few writers and occultists.
+
 By the end of the century preparations of it were in pharmacies across Europe and North America, used against pain, migraine, asthma and sleeplessness.
 
 ## The countries of hashish
@@ -98,7 +107,7 @@ At the start of the twentieth century most hashish in Europe came from Kashmir a
 | [Nepal](/country/np/) | Sold it in licensed shops until [1973](/history/nepal-shops-closed-1973/) |
 | [Afghanistan](/country/af/) | A main source from the late 1960s. The king [urged farmers to grow more](/history/afghanistan-hashish-fertiliser-edicts-1969/) in 1969 and [banned it under American pressure](/history/afghanistan-ban-1973/) in 1973. Now reckoned the largest producer |
 | [Morocco](/country/ma/) | Mass production for export began only in the 1960s, with Western visitors. By the 1990s it had a near monopoly of the European market |
-| [Iran](/country/ir/), [Pakistan](/country/pk/), [India](/country/in/) | Long traditions of use under the names bang and charas |
+| [Iran](/country/ir/), [Pakistan](/country/pk/), [India](/country/in/) | Long traditions of use under the names bang and charas. Iran's [first modern penal law, of 1926](/history/iran-penal-law-1926/), punished public intoxication with bang but left the plant itself legal |
 
 The social meaning was not uniform even within Morocco. In a chapter published in 1975, Phyllis Palgi reports that Moroccan Jewish informants in Israel described avoiding hashish in Morocco as a boundary between Jewish and Muslim social life. Some adopted it after migration as older relationships changed. This was an interpretation of particular informants and marginal groups, not evidence of a universal Moroccan-Jewish smoking tradition or a measure of prevalence.
 

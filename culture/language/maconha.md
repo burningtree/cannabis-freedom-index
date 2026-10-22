@@ -7,7 +7,7 @@ spelling:
   - { text: "maconha", lang: Portuguese, say: "[mɐˈkõɲɐ]" }
 countries: [br, ao]
 featured: 10
-history: [brazil-rio-pango-ban-1830, angola-livingstone-observation-1857, brazil-federal-ban-1932, brazil-un-survey-1955, brazil-sao-luis-directive-1886, brazil-doria-paper-1915, brazil-decree-law-891-1938, brazil-planet-hemp-arrest-1997, brazil-supreme-court-2024]
+history: [brazil-rio-pango-ban-1830, angola-livingstone-observation-1857, brazil-federal-ban-1932, brazil-un-survey-1955, brazil-sao-luis-directive-1886, brazil-doria-paper-1915, brazil-decree-law-891-1938, brazil-planet-hemp-arrest-1997, brazil-supreme-court-2024, sierra-leone-cannabis-long-in-use-1851]
 history_cards: [brazil-doria-paper-1915, brazil-planet-hemp-arrest-1997]
 image:
   src: ../../src/assets/culture/marijuana-march-rio-de-janeiro-2014-may-10-brazil-marcha-maconha.jpg
@@ -75,7 +75,7 @@ Cannabis is said to have been brought by the Portuguese, perhaps for fibre. But 
 | [1866, 1886](/history/brazil-sao-luis-directive-1886/) | São Luís | Sale, public display and smoking prohibited; slaves to be punished with four days in jail |
 | 1870, 1876 | Santos, Campinas | Further municipal bans |
 
-Whether any of these were enforced is unclear. Rio's is among the earliest cannabis laws anywhere.
+Whether any of these were enforced is unclear. Rio's is among the earliest cannabis laws anywhere. Across the Atlantic the pattern was the same: in [1857](/history/angola-livingstone-observation-1857/) David Livingstone noted that in Portuguese Angola cannabis use by slaves was considered a crime, though *diamba* was sold openly at the market in Luanda.
 
 ## The revenge of the defeated
 

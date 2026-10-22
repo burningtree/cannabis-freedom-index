@@ -5,7 +5,8 @@ origin: American jazz clarinettist
 life: 1899–1972
 also: [Milton Mesirow, mezz, the Muggles King, Really the Blues, King Jazz Records, vipers]
 countries: [us, fr]
-history: [us-louis-armstrong-arrest-1930]
+history: [us-louis-armstrong-arrest-1930, us-mezzrow-arrest-1940]
+history_cards: [us-mezzrow-arrest-1940]
 related: [language/reefer, traditions/the-tea-pads-of-harlem]
 image:
   src: ../../src/assets/culture/mezz-mezzrow-1946.jpg
@@ -46,7 +47,7 @@ Armstrong was one of his biggest customers. A letter of 1932, written from Engla
 | Viper | A smoker of it |
 | Tea | Marijuana |
 
-In 1940 he was arrested with sixty joints at the entrance to a jazz club at the New York World's Fair, and charged with intent to distribute. He lived in Harlem with his wife, Johnnie Mae, called himself a "voluntary Negro", and in jail insisted he was Black. The deputy studied his face, agreed to send him to the Black block, and asked him to lead the prison band. He told the story in his memoir *Really the Blues*, written with Bernard Wolfe and published in 1946.
+In 1940 he was [arrested with sixty joints](/history/us-mezzrow-arrest-1940/) at the entrance to a jazz club at the New York World's Fair, and charged with intent to distribute. He lived in Harlem with his wife, Johnnie Mae, called himself a "voluntary Negro", and in jail insisted he was Black. The deputy studied his face, agreed to send him to the Black block, and asked him to lead the prison band. He told the story in his memoir *Really the Blues*, written with Bernard Wolfe and published in 1946.
 
 Ernest L. Abel’s history, published in 1980, shows how that reputation entered the vocabulary of the market. He records *mezzrole* or *messrole* for a well-filled cannabis cigarette and reports that *mezz* could also mean something genuine or superior. Those were social meanings attached to a supplier’s name, rather than names for a genetically defined strain.
 

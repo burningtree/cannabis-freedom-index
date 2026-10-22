@@ -34,6 +34,14 @@ sources:
     url: https://en.wikipedia.org/wiki/Leonard_Howell
   - title: "Wikipedia — Cannabis in Jamaica"
     url: https://en.wikipedia.org/wiki/Cannabis_in_Jamaica
+  - title: Criminal Code of the Federal Democratic Republic of Ethiopia, Proclamation 414/2004
+    url: https://www.wipo.int/wipolex/en/legislation/details/11359
+  - title: Wikipedia — Cannabis in Ethiopia
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Ethiopia
+  - title: The Namibian — Attempt to legalise cannabis fails in High Court (12 July 2026)
+    url: https://www.namibian.com.na/attempt-to-legalise-cannabis-fails-in-high-court/
+  - title: NOW Grenada — Marijuana decriminalisation legislation to go before Parliament (26 February 2025)
+    url: https://nowgrenada.com/2025/02/marijuana-decriminalisation-legislation-to-go-before-parliament-no-later-than-june-2025/
 ---
 
 For many Rastafari, ganja is a sacred herb used for meditation, prayer, spiritual communion and collective reasoning. Smoking it together is a religious practice, held to be commended by the Bible. For much of the movement's history, prohibition criminalised that practice. Since 2015 a number of Caribbean states have written the sacrament into their law, and one Rastafari community has refused the offer.
@@ -76,7 +84,7 @@ Rastas came to see smoking as itself a protest against the laws of "Babylon". In
 | Country | Year | What the law does |
 |---|---|---|
 | [Italy](/country/it/) | [2008](/history/italy-rastafari-ruling-2008/) | The highest court acquitted a Rastafarian caught with 97 grams, accepting that he smoked it as a meditative herb |
-| [Jamaica](/country/jm/) | [2015](/history/jamaica-ganja-reform-2015/) | Sacramental possession is protected; smoking is permitted at registered Rastafari places of worship, with cultivation and exempt events subject to authorization |
+| [Jamaica](/country/jm/) | [2015](/history/jamaica-ganja-reform-2015/) | Sacramental possession is protected; smoking is permitted at registered Rastafari places of worship, with cultivation and exempt events subject to authorization. It came fourteen years after a [national commission recommended it](/history/jamaica-ganja-commission-2001/) |
 | [Antigua and Barbuda](/country/ag/) | [2018](/history/antigua-cannabis-act-2018/) | Religious bodies, Rastafari included, may register to grow and hold more than the ordinary limits |
 | [Antigua and Barbuda](/country/ag/) | [2023](/history/antigua-rastafari-sacramental-authorizations-2023/) | Three Rastafari communities received authorizations to cultivate and use cannabis for religious purposes |
 | [Barbados](/country/bb/) | [2019](/history/barbados-medical-2019/) | Sacramental use at places of worship |
@@ -88,4 +96,4 @@ Antigua and Barbuda's legal framework came earlier than its first sacramental au
 
 Not everyone wanted this. In [Saint Vincent](/country/vc/) in 2018, Rastafari representatives [told parliament to drop its religious-use bill](/history/saint-vincent-religious-bill-dropped-2018/): the state, they said, cannot grant a right to their sacrament.
 
-Elsewhere the courts have refused. Kenya's High Court [dismissed a Rastafari petition](/history/kenya-high-court-rastafari-petition-2026/) in 2026. In [Ethiopia](/country/et/), where Rastafari settled on land the emperor gave them at [Shashamane](/history/ethiopia-shashamane-settlement-1965/), the criminal code makes no exception.
+Elsewhere the courts have refused. Kenya's High Court [dismissed a Rastafari petition](/history/kenya-high-court-rastafari-petition-2026/) in 2026. In [Ethiopia](/country/et/), where Rastafari settled on land the emperor gave them at [Shashamane](/history/ethiopia-shashamane-settlement-1965/), the [criminal code](/history/ethiopia-criminal-code-2005/) makes no exception, and the United States has [warned Rastafari travelling there](/history/ethiopia-us-warning-rastafari-2005/) that possession can mean prison. In Namibia the head of the Rastafari United Front, Brian Jaftha, [asked the High Court in 2021](/history/namibia-constitutional-challenge-2021/) to strike down the ban, arguing that it was aimed partly at the Rastafari; the court dismissed the case in 2026. In Grenada a [bill tabled in 2021](/history/grenada-bill-2021/) would have allowed Rastafari use in places of worship, but lapsed when parliament was dissolved.

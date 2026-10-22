@@ -45,6 +45,21 @@ sources:
     year: 2003
     isbn: 0-19-924938-5
     locator: A Note on Terms, pp. x–xi, quoting the Indian Hemp Drugs Commission
+  - title: Wikipedia — Cannabis in Malaysia
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Malaysia
+  - title: Wikipedia — Cannabis in Guyana
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Guyana
+  - title: TNI / GDPO — The Rise and Decline of Cannabis Prohibition (2014)
+    url: https://www.tni.org/files/download/rise_and_decline_web.pdf
+  - type: chapter
+    title: "Ganja and the Government of India: Cannabis, Excise, and Colonial Administration in the Late Nineteenth Century"
+    authors: [Peter Hynd]
+    container: "Cannabis: Global Histories"
+    editors: [Lucas Richert, James H. Mills]
+    publisher: MIT Press
+    year: 2021
+    isbn: "9780262366137"
+    locator: "pp. 46–47"
 ---
 
 Bhang is the leaf of the cannabis plant, ground to a green paste and eaten or drunk. Indian terminology distinguishes it from the flowering tops and resin; the national law also treats those materials differently.
@@ -60,6 +75,8 @@ Indian usage divides the plant in three, and the law follows the words.
 | [Charas](/culture/language/charas/) | Resin | Smoked | Banned |
 
 The [Narcotic Drugs and Psychotropic Substances Act](/history/india-ndps-act-1985/) defines cannabis as charas and ganja, and expressly leaves out "the seeds and leaves when not accompanied by the tops". The wording is copied from the [1961 Single Convention](https://en.wikipedia.org/wiki/Single_Convention_on_Narcotic_Drugs), and it is there because [India's delegates insisted on it](/history/india-bhang-exemption-1961/).
+
+The treaty did let countries keep other traditional uses of cannabis for a while, but only for 25 years. India claimed that grace period, and it [ran out in December 1989](/history/single-convention-phase-out-1989/); bhang, made from the leaves the treaty does not count, was untouched.
 
 Historical usage was less exact than the statutory distinction. Mills reproduces the 1894 commission's warning that *bhang* could name a drink made from flowering material as well as leaves. The commissioners also found regional differences, including places where *ganja* was the more general word. An old reference to bhang therefore does not establish its botanical ingredients or its status under a later law.
 
@@ -83,7 +100,7 @@ The custom is tied to Shiva. One story has the god sleeping under the plant and 
 
 The Portuguese met bhang in Goa. The physician [Garcia de Orta](https://en.wikipedia.org/wiki/Garcia_de_Orta) wrote about "bangue" in his *Colóquios* of 1563, noting that people took it to work and to eat better: "it is so generally used and by such a number of people that there is no mystery about it". The Dutch traveller Jan Huyghen van Linschoten gave it three pages in 1596.
 
-The British [taxed it from 1798](/history/india-bhang-tax-1798/) and held an inquiry a century later. The [Indian Hemp Drugs Commission](/history/india-hemp-drugs-commission-1894/) heard nearly 1,200 witnesses and found that moderate use "practically produces no ill effects".
+The British [taxed it from 1798](/history/india-bhang-tax-1798/), and wherever they ruled it went into the excise books: [taxed in Malacca from 1826](/history/malaya-bhang-tax-1826/), its sale [licensed in British Guiana in 1861](/history/guyana-licensing-1861/). Bombay's [excise law of 1878](/history/india-bombay-abkari-act-1878/) defined it, with ganja, as an intoxicating drug, and from [1913](/history/india-bombay-possession-limit-1913/) a person there could hold no more than twenty tolas. A century after the first tax they held an inquiry. The [Indian Hemp Drugs Commission](/history/india-hemp-drugs-commission-1894/) heard nearly 1,200 witnesses and found that moderate use "practically produces no ill effects".
 
 The word travelled west and south as well. In Persian it is *bang*, and [Iran's penal law of 1926](/history/iran-penal-law-1926/) punished public intoxication with it. In Swahili it became [bangi](/culture/language/bangi/), the ordinary word for cannabis in East Africa.
 
@@ -97,7 +114,7 @@ Because the national law is silent, each state decides.
 | Bihar, West Bengal | Production allowed |
 | Rajasthan | Sale allowed, of bhang brought from states where it is made |
 | Gujarat | [Taken off the list of intoxicants in 2017](/history/india-gujarat-bhang-2017/) |
-| Maharashtra | Banned without a licence under the prohibition act of 1949 |
+| Maharashtra | Banned without a licence under the [prohibition act of 1949](/history/india-state-prohibition-laws-1949/) |
 | Assam | [Banned since 1958](/history/india-assam-ganja-bhang-act-1958/), yet drunk openly at the Ambubachi Mela |
 
-In a national survey of 2019, more people reported taking bhang than smoking ganja or charas.
+In 2022 [Karnataka's High Court ruled](/history/india-karnataka-bhang-ruling-2022/) that bhang does not fall under the national narcotics act at all. In a national survey of 2019, more people reported taking bhang than smoking ganja or charas.

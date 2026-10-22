@@ -20,6 +20,8 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Denmark
   - title: Christianias Kulturforening — Visit to Ruigoord and Free Cultural Spaces symposium
     url: https://www.christiania.org/artikler/rapport-om-christianias-kulturforenings-cakfs-rejse-til-50-aars-jubilaeet-for-kunstnerbyen-ruigoord-i-holland-christianias-soesterby-samtidigt-afholdtes-det-10ende-seminar-for-f/
+  - title: Transnational Institute — Cannabis Regulation in Europe, Country Report Denmark (2019)
+    url: https://www.tni.org/files/publication-downloads/cr_denmark_02052019.pdf
 ---
 
 Pusher Street was the main street of [Freetown Christiania](https://en.wikipedia.org/wiki/Freetown_Christiania), the self-governing commune in a former army barracks in the Christianshavn district of Copenhagen. From the 1970s until 2024, hashish and marijuana were sold there openly from stalls, in a country where they were illegal. It was one of Copenhagen's best-known sights. It ended when the residents, after a series of shootings, closed it themselves.
@@ -43,6 +45,7 @@ The commune drew its own line between drugs.
 | [1979](/history/denmark-christiania-junk-blockade-1979/) | The "Junk Blockade": for 40 days residents patrolled the freetown, drove out the dealers of hard drugs and helped addicts into treatment. Cannabis stayed |
 | [1984](/history/denmark-christiania-biker-gang-1984/) | After fighting between motorcycle gangs, the Bullshit Motorcycle Club controlled the trade |
 | 1987 | After a dismembered body was found in a Bullshit shop, the gang was cleared out. Biker jackets were banned in Christiania |
+| [2003](/history/denmark-fight-against-drugs-plan-2003/) | The government's action plan *The Fight Against Drugs* ends the tolerance of small-scale possession and calls for closing the market in Christiania |
 | 2002–2004 | The government pressed to make the trade less visible. Sellers draped their stalls in military camouflage netting as a joke; after police raids in 2004 the trade returned |
 
 ![A mural in Christiania against hard drugs](../../src/assets/culture/mural-in-christiania-against-hard-drugs.jpg "A mural in Christiania against hard drugs. On the day it was photographed the town had shut down its cannabis sellers. | Smurrayinchester, CC BY-SA 4.0, via Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Mural_in_Christiania_against_hard_drugs.jpg")

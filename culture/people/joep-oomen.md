@@ -29,7 +29,7 @@ sources:
 
 Joep Oomen built a legal argument out of a single plant. Belgian law tolerated an adult growing one
 cannabis plant for personal use. "If you're allowed to grow one plant," he reasoned, "you could also
-have that plant cared for by someone else." On that idea he founded Trekt Uw Plant, "pull your
+have that plant cared for by someone else." On that idea he [founded Trekt Uw Plant](/history/belgium-trekt-uw-plant-2006/), "pull your
 plant", in Antwerp in 2006: the first [cannabis social club](/culture/traditions/cannabis-social-clubs/)
 in Belgium.
 

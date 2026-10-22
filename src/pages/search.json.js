@@ -8,10 +8,11 @@
 import { places, countries, subunitsOf, changes, articles, historyPeriods, CHANGE_CATEGORIES, CHANGE_TAGS, estimateNote } from "../lib/countries.js";
 import { MAP_VIEWS } from "../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries, cultureSection } from "../lib/culture.js";
+import { openExhibitions, exhibitionPath } from "../lib/exhibitions.js";
 import { tierOf } from "../lib/tiers.js";
 import { file } from "../lib/exports.js";
 import { getImage } from "astro:assets";
-import { PAGE_ICONS, CULTURE_SECTION_ICON, MAP_VIEW_ICON, PERIOD_ICON, TAG_ICON } from "../lib/search-icons.js";
+import { PAGE_ICONS, CULTURE_SECTION_ICON, MAP_VIEW_ICON, PERIOD_ICON, TAG_ICON, EXHIBITION_ICON } from "../lib/search-icons.js";
 
 const rows = [
   ...places.map((c) => ({ t: "c", n: c.name, s: `${c.score}/100 · ${tierOf(c.raw).name}${estimateNote(c) ? ` · ${estimateNote(c).toLowerCase()}` : ""}`, u: `country/${c.slug}/`, f: c.flag })),
@@ -23,6 +24,9 @@ const rows = [
     ["Download the data", "Scores, history and yearly panel", "data/"], ["Changelog", "Every score change", "changelog/"],
     ["Articles", "The longer reads on single events", "articles/"], ["About", "What the project is, its aims and commitments", "about/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "A cultural atlas of cannabis", "culture/"], ["Culture: People", "Officials, preachers, scientists and presidents", "culture/people/"], ["Culture: Stories", "The people behind the laws", "culture/stories/"], ["Sources", "Every source the index cites", "sources/"],
   ].map(([n, s, u]) => ({ t: "p", n, s, u, ic: PAGE_ICONS[u] })),
+  // the exhibitions: one row each, its rooms' names matched but not listed
+  { t: "p", n: "Exhibitions", s: "One episode at a time, in rooms of its own", u: "exhibitions/", ic: EXHIBITION_ICON },
+  ...openExhibitions.map((e) => ({ t: "p", n: e.title, s: `Exhibition ${e.no} · ${e.line}`, u: exhibitionPath(e), ic: EXHIBITION_ICON, g: ["exhibition", e.theme, ...(e.rooms ?? []).map((r) => r.name)].join(" ") })),
   // the cultural atlas: its parts that hold entries, then every word and tradition, findable by its other names too
   ...CULTURE_SECTIONS.filter((x) => x.entries).map((x) => ({ t: "p", n: `Culture: ${x.name}`, s: x.lede, u: `culture/${x.id}/`, ic: CULTURE_SECTION_ICON })),
   // culture entries show their picture, small, where they have one

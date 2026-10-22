@@ -97,7 +97,7 @@ they saw; they do not say how the players themselves talked about the game.
 
 Swaziland's [Opium and Habit-forming Drugs Act](/history/swaziland-habit-forming-drugs-act-1922/)
 and [South Africa's national ban](/history/south-africa-national-ban-1922/) both date from 1922.
-Officials told police to go easy on [older men's pipes](/culture/traditions/the-morning-pipe/)
+[Officials told police to go easy](/history/south-africa-enforcement-compromise-1922/) on [older men's pipes](/culture/traditions/the-morning-pipe/)
 in remote areas, but du Toit writes that the custom was nonetheless "forced underground": the old
 man with his horn pipe was "now encountered only in ethnographies". A game that needed a pipe, a reed,
 a smooth floor and an audience did not survive that. When South Africa's Constitutional Court

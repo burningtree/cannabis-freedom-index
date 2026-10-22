@@ -57,6 +57,10 @@ sources:
     year: 2003
     isbn: 0-19-924938-5
     locator: A Note on Terms, pp. x–xi, quoting the Indian Hemp Drugs Commission
+  - title: Wikipedia — Cannabis in Guyana
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Guyana
+  - title: Wikipedia — Cannabis in Suriname
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Suriname
 ---
 
 Ganja is the Hindi word for the flowering tops of the cannabis plant. It is one of the oldest names for cannabis in English, and one of the most travelled: carried west to the Caribbean by Indian labourers and east across South-East Asia, it is today the ordinary word for the plant from Kingston to Bangkok.
@@ -79,7 +83,7 @@ The system outlived the empire. Bangladesh [stopped cultivation only in 1987](/h
 
 From 1845 Britain shipped indentured Indian labourers to the sugar estates of the Caribbean. They brought the plant, the habit of smoking it and the word. In Jamaica the ganja they used was at first imported from licensed dealers in Bengal.
 
-The colonial laws took the name. Trinidad's [Ganja Ordinance of 1915](https://en.wikipedia.org/wiki/Cannabis_in_Trinidad_and_Tobago) copied the Bengal system of bonded warehouses and licensed sellers, and was replaced by a [ban in 1925](/history/trinidad-ganja-ordinance-1925/). Jamaica's first prohibition, pressed by the churches, was the [Ganja Law of 1913](/history/jamaica-ganja-law-1913/).
+The colonial laws took the name. Trinidad's [Ganja Ordinance of 1915](https://en.wikipedia.org/wiki/Cannabis_in_Trinidad_and_Tobago) copied the Bengal system of bonded warehouses and licensed sellers, and was replaced by a [ban in 1925](/history/trinidad-ganja-ordinance-1925/). Jamaica's first prohibition, pressed by the churches, was the [Ganja Law of 1913](/history/jamaica-ganja-law-1913/). British Guiana had [licensed the sale of ganja and bhang](/history/guyana-licensing-1861/) as early as 1861, before anyone there thought it a problem. In Dutch Suriname, where it was banned early in the century, the immigrants' association [asked in 1921](/history/suriname-ganja-petition-1921/) for the ban to be lifted and for a concession to import and sell it.
 
 The [Rastafari](/culture/traditions/rastafari-sacrament/), whose movement arose in Jamaica in the 1930s, made the plant a sacrament and kept the Indian word. Reggae then carried it around the world: Peter Tosh's "Legalize It" of 1976 is a song about ganja by name.
 
@@ -110,6 +114,6 @@ In these countries the word covers the whole plant, not one part of it. When Tha
 |---|---|
 | [India](/country/in/) | A legal term: the banned flowering tops |
 | [Bangladesh](/country/bd/) | The crop the state grew until 1987 and [banned in 1989](/history/bangladesh-ban-1989/) |
-| [Jamaica](/country/jm/) | The name of the 1913 law, and of the plant in the [reform of 2015](/history/jamaica-ganja-reform-2015/) |
+| [Jamaica](/country/jm/) | The name of the 1913 law, and of the plant in the [reform of 2015](/history/jamaica-ganja-reform-2015/), which came fourteen years after a [national commission recommended decriminalisation](/history/jamaica-ganja-commission-2001/) |
 | [Trinidad and Tobago](/country/tt/) | The name of the 1915 and 1925 ordinances |
 | [Thailand](/country/th/) | The everyday and official word |

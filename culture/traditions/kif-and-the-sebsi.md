@@ -40,6 +40,10 @@ sources:
     year: 1975
     isbn: "90-279-7669-4"
     locator: "pp. 185–193, especially pp. 187–190"
+  - title: TNI — The Rise and Decline of Cannabis Prohibition (2014)
+    url: https://www.tni.org/files/download/rise_and_decline_web.pdf
+  - title: United Nations — The cannabis situation in the Sherifian Empire (French Zone), E/CN.7/286/Add.11 (1956)
+    url: https://documents.un.org/api/symbol/access?s=E/CN.7/286/Add.11&l=en&t=pdf
 ---
 
 The sebsi is Morocco's cannabis pipe: a long thin stem of wood with a clay bowl no bigger than a thimble. It belongs to a way of smoking that is slow, sociable and mild, and that is older than the hashish trade for which the country is now known.
@@ -68,7 +72,7 @@ Large-scale hashish production is a later development than the herbal kif tradit
 
 ## A habit the state once sold
 
-The sebsi and its kif were legal for most of their history. [Sultan Hassan I](/history/morocco-hassan-regulations-1890/) regulated the trade in 1890 and gave certain tribes of the Rif the right to grow. From 1906 a monopoly company sold kif alongside tobacco, and continued to under the French and Spanish protectorates.
+The sebsi and its kif were legal for most of their history. [Sultan Hassan I](/history/morocco-hassan-regulations-1890/) regulated the trade in 1890 and gave certain tribes of the Rif the right to grow. From 1906 a monopoly company sold kif alongside tobacco, and continued to under the French and Spanish protectorates. A Spanish decree of [1935](/history/morocco-spanish-zone-decree-1935/) limited growing to Ketama, Beni Seddat and Beni Khaled, and the French zone pursued kif sold outside the monopoly: in [1949](/history/morocco-kif-seizures-1949/) it seized 7.6 tonnes, most of it near the Spanish border.
 
 | Zone | End of legal kif |
 |---|---|

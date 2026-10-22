@@ -80,4 +80,4 @@ The two meanings of the word have become two legal categories. Smoking *dàmá* 
 
 ## In Japan
 
-Japanese took the compound as [*taima*](https://en.wikipedia.org/wiki/Cannabis_in_Japan), and with it the plant's standing as an everyday crop. The same two characters name the paper talisman that the Ise shrine sends to households, the *Jingū taima*, which began as a purification wand (see [hemp in Shinto](/culture/traditions/hemp-in-shinto/)). Japan's [Cannabis Control Act of 1948](/history/japan-cannabis-control-act-1948/) is in Japanese the *Taima* Control Act.
+Japanese took the compound as [*taima*](https://en.wikipedia.org/wiki/Cannabis_in_Japan), and with it the plant's standing as an everyday crop. The same two characters name the paper talisman that the Ise shrine sends to households, the *Jingū taima*, which began as a purification wand (see [hemp in Shinto](/culture/traditions/hemp-in-shinto/)). Japan's [Cannabis Control Act of 1948](/history/japan-cannabis-control-act-1948/) is in Japanese the *Taima* Control Act. It put growing under licence, yet in [1950](/history/japan-hemp-farms-1950/) some 25,000 farms still raised hemp; by 2016 there were 37.

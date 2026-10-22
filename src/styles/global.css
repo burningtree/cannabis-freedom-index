@@ -2736,6 +2736,7 @@ a.ch-law-cell:hover i, a.ch-law-cell:focus-visible i { transform: scale(1.08); b
 .ch-corr li a, .ch-corr-axis { display: grid; grid-template-columns: 280px minmax(0, 1fr) 64px; gap: 14px; align-items: center; padding: 7px 0; color: var(--text); }
 .ch-corr li a:hover { background: color-mix(in srgb, var(--text) 5%, transparent); }
 .ch-corr-track { position: relative; height: 16px; }
+.ch-corr .ch-bar-name { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.3; }
 .ch-corr .ch-bar-name small { margin-left: 4px; font: 400 10.5px var(--mono); color: var(--muted); }
 .ch-corr-zero { position: absolute; left: 50%; top: -6px; bottom: -6px; width: 1px; background: var(--text-2); }
 .ch-corr-bar { position: absolute; top: 0; bottom: 0; border-radius: 3px; background: var(--c); }
@@ -2829,7 +2830,7 @@ a.ch-db-track:hover { background: color-mix(in srgb, var(--text) 6%, transparent
   .ch-party-row { grid-template-columns: 96px minmax(0, 1fr); }
   .ch-party-name { font-size: 11.5px; }
   .ch-corr li a, .ch-corr-axis { grid-template-columns: 120px minmax(0, 1fr) 46px; gap: 8px; }
-  .ch-corr .ch-bar-name { white-space: normal; font-size: 11.5px; }
+  .ch-corr .ch-bar-name { font-size: 11.5px; }
   .ch-faith { --lane: 5px; }
   .ch-wiki { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ch-tile-grid { gap: 1px; }
@@ -2952,3 +2953,23 @@ a.ch-db-track:hover { background: color-mix(in srgb, var(--text) 6%, transparent
 .cmp-diff.less { --c: var(--t2); }
 .cmp-diff.same { --c: var(--muted); }
 .cmp-ref { margin-left: 8px; padding: 2px 7px; border: 1px dashed var(--border); border-radius: 999px; vertical-align: middle; font: 400 11px var(--mono); color: var(--muted); white-space: nowrap; }
+/* a history entry that belongs to an exhibition: a door to it */
+/* the banner on a history entry that is part of an exhibition */
+.ev-exhibit { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; margin: 0 0 28px; padding: 22px clamp(18px, 3vw, 32px); min-height: 120px; border-radius: 4px; overflow: hidden; color: #efe6d2; text-decoration: none; background: #0b0a08; isolation: isolate; }
+.ev-exhibit::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, #0b0a08 46%, rgba(11, 10, 8, .6) 72%, rgba(11, 10, 8, .25)), var(--cover, none) right 30% / 55% auto no-repeat, radial-gradient(ellipse at 85% 140%, rgba(179, 38, 30, .65), transparent 60%); filter: sepia(.35); transition: transform .4s; }
+.ev-exhibit:hover::before { transform: scale(1.03); }
+.ev-exhibit::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(179, 38, 30, .35), transparent 45%); }
+.ev-exhibit-text { display: grid; gap: 4px; }
+.ev-exhibit small { font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .1em; color: #b9a477; }
+.ev-exhibit b { font: 400 clamp(30px, 4.4vw, 48px)/1 "Limelight", var(--display); text-shadow: 0 0 18px rgba(224, 90, 79, .45); }
+.ev-exhibit-text > span { font: italic 400 17px var(--display); color: #e05a4f; }
+.ev-exhibit-go { flex: none; padding: 9px 16px; border: 1px solid #efe6d2; border-radius: 2px; font: 400 12px var(--mono); text-transform: uppercase; letter-spacing: .1em; background: rgba(11, 10, 8, .6); transition: background .15s, border-color .15s; }
+.ev-exhibit:hover .ev-exhibit-go { background: #b3261e; border-color: #b3261e; }
+@media (max-width: 640px) { .ev-exhibit::before { background: linear-gradient(90deg, rgba(11, 10, 8, .92), rgba(11, 10, 8, .7)), var(--cover, none) center / cover no-repeat; } }
+/* the culture hub: the open exhibitions, each a dark door */
+.cu-exhibit { display: grid; gap: 6px; padding: 28px 26px; border-radius: 4px; background: #0b0a08; color: #efe6d2; background-image: radial-gradient(ellipse at 85% 130%, rgba(179, 38, 30, .55), transparent 60%); }
+.cu-exhibit small { font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .1em; color: #b9a477; }
+.cu-exhibit b { font: 400 clamp(34px, 5vw, 56px)/1 "Limelight", var(--display); font-weight: 400; }
+.cu-exhibit-line { font: italic 400 20px var(--display); color: #e05a4f; }
+.cu-exhibit-about { max-width: 62ch; font-size: 14.5px; line-height: 1.5; color: #d8ccb0; }
+.cu-exhibit-go { font: 500 13px var(--mono); color: #e05a4f; }

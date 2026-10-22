@@ -36,3 +36,5 @@ Profile now uses primary legal clauses for possession, cultivation, supply, cons
 ## Verification
 
 The batch verifier checks allowed categories/tags, dates, related IDs, citations, five article lengths and four-section structure, unchanged unrelated history, all existing before vectors/current scores, current status values and the separate UNODC seizure block. Generated-page verification and temporary-build cleanup are recorded below after completion.
+
+Source verification passed, and `node scripts/data-status.cjs chain gt` reported **zero flagged steps**. `npm run build -- --outDir tmp/history-guatemala-gap-2026-10-22/site` succeeded: **3,564 pages in 26.92 seconds**. The generated verifier passed for Guatemala's timeline and history export, tag pages, all five articles, citations, section headings, internal links, statutory penalties and conditional proposal wording. Scoped `git diff HEAD --check` passed. The temporary `site` build was deleted after verification; audits found no remaining temporary site/build directories or generated `history/index.html` files under `tmp`. Research files and build log are retained.

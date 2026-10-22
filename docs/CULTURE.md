@@ -229,6 +229,10 @@ The site turns that into a figure with the caption and credit underneath. Rules:
 - `history` lists the entries the text mentions or relies on, including legal background. These
   appear in the atlas entry's history list. If the text names a law that has no history entry,
   add the entry to `changes.yaml` first.
+- Every id in `history` must be mentioned and linked in the text (`/history/<id>/`), and every
+  history entry the text links to must be in `history`. The build fails otherwise. When a new
+  history entry concerns a person, word or tradition that has an atlas entry, add it to that
+  entry's `history` (and `history_cards` if it is about them) and write it into the text with a link.
 - `history_cards` selects which of those events should show this entry under **In the cultural
   atlas** on the history page. Use it only when the event is specifically about the word,
   preparation, community, place or institution. Each selected id must also be in `history`.

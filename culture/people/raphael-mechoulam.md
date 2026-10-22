@@ -25,7 +25,7 @@ sources:
     url: https://www.newsweek.com/2015/12/25/outsourcing-american-marijuana-research-406184.html
 ---
 
-Raphael Mechoulam was the chemist who found out what in cannabis acts on the mind. In 1964, with Yehiel Gaoni, he isolated tetrahydrocannabinol, THC, and determined its structure. Morphine had been isolated from opium and cocaine from coca in the nineteenth century; cannabis, the most widely used illegal drug of all, had kept its active principle hidden until then.
+Raphael Mechoulam was the chemist who found out what in cannabis acts on the mind. In 1964, with Yehiel Gaoni, he [isolated tetrahydrocannabinol, THC,](/history/israel-mechoulam-thc-1964/) and determined its structure. Morphine had been isolated from opium and cocaine from coca in the nineteenth century; cannabis, the most widely used illegal drug of all, had kept its active principle hidden until then.
 
 Born in Sofia in 1930 into a Sephardic Jewish family, he survived the war in Bulgaria, where his father, a doctor, was sent to a concentration camp, and moved with his family to Israel in 1949. He studied chemistry in Jerusalem and took his doctorate at the Weizmann Institute in Rehovot, where he began work on cannabis in 1963.
 

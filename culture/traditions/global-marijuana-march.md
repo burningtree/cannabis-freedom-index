@@ -19,7 +19,7 @@ sources:
     url: https://en.wikipedia.org/wiki/Global_Marijuana_March
 ---
 
-On the first Saturday of May, people in hundreds of cities march for the legalisation of cannabis. The Global Marijuana March began in 1999 and has been held in more than a thousand cities in 85 countries and territories. In some of them the march is a festival. In others the right to hold it at all has had to be won in court.
+On the first Saturday of May, people in hundreds of cities march for the legalisation of cannabis. The Global Marijuana March [began in 1999](/history/global-marijuana-march-1999/) and has been held in more than a thousand cities in 85 countries and territories. In some of them the march is a festival. In others the right to hold it at all has had to be won in court.
 
 ## One day, many names
 

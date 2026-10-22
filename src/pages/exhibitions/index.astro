@@ -1,0 +1,61 @@
+---
+// Exhibitions: the lobby. Each exhibition is a page of its own with its own look; this
+// page only shows the doors, the open ones first.
+import Base from "../../layouts/Base.astro";
+import { EXHIBITIONS, exhibitionPath } from "../../lib/exhibitions.js";
+import "@fontsource/limelight";
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Exhibitions" description="Exhibitions: self-contained experiences, each about one strange episode in humanity's relationship with cannabis. The first is Reefer Madness, the invention of a monster.">
+  <main class="exh-lobby">
+    <header class="exh-lobby-head">
+      <p class="exh-kicker">Exhibitions <span>· also in <a href={`${base}culture/`}>Culture</a></span></p>
+      <h1>Why and how it happened</h1>
+      <p class="exh-lede">The map shows what is happening, the charts what patterns exist, the rest of the culture atlas what people made and said. Each exhibition takes one episode and asks why and how, in a form of its own. Every room keeps primary evidence, documented connections and interpretation apart.</p>
+    </header>
+    <ol class="exh-doors">
+      {EXHIBITIONS.map((e) => (
+        <li class:list={["exh-door", { open: e.open }]}>
+          {e.open ? (
+            <a href={`${base}${exhibitionPath(e)}`}>
+              <span class="exh-no">Exhibition {e.no} · {e.theme}</span>
+              <span class="exh-title">{e.title}</span>
+              <span class="exh-line">{e.line}</span>
+              <span class="exh-about">{e.about}</span>
+              <span class="exh-enter">Enter the exhibition →</span>
+            </a>
+          ) : (
+            <div>
+              <span class="exh-no">Exhibition {e.no} · {e.theme}</span>
+              <span class="exh-title">{e.title}</span>
+              <span class="exh-line">{e.line}</span>
+              <span class="exh-about">{e.about}</span>
+              <span class="exh-soon">In preparation</span>
+            </div>
+          )}
+        </li>
+      ))}
+    </ol>
+  </main>
+</Base>
+
+<style>
+  .exh-lobby { max-width: 1180px; margin: 0 auto; padding: 56px 24px 96px; }
+  .exh-kicker a { color: inherit; }
+  .exh-kicker { margin: 0; font: 400 12px var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  .exh-lobby-head h1 { margin: 10px 0 0; font: 400 clamp(44px, 7vw, 96px)/.95 var(--display); letter-spacing: -.03em; }
+  .exh-lede { max-width: 62ch; margin: 18px 0 0; font-size: 17px; line-height: 1.55; color: var(--text-2); }
+  .exh-doors { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; margin: 56px 0 0; padding: 0; list-style: none; }
+  .exh-door > a, .exh-door > div { display: flex; flex-direction: column; gap: 10px; height: 100%; min-height: 300px; padding: 26px 24px; border: 1px solid var(--border); border-radius: 4px; color: var(--text); box-sizing: border-box; }
+  .exh-door.open > a { background: #0b0a08; color: #efe6d2; border-color: #0b0a08; position: relative; overflow: hidden; transition: transform .2s; }
+  .exh-door.open > a::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 120%, rgba(179, 38, 30, .45), transparent 60%); pointer-events: none; }
+  .exh-door.open > a:hover { transform: translateY(-3px); }
+  .exh-door.open .exh-title { font-family: "Limelight", var(--display); letter-spacing: .02em; color: #e8d9b0; }
+  .exh-no { font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .1em; opacity: .7; }
+  .exh-title { font: 400 34px/1.05 var(--display); }
+  .exh-line { font: italic 400 19px var(--display); opacity: .85; }
+  .exh-about { margin-top: auto; font-size: 14px; line-height: 1.5; opacity: .8; }
+  .exh-enter { font: 500 13px var(--mono); color: #e05a4f; position: relative; z-index: 1; }
+  .exh-door:not(.open) > div { color: var(--text-2); border-style: dashed; }
+  .exh-soon { font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+</style>

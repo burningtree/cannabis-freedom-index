@@ -1,0 +1,1367 @@
+---
+// Exhibition 001 · Reefer Madness. An entrance with the original trailer and a programme that
+// introduces the subject, then seven rooms, each in its own form: a newspaper front page whose headlines open into case files with a verdict (the
+// claims), an investigation board (the machinery), a wall of lobby cards (the exploitation cycle),
+// a court docket (the defendants), a stack of telegrams (the export), a film strip (the afterlife)
+// and an archive of index cards (the evidence room). Everything rests on the site's sourced history entries and the sources
+// listed with each item; every item says whether it is primary evidence, a documented connection
+// or an interpretation, and disputed points are marked as disputed.
+import Base from "../layouts/Base.astro";
+import { Image } from "astro:assets";
+import { EXHIBITIONS } from "../lib/exhibitions.js";
+import "@fontsource/limelight";
+import "@fontsource/special-elite";
+import "@fontsource/old-standard-tt/400.css";
+import "@fontsource/old-standard-tt/700.css";
+import "@fontsource/old-standard-tt/400-italic.css";
+import poster from "../assets/culture/reefer-madness-1936.jpg";
+import magazine from "../assets/culture/assassin-of-youth-1937.jpg";
+import anslingerPhoto from "../assets/culture/harry-anslinger-1938.jpg";
+import taxStamp from "../assets/culture/marihuana-tax-stamp-1937.jpg";
+import locoedWeed from "../assets/exhibitions/reefer-madness/machinery/locoed-weed-1915.jpg";
+import killerDrug from "../assets/exhibitions/reefer-madness/machinery/killer-drug-poster.jpg";
+import fbnBadge from "../assets/exhibitions/reefer-madness/machinery/fbn-badge-1930.png";
+import oliphantPhoto from "../assets/exhibitions/reefer-madness/machinery/oliphant-1937.jpg";
+
+const base = import.meta.env.BASE_URL;
+const h = (id) => `${base}history/${id}/`;
+// a page of the cultural atlas, e.g. c("people/harry-anslinger")
+const c = (path) => `${base}culture/${path}/`;
+
+// where the claims and connections come from
+const SRC = {
+  afi: ["American Film Institute Catalog — Tell Your Children", "https://catalog.afi.com/Catalog/moviedetails/7885"],
+  wiki: ["Wikipedia — Reefer Madness", "https://en.wikipedia.org/wiki/Reefer_Madness"],
+  archive: ["Internet Archive — Reefer Madness (1938), the film", "https://archive.org/details/reefer_madness1938"],
+  loc: ["Library of Congress — Marihuana, Topics in Chronicling America", "https://guides.loc.gov/chronicling-america-marihuana"],
+  licata: ["Wikipedia — Victor Licata", "https://en.wikipedia.org/wiki/Victor_Licata"],
+  fee: ["FEE — How an axe murderer helped make weed illegal", "https://fee.org/articles/how-an-axe-murderer-helped-make-weed-illegal/"],
+  assassin: ["Marijuana, Assassin of Youth — transcription of the July 1937 article", "https://www.cannabis-marijuana.com/assassin-of-youth.html"],
+  hashmuseum: ["Hash Marihuana & Hemp Museum — Reefer Madness collection", "https://hashmuseum.com/en/collection/reefer-madness/"],
+  stanford: ["Stanford Research into the Impact of Tobacco Advertising — Reefer Madness", "https://tobacco.stanford.edu/marijuanas/reefer-madness/"],
+  taxact: ["Wikipedia — Marihuana Tax Act of 1937", "https://en.wikipedia.org/wiki/Marihuana_Tax_Act_of_1937"],
+  laguardia: ["Wikipedia — LaGuardia Committee report", "https://en.wikipedia.org/wiki/LaGuardia_Committee_report"],
+  nyam: ["New York Academy of Medicine — Mayor LaGuardia commissions the Academy's report", "https://nyam.org/175th/175th-timeline/mayor-laguardia-commissions-academy-report-marijuana-usage"],
+  shafer: ["Wikipedia — Shafer Commission", "https://en.wikipedia.org/wiki/Shafer_Commission"],
+  avclub: ["The A.V. Club — An oral history of Reefer Madness: The Movie Musical", "https://www.avclub.com/reefer-madness-the-movie-musical-oral-history"],
+  roadToRuin: ["Wikipedia — The Road to Ruin (1934 film)", "https://en.wikipedia.org/wiki/The_Road_to_Ruin_(1934_film)"],
+  devilsHarvest: ["American Film Institute Catalog — Devil's Harvest (1942)", "https://catalog.afi.com/Film/27604-DEVIL'S-HARVEST"],
+  stroupFind: ["Hazlitt — Is Reefer Madness for real?", "https://hazlitt.net/node/848471"],
+  schlosser: ["Salon — review of Eric Schlosser's Reefer Madness (2003)", "https://www.salon.com/2003/05/15/reefer/"],
+  colorized: ["Film Threat — Reefer Madness: Special Addiction (DVD)", "https://filmthreat.com/uncategorized/reefer-madness-special-addiction-dvd/"],
+  ngram: ["Google Books Ngram Viewer — “reefer madness”, English, 1960–2022", "https://books.google.com/ngrams/graph?content=reefer+madness&year_start=1960&year_end=2022&corpus=en&smoothing=0&case_insensitive=true"],
+  schaefer: ["Eric Schaefer — “Bold! Daring! Shocking! True!”: A History of Exploitation Films, 1919–1959 (1999)", "https://books.google.com/books?id=CSBZqe0zPaMC"],
+  conviction: ["Richard Bonnie and Charles Whitebread — The Marijuana Conviction (1974)", ""],
+  marihuanaFilm: ["Wikipedia — Marihuana (1936 film)", "https://en.wikipedia.org/wiki/Marihuana_(1936_film)"],
+  shoulda: ["Wikipedia — She Shoulda Said No!", "https://en.wikipedia.org/wiki/She_Shoulda_Said_No!"],
+  bigsteal: ["American Film Institute Catalog — The Big Steal (1949), on Mitchum's sentence", "https://catalog.afi.com/Catalog/moviedetails/25852"],
+  code: ["Britannica — Motion Picture Production Code", "https://www.britannica.com/topic/Motion-Picture-Production-Code"],
+  caldwell: ["Wikipedia — Samuel R. Caldwell", "https://en.wikipedia.org/wiki/Samuel_R._Caldwell"],
+  mezzrow: ["Wikipedia — Mezz Mezzrow", "https://en.wikipedia.org/wiki/Mezz_Mezzrow"],
+  krupa: ["Wikipedia — Gene Krupa", "https://en.wikipedia.org/wiki/Gene_Krupa"],
+  boggs: ["Wikipedia — Boggs Act", "https://en.wikipedia.org/wiki/Boggs_Act"],
+  leary: ["Wikipedia — Leary v. United States", "https://en.wikipedia.org/wiki/Leary_v._United_States"],
+  salazar: ["Wikipedia — Leopoldo Salazar Viniegra", "https://en.wikipedia.org/wiki/Leopoldo_Salazar_Viniegra"],
+  campos: ["Isaac Campos — Reefer Madness Past and Present: Dr. Leopoldo Salazar Viniegra, Mexico, and the United States (2021)", ""],
+  ama: ["Wikipedia — Marihuana Tax Act of 1937, on the AMA's opposition", "https://en.wikipedia.org/wiki/Marihuana_Tax_Act_of_1937"],
+  ihdc: ["Wikipedia — Indian Hemp Drugs Commission", "https://en.wikipedia.org/wiki/Indian_Hemp_Drugs_Commission"],
+  legal: ["Wikipedia — Legal history of cannabis in the United States", "https://en.wikipedia.org/wiki/Legal_history_of_cannabis_in_the_United_States"],
+  siler: ["J. F. Siler and others — Mariajuana Smoking in Panama, The Military Surgeon (1933)", "https://www.druglibrary.net/schaffer/Library/studies/panama/panama1.htm"],
+  panama: ["Wikipedia — Cannabis in Panama", "https://en.wikipedia.org/wiki/Cannabis_in_Panama"],
+  uniform: ["Wikipedia — Uniform State Narcotic Drug Act", "https://en.wikipedia.org/wiki/Uniform_State_Narcotic_Drug_Act"],
+  league: ["Squaring a Circle: Cannabis and the Dubious Legacy of the League of Nations", ""],
+};
+
+// Room I: the claims. status: primary (the claim as made), documented (what the record shows), interpretation
+const CLAIMS = [
+  {
+    id: "murder", verdict: "Contradicted", head: "WEED OF MADNESS DRIVES YOUTH TO AXE MURDER", deck: "Commissioner cites Tampa slaughter",
+    who: "Harry J. Anslinger, commissioner of the Federal Bureau of Narcotics, in the 1937 hearings and in “Marijuana, Assassin of Youth”.",
+    where: "Newspapers, The American Magazine (July 1937), testimony to Congress.",
+    offered: "Anecdotes. Chief among them Victor Licata, who killed his family with an axe in Ybor City, Tampa, in October 1933, presented as a sane young man undone by marijuana.",
+    later: "Licata had been diagnosed with dementia praecox, an old name for schizophrenia; marijuana appears nowhere in his psychiatric reports and was not considered a factor in the killings. The LaGuardia committee in 1944 found marijuana was not a cause of serious crime in New York.",
+    links: [["us-licata-murders-1933", "The Licata case"], ["us-assassin-of-youth-1937", "Assassin of Youth"], ["us-la-guardia-report-1944", "The LaGuardia report"]],
+    src: ["licata", "fee", "assassin", "laguardia"],
+  },
+  {
+    id: "madness", verdict: "Unsupported", head: "ONE CIGARETTE: INSANITY", deck: "Film warns parents of the reefer's grip on the mind",
+    who: "The film Tell Your Children (1936–38), later Reefer Madness; Mexican and American newspapers before it.",
+    where: "Cinemas and exploitation circuits; the American press from the 1890s.",
+    offered: "A melodrama: a principal tells parents the story of young people driven by a few cigarettes to hit-and-run, murder and an asylum.",
+    later: "In 1951 Harris Isbell, research director of the federal hospital at Lexington, told Congress that marijuana smokers were usually mildly intoxicated, bothered no one and developed no dependence. A dramatic plot is not evidence that its sequence of events follows from using cannabis.",
+    links: [["us-reefer-madness-1938", "Reefer Madness"], ["us-isbell-testimony-1951", "Isbell's testimony"]],
+    src: ["afi", "wiki", "conviction"],
+  },
+  {
+    id: "foreign", verdict: "Prejudice, not evidence", head: "DANGEROUS MEXICAN WEED", deck: "Border city bans the drug",
+    who: "American newspapers, from the 1890s; the city of El Paso in 1915.",
+    where: "Local and regional papers digitised in the Library of Congress's Chronicling America; city councils in the Southwest.",
+    offered: "Stories of people running amok after smoking, framed around Mexican migrants; El Paso's ordinance drew on Mexican beliefs that the drug caused madness and violence.",
+    later: "The Library of Congress itself describes this coverage as tied to anti-Mexican propaganda and warns that many of the articles contain slurs. The claim tells us about prejudice more than about the plant.",
+    links: [["us-locoed-weed-headline-1915", "The 1915 headline"], ["us-el-paso-ban-1915", "El Paso, 1915"]],
+    src: ["loc"],
+  },
+  {
+    id: "gateway", verdict: "Contradicted, and once rejected by its own author", head: "FIRST REEFER, THEN HEROIN", deck: "The stepping-stone theory",
+    who: "Harry J. Anslinger, from 1951.",
+    where: "Congressional hearings; the case for punishing marijuana like heroin.",
+    offered: "Anslinger's claim that over half of young heroin addicts had started on marijuana.",
+    later: "In 1937 Anslinger himself had rejected the stepping-stone claim. The LaGuardia committee found in 1944 that marijuana did not lead to morphine, heroin or cocaine addiction.",
+    links: [["us-isbell-testimony-1951", "The 1951 turn"], ["us-la-guardia-report-1944", "The LaGuardia report"]],
+    src: ["conviction", "laguardia"],
+  },
+  {
+    id: "menace", verdict: "Contradicted", head: "ASSASSIN OF YOUTH STALKS THE SCHOOLS", deck: "Parents told: tell your children",
+    who: "The film's frame story; Anslinger's 1937 article and its illustrations of young people.",
+    where: "Cinemas, The American Magazine, newspapers.",
+    offered: "Stories of schoolchildren lured by dealers, without figures for how many young people used the drug.",
+    later: "The LaGuardia committee found marijuana was not widely used by schoolchildren and was not tied to juvenile delinquency in New York. In April 1938 Anslinger told his New York supervisor that press reports had become almost hysterical and that the bureau would discourage undue emphasis on the drug.",
+    links: [["us-fbn-plays-down-marijuana-1938", "The bureau plays it down"]],
+    src: ["laguardia", "nyam", "conviction"],
+  },
+  {
+    id: "research", verdict: "No evidence offered", head: "FACTS, NOT FICTION, SAYS FILM", deck: "Producers claim research behind the story",
+    who: "The film's own foreword.",
+    where: "The opening of every print.",
+    offered: "A foreword assuring the audience that its scenes rest on research into marijuana addiction.",
+    later: "The film names no study. Its claim to research is part of its rhetoric: it borrows the authority of science for an invented plot.",
+    links: [["us-reefer-madness-1938", "Reefer Madness"]],
+    src: ["afi"],
+  },
+  {
+    id: "doctors", verdict: "False", head: "DOCTORS BACK THE BAN", deck: "Medicine said to stand behind the tax bill",
+    who: "A member of the Ways and Means Committee, answering a question on the House floor in June 1937.",
+    where: "The short House debate before the bill passed without a recorded vote.",
+    offered: "Asked whether the American Medical Association supported the bill, the member said that it did, naming one of its doctors.",
+    later: "The association had sent its legislative counsel, Dr William C. Woodward, to the committee hearings in May to oppose the bill. He said no evidence had been produced from prisons or from the Children's Bureau to back the bureau's claims, and that a prohibitive tax would shut out medical uses still worth study.",
+    links: [["us-ama-woodward-testimony-1937", "Woodward's testimony"], ["us-house-passes-tax-bill-1937", "The House vote"], ["us-marihuana-tax-act-1937", "The Tax Act"]],
+    src: ["ama", "conviction"],
+  },
+  {
+    id: "new", verdict: "An old medicine, and evidence ignored", head: "A NEW DRUG MENACE", deck: "Little-known weed spreads across the country",
+    who: "The Federal Bureau of Narcotics and the press, through the 1930s.",
+    where: "Newspapers, magazines and the 1937 hearings, where marihuana was presented as something strange and recent.",
+    offered: "The unfamiliar name: marihuana, a Mexican word, rather than the cannabis and hemp Americans already knew.",
+    later: "Cannabis extracts had been listed in the US Pharmacopeia as a medicine since 1850 and stayed there until 1942. In 1894 the Indian Hemp Drugs Commission had heard nearly 1,200 witnesses and concluded that moderate use did practically no harm; the American campaign did not engage with it.",
+    links: [["us-pharmacopeia-1942", "Dropped from the Pharmacopeia"], ["india-hemp-drugs-commission-1894", "The Indian commission"]],
+    src: ["legal", "ihdc"],
+  },
+  {
+    id: "soldiers", verdict: "Contradicted by the army's own inquiry", head: "WEED MENACES OUR SOLDIERS", deck: "Canal Zone troops found smoking",
+    who: "Military authorities and courts in the Panama Canal Zone, in the 1920s.",
+    where: "Court cases and orders in the Zone, which banned possession in 1923.",
+    offered: "Arrests of soldiers and sailors, and the fear that the drug would ruin discipline.",
+    later: "A Canal Zone committee studied the drug in 1926 and found only minor effects. A second army committee, reporting in The Military Surgeon in 1933 after observing 34 soldiers, recommended no further legislation against sale or use in the Zone.",
+    links: [["panama-canal-zone-committee-1926", "The 1926 committee"], ["us-siler-report-1933", "The Siler report"]],
+    src: ["panama", "siler"],
+  },
+  {
+    id: "narcotic", verdict: "A legal label, not a finding", head: "REEFER IS A NARCOTIC, LIKE OPIUM", deck: "Model law lists the weed with morphine",
+    who: "The Uniform State Narcotic Drug Act, adopted in 1932, and the states that added cannabis to it.",
+    where: "State legislatures, campaigned for by the Federal Bureau of Narcotics with the Hearst newspapers.",
+    offered: "A definition. A state could put cannabis under the narcotics law simply by adding it to the list of narcotic drugs.",
+    later: "The word put cannabis beside opium and morphine in law, with their penalties, but cannabis is not an opiate. The LaGuardia committee found in 1944 that marijuana did not cause addiction in the medical sense of the word.",
+    links: [["us-uniform-state-narcotic-act-1932", "The model law"], ["us-la-guardia-report-1944", "The LaGuardia report"]],
+    src: ["uniform", "laguardia"],
+  },
+];
+
+// Room II: the machinery, as a chain read from top to bottom. who: which part of the machine acted;
+// link: how this step led to the next one, as the record documents it
+const WHO = {
+  press: ["The press", "#d9a441"],
+  bureau: ["The bureau", "#e05a4f"],
+  law: ["Lawmakers", "#8fb3d9"],
+  screen: ["Page and screen", "#c58fd9"],
+};
+const CHAIN = [
+  { pic: { src: locoedWeed, alt: "Newspaper headline: Is the Mexican nation locoed by a peculiar weed?", cap: "A US newspaper, 25 September 1915", credit: "Library of Congress, Chronicling America", href: h("us-locoed-weed-headline-1915"), wide: true },
+    who: "press", when: "1890s–1915", title: "Border newspapers", text: "American papers print stories of a Mexican weed that makes men run amok, many of them openly racist.", href: h("us-locoed-weed-headline-1915"),
+    link: "The fear becomes local law" },
+  { who: "law", when: "1915", title: "El Paso bans the drug", text: "The first American ban to draw on the belief that marijuana causes madness and violence. Western states follow over the next twenty years.", href: h("us-el-paso-ban-1915"),
+    link: "The states act first; then Washington gets an agency" },
+  { pic: { src: fbnBadge, alt: "The first badge of the Federal Bureau of Narcotics", cap: "The bureau's first badge, 1930", credit: "Wikimedia Commons, public domain", href: "https://commons.wikimedia.org/wiki/File:First_Official_Badge_of_the_Federal_Bureau_of_Narcotics.png", round: true },
+    who: "bureau", when: "1930", title: "The Federal Bureau of Narcotics", text: "Harry J. Anslinger becomes its first commissioner. From 1931 he tells the press that criminals use the drug for courage, and from 1934 he treats it as a serious threat.", href: h("us-federal-bureau-of-narcotics-1930"),
+    link: "He collects cases from newspapers and local officials" },
+  { pic: { src: killerDrug, alt: "Poster: Beware! It contains the killer drug marihuana, in which lurks murder, insanity, death", cap: "“Murder! Insanity! Death!”: a 1930s poster of the Inter-State Narcotic Association, Chicago", credit: "Wikimedia Commons, public domain", href: "https://commons.wikimedia.org/wiki/File:Killerdrug.jpg", wide: true },
+    who: "press", when: "1933, used from 1937", title: "The Licata case", text: "In Tampa, Victor Licata kills his family with an axe. A Florida official's letter brings the story to Anslinger; marijuana is not in Licata's psychiatric record.", href: h("us-licata-murders-1933"),
+    link: "Cases like this become the evidence for a federal law" },
+  { pic: { src: oliphantPhoto, alt: "Two men in suits talking in an office", cap: "Herman Oliphant (left), the Treasury's general counsel, in 1937", credit: "Harris & Ewing, Library of Congress", href: "https://commons.wikimedia.org/wiki/File:Treasury_tax_study_to_be_ready_by_November._Washington,_D.C.,_Sept._21._Following_a_conference_with_Herman_Oliphant,_(left)_General_Counsel_for_the_U.S._Treasury_and_also_its_tax_expert,_LCCN2016872371.jpg" },
+    who: "law", when: "April 1937", title: "The Treasury's bill", text: "H.R. 6385, drafted by the Treasury's general counsel Herman Oliphant, taxes every sale so heavily that legal supply becomes impractical.", href: h("us-tax-bill-introduced-1937"),
+    link: "The bill goes to a committee hearing" },
+  { pic: { src: anslingerPhoto, alt: "Harry Anslinger looking down at papers", cap: "Harry J. Anslinger in Washington, March 1938", credit: "Library of Congress", href: c("people/harry-anslinger") },
+    who: "law", when: "April–May 1937", title: "The hearings", text: "Anslinger's evidence is largely newspaper clippings and anecdotes. The American Medical Association's counsel, William Woodward, is the only witness against the bill.", href: h("us-tax-bill-introduced-1937"),
+    link: "Anslinger takes the same cases to the public" },
+  { pic: { src: magazine, alt: "The American Magazine page of Marijuana, Assassin of Youth", cap: "The American Magazine, July 1937", credit: "", href: h("us-assassin-of-youth-1937") },
+    who: "screen", when: "July 1937", title: "“Marijuana, Assassin of Youth”", text: "Anslinger's article in The American Magazine, with Licata as its centrepiece, reaches millions of readers.", href: h("us-assassin-of-youth-1937"),
+    link: "Congress passes the bill with little debate" },
+  { pic: { src: taxStamp, alt: "A one-dollar Marihuana Tax Act revenue stamp", cap: "A one-dollar marihuana tax stamp, 1937", credit: "", href: h("us-marihuana-tax-act-1937"), round: false },
+    who: "law", when: "1 October 1937", title: "The Marihuana Tax Act", text: "Federal law takes effect. The first arrests come within days.", href: h("us-marihuana-tax-act-1937"),
+    link: "On screen, the warnings arrive after the law" },
+  { pic: { src: poster, alt: "Reefer Madness poster", cap: "A Reefer Madness poster", credit: "", href: h("us-reefer-madness-1938") },
+    who: "screen", when: "1936–38", title: "Tell Your Children, later Reefer Madness", text: "A melodrama of ruined youth, reissued by the exploitation producer Dwain Esper. It spread the fear further, but it came too late to make the law.", href: h("us-reefer-madness-1938") },
+];
+// stories told about the machine that the record does not support
+const RUMOURS = [
+  { title: "Hearst fought cannabis to save his paper business", text: "William Randolph Hearst's papers did run lurid stories. The popular claim that he wanted to protect his timber and paper interests from hemp has no document behind it in the sources here.", href: "https://en.wikipedia.org/wiki/Marihuana_Tax_Act_of_1937" },
+  { title: "A church group paid for the film", text: "Often repeated as the film's origin, as a warning to parents. No source consulted here confirms who financed it.", href: "https://en.wikipedia.org/wiki/Reefer_Madness" },
+  { title: "The film made the law", text: "The film reached cinemas around and after the Tax Act. The act has its own documented history: the bureau, the Treasury and the hearings.", href: h("us-marihuana-tax-act-1937"), internal: true },
+];
+
+// Room VII: the afterlife. How often "reefer madness" appears in English books, per billion words,
+// 1960–2022, from Google Books Ngram (case-insensitive, unsmoothed; read on 22 October 2026)
+const PHRASE = { from: 1960, values: [0.00, 0.07, 0.00, 0.00, 0.00, 0.39, 0.00, 0.00, 0.00, 0.20, 0.46, 2.41, 8.07, 7.96, 5.64, 4.75, 6.01, 5.20, 7.67, 10.09, 7.78, 4.77, 6.44, 9.26, 7.40, 9.98, 9.69, 10.71, 8.49, 8.24, 12.52, 7.12, 8.51, 9.77, 9.13, 10.87, 13.85, 12.66, 18.85, 21.16, 17.40, 19.82, 13.02, 23.39, 25.40, 23.25, 22.27, 17.61, 19.18, 15.68, 22.47, 22.08, 15.71, 19.74, 19.67, 22.65, 18.34, 17.93, 17.34, 14.21, 17.16, 14.91, 14.04] };
+// the film's later life, frame by frame; marked: also shown on the phrase chart
+const STRIP = [
+  { year: "1972", title: "A print for $297", text: "Keith Stroup, founder of the reform group NORML, finds a print in the Library of Congress, learns the film is in the public domain and buys a copy.", src: "stroupFind", hist: "us-reefer-madness-campus-revival-1972", atlas: "people/keith-stroup", marked: true },
+  { year: "1970s", title: "Campus fundraisers", text: "Stroup screens it after his lectures to raise money for reform. Students who were meant to be frightened laugh.", src: "stroupFind", hist: "us-reefer-madness-campus-revival-1972" },
+  { year: "1970s", title: "A midnight movie", text: "It joins the late-night cult circuit, and its overacting makes it a classic of camp. Leonard Maltin calls it the granddaddy of all worst movies.", src: "wiki" },
+  { year: "1992", title: "On stage in Chicago", text: "Sean Abley's stage adaptation opens, the first of several.", src: "wiki" },
+  { year: "1998", title: "A musical", text: "Kevin Murphy and Dan Studney's musical turns the warnings into show tunes.", src: "avclub", hist: "us-reefer-madness-musical-1998", marked: true },
+  { year: "2003", title: "The title, borrowed", text: "Eric Schlosser calls his book on America's black markets Reefer Madness. Its marijuana chapter follows Mark Young, given life without parole for a minor role in a marijuana deal.", src: "schlosser", hist: "us-schlosser-reefer-madness-2003", marked: true },
+  { year: "2004", title: "In colour", text: "A colourised DVD, with a mocking commentary by Mike Nelson of Mystery Science Theater 3000. The joke is now the product.", src: "colorized" },
+  { year: "2005", title: "On television", text: "The musical becomes a television film for Showtime, with Alan Cumming and Kristen Bell.", src: "avclub", hist: "us-reefer-madness-musical-1998", marked: true },
+  { year: "Today", title: "Free to all", text: "Never protected by copyright, it can be watched, copied and remixed by anyone. Its title is now shorthand for any exaggerated drug scare.", src: "archive" },
+];
+// the phrase chart, drawn at build time
+const PH = (() => {
+  const W = 1000, H = 300, L = 40, R = 14, T = 74, B = 30, max = 26;
+  const n = PHRASE.values.length;
+  const x = (i) => L + (i / (n - 1)) * (W - L - R), y = (v) => T + (1 - v / max) * (H - T - B);
+  const line = PHRASE.values.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
+  return { W, H, L, R, T, B, x, y, line, area: `${line}L${x(n - 1)},${H - B}L${L},${H - B}Z`, ticks: [0, 10, 20], years: [1960, 1970, 1980, 1990, 2000, 2010, 2020],
+    // labels in rows above the line, so they never cross: [row, anchored at the end]
+    marks: STRIP.filter((f) => f.marked).map((f) => ({ year: +f.year, title: f.title, cx: x(+f.year - PHRASE.from), cy: y(PHRASE.values[+f.year - PHRASE.from]), ...({ 1972: { row: 1, end: false }, 1998: { row: 0, end: true }, 2003: { row: 1, end: false }, 2005: { row: 2, end: false } })[+f.year] })) };
+})();
+
+// Room III: the exploitation cycle, as a programme of the films, each with its poster (from the
+// gallery's files, below) and a public-domain copy at the Internet Archive that plays on request
+const CYCLE = [
+  { year: "1934", title: "The Road to Ruin", by: "Dorothy Davenport and Melville Shyer", poster: 58, archive: "TheRoadToRuin_457", minutes: 64,
+    text: "A schoolgirl drawn into drink, marijuana and sex. Davenport, the widow of the silent star Wallace Reid, who died while trying to overcome a morphine addiction, plays a juvenile-court official: the framing helped the film past local censors.",
+    tag: "Modern youth burned at the altar of ignorance", src: "roadToRuin", hist: "us-road-to-ruin-1934" },
+  { year: "1936", title: "Marihuana", by: "Dwain Esper, written by Hildagarde Stadie", poster: 1, archive: "Marihuana-the_Devils_Weed", minutes: 57,
+    text: "A young woman's slide from a beach party to the drug trade, sent out by Esper's own Road Show Attractions.",
+    tag: "Weed with roots in hell", src: "marihuanaFilm", hist: "us-marihuana-film-1936" },
+  { year: "1936–38", title: "Tell Your Children, later Reefer Madness", by: "Louis Gasnier, for George Hirliman", poster: 3, archive: "reefer_madness1938", minutes: 68,
+    text: "A school principal warns parents with the story of teenagers led to murder, suicide and madness. Esper bought it and reissued it under the title that stuck.",
+    tag: "Women cry for it, men die for it", src: "afi", hist: "us-reefer-madness-1938" },
+  { year: "1937", title: "Assassin of Youth", by: "Elmer Clifton", poster: 13, archive: "AssassinOfYouth_423",
+    text: "A reporter goes undercover among teenage marijuana smokers, where a girl is being framed by relatives after her inheritance. It shares its title with Anslinger's magazine article of the same year.",
+    tag: "A puff, a party, a tragedy", hist: "us-assassin-of-youth-film-1937" },
+  { year: "1942", title: "Devil's Harvest", by: "Ray Test, for Continental Pictures", poster: 4, archive: "DevilsHarvestApril201942", minutes: 52,
+    text: "Gangsters sell marijuana to students from a hot-dog stand near a school. Made in wartime, its poster called the drug a fifth column.",
+    tag: "Marijuana, the smoke of hell", src: "devilsHarvest", hist: "us-devils-harvest-film-1942" },
+  { year: "1949", title: "She Shoulda Said No!", by: "Sam Newfield, as Sherman Scott", poster: 7, archive: "SheShouldaSaidNo", minutes: 69,
+    text: "Made to cash in on the 1948 arrest of Robert Mitchum and Lila Leeds, starring Leeds herself as a showgirl ruined by marijuana. The showman Kroger Babb reissued it as The Devil's Weed and Wild Weed.",
+    tag: "Lila Leeds' own story", src: "shoulda", hist: "us-she-shoulda-said-no-1949" },
+];
+// how a roadshow worked, after Eric Schaefer's history of the exploitation film
+const ROADSHOW = [
+  ["Outside the studios", "The Production Code, enforced from 1934, kept the drug trade off Hollywood's screens. The subject went to small independents with no stars and tiny budgets."],
+  ["A lesson, on paper", "A written foreword, or a lecturer on stage, presented the film as education for parents. It was the excuse that let a sensational subject past local censors."],
+  ["From town to town", "Prints travelled with their own showmen, who rented a cinema for a few days, advertised hard, and moved on before word of mouth caught up."],
+];
+
+// Room IV: the gallery. Posters and paperback covers from the collection of Stanford Research into
+// the Impact of Tobacco Advertising (SRITA); modern parodies, theatre posters and DVD covers in that
+// collection are left out. motifs: the selling devices each one uses, for the filter
+const POSTER_FILES = import.meta.glob("../assets/exhibitions/reefer-madness/posters/*.jpg", { eager: true, import: "default" });
+const posterImg = (n) => POSTER_FILES[`../assets/exhibitions/reefer-madness/posters/srita-${n}.jpg`];
+const MOTIFS = {
+  adults: ["Adults only", "The forbidden as a selling point: the warning that kept children out drew adults in."],
+  devil: ["The devil", "Hell, Satan and the 'weed with roots in hell': a moral threat drawn as a supernatural one."],
+  woman: ["The fallen woman", "A young woman, half-dressed, undone by one cigarette: the victim the posters returned to most."],
+  youth: ["Your children", "Schools, teenagers and parents: the threat aimed at the family."],
+  truth: ["“The truth”", "Claims of facts, real cases and research, borrowed to make a melodrama look like a lesson."],
+  crime: ["Crime and rackets", "Gangs, pushers and killers: the drug as the gateway to the underworld."],
+};
+// the history entry of the film a poster sells, by poster number
+const POSTER_HIST = {
+  1: "us-marihuana-film-1936", 18: "us-marihuana-film-1936", 48: "us-marihuana-film-1936", 3: "us-reefer-madness-1938", 5: "us-reefer-madness-1938",
+  45: "us-reefer-madness-1938", 46: "us-reefer-madness-1938", 13: "us-assassin-of-youth-film-1937", 58: "us-road-to-ruin-1934",
+  4: "us-devils-harvest-film-1942", 10: "us-devils-harvest-film-1942", 11: "us-devils-harvest-film-1942", 7: "us-she-shoulda-said-no-1949", 36: "us-she-shoulda-said-no-1949",
+};
+const POSTERS = [
+  { n: 1, kind: "film", title: "Marihuana", year: "1936", maker: "Dwain Esper", line: "“Weed with roots in hell”, with weird orgies, wild parties and unleashed passions", motifs: ["devil", "woman"] },
+  { n: 18, kind: "film", title: "Marihuana", year: "1936", maker: "Dwain Esper", line: "“Adults only! Exposed!” Shattered hopes, tangled lives", motifs: ["adults", "youth", "truth"] },
+  { n: 48, kind: "film", title: "Marihuana", year: "1936, reissue", maker: "Mack Enterprises", line: "“Women will do anything for it”: the sweet pill that makes life bitter", motifs: ["woman"] },
+  { n: 3, kind: "film", title: "Reefer Madness", year: "reissue", maker: "Motion Picture Ventures", line: "“Women cry for it, men die for it!” Adults only, drug-crazed abandon", motifs: ["adults", "woman"] },
+  { n: 5, kind: "film", title: "Reefer Madness", year: "reissue", maker: "", line: "“Public enemy No. 1”, a daring theme, for adults only", motifs: ["adults", "woman"] },
+  { n: 45, kind: "film", title: "The Burning Question", year: "", maker: "Reefer Madness under another title", line: "“The love weed”: innocent youth, victims of a new sex craze", motifs: ["adults", "youth", "woman"] },
+  { n: 46, kind: "film", title: "The Burning Question", year: "", maker: "Reefer Madness under another title", line: "“Dope-created ecstasy avalanching into frightful perversions”; it “makes beasts of men and women”", motifs: ["adults", "woman"] },
+  { n: 13, kind: "film", title: "Assassin of Youth", year: "1937", maker: "", line: "“A puff, a party, a tragedy”, with wild-mad thrills", motifs: ["woman", "youth"] },
+  { n: 58, kind: "film", title: "The Road to Ruin", year: "1934", maker: "Dorothy Davenport", line: "“Modern youth burned at the altar of ignorance”: a timely warning to parents, adults only", motifs: ["adults", "youth", "devil"] },
+  { n: 4, kind: "film", title: "Devil's Harvest", year: "1942", maker: "Continental Pictures", line: "“Marijuana, the smoke of hell”: a fifth column sowing destruction in the youth of America", motifs: ["devil", "woman", "youth"] },
+  { n: 10, kind: "film", title: "Devil's Harvest", year: "1942", maker: "Continental Pictures", line: "“A good girl until she lights a reefer”: the truth about marijuana", motifs: ["woman", "truth"] },
+  { n: 11, kind: "film", title: "Devil's Harvest", year: "1942", maker: "Continental Pictures", line: "“A vicious racket with its arms around your children”", motifs: ["devil", "youth", "crime", "truth"] },
+  { n: 7, kind: "film", title: "The Devil's Weed", year: "1949", maker: "She Shoulda Said No! under another title", line: "“Lila Leeds' own story”: learn facts, hear truths from the girl who knows", motifs: ["woman", "truth"] },
+  { n: 36, kind: "film", title: "The Devil's Weed", year: "1949", maker: "She Shoulda Said No! under another title", line: "“Exposing the tragic truth of the marihuana menace”, for adults only", motifs: ["adults", "woman", "truth", "devil"] },
+  { n: 12, kind: "film", title: "Marihuana", year: "1950", maker: "León Klimovsky, Argentina", line: "An Argentine crime melodrama with Pedro López Lagar and Fanny Navarro", motifs: ["crime"] },
+  { n: 19, kind: "film", title: "Marihuana", year: "1950", maker: "León Klimovsky, Argentina", line: "“El tabaco negro del diablo”, the devil's black tobacco: frightful, raw, tragic", motifs: ["devil", "woman"] },
+  { n: 55, kind: "film", title: "Big Jim McLain, as Marijuana", year: "1952", maker: "Warner Bros., Italian release", line: "John Wayne hunts communists in Hawaii; in Italy and Germany the film was retitled Marijuana and sold as a fight against drug smugglers", motifs: ["crime"] },
+  { n: 28, kind: "book", title: "Marijuana Girl", year: "1951", maker: "N. R. de Mexico", line: "“She fell prey to the foulest of rackets”", motifs: ["woman", "crime"] },
+  { n: 23, kind: "book", title: "Reefer Girl", year: "", maker: "Jane Manning", line: "“The frank, biting story of a young girl of the slums, and how she was caught in the toils of evil”", motifs: ["woman"] },
+  { n: 25, kind: "book", title: "Reefer Club", year: "", maker: "Luke Roberts", line: "“The story your children won't dare tell you”", motifs: ["youth", "woman"] },
+  { n: 27, kind: "book", title: "Reefer Boy", year: "", maker: "Hal Ellson", line: "“A shocking novel of teen-age dope addicts”", motifs: ["youth", "crime"] },
+  { n: 38, kind: "book", title: "The Marijuana Mob", year: "", maker: "James Hadley Chase", line: "“A terrorific tale of kidnapping, murder, dope-peddling and politics”: Figure It Out for Yourself under a new title", motifs: ["crime", "woman"] },
+  { n: 53, kind: "book", title: "Marihuana", year: "1951", maker: "William Irish (Cornell Woolrich)", line: "“A cheap and evil girl sets a hopped-up killer against a city”, a ten-cent paperback", motifs: ["crime", "woman"] },
+  { n: 41, kind: "book", title: "Musk, Hashish and Blood", year: "", maker: "Hector France", line: "“The cruel men and passionate women of Algiers”: the drug as foreign and exotic", motifs: ["woman"] },
+].map((p) => ({ ...p, img: posterImg(p.n), hist: POSTER_HIST[p.n] }));
+const motifCount = (k) => POSTERS.filter((p) => p.motifs.includes(k)).length;
+
+// Room V: the defendants, on a docket; days is the sentence drawn on the bars
+const DOCKET = [
+  { no: "1937-001", name: "Samuel Caldwell", where: "Denver, Colorado", what: "Arrested on 2 October 1937, the day after the Marihuana Tax Act took effect, while selling cannabis.", sentence: "4 years in Leavenworth and a $1,000 fine", days: 1461, src: "caldwell", hist: "us-first-tax-act-convictions-1937" },
+  { no: "1937-002", name: "Moses Baca", where: "Denver, Colorado", what: "Arrested with Caldwell, as the buyer.", sentence: "18 months for possession", days: 548, src: "caldwell", hist: "us-first-tax-act-convictions-1937" },
+  { no: "1937–40", name: "The unnamed", where: "Across the United States", what: "In the act's first three months agents made 369 seizures. In about half of the cases of the next few years the person held less than an ounce and no sale was alleged.", sentence: "Sentences not recorded here", days: null, src: "conviction", hist: "us-anslinger-petty-cases-memo-1937" },
+  { no: "1940", name: "Mezz Mezzrow", where: "New York", what: "Jazz's best-known marijuana seller, arrested with sixty joints at the entrance to a club at the World's Fair. In jail he insisted he was Black and was moved to the segregated Black section.", sentence: "Jailed for intent to sell", days: null, src: "mezzrow", hist: "us-mezzrow-arrest-1940" },
+  { no: "1943", name: "Gene Krupa", where: "San Francisco, California", what: "The swing era's star drummer, convicted of using his teenage valet to carry marijuana. Freed on bail after about three months; the charges were later dismissed as improperly filed.", sentence: "1 to 6 years at San Quentin", days: 365, max: 2191, src: "krupa", hist: "us-gene-krupa-arrest-1943" },
+  { no: "1947", name: "Anita O'Day", where: "North Hollywood, California", what: "The jazz singer and her husband, convicted after police found marijuana and rolling papers at their home.", sentence: "90 days in jail", days: 90, hist: "us-anita-oday-arrest-1947" },
+  { no: "1949-001", name: "Robert Mitchum", where: "Los Angeles, California", what: "Arrested in 1948 at Lila Leeds's house; pleaded guilty to conspiracy. The arrest helped forge his legend.", sentence: "60 days in jail", days: 60, src: "bigsteal", hist: "us-mitchum-arrest-1948" },
+  { no: "1949-002", name: "Lila Leeds", where: "Los Angeles, California", what: "Arrested with Mitchum. Her career did not survive it; she was cast as a ruined showgirl in She Shoulda Said No!", sentence: "60 days and five years' probation", days: 60, src: "shoulda", hist: "us-mitchum-arrest-1948" },
+  { no: "1951", name: "Any first offender", where: "Federal law, the Boggs Act", what: "One scale of penalties for marijuana and narcotics, with mandatory minimums.", sentence: "2 to 5 years for a first offence", days: 730, max: 1826, src: "boggs", hist: "us-boggs-act-1951" },
+  { no: "1956", name: "Any seller", where: "Louisiana", what: "A little Boggs act: selling, possessing or administering a narcotic drug, marijuana included.", sentence: "5 to 99 years, without parole, probation or suspension", days: 1826, max: 36159, hist: "us-little-boggs-acts-1953" },
+  { no: "1968", name: "Lee Otis Johnson", where: "Houston, Texas", what: "A civil-rights organiser who handed one joint to an undercover officer. Texas counted it as a sale. Freed in 1972, when a federal judge ruled he should not have been tried in Houston.", sentence: "30 years in prison", days: 10958, hist: "us-lee-otis-johnson-1968" },
+];
+const DAY_MAX = 36159;
+const dayScale = (d) => (Math.log10(d) / Math.log10(DAY_MAX)) * 100; // tenfold steps, so 60 days still shows
+
+// Room VI: the export, as telegrams
+const WIRES = [
+  { date: "1924-12", from: "Geneva", who: "Mohamed El Guindy, Egypt", text: "Hashish as dangerous as opium and a major cause of insanity. Asks the same controls. No formal evidence produced.", hist: "geneva-egypt-proposal-1924" },
+  { date: "1925-02", from: "Geneva", who: "The Second Opium Conference", text: "Indian hemp added to the International Opium Convention. Export and import for medical and scientific use only. First treaty to cover cannabis.", hist: "geneva-opium-convention-1925" },
+  { date: "1930", from: "Cairo", who: "Russell Pasha, Cairo police", text: "Hashish the vice of the city slums. Does comparatively little harm. Village smokers regarded as a joke.", hist: "egypt-russell-hashish-report-1930" },
+  { date: "1938-06", from: "Geneva", who: "Harry J. Anslinger, United States", text: "Marijuana keeps its tradition of murder, assault, rape and mental deterioration.", hist: "league-russell-anslinger-exchange-1938" },
+  { date: "1938-06", from: "Geneva", who: "Russell Pasha, Egypt, in reply", text: "Hashish addiction leads to no particular crime wave. The addict is a tiresome individual, not a dangerous criminal.", hist: "league-russell-anslinger-exchange-1938", reply: true },
+  { date: "1938-10", from: "Mexico City", who: "Dr Leopoldo Salazar Viniegra", text: "Not one case of psychosis in ten years definitely caused by marijuana. Calls the madness a myth. The press calls him mad.", hist: "mexico-salazar-marijuana-myth-1938", src: "salazar" },
+  { date: "1940-07", from: "Mexico City", who: "Government of Mexico", text: "Health-based drug regulation suspended after five months, under pressure from the United States.", hist: "mexico-regulation-suspended-1940", src: "campos" },
+];
+
+// Room VIII: the evidence room. kind: primary, documented, interpretation
+const EVIDENCE = [
+  ["1890s–1915", "primary", "Newspaper", "Sensational marihuana stories in American papers", "Many tied to anti-Mexican propaganda; the Library of Congress lists them with a warning.", "loc", "us-locoed-weed-headline-1915"],
+  ["1915", "documented", "Law", "El Paso bans marijuana", "The first US measure built on the madness-and-violence belief.", null, "us-el-paso-ban-1915"],
+  ["1930", "documented", "Institution", "The Federal Bureau of Narcotics is founded", "Harry J. Anslinger is its first commissioner.", null, "us-federal-bureau-of-narcotics-1930"],
+  ["1931", "primary", "Press statement", "Anslinger links marijuana to crime", "His first public endorsement of the crime claim, by Bonnie and Whitebread's account.", "conviction", "us-anslinger-crime-claim-1931"],
+  ["1933", "documented", "Case", "Victor Licata kills his family", "Diagnosed with dementia praecox; marijuana absent from his psychiatric reports.", "licata", "us-licata-murders-1933"],
+  ["1936–38", "primary", "Film", "Tell Your Children / Reefer Madness", "The film itself, in the public domain.", "archive", "us-reefer-madness-1938", "poster"],
+  ["1937", "primary", "Bill", "H.R. 6385 is introduced", "Prepared by the Treasury's general counsel, Herman Oliphant.", "conviction", "us-tax-bill-introduced-1937"],
+  ["1937", "primary", "Testimony", "William Woodward opposes the bill", "The American Medical Association's counsel says the evidence is newspaper stories.", "taxact", "us-ama-woodward-testimony-1937"],
+  ["1937", "primary", "Magazine", "Marijuana, Assassin of Youth", "Anslinger's article in The American Magazine.", "assassin", "us-assassin-of-youth-1937", "magazine"],
+  ["1937", "documented", "Law", "The Marihuana Tax Act", "Federal tax and registration that made legal supply impractical.", "taxact", "us-marihuana-tax-act-1937"],
+  ["1937", "documented", "Court", "The first sentences under the act", "A Denver court, within days of the act.", null, "us-first-tax-act-convictions-1937"],
+  ["1937", "primary", "Memo", "Stop filling the courts with petty cases", "Anslinger's confidential memo to his agents.", "conviction", "us-anslinger-petty-cases-memo-1937"],
+  ["1938", "primary", "Memo", "The bureau plays marijuana down", "Press reports almost hysterical, Anslinger writes.", "conviction", "us-fbn-plays-down-marijuana-1938"],
+  ["1938", "primary", "Debate", "Egypt's police chief contradicts Anslinger", "At the League of Nations: the addict is tiresome, not a dangerous criminal.", null, "league-russell-anslinger-exchange-1938"],
+  ["1944", "documented", "Report", "The LaGuardia report", "No link to addiction, serious crime or harder drugs in New York.", "laguardia", "us-la-guardia-report-1944"],
+  ["1951", "primary", "Testimony", "Harris Isbell to Congress", "Smokers mildly intoxicated, no dependence; violence unproven.", "conviction", "us-isbell-testimony-1951"],
+  ["1972", "documented", "Report", "The Shafer Commission", "Recommends removing criminal penalties for possession.", "shafer", "us-shafer-commission-1972"],
+  ["1924", "primary", "Speech", "Egypt asks Geneva to control hashish", "As dangerous as opium, the delegate says; no evidence is produced.", null, "geneva-egypt-proposal-1924"],
+  ["1930", "primary", "Report", "Russell Pasha: hashish does little harm", "Cairo's police chief to the League of Nations.", null, "egypt-russell-hashish-report-1930"],
+  ["1936", "primary", "Film", "Marihuana, by Dwain Esper", "The exploitation cycle's other weed film.", "marihuanaFilm", "us-marihuana-film-1936"],
+  ["1934–68", "documented", "Rule", "The Production Code bars drug trafficking on screen", "The studios' own censorship; drug films were made and shown outside it.", "code", "us-production-code-drugs-1934"],
+  ["1938", "primary", "Paper", "Salazar Viniegra: the myth of marijuana", "A Mexican psychiatrist to the Academy of Medicine.", "salazar", "mexico-salazar-marijuana-myth-1938"],
+  ["1940", "documented", "Diplomacy", "Mexico suspends its health-based drug rule", "Under American pressure, after five months.", "campos", "mexico-regulation-suspended-1940"],
+  ["1948–49", "documented", "Court", "Robert Mitchum and Lila Leeds sentenced", "Sixty days each; his fame grew, her career ended.", "bigsteal", "us-mitchum-arrest-1948"],
+  ["1949", "primary", "Film", "She Shoulda Said No!", "A scandal turned into a warning, starring Leeds.", "shoulda", "us-she-shoulda-said-no-1949"],
+  ["1951", "documented", "Law", "The Boggs Act", "Mandatory minimum sentences for marijuana and narcotics alike.", "boggs", "us-boggs-act-1951"],
+  ["1954", "primary", "Resolution", "Judges ask Congress to end mandatory minimums", "The Fifth Circuit, unanimously; Anslinger denounces them.", null, "us-fifth-circuit-judges-1954"],
+  ["1969", "documented", "Court", "Leary v. United States", "The Supreme Court strikes the Marihuana Tax Act down.", "leary", "us-leary-1969"],
+  ["—", "interpretation", "Claim", "Hearst fought cannabis to save his paper business", "A popular story with no document behind it in the sources here.", "taxact"],
+  ["—", "interpretation", "Claim", "A church group paid for the film", "Often repeated, unconfirmed.", "wiki"],
+  ["—", "interpretation", "Reading", "The film did not make the law", "The film reached screens around and after the act; the act has its own documentary history.", null, "us-marihuana-tax-act-1937"],
+];
+const KIND = { primary: "Primary evidence", documented: "Documented connection", interpretation: "Interpretation" };
+// The programme: what the exhibition is about, before the rooms
+const FACTS = [
+  ["1936", "Tell Your Children is filmed", "us-reefer-madness-1938"],
+  ["1937", "The Marihuana Tax Act passes", "us-marihuana-tax-act-1937"],
+  ["1944", "The LaGuardia report finds the claims exaggerated", "us-la-guardia-report-1944"],
+  ["1969", "The Supreme Court strikes the Tax Act down", "us-leary-1969"],
+  ["1972", "Students laugh at the film", "us-reefer-madness-campus-revival-1972"],
+];
+const WORDS = [
+  ["Marihuana", "The Mexican Spanish name for cannabis, spelt this way in American law. In the 1930s it made a plant Americans already knew as hemp and as a medicine sound new and foreign.", c("language/marijuana"), "In the cultural atlas"],
+  ["Reefer", "1930s American slang for a cannabis cigarette.", c("language/reefer"), "In the cultural atlas"],
+  ["Exploitation film", "A low-budget film made outside the Hollywood studios that sold a forbidden subject, such as drugs or sex, as a moral warning, and toured from town to town.", "#cycle", "Room III, The Cycle"],
+  ["Federal Bureau of Narcotics", "The US agency for drug enforcement from 1930 to 1968, led until 1962 by Harry J. Anslinger, the main voice of the campaign against cannabis.", h("us-federal-bureau-of-narcotics-1930"), "Its founding"],
+  ["Moral panic", "A sociologists' term, from Stanley Cohen (1972), for a time when a threat is described as far worse than it is, the press, officials and entertainment repeat one another, and laws follow the fear more than the evidence.", "https://en.wikipedia.org/wiki/Moral_panic", "Wikipedia ↗"],
+];
+const ROOMS = EXHIBITIONS.find((e) => e.slug === "reefer-madness").rooms.map((r) => [r.id, r.no, r.name, r.learn]);
+---
+<Base title="Reefer Madness · Exhibition 001" description="Exhibition 001, Reefer Madness: the invention of a monster. The original trailer, the claims and their verdicts, the machinery of a moral panic, the exploitation films, the people sentenced, the panic's export abroad, the film's afterlife, and an evidence room of sourced documents.">
+  <main class="rm">
+    <nav class="rm-tickets" aria-label="Rooms of the exhibition">
+      <a class="rm-ticket rm-ticket-home" href={`${base}exhibitions/`}>Exhibitions</a>
+      <a class="rm-ticket" href="#programme"><b>·</b>Programme</a>
+      {ROOMS.map(([id, no, name]) => <a class="rm-ticket" href={`#${id}`}><b>{no}</b>{name}</a>)}
+    </nav>
+    <!-- once past the entrance: where you are, and the rooms in brief -->
+    <nav class="rm-now" aria-label="You are here">
+      <a class="rm-now-title" href="#programme">Reefer Madness</a>
+      <span class="rm-now-room" aria-live="polite"><b>·</b><span>Programme</span></span>
+      <ol class="rm-now-rooms">
+        {ROOMS.map(([id, no, name]) => <li><a href={`#${id}`} data-room={id} title={name} aria-label={`Room ${no}, ${name}`}>{no}</a></li>)}
+      </ol>
+      <i class="rm-now-bar" aria-hidden="true"></i>
+    </nav>
+
+    <!-- The entrance: the title and the original trailer -->
+    <section class="rm-hero" aria-labelledby="rm-title">
+      <div class="rm-curtain left" aria-hidden="true"></div>
+      <div class="rm-curtain right" aria-hidden="true"></div>
+      <header class="rm-marquee">
+        <p class="rm-marquee-top">Exhibition 001 · Propaganda</p>
+        <h1 id="rm-title">Reefer Madness</h1>
+        <p class="rm-marquee-sub">The invention of a monster</p>
+      </header>
+      <figure class="rm-trailer">
+        <div class="rm-trailer-screen">
+          <video class="rm-trailer-video" src={`${base}exhibitions/reefer-madness/trailer.mp4`} poster={`${base}exhibitions/reefer-madness/trailer-poster.jpg`} autoplay muted loop playsinline preload="metadata" aria-label="The original trailer of Reefer Madness">
+            <track kind="subtitles" srclang="en" label="English" src={`${base}exhibitions/reefer-madness/trailer.en.vtt`} default />
+          </video>
+          <p class="rm-trailer-cc" aria-live="off"></p>
+          <div class="rm-grain" aria-hidden="true"></div>
+          <div class="rm-trailer-controls">
+            <button type="button" class="rm-trailer-ctl" data-ctl="play" aria-pressed="true">❚❚ Pause</button>
+            <input type="range" class="rm-trailer-seek" min="0" max="116" step="0.1" value="0" aria-label="Position in the trailer" />
+            <span class="rm-trailer-time" aria-hidden="true">0:00 / 1:56</span>
+            <button type="button" class="rm-trailer-ctl" data-ctl="cc" aria-pressed="true" aria-label="English subtitles">CC</button>
+            <button type="button" class="rm-trailer-ctl" data-ctl="sound" aria-pressed="false">♪ Sound on</button>
+          </div>
+          <p class="rm-trailer-hint" aria-hidden="true">Click for sound</p>
+        </div>
+        <figcaption>The original trailer, as shared by the Coolidge Corner Theatre. The film is in the public domain.</figcaption>
+      </figure>
+      <a class="rm-hero-down" href="#programme">Read the programme <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <!-- The programme: an introduction before the rooms -->
+    <section class="rm-foyer" id="programme" aria-label="The programme">
+      <div class="rm-programme">
+        <div class="rm-programme-text">
+          <p class="rm-programme-kicker">The programme</p>
+          <h2>What this was</h2>
+          <p class="rm-programme-lede"><a href={h("us-reefer-madness-1938")}><em>Reefer Madness</em></a> is an American film made in 1936 as <em>Tell Your Children</em>. A school principal warns parents about <a href={c("language/marijuana")}>marijuana</a>, and the story shows young people who try it sliding into a hit-and-run, a killing, suicide and the asylum. It was made outside the Hollywood studios and toured cheap cinemas under several titles for years.</p>
+          <p>The film is the best-known piece of a much larger campaign. Through the 1930s American newspapers, and the <a href={h("us-federal-bureau-of-narcotics-1930")}>Federal Bureau of Narcotics</a> under <a href={c("people/harry-anslinger")}>Harry J. Anslinger</a>, described <a href={c("language/cannabis")}>cannabis</a>, under the Mexican name <a href={c("language/marijuana")}>marihuana</a>, as a new drug that drove young people to madness and murder. Few of the stories were checked. In 1937 Congress passed the <a href={h("us-marihuana-tax-act-1937")}>Marihuana Tax Act</a> after <a href={h("us-tax-bill-introduced-1937")}>short hearings</a>, and legal cannabis, prescriptions included, became practically impossible to get anywhere in the United States; <a href={h("us-pharmacopeia-1942")}>doctors lost it as a medicine</a> five years later.</p>
+          <p>The picture lasted far longer than the film. It shaped the <a href={h("us-boggs-act-1951")}>penalties of the 1950s</a>, travelled to the <a href={h("geneva-opium-convention-1925")}>League of Nations</a> and the <a href={h("un-single-convention-1961")}>United Nations</a>, and still turns up whenever cannabis is debated. Historians call episodes like this a moral panic.</p>
+          <h2>What you will find here</h2>
+          <p>This exhibition takes the claims seriously enough to check them. Each room looks at one part of the story, and every statement links to a source, marked as primary evidence, a documented connection or an interpretation. You can walk through in order or jump to any room.</p>
+        </div>
+        <aside class="rm-programme-side">
+          <h3>In five dates</h3>
+          <ol class="rm-facts">
+            {FACTS.map(([y, t, id, atlas]) => <li><b>{y}</b>{id ? <a href={h(id)}>{t}</a> : atlas ? <a href={c(atlas)}>{t}</a> : <span>{t}</span>}</li>)}
+          </ol>
+          <h3>Words you will meet</h3>
+          <dl class="rm-words">
+            {WORDS.map(([w, d, href, label]) => <div><dt>{href ? <a href={href} {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{w}</a> : w}</dt><dd>{d}{href && <> <a class="rm-words-more" href={href} {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{label}{!href.startsWith("http") && !href.startsWith("#") && " →"}</a></>}</dd></div>)}
+          </dl>
+        </aside>
+      </div>
+      <ol class="rm-guide" aria-label="The rooms">
+        {ROOMS.map(([id, no, name, learn]) => <li><a href={`#${id}`}><b>Room {no}</b><span>{name}</span><em>{learn}</em></a></li>)}
+      </ol>
+    </section>
+
+    <!-- I · The Claims -->
+    <section class="rm-paper" id="claims" aria-label="Room I, The Claims">
+      <header class="rm-masthead">
+        <p class="rm-room">Room I</p>
+        <h2>The Daily Panic</h2>
+        <p class="rm-dateline"><span>Vol. I · No. 1937</span><span>Every claim fact-checked</span><span>Price: the truth</span></p>
+      </header>
+      <p class="rm-paper-lede">Newspapers were the campaign's loudest voice. In the 1930s many American papers printed stories of crimes blamed on marijuana, usually without checking them, and officials quoted the papers back to Congress. Here are ten claims of the kind America read then. Open one: behind each is a case file with who made the claim, where it circulated, what was offered as evidence, what later research found, and a verdict.</p>
+      <div class="rm-columns">
+        {CLAIMS.map((c, i) => (
+          <article class:list={["rm-story", { big: i === 0 }]} id={`claim-${c.id}`}>
+            <button type="button" class="rm-headline" aria-haspopup="dialog" aria-controls={`file-${c.id}`}>
+              <span class="rm-hed">{c.head}</span>
+              <span class="rm-deck">{c.deck}</span>
+              <span class="rm-open">Open the case file</span>
+            </button>
+            <dialog class="rm-file" id={`file-${c.id}`} aria-label={`Case file: ${c.head}`}>
+              <button type="button" class="rm-file-close" aria-label="Close the case file">Close ×</button>
+              <p class="rm-stamp">Case file · {c.id}</p>
+              <h3 class="rm-file-hed">{c.head}</h3>
+              <p class="rm-verdict"><span>Verdict</span>{c.verdict}</p>
+              <dl>
+                <div><dt>Who said it</dt><dd>{c.who}</dd></div>
+                <div><dt>Where it circulated</dt><dd>{c.where}</dd></div>
+                <div><dt>Evidence offered</dt><dd>{c.offered}</dd></div>
+                <div class="rm-later"><dt>What later research found</dt><dd>{c.later}</dd></div>
+              </dl>
+              <p class="rm-file-links">{c.links.map(([id, label]) => <a href={h(id)}>{label} →</a>)}</p>
+              <ul class="rm-file-src">{c.src.map((k) => <li>{SRC[k][1] ? <a href={SRC[k][1]} target="_blank" rel="noopener noreferrer">{SRC[k][0]}</a> : SRC[k][0]}</li>)}</ul>
+            </dialog>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- II · The Machinery -->
+    <section class="rm-board-room" id="machinery" aria-label="Room II, The Machinery">
+      <header class="rm-board-head">
+        <p class="rm-room">Room II</p>
+        <h2>The Machinery</h2>
+        <p>A moral panic is rarely one person's work. Here the press, one federal official, a single murder case, a magazine article, a bill and a film fed each other: the papers gave Anslinger his stories, he gave Congress his file of cases, and the film arrived as the law took effect. Read it from the top: each step is dated, coloured by who acted, and joined to the next by what the record shows happened. Stories that are often told but not documented are set apart in their own panel.</p>
+      </header>
+      <div class="rm-chain-key" role="group" aria-label="Highlight one part of the machine">
+        {Object.entries(WHO).map(([k, [label, colour]]) => <button type="button" aria-pressed="false" data-who={k} style={`--who:${colour}`}><i aria-hidden="true"></i>{label} <b>{CHAIN.filter((c) => c.who === k).length}</b></button>)}
+      </div>
+      <div class="rm-chain-wrap">
+        <ol class="rm-chain">
+          {CHAIN.map((c, i) => (
+            <li class="rm-step" data-who={c.who} style={`--who:${WHO[c.who][1]}`}>
+              <span class="rm-step-no" aria-hidden="true">{i + 1}</span>
+              <article>
+                <p class="rm-step-meta"><span>{WHO[c.who][0]}</span><time>{c.when}</time></p>
+                <h3>{c.title}</h3>
+                <p>{c.text}</p>
+                <a href={c.href} {...(c.ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{c.ext ? "Source ↗" : "History →"}</a>
+              </article>
+              {c.pic && (
+                <figure class:list={["rm-step-pic", { wide: c.pic.wide, round: c.pic.round }]} style={`--tilt:${[-3, 2.5, -1.5, 3.5, -2.5, 1.5, -3.5, 2, -1][i % 9]}deg;--drop:${[6, 30, 0, 22, 12, 36, 4, 18, 26][i % 9]}px`}>
+                  <a href={c.pic.href} {...(c.pic.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+                    <Image src={c.pic.src} alt={c.pic.alt} widths={[240, 480]} sizes="(max-width: 760px) 40vw, 220px" loading="lazy" />
+                  </a>
+                  <figcaption>{c.pic.cap}{c.pic.credit && <small>{c.pic.credit}</small>}</figcaption>
+                </figure>
+              )}
+              {c.link && <p class="rm-step-link"><span aria-hidden="true">↓</span> {c.link}</p>}
+            </li>
+          ))}
+        </ol>
+        <aside class="rm-rumours" aria-label="Told, but not documented">
+          <h3>Told, but not documented</h3>
+          <p>Three stories often attached to this machine. Each is checked here against the record.</p>
+          {RUMOURS.map((r) => (
+            <div class="rm-rumour">
+              <b>{r.title}</b>
+              <p>{r.text}</p>
+              <a href={r.href} {...(r.internal ? {} : { target: "_blank", rel: "noopener noreferrer" })}>{r.internal ? "History →" : "Source ↗"}</a>
+            </div>
+          ))}
+        </aside>
+      </div>
+    </section>
+
+    <!-- III · The Cycle -->
+    <section class="rm-cycle" id="cycle" aria-label="Room III, The Exploitation Cycle">
+      <header class="rm-cycle-head">
+        <p class="rm-room">Room III</p>
+        <h2>The Cycle</h2>
+        <p>Reefer Madness was not alone. The Hollywood studios' Production Code, enforced from 1934, barred showing the drug trade, so the drug film belonged to independents who took their prints from town to town and sold the forbidden as a warning. Six of them survive in the public domain. Here is the bill: every one of them can be run in this theatre.</p>
+      </header>
+      <!-- a roadshow playbill: every film on one printed bill, each with a ticket to run it -->
+      <div class="rm-playbill">
+        <header class="rm-playbill-head">
+          <p class="rm-playbill-top"><span>Adults only</span><span>Roadshow attractions</span><span>One week only</span></p>
+          <p class="rm-playbill-title">Six Shocking Features</p>
+          <p class="rm-playbill-sub">The drug films of the exploitation circuit, 1934 to 1949 · now at this theatre</p>
+        </header>
+        <ol class="rm-bill-list">
+          {CYCLE.map((f, i) => (
+            <li class="rm-bill-item" style={`--tilt:${[-2.5, 2, -1.5, 3, -2, 1.5][i % 6]}deg`}>
+              <figure class="rm-bill-poster">
+                <Image src={posterImg(f.poster)} alt={`Poster for ${f.title}`} widths={[260, 480]} sizes="(max-width: 760px) 30vw, 200px" loading="lazy" />
+              </figure>
+              <div class="rm-bill-text">
+                <p class="rm-bill-year">{f.year}<span>{f.minutes ? `${f.minutes} minutes` : "feature"}</span></p>
+                <h3>{f.title}</h3>
+                <p class="rm-bill-tag">“{f.tag}”</p>
+                <p class="rm-bill-by">{f.by}</p>
+                <p class="rm-bill-body">{f.text}</p>
+                <p class="rm-bill-more">
+                  {f.hist && <a href={h(f.hist)}>History →</a>}
+                  {f.src && <a href={SRC[f.src][1]} target="_blank" rel="noopener noreferrer">Source ↗</a>}
+                  <a href={`https://archive.org/details/${f.archive}`} target="_blank" rel="noopener noreferrer">Internet Archive ↗</a>
+                </p>
+              </div>
+              <button type="button" class="rm-bill-ticket" data-archive={f.archive} data-title={f.title} aria-label={`Run ${f.title}`}>
+                <small>Admit one</small><b>▶ Run the film</b><small>No. {String(i + 1).padStart(3, "0")}</small>
+              </button>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <dialog class="rm-player" aria-label="Film player">
+        <div class="rm-curtain left" aria-hidden="true"></div>
+        <div class="rm-curtain right" aria-hidden="true"></div>
+        <div class="rm-player-in">
+          <p class="rm-player-bill"><span>Now showing</span><b class="rm-player-title"></b></p>
+          <div class="rm-player-screen"></div>
+          <p class="rm-player-foot"><span>Public domain, played from the Internet Archive.</span><button type="button" class="rm-player-close">■ Stop the projector</button></p>
+        </div>
+      </dialog>
+      <ol class="rm-roadshow" aria-label="How a roadshow worked">
+        {ROADSHOW.map(([t, x], i) => <li><small>Admit one · note {i + 1}</small><b>{t}</b><p>{x}</p></li>)}
+      </ol>
+      <p class="rm-cycle-note">The films are in the public domain and play from the Internet Archive only when you run them. On roadshows: <a href={SRC.schaefer[1]} target="_blank" rel="noopener noreferrer">{SRC.schaefer[0]}</a>. The Production Code: <a href={SRC.code[1]} target="_blank" rel="noopener noreferrer">{SRC.code[0]}</a>, and <a href={h("us-production-code-drugs-1934")}>its drug rule in our history</a>.</p>
+    </section>
+
+    <!-- IV · The Gallery -->
+    <section class="rm-gallery" id="gallery" aria-label="Room IV, The Gallery" data-motifs={JSON.stringify(Object.fromEntries(Object.entries(MOTIFS).map(([k, [, t]]) => [k, t])))}>
+      <header class="rm-gallery-head">
+        <p class="rm-room">Room IV</p>
+        <h2>The Gallery</h2>
+        <p>The films lived on their posters. Exploitation distributors had no stars to sell, so the poster sold the subject: big type, hot colours, a woman in danger and a promise of the forbidden, wrapped in a warning. The same tricks moved onto the covers of the cheap paperbacks of the 1950s. Pick a device to see how often it was used, and open any poster to look closer.</p>
+      </header>
+      <div class="rm-motifs" role="group" aria-label="Show posters by device">
+        <button type="button" aria-pressed="true" data-motif="all">All <b>{POSTERS.length}</b></button>
+        {Object.entries(MOTIFS).map(([k, [label]]) => <button type="button" aria-pressed="false" data-motif={k}>{label} <b>{motifCount(k)}</b></button>)}
+        <span class="rm-motif-sep" aria-hidden="true"></span>
+        <button type="button" aria-pressed="false" data-motif="film">Film posters <b>{POSTERS.filter((p) => p.kind === "film").length}</b></button>
+        <button type="button" aria-pressed="false" data-motif="book">Paperbacks <b>{POSTERS.filter((p) => p.kind === "book").length}</b></button>
+      </div>
+      <p class="rm-motif-note" aria-live="polite">Every poster here, from the 1930s to the 1950s.</p>
+      <ul class="rm-wall">
+        {POSTERS.map((p, i) => (
+          <li class="rm-poster" data-motifs={[...p.motifs, p.kind].join(" ")}>
+            <button type="button" class="rm-poster-open" data-i={i} aria-label={`${p.title}${p.year ? `, ${p.year}` : ""}: open larger`}>
+              <Image src={p.img} alt="" widths={[240, 420]} sizes="(max-width: 760px) 45vw, 230px" loading="lazy" />
+            </button>
+            <p><b>{p.title}</b><span>{p.kind === "book" ? "Paperback" : "Film"}{p.year && ` · ${p.year}`}</span></p>
+          </li>
+        ))}
+      </ul>
+      <dialog class="rm-viewer" aria-label="Poster">
+        <button type="button" class="rm-viewer-close" aria-label="Close">Close ×</button>
+        <button type="button" class="rm-viewer-step prev" aria-label="Previous poster">‹</button>
+        <button type="button" class="rm-viewer-step next" aria-label="Next poster">›</button>
+        {POSTERS.map((p, i) => (
+          <figure class="rm-viewer-item" data-i={i} hidden>
+            <Image src={p.img} alt={`${p.kind === "book" ? "Paperback cover" : "Poster"}: ${p.title}`} widths={[600, 1000]} sizes="(max-width: 760px) 92vw, 560px" loading="lazy" />
+            <figcaption>
+              <small>{p.kind === "book" ? "Paperback cover" : "Film poster"}{p.year && ` · ${p.year}`}{p.maker && ` · ${p.maker}`}</small>
+              <b>{p.title}</b>
+              <p>{p.line}</p>
+              <ul>{p.motifs.map((m) => <li title={MOTIFS[m][1]}>{MOTIFS[m][0]}</li>)}</ul>
+              {p.hist && <a class="rm-viewer-hist" href={h(p.hist)}>The film in our history →</a>}
+              <span class="rm-viewer-credit">From the collection of <a href="https://tobacco.stanford.edu/marijuanas/reefer-madness/" target="_blank" rel="noopener noreferrer">Stanford Research into the Impact of Tobacco Advertising</a></span>
+            </figcaption>
+          </figure>
+        ))}
+      </dialog>
+      <p class="rm-credits">The posters and covers are from the Reefer Madness collection of Stanford Research into the Impact of Tobacco Advertising (SRITA). Dates are given where the film or edition is known; many posters are undated reissues. Modern parodies, theatre posters and DVD covers in that collection are not shown.</p>
+    </section>
+
+    <!-- V · The Defendants -->
+    <section class="rm-court" id="defendants" aria-label="Room V, The Defendants">
+      <header class="rm-court-head">
+        <p class="rm-room">Room V</p>
+        <h2>The Defendants</h2>
+        <p>The films were fiction; the sentences were not. A docket of people the law caught, and of what the law came to demand, with each sentence drawn to scale on the bars: every step to the right is ten times longer.</p>
+      </header>
+      <ol class="rm-docket">
+        <li class="rm-docket-scale" aria-hidden="true"><span></span><span class="rm-bars-axis">{[[60, "60 days"], [365, "1 year"], [3652, "10 years"], [36159, "99 years"]].map(([d, l]) => <span style={`left:${dayScale(d)}%`}>{l}</span>)}</span></li>
+        {DOCKET.map((d) => (
+          <li class="rm-docket-row">
+            <div class="rm-docket-who">
+              <span class="rm-docket-no">No. {d.no}</span>
+              <b>{d.name}</b>
+              <span class="rm-docket-where">{d.where}</span>
+            </div>
+            <div class="rm-docket-what">
+              <p>{d.what}</p>
+              <p class="rm-sentence">{d.sentence}</p>
+              {d.days && (
+                <span class="rm-bars" role="img" aria-label={d.sentence}>
+                  <i class="rm-bars-min" style={`width:${dayScale(d.days)}%`}></i>
+                  {d.max && <i class="rm-bars-max" style={`left:${dayScale(d.days)}%;width:${dayScale(d.max) - dayScale(d.days)}%`}></i>}
+                </span>
+              )}
+              <span class="rm-docket-links">
+                {d.hist && <a href={h(d.hist)}>History →</a>}
+                {d.src && (SRC[d.src][1] ? <a href={SRC[d.src][1]} target="_blank" rel="noopener noreferrer">Source ↗</a> : <span>{SRC[d.src][0]}</span>)}
+              </span>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p class="rm-court-note">In 1954 the federal judges of the Fifth Circuit unanimously asked Congress to remove the mandatory minimums; Anslinger denounced them (<a href={h("us-fifth-circuit-judges-1954")}>history</a>). In 1969 the Supreme Court struck the Marihuana Tax Act down (<a href={h("us-leary-1969")}>history</a>).</p>
+    </section>
+
+    <!-- VI · The Export -->
+    <section class="rm-wires" id="export" aria-label="Room VI, The Export">
+      <header class="rm-wires-head">
+        <p class="rm-room">Room VI</p>
+        <h2>The Export</h2>
+        <p>The monster travelled. Cannabis entered international law at Geneva on another country's say-so, and the American case was argued at the League of Nations. The most direct contradictions came from Cairo and Mexico City. Read the wires.</p>
+      </header>
+      <ol class="rm-telegrams">
+        {WIRES.map((w) => (
+          <li class:list={["rm-telegram", { reply: w.reply }]}>
+            <p class="rm-telegram-head"><span>Telegram</span><span>{w.date}</span><span>From {w.from}</span></p>
+            <p class="rm-telegram-who">{w.who}</p>
+            <p class="rm-telegram-text">{w.text.toUpperCase().replace(/\. /g, " STOP ").replace(/\.$/, " STOP")}</p>
+            <p class="rm-telegram-links">
+              {w.hist && <a href={h(w.hist)}>History →</a>}
+              {w.src && (SRC[w.src][1] ? <a href={SRC[w.src][1]} target="_blank" rel="noopener noreferrer">Source ↗</a> : <span>{SRC[w.src][0]}</span>)}
+            </p>
+          </li>
+        ))}
+      </ol>
+      <p class="rm-wires-note">The League's 1938 exchange, by the account in <i>{SRC.league[0]}</i>; Salazar Viniegra and Mexico in 1940, by Isaac Campos.</p>
+    </section>
+
+    <!-- VII · The Afterlife -->
+    <section class="rm-afterlife" id="afterlife" aria-label="Room VII, The Afterlife">
+      <header class="rm-strip-head">
+        <p class="rm-room">Room VII</p>
+        <h2>The Afterlife</h2>
+        <p>A warning becomes a joke, and then a word. The film failed as a warning, but its title did not: once students had laughed at it, “reefer madness” became the name for any drug scare built on fear rather than evidence, and it is used more today than when the film was new.</p>
+      </header>
+      <figure class="rm-phrase">
+        <figcaption class="rm-phrase-head">
+          <b>The phrase that outlived the film</b>
+          <span>How often “reefer madness” appears in English books, per billion words</span>
+        </figcaption>
+        <div class="rm-phrase-plot">
+          <svg viewBox={`0 0 ${PH.W} ${PH.H}`} role="img" aria-label={`“Reefer madness” in English books: almost absent before 1971, about 8 per billion words in 1972, about 25 at its peak in 2004, and ${PHRASE.values.at(-1)} in 2022.`}>
+            {PH.ticks.map((t) => <g class="rm-phrase-grid"><line x1={PH.L} x2={PH.W - PH.R} y1={PH.y(t)} y2={PH.y(t)} /><text x={PH.L - 8} y={PH.y(t) + 4}>{t}</text></g>)}
+            {PH.years.map((yr) => <text class="rm-phrase-yr" x={PH.x(yr - PHRASE.from)} y={PH.H - 8}>{yr}</text>)}
+            <path class="rm-phrase-area" d={PH.area} />
+            <path class="rm-phrase-line" d={PH.line} />
+            {PH.marks.map((m, k) => (
+              <g class="rm-phrase-mark">
+                <line x1={m.cx} x2={m.cx} y1={m.cy - 8} y2={14 + m.row * 22} />
+                <circle cx={m.cx} cy={m.cy} r="5" />
+                <text x={m.cx + (m.end ? -6 : 6)} y={18 + m.row * 22} text-anchor={m.end ? "end" : "start"}>{m.year} · {m.title}</text>
+              </g>
+            ))}
+            {PHRASE.values.map((v, i) => <rect class="rm-phrase-hit" x={PH.x(i) - 8} y={0} width="16" height={PH.H - PH.B} data-year={PHRASE.from + i} data-v={v} />)}
+            <line class="rm-phrase-cursor" x1="0" x2="0" y1={PH.T} y2={PH.H - PH.B} />
+          </svg>
+        </div>
+        <p class="rm-phrase-read" aria-live="polite">Point at a year. Before 1971 the phrase barely appears; the year Stroup began showing the film, it jumps.</p>
+        <p class="rm-phrase-src">Data: <a href={SRC.ngram[1]} target="_blank" rel="noopener noreferrer">{SRC.ngram[0]}</a>, read in October 2026. Books only, and only those Google has scanned.</p>
+      </figure>
+      <ol class="rm-strip">
+        {STRIP.map((f) => (
+          <li class:list={["rm-frame", { marked: f.marked }]}>
+            <span class="rm-frame-year">{f.year}</span>
+            <b>{f.title}</b>
+            <p>{f.text}</p>
+            <span class="rm-frame-links">
+              {f.hist && <a href={h(f.hist)}>History →</a>}
+              {f.atlas && <a href={c(f.atlas)}>Keith Stroup →</a>}
+              {f.src && SRC[f.src][1] && <a href={SRC[f.src][1]} target="_blank" rel="noopener noreferrer">Source ↗</a>}
+            </span>
+          </li>
+        ))}
+      </ol>
+      <p class="rm-strip-hint">Scroll the strip: the film's later life, frame by frame.</p>
+    </section>
+
+    <!-- VIII · The Evidence Room -->
+    <section class="rm-archive" id="evidence" aria-label="Room VIII, The Evidence Room">
+      <header class="rm-archive-head">
+        <p class="rm-room">Room VIII</p>
+        <h2>The Evidence Room</h2>
+        <p>Nothing disappears behind the story. Here is every document, connection and reading the exhibition rests on. Primary evidence is a document from the time itself, such as a film, a speech or a report. A documented connection is something historians have shown from the record. An interpretation is a reading or a popular story, some of them repeated far more often than they are proven. Filter by kind.</p>
+        <div class="rm-filter" role="group" aria-label="Show">
+          <button type="button" aria-pressed="true" data-filter="all">All {EVIDENCE.length}</button>
+          {Object.entries(KIND).map(([k, label]) => <button type="button" aria-pressed="false" data-filter={k}>{label} {EVIDENCE.filter((e) => e[1] === k).length}</button>)}
+        </div>
+      </header>
+      <div class="rm-drawer">
+        {EVIDENCE.map(([date, kind, type, title, text, src, hist, img]) => (
+          <article class:list={["rm-index-card", kind]} data-kind={kind}>
+            {img === "poster" && <Image src={poster} alt="A promotional poster for Reefer Madness" widths={[300, 600]} sizes="300px" />}
+            {img === "magazine" && <Image src={magazine} alt="The opening page of Marijuana, Assassin of Youth, The American Magazine, July 1937" widths={[300, 600]} sizes="300px" />}
+            <p class="rm-index-top"><span>{date}</span><span>{type}</span></p>
+            <h3>{title}</h3>
+            <p>{text}</p>
+            <p class="rm-kind">{KIND[kind]}</p>
+            <p class="rm-index-links">
+              {hist && <a href={h(hist)}>History →</a>}
+              {src && (SRC[src][1] ? <a href={SRC[src][1]} target="_blank" rel="noopener noreferrer">{SRC[src][0].split(" — ")[0]} ↗</a> : <span>{SRC[src][0]}</span>)}
+            </p>
+          </article>
+        ))}
+      </div>
+      <p class="rm-credits">Collections worth a visit: <a href={SRC.hashmuseum[1]} target="_blank" rel="noopener noreferrer">the Hash Marihuana & Hemp Museum</a>, <a href={SRC.stanford[1]} target="_blank" rel="noopener noreferrer">Stanford's research collection</a> and <a href={SRC.loc[1]} target="_blank" rel="noopener noreferrer">the Library of Congress guide</a>. The poster is in the public domain (Motion Picture Ventures, via Wikimedia Commons); the magazine page is from the Hash Marihuana & Hemp Museum's collection.</p>
+      <p class="rm-exit"><a href={`${base}exhibitions/`}>← Back to the exhibitions</a> <a href={`${base}country/us/#history`}>The United States' history →</a></p>
+    </section>
+  </main>
+
+  <script>
+    const root = document.querySelector(".rm");
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // ── The entrance: the trailer plays silently on its own; sound and pause on request ──
+    const video = root.querySelector(".rm-trailer-video"), screen = video.closest(".rm-trailer-screen");
+    const playBtn = root.querySelector('[data-ctl="play"]'), soundBtn = root.querySelector('[data-ctl="sound"]');
+    const playing = (on) => { playBtn.textContent = on ? "❚❚ Pause" : "▶ Play"; playBtn.setAttribute("aria-pressed", String(on)); };
+    if (still) { video.removeAttribute("autoplay"); video.pause(); playing(false); screen.classList.add("stopped"); }
+    video.addEventListener("play", () => { playing(true); screen.classList.remove("stopped"); });
+    video.addEventListener("pause", () => { playing(false); screen.classList.add("stopped"); });
+    playBtn.addEventListener("click", () => (video.paused ? video.play() : video.pause()));
+    const sound = (on) => {
+      video.muted = !on;
+      soundBtn.textContent = on ? "♪ Sound off" : "♪ Sound on";
+      soundBtn.setAttribute("aria-pressed", String(on));
+      screen.classList.add("heard");
+      if (on && video.paused) video.play();
+    };
+    soundBtn.addEventListener("click", () => sound(video.muted));
+    // the first click on the picture turns the sound on; after that a click pauses or plays
+    video.addEventListener("click", () => {
+      if (!screen.classList.contains("heard")) sound(true);
+      else video.paused ? video.play() : video.pause();
+    });
+    // English subtitles, on by default, drawn in the page so they sit above the controls
+    const cc = root.querySelector(".rm-trailer-cc"), ccBtn = root.querySelector('[data-ctl="cc"]');
+    const track = video.textTracks[0];
+    if (track) {
+      track.mode = "hidden";
+      const draw = () => { cc.textContent = ccBtn.getAttribute("aria-pressed") === "true" ? [...(track.activeCues ?? [])].map((c) => c.text).join("\n") : ""; };
+      track.addEventListener("cuechange", draw);
+      ccBtn.addEventListener("click", () => { ccBtn.setAttribute("aria-pressed", String(ccBtn.getAttribute("aria-pressed") !== "true")); draw(); });
+    }
+    // the seek bar and the time
+    const seek = root.querySelector(".rm-trailer-seek"), clock = root.querySelector(".rm-trailer-time");
+    const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
+    const tick = () => {
+      const d = video.duration || +seek.max;
+      seek.max = d; if (!seek.matches(":active")) seek.value = video.currentTime;
+      seek.style.setProperty("--done", `${(video.currentTime / d) * 100}%`);
+      clock.textContent = `${mmss(video.currentTime)} / ${mmss(d)}`;
+    };
+    video.addEventListener("timeupdate", tick);
+    video.addEventListener("loadedmetadata", tick);
+    seek.addEventListener("input", () => { video.currentTime = +seek.value; tick(); });
+    // a headline's case file, opened as a dialog; a story once read stays marked
+    function showFile(story) {
+      const file = story.querySelector("dialog.rm-file");
+      if (!file || file.open) return;
+      story.classList.add("open", "read");
+      file.showModal();
+      file.scrollTop = 0;
+    }
+    // ── The bar that follows you: the room you are in, and how far through ──
+    const now = root.querySelector(".rm-now"), hero = root.querySelector(".rm-hero");
+    const nowRoom = now.querySelector(".rm-now-room"), nowLinks = [...now.querySelectorAll("[data-room]")];
+    const rooms = [root.querySelector("#programme"), ...nowLinks.map((a) => root.querySelector(`#${a.dataset.room}`))];
+    let shown = "";
+    const follow = () => {
+      const r = hero.getBoundingClientRect();
+      now.classList.toggle("on", r.bottom < 80);
+      const line = innerHeight * 0.35;
+      const here = rooms.filter((el) => el && el.getBoundingClientRect().top < line).at(-1) ?? rooms[0];
+      if (here.id !== shown) {
+        shown = here.id;
+        const a = nowLinks.find((x) => x.dataset.room === here.id);
+        nowRoom.innerHTML = a ? `<b>${a.textContent}</b><span>${a.title}</span>` : "<b>·</b><span>Programme</span>";
+        nowLinks.forEach((x) => x.toggleAttribute("aria-current", x === a));
+      }
+      const end = root.scrollHeight + root.offsetTop - innerHeight;
+      now.style.setProperty("--p", `${Math.min(1, Math.max(0, scrollY / end)) * 100}%`);
+    };
+    let queued = false;
+    addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; follow(); }); } }, { passive: true });
+    follow();
+    // ── Room VII: read the phrase chart year by year ──
+    const phrase = root.querySelector(".rm-phrase"), phraseRead = phrase.querySelector(".rm-phrase-read"), phraseCursor = phrase.querySelector(".rm-phrase-cursor");
+    const phraseNote = phraseRead.textContent;
+    phrase.querySelectorAll(".rm-phrase-hit").forEach((r) => r.addEventListener("pointerenter", () => {
+      const x = +r.getAttribute("x") + 8;
+      phraseCursor.setAttribute("x1", x); phraseCursor.setAttribute("x2", x); phrase.classList.add("reading");
+      phraseRead.innerHTML = `<b>${r.dataset.year}</b> · ${(+r.dataset.v).toFixed(1)} per billion words`;
+    }));
+    phrase.querySelector("svg").addEventListener("pointerleave", () => { phrase.classList.remove("reading"); phraseRead.textContent = phraseNote; });
+    // ── Room I: headlines open their case files over the page, so the front page never moves ──
+    root.querySelectorAll(".rm-headline").forEach((btn) => btn.addEventListener("click", () => showFile(btn.closest(".rm-story"))));
+    root.querySelectorAll("dialog.rm-file").forEach((file) => {
+      file.querySelector(".rm-file-close").addEventListener("click", () => file.close());
+      // a click on the backdrop closes it
+      file.addEventListener("click", (e) => { if (e.target === file) file.close(); });
+      file.addEventListener("close", () => file.closest(".rm-story").classList.remove("open"));
+    });
+    // ── Room II: pick a part of the machine to light its steps ──
+    const whoBtns = root.querySelectorAll(".rm-chain-key [data-who]"), chain = root.querySelector(".rm-chain");
+    whoBtns.forEach((b) => b.addEventListener("click", () => {
+      const on = b.getAttribute("aria-pressed") !== "true";
+      whoBtns.forEach((x) => x.setAttribute("aria-pressed", String(on && x === b)));
+      chain.dataset.focus = on ? b.dataset.who : "";
+      chain.querySelectorAll(".rm-step").forEach((st) => st.classList.toggle("dim", on && st.dataset.who !== b.dataset.who));
+    }));
+    // ── Room IV: the gallery, filtered by selling device, with a viewer ──
+    const motifBtns = root.querySelectorAll("[data-motif]"), posters = [...root.querySelectorAll(".rm-poster")], motifNote = root.querySelector(".rm-motif-note");
+    const MOTIF_TEXT = JSON.parse(root.querySelector(".rm-gallery").dataset.motifs);
+    motifBtns.forEach((b) => b.addEventListener("click", () => {
+      const k = b.dataset.motif;
+      motifBtns.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      posters.forEach((p) => (p.hidden = k !== "all" && !p.dataset.motifs.split(" ").includes(k)));
+      const shown = posters.filter((p) => !p.hidden).length;
+      motifNote.textContent = k === "all" ? "Every poster here, from the 1930s to the 1950s." : MOTIF_TEXT[k] ? `${shown} of ${posters.length}. ${MOTIF_TEXT[k]}` : `${shown} of ${posters.length}.`;
+    }));
+    const viewer = root.querySelector(".rm-viewer"), items = [...viewer.querySelectorAll(".rm-viewer-item")];
+    let at = 0;
+    // the viewer steps through the posters the filter shows
+    const visible = () => posters.map((p, j) => (p.hidden ? -1 : j)).filter((j) => j >= 0);
+    const showAt = (k) => { at = k; items.forEach((it, j) => (it.hidden = j !== at)); viewer.scrollTop = 0; };
+    const step = (d) => { const v = visible(); showAt(v[(v.indexOf(at) + d + v.length) % v.length]); };
+    root.querySelectorAll(".rm-poster-open").forEach((b) => b.addEventListener("click", () => { showAt(+b.dataset.i); viewer.showModal(); }));
+    viewer.querySelector(".rm-viewer-close").addEventListener("click", () => viewer.close());
+    viewer.querySelector(".prev").addEventListener("click", () => step(-1));
+    viewer.querySelector(".next").addEventListener("click", () => step(1));
+    viewer.addEventListener("click", (e) => { if (e.target === viewer) viewer.close(); });
+    viewer.addEventListener("keydown", (e) => { if (e.key === "ArrowLeft") step(-1); if (e.key === "ArrowRight") step(1); });
+    // ── Room III: a ticket on the playbill runs its film in the theatre, loaded from the Internet Archive only then ──
+    const player = root.querySelector(".rm-player"), playerScreen = player.querySelector(".rm-player-screen");
+    root.querySelectorAll(".rm-bill-ticket").forEach((b) => b.addEventListener("click", () => {
+      video.pause();
+      player.querySelector(".rm-player-title").textContent = b.dataset.title;
+      const frame = document.createElement("iframe");
+      frame.src = `https://archive.org/embed/${b.dataset.archive}`;
+      frame.title = `${b.dataset.title}, from the Internet Archive`;
+      frame.allow = "autoplay; fullscreen";
+      frame.allowFullscreen = true;
+      // made here, so outside the page's scoped styles
+      frame.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0";
+      playerScreen.replaceChildren(frame);
+      player.showModal();
+    }));
+    player.querySelector(".rm-player-close").addEventListener("click", () => player.close());
+    player.addEventListener("click", (e) => { if (e.target === player) player.close(); });
+    player.addEventListener("close", () => playerScreen.replaceChildren());
+    // ── Room VIII: filter the drawer ──
+    root.querySelectorAll("[data-filter]").forEach((btn) => btn.addEventListener("click", () => {
+      root.querySelectorAll("[data-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      root.querySelectorAll(".rm-index-card").forEach((c) => (c.hidden = btn.dataset.filter !== "all" && c.dataset.kind !== btn.dataset.filter));
+    }));
+  </script>
+</Base>
+
+<style>
+  /* Reefer Madness has its own look: a picture house, a newspaper, a corkboard, a film strip and an
+     archive drawer, in poster black, cream and blood red. It ignores the site's light theme. */
+  .rm {
+    --ink: #0b0a08; --cream: #efe6d2; --paper: #e9dfc6; --sepia: #b9a477; --red: #b3261e; --red-2: #e05a4f; --cork: #3b2a1c;
+    --deco: "Limelight", "Instrument Serif", Georgia, serif; --type: "Special Elite", "Courier New", monospace; --news: "Old Standard TT", Georgia, serif;
+    background: var(--ink); color: var(--cream); overflow: hidden;
+    /* edge to edge: the site's pages sit in a column, this one fills the window */
+    max-width: none; margin: 0; padding: 0;
+  }
+  .rm a { color: inherit; }
+  .rm-room { margin: 0; font: 400 12px var(--type); letter-spacing: .2em; text-transform: uppercase; color: var(--sepia); }
+  .rm section { scroll-margin-top: 110px; }
+
+  /* tickets: the rooms */
+  /* the bar that follows you down the exhibition */
+  :global(html):has(.rm) { scroll-padding-top: calc(var(--hdr, 57px) + 56px); }
+  .rm-now { position: fixed; z-index: 19; top: var(--hdr, 57px); left: 0; right: 0; display: flex; align-items: center; gap: 14px; height: 46px; padding: 0 max(16px, calc((100% - 1180px) / 2)); background: rgba(11, 10, 8, .94); backdrop-filter: blur(8px); border-bottom: 1px solid #2a241b; transform: translateY(-110%); opacity: 0; transition: transform .25s, opacity .25s; pointer-events: none; }
+  .rm-now.on { transform: none; opacity: 1; pointer-events: auto; }
+  .rm-now-title { flex: none; font: 400 17px var(--deco); color: var(--cream); text-decoration: none; text-shadow: 0 0 10px rgba(224, 90, 79, .45); }
+  .rm-now-room { display: flex; align-items: baseline; gap: 8px; min-width: 0; padding-left: 14px; border-left: 1px solid #3a3226; font: 400 13px var(--type); color: var(--cream); white-space: nowrap; }
+  .rm-now-room b { font: 400 14px var(--deco); color: var(--red-2); }
+  .rm-now-room span { overflow: hidden; text-overflow: ellipsis; }
+  .rm-now-rooms { display: flex; gap: 4px; margin: 0 0 0 auto; padding: 0; list-style: none; }
+  .rm-now-rooms a { display: grid; place-items: center; min-width: 30px; height: 26px; padding: 0 6px; border: 1px dashed #5a4c36; border-radius: 2px; font: 400 12px var(--deco); color: var(--sepia); text-decoration: none; }
+  .rm-now-rooms a:hover { border-color: var(--cream); color: var(--cream); }
+  .rm-now-rooms a[aria-current] { border-style: solid; border-color: var(--red); background: var(--red); color: var(--cream); }
+  .rm-now-bar { position: absolute; left: 0; bottom: -1px; height: 2px; width: var(--p, 0%); background: var(--red-2); }
+  .rm-tickets { position: relative; z-index: 1; display: flex; gap: 6px; overflow-x: auto; padding: 10px 16px; background: rgba(11, 10, 8, .92); backdrop-filter: blur(6px); border-bottom: 1px solid #2a241b; scrollbar-width: none; }
+  .rm-ticket { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px dashed var(--sepia); border-radius: 3px; font: 400 13px var(--type); color: var(--cream); text-decoration: none; }
+  .rm-ticket b { font: 400 13px var(--deco); color: var(--red-2); }
+  .rm-ticket:hover { background: var(--red); border-color: var(--red); }
+  .rm-ticket-home { border-style: solid; color: var(--sepia); }
+
+  /* the entrance */
+  .rm-curtain { position: absolute; top: 0; bottom: 0; width: 9%; background: repeating-linear-gradient(90deg, #5c0d09 0 14px, #7d150f 14px 28px, #4a0a07 28px 36px); box-shadow: inset 0 0 60px #000; }
+  .rm-curtain.left { left: 0; } .rm-curtain.right { right: 0; }
+  .rm-marquee { position: relative; z-index: 1; }
+  .rm-marquee-top { margin: 0; font: 400 12px var(--type); letter-spacing: .25em; text-transform: uppercase; color: var(--sepia); }
+  .rm-marquee h1 { margin: 12px 0 0; font: 400 clamp(52px, 10vw, 136px)/.9 var(--deco); letter-spacing: .02em; color: var(--cream); text-shadow: 0 0 22px rgba(224, 90, 79, .55), 0 0 2px #fff; }
+  .rm-marquee-sub { margin: 10px 0 0; font: italic 400 clamp(20px, 2.6vw, 30px) var(--news); color: var(--red-2); }
+  .rm-grain { position: absolute; inset: -50%; pointer-events: none; opacity: .14; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); animation: rm-grain .5s steps(4) infinite; mix-blend-mode: screen; }
+  @keyframes rm-grain { 0% { transform: translate(0, 0); } 25% { transform: translate(-5%, 3%); } 50% { transform: translate(4%, -6%); } 75% { transform: translate(-3%, 5%); } 100% { transform: translate(0, 0); } }
+  /* the programme: the introduction before the rooms */
+  .rm-hero { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100svh - 110px); padding: 40px 16px 32px; text-align: center; background: radial-gradient(ellipse at 50% 45%, #2a120e 0%, var(--ink) 65%); overflow: hidden; }
+  .rm-trailer { position: relative; z-index: 1; width: min(720px, 82vw, calc((100svh - 420px) * 4 / 3)); margin: 30px auto 0; }
+  .rm-trailer-screen { position: relative; aspect-ratio: 4 / 3; border: 10px solid #1a140f; border-radius: 4px; background: #000; box-shadow: 0 0 0 1px #3a3226, 0 0 90px rgba(224, 90, 79, .28), 0 30px 60px #000; overflow: hidden; }
+  .rm-trailer-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000; }
+  .rm-trailer-video { cursor: pointer; }
+  .rm-trailer-controls { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 26px 12px 10px; background: linear-gradient(transparent, rgba(0, 0, 0, .75)); }
+  .rm-trailer-seek { flex: 1; min-width: 0; height: 4px; margin: 0; appearance: none; -webkit-appearance: none; border-radius: 2px; background: linear-gradient(90deg, var(--red-2) var(--done, 0%), rgba(239, 230, 210, .3) var(--done, 0%)); cursor: pointer; }
+  .rm-trailer-seek::-webkit-slider-thumb { -webkit-appearance: none; width: 13px; height: 13px; border-radius: 50%; background: var(--cream); border: 0; }
+  .rm-trailer-seek::-moz-range-thumb { width: 13px; height: 13px; border-radius: 50%; background: var(--cream); border: 0; }
+  .rm-trailer-time { flex: none; font: 400 12px var(--type); color: var(--cream); font-variant-numeric: tabular-nums; }
+  /* with a pointer, the controls show only while it is over the picture, or while paused */
+  @media (hover: hover) {
+    .rm-trailer-controls { opacity: 0; transition: opacity .25s; }
+    .rm-trailer-screen:hover .rm-trailer-controls, .rm-trailer-screen:focus-within .rm-trailer-controls, .rm-trailer-screen.stopped .rm-trailer-controls { opacity: 1; }
+  }
+  .rm-trailer-cc { position: absolute; z-index: 1; left: 50%; bottom: 58px; width: max-content; max-width: 88%; margin: 0; transform: translateX(-50%); text-align: center; white-space: pre-line; font: 400 clamp(14px, 2.1vw, 20px)/1.35 var(--news); color: #fff; pointer-events: none; }
+  .rm-trailer-cc:not(:empty) { padding: 4px 12px 5px; background: rgba(0, 0, 0, .72); border-radius: 2px; }
+  .rm-trailer-ctl[data-ctl="cc"][aria-pressed="false"] { opacity: .55; text-decoration: line-through; }
+  .rm-trailer-hint { position: absolute; z-index: 2; top: 12px; left: 50%; margin: 0; padding: 5px 12px; transform: translateX(-50%); border-radius: 2px; background: rgba(11, 10, 8, .72); color: var(--cream); font: 400 12px var(--type); letter-spacing: .1em; text-transform: uppercase; pointer-events: none; transition: opacity .3s; }
+  .rm-trailer-screen.heard .rm-trailer-hint { opacity: 0; }
+  .rm-trailer-ctl { flex: none; padding: 6px 12px; border: 1px solid rgba(239, 230, 210, .5); border-radius: 2px; background: rgba(11, 10, 8, .72); color: var(--cream); font: 400 12px var(--type); letter-spacing: .06em; cursor: pointer; backdrop-filter: blur(4px); }
+  .rm-trailer-ctl:hover, .rm-trailer-ctl[aria-pressed="true"][data-ctl="sound"] { background: var(--red); border-color: var(--red); }
+  .rm-trailer figcaption { margin: 12px 0 0; font: 400 13px/1.5 var(--news); color: #b9aa88; }
+  .rm-hero-down { position: relative; z-index: 1; margin-top: 22px; font: 400 13px var(--type); letter-spacing: .14em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px dashed var(--sepia); padding-bottom: 3px; }
+  .rm-hero-down:hover { color: var(--red-2); border-color: var(--red-2); }
+  .rm-foyer { padding: 64px max(16px, calc((100% - 1120px) / 2)) 64px; background: var(--ink); text-align: center; }
+  .rm-programme { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 36px; margin: 0; text-align: left; }
+  .rm-programme-text { padding: 30px 34px; background: var(--paper); color: #1b1610; box-shadow: 8px 8px 0 #5a1712; }
+  .rm-programme-kicker { margin: 0; font: 400 12px var(--type); letter-spacing: .2em; text-transform: uppercase; color: var(--red); }
+  .rm-programme-text h2 { margin: 6px 0 12px; font: 700 clamp(26px, 3vw, 34px)/1.1 var(--news); }
+  .rm-programme-text h2:not(:first-of-type) { margin-top: 26px; padding-top: 18px; border-top: 1px solid #b6a888; }
+  .rm-programme-text p { margin: 0 0 12px; font: 400 17px/1.6 var(--news); color: #2b2318; }
+  .rm-programme-text .rm-programme-lede { font-size: 19px; }
+  .rm-programme-text a { color: inherit; text-decoration: underline; text-decoration-color: rgba(179, 38, 30, .55); text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color .15s, text-decoration-color .15s; }
+  .rm-programme-text a:hover { color: var(--red); text-decoration-color: var(--red); }
+  .rm-words dt a { color: inherit; text-decoration: none; }
+  .rm-words dt a:hover { text-decoration: underline; }
+  .rm-words-more { color: var(--sepia); font: 400 12px var(--type); text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+  .rm-words-more:hover { color: var(--red-2); }
+  .rm-programme-lede::first-letter { float: left; margin: 4px 8px 0 0; font: 400 58px/.8 var(--deco); color: var(--red); }
+  .rm-programme-side h3 { margin: 0 0 12px; font: 400 12px var(--type); letter-spacing: .2em; text-transform: uppercase; color: var(--sepia); }
+  .rm-programme-side h3 + * { margin-bottom: 30px; }
+  .rm-facts { margin: 0; padding: 0; list-style: none; border-left: 2px solid var(--red); }
+  .rm-facts li { position: relative; display: grid; grid-template-columns: 64px 1fr; gap: 10px; padding: 7px 0 7px 16px; font: 400 15px/1.4 var(--news); color: #d8c9a6; }
+  .rm-facts li::before { content: ""; position: absolute; left: -6px; top: 13px; width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
+  .rm-facts b { font: 400 18px var(--deco); color: var(--cream); }
+  .rm-facts a { color: inherit; text-decoration: underline; text-decoration-color: #6b5b3f; text-underline-offset: 3px; }
+  .rm-facts a:hover { color: var(--red-2); }
+  .rm-words { display: grid; gap: 12px; margin: 0; }
+  .rm-words dt { font: 400 15px var(--type); color: var(--red-2); }
+  .rm-words dd { margin: 2px 0 0; font: 400 14px/1.5 var(--news); color: #cbbd9c; }
+  .rm-guide { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 40px 0 0; padding: 0; list-style: none; text-align: left; counter-reset: room; }
+  .rm-guide a { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 14px 16px; border: 1px dashed var(--sepia); border-radius: 3px; color: var(--cream); text-decoration: none; transition: background .15s, border-color .15s; }
+  .rm-guide a:hover { background: #3a0f0b; border-color: var(--red-2); border-style: solid; }
+  .rm-guide b { font: 400 11px var(--type); letter-spacing: .16em; text-transform: uppercase; color: var(--red-2); }
+  .rm-guide span { font: 400 22px/1.1 var(--deco); }
+  .rm-guide em { font: italic 400 14px/1.45 var(--news); color: #b9aa88; }
+
+  /* I · the newspaper */
+  .rm-paper { padding: 64px max(16px, calc((100% - 1120px) / 2)) 72px; background: var(--paper); color: #1b1610; font-family: var(--news); }
+  .rm-masthead { text-align: center; border-bottom: 3px double #1b1610; padding-bottom: 10px; }
+  .rm-paper .rm-room { color: #6b5b3f; }
+  .rm-masthead h2 { margin: 6px 0 4px; font: 700 clamp(44px, 8vw, 104px)/.95 var(--news); letter-spacing: -.01em; text-transform: uppercase; }
+  .rm-dateline { display: flex; justify-content: space-between; margin: 8px 0 0; padding-top: 6px; border-top: 1px solid #1b1610; font: 400 12px var(--type); text-transform: uppercase; letter-spacing: .08em; }
+  .rm-paper-lede { max-width: 70ch; margin: 18px auto 26px; text-align: center; font: italic 400 17px/1.5 var(--news); color: #3d3325; }
+  .rm-columns { column-count: 3; column-gap: 28px; column-rule: 1px solid #b6a888; }
+  .rm-story { break-inside: avoid; margin: 0 0 22px; padding-bottom: 18px; border-bottom: 1px solid #b6a888; }
+  .rm-headline { display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; font: inherit; }
+  .rm-hed { display: block; font: 700 clamp(22px, 2.2vw, 28px)/1.05 var(--news); letter-spacing: -.01em; }
+  .rm-story.big .rm-hed { font-size: clamp(30px, 3.4vw, 44px); }
+  .rm-deck { display: block; margin-top: 6px; font: italic 400 16px var(--news); color: #4a3e2c; }
+  .rm-open { display: inline-block; margin-top: 10px; padding: 3px 8px; border: 1px solid #1b1610; font: 400 12px var(--type); text-transform: uppercase; letter-spacing: .08em; }
+  .rm-headline:focus-visible { outline: 2px dashed #1b1610; outline-offset: 6px; }
+  .rm-headline:hover .rm-open, .rm-story.open .rm-open { background: #1b1610; color: var(--paper); }
+  .rm-story.read:not(.open) .rm-open::after { content: " · read"; }
+  .rm-file { width: min(640px, calc(100vw - 32px)); max-height: min(86vh, 900px); margin: auto; overflow: auto; padding: 22px 24px 18px; background: #f6efdc; color: #1b1610; border: 1px solid #c9b98f; box-shadow: 6px 6px 0 #c9b98f, 0 30px 80px rgba(0, 0, 0, .6); font-family: var(--type); overscroll-behavior: contain; }
+  .rm-file::backdrop { background: rgba(18, 13, 9, .78); }
+  .rm-file[open] { animation: rm-file-in .18s ease-out; }
+  @keyframes rm-file-in { from { opacity: 0; transform: translateY(12px) rotate(-.6deg); } }
+  .rm-file-close { position: sticky; top: 0; float: right; margin: -8px -10px 0 12px; padding: 4px 9px; border: 1px solid #1b1610; background: #f6efdc; color: #1b1610; font: 400 12px var(--type); text-transform: uppercase; letter-spacing: .08em; cursor: pointer; z-index: 1; }
+  .rm-file-close:hover { background: #1b1610; color: #f6efdc; }
+  .rm-file-hed { clear: none; margin: 30px 0 12px; font: 700 clamp(22px, 3.4vw, 30px)/1.05 var(--news); color: #1b1610; }
+  .rm-stamp { position: absolute; top: 18px; left: 24px; margin: 0; padding: 2px 8px; border: 2px solid var(--red); color: var(--red); font: 400 11px var(--type); text-transform: uppercase; letter-spacing: .1em; transform: rotate(4deg); }
+  .rm-file dl { margin: 6px 0 0; display: grid; gap: 10px; }
+  .rm-file dt { font: 400 11px var(--type); text-transform: uppercase; letter-spacing: .1em; color: #7a6a4b; }
+  .rm-file dd { margin: 2px 0 0; font: 400 14px/1.45 var(--type); color: #1b1610; }
+  .rm-later dd { padding-left: 10px; border-left: 3px solid var(--red); }
+  .rm-file-links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 12px 0 0; font: 400 13px var(--type); }
+  .rm-file-links a { color: var(--red); }
+  .rm-file-src { margin: 10px 0 0; padding: 8px 0 0 16px; border-top: 1px dashed #c9b98f; font: 400 11.5px/1.45 var(--news); color: #5a4c36; }
+  .rm-file-src a { color: inherit; text-decoration: underline; }
+
+  /* II · the investigation board */
+  .rm-board-room { padding: 64px 16px 72px; background: #120d09; }
+  .rm-board-head { max-width: 1120px; margin: 0 auto 24px; }
+  .rm-board-head h2, .rm-strip-head h2, .rm-archive-head h2 { margin: 6px 0 8px; font: 400 clamp(38px, 6vw, 72px)/1 var(--deco); color: var(--cream); }
+  .rm-board-head p:not(.rm-room), .rm-strip-head p:not(.rm-room), .rm-archive-head p:not(.rm-room) { max-width: 66ch; margin: 0; font: 400 16px/1.55 var(--news); color: #cbbd9c; }
+  .rm-chain-key { display: flex; flex-wrap: wrap; gap: 8px; max-width: 1120px; margin: 0 auto 28px; }
+  .rm-chain-key button { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid #3a3226; border-radius: 2px; background: transparent; color: var(--cream); font: 400 13px var(--type); cursor: pointer; }
+  .rm-chain-key i { width: 10px; height: 10px; border-radius: 50%; background: var(--who); }
+  .rm-chain-key b { font-weight: 400; color: var(--sepia); }
+  .rm-chain-key button:hover { border-color: var(--who); }
+  .rm-chain-key button[aria-pressed="true"] { border-color: var(--who); background: color-mix(in srgb, var(--who) 18%, transparent); }
+  .rm-chain-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; max-width: 1120px; margin: 0 auto; align-items: start; }
+  .rm-chain { margin: 0; padding: 0; list-style: none; }
+  .rm-step { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr) 200px; column-gap: 18px; transition: opacity .2s; }
+  .rm-step article { grid-column: 2; align-self: start; }
+  /* a picture pinned beside each step, at a slant and a height of its own */
+  .rm-step-pic { grid-column: 3; grid-row: 1 / span 2; align-self: start; margin: var(--drop, 0) 0 0; transform: rotate(var(--tilt, 0deg)); transition: transform .25s; }
+  .rm-step-pic a { position: relative; display: block; padding: 7px 7px 9px; background: #f2ead5; box-shadow: 4px 8px 18px rgba(0, 0, 0, .6); }
+  .rm-step-pic a::before { content: ""; position: absolute; z-index: 1; top: -9px; left: 50%; width: 64px; height: 18px; margin-left: -32px; background: rgba(233, 220, 192, .55); transform: rotate(calc(var(--tilt, 0deg) * -1.5)); box-shadow: 0 1px 2px rgba(0, 0, 0, .3); }
+  .rm-step-pic img { display: block; width: 100%; height: auto; max-height: 200px; object-fit: cover; object-position: top; filter: sepia(.25) contrast(1.05); }
+  .rm-step-pic.round { width: 150px; justify-self: center; }
+  .rm-step-pic.round a { padding: 10px; border-radius: 50%; }
+  .rm-step-pic.round img { max-height: none; border-radius: 50%; filter: none; }
+  .rm-step-pic figcaption { margin-top: 8px; font: italic 400 12.5px/1.4 var(--news); color: #cbbd9c; }
+  .rm-step-pic figcaption small { display: block; font: 400 10px var(--type); font-style: normal; color: #8a7a5c; }
+  .rm-step-pic:hover { transform: rotate(0) scale(1.04); z-index: 2; }
+  .rm-step.dim .rm-step-pic { opacity: .5; }
+  .rm-step.dim { opacity: .28; }
+  .rm-step-no { grid-row: 1 / span 2; position: relative; display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid var(--who); border-radius: 50%; background: #120d09; font: 400 18px var(--deco); color: var(--cream); z-index: 1; }
+  /* the string down the left, from one number to the next */
+  .rm-step:not(:last-child)::before { content: ""; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: repeating-linear-gradient(#c62c22 0 8px, transparent 8px 12px); }
+  .rm-step article { padding: 14px 18px 16px; background: #f2ead5; color: #1b1610; border-left: 6px solid var(--who); box-shadow: 3px 4px 0 rgba(0, 0, 0, .45); }
+  .rm-step-meta { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 4px; font: 400 11px var(--type); text-transform: uppercase; letter-spacing: .08em; color: #6b5b3f; }
+  .rm-step-meta span { color: color-mix(in srgb, var(--who) 70%, #1b1610); }
+  .rm-step h3 { margin: 0 0 6px; font: 700 21px/1.15 var(--news); }
+  .rm-step article p:not(.rm-step-meta) { margin: 0 0 8px; font: 400 15px/1.5 var(--news); color: #2b2318; }
+  .rm-step article a { font: 400 13px var(--type); color: var(--red); }
+  .rm-step-link { grid-column: 2; margin: 0; padding: 12px 0 18px; font: italic 400 15px/1.4 var(--news); color: #e3a59c; }
+  .rm-step-link span { font-style: normal; color: var(--red-2); margin-right: 4px; }
+  .rm-rumours { position: sticky; top: calc(var(--hdr, 57px) + 64px); padding: 20px; border: 2px dashed #6b5b3f; background: rgba(216, 204, 176, .06); }
+  .rm-rumours h3 { margin: 0 0 6px; font: 400 22px var(--deco); color: var(--cream); }
+  .rm-rumours > p { margin: 0 0 14px; font: 400 14px/1.5 var(--news); color: #b9aa88; }
+  .rm-rumour { padding: 12px 0; border-top: 1px dashed #4a3e2c; }
+  .rm-rumour b { display: block; font: 700 16px/1.25 var(--news); color: var(--cream); text-decoration: line-through; text-decoration-color: rgba(224, 90, 79, .7); text-decoration-thickness: 2px; }
+  .rm-rumour p { margin: 6px 0; font: 400 14px/1.5 var(--news); color: #cbbd9c; }
+  .rm-rumour a { font: 400 12.5px var(--type); color: var(--red-2); }
+
+  /* the verdict on a case file */
+  .rm-verdict { display: inline-flex; align-items: baseline; gap: 8px; margin: 0 0 6px; padding: 4px 10px; border: 3px double var(--red); color: var(--red); font: 400 15px var(--type); text-transform: uppercase; letter-spacing: .06em; transform: rotate(-2deg); }
+  .rm-verdict span { font-size: 10px; letter-spacing: .14em; color: #7a6a4b; }
+
+  /* III · the exploitation cycle: a printed roadshow playbill, each film with a ticket to run it */
+  .rm-playbill { position: relative; margin: 34px 0 0; padding: 30px clamp(18px, 4vw, 48px) 36px; background: #efe3c4; color: #1b1610; box-shadow: 0 30px 60px rgba(0, 0, 0, .55), inset 0 0 120px rgba(120, 70, 20, .25); background-image: radial-gradient(circle at 20% 10%, rgba(255, 255, 255, .35), transparent 40%), radial-gradient(circle at 80% 90%, rgba(150, 90, 30, .18), transparent 45%); }
+  .rm-playbill::before { content: ""; position: absolute; inset: 10px; border: 3px double #7a1b12; pointer-events: none; }
+  .rm-playbill-head { text-align: center; padding-bottom: 18px; border-bottom: 4px solid #1b1610; }
+  .rm-playbill-top { display: flex; justify-content: space-between; gap: 10px; margin: 0; font: 400 12px var(--type); letter-spacing: .2em; text-transform: uppercase; color: #7a1b12; }
+  .rm-playbill-title { margin: 8px 0 4px; font: 400 clamp(36px, 6.4vw, 78px)/.95 var(--deco); color: #b3261e; text-shadow: 3px 3px 0 #1b1610; letter-spacing: .01em; }
+  .rm-playbill-sub { margin: 0; font: italic 400 17px var(--news); color: #3d3325; }
+  .rm-bill-list { margin: 0; padding: 0; list-style: none; }
+  .rm-bill-item { display: grid; grid-template-columns: 170px minmax(0, 1fr) 176px; gap: 26px; align-items: center; padding: 26px 0; border-bottom: 1px solid #b6a888; }
+  .rm-bill-item:last-child { border-bottom: 0; padding-bottom: 6px; }
+  .rm-bill-item:nth-child(even) { grid-template-columns: 176px minmax(0, 1fr) 170px; }
+  .rm-bill-item:nth-child(even) .rm-bill-poster { order: 3; }
+  .rm-bill-item:nth-child(even) .rm-bill-ticket { order: 1; }
+  .rm-bill-item:nth-child(even) .rm-bill-text { order: 2; text-align: right; }
+  .rm-bill-item:nth-child(even) .rm-bill-year, .rm-bill-item:nth-child(even) .rm-bill-more { justify-content: flex-end; }
+  .rm-bill-poster { margin: 0; transform: rotate(var(--tilt)); transition: transform .25s; }
+  .rm-bill-poster img { display: block; width: 100%; height: auto; border: 6px solid #fff8e8; box-shadow: 3px 6px 14px rgba(40, 20, 5, .45); }
+  .rm-bill-item:hover .rm-bill-poster { transform: rotate(0) scale(1.04); }
+  .rm-bill-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .rm-bill-year { display: flex; align-items: baseline; gap: 12px; margin: 0; font: 400 26px var(--deco); color: #b3261e; }
+  .rm-bill-year span { font: 400 11px var(--type); letter-spacing: .14em; text-transform: uppercase; color: #6b5b3f; }
+  .rm-bill-text h3 { margin: 0; font: 700 clamp(26px, 3.2vw, 38px)/1.02 var(--news); text-transform: uppercase; letter-spacing: -.01em; }
+  .rm-bill-tag { margin: 2px 0 0; font: italic 400 19px/1.3 var(--news); color: #b3261e; }
+  .rm-bill-by { margin: 0; font: 400 12px var(--type); letter-spacing: .06em; text-transform: uppercase; color: #6b5b3f; }
+  .rm-bill-body { margin: 6px 0 0; font: 400 16px/1.55 var(--news); color: #2b2318; }
+  .rm-bill-more { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 8px 0 0; font: 400 12.5px var(--type); }
+  .rm-bill-more a { color: #7a1b12; }
+  .rm-bill-ticket { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 16px 10px; border: 0; border-radius: 3px; background: #b3261e; color: #fff3dc; cursor: pointer; transform: rotate(calc(var(--tilt) * -1)); box-shadow: 0 0 0 2px #b3261e, inset 0 0 0 2px #efe3c4, inset 0 0 0 4px #b3261e, 3px 5px 12px rgba(40, 20, 5, .4); transition: transform .2s, background .2s; }
+  .rm-bill-ticket::before, .rm-bill-ticket::after { content: ""; position: absolute; top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; background: #efe3c4; }
+  .rm-bill-ticket::before { left: -8px; } .rm-bill-ticket::after { right: -8px; }
+  .rm-bill-ticket small { font: 400 10px var(--type); letter-spacing: .2em; text-transform: uppercase; opacity: .85; }
+  .rm-bill-ticket b { font: 400 17px var(--deco); white-space: nowrap; }
+  .rm-bill-ticket:hover, .rm-bill-ticket:focus-visible { transform: rotate(0) scale(1.06); background: #d0342a; }
+  .rm-player { width: min(1060px, calc(100vw - 16px)); margin: auto; padding: 0; border: 0; background: radial-gradient(ellipse at 50% 35%, #2a120e, #0b0a08 70%); color: var(--cream); overflow: hidden; box-shadow: 0 30px 90px #000; }
+  .rm-player::backdrop { background: rgba(5, 3, 2, .92); }
+  .rm-player .rm-curtain { width: 7%; }
+  .rm-player-in { position: relative; z-index: 1; padding: 18px 9% 16px; }
+  .rm-player-bill { display: flex; flex-direction: column; align-items: center; width: max-content; max-width: 100%; margin: 0 auto 14px; padding: 6px 22px 8px; border: 2px solid #f0b54a; border-radius: 3px; background: #1a0b06; box-shadow: 0 0 22px rgba(240, 181, 74, .35); }
+  .rm-player-bill span { font: 400 10px var(--type); letter-spacing: .3em; text-transform: uppercase; color: #f0b54a; }
+  .rm-player-bill b { font: 400 22px var(--deco); text-shadow: 0 0 10px rgba(240, 181, 74, .5); }
+  .rm-player-screen { position: relative; aspect-ratio: 4 / 3; max-height: calc(100svh - 190px); margin: 0 auto; border: 8px solid #1a140f; background: #000; }
+  .rm-player-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 12px 0 0; font: 400 12px var(--news); color: #a8987a; }
+  .rm-player-close { padding: 6px 12px; border: 1px solid var(--cream); border-radius: 2px; background: none; color: var(--cream); font: 400 12px var(--type); cursor: pointer; }
+  .rm-player-close:hover { background: var(--red); border-color: var(--red); }
+  .rm-roadshow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 30px 0 0; padding: 0; list-style: none; }
+  .rm-roadshow li { position: relative; padding: 16px 20px; border: 1px dashed var(--sepia); border-radius: 3px; background: rgba(0, 0, 0, .25); }
+  .rm-roadshow li::before, .rm-roadshow li::after { content: ""; position: absolute; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: #1d0806; }
+  .rm-roadshow li::before { left: -8px; } .rm-roadshow li::after { right: -8px; }
+  .rm-roadshow small { font: 400 10px var(--type); letter-spacing: .18em; text-transform: uppercase; color: var(--red-2); }
+  .rm-roadshow b { display: block; margin: 4px 0 6px; font: 400 20px var(--deco); color: var(--cream); }
+  .rm-roadshow p { margin: 0; font: 400 14.5px/1.5 var(--news); color: #d8c9a6; }
+  .rm-cycle { padding: 64px max(16px, calc((100% - 1120px) / 2)) 72px; background: linear-gradient(180deg, #2b0b08, #170605); }
+  .rm-cycle-head h2, .rm-court-head h2, .rm-wires-head h2 { margin: 6px 0 8px; font: 400 clamp(38px, 6vw, 72px)/1 var(--deco); color: var(--cream); }
+  .rm-cycle-head p:not(.rm-room), .rm-court-head p:not(.rm-room), .rm-wires-head p:not(.rm-room) { max-width: 66ch; margin: 0; font: 400 16px/1.55 var(--news); color: #d8c9a6; }
+  .rm-cycle-note, .rm-court-note, .rm-wires-note { max-width: 80ch; margin: 22px 0 0; font: 400 13.5px/1.55 var(--news); color: #b8a682; }
+  .rm-cycle-note a, .rm-court-note a { text-decoration: underline; }
+
+  /* IV · the gallery: a salon hang on a red wall, filtered by selling device */
+  .rm-gallery { padding: 64px max(16px, calc((100% - 1120px) / 2)) 72px; background: radial-gradient(ellipse at 50% 0%, #5a1712 0%, #2a0a07 55%, #160504 100%); }
+  .rm-gallery-head h2 { margin: 6px 0 8px; font: 400 clamp(38px, 6vw, 72px)/1 var(--deco); color: var(--cream); }
+  .rm-gallery-head p:not(.rm-room) { max-width: 66ch; margin: 0; font: 400 16px/1.55 var(--news); color: #e3d3b0; }
+  .rm-motifs { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; }
+  .rm-motifs button { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid rgba(239, 230, 210, .35); border-radius: 2px; background: rgba(0, 0, 0, .25); color: var(--cream); font: 400 13px var(--type); cursor: pointer; }
+  .rm-motifs button b { font-weight: 400; color: #f0b54a; }
+  .rm-motifs button:hover { border-color: var(--cream); }
+  .rm-motifs button[aria-pressed="true"] { background: #f0b54a; border-color: #f0b54a; color: #1b1610; }
+  .rm-motifs button[aria-pressed="true"] b { color: #7a1b12; }
+  .rm-motif-sep { width: 1px; margin: 0 4px; background: rgba(239, 230, 210, .3); }
+  .rm-motif-note { min-height: 1.5em; margin: 14px 0 0; font: italic 400 15px/1.5 var(--news); color: #d9c6a0; }
+  .rm-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 26px 20px; margin: 26px 0 0; padding: 0; list-style: none; }
+  .rm-poster { display: flex; flex-direction: column; gap: 8px; }
+  .rm-poster[hidden] { display: none; }
+  .rm-poster-open { display: block; width: 100%; padding: 6px; border: 0; background: #e9dcc0; box-shadow: 0 10px 24px rgba(0, 0, 0, .55), inset 0 0 0 1px #b8a57a; cursor: zoom-in; transition: transform .2s, box-shadow .2s; }
+  .rm-poster:nth-child(3n + 1) .rm-poster-open { transform: rotate(-.8deg); }
+  .rm-poster:nth-child(4n + 2) .rm-poster-open { transform: rotate(.9deg); }
+  .rm-poster-open:hover, .rm-poster-open:focus-visible { transform: translateY(-4px) rotate(0); box-shadow: 0 18px 34px rgba(0, 0, 0, .7), 0 0 0 3px #f0b54a; }
+  .rm-poster-open img { display: block; width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; object-position: top; }
+  .rm-poster p { display: grid; gap: 2px; margin: 0; }
+  .rm-poster p b { font: 700 15px/1.2 var(--news); color: var(--cream); }
+  .rm-poster p span { font: 400 11px var(--type); color: #c9b48a; text-transform: uppercase; letter-spacing: .06em; }
+  .rm-viewer { width: min(980px, calc(100vw - 24px)); max-height: calc(100svh - 24px); margin: auto; padding: 0; border: 0; background: #120c08; color: var(--cream); overflow: auto; overscroll-behavior: contain; box-shadow: 0 30px 90px #000; }
+  .rm-viewer::backdrop { background: rgba(10, 4, 3, .88); }
+  .rm-viewer-item { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; margin: 0; padding: 26px 52px; align-items: start; }
+  .rm-viewer-item[hidden] { display: none; }
+  .rm-viewer-item img { display: block; width: 100%; height: auto; max-height: calc(100svh - 80px); object-fit: contain; background: #000; }
+  .rm-viewer-item figcaption { display: grid; gap: 10px; padding-top: 30px; }
+  .rm-viewer-item small { font: 400 11px var(--type); text-transform: uppercase; letter-spacing: .1em; color: #c9b48a; }
+  .rm-viewer-item b { font: 400 clamp(28px, 4vw, 40px)/1.05 var(--deco); }
+  .rm-viewer-item p { margin: 0; font: italic 400 18px/1.5 var(--news); color: #e3d3b0; }
+  .rm-viewer-item ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 0; padding: 0; list-style: none; }
+  .rm-viewer-item li { padding: 3px 9px; border: 1px solid #f0b54a; border-radius: 2px; font: 400 12px var(--type); color: #f0b54a; cursor: help; }
+  .rm-viewer-hist { justify-self: start; font: 400 13px var(--type); color: #f0b54a; }
+  .rm-viewer-credit { font: 400 12.5px/1.5 var(--news); color: #a8987a; }
+  .rm-viewer-credit a { color: inherit; text-decoration: underline; }
+  .rm-viewer-close { position: absolute; z-index: 2; top: 10px; right: 10px; padding: 5px 10px; border: 1px solid var(--cream); background: #120c08; color: var(--cream); font: 400 12px var(--type); text-transform: uppercase; letter-spacing: .08em; cursor: pointer; }
+  .rm-viewer-step { position: absolute; z-index: 2; top: 50%; width: 40px; height: 64px; margin-top: -32px; border: 0; background: rgba(0, 0, 0, .55); color: var(--cream); font: 400 40px/1 var(--news); cursor: pointer; }
+  .rm-viewer-step.prev { left: 6px; } .rm-viewer-step.next { right: 6px; }
+  .rm-viewer-step:hover, .rm-viewer-close:hover { background: var(--red); }
+
+  /* V · the defendants: a court docket with sentences to scale */
+  .rm-court { padding: 64px max(16px, calc((100% - 1120px) / 2)) 72px; background: #0e0c0a; }
+  .rm-docket { margin: 28px 0 0; padding: 0; list-style: none; border-top: 3px double var(--sepia); }
+  .rm-docket-row, .rm-docket-scale { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 22px; padding: 16px 0; border-bottom: 1px solid #3a3226; }
+  .rm-docket-scale { padding: 8px 0; border-bottom: 0; }
+  .rm-bars-axis { position: relative; height: 16px; font: 400 11px var(--type); color: var(--sepia); }
+  .rm-bars-axis span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+  .rm-bars-axis span:last-child { transform: translateX(-100%); }
+  .rm-docket-no { display: block; font: 400 11px var(--type); letter-spacing: .12em; color: var(--sepia); }
+  .rm-docket-who b { display: block; margin-top: 4px; font: 700 21px/1.15 var(--news); }
+  .rm-docket-where { display: block; margin-top: 2px; font: italic 400 14px var(--news); color: #b8a682; }
+  .rm-docket-what p { margin: 0; font: 400 15px/1.5 var(--news); color: #ddd0b2; }
+  .rm-sentence { margin-top: 6px !important; font: 400 15px var(--type) !important; color: var(--red-2) !important; }
+  .rm-bars { position: relative; display: block; height: 18px; margin-top: 8px; background: repeating-linear-gradient(90deg, #3a3226 0 2px, transparent 2px 14px); }
+  .rm-bars i { position: absolute; top: 0; bottom: 0; }
+  .rm-bars-min { left: 0; background: repeating-linear-gradient(90deg, var(--cream) 0 3px, transparent 3px 9px); }
+  .rm-bars-max { background: repeating-linear-gradient(90deg, rgba(224, 90, 79, .7) 0 3px, transparent 3px 9px); }
+  .rm-docket-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; font: 400 12.5px var(--type); }
+  .rm-docket-links a { color: var(--sepia); }
+  .rm-docket-links span { color: #8a7a5c; font-family: var(--news); }
+
+  /* V · the export: telegrams */
+  .rm-wires { padding: 64px max(16px, calc((100% - 1120px) / 2)) 72px; background: #241d14; }
+  .rm-telegrams { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; margin: 28px 0 0; padding: 0; list-style: none; }
+  .rm-telegram { position: relative; padding: 16px 18px 14px; background: #f3e3a8; color: #2a2010; font-family: var(--type); box-shadow: 3px 4px 0 #0007; transform: rotate(-.6deg); }
+  .rm-telegram:nth-child(even) { transform: rotate(.7deg); }
+  .rm-telegram.reply { background: #f6ecd2; box-shadow: 3px 4px 0 #0007, inset 0 0 0 2px var(--red); }
+  .rm-telegram-head { display: flex; justify-content: space-between; gap: 8px; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 2px solid #2a2010; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+  .rm-telegram-head span:first-child { font-weight: 700; color: var(--red); }
+  .rm-telegram-who { margin: 0 0 6px; font: 700 15px var(--news); }
+  .rm-telegram-text { margin: 0; padding: 8px 10px; background: repeating-linear-gradient(#fff9e3 0 22px, #e9d79c 22px 23px); font-size: 13.5px; line-height: 22px; letter-spacing: .03em; }
+  .rm-telegram-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 10px 0 0; font-size: 12.5px; }
+  .rm-telegram-links a { color: var(--red); }
+  .rm-telegram-links span { font-family: var(--news); color: #6b5b3f; }
+  .rm-wires-note i { font-style: italic; }
+
+  /* VI · the film strip */
+  .rm-afterlife { padding: 64px 0 72px; background: var(--ink); }
+  .rm-phrase { max-width: 1120px; margin: 0 auto 40px; padding: 22px 16px 0; }
+  .rm-phrase-head { display: grid; gap: 4px; margin-bottom: 10px; }
+  .rm-phrase-head b { font: 400 clamp(24px, 3vw, 34px)/1.1 var(--deco); color: var(--cream); }
+  .rm-phrase-head span { font: 400 14px var(--news); color: #b9aa88; }
+  .rm-phrase-plot { overflow-x: auto; scrollbar-width: thin; }
+  .rm-phrase-plot svg { display: block; width: 100%; min-width: 680px; height: auto; overflow: visible; }
+  .rm-phrase-grid line { stroke: #2a241b; }
+  .rm-phrase-grid text, .rm-phrase-yr { font: 400 12px var(--type); fill: #8a7a5c; }
+  .rm-phrase-grid text { text-anchor: end; }
+  .rm-phrase-yr { text-anchor: middle; }
+  .rm-phrase-area { fill: rgba(224, 90, 79, .14); }
+  .rm-phrase-line { fill: none; stroke: var(--red-2); stroke-width: 2.5; stroke-linejoin: round; }
+  .rm-phrase-mark line { stroke: #f0b54a; stroke-dasharray: 3 3; }
+  .rm-phrase-mark circle { fill: #f0b54a; stroke: var(--ink); stroke-width: 2; }
+  .rm-phrase-mark text { font: 400 12.5px var(--type); fill: #f0b54a; }
+  .rm-phrase-hit { fill: transparent; cursor: crosshair; }
+  .rm-phrase-cursor { stroke: var(--cream); stroke-width: 1; opacity: 0; }
+  .rm-phrase.reading .rm-phrase-cursor { opacity: .6; }
+  .rm-phrase-read { min-height: 1.5em; margin: 8px 0 0; font: italic 400 15px var(--news); color: #d8ccb0; }
+  .rm-phrase-read b { font: 400 16px var(--deco); font-style: normal; color: var(--red-2); }
+  .rm-phrase-src { margin: 4px 0 0; font: 400 12.5px/1.5 var(--news); color: #8a7a5c; }
+  .rm-phrase-src a { color: inherit; text-decoration: underline; }
+  .rm-frame.marked .rm-frame-year { color: #f0b54a; }
+  .rm-strip-hint { max-width: 1120px; margin: 26px auto 0; padding: 0 16px; font: 400 13px var(--type); color: var(--sepia); }
+  .rm-strip-head { max-width: 1120px; margin: 0 auto 26px; padding: 0 16px; }
+  .rm-strip { display: flex; gap: 0; margin: 0; padding: 26px 16px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; background: #050403; border-block: 22px solid #050403;
+    -webkit-mask: none; position: relative; }
+  .rm-strip::before, .rm-strip::after { content: ""; position: absolute; left: 0; right: 0; height: 12px; background: repeating-linear-gradient(90deg, transparent 0 10px, #d9cfba 10px 22px, transparent 22px 34px); opacity: .5; }
+  .rm-strip::before { top: -17px; } .rm-strip::after { bottom: -17px; }
+  .rm-frame { flex: none; width: 260px; min-height: 230px; margin-right: 10px; padding: 18px 16px; scroll-snap-align: start; background: linear-gradient(160deg, #3a3128, #17130f); border: 1px solid #4a4034; color: var(--cream); display: flex; flex-direction: column; gap: 8px; filter: sepia(.3); }
+  .rm-frame:hover { filter: none; border-color: var(--red-2); }
+  .rm-frame-year { font: 400 34px var(--deco); color: var(--red-2); }
+  .rm-frame b { font: 700 18px/1.2 var(--news); }
+  .rm-frame p { margin: 0; font: 400 14px/1.45 var(--news); color: #d8ccb0; }
+  .rm-frame-links { margin-top: auto; display: flex; gap: 12px; font: 400 12.5px var(--type); }
+  .rm-frame-links a { color: var(--sepia); }
+
+  /* VIII · the archive drawer */
+  .rm-archive { padding: 64px max(16px, calc((100% - 1120px) / 2)) 80px; background: #1a1611; }
+  .rm-archive-head { margin-bottom: 26px; }
+  .rm-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+  .rm-filter button { padding: 6px 12px; border: 1px solid #5a4d3a; border-radius: 2px; background: transparent; color: var(--cream); font: 400 13px var(--type); cursor: pointer; }
+  .rm-filter button[aria-pressed="true"] { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+  .rm-drawer { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+  .rm-index-card { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 16px 16px 14px; background: #f4eedd; color: #1b1610; font-family: var(--type); background-image: repeating-linear-gradient(#f4eedd 0 23px, #d9e2ea 23px 24px); box-shadow: 2px 3px 0 #0006; }
+  .rm-index-card[hidden] { display: none; }
+  .rm-index-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--k); }
+  .rm-index-card.primary { --k: var(--red); } .rm-index-card.documented { --k: #2f5d8a; } .rm-index-card.interpretation { --k: #8a7a5c; }
+  .rm-index-card img { width: 100%; height: 170px; object-fit: contain; background: #111; margin-bottom: 4px; }
+  .rm-index-top { display: flex; justify-content: space-between; margin: 0; font-size: 12px; color: #6b5b3f; }
+  .rm-index-card h3 { margin: 0; font: 700 17px/1.2 var(--news); }
+  .rm-index-card p { margin: 0; font-size: 13px; line-height: 1.45; }
+  .rm-kind { margin-top: 4px !important; font-size: 11px !important; text-transform: uppercase; letter-spacing: .1em; color: var(--k); }
+  .rm-index-links { margin-top: auto !important; padding-top: 6px; display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12.5px !important; }
+  .rm-index-links a { color: var(--red); }
+  .rm-index-links span { color: #6b5b3f; font-family: var(--news); }
+  .rm-credits { max-width: 80ch; margin: 30px 0 0; font: 400 13px/1.55 var(--news); color: #a8987a; }
+  .rm-credits a { text-decoration: underline; }
+  .rm-exit { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 22px 0 0; font: 400 14px var(--type); }
+  .rm-exit a { color: var(--red-2); }
+
+  @media (max-width: 760px) {
+    .rm-curtain { width: 5%; }
+    .rm-columns { column-count: 1; }
+    .rm-programme { grid-template-columns: 1fr; gap: 28px; }
+    .rm-programme-text { padding: 22px 18px; }
+    .rm-guide { grid-template-columns: 1fr 1fr; }
+    .rm-playbill-top { flex-direction: column; align-items: center; gap: 2px; }
+    .rm-bill-item, .rm-bill-item:nth-child(even) { grid-template-columns: 96px minmax(0, 1fr); gap: 8px 16px; align-items: start; }
+    .rm-bill-item:nth-child(even) .rm-bill-poster, .rm-bill-item:nth-child(even) .rm-bill-text, .rm-bill-item:nth-child(even) .rm-bill-ticket { order: 0; }
+    .rm-bill-item:nth-child(even) .rm-bill-text { text-align: left; }
+    .rm-bill-item:nth-child(even) .rm-bill-year, .rm-bill-item:nth-child(even) .rm-bill-more { justify-content: flex-start; }
+    .rm-bill-ticket { grid-column: 1 / -1; flex-direction: row; justify-content: center; gap: 14px; transform: none; }
+    .rm-player-in { padding: 12px 5% 12px; }
+    .rm-roadshow { grid-template-columns: 1fr; }
+    .rm-chain-wrap { grid-template-columns: 1fr; gap: 28px; }
+    .rm-rumours { position: static; }
+    .rm-step { grid-template-columns: 34px minmax(0, 1fr); column-gap: 12px; }
+    .rm-step-pic { grid-column: 2; grid-row: auto; width: 62%; margin: 14px 0 0 auto; }
+    .rm-step-pic.round { width: 120px; }
+    .rm-step-no { width: 34px; height: 34px; font-size: 15px; }
+    .rm-step:not(:last-child)::before { left: 16px; top: 34px; }
+    .rm-now { gap: 10px; height: 42px; }
+    .rm-now-title { display: none; }
+    .rm-now-room { padding-left: 0; border-left: 0; }
+    .rm-now-rooms a { min-width: 22px; height: 24px; padding: 0 3px; font-size: 10px; }
+    .rm-now-rooms { gap: 2px; }
+    .rm-wall { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
+    .rm-viewer-item { grid-template-columns: 1fr; gap: 14px; padding: 48px 14px 18px; }
+    .rm-viewer-item figcaption { padding-top: 0; }
+    .rm-viewer-step { top: 30%; width: 32px; }
+    .rm-trailer { width: 100%; }
+    .rm-trailer-controls { gap: 6px; padding: 20px 8px 6px; }
+    .rm-trailer-time { display: none; }
+    .rm-trailer-cc { bottom: 40px; font-size: 12.5px; }
+    .rm-trailer-ctl { padding: 4px 8px; font-size: 11px; }
+    .rm-dateline { flex-direction: column; gap: 2px; align-items: center; }
+    /* the board becomes a list of cards with the strings left out */
+    .rm-frame { width: 78vw; }
+    .rm-docket-row, .rm-docket-scale { grid-template-columns: 1fr; gap: 8px; }
+    .rm-docket-scale > span:first-child { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rm-grain { animation: none; }
+  }
+</style>

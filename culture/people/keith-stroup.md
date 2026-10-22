@@ -4,8 +4,8 @@ summary: An American lawyer who in 1970 founded NORML, a lobby for marijuana smo
 origin: American lawyer and founder of NORML
 also: [NORML, National Organization for the Reform of Marijuana Laws, National Organization for the Repeal of Marijuana Laws, It's NORML to Smoke Pot]
 countries: [us]
-history: [us-norml-founded-1970, us-california-legalisation-vote-1972, us-shafer-commission-1972, us-oregon-decriminalisation-1973, us-carter-decriminalisation-message-1977, us-willie-nelson-norml-cochair-1994]
-history_cards: [us-norml-founded-1970]
+history: [us-norml-founded-1970, us-reefer-madness-campus-revival-1972, us-california-legalisation-vote-1972, us-shafer-commission-1972, us-oregon-decriminalisation-1973, us-carter-decriminalisation-message-1977, us-willie-nelson-norml-cochair-1994]
+history_cards: [us-norml-founded-1970, us-reefer-madness-campus-revival-1972]
 related: [people/willie-nelson, people/lester-grinspoon]
 image:
   src: ../../src/assets/culture/keith-stroup-1998.jpg
@@ -20,6 +20,8 @@ sources:
     url: https://en.wikipedia.org/wiki/Keith_Stroup
   - title: Wikipedia — NORML
     url: https://en.wikipedia.org/wiki/NORML
+  - title: Hazlitt — Is Reefer Madness for real?
+    url: https://hazlitt.net/node/848471
 ---
 
 Keith Stroup started from a simple idea: people who smoked marijuana were consumers, and consumers
@@ -47,6 +49,8 @@ The years suited the argument. A national commission had
 [recommended decriminalisation](/history/us-shafer-commission-1972/) in 1972. In 1973
 [Oregon](/history/us-oregon-decriminalisation-1973/) made possessing an ounce a violation with a
 fine, and while Stroup ran NORML, until 1979, eleven states adopted decriminalisation laws.
+
+He found an unlikely fundraiser in an old scare film. In 1972 he learned that *Reefer Madness*, the 1930s melodrama of teenagers ruined by marijuana, was in the public domain, and [bought a print at the Library of Congress for 297 dollars](/history/us-reefer-madness-campus-revival-1972/). He showed it on college campuses after his lectures. Students who were meant to be frightened laughed, and the film became a joke about prohibition itself; its story is told in the exhibition [Reefer Madness](/reefer-madness/).
 
 | | |
 |---|---|

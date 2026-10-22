@@ -29,6 +29,16 @@ sources:
     publisher: Stampa Alternativa
     year: 2014
     locator: Il caso italiano — Cannabis Social Club e terapie collaborative
+  - title: HeraldNet / Associated Press — Spain hamlet votes on pot-growing to pay off debt (10 April 2012)
+    url: https://www.heraldnet.com/?p=131942
+  - title: The Local Spain — Cannabis town gives Catalan judge bad vibes (31 May 2013)
+    url: https://www.thelocal.es/20130531/catalan-cannabis-towns-plans-burnt-down
+  - title: ARUC — Authority for the Responsible Use of Cannabis
+    url: https://aruc.mt/
+  - title: The Malta Independent — Parliament unanimously passes new cannabis legislation amendments (12 May 2025)
+    url: https://www.independent.com.mt/articles/2025-05-12/local-news/Parliament-unanimously-passes-new-cannabis-legislation-amendments-6736270062
+  - title: Deutscher Hanfverband — Belgien, Trekt Uw Plant freigesprochen (7 March 2010)
+    url: https://hanfverband.de/belgien-trekt-uw-plant-freigesprochen
 ---
 
 A cannabis social club is a private, non-profit association whose members grow cannabis together and share it among themselves. Nothing is sold to outsiders. The idea was worked out by users in Spain in the 1990s, in a gap left by Spanish law, and it has since been written into the laws of Uruguay, Malta and Germany as a way of allowing cannabis without allowing a market.
@@ -56,9 +66,11 @@ The courts have never settled whether the argument holds.
 | Year | What happened |
 |---|---|
 | Early 1990s | ARSEC, the first association, is founded in Barcelona |
+| [1993](/history/spain-canamo-magazine-1993/) | The movement gets its magazine, *Cáñamo* |
 | [1997](/history/spain-arsec-conviction-1997/) | Four of its members are sentenced to four months in prison and a fine. About the same time a court in Bilbao finds another club within the law |
 | [2000s](/history/spain-social-clubs-2001/) | Hundreds of clubs open, most in Catalonia and the Basque Country |
 | 2006–2007 | Club members in Andalusia are acquitted and their crops returned |
+| [2012](/history/spain-rasquera-plantation-2012/) | The Catalan village of Rasquera votes on leasing land to a Barcelona club with 5,000 members, to pay its debts. The plan misses the required majority, and a court revokes the agreements in 2013 |
 | [2015](/history/spain-supreme-court-clubs-2015/) | The Supreme Court convicts the organisers of three large clubs, holding that what they did was not genuine shared consumption |
 | [2017](/history/spain-catalonia-club-law-2017/) | Catalonia passes a law regulating clubs. The Constitutional Court annuls it the next year |
 | [2023](/history/spain-barcelona-clubs-2023/) | Barcelona's mayor promises to close the city's clubs |
@@ -73,9 +85,11 @@ What Spain tolerated, other countries regulated.
 | Country | Since | Rules |
 |---|---|---|
 | [Uruguay](/country/uy/) | [2014](/history/uruguay-club-registry-2014/) | 15 to 45 members; up to 99 plants; one of three legal routes, beside home growing and pharmacy sales |
-| [Malta](/country/mt/) | [2021](/history/malta-legalisation-2021/) | Associations may grow for their members: up to 7 grams a day and 50 grams a month each |
+| [Malta](/country/mt/) | [2021](/history/malta-legalisation-2021/) | Associations may grow for their members: up to 7 grams a day and 50 grams a month each. The [first ones opened in 2024](/history/malta-first-associations-2024/), and [stricter rules followed in 2025](/history/malta-cannabis-amendments-2025/) |
 | [Switzerland](/country/ch/) | [2021](/history/switzerland-pilot-law-2021/) | Not regulated as such, but pilot trials including club models are allowed until 2031 |
 | [Germany](/country/de/) | [2024](/history/germany-cultivation-associations-2024/) | Cultivation associations of up to 500 members; up to 25 grams a day and 50 grams a month each |
+
+In Belgium, where an adult may grow one plant, [Joep Oomen](/culture/people/joep-oomen/) founded the first club, [Trekt Uw Plant](/history/belgium-trekt-uw-plant-2006/), in Antwerp in 2006. It was prosecuted and acquitted, but no law followed.
 
 In South Africa, clubs calling themselves Dagga Private Clubs have appeared since the Constitutional Court's ruling of 2018, in a legal grey area like Spain's.
 

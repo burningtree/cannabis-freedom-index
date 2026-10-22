@@ -99,7 +99,7 @@ Souza also reads some as commentary on local political authority and police surv
 
 | Writer | Year | What França records |
 |---|---|---|
-| Rodrigues Dória | 1915 | Cannabis used in sorcerers' brews, *candomblés*, *catimbós*, *sambas* and *batuques* |
+| Rodrigues Dória | [1915](/history/brazil-doria-paper-1915/) | Cannabis used in sorcerers' brews, *candomblés*, *catimbós*, *sambas* and *batuques* |
 | Francisco de Assis Iglésias | 1918 | The Saturday circle in Maranhão and its verses; a call for "energetic measures" |
 | Alberto Deodato | 1922 | A short story, "Sombras agrestes", set in a diamba circle and ending in a knife |
 | *Maconha: coletânea de trabalhos brasileiros* | 1953 | 31 studies since 1915 republished by the national narcotics commission |

@@ -44,7 +44,7 @@ sources:
     locator: "pp. 341–361"
 ---
 
-Robert C. Randall (1948–2001) was an American medical cannabis advocate with severe glaucoma. Arrested in 1975 after police discovered the cannabis he was growing for his condition, he argued that protecting his sight justified his otherwise unlawful possession. He became the first American in the modern prohibition era to receive federally authorised cannabis for medical treatment.
+Robert C. Randall (1948–2001) was an American medical cannabis advocate with severe glaucoma. Arrested in 1975 after police discovered the cannabis he was growing for his condition, he argued that protecting his sight justified his otherwise unlawful possession. He became the first American in the [modern prohibition era](/history/us-marihuana-tax-act-1937/) to receive federally authorised cannabis for medical treatment.
 
 The November 1976 photograph preserved by Alice O’Leary Randall shows him smiling beside his first legal supply. The containers and cigarettes are part of the historical evidence: a patient who had been prosecuted now possessed cannabis supplied under federal authority.
 

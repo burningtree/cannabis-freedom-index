@@ -31,7 +31,7 @@ sources:
     locator: "pp. 38–46, 69–74"
 ---
 
-William Brooke O'Shaughnessy was the doctor who made cannabis a Western medicine. Working in Calcutta in the 1830s, he took what he saw Indian practitioners use, tested it on animals, on himself, on colleagues and on patients, and in 1839 published his results. Within a few years British doctors were prescribing tincture of Indian hemp.
+William Brooke O'Shaughnessy was the doctor who made cannabis a Western medicine. Working in Calcutta in the 1830s, he took what he saw Indian practitioners use, tested it on animals, on himself, on colleagues and on patients, and in 1839 [published his results](/history/india-oshaughnessy-cannabis-tincture-1839/). Within a few years British doctors were prescribing tincture of Indian hemp.
 
 Born in Limerick in 1809, he took his medical degree at Edinburgh in 1829. At twenty-two, studying the blood of cholera victims, he proposed replacing the water and salts it had lost, the idea behind intravenous rehydration. In 1833 he joined the East India Company and went to India, and from 1835 he taught at the Medical College in Calcutta.
 

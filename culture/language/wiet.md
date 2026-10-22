@@ -6,7 +6,7 @@ spelling:
   - { text: wiet, lang: Dutch, say: /ʋit/ }
 also: [weed, nederwiet, binnenwiet, buitenwiet, mediwiet, wietpas]
 countries: [nl]
-history: [netherlands-toleration-1976, netherlands-regulated-supply-only-2025]
+history: [netherlands-toleration-1976, netherlands-regulated-supply-only-2025, netherlands-residents-only-2012]
 model: gpt-6
 written: 2026-10-14
 sources:

@@ -73,7 +73,7 @@ On 3 December 1976, two days before the Smile Jamaica concert, gunmen attacked h
 wounding him, his wife Rita and his manager, in an attack believed to be political. Marley moved to London, where the band lived at 42 Oakley Street in
 Chelsea and finished the album *Exodus*.
 
-| | Jamaica, 1968 | London, 1977 |
+| | Jamaica, 1968 | [London, 1977](/history/uk-marley-cannabis-fine-1977/) |
 |---|---|---|
 | Arrest | Possession of ganja | Car stopped in Ladbroke Grove; two joints found, then a pound at his home |
 | Charged with him | — | Aston "Family Man" Barrett, his bassist |

@@ -81,7 +81,7 @@ Sparrman concluded that for San smokers the fits of coughing were probably "a ve
 the pipe.
 
 In [Angola](/country/ao/) the same period produced the sharpest complaint quoted above, and further
-inland, in today's DR Congo, the [Bena Riamba](/culture/traditions/bena-riamba/) made cannabis smoking the centre of a whole
+inland, in today's DR Congo, the [Bena Riamba](/culture/traditions/bena-riamba/), whom German explorers [met in 1881](/history/dr-congo-bena-riamba-1881/), made cannabis smoking the centre of a whole
 movement.
 
 ## After the bans

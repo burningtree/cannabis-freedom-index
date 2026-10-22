@@ -52,6 +52,13 @@ sources:
     year: 1975
     isbn: "90-279-7669-4"
     locator: "pp. 92–97"
+  - type: report
+    title: "Prohibition & Resistance: A Socio-Political Exploration of the Changing Dynamics of the Southern African Cannabis Trade, c. 1850–the present"
+    authors: [Craig Paterson]
+    publisher: Rhodes University
+    year: 2009
+    locator: "MA thesis, pp. 43–47"
+    url: https://fieldsofgreenforall.org.za/wp-content/uploads/2009/02/Prohibition-ResistanceA-Socio-Political-Exploration-of-the-Changing-Dynamics-of-the-Southern-African-Cannabis-Trade.pdf
 ---
 
 Dagga is what cannabis is called in South Africa and its neighbours. It is a Khoekhoe word, taken up by the Dutch at the Cape in the seventeenth century, written into colonial law in the nineteenth, turned into a word of contempt in the twentieth, and deliberately taken back in the twenty-first.
@@ -90,15 +97,17 @@ Dagga is the word of Afrikaans and of South African English. The African languag
 
 The plant was in wide use among Khoisan and Bantu-speaking peoples before the Dutch arrived in 1652. The Dutch East India Company tried to make a monopoly of it, forbidding settlers to grow it from 1680, found there was no profit in a plant that grew everywhere, and lifted the ban in 1700.
 
-The first modern laws used the botanical name and were aimed at one group. Natal's [law of 1870](/history/south-africa-natal-1870/) forbade Indian indentured labourers to smoke, use or possess "any portion of the hemp plant". After that the statutes say dagga.
+The first modern laws used the botanical name and were aimed at one group. Natal's [law of 1870](/history/south-africa-natal-1870/) forbade Indian indentured labourers to smoke, use or possess "any portion of the hemp plant". In [1887](/history/natal-law-tightened-1887/) a commission on Indian immigration asked for that law to be used to ban cannabis among them outright; no rule seems to have followed. After that the statutes say dagga.
 
 | Year | Law |
 |---|---|
 | [1903](/history/orange-river-colony-dagga-ordinance-1903/) | The Orange River Colony's Dagga Prohibition Ordinance |
 | [1905](/history/cape-colony-dagga-poison-listing-1905/) | The Cape lists dagga as a poison, to be sold only by chemists. Dagga farmers of the Middelburg district petition against it |
 | [1916](/history/south-africa-habit-forming-drugs-bill-1916/) | A draft national bill lists the wild *Leonotis* as dagga, separately from Indian hemp |
-| [1922](/history/south-africa-national-ban-1922/) | National prohibition of growing, selling, possessing and using it |
+| [1922](/history/south-africa-national-ban-1922/) | National prohibition of growing, selling, possessing and using it. A month later officials told police to [go easy in remote African areas](/history/south-africa-enforcement-compromise-1922/), where an older man's morning pipe was almost a religious rite |
 | [1923](/history/south-africa-league-request-1923/) | South Africa asks the League of Nations to put dagga on its list of dangerous drugs |
+
+African opinion was divided too. In [1907](/history/natal-dube-insangu-editorial-1907/) John Dube, editor of *Ilanga lase Natal* and later a founder of the African National Congress, listed insangu with beer, spirits and polygamy among the customs holding Africans back.
 
 In the Transvaal of those years it was sold "openly and normally" by storekeepers to miners, and the mine managers [saw no reason to stop it](/history/transvaal-mine-dagga-survey-1908/).
 

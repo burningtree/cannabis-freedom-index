@@ -4,7 +4,7 @@ summary: Named after the Hindu Kush, the mountains whose hashish plants were car
 origin: From the Hindu Kush mountains
 also: [Hindu Kush, OG Kush, Purple Kush]
 countries: [af, pk, us, sl]
-history: [afghanistan-nominal-ban-1957, afghanistan-hashish-fertiliser-edicts-1969, afghanistan-ban-1973, afghanistan-top-producer-2010, netherlands-cannabis-cup-1988]
+history: [afghanistan-nominal-ban-1957, afghanistan-hashish-fertiliser-edicts-1969, afghanistan-ban-1973, afghanistan-top-producer-2010, netherlands-cannabis-cup-1988, sierra-leone-drug-emergency-2024]
 image:
   src: ../../src/assets/culture/hindu-kush-mountains.jpg
   alt: Snow-covered peaks of the Hindu Kush
@@ -22,6 +22,8 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_indica
   - title: Wikipedia — Cannabis in Sierra Leone
     url: https://en.wikipedia.org/wiki/Cannabis_in_Sierra_Leone
+  - title: Wikipedia — Cannabis Cup
+    url: https://en.wikipedia.org/wiki/Cannabis_Cup
 ---
 
 *Kush* began as a place. The [Hindu Kush](https://en.wikipedia.org/wiki/Hindu_Kush) is the mountain range that runs from central Afghanistan into northern Pakistan, and the broad-leafed cannabis grown there for hashish became, in the hands of American breeders, a family of plants and then a word for cannabis in general. In West Africa since the 2010s the word has come to mean a deadly synthetic drug that has nothing to do with the plant.
@@ -44,7 +46,7 @@ Until the 1970s the state mostly left the crop alone.
 
 The travellers of the [hippie trail](https://en.wikipedia.org/wiki/Hippie_trail) came to Kabul for the hashish. In the early 1970s Afghan plants of the old pre-Soviet varieties were taken to California, and they became the ancestors of a family of strains, pure or crossed, that kept the mountains' name.
 
-The names multiplied: Hindu Kush, Master Kush, Purple Kush, Bubba Kush, OG Kush. At the [Cannabis Cup](/culture/traditions/the-cannabis-cup/) in Amsterdam, a Hindu Kush cross was the "Master Kush" winner in 1992 and 1993. In 2011 Canadian researchers chose Purple Kush for the first draft sequence of a cannabis genome.
+The names multiplied: Hindu Kush, Master Kush, Purple Kush, Bubba Kush, OG Kush. At the [Cannabis Cup](/culture/traditions/the-cannabis-cup/) in Amsterdam, [first held in 1988](/history/netherlands-cannabis-cup-1988/), a Hindu Kush cross was the "Master Kush" winner in 1992 and 1993. In 2011 Canadian researchers chose Purple Kush for the first draft sequence of a cannabis genome.
 
 By then *kush* had also become plain slang for cannabis, with no particular strain meant.
 

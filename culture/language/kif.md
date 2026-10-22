@@ -31,6 +31,10 @@ sources:
     year: 1975
     isbn: "90-279-7669-4"
     locator: "pp. 185–193, especially pp. 187–190"
+  - title: TNI — The Rise and Decline of Cannabis Prohibition (2014)
+    url: https://www.tni.org/files/download/rise_and_decline_web.pdf
+  - title: United Nations — The cannabis situation in the Sherifian Empire (French Zone), E/CN.7/286/Add.11 (1956)
+    url: https://documents.un.org/api/symbol/access?s=E/CN.7/286/Add.11&l=en&t=pdf
 ---
 
 Kif comes from the Arabic *kīf*: joy, pleasure, well-being. The word named the feeling before it named anything that causes it. In Morocco it is the old word for cannabis and for the mixture in which it is smoked; in English, respelled *kief*, it has come to mean something else again.
@@ -60,6 +64,8 @@ For a long time the state's interest was to control and tax it, not to stop it.
 | [1917](/history/morocco-spanish-zone-kif-1917/) | In the Spanish zone growers were required to sell to the Régie |
 | [1923](/history/morocco-rif-republic-kif-ban-1923/) | The rebel Republic of the Rif under Abdelkrim forbade kif as contrary to Islam; the ban ended with the republic |
 | [1932](/history/morocco-french-zone-decree-1932/) | France banned growing in its zone, except for the monopoly's own crops around Kenitra and Marrakech |
+| [1935](/history/morocco-spanish-zone-decree-1935/) | A decree in the Spanish zone limited growing to Ketama, Beni Seddat and Beni Khaled, the villages the sultan had allowed; the Rif still points to it as its permission |
+| [1949](/history/morocco-kif-seizures-1949/) | The French zone seized 7.6 tonnes of kif sold outside the monopoly, most of it near the Spanish zone |
 | [1954](/history/morocco-french-zone-ban-1954/) | France ended the monopoly's sales and banned all dealing in its zone |
 | [1956](/history/morocco-kif-ban-1956/) | Independent Morocco extended the ban to the whole country |
 

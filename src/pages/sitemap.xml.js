@@ -1,4 +1,5 @@
 // Every page of the site, for search engines. Linked from robots.txt.
+import { openExhibitions, exhibitionPath } from "../lib/exhibitions.js";
 import { places, countries, changes, subunitsOf, historyPeriods, CHANGE_CATEGORIES } from "../lib/countries.js";
 import { SITE } from "../lib/exports.js";
 import { MAP_VIEWS } from "../lib/map-views.js";
@@ -13,6 +14,8 @@ export function GET({ site }) {
     ["can-i/", latest, 0.8],
     ["history/", latest, 0.8],
     ["charts/", latest, 0.7],
+    ["exhibitions/", latest, 0.6],
+    ...openExhibitions.map((e) => [exhibitionPath(e), latest, 0.7]),
     ["compare/", latest, 0.6],
     ["survey/", latest, 0.6],
     ["survey/take/", latest, 0.5],

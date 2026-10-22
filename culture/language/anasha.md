@@ -53,7 +53,7 @@ Where the valley's cannabis came from is unclear. One account credits traders on
 
 | Year | Measure |
 |---|---|
-| [1934](/history/russia-soviet-ban-1934/) | The Soviet Union bans the unauthorised growing of "Indian hemp" and the opium poppy, in Kazakhstan and the other republics as in Russia |
+| [1934](/history/russia-soviet-ban-1934/) | The Soviet Union bans the unauthorised growing of "Indian hemp" and the opium poppy, [in Kazakhstan](/history/kazakhstan-soviet-ban-1934/) and the other republics as in Russia |
 | [1960](/history/russia-rsfsr-article-225-1960/) | Article 225 of the Russian criminal code bans growing Indian hemp outright |
 | [1969](/history/kazakhstan-wild-cannabis-narcotic-1969/) | After young people took an interest in the plant, the Soviet authorities declared the Chuy valley's wild cannabis a narcotic. The fields were burned and sprayed, and grew back |
 

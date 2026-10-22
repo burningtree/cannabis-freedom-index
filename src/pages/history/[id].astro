@@ -10,6 +10,8 @@ import SourceCitation from "../../components/SourceCitation.astro";
 import { Image } from "astro:assets";
 import { cultureOfChange, cultureSection } from "../../lib/culture.js";
 import { relatedTo } from "../../lib/related.js";
+import { exhibitionsOf, exhibitionPath } from "../../lib/exhibitions.js";
+import "@fontsource/limelight";
 
 // One history entry: what happened, large; the score before and after when it moved one; how
 // each segment moved; the sources; related entries from anywhere; and, beside it, the country today
@@ -37,6 +39,7 @@ const culture = cultureOfChange(ch);
 const span = c ? 3 : 5;
 const nearby = at < 0 ? [] : own.slice(Math.max(0, Math.min(at - span, own.length - 2 * span - 1)), Math.max(at + span + 1, 2 * span + 1));
 const related = relatedTo(ch, nearby);
+const exhibits = exhibitionsOf(ch.id);
 // an entry about one state or province: that state's card beside it, its country's under it
 const unitGroup = ch.unit ? subunitsOf(c.id) : null;
 const unit = unitGroup?.units.find((x) => x.id === ch.unit.id);
@@ -49,6 +52,17 @@ const ledeInBody = !article;
     <div class="page-bar">
       <a class="back" href={`${base}history/`}>← History</a>
     </div>
+
+    {exhibits.map((e) => (
+      <a class="ev-exhibit" href={`${base}${exhibitionPath(e)}`} style={e.cover ? `--cover:url(${base}${e.cover})` : undefined}>
+        <span class="ev-exhibit-text">
+          <small>Exhibition {e.no} · {e.theme} · this event is part of it</small>
+          <b>{e.title}</b>
+          <span>{e.line}</span>
+        </span>
+        <span class="ev-exhibit-go">Enter the exhibition <span aria-hidden="true">→</span></span>
+      </a>
+    ))}
 
     <header class={`ev-top${ch.score ? "" : " ev-plain"}`}>
       <div>
@@ -86,6 +100,18 @@ const ledeInBody = !article;
           )}
         </section>
       )}
+      {article && (
+        <section class="ev-article">
+          <p class="ev-label">The story{article.data.model && <span class="ev-by"> · written by {article.data.model}{article.data.written && <>, <time datetime={article.data.written.toISOString().slice(0, 10)}>{formatDate(article.data.written.toISOString().slice(0, 10))}</time></>}</span>}</p>
+          {article.data.image && (
+            <figure>
+              <Picture src={article.data.image.src} alt={article.data.image.alt} style={article.data.image.fit === "contain" ? "object-fit: contain" : undefined} formats={["webp"]} widths={[480, 800, 1280]} sizes="(max-width: 900px) 100vw, 760px" />
+              <figcaption>{article.data.image.caption} <span>{article.data.image.credit_url ? <a href={article.data.image.credit_url} target="_blank" rel="noopener noreferrer">{article.data.image.credit}</a> : article.data.image.credit}{article.data.image.license_url && <> · <a href={article.data.image.license_url} target="_blank" rel="noopener noreferrer">Licence</a></>}</span></figcaption>
+            </figure>
+          )}
+          <div class="prose"><Article /></div>
+        </section>
+      )}
       {culture.length > 0 && (
         <section class="ev-culture" aria-label="In the cultural atlas">
           <p class="ev-label">In the cultural atlas</p>
@@ -99,18 +125,6 @@ const ledeInBody = !article;
               </li>
             ))}
           </ul>
-        </section>
-      )}
-      {article && (
-        <section class="ev-article">
-          <p class="ev-label">The story{article.data.model && <span class="ev-by"> · written by {article.data.model}{article.data.written && <>, <time datetime={article.data.written.toISOString().slice(0, 10)}>{formatDate(article.data.written.toISOString().slice(0, 10))}</time></>}</span>}</p>
-          {article.data.image && (
-            <figure>
-              <Picture src={article.data.image.src} alt={article.data.image.alt} style={article.data.image.fit === "contain" ? "object-fit: contain" : undefined} formats={["webp"]} widths={[480, 800, 1280]} sizes="(max-width: 900px) 100vw, 760px" />
-              <figcaption>{article.data.image.caption} <span>{article.data.image.credit_url ? <a href={article.data.image.credit_url} target="_blank" rel="noopener noreferrer">{article.data.image.credit}</a> : article.data.image.credit}{article.data.image.license_url && <> · <a href={article.data.image.license_url} target="_blank" rel="noopener noreferrer">Licence</a></>}</span></figcaption>
-            </figure>
-          )}
-          <div class="prose"><Article /></div>
         </section>
       )}
       {ch.score && (

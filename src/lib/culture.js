@@ -38,6 +38,12 @@ export const cultureEntries = (await getCollection("culture"))
       if (!d.history.includes(id)) throw new Error(`${file}: history_cards entry "${id}" must also be in history`);
       return ch;
     });
+    // every history entry the text relies on is linked in the text, and every history entry the
+    // text links to is listed in `history`, so the entry, its history list and the history pages
+    // stay interlinked (docs/CULTURE.md, Countries and links)
+    const linked = new Set([...(entry.body ?? "").matchAll(/\]\(\/history\/([^/)#]+)/g)].map((m) => m[1]));
+    for (const id of d.history) if (!linked.has(id)) throw new Error(`${file}: "${id}" is in history but the text never links to /history/${id}/; mention and link it in the text`);
+    for (const id of linked) if (!d.history.includes(id)) throw new Error(`${file}: the text links to /history/${id}/ but "${id}" is not in history`);
     // links in the text to pages of this site must lead somewhere
     for (const [, kind, id] of (entry.body ?? "").matchAll(/\]\(\/(history|country)\/([^/)#]+)\/?[^)]*\)/g)) {
       const found = kind === "history" ? changes.some((x) => x.id === id) : places.some((x) => x.slug === id);

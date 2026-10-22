@@ -6,13 +6,16 @@ import Base from "../../layouts/Base.astro";
 import CultureCards from "../../components/CultureCards.astro";
 import DidYouKnow from "../../components/DidYouKnow.astro";
 import { CULTURE_SECTIONS, cultureEntries, cultureIn } from "../../lib/culture.js";
+import { openExhibitions, exhibitionPath } from "../../lib/exhibitions.js";
+import "@fontsource/limelight";
 
 const base = import.meta.env.BASE_URL;
 const countryCount = new Set(cultureEntries.flatMap((e) => e.countries)).size;
 // The hub shows the five most important entries of each part (their `featured` rank), the first
 // as a large lead card; the rest are a click away.
 const preview = (id) => cultureIn(id).slice(0, 5);
-const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).length === 1 ? "entry" : "entries"}` : s.soon ? "In preparation" : "Collecting soon");
+const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).length === 1 ? "entry" : "entries"}`
+  : s.soon ? "In preparation" : "Collecting soon");
 ---
 <Base title="Culture" description="A cultural atlas of cannabis around the world: the words people have for it, the rituals and traditions it belongs to, and the people behind the laws.">
   <main class="changes-page culture">
@@ -32,6 +35,19 @@ const count = (s) => (s.entries ? `${cultureIn(s.id).length} ${cultureIn(s.id).l
           </li>
         ))}
       </ol>
+    </section>
+
+    <section class="section cu-exhibits">
+      {openExhibitions.map((e) => (
+        <a class="cu-exhibit" href={`${base}${exhibitionPath(e)}`}>
+          <small>Exhibition {e.no} · {e.theme}</small>
+          <b>{e.title}</b>
+          <span class="cu-exhibit-line">{e.line}</span>
+          <span class="cu-exhibit-about">{e.about}</span>
+          <span class="cu-exhibit-go">Enter the exhibition →</span>
+        </a>
+      ))}
+      <p class="cu-all front-go"><a class="go" href={`${base}exhibitions/`}>All exhibitions <span aria-hidden="true">→</span></a></p>
     </section>
 
     <section class="section cu-dyk"><DidYouKnow group="culture" /></section>

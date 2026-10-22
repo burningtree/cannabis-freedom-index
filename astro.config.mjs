@@ -55,6 +55,8 @@ export default defineConfig({
   // also the address used in canonical links, the sitemap and structured data
   site: process.env.SITE || "https://cannabisfreedom.fyi",
   base,
+  // exhibitions moved from culture/exhibitions/ to exhibitions/, and each one to the shortest address, <slug>/
+  redirects: { "/culture/exhibitions": "/exhibitions", "/culture/exhibitions/reefer-madness": "/reefer-madness" },
   // Icons are Iconoir (https://iconoir.com/), through astro-icon and Iconify: `<Icon name="iconoir:…" />`
   // inlines the SVG at build time, so only the icons a page uses end up in it.
   integrations: [icon()],

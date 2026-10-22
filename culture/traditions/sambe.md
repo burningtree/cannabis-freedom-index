@@ -55,4 +55,4 @@ The weaving has become rare enough to be treated as heritage. The state has name
 
 In [2020](/history/south-korea-andong-hemp-zone-2020/) the government made two districts of Andong a special zone for industrial hemp, where low-THC plants may be grown under licence and CBD extracted as a pharmaceutical raw material. The province said the food and drug ministry had been strongly against it.
 
-So Andong, the home of the best funeral cloth, is now also where South Korea is trying out a hemp industry. Elsewhere the law has only hardened: South Korea warns its citizens that they can be prosecuted at home for using cannabis in countries where it is legal.
+So Andong, the home of the best funeral cloth, is now also where South Korea is trying out a hemp industry. Elsewhere the law has only hardened: [South Korea warns its citizens](/history/south-korea-abroad-warning-2018/) that they can be prosecuted at home for using cannabis in countries where it is legal.
