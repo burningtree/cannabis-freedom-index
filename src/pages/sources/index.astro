@@ -120,13 +120,13 @@ const parts = [
                 <span class="src-ds-by">{d.publisher} · {d.when}</span>
               </span>
               <span class="src-ds-n">
-                <span class="src-ds-count"><b>{num(d.count)}</b> {d.count === 1 ? "country" : "countries"}</span>
+                <span class="src-ds-count">{d.worldwide ? <b>Worldwide</b> : <><b>{num(d.count)}</b> {d.count === 1 ? "country" : "countries"}</>}</span>
                 <span>{d.fileInfo.years ? `${d.fileInfo.years[0]}–${d.fileInfo.years[1]}` : "csv"} · {kb(d.fileInfo.files.reduce((a, f) => a + f.bytes, 0))}</span>
               </span>
             </summary>
             <p>{d.about}</p>
             <dl class="src-ds-facts">
-              <div><dt>Covers</dt><dd>{num(d.count)} countries and territories on this site{d.total !== d.count && `, of ${num(d.total)} in the file`}</dd></div>
+              <div><dt>Covers</dt><dd>{d.worldwide ? "The world as a whole, not country by country" : <>{num(d.count)} countries and territories on this site{d.total !== d.count && `, of ${num(d.total)} in the file`}</>}</dd></div>
               {d.fileInfo.files.map((f) => (
                 <div><dt>{f.edition ? `File, ${f.edition} edition` : "File"}</dt><dd><a href={`${base}data/datasets/${f.name}`} download>{f.name}</a> · {kb(f.bytes)} · {num(f.rows)} rows · {f.columns} columns{f.years && ` · ${f.years[0] === f.years[1] ? f.years[0] : `${f.years[0]}–${f.years[1]}`}`}<br />SHA-256 <code>{f.sha256}</code></dd></div>
               ))}
@@ -141,7 +141,7 @@ const parts = [
               <thead><tr><th>On this site</th><th>Column in the file</th><th>Used for</th></tr></thead>
               <tbody>
                 {d.year && <tr><td><code>year</code></td><td><code>{d.year.column}</code></td><td>Every year is kept, for the charts on the profiles; the map and other figures use the latest</td></tr>}
-                <tr><td><code>country</code></td><td><code>{d.country.column}</code></td><td>{d.country.by === "id" ? "Our two-letter country code" : `Country name, matched to ours${Object.keys(d.country.aliases).length ? ` (${Object.keys(d.country.aliases).length} names spelled differently are mapped in datasets.yaml)` : ""}`}</td></tr>
+                {d.country && <tr><td><code>country</code></td><td><code>{d.country.column}</code></td><td>{d.country.by === "id" ? "Our two-letter country code" : `Country name, matched to ours${Object.keys(d.country.aliases).length ? ` (${Object.keys(d.country.aliases).length} names spelled differently are mapped in datasets.yaml)` : ""}`}</td></tr>}
                 {Object.entries(d.fields).map(([name, f]) => (
                   <tr><td><code>{name}</code></td><td><code>{f.column}</code></td><td>{f.about ?? (name === d.map?.field ? "Map colour and profile" : "Profile")}{f.decimals != null && `, rounded to ${f.decimals} decimals`}</td></tr>
                 ))}

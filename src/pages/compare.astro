@@ -1,12 +1,16 @@
 ---
 import Base from "../layouts/Base.astro";
-import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries, places, estimateNote } from "../lib/countries.js";
+import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries, places, estimateNote, segAvg } from "../lib/countries.js";
 import { flatLatestPricesFor } from "../lib/prices.js";
 import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
+import { DATASETS } from "../lib/datasets.js";
+import { viewByMetric } from "../lib/map-views.js";
+import { GROUPS, groupOf, POLARITY, CHART_OF } from "../lib/dataset-text.js";
+import { neighboursOf } from "../lib/borders.js";
 
 const light = places.map(({ id, slug, name, flag, region, raw, score, rank, s, rec, med, territory }) =>
-  ({ id, slug, name, flag, region, raw, score, rank, s, rec, med, kind: territory?.label, fe: estimateNote(places.find((x) => x.id === id)), prices: SHOW_PRICES ? flatLatestPricesFor(id) : {} }));
+  ({ id, slug, name, flag, region, raw, score, rank, s, rec, med, kind: territory?.label, fe: estimateNote(places.find((x) => x.id === id)), prices: SHOW_PRICES ? flatLatestPricesFor(id) : {}, nb: neighboursOf.get(id) ?? [] }));
 const meta = {
   segments: SEGMENTS.map((s) => ({ name: s.name, weight: s.weight })),
   context: CONTEXT_NAMES,
@@ -16,12 +20,20 @@ const meta = {
   rec: REC_LABEL,
   med: MED_LABEL,
   total: countries.length,
+  // the outside datasets, in the groups of the profiles' Datasets tab: [id, name, group, polarity, its map or chart]
+  datasets: GROUPS.flatMap((g) => Object.values(DATASETS).filter((d) => d.profile && groupOf(d) === g)
+    .map((d) => [d.id, d.name, g, POLARITY[d.id] ?? 0, d.map ? `map/${viewByMetric[`data:${d.id}`].slug}/` : CHART_OF[d.id] ? `charts/#${CHART_OF[d.id]}` : `sources/#dataset-${d.id}`])),
+  avg: countries.reduce((t, c) => t + c.raw, 0) / countries.length,
+  avgSeg: segAvg.map((v) => +v.toFixed(2)),
 };
 const presets = [
   ["The legal six", "CA,UY,ZA,CZ,DE,MT"],
   ["Western Europe", "NL,ES,PT,DE,FR"],
   ["North America", "CA,US,MX"],
   ["Harshest regimes", "SG,SA,ID,PH"],
+  ["A sharp border", "ZA,ZW,NA,MZ,BW"],
+  ["Germany and its neighbours", "DE,PL,CZ,FR,NL,DK"],
+  ["Southeast Asia", "TH,MY,SG,ID,PH,VN"],
 ];
 ---
 <Base title="Compare countries" description={`Compare cannabis freedom scores${SHOW_PRICES ? ", prices" : ""}, rules and sources for several countries side by side.`}>
@@ -29,7 +41,7 @@ const presets = [
     <section class="hero hero-sm">
       <p class="eyebrow">Compare</p>
       <h1>Compare countries side by side</h1>
-      <p class="lede">Pick up to six countries to see their scores{SHOW_PRICES && ", latest sourced prices"}, exact rules and sources — in one table. The address bar updates as you go, so a comparison can be shared as a link.</p>
+      <p class="lede">Pick up to six countries to see their scores over time, the shape of their laws{SHOW_PRICES && ", latest sourced prices"}, exact rules and sources, and every outside dataset that covers them, side by side. The address bar updates as you go, so a comparison can be shared as a link.</p>
     </section>
 
     <div class="cmp-controls">
@@ -53,9 +65,21 @@ const presets = [
       </div>
     </div>
 
+    <div class="cmp-visuals" id="cmpVisuals" hidden>
+      <figure class="card cmp-fig">
+        <figcaption><b>The score since 1900</b><span>Each country's score at the end of each year, rebuilt from its history; dots mark the changes. Hover for a year.</span></figcaption>
+        <div class="cmp-time" id="cmpTime"></div>
+      </figure>
+      <figure class="card cmp-fig">
+        <figcaption><b>The shape of the law</b><span>The six parts of the score, 0 to 10 each; the dotted shape is the world average.</span></figcaption>
+        <div class="cmp-radar" id="cmpRadar"></div>
+      </figure>
+    </div>
+
     <div class="card cmp-card" id="cmpCard" hidden>
       <table class="cmp" id="cmpTable"></table>
     </div>
+    <div class="cmp-tip" id="cmpTip" hidden></div>
   </main>
 
   <script type="application/json" id="cmp-data" set:html={JSON.stringify(light)} />
@@ -73,6 +97,13 @@ const presets = [
     const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
     const byName = new Map(COUNTRIES.map((c) => [norm(c.name), c]));
     const esc = (s) => String(s).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+
+    // one colour per place in the comparison, in the order they were added
+    const HUES = ["#4e8fd6", "#e8833a", "#4fae6a", "#d9534f", "#a77bca", "#d6b53c"];
+    const hue = (id) => HUES[selected.indexOf(id) % HUES.length];
+    const SEG_IDS = ["possession", "cultivation", "enforcement", "sharing", "consumption", "access"];
+    const BAND = ["Severe prohibition", "Prohibition", "Restrictive", "Tolerant", "Legal with limits", "Free"];
+    const band = (v) => (v >= 60 ? 5 : v >= 40 ? 4 : v >= 25 ? 3 : v >= 15 ? 2 : v >= 5 ? 1 : 0);
 
     let selected = [];
     const details = new Map(); // id → explanations, fetched on demand
@@ -127,6 +158,83 @@ const presets = [
       return values.length > 1 && values.some((v) => v !== max) ? max : null;
     };
 
+    // The difference from the first country, under a figure in every later column: "+2.2 pt vs 🇨🇿"
+    // with the change in per cent where it helps. `better` is 1 when higher is freer, -1 when higher
+    // is harsher, 0 when neither; it colours the difference. `like` is the first figure as written,
+    // whose decimals and unit the difference follows.
+    const diff = (v, ref, c0, better = 0, like = "") => {
+      if (!Number.isFinite(v) || !Number.isFinite(ref)) return "";
+      const d = v - ref;
+      const decimals = (String(like).match(/\.(\d+)/)?.[1].length) ?? (Number.isInteger(ref) && Number.isInteger(v) ? 0 : 1);
+      const unit = /%\s*$/.test(like) ? " pt" : "";
+      if (Math.abs(d) < 10 ** -decimals / 2) return `<span class="cmp-diff same" title="The same as ${esc(c0.name)}">=</span>`;
+      const tone = better === 0 ? (d > 0 ? " more" : " less") : (d > 0) === (better > 0) ? " up" : " down";
+      const text = `${d > 0 ? "▲" : "▼"} ${Math.abs(d).toLocaleString("en-GB", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}${unit}`;
+      const rel = ref !== 0 && !unit ? `, ${d > 0 ? "+" : "−"}${Math.abs(Math.round((d / ref) * 100)).toLocaleString("en-GB")}%` : "";
+      return `<span class="cmp-diff${tone}" title="${d > 0 ? "Higher" : "Lower"} than ${esc(c0.name)} by ${text.slice(2)}${rel}">${text}</span>`;
+    };
+
+    // years under prohibition (score under 15) from 1860, from the yearly scores; null until loaded
+    function yearsBanned(id) {
+      const sc = details.get(id)?.scores;
+      if (!sc) return null;
+      const now = new Date().getFullYear();
+      let n = 0;
+      for (let y = 1860; y <= now; y++) if ((sc.findLast(([yy]) => yy <= y)?.[1] ?? 100) < 15) n++;
+      return n;
+    }
+    const spark = (pts, colour) => {
+      if (!pts || pts.length < 2) return "";
+      const xs = pts.map((p) => p[0]), vs = pts.map((p) => p[1]), x0 = Math.min(...xs), x1 = Math.max(...xs), top = Math.max(...vs) || 1;
+      const d = pts.map(([x, v], i) => `${i ? "L" : "M"}${(((x - x0) / (x1 - x0 || 1)) * 100).toFixed(1)},${(30 - (v / top) * 26).toFixed(1)}`).join("");
+      return `<svg class="cmp-spark" viewBox="0 0 100 32" preserveAspectRatio="none" aria-hidden="true"><path d="${d}" style="stroke:${colour}" /></svg><div class="cmp-spark-x"><span>${Math.floor(x0)}</span><span>${Math.floor(x1)}</span></div>`;
+    };
+
+    // ── The score over time and the shape of the law ─────
+    function drawVisuals(cs) {
+      const now = new Date().getFullYear(), X0 = 1900;
+      const at = (sc, y) => sc.findLast(([yy]) => yy <= y)?.[1] ?? 100;
+      const x = (y) => ((y - X0) / (now - X0)) * 100, yv = (v) => 100 - v;
+      const lines = cs.map((c) => {
+        const sc = details.get(c.id)?.scores;
+        if (!sc) return "";
+        const pts = [];
+        let prev = at(sc, X0);
+        pts.push(`M0,${yv(prev)}`);
+        for (const [yy, v] of sc) if (yy > X0) { pts.push(`H${x(yy).toFixed(2)}V${yv(v)}`); prev = v; }
+        pts.push("H100");
+        return `<path class="cmp-time-line" d="${pts.join("")}" style="stroke:${hue(c.id)}" />`;
+      }).join("");
+      const dots = cs.map((c) => (details.get(c.id)?.changes ?? []).filter((ch) => +ch[0].slice(0, 4) >= X0)
+        .map((ch) => `<i class="cmp-time-dot" style="left:${x(+ch[0].slice(0, 4) + 0.5)}%;top:${yv(ch[3])}%;background:${hue(c.id)}"></i>`).join("")).join("");
+      $("#cmpTime").innerHTML = `<div class="cmp-time-y">${[0, 25, 50, 75, 100].map((t) => `<span style="top:${100 - t}%">${t}</span>`).join("")}</div>`
+        + `<div class="cmp-time-plot"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${[0, 15, 25, 40, 60, 100].map((t) => `<line x1="0" x2="100" y1="${yv(t)}" y2="${yv(t)}" class="cmp-time-grid" />`).join("")}${lines}</svg>${dots}<span class="cmp-time-seek" hidden></span></div>`
+        + `<div class="cmp-time-x">${[1900, 1925, 1950, 1975, 2000, 2025].filter((y) => y <= now).map((y) => `<span style="left:${x(y)}%">${y}</span>`).join("")}</div>`;
+      const plot = $("#cmpTime .cmp-time-plot"), seek = plot.querySelector(".cmp-time-seek"), tip = $("#cmpTip");
+      plot.addEventListener("pointermove", (e) => {
+        const r = plot.getBoundingClientRect(), y = Math.round(X0 + ((e.clientX - r.left) / r.width) * (now - X0));
+        seek.style.left = `${x(y)}%`; seek.hidden = false;
+        tip.innerHTML = `<b>${y}</b>` + cs.map((c) => {
+          const d = details.get(c.id); if (!d) return "";
+          const v = at(d.scores, y), ch = d.changes.filter((h) => +h[0].slice(0, 4) === y);
+          return `<span class="cmp-tip-row"><i style="background:${hue(c.id)}"></i>${esc(c.name)}<em>${Math.round(v)} · ${BAND[band(v)]}</em></span>` + ch.map((h) => `<span class="cmp-tip-sub">${esc(h[1])}</span>`).join("");
+        }).join("");
+        tip.hidden = false;
+        const w = tip.offsetWidth, h = tip.offsetHeight;
+        tip.style.left = `${Math.min(innerWidth - w - 8, e.clientX + 16)}px`;
+        tip.style.top = `${e.clientY + h + 24 > innerHeight ? e.clientY - h - 12 : e.clientY + 16}px`;
+      });
+      plot.addEventListener("pointerleave", () => { seek.hidden = true; tip.hidden = true; });
+      // the radar: six corners, one shape per country over the world average
+      const pt = (i, v) => { const a = -Math.PI / 2 + (i * 2 * Math.PI) / 6; return [50 + Math.cos(a) * 38 * (v / 10), 50 + Math.sin(a) * 38 * (v / 10)]; };
+      const shape = (vals) => vals.map((v, i) => pt(i, v).map((n) => n.toFixed(2)).join(",")).join(" ");
+      const labels = META.segments.map((seg, i) => { const [lx, ly] = pt(i, 12.2); return `<span class="cmp-radar-label" style="left:${lx}%;top:${ly}%">${esc(seg.name)}</span>`; }).join("");
+      $("#cmpRadar").innerHTML = `<div class="cmp-radar-box"><svg viewBox="0 0 100 100" aria-hidden="true">${[2.5, 5, 7.5, 10].map((v) => `<polygon class="cmp-radar-ring" points="${shape([v, v, v, v, v, v])}" />`).join("")}`
+        + [0, 1, 2, 3, 4, 5].map((i) => { const [a, b] = pt(i, 10); return `<line class="cmp-radar-ring" x1="50" y1="50" x2="${a}" y2="${b}" />`; }).join("")
+        + (META.avgSeg ? `<polygon class="cmp-radar-avg" points="${shape(META.avgSeg)}" />` : "")
+        + cs.map((c) => `<polygon class="cmp-radar-shape" points="${shape(c.s)}" style="--c:${hue(c.id)}"><title>${esc(c.name)}: ${c.s.join(", ")}</title></polygon>`).join("") + `</svg>${labels}</div>`;
+    }
+
     function render() {
       const cs = selected.map((id) => byId.get(id));
       const showText = $("#cmpText").checked;
@@ -136,7 +244,7 @@ const presets = [
       const head = `<thead><tr><th scope="col"><span class="visually-hidden">Segment</span></th>${cs.map((c) => `
         <th scope="col">
           <div class="cmp-head">
-            <span class="flag">${c.flag}</span>
+            <i class="cmp-hue" style="background:${hue(c.id)}"></i><span class="flag">${c.flag}</span>
             <a href="${base}country/${c.slug}/">${esc(c.name)}</a>
             <button class="cmp-x" data-remove="${c.id}" aria-label="Remove ${esc(c.name)}">✕</button>
           </div>
@@ -145,12 +253,15 @@ const presets = [
       const bestScore = bestOf(cs.map((c) => c.score));
       const rows = [
         row("Index", cs.map((c) => `
-          <div class="cmp-score${c.score === bestScore ? " best" : ""}"><b>${c.score}</b><span>/ 100</span></div>
+          <div class="cmp-score${c.score === bestScore ? " best" : ""}"><b>${c.score}</b><span>/ 100</span>${c !== cs[0] ? diff(c.score, cs[0].score, cs[0], 1, "0") : `<span class="cmp-ref">compared with</span>`}</div>
           <div class="bar"><i style="width:${c.raw}%;background:${tierColor(c.raw)}"></i></div>
           <div class="cmp-sub">${tierOf(c.raw).name}</div>${c.fe ? `<div class="cmp-sub">${esc(c.fe)}</div>` : ""}`), "cmp-index"),
         row("World rank", cs.map((c) => (c.rank ? `#${c.rank} <span class="cmp-sub">of ${META.total}</span>` : `<span class="cmp-sub">not ranked: ${c.kind}</span>`))),
         row("Recreational", cs.map((c) => `<span class="chip s-${c.rec}">${META.rec[c.rec]}</span>`)),
         row("Medical", cs.map((c) => `<span class="chip s-${c.med}">${META.med[c.med]}</span>`)),
+        row("Years under prohibition<small>since 1860, scoring under 15</small>", cs.map((c) => { const y = yearsBanned(c.id); return y == null ? `<span class="cmp-sub">…</span>` : `<div class="cmp-val"><b>${y}</b><span> years</span>${c !== cs[0] ? diff(y, yearsBanned(cs[0].id), cs[0], -1, "0") : ""}</div>`; })),
+        row("First rule on cannabis", cs.map((c) => { const ch = details.get(c.id)?.changes?.[0]; return ch ? `<div class="cmp-val"><b>${ch[0].slice(0, 4)}</b></div><div class="cmp-sub"><a href="${base}history/${ch[4]}/">${esc(ch[1])}</a></div>` : `<span class="cmp-sub">${details.has(c.id) ? "No dated rule" : "…"}</span>`; })),
+        row("Land neighbours", cs.map((c) => c.nb.length ? `<div class="cmp-nb">${c.nb.map((id) => byId.get(id)).filter(Boolean).sort((a, b) => b.raw - a.raw).map((n) => `<button type="button" data-add="${n.id}" title="Add ${esc(n.name)} to the comparison" ${selected.includes(n.id) ? "disabled" : ""}><i style="background:${tierColor(n.raw)}"></i>${n.flag} ${esc(n.name)} <b>${n.score}</b></button>`).join("")}</div>` : `<span class="cmp-sub">None by land</span>`)),
       ];
       if (showText) rows.push(row("In short", cs.map((c) => `<p class="cmp-text">${esc(details.get(c.id)?.note ?? "")}</p>`)));
 
@@ -167,7 +278,7 @@ const presets = [
       META.segments.forEach((seg, i) => {
         const best = bestOf(cs.map((c) => c.s[i]));
         rows.push(row(`${seg.name}<small>${seg.weight}% of the index</small>`, cs.map((c) => `
-          <div class="cmp-val${c.s[i] === best ? " best" : ""}"><b>${c.s[i]}</b><span>/10</span></div>
+          <div class="cmp-val${c.s[i] === best ? " best" : ""}"><b>${c.s[i]}</b><span>/10</span>${c !== cs[0] ? diff(c.s[i], cs[0].s[i], cs[0], 1, "0") : ""}</div>
           ${bar(c.s[i])}
           ${showText ? prose(details.get(c.id)?.segments[i]) : ""}`)));
       });
@@ -181,6 +292,28 @@ const presets = [
         });
       }
 
+      // the outside datasets: every one that covers at least one of the countries, in its group
+      if (cs.some((c) => details.get(c.id)?.datasets)) {
+        let group = null;
+        for (const [id, name, g, polarity, href] of META.datasets) {
+          const cells = cs.map((c) => details.get(c.id)?.datasets?.[id]);
+          if (!cells.some(Boolean)) continue;
+          if (g !== group) { rows.push(`<tr class="cmp-divider"><th colspan="${cs.length + 1}">Datasets · ${g} — not part of the score</th></tr>`); group = g; }
+          // the highest figure is marked; for a dataset where higher is harsher, the lowest
+          const nums = cells.map((x) => x?.[3]).filter((v) => Number.isFinite(v));
+          const mark = nums.length > 1 && new Set(nums).size > 1 ? (polarity < 0 ? Math.min(...nums) : Math.max(...nums)) : null;
+          rows.push(row(`<a href="${base}${href}">${esc(name)}</a>`, cs.map((c, k) => {
+            const x = cells[k];
+            if (!x) return `<span class="cmp-sub">${details.has(c.id) ? "No figure" : "…"}</span>`;
+            const [big, words, year, v, pts, st] = x;
+            const first = cells[0];
+            return `<div class="cmp-val${polarity && v === mark ? " best" : ""}"><b>${esc(big)}</b>${k > 0 && first ? diff(v, first[3], cs[0], polarity, first[0]) : ""}</div><div class="cmp-sub">${esc(words)}${year ? ` · ${Number.isInteger(year) ? year : Math.floor(year)}` : ""}</div>`
+              + spark(pts, hue(c.id)) + (st ? `<div class="cmp-stand" title="Higher than ${st.below}% of ${st.n} countries"><i style="left:${st.at * 100}%;background:${hue(c.id)}"></i></div><div class="cmp-sub">higher than ${st.below}% of ${st.n}</div>` : "");
+          })));
+        }
+      }
+
+      drawVisuals(cs);
       const table = $("#cmpTable");
       table.style.setProperty("--cols", cs.length);
       table.innerHTML = head + `<tbody>${rows.join("")}</tbody>`;
@@ -191,18 +324,17 @@ const presets = [
       const any = selected.length > 0;
       $("#cmpEmpty").hidden = any;
       $("#cmpCard").hidden = !any;
+      $("#cmpVisuals").hidden = !any;
       $("#cmpClear").hidden = !any;
       if (!any) return;
-      render(); // scores first, text fills in once loaded
-      if ($("#cmpText").checked) {
-        const before = selected.join();
-        try {
-          await Promise.all(selected.map(loadDetails));
-        } catch (err) {
-          return say("The explanations could not be loaded. Scores are still shown.");
-        }
-        if (selected.join() === before) render();
+      render(); // scores first; history, datasets and text fill in once loaded
+      const before = selected.join();
+      try {
+        await Promise.all(selected.map(loadDetails));
+      } catch (err) {
+        return say("The history, datasets and explanations could not be loaded. Scores are still shown.");
       }
+      if (selected.join() === before) render();
     }
 
     // ── Events ────────────────────────────────────────────
@@ -235,6 +367,8 @@ const presets = [
     $("#cmpTable").addEventListener("click", (e) => {
       const btn = e.target.closest("[data-remove]");
       if (btn) remove(btn.dataset.remove);
+      const plus = e.target.closest("[data-add]");
+      if (plus) add(plus.dataset.add);
     });
     $("#cmpText").addEventListener("change", update);
     $("#cmpClear").addEventListener("click", () => { selected = []; say(""); update(); });

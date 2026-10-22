@@ -873,8 +873,23 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
             ? row("Per 100,000 people", d.t, dataColor(c)) + row("Offences", d.offences.toLocaleString("en-GB")) + row("Year", d.year) + `<div class="tip-meta">Cannabis only; countries count differently</div>`
             : key === "police_possession"
             ? row("Per 100,000 people", d.t, dataColor(c)) + row("People", d.persons.toLocaleString("en-GB")) + row("Year", d.year) + `<div class="tip-meta">All drugs together; countries count differently</div>`
-            : row("Human freedom", `${d.human.toFixed(2)} / 10`, dataColor(c)) + (d.human_rank ? row("Rank", `#${d.human_rank} of ${scale.total}`) : "")
-              + (d.personal != null ? row("Personal freedom", `${d.personal.toFixed(2)} / 10`) : "") + (d.economic != null ? row("Economic freedom", `${d.economic.toFixed(2)} / 10`) : "");
+            : key === "hfi"
+            ? row("Human freedom", `${d.human.toFixed(2)} / 10`, dataColor(c)) + (d.human_rank ? row("Rank", `#${d.human_rank} of ${scale.total}`) : "")
+              + (d.personal != null ? row("Personal freedom", `${d.personal.toFixed(2)} / 10`) : "") + (d.economic != null ? row("Economic freedom", `${d.economic.toFixed(2)} / 10`) : "")
+            : key === "wastewater"
+            ? row("THC-COOH a day per 1,000 people", `${d.t} mg`, dataColor(c)) + (d.cities ? row("Cities measured", d.cities) : "") + row("Year", d.year)
+            : key === "minimum_wage"
+            ? row("Minimum wage", `€${d.t} a month`, dataColor(c)) + row("January", d.year)
+            : key === "alcohol"
+            ? row("Pure alcohol a year", `${d.t} litres`, dataColor(c)) + `<div class="tip-meta">Per person aged 15 or over</div>` + row("Year", d.year)
+            : key === "government_effectiveness"
+            ? row("Government effectiveness", `${d.t} of 100`, dataColor(c)) + (d.effectiveness != null ? row("Estimate, −2.5 to 2.5", d.effectiveness.toFixed(2)) : "") + row("Year", d.year)
+            : key === "espad_availability"
+            ? row("Say it is easy to get", d.t, dataColor(c)) + (d.easy_boys != null ? row("Boys", `${d.easy_boys}%`) : "") + (d.easy_girls != null ? row("Girls", `${d.easy_girls}%`) : "") + `<div class="tip-meta">Students aged 15–16, 2024</div>`
+            : key === "espad_lifetime"
+            ? row("Have tried cannabis", d.t, dataColor(c)) + `<div class="tip-meta">Students aged 15–16</div>` + row("Survey", d.year)
+            // any other dataset: its map figure, and its year when it has one
+            : row(esc(scale.label), d.t, dataColor(c)) + (d.year != null ? row("Year", d.year) : "");
           return head(c.flag, c.name, d.t, dataColor(c)) + rows + row("Cannabis index", `${c.score} / 100 · ${rankText(c)}`) + foot(c);
         }
         if (isClubs()) {

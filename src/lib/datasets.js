@@ -58,7 +58,7 @@ const loaded = (await getCollection("datasets")).flatMap(({ data: def }) => {
     console.warn(`[datasets] ${absent.map((f) => `datasets/${f.file}`).join(", ")} missing: "${def.id}" is left out of the site`);
     return [];
   }
-  const values = {}, missed = [], places = new Set();
+  const values = {}, missed = [], places = new Set(), worldRows = [];
   const fileInfo = { files: [], originals: originalsOf(def).map((name) => ({ name, ...fileStats(fs.readFileSync(`datasets/${name}`)) })) };
   for (const { file, edition } of files) {
     const path = `datasets/${file}`;
@@ -69,6 +69,11 @@ const loaded = (await getCollection("datasets")).flatMap(({ data: def }) => {
     // what the sources page says about the file itself
     fileInfo.files.push({ name: file, edition, ...fileStats(raw), rows: rows.length, columns: Object.keys(rows[0] ?? {}).length,
       years: years.length ? [Math.min(...years), Math.max(...years)] : null });
+    // a worldwide dataset: every row as it is, with its fields read and its year
+    if (!def.country) {
+      for (const r of rows) worldRows.push({ ...Object.fromEntries(Object.entries(def.fields).map(([name, { column, type }]) => [name, type === "text" ? r[column] : r[column] === "" ? undefined : +r[column]])), ...(yearOf(r) != null && { year: yearOf(r) }) });
+      continue;
+    }
     for (const r of rows) {
       const key = r[def.country.column];
       if (!key) continue; // a row kept for a place with no country file, such as a former state
@@ -92,7 +97,7 @@ const loaded = (await getCollection("datasets")).flatMap(({ data: def }) => {
   if (missed.length) console.warn(`[datasets] ${def.id}: no country file for ${[...new Set(missed)].join("; ")}. Add an alias in datasets/datasets.yaml if one exists.`);
   const allYears = fileInfo.files.flatMap((f) => f.years ?? []);
   fileInfo.years = allYears.length ? [Math.min(...allYears), Math.max(...allYears)] : null;
-  return [{ ...def, files: fileInfo.files.map((f) => f.name), values, fileInfo, count: Object.keys(values).length, total: places.size,
+  return [{ ...def, files: fileInfo.files.map((f) => f.name), values, rows: worldRows, worldwide: !def.country, fileInfo, count: Object.keys(values).length, total: places.size,
     map: def.map && { ...def.map, value: (d, c) => (def.map.per ? (d[def.map.field] / c.population) * def.map.per : d[def.map.field]), format: FORMATS[def.map.format] } }];
 });
 

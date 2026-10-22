@@ -279,7 +279,8 @@ const datasets = defineCollection({
       file: z.union([csvFile, z.array(z.object({ file: csvFile, edition: z.number().int() }).strict()).min(1)]),
       rail: z.boolean().default(false), // also shown in the profile's side column
       // how it reads in the profile's Datasets tab: {field} templates, see datasets.yaml
-      profile: z.object({ headline: z.string().min(1), details: z.string().optional(), years: z.array(z.number().int()).optional(), each: z.string().optional() }).strict(),
+      // optional for a worldwide dataset (no `country`), which no profile shows
+      profile: z.object({ headline: z.string().min(1), details: z.string().optional(), years: z.array(z.number().int()).optional(), each: z.string().optional() }).strict().optional(),
       origin: z.string().min(1), // how the file was made: downloaded as published or transcribed, and when
       // the publisher's file (or files) an extract was made from
       original: z.union([originalFile, z.array(originalFile).min(1)]).optional(),
@@ -293,7 +294,8 @@ const datasets = defineCollection({
       when: z.string().min(1),
       about: z.string().min(1),
       notes: z.record(z.string(), z.string()).default({}), // by country file name
-      country: z.object({ column: z.string().min(1), by: z.enum(["id", "name"]), aliases: z.record(z.string(), z.string()).default({}) }).strict(),
+      // which column names the country; left out for a worldwide dataset, whose rows are kept as they are
+      country: z.object({ column: z.string().min(1), by: z.enum(["id", "name"]), aliases: z.record(z.string(), z.string()).default({}) }).strict().optional(),
       year: z.object({ column: z.string().min(1) }).strict().optional(), // a column with the year of each row
       fields: z.record(z.string(), column),
       pages: z.array(z.object({ label: z.string().min(1), path: z.string() }).strict()).optional(),

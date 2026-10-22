@@ -1023,3 +1023,633 @@
     fiscal_year: { column: fiscal_year, type: text, format: text }
   pages:
     - { label: the Charts page, path: charts/#state-merchant }
+- id: espad_lifetime
+  file: espad-cannabis-lifetime-trend.csv
+  name: Students who have tried cannabis (Europe)
+  publisher: ESPAD Group and the European Union Drugs Agency (EUDA)
+  credit: ESPAD
+  title: ESPAD Report 2024 — source tables, figure 32, lifetime use of cannabis by country, 1995–2024
+  url: https://www.espad.org/espad-report-2024
+  data_url: https://www.euda.europa.eu/system/files/documents/2025-10/espad-2024-report-source-tables.xlsx.zip
+  data_label: source tables, spreadsheet (figure 32)
+  when: 1995 to 2024, every four or five years
+  about: >-
+    The per cent of students aged 15 to 16 who have ever used cannabis, in each wave of the
+    European School Survey Project on Alcohol and Other Drugs from 1995 to 2024, from its trend
+    database. Germany's figures are for Bavaria only. Moldova, Montenegro and North Macedonia held
+    their 2007 wave in 2008.
+  origin: >-
+    The EUDA's site refuses scripted downloads, so the spreadsheet of source tables was opened in
+    a browser on 22 October 2026 and figure 32 was read from it and written here, one row per
+    country and wave, rounded to one decimal.
+  notes:
+    de: Bavaria only, the one German state in the ESPAD trend database.
+  profile:
+    headline: "{lifetime} of students have tried it"
+    details: "aged 15–16 · {year}"
+    each: "{lifetime} in {year}"
+    years: [1999, 2011]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    lifetime: { column: lifetime, format: percent, about: "Students aged 15–16 who have ever used cannabis: map, Charts page and profile" }
+  map:
+    field: lifetime
+    format: percent
+    group: Use
+    since: 2024
+    slug: students-tried-cannabis
+    label: Students who have tried cannabis
+    missing: Not in the 2024 ESPAD school survey
+    steps: [[0, "Under 6%"], [6, "6–10%"], [10, "10–14%"], [14, "14–18%"], [18, "18% or more"]]
+    title: Students who have tried cannabis, Europe
+    lede: >-
+      The share of students aged 15 to 16 who have ever used cannabis, from the 2024 ESPAD school
+      survey. The stronger the blue, the more of them have tried it. The time control goes back
+      to 1995.
+    sub: >-
+      The stronger the blue, the more students aged 15 to 16 have tried cannabis. Countries
+      outside the ESPAD survey are hatched.
+    note: >-
+      ESPAD trend database 1995–2024, figure 32 of the 2024 report's source tables. Germany is
+      Bavaria only. Not part of the score.
+  pages:
+    - { label: its map, path: map/students-tried-cannabis/ }
+    - { label: the Charts page, path: charts/#teen-trends }
+- id: gallup_us
+  file: gallup-us-legalization.csv
+  name: Should marijuana be legal? (United States)
+  publisher: Gallup
+  title: Gallup — "Grassroots Support for Legalizing Marijuana Hits Record 70%" (8 November 2023), trend 1969–2023
+  url: https://news.gallup.com/poll/514007/grassroots-support-legalizing-marijuana-hits-record.aspx
+  data_label: the chart's data table
+  when: 1969 to 2023
+  about: >-
+    The per cent of American adults who answer yes to "Do you think the use of marijuana should be
+    made legal, or not?", in every Gallup poll that asked it from 1969 to 2023. Two polls were
+    taken in 2019.
+  origin: >-
+    Read on 22 October 2026 from the data table behind the trend chart of Gallup's article and
+    written here unchanged, with the date of each poll.
+  profile:
+    headline: "{legal} say it should be legal"
+    details: "Gallup poll of {date}"
+    each: "{legal} in {year}"
+    years: [1969, 2000]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    legal: { column: legal, format: percent, about: "Adults who say marijuana should be legal: Charts page and profile" }
+    date: { column: date, type: text, format: text }
+  pages:
+    - { label: the Charts page, path: charts/#opinion-gap }
+- id: alcohol
+  file: owid-alcohol-consumption.csv
+  name: Alcohol drunk per person
+  publisher: World Health Organization, via Our World in Data
+  credit: WHO, Our World in Data
+  title: Our World in Data — Total alcohol consumption per capita (litres of pure alcohol), from the WHO Global Health Observatory
+  url: https://ourworldindata.org/grapher/total-alcohol-consumption-per-capita-litres-of-pure-alcohol
+  data_url: https://ourworldindata.org/grapher/total-alcohol-consumption-per-capita-litres-of-pure-alcohol.csv?v=1&csvType=full&useColumnShortNames=true
+  data_label: full data (CSV)
+  when: 2000 to 2022
+  about: >-
+    The WHO's estimate of the litres of pure alcohol drunk in a year per person aged 15 or over,
+    recorded sales and unrecorded alcohol together. A legal drug, for comparison with an illegal
+    one.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (alcohol), which keeps the
+    countries with a country file.
+  profile:
+    headline: "{litres} litres of pure alcohol a year"
+    details: "per person aged 15 or over · {year}"
+    each: "{litres} in {year}"
+    years: [2000, 2010]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    litres: { column: litres, format: decimal, about: "Litres of pure alcohol per person aged 15+: map, Charts page and profile" }
+  map:
+    field: litres
+    format: decimal
+    group: Use
+    since: 2015
+    slug: alcohol
+    label: Alcohol drunk per person
+    missing: No WHO estimate since 2015
+    steps: [[0, "Under 2 litres"], [2, "2–5"], [5, "5–8"], [8, "8–11"], [11, "11 litres or more"]]
+    title: How much alcohol people drink
+    lede: >-
+      Litres of pure alcohol drunk in a year per person aged 15 or over, the WHO's estimate. The
+      stronger the blue, the more people drink: a legal drug, beside an illegal one.
+    sub: >-
+      The stronger the blue, the more litres of pure alcohol per person aged 15 or over.
+    note: >-
+      WHO Global Health Observatory, via Our World in Data; recorded and unrecorded alcohol. Not
+      part of the score.
+  pages:
+    - { label: its map, path: map/alcohol/ }
+    - { label: the Charts page, path: charts/#alcohol }
+- id: government_effectiveness
+  file: wb-government-effectiveness.csv
+  name: Government effectiveness
+  publisher: World Bank
+  title: World Bank — Worldwide Governance Indicators, government effectiveness (GOV_WGI_GE.EST and GOV_WGI_GE.SC)
+  url: https://www.worldbank.org/en/publication/worldwide-governance-indicators
+  data_url: https://api.worldbank.org/v2/country/all/indicator/GOV_WGI_GE.EST?format=json&per_page=20000&source=3
+  data_label: World Bank API
+  when: 1996 to 2025
+  about: >-
+    How well a state works, by the World Bank's estimate: the quality of its public services and
+    civil service, and how far it can carry out the policies it makes. An estimate from about
+    −2.5 to 2.5, and the same on a scale of 0 to 100. A measure of capacity, not of freedom.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (governance) from the World Bank's
+    API, which keeps the countries with a country file.
+  profile:
+    headline: "{score} of 100"
+    details: "estimate {effectiveness} on a scale of −2.5 to 2.5 · {year}"
+    each: "{score} in {year}"
+    years: [2000, 2015]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    score: { column: score, decimals: 0, about: "Government effectiveness on a scale of 0 to 100: map, Charts page and profile" }
+    effectiveness: { column: effectiveness, format: decimal }
+  map:
+    field: score
+    format: number
+    group: Society
+    since: 2023
+    slug: government-effectiveness
+    label: Government effectiveness
+    missing: No World Bank estimate
+    steps: [[0, "Under 30"], [30, "30–45"], [45, "45–60"], [60, "60–75"], [75, "75 or more"]]
+    title: How effective each state is
+    lede: >-
+      The World Bank's measure of government effectiveness, from 0 to 100: the quality of public
+      services and the state's ability to carry out its policies. The stronger the blue, the more
+      capable the state.
+    sub: >-
+      The stronger the blue, the more effective the government, on the World Bank's scale of 0
+      to 100.
+    note: >-
+      World Bank, Worldwide Governance Indicators. A measure of state capacity, not of freedom;
+      not part of the score.
+  pages:
+    - { label: its map, path: map/government-effectiveness/ }
+    - { label: the Charts page, path: charts/#state-capacity }
+- id: minimum_wage
+  file: eurostat-minimum-wages.csv
+  name: Minimum wage
+  publisher: Eurostat
+  title: Eurostat — Monthly minimum wages, bi-annual data (earn_mw_cur), in euros
+  url: https://ec.europa.eu/eurostat/databrowser/view/earn_mw_cur/default/table
+  data_url: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_mw_cur?format=JSON&lang=EN&currency=EUR
+  data_label: Eurostat API (JSON)
+  when: 1999 to 2026
+  about: >-
+    The national gross minimum wage for a month of full-time work, in euros, as it stood in
+    January of each year. Countries without a national minimum wage, such as Austria, Denmark,
+    Finland, Italy and Sweden, have no figure.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (minwage), which keeps the January
+    figure of each year.
+  profile:
+    headline: "€{monthly_eur} a month"
+    details: "gross, full time · January {year}"
+    each: "€{monthly_eur} in {year}"
+    years: [2005, 2015]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    monthly_eur: { column: monthly_eur, about: "Monthly minimum wage in euros: map, Charts page and profile" }
+  map:
+    field: monthly_eur
+    format: number
+    group: Society
+    since: 2024
+    slug: minimum-wage
+    label: Minimum wage (Europe)
+    missing: No national minimum wage reported to Eurostat
+    steps: [[0, "Under €500"], [500, "€500–900"], [900, "€900–1,300"], [1300, "€1,300–1,800"], [1800, "€1,800 or more"]]
+    title: Monthly minimum wages in Europe
+    lede: >-
+      The national gross minimum wage for a month of full-time work, in euros, January of the
+      latest year. The stronger the blue, the higher the wage.
+    sub: >-
+      The stronger the blue, the higher the monthly minimum wage. Countries without one, or
+      outside Eurostat's table, are hatched.
+    note: >-
+      Eurostat, earn_mw_cur, January figures. Used on the Charts page to price a gram of cannabis
+      in minutes of work. Not part of the score.
+  pages:
+    - { label: its map, path: map/minimum-wage/ }
+    - { label: the Charts page, path: charts/#work-for-a-gram }
+- id: corruption
+  file: owid-corruption-perceptions.csv
+  name: Corruption Perceptions Index
+  publisher: Transparency International, via Our World in Data
+  credit: Transparency International
+  title: Transparency International — Corruption Perceptions Index, via Our World in Data
+  url: https://www.transparency.org/en/cpi
+  data_url: https://ourworldindata.org/grapher/ti-corruption-perception-index.csv?v=1&csvType=full&useColumnShortNames=true
+  data_label: full data (CSV)
+  when: 2012 to 2024
+  about: >-
+    How corrupt experts and business people judge a country's public sector, from 0 (highly
+    corrupt) to 100 (very clean). A perception, built from up to 13 surveys and assessments; it
+    says nothing about cannabis itself, but much about how a law is likely to be enforced.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (corruption), which keeps the
+    countries with a country file.
+  profile:
+    headline: "{cpi} of 100"
+    details: "0 highly corrupt, 100 very clean · {year}"
+    each: "{cpi} in {year}"
+    years: [2015, 2020]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    cpi: { column: cpi, about: "Corruption Perceptions Index, 0–100: map, Charts page and profile" }
+  map:
+    field: cpi
+    format: number
+    group: Society
+    since: 2022
+    slug: corruption
+    label: Corruption Perceptions Index
+    missing: Not in Transparency International's index
+    steps: [[0, "Under 25"], [25, "25–40"], [40, "40–55"], [55, "55–70"], [70, "70 or more, cleanest"]]
+    title: How corrupt the public sector is thought to be
+    lede: >-
+      Transparency International's Corruption Perceptions Index, from 0 (highly corrupt) to 100
+      (very clean). The stronger the blue, the cleaner the public sector is thought to be.
+    sub: >-
+      The stronger the blue, the cleaner the public sector is judged to be, from 0 to 100.
+    note: >-
+      Transparency International, via Our World in Data. A perception of corruption, not part of
+      the score.
+  pages:
+    - { label: its map, path: map/corruption/ }
+    - { label: the Charts page, path: charts/#corruption }
+- id: religion
+  file: owid-most-common-religion.csv
+  name: Most common religion
+  publisher: Pew Research Center, via Our World in Data
+  credit: Pew Research Center
+  title: Pew Research Center — Global religious composition estimates 2010 and 2020, most common religion, via Our World in Data
+  url: https://www.pewresearch.org/religion/feature/religious-composition-by-country-2010-2020/
+  data_url: https://ourworldindata.org/grapher/most-common-religion.csv?v=1&csvType=full&useColumnShortNames=true
+  data_label: full data (CSV)
+  when: 2010 and 2020
+  about: >-
+    The religious group with the largest share of a country's people, from Pew's estimates built
+    on more than 2,700 censuses and surveys: Christians, Muslims, Hindus, Buddhists, Jews, other
+    religions, or the religiously unaffiliated. People are counted by how they describe
+    themselves, whatever they practise.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (religion), which keeps the
+    countries with a country file.
+  profile:
+    headline: "{religion}"
+    details: "the largest group · {year}"
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    religion: { column: religion, type: text, format: text, about: "The largest religious group: Charts page and profile" }
+  pages:
+    - { label: the Charts page, path: charts/#religion }
+- id: gdp
+  file: wb-gdp-per-person.csv
+  name: Income per person
+  publisher: World Bank
+  title: World Bank — GDP per capita, PPP (constant 2021 international $), NY.GDP.PCAP.PP.KD
+  url: https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD
+  data_url: https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&per_page=20000
+  data_label: World Bank API
+  when: 1990 to 2025
+  about: >-
+    The value of everything a country produces in a year, per person, at the prices of one
+    country so that a dollar buys the same everywhere (purchasing power parity), in 2021 dollars.
+    A measure of how rich a country is.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (gdp), which keeps the countries
+    with a country file.
+  profile:
+    headline: "${gdp_ppp} per person"
+    details: "at purchasing power parity, 2021 dollars · {year}"
+    each: "${gdp_ppp} in {year}"
+    years: [1990, 2010]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    gdp_ppp: { column: gdp_ppp, about: "GDP per person at purchasing power parity: map, Charts page and profile" }
+  map:
+    field: gdp_ppp
+    format: number
+    group: Society
+    since: 2020
+    slug: income
+    label: Income per person
+    missing: No World Bank estimate
+    steps: [[0, "Under $5,000"], [5000, "$5,000–15,000"], [15000, "$15,000–30,000"], [30000, "$30,000–60,000"], [60000, "$60,000 or more"]]
+    title: How rich each country is
+    lede: >-
+      GDP per person at purchasing power parity, in 2021 dollars, the World Bank's latest. The
+      stronger the blue, the richer the country.
+    sub: >-
+      The stronger the blue, the higher the income per person.
+    note: >-
+      World Bank, NY.GDP.PCAP.PP.KD. Not part of the score.
+  pages:
+    - { label: its map, path: map/income/ }
+    - { label: the Charts page, path: charts/#what-goes-with-it }
+- id: wikipedia_views
+  file: wikipedia-cannabis-views.csv
+  name: Readers of the cannabis article on Wikipedia
+  publisher: Wikimedia Foundation
+  credit: Wikimedia
+  title: Wikimedia pageviews API — monthly views by users of the article on cannabis as a drug, by language edition
+  url: https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/
+  data_url: https://wikimedia.org/api/rest_v1/metrics/pageviews/
+  data_label: pageviews API
+  when: July 2015 to September 2026
+  about: >-
+    How many times a month people (not bots) opened the Wikipedia article on cannabis as a drug,
+    in 26 languages spoken mainly in one country: German for Germany, Thai for Thailand and so
+    on. A measure of curiosity: it jumps when cannabis is in the news. German is also read in
+    Austria and Switzerland, Dutch in Belgium.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (wikipedia); the article in each
+    language is the one the English "Cannabis (drug)" links to.
+  notes:
+    de: German Wikipedia, also read in Austria and Switzerland.
+    nl: Dutch Wikipedia, also read in Belgium.
+  profile:
+    headline: "{views} readers in {month}"
+    details: "{article} · {language} Wikipedia"
+  country: { column: country, by: id }
+  year: { column: time }
+  fields:
+    views: { column: views, about: "Monthly views of the article: Charts page and profile" }
+    month: { column: month, type: text, format: text }
+    language: { column: language, type: text, format: text }
+    article: { column: article, type: text, format: text }
+  pages:
+    - { label: the Charts page, path: charts/#looked-it-up }
+- id: development
+  file: wb-development.csv
+  name: Development indicators
+  publisher: World Bank
+  title: World Bank — World Development Indicators (IT.NET.USER.ZS, SP.URB.TOTL.IN.ZS, SP.POP.65UP.TO.ZS, SP.DYN.LE00.IN, SE.TER.ENRR)
+  url: https://databank.worldbank.org/source/world-development-indicators
+  data_url: https://api.worldbank.org/v2/country/all/indicator/IT.NET.USER.ZS?format=json&per_page=20000
+  data_label: World Bank API
+  when: 1990 to 2025
+  about: >-
+    Five measures of how a country lives: the share of people using the internet, living in towns
+    and cities and aged 65 or over; life expectancy at birth; and the gross enrolment ratio in
+    higher education, which can pass 100% where many older students enrol.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (development), which keeps the
+    countries with a country file.
+  profile:
+    headline: "{internet} use the internet"
+    details: "{urban} live in towns · {aged_65} aged 65+ · life expectancy {life_expectancy} · higher education {higher_education} · {year}"
+    each: "{internet} in {year}"
+    years: [2000, 2010]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    internet: { column: internet, format: percent, about: "Share of people using the internet: map, Charts page and profile" }
+    urban: { column: urban, format: percent, about: "Share living in towns and cities: Charts page and profile" }
+    aged_65: { column: aged_65, format: percent, about: "Share aged 65 or over: Charts page and profile" }
+    life_expectancy: { column: life_expectancy, about: "Life expectancy at birth, years: Charts page and profile" }
+    higher_education: { column: higher_education, format: percent, about: "Gross enrolment in higher education: Charts page and profile" }
+  map:
+    field: internet
+    format: percent
+    group: Society
+    since: 2020
+    slug: internet
+    label: People using the internet
+    missing: No World Bank figure
+    steps: [[0, "Under 30%"], [30, "30–50%"], [50, "50–70%"], [70, "70–85%"], [85, "85% or more"]]
+    title: Who is online
+    lede: >-
+      The share of people using the internet, the World Bank's latest. The stronger the blue, the
+      more people are online.
+    sub: >-
+      The stronger the blue, the larger the share of people using the internet.
+    note: >-
+      World Bank, IT.NET.USER.ZS. Not part of the score.
+  pages:
+    - { label: its map, path: map/internet/ }
+    - { label: the Charts page, path: charts/#what-goes-with-it }
+- id: book_words
+  file: ngram-cannabis-words.csv
+  name: The words for cannabis in books
+  publisher: Google Books Ngram Viewer
+  credit: Google Books
+  title: Google Books Ngram Viewer — yearly frequency of the names of cannabis in printed books, 1800–2022, six language corpora
+  url: https://books.google.com/ngrams/
+  data_url: https://books.google.com/ngrams/json?content=cannabis,marijuana,hashish,hemp&year_start=1800&year_end=2022&corpus=en&smoothing=0&case_insensitive=true
+  data_label: the viewer's JSON, English example
+  when: 1800 to 2022
+  about: >-
+    How often each name of the plant and the drug appears in the books Google has scanned, as a
+    share of all words printed that year, per billion words: in English, German, French, Spanish,
+    Italian and Russian. Worldwide: books are counted by language, not by country. The scanned
+    books are not a random sample of what was printed, and "hemp" also means rope and cloth.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (books), case-insensitive and
+    unsmoothed, all spellings of a word summed.
+  year: { column: year }
+  fields:
+    corpus: { column: corpus, type: text, about: "The language of the books: Charts page" }
+    word: { column: word, type: text, about: "The word counted: Charts page" }
+    per_billion: { column: per_billion, about: "Occurrences per billion words printed that year: Charts page" }
+  pages:
+    - { label: the Charts page, path: charts/#words-in-books }
+- id: clinical_trials
+  file: clinicaltrials-cannabis.csv
+  name: Clinical trials of cannabis medicines
+  publisher: U.S. National Library of Medicine
+  credit: ClinicalTrials.gov
+  title: ClinicalTrials.gov — registered studies with a cannabis or cannabinoid intervention, API v2
+  url: https://clinicaltrials.gov/
+  data_url: https://clinicaltrials.gov/api/v2/studies?query.intr=cannabis%20OR%20cannabidiol%20OR%20THC%20OR%20dronabinol%20OR%20nabilone%20OR%20nabiximols%20OR%20cannabinoid%20OR%20marijuana
+  data_label: API v2 query
+  when: by the year each study started
+  about: >-
+    Registered clinical studies whose intervention is cannabis, cannabidiol (CBD), THC or a
+    cannabinoid medicine, counted once for each country where the study has a site, by the year
+    it started, with the running total; studies not yet started are left out. ClinicalTrials.gov is American and holds most, not all,
+    of the world's registered trials; a study run in several countries counts in each.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (trials), which matches the
+    registry's country names to the country files.
+  profile:
+    headline: "{to_date} studies so far"
+    details: "{trials} started in {year}"
+    each: "{to_date} by {year}"
+    years: [2010, 2020]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    to_date: { column: to_date, about: "Studies so far: map, Charts page and profile" }
+    trials: { column: trials, about: "Studies that started that year: Charts page and profile" }
+  map:
+    field: to_date
+    per: 1000000
+    format: rate
+    group: Context
+    slug: clinical-trials
+    label: Clinical trials per million people
+    missing: No registered cannabis trial
+    steps: [[0, "Under 0.2"], [0.2, "0.2–1"], [1, "1–3"], [3, "3–10"], [10, "10 or more"]]
+    title: Where cannabis medicines are tested
+    lede: >-
+      Registered clinical studies of cannabis, CBD, THC or cannabinoid medicines with a site in
+      each country, per million people, from ClinicalTrials.gov. The stronger the blue, the more
+      studies.
+    sub: >-
+      The stronger the blue, the more cannabis studies per million people. Countries with none
+      are hatched.
+    note: >-
+      ClinicalTrials.gov, all years; a study with sites in several countries counts in each. Not
+      part of the score.
+  pages:
+    - { label: its map, path: map/clinical-trials/ }
+    - { label: the Charts page, path: charts/#trials }
+- id: cannabis_parties
+  file: wikidata-cannabis-parties.csv
+  name: Parties for legal cannabis
+  publisher: Wikidata
+  title: Wikidata — political parties whose name or ideology mentions cannabis, marijuana or hemp
+  url: https://www.wikidata.org/
+  data_url: https://query.wikidata.org/
+  data_label: SPARQL query in scripts/fetch-open-data.py
+  when: founded 1993 to 2022
+  about: >-
+    Political parties that campaign on cannabis, as Wikidata records them: their country, the
+    year they were founded and, if they were, dissolved. Wikidata is written by volunteers and is
+    far from complete; parties whose name does not mention the plant, such as Israel's Ale Yarok
+    ("Green Leaf"), are only found if their ideology is recorded.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (parties).
+  profile:
+    headline: "{party}"
+    details: "founded {year} · dissolved {dissolved}"
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    party: { column: party, type: text, format: text, about: "The party's name: Charts page and profile" }
+    wikidata: { column: wikidata, type: text, format: text, about: "Its Wikidata item" }
+    dissolved: { column: dissolved, about: "The year it was dissolved, if it was" }
+  pages:
+    - { label: the Charts page, path: charts/#parties }
+- id: treatment
+  file: euda-cannabis-treatment.csv
+  name: People entering treatment for cannabis
+  publisher: European Union Drugs Agency (EUDA)
+  credit: EUDA
+  title: EUDA — Statistical Bulletin 2026, treatment demand, all entrants by main drug (table TDI-0005)
+  url: https://www.euda.europa.eu/data/stats2026/tdi_en
+  data_url: https://www.euda.europa.eu/modules/sbdata/SBDataService2026.cfc?method=fetchxml&tableid=TDI-0005
+  data_label: table TDI-0005 (XML)
+  when: 2024 (France, Spain and Türkiye 2023)
+  about: >-
+    The people who entered drug treatment in a year, and how many of them came mainly for
+    cannabis, as each European country reports them to the EUDA. Some come of their own accord,
+    others are sent by a court or the police; countries count treatment differently. Croatia
+    reports everyone in treatment rather than those entering it, and Sweden combines several
+    sources.
+  origin: >-
+    The EUDA's site refuses scripted downloads, so the table was read in a browser on 22 October
+    2026 from the EUDA's data service and the total and cannabis columns were written here, with
+    the share of cannabis worked out.
+  notes:
+    hr: All clients in treatment, not only those entering it.
+    se: Several separate sources combined.
+  profile:
+    headline: "{cannabis_share} of people entering drug treatment came for cannabis"
+    details: "{cannabis} of {entrants} people · {year}"
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    cannabis_share: { column: cannabis_share, format: percent, about: "Share who came mainly for cannabis: map, Charts page and profile" }
+    cannabis: { column: cannabis, about: "People entering treatment mainly for cannabis: Charts page and profile" }
+    entrants: { column: entrants, about: "All people entering drug treatment" }
+  map:
+    field: cannabis_share
+    format: percent
+    group: Use
+    slug: cannabis-treatment
+    label: Treatment entrants who came for cannabis
+    missing: Not in the EUDA's treatment tables
+    steps: [[0, "Under 15%"], [15, "15–25%"], [25, "25–35%"], [35, "35–45%"], [45, "45% or more"]]
+    title: Who comes to drug treatment for cannabis (Europe)
+    lede: >-
+      Of everyone who entered drug treatment in the latest year, the share who came mainly for
+      cannabis, as European countries report to the EUDA. The stronger the blue, the larger the
+      share.
+    sub: >-
+      The stronger the blue, the larger the share of treatment entrants who came for cannabis.
+      Countries outside the EUDA's tables are hatched.
+    note: >-
+      EUDA Statistical Bulletin 2026, table TDI-0005. Countries count treatment differently. Not
+      part of the score.
+  pages:
+    - { label: its map, path: map/cannabis-treatment/ }
+    - { label: the Charts page, path: charts/#punish-or-treat }
+- id: news
+  file: gdelt-cannabis-news.csv
+  name: Cannabis in the news
+  publisher: The GDELT Project
+  credit: GDELT
+  title: The GDELT Project — DOC 2.0 API, share of online news articles mentioning cannabis or marijuana, by the country of the source
+  url: https://www.gdeltproject.org/
+  data_url: https://api.gdeltproject.org/api/v2/doc/doc?query=(cannabis%20OR%20marijuana)%20sourcecountry:germany&mode=timelinevol&format=json&startdatetime=20170101000000
+  data_label: DOC 2.0 API, Germany as an example
+  when: 2017 to 2026
+  about: >-
+    Of all the online news articles GDELT monitors from a country's own news sites, the share
+    that mention cannabis or marijuana, averaged over each year; GDELT translates 65 languages
+    to find the words. A measure of attention: how much a country's press talks about cannabis,
+    whatever it says. Countries with few monitored sites give noisier figures.
+  origin: >-
+    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (news), one request per country
+    by name; `days` is how many days of a year GDELT returned.
+  profile:
+    headline: "{share} of news articles mention cannabis"
+    details: "{year} average, {days} days"
+    each: "{share} in {year}"
+    years: [2018, 2021]
+  country: { column: country, by: id }
+  year: { column: year }
+  fields:
+    share: { column: share, format: percent, about: "Share of the country's news articles that mention cannabis: map, Charts page and profile" }
+    days: { column: days, about: "Days of the year with data" }
+  map:
+    field: share
+    format: percent
+    group: Society
+    since: 2025
+    slug: in-the-news
+    label: Cannabis in the news
+    missing: Too little news monitored by GDELT
+    steps: [[0, "Under 0.05%"], [0.05, "0.05–0.1%"], [0.1, "0.1–0.2%"], [0.2, "0.2–0.4%"], [0.4, "0.4% or more"]]
+    title: How much each country's news talks about cannabis
+    lede: >-
+      The share of a country's online news articles that mention cannabis or marijuana, the
+      average of the latest full year, from the GDELT Project. The stronger the blue, the more the
+      press talks about it.
+    sub: >-
+      The stronger the blue, the larger the share of news articles that mention cannabis.
+    note: >-
+      The GDELT Project, DOC 2.0 API. Attention, not opinion; not part of the score.
+  pages:
+    - { label: its map, path: map/in-the-news/ }
+    - { label: the Charts page, path: charts/#in-the-news }
