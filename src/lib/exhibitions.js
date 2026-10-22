@@ -8,7 +8,7 @@
 export const EXHIBITIONS = [
   {
     slug: "reefer-madness", no: "001", theme: "Propaganda", title: "Reefer Madness", line: "The invention of a monster",
-    about: "The original trailer, a newspaper front page, an investigation board, a court docket and an evidence room: how a plant was sold to America as a killer, who sold it, and what later research found.",
+    about: "How America came to fear cannabis: the films and headlines that spread the panic, the people punished, and the research that challenged the claims.",
     open: true,
     history: ["us-reefer-madness-1938", "us-assassin-of-youth-1937", "us-marihuana-tax-act-1937", "us-tax-bill-introduced-1937", "us-el-paso-ban-1915",
       "us-anslinger-crime-claim-1931", "us-federal-bureau-of-narcotics-1930", "us-la-guardia-report-1944", "us-fbn-plays-down-marijuana-1938",
