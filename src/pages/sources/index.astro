@@ -67,15 +67,16 @@ const localRows = [...local]
 const icon = (d) => `https://icons.duckduckgo.com/ip3/${d}.ico`;
 const urls = new Set(cites.filter((x) => x.s.url).map((x) => x.s.url));
 const urlCount = urls.size;
-// pages with a copy recorded in the Internet Archive (see source-archive.json)
-const archivedOf = (set) => [...set].filter((u) => archivedUrl(u)).length;
+// pages with a copy recorded in the Internet Archive (see source-archive.json), counting a source
+// cited by its Archive address already; scripts/archive-sources.cjs status counts the same pages
+const archivedOf = (set) => [...set].filter((u) => archivedUrl(u) || u.includes("://web.archive.org/")).length;
 const archived = archivedOf(urls);
 const pct = Math.round((archived / urlCount) * 100);
 // the whole: citations and web pages; then each part of the page, as a link down to it
 const totals = [
   [num(cites.length), "Citations", "of books and websites, by every page of the site"],
   [num(urlCount), "Web pages cited", `on ${num(all.length)} websites`],
-  [`${pct}%`, "Archived", `${num(archived)} pages have a copy in the Internet Archive, so a dead link keeps its evidence; the rest are saved in batches`],
+  [`${pct}%`, "Archived", `${num(archived)} pages have a copy in the Internet Archive, so a dead link keeps its evidence; the other ${num(urlCount - archived)} are saved in batches`],
 ];
 // ── Outside datasets (datasets/datasets.yaml), each published as its file ──
 const datasets = Object.values(DATASETS);

@@ -463,7 +463,7 @@ const sections = [
   ["easy-to-get", "Easy to get"],
   ["use", "Use and the law"],
   ["wastewater", "What flows beneath"],
-  ["punished", "Who gets punished"],
+  ["punished", "Who the police record"],
   ["price", "The price of prohibition"],
   ["thc-per-euro", "THC for a euro"],
   ["sourcing", "From friends to shops"],
@@ -521,7 +521,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
       <p class="ch-kicker"><a href="#people">{kick("people")}</a></p>
       <h2>{bannedShare} in every 100 people live under prohibition or worse</h2>
       <p class="ch-dek">The world's {billions(worldPop)} people as 100 squares, each one per cent, coloured by the band their country is in today.</p>
-      <div class="ch-people">
+      <div class="ch-people" data-no-preview>
         <div class="ch-waffle" role="img" aria-label={peopleBands.filter((b) => b.cells).map((b) => `${b.t.name} ${b.share.toFixed(0)}%`).join(", ")}>
           {cells.map((k) => <a href={`${base}map/`} data-people={k} style={`--c:${tierColor(peopleBands[k].t.min)}`} aria-hidden="true" tabindex="-1"></a>)}
         </div>
@@ -566,7 +566,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
       <p class="ch-kicker"><a href="#waves">{kick("waves")}</a></p>
       <h2>{waveShare}% of the tightenings came between 1920 and 1961; {easeShare}% of the easings since 2000</h2>
       <p class="ch-dek">Each bar is one year: below the line, recorded changes that made the law harsher; above it, those that eased it. {num(downs)} tightenings and {num(ups)} easings since {W0}.</p>
-      <div class="ch-frame ch-waves">
+      <div class="ch-frame ch-waves" data-no-preview>
         <div class="ch-plot">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
             <line class="ch-axis" x1="0" x2="100" y1="50" y2="50" />
@@ -649,7 +649,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
       <p class="ch-kicker"><a href="#since-1961">{kick("since-1961")}</a></p>
       <h2>{wasBanned} of today's {TOP} freest countries were under prohibition in 1961</h2>
       <p class="ch-dek">For each of the {TOP} countries with the highest score today: the grey dot is its score at the end of 1961, the year the UN Single Convention asked every country to ban cannabis; the arrow runs to its score now.</p>
-      <div class="ch-dumbbell">
+      <div class="ch-dumbbell" data-no-preview>
         <div class="ch-db-axis" aria-hidden="true"><span></span><div>{[0, 20, 40, 60, 80, 100].map((t) => <span style={`left:${t}%`}>{t}</span>)}</div><span></span></div>
         <ol>
           {freest.map((f) => {
@@ -657,7 +657,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
             return (
               <li>
                 <a href={`${base}country/${f.c.slug}/`}>{f.c.flag} {f.c.name}</a>
-                <a class="ch-db-track" data-no-preview href={`${base}country/${f.c.slug}/#history`} data-top={f.c.slug} aria-label={`${f.c.name}: ${Math.round(f.then)} in 1961, ${Math.round(f.now)} today. Open its history`}>
+                <a class="ch-db-track" href={`${base}country/${f.c.slug}/#history`} data-top={f.c.slug} aria-label={`${f.c.name}: ${Math.round(f.then)} in 1961, ${Math.round(f.now)} today. Open its history`}>
                   {[20, 40, 60, 80].map((t) => <i class="ch-db-grid" style={`left:${t}%`}></i>)}
                   <span class:list={["ch-db-bar", { down: !up }]} style={`left:${lo}%;width:${hi - lo}%`}></span>
                   <span class="ch-db-then" style={`left:${f.then}%`}></span>
@@ -678,7 +678,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
       <p class="ch-kicker"><a href="#regions">{kick("regions")}</a></p>
       <h2>Every region fell to prohibition; {bestBack.name} has come furthest back</h2>
       <p class="ch-dek">The average score of each region's countries since 1860, with the world average in grey behind it.</p>
-      <div class="ch-regions">
+      <div class="ch-regions" data-no-preview>
         {regions.map((g) => (
           <a class="ch-region" href={`${base}?region=${encodeURIComponent(g.name)}#rankings`} data-region={g.name}>
             <div class="ch-cap"><b>{g.name} <i aria-hidden="true">→</i></b><span><em style={`color:${tierColor(g.now)}`}>{fmt1(g.now)}</em> today · low of {fmt1(g.low)} in {g.lowYear}</span></div>
@@ -866,8 +866,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("punished") && <h2 class="ch-chapter">{chapterAt.get("punished")}</h2>}
     <section class="ch" id="punished">
       <p class="ch-kicker"><a href="#punished">{kick("punished")}</a></p>
-      <h2>{punished[0].c.name} records {Math.round(punished[0].rate)} cannabis offences for every 1,000 people who use it; {punished.at(-1).c.name}, {fmtRate(punished.at(-1).rate)}</h2>
-      <p class="ch-dek">How hard the law falls on the people who use cannabis: offences for use or possession recorded by the police, divided by the number of adults who used it in the past year. A {punishSpread}-fold gap, with laws on paper that often look alike.</p>
+      <h2>{punished[0].c.name} records {Math.round(punished[0].rate)} offences of cannabis use or possession for every 1,000 people who use it; {punished.at(-1).c.name}, {fmtRate(punished.at(-1).rate)}</h2>
+      <p class="ch-dek">How often the law reaches the people who use cannabis: offences of using or possessing cannabis for one's own use that the police record in a year, divided by the number of adults who used it in the past year. Cannabis only, and only use or possession: not dealing or growing for sale, and not other drugs. An offence is not a conviction: depending on the country it may end in a fine, a caution, treatment or a criminal case, and some countries count offenders rather than offences. A {punishSpread}-fold gap, with laws on paper that often look alike.</p>
       <ol class="ch-bars" data-no-preview>
         {punished.map((p) => (
           <li>
@@ -879,7 +879,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
           </li>
         ))}
       </ol>
-      <p class="ch-source">Offences from the {OFF.publisher} (latest year since 2020) and users from the <a href={`${base}sources/#dataset-cannabis_use`}>UNODC</a> survey figures; bars coloured by the country's band. Countries count offences differently, so read the order, not the decimals. <a href={`${base}sources/#dataset-cannabis_offences`}>About the dataset</a>.</p>
+      <p class="ch-source">Offences: {OFF.title}, latest year since 2020. Users: the <a href={`${base}sources/#dataset-cannabis_use`}>UNODC</a> estimate of adults who used cannabis in the past year. Bars coloured by the country's band. Countries record and define offences differently, so read the order, not the decimals. <a href={`${base}sources/#dataset-cannabis_offences`}>About the dataset</a>.</p>
       <p class="ch-more"><a href={`${base}map/cannabis-offences-europe/`}>Offences on the map →</a> <a href={`${base}map/drug-possession-police/`}>Possession arrests worldwide →</a></p>
     </section>
 
@@ -914,7 +914,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
       <p class="ch-kicker"><a href="#thc-per-euro">{kick("thc-per-euro")}</a></p>
       <h2>{Math.abs(mgChange) < 0.15 ? `Stronger herb, dearer gram: a euro still buys about ${Math.round(mgNow)} mg of THC, as in ${T0}` : `A euro bought ${Math.round(mgThen)} mg of THC around ${T0}; now it buys ${Math.round(mgNow)} mg`}</h2>
       <p class="ch-dek">In Europe, herb went from about {fmt1(thThen)}% THC to {fmt1(thNow)}%, and a gram from €{prThen.toFixed(2)} to €{prNow.toFixed(2)}, so the amount of the drug a euro buys has {mgChange > 0.15 ? "grown" : mgChange < -0.15 ? "shrunk" : "hardly changed"}. The bold line is the middle of the countries reporting both figures each year, first and last three years averaged for the headline; the faint lines are the countries.</p>
-      <div class="ch-frame ch-thc">
+      <div class="ch-frame ch-thc" data-no-preview>
         <div class="ch-y">{Array.from({ length: MG1 / 10 + 1 }, (_, i) => i * 10).filter((t) => t % (MG1 > 60 ? 20 : 10) === 0).map((t) => <span style={`top:${mgOf(t)}%`}>{t}</span>)}</div>
         <div class="ch-plot">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -938,7 +938,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
       <p class="ch-kicker"><a href="#sourcing">{kick("sourcing")}</a></p>
       <h2>In Canada, buying from friends fell from {firstOf("social").social}% to {lastOf("social").social}% of users after legalisation; legal shops rose to {lastOf("legal").legal}%</h2>
       <p class="ch-dek">Each column is a year of the Canadian Cannabis Survey: the usual source of cannabis of people who used it in the past year. Legal sales began in October 2018, after that year's survey; illegal sellers fell from {firstOf("illegal").illegal}% to {lastOf("illegal").illegal}%.</p>
-      <div class="ch-frame ch-sourcing">
+      <div class="ch-frame ch-sourcing" data-no-preview>
         <div class="ch-cols">
           {sourcing.map((r) => {
             const total = SOURCE_KINDS.reduce((t, k) => t + (r[k.id] ?? 0), 0);
@@ -963,7 +963,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
       <p class="ch-kicker"><a href="#state-merchant">{kick("state-merchant")}</a></p>
       <h2>As legal buying rose to {lastOf("legal").legal}%, Canada's governments came to take {billion(revenue.at(-1).revenue)} a year from cannabis</h2>
       <p class="ch-dek">Two panels on one timeline. Above, the share of people who use cannabis who usually buy it legally, and who get it from friends and family. Below, what the provinces' cannabis authorities earned plus the excise and sales taxes, by fiscal year from April; Statistics Canada's series starts in 2021. The two moved together; the taxes did not cause the shift.</p>
-      <div class="ch-frame ch-merchant">
+      <div class="ch-frame ch-merchant" data-no-preview>
         <div class="ch-merchant-panel">
           <div class="ch-y">{[0, 25, 50, 75].map((t) => <span style={`top:${100 - t}%`}>{t}%</span>)}</div>
           <div class="ch-plot">
@@ -1073,7 +1073,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
       <p class="ch-kicker"><a href="#stream">{kick("stream")}</a></p>
       <h2>The {peakDecade}s fill the history most; this decade, easing outweighs tightening {easeNow} to {tightNow}</h2>
       <p class="ch-dek">Every dated entry in the history, laws and raids, rulings and reports, treaties and books, counted by decade and kind. The wider the stream, the more happened. The 2020s are not over.</p>
-      <div class="ch-frame ch-stream">
+      <div class="ch-frame ch-stream" data-no-preview>
         <div class="ch-plot">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
             {streams.map((g, k) => <path class="ch-stream-band" data-band={k} d={g.d} style={`fill:${g.color}`} />)}
@@ -1235,8 +1235,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     // who gets punished
     document.querySelectorAll("[data-punish]").forEach((a) => card(a, () => {
       const [name, rate, offences, year, users, prev] = D.punish[a.dataset.punish];
-      return `<b>${esc(name)}</b><span class="ch-tip-row">Offences recorded, ${year}<em>${offences.toLocaleString("en-GB")}</em></span><span class="ch-tip-row">People who use cannabis<em>${users.toLocaleString("en-GB")}</em></span>`
-        + `<span class="ch-tip-row">Offences per 1,000 users<em>${rate}</em></span><span class="ch-tip-sub">${prev}% of adults used it in the past year</span><span class="ch-tip-go">Open its datasets →</span>`;
+      return `<b>${esc(name)}</b><span class="ch-tip-row">Use or possession offences, ${year}<em>${offences.toLocaleString("en-GB")}</em></span><span class="ch-tip-row">People who use cannabis<em>${users.toLocaleString("en-GB")}</em></span>`
+        + `<span class="ch-tip-row">Offences per 1,000 users<em>${rate}</em></span><span class="ch-tip-sub">${prev}% of adults used it in the past year. Cannabis only; not dealing</span><span class="ch-tip-go">Open its datasets →</span>`;
     }));
     // stronger, cheaper: the year under the pointer
     {

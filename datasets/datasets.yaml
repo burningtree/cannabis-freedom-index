@@ -193,10 +193,13 @@
   data_label: table DLO-03-2-0, spreadsheet
   when: 2007 to 2024
   about: >-
-    Offences of using or possessing cannabis recorded each year, as European countries report
-    them to the EUDA: cannabis alone, unlike UNODC's figures for all drugs. Countries record
-    offences or offenders, and define them, in different ways, so compare a country with itself
-    over time rather than with its neighbours. The EUDA notes that Slovenia counted only
+    Offences of using cannabis or possessing it for one's own use that the police record each
+    year, as European countries report them to the EUDA ("drug law offences, cannabis, use"):
+    cannabis alone, unlike UNODC's figures for all drugs, and not offences of supply such as
+    dealing, trafficking or growing for sale. An offence is not a conviction: depending on the
+    country it may end in a fine, a caution, a referral to treatment or a criminal case. Countries
+    record offences or offenders, and define them, in different ways, so compare a country with
+    itself over time rather than with its neighbours. The EUDA notes that Slovenia counted only
     use-related offences in 2023, that Portugal's figures for 2017 to 2021 lack one police force,
     and that Greece's include all cannabis products since 2018. Shown per 100,000 people using
     today's population.
@@ -207,7 +210,7 @@
     one row per country and year with a figure.
   profile:
     headline: "{per} per 100,000 people"
-    details: "{offences} offences in {year}"
+    details: "{offences} offences in {year} · cannabis only · use or possession, not dealing"
     each: "{offences} in {year}"
     years: [2010, 2020]
   country: { column: country, by: id }
@@ -896,7 +899,7 @@
     and year.
   profile:
     headline: "{thc_cooh} mg of THC-COOH a day per 1,000 people"
-    details: "{cities} cities measured · {year}"
+    details: "cities measured: {cities} · {served} people served"
     each: "{thc_cooh} in {year}"
   country: { column: country, by: id }
   year: { column: year }
@@ -1005,12 +1008,13 @@
     Archive's copy of its CSV download of 11 October 2026, kept unchanged as
     statcan-10100165.csv; scripts/extract-canada.py (revenue) keeps Canada's lines.
   profile:
-    headline: "C${revenue} thousand to governments in {fiscal_year}"
-    details: "{sales} thousand in sales by the cannabis authorities · {year}"
+    headline: "C${revenue_bn} billion to governments in {fiscal_year}"
+    details: "C${sales} thousand in sales by the cannabis authorities · {federal_excise} thousand federal excise · {provincial_excise} thousand provincial excise"
   country: { column: country, by: id }
   year: { column: year }
   fields:
-    revenue: { column: revenue, about: "Net income of the authorities plus taxes and other revenue: Charts page and profile" }
+    revenue: { column: revenue, about: "Net income of the authorities plus taxes and other revenue, in thousands: Charts page" }
+    revenue_bn: { column: revenue_bn, format: decimal, about: "The same in billions: profile" }
     sales: { column: sales }
     net_income: { column: net_income }
     federal_excise: { column: federal_excise }

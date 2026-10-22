@@ -1,49 +1,41 @@
 ---
+model: gpt-6
+written: '2026-10-21'
 sources:
-  - title: UNODC — Togo, Loi n° 98-008 portant contrôle des drogues
-    url: https://www.unodc.org/cld/uploads/res/document/tgo/loi-no--98-008_html/Togo-Loi_98-008.pdf
+  - type: law
+    title: Togo — drug-control law of 18 March 1998, reproduced by UNODC SHERLOC
+    url: https://sherloc.unodc.org/cld/uploads/res/document/tgo/loi-no--98-008_html/Togo-Loi_98-008.pdf
+    locator: Articles 6–14, 98–102 and 111–113; hosted extract ends within Article 113
+  - type: law
+    title: Togo Journal officiel — new criminal code of 24 November 2015
+    url: https://jo.gouv.tg/sites/default/files/publications/LOI_2015_010.pdf
+    locator: Articles 248–278, especially 253–256, 266–270 and 278; final Article 1204
 ---
 
-Togo's Law No. 98-008 is more than a one-line cultivation ban. Promulgated on 18 March 1998, it
-sets a national control system for production, possession, supply and use—and gives cannabis its
-own personal-use penalty rule.
+Togo’s drug law of 18 March 1998 gave people with a small amount of cannabis for themselves a shorter sentencing range than people supplying drugs. Cannabis derivatives other than oil carried one to six months in prison, a fine, or both. Growing cannabis remained prohibited throughout the country.
 
-## A nationwide cultivation ban
+## Cannabis had its own personal-use penalty
 
-Article 10 prohibits cultivating the opium poppy, coca bush and cannabis plant anywhere in the
-country. The following article requires an owner, operator or occupier of agricultural or other
-land to destroy any of those plants that grow there.
+The rule covered someone who illegally held, bought or cultivated a quantity small enough to be considered for personal consumption. It gave no numerical weight or plant limit, leaving the distinction between personal use and supply to be assessed in the case.
 
-The law divides controlled drugs among four schedules. Schedule I is for high-risk plants and
-substances without a medical interest; Schedules II and III cover substances with a medical
-interest under different controls, and Schedule IV covers precursors. The health minister may
-change the schedules.
+For cannabis derivatives other than oil, the fine ranged from 25,000 to 500,000 CFA francs. The court could impose imprisonment and a fine together, or either one alone. This choice mattered for someone convicted with a small personal supply: a prison sentence was one of the available punishments.
 
-## Possession, use and a small amount
+## Oil faced a different range
 
-Article 111 prohibits using controlled drugs outside a medical prescription. A drug found in
-that setting is seized and judicially confiscated even if the person is not prosecuted.
+Cannabis oil appeared expressly in the higher-risk personal-use rule. Its prison range was two months to one year, with a fine of 25,000–1.25 million CFA francs, again allowing either penalty alone.
 
-Article 112 then creates specific penalties when an illegally held, bought or cultivated amount
-is small enough to be considered for personal consumption. For cannabis derivatives other than
-cannabis oil, the range is one to six months' imprisonment and a fine of 25,000 to 500,000 CFA
-francs, or either penalty alone. Cannabis oil is treated as a high-risk drug: two months to one
-year and a possible fine up to 1.25 million CFA francs.
+The law also listed conditions for waiving a sentence or its execution, referring to a person below the age of criminal majority, previous offending and a solemn promise in court to stop. These decisions belonged to the court.
 
-The provision lists three circumstances for waiving the sentence or its execution: the person is
-below the age of criminal majority, is not a repeat offender, and solemnly promises in court not
-to offend again. That is judicial discretion, not general decriminalisation.
+Use of controlled drugs outside a medical prescription was prohibited. Drugs found in that setting could be seized and judicially confiscated even when the person was not prosecuted.
 
-## Supply carries years
+## Growing and supplying remained offences
 
-The penalties rise sharply outside personal use. Giving or offering a high-risk drug to someone
-for their own consumption brings three to five years. High-risk cultivation, production and
-manufacture carry ten to twenty years, as do sale, delivery, transport, purchase and possession
-under the principal trafficking provisions.
+The law required owners, operators and occupiers of land to destroy cannabis plants growing there. Its nationwide cultivation ban sat alongside the shorter penalty for small amounts grown for personal consumption.
 
-These rules form the statutory backbone of the present [Togo profile](/country/tg/): cultivation,
-possession and consumption remain offences, and sharing is separately punished.
+General high-risk drug cultivation and supply carried ten to twenty years and a fine of 250,000–125 million CFA francs, or either penalty alone. Giving or offering a high-risk drug to someone for their own consumption had a separate three-to-five-year range, also with a possible fine-only sentence.
 
-In the index, the 1998 law does not create a score step because Togo's earlier prohibition is
-still represented by an estimated colonial-era entry. The article documents the later national
-law without pretending that its exact effect on the already restricted baseline is known.
+## The later code raised the personal-use range
+
+Togo had joined the [1988 UN anti-trafficking convention in 1990](/history/togo-1988-convention-1990/). The 1998 law laid out national controls over cultivation, medicines, possession and supply within that treaty setting.
+
+The [2015 criminal-code rewrite](/history/togo-personal-use-penalties-2015/) replaced the different small-quantity ranges with one to three years, a fine of 500,000–3 million CFA francs, or either punishment alone. That later change is central to the rules now described in the [Togo profile](/country/tg/).

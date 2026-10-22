@@ -1,9 +1,11 @@
 ---
 // The profile's Datasets tab: every outside dataset that covers the country (src/lib/datasets.js),
-// one row each: its name, one headline figure and a line of further figures, written as set
-// under `profile` in datasets.yaml, with where it comes from and links to its map and its entry
-// on the sources page.
+// as cards grouped like the map's views (Use, Law, Society, Context). A card has the dataset's
+// name, one headline figure and a line of further figures, written as set under `profile` in
+// datasets.yaml; the figure over the years; where the country stands among every country the
+// dataset covers; and links to its map and its entry on the sources page.
 import { DATASETS, datasetsOf } from "../lib/datasets.js";
+import { places } from "../lib/countries.js";
 import { viewByMetric } from "../lib/map-views.js";
 
 const { c } = Astro.props;
@@ -35,13 +37,31 @@ const headline = (d, row) => {
   const m = d.profile.headline.match(/^([^{]*)\{(\w+)\}(.*)$/);
   return m ? [m[1] + (figure(d, row, m[2]) ?? ""), fill(d, row, m[3])] : ["", fill(d, row, d.profile.headline)];
 };
+// What a higher figure means for people who use cannabis, for the colours: 1 freer (green, as the
+// index's free end), -1 harsher (red, as its prohibition end), with the words for the two ends of
+// the scale; a dataset not listed (use, research, hemp …) is neither, and takes the map's blue scale.
+const TONES = {
+  hfi: [1, "Less free", "Freer"], civil_liberties: [1, "Fewer liberties", "More liberties"],
+  osm_shops: [1, "Fewer shops", "More shops"], canada_sourcing: [1, "Less legal", "More legal"],
+  pew_marijuana: [-1, "Fewer disapprove", "More disapprove"], police_possession: [-1, "Fewer", "More"],
+  cannabis_offences: [-1, "Fewer", "More"], seizures: [-1, "Less seized", "More seized"],
+};
+const POLARITY = Object.fromEntries(Object.entries(TONES).map(([id, [sign]]) => [id, sign]));
+// a position from 0 (lowest) to 1 (highest) as one of the index's colours, --t1 (harsh) to --t5 (free)
+const toneAt = (at, polarity) => `var(--t${1 + Math.round((polarity > 0 ? at : 1 - at) * 4)})`;
+// the chart on the Charts page that uses the dataset
+const CHART_OF = {
+  cannabis_use: "use", pew_marijuana: "opinion", cannabis_offences: "punished", prices_europe: "price", potency_europe: "thc-per-euro",
+  hemp: "hemp", research_papers: "research", hfi: "freedom", espad_availability: "easy-to-get", wastewater: "wastewater",
+  colonial_links: "empire", canada_sourcing: "sourcing", canada_revenue: "state-merchant", population: "people",
+};
 // the field a headline is about
 const headField = (d) => (d.profile.headline.match(/\{(\w+)\}/) ?? [])[1];
 const mapHref = (d) => (d.map ? `${base}map/${viewByMetric[`data:${d.id}`].slug}/` : (d.pages ?? []).filter((p) => p.path.startsWith("map/")).map((p) => `${base}${p.path}`)[0]);
 
 // The headline's figure over the years, for a small line chart: [{ year, v, t }] with at least two
 // years, or null. `v` is the number drawn, `t` how it is written.
-const W = 160, H = 44, PAD = 3;
+const W = 240, H = 56, PAD = 4;
 const trend = (d, series) => {
   const name = headField(d);
   const points = series.filter((r) => r.year != null && figure(d, r, name) != null)
@@ -53,8 +73,40 @@ const trend = (d, series) => {
   const top = Math.max(...vs) || 1;
   const x = (y) => PAD + ((y - y0) / (y1 - y0)) * (W - 2 * PAD);
   const y = (v) => H - PAD - (v / top) * (H - 2 * PAD);
-  return { points: points.map((p) => ({ ...p, x: +x(p.year).toFixed(1), y: +y(p.v).toFixed(1) })), y0, y1 };
+  const pts = points.map((p) => ({ ...p, x: +x(p.year).toFixed(1), y: +y(p.v).toFixed(1) }));
+  const line = pts.map((p) => `${p.x},${p.y}`).join(" ");
+  return { points: pts, line, area: `M${pts[0].x},${H - PAD} L${line.replaceAll(" ", " L")} L${pts.at(-1).x},${H - PAD} Z`, y0, y1 };
 };
+
+// Where the country stands among every place the dataset covers, by its headline figure (the
+// latest year of a series): the share of them with a lower figure. Null for text and ranks.
+const standing = (d) => {
+  const name = headField(d), f = d.fields[name];
+  if (!name || (f && (f.type === "text" || f.format === "rank"))) return null;
+  const valueOf = (place) => {
+    const data = d.values[place.slug];
+    if (!data) return null;
+    const row = Array.isArray(data) ? data.findLast((r) => r[name] != null || name === "per") : data;
+    if (!row) return null;
+    return name === "per" ? d.map.value(row, place) : row[name];
+  };
+  const all = places.filter((x) => !x.territory).map(valueOf).filter((v) => Number.isFinite(v));
+  const mine = valueOf(c);
+  const mapValue = (() => { if (!d.map) return null; const data = d.values[c.slug]; const row = Array.isArray(data) ? data.findLast((r) => r[d.map.field] != null) : data; return row ? d.map.value(row, c) : null; })();
+  if (!Number.isFinite(mine) || all.length < 5) return null;
+  const below = all.filter((v) => v < mine).length, same = all.filter((v) => v === mine).length;
+  const at = (below + same / 2) / all.length;
+  // its colour step, 0 to 4, as on the dataset's map view (--u0…--u4); without a map, its fifth of the countries
+  let step = Math.min(4, Math.floor(at * 5));
+  if (Number.isFinite(mapValue)) { step = 0; while (step < 4 && mapValue >= d.map.steps[step + 1][0]) step++; }
+  return { at, n: all.length, below: Math.round((below / all.length) * 100), step, label: d.map ? d.map.steps[step][1] : null };
+};
+const GROUPS = ["Use", "Law", "Society", "Context"];
+// datasets without a map view of their own sit with the views they belong to
+const GROUP_OF = { cannabis_use: "Use", youth_use: "Use", canada_sourcing: "Use", canada_revenue: "Society", colonial_links: "Society" };
+const groupOf = (d) => GROUP_OF[d.id] ?? d.map?.group ?? "Context";
+// a long series is drawn as a line, its years shown only under the pointer
+const MANY = 12;
 
 const rows = Object.values(DATASETS).filter((d) => own[d.id]).map((d) => {
   const data = own[d.id];
@@ -63,39 +115,60 @@ const rows = Object.values(DATASETS).filter((d) => own[d.id]).map((d) => {
   const row = series ? series.findLast((r) => r[headField(d)] != null) ?? series.at(-1) : data;
   // a series also lists a few earlier years, oldest first
   const earlier = series ? [...(d.profile.years ?? [])].filter((y) => y < row.year).sort((a, b) => a - b).map((y) => series.find((r) => r.year === y)).filter(Boolean).map((r) => fill(d, r, d.profile.each ?? `{${Object.keys(d.fields)[0]}} in {year}`)) : [];
-  return { d, head: headline(d, row), details: [fill(d, row, d.profile.details), ...earlier].filter(Boolean).join(" · "), note: d.notes[c.slug], chart: series && trend(d, series) };
+  return { d, head: headline(d, row), year: row?.year, details: [fill(d, row, d.profile.details), ...earlier].filter(Boolean).join(" · "), note: d.notes[c.slug], chart: series && trend(d, series), stand: standing(d) };
 });
+const groups = GROUPS.map((name) => ({ name, rows: rows.filter((r) => groupOf(r.d) === name) })).filter((g) => g.rows.length);
 ---
 {rows.length > 0 && (
   <section class="c-ds">
     <h2 class="d-h">Datasets <span>not part of the score</span></h2>
-    <p class="d-hint">What other organisations publish about {c.name}. Every file is published in full on the <a href={`${base}sources/#datasets`}>sources page</a>.</p>
-    <ol class="ds-list">
-      {rows.map(({ d, head, details, note, chart }) => (
-        <li class="ds-row" id={`ds-${d.id}`}>
-          <div class="ds-main">
-            <h3>{d.name}</h3>
-            {details && <p class="ds-details">{details}</p>}
-            {note && <p class="ds-details">{note}</p>}
-            <p class="ds-meta">{d.credit ?? d.publisher}{mapHref(d) && <> · <a href={mapHref(d)}>Map</a></>} · <a href={`${base}sources/#dataset-${d.id}`}>About</a></p>
-          </div>
-          <div class="ds-side">
-            <p class="ds-headline"><b>{head[0]}</b>{head[1] && ` ${head[1]}`}</p>
-            {chart && (
-              <figure class="ds-trend">
-                <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} role="img" aria-label={`${d.name}, ${chart.y0} to ${chart.y1}: ${chart.points.map((p) => `${p.t} in ${p.year}`).join(", ")}`}>
-                  <line x1="0" x2={W} y1={H - PAD} y2={H - PAD} class="ds-trend-base" />
-                  <polyline points={chart.points.map((p) => `${p.x},${p.y}`).join(" ")} class="ds-trend-line" />
+    <p class="d-hint">What other organisations publish about {c.name}, and where it stands among the countries each one covers. Every file is published in full on the <a href={`${base}sources/#datasets`}>sources page</a>.</p>
+    {groups.length > 1 && (
+      <nav class="ds-nav" aria-label="Dataset groups">
+        {groups.map((g) => <a href={`#ds-group-${g.name.toLowerCase()}`}>{g.name} <b>{g.rows.length}</b></a>)}
+      </nav>
+    )}
+    {groups.map((g) => (
+      <div class="ds-group" id={`ds-group-${g.name.toLowerCase()}`}>
+        <h3 class="ds-group-h">{g.name}</h3>
+        <ol class="ds-grid">
+          {g.rows.map(({ d, head, year, details, note, chart, stand }) => (
+            <li class:list={["ds-card", { toned: POLARITY[d.id] }]} id={`ds-${d.id}`}
+              style={stand ? (POLARITY[d.id] ? `--ds:${toneAt(stand.at, POLARITY[d.id])};--lo:var(--t${POLARITY[d.id] > 0 ? 1 : 5});--hi:var(--t${POLARITY[d.id] > 0 ? 5 : 1})` : `--ds:var(--u${stand.step})`) : undefined}>
+              <p class="ds-kicker"><span>{d.credit ?? d.publisher}{year != null && ` · ${year}`}</span></p>
+              <h4>{d.name}</h4>
+              <p class:list={["ds-figure", { words: d.fields[headField(d)]?.type === "text" }]}>{stand && <i class="ds-swatch" title={stand.label ? `On the map: ${stand.label}` : undefined}></i>}<b>{head[0]}</b>{head[1] && <span>{head[1]}</span>}</p>
+              {chart && (
+                <figure class:list={["ds-spark", { many: chart.points.length > MANY }]}>
+                  <div class="ds-spark-plot">
+                  <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" role="img" aria-label={`${d.name}, ${chart.y0} to ${chart.y1}: ${chart.points.map((p) => `${p.t} in ${p.year}`).join(", ")}`}>
+                    <path d={chart.area} class="ds-spark-area" />
+                    <polyline points={chart.line} class="ds-spark-line" />
+                  </svg>
                   {chart.points.map((p, i) => (
-                    <circle cx={p.x} cy={p.y} r={i === chart.points.length - 1 ? 2.6 : 1.6} class:list={["ds-trend-dot", { last: i === chart.points.length - 1 }]}><title>{p.t} in {p.year}</title></circle>
+                    <span class:list={["ds-spark-dot", { last: i === chart.points.length - 1 }]} style={`left:${(p.x / W) * 100}%;top:${(p.y / H) * 100}%`} tabindex="0" aria-label={`${p.t} in ${p.year}`}><em>{p.t} · {p.year}</em></span>
                   ))}
-                </svg>
-                <figcaption><span>{chart.y0}</span><span>{chart.y1}</span></figcaption>
-              </figure>
-            )}
-          </div>
-        </li>
-      ))}
-    </ol>
+                  </div>
+                  <figcaption><span>{chart.y0}</span><span>{chart.y1}</span></figcaption>
+                </figure>
+              )}
+              {stand && (
+                <div class="ds-stand" title={`Higher than ${stand.below}% of the ${stand.n} countries with a figure`}>
+                  <span class="ds-stand-track"><i class="ds-stand-mid"></i><i class="ds-stand-me" style={`left:${stand.at * 100}%`}></i></span>
+                  <span class="ds-stand-text"><span>{TONES[d.id]?.[1] ?? "Lowest"}</span><span>Higher than <b>{stand.below}%</b> of {stand.n} countries</span><span>{TONES[d.id]?.[2] ?? "Highest"}</span></span>
+                </div>
+              )}
+              {details && <p class="ds-details">{details}</p>}
+              {note && <p class="ds-details ds-note">{note}</p>}
+              <p class="ds-links">
+                {mapHref(d) && <a href={mapHref(d)}>See the map <span aria-hidden="true">→</span></a>}
+                {CHART_OF[d.id] && <a href={`${base}charts/#${CHART_OF[d.id]}`}>See the chart <span aria-hidden="true">→</span></a>}
+                <a href={`${base}sources/#dataset-${d.id}`}>About the data</a>
+              </p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    ))}
   </section>
 )}

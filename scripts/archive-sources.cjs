@@ -50,7 +50,8 @@ const shuffle = (xs) => {
   return xs;
 };
 
-// every source address in the data: history entries, country profiles and articles
+// every source address in the data: history entries, country profiles (and their states),
+// articles and culture entries, the same sources the /sources/ page counts
 const urls = new Set();
 for (const e of y.load(fs.readFileSync("changes.yaml", "utf8"))) for (const s of e.sources || []) if (s.url) urls.add(s.url);
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((f) => (f.isDirectory() ? walk(path.join(dir, f.name)) : [path.join(dir, f.name)]));
@@ -59,7 +60,7 @@ for (const f of walk("countries").filter((f) => f.endsWith(".yaml"))) {
   for (const s of Object.values(d.sources || {})) if (s.url) urls.add(s.url);
   for (const s of d.subunits?.sources || []) if (s.url) urls.add(s.url);
 }
-for (const f of fs.existsSync("articles") ? walk("articles").filter((f) => f.endsWith(".md")) : []) {
+for (const f of ["articles", "culture"].filter((d) => fs.existsSync(d)).flatMap((d) => walk(d).filter((f) => f.endsWith(".md")))) {
   const head = fs.readFileSync(f, "utf8").match(/^---\n([\s\S]*?)\n---/);
   for (const s of (head && y.load(head[1])?.sources) || []) if (s.url) urls.add(s.url);
 }

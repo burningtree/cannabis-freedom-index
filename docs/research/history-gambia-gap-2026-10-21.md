@@ -52,9 +52,9 @@ amendment as a lighter penalty.
 
 Recovered **90 scanned pages**, *Drug Control Act*, Chapter 13:05,
 **Issue 1/2009**, Act 15/2003 amended by Act 11/2005. Native extraction is
-empty; ran English Vision OCR. Read the commencement, definitions,
-agency-establishment provisions, sections 31–38, 41–44, 69, 139 and
-First Schedule as relevant. Visually checked PDF **29** / printed **31**
+empty; ran English Vision OCR. Read the relevant commencement, definitions,
+agency-establishment provisions, sections 31, 33–37, 43–44 and 139, and
+First Schedule passages. Visually checked PDF **29** / printed **31**
 (possession and shared premises) and PDF **35** / printed **37** (quantity
 presumption). This is **not an unamended 2003 original**. Footnoted 2005
 changes are not silently attributed to initial enactment.
@@ -136,8 +136,8 @@ https://www.loc.gov/item/global-legal-monitor/2011-04-11/gambia-death-penalty-fo
 ## Institutional gaps and the later reform proposal
 
 Downloaded the agency's *Five-Year Strategy Plan 2019–2023*, copyright
-**2019**. Read complete relevant printed pp. **13–17**, **33–34**, **37–38**
-and **44–45**, using native extraction. It dates the police Drug Squad to
+**2019**. Read the relevant passages on printed pp. **13–17**, **33–34**, **37–38**
+and **44**, using native extraction. It dates the police Drug Squad to
 late **1980**, replacement by National Drug Squad in **1991**, 1993 law,
 1996 decree, **2005 autonomous NDEA**, and later renaming. The 2005 agency
 is also corroborated by the consolidated Act's amendments/sections 4–5.

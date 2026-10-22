@@ -13,7 +13,7 @@ revenue   datasets/statcan-10100165.csv, Statistics Canada table 10-10-0165-01, 
           dollars, fiscal years from April). Statistics Canada's site was unavailable on 21 October
           2026, so the file is the Internet Archive's copy of its CSV download of 11 October 2026.
           Writes datasets/statcan-cannabis-revenue.csv: Canada's figures by fiscal year, with
-          `year` as the year the fiscal year starts.
+          `year` as the year the fiscal year starts, and the total in billions (revenue_bn).
 
 Python's standard library only. Run from the project root.
 """
@@ -47,7 +47,7 @@ with open("datasets/statcan-10100165.csv", encoding="utf-8-sig") as f:
             fiscal.setdefault(r["REF_DATE"], {})[LINES[r["Cannabis revenue"]]] = r["VALUE"]
 with open("datasets/statcan-cannabis-revenue.csv", "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)
-    w.writerow(["country", "year", "fiscal_year", *LINES.values()])
+    w.writerow(["country", "year", "fiscal_year", *LINES.values(), "revenue_bn"])
     for fy in sorted(fiscal):
-        w.writerow(["ca", fy[:4], fy, *(fiscal[fy].get(k, "") for k in LINES.values())])
+        w.writerow(["ca", fy[:4], fy, *(fiscal[fy].get(k, "") for k in LINES.values()), round(int(fiscal[fy]["revenue"]) / 1e6, 2)])
 print(len(years), "survey years,", len(fiscal), "fiscal years")
