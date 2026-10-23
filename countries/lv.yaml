@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 428
 recreational: decriminalised
 medical: none
-updated: 2026-10-13
+updated: 2026-10-23
 summary: Up to 1 g is an administrative offence on first occurrence; repeat offences are criminal.
 scores:
   possession: 2
@@ -109,16 +109,27 @@ context:
     sources:
       - zm17
   driving:
-    status: zero
+    status: impairment
     text: >-
-      No THC limit is set: detection of any drug is enough both for the administrative offence
-      and for the criminal one, while for medicinal products impairment must be shown. Police
-      may stop at random and test on suspicion; there is no roadside oral-fluid test, and
-      blood is taken at a hospital. The administrative penalty is a fine of 1,200 to 1,400
-      euros, 10 to 15 days of administrative arrest and a ban of up to four years; the
-      criminal offence carries up to two years in prison and a ban of up to five.
+      Criminal Law section 262(1¹) makes it a crime to drive a vehicle, or to instruct a
+      learner, while under the influence of narcotic, psychotropic, toxic or other intoxicating
+      substances. The Latvian text sets the punishment at up to one year in prison, short-term
+      deprivation of liberty, or probationary supervision, and loss of the driving licence for
+      five years. If the driving causes slight bodily injury the prison term can reach four
+      years, five years for moderate injury, three to ten years for serious injury or one death,
+      and three to fifteen years for two or more deaths. Road Traffic Law section 62(5) keeps
+      an administrative fine for a cyclist, an electric-scooter rider or a moped driver under
+      that influence: 34 fine units (€170) for a bicycle or scooter, and 240 to 400 units
+      (€1,200 to €2,000) for a moped, with the moped rider losing the licence for five years.
+      One fine unit is €5. The Administrative Liability Law lists a warning, a fine, loss of a
+      right, and a ban on using a right. Cabinet Regulation No. 719 has the doctor record
+      clinical symptoms and laboratory tests, and it allows a finding that a substance was used
+      when influence is not found. That regulation sets no THC figure.
     sources:
-      - euda_dd
+      - kl262
+      - csl
+      - mk719
+      - aal
   clubs:
     status: none
     text: >-
@@ -174,9 +185,22 @@ sources:
   pardal20:
     title: Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe, European Journal of Criminology (2020, PDF)
     url: https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
-  euda_dd:
-    title: EUDA — Legal approaches to drugs and driving, country table (last updated May 2025)
-    url: https://www.euda.europa.eu/publications/topic-overviews/legal-approaches-to-drugs-and-driving/html_en
+  kl262:
+    title: "Criminal Law of Latvia, section 262, official Latvian text (Likumi.lv)"
+    url: https://likumi.lv/ta/id/88966-kriminallikums
+    locator: "Section 262(1¹) to (5); the section note records the amendment in force on 4 July 2024"
+  csl:
+    title: "Road Traffic Law, section 62, official English translation (Likumi.lv)"
+    url: https://likumi.lv/ta/en/en/id/45467-road-traffic-law
+    locator: "Section 62(5); one fine unit is five euro under the Administrative Liability Law"
+  mk719:
+    title: "Cabinet Regulation No. 719 of 27 November 2018 on alcohol testing and the finding of narcotic influence"
+    url: https://likumi.lv/ta/id/303332-kartiba-kada-nosaka-alkohola-koncentraciju-asinis-un-izelpotaja-gaisa-un-konstate-narkotisko-vai-citu-apreibinoso-vielu
+    locator: "Points 18 and 27.10"
+  aal:
+    title: "Administrative Liability Law, sections 14 and 16 (Likumi.lv)"
+    url: https://likumi.lv/ta/id/303007-administrativas-atbildibas-likums
+    locator: "Section 14 lists the sanctions; section 16(2) sets one fine unit at five euro"
   zm17:
     title: "LV portāls — Zemkopības ministrija: Latvijā ir aizliegta Indijas kaņepju sēklu sēšana un audzēšana (6 March 2017)"
     url: https://lvportals.lv/e-konsultacijas/11477-latvija-ir-aizliegta-indijas-kanepju-seklu-sesana-un-audzesana-2017

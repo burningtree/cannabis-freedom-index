@@ -686,3 +686,22 @@ test("South Africa's child-use order and uncommenced gift rule follow the texts 
   assert.equal(child.before, undefined);
   assert.match(child.unscored, /adult scores do not move/);
 });
+
+test("Latvia's drug-driving penalties and the UAE hemp law follow the texts that were read", () => {
+  const lv = y.load(fs.readFileSync("countries/lv.yaml", "utf8"));
+  const ae = y.load(fs.readFileSync("countries/ae.yaml", "utf8"));
+  const hemp = byId["uae-industrial-hemp-2026"];
+  assert.equal(lv.context.driving.status, "impairment");
+  assert.match(lv.context.driving.text, /up to one year/);
+  assert.doesNotMatch(lv.context.driving.text, /administrative arrest/);
+  assert.doesNotMatch(lv.context.driving.text, /1,200 to 1,400/);
+  assert.equal(lv.scores.possession, 2);
+  assert.equal(ae.medical, "limited");
+  assert.equal(ae.context.planting.seeds, "licensed");
+  assert.equal(ae.context.planting.seeds_trade, "regulated");
+  assert.match(ae.context.production.text, /0\.3%/);
+  assert.equal(ae.scores.access, 0);
+  assert.equal(hemp.date, "2026-01-01");
+  assert.equal(hemp.category, "hemp");
+  assert.equal(hemp.before, undefined);
+});
