@@ -419,3 +419,26 @@ test("Bulgaria's hemp permit follows the 2023 ordinance and records the statutor
   assert.equal(bg.scores.cultivation, 0);
   assert.equal(bg.scores.access, 0);
 });
+
+test("Estonia's quantity line and Hong Kong's cultivation penalty follow the texts that were read", () => {
+  const ee = y.load(fs.readFileSync("countries/ee.yaml", "utf8"));
+  const hk = y.load(fs.readFileSync("countries/hk.yaml", "utf8"));
+  const misdemeanour = byId["estonia-misdemeanour-2002"];
+  assert.match(ee.summary, /ten people/);
+  assert.match(ee.summary, /one to ten years/);
+  assert.doesNotMatch(ee.summary, /7\.5 g/);
+  assert.match(ee.segments.possession.text, /ten people/);
+  assert.match(ee.segments.possession.text, /one to ten years/);
+  assert.match(ee.segments.possession.text, /7\.5 grams/);
+  assert.doesNotMatch(ee.segments.possession.text, /up to five years/);
+  assert.doesNotMatch(ee.context.visitors.text, /up to 7\.5 g/);
+  assert.equal(ee.scores.possession, 3);
+  assert.equal(misdemeanour.before.possession, 1);
+  assert.match(misdemeanour.description, /does not fix that quantity at 7\.5 grams/);
+  assert.match(hk.segments.cultivation.text, /15 years/);
+  assert.match(hk.segments.cultivation.text, /HK\$100,000/);
+  assert.match(hk.segments.cultivation.text, /separate offence/);
+  assert.doesNotMatch(hk.segments.cultivation.text, /manufacturing a dangerous drug\n\s*carries up to life/);
+  assert.match(hk.context.production.text, /not that/);
+  assert.equal(hk.scores.cultivation, 0);
+});
