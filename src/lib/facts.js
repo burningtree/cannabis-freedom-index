@@ -53,7 +53,7 @@ const curated = [
   { kicker: "Switzerland", text: "[[CH|Switzerland]] has an unusual sharing rule: handing up to 10 g to another adult for free, to consume together, is not punishable. And since 2023 police [[h:switzerland-possession-legal-2023|may not even confiscate]] that amount." },
   { kicker: "Palau", text: "In [[PW|Palau]], giving away less than an ounce is punished like simple possession, with a fine, rather than as trafficking." },
   { kicker: "Fiji", text: "[[FJ|Fiji]]'s Court of Appeal has told judges not to jail people for up to 100 g of cannabis: fines, community service or a warning instead." },
-  { kicker: "Nauru", text: "[[NR|Nauru]], population about 12,000, has the harshest rule in the Pacific islands: a mandatory minimum of 12 months in prison for possessing any illicit drug." },
+  { kicker: "Nauru", text: "[[NR|Nauru]] requires at least a year in custody for unlawful cannabis possession. Its December 2024 law also sets at least ten years before parole or probation for growing, supply and use." },
   { kicker: "India", text: "In [[IN|India]] the flowers and resin are banned, but [[c:language/bhang|bhang]], made from cannabis leaves, is legal and sold in government-licensed shops in several states." },
   { kicker: "Malta", text: "[[MT|Malta]] was [[h:malta-legalisation-2021|the first EU country to legalise]], in 2021 — but there are no shops, only [[c:traditions/cannabis-social-clubs|non-profit associations]] capped at 500 members each." },
   { kicker: "Andorra", text: "In [[AD|Andorra]] possessing cannabis for one\u2019s own use is a minor offence. The penalty is a fine of \u20ac500 to \u20ac1,200 plus \u2018arrest\u2019, which for minor offences can mean spending up to eight weekends in custody." },
