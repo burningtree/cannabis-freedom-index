@@ -261,3 +261,24 @@ test("Oman's death penalty and unpaid supply follow the 2026 narcotics law", () 
   assert.equal(om.scores.enforcement, 1);
   assert.equal(om.scores.sharing, 0);
 });
+
+test("Qatar's personal-use sentence and the Philippine middle band follow the statutes", () => {
+  const qa = y.load(fs.readFileSync("countries/qa.yaml", "utf8"));
+  const ph = y.load(fs.readFileSync("countries/ph.yaml", "utf8"));
+  const amended = byId["qatar-personal-use-penalty-2020"];
+  assert.match(qa.segments.possession.text, /six months to three years/);
+  assert.match(qa.segments.consumption.text, /six months to three years/);
+  assert.match(qa.context.visitors.text, /six months to three years/);
+  assert.doesNotMatch(qa.segments.possession.text, /two to five years/);
+  assert.doesNotMatch(qa.segments.consumption.text, /or either/);
+  assert.equal(amended.date, "2020-02-18");
+  assert.match(amended.unscored, /does not move/);
+  assert.equal(qa.scores.possession, 0);
+  assert.equal(qa.scores.enforcement, 1);
+  assert.match(ph.segments.possession.text, /300 g up to but not including 500 g/);
+  assert.match(ph.segments.possession.text, /20 years and one day to life/);
+  assert.match(ph.summary, /300 g of marijuana or 5 g of resin/);
+  assert.match(ph.context.visitors.text, /300 g/);
+  assert.equal(ph.scores.possession, 0);
+  assert.equal(ph.scores.enforcement, 0);
+});
