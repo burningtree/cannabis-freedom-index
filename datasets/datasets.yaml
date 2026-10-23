@@ -47,18 +47,23 @@
   about: >-
     The share of adults who used cannabis in the past year, from each country's most recent
     national survey as reported to UNODC, and the number of people that share stands for today.
-    Most surveys ask people aged 15 to 64; where a survey used another age band, the band is
-    given with the figure. Every country and territory on the site has a row.
+    The count uses a population of the same age band as the survey. Most surveys ask people aged
+    15 to 64; where a survey used another age band, the band is given with the figure. Every
+    country and territory on the site has a row.
   origin: >-
-    Rebuilt on 21 October 2026 by scripts/extract-unodc.py from UNODC's spreadsheet, which is
+    Rebuilt on 23 October 2026 by scripts/extract-unodc.py from UNODC's spreadsheet, which is
     published here unchanged: sheet "Cannabis", the best estimate of the latest survey for each
     country (a survey period such as 2022/23 counts as its last year). The United Kingdom is
     represented by England and Wales. Where the table has no figure, `source` says what was used
     instead: "earlier" keeps the figure this site had before, taken from Wikipedia's list of
-    older UNODC figures; "estimate" is the median of the measured countries in the same region.
-    `users` is the share applied to the population aged 15 to 64 from the World Bank
-    (SP.POP.1564.TO, fetched the same day), to two significant figures; places the World Bank
-    does not list keep the population used before.
+    older UNODC figures; "estimate" is the median of the measured countries in the same region,
+    computed here, not a regional total published by UNODC. `users` applies the share to a
+    population of the survey's own age band, from the World Bank's five-year age groups (male
+    and female summed, latest year). A band that cuts through a group is split evenly across
+    those ages and marked `users_approximate`. A survey with no recorded age, and a regional
+    median, use the population aged 15 to 64 (SP.POP.1564.TO). Where that population is missing,
+    the row has no user count. The sum of these country counts is not UNODC's separate estimate
+    of 256 million cannabis users worldwide in 2024.
   profile:
     headline: "{prevalence} of adults"
     details: "{users} people · survey {period} · ages {ages} · {source}"
@@ -69,9 +74,12 @@
     year: { column: year, about: "Survey year (the last year of a period), empty for estimates" }
     period: { column: period, type: text, about: "Survey year or period as UNODC gives it" }
     ages: { column: ages, type: text, about: "The survey's age band, shown with the figure" }
-    source: { column: source, type: text, about: "wdr2026, earlier or estimate", values: { wdr2026: "UNODC 2026", earlier: "earlier figure, not in UNODC 2026", estimate: "regional estimate, no survey" } }
-    estimate: { column: estimate, type: boolean, about: "Marks a regional estimate (shown with ~)" }
-    population_15_64: { column: population_15_64, about: "What users are worked out from" }
+    source: { column: source, type: text, about: "wdr2026, earlier or estimate", values: { wdr2026: "UNODC 2026", earlier: "earlier figure, not in UNODC 2026", estimate: "median of surveyed countries in the region, computed here" } }
+    estimate: { column: estimate, type: boolean, about: "Marks a median computed here for a country with no survey (shown with ~)" }
+    population_15_64: { column: population_15_64, about: "Population aged 15 to 64, kept for reference" }
+    population_band: { column: population_band, about: "Population the user count is applied to" }
+    population_ages: { column: population_ages, type: text, about: "Age band of population_band" }
+    users_approximate: { column: users_approximate, type: boolean, about: "The user count splits an age group, or assumes ages 15 to 64 because the survey age was not recorded" }
   pages:
     - { label: the map of users, path: map/users/ }
     - { label: the map of the share of adults, path: map/share-of-adults/ }

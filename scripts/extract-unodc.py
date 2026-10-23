@@ -18,9 +18,13 @@ use       table 1.2, sheet "Cannabis": past-year cannabis use, every survey for 
             source  "wdr2026" from the table; "earlier" a figure from before this table was
                     used (Wikipedia's list of older UNODC figures), kept where the table has
                     none; "estimate" the median of the measured countries in the same region
-            users   the share applied to the population aged 15 to 64 from the World Bank
-                    (fetched when the script runs), to two significant figures
-          Places the World Bank does not list keep the population the file already had.
+            users   the share applied to a population of the same age band, from the World
+                    Bank's five-year age groups (fetched when the script runs), to two
+                    significant figures. A band that cuts through a group is split evenly
+                    and marked users_approximate. A survey with no recorded age, and a
+                    regional median, use ages 15 to 64. Where that population is missing,
+                    the row has no user count.
+          Places the World Bank does not list keep the 15-to-64 population the file already had.
 
 youth     table 1.4, sheet "Cannabis": cannabis use among 15- and 16-year-olds, every survey
           with a past-year figure for each country (the first listed, where a year has two). Rows about one kind of cannabis
@@ -40,6 +44,7 @@ an alias can be added below. Run from the project root.
 """
 import csv, glob, json, re, statistics, sys, unicodedata, urllib.request, zipfile
 import xml.etree.ElementTree as ET
+from concurrent.futures import ThreadPoolExecutor
 
 NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main",
       "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships"}
@@ -164,16 +169,99 @@ def two_figures(n):
     return int(round(n, -digits)) if digits > 0 else int(round(n))
 
 
-def world_bank_15_64():
-    url = "https://api.worldbank.org/v2/country/all/indicator/SP.POP.1564.TO?format=json&per_page=20000&date=2015:2030"
+def world_bank_latest(code):
+    """iso2 → (year, people), the indicator's most recent value for each country"""
+    url = f"https://api.worldbank.org/v2/country/all/indicator/{code}?format=json&mrnev=1&per_page=20000"
     with urllib.request.urlopen(url, timeout=120) as res:
-        data = json.load(res)[1]
+        rows = json.load(res)[1] or []
     latest = {}
-    for r in data:
-        cid = r["country"]["id"].lower()
-        if r["value"] is not None and (cid not in latest or int(r["date"]) > latest[cid][0]):
-            latest[cid] = (int(r["date"]), int(r["value"]))
+    for r in rows:
+        if r["value"] is None:
+            continue
+        latest[r["country"]["id"].lower()] = (int(r["date"]), int(round(r["value"])))
     return latest
+
+
+def world_bank_15_64():
+    return world_bank_latest("SP.POP.1564.TO")
+
+
+# Five-year groups, then 80+. The last group is open-ended; a survey that stops inside it
+# is split across ages 80–99.
+AGE_GROUPS = [
+    (0, 4, "SP.POP.0004"), (5, 9, "SP.POP.0509"), (10, 14, "SP.POP.1014"),
+    (15, 19, "SP.POP.1519"), (20, 24, "SP.POP.2024"), (25, 29, "SP.POP.2529"),
+    (30, 34, "SP.POP.3034"), (35, 39, "SP.POP.3539"), (40, 44, "SP.POP.4044"),
+    (45, 49, "SP.POP.4549"), (50, 54, "SP.POP.5054"), (55, 59, "SP.POP.5559"),
+    (60, 64, "SP.POP.6064"), (65, 69, "SP.POP.6569"), (70, 74, "SP.POP.7074"),
+    (75, 79, "SP.POP.7579"), (80, None, "SP.POP.80UP"),
+]
+OPEN_SPAN = 20
+
+
+def world_bank_age_groups():
+    """iso2 → (year, [people in each AGE_GROUPS band]). A country missing any group is left out."""
+    codes = [stem + sex for _, _, stem in AGE_GROUPS for sex in (".MA", ".FE")]
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        fetched = dict(zip(codes, pool.map(world_bank_latest, codes)))
+    out = {}
+    ids = set()
+    for series in fetched.values():
+        ids.update(series)
+    for cid in ids:
+        counts, years, missing = [], [], False
+        for _, _, stem in AGE_GROUPS:
+            male, female = fetched[stem + ".MA"].get(cid), fetched[stem + ".FE"].get(cid)
+            if not male or not female:
+                missing = True
+                break
+            counts.append(male[1] + female[1])
+            years.extend((male[0], female[0]))
+        if not missing:
+            out[cid] = (min(years), counts)
+    return out
+
+
+def parse_ages(text):
+    """'15-64' → (15, 64); '15+' → (15, None). None when the text is not an age band."""
+    text = (text or "").strip()
+    plus = re.fullmatch(r"(\d+)\s*\+", text)
+    if plus:
+        return int(plus.group(1)), None
+    span = re.fullmatch(r"(\d+)\s*-\s*(\d+)", text)
+    if span:
+        lo, hi = int(span.group(1)), int(span.group(2))
+        if lo <= hi:
+            return lo, hi
+    return None
+
+
+def band_population(counts, lo, hi):
+    """People from age lo through hi (hi None means no upper limit). The second value is true
+    when a five-year group, or the open 80+ group, had to be split."""
+    total, approximate = 0.0, False
+    for (g0, g1, _), n in zip(AGE_GROUPS, counts):
+        if hi is not None and g0 > hi:
+            break
+        if g1 is not None and g1 < lo:
+            continue
+        if g1 is None:
+            if hi is None or hi >= 80 + OPEN_SPAN - 1:
+                total += n
+            elif hi >= 80:
+                total += n * (hi - 80 + 1) / OPEN_SPAN
+                approximate = True
+            continue
+        start, end = max(lo, g0), g1 if hi is None else min(hi, g1)
+        if start > end:
+            continue
+        span, cover = g1 - g0 + 1, end - start + 1
+        if cover == span:
+            total += n
+        else:
+            total += n * cover / span
+            approximate = True
+    return int(round(total)), approximate
 
 
 def use():
@@ -207,7 +295,9 @@ def use():
     for r in csv.DictReader(open("datasets/unodc-cannabis-use.csv", encoding="utf-8")):
         if r["users"] or r["country"] not in before:
             before[r["country"]] = r
+    print("fetching World Bank populations…", file=sys.stderr)
     wb = world_bank_15_64()
+    groups = world_bank_age_groups()
     out = {}
     for cid in files:
         old = before.get(cid, {})
@@ -217,38 +307,73 @@ def use():
             row = {"prevalence": float(old["prevalence"]), "year": int(old["year"]), "period": old.get("period") or old["year"],
                    "ages": old.get("ages", ""), "unodc_name": "", "source": "earlier"}
         else:
-            row = {"source": "estimate"}
+            row = {"source": "estimate", "ages": ""}
         if cid in wb:
             row["population_year"], row["population_15_64"] = wb[cid]
         elif old.get("population_15_64"):
             row["population_year"], row["population_15_64"] = old.get("population_year", ""), int(old["population_15_64"])
-        elif old and float(old["prevalence"]) > 0:
-            # the population the old users figure was worked out from
+        elif old.get("users") and old.get("prevalence") and float(old["prevalence"]) > 0:
+            # only a fallback for the 15–64 reference: the previous file applied every rate to that band
             row["population_year"], row["population_15_64"] = "", int(round(int(old["users"]) / (float(old["prevalence"]) / 100)))
         else:
             row["population_year"], row["population_15_64"] = "", 0
         out[cid] = row
-    # no survey at all: the median of the measured countries in the same region
+    # no survey at all: the median of the measured countries in the same region.
+    # That median is computed here. It is not a regional total published by UNODC.
     for cid, row in out.items():
         if row["source"] == "estimate":
             region = files[cid][1]
             row["prevalence"] = round(statistics.median(r["prevalence"] for k, r in out.items() if r["source"] != "estimate" and files[k][1] == region), 2)
-    lines = []
+    lines, omitted = [], []
     for cid in sorted(out):
         r = out[cid]
         # the earlier surveys, oldest first, without users: today's population says nothing of them
         for year in sorted(history.get(cid, {})):
             e = history[cid][year]
             if r["source"] == "wdr2026" and year < r["year"]:
-                lines.append([cid, files[cid][0], e["unodc_name"], e["prevalence"], year, e["period"], e["ages"], "", "wdr2026", "", "", ""])
-        users = two_figures(r["population_15_64"] * r["prevalence"] / 100)
+                lines.append([cid, files[cid][0], e["unodc_name"], e["prevalence"], year, e["period"], e["ages"], "", "wdr2026", "", "", "", "", "", ""])
+        if not r["population_year"] and cid in groups:
+            r["population_year"] = groups[cid][0]
+        band, band_ages, approximate = headcount(cid, r, groups)
+        users = two_figures(band * r["prevalence"] / 100) if band else ""
+        if not band:
+            omitted.append(f"{cid} ({r.get('ages') or r['source']})")
         lines.append([cid, files[cid][0], r.get("unodc_name", ""), r["prevalence"], r.get("year", ""), r.get("period", ""), r.get("ages", ""),
-                      "true" if r["source"] == "estimate" else "", r["source"], r["population_15_64"] or "", r["population_year"], users])
+                      "true" if r["source"] == "estimate" else "", r["source"], r["population_15_64"] or "", r["population_year"],
+                      band or "", band_ages, "true" if approximate else "", users])
     write("datasets/unodc-cannabis-use.csv",
-          ["country", "name", "unodc_name", "prevalence", "year", "period", "ages", "estimate", "source", "population_15_64", "population_year", "users"], lines)
+          ["country", "name", "unodc_name", "prevalence", "year", "period", "ages", "estimate", "source",
+           "population_15_64", "population_year", "population_band", "population_ages", "users_approximate", "users"], lines)
     counts = {s: sum(1 for r in out.values() if r["source"] == s) for s in ("wdr2026", "earlier", "estimate")}
     print(f"{len(out)} countries, {len(lines)} rows written: {counts}")
+    if omitted:
+        print(f"no matching population, user count left blank: {'; '.join(omitted)}", file=sys.stderr)
     return missed
+
+
+def headcount(cid, row, groups):
+    """Population the prevalence is applied to: (people, age label, approximate).
+
+    A survey is applied to its own age band. An imputed regional median, and an earlier
+    figure whose survey age was not recorded, use ages 15–64. The count is approximate
+    when a five-year group is split, or when 15–64 stands in for an unrecorded survey age.
+    Returns (0, "", False) when no matching population is available, so no user count is written.
+    """
+    pop = row.get("population_15_64") or 0
+    ages = parse_ages(row.get("ages"))
+    if row["source"] == "estimate" or not ages:
+        if not pop and cid in groups:
+            pop, _ = band_population(groups[cid][1], 15, 64)
+        # the median has no survey age; an earlier figure with no age is only assumed to be 15–64
+        return (pop, "15-64", row["source"] != "estimate") if pop else (0, "", False)
+    lo, hi = ages
+    if (lo, hi) == (15, 64) and pop:
+        return pop, "15-64", False
+    if cid not in groups:
+        return (0, "", False)
+    band, approximate = band_population(groups[cid][1], lo, hi)
+    label = f"{lo}+" if hi is None else f"{lo}-{hi}"
+    return (band, label, approximate) if band else (0, "", False)
 
 
 # notes that mark a row as covering only part of cannabis or part of the country

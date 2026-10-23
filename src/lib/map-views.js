@@ -18,7 +18,7 @@ export const MAP_VIEWS = [
     lede: `${s.desc} Every country scored from 0 to 10 on this one part of the index. Red means prison risk, green means free.`,
   })),
   { slug: "users", metric: "users", title: "Cannabis users by country",
-    lede: "How many people used cannabis in the past year, country by country. The stronger the blue, the more users." },
+    lede: "How many people used cannabis in the past year. Each survey rate is applied to a population of the same age band. The stronger the blue, the more users." },
   { slug: "share-of-adults", metric: "prevalence", title: "Share of adults who use cannabis, by country",
     lede: "The share of adults who used cannabis in the past year, from each country's latest national survey (most ask people aged 15 to 64). The stronger the blue, the higher the share." },
   { slug: "use-against-freedom", metric: "ratio", title: "Cannabis use against cannabis freedom, by country",

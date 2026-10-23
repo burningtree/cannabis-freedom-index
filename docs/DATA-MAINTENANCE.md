@@ -356,10 +356,12 @@ group) and are never part of the score.
 - `unodc-cannabis-use.csv`: cannabis use for every country (share of adults, survey year or
   period, age band, number of users). Rebuilt by `python3 scripts/extract-unodc.py use` from
   the UNODC spreadsheet kept beside it (`unodc-wdr2026-1.2-prevalence-national.xlsx`, World
-  Drug Report 2026 annex, table 1.2), with the World Bank's population aged 15–64 fetched when
-  it runs. `source` says where each row comes from: `wdr2026`, `earlier` (a figure the table
-  lacks, kept from Wikipedia's list of older UNODC figures) or `estimate` (regional median). It
-  feeds the Use views of the map, the rankings and the profiles, so every country file needs a
+  Drug Report 2026 annex, table 1.2). Each survey rate is applied to a World Bank population of
+  the same age band: five-year age groups, split evenly where the band cuts through a group.
+  A survey with no recorded age, and a regional median, use ages 15–64. `estimate` is that
+  median computed here, not a regional total from UNODC. `source` says where each row comes
+  from: `wdr2026`, `earlier` (a figure the table lacks, kept from Wikipedia's list of older
+  UNODC figures) or `estimate`. It feeds the Use views of the map, the rankings and the profiles, so every country file needs a
   row; the build stops if one is missing. A new country gets one when the script runs again.
 - `unodc-cannabis-use-youth.csv`: past-year cannabis use among 15- and 16-year-olds, from
   `python3 scripts/extract-unodc.py youth` and the UNODC spreadsheet beside it

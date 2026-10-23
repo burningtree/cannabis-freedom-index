@@ -61,9 +61,13 @@ const viewAttrs = (metric) => ({ href: viewHref(metric), "data-metric": metric, 
 const count = (fn) => countries.filter(fn).length;
 // 48,000,000 → "48M", 770,000 → "770k"
 const compact = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)}M` : n >= 1e3 ? `${+(n / 1e3).toPrecision(2)}k` : String(n));
-const useNote = (c) => c.use.estimate
-  ? `Estimate: no national survey, so the regional median of ${c.use.prevalence}% of people aged 15–64 is assumed`
-  : `${c.use.prevalence}% of people aged ${useAges(c.use)} used cannabis in the past year (${c.use.period ?? c.use.year} survey)`;
+const useNote = (c) => {
+  if (c.use.estimate) return `This site's figure: no national survey, so the median rate in ${c.region}, ${c.use.prevalence}% of people aged 15–64, is used.`;
+  const ages = useAges(c.use), when = c.use.period ?? c.use.year;
+  if (c.use.users == null) return `${c.use.prevalence}% of people aged ${ages} (${when}). No user count: the population for that age band is missing.`;
+  if (c.use.users_approximate) return `About ${compact(c.use.users)}: ${c.use.prevalence}% aged ${ages} (${when}), on an approximate population of those ages.`;
+  return `${c.use.prevalence}% of people aged ${ages} used cannabis in the past year (${when} survey)`;
+};
 const stats = [
   [places.length, "territories scored"],
   [count((c) => c.raw >= 60), "reach the “Free” tier (60+)"],
@@ -96,7 +100,8 @@ const unitData = Object.fromEntries(countries.flatMap((c) => {
 }));
 // Cannabis use on the map: one hue from light to dark, in five steps. Each step starts at `min`.
 const USE_SCALES = {
-  users: { label: "Cannabis users", steps: [[0, "Under 10k"], [1e4, "10k–100k"], [1e5, "100k–1M"], [1e6, "1M–10M"], [1e7, "10M or more"]] },
+  users: { label: "Cannabis users", steps: [[0, "Under 10k"], [1e4, "10k–100k"], [1e5, "100k–1M"], [1e6, "1M–10M"], [1e7, "10M or more"]],
+    note: "Each survey rate applied to a population of the same age band. A ~ is this site's median for a country with no survey, or a count whose ages were estimated." },
   prevalence: { label: "Share who use cannabis", steps: [[0, "Under 1%"], [1, "1–3%"], [3, "3–7%"], [7, "7–15%"], [15, "15% or more"]] },
   ratio: {
     label: "Use relative to freedom",
@@ -294,7 +299,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           <div class="legend" data-legend={key} hidden>
             {scale.steps.map(([, text], i) => <span><i class="sw" style={`background:var(--u${i})`}></i>{text}</span>)}
             <span><i class="sw sw-nodata"></i>No data</span>
-            <span class="legend-note">{scale.note ?? "Adults who used cannabis in the past year, from each country's latest survey (most ask ages 15–64). Figures marked ~ are regional estimates."}</span>
+            <span class="legend-note">{scale.note ?? "Adults who used cannabis in the past year, from each country's latest survey (most ask ages 15–64). A ~ is this site's median of surveyed countries in the region, used where that country has no survey."}</span>
           </div>
         ))}
         {Object.entries(datasetScales).map(([key, scale]) => (
@@ -384,12 +389,12 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           <tbody>
             {places.map((c) => (
               <tr data-id={c.id} data-rank={c.rank ?? c.worldRank - 0.5} data-territory={c.rank ? undefined : ""} data-name={c.name} data-region={c.region}
-                  data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users} data-share={c.use.prevalence} data-price={SHOW_PRICES ? streetFlower(c)?.usd ?? -1 : undefined}
+                  data-rec={REC_ORDER.indexOf(c.rec)} data-med={MED_ORDER.indexOf(c.med)} data-reckey={c.rec} data-users={c.use.users ?? -1} data-share={c.use.prevalence} data-price={SHOW_PRICES ? streetFlower(c)?.usd ?? -1 : undefined}
                   {...Object.fromEntries(EXTRA_COLUMNS.map((col) => [`data-${col.key}`, col.sort(c)]))}>
                 <td class="num">{c.rank ?? "–"}</td>
                 <td><a class="cname" href={`${base}country/${c.slug}/`}><span class="flag">{c.flag}</span>{c.name}{trendOf(c) && ((t) => <span class={`trend ${t.delta > 0 ? "up" : "down"}`} title={`${t.delta > 0 ? "+" : "−"}${Math.abs(t.delta)} ${Math.abs(t.delta) === 1 ? "point" : "points"} since ${t.since}. Latest change: ${t.last.title} (${changeDate(t.last)})`}>{t.delta > 0 ? "▲" : "▼"}{Math.abs(t.delta)}</span>)(trendOf(c))}</a>{c.territory && <span class="tag-disputed" title={`${c.territory.kind}. ${c.territory.note}`}>{c.territory.tag}</span>}{estimateNote(c) && <span class="tag-disputed" title={estimateNote(c)}>national estimate</span>}</td>
                 <td class="hide-sm" data-col="region">{c.region}</td>
-                <td class="num-col hide-md" data-col="users" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{compact(c.use.users)}</td>
+                <td class="num-col hide-md" data-col="users" title={useNote(c)}>{(c.use.estimate || c.use.users_approximate) && c.use.users != null && <span class="approx">~</span>}{c.use.users != null ? compact(c.use.users) : "—"}</td>
                 <td class="num-col hide-md" data-col="share" title={useNote(c)}>{c.use.estimate && <span class="approx">~</span>}{c.use.prevalence.toFixed(1)}%</td>
                 {SHOW_PRICES && <td class="num-col hide-md" data-col="price">{streetFlower(c) ? `$${streetFlower(c).usd.toFixed(2)}` : "—"}</td>}
                 <td class="hide-sm" data-col="rec"><span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>{REC_LABEL[c.rec]}</span></td>
@@ -605,6 +610,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     const useColor = (c) => {
       const steps = USE_SCALES[metric].steps;
       const v = c.use[metric];
+      if (v == null || Number.isNaN(v)) return "url(#hatch)";
       let i = 0;
       while (i < steps.length - 1 && v >= steps[i + 1][0]) i++;
       return `var(--u${i})`;
@@ -921,16 +927,17 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
             + `<div class="tip-meta">${k ? `${k} atlas ${k === 1 ? "entry" : "entries"}` : "No atlas entries yet"}</div>`
             + (c.atlas.length ? `<ul class="tip-list">${c.atlas.map((t) => `<li>${esc(t)}</li>`).join("")}${k > c.atlas.length ? `<li class="more">and ${k - c.atlas.length} more</li>` : ""}</ul>` : "") + foot(c);
         }
-        const est = c.use.estimate ? "~" : "";
+        const rateMark = c.use.estimate ? "~" : "";
+        const usersText = c.use.users == null ? "—" : `${c.use.estimate || c.use.users_approximate ? "~" : ""}${compact(c.use.users)}`;
         if (metric === "ratio") {
-          return head(c.flag, c.name, `${est}${c.use.ratio}`, useColor(c))
-            + row(`Share aged ${c.use.ages}`, `${est}${c.use.prevalence}%`) + row("Index", `${c.score} / 100`)
+          return head(c.flag, c.name, `${rateMark}${c.use.ratio}`, useColor(c))
+            + row(`Share aged ${c.use.ages}`, `${rateMark}${c.use.prevalence}%`) + row("Index", `${c.score} / 100`)
             + para(USE_SCALES.ratio.note) + foot(c);
         }
         if (isUse()) {
-          return head(c.flag, c.name, metric === "users" ? `${est}${compact(c.use.users)}` : `${est}${c.use.prevalence}%`, useColor(c))
-            + row("Users", `${est}${compact(c.use.users)}`) + row(`Share aged ${c.use.ages}`, `${est}${c.use.prevalence}%`)
-            + row(c.use.estimate ? "Source" : "Survey year", c.use.estimate ? "regional estimate" : c.use.period ?? c.use.year)
+          return head(c.flag, c.name, metric === "users" ? usersText : `${rateMark}${c.use.prevalence}%`, useColor(c))
+            + row("Users", usersText) + row(`Share aged ${c.use.ages}`, `${rateMark}${c.use.prevalence}%`)
+            + row(c.use.estimate ? "Source" : "Survey year", c.use.estimate ? "median computed here" : c.use.period ?? c.use.year)
             + (c.use.source === "earlier" ? row("Source", "earlier figure, not in UNODC's 2026 table") : "") + foot(c);
         }
         const past = freedomPast(c);

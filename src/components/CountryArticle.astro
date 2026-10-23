@@ -164,22 +164,24 @@ const culture = cultureOf(c);
     {scored.length > 0 && <CountryChart history={scored} context={history.filter((ch) => !ch.score)} />}
     {use && (
       <dl class="c-use">
-        <div>
-          <dt>Cannabis users</dt>
-          <dd>{use.estimate ? "about " : ""}{people(use.users)}</dd>
-        </div>
+        {use.users != null && (
+          <div>
+            <dt>Cannabis users</dt>
+            <dd>{use.estimate || use.users_approximate ? "about " : ""}{people(use.users)}</dd>
+          </div>
+        )}
         <div>
           <dt>Share aged {useAges(use)}</dt>
           <dd>{use.estimate ? "about " : ""}{use.prevalence}%</dd>
         </div>
         <p>{use.estimate
-          ? `An estimate: there is no national survey, so the median rate of surveyed countries in ${c.region} is assumed.`
-          : `People who used cannabis in the past year, from a ${use.period ?? use.year} survey applied to today's population${use.source === "earlier" ? ". An earlier figure: UNODC's 2026 table has none for this country" : ""}.`}</p>
+          ? `This site's figure: there is no national survey, so the median rate of surveyed countries in ${c.region} is applied to people aged 15–64.`
+          : `People who used cannabis in the past year, from a ${use.period ?? use.year} survey${use.users != null ? `, applied to today's population aged ${useAges({ ages: use.population_ages || use.ages })}` : ""}${use.users_approximate ? ". The population is approximate: the survey ages cut through an age group, or were not recorded and ages 15–64 are used" : ""}${use.source === "earlier" ? ". An earlier figure: UNODC's 2026 table has none for this country" : ""}.`}</p>
         <SourceTip>{use.source === "wdr2026"
           ? <><a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>, annex table 1.2</>
           : use.source === "earlier"
             ? <>An earlier UNODC figure, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a></>
-            : <>The median of surveyed countries in {c.region}, from <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a> figures</>}; users from the population aged 15–64 (<a href="https://data.worldbank.org/indicator/SP.POP.1564.TO" target="_blank" rel="noopener noreferrer">World Bank</a>). <a href={`${base}sources/#dataset-cannabis_use`}>The whole dataset →</a></SourceTip>
+            : <>A median computed on this site from surveyed countries in {c.region}, using <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a> figures</>}{use.users != null && <>. Population from the <a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer">World Bank</a>, aged {useAges({ ages: use.population_ages || use.ages })}</>}. <a href={`${base}sources/#dataset-cannabis_use`}>The whole dataset →</a></SourceTip>
       </dl>
     )}
     {unitUse && (
