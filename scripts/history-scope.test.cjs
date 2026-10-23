@@ -209,3 +209,21 @@ test("France's 2026 fine and Ireland's driving limits follow the statutes", () =
   assert.match(ie.context.driving.text, /medical exemption certificate/);
   assert.doesNotMatch(ie.context.driving.text, /treated as impaired/);
 });
+
+test("China visitor fines and Nepal possession bands follow the statutes", () => {
+  const cn = y.load(fs.readFileSync("countries/cn.yaml", "utf8"));
+  const np = y.load(fs.readFileSync("countries/np.yaml", "utf8"));
+  assert.match(cn.context.visitors.text, /3,000 yuan/);
+  assert.match(cn.context.visitors.text, /one to five years/);
+  assert.match(cn.context.visitors.text, /ten years/);
+  assert.doesNotMatch(cn.context.visitors.text, /2,000 yuan/);
+  assert.doesNotMatch(cn.segments.possession.text, /deported and often/);
+  assert.equal(cn.scores.possession, 2);
+  assert.match(np.segments.possession.text, /three months/);
+  assert.match(np.segments.possession.text, /50 grams/);
+  assert.match(np.segments.consumption.text, /one month/);
+  assert.match(np.context.visitors.text, /three months/);
+  assert.doesNotMatch(np.segments.possession.text, /up to a month in jail/);
+  assert.equal(np.scores.possession, 1);
+  assert.equal(np.scores.enforcement, 2);
+});
