@@ -187,6 +187,9 @@ function readLog() {
 
 // Built on this computer (not by the deploy workflow, which sets CI), the changes not yet committed
 // come first, as one more change: { hash: "WORKTREE", short: "uncommitted", ... }
+// The dev server keeps this module loaded, so that snapshot would stay as it was when the server
+// started. The changelog pages call reloadUncommitted() on each request, and the page has a Reload
+// button for when it is left open while files change.
 function uncommitted() {
   if (process.env.CI) return [];
   const head = git("rev-parse", "HEAD")?.trim();
@@ -206,6 +209,22 @@ function uncommitted() {
   }];
 }
 export const commits = [...uncommitted(), ...readLog()].map((c) => ({ ...c, groups: workOut(c) }));
+
+const EMPTY = { history: null, places: [], texts: [], data: [], code: [] };
+
+// Read the working tree again and put that in front of `commits`. Null when everything is committed.
+export function reloadUncommitted() {
+  if (!import.meta.env.DEV) return commits.find((c) => c.local) ?? null;
+  const [c] = uncommitted();
+  const fresh = c ? { ...c, groups: workOut(c) } : null;
+  const i = commits.findIndex((x) => x.local);
+  if (fresh && i >= 0) commits[i] = fresh;
+  else if (fresh) commits.unshift(fresh);
+  else if (i >= 0) commits.splice(i, 1);
+  return fresh;
+}
+
+export { EMPTY as emptyGroups };
 
 // one line of what a commit did: [[count, label, the id of its section on the commit's page]]
 export function summaryOf(c) {

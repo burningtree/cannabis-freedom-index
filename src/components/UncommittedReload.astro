@@ -1,0 +1,21 @@
+---
+// The uncommitted changelog entry is a snapshot. Reload asks the dev server to read the working
+// tree again (src/lib/gitlog.js). Shown only in dev; a production build has no server to ask.
+const { at } = Astro.props;
+const when = new Date(at).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+---
+<p class="gl-asof">
+  <time datetime={at}>As of {when}</time>
+  <button type="button" class="btn" data-gl-reload>Reload</button>
+</p>
+<script>
+  for (const b of document.querySelectorAll("[data-gl-reload]")) {
+    if (b.dataset.bound) continue;
+    b.dataset.bound = "1";
+    b.addEventListener("click", () => {
+      b.disabled = true;
+      b.textContent = "Reading…";
+      location.reload();
+    });
+  }
+</script>

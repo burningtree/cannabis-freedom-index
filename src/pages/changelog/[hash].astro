@@ -1,15 +1,33 @@
 ---
 // One change to the site: its message, and what it did, section by section (src/lib/gitlog.js).
 import Base from "../../layouts/Base.astro";
-import { commits, summaryOf } from "../../lib/gitlog.js";
+import UncommittedReload from "../../components/UncommittedReload.astro";
+import { commits, emptyGroups, reloadUncommitted, summaryOf } from "../../lib/gitlog.js";
 import { formatDate, places, SEGMENTS, segmentPoints } from "../../lib/countries.js";
 import { tierColor } from "../../lib/tiers.js";
 
 export function getStaticPaths() {
-  return commits.map((c, i) => ({ params: { hash: c.short }, props: { c, newer: commits[i - 1], older: commits[i + 1] } }));
+  // Keep the address available in dev even if the tree was clean when the server started, so Reload
+  // still has a page to land on after a later edit.
+  const list = [...commits];
+  if (import.meta.env.DEV && !list.some((c) => c.local)) {
+    list.unshift({
+      hash: "WORKTREE", short: "uncommitted", date: new Date().toISOString(),
+      subject: "Uncommitted changes", body: "Work on this computer that is not committed yet. Shown only in local builds.",
+      parent: list[0]?.hash ?? null, files: [], add: 0, del: 0, local: true, groups: emptyGroups,
+    });
+  }
+  return list.map((c, i) => ({ params: { hash: c.short }, props: { c, newer: list[i - 1] ?? null, older: list[i + 1] ?? null } }));
 }
-const { c, newer, older } = Astro.props;
+let { c, newer, older } = Astro.props;
 const base = import.meta.env.BASE_URL;
+if (import.meta.env.DEV) Astro.response.headers.set("Cache-Control", "no-store");
+if (import.meta.env.DEV && c.local) {
+  c = reloadUncommitted() ?? {
+    ...c, date: new Date().toISOString(), files: [], add: 0, del: 0, groups: emptyGroups,
+    body: "Nothing on this computer is uncommitted.",
+  };
+}
 const g = c.groups;
 const CAP = 200; // longest list shown in full
 const placeUrl = (slug) => (places.some((p) => p.slug === slug.split("/")[0]) ? `${base}country/${slug}/` : null);
@@ -27,12 +45,12 @@ const moves = g.places.filter((p) => p.scores?.length || (p.status === "added" &
 ---
 <Base title={`${c.subject} · Changelog`} description={`${formatDate(c.date.slice(0, 10))}: ${summary.map(([n, w]) => `${n} ${w}`).join(", ") || "changes to the site"}.`}>
   <main class="changes-page gl gl-commit">
-    <div class="page-bar"><a class="back" href={`${base}changelog/`}>← Changelog</a></div>
     <section class="hero hero-sm">
-      <p class="eyebrow">Changelog <span><time datetime={c.date}>{formatDate(c.date.slice(0, 10))}</time></span> <span>{c.short}</span></p>
+      <p class="eyebrow"><a href={`${base}changelog/`}>Changelog</a> <span><time datetime={c.date}>{formatDate(c.date.slice(0, 10))}</time></span> <span>{c.short}</span></p>
       <h1>{c.subject}</h1>
       {c.body && <p class="lede gl-body">{c.body}</p>}
-      <p class="gl-sum gl-sum-big">{summary.map(([n, what, at]) => <a href={`#${at}`}><em>{n}</em> {what}</a>)} <span class="gl-lines"><ins>+{c.add.toLocaleString("en-GB")}</ins> <del>−{c.del.toLocaleString("en-GB")}</del> lines</span></p>
+      {import.meta.env.DEV && c.local && <UncommittedReload at={c.date} />}
+      {(summary.length > 0 || c.add + c.del > 0) && <p class="gl-sum gl-sum-big">{summary.map(([n, what, at]) => <a href={`#${at}`}><em>{n}</em> {what}</a>)} <span class="gl-lines"><ins>+{c.add.toLocaleString("en-GB")}</ins> <del>−{c.del.toLocaleString("en-GB")}</del> lines</span></p>}
     </section>
 
     {moves.length > 0 && (

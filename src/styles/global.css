@@ -3000,6 +3000,8 @@ a.ch-db-track:hover { background: color-mix(in srgb, var(--text) 6%, transparent
 @media (max-width: 760px) { .cu-exhibit { padding-right: 26px; } .cu-exhibit .ex-stack { display: none; } }
 
 /* the changelog (src/pages/changelog/): commits and what exactly they changed */
+.gl-commit .eyebrow a { color: var(--text-2); border-bottom: 1px solid var(--muted); }
+.gl-commit .eyebrow a:hover { color: var(--text); }
 .gl-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
 .gl-list a { display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; gap: 4px 18px; padding: 14px 0; border-bottom: 1px solid var(--border); color: inherit; text-decoration: none; }
 .gl-list a:hover b { text-decoration: underline; text-underline-offset: 3px; }
@@ -3007,6 +3009,9 @@ a.ch-db-track:hover { background: color-mix(in srgb, var(--text) 6%, transparent
 .gl-list b { font: 400 22px/1.2 var(--display); }
 .gl-local a { border-left: 3px dashed #f0b54a; padding-left: 12px; }
 .gl-local b::after { content: "local only"; margin-left: 10px; padding: 1px 6px; border: 1px solid #f0b54a; border-radius: 2px; font: 400 10px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: #f0b54a; vertical-align: middle; }
+.gl-asof { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 16px 0 0; font: 400 13px var(--mono); color: var(--muted); }
+.gl-asof .btn { padding: 5px 12px; font-size: 13px; }
+.gl-asof .btn:disabled { opacity: .6; cursor: progress; }
 .gl-list .gl-sum { grid-column: 2; }
 .gl-list .gl-lines { grid-row: 1; grid-column: 3; }
 .gl-sum { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13.5px; color: var(--text-2); }
