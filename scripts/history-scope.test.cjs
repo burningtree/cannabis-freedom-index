@@ -401,3 +401,21 @@ test("Spain, Poland, Germany, Liechtenstein and Canada follow the texts that wer
   assert.equal(ca.scores.cultivation, 4);
   assert.equal(ca.scores.sharing, 5);
 });
+
+test("Bulgaria's hemp permit follows the 2023 ordinance and records the statutory conflict", () => {
+  const bg = y.load(fs.readFileSync("countries/bg.yaml", "utf8"));
+  const permit = byId["bulgaria-hemp-permit-threshold-2023"];
+  assert.match(bg.context.production.text, /below 0\.3% THC/);
+  assert.match(bg.context.production.text, /below 0\.2%/);
+  assert.match(bg.context.production.text, /criminal liability/);
+  assert.doesNotMatch(bg.context.production.text, /less than 0\.2% THC/);
+  assert.match(bg.context.planting.text, /below 0\.3% THC/);
+  assert.match(bg.context.planting.text, /below 0\.2%/);
+  assert.equal(permit.date, "2023-05-05");
+  assert.equal(permit.before, undefined);
+  assert.match(permit.description, /0\.3%/);
+  assert.match(permit.description, /0\.2%/);
+  assert.match(permit.unscored, /scores do not move/);
+  assert.equal(bg.scores.cultivation, 0);
+  assert.equal(bg.scores.access, 0);
+});
