@@ -442,3 +442,24 @@ test("Estonia's quantity line and Hong Kong's cultivation penalty follow the tex
   assert.match(hk.context.production.text, /not that/);
   assert.equal(hk.scores.cultivation, 0);
 });
+
+test("Colorado gifts and household plants, and D.C. indoor growing, follow the texts that were read", () => {
+  const co = y.load(fs.readFileSync("countries/us/co.yaml", "utf8"));
+  const dc = y.load(fs.readFileSync("countries/us/dc.yaml", "utf8"));
+  assert.match(co.segments.sharing, /1 ounce/);
+  assert.match(co.segments.sharing, /petty offence/);
+  assert.doesNotMatch(co.segments.sharing, /up to 2 oz without payment are legal/);
+  assert.match(co.segments.cultivation, /twelve/);
+  assert.match(co.segments.cultivation, /not by itself a felony/);
+  assert.match(co.segments.cultivation, /\$1,000/);
+  assert.doesNotMatch(co.segments.cultivation, /More than six is a felony/);
+  assert.equal(co.scores.sharing, 5);
+  assert.equal(co.scores.cultivation, 4);
+  assert.match(dc.summary, /principal/);
+  assert.match(dc.segments.cultivation, /interior/);
+  assert.match(dc.segments.cultivation, /12 plants/);
+  assert.match(dc.segments.cultivation, /six of/);
+  assert.doesNotMatch(dc.segments.cultivation, /^Six plants per adult, three mature\.$/);
+  assert.equal(dc.scores.cultivation, 4);
+  assert.equal(dc.scores.sharing, 5);
+});
