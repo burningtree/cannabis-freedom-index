@@ -1,60 +1,62 @@
 ---
+written: '2026-10-23'
 sources:
-  - title: PacLII — Kiribati, Dangerous Drugs Ordinance
-    url: https://paclii.org/ki/legis/consol_act/ddo233
-  - title: Kiribati Government Trade Portal — Dangerous Drugs Ordinance, Revised Edition 1977
+  - type: law
+    title: Kiribati Government Trade Portal — Dangerous Drugs Ordinance, Revised Edition 1977
     url: https://kiribati.tradeportal.org/media/Dangerous%20Drugs%20Ordinance,%201948.pdf
-    locator: Scanned pages 3, 5–8, 16–17 and 26
-  - title: Kiribati Government Trade Portal — Dangerous Drugs Regulations, L.N. 19/80
+    locator: Commencement; sections 2, 4–8, 13 and 39; Schedule 2 Part I, cannabis extracts and tinctures
+  - type: law
+    title: Kiribati — Dangerous Drugs Regulations, commenced 21 February 1980
     url: https://kiribati.tradeportal.org/media/Dangerous%20Drugs%20Regulation.pdf
+    locator: >-
+      Regulations 2–17, especially pharmacist preparation, prescription possession, dispensing,
+      security and records
+  - type: law
+    title: >-
+      High Court of Kiribati — Republic v Morlier, sentence of 23 October 2015 (archived PacLII
+      copy)
+    url: https://web.archive.org/web/20241215114725id_/https://paclii.org/ki/cases/KIHC/2015/82.html
+    locator: Criminal Case 9/2015; concurrent sentences, remand credit, fines and yacht forfeiture
+  - type: law
+    title: High Court of Kiribati — Republic v Afonso, sentence of 7 June 2016 (archived PacLII copy)
+    url: https://web.archive.org/web/20241223004005id_/http://www.paclii.org/ki/cases/KIHC/2016/6.html
+    locator: Criminal Case 29/2016; prescription, 0.03 g as printed, health mitigation and sentence
+  - type: law
+    title: High Court of Kiribati — Republic v Folik, sentence of 25 November 2021 (archived PacLII copy)
+    url: https://web.archive.org/web/20241215113624id_/https://paclii.org/ki/cases/KIHC/2021/12.html
+    locator: Criminal Case 51/2020; one plant, no use or dealing, A$250 fine and one month in default
+  - title: RNZ — French drifter jailed in Kiribati, 4 November 2015
+    url: https://www.rnz.co.nz/international/pacific-news/288892/french-drifter-jailed-in-kiribati
+    locator: >-
+      Identifies cannabis planting among Morlier’s charges; sentencing total differs from the
+      recovered 23 October judgment
 ---
+A colonial drug ordinance that commenced on 20 October 1948 supplied the cannabis controls Kiribati later inherited. The revised law prohibited cannabis cultivation for private use or otherwise, possession, sale and gifts. It also controlled imports and exports, including cannabis seeds.[@1]
 
-Kiribati's cannabis prohibition began before Kiribati existed as an independent state. A British
-colonial ordinance that commenced on 20 October 1948 still supplies the core rules.
+## The law reached plants and planting material
 
-## One law for several drugs
+The ordinance defined Indian hemp broadly as either Cannabis sativa or Cannabis indica, or any portion of those plants. Its second part grouped Indian hemp with other controlled substances and covered resin and preparations based on resin.[@1]
 
-The Dangerous Drugs Ordinance was enacted for the Gilbert and Ellice Islands. Its second part
-groups “Indian hemp” with raw opium and coca leaf. The definition is deliberately broad: either
-*Cannabis sativa* or *Cannabis indica*, or any portion of either plant. Resin and preparations
-based on resin are also covered.
+That breadth mattered beyond commercial drug trading. The cultivation rule expressly reached private use, while the possession provision also covered someone who had given cannabis to another person. An unpaid gift therefore remained within the offence.[@1]
 
-The law prohibited importing or exporting those substances. It separately prohibited importing
-or exporting cannabis seed, so the control reached planting material as well as usable cannabis.
+Seeds received their own import and export prohibition. The law consequently reached both material someone might consume and material they could use to grow another plant.[@1]
 
-## Growing, holding and giving
+## Medicines were controlled through a separate schedule
 
-Section 7 says nobody may cultivate Indian hemp in the Gilbert Islands. The following section
-makes knowingly cultivating it an offence whether the crop is for private use or otherwise.
+The same revised ordinance separately listed cannabis extracts and tinctures among controlled drugs. Later [prescription regulations effective in February 1980](/history/kiribati-drug-prescription-regulations-1980/) expressly authorised registered pharmacists to prepare those products in their shops.[@1,2]
 
-Possession and sale are offences too. So is having “given or sold” cannabis to another person.
-That wording matters for the index: the ordinance did not distinguish a commercial transaction
-from a gift between adults.
+The regulations required secure storage, prescription checks and records of receipts and supplies. Patients lawfully supplied with preparations on a proper prescription were authorised to possess them. The rules connected medical possession to the regulated supply process.[@2]
 
-Police may enter premises with a warrant when cannabis is reasonably suspected to be there.
-They may arrest without a warrant anyone carrying or conveying it. Plants found on a plantation
-may be seized and destroyed.
+## Courts applied the inherited controls to sailors
 
-Later regulations show the controlled medical framework alongside that ban. Registered
-pharmacists could manufacture an extract or tincture of Indian hemp and dispense authorised
-drugs, but had to keep them locked and record every receipt and supply. That regulated route did
-not create ordinary access to cannabis flower.
+In [a 2015 cultivation and import case](/history/kiribati-yacht-cannabis-sentence-2015/), the High Court sentenced Lyderic Morlier to concurrent prison terms totalling nine months and A$4,400 in fines across drug and immigration offences. It also confiscated his yacht and equipment under the ordinance’s forfeiture rule.[@3,6]
 
-## A colonial law carried forward
+The following year, [Joao Afonso’s prescribed marijuana](/history/kiribati-prescription-marijuana-sailor-2016/) remained a prohibited import despite the court accepting its medical purpose. His health and cooperation influenced the sentence: a fine, with a default prison term, while the court declined to confiscate his yacht.[@4]
 
-The consolidated text is labelled the Laws of the Gilbert Islands, revised in 1977, and records
-amendments from 1949 onward. Later provisions changed colonial titles and administrative details,
-but the 1948 prohibitions remained in the law inherited by [Kiribati](/country/ki/).
+Those cases involved different conduct and circumstances, producing different sentences under the inherited controls.[@3,4]
 
-For an offence without another specified penalty, the ordinance provides up to a $2,000 fine and
-ten years' imprisonment after High Court conviction, or up to $1,000 and five years on summary
-conviction. Articles involved in the offence are forfeited.
+## One plant still led to a conviction decades later
 
-The same 1948 enactment also survives in [Tuvalu](/history/ellice-islands-dangerous-drugs-1948/),
-which separated from the Gilbert Islands before independence.
+In [the 2021 Folik case](/history/kiribati-one-cannabis-plant-fine-2021/), possession of one small cannabis plant brought a conviction and a A$250 fine. The court found no evidence of use or dealing and regarded the offending as less serious than an earlier possession case involving a fisheries officer.[@5]
 
-The index uses this dated ordinance as Kiribati's first documented restriction and reconstructs
-a low freedom score after it. The cannabis provisions expressly cover possession, cultivation,
-giving and sale; this is not a finding that consumption itself is a separately worded cannabis
-offence. The later [1980 prescription regulations](/history/kiribati-drug-prescription-regulations-1980/)
-establish a limited framework for preparations, without proving that patients could obtain them.
+The plant had belonged to Folik’s late half-brother. Family circumstances and the small scale reduced the sentence, while knowing possession remained punishable. The [Kiribati profile](/country/ki/) explains these ordinary possession and cultivation restrictions alongside the separate prescription-preparation rules.[@1,2,5]
