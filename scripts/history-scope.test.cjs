@@ -335,3 +335,36 @@ test("2026 backfill records the licences, bills and delays without moving scores
   assert.match(tea.description, /40 mg\/kg/);
   assert.match(tea.unscored, /member state/);
 });
+
+test("Gandaki, Ohio gifts and Singapore resin thresholds follow the texts that were read", () => {
+  const np = y.load(fs.readFileSync("countries/np.yaml", "utf8"));
+  const oh = y.load(fs.readFileSync("countries/us/oh.yaml", "utf8"));
+  const sg = y.load(fs.readFileSync("countries/sg.yaml", "utf8"));
+  const gandaki = byId["nepal-gandaki-cannabis-law-2026"];
+  const gift = byId["ohio-gift-limits-2026"];
+  assert.doesNotMatch(np.context.production.text, /now licenses/);
+  assert.doesNotMatch(np.segments.cultivation.text, /legalised licensed/);
+  assert.doesNotMatch(np.context.medical.text, /now in Gandaki/);
+  assert.match(np.segments.cultivation.text, /13 October/);
+  assert.match(gandaki.description, /section 1\(2\)/);
+  assert.match(gandaki.unscored, /not yet commenced/);
+  assert.equal(np.scores.cultivation, 1);
+  assert.equal(np.scores.access, 0);
+  assert.match(oh.segments.sharing, /privately owned land/);
+  assert.match(oh.segments.sharing, /15 grams of extract/);
+  assert.match(oh.segments.possession, /licensed Ohio dispensary/);
+  assert.equal(gift.date, "2026-03-20");
+  assert.equal(gift.subunit, "oh");
+  assert.equal(gift.before, undefined);
+  assert.match(gift.unscored, /scores stay/);
+  assert.equal(oh.scores.sharing, 5);
+  assert.equal(oh.scores.possession, 5);
+  assert.match(sg.summary, /200 g of cannabis resin/);
+  assert.match(sg.summary, /1,000 g of cannabis mixture/);
+  assert.match(sg.segments.possession.text, /330 g/);
+  assert.match(sg.segments.possession.text, /5 strokes/);
+  assert.match(sg.segments.consumption.text, /at least one year/);
+  assert.match(sg.context.death_penalty.text, /200 g of cannabis resin/);
+  assert.equal(sg.scores.possession, 0);
+  assert.equal(sg.scores.enforcement, 0);
+});

@@ -4,8 +4,10 @@ written: 2026-10-11
 sources:
   - title: The Kathmandu Post — Inside Gandaki's new cannabis law, who can grow it, where and under what rules (7 August 2026)
     url: https://kathmandupost.com/gandaki-province/2026/08/07/inside-gandaki-s-new-cannabis-law-who-can-grow-it-where-and-under-what-rules
-  - title: Business 360 Nepal — Gandaki province legalises farming and medical use of cannabis
-    url: https://www.b360nepal.com/detail/29648/gandaki-province-legalises-farming-and-medical-use-of-cannabis
+  - title: Policy Nepal — Gandaki cannabis implementation review (updated 13 October 2026)
+    url: https://policynepal.org/agenda/provinces/gandaki/cannabis-implementation/
+  - title: The Kathmandu Post — Gandaki passed the cannabis law. The harder one comes next (12 August 2026)
+    url: https://kathmandupost.com/columns/2026/08/12/gandaki-passed-the-cannabis-law-the-harder-one-comes-next
 ---
 
 Nepal's parliament has promised a cannabis law for years and not passed one. In
@@ -54,8 +56,9 @@ system is prosecuted under national narcotics law.
 
 ## What it does not do
 
-Nobody can grow yet. Licences wait on regulations, zone designations and a testing
-laboratory, none of which exist. And the federal ban is untouched: growing, holding
+Nobody can grow yet. The gazetted Act, section 1(2), starts on a further notice, and a
+review dated 13 October 2026 had not found one. Licences also wait on regulations, zone
+designations and a testing laboratory, none of which exist. And the federal ban is untouched: growing, holding
 and using cannabis remain crimes under the 1976 Act everywhere in Nepal, including
 Gandaki. In August the finance minister told the upper house that more study was
 needed before the national rules changed.

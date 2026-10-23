@@ -3,11 +3,12 @@ region: Asia
 iso_numeric: 702
 recreational: death
 medical: limited
-updated: 2026-10-12
+updated: 2026-10-23
 summary: >-
-  Death penalty for trafficking over 500 g, subject to narrow exceptions; caning and prison for
-  possession. Citizens can be prosecuted for use abroad. Cannabinoid pharmaceuticals are approved
-  case by case.
+  Death for trafficking more than 500 g of cannabis, more than 200 g of cannabis resin, or more
+  than 1,000 g of cannabis mixture, with narrow exceptions. Larger possession amounts bring a
+  mandatory prison term and caning. Consumption brings at least one year. Citizens can be
+  prosecuted for use abroad. Cannabinoid pharmaceuticals are approved case by case.
 scores:
   possession: 0
   cultivation: 0
@@ -18,44 +19,48 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis is a Class A controlled drug under the Misuse of Drugs Act. Possessing any amount
-      carries up to 10 years in prison, a fine of up to S$20,000, or both. Holding more than 15 g
-      triggers a legal presumption that you are trafficking, which you must disprove. There is no
-      tolerated amount of any kind.
+      Cannabis is a Class A controlled drug. Possessing less than 330 g of cannabis, less than
+      130 g of resin, or less than 660 g of mixture carries up to 10 years, a fine of up to
+      S$20,000, or both.[@mda_sch] From 330 g to 500 g of cannabis the sentence is at least 10 years
+      and 5 strokes of the cane, and at most 20 years and 10 strokes. More than 500 g is at least
+      20 years and 10 strokes, and at most 30 years and 15 strokes.[@mda_sch] Resin uses 130 g and
+      200 g for those same steps, and mixture uses 660 g and 1,000 g.[@cnb_can]
     sources:
-      - cnb
-      - wiki
+      - mda_sch
+      - cnb_can
   cultivation:
     text: >-
-      Cultivating any cannabis plant is a serious offence with a mandatory minimum prison term and
-      up to 20 years.
+      Cultivating cannabis brings at least three years or a fine of at least S$5,000, and up to
+      20 years or a fine of S$40,000, or both.[@mda_sch]
     sources:
-      - wiki
-      - cnb
+      - mda_sch
   enforcement:
     text: >-
-      The harshest regime in the index. Trafficking, importing or exporting more than 500 g of
-      cannabis is a capital offence, with narrow exceptions for qualifying couriers. Cannabis
-      executions have been carried out as recently as April 2026. Between 330 g and 500 g: 20 to 30
-      years or life, plus 15 strokes of the cane.
+      Trafficking, importing or exporting more than 500 g of cannabis, more than 200 g of cannabis
+      resin, or more than 1,000 g of cannabis mixture is a capital offence, with narrow exceptions
+      for qualifying couriers.[@mda_sch, cnb_can] From 330 g to 500 g of cannabis the trafficking
+      sentence is at least 20 years and 15 strokes of the cane, and up to 30 years or life and 15
+      strokes.[@cnb_can] Cannabis executions have been carried out as recently as April 2026.[@cnb_execution]
     sources:
-      - cnb
+      - cnb_can
+      - mda_sch
       - cnb_execution
-      - mh
   sharing:
     text: >-
-      Giving cannabis to another person is trafficking, whether or not money changes hands: for
-      under 330 g, a minimum of 5 years and 5 strokes of the cane, up to 20 years and 15 strokes.
+      Giving cannabis to another person is trafficking, whether or not money changes hands. For
+      under 330 g of cannabis the sentence is at least 5 years and 5 strokes of the cane, and at
+      most 20 years and 15 strokes. The same first band runs to under 130 g of resin and under
+      660 g of mixture.[@cnb_can]
     sources:
-      - cnb
+      - cnb_can
   consumption:
     text: >-
-      Consumption is itself a crime, proved by urine test, with up to 10 years in prison. Police can
-      require a test without a warrant. Uniquely, citizens and permanent residents who use cannabis
-      abroad — even where it is legal — are liable as if they had used it in Singapore, and can be
-      tested on return.
+      Consumption is itself a crime, proved by a urine test, with at least one year and up to 10
+      years in prison, and a fine of up to S$20,000.[@cnb_can] Police can require a test. Citizens
+      and permanent residents who use cannabis abroad, even where it is legal, are liable as if
+      they had used it in Singapore, and can be tested on return.[@mh]
     sources:
-      - cnb
+      - cnb_can
       - mh
   access:
     text: None. There is no legal source of any kind.
@@ -64,13 +69,14 @@ segments:
 context:
   death_penalty:
     text: >-
-      Trafficking, importing or exporting more than 500 g of cannabis is a capital offence, with
-      narrow exceptions for qualifying couriers. Cannabis executions have been carried out as
-      recently as April 2026.
+      Trafficking, importing or exporting more than 500 g of cannabis, more than 200 g of cannabis
+      resin, or more than 1,000 g of cannabis mixture is a capital offence, with narrow exceptions
+      for qualifying couriers.[@mda_sch, cnb_can] Cannabis executions have been carried out as
+      recently as April 2026.[@cnb_execution]
     sources:
-      - cnb
+      - cnb_can
+      - mda_sch
       - cnb_execution
-      - mh
   production:
     text: None. No licensed production exists.
     sources:
@@ -118,12 +124,13 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possessing any amount of cannabis
-      carries up to ten years in prison, a fine of up to S$20,000, or both, and holding more
-      than 15 g triggers a legal presumption of trafficking.
+      There is no legal recreational supply for anyone. Possessing less than 330 g of cannabis can
+      bring up to ten years, a fine of up to S$20,000, or both. From 330 g the prison term is
+      mandatory and includes caning. Trafficking more than 200 g of cannabis resin can bring
+      death.[@cnb_can, mda_sch]
     sources:
-      - cnb
-      - wiki
+      - cnb_can
+      - mda_sch
   driving:
     status: impairment
     text: >-
@@ -147,6 +154,15 @@ sources:
     title: Central Narcotics Bureau — Singapore's anti-drug laws on cannabis
     url: >-
       https://www.cnb.gov.sg/educational-resources/myths-and-facts-about-drugs/cannabis/singapore's-anti-drug-laws-on-cannabis
+  cnb_can:
+    title: Central Narcotics Bureau — Cannabis (updated 2 July 2026)
+    url: https://www.cnb.gov.sg/singapore-drug-situation/drugs--psychoactive-substances--and-inhalants/cannabis/
+  mda_sch:
+    title: Misuse of Drugs Act 1973, Second Schedule (Singapore Statutes Online, as at 1 June 2026)
+    url: https://sso.agc.gov.sg/Act/MDA1973?ProvIds=Sc2-&ValidDate=20260601
+    locator: >-
+      Trafficking and import or export: cannabis more than 500 g, cannabis resin more than 200 g,
+      cannabis mixture more than 1,000 g, death. Possession bands for the same three substances.
   cnb_execution:
     title: Central Narcotics Bureau — Execution of a convicted drug importer, 16 April 2026
     url: >-
