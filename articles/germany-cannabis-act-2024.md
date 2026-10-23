@@ -4,6 +4,8 @@ written: 2026-10-11
 sources:
   - title: Bundesgesundheitsministerium — Fragen und Antworten zum Cannabisgesetz
     url: https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz
+  - title: Konsumcannabisgesetz (gesetze-im-internet.de)
+    url: https://www.gesetze-im-internet.de/kcang/
   - title: Wikipedia — Cannabis in Germany
     url: https://en.wikipedia.org/wiki/Cannabis_in_Germany
 ---
@@ -44,9 +46,11 @@ it took effect on 1 April.
 | Members aged 18 to 20 | 30 g a month, at most 10% THC |
 
 Going slightly over is an administrative offence; more than 30 g in public or 60 g
-at home is a crime. Adults must have lived in Germany for six months to grow or join
-an [association](/history/germany-cultivation-associations-2024/), which keeps
-visitors out.
+at home is a crime. Any adult may carry 25 g. Keeping 50 g at home, growing three
+plants and joining an
+[association](/history/germany-cultivation-associations-2024/) are for people who have
+lived in Germany for six months, which keeps new arrivals and visitors out. Bringing
+cannabis across the border is a crime.
 
 Use is banned within sight of schools, playgrounds and sports grounds, in pedestrian
 zones between 7 a.m. and 8 p.m., and near anyone under 18. Associations may not
