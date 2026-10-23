@@ -613,3 +613,30 @@ test("Ethiopia, Uruguay gifts, Trinidad's uncommenced Act and Brazil's joint-use
   assert.doesNotMatch(br.segments.sharing.text, /minimum of five years/);
   assert.equal(br.scores.sharing, 1);
 });
+
+test("Zambia's Cannabis Act stays uncommenced and the hemp Act starts on 3 January 2025", () => {
+  const zm = y.load(fs.readFileSync("countries/zm.yaml", "utf8"));
+  const enacted = byId["zambia-cannabis-act-2021"];
+  const hemp = byId["zambia-industrial-hemp-commencement-2025"];
+  const controlled = byId["zambia-controlled-substances-act-2026"];
+  assert.equal(zm.medical, "limited");
+  assert.equal(zm.scores.access, 0);
+  assert.equal(zm.scores.possession, 0);
+  assert.match(zm.summary, /has not come into force/);
+  assert.match(zm.summary, /3 January 2025/);
+  assert.match(zm.context.production.text, /has not come into force/);
+  assert.match(zm.context.planting.text, /in force since 3 January 2025/);
+  assert.doesNotMatch(zm.context.planting.text, /only on a date the minister appoints/);
+  assert.doesNotMatch(zm.segments.cultivation.text, /offence under the Cannabis Act/);
+  assert.match(zm.segments.cultivation.text, /ten years/);
+  assert.match(zm.segments.possession.text, /1,200 penalty units/);
+  assert.equal(enacted.date, "2021-05-20");
+  assert.equal(enacted.before, undefined);
+  assert.match(enacted.unscored, /scores do not move/);
+  assert.equal(hemp.date, "2025-01-03");
+  assert.equal(hemp.category, "hemp");
+  assert.equal(hemp.before, undefined);
+  assert.equal(controlled.date, "2026-01-16");
+  assert.equal(controlled.category, "other");
+  assert.equal(controlled.before, undefined);
+});
