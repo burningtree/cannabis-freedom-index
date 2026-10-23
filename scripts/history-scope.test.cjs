@@ -159,3 +159,20 @@ test("current-law profile corrections keep the statute and the score scale apart
   assert.equal(mx.scores.possession, 3);
   assert.equal(mx.scores.cultivation, 3);
 });
+
+test("Uzbekistan and Honduras profiles follow the current criminal codes", () => {
+  const uz = y.load(fs.readFileSync("countries/uz.yaml", "utf8"));
+  const hn = y.load(fs.readFileSync("countries/hn.yaml", "utf8"));
+  assert.match(uz.segments.possession.text, /article 276/);
+  assert.match(uz.segments.possession.text, /article 273/);
+  assert.doesNotMatch(uz.summary, /five to seven years/);
+  assert.equal(uz.scores.possession, 1);
+  assert.equal(uz.scores.enforcement, 1);
+  assert.match(hn.summary, /25 June 2020/);
+  assert.match(hn.segments.possession.text, /Article 311/);
+  assert.doesNotMatch(hn.summary, /compulsory rehabilitation/);
+  assert.equal(hn.scores.possession, 1);
+  const code = byId["honduras-penal-code-2020"];
+  assert.equal(code.date, "2020-06-25");
+  assert.equal(code.before, undefined);
+});
