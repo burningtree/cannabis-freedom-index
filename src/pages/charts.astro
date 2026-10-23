@@ -938,7 +938,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("users-treemap") && <h2 class="ch-chapter">{chapterAt.get("users-treemap")}</h2>}
     <section class="ch" id="users-treemap">
       <p class="ch-kicker"><a href="#users-treemap">{kick("users-treemap")}</a></p>
-      <h2>{usersShareBanned}% of the world's {Math.round(usersTotal / 1e6)} million people who use cannabis live where it is under prohibition</h2>
+      <h2>{usersShareBanned}% of about {Math.round(usersTotal / 1e6)} million people who use cannabis, counted country by country here, live where it is under prohibition</h2>
       <p class="ch-dek">Each rectangle is a country, sized by how many adults used cannabis in the past year and coloured by its band. Prohibition does not keep the users away; it decides what happens to them.</p>
       <div class="ch-frame ch-treemap" data-no-preview>
         {tiles.map((t) => (
@@ -948,7 +948,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
           </a>
         ))}
       </div>
-      <p class="ch-source">People who used cannabis in the past year, from the <a href={`${base}sources/#dataset-cannabis_use`}>UNODC</a> survey figures and the latest population, including the UNODC's regional estimates where a country has no survey; {userList.length} countries.</p>
+      <p class="ch-source">Each country's latest survey rate, applied to a World Bank population of the same age band. Where that band cuts through an age group, or the survey age was not recorded, the count is approximate; the second case uses ages 15–64. Countries with no survey take this site's median of surveyed countries in the same region. These country figures add up to about {Math.round(usersTotal / 1e6)} million people. The <a href="https://data.unodc.org/wdr2026search">UNODC World Drug Report 2026</a> puts the world total at 256 million cannabis users in 2024. The share above is of this site's sum. {userList.length} countries. <a href={`${base}sources/#dataset-cannabis_use`}>About the dataset</a>.</p>
       <p class="ch-more"><a href={`${base}map/users/`}>Users on the map →</a> <a href={`${base}map/share-of-adults/`}>Share of adults →</a></p>
     </section>
     {chapterAt.has("law") && <h2 class="ch-chapter">{chapterAt.get("law")}</h2>}
