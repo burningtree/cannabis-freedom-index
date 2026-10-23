@@ -582,3 +582,34 @@ test("Romania's drug-driving ruling, Uruguay's possession exemption and Jamaica'
   assert.equal(jm.context.visitors.status, "open");
   assert.equal(jm.scores.access, 4);
 });
+
+test("Ethiopia, Uruguay gifts, Trinidad's uncommenced Act and Brazil's joint-use offence follow the texts that were read", () => {
+  const et = y.load(fs.readFileSync("countries/et.yaml", "utf8"));
+  const uy = y.load(fs.readFileSync("countries/uy.yaml", "utf8"));
+  const tt = y.load(fs.readFileSync("countries/tt.yaml", "utf8"));
+  const br = y.load(fs.readFileSync("countries/br.yaml", "utf8"));
+  const act = byId["trinidad-cannabis-control-act-2022"];
+  assert.match(et.segments.possession.text, /up to seven years/);
+  assert.match(et.segments.possession.text, /50,000/);
+  assert.match(et.segments.cultivation.text, /not less than five years/);
+  assert.doesNotMatch(et.summary, /six months to five years/);
+  assert.doesNotMatch(et.segments.enforcement.text, /five to ten/);
+  assert.doesNotMatch(et.segments.cultivation.text, /fifteen/);
+  assert.equal(et.scores.possession, 1);
+  assert.equal(et.scores.enforcement, 1);
+  assert.match(uy.segments.sharing.text, /not penalised/);
+  assert.match(uy.segments.sharing.text, /20\.9%/);
+  assert.doesNotMatch(uy.segments.sharing.text, /no general right/);
+  assert.equal(uy.scores.sharing, 4);
+  assert.equal(tt.medical, "limited");
+  assert.match(tt.segments.access.text, /awaiting proclamation/);
+  assert.doesNotMatch(tt.segments.access.text, /never became law/);
+  assert.equal(tt.scores.access, 0);
+  assert.equal(act.date, "2022-06-17");
+  assert.equal(act.category, "other");
+  assert.equal(act.before, undefined);
+  assert.match(br.segments.sharing.text, /six months to one year/);
+  assert.match(br.segments.sharing.text, /five to fifteen years/);
+  assert.doesNotMatch(br.segments.sharing.text, /minimum of five years/);
+  assert.equal(br.scores.sharing, 1);
+});
