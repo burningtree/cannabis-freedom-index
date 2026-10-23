@@ -224,11 +224,13 @@ context:
 ```
 
 - **`driving.status`** describes the reviewed offence trigger: `impairment` (evidence of drug
-  influence or impaired driving), `limit` (a set THC level in blood or saliva is an offence by itself),
-  `consumption` (a prohibition after drug consumption without a verified laboratory THC cutoff)
-  or `zero` (any detectable THC). Do not infer a detectable-THC offence merely from a prohibition
-  after consumption. Give the limit and its unit, the penalty and licence consequences,
-  and any separate rule for medical patients, novice or professional drivers.
+  influence or impaired driving), `capacity` (the drug is in a biological sample and was capable
+  of affecting driving; proof of a driving error is a separate question), `limit` (a set THC level
+  in blood or saliva is an offence by itself), `consumption` (a prohibition after drug consumption
+  without a verified laboratory THC cutoff) or `zero` (any detectable THC). Do not infer a
+  detectable-THC offence merely from a prohibition after consumption, and do not use `zero` when
+  a binding ruling requires more than detection. Give the limit and its unit, the penalty and
+  licence consequences, and any separate rule for medical patients, novice or professional drivers.
 - **`visitors.status`** is whether someone who does not live in the country can get cannabis
   legally: `open` (same terms as residents), `residents` (legal supply is for residents only) or
   `none` (no legal recreational supply for anyone). Say also what a visitor may possess or use,

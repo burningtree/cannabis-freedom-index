@@ -555,3 +555,30 @@ test("Maryland through Oklahoma state profiles follow the texts that were read",
   assert.doesNotMatch(ok.segments.sharing, /two years to life/);
   assert.equal(ok.scores.sharing, 1);
 });
+
+test("Romania's drug-driving ruling, Uruguay's possession exemption and Jamaica's visitor permit follow the texts that were read", () => {
+  const ro = y.load(fs.readFileSync("countries/ro.yaml", "utf8"));
+  const uy = y.load(fs.readFileSync("countries/uy.yaml", "utf8"));
+  const jm = y.load(fs.readFileSync("countries/jm.yaml", "utf8"));
+  const ruling = byId["romania-drug-driving-capacity-2025"];
+  assert.equal(ro.context.driving.status, "capacity");
+  assert.match(ro.context.driving.text, /capable of affecting/);
+  assert.match(ro.context.driving.text, /one to five years/);
+  assert.match(ro.context.driving.text, /two to seven years/);
+  assert.doesNotMatch(ro.context.driving.text, /offence is committed if a controlled/);
+  assert.equal(ro.scores.possession, 1);
+  assert.equal(ruling.date, "2025-01-28");
+  assert.equal(ruling.before, undefined);
+  assert.equal(ruling.category, "easing");
+  assert.match(ruling.unscored, /possession score does not move/);
+  assert.match(uy.segments.possession.text, /40 g/);
+  assert.match(uy.segments.possession.text, /pharmacy, a club or a/);
+  assert.doesNotMatch(uy.segments.possession.text, /only 'legal'/);
+  assert.match(uy.segments.enforcement.text, /whether or not/);
+  assert.equal(uy.scores.possession, 6);
+  assert.match(jm.segments.access.text, /voluntary declaration/);
+  assert.match(jm.context.visitors.text, /Ministry of Health/);
+  assert.doesNotMatch(jm.segments.access.text, /prescription from home can buy a permit/);
+  assert.equal(jm.context.visitors.status, "open");
+  assert.equal(jm.scores.access, 4);
+});
