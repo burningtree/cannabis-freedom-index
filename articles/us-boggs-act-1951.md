@@ -16,8 +16,8 @@ sources:
 ---
 
 On 2 November 1951 Congress passed the Boggs Act, named for its sponsor, the Louisiana Democrat Hale
-Boggs. For the first time federal law set one scale of penalties for marijuana and for heroin, and for
-repeat offenders it took sentencing out of the judge's hands.
+Boggs.[@3] For the first time federal law set one scale of penalties for marijuana and for heroin, and for
+repeat offenders it took sentencing out of the judge's hands.[@1,3]
 
 ## A heroin scare
 
@@ -25,13 +25,13 @@ The law was aimed at opiates, not marijuana. Between 1948 and 1951 arrests and a
 rose sharply. Boggs told the House that in the first half of 1950, 766 patients under 21 had been admitted
 to the federal hospital at Lexington, against three in the same period of 1946. Congress blamed lenient
 judges, and the Federal Bureau of Narcotics, in a survey of its own, found that the average federal
-narcotics sentence had barely changed since 1935.
+narcotics sentence had barely changed since 1935.[@3]
 
 Marijuana was swept in because it was already part of the federal drug laws. At the hearings Harris
 Isbell, research director at Lexington, testified that marijuana smokers were usually mildly intoxicated,
 harmed no one and developed no dependence. Harry Anslinger answered that over half of the young heroin
 addicts had started on marijuana. He had rejected this stepping-stone argument in 1937; now it became the
-official case for punishing marijuana like heroin.
+official case for punishing marijuana like heroin.[@3]
 
 ## The penalties
 
@@ -41,27 +41,27 @@ official case for punishing marijuana like heroin.
 | Second | 5–10 years | Not available |
 | Third and later | 10–20 years | Not available |
 
-Every offence also carried a fine of up to $2,000. Boggs argued that the law could not draw a line between
-possession and peddling without opening it to abuse.
+Every offence also carried a fine of up to $2,000.[@1,3] Boggs argued that the law could not draw a line between
+possession and peddling without opening it to abuse.[@3]
 
 ## Little Boggs acts
 
 The bureau urged the states to follow. By 1953 seventeen states and the territory of Alaska had passed
 "little Boggs acts", and eleven more raised penalties by 1956. Ohio set twenty to forty years for selling
 narcotics, and Louisiana five to ninety-nine years without parole for selling, possessing or administering a
-narcotic drug.
+narcotic drug.[@3]
 
 Judges objected. On 27 May 1954 the district and circuit judges of the Fifth Circuit unanimously asked
-Congress to remove the mandatory minimums. Boggs called it a shortsighted recommendation. Two years later
+Congress to remove the mandatory minimums. Boggs called it a shortsighted recommendation.[@3] Two years later
 Congress went the other way with the [Narcotic Control Act](/history/us-narcotic-control-act-1956/),
 which raised the fine to $20,000 and barred probation and parole for everyone except first-time
-possessors.
+possessors.[@2,3]
 
 ## Undone in 1970
 
 The [Controlled Substances Act](/history/us-controlled-substances-act-1970/) of 1970 placed cannabis in
 Schedule I, removed the mandatory minimums and made simple possession a misdemeanour. Mandatory federal
-sentences returned in 1986, this time tied to quantity.
+sentences returned in 1986, this time tied to quantity.[@2]
 
 ## Why the index moved
 

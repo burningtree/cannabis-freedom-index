@@ -33,13 +33,13 @@ sources:
     url: https://www.unodc.org/unodc/en/data-and-analysis/bulletin/bulletin_1971-01-01_4_page004.html
 ---
 
-Egypt has used hashish for eight or nine hundred years and has been trying to stop for at least six hundred. The habit arrived with Sufi mystics and became part of the life of the café; the campaign against it runs from medieval rulers who had users' teeth pulled out to a modern law that allows the death penalty for trafficking.
+Egypt has used hashish for eight or nine hundred years and has been trying to stop for at least six hundred. The habit arrived with Sufi mystics and became part of the life of the café; the campaign against it runs from medieval rulers who had users' teeth pulled out to a modern law that allows the death penalty for trafficking.[@1]
 
 ## How it came
 
-Hemp was grown in Egypt for rope long before it was grown as a drug. [Hashish](/culture/language/hashish/) is said to have been brought by "mystic Islamic travelers" from Syria in the twelfth century, under the Ayyubid dynasty. In the thirteenth century its use by Egyptian Sufis is documented, and so is a plant described as Indian hemp, grown in gardens.
+Hemp was grown in Egypt for rope long before it was grown as a drug. [Hashish](/culture/language/hashish/) is said to have been brought by "mystic Islamic travelers" from Syria in the twelfth century, under the Ayyubid dynasty. In the thirteenth century its use by Egyptian Sufis is documented, and so is a plant described as Indian hemp, grown in gardens.[@1]
 
-About 1525 a rabbi of Cairo, David ibn Abi Zimra, wrote that people in Egypt ate cannabis leaves "and are inebriated thereby, and they say that it makes one happy".
+About 1525 a rabbi of Cairo, David ibn Abi Zimra, wrote that people in Egypt ate cannabis leaves "and are inebriated thereby, and they say that it makes one happy".[@1]
 
 ## Eaten, drunk and smoked
 
@@ -50,9 +50,9 @@ About 1525 a rabbi of Cairo, David ibn Abi Zimra, wrote that people in Egypt ate
 | Smoked in the *gozah* | The gozah is the traditional Egyptian water pipe. In a study published in 1971, 89.4% of the selected prisoner users reported smoking without oral consumption; the water pipe was the commonest method |
 | Mixed | *Bosa* combined cannabis with darnel; a water-pipe blend added henbane |
 
-The figures come from M. I. Soueif’s [1971 study](/history/egypt-soueif-prison-study-1971/) of 850 male cannabis users imprisoned in 1967–68, compared with 839 non-user prisoners. Another 9.3% combined smoking with oral consumption. These are descriptions of a selected prison sample, not estimates for all Egyptians.
+The figures come from M. I. Soueif’s [1971 study](/history/egypt-soueif-prison-study-1971/) of 850 male cannabis users imprisoned in 1967–68, compared with 839 non-user prisoners. Another 9.3% combined smoking with oral consumption. These are descriptions of a selected prison sample, not estimates for all Egyptians.[@4]
 
-In his 1975 chapter, Ahmad M. Khalifa describes shared sessions with a supervisor called the *Sultan*, who took the first draw from each fresh load. An attendant tended the water, fire and pipe as it passed around the circle. This records one account of sociability under prohibition, rather than a protocol followed by every smoker.
+In his 1975 chapter, Ahmad M. Khalifa describes shared sessions with a supervisor called the *Sultan*, who took the first draw from each fresh load. An attendant tended the water, fire and pipe as it passed around the circle. This records one account of sociability under prohibition, rather than a protocol followed by every smoker.[@3]
 
 ## Six centuries of bans
 
@@ -67,16 +67,16 @@ In his 1975 chapter, Ahmad M. Khalifa describes shared sessions with a superviso
 | [1884](/history/egypt-cultivation-ban-1884/) | | Banned cultivation |
 | [1960](/history/egypt-law-182-1960/) | The republic | Law 182: long prison terms for possession, and the death penalty for trafficking |
 
-None of it worked, and officials said so. In [1892](/history/egypt-caillard-regulation-proposal-1892/) the British head of the customs reported that prohibition had only produced smuggling and that hashish was too widely used to stamp out; a law to license and tax it on the Indian model was drafted and shelved.
+None of it worked, and officials said so. In [1892](/history/egypt-caillard-regulation-proposal-1892/) the British head of the customs reported that prohibition had only produced smuggling and that hashish was too widely used to stamp out; a law to license and tax it on the Indian model was drafted and shelved.[@1,2]
 
 ## What officials believed
 
-Two views competed for half a century, and both were British. John Warnock, who ran Egypt's asylums from 1895, [attributed more than a quarter of his male patients' madness to hashish](/history/egypt-warnock-asylum-statistics-1895/). In the 1920s Egypt's delegate told the League of Nations that hashish caused most of the country's insanity, and Egypt pressed for international control of cannabis.
+Two views competed for half a century, and both were British. John Warnock, who ran Egypt's asylums from 1895, [attributed more than a quarter of his male patients' madness to hashish](/history/egypt-warnock-asylum-statistics-1895/). In the 1920s Egypt's delegate told the League of Nations that hashish caused most of the country's insanity, and Egypt pressed for international control of cannabis.[@2]
 
-Thomas Russell, head of Cairo's police, [told the League of Nations in 1930](/history/egypt-russell-hashish-report-1930/) something different: that hashish was the vice of the city slums and did comparatively little harm, and that the few smokers in the villages were regarded as a joke, like the village drunk in England.
+Thomas Russell, head of Cairo's police, [told the League of Nations in 1930](/history/egypt-russell-hashish-report-1930/) something different: that hashish was the vice of the city slums and did comparatively little harm, and that the few smokers in the villages were regarded as a joke, like the village drunk in England.[@1,2]
 
-The historian Liat Kozma reads the campaign as more than a health measure: a centralising state's wish to civilise its lower classes, and concern for the country's image abroad.
+The historian Liat Kozma reads the campaign as more than a health measure: a centralising state's wish to civilise its lower classes, and concern for the country's image abroad.[@1]
 
 ## Now
 
-The law is severe and the custom is open. Trafficking can bring death, and possession of small amounts a heavy sentence. Yet enforcement against smokers is often lax, and in many parts of the country hashish is smoked in local cafés without concealment. The crop is grown in Sinai and Upper Egypt, where seven million plants [were destroyed in one year, 1994](/history/egypt-sinai-eradication-1994/).
+The law is severe and the custom is open. Trafficking can bring death, and possession of small amounts a heavy sentence. Yet enforcement against smokers is often lax, and in many parts of the country hashish is smoked in local cafés without concealment. The crop is grown in Sinai and Upper Egypt, where seven million plants [were destroyed in one year, 1994](/history/egypt-sinai-eradication-1994/).[@1]

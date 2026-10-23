@@ -9,7 +9,7 @@ export const RESULT_KIND_ICONS = { c: "iconoir:map-pin", p: "iconoir:page", u: "
 export const PAGE_ICONS = {
   "#map": "iconoir:map", "#rankings": "iconoir:numbered-list-left", "#methodology": "iconoir:flask",
   "history/": "iconoir:clock-rotate-right", "can-i/": "iconoir:chat-bubble-question", "compare/": "iconoir:git-compare",
-  "data/": "iconoir:download", "changelog/": "iconoir:list", "articles/": "iconoir:journal", "about/": "iconoir:info-circle",
+  "data/": "iconoir:download", "score-changes/": "iconoir:list", "changelog/": "iconoir:git-commit", "articles/": "iconoir:journal", "about/": "iconoir:info-circle",
   "did-you-know/": "iconoir:light-bulb", "survey/": "iconoir:graph-up", "survey/take/": "iconoir:edit-pencil",
   "culture/": "iconoir:palette", "culture/people/": "iconoir:community", "culture/stories/": "iconoir:book", "sources/": "iconoir:bookmark-book",
 };

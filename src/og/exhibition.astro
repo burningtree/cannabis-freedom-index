@@ -1,0 +1,23 @@
+---
+// Social preview of an exhibition, in its own look: a picture house at night, red curtains at the
+// sides, the title in lights, and one of its posters pinned on the right.
+const { no, theme, title, line, rooms, address, photo } = Astro.props;
+const stripes = ["#5c0d09", "#7d150f", "#4a0a07", "#6b120c", "#3d0805"];
+const folds = stripes.concat(stripes);
+---
+<div style="display:flex;position:relative;width:1200px;height:630px;background-color:#0b0a08;background-image:radial-gradient(circle at 38% 42%, #3a1510 0%, #1a0b07 45%, #0b0a08 80%);color:#efe6d2;font-family:'Old Standard TT'">
+  <div style="display:flex;position:absolute;top:0;bottom:0;left:0;width:74px">
+    {folds.map((c) => <div style={`display:flex;width:7.4px;height:630px;background:${c}`} />)}
+  </div>
+  <div style="display:flex;position:absolute;top:0;bottom:0;right:0;width:74px">
+    {folds.map((c) => <div style={`display:flex;width:7.4px;height:630px;background:${c}`} />)}
+  </div>
+  <div style="display:flex;flex-direction:column;position:absolute;left:118px;top:64px;width:560px">
+    <div style="display:flex;font-family:'JetBrains Mono';font-size:19px;letter-spacing:4px;color:#b9a477">EXHIBITION {no} · {theme}</div>
+    <div style="display:flex;margin-top:26px;font-family:Limelight;font-size:96px;line-height:0.95;color:#f5ead2;text-shadow:0 0 26px rgba(224,90,79,0.75)">{title}</div>
+    <div style="display:flex;margin-top:22px;font-style:italic;font-size:38px;color:#e05a4f">{line}</div>
+    <div style="display:flex;margin-top:26px;width:450px;font-size:21px;line-height:1.45;color:#d8c9a6">{rooms}</div>
+    <div style="display:flex;margin-top:34px;padding:8px 16px;border:2px solid #f0b54a;border-radius:3px;font-family:'JetBrains Mono';font-size:14px;letter-spacing:1px;color:#f0b54a">NOW SHOWING · {address}</div>
+  </div>
+  <img src={photo} width={480} height={630} style="position:absolute;right:76px;top:0;width:480px;height:630px" />
+</div>

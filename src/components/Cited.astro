@@ -1,0 +1,8 @@
+---
+// A text with its citations as superscript numbers linked to a list of references (src/lib/cite.js).
+// `parts` comes from citeParts(); the text itself is plain, so it is written out as it is.
+const { parts } = Astro.props;
+---
+{parts.map((p) => p.refs
+  ? p.refs.map((r) => <sup class="cite"><a href={`#${r.id}`} aria-label={`Source ${r.n}`}>[{r.n}]</a></sup>)
+  : p.t)}

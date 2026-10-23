@@ -8,7 +8,7 @@ spelling:
   - { text: "marijuana", lang: English }
 countries: [mx, us]
 featured: 4
-history: [us-marihuana-tax-act-1937, mexico-salazar-marijuana-myth-1938, us-leary-1969, mexico-city-marijuana-regulations-1869, mexico-ban-1920, us-first-tax-act-convictions-1937, us-controlled-substances-act-1970]
+history: [us-marihuana-tax-act-1937, mexico-salazar-marijuana-myth-1938, us-leary-1969, mexico-city-marijuana-regulations-1869, mexico-ban-1920, us-first-tax-act-convictions-1937, us-controlled-substances-act-1970, us-ama-woodward-testimony-1937]
 history_cards: [us-marihuana-tax-act-1937, us-first-tax-act-convictions-1937, mexico-salazar-marijuana-myth-1938]
 image:
   src: "../../src/assets/culture/marihuana-tax-stamp-1937.jpg"
@@ -31,13 +31,13 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_Mexico
 ---
 
-*Marijuana* is a Mexican Spanish word whose origin nobody has established. For its first half-century it was a local name for a plant smoked by soldiers and the poor. Then American officials chose it, in preference to "cannabis" and "hemp", as the name under which to ban the plant, and it became the commonest word for it in the English-speaking world.
+*Marijuana* is a Mexican Spanish word whose origin nobody has established. For its first half-century it was a local name for a plant smoked by soldiers and the poor. Then American officials chose it, in preference to "cannabis" and "hemp", as the name under which to ban the plant, and it became the commonest word for it in the English-speaking world.[@1]
 
 ## The first records
 
-The word appears in print in 1846, in the *Farmacopea Mexicana*, spelled *mariguana*. The usual Mexican spelling became *marihuana*; the form with *j* seems to be an English innovation that later passed back into Spanish and French.
+The word appears in print in 1846, in the *Farmacopea Mexicana*, spelled *mariguana*. The usual Mexican spelling became *marihuana*; the form with *j* seems to be an English innovation that later passed back into Spanish and French.[@1,3]
 
-By the end of the nineteenth century smoking it was common in Mexico, as a pleasure and as a folk remedy for pain, particularly among soldiers and the lower classes. It is in the revolutionary verses of [*La Cucaracha*](https://en.wikipedia.org/wiki/La_Cucaracha).
+By the end of the nineteenth century smoking it was common in Mexico, as a pleasure and as a folk remedy for pain, particularly among soldiers and the lower classes. It is in the revolutionary verses of [*La Cucaracha*](https://en.wikipedia.org/wiki/La_Cucaracha).[@1,2,5]
 
 ## Where does it come from?
 
@@ -58,16 +58,16 @@ Mexico moved against marihuana before the United States did.
 | 1882 | Banned at the military hospital in the capital, to prevent violence and disorder |
 | [1920](/history/mexico-ban-1920/) | Production, sale and recreational use banned nationally |
 
-Mexican newspapers of the time were full of stories of crimes committed by smokers, and the papers of American border towns reprinted them. One Mexican official disagreed in public: in 1938 Leopoldo Salazar Viniegra [told the Academy of Medicine](/history/mexico-salazar-marijuana-myth-1938/) that the madness of marihuana was a myth.
+Mexican newspapers of the time were full of stories of crimes committed by smokers, and the papers of American border towns reprinted them. One Mexican official disagreed in public: in 1938 Leopoldo Salazar Viniegra [told the Academy of Medicine](/history/mexico-salazar-marijuana-myth-1938/) that the madness of marihuana was a myth.[@5]
 
 ## An American choice of word
 
-English had the word by 1873, in forms such as *mariguan* and *marahuana*, but it was rare. It became common in the 1930s, when campaigners against the drug preferred it as, in the words of one account, a "foreign-sounding name" that would stigmatise it.
+English had the word by 1873, in forms such as *mariguan* and *marahuana*, but it was rare. It became common in the 1930s, when campaigners against the drug preferred it as, in the words of one account, a "foreign-sounding name" that would stigmatise it.[@1]
 
-The [Marihuana Tax Act](/history/us-marihuana-tax-act-1937/) of 1937, drafted by Harry Anslinger of the Federal Bureau of Narcotics, fixed the word in federal law. The American Medical Association opposed the act, its counsel testifying that the claims about addiction and violence were not supported. The first two men convicted under it were [sentenced in Denver](/history/us-first-tax-act-convictions-1937/) within a week of its taking effect.
+The [Marihuana Tax Act](/history/us-marihuana-tax-act-1937/) of 1937, drafted by Harry Anslinger of the Federal Bureau of Narcotics, fixed the word in federal law. The American Medical Association opposed the act, [its counsel testifying](/history/us-ama-woodward-testimony-1937/) that the claims about addiction and violence were not supported. The first two men convicted under it were [sentenced in Denver](/history/us-first-tax-act-convictions-1937/) within a week of its taking effect.[@4]
 
 The Supreme Court [struck the act down in 1969](/history/us-leary-1969/), and the [Controlled Substances Act](/history/us-controlled-substances-act-1970/) that replaced it kept the old spelling: federal law still says "marihuana".
 
 ## The word today
 
-Its history has made it a contested word. Many laws and official bodies now prefer "cannabis", the term of the international treaties. Some reform organisations keep the old one in their names, among them the National Organization for the Reform of Marijuana Laws and the Marijuana Policy Project. In Mexico it never stopped being the ordinary word.
+Its history has made it a contested word. Many laws and official bodies now prefer "cannabis", the term of the international treaties. Some reform organisations keep the old one in their names, among them the National Organization for the Reform of Marijuana Laws and the Marijuana Policy Project. In Mexico it never stopped being the ordinary word.[@1]

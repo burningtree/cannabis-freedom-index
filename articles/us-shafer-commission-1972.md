@@ -19,51 +19,51 @@ sources:
 
 President Nixon appointed a commission to study marijuana and announced in advance that
 he would ignore it if it recommended legalisation. It recommended ending the crime of
-possession. He ignored it.
+possession. He ignored it.[@1]
 
 ## Why it existed
 
 When Congress wrote the
 [Controlled Substances Act](/history/us-controlled-substances-act-1970/) in 1970, it put
-marijuana in Schedule I, with heroin. A senior health official had
+marijuana in Schedule I, with heroin.[@1] A senior health official had
 [advised](/history/us-egeberg-recommendation-1970/) that this be temporary, pending a
-study, and the Act created a commission to carry it out.
+study, and the Act created a commission to carry it out.[@1]
 
 Nixon appointed the members and chose a former governor of Pennsylvania, Raymond
 Shafer, to chair them. They included doctors, a television producer and four members
-of Congress.
+of Congress.[@1]
 
 ## The report
 
 "Marihuana: A Signal of Misunderstanding" was presented to Congress and the public on
-22 March 1972.
+22 March 1972.[@1]
 
 It found that the public's picture of the user was wrong. Smokers were not dangerous;
-they were, if anything, "more timid, drowsy and passive". Cannabis did not pose a
-widespread danger to society, and the commission compared it to alcohol.
+they were, if anything, "more timid, drowsy and passive".[@1] Cannabis did not pose a
+widespread danger to society, and the commission compared it to alcohol.[@1]
 
 Its recommendation followed. Possession for personal use should no longer be an
-offence, and use should be discouraged by means other than the criminal law. Shafer told
+offence, and use should be discouraged by means other than the criminal law.[@1] Shafer told
 Congress:
 
 > The criminal law is too harsh a tool to apply to personal possession even in the
-> effort to discourage use.
+> effort to discourage use.[@3]
 
 ## The answer
 
 Nixon had said: "Even if the commission does recommend that it be legalized, I will not
 follow that recommendation." Neither he nor Congress acted, and in 1974 a Senate
-subcommittee came out against decriminalisation.
+subcommittee came out against decriminalisation.[@2]
 
 ## The effect it did have
 
 The states listened. [Oregon](/history/us-oregon-decriminalisation-1973/) made
 possession of an ounce a civil matter in 1973, and a dozen states had done something
-similar by 1978, covering more than a third of the population.
+similar by 1978, covering more than a third of the population.[@2]
 
 That in turn produced a reaction. A [parents' movement](/history/us-parent-movement-1976/)
 formed in 1976 and, by its historian's account, had most of those laws overturned by
-1980.
+1980.[@2]
 
 Marijuana stayed in Schedule I. The report has been cited ever since by those arguing
 that it should not be, alongside the

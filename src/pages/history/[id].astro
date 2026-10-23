@@ -6,11 +6,15 @@ import { Icon } from "astro-icon/components";
 import { changes, articles, countries, changeDate, formatDate, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP, estimateNote, subunitsOf } from "../../lib/countries.js";
 import { tierOf, tierColor } from "../../lib/tiers.js";
 import { sourceTuple } from "../../lib/sources.js";
+import { references, citeParts } from "../../lib/cite.js";
+import Cited from "../../components/Cited.astro";
+import References from "../../components/References.astro";
 import SourceCitation from "../../components/SourceCitation.astro";
 import { Image } from "astro:assets";
 import { cultureOfChange, cultureSection } from "../../lib/culture.js";
 import { relatedTo } from "../../lib/related.js";
-import { exhibitionsOf, exhibitionPath } from "../../lib/exhibitions.js";
+import { exhibitionsOf } from "../../lib/exhibitions.js";
+import ExhibitionBanner from "../../components/ExhibitionBanner.astro";
 import "@fontsource/limelight";
 
 // One history entry: what happened, large; the score before and after when it moved one; how
@@ -27,9 +31,16 @@ const c = ch.country;
 const diff = (seg) => seg.after - seg.before;
 // the long read, when this entry has one: articles/<id>.md
 const article = articles.get(ch.id);
-const Article = article ? (await render(article)).Content : null;
-// The entry's own sources, then the article's, each work/address once.
-const sources = [...ch.sources, ...(article?.data.sources ?? []).map(sourceTuple)].filter((x, i, all) => all.findIndex((other) => other[3] === x[3]) === i);
+const rendered = article ? await render(article) : null;
+const Article = rendered?.Content ?? null;
+// Inline citations (src/lib/cite.js): one numbered list of references for the page. The article's
+// sources come first, in the order its text cites them (the Markdown plugin leaves that order in
+// citeOrder); then the entry's own, in the order its description cites them; each work once.
+const refs = references("ref");
+const articleSources = (article?.data.sources ?? []).map(sourceTuple);
+for (const i of rendered?.remarkPluginFrontmatter.citeOrder ?? []) refs.cite(articleSources[i - 1]);
+const numbered = (n) => Array.from({ length: n }, (_, i) => String(i + 1));
+const ledeParts = citeParts(ch.cited, refs, (k) => ch.sources[Number(k) - 1], numbered(ch.sources.length), `changes.yaml: ${ch.id}`);
 // The country's other entries closest in time to this one, oldest first, for the side panel.
 // An entry tied to no country gets the international entries instead: the treaties in order.
 const own = changes.filter((x) => x.country === c && !x.estimate).reverse();
@@ -53,22 +64,13 @@ const ledeInBody = !article;
       <a class="back" href={`${base}history/`}>← History</a>
     </div>
 
-    {exhibits.map((e) => (
-      <a class="ev-exhibit" href={`${base}${exhibitionPath(e)}`} style={e.cover ? `--cover:url(${base}${e.cover})` : undefined}>
-        <span class="ev-exhibit-text">
-          <small>Exhibition {e.no} · {e.theme} · this event is part of it</small>
-          <b>{e.title}</b>
-          <span>{e.line}</span>
-        </span>
-        <span class="ev-exhibit-go">Enter the exhibition <span aria-hidden="true">→</span></span>
-      </a>
-    ))}
+    {exhibits.map((e) => <ExhibitionBanner exhibition={e} note="this event is part of it" />)}
 
     <header class={`ev-top${ch.score ? "" : " ev-plain"}`}>
       <div>
         <p class="eyebrow"><a href={`${base}history/kind/${ch.category}/`} title={ch.kind.help}><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</a> <span><time datetime={ch.date}>{changeDate(ch)}</time></span> <span>{c ? <a href={`${base}country/${c.slug}/`}>{c.flag} {c.name}</a> : ch.place.name}{ch.unit && <> · <a href={`${base}${ch.unit.url}`}>{ch.unit.name}</a></>}</span></p>
         <h1>{ch.title}</h1>
-        {!ledeInBody && <p class="lede">{ch.description}</p>}
+        {!ledeInBody && <p class="lede"><Cited parts={ledeParts} /></p>}
         {!ledeInBody && ch.tags.length > 0 && (
           <ul class="ev-tags" aria-label="Tags">
             {ch.tags.map((t) => <li><a href={`${base}history/tag/${t.key}/`} title={t.help}>{t.label}</a></li>)}
@@ -92,7 +94,7 @@ const ledeInBody = !article;
     <article class="ev-main">
       {ledeInBody && (
         <section class="ev-lede">
-          <p>{ch.description}</p>
+          <p><Cited parts={ledeParts} /></p>
           {ch.tags.length > 0 && (
             <ul class="ev-tags" aria-label="Tags">
               {ch.tags.map((t) => <li><a href={`${base}history/tag/${t.key}/`} title={t.help}>{t.label}</a></li>)}
@@ -151,10 +153,7 @@ const ledeInBody = !article;
       {ch.estimate && <p class="change-note">This entry is an estimate. No first law is recorded for {c.name}, so its first restrictions are assumed to have come at some point between {ch.window[0]} and {ch.window[1]}. On the charts the change is spread evenly across those years.</p>}
 
       <section>
-        <h2 class="d-h">{sources.length > 1 ? "Sources" : "Source"}</h2>
-        <ul class="srcs change-srcs">
-          {sources.map((source) => <SourceCitation source={source} archive />)}
-        </ul>
+        <References refs={refs} archive />
         <p class={`confidence c-${ch.confidence.key}`}><span aria-hidden="true">{ch.confidence.mark}</span> <strong>{ch.confidence.label}.</strong> {ch.confidence.help}.{ch.score ? " The score before the change is an editorial estimate." : ""}</p>
       </section>
 

@@ -4,8 +4,8 @@ summary: American slang of the jazz age for a cannabis cigarette, and the word t
 origin: American English slang
 also: [muggles, tea, viper, mezz, Reefer Madness]
 countries: [us]
-history: [us-massachusetts-first-state-1911, us-el-paso-ban-1915, us-marihuana-tax-act-1937, us-first-tax-act-convictions-1937, us-la-guardia-report-1944, us-reefer-madness-1938, us-assassin-of-youth-1937]
-history_cards: [us-reefer-madness-1938, us-assassin-of-youth-1937]
+history: [us-massachusetts-first-state-1911, us-el-paso-ban-1915, us-marihuana-tax-act-1937, us-first-tax-act-convictions-1937, us-la-guardia-report-1944, us-reefer-madness-1938, us-assassin-of-youth-1937, us-marihuana-film-1936, us-assassin-of-youth-film-1937, us-production-code-drugs-1934, us-reefer-madness-campus-revival-1972, us-reefer-madness-musical-1998, us-schlosser-reefer-madness-2003]
+history_cards: [us-reefer-madness-1938, us-assassin-of-youth-1937, us-reefer-madness-campus-revival-1972, us-reefer-madness-musical-1998, us-schlosser-reefer-madness-2003]
 image:
   src: ../../src/assets/culture/reefer-madness-1936.jpg
   alt: A lurid film poster for Reefer Madness
@@ -30,13 +30,23 @@ sources:
     year: 1980
     isbn: 978-1-4899-2189-5
     locator: pp. 219–220, The Jazz Era
+  - title: Wikipedia — Reefer Madness (musical)
+    url: https://en.wikipedia.org/wiki/Reefer_Madness_(musical)
+  - title: Salon — review of Eric Schlosser's Reefer Madness (15 May 2003)
+    url: https://www.salon.com/2003/05/15/reefer/
+  - title: Wikipedia — Hays Code
+    url: https://en.wikipedia.org/wiki/Hays_Code
+  - title: Wikipedia — Marihuana (1936 film)
+    url: https://en.wikipedia.org/wiki/Marihuana_(1936_film)
+  - title: Wikipedia — Assassin of Youth
+    url: https://en.wikipedia.org/wiki/Assassin_of_Youth
 ---
 
-*Reefer* is American slang for a cannabis cigarette, or for cannabis itself. It belongs to the vocabulary of the jazz musicians of the 1920s and 1930s, along with *muggles*, *tea*, *viper* and *mezz*. It is remembered now partly because of one film. Made in the 1930s to frighten parents, *Reefer Madness* later became a joke that cannabis users told against the people who had banned it.
+*Reefer* is American slang for a cannabis cigarette, or for cannabis itself. It belongs to the vocabulary of the jazz musicians of the 1920s and 1930s, along with *muggles*, *tea*, *viper* and *mezz*. It is remembered now partly because of one film. Made in the 1930s to frighten parents, *Reefer Madness* later became a joke that cannabis users told against the people who had banned it.[@4]
 
 ## Jazz slang
 
-The words come from the jazz world between the wars, before cannabis was a federal crime.
+The words come from the jazz world between the wars, before cannabis was a federal crime.[@3,4]
 
 | Word | Meaning |
 |---|---|
@@ -46,13 +56,13 @@ The words come from the jazz world between the wars, before cannabis was a feder
 | Viper | A smoker of it, as in the Stuff Smith song "If You're a Viper" |
 | Mezz | Cannabis, after Mezz Mezzrow |
 
-The last is a person. [Mezz Mezzrow](/culture/people/mezz-mezzrow/), born Milton Mesirow in Chicago, was a clarinettist and saxophonist who organised recording sessions for Sidney Bechet and Tommy Ladnier. He was at least as well known in the jazz world as a supplier of cannabis, so well known that his nickname became a word for it. He was called the Muggles King, and Louis Armstrong was one of his best customers; a letter Armstrong wrote from England in 1932 tells Mezzrow where and how to send it.
+The last is a person. [Mezz Mezzrow](/culture/people/mezz-mezzrow/), born Milton Mesirow in Chicago, was a clarinettist and saxophonist who organised recording sessions for Sidney Bechet and Tommy Ladnier. He was at least as well known in the jazz world as a supplier of cannabis, so well known that his nickname became a word for it. He was called the Muggles King, and Louis Armstrong was one of his best customers; a letter Armstrong wrote from England in 1932 tells Mezzrow where and how to send it.[@2]
 
-In 1940 Mezzrow was arrested with sixty joints at the entrance to a jazz club at the New York World's Fair. In jail he insisted that he was Black, and was moved to the Black section of the segregated prison. He told the story in his memoir *Really the Blues* in 1946, and spent the last twenty years of his life in France.
+In 1940 Mezzrow was arrested with sixty joints at the entrance to a jazz club at the New York World's Fair. In jail he insisted that he was Black, and was moved to the Black section of the segregated prison. He told the story in his memoir *Really the Blues* in 1946, and spent the last twenty years of his life in France.[@2]
 
 ![Mezz Mezzrow seated at a desk in his office](../../src/assets/culture/mezz-mezzrow-1946.jpg "Mezz Mezzrow in his office, New York, about November 1946. | William P. Gottlieb, public domain, via Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Mezz_Mezzrow_in_his_office,_New_York,_N.Y.,_ca._Nov._1946_(William_P._Gottlieb_06151).jpg")
 
-Abel’s account places this vocabulary in a commercial musical world as well as a private smoking circle. His examples include Armstrong’s “Muggles,” Calloway’s “That Funny Reefer Man” and titles using *viper* or *tea*. Records and performances gave listeners a shared vocabulary. The songs document cultural expression; they do not establish how often every musician or audience member used cannabis.
+Abel’s account places this vocabulary in a commercial musical world as well as a private smoking circle. His examples include Armstrong’s “Muggles,” Calloway’s “That Funny Reefer Man” and titles using *viper* or *tea*. Records and performances gave listeners a shared vocabulary. The songs document cultural expression; they do not establish how often every musician or audience member used cannabis.[@5]
 
 ## The law arrives
 
@@ -62,17 +72,19 @@ American states had begun restricting cannabis before the jazz age, [Massachuset
 
 The film began as *Tell Your Children*. The separate [film history](/history/us-reefer-madness-1938/) explains its disputed dating, distribution and later reversal from warning to underground comedy.
 
-It circulated on the exploitation circuit under several titles, one of them *Reefer Madness*. The period's alarm also appeared in print, including Anslinger's [“Marijuana, Assassin of Youth”](/history/us-assassin-of-youth-1937/).
+It circulated on the exploitation circuit under several titles, one of them *Reefer Madness*. The period's alarm also appeared in print, including Anslinger's [“Marijuana, Assassin of Youth”](/history/us-assassin-of-youth-1937/).[@1]
 
 | Year | What happened to the film |
 |---|---|
 | 1930s | Made as *Tell Your Children*; references disagree between 1936 and 1938 |
-| Following years | Sold on the exploitation circuit under several titles |
+| Following years | Sold on the exploitation circuit under several titles, beside [*Marihuana*](/history/us-marihuana-film-1936/) and the film [*Assassin of Youth*](/history/us-assassin-of-youth-film-1937/), all made outside Hollywood because the studios' [Production Code](/history/us-production-code-drugs-1934/) barred the drug trade[@8,9,10] |
 | — | Its copyright notice was defective, so it fell into the public domain |
-| 1972 | Keith Stroup, founder of NORML, found a print in the Library of Congress and bought a copy for 297 dollars |
+| [1972](/history/us-reefer-madness-campus-revival-1972/) | Keith Stroup, founder of NORML, found a print in the Library of Congress and bought a copy for 297 dollars[@1] |
 | 1970s | Shown on college campuses to raise money for reform, and as a midnight movie |
+| [1998](/history/us-reefer-madness-musical-1998/) | Turned into a stage musical, filmed for television in 2005[@6] |
+| [2003](/history/us-schlosser-reefer-madness-2003/) | Eric Schlosser borrows the title for a book on the drug laws' own excesses[@7] |
 
-The film found a new life as an unintended satire among advocates of reform, and a cult following within cannabis culture. Critics have called it one of the worst films ever made.
+The film found a new life as an unintended satire among advocates of reform, and a cult following within cannabis culture. Critics have called it one of the worst films ever made. Its story, with the other films and the posters, is told in the exhibition [Reefer Madness](/reefer-madness/).[@1]
 
 ## The word now
 

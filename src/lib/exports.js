@@ -123,7 +123,7 @@ export const priceRows = priceObservations.map((p) => ({
   source_url: p.source.url,
 }));
 
-// Changes that moved a score and have a real date: the changelog and the feed.
+// Changes that moved a score and have a real date: the score changes page and the feed.
 export const scoreChanges = changes.filter((ch) => ch.score && !ch.estimate);
 export { formatDate, dateTime };
 

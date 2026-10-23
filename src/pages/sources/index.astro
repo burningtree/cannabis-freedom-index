@@ -69,7 +69,8 @@ const urls = new Set(cites.filter((x) => x.s.url).map((x) => x.s.url));
 const urlCount = urls.size;
 // pages with a copy recorded in the Internet Archive (see source-archive.json), counting a source
 // cited by its Archive address already; scripts/archive-sources.cjs status counts the same pages
-const archivedOf = (set) => [...set].filter((u) => archivedUrl(u) || u.includes("://web.archive.org/")).length;
+// an Internet Archive page (the Wayback Machine or an archive.org item) counts as archived already
+const archivedOf = (set) => [...set].filter((u) => archivedUrl(u) || /^https?:\/\/([a-z0-9-]+\.)?archive\.org\//i.test(u)).length;
 const archived = archivedOf(urls);
 const pct = Math.round((archived / urlCount) * 100);
 // the whole: citations and web pages; then each part of the page, as a link down to it

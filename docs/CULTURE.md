@@ -215,7 +215,7 @@ The site turns that into a figure with the caption and credit underneath. Rules:
   `[ganja](/culture/language/ganja/)`, `[Jamaica](/country/jm/)`. Culture entries should link
   to one another wherever one explains a word the other uses.
 - Links to countries, history entries and culture entries get a hover preview on the site (data in `/previews/*.json`), so a reader can check what is behind a link without leaving the page. Link the precise history entry, not the history index.
-- A link is not a source. What the text states must still rest on the `sources` list.
+- A link is not a source. What the text states must still rest on the `sources` list. Cite it inline with `[@n]` after the sentence it supports (docs/WRITING.md, Citations).
 - Only link a page that was opened and exists.
 
 ## Countries and links

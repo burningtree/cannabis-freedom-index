@@ -17,25 +17,25 @@ sources:
     url: https://guides.loc.gov/chronicling-america-marihuana
 ---
 
-In July 1937, *The American Magazine* published “Marijuana, Assassin of Youth,” associated with Federal Bureau of Narcotics commissioner Harry J. Anslinger. The illustrated article presented cannabis as a cause of spectacular violence and the destruction of young people. A copy survives in the Hash Marihuana & Hemp Museum's collection.
+In July 1937, *The American Magazine* published “Marijuana, Assassin of Youth,” associated with Federal Bureau of Narcotics commissioner Harry J. Anslinger.[@1,2] The illustrated article presented cannabis as a cause of spectacular violence and the destruction of young people.[@1] A copy survives in the Hash Marihuana & Hemp Museum's collection.[@2]
 
 It is evidence of a public campaign. Its allegations should not be read as established findings about cannabis, or as proof of the causes of the crimes it describes.
 
 ## Making a drug into a killer
 
-The opening account describes a young woman's death after falling from a window. The article turns an apparent suicide into a murder story by making the drug itself the killer. It then moves between scenes of laughter, altered perception and claimed criminal violence.
+The opening account describes a young woman's death after falling from a window.[@1] The article turns an apparent suicide into a murder story by making the drug itself the killer. It then moves between scenes of laughter, altered perception and claimed criminal violence.[@1]
 
 That movement is central to its argument. The reader is offered frightening anecdotes as evidence of an unpredictable menace, without a comparison group or a demonstration that cannabis caused the events. The commissioner's office supplies authority to a narrative whose persuasive force comes from alarm.
 
 ## A page designed around youth
 
-The surviving opening page places illustrated young people above a cannabis branch. Its headline joins the plant to the word *assassin*. The layout puts ordinary-looking youth and a threatening substance into one visual story before the reader reaches the argument below.
+The surviving opening page places illustrated young people above a cannabis branch.[@2] Its headline joins the plant to the word *assassin*. The layout puts ordinary-looking youth and a threatening substance into one visual story before the reader reaches the argument below.
 
-The museum identifies this as an example of the era's cannabis propaganda. It should be distinguished from the exploitation film *Assassin of Youth*, which shares the phrase. A magazine article, a dramatic film and a statute are different historical objects even when their rhetoric overlaps.
+The museum identifies this as an example of the era's cannabis propaganda.[@2] It should be distinguished from the exploitation film *Assassin of Youth*, which shares the phrase. A magazine article, a dramatic film and a statute are different historical objects even when their rhetoric overlaps.
 
 ## A campaign older than one article
 
-The Library of Congress's historical newspaper guide documents sensational American cannabis stories decades earlier, including coverage tied to anti-Mexican propaganda. Anslinger's article entered an existing field of fear; it did not invent every association between cannabis and violence.
+The Library of Congress's historical newspaper guide documents sensational American cannabis stories decades earlier, including coverage tied to anti-Mexican propaganda.[@3] Anslinger's article entered an existing field of fear; it did not invent every association between cannabis and violence.
 
 Later accounts can also exaggerate the power of one publication. Its appearance in the year of the [Marihuana Tax Act](/history/us-marihuana-tax-act-1937/) establishes a political setting, not a measured account of how much the article changed congressional votes or public opinion.
 

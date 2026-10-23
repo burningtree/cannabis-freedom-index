@@ -1,0 +1,15 @@
+---
+// A few of an exhibition's posters pinned over one another at slants, for the right side of its
+// banners (`banner` in src/lib/exhibitions.js lists them, the last on top).
+import { Image } from "astro:assets";
+
+const { exhibition: e } = Astro.props;
+const files = import.meta.glob("../assets/exhibitions/*/posters/*.jpg", { eager: true, import: "default" });
+const posters = (e.banner ?? []).map((n) => files[`../assets/exhibitions/${e.slug}/posters/${n}.jpg`]).filter(Boolean);
+const tilts = [9, -8, 5, -3];
+---
+{posters.length > 0 && (
+  <span class="ex-stack" aria-hidden="true">
+    {posters.map((src, i) => <Image src={src} alt="" widths={[120, 240]} sizes="120px" loading="lazy" style={`--i:${i};--tilt:${tilts[i % tilts.length]}deg`} />)}
+  </span>
+)}

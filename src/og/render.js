@@ -15,7 +15,11 @@ const font = (pkg, file) => readFileSync(path.join(ROOT, "node_modules", "@fonts
 // the Latin files first, then Latin Extended for names such as Łódź or Türkiye
 const fonts = [
   ["Instrument Serif", "instrument-serif", 400], ["Inter", "inter", 400], ["Inter", "inter", 600], ["JetBrains Mono", "jetbrains-mono", 400], ["JetBrains Mono", "jetbrains-mono", 500],
-].flatMap(([name, pkg, weight]) => ["latin", "latin-ext"].map((set) => ({ name, data: font(pkg, `${pkg}-${set}-${weight}-normal.woff`), weight, style: "normal" })));
+].flatMap(([name, pkg, weight]) => ["latin", "latin-ext"].map((set) => ({ name, data: font(pkg, `${pkg}-${set}-${weight}-normal.woff`), weight, style: "normal" })))
+  // the exhibitions' own lettering
+  .concat([{ name: "Limelight", data: font("limelight", "limelight-latin-400-normal.woff"), weight: 400, style: "normal" },
+    { name: "Old Standard TT", data: font("old-standard-tt", "old-standard-tt-latin-400-normal.woff"), weight: 400, style: "normal" },
+    { name: "Old Standard TT", data: font("old-standard-tt", "old-standard-tt-latin-400-italic.woff"), weight: 400, style: "italic" }]);
 const templates = new Map();
 const template = async (name) => {
   if (!templates.has(name)) templates.set(name, await readFile(path.join(ROOT, "src", "og", `${name}.astro`), "utf8"));
@@ -41,6 +45,20 @@ export function flagOf(id) {
 export async function photoOf(file, fit = "cover") {
   const img = sharp(file).rotate().resize(1020, 1260, { fit, position: "attention", background: "#f4f2eb" }).flatten({ background: "#f4f2eb" });
   return `data:image/jpeg;base64,${(await img.jpeg({ quality: 82 }).toBuffer()).toString("base64")}`;
+}
+
+// several posters pinned over one another at slants, drawn into one transparent PNG (satori draws
+// one embedded picture quickly, several slowly): [{ file, x, y, w, angle }], the last on top
+export async function collageOf(items, width = 640, height = 630) {
+  const layers = await Promise.all(items.map(async ({ file, x, y, w, angle }) => {
+    const h = Math.round(w * 1.32);
+    const framed = await sharp(file).rotate().resize(w, h, { fit: "cover", position: "top" })
+      .extend({ top: 9, bottom: 9, left: 9, right: 9, background: "#e9dcc0" }).png().toBuffer();
+    const turned = await sharp(framed).rotate(angle, { background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+    return { input: turned, left: x, top: y };
+  }));
+  const png = await sharp({ create: { width, height, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } }).composite(layers).png().toBuffer();
+  return `data:image/png;base64,${png.toString("base64")}`;
 }
 
 // Drawing 1,500 images takes minutes, and between two builds almost none of them change. Each

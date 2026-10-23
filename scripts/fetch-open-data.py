@@ -369,6 +369,8 @@ def news():
             years.setdefault(int(d["date"][:4]), []).append(d["value"])
         if any(v for vs in years.values() for v in vs):
             for y, vs in sorted(years.items()):
+                if y >= datetime.date.today().year:  # only full years: the current one is still running
+                    continue
                 rows.append([cid, y, round(sum(vs) / len(vs), 4), len(vs)])
         time.sleep(10)
     write("datasets/gdelt-cannabis-news.csv", ["country", "year", "share", "days"], rows)

@@ -60,7 +60,8 @@ if (what === "chain") {
   const total = (s) => Math.round(segs.reduce((sum, seg) => sum + (s[seg.id] * seg.weight) / 10, 0));
   const T = (d) => Date.parse(d.length === 4 ? d + "-07-01" : d.length === 7 ? d + "-15" : d);
   const UP = new Set(["easing", "legalisation", "medical"]);
-  const DOWN = new Set(["ban", "tightening", "death"]);
+  // Death-penalty entries also cover limits and abolition, which can raise the score.
+  const DOWN = new Set(["ban", "tightening"]);
   const only = process.argv[3];
   let flagged = 0;
   for (const id of ids) {

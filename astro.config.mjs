@@ -51,6 +51,56 @@ function markdownFigures() {
   };
 }
 
+// Inline citations in Markdown (articles, culture entries), Wikipedia style: [@2] or [@1,3] marks the
+// sources, by their place in the front matter's `sources` list, that support what comes before it.
+// Each becomes a superscript number linked to the page's list of references; sources are numbered by
+// their first citation. A text with no marks yet cites all its sources after its last paragraph. The
+// order is left in the front matter as `citeOrder` for the page that lists the references
+// (src/lib/cite.js does the same for texts kept in YAML).
+function markdownCitations() {
+  const MARK = /\s?\[@([^\]]+)\]/g;
+  const sup = (n) => `<sup class="cite"><a href="#ref-${n}" aria-label="Source ${n}">[${n}]</a></sup>`;
+  return (tree, file) => {
+    const fm = file.data.astro?.frontmatter;
+    const count = fm?.sources?.length ?? 0;
+    if (!count) return;
+    const where = file.history?.[0]?.split("/").slice(-2).join("/") ?? "a Markdown file";
+    const order = [];
+    const numberOf = (i) => {
+      if (!Number.isInteger(i) || i < 1 || i > count) throw new Error(`${where}: the citation [@${i}] names no source (it has ${count})`);
+      if (!order.includes(i)) order.push(i);
+      return order.indexOf(i) + 1;
+    };
+    const walk = (node) => {
+      if (!node.children) return;
+      node.children = node.children.flatMap((child) => {
+        if (child.type !== "text" || !child.value.includes("[@")) { walk(child); return [child]; }
+        const out = [];
+        let last = 0;
+        for (const m of child.value.matchAll(MARK)) {
+          if (m.index > last) out.push({ type: "text", value: child.value.slice(last, m.index) });
+          out.push({ type: "html", value: m[1].split(",").map((x) => sup(numberOf(Number(x.trim())))).join("") });
+          last = m.index + m[0].length;
+        }
+        if (last < child.value.length) out.push({ type: "text", value: child.value.slice(last) });
+        return out;
+      });
+    };
+    walk(tree);
+    if (order.length) {
+      const missing = Array.from({ length: count }, (_, i) => i + 1).filter((i) => !order.includes(i));
+      if (missing.length) throw new Error(`${where}: cites inline but never cites ${missing.map((i) => `[@${i}]`).join(", ")}`);
+    } else {
+      // not yet cited inline: all the sources after the last paragraph
+      const paragraphs = tree.children.filter((n) => n.type === "paragraph" && !(n.children.length === 1 && n.children[0].type === "image"));
+      const target = paragraphs.at(-1);
+      for (let i = 1; i <= count; i++) order.push(i);
+      if (target) target.children.push({ type: "html", value: order.map((i) => sup(i)).join("") });
+    }
+    fm.citeOrder = order;
+  };
+}
+
 export default defineConfig({
   // also the address used in canonical links, the sitemap and structured data
   site: process.env.SITE || "https://cannabisfreedom.fyi",
@@ -61,7 +111,7 @@ export default defineConfig({
   // inlines the SVG at build time, so only the icons a page uses end up in it.
   integrations: [icon()],
   markdown: {
-    processor: unified({ remarkPlugins: [markdownFigures], rehypePlugins: [markdownLinks] }),
+    processor: unified({ remarkPlugins: [markdownFigures, markdownCitations], rehypePlugins: [markdownLinks] }),
   },
   // pictures in Markdown get a set of widths, so a phone does not download the 1280-pixel file
   image: { layout: "constrained" },

@@ -11,10 +11,12 @@ import CountryDatasetTab from "./CountryDatasetTab.astro";
 import { datasetsOf } from "../lib/datasets.js";
 import SourceTip from "./SourceTip.astro";
 import SourceCitation from "./SourceCitation.astro";
+import Cited from "./Cited.astro";
+import References from "./References.astro";
+import { references, citeParts } from "../lib/cite.js";
 import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
 import { answersFor } from "../lib/answers.js";
-import SegmentScale from "./SegmentScale.astro";
 import CultureList from "./CultureList.astro";
 import { cultureOf } from "../lib/culture.js";
 
@@ -36,6 +38,13 @@ const unitRange = group ? `${Math.min(...group.units.map((x) => x.score))}–${M
 const history = changes.filter((ch) => ch.country === c && (!sub || ch.unit?.id === sub.id));
 const nationalCount = sub ? changes.filter((ch) => ch.country === c).length : 0;
 const scored = sub ? [] : history.filter((ch) => ch.score); // the ones that moved the score (the national one)
+// Inline citations (src/lib/cite.js): the score breakdown and the context each number their sources
+// in reading order, and list them at their end.
+const scoreRefs = references("sc"), ctxRefs = references("cx");
+const partsOf = (block, refs, where) => citeParts(block.cite.text, refs, (k) => block.cite.keys.includes(k) && block.cite.of(k), block.cite.keys, `countries/${c.slug}.yaml: ${where}`);
+const segParts = d ? d.segments.map((seg, i) => seg && partsOf(seg, scoreRefs, SEGMENTS[i].id)) : [];
+const ctxParts = d ? Object.fromEntries(d.context.filter(Boolean).map((x) => [x.key, partsOf(x, ctxRefs, x.key)])) : {};
+const INCB = ["International Narcotics Control Board — Travellers carrying medicines containing controlled substances", "https://www.incb.org/incb/en/travellers/index.html", null, "https://www.incb.org/incb/en/travellers/index.html"];
 // 48,000,000 → "48 million", 770,000 → "770,000"
 const people = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)} million` : n.toLocaleString("en-GB"));
 const use = sub ? null : c.use;
@@ -51,6 +60,7 @@ const travel = sub ? null : [
     ? `A prescription from another country is not recognised by itself. Within the Schengen area a patient can carry prescribed medicine for up to 30 days with a certificate issued by their home health authority; whether cannabis qualifies depends on both countries.`
     : `A prescription or medical card from another country is generally not recognised. Travellers who need a cannabis-based medicine should ask ${c.name}'s embassy before travelling.`,
 ].filter(Boolean);
+const incbRef = travel ? ctxRefs.cite(INCB) : null; // the crossing-the-border note cites one guide
 const answers = answersFor(v.s);
 // The methodology lives on the home page: its section, or the description of one segment there.
 const method = (segId) => `${base}#${segId ? `method-${segId}` : "methodology"}`;
@@ -246,7 +256,6 @@ const culture = cultureOf(c);
         </summary>
         <div class="why">
           {sub.seg && <p>{sub.seg[i]}</p>}
-          <SegmentScale segment={s} score={sub.s[i]} />
         </div>
       </details>
     ))}
@@ -275,16 +284,13 @@ const culture = cultureOf(c);
           </summary>
           {seg && (
             <div class="why">
-              <p>{seg.t}</p>
-              <ul class="srcs">
-                {seg.src.map((source) => <SourceCitation source={source} />)}
-              </ul>
-              <SegmentScale segment={s} score={c.s[i]} />
+              <p><Cited parts={segParts[i]} /></p>
             </div>
           )}
         </details>
       );
     })}
+    {d && <References refs={scoreRefs} title="References" level="h3" />}
 
     </div>
 
@@ -307,22 +313,17 @@ const culture = cultureOf(c);
                 <span class={`chip s-${PLANTING_TRADE[x.clones_trade].tone}`} title={PLANTING_TRADE[x.clones_trade].help[1]}>Clone sales: {PLANTING_TRADE[x.clones_trade].label}</span>
               </div>
             )}
-            <p class="ctx">{x.t}</p>
-            <ul class="srcs">
-              {x.src.map((source) => <SourceCitation source={source} />)}
-            </ul>
+            <p class="ctx"><Cited parts={ctxParts[x.key]} /></p>
           </div>
         ))}
         {travel && (
           <div class="segrow">
             <div class="segrow-top"><span>🛂 Crossing the border</span></div>
-            {travel.map((line) => <p class="ctx">{line}</p>)}
+            {travel.map((line, k) => <p class="ctx">{line}{k === travel.length - 1 && <Cited parts={[{ refs: [incbRef] }]} />}</p>)}
             <p class="ctx ctx-general">General guidance that applies to almost every country, not a check of {c.name}'s customs rules.</p>
-            <ul class="srcs">
-              <li><a href="https://www.incb.org/incb/en/travellers/index.html" target="_blank" rel="noopener noreferrer">International Narcotics Control Board — Travellers carrying medicines containing controlled substances</a></li>
-            </ul>
           </div>
         )}
+        <References refs={ctxRefs} title="References" level="h3" />
       </div>
     )}
     {history.length > 0 && (

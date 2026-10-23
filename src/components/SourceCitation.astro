@@ -1,10 +1,11 @@
 ---
 import { archivedUrl } from "../lib/archive.js";
 
-const { source, archive = false } = Astro.props;
+// one source in a list; `id` and `n` when it is a numbered reference that the text links to
+const { source, archive = false, id, n } = Astro.props;
 const [label, url, bibliography] = source;
 ---
-<li class:list={{ "source-print": !url }}>
+<li class:list={{ "source-print": !url }} id={id} value={n}>
   {url
     ? <a href={url} target="_blank" rel="noopener noreferrer">{label}</a>
     : <cite>{label}</cite>}

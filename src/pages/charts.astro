@@ -747,8 +747,11 @@ const newsRows = NEWS ? countries.map((c) => {
   return last ? { c, rows, share: last.share } : null;
 }).filter(Boolean).sort((a, b) => b.share - a.share) : [];
 const newsTop = newsRows.slice(0, 20);
-const newsMid = newsRows.length ? median(newsRows.map((n) => n.share)) : 1;
-const newsFit = newsRows.length > 20 ? corr(newsRows.map((n) => ({ x: Math.log10(n.share), y: n.c.raw }))) : { r: 0 };
+// on a log scale, so only the countries with any measurable share
+const newsSome = newsRows.filter((n) => n.share > 0);
+const newsFit = newsSome.length > 20 ? corr(newsSome.map((n) => ({ x: Math.log10(n.share), y: n.c.raw }))) : { r: 0 };
+// "The United States' press", "Germany's press"
+const pressOf = (name) => `${/^United |^Netherlands|^Philippines/.test(name) ? "The " : ""}${name}${name.endsWith("s") ? "'" : "'s"}`;
 const sparkOf = (rows) => { const top = Math.max(...rows.map((r) => r.share)); return rows.map((r, i) => `${i ? "L" : "M"}${pct(r.year, 2017, NEWS_YEAR).toFixed(1)},${(100 - (r.share / top) * 90).toFixed(1)}`).join(""); };
 
 // ── The sharpest borders: neighbours whose laws differ most ──
@@ -1883,8 +1886,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {NEWS && newsRows.length > 0 && (
     <section class="ch" id="in-the-news">
       <p class="ch-kicker"><a href="#in-the-news">{kick("in-the-news")}</a></p>
-      <h2>{newsTop[0].c.name}'s press talks about cannabis most: {(newsTop[0].share / newsMid).toFixed(0)} times the share of a typical country's news in {NEWS_YEAR}</h2>
-      <p class="ch-dek">Of all the online news GDELT monitors from each country's own sites, the share of articles that mention cannabis or marijuana in {NEWS_YEAR}, the {newsTop.length} highest of {newsRows.length} countries. Beside each, its share year by year since 2017. Attention, not opinion: a crackdown makes news as much as a reform. Across all countries, attention and the score go together with r = {newsFit.r.toFixed(2)}.</p>
+      <h2>{pressOf(newsTop[0].c.name)} press talks about cannabis most: {(newsTop[0].share / newsTop[1].share).toFixed(0)} times the share in {pressOf(newsTop[1].c.name).replace(/^The /, "the ")} news in {NEWS_YEAR}</h2>
+      <p class="ch-dek">Of all the online news GDELT monitors from each country's own sites, the share of articles that mention cannabis or marijuana in {NEWS_YEAR}, the {newsTop.length} highest of {newsRows.length} countries. Beside each, its share year by year since 2017. Attention, not opinion: a crackdown makes news as much as a reform. Across the {newsSome.length} countries with any measurable share, attention and the score go together with r = {newsFit.r.toFixed(2)}.</p>
       <ol class="ch-bars ch-news" data-no-preview>
         {newsTop.map((n) => (
           <li>

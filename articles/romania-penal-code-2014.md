@@ -1,40 +1,50 @@
 ---
-model: opus-5.5
-written: 2026-10-13
+model: gpt-6
+written: '2026-10-23'
 sources:
-  - title: "Romanian Ministry of Justice — Law 143/2000 as at 7 March 2005, Article 4"
-    url: https://legislatie.just.ro/Public/DetaliiDocument/61101
-  - title: "Romanian Ministry of Justice — Law 143/2000, March 2014 republication, Article 4"
-    url: https://legislatie.just.ro/Public/DetaliiDocument/156116?isFormaDeBaza=True
-  - title: "IDPC — Romania: Drug-related offenses reduced as new criminal code is enforced"
-    url: https://idpc.net/news/2014/12/romania-drug-related-offenses-reduced-as-new-criminal-code-is-enforced
-  - title: "Wikipedia — Cannabis in Romania"
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Romania
+  - title: Romania — Law 522/2004, original Official Gazette (7 December 2004)
+    url: >-
+      https://upload.wikimedia.org/wikipedia/commons/2/2d/Monitorul_Oficial_al_Rom%C3%A2niei._Partea_I_2004-12-07%2C_nr._1155.pdf
+    locator: 'Printed pp. 2–4: Article I point 6 and Article II'
+  - title: Romania — Law 187/2012 implementing the Penal Code, official financial regulator reproduction
+    url: https://asfromania.ro/uploads/articole/attachments/60801bd912f77503976495.pdf
+    locator: Article 81 points 3 and 11–12, printed pp. 29–31; Article 247, p. 93
+  - title: Romanian Senate — original three-gram cannabis proposal, L384/2023
+    url: https://www.senat.ro/legis/PDF/2023/23L384FG.PDF?nocache=true
+    locator: 'Both pages: proposed Article 4¹ and fine revenue; Articles II–III'
+  - title: Romanian Senate — legislative record for L384/2023, PL-x 537/2023
+    url: https://www.senat.ro/legis/lista.aspx?an_cls=2023&nr_cls=L384
+    locator: >-
+      8 May introduction; 7 June opinions; 18 September rejection; 20 September transmission; 12 December
+      committee report
 ---
 
-On 1 February 2014 a new Penal Code took effect in Romania, and the drug law was amended to match it. The change did not decriminalise anything. For cannabis and other risk drugs, it reduced the minimum prison term from six months to three months while retaining the two-year maximum and the existing option of a fine.
+From 1 February 2014, Romania lowered the minimum prison term for personal possession, buying and growing of cannabis from six months to three months.[@1,2] The two-year maximum and the option of a fine remained.[@1,2] The same reform gave courts a treatment-linked route to waive or postpone punishment.[@1,2]
 
-## Before and after
+## An earlier reduction already allowed fines
 
-| | Before 2014 | From 2014 |
-|---|---|---|
-| Personal-use possession of risk drugs, including cannabis | six months to two years in prison, or a fine | three months to two years in prison, or a fine |
-| Personal-use possession of high-risk drugs | two to five years in prison | six months to three years in prison |
+The [2005 amendment](/history/romania-personal-use-penalty-reduction-2005/) had separated cannabis and other “risk drugs” from drugs in the higher category.[@1] It set the personal-use penalty for risk drugs at six months to two years in prison or a fine.[@1]
 
-The [2005 amendment](/history/romania-personal-use-penalty-reduction-2005/) had already introduced the fine alternative for risk drugs. The original 2000 law had prescribed two to five years for personal-use offences without this distinction.
+The 2014 change reduced that lower prison limit.[@2] For high-risk drugs, the new personal-use range was six months to three years.[@2] These changes formed part of the legislation implementing the new Penal Code, whose general commencement date was 1 February 2014.[@2]
 
-A report circulated by the International Drug Policy Consortium at the end of that year described broad reductions in drug penalties. Its account of the old regime does not distinguish the earlier cannabis penalty as precisely as the historical statute, which already allowed a fine from 2005.
+The personal-use offence continued to cover growing and preparing drugs for oneself as well as buying or holding them.[@2] It contained no minimum quantity below which possession became lawful.[@2]
 
-The same report stresses what the reform did not do. The fine is a criminal penalty and leaves a criminal record, so a person fined for a few grams of cannabis is still convicted of a crime.
+## Assessment could lead to an assistance programme
 
-## Cannabis in the Romanian law
+The reform also changed what could happen after a personal-use case began.[@2] It required prosecutors to order an assessment by a drug-prevention, evaluation and counselling centre.[@2] Depending on that assessment, the person could enter an integrated assistance programme with their agreement.[@2]
 
-Law 143 of 2000 sorts drugs into "risk" and "high-risk". The cannabis plant and its resin are risk drugs, the lower class, which is the class the three-months-to-two-years range applies to. Romania had first restricted hashish in the 1920s, and a narrow 2013 law allowed medicines derived from cannabis with less than 0.2% THC, with almost nothing reaching patients.
+The programme connected the criminal case to help for the person using drugs.[@2] If the defendant followed its requirements before judgment, the court could waive punishment or postpone imposing it, even where the usual Penal Code conditions for those outcomes were not met.[@2]
 
-## After the reform
+That decision belonged to the court.[@2] The law also addressed failure to follow the programme during supervision, linking it to the rules on revoking postponement.[@2]
 
-The penalty has not moved since. A bill to stop prosecuting possession of up to three grams was rejected in 2023 by every committee that examined it.
+## Treatment had been promised earlier
 
-## Two separate reductions
+The original 2004 amendment had already set out treatment-linked alternatives.[@1] Its commencement clause deferred those provisions until the new Penal Code took effect, while the revised personal-use prison range and fine alternative began in March 2005.[@1]
 
-The [2005 amendment](/history/romania-personal-use-penalty-reduction-2005/) reduced the cannabis penalty and introduced a fine alternative. The [2014 reform](/history/romania-penal-code-2014/) further reduced the minimum prison term. Neither reform made personal possession lawful.
+The 2014 legislation supplied the assessment, consent and court-outcome rules alongside its further reduction in the cannabis prison minimum.[@2]
+
+## A later bill seeks an administrative penalty
+
+In 2023, deputies proposed replacing criminal penalties for possession of up to three grams with an administrative fine of 1,000–3,000 lei.[@3] Their bill also sought protection for medically prescribed cannabis possession.[@3]
+
+The Senate [rejected that proposal in September](/history/romania-3-grams-rejected-2023/) and sent it to the Chamber of Deputies, where committees issued a rejection report in December.[@3,4] The distinction between a criminal fine and an administrative possession offence remained central to [Romania's cannabis debate](/country/ro/).[@3,4]

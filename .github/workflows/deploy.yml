@@ -20,7 +20,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # the whole history: the changelog is built from it (src/lib/gitlog.js)
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
           node-version: 22
@@ -32,7 +35,9 @@ jobs:
       # kept under a hash of its own content, so restoring the folder redraws only what is new.
       - uses: actions/cache@v4
         with:
-          path: .cache/og
+          path: |
+            .cache/og
+            .cache/changelog
           key: og-${{ hashFiles('src/og/**', 'package-lock.json') }}-${{ github.run_id }}
           restore-keys: |
             og-${{ hashFiles('src/og/**', 'package-lock.json') }}-

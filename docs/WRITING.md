@@ -119,6 +119,26 @@ stay in the sources' `locator`.
 Do not end on a disclaimer ("These statements supply neither a modern assessment nor…"). End on
 what came next, or on what the event meant.
 
+## Citations
+
+Texts cite their sources inline, Wikipedia style: a mark right after the sentence or clause a
+source supports, shown on the page as a superscript number linked to a numbered list of
+references. The same source keeps its number wherever it is cited again.
+
+- **History entries, articles, culture entries:** `[@2]` is the second source in the item's own
+  `sources` list; `[@1,3]` cites two. Put the mark after the full stop, with no space:
+  `…in 1972.[@1]`
+- **Country files:** cite by source key: `[@bmg]`, `[@bmg, kcang]`, using only the keys listed in
+  that segment's or context section's `sources`.
+- Cite each claim with the source that actually states it. When a text uses marks, every source in
+  its list must be cited at least once, and every mark must name a real source; the build fails
+  otherwise.
+- Texts without marks still work: all their sources are cited together after the last sentence.
+  Convert them to per-sentence citations whenever a text is written or revised; there is no need
+  to convert everything at once.
+- On a country page the score breakdown and the Context tab each end with their own numbered
+  references; history, article and culture pages end with one list for the whole page.
+
 ## Words to avoid
 
 | Avoid | Use |

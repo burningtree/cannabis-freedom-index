@@ -15,13 +15,13 @@ sources:
     locator: "Chapter 4, Hearst, His Hatred and Hysterical Lies; Chapter 14, Privacy is a Right; split_010.htm"
 ---
 
-Herer invokes the Siler investigation as evidence against prohibition. The report's
+Herer invokes the Siler investigation as evidence against prohibition.[@2] The report's
 recommendations were more qualified than his summary suggests.
 
 A committee studied 34 soldiers in the Panama Canal Department. Its report, signed on
 21 October 1932 and published in 1933, recommended no further legislation against
 cannabis sale or use in the Canal Zone. It also expressly recommended that military
-restrictions remain in force.
+restrictions remain in force.[@1]
 
 The distinction matters: a recommendation against additional civilian legislation did
 not amount to ending military penalties. The study also concerned a small group of

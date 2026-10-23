@@ -32,17 +32,17 @@ sources:
     locator: pp. 219–220, The Jazz Era
 ---
 
-In the slang of the jazz age cannabis was *tea*, and a *tea pad* was a room or an apartment where people gathered to smoke it. Most were in Harlem. They were rented rooms, not shops, and they were known to everyone who needed to know: the investigators who surveyed them for the city thought that the landlord, the agent or the janitor usually knew what the room was for.
+In the slang of the jazz age cannabis was *tea*, and a *tea pad* was a room or an apartment where people gathered to smoke it. Most were in Harlem. They were rented rooms, not shops, and they were known to everyone who needed to know: the investigators who surveyed them for the city thought that the landlord, the agent or the janitor usually knew what the room was for.[@1]
 
-What we know of them in detail comes from an unusual source. Fiorello La Guardia, the mayor of New York, had a committee of the New York Academy of Medicine study cannabis in the city, and its report of 1944 includes a sociological study made by a squad of six police officers, two women and four men, who worked undercover in bars, dance halls, theatres and parks. They estimated about 500 tea pads in Harlem and at least as many peddlers, drawing on observations and conversations with sellers and operators. This was an informed estimate, not a complete census.
+What we know of them in detail comes from an unusual source. Fiorello La Guardia, the mayor of New York, had a committee of the New York Academy of Medicine study cannabis in the city, and its report of 1944 includes a sociological study made by a squad of six police officers, two women and four men, who worked undercover in bars, dance halls, theatres and parks. They estimated about 500 tea pads in Harlem and at least as many peddlers, drawing on observations and conversations with sellers and operators. This was an informed estimate, not a complete census.[@1,2]
 
 ## Inside a pad
 
-The investigators described the pads as furnished for the clientele they expected. There was comfortable furniture and a radio, a victrola or, most often, a rented nickelodeon. The light was dim and mostly blue. Incense was part of the furnishings, and the walls carried pictures of nudes.
+The investigators described the pads as furnished for the clientele they expected. There was comfortable furniture and a radio, a victrola or, most often, a rented nickelodeon. The light was dim and mostly blue. Incense was part of the furnishings, and the walls carried pictures of nudes.[@1]
 
-Most pads sold nothing but cannabis. Some sold whisky as well, and a few were also brothels. The mood, the report said, was that of "a very congenial social club". Smokers talked freely with strangers and shared their cigarettes in a practice called "pick-up" smoking: a cigarette was lit, drawn on once or twice and passed round. Anyone who turned rowdy was put out or calmed down. In one pad, on a Harlem rooftop, the smokers sat in pup tents and then came out to talk about the stars.
+Most pads sold nothing but cannabis. Some sold whisky as well, and a few were also brothels. The mood, the report said, was that of "a very congenial social club". Smokers talked freely with strangers and shared their cigarettes in a practice called "pick-up" smoking: a cigarette was lit, drawn on once or twice and passed round. Anyone who turned rowdy was put out or calmed down. In one pad, on a Harlem rooftop, the smokers sat in pup tents and then came out to talk about the stars.[@1]
 
-The cigarettes had grades and prices, and the smokers knew the difference as a cigar smoker knows tobacco.
+The cigarettes had grades and prices, and the smokers knew the difference as a cigar smoker knows tobacco.[@1]
 
 | Name | Said to come from | Price |
 |---|---|---|
@@ -50,21 +50,21 @@ The cigarettes had grades and prices, and the smokers knew the difference as a c
 | Panatella, or meserole | Central and South America | About 25 cents |
 | Gungeon | Africa, by common opinion | About a dollar, for richer customers |
 
-Ernest L. Abel’s 1980 history retells the distinction between these market grades and connects the middle-priced cigarette with Mezz Mezzrow’s reputation. The names and claimed origins belonged to a trading vocabulary; they were not verified genetic varieties or a laboratory ranking of national cannabis potency.
+Ernest L. Abel’s 1980 history retells the distinction between these market grades and connects the middle-priced cigarette with Mezz Mezzrow’s reputation. The names and claimed origins belonged to a trading vocabulary; they were not verified genetic varieties or a laboratory ranking of national cannabis potency.[@5]
 
-The common names for the cigarettes were muggles, reefers, Indian hemp, weed, tea, gage and sticks. Peddlers wrapped them in foreign cigarette paper to suggest that the tea was "right from the boat".
+The common names for the cigarettes were muggles, reefers, Indian hemp, weed, tea, gage and sticks. Peddlers wrapped them in foreign cigarette paper to suggest that the tea was "right from the boat".[@1]
 
 ## Vipers and their music
 
-The pads were one part of a wider scene. The investigators saw people smoking in Harlem's theatres and in its dance halls, in the lavatories and on the floor, patrons and musicians alike. Smokers of cannabis called themselves vipers, and the musicians among them wrote it into their songs; the words of that world are collected under [reefer](/culture/language/reefer/).
+The pads were one part of a wider scene. The investigators saw people smoking in Harlem's theatres and in its dance halls, in the lavatories and on the floor, patrons and musicians alike. Smokers of cannabis called themselves vipers, and the musicians among them wrote it into their songs; the words of that world are collected under [reefer](/culture/language/reefer/).[@1]
 
-Its best-known figure was Louis Armstrong. He first smoked in Chicago in 1927, called the plant "gage", and later wrote that it was "a thousand times better than whiskey". In March 1931 he was arrested in California for smoking and spent a little over a week in jail. His supplier, the clarinettist Mezz Mezzrow, was at least as famous in Harlem for selling cannabis as for playing.
+Its best-known figure was Louis Armstrong. He first smoked in Chicago in 1927, called the plant "gage", and later wrote that it was "a thousand times better than whiskey". In March 1931 he was arrested in California for smoking and spent a little over a week in jail. His supplier, the clarinettist Mezz Mezzrow, was at least as famous in Harlem for selling cannabis as for playing.[@3,4]
 
 ## What the investigators found
 
-Most of the smokers the study met were out of work or had only part-time jobs. They knew the law, the report said, and smoked without bravado or any wish to defy it. The general opinion among them was that cannabis did no harm. The committee's own conclusion was that it did not lead to addiction, crime or harder drugs.
+Most of the smokers the study met were out of work or had only part-time jobs. They knew the law, the report said, and smoked without bravado or any wish to defy it. The general opinion among them was that cannabis did no harm. The committee's own conclusion was that it did not lead to addiction, crime or harder drugs.[@1,2]
 
-The report used the racial language of its time. Its picture of the trade singled out porters at the bus and railway terminals, most of them Black, as go-betweens, and it treated Harlem as the centre of the market, though its investigators also found cigarettes sold along Broadway between 42nd and 59th Streets.
+The report used the racial language of its time. Its picture of the trade singled out porters at the bus and railway terminals, most of them Black, as go-betweens, and it treated Harlem as the centre of the market, though its investigators also found cigarettes sold along Broadway between 42nd and 59th Streets.[@1]
 
 ## The law
 

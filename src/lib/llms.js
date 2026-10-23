@@ -53,7 +53,8 @@ Freest today: ${top.map((c) => `${c.name} (${c.score})`).join(", ")}. Least free
 - [History](${root}history/): laws, rulings and treaties since 1787, ${scored.length} of which moved a score
 - [Can I?](${root}can-i/): plain answers per country
 - [Compare](${root}compare/): countries side by side
-- [Changelog](${root}changelog/): every score change
+- [Score changes](${root}score-changes/): every score change
+- [Changelog](${root}changelog/): every change to the site, its data and its text
 
 ## Countries
 

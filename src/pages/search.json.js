@@ -21,7 +21,7 @@ const rows = [
   ...[
     ["Map", "World map of scores", "#map"], ["Rankings", "Every country by score", "#rankings"], ["Methodology", "How the scores are made", "#methodology"],
     ["History", "Laws, rulings and treaties", "history/"], ["Can I?", "Plain answers per country", "can-i/"], ["Compare", "Countries side by side", "compare/"],
-    ["Download the data", "Scores, history and yearly panel", "data/"], ["Changelog", "Every score change", "changelog/"],
+    ["Download the data", "Scores, history and yearly panel", "data/"], ["Score changes", "Every score change", "score-changes/"], ["Changelog", "Every change to the site, data and text", "changelog/"],
     ["Articles", "The longer reads on single events", "articles/"], ["About", "What the project is, its aims and commitments", "about/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "A cultural atlas of cannabis", "culture/"], ["Culture: People", "Officials, preachers, scientists and presidents", "culture/people/"], ["Culture: Stories", "The people behind the laws", "culture/stories/"], ["Sources", "Every source the index cites", "sources/"],
   ].map(([n, s, u]) => ({ t: "p", n, s, u, ic: PAGE_ICONS[u] })),
   // the exhibitions: one row each, its rooms' names matched but not listed

@@ -64,7 +64,8 @@ for (const f of ["articles", "culture"].filter((d) => fs.existsSync(d)).flatMap(
   const head = fs.readFileSync(f, "utf8").match(/^---\n([\s\S]*?)\n---/);
   for (const s of (head && y.load(head[1])?.sources) || []) if (s.url) urls.add(s.url);
 }
-const all = [...urls].filter((u) => /^https?:\/\//.test(u) && !u.includes("web.archive.org"));
+// pages of the Internet Archive itself (the Wayback Machine, archive.org items) are archives already
+const all = [...urls].filter((u) => /^https?:\/\//.test(u) && !/^https?:\/\/([a-z0-9-]+\.)?archive\.org\//i.test(u));
 const DEAD_DAYS = 90;
 // marked dead and seen within the last 90 days: skipped by every run
 const resting = (u) => !includeDead && archive[u]?.dead && Date.now() - Date.parse(archive[u].dead.seen) < DEAD_DAYS * 864e5;

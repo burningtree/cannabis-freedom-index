@@ -3,6 +3,7 @@
 import { getCollection } from "astro:content";
 import { CHANGE_CATEGORIES, CHANGE_TAGS, SEGMENT_IDS, STATUS_SECTIONS } from "./segment-ids.js";
 import { sourceTuple } from "./sources.js";
+import { stripCites } from "./cite.js";
 import { datasetsOf, latestOf } from "./datasets.js";
 import { TIERS, tierIndex } from "./tiers.js";
 export { CHANGE_CATEGORIES, CHANGE_TAGS };
@@ -74,7 +75,8 @@ const everyPlace = (await getCollection("countries"))
     const id = slug.toUpperCase();
     const s = scoreList(data.scores);
     const raw = scoreOf(s);
-    const cited = (block) => ({ t: block.text, src: block.sources.map((key) => pair(data.sources[key])) });
+    // `t` is plain text; `cite` keeps the inline marks ([@key]) and the keys, for the profile's own page
+    const cited = (block) => ({ t: stripCites(block.text), src: block.sources.map((key) => pair(data.sources[key])), cite: { text: block.text, keys: block.sources, of: (key) => data.sources[key] && pair(data.sources[key]) } });
     return {
       id, slug, raw, s,
       score: Math.round(raw),
@@ -203,7 +205,8 @@ function unitOf(country, id, entry) {
   return { id: unit.id, name: unit.name, label: group.label, url: `country/${country.slug}/${unit.id}/` };
 }
 export const dateTime = (iso) => Date.parse(iso.length === 4 ? `${iso}-07-01` : iso.length === 7 ? `${iso}-15` : iso);
-const changeEntries = (await getCollection("changes")).map(({ data }) => data).sort((a, b) => dateTime(a.date) - dateTime(b.date) || a.id.localeCompare(b.id));
+// `description` is plain text everywhere; `cited` keeps the inline citation marks for the entry's own page
+const changeEntries = (await getCollection("changes")).map(({ data }) => ({ ...data, cited: data.description, description: stripCites(data.description) })).sort((a, b) => dateTime(a.date) - dateTime(b.date) || a.id.localeCompare(b.id));
 export const changes = changeEntries
   .map((data, i) => {
     const country = data.country ? places.find((c) => c.slug === data.country) : null; // a country or a disputed territory

@@ -1,0 +1,16 @@
+---
+// A numbered list of references, the targets of the superscript numbers in the text above it
+// (src/lib/cite.js). Each keeps the number it has in the text.
+import SourceCitation from "./SourceCitation.astro";
+
+const { refs, title = "References", archive = false, level = "h2" } = Astro.props;
+const H = level;
+---
+{refs.list.length > 0 && (
+  <section class="refs-block">
+    <H class="d-h">{title}</H>
+    <ol class="srcs refs">
+      {refs.list.map((r) => <SourceCitation source={r.source} archive={archive} id={r.id} n={r.n} />)}
+    </ol>
+  </section>
+)}

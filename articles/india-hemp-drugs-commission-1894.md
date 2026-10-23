@@ -16,7 +16,7 @@ sources:
 ---
 
 One of the most exhaustive official studies of cannabis ever made was finished in
-1894. It
+1894.[@1,2] It
 advised against prohibition, and thirty years later the men who wrote the first
 cannabis treaty did not mention it.
 
@@ -24,19 +24,19 @@ cannabis treaty did not mention it.
 
 The inquiry did not begin in India. Temperance campaigners in the British House of
 Commons claimed that India's lunatic asylums were filled with ganja smokers, and on
-2 March 1893 the House took up the effects of hemp drugs in Bengal. The Government of
+2 March 1893 the House took up the effects of hemp drugs in Bengal.[@1,2] The Government of
 India appointed a commission of seven, and the inquiry was widened to the whole
-country.
+country.[@1]
 
 The president was W. Mackworth Young. Three of the seven members were Indian: Raja
-Soshi Sikhareshwar Roy, Kanwar Harnam Singh and Lala Nihal Chand. They began work on
+Soshi Sikhareshwar Roy, Kanwar Harnam Singh and Lala Nihal Chand.[@1] They began work on
 3 July 1893, heard almost 1,200 witnesses, among them doctors, clergy and smugglers,
-and visited asylums across India. The report ran to more than 3,200 pages.
+and visited asylums across India.[@1] The report ran to more than 3,200 pages.[@3]
 
 ## What it found
 
 The commission separated moderate use, which it called "the rule", from excessive
-use, which was "comparatively exceptional".
+use, which was "comparatively exceptional".[@1]
 
 | | Moderate use | Excessive use |
 |---|---|---|
@@ -46,28 +46,28 @@ use, which was "comparatively exceptional".
 
 On the claim that had started the inquiry, the members examined how asylum statistics
 were compiled and concluded that the effect of hemp drugs on insanity had "hitherto
-been greatly exaggerated". Most of the doctors involved thought cannabis brought out
+been greatly exaggerated".[@2] Most of the doctors involved thought cannabis brought out
 an illness already present, and that alcohol mattered at least as much.
 
 ## What it recommended
 
-Total prohibition, the report said, was "neither necessary nor expedient". It gave
+Total prohibition, the report said, was "neither necessary nor expedient".[@2] It gave
 four reasons: the drugs' known effects, how widespread the habit was, "the social and
 religious feeling on the subject", and the risk of driving users to something worse.
 
 Its policy was "control and restriction": tax the drugs adequately, allow cultivation
 only under licence, limit the number of shops and limit how much a person could
-hold. [Act XII of 1896](/history/india-act-xii-1896/) put this into law, and the
+hold.[@2] [Act XII of 1896](/history/india-act-xii-1896/) put this into law, and the
 licensed system lasted in India until the
 [1985 ban](/history/india-ndps-act-1985/).
 
 ## What became of it
 
 At [Geneva in 1925](/history/geneva-opium-convention-1925/) the Egyptian delegate
-told the conference that hashish caused 30 to 60 per cent of insanity in his country.
+told the conference that hashish caused 30 to 60 per cent of insanity in his country.[@2]
 Britain and India opposed a ban, but neither delegation cited the commission's
 report. A newspaper did: in 1926 the New York Times quoted it against the Egyptian
-claims.
+claims.[@2]
 
 Later inquiries reached much the same conclusions, from New York's
 [La Guardia report](/history/us-la-guardia-report-1944/) to the commissions of the

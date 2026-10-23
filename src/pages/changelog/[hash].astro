@@ -1,0 +1,147 @@
+---
+// One change to the site: its message, and what it did, section by section (src/lib/gitlog.js).
+import Base from "../../layouts/Base.astro";
+import { commits, summaryOf } from "../../lib/gitlog.js";
+import { formatDate, places, SEGMENTS, segmentPoints } from "../../lib/countries.js";
+import { tierColor } from "../../lib/tiers.js";
+
+export function getStaticPaths() {
+  return commits.map((c, i) => ({ params: { hash: c.short }, props: { c, newer: commits[i - 1], older: commits[i + 1] } }));
+}
+const { c, newer, older } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const g = c.groups;
+const CAP = 200; // longest list shown in full
+const placeUrl = (slug) => (places.some((p) => p.slug === slug.split("/")[0]) ? `${base}country/${slug}/` : null);
+const label = (name) => name.replace(/\./g, " › ").replace(/_/g, " ");
+const scored = g.places.filter((p) => p.scores?.length);
+const edited = g.places.filter((p) => p.status === "changed" && !p.scores?.length && p.fields?.length);
+const addedPlaces = g.places.filter((p) => p.status !== "changed");
+const newTexts = g.texts.filter((t) => t.status !== "changed");
+const editedTexts = g.texts.filter((t) => t.status === "changed" && t.fields.length);
+const summary = summaryOf(c);
+// the score moves, first: each place's total before and after, and the segments that moved
+const total = (sc) => (sc ? Math.round(SEGMENTS.reduce((a, seg, i) => a + segmentPoints(i, sc[seg.id] ?? 0), 0)) : null);
+const moves = g.places.filter((p) => p.scores?.length || (p.status === "added" && p.after)).map((p) => ({ ...p, from: total(p.before), to: total(p.after) }))
+  .sort((a, b) => Math.abs((b.to ?? 0) - (b.from ?? 0)) - Math.abs((a.to ?? 0) - (a.from ?? 0)));
+---
+<Base title={`${c.subject} · Changelog`} description={`${formatDate(c.date.slice(0, 10))}: ${summary.map(([n, w]) => `${n} ${w}`).join(", ") || "changes to the site"}.`}>
+  <main class="changes-page gl gl-commit">
+    <div class="page-bar"><a class="back" href={`${base}changelog/`}>← Changelog</a></div>
+    <section class="hero hero-sm">
+      <p class="eyebrow">Changelog <span><time datetime={c.date}>{formatDate(c.date.slice(0, 10))}</time></span> <span>{c.short}</span></p>
+      <h1>{c.subject}</h1>
+      {c.body && <p class="lede gl-body">{c.body}</p>}
+      <p class="gl-sum gl-sum-big">{summary.map(([n, what, at]) => <a href={`#${at}`}><em>{n}</em> {what}</a>)} <span class="gl-lines"><ins>+{c.add.toLocaleString("en-GB")}</ins> <del>−{c.del.toLocaleString("en-GB")}</del> lines</span></p>
+    </section>
+
+    {moves.length > 0 && (
+      <section class="section">
+        <h2 class="d-h" id="gl-scores">Score changes <span>{moves.length} {moves.length === 1 ? "place" : "places"}</span></h2>
+        <ol class="gl-moves">
+          {moves.map((m) => (
+            <li>
+              <span class="gl-move-name">{placeUrl(m.slug) ? <a href={placeUrl(m.slug)}>{m.name}</a> : m.name}{m.status === "added" && <small> new</small>}</span>
+              <span class="gl-move-total">
+                {m.from != null && <b style={`--c:${tierColor(m.from)}`}>{m.from}</b>}{m.from != null && <i aria-hidden="true">→</i>}<b style={`--c:${tierColor(m.to)}`}>{m.to}</b>
+                {m.from != null && m.to !== m.from && <em class={m.to > m.from ? "up" : "down"}>{m.to > m.from ? "+" : "−"}{Math.abs(m.to - m.from)}</em>}
+              </span>
+              <span class="gl-move-segs">{(m.scores ?? []).map((x) => <span>{label(x.name)} <b>{x.before ?? "–"} → {x.after ?? "–"}</b></span>)}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+
+    {g.history && (g.history.added.length + g.history.changed.length + g.history.removed.length > 0) && (
+      <section class="section">
+        <h2 class="d-h">History <span>changes.yaml</span></h2>
+        {g.history.added.length > 0 && (
+          <>
+            <h3 class="gl-h" id="gl-history-added">Added <span>{g.history.added.length}</span></h3>
+            <ul class="gl-entries">
+              {g.history.added.slice(0, CAP).map((e) => <li class="gl-add"><a href={`${base}history/${e.id}/`}>{e.title}</a> <small>{e.date}</small></li>)}
+              {g.history.added.length > CAP && <li class="gl-more">and {g.history.added.length - CAP} more</li>}
+            </ul>
+          </>
+        )}
+        {g.history.changed.length > 0 && (
+          <>
+            <h3 class="gl-h" id="gl-history-edited">Edited <span>{g.history.changed.length}</span></h3>
+            {g.history.changed.slice(0, CAP).map((e) => (
+              <article class="gl-card">
+                <h4><a href={`${base}history/${e.id}/`}>{e.title}</a></h4>
+                {e.fields.map((f) => <div class="gl-field"><span>{label(f.name)}</span><p class="gl-words">{f.parts.map(([k, t]) => k === "+" ? <ins>{t}</ins> : k === "-" ? <del>{t}</del> : t)}</p></div>)}
+              </article>
+            ))}
+            {g.history.changed.length > CAP && <p class="gl-more">and {g.history.changed.length - CAP} more</p>}
+          </>
+        )}
+        {g.history.removed.length > 0 && (
+          <>
+            <h3 class="gl-h" id="gl-history-removed">Removed <span>{g.history.removed.length}</span></h3>
+            <ul class="gl-entries">{g.history.removed.map((e) => <li class="gl-del">{e.title} <small>{e.id}</small></li>)}</ul>
+          </>
+        )}
+      </section>
+    )}
+
+    {(scored.length > 0 || edited.length > 0 || addedPlaces.length > 0) && (
+      <section class="section">
+        <h2 class="d-h" id="gl-places">Countries and states <span>{g.places.length} {g.places.length === 1 ? "file" : "files"}</span></h2>
+        {[...scored, ...edited.slice(0, CAP)].map((p) => (
+          <article class="gl-card">
+            <h4>{placeUrl(p.slug) ? <a href={placeUrl(p.slug)}>{p.name}</a> : p.name} <small>{p.file}</small></h4>
+            {p.scores?.length > 0 && <p class="gl-scores">{p.scores.map((s) => <span><b>{label(s.name)}</b> {s.before ?? "–"} → {s.after ?? "–"}</span>)}</p>}
+            {p.fields.map((f) => <div class="gl-field"><span>{label(f.name)}</span><p class="gl-words">{f.parts.map(([k, t]) => k === "+" ? <ins>{t}</ins> : k === "-" ? <del>{t}</del> : t)}</p></div>)}
+          </article>
+        ))}
+        {addedPlaces.length > 0 && <ul class="gl-entries">{addedPlaces.map((p) => <li class={p.status === "added" ? "gl-add" : "gl-del"}>{p.name} <small>{p.status}</small></li>)}</ul>}
+      </section>
+    )}
+
+    {g.texts.length > 0 && (
+      <section class="section">
+        <h2 class="d-h" id="gl-texts">Articles and atlas entries <span>{g.texts.length}</span></h2>
+        {newTexts.length > 0 && (
+          <ul class="gl-entries">
+            {newTexts.slice(0, CAP).map((t) => <li class={t.status === "added" ? "gl-add" : "gl-del"}>{t.url && t.status === "added" ? <a href={`${base}${t.url}`}>{t.title}</a> : t.title} <small>{t.kind} · {t.status} · {t.words} words</small></li>)}
+            {newTexts.length > CAP && <li class="gl-more">and {newTexts.length - CAP} more</li>}
+          </ul>
+        )}
+        {editedTexts.slice(0, CAP).map((t) => (
+          <article class="gl-card">
+            <h4>{t.url ? <a href={`${base}${t.url}`}>{t.title}</a> : t.title} <small>{t.file}</small></h4>
+            {t.fields.map((f) => <div class="gl-field"><span>{label(f.name)}</span><p class="gl-words">{f.parts.map(([k, x]) => k === "+" ? <ins>{x}</ins> : k === "-" ? <del>{x}</del> : x)}</p></div>)}
+          </article>
+        ))}
+      </section>
+    )}
+
+    {g.data.length > 0 && (
+      <section class="section">
+        <h2 class="d-h" id="gl-data">Datasets <span>{g.data.length}</span></h2>
+        <ul class="gl-entries">{g.data.map((d) => <li class={d.status === "removed" ? "gl-del" : "gl-add"}>{d.file} <small>{d.status === "changed" ? `${d.before.toLocaleString("en-GB")} → ${d.after.toLocaleString("en-GB")} rows` : `${d.status}, ${(d.after || d.before).toLocaleString("en-GB")} rows`}</small></li>)}</ul>
+      </section>
+    )}
+
+    {g.code.length > 0 && (
+      <section class="section">
+        <h2 class="d-h" id="gl-code">Code, design and documents <span>{g.code.length} {g.code.length === 1 ? "file" : "files"}</span></h2>
+        {g.code.map((f) => (
+          <details class="gl-file">
+            <summary><code>{f.file}</code> <span class="gl-lines"><ins>+{f.add}</ins> <del>−{f.del}</del></span></summary>
+            {f.lines
+              ? <pre class="gl-diff">{f.lines.map((l) => <span class={l.startsWith("+") ? "a" : l.startsWith("-") ? "d" : l.startsWith("@@") ? "h" : undefined}>{l}{"\n"}</span>)}{f.more > 0 && <span class="h">… {f.more} more lines</span>}</pre>
+              : <p class="gl-more">Not shown: a picture, a generated file, or past the length shown per change.</p>}
+          </details>
+        ))}
+      </section>
+    )}
+
+    <nav class="gl-pager">
+      {older ? <a href={`${base}changelog/${older.short}/`}>← {older.subject}</a> : <span></span>}
+      {newer && <a href={`${base}changelog/${newer.short}/`}>{newer.subject} →</a>}
+    </nav>
+  </main>
+</Base>

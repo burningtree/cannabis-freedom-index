@@ -1,17 +1,18 @@
 ---
-// Every change that moved a country's score, newest first, as one compact table.
+// Every change that moved a country's score, newest first, as one compact table. (The changelog,
+// changelog.astro, lists every change made to the site itself.)
 import Base from "../layouts/Base.astro";
 import { Icon } from "astro-icon/components";
 import { scoreChanges, formatDate } from "../lib/exports.js";
 
 const base = import.meta.env.BASE_URL;
 ---
-<Base title="Changelog" description="Every change to a country's score on the Cannabis Freedom Index, newest first, with an RSS feed.">
+<Base title="Score changes" description="Every change to a country's score on the Cannabis Freedom Index, newest first, with an RSS feed.">
   <main class="changes-page">
     <section class="hero hero-sm">
-      <p class="eyebrow">Changelog</p>
+      <p class="eyebrow">History</p>
       <h1>Score changes</h1>
-      <p class="lede">Every law or ruling that moved a country's score, newest first: {scoreChanges.length} in all. For the full story of each, with context and treaties, see the <a href={`${base}history/`}>History</a>.</p>
+      <p class="lede">Every law or ruling that moved a country's score, newest first: {scoreChanges.length} in all. For the full story of each, with context and treaties, see the <a href={`${base}history/`}>History</a>. Every change to the site itself, data and text included, is in the <a href={`${base}changelog/`}>changelog</a>.</p>
       <p class="page-links"><a class="btn" href={`${base}rss.xml`}>RSS feed</a> <a class="btn" href={`${base}data/`}>Download the data</a></p>
     </section>
 

@@ -21,7 +21,7 @@ export function GET({ site }) {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cannabis Freedom Index: score changes</title>
-    <link>${root}changelog/</link>
+    <link>${root}score-changes/</link>
     <atom:link href="${root}rss.xml" rel="self" type="application/rss+xml"/>
     <description>Laws and rulings that moved a country's score on the Cannabis Freedom Index.</description>
     <language>en</language>

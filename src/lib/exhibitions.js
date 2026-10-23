@@ -32,6 +32,16 @@ export const EXHIBITIONS = [
     ],
     // a still for banners elsewhere on the site, from public/
     cover: "exhibitions/reefer-madness/trailer-poster.jpg",
+    // the social preview image (src/og/exhibition.astro): a line about the rooms and a poster
+    og: {
+      rooms: "The claims and their verdicts, the machinery of a panic, the films, the posters, the people sentenced, and how a warning became a joke.",
+      // pinned over one another, the last on top: [file, x, y, width, angle]
+      posters: [
+        ["srita-4", 250, 20, 200, 9], ["srita-13", 10, 300, 190, -9], ["srita-1", 230, 330, 190, 6], ["srita-3", 80, 70, 230, -4],
+      ].map(([n, x, y, w, angle]) => ({ file: `src/assets/exhibitions/reefer-madness/posters/${n}.jpg`, x, y, w, angle })),
+    },
+    // the posters stacked on the right of the exhibition's banners elsewhere on the site
+    banner: ["srita-4", "srita-1", "srita-13", "srita-3"],
   },
   { slug: "genealogy-of-prohibition", no: "002", theme: "Institutions", title: "The Genealogy of Prohibition", line: "How laws learned to reproduce", about: "A forensic tracing of how national, imperial and treaty law copied one another.", open: false, history: [] },
   { slug: "a-thousand-names", no: "003", theme: "Language", title: "A Thousand Names for One Plant", line: "The linguistic archaeology of cannabis", about: "The words for the plant as a living specimen: where each came from and where it travelled.", open: false, history: [] },
@@ -43,3 +53,7 @@ export const exhibitionPath = (e) => `${e.slug}/`;
 export const openExhibitions = EXHIBITIONS.filter((e) => e.open);
 // history entry id → the open exhibitions about it
 export const exhibitionsOf = (id) => openExhibitions.filter((e) => e.history.includes(id));
+// an atlas entry (src/lib/culture.js) → the open exhibitions about it: those covering one of the events
+// the entry shows itself on (history_cards), or that its text links to
+export const exhibitionsOfAtlas = (entry) => openExhibitions.filter((e) =>
+  entry.history_cards.some((id) => e.history.includes(id)) || (entry.entry.body ?? "").includes(`](/${exhibitionPath(e)}`));

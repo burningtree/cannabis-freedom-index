@@ -1,0 +1,19 @@
+---
+// The full-width banner for an exhibition, at the top of a history entry or an atlas entry that the
+// exhibition covers. `note` says how the page relates to it.
+import { exhibitionPath } from "../lib/exhibitions.js";
+import "@fontsource/limelight";
+import ExhibitionPosters from "./ExhibitionPosters.astro";
+
+const { exhibition: e, note } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<a class="ev-exhibit" href={`${base}${exhibitionPath(e)}`} style={e.cover ? `--cover:url(${base}${e.cover})` : undefined}>
+  <span class="ev-exhibit-text">
+    <small>Exhibition {e.no} · {e.theme} · {note}</small>
+    <b>{e.title}</b>
+    <span>{e.line}</span>
+  </span>
+  <ExhibitionPosters exhibition={e} />
+  <span class="ev-exhibit-go">Enter the exhibition <span aria-hidden="true">→</span></span>
+</a>

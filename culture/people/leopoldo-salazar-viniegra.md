@@ -33,19 +33,19 @@ sources:
     locator: "pp. 157–181"
 ---
 
-Leopoldo Salazar Viniegra was a psychiatrist at Mexico City's great public asylum, La Castañeda, who argued in the late 1930s what most of the world would not hear for decades: that marijuana did not cause madness or crime, and that people dependent on drugs should be treated as patients, not prisoners. For five months in 1940 Mexico tried his approach. The United States made it stop.
+Leopoldo Salazar Viniegra was a psychiatrist at Mexico City's great public asylum, La Castañeda, who argued in the late 1930s what most of the world would not hear for decades: that marijuana did not cause madness or crime, and that people dependent on drugs should be treated as patients, not prisoners. For five months in 1940 Mexico tried his approach. The United States made it stop.[@1]
 
-Born in Durango in 1898, he studied medicine in Mexico City and Madrid and psychiatry in Paris, and from 1925 worked at La Castañeda for more than twenty years. He taught neuropsychiatry, founded Mexico's first clinic for epilepsy, and had a name for treating patients as people, sharing meals and conversation with them. In 1938 he was put in charge of the government's office for drug addiction and alcoholism.
+Born in Durango in 1898, he studied medicine in Mexico City and Madrid and psychiatry in Paris, and from 1925 worked at La Castañeda for more than twenty years. He taught neuropsychiatry, founded Mexico's first clinic for epilepsy, and had a name for treating patients as people, sharing meals and conversation with them. In 1938 he was put in charge of the government's office for drug addiction and alcoholism.[@1]
 
 ## The myth of marijuana
 
-In October 1938 he read the [Academy of Medicine](/history/mexico-salazar-marijuana-myth-1938/) a thirty-four-page paper. Mexicans widely believed that marijuana drove people mad and to violence; from his experiments at La Castañeda he concluded that this was unfounded, a belief he called *el mito de la marihuana*, the myth of marijuana. He suggested it should be legally available much as tobacco was. The newspaper *El Universal* reported on its front page that he had ended by offering his colleagues cigarettes that turned out to contain it. The paper was published that December.
+In October 1938 he read the [Academy of Medicine](/history/mexico-salazar-marijuana-myth-1938/) a thirty-four-page paper. Mexicans widely believed that marijuana drove people mad and to violence; from his experiments at La Castañeda he concluded that this was unfounded, a belief he called *el mito de la marihuana*, the myth of marijuana. He suggested it should be legally available much as tobacco was. The newspaper *El Universal* reported on its front page that he had ended by offering his colleagues cigarettes that turned out to contain it. The paper was published that December.[@1]
 
-He also wrote in the newspapers. In an open letter of March 1938 to Lola la Chata, the best-known drug trafficker in Mexico City, he told her that she had done better with addicts than the government had, and put her success down to the corruption of police and politicians. His remedy was for the state to take the trade over: doctors would prescribe, and the dealers would lose their customers.
+He also wrote in the newspapers. In an open letter of March 1938 to Lola la Chata, the best-known drug trafficker in Mexico City, he told her that she had done better with addicts than the government had, and put her success down to the corruption of police and politicians. His remedy was for the state to take the trade over: doctors would prescribe, and the dealers would lose their customers.[@1]
 
 ## The regulation of 1940
 
-His ideas underlay the [Federal Regulation on Drug Addiction](/history/mexico-brief-legalisation-1940/), signed by President Lázaro Cárdenas and published in February 1940. Doctors could now prescribe controlled doses to people dependent on drugs, and the state opened dispensaries in Mexico City. The programme dealt mainly in morphine. His proposals on marijuana never went beyond research and publicity; the historian Isaac Campos is clear on this point.
+His ideas underlay the [Federal Regulation on Drug Addiction](/history/mexico-brief-legalisation-1940/), signed by President Lázaro Cárdenas and published in February 1940. Doctors could now prescribe controlled doses to people dependent on drugs, and the state opened dispensaries in Mexico City. The programme dealt mainly in morphine. His proposals on marijuana never went beyond research and publicity; the historian Isaac Campos is clear on this point.[@2,3]
 
 | Year | Event |
 |---|---|
@@ -57,6 +57,6 @@ His ideas underlay the [Federal Regulation on Drug Addiction](/history/mexico-br
 
 ## Washington's answer
 
-His work alarmed the United States. US archives show that the Treasury's Federal Bureau of Narcotics, under [Harry Anslinger](/culture/people/harry-anslinger/), the State Department and the FBI were watching him from 1938, a year after the [Marihuana Tax Act](/history/us-marihuana-tax-act-1937/). Washington cut off exports of medical narcotics to Mexico, and in [July 1940](/history/mexico-regulation-suspended-1940/) the regulation was suspended. The official reason was a shortage of drugs caused by the war in Europe. Salazar, who had left the addiction office in 1939, spent his last years on the study of mental illness and died in Mexico City in 1957.
+His work alarmed the United States. US archives show that the Treasury's Federal Bureau of Narcotics, under [Harry Anslinger](/culture/people/harry-anslinger/), the State Department and the FBI were watching him from 1938, a year after the [Marihuana Tax Act](/history/us-marihuana-tax-act-1937/). Washington cut off exports of medical narcotics to Mexico, and in [July 1940](/history/mexico-regulation-suspended-1940/) the regulation was suspended. The official reason was a shortage of drugs caused by the war in Europe. Salazar, who had left the addiction office in 1939, spent his last years on the study of mental illness and died in Mexico City in 1957.[@1,2]
 
 Eighty-one years after his paper, Mexico's [Supreme Court](/history/mexico-supreme-court-2021/) struck down the ban on adult personal use of marijuana.

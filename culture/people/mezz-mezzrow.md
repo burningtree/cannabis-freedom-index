@@ -28,17 +28,17 @@ sources:
     locator: pp. 219–220, The Jazz Era
 ---
 
-Few people have given their name to cannabis. Milton Mesirow, a Jewish clarinettist from Chicago who called himself Mezz Mezzrow, did. In the jazz world of the 1930s he was so well known as a seller of marijuana that *mezz* became slang for it, alongside [*reefer*, *muggles* and *tea*](/culture/language/reefer/). The Stuff Smith song "If You're a Viper" used the word, and Mezzrow was called the Muggles King.
+Few people have given their name to cannabis. Milton Mesirow, a Jewish clarinettist from Chicago who called himself Mezz Mezzrow, did. In the jazz world of the 1930s he was so well known as a seller of marijuana that *mezz* became slang for it, alongside [*reefer*, *muggles* and *tea*](/culture/language/reefer/). The Stuff Smith song "If You're a Viper" used the word, and Mezzrow was called the Muggles King.[@1]
 
-He was born in 1899. As a young delinquent he went in and out of reform schools and prisons, where he heard jazz and the blues and took up the clarinet. In the Chicago of the 1920s he followed the Black musicians who were making the new music, above all Louis Armstrong, and decided to adopt their culture as his own.
+He was born in 1899. As a young delinquent he went in and out of reform schools and prisons, where he heard jazz and the blues and took up the clarinet. In the Chicago of the 1920s he followed the Black musicians who were making the new music, above all Louis Armstrong, and decided to adopt their culture as his own.[@1]
 
 ## The music
 
-Critics thought little of his playing. Nat Hentoff wrote that he was so consistently out of tune that he might have invented a new scale, and Bechet's biographer thought him a limited musician with a sour tone. His reputation rested on what he organised and paid for. In the 1930s and 1940s he set up and played on recording sessions with Sidney Bechet and Tommy Ladnier, among them sessions in 1938 for the French critic Hugues Panassié that helped start the New Orleans revival, and in the 1940s he ran his own label, King Jazz.
+Critics thought little of his playing. Nat Hentoff wrote that he was so consistently out of tune that he might have invented a new scale, and Bechet's biographer thought him a limited musician with a sour tone. His reputation rested on what he organised and paid for. In the 1930s and 1940s he set up and played on recording sessions with Sidney Bechet and Tommy Ladnier, among them sessions in 1938 for the French critic Hugues Panassié that helped start the New Orleans revival, and in the 1940s he ran his own label, King Jazz.[@1]
 
 ## The viper
 
-Armstrong was one of his biggest customers. A letter of 1932, written from England, tells Mezzrow where and how to send him marijuana. Armstrong had already been [arrested for smoking it](/history/us-louis-armstrong-arrest-1930/) in California. Both belonged to the world of the [tea pads](/culture/traditions/the-tea-pads-of-harlem/) and of musicians who called themselves vipers.
+Armstrong was one of his biggest customers. A letter of 1932, written from England, tells Mezzrow where and how to send him marijuana. Armstrong had already been [arrested for smoking it](/history/us-louis-armstrong-arrest-1930/) in California. Both belonged to the world of the [tea pads](/culture/traditions/the-tea-pads-of-harlem/) and of musicians who called themselves vipers.[@1]
 
 | Slang of the vipers | Meaning |
 |---|---|
@@ -47,12 +47,12 @@ Armstrong was one of his biggest customers. A letter of 1932, written from Engla
 | Viper | A smoker of it |
 | Tea | Marijuana |
 
-In 1940 he was [arrested with sixty joints](/history/us-mezzrow-arrest-1940/) at the entrance to a jazz club at the New York World's Fair, and charged with intent to distribute. He lived in Harlem with his wife, Johnnie Mae, called himself a "voluntary Negro", and in jail insisted he was Black. The deputy studied his face, agreed to send him to the Black block, and asked him to lead the prison band. He told the story in his memoir *Really the Blues*, written with Bernard Wolfe and published in 1946.
+In 1940 he was [arrested with sixty joints](/history/us-mezzrow-arrest-1940/) at the entrance to a jazz club at the New York World's Fair, and charged with intent to distribute. He lived in Harlem with his wife, Johnnie Mae, called himself a "voluntary Negro", and in jail insisted he was Black. The deputy studied his face, agreed to send him to the Black block, and asked him to lead the prison band. He told the story in his memoir *Really the Blues*, written with Bernard Wolfe and published in 1946.[@1]
 
-Ernest L. Abel’s history, published in 1980, shows how that reputation entered the vocabulary of the market. He records *mezzrole* or *messrole* for a well-filled cannabis cigarette and reports that *mezz* could also mean something genuine or superior. Those were social meanings attached to a supplier’s name, rather than names for a genetically defined strain.
+Ernest L. Abel’s history, published in 1980, shows how that reputation entered the vocabulary of the market. He records *mezzrole* or *messrole* for a well-filled cannabis cigarette and reports that *mezz* could also mean something genuine or superior. Those were social meanings attached to a supplier’s name, rather than names for a genetically defined strain.[@2]
 
-Abel quotes Mezzrow’s own account of suddenly becoming popular in Harlem. It is a retrospective autobiographical claim, which helps explain the public identity he fashioned. It should be distinguished from an independently measured account of how much of the city’s cannabis trade he supplied.
+Abel quotes Mezzrow’s own account of suddenly becoming popular in Harlem. It is a retrospective autobiographical claim, which helps explain the public identity he fashioned. It should be distinguished from an independently measured account of how much of the city’s cannabis trade he supplied.[@2]
 
 ## France
 
-After the Nice jazz festival of 1948 he settled in France, where Panassié and others championed him and he led bands of French and visiting American musicians. He spent the last twenty years of his life there, died in 1972 and is buried in Père Lachaise cemetery in Paris.
+After the Nice jazz festival of 1948 he settled in France, where Panassié and others championed him and he led bands of French and visiting American musicians. He spent the last twenty years of his life there, died in 1972 and is buried in Père Lachaise cemetery in Paris.[@1]

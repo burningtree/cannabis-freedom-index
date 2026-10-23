@@ -9,7 +9,9 @@ import { MAP_VIEWS } from "../../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries, cultureIn, cultureSection } from "../../lib/culture.js";
 import { survey, results } from "../../lib/survey.js";
 import { getFacts } from "../../lib/facts.js";
-import { renderOg, flagOf, photoOf, TIER_HEX } from "../../og/render.js";
+import { renderOg, flagOf, photoOf, collageOf, TIER_HEX } from "../../og/render.js";
+import { openExhibitions, exhibitionPath } from "../../lib/exhibitions.js";
+import { commits, summaryOf } from "../../lib/gitlog.js";
 
 const BRAND = `CANNABIS FREEDOM INDEX · ${DATA_SNAPSHOT}`;
 const num = (n) => n.toLocaleString("en-GB");
@@ -51,7 +53,8 @@ const cards = {
   about: page("What this is, and what it is for", "The law in every country, its history and the lives lived under it: sourced, open and corrected in public.", indexFacts, `ABOUT · ${BRAND}`),
   "can-i": page("Can I?", "Pick a country and get plain answers: can I carry it, grow it, buy it, use it in public, and what happens if I am caught?"),
   compare: page("Compare countries", "Up to six countries side by side: their scores, exact rules and sources in one table."),
-  changelog: page("Changelog", "Every change to a score, newest first.", [[num(scored), "SCORE CHANGES"]]),
+  "score-changes": page("Score changes", "Every change to a score, newest first.", [[num(scored), "SCORE CHANGES"]]),
+  changelog: page("Changelog", "Every change to the site, its data and its text, and exactly what changed.", [], `CHANGELOG · ${BRAND}`),
   data: page("Download the data", "Scores, history and a yearly panel since 1900 as CSV and JSON, free to reuse with attribution."),
   "did-you-know": page("Did you know?", "Strange rules, forgotten laws and what the scores show.", [[String(getFacts().length), "CURIOUS CASES"]]),
   articles: page("Articles", "Moments from the history of cannabis law told in full.", [[num(articles.size), "ARTICLES"]]),
@@ -72,6 +75,13 @@ for (const e of cultureEntries) {
     ? ["culture", { eyebrow, title: e.title, text: e.summary, photo: { file: e.image.src.fsPath, fit: e.image.fit }, credit: e.image.credit }]
     : page(e.title, e.summary, [], eyebrow);
 }
+// each open exhibition in its own look, with one of its posters
+for (const e of openExhibitions) if (e.og) cards[exhibitionPath(e).slice(0, -1)] = ["exhibition", {
+  no: e.no, theme: e.theme.toUpperCase(), title: e.title, line: e.line, rooms: e.og.rooms, address: `cannabisfreedom.fyi/${exhibitionPath(e)}`.replace(/\/$/, ""),
+  photo: { collage: e.og.posters },
+}];
+// each change in the changelog
+for (const c of commits) cards[`changelog/${c.short}`] = page(c.subject, summaryOf(c).map(([n, w]) => `${n} ${w}`).join(" · ") || "Changes to the site.", [], `CHANGELOG · ${c.date.slice(0, 10)}`);
 for (const v of MAP_VIEWS) cards[v.slug ? `map/${v.slug}` : "map"] = page(v.title, v.lede, [], `MAP · ${BRAND}`);
 for (const [kind, k] of Object.entries(CHANGE_CATEGORIES)) cards[`history/kind/${kind}`] = page(k.label, `${k.help}. Every such entry in the history of cannabis.`, [[num(dated.filter((ch) => ch.category === kind).length), "ENTRIES"]], "HISTORY OF CANNABIS");
 for (const p of historyPeriods) cards[`history/period/${p.slug}`] = page(`History, ${p.label}`, `Cannabis laws, court rulings and treaties from ${p.from} to ${p.to}.`, [], "HISTORY OF CANNABIS");
@@ -83,5 +93,7 @@ for (const c of places) {
 
 export const getStaticPaths = () => Object.entries(cards).map(([path, card]) => ({ params: { path }, props: { card } }));
 
-const draw = async ([kind, props]) => kind === "culture" ? renderOg(kind, { ...props, photo: await photoOf(props.photo.file, props.photo.fit) }) : renderOg(kind, props);
+const draw = async ([kind, props]) => kind === "culture" ? renderOg(kind, { ...props, photo: await photoOf(props.photo.file, props.photo.fit) })
+  : kind === "exhibition" ? renderOg(kind, { ...props, photo: await collageOf(props.photo.collage, 480, 630) })
+  : renderOg(kind, props);
 export const GET = async ({ props }) => new Response(await draw(props.card), { headers: { "Content-Type": "image/png", "Cache-Control": "public, max-age=86400" } });
