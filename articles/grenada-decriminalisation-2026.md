@@ -12,6 +12,10 @@ sources:
     url: https://nowgrenada.com/2025/06/government-to-table-drug-abuse-prevention-and-control-amendment-bill/
   - title: NOW Grenada — Marijuana decriminalisation legislation to go before Parliament no later than June 2025 (26 February 2025)
     url: https://nowgrenada.com/2025/02/marijuana-decriminalisation-legislation-to-go-before-parliament-no-later-than-june-2025/
+  - title: Ministry of Agriculture, via NOW Grenada — Governor-General assents to cannabis reform law (6 March 2026)
+    url: https://nowgrenada.com/2026/03/governor-general-assents-to-cannabis-reform-law/
+  - title: Cannabis Commission — Public advisory on unauthorised cannabis cultivation registration (27 February 2026)
+    url: https://nowgrenada.com/2026/02/public-advisory-unauthorised-cannabis-cultivation-registration/
 ---
 
 Grenada was, in its attorney general's words, "one of the last jurisdictions" in the
@@ -34,8 +38,11 @@ and the Act settled on 21.
 
 - **Possession:** up to 56 g of cannabis or 15 g of resin is no longer an offence.
   Dealing is presumed from 71 g.
-- **Growing:** four plants or fewer on any premises, each household counted
-  separately.
+- **Growing:** four plants or fewer at a household, each household counted
+  separately, are outside the growing offence. The agriculture ministry says a grower
+  registers with the Cannabis Secretariat and the ministry before planting, and that
+  the rules for signing up would follow. The Cannabis Commission told people to
+  ignore private groups that charge a fee to sign growers up.
 - **Under 21:** no arrest, charge or record. Children are referred to child
   protection and those aged 18 to 20 to counselling; the cannabis is forfeited.
 - **In public:** smoking near the entrance of a public place brings a fixed penalty
@@ -61,4 +68,6 @@ Until then the only lawful source is one's own plants.
 | [Grenada](/country/gd/) | 2026 | 56 g | 4 |
 
 In the index, possession rose from 1 to 5, growing from 1 to 4, enforcement from 2 to
-6 and consumption from 1 to 3. Sharing and access did not move.
+6 and consumption from 1 to 3. Sharing and access did not move. A grower is told to
+register first, and the ministry's March notice said the rules for that registration
+would follow.
