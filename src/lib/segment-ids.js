@@ -13,6 +13,7 @@ export const PLANTING_STATUS = {
 };
 export const PLANTING_TRADE = {
   open: { label: "Sold freely", tone: "legal", help: ["Anyone may sell them, in shops or online", "Anyone may sell them, in shops or online"] },
+  "regulated-sale-plus-gifts": { label: "Licensed sales and gifts", tone: "partial", help: ["Licensed sellers may sell them, and adults may also give a limited amount away", "Licensed sellers may sell them, and adults may also give a limited amount away"] },
   regulated: { label: "Regulated sellers only", tone: "partial", help: ["Only licensed sellers, clubs or the state may sell or hand them out, often with limits", "Only licensed sellers, clubs or the state may sell or hand them out, often with limits"] },
   gift: { label: "Gifts only", tone: "decrim", help: ["May be given away between adults, but not sold", "May be given away between adults, but not sold"] },
   unclear: { label: "Not settled", tone: "decrim", help: ["The law does not say whether they may be sold", "The law does not say whether they may be sold"] },

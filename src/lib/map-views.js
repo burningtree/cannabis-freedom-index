@@ -36,7 +36,7 @@ export const MAP_VIEWS = [
   { slug: "seeds", metric: "plant:seeds", column: "seeds", title: "Where cannabis seeds are legal",
     lede: "Whether an adult may have and sow cannabis seeds in each country. Hatched countries have not been researched yet." },
   { slug: "seed-sales", metric: "plant:seeds_trade", column: "seeds_trade", title: "Where cannabis seeds can be sold",
-    lede: "Whether cannabis seeds may be sold or handed on in each country: freely, by regulated sellers only, as gifts, or not at all." },
+    lede: "Whether cannabis seeds may be sold or handed on in each country: freely, by licensed sellers with adult gifts also allowed, by regulated sellers only, as gifts, or not at all." },
   { slug: "clones", metric: "plant:clones", column: "clones", title: "Where cannabis clones are legal",
     lede: "Whether an adult may have and grow cannabis cuttings in each country. Hatched countries have not been researched yet." },
   { slug: "clone-sales", metric: "plant:clones_trade", column: "clones_trade", title: "Where cannabis clones can be sold",

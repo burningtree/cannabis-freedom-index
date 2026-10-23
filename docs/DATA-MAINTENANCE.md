@@ -254,9 +254,9 @@ changes because of it.
 context:
   planting:
     seeds: grey             # may an adult have and plant them: legal | grey | licensed | illegal
-    seeds_trade: open       # may they be sold or handed on: open | regulated | gift | unclear | banned
+    seeds_trade: open       # open | regulated-sale-plus-gifts | regulated | gift | unclear | banned
     clones: illegal         # same four values as seeds
-    clones_trade: banned    # same five values as seeds_trade
+    clones_trade: banned    # same values as seeds_trade
     text: >-
       The Misuse of Drugs Act's definition of cannabis leaves out the seed, so buying and holding
       seeds is not an offence. Cultivating any plant of the genus Cannabis is unlawful without a
@@ -279,6 +279,7 @@ to sell them a plant.
 | Trade value | Meaning |
 |---|---|
 | `open` | Anyone may sell them, in shops or online |
+| `regulated-sale-plus-gifts` | Licensed sellers may sell them, and adults may also give a limited amount away |
 | `regulated` | Only licensed sellers, clubs or the state may sell or hand them out, often with limits |
 | `gift` | May be given away between adults, but not sold |
 | `unclear` | The law does not say whether they may be sold |
@@ -291,7 +292,8 @@ How to decide:
 - For clones, read the **cultivation offence** and any rule on plants that are not flowering. A
   cutting is a plant unless the law says otherwise.
 - For the trade status, look for who may sell: nobody (`banned`), a licence holder or club
-  (`regulated`), anyone (`open`). Where seeds are simply outside the definition of cannabis and no
+  (`regulated`), anyone (`open`). Where licensed sellers may sell and adults may also give a
+  limited amount away, use `regulated-sale-plus-gifts`. Where seeds are simply outside the definition of cannabis and no
   other rule restricts them, the trade is `open`. Use `unclear` when the law allows having them but
   is silent on selling, and say so in the text.
 - Keep it consistent with the profile's cultivation segment: if a few plants are tolerated, clones

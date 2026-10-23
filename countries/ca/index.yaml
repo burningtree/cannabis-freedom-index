@@ -30,12 +30,17 @@ segments:
       - bc
   cultivation:
     text: >-
-      Up to four plants per residence — not per adult — grown from licensed seeds or seedlings.
-      Quebec prohibits home growing entirely. Any fifth plant is an offence. A hard household cap
-      and a required legal seed source keep this well short of gardening freedom.
+      An adult may grow up to four cannabis plants at a time in their dwelling-house. Where two or
+      more adults live there, the household may not grow more than four, and a further plant
+      is an offence.[@cas12] The plants have to come from seed or plant material the grower does
+      not know is illicit. A gift within the federal sharing limits, or a purchase from an
+      authorised retailer, is a lawful source.[@cas12, hc_grow] Quebec and Manitoba prohibit home
+      cultivation, and Newfoundland and Labrador and the Northwest Territories prohibit outdoor
+      growing.[@hc_review]
     sources:
-      - justice
-      - act
+      - cas12
+      - hc_grow
+      - hc_review
   enforcement:
     text: >-
       Personal conduct inside the limits is not punished. Outside them the Act is severe: up to 14
@@ -111,15 +116,24 @@ context:
       - hc
   planting:
     seeds: legal
-    seeds_trade: regulated
+    seeds_trade: regulated-sale-plus-gifts
     clones: legal
-    clones_trade: regulated
+    clones_trade: regulated-sale-plus-gifts
     text: >-
-      Seeds and plants are legal classes of cannabis that licensed sellers may sell. One seed
-      counts as one gram towards the possession limit, and an adult may hold up to four plants
-      that are not budding or flowering. Provinces set where starting material may be bought.
+      Licensed sellers may sell cannabis seeds and cannabis plants. An adult may also give another
+      adult up to 30 cannabis seeds, because one seed counts as one gram of dried cannabis toward
+      the 30 gram distribution limit, and up to four plants that are not budding or
+      flowering.[@ca_dist, ca_sched, hc_review] Selling cannabis without authorisation is
+      prohibited.[@ca_sell] Home growers buy seeds or immature flowering plants from an authorised
+      retailer, and growing from a seed or plant the person knows is illicit is an offence.[@hc_grow]
+      An adult may possess up to four plants that are not budding or flowering.[@cas8]
     sources:
-      - act
+      - ca_dist
+      - ca_sched
+      - hc_review
+      - ca_sell
+      - hc_grow
+      - cas8
   black_market:
     text: >-
       The legal market has taken most of the trade. In Health Canada's 2024 survey, 72% of
@@ -221,13 +235,47 @@ sources:
     url: https://laws-lois.justice.gc.ca/eng/acts/C-24.5/section-8.html
     locator: >-
       Section 8(1)(a) forbids an adult from possessing more than 30 g of dried cannabis in public.
-      Section 8(1)(b) forbids possessing any cannabis the person knows is illicit.
+      Section 8(1)(b) forbids possessing any cannabis the person knows is illicit. Section 8(1)(e)
+      forbids possessing more than four cannabis plants that are not budding or flowering.
+  cas12:
+    title: Cannabis Act, section 12 (current to 30 September 2026)
+    url: https://laws-lois.justice.gc.ca/eng/acts/C-24.5/section-12.html
+    locator: >-
+      An adult may cultivate no more than four cannabis plants in the dwelling-house, and two or
+      more adults who live there may not between them exceed four. Cultivating from seed or plant
+      material the person knows is illicit is prohibited.
+  ca_dist:
+    title: Cannabis Act, section 9 (current to 30 September 2026)
+    url: https://laws-lois.justice.gc.ca/eng/acts/C-24.5/section-9.html
+    locator: >-
+      An adult may not distribute more than 30 g of dried cannabis or its equivalent, and may not
+      distribute a budding or flowering cannabis plant or more than four plants that are not
+      budding or flowering. Distribute includes giving.
+  ca_sell:
+    title: Cannabis Act, section 10 (current to 30 September 2026)
+    url: https://laws-lois.justice.gc.ca/eng/acts/C-24.5/section-10.html
+    locator: Selling cannabis is prohibited unless authorized under the Act.
+  ca_sched:
+    title: Cannabis Act, Schedule 3 (current to 30 September 2026)
+    url: https://laws-lois.justice.gc.ca/eng/acts/C-24.5/FullText.html
+    locator: >-
+      Schedule 3 item 7 treats one cannabis plant seed as equivalent to 1 g of dried cannabis.
+      Subsection 2(4) applies that equivalency.
+  hc_review:
+    title: Health Canada — Legislative Review of the Cannabis Act, Chapter 8 (home cultivation)
+    url: https://www.canada.ca/en/health-canada/services/drugs-medication/cannabis/laws-regulations/cannabis-act-legislative-review/expert-panel/legislative-review-cannabis-act-report.html
+    locator: >-
+      Adults may share up to 30 cannabis seeds and four non-flowering plants. Quebec and Manitoba
+      prohibit home cultivation. Newfoundland and Labrador and the Northwest Territories prohibit
+      outdoor home cultivation.
   hc_grow:
     title: Health Canada — Growing cannabis at home safely
     url: https://www.canada.ca/en/health-canada/services/drugs-medication/cannabis/personal-use/growing-cannabis-home-safely.html
     locator: >-
-      Adults may grow up to four plants per household from lawful seed and share up to 30 g of
-      personally grown cannabis with another adult.
+      Adults may grow up to four plants per household from lawful seed, buy seeds or immature
+      flowering plants from an authorised retailer, and share up to 30 g of personally grown
+      cannabis with another adult. Growing from a seed or plant known to come from an illegal
+      source is illegal.
   hc:
     title: Health Canada — Cannabis laws and regulations
     url: >-
