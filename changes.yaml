@@ -16450,6 +16450,7 @@
     offences could bring forced labour or fines, while offering drugs directly for another
     person's consumption had a separate one-to-five-year range or a fine. The law replaced
     the 1960 rongony ordinance and required landholders to destroy cannabis crops.
+  before: {possession: 0, cultivation: 0, enforcement: 1, sharing: 1, consumption: 0, access: 0}
   checked: true
   sources:
     - type: law
@@ -16470,7 +16471,7 @@
     spreading consumption and replaced the 1915 decree and 1958 rules. People providing
     vehicles or premises to facilitate offences faced the same penalties, with confiscation
     or closure and a residence ban.
-  unscored: The inherited Merina-era score step already carries the modern criminal penalties; the colonial and post-independence sequence needs reconstruction before separating this increase.
+  before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 0, access: 0}
   checked: false
   sources:
     - type: law
@@ -16494,7 +16495,7 @@
     peddling, selling and consuming rongony. A later government memorandum records eleven
     days to one month in prison and a fine, with higher penalties for repeat offences.
     Two years later Madagascar replaced these rules with sentences reaching five years.
-  unscored: The original 1958 text and its relation to earlier regional restrictions remain to be recovered before rebasing the inherited Merina-era score step.
+  before: {possession: 10, cultivation: 10, enforcement: 2, sharing: 1, consumption: 0, access: 0}
   checked: false
   sources:
     - type: law
@@ -16514,7 +16515,7 @@
     twelve months in prison, a fine of 100 to 3,000 francs, or both, and seized cannabis
     had to be confiscated and destroyed. A local promulgation order followed in December;
     the 1960 government later cited this decree when raising the penalties.
-  unscored: This colonial territorial ban needs to be separated from the older regional Merina restriction, whose inherited score step already incorporates nationwide modern prohibition.
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 10}
   checked: true
   sources:
     - type: law
@@ -18314,7 +18315,7 @@
     country. The Narcotic Drugs and Psychotropic Substances Act made flower and resin illegal
     everywhere, with prison even for small amounts. Leaves were left out, which is why bhang is
     still legal.
-  before: {possession: 5, cultivation: 2, enforcement: 5, sharing: 3, consumption: 4, access: 5}
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 10}
   checked: true
   sources:
     - title: Wikipedia — Narcotic Drugs and Psychotropic Substances Act, 1985
@@ -25437,6 +25438,7 @@
     The Central Provinces forbade the sale of charas in 1925. Smuggling rose so much after 1930 that
     on 1 January 1935 the province licensed sales again, opening shops at Nagpur and Jubbulpore with
     a possession limit of half a tola.
+  unscored: "The Central Provinces only. Provincial excise does not move India's national score."
   checked: true
   sources:
     - title: UN Bulletin on Narcotics — The surprising extinction of the charas traffic, 1953, issue 1
@@ -26026,7 +26028,7 @@
     Provinces had restricted dagga since the nineteenth century, at first only for Indian labourers.
     A national law now prohibited growing, selling and possessing it. South Africa then asked the
     League of Nations to put cannabis under international control.
-  before: {possession: 8, cultivation: 8, enforcement: 8, sharing: 6, consumption: 8, access: 6}
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 10}
   checked: true
   sources:
     - title: Wikipedia — Cannabis in South Africa
@@ -27280,7 +27282,7 @@
     rewritten first, and that was done to stop cocaine hawkers, not out of concern about
     cannabis. A person could then carry five tolas of ganja, three of charas and twenty of
     bhang.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: book
@@ -27652,6 +27654,7 @@
     Dagga farmers in the Middelburg district protested that chemists now named their price, and 170
     of them petitioned for repeal in 1906; in 1907 the Colonial Office promised that the
     proclamation would be repealed.
+  unscored: "The Cape Colony only, and a chemists' sales rule. It does not move South Africa's national score."
   checked: true
   sources:
     - type: chapter
@@ -27676,7 +27679,7 @@
     magistrate's report that year on ganja smuggling, by G. Rainy, proposed enlisting the railway
     police and every village watchman, who would visit the homes of convicted smugglers twice a
     night during the harvest.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: book
@@ -27698,7 +27701,7 @@
     over from the South African War, its provisions were adopted as the Dagga Prohibition Ordinance,
     No. 48 of 1903. It became illegal to give, sell, barter or otherwise supply cannabis, and to
     accept, buy or otherwise receive it.
-  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 10}
+  unscored: "The Orange River Colony only. A colonial ordinance does not move South Africa's national score."
   checked: true
   sources:
     - type: chapter
@@ -27800,7 +27803,7 @@
     provinces, had to be stored in government-controlled bonded warehouses. The chapter describes
     the rules as imposed from above, on the Bombay government's reading of the Hemp Drugs
     Commission.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: chapter
@@ -28170,7 +28173,7 @@
     1898, and reports cultivation prohibition and imports restricted to the Khandwa storehouse in
     the administrative year 1898–1899. The commencement date is distinct from the issue of the
     orders; the precise date of the cultivation-ban implementing rule remains unverified.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: book
@@ -28250,18 +28253,22 @@
 
 - id: india-act-xii-1896
   date: "1896"
-  category: tightening
+  category: other
   country: in
-  title: India puts cannabis growing under licence
+  title: Northern India and Burma share a new excise act
   description: >-
-    On the Hemp Drugs Commission's recommendations, Act XII of 1896 gave the government control over
-    growing the plant and over preparing, importing, exporting and transporting its drugs.
-    Cultivation was allowed only in certain places under licence and supervision and prohibited
-    elsewhere, gathering wild plants was restricted, and all products passed through bonded
-    warehouses to licensed vendors after duty was paid.
-  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 9, consumption: 10, access: 7}
+    The Excise Act of 19 March 1896 came into force at once in the North-Western Provinces and
+    Oudh, the Punjab, the Central Provinces, Burma, Coorg, and Ajmere and Merwara. Intoxicating
+    drugs under the act include ganja, bhang, charas and every preparation or admixture of them.
+    The Burma reprint gives the retail-sale quantities as one ser of bhang and five tolas of ganja
+    or charas. Bengal continued under its own excise law.
+  unscored: "Those listed territories only. Provincial excise does not move India's national score."
   checked: true
   sources:
+    - type: law
+      title: Excise Act, 1896 (Act XII), Burma code reprint
+      url: https://www.burmalibrary.org/sites/burmalibrary.org/files/obl/1896-03-19-GB-No.12-tu-en_0.pdf
+      locator: "Section 1(2) and 1(3); definition of intoxicating drugs; retail-sale quantities. Later Burma footnotes mean this reprint is not the 19 March 1896 gazette."
     - title: I. C. Chopra and R. N. Chopra — The use of the cannabis drugs in India, UN Bulletin on Narcotics, 1957, issue 1
       url: https://www.unodc.org/unodc/en/data-and-analysis/bulletin/bulletin_1957-01-01_1_page003.html
 
@@ -28762,7 +28769,7 @@
     until 1898. By 1900 the province had 433 licensed shops selling cannabis drugs, nearly 60 per
     cent more than two years earlier, and revenue that had been nil before 1889 reached 172,766
     rupees.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: chapter
@@ -29074,7 +29081,7 @@
     Officials there had argued that rising liquor taxes were pushing drinkers towards ganja, which
     was largely untaxed, and that restriction was practicable because hemp was not grown there for
     fibre.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: chapter
@@ -29153,7 +29160,7 @@
     from auctioning the right to retail. From 1 January 1881 makers of ganja and other hemp drugs
     needed a licence from the local collector, and wholesalers needed permits to import, export or
     move the drugs between districts. Cultivation was not restricted.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: chapter
@@ -29191,7 +29198,7 @@
     against what was produced. A deputy collector sent to survey the tract that year, Hem Chunder
     Kerr, had the fields measured and found 3,111 bighas under hemp where the growers had declared
     2,113.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: book
@@ -29359,6 +29366,7 @@
     from implementing rules: the commission still asked the Governor in Council to exercise them.
     This verifies an enabling measure, not the commencement of a general cannabis ban; the original
     statute and implementing notices remain uninspected.
+  unscored: "Natal only: an enabling power, which the 1887 commission was still asking the governor to use. It does not move South Africa's national score."
   checked: true
   sources:
     - type: chapter
@@ -29599,7 +29607,7 @@
     Rajshahi district, the Ganja Mahal, under a special deputy collector. Growers needed a licence,
     the harvest was weighed and stamped by excise officers, and the crop went through a government
     warehouse where duty was paid before licensed dealers could take it.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: chapter
@@ -29960,7 +29968,7 @@
     to the growers. Having paid, he could buy as much as he wanted and sell it where he liked. Until
     the 1850s the Company was content with that income and did not concern itself with how much was
     grown or used.
-  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 10}
+  unscored: "Bengal only. A provincial licence does not move the score for all of modern India."
   checked: true
   sources:
     - type: book
@@ -29982,13 +29990,7 @@
     cultivation for cloth and rope. Historical accounts describe death as a penalty, and
     a proverb collection says the rule was applied only briefly. The conventional 1787
     date remains uncertain; the colony-wide smoking-cannabis decree followed in 1915.
-  before:
-    possession: 10
-    cultivation: 10
-    enforcement: 10
-    sharing: 10
-    consumption: 10
-    access: 10
+  unscored: "Central Imerina only, with an uncertain date and a rule reportedly applied only briefly. It does not set Madagascar's national score."
   checked: true
   sources:
     - type: book
@@ -47755,7 +47757,7 @@
     spontaneous plants, and unlicensed cultivators faced a fine of up to 100 rupees, with half the
     realized fine available to informants. This was a regional licensing restriction, not an
     all-India prohibition.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: report
@@ -47780,7 +47782,7 @@
     commission memorandum dates the change to 1884; the later district gazetteer uses the
     administrative year 1884–1885. The memorandum attributes a subsequent contraction in cultivated
     area to the revision, without independently establishing that it was the only cause.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: report
@@ -47815,7 +47817,7 @@
     licensed dealers. A clause preserved bona fide medical preparation and supply. The commission
     describes the resulting system as a state monopoly in importation and sale, rather than a ban on
     every use or all cultivation.
-  unscored: "One province or princely state; the licensed, taxed regime these built is where the chain starts."
+  unscored: "One province or princely state. Provincial excise does not move India's national score."
   checked: true
   sources:
     - type: report

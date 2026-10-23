@@ -16,11 +16,11 @@ up in a single act of parliament.
 
 ## A licensed drug
 
-British India taxed cannabis from [1798](/history/india-bhang-tax-1798/) and, on the
-advice of the [Hemp Drugs Commission](/history/india-hemp-drugs-commission-1894/),
-put it under licence in [1896](/history/india-act-xii-1896/): growing in approved
-places, sale through licensed vendors, duty paid on the way. Independent India kept
-the arrangement and left it to the states.
+British India licensed cannabis through provincial excise. The
+[1896 excise act](/history/india-act-xii-1896/) covered the North-Western Provinces and Oudh,
+the Punjab, the Central Provinces, Burma, Coorg, and Ajmere and Merwara. Bengal and the
+other provinces kept their own systems. Independent India left growing, selling and
+possession to the states.
 
 At the [1961 conference](/history/un-single-convention-1961/) India fought the
 proposed world ban. It won an exception for bhang, by keeping leaves out of the

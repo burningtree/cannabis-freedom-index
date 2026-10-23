@@ -57,9 +57,10 @@ religious feeling on the subject", and the risk of driving users to something wo
 
 Its policy was "control and restriction": tax the drugs adequately, allow cultivation
 only under licence, limit the number of shops and limit how much a person could
-hold.[@2] [Act XII of 1896](/history/india-act-xii-1896/) put this into law, and the
-licensed system lasted in India until the
-[1985 ban](/history/india-ndps-act-1985/).
+hold.[@2] The [1896 excise act](/history/india-act-xii-1896/) applied that approach in the
+North-Western Provinces and Oudh, the Punjab, the Central Provinces, Burma, Coorg, and Ajmere
+and Merwara. Other provinces kept their own excise. Licensed sale in the states continued until
+the [1985 ban](/history/india-ndps-act-1985/).
 
 ## What became of it
 

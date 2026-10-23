@@ -57,5 +57,6 @@ them rich enough to raise 60,000 rupees in a day and to pay for a school and the
 own roads. The government, he wrote, had made them "its partners in an enormously
 valuable monopoly".
 
-The Bombay limit is a context entry for [India](/country/in/): the national score
-had already moved with the [1896 excise act](/history/india-act-xii-1896/).
+Bombay's limit applied in that presidency. The first nationwide ban is the
+[1985 act](/history/india-ndps-act-1985/), which made flower and resin illegal throughout
+[India](/country/in/).

@@ -1015,7 +1015,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
         <div class="ch-x">{[1875, 1900, 1925, 1950, 1975, 2000, 2025].filter((y) => y <= NOW).map((y) => <span class:list={{ last: y > NOW - 5 }} style={`left:${pct(y + 0.5, S0, NOW + 1)}%`}>{y}</span>)}</div>
         <div class="ch-stripes-ends" aria-hidden="true"><span>↑ freest today</span><span>strictest today ↓</span></div>
       </div>
-      <p class="ch-source">Each country's score at the end of each year, rebuilt from its history, as in the <a href={`${base}data/#panel`}>yearly data</a>. These are reconstructed scores, including estimated dates and assumed baselines. Madagascar’s early line carries a <a href={`${base}history/madagascar-merina-ban-1787/`}>regional royal smoking ban</a> across the modern country; its continuous nationwide duration is unresolved. Hover a stripe for its country and year; click it for the country's history.</p>
+      <p class="ch-source">Each country's score at the end of each year, rebuilt from its history, as in the <a href={`${base}data/#panel`}>yearly data</a>. These are reconstructed scores, including estimated dates and assumed baselines. A regional or provincial rule stays off the national line until a law covers the whole country. Hover a stripe for its country and year; click it for the country's history.</p>
       <p class="ch-more"><a href={`${base}map/`}>Play the years on the map →</a> <a href={`${base}data/#panel`}>Download the yearly scores →</a></p>
     </section>
     {chapterAt.has("first-bans") && <h2 class="ch-chapter">{chapterAt.get("first-bans")}</h2>}
