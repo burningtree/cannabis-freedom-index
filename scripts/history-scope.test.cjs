@@ -176,3 +176,17 @@ test("Uzbekistan and Honduras profiles follow the current criminal codes", () =>
   assert.equal(code.date, "2020-06-25");
   assert.equal(code.before, undefined);
 });
+
+test("Ghana distinguishes the personal-possession fine from buying for personal use", () => {
+  const gh = y.load(fs.readFileSync("countries/gh.yaml", "utf8"));
+  assert.match(gh.summary, /four to ten years/);
+  assert.match(gh.segments.possession.text, /section 45\(2\)/);
+  assert.match(gh.segments.possession.text, /200 to 500/);
+  assert.match(gh.context.visitors.text, /four to ten years/);
+  assert.equal(gh.scores.possession, 2);
+  assert.equal(gh.scores.enforcement, 3);
+  const act = byId["ghana-narcotics-commission-act-2020"];
+  assert.equal(act.date, "2020-05-11");
+  assert.match(act.description, /2,000 to 10,000/);
+  assert.equal(act.before.possession, 0);
+});

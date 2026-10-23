@@ -10,12 +10,14 @@ sources:
     url: https://idpc.net/blog/2022/07/engaging-judges-to-implement-the-new-drug-law-in-ghana
   - title: "IDPC — Maria-Goretti Ane, Ghana's drug policy reform must move beyond law into practice (28 July 2026)"
     url: https://idpc.net/blog/2026/07/ghana-s-drug-policy-reform-must-move-beyond-law-into-practice
+  - title: Narcotics Control Commission Act, 2020 (Act 1019)
+    url: https://tbhivcare.org/wp-content/uploads/2025/10/NARCOTICS-CONTROL-COMMISSION-ACT-2020-ACT-1019.pdf
 ---
 
 On 20 March 2020 the Parliament of Ghana passed the Narcotics Control Commission Act. For
-someone caught with drugs for their own use, it replaced a prison sentence with a fine. It was
-signed into law on 11 May 2020, stopping short of full decriminalisation: drug use stayed an
-offence.
+someone caught holding drugs for their own use, it replaced a prison sentence with a fine. The
+President assented on 11 May 2020, and the Gazette carried the Act the same day. Drug use stayed
+an offence.
 
 ## Five years at least
 
@@ -38,9 +40,18 @@ treated drug use as a public health issue and promised alternatives to prison.
 
 The fine came to about 2,400 to 6,000 cedis. Maria-Goretti Ane of the International Drug Policy
 Consortium stressed what it did not mean: "This does not mean that drug use has been legalised."
-Prison was no longer the default answer to using drugs. The Act also
+For possession, the sentence became the fine. The Act also
 provided for licensing cannabis with less than 0.3 per cent THC for industrial, medical and
 research purposes.
+
+## Buying is a different offence
+
+Section 45 makes it an offence to buy a narcotic drug or plant for personal use, and it uses the
+same Second Schedule range as buying in order to sell: a fine of 2,000 to 10,000 penalty units,
+or four to ten years in prison. The default-sentence column for that row is blank. A court that
+convicts someone under the personal-purchase offence may also order treatment at a facility the
+Commission approves. The possession fine applies to holding the drug, and the section 45 range
+applies to buying it.
 
 ## The licensing clause
 
