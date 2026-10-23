@@ -25,9 +25,20 @@ sources:
     locator: >-
       P.L. 2025-37; sections 102–103; parliamentary passage 19 September and certification 6 October
       2025
+  - type: law
+    title: Trust Territory Code 1980 — Title 63, Controlled Substances
+    url: https://web.archive.org/web/20241223000000id_/https://www.cnmilaw.org/pdf/ttc/t63.pdf
+    locator: >-
+      Printed pp. 127–142; sections 251–252, 259, 291–292 and 298; historical code edition, not a
+      1980 commencement notice
+  - type: law
+    title: Trust Territory Code 1980 — Title 1, geographical application
+    url: https://web.archive.org/web/20241223000000id_/https://www.cnmilaw.org/pdf/ttc/t1.pdf
+    locator: >-
+      Section 151, printed p. 75: code applies throughout the territory, expressly including the
+      Marshall Islands
 ---
-
-The Marshall Islands’ national narcotics law took effect on 20 March 1987. It prohibited cannabis possession, cultivation and distribution while allowing specified professional and prescription exceptions. An early marijuana prosecution under the law later produced a Supreme Court ruling on the right to a lawyer.[@1,2]
+Earlier [territorial cannabis controls](/history/marshall-islands-territorial-code-record-1980/) preceded the Marshall Islands’ national narcotics law.[@6,7] The national law took effect on 20 March 1987. It prohibited cannabis possession, cultivation and distribution while allowing specified professional and prescription exceptions. An early marijuana prosecution under the law later produced a Supreme Court ruling on the right to a lawyer.[@1,2]
 
 ## An early possession case tested defendants’ rights
 
