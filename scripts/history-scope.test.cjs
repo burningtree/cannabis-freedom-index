@@ -190,3 +190,22 @@ test("Ghana distinguishes the personal-possession fine from buying for personal 
   assert.match(act.description, /2,000 to 10,000/);
   assert.equal(act.before.possession, 0);
 });
+
+test("France's 2026 fine and Ireland's driving limits follow the statutes", () => {
+  const fr = y.load(fs.readFileSync("countries/fr.yaml", "utf8"));
+  const ie = y.load(fs.readFileSync("countries/ie.yaml", "utf8"));
+  assert.match(fr.summary, /€500/);
+  assert.match(fr.segments.possession.text, /€400/);
+  assert.match(fr.segments.possession.text, /€1,000/);
+  assert.doesNotMatch(fr.segments.possession.text, /50 g/);
+  assert.match(fr.context.consequences.text, /three years/);
+  assert.equal(fr.scores.enforcement, 3);
+  const fine = byId["france-fixed-fine-2026"];
+  assert.equal(fine.date, "2026-08-20");
+  assert.equal(fine.category, "tightening");
+  assert.equal(fine.before, undefined);
+  assert.match(fine.unscored, /fixed-fine procedure/);
+  assert.match(ie.context.driving.text, /5 nanograms/);
+  assert.match(ie.context.driving.text, /medical exemption certificate/);
+  assert.doesNotMatch(ie.context.driving.text, /treated as impaired/);
+});
