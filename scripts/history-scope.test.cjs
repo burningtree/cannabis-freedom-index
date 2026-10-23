@@ -671,3 +671,18 @@ test("El Salvador's own-use ruling, Manitoba's home grow and Portugal's influenc
   assert.equal(influence.category, "other");
   assert.equal(influence.before, undefined);
 });
+
+test("South Africa's child-use order and uncommenced gift rule follow the texts that were read", () => {
+  const za = y.load(fs.readFileSync("countries/za.yaml", "utf8"));
+  const child = byId["south-africa-child-cannabis-2022"];
+  assert.match(za.segments.enforcement.text, /no child may be arrested, prosecuted or diverted/);
+  assert.doesNotMatch(za.segments.enforcement.text, /diverted rather than prosecuted/);
+  assert.match(za.context.planting.text, /has not come into force/);
+  assert.doesNotMatch(za.context.planting.text, /Adults may give cannabis to, or receive it from/);
+  assert.equal(za.context.planting.seeds, "grey");
+  assert.equal(za.scores.sharing, 3);
+  assert.equal(za.scores.possession, 6);
+  assert.equal(child.date, "2022-09-29");
+  assert.equal(child.before, undefined);
+  assert.match(child.unscored, /adult scores do not move/);
+});
