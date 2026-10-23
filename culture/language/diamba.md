@@ -1,46 +1,80 @@
 ---
 title: Diamba
-summary: A Central African word for cannabis that turns up on three coasts of the Atlantic, wherever enslaved and freed Central Africans were taken.
+summary: >-
+  A Central African word for cannabis that turns up on three coasts of the Atlantic, wherever
+  enslaved and freed Central Africans were taken.
 origin: Central African
-also: [liamba, riamba]
-countries: [sl, ao, br]
-history: [sierra-leone-cannabis-long-in-use-1851, angola-livingstone-observation-1857, sierra-leone-ban-1920, brazil-decree-law-891-1938, angola-portuguese-ban-1913, brazil-rio-pango-ban-1830]
-history_cards: [sierra-leone-cannabis-long-in-use-1851]
+also:
+  - liamba
+  - riamba
+countries:
+  - sl
+  - ao
+  - br
+history:
+  - sierra-leone-cannabis-long-in-use-1851
+  - angola-livingstone-observation-1857
+  - sierra-leone-dangerous-drugs-ordinance-1926
+  - brazil-decree-law-891-1938
+  - angola-portuguese-ban-1913
+  - brazil-rio-pango-ban-1830
+history_cards:
+  - sierra-leone-cannabis-long-in-use-1851
 image:
   src: ../../src/assets/culture/diamba-angola-1890.jpg
   fit: contain
-  alt: Historical photograph of a leaf-wrapped cannabis bundle above a specimen label reading Hemp for smoking (diamba), Songo, Angola, and July 25, 1890
-  caption: '“Hemp for smoking (diamba)”, wrapped in banana leaves. The specimen label records the Songo people, Angola, and 25 July 1890; collector H. Chatelain.'
+  alt: >-
+    Historical photograph of a leaf-wrapped cannabis bundle above a specimen label reading Hemp for
+    smoking (diamba), Songo, Angola, and July 25, 1890
+  caption: >-
+    “Hemp for smoking (diamba)”, wrapped in banana leaves. The specimen label records the Songo
+    people, Angola, and 25 July 1890; collector H. Chatelain.
   credit: Historical specimen photograph, reproduced by Alchimia
   credit_url: https://www.alchimiaweb.com/blogen/malawi-cob-fermented-cannabis/
 model: gpt-6
-written: 2026-10-15
+written: 2026-10-15T00:00:00.000Z
 sources:
   - type: journal
     title: Short notice of the African Plant Diamba, commonly called Congo Tobacco
-    authors: [R. O. Clarke]
-    container: "Hooker's Journal of Botany and Kew Garden Miscellany"
+    authors:
+      - R. O. Clarke
+    container: Hooker's Journal of Botany and Kew Garden Miscellany
     year: 1851
-    locator: 'vol. 3, pp. 9–11'
-    url: https://bsi.gov.in/uploads/userfiles/file/Rare%20Books/Hooker%E2%80%99s%20Journal%20Of%20Botany%20And%20Kew%20Garden%20Miscellany%20Vol.%203.pdf
+    locator: vol. 3, pp. 9–11
+    url: >-
+      https://bsi.gov.in/uploads/userfiles/file/Rare%20Books/Hooker%E2%80%99s%20Journal%20Of%20Botany%20And%20Kew%20Garden%20Miscellany%20Vol.%203.pdf
   - type: book
     title: The African Roots of Marijuana
-    authors: [Chris S. Duvall]
+    authors:
+      - Chris S. Duvall
     publisher: Duke University Press
     year: 2019
-    isbn: '9781478004530'
-    locator: 'ch. 4, pp. 89–94, especially pp. 89–92; notes 121–161, pp. 267–270'
+    isbn: "9781478004530"
+    locator: >-
+      ch. 4, pp. 89–94, especially pp. 89–92; notes 121–161, pp. 267–270; p. 191 and chapter 9 notes
+      51–53, pp. 316–317
     url: https://www.dukeupress.edu/the-african-roots-of-marijuana
   - title: Wikipedia — Cannabis in Sierra Leone
     url: https://en.wikipedia.org/wiki/Cannabis_in_Sierra_Leone
   - title: Transnational Institute — The Rise and Decline of Cannabis Prohibition, chapter 1
     url: https://www.tni.org/files/download/rise_and_decline_ch1.pdf
-  - title: Chris S. Duvall — Decriminalization doesn't address marijuana's standing as a drug of the poor, The Conversation (2015)
-    url: https://theconversation.com/decriminalization-doesnt-address-marijuanas-standing-as-a-drug-of-the-poor-42345
-  - title: "Wikipedia — Cannabis in Angola"
+  - title: >-
+      Chris S. Duvall — Decriminalization doesn't address marijuana's standing as a drug of the
+      poor, The Conversation (2015)
+    url: >-
+      https://theconversation.com/decriminalization-doesnt-address-marijuanas-standing-as-a-drug-of-the-poor-42345
+  - title: Wikipedia — Cannabis in Angola
     url: https://en.wikipedia.org/wiki/Cannabis_in_Angola
-  - title: "Wikipedia — Cannabis in Brazil"
+  - title: Wikipedia — Cannabis in Brazil
     url: https://en.wikipedia.org/wiki/Cannabis_in_Brazil
+  - type: law
+    title: Dangerous Drugs Ordinance, Chapter 154, revised text
+    authors:
+      - Government of Sierra Leone
+    locator: >-
+      pp. 1619–1623, sections 1–2 and 9–13; heading dates Ordinance No. 10 to 10 April 1926 and
+      lists amendments of 1928 and 1932
+    url: https://www.sierra-leone.org/Laws/Cap%20154.pdf
 ---
 
 *Diamba* is a word for cannabis from western Central Africa. It is heard today in Angola, in Sierra Leone far up the coast, and in Brazil across the ocean. What links those three places is the Atlantic slave trade.
@@ -74,7 +108,7 @@ He also distinguished *Maconie*, a preparation using flowers and seeds, from *Ma
 
 It found local uses. Midwives gave it in childbirth, and fishermen took it to get through their work. Sierra Leonean sailors and dockers then carried the habit along the coast, to Ghana and the Gambia.
 
-The British [banned it in 1920](/history/sierra-leone-ban-1920/), by adding it to the Opium Act of 1913. It did not go away. A doctor told the country's Truth and Reconciliation Commission in 2003 that it was so commonly used "that I don't think people consider it a crime any more".
+British colonial [drug controls adopted in 1926](/history/sierra-leone-dangerous-drugs-ordinance-1926/) made growing and possessing cannabis offences. It did not go away. A doctor told the country's Truth and Reconciliation Commission in 2003 that it was so commonly used "that I don't think people consider it a crime any more".
 
 ## Brazil
 
