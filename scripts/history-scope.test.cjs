@@ -227,3 +227,21 @@ test("China visitor fines and Nepal possession bands follow the statutes", () =>
   assert.equal(np.scores.possession, 1);
   assert.equal(np.scores.enforcement, 2);
 });
+
+test("Croatia's misdemeanour and the West Bank personal-use offence keep their scores", () => {
+  const hr = y.load(fs.readFileSync("countries/hr.yaml", "utf8"));
+  const ps = y.load(fs.readFileSync("countries/ps.yaml", "utf8"));
+  assert.match(hr.summary, /90 days/);
+  assert.match(hr.segments.possession.text, /90 days/);
+  assert.match(hr.context.visitors.text, /90 days/);
+  assert.doesNotMatch(hr.segments.enforcement.text, /rather than prison/);
+  assert.equal(hr.scores.enforcement, 3);
+  assert.equal(hr.scores.possession, 3);
+  assert.match(ps.summary, /six months to two years/);
+  assert.match(ps.segments.possession.text, /article 17/);
+  assert.match(ps.segments.cultivation.text, /article 17/);
+  assert.doesNotMatch(ps.segments.cultivation.text, /at least ten years/);
+  assert.match(ps.segments.consumption.text, /article 17/);
+  assert.equal(ps.scores.possession, 1);
+  assert.equal(ps.scores.cultivation, 0);
+});
