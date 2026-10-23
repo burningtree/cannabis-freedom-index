@@ -1,64 +1,49 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6
+written: "2026-10-23"
 sources:
   - type: chapter
     title: "Dagga: How South Africa Made a Dangerous Drug, 1902–1928"
-    authors: [Thembisa Waetjen]
+    authors:
+      - Thembisa Waetjen
     container: "Cannabis: Global Histories"
-    editors: [Lucas Richert, James H. Mills]
+    editors:
+      - Lucas Richert
+      - James H. Mills
     publisher: MIT Press
     year: 2021
-    isbn: "9780262366137"
-    locator: "pp. 94–98"
+    isbn: "9780262045209"
+    locator: Chapter 4, pp. 83–107
 ---
 
-The Cape Colony's first move against dagga was not a ban. In 1905 it declared the plant
-a poison, which handed the trade to chemists, and the result satisfied nobody.
+The Cape Colony put cannabis, commonly called dagga, on a poison list in 1905, giving chemists exclusive authority to sell it.[@1] Smoking and possession remained unrestricted, but growers now faced a narrower market controlled by pharmaceutical buyers.[@1]
 
-## Who wanted it
+## Doctors pressed for control while politicians disagreed
 
-Doctors and pharmacists in the Cape had been organised since the 1890s, with a medical
-council and a pharmacy board that controlled the sale of "poisons". In September 1904
-Dr Jane Waterston, the colony's only woman physician, wrote to the attorney general.
-Recent crimes against women had made her think about Indian hemp, she said, whose
-intoxication "seems to be almost peculiar to the coloured races". Should it not be put
-on the list of poisons?
+Dr Jane Elizabeth Waterston had urged the government to restrict cannabis after linking it to crimes against women and loss of reason.[@1] Her intervention fed a debate in which some politicians described dagga as damaging workers and threatening public order.[@1]
 
-## The debate
+Other Legislative Council members challenged those claims.[@1] They disputed the evidence about insanity and argued that cannabis could provide comfort after work or an alternative to alcohol.[@1]
 
-The Legislative Council took it up in 1905. One member called dagga smoking a growing
-evil in the wine and fruit districts, bringing madness and idleness.
+Historian Thembisa Waetjen places the dispute within the growing influence of organised medicine, whose professional bodies advised the government on which substances should be controlled as poisons.[@1]
 
-Two pushed back. J. F. du Toit doubted that any member could name a single asylum
-patient driven mad by dagga, and said it made young workers "energetic and wide
-awake". Another complained that the government was "gradually taking away from the
-native what little pleasures they had": a smoke after a hard day's work did no harm
-and kept men from drink.
+## Growers lost bargaining power
 
-## The listing
+Farmers around Middelburg grew cannabis commercially, supplying a crop with intoxicant, medicinal and other uses.[@1] The poison listing took effect as their harvest was approaching market.[@1]
 
-Cannabis was designated a poison under the Pharmacy Act. Only chemists could now sell
-it. Possessing and smoking it remained perfectly legal.
+Their representative, M. J. Pretorius, complained that pharmaceutical buyers could dictate prices.[@1] Growers said chemists bought cheaply, packaged the plant with a poison warning and sold it at a much greater profit.[@1]
 
-## What went wrong
+The new rule therefore placed a professional gatekeeper between farmers and consumers, even while the consumers' smoking and possession remained lawful.[@1]
 
-Boer farmers in the Middelburg district grew dagga as a commercial crop, and the law
-took effect as their harvest came in. With chemists the only lawful buyers, the price
-collapsed from over four shillings a pound to a penny-halfpenny. The chemists, growers
-complained, did no more than put it in a packet with a poison label and sell it at a
-large profit, to anyone, as medicine.
+## A petition challenged the policy
 
-In 1906, 170 farmers petitioned for repeal. Their member of parliament demanded
-evidence of dagga's harm, which the medical council could not supply. In 1907 the
-Colonial Office promised that the listing would be withdrawn.
+In [June 1906](/history/cape-dagga-farmers-petition-1906/), 170 farmers and supporters petitioned the Legislative Council to reverse the listing.[@1] Pretorius also demanded evidence from the medical authorities to justify their claims of harm.[@1]
 
-## What came next
+Officials promised repeal in 1907, while considering stronger controls on both possession and sales.[@1] The dispute over the poison list thus continued alongside proposals that would reach further into cannabis use.[@1]
 
-Not a retreat. Farmers in the wine districts now complained that labourers were buying
-dagga from chemists freely; a test purchase was made by a fifteen-year-old. Police
-investigations followed in 1914 and 1915, and the Cape pressed for national
-legislation. It came in [1922](/history/south-africa-national-ban-1922/).
+Other farmers later took the opposite position: the [Paarl Farmers' Association](/history/paarl-farmers-dagga-prohibition-petition-1912/) sought tighter controls, alleging damage to labour and danger to white farm women.[@1]
 
-The index lists the 1905 measure for context: it restricted who could sell in one
-colony of what became [South Africa](/country/za/).
+## The argument moved towards national legislation
+
+After Union in 1910, Cape campaigners pressed the national government for broader action.[@1] An [unpresented draft in 1916](/history/south-africa-habit-forming-drugs-bill-1916/) proposed controlling use, possession, supply and unlicensed growing; nationwide prohibition followed in 1922.[@1]
+
+In [South Africa](/country/za/), the Cape dispute showed how control of cannabis could change livelihoods and strengthen professional power before a general ban was imposed.[@1]
