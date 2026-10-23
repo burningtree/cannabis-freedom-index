@@ -640,3 +640,34 @@ test("Zambia's Cannabis Act stays uncommenced and the hemp Act starts on 3 Janua
   assert.equal(controlled.category, "other");
   assert.equal(controlled.before, undefined);
 });
+
+test("El Salvador's own-use ruling, Manitoba's home grow and Portugal's influence report follow the texts that were read", () => {
+  const sv = y.load(fs.readFileSync("countries/sv.yaml", "utf8"));
+  const ca = y.load(fs.readFileSync("countries/ca/index.yaml", "utf8"));
+  const pt = y.load(fs.readFileSync("countries/pt.yaml", "utf8"));
+  const ruling = byId["el-salvador-personal-use-possession-2012"];
+  const grow = byId["canada-manitoba-home-grow-2025"];
+  const influence = byId["portugal-drug-influence-report-2024"];
+  assert.match(sv.segments.possession.text, /outside criminal/);
+  assert.match(sv.segments.possession.text, /less than 2 g/);
+  assert.doesNotMatch(sv.summary, /Even under 2 g carries one to three years/);
+  assert.equal(sv.scores.possession, 0);
+  assert.equal(sv.scores.enforcement, 1);
+  assert.equal(ruling.date, "2012-11-16");
+  assert.equal(ruling.before, undefined);
+  assert.match(ruling.unscored, /possession score stays/);
+  assert.match(ca.segments.cultivation.text, /1 May 2025/);
+  assert.match(ca.segments.cultivation.text, /indoors/);
+  assert.doesNotMatch(ca.segments.cultivation.text, /Manitoba prohibit/);
+  assert.equal(ca.scores.cultivation, 4);
+  assert.equal(grow.date, "2025-05-01");
+  assert.equal(grow.before, undefined);
+  assert.match(grow.unscored, /national cultivation score does not move/);
+  assert.equal(pt.context.driving.status, "impairment");
+  assert.match(pt.context.driving.text, /medical or expert report/);
+  assert.match(pt.context.driving.text, /0\.8 ng\/mL/);
+  assert.doesNotMatch(pt.context.driving.text, /offence is committed if/);
+  assert.equal(influence.date, "2024-07-15");
+  assert.equal(influence.category, "other");
+  assert.equal(influence.before, undefined);
+});

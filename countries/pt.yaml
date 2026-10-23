@@ -110,15 +110,22 @@ context:
       - hemp_rules
       - cannabis_rules
   driving:
-    status: zero
+    status: impairment
     text: >-
-      No THC limit is set: under the road law the offence is committed if a narcotic or
-      psychotropic substance is detected. Police may stop at random and test on suspicion,
-      with a roadside oral-fluid test and blood taken at a hospital. The road-law penalty is a
-      fine of 500 to 2,500 euros and a ban of two months to two years; where danger is caused
-      the criminal code allows up to three years in prison.
+      Driving under the influence of a psychotropic substance is forbidden. A driver is under
+      that influence when an examination under the road code, and the rules that complement it,
+      says so in a medical or expert report. Detection alone is not that report. The fine is
+      500 to 2,500 euros. Where there are signs of influence, or after a crash with a death or
+      a serious injury, the driver is tested. A positive screen bars driving for 48 hours,
+      unless a new screen is negative sooner. That bar is not the offence. A Supreme Court
+      judgment published on 15 July 2024, about an insurer's claim after a crash, held that
+      the insurer must prove the substance diminished the driver's fitness to drive safely,
+      shown by a medical or expert examination. In that case 0.8 ng/mL of THC and 4.3 ng/mL
+      of THC-COOH, without such a report, did not establish influence.
     sources:
-      - euda_dd
+      - ce81
+      - ce157
+      - stj10
   arrests:
     text: >-
       The EU drugs agency's statistical bulletin records 12,109 cannabis-related drug law
@@ -174,9 +181,18 @@ sources:
   euda_dlo:
     title: "EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)"
     url: https://www.euda.europa.eu/data/stats2026/dlo_en
-  euda_dd:
-    title: EUDA — Legal approaches to drugs and driving, country table (last updated May 2025)
-    url: https://www.euda.europa.eu/publications/topic-overviews/legal-approaches-to-drugs-and-driving/html_en
+  ce81:
+    title: Código da Estrada, artigo 81.º (PGDL, versão actualizada)
+    url: https://www.pgdlisboa.pt/leis/lei_mostra_articulado.php?artigo_id=349A0081&nid=349&tabela=leis&ficha=1&pagina=1
+    locator: "Paragraphs 1, 5 and 6(b)"
+  ce157:
+    title: Código da Estrada, artigo 157.º (PGDL, versão actualizada)
+    url: https://www.pgdlisboa.pt/leis/lei_mostra_articulado.php?artigo_id=349A0157&nid=349&tabela=leis&ficha=1&pagina=1
+    locator: "Paragraphs 1 to 3"
+  stj10:
+    title: "Acórdão do Supremo Tribunal de Justiça n.º 10/2024 (Diário da República, 15 July 2024, PDF)"
+    url: https://files.diariodarepublica.pt/1s/2024/07/13500/0000700039.pdf
+    locator: "Sumário; the insurer must prove diminished fitness"
   law:
     title: Lei n.º 30/2000 — regime jurídico do consumo de estupefacientes (Diário da República)
     url: https://diariodarepublica.pt/dr/detalhe/lei/30-2000-599720
