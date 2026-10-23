@@ -90,3 +90,51 @@ test("known regional events are not the first scored step for their modern count
   }
   for (const id of blocked) assert.equal(byId[id].before, undefined, id);
 });
+
+test("scored dates follow commencement, not assent", () => {
+  for (const id of [
+    "uganda-narcotics-act-2024",
+    "uganda-narcotics-commencement-2025",
+    "india-ndps-amendment-assent-2001",
+    "india-ndps-amendment-2001",
+    "new-zealand-dangerous-drugs-1927",
+    "new-zealand-dangerous-drugs-commencement-1928",
+    "portugal-personal-use-quantity-2023",
+  ]) {
+    assert.equal(changes.filter((e) => e.id === id).length, 1, id);
+  }
+  const ugandaAssent = byId["uganda-narcotics-act-2024"];
+  const ugandaStart = byId["uganda-narcotics-commencement-2025"];
+  assert.equal(ugandaAssent.before, undefined);
+  assert.match(ugandaAssent.unscored, /14 April 2025/);
+  assert.equal(ugandaStart.date, "2025-04-14");
+  assert.equal(total(ugandaStart.before), 9);
+  assert.equal(total(scoreAt("ug", 2024)), 9);
+  assert.equal(total(scoreAt("ug", 2025)), total(y.load(fs.readFileSync("countries/ug.yaml", "utf8")).scores));
+
+  const indiaAssent = byId["india-ndps-amendment-assent-2001"];
+  const indiaBands = byId["india-ndps-amendment-2001"];
+  assert.equal(indiaAssent.date, "2001-05-09");
+  assert.equal(indiaAssent.before, undefined);
+  assert.equal(indiaBands.date, "2001-10-02");
+  assert.equal(indiaBands.before.possession, 0);
+
+  const nzAssent = byId["new-zealand-dangerous-drugs-1927"];
+  const nzStart = byId["new-zealand-dangerous-drugs-commencement-1928"];
+  assert.equal(nzAssent.before, undefined);
+  assert.match(nzAssent.unscored, /1 January 1928/);
+  assert.equal(scored("nz")[0].id, "new-zealand-dangerous-drugs-commencement-1928");
+  assert.equal(nzStart.date, "1928-01-01");
+  assert.deepEqual(scoreAt("nz", 1927), FREE);
+  assert.equal(total(scoreAt("nz", 1928)), 11);
+
+  const portugal = byId["portugal-personal-use-quantity-2023"];
+  assert.equal(portugal.date, "2023-10-01");
+  assert.equal(portugal.before, undefined);
+  assert.match(portugal.unscored, /administrative/);
+  const pt = y.load(fs.readFileSync("countries/pt.yaml", "utf8"));
+  assert.match(pt.segments.possession.text, /1 October 2023/);
+  assert.match(pt.segments.possession.text, /25 g/);
+  assert.equal(pt.scores.possession, 3);
+  assert.equal(pt.scores.enforcement, 5);
+});

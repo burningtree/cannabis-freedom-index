@@ -76,7 +76,8 @@ implemented the Single Convention and distinguished dealing from simple
 possession or use. The Law Commission identifies substantially higher penalties
 for dealing under that legislation.
 
-For [New Zealand's history](/country/nz/), the 1927 Act is an important starting
-point for national cannabis controls. Its date, product definition and licensing
-structure still need to be described on their own terms, with later changes
-and evidence of enforcement recorded separately.
+For [New Zealand's history](/country/nz/), the controls take effect on
+[1 January 1928](/history/new-zealand-dangerous-drugs-commencement-1928/).
+That is the date the index uses for the first national drop. The November 1927
+assent, the product definition and the licensing structure stay on their own
+terms, with later changes and evidence of enforcement recorded separately.

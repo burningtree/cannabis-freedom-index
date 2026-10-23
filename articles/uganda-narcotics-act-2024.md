@@ -4,6 +4,8 @@ written: 2026-10-12
 sources:
   - title: Uganda — Narcotic Drugs and Psychotropic Substances (Control) Act, 2024 (Act 2 of 2024), Gazette text (ULII, PDF)
     url: https://media.ulii.org/media/legislation/109240/source_file/9ca5653ec0919d44/ug-act-2024-2-publication-document.pdf
+  - title: ULII — Narcotic Drugs and Psychotropic Substances (Control) Act, Cap. 37 (Commencement) Instrument, 2025
+    url: https://ulii.org/en/akn/ug/act/si/2025/42/eng@2025-04-14
   - title: "African Business — Uganda: House passes new strict narcotics law after court ruling"
     url: https://african.business/2023/08/apo-newsfeed/uganda-house-passes-new-strict-narcotics-law-after-court-ruling
 ---
@@ -33,8 +35,8 @@ And the Act's definition of trafficking includes "giving" and "supplying". Passi
 
 The Act is not only prohibition. The health minister may issue a licence to cultivate or gather a prohibited plant, on conditions the minister sets by regulation. Growing without one brings a fine of up to 120 currency points, three times the crop's value, or up to five years.
 
-The Act comes into force on a date the internal affairs minister appoints by statutory instrument.
+Section 1 leaves the start to a date the internal affairs minister appoints. Statutory Instrument 42 of 2025 appointed 14 April 2025.
 
 ## Why the index moved
 
-The [Act](/history/uganda-narcotics-act-2024/) lowers [Uganda's](/country/ug/) possession score from 1 to 0 and its sharing score from 1 to 0. Twenty years with no lesser tier is a law under which prison is a realistic outcome for a small amount, and a gift that counts as trafficking is the lowest level of the sharing scale. Growing stays at 1, because the separate five-year offence is far lighter than trafficking. The earlier Act that this one replaced could not be read, so the change is recorded at the text that could.
+The score moves on [14 April 2025](/history/uganda-narcotics-commencement-2025/), the day the Act came into force, and lowers [Uganda's](/country/ug/) possession score from 1 to 0 and its sharing score from 1 to 0. Twenty years with no lesser tier is a law under which prison is a realistic outcome for a small amount, and a gift that counts as trafficking is the lowest level of the sharing scale. Growing stays at 1, because the separate five-year offence is far lighter than trafficking. The [February 2024 assent](/history/uganda-narcotics-act-2024/) is recorded on its own, with no score change. The Constitutional Court had said in 2023 that striking down the previous Act did not legalise cannabis, so the years before April 2025 stay on the earlier ban.
