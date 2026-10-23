@@ -138,3 +138,24 @@ test("scored dates follow commencement, not assent", () => {
   assert.equal(pt.scores.possession, 3);
   assert.equal(pt.scores.enforcement, 5);
 });
+
+test("current-law profile corrections keep the statute and the score scale apart", () => {
+  const ba = y.load(fs.readFileSync("countries/ba.yaml", "utf8"));
+  const kz = y.load(fs.readFileSync("countries/kz.yaml", "utf8"));
+  const mx = y.load(fs.readFileSync("countries/mx.yaml", "utf8"));
+  assert.match(ba.segments.possession.text, /article 239\(3\)/);
+  assert.match(ba.segments.possession.text, /one year/);
+  assert.match(ba.summary, /criminal offence/);
+  assert.equal(ba.scores.possession, 1);
+  assert.equal(ba.scores.enforcement, 2);
+  assert.match(kz.summary, /Article 296/);
+  assert.match(kz.summary, /criminal offence/);
+  assert.doesNotMatch(kz.summary, /administrative offence/);
+  assert.equal(kz.scores.possession, 2);
+  assert.doesNotMatch(mx.segments.possession.text, /28 g/);
+  assert.doesNotMatch(mx.segments.cultivation.text, /six plants/);
+  assert.match(mx.segments.possession.text, /5 g/);
+  assert.match(mx.context.visitors.text, /named adult/);
+  assert.equal(mx.scores.possession, 3);
+  assert.equal(mx.scores.cultivation, 3);
+});
