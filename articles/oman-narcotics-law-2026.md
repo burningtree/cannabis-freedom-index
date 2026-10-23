@@ -31,12 +31,18 @@ grow. A seed that can germinate is banned with the plant.
 | Conduct | Penalty |
 |---|---|
 | Using; or importing, buying, holding or growing for personal use | 1 to 3 years and a fine of 1,000 to 5,000 rials |
-| Possessing, selling or transporting for trafficking | At least 15 years; life in aggravated cases |
-| Importing, producing or growing for trafficking | Death or life imprisonment |
+| Supplying a drug to a user, or preparing a place for use, without payment | 7 to 15 years and a fine of 5,000 to 15,000 rials |
+| Possessing, selling or transporting for trafficking, or supplying a user for payment | At least 15 years and a fine of 10,000 to 25,000 rials |
+| Importing, exporting, producing, manufacturing or growing for trafficking | Death or life imprisonment, and a fine of 35,000 to 60,000 rials |
 | Refusing to give a sample for testing | 6 months to 3 years |
 
-The death penalty applies in the aggravated cases, among them smuggling for
-trafficking, repeat offences and membership of an international gang.
+Death or life imprisonment is the penalty for that import, export, production,
+manufacture or cultivation when it is done in order to traffic. Death is the only
+penalty for smuggling those things for trafficking, for a repeat of that offence,
+for an official charged with drug control, and for taking part in an international
+smuggling gang. A sale that is not an import or a manufacture starts at fifteen
+years. An unpaid transfer made in order to traffic can still fall under the
+fifteen-year offence.
 
 A foreigner convicted under the law is deported for good.
 

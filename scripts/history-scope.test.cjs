@@ -245,3 +245,19 @@ test("Croatia's misdemeanour and the West Bank personal-use offence keep their s
   assert.equal(ps.scores.possession, 1);
   assert.equal(ps.scores.cultivation, 0);
 });
+
+test("Oman's death penalty and unpaid supply follow the 2026 narcotics law", () => {
+  const om = y.load(fs.readFileSync("countries/om.yaml", "utf8"));
+  const law = byId["oman-narcotics-law-2026"];
+  assert.match(om.segments.enforcement.text, /death or life imprisonment/);
+  assert.match(om.context.death_penalty.text, /death or by life imprisonment/);
+  assert.doesNotMatch(om.segments.enforcement.text, /aggravated cases/);
+  assert.doesNotMatch(om.context.death_penalty.text, /aggravated cases/);
+  assert.match(om.segments.sharing.text, /without payment/);
+  assert.match(om.segments.sharing.text, /seven to fifteen years/);
+  assert.match(om.segments.sharing.text, /fifteen years/);
+  assert.match(law.description, /death or life imprisonment/);
+  assert.match(law.description, /seven to fifteen years/);
+  assert.equal(om.scores.enforcement, 1);
+  assert.equal(om.scores.sharing, 0);
+});
