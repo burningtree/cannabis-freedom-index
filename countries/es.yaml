@@ -92,10 +92,13 @@ context:
       - elmundo17
   consequences:
     text: >-
-      Fines are not a criminal record. Roadside saliva tests detect any THC, with a €1,000 fine and
-      six licence points regardless of impairment.
+      Fines are not a criminal record.[@local] Roadside saliva tests detect any THC, with a €1,000 fine and
+      six licence points regardless of impairment.[@boe_ts] A medicine used under a doctor's
+      prescription for treatment is outside that presence rule when the driver can still drive
+      with due care.[@boe_ts]
     sources:
       - local
+      - boe_ts
   planting:
     seeds: grey
     seeds_trade: open
@@ -143,12 +146,14 @@ context:
   driving:
     status: zero
     text: >-
-      Since the road safety law was changed in May 2014, driving with the presence of drugs in
-      the body is an administrative offence in its own right, punished with a fine of 1,000
-      euros and the loss of six licence points; no impairment has to be shown and no threshold
-      applies. Any driver can be asked to take a drug test at any hour on any road, and in the
-      first year or so after the change more than 20,000 drivers were sanctioned for it.
+      Article 14 of the road traffic law forbids driving with drugs in the body. No impairment
+      has to be shown and no threshold applies. The fine is 1,000 euros and six licence
+      points.[@boe_ts] The ban leaves out a substance used under a doctor's prescription for
+      treatment, when the driver can still drive with the care the law requires.[@boe_ts]
+      In the first year
+      or so after the 2014 change, more than 20,000 drivers were sanctioned.[@int15]
     sources:
+      - boe_ts
       - int15
   arrests:
     text: >-
@@ -206,6 +211,13 @@ sources:
   boe:
     title: Ley Orgánica 4/2015 de protección de la seguridad ciudadana (BOE)
     url: https://www.boe.es/buscar/act.php?id=BOE-A-2015-3442
+  boe_ts:
+    title: BOE — Real Decreto Legislativo 6/2015, texto refundido de la Ley de Tráfico
+    url: https://www.boe.es/buscar/act.php?id=BOE-A-2015-11722
+    locator: >-
+      Article 14(1) excludes a substance used under a doctor's prescription for treatment when
+      the driver can still drive with due care. Article 80(2)(a) sets the 1,000-euro fine for
+      the drug-presence offence in article 77(c). Annex II assigns six licence points.
   boe903:
     title: BOE — Real Decreto 903/2025, de 7 de octubre, fórmulas magistrales de preparados estandarizados de cannabis
     url: https://www.boe.es/eli/es/rd/2025/10/07/903

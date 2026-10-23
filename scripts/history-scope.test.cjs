@@ -368,3 +368,36 @@ test("Gandaki, Ohio gifts and Singapore resin thresholds follow the texts that w
   assert.equal(sg.scores.possession, 0);
   assert.equal(sg.scores.enforcement, 0);
 });
+
+test("Spain, Poland, Germany, Liechtenstein and Canada follow the texts that were read", () => {
+  const es = y.load(fs.readFileSync("countries/es.yaml", "utf8"));
+  const pl = y.load(fs.readFileSync("countries/pl.yaml", "utf8"));
+  const de = y.load(fs.readFileSync("countries/de.yaml", "utf8"));
+  const li = y.load(fs.readFileSync("countries/li.yaml", "utf8"));
+  const ca = y.load(fs.readFileSync("countries/ca/index.yaml", "utf8"));
+  const flower = byId["germany-flower-reimbursement-ended-2026"];
+  assert.equal(es.context.driving.status, "zero");
+  assert.match(es.context.driving.text, /doctor's prescription/);
+  assert.match(es.context.driving.text, /1,000 euros/);
+  assert.match(es.context.driving.text, /six licence points/);
+  assert.equal(pl.context.driving.status, "consumption");
+  assert.match(pl.context.driving.text, /article 87/);
+  assert.match(pl.context.driving.text, /inactive THC metabolite/);
+  assert.equal(pl.scores.possession, 1);
+  assert.match(de.context.medical.text, /30 July 2026/);
+  assert.match(de.context.medical.text, /six-month trial/);
+  assert.match(de.context.medical.text, /continue without the trial/);
+  assert.equal(flower.date, "2026-07-30");
+  assert.equal(flower.before, undefined);
+  assert.equal(de.scores.possession, 5);
+  assert.match(li.segments.possession.text, /50,000 francs/);
+  assert.match(li.segments.possession.text, /six months/);
+  assert.doesNotMatch(li.segments.possession.text, /one year/);
+  assert.equal(li.scores.possession, 1);
+  assert.doesNotMatch(ca.segments.possession.text, /licensed source/);
+  assert.match(ca.segments.possession.text, /knows is illicit/);
+  assert.match(ca.segments.possession.text, /grown at home/);
+  assert.equal(ca.scores.possession, 6);
+  assert.equal(ca.scores.cultivation, 4);
+  assert.equal(ca.scores.sharing, 5);
+});
