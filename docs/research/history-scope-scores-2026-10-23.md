@@ -39,11 +39,12 @@ growing, are two to six months or a fine, and use is scored with possession
 regional, uncertain, briefly applied smoking ban, with no score.
 
 India: 1793, 1896 and the 1925 Central Provinces charas ban are unscored
-provincial events. The national line stays at 100 until the Narcotic Drugs
-and Psychotropic Substances Act of 14 November 1985, which is the first ban
-covering the whole country. It falls from 100 to 11. The 2001 quantity bands
-still rise from 11 to 13. Provincial excise notes no longer say that the
-chain starts in the licensed regime of 1896.
+provincial events, so neither Bengal's licence nor Act XII is a dated
+nationwide step. The 1985 ban still starts from the licensed-shop baseline
+(40: possession 5, cultivation 2, enforcement 5, sharing 3, consumption 4,
+access 5), because state excise and licensed sale in much of the country are
+documented and a score of 100 would read as no cannabis rule at all. The ban
+falls from 40 to 11. The 2001 quantity bands still rise from 11 to 13.
 
 South Africa: the Orange River Colony ordinance, the Cape poison listing and
 the 1870 Natal enabling power are unscored. The 1922 national ban falls from

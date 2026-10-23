@@ -69,6 +69,6 @@ removed in [2014](/history/india-ndps-amendment-2014/), and in
 [2021](/history/india-decriminalisation-consensus-2021/) ministries discussed ending
 prison for personal use, without result.
 
-In the index possession dropped from
-5 to 1, enforcement from 5 to 2 and access from 5 to 2, where
-[India](/country/in/) remains.
+In the index the 1985 ban takes possession from 5 to 0, enforcement from 5 to 2
+and access from 5 to 2. The [2001 quantity bands](/history/india-ndps-amendment-2001/)
+then raise possession from 0 to 1, which is where [India](/country/in/) remains.

@@ -45,7 +45,8 @@ test("Madagascar's 1787 royal ban does not carry modern national penalties", () 
   assert.deepEqual(modern, profile);
 });
 
-test("India's national score starts at the 1985 ban, not a provincial licence", () => {
+test("India's provincial excise events do not move the national score", () => {
+  const licensed = { possession: 5, cultivation: 2, enforcement: 5, sharing: 3, consumption: 4, access: 5 };
   for (const id of ["india-bengal-ganja-licences-1793", "india-act-xii-1896", "india-central-provinces-charas-1925"]) {
     assert.equal(byId[id].before, undefined, id);
     assert.match(byId[id].unscored, /Provincial|Bengal|Central Provinces|territories/);
@@ -54,9 +55,10 @@ test("India's national score starts at the 1985 ban, not a provincial licence", 
   assert.doesNotMatch(byId["india-act-xii-1896"].description, /all of British India|nationwide/);
   const first = scored("in")[0];
   assert.equal(first.id, "india-ndps-act-1985");
-  assert.deepEqual(first.before, FREE);
-  assert.deepEqual(scoreAt("in", 1793), FREE);
-  assert.deepEqual(scoreAt("in", 1896), FREE);
+  assert.deepEqual(first.before, licensed);
+  assert.equal(total(licensed), 40);
+  assert.deepEqual(scoreAt("in", 1793), licensed);
+  assert.deepEqual(scoreAt("in", 1896), licensed);
 });
 
 test("South Africa's national score starts at the 1922 ban, not one colony", () => {

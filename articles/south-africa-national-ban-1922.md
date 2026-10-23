@@ -30,4 +30,4 @@ The 1922 provisions were moved into the Medical, Dental and Pharmacy Act in 1928
 
 ## What moved in the index
 
-The national ban cut [South Africa's](/country/za/) possession, cultivation and consumption scores from 6 to 1. Enforcement fell from 6 to 2, sharing from 5 to 1 and access from 5 to 0. The broad fall reflects a national prohibition reaching every scored part of personal cannabis freedom.
+The national ban cut [South Africa's](/country/za/) possession, cultivation and consumption scores from 10 to 1. Enforcement fell from 10 to 2, sharing from 10 to 1 and access from 10 to 0. The broad fall reflects a national prohibition reaching every scored part of personal cannabis freedom.
