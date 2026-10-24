@@ -897,3 +897,35 @@ test("Maldives quantity presumptions, Kuwait decree-law 159, and Japan cultivati
   assert.match(jp.context.planting.text, /up to five years/);
   assert.equal(jp.scores.cultivation, 0);
 });
+
+test("Vietnam sale brackets, South Sudan's cannabis exclusion, and Bangladesh section 36A follow the texts that were read", () => {
+  const vn = y.load(fs.readFileSync("countries/vn.yaml", "utf8"));
+  const ss = y.load(fs.readFileSync("countries/ss.yaml", "utf8"));
+  const bd = y.load(fs.readFileSync("countries/bd.yaml", "utf8"));
+  const sale = byId["vietnam-sale-possession-penalties-2025"];
+  const digital = byId["bangladesh-digital-drug-offence-2026"];
+  assert.match(vn.segments.possession.text, /three to five years/);
+  assert.doesNotMatch(vn.segments.possession.text, /one to five years/);
+  assert.match(vn.segments.sharing.text, /30 kg/);
+  assert.match(vn.segments.sharing.text, /150 kg/);
+  assert.doesNotMatch(vn.segments.sharing.text, /death penalty applies from 5 kg/);
+  assert.equal(vn.recreational, "death");
+  assert.equal(vn.scores.possession, 1);
+  assert.equal(sale.date, "2025-07-01");
+  assert.equal(sale.category, "other");
+  assert.match(ss.segments.sharing.text, /other than cannabis/);
+  assert.match(ss.segments.sharing.text, /fourteen years/);
+  assert.doesNotMatch(ss.summary, /life or death/);
+  assert.equal(ss.recreational, "illegal");
+  assert.equal(ss.scores.consumption, 0);
+  assert.equal(ss.scores.sharing, 0);
+  assert.match(bd.segments.sharing.text, /Section 36A/);
+  assert.match(bd.segments.sharing.text, /2 million taka/);
+  assert.match(bd.context.death_penalty.text, /not the penalty for ordinary possession/);
+  assert.equal(bd.recreational, "death");
+  assert.equal(bd.scores.possession, 0);
+  assert.equal(digital.date, "2026-07-16");
+  assert.equal(digital.category, "death");
+  assert.equal(digital.before, undefined);
+  assert.ok(digital.unscored);
+});

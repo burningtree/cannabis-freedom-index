@@ -3,10 +3,11 @@ region: Asia
 iso_numeric: 704
 recreational: death
 medical: none
-updated: 2026-10-13
+updated: 2026-10-24
 summary: >-
   A first detection of use brings a fine and a year of police management; using again in that
-  time is a crime. Trafficking can carry the death penalty.
+  time is a crime. Illegal sale is three to seven years. Life or death applies from 30 kg of
+  cannabis resin or 150 kg of the listed plant parts.
 scores:
   possession: 1
   cultivation: 0
@@ -17,13 +18,14 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis is on List I, banned from all use. Criminal liability for possession under Article
-      249 of the Criminal Code starts at 1 g of cannabis resin or 1 kg of plant material, with one
-      to five years in prison. Below those amounts possession is handled administratively, with
-      fines, unless the person has a prior record.
+      Article 249 of the Criminal Code, as amended from 1 July 2025, punishes illegal possession
+      that is not for sale, transport or production. The first bracket is three to five years for
+      1 g to under 500 g of cannabis resin, or 1 kg to under 10 kg of the listed plant parts
+      (leaves, roots, stem, branches, flowers and fruit). A prior administrative penalty or
+      conviction that has not been cleared can make a smaller amount criminal. Five kilograms or
+      more of resin, or 75 kg or more of those plant parts, is fifteen to twenty years or life.
     sources:
-      - ln1
-      - ln2
+      - a249
   cultivation:
     text: >-
       Growing cannabis plants is prohibited: an administrative fine for small numbers, criminal
@@ -38,10 +40,12 @@ segments:
       - ln1
   sharing:
     text: >-
-      Any sale or transfer is trafficking under Article 251, with two years to life; the death
-      penalty applies from 5 kg of resin or 75 kg of plant material.
+      Illegal sale under Article 251, as amended from 1 July 2025, is three to seven years.
+      From 5 kg to under 30 kg of cannabis resin, or 75 kg to under 150 kg of the listed plant
+      parts, the sentence is twenty years or life. From 30 kg of resin, or 150 kg of those plant
+      parts, it is life or death. The article is the sale offence.
     sources:
-      - ln1
+      - a251
   consumption:
     text: >-
       Illegal use brings a warning or a fine of 1–2 million dong, and people classed as addicted can
@@ -61,10 +65,13 @@ segments:
 context:
   death_penalty:
     text: >-
-      Trafficking can carry the death penalty, which applies from 5 kg of resin or 75 kg of plant
-      material.
+      From 1 July 2025, illegal sale of 5 kg to under 30 kg of cannabis resin, or 75 kg to under
+      150 kg of the listed plant parts, is twenty years or life. Life or death applies from 30 kg
+      of resin or 150 kg of those plant parts. Death is an alternative sentence in that bracket,
+      not a required one. The same law removed the death penalty for illegal transport.
     sources:
-      - ln1
+      - a251
+      - mps25
   production:
     text: Reliable national information about lawful cannabis production was not established by the retained sources.
     sources: []
@@ -101,13 +108,11 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession becomes a crime under Article
-      249 of the Criminal Code from 1 g of cannabis resin or 1 kg of plant material, with one to
-      five years in prison; below those amounts it is handled administratively, with fines,
-      unless the person has a prior record.
+      There is no legal recreational supply for anyone. Illegal possession that is not for sale,
+      transport or production is three to five years from 1 g of cannabis resin or 1 kg of the
+      listed plant parts. A prior penalty can make a smaller amount criminal.
     sources:
-      - ln1
-      - ln2
+      - a249
   driving:
     status: zero
     text: >-
@@ -149,6 +154,18 @@ sources:
     title: LawNet — Is cannabis considered a narcotic substance in Vietnam?
     url: >-
       https://lawnet.vn/ngan-hang-phap-luat/en/tu-van-phap-luat/trach-nhiem-hinh-su/is-cannabis-considered-a-narcotic-substance-in-vietnam-403021
+  a249:
+    title: "Chinhphu.vn — Article 249, illegal possession of narcotics, as amended by Law 86/2025/QH15 (14 July 2025)"
+    url: https://xaydungchinhsach.chinhphu.vn/muc-phat-toi-tang-tru-trai-phep-chat-ma-tuy-119250714155300157.htm
+    locator: "Article 249(1), (2) and (4). In force 1 July 2025."
+  a251:
+    title: "Chinhphu.vn — Article 251, illegal sale of narcotics, as amended by Law 86/2025/QH15 (22 July 2025)"
+    url: https://xaydungchinhsach.chinhphu.vn/muc-phat-toi-mua-ban-trai-phep-chat-ma-tuy-119250722173411884.htm
+    locator: "Article 251(1), (4) and (5). In force 1 July 2025."
+  mps25:
+    title: "Ministry of Public Security — the Criminal Code amendment is in force from 1 July 2025"
+    url: https://bocongan.gov.vn/bai-viet/cong-bo-luat-sua-doi-bo-sung-mot-so-dieu-cua-bo-luat-hinh-su-co-hieu-luc-tu-0172025-d2-t45852
+    locator: "Confirms commencement and that Article 251's life-or-death bracket was separated so as to raise the quantity for a death sentence. Death was removed for illegal transport."
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure

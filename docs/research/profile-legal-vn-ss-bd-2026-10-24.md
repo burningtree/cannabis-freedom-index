@@ -1,0 +1,15 @@
+# Vietnam, South Sudan and Bangladesh, 24 October 2026
+
+Issues #103, #105, #106 and #107.
+
+## Vietnam
+
+Read the government text of amended Articles 249 and 251 on Chinhphu.vn, and the Ministry of Public Security notice that Law 86/2025/QH15 took effect on 1 July 2025. Possession that is not for sale, transport or production is three to five years in the first bracket, not one to five. Sale is three to seven years. Five kilograms of cannabis resin, or 75 kg of the listed plant parts, is twenty years or life. Life or death applies from 30 kg of resin or 150 kg of those plant parts. Death in that bracket is an alternative. The ministry notice also says death was removed for illegal transport, and that the life-or-death bracket of Article 251 was separated in order to raise the quantity. The possession score stays at 1 because the first weight band is not a small amount and a first quantity below it is not in the criminal list that was read. Sale remains a death-eligible offence, so the death classification stays. The full amending statute was not opened page by page beyond the two articles and the ministry notice.
+
+## South Sudan
+
+Read sections 382 to 384 in the Ministry of Justice PDF of the Penal Code Act 2008, and the same dealing and possession sections on UNODC SHERLOC. Possession, use and growing for one's own consumption are up to five years, a fine, or both. Dealing, including supply, is up to fourteen years, a fine, or both. Death or life imprisonment is written only where the drug was a dangerous drug other than cannabis and an aggravating circumstance is proved. In that chapter, cannabis means the flowering or fruiting tops. The cannabis plant, prepared cannabis and cannabis resin are defined separately and are not repeated in the exclusion. No later statute replacing these sections was found. A 2024 workshop recommended amendments; the report that was read does not say they were enacted. The death classification was removed. Use itself is an offence, so consumption moves from 1 to 0. The other scores stay.
+
+## Bangladesh
+
+The ministry site returned a gateway error on a direct fetch. The section text used here is the official section 36A as returned in full from that site's page, Act No. 101 of 2026, dated 16 July 2026. Subsection (2) is any term of imprisonment or death, and a fine of up to 2 million taka. Subsection (3), for an international or organised case, is any term of imprisonment, a fine of up to 5 million taka, or both, and does not itself state death. Recovery of the drug is not required. Section 1(2) was not in the page that was read, so the history date is the date printed on the act. The Daily Star report of 17 August 2026 was read: the narcotics department filed the first case under the section on 16 August, over THC and CBD products it said had been sold on Daraz. The First Schedule was not re-read, so the earlier hashish classification was left as it stood. Scores stay. The death classification stays because section 36A can carry death.
