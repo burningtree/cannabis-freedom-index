@@ -788,3 +788,26 @@ test("Manitoba's indoor grow rule, Nunavut's 150 g limit and South Australia's e
   assert.equal(cap.subunit, "nu");
   assert.equal(cap.before, undefined);
 });
+
+test("Prince Edward Island's grow rules, Western Australia's intervention notice, Tasmania's penalty unit and the ACT access offences follow the texts that were read", () => {
+  const pe = y.load(fs.readFileSync("countries/ca/pe.yaml", "utf8"));
+  const wa = y.load(fs.readFileSync("countries/au/wa.yaml", "utf8"));
+  const tas = y.load(fs.readFileSync("countries/au/tas.yaml", "utf8"));
+  const act = y.load(fs.readFileSync("countries/au/act.yaml", "utf8"));
+  assert.match(pe.segments.cultivation, /1\.52 metres/);
+  assert.match(pe.segments.cultivation, /written permission/);
+  assert.equal(pe.scores.cultivation, 4);
+  assert.match(wa.segments.possession, /may issue/);
+  assert.doesNotMatch(wa.summary, /leads to a one-off/);
+  assert.equal(wa.scores.possession, 2);
+  assert.equal(wa.scores.enforcement, 3);
+  assert.match(tas.segments.possession, /50 penalty units/);
+  assert.match(tas.segments.possession, /\$10,650/);
+  assert.doesNotMatch(tas.segments.possession, /\$7,950/);
+  assert.equal(tas.scores.possession, 2);
+  assert.match(act.segments.cultivation, /public can/);
+  assert.match(act.segments.possession, /children's reach/);
+  assert.doesNotMatch(act.segments.enforcement, /Nothing within the limits/);
+  assert.equal(act.scores.enforcement, 6);
+  assert.equal(act.scores.cultivation, 3);
+});
