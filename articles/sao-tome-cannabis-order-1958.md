@@ -1,47 +1,53 @@
 ---
-written: 2026-10-12
+written: '2026-10-24'
 sources:
-  - title: UNODC SHERLOC — São Tomé and Príncipe, Order 2574 of 29 May 1958
-    url: https://sherloc.unodc.org/cld/uploads/res/document/stp/order-no-2574_html/saotome_order_2574.pdf
+  - type: law
+    title: São Tomé and Príncipe — Governor in Council Order 2574, 29 May 1958
+    url: >-
+      https://sherloc.unodc.org/cld/uploads/res/document/stp/order-no-2574_html/saotome_order_2574.pdf
+    year: 1958
+    locator: UNODC SHERLOC English translation; preamble and articles 1–2; Boletim Oficial No. 22
+  - type: law
+    title: Portugal — Portaria 537/70, extending the drug law overseas
+    url: https://diariodarepublica.pt/dr/analise-juridica/informacoes-gerais/portaria/537-1970-147436
+    year: 1970
+    locator: Published 26 October 1970; paragraphs 1–4 and final direction for overseas publication
+  - type: law
+    title: Portugal — Decree-Law 420/70, original drug offences and penalties
+    url: https://diariodarepublica.pt/dr/detalhe/decreto-lei/420-1970-148827
+    year: 1970
+    locator: Articles 2–6 and annex entries 18–19; published 3 September 1970
+  - type: law
+    title: São Tomé and Príncipe — Penal Code approved by Law 6/2012
+    url: https://faolex.fao.org/docs/pdf/sao209843original.pdf
+    year: 2012
+    locator: >-
+      Gazette No. 95, 6 August 2012; approving law article 4, code preamble and articles 279, 281,
+      283, 291, 293; table I-C
 ---
 
-On 29 May 1958, São Tomé and Príncipe acquired a cannabis rule that can be dated precisely. Order
-2574 was published in the colony's official bulletin and dealt only with products of the cannabis
-plant. Its short text makes it possible to replace the Cannabis Freedom Index's former estimate of
-an early-twentieth-century restriction with a documented event.
+São Tomé and Príncipe’s colonial governor targeted cannabis used as medicine on 29 May 1958. The order followed a UN recommendation to discontinue medical use and threatened fines of 1,000–5,000 escudos for breaking its prohibition. Its preamble placed the decision within health and pharmacy policy.[@1]
 
-## What the order prohibited
+## The governor acted on health officials’ advice
 
-The first article prohibited three things: importing cannabis products, consuming them, and
-selling them for medical purposes. The measure therefore covered both non-medical use and a route
-that might otherwise have supplied cannabis as medicine.
+Governor Manuel Marques de Abrantes Amaral signed the order after a proposal from the head of the provincial health and hygiene department. The permanent section of the Government Council had also been consulted. Cannabis therefore entered this particular legal record through the colonial medical administration.[@1]
 
-The wording matters because it was not a comprehensive modern drug code. It did not expressly
-say that merely possessing cannabis was an offence. It did not name domestic cultivation, and it
-did not state a general offence of giving cannabis to another person. Those omissions should not
-be filled with assumptions about how officials may have treated conduct in practice.
+The preamble cited a recommendation of the UN Economic and Social Council. It described prohibiting medical cannabis use as advisable for the province, connecting a local pharmacy decision to the international campaign against cannabis medicines.[@1]
 
-## A financial penalty
+## A short rule carried a financial penalty
 
-The second and final article set the consequence. Anyone violating the prohibition faced a fine
-of between 1,000 and 5,000 escudos. The order itself prescribed no prison sentence. Governor
-Manuel Marques de Abrantes Amaral signed it in São Tomé on 29 May 1958.
+The operative article prohibited the import, consumption and sale for medical purposes of products made from cannabis plants. A second article set the fine and directed officials to follow the procedure in the Pharmacy Regulations. The order appeared in the colony’s official bulletin on the day it was signed.[@1]
 
-This is a notably small legal instrument: the source reproduced by the UN Office on Drugs and
-Crime contains the operative rule, penalty and signature without a broader catalogue of drug
-offences. Later legislation would be much wider.
+For people supplying or using cannabis as medicine, the order announced a prohibition backed by a financial penalty. It put the health department’s recommendation into an enforceable rule, with pharmacy procedures supplying the means to handle violations.[@1]
 
-## Why this date changes the record
+## Portugal later extended a wider criminal law
 
-The earlier index history used a 1900–1920 estimate derived from a general account of African
-prohibition. Order 2574 supplies country-specific primary evidence and a definite date. It does
-not prove that no earlier restriction existed, but it is the earliest São Tomé and Príncipe rule
-now documented in this history.
+In October 1970, Portugal published an order extending its new drug law to the overseas provinces, including São Tomé and Príncipe. Overseas Minister Joaquim Moreira da Silva Cunha directed its publication in their official bulletins. The extension adapted the prescription requirements for therapeutic use to overseas pharmacy legislation.[@2]
 
-The next major step came in 1970, when Portugal [extended a much broader drug law to the
-colony](/history/sao-tome-portuguese-drug-law-1970/). That measure expressly reached possession,
-cultivation and supply.
+That [wider drug law](/history/sao-tome-portuguese-drug-law-1970/) expressly covered possession and cultivation. Conduct for personal use, and supply without profit, carried up to two years in prison plus a fine; ordinary trafficking carried two to eight years plus a fine. Cannabis and cannabis resin appeared in its drug list.[@3]
 
-In the index, the 1958 order moves consumption from 10 to 1, enforcement from 10 to 4, and access
-from 8 to 0. Possession, cultivation and sharing remain at 10 for this step because the opened
-order does not expressly regulate them.
+## A national code eventually replaced colonial rules
+
+São Tomé and Príncipe’s 2012 Penal Code described the long survival of colonial criminal legislation after independence. Its [new personal-use rules](/history/sao-tome-penal-code-2012/) allowed a fine instead of prison for a small personal quantity and let courts excuse an occasional consumer.[@4]
+
+The [country profile](/country/st/) follows that later criminal code. The 1958 order records an earlier moment when the colonial government specifically turned against cannabis medicines.[@1,4]
