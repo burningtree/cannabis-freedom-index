@@ -4,6 +4,7 @@
 import { useAges, SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
 import { TIERS, tierOf, tierColor, tierIndex } from "../lib/tiers.js";
 import { unitMap } from "../lib/unit-map.js";
+import { short } from "../lib/short.js";
 import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
 import PricePanel from "./PricePanel.astro";
@@ -227,16 +228,27 @@ const culture = cultureOf(c);
           <figure class="unit-map">
             <svg viewBox={map.viewBox} role="group" aria-label={`Map of ${c.name}: ${group.plural} coloured by score`}>
               {map.shapes.map(({ unit: x, d }) => (
-                <a href={unitUrl(x)} data-subunit class={sub?.id === x.id ? "current" : undefined} aria-label={`${x.name}: ${x.score}`}>
-                  <path d={d} style={`fill:${tierColor(x.raw)}`}><title>{x.name}: {x.score} · {tierOf(x.raw).name}</title></path>
+                <a href={unitUrl(x)} data-subunit data-tip={x.id} class={sub?.id === x.id ? "current" : undefined} aria-label={`${x.name}: ${x.score}, ${tierOf(x.raw).name}`}>
+                  <path d={d} style={`fill:${tierColor(x.raw)}`} />
                 </a>
               ))}
               {map.dots.map(({ unit: x, x: cx, y: cy }) => (
-                <a href={unitUrl(x)} data-subunit class={sub?.id === x.id ? "current" : undefined} aria-hidden="true" tabindex="-1">
-                  <circle cx={cx} cy={cy} r="5" style={`fill:${tierColor(x.raw)}`}><title>{x.name}: {x.score} · {tierOf(x.raw).name}</title></circle>
+                <a href={unitUrl(x)} data-subunit data-tip={x.id} class={sub?.id === x.id ? "current" : undefined} aria-hidden="true" tabindex="-1">
+                  <circle cx={cx} cy={cy} r="5" style={`fill:${tierColor(x.raw)}`} />
                 </a>
               ))}
             </svg>
+            {/* the hover box of each, as on the home page's map with its states shown (src/lib/unit-map-tip.js) */}
+            <div class="tooltip" hidden></div>
+            {group.units.map((x) => (
+              <template data-tip-for={x.id}>
+                <div class="tip-head"><strong><span class="tip-flag">{c.flag}</span>{x.name}</strong><span class="tip-chip" style={`--chip:${tierColor(x.raw)}`}>{x.score}</span></div>
+                <div class="tip-meta">{tierOf(x.raw).name} · #{x.rank} of {group.units.length} in {c.name}</div>
+                <div class="tip-bar"><i style={`width:${Math.max(2, Math.min(100, x.raw))}%;background:${tierColor(x.raw)}`}></i></div>
+                {short(x.note) && <p class="tip-note">{short(x.note)}</p>}
+                <div class="tip-foot">Click for the full profile</div>
+              </template>
+            ))}
             <figcaption class="unit-legend">
               {mapTiers.map((t) => <span><i style={`background:${tierColor(t.min)}`}></i>{t.name}</span>)}
             </figcaption>
@@ -377,3 +389,6 @@ const culture = cultureOf(c);
     {updated && <p class="c-updated">Last updated: <time datetime={updated}>{updatedText}</time>{d && ` · ${d.sources.length} sources`}{scored.length > 0 && ` · history: ${history.filter((ch) => ch.confidence.key === "checked").length} of ${history.length} entries checked`}</p>}
   </div>
 </article>
+<script>
+  import "../lib/unit-map-tip.js";
+</script>
