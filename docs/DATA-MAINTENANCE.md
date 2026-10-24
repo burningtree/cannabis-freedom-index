@@ -584,14 +584,16 @@ node scripts/data-status.cjs chain de     # one country's full timeline
    entries; `unchecked` and `estimates` list what still needs a source. Go by population, or by
    region in batches of ten or so.
 2. **Read sources.** In rough order of usefulness:
-   - Wikipedia "Cannabis in <country>", "Drug policy of <country>", "Legal history of cannabis in
-     <country>" (also the local-language edition). Ask for *every dated legal event the page
-     states*, and for exact quotes when checking one claim.
    - The statute itself on a national law site (legislation.gov.*, *lii.org, PacLII, kenyalaw,
-     lawphil, BOE, sejm, slov-lex, legifrance …) or UNODC SHERLOC.
+     lawphil, BOE, sejm, slov-lex, legifrance …) or UNODC SHERLOC. A ministry, parliament,
+     court or regulator page is next.
    - Library of Congress Global Legal Monitor, Transnational Institute country guides, IDPC,
      Human Rights Watch, Amnesty, Harm Reduction International, EMCDDA/EUDA country reports.
    - National or regional news for recent events.
+   - Wikipedia "Cannabis in <country>", "Drug policy of <country>", "Legal history of cannabis in
+     <country>" (also the local-language edition), as a list of leads. Ask for *every dated legal
+     event the page states*, then cite the statute or other source those leads point to. Keep
+     the Wikipedia page itself only when no other source for that claim can be found.
 3. **Write a batch file** and apply it:
 
    ```bash
@@ -656,8 +658,15 @@ node scripts/data-status.cjs chain de     # one country's full timeline
 - **Current law comes first.** When extending the research, the priority is the present state of
   the law and the history of prohibition: the six scored sections checked against the statute
   itself, then dated legal changes. Culture, science and industry milestones are secondary.
-- **Wikipedia is fine for dates and events, weak for first bans.** Colonial first restrictions
-  usually need a statute database, a UN document or an academic paper.
+- **Prefer any other source to Wikipedia.** A statute, an official gazette, a court, a ministry
+  or regulator, a news report or a book that was opened should be the citation. Wikipedia is a
+  place to find those sources. When a profile, a history entry or a culture page is edited and
+  another source for the same claim can be found, replace the Wikipedia citation and delete the
+  `wiki` source once nothing cites it. Leave Wikipedia only when nothing else can be reached,
+  and say so by keeping it as the source. It is especially weak for a first ban: colonial
+  restrictions usually need a statute database, a UN document or an academic paper. The same
+  rule covers Commons file pages used as the source of a fact; a Commons file that is itself
+  the picture stays, with its credit.
 - **A statute's date is not always the first ban.** A country's "first narcotics law" may come
   long after cannabis was already restricted (Oman 1999, Zimbabwe 1956, Iran 1959). Then add it
   as a context entry and leave the estimate in place.

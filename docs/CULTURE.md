@@ -249,9 +249,10 @@ The site turns that into a figure with the caption and credit underneath. Rules:
 
 - Every statement of fact rests on a listed source that was opened and read, or on a checked
   history entry of this site. General knowledge is not a source.
-- Wikipedia is acceptable for etymology and for descriptions of customs. Prefer the scholarly
-  or primary source it cites when that can be opened. Reuse the print sources already cited in
-  `changes.yaml` (with page numbers) where they cover the subject.
+- Prefer any source that can be opened to Wikipedia, including for etymology and for a custom.
+  A dictionary, the scholarly or primary source named on the Wikipedia page, or a print source
+  already cited in `changes.yaml` (with page numbers) should be the citation. Keep Wikipedia
+  only when no other source for that statement can be found.
 - Say what is uncertain. "Is said to", "according to", "the only account is" are honest words
   here, not weak ones.
 - Dates and figures are the claims most often wrong. Check each against the source.
