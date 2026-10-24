@@ -705,3 +705,17 @@ test("Latvia's drug-driving penalties and the UAE hemp law follow the texts that
   assert.equal(hemp.category, "hemp");
   assert.equal(hemp.before, undefined);
 });
+
+test("Colorado hospitality sales and Nevada's 2021 lounge law replace the old clubs sentences", () => {
+  const us = y.load(fs.readFileSync("countries/us/index.yaml", "utf8"));
+  const lounges = byId["nevada-consumption-lounge-regulations-2022"];
+  assert.match(us.context.clubs.text, /44-10-610/);
+  assert.match(us.context.clubs.text, /Assembly Bill 341 of 2021/);
+  assert.doesNotMatch(us.context.clubs.text, /no sales on site/);
+  assert.doesNotMatch(us.context.clubs.text, /since a 2017 law/);
+  assert.equal(us.context.clubs.status, "regulated");
+  assert.equal(us.scores.access, 5);
+  assert.equal(lounges.date, "2022-06-28");
+  assert.equal(lounges.subunit, "nv");
+  assert.equal(lounges.before, undefined);
+});
