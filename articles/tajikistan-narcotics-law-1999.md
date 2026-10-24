@@ -1,54 +1,62 @@
 ---
+written: '2026-10-24'
 sources:
-  - title: Tajikistan Drug Control Agency — Law No. 873 on narcotic drugs, psychotropic substances and precursors
-    url: https://akn.tj/ru/2020/04/09/law-of-the-republic-of-tajikistan-on-drugs-psychothropic-substances-and-precures/
-  - title: UNODC SHERLOC — English translation of Tajikistan Law No. 873
-    url: https://sherloc.unodc.org/cld/uploads/res/document/tjk/law-on-narcotic-drugs_html/law_on_drugs-tj.pdf
+  - type: law
+    title: Tajikistan Drug Control Agency — drug law consolidated through 2019
+    url: >-
+      https://akn.tj/ru/2020/04/09/law-of-the-republic-of-tajikistan-on-drugs-psychothropic-substances-and-precures/
+    year: 2020
+    locator: >-
+      Published 9 April 2020; Law 873 of 10 December 1999, amended through 2019; definitions,
+      articles 4, 8–10, 15–19 and commencement resolution
+  - type: law
+    title: Tajikistan — Criminal Code, consolidated through 17 December 2025, WIPO Lex
+    url: https://www.wipo.int/wipolex/ru/legislation/details/23720
+    year: 2025
+    locator: >-
+      Russian text, articles 200–205, pp. 98–104; annex reference and adoption/commencement
+      instruments, pp. 201–202; quantity tables not reproduced in this PDF
+  - type: report
+    title: ROST — analysis of Tajikistan’s drug-policy legislation
+    url: >-
+      https://www.opensocietyfoundations.org/uploads/ed50925a-4bfb-4ea3-aa68-bf4d0c21697f/tajik-drug-policy-analysis-russian-20111103.pdf
+    year: 2010
+    locator: >-
+      Cover dated Dushanbe 2010; working group, research scope, policing and health/privacy
+      recommendations; published in OSF’s 2011 document collection
+  - type: law
+    title: Tajikistan Justice Ministry — drug-law amendments of 16 February 2026
+    url: https://mmih.adlia.tj/Search/DocumentView?DocumentId=171813
+    year: 2026
+    locator: >-
+      Law 2254; public Russian operative amendments to articles 6, 7 and 10; no separate
+      commencement date supplied in the visible record
 ---
 
-Tajikistan's Law No. 873 built a national control system for narcotic drugs after independence. It
-put lawful circulation under state control, restricted cultivation to licensed research, and
-expressly prohibited non-prescribed consumption.
+Tajikistan adopted a general drug-control law on 10 December 1999 under President Emomali Rakhmonov. The statute linked control of lawful drug activities with policing, prevention and treatment. Its accompanying resolution provided for commencement after official publication.[@1]
 
-## A post-Soviet control law
+## Criminal penalties had a separate home
 
-President Emomali Rahmonov signed the law in Dushanbe on 10 December 1999. Parliament's
-accompanying resolution brought it into force after official publication and instructed the
-government to align its existing decisions with the new act.
+The law followed [a replacement Criminal Code](/history/tajikistan-criminal-code-1998/) that had taken effect in September 1998. That code replaced the earlier Soviet-era criminal legislation and provided a separate place for defining offences and punishments.[@2]
 
-The law's purpose combines public health and security. It covers lawful circulation, action
-against illicit trafficking, prevention of drug dependence, and treatment for people diagnosed
-with dependence. Controlled drugs include substances, preparations and plants classified under
-the international conventions and Tajikistan's National List.
+The general drug law organised the controlled activities themselves. In the later consolidated version published by the Drug Control Agency, these included production, storage, distribution, import and export, as well as the scientific cultivation of drug-containing plants.[@1]
 
-## State monopoly and licensing
+## Scientific growers needed a licence
 
-Article 4 makes lawful circulation of narcotic drugs a state monopoly. Only state enterprises,
-organisations and institutions holding a licence may participate, and then only within the state
-quota. Psychotropic substances and precursors are also licensed, though organisations of
-different ownership forms may handle them.
+The consolidated statute reserved scientific cultivation and the development of new controlled drugs for licensed research institutions. Acquisition, manufacture, processing and production were tied to international obligations and state quotas. The health ministry and Drug Control Agency had roles in regulating equipment and lawful handling.[@1]
 
-The Drug Control Agency under the president coordinates and supervises the system. It helps draw
-up the National List, issues licences, inspects regulated activity and coordinates work against
-illegal circulation and use.
+The law also defined supply broadly. Its amended definition included gifts, exchanges, debt payments and loans, alongside sales. That placed several ways of passing drugs to another person within the same general concept of supply.[@1]
 
-Article 9 allows cultivation of narcotic plants for scientific purposes only by licensed research
-institutions. The act also restricts production, storage, transport, import and export, and bans
-sending controlled drugs through the post.
+## Treatment and registration followed distinct rules
 
-## Consumption without a prescription
+The statute prohibited drug use without a doctor’s prescription. Where there were sufficient grounds to suspect unlawful use, it provided for examination in a narcological institution, with medical professionals responsible for determining intoxication and dependence.[@1]
 
-Article 15 prohibits consuming narcotic drugs or psychotropic substances without a doctor's
-prescription. Where authorities have sufficient grounds to suspect illegal consumption, Article
-16 provides for examination in a Ministry of Health narcology institution; the examination's
-result establishes whether consumption occurred.
+Its treatment section allowed people to seek care voluntarily. It also required registration after findings of unlawful drug use and follow-up observation after treatment for dependence, while referring compulsory treatment to the applicable legislation. People seeking voluntary care had specified rights, including protections concerning their home and employment during inpatient treatment.[@1]
 
-The law itself does not provide the criminal sentence for each violation. Article 20 instead says
-that offenders are liable under Tajikistan's other legislation. This makes Law No. 873 the control
-framework, not a self-contained penal code.
+## Reviewers later challenged the balance
 
-It explains the institutional structure behind the present [Tajikistan profile](/country/tj/),
-following the site's earlier record of the [1934 Soviet cultivation ban](/history/tajikistan-soviet-ban-1934/).
+A [2010 review involving officials and civil society](/history/tajikistan-drug-policy-review-2010/) called for stronger patient privacy and less discrimination against people who use drugs. It examined the relationship between policing, health care and the consequences of being identified as a drug user.[@3]
 
-In the index, the 1999 law does not move a score. It reorganised an already prohibited system
-rather than documenting a new change in personal cannabis freedom.
+The licensing statute continued to be amended. In [February 2026](/history/tajikistan-drug-law-amendment-2026/), changes revised precursor licensing, import and export documentation and the police-law powers applied to Drug Control Agency staff.[@4]
+
+The [Tajikistan profile](/country/tj/) brings these controls together with the Criminal Code’s possession, cultivation and supply penalties.
