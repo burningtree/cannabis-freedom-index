@@ -719,3 +719,24 @@ test("Colorado hospitality sales and Nevada's 2021 lounge law replace the old cl
   assert.equal(lounges.subunit, "nv");
   assert.equal(lounges.before, undefined);
 });
+
+test("Myanmar's 2025 amendment, Hungary's THC threshold and Kenya's fine alternative follow the texts that were read", () => {
+  const mm = y.load(fs.readFileSync("countries/mm.yaml", "utf8"));
+  const hu = y.load(fs.readFileSync("countries/hu.yaml", "utf8"));
+  const ke = y.load(fs.readFileSync("countries/ke.yaml", "utf8"));
+  const amend = byId["myanmar-narcotics-amendment-2025"];
+  assert.match(mm.segments.consumption.text, /three months/);
+  assert.match(mm.segments.consumption.text, /45 to 90 hours/);
+  assert.match(mm.segments.possession.text, /more than 100 grams/);
+  assert.equal(mm.scores.consumption, 2);
+  assert.equal(amend.date, "2025-12-31");
+  assert.equal(amend.before, undefined);
+  assert.match(hu.segments.possession.text, /6 grams of total THC/);
+  assert.doesNotMatch(hu.segments.possession.text, /1 g of THC/);
+  assert.match(hu.segments.cultivation.text, /five plants/);
+  assert.equal(hu.scores.possession, 1);
+  assert.match(ke.summary, /or both/);
+  assert.match(ke.context.visitors.text, /or both/);
+  assert.doesNotMatch(ke.summary, /thirty years from a single gram/);
+  assert.equal(ke.scores.possession, 1);
+});
