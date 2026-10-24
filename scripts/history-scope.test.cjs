@@ -763,3 +763,28 @@ test("British Columbia's home cap, Victoria's fine and the Atlantic grow rules f
   assert.equal(indoor.subunit, "nl");
   assert.equal(indoor.before, undefined);
 });
+
+test("Manitoba's indoor grow rule, Nunavut's 150 g limit and South Australia's expiation fees follow the texts that were read", () => {
+  const mb = y.load(fs.readFileSync("countries/ca/mb.yaml", "utf8"));
+  const nu = y.load(fs.readFileSync("countries/ca/nu.yaml", "utf8"));
+  const sa = y.load(fs.readFileSync("countries/au/sa.yaml", "utf8"));
+  const ca = y.load(fs.readFileSync("countries/ca/index.yaml", "utf8"));
+  const cap = byId["nunavut-possession-limit-2020"];
+  assert.match(mb.segments.cultivation, /securely locked/);
+  assert.match(mb.segments.cultivation, /indoors/);
+  assert.equal(mb.scores.cultivation, 4);
+  assert.match(nu.segments.possession, /150 g/);
+  assert.doesNotMatch(nu.segments.possession, /no provincial cap/);
+  assert.match(nu.segments.possession, /not the household/);
+  assert.equal(nu.scores.possession, 6);
+  assert.match(sa.segments.possession, /\$250/);
+  assert.match(sa.segments.possession, /\$400/);
+  assert.doesNotMatch(sa.segments.possession, /\$150/);
+  assert.match(sa.segments.cultivation, /\$400/);
+  assert.equal(sa.scores.possession, 3);
+  assert.equal(sa.scores.enforcement, 4);
+  assert.match(ca.segments.possession.text, /150 g of dried cannabis/);
+  assert.equal(cap.date, "2020-06-01");
+  assert.equal(cap.subunit, "nu");
+  assert.equal(cap.before, undefined);
+});
