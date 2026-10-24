@@ -8,13 +8,13 @@ dependency:
     Macau is a special administrative region of China with its own legal system, rooted in
     Portuguese law. Its drug law, Law 17/2009, is separate from mainland China's.
 recreational: illegal
-medical: none
-updated: 2026-10-17
+medical: limited
+updated: '2026-10-24'
 summary: >-
-  Using cannabis, or holding or growing it for one's own use, is a crime punishable by three months
-  to a year in prison or a fine. Above five times a daily reference quantity the same acts are
-  treated as trafficking, with five to fifteen years, and handing cannabis to someone else counts as
-  trafficking too.
+  Cannabis use, personal possession and home growing carry three months to a year in prison or a
+  fine. Larger personal stocks can trigger production or trafficking penalties, including a
+  lesser one-to-five-year tier. Medicines require official authorisation and controlled
+  prescribing.
 scores:
   possession: 1
   cultivation: 1
@@ -25,81 +25,141 @@ scores:
 segments:
   possession:
     text: >-
-      Under Article 14 of Law 17/2009, as amended in 2016, acquiring or holding cannabis for one's
-      exclusive personal use is punished with three months to one year in prison or a fine of 60 to
-      240 day-rates. If the amount exceeds five times the daily reference quantity set in the law's
-      annex, the trafficking provisions apply instead.
+      Personal acquisition or possession carries three months to one year in prison or a fine of
+      60–240 day-rates. Above five daily reference quantities, production or trafficking rules
+      apply, including a lesser one-to-five-year tier. The herbal cannabis reference is 1 g per
+      day; possession below five grams is still an offence.[@law]
     sources:
-      - l10
+      - law
   cultivation:
     text: >-
-      Growing cannabis for one's own use falls under the same article, with three months to a year in
-      prison or a fine. Unauthorised cultivation outside that case is production, punished with five
-      to fifteen years.
+      Growing for personal use carries three months to one year in prison or a fine, with larger
+      quantities subject to production rules.[@law] In 2022 the top court applied the lesser
+      production tier to two first offenders growing one plant; their combined sentences were
+      one year nine months and two years.[@c22]
     sources:
-      - l10
+      - law
+      - c22
   enforcement:
     text: >-
-      Consumption and personal possession are crimes that reach the courts, with prison or a fine.
-      Since 2016 personal-use amounts above five times the reference quantity are no longer treated
-      as consumption but under the much heavier trafficking provisions.
+      Personal use and possession are criminal offences with prison or a fine available.
+      Ordinary production and trafficking carry five to fifteen years; lesser cases carry one to
+      five years, assessed using the quantity and circumstances.[@law] In 2022 the top court
+      reduced two growers’ sentences even though their plant exceeded the five-day reference
+      quantity.[@c22]
     sources:
-      - l10
+      - law
+      - c22
   sharing:
     text: >-
-      Offering, selling, distributing or handing over cannabis to another person (ceder), outside
-      one's own consumption, is trafficking, punished with five to fifteen years in prison.
+      Giving, selling or handing cannabis to another person falls under the trafficking rules:
+      ordinarily five to fifteen years, or one to five years in lesser cases.[@law] The top
+      court has treated supplying cannabis to others as trafficking even when they shared its
+      purchase cost.[@c04]
     sources:
-      - l10
+      - law
+      - c04
   consumption:
     text: >-
-      Consuming cannabis is a crime in itself, punished with three months to one year in prison or a
-      fine.
+      Illicit consumption itself carries three months to one year in prison or a fine of 60–240
+      day-rates.[@law]
     sources:
-      - l10
+      - law
   access:
     text: >-
-      No legal source. Production, trade and possession are allowed only with authorisation, and no
-      medical cannabis programme exists.
+      Adult-use supply is prohibited under the trafficking rules.[@law] Lawful medical supply
+      depends on official authorisations, pharmacy or hospital dispensing and special
+      prescriptions.[@med]
     sources:
-      - l10
+      - law
+      - med
 context:
   production:
     text: >-
-      None. Unauthorised production carries five to fifteen years.
+      Unauthorised production ordinarily carries five to fifteen years, with a lesser
+      one-to-five-year tier.[@law] Licensed chemical and pharmaceutical businesses can seek
+      authorisation to manufacture controlled medicines; the lawful-drug rules separately
+      prohibit cultivating scheduled plants.[@med]
     sources:
-      - l10
+      - law
+      - med
   products:
     text: >-
-      No legal cannabis products.
+      Cannabis leaves and flowering or fruiting tops, resin and oil are listed in Table I-C. The
+      quantity table distinguishes herbal cannabis from resin and oil, with potency adjustments
+      for the latter products.[@law] HHC was added to Table II-B in August 2026.[@hhc]
     sources:
-      - l10
+      - law
+      - hhc
   medical:
     text: >-
-      No medical cannabis programme. Controlled substances may be used only with official
-      authorisation.
+      There is a limited licensed-medicine route: the lawful-drug rules cover medical
+      manufacture of scheduled substances, including the cannabis table, and supply through
+      pharmacies or hospitals on special prescriptions. Cultivation of scheduled plants remains
+      prohibited.[@med]
     sources:
-      - l10
+      - med
   consequences:
     text: >-
-      The 2016 amendment set the current penalty for consumption and ties the line between use and
-      trafficking to a table of daily reference quantities, so that larger personal stocks are judged
-      as trafficking.
+      Since January 2017 larger personal stocks can be charged under production or trafficking
+      rules.[@l16] The five-day reference quantity does not exclude the lesser tier: in 2022 the
+      top court reduced two growers’ combined sentences from five years nine months each to one
+      year nine months and two years.[@c22]
     sources:
-      - l10
+      - l16
+      - c22
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known. Handing cannabis to another person is trafficking.
+      Supplying other people with cannabis is punishable under the trafficking rules, including
+      gifts.[@law] The top court has also treated cost-sharing supply as trafficking.[@c04]
     sources:
-      - l10
+      - law
+      - c04
   visitors:
     status: none
     text: >-
-      There is no legal supply for anyone, and importing cannabis is trafficking under Article 8.
+      Unauthorised cannabis imports fall under the trafficking rules.[@law] The traveller
+      exception for up to thirty days of certain controlled medicines omits Table I-C, which
+      contains cannabis, resin and oil.[@med]
     sources:
-      - l10
+      - law
+      - med
 sources:
-  l10:
-    title: Macau Law 10/2016 amending Law 17/2009 on illicit production, trafficking and consumption of narcotics (28 December 2016), as notified to the WTO
-    url: https://www.importlicensing.wto.org/sites/default/files/members/88/Lei%20No.10_2016%20-%20Altera%C3%A7%C3%A3o%20da%20Lei%20No.17_2009_28.12.2016.pdf
+  law:
+    type: law
+    title: Law 17/2009 — consolidated drug offences and schedules
+    url: https://bo.dsaj.gov.mo/bo/i/2009/32/lei17.asp
+    locator: Articles 5, 7–8, 11, 14; Table I-C; daily-reference annex and potency notes
+  med:
+    type: law
+    title: Decree-Law 34/99/M — consolidated lawful controlled-drug rules
+    url: https://bo.dsaj.gov.mo/bo/i/99/29/declei34.asp
+    locator: Current text republished following Law 27/2024; Articles 5, 9, 19–20 and 37–38
+  l16:
+    type: law
+    title: Law 10/2016 — higher drug penalties and personal-use quantities
+    url: https://images.bo.dsaj.gov.mo/bo/i/2016/52/lei-10-2016.pdf
+    container: Boletim Oficial, I Series, No. 52, 28 December 2016
+    year: 2016
+    locator: pp. 3060–3062 and 3065; Article 1 replacement Articles 7, 8 and 14; Article 4 commencement
+  c22:
+    type: law
+    title: Court of Final Appeal — lesser production offence for a single cannabis plant
+    url: https://www.court.gov.mo/sentence/pt/36643
+    year: 2022
+    locator: >-
+      Case 79/2022, 4 November 2022; proven facts, lesser-gravity reasoning and final sentences
+      for C and D
+  c04:
+    type: law
+    title: Court of Final Appeal — cannabis supplied to others and shared costs
+    url: https://www.court.gov.mo/sentence/pt-53590d0ab21e8.pdf
+    year: 2004
+    locator: Case 35/2004, 13 October 2004; summary and pp. 16–20
+  hhc:
+    type: law
+    title: Law 12/2026 — HHC and other additions to controlled-drug schedules
+    url: https://bo.dsaj.gov.mo/bo/i/2026/33/lei12.asp
+    year: 2026
+    locator: Published 17 August 2026; Articles 1–3; Table II-B addition and daily-reference annex
