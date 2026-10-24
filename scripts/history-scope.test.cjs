@@ -871,3 +871,29 @@ test("Nunavut housing, Atlantic and Yukon consumption places, and Queensland div
   assert.equal(diversion.subunit, "qld");
   assert.equal(diversion.before, undefined);
 });
+
+test("Maldives quantity presumptions, Kuwait decree-law 159, and Japan cultivation follow the texts that were read", () => {
+  const mv = y.load(fs.readFileSync("countries/mv.yaml", "utf8"));
+  const kw = y.load(fs.readFileSync("countries/kw.yaml", "utf8"));
+  const jp = y.load(fs.readFileSync("countries/jp.yaml", "utf8"));
+  const kuwait = byId["kuwait-drug-law-2025"];
+  assert.match(mv.segments.possession.text, /not drug-dependent/);
+  assert.match(mv.segments.possession.text, /fifteen years/);
+  assert.match(mv.segments.possession.text, /three years/);
+  assert.doesNotMatch(mv.segments.possession.text, /user threshold/);
+  assert.doesNotMatch(mv.summary, /below the user threshold/);
+  assert.equal(mv.scores.possession, 0);
+  assert.match(kw.segments.possession.text, /159 of 2025/);
+  assert.match(kw.segments.possession.text, /five years/);
+  assert.match(kw.segments.possession.text, /5,000 dinars/);
+  assert.doesNotMatch(kw.segments.possession.text, /no\. 59/);
+  assert.doesNotMatch(kw.summary, /were not found/);
+  assert.equal(kw.scores.possession, 0);
+  assert.equal(kuwait.date, "2025-12-15");
+  assert.match(kuwait.description, /159 of 2025/);
+  assert.doesNotMatch(kuwait.description, /no\. 59/);
+  assert.match(jp.segments.cultivation.text, /not less than one year and not more than ten years/);
+  assert.doesNotMatch(jp.segments.cultivation.text, /seven years/);
+  assert.match(jp.context.planting.text, /up to five years/);
+  assert.equal(jp.scores.cultivation, 0);
+});
