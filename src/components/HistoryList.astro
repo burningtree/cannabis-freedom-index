@@ -88,13 +88,17 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
   <div class="hf-row">
     <span class="hf-label">Country</span>
     <div>
-      <button type="button" class="hf-toggle" aria-expanded="false" aria-controls="histCountry" data-show="Choose a country">Choose a country</button>
-      {/* a country's history lives on its profile, with the same filters for that country alone */}
+      <button type="button" class="hf-toggle" aria-expanded="false" aria-controls="histCountry" data-show="Choose countries">Choose countries</button>
+      {/* narrows the list in place to one or more countries, kept in the address as ?country=NL,DE */}
       <div id="histCountry" class="hist-country" hidden>
-        <select aria-label="A country's history" data-history-country>
-          <option value="">Choose…</option>
-          {[...perPlace].sort((x, y) => x[0].name.localeCompare(y[0].name)).map(([c, n]) => <option value={`${base}country/${c.slug}/#history`}>{c.flag} {c.name} · {n}</option>)}
+        <select aria-label="Add a country to the filter" data-history-country>
+          <option value="">Add a country…</option>
+          {[...perPlace].sort((x, y) => x[0].name.localeCompare(y[0].name)).map(([c, n]) => <option value={c.id} data-label={`${c.flag} ${c.name}`}>{c.flag} {c.name} · {n}</option>)}
         </select>
+      </div>
+      <div class="hist-chosen" data-history-chosen hidden>
+        <ul aria-label="Countries shown"></ul>
+        <button type="button" class="hf-toggle hf-clear" data-history-clear>Clear</button>
       </div>
     </div>
   </div>
@@ -115,6 +119,7 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
 </div>
 
 {feed && <button type="button" class="hist-more hist-more-top" hidden>Show earlier in this order</button>}
+<p class="hist-none" hidden>No entries for the chosen countries here.</p>
 <div class="hist-years" data-order="newest" data-start-oldest={period ? "" : undefined} data-only="all" data-feed={feed ? "" : undefined} data-years={feed ? yearIndex : undefined} data-fragments={feed ? `${base}fragments/history/` : undefined}>
   <HistoryYears years={years} />
 </div>
@@ -173,8 +178,6 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
     toggle.textContent = open ? "Hide" : toggle.dataset.show;
     document.getElementById(toggle.getAttribute("aria-controls")).hidden = !open;
   });
-  // choosing a country opens its history
-  document.querySelector("[data-history-country]")?.addEventListener("change", (e) => { if (e.target.value) location.href = e.target.value; });
 
   // In a year divided into months, the month index beside it marks the month being read: the last
   // one whose start has passed the top of the screen.
@@ -204,9 +207,106 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
   // turn a year round: its months, and the entries within each month
   const flip = (section) => { for (const ol of section.querySelectorAll("ol")) ol.append(...[...ol.children].reverse()); };
 
+  // Countries: the list narrowed in place to one or more of them, kept in the address as
+  // ?country=NL,DE. Each entry carries its country (data-c; a state's entries carry its federation's).
+  // Entries of other countries are marked data-out, and each year's and month's counts are worked out
+  // again from what is left; a year or month with nothing left drops out.
+  const picker = document.querySelector("[data-history-country]");
+  const chosenBox = document.querySelector("[data-history-chosen]");
+  const none = document.querySelector(".hist-none");
+  const labels = new Map([...picker.options].filter((o) => o.value).map((o) => [o.value, o.dataset.label]));
+  let chosen = [...new Set((params.get("country") ?? "").toUpperCase().split(","))].filter((id) => labels.has(id));
+  const plural = (n, one, many) => (n === 1 ? `1 ${one}` : `${n} ${many}`);
+  const setCount = (el, text) => { if (el) el.textContent = text; };
+  // returns the entries left in `root` (a year, or the whole list): [all, moved a score]
+  function sift(root) {
+    const keep = new Set(chosen);
+    let total = 0, totalScored = 0;
+    for (const year of root.matches(".hist-year") ? [root] : root.querySelectorAll(".hist-year")) {
+      let all = 0, scored = 0;
+      for (const li of year.querySelectorAll("li.he")) {
+        const out = keep.size > 0 && !keep.has(li.dataset.c);
+        li.toggleAttribute("data-out", out);
+        if (!out) { all++; if (li.hasAttribute("data-scored")) scored++; }
+      }
+      for (const month of year.querySelectorAll(".hm")) {
+        const left = [...month.querySelectorAll("li.he:not([data-out])")];
+        const n = left.filter((li) => li.hasAttribute("data-scored")).length;
+        month.toggleAttribute("data-out", !left.length);
+        month.toggleAttribute("data-scored", n > 0);
+        const nav = year.querySelector(`.hist-mnav a[href="#${month.id}"]`);
+        if (!nav) continue;
+        nav.parentElement.toggleAttribute("data-out", !left.length);
+        nav.parentElement.toggleAttribute("data-scored", n > 0);
+        setCount(nav.querySelector(".n-all"), String(left.length));
+        setCount(nav.querySelector(".n-scored"), String(n));
+      }
+      year.toggleAttribute("data-out", !all);
+      year.toggleAttribute("data-scored", scored > 0);
+      setCount(year.querySelector("h2 .n-all"), plural(all, "entry", "entries"));
+      setCount(year.querySelector("h2 .n-scored"), plural(scored, "score change", "score changes"));
+      total += all;
+      totalScored += scored;
+    }
+    return [total, totalScored];
+  }
+  // the counts beside "All entries" and "Score changes only"; null puts the page's own back
+  let totalsNow = null;
+  function setTotals(totals) {
+    totalsNow = totals;
+    for (const b of document.querySelectorAll(".hist-only button")) {
+      const small = b.querySelector("small");
+      small.dataset.total ??= small.textContent;
+      small.textContent = totals ? totals[b.dataset.only === "scored" ? 1 : 0].toLocaleString("en-GB") : small.dataset.total;
+    }
+    const empty = !!totals && !totals[box.dataset.only === "scored" ? 1 : 0];
+    none.hidden = !empty;
+  }
+  function renderChosen() {
+    chosenBox.querySelector("ul").replaceChildren(...chosen.map((id) => {
+      const li = document.createElement("li");
+      const b = document.createElement("button");
+      b.type = "button";
+      b.dataset.remove = id;
+      b.title = `Remove ${labels.get(id)}`;
+      b.textContent = labels.get(id);
+      li.append(b);
+      return li;
+    }));
+    chosenBox.hidden = !chosen.length;
+    for (const o of picker.options) o.disabled = chosen.includes(o.value);
+    picker.value = "";
+    // the kinds and tags keep the countries when followed
+    for (const a of document.querySelectorAll(".hist-kinds a, .hist-tags a")) {
+      const url = new URL(a.href);
+      if (chosen.length) url.searchParams.set("country", chosen.join(",")); else url.searchParams.delete("country");
+      a.href = url.pathname + url.search;
+    }
+  }
+  function setCountries(list) {
+    chosen = list;
+    renderChosen();
+    const url = new URL(location.href);
+    if (chosen.length) url.searchParams.set("country", chosen.join(",")); else url.searchParams.delete("country");
+    history.replaceState(null, "", url);
+    if (feed) feed.narrow();
+    else {
+      const totals = sift(box);
+      setTotals(chosen.length ? totals : null);
+    }
+    refresh();
+  }
+  picker.addEventListener("change", () => { if (picker.value) setCountries([...chosen, picker.value]); });
+  chosenBox.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-remove]");
+    if (b) setCountries(chosen.filter((id) => id !== b.dataset.remove));
+    else if (e.target.closest("[data-history-clear]")) setCountries([]);
+  });
+
   function setOnly(value) {
     box.dataset.only = value;
     press(onlyButtons, "only", value);
+    setTotals(totalsNow);
     refresh();
   }
   // Reset shows whenever the view is not the default one: every entry, newest first, from the
@@ -214,7 +314,7 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
   const reset = document.querySelector(".hist-reset");
   function refresh() {
     if (box.dataset.feed === undefined) return;
-    reset.hidden = box.dataset.order !== "oldest" && box.dataset.only !== "scored" && !new URLSearchParams(location.search).get("from");
+    reset.hidden = box.dataset.order !== "oldest" && box.dataset.only !== "scored" && !chosen.length && !new URLSearchParams(location.search).get("from");
   }
   reset.addEventListener("click", (e) => {
     try { localStorage.removeItem("histOrder"); localStorage.removeItem("histOnly"); } catch {}
@@ -224,7 +324,9 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
     order = "newest";
     press(orderButtons, "order", order);
     history.replaceState(null, "", location.pathname);
-    feed.start(null);
+    chosen = [];
+    renderChosen();
+    feed.narrow();
     document.querySelector(".hist-filter").scrollIntoView({ block: "start" });
   });
   if ((params.get("only") ?? recall("histOnly")) === "scored") setOnly("scored");
@@ -239,13 +341,18 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
   let order = params.get("order") ?? (box.dataset.startOldest !== undefined ? "oldest" : recall("histOrder")) ?? "newest";
   if (order !== "oldest") order = "newest";
   press(orderButtons, "order", order);
+  if (chosen.length) renderChosen();
   if (feed) {
     const from = +params.get("from");
-    if (from || order === "oldest") feed.start(from || null);
-  } else if (order === "oldest") {
-    box.append(...[...box.children].reverse());
-    box.querySelectorAll(".hist-year").forEach(flip);
-    box.dataset.order = "oldest";
+    if (chosen.length) feed.narrow(from || null);
+    else if (from || order === "oldest") feed.start(from || null);
+  } else {
+    if (order === "oldest") {
+      box.append(...[...box.children].reverse());
+      box.querySelectorAll(".hist-year").forEach(flip);
+      box.dataset.order = "oldest";
+    }
+    if (chosen.length) setTotals(sift(box));
   }
   // the order in the address, so that a link or a reload keeps it
   const orderInUrl = () => {
@@ -284,7 +391,9 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
   function fill() { feed?.fill(); }
 
   function makeFeed() {
-    const years = JSON.parse(box.dataset.years); // newest first: [year, all, scored]
+    const everyYear = JSON.parse(box.dataset.years); // newest first: [year, all, scored]
+    let years = everyYear; // the same, for the chosen countries only when there are any
+    let countryYears = null; // { country id: its own index }, fetched on first use
     const status = document.querySelector(".hist-status");
     const topButton = document.querySelector(".hist-more-top");
     const sentinel = document.querySelector(".hist-sentinel");
@@ -306,6 +415,7 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
       t.innerHTML = html;
       const section = t.content.querySelector(".hist-year");
       if (order === "oldest") flip(section);
+      sift(section);
       return section;
     };
     // the next years in one direction, until about 30 entries are added or the list ends
@@ -350,6 +460,13 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
     async function start(year) {
       run++;
       busy = false;
+      if (!years.length) {
+        box.replaceChildren();
+        topButton.hidden = true;
+        status.textContent = "";
+        refresh();
+        return;
+      }
       // newest first: the first year at or before the one asked for; oldest first: the first at or after it
       let i = order === "newest" ? 0 : years.length - 1;
       if (year) {
@@ -388,7 +505,34 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
       e.preventDefault();
       start(+link.closest(".hist-year").dataset.year);
     });
+    // Narrow the list to the chosen countries (or widen it again) and start it afresh: only the
+    // years they have entries in are loaded, and the counts are theirs.
+    async function narrow(from = null) {
+      const id = ++run;
+      if (chosen.length) {
+        try {
+          countryYears ??= await fetch(`${box.dataset.fragments}countries.json`).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+        } catch {
+          status.textContent = "Could not load the countries' entries.";
+          return;
+        }
+        if (id !== run) return;
+        const sum = new Map();
+        for (const c of chosen) for (const [y, all, scored] of countryYears[c] ?? []) {
+          const n = sum.get(y) ?? [y, 0, 0];
+          n[1] += all;
+          n[2] += scored;
+          sum.set(y, n);
+        }
+        years = [...sum.values()].sort((a, b) => b[0] - a[0]);
+        setTotals([years.reduce((n, y) => n + y[1], 0), years.reduce((n, y) => n + y[2], 0)]);
+      } else {
+        years = everyYear;
+        setTotals(null);
+      }
+      start(from);
+    }
     topButton.hidden = true;
-    return { start, fill };
+    return { start, fill, narrow };
   }
 </script>

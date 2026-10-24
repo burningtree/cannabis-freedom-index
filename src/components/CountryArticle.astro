@@ -2,7 +2,8 @@
 // Full write-up for one country. Rendered on its own page, and fetched into the
 // drawer on the home page — so there is a single template for both views.
 import { useAges, SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
-import { tierOf, tierColor } from "../lib/tiers.js";
+import { TIERS, tierOf, tierColor, tierIndex } from "../lib/tiers.js";
+import { unitMap } from "../lib/unit-map.js";
 import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
 import PricePanel from "./PricePanel.astro";
@@ -31,6 +32,10 @@ const unitUrl = (x) => `${countryUrl}${x.id}/`;
 // Date the entry was last reviewed, stored as YYYY-MM-DD and shown in full.
 const updated = sub ? sub.reviewed : d?.reviewed;
 const updatedText = updated && formatDate(updated);
+// the states or provinces on a map, coloured by score, above their list
+const map = group ? unitMap(c.slug, group.units) : null;
+// the tiers that appear on it, best first, for its legend
+const mapTiers = map ? TIERS.filter((t, i) => group.units.some((x) => tierIndex(x.raw) === TIERS.length - 1 - i)) : [];
 const byName = group ? [...group.units].sort((a, b) => a.name.localeCompare(b.name)) : [];
 // the spread of the states' or provinces' scores, shown beside the national estimate
 const unitRange = group ? `${Math.min(...group.units.map((x) => x.score))}–${Math.max(...group.units.map((x) => x.score))}` : "";
@@ -218,6 +223,25 @@ const culture = cultureOf(c);
       <section class="c-units">
         <h2 class="d-h">{sub ? `Other ${group.plural}` : `By ${group.label.toLowerCase()}`} <span>{group.units.length} scored · national estimate {c.score}</span></h2>
         {!sub && <p class="d-hint">{group.intro}</p>}
+        {map && (
+          <figure class="unit-map">
+            <svg viewBox={map.viewBox} role="group" aria-label={`Map of ${c.name}: ${group.plural} coloured by score`}>
+              {map.shapes.map(({ unit: x, d }) => (
+                <a href={unitUrl(x)} data-subunit class={sub?.id === x.id ? "current" : undefined} aria-label={`${x.name}: ${x.score}`}>
+                  <path d={d} style={`fill:${tierColor(x.raw)}`}><title>{x.name}: {x.score} · {tierOf(x.raw).name}</title></path>
+                </a>
+              ))}
+              {map.dots.map(({ unit: x, x: cx, y: cy }) => (
+                <a href={unitUrl(x)} data-subunit class={sub?.id === x.id ? "current" : undefined} aria-hidden="true" tabindex="-1">
+                  <circle cx={cx} cy={cy} r="5" style={`fill:${tierColor(x.raw)}`}><title>{x.name}: {x.score} · {tierOf(x.raw).name}</title></circle>
+                </a>
+              ))}
+            </svg>
+            <figcaption class="unit-legend">
+              {mapTiers.map((t) => <span><i style={`background:${tierColor(t.min)}`}></i>{t.name}</span>)}
+            </figcaption>
+          </figure>
+        )}
         <ol class="units">
           {group.units.map((x) => (
             <li class={sub?.id === x.id ? "current" : undefined}>

@@ -31,7 +31,7 @@ const monthsOf = (year, items) => {
   const months = monthsOf(year, items);
   const monthId = (m) => `m${year}-${m.key || "x"}`;
   const entries = (list) => list.map((ch) => (
-    <li data-scored={ch.score ? "" : undefined}>
+    <li class="he" data-scored={ch.score ? "" : undefined} data-c={ch.country?.id}>
       <a href={`${base}history/${ch.id}/`}>
         <time datetime={ch.date}>{ch.date.length === 4 ? "" : formatDate(ch.date).replace(` ${year}`, "")}</time>
         <div class="he-body">
