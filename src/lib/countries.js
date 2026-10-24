@@ -160,7 +160,8 @@ export function subunitsOf(id) {
         note: data.summary,
         reviewed: isoDate(data.updated),
         worldRank: 1 + countries.filter((c) => c.raw > raw).length,
-        seg: SEGMENTS.map((seg) => data.segments[seg.id]),          // six explanations, in SEGMENTS order
+        seg: SEGMENTS.map((seg) => stripCites(data.segments[seg.id])),
+        segCite: SEGMENTS.map((seg) => data.segments[seg.id]),          // six explanations, in SEGMENTS order
         sources: [...data.sources.map(pair), ...groupSources],      // the unit's own source first
         use: data.use ? { ...data.use, source: pair(data.use.source) } : null, // past-year use from its country's survey
       };

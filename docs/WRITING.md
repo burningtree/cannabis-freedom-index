@@ -128,6 +128,8 @@ references. The same source keeps its number wherever it is cited again.
 - **History entries, articles, culture entries:** `[@2]` is the second source in the item's own
   `sources` list; `[@1,3]` cites two. Put the mark after the full stop, with no space:
   `…in 1972.[@1]`
+- **State/province files:** `[@2]` cites the second source in the file’s `sources` list.
+  Segment text renders numbered inline references; summaries remain plain text.
 - **Country files:** cite by source key: `[@bmg]`, `[@bmg, kcang]`, using only the keys listed in
   that segment's or context section's `sources`.
 - Cite each claim with the source that actually states it. When a text uses marks, every source in

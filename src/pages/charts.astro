@@ -4,6 +4,7 @@
 // as SVG shapes with HTML labels, as in the homepage chart, so the page needs no script to read.
 // Every chart leads on: a year to the history, a country to its profile, a region to the rankings,
 // a dataset to its map. A small script at the end adds hover cards with the detail behind a mark.
+import { firstRestrictionSample, HISTORY_TOPICS, topicCounts, DEVELOPMENT_MEASURES } from "../lib/chart-semantics.js";
 import Base from "../layouts/Base.astro";
 import AverageChart from "../components/AverageChart.astro";
 import { countries, changes, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, MED_LABEL, SEGMENTS, segAvg } from "../lib/countries.js";
@@ -106,8 +107,7 @@ const strength = Math.abs(r) < 0.3 ? "only weakly" : Math.abs(r) < 0.7 ? "modera
 // Estimated first bans have no known year and are counted apart.
 const B0 = 1850;
 const firsts = countries.map((c) => ({ c, ch: changes.findLast((ch) => ch.country === c && ch.score) })).filter((f) => f.ch);
-const undated = firsts.filter((f) => f.ch.estimate).length;
-const dated = firsts.filter((f) => !f.ch.estimate).map((f) => ({ ...f, year: +String(f.ch.date).slice(0, 4) }));
+const { undated, dated } = firstRestrictionSample(firsts);
 const banYears = dated.map((f) => f.year).sort((a, b) => a - b);
 const quart = (q) => banYears[Math.floor((banYears.length - 1) * q)];
 const [banQ1, banMid, banQ3] = [quart(0.25), quart(0.5), quart(0.75)];
@@ -196,16 +196,9 @@ const ridgePath = (r, i) => {
 const peak2020 = ridges.at(-1).d.indexOf(Math.max(...ridges.at(-1).d));
 
 // ── What the history is about, decade by decade: a streamgraph of its entries by kind ──
-const STREAM = [
-  { id: "tightening", label: "Bans and tightening", cats: ["ban", "tightening", "death"], color: "var(--t1)" },
-  { id: "enforcement", label: "Enforcement", cats: ["enforcement"], color: "var(--t0)" },
-  { id: "easing", label: "Easing and legalisation", cats: ["easing", "legalisation"], color: "var(--t5)" },
-  { id: "medical", label: "Medical and hemp", cats: ["medical", "hemp"], color: "var(--t4)" },
-  { id: "debate", label: "Debate and culture", cats: ["debate", "culture"], color: "var(--t3)" },
-  { id: "law", label: "Treaties and other law", cats: ["international", "other"], color: "var(--muted)" },
-];
+const STREAM = HISTORY_TOPICS;
 const D0 = 1860, decades = Array.from({ length: Math.floor(NOW / 10) - D0 / 10 + 1 }, (_, i) => D0 + i * 10);
-const streamCounts = STREAM.map((g) => decades.map((d) => changes.filter((ch) => g.cats.includes(ch.category) && !ch.estimate && +String(ch.date).slice(0, 4) >= d && +String(ch.date).slice(0, 4) < d + 10).length));
+const streamCounts = topicCounts(changes, decades);
 const decadeTotals = decades.map((_, i) => streamCounts.reduce((s, row) => s + row[i], 0));
 const streamMax = Math.max(...decadeTotals);
 // centred on the middle line (a "silhouette" stream), each decade at the middle of its span
@@ -227,7 +220,6 @@ const streams = (() => {
   });
 })();
 const peakDecade = decades[decadeTotals.indexOf(streamMax)];
-const easeNow = streamCounts[2].at(-1) + streamCounts[3].at(-1), tightNow = streamCounts[0].at(-1) + streamCounts[1].at(-1);
 
 // names beside scatter dots, the most telling first, unless one would land on a name already
 // shown: points [{ key, x, y (both in %) }], returns the keys to name
@@ -264,8 +256,6 @@ const corr = (pts) => {
 };
 const priceFit = corr(priced);
 const PX1 = Math.ceil(Math.max(...priced.map((p) => p.x)) / 10) * 10, PY1 = Math.ceil(Math.max(...priced.map((p) => p.y)) / 5) * 5;
-const priceMedian = (pred) => median(priced.filter(pred).map((p) => p.y));
-const priceStrict = priceMedian((p) => p.x < 15), priceMild = priceMedian((p) => p.x >= 15);
 const priceNamed = pickLabels([...priced].sort((a, b) => Math.abs(b.y - median(priced.map((q) => q.y))) - Math.abs(a.y - median(priced.map((q) => q.y)))).map((p) => ({ key: p.c.id, x: pct(p.x, 0, PX1), y: 100 - pct(p.y, 0, PY1) })));
 
 // ── Who gets punished: cannabis offences recorded per 1,000 people who use it ──
@@ -630,11 +620,7 @@ const MEASURES = [
   ["Freedom and the state", "Clean public sector (corruption index)", "#corruption", (c) => latestSince(c.series.corruption, "cpi", 2020)?.cpi],
   ["Freedom and the state", "Government effectiveness", "#state-capacity", (c) => latestSince(c.series.government_effectiveness, "score", 2020)?.score],
   ["Wealth and development", "Income per person (log)", "map/income/", (c) => logOr(latestSince(c.series.gdp, "gdp_ppp", 2018)?.gdp_ppp)],
-  ["Wealth and development", "People using the internet", "map/internet/", (c) => dev(c, "internet")],
-  ["Wealth and development", "Living in towns and cities", "map/internet/", (c) => dev(c, "urban")],
-  ["Wealth and development", "Aged 65 or over", "map/internet/", (c) => dev(c, "aged_65")],
-  ["Wealth and development", "Life expectancy", "map/internet/", (c) => dev(c, "life_expectancy")],
-  ["Wealth and development", "Enrolled in higher education", "map/internet/", (c) => dev(c, "higher_education")],
+  ...DEVELOPMENT_MEASURES.map(({ label, href, field }) => ["Wealth and development", label, href, (c) => dev(c, field)]),
   ["Wealth and development", "Research papers per person (log)", "#research", (c) => { const r = research.find((x) => x.c === c); return r ? Math.log10(r.per) : null; }],
   ["Use and drugs", "Adults who use cannabis", "#use", (c) => (c.use && !c.use.estimate ? c.use.prevalence : null)],
   ["Use and drugs", "Teenagers who use cannabis (past year)", "map/youth-cannabis-use/", (c) => latestSince(c.series.youth_use, "past_year", 2010)?.past_year],
@@ -651,9 +637,9 @@ const MEASURES = [
   ["Markets and enforcement", "Clinical trials per person (log)", "#trials", (c) => { const r = c.series.clinical_trials?.at(-1); return r ? Math.log10(1 + (r.to_date / c.population) * 1e6) : null; }],
   ["Markets and enforcement", "Cannabis seized per person (log)", "map/cannabis-seizures/", (c) => { const kg = latestSince(c.series.seizures, "total_kg", 2018)?.total_kg; return kg != null ? Math.log10(1 + perPerson(c, kg, 1e6)) : null; }],
   ["Culture and history", "Cannabis in the news (log)", "#in-the-news", (c) => { const r = latestSince(c.series.news, "share", 2024); return r && r.share > 0 ? Math.log10(r.share) : null; }],
-  ["Culture and history", "Christian majority", "#religion", (c) => faithIs(c, "Christians")],
+  ["Culture and history", "Christians are the largest group", "#religion", (c) => faithIs(c, "Christians")],
   ["Culture and history", "No religion is the largest group", "#religion", (c) => faithIs(c, "Religiously Unaffiliated")],
-  ["Culture and history", "Muslim majority", "#religion", (c) => faithIs(c, "Muslims")],
+  ["Culture and history", "Muslims are the largest group", "#religion", (c) => faithIs(c, "Muslims")],
   ["Culture and history", "Opinion that using marijuana is not immoral", "#opinion", (c) => (c.datasets.pew_marijuana ? c.datasets.pew_marijuana.acceptable + c.datasets.pew_marijuana.not_moral : null)],
   ["Culture and history", "Years under prohibition since 1860", "#stripes", (c) => bannedYears.get(c.id)],
   ["Culture and history", "Year of the first rule on cannabis", "#first-bans", (c) => firstYearOf.get(c.id)],
@@ -1021,8 +1007,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("first-bans") && <h2 class="ch-chapter">{chapterAt.get("first-bans")}</h2>}
     <section class="ch" id="first-bans">
       <p class="ch-kicker"><a href="#first-bans">{kick("first-bans")}</a></p>
-      <h2>Half the world's countries first restricted cannabis between {banQ1} and {banQ3}</h2>
-      <p class="ch-dek">Each dot is a country, placed at the year of its first recorded rule on cannabis and coloured by its score today. The middle year is {banMid}. Some came under a colonial power's law before they were countries.</p>
+      <h2>Among {dated.length} countries with dated first restrictions, the middle half falls between {banQ1} and {banQ3}</h2>
+      <p class="ch-dek">{undated} countries with unknown first-restriction dates are left out. Each dot is a country, placed at the year of its first recorded rule on cannabis and coloured by its score today. The middle year is {banMid}. Some came under a colonial power's law before they were countries.</p>
       <div class="ch-frame ch-swarm" data-no-preview>
         {swarms.map((g) => (
           <div class="ch-swarm-row" style={`--lanes:${g.lanes}`}>
@@ -1078,7 +1064,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     <section class="ch" id="empire">
       <p class="ch-kicker"><a href="#empire">{kick("empire")}</a></p>
       <h2>{bigEmpire.before} of the {bigEmpire.dots.length} former colonies of the {bigEmpire.r.name} had a rule on cannabis before it made one at home</h2>
-      <p class="ch-dek">For each former colonial power, a row of its former colonies, each placed at the year of its first recorded rule on cannabis and coloured by its score today; the black line is the year the ruler first restricted cannabis at home. Many of these first rules were the ruler's own law, made for the colony, and stayed on the books after independence.</p>
+      <p class="ch-dek">Only former colonies with a dated first restriction are counted here. For each former colonial power, a row of those colonies, each placed at the year of its first recorded rule on cannabis and coloured by its score today; the black line is the year the ruler first restricted cannabis at home. Many of these first rules were the ruler's own law, made for the colony, and stayed on the books after independence.</p>
       <div class="ch-frame ch-swarm ch-empire" data-no-preview>
         {empires.map((e) => (
           <div class="ch-swarm-row" style={`--lanes:${e.lanes}`}>
@@ -1101,8 +1087,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("stream") && <h2 class="ch-chapter">{chapterAt.get("stream")}</h2>}
     <section class="ch" id="stream">
       <p class="ch-kicker"><a href="#stream">{kick("stream")}</a></p>
-      <h2>The {peakDecade}s fill the history most; this decade, easing outweighs tightening {easeNow} to {tightNow}</h2>
-      <p class="ch-dek">Every dated entry in the history, laws and raids, rulings and reports, treaties and books, counted by decade and kind. The wider the stream, the more happened. The 2020s are not over.</p>
+      <h2>The {peakDecade}s have the most recorded history entries</h2>
+      <p class="ch-dek">Every dated entry in the history, laws and raids, rulings and reports, treaties and books, counted by decade and kind. The wider the stream, the more entries we have recorded. These are topics, not counts of laws becoming stricter or more lenient. The 2020s are not over.</p>
       <div class="ch-frame ch-stream" data-no-preview>
         <div class="ch-plot">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -1491,8 +1477,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("price") && <h2 class="ch-chapter">{chapterAt.get("price")}</h2>}
     <section class="ch" id="price">
       <p class="ch-kicker"><a href="#price">{kick("price")}</a></p>
-      <h2>{Math.abs(priceFit.r) < 0.3 ? "A harsher law does not make cannabis dearer" : priceFit.r < 0 ? "Where the law is harsher, cannabis costs more" : "Where the law is milder, cannabis costs more"}: €{priceStrict.toFixed(2)} a gram under prohibition, €{priceMild.toFixed(2)} elsewhere</h2>
-      <p class="ch-dek">Each dot is a European country: across, its cannabis score; up, the typical street price of a gram of herb in the latest year reported. If prohibition worked by making cannabis scarce, the dots on the left would sit higher.</p>
+      <h2>Across {priced.length} countries, cannabis price and the score show {Math.abs(priceFit.r) < 0.3 ? "little" : Math.abs(priceFit.r) < 0.7 ? "moderate" : "strong"} correlation (r = {priceFit.r.toFixed(2)})</h2>
+      <p class="ch-dek">Each dot is a European country: across, its cannabis score; up, the typical street price of a gram of herb in the latest year reported. The observations come from different years since 2018 and show an association across countries; they cannot isolate the effect of the law on price.</p>
       <div class="ch-frame ch-scatter" data-no-preview>
         <div class="ch-y">{Array.from({ length: PY1 / 5 + 1 }, (_, i) => i * 5).map((t) => <span style={`top:${100 - pct(t, 0, PY1)}%`}>€{t}</span>)}</div>
         <div class="ch-plot ch-plot-short">
@@ -1685,7 +1671,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("religion") && <h2 class="ch-chapter">{chapterAt.get("religion")}</h2>}
     <section class="ch" id="religion">
       <p class="ch-kicker"><a href="#religion">{kick("religion")}</a></p>
-      <h2>Faith and the law: no Muslim-majority country scores above {Math.round(muslim.max.raw)}; the freest are mostly Christian or have no majority faith</h2>
+      <h2>Where Muslims are the largest religious group, no country scores above {Math.round(muslim.max.raw)}</h2>
       <p class="ch-dek">Each dot is a country, in the row of its largest religious group (Pew's 2020 estimate) and placed along the row by its cannabis score. The bar is each group's middle. Religion is one force among many: colonial law, wealth and the year a country met the drug treaties all play a part.</p>
       <div class="ch-frame ch-faith" data-no-preview>
         {faiths.map((f) => (
@@ -1908,19 +1894,19 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     <section class="ch" id="what-goes-with-it">
       <p class="ch-kicker"><a href="#what-goes-with-it">{kick("what-goes-with-it")}</a></p>
       <h2>Across the world, {strongest.label.replace(/ \(.*\)$/, "").toLowerCase()} goes with cannabis freedom most closely (r = {strongest.r.toFixed(2)}); in fewer countries, {strongestNarrow.label.replace(/ \(.*\)$/, "").toLowerCase()} does even more (r = {strongestNarrow.r.toFixed(2)})</h2>
-      <p class="ch-dek">How closely each of {measures.length} measures moves with the cannabis score across the countries that have it: 1 would mean they rise together exactly, −1 that one falls as the other rises, 0 no link at all. A yes-or-no measure, such as a Muslim majority, counts 1 for yes. A link is not a cause, and many of these measures move with each other; those marked Europe cover few countries. Click a bar for its chart or map.</p>
+      <p class="ch-dek">How closely each of {measures.length} measures moves with the cannabis score across the countries that have it: 1 would mean they rise together exactly, −1 that one falls as the other rises, 0 no link at all. A yes-or-no measure, such as Muslims being the largest religious group, counts 1 for yes. A link is not a cause, and many of these measures move with each other; those marked Europe cover few countries. Linked bars open the matching chart or map.</p>
       <ol class="ch-corr" data-no-preview>
         {MEASURE_GROUPS.map(({ g, list }) => <>
           <li class="ch-corr-group">{g}</li>
-          {list.map((m) => (
+          {list.map((m) => { const Row = m.href ? "a" : "div"; return (
           <li>
-            <a href={m.href.startsWith("#") ? m.href : `${base}${m.href}`} data-measure={measures.indexOf(m)}>
+            <Row class="ch-corr-row" href={m.href ? (m.href.startsWith("#") ? m.href : `${base}${m.href}`) : undefined} data-measure={measures.indexOf(m)}>
               <span class="ch-bar-name">{m.label} <small>{m.n}</small></span>
               <span class="ch-corr-track"><i class="ch-corr-zero"></i><span class="ch-corr-bar" style={`${m.r >= 0 ? `left:50%;width:${m.r * 50}%` : `right:50%;width:${-m.r * 50}%`};--c:${m.r >= 0 ? "var(--t5)" : "var(--t1)"}`}></span></span>
               <span class="ch-bar-num">{m.r > 0 ? "+" : "−"}{Math.abs(m.r).toFixed(2)}</span>
-            </a>
+            </Row>
           </li>
-          ))}
+          ); })}
         </>)}
         <li class="ch-corr-axis" aria-hidden="true"><span></span><span class="ch-corr-track"><span style="left:0">−1</span><span style="left:50%">0</span><span style="left:100%">+1</span></span><span></span></li>
       </ol>
@@ -2311,7 +2297,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     document.querySelectorAll("[data-measure]").forEach((a) => card(a, () => {
       const [label, r, n] = D.measures[+a.dataset.measure];
       const words = Math.abs(r) < 0.2 ? "next to no link" : Math.abs(r) < 0.4 ? "a weak link" : Math.abs(r) < 0.6 ? "a moderate link" : "a strong link";
-      return `<b>${esc(label)}</b><span class="ch-tip-row">Correlation with the score<em>${r > 0 ? "+" : "−"}${Math.abs(r).toFixed(2)}</em></span><span class="ch-tip-sub">${words}, ${r >= 0 ? "rising together" : "one falls as the other rises"}; ${n} countries</span><span class="ch-tip-go">See its chart →</span>`;
+      return `<b>${esc(label)}</b><span class="ch-tip-row">Correlation with the score<em>${r > 0 ? "+" : "−"}${Math.abs(r).toFixed(2)}</em></span><span class="ch-tip-sub">${words}, ${r >= 0 ? "rising together" : "one falls as the other rises"}; ${n} countries</span>${a.matches("a") ? '<span class="ch-tip-go">See its chart or map →</span>' : ""}`;
     }));
     // Wikipedia readers: the month under the pointer
     document.querySelectorAll("[data-wiki]").forEach((a) => {
