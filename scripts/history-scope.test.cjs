@@ -740,3 +740,26 @@ test("Myanmar's 2025 amendment, Hungary's THC threshold and Kenya's fine alterna
   assert.doesNotMatch(ke.summary, /thirty years from a single gram/);
   assert.equal(ke.scores.possession, 1);
 });
+
+test("British Columbia's home cap, Victoria's fine and the Atlantic grow rules follow the texts that were read", () => {
+  const bc = y.load(fs.readFileSync("countries/ca/bc.yaml", "utf8"));
+  const nl = y.load(fs.readFileSync("countries/ca/nl.yaml", "utf8"));
+  const nb = y.load(fs.readFileSync("countries/ca/nb.yaml", "utf8"));
+  const vic = y.load(fs.readFileSync("countries/au/vic.yaml", "utf8"));
+  const ca = y.load(fs.readFileSync("countries/ca/index.yaml", "utf8"));
+  const indoor = byId["newfoundland-indoor-homegrow-2018"];
+  assert.match(bc.segments.possession, /1,000 g/);
+  assert.doesNotMatch(bc.segments.possession, /no provincial cap/);
+  assert.equal(bc.scores.possession, 6);
+  assert.match(vic.segments.possession, /five penalty units/);
+  assert.doesNotMatch(vic.segments.possession, /two years/);
+  assert.equal(vic.scores.possession, 2);
+  assert.match(nl.segments.cultivation, /yard itself is excluded/);
+  assert.match(nb.segments.cultivation, /1\.52 metres/);
+  assert.equal(nl.scores.cultivation, 4);
+  assert.equal(nb.scores.cultivation, 4);
+  assert.match(ca.segments.cultivation.text, /1\.52 metres/);
+  assert.equal(indoor.date, "2018-10-17");
+  assert.equal(indoor.subunit, "nl");
+  assert.equal(indoor.before, undefined);
+});
