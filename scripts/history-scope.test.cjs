@@ -811,3 +811,27 @@ test("Prince Edward Island's grow rules, Western Australia's intervention notice
   assert.equal(act.scores.enforcement, 6);
   assert.equal(act.scores.cultivation, 3);
 });
+
+test("New Brunswick retail and consumption, Northwest Territories vendors and the NSW caution threshold follow the texts that were read", () => {
+  const nb = y.load(fs.readFileSync("countries/ca/nb.yaml", "utf8"));
+  const nt = y.load(fs.readFileSync("countries/ca/nt.yaml", "utf8"));
+  const nsw = y.load(fs.readFileSync("countries/au/nsw.yaml", "utf8"));
+  assert.match(nb.segments.access, /private retailers/);
+  assert.match(nb.segments.access, /farmgate/);
+  assert.doesNotMatch(nb.segments.access, /Government-operated/);
+  assert.match(nb.segments.consumption, /campsite/);
+  assert.match(nb.segments.consumption, /backyard/);
+  assert.doesNotMatch(nb.segments.consumption, /residences only/);
+  assert.equal(nb.scores.access, 6);
+  assert.equal(nb.scores.consumption, 3);
+  assert.match(nt.segments.access, /private shops/);
+  assert.doesNotMatch(nt.summary, /Government-run/);
+  assert.match(nt.segments.access, /store is operating/);
+  assert.equal(nt.scores.access, 6);
+  assert.match(nsw.segments.possession, /30 g of dried cannabis/);
+  assert.doesNotMatch(nsw.summary, /15 g/);
+  assert.doesNotMatch(nsw.segments.possession, /\$2,200/);
+  assert.match(nsw.segments.possession, /20 penalty units/);
+  assert.equal(nsw.scores.possession, 2);
+  assert.equal(nsw.scores.enforcement, 3);
+});
