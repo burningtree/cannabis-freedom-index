@@ -262,6 +262,24 @@ const priceNamed = pickLabels([...priced].sort((a, b) => Math.abs(b.y - median(p
 const OFF = DATASETS.cannabis_offences;
 const punished = countries.map((c) => ({ c, trend: policeTrend(c.series.cannabis_offences) }))
   .filter((p) => p.trend).sort((a, b) => a.c.name.localeCompare(b.c.name));
+// Each country's own count since SPARK0, as a sparkline on its own scale (0 to its highest year),
+// so a line shows only the direction of that country's records, never a size next to another's.
+// A missing year breaks the line. `step` is the last two years, the change the bar shows.
+const SPARK0 = 2015, SPARK1 = Math.max(...punished.map((p) => p.trend.last.year));
+const policeSpark = (rows = []) => {
+  const pts = rows.filter((r) => r.year >= SPARK0 && Number.isFinite(r.offences)).sort((a, b) => a.year - b.year);
+  if (pts.length < 2) return null;
+  const top = Math.max(...pts.map((r) => r.offences)) || 1;
+  const at = (r) => [pct(r.year, SPARK0, SPARK1).toFixed(1), (94 - (r.offences / top) * 86).toFixed(1)];
+  const line = pts.map((r, i) => `${i && r.year - pts[i - 1].year === 1 ? "L" : "M"}${at(r).join(",")}`).join("");
+  const [a, b] = pts.slice(-2);
+  return { line, step: b.year - a.year === 1 ? `M${at(a).join(",")}L${at(b).join(",")}` : "", dots: `M${at(a).join(",")}l0,0M${at(b).join(",")}l0,0` };
+};
+// the bar for a change: half the track is 100%; a rise beyond that is capped and marked
+const changeBar = (change) => {
+  const w = Math.min(Math.abs(change), 100) / 2;
+  return { left: change < 0 ? 50 - w : 50, width: w, over: change > 100 };
+};
 
 // ── Stronger, cheaper: how much THC a euro buys in Europe, year by year ──
 // A gram at p% THC holds p × 10 mg; a euro buys that divided by the price.
@@ -1295,14 +1313,22 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     <section class="ch" id="punished">
       <p class="ch-kicker"><a href="#punished">{kick("punished")}</a></p>
       <h2>Cannabis police records: how each country's latest count changed</h2>
-      <p class="ch-dek">Compare each country with its own previous reporting year. These are recorded use or possession offences or persons, depending on the country, rather than punishments. Different counting units and procedural stages make both cross-country ranks and magnitudes unreliable as enforcement comparisons. Rows are alphabetical.</p>
-      <ul class="ch-bars" data-no-preview>
-        {punished.map((p) => <li><a href={`${base}country/${p.c.slug}/#datasets`} data-punish={p.c.slug}>
-          <span class="ch-bar-name">{p.c.flag} {p.c.name}</span>
-          <span>{num(p.trend.first.offences)} ({p.trend.first.year}) → {num(p.trend.last.offences)} ({p.trend.last.year})</span>
-          <span class="ch-bar-num">{p.trend.change == null ? "—" : `${p.trend.change > 0 ? "+" : ""}${p.trend.change.toFixed(1)}%`}</span>
-        </a></li>)}
-      </ul>
+      <p class="ch-dek">Compare each country with its own previous reporting year. These are recorded use or possession offences or persons, depending on the country, rather than punishments. Different counting units and procedural stages make both cross-country ranks and magnitudes unreliable as enforcement comparisons. Rows are alphabetical. Each line is the country's own count since {SPARK0}, on its own scale; the bar is its latest change.</p>
+      <p class="ch-legend ch-pol-legend"><span><i class="down"></i>Fewer records than the year before</span><span><i class="up"></i>More records</span></p>
+      <div class="ch-pol" data-no-preview>
+        <div class="ch-pol-axis" aria-hidden="true"><span></span><span>Since {SPARK0}</span><span class="ch-pol-ticks"><b style="left:0">−100%</b><b style="left:25%">−50%</b><b style="left:50%">0</b><b style="left:75%">+50%</b><b style="left:100%">+100%</b></span><span></span></div>
+        <ul>
+          {punished.map((p) => {
+            const spark = policeSpark(p.c.series.cannabis_offences), ch = p.trend.change, bar = ch == null ? null : changeBar(ch);
+            return <li><a href={`${base}country/${p.c.slug}/#datasets`} data-punish={p.c.slug}>
+              <span class="ch-pol-name"><span class="ch-bar-name">{p.c.flag} {p.c.name}</span><small>{num(p.trend.first.offences)} ({p.trend.first.year}) → {num(p.trend.last.offences)} ({p.trend.last.year})</small></span>
+              {spark ? <svg class={`ch-pol-spark ${ch != null && ch < 0 ? "down" : "up"}`} viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="line" d={spark.line} />{spark.step && <path class="step" d={spark.step} />}<path class="dot" d={spark.dots} /></svg> : <span></span>}
+              <span class="ch-pol-track" aria-hidden="true">{bar && <i class={`${ch < 0 ? "down" : "up"}${bar.over ? " over" : ""}`} style={`left:${bar.left}%;width:${bar.width}%`}></i>}</span>
+              <span class={`ch-bar-num ${ch == null ? "" : ch < 0 ? "down" : "up"}`}>{ch == null ? "—" : `${ch > 0 ? "+" : ch < 0 ? "−" : ""}${Math.abs(ch).toFixed(1)}%`}</span>
+            </a></li>;
+          })}
+        </ul>
+      </div>
       <p class="ch-source">{OFF.title}. Latest two available years since 2020; reporting changes can also affect a country's trend. <a href="https://www.euda.europa.eu/data/stats2026/methods/dlo_en">EUDA counting methods</a>. <a href={`${base}sources/#dataset-cannabis_offences`}>About the dataset</a>.</p>
     </section>
     {chapterAt.has("punish-or-treat") && <h2 class="ch-chapter">{chapterAt.get("punish-or-treat")}</h2>}
@@ -1310,9 +1336,16 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
       <p class="ch-kicker"><a href="#punish-or-treat">{kick("punish-or-treat")}</a></p>
       <h2>Police records and treatment entries describe different activities</h2>
       <p class="ch-dek">Separate annual counts, shown alphabetically: police records count events or persons under national definitions; treatment counts people entering care mainly for cannabis. They cannot measure a choice between punishment and care. The groups can overlap, including police or court referrals to treatment.</p>
-      <div class="ch-records-table" data-no-preview><table>
-        <thead><tr><th>Country</th><th>Police records · year</th><th>Treatment entries · year</th></tr></thead>
-        <tbody>{punishTreat.map((d) => <tr><th><a href={`${base}country/${d.c.slug}/#datasets`} data-ptreat={d.c.slug}>{d.c.name}</a></th><td>{num(d.punish)} · {d.offYear}</td><td>{num(d.treat)} · {d.trYear}</td></tr>)}</tbody>
+      <div class="ch-records-table ch-pt" data-no-preview><table>
+        <thead><tr><th>Country</th><th>Police records <small>own trend since {SPARK0} · latest · year</small></th><th>Treatment entries <small>share of all entrants who came for cannabis · count · year</small></th></tr></thead>
+        <tbody>{punishTreat.map((d) => {
+          const spark = policeSpark(d.c.series.cannabis_offences);
+          return <tr>
+            <th><a href={`${base}country/${d.c.slug}/#datasets`} data-ptreat={d.c.slug}><span>{d.c.flag}</span> {d.c.name}</a></th>
+            <td data-label="Police records"><span class="ch-pt-cell">{spark ? <svg class="ch-pol-spark flat" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="line" d={spark.line} /><path class="dot" d={spark.dots.replace(/^M[^M]*/, "")} /></svg> : <span></span>}<span class="ch-pt-num">{num(d.punish)} <small>{d.offYear}</small></span></span></td>
+            <td data-label="Treatment · share"><span class="ch-pt-cell">{d.share != null ? <span class="ch-pt-share" aria-hidden="true"><i style={`width:${d.share}%`}></i></span> : <span></span>}<span class="ch-pt-num">{d.share != null && <b>{d.share.toFixed(0)}%</b>} {num(d.treat)} <small>{d.trYear}</small></span></span></td>
+          </tr>;
+        })}</tbody>
       </table></div>
       <p class="ch-source">Police records: <a href={`${base}sources/#dataset-cannabis_offences`}>{OFF.title}</a>. Treatment: <a href={`${base}sources/#dataset-treatment`}>{TREAT.title}</a>. Croatia is excluded because it reports all clients in treatment, not annual entrants. Sweden has no matching police observation in this extract; its treatment figure combines separate sources. Observation years are printed for both counts; mismatched years and national reporting differences prevent direct ratios or rankings.</p>
     </section>
@@ -2319,7 +2352,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     // punish or treat
     document.querySelectorAll("[data-ptreat]").forEach((a) => card(a, () => {
       const [name, punish, treat, oy, ty, share, score, tier] = D.punishTreat[a.dataset.ptreat];
-      return `<b>${esc(name)}</b><span class="ch-tip-row">Police records, ${oy}<em>${punish.toLocaleString("en-GB")}</em></span><span class="ch-tip-row">Cannabis treatment entries, ${ty}<em>${treat.toLocaleString("en-GB")}</em></span><span class="ch-tip-sub">Separate counts with possible overlap; no punishment-to-care ratio.${a.dataset.ptreat === "se" ? " Sweden combines separate sources." : ""}</span>`;
+      return `<b>${esc(name)}</b><span class="ch-tip-row">Police records, ${oy}<em>${punish.toLocaleString("en-GB")}</em></span><span class="ch-tip-row">Cannabis treatment entries, ${ty}<em>${treat.toLocaleString("en-GB")}</em></span>${share != null ? `<span class="ch-tip-row">Share of all treatment entrants<em>${share.toFixed(1)}%</em></span>` : ""}<span class="ch-tip-sub">Separate counts with possible overlap; no punishment-to-care ratio.${a.dataset.ptreat === "se" ? " Sweden combines separate sources." : ""}</span>`;
     }));
 
     // in the news
