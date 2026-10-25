@@ -450,6 +450,13 @@ is a pharmacy, a club, a state shop or a coffeeshop. So:
 
   Questions: `carry` (possession), `grow` (cultivation), `buy` (access), `public` (consumption),
   `caught` (enforcement). When the law changes, update the answer with the segment.
+- **National estimates do not describe a single jurisdiction.** Where state/provincial rules
+  or federal and local laws diverge, provide an explicit answer naming that distinction. The US
+  possession score must never imply that criminal charges are generally unavailable. Audit
+  Canada and Australia alongside it; Canada’s federal growing permission still has a Quebec
+  exception. Check administrative detention separately from criminal punishment, as in China.
+  The same overrides feed the profile, `/can-i/` and search-engine FAQs. Federation profiles
+  link from the quick answers to their state/province picker.
 - **`npm run answers:test`** checks every answer against its profile: prescription without a
   medical programme, "legal" where recreational cannabis is not, "use itself is a crime" where the
   text says use is not an offence, a fine where the text says there is none, and so on. It runs

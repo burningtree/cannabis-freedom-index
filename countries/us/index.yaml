@@ -16,11 +16,20 @@ scores:
   sharing: 4
   consumption: 3
   access: 5
-# The channel the access score cannot name (src/lib/answers.js).
+# State/federal differences and supply channels the national scores cannot name (src/lib/answers.js).
 answers:
   buy:
-    answer: "yes"
+    answer: 'yes'
     text: In licensed dispensaries in the states that allow it, to adults 21+
+  carry:
+    answer: limited
+    label: Depends on jurisdiction
+    text: >-
+      State rules vary; possession can be a crime under state and federal law, even where a state
+      permits it
+  grow:
+    answer: limited
+    text: State rules vary; some allow home growing, while others treat even one plant as a crime
 segments:
   possession:
     text: >-
@@ -30,6 +39,7 @@ segments:
     sources:
       - norml
       - ncsl
+      - possession844
   cultivation:
     text: >-
       Most legal states allow home growing, usually six plants per adult with a household cap, but
@@ -203,6 +213,9 @@ context:
       - lvsun
       - wikicsc
 sources:
+  possession844:
+    title: US Code — 21 USC 844(a), penalties for simple possession
+    url: https://uscode.house.gov/us/usc/119-118/t21/s844/
   hemani2026:
     title: US Supreme Court — United States v. Hemani, No. 24-1234 (18 June 2026)
     url: https://www.supremecourt.gov/opinions/25pdf/24-1234_new_6k47.pdf

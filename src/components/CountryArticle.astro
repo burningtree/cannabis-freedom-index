@@ -118,7 +118,7 @@ const culture = cultureOf(c);
     {group && (
       <label class="field sub-select">
         <span>{group.label}</span>
-        <select data-subunit-select aria-label={`Choose a ${group.label.toLowerCase()} of ${c.name}`}>
+        <select id="subunit-choice" data-subunit-select aria-label={`Choose a ${group.label.toLowerCase()} of ${c.name}`}>
           <option value={countryUrl} selected={!sub}>All of {c.name} (national estimate)</option>
           {byName.map((x) => <option value={unitUrl(x)} selected={sub?.id === x.id}>{x.name} · {x.score}</option>)}
         </select>
@@ -169,6 +169,7 @@ const culture = cultureOf(c);
         </li>
       ))}
     </ul>
+    {group && !sub && <p class="d-hint"><a href="#subunit-choice">Choose a {group.label.toLowerCase()} for its local rules ↑</a></p>}
     <p class="d-hint">A rough guide read from the scores and the rules below, not legal advice. The details and the exceptions are in each segment: select an answer to jump to it.</p>
   </div>
 

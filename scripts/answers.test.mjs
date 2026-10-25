@@ -95,3 +95,34 @@ test("Italy: use is not called an offence, and being caught does not mean a fine
   assert.doesNotMatch(it.public.text, /use itself/i);
   assert.doesNotMatch(said(it.caught), /\bfine\b/i);
 });
+
+// Issue #31: a national estimate is not a single jurisdiction's legal rule.
+test("US national possession names both state and federal criminal exposure", () => {
+  const us = placeOf('us').result;
+  assert.equal(us.carry.own, true);
+  assert.equal(us.carry.answer, 'limited');
+  assert.match(us.carry.text, /state and federal law/i);
+  assert.match(us.carry.text, /can be a crime/);
+  assert.doesNotMatch(us.carry.text, /not a crime|usually no criminal charge/i);
+  assert.match(us.grow.text, /one plant.*crime/);
+});
+
+test("the federation audit keeps Australia conditional and Canada's Quebec growing exception visible", () => {
+  const au = placeOf('au').result, ca = placeOf('ca').result;
+  assert.match(au.carry.text, /ACT.*exemption/);
+  assert.match(au.carry.text, /charges.*Commonwealth/);
+  assert.equal(ca.carry.answer, 'yes'); // the national adult quantity permission is real
+  assert.equal(ca.grow.answer, 'limited');
+  assert.match(ca.grow.text, /Quebec bans/);
+});
+
+test("China's small-possession answer describes administrative detention rather than a criminal conviction", () => {
+  const cn = placeOf('cn').result;
+  assert.equal(cn.carry.answer, 'no');
+  assert.match(cn.carry.text, /administrative offence.*detention/);
+  assert.match(cn.carry.text, /larger amounts can be criminal/);
+  assert.doesNotMatch(cn.carry.text, /It is a crime|not a crime, but you can be fined/);
+  assert.equal(cn.caught.label, 'Administrative detention');
+  assert.match(cn.grow.text, /administrative penalties/);
+  assert.match(cn.public.text, /administrative detention/);
+});
