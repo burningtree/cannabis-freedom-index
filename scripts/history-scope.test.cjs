@@ -932,3 +932,16 @@ test("Vietnam sale brackets, South Sudan's cannabis exclusion, and Bangladesh se
   assert.equal(digital.before, undefined);
   assert.ok(digital.unscored);
 });
+
+test("Venezuela separates personal use from the criminal quantity band and dates treatment to 1984", () => {
+  const ve = y.load(fs.readFileSync("countries/ve.yaml", "utf8"));
+  assert.match(ve.segments.possession.text, /Article 131/);
+  assert.match(ve.segments.possession.text, /Article 153/);
+  assert.match(ve.segments.possession.text, /one to two years/);
+  assert.equal(ve.scores.cultivation, 0);
+  assert.equal(ve.scores.sharing, 0);
+  assert.equal(byId["venezuela-drug-law-1984"].category, "easing");
+  assert.ok(byId["venezuela-drug-law-1984"].before);
+  assert.equal(byId["venezuela-personal-dose-1993"].before, undefined);
+  assert.ok(byId["venezuela-drug-law-1984"].sources.some(s => s.url.includes("e-nl-1985-93-s.pdf")));
+});

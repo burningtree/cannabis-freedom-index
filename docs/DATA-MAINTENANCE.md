@@ -1474,3 +1474,14 @@ stages with inline citations. Current scores are unchanged. A subsequently retri
 chapter adds a fifth entry and third new article on the 1919 licensed-drug controls.
 The aggregate estimate now spans 1919–1950; the original law and full cultivation/
 medical-access sequence remain open. The book catalogue records the selected pages read.
+
+A [Venezuela treatment and sentencing pass](research/history-venezuela-gap-2026-10-25.md)
+on 25 October 2026 adds the 1964 cannabis penalties, the 2005 possession-sentence
+cut and the 2014/2017 suspended-sentence rulings. Three new articles explain the
+1984 treatment route, the 2010 penalty increases and the 2017 court decision;
+the 1993 article now dates the original personal-use route to 1984. Historical
+snapshots move that change to July 1984. The current profile distinguishes
+individual personal use from the separate twenty-gram criminal-possession band;
+verified growing and supply penalties correct its exact score from 13.5 to 10.
+The original pre-1964 cannabis scope remains open, and the research note records
+the limits of the aggregate estimate and enforcement snapshot.
