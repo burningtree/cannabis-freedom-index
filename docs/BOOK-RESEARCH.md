@@ -4,7 +4,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 
 **Read** means the recorded chapter was read; **partial** means only the named pages or sections were examined; **indexed** means a contents entry only. Counts include introductions where catalogued. They are not percentages of pages or proof that a whole book is covered. Applied targets count distinct recorded content/event references, not independent findings.
 
-**23 catalogued books**; 20 with recorded substantive reading; 1 awaiting bibliography verification.
+**24 catalogued books**; 21 with recorded substantive reading; 1 awaiting bibliography verification.
 
 | Book | Bibliography | Fully read / listed units | Partial | Indexed only | Applied targets | Illustrations | Local file |
 |---|---|---:|---:|---:|---:|---:|---|
@@ -31,6 +31,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 | [Cannabis Culture (newly updated edition)](#matthews-cannabis-culture-2003) | verified | 1 / 15 | 2 | 12 | 4 | 0 | matches recorded hash |
 | [Drogas: A história do proibicionismo](#carneiro-drogas-proibicionismo-2019) | verified | 1 / 11 | 2 | 8 | 0 | 0 | matches recorded hash |
 | [Hashish, Wine, Opium](#gautier-baudelaire-hashish-wine-opium-2009) | verified | 0 / 5 | 2 | 3 | 2 | 0 | matches recorded hash |
+| [El rescate de la memoria: Historias de transgresión, marginación y justicia en América Latina, siglos XIX y XX](#trujillo-fessler-rescate-memoria-2021) | verified | 0 / 1 | 1 | 0 | 3 | 0 | matches recorded hash |
 
 ## Inventory alerts
 
@@ -652,3 +653,16 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | The Club of Assassins | selected_sections_read | 1 The Hotel Pimodan; 3 Agape; 9 Don’t Trust Chronometers | culture/traditions/club-des-hashischins.md | — |
 | Hashish | indexed_only | — | — | — |
 | Wine and Hashish Compared as Means for the Multiplication of the Personality | selected_sections_read | Sections 5–7, especially section 6 on wine, willpower and Egyptian prohibition | articles/france-paradis-artificiels-1860.md | — |
+
+<a id="trujillo-fessler-rescate-memoria-2021"></a>
+
+## El rescate de la memoria: Historias de transgresión, marginación y justicia en América Latina, siglos XIX y XX
+
+- **ID:** `trujillo-fessler-rescate-memoria-2021`
+- **Local file:** `books/El rescate de la memoria (Trujillo Breton and Fessler, 2021).pdf`
+- **Last recorded review:** 2026-10-25
+- **Coverage:** Title, copyright and contents checked; selected pages of the Cuba chapter only. This catalogue indexes one relevant chapter, not the full book's contents.
+
+| Chapter / unit | Status | Actually examined | Applied to | Next research |
+|---|---|---|---|---|
+| ¿Elementos indeseables y antisanitarios? Entre la criminalización científico-sanitaria y la persecución policial de la inmigración china durante el desarrollo de la política inmigratoria en Cuba (1902–1935) | selected_pages_read | pp. 329, 346–348, 362–364 | changes.yaml#cuba-cannabis-drug-trade-controls-1919; changes.yaml#cu-first-restriction-estimate; articles/cuba-cannabis-drug-trade-controls-1919.md | Retrieve the cited 1919 law-and-regulations booklet, especially the cannabis schedule, penalties and commencement; check earlier pharmacy controls and cultivation history before replacing the remaining aggregate score estimate. Remaining chapter pages unread. |

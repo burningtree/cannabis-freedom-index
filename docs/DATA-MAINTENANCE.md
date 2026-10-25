@@ -1464,3 +1464,13 @@ start. The current profile now includes administrative detention and lesser
 ordinary growing penalties (exact score 10.5), and corrects the classification
 of theft-of-drugs convictions. Early Uzbek SSR implementation and the original
 quantity tables remain open; the research note records the historical score limits.
+
+A [Cuban possession-history pass](research/history-cuba-gap-2026-10-25.md) on
+25 October 2026 adds the 1958 rebel-territory cannabis rule, the 1979 code's
+three-year personal-possession ceiling, its reduction to two years in April
+1988 and the express cannabis fine option published in June 1994. Two new
+articles explain the 1988 and 1994 changes; the 1999 article now connects those
+stages with inline citations. Current scores are unchanged. A subsequently retrieved scholarly
+chapter adds a fifth entry and third new article on the 1919 licensed-drug controls.
+The aggregate estimate now spans 1919–1950; the original law and full cultivation/
+medical-access sequence remain open. The book catalogue records the selected pages read.
