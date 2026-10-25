@@ -13,6 +13,7 @@ import { references } from "../../../lib/cite.js";
 import References from "../../../components/References.astro";
 import { exhibitionsOfAtlas } from "../../../lib/exhibitions.js";
 import ExhibitionBanner from "../../../components/ExhibitionBanner.astro";
+import { cultureSeo } from "../../../lib/seo.js";
 
 export function getStaticPaths() {
   return cultureEntries.map((e) => ({ params: { section: e.section, slug: e.slug }, props: { e } }));
@@ -30,7 +31,7 @@ const prev = siblings[at - 1], next = siblings[at + 1];
 const written = e.written?.toISOString().slice(0, 10);
 const exhibits = exhibitionsOfAtlas(e);
 ---
-<Base type="article" title={`${e.title} · ${s.name}`} description={e.summary}>
+<Base type="article" title={`${e.title} · ${s.name}`} description={e.summary} jsonld={cultureSeo(e, s, Astro.site)}>
   <main class="change-page ev culture-entry">
     <div class="page-bar"><a class="back" href={`${base}culture/${s.id}/`}>← {s.name}</a></div>
     {exhibits.map((x) => <ExhibitionBanner exhibition={x} note={`${s.name === "People" ? "this person appears in it" : s.name === "Language" ? "this word is part of its story" : "this tradition appears in it"}`} />)}

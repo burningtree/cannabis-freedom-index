@@ -15,6 +15,7 @@ import { cultureOfChange, cultureSection } from "../../lib/culture.js";
 import { relatedTo } from "../../lib/related.js";
 import { exhibitionsOf } from "../../lib/exhibitions.js";
 import ExhibitionBanner from "../../components/ExhibitionBanner.astro";
+import { historySeo } from "../../lib/seo.js";
 import "@fontsource/limelight";
 
 // One history entry: what happened, large; the score before and after when it moved one; how
@@ -58,7 +59,7 @@ const unit = unitGroup?.units.find((x) => x.id === ch.unit.id);
 // so the title stands alone at the top and the page does not leave a gap beside a long lede.
 const ledeInBody = !article;
 ---
-<Base type="article" title={ch.title} description={ch.score ? `${ch.title}: ${c.name} moved from ${ch.score.before} to ${ch.score.after} on the Cannabis Freedom Index. ${ch.description}` : `${ch.title}. ${ch.description}`}>
+<Base type="article" jsonld={historySeo(ch, article, Astro.site)} title={ch.title} description={ch.score ? `${ch.title}: ${c.name} moved from ${ch.score.before} to ${ch.score.after} on the Cannabis Freedom Index. ${ch.description}` : `${ch.title}. ${ch.description}`}>
   <main class="change-page ev">
     <div class="page-bar">
       <a class="back" href={`${base}history/`}>← History</a>

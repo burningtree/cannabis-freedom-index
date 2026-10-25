@@ -14,7 +14,7 @@ const names = Object.fromEntries(countries.map((c) => [c.id, `${c.flag} ${c.name
 // state and province names, by country: { US: { ca: "California" } }
 const regions = Object.fromEntries(countries.filter((c) => subunitsOf(c.id)).map((c) => [c.id, Object.fromEntries(subunitsOf(c.id).units.map((u) => [u.id, u.name]))]));
 ---
-<Base title="Your submissions" description="The answers this browser has submitted to the State of Cannabis survey: read them, change them, delete them, or back up the key they are signed with.">
+<Base noindex title="Your submissions" description="The answers this browser has submitted to the State of Cannabis survey: read them, change them, delete them, or back up the key they are signed with.">
   <main class="changes-page survey sv-me" data-config={JSON.stringify(submitConfig)} data-questions={JSON.stringify(questions)} data-names={JSON.stringify(names)} data-regions={JSON.stringify(regions)}>
     <section class="hero hero-sm">
       <p class="eyebrow"><a href={`${base}survey/`}>State of Cannabis</a> <span>{survey.edition} edition</span></p>

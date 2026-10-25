@@ -3,7 +3,7 @@
 import Base from "../../../layouts/Base.astro";
 import CountryArticle from "../../../components/CountryArticle.astro";
 import { countries, subunitsOf } from "../../../lib/countries.js";
-import { tierOf, tierColor } from "../../../lib/tiers.js";
+import { tierColor } from "../../../lib/tiers.js";
 import { subunitSeo } from "../../../lib/seo.js";
 
 export function getStaticPaths() {
@@ -14,9 +14,8 @@ export function getStaticPaths() {
 
 const { c, sub } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const description = `${sub.name} (${c.name}) scores ${sub.score} out of 100 on the Cannabis Freedom Index (${tierOf(sub.raw).name}). ${sub.note}`;
 ---
-<Base title={`${sub.name}, ${c.name}`} description={description} {...subunitSeo(c, sub, Astro.site)} type="article">
+<Base title={`${sub.name}, ${c.name}`} {...subunitSeo(c, sub, Astro.site)} type="article">
   <a slot="here" class="topbar-here" href="#top" style={`--c:${tierColor(sub.raw)}`}><span aria-hidden="true">{c.flag}</span><span class="here-name">{sub.name}, {c.name}</span><b>{sub.score}</b></a>
   <main class="country-page">
     <div class="page-bar">

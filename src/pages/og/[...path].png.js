@@ -3,7 +3,7 @@
 // six segment bars; history entries get the date, the place and how the score moved; culture
 // entries with a lead picture get it beside their name and summary; every other
 // page gets its name and a line about it. Drawn by src/og/render.js.
-import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, MED_LABEL, countries, places, changes, articles, subunitsOf, worldAvg, changeDate, historyPeriods, CHANGE_CATEGORIES } from "../../lib/countries.js";
+import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, MED_LABEL, countries, places, changes, articles, subunitsOf, worldAvg, changeDate, historyPeriods, CHANGE_CATEGORIES, CHANGE_TAGS } from "../../lib/countries.js";
 import { tierOf, tierIndex } from "../../lib/tiers.js";
 import { MAP_VIEWS } from "../../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries, cultureIn, cultureSection } from "../../lib/culture.js";
@@ -58,6 +58,8 @@ const cards = {
   data: page("Download the data", "Scores, history and a yearly panel since 1900 as CSV and JSON, free to reuse with attribution."),
   "did-you-know": page("Did you know?", "Strange rules, forgotten laws and what the scores show.", [[String(getFacts().length), "CURIOUS CASES"]]),
   articles: page("Articles", "Moments from the history of cannabis law told in full.", [[num(articles.size), "ARTICLES"]]),
+  charts: page("Cannabis (un)freedom in charts", "How prohibition spread after 1860, the waves of law, the regions, use and the law, drawn from the index's scores and history.", indexFacts, `CHARTS · ${BRAND}`),
+  exhibitions: page("Exhibitions", "Self-contained experiences, each about one strange episode in humanity's relationship with cannabis.", [], `EXHIBITIONS · ${BRAND}`),
   culture: page("A cultural atlas of cannabis", "The words people have for the plant, the rituals and traditions it belongs to, and the people behind the laws.", [[String(cultureEntries.length), "ENTRIES"]]),
   "culture/stories": page("The people behind the laws", "A participatory anthropology project on how cannabis shapes, and is shaped by, society.", [], `CULTURE · ${BRAND}`),
   sources: page("What the index is built on", "Every source the index cites, counted by website and by country."),
@@ -84,6 +86,7 @@ for (const e of openExhibitions) if (e.og) cards[exhibitionPath(e).slice(0, -1)]
 for (const c of commits) cards[`changelog/${c.short}`] = page(c.subject, summaryOf(c).map(([n, w]) => `${n} ${w}`).join(" · ") || "Changes to the site.", [], `CHANGELOG · ${c.date.slice(0, 10)}`);
 for (const v of MAP_VIEWS) cards[v.slug ? `map/${v.slug}` : "map"] = page(v.title, v.lede, [], `MAP · ${BRAND}`);
 for (const [kind, k] of Object.entries(CHANGE_CATEGORIES)) cards[`history/kind/${kind}`] = page(k.label, `${k.help}. Every such entry in the history of cannabis.`, [[num(dated.filter((ch) => ch.category === kind).length), "ENTRIES"]], "HISTORY OF CANNABIS");
+for (const [tag, t] of Object.entries(CHANGE_TAGS)) cards[`history/tag/${tag}`] = page(t.label, `${t.help}. Every entry with this tag in the history of cannabis.`, [[num(dated.filter((ch) => ch.tags.some((x) => x.key === tag)).length), "ENTRIES"]], "HISTORY OF CANNABIS");
 for (const p of historyPeriods) cards[`history/period/${p.slug}`] = page(`History, ${p.label}`, `Cannabis laws, court rulings and treaties from ${p.from} to ${p.to}.`, [], "HISTORY OF CANNABIS");
 for (const ch of changes) cards[`history/${ch.id}`] = historyCard(ch); // estimated first bans have a page too
 for (const c of places) {

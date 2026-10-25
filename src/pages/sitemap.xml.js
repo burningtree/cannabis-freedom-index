@@ -1,42 +1,70 @@
-// Every page of the site, for search engines. Linked from robots.txt.
+// Every indexable page of the site, for search engines. Linked from robots.txt.
+// `lastmod` is given only where it is known what last changed the page, and is then that date:
+//   - a country or state: the date its profile was last reviewed
+//   - a page made from every profile (home, rankings, maps, comparisons, downloads): the latest review
+//   - a page whose content is one file (an article, a culture entry, the about page): that file's
+//     last commit (src/lib/lastmod.js); an article's history entry the same
+//   - a changelog page: its commit
+// Lists of history entries (decades, kinds, tags) and other hubs get no date: no single change
+// stands for them, and a date that is not the page's own would mislead. No <priority>: search
+// engines ignore it. Pages marked noindex (research, the survey scanner, "your submissions") are
+// left out. scripts/seo-audit.mjs checks after the build that this list and the site agree.
 import { openExhibitions, exhibitionPath } from "../lib/exhibitions.js";
-import { places, countries, changes, subunitsOf, historyPeriods, CHANGE_CATEGORIES } from "../lib/countries.js";
+import { places, countries, changes, articles, subunitsOf, historyPeriods, CHANGE_CATEGORIES, CHANGE_TAGS } from "../lib/countries.js";
 import { SITE } from "../lib/exports.js";
 import { MAP_VIEWS } from "../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries } from "../lib/culture.js";
+import { commits } from "../lib/gitlog.js";
+import { lastChanged } from "../lib/lastmod.js";
 
 export function GET({ site }) {
   const root = (site?.href ?? SITE + "/").replace(/\/$/, "") + import.meta.env.BASE_URL;
   const latest = places.map((c) => c.details.reviewed).sort().at(-1);
-  // [path, last change (YYYY-MM-DD, optional), priority]
+  const page = (file) => lastChanged(`src/pages/${file}`);
+  const later = (...dates) => dates.filter(Boolean).sort().at(-1) ?? null;
+  const committed = commits.filter((c) => c.short !== "uncommitted");
+  // [path, last change (YYYY-MM-DD) or null]
   const pages = [
-    ["", latest, 1],
-    ["can-i/", latest, 0.8],
-    ["history/", latest, 0.8],
-    ["charts/", latest, 0.7],
-    ["exhibitions/", latest, 0.6],
-    ...openExhibitions.map((e) => [exhibitionPath(e), latest, 0.7]),
-    ["compare/", latest, 0.6],
-    ["survey/", latest, 0.6],
-    ["survey/take/", latest, 0.5],
-    ["about/", latest, 0.6],
-    ["culture/", latest, 0.7],
-    ...CULTURE_SECTIONS.filter((x) => !x.soon).map((x) => [`culture/${x.id}/`, latest, 0.6]),
-    ...cultureEntries.map((e) => [e.url, e.written?.toISOString().slice(0, 10) ?? null, 0.6]),
-    ["did-you-know/", latest, 0.5],
-    ["score-changes/", latest, 0.5],
-    ["changelog/", latest, 0.4],
-    ["data/", latest, 0.5],
-    ...MAP_VIEWS.map((v) => [v.slug ? `map/${v.slug}/` : "map/", latest, 0.7]),
-    ...places.map((c) => [`country/${c.slug}/`, c.details.reviewed, 0.9]),
-    ...countries.flatMap((c) => (subunitsOf(c.id)?.units ?? []).map((sub) => [`country/${c.slug}/${sub.id}/`, c.details.reviewed, 0.7])),
-    ...historyPeriods.map((p) => [`history/period/${p.slug}/`, null, 0.4]),
-    ...Object.keys(CHANGE_CATEGORIES).map((kind) => [`history/kind/${kind}/`, null, 0.4]),
-    ...changes.map((ch) => [`history/${ch.id}/`, null, 0.5]),
+    // made from every profile
+    ["", latest],
+    ["can-i/", latest],
+    ["compare/", latest],
+    ["score-changes/", latest],
+    ["data/", latest],
+    ["map/poster/", latest],
+    ...MAP_VIEWS.map((v) => [v.slug ? `map/${v.slug}/` : "map/", latest]),
+    // profiles
+    ...places.map((c) => [`country/${c.slug}/`, c.details.reviewed]),
+    ...countries.flatMap((c) => (subunitsOf(c.id)?.units ?? []).map((sub) => [`country/${c.slug}/${sub.id}/`, sub.reviewed])),
+    // pages whose text is their own file
+    ["about/", page("about.astro")],
+    ["survey/", page("survey/index.astro")],
+    ["survey/take/", page("survey/take.astro")],
+    ["culture/stories/", page("culture/stories.astro")],
+    ...openExhibitions.map((e) => [exhibitionPath(e), null]),
+    // hubs and lists
+    ["history/", null],
+    ["charts/", null],
+    ["articles/", null],
+    ["sources/", null],
+    ["exhibitions/", null],
+    ["culture/", null],
+    ["did-you-know/", null],
+    // stories is a section too, listed above with its own file's date
+    ...CULTURE_SECTIONS.filter((x) => !x.soon && x.id !== "stories").map((x) => [`culture/${x.id}/`, null]),
+    ...historyPeriods.map((p) => [`history/period/${p.slug}/`, null]),
+    ...Object.keys(CHANGE_CATEGORIES).map((kind) => [`history/kind/${kind}/`, null]),
+    ...Object.keys(CHANGE_TAGS).map((tag) => [`history/tag/${tag}/`, null]),
+    // the atlas and the history: a culture entry is its file; an entry with a long read, its article
+    ...cultureEntries.map((e) => [e.url, later(lastChanged(`culture/${e.entry.id}.md`), e.written?.toISOString().slice(0, 10))]),
+    ...changes.map((ch) => [`history/${ch.id}/`, articles.has(ch.id) ? lastChanged(`articles/${ch.id}.md`) : null]),
+    // the changelog
+    ["changelog/", committed[0]?.date.slice(0, 10) ?? null],
+    ...committed.map((c) => [`changelog/${c.short}/`, c.date.slice(0, 10)]),
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map(([path, mod, pri]) => `  <url><loc>${root}${path}</loc>${mod ? `<lastmod>${mod}</lastmod>` : ""}<priority>${pri}</priority></url>`).join("\n")}
+${pages.map(([path, mod]) => `  <url><loc>${root}${path}</loc>${mod ? `<lastmod>${mod}</lastmod>` : ""}</url>`).join("\n")}
 </urlset>
 `;
   return new Response(xml, { headers: { "Content-Type": "application/xml; charset=utf-8" } });

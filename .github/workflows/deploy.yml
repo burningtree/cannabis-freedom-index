@@ -54,6 +54,12 @@ jobs:
         env:
           SITE: ${{ steps.pages.outputs.origin }}
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
+      # what search engines and link previews read: sitemap coverage, canonical addresses,
+      # descriptions, og:images that exist, JSON-LD and internal links (scripts/seo-audit.mjs)
+      - run: npm run seo:audit
+        env:
+          SITE: ${{ steps.pages.outputs.origin }}
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist

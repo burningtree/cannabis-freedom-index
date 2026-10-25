@@ -80,6 +80,8 @@ const countries = defineCollection({
       // only then can the research page show 100% (see src/lib/research.js)
       complete: z.coerce.date().optional(),
       summary: z.string().min(1),
+      // the search-result description, where the generated one (src/lib/seo.js) would say it wrong
+      seo_description: z.string().min(50).max(300).optional(),
       scores: perSegment(score),
       answers,
       segments: perSegment(cited),
@@ -127,6 +129,7 @@ const units = defineCollection({
       ...status,
       updated: z.coerce.date(),
       summary: z.string().min(1),
+      seo_description: z.string().min(50).max(300).optional(),
       scores: perSegment(score),
       answers,
       segments: perSegment(z.string().min(1)),
