@@ -8,7 +8,7 @@ summary: >-
   Possession of up to 5 g is an administrative offence. Medical cannabis became legal in August
   2024.
 scores:
-  possession: 3
+  possession: 2
   cultivation: 2
   enforcement: 3
   sharing: 1
@@ -17,35 +17,41 @@ scores:
 segments:
   possession:
     text: >-
-      Holding a small amount without intent to sell, up to 5 g of cannabis, is an administrative
-      offence under Article 44 of the Code on Administrative Offences: a fine of 25 to 50 non-
-      taxable minimum incomes, 20 to 60 hours of community work, or administrative arrest of up
-      to 15 days. A person who hands the drug in voluntarily is released from liability. Above
-      the small amount it is a crime under Article 309 of the Criminal Code, with a fine,
-      correctional work, arrest, or restriction of liberty or imprisonment for up to three
-      years; two to five years for a large amount.
+      Small personal possession without intent to sell is an administrative offence: a fine of 50
+      to 100 non-taxable minimum incomes, 20 to 60 hours of community work or up to fifteen days’
+      administrative arrest; voluntary surrender can remove liability.[@admin44_current] Above the
+      small amount, ordinary criminal possession carries a fine of 1,000 to 3,000 non-taxable
+      minimums, corrective work for up to two years, probation supervision for up to five years or
+      restriction of liberty for that period.[@possession_current] Large quantities, a group
+      agreement or offending within a year after conviction under the same article can bring a
+      larger fine or up to three years in prison; especially large quantities or involving a minor
+      carry five to eight years.[@possession_current]
     sources:
-      - koap44
-      - kk309
-      - wiki
-      - cms
+      - admin44_current
+      - possession_current
   cultivation:
     text: >-
-      Growing fewer than ten cannabis plants without intent to sell is an administrative offence
-      with a fine and confiscation. Ten to fifty plants is a crime under Article 310 of the
-      Criminal Code, with a fine, arrest of up to six months or restriction of liberty for up to
-      three years; fifty or more, or a repeat offence, brings three to seven years in prison.
+      Ordinary unlawful growing below ten cannabis plants falls in the administrative band: a fine
+      and confiscation.[@grow2009] At ten plants the ordinary criminal tier begins; its penalties
+      are a fine of 100 to 500 non-taxable minimum incomes, probation supervision for up to three
+      years or restriction of liberty for that period.[@growing_current] Fifty or more plants,
+      specified prior drug crimes or group growing for sale can bring three to seven years in
+      prison.[@growing_current]
     sources:
-      - kk310
-      - wiki
-      - kupap
+      - grow2009
+      - growing_current
   enforcement:
     text: >-
-      Small amounts and small grows mean a fine. Larger quantities and dealing are crimes with
-      prison terms.
+      Even small personal possession can bring up to fifteen days’ administrative arrest,
+      alongside fine and community-work options.[@admin44_current] Small ordinary grows carry an
+      administrative fine and confiscation; criminal possession and growing have separate
+      sentencing ranges, including probation, restriction of liberty and imprisonment in
+      aggravated cases.[@grow2009, possession_current, growing_current]
     sources:
-      - wiki
-      - cms
+      - admin44_current
+      - grow2009
+      - possession_current
+      - growing_current
   sharing:
     text: Any supply is a criminal offence.
     sources:
@@ -123,14 +129,14 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession of up to 5 g of cannabis
-      without intent to sell is an administrative offence punished by a fine or community work;
-      above 5 g it is a crime with possible imprisonment.
+      There is no legal recreational supply for anyone.[@narcotics] Small personal possession without intent
+      to sell can bring a fine, community work or up to fifteen days’ administrative
+      arrest.[@admin44_current] Above the small amount, possession is a criminal offence with
+      penalties that depend on quantity and aggravating circumstances.[@possession_current]
     sources:
-      - wiki
-      - cms
       - narcotics
-      - moz
+      - admin44_current
+      - possession_current
   driving:
     status: impairment
     text: >-
@@ -174,6 +180,35 @@ context:
     sources:
       - texty25
 sources:
+  admin44_current:
+    type: law
+    title: Ukraine Administrative Offences Code — Article 44, Rada text reproduced by Advoks Global
+    url: https://advoksglobal.com/ua/uk/law/law-551843/article-44/
+    locator: >-
+      Full article; official-text reproduction retrieved 25 October 2026: 50–100 non-taxable
+      minimums, 20–60 hours or up to 15 days; voluntary surrender exemption.
+  possession_current:
+    type: law
+    title: Ukraine Criminal Code — Article 309, Rada text reproduced by Advoks Global
+    url: https://advoksglobal.com/ua/uk/law/criminal-code/article-309/
+    locator: >-
+      Full article; reproduction retrieved 3 October 2026; current ordinary, aggravated and
+      especially large quantities penalties.
+  growing_current:
+    type: law
+    title: Ukraine Criminal Code — Article 310, Rada text reproduced by Advoks Global
+    url: https://advoksglobal.com/ua/uk/law/criminal-code/article-310/
+    locator: >-
+      Full article; reproduction retrieved 9 October 2026; probation rather than arrest in part 1;
+      50-plant aggravated threshold in part 2.
+  grow2009:
+    type: law
+    title: Ukraine — Law 1165-VI of 19 March 2009, Rada open-data reproduction
+    url: https://zakon.cc/law/document/read/1165-17
+    year: 2009
+    locator: >-
+      Part I(1), administrative article 106-2; Part I(2), criminal article 310(1)–(2); Part II,
+      commencement on publication.
   use1991:
     type: law
     title: >-
