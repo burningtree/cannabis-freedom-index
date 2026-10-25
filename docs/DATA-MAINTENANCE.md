@@ -1443,3 +1443,13 @@ band and retained administrative detention. The Soviet cultivation entry now
 uses the decree’s express 1935 commencement and a reproduced original source.
 Kazakhstan’s historical possession/consumption snapshots are rebased; its current
 scores are unchanged. Earlier Soviet possession controls remain to be reconstructed.
+
+A [Kazakhstan Soviet-to-national-code pass](research/history-kazakhstan-soviet-2026-10-25.md)
+on 25 October 2026 adds five missing stages: the 1987 repeat-use crime, the
+1991 repeal and closure of Interior Ministry treatment-and-labour institutions,
+the 1998 code's narrower personal-possession offence and lower ordinary growing
+penalties, the 2006 public-use fine and the 2011 addition of detention. Two new
+articles explain the 1991 and 1998 changes. Historical snapshots now separate
+those stages; today's score stays 13.5. The profile also corrects the formal
+conviction-status consequence of a lesser criminal offence using article 79.
+The original 1975 amendment and pre-1987 possession regime remain open research.
