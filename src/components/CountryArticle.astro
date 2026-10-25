@@ -60,6 +60,8 @@ const INCB = ["International Narcotics Control Board — Travellers carrying med
 const people = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)} million` : n.toLocaleString("en-GB"));
 const use = sub ? null : c.use;
 const unitUse = sub?.use ?? null; // a state's or province's own survey figure
+// a disputed territory with no survey takes the figure of the country it is part of
+const useFrom = use?.estimate_from ? countries.find((x) => x.id === use.estimate_from.toUpperCase()) : null;
 // Crossing a border with cannabis. This is general guidance, the same rule almost everywhere,
 // worded for the country's status; it is not country-specific research.
 const SCHENGEN = new Set("AT BE BG HR CZ DK EE FI FR DE GR HU IS IT LV LI LT LU MT NL NO PL PT RO SK SI ES SE CH".split(" "));
@@ -185,13 +187,17 @@ const culture = cultureOf(c);
           <dt>Share aged {useAges(use)}</dt>
           <dd>{use.estimate ? "about " : ""}{use.prevalence}%</dd>
         </div>
-        <p>{use.estimate
+        <p>{useFrom
+          ? `This site's figure: there is no survey of ${c.name} alone, so ${useFrom.name}'s rate from its ${useFrom.use.period ?? useFrom.use.year} survey is applied to an estimate of the people aged 15–64 here.`
+          : use.estimate
           ? `This site's figure: there is no national survey, so the median rate of surveyed countries in ${c.region} is applied to people aged 15–64.`
           : `People who used cannabis in the past year, from a ${use.period ?? use.year} survey${use.users != null ? `, applied to today's population aged ${useAges({ ages: use.population_ages || use.ages })}` : ""}${use.users_approximate ? ". The population is approximate: the survey ages cut through an age group, or were not recorded and ages 15–64 are used" : ""}${use.source === "earlier" ? ". An earlier figure: UNODC's 2026 table has none for this country" : ""}.`}</p>
         <SourceTip>{use.source === "wdr2026"
           ? <><a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>, annex table 1.2</>
           : use.source === "earlier"
             ? <>An earlier UNODC figure, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a></>
+            : useFrom
+            ? <>{useFrom.name}'s figure from the <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>; the population aged 15–64 is this place's total times {useFrom.name}'s share of those ages</>
             : <>A median computed on this site from surveyed countries in {c.region}, using <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a> figures</>}{use.users != null && <>. Population from the <a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer">World Bank</a>, aged {useAges({ ages: use.population_ages || use.ages })}</>}. <a href={`${base}sources/#dataset-cannabis_use`}>The whole dataset →</a></SourceTip>
       </dl>
     )}

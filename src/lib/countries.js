@@ -54,10 +54,15 @@ const scoreOf = (s) => s.reduce((a, v, i) => a + segmentPoints(i, v), 0);
 const scoreList = (scores) => SEGMENTS.map((seg) => scores[seg.id]);
 // the age band a cannabis-use figure is for: the survey's own, or 15–64 where none is given
 export const useAges = (use) => (use.ages ? use.ages.replace("-", "–") : "15–64");
-// cannabis use comes from its dataset, which must have a row for every place
-const useOf = (slug) => {
+// cannabis use comes from its dataset, which must have a row for every place. A place cannot have
+// more people of an age band, or more users, than people: Northern Cyprus and Transnistria once
+// took the World Bank's figures for two income groups, some two billion people each.
+const useOf = (slug, population) => {
   const use = latestOf(slug).cannabis_use;
   if (!use) throw new Error(`datasets/unodc-cannabis-use.csv: no row for "${slug}"`);
+  for (const key of ["users", "population_band", "population_15_64"]) {
+    if (use[key] > population) throw new Error(`datasets/unodc-cannabis-use.csv: "${slug}" has ${key} ${use[key]}, more than its population of ${population}`);
+  }
   return use;
 };
 // population by year, from datasets/population.csv, oldest first; also needed for every place
@@ -90,7 +95,7 @@ const everyPlace = (await getCollection("countries"))
       num: data.iso_numeric ?? null,
       populationByYear: populationOf(slug).map((r) => [r.year, r.population]),
       population: populationOf(slug).at(-1).population, // the latest figure
-      use: useOf(slug), // { prevalence, year?, estimate?, users }, from datasets/unodc-cannabis-use.csv
+      use: useOf(slug, populationOf(slug).at(-1).population), // { prevalence, year?, estimate?, users }, from datasets/unodc-cannabis-use.csv
       datasets: latestOf(slug), // the latest figures from the outside datasets in /datasets, see datasets.js
       series: datasetsOf(slug), // and every year of them
       name: data.name,

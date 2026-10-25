@@ -17,14 +17,19 @@ use       table 1.2, sheet "Cannabis": past-year cannabis use, every survey for 
           one headline row for every country file, the latest, which alone carries users:
             source  "wdr2026" from the table; "earlier" a figure from before this table was
                     used (Wikipedia's list of older UNODC figures), kept where the table has
-                    none; "estimate" the median of the measured countries in the same region
+                    none; "estimate" the median of the measured countries in the same region,
+                    or, for a disputed territory, the figure of the country it is
+                    internationally regarded as part of (`estimate_from`), whose survey covers
+                    nearly the same people
             users   the share applied to a population of the same age band, from the World
                     Bank's five-year age groups (fetched when the script runs), to two
                     significant figures. A band that cuts through a group is split evenly
                     and marked users_approximate. A survey with no recorded age, and a
                     regional median, use ages 15 to 64. Where that population is missing,
                     the row has no user count.
-          Places the World Bank does not list keep the 15-to-64 population the file already had.
+          Places the World Bank does not list keep the 15-to-64 population the file already had;
+          a disputed territory takes its own total (datasets/population.csv) times the share
+          aged 15 to 64 in the country it is part of.
 
 youth     table 1.4, sheet "Cannabis": cannabis use among 15- and 16-year-olds, every survey
           with a past-year figure for each country (the first listed, where a year has two). Rows about one kind of cannabis
@@ -101,19 +106,20 @@ def norm(s):
 
 
 def country_files():
-    """id → (name, region) for every country file"""
+    """id → (name, region, part_of) for every country file; part_of for a disputed territory"""
     out = {}
     for path in glob.glob("countries/*.yaml") + glob.glob("countries/*/index.yaml"):
         cid = path.split("/")[1].replace(".yaml", "")
         text = open(path, encoding="utf-8").read()
         name = re.search(r"^name: (.+)$", text, re.M).group(1).strip().strip("\"'")
         region = re.search(r"^region: (.+)$", text, re.M).group(1).strip()
-        out[cid] = (name, region)
+        part_of = re.search(r"^  part_of: ([a-z]{2})$", text, re.M)
+        out[cid] = (name, region, part_of and part_of.group(1))
     return out
 
 
 def matcher(files, missed):
-    by_name = {norm(name): cid for cid, (name, _) in files.items()}
+    by_name = {norm(name): cid for cid, (name, *_) in files.items()}
     def match(name):
         name = name.strip()
         if name in SKIP or " " in name and name.split()[0] in ("Would", "Note", "Notes"):  # a remark in the name column
@@ -174,9 +180,14 @@ def world_bank_latest(code):
     url = f"https://api.worldbank.org/v2/country/all/indicator/{code}?format=json&mrnev=1&per_page=20000"
     with urllib.request.urlopen(url, timeout=120) as res:
         rows = json.load(res)[1] or []
+    # Regional and income aggregates come back too, with two-letter codes of their own, some of
+    # them the site's codes for disputed territories: XN "Lower middle income" is not Northern
+    # Cyprus, XT "Upper middle income" is not Transnistria. Keep countries only.
+    with urllib.request.urlopen("https://api.worldbank.org/v2/country?format=json&per_page=400", timeout=120) as res:
+        aggregates = {c["iso2Code"].lower() for c in json.load(res)[1] if c["region"]["id"] == "NA"}
     latest = {}
     for r in rows:
-        if r["value"] is None:
+        if r["value"] is None or r["country"]["id"].lower() in aggregates:
             continue
         latest[r["country"]["id"].lower()] = (int(r["date"]), int(round(r["value"])))
     return latest
@@ -318,10 +329,23 @@ def use():
         else:
             row["population_year"], row["population_15_64"] = "", 0
         out[cid] = row
-    # no survey at all: the median of the measured countries in the same region.
-    # That median is computed here. It is not a regional total published by UNODC.
+    # no survey at all: a disputed territory takes the figure of the country it is part of, which
+    # surveyed nearly the same people; anywhere else, the median of the measured countries in the
+    # same region. That median is computed here. It is not a regional total published by UNODC.
+    totals = {}
+    for r in csv.DictReader(open("datasets/population.csv", encoding="utf-8")):
+        if int(r["year"]) >= totals.get(r["country"], (0, 0))[0]:
+            totals[r["country"]] = (int(r["year"]), int(r["population"]))
     for cid, row in out.items():
-        if row["source"] == "estimate":
+        if row["source"] != "estimate":
+            continue
+        parent = files[cid][2]
+        if parent and out.get(parent, {}).get("source") in ("wdr2026", "earlier"):
+            row["prevalence"], row["estimate_from"] = out[parent]["prevalence"], parent
+            if cid not in wb and cid in totals and out[parent].get("population_15_64") and parent in totals:
+                share = out[parent]["population_15_64"] / totals[parent][1]
+                row["population_year"], row["population_15_64"] = totals[cid][0], int(round(totals[cid][1] * share))
+        else:
             region = files[cid][1]
             row["prevalence"] = round(statistics.median(r["prevalence"] for k, r in out.items() if r["source"] != "estimate" and files[k][1] == region), 2)
     lines, omitted = [], []
@@ -331,7 +355,7 @@ def use():
         for year in sorted(history.get(cid, {})):
             e = history[cid][year]
             if r["source"] == "wdr2026" and year < r["year"]:
-                lines.append([cid, files[cid][0], e["unodc_name"], e["prevalence"], year, e["period"], e["ages"], "", "wdr2026", "", "", "", "", "", ""])
+                lines.append([cid, files[cid][0], e["unodc_name"], e["prevalence"], year, e["period"], e["ages"], "", "", "wdr2026", "", "", "", "", "", ""])
         if not r["population_year"] and cid in groups:
             r["population_year"] = groups[cid][0]
         band, band_ages, approximate = headcount(cid, r, groups)
@@ -339,10 +363,10 @@ def use():
         if not band:
             omitted.append(f"{cid} ({r.get('ages') or r['source']})")
         lines.append([cid, files[cid][0], r.get("unodc_name", ""), r["prevalence"], r.get("year", ""), r.get("period", ""), r.get("ages", ""),
-                      "true" if r["source"] == "estimate" else "", r["source"], r["population_15_64"] or "", r["population_year"],
+                      "true" if r["source"] == "estimate" else "", r.get("estimate_from", ""), r["source"], r["population_15_64"] or "", r["population_year"],
                       band or "", band_ages, "true" if approximate else "", users])
     write("datasets/unodc-cannabis-use.csv",
-          ["country", "name", "unodc_name", "prevalence", "year", "period", "ages", "estimate", "source",
+          ["country", "name", "unodc_name", "prevalence", "year", "period", "ages", "estimate", "estimate_from", "source",
            "population_15_64", "population_year", "population_band", "population_ages", "users_approximate", "users"], lines)
     counts = {s: sum(1 for r in out.values() if r["source"] == s) for s in ("wdr2026", "earlier", "estimate")}
     print(f"{len(out)} countries, {len(lines)} rows written: {counts}")
@@ -364,8 +388,9 @@ def headcount(cid, row, groups):
     if row["source"] == "estimate" or not ages:
         if not pop and cid in groups:
             pop, _ = band_population(groups[cid][1], 15, 64)
-        # the median has no survey age; an earlier figure with no age is only assumed to be 15–64
-        return (pop, "15-64", row["source"] != "estimate") if pop else (0, "", False)
+        # the median has no survey age; an earlier figure with no age is only assumed to be 15–64;
+        # a territory's 15–64 population is borrowed from the share in the country it is part of
+        return (pop, "15-64", row["source"] != "estimate" or bool(row.get("estimate_from"))) if pop else (0, "", False)
     lo, hi = ages
     if (lo, hi) == (15, 64) and pop:
         return pop, "15-64", False
