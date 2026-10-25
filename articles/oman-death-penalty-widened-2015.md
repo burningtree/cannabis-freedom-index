@@ -1,40 +1,54 @@
 ---
-model: opus-5.5
-written: 2026-10-13
+written: '2026-10-25'
 sources:
-  - title: "Gulf News — Qaboos approves amendments to Oman drug law"
-    url: https://gulfnews.com/world/gulf/oman/qaboos-approves-ammendments-to-oman-drug-law-1.1596990
-  - title: "Qanoon.om — Royal Decree 67/2026 issuing the law on combating narcotics and psychotropic substances"
+  - type: law
+    title: Oman — Royal Decree 34/2015 amending the drug law, Arabic text reproduced by Qanoon.om
+    url: https://qanoon.om/p/2015/rd2015034/
+    locator: >-
+      Replacement articles 43 and 47; added article 64 bis; final clause five starts the amendments
+      the day after Gazette 1118 of 11 October 2015.
+  - type: law
+    title: Oman — original drug law issued by Royal Decree 17/1999, Arabic text reproduced by Qanoon.om
+    url: https://qanoon.om/p/1999/rd1999017/
+    locator: >-
+      Decree article 4 and Gazette 643 of 15 March 1999; law articles 43–45, 47–48 and 51–52, and
+      cannabis schedules. Original text, not the later consolidated law.
+  - type: law
+    title: >-
+      Oman — replacement drug law issued by Royal Decree 67/2026, Arabic text reproduced by
+      Qanoon.om
     url: https://qanoon.om/p/2026/rd2026067/
+    locator: >-
+      Decree articles 3–4; law articles 37–44, 57–62 and cannabis schedules. Gazette 1664, 6
+      September 2026; effective 7 September.
 ---
 
-In 2015 Sultan Qaboos approved Royal Decree 34/2015, which amended ten articles of Oman's law on combating narcotics and psychotropic drugs. The amendments had been recommended by both chambers of the Council of Oman, the Majlis Al Shura and the State Council. Their main effect was to remove the quantity that had limited the death penalty.
+Oman made smuggling scheduled drugs or listed plants for trade punishable by death in October 2015. The amendments also expressly applied the personal-use prison range to consumption and created a separate offence of refusing a drug-test sample in specified circumstances.[@1]
 
-## What changed
+## Capital punishment already existed
 
-Oman's first dedicated narcotics law, Royal Decree 17/99, allowed a death sentence only for trafficking in more than 50 kg. The 2015 text sets no quantity.
+The [1999 drug law](/history/oman-narcotics-law-1999/) had provided death or life imprisonment for specified import, production and growing offences. It required death in aggravated cases, including repetition, involvement of drug-control officials and participation in international smuggling gangs.[@2]
 
-| Who | Penalty after 2015 |
-|---|---|
-| Dealers and traffickers (Article 43) | death or life imprisonment, and a fine of more than 25,000 rials |
-| Producers, importers and exporters | death or life imprisonment |
-| Anyone linked to an international trafficking gang | death |
-| Anyone who uses a minor to smuggle or sell | death |
-| Anti-narcotics officers who take part in the trade | life imprisonment |
-| A suspect who refuses to give a sample for testing | at least six months and a fine of 100 rials |
+The 2015 amendments added smuggling for trade to the mandatory-death cases. Other listed import, manufacture and growing offences for trade carried death or life imprisonment and a fine of twenty-five thousand to fifty thousand rials.[@1]
 
-Assaulting an enforcement officer carries at least ten years, life if the officer is permanently disabled, and death if the officer dies.
+The change took effect on 12 October, the day after publication in the official gazette.[@1]
 
-## The reasoning, and the practice
+## Personal holdings and use had an express range
 
-A Royal Oman Police source quoted at the time said drug cases had been rising by more than 10% a year and that applying the death penalty would "definitely reduce drug cases". The health ministry counted 5,000 people dependent on drugs in 2014, against 4,000 the year before; heroin was the drug most often seized.
+The replacement personal-use rule set one to three years in prison and a fine of five hundred to three thousand rials. It covered buying, importing, holding or producing drugs and growing listed plants for consumption or personal use.[@1]
 
-The practice was milder than the text. An official of the national narcotics committee said only five smugglers or dealers had been sentenced to death in fifteen years, and executions had been halted since 2004. The country had set up more than a dozen rehabilitation centres.
+A separate sentence applied the same penalty to using the listed substances. Holdings outside trading, consumption or personal use carried three to seven years and a different fine.[@1]
 
-## Since then
+Courts could still order residential or specialist outpatient treatment for proved dependence. The 1999 text already contained that treatment alternative and a protected route for seeking help before arrest or prosecution.[@1,2]
 
-A new law, issued by Royal Decree 67/2026 in September 2026, repealed the 1999 law and its amendments. It punishes possession or use for personal consumption with one to three years in prison and a fine, and lets a court send a dependent user to treatment.
+## Refusing a sample became a separate crime
 
-## Why the index moved
+The amendments punished refusal of a sample needed to detect drugs with six months to three years and a fine of one hundred to one thousand rials.[@1]
 
-The index moved [Oman](/country/om/) from 4 to 2 with the [2015 decree](/history/oman-death-penalty-widened-2015/). Enforcement fell from 2 to 1, because a capital charge no longer depended on quantity. Possession, cultivation, sharing and consumption were already at 0.
+The specified circumstances included signs of drug use in public, possession of drugs or equipment, and being with others where signs of use or drugs were found. Giving the sample counted as a ground for mitigation.[@1]
+
+## The replacement law raised fines and supply sentences
+
+The [2026 law](/history/oman-narcotics-law-2026/) kept the one-to-three-year personal-use prison range but raised its fine to one thousand to five thousand rials. It also expanded the listed circumstances for the sample-refusal offence to include a prosecution arrest order and reports by relatives.[@3]
+
+Unpaid supply for consumption moved from the earlier five-to-ten-year range to seven to fifteen years. Treatment alternatives continued alongside these penalties, as described in the [Oman profile](/country/om/).[@2,3]

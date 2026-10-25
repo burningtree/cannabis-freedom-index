@@ -1,69 +1,50 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+written: '2026-10-25'
 sources:
-  - title: Qanoon.om — Royal Decree 67/2026 promulgating the Law on Combating Narcotic Drugs and Psychotropic Substances
+  - type: law
+    title: >-
+      Oman — replacement drug law issued by Royal Decree 67/2026, Arabic text reproduced by
+      Qanoon.om
     url: https://qanoon.om/p/2026/rd2026067/
+    locator: >-
+      Decree articles 3–4; law articles 37–44, 57–62 and cannabis schedules. Gazette 1664, 6
+      September 2026; effective 7 September.
+  - type: law
+    title: Oman — Royal Decree 34/2015 amending the drug law, Arabic text reproduced by Qanoon.om
+    url: https://qanoon.om/p/2015/rd2015034/
+    locator: >-
+      Replacement articles 43 and 47; added article 64 bis; final clause five starts the amendments
+      the day after Gazette 1118 of 11 October 2015.
+  - type: law
+    title: Oman — original drug law issued by Royal Decree 17/1999, Arabic text reproduced by Qanoon.om
+    url: https://qanoon.om/p/1999/rd1999017/
+    locator: >-
+      Decree article 4 and Gazette 643 of 15 March 1999; law articles 43–45, 47–48 and 51–52, and
+      cannabis schedules. Original text, not the later consolidated law.
 ---
 
-In September 2026 Oman replaced the drug law it had used since 1999. For
-cannabis the new text confirms the old position, prison for use and death for
-trafficking, and adds one way out.
+Oman’s replacement drug law raised personal-use fines and prison terms for unpaid supply when it took effect on 7 September 2026. Personal possession, use and growing continued to carry one to three years, with treatment alternatives for established dependence.[@1]
 
-## The law it replaces
+## Personal-use fines increased
 
-Oman's first dedicated narcotics law was
-[Royal Decree 17/99](/history/oman-narcotics-law-1999/), which allowed the death
-penalty for trafficking above 50 kg. An amendment in
-[2015](/history/oman-death-penalty-widened-2015/) removed the minimum quantity, so
-that any dealer faced death or life imprisonment.
+Under the [2015 amendments](/history/oman-death-penalty-widened-2015/), personal holdings, growing and consumption carried one to three years and a fine of five hundred to three thousand rials. The new law retained that prison range and increased the fine to one thousand to five thousand rials.[@1,2]
 
-Royal Decree 67/2026 was signed on 3 September, published on 6 September and took
-effect the next day. It repeals the 1999 law.
+Cannabis and resin remain listed drugs, and the plant is expressly covered by the growing restrictions. Stalk fibres and seeds treated so they cannot germinate are exempt parts. Growing licences are reserved for specified public bodies, colleges and research institutions for medical or scientific purposes.[@1]
 
-## What it says about cannabis
+## Unpaid supply brought longer prison terms
 
-Cannabis, its resin, extracts and tinctures are listed as narcotics, and THC and
-HHC separately as psychotropic substances. The plant may not be grown or imported.
-Two things are excluded: fibre from the stem, and seeds treated so that they cannot
-grow. A seed that can germinate is banned with the plant.
+The [1999 law](/history/oman-narcotics-law-1999/) had set five to ten years for supplying drugs for consumption or preparing premises for use without payment. The replacement raised that range to seven to fifteen years and increased the fine to five thousand to fifteen thousand rials.[@1,3]
 
-| Conduct | Penalty |
-|---|---|
-| Using; or importing, buying, holding or growing for personal use | 1 to 3 years and a fine of 1,000 to 5,000 rials |
-| Supplying a drug to a user, or preparing a place for use, without payment | 7 to 15 years and a fine of 5,000 to 15,000 rials |
-| Possessing, selling or transporting for trafficking, or supplying a user for payment | At least 15 years and a fine of 10,000 to 25,000 rials |
-| Importing, exporting, producing, manufacturing or growing for trafficking | Death or life imprisonment, and a fine of 35,000 to 60,000 rials |
-| Refusing to give a sample for testing | 6 months to 3 years |
+The separate trading offence’s minimum rose from ten to fifteen years. Specified import, production and growing offences for trade continued to carry death or life imprisonment. Smuggling for trade and listed aggravated cases required death.[@1,3]
 
-Death or life imprisonment is the penalty for that import, export, production,
-manufacture or cultivation when it is done in order to traffic. Death is the only
-penalty for smuggling those things for trafficking, for a repeat of that offence,
-for an official charged with drug control, and for taking part in an international
-smuggling gang. A sale that is not an import or a manufacture starts at fifteen
-years. An unpaid transfer made in order to traffic can still fall under the
-fifteen-year offence.
+## Treatment alternatives continued
 
-A foreigner convicted under the law is deported for good.
+Courts could order residential or specialist outpatient treatment for someone proved dependent instead of the personal-use sentence. Residential treatment lasted six months to one year, with court approval needed for release on a committee’s recommendation.[@1]
 
-## The way out
+People seeking treatment voluntarily or through specified relatives before being caught using or prosecuted had protection from prosecution. The replacement text extended the family route to fourth-degree relatives where no second-degree relative existed. Treatment information remained confidential; these treatment and confidentiality routes had already appeared in the older law.[@1,3]
 
-The law treats dependence differently from use.
+## Testing and consequences reached beyond imprisonment
 
-- A court may send a proven addict to a clinic, for six months to a year, instead
-  of prison. This is possible at most twice.
-- No case is brought at all against someone who comes forward for treatment
-  voluntarily, or is brought in by a spouse or close relative, provided they have
-  not already been arrested or charged.
-- Treatment records are confidential.
+The sample-refusal offence covered further circumstances, including a prosecution arrest order and reports by relatives. It retained six months to three years and a fine of one hundred to one thousand rials.[@1,2]
 
-Licensed medical and research use is provided for: government bodies, colleges and
-research centres may be licensed to grow listed plants, and pharmacies to dispense
-on prescription.
-
-## In the index
-
-The entry moves no score. [Oman](/country/om/) stays at 0 for possession, growing,
-sharing and consumption. The treatment provisions matter to
-the people they reach, but the ordinary user still faces a minimum of one year in
-prison.
+The law also provided additional court measures for convicted Omanis and permanent deportation of foreign offenders, apart from its residual offences. These consequences sit alongside the possession, growing and supply penalties in the [Oman profile](/country/om/).[@1]

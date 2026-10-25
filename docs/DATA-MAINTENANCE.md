@@ -1496,3 +1496,13 @@ cannabis schedules, non-germinating-seed exceptions and collateral consequences;
 its score remains 2. Aden’s territorial limits and the open northern/South Yemeni
 sequence are recorded in the research note. The English translation’s treatment
 and commencement errors were resolved against Arabic page images.
+
+An [Oman statutory-chronology pass](research/history-oman-gap-2026-10-25.md) on
+25 October 2026 adds the 1974 personal-holdings and unpaid-supply penalties and
+the 2013 named synthetic-cannabinoid controls. Two new articles explain the 1974
+and 1999 rules; the 2015 and 2026 articles are rewritten from the statutes. The
+unsupported 50 kg capital threshold is removed, treatment is traced to 1999,
+and the historical enforcement deduction moves from 2015 to March 1999. The
+2026 entry now identifies higher fines and supply sentences. Current scores stay
+at 2, with primary-law treatment, testing and deportation details in the profile.
+Earlier cannabis coverage and the aggregate first-restriction estimate remain open.
