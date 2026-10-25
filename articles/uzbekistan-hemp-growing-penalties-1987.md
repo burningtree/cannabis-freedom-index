@@ -1,18 +1,21 @@
 ---
-model: grok-4.7
-written: 2026-10-23
+written: 2026-10-25
 sources:
   - title: "Presidium of the Supreme Soviet of the USSR — edict of 22 June 1987 No. 7226-XI, amending the 1974 drug edict (Meganorm reprint)"
     url: https://meganorm.ru/mega_doc/dop1/62/ukaz_prezidiuma_vs_sssr_ot_21_06_1961_o_dalneyshem/0/ukaz_prezidiuma_vs_sssr_ot_22_06_1987_N_7226-XI_o_vnesenii.html
   - title: "Presidium of the Supreme Soviet of the USSR — edict of 25 April 1974 No. 5928-VIII on strengthening the fight against drug addiction, as amended to 2 July 1991 (Bestpravo reprint)"
     url: https://bestpravo.ru/fed1991/data03/tex15988.htm
+  - type: law
+    title: USSR — decree of 27 October 1934 on Indian-hemp crops, reproduced by Istmat
+    url: https://istmat.org/node/42491
+    locator: Articles 1 and 5–7; effective from 1935.
 ---
 
 On 22 June 1987 the Soviet Union wrote prison terms for growing hemp into its drug rules. Sowing or growing Indian hemp, or four named southern kinds, could bring up to five years.[@1] Hemp of any other kind started with a warning or a fine.[@1] Uzbekistan was a union republic, so the edict was union law there.
 
-## A ban without a stated sentence
+## Crops were reserved for medicine and science
 
-[In 1934 the Soviet Union prohibited unauthorised cultivation of Indian hemp and the opium poppy](/history/uzbekistan-soviet-ban-1934/), and that prohibition covered Uzbekistan because it was a Soviet republic. That earlier step does not record a fine or a prison term. The 1987 edict supplied the sentences for named kinds of hemp and, on the same day, a lighter first step for every other kind.
+[From 1935 the Soviet Union prohibited unauthorised sowing of Indian hemp and the opium poppy](/history/uzbekistan-soviet-ban-1934/), and that prohibition covered Uzbekistan because it was a Soviet republic. The decree reserved crops for medical and scientific needs and required criminal liability and confiscation for unauthorised sowing.[@3] The 1987 edict set out the sentences for named kinds of hemp and, on the same day, a lighter first step for every other kind.
 
 ## Five years, or a fine
 
@@ -33,4 +36,4 @@ The 1974 edict, the one this amendment rewrote, told the presidium of each union
 
 ## After independence
 
-[On 24 August 1995 Uzbekistan joined the 1961 Single Convention and the 1988 trafficking convention](/history/uzbekistan-single-convention-1995/). Cultivation is still a crime punished with prison. The country's current account of the law is on [its profile](/country/uz/).
+[On 24 August 1995 Uzbekistan joined the 1961 Single Convention and the 1988 trafficking convention](/history/uzbekistan-single-convention-1995/). The [national code taking effect in April 1995](/history/uzbekistan-personal-possession-code-1995/) allowed fines or up to three years in prison for ordinary cannabis growing. The country's current account of the law is on [its profile](/country/uz/).

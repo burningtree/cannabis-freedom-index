@@ -1453,3 +1453,14 @@ articles explain the 1991 and 1998 changes. Historical snapshots now separate
 those stages; today's score stays 13.5. The profile also corrects the formal
 conviction-status consequence of a lesser criminal offence using article 79.
 The original 1975 amendment and pre-1987 possession regime remain open research.
+
+A [Uzbekistan code and public-use pass](research/history-uzbekistan-gap-2026-10-25.md)
+on 25 October 2026 adds the 1995 national-code split between administrative small
+holdings and criminal possession, the 2017 Supreme Court guidance on gifts and
+supply intent, and the public-use offence commencing in June 2026. Two new articles
+explain the 1995 and 2026 changes. The November 2025 decree is corrected from an
+enacted penalty change to proposals, and the Soviet cultivation ban to its 1935
+start. The current profile now includes administrative detention and lesser
+ordinary growing penalties (exact score 10.5), and corrects the classification
+of theft-of-drugs convictions. Early Uzbek SSR implementation and the original
+quantity tables remain open; the research note records the historical score limits.
