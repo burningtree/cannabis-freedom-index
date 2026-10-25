@@ -1000,6 +1000,7 @@ script. The file is written by a script, never by hand:
 
 ```
 node scripts/archive-sources.cjs status      # how many sources have a recorded copy
+node scripts/archive-sources.cjs prune       # forget addresses no source cites any more (no network)
 node scripts/archive-sources.cjs check 200   # record the copies the Archive already holds
 node scripts/archive-sources.cjs save 20     # ask the Archive to save what it does not hold
 node scripts/archive-sources.cjs save 20 --random   # the same, picking the addresses at random

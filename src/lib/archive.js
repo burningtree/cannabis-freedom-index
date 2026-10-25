@@ -5,4 +5,4 @@
 import archive from "../../source-archive.json";
 
 export const archivedUrl = (url) => archive[url]?.archived ?? null;
-export const archivedCount = Object.values(archive).filter((x) => x.archived).length;
+// how many of the cited sources have a copy: archivedCount in citations.js

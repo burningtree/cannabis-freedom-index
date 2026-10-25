@@ -1,4 +1,4 @@
-// Archived copies of the sources: node scripts/archive-sources.cjs [status|check|save|probe] [limit] [--random] [--include-dead]
+// Archived copies of the sources: node scripts/archive-sources.cjs [status|check|save|probe|prune] [limit] [--random] [--include-dead]
 // Run from the project root. Needs js-yaml (already in node_modules) and Node 18+ (fetch).
 //
 //   status  how many source addresses there are and how many have a recorded copy (no network)
@@ -6,6 +6,10 @@
 //   save    ask the Internet Archive to save the sources it does not hold yet, then record them
 //   probe   open the sources that have no copy yet, as a browser would, and record the ones whose
 //           site refuses or has lost them (see "dead" below)
+//   prune   forget the addresses no source cites any more (no network); check, save and probe do
+//           this too whenever they write. A copy recorded under an older spelling of an address
+//           that is still cited (http or https, with or without www, a trailing slash) moves to
+//           that address when it has no copy of its own.
 //
 // `limit` caps how many addresses one run handles (default 50), so a run stays short and polite;
 // run it again to continue. Results go to source-archive.json, which the site reads:
@@ -81,8 +85,29 @@ const markDead = (url, reason, status) => {
   archive[url] = { ...(archive[url] || { archived: null }), checked: archive[url]?.checked || today, dead: { reason, ...(status != null && { status }), seen: today } };
 };
 
+// Addresses in the file that no source cites any more: a source removed or rewritten. They would
+// otherwise stay forever and count as archived sources they no longer are.
+const spelling = (u) => { try { u = decodeURI(u); } catch {} return u.replace(/^https?:\/\/(www\.)?/i, "").replace(/\/$/, "").toLowerCase(); };
+const uncited = () => Object.keys(archive).filter((u) => !urls.has(u));
+const prune = () => {
+  const cited = new Map(all.map((u) => [spelling(u), u]));
+  let moved = 0;
+  const gone = uncited();
+  for (const u of gone) {
+    const now = cited.get(spelling(u));
+    if (now && archive[u].archived && !archive[now]?.archived) {
+      const { dead, ...copy } = archive[u];
+      archive[now] = copy;
+      moved++;
+    }
+    delete archive[u];
+  }
+  return { removed: gone.length, moved };
+};
+
 // written to a temporary file first and then renamed, so a full disk or a crash cannot leave half a file
 const write = () => {
+  prune();
   fs.writeFileSync(FILE + ".tmp", JSON.stringify(Object.fromEntries(Object.entries(archive).sort(([a], [b]) => a.localeCompare(b))), null, 1) + "\n");
   fs.renameSync(FILE + ".tmp", FILE);
 };
@@ -154,10 +179,17 @@ async function saveLoggedIn(url) {
   return null;
 }
 
+if (uncited().length) console.log(`no longer cited: ${uncited().length} addresses in ${FILE} (\`prune\` forgets them)`);
+
 (async () => {
   if (what === "status") return;
+  if (what === "prune") {
+    const { removed, moved } = prune();
+    write();
+    return console.log(`prune: forgot ${removed} addresses no source cites${moved ? `, ${moved} copies moved to the address now cited` : ""}`);
+  }
   if (what === "save") console.log(KEYS ? "save: logged in" : "save: anonymous (no IA_ACCESS_KEY / IA_SECRET_KEY in .env)");
-  if (!["check", "save", "probe"].includes(what)) return console.log("unknown command: use status, check, save or probe");
+  if (!["check", "save", "probe"].includes(what)) return console.log("unknown command: use status, check, save, probe or prune");
   if (what === "probe") return probe();
   const pending = all.filter(what === "check" ? stale : (u) => !archive[u]?.archived && !resting(u));
   const todo = (random ? shuffle(pending) : pending).slice(0, limit);

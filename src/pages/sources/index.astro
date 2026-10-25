@@ -5,8 +5,7 @@
 // not in the menu.
 import Base from "../../layouts/Base.astro";
 import { places } from "../../lib/countries.js";
-import { archivedUrl } from "../../lib/archive.js";
-import { cites, isBook, bookSlug, domainOf } from "../../lib/citations.js";
+import { cites, citedUrls, isArchived, isBook, bookSlug, domainOf } from "../../lib/citations.js";
 import { Image } from "astro:assets";
 import { DATASETS } from "../../lib/datasets.js";
 import { viewByMetric } from "../../lib/map-views.js";
@@ -65,12 +64,12 @@ const localRows = [...local]
   .sort((x, y) => x.c.name.localeCompare(y.c.name));
 // Site icons come from DuckDuckGo's icon service and are not stored here; a missing one is hidden.
 const icon = (d) => `https://icons.duckduckgo.com/ip3/${d}.ico`;
-const urls = new Set(cites.filter((x) => x.s.url).map((x) => x.s.url));
+const urls = citedUrls;
 const urlCount = urls.size;
 // pages with a copy recorded in the Internet Archive (see source-archive.json), counting a source
 // cited by its Archive address already; scripts/archive-sources.cjs status counts the same pages
 // an Internet Archive page (the Wayback Machine or an archive.org item) counts as archived already
-const archivedOf = (set) => [...set].filter((u) => archivedUrl(u) || /^https?:\/\/([a-z0-9-]+\.)?archive\.org\//i.test(u)).length;
+const archivedOf = (set) => [...set].filter(isArchived).length;
 const archived = archivedOf(urls);
 const pct = Math.round((archived / urlCount) * 100);
 // the whole: citations and web pages; then each part of the page, as a link down to it

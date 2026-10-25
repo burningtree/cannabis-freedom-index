@@ -7,6 +7,7 @@
 import { getCollection } from "astro:content";
 import { places, changes, SEGMENTS, CONTEXT } from "./countries.js";
 import { cultureEntries, cultureSection } from "./culture.js";
+import { archivedUrl } from "./archive.js";
 
 const placeOf = new Map(places.map((c) => [c.slug, c]));
 const changeOf = new Map(changes.map((ch) => [ch.id, ch]));
@@ -48,3 +49,10 @@ export const isBook = (s) => s.type === "book" || s.type === "chapter" || Boolea
 // the same slug as in scripts/book-covers.cjs, which names the cover files by it
 export const bookSlug = (t) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 80);
 export const domainOf = (url) => new URL(url).hostname.replace(/^www\./, "");
+
+// Every web page cited, once, and how many have a copy in the Internet Archive (an archive.org page
+// counts as one already). Only cited pages count: an address left in source-archive.json for a
+// source that is no longer cited adds nothing (scripts/archive-sources.cjs prune forgets those).
+export const citedUrls = new Set(cites.filter((x) => x.s.url).map((x) => x.s.url));
+export const isArchived = (u) => Boolean(archivedUrl(u)) || /^https?:\/\/([a-z0-9-]+\.)?archive\.org\//i.test(u);
+export const archivedCount = [...citedUrls].filter(isArchived).length;
