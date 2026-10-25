@@ -665,7 +665,12 @@ node scripts/data-status.cjs chain de     # one country's full timeline
    texts, add the source under `sources`, and set `updated` to today. Keep the history chain
    consistent with the new scores.
 5. **Check the score timeline** of every country you touched: `node scripts/data-status.cjs chain <id>`.
-6. **Build, restart the preview, spot-check** one country page (its chart and History) and `/history/`.
+6. **Run the tests, build, restart the preview, spot-check** one country page (its chart and
+   History) and `/history/`. `npm run history:test` and `npm run answers:test` hold the facts that
+   earlier issues corrected (Hong Kong's 15-year cultivation ceiling, Kuwait's Decree-Law No. 159
+   of 2025, …). A rewrite that drops one fails them, and so does the deploy. When a test fails
+   after new research, either the research lost a corrected fact, which goes back in, or the
+   test is checking wording rather than the fact, so loosen the test, never the fact.
 
 ## Rules learned the hard way
 

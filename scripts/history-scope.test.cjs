@@ -435,11 +435,12 @@ test("Estonia's quantity line and Hong Kong's cultivation penalty follow the tex
   assert.equal(ee.scores.possession, 3);
   assert.equal(misdemeanour.before.possession, 1);
   assert.match(misdemeanour.description, /does not fix that quantity at 7\.5 grams/);
-  assert.match(hk.segments.cultivation.text, /15 years/);
+  // the 15-year cultivation ceiling, kept apart from manufacturing's life maximum (#44)
+  assert.match(hk.segments.cultivation.text, /(15|fifteen) years/);
   assert.match(hk.segments.cultivation.text, /HK\$100,000/);
   assert.match(hk.segments.cultivation.text, /separate offence/);
   assert.doesNotMatch(hk.segments.cultivation.text, /manufacturing a dangerous drug\n\s*carries up to life/);
-  assert.match(hk.context.production.text, /not that/);
+  assert.match(hk.context.production.text, /separate offence/);
   assert.equal(hk.scores.cultivation, 0);
 });
 
@@ -885,7 +886,7 @@ test("Maldives quantity presumptions, Kuwait decree-law 159, and Japan cultivati
   assert.equal(mv.scores.possession, 0);
   assert.match(kw.segments.possession.text, /159 of 2025/);
   assert.match(kw.segments.possession.text, /five years/);
-  assert.match(kw.segments.possession.text, /5,000 dinars/);
+  assert.match(kw.segments.possession.text, /KD ?5,000|5,000 dinars/);
   assert.doesNotMatch(kw.segments.possession.text, /no\. 59/);
   assert.doesNotMatch(kw.summary, /were not found/);
   assert.equal(kw.scores.possession, 0);
