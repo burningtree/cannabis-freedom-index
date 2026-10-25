@@ -669,6 +669,17 @@ node scripts/data-status.cjs chain de     # one country's full timeline
 
 ## Rules learned the hard way
 
+- **Date a law by when it took effect, not when it was signed.** Assent, promulgation and
+  publication are not commencement. Botswana's Cannabis Act was scored on its assent (17 October
+  2025) although the parts that allow anything commenced on 22 December. Look for the
+  commencement notice or statutory instrument; if the law took effect in stages, date the scored
+  entry by the stage that changes what people may do, and mention the earlier dates in its
+  description.
+- **Never state a whole region's law in one country's profile.** "The model is prohibited
+  throughout the European Union" sat in 13 profiles, copied from a 2018–2019 study, and was
+  false once Malta and Germany licensed associations. Say what the country's own law does; date
+  any comparison. `scripts/profile-claims.test.mjs` keeps a list of such sentences that must not
+  come back.
 - **Never trust a search summary for a fact you will mark as checked.** One summary attributed
   Bosnia's December 2025 medical approval to Kosovo; others invented sentence lengths or dates.
   Open the page and read it. When the page will not load (403, PDF), add the entry unchecked.

@@ -25,8 +25,15 @@ segments:
       - moh
       - pmcsa
   cultivation:
-    text: Growing any cannabis plant is a criminal offence, with up to seven years on indictment.
+    text: >-
+      Growing cannabis is a criminal offence, with up to seven years on indictment. The one
+      exception is low-THC hemp, at most 1% THC by dry weight: since 28 May 2026 it may be grown
+      without a licence for specified purposes, such as breeding, making hemp products or
+      supplying the medicinal scheme, after notifying both Police and the Ministry for Primary
+      Industries, and a notification lasts a year. It gives no right to grow cannabis to use.
     sources:
+      - hemp_regs
+      - police_hemp
       - pmcsa
   enforcement:
     text: >-
@@ -58,15 +65,24 @@ segments:
 context:
   production:
     text: >-
-      Since April 2020 the Medicinal Cannabis Scheme licenses commercial cultivation and manufacture
-      for medicinal use only.
+      Since April 2020 the Medicinal Cannabis Scheme licenses commercial cultivation and
+      manufacture of medicinal cannabis. Since 28 May 2026 low-THC hemp (at most 1% THC) may be
+      grown, processed and supplied within New Zealand without a licence for specified purposes,
+      after the grower notifies Police and the Ministry for Primary Industries. Importing and
+      exporting hemp plants and seed still needs a licence.
     sources:
       - pmcsa
       - ref
+      - hemp_regs
+      - moh_hemp
   products:
-    text: Prescription flower and oils that meet the scheme's quality standard; nothing else.
+    text: >-
+      Prescription flower and oils that meet the scheme's quality standard. Otherwise only hemp
+      products made from low-THC plants, such as seed and fibre products; not every use of hemp
+      flowers or extracts is allowed.
     sources:
       - pmcsa
+      - moh_hemp
   medical:
     text: >-
       Any doctor can prescribe approved medicinal cannabis products for any condition. Products are
@@ -81,16 +97,22 @@ context:
       - pmcsa
       - nh
   planting:
-    seeds: illegal
-    seeds_trade: banned
+    seeds: licensed
+    seeds_trade: regulated
     clones: illegal
     clones_trade: banned
     text: >-
       New Zealand Police list cannabis seed and cannabis plant as Class C controlled drugs.
       Possessing cannabis seed carries up to one year in prison or a NZ$500 fine, cultivating
-      the plant up to seven years, and supplying a Class C drug up to eight years.
+      the plant up to seven years, and supplying a Class C drug up to eight years. The exception
+      is low-THC hemp: since 28 May 2026 seed of hemp plants may be held, sown and supplied
+      within New Zealand for the permitted hemp purposes, the growing after notifying Police and
+      the Ministry for Primary Industries, while importing or exporting it still needs a
+      licence. Seeds and plants of any other cannabis remain illegal.
     sources:
       - police
+      - hemp_regs
+      - police_hemp
   clubs:
     status: underground
     text: >-
@@ -154,6 +176,16 @@ context:
     sources:
       - unodc_szr
 sources:
+  hemp_regs:
+    title: New Zealand Legislation — Misuse of Drugs Amendment Regulations 2026 (SL 2026/85), in force 28 May 2026
+    url: https://www.legislation.govt.nz/regulation/public/2026/0085/latest/whole.html
+    locator: "Definition of hemp (at most 1% THC by dry weight); regulations 14A–14B and 22A–22B"
+  moh_hemp:
+    title: NZ Ministry of Health — Hemp
+    url: https://www.health.govt.nz/regulation-legislation/hemp
+  police_hemp:
+    title: New Zealand Police — Cultivating hemp
+    url: https://www.police.govt.nz/advice-services/cultivating-hemp
   zb26:
     title: Newstalk ZB — Cannabis possession charges surge 50% in two years, hitting 8-year high (24 March 2026)
     url: https://www.newstalkzb.co.nz/news/national/cannabis-possession-charges-surge-50-in-two-years-hitting-8-year-high/

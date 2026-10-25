@@ -5,9 +5,12 @@ sources:
   - title: Botswana Attorney General's Chambers — Cannabis Act, 2025 (No. 20 of 2025), as published in the Gazette
     url: https://e-laws.botswanalaws.com/PDF/Bulletin/Botswana2025pdf/020.pdf
     locator: "Long title; sections 1–6, 46–48, 54–55, 64"
+  - title: Botswana Attorney General's Chambers — Act 20 of 2025 (Cannabis Act) commencement record
+    url: https://e-laws.botswanalaws.com/act-bulletin-2025/act-20-of-2025-cannabis-act/
+    locator: "Commencement: Parts I–V on 12 December 2025 (S.I. 157/2025), Parts VI–XIII on 22 December 2025 (S.I. 162/2025)"
 ---
 
-Botswana's Cannabis Act received assent on 17 October 2025. It allows cannabis to be
+Botswana's Cannabis Act received assent on 17 October 2025 and took effect that December. It allows cannabis to be
 grown, processed, stored, traded, imported and exported, but only for medicinal, scientific,
 research and industrial purposes, and only under licence from a new National Cannabis Control
 Authority. It does not let anyone else use or keep the plant.
@@ -41,9 +44,14 @@ place, weighing the risk of diversion and contamination.
 The definition of cannabis is wide: the flowering tops, the resin, any extract or preparation, and
 cannabinoids. "Industrial purposes" means uses that do not produce psychoactive effects.
 
-## Still waiting
+## Assent, then commencement
 
-The act takes effect on a date the minister sets by notice in the *Gazette*. In
+Assent did not make anything legal yet: the act takes effect on dates the minister sets by notice
+in the *Gazette*, and it came in two steps. Parts I to V, which set up the Authority and its board,
+commenced on 12 December 2025 (S.I. 157/2025). Parts VI to XIII commenced on 22 December 2025
+(S.I. 162/2025): among them Part VIII, which holds the licensing provisions (sections 34 to 48)
+and lets licensed health professionals supply cannabis medicines to patients, and Part XI, which
+says who may lawfully possess cannabis. Only from that day was there a lawful route. In
 [January 2026](/history/botswana-industrial-cannabis-regulations-2026/) the government published
 rules for industrial cannabis with a THC limit of 0.7 per cent. For everyone without a licence,
 in [Botswana](/country/bw/) cannabis remains as illegal as it was.
