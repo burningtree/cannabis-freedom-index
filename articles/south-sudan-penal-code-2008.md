@@ -1,50 +1,33 @@
 ---
+written: '2026-10-25'
 sources:
-  - title: UNODC SHERLOC — South Sudan Penal Code Act, 2008, sections 382–387
-    url: https://sherloc.unodc.org/cld/uploads/res/document/ssd/South_Sudan_Penal_Code_Act.pdf
+  - title: South Sudan Ministry of Justice — Penal Code Act 2008
+    url: https://mojca.gov.ss/wp-content/uploads/2023/03/Penal-Code-Act-9-of-2008.pdf
+    locator: 'Section 1: signature commencement on 22 August 2008; sections 382–387, printed pp. 189–194'
 ---
 
-Before South Sudan became independent, the autonomous government of Southern Sudan enacted a
-Penal Code with a complete chapter on dangerous drugs. The chapter expressly includes cannabis
-plants, prepared cannabis and cannabis resin.
+Southern Sudan’s 2008 Penal Code made personal possession, use and growing of dangerous drugs punishable by up to five years in prison, a fine, or both. Supplying or growing for dealing fell under a separate offence with an ordinary maximum of fourteen years. Courts could order treatment for a person found to abuse or be addicted to drugs.[@1]
 
-## What the code controls
+## Personal use and supply followed different rules
 
-Section 382 defines cannabis as the flowering or fruiting tops of the plant, excluding seeds and
-unaccompanied leaves, from which the resin has not been extracted. A “cannabis plant” means any
-plant of the genus, while cannabis resin is the separated resin in crude or purified form.
+The code took effect on presidential signature on 22 August 2008. It replaced the 2003 Penal Code while preserving existing proceedings and orders until changed under the new law. The printed gazette edition followed in February 2009.[@1]
 
-All three enter the code's definition of a dangerous drug. The law also defines dealing broadly:
-it includes sale, delivery, collection, import, export, supply, administration, manufacture,
-cultivation and other acts connected with moving the drug.
+Its personal-use offence covered acquiring or possessing a dangerous drug, ingesting or smoking it, and cultivating, producing or manufacturing it for one’s own consumption. The five-year maximum came with the alternative of a fine, or a combined sentence.[@1]
 
-## Personal possession and growing
+For a person whom the court found to abuse or be addicted to the drug, treatment could be imposed alongside or instead of the ordinary sentence. The decision belonged to the court and formed part of dealing with the criminal offence.[@1]
 
-Section 384 makes it an offence to acquire or possess a dangerous drug, to ingest, smoke or
-otherwise consume one, or to cultivate, produce or manufacture one for personal consumption.
-Conviction can bring up to five years in prison, a fine, or both.
+## The chapter distinguishes plants, prepared cannabis and resin
 
-Where the court establishes that the convicted person abuses or is addicted to a dangerous drug,
-it may require treatment in addition to or instead of the ordinary sentence. The provision gives
-the court an option; it does not remove the underlying offence.
+The definitions separate the flowering or fruiting tops from the whole cannabis plant, prepared cannabis and separated resin. Prepared cannabis includes material prepared for smoking and residues after smoking. The dangerous-drug definition expressly lists the cannabis plant, prepared cannabis and cannabis resin.[@1]
 
-## Dealing is a separate offence
+Dealing was defined broadly, reaching sale, supply, delivery, transport and other connected activity. The separate offence also covered growing or holding a drug for dealing, offering to supply it, and inciting another person to consume it.[@1]
 
-Section 383 separately criminalises selling, transporting, supplying and other dealing, as well
-as cultivation for the purpose of dealing. In an ordinary case the maximum is fourteen years,
-with a fine also available. The section contains death or life imprisonment for listed aggravated
-cases involving drugs other than cannabis, so that aggravated clause does not apply to cannabis
-as written.
+The capital tier used a specific condition: a dangerous drug other than cannabis, together with a listed aggravating circumstance. Those circumstances included organised groups, violence, abuse of public office and specified repeat offending. Other dealing carried up to fourteen years, a fine, or both.[@1]
 
-The code also punishes knowingly allowing premises to be used for unlawful cultivation, supply,
-storage or consumption. Section 387 reserves limited lawful handling to specified medical,
-pharmaceutical, laboratory and government professionals acting within their roles; it is not an
-adult-use access system.
+## Premises and professional handling had their own provisions
 
-The statute was published for Southern Sudan in February 2009 as the Penal Code Act, 2008. It now
-anchors the modern legal account on the [South Sudan profile](/country/ss/), following the site's
-separate record of the territory-wide [1924 prohibition](/history/south-sudan-ban-1924/).
+An occupier or manager who permitted premises to be used for unlawful cultivation, manufacture, supply, storage or consumption could face up to ten years, a fine, or both. That reached the person allowing the activity as well as the person handling the drug.[@1]
 
-In the index, the 2008 code does not move a score: it restated criminal prohibition within an
-already banned system. Its importance is that it replaces an inferred historical baseline with a
-readable, cannabis-specific penal framework.
+The code also allowed named medical, pharmaceutical, laboratory and state professionals to handle specified drugs where necessary for their work. That exception sat alongside the offences and their purposes.[@1]
+
+The [South Sudan profile](/country/ss/) uses these distinctions to explain possession, personal growing and supply separately. The code provides several possible responses to a personal-use case: prison, a fine and, when the court’s findings support it, treatment.[@1]
