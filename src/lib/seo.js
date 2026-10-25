@@ -36,7 +36,7 @@ export function countrySeo(c, site) {
     dateModified: c.details.reviewed,
     mainEntity: [
       { q: `Is weed legal ${where}?`, a: `${REC_LABEL[c.rec]}: ${REC_HELP[c.rec].toLowerCase()}. ${c.note}` },
-      ...answersFor(c.s).map((x) => ({ q: QUESTION[x.id](where), a: `${x.label}. ${x.text}. ${c.details.segments[SEGMENT_IDS.indexOf(x.seg)].t}` })),
+      ...answersFor(c).map((x) => ({ q: QUESTION[x.id](where), a: `${x.label}. ${x.text}. ${c.details.segments[SEGMENT_IDS.indexOf(x.seg)].t}` })),
     ].map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
   };
   return {

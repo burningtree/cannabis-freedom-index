@@ -97,6 +97,7 @@ const everyPlace = (await getCollection("countries"))
       region: data.region,
       rec: REC_CODE[data.recreational],
       med: MED_CODE[data.medical],
+      answers: data.answers ?? null, // quick answers the profile states itself (answers.js)
       note: data.summary,
       details: {
         reviewed: isoDate(data.updated),
@@ -157,6 +158,7 @@ export function subunitsOf(id) {
         name: data.name,
         rec: REC_CODE[data.recreational],
         med: MED_CODE[data.medical],
+        answers: data.answers ?? null,
         note: data.summary,
         reviewed: isoDate(data.updated),
         worldRank: 1 + countries.filter((c) => c.raw > raw).length,

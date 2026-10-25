@@ -12,7 +12,7 @@ const rows = [...places]
   .map((c) => ({
     c,
     // Each answer also carries the explanation of the segment it was read from, for the tooltip.
-    answers: answersFor(c.s).map((x) => {
+    answers: answersFor(c).map((x) => {
       const i = SEGMENT_IDS.indexOf(x.seg);
       return { ...x, name: SEGMENTS[i].name, score: c.s[i], why: c.details?.segments[i]?.t ?? "" };
     }),
@@ -23,7 +23,7 @@ const rows = [...places]
     <section class="hero hero-sm">
       <p class="eyebrow">Can I?</p>
       <h1>Five plain answers for every country</h1>
-      <p class="lede">Can you carry it, grow it, buy it or use it in public, and what happens if you are caught? The answers are read from each country's scores, so they are a rough guide, not legal advice. Open a country for the details.</p>
+      <p class="lede">Can you carry it, grow it, buy it or use it in public, and what happens if you are caught? The answers are read from each country's scores and rules, so they are a rough guide, not legal advice. Open a country for the details.</p>
     </section>
 
     <div class="filters cani-filters">

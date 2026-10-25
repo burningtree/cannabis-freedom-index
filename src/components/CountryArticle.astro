@@ -72,7 +72,7 @@ const travel = sub ? null : [
     : `A prescription or medical card from another country is generally not recognised. Travellers who need a cannabis-based medicine should ask ${c.name}'s embassy before travelling.`,
 ].filter(Boolean);
 const incbRef = travel ? ctxRefs.cite(INCB) : null; // the crossing-the-border note cites one guide
-const answers = answersFor(v.s);
+const answers = answersFor(v);
 // The methodology lives on the home page: its section, or the description of one segment there.
 const method = (segId) => `${base}#${segId ? `method-${segId}` : "methodology"}`;
 
@@ -167,7 +167,7 @@ const culture = cultureOf(c);
         </li>
       ))}
     </ul>
-    <p class="d-hint">A rough guide read from the scores below, not legal advice. The details and the exceptions are in each segment: select an answer to jump to it.</p>
+    <p class="d-hint">A rough guide read from the scores and the rules below, not legal advice. The details and the exceptions are in each segment: select an answer to jump to it.</p>
   </div>
 
   {/* Figures at a glance: the score over time, users, other datasets and prices. A sticky rail on the full page. */}

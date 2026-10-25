@@ -31,6 +31,9 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v6
       - run: npm ci
+      # Every profile's quick answers ("Can I carry it?") against its own text: a contradiction
+      # stops the deploy instead of going live (scripts/answers.test.mjs).
+      - run: npm run answers:test
       # The social preview images (one per page) take minutes to draw and rarely change. Each is
       # kept under a hash of its own content, so restoring the folder redraws only what is new.
       - uses: actions/cache@v4

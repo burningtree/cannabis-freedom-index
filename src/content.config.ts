@@ -42,6 +42,16 @@ const status = {
   medical: z.enum(["legal", "limited", "none"]),
 };
 
+// The quick answers a profile states itself, where its scores would say it wrong (src/lib/answers.js):
+// { carry: { answer: limited, text: "…" }, … }. "What if I'm caught?" is not a yes/no question,
+// so its answer also needs a `label` ("A penalty", "Prison").
+const answerOf = z.object({ answer: z.enum(["yes", "limited", "no"]), label: z.string().min(1).optional(), text: z.string().min(1) }).strict();
+const answers = z
+  .object({ carry: answerOf.optional(), grow: answerOf.optional(), buy: answerOf.optional(), public: answerOf.optional(), caught: answerOf.optional() })
+  .strict()
+  .refine((a) => !a.caught || a.caught.label, { message: 'answers.caught needs a label ("Nothing", "A penalty", …)' })
+  .optional();
+
 // countries/de.yaml, or countries/us/index.yaml for a federation → id "de", "us"
 const countries = defineCollection({
   loader: glob({
@@ -71,6 +81,7 @@ const countries = defineCollection({
       complete: z.coerce.date().optional(),
       summary: z.string().min(1),
       scores: perSegment(score),
+      answers,
       segments: perSegment(cited),
       // the four standard sections, plus `death_penalty` where the law provides for one and,
       // where they have been researched, `planting` (seeds and clones), the sections with a status
@@ -117,6 +128,7 @@ const units = defineCollection({
       updated: z.coerce.date(),
       summary: z.string().min(1),
       scores: perSegment(score),
+      answers,
       segments: perSegment(z.string().min(1)),
       sources: z.array(source),
       // optional: how many people used cannabis in the past year, from the country's own survey.

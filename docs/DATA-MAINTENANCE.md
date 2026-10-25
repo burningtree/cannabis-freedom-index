@@ -420,6 +420,43 @@ To add a dataset: put its CSV in `/datasets` and add a definition to `datasets.y
 view follows from that. The profile block is written for each dataset in
 `src/components/CountryDatasets.astro`.
 
+## Quick answers
+
+Every profile shows five plain answers ("Can I carry it?", "Can I buy it?", …) on its page, on
+`/can-i/` and in the page's structured data for search engines. `src/lib/answers.js` reads them
+off the segment scores, but a score band holds places whose law reads differently: possession 3 is
+both "decriminalised" (Portugal) and "a crime that is not prosecuted" (the Netherlands), access 4–5
+is a pharmacy, a club, a state shop or a coffeeshop. So:
+
+- **The generic answer of a band says only what is true of every place in it.** Never a legal
+  category ("not a crime", "decriminalised") or a channel ("clubs or state outlets") that the band
+  does not guarantee. When you change a band's wording, read every profile in it:
+  `node scripts/answers.test.mjs --list carry`.
+- **A step can depend on a status.** A place with `medical: none` is never told it can buy on
+  prescription, whatever its access score.
+- **Where the band cannot say it right, the profile says it**, under `answers`, worded from its own
+  segment text and nothing else:
+
+  ```yaml
+  answers:
+    carry:
+      answer: limited          # yes | limited | no
+      text: Illegal, but up to 5 g is not prosecuted; police may still seize it
+    caught:
+      answer: limited
+      label: Licence suspension   # "What if I'm caught?" needs its own label
+      text: Your driving licence or passport can be suspended for one to three months
+  ```
+
+  Questions: `carry` (possession), `grow` (cultivation), `buy` (access), `public` (consumption),
+  `caught` (enforcement). When the law changes, update the answer with the segment.
+- **`npm run answers:test`** checks every answer against its profile: prescription without a
+  medical programme, "legal" where recreational cannabis is not, "use itself is a crime" where the
+  text says use is not an offence, a fine where the text says there is none, and so on. It runs
+  before every deploy. A failure means the answer, the text or the score is wrong: fix whichever
+  it is, never the check. If the score is what is wrong, change it with its timeline (see "The
+  score timeline must make sense").
+
 ## How a history entry works
 
 ```yaml
