@@ -948,3 +948,11 @@ test("Venezuela separates personal use from the criminal quantity band and dates
   assert.equal(byId["venezuela-personal-dose-1993"].before, undefined);
   assert.ok(byId["venezuela-drug-law-1984"].sources.some(s => s.url.includes("e-nl-1985-93-s.pdf")));
 });
+
+test("Cambodia's 2012 custodial penalty correction preserves its earlier score (#138)", () => {
+  assert.equal(byId['cambodia-drug-control-law-2012'].before.enforcement, 2);
+  assert.equal(scoreAt('kh', 2011).enforcement, 2);
+  assert.equal(scoreAt('kh', 2012).enforcement, 1);
+  const profile = y.load(fs.readFileSync('countries/kh.yaml', 'utf8')).scores;
+  assert.deepEqual(scoreAt('kh', 2026), profile);
+});

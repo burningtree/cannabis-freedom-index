@@ -78,3 +78,27 @@ test('Trinidad quick answers retain the location offence and US firearm claims r
   assert.match(us, /did not decide purchases or transfers/);
   assert.match(country('se').context.products.text, /14 July 2026/);
 });
+
+test('New Zealand planting statuses include conditional hemp plant supply (#137)', () => {
+  const nz = country('nz'), p = nz.context.planting;
+  assert.equal(p.seeds, 'conditional');
+  assert.equal(p.clones, 'conditional');
+  assert.equal(p.seeds_trade, 'conditional');
+  assert.equal(p.clones_trade, 'conditional');
+  assert.match(p.text, /high-THC cultivars are not hemp/i);
+  assert.match(p.text, /legally entitled/);
+  assert.match(p.text, /Importing or exporting.*licence/);
+  assert.deepEqual(nz.scores, { possession: 2, cultivation: 1, enforcement: 4, sharing: 1, consumption: 1, access: 2 });
+  assert.equal(events().find((e) => e.id === 'new-zealand-hemp-notification-2026').checked, true);
+});
+
+test('Cambodia custodial possession penalties are not classified as typical fines (#138)', () => {
+  const kh = country('kh'), law = events().find((e) => e.id === 'cambodia-drug-control-law-2012');
+  assert.equal(kh.scores.enforcement, 1);
+  assert.equal(law.before.enforcement, 2);
+  assert.match(kh.segments.enforcement.text, /article 28/i);
+  assert.match(kh.segments.enforcement.text, /do not establish a cannabis-only sentencing rate/);
+  assert.doesNotMatch(kh.segments.enforcement.text, /fines (are )?typical|usually (a )?fine|cannabis users are routinely jailed/i);
+  const rubric = yaml.load(fs.readFileSync(path.join(root, 'segments.yaml'), 'utf8')).find((s) => s.id === 'enforcement');
+  assert.equal(rubric.levels.find((l) => l.score === 1).text, 'Custodial penalties for users');
+});

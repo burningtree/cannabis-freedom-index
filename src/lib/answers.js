@@ -61,7 +61,7 @@ export const QUESTIONS = [
     // fines, tickets, diversion, suspended documents, or nothing below a threshold: all sit here
     { min: 4, answer: "limited", text: "For a small amount, usually a fine, a referral to treatment or nothing at all; prison is rare", label: "A light penalty" },
     { min: 2, answer: "limited", text: "Usually a fine; prison is possible", label: "Fine or prison" },
-    { min: 1, answer: "no", text: "Users are routinely jailed", label: "Prison" },
+    { min: 1, answer: "no", text: "Personal use can lead to prison or compulsory detention", label: "Prison" },
     { min: 0, answer: "no", text: "Long sentences or worse", label: "Severe punishment" },
   ] },
 ];

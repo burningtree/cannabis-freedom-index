@@ -1529,3 +1529,22 @@ CBD-only sales do not establish access to psychoactive cannabis. A framework sti
 implemented can retain `medical: limited` with access zero. Greece’s finished prescription
 products reached patients in February 2024; Panama’s 2021 framework and 2026 CBD listings
 alone do not establish a working THC medicine route.
+
+### Custodial penalties and missing sentencing statistics
+
+Enforcement 2 (“Prison possible, fines typical”) needs evidence of fine-led enforcement;
+statutory prison plus a possible additional fine does not establish that practice. The
+custodial band at 1 includes prescribed prison penalties as well as documented custody.
+Its label and generic quick answer do not imply a measured cannabis-only imprisonment
+frequency. Check the statute's sentencing and substitution provisions before using this
+basis, explain it in the country's enforcement text and research note, and tie a change
+to the relevant law in the historical chain. All-drug arrests, prosecutions and treatment
+figures can describe the surrounding enforcement campaign; never turn them into a
+cannabis-only conviction rate. Keep treatment powers, traditional-use exceptions and
+fine alternatives explicit where the law actually provides them.
+
+Planting status/trade `conditional` covers lawful holding, growing or supply for specified
+purposes under legal conditions, including notification regimes without a licence. It
+means neither unrestricted adult use nor licensed sellers only. Keep the permitted plant
+category, recipient restrictions and import/export licensing in the narrative; New Zealand's
+2026 hemp rules are the first example.

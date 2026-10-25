@@ -8,12 +8,14 @@ export const CONTEXT_IDS = ["production", "products", "medical", "consequences"]
 export const PLANTING_STATUS = {
   legal: { label: "Legal", tone: "legal", help: ["Adults may buy, hold and sow them", "Adults may buy and keep cuttings"] },
   grey: { label: "Grey area", tone: "decrim", help: ["Sold or held openly, but germinating them is an offence or the law is silent", "Tolerated, or legal only until the plant flowers"] },
+  conditional: { label: "Permitted purposes", tone: "partial", help: ["May be held or planted for specified purposes under legal conditions, such as cultivation notification", "May be held or grown for specified purposes under legal conditions, such as cultivation notification"] },
   licensed: { label: "Licence only", tone: "partial", help: ["Only for licensed growers, such as hemp, medical or registered clubs", "Only for licensed growers, such as hemp, medical or registered clubs"] },
   illegal: { label: "Illegal", tone: "illegal", help: ["Treated as cannabis or expressly banned", "Treated as plants under the cultivation ban"] },
 };
 export const PLANTING_TRADE = {
   open: { label: "Sold freely", tone: "legal", help: ["Anyone may sell them, in shops or online", "Anyone may sell them, in shops or online"] },
   "regulated-sale-plus-gifts": { label: "Licensed sales and gifts", tone: "partial", help: ["Licensed sellers may sell them, and adults may also give a limited amount away", "Licensed sellers may sell them, and adults may also give a limited amount away"] },
+  conditional: { label: "Permitted purposes", tone: "partial", help: ["May be sold or supplied for specified purposes to people legally entitled to receive them", "May be sold or supplied for specified purposes to people legally entitled to receive them"] },
   regulated: { label: "Regulated sellers only", tone: "partial", help: ["Only licensed sellers, clubs or the state may sell or hand them out, often with limits", "Only licensed sellers, clubs or the state may sell or hand them out, often with limits"] },
   gift: { label: "Gifts only", tone: "decrim", help: ["May be given away between adults, but not sold", "May be given away between adults, but not sold"] },
   unclear: { label: "Not settled", tone: "decrim", help: ["The law does not say whether they may be sold", "The law does not say whether they may be sold"] },

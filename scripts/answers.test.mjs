@@ -126,3 +126,11 @@ test("China's small-possession answer describes administrative detention rather 
   assert.match(cn.grow.text, /administrative penalties/);
   assert.match(cn.public.text, /administrative detention/);
 });
+
+test('custodial enforcement band does not manufacture an imprisonment frequency (#138)', () => {
+  const p = { s: [1, 1, 1, 1, 1, 0], rec: 'illegal', med: 'no' };
+  const caught = answersFor(p).find((x) => x.id === 'caught');
+  assert.match(caught.text, /prison or compulsory detention/);
+  assert.doesNotMatch(caught.text, /routinely|usually|typical/);
+  assert.equal(placeOf('kh').result.caught.label, 'Prison');
+});

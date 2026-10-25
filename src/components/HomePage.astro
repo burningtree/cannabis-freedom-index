@@ -124,7 +124,7 @@ const PRICE_SCALE = {
 const PLANTING_FIELDS = { seeds: "Seeds", seeds_trade: "Seed sales", clones: "Clones", clones_trade: "Clone sales" };
 // Each status gets its own step of the tier colours, so that no two legend entries look alike.
 // `regulated-sale-plus-gifts` shares step 4 with `regulated`: the scale has no step between open and regulated.
-const PLANTING_COLOR = { legal: 5, licensed: 4, grey: 3, illegal: 0, open: 5, "regulated-sale-plus-gifts": 4, regulated: 4, gift: 3, unclear: 2, banned: 0 };
+const PLANTING_COLOR = { legal: 5, conditional: 4, licensed: 4, grey: 3, illegal: 0, open: 5, "regulated-sale-plus-gifts": 4, regulated: 4, gift: 3, unclear: 2, banned: 0 };
 const plantingScale = (statuses) => Object.fromEntries(Object.entries(statuses).map(([k, v]) => [k, { label: v.label, help: v.help, color: `var(--t${PLANTING_COLOR[k]})` }]));
 const PLANTING_SCALES = { status: plantingScale(PLANTING_STATUS), trade: plantingScale(PLANTING_TRADE) };
 // Sections with one status (clubs, driving, visitors) on the map: one option each.
@@ -159,7 +159,7 @@ const streetFlower = (c) => latestPricesFor(c.id).street;
 // Rankings columns the reader can switch on and off. `on` marks the ones shown by default.
 // Extra columns sort on a number kept on the row: higher means freer (or bigger), -1 means no data.
 const order = (keys) => Object.fromEntries(keys.map((k, i) => [k, keys.length - i]));
-const STATUS_RANK = { ...order(Object.keys(PLANTING_STATUS)), ...order(["open", "regulated-sale-plus-gifts", "regulated", "gift", "unclear", "banned"]) };
+const STATUS_RANK = { ...order(Object.keys(PLANTING_STATUS)), ...order(["open", "regulated-sale-plus-gifts", "conditional", "regulated", "gift", "unclear", "banned"]) };
 const statusCol = (key, label, vocab, helpIndex) => ({
   key, label, group: "Context",
   sort: (c) => STATUS_RANK[c.planting?.[key]] ?? -1,
