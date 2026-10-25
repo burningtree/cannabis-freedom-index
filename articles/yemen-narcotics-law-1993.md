@@ -1,50 +1,58 @@
 ---
+written: '2026-10-25'
 sources:
-  - title: Harm Reduction International — The Death Penalty for Drug Offences, Global Overview 2010
-    url: https://hri.global/wp-content/uploads/2022/10/IHRA_DeathPenaltyReport_Web-1.pdf
-  - title: Yemen — reproduced text of Law No. 3 of 1993 (Mohamah.net, Arabic)
-    url: https://www.mohamah.net/law/?p=63436
+  - type: law
+    title: Yemen — Law 3 of 1993, Arabic text published by the Public Prosecution
+    url: https://www.agoye.gov.ye/page.php?id=304
+    locator: >-
+      Articles 28–40 and 56; schedules 5–6. Issued 30 March 1993; article 56 starts the law on
+      issuance.
+  - type: law
+    title: Yemen — Law 3 of 1993 with schedules, Arabic text held by the House of Representatives
+    url: https://yemenparliament.gov.ye/uploads/posts/documents/2018/10/1019201893432579.pdf
+    locator: >-
+      PDF pp. 8, 10, 16 and 38: personal-use penalty and treatment, commencement, cannabis in
+      schedule 1, plants and exempt parts in schedules 5–6.
+  - type: law
+    title: Aden — Dangerous Drugs Ordinance 13 of 1960, original gazette supplied to the UN
+    url: https://digitallibrary.un.org/record/1296146/files/e-nl-1961-26-e.pdf
+    locator: >-
+      E/NL.1961/26; Gazette Legal Supplement 1, 5 January 1961; sections 3–9, 17, 22 and 28,
+      schedule. Assented 22 December 1960; separate commencement rule not established.
+  - type: report
+    title: >-
+      Sana’a Justice and Human Rights Ministry — review of a draft amendment to the 1993 drug law,
+      17 December 2025
+    url: https://moj.gov.ye/NewsD/11896
+    locator: >-
+      Ministry account of Ibrahim al-Shami’s meeting with Interior Ministry deputy Muhammad Abd
+      al-Azim al-Hakim; draft amendment, deterrent penalties and further procedures.
 ---
 
-Yemen's Law No. 3 of 1993 joined ordinary personal-use imprisonment to capital punishment for
-some supply offences. Cannabis is covered through the law's controlled plants and substances,
-although the reproduced text's searchable body does not display the annexed schedules themselves.
+Yemen’s 1993 drug law set five years in prison for possessing or growing cannabis for personal use. Giving drugs to another person for consumption without payment could bring death or twenty-five years, while a person proved dependent could be sent to residential treatment instead of prison.[@1,2]
 
-## A national drug law
+## The law named cannabis directly
 
-The law concerns illicit trafficking and use of narcotic drugs and psychotropic substances. It
-was issued in Sana'a on 30 March 1993 and took effect from its date of issue.
+The law took effect on issuance on 30 March 1993. Its schedules covered cannabis as a drug and expressly named male and female cannabis among the plants whose cultivation was prohibited.[@1,2]
 
-Articles 28 and 29 prohibit cultivating specified scheduled plants and handling them or their
-seeds through acts including import, export, transport, possession, purchase, sale and exchange.
-The agriculture minister may license government bodies and scientific institutes to cultivate a
-prohibited plant for research, subject to imposed conditions.
+An earlier [Aden ordinance](/history/yemen-aden-growing-ordinance-1961/) had already prohibited cannabis growing within that colony and controlled imports and exports through licences. The 1993 text set out personal-use, trading and treatment rules under Yemen’s national drug law.[@1,3]
 
-## Five years for personal use
+The plant provisions reached every stage of growth and included seeds. Stalk fibres and seeds treated so they could not germinate were exempt parts. Government departments and scientific institutes could obtain growing licences for research.[@1,2]
 
-Article 38 applies where a person possesses, buys, produces or manufactures a narcotic drug—or
-grows, possesses or buys a scheduled plant—for consumption or personal use without lawful medical
-or statutory authorisation. The punishment is five years in prison.
+## Keeping cannabis for yourself carried five years
 
-The court may order an addicted person into a treatment institution instead. Someone who
-voluntarily presents for treatment is not prosecuted, but the law specifies institutional stays
-of at least six months and no more than two years for that route.
+The personal-use provision covered holding, buying, producing or preparing drugs and growing listed plants for consumption or personal use, outside the authorised medical or legal circumstances. It prescribed a five-year prison sentence.[@1,2]
 
-## Capital offences
+The law also punished knowingly being present where drugs were being consumed in premises prepared for that purpose, with up to one year in prison. It exempted specified close relatives of the person who prepared the premises.[@1]
 
-Article 33 imposes death for unauthorised export or import with intent to traffic, and for
-producing, extracting, separating or manufacturing narcotics with that intent. Article 34 permits
-death or twenty-five years for conduct including possession, sale, delivery and transport with
-intent to traffic, and for operating premises for drug consumption.
+## Treatment involved living in a centre
 
-Article 35 applies the same death-or-twenty-five-year range to giving narcotics for consumption
-without payment or facilitating their use. Harm Reduction International independently summarised
-those provisions and recorded that at least one drug trafficker was executed in 2008. It also
-reported death sentences from that period, while cautioning through its evidence that practice
-cannot be inferred merely from the statutory maximum.
+A court could replace the personal-use sentence with commitment to a treatment centre when dependence was established. A committee decided when the person could leave, and the stay had to last at least six months.[@1,2]
 
-The law remains the basis of the severe framework described on the [Yemen profile](/country/ye/).
+The law also offered protection from prosecution to a user who voluntarily entered treatment. That person likewise remained until the committee decided on release, within a period of six months to two years.[@1,2]
 
-In the index, 1993 tightens enforcement from an already prohibited baseline: the recorded score
-falls from 3 to 1 because death became an available drug penalty. The other five segment scores
-remain unchanged.
+## Unpaid supply faced the harshest penalties
+
+Supplying drugs for consumption without payment, or facilitating consumption outside authorised circumstances, carried death or twenty-five years. The same alternatives applied to trading and preparing or running premises for drug consumption. Importing or manufacturing narcotics for trade carried death.[@1]
+
+In December 2025, [officials in Sana’a reviewed proposed amendments](/history/yemen-sanaa-drug-law-amendment-draft-2025/). The Justice Ministry reported calls for deterrent penalties and clearer procedures, with further steps needed to submit the draft. The [Yemen profile](/country/ye/) sets out the personal-use, growing and supply provisions of the 1993 law.[@4]

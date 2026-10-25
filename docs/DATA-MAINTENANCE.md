@@ -1485,3 +1485,14 @@ individual personal use from the separate twenty-gram criminal-possession band;
 verified growing and supply penalties correct its exact score from 13.5 to 10.
 The original pre-1964 cannabis scope remains open, and the research note records
 the limits of the aggregate estimate and enforcement snapshot.
+
+A [Yemen and Aden history pass](research/history-yemen-gap-2026-10-25.md) on
+25 October 2026 adds Aden’s 1942 cannabis trade ban, its 1947 preparation-list
+extension, reported fines in 1952, the replacement ordinance published in 1961,
+and Sana’a’s 2025 amendment proposals. Two articles explain the Aden framework
+and Yemen’s 1993 penalties and treatment routes. The 1993 law now uses its Arabic
+issuance clause to date commencement to 30 March. The profile gains verified
+cannabis schedules, non-germinating-seed exceptions and collateral consequences;
+its score remains 2. Aden’s territorial limits and the open northern/South Yemeni
+sequence are recorded in the research note. The English translation’s treatment
+and commencement errors were resolved against Arabic page images.
