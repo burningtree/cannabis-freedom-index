@@ -1,38 +1,55 @@
 ---
-model: opus-5.5
-written: 2026-10-13
+written: '2026-10-25'
 sources:
-  - title: "EMCDDA — Overview of the drug situation in Kazakhstan (2014)"
-    url: https://www.euda.europa.eu/publications/country-overviews/kazakhstan-2014_en
+  - type: law
+    title: Kazakhstan — Law 393-IV of 18 January 2011, reproduced by CDB
+    url: >-
+      https://cdb.kz/sistema/pravovaya-baza/o-vnesenii-izmeneniy-i-dopolneniy-v-nekotorye-zakonodatelnye-akty-respubliki-kazakhstan-po-voprosam-dalneyshey-gumanizatsii-ugolovnogo-zakonodatelstva-i-usileniya-garantiy-zakonnosti-v-ugolovnom-protsesse/
+    locator: >-
+      Article 1(1)(124), deleting criminal article 259(1); article 1(4)(9), adding administrative
+      article 320(1-1); article 2, commencement after publication
+  - type: report
+    title: CADAP — National report on the drug situation in Kazakhstan 2012
+    url: https://www.eu-cadap.org/wp-content/uploads/2022/12/03_AR-2012_Kazakhstan_RUS_final02_www.pdf
+    locator: Printed pp. 11–13, especially the 2011 reform and its policy rationale
+  - type: law
+    title: Kazakhstan — Criminal Code, 2011 consolidation, WIPO Lex 11523
+    url: https://www.wipo.int/wipolex/en/legislation/details/11523
+    locator: >-
+      Russian text, article 259(1), (1-1), (2) and amendment note; 2011 edition, not the original
+      1997 text
+  - type: law
+    title: Kazakhstan — Code of Administrative Offences, consolidation through January 2013, ILO NATLEX
+    url: https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/69967/KAZ69967%20Rus.pdf
+    locator: 'PDF pp. 208 and 215: articles 320 and 336-2'
+  - type: law
+    title: Kazakhstan — Criminal Code, edition effective 1 January 2015, WIPO Lex 16084
+    url: https://www.wipo.int/wipolex/ru/legislation/details/16084
+    locator: >-
+      Russian text, articles 10, 296, 300 and 467(1); arrest under article 45 initially deferred
+      until 2017
 ---
 
-On 18 January 2011 Kazakhstan passed Law 393-IV, a package of amendments "on the further humanisation of criminal legislation". One of its provisions took keeping a quantity of a drug with no intention of selling it out of the Criminal Code.
+Kazakhstan moved a band of personal drug possession out of criminal law in 2011. Someone buying, carrying or keeping a legally defined large amount without intending to supply it could instead receive an administrative fine or up to 45 days’ detention. The distinction between a large and an especially large amount determined whether years in prison remained possible.[@1,3]
 
-## What was decriminalised
+## A reform aimed at fewer prosecutions
 
-The provision was Part 1 of Article 259 of the Criminal Code then in force. It set criminal penalties for illegally buying, transporting or storing narcotics or psychotropic substances in large quantities without the purpose of selling them. Under Law 393-IV that act stopped being a crime. From 2011 it carried administrative liability under the Code of Administrative Offences.
+The change formed part of Kazakhstan’s policy of making criminal law less punitive. The national drug report described a shift away from prosecuting users for minor offences towards tackling organised supply networks. It credited the reform with reducing criminal liability and the prison population, without giving a cannabis-specific count of people released.[@2]
 
-The change was part of a programme, the Concept of Legal Policy to 2020, whose stated aim was to make the criminal law more humane. The rest of the drug framework stayed as it was.
+President Nursultan Nazarbayev signed the amendment on 18 January. It deleted the first part of the old possession offence and created a corresponding administrative penalty. Its commencement clause required ten calendar days to pass after the first official publication.[@1]
 
-## What stayed
+## Administrative liability could still mean detention
 
-The European drugs agency's overview of Kazakhstan, written in 2014, sets out the rules around it.
+The new large-quantity band carried a fine of up to 200 monthly calculation units, the statutory units used to set penalties, or administrative detention for up to 45 days. The remaining criminal offence covered especially large personal holdings, punishable by three to seven years in prison. Supply remained criminal regardless of quantity.[@1,3]
 
-- Selling a narcotic is a crime whatever the amount.
-- Acts involving a large amount remain the basis for prosecution.
-- Using drugs is not itself a criminal offence, but non-medical use in a public place is an administrative one, punished by a fine. A repeat within a year brings a higher fine, and a person caught twice in a year can be placed in administrative detention.
-- The law provides for the compulsory treatment of people dependent on drugs.
+The later administrative-code consolidation also retained a separate lower tier for drug handling without the elements of a criminal offence: an individual faced a fine of five to ten calculation units or up to ten days’ detention. Voluntarily handing over the drugs could exempt the person from liability. Users therefore still faced punishment even when their conduct fell outside criminal law.[@4]
 
-The basic statute behind all of this is Law 279 of 10 July 1998 on narcotic drugs, psychotropic substances and precursors.
+## Public use had its own penalties
 
-## The background
+Using drugs in public followed a separate administrative rule. A first offence brought a five-unit fine, repetition within a year doubled it, and a person already punished twice within the year faced fifteen days’ detention. The rules distinguished keeping drugs from consuming them, so removing one criminal possession offence did not settle every consequence of cannabis use.[@4]
 
-The same overview describes a country where cannabis is the main drug. The last national survey, in 2001, put the share of the population dependent on drugs at 1.7%, and found cannabis involved for 81.3% of them. A school survey of 2006 found that 2.7% of pupils aged 14 and 15 had used marijuana in the past year.
+## Criminal liability returned in 2015
 
-## Since then
+The [replacement criminal code](/history/kazakhstan-criminal-code-2015/) took effect on 1 January 2015. It covered personal possession in the ordinary and large bands through lesser criminal offences and made non-medical public use criminal too. Fines and community work were among the sentencing choices; the original code deferred its arrest provisions.[@5]
 
-Kazakhstan adopted a new Criminal Code in 2014. Its Article 296 again covers acquiring or keeping drugs without intent to sell, with a fine, community service or short arrest for the basic offence and prison only for an especially large amount.
-
-## Why the index moved
-
-The index moved [Kazakhstan](/country/kz/) from 9 to 14 with the [2011 law](/history/kazakhstan-humanisation-2011/), the only scored step in its record since the Soviet ban. Possession rises from 1 to 2 and enforcement from 1 to 2, because the ordinary case of personal possession stopped leading to a prison sentence.
+That reversal closes the short period of broader administrative treatment. [Kazakhstan’s profile](/country/kz/) follows the later code, while this episode explains why descriptions of its 2011 reform differ from the law users face today.[@1,5]

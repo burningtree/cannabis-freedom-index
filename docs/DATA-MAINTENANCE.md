@@ -755,7 +755,7 @@ Run `node scripts/data-status.cjs` for current numbers. As of 5 October 2026: 78
 2. **Entries that rest on summaries only.** Many entries added in October 2026 are marked
    checked on the strength of a search summary. Open their sources; downgrade or correct.
    Known to be unconfirmed: Senegal 1997/2007, Sierra Leone 2008, The Gambia 2003/2011/2014,
-   Liberia 2014/2023, El Salvador 2003, Kazakhstan 2011, Eswatini 1922, Botswana 1922,
+   Liberia 2014/2023, El Salvador 2003, Eswatini 1922, Botswana 1922,
    Mozambique 1914, Zambia 1926, Ghana 1935, Hungary 1930, Costa Rica 1928, Kiribati/Tuvalu 1948,
    St Kitts 1937, Saint Lucia 1938, Iraq 1933.
 3. **Unchecked entries** (`data-status.cjs unchecked`): Singapore and Papua New Guinea (blocked
@@ -1433,3 +1433,13 @@ Canada's cannabis grown in the Flin Flon mine, R. v. J.P. (no valid possession o
 from July 2001 to October 2003), Washington, DC's Initiative 71 and its gift economy, Arizona's
 1996 "prescribe" initiative and Robert Mitchum's 1948 arrest. The first three have articles, and
 four are new curious-case cards. No scores changed. The build passed (3,326 pages).
+
+
+A [Kazakhstan possession-history pass](research/history-kazakhstan-gap-2026-10-25.md)
+on 25 October 2026 adds the missing 2015 return to criminal liability for personal
+holdings and public use, with an article, and rewrites the 2011 reform and its
+article from statutory texts. The 2011 law concerned the legally defined large
+band and retained administrative detention. The Soviet cultivation entry now
+uses the decree’s express 1935 commencement and a reproduced original source.
+Kazakhstan’s historical possession/consumption snapshots are rebased; its current
+scores are unchanged. Earlier Soviet possession controls remain to be reconstructed.
