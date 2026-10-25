@@ -27,3 +27,31 @@ export const DEVELOPMENT_MEASURES = [
   { label: "Life expectancy", field: "life_expectancy", href: null },
   { label: "Enrolled in higher education", field: "higher_education", href: null },
 ];
+
+// Never combine a historical street price with a later wage: use the latest common year.
+export function matchedPriceWage(prices = [], wages = []) {
+  return prices.filter((p) => p.year >= 2018 && p.herb_eur > 0)
+    .map((price) => ({ price, wage: wages.find((w) => w.year === price.year && w.monthly_eur > 0) }))
+    .filter((p) => p.wage).sort((a, b) => b.price.year - a.price.year)[0];
+}
+
+// Hold membership constant at the countries reporting at both endpoints. Omit incomplete years.
+export function matchedThcPanel(years) {
+  if (!years.length) return { cohort: [], years: [] };
+  const last = new Set(years.at(-1).rows.map((r) => r.c.id));
+  const cohort = years[0].rows.map((r) => r.c.id).filter((id) => last.has(id));
+  return { cohort, years: years.map((y) => ({ ...y, rows: y.rows.filter((r) => cohort.includes(r.c.id)) }))
+    .filter((y) => cohort.length > 0 && y.rows.length === cohort.length) };
+}
+
+export function policeTrend(rows = []) {
+  const usable = rows.filter((r) => r.year >= 2020 && Number.isFinite(r.offences)).sort((a, b) => a.year - b.year);
+  if (usable.length < 2) return null;
+  const first = usable.at(-2), last = usable.at(-1);
+  return { first, last, change: first.offences > 0 ? (last.offences / first.offences - 1) * 100 : null };
+}
+
+// Croatia reports a stock of all clients, not the annual flow used in this table.
+export function annualTreatment(country) {
+  return country.id.toLowerCase() === 'hr' ? null : country.datasets.treatment;
+}

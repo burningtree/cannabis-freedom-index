@@ -3,15 +3,15 @@ region: North America
 iso_numeric: 591
 recreational: illegal
 medical: limited
-updated: 2026-10-13
-summary: Medical cannabis was legalised in 2021; recreational use is illegal.
+updated: 2026-10-25
+summary: Medical cannabis has a legal framework dating from 2021; licensed CBD sales began in 2026. Recreational cannabis remains illegal.
 scores:
   possession: 1
   cultivation: 1
   enforcement: 2
   sharing: 1
   consumption: 1
-  access: 1
+  access: 0
 segments:
   possession:
     text: >-
@@ -39,11 +39,14 @@ segments:
       - cl
   access:
     text: >-
-      No adult-use source. Registered patients can obtain medical cannabis products through licensed
-      pharmacies.
+      No adult-use source. Law 242 created a medical framework in 2021, but the ministry still
+      prohibited cannabis-product sales in July 2023. A specialist pharmacy opened in January 2026;
+      the current drug-directorate register lists CBD products, without establishing an available THC
+      medicine route.
     sources:
-      - hs
-      - ed
+      - sales2023
+      - register2026
+      - pharmacy2026
 context:
   production:
     text: >-
@@ -54,17 +57,20 @@ context:
       - hs
       - ed
   products:
-    text: Prescription medical products only.
+    text: >-
+      The drug directorate lists Cannapharma CBD products dated 22 January 2026. That listing does not
+      establish retail availability of controlled THC medicines.
     sources:
-      - hs
+      - register2026
   medical:
     text: >-
-      Any licensed doctor who has completed health-ministry training may prescribe, for qualifying
-      conditions such as chronic pain, epilepsy and multiple sclerosis. Patients are entered in a
-      national registry.
+      Executive Decree 6 of April 2025 revised the 2021 framework. In June 2026 the ministry approved
+      patient and companion forms: a qualified doctor certifies treatment, the ministry verifies
+      registration, and an approved patient receives a card for authorised pharmacies. The
+      announcement said the forms would be available shortly.
     sources:
-      - hs
-      - cl
+      - decree2025
+      - registration2026
   consequences:
     text: A drug conviction is a criminal record; foreigners risk deportation.
     sources:
@@ -92,12 +98,12 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. Whatever legal supply exists is medical, for patients with a prescription or
-      registration. The sources behind this profile describe no separate rule for visitors.
+      There is no legal recreational supply for residents or visitors. The medical framework requires
+      certification and approved registration for controlled medicines; a pharmacy selling CBD does
+      not establish access to THC products.
     sources:
-      - hs
-      - ed
+      - registration2026
+      - register2026
   driving:
     status: impairment
     text: >-
@@ -136,6 +142,23 @@ context:
     sources:
       - pamerica24
 sources:
+  sales2023:
+    title: MINSA — cannabis-product distribution and sale remain prohibited (22 July 2023)
+    url: >-
+      https://www.minsa.gob.pa/centro-de-prensa/noticias/reiteran-prohibicion-para-la-distribucion-y-venta-de-productos-base-de-0
+  register2026:
+    title: DNFD — medical cannabis product register (reviewed 25 October 2026)
+    url: https://dnfd.minsa.gob.pa/cannabis-medicinal
+  pharmacy2026:
+    title: TVN — first specialist cannabis pharmacy (22 January 2026)
+    url: https://www.tvn-2.com/nacionales/panama-estrena-primera-farmacia-cannabis-minsa_1_2223978.html
+  decree2025:
+    title: DNFD — Executive Decree 6 of 4 April 2025
+    url: https://dnfd.minsa.gob.pa/node/883
+  registration2026:
+    title: MINSA — patient certification and registration (2 June 2026)
+    url: >-
+      https://www.minsa.gob.pa/centro-de-prensa/noticias/minsa-fortalece-regulacion-del-cannabis-medicinal-y-establece-requisitos
   traffic640:
     title: "Panama ATTT — official published Traffic Regulation, Executive Decree 640/2006 (PDF)"
     url: https://transito.gob.pa/wp-content/uploads/2024/09/reglamento_decreto_640-1.pdf

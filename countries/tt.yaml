@@ -3,8 +3,8 @@ region: North America
 iso_numeric: 780
 recreational: legal
 medical: limited
-updated: 2026-10-23
-summary: Since 2019 adults may possess up to 30 g and grow four plants. There is no legal market yet.
+updated: 2026-10-25
+summary: Adults may ordinarily hold up to 30 g and grow four plants, but possession around children at specified premises or on school buses can bring five years in prison. There is no legal market.
 scores:
   possession: 5
   cultivation: 4
@@ -12,15 +12,24 @@ scores:
   sharing: 1
   consumption: 3
   access: 0
+answers:
+  carry:
+    answer: limited
+    text: Up to 30 g ordinarily; school buses and specified premises with children remain criminal
+  caught:
+    answer: limited
+    label: Depends on the setting
+    text: Even within the quantity allowance, possession on a school bus or at specified premises with children can bring five years
 segments:
   possession:
     text: >-
-      Since 23 December 2019 an adult may possess up to 30 g of cannabis or 5 g of resin with no
-      penalty. Between 30 and 60 g (5–10 g of resin) is a fixed-penalty ticket rather than a
-      prosecution. Above 60 g is a criminal offence.
+      The ordinary exemption is 30 g of cannabis or 5 g of resin. It does not override section 5C(b):
+      possession on a school bus, or at premises where children are present for education, sport or
+      cultural activities, carries TT$250,000 and five years on summary conviction. The separate
+      school-vicinity trafficking presumption in section 5(7) expressly excludes people covered by
+      section 5(2). Moderate overages have a ticket scheme; larger amounts remain criminal.
     sources:
-      - wiki
-      - tni
+      - act24
   cultivation:
     text: Each adult may grow up to four plants at home. More than four is an offence.
     sources:
@@ -28,11 +37,11 @@ segments:
       - tni
   enforcement:
     text: >-
-      Nothing within the limits, a ticket for moderate overages, and criminal penalties including
-      prison for larger amounts, trafficking and supplying minors.
+      The quantity exemption applies in permitted settings. Section 5C(b) carries five years even for
+      small amounts in its school-bus and children’s-activity settings. Public use has a separate
+      TT$2,000 ticket scheme. Trafficking and larger quantities bring criminal penalties.
     sources:
-      - tni
-      - wiki
+      - act24
   sharing:
     text: >-
       The 2019 amendment removed penalties for possession and growing, not for supply. Giving
@@ -42,11 +51,12 @@ segments:
       - tni
   consumption:
     text: >-
-      Use in private is lawful. Smoking in a public place, at a workplace, or near schools remains
-      an offence, as does using while driving or operating machinery.
+      Private use is generally lawful. Public smoking or use falls under section 5A: a TT$50,000 court
+      fine, with a separate TT$2,000 fixed-penalty route. The five-year sentence for possession at
+      specified children’s premises is a different offence.
     sources:
-      - tni
-      - wiki
+      - act24
+      - legalaid
   access:
     text: >-
       None in operation. The Cannabis Control Act, Act No. 10 of 2022, was assented to on 17 June
@@ -81,10 +91,12 @@ context:
       - ccb20
   consequences:
     text: >-
-      The 2019 reform allowed people with past convictions for small amounts to apply for a pardon
-      and have records cleared.
+      Section 5D provides discharge and expungement routes for earlier small-possession cases; a
+      pardon may follow expungement. New offences can still create a criminal record, including
+      section 5C(b) possession in specified settings involving children.
     sources:
-      - tni
+      - act24
+      - legalaid
   planting:
     seeds: legal
     seeds_trade: banned
@@ -109,11 +121,12 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. The sources behind this profile describe no separate rule for visitors.
+      There is no legal recreational market for visitors or residents. The ordinary personal quantity
+      allowance does not permit possession on school buses or at premises where children attend
+      education, sport or cultural activities; section 5C(b) carries TT$250,000 and five years on
+      summary conviction.
     sources:
-      - econ
-      - wiki
+      - act24
   driving:
     status: impairment
     text: >-
@@ -126,11 +139,20 @@ context:
       longer ban; a third conviction brings permanent disqualification. Police may arrest
       without a warrant. Section 70A separately concerns alcohol concentrations: the
       Finance Act 2025 doubled its fines, without amending section 70's drug-impairment
-      penalty. No numeric THC allowance was established in the sources reviewed.
+      penalty. Separately, Dangerous Drugs Act section 5C(c) covers control of a motor vehicle,
+      aircraft or ship while under cannabis influence, carrying TT$250,000 and five years on
+      summary conviction. No numeric THC allowance was established in the sources reviewed.
     sources:
       - mowtdui
       - finance2025
+      - act24
 sources:
+  legalaid:
+    title: Legal Aid and Advisory Authority — marijuana reform guidance (12 August 2024; statutory text controls)
+    url: https://laaa.org.tt/news-and-events/148-the-decriminalization-of-marijuana-the-dos-and-donts
+    locator: >-
+      Public use and record-clearing guidance; its school-vicinity summary omits the section 5(2) exception and its
+      section 5C dollar amount has a typographical error.
   mowtdui:
     title: Trinidad and Tobago Ministry of Works and Transport — driving while impaired by alcohol or other drugs (20 December 2019)
     url: https://mowt.gov.tt/News-Room/Media-Releases/Driving-While-Impaired-by-Alcohol-or-Other-Drugs

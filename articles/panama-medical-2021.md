@@ -1,36 +1,41 @@
 ---
-model: opus-5.5
-written: 2026-10-13
+model: gpt-6
+written: 2026-10-25
 sources:
-  - title: "Panamá América — A partir de hoy empieza a regir el uso medicinal y terapéutico del cannabis en Panamá (October 2021)"
-    url: https://www.panamaamerica.com.pa/sociedad/partir-de-hoy-empieza-regir-el-uso-medicinal-y-terapeutico-del-cannabis-en-panama-1195778
-  - title: "El Mercurio (EFE) — Panamá reglamenta ley sobre el uso medicinal y terapéutico del cannabis (1 September 2022)"
-    url: https://elmercurio.com.ec/?p=980842
-  - title: "TVN — Panamá incluye el cannabis en el listado oficial de sustancias controladas para uso médico y científico (16 October 2025)"
-    url: https://www.tvn-2.com/nacionales/panama-incluye-cannabis-listado-oficial_1_2210965.html
+  - title: DNFD — Executive Decree 6 of 4 April 2025, regulating Law 242 of 2021
+    url: https://dnfd.minsa.gob.pa/node/883
+  - title: MINSA — cannabis-product distribution and sale remain prohibited (22 July 2023)
+    url: https://www.minsa.gob.pa/centro-de-prensa/noticias/reiteran-prohibicion-para-la-distribucion-y-venta-de-productos-base-de-0
+  - title: TVN — first specialist pharmacy and seven commercial licences (22 January 2026)
+    url: https://www.tvn-2.com/nacionales/panama-estrena-primera-farmacia-cannabis-minsa_1_2223978.html
+  - title: DNFD — medical cannabis product register (reviewed 25 October 2026)
+    url: https://dnfd.minsa.gob.pa/cannabis-medicinal
+  - title: MINSA — patient certification and registration forms (2 June 2026)
+    url: https://www.minsa.gob.pa/centro-de-prensa/noticias/minsa-fortalece-regulacion-del-cannabis-medicinal-y-establece-requisitos
 ---
 
-Law 242 was sanctioned on 13 October 2021 and published in the Gaceta Oficial two days later. Its Article 83 put it into force the day after promulgation. The National Assembly had approved the bill, number 153 of 2019, on 30 August 2019. The law regulates the medicinal and therapeutic use of cannabis and its derivatives; it does not touch recreational use.
+Panama's Law 242 of 13 October 2021 created a framework for medicinal and therapeutic cannabis. It began a licensing and regulatory process, rather than immediately giving patients a pharmacy where they could obtain a cannabis medicine. Years separated that legal framework from the first specialist pharmacy.[@1,2,3]
 
-## What the law set up
+## A framework awaiting suppliers
 
-The Ministry of Public Security issues the licences: for importing and exporting cannabis products, for selling them, and for using cannabis seeds for planting and cultivation, strictly for medicinal use. Licence holders must show moral and economic solvency, and the authorities may inspect their books.
+The law provided for authorised manufacture and regulated handling of cannabis derivatives. But on 22 July 2023 the health ministry said that selection of manufacturing licensees was still under way. Cannabis-derived products were not authorised for distribution or sale in Panama. The ministry also warned that handling outside the medical law remained subject to the Penal Code.[@2]
 
-Patients enter a registry that requires a certificate from the treating doctor, details of the illness, the doses and how often they are taken.
+That notice matters when dating access: the existence of a statute in 2021 did not mean a patient could buy a product through an operating licensed channel in 2023.[@2]
 
-| Sale (Article 16) | Rule |
-|---|---|
-| Where | Authorised, certified pharmacies and public health facilities |
-| Supply | From certified laboratories licensed to make cannabis derivatives |
-| Home delivery and internet sales | Prohibited |
-| Health food shops, professional offices | Prohibited |
+## New rules and a first pharmacy
 
-## Slow to start
+Executive Decree 6 of 4 April 2025 revised the rules implementing Law 242. The drug directorate describes its purpose as supervised access for therapeutic, medical, veterinary, scientific and research uses, alongside the rules for controlled substances.[@1]
 
-The law gave the government 90 days to write regulations. They came on 30 August 2022, when President Laurentino Cortizo signed two executive decrees. One regulates use and access for therapeutic, medical, veterinary, scientific and research purposes, with import controls and tracing from cultivation to the point of sale. The other creates a national directorate inside the Ministry of Public Security, staffed by police and border officers, which sets security requirements and approves licence applications.
+On 22 January 2026 a specialist cannabis pharmacy opened, and the ministry reported seven commercial licences. Those developments belong to the later implementation of the law, rather than to its original enactment.[@3]
 
-Three years later the health ministry was still completing the framework. A resolution published on 16 October 2025 added cannabis to the official list of controlled substances permitted for medical and scientific use, a step the ministry described as part of the "progressive implementation" of Law 242. The ministry repeated that recreational use remains prohibited and that cannabis may be given only on a medical prescription.
+## CBD and patient registration
 
-## Why the index moved
+The drug directorate's published product register lists Cannapharma cannabidiol products dated 22 January 2026. That CBD listing does not establish that controlled THC medicines were being dispensed.[@4]
 
-Before Law 242 Panama had no lawful cannabis of any kind. The law created a legal channel, pharmacies supplied by licensed producers, for registered patients, so access rose from zero. The other scores did not move: possession, growing and supply outside the licensed medical system stay criminal offences.
+On 2 June the ministry announced approved forms for patients and authorised companions. A qualified doctor must certify the treatment, including diagnosis, dose and duration. Certification starts the registration process; after verification and approval, the patient receives a card for obtaining medicines at authorised pharmacies. The announcement said the forms and instructions would be published shortly.[@5]
+
+## How the index records access
+
+The [2021 event](/history/panama-medical-2021/) remains in the history as an enabling law. The [2023 sales prohibition](/history/panama-sales-still-prohibited-2023/), [first pharmacy](/history/panama-first-cannabis-pharmacy-2026/) and [registration announcement](/history/panama-patient-registration-2026/) show the subsequent steps.[@2,3,5]
+
+[Panama's profile](/country/pa/) keeps medical status limited and access at zero. A pharmacy opening and a CBD register cannot establish the working THC medicine route that the earlier score increase had assumed.[@3,4]

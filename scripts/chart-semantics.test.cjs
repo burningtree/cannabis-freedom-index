@@ -47,3 +47,50 @@ test('chart claims match categorical religion data and observational price data'
   assert.match(page, /Muslims are the largest group/);
   assert.match(page, /Across \{priced.length\} countries, cannabis price and the score show/);
 });
+
+const csv = (file) => {
+  const [head, ...lines] = fs.readFileSync(`datasets/${file}`, 'utf8').trim().split(/\r?\n/).map((r) => r.split(','));
+  return lines.map((r) => Object.fromEntries(head.map((h, i) => [h, h === 'country' ? r[i] : r[i] === '' ? null : +r[i]])));
+};
+
+test('affordability uses an actual common price/wage year, including stale-price countries (#136)', async () => {
+  const { matchedPriceWage } = await semantics;
+  const prices = csv('euda-cannabis-prices.csv'), wages = csv('eurostat-minimum-wages.csv');
+  let n = 0;
+  for (const id of new Set(prices.map((r) => r.country))) {
+    const pair = matchedPriceWage(prices.filter((r) => r.country === id), wages.filter((r) => r.country === id));
+    if (pair) { n++; assert.equal(pair.price.year, pair.wage.year); }
+    if (['lv', 'ie', 'lt'].includes(id) && pair) assert.ok(pair.wage.year < 2026);
+  }
+  assert.ok(n > 10);
+  assert.equal(matchedPriceWage([{ year: 2018, herb_eur: 7 }], [{ year: 2026, monthly_eur: 780 }]), undefined);
+});
+
+test('THC trend holds the endpoint cohort constant and omits incomplete years (#136)', async () => {
+  const { matchedThcPanel } = await semantics;
+  const prices = csv('euda-cannabis-prices.csv'), potency = csv('euda-cannabis-potency.csv');
+  const years = Array.from({ length: 23 }, (_, i) => 2002 + i).map((year) => ({ year, rows: prices.filter((p) => p.year === year && p.herb_eur > 0).flatMap((p) => {
+    const t = potency.find((t) => t.country === p.country && t.year === year && t.herb_thc > 0);
+    return t ? [{ c: { id: p.country }, mg: t.herb_thc * 10 / p.herb_eur }] : [];
+  }) }));
+  assert.equal(years[0].rows.length, 9);
+  assert.equal(years.at(-1).rows.length, 16);
+  const panel = matchedThcPanel(years);
+  assert.deepEqual([...panel.cohort].sort(), ['es', 'nl', 'pt', 'tr']);
+  assert.ok(panel.years.length > 2);
+  for (const y of panel.years) assert.deepEqual(y.rows.map((r) => r.c.id).sort(), [...panel.cohort].sort());
+});
+
+test('police comparisons are within country and treatment stocks are excluded (#136)', async () => {
+  const { policeTrend, annualTreatment } = await semantics;
+  assert.deepEqual(policeTrend([{ year: 2023, offences: 100 }, { year: 2024, offences: 150 }]).change, 50);
+  assert.equal(policeTrend([{ year: 2024, offences: 150 }]), null);
+  assert.equal(annualTreatment({ id: 'HR', datasets: { treatment: { cannabis: 474 } } }), null);
+  const page = fs.readFileSync('src/pages/charts.astro', 'utf8');
+  assert.doesNotMatch(page, /punishSpread|punishMore|Treats more than it punishes|read the order, not the decimals|its people looked it up/);
+  assert.match(page, /not geolocated/);
+  assert.match(page, /w\.r\.served/);
+  assert.match(page, /w\.r\.cities/);
+  assert.match(page, /w\.r\.year/);
+  assert.match(page, /Croatia is excluded/);
+});

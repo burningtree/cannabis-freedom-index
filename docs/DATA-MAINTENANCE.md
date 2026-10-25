@@ -1506,3 +1506,19 @@ and the historical enforcement deduction moves from 2015 to March 1999. The
 2026 entry now identifies higher fines and supply sentences. Current scores stay
 at 2, with primary-law treatment, testing and deportation details in the profile.
 Earlier cannabis coverage and the aggregate first-restriction estimate remain open.
+
+### Mixed legal products and maximum penalties
+
+Use `recreational: death` wherever an in-force law permits death for a cannabis offence,
+including a qualifying repeat offence, even if another preparation has a lawful route.
+This status takes precedence on the law map and in the homepage count. Explain the
+lawful preparation separately in the summary, segments and quick answers. India’s bhang
+shops coexist with NDPS section 31A; neither fact cancels the other. Do not infer a death
+penalty from a context heading alone: it may discuss an abolished or excluded penalty.
+
+For medical access, date a score increase to an operating route for obtaining the relevant
+cannabis product, rather than enactment, production licences or a patient-registry proposal.
+CBD-only sales do not establish access to psychoactive cannabis. A framework still being
+implemented can retain `medical: limited` with access zero. Greece’s finished prescription
+products reached patients in February 2024; Panama’s 2021 framework and 2026 CBD listings
+alone do not establish a working THC medicine route.

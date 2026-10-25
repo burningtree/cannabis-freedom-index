@@ -3089,3 +3089,16 @@ a.ch-db-track:hover { background: color-mix(in srgb, var(--text) 6%, transparent
   .gl-list .gl-sum, .gl-list .gl-lines { grid-column: 1; grid-row: auto; }
   .gl-field { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* Dated police counts and separate treatment counts: no common ranking or ratio. */
+.ch-records-table { overflow-x: auto; }
+.ch-records-table table { width: 100%; }
+#punished .ch-bars li a { grid-template-columns: minmax(7rem, 1fr) minmax(9rem, 2fr) 4rem; }
+#work-for-a-gram .ch-bar-num { white-space: nowrap; }
+#work-for-a-gram .ch-bars li a { grid-template-columns: 200px minmax(0, 1fr) 140px; }
+@media (max-width: 600px) {
+  #punished .ch-bars li a { grid-template-columns: 1fr auto; }
+  #punished .ch-bars li a > span:nth-child(2) { grid-column: 1; font-size: .75rem; }
+  #punished .ch-bar-num { grid-column: 2; grid-row: 1 / 3; }
+  #work-for-a-gram .ch-bars li a { grid-template-columns: 100px minmax(0, 1fr) 115px; }
+}

@@ -4,7 +4,7 @@
 // as SVG shapes with HTML labels, as in the homepage chart, so the page needs no script to read.
 // Every chart leads on: a year to the history, a country to its profile, a region to the rankings,
 // a dataset to its map. A small script at the end adds hover cards with the detail behind a mark.
-import { firstRestrictionSample, HISTORY_TOPICS, topicCounts, DEVELOPMENT_MEASURES } from "../lib/chart-semantics.js";
+import { firstRestrictionSample, HISTORY_TOPICS, topicCounts, DEVELOPMENT_MEASURES, matchedPriceWage, matchedThcPanel, policeTrend, annualTreatment } from "../lib/chart-semantics.js";
 import Base from "../layouts/Base.astro";
 import AverageChart from "../components/AverageChart.astro";
 import { countries, changes, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, MED_LABEL, SEGMENTS, segAvg } from "../lib/countries.js";
@@ -258,37 +258,33 @@ const priceFit = corr(priced);
 const PX1 = Math.ceil(Math.max(...priced.map((p) => p.x)) / 10) * 10, PY1 = Math.ceil(Math.max(...priced.map((p) => p.y)) / 5) * 5;
 const priceNamed = pickLabels([...priced].sort((a, b) => Math.abs(b.y - median(priced.map((q) => q.y))) - Math.abs(a.y - median(priced.map((q) => q.y)))).map((p) => ({ key: p.c.id, x: pct(p.x, 0, PX1), y: 100 - pct(p.y, 0, PY1) })));
 
-// ── Who gets punished: cannabis offences recorded per 1,000 people who use it ──
+// ── Within-country changes in recorded use/possession counts ──
 const OFF = DATASETS.cannabis_offences;
-const punished = countries.map((c) => ({ c, r: latestSince(c.series.cannabis_offences, "offences", 2020) }))
-  .filter((p) => p.r && c_users(p.c) > 0).map((p) => ({ ...p, rate: (p.r.offences / c_users(p.c)) * 1000 })).sort((a, b) => b.rate - a.rate);
-function c_users(c) { return c.use && !c.use.estimate ? c.use.users : 0; }
-const punishMax = punished[0].rate;
-const punishSpread = Math.round(punished[0].rate / punished.at(-1).rate);
+const punished = countries.map((c) => ({ c, trend: policeTrend(c.series.cannabis_offences) }))
+  .filter((p) => p.trend).sort((a, b) => a.c.name.localeCompare(b.c.name));
 
 // ── Stronger, cheaper: how much THC a euro buys in Europe, year by year ──
 // A gram at p% THC holds p × 10 mg; a euro buys that divided by the price.
-const thcYears = [];
+const reportingThcYears = [];
 for (let y = 2002; y <= NOW; y++) {
   const rows = countries.map((c) => {
     const pr = c.series.prices_europe?.find((r) => r.year === y)?.herb_eur, th = c.series.potency_europe?.find((r) => r.year === y)?.herb_thc;
     return pr && th ? { c, mg: (th * 10) / pr, th, pr } : null;
   }).filter(Boolean);
-  if (rows.length >= 5) thcYears.push({ year: y, rows, mg: median(rows.map((r) => r.mg)), th: median(rows.map((r) => r.th)), pr: median(rows.map((r) => r.pr)) });
+  if (rows.length >= 5) reportingThcYears.push({ year: y, rows, mg: median(rows.map((r) => r.mg)), th: median(rows.map((r) => r.th)), pr: median(rows.map((r) => r.pr)) });
 }
+const matchedThc = matchedThcPanel(reportingThcYears);
+const thcYears = matchedThc.years.map((t) => ({ ...t, mg: median(t.rows.map((r) => r.mg)), th: median(t.rows.map((r) => r.th)), pr: median(t.rows.map((r) => r.pr)) }));
 const T0 = thcYears[0].year, T1 = thcYears.at(-1).year;
 const MG1 = Math.ceil(Math.max(...thcYears.map((t) => t.mg)) * 1.6 / 10) * 10;
 const mgOf = (v) => 100 - pct(Math.min(v, MG1), 0, MG1);
 const thcLine = (pts) => pts.map(([x, v], i) => `${i ? "L" : "M"}${pct(x, T0, T1).toFixed(2)},${mgOf(v).toFixed(2)}`).join("");
 const thcMedianPath = thcLine(thcYears.map((t) => [t.year, t.mg]));
-// a faint line for each country with at least five years of both figures
-const thcCountries = [...new Set(thcYears.flatMap((t) => t.rows.map((r) => r.c)))]
-  .map((c) => ({ c, pts: thcYears.flatMap((t) => t.rows.filter((r) => r.c === c).map((r) => [t.year, r.mg])) })).filter((x) => x.pts.length >= 5);
-const thcFirst = thcYears.slice(0, 3), thcLast = thcYears.slice(-3);
-const mgThen = mean(thcFirst.map((t) => t.mg)), mgNow = mean(thcLast.map((t) => t.mg));
-const thThen = mean(thcFirst.map((t) => t.th)), thNow = mean(thcLast.map((t) => t.th));
-const prThen = mean(thcFirst.map((t) => t.pr)), prNow = mean(thcLast.map((t) => t.pr));
-const mgChange = mgNow / mgThen - 1;
+const thcCountries = matchedThc.cohort.map((id) => {
+  const c = countries.find((c) => c.id === id);
+  return { c, pts: thcYears.flatMap((t) => t.rows.filter((r) => r.c.id === id).map((r) => [t.year, r.mg])) };
+});
+const mgThen = thcYears[0].mg, mgNow = thcYears.at(-1).mg;
 
 // ── Criminalising a crop: countries that grow hemp commercially, and their law on cannabis ──
 const HEMP = DATASETS.hemp;
@@ -344,7 +340,6 @@ const wy = (v) => 100 - pct(Math.log10(Math.max(v, 10 ** WL0)), WL0, WL1);
 const WX1 = Math.ceil(Math.max(...sewage.map((w) => w.x)) / 10) * 10;
 const sewageFit = corr(sewage.map((w) => ({ x: w.x, y: Math.log10(w.y) })));
 const sewageNamed = pickLabels([...sewage].sort((a, b) => b.y - a.y).map((w) => ({ key: w.c.id, x: pct(w.x, 0, WX1), y: wy(w.y) })));
-const sewageTop = [...sewage].sort((a, b) => b.y - a.y)[0], sewageLow = [...sewage].sort((a, b) => a.y - b.y)[0];
 
 // ── Canada after legalisation: where people get cannabis, and what governments earn ──
 const SOURCING = DATASETS.canada_sourcing, REVENUE = DATASETS.canada_revenue;
@@ -426,8 +421,10 @@ const usThen = usScore.find((r) => r.year === +pollLast.date.slice(0, 4))?.score
 // A month of full-time work is taken as 40 hours a week: 173.3 hours.
 const MW = DATASETS.minimum_wage;
 const workGram = countries.map((c) => {
-  const price = latestSince(c.series.prices_europe, "herb_eur", 2018), wage = latestSince(c.series.minimum_wage, "monthly_eur", 2020);
-  return price && wage ? { c, price: price.herb_eur, priceYear: price.year, wage: wage.monthly_eur, wageYear: wage.year, minutes: (price.herb_eur / (wage.monthly_eur / 173.3)) * 60 } : null;
+  const pair = matchedPriceWage(c.series.prices_europe, c.series.minimum_wage);
+  if (!pair) return null;
+  const { price, wage } = pair;
+  return { c, price: price.herb_eur, priceYear: price.year, wage: wage.monthly_eur, wageYear: wage.year, minutes: (price.herb_eur / (wage.monthly_eur / 173.3)) * 60 };
 }).filter(Boolean).sort((a, b) => b.minutes - a.minutes);
 const workMax = workGram[0]?.minutes ?? 1;
 
@@ -715,14 +712,9 @@ const P0 = 1990;
 // ── Punish or treat: cannabis offences and cannabis treatment, per 1,000 people who use it ──
 const TREAT = DATASETS.treatment;
 const punishTreat = countries.map((c) => {
-  const off = latestSince(c.series.cannabis_offences, "offences", 2020), tr = c.datasets.treatment;
-  const users = c.use && !c.use.estimate ? c.use.users : 0;
-  return off && tr && users ? { c, punish: (off.offences / users) * 1000, treat: (tr.cannabis / users) * 1000, offYear: off.year, trYear: tr.year, share: tr.cannabis_share } : null;
-}).filter(Boolean);
-const PT0 = -1, PT1 = 3; // 0.1 to 1,000 per 1,000 users, tenfold steps
-const ptx = (v) => pct(Math.log10(Math.max(v, 0.1)), PT0, PT1), pty = (v) => 100 - pct(Math.log10(Math.max(v, 0.1)), PT0, PT1);
-const punishMore = punishTreat.filter((d) => d.punish > d.treat);
-const ptNamed = pickLabels([...punishTreat].sort((a, b) => Math.abs(Math.log10(b.punish / b.treat)) - Math.abs(Math.log10(a.punish / a.treat))).map((d) => ({ key: d.c.id, x: ptx(d.punish), y: pty(d.treat) })), 20);
+  const off = latestSince(c.series.cannabis_offences, "offences", 2020), tr = annualTreatment(c);
+  return off && tr ? { c, punish: off.offences, treat: tr.cannabis, offYear: off.year, trYear: tr.year, share: tr.cannabis_share } : null;
+}).filter(Boolean).sort((a, b) => a.c.name.localeCompare(b.c.name));
 
 // ── In the news: the share of each country's news articles that mention cannabis ──
 const NEWS = DATASETS.news; // absent until datasets/gdelt-cannabis-news.csv has been fetched
@@ -771,14 +763,14 @@ const chartData = {
   stream: { decades, groups: STREAM.map((g) => [g.label, g.color]), counts: streamCounts },
   moral: Object.fromEntries(moral.map((m) => [m.c.slug, [m.c.flag + " " + m.c.name, m.d.acceptable, m.d.not_moral, m.d.unacceptable, Math.round(m.y), tierOf(m.y).name, REC_LABEL[m.c.rec]]])),
   price: Object.fromEntries(priced.map((p) => [p.c.slug, [p.c.flag + " " + p.c.name, p.y, p.r.year, Math.round(p.x), tierOf(p.x).name]])),
-  punish: Object.fromEntries(punished.map((p) => [p.c.slug, [p.c.flag + " " + p.c.name, Math.round(p.rate), p.r.offences, p.r.year, p.c.users ?? p.c.use.users, p.c.use.prevalence]])),
+  punish: Object.fromEntries(punished.map((p) => [p.c.slug, [p.c.flag + " " + p.c.name, p.trend.first.offences, p.trend.first.year, p.trend.last.offences, p.trend.last.year, p.trend.change]])),
   thc: thcYears.map((t) => [t.year, +t.mg.toFixed(1), +t.th.toFixed(1), +t.pr.toFixed(2), t.rows.length]),
   thcRange: [T0, T1, MG1],
   thcCountries: thcCountries.map((x) => [x.c.slug, `${x.c.flag} ${x.c.name}`, thcYears.flatMap((t) => t.rows.filter((r) => r.c === x.c).map((r) => [t.year, +r.mg.toFixed(1), +r.th.toFixed(1), +r.pr.toFixed(2)]))]),
   hemp: Object.fromEntries(hempGrowers.map((h) => [h.c.slug, [h.c.flag + " " + h.c.name, h.ha, h.r.year, REC_LABEL[h.c.rec], Math.round(h.c.raw)]])),
   research: Object.fromEntries(research.map((r) => [r.c.slug, [r.c.flag + " " + r.c.name, fmtRate(r.per), r.total, Math.round(r.c.raw), tierOf(r.c.raw).name]])),
   easy: Object.fromEntries(easy.map((e) => [e.c.slug, [e.c.flag + " " + e.c.name, e.d.easy, e.d.easy_boys, e.d.easy_girls, Math.round(e.x), tierOf(e.x).name]])),
-  sewage: Object.fromEntries(sewage.map((w) => [w.c.slug, [w.c.flag + " " + w.c.name, w.y, w.r.year, w.r.cities, Math.round(w.x), tierOf(w.x).name, w.trend]])),
+  sewage: Object.fromEntries(sewage.map((w) => [w.c.slug, [w.c.flag + " " + w.c.name, w.y, w.r.year, w.r.cities, Math.round(w.x), tierOf(w.x).name, w.trend, w.r.served]])),
   sourcing: sourcing.map((r) => [r.year, ...SOURCE_KINDS.map((k) => r[k.id] ?? null)]),
   sourceLabels: SOURCE_KINDS.map((k) => [k.label, k.color]),
   revenue: revenue.map((r) => [r.fiscal_year, r.revenue, r.net_income, r.federal_excise, r.provincial_excise, r.taxes - r.federal_excise - r.provincial_excise, r.sales]),
@@ -830,7 +822,7 @@ const sections = [
   ["radar", "The shape of freedom"],
   ["buy-grow", "Buy it or grow it"],
   ["punished", "Who the police record"],
-  ["punish-or-treat", "Punish or treat"],
+  ["punish-or-treat", "Police records and treatment entries"],
   ["use", "Use and the law"],
   ["teen-trends", "Did prohibition protect children?"],
   ["easy-to-get", "Easy to get"],
@@ -1302,48 +1294,27 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("punished") && <h2 class="ch-chapter">{chapterAt.get("punished")}</h2>}
     <section class="ch" id="punished">
       <p class="ch-kicker"><a href="#punished">{kick("punished")}</a></p>
-      <h2>{punished[0].c.name} records {Math.round(punished[0].rate)} offences of cannabis use or possession for every 1,000 people who use it; {punished.at(-1).c.name}, {fmtRate(punished.at(-1).rate)}</h2>
-      <p class="ch-dek">How often the law reaches the people who use cannabis: offences of using or possessing cannabis for one's own use that the police record in a year, divided by the number of adults who used it in the past year. Cannabis only, and only use or possession: not dealing or growing for sale, and not other drugs. An offence is not a conviction: depending on the country it may end in a fine, a caution, treatment or a criminal case, and some countries count offenders rather than offences. A {punishSpread}-fold gap, with laws on paper that often look alike.</p>
-      <ol class="ch-bars" data-no-preview>
-        {punished.map((p) => (
-          <li>
-            <a href={`${base}country/${p.c.slug}/#datasets`} data-punish={p.c.slug}>
-              <span class="ch-bar-name">{p.c.flag} {p.c.name}</span>
-              <span class="ch-bar-track"><span class="ch-bar" style={`width:${(p.rate / punishMax) * 100}%;--c:${tierColor(p.c.raw)}`}></span></span>
-              <span class="ch-bar-num">{fmtRate(p.rate)}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
-      <p class="ch-source">Offences: {OFF.title}, latest year since 2020. Users: the <a href={`${base}sources/#dataset-cannabis_use`}>UNODC</a> estimate of adults who used cannabis in the past year. Bars coloured by the country's band. Countries record and define offences differently, so read the order, not the decimals. <a href={`${base}sources/#dataset-cannabis_offences`}>About the dataset</a>.</p>
-      <p class="ch-more"><a href={`${base}map/cannabis-offences-europe/`}>Offences on the map →</a> <a href={`${base}map/drug-possession-police/`}>Possession arrests worldwide →</a></p>
+      <h2>Cannabis police records: how each country's latest count changed</h2>
+      <p class="ch-dek">Compare each country with its own previous reporting year. These are recorded use or possession offences or persons, depending on the country, rather than punishments. Different counting units and procedural stages make both cross-country ranks and magnitudes unreliable as enforcement comparisons. Rows are alphabetical.</p>
+      <ul class="ch-bars" data-no-preview>
+        {punished.map((p) => <li><a href={`${base}country/${p.c.slug}/#datasets`} data-punish={p.c.slug}>
+          <span class="ch-bar-name">{p.c.flag} {p.c.name}</span>
+          <span>{num(p.trend.first.offences)} ({p.trend.first.year}) → {num(p.trend.last.offences)} ({p.trend.last.year})</span>
+          <span class="ch-bar-num">{p.trend.change == null ? "—" : `${p.trend.change > 0 ? "+" : ""}${p.trend.change.toFixed(1)}%`}</span>
+        </a></li>)}
+      </ul>
+      <p class="ch-source">{OFF.title}. Latest two available years since 2020; reporting changes can also affect a country's trend. <a href="https://www.euda.europa.eu/data/stats2026/methods/dlo_en">EUDA counting methods</a>. <a href={`${base}sources/#dataset-cannabis_offences`}>About the dataset</a>.</p>
     </section>
     {chapterAt.has("punish-or-treat") && <h2 class="ch-chapter">{chapterAt.get("punish-or-treat")}</h2>}
     <section class="ch" id="punish-or-treat">
       <p class="ch-kicker"><a href="#punish-or-treat">{kick("punish-or-treat")}</a></p>
-      <h2>Punish or treat: in {punishMore.length} of {punishTreat.length} European countries, the police record more cannabis offences than people enter treatment for cannabis</h2>
-      <p class="ch-dek">Each dot is a country, both figures per 1,000 people who use cannabis. Across: offences of cannabis use or possession the police record. Up: people who enter drug treatment mainly for cannabis. Above the diagonal a country treats more than it records; below it, it records more than it treats. Some of those in treatment were sent there by a court. Both scales rise tenfold at each line.</p>
-      <div class="ch-frame ch-scatter ch-wide-y ch-ptreat" data-no-preview>
-        <div class="ch-y">{[0.1, 1, 10, 100, 1000].map((t) => <span style={`top:${pty(t)}%`}>{num(t)}</span>)}</div>
-        <div class="ch-plot">
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            {[0.1, 1, 10, 100, 1000].map((t) => <><line class="ch-grid" x1="0" x2="100" y1={pty(t)} y2={pty(t)} /><line class="ch-grid" y1="0" y2="100" x1={ptx(t)} x2={ptx(t)} /></>)}
-            <line class="ch-diag" x1="0" y1="100" x2="100" y2="0" />
-          </svg>
-          <span class="ch-corner tl">Treats more than it punishes</span>
-          <span class="ch-corner br">Punishes more than it treats</span>
-          {punishTreat.map((d) => (
-            <a class:list={["ch-dot", { named: ptNamed.has(d.c.id), left: ptx(d.punish) > 75 }]} href={`${base}country/${d.c.slug}/#datasets`} data-ptreat={d.c.slug}
-              style={`left:${ptx(d.punish)}%;top:${pty(d.treat)}%;--c:${tierColor(d.c.raw)}`} aria-label={`${d.c.name}: ${d.punish.toFixed(1)} offences and ${d.treat.toFixed(1)} treatment entrants per 1,000 users`}>
-              {ptNamed.has(d.c.id) && <span>{d.c.name}</span>}
-            </a>
-          ))}
-        </div>
-        <div class="ch-x">{[0.1, 1, 10, 100, 1000].map((t, i) => <span class:list={{ first: i === 0, last: t === 1000 }} style={`left:${ptx(t)}%`}>{num(t)}</span>)}</div>
-        <p class="ch-axis-label">Offences of cannabis use or possession per 1,000 people who use it</p>
-      </div>
-      <p class="ch-source">Offences: {OFF.title}, latest year since 2020. Treatment: {TREAT.title}. Users: the <a href={`${base}sources/#dataset-cannabis_use`}>UNODC</a> survey figures. Countries count both differently; read the pattern, not the decimals.</p>
-      <p class="ch-more"><a href={`${base}map/cannabis-treatment/`}>Treatment on the map →</a> <a href={`${base}map/cannabis-offences-europe/`}>Offences on the map →</a></p>
+      <h2>Police records and treatment entries describe different activities</h2>
+      <p class="ch-dek">Separate annual counts, shown alphabetically: police records count events or persons under national definitions; treatment counts people entering care mainly for cannabis. They cannot measure a choice between punishment and care. The groups can overlap, including police or court referrals to treatment.</p>
+      <div class="ch-records-table" data-no-preview><table>
+        <thead><tr><th>Country</th><th>Police records · year</th><th>Treatment entries · year</th></tr></thead>
+        <tbody>{punishTreat.map((d) => <tr><th><a href={`${base}country/${d.c.slug}/#datasets`} data-ptreat={d.c.slug}>{d.c.name}</a></th><td>{num(d.punish)} · {d.offYear}</td><td>{num(d.treat)} · {d.trYear}</td></tr>)}</tbody>
+      </table></div>
+      <p class="ch-source">Police records: <a href={`${base}sources/#dataset-cannabis_offences`}>{OFF.title}</a>. Treatment: <a href={`${base}sources/#dataset-treatment`}>{TREAT.title}</a>. Croatia is excluded because it reports all clients in treatment, not annual entrants. Sweden has no matching police observation in this extract; its treatment figure combines separate sources. Observation years are printed for both counts; mismatched years and national reporting differences prevent direct ratios or rankings.</p>
     </section>
     {chapterAt.has("use") && <h2 class="ch-chapter">{chapterAt.get("use")}</h2>}
     <section class="ch" id="use">
@@ -1426,8 +1397,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("wastewater") && <h2 class="ch-chapter">{chapterAt.get("wastewater")}</h2>}
     <section class="ch" id="wastewater">
       <p class="ch-kicker"><a href="#wastewater">{kick("wastewater")}</a></p>
-      <h2>Sewage tells what surveys don't: {owner(sewageTop.c.name)} cities flush out {Math.round(sewageTop.y / sewageLow.y)} times as much cannabis as {owner(sewageLow.c.name)}</h2>
-      <p class="ch-dek">Each dot is a country: across, its cannabis score; up, THC-COOH, the substance the body makes from cannabis, measured in city sewage for a week, in milligrams a day per 1,000 people, latest year since 2020. The scale rises tenfold at each line. It measures what is used, not what people admit, though not how many use it; one city may stand for a whole country.</p>
+      <h2>Cannabis residues in sampled wastewater catchments</h2>
+      <p class="ch-dek">Each dot combines the sampled catchments in a country, weighted by population served: across, the country's cannabis score; up, THC-COOH measured in sewage for a week, in milligrams a day per 1,000 people served. These samples are not national prevalence estimates. Site count, population served and year appear in each point's accessible label and hover card, and in the coverage list below.</p>
       <div class="ch-frame ch-scatter ch-wide-y" data-no-preview>
         <div class="ch-y">{[10, 30, 100, 300, 1000].map((t) => <span style={`top:${wy(t)}%`}>{num(t)}</span>)}</div>
         <div class="ch-plot ch-plot-short">
@@ -1437,7 +1408,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
           </svg>
           {sewage.map((w) => (
             <a class:list={["ch-dot", { named: sewageNamed.has(w.c.id), left: w.x > WX1 * 0.75 }]} href={`${base}country/${w.c.slug}/#datasets`} data-sewage={w.c.slug}
-              style={`left:${pct(w.x, 0, WX1)}%;top:${wy(w.y)}%;--c:${tierColor(w.x)}`} aria-label={`${w.c.name}: ${w.y} mg a day per 1,000 people, score ${Math.round(w.x)}`}>
+              style={`left:${pct(w.x, 0, WX1)}%;top:${wy(w.y)}%;--c:${tierColor(w.x)}`} aria-label={`${w.c.name} sampled catchments: ${w.y} mg/day/1,000 served; ${w.r.cities} sites, ${num(w.r.served)} people served, ${w.r.year}`}>
               {sewageNamed.has(w.c.id) && <span>{w.c.name}</span>}
             </a>
           ))}
@@ -1445,6 +1416,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
         <div class="ch-x">{Array.from({ length: WX1 / 10 + 1 }, (_, i) => i * 10).map((t) => <span class:list={{ first: t === 0, last: t === WX1 }} style={`left:${pct(t, 0, WX1)}%`}>{t}</span>)}</div>
         <p class="ch-axis-label">Cannabis score</p>
       </div>
+      <details><summary>Coverage of every plotted sample</summary><ul>{sewage.map((w) => <li>{w.c.name}: {w.r.cities} sites; {num(w.r.served)} people served; {w.r.year}.</li>)}</ul></details>
       <p class="ch-source">{WW.title}; {sewage.length} countries; cities averaged by the people each plant serves. <a href={`${base}sources/#dataset-wastewater`}>About the dataset</a>.</p>
       <p class="ch-more"><a href={`${base}map/wastewater/`}>Wastewater on the map →</a> <a href={`${base}map/share-of-adults/`}>What surveys say →</a> <a href={`${base}map/cannabis-seizures/`}>Seizures on the map →</a></p>
     </section>
@@ -1502,27 +1474,27 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("work-for-a-gram") && <h2 class="ch-chapter">{chapterAt.get("work-for-a-gram")}</h2>}
     <section class="ch" id="work-for-a-gram">
       <p class="ch-kicker"><a href="#work-for-a-gram">{kick("work-for-a-gram")}</a></p>
-      <h2>On the minimum wage, a gram of cannabis costs {Math.round(workGram[0].minutes)} minutes of work in {workGram[0].c.name} and {Math.round(workGram.at(-1).minutes)} in {workGram.at(-1).c.name}</h2>
-      <p class="ch-dek">The street price of a gram of herb, divided by what the national minimum wage pays for an hour of full-time work (a month's wage over 173 hours). The bar's colour is the country's band: prices follow wages and markets more than the law.</p>
+      <h2>Buying a gram at the minimum wage: matched-year illustrations</h2>
+      <p class="ch-dek">Street price divided by the gross statutory minimum wage in the same year, using 173.3 working hours a month (40 hours a week). This is a nominal illustration before tax and living costs. Each row prints its paired observation year; countries without a matching year since 2018 are omitted.</p>
       <ol class="ch-bars" data-no-preview>
         {workGram.map((w) => (
           <li>
             <a href={`${base}country/${w.c.slug}/#datasets`} data-work={w.c.slug}>
               <span class="ch-bar-name">{w.c.flag} {w.c.name}</span>
               <span class="ch-bar-track"><span class="ch-bar" style={`width:${(w.minutes / workMax) * 100}%;--c:${tierColor(w.c.raw)}`}></span></span>
-              <span class="ch-bar-num">{Math.round(w.minutes)} min</span>
+              <span class="ch-bar-num">{Math.round(w.minutes)} min · {w.priceYear}</span>
             </a>
           </li>
         ))}
       </ol>
-      <p class="ch-source">Prices: {PRICES.title}, latest year since 2018. Wages: {MW.title}, January of the latest year. Countries without a national minimum wage, such as Austria, Italy and Sweden, are left out. <a href={`${base}sources/#dataset-minimum_wage`}>About the wage data</a>.</p>
+      <p class="ch-source">Prices: {PRICES.title}. Wages: {MW.title}, January gross minimum wage. Latest common year since 2018 for each country; no cross-year pairs. Countries without a national minimum wage, such as Austria, Italy and Sweden, are left out. <a href={`${base}sources/#dataset-minimum_wage`}>About the wage data</a>.</p>
       <p class="ch-more"><a href={`${base}map/cannabis-price-europe/`}>Prices on the map →</a> <a href={`${base}map/minimum-wage/`}>Minimum wages on the map →</a></p>
     </section>
     {chapterAt.has("thc-per-euro") && <h2 class="ch-chapter">{chapterAt.get("thc-per-euro")}</h2>}
     <section class="ch" id="thc-per-euro">
       <p class="ch-kicker"><a href="#thc-per-euro">{kick("thc-per-euro")}</a></p>
-      <h2>{Math.abs(mgChange) < 0.15 ? `Stronger herb, dearer gram: a euro still buys about ${Math.round(mgNow)} mg of THC, as in ${T0}` : `A euro bought ${Math.round(mgThen)} mg of THC around ${T0}; now it buys ${Math.round(mgNow)} mg`}</h2>
-      <p class="ch-dek">In Europe, herb went from about {fmt1(thThen)}% THC to {fmt1(thNow)}%, and a gram from €{prThen.toFixed(2)} to €{prNow.toFixed(2)}, so the amount of the drug a euro buys has {mgChange > 0.15 ? "grown" : mgChange < -0.15 ? "shrunk" : "hardly changed"}. The bold line is the middle of the countries reporting both figures each year, first and last three years averaged for the headline; the faint lines are the countries.</p>
+      <h2>In {matchedThc.cohort.length} matched countries, the median THC per euro was {fmt1(mgThen)} mg in {T0} and {fmt1(mgNow)} mg in {T1}</h2>
+      <p class="ch-dek">The same countries throughout: {thcCountries.map((x) => x.c.name).join(", ")}. The bold line is their median and the faint lines are individual countries. Only years in which all {matchedThc.cohort.length} report both price and potency are plotted; lines bridge missing years. This small matched sample does not describe Europe as a whole. The unrestricted sample changes from {reportingThcYears[0].rows.length} countries in {T0} to {reportingThcYears.at(-1).rows.length} in {T1}, so its medians cannot establish a change within the same markets.</p>
       <div class="ch-frame ch-thc" data-no-preview>
         <div class="ch-y">{Array.from({ length: MG1 / 10 + 1 }, (_, i) => i * 10).filter((t) => t % (MG1 > 60 ? 20 : 10) === 0).map((t) => <span style={`top:${mgOf(t)}%`}>{t}</span>)}</div>
         <div class="ch-plot">
@@ -1849,12 +1821,12 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("looked-it-up") && <h2 class="ch-chapter">{chapterAt.get("looked-it-up")}</h2>}
     <section class="ch" id="looked-it-up">
       <p class="ch-kicker"><a href="#looked-it-up">{kick("looked-it-up")}</a></p>
-      <h2>When {wikiLead.c.name}'s law moved, its people looked it up: {Math.round(wikiLead.jump)} times the usual readers of the cannabis article in {monthName(wikiLead.peak.month)}</h2>
-      <p class="ch-dek">Monthly readers of the Wikipedia article on cannabis in {wiki.length} languages spoken mainly in one country, each line on its own scale; the ticks are that country's changes in the law. Curiosity spikes when the law is in the news, and fades.</p>
+      <h2>{wikiLead.lang}-language cannabis article views peaked at {Math.round(wikiLead.jump)} times their monthly median in {monthName(wikiLead.peak.month)}</h2>
+      <p class="ch-dek">Global pageviews of cannabis articles in {wiki.length} Wikipedia language editions, each line on its own scale. Views are not geolocated and do not identify residents of a country or unique readers. Ticks mark coincident changes in a selected country's law; timing alone does not establish that a reform caused a peak.</p>
       <div class="ch-wiki" data-no-preview>
         {wiki.map((w) => (
           <a class="ch-wiki-cell" href={`${base}country/${w.c.slug}/#history`} data-wiki={w.c.slug}>
-            <span class="ch-wiki-name">{w.c.flag} {w.c.name} <small>{w.lang} · peak {(w.jump).toFixed(1)}× a normal month</small></span>
+            <span class="ch-wiki-name">{w.lang} Wikipedia <small>{w.c.name} law ticks · peak {(w.jump).toFixed(1)}× a normal month</small></span>
             <span class="ch-wiki-plot">
               <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                 <path class="ch-wiki-area" d={`${wikiPath(w)}L100,100L0,100Z`} />
@@ -1866,7 +1838,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
         ))}
       </div>
       <p class="ch-wiki-x"><span>2015</span><span>2020</span><span>{Math.floor(W1w)}</span></p>
-      <p class="ch-source">{WIKI.title}; people only, not bots. German is also read in Austria and Switzerland, Dutch in Belgium. Green ticks eased the law, red ones tightened it. <a href={`${base}sources/#dataset-wikipedia_views`}>About the dataset</a>.</p>
+      <p class="ch-source">{WIKI.title}; user-agent pageviews, excluding bots, worldwide for every edition. Language is not reader location. Green ticks eased the law, red ones tightened it. <a href={`${base}sources/#dataset-wikipedia_views`}>About the dataset</a>.</p>
       <p class="ch-more"><a href={`${base}history/kind/legalisation/`}>Every legalisation →</a> <a href={`${base}history/period/2020s/`}>The 2020s →</a></p>
     </section>
     {NEWS && newsRows.length > 0 && (
@@ -2046,9 +2018,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     }));
     // who gets punished
     document.querySelectorAll("[data-punish]").forEach((a) => card(a, () => {
-      const [name, rate, offences, year, users, prev] = D.punish[a.dataset.punish];
-      return `<b>${esc(name)}</b><span class="ch-tip-row">Use or possession offences, ${year}<em>${offences.toLocaleString("en-GB")}</em></span><span class="ch-tip-row">People who use cannabis<em>${users.toLocaleString("en-GB")}</em></span>`
-        + `<span class="ch-tip-row">Offences per 1,000 users<em>${rate}</em></span><span class="ch-tip-sub">${prev}% of adults used it in the past year. Cannabis only; not dealing</span><span class="ch-tip-go">Open its datasets →</span>`;
+      const [name, first, firstYear, last, lastYear, change] = D.punish[a.dataset.punish];
+      return `<b>${esc(name)}</b><span class="ch-tip-row">Records, ${firstYear}<em>${first.toLocaleString("en-GB")}</em></span><span class="ch-tip-row">Records, ${lastYear}<em>${last.toLocaleString("en-GB")}</em></span><span class="ch-tip-sub">Within-country change: ${change == null ? "not calculated" : change.toFixed(1) + "%"}. Offences or persons under national definitions; not a cross-country enforcement rank.</span>`;
     }));
     // THC for a euro: the line nearest the pointer, a country's or the middle one
     {
@@ -2084,7 +2055,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
           dot.style.top = `${(1 - Math.min(mg, Y1) / Y1) * 100}%`;
           seek.hidden = dot.hidden = false;
           hit.href = `${D.base}map/thc-potency-europe/`;
-          return `<b>${y} · the middle of ${n} countries</b><span class="ch-tip-row">THC a euro buys<em>${mg} mg</em></span><span class="ch-tip-row">THC in herb<em>${th}%</em></span><span class="ch-tip-row">Price of a gram<em>€${pr.toFixed(2)}</em></span><span class="ch-tip-go">Potency on the map →</span>`;
+          return `<b>${y} · median of ${n} matched countries</b><span class="ch-tip-row">THC a euro buys<em>${mg} mg</em></span><span class="ch-tip-row">THC in herb<em>${th}%</em></span><span class="ch-tip-row">Price of a gram<em>€${pr.toFixed(2)}</em></span><span class="ch-tip-go">Potency on the map →</span>`;
         }
         const [slug, name, pts] = best;
         lit = plot.querySelector(`.ch-thc-country[data-thc="${slug}"]`);
@@ -2121,8 +2092,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     }));
     // wastewater, with the country's years
     document.querySelectorAll("[data-sewage]").forEach((a) => card(a, () => {
-      const [name, mg, year, cities, score, tier, trend] = D.sewage[a.dataset.sewage];
-      return `<b>${esc(name)}</b><span class="ch-tip-row">THC-COOH, ${year}<em>${mg} mg</em></span><span class="ch-tip-sub">a day per 1,000 people, ${cities} ${cities === 1 ? "city" : "cities"}</span>`
+      const [name, mg, year, cities, score, tier, trend, population] = D.sewage[a.dataset.sewage];
+      return `<b>${esc(name)}</b><span class="ch-tip-row">THC-COOH, ${year}<em>${mg} mg</em></span><span class="ch-tip-sub">a day per 1,000 served; ${cities} sites, ${population.toLocaleString("en-GB")} people served. Sampled catchments, not national prevalence.</span>`
         + (trend.length > 1 ? `<span class="ch-tip-sub">${trend.map(([y, v]) => `${y}: ${Math.round(v)}`).join(" · ")}</span>` : "")
         + `<span class="ch-tip-row">Score today<em>${score} · ${esc(tier)}</em></span><span class="ch-tip-go">Open its datasets →</span>`;
     }));
@@ -2307,7 +2278,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
         const r = plot.getBoundingClientRect(), t = t0 + Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) * (t1 - t0);
         const row = rows.reduce((p, q) => (Math.abs(q[0] - t) < Math.abs(p[0] - t) ? q : p));
         const law = laws.filter((l) => Math.abs(l[0] - row[0]) <= 0.25);
-        return `<b>${esc(name)} · ${row[1]}</b><span class="ch-tip-row">Readers of “${esc(article)}”<em>${row[2].toLocaleString("en-GB")}</em></span><span class="ch-tip-sub">${esc(lang)} Wikipedia</span>`
+        return `<b>${esc(lang)} Wikipedia · ${row[1]}</b><span class="ch-tip-row">Views of “${esc(article)}”<em>${row[2].toLocaleString("en-GB")}</em></span><span class="ch-tip-sub">Worldwide pageviews; not geolocated. ${esc(name)} law ticks.</span>`
           + law.map((l) => `<span class="ch-tip-sub">${l[2] > 0 ? "Eased" : "Tightened"}: ${esc(l[1])}</span>`).join("") + `<span class="ch-tip-go">Open its history →</span>`;
       };
       card(a, html);
@@ -2348,8 +2319,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     // punish or treat
     document.querySelectorAll("[data-ptreat]").forEach((a) => card(a, () => {
       const [name, punish, treat, oy, ty, share, score, tier] = D.punishTreat[a.dataset.ptreat];
-      return `<b>${esc(name)}</b><span class="ch-tip-sub">per 1,000 people who use cannabis</span><span class="ch-tip-row">Offences recorded, ${oy}<em>${punish}</em></span><span class="ch-tip-row">Entering treatment for cannabis, ${ty}<em>${treat}</em></span>`
-        + `<span class="ch-tip-sub">${share}% of all who entered drug treatment came for cannabis</span><span class="ch-tip-row">Score<em>${score} · ${esc(tier)}</em></span><span class="ch-tip-go">Open its datasets →</span>`;
+      return `<b>${esc(name)}</b><span class="ch-tip-row">Police records, ${oy}<em>${punish.toLocaleString("en-GB")}</em></span><span class="ch-tip-row">Cannabis treatment entries, ${ty}<em>${treat.toLocaleString("en-GB")}</em></span><span class="ch-tip-sub">Separate counts with possible overlap; no punishment-to-care ratio.${a.dataset.ptreat === "se" ? " Sweden combines separate sources." : ""}</span>`;
     }));
 
     // in the news
