@@ -3,7 +3,8 @@
 import Base from "../../layouts/Base.astro";
 import UncommittedReload from "../../components/UncommittedReload.astro";
 import { commits, emptyGroups, reloadUncommitted, summaryOf } from "../../lib/gitlog.js";
-import { formatDate, places, SEGMENTS, segmentPoints } from "../../lib/countries.js";
+import { formatDate, places, changes, SEGMENTS, segmentPoints } from "../../lib/countries.js";
+import { cultureEntries } from "../../lib/culture.js";
 import { tierColor } from "../../lib/tiers.js";
 
 export function getStaticPaths() {
@@ -31,6 +32,10 @@ if (import.meta.env.DEV && c.local) {
 const g = c.groups;
 const CAP = 200; // longest list shown in full
 const placeUrl = (slug) => (places.some((p) => p.slug === slug.split("/")[0]) ? `${base}country/${slug}/` : null);
+// An old change can name a history or culture entry that has since been renamed or removed: it is
+// linked only while the page still exists, otherwise its title stands alone.
+const live = new Set([...changes.map((ch) => `history/${ch.id}/`), ...cultureEntries.map((e) => e.url)]);
+const pageUrl = (path) => (path && (live.has(path) || !/^(history|culture)\//.test(path)) ? `${base}${path}` : null);
 const label = (name) => name.replace(/\./g, " › ").replace(/_/g, " ");
 const scored = g.places.filter((p) => p.scores?.length);
 const edited = g.places.filter((p) => p.status === "changed" && !p.scores?.length && p.fields?.length);
@@ -78,7 +83,7 @@ const moves = g.places.filter((p) => p.scores?.length || (p.status === "added" &
           <>
             <h3 class="gl-h" id="gl-history-added">Added <span>{g.history.added.length}</span></h3>
             <ul class="gl-entries">
-              {g.history.added.slice(0, CAP).map((e) => <li class="gl-add"><a href={`${base}history/${e.id}/`}>{e.title}</a> <small>{e.date}</small></li>)}
+              {g.history.added.slice(0, CAP).map((e) => <li class="gl-add">{pageUrl(`history/${e.id}/`) ? <a href={pageUrl(`history/${e.id}/`)}>{e.title}</a> : e.title} <small>{e.date}</small></li>)}
               {g.history.added.length > CAP && <li class="gl-more">and {g.history.added.length - CAP} more</li>}
             </ul>
           </>
@@ -88,7 +93,7 @@ const moves = g.places.filter((p) => p.scores?.length || (p.status === "added" &
             <h3 class="gl-h" id="gl-history-edited">Edited <span>{g.history.changed.length}</span></h3>
             {g.history.changed.slice(0, CAP).map((e) => (
               <article class="gl-card">
-                <h4><a href={`${base}history/${e.id}/`}>{e.title}</a></h4>
+                <h4>{pageUrl(`history/${e.id}/`) ? <a href={pageUrl(`history/${e.id}/`)}>{e.title}</a> : e.title}</h4>
                 {e.fields.map((f) => <div class="gl-field"><span>{label(f.name)}</span><p class="gl-words">{f.parts.map(([k, t]) => k === "+" ? <ins>{t}</ins> : k === "-" ? <del>{t}</del> : t)}</p></div>)}
               </article>
             ))}
@@ -123,13 +128,13 @@ const moves = g.places.filter((p) => p.scores?.length || (p.status === "added" &
         <h2 class="d-h" id="gl-texts">Articles and atlas entries <span>{g.texts.length}</span></h2>
         {newTexts.length > 0 && (
           <ul class="gl-entries">
-            {newTexts.slice(0, CAP).map((t) => <li class={t.status === "added" ? "gl-add" : "gl-del"}>{t.url && t.status === "added" ? <a href={`${base}${t.url}`}>{t.title}</a> : t.title} <small>{t.kind} · {t.status} · {t.words} words</small></li>)}
+            {newTexts.slice(0, CAP).map((t) => <li class={t.status === "added" ? "gl-add" : "gl-del"}>{t.status === "added" && pageUrl(t.url) ? <a href={pageUrl(t.url)}>{t.title}</a> : t.title} <small>{t.kind} · {t.status} · {t.words} words</small></li>)}
             {newTexts.length > CAP && <li class="gl-more">and {newTexts.length - CAP} more</li>}
           </ul>
         )}
         {editedTexts.slice(0, CAP).map((t) => (
           <article class="gl-card">
-            <h4>{t.url ? <a href={`${base}${t.url}`}>{t.title}</a> : t.title} <small>{t.file}</small></h4>
+            <h4>{pageUrl(t.url) ? <a href={pageUrl(t.url)}>{t.title}</a> : t.title} <small>{t.file}</small></h4>
             {t.fields.map((f) => <div class="gl-field"><span>{label(f.name)}</span><p class="gl-words">{f.parts.map(([k, x]) => k === "+" ? <ins>{x}</ins> : k === "-" ? <del>{x}</del> : x)}</p></div>)}
           </article>
         ))}
