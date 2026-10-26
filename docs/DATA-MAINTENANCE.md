@@ -1646,3 +1646,13 @@ volume). Both are scoreless context entries; related links join the 1941, 1949,
 1965 and 1982 entries, and one article covers the 1965 extension. Today's scores
 are unchanged. The 1953, 1967 and 1968 amendments and the 1978 legal notices in
 the reprint's endnotes remain unrecovered.
+
+A [Bangladesh amendment-gap pass](research/history-bangladesh-amendments-2026-10-26.md)
+on 26 October 2026 adds the 2000 treatment/licensing and controlled-delivery
+changes and the 2002 investigation deadlines, with an article for each. The
+actual official consolidation and its amendment annotations were read; a UNODC
+page corroborates the 2000 enforcement technique. Dates retain the verified
+legislative years while original commencement clauses remain to be recovered.
+The 1990 event links the additions. Current scores, all inherited before-vectors
+and the profile are preserved; the wider capital-penalty chronology remains
+separate review work.
