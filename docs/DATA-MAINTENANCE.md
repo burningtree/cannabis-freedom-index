@@ -1754,3 +1754,12 @@ controls, 2026 Kasaï Oriental ban) against the primary French texts and
 records `unscored` reasons: industrial-only authorisations with no patient
 supply, an affirmative Article 33 dispensing ban, and one-province scope.
 Triage reports 1 scored, 0 open. No article: a reasons-only pass.
+
+A [Senegal triage pass](research/history-senegal-triage-2026-10-26.md) on
+26 October 2026 reviews the three open tightening entries against the 1997
+Code text (Articles 95–98 trafficking bands; Article 109 personal-use
+light band with exemption) and records `unscored` reasons: the 1987, 1997
+and 2007 changes move only trafficking-side or recodifying provisions
+while cannabis personal-use bands stay light. The 1987 DRI source link has
+rotted since the entry was checked. Triage reports 1 scored, 0 open. No
+article: a reasons-only pass.
