@@ -1755,6 +1755,15 @@ records `unscored` reasons: industrial-only authorisations with no patient
 supply, an affirmative Article 33 dispensing ban, and one-province scope.
 Triage reports 1 scored, 0 open. No article: a reasons-only pass.
 
+An [Egypt triage pass](research/history-egypt-triage-2026-10-26.md) on 26
+October 2026 reviews all eleven open entries — medieval enforcement
+actions, nineteenth-century prohibitions, the 1925 heroin/cocaine
+extension, the 1952 law, the 1989 death-penalty rewrite and the 1994
+eradication — and records `unscored` reasons: pre-1879 items cannot move
+segments under the checked anchor, later items move only non-cannabis,
+replacement, floor-level or enforcement-only levers. Triage reports 2
+scored, 0 open. No article: a reasons-only pass.
+
 A [Senegal triage pass](research/history-senegal-triage-2026-10-26.md) on
 26 October 2026 reviews the three open tightening entries against the 1997
 Code text (Articles 95–98 trafficking bands; Article 109 personal-use
