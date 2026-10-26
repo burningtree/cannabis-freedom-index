@@ -1747,3 +1747,10 @@ against the 1960 consolidation's replacement notes and the commencement
 history. The 2018 joint prosecution guideline was read in Dutch and
 corroborates the checked tolerance entries. No article: the modern arc
 already has peer coverage. Estimated first bans fall from 62 to 60.
+
+A [DR Congo triage pass](research/history-drcongo-triage-2026-10-26.md) on
+26 October 2026 reviews the three open items (2021 medical licensing, 2022
+controls, 2026 Kasaï Oriental ban) against the primary French texts and
+records `unscored` reasons: industrial-only authorisations with no patient
+supply, an affirmative Article 33 dispensing ban, and one-province scope.
+Triage reports 1 scored, 0 open. No article: a reasons-only pass.
