@@ -1679,3 +1679,9 @@ seed/hemp commencement, diversion, clubs and a stale homepage history fact. Seve
 entries record the verified developments; Ukraine's access step now dates first dispensing.
 Illinois and Louisiana state scores were reviewed without inserting state vectors into the
 national US chain. Profile/quick-answer regression checks guard the reported distinctions.
+
+A [Taiwan gap pass](research/history-taiwan-gap-2026-10-26.md) on 26 October
+2026 adds the 1973 treatment-exemption amendment and the 1992 de-martial-lawed
+rewrite, both read in full on Wikisource against the 1955 original. Unscored
+context: treatment exits widened and death penalties softened, cannabis ranges
+unchanged. One article covers the 1992 hinge. Today's scores are unchanged.
