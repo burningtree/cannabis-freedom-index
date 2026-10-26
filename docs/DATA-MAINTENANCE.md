@@ -1817,3 +1817,12 @@ coverage includes the article cross-reference and patient-access distinction.
 The same review resolves #180 by separating India's federal leaf-only bhang
 exclusion from state prohibitions and authorisations, including Maharashtra;
 licensed bhang supply in other states and national scores remain explicit.
+
+A [Seychelles early-history pass](research/history-seychelles-early-gap-2026-10-26.md)
+adds five records and two articles, reducing the largest recorded gap from
+108 years to 53. It covers the 1935 ordinance's documented foundation, the
+1949 extract-preparation amendment, 1982 cultivation/search rules, commencement
+of the replacement law in 1995 and the 2000 Francois cannabis ruling. The 1990
+entry now distinguishes enactment from commencement. Scores and existing vectors
+are preserved; original 1935 provisions, earlier sentencing schedules and the
+undated 1920s transit detention remain research targets.
