@@ -8,7 +8,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 
 | Book | Bibliography | Fully read / listed units | Partial | Indexed only | Applied targets | Illustrations | Local file |
 |---|---|---:|---:|---:|---:|---:|---|
-| [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 15 / 36 | 4 | 17 | 41 | 0 | matches recorded hash |
+| [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 15 / 36 | 4 | 17 | 42 | 0 | matches recorded hash |
 | [Cannabis: A History](#booth-cannabis-history-2003) | verified | 1 / 26 | 1 | 24 | 5 | 0 | matches recorded hash |
 | [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 6 | 3 | 11 | 0 | matches recorded hash |
 | [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 2 | 11 | 6 | 0 | matches recorded hash |
@@ -75,7 +75,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | The "Ganja Vision" in Jamaica | read | pp. 257–266 | articles/jamaica-ganja-vision-study-1975.md; changes.yaml#jamaica-ganja-vision-study-1975 | Complete chapter read, ending at printed p. 266 before the plates/part divider. Ten personal vision accounts within a selected sixty-man sample; other reports were hearsay. Vision-quest comparison is an analogy, not historical diffusion or shared religion. Do not import old universal pharmacological or ancient chronology claims. |
 | Cannabis sativa L. (Marihuana): VI. Variations in Marihuana Preparations and Usage — Chemical and Pharmacological Consequences | indexed_only | — | — | — |
 | Social and Medical Aspects of the Use of Cannabis in Brazil | indexed_only | — | — | — |
-| Sociocultural and Epidemiological Aspects of Hashish Use in Greece | selected_pages_read | pp. 303–317 | changes.yaml#greece-hashish-ban-1890; articles/greece-hashish-ban-1890.md; changes.yaml#greece-orchomenus-hashish-report-1887; changes.yaml#greece-asia-minor-refugees-1922; changes.yaml#greece-police-hashish-archives-1973 | Gives the 1890 measure as an Interior Ministry circular of 27 March 1890 (the site had followed Wikipedia's 'royal decree'). The 1932–1970 laws are summarised only; find the statutes. Pp. 318–326 (archive statistics) unread. |
+| Sociocultural and Epidemiological Aspects of Hashish Use in Greece | selected_pages_read | pp. 303–317 | changes.yaml#greece-hashish-ban-1890; articles/greece-hashish-ban-1890.md; changes.yaml#greece-orchomenus-hashish-report-1887; changes.yaml#greece-asia-minor-refugees-1922; changes.yaml#greece-police-hashish-archives-1973; articles/greece-police-hashish-archives-1973.md | Gives the 1890 measure as an Interior Ministry circular of 27 March 1890 (the site had followed Wikipedia's 'royal decree'). The 1932–1970 laws are summarised only; find the statutes. Pp. 318–326 (archive statistics) unread. |
 | Marihuana and Genetic Studies in Colombia: The Problem in the City and in the Country | indexed_only | — | — | — |
 | Cannabis Usage in Pakistan: A Pilot Study of Long Term Effects on Social Status and Physical Health | indexed_only | — | — | — |
 | The Significance of Marihuana in a Small Agricultural Community in Jamaica | indexed_only | — | — | — |
