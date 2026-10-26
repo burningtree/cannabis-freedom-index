@@ -1712,3 +1712,10 @@ in force 1 January 2006, softening penalties with personal-use and
 disclosure remission (easing 9→11). No scored 1974 Soviet step is asserted
 for the Yugoslav successors; the 2009 narrowing stays context. One article
 covers the 2003 criminalisation. Today's scores are unchanged.
+
+An [Estonia gap pass](research/history-estonia-gap-2026-10-26.md) on 26
+October 2026 adds the scored 1974 Soviet possession step (20→11) on the
+same convention as Latvia, Lithuania, Russia, Armenia and Belarus, and
+writes the article for the checked 2002 misdemeanour reform (11→19). The
+1974 `after` state is forced by the checked 2002 `before`, so no checked
+entry changed. Today's scores are unchanged.
