@@ -1698,3 +1698,9 @@ was read in a Russian reprint. Two articles cover the 1987 decree and the
 2003 tier. The LSSR code text stays unrecovered. Today's scores are
 unchanged.
 
+
+A [Suriname gap pass](research/history-suriname-gap-2026-10-26.md) on 26 October 2026 adds
+seven entries across 1918–1999 and two articles on the 1955 law and 1999 commencement.
+The largest dated gap falls from 69 to 33 years. The 1908 import-ban narrative and 1998
+passage/commencement distinction are corrected. The research note records why the existing
+early score aggregate still needs the full earlier legislation; no precise split is invented.
