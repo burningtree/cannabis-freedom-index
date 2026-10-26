@@ -4,18 +4,21 @@ written: 2026-10-11
 sources:
   - title: "Wikipedia — La Guardia Committee"
     url: https://en.wikipedia.org/wiki/La_Guardia_Committee
+  - title: Scientific American — The Science behind the DEA's Long War on Marijuana (19 April 2016)
+    url: https://www.scientificamerican.com/article/the-science-behind-the-dea-s-long-war-on-marijuana/
+    locator: 1944 La Guardia Committee report for the New York Academy of Medicine as the first official body to question prohibition; no physical addiction, gateway or crime link; Anslinger's dismissal and prohibition's continuation.
 ---
 
 Two years after the United States taxed marijuana out of legal existence, the mayor of
 New York asked doctors to find out whether what Congress had been told was true. Their
-answer, in 1944, was that most of it was not.
+answer, in 1944 — from the first official body to question prohibition in America — was that most of it was not.[@1,2]
 
 ## The commission
 
 Fiorello La Guardia, a strong opponent of the
 [Marihuana Tax Act](/history/us-marihuana-tax-act-1937/), appointed a commission in
 1939. The New York Academy of Medicine prepared its report, which was published in
-1944 after more than five years of research.
+1944 after more than five years of research.[@1,2]
 
 ## What it found
 
@@ -35,9 +38,9 @@ adequacy.
 ## The reaction
 
 Harry Anslinger, head of the Federal Bureau of Narcotics, called the report
-"unscientific" and denounced the mayor, the Academy and the doctors. He ordered that no
+"unscientific" and denounced the mayor, the Academy and the doctors.[@2] He ordered that no
 further marijuana research proceed without his personal permission, and had the
-American Medical Association prepare a study reflecting the government's position.
+American Medical Association prepare a study reflecting the government's position.[@1]
 
 Nothing in the law changed. Congress added mandatory minimum sentences in
 [1951](/history/us-boggs-act-1951/) and raised them in

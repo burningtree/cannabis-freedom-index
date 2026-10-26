@@ -4,9 +4,15 @@ written: 2026-10-11
 sources:
   - title: "Wikipedia — Cannabis in Sri Lanka"
     url: https://en.wikipedia.org/wiki/Cannabis_in_Sri_Lanka
+  - title: LankaLaw — Ayurveda Act (Acts Nos. 31 of 1961, 5 of 1962)
+    url: https://lankalaw.net/wp-content/uploads/2025/02/1961Y0V0C31A.html
+    locator: Modifications to the Poisons, Opium and Dangerous Drugs Ordinance bringing registered ayurvedic practitioners within its practitioner and pharmacist definitions; Board-granted opium certificates issued by the Government Agent.
+  - title: Asia IP Law — The cannabis industry in the IP arena
+    url: https://asiaiplaw.com/article/the-cannabis-industry-in-the-ip-arena?model=europe
+    locator: Ayurveda Act exception for manufacture; Drugs Corporation as sole legal source mostly from police raids; only ayurvedic physicians may sell; seized cannabis often old; 2017 plantation plan.
 ---
 
-In Sri Lanka the only legal cannabis is the cannabis the police have already seized.
+In Sri Lanka the only legal cannabis is the cannabis the police have already seized.[@3]
 
 ## From licence to ban
 
@@ -23,16 +29,18 @@ of 1935, much amended, is still the basis of the law.
 ## The exception
 
 The Ayurveda Act of 1961, amended in 1962, allowed Ayurvedic physicians to obtain
-opium and cannabis for their medicines. A 1984 amendment exempted lawful extracts and
-tinctures of the hemp plant from the criminal provisions.
+opium and cannabis for their medicines: it brought registered practitioners within the
+Ordinance's practitioner definitions and set up Board-granted certificates issued by the
+Government Agent.[@1,2] A 1984 amendment exempted lawful extracts and
+tinctures of the hemp plant from the criminal provisions.[@1]
 
 The result is a closed loop:
 
-- about 16,000 Ayurvedic practitioners are the only people allowed to sell cannabis;
-- their only legal source is the Ayurvedic Drugs Corporation, under the health ministry;
-- the corporation gets most of its cannabis from police raids on illegal shipments.
+- about 16,000 Ayurvedic practitioners are the only people allowed to sell cannabis;[@3]
+- their only legal source is the Ayurvedic Drugs Corporation, under the health ministry;[@3]
+- the corporation gets most of its cannabis from police raids on illegal shipments.[@3]
 
-By the time it reaches the practitioners it is often old and of poor quality.
+By the time it reaches the practitioners it is often old and of poor quality.[@3]
 
 ## Attempts to fix the supply
 

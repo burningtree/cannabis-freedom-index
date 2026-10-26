@@ -6,10 +6,13 @@ sources:
     url: https://en.wikipedia.org/wiki/2014_Washington,_D.C.,_Initiative_71
   - title: Harris Sliwoski — Is D.C.'s cannabis "gifting economy" in trouble? (11 April 2022)
     url: https://harris-sliwoski.com/cannalawblog/is-d-c-s-cannabis-gifting-economy-in-trouble/
+  - title: Ballotpedia — Washington D.C. Marijuana Legalization, Initiative 71 (November 2014)
+    url: https://ballotpedia.org/Washington_D.C._Marijuana_Legalization,_Initiative_71_(November_2014)
+    locator: Timeline from January 2014 proposal through 57,000 signatures, August certification, 4 November vote at 64.87 per cent and 3 December certification; December budget clause; February 26 2015 effect.
 ---
 
-Voters in Washington, DC approved Initiative 71 on 4 November 2014, and it took
-effect at 12:01 a.m. on 26 February 2015. Adults aged 21 and over could possess
+Voters in Washington, DC approved Initiative 71 on 4 November 2014 with 64.87 per cent of the vote, and it took
+effect at 12:01 a.m. on 26 February 2015.[@1,3] Adults aged 21 and over could possess
 and grow cannabis. They could also, in the measure's own words, "transfer without
 payment (but not sell)" up to an ounce to another adult. Selling stayed illegal,
 and Congress made sure it would stay that way.
@@ -20,13 +23,13 @@ The District is not a state. Its laws go to Congress for review, and its budget
 passes through federal appropriations. In December 2014, weeks after the vote,
 Congress passed a spending bill with a rider by Representative Andy Harris of
 Maryland. It barred the District from using funds to "enact any law, rule, or
-regulation to legalize" recreational use of Schedule I drugs.
+regulation to legalize" recreational use of Schedule I drugs.[@1,3]
 
 Delegate Eleanor Holmes Norton said negotiators had deliberately left out the
 words "carry out". The mayor and council treated the initiative as
 self-enacting and let it take effect after the 30-day review, although Harris
 threatened officials with prosecution. The rider was renewed in later budgets,
-so the District could never license or tax a cannabis shop.
+so the District could never license or tax a cannabis shop.[@1]
 
 ## The gift economy
 
@@ -45,7 +48,7 @@ The arrangement worked because the line it relied on was thin. In April 2022 the
 council chairman, Phil Mendelson, tried to pass emergency legislation to close
 gifting businesses. His bill described dozens of shops selling untested
 cannabis, often grown outside the District, near schools, without paying the
-fees and taxes of licensed medical dispensaries. It failed by one vote. The
+fees and taxes of licensed medical dispensaries. It failed by one vote.[@2] The
 District's later rules for
 [medical-cannabis licensing](/history/us-dc-medical-licensing-emergency-2026/)
 are a separate story.

@@ -4,10 +4,16 @@ written: 2026-10-11
 sources:
   - title: "Wikipedia — Cannabis in Switzerland"
     url: https://en.wikipedia.org/wiki/Cannabis_in_Switzerland
+  - title: "Verein Legalize it! — Sort of legal: the small amount of cannabis"
+    url: https://hanflegal.ch/wiki/en/thc_recht/quasilegal
+    locator: Narcotics Act article 19b minor quantity of 10 grams; 2017 ruling that unpunished means unpunished; Federal Supreme Court decision 6B_911/2021 of 19 June 2023 that a minor amount may not be confiscated.
+  - title: LegalClarity — Is Weed Legal in Zurich? Rules, Limits and Penalties (August 2026)
+    url: https://legalclarity.org/is-weed-legal-in-zurich-swiss-cannabis-laws-explained/
+    locator: Up to 10 grams for personal use draws no criminal penalty; consumption draws a CHF 100 fine; Federal Supreme Court strengthened protection in June 2023.
 ---
 
-Switzerland has not legalised cannabis. But since July 2023 a Swiss adult carrying up
-to ten grams commits no offence, and the police may not take it away.
+Switzerland has not legalised cannabis.[@1] But since June 2023 a Swiss adult carrying up
+to ten grams commits no offence, and the police may not take it away.[@2,3]
 
 ## How the line was drawn
 
@@ -18,21 +24,21 @@ favour.
 
 The opening came through a fine. Parliament
 [replaced prosecution](/history/switzerland-fine-2013/) for less than ten grams with a
-flat penalty of 100 francs.
+flat penalty of 100 francs.[@2,3]
 
 ## Two rulings
 
 The Federal Supreme Court then read that rule closely.
 
 In [2017](/history/switzerland-ten-grams-2017/) it held that the fine attaches to
-consumption. Merely possessing under ten grams, without using it, cannot be fined.
+consumption. Merely possessing under ten grams, without using it, cannot be fined.[@2]
 
-In July 2023 it went a step further. If possession of up to ten grams for one's own
-use is not punishable, the court held, the police have no legal basis to confiscate
-it. The cannabis stays with its owner.
+In June 2023 it went a step further. If possession of up to ten grams for one's own
+use is not punishable, the court held in decision 6B_911/2021, the police have no legal basis to confiscate
+it. The cannabis stays with its owner.[@2,3]
 
 Consumption is still an offence. Someone caught smoking is fined and loses what they
-have.
+have.[@2,3]
 
 ## The result
 
@@ -47,7 +53,7 @@ Switzerland has been testing supply directly. A 2021 amendment allowed scientifi
 trials of legal sales; Basel's began in January 2023 with 374 participants, and
 Zurich's followed, planned for about 7,500 people until 2028. In February 2025 a
 parliamentary committee adopted a draft law to legalise adult use, with three plants at
-home and non-profit sales, by 14 votes to 9.
+home and non-profit sales, by 14 votes to 9.[@1]
 
 In the index the 2023 ruling is recorded for [Switzerland](/country/ch/) without a new
 score step: it confirmed and completed a freedom the 2017 ruling had already created.

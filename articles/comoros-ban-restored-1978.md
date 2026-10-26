@@ -4,16 +4,24 @@ written: 2026-10-11
 sources:
   - title: "Wikipedia — Cannabis in the Comoros"
     url: https://en.wikipedia.org/wiki/Cannabis_in_the_Comoros
+  - type: journal
+    title: The Mercenary Position
+    authors: [Howard W. French]
+    container: Transition
+    year: 1997
+    url: https://doi.org/10.2307/2935448
+    locator: "Issue 73, pp. 110-121. Soilih executed when Denard's forces invaded to reinstate Abdallah."
 ---
 
 The Comoros' three years of legal cannabis ended the way they began, with a change of
-government.
+government.[@1]
 
 ## The reversal
 
 Ali Soilih, who had [lifted the ban](/history/comoros-legalisation-1975/) as president,
-was overthrown and killed in 1978. The government that replaced him reversed his
-decrees. Cannabis, legal since January 1975, was prohibited again in May 1978.
+was overthrown and killed in 1978 — executed when Denard's forces invaded to reinstate
+Abdallah.[@1,2] The government that replaced him reversed his
+decrees. Cannabis, legal since January 1975, was prohibited again in May 1978.[@1]
 
 ## A reform tied to one man
 

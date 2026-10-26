@@ -6,31 +6,36 @@ sources:
     url: https://en.wikipedia.org/wiki/Ravin_v._State
   - title: "Wikipedia — Legal history of cannabis in the United States"
     url: https://en.wikipedia.org/wiki/Legal_history_of_cannabis_in_the_United_States
+  - title: Alaska Legislature — Committee bill file SJUD16 SB 18 (1989–1990, 16th Legislature)
+    url: https://www.akleg.gov/pdf/billfiles/Committee%20Bill%20Files/1989-1990%20-%2016th%20Legislature/SJUD/SJUD16%20SB%2018.pdf
+    locator: "Ravin v. State, 537 P.2d 494 (Alaska 1975): privacy Art. I sec. 22 prevailed; no adequate justification for the intrusion; the Ravin burden on the state."
 ---
 
 One court in the United States has ever found a constitutional right to have cannabis
-at home. It sits in Alaska, and its ruling of 1975 has outlived every attempt to
-undo it.
+at home.[@1,2,3] It sits in Alaska, and its ruling of 1975 has outlived every attempt to
+undo it.[@1]
 
 ## A lawyer gets himself arrested
 
 Irwin Ravin was an attorney. To challenge the law he arranged his own arrest in
 Anchorage, refusing to sign a traffic ticket while carrying marijuana. He said later
-that the fight had always been about privacy.
+that the fight had always been about privacy.[@1]
 
 ## The ruling
 
 The Alaska Supreme Court decided *Ravin v. State* in May 1975, unanimously, in an
-opinion by Justice Rabinowitz. It held that the privacy clause of the Alaska
-constitution protects an adult's use and possession of a small amount of marijuana in
-the home for personal use.
+opinion by Justice Rabinowitz.[@1] It held that the privacy clause of the Alaska
+constitution, article I section 22, protects an adult's use and possession of a small amount of marijuana in
+the home for personal use — the legislature's own files describe the privacy right as prevailing over the
+state's interest.[@1,3]
 
 The burden was on the state. It "must demonstrate a need based on proof that the
 public health or welfare will in fact suffer", the court said, and "mere scientific
-doubts will not suffice".
+doubts will not suffice". Alaska lawmakers later called this the Ravin burden: without
+an adequate justification for intruding on the home, the ban could not stand.[@1,3]
 
 It is the first, and so far the only, decision by a state or federal court to
-recognise a constitutional privacy right covering cannabis.
+recognise a constitutional privacy right covering cannabis.[@1]
 
 ## Voters and legislators push back
 

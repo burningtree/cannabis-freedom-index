@@ -2,15 +2,18 @@
 sources:
   - title: Wikipedia (Portuguese) — Verão da Lata
     url: https://pt.wikipedia.org/wiki/Ver%C3%A3o_da_Lata
+  - title: BBC World Service, Witness History — Brazil's Marijuana Summer (1 January 2019)
+    url: https://www.bbc.co.uk/programmes/w3cswspb
+    locator: September 1987 tins off Rio and São Paulo; thousands of tins of 1.5 kilos of high-quality marijuana; origin mystery; books, fashion, poems, films and songs.
 ---
 
-On 25 September 1987 fishermen at Maricá, on the coast of Rio de Janeiro state, pulled 18 sealed tins from the sea. Each held about a kilo and a half of cannabis. They took them to the military police. Over the following months thousands more came ashore, and Brazil named the season after them: the Verão da Lata, the summer of the tin.
+On 25 September 1987 fishermen at Maricá, on the coast of Rio de Janeiro state, pulled 18 sealed tins from the sea. Each held about a kilo and a half of cannabis. They took them to the military police.[@1] Over the following months thousands more came ashore — thousands of tins, each with 1.5 kilos of high-quality marijuana — and Brazil named the season after them: the Verão da Lata, the summer of the tin.[@1,2]
 
 ## A cargo thrown overboard
 
-The tins came from a ship. According to the account on record, the Solana Star had left Panama, loaded in Australia and was bound for the United States. Fearing that the Brazilian navy had seen it, the crew threw the cargo into the sea, and the ship later put in on the Brazilian coast for repairs.
+The tins came from a ship. According to the account on record, the Solana Star had left Panama, loaded in Australia and was bound for the United States. Fearing that the Brazilian navy had seen it, the crew threw the cargo into the sea, and the ship later put in on the Brazilian coast for repairs.[@1]
 
-The investigation and the charges fell on the crew of a vessel named Tunamar, which American intelligence had been watching. Of its seven crewmen only one was caught: the cook, Stephen Skelton. He spent about a year in detention in Brazil and was then extradited to the United States. The size of the cargo rests on his testimony.
+The investigation and the charges fell on the crew of a vessel named Tunamar, which American intelligence had been watching. Of its seven crewmen only one was caught: the cook, Stephen Skelton. He spent about a year in detention in Brazil and was then extradited to the United States. The size of the cargo rests on his testimony.[@1]
 
 ## How much there was
 
@@ -20,9 +23,9 @@ The investigation and the charges fell on the crew of a vessel named Tunamar, wh
 | Recovered by police | about 2,543 | about 3,650 kg |
 | Never accounted for | about 10,000 | — |
 
-Each tin held between 1 and 1.5 kg. They were found along a very long stretch of coast, from Cabo Frio in Rio de Janeiro state down to Praia do Cassino in Rio Grande do Sul. Three states published figures for what their police collected; Santa Catarina and Paraná did not.
+Each tin held between 1 and 1.5 kg.[@1,2] They were found along a very long stretch of coast, from Cabo Frio in Rio de Janeiro state down to Praia do Cassino in Rio Grande do Sul. Three states published figures for what their police collected; Santa Catarina and Paraná did not.[@1]
 
-The police assumed that the missing tins had been found by civilians, picked up by traffickers, sunk, or carried by the sea to other countries.
+The police assumed that the missing tins had been found by civilians, picked up by traffickers, sunk, or carried by the sea to other countries.[@1]
 
 ## The rush to the beaches
 

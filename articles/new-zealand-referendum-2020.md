@@ -4,12 +4,15 @@ written: 2026-10-14
 sources:
   - title: Wikipedia — 2020 New Zealand cannabis referendum
     url: https://en.wikipedia.org/wiki/2020_New_Zealand_cannabis_referendum
+  - title: International Drug Policy Consortium — New Zealand narrowly votes no to legalising cannabis in referendum (6 November 2020)
+    url: https://idpc.net/news/2020/11/new-zealand-narrowly-votes-no-to-legalising-cannabis-in-referendum
+    locator: 48.4 per cent yes against 50.7 per cent no, a 67,662-vote gap in 2.9 million cast with specials counted 6 November; non-binding vote; bill scope of licensed shops, age 20 and home plants.
 ---
 
 On 17 October 2020 New Zealanders voted, alongside a general election, on a single question: "Do you
 support the proposed Cannabis Legalisation and Control Bill?" When the special votes had been
-counted, 50.7 per cent had said no and 48.4 per cent yes. No country has come closer to legalising
-cannabis by popular vote.
+counted, 50.7 per cent had said no and 48.4 per cent yes, a gap of 67,662 votes in 2.9 million cast.[@2] No country has come closer to legalising
+cannabis by popular vote.[@1]
 
 ## A promise to the Greens
 
@@ -17,16 +20,16 @@ Cannabis had been illegal in New Zealand since [1927](/history/new-zealand-dange
 and neither of the two main parties had tried to change that. The referendum came from the Green
 Party, which won a commitment to hold one as part of its support agreement with Labour after the
 2017 election. The vote was not legally binding, and a yes would still have needed a vote in
-parliament. But voters were asked about a complete draft law, published in May 2020.
+parliament.[@2] But voters were asked about a complete draft law, published in May 2020.
 
 | The bill would have | |
 |---|---|
-| Set the age | 20 to buy or possess |
-| Allowed adults to buy | Up to 14 g of dried cannabis a day |
-| Allowed home growing | Two plants a person, four a household |
-| Limited sales to | Licensed physical shops, no online sales and no advertising |
-| Created | A Cannabis Regulatory Authority, with a goal of reducing use over time |
-| Taxed | With an excise duty and a harm-reduction levy |
+| Set the age | 20 to buy or possess [@2] |
+| Allowed adults to buy | Up to 14 g of dried cannabis a day [@1] |
+| Allowed home growing | Two plants a person, four a household [@2] |
+| Limited sales to | Licensed shops, no online sales and no advertising [@2] |
+| Created | A Cannabis Regulatory Authority, with a goal of reducing use over time [@1] |
+| Taxed | With an excise duty and a harm-reduction levy [@1] |
 
 Medicinal cannabis, legal under a [scheme opened in April 2020](/history/new-zealand-medicinal-scheme-2020/),
 was not on the ballot.
@@ -42,7 +45,7 @@ month before the vote, and a clear split by age.
 
 Much attention went to the prime minister, Jacinda Ardern, then at the height of her popularity
 after the pandemic response. She endorsed a yes in the euthanasia referendum held the same day, but
-would not say how she would vote on cannabis, saying she wanted voters to decide.
+would not say how she would vote on cannabis, saying she wanted voters to decide.[@1]
 
 ## The count
 

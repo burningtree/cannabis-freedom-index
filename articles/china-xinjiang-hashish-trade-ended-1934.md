@@ -4,10 +4,16 @@ written: 2026-10-11
 sources:
   - title: "Wikipedia — Cannabis in China"
     url: https://en.wikipedia.org/wiki/Cannabis_in_China
+  - type: journal
+    title: "Manuscripts, Material Culture, and Ephemera of the Silk Route: Artifacts of Early Twentieth Century Ladakhi Trade Between Central and South Asia"
+    authors: [Jacqueline H. Fewkes, Abdul Nasir Khan]
+    container: Asian Highlands Perspectives
+    year: 2016
+    locator: "Vol. 40, pp. 75-126. Legal trade of cheras from Turkestan/Xinjiang through Ladakh; British regulation and taxation of the drug trade; disruption through instability and closing borders."
 ---
 
 Until 1934 hashish was a legal export of China. It left Xinjiang by the tens of
-thousands of kilograms a year, bound for British India, and paid a tariff on the way.
+thousands of kilograms a year, bound for British India, and paid a tariff on the way — part of a legal, high-value drug trade through Ladakh that the British carefully regulated and taxed.[@1,2]
 
 ## The trade
 

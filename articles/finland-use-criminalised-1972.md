@@ -4,20 +4,29 @@ written: 2026-10-11
 sources:
   - title: "Wikipedia — Cannabis in Finland"
     url: https://en.wikipedia.org/wiki/Cannabis_in_Finland
+  - type: chapter
+    title: "Drug Use, Public Debate and Increasing Pressures for a Drug Policy Reform in Finland"
+    authors: [Pekka Hakkarainen, Heini Kainulainen]
+    container: "Retreat or Entrenchment? Drug Policies in the Nordic Countries at a Crossroads"
+    publisher: Stockholm University Press
+    year: 2021
+    url: https://doi.org/10.16993/bbo.c
+    locator: Government bill did not criminalise use; Legal Affairs Committee recommendation; Grand Committee decision after drawing lots; 92-80 defeat; use defined as a narcotics offence.
 ---
 
 Finland made using drugs a crime by twelve votes, against the wishes of its own
-government, and has not changed its mind since.
+government, and has not changed its mind since.[@2]
 
 ## The ban and the vote
 
 Cannabis has been [prohibited in Finland](/history/finland-ban-1966/) since 1966.
 Whether the user should be punished was a separate question. In 1971 parliament voted
 92 to 80 to make personal use illegal, an outcome that went against the government's
-position. The matter was close enough that the Grand Committee's stance had been
-settled by drawing lots after a tied vote. The new rule took effect in 1972.
+position: the bill had not proposed making use an offence, but the Legal Affairs Committee
+recommended criminalisation, the Commerce Committee backed the government, and the
+Grand Committee sided with criminalisation after drawing lots.[@2] The new rule took effect in 1972.[@1,2]
 
-Few countries had gone that far. Most punished possession and left use itself alone.
+Few countries had gone that far. Most punished possession and left use itself alone.[@1]
 
 ## Fines instead of trials
 
