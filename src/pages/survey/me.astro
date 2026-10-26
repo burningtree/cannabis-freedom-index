@@ -61,7 +61,7 @@ const regions = Object.fromEntries(countries.filter((c) => subunitsOf(c.id)).map
       if (q.options) return [].concat(v).map((x) => esc(q.options[x] ?? x)).join(", ");
       return esc(v);
     }
-    const where = (i) => (i.relays > 0 ? `<span class="sv-chip ok">${i.relays} relay${i.relays === 1 ? "" : "s"}</span>` : `<span class="sv-chip">This browser</span>`);
+    const where = (i) => (i.deleting ? `<span class="sv-chip">Deletion pending</span>` : i.relays > 0 ? `<span class="sv-chip ok">${i.relays} relay${i.relays === 1 ? "" : "s"}</span>` : `<span class="sv-chip">This browser</span>`);
 
     // what this browser stored for other editions (each edition has its own entry in storage)
     function earlier() {
@@ -93,9 +93,10 @@ const regions = Object.fromEntries(countries.filter((c) => subunitsOf(c.id)).map
         <h2 class="sv-d-title">${title}</h2>
         <p class="sv-meta">${where(i)} · changed ${day(i.updated)}</p>
         ${i.past ? `<p class="sv-small">From the ${i.past} edition, which is closed. It is kept here to read.</p>`
+          : i.deleting ? `<p class="sv-small">Deleting this was not confirmed: ${i.deleting.reached} of the ${i.deleting.of} relays that held it accepted the deletion. It stays listed here until a deletion goes through.</p><p class="sv-actions"><button type="button" class="go solid" data-do="delete" data-id="${esc(i.id)}">Try deleting again</button></p>`
           : `<p class="sv-actions"><a class="go solid" href="../take/${i.type === "response" ? "#edit" : `#${KIND[i.type].hash}-${esc(i.id)}`}">Edit ${KIND[i.type].this} →</a> <button type="button" class="go" data-do="delete" data-id="${esc(i.id)}">Delete</button></p>`}
         <dl class="sv-d-list">${Object.entries(i.answers).map(([id, v]) => `<div><dt>${esc(Q[id]?.text ?? id)}</dt><dd>${words(id, v, i.answers)}</dd></div>`).join("")}</dl>
-        ${r ? `<p class="sv-event"><span>Event</span> <code>${r.id}</code>${i.relays > 0 ? ` <a href="${r.url}" target="_blank" rel="noopener noreferrer">Open on njump ↗</a>` : ` <small>not sent yet</small>`}</p>` : ""}`;
+        ${r ? `<p class="sv-event"><span>Event</span> <code>${esc(r.id)}</code>${i.relays > 0 ? ` <a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">Open on njump ↗</a>` : ` <small>not sent yet</small>`}</p>` : ""}`;
       if (!drawer.open) drawer.showModal();
       drawerBody.scrollTop = 0;
     }
@@ -117,7 +118,7 @@ const regions = Object.fromEntries(countries.filter((c) => subunitsOf(c.id)).map
         // holds are listed under the current one, newest first, to read but not to change.
         const all = [...store.items, ...earlier()];
         const reports = all.filter((i) => i.type === "response"), places = all.filter((i) => i.type === "observation"), prices = all.filter((i) => i.type === "price");
-        const unsent = store.items.filter((i) => !i.relays).length;
+        const unsent = store.items.filter((i) => !i.relays && !i.deleting).length;
         // one table row per part; a click opens its answers in the drawer
         const n = (i) => Object.keys(i.answers).length;
         shown.clear();
@@ -159,16 +160,28 @@ const regions = Object.fromEntries(countries.filter((c) => subunitsOf(c.id)).map
     }
     const say = (text) => { const m = document.getElementById("meMsg") ?? status; m.hidden = false; m.textContent = text; };
 
+    // A part is forgotten here only once its deletion is confirmed (client.deletionOutcome); one that
+    // no relay, or too few, accepted stays listed as a pending deletion, to try again.
     async function remove(ids) {
       const store = client.mine(cfg), gone = store.items.filter((i) => ids.includes(i.id));
-      if (cfg.open && gone.some((i) => i.relays > 0)) {
+      const online = gone.filter((i) => i.relays > 0);
+      const done = gone.filter((i) => !(i.relays > 0)).map((i) => i.id);
+      let pending = [];
+      if (online.length && cfg.open) {
         say("Deleting on the relays…");
         // an empty replacement overwrites each part; the deletion request is for relays that honour it
-        await client.publish(cfg, [...gone.map((i) => client.sign(cfg, i, true)), client.deletion(cfg, gone.map((i) => i.event))]);
-      }
-      client.remember(cfg, { items: store.items.filter((i) => !ids.includes(i.id)) });
+        const sent = await client.publish(cfg, [...online.map((i) => client.sign(cfg, i, true)), client.deletion(cfg, online.map((i) => i.event))]);
+        const outcome = client.deletionOutcome(online, sent);
+        done.push(...outcome.done);
+        pending = outcome.pending;
+      } else pending = online.map((i) => ({ id: i.id, reached: 0, of: i.relays }));
+      const waiting = new Map(pending.map((p) => [p.id, p]));
+      client.remember(cfg, { items: store.items.filter((i) => !done.includes(i.id)).map((i) => (waiting.has(i.id) ? { ...i, deleting: { reached: waiting.get(i.id).reached, of: waiting.get(i.id).of } } : i)) });
       draw();
-      say(`Deleted ${gone.length} part${gone.length === 1 ? "" : "s"}.`);
+      const parts = (n) => `${n} part${n === 1 ? "" : "s"}`;
+      if (!pending.length) say(`Deleted ${parts(done.length)}. Relays that honour deletion requests remove ${done.length === 1 ? "it" : "them"}; one that does not may keep an encrypted copy.`);
+      else if (!done.length) say(`Not deleted: no relay confirmed the deletion of ${parts(pending.length)}. Nothing was removed from this list; try again later.`);
+      else say(`Deleted ${parts(done.length)}. ${parts(pending.length)} could not be confirmed on every relay that held ${pending.length === 1 ? "it" : "them"} and ${pending.length === 1 ? "stays" : "stay"} listed, marked, so you can try again.`);
     }
 
     root.addEventListener("click", (e) => { const r = e.target.closest("[data-open]"); if (r) open(r.dataset.open); });
@@ -177,10 +190,11 @@ const regions = Object.fromEntries(countries.filter((c) => subunitsOf(c.id)).map
       if (!b) return;
       const act = b.dataset.do;
       try {
-        if (act === "delete") { if (confirm("Delete this for good? It cannot be brought back.")) { drawer.close(); await remove([b.dataset.id]); } }
-        else if (act === "delete-all") { if (confirm("Delete everything you submitted? It cannot be brought back.")) await remove(client.mine(cfg).items.map((i) => i.id)); }
+        if (act === "delete") { if (confirm("Delete this? It is replaced with an empty version and every relay is asked to remove it. Relays that honour the request remove it; one that does not may keep an encrypted copy.")) { drawer.close(); await remove([b.dataset.id]); } }
+        else if (act === "delete-all") { if (confirm("Delete everything you submitted? Each part is replaced with an empty version and every relay is asked to remove it. Relays that honour the request remove them; one that does not may keep encrypted copies.")) await remove(client.mine(cfg).items.map((i) => i.id)); }
         else if (act === "send") {
-          const store = client.mine(cfg), waiting = store.items.filter((i) => !i.relays);
+          // never send again a part that is being deleted
+          const store = client.mine(cfg), waiting = store.items.filter((i) => !i.relays && !i.deleting);
           say("Sending…");
           // sign again, so the message carries today's date and the open survey's settings
           for (const i of waiting) { i.event = client.sign(cfg, i); i.updated = i.event.created_at; }
@@ -192,8 +206,10 @@ const regions = Object.fromEntries(countries.filter((c) => subunitsOf(c.id)).map
         } else if (act === "sync") {
           say("Asking the relays…");
           const found = await client.fetchMine(cfg), store = client.mine(cfg);
-          // what the relays hold wins over an older local copy; unsent local parts are kept
-          const merged = [...found, ...store.items.filter((i) => !i.relays && !found.some((f) => f.id === i.id))];
+          // what the relays hold wins over an older local copy; unsent local parts are kept, and so is
+          // the mark of a deletion still pending (a part no relay holds any more is simply gone)
+          const pendingOf = new Map(store.items.filter((i) => i.deleting).map((i) => [i.id, i.deleting]));
+          const merged = [...found.map((f) => (pendingOf.has(f.id) ? { ...f, deleting: pendingOf.get(f.id) } : f)), ...store.items.filter((i) => !i.relays && !found.some((f) => f.id === i.id))];
           client.remember(cfg, { items: merged });
           draw();
           say(`The relays hold ${found.length} part${found.length === 1 ? "" : "s"} under your key.`);

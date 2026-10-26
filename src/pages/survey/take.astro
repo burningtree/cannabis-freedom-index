@@ -78,7 +78,7 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         <ul class="sv-points">
           <li>The first time, your browser makes a random key and keeps it in its own storage. It is a pseudonym: it carries no name, email or account, and nobody can tell whose it is.</li>
           <li>Your survey, each place report and each price are signed with that key and encrypted so that only you and this project can read them. They are sent to public <a href="https://nostr.com/" target="_blank" rel="noopener noreferrer">Nostr</a> relays, which store them. A relay, like any server, can see the address you connect from; use a VPN or Tor if that matters to you.</li>
-          <li>Because the key stays in this browser, you can come back to <a href={`${base}survey/me/`}>your submissions</a> to change or delete them. Everything signed with one key belongs together, so your places and prices are linked to your survey answers, though not to your name.</li>
+          <li>Because the key stays in this browser, you can come back to <a href={`${base}survey/me/`}>your submissions</a> to change or delete them. Deleting replaces each message with an empty one and asks every relay to remove it; most do, but a relay that does not may keep an encrypted copy. Everything signed with one key belongs together, so your places and prices are linked to your survey answers, though not to your name.</li>
           <li>If you clear this browser's data without backing the key up, your answers stay in the survey and you can no longer change them.</li>
         </ul>
         <p><button type="submit" class="go solid" id="svSubmit">Submit survey <span aria-hidden="true">→</span></button></p>
@@ -284,7 +284,8 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
       try { localStorage.setItem(DRAFT, JSON.stringify({ adult: document.getElementById("svAdult").checked, answers: personal(), ...blocks })); } catch {}
     }
     // What was submitted from this browser before, if anything (written by survey-client.js).
-    function submitted() { try { return JSON.parse(localStorage.getItem(`cfi-survey-${cfg.edition}-mine`) ?? "null")?.items ?? []; } catch { return []; } }
+    // A part whose deletion is still pending (see /survey/me/) is not brought back into the form.
+    function submitted() { try { return (JSON.parse(localStorage.getItem(`cfi-survey-${cfg.edition}-mine`) ?? "null")?.items ?? []).filter((i) => !i.deleting); } catch { return []; } }
     function restore() {
       try {
         let d = JSON.parse(localStorage.getItem(DRAFT) ?? "null");
@@ -325,11 +326,15 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         const live = client.effective(cfg);
         const now = Math.floor(Date.now() / 1000);
         const items = [{ type: "response", id: "response", answers: personal() }, ...allReports()];
-        // reports that were submitted before and are no longer in the form are removed
-        const gone = client.mine(live).items.filter((old) => !items.some((i) => i.id === old.id));
+        // Reports that were sent before and are no longer in the form are deleted. Until a relay
+        // confirms it, each stays stored as a pending deletion (client.deletionOutcome), so it is
+        // not forgotten on the strength of a request nobody took; /survey/me/ can try it again.
+        const before = client.mine(live).items;
+        const gone = before.filter((old) => old.relays > 0 && !items.some((i) => i.id === old.id));
+        const pendingAll = gone.map((g) => ({ ...g, deleting: { reached: 0, of: g.relays } }));
         for (const i of items) { i.event = client.sign(live, i); i.updated = now; i.relays = 0; }
         const removals = gone.map((old) => client.sign(live, old, true));
-        client.remember(live, { items });
+        client.remember(live, { items: [...items, ...pendingAll] });
         try { localStorage.removeItem(DRAFT); } catch {}
         const parts = `${items.length} part${items.length === 1 ? "" : "s"}`;
         if (!live.open) {
@@ -340,12 +345,16 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         result.textContent = "Sending…";
         const sent = await client.publish(live, [...items.map((i) => i.event), ...removals, ...(gone.length ? [client.deletion(live, gone.map((g) => g.event))] : [])]);
         items.forEach((i, k) => (i.relays = sent[k].relays));
-        client.remember(live, { items });
+        const { pending } = client.deletionOutcome(gone, sent.slice(items.length));
+        client.remember(live, { items: [...items, ...pendingAll.filter((g) => pending.some((p) => p.id === g.id)).map((g) => ({ ...g, deleting: { reached: pending.find((p) => p.id === g.id).reached, of: g.relays } }))] });
         if (items.every((i) => i.relays > 0)) {
           result.innerHTML = `<p><strong>Thank you.</strong> Your ${parts} ${items.length === 1 ? "is" : "are"} stored on ${Math.min(...items.map((i) => i.relays))} of ${live.relays.length} relay${live.relays.length === 1 ? "" : "s"}. You can change or delete what you sent at any time from this browser.</p><p><a class="go solid" href="../me/">Your submissions →</a> <a class="go" href="../">See the results</a></p>`;
           button.hidden = true;
         } else {
-          result.innerHTML = `<p><strong>Not sent.</strong> No relay accepted ${items.filter((i) => !i.relays).length} of the ${parts}${sent.find((r) => r.error) ? ` (${sent.find((r) => r.error).error})` : ""}. They are saved in this browser; try again here or from <a href="../me/">your submissions</a>.</p>`;
+          // The relay's reason is its own free text: set as text, never as HTML.
+          result.innerHTML = `<p><strong>Not sent.</strong> No relay accepted ${items.filter((i) => !i.relays).length} of the ${parts}<span data-reason></span>. They are saved in this browser; try again here or from <a href="../me/">your submissions</a>.</p>`;
+          const reason = client.relayReason(sent);
+          if (reason) result.querySelector("[data-reason]").textContent = ` (the relay said: ${reason})`;
           button.disabled = false;
         }
       } catch (err) {

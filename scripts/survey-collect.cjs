@@ -14,7 +14,7 @@ const fs = require("fs");
 const path = require("path");
 const { verifyEvent } = require("nostr-tools/pure");
 const { decrypt, getConversationKey } = require("nostr-tools/nip44");
-const { ROOT, loadSurvey, loadRegions, clean, aggregate } = require("./survey-lib.cjs");
+const { ROOT, loadSurvey, loadRegions, clean, aggregate, collect, MAX_REPORTS } = require("./survey-lib.cjs");
 
 const EDITION = 2026;
 const args = process.argv.slice(2);
@@ -40,41 +40,24 @@ async function fetchEvents() {
 
 (async () => {
   const responses = [], observations = [], prices = [], texts = [];
-  const dropped = { invalid: 0, superseded: 0, deleted: 0, unreadable: 0, other: 0 };
-  // Each part of a submission is a replaceable event: only the newest version under one key and
-  // one `d` tag counts, whatever older copies a relay still returns.
-  const newest = new Map();
-  for (const ev of await fetchEvents()) {
-    const d = ev.tags?.find((t) => t[0] === "d")?.[1];
-    if (ev.kind !== kind || !d?.startsWith(`${topic}:`) || !ev.tags.some((t) => t[0] === "t" && t[1] === topic) || !verifyEvent(ev)) { dropped.invalid++; continue; }
-    const slot = `${ev.pubkey}:${d}`, had = newest.get(slot);
-    if (had) dropped.superseded++;
-    if (!had || had.created_at < ev.created_at) newest.set(slot, ev);
-  }
-  for (const ev of newest.values()) {
-    let payload;
-    try {
-      const plain = ev.content.startsWith("{") ? ev.content : decrypt(ev.content, getConversationKey(secret, ev.pubkey));
-      payload = JSON.parse(plain);
-    } catch { dropped.unreadable++; continue; }
-    if (payload?.deleted) { dropped.deleted++; continue; } // the respondent removed this part
-    if (payload?.edition !== EDITION || typeof payload.answers !== "object") { dropped.other++; continue; }
-    if (payload.type === "response") {
-      const r = clean(survey.all, payload.answers, countries);
-      // the two questions without which an answer cannot be placed in any group
-      if (!r.residence || !r.relation) { dropped.other++; continue; }
-      responses.push(r);
-    } else if (payload.type === "observation") {
-      const o = clean(survey.territory.questions, payload.answers, countries);
-      if (!o.country || !o.tie) { dropped.other++; continue; }
-      observations.push(o);
-    } else if (payload.type === "price") {
-      const pr = clean(survey.prices.questions, payload.answers, countries);
-      if (!pr.p_country || !pr.p_price) { dropped.other++; continue; }
-      prices.push(pr);
-    } else { dropped.other++; continue; }
-    for (const q of [...survey.all, ...survey.territory.questions, ...survey.prices.questions].filter((q) => q.type === "text")) if (payload.answers[q.id]) texts.push([q.id, String(payload.answers[q.id]).slice(0, 4000)]);
-  }
+  // which events count, and as what: one survey per key, reports in their own slots (survey-lib.cjs)
+  const picked = collect(await fetchEvents(), {
+    kind, topic, edition: EDITION, verify: verifyEvent,
+    open: (ev) => JSON.parse(ev.content.startsWith("{") ? ev.content : decrypt(ev.content, getConversationKey(secret, ev.pubkey))),
+  });
+  const { dropped } = picked;
+  const keep = (list, questions, needed, payload) => {
+    const x = clean(questions, payload.answers, countries);
+    if (needed.some((id) => !x[id])) { dropped.other++; return; }
+    list.push(x);
+    for (const q of questions.filter((q) => q.type === "text")) if (payload.answers[q.id]) texts.push([q.id, String(payload.answers[q.id]).slice(0, 4000)]);
+  };
+  // the questions without which an answer cannot be placed in any group, or a report in any country
+  for (const p of picked.response) keep(responses, survey.all, ["residence", "relation"], p);
+  for (const p of picked.observation) keep(observations, survey.territory.questions, ["country", "tie"], p);
+  for (const p of picked.price) keep(prices, survey.prices.questions, ["p_country", "p_price"], p);
+  if (dropped.mismatched) console.warn(`warning: ${dropped.mismatched} parts claimed a type their slot does not allow (a second "survey" under one key, for instance) and were not counted`);
+  if (dropped.excess) console.warn(`warning: ${dropped.excess} reports beyond ${MAX_REPORTS} of a kind under one key were not counted`);
   const min = args.includes("--min") ? Math.max(1, +args[args.indexOf("--min") + 1] || 1) : null;
   const out = aggregate(survey, responses, observations, prices, countries, { mock: false, generated: new Date().toISOString().slice(0, 10) }, min ? { segment: min, territory: min } : {});
   const file = args.includes("--out") ? args[args.indexOf("--out") + 1] : path.join(ROOT, "survey", `results-${EDITION}.json`);

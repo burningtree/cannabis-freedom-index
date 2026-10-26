@@ -164,4 +164,55 @@ function aggregate(survey, responses, observations, prices, countries, extra = {
   };
 }
 
-module.exports = { ROOT, loadSurvey, loadRegions, clean, aggregate };
+// ── Which events count, and as what ──
+// Every part of a submission is a replaceable event under its own `d` tag, and the tag decides
+// what the part is: `<topic>:response` is the one personal survey of a key, `<topic>:place:<id>`
+// and `<topic>:price:<id>` its reports (the id as the browser makes it, 12 hex characters). The
+// decrypted content must say the same type as its slot. So a key is one respondent, however many
+// events it signs: another slot claiming to be a survey is dropped, not counted as a second person.
+// A key can file many reports, but past MAX_REPORTS of a kind only the newest count; the rest are
+// counted as excess, for the person running the collection to look at.
+const REPORT_ID = /^[0-9a-f]{12}$/;
+const MAX_REPORTS = 25;
+const SLOT_TYPE = { place: "observation", price: "price" };
+function slotType(topic, d) {
+  if (d === `${topic}:response`) return "response";
+  if (!d?.startsWith(`${topic}:`)) return null;
+  const [slot, id, ...rest] = d.slice(topic.length + 1).split(":");
+  return SLOT_TYPE[slot] && REPORT_ID.test(id ?? "") && !rest.length ? SLOT_TYPE[slot] : null;
+}
+// events: as fetched from the relays. verify(ev): its signature holds. open(ev): its decrypted
+// payload (throws when it cannot be read). Returns the payloads to count, by type, and what was
+// dropped and why.
+function collect(events, { kind, topic, edition, verify, open }) {
+  const dropped = { invalid: 0, superseded: 0, deleted: 0, unreadable: 0, mismatched: 0, excess: 0, other: 0 };
+  // only the newest version under one key and one `d` tag counts, whatever older copies a relay keeps
+  const newest = new Map();
+  for (const ev of events) {
+    const d = ev.tags?.find((t) => t[0] === "d")?.[1];
+    if (ev.kind !== kind || !slotType(topic, d) || !ev.tags.some((t) => t[0] === "t" && t[1] === topic) || !verify(ev)) { dropped.invalid++; continue; }
+    const slot = `${ev.pubkey}:${d}`, had = newest.get(slot);
+    if (had) dropped.superseded++;
+    if (!had || had.created_at < ev.created_at) newest.set(slot, ev);
+  }
+  const out = { response: [], observation: [], price: [] };
+  const reports = new Map(); // key:type → [{ created_at, payload }]
+  for (const ev of newest.values()) {
+    const type = slotType(topic, ev.tags.find((t) => t[0] === "d")[1]);
+    let payload;
+    try { payload = open(ev); } catch { dropped.unreadable++; continue; }
+    if (payload?.deleted) { dropped.deleted++; continue; } // the respondent removed this part
+    if (payload?.edition !== edition || typeof payload.answers !== "object" || payload.answers === null) { dropped.other++; continue; }
+    if (payload.type !== type) { dropped.mismatched++; continue; }
+    if (type === "response") out.response.push(payload);
+    else { const k = `${ev.pubkey}:${type}`; (reports.get(k) ?? reports.set(k, []).get(k)).push({ created_at: ev.created_at, payload }); }
+  }
+  for (const [k, list] of reports) {
+    list.sort((a, b) => b.created_at - a.created_at);
+    dropped.excess += Math.max(0, list.length - MAX_REPORTS);
+    for (const { payload } of list.slice(0, MAX_REPORTS)) out[k.split(":")[1]].push(payload);
+  }
+  return { ...out, dropped };
+}
+
+module.exports = { ROOT, loadSurvey, loadRegions, clean, aggregate, collect, slotType, MAX_REPORTS };

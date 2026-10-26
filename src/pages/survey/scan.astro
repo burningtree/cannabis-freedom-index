@@ -71,11 +71,11 @@ const base = import.meta.env.BASE_URL;
         const tint = (pk) => `hsl(${parseInt(pk.slice(0, 6), 16) % 360} 55% 55%)`;
         $("scanEvents").innerHTML = events.map((e) => `<tr${e.pubkey === mine ? ' class="sv-own"' : ""}>
             <td class="mono">${when(e.created_at)}</td>
-            <td class="mono"><span class="sv-dot" style="background:${tint(e.pubkey)}"></span><span title="${e.npub}">${e.npub.slice(0, 12)}…${e.npub.slice(-4)}</span>${e.pubkey === mine ? ' <small>you</small>' : ""}</td>
+            <td class="mono"><span class="sv-dot" style="background:${tint(e.pubkey)}"></span><span title="${esc(e.npub)}">${esc(e.npub.slice(0, 12))}…${esc(e.npub.slice(-4))}</span>${e.pubkey === mine ? ' <small>you</small>' : ""}</td>
             <td>${esc(PART[e.part] ?? e.part)}</td>
             <td class="num">${e.encrypted ? `${e.bytes.toLocaleString("en-GB")} B` : '<span class="sv-bad">not encrypted</span>'}</td>
             <td class="num">${e.relays.length}/${relays.length}</td>
-            <td class="mono"><a href="${e.url}" target="_blank" rel="noopener noreferrer" title="${e.id}">${e.id.slice(0, 10)}… ↗</a></td>
+            <td class="mono"><a href="${esc(e.url)}" target="_blank" rel="noopener noreferrer" title="${esc(e.id)}">${esc(e.id.slice(0, 10))}… ↗</a></td>
           </tr>`).join("");
       } catch (err) {
         note.hidden = false;

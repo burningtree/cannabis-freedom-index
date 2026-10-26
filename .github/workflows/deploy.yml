@@ -37,6 +37,8 @@ jobs:
       - run: npm run answers:test
       # the facts earlier issues corrected, which a later rewrite must not lose
       - run: npm run history:test
+      # the survey: relay text never as HTML, deletions confirmed, one respondent per key
+      - run: npm run survey:test
       # The social preview images (one per page) take minutes to draw and rarely change. Each is
       # kept under a hash of its own content, so restoring the folder redraws only what is new.
       - uses: actions/cache@v4

@@ -103,6 +103,30 @@ export async function publish(cfg, events) {
     }));
   } finally { pool.close(cfg.relays); }
 }
+// A relay's reason for refusing an event is free text written by the relay (NIP-01), not by this
+// site: shown only as text (never as HTML), on one line and short.
+export const relayReason = (sent) => {
+  const text = sent.find((r) => r.error)?.error;
+  return text ? String(text).replace(/[\u0000-\u001f\u007f]+/g, " ").trim().slice(0, 160) : null;
+};
+
+// Deleting: an empty replacement is signed for each part, and published with one deletion request
+// (NIP-09). A part counts as deleted only when its replacement reached at least as many relays as
+// the part was stored on; a part that was never sent has nothing to delete there. Every other part
+// stays, marked as a pending deletion, so it can be tried again: nothing is forgotten on the
+// strength of a request that no relay took. Relays may still keep older copies, which stay
+// encrypted; a deletion request is a request, and the page says so.
+// gone: the parts to delete; sent: publish()'s results, the replacements in the same order first.
+export function deletionOutcome(gone, sent) {
+  const done = [], pending = [];
+  gone.forEach((i, k) => {
+    const reached = i.relays > 0 ? sent[k]?.relays ?? 0 : 0;
+    if (!(i.relays > 0) || reached >= i.relays) done.push(i.id);
+    else pending.push({ id: i.id, reached, of: i.relays });
+  });
+  return { done, pending };
+}
+
 // What the relays hold under this browser's key, decrypted: the newest version of each part, and
 // on how many relays that version sits. Each relay is asked by itself, so that one slow or
 // unreachable relay neither hides the others nor inflates the count.
