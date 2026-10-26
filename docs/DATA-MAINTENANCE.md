@@ -687,6 +687,12 @@ node scripts/data-status.cjs chain de     # one country's full timeline
   commencement notice or statutory instrument; if the law took effect in stages, date the scored
   entry by the stage that changes what people may do, and mention the earlier dates in its
   description.
+- **History is what has happened: never date an entry in the future.** A law adopted now that
+  applies later is entered at its adoption or entry into force, unscored, with the date it applies
+  in its description ("applies from 1 January 2027"); when that day comes and it changes what
+  people may do, a scored entry follows, dated then. The EU's hemp-leaf tea limit was once dated on
+  its application day, months ahead, and sat at the top of the history. `npm run history:test`
+  fails on any entry dated after the day it runs.
 - **Never state a whole region's law in one country's profile.** "The model is prohibited
   throughout the European Union" sat in 13 profiles, copied from a 2018–2019 study, and was
   false once Malta and Germany licensed associations. Say what the country's own law does; date

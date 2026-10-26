@@ -335,7 +335,8 @@ test("2026 backfill records the licences, bills and delays without moving scores
   assert.equal(mo.before, undefined);
   assert.match(mo.description, /12 November/);
   assert.equal(tea.country, undefined);
-  assert.equal(tea.date, "2027-01-01");
+  // dated at entry into force; the limits apply from 1 January 2027, as the description says
+  assert.equal(tea.date, "2026-08-18");
   assert.match(tea.description, /1 January 2027/);
   assert.match(tea.description, /40 mg\/kg/);
   assert.match(tea.unscored, /member state/);
@@ -955,4 +956,12 @@ test("Cambodia's 2012 custodial penalty correction preserves its earlier score (
   assert.equal(scoreAt('kh', 2012).enforcement, 1);
   const profile = y.load(fs.readFileSync('countries/kh.yaml', 'utf8')).scores;
   assert.deepEqual(scoreAt('kh', 2026), profile);
+});
+
+test("no history entry is dated in the future: history is what has happened", () => {
+  const all = y.load(fs.readFileSync("changes.yaml", "utf8"));
+  // a day's slack, as the date of a commit is its author's local day
+  const tomorrow = new Date(Date.now() + 864e5).toISOString().slice(0, 10);
+  const ahead = all.filter((e) => String(e.date) > tomorrow).map((e) => `${e.id} (${e.date})`);
+  assert.deepEqual(ahead, [], "date a law that applies later by its adoption or entry into force; see docs/DATA-MAINTENANCE.md");
 });
