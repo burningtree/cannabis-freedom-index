@@ -1,28 +1,42 @@
 ---
-model: muse-spark-1.3
-written: 2026-10-26
+model: opus-5.5
+written: 2026-10-13
 sources:
-  - title: Wikipedia — Drug policy of the Soviet Union
-    locator: 1974 decree criminalised possession without intent to sell, up to three years
-    url: https://en.wikipedia.org/wiki/Drug_policy_of_the_Soviet_Union
-  - title: Constitutional Court of Georgia — Beka Tsikarishvili v. the Parliament of Georgia, Judgment N1/4/592 (24 October 2015)
-    locator: Claimant's 69 grams and challenge to 7-to-14 years for personal-use possession; operative holding declaring the 7-to-15-year wording unconstitutional for up to 70 grams; dissenting opinion recorded
+  - title: "Constitutional Court of Georgia — Judgment N1/4/592, Beka Tsikarishvili v. the Parliament of Georgia (24 October 2015)"
     url: https://www.constcourt.ge/en/judicial-acts?legal=1043
-  - title: Wikipedia — Cannabis in Georgia (country)
-    locator: December 2016 ruling on imprisonment for use; 30 July 2018 consumption ruling and abolished fines
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Georgia_(country)
 ---
 
-In 2015, a Georgian man caught with 69 grams of marijuana faced seven to fifteen years in prison — and talked the Constitutional Court into striking the sentence down. Beka Tsikarishvili's case did not ask for legalisation. It asked whether locking someone up for a personal stash was a constitutionally tolerable punishment. The answer redrew Georgian drug law.
+Beka Tsikarishvili was accused of buying and possessing 69 grams of dried marijuana. Under article 260(2) of Georgia's Criminal Code that was a "large quantity", and the penalty was imprisonment for seven years or more. On 5 May 2014 he lodged a complaint with the Constitutional Court. The First Chamber gave judgment on 24 October 2015.
 
-## Sixty-nine grams and fifteen years
+## The question
 
-Tsikarishvili had been charged under Article 260(2) of the Criminal Code, which punished purchase and possession of dried marijuana in large quantities with seven to fifteen years' imprisonment. He did not dispute that his 69 grams were illegal, nor did he demand general decriminalisation — his claim said so expressly. His argument was narrower: for possession for personal use, with no purpose of sale, a multi-year prison term was grossly disproportionate. The provision dated from the Soviet inheritance — possession without intent to sell had been a crime since the [1974 union decree](/history/georgia-soviet-possession-crime-1974/) — hardened by post-independence sentencing.
+The complaint did not ask the court to legalise anything. It challenged the words that set the prison term, under article 17(2) of the Constitution, which prohibits torture and cruel, inhuman or degrading punishment. While the case was pending, Parliament cut the penalty for the same conduct to five to eight years. The court held that it could still rule, because the new wording repeated the substance of the old.
 
-## The court agrees, with a dissent
+## The reasoning
 
-On 24 October 2015 the court upheld the claim. The wording imposing seven to fifteen years for personal-use possession of up to 70 grams, the judgment held, violated the constitutional ban on inhuman and degrading punishment. The ruling was final and unappealable, though not unanimous — a dissenting opinion is recorded alongside it. The score moved from 9 to 14 on the strength of that single holding: prison was off the table for personal amounts.
+The court said that imprisonment is not in itself inhuman, but a clearly disproportionate sentence can be. It then looked at whom the act endangers.
 
-## The decade it opened
+- Using marijuana "might have negative effect on human health", but the harm is lighter than that of the so-called strong drugs.
+- Punishing a person for an act that can endanger only their own health is "aimless".
+- No inevitable link between marijuana and other crimes had been proved.
+- The state may set criminal liability where the quantity makes distribution objectively inevitable, but 69 grams "cannot a priori be considered" an amount not meant for personal use.
 
-Tsikarishvili became the first in a sequence. In December 2016 the court voided imprisonment for marijuana use itself; in November 2017 it ended criminal penalties for consumption; and on 30 July 2018 it abolished even the administrative fines, holding that consumption is protected by the right to free personality. Georgia became the first former communist state with legal recreational use — until parliament reversed course in 2025, bringing prison back for possession over five grams. That reversal is a separate entry; the decade between belongs to a 69-gram stash and the man who refused to serve fifteen years for it. The [Georgia profile](/country/ge/) follows the line to the present.
+Two sentences carry the argument. "A human shall not be an instrument of criminal policy and a tool for fight against crime." And the state may not punish someone "only for deterring others from committing the same act".
+
+## The ruling
+
+| Point | Content |
+|---|---|
+| What was struck down | imprisonment as a punishment for buying and possessing, for personal use, dried marijuana in the disputed quantity, "up to 70 grams" |
+| Constitutional basis | article 17(2) |
+| Effect | in force from its announcement; final, with no appeal |
+
+Judge Merab Turava dissented in part. He agreed that the penalty was disproportionate but thought the court should have struck down only severely disproportionate terms, not imprisonment of any length.
+
+## What it left alone
+
+Buying and possessing marijuana stayed a crime; only prison was removed as the answer to it for amounts up to 70 grams. Use, growing and larger quantities were outside the case. The court dealt with those in later judgments, on [use in 2017](/history/georgia-consumption-2017/) and [again in 2018](/history/georgia-constitutional-court-2018/).
+
+## Why the index moved
+
+Possession rises from 1 to 2: holding up to 70 grams for oneself is still an offence, but it can no longer lead to prison. Enforcement rises from 1 to 2 for the same reason. Nothing else changes. The total moves from 9 to 14.

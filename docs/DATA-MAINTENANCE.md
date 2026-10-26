@@ -1729,7 +1729,7 @@ in all five session articles. Today's scores are unchanged.
 
 A [Georgia gap pass](research/history-georgia-gap-2026-10-26.md) on 26
 October 2026 adds the scored 1974 Soviet possession step (20→9) on the
-same convention, and writes the article for the checked 2015 Tsikarishvili
-judgment (9→14), read in full on the Constitutional Court's site. The 1974
-`after` state is forced by the checked 2015 `before`, so no checked entry
-changed. Today's scores are unchanged.
+same convention; the 1974 `after` state is forced by the checked 2015
+`before`, so no checked entry changed. The 2015 judgment text was read in
+full but its pre-existing peer article was left untouched. Today's scores
+are unchanged.
