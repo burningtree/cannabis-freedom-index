@@ -1608,3 +1608,13 @@ commencement dates; the 1994 use ceiling is corrected from eight to ten years.
 An undated amendment slip in the 1932 annual volume is kept separate from the
 original law. Existing score snapshots and the current profile are preserved
 pending reconstruction of the earlier aggregate 1914 step.
+
+A [Vietnam criminal-code pass](research/history-vietnam-codes-2026-10-26.md)
+on 26 October 2026 adds the 1986 organising-use provision and the replacement
+code operating from July 2000. Two new articles and a rewritten 1989 article
+connect the statutes. The 1997 event now uses its confirmed 22 May commencement
+and explains that its use offence required prior education and compulsory
+treatment. Current capital cannabis sale penalties require enforcement 0 under
+the existing rubric; the profile and three later historical before-vectors are
+corrected together, taking the displayed current score from 5 to 3. Other score
+dimensions and the unresolved pre-1968 reconstruction remain unchanged.

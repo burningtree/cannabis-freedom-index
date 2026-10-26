@@ -1,43 +1,63 @@
 ---
-model: opus-5.5
-written: 2026-10-13
+model: gpt-6
+written: '2026-10-26'
 sources:
-  - title: "Vietnam National Assembly — Penal Code amendment of 28 December 1989, reproduced by Caselaw Vietnam"
-    url: https://caselaw.vn/van-ban-phap-luat/116245-luat-hinh-su-sua-doi-so-30-lct-hdnn8-ngay-28-12-1989-cua-quoc-hoi-van-ban-het-hieu-luc
-  - title: "Law and World — The changes in drug laws to apply the death penalty for drug-related offences in Vietnam"
-    url: https://lawandworld.ge/index.php/law/article/view/572
+  - type: law
+    title: Penal Code amendment of 28 December 1989, original-text reproduction
+    authors:
+      - National Assembly of Vietnam
+    year: 1989
+    locator: 'Article 2(3), inserting Article 96a: basic, aggravated and particularly serious drug offences'
+    url: https://vanbanphapluat.co/bo-luat-hinh-su-1989-sua-doi-30-lct-hdnn8
+  - type: law
+    title: National legal database — 1989 Penal Code amendment
+    authors:
+      - National Assembly of Vietnam
+    year: 1989
+    locator: 'Legislative metadata: adopted 28 December 1989; effective 2 January 1990'
+    url: https://vbpl.vn/botaichinh/Pages/vbpq-toanvan.aspx?ItemID=2082
+  - type: law
+    title: Penal Code 1985, original text reproduced by Luat Minh Khue
+    authors:
+      - National Assembly of Vietnam
+    year: 1985
+    locator: 'Article 203; commencement metadata: 1 January 1986'
+    url: https://luatminhkhue.vn/van-ban/bo-luat-hinh-su-nam-1985.aspx
+  - type: law
+    title: Penal Code amendment adopted 10 May 1997, government original RTF
+    authors:
+      - National Assembly of Vietnam
+    year: 1997
+    locator: 'Article 2: Articles 185a, 185c–185e and 185l; Article 5 replaces Articles 96a and 203'
+    url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2006/07/3420_l57qh.rtf
+  - type: law
+    title: Penal Code 1999, English translation reproduced by LuatVietnam
+    authors:
+      - National Assembly of Vietnam
+    year: 1999
+    locator: >-
+      Articles 192–194 and 199: cultivation, production, possession/transport/trade/appropriation
+      and use
+    url: >-
+      https://english.luatvietnam.vn/penal-code-no-15-1999-qh10-dated-december-21-1999-of-the-national-assembly-10166-doc1.html
 ---
 
-On 28 December 1989 Vietnam adopted an amendment to its Criminal Code of 1985. New Article 96a combined unlawful manufacture, possession, sale and transport of drugs in one provision. The basic sentence was two to seven years; particularly serious cases could receive twelve to twenty years, life imprisonment or death. The reproduced law's legislative metadata gives 2 January 1990 as its commencement date. The amendment introduced a dedicated capital drug offence.
+Vietnam added a drug offence carrying a possible death sentence when its 1989 criminal-law amendment took effect on 2 January 1990.[@1,2] Unlawful manufacture, possession, sale and transport were grouped together, with two to seven years in prison as the basic punishment.[@1] Particularly serious cases could bring twelve to twenty years, life imprisonment or death.[@1]
 
-## From one article to seven
+## Organising drug use already carried prison terms
 
-The provision grew through the 1990s.
+The [1985 criminal code](/history/vietnam-organising-drug-use-1986/) had already punished people who organised the use of narcotics in any form.[@3] Its basic sentence was six months to five years; serious consequences or dangerous repeat offending raised that to three to ten years.[@3]
 
-| Date | Change |
-|---|---|
-| 28 December 1989; effective 2 January 1990 | Article 96a combines four forms of drug conduct; death is available for particularly serious cases |
-| 10 May 1997 | Article 96a is split into separate provisions, all keeping death; the study read here counts seven drug articles carrying death, among 44 in the code |
-| 1999 | a new Criminal Code narrows the death penalty to 29 articles; storing, transporting, trading and appropriating drugs are merged into one article |
-| 2009 | using drugs stops being a crime and becomes an administrative matter |
-| 2015 | a new code, in force from 1 January 2018, keeps death for three drug crimes |
+That rule targeted organising other people's drug use.[@3] The amendment added a separate route to prosecution covering the manufacture and movement of drugs, as well as keeping and selling them.[@1] Parliament adopted it on 28 December 1989, shortly before its January commencement.[@1,2]
 
-## The death penalty under the 2015 code
+## One offence covered several kinds of conduct
 
-The 2015 code retained death for illegally manufacturing, transporting and trading in narcotics, while removing it for possession and appropriation. This describes that code's original scheme, before subsequent amendments. Its thresholds included:
+The new offence placed a person keeping drugs and a person selling them within the same statutory penalty ladder.[@1] The basic two-to-seven-year term rose to five to fifteen years for organised or professional offending, abuse of an official position or an organisation's name, large quantities or value, large illicit profits, or dangerous repeat offending.[@1]
 
-- 5 kg or more of cannabis resin, opium resin or coca paste;
-- 75 kg or more of cannabis leaves, roots, branches, flowers or fruit;
-- 100 g or more of heroin, cocaine or methamphetamine.
+The highest band applied to cases described as particularly serious.[@1] Within that band, the court could choose a fixed prison term, life imprisonment or death.[@1] The amendment's wording supplied no cannabis-specific weight table: seriousness and aggravating circumstances determined the available bands in this text.[@1]
 
-These provisions included cannabis, at 75 kg of plant material against 100 g of heroin.
+## Later laws named cannabis quantities
 
-## How much it is used
+The [May 1997 amendment](/history/vietnam-use-criminalised-1997/) replaced the combined offence with separate drug offences and expressly listed cannabis resin and cannabis leaves, flowers and fruit.[@4] Possession of at least five kilograms of resin or seventy-five kilograms of the listed plant material entered a band carrying life imprisonment or death.[@4]
 
-The figures are fragmentary. The study cites a count of 22,058 people sentenced for drug offences, without giving the period: 288 to death, 255 to life imprisonment, 2,292 to between ten and twenty years, and the rest to shorter terms. Between 1993 and 2010 about 2,600 people were sentenced to death in Vietnam for all crimes together. Data on the death penalty has been treated as a state secret since the 2000s.
-
-The study itself is not consistent on every point. It says in one place that the 1985 code had no capital drug offences and in another that it had seven, and it gives two different dates for the end of the death penalty for organising drug use. For the 1989 provision, the statutory text reproduced by Caselaw Vietnam supplies the wording and penalty bands directly.
-
-## Why the index moved
-
-The index moved [Vietnam](/country/vn/) from 8 to 6 with the [1989 amendment](/history/vietnam-death-penalty-1989/). Enforcement falls from 2 to 1: the ceiling for a drug offence became death. Possession stays at 1, and cultivation and sharing were already at 0.
+The replacement [code operating from 2000](/history/vietnam-cannabis-penalties-2000/) brought possession, transport, trade and appropriation back together.[@5] It retained those cannabis quantity thresholds, while allowing twenty years as an alternative to life or death in the highest band.[@5] These successive laws show how [Vietnam's](/country/vn/) broad capital drug offence developed into a system with explicit cannabis quantities and separate rules for growers and users.[@4,5]
