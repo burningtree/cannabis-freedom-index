@@ -1,5 +1,5 @@
 ---
-model: muse-wonder-1.0
+model: muse-spark-1.3
 written: 2026-10-26
 sources:
   - title: Kolarić & Marković — Two Decades of Criminal Justice Reforms in the Field of Combating Illegal Drugs (University of Criminal Investigation and Police Studies, Belgrade)

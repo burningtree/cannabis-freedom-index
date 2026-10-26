@@ -1,5 +1,5 @@
 ---
-model: muse-wonder-1.0
+model: muse-spark-1.3
 written: 2026-10-26
 sources:
   - title: Wikipedia — Drug policy of the Soviet Union

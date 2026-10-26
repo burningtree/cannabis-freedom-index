@@ -1,5 +1,5 @@
 ---
-model: muse-wonder-1.0
+model: muse-spark-1.3
 written: 2026-10-26
 sources:
   - title: Human Rights Watch — Rehabilitation Required, Russia's human rights obligation to provide evidence-based drug dependence treatment (2007), background
