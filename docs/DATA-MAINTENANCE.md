@@ -1587,3 +1587,14 @@ the 2023 record now explains that federal cannabis death sentences had already
 left the tables in 2022. All inherited score snapshots and the current profile
 remain unchanged. The 1995 commencement notification and the joint provincial
 capital-penalty chronology remain necessary for the open enforcement reconstruction.
+
+A [Philippines sentencing-history pass](research/history-philippines-sentencing-2026-10-26.md)
+on 26 October 2026 adds the 1987 constitutional suspension of death sentences,
+the 1994 Simon quantity ruling and David Cruz's 2000 release after serving more
+than the reduced maximum. Four articles connect these events to the 2002 law.
+The 1993 record now includes its lower small-quantity bands; the 2002 and 2006
+records use commencement dates, and the 2006 parole-clause attribution is corrected.
+Existing scores are preserved because long sentences and, during the intervening
+period, capital exposure keep the relevant segments at their floors. The earlier
+compassionate-access commencement and pre-1982 score assumptions remain separate
+research questions.
