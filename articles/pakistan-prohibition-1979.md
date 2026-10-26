@@ -1,41 +1,51 @@
 ---
-model: opus-5.5
-written: 2026-10-12
+model: gpt-6
+written: '2026-10-26'
 sources:
-  - title: Prohibition (Enforcement of Hadd) Order, 1979 (President's Order No. 4 of 1979), text at pakistani.org
-    url: https://pakistani.org/pakistan/legislation/zia_po_1979/po4_1979.html
-  - title: Wikipedia — Cannabis in Pakistan
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Pakistan
+  - type: law
+    title: Prohibition (Enforcement of Hadd) Order 1979, government reprint with amendment notes
+    authors:
+      - Government of Pakistan
+    year: 1979
+    locator: >-
+      Articles 1–2, 4–12 and 17; Schedule items 1–3 and 6; later amendments to articles 3 and 4
+      identified in footnotes
+    url: >-
+      https://www.kpexcise.gov.pk/app/wp-content/uploads/2020/08/THE-PROHIBITION-ENFORCEMENT-OF-HADD-ORDER-1979..pdf
+  - type: law
+    title: Abolition of the Punishment of Whipping Act 1996, original Gazette
+    authors:
+      - Parliament of Pakistan
+    year: 1996
+    container: Gazette of Pakistan, Extraordinary, 15 April 1996, pp. 355–356
+    locator: >-
+      Act VII of 1996; assent 3 April; sections 1–4, especially immediate commencement and remission
+      of unexecuted whipping sentences
+    url: https://na.gov.pk/uploads/documents/1329726978_141.pdf
 ---
 
-On 10 February 1979 a single order ended the legal sale of cannabis in Pakistan. Until that day charas and bhang had been sold through licensed vendors. The Prohibition (Enforcement of Hadd) Order, issued the day before by General Zia-ul-Haq as President and Chief Martial Law Administrator, banned intoxicants across the country.
+Pakistan's 1979 prohibition order made possession of cannabis punishable by up to two years in prison or up to thirty lashes, with a fine also possible.[@1] Its schedule named bhang, siddhi, ganja, charas and hashish, bringing several forms of cannabis under the same prohibition.[@1] The order began on 10 February.[@1]
 
-## What counts as an intoxicant
+## The order put cannabis inside an Islamisation law
 
-The order is best known for alcohol, and its best-known penalty, eighty stripes for a Muslim who drinks, applies to liquor. But its schedule goes further. It lists Indian hemp by name, "including bhang, siddhi and ganja", along with charas, hashish, any mixture or drink made from them, opium and coca.
+President and Chief Martial Law Administrator Muhammad Zia-ul-Haq issued the order with the stated purpose of bringing intoxicant law into conformity with the Quran and Sunnah.[@1] It extended throughout Pakistan and replaced a 1977 prohibition act and four provincial prohibition ordinances from 1978.[@1]
 
-So the same articles that closed the liquor shops closed the bhang shops.
+Its definition of an intoxicant included the scheduled drugs as well as alcoholic liquor.[@1] Cannabis leaves, small stalks, flowering or fruiting tops, resin and mixtures or drinks made from them were expressly listed.[@1] Receiving or transferring something as a gift counted as buying or selling under the definitions.[@1]
 
-## The penalties
+## Possession and use carried separate penalties
 
-| Act | Article | Penalty |
-|---|---|---|
-| Making, selling, transporting or serving an intoxicant | 3 | up to 5 years, up to 30 stripes, and a fine |
-| Owning or possessing one | 4 | up to 2 years or up to 30 stripes, and a fine |
-| Breaking the terms of a licence | 20 | life or at least 2 years, and a fine |
+The possession rule covered owning an intoxicant or keeping it in one's custody.[@1] Its prison-or-whipping alternatives exposed a cannabis holder to punishment even when no commercial sale was alleged.[@1]
 
-Heavier terms, up to life, were reserved for opium, coca, heroin and cocaine above set weights. Cannabis stayed in the ordinary tier.
+The order also defined “drinking” broadly as intentionally taking an intoxicant by any means, subject to specified coercion and necessity exceptions.[@1] The non-hadd consumption offence could bring up to three years in prison, thirty lashes, or both, with different rules for Muslims, non-Muslim citizens and foreigners.[@1]
 
-## What was still allowed
+“Hadd” meant punishment prescribed by the Quran or Sunnah; the order's eighty-lash hadd rule specifically concerned an adult Muslim taking alcoholic liquor by mouth.[@1] Its liquor definition excluded solid intoxicants even when liquefied.[@1]
 
-The order did not abolish licences. Provincial governments could grant them for medicinal, scientific and industrial purposes, for export, and for the religious ceremonies of non-Muslims. A non-Muslim, citizen or foreigner, could keep a reasonable quantity of an intoxicant for a religious ceremony.
+## Medical and scientific permissions survived
 
-It repealed a Prohibition Act of 1977 and four provincial prohibition ordinances of 1978, and overrode any other law in force. The colonial Dangerous Drugs Act of 1930 stayed on the books beside it.
+Authorities could issue institutional licences for genuine medicinal, scientific, industrial or similar purposes.[@1] Acts performed under the order or a valid rule, notification or licence were exempt from the general manufacture and possession prohibitions.[@1]
 
-## What followed
+Police also faced a procedural restriction on arresting someone merely suspected of consumption: the order required a request to attend an authorised medical officer, followed by refusal or medical certification of consumption.[@1] Breaching that restriction was itself punishable.[@1]
 
-A report by the narcotics control board in 1983 described cannabis as one of the two common drugs of the previous decades. The order's cannabis provisions were overtaken in 1997 by the Control of Narcotic Substances Act, which set a sentence for every weight and repealed the colonial laws.
+## Parliament later removed non-hadd whipping
 
-## Why the index moved
-
-The [order](/history/pakistan-prohibition-1979/) is the largest single fall in [Pakistan's](/country/pk/) score. Before it the country was scored as a place with licensed sale: access 4, possession 4, enforcement 5. The order closed the shops and made holding any amount a crime with prison and whipping, and the scores fell to where they stand today.
+The [1996 repeal](/history/pakistan-whipping-abolition-1996/) abolished non-hadd whipping sentences and remitted those still unexecuted.[@2] It preserved hadd punishment while repealing the colonial Whipping Act.[@2] Cannabis controls continued through the [1997 narcotics law](/history/pakistan-narcotics-act-1997/) and later amendments in [Pakistan](/country/pk/).

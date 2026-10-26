@@ -1577,3 +1577,13 @@ references to its treaty rationale are corrected. The 1930 date belongs to the
 guide, not the underlying rule's commencement. Current scores and the inherited
 historical snapshots are unchanged: the original 1938 penalty and commencement
 clauses remain necessary for the open reconstruction of the 1933–2017 interval.
+
+A [Pakistan sentencing-gap pass](research/history-pakistan-penalties-2026-10-26.md)
+on 26 October 2026 adds the 1995 ordinance, a reported hashish flogging, the 1996
+abolition of non-hadd whipping and the 2022 federal cannabis penalty tables.
+It rewrites the 1979 and 1997 articles against historical texts and adds an article
+on the whipping repeal. The 1997 date distinguishes assent from publication;
+the 2023 record now explains that federal cannabis death sentences had already
+left the tables in 2022. All inherited score snapshots and the current profile
+remain unchanged. The 1995 commencement notification and the joint provincial
+capital-penalty chronology remain necessary for the open enforcement reconstruction.
