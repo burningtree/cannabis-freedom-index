@@ -1870,3 +1870,16 @@ remain open; no existing scores or historical score vectors change.
 - An authorised medical product category is separate from verified pharmacy availability.
   San Marino's framework includes inflorescences; it does not establish that flower is
   actually dispensed. Preserve the access score until practical supply evidence warrants it.
+
+### French Polynesia's 1978 framework and research exceptions (26 October 2026)
+
+Recovered the original 1978 poisonous-substances deliberation and executable order
+from Lexpol's gazette scan. Added an explicitly adoption-dated cannabis prohibition
+entry and an article explaining possession, medical THC, research exceptions and
+seizure destruction. The 2022 possession and 2023 cultivation permissions for the
+Institut Louis Malardé now have separate research entries, checked against an
+official retrospective account. The recorded 1925-estimate-to-2023 gap falls from
+98 to 53 calendar years. Earlier restrictions and precise commencement remain
+unresolved; no score or profile change. The original preamble supplies new 1924,
+1937, 1955 and 1971 research leads. See
+`docs/research/history-french-polynesia-1978-2026-10-26.md` for sources, dates and limits.
