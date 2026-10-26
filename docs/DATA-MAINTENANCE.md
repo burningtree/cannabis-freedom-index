@@ -1690,6 +1690,11 @@ A [Lithuania gap pass](research/history-lithuania-gap-2026-10-26.md) on 26
 October 2026 closes the open 2006 large-cultivation item as reviewed (only
 the maximum rose, alternatives retained) and adds the 1987 Soviet use decree
 and the 1990 constitutional rejection as unscored union measures, both read
-via Human Rights Watch. One article covers the 1987 decree. No scored 1974
-republic step is asserted; the LSSR code text stays unrecovered. Today's
-scores are unchanged.
+via Human Rights Watch. It then reconstructs the chain on the
+Latvia/Russia/Armenia/Belarus convention: a scored 1974 possession step
+(20→11) and a re-scored 2003 misdemeanour-tier easing (11→17) that exactly
+reverses the checked 2017 recriminalisation (17→11). The 1987 edict itself
+was read in a Russian reprint. Two articles cover the 1987 decree and the
+2003 tier. The LSSR code text stays unrecovered. Today's scores are
+unchanged.
+
