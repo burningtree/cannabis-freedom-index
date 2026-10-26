@@ -1826,3 +1826,12 @@ of the replacement law in 1995 and the 2000 Francois cannabis ruling. The 1990
 entry now distinguishes enactment from commencement. Scores and existing vectors
 are preserved; original 1935 provisions, earlier sentencing schedules and the
 undated 1920s transit detention remain research targets.
+
+An [Isle of Man early-law pass](research/history-isle-of-man-early-gap-2026-10-26.md)
+on 26 October 2026 adds the cannabis regulations commencing on 1 January 1930 and
+Mandryk's 1978 possession appeal. An article explains authorised extracts,
+prescriptions, locked pharmacy storage and separate hemp/resin registers. Original
+Tynwald circulars distinguish commencement from the order date; Edge's legal
+history supplies the appeal account. The largest recorded gap falls from 93 to
+48 years. The first-restriction estimate and the later custody-to-fines transition
+remain open; no existing scores or historical score vectors change.

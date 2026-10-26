@@ -4,7 +4,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 
 **Read** means the recorded chapter was read; **partial** means only the named pages or sections were examined; **indexed** means a contents entry only. Counts include introductions where catalogued. They are not percentages of pages or proof that a whole book is covered. Applied targets count distinct recorded content/event references, not independent findings.
 
-**24 catalogued books**; 21 with recorded substantive reading; 1 awaiting bibliography verification.
+**25 catalogued books**; 22 with recorded substantive reading; 1 awaiting bibliography verification.
 
 | Book | Bibliography | Fully read / listed units | Partial | Indexed only | Applied targets | Illustrations | Local file |
 |---|---|---:|---:|---:|---:|---:|---|
@@ -32,6 +32,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 | [Drogas: A história do proibicionismo](#carneiro-drogas-proibicionismo-2019) | verified | 1 / 11 | 2 | 8 | 0 | 0 | matches recorded hash |
 | [Hashish, Wine, Opium](#gautier-baudelaire-hashish-wine-opium-2009) | verified | 0 / 5 | 2 | 3 | 2 | 0 | matches recorded hash |
 | [El rescate de la memoria: Historias de transgresión, marginación y justicia en América Latina, siglos XIX y XX](#trujillo-fessler-rescate-memoria-2021) | verified | 0 / 1 | 1 | 0 | 3 | 0 | matches recorded hash |
+| [Manx Public Law](#edge-manx-public-law-1997) | verified | 0 / 1 | 1 | 0 | 2 | 0 | matches recorded hash |
 
 ## Inventory alerts
 
@@ -133,7 +134,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 
 - **ID:** `mills-cannabis-britannica-2003`
 - **Local file:** `books/Cannabis Britannica  empire, trade, and prohibition, 1800-1928 (Mills, James H., 1970-).pdf`
-- **Last recorded review:** 2026-10-14
+- **Last recorded review:** 2026-10-26
 - **Coverage:** Title, copyright and contents examined; A Note on Terms (x–xi), chapter 5 pp. 93–98 and 117–123, chapter 3 pp. 47–65 and chapter 6 pp. 124–138 read (2026-10-15). Many history entries elsewhere cite other pages of chapters 2, 4, 5, 6, 7 and 8 from earlier sessions without being recorded here; reconcile them.
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
@@ -144,8 +145,8 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | 4. Medicine, Murder, and Madness in Mid-century | selected_pages_read | pp. 83–84 | changes.yaml#burma-hemp-drugs-prohibited-1874; articles/burma-hemp-drugs-prohibited-1874.md | — |
 | 5. Ganja in Parliament, 1891–1894 | selected_pages_read | pp. 93–98 | articles/india-commons-ganja-question-1891.md | — |
 | 6. Reports, Experiments, and Hallucinations, 1894–1912 | selected_pages_read | pp. 123 (n. 78)–138 | changes.yaml#india-bengal-public-warehouses-1904; articles/india-bengal-public-warehouses-1904.md; changes.yaml#india-assam-ganja-report-1918; changes.yaml#india-hemp-drugs-revenue-1921; changes.yaml#guyana-indian-hemp-ordinance-1913 | Mills (p. 123 n. 78, p. 139) describes British Guiana's 1913 Indian Hemp Ordinance as a licensed bonded-warehouse system, while the site scores it as a ban (49 → 9). Check the ordinance text before changing the gy chain. |
-| 7. The League of Nations and British Legislation, 1912–1928 | selected_pages_read | pp. 154, 157 (Germany at The Hague; Versailles Article 295) | changes.yaml#germany-opium-law-1920; articles/germany-opium-law-1929.md | — |
-| 8. DORA, the First World War, and the Domestic Drug Scares of the 1920s | selected_pages_read | pp. 193 | changes.yaml#egypt-tanti-hashish-cafe-1914 | — |
+| 7. The League of Nations and British Legislation, 1912–1928 | selected_pages_read | pp. 154, 157 (Germany at The Hague; Versailles Article 295), 180 (de Monfreid case) | changes.yaml#germany-opium-law-1920; articles/germany-opium-law-1929.md | — |
+| 8. DORA, the First World War, and the Domestic Drug Scares of the 1920s | selected_pages_read | pp. 193–194 | changes.yaml#egypt-tanti-hashish-cafe-1914 | Seychelles transit detention in the de Monfreid case: ten tons bought in Bombay in 1922, governor held cargo nearly four months, but the local arrival/release year is not fixed by this passage. Recover dated correspondence before adding a Seychelles event. |
 | 9. Conclusion: Cannabis and British Government, 1800–1928 | indexed_only | — | — | — |
 
 <a id="abel-marihuana-first-twelve-thousand-years-1980"></a>
@@ -666,3 +667,17 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
 | ¿Elementos indeseables y antisanitarios? Entre la criminalización científico-sanitaria y la persecución policial de la inmigración china durante el desarrollo de la política inmigratoria en Cuba (1902–1935) | selected_pages_read | pp. 329, 346–348, 362–364 | changes.yaml#cuba-cannabis-drug-trade-controls-1919; changes.yaml#cu-first-restriction-estimate; articles/cuba-cannabis-drug-trade-controls-1919.md | Retrieve the cited 1919 law-and-regulations booklet, especially the cannabis schedule, penalties and commencement; check earlier pharmacy controls and cultivation history before replacing the remaining aggregate score estimate. Remaining chapter pages unread. |
+
+<a id="edge-manx-public-law-1997"></a>
+
+## Manx Public Law
+
+- **ID:** `edge-manx-public-law-1997`
+- **Local file:** `books/Edge - Manx Public Law (1997).pdf`
+- **Last recorded review:** 2026-10-26
+- **Coverage:** Title, copyright and contents inspected; selected drug-law pages in chapter 17 read. No cover-to-cover or full-chapter reading claimed.
+- **Reading notes:** [history-isle-of-man-early-gap-2026-10-26.md](research/history-isle-of-man-early-gap-2026-10-26.md)
+
+| Chapter / unit | Status | Actually examined | Applied to | Next research |
+|---|---|---|---|---|
+| 17. Offences Against Morality | selected_pages_read | pp. 242–243 | changes.yaml#isle-of-man-mandryk-cannabis-prison-1978; articles/isle-of-man-cannabis-prescription-controls-1930.md | Retrieve Mandryk and Ward (1978), the original 1923/1926 statutes and later sentencing judgments. The remaining chapter pages are unread. |
