@@ -1598,3 +1598,13 @@ Existing scores are preserved because long sentences and, during the intervening
 period, capital exposure keep the relevant segments at their floors. The earlier
 compassionate-access commencement and pre-1982 score assumptions remain separate
 research questions.
+
+A [Kenya colonial-controls pass](research/history-kenya-controls-2026-10-26.md)
+on 26 October 2026 adds regional sentencing correspondence from 1956, the
+1961 cannabis prosecution figures and the specialist police unit formed in 1983.
+New articles explain the 1933 ordinance and its 1994 replacement. The legal
+entries now distinguish medicinal preparations, court-specific penalties and
+commencement dates; the 1994 use ceiling is corrected from eight to ten years.
+An undated amendment slip in the 1932 annual volume is kept separate from the
+original law. Existing score snapshots and the current profile are preserved
+pending reconstruction of the earlier aggregate 1914 step.
