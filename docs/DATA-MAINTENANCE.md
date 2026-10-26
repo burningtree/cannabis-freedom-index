@@ -1665,3 +1665,10 @@ years, and the 1986 and 1989 High Court judgments setting and applying dagga
 sentencing bands — all read in full. One article covers the 1976 order; the
 1922 Act's article already existed and was left untouched. Today's scores are
 unchanged.
+
+A [San Marino gap pass](research/history-san-marino-gap-2026-10-26.md) on 26
+October 2026 adds the 1981 decree's cannabis schedule, the March 1988 law
+that punishes simple possession like supply (annulling the 1956 law), and the
+November 1997 repeal-and-reenactment — all read in full. Unscored context:
+degrees-based penalties with no mapped segment change. One article covers the
+1988 hinge. Today's scores are unchanged.
