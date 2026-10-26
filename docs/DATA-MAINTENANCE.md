@@ -1772,6 +1772,14 @@ prescription system) and records `unscored` reasons: licensed cultivation
 with no patient supply, access unchanged at 0. Triage reports 1 scored, 0
 open. No article: a reasons-only pass.
 
+A [Cuba/Qatar/Dominican Republic triage pass](research/history-cu-qa-do-triage-2026-10-26.md)
+on 26 October 2026 reviews seven open entries: Cuba's 1999 and 2022 codes
+recodify within floor bands (2022 verified against the Gaceta text);
+Qatar's three death sentences are case outcomes under the 1987 law; the
+Dominican 1988 weight grades and 1990 procedural amendments move no user
+band. Each country reports 1 scored, 0 open. No article: a reasons-only
+pass.
+
 A [Senegal triage pass](research/history-senegal-triage-2026-10-26.md) on
 26 October 2026 reviews the three open tightening entries against the 1997
 Code text (Articles 95–98 trafficking bands; Article 109 personal-use
