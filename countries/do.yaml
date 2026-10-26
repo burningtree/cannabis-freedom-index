@@ -3,8 +3,10 @@ region: North America
 iso_numeric: 214
 recreational: illegal
 medical: none
-updated: 2026-10-13
-summary: "Any amount means prison: at least six months for up to 20 g, three to ten years above that."
+updated: '2026-10-26'
+summary: >-
+  Personal possession of up to 20 g of marijuana can mean six months to two years in prison. An
+  intent to distribute or sell can mean three to ten years at any amount, including below 20 g.
 scores:
   possession: 0
   cultivation: 1
@@ -15,14 +17,15 @@ scores:
 segments:
   possession:
     text: >-
-      Law 50-88 sorts people into three fixed categories by weight. Up to 20 g of marijuana is
-      'simple possession': six months to two years in prison and a fine of 1,500 to 2,500 pesos
-      (5 g for hashish). Between 20 g
-      and one pound you are a 'distributor', with three to ten years. Over a pound you are a
-      'trafficker', with five to twenty.
+      The ordinary personal-possession tier covers up to 20 g of marijuana (5 g of hashish), with
+      six months to two years and a 1,500–2,500 peso fine. Above 20 g and below one pound, the
+      marijuana classification is distributor/seller, with three to ten years; larger quantities
+      attract the trafficker tier.[@fc] Since the 1995 amendment, an intent to distribute or sell
+      removes the personal-possession classification regardless of quantity, so even less than 20 g
+      can fall under the distributor/seller penalty.[@law1795]
     sources:
-      - wiki
       - fc
+      - law1795
   cultivation:
     text: >-
       Growing marihuana without authorisation is treated as trafficking. Up to 20 plants brings
@@ -33,16 +36,21 @@ segments:
   enforcement:
     text: >-
       Mandatory prison for any amount, applied to tourists as well. Dominican commentators describe
-      the 1988 law as obsolete.
+      the 1988 law as obsolete.[@ac,wiki] Intent to distribute or sell can bring three to ten years
+      even below 20 g.[@law1795,fc]
     sources:
       - ac
       - wiki
+      - law1795
+      - fc
   sharing:
     text: >-
-      Quantity alone makes you a distributor or trafficker, so sharing more than 20 g carries at
-      least three years.
+      Distribution or sale intent makes the holder a distributor/seller regardless of quantity under
+      the 1995 amendment, with the three-to-ten-year penalty rather than the ordinary
+      personal-possession tier. Larger quantities can trigger the trafficking
+      classification.[@law1795,fc]
     sources:
-      - wiki
+      - law1795
       - fc
   consumption:
     text: >-
@@ -96,10 +104,14 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Law 50-88 punishes possession of any
-      amount: up to 20 g of marihuana brings six months to two years in prison and a fine, and
-      anything above that is treated as distribution, with three to ten years.
+      There is no legal recreational supply for anyone. Law 50-88 punishes possession of any amount:
+      up to 20 g of marihuana brings six months to two years in prison and a fine, and anything
+      above that is treated as distribution, with three to ten years.[@fc] The lower small-quantity
+      possession tier does not apply where distribution or sale is intended; the distributor/seller
+      penalty can apply at any amount.[@law1795,fc]
     sources:
+      - fc
+      - law1795
       - fc
   driving:
     status: impairment
@@ -162,3 +174,7 @@ sources:
   eldinero25:
     title: "elDinero — República Dominicana decomisó más de 44 toneladas de drogas en 2024 (2 January 2025)"
     url: https://eldinero.com.do/308938/republica-dominicana-decomiso-mas-de-44-toneladas-de-drogas-en-2024/
+  law1795:
+    title: Dominican Republic — Law 17-95, official OAS translation
+    url: https://www.oas.org/ext/Portals/33/Files/MLA/Dom_multla_leg_eng_2.pdf
+    locator: 'Article 2 inserts article 6(c) of Law 50-88: distribution/sale intent at any quantity'

@@ -3,10 +3,11 @@ region: South America
 iso_numeric: 604
 recreational: decriminalised
 medical: legal
-updated: 2026-10-13
+updated: '2026-10-26'
 summary: >-
-  Possession of up to 8 g is not punishable. Medical cannabis is legal since 2017, with
-  patient-association cultivation added in 2021.
+  Ordinary immediate personal possession is exempt up to 8 g of marijuana or 2 g of derivatives.
+  Registered medical patients and qualifying caregivers have a separate treatment-needs exemption.
+  Medical cannabis and licensed patient-association cultivation are legal.
 scores:
   possession: 3
   cultivation: 1
@@ -19,9 +20,14 @@ segments:
     text: >-
       Article 299 of the Penal Code makes possession for one's own immediate use not punishable up
       to 8 g of marijuana or 2 g of its derivatives. The exemption is lost if the person possesses
-      two or more types of controlled drug.
+      two or more types of controlled drug.[@penal] A separate exemption covers cannabis and
+      derivatives needed for a registered patient’s medical or therapeutic treatment, including
+      handling for someone under the holder’s care or guardianship, under the health authority’s
+      rules. Its quantity test is treatment need, rather than the ordinary 8 g/2 g
+      ceilings.[@medical_possession]
     sources:
       - penal
+      - medical_possession
   cultivation:
     text: >-
       Growing for personal use is a crime: the Penal Code provides two to six years even where the
@@ -76,9 +82,13 @@ context:
       - law31312
       - digemid
   consequences:
-    text: No conviction for possession within the limit.
+    text: >-
+      Qualifying immediate personal possession within the 8 g marijuana/2 g derivative limits is not
+      punishable; the two-drug exclusion applies to that ordinary exemption. Separate protection
+      covers medically necessary quantities for registered patients and qualifying caregivers under
+      the prescribed conditions.[@medical_possession]
     sources:
-      - penal
+      - medical_possession
   planting:
     seeds: licensed
     seeds_trade: regulated
@@ -115,10 +125,14 @@ context:
     text: >-
       There is no legal recreational supply for anyone. Article 299 of the Penal Code leaves
       possession for one's own immediate use unpunished up to 8 g of marijuana or 2 g of its
-      derivatives; the exemption is lost if a person holds two or more kinds of controlled drug.
+      derivatives; the exemption is lost if a person holds two or more kinds of controlled
+      drug.[@penal,digemid] The separate treatment-needs exemption requires the Peruvian
+      registration and medical conditions; a visitor does not qualify simply by holding a foreign
+      medical card.[@medical_possession]
     sources:
       - penal
       - digemid
+      - medical_possession
   driving:
     status: impairment
     text: >-
@@ -181,3 +195,15 @@ sources:
   panam25:
     title: "Panamericana Televisión — Récord histórico: PNP decomisó más de 160 toneladas de droga en el año 2024 (3 January 2025)"
     url: https://panamericana.pe/nacionales/431672-record-historico-pnp-decomiso-160-toneladas-droga-ano-2024
+  medical_possession:
+    title: El Peruano — Legislative Decree 1592, published 14 December 2023
+    url: https://busquedas.elperuano.pe/dispositivo/NL/2244234-2
+    locator: >-
+      Article 3, Criminal Code article 299, third paragraph: registered-patient treatment needs,
+      care/guardianship and authorised research
+answers:
+  carry:
+    answer: limited
+    text: >-
+      Immediate personal possession has 8 g/2 g limits; registered patients and qualifying
+      caregivers have a separate treatment-needs exemption

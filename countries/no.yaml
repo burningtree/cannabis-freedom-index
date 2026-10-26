@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 578
 recreational: illegal
 medical: limited
-updated: 2026-10-13
+updated: '2026-10-26'
 summary: >-
   Possession is fined. After 2022 Supreme Court rulings, people with dependency are generally not
   punished for small amounts.
@@ -97,13 +97,24 @@ context:
   driving:
     status: limit
     text: >-
-      Norway sets graded limits for THC of 1.3, 3 and 9 nanograms per millilitre of blood,
-      meant to match the national blood-alcohol steps, together with a general impairment
-      offence. Police may stop and test at random, with oral-fluid tests and blood taken at a
-      hospital or police station. The ban is at least one year, the fine about one and a half
-      times gross monthly income, and prison of up to a year is possible.
+      Norway sets graded limits for THC of 1.3, 3 and 9 nanograms per millilitre of blood, meant to
+      match the national blood-alcohol steps, together with a general impairment offence. Police may
+      stop and test at random, with oral-fluid tests and blood taken at a hospital or police
+      station. The ban is at least one year, the fine about one and a half times gross monthly
+      income, and prison of up to a year is possible.[@euda_dd] Fixed concentration rules do not
+      apply when the excess comes from medicine taken according to a valid doctor’s or dentist’s
+      prescription, documented for the relevant dose and time; actual impairment remains
+      prohibited.[@rx_driving] Licence fitness is a separate test: approved cannabinoid medicines
+      such as Sativex and Epidyolex may be compatible with group 1 only under specialist treatment,
+      approved dosing, waiting intervals and clinical fitness conditions. Other cannabinoid
+      medicines, including special-permit or foreign-prescribed products, are incompatible with
+      driving under the guide unless a formal exemption is granted. Groups 2 and 3 do not
+      qualify.[@fitness,dmp_drive]
     sources:
       - euda_dd
+      - rx_driving
+      - fitness
+      - dmp_drive
   clubs:
     status: none
     text: >-
@@ -170,3 +181,24 @@ sources:
   ra22:
     title: "Riksadvokaten — retningslinjer om rusavhengiges befatning med narkotika til egen bruk (13 May 2022)"
     url: https://www.riksadvokaten.no/wp-content/uploads/2022/05/Riksadvokatens-brev-13-mai-2022.pdf
+  rx_driving:
+    title: Norwegian Parliament — Transport Minister’s answer on THC limits
+    url: >-
+      https://www.stortinget.no/no/Saker-og-publikasjoner/Sporsmal/Skriftlige-sporsmal-og-svar/Skriftlig-sporsmal/?qnid=95447
+    locator: >-
+      Answer: section 22 fixed-limit exception for medicine prescribed by doctor/dentist; dose and
+      relevant-time documentation
+  fitness:
+    title: Norwegian Directorate of Health — driving-licence guide, cannabinoids
+    url: >-
+      https://www.helsedirektoratet.no/veiledere/forerkortveileder/midler-som-kan-pavirke-kjoreevnen-35-37
+    locator: >-
+      Cannabinoider: group 1, specialist treatment, approved dosage, waiting interval,
+      initial/dose-increase monitoring; groups 2 and 3 excluded
+  dmp_drive:
+    title: Norwegian Medical Products Agency — cannabis treatment and driving licences
+    url: >-
+      https://www.dmp.no/en/special-permit-named-patient/for-physicians-and-dentists/medicinal-products-frequently-inquired-about-for-special-permit-named-patient/procedure-for-treatment-with-cannabis-within-current-regulations
+    locator: >-
+      Medical use of cannabis and driving licenses: Sativex/Epidyolex, other products and possible
+      county-physician exemption

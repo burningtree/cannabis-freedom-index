@@ -1796,3 +1796,13 @@ search limits, the 1970 prison law, 1971 replacement drug law, 1990 licence pena
 and the 2011/2012 first-offender licence dispute, including the Supreme Court's
 reversal. Current scores and existing historical vectors are preserved; earlier
 territorial legislation and original commencement records remain research targets.
+
+A [bug-source review for #160–179](research/bug-fixes-160-179-2026-10-26.md)
+on 26 October 2026 corrects product-specific penalties, patient exceptions,
+import and aggravated-use rules across nineteen profiles. It adds Paraguay’s
+December 2025 pilot and Malta’s 2025 resin permission as unscored history,
+and corrects Vietnam, Croatia and France history descriptions. Samoa’s
+reported Class C listing is disproved by the Attorney General’s Class B
+schedule; the fourteen-year maximum remains. Existing scores and historical
+vectors are preserved. Ten regression tests cover the corrected distinctions;
+Latvian and New Zealand full-text retrieval limits are documented.

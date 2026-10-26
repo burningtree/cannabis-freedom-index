@@ -3,11 +3,12 @@ region: Asia
 iso_numeric: 608
 recreational: illegal
 medical: limited
-updated: 2026-10-23
+updated: '2026-10-26'
 summary: >-
-  Prison applies to any amount. Life imprisonment can apply from 300 g of marijuana or 5 g of
-  resin, and it is the sentence from 500 g of marijuana or 10 g of resin. There is no
-  medical-cannabis programme, only case-specific compassionate access to an imported medicine.
+  Possession carries prison at any amount. Life imprisonment can apply from 300 g of marijuana or 5 g of resin, and applies from 500 g or 10 g respectively.
+  Unauthorised importation carries life regardless of quantity; possession at gatherings or with at
+  least two others has enhanced penalties. Medical access requires an individual compassionate
+  permit.
 scores:
   possession: 0
   cultivation: 0
@@ -20,14 +21,19 @@ segments:
     text: >-
       Under Section 11 of Republic Act 9165, possession of less than 300 g of marijuana, or less
       than 5 g of resin or resin oil, carries 12 years and one day to 20 years and a fine of
-      ₱300,000 to ₱400,000. From 300 g up to but not including 500 g of marijuana, or from 5 g up
-      to but not including 10 g of resin or resin oil, the sentence is 20 years and one day to
-      life imprisonment and a fine of ₱400,000 to ₱500,000. At least 500 g of marijuana, or at
-      least 10 g of resin or resin oil, carries life imprisonment and a fine of ₱500,000 to
-      ₱10 million. There is no lesser tier for personal use.
+      ₱300,000 to ₱400,000. From 300 g up to but not including 500 g of marijuana, or from 5 g up to
+      but not including 10 g of resin or resin oil, the sentence is 20 years and one day to life
+      imprisonment and a fine of ₱400,000 to ₱500,000. At least 500 g of marijuana, or at least 10 g
+      of resin or resin oil, carries life imprisonment and a fine of ₱500,000 to ₱10 million. There
+      is no lesser tier for personal use.[@ra,death] Section 13 requires the maximum Section 11
+      penalties for possession at a party, social gathering or meeting, or in the proximate company
+      of at least two other people, regardless of amount. The others need not hold
+      drugs.[@ra_primary,irr]
     sources:
       - ra
       - death
+      - ra_primary
+      - irr
   cultivation:
     text: >-
       Cultivating any marijuana plant carries life imprisonment and a fine of
@@ -35,11 +41,16 @@ segments:
     sources: [ra, death]
   enforcement:
     text: >-
-      A small personal amount exposes its possessor to a sentence of more than 12 years. The
-      nationwide anti-drug campaign launched in 2016 also killed thousands of alleged drug suspects;
-      the UN found serious rights violations and near impunity.
+      Ordinary small possession carries more than twelve years, while Section 13 requires maximum
+      Section 11 penalties in the specified gathering/group circumstances regardless of
+      weight.[@ra_primary,irr] Unauthorised importation carries life imprisonment even for a small
+      amount, following abolition of the death penalty.[@ra_primary,death] The UN also documented
+      thousands of killings and near impunity in the nationwide anti-drug campaign launched in
+      2016.[@ohchr]
     sources:
-      - ra
+      - ra_primary
+      - irr
+      - death
       - ohchr
   sharing:
     text: >-
@@ -104,12 +115,19 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession of less than 300 g of
-      marijuana, or less than 5 g of resin, carries 12 years and one day to 20 years. From 300 g
-      of marijuana or 5 g of resin, the sentence can be life imprisonment.
+      There is no legal recreational supply. Bringing cannabis into the Philippines without legal
+      authorisation is a separate importation offence carrying life imprisonment and a ₱500,000–₱10
+      million fine regardless of quantity.[@ra_primary,death] Ordinary domestic possession below 300
+      g of plant marijuana or 5 g of resin/resin oil carries twelve years and one day to twenty
+      years, with higher weight bands; possession at a qualifying gathering or with at least two
+      other people has enhanced maximum penalties regardless of weight.[@ra_primary,irr] A physician
+      or health institution must obtain the applicable FDA compassionate permit for restricted
+      imports of unregistered medicines.[@fda]
     sources:
-      - ra
+      - ra_primary
       - death
+      - irr
+      - fda
   driving:
     status: zero
     text: >-
@@ -184,3 +202,18 @@ sources:
   journal25:
     title: "People's Journal — Less blood, big hits: PDEA first-quarter report (13 April 2025)"
     url: https://journalnews.com.ph/less-blood-big-hits
+  irr:
+    title: Philippines Supreme Court E-Library — implementing rules of RA 9165
+    url: https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/10/49162
+    locator: 'Section 13: accused plus at least two other people; others need not possess drugs'
+  ra_primary:
+    title: Philippines Supreme Court E-Library — Republic Act 9165
+    url: https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1435
+    locator: Sections 4, 11, 13 and 15
+answers:
+  caught:
+    answer: 'no'
+    label: Severe punishment
+    text: >-
+      Prison at any amount; importation can bring life regardless of weight, and group possession
+      has enhanced penalties

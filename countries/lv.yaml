@@ -3,8 +3,11 @@ region: Europe
 iso_numeric: 428
 recreational: decriminalised
 medical: none
-updated: 2026-10-23
-summary: Up to 1 g is an administrative offence on first occurrence; repeat offences are criminal.
+updated: '2026-10-26'
+summary: >-
+  The first-offence small-quantity tier depends on the product: up to 1 g dried cannabis, 5 g
+  undried, 0.1 g hashish or 0.05 g resin/oil/extract. Above the relevant ceiling, or after a repeat
+  warning, criminal penalties can apply.
 scores:
   possession: 2
   cultivation: 1
@@ -15,15 +18,17 @@ scores:
 segments:
   possession:
     text: >-
-      Possession of up to 1 g of dried cannabis (5 g undried, 0.1 g of hashish) is an administrative
-      offence with a fine of up to €280. A second offence within twelve months is a crime,
-      punishable by short imprisonment of 15 days to three months, community service or a fine.
-      Anything above 1 g is criminal from the start. With the first penalty the person is warned
-      in writing that a repeat within a year is a crime.
+      Small-quantity ceilings are 1 g for dried marijuana, 5 g undried, 0.1 g hashish, and 0.05 g
+      cannabis resin, oil, extracts or tinctures. A dried plant mixture containing hashish or
+      extract has a 0.5 g ceiling.[@quantities] First-offence small possession can bring an
+      administrative fine up to €280 and a written warning; repeating within twelve months can bring
+      a criminal charge, short imprisonment, community service or a fine.[@euda,lvp14] Above the
+      product-specific ceiling, possession is criminal from the outset.[@kl,quantities]
     sources:
-      - wiki
+      - quantities
       - euda
       - lvp14
+      - kl
   cultivation:
     text: >-
       Growing any number of plants is a criminal offence. Section 256 of the Criminal Law punishes
@@ -34,13 +39,14 @@ segments:
       - kl
   enforcement:
     text: >-
-      One of the EU's lowest thresholds: a single gram separates a fine from a criminal case, and
-      repeat users are prosecuted. Parliament has discussed decriminalisation without acting; in
-      2019 one person was fined fifteen times in a year.
+      Small quantities are defined by product: 1 g dried marijuana, 5 g undried, 0.1 g hashish and
+      0.05 g resin, oil, extracts or tinctures. Crossing the relevant ceiling can bring a criminal
+      possession case; a repeat after the statutory warning can also be
+      criminal.[@quantities,kl,euda]
     sources:
+      - quantities
+      - kl
       - euda
-      - bt
-      - lsm20
   sharing:
     text: >-
       Supply is a crime. Section 253.1 of the Criminal Law sets two to eight years in prison for
@@ -145,11 +151,14 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession of up to 1 g of dried
-      cannabis is an administrative offence with a fine of up to €280; a second offence within
-      twelve months is a crime.
+      There is no legal recreational supply. The 1 g small-quantity ceiling is for dried marijuana
+      only; undried marijuana has 5 g, hashish 0.1 g, and cannabis resin, oil, extracts and
+      tinctures 0.05 g. Exceeding the relevant ceiling can bring a criminal charge immediately;
+      first-offence small possession can attract an administrative fine and repeating within twelve
+      months after warning can be criminal.[@quantities,kl,euda,lvp14]
     sources:
-      - wiki
+      - quantities
+      - kl
       - euda
       - lvp14
   black_market:
@@ -226,3 +235,22 @@ sources:
   euda_szr:
     title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
     url: https://www.euda.europa.eu/data/stats2026/szr_en
+  quantities:
+    title: Latvia — Criminal Law implementation law, Annex 2
+    url: >-
+      https://likumi.lv/ta/en/en/id/50539-on-the-procedures-for-the-coming-into-force-and-application-of-the-criminal-law
+    locator: >-
+      Annex 2, section 7, item 4: cannabis product-specific small/large quantities, official English
+      translation
+answers:
+  carry:
+    answer: 'no'
+    text: >-
+      Unlawful; the small-quantity ceiling is 1 g dried flower but only 0.05 g for resin, oil or
+      extracts
+  caught:
+    answer: limited
+    label: Fine or criminal charge
+    text: >-
+      First small possession can bring a fine; exceeding the product-specific ceiling or repeating
+      after warning can be criminal

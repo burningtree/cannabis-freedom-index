@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 554
 recreational: illegal
 medical: legal
-updated: 2026-10-25
+updated: '2026-10-26'
 summary: >-
   Illegal, but since 2019 police must consider a health-based response before prosecuting. A
   legalisation referendum narrowly failed in 2020; the medical scheme has operated since.
@@ -37,17 +37,27 @@ segments:
       - pmcsa
   enforcement:
     text: >-
-      Mostly warnings and fines for users, with prosecutions down since 2019 but far from gone.
-      Cultivation and supply carry prison.
+      Warnings and health referrals have reduced user prosecutions since 2019, although many people
+      are still charged.[@moh,nh] Ordinary Class B/C personal possession can carry up to three
+      months and/or NZ$500. Supply accusations have different penalties: up to fourteen years for
+      Class B preparations and eight years for Class C plant offences under section 6. The supply
+      presumptions differ by form and can be rebutted.[@police_penalties,mda]
     sources:
       - moh
       - nh
+      - police_penalties
+      - mda
   sharing:
     text: >-
-      Supply, including giving it away, is an offence; holding 28 g or more creates a presumption of
-      supply.
+      Unauthorised supply is an offence even below the presumption amounts. Possessing 28 g of Class
+      C cannabis plant material, 5 g of a Class B cannabis preparation such as hashish or oil, or
+      250 mg of the separately scheduled THC creates a rebuttable presumption of supply; it is not
+      an automatic conviction. The cannabis rows also specify 100 cigarettes containing the drug.
+      Section 6 supply offences carry up to fourteen years for Class B and eight years for Class C;
+      lower-level Class C supply can instead fall under section 7.[@mda,police_penalties]
     sources:
-      - pmcsa
+      - mda
+      - police_penalties
   consumption:
     text: >-
       Use is an offence under the same provision as possession, handled with the same police
@@ -227,3 +237,11 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  mda:
+    title: New Zealand Legislation — Misuse of Drugs Act 1975
+    url: https://www.legislation.govt.nz/act/public/1975/116/en/latest/
+    locator: Sections 6(1)–(2), 6(6), 7 and Schedules 2, 3 and 5; plant/preparation/THC distinctions
+  police_penalties:
+    title: New Zealand Police — illicit drugs, offences and penalties
+    url: https://www.police.govt.nz/advice/drugs-and-alcohol/illicit-drugs-offences-and-penalties
+    locator: Class B hashish/cannabis oil versus Class C plant/seed; ordinary possession and supply maxima

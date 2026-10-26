@@ -3,10 +3,10 @@ region: Europe
 iso_numeric: 250
 recreational: illegal
 medical: limited
-updated: 2026-10-23
+updated: '2026-10-26'
 summary: >-
-  One of Europe's strictest laws alongside its highest use rates. Since 20 August 2026 illicit
-  use can be ended by a fixed fine of €500, or €400 if paid within 15 days and €1,000 if the
+  One of Europe's strictest laws alongside its highest use rates. Since 20 August 2026 ordinary
+  illicit use can be ended by a fixed fine of €500, or €400 if paid within 15 days and €1,000 if the
   fine is increased. A medical experiment has run since 2021. CBD flower is legal.
 scores:
   possession: 1
@@ -18,16 +18,20 @@ scores:
 segments:
   possession:
     text: >-
-      Illicit use of a drug scheduled as a narcotic is a criminal offence punishable by up to one
-      year in prison and a €3,750 fine. Since 20 August 2026 the prosecution for that offence,
-      including a repeat offence, can be ended by a fixed fine of €500, reduced to €400 if paid
-      within 15 days and raised to €1,000 once the fine is increased. Article L3421-1 sets no
+      Ordinary illicit use of a drug scheduled as a narcotic is a criminal offence punishable by up
+      to one year in prison and a €3,750 fine. Since 20 August 2026 the prosecution for that
+      offence, including a repeat offence, can be ended by a fixed fine of €500, reduced to €400 if
+      paid within 15 days and raised to €1,000 once the fine is increased. Article L3421-1 sets no
       gram amount for that fine. Accepting it means the cannabis is destroyed and the offence is
-      entered on the criminal record.
+      entered on the criminal record.[@csp,loi2026,cidj] Use during or in connection with
+      public-authority or public-service duties, or specified safety-sensitive transport duties,
+      carries up to five years and €75,000. This aggravated offence is outside the ordinary-use
+      fixed-fine procedure.[@sp_use,csp]
     sources:
       - csp
       - loi2026
       - cidj
+      - sp_use
   cultivation:
     text: >-
       Growing cannabis is treated as production of narcotics, a serious crime with sentences far
@@ -37,19 +41,29 @@ segments:
   enforcement:
     text: >-
       Among Europe's strictest laws on paper, applied mainly as fixed fines of €500 — hundreds of
-      thousands a year — concentrated in poorer neighbourhoods. The one-year prison sentence
-      remains available.
+      thousands a year — concentrated in poorer neighbourhoods. The ordinary-use one-year prison
+      maximum remains available.[@cidj,csp] Use during or in connection with public-authority or
+      public-service duties, or specified safety-sensitive transport duties, carries up to five
+      years and €75,000. This aggravated offence is outside the ordinary-use fixed-fine
+      procedure.[@sp_use,csp]
     sources:
       - cidj
       - csp
+      - sp_use
   sharing:
     text: Giving cannabis to someone for their personal use is a specific offence with up to five years.
     sources:
       - cidj
   consumption:
-    text: Use itself is the offence in French law, public or private.
+    text: >-
+      Ordinary illicit use is a criminal offence in public or private, with up to one year and
+      €3,750; eligible ordinary-use cases can end through the €500 fixed-fine process.[@csp,sp_use]
+      Use during or in connection with public-authority or public-service duties, or specified
+      safety-sensitive transport duties, carries up to five years and €75,000. This aggravated
+      offence is outside the ordinary-use fixed-fine procedure.[@sp_use,csp]
     sources:
-      - cidj
+      - csp
+      - sp_use
   access:
     text: >-
       Extremely restricted medical access survives for patients enrolled before 27 March 2024.
@@ -148,14 +162,18 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Illicit use is a criminal offence
-      punishable by up to one year in prison and a €3,750 fine. Since 20 August 2026 the
-      prosecution can be ended by a fixed fine of €500, or €400 if paid within 15 days and
-      €1,000 if the fine is increased.
+      There is no legal recreational supply for anyone. Ordinary illicit use is a criminal offence
+      punishable by up to one year in prison and a €3,750 fine. Since 20 August 2026 the prosecution
+      can be ended by a fixed fine of €500, or €400 if paid within 15 days and €1,000 if the fine is
+      increased.[@csp,loi2026,cx] Use during or in connection with public-authority or
+      public-service duties, or specified safety-sensitive transport duties, carries up to five
+      years and €75,000. This aggravated offence is outside the ordinary-use fixed-fine
+      procedure.[@sp_use,csp]
     sources:
       - csp
       - loi2026
       - cx
+      - sp_use
 sources:
   onisr:
     title: Observatoire national interministériel de la sécurité routière — Les infractions (2024 figures)
@@ -202,3 +220,15 @@ sources:
   hemp_order:
     title: Arrêté du 30 décembre 2021 portant application de l'article R. 5132-86 (Légifrance)
     url: https://www.legifrance.gouv.fr/loda/id/JORFTEXT000044793213
+  sp_use:
+    title: French government Service Public — drug-use penalties, verified 21 August 2026
+    url: https://www.service-public.gouv.fr/particuliers/vosdroits/F33341
+    locator: >-
+      Court procedure: ordinary one year/€3,750; work-related public-authority, public-service and
+      transport aggravation five years/€75,000
+  old_csp:
+    title: French Public Health Code — Légifrance text generated November 2015, reproduced PDF
+    url: https://www.afls.fr/wp-content/uploads/code_sante_publique.pdf
+    locator: >-
+      PDF p. 597, L3421-1 already contains five-year/€75,000 work-related aggravation; historical
+      chronology only

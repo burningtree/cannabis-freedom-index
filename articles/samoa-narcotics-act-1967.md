@@ -2,8 +2,15 @@
 model: opus-5.5
 written: 2026-10-13
 sources:
-  - title: "Samoa Law Reform Commission — Review of the Narcotics Act 1967 (Drugs Reform), Final Report 21/17, December 2017 (PDF)"
+  - title: >-
+      Samoa Law Reform Commission — Review of the Narcotics Act 1967 (Drugs Reform), Final Report
+      21/17, December 2017 (PDF)
     url: https://samoalawreform.gov.ws/wp-content/uploads/2023/10/Final-Report-Eng-21.pdf
+  - title: Samoa Attorney General — Narcotics Act 1967, 2023 consolidation
+    url: https://www.ag.gov.ws/wp-content/uploads/2024/02/Narcotics-Act-1967.pdf
+    locator: >-
+      Sections 2, 6, 7, 17–18; Second Schedule, Class B, items 1 and 40–41, pp. 24–26; Third
+      Schedule starts p. 30
 ---
 
 Samoa's drug law dates from 1967 and is still in force. The Law Reform Commission, which reviewed it fifty years later, describes it as "largely based on the old New Zealand's Misuse of Drugs Act 1965". The Ministry of Health administers it.
@@ -21,7 +28,7 @@ Part 4 sets out exemptions. A person who holds a licence to deal in a narcotic i
 
 ## Two amendments in fifty years
 
-The Commission counts only two changes to the Act. In 2006 parliament added offences for manufacturing a narcotic and selling a controlled precursor. In 2009 it raised the penalties: possession of the seed of a prohibited plant, for example, went from a maximum of seven years to fourteen. The same amendment introduced the three classes of drugs, A, B and C. Cannabis is in Class B, described as a high risk of harm.
+The Commission counts only two changes to the Act. In 2006 parliament added offences for manufacturing a narcotic and selling a controlled precursor. In 2009 it raised the penalties: possession of the seed of a prohibited plant, for example, went from a maximum of seven years to fourteen. The same amendment introduced the three classes of drugs, A, B and C. Cannabis is in Class B, described as a high risk of harm.[@1] The Attorney General’s consolidation lists the plant in the Second Schedule, item 40, alongside processed preparations in item 1.[@2]
 
 ## How it is used
 

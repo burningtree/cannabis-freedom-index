@@ -213,3 +213,90 @@ test('Florida small-flower exceptions never silently include resin (#158)', () =
   assert.match(fl.segments.sharing, /Resin.*excluded.*gifting a concentrate can be a felony/);
   assert.match(fl.answers.caught.text, /concentrate possession can be a felony at any weight/);
 });
+
+test('plant thresholds cannot conceal concentrate felonies (#161–163)', () => {
+  const hi = country('us/hi'), wy = country('us/wy'), nc = country('us/nc');
+  assert.match(hi.segments.possession, /3 g.*plant|plant.*3 g/);
+  assert.match(hi.segments.possession, /⅛ oz.*class B.*1 oz.*class A/);
+  assert.match(hi.answers.caught.text, /concentrates.*felonies/);
+  assert.match(wy.segments.possession, /3 oz.*plant.*0\.3 g.*liquid.*3 g.*powder/);
+  assert.match(wy.answers.caught.text, /0\.3 g.*liquid.*felony/);
+  assert.match(nc.segments.possession, /3\/20 oz.*hashish.*any quantity.*isolated.*Class I felony/);
+  assert.match(nc.answers.caught.text, /isolated THC.*felony/);
+});
+
+test('Philippine import and gathering rules survive the ordinary weight bands (#164–165)', () => {
+  const ph = country('ph');
+  assert.match(ph.segments.possession.text, /Section 13.*maximum Section 11.*at least two.*regardless of amount/);
+  assert.match(ph.context.visitors.text, /importation.*life imprisonment.*regardless of quantity/);
+  assert.match(ph.answers.caught.text, /importation.*life.*group possession/);
+});
+
+test('Samoa keeps the actual Class B plant listing rather than the reported Class C misreading (#166)', () => {
+  const ws = country('ws');
+  assert.match(ws.segments.possession.text, /Second Schedule \(Class B\), item 40/);
+  assert.match(ws.segments.possession.text, /fourteen years/);
+  assert.match(ws.sources.ag2023.url, /ag\.gov\.ws/);
+});
+
+test('Russian and Latvian oil thresholds remain distinct from dried flower (#167, #179)', () => {
+  assert.match(country('ru').segments.possession.text, /6 g.*plant.*2 g.*hashish.*0\.4 g.*oil/);
+  assert.match(country('ru').segments.possession.text, /100 g, 25 g and 5 g/);
+  const lv = country('lv');
+  assert.match(lv.segments.possession.text, /1 g.*dried.*5 g.*undried.*0\.1 g.*hashish.*0\.05 g.*oil/);
+  assert.match(lv.answers.caught.text, /product-specific ceiling/);
+});
+
+test('Vietnam ordinary monitoring alone does not establish the rehabilitation-related use crime (#168)', () => {
+  const vn = country('vn');
+  assert.match(vn.segments.consumption.text, /management ends AND while under illicit-user management/);
+  assert.match(vn.context.consequences.text, /ordinary one-year monitoring.*assessment.*requires.*rehabilitation-related/);
+  const article = fs.readFileSync(path.join(root, 'articles/vietnam-repeat-use-crime-2025.md'), 'utf8');
+  assert.match(article, /ordinary monitoring period alone does not establish that offence/i);
+  assert.doesNotMatch(article, /exactly those the state already knows as users/);
+});
+
+test('aggravated use, distribution intent and border offences qualify personal-use summaries (#169–171)', () => {
+  assert.match(country('fr').segments.possession.text, /public-authority.*five years.*€75,000.*outside.*fixed-fine/);
+  assert.match(country('do').segments.possession.text, /intent to distribute or sell.*regardless of quantity/);
+  assert.match(country('mx').context.visitors.text, /import.*export.*ten to twenty-five years/i);
+  assert.match(country('mx').context.visitors.text, /named adult/);
+});
+
+test('New Zealand supply presumptions distinguish Class B preparations from Class C plant (#172)', () => {
+  const s = country('nz').segments.sharing.text;
+  assert.match(s, /28 g.*Class C.*5 g.*Class B.*250 mg/);
+  assert.match(s, /rebuttable presumption.*not an automatic conviction/);
+  assert.match(s, /fourteen years.*Class B.*eight years.*Class C/);
+});
+
+test('medical quantity and driving exceptions retain their qualifying conditions (#173–176)', () => {
+  assert.match(country('hr').context.medical.text, /7\.5 g of THC per 30 days/);
+  assert.doesNotMatch(country('hr').context.medical.text, /0\.75 g/);
+  assert.match(country('ch').context.driving.text, /physician’s prescription.*exempt.*Actual unfitness/);
+  assert.match(country('pe').segments.possession.text, /registered patient.*care or guardianship.*treatment need/);
+  const no = country('no').context.driving.text;
+  assert.match(no, /Fixed concentration rules do not apply.*prescription/);
+  assert.match(no, /Sativex and Epidyolex.*group 1.*specialist/);
+  assert.match(no, /Groups 2 and 3 do not qualify/);
+});
+
+test('Morocco use and holding penalties remain separate (#177)', () => {
+  const text = country('ma').segments.possession.text;
+  assert.match(text, /Article 2.*five to ten years.*5,000–50,000/);
+  assert.match(text, /Article 8.*use.*500–5,000.*not a universal.*ceiling for possession/);
+});
+
+test('new pilot and resin permissions are recorded without inventing broad retail supply (#160, #178)', () => {
+  const py = country('py'), mt = country('mt'), history = events();
+  assert.match(py.context.medical.text, /488\/2025.*19 December 2025.*two-year.*pilot/);
+  assert.match(py.context.products.text, /do not demonstrate.*currently in stock/);
+  assert.match(mt.context.products.text, /solid solventless.*processing authorisation/);
+  assert.match(mt.context.products.text, /33%.*34–66%.*above 66%/);
+  for (const id of ['paraguay-medicinal-cannabinoid-pilot-2025', 'malta-solventless-resin-permission-2025']) {
+    const e = history.find((e) => e.id === id);
+    assert.equal(e.checked, true);
+    assert.equal(e.before, undefined);
+    assert.ok(e.unscored);
+  }
+});

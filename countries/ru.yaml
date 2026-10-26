@@ -3,10 +3,11 @@ region: Europe
 iso_numeric: 643
 recreational: illegal
 medical: none
-updated: 2026-10-13
+updated: '2026-10-26'
 summary: >-
-  Up to 6 g is an administrative offence (fine or 15 days' detention); anything above is criminal
-  with long sentences. 'Drug propaganda' is also penalised.
+  The administrative tier is product-specific: up to 6 g of marijuana plant material, 2 g of hashish
+  or 0.4 g of cannabis oil. Above the relevant threshold, criminal penalties apply. Drug propaganda
+  is also penalised.
 scores:
   possession: 2
   cultivation: 1
@@ -17,14 +18,18 @@ scores:
 segments:
   possession:
     text: >-
-      Up to 6 g of cannabis (2 g of hashish) is an administrative offence under Article 6.8 of the
-      Code of Administrative Offences: a fine of 4,000–5,000 roubles or up to 15 days' detention.
-      Above 6 g it is a crime under Article 228 of the Criminal Code — up to three years for a
-      'significant amount' (6–100 g) and three to ten years above 100 g. For hashish the
-      tiers begin at 2 g and 25 g. Foreigners are deported even for the administrative offence.
+      For unauthorised personal possession, the administrative upper quantities differ: 6 g of
+      marijuana plant material, 2 g of hashish/cannabis resin and 0.4 g of cannabis/hashish oil.
+      Above the corresponding significant-quantity figure, Article 228 criminal penalties can
+      include up to three years; the large-quantity figures are 100 g, 25 g and 5 g respectively,
+      with three to ten years above that tier.[@quantities,uk228] Administrative possession can
+      bring a 4,000–5,000 rouble fine or up to fifteen days’ detention; foreigners also face
+      expulsion.[@koap68] Classification and the applicable weight of a preparation must be
+      established; not every liquid or carrier mixture is automatically hashish oil.[@quantities]
     sources:
-      - wiki
-      - res1002
+      - quantities
+      - uk228
+      - koap68
   cultivation:
     text: >-
       Growing plants that contain narcotics is an administrative offence under Article 10.5.1 of
@@ -41,9 +46,13 @@ segments:
     text: >-
       Article 228 is known as the 'people's article' because so many prisoners are held under it.
       The low thresholds, planted-evidence scandals and long sentences for anything resembling
-      supply make this far harsher than the 6 g rule suggests.
+      supply make this far harsher than the 6 g rule suggests.[@wiki] The 6 g figure is for plant
+      material: cannabis/hashish oil has significant and large grading figures of 0.4 g and 5 g,
+      with criminal penalties above the applicable thresholds.[@quantities,uk228]
     sources:
       - wiki
+      - quantities
+      - uk228
   sharing:
     text: >-
       Any sale or transfer, including giving cannabis away, falls under Article 228.1 of the
@@ -117,13 +126,15 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone, and the law treats foreigners more
-      severely at the lowest level: a foreign citizen who uses a narcotic without a
-      prescription, or refuses a medical examination, is fined 4,000 to 5,000 roubles or
-      arrested for up to 15 days and in either case expelled from Russia.
+      There is no legal recreational supply. The 6 g administrative ceiling concerns marijuana plant
+      material; hashish has a 2 g ceiling and cannabis/hashish oil 0.4 g. Above the applicable
+      figure, criminal possession penalties can apply; larger oil cases above the 5 g grading figure
+      can bring three to ten years. Foreigners can be expelled even for administrative
+      possession.[@quantities,uk228,koap68]
     sources:
-      - koap69
-      - res1002
+      - quantities
+      - uk228
+      - koap68
   driving:
     status: zero
     text: >-
@@ -199,3 +210,28 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  quantities:
+    title: Russian Government — Decree 1002, Schedule I quantity table
+    url: >-
+      https://www.consultant.ru/document/cons_doc_LAW_136206/6598ecb6e30274e2fbab0c605a6ebf21250a8eb6/
+    locator: >-
+      As amended 11 June 2025: cannabis plant 6/100/100000 g; hashish 2/25/10000 g; cannabis/hashish
+      oil 0.4/5/1000 g
+  uk228:
+    title: Russia — Criminal Code, Article 228
+    url: https://www.zakonrf.info/uk/228/
+    locator: Significant and large personal-possession penalties; statutory text reproduced by ZakonRF
+  koap68:
+    title: Russia — Administrative Offences Code, Article 6.8
+    url: https://www.zakonrf.info/koap/6.8/
+    locator: Personal possession; fine, detention and foreign-national expulsion
+answers:
+  carry:
+    answer: 'no'
+    text: Unlawful; administrative/criminal thresholds differ for plant material, resin and oil
+  caught:
+    answer: 'no'
+    label: Prison or detention
+    text: >-
+      Administrative detention is possible; cannabis oil has a 0.4 g criminal grading figure, rather
+      than the 6 g plant figure
