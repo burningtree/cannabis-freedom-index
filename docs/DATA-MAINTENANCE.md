@@ -1627,3 +1627,13 @@ treatment. Current capital cannabis sale penalties require enforcement 0 under
 the existing rubric; the profile and three later historical before-vectors are
 corrected together, taking the displayed current score from 5 to 3. Other score
 dimensions and the unresolved pre-1968 reconstruction remain unchanged.
+
+A [Türkiye sentencing-gap pass](research/history-turkey-penalties-2026-10-26.md)
+on 26 October 2026 adds the 1941 use penalties, 1953 capital drug law, 1965
+internal-exile repeal, 1979 crop-destruction rules, 1990 capital repeal and
+1991 personal-use sentence reduction. Three new articles and a rewritten 1933
+article use the original parliamentary texts. The 1933 and May 1990 events now
+use publication commencement. New enforcement steps show the 1953–1990 capital
+interval; current scores and existing before-vectors are unchanged. The inherited
+1933 first-step allocation and the earlier Ottoman/republican transition remain
+open for joint reconstruction.

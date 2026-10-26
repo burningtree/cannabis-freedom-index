@@ -1,34 +1,73 @@
 ---
-model: opus-5.5
-written: 2026-10-12
+model: gpt-6
+written: '2026-10-26'
 sources:
-  - title: Türkiye — Law No. 2313 on the Control of Narcotic Substances, consolidated text with amendment notes (Mevzuat Bilgi Sistemi)
-    url: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2313&MevzuatTur=1&MevzuatTertip=3
+  - type: law
+    title: Türkiye — Law 2313, original parliamentary text
+    authors:
+      - Grand National Assembly of Türkiye
+    year: 1933
+    locator: Printed pp. 1028–1031; Articles 3, 22–23, 30–31; Gazette 2435, 24 June 1933
+    url: >-
+      https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc012/kanuntbmmc012/kanuntbmmc01202313.pdf
+  - type: law
+    title: Türkiye — Law 2236, original parliamentary text
+    authors:
+      - Grand National Assembly of Türkiye
+    year: 1979
+    locator: >-
+      Printed p. 211; replacement Articles 3, 23 and 28; commencement Article 2; Gazette 16652, 31
+      May 1979
+    url: >-
+      https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc062/kanuntbmmc062/kanuntbmmc06202236.pdf
+  - type: law
+    title: Türkiye — Law 3652, original parliamentary text
+    authors:
+      - Grand National Assembly of Türkiye
+    year: 1990
+    locator: Printed p. 445; replacement Article 23, commencement Article 2; Gazette 20533, 30 May 1990
+    url: >-
+      https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc073/kanuntbmmc073/kanuntbmmc07303652.pdf
+  - type: law
+    title: Türkiye — Law 6123, original parliamentary text
+    authors:
+      - Grand National Assembly of Türkiye
+    year: 1953
+    locator: >-
+      Printed pp. 841–843 and 852 (PDF pp. 11–13, 22); Penal Code Articles 403–406 and commencement
+      Article 4: 1 August 1953
+    url: >-
+      https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc035/kanuntbmmc035/kanuntbmmc03506123.pdf
+  - type: law
+    title: Türkiye — Law 3679, original parliamentary text
+    authors:
+      - Grand National Assembly of Türkiye
+    year: 1990
+    locator: Printed pp. 92–94 (PDF pp. 5–7); Articles 23, 27 and 29; Gazette 20710, 29 November 1990
+    url: >-
+      https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc074/kanuntbmmc074/kanuntbmmc07403679.pdf
 ---
 
-Turkey's cannabis law is more than ninety years old. Law 2313 on the Control of Narcotic Substances was passed on 12 June 1933 and published in the Official Gazette twelve days later. Ninety years of amendments have changed its penalties many times and its central rule not at all.
+Türkiye's narcotics law prohibited growing Indian hemp described as serving exclusively to produce cannabis as a drug, and banned preparing, importing, exporting or selling the drug.[@1] It took effect on 24 June 1933, when it was published.[@1] Growing in breach of the ban carried one to six months in prison, and officials were instructed to destroy the plants.[@1]
 
-## One sentence
+## Cannabis had its own prohibition
 
-Article 3 reads, in the text as it stands: sowing hemp for the sole purpose of making esrar, and preparing, importing, exporting or selling esrar in any form, is prohibited. Esrar is the Turkish word for hashish and for cannabis as a drug.
+The law placed numerous narcotic medicines under health-ministry supervision and set out permits for their movement across borders.[@1] Cannabis as a drug followed a separate rule: its preparation, import, export and sale were prohibited.[@1]
 
-The article has been reworded once, in 1979. Another, Article 22, orders that esrar be seized wherever it is found.
+Cannabis found anywhere was to be seized immediately and dealt with under the law's confiscation and destruction procedures.[@1] The statute replaced an earlier narcotics law and referred prosecutions for several existing criminal-code drug offences to specialist courts.[@1]
 
-## Hemp as a crop
+## Officials could order crops destroyed
 
-What the law never banned is hemp itself. Its treatment has moved in stages, all recorded in the notes printed with the text.
+The original cultivation rule required a joint report from health and agricultural officials.[@1] The highest local administrator could then order the police to destroy the prohibited plants wherever they were found.[@1] A separate provision prescribed the one-to-six-month prison term for planting in breach of the ban.[@1]
 
-| Year | Change |
-|---|---|
-| 1990 | growing hemp for any purpose needs a permit; unlicensed plants are destroyed on an agricultural engineer's report |
-| 2008 | a fine for growing without a permit, or beyond its area |
-| 2014 | 4 to 12 years for growing to obtain cannabis; 1 to 3 years if only for one's own use |
-| 2017 | wiretaps and technical surveillance allowed for the growing offence |
-| 2023 | flowers and leaves may be grown for medicines, under the state grain board |
-| 2025 | that purpose widened to health, personal care and supplement products |
+These were the original rules adopted in June 1933.[@1] Later amendments changed both the cultivation penalty and the procedure for destroying crops.[@2,3]
 
-Two things stand out. The 2014 amendment drew a line the law had not drawn before, between the grower who means to supply and the one who grows for themselves, and gave the second a far shorter term. And the opening to medicine in 2023 runs entirely through a state body: the Soil Products Office grows or contracts the growing, within a quota the President may set.
+## Later laws raised the penalties and specified hemp permits
 
-## Why the index moved
+The [1979 amendment](/history/turkey-cannabis-crop-destruction-1979/) raised the cultivation punishment to at least one year in prison plus a fine.[@2] It also set out agricultural reporting, funding for destruction equipment and recovery of destruction costs from growers.[@2]
 
-The [1933 law](/history/turkey-narcotics-law-1933/) is the first step in [Türkiye's](/country/tr/) score, from the unregulated state to a ban. No later amendment has moved the scored sections on its own: the 2014 tier for personal growing is still prison, and the medical route is closed to individual growers. The country's possession and use scores rest on the Penal Code, which treats both as a crime with deferred prosecution for a first offence.
+The [1990 hemp revision](/history/turkey-hemp-permit-rule-1990/) expressly required agriculture-ministry permission for growing hemp for fibre, seed, stalk and similar purposes.[@3] The ministry would identify the places where those crops could be grown and supervise production.[@3] Unlicensed growing for any purpose was prohibited, with the plants subject to destruction.[@3]
+
+## The criminal code shaped users' sentences
+
+Separate criminal-code amendments determined the penalties for personal drug use and trafficking.[@4] The [1953 reform](/history/turkey-capital-drug-penalties-1953/) prescribed three to five years for use or possession for use, and life or death for specified cannabis trafficking offences.[@4] The [1990 repeal](/history/turkey-drug-death-penalty-repeal-1990/) replaced the drug-related death clauses with life imprisonment, another stage in [Türkiye's cannabis-law history](/country/tr/).[@5]
