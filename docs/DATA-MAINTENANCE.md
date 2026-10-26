@@ -1567,3 +1567,13 @@ purposes under legal conditions, including notification regimes without a licenc
 means neither unrestricted adult use nor licensed sellers only. Keep the permitted plant
 category, recipient restrictions and import/export licensing in the narrative; New Zealand's
 2026 hemp rules are the first example.
+
+An [Iraqi early-controls pass](research/history-iraq-early-2026-10-26.md) on
+26 October 2026 adds the postal guide's 1930 record of cannabis import permits,
+the 1949 disposal rules for court-confiscated drugs and the 1955 replacement
+fine/prison penalty. Two new articles explain the 1949 and 1955 changes; the
+1938 article now connects to the penalty amendment, and the 1965 article's
+references to its treaty rationale are corrected. The 1930 date belongs to the
+guide, not the underlying rule's commencement. Current scores and the inherited
+historical snapshots are unchanged: the original 1938 penalty and commencement
+clauses remain necessary for the open reconstruction of the 1933–2017 interval.

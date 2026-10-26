@@ -27,6 +27,13 @@ sources:
       Articles 28, 32, 37, 39–40 and 50–51; original article 39(1) cross-reference corrected in
       January 2018
     url: https://moj.gov.iq/upload/pdf/4446.pdf
+  - type: law
+    title: Law 64 of 1955 amending the Dangerous and Narcotic Drugs Law
+    authors: [Kingdom of Iraq]
+    year: 1955
+    container: United Nations, E/NL.1956/117, 8 January 1957
+    locator: Articles 1–3; Gazette issue 3642, 14 June 1955
+    url: https://digitallibrary.un.org/record/1296975/files/e-nl-1956-117-e.pdf
 ---
 
 Iraq's 1938 drug law restricted possession of cannabis and its resin to authorised professionals and people obtaining it through lawful prescription or pharmacy channels.[@1] Manufacturers and traders also faced licences, import and export permits, and records that health officials could inspect.[@1]
@@ -53,7 +60,9 @@ The law also addressed consignments passing through Iraq.[@1] Authorised traders
 
 Pharmacists had to retain prescriptions for controlled drugs for at least three years, allowing later inspection of how the medicines had been supplied.[@1]
 
-## A later law brought the controls together
+## Penalties changed before a replacement law arrived
+
+The [1955 amendment](/history/iraq-drug-penalties-1955/) set a general penalty of 100–1,000 dinars, six months to five years in prison, or both, for breaking the law.[@4] It also required confiscation of materials seized in the offender's actual use.[@4]
 
 The [1965 narcotics law](/history/iraq-narcotics-law-1965/) replaced both this law and the earlier [cultivation ban](/history/iraq-hemp-cultivation-law-1933/).[@2] It kept unauthorised possession and cultivation restricted while permitting supervised crops grown exclusively for fibre and seeds.[@2]
 

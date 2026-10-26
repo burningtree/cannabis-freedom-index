@@ -62,7 +62,7 @@ Iraq's 1965 drug law kept cannabis growing and unauthorised possession prohibite
 
 The [1933 cultivation ban](/history/iraq-hemp-cultivation-law-1933/) had required cannabis plants to be uprooted at the grower's expense.[@2] A first offence meant a fine of up to ten dinars; repeat offending could bring up to three months in prison, a larger fine, or both.[@2] Anyone who knew of planted crops had to report them to the authorities.[@2]
 
-A [drug law followed in 1938](/history/iraq-dangerous-drugs-law-1938/).[@6] The government's explanation for replacing both laws in 1965 pointed to gaps found during their use and to the need to match the newer international rules.[@6] Iraq had [joined the Single Convention](/history/iraq-single-convention-1962/) in 1962.[@6] That treaty supplied the new law's definitions and control system.[@6]
+A [drug law followed in 1938](/history/iraq-dangerous-drugs-law-1938/).[@6] The government's explanation for replacing both laws in 1965 pointed to gaps found during their use and to the need to match the newer international rules.[@1] Iraq had [joined the Single Convention](/history/iraq-single-convention-1962/) in 1962.[@1] That treaty supplied the new law's definitions and control system.[@1]
 
 ## Fibre and seed crops needed special permission
 
