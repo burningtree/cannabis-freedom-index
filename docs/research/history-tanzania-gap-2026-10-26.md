@@ -5,7 +5,9 @@ undated 1935 ordinance and an unscored 1995 Act. The UN compilation of Tanganyik
 was obtained as a scan, so the 1924 customs notice, the 1926 noxious-plants ordinance and the 1935
 dangerous-drugs ordinance could be read directly rather than through an indexed extract. The pass
 replaced the 1900 estimate with two dated events, scored them, checked the 1935 and 1995 records,
-and wrote an article on the 1926 ban. No country-profile score or segment text changed.
+and wrote an article on the 1926 ban. No country-profile score or segment text changed. A
+[follow-up note](history-tanzania-followup-2026-10-26.md) compares the 1995 Act with its 31 July
+2002 consolidation and reads the operative Zanzibar section 17 and penalty.
 
 ## The documents
 
@@ -70,9 +72,9 @@ text was read. Section 63 expressly repeals both the Cultivation of Noxious Plan
 Ordinance (chapter 134) and the Dangerous Drugs Ordinance (chapter 95). The Act created a separate
 small-personal-use tier, with a 200,000-shilling fine, seven years, or both in the original text,
 while the main growing and supply offences could bring life imprisonment or a much larger fine. It
-took effect on 1 January 1996. The entry remains **unscored** because the original penalty
-alternatives and the later amendments have not been compared closely enough with the 1926 and 1935
-regimes to justify a separate score step.
+took effect on 1 January 1996. The entry remains **unscored**; the follow-up note compares the
+original penalty alternatives with the 31 July 2002 consolidation and leaves the inherited score
+vector in place pending a full-vector review.
 
 **Tanzania, Drug Control and Enforcement Act, Act 5 of 2015.** Sections 11, 15 and 17 were read.
 The Act set at least thirty years for unlawful cultivation and a residual personal-use penalty of
@@ -96,7 +98,7 @@ Two later Zanzibar texts were read:
   cannabis provisions are still missing.
 - **Pharmaceuticals and Dangerous Drugs Act, 1986.** Its arrangement of sections includes section
   17, "Cultivation and possession of bhang prohibited", and it repeals the Dangerous Drugs Decree,
-  Cap. 76. The operative section and penalty were not read.
+  Cap. 76. The operative section and penalty are read in the follow-up note.
 
 No Zanzibar entry was added. Scoring one would require the 1927 decree and a decision about whether
 Zanzibar's separate law belongs in the same national timeline as the mainland. The 1931 report and
@@ -166,11 +168,11 @@ match the reference numbers.
 - The 1935 ordinance's penalty maxima are higher than the 1926 ordinance's, but there is no
   enforcement record here to show whether that changed sentencing in practice. The 1935 and 1995
   entries remain unscored.
-- The 1995 Act's original penalties and its later amendments have not been fully compared. The
-  existing 1995 entry is checked but unscored for that reason.
-- Zanzibar's 1927 Dangerous Drugs Decree, its original cannabis schedule, the 1971 Decree No. 11/71
-  and the operative text of the 1986 Act's section 17 remain unread. The 1984 amendment's five-to-ten
-  year education-centre sentence and six strokes are recorded as a lead only.
+- The 1995 Act's 2012 amendment and final pre-repeal text were not read; the 31 July 2002
+  consolidation is compared in the follow-up note. The 1995 entry remains checked but unscored.
+- Zanzibar's 1927 Dangerous Drugs Decree, its original cannabis schedule and the 1971 Decree No.
+  11/71 remain unread. The 1984 amendment and the 1986 Act's section 17 penalty are recorded in the
+  follow-up note.
 - German-era Tanganyika law was not searched. The 1924 notice is the first dated restriction found,
   not a demonstrated first restriction.
 - The 2016 small-quantity regulations and later changes to the 2015 Act were outside this pass. The
