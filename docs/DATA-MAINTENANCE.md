@@ -1533,6 +1533,15 @@ rebuilt in stages (100→97→70→12→14→16→19) instead of one drop at 195
 Centenier entry was verified against the law. Two articles cover the 1955
 border rule and the 1966 possession ban. Today's scores are unchanged.
 
+A [Puerto Rico gap pass](research/history-puerto-rico-gap-2026-10-26.md) on 26
+October 2026 reconstructs the scored chain the 1959 and 1971 entries had left
+open (100→11→6→11→14) and fills the 1971–2015 gap. The 1959 felony and the 1971
+Controlled Substances Act were rescored from the original statutes; Law 109 of
+1980 (fixed-term rewrite of the same durations) and the April and September
+2013 legalisation and medical bills were added from the session laws and
+Associated Press reports. The 1959 and 1971 articles already existed and were
+left untouched. Today's scores are unchanged.
+
 ### Mixed legal products and maximum penalties
 
 Use `recreational: death` wherever an in-force law permits death for a cannabis offence,
