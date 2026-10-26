@@ -3,10 +3,17 @@ region: Europe
 iso_numeric: 705
 recreational: decriminalised
 medical: legal
-updated: 2026-10-24
+updated: 2026-10-26
 summary: >-
   Possession for personal use is a minor offence punished by a fine. Voters backed medical and
   personal use in 2024 referendums, and a 2025 law set up a full medical cannabis system.
+answers:
+  caught:
+    answer: limited
+    label: Misdemeanour fine
+    text: >-
+      Small one-time personal possession brings a non-criminal fine and confiscation; imprisonment
+      as a sentence for this misdemeanour was removed in 2005
 scores:
   possession: 3
   cultivation: 1
@@ -17,14 +24,16 @@ scores:
 segments:
   possession:
     text: >-
-      Possessing a smaller quantity of a prohibited drug for one-time personal use is a
-      misdemeanour. The fine in the Act is 10,000 to 50,000 tolars, or detention of up to five
-      days. The Act does not state a gram amount. A milder penalty may be imposed if the person
-      voluntarily enters a treatment programme for drug users, or a social-protection programme
-      approved by the health council or the drugs council. Authorised officers seize the drugs,
-      and the Act says they are taken without compensation.
+      A smaller quantity for one-time personal use is a non-criminal misdemeanour with a fine. The
+      Celje appeal court stated the euro range as €41.73–208.65 in 2023; the Act sets no gram
+      threshold. NIJZ’s 2025 report confirms that the general Minor Offences Act removed
+      imprisonment as a sentence for these possession misdemeanours in 2005. Voluntary treatment or
+      an approved social-care programme can support a milder penalty; the drugs are confiscated.
     sources:
       - zpppd
+      - zp1
+      - fine2023
+      - nijz2025
   cultivation:
     text: >-
       Not legal. Growing cannabis with THC is prohibited and can be prosecuted as production. A
@@ -35,13 +44,11 @@ segments:
       - boc
   enforcement:
     text: >-
-      A smaller quantity for one-time personal use is a misdemeanour fine of 10,000 to 50,000
-      tolars, or detention of up to five days. Production and dealing are crimes: Article 186 of
-      the Criminal Code sets one to ten years in prison for unlawfully manufacturing or selling a
-      narcotic, or buying or keeping it in order to resell, and three to fifteen years where it
-      is sold or handed out free of charge to a minor or in a school, prison or public place.
+      Minor personal possession is handled by a fine and confiscation. Since 2005, imprisonment
+      cannot be imposed as the sentence for that misdemeanour. Production and dealing remain
+      separate criminal offences under Article 186, with prison terms.
     sources:
-      - zpppd
+      - nijz2025
       - kz1
   sharing:
     text: >-
@@ -140,11 +147,13 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possessing a smaller quantity for one-time
-      personal use is a misdemeanour, with a fine of 10,000 to 50,000 tolars or detention of up
-      to five days. The Act says the drugs are taken without compensation.
+      There is no legal recreational supply. A smaller quantity for one-time personal use is a
+      non-criminal misdemeanour with a fine and confiscation; the Celje appeal court gave the range
+      as €41.73–208.65 in 2023. Imprisonment as a sentence for this misdemeanour was removed in
+      2005.
     sources:
-      - zpppd
+      - fine2023
+      - nijz2025
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 564 kg of herbal cannabis and 1.3
@@ -154,6 +163,17 @@ context:
     sources:
       - euda_szr
 sources:
+  fine2023:
+    title: Celje Higher Court — PRp 32/2023, 28 March 2023
+    url: https://iskalniksodneprakse.si/documents/docfile%3A5c808863-bf5b-4a3b-9a18-57c6d87e966a
+    locator: Paragraph 6; Article 33(2) euro-denominated fine range; read with NIJZ 2025 on removal of imprisonment.
+  zp1:
+    title: Slovenia — Minor Offences Act (ZP-1), general misdemeanour framework
+    url: https://pisrs.si/Pis.web/pregledPredpisa?id=ZAKO2537
+  nijz2025:
+    title: NIJZ — 2025 National Report (2024 data), Legal framework workbook
+    url: https://nijz.si/wp-content/uploads/2026/01/NP_2025_obl_eng_26-1.pdf
+    locator: PDF pages 30 and 37; changes in penalties since 2005.
   de_cang:
     title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
     url: https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz

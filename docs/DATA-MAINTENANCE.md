@@ -1672,3 +1672,10 @@ that punishes simple possession like supply (annulling the 1956 law), and the
 November 1997 repeal-and-reenactment — all read in full. Unscored context:
 degrees-based penalties with no mapped segment change. One article covers the
 1988 hinge. Today's scores are unchanged.
+
+A [bug-report correction pass](research/bug-issues-144-158-2026-10-26.md) on 26 October 2026
+covers issues #144–158: current possession/growing exceptions, actual medical dispensing,
+seed/hemp commencement, diversion, clubs and a stale homepage history fact. Seven history
+entries record the verified developments; Ukraine's access step now dates first dispensing.
+Illinois and Louisiana state scores were reviewed without inserting state vectors into the
+national US chain. Profile/quick-answer regression checks guard the reported distinctions.

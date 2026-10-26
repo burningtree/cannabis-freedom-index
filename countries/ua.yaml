@@ -3,10 +3,16 @@ region: Europe
 iso_numeric: 804
 recreational: decriminalised
 medical: limited
-updated: 2026-10-25
+updated: 2026-10-26
 summary: >-
   Possession of up to 5 g is an administrative offence. Medical cannabis became legal in August
-  2024.
+  2024; the first patients received prescribed capsules on 11 June 2026.
+answers:
+  buy:
+    answer: limited
+    text: >-
+      Prescribed medicines began dispensing in June 2026 through a small pharmacy network; adult-use
+      sales remain illegal
 scores:
   possession: 2
   cultivation: 2
@@ -70,13 +76,12 @@ segments:
       - public_use
   access:
     text: >-
-      No adult-use source. The medical law provides for licensed pharmacies to dispense registered
-      or pharmacy-compounded cannabis medicines on an electronic prescription. The Ministry of
-      Health says prescribing should begin only once cannabis substance or finished medicines have
-      been imported and pharmacies are ready, so the route remains difficult to use.
+      Medical dispensing began on 11 June 2026. The Health Ministry reported six operating
+      pharmacies in six cities; the wider licensing count does not mean all sites stock medicines.
+      Patients need an electronic prescription valid for ten days. Adult-use supply remains illegal.
     sources:
-      - narcotics
-      - moz
+      - dispensing2026
+
 context:
   production:
     text: >-
@@ -86,18 +91,20 @@ context:
     sources:
       - narcotics
   products:
-    text: Registered finished medicines or medicines compounded by a licensed pharmacy; hemp products.
+    text: >-
+      The first dispensing involved hard delta-9 THC capsules with an initial 5 mg dose. The
+      framework covers registered or pharmacy-compounded medicines; it does not establish retail
+      flower availability.
     sources:
+      - dispensing2026
       - narcotics
-      - moz
   medical:
     text: >-
-      Legal in a tightly controlled framework since August 2024. The Ministry of Health lists the
-      qualifying conditions and electronic-prescription process, but says prescriptions depend on
-      imports and pharmacy readiness.
+      The first three patients in Vinnytsia received prescribed delta-9 THC capsules on 11 June
+      2026: one person with multiple sclerosis and two wounded veterans with neuropathic or phantom
+      pain. Eligibility and prescribing remain tightly controlled.
     sources:
-      - narcotics
-      - moz
+      - dispensing2026
   consequences:
     text: Administrative offences do not create a criminal record.
     sources:
@@ -180,6 +187,9 @@ context:
     sources:
       - texty25
 sources:
+  dispensing2026:
+    title: Ukraine Ministry of Health — First dispensing of medical cannabis medicines, 11 June 2026
+    url: https://moz.gov.ua/en/in-ukraine-the-first-dispensing-of-medical-cannabis-products-has-been-carried-out
   admin44_current:
     type: law
     title: Ukraine Administrative Offences Code — Article 44, Rada text reproduced by Advoks Global

@@ -1,60 +1,40 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+model: gpt-6.1-sol
+written: 2026-10-26
 sources:
-  - title: AllAfrica — Tanzania, government tables bill amending the Drugs Control and Enforcement Act (2 September 2026)
+  - title: Tanzania — Written Laws (Miscellaneous Amendments) Act 6 of 2026
+    url: https://oagmis.oag.go.tz/portal/acts/341/download
+    locator: Part VIII, sections 42–43; Gazette of 2 October 2026.
+  - title: Tanzania Office of the Attorney General — Act 6 of 2026 registry
+    url: https://oagmis.oag.go.tz/portal/acts/341
+    locator: Enactment, publication and commencement dates.
+  - title: Tanzania — Drug Control and Enforcement Act, Chapter 95, revised edition 2023
+    url: https://elibrary.osg.go.tz/server/api/core/bitstreams/1438371a-253b-4360-8c28-a9abed3572d0/content
+    locator: Sections 1–2 and 11; Mainland application, definitions and minimum sentence.
+  - title: Tanzania Daily News via AllAfrica — Government presents drug-law amendments, 1 September 2026
     url: https://allafrica.com/stories/202609020722.html
 ---
 
-In many countries a cannabis seed is the one part of the plant the law leaves
-alone. Tanzania's government has proposed to end that, whatever the seed is for.
+Tanzania’s proposal to widen cannabis seed offences became law on 2 October 2026. On the mainland, holding or supplying seeds of a prohibited plant no longer needs a connection to drug production to fall within the offence. The change exposes seed holders to an existing section with a minimum thirty-year prison sentence.[@1, 2, 3]
 
-## The law today
+## From the September proposal to the October law
 
-Cannabis has been controlled in Tanzania since the colonial
-[Dangerous Drugs Ordinance](/history/tanganyika-dangerous-drugs-ordinance-1935/) of
-1935. The current statute, the
-[Drugs Control and Enforcement Act](/history/tanzania-drug-control-act-2015/), took
-effect in 2015: life imprisonment for
-trafficking, at least thirty years for growing a prohibited plant, and a fine or up
-to three years for small amounts of up to 50 g.
+Attorney General Hamza Johari presented the amendments in parliament on 1 September, describing them as a way to close loopholes in drug control.[@4] The Attorney General’s register records that date for enactment and gives 2 October for publication and commencement; the signed Act bears an assent date of 19 September.[@1, 2]
 
-Calls for change have come to nothing. In
-[2019](/history/tanzania-mp-medical-cannabis-2019/) an MP argued in parliament for
-medical cannabis.
+The distinction matters to the account of this reform. The September presentation belongs to the bill’s history, while the October date marks the rule that people now face.[@1, 2] The [commencement entry](/history/tanzania-seed-possession-law-2026/) records that later step separately.
 
-## The bill
+## A seed’s intended use stops being the condition
 
-On 1 September 2026 the attorney general, Hamza Johari, presented the Miscellaneous
-Laws (Amendments) Bill in Dodoma. He said its aim was "closing loopholes in the
-law". For drugs it would:
+Previously, the cannabis definition expressly excluded seeds, mature stalk and fibre, while another provision prohibited possessing or supplying seeds in drug production.[@3] That left the offence’s wording tied to what the seeds were being used for.[@3]
 
-- make it an offence to possess or distribute seeds of any prohibited plant,
-  "regardless of the intended use of the seeds";
-- recognise narcotics in liquid as well as solid form, which the Act did not
-  expressly do;
-- create an offence of holding narcotics in breach of the conditions of a permit;
-- let an officer authorised by the drug enforcement authority issue search
-  warrants, when the commissioner general or the officer in charge of a police
-  station is unavailable;
-- require the country of origin of seized drugs to be recorded where it is known.
+The final law replaces the exclusion with inclusion and removes that purpose condition from the seed offence.[@1] The penalty comes from the existing section 11: its minimum thirty-year term applies across the listed prohibited-plant offences, including cultivation.[@3]
 
-The report gives no penalties for the new offences and does not say when parliament
-will vote.
+## Growing was already severely punished
 
-## Why seeds matter
+The older Act already treated unauthorised cultivation as an offence carrying at least thirty years in prison.[@3] It also covered an owner or occupier who allowed land to be used to grow a prohibited plant, alongside other unauthorised dealings with those plants.[@3] The seed amendment widens a part of that established prohibition.[@1, 3]
 
-The 1961 Single Convention defines cannabis as the flowering tops and leaves seeds
-out, and Tanzania's own Act follows it: cannabis is any part of the plant "excluding
-the seeds". Planting or scattering seed already counts as cultivation, but seed on
-its own is not a narcotic. A rule that ignores intended use closes that gap
-completely.
+These provisions concern Mainland Tanzania, the territory identified in the principal Act’s application clause.[@3] Zanzibar’s separate framework needs its own sources; this amendment cannot supply its rules.[@3]
 
-Oman did something similar the same month, banning any cannabis seed that can
-germinate in its [new drug law](/history/oman-narcotics-law-2026/).
+## What the index records
 
-## In the index
-
-The bill is not law, and seeds are described on the index but not scored, so
-[Tanzania's](/country/tz/) score does not move. If the bill passes, the country's
-note on seeds and clones will change from a gap in the law to an express ban.
+The [Tanzania profile](/country/tz/) now describes the seed prohibition under the enacted law, and the September proposal links forward to commencement.[@1, 2] Seeds and clones are unscored context in the index, so the new seed restriction leaves its six personal-freedom scores unchanged. Readers following the original bill now reach the law that followed it.

@@ -102,3 +102,114 @@ test('Cambodia custodial possession penalties are not classified as typical fine
   const rubric = yaml.load(fs.readFileSync(path.join(root, 'segments.yaml'), 'utf8')).find((s) => s.id === 'enforcement');
   assert.equal(rubric.levels.find((l) => l.score === 1).text, 'Custodial penalties for users');
 });
+
+test('Fiji and Slovenia visitor guidance keeps judicial and superseding-law limits (#144, #146)', () => {
+  const fj = country('fj'), si = country('si');
+  assert.match(fj.context.visitors.text, /100 g.*guidelines favour.*worst cases/);
+  assert.doesNotMatch(fj.context.visitors.text, /any amount.*three.month|mandatory/i);
+  for (const t of [si.segments.possession.text, si.segments.enforcement.text, si.context.visitors.text]) {
+    assert.doesNotMatch(t, /tolars|five days|five-day/);
+    assert.match(t, /2005/);
+  }
+  assert.match(si.segments.possession.text, /€41\.73–208\.65.*2023/);
+  assert.match(si.answers.caught.text, /non-criminal.*removed in 2005/);
+});
+
+test('the 1798 homepage fact stays a Bengal Board recommendation (#145)', () => {
+  const facts = fs.readFileSync(path.join(root, 'src/lib/facts.js'), 'utf8');
+  const fact = facts.split('\n').find((l) => l.includes('kicker: "1798 · India"'));
+  assert.match(fact, /Bengal.*Board recommended taxing/);
+  assert.doesNotMatch(fact, /British Parliament|1838|1871|1877/);
+  assert.equal(events().find((e) => e.id === 'india-bhang-tax-1798').category, 'debate');
+});
+
+test('Illinois adult limits and lawful gifts reach the state profile (#147)', () => {
+  const il = country('us/il');
+  assert.match(il.segments.possession, /60 g.*10 g.*1,000/);
+  assert.match(il.segments.possession, /non-residents have half.*cumulative/);
+  assert.match(il.segments.sharing, /non-commercial gifts.*21\+.*possession limits/);
+  assert.equal(il.scores.sharing, 5);
+  assert.equal(il.scores.possession, 6);
+  const e = events().find((e) => e.id === 'illinois-doubled-possession-limits-2026');
+  assert.equal(e.date, '2026-06-12');
+  assert.equal(e.subunit, 'il');
+  assert.equal(e.before, undefined); // a subunit must not inject state scores into the national chain
+});
+
+test('Louisiana school-zone custody is visible in both quick answers (#148)', () => {
+  const la = country('us/la');
+  assert.match(la.segments.possession, /2,000 feet.*school buses.*colleges/);
+  assert.match(la.answers.carry.text, /school-zone.*one year/);
+  assert.match(la.answers.caught.text, /school-zone.*one year/);
+  assert.equal(la.scores.enforcement, 2);
+  assert.equal(events().find((e) => e.id === 'louisiana-school-zone-marijuana-2026').subunit, 'la');
+});
+
+test('Montana residency and Missouri growth stages survive abbreviated answers (#149, #151)', () => {
+  const mt = country('us/mt'), mo = country('us/mo');
+  assert.match(mt.segments.cultivation, /Montana residents 21\+; visitors may not grow/);
+  assert.match(mt.segments.cultivation, /written permission.*cannabis business/);
+  assert.match(mt.answers.grow.text, /residents 21\+/);
+  assert.match(mo.segments.cultivation, /six flowering.*six non-flowering.*six clones.*18 plants/);
+  assert.match(mo.segments.cultivation, /12 of each stage, 36/);
+  assert.match(mo.answers.grow.text, /six flowering.*six larger non-flowering.*six clones/);
+});
+
+test('Tanzania records enacted seed controls separately from the proposal (#150)', () => {
+  const tz = country('tz'), history = events();
+  assert.equal(tz.context.planting.seeds, 'illegal');
+  assert.equal(tz.context.planting.seeds_trade, 'banned');
+  assert.match(tz.context.planting.text, /2 October 2026.*minimum sentence is thirty years/);
+  assert.doesNotMatch(tz.context.planting.text, /not.*passed|excluding.*seeds/);
+  const e = history.find((e) => e.id === 'tanzania-seed-possession-law-2026');
+  assert.equal(e.date, '2026-10-02');
+  assert.equal(e.checked, true);
+  assert.ok(history.find((e) => e.id === 'tanzania-seed-possession-bill-2026').related.includes(e.id));
+  const article = fs.readFileSync(path.join(root, 'articles/tanzania-seed-possession-bill-2026.md'), 'utf8');
+  assert.doesNotMatch(article, /bill is not law|If the bill passes/);
+});
+
+test('New Hampshire distinguishes criminal status from imprisonment (#152)', () => {
+  const nh = country('us/nh');
+  assert.match(nh.segments.possession, /fourth offence.*class B misdemeanour.*three.*three years/);
+  assert.match(nh.segments.possession, /fine-only, with no jail/);
+  assert.match(nh.answers.carry.text, /fourth.*criminal/);
+  assert.match(nh.answers.caught.text, /criminal.*no jail/);
+});
+
+test('Ukraine access begins at verified dispensing, rather than framework enactment (#153)', () => {
+  const ua = country('ua'), history = events();
+  assert.match(ua.segments.access.text, /11 June 2026.*six operating pharmacies/);
+  assert.doesNotMatch(ua.context.medical.text, /prescriptions depend on imports|not yet.*dispens/i);
+  assert.equal(history.find((e) => e.id === 'ukraine-medical-2024').before, undefined);
+  const first = history.find((e) => e.id === 'ukraine-first-medical-dispensing-2026');
+  assert.equal(first.date, '2026-06-11');
+  assert.equal(first.before.access, 0);
+  assert.equal(ua.scores.access, 1);
+});
+
+test('South African hemp and Oregon premises keep their distinct legal channels (#154, #155)', () => {
+  const za = country('za'), us = country('us/index');
+  assert.match(za.context.production.text, /1 December 2025.*2% delta-9 THC/);
+  assert.doesNotMatch(za.context.black_market.text, /only legal route|everything bought is bought outside the law/);
+  assert.match(us.context.clubs.text, /Oregon does not license.*members-only businesses/);
+  assert.doesNotMatch(us.context.clubs.text, /Oregon permits cannabis social clubs/);
+});
+
+test('Irish referrals and Turkish product permission do not imply legal retail supply (#156, #157)', () => {
+  const ie = country('ie'), tr = country('tr');
+  assert.match(ie.segments.possession.text, /1 September 2026.*over 18.*first drug offence.*consent/);
+  assert.match(ie.answers.caught.text, /discretionary health referral.*remains criminal/);
+  assert.doesNotMatch(ie.segments.enforcement.text, /Most people.*court/i);
+  assert.match(tr.context.medical.text, /special import list.*red prescription.*31 January 2026/);
+  assert.match(tr.context.medical.text, /availability has not been verified/);
+  assert.doesNotMatch(tr.context.medical.text, /distribution.*from 2025/);
+  assert.match(tr.answers.buy.text, /special import route.*stock has not been verified/);
+});
+
+test('Florida small-flower exceptions never silently include resin (#158)', () => {
+  const fl = country('us/fl');
+  assert.match(fl.segments.possession, /20 g.*plant material.*resin.*felony at any weight/);
+  assert.match(fl.segments.sharing, /Resin.*excluded.*gifting a concentrate can be a felony/);
+  assert.match(fl.answers.caught.text, /concentrate possession can be a felony at any weight/);
+});
