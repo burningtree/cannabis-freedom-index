@@ -43,9 +43,10 @@ intoxicant.[@1]
 
 The 1888 ban broke the monopoly model without ending cultivation in the Rif.
 Hassan's son restored the kif and tobacco monopolies in 1896, and European
-diplomats later agreed to keep them as French influence grew. The
-[1890 regulations](/history/morocco-hassan-regulations-1890/) tightened the
-rules again without restoring a ban. In 1910 the tobacco monopoly passed to
+diplomats later agreed to keep them as French influence grew. Accounts
+conventionally dated around 1890 attribute Rif cultivation privileges to
+Hassan I, though later scholarship finds no decree behind them. In 1910 the
+tobacco monopoly passed to
 a state-owned farm, with kif added to its crops in 1914; the protectorate
 banned hashish imports in 1922 while leaving kif aside. Duvall dates the full
 ban on kif to 1954; the timeline continues through the
