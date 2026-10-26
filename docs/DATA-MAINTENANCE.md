@@ -1733,3 +1733,9 @@ same convention; the 1974 `after` state is forced by the checked 2015
 `before`, so no checked entry changed. The 2015 judgment text was read in
 full but its pre-existing peer article was left untouched. Today's scores
 are unchanged.
+
+An [Azerbaijan gap pass](research/history-azerbaijan-gap-2026-10-26.md) on
+26 October 2026 adds the scored 1974 Soviet possession step (20→9) on the
+same convention, with the production-range clause covering the cultivation
+1→0 move. The 2001 reform's peer article was left untouched. Today's
+scores are unchanged.
