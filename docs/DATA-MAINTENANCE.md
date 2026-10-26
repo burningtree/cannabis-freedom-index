@@ -1739,3 +1739,11 @@ An [Azerbaijan gap pass](research/history-azerbaijan-gap-2026-10-26.md) on
 same convention, with the production-range clause covering the cultivation
 1→0 move. The 2001 reform's peer article was left untouched. Today's
 scores are unchanged.
+
+A [Curaçao/Sint Maarten gap pass](research/history-curacao-sintmaarten-gap-2026-10-26.md)
+on 26 October 2026 replaces both 1928 first-restriction estimates with the
+dated 30 July 1929 Antillean drug ordinance (100→25 and 100→24), verified
+against the 1960 consolidation's replacement notes and the commencement
+history. The 2018 joint prosecution guideline was read in Dutch and
+corroborates the checked tolerance entries. No article: the modern arc
+already has peer coverage. Estimated first bans fall from 62 to 60.
