@@ -1806,3 +1806,14 @@ reported Class C listing is disproved by the Attorney General’s Class B
 schedule; the fourteen-year maximum remains. Existing scores and historical
 vectors are preserved. Ten regression tests cover the corrected distinctions;
 Latvian and New Zealand full-text retrieval limits are documented.
+
+A [remaining-bug review for #145 and #159](research/bug-followups-145-159-2026-10-26.md)
+corrects the Egypt article's residual 1798 India tax claim and Costa Rica's
+unsupported operational medical-supply claim. Costa Rica retains limited medical
+status; access becomes 0 pending verified operating THC supply, and the 2022
+enabling law becomes unscored. Personal imports and compounded preparations
+remain explicit exceptions to ordinary product-registration rules. Regression
+coverage includes the article cross-reference and patient-access distinction.
+The same review resolves #180 by separating India's federal leaf-only bhang
+exclusion from state prohibitions and authorisations, including Maharashtra;
+licensed bhang supply in other states and national scores remain explicit.

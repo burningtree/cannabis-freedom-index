@@ -3,7 +3,7 @@ region: North America
 iso_numeric: 188
 recreational: decriminalised
 medical: limited
-updated: 2026-10-13
+updated: '2026-10-26'
 summary: >-
   Personal possession is not penalised, and courts require evidence of trafficking before
   punishing home cultivation. A 2022 law legalised medical cannabis and hemp.
@@ -13,7 +13,7 @@ scores:
   enforcement: 4
   sharing: 1
   consumption: 3
-  access: 1
+  access: 0
 segments:
   possession:
     text: >-
@@ -52,11 +52,13 @@ segments:
       - obs
   access:
     text: >-
-      No legal adult-use source of any kind. A government bill to regulate recreational sales was
-      presented but not approved.
+      No lawful adult-use supply exists. Law 10113 and its regulations provide medical routes, but
+      an operating THC patient-supply route has not been verified. Registered-product pharmacy
+      sales, individual import authorisations and pharmacy compounding have different
+      requirements.[@medical44917,registration2026]
     sources:
-      - lex
-      - obs
+      - medical44917
+      - registration2026
 context:
   production:
     text: >-
@@ -66,16 +68,29 @@ context:
       - law10113
       - mag
   products:
-    text: Hemp and CBD products, and medicinal products under the 2022 law.
+    text: >-
+      Hemp/CBD goods are distinct from prescription THC products. The medicinal framework permits
+      registered dried flower and dosed products; individual pharmacy-made non-sterile preparations
+      are exempt from finished-product registration, subject to their own controls. These
+      permissions do not establish stocked products.[@medical44917]
     sources:
-      - law10113
+      - medical44917
   medical:
     text: >-
-      Legal since 2022 on prescription, with licensed production and pharmacy dispensing. The market
-      is still small.
+      Law 10113 created the medical framework in 2022.[@law10113] Decree 44917-S allows pharmacy
+      sales of registered medicinal cannabis products; controlled products require a digital
+      prescription. The Health Ministry opened applications in June 2025 and still publishes
+      registration procedures. Routine pharmacy availability of a named approved THC product has not
+      been established.[@medical44917,registration_open,registration2026] Section 8.4 separately
+      allows the drug authority to authorise personal imports of unregistered medicines on medical
+      documentation, including for qualifying patients treated abroad. Non-sterile pharmacy
+      compounding also has a registration exception. Neither route is evidence that ordinary
+      pharmacies already stock cannabis medicines.[@medical44917]
     sources:
       - law10113
-      - obs
+      - medical44917
+      - registration_open
+      - registration2026
   consequences:
     text: No criminal record for personal use.
     sources:
@@ -181,3 +196,28 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  medical44917:
+    title: Costa Rica Procuraduría — Decree 44917-S, RTCR 515:2024
+    url: https://www.pgrweb.go.cr/DOCS/NORMAS/1/VIGENTE/D/2020-2029/2025-2029/2025/1969D/173FBA.HTML
+    locator: >-
+      Sections 6.1.1–6.1.3, 8.4, 9.1 and 10.1.1: product registration, personal import
+      authorisation, compounded preparation exception and prescription dispensing
+  registration_open:
+    title: Costa Rica Health Ministry — THC medicinal product registration opens, 23 June 2025
+    url: >-
+      https://www.ministeriodesalud.go.cr/index.php/prensa/62-noticias-2025/2162-costa-rica-inicia-registro-de-productos-medicinales-a-base-de-cannabis-con-thc
+    locator: >-
+      Registered and approved products may subsequently be dispensed; announcement of applications,
+      not first sales
+  registration2026:
+    title: Costa Rica Health Ministry — medicinal cannabis registration procedures, 2026
+    url: https://ministeriodesalud.go.cr/index.php?catid=81&id=2553&option=com_content&view=article
+    locator: >-
+      Registration requirements, material notifications and 2026 implementation guidance; not an
+      approval or stock list
+answers:
+  buy:
+    answer: 'no'
+    text: >-
+      No adult-use source; medical permissions exist, but operating THC patient supply has not been
+      verified

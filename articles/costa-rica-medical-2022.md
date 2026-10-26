@@ -4,9 +4,12 @@ written: 2026-10-13
 sources:
   - title: "IAFA — Ley 10113, Ley del Cannabis para Uso Medicinal y Terapéutico y del Cáñamo para Uso Alimentario e Industrial"
     url: https://iafa.go.cr/wp-content/uploads/2025/01/Ley-del-Cannabis-para-Uso-Medicinal-y-Terapeutico-y-del-Canamo-para-uso-Alimentario-e-Industrial.pdf
+  - title: Costa Rica Procuraduría — Decree 44917-S, RTCR 515:2024
+    url: https://www.pgrweb.go.cr/DOCS/NORMAS/1/VIGENTE/D/2020-2029/2025-2029/2025/1969D/173FBA.HTML
+    locator: Sections 6.1.3, 8.4, 9.1 and 10.1.1; compounding, personal imports and registered-product dispensing
 ---
 
-Law 10113 was signed at the Presidency in San José on 2 March 2022 and took effect on publication. Its long title names two things: cannabis for medical and therapeutic use, and hemp for food and industry. Article 1 gives the aim as access to cannabis and its derivatives "exclusively for medicinal and therapeutic use", in order to guarantee the right to health.
+Law 10113 was signed at the Presidency in San José on 2 March 2022 and took effect on publication. Its long title names two things: cannabis for medical and therapeutic use, and hemp for food and industry. Article 1 gives the aim as access to cannabis and its derivatives "exclusively for medicinal and therapeutic use", in order to guarantee the right to health.[@1]
 
 ## Two plants in law
 
@@ -32,6 +35,8 @@ The activities it authorises are listed "solely and exclusively" in article 8, a
 
 Article 3 leaves everything outside the authorised limits to the general drug law, [Law 8204](/history/costa-rica-law-8204-2001/). Article 32 goes further: misusing or diverting a licence, or supplying psychoactive cannabis to unauthorised third parties, is drug trafficking and carries the penalties of article 58 of that law.
 
-## Why the index moved
+## Permission and patient supply
 
-Only access changes, from 0 to 1: the law creates a lawful supply of cannabis products, reached through a doctor's prescription. It grants nothing to people who use cannabis without one, whose position had been settled by earlier law and court practice. The total moves from 25 to 26.
+The law creates a medical framework. It does not by itself establish that patients could obtain THC medicines in 2022. The later registration rules require prior approval for ordinary finished products, while providing separate personal-import and pharmacy-compounding routes. Operating patient supply has not been verified, so this enactment is recorded without an access-score increase.[@2]
+
+The [Costa Rica profile](/country/cr/) distinguishes these permissions from pharmacy stock. It retains the limited medical status and records access at zero pending evidence of a working THC supply route.

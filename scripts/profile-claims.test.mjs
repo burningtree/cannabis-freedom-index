@@ -16,6 +16,7 @@ const files = [...walk(path.join(root, "countries")), ...walk(path.join(root, "a
 const texts = files.map((file) => [path.relative(root, file), fs.readFileSync(file, "utf8").replace(/\s+/g, " ")]);
 
 const CLAIMS = [
+  { claim: /India taxed cannabis from \[?1798/i, why: "the 1798 record is a Board recommendation, including Egypt-article cross-references (#145)" },
   { claim: /Before Law 242 Panama had no lawful cannabis of any kind/i, why: "the 2021 framework did not establish operational supply (#128)" },
   // Malta (2021) and Germany (2024) license non-profit associations: issue #127
   { claim: /prohibited throughout the European Union/i, why: "clubs are not prohibited EU-wide: Malta and Germany license associations (#127)" },
@@ -299,4 +300,31 @@ test('new pilot and resin permissions are recorded without inventing broad retai
     assert.equal(e.before, undefined);
     assert.ok(e.unscored);
   }
+});
+
+test('Costa Rica permissions do not establish stocked THC patient medicines (#159)', () => {
+  const cr = country('cr');
+  assert.equal(cr.medical, 'limited');
+  assert.equal(cr.scores.access, 0);
+  assert.match(cr.context.medical.text, /Routine pharmacy availability.*has not been established/);
+  assert.match(cr.context.medical.text, /personal imports.*unregistered/);
+  assert.match(cr.context.products.text, /pharmacy-made.*exempt.*registration/);
+  assert.match(cr.answers.buy.text, /has not been verified/);
+  const e = events().find((e) => e.id === 'costa-rica-medical-2022');
+  assert.equal(e.before, undefined);
+  assert.match(e.unscored, /operating THC patient-supply/);
+  const article = fs.readFileSync(path.join(root, 'articles/costa-rica-medical-2022.md'), 'utf8');
+  assert.doesNotMatch(article, /Only access changes, from 0 to 1/);
+});
+
+test('India federal bhang exclusion does not override state prohibition (#180)', () => {
+  const india = country('in');
+  assert.match(india.summary, /state law differs.*Maharashtra/);
+  assert.match(india.segments.possession.text, /only when not accompanied.*tops.*State laws still apply/);
+  assert.doesNotMatch(india.segments.possession.text, /which is why bhang is legal/);
+  assert.match(india.context.visitors.text, /does not authorise carrying it into another state/);
+  assert.match(india.answers.buy.text, /states that permit it/);
+  assert.match(india.segments.consumption.text, /six months.*₹10,000/);
+  assert.equal(india.scores.access, 2);
+  assert.equal(india.recreational, 'death');
 });
