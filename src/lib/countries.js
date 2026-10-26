@@ -53,7 +53,7 @@ export const segmentMax = (segIndex) => (SEGMENTS[segIndex].weight / totalWeight
 const scoreOf = (s) => s.reduce((a, v, i) => a + segmentPoints(i, v), 0);
 const scoreList = (scores) => SEGMENTS.map((seg) => scores[seg.id]);
 // the age band a cannabis-use figure is for: the survey's own, or 15–64 where none is given
-export const useAges = (use) => (use.ages ? use.ages.replace("-", "–") : "15–64");
+export { useAges } from "./use-labels.js";
 // cannabis use comes from its dataset, which must have a row for every place. A place cannot have
 // more people of an age band, or more users, than people: Northern Cyprus and Transnistria once
 // took the World Bank's figures for two income groups, some two billion people each.

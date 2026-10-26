@@ -7,6 +7,7 @@ import AboutHint from "../components/AboutHint.astro";
 import Tools from "./Tools.astro";
 import { survey } from "../lib/survey.js";
 import AverageChart from "../components/AverageChart.astro";
+import { useShareLabel, USE_COMPARISON_NOTE } from "../lib/use-labels.js";
 import { useAges, SEGMENTS, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, REC_HELP, MED_LABEL, MED_HELP, countries, regions, worldAvg, lastUpdated, formatDate, subunitsOf, places, trendOf, changeDate, TREND_YEARS, estimateNote } from "../lib/countries.js";
 import { TIERS, tierColor, tierOf } from "../lib/tiers.js";
 import { PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "../lib/segment-ids.js";
@@ -61,15 +62,16 @@ const viewAttrs = (metric) => ({ href: viewHref(metric), "data-metric": metric, 
 const count = (fn) => countries.filter(fn).length;
 // 48,000,000 → "48M", 770,000 → "770k"
 const compact = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)}M` : n >= 1e3 ? `${+(n / 1e3).toPrecision(2)}k` : String(n));
-const useNote = (c) => {
+const useDetail = (c) => {
   const from = c.use.estimate_from && places.find((x) => x.id === c.use.estimate_from.toUpperCase());
   if (from) return `This site's figure: no survey of ${c.name} alone, so ${from.name}'s rate, ${c.use.prevalence}% of people aged 15–64, is applied to an estimate of the people here of those ages.`;
   if (c.use.estimate) return `This site's figure: no national survey, so the median rate in ${c.region}, ${c.use.prevalence}% of people aged 15–64, is used.`;
   const ages = useAges(c.use), when = c.use.period ?? c.use.year;
   if (c.use.users == null) return `${c.use.prevalence}% of people aged ${ages} (${when}). No user count: the population for that age band is missing.`;
   if (c.use.users_approximate) return `About ${compact(c.use.users)}: ${c.use.prevalence}% aged ${ages} (${when}), on an approximate population of those ages.`;
-  return `${c.use.prevalence}% of people aged ${ages} used cannabis in the past year (${when} survey)`;
+  return `${useShareLabel(c.use)} used cannabis in the past year (${when} survey)`;
 };
+const useNote = (c) => `${useDetail(c)}. Source: ${c.use.source === "wdr2026" ? "UNODC World Drug Report 2026" : c.use.source === "earlier" ? "earlier UNODC figure" : "this site’s estimate"}. ${USE_COMPARISON_NOTE}`;
 const stats = [
   [places.length, "territories scored"],
   [count((c) => c.raw >= 60), "reach the “Free” tier (60+)"],
@@ -108,7 +110,7 @@ const USE_SCALES = {
   ratio: {
     label: "Use relative to freedom",
     steps: [[0, "Under 0.15"], [0.15, "0.15–0.3"], [0.3, "0.3–0.5"], [0.5, "0.5–1"], [1, "1 or more"]],
-    note: "Share of adults who use cannabis, divided by the index score. A high value means many people use cannabis where the law gives them little freedom to.",
+    note: "Survey-age cannabis-use share divided by the index score. Ages and survey years vary. Rates are not age-standardised; do not compare countries directly.",
   },
   culture: {
     label: "Entries in the cultural atlas",
@@ -147,7 +149,7 @@ const STATUS_SCALES = Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key,
 const datasetViews = (group) => MAPPED.filter((ds) => ds.map.group === group).map((ds) => [`data:${ds.id}`, ds.map.label]);
 const MAP_GROUPS = [
   { name: "Freedom", views: [["index", "Overall index"], ...SEGMENTS.map((s, i) => [String(i), s.name])] },
-  { name: "Use", views: [["users", "Number of users"], ["prevalence", "Share of adults"], ["ratio", "Share of users ÷ index"], ...datasetViews("Use")] },
+  { name: "Use", views: [["users", "Number of users"], ["prevalence", "Survey share"], ["ratio", "Share of users ÷ index"], ...datasetViews("Use")] },
   { name: "Law", views: [...Object.entries(LAW_SECTIONS).map(([key, section]) => [`status:${key}`, section.name]), ...datasetViews("Law")] },
   { name: "Society", views: [...datasetViews("Society"), ["culture", "Atlas entries"]] },
   ...(SHOW_PRICES ? [{ name: "Price", views: PRICE_MARKETS.map((market) => [`price:${market}`, PRICE_MARKET_LABEL[market]]) }] : []),
@@ -166,7 +168,7 @@ const statusCol = (key, label, vocab, helpIndex) => ({
   chip: (c) => c.planting && { ...vocab[c.planting[key]], help: vocab[c.planting[key]].help[helpIndex] },
 });
 const BASE_COLUMNS = [
-  { key: "region", label: "Region" }, { key: "users", label: "Users" }, { key: "share", label: "Share of adults" },
+  { key: "region", label: "Region" }, { key: "users", label: "Users" }, { key: "share", label: "Survey share" },
   ...(SHOW_PRICES ? [{ key: "price", label: "Price per gram" }] : []),
   { key: "rec", label: "Recreational" }, { key: "med", label: "Medical" },
 ];
@@ -302,7 +304,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           <div class="legend" data-legend={key} hidden>
             {scale.steps.map(([, text], i) => <span><i class="sw" style={`background:var(--u${i})`}></i>{text}</span>)}
             <span><i class="sw sw-nodata"></i>No data</span>
-            <span class="legend-note">{scale.note ?? "Adults who used cannabis in the past year, from each country's latest survey (most ask ages 15–64). A ~ is this site's estimate where a place has no survey of its own: the median of surveyed countries in the region, or for a disputed territory the rate of the country it is part of."}</span>
+            <span class="legend-note">{scale.note ?? "People who used cannabis in the past year, within each survey’s age band. Ages and years vary; rates are not age-standardised. Do not compare countries directly. A ~ is this site's estimate where a place has no survey of its own: the median of surveyed countries in the region, or for a disputed territory the rate of the country it is part of."}</span>
           </div>
         ))}
         {Object.entries(datasetScales).map(([key, scale]) => (
@@ -381,7 +383,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
               <th data-sort="name">Country</th>
               <th data-sort="region" data-col="region" class="hide-sm">Region</th>
               <th data-sort="users" data-col="users" class="num-col hide-md" title="People who used cannabis in the past year">Users</th>
-              <th data-sort="share" data-col="share" class="num-col hide-md" title="Share of adults who used cannabis in the past year, mostly aged 15–64">Share</th>
+              <th data-sort="share" data-col="share" class="num-col hide-md" title="Past-year use in each survey’s age band. Ages and years vary; not age-standardised.">Share</th>
               {SHOW_PRICES && <th data-sort="price" data-col="price" class="num-col hide-md" title="Latest sourced street-flower price, normalised to US dollars per gram">Price/g</th>}
               <th data-sort="rec" data-col="rec" class="hide-sm">Recreational</th>
               <th data-sort="med" data-col="med" class="hide-md">Medical</th>

@@ -11,6 +11,7 @@ import PricePanel from "./PricePanel.astro";
 import CountryDatasets from "./CountryDatasets.astro";
 import CountryDatasetTab from "./CountryDatasetTab.astro";
 import { datasetsOf } from "../lib/datasets.js";
+import { USE_COMPARISON_NOTE } from "../lib/use-labels.js";
 import SourceTip from "./SourceTip.astro";
 import SourceCitation from "./SourceCitation.astro";
 import Cited from "./Cited.astro";
@@ -185,15 +186,15 @@ const culture = cultureOf(c);
           </div>
         )}
         <div>
-          <dt>Share aged {useAges(use)}</dt>
+          <dt>Past-year share</dt>
           <dd>{use.estimate ? "about " : ""}{use.prevalence}%</dd>
         </div>
-        <p>{useFrom
+        <p>{use.estimate ? "This site’s estimate" : `UNODC · survey ${use.period ?? use.year}`}</p>
+        <SourceTip><span>Past-year cannabis use among people aged {useAges(use)}. </span>{useFrom
           ? `This site's figure: there is no survey of ${c.name} alone, so ${useFrom.name}'s rate from its ${useFrom.use.period ?? useFrom.use.year} survey is applied to an estimate of the people aged 15–64 here.`
           : use.estimate
           ? `This site's figure: there is no national survey, so the median rate of surveyed countries in ${c.region} is applied to people aged 15–64.`
-          : `People who used cannabis in the past year, from a ${use.period ?? use.year} survey${use.users != null ? `, applied to today's population aged ${useAges({ ages: use.population_ages || use.ages })}` : ""}${use.users_approximate ? ". The population is approximate: the survey ages cut through an age group, or were not recorded and ages 15–64 are used" : ""}${use.source === "earlier" ? ". An earlier figure: UNODC's 2026 table has none for this country" : ""}.`}</p>
-        <SourceTip>{use.source === "wdr2026"
+          : `People who used cannabis in the past year, from a ${use.period ?? use.year} survey${use.users != null ? `, applied to today's population aged ${useAges({ ages: use.population_ages || use.ages })}` : ""}${use.users_approximate ? ". The population is approximate: the survey ages cut through an age group, or were not recorded and ages 15–64 are used" : ""}${use.source === "earlier" ? ". An earlier figure: UNODC's 2026 table has none for this country" : ""}.`}<br />{USE_COMPARISON_NOTE}<br />{use.source === "wdr2026"
           ? <><a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>, annex table 1.2</>
           : use.source === "earlier"
             ? <>An earlier UNODC figure, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a></>

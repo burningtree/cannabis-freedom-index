@@ -4,6 +4,8 @@
 // name, one headline figure and a line of further figures, written as set under `profile` in
 // datasets.yaml; the figure over the years; where the country stands among every country the
 // dataset covers; and links to its map and its entry on the sources page.
+import SourceTip from "./SourceTip.astro";
+import { USE_COMPARISON_NOTE } from "../lib/use-labels.js";
 import { DATASETS, datasetsOf } from "../lib/datasets.js";
 import { viewByMetric } from "../lib/map-views.js";
 import { figure as figureOf, fill as fillOf, headline as headlineOf, headField, TONES, POLARITY, toneAt, CHART_OF, GROUPS, groupOf, standing as standingOf } from "../lib/dataset-text.js";
@@ -47,7 +49,7 @@ const rows = Object.values(DATASETS).filter((d) => own[d.id]).map((d) => {
   const row = series ? series.findLast((r) => r[headField(d)] != null) ?? series.at(-1) : data;
   // a series also lists a few earlier years, oldest first
   const earlier = series ? [...(d.profile.years ?? [])].filter((y) => y < row.year).sort((a, b) => a - b).map((y) => series.find((r) => r.year === y)).filter(Boolean).map((r) => fill(d, r, d.profile.each ?? `{${Object.keys(d.fields)[0]}} in {year}`)) : [];
-  return { d, head: headline(d, row), year: row?.year, details: [fill(d, row, d.profile.details), ...earlier].filter(Boolean).join(" · "), note: d.notes[c.slug], chart: series && trend(d, series), stand: standing(d) };
+  return { d, head: headline(d, row), year: row?.year, details: [fill(d, row, d.profile.details), ...earlier].filter(Boolean).join(" · "), note: d.id === "cannabis_use" ? USE_COMPARISON_NOTE : d.notes[c.slug], chart: series && trend(d, series), stand: standing(d) };
 });
 const groups = GROUPS.map((name) => ({ name, rows: rows.filter((r) => groupOf(r.d) === name) })).filter((g) => g.rows.length);
 ---
@@ -66,7 +68,7 @@ const groups = GROUPS.map((name) => ({ name, rows: rows.filter((r) => groupOf(r.
         <ol class="ds-grid">
           {g.rows.map(({ d, head, year, details, note, chart, stand }) => (
             <li class:list={["ds-card", { toned: POLARITY[d.id] }]} id={`ds-${d.id}`}
-              style={stand ? (POLARITY[d.id] ? `--ds:${toneAt(stand.at, POLARITY[d.id])};--lo:var(--t${POLARITY[d.id] > 0 ? 1 : 5});--hi:var(--t${POLARITY[d.id] > 0 ? 5 : 1})` : `--ds:var(--u${stand.step})`) : undefined}>
+              style={stand ? (POLARITY[d.id] ? `--ds:${toneAt(stand.at, POLARITY[d.id])};--lo:var(--t${POLARITY[d.id] > 0 ? 1 : 5});--hi:var(--t${POLARITY[d.id] > 0 ? 5 : 1})` : `--ds:var(--u${stand.step})`) : d.id === "cannabis_use" ? "position:relative" : undefined}>
               <p class="ds-kicker"><span>{d.credit ?? d.publisher}{year != null && ` · ${year}`}</span></p>
               <h4>{d.name}</h4>
               <p class:list={["ds-figure", { words: d.fields[headField(d)]?.type === "text" }]}>{stand && <i class="ds-swatch" title={stand.label ? `On the map: ${stand.label}` : undefined}></i>}<b>{head[0]}</b>{head[1] && <span>{head[1]}</span>}</p>
@@ -91,7 +93,7 @@ const groups = GROUPS.map((name) => ({ name, rows: rows.filter((r) => groupOf(r.
                 </div>
               )}
               {details && <p class="ds-details">{details}</p>}
-              {note && <p class="ds-details ds-note">{note}</p>}
+              {note && (d.id === "cannabis_use" ? <SourceTip>{note}</SourceTip> : <p class="ds-details ds-note">{note}</p>)}
               <p class="ds-links">
                 {mapHref(d) && <a href={mapHref(d)}>See the map <span aria-hidden="true">→</span></a>}
                 {CHART_OF[d.id] && <a href={`${base}charts/#${CHART_OF[d.id]}`}>See the chart <span aria-hidden="true">→</span></a>}

@@ -3,6 +3,7 @@
 // countries a dataset covers, and which group and colours it takes. Shared by the profile's
 // Datasets tab (CountryDatasetTab.astro) and the compare page's data (src/pages/api/[id].json.js).
 import { places } from "./countries.js";
+import { useAges } from "./use-labels.js";
 
 const num = (n) => n.toLocaleString("en-GB");
 const FORMAT = {
@@ -27,6 +28,7 @@ export const fill = (c, d, row, template = "") => template.split(" · ").map((pa
 }).filter(Boolean).join(" · ");
 // the headline's first figure, with any sign before it ("€"), is set large: [figure, the words after it]
 export const headline = (c, d, row) => {
+  if (d.id === "cannabis_use") return [figure(c, d, row, "prevalence"), `of people aged ${useAges(row)}`];
   const m = d.profile.headline.match(/^([^{]*)\{(\w+)\}(.*)$/);
   return m ? [m[1] + (figure(c, d, row, m[2]) ?? ""), fill(c, d, row, m[3])] : ["", fill(c, d, row, d.profile.headline)];
 };
@@ -65,6 +67,7 @@ export const groupOf = (d) => GROUP_OF[d.id] ?? d.map?.group ?? "Context";
 // Where the country stands among every place the dataset covers, by its headline figure (the
 // latest year of a series): the share of them with a lower figure. Null for text and ranks.
 export const standing = (c, d) => {
+  if (d.id === "cannabis_use") return null; // differing survey ages cannot support a country percentile
   const name = headField(d), f = d.fields[name];
   if (!name || (f && (f.type === "text" || f.format === "rank"))) return null;
   const latest = (place) => {

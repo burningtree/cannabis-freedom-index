@@ -75,6 +75,13 @@ remain available as price history.
 ```
 
 Use a unique id in the form `<country>-<market>-<date>`, adding a short suffix only when needed.
+A national report title does not establish a nationally representative sample. Identify the
+sampling population and geography in the note. A narrow sentinel sample, such as capital-city
+participants who regularly inject drugs, cannot serve as a national street-price comparison.
+Keep such an existing observation with `comparison: false`: it remains in source/history exports
+and the qualified profile observation list, but cannot supply a country headline, map, ranking
+or comparison value. Do not replace its numeric value without new evidence.
+
 Keep the source's own statistical description in the note: mean, median, mode, listed pharmacy
 price or derived price. If a package or ounce price is converted to one gram, say so in the note.
 
@@ -357,7 +364,7 @@ group) and are never part of the score.
   country file are listed in the build output: add an alias in `datasets.yaml`.
 - To update a dataset, replace its CSV with the new edition (and the file name and
   citation in `datasets.yaml` if they change).
-- `unodc-cannabis-use.csv`: cannabis use for every country (share of adults, survey year or
+- `unodc-cannabis-use.csv`: cannabis use for every country (share in the survey age band, survey year or
   period, age band, number of users). Rebuilt by `python3 scripts/extract-unodc.py use` from
   the UNODC spreadsheet kept beside it (`unodc-wdr2026-1.2-prevalence-national.xlsx`, World
   Drug Report 2026 annex, table 1.2). Each survey rate is applied to a World Bank population of
@@ -367,6 +374,10 @@ group) and are never part of the score.
   from: `wdr2026`, `earlier` (a figure the table lacks, kept from Wikipedia's list of older
   UNODC figures) or `estimate`. It feeds the Use views of the map, the rankings and the profiles, so every country file needs a
   row; the build stops if one is missing. A new country gets one when the script runs again.
+  Survey ages and years vary; some include children. Label rates with their actual age band,
+  never unconditionally as adults. Rates are not age-standardised: do not compare countries
+  directly or infer an 18+ rate without measured age-specific data. Keep original ages, periods
+  and source labels in exports alongside the population denominator used for user counts.
 - `unodc-cannabis-use-youth.csv`: past-year cannabis use among 15- and 16-year-olds, from
   `python3 scripts/extract-unodc.py youth` and the UNODC spreadsheet beside it
   (`unodc-wdr2026-1.4-prevalence-youth.xlsx`, table 1.4). Only that age group is kept, so that

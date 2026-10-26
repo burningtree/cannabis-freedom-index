@@ -9,10 +9,10 @@ import { SHOW_PRICES } from "../../lib/config.js";
 const base = import.meta.env.BASE_URL;
 const repo = "https://github.com/burningtree/cannabis-freedom-index";
 const files = [
-  { name: "scores", title: "Scores", rows: scoreRows, about: "One row per country, disputed territory or dependency (Crown Dependencies and overseas territories, with dependency_of naming the country that answers for them): index score, the six segment scores, rank, tier, legal status, seed and clone status where researched, population and estimated cannabis users." },
+  { name: "scores", title: "Scores", rows: scoreRows, about: "One row per country, disputed territory or dependency (Crown Dependencies and overseas territories, with dependency_of naming the country that answers for them): index score, the six segment scores, rank, tier, legal status, seed and clone status where researched, population and estimated cannabis users with survey ages, period, source and population denominator." },
   { name: "panel", title: "Scores by year", rows: panelRows, about: `One row per place and year from ${PANEL_FROM} to ${DATA_SNAPSHOT}: the index score and the six segment scores as they stood at the end of each year, rebuilt from the history. Made for joining with other country-year data.` },
   { name: "history", title: "History", rows: historyRows, about: "One row per history entry: date, country, category, title, description, the score before and after, how far it has been checked, and its sources." },
-  { name: "prices", title: "Flower prices", rows: priceRows, about: "One row per sourced flower-price observation: country, date, street or medical market, local price and US dollars per gram." },
+  { name: "prices", title: "Flower prices", rows: priceRows, about: "One row per sourced flower-price observation: country, date, street or medical market, local price and US dollars per gram, sampling note and comparison eligibility." },
 ].filter((f) => SHOW_PRICES || f.name !== "prices");
 ---
 <Base title="Data and licence" description={`Download Cannabis Freedom Index scores${SHOW_PRICES ? ", history, and cannabis prices" : " and history"} as CSV or JSON. Data is CC BY 4.0, code is MIT.`}>
@@ -42,6 +42,8 @@ const files = [
     </div>
 
     <section class="prose" id="panel">
+      <h2>Reading cannabis-use figures</h2>
+      <p><code>users_share_percent</code> is past-year use within <code>users_survey_ages</code>, for <code>users_survey_period</code>. Survey ages and years vary, and some include children. Rates are not age-standardised; do not compare countries directly. <code>users_population_ages</code> and <code>users_population_band</code> describe the denominator used for the derived count; <code>users_population_year</code> dates that population. <code>users_source</code> and <code>users_estimated</code> distinguish reported rates from estimates.</p>
       <h2>Reading the yearly scores</h2>
       <p>The file <code>panel</code> turns the history into a table researchers can use directly: a score for every place in every year. Each score is the one in force on 31 December of that year. Segment scores run from 0 to 10; <code>score</code> is the index from 0 to 100, weighted as in the methodology.</p>
       <p>The column <code>basis</code> says what a row rests on, and should be used to filter:</p>

@@ -1,4 +1,5 @@
 ---
+import { USE_COMPARISON_NOTE } from "../lib/use-labels.js";
 import Base from "../layouts/Base.astro";
 import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries, places, estimateNote, segAvg } from "../lib/countries.js";
 import { flatLatestPricesFor } from "../lib/prices.js";
@@ -12,6 +13,7 @@ import { neighboursOf } from "../lib/borders.js";
 const light = places.map(({ id, slug, name, flag, region, raw, score, rank, s, rec, med, territory }) =>
   ({ id, slug, name, flag, region, raw, score, rank, s, rec, med, kind: territory?.label, fe: estimateNote(places.find((x) => x.id === id)), prices: SHOW_PRICES ? flatLatestPricesFor(id) : {}, nb: neighboursOf.get(id) ?? [] }));
 const meta = {
+  useComparisonNote: USE_COMPARISON_NOTE,
   segments: SEGMENTS.map((s) => ({ name: s.name, weight: s.weight })),
   context: CONTEXT_NAMES,
   planting: PLANTING_STATUS,
@@ -302,12 +304,12 @@ const presets = [
           // the highest figure is marked; for a dataset where higher is harsher, the lowest
           const nums = cells.map((x) => x?.[3]).filter((v) => Number.isFinite(v));
           const mark = nums.length > 1 && new Set(nums).size > 1 ? (polarity < 0 ? Math.min(...nums) : Math.max(...nums)) : null;
-          rows.push(row(`<a href="${base}${href}">${esc(name)}</a>`, cs.map((c, k) => {
+          rows.push(row(`<a href="${base}${href}"${id === "cannabis_use" ? ` title="${esc(META.useComparisonNote)}"` : ""}>${esc(name)}</a>`, cs.map((c, k) => {
             const x = cells[k];
             if (!x) return `<span class="cmp-sub">${details.has(c.id) ? "No figure" : "…"}</span>`;
             const [big, words, year, v, pts, st] = x;
             const first = cells[0];
-            return `<div class="cmp-val${polarity && v === mark ? " best" : ""}"><b>${esc(big)}</b>${k > 0 && first ? diff(v, first[3], cs[0], polarity, first[0]) : ""}</div><div class="cmp-sub">${esc(words)}${year ? ` · ${Number.isInteger(year) ? year : Math.floor(year)}` : ""}</div>`
+            return `<div class="cmp-val${polarity && v === mark ? " best" : ""}"><b>${esc(big)}</b>${id !== "cannabis_use" && k > 0 && first ? diff(v, first[3], cs[0], polarity, first[0]) : ""}</div><div class="cmp-sub">${esc(words)}${year ? ` · ${Number.isInteger(year) ? year : Math.floor(year)}` : ""}</div>`
               + spark(pts, hue(c.id)) + (st ? `<div class="cmp-stand" title="Higher than ${st.below}% of ${st.n} countries"><i style="left:${st.at * 100}%;background:${hue(c.id)}"></i></div><div class="cmp-sub">higher than ${st.below}% of ${st.n}</div>` : "");
           })));
         }

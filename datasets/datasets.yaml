@@ -45,11 +45,12 @@
   data_label: table 1.2, spreadsheet
   when: national surveys from 1995 to 2024
   about: >-
-    The share of adults who used cannabis in the past year, from each country's most recent
+    The share of people in the survey age band who used cannabis in the past year, from each country's most recent
     national survey as reported to UNODC, and the number of people that share stands for today.
     The count uses a population of the same age band as the survey. Most surveys ask people aged
     15 to 64; where a survey used another age band, the band is given with the figure. Every
-    country and territory on the site has a row.
+    country and territory on the site has a row. Ages and survey years vary, and some surveys
+    include children. Rates are not age-standardised; do not compare countries directly.
   origin: >-
     Rebuilt on 23 October 2026 by scripts/extract-unodc.py from UNODC's spreadsheet, which is
     published here unchanged: sheet "Cannabis", the best estimate of the latest survey for each
@@ -70,11 +71,11 @@
     the row has no user count. The sum of these country counts is not UNODC's separate estimate
     of 256 million cannabis users worldwide in 2024.
   profile:
-    headline: "{prevalence} of adults"
-    details: "{users} people · survey {period} · ages {ages} · {source}"
+    headline: "{prevalence} of the survey population"
+    details: "ages {ages} · survey {period} · {users} people · {source}"
   country: { column: country, by: id }
   fields:
-    prevalence: { column: prevalence, format: percent, about: "Share of adults: map, rankings, profile" }
+    prevalence: { column: prevalence, format: percent, about: "Past-year share in the reported age band; not age-standardised: map, rankings, profile" }
     users: { column: users, about: "Number of users: map, rankings, profile" }
     year: { column: year, about: "Survey year (the last year of a period), empty for estimates" }
     period: { column: period, type: text, about: "Survey year or period as UNODC gives it" }
@@ -83,12 +84,13 @@
     estimate: { column: estimate, type: boolean, about: "Marks a figure computed here for a place with no survey (shown with ~)" }
     estimate_from: { column: estimate_from, type: text, about: "For a disputed territory with no survey: the country whose figure it takes" }
     population_15_64: { column: population_15_64, about: "Population aged 15 to 64, kept for reference" }
+    population_year: { column: population_year, about: "Year of the population used to derive user counts" }
     population_band: { column: population_band, about: "Population the user count is applied to" }
     population_ages: { column: population_ages, type: text, about: "Age band of population_band" }
     users_approximate: { column: users_approximate, type: boolean, about: "The user count splits an age group, or assumes ages 15 to 64 because the survey age was not recorded" }
   pages:
     - { label: the map of users, path: map/users/ }
-    - { label: the map of the share of adults, path: map/share-of-adults/ }
+    - { label: the map of reported cannabis use, path: map/share-of-adults/ }
     - { label: the map of use against freedom, path: map/use-against-freedom/ }
     - { label: the rankings, path: "#rankings" }
   also: and every country profile

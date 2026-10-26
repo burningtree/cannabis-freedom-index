@@ -1,4 +1,5 @@
 // Loads append-only flower-price observations and derives each country's latest market price.
+import { latestComparablePrices } from "./price-selection.js";
 import { getCollection } from "astro:content";
 import { places, dateTime } from "./countries.js";
 
@@ -27,11 +28,7 @@ export function priceHistoryFor(id) {
 }
 
 export function latestPricesFor(id) {
-  const latest = {};
-  for (const p of priceHistoryFor(id)) {
-    latest[p.market] ??= p;
-  }
-  return latest;
+  return latestComparablePrices(priceHistoryFor(id));
 }
 
 export function flatLatestPricesFor(id) {

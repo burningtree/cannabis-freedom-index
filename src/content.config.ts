@@ -221,6 +221,7 @@ const prices = defineCollection({
       price: z.number().positive(), // price per gram in `currency`
       usd: z.number().positive(),   // same observation normalised to USD per gram
       note: z.string().min(1).optional(),
+      comparison: z.boolean().default(true), // false retains the observation but excludes country price comparisons
       source: webSource,
     })
     .strict(),

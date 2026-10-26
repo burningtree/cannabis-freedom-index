@@ -5,6 +5,7 @@
 // Every chart leads on: a year to the history, a country to its profile, a region to the rankings,
 // a dataset to its map. A small script at the end adds hover cards with the detail behind a mark.
 import { firstRestrictionSample, HISTORY_TOPICS, topicCounts, DEVELOPMENT_MEASURES, matchedPriceWage, matchedThcPanel, policeTrend, annualTreatment } from "../lib/chart-semantics.js";
+import { useAges, useShareLabel, USE_COMPARISON_NOTE } from "../lib/use-labels.js";
 import Base from "../layouts/Base.astro";
 import AverageChart from "../components/AverageChart.astro";
 import { countries, changes, DATA_SNAPSHOT, REC_LABEL, REC_ORDER, MED_LABEL, SEGMENTS, segAvg } from "../lib/countries.js";
@@ -143,7 +144,6 @@ useBands.forEach((b) => (b.median = median(b.dots.map((c) => c.use.prevalence)))
 const U1 = Math.ceil(Math.max(...used.map((c) => c.use.prevalence)) / 5) * 5;
 const uOf = (v) => 100 - pct(v, 0, U1);
 const useTicks = Array.from({ length: U1 / 5 + 1 }, (_, i) => i * 5);
-const useLow = useBands.find((b) => b.t.min === 5) ?? useBands[0], useHigh = useBands.at(-1);
 // spread each band's dots sideways so they don't hide each other: a small swarm around the column's centre
 for (const b of useBands) {
   const placed = [];
@@ -460,7 +460,6 @@ const capacity = countries.map((c) => ({ c, r: latestSince(c.series.government_e
 function c_usable(c) { return c.use && !c.use.estimate && Number.isFinite(c.use.prevalence); }
 const capFit = corr(capacity);
 const CY1 = Math.ceil(Math.max(...capacity.map((d) => d.y)) / 5) * 5;
-const strongStrict = capacity.filter((d) => d.x >= 70 && d.c.raw < 15), strongMild = capacity.filter((d) => d.x >= 70 && d.c.raw >= 25);
 const capNamed = pickLabels([...capacity].sort((a, b) => b.y - a.y).map((d) => ({ key: d.c.id, x: d.x, y: 100 - pct(d.y, 0, CY1) })), 14);
 
 // ── Did prohibition protect children? Students who have tried cannabis, 1995–2024 ──
@@ -637,7 +636,7 @@ const MEASURES = [
   ["Wealth and development", "Income per person (log)", "map/income/", (c) => logOr(latestSince(c.series.gdp, "gdp_ppp", 2018)?.gdp_ppp)],
   ...DEVELOPMENT_MEASURES.map(({ label, href, field }) => ["Wealth and development", label, href, (c) => dev(c, field)]),
   ["Wealth and development", "Research papers per person (log)", "#research", (c) => { const r = research.find((x) => x.c === c); return r ? Math.log10(r.per) : null; }],
-  ["Use and drugs", "Adults who use cannabis", "#use", (c) => (c.use && !c.use.estimate ? c.use.prevalence : null)],
+  ["Use and drugs", "Reported cannabis use (ages vary)", "#use", (c) => (c.use && !c.use.estimate ? c.use.prevalence : null)],
   ["Use and drugs", "Teenagers who use cannabis (past year)", "map/youth-cannabis-use/", (c) => latestSince(c.series.youth_use, "past_year", 2010)?.past_year],
   ["Use and drugs", "Students who have tried it (Europe)", "#teen-trends", (c) => latestSince(c.series.espad_lifetime, "lifetime", 2024)?.lifetime],
   ["Use and drugs", "Students who find it easy to get (Europe)", "#easy-to-get", (c) => c.datasets.espad_availability?.easy],
@@ -775,7 +774,7 @@ const chartData = {
   firsts: Object.fromEntries(dated.map((f) => [f.c.slug, [f.c.flag + " " + f.c.name, f.year, f.ch.title, Math.round(f.c.raw), tierOf(f.c.raw).name]])),
   law: lawGrid.map((row) => row.map((g) => g.map((c) => c.flag + " " + c.name))),
   lawNames: { rec: REC_ORDER.map((k) => REC_LABEL[k]), med: MED_ORDER.map((k) => MED_LABEL[k]) },
-  use: Object.fromEntries(used.map((c) => [c.slug, [c.flag + " " + c.name, c.use.prevalence, c.use.year ?? null, Math.round(c.raw), tierOf(c.raw).name]])),
+  use: Object.fromEntries(used.map((c) => [c.slug, [c.flag + " " + c.name, c.use.prevalence, c.use.period ?? c.use.year ?? null, Math.round(c.raw), tierOf(c.raw).name, useAges(c.use)]])),
   stripes: { from: S0, rows: stripes.map((s) => [s.c.slug, s.c.flag + " " + s.c.name, s.steps, s.banned]) },
   ridges: ridges.map((r) => [r.year, +r.mean.toFixed(1), r.n100]),
   stream: { decades, groups: STREAM.map((g) => [g.label, g.color]), counts: streamCounts },
@@ -798,13 +797,13 @@ const chartData = {
   polls: polls.map((p) => [p.date, p.legal]),
   work: Object.fromEntries(workGram.map((w) => [w.c.slug, [w.c.flag + " " + w.c.name, Math.round(w.minutes), w.price, w.priceYear, w.wage, w.wageYear, Math.round(w.c.raw)]])),
   drink: Object.fromEntries(drink.map((d) => [d.c.slug, [d.c.flag + " " + d.c.name, d.x, d.r.year, Math.round(d.y), tierOf(d.y).name]])),
-  capacity: Object.fromEntries(capacity.map((d) => [d.c.slug, [d.c.flag + " " + d.c.name, Math.round(d.x), d.y, d.c.use.year ?? null, Math.round(d.c.raw), tierOf(d.c.raw).name]])),
+  capacity: Object.fromEntries(capacity.map((d) => [d.c.slug, [d.c.flag + " " + d.c.name, Math.round(d.x), d.y, d.c.use.period ?? d.c.use.year ?? null, Math.round(d.c.raw), tierOf(d.c.raw).name, useAges(d.c.use)]])),
   teen: teen.map((t) => [t.c.slug, t.c.flag + " " + t.c.name, t.pts]),
   teenAvg: teenAvg.map(([y, v]) => [y, +v.toFixed(1)]),
   ribbons: ribbons.map((r) => [FLOW_YEARS[r.col], FLOW_YEARS[r.col + 1], TIER_NAMES[r.a], TIER_NAMES[r.b], r.list.slice(0, 30).map((c) => `${c.flag} ${c.name}`), r.list.length]),
   mosaic: mosaic.map((c) => [c.slug, `${c.flag} ${c.name}`, Math.round(c.raw), c.s, c.details.segments.map((x) => x.t.length > 170 ? x.t.slice(0, 168).replace(/\s\S*$/, "") + " …" : x.t)]),
   segNames: SEGMENTS.map((x) => x.name),
-  tiles: Object.fromEntries(userList.map((u) => [u.c.slug, [u.c.flag + " " + u.c.name, u.v, u.c.use.prevalence, Math.round(u.c.raw), tierOf(u.c.raw).name]])),
+  tiles: Object.fromEntries(userList.map((u) => [u.c.slug, [u.c.flag + " " + u.c.name, u.v, u.c.use.prevalence, Math.round(u.c.raw), tierOf(u.c.raw).name, useAges(u.c.use), u.c.use.period ?? u.c.use.year ?? null]])),
   graft: Object.fromEntries(graft.map((d) => [d.c.slug, [d.c.flag + " " + d.c.name, d.x, d.r.year, Math.round(d.y), tierOf(d.y).name]])),
   faith: Object.fromEntries(faiths.flatMap((f) => f.list.map((c) => [c.slug, [c.flag + " " + c.name, f.label, Math.round(c.raw), tierOf(c.raw).name]]))),
   measures: measures.map((m) => [m.label, +m.r.toFixed(2), m.n]),
@@ -935,7 +934,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     <section class="ch" id="users-treemap">
       <p class="ch-kicker"><a href="#users-treemap">{kick("users-treemap")}</a></p>
       <h2>{usersShareBanned}% of about {Math.round(usersTotal / 1e6)} million people who use cannabis, counted country by country here, live where it is under prohibition</h2>
-      <p class="ch-dek">Each rectangle is a country, sized by how many adults used cannabis in the past year and coloured by its band. Prohibition does not keep the users away; it decides what happens to them.</p>
+      <p class="ch-dek">Each rectangle is a country, sized by how many people in the survey age band used cannabis in the past year and coloured by its band. Prohibition does not keep the users away; it decides what happens to them.</p>
       <div class="ch-frame ch-treemap" data-no-preview>
         {tiles.map((t) => (
           <a class="ch-tile" href={`${base}country/${t.c.slug}/#datasets`} data-tile={t.c.slug} style={`left:${(t.x / TM_W) * 100}%;top:${(t.y / TM_H) * 100}%;width:${(t.w / TM_W) * 100}%;height:${(t.h / TM_H) * 100}%;--c:${tierColor(t.c.raw)}`}
@@ -944,8 +943,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
           </a>
         ))}
       </div>
-      <p class="ch-source">Each country's latest survey rate, applied to a World Bank population of the same age band. Where that band cuts through an age group, or the survey age was not recorded, the count is approximate; the second case uses ages 15–64. Countries with no survey take this site's median of surveyed countries in the same region. These country figures add up to about {Math.round(usersTotal / 1e6)} million people. The <a href="https://data.unodc.org/wdr2026search">UNODC World Drug Report 2026</a> puts the world total at 256 million cannabis users in 2024. The share above is of this site's sum. {userList.length} countries. <a href={`${base}sources/#dataset-cannabis_use`}>About the dataset</a>.</p>
-      <p class="ch-more"><a href={`${base}map/users/`}>Users on the map →</a> <a href={`${base}map/share-of-adults/`}>Share of adults →</a></p>
+      <p class="ch-source">Each country's latest survey rate, applied to a World Bank population of the same age band. {USE_COMPARISON_NOTE} Where that band cuts through an age group, or the survey age was not recorded, the count is approximate; the second case uses ages 15–64. Countries with no survey take this site's median of surveyed countries in the same region. These country figures add up to about {Math.round(usersTotal / 1e6)} million people. The <a href="https://data.unodc.org/wdr2026search">UNODC World Drug Report 2026</a> puts the world total at 256 million cannabis users in 2024. The share above is of this site's sum. {userList.length} countries. <a href={`${base}sources/#dataset-cannabis_use`}>About the dataset</a>.</p>
+      <p class="ch-more"><a href={`${base}map/users/`}>Users on the map →</a> <a href={`${base}map/share-of-adults/`}>Reported use →</a></p>
     </section>
     {chapterAt.has("law") && <h2 class="ch-chapter">{chapterAt.get("law")}</h2>}
     <section class="ch" id="law">
@@ -1352,8 +1351,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("use") && <h2 class="ch-chapter">{chapterAt.get("use")}</h2>}
     <section class="ch" id="use">
       <p class="ch-kicker"><a href="#use">{kick("use")}</a></p>
-      <h2>Where the law is milder, more people say they use cannabis: {fmt1(useHigh.median)}% against {fmt1(useLow.median)}%</h2>
-      <p class="ch-dek">Each dot is a country, in the column of its band, at the share of adults who used cannabis in the past year. The bar is each band's middle value. Countries often eased the law where use was already common, and use is more readily admitted where it is legal, so this shows no cause.</p>
+      <h2>Reported cannabis use by legal band</h2>
+      <p class="ch-dek">Each dot shows past-year cannabis use within that country’s survey age band. The bars are the middle reported values in each legal band. {USE_COMPARISON_NOTE} The dots and bars do not establish an effect of the law.</p>
       <div class="ch-frame ch-use" data-no-preview>
         <div class="ch-y">{useTicks.map((t) => <span style={`top:${uOf(t)}%`}>{t}%</span>)}</div>
         <div class="ch-plot">
@@ -1367,14 +1366,14 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
               {b.placed.map((p) => (
                 <a class="ch-dot" href={`${base}country/${p.c.slug}/#datasets`} data-use={p.c.slug}
                   style={`left:calc(${cx}% + ${p.lane} * var(--lane));top:${uOf(p.y)}%;--c:${tierColor(b.t.min)}`}
-                  aria-label={`${p.c.name}: ${p.y}% of adults used cannabis in the past year`}></a>
+                  aria-label={`${p.c.name}: ${useShareLabel(p.c.use)} used cannabis in the past year; survey ${p.c.use.period ?? p.c.use.year}`}></a>
               ))}
             </>;
           })}
         </div>
         <div class="ch-use-x">{useBands.map((b) => <span><b>{b.t.name}</b><small>{b.dots.length} countries</small></span>)}</div>
       </div>
-      <p class="ch-source">Past-year use among adults from the <a href={`${base}sources/#dataset-cannabis_use`}>UNODC</a>, the latest survey of each country; {used.length} countries with a survey, estimates left out.</p>
+      <p class="ch-source">Past-year use in each survey’s age band from the <a href={`${base}sources/#dataset-cannabis_use`}>UNODC</a>, the latest survey of each country; {used.length} countries with a survey, estimates left out.</p>
       <p class="ch-more"><a href={`${base}map/share-of-adults/`}>Use on the map →</a> <a href={`${base}map/youth-cannabis-use/`}>Use among young people →</a></p>
     </section>
     {chapterAt.has("teen-trends") && <h2 class="ch-chapter">{chapterAt.get("teen-trends")}</h2>}
@@ -1750,8 +1749,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {chapterAt.has("state-capacity") && <h2 class="ch-chapter">{chapterAt.get("state-capacity")}</h2>}
     <section class="ch" id="state-capacity">
       <p class="ch-kicker"><a href="#state-capacity">{kick("state-capacity")}</a></p>
-      <h2>{capFit.r > 0.3 ? "The more capable the state, the more cannabis is used, not less" : capFit.r < -0.3 ? "More capable states see less cannabis use" : "How capable a state is says little about how much cannabis its people use"} (r = {capFit.r.toFixed(2)})</h2>
-      <p class="ch-dek">Each dot is a country: across, the World Bank's measure of government effectiveness, 0 to 100; up, the share of adults who used cannabis in the past year; colour, its band. Even the strongest states do not keep use down: among the most effective ones, {strongStrict.length} under prohibition and {strongMild.length} with milder laws sit across the same range. Richer countries also survey more, and people there admit use more readily.</p>
+      <h2>Government effectiveness and reported cannabis use (r = {capFit.r.toFixed(2)})</h2>
+      <p class="ch-dek">Each dot is a country: across, the World Bank’s measure of government effectiveness, 0 to 100; up, past-year cannabis use within the survey’s age band; colour, its legal band. {USE_COMPARISON_NOTE} This unadjusted correlation does not establish a relationship with government effectiveness.</p>
       <div class="ch-frame ch-scatter ch-wide-y" data-no-preview>
         <div class="ch-y">{Array.from({ length: CY1 / 5 + 1 }, (_, i) => i * 5).map((t) => <span style={`top:${100 - pct(t, 0, CY1)}%`}>{t}%</span>)}</div>
         <div class="ch-plot ch-plot-short">
@@ -1761,7 +1760,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
           </svg>
           {capacity.map((d) => (
             <a class:list={["ch-dot", { named: capNamed.has(d.c.id), left: d.x > 78 }]} href={`${base}country/${d.c.slug}/#datasets`} data-capacity={d.c.slug}
-              style={`left:${d.x}%;top:${100 - pct(d.y, 0, CY1)}%;--c:${tierColor(d.c.raw)}`} aria-label={`${d.c.name}: effectiveness ${Math.round(d.x)}, use ${d.y}%`}>
+              style={`left:${d.x}%;top:${100 - pct(d.y, 0, CY1)}%;--c:${tierColor(d.c.raw)}`} aria-label={`${d.c.name}: effectiveness ${Math.round(d.x)}; ${useShareLabel(d.c.use)}; survey ${d.c.use.period ?? d.c.use.year}`}>
               {capNamed.has(d.c.id) && <span>{d.c.name}</span>}
             </a>
           ))}
@@ -1897,6 +1896,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     )}
     {chapterAt.has("what-goes-with-it") && <h2 class="ch-chapter">{chapterAt.get("what-goes-with-it")}</h2>}
     <section class="ch" id="what-goes-with-it">
+      <p class="ch-source">For reported cannabis-use rates: {USE_COMPARISON_NOTE}</p>
       <p class="ch-kicker"><a href="#what-goes-with-it">{kick("what-goes-with-it")}</a></p>
       <h2>Across the world, {strongest.label.replace(/ \(.*\)$/, "").toLowerCase()} goes with cannabis freedom most closely (r = {strongest.r.toFixed(2)}); in fewer countries, {strongestNarrow.label.replace(/ \(.*\)$/, "").toLowerCase()} does even more (r = {strongestNarrow.r.toFixed(2)})</h2>
       <p class="ch-dek">How closely each of {measures.length} measures moves with the cannabis score across the countries that have it: 1 would mean they rise together exactly, −1 that one falls as the other rises, 0 no link at all. A yes-or-no measure, such as Muslims being the largest religious group, counts 1 for yes. A link is not a cause, and many of these measures move with each other; those marked Europe cover few countries. Linked bars open the matching chart or map.</p>
@@ -1990,8 +1990,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
 
     // use and the law: the survey behind a dot
     document.querySelectorAll("[data-use]").forEach((a) => card(a, () => {
-      const [name, prev, year, score, tier] = D.use[a.dataset.use];
-      return `<b>${esc(name)}</b><span class="ch-tip-row">Used cannabis in the past year<em>${prev}%</em></span>${year ? `<span class="ch-tip-row">Survey<em>${year}</em></span>` : ""}`
+      const [name, prev, year, score, tier, ages] = D.use[a.dataset.use];
+      return `<b>${esc(name)}</b><span class="ch-tip-row">Past-year use, ages ${esc(ages)}<em>${prev}%</em></span>${year ? `<span class="ch-tip-row">Survey<em>${year}</em></span>` : ""}`
         + `<span class="ch-tip-row">Score today<em>${score} · ${esc(tier)}</em></span><span class="ch-tip-go">Open its datasets →</span>`;
     }));
 
@@ -2220,8 +2220,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     }));
     // state capacity
     document.querySelectorAll("[data-capacity]").forEach((a) => card(a, () => {
-      const [name, ge, use, year, score, tier] = D.capacity[a.dataset.capacity];
-      return `<b>${esc(name)}</b><span class="ch-tip-row">Government effectiveness<em>${ge} of 100</em></span><span class="ch-tip-row">Used cannabis in the past year${year ? `, ${year}` : ""}<em>${use}%</em></span><span class="ch-tip-row">Score<em>${score} · ${esc(tier)}</em></span><span class="ch-tip-go">Open its datasets →</span>`;
+      const [name, ge, use, year, score, tier, ages] = D.capacity[a.dataset.capacity];
+      return `<b>${esc(name)}</b><span class="ch-tip-row">Government effectiveness<em>${ge} of 100</em></span><span class="ch-tip-row">Past-year use, ages ${esc(ages)}${year ? `, ${year}` : ""}<em>${use}%</em></span><span class="ch-tip-row">Score<em>${score} · ${esc(tier)}</em></span><span class="ch-tip-go">Open its datasets →</span>`;
     }));
 
     // flows: the countries a ribbon carries
@@ -2251,8 +2251,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     }
     // treemap
     document.querySelectorAll("[data-tile]").forEach((a) => card(a, () => {
-      const [name, users, prev, score, tier] = D.tiles[a.dataset.tile];
-      return `<b>${esc(name)}</b><span class="ch-tip-row">People who use cannabis<em>${users.toLocaleString("en-GB")}</em></span><span class="ch-tip-row">Share of adults<em>${prev}%</em></span><span class="ch-tip-row">Score<em>${score} · ${esc(tier)}</em></span><span class="ch-tip-go">Open its datasets →</span>`;
+      const [name, users, prev, score, tier, ages, year] = D.tiles[a.dataset.tile];
+      return `<b>${esc(name)}</b><span class="ch-tip-row">People who use cannabis<em>${users.toLocaleString("en-GB")}</em></span><span class="ch-tip-row">Share aged ${esc(ages)}<em>${prev}%</em></span>${year ? `<span class="ch-tip-row">Survey<em>${esc(year)}</em></span>` : ""}<span class="ch-tip-row">Score<em>${score} · ${esc(tier)}</em></span><span class="ch-tip-go">Open its datasets →</span>`;
     }));
 
     // the tile map: a year control that recolours every square from the stripes' scores
