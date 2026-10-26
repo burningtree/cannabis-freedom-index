@@ -1726,3 +1726,10 @@ same convention, and writes the article for the checked 2009 Contravention
 Code reform (11→19), verified against the Code's own text including the
 31 May 2009 commencement. Article model tags corrected to `muse-spark-1.3`
 in all five session articles. Today's scores are unchanged.
+
+A [Georgia gap pass](research/history-georgia-gap-2026-10-26.md) on 26
+October 2026 adds the scored 1974 Soviet possession step (20→9) on the
+same convention, and writes the article for the checked 2015 Tsikarishvili
+judgment (9→14), read in full on the Constitutional Court's site. The 1974
+`after` state is forced by the checked 2015 `before`, so no checked entry
+changed. Today's scores are unchanged.
