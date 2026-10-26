@@ -1685,3 +1685,11 @@ A [Taiwan gap pass](research/history-taiwan-gap-2026-10-26.md) on 26 October
 rewrite, both read in full on Wikisource against the 1955 original. Unscored
 context: treatment exits widened and death penalties softened, cannabis ranges
 unchanged. One article covers the 1992 hinge. Today's scores are unchanged.
+
+A [Lithuania gap pass](research/history-lithuania-gap-2026-10-26.md) on 26
+October 2026 closes the open 2006 large-cultivation item as reviewed (only
+the maximum rose, alternatives retained) and adds the 1987 Soviet use decree
+and the 1990 constitutional rejection as unscored union measures, both read
+via Human Rights Watch. One article covers the 1987 decree. No scored 1974
+republic step is asserted; the LSSR code text stays unrecovered. Today's
+scores are unchanged.
