@@ -2165,6 +2165,37 @@ button.sv-row .sv-chip { font: 400 10.5px var(--mono); text-transform: uppercase
 
 /* ── Research progress (/research/, internal) ──────────────────────────────── */
 .research-page code { font: 400 .9em var(--mono); }
+/* how the research grew (ResearchGrowth.astro): four small step charts on one time axis */
+.rg-when { margin: 0 0 14px; min-height: 1.5em; font: 400 12px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.rg-when a { margin-left: 10px; text-transform: none; letter-spacing: 0; font: 400 13px Inter, sans-serif; color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
+.rg-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; }
+.rg-panel { margin: 0; padding-top: 14px; border-top: 1px solid var(--border); }
+.rg-panel figcaption { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 12px; margin-bottom: 12px; }
+.rg-label { font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.rg-now { grid-row: span 2; font: 400 clamp(30px, 3.4vw, 44px)/1 var(--display); font-variant-numeric: tabular-nums; text-align: right; }
+.rg-delta { font-size: 12.5px; color: var(--text-2); }
+.rg-note { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
+.rg-plot { position: relative; height: 150px; cursor: crosshair; touch-action: pan-y; }
+.rg-plot svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.rg-plot path, .rg-plot line { vector-effect: non-scaling-stroke; }
+.rg-area { fill: color-mix(in srgb, var(--u3) 16%, transparent); }
+.rg-line { fill: none; stroke: var(--u3); stroke-width: 2; stroke-linejoin: round; }
+.rg-grid-line { stroke: var(--border); stroke-width: 1; stroke-dasharray: 2 4; }
+.rg-plot::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; border-bottom: 1px solid var(--text-2); }
+/* the scale on the left, where every line starts low */
+.rg-top, .rg-mid { position: absolute; left: 0; font: 400 10.5px var(--mono); color: var(--muted); background: var(--bg); padding-right: 6px; transform: translateY(-50%); pointer-events: none; }
+.rg-top { top: 5%; }
+.rg-mid { top: 52.5%; }
+.rg-rule { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--text-2); pointer-events: none; }
+.rg-dot { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--u3); box-shadow: 0 0 0 2px var(--bg); pointer-events: none; }
+.rg-rule[hidden], .rg-dot[hidden] { display: none; }
+.rg-axis { position: relative; height: 18px; margin-top: 6px; font: 400 10.5px var(--mono); color: var(--muted); }
+.rg-axis span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.rg-axis span:first-child { transform: none; }
+.rg-axis span:last-child { transform: translateX(-100%); }
+.rg-table { margin-top: 24px; }
+.rg-table summary { cursor: pointer; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+@media (max-width: 760px) { .rg-grid { grid-template-columns: minmax(0, 1fr); } .rg-plot { height: 120px; } }
 .rs-checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
 #rsFind { align-self: end; min-width: 240px; }
 .rs-scroll { overflow-x: auto; }

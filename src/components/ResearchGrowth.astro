@@ -1,0 +1,127 @@
+---
+// How the research grew, commit by commit (src/lib/progress.js): four small charts on one time
+// axis, each on its own scale, because the counts differ a hundredfold and one axis would flatten
+// the small ones. Lines are steps: a count changes only when a commit lands. Hovering or touching
+// any chart reads all four at the same moment and names the commit; a click opens it in the
+// changelog. The table under it holds the same numbers for reading without the charts.
+import { progress } from "../lib/progress.js";
+
+const base = import.meta.env.BASE_URL;
+const num = (n) => n.toLocaleString("en-GB");
+const day = (t) => new Date(t).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
+const SERIES = [
+  { i: 1, label: "History entries", note: (p) => `${Math.round((p[2] / p[1]) * 100)}% checked against a source` },
+  { i: 5, label: "Web pages cited", note: () => "in profiles, history, articles and the atlas" },
+  { i: 3, label: "Articles", note: () => "long reads beside history entries" },
+  { i: 4, label: "Culture entries", note: () => "words, traditions and people" },
+];
+const first = progress[0], last = progress.at(-1);
+const T0 = first?.[0], T1 = last?.[0];
+const x = (t) => ((t - T0) / Math.max(1, T1 - T0)) * 1000;
+// a round top for each scale: 3,178 → 3,500
+const niceTop = (v) => { const p = 10 ** Math.floor(Math.log10(Math.max(1, v))), m = v / p; return (m <= 1 ? 1 : m <= 1.5 ? 1.5 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 3 ? 3 : m <= 3.5 ? 3.5 : m <= 4 ? 4 : m <= 5 ? 5 : m <= 6 ? 6 : m <= 8 ? 8 : 10) * p; };
+const week = T1 - 7 * 864e5;
+const at = (t) => { let k = 0; while (k + 1 < progress.length && progress[k + 1][0] <= t) k++; return progress[k]; };
+const panels = SERIES.map((s) => {
+  const top = niceTop(Math.max(...progress.map((p) => p[s.i])));
+  const y = (v) => 200 - (v / top) * 190;
+  // a step line: across at the old count, then up at each commit
+  const line = progress.map((p, k) => (k ? `H${x(p[0]).toFixed(1)}V${y(p[s.i]).toFixed(1)}` : `M0,${y(p[s.i]).toFixed(1)}`)).join("") + "H1000";
+  return { ...s, top, line, area: `${line}V200H0Z`, now: last[s.i], gained: last[s.i] - at(week)[s.i] };
+});
+// days on the axis: the first, the last, and two between
+const ticks = [0, 1 / 3, 2 / 3, 1].map((f) => ({ left: f * 100, label: day(T0 + f * (T1 - T0)) }));
+// what the browser needs to read a moment: [x 0–1000, …counts, short hash, subject]
+const data = progress.map((p) => [+x(p[0]).toFixed(1), p[1], p[2], p[3], p[4], p[5], p[6], p[7], day(p[0])]);
+---
+{progress.length > 1 && (
+  <section class="section rg" aria-labelledby="rgTitle">
+    <div class="section-head"><div>
+      <h2 id="rgTitle">How the research grew</h2>
+      <p class="sub">Every commit since {day(T0)}, counted from the files as they stood then. Each chart has its own scale. Point at a moment to read all four; click to open that change.</p>
+    </div></div>
+    <p class="rg-when" aria-live="polite"><span data-rg-when>Today</span> <a data-rg-commit hidden></a></p>
+    <div class="rg-grid">
+      {panels.map((p) => (
+        <figure class="rg-panel" data-i={p.i}>
+          <figcaption>
+            <span class="rg-label">{p.label}</span>
+            <b class="rg-now" data-rg-value>{num(p.now)}</b>
+            <span class="rg-delta" data-rg-delta>{p.gained > 0 ? `+${num(p.gained)} in the last 7 days` : "no change in the last 7 days"}</span>
+            <span class="rg-note" data-rg-note>{p.note(last)}</span>
+          </figcaption>
+          <div class="rg-plot">
+            <svg viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
+              <line class="rg-grid-line" x1="0" x2="1000" y1="105" y2="105" />
+              <path class="rg-area" d={p.area} />
+              <path class="rg-line" d={p.line} />
+            </svg>
+            <span class="rg-top" aria-hidden="true">{num(p.top)}</span>
+            <span class="rg-mid" aria-hidden="true">{num(p.top / 2)}</span>
+            <i class="rg-rule" hidden></i><i class="rg-dot" hidden></i>
+          </div>
+          <div class="rg-axis" aria-hidden="true">{ticks.map((t) => <span style={`left:${t.left}%`}>{t.label}</span>)}</div>
+        </figure>
+      ))}
+    </div>
+    <details class="rg-table">
+      <summary>The numbers by day</summary>
+      <div class="rs-scroll"><table class="src-table">
+        <thead><tr><th>Day</th>{SERIES.map((s) => <th class="num">{s.label}</th>)}</tr></thead>
+        <tbody>{[...new Map(progress.map((p) => [day(p[0]), p])).entries()].reverse().map(([d, p]) => <tr><td>{d}</td>{SERIES.map((s) => <td class="num">{num(p[s.i])}</td>)}</tr>)}</tbody>
+      </table></div>
+    </details>
+    <script type="application/json" id="rgData" set:html={JSON.stringify({ data, base, series: SERIES.map((s) => s.i) })} />
+  </section>
+)}
+
+<script>
+  // Reading a moment: the commit nearest the pointer, the same in all four charts.
+  const box = document.querySelector(".rg");
+  if (box) {
+    const { data, base } = JSON.parse(document.getElementById("rgData").textContent);
+    const num = (n) => n.toLocaleString("en-GB");
+    const panels = [...box.querySelectorAll(".rg-panel")];
+    const when = box.querySelector("[data-rg-when]"), link = box.querySelector("[data-rg-commit]");
+    const resting = panels.map((p) => ({ value: p.querySelector("[data-rg-value]").textContent, delta: p.querySelector("[data-rg-delta]").textContent, note: p.querySelector("[data-rg-note]").textContent }));
+    let current = null;
+    const nearest = (fx) => { let k = 0; while (k + 1 < data.length && data[k + 1][0] <= fx) k++; return k; };
+    function show(k) {
+      current = k;
+      const d = data[k], left = `${d[0] / 10}%`;
+      when.textContent = d[8];
+      link.hidden = false;
+      link.href = `${base}changelog/${d[6]}/`;
+      link.textContent = d[7];
+      panels.forEach((p, n) => {
+        const i = +p.dataset.i, plot = p.querySelector(".rg-plot"), svgTop = +p.querySelector(".rg-top").textContent.replace(/,/g, "");
+        p.querySelector("[data-rg-value]").textContent = num(d[i]);
+        const before = k ? d[i] - data[k - 1][i] : 0;
+        p.querySelector("[data-rg-delta]").textContent = before ? `${before > 0 ? "+" : "−"}${num(Math.abs(before))} in this commit` : "unchanged in this commit";
+        if (i === 1) p.querySelector("[data-rg-note]").textContent = `${Math.round((d[2] / d[1]) * 100)}% checked against a source`;
+        const rule = plot.querySelector(".rg-rule"), dot = plot.querySelector(".rg-dot");
+        rule.hidden = dot.hidden = false;
+        rule.style.left = dot.style.left = left;
+        dot.style.top = `${100 - (d[i] / svgTop) * 95}%`;
+      });
+    }
+    function rest() {
+      current = null;
+      when.textContent = "Today";
+      link.hidden = true;
+      panels.forEach((p, n) => {
+        p.querySelector("[data-rg-value]").textContent = resting[n].value;
+        p.querySelector("[data-rg-delta]").textContent = resting[n].delta;
+        p.querySelector("[data-rg-note]").textContent = resting[n].note;
+        p.querySelectorAll(".rg-rule, .rg-dot").forEach((x) => (x.hidden = true));
+      });
+    }
+    for (const plot of box.querySelectorAll(".rg-plot")) {
+      const under = (e) => { const r = plot.getBoundingClientRect(); return nearest(((e.clientX - r.left) / r.width) * 1000); };
+      plot.addEventListener("pointermove", (e) => { if (e.pointerType === "mouse") show(under(e)); });
+      // a mouse has shown the moment already, so a click opens it; a tap shows it, a second tap opens it
+      plot.addEventListener("click", (e) => { const k = under(e); if (current === k) location.href = link.href; else show(k); });
+    }
+    box.querySelector(".rg-grid").addEventListener("pointerleave", rest);
+  }
+</script>

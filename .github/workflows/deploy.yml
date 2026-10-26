@@ -46,6 +46,7 @@ jobs:
           path: |
             .cache/og
             .cache/changelog
+            .cache/progress
           key: og-${{ hashFiles('src/og/**', 'package-lock.json') }}-${{ github.run_id }}
           restore-keys: |
             og-${{ hashFiles('src/og/**', 'package-lock.json') }}-

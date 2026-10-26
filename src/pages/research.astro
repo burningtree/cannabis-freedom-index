@@ -4,6 +4,7 @@
 // sitemap, and not indexed. The checks and their weights are in src/lib/research.js.
 import Base from "../layouts/Base.astro";
 import { research, researchTotals as T } from "../lib/research.js";
+import ResearchGrowth from "../components/ResearchGrowth.astro";
 
 const base = import.meta.env.BASE_URL;
 const num = (n) => n.toLocaleString("en-US");
@@ -30,6 +31,8 @@ const stats = [
     <dl class="hist-stats">
       {stats.map(([n, label]) => <div><dt>{label}</dt><dd>{n}</dd></div>)}
     </dl>
+
+    <ResearchGrowth />
 
     <section class="section">
       <div class="section-head"><div>
