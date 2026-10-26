@@ -6,9 +6,13 @@ sources:
     year: 1957
     locator: "Compilation pp. 464–482: No. 20 of 1938 (in force 1 May 1939); s. 2(17) Indian Hemp definition; Part IV ss. 9–10; penalty clause (indictment: $960 or 10 years; summary: $240 or 6 months; forfeiture)"
     url: https://digitalcollections.crl.edu/record/827777
+  - title: "Saint Lucia — Ordinances 1926: No. 16 of 1926, Dangerous Drugs Ordinance (assented 26 October 1926)"
+    year: 1926
+    locator: "ss. 3–5 general bans; s. 7(f) galenicals under Part III; penalty clause (£200/12 months summary)"
+    url: https://digitalcollections.crl.edu/record/827721
 ---
 
-Saint Lucia banned cannabis in 1938. Ordinance No. 20 of that year, published in the 1957 revised ordinances as Chapter 55 and in force from 1 May 1939, gave the colony a full dangerous-drugs code — and its Part IV is headed simply "Indian Hemp".[@1]
+Saint Lucia's cannabis ban got teeth in 1938. Twelve years after Ordinance No. 16 of 1926 first controlled Indian hemp — banning its cultivation, possession, sale, import and export at a maximum of twelve months — Ordinance No. 20 of 1938, published in the 1957 revised ordinances as Chapter 55 and in force from 1 May 1939, put a far harsher dangerous-drugs code in place, and its Part IV is headed simply "Indian Hemp".[@1,2]
 
 ## A botanical definition
 

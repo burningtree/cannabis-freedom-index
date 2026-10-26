@@ -49,6 +49,28 @@ scores, profiles or timelines changed.
   does not assert repeal or the 1956 Act's relationship to the 1932
   ordinance.
 
+## Follow-up the same session: St Lucia 1926 found, chain re-based again
+
+Sweeping the neighbouring CRL files for the 1926 ordinance's assent clause
+surfaced the colony name: record 827721 is SAINT LUCIA ordinances 1926,
+and No. 16 of 1926 (passed 14 Oct, assented 26 Oct by the Acting Governor)
+is St Lucia's first Indian-hemp control — it repeals the opium-only 1916
+Revision ordinance and 1922 amendment (s. 19) and bans hemp cultivation,
+possession, sale, import, export, manufacture and dealing (ss. 3–5), with
+galenical extract/tincture under Part III (s. 7(f)), at £200/12 months
+summary. Read in full (files 058–065).
+
+Consequences, all applied and verified: new entry
+`saint-lucia-dangerous-drugs-1926` (1926-10-26, FREE before) and new
+article `articles/saint-lucia-dangerous-drugs-1926.md`; the 1938 entry is
+re-based (before FREE → {1,2,3,1,1,0}, same post-first-ban convention as
+Malawi/Basutoland) with its description reframed as the harsher successor
+code (+1926 source as [@2]); the 1938 article's lede reframed the same way
+(+1926 source). No express repeal of the 1926 ordinance was found in the
+1938 OCR, so neither entry nor article asserts formal repeal — only the
+verified penalty jump (12 months summary → 10 years indictment). Chain lc:
+1926 100→16, 1938 16→11-vector, 0 flagged.
+
 ## Dead ends and parks recorded, not forced
 
 - Montserrat first ban: E/NL.1980/22 (1979 amendment to Cap. 199 Dangerous
