@@ -36,7 +36,7 @@ against the actual reproduced primary text, not a search summary. Tags now ident
 colonial rule, sentencing, trade, retail and police powers. The article concerns French
 Cameroon; it does not claim the same decree applied to British-administered Cameroon.
 
-## 1955: extension recovered as indexed text, scan pending
+## 1955: extension recovered as indexed text, then as the scan
 
 [E/NL.1956/147](https://digitallibrary.un.org/record/1296336/files/e-nl-1956-147-f.pdf)
 reproduces Order 2772 of 19 April 1955. The complete indexed one-page text identifies the
@@ -44,7 +44,10 @@ local promulgation of Article 6 of France's 1953 law, extending the pharmacy cod
 poisonous-substances chapter, including narcotics. It cites local promulgation of the
 1926 decree on 27 November 1926 and the 1937 decree on 10 July 1938. Those are distinct
 from the original metropolitan signature dates. The local PDF downloads failed or
-returned HTML, so the new 1955 event is explicitly `checked: false` pending scan recovery.
+returned HTML in the first pass; the UN scan was later downloaded and read, and the entry is
+now `checked: true`. The scan details and the distinction between the 1955 order date and the
+1957 UN circulation date are recorded in the [follow-up
+note](history-cameroon-followup-2026-10-26.md).
 
 The [actual French law](https://bdoc.ofdt.fr/doc_num.php?explnum_id=4) was downloaded
 from OFDT and both complete gazette pages visually read (25 December 1953, 11535–11536).
@@ -116,11 +119,13 @@ The 1992 committee and 2025 seizure also receive relevant tags.
 
 ## Remaining gaps
 
-Recover the original 1926 scan and its local publication; the 1955 local scan; the full
-1976 poisonous-substances decree (76/214 of 4 June, currently only identified in legal
-inventories); and the rules applied to British Cameroon and after reunification. No
-event was fabricated from the 1976 decree's title alone. Establish the fate of the 2017
-preliminary bill from a later enacted text before describing its proposals as law.
+Recover the original 1926 scan and its local publication; the 1955 local gazette (the UN
+reproduction is now read); the full 1976 poisonous-substances decree (76/214 of 4 June,
+currently only identified in legal inventories); and the rules applied to British Cameroon
+and after reunification. No event was fabricated from the 1976 decree's title alone.
+Establish the fate of the 2017 preliminary bill from a later enacted text before describing
+its proposals as law. The 1955 order's checked status is closed in the
+[follow-up note](history-cameroon-followup-2026-10-26.md).
 
 Baselines, PDFs, page renders, failed-source evidence and verification files are retained
 in `tmp/history-cameroon-gap-2026-10-21/`. Delete the generated site after successful checks.
