@@ -1656,3 +1656,12 @@ legislative years while original commencement clauses remain to be recovered.
 The 1990 event links the additions. Current scores, all inherited before-vectors
 and the profile are preserved; the wider capital-penalty chronology remains
 separate review work.
+
+An [Eswatini gap pass](research/history-eswatini-gap-2026-10-26.md) on 26
+October 2026 closes the open 1952 score-triage item as reviewed (maxima rose
+but fines stayed typical, so no segment change) and fills the 1970s and 1980s:
+the King's Order-in-Council No. 2 of 1976 raising maxima to E2,000 and five
+years, and the 1986 and 1989 High Court judgments setting and applying dagga
+sentencing bands — all read in full. One article covers the 1976 order; the
+1922 Act's article already existed and was left untouched. Today's scores are
+unchanged.
