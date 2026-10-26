@@ -963,7 +963,13 @@
     and writes the colonisers as country file names.
   profile:
     headline: "Once ruled by {colonizer_names}"
-  country: { column: country, by: id, aliases: { tp: tl, yu: rs, zr: cd } }
+  country:
+    column: country
+    by: id
+    aliases: { tp: tl, yu: rs, zr: cd }
+    # These source places have no standalone profile. Retain their CSV rows, without
+    # assigning their colonial history to the administering country's profile.
+    unprofiled: [ai, an, tf, cc, ck, cx, eh, fk, gp, gf, ms, mq, nc, nf, nu, pn, re, sh, pm, tc, tk, wf]
   fields:
     colonizers: { column: colonizers, type: text, about: "Former colonial rulers, as country file names: Charts page" }
     colonizer_names: { column: colonizer_names, type: text, format: text, about: "Their names, for the profile" }

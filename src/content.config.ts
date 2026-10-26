@@ -310,7 +310,11 @@ const datasets = defineCollection({
       about: z.string().min(1),
       notes: z.record(z.string(), z.string()).default({}), // by country file name
       // which column names the country; left out for a worldwide dataset, whose rows are kept as they are
-      country: z.object({ column: z.string().min(1), by: z.enum(["id", "name"]), aliases: z.record(z.string(), z.string()).default({}) }).strict().optional(),
+      country: z.object({
+        column: z.string().min(1), by: z.enum(["id", "name"]),
+        aliases: z.record(z.string(), z.string()).default({}),
+        unprofiled: z.array(z.string().min(1)).default([]), // known source places without a standalone profile
+      }).strict().optional(),
       year: z.object({ column: z.string().min(1) }).strict().optional(), // a column with the year of each row
       fields: z.record(z.string(), column),
       pages: z.array(z.object({ label: z.string().min(1), path: z.string() }).strict()).optional(),

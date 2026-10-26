@@ -79,7 +79,10 @@ const loaded = (await getCollection("datasets")).flatMap(({ data: def }) => {
       if (!key) continue; // a row kept for a place with no country file, such as a former state
       places.add(key);
       const id = def.country.aliases[key] ?? (def.country.by === "id" ? key.toLowerCase() : byName.get(norm(key)));
-      if (!id || !ids.has(id)) { missed.push(key); continue; }
+      if (!id || !ids.has(id)) {
+        if (!def.country.unprofiled.includes(key)) missed.push(key);
+        continue;
+      }
       const figures = {};
       for (const [name, { column, decimals, type }] of Object.entries(def.fields)) {
         if (!(column in r)) throw new Error(`${path}: no column "${column}" (field "${name}" in datasets.yaml)`);
