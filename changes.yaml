@@ -3842,13 +3842,16 @@
   country: je
   title: Jersey lets Centeniers fine people for possessing cannabis
   description: >-
-    The Crime (Public Order) (Jersey) Law 2024 came into force. It inserted Article 28A into the
-    Misuse of Drugs Law, allowing a Centenier at a Parish Hall enquiry to impose a level 1 fine for
-    possessing a Class B or Class C drug if the person accepts it, without a criminal conviction.
+    The Crime (Public Order) (Jersey) Law 2024 came into force on 18 October 2024.[@1] It inserted
+    Article 28A into the Misuse of Drugs Law, allowing a Centenier at a Parish Hall enquiry to
+    impose a level 1 fine for possessing a Class B or Class C drug if the person accepts it,
+    without a criminal conviction.[@1,2]
   before: {possession: 1, cultivation: 1, enforcement: 3, sharing: 1, consumption: 1, access: 3}
-  checked: false
+  checked: true
   sources:
-    - title: Jersey Legal Information Board — Crime (Public Order) (Jersey) Law 2024
+    - type: law
+      title: Jersey Legal Information Board — Crime (Public Order) (Jersey) Law 2024, L.9/2024
+      locator: Article 13(3), inserting Article 28A; in force 18 October 2024
       url: https://www.jerseylaw.je/laws/current/l_9_2024
     - title: Jersey Legal Information Board — Misuse of Drugs (Jersey) Law 1978, Article 28A
       url: https://jerseylaw.je/laws/current/l_10_1978
@@ -53058,6 +53061,58 @@
       locator: Press release, 30 November 2022; service opens 1 December
       url: https://www.gov.im/about-the-government/departments/health-and-social-care/news/?altTemplate=ViewCategorisedNews&id=148044
 
+- id: jersey-caution-guidelines-2015
+  date: "2015-06-16"
+  category: easing
+  country: je
+  title: Jersey raises the Parish Hall caution amount to 15 grams
+  description: >-
+    Attorney General Directive 1/2015 kept small possession cases at Parish Hall level but
+    raised the amount that could end in a written caution to 15 grams of herbal cannabis or
+    resin for a first offence.[@1,2] It replaced the 1998 guidance, under which the limit had
+    been 7 grams and the caution depended on attending a Drug Awareness Course.[@1] Possession
+    remained a Class B crime; only the handling of small first cases widened.[@2]
+  unscored: >-
+    The caution route already existed; raising its amount to 15 g did not change the possession
+    or enforcement level, which already reflects Parish Hall diversion.
+  checked: true
+  related:
+    - jersey-caution-directive-1998
+    - jersey-centenier-drug-fines-2024
+  sources:
+    - type: report
+      title: End Cannabis Prohibition Jersey — Legal Status of Cannabis in Jersey, version 1.4 (11 December 2025)
+      locator: Attorney General Directives timeline, 2015; Centenier Written Caution Guidelines
+      url: https://cannabis.org.je/files/legal-status-of-cannabis-in-jersey.pdf
+    - title: Cannevi — Cannabis Prohibition in Jersey
+      locator: 2015 Attorney General Directive 1/2015 and Centenier Written Caution Guidelines
+      url: https://cannevi.je/cannabis-prohibition-in-jersey
+
+- id: jersey-caution-directive-1998
+  date: "1998"
+  category: easing
+  country: je
+  title: Jersey lets a first cannabis offence end in a caution and a course
+  description: >-
+    Under Attorney General Directive 1/98, a first offence of possessing up to 7 grams of
+    cannabis or cannabis resin could be dealt with at a Parish Hall enquiry by a written
+    caution, conditional on attending a Drug Awareness Course, instead of going to court.[@1,2]
+    Possession stayed a crime; what changed was where a small first case ended.[@1] The Attorney
+    General replaced the guidance in 2015, raising the caution amount to 15 grams.[@2]
+  before: {possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 1}
+  checked: true
+  related:
+    - jersey-caution-guidelines-2015
+    - jersey-centenier-drug-fines-2024
+  sources:
+    - title: Cannevi — Cannabis Prohibition in Jersey
+      locator: 1998 Attorney General Directive 1/98; first offenders, up to 7 g, Drug Awareness Course
+      url: https://cannevi.je/cannabis-prohibition-in-jersey
+    - type: report
+      title: End Cannabis Prohibition Jersey — Legal Status of Cannabis in Jersey, version 1.4 (11 December 2025)
+      locator: The Beginning of Decriminalisation; Attorney General Directives timeline, 1998
+      url: https://cannabis.org.je/files/legal-status-of-cannabis-in-jersey.pdf
+
 - id: jersey-medical-prescribing-vote-2018
   date: '2018-11-06'
   category: debate
@@ -53091,6 +53146,7 @@
     manufacturer certification; smoking the products remained prohibited. Article 4 set
     commencement on 1 January 2019, with Article 2 following immediately after the other
     provisions. This was a controlled medicines route, not general cannabis legalisation.
+  before: {possession: 1, cultivation: 1, enforcement: 3, sharing: 1, consumption: 1, access: 1}
   checked: true
   related:
     - jersey-medical-prescribing-vote-2018
@@ -53113,6 +53169,7 @@
     to November 2020. Before then, following the January 2019 law change, Jersey patients'
     prescriptions had been issued by UK clinics and dispensed by UK pharmacies. This records
     the start of local prescribing rather than the first legal access to these medicines.
+  unscored: First local clinic; the legal prescribing route dates from January 2019, and no segment level changes.
   checked: true
   related:
     - jersey-medical-cannabis-order-2019
@@ -54284,21 +54341,153 @@
       title: Executive Order 7715, prescribing regulations for carrying the Marihuana Tax Act into effect in the Virgin Islands (Federal Register, 30 September 1937)
       url: https://www.govinfo.gov/content/pkg/FR-1937-09-30/pdf/FR-1937-09-30.pdf
 
-- id: jersey-dangerous-drugs-law-1954
-  date: "1954-04-13"
-  category: ban
+- id: jersey-misuse-of-drugs-law-1980
+  date: "1980-05-01"
+  category: other
   country: je
-  title: Jersey brings Indian hemp under its dangerous drugs law
+  title: Jersey rewrites its drug law around drug classes
   description: >-
-    The Dangerous Drugs (Jersey) Law, sanctioned by the King in Council on 13 April 1954, controlled
-    the import, export, production and sale of raw opium, coca leaves and Indian hemp. It is the
-    earliest Jersey law on cannabis found here; Britain had brought cannabis under control in 1928.
-  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 10}
+    The Misuse of Drugs (Jersey) Law 1978 put cannabis and cannabis resin in Class B, with up to
+    five years in prison for possession and fourteen for producing, supplying or holding with
+    intent to supply.[@1] Cannabinol and its derivatives went into Class A, the most serious
+    class.[@1] The law replaced the 1954 and 1965 laws and took full effect on 1 May 1980; an
+    order that year also barred doctors and pharmacists from dealing in cannabis except under
+    licence or for research.[@2,3]
+  unscored: >-
+    The 1978 law re-enacted the bans in class form: the maximum for possession fell from ten
+    years to five, while supply and intent to supply rose to fourteen, so no segment level changes.
   checked: true
+  related:
+    - jersey-possession-ban-1966
+    - jersey-medical-cannabis-order-2019
   sources:
     - type: law
-      title: Dangerous Drugs (Jersey) Law 1954
-      url: https://www.jerseylaw.je/laws/enacted/Pages/L-05-1954.aspx
+      title: Misuse of Drugs (Jersey) Law 1978, L.10/1978
+      locator: >-
+        Second Schedule, Part II (cannabis and cannabis resin as Class B); Fourth Schedule
+        (penalties); Fifth Schedule (repeals); sanctioned 25 July 1978, registered 6 October 1978
+      url: https://www.jerseylaw.je/laws/enacted/PDFs/L-10-1978.pdf
+    - type: law
+      title: Misuse of Drugs (Jersey) Law, 1978 (Appointed Day) (No. 2) Act, 1980, R&O 6797
+      locator: Article 1; provisions not already in force come into force on 1 May 1980
+      url: https://www.jerseylaw.je/laws/enacted/PDFs/Jersey%20RO%206797.pdf
+    - title: Cannevi — Cannabis Prohibition in Jersey
+      locator: 1980 Misuse of Drugs (Designation) (Jersey) Order; Schedule of designated drugs
+      url: https://cannevi.je/cannabis-prohibition-in-jersey
+
+- id: jersey-cannabinol-possession-1971
+  date: "1971"
+  category: tightening
+  country: je
+  title: Jersey bans unauthorised possession of cannabinol
+  description: >-
+    Cannabinol and its tetrahydro derivatives were added to the schedule of the island's 1964
+    misuse-prevention law, which made holding a listed substance without authority an
+    offence.[@1,2] Plant cannabis and its resin were already banned under the 1966 order; this
+    step covered cannabinol and its derivatives instead.[@1]
+  unscored: >-
+    Only cannabinol and its derivatives were added; plant cannabis and resin were already
+    banned, and no segment level changes.
+  checked: true
+  related:
+    - jersey-possession-ban-1966
+    - jersey-misuse-of-drugs-law-1980
+  sources:
+    - title: Cannevi — Cannabis Prohibition in Jersey
+      locator: >-
+        1971 Drugs (Prevention of Misuse) (Jersey) Law, 1964 (Modification) (No. 2) (Jersey)
+        Order; Schedule of substances
+      url: https://cannevi.je/cannabis-prohibition-in-jersey
+    - type: report
+      title: End Cannabis Prohibition Jersey — Legal Status of Cannabis in Jersey, version 1.4 (11 December 2025)
+      locator: Cannabis Legislation Timeline, 1971
+      url: https://cannabis.org.je/files/legal-status-of-cannabis-in-jersey.pdf
+
+- id: jersey-possession-ban-1966
+  date: "1966-05-01"
+  category: tightening
+  country: je
+  title: Jersey bans possessing and supplying cannabis
+  description: >-
+    From 1 May 1966 it was an offence to possess, supply, procure or advertise cannabis or
+    cannabis resin — other than extracts and tinctures — unless the Public Health Committee had
+    licensed or authorised it.[@1] Doctors, pharmacists and other listed professionals kept a
+    general authority to hold and supply the drugs in their work.[@1] The ban used the 1954 law's
+    penalties, which ran to a £1,000 fine, ten years in prison, or both.[@2] For the plant and
+    its resin, Jersey had until then controlled only imports, exports and growing.[@1]
+  before: {possession: 10, cultivation: 1, enforcement: 8, sharing: 9, consumption: 9, access: 8}
+  checked: true
+  related:
+    - jersey-cultivation-ban-1965
+    - jersey-misuse-of-drugs-law-1980
+  sources:
+    - type: law
+      title: Dangerous Drugs (General Provisions) (Jersey) Order, 1966, R&O 4779
+      locator: Articles 1–4; made 18 April 1966, in force 1 May 1966 (Article 32)
+      url: https://www.jerseylaw.je/laws/enacted/PDFs/RO-4779.pdf
+    - type: law
+      title: Dangerous Drugs (Jersey) Law, 1954, L.5/1954
+      locator: Article 14(2), penalties for offences against the Law
+      url: https://www.jerseylaw.je/laws/enacted/PDFs/L-05-1954.pdf
+
+- id: jersey-cultivation-ban-1965
+  date: "1965"
+  category: tightening
+  tags: [home-growing]
+  country: je
+  title: Jersey makes growing cannabis an offence
+  description: >-
+    Anyone who knowingly grew a cannabis plant without a licence from the Public Health
+    Committee now committed an offence, punishable under the 1954 law with up to ten years in
+    prison or a £1,000 fine.[@1,2] Letting premises be used for smoking cannabis or cannabis
+    resin, or for dealing in them, became an offence too.[@1] The same law replaced the old term
+    Indian hemp with cannabis and cannabis resin in the 1954 controls.[@1]
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 9, consumption: 10, access: 8}
+  checked: true
+  related:
+    - jersey-dangerous-drugs-law-1954
+    - jersey-possession-ban-1966
+  sources:
+    - type: law
+      title: Dangerous Drugs (Amendment) (Jersey) Law, 1965, L.17/1965
+      locator: Articles 2, 7 and 8; sanctioned 18 September 1965, registered 5 November 1965
+      url: https://www.jerseylaw.je/laws/enacted/PDFs/L-17-1965.pdf
+    - type: law
+      title: Dangerous Drugs (Jersey) Law, 1954, L.5/1954
+      locator: Article 14(2), penalties for offences against the Law
+      url: https://www.jerseylaw.je/laws/enacted/PDFs/L-05-1954.pdf
+
+- id: jersey-dangerous-drugs-law-1954
+  date: "1955-01-01"
+  category: ban
+  tags: [trade]
+  country: je
+  title: Jersey puts cannabis imports and exports under licence
+  description: >-
+    From 1 January 1955 nobody could import or export Indian hemp — the dried flowering tops of
+    cannabis — or its resin except under a licence from the Public Health Committee, and then
+    only through St Helier port or the airport.[@1,2] Making possession, growing or selling an
+    offence was left to later orders: the law itself only gave the Committee power to control
+    them.[@1] It replaced the island's 1923 dangerous drugs law, which had been concerned with
+    opium and cocaine.[@2,3] Breaking the law could bring a fine of up to £1,000, ten years in
+    prison, or both.[@1]
+  before: {possession: 10, cultivation: 10, enforcement: 10, sharing: 10, consumption: 10, access: 10}
+  checked: true
+  related:
+    - jersey-cultivation-ban-1965
+    - jersey-possession-ban-1966
+  sources:
+    - type: law
+      title: Dangerous Drugs (Jersey) Law, 1954, L.5/1954
+      locator: Articles 1–4 and 14(2); sanctioned 13 April 1954, registered 15 May 1954
+      url: https://www.jerseylaw.je/laws/enacted/PDFs/L-05-1954.pdf
+    - type: law
+      title: Dangerous Drugs (Jersey) Law, 1954 (Commencement) Act, 1954, R&O 3503
+      locator: Article 1; the Law comes into force on 1 January 1955
+      url: https://www.jerseylaw.je/laws/enacted/PDFs/RO-3503.pdf
+    - title: Cannevi — Cannabis Prohibition in Jersey
+      locator: Loi (1923) sur les Drogues Dangereuses; passed 1 October 1923, confirmed 19 December 1923
+      url: https://cannevi.je/cannabis-prohibition-in-jersey
 
 - id: leeward-islands-dangerous-drugs-act-1937-bvi
   date: "1937"

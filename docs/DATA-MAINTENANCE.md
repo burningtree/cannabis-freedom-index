@@ -1521,6 +1521,18 @@ and the historical enforcement deduction moves from 2015 to March 1999. The
 at 2, with primary-law treatment, testing and deportation details in the profile.
 Earlier cannabis coverage and the aggregate first-restriction estimate remain open.
 
+A [Jersey gap pass](research/history-jersey-gap-2026-10-26.md) on 26 October
+2026 fills the longest modern gap in the history (1954 to 2018). Six entries
+from the enacted Jersey laws add the 1965 cultivation ban, the 1966 possession
+and supply order, the 1971 cannabinol listing, the 1978 law as it took full
+effect in 1980, and the 1998 and 2015 Parish Hall caution guidance. The 1954
+entry is re-dated to its 1 January 1955 commencement and rewritten: it licensed
+imports and exports only, and possession waited until 1966. The score chain is
+rebuilt in stages (100→97→70→12→14→16→19) instead of one drop at 1954, the
+2019 medical order now carries its access step, and the unchecked 2024
+Centenier entry was verified against the law. Two articles cover the 1955
+border rule and the 1966 possession ban. Today's scores are unchanged.
+
 ### Mixed legal products and maximum penalties
 
 Use `recreational: death` wherever an in-force law permits death for a cannabis offence,
