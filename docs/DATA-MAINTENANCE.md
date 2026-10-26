@@ -1637,3 +1637,12 @@ use publication commencement. New enforcement steps show the 1953–1990 capital
 interval; current scores and existing before-vectors are unchanged. The inherited
 1933 first-step allocation and the earlier Ottoman/republican transition remain
 open for joint reconstruction.
+
+A [Solomon Islands gap pass](research/history-solomon-islands-gap-2026-10-26.md)
+on 26 October 2026 adds the 1949 procedural amendment to the 1941 Regulation
+(read in the UN legislative series) and the 1965 extension of Britain's Single
+Convention ratification to the protectorate (read in the UN Treaty Collection
+volume). Both are scoreless context entries; related links join the 1941, 1949,
+1965 and 1982 entries, and one article covers the 1965 extension. Today's scores
+are unchanged. The 1953, 1967 and 1968 amendments and the 1978 legal notices in
+the reprint's endnotes remain unrecovered.
