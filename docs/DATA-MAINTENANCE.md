@@ -1764,6 +1764,14 @@ segments under the checked anchor, later items move only non-cannabis,
 replacement, floor-level or enforcement-only levers. Triage reports 2
 scored, 0 open. No article: a reasons-only pass.
 
+A [Malawi triage pass](research/history-malawi-triage-2026-10-26.md) on 26
+October 2026 reviews the 2020 medical/industrial licensing and the 2024
+local-chamba amendment against current evidence (86 industrial hemp
+licences, no export licences yet, no domestic medical availability or
+prescription system) and records `unscored` reasons: licensed cultivation
+with no patient supply, access unchanged at 0. Triage reports 1 scored, 0
+open. No article: a reasons-only pass.
+
 A [Senegal triage pass](research/history-senegal-triage-2026-10-26.md) on
 26 October 2026 reviews the three open tightening entries against the 1997
 Code text (Articles 95–98 trafficking bands; Article 109 personal-use
