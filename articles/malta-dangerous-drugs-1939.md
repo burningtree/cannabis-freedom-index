@@ -1,6 +1,11 @@
 ---
 model: muse-spark
 written: 2026-10-26
+sources:
+  - title: Wikipedia — Cannabis in Malta
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Malta
+  - title: Legislation Malta — Dangerous Drugs Ordinance (Chapter 101)
+    url: https://legislation.mt/getpdf/68526f314e900a33f42353cf
 ---
 
 On 1 September 1939 Ordinance XXXI brought Malta a consolidated dangerous-drugs law with a part of its own for cannabis. Its Part III banned importing or exporting cannabis resin and made it an offence to possess, produce, sell, deal in or cultivate the plant — medicinal preparations excepted, and transit through Malta left alone.[@1,2]

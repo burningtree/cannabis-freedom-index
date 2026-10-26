@@ -1,6 +1,29 @@
 ---
 model: muse-spark
 written: 2026-10-26
+sources:
+  - type: book
+    title: Encyclopaedie van Nederlandsch West-Indië
+    editors:
+      - Herman Daniël Benjamins
+      - Joh. F. Snelleman
+    publisher: Martinus Nijhoff / E.J. Brill
+    year: 1917
+    url: https://www.dbnl.org/tekst/benj004ency01_01/benj004ency01_01_0010.php
+    locator: >-
+      Ganja entry, printed p. 306: 1908 ordinance, import deadline 1 March 1918, 1907–1913
+      imports and duty.
+  - type: book
+    title: Encyclopaedie van Nederlandsch West-Indië
+    editors:
+      - Herman Daniël Benjamins
+      - Joh. F. Snelleman
+    publisher: Martinus Nijhoff / E.J. Brill
+    year: 1917
+    url: https://www.dbnl.org/tekst/benj004ency01_01/benj004ency01_01_0018.php
+    locator: >-
+      Opium entry, printed p. 539: cannabis cultivation and 1 March 1918 ban; pharmacy
+      exceptions.
 ---
 
 On 17 February 1908 Suriname's colonial government issued the opium ordinance (G.B. no. 13) that first banned growing cannabis in the colony — and gave the ganja import trade ten years to wind down, until 1 March 1918.[@1,2]

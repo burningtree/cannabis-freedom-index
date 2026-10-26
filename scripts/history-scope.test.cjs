@@ -965,3 +965,38 @@ test("no history entry is dated in the future: history is what has happened", ()
   const ahead = all.filter((e) => String(e.date) > tomorrow).map((e) => `${e.id} (${e.date})`);
   assert.deepEqual(ahead, [], "date a law that applies later by its adoption or entry into force; see docs/DATA-MAINTENANCE.md");
 });
+
+test("every article's inline citations resolve to its own front-matter sources", () => {
+  // Article [@n] marks index the article's front-matter `sources`, not the
+  // entry's (astro.config.mjs markdownCitations). An article that cites with
+  // no front-matter sources renders the marks as literal text, which the
+  // build does not catch: this test does.
+  const files = fs.readdirSync("articles").filter((f) => f.endsWith(".md"));
+  assert.ok(files.length > 900, `expected hundreds of articles, found ${files.length}`);
+  const bad = [];
+  for (const f of files) {
+    const id = f.slice(0, -3);
+    const raw = fs.readFileSync(`articles/${f}`, "utf8");
+    const m = raw.match(/^---\n([\s\S]*?)\n---\n/);
+    if (!m) { bad.push(`${id}: no front matter`); continue; }
+    const front = y.load(m[1]) || {};
+    const body = raw.slice(m[0].length);
+    const marks = [];
+    for (const [, inner] of body.matchAll(/\[@([^\]]+)\]/g)) {
+      for (const k of inner.split(",").map((s) => s.trim())) {
+        if (!/^\d+$/.test(k)) { bad.push(`${id}: [@${k}] is not a front-matter source number`); continue; }
+        marks.push(Number(k));
+      }
+    }
+    const count = (front.sources || []).length;
+    if (!marks.length) continue;
+    if (!count) { bad.push(`${id}: cites ${[...new Set(marks)].join(",")} with no front-matter sources`); continue; }
+    for (const k of new Set(marks)) {
+      if (k < 1 || k > count) bad.push(`${id}: [@${k}] names no source (it has ${count})`);
+    }
+    for (let i = 1; i <= count; i++) {
+      if (!marks.includes(i)) bad.push(`${id}: cites inline but never cites [@${i}]`);
+    }
+  }
+  assert.deepEqual(bad, []);
+});

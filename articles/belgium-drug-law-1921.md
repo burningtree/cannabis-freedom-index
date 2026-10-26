@@ -1,6 +1,11 @@
 ---
 model: muse-spark
 written: 2026-10-26
+sources:
+  - title: Wikipedia — Cannabis in Belgium
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Belgium
+  - title: "United Nations — Belgium, E/NL.1952/68: Articles 2 and 28 link the narcotics order to the 1921 Act"
+    url: https://documents.un.org/api/symbol/access?s=E/NL.1952/68&l=en&t=pdf
 ---
 
 On 24 February 1921 Belgium adopted the drug act that anchored its narcotics enforcement for decades: the government communication sent to the United Nations in 1952 still shows its machinery at work.[@2] The act itself named no cannabis preparation that can be shown here — its original text has not been verified — but every later regulation drew its authority and its penalties from it, including the 1930 royal order that expressly put Indian hemp under control.[@1,2]

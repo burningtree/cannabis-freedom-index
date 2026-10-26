@@ -1,6 +1,11 @@
 ---
 model: muse-spark
 written: 2026-10-26
+sources:
+  - type: law
+    title: USSR — decree of 27 October 1934 on prohibiting opium-poppy and Indian-hemp crops, reproduced by Istmat
+    url: https://istmat.org/node/42491
+    locator: Articles 1 and 5–7; medical/scientific exception, criminal liability and crop confiscation, commencement from 1935.
 ---
 
 Moscow prohibited sowing Indian hemp and the opium poppy across the Soviet Union in the autumn of 1934. From the start of 1935 only crops grown exclusively for the Union's medical and scientific needs stayed lawful; every other sowing became a crime, punished with confiscation of the crop.[@1] Uzbekistan, then a Soviet republic, came under the ban with the rest of the Union, and this is the first restriction in its recorded history.

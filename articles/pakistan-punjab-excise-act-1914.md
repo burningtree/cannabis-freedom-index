@@ -1,6 +1,13 @@
 ---
 model: muse-spark
 written: 2026-10-26
+sources:
+  - type: law
+    title: The Punjab Excise Act, 1914 (text as applied in India)
+    url: https://www.indiacode.nic.in/bitstream/123456789/15259/1/6_the_punjab_excise_act_1914.pdf
+  - type: law
+    title: The Balochistan Excise Regulation, 1915
+    url: https://balochistan.gov.pk/wp-content/uploads/2024/09/The-Balochistan-Excise-Regulation-1915-1915.pdf
 ---
 
 The Punjab Excise Act of 1914 put cannabis under the same licensing system as liquor: bhang, charas and ganja could be made, moved and sold only through licensed vendors.[@1] Baluchistan followed with its own excise regulation in 1915.[@1,2] It was the subcontinent's first cannabis regime built on licences rather than prohibition, and Pakistan kept that licensed trade after independence.

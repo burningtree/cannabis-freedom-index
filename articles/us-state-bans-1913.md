@@ -2,6 +2,10 @@
 model: muse-spark
 written: 2026-10-26
 sources:
+  - title: Wikipedia — Legal history of cannabis in the United States
+    url: https://en.wikipedia.org/wiki/Legal_history_of_cannabis_in_the_United_States
+  - title: California NORML — The Origins of California's 1913 Cannabis Law
+    url: https://www.canorml.org/the-origins-of-californias-1913-cannabis-law/
   - type: journal
     title: The Forgotten Origins of Cannabis Prohibition in California
     authors: [Dale H. Gieringer]
