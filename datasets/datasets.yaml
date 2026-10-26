@@ -377,13 +377,14 @@
     country reports it to the EUDA from police purchases, seizures or surveys. Where a country
     reports several studies in a year, their means are averaged. The EUDA notes that Dutch
     prices are for cannabis bought anonymously in coffeeshops, not on the street, and that
-    Türkiye reports one price for herb and resin together. Prices are not adjusted for
+    Türkiye reports one price for herb and resin together and is excluded from these separate
+    product series. Prices are not adjusted for
     inflation.
   origin: >-
     The EUDA's site refuses scripted downloads, so both tables were read in a browser on 21
     October 2026 from its data service, sent compressed and saved unchanged; each file's SHA-256
     matches the browser's copy. scripts/extract-euda.py (prices) turns them into one row per
-    country and year.
+    country and year, excluding Türkiye’s inseparable herb/resin figures.
   profile:
     headline: "€{herb_eur} a gram of herb"
     details: "€{resin_eur} a gram of resin · {year}"
@@ -1389,7 +1390,7 @@
     - { label: the Charts page, path: charts/#what-goes-with-it }
 - id: wikipedia_views
   file: wikipedia-cannabis-views.csv
-  name: Readers of the cannabis article on Wikipedia
+  name: Views of the cannabis article on Wikipedia
   publisher: Wikimedia Foundation
   credit: Wikimedia
   title: Wikimedia pageviews API — monthly views by users of the article on cannabis as a drug, by language edition
@@ -1398,10 +1399,10 @@
   data_label: pageviews API
   when: July 2015 to September 2026
   about: >-
-    How many times a month people (not bots) opened the Wikipedia article on cannabis as a drug,
-    in 26 languages spoken mainly in one country: German for Germany, Thai for Thailand and so
-    on. A measure of curiosity: it jumps when cannabis is in the news. German is also read in
-    Austria and Switzerland, Dutch in Belgium.
+    Monthly page-load events for the cannabis-as-a-drug article in 26 Wikipedia language editions,
+    using traffic classified as user rather than automated. These are page-load events, not unique readers;
+    repeat visits count again. Language editions identify worldwide traffic, not the location of
+    people viewing them. German Wikipedia is also read in Austria and Switzerland, Dutch in Belgium.
   origin: >-
     Downloaded on 22 October 2026 by scripts/fetch-open-data.py (wikipedia); the article in each
     language is the one the English "Cannabis (drug)" links to.
@@ -1409,7 +1410,7 @@
     de: German Wikipedia, also read in Austria and Switzerland.
     nl: Dutch Wikipedia, also read in Belgium.
   profile:
-    headline: "{views} readers in {month}"
+    headline: "{views} page views in {month}"
     details: "{article} · {language} Wikipedia"
   country: { column: country, by: id }
   year: { column: time }
@@ -1503,23 +1504,28 @@
   url: https://clinicaltrials.gov/
   data_url: https://clinicaltrials.gov/api/v2/studies?query.intr=cannabis%20OR%20cannabidiol%20OR%20THC%20OR%20dronabinol%20OR%20nabilone%20OR%20nabiximols%20OR%20cannabinoid%20OR%20marijuana
   data_label: API v2 query
-  when: by the year each study started
+  when: actual starts recorded as of 26 October 2026
   about: >-
-    Registered clinical studies whose intervention is cannabis, cannabidiol (CBD), THC or a
-    cannabinoid medicine, counted once for each country where the study has a site, by the year
-    it started, with the running total; studies not yet started are left out. ClinicalTrials.gov is American and holds most, not all,
-    of the world's registered trials; a study run in several countries counts in each.
+    Registered studies with a cannabis or cannabinoid intervention and a recorded actual start,
+    counted once for each country with a site. Only starts explicitly marked ACTUAL on or before
+    26 October 2026 are included. Estimated or missing start types, not-yet-recruiting studies and
+    withdrawn studies are excluded. ClinicalTrials.gov does not cover every trial worldwide;
+    a study with sites in several countries counts in each. Current-year counts are incomplete.
   origin: >-
-    Downloaded on 22 October 2026 by scripts/fetch-open-data.py (trials), which matches the
-    registry's country names to the country files.
+    Rebuilt on 26 October 2026 by scripts/fetch-open-data.py (trials), matching registry country
+    names to country files. The query explicitly requests StartDateType, StartDate and OverallStatus.
+    Complete dates are compared with the extraction date; month-only and year-only actual dates use
+    their last possible day, conservatively. Duplicate study/country pairs count once. Zero-start
+    years preserve cumulative totals. The as_of column records the snapshot date.
   profile:
     headline: "{to_date} studies so far"
-    details: "{trials} started in {year}"
+    details: "{trials} actual starts in {year} · as of {as_of}"
     each: "{to_date} by {year}"
     years: [2010, 2020]
   country: { column: country, by: id }
   year: { column: year }
   fields:
+    as_of: { column: as_of, type: text, about: "Registry snapshot date; current-year counts are incomplete" }
     to_date: { column: to_date, about: "Studies so far: map, Charts page and profile" }
     trials: { column: trials, about: "Studies that started that year: Charts page and profile" }
   map:
@@ -1529,19 +1535,19 @@
     group: Context
     slug: clinical-trials
     label: Clinical trials per million people
-    missing: No registered cannabis trial
+    missing: No eligible recorded actual start
     steps: [[0, "Under 0.2"], [0.2, "0.2–1"], [1, "1–3"], [3, "3–10"], [10, "10 or more"]]
     title: Where cannabis medicines are tested
     lede: >-
       Registered clinical studies of cannabis, CBD, THC or cannabinoid medicines with a site in
-      each country, per million people, from ClinicalTrials.gov. The stronger the blue, the more
-      studies.
+      each country, per million people, from ClinicalTrials.gov. Only actual starts through
+      26 October 2026 are included; current-year counts are incomplete. Stronger blue means more studies.
     sub: >-
       The stronger the blue, the more cannabis studies per million people. Countries with none
       are hatched.
     note: >-
-      ClinicalTrials.gov, all years; a study with sites in several countries counts in each. Not
-      part of the score.
+      ClinicalTrials.gov, actual starts as of 26 October 2026; current-year counts are incomplete.
+      A study with sites in several countries counts in each. Not part of the score.
   pages:
     - { label: its map, path: map/clinical-trials/ }
     - { label: the Charts page, path: charts/#trials }

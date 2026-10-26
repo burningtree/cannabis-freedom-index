@@ -669,7 +669,7 @@ const MEASURE_GROUPS = [...new Set(measures.map((m) => m.group))].map((g) => ({ 
 const strongest = [...measures].filter((m) => m.n >= 100).sort((a, b) => Math.abs(b.r) - Math.abs(a.r))[0];
 const strongestNarrow = [...measures].filter((m) => m.n < 100).sort((a, b) => Math.abs(b.r) - Math.abs(a.r))[0];
 
-// ── When a country looked it up: Wikipedia readers of the cannabis article, by language ──
+// ── When a country looked it up: Wikipedia page views of the cannabis article, by language ──
 const WIKI = DATASETS.wikipedia_views;
 const wiki = countries.filter((c) => c.series.wikipedia_views?.length).map((c) => {
   const rows = c.series.wikipedia_views;
@@ -1795,7 +1795,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
           ))}
         </ol>
       </div>
-      <p class="ch-source">{TRIALS.title}; a study with sites in several countries counts in each, and studies not yet started are left out. Bars: studies per million people, all years. <a href={`${base}sources/#dataset-clinical_trials`}>About the dataset</a>.</p>
+      <p class="ch-source">{TRIALS.title}; a study with sites in several countries counts in each, and only recorded actual starts through 26 October 2026 are included; current-year totals are incomplete. Bars: studies per million people, all years. <a href={`${base}sources/#dataset-clinical_trials`}>About the dataset</a>.</p>
       <p class="ch-more"><a href={`${base}map/clinical-trials/`}>Trials on the map →</a> <a href={`${base}map/medical/`}>Medical law on the map →</a> <a href={`${base}history/kind/medical/`}>Medical cannabis in the history →</a></p>
     </section>
     {chapterAt.has("research") && <h2 class="ch-chapter">{chapterAt.get("research")}</h2>}
@@ -1891,7 +1891,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
         ))}
       </ol>
       <p class="ch-source">{NEWS.title}; years with fewer than 200 days of data left out. <a href={`${base}sources/#dataset-news`}>About the dataset</a>.</p>
-      <p class="ch-more"><a href={`${base}map/in-the-news/`}>News attention on the map →</a> <a href="#looked-it-up">Wikipedia readers →</a></p>
+      <p class="ch-more"><a href={`${base}map/in-the-news/`}>News attention on the map →</a> <a href="#looked-it-up">Wikipedia page views →</a></p>
     </section>
     )}
     {chapterAt.has("what-goes-with-it") && <h2 class="ch-chapter">{chapterAt.get("what-goes-with-it")}</h2>}
@@ -2303,7 +2303,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
       const words = Math.abs(r) < 0.2 ? "next to no link" : Math.abs(r) < 0.4 ? "a weak link" : Math.abs(r) < 0.6 ? "a moderate link" : "a strong link";
       return `<b>${esc(label)}</b><span class="ch-tip-row">Correlation with the score<em>${r > 0 ? "+" : "−"}${Math.abs(r).toFixed(2)}</em></span><span class="ch-tip-sub">${words}, ${r >= 0 ? "rising together" : "one falls as the other rises"}; ${n} countries</span>${a.matches("a") ? '<span class="ch-tip-go">See its chart or map →</span>' : ""}`;
     }));
-    // Wikipedia readers: the month under the pointer
+    // Wikipedia page views: the month under the pointer
     document.querySelectorAll("[data-wiki]").forEach((a) => {
       const [name, lang, article, rows, laws] = D.wiki[a.dataset.wiki];
       const plot = a.querySelector(".ch-wiki-plot"), [t0, t1] = [rows[0][0], rows.at(-1)[0]];

@@ -8,7 +8,7 @@
   python3 scripts/fetch-open-data.py corruption  # Corruption Perceptions Index (Transparency International, via OWID)
   python3 scripts/fetch-open-data.py religion    # the most common religion (Pew, via OWID)
   python3 scripts/fetch-open-data.py gdp         # GDP per person at purchasing power parity (World Bank)
-  python3 scripts/fetch-open-data.py wikipedia   # monthly readers of the cannabis article, by language
+  python3 scripts/fetch-open-data.py wikipedia   # monthly page views of the cannabis article, by language
   python3 scripts/fetch-open-data.py development # internet, towns, schooling, age and health (World Bank)
   python3 scripts/fetch-open-data.py books       # how often books name cannabis, by language (Google Books Ngram)
   python3 scripts/fetch-open-data.py trials      # clinical trials of cannabis medicines, by country and year
@@ -43,7 +43,7 @@ religion  Pew Research Center's estimate of the religious group with the largest
 gdp       The World Bank's GDP per person at purchasing power parity, in constant 2021
           international dollars (NY.GDP.PCAP.PP.KD), every year from 1990. Writes
           datasets/wb-gdp-per-person.csv.
-wikipedia Monthly page views by people (not bots) of the Wikipedia article on cannabis as a drug,
+wikipedia Monthly page views classified as user traffic (not unique readers) of the Wikipedia article on cannabis as a drug,
           in the languages spoken mainly in one country, from July 2015, from the Wikimedia
           pageviews API; the article in each language is the one the English "Cannabis (drug)"
           links to. Writes datasets/wikipedia-cannabis-views.csv with the country, the month (also as
@@ -59,8 +59,8 @@ books     Google Books Ngram Viewer, the share of all words in each year's print
           datasets/ngram-cannabis-words.csv.
 trials    ClinicalTrials.gov (API v2): every registered study whose intervention mentions cannabis,
           cannabidiol, THC, dronabinol, nabilone, nabiximols or a cannabinoid, counted once for
-          each country where it has a site, by the year it started, with the running total; studies that have not started yet
-          are left out. Writes
+          each country where it has a site, by its recorded ACTUAL start, on or before the snapshot
+          date. Estimated/unknown starts and not-yet-recruiting/withdrawn studies are left out. Writes
           datasets/clinicaltrials-cannabis.csv.
 parties   Wikidata: political parties whose name or ideology mentions cannabis, with their country
           and the year they were founded (and dissolved, if they were). Writes
@@ -75,7 +75,7 @@ map's country shapes.
 
 Python's standard library only. Run from the project root.
 """
-import csv, datetime, glob, json, os, re, sys, tempfile, time, urllib.parse, urllib.request
+import calendar, csv, datetime, glob, json, os, re, sys, tempfile, time, urllib.parse, urllib.request
 
 AGENT = "cannabis-freedom-index dataset script (https://github.com/burningtree/cannabis-freedom-index)"
 
@@ -276,39 +276,81 @@ TRIAL_NAMES = {"Korea, Republic of": "kr", "Turkey (Türkiye)": "tr", "Russian F
                "Venezuela": "ve", "Syrian Arab Republic": "sy", "Côte D'Ivoire": "ci", "Lao People's Democratic Republic": "la"}
 
 
-def trials():
+def actual_start_year(status, as_of):
+    """A recorded actual start, wholly on/before the snapshot date; never infer a start."""
+    start = status.get("startDateStruct", {})
+    if start.get("type") != "ACTUAL" or status.get("overallStatus") in {"NOT_YET_RECRUITING", "WITHDRAWN"}:
+        return None
+    date = start.get("date", "")
+    try:
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+            latest = datetime.date.fromisoformat(date)
+        elif re.fullmatch(r"\d{4}-\d{2}", date):
+            year, month = map(int, date.split("-"))
+            latest = datetime.date(year, month, calendar.monthrange(year, month)[1])
+        elif re.fullmatch(r"\d{4}", date):
+            latest = datetime.date(int(date), 12, 31)
+        else:
+            return None
+    except ValueError:
+        return None
+    return latest.year if latest <= as_of else None
+
+
+def trial_rows(studies, names, as_of):
+    """Count one actual-start study per country; keep zero years for cumulative series."""
+    counts, seen, missed = {}, set(), set()
+    for study in studies:
+        ps = study.get("protocolSection", {})
+        nct = ps.get("identificationModule", {}).get("nctId")
+        year = actual_start_year(ps.get("statusModule", {}), as_of)
+        if not nct or year is None:
+            continue
+        for country in {loc.get("country") for loc in ps.get("contactsLocationsModule", {}).get("locations", []) if loc.get("country")}:
+            cid = names.get(country)
+            if not cid:
+                missed.add(country)
+                continue
+            if (nct, cid) not in seen:
+                seen.add((nct, cid))
+                counts[(cid, year)] = counts.get((cid, year), 0) + 1
+    rows = []
+    for cid in sorted({c for c, _ in counts}):
+        total = 0
+        for year in range(min(y for c, y in counts if c == cid), as_of.year + 1):
+            n = counts.get((cid, year), 0)
+            total += n
+            rows.append([cid, year, n, total, as_of.isoformat()])
+    return rows, missed
+
+
+def trials(as_of=None):
+    as_of = as_of or datetime.date.fromisoformat(os.environ.get("TRIALS_AS_OF", datetime.date.today().isoformat()))
     names = {}
     for path in glob.glob("countries/*.yaml") + glob.glob("countries/*/index.yaml"):
         m = re.search(r"^name: (.+)$", open(path, encoding="utf-8").read(), re.M)
         names[m.group(1).strip().strip("\"'")] = path.split("/")[1].replace(".yaml", "")
     names |= TRIAL_NAMES
     terms = "cannabis OR cannabidiol OR THC OR dronabinol OR nabilone OR nabiximols OR cannabinoid OR marijuana"
-    counts, token, missed = {}, None, set()
+    studies, token = [], None
     while True:
-        q = {"query.intr": terms, "fields": "NCTId,LocationCountry,StartDate", "pageSize": 1000}
+        # StartDate alone projects only the date: StartDateType is required to retain ACTUAL/ESTIMATED.
+        q = {"query.intr": terms, "fields": "NCTId,LocationCountry,StartDate,StartDateType,OverallStatus", "pageSize": 1000}
         if token:
             q["pageToken"] = token
         page = get("https://clinicaltrials.gov/api/v2/studies?" + urllib.parse.urlencode(q))
-        for st in page["studies"]:
-            ps = st["protocolSection"]
-            start = ps.get("statusModule", {}).get("startDateStruct", {}).get("date", "")[:4]
-            for country in {loc.get("country") for loc in ps.get("contactsLocationsModule", {}).get("locations", []) if loc.get("country")}:
-                cid = names.get(country)
-                if not cid:
-                    missed.add(country); continue
-                # a study planned for a later year has not started: it is left out
-                if start and int(start) <= datetime.date.today().year:
-                    counts[(cid, int(start))] = counts.get((cid, int(start)), 0) + 1
+        studies.extend(page["studies"])
+        print(f"  retrieved {len(studies)} registry records", flush=True)
         token = page.get("nextPageToken")
         if not token:
             break
+    if os.environ.get("TRIALS_SNAPSHOT"):
+        with open(os.environ["TRIALS_SNAPSHOT"], "w", encoding="utf-8") as f:
+            json.dump({"as_of": as_of.isoformat(), "query": terms, "studies": studies}, f)
+    rows, missed = trial_rows(studies, names, as_of)
     if missed:
         print("no country file for:", "; ".join(sorted(missed)), file=sys.stderr)
-    rows, total = [], {}
-    for (c, y), n in sorted(counts.items()):
-        total[c] = total.get(c, 0) + n
-        rows.append([c, y, n, total[c]])
-    write("datasets/clinicaltrials-cannabis.csv", ["country", "year", "trials", "to_date"], rows)
+    write("datasets/clinicaltrials-cannabis.csv", ["country", "year", "trials", "to_date", "as_of"], rows)
 
 
 def parties():
@@ -404,6 +446,7 @@ def wikipedia():
 TASKS = {"gbif": gbif, "openalex": openalex, "alcohol": alcohol, "governance": governance, "minwage": minwage,
          "corruption": corruption, "religion": religion, "gdp": gdp, "wikipedia": wikipedia, "development": development,
          "books": books, "trials": trials, "parties": parties, "news": news}
-if len(sys.argv) != 2 or sys.argv[1] not in TASKS:
-    sys.exit(f"usage: python3 scripts/fetch-open-data.py {'|'.join(TASKS)}")
-TASKS[sys.argv[1]]()
+if __name__ == "__main__":
+    if len(sys.argv) != 2 or sys.argv[1] not in TASKS:
+        sys.exit(f"usage: python3 scripts/fetch-open-data.py {'|'.join(TASKS)}")
+    TASKS[sys.argv[1]]()

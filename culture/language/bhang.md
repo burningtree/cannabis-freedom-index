@@ -60,6 +60,9 @@ sources:
     year: 2021
     isbn: "9780262366137"
     locator: "pp. 46–47"
+  - title: Indian Hemp Drugs Commission — Report, volume I, chapter XIV, paragraph 556
+    url: https://newrevenue.org/wp-content/uploads/2017/08/ihd-vol-1-pages-263-282-or-so74464868_53_72.pdf
+    locator: Printed p.267, reproducing Bengal Board letter No.22 of 29 May 1798; recommendation to tax, not an enactment
 ---
 
 Bhang is the leaf of the cannabis plant, ground to a green paste and eaten or drunk. Indian terminology distinguishes it from the flowering tops and resin; the national law also treats those materials differently.
@@ -100,7 +103,7 @@ The custom is tied to Shiva. One story has the god sleeping under the plant and 
 
 The Portuguese met bhang in Goa. The physician [Garcia de Orta](https://en.wikipedia.org/wiki/Garcia_de_Orta) wrote about "bangue" in his *Colóquios* of 1563, noting that people took it to work and to eat better: "it is so generally used and by such a number of people that there is no mystery about it". The Dutch traveller Jan Huyghen van Linschoten gave it three pages in 1596.
 
-The British [taxed it from 1798](/history/india-bhang-tax-1798/), and wherever they ruled it went into the excise books: [taxed in Malacca from 1826](/history/malaya-bhang-tax-1826/), its sale [licensed in British Guiana in 1861](/history/guyana-licensing-1861/). Bombay's [excise law of 1878](/history/india-bombay-abkari-act-1878/) defined it, with ganja, as an intoxicating drug, and from [1913](/history/india-bombay-possession-limit-1913/) a person there could hold no more than twenty tolas. A century after the first tax they held an inquiry. The [Indian Hemp Drugs Commission](/history/india-hemp-drugs-commission-1894/) heard nearly 1,200 witnesses and found that moderate use "practically produces no ill effects".
+Bengal’s Board [recommended taxing cannabis preparations in 1798](/history/india-bhang-tax-1798/). Later colonial controls varied by place: [taxed in Malacca from 1826](/history/malaya-bhang-tax-1826/), its sale [licensed in British Guiana in 1861](/history/guyana-licensing-1861/). Bombay's [excise law of 1878](/history/india-bombay-abkari-act-1878/) defined it, with ganja, as an intoxicating drug, and from [1913](/history/india-bombay-possession-limit-1913/) a person there could hold no more than twenty tolas. In 1894, an official inquiry examined the effects of hemp drugs. The [Indian Hemp Drugs Commission](/history/india-hemp-drugs-commission-1894/) heard nearly 1,200 witnesses and found that moderate use "practically produces no ill effects".
 
 The word travelled west and south as well. In Persian it is *bang*, and [Iran's penal law of 1926](/history/iran-penal-law-1926/) punished public intoxication with it. In Swahili it became [bangi](/culture/language/bangi/), the ordinary word for cannabis in East Africa.
 

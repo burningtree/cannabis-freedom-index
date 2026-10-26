@@ -8,3 +8,6 @@ export function latestComparablePrices(history) {
   }
   return latest;
 }
+
+// Source product caveats must not silently become flower prices, even as retained observations.
+export const isMixedCannabisPrice = (note = "") => /both herb and resin|herb\s*\+\s*resin|does not separate herb from resin|combined herb and resin/i.test(note);

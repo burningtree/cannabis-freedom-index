@@ -87,10 +87,10 @@ def by_country_year(path, names, missed):
     return out
 
 
-def kinds_table(task, sources, out):
+def kinds_table(task, sources, out, excluded_countries=()):
     names, missed = our_names(), []
     tables = {kind: by_country_year(path, names, missed) for kind, path in sources.items()}
-    keys = sorted(set().union(*tables.values()))
+    keys = sorted(k for k in set().union(*tables.values()) if k[0] not in excluded_countries)
     rows = []
     for cid, year in keys:
         row = [cid, year]
@@ -108,8 +108,9 @@ def kinds_table(task, sources, out):
 
 
 def prices():
+    # EUDA footnote 5: Türkiye reports herb/resin together, so neither product price is separable.
     kinds_table("prices", {"herb_eur": "datasets/euda-sb2026-ppp-02-1-1-2-3-herb-price.xml",
-                           "resin_eur": "datasets/euda-sb2026-ppp-02-1-1-1-3-resin-price.xml"}, "datasets/euda-cannabis-prices.csv")
+                           "resin_eur": "datasets/euda-sb2026-ppp-02-1-1-1-3-resin-price.xml"}, "datasets/euda-cannabis-prices.csv", excluded_countries={"tr"})
 
 
 def potency():

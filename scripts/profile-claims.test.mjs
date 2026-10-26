@@ -11,11 +11,12 @@ import { fileURLToPath } from "node:url";
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? walk(path.join(dir, e.name)) : /\.(ya?ml|md)$/.test(e.name) ? [path.join(dir, e.name)] : []);
-const files = [...walk(path.join(root, "countries")), ...walk(path.join(root, "articles")), path.join(root, "changes.yaml")];
+const files = [...walk(path.join(root, "countries")), ...walk(path.join(root, "articles")), ...walk(path.join(root, "culture")), path.join(root, "changes.yaml")];
 // folded YAML breaks sentences across lines, so compare with the whitespace flattened
 const texts = files.map((file) => [path.relative(root, file), fs.readFileSync(file, "utf8").replace(/\s+/g, " ")]);
 
 const CLAIMS = [
+  { claim: /taxed(?: it)? from\s+\[?1798/i, why: "Bengal’s 1798 Board letter recommended taxes; culture pages must not turn it into enacted taxation (#182)" },
   { claim: /India taxed cannabis from \[?1798/i, why: "the 1798 record is a Board recommendation, including Egypt-article cross-references (#145)" },
   { claim: /Before Law 242 Panama had no lawful cannabis of any kind/i, why: "the 2021 framework did not establish operational supply (#128)" },
   // Malta (2021) and Germany (2024) license non-profit associations: issue #127
@@ -327,4 +328,17 @@ test('India federal bhang exclusion does not override state prohibition (#180)',
   assert.match(india.segments.consumption.text, /six months.*₹10,000/);
   assert.equal(india.scores.access, 2);
   assert.equal(india.recreational, 'death');
+});
+
+
+test('San Marino distinguishes authorised flower from verified dispensing (#187)', () => {
+  const sm = country('sm');
+  assert.doesNotMatch(sm.context.products.text + sm.context.medical.text, /no flower/i);
+  assert.match(sm.context.products.text, /medical framework includes cannabis flower/);
+  assert.match(sm.context.products.text, /dispensing of flower has not been verified/);
+  assert.match(sm.context.medical.text, /home growing remains illegal/);
+  assert.match(sm.sources.l113english.locator, /Articles 1–3 and 9–11/);
+  assert.match(sm.sources.asccfaq.locator, /Q3/);
+  assert.equal(sm.medical, 'limited');
+  assert.deepEqual(sm.scores, { possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 1 });
 });

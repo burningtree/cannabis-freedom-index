@@ -1846,3 +1846,27 @@ Tynwald circulars distinguish commencement from the order date; Edge's legal
 history supplies the appeal account. The largest recorded gap falls from 93 to
 48 years. The first-restriction estimate and the later custody-to-fines transition
 remain open; no existing scores or historical score vectors change.
+
+### Product scope, recorded starts and pageview units (26 October 2026)
+
+- A source that combines herb and resin, or does not distinguish them, cannot supply a
+  flower-only price. Preserve rejected figures in research notes; do not infer a flower
+  value from the combined average. EUDA's Türkiye footnote applies to the extracted
+  product-price series too, so `extract-euda.py prices` excludes those inseparable rows.
+  Retained regional price observations use `comparison: false`, including Brazil's
+  three-state police sample. Check maps, country headlines, compare/API data and exports.
+- `fetch-open-data.py trials` counts recorded **ACTUAL** starts on/before `TRIALS_AS_OF`
+  (today by default), excluding unknown/estimated types, not-yet-recruiting and withdrawn
+  studies. Request **StartDateType** explicitly: the API's StartDate field alone omits it.
+  Month/year-only dates use their latest possible day. Regenerate the CSV and update its
+  dated dataset metadata; `as_of` is published with the data and profile details. Keep zero
+  years so cumulative figures do not disappear. `TRIALS_SNAPSHOT` can save the projected
+  registry records locally for audit. Run `python3 -B scripts/fetch-open-data.test.py`.
+- Wikimedia per-article pageviews are content-request events, not unique readers or devices.
+  The `user` traffic filter does not deduplicate people, and language editions are not
+  geographical audience samples. Preserve the figures and label the unit correctly.
+- Check culture prose as well as profiles/articles when correcting repeated historical
+  claims. Bengal's 1798 Board letter recommended taxes; it does not establish enactment.
+- An authorised medical product category is separate from verified pharmacy availability.
+  San Marino's framework includes inflorescences; it does not establish that flower is
+  actually dispensed. Preserve the access score until practical supply evidence warrants it.

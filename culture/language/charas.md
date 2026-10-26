@@ -30,6 +30,9 @@ sources:
     url: https://en.wikipedia.org/wiki/Cannabis_in_China
   - title: "Wikipedia — Cannabis in Pakistan"
     url: https://en.wikipedia.org/wiki/Cannabis_in_Pakistan
+  - title: Indian Hemp Drugs Commission — Report, volume I, chapter XIV, paragraph 556
+    url: https://newrevenue.org/wp-content/uploads/2017/08/ihd-vol-1-pages-263-282-or-so74464868_53_72.pdf
+    locator: Printed p.267, reproducing Bengal Board letter No.22 of 29 May 1798; recommendation to tax, not an enactment
 ---
 
 Charas is cannabis resin gathered by hand from the living plant. It is the hashish of the Himalaya, made in the mountain valleys of northern India, Nepal and Pakistan, and it is the form in which the plant is smoked by Hindu ascetics. Indian law names it: charas is the first thing listed in the national definition of cannabis.
@@ -50,7 +53,7 @@ In the nineteenth century much of the charas smoked in northern India came from 
 
 ## Sold by the government
 
-Under British rule charas was an excise article like [ganja](/culture/language/ganja/) and [bhang](/culture/language/bhang/): [taxed from 1798](/history/india-bhang-tax-1798/) and sold through licensed shops. Provinces experimented. The Central Provinces [banned its sale in 1925](/history/india-central-provinces-charas-1925/), saw smuggling take over, and licensed it again in 1935 with shops at Nagpur and Jubbulpore.
+Bengal’s Board [recommended taxing cannabis preparations in 1798](/history/india-bhang-tax-1798/). Later, charas was sold through licensed shops under provincial excise systems, alongside [ganja](/culture/language/ganja/) and [bhang](/culture/language/bhang/). Provinces experimented. The Central Provinces [banned its sale in 1925](/history/india-central-provinces-charas-1925/), saw smuggling take over, and licensed it again in 1935 with shops at Nagpur and Jubbulpore.
 
 Nepal kept the system longest. Nepalese charas had a reputation as the best available as early as the 1700s, and until the 1970s licensed dealers sold it in Kathmandu, latterly to the Western travellers of the [hippie trail](https://en.wikipedia.org/wiki/Hippie_trail), on the lane still nicknamed Freak Street. Nepal cancelled every licence in 1973 and banned cannabis outright in 1976.
 

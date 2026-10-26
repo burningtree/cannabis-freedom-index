@@ -73,10 +73,10 @@ test('THC trend holds the endpoint cohort constant and omits incomplete years (#
     const t = potency.find((t) => t.country === p.country && t.year === year && t.herb_thc > 0);
     return t ? [{ c: { id: p.country }, mg: t.herb_thc * 10 / p.herb_eur }] : [];
   }) }));
-  assert.equal(years[0].rows.length, 9);
-  assert.equal(years.at(-1).rows.length, 16);
+  assert.equal(years[0].rows.length, 8);
+  assert.equal(years.at(-1).rows.length, 15);
   const panel = matchedThcPanel(years);
-  assert.deepEqual([...panel.cohort].sort(), ['es', 'nl', 'pt', 'tr']);
+  assert.deepEqual([...panel.cohort].sort(), ['es', 'nl', 'pt']);
   assert.ok(panel.years.length > 2);
   for (const y of panel.years) assert.deepEqual(y.rows.map((r) => r.c.id).sort(), [...panel.cohort].sort());
 });
@@ -159,4 +159,36 @@ test('raw survey rates do not acquire country percentiles or comparison deltas (
   const compare = fs.readFileSync('src/pages/compare.astro', 'utf8');
   assert.match(compare, /id !== "cannabis_use" && k > 0 && first \? diff/);
   assert.match(compare, /META.useComparisonNote/);
+});
+
+test('mixed or unspecified herb/resin prices stay outside flower metrics (#185)', async () => {
+  const { isMixedCannabisPrice } = await import('../src/lib/price-selection.js');
+  for (const note of ['covers both herb and resin', 'herb + resin', 'does not separate herb from resin', 'combined herb and resin']) assert.equal(isMixedCannabisPrice(note), true);
+  assert.equal(isMixedCannabisPrice('Mean retail price per gram of herbal cannabis'), false);
+  const prices = yaml.load(fs.readFileSync('prices.yaml', 'utf8'));
+  assert.ok(!prices.some((p) => ['tr-street-2024', 'xk-street-2022'].includes(p.id)));
+  for (const p of prices) assert.equal(isMixedCannabisPrice(p.note), false, p.id);
+  const europe = csv('euda-cannabis-prices.csv');
+  assert.ok(!europe.some((p) => p.country === 'tr'));
+  assert.match(fs.readFileSync('scripts/extract-euda.py', 'utf8'), /excluded_countries=\{"tr"\}/);
+  assert.match(fs.readFileSync('src/content.config.ts', 'utf8'), /isMixedCannabisPrice\(note\)/);
+});
+
+test('acknowledged regional or sentinel prices cannot enter country comparisons (#189)', async () => {
+  const { latestComparablePrices } = await import('../src/lib/price-selection.js');
+  const prices = yaml.load(fs.readFileSync('prices.yaml', 'utf8'));
+  for (const p of prices.filter((p) => /not a national figure|not a representative national street price/i.test(p.note || ''))) assert.equal(p.comparison, false, p.id);
+  const br = prices.find((p) => p.id === 'br-street-2022');
+  assert.equal(br.price, 3.69);
+  assert.equal(br.usd, 0.71);
+  assert.match(br.note, /52 police records.*three states only/);
+  assert.equal(latestComparablePrices([br]).street, undefined);
+});
+
+test('Wikimedia event counts remain page views rather than readers (#190)', () => {
+  const wiki = yaml.load(fs.readFileSync('datasets/datasets.yaml', 'utf8')).find((d) => d.id === 'wikipedia_views');
+  assert.equal(wiki.name, 'Views of the cannabis article on Wikipedia');
+  assert.equal(wiki.profile.headline, '{views} page views in {month}');
+  assert.match(wiki.about, /page-load events, not unique readers/);
+  assert.match(wiki.about, /worldwide traffic, not the location/);
 });

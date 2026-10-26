@@ -3,6 +3,7 @@
 import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
 import { z } from "astro/zod";
+import { isMixedCannabisPrice } from "./lib/price-selection.js";
 import { SEGMENT_IDS, CONTEXT_IDS, CHANGE_CATEGORIES, CHANGE_TAGS, PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "./lib/segment-ids.js";
 
 const score = z.number().int().min(0).max(10);
@@ -220,7 +221,7 @@ const prices = defineCollection({
       currency: z.string().regex(/^[A-Z]{3}$/),
       price: z.number().positive(), // price per gram in `currency`
       usd: z.number().positive(),   // same observation normalised to USD per gram
-      note: z.string().min(1).optional(),
+      note: z.string().min(1).refine((note) => !isMixedCannabisPrice(note), "Mixed or unspecified herb/resin prices do not belong in the flower-price dataset").optional(),
       comparison: z.boolean().default(true), // false retains the observation but excludes country price comparisons
       source: webSource,
     })
