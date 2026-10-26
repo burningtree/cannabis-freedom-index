@@ -48,7 +48,7 @@ const total = (sc) => (sc ? Math.round(SEGMENTS.reduce((a, seg, i) => a + segmen
 const moves = g.places.filter((p) => p.scores?.length || (p.status === "added" && p.after)).map((p) => ({ ...p, from: total(p.before), to: total(p.after) }))
   .sort((a, b) => Math.abs((b.to ?? 0) - (b.from ?? 0)) - Math.abs((a.to ?? 0) - (a.from ?? 0)));
 ---
-<Base noindex={c.short === "uncommitted"} title={`${c.subject} · Changelog`} description={`${formatDate(c.date.slice(0, 10))}: ${summary.map(([n, w]) => `${n} ${w}`).join(", ") || "changes to the site"}.`}>
+<Base noindex={c.short === "uncommitted"} title={`${c.subject} · Changelog`} description={`${formatDate(c.date.slice(0, 10))}: ${summary.map(([n, w]) => `${n} ${w}`).join(", ") || "changes to the site"} (${c.short}).`}>
   <main class="changes-page gl gl-commit">
     <section class="hero hero-sm">
       <p class="eyebrow"><a href={`${base}changelog/`}>Changelog</a> <span><time datetime={c.date}>{formatDate(c.date.slice(0, 10))}</time></span> <span>{c.short}</span></p>
