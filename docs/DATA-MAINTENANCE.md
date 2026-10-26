@@ -1788,3 +1788,11 @@ and 2007 changes move only trafficking-side or recodifying provisions
 while cannabis personal-use bands stay light. The 1987 DRI source link has
 rotted since the entry was checked. Triage reports 1 scored, 0 open. No
 article: a reasons-only pass.
+
+A [US Virgin Islands early-history pass](research/history-usvi-early-gap-2026-10-26.md)
+adds nine entries and two articles, reducing the 1937–2014 gap to a largest interval
+of 19 years. It covers the 1951 tax-administration delegation, cannabis-warrant
+search limits, the 1970 prison law, 1971 replacement drug law, 1990 licence penalties
+and the 2011/2012 first-offender licence dispute, including the Supreme Court's
+reversal. Current scores and existing historical vectors are preserved; earlier
+territorial legislation and original commencement records remain research targets.
