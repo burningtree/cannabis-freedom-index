@@ -7,7 +7,8 @@ dangerous-drugs ordinance could be read directly rather than through an indexed 
 replaced the 1900 estimate with two dated events, scored them, checked the 1935 and 1995 records,
 and wrote an article on the 1926 ban. No country-profile score or segment text changed. A
 [follow-up note](history-tanzania-followup-2026-10-26.md) compares the 1995 Act with its 31 July
-2002 consolidation and reads the operative Zanzibar section 17 and penalty.
+2002 consolidation, reads the 2012 amendment and records the operative Zanzibar section 17 and
+penalty.
 
 ## The documents
 
@@ -73,8 +74,8 @@ Ordinance (chapter 134) and the Dangerous Drugs Ordinance (chapter 95). The Act 
 small-personal-use tier, with a 200,000-shilling fine, seven years, or both in the original text,
 while the main growing and supply offences could bring life imprisonment or a much larger fine. It
 took effect on 1 January 1996. The entry remains **unscored**; the follow-up note compares the
-original penalty alternatives with the 31 July 2002 consolidation and leaves the inherited score
-vector in place pending a full-vector review.
+original text with the 31 July 2002 consolidation and the 2012 amendment, and leaves the inherited
+score vector in place pending a full-vector review.
 
 **Tanzania, Drug Control and Enforcement Act, Act 5 of 2015.** Sections 11, 15 and 17 were read.
 The Act set at least thirty years for unlawful cultivation and a residual personal-use penalty of
@@ -101,8 +102,10 @@ Two later Zanzibar texts were read:
   Cap. 76. The operative section and penalty are read in the follow-up note.
 
 No Zanzibar entry was added. Scoring one would require the 1927 decree and a decision about whether
-Zanzibar's separate law belongs in the same national timeline as the mainland. The 1931 report and
-the 1984 amendment are recorded here so the next pass can pick them up.
+Zanzibar's separate law belongs in the same national timeline as the mainland. The follow-up note
+records the 1986 Act's operative section and penalty and leaves Zanzibar deferred as a separate
+legal history. The 1931 report and the 1984 amendment are recorded here so the next pass can pick
+them up.
 
 ## The score chain
 
@@ -123,7 +126,8 @@ The old estimate was `tz-first-restriction-estimate`, dated 1900, marked `estima
 - **2015: 13 → 8.** Unchanged.
 
 `node scripts/data-status.cjs chain tz` reports the three steps and **0 flags**. `scores:triage --
-tz` reports **3 scored, 0 open**. The 1935 and 1995 entries are checked but unscored.
+tz` reports **3 scored, 0 open**. The 1935 and 1995 entries, and the 2012 amendment added in the
+follow-up note, are checked but unscored.
 
 ## The article and the source-list fix
 
@@ -168,11 +172,12 @@ match the reference numbers.
 - The 1935 ordinance's penalty maxima are higher than the 1926 ordinance's, but there is no
   enforcement record here to show whether that changed sentencing in practice. The 1935 and 1995
   entries remain unscored.
-- The 1995 Act's 2012 amendment and final pre-repeal text were not read; the 31 July 2002
-  consolidation is compared in the follow-up note. The 1995 entry remains checked but unscored.
+- The 1995 Act's 2012 amendment is read in the follow-up note and recorded as an unscored event. The
+  2015 Act's 2016 regulations and later amendments were outside this pass. The 1995 entry remains
+  checked but unscored.
 - Zanzibar's 1927 Dangerous Drugs Decree, its original cannabis schedule and the 1971 Decree No.
   11/71 remain unread. The 1984 amendment and the 1986 Act's section 17 penalty are recorded in the
-  follow-up note.
+  follow-up note; Zanzibar remains deferred.
 - German-era Tanganyika law was not searched. The 1924 notice is the first dated restriction found,
   not a demonstrated first restriction.
 - The 2016 small-quantity regulations and later changes to the 2015 Act were outside this pass. The

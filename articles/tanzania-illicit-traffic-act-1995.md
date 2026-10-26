@@ -31,6 +31,14 @@ sources:
     container: Act Supplement 15 to Tanzania Gazette 48, volume 98, 1 December 2017
     locator: Sections 3, 8–9 and 14; assent 28 November, publication 1 December
     url: https://www.dcea.go.tz/uploads/publications/sw1569703938-THE%20DRUGS%20ACT.pdf
+  - type: law
+    title: Written Laws (Miscellaneous Amendments) (No.2) Act, 2012, Act 6 of 2012
+    authors:
+      - United Republic of Tanzania
+    year: 2012
+    container: Act Supplement No. 6 to Gazette No. 30, volume 93, 27 July 2012
+    locator: Part IX, sections 28–32
+    url: https://oagmis.oag.go.tz/portal/acts/137/download
 ---
 
 Tanzania replaced its colonial drug laws with a national system covering both the mainland and Zanzibar.[@1] The new law prohibited unauthorised cannabis growing, trade, possession and use, while setting a separate penalty for small amounts proved to be for personal consumption.[@1]
@@ -55,6 +63,12 @@ The commission was to define small quantities through regulations.[@1] Someone h
 
 ## Later amendments changed the penalties again
 
-The law was amended repeatedly during the following years.[@3] In [2015](/history/tanzania-drug-control-act-2015/), a replacement for mainland Tanzania introduced at least thirty years for unauthorised cultivation and life imprisonment for trafficking.[@3] Its separate small-personal-use tier provided a fine, a three-year prison term, or both for drugs outside the specially listed group.[@3]
+The law was amended repeatedly during the following years, including [in
+2012](/history/tanzania-drug-law-amendment-2012/), when possession and trafficking became mandatory
+life sentences while the small-quantity tier remained.[@2,5] In
+[2015](/history/tanzania-drug-control-act-2015/), a replacement for mainland Tanzania introduced at
+least thirty years for unauthorised cultivation and life imprisonment for trafficking.[@3] Its
+separate small-personal-use tier provided a fine, a three-year prison term, or both for drugs
+outside the specially listed group.[@3]
 
 A further [2017 amendment](/history/tanzania-trafficking-thresholds-2017/) split cannabis trafficking penalties at fifty kilograms and rewrote the conditional treatment alternative.[@4] Those successive changes shaped [Tanzania's cannabis controls](/country/tz/).[@4]

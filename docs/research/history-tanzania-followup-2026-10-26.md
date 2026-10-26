@@ -1,9 +1,10 @@
-# Tanzania follow-up: the 1995 penalties and Zanzibar's 1986 bhang provisions
+# Tanzania follow-up: the 1995 penalties, the 2012 amendment and Zanzibar's 1986 bhang provisions
 
 26 October 2026. Follow-up to [the Tanzania pass](history-tanzania-gap-2026-10-26.md). That pass
-left the 1995 Act unscored because its original penalties had not been compared with later
-amendments, and left the operative Zanzibar provisions unread. This note closes both reading gaps.
-No score changed.
+left the 1995 Act unscored pending a full-vector comparison with its later amendments, and left the
+operative Zanzibar provisions unread. This note reads the 31 July 2002 consolidation, the 2012
+amendment that the consolidation still listed as outstanding, and Zanzibar's 1986 bhang provisions.
+No score changed; the 2012 amendment is recorded as a new unscored event.
 
 ## The 1995 Act and its 31 July 2002 consolidation
 
@@ -32,6 +33,48 @@ at possession, sharing and consumption under the same general penalty. The recor
 support that full reconstruction, so the 1995 entry stays **checked but unscored**, with the
 comparison recorded rather than listed as missing.
 
+## The 2012 amendment
+
+The TanzLII consolidation's note that Act 6 of 2012 had not been applied sent the search to the
+Office of the Attorney General's document system, which holds the scanned Act Supplement. The
+**Written Laws (Miscellaneous Amendments) (No.2) Act, 2012 (Act 6 of 2012)** was passed on **16
+April 2012**, assented to on **15 June 2012** and published on **27 July 2012** in Act Supplement
+No. 6 to Gazette No. 30, volume 93. Part IX amends the Drugs and Prevention of Illicit Traffic in
+Drugs Act (Cap. 95).
+
+Section 31 replaces section 16(a) and (b) with mandatory sentences:
+
+> (a) found in possession or does any act or omits to do any act or thing in respect of narcotic
+> drugs or any preparation containing any manufactured drugs commits an offence and upon conviction
+> shall be sentenced to life imprisonment; and
+>
+> (b) trafficking in any narcotic drug or psychotropic substance commits an offence and upon
+> conviction shall be sentenced to life imprisonment.
+
+It also deletes section 16(2), the old use and premises offence. Section 32 adds two replacement
+provisions. Section 17A covers smoking, inhaling, sniffing or otherwise using a narcotic drug or
+psychotropic substance; being found without lawful excuse in a house, room or place used for those
+purposes; and possessing a pipe or other utensil for use with opium, cannabis, heroin, cocaine or a
+related substance. The penalty is a fine of one million shillings, ten years in prison, or both.
+Section 17B covers an owner, occupier or manager who permits premises to be used for preparation,
+manufacture, production or sale, or who possesses a tool, equipment, machine or utensil used in
+preparation; the penalty is life imprisonment. Section 30 narrows section 12(d) by deleting the
+words "manufactured drugs" and the phrase "or any preparation containing any manufactured drugs"
+from the prohibited-plant offence. Section 29 sends sections 12, 17 and 17A to a subordinate court
+and sections 16, 18, 19, 20, 21 and 23 to the High Court.
+
+The small-quantity personal-use tier in section 17 was not amended: cannabis still carried a
+200,000-shilling fine, seven years, or both. The 2012 Act therefore made life imprisonment
+mandatory for possession and trafficking, but did not create a new penalty level for those
+offences; the small-quantity tier still set a lesser custodial alternative. The inherited pre-2015
+vector already treats possession and supply as custodial prohibition, and a separate whole-point
+step would re-base the 2015 entry, whose 13 → 8 step is retained. The amendment is recorded as a
+checked but **unscored** event dated 27 July 2012.
+
+The existing [1995 article](../../articles/tanzania-illicit-traffic-act-1995.md) now mentions the
+2012 amendment, cites the new Act and links to the event. Its body remains 415 words and its five
+sources are all cited.
+
 ## Zanzibar's 1986 bhang provisions
 
 The 1986 Pharmaceuticals and Dangerous Drugs Act (Act 6 of 1986) was read from the Zanzibar
@@ -56,16 +99,23 @@ remain missing, so neither the 1984 amendment nor the 1986 Act can be dated as Z
 cannabis ban.
 
 No Zanzibar entry was added. The country profile's cannabis score is explicitly for mainland
-Tanzania, and putting a separate Zanzibar statute into the same scored timeline still requires a
-decision about how the two jurisdictions should be represented. The 1986 text is recorded here so
-that decision can be made with the operative section and penalty in hand.
+Tanzania, and putting a separate Zanzibar statute into the same scored timeline would require a
+different representation of the two jurisdictions, not a single context entry. **Decision:** Zanzibar
+remains deferred as a separate legal history until the 1927 decree can be read and the profile's
+mainland scope is addressed. The 1986 text is recorded here so that work can start from the
+operative section and penalty.
 
 ## Verification
 
 - `node scripts/data-status.cjs chain tz`: 1924 100 → 98; 1926 98 → 13; 2015 13 → 8; 0 flags.
+- `node scripts/score-triage.cjs tz`: 3 scored, 0 open.
 - `npm run history:test`: 38 of 38 passed.
 - `npm run answers:test`: 16 of 16 passed.
-- `npm run build`: passed, 4,147 pages.
+- `npm run build`: passed, 4,152 pages.
+- Dataset after the edit: 3,159 entries, 3,089 checked, 10 unchecked, 62 estimated first bans.
+- Built pages inspected: `/history/tanzania-drug-law-amendment-2012/` (listed for context, one
+  reference), `/history/tanzania-illicit-traffic-act-1995/` (article, five references and the new
+  2012 link), and `/country/tz/` (the 2012 event appears between the 2015 and earlier entries).
 
 ## Remaining gaps
 
@@ -73,8 +123,8 @@ that decision can be made with the operative section and penalty in hand.
   still unrecovered. The 1971 Decree No. 11/71 also remains unread.
 - The 1986 Act's section 17(3) and its relationship to the separate narcotics provision need a
   cleaner copy of the printed page; the scan's margin notes and numbering are ambiguous.
-- The 1995 Act's 2012 amendment was not applied in the 2002 consolidation and was not read. The
-  entry's unscored rationale relies on the 2002 text and the original Act, not the final pre-repeal
-  version.
+- The 2012 amendment is read above. The 1995 Act's final pre-repeal text still depends on the 2012
+  text rather than a consolidated reprint, and later commencement practice was not separately
+  checked.
 - The original 1924, 1926 and 1935 gazettes and German-era Tanganyika law remain unread, as recorded
   in the main note.
