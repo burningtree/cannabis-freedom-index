@@ -1883,3 +1883,18 @@ official retrospective account. The recorded 1925-estimate-to-2023 gap falls fro
 unresolved; no score or profile change. The original preamble supplies new 1924,
 1937, 1955 and 1971 research leads. See
 `docs/research/history-french-polynesia-1978-2026-10-26.md` for sources, dates and limits.
+
+### Guernsey's early licensed controls and actual commencement dates (26 October 2026)
+
+Recovered original law volumes and the 1967/1976 commencement ordinances through
+Guernsey Legal Resources. Five entries and an article fill the recorded 1925–2019
+gap: possession/supply authority in 1931, the 1949 extract schedule, replacement
+controls in March 1967, the main 1974-law commencement in June 1976, and the Guest
+premises appeal in 2003. The largest recorded interval falls from 94 to 27 years.
+The 1931 law starts on registration, 7 March, not the modern campaign summary's
+1934 date. The 1966 law starts 22 March 1967; its separate implementing ordinance
+starts 1 May. The 1974 law has stages on 31 March and 1 June 1976. The earlier
+first restriction and enforcement score bands remain unresolved. Its estimated
+window is narrowed to 1925–1931, changing historical interpolation while keeping
+all score vectors and the current country score unchanged. See `docs/research/history-guernsey-early-gap-2026-10-26.md` for original
+sources, the 1924/1927 checks, limits and remaining primary-text leads.
