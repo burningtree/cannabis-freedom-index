@@ -26,6 +26,16 @@ segments:
       more of resin, or 75 kg or more of those plant parts, is fifteen to twenty years or life.
     sources:
       - a249
+    penalties:
+      - label: 1 g to under 500 g resin, or 1 kg to under 10 kg plant parts
+        treatment: criminal
+        prison_min: 3 years
+        prison: 5 years
+        note: First bracket; a prior uncleared penalty can criminalise smaller amounts
+      - label: 5 kg or more resin, or 75 kg or more plant parts
+        treatment: criminal
+        prison_min: 15 years
+        note: Fifteen to twenty years or life
   cultivation:
     text: >-
       Growing cannabis plants is prohibited: an administrative fine for small numbers, criminal
@@ -48,6 +58,19 @@ segments:
       parts, it is life or death. The article is the sale offence.
     sources:
       - a251
+    penalties:
+      - label: Illegal sale, base
+        treatment: criminal
+        prison_min: 3 years
+        prison: 7 years
+      - label: 5 kg to under 30 kg resin
+        treatment: criminal
+        prison: 20 years
+        note: Twenty years or life
+      - label: 30 kg or more resin
+        treatment: criminal
+        death: true
+        note: Life or death; death is alternative, not required
   consumption:
     text: >-
       Illegal use can bring a warning or a fine of 1–2 million dong and compulsory rehabilitation
@@ -61,6 +84,20 @@ segments:
     sources:
       - ln1
       - a256
+    currency: VND
+    penalties:
+      - label: Illegal use, administrative
+        treatment: civil
+        fine: 2000000
+        note: Warning or 1–2 million dong fine plus compulsory rehabilitation for addicts
+      - label: Use in rehabilitation statuses, Article 256a
+        treatment: criminal
+        prison_min: 2 years
+        prison: 3 years
+      - label: Recidivism of Article 256a
+        treatment: criminal
+        prison_min: 3 years
+        prison: 5 years
   access:
     text: >-
       None. The 2025 drug law counts the cannabis plant as a narcotic plant, prohibits growing it
@@ -68,6 +105,16 @@ segments:
     sources:
       - l120
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Possession starts at three to five years, sale at
+      three to seven years rising to life or death in the highest weight bands, and use brings
+      monitoring, rehabilitation or prison depending on status.[@a249,a251,a256,ln1]
+    sources:
+      - a249
+      - a251
+      - a256
+      - ln1
   death_penalty:
     text: >-
       From 1 July 2025, illegal sale of 5 kg to under 30 kg of cannabis resin, or 75 kg to under
@@ -79,14 +126,18 @@ context:
       - mps25
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    text: >-
+      No lawful cannabis production. The 2025 drug law counts the cannabis plant as a narcotic
+      plant, prohibits growing it and excludes cultivation even from licensed research and
+      production.[@l120]
+    sources:
+      - l120
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No medical cannabis programme. The 2025 drug law excludes cannabis cultivation even from
+      licensed research and production routes.[@l120]
+    sources:
+      - l120
   consequences:
     text: >-
       Local police monitor detected users. A further detection during ordinary one-year monitoring
