@@ -30,6 +30,14 @@ segments:
       resin and oil are listed in Table I.[@law]
     sources:
       - law
+    currency: KHR
+    penalties:
+      - label: Basic unlawful possession
+        treatment: criminal
+        prison_min: 2 years
+        prison: 5 years
+        fine: 10000000
+        note: Two to five years and 4–10 million riel
   cultivation:
     text: >-
       Unlawful cultivation of narcotic plants in Tables I and II carries six months to two years
@@ -38,6 +46,15 @@ segments:
       authorities.[@law]
     sources:
       - law
+    penalties:
+      - label: Unlawful cultivation
+        treatment: criminal
+        prison_min: 6 months
+        prison: 2 years
+      - label: Growing for distribution, manufacture or trade
+        treatment: criminal
+        prison_min: 2 years
+        prison: 5 years
   enforcement:
     text: >-
       Unlawful possession has a basic two-to-five-year prison penalty; article 28 requires the drug
@@ -72,6 +89,14 @@ segments:
     sources:
       - cann
 context:
+  recreational:
+    text: >-
+      No legal recreational supply exists, though 'happy pizza' restaurants and street sellers
+      operate openly in some cities, tolerated rather than licensed. Unlawful possession carries
+      two to five years in prison.[@cann,law]
+    sources:
+      - cann
+      - law
   production:
     status: medical
     text: >-
@@ -80,15 +105,22 @@ context:
       lawful activity involving drugs in Tables I–III.[@law]
     sources:
       - law
-  products:
-    text: No legal products.
+  research:
+    status: licensed
+    text: >-
+      Research is one of the four permitted purposes for licensed cultivation, manufacture and
+      supply of controlled drugs; no cannabis research programme was verified beyond the
+      licensing route.[@law]
     sources:
-      - lc
+      - law
   medical:
-    text: No medical cannabis programme.
+    text: >-
+      No medical cannabis programme and no legal products; the licensing system permits clinical
+      and research activity but no patient supply route was verified.[@lc,cann,law]
     sources:
       - lc
       - cann
+      - law
   consequences:
     text: >-
       State-centre treatment and rehabilitation can last six months to two years.[@law] The law
