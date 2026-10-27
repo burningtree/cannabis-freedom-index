@@ -1,0 +1,11 @@
+---
+// The changelog's later pages, /changelog/page/2/ and on; the first page is /changelog/ itself.
+import ChangelogPage from "../../../components/ChangelogPage.astro";
+import { pageCount } from "../../../lib/gitlog.js";
+
+export function getStaticPaths() {
+  return Array.from({ length: pageCount() - 1 }, (_, i) => ({ params: { n: String(i + 2) }, props: { n: i + 2 } }));
+}
+const { n } = Astro.props;
+---
+<ChangelogPage n={n} />

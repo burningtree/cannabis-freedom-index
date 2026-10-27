@@ -2,7 +2,7 @@
 // One change to the site: its message, and what it did, section by section (src/lib/gitlog.js).
 import Base from "../../layouts/Base.astro";
 import UncommittedReload from "../../components/UncommittedReload.astro";
-import { commits, emptyGroups, reloadUncommitted, summaryOf } from "../../lib/gitlog.js";
+import { commits, emptyGroups, reloadUncommitted, summaryOf, when, byline } from "../../lib/gitlog.js";
 import { formatDate, places, changes, SEGMENTS, segmentPoints } from "../../lib/countries.js";
 import { cultureEntries } from "../../lib/culture.js";
 import { tierColor } from "../../lib/tiers.js";
@@ -51,7 +51,7 @@ const moves = g.places.filter((p) => p.scores?.length || (p.status === "added" &
 <Base noindex={c.short === "uncommitted"} title={`${c.subject} · Changelog`} description={`${formatDate(c.date.slice(0, 10))}: ${summary.map(([n, w]) => `${n} ${w}`).join(", ") || "changes to the site"} (${c.short}).`}>
   <main class="changes-page gl gl-commit">
     <section class="hero hero-sm">
-      <p class="eyebrow"><a href={`${base}changelog/`}>Changelog</a> <span><time datetime={c.date}>{formatDate(c.date.slice(0, 10))}</time></span> <span>{c.short}</span></p>
+      <p class="eyebrow"><a href={`${base}changelog/`}>Changelog</a> <span><time datetime={c.date}>{when(c.date)}</time></span> <span>{c.short}</span>{!c.local && c.author && <span>{byline(c)}</span>}</p>
       <h1>{c.subject}</h1>
       {c.body && <p class="lede gl-body">{c.body}</p>}
       {import.meta.env.DEV && c.local && <UncommittedReload at={c.date} />}

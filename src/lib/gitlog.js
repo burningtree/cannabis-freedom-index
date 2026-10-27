@@ -166,19 +166,21 @@ function workOut(c) {
   return groups;
 }
 
-// every commit, newest first: { hash, short, date, subject, body, parent, files, add, del }
+// every commit, newest first: { hash, short, date, author, coauthors, subject, body, parent, files, add, del }
+// `coauthors` are the names in the commit's Co-Authored-By lines, without their addresses
 function readLog() {
   const SEP = "\u001e", END = "\u001f";
-  const out = git("log", "--no-renames", "--numstat", `--format=${END}%H${SEP}%P${SEP}%aI${SEP}%s${SEP}%b${SEP}`);
+  const out = git("log", "--no-renames", "--numstat", `--format=${END}%H${SEP}%P${SEP}%aI${SEP}%an${SEP}%s${SEP}%b${SEP}`);
   if (!out) return [];
   return out.split(END).filter(Boolean).map((chunk) => {
-    const [hash, parents, date, subject, body, stat] = chunk.split(SEP);
+    const [hash, parents, date, author, subject, body, stat] = chunk.split(SEP);
+    const coauthors = [...new Set([...(body ?? "").matchAll(/^Co-Authored-By:\s*(.+?)\s*(?:<[^>]*>)?\s*$/gim)].map((m) => m[1]))];
     const files = (stat ?? "").trim().split("\n").filter(Boolean).map((l) => {
       const [add, del, ...f] = l.split("\t");
       return { file: f.join("\t"), add: add === "-" ? 0 : +add, del: del === "-" ? 0 : +del };
     });
     return {
-      hash, short: hash.slice(0, 7), date, subject: subject.trim(), body: (body ?? "").replace(/\n?Co-Authored-By:.*$/gim, "").trim(),
+      hash, short: hash.slice(0, 7), date, author: author.trim(), coauthors, subject: subject.trim(), body: (body ?? "").replace(/\n?Co-Authored-By:.*$/gim, "").trim(),
       parent: parents.split(" ")[0] || null, files,
       add: files.reduce((s, f) => s + f.add, 0), del: files.reduce((s, f) => s + f.del, 0),
     };
@@ -190,6 +192,11 @@ function readLog() {
 // The dev server keeps this module loaded, so that snapshot would stay as it was when the server
 // started. The changelog pages call reloadUncommitted() on each request, and the page has a Reload
 // button for when it is left open while files change.
+// now, as an ISO date with this computer's time zone, like git writes a commit's date
+const localIso = (d = new Date()) => {
+  const off = -d.getTimezoneOffset(), pad = (x) => String(Math.floor(Math.abs(x))).padStart(2, "0");
+  return new Date(d.getTime() + off * 6e4).toISOString().slice(0, 19) + (off >= 0 ? "+" : "-") + pad(off / 60) + ":" + pad(off % 60);
+};
 function uncommitted() {
   if (process.env.CI) return [];
   const head = git("rev-parse", "HEAD")?.trim();
@@ -204,7 +211,7 @@ function uncommitted() {
   }
   if (!files.length) return [];
   return [{
-    hash: WORKTREE, short: "uncommitted", date: new Date().toISOString(), subject: "Uncommitted changes", body: "Work on this computer that is not committed yet. Shown only in local builds.",
+    hash: WORKTREE, short: "uncommitted", date: localIso(), author: git("config", "user.name")?.trim() || "this computer", coauthors: [], subject: "Uncommitted changes", body: "Work on this computer that is not committed yet. Shown only in local builds.",
     parent: head, files, add: files.reduce((s, f) => s + f.add, 0), del: files.reduce((s, f) => s + f.del, 0), local: true,
   }];
 }
@@ -225,6 +232,19 @@ export function reloadUncommitted() {
 }
 
 export { EMPTY as emptyGroups };
+
+// The changelog in pages of PAGE_SIZE commits, newest first; the uncommitted changes are kept apart
+export const PAGE_SIZE = 50;
+export const committed = () => commits.filter((c) => !c.local);
+export const pageCount = () => Math.max(1, Math.ceil(committed().length / PAGE_SIZE));
+export const pageOf = (n) => committed().slice((n - 1) * PAGE_SIZE, n * PAGE_SIZE);
+// "27 October 2026, 16:51" in the author's own time zone, as git recorded it
+export const when = (iso) => {
+  const d = new Date(`${iso.slice(0, 10)}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+  return `${d}, ${iso.slice(11, 16)}`;
+};
+// "tree, with Claude Opus 5.5"
+export const byline = (c) => [c.author, ...(c.coauthors?.length ? [`with ${c.coauthors.join(" and ")}`] : [])].join(", ");
 
 // one line of what a commit did: [[count, label, the id of its section on the commit's page]]
 export function summaryOf(c) {

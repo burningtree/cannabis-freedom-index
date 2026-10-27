@@ -1,0 +1,89 @@
+---
+// One page of the changelog (src/pages/changelog/): the commits on page `n`, grouped by month, with
+// their time, short hash and author, and the pages around it. On the first page of a local build
+// the uncommitted changes come first, apart from the commits (src/lib/gitlog.js).
+import Base from "../layouts/Base.astro";
+import UncommittedReload from "./UncommittedReload.astro";
+import { commits, committed, pageOf, pageCount, PAGE_SIZE, summaryOf, when, byline } from "../lib/gitlog.js";
+
+const { n } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const pages = pageCount(), items = pageOf(n), total = committed().length;
+const local = n === 1 ? commits.find((c) => c.local) : null;
+const pageUrl = (k) => (k === 1 ? `${base}changelog/` : `${base}changelog/page/${k}/`);
+// grouped by month, newest first
+const months = [];
+for (const c of items) {
+  const m = c.date.slice(0, 7);
+  if (months.at(-1)?.m !== m) months.push({ m, label: new Date(`${m}-15`).toLocaleDateString("en-GB", { month: "long", year: "numeric" }), items: [] });
+  months.at(-1).items.push(c);
+}
+// the page links: the first, the last, and two either side of this one, with gaps marked
+const shown = [...new Set([1, n - 2, n - 1, n, n + 1, n + 2, pages])].filter((k) => k >= 1 && k <= pages).sort((a, b) => a - b);
+const first = (n - 1) * PAGE_SIZE + 1, last = Math.min(n * PAGE_SIZE, total);
+const row = (c) => ({ c, url: `${base}changelog/${c.short}/`, sum: summaryOf(c) });
+---
+<Base title={n === 1 ? "Changelog" : `Changelog, page ${n}`} description="Every change made to the Cannabis Freedom Index, its data and its texts, newest first, each with exactly what changed.">
+  <main class="changes-page gl">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Changelog <span>{total} commits</span>{pages > 1 && <span>page {n} of {pages}</span>}</p>
+      <h1>Every change, and what exactly changed</h1>
+      {n === 1 && <p class="lede">Everything done to the index, newest first: new history, rescored countries, rewritten articles, new datasets and changes to the site itself. Open one to see it word by word. Only the changes that moved a country's score are on <a href={`${base}score-changes/`}>Score changes</a>.</p>}
+    </section>
+
+    {local && (
+      <section class="section gl-month gl-uncommitted">
+        <h2 class="d-h">Not committed yet <span>only on this computer</span></h2>
+        {import.meta.env.DEV && <UncommittedReload at={local.date} />}
+        <ol class="gl-list">
+          {[row(local)].map(({ c, url, sum }) => (
+            <li class="gl-local">
+              <a href={url}>
+                <span class="gl-meta"><time datetime={c.date}>{when(c.date)}</time><code>uncommitted</code><span>{c.files.length} {c.files.length === 1 ? "file" : "files"}</span></span>
+                <b>{c.subject}</b>
+                <span class="gl-sum">{sum.map(([k, what]) => <span><em>{k}</em> {what}</span>)}</span>
+                <span class="gl-lines"><ins>+{c.add.toLocaleString("en-GB")}</ins> <del>−{c.del.toLocaleString("en-GB")}</del></span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+
+    {months.map((g) => (
+      <section class="section gl-month">
+        <h2 class="d-h">{g.label} <span>{g.items.length} {g.items.length === 1 ? "commit" : "commits"}{n > 1 || pages > 1 ? " on this page" : ""}</span></h2>
+        <ol class="gl-list">
+          {g.items.map(row).map(({ c, url, sum }) => (
+            <li>
+              <a href={url}>
+                <span class="gl-meta"><time datetime={c.date}>{when(c.date)}</time><code>{c.short}</code><span class="gl-author">{byline(c)}</span></span>
+                <b>{c.subject}</b>
+                <span class="gl-sum">{sum.map(([k, what]) => <span><em>{k}</em> {what}</span>)}</span>
+                <span class="gl-lines"><ins>+{c.add.toLocaleString("en-GB")}</ins> <del>−{c.del.toLocaleString("en-GB")}</del></span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+
+    {pages > 1 && (
+      <nav class="section gl-pages" aria-label="Changelog pages">
+        <p class="gl-range">Commits {first}–{last} of {total}</p>
+        <div>
+          {n > 1 ? <a class="btn" href={pageUrl(n - 1)} rel="prev">← Newer</a> : <span class="btn" aria-disabled="true">← Newer</span>}
+          <ol>
+            {shown.map((k, i) => (
+              <>
+                {i > 0 && k - shown[i - 1] > 1 && <li class="gl-gap" aria-hidden="true">…</li>}
+                <li>{k === n ? <span aria-current="page">{k}</span> : <a href={pageUrl(k)}>{k}</a>}</li>
+              </>
+            ))}
+          </ol>
+          {n < pages ? <a class="btn" href={pageUrl(n + 1)} rel="next">Older →</a> : <span class="btn" aria-disabled="true">Older →</span>}
+        </div>
+      </nav>
+    )}
+  </main>
+</Base>
