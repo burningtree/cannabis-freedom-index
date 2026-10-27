@@ -3,10 +3,11 @@ region: Asia
 iso_numeric: 31
 recreational: illegal
 medical: none
-updated: 2026-10-13
+updated: '2026-10-28'
 summary: >-
-  Personal-use amounts and small-scale cultivation are administrative offences that can still
-  bring up to two months' detention; larger amounts are crimes.
+  Small amounts for personal use are administrative offences, but a court can order up to two
+  months' arrest; possession above 5 g, sale and cultivation are crimes. There is no medical,
+  hemp or legal supply route, and the authorities report thousands of drug cases a year.
 scores:
   possession: 1
   cultivation: 2
@@ -17,131 +18,320 @@ scores:
 segments:
   possession:
     text: >-
-      Holding a small amount without intent to sell is an administrative offence under Article
-      206 of the Code of Administrative Offences: a fine of 300 to 400 manat or, where the court
-      finds a fine insufficient, administrative arrest of up to two months. A small amount is
-      anything below the 'substantial' amount set by law, and a person who hands the drugs in
-      voluntarily is released from liability. A substantial amount without intent to sell is a
-      crime under Article 234.1 of the Criminal Code, with restriction of liberty for one to
-      three years or up to three years in prison, and a large amount brings three to eight
-      years.
+      Article 206 of the Code of Administrative Offences covers use and the small-scale making,
+      buying, keeping, carrying or sending of narcotics without intent to sell: a fine of 300 to
+      400 manat or, if the court considers a fine insufficient, up to two months' administrative
+      arrest.[@admin] A small amount is anything below the substantial amount set by law.[@admin]
+      Above that line, Article 234.1 of the Criminal Code punishes possession without intent to
+      sell with restriction of liberty for one to three years or up to three years in prison; a
+      large amount brings three to eight years and an especially large amount eight to
+      fifteen.[@criminal] For dried cannabis the substantial amount is 5 g, large 500 g and
+      especially large 50 kg; for undried cannabis the lines are 25 g, 2.5 kg and 250
+      kg.[@thresholds]
     sources:
       - admin
       - criminal
-      - law2023
+      - thresholds
+    currency: AZN
+    penalties:
+      - upto: 5 g
+        treatment: civil
+        term: Small amount, Article 206
+        fine_min: 300
+        fine: 400
+        prison: 2 months
+        note: Dried cannabis below the substantial threshold; administrative arrest if a fine is insufficient
+      - over: 5 g
+        upto: 500 g
+        treatment: criminal
+        term: Substantial amount, Article 234.1
+        prison: 3 years
+        note: Restriction of liberty for 1–3 years or up to 3 years in prison
+      - over: 500 g
+        upto: 50 kg
+        treatment: criminal
+        term: Large amount, Article 234.1-1
+        prison_min: 3 years
+        prison: 8 years
+      - over: 50 kg
+        treatment: criminal
+        term: Especially large amount, Article 234.4-1
+        prison_min: 8 years
+        prison: 15 years
   cultivation:
     text: >-
-      Small-scale cultivation is an administrative offence under Article 208: the penalty is a
-      200–300 manat fine or, when the court considers a fine insufficient, up to two months of
-      administrative detention. Article 237 of the Criminal Code applies above the statutory
-      threshold, with a 3,000–6,000 manat fine, restriction of liberty for one to three years, or
-      up to three years in prison; aggravated cases carry three to ten years.
+      Article 208 punishes small-scale sowing or growing of drug-containing plants with a 200 to
+      300 manat fine or up to two months' administrative arrest.[@admin] Above the substantial
+      threshold, Article 237.1 carries a 3,000 to 6,000 manat fine, restriction of liberty for one
+      to three years or up to three years in prison; aggravated cultivation brings three to eight
+      years and especially large cultivation six to ten.[@criminal] The thresholds count plants:
+      3 to 15 plants or 6 to 30 parts is substantial, 16 to 800 plants or 31 to 1,550 parts large,
+      and 801 plants or 1,551 parts especially large.[@thresholds]
     sources:
       - admin
       - criminal
+      - thresholds
+    currency: AZN
+    penalties:
+      - upto: 2 plants
+        treatment: civil
+        term: Small-scale, Article 208
+        fine_min: 200
+        fine: 300
+        prison: 2 months
+        note: Below the substantial threshold; 3–15 plants or 6–30 parts is substantial
+      - over: 2 plants
+        upto: 15 plants
+        treatment: criminal
+        term: Substantial, Article 237.1
+        fine_min: 3000
+        fine: 6000
+        prison: 3 years
+        note: Fine, restriction of liberty for 1–3 years or up to 3 years in prison
+      - over: 15 plants
+        upto: 800 plants
+        treatment: criminal
+        term: Large, Article 237.2
+        prison_min: 3 years
+        prison: 8 years
+      - over: 800 plants
+        treatment: criminal
+        term: Especially large, Article 237.3
+        prison_min: 6 years
+        prison: 10 years
   enforcement:
     text: >-
-      The law offers an administrative route for small amounts and an exit for those who
-      cooperate: both codes release a person who voluntarily hands in drugs, and the Criminal
-      Code also releases one who actively helps uncover drug crimes. Above the small-amount
-      threshold possession is a crime with up to three years in prison. No figures on how often
-      users are fined, detained or prosecuted were found.
+      The state treats drug crime as a large share of its criminal caseload: 8,863 drug offences
+      in 2024, 26.6% of all registered crimes, with 7,245 offenders detained and 2,420
+      administrative drug offences.[@stats2024] In January–November 2025 the authorities reported
+      7,441 drug crimes and 5,117 people prosecuted; in the first half of 2026, 4,460 drug
+      crimes.[@stats2025,stats2026] Both codes release a person who voluntarily hands in drugs,
+      and the Criminal Code also releases one who actively helps uncover drug offences.[@admin,criminal]
     sources:
+      - stats2024
+      - stats2025
+      - stats2026
       - admin
       - criminal
   sharing:
     text: >-
-      Article 234.2 punishes possession, production, transport or sending with intent to sell, and
-      sale itself, with three to seven years in prison. The narcotics law defines sale as a paid or
-      barter transaction; the sources read do not identify a separate lesser rule for an unpaid
-      gift.
+      Article 234.2 punishes buying or keeping narcotics with intent to sell, and sale itself,
+      with three to seven years in prison and possible confiscation of property.[@criminal] Sale
+      to a minor, or in a school, medical or detention institution, brings four to eight
+      years.[@criminal] Group, repeat, large-amount or online sale brings five to twelve years,
+      and an especially large amount eight to fifteen.[@criminal] The drug law defines illicit
+      trafficking as actions aimed at distributing narcotics for payment or gain, or for another
+      personal interest; the code has no separate lesser offence for an unpaid gift.[@druglaw]
     sources:
       - criminal
-      - mia
+      - druglaw
+    penalties:
+      - label: Sale, or possession for sale
+        treatment: criminal
+        term: Article 234.2
+        prison_min: 3 years
+        prison: 7 years
+        note: Property may be confiscated
+      - label: Sale to a minor, or in a school, medical or detention institution
+        treatment: criminal
+        term: Article 234.3-1
+        prison_min: 4 years
+        prison: 8 years
+      - label: Group, repeat, large amount or online sale
+        treatment: criminal
+        term: Article 234.4
+        prison_min: 5 years
+        prison: 12 years
+      - label: Especially large amount
+        treatment: criminal
+        term: Article 234.4-1
+        prison_min: 8 years
+        prison: 15 years
   consumption:
     text: >-
-      Using a narcotic is an administrative offence under the same Article 206 as small
-      possession: a fine of 300 to 400 manat or, where that is judged insufficient,
-      administrative arrest of up to two months.
+      Using a narcotic is an administrative offence under Article 206, punished with a 300 to 400
+      manat fine or up to two months' administrative arrest.[@admin] The same article covers
+      small-scale possession, so a person found using a small amount is dealt with outside the
+      criminal code.[@admin] The sources read identify no separate offence for cannabis use as
+      opposed to other narcotics.[@admin]
     sources:
       - admin
+    currency: AZN
+    penalties:
+      - label: Use of a narcotic, Article 206
+        treatment: civil
+        term: Use
+        fine_min: 300
+        fine: 400
+        prison: 2 months
+        note: Administrative arrest if a fine is insufficient
   access:
-    text: No legal source.
+    text: >-
+      There is no legal source of cannabis for adults or patients.[@druglaw] The drug law allows
+      narcotic drugs for medical purposes through state channels, but the sources read identify no
+      cannabis medicine or patient-access programme.[@druglaw] Production and cultivation are
+      prohibited except experimental samples of medicines.[@druglaw]
     sources:
-      - law2023
-      - osce2011
+      - druglaw
 context:
+  recreational:
+    text: >-
+      Adults have no legal way to buy cannabis. A small amount for personal use is an
+      administrative offence carrying a fine or up to two months' arrest; above 5 g of dried
+      cannabis it becomes a crime with up to three years in prison, and sale carries three to
+      seven years.[@admin,criminal] The state counted 8,863 drug crimes in 2024, of which 63.2%
+      were purchase or storage without intent to sell and 33.3% sale or production.[@stats2024]
+      No price or purity data were found.
+    sources:
+      - admin
+      - criminal
+      - stats2024
+  medical:
+    text: >-
+      The drug law permits narcotic drugs for medical use and allows imports by state bodies, but
+      the sources read identify no cannabis-based medicine, prescription route or patient
+      programme.[@druglaw] Production is limited to experimental samples of medicines.[@druglaw]
+      Medical status stays none.
+    sources:
+      - druglaw
+  hemp:
+    status: none
+    text: >-
+      The drug law makes no exception for industrial hemp: it prohibits the cultivation of plants
+      containing narcotic substances except experimental samples of medicines, and the Criminal
+      Code punishes unauthorised cultivation.[@druglaw,criminal] No THC limit, licensing scheme
+      or separate CBD exemption was found in the sources read.[@druglaw]
+    sources:
+      - druglaw
+      - criminal
   production:
     status: none
     text: >-
-      Cultivation and production of narcotic plants are prohibited except where needed to prepare
-      experimental samples of medicines; experimental production is reserved to competent state
-      authorities.
+      The drug law prohibits the production of narcotic drugs and the cultivation of
+      drug-containing plants on Azerbaijani territory, except experimental samples of medicines;
+      those are reserved to the competent state bodies.[@druglaw] No licensed production for
+      medicine, fibre or food was found.[@druglaw] The legal production route for cannabis is
+      therefore none.
     sources:
-      - mia
-  products:
-    text: >-
-      Controlled narcotic medicines may be supplied by licensed pharmacies and medical
-      institutions. The law does not establish a legal retail market for cannabis products.
-    sources:
-      - mia
-  medical:
-    text: >-
-      The narcotics law permits controlled drugs for medical needs through licensed pharmacies and
-      medical institutions, but the sources read do not establish a patient-access programme for
-      cannabis itself.
-    sources:
-      - mia
+      - druglaw
   consequences:
     text: >-
-      People convicted of illicit drug trafficking may not work in organisations that handle
-      controlled drugs, while separate employment restrictions may be imposed on people diagnosed
-      with drug dependence in specified occupations or work involving dangerous facilities.
+      A drug conviction is a criminal record. Courts may confiscate property for supply
+      offences.[@criminal] The drug law allows restrictions on certain professions and on work
+      with high-risk facilities for people diagnosed with drug dependence.[@druglaw] A small
+      possession offence can still bring up to two months' administrative arrest.[@admin]
     sources:
-      - mia
-  visitors:
-    status: none
+      - criminal
+      - druglaw
+      - admin
+  planting:
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
     text: >-
-      There is no legal recreational supply for anyone. Use or a small amount brings a fine of
-      300 to 400 manat or up to two months' administrative arrest; a substantial amount is a
-      crime with up to three years in prison, and holding or carrying drugs for sale three to
-      seven years.
+      The drug law controls plants containing narcotic substances and their parts but names no
+      seed exception, so whether cannabis seed on its own is a controlled drug is not
+      stated.[@druglaw] Sowing it is cultivation: Article 208 for a small amount and Article 237
+      above the threshold.[@admin,criminal] Clones are plants, so keeping or trading them falls
+      under the cultivation offence.[@criminal] No seed-sale or clone market was found.
     sources:
+      - druglaw
       - admin
       - criminal
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person for gain are both prohibited.[@criminal]
+    sources:
+      - criminal
+  visitors:
+    status: none
+    text: >-
+      There is no legal recreational supply for anyone. A visitor who uses or holds a small amount
+      faces a 300 to 400 manat fine or up to two months' administrative arrest; above 5 g of dried
+      cannabis the case becomes criminal, with up to three years in prison, and sale carries three
+      to seven years.[@admin,criminal] The law makes no exception for visitors.[@admin,criminal]
     sources:
       - admin
       - criminal
+  driving:
+    status: impairment
+    text: >-
+      Driving while intoxicated by narcotics, psychotropic substances or other strong substances
+      is an administrative offence under Article 333-1.1: a 600 manat fine or restriction of the
+      right to drive for six to twelve months.[@admin] A repeat brings 800 manat and a two-year
+      restriction, or fifteen days to one month of administrative arrest.[@admin] The law sets no
+      THC limit, so the offence turns on showing that the driver was intoxicated.[@admin]
+    sources:
+      - admin
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 5,335 kg of herbal
-      cannabis seized in 2024, against 1,711 kg in 2023, and 65.2 kg of cannabis resin
-      seized in 2023, against 42.3 kg in 2022. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      The state statistics committee reported 5,634.4 kg of marijuana seized in 2024, out of
+      9,330.9 kg of drugs, precursors and drug-containing plants, and 7,037.4 kg of marijuana in
+      January–November 2025, out of 8,334.7 kg.[@stats2024,stats2025] In 2024 it also reported
+      2,688.9 kg of drug-containing plants cultivated inside the country and seized, and in the
+      2025 period 18,938 hemp plants.[@stats2024,stats2025] No price or purity data were found.
     sources:
-      - unodc_szr
+      - stats2024
+      - stats2025
+  arrests:
+    text: >-
+      In 2024 the authorities registered 8,863 drug crimes, 26.6% of all crimes, detained 7,245
+      offenders and recorded 2,420 administrative drug offences.[@stats2024] In January–November
+      2025 they reported 7,441 drug crimes, including 2,403 for sale, 4,850 for purchase or
+      storage and 186 for cultivation, and prosecuted 5,117 people.[@stats2025] In January–June
+      2026 they registered 4,460 drug crimes, 28.9% of the total.[@stats2026] The figures cover all
+      drugs and give no cannabis breakdown.
+    sources:
+      - stats2024
+      - stats2025
+      - stats2026
 sources:
   admin:
-    title: Azerbaijan — Code of Administrative Offences, consolidated text (e-Qanun), Articles 206 and 208
+    type: law
+    title: "Azerbaijan — Code of Administrative Offences, consolidated text (e-Qanun), Articles 206, 208 and 333-1"
     url: https://e-qanun.az/framework/46960
+    locator: "Articles 206, 208 and 333-1; the code was adopted on 29 December 2015 and took effect on 1 March 2016."
   criminal:
-    title: Azerbaijan — Criminal Code, consolidated text (e-Qanun), Articles 234 and 237
-    url: https://frameworks.e-qanun.az/46/f_46947.html
-  mia:
-    title: Ministry of Internal Affairs — Law on narcotic drugs, psychotropic substances and precursors
-    url: https://mia.gov.az/en/legislation/1/view/44/
+    type: law
+    title: "Azerbaijan — Criminal Code, consolidated text (e-Qanun), Articles 234 and 237"
+    url: https://e-qanun.az/framework/46947
+    locator: "Articles 234.1–234.4-1 and 237.1–237.3; the code was adopted on 30 December 1999 and took effect on 1 September 2000."
+  thresholds:
+    type: law
+    title: "Azerbaijan — Law No. 961-IIQ of 28 June 2005 on substantial, large and especially large amounts of narcotic drugs and psychotropic substances"
+    url: https://e-qanun.az/framework/10687
+    locator: "Table entries 109.1–109.2 for dried and undried marijuana; List III, entries 1.2 and 2, for cannabis-type plants and their parts."
+  druglaw:
+    type: law
+    title: "Azerbaijan — Law on trafficking in narcotic drugs, psychotropic substances and their precursors (No. 959-IIQ), consolidated text"
+    url: https://e-qanun.az/framework/10675
+    locator: "Articles 1.0.11–1.0.12, 5.2, 13.1 and 20 on production, scientific use, trafficking and restrictions."
+  stats2024:
+    type: report
+    title: "Azerbaijan State Statistical Committee — Drug-related crimes in 2024 (25 February 2025)"
+    url: https://www.stat.gov.az/news/index.php?id=6207&lang=en
+  stats2025:
+    type: report
+    title: "Azernews — Azerbaijan reports large-scale drug seizures (19 December 2025), citing the State Commission working group"
+    url: https://www.azernews.az/nation/251843.html
+  stats2026:
+    type: report
+    title: "Azerbaijan State Statistical Committee — Drug-related crimes in January–June 2026 (21 August 2026)"
+    url: https://www.stat.gov.az/news/index.php?id=6880&lang=en
   law2023:
-    title: Milli Məclis — Law No. 1024-VIQD of 21 November 2023 amending the law on the circulation of narcotic drugs
+    type: law
+    title: "Milli Məclis — Law No. 1024-VIQD of 21 November 2023 amending the law on the circulation of narcotic drugs"
     url: https://meclis.gov.az/documents/1024-VIQD.pdf
-  osce2011:
-    title: Permanent Mission of Azerbaijan to the OSCE — Statement PC.DEL/461/11, 20 May 2011
-    url: https://www.osce.org/files/f/documents/4/7/81191.pdf
-  unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
-    url: https://data.unodc.org/datareport/drug-seizure
+  ssr1960:
+    type: law
+    title: "Azerbaijan SSR — Criminal Code of 8 December 1960 (e-Qanun), Articles 226, 226-1 and 227"
+    url: https://e-qanun.az/framework/60497
+    locator: "Adopted 8 December 1960, in force 1 March 1961; Article 227 names Indian, South Manchurian and South Chui hemp."
+  edict1987:
+    type: law
+    title: "Presidium of the Supreme Soviet of the USSR — edict of 22 June 1987 No. 7226-XI amending the 1974 drug edict (Meganorm reprint)"
+    url: https://meganorm.ru/mega_doc/dop1/62/ukaz_prezidiuma_vs_sssr_ot_21_06_1961_o_dalneyshem/0/ukaz_prezidiuma_vs_sssr_ot_22_06_1987_N_7226-XI_o_vnesenii.html
+    locator: "Amended Article 6 (first small-quantity possession without intent to sell draws an administrative penalty; a repeat within a year brings up to two years) and Article 10 (use without a doctor's prescription)."
