@@ -966,6 +966,43 @@ test("no history entry is dated in the future: history is what has happened", ()
   assert.deepEqual(ahead, [], "date a law that applies later by its adoption or entry into force; see docs/DATA-MAINTENANCE.md");
 });
 
+test("country sections and history entries have complete, valid inline citation lists", async () => {
+  const { citeParts, references } = await import("../src/lib/cite.js");
+  const bad = [];
+  const check = (text, keys, resolve, where) => {
+    try {
+      citeParts(text, references(), resolve, keys, where);
+    } catch (error) {
+      bad.push(error.message);
+    }
+  };
+  for (const entry of changes) {
+    check(entry.description, entry.sources.map((_, i) => String(i + 1)), (key) => {
+      const source = entry.sources[Number(key) - 1];
+      return source && [source.title, source.url];
+    }, `changes.yaml: ${entry.id}`);
+  }
+  for (const file of fs.readdirSync("countries", { recursive: true }).filter(f => f.endsWith(".yaml"))) {
+    const profile = y.load(fs.readFileSync(`countries/${file}`, "utf8"));
+    // State files number their shared references across several segments;
+    // national profiles give each cited section its own list of source keys.
+    if (Array.isArray(profile.sources)) continue;
+    const visit = (value, where) => {
+      if (!value || typeof value !== "object") return;
+      if (typeof value.text === "string" && Array.isArray(value.sources)) {
+        check(value.text, value.sources, (key) => {
+          const source = value.sources.includes(key) && profile.sources[key];
+          return source && [source.title, source.url];
+        }, where);
+      }
+      for (const [key, child] of Object.entries(value)) visit(child, `${where}.${key}`);
+    };
+    visit(profile.segments, `countries/${file}: segments`);
+    visit(profile.context, `countries/${file}: context`);
+  }
+  assert.deepEqual(bad, []);
+});
+
 test("every article's inline citations resolve to its own front-matter sources", () => {
   // Article [@n] marks index the article's front-matter `sources`, not the
   // entry's (astro.config.mjs markdownCitations). An article that cites with
