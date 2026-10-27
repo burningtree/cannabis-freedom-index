@@ -19,13 +19,21 @@ segments:
     text: >-
       Article 208 of the Penal Code of 2020 (Law 20-038/AU, promulgated 16 February 2021) punishes
       transporting, holding, offering, transferring, acquiring or unlawfully using narcotics with 10
-      to 15 years in prison and a fine of 10,000,000 to 20,000,000 Comorian francs. The article has
+      to 15 years in prison and a fine of 10,000,000 to 20,000,000 Comorian francs.[@pc2020] The article has
       no lighter tier for personal use. The text uses the word "stupéfiants" and does not name
       cannabis; the earlier code did name hashish and Indian hemp. Cannabis was legal from 1975 to
-      1978 under President Ali Soilih.
+      1978 under President Ali Soilih.[@wiki]
     sources:
       - pc2020
       - wiki
+    currency: KMF
+    penalties:
+      - label: Holding or using narcotics (no personal-use tier)
+        treatment: criminal
+        prison_min: 10 years
+        prison: 15 years
+        fine: 20000000
+        note: Fine of 10,000,000 to 20,000,000 francs; maximum doubles in listed aggravating cases
   cultivation:
     text: >-
       Article 206 punishes illicit production or manufacture of narcotics with 10 to 20 years, and 15
@@ -33,6 +41,12 @@ segments:
       group that grows, makes or supplies narcotics.
     sources:
       - pc2020
+    penalties:
+      - label: Illicit production or manufacture
+        treatment: criminal
+        prison_min: 10 years
+        prison: 20 years
+        note: 15 to 25 years when committed by an organised gang; leading such a group carries life imprisonment
   enforcement:
     text: >-
       The code sets 10 to 15 years for holding or using, with no personal-use tier, and doubles the
@@ -58,6 +72,14 @@ segments:
     sources:
       - pc2020
 context:
+  recreational:
+    text: >-
+      There is no legal recreational market. Holding or using narcotics carries ten to fifteen
+      years in prison and a heavy fine, with no lighter tier for personal use — though cannabis
+      was legal from 1975 to 1978 under President Ali Soilih.[@pc2020,wiki]
+    sources:
+      - pc2020
+      - wiki
   production:
     text: No licensed production.
     sources:
