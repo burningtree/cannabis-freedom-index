@@ -6,11 +6,11 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Slovenia | x | | |
-| Albania | x | | |
-| Kosovo | x | | |
-| Malta | x | | |
-| Estonia | x | | |
+| Slovenia | x | | 57177b6 |
+| Albania | x | | bdcd8e9 |
+| Kosovo | x | | f926373 |
+| Malta | x | | 19cbada |
+| Estonia | x | | 05c8ccb |
 
 ## Estonia (ee) — done 2026-10-28 ~00:10 UTC
 - Profile: recreational + culture (hemp dance, bride custom, Frazer) sections added; products folded (special-application medicines into medical) and deleted; possession table (civil small / criminal supply-small / large 1–10y, €2,400 fine) + cultivation table (unlicensed / licensed hemp); inline citations everywhere; history links (Epidyolex 2019).
