@@ -3,7 +3,7 @@ region: South America
 iso_numeric: 76
 recreational: decriminalised
 medical: limited
-updated: 2026-10-23
+updated: 2026-10-27
 summary: >-
   In 2024 the Supreme Court decriminalised possession of up to 40 g or six female plants, now an
   administrative matter. Medical products are sold in pharmacies; policing remains uneven.
@@ -18,26 +18,53 @@ segments:
   possession:
     text: >-
       In June 2024 the Supreme Court ruled that possessing cannabis for personal use is not a crime,
-      and set a presumption: up to 40 g counts as personal use. It is still prohibited — the
+      and set a presumption: up to 40 g counts as personal use.[@conectas,sechat] It is still prohibited — the
       cannabis is seized and the person receives an administrative measure such as a warning or a
-      mandatory educational course. Police can still treat someone under 40 g as a dealer if there
-      is other evidence, such as scales or packaging.
+      mandatory educational course.[@sechat] Police can still treat someone under 40 g as a dealer if there
+      is other evidence, such as scales or packaging.[@gv] The ruling is traced in the
+      [2024 decision](/history/brazil-supreme-court-2024/).
     sources:
       - conectas
       - sechat
+      - gv
+    penalties:
+      - label: Personal use up to 40 g (Supreme Court 2024)
+        treatment: civil
+        term: Personal use
+        note: Administrative — seizure, warning or educational course; dealer indicia override
+      - label: Possession as trafficking (Law 11.343 article 33)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 15 years
+        note: Gifts can qualify as trafficking
   cultivation:
     text: >-
       The same ruling presumes that up to six female plants are for personal use, so growing them is
       an administrative infraction rather than a crime. It is not a right to grow: plants are
-      seized. Some patients hold individual court orders allowing them to cultivate.
+      seized.[@sechat] Some patients hold individual court orders allowing them to cultivate.[@gv]
     sources:
       - sechat
       - gv
+    penalties:
+      - label: Up to six female plants for personal use (Supreme Court 2024)
+        treatment: civil
+        term: Personal use
+        note: Administrative infraction; plants seized; not a right to grow
+      - label: Unauthorised growing as trafficking (Law 11.343 article 33)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 5 years
+        prison: 15 years
+      - label: Patient growing under court order
+        treatment: legal
+        term: Medical growing
+        note: Individual or collective habeas corpus; 40 associations authorised in 2024
   enforcement:
     text: >-
       Users are no longer criminally punished, but Brazil's drug law is harsh on anyone classed as a
       dealer, and critics note that the line is drawn unevenly, falling hardest on poor and Black
-      Brazilians.
+      Brazilians.[@conectas,gv]
     sources:
       - conectas
       - gv
@@ -45,22 +72,22 @@ segments:
     text: >-
       Offering a drug occasionally, without aiming at profit, to someone the person knows, so that
       the two of them use it together, is a separate crime: detention of six months to one year and
-      a fine of 700 to 1,500 day-fines. Other unauthorised supply, including a gift that does not
+      a fine of 700 to 1,500 day-fines.[@lei] Other unauthorised supply, including a gift that does not
       meet those conditions, can be trafficking even when no money changes hands, with five to
-      fifteen years.
+      fifteen years.[@lei]
     sources:
       - lei
   consumption:
     text: >-
       Use remains an unlawful act subject to administrative measures, not criminal ones. Public use
-      still leads to police stops and seizure.
+      still leads to police stops and seizure.[@gv,sechat]
     sources:
       - gv
       - sechat
   access:
     text: >-
       No adult-use sales. Pharmacies sell registered cannabis products on prescription, and patients
-      can import with authorisation from the health regulator.
+      can import with authorisation from the health regulator.[@anvisa,gv]
     sources:
       - anvisa
       - gv
@@ -70,26 +97,39 @@ context:
     text: >-
       In February 2026 the health regulator published rules allowing companies to cultivate low-THC
       cannabis (0.3% or less) for medical, pharmaceutical and research purposes under special
-      authorisation, after a 2024 high-court order. The cultivation rules took effect on 4 August
-      2026, and patient associations may grow for their members in a supervised trial scheme. No
-      adult-use production.
-    sources:
-      - anvisa
-  products:
-    text: Prescription oils and extracts, mostly CBD-dominant; no legal flower for general sale.
+      authorisation, after a 2024 high-court order.[@anvisa] The cultivation rules took effect on 4 August
+      2026, and patient associations may grow for their members in a supervised trial scheme.[@anvisa] No
+      adult-use production.[@anvisa]
     sources:
       - anvisa
   medical:
     text: >-
-      Doctors can prescribe registered or imported cannabis products; costs are high, and patient
-      associations and court-authorised home growers fill part of the gap.
+      Doctors can prescribe registered or imported cannabis products — prescription oils and
+      extracts, mostly CBD-dominant, with no legal flower for general sale; costs are high, and
+      patient associations and court-authorised home growers fill part of the gap.[@anvisa,gv]
     sources:
       - anvisa
       - gv
+  recreational:
+    text: >-
+      Adult use is decriminalised but not legal: up to 40 g or six female plants draws
+      administrative measures, and there are no lawful sales.[@conectas,sechat] The path ran through
+      the courts — the Planet Hemp jailing in 1997, the unanimous 2011 ruling that marching for
+      legalisation is free expression, and the [2024 possession ruling](/history/brazil-supreme-court-2024/).
+    sources:
+      - conectas
+      - sechat
+  hemp:
+    status: none
+    text: >-
+      No hemp exception operates: growing cannabis outside the medical and research rules is
+      prohibited, and those rules are the only lawful route for low-THC plants.[@anvisa]
+    sources:
+      - anvisa
   consequences:
     text: >-
       Administrative measures do not create a criminal record. The ruling opened the way to review
-      past convictions for small amounts.
+      past convictions for small amounts.[@conectas]
     sources:
       - conectas
   planting:
@@ -101,7 +141,7 @@ context:
       Law 11.343 does not name seeds. It treats sowing or growing plants for a small amount
       for personal use like possession, with a warning, community service or an educational
       course instead of prison (Article 28), and punishes growing without authorisation, or
-      supplying raw material for drugs, as trafficking (Article 33).
+      supplying raw material for drugs, as trafficking (Article 33).[@lei]
     sources:
       - lei
   clubs:
@@ -109,56 +149,83 @@ context:
     text: >-
       Brazil's clubs are patient associations rather than recreational ones. No law licenses
       them to grow; they rely on court orders, usually preventive habeas corpus, obtained one
-      association at a time. A 2024 industry yearbook counted 259 cannabis associations and
+      association at a time.[@sechat40] A 2024 industry yearbook counted 259 cannabis associations and
       three federations, serving about 147,000 patients, roughly a fifth of the country's
-      medical cannabis patients. Only 40 held an individual or collective court authorisation
+      medical cannabis patients.[@sechat40] Only 40 held an individual or collective court authorisation
       to cultivate: 23 in the Southeast, 11 in the Northeast, 4 in the South, 2 in the Centre-
-      West and none in the North. The rest work without that protection.
+      West and none in the North.[@sechat40] The rest work without that protection.[@sechat40]
     sources:
       - sechat40
   black_market:
     text: >-
       Recreational cannabis is supplied entirely by the illegal trade, and marijuana is by far
-      the largest drug by weight that police seize. The federal public-security data system
+      the largest drug by weight that police seize.[@aen24] The federal public-security data system
       recorded 816 tonnes of marijuana seized nationwide between January and August 2024, out
       of 893 tonnes of all drugs, an average of 3.3 tonnes a day and about the same as a year
-      earlier. Three states account for most of it: Paraná with 320 tonnes, Mato Grosso do Sul
-      with 300 and São Paulo with 75.
+      earlier.[@aen24] Three states account for most of it: Paraná with 320 tonnes, Mato Grosso do Sul
+      with 300 and São Paulo with 75.[@aen24]
     sources:
       - aen24
   arrests:
     text: >-
       No count of cannabis arrests was found, but the drug law is a main driver of the world's
       third-largest prison population, which has grown sharply over twenty years as people
-      caught with small amounts were treated as traffickers. The Supreme Court's 2024 ruling
+      caught with small amounts were treated as traffickers.[@gi24] The Supreme Court's 2024 ruling
       that under 40 g of cannabis is presumed personal use could change that: since 2014, 70
-      to 80% of cannabis seizures have been below that threshold. Judges may still classify
+      to 80% of cannabis seizures have been below that threshold.[@gi24] Judges may still classify
       someone as a trafficker on other circumstances, and studies cited by analysts find that
       people from racially discriminated groups are more likely to be treated as traffickers
-      by police.
+      by police.[@gi24]
     sources:
       - gi24
   visitors:
     status: none
     text: >-
       There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. Whatever legal supply exists is medical, for patients with a prescription or
-      registration. The sources behind this profile describe no separate rule for visitors.
+      cannabis.[@anvisa] Whatever legal supply exists is medical, for patients with a prescription or
+      registration.[@gv] The sources behind this profile describe no separate rule for visitors.[@anvisa]
     sources:
       - anvisa
       - gv
   driving:
     status: impairment
     text: >-
-      The Traffic Code has two levels. Driving under the influence of alcohol or any other
+      The Traffic Code has two levels.[@ctbdrive] Driving under the influence of alcohol or any other
       psychoactive substance that causes dependence is a very serious administrative
       infraction: a fine multiplied by ten and a 12-month suspension of the licence, and
-      refusing a test brings the same. It becomes a crime, with six months to three years'
-      detention, only when the driver's psychomotor capacity is altered. For alcohol the code
+      refusing a test brings the same.[@ctbdrive] It becomes a crime, with six months to three years'
+      detention, only when the driver's psychomotor capacity is altered.[@ctbdrive] For alcohol the code
       sets a figure that proves this; for other substances it sets none, so proof rests on
-      signs of impairment, a toxicology test, a clinical exam or witnesses.
+      signs of impairment, a toxicology test, a clinical exam or witnesses.[@ctbdrive]
     sources:
       - ctbdrive
+  culture:
+    text: >-
+      Brazil's cannabis vocabulary is Central African — maconha and diamba are attributed to
+      Angola's Kimbundu, carried with slavery — and their stories are traced in
+      [maconha](/culture/language/maconha/) and [diamba](/culture/language/diamba/).[@duvall19]
+      The street form is prensado, brick weed pressed for bulk transport: bricked Paraguayan
+      cannabis expanded to Chile, Argentina and Uruguay and dominates Brazilian seizures, a supply
+      chain described in [brick weed](/culture/traditions/brick-weed/).[@garat16]
+      Protest takes the streets as the Marcha da Maconha, protected since the Supreme Court ruled
+      unanimously on 15 June 2011 that article 287 must be read with free expression and assembly —
+      history traced in [the march](/culture/traditions/global-marijuana-march/) and the
+      [2011 ruling](/history/brazil-stf-marijuana-march-2011/).[@columbia11]
+      Faith met the law in Acre, where one Santo Daime branch took cannabis as a second sacrament,
+      Santa Maria, renaming every word so it would never be "a drug" — until the
+      [1983 raid](/history/brazil-cinco-mil-raid-1983/) and official renunciation, a story told in
+      [Santa Maria in Santo Daime](/culture/traditions/santa-maria-in-santo-daime/).[@macrae22,labate11]
+      And in rural Maranhão, Saturday diamba circles passed a shared pipe with verses that
+      prohibitionist doctors cited in 1918 to demand a ban, described in
+      [the circles](/culture/traditions/the-diamba-circles/) with
+      [his essay](/history/brazil-iglesias-diamba-essay-1918/).[@souza15]
+    sources:
+      - duvall19
+      - garat16
+      - columbia11
+      - macrae22
+      - labate11
+      - souza15
 sources:
   ctbdrive:
     title: Brazil — Código de Trânsito Brasileiro (Lei 9.503/1997), Articles 165, 165-A and 306
@@ -193,3 +260,39 @@ sources:
   anvisa:
     title: GrowerIQ — Brazil's ANVISA publishes five new cannabis resolutions (2026)
     url: https://groweriq.ca/2026/03/20/anvisa-cannabis-resolutions-2026/
+  duvall19:
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: >-
+      Common names maconha and diamba attributed to Angola's Kimbundu; African heritage
+      via transatlantic slavery; read in the local PDF
+  garat16:
+    title: "Guillermo Garat — Paraguay, The cannabis breadbasket of the Southern Cone, TNI Drug Policy Briefing 46 (2016)"
+    url: https://www.tni.org/files/publication-downloads/drug_policy_briefing_46.pdf
+    locator: >-
+      Bricked Paraguayan cannabis expanded to Chile, Argentina, Uruguay; principal object
+      of seizures in all four countries; read via pdftotext
+  columbia11:
+    title: "Columbia Global Freedom of Expression — Prosecutor General v. President of the Republic (ADPF 187)"
+    url: https://globalfreedomofexpression.columbia.edu/cases/prosecutor-general-v-president-republic/
+    locator: >-
+      15 June 2011 unanimous opinion (Celso de Mello); art 287 read with expression and
+      assembly; peaceful legalisation marches not crimes
+  macrae22:
+    title: "Edward MacRae — The Religious Uses of Licit and Illicit Psychoactive Substances in a Branch of the Santo Daime Religion (Chacruna, 2022)"
+    url: https://chacruna.net/the-religious-uses-of-licit-and-illicit-psychoactive-substances-in-a-branch-of-the-santo-daime-religion/
+    locator: Santa Maria naming; marianos; never "a drug"
+  labate11:
+    title: "Beatriz Labate and Kevin Feeney — O processo de regulamentação da ayahuasca no Brasil e na esfera internacional (Periferia, 2011)"
+    url: https://www.redalyc.org/pdf/5521/552156375008.pdf
+    locator: >-
+      ICEFLU adopted sacramental Santa Maria in the 1970s; pressured, officially declared
+      no further sacramental use; read via pdftotext
+  souza15:
+    title: "Jorge Emanuel Luz de Souza — Sonhos da diamba (EDUFBA/CETAD-UFBA, 2015)"
+    url: https://tile.loc.gov/storage-services/master/gdc/gdcebookspublic/20/20/71/75/89/2020717589/2020717589.pdf
+    locator: >-
+      Clube de diambistas label; condemnatory medicine from Iglésias 1918; read via pdftotext

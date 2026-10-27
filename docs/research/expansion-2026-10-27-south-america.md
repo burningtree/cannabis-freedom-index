@@ -25,3 +25,9 @@ None busy at batch start (dirty files were fj/hk/id/jp/kr/my/ru/tw + test + sour
 - History: already complete (19 entries) — none added. Culture skipped: no atlas entries and no Duvall Ecuador material found.
 - Article: ecuador-medical-2019 (score-moving, from PBP).
 - Audit 0/0, history+answers tests pass, build 4885 pages, HTML verified (3 pen tables, 20 history links).
+
+## Brazil (br) — done 2026-10-27 ~22:33 UTC
+- Profile: recreational + hemp (none) + 5-sentence culture sections added; products folded into medical; penalties: 2 possession steps (civil 40g, 5–15 trafficking), 3 cultivation steps (civil 6 plants, 5–15 trafficking, legal court-ordered growing); inline citations everywhere (wiki untouched — none remained); history links (2024 ruling, 2011 march ruling, 1983 raid, 1918 essay).
+- Culture sourced fresh: Duvall Kimbundu/macohna-diamba (local PDF verified), Garat TNI 46 (Paraguay brick trade, pdftotext), Columbia GFE (ADPF 187 2011 unanimous), MacRae/Chacruna (Santa Maria naming), Labate/Feeney redalyc (ICEFLU renunciation), Souza LoC PDF (diamba clubs, Iglésias 1918).
+- No history entries added (51 entries, no empty decades). No article (1976 entry's book not local; coverage already 13 with articles).
+- Audit 0/0, history+answers tests pass, build 4889 pages, HTML verified (2 pen tables, 52 history links, 6 atlas culture links).
