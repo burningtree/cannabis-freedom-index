@@ -589,3 +589,17 @@ test('Medical labels require a patient route, not research or export licensing (
  const seo=fs.readFileSync(path.join(root,'src/lib/seo.js'),'utf8');
  assert.match(seo,/No patient cannabis treatment route verified/);
 });
+
+// Issue #215
+test('New Mexico keeps product-specific public, gift and felony quantities (#215)',()=>{
+ const x=country('us/nm');
+ for(const text of [x.summary,x.segments.possession,x.segments.sharing,x.answers.carry.text]) {
+  assert.match(text,/16 g/);assert.match(text,/800 mg/);
+ }
+ assert.match(x.segments.enforcement,/64 g.*3,200 mg/);
+ assert.match(x.segments.enforcement,/exact extract and edible boundary unclear/);
+ assert.match(x.segments.possession,/private residence out of public view/);
+ assert.match(x.segments.possession,/medical patients.*separate allowances/);
+ assert.match(x.segments.possession,/homegrown harvest.*moving residence/);
+ assert.match(x.answers.caught.text,/felonies.*extract and edible/);
+});
