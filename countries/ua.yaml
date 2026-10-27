@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 804
 recreational: decriminalised
 medical: limited
-updated: 2026-10-26
+updated: '2026-10-27'
 summary: >-
   Possession of up to 5 g is an administrative offence. Medical cannabis became legal in August
   2024; the first patients received prescribed capsules on 11 June 2026.
@@ -23,18 +23,51 @@ scores:
 segments:
   possession:
     text: >-
-      Small personal possession without intent to sell is an administrative offence: a fine of 50
-      to 100 non-taxable minimum incomes, 20 to 60 hours of community work or up to fifteen days’
+      Small personal possession without intent to sell is an administrative offence: a fine of 50 to
+      100 non-taxable minimum incomes, 20 to 60 hours of community work or up to fifteen days’
       administrative arrest; voluntary surrender can remove liability.[@admin44_current] Above the
       small amount, ordinary criminal possession carries a fine of 1,000 to 3,000 non-taxable
       minimums, corrective work for up to two years, probation supervision for up to five years or
       restriction of liberty for that period.[@possession_current] Large quantities, a group
       agreement or offending within a year after conviction under the same article can bring a
       larger fine or up to three years in prison; especially large quantities or involving a minor
-      carry five to eight years.[@possession_current]
+      carry five to eight years.[@possession_current] The small ceiling is 5 g of dried cannabis,
+      0.5 g of resin or 0.3 g of extract; cannabis reaches the large tier at 500 g and the
+      especially large tier at 2,500 g.[@quantities] One fine unit here is UAH17, giving ordinary
+      administrative fines of UAH850–1,700 and ordinary criminal fines of
+      UAH17,000–51,000.[@fineunit,admin44_current,possession_current]
     sources:
       - admin44_current
       - possession_current
+      - quantities
+      - fineunit
+    currency: UAH
+    penalties:
+      - upto: 5 g
+        treatment: civil
+        term: Small amount, Article 44
+        prison: 15 days
+        fine_min: 850
+        fine: 1700
+        note: Dried cannabis; fine, community work or detention
+      - label: Above small but below large amount
+        treatment: criminal
+        term: Article 309(1)
+        fine_min: 17000
+        fine: 51000
+        note: Fine, corrective work, probation or restriction of liberty; no imprisonment in this tier
+      - label: Large amount
+        treatment: criminal
+        term: Article 309(2)
+        prison: 3 years
+        fine_min: 34000
+        fine: 85000
+        note: Prison or a fine; statutory quantity threshold is inclusive
+      - label: Especially large amount
+        treatment: criminal
+        term: Article 309(3)
+        prison_min: 5 years
+        prison: 8 years
   cultivation:
     text: >-
       Ordinary unlawful growing below ten cannabis plants falls in the administrative band: a fine
@@ -42,74 +75,138 @@ segments:
       are a fine of 100 to 500 non-taxable minimum incomes, probation supervision for up to three
       years or restriction of liberty for that period.[@growing_current] Fifty or more plants,
       specified prior drug crimes or group growing for sale can bring three to seven years in
-      prison.[@growing_current]
+      prison.[@growing_current] The administrative fine is eighteen to one hundred non-taxable
+      minimums, UAH306–1,700; the ordinary criminal fine is
+      UAH1,700–8,500.[@grow2009,growing_current,fineunit]
     sources:
       - grow2009
       - growing_current
+      - fineunit
+    currency: UAH
+    penalties:
+      - upto: 9 plants
+        treatment: civil
+        term: Article 106-2
+        fine_min: 306
+        fine: 1700
+        note: Plants confiscated
+      - over: 9 plants
+        upto: 49 plants
+        treatment: criminal
+        term: Article 310(1)
+        fine_min: 1700
+        fine: 8500
+        note: Fine, probation or restriction of liberty; no imprisonment in this tier
+      - over: 49 plants
+        treatment: criminal
+        term: Article 310(2)
+        prison_min: 3 years
+        prison: 7 years
   enforcement:
     text: >-
-      Even small personal possession can bring up to fifteen days’ administrative arrest,
-      alongside fine and community-work options.[@admin44_current] Small ordinary grows carry an
-      administrative fine and confiscation; criminal possession and growing have separate
-      sentencing ranges, including probation, restriction of liberty and imprisonment in
-      aggravated cases.[@grow2009, possession_current, growing_current]
+      Even small personal possession can bring up to fifteen days’ administrative arrest, alongside
+      fine and community-work options.[@admin44_current] Small ordinary grows carry an
+      administrative fine and confiscation; criminal possession and growing have separate sentencing
+      ranges, including probation, restriction of liberty and imprisonment in aggravated
+      cases.[@grow2009, possession_current, growing_current]
     sources:
       - admin44_current
       - grow2009
       - possession_current
       - growing_current
   sharing:
-    text: Any supply is a criminal offence.
+    text: >-
+      Unauthorised supply carries four to eight years in prison under Article 307.[@supply] Large
+      quantities, specified places, involvement of a minor and other aggravating circumstances raise
+      the range to six to ten years with confiscation; organised-group cases, especially large
+      quantities or involvement of a young child carry nine to twelve years with
+      confiscation.[@supply]
     sources:
-      - wiki
-      - cms
+      - supply
+    penalties:
+      - label: Ordinary unlawful supply
+        treatment: criminal
+        term: Article 307(1)
+        prison_min: 4 years
+        prison: 8 years
+      - label: Large quantity or other statutory aggravation
+        treatment: criminal
+        term: Article 307(2)
+        prison_min: 6 years
+        prison: 10 years
+        note: Confiscation of property
+      - label: Especially large quantity, organised group or young child
+        treatment: criminal
+        term: Article 307(3)
+        prison_min: 9 years
+        prison: 12 years
+        note: Confiscation of property
   consumption:
     text: >-
       Drug use in private is not itself a criminal offence; possession remains separately
       punishable.[@use1991, euda_law] Public or group use at educational, sporting and cultural
-      venues, and other places where crowds gather, is a crime under Article 316: up to four
-      years of restriction of liberty or three years in prison. Repetition or specified previous
-      drug crimes can bring three to five years in prison.[@public_use]
+      venues, and other places where crowds gather, is a crime under Article 316: up to four years
+      of restriction of liberty or three years in prison. Repetition or specified previous drug
+      crimes can bring three to five years in prison.[@public_use]
     sources:
       - use1991
       - euda_law
       - public_use
+    penalties:
+      - label: Public or group use at specified venues
+        treatment: criminal
+        term: Article 316(1)
+        prison: 3 years
+        note: Restriction of liberty is an alternative
+      - label: Repeat public use or specified previous drug offence
+        repeat: 2
+        treatment: criminal
+        term: Article 316(2)
+        prison_min: 3 years
+        prison: 5 years
   access:
     text: >-
-      Medical dispensing began on 11 June 2026. The Health Ministry reported six operating
-      pharmacies in six cities; the wider licensing count does not mean all sites stock medicines.
-      Patients need an electronic prescription valid for ten days. Adult-use supply remains illegal.
+      Medical dispensing began on 11 June 2026.[@dispensing2026] The Health Ministry reported six
+      operating pharmacies in six cities; the wider licensing count does not mean all sites stock
+      medicines.[@dispensing2026] Patients need an electronic prescription valid for ten
+      days.[@dispensing2026] Adult-use supply remains illegal.[@supply]
     sources:
       - dispensing2026
-
+      - supply
 context:
   production:
     status: medical
     text: >-
       The 2024 law permits licensed, quota-controlled indoor cultivation of medical cannabis from
-      certified seed under plant-by-plant electronic tracking. Industrial hemp up to 0.3% THC is
-      grown through the separate registered commercial channel.
+      certified seed under plant-by-plant electronic tracking.[@narcotics] Industrial hemp meeting
+      the transitional 0.2% THC limit is grown through the separate registered commercial
+      channel.[@narcotics,hemptransition]
     sources:
       - narcotics
-  products:
-    text: >-
-      The first dispensing involved hard delta-9 THC capsules with an initial 5 mg dose. The
-      framework covers registered or pharmacy-compounded medicines; it does not establish retail
-      flower availability.
-    sources:
-      - dispensing2026
-      - narcotics
+      - hemptransition
   medical:
     text: >-
-      The first three patients in Vinnytsia received prescribed delta-9 THC capsules on 11 June
-      2026: one person with multiple sclerosis and two wounded veterans with neuropathic or phantom
-      pain. Eligibility and prescribing remain tightly controlled.
+      Patients began receiving prescribed THC capsules on [11 June
+      2026](/history/ukraine-first-medical-dispensing-2026/), initially through six pharmacies in
+      six cities.[@dispensing2026] The first three patients included a woman with multiple sclerosis
+      and two wounded veterans with neuropathic or phantom pain.[@dispensing2026] The ten-day
+      electronic prescription specifies the formulation and dose; pharmacies need the relevant
+      licences and compounding quotas.[@dispensing2026] The Health Ministry continued preparing
+      digital tools for wider pharmacy compounding in [July
+      2026](/history/ukraine-medical-digital-tools-2026/).[@digital26]
     sources:
       - dispensing2026
+      - digital26
   consequences:
-    text: Administrative offences do not create a criminal record.
+    text: >-
+      Small personal possession is handled under the administrative code, while larger amounts can
+      result in a criminal conviction.[@admin44_current,possession_current] Voluntary surrender can
+      exempt the administrative offence.[@admin44_current] Someone who voluntarily enters treatment
+      for drug dependence can be exempted from the ordinary criminal possession offence under
+      Article 309(4).[@possession_current]
     sources:
-      - wiki
+      - admin44_current
+      - possession_current
   planting:
     seeds: grey
     seeds_trade: regulated
@@ -129,38 +226,40 @@ context:
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and no law provides for them: any supply of cannabis is a
-      criminal offence.
+      Supplying cannabis to other adults remains a crime, including outside the pharmacy
+      route.[@supply] Private collective growing has no recreational exemption from the cultivation
+      offence.[@growing_current]
     sources:
-      - wiki
-      - cms
+      - supply
+      - growing_current
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone.[@narcotics] Small personal possession without intent
-      to sell can bring a fine, community work or up to fifteen days’ administrative
+      There is no legal recreational supply for anyone.[@narcotics] Small personal possession
+      without intent to sell can bring a fine, community work or up to fifteen days’ administrative
       arrest.[@admin44_current] Above the small amount, possession is a criminal offence with
       penalties that depend on quantity and aggravating circumstances.[@possession_current]
+      Travellers may carry prescribed cannabis medicines for personal use within the amount covered
+      by their prescription.[@patientfaq]
     sources:
       - narcotics
       - admin44_current
       - possession_current
+      - patientfaq
   driving:
     status: impairment
     text: >-
-      Administrative Code article 130(1) covers driving in a state of drug
-      intoxication and refusal of the prescribed examination. Official 2026 appellate
-      case summaries confirm a UAH17,000 fine and one year's loss of driving rights
-      for the ordinary first-offence provision. A February case upheld a drug-driving
-      conviction, treating the intoxication finding, rather than drug type or quantity,
-      as decisive. A September ruling set aside another conviction: a positive rapid
-      test lacked mandatory laboratory confirmation and the medical report had other
-      procedural defects. These case outcomes should not be read as a universal rule
-      that any positive screening result proves the offence. Suspected drug
-      intoxication is examined at a health facility under article 266 and the joint
-      2015 Instruction; testing and medical evidence matter. A July appellate summary
-      separately confirms that a properly established refusal can attract article 130
-      liability without proving intoxication. No numeric THC allowance, general
+      Administrative Code article 130(1) covers driving in a state of drug intoxication and refusal
+      of the prescribed examination. Official 2026 appellate case summaries confirm a UAH17,000 fine
+      and one year's loss of driving rights for the ordinary first-offence provision. A February
+      case upheld a drug-driving conviction, treating the intoxication finding, rather than drug
+      type or quantity, as decisive. A September ruling set aside another conviction: a positive
+      rapid test lacked mandatory laboratory confirmation and the medical report had other
+      procedural defects. These case outcomes should not be read as a universal rule that any
+      positive screening result proves the offence. Suspected drug intoxication is examined at a
+      health facility under article 266 and the joint 2015 Instruction; testing and medical evidence
+      matter. A July appellate summary separately confirms that a properly established refusal can
+      attract article 130 liability without proving intoxication. No numeric THC allowance, general
       medical-cannabis defence or complete repeat-offence tariff was established here.
     sources:
       - drugappeal2026
@@ -168,29 +267,52 @@ context:
       - refusal2026
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 2,061 kg of herbal
-      cannabis seized in 2024, against 1,794 kg in 2023, and 1 kg of cannabis resin seized
-      in 2024, against 3.1 kg in 2023. The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across
-      borders.
+      Figures reported by the government to the UN drugs office record 2,061 kg of herbal cannabis
+      seized in 2024, against 1,794 kg in 2023, and 1 kg of cannabis resin seized in 2024, against
+      3.1 kg in 2023. The UN publishes them as kilogram equivalents, and countries count seizures
+      differently, so the figures are not comparable across borders.
     sources:
       - unodc_szr
   arrests:
     text: >-
-      A data analysis by Texty.org.ua, drawing on court statistics and the National
-      Police's annual report, found more than 20,000 proceedings in 2024 under article 309
-      of the Criminal Code, possession without intent to sell, against about 17,000 under
-      article 307 for sale. Over 2014 to 2024 about 106,000 people were convicted under
-      article 309, of whom more than 43,000 were released from punishment; the most common
-      sentence is a fine, and convictions for possession were almost eight times as
-      frequent as for sale. One in four servicemen convicted in 2024 was convicted of a
-      drug offence, 95 per cent of them under article 309. The figures cover all drugs.
+      A data analysis by Texty.org.ua, drawing on court statistics and the National Police's annual
+      report, found more than 20,000 proceedings in 2024 under article 309 of the Criminal Code,
+      possession without intent to sell, against about 17,000 under article 307 for sale. Over 2014
+      to 2024 about 106,000 people were convicted under article 309, of whom more than 43,000 were
+      released from punishment; the most common sentence is a fine, and convictions for possession
+      were almost eight times as frequent as for sale. One in four servicemen convicted in 2024 was
+      convicted of a drug offence, 95 per cent of them under article 309. The figures cover all
+      drugs.
     sources:
       - texty25
+  recreational:
+    text: >-
+      Adults have no legal recreational shop, and supplying cannabis remains a crime.[@supply] Small
+      possession can bring administrative detention; the dried-plant ceiling is 5 g, with lower
+      ceilings for resin and extracts.[@admin44_current,quantities] The [medical
+      law](/history/ukraine-medical-2024/) operates through licensed medicines and
+      prescriptions.[@narcotics]
+    sources:
+      - supply
+      - admin44_current
+      - quantities
+      - narcotics
+  hemp:
+    status: strict
+    text: >-
+      Industrial hemp remains subject to a 0.2% THC ceiling in dried straw during the transitional
+      period.[@hemptransition] The scheduled ceiling rises to 0.3% on 16 February
+      2027.[@hemptransition] Commercial industrial cultivation uses the separate registered route
+      under the narcotics law, while medical cultivation requires licensing and
+      tracking.[@narcotics]
+    sources:
+      - hemptransition
+      - narcotics
 sources:
   dispensing2026:
     title: Ukraine Ministry of Health — First dispensing of medical cannabis medicines, 11 June 2026
-    url: https://moz.gov.ua/en/in-ukraine-the-first-dispensing-of-medical-cannabis-products-has-been-carried-out
+    url: >-
+      https://moz.gov.ua/en/in-ukraine-the-first-dispensing-of-medical-cannabis-products-has-been-carried-out
   admin44_current:
     type: law
     title: Ukraine Administrative Offences Code — Article 44, Rada text reproduced by Advoks Global
@@ -223,8 +345,8 @@ sources:
   use1991:
     type: law
     title: >-
-      Ukrainian SSR Presidium — Decree 663-XII, original edition of 28 January 1991, reproduced
-      from the Rada portal
+      Ukrainian SSR Presidium — Decree 663-XII, original edition of 28 January 1991, reproduced from
+      the Rada portal
     url: https://zakononline.ua/documents/show/155961___155961
     year: 1991
     locator: >-
@@ -253,17 +375,27 @@ sources:
     title: Ukraine — Criminal Code, Article 310 (kodeksy.com.ua)
     url: https://kodeksy.com.ua/kriminal_nij_kodeks_ukraini/statja-310.htm
   drugappeal2026:
-    title: "Ukraine judiciary — Khmelnytskyi appellate drug-driving case summary, 25 February 2026"
+    title: Ukraine judiciary — Khmelnytskyi appellate drug-driving case summary, 25 February 2026
     url: https://www.supreme.court.gov.ua/press/news/1977773/
-    locator: "Case 688/3701/25; article 130(1), UAH17,000 and one-year ban; intoxication rather than drug quantity"
+    locator: >-
+      Case 688/3701/25; article 130(1), UAH17,000 and one-year ban; intoxication rather than drug
+      quantity
   drugtesting2026:
-    title: "Rivne Court of Appeal — laboratory confirmation and defective rapid-test evidence, 21 September 2026"
+    title: >-
+      Rivne Court of Appeal — laboratory confirmation and defective rapid-test evidence, 21
+      September 2026
     url: https://rva.court.gov.ua/sud4815/pres-centr/general/2099738/
-    locator: "Article 266; joint Instruction 1452/735 of 9 November 2015; Cabinet Resolution 1103; conviction overturned"
+    locator: >-
+      Article 266; joint Instruction 1452/735 of 9 November 2015; Cabinet Resolution 1103;
+      conviction overturned
   refusal2026:
-    title: "Ukraine judiciary — Kherson Court of Appeal on refusal of intoxication examination, 30 July 2026"
+    title: >-
+      Ukraine judiciary — Kherson Court of Appeal on refusal of intoxication examination, 30 July
+      2026
     url: https://court.gov.ua/press/news/2073041
-    locator: "Case 766/152/26; appellate decision 13 July 2026; refusal independent of proof of intoxication; alcohol facts distinguished from general rule"
+    locator: >-
+      Case 766/152/26; appellate decision 13 July 2026; refusal independent of proof of
+      intoxication; alcohol facts distinguished from general rule
   kupap:
     title: Кодекс України про адміністративні правопорушення, Articles 44 and 106-2 (Verkhovna Rada)
     url: https://zakon.rada.gov.ua/laws/show/80731-10
@@ -283,8 +415,8 @@ sources:
     url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/ukraine
   narcotics:
     title: >-
-      Law of Ukraine on Narcotic Drugs, Psychotropic Substances and Precursors, Articles 1, 12 and 15
-      (Verkhovna Rada)
+      Law of Ukraine on Narcotic Drugs, Psychotropic Substances and Precursors, Articles 1, 12 and
+      15 (Verkhovna Rada)
     url: https://zakon.rada.gov.ua/laws/show/60/95-%D0%B2%D1%80
   seed_order:
     title: Cabinet of Ministers Resolution No. 776 of 21 June 2024 (Verkhovna Rada)
@@ -296,8 +428,38 @@ sources:
     title: Ministry of Health of Ukraine — Electronic prescriptions for medical-cannabis medicines
     url: https://moz.gov.ua/uk/elektronnij-recept-na-likarski-zasobi-na-osnovi-medichnogo-kanabisu
   unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    title: >-
+      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
+      Report data)
     url: https://data.unodc.org/datareport/drug-seizure
   texty25:
-    title: "Texty.org.ua — Імітація наркоборотьби: чому правоохоронна система карає споживачів, а не продавців (17 July 2025)"
-    url: https://texty.org.ua/projects/115496/imitaciya-narkoborotby-chomu-pravoohoronna-systema-karaye-spozhyvachiv-a-ne-prodavciv/
+    title: >-
+      Texty.org.ua — Імітація наркоборотьби: чому правоохоронна система карає споживачів, а не
+      продавців (17 July 2025)
+    url: >-
+      https://texty.org.ua/projects/115496/imitaciya-narkoborotby-chomu-pravoohoronna-systema-karaye-spozhyvachiv-a-ne-prodavciv/
+  quantities:
+    title: Ukraine Health Ministry — Order 188, drug quantity tables (consolidated 2 June 2026)
+    url: https://zakon.rada.gov.ua/laws/show/z0512-00
+    locator: >-
+      Table 1: cannabis 5/500/2500 g, resin 0.5/50/500 g, extracts 0.3/5/100 g; dry-weight
+      determination
+  fineunit:
+    title: Ukraine State Tax Service — non-taxable minimum income for fines
+    url: https://zir.tax.gov.ua/docs/stavki/%D0%94%D0%BE%D0%B4%D0%B0%D1%82%D0%BE%D0%BA4.pdf
+  supply:
+    title: Ukraine Criminal Code — Article 307, Rada text reproduced by Advoks Global
+    url: https://advoksglobal.com/ua/uk/law/criminal-code/article-307/
+  hemptransition:
+    title: >-
+      Ukraine Cabinet — Resolution 770, controlled-substance schedules and industrial-hemp
+      transition
+    url: https://zakon.rada.gov.ua/laws/show/770-2000-%D0%BF
+    locator: 'Table I, List 3 note: 0.2% in dried straw until 16 February 2027, then 0.3%'
+  digital26:
+    title: Ukraine Health Ministry — Preparing digital tools for medical cannabis, 21 July 2026
+    url: >-
+      https://moz.gov.ua/uk/cifrovi-instrumenti-dlya-roboti-z-likami-na-osnovi-medichnogo-kanabisu-perevirte-svoyu-gotovnist-do-vikoristannya
+  patientfaq:
+    title: Ukraine Ministry of Health — Medical cannabis, patient questions and answers
+    url: https://moz.gov.ua/uk/medichnij-kanabis

@@ -76,3 +76,6 @@ Chosen from `country-gaps.cjs --rank 25 --region Europe`; profiles checked afres
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Russia | Four penalty tables; recreational, hemp and culture sections; products folded; production status corrected to hemp; Wikipedia-only medical/consequences/clubs/enforcement replaced; May 2026 sentencing proposal recorded | 1950s gap; further enforcement statistics and research/genetics; first build blocked by another contributor’s invalid Namibia citation; retry follows | This country commit |
+| Ukraine | Four penalty tables; recreational/hemp sections; 0.2% transitional hemp ceiling corrected; products folded into patient access; July 2026 digital rollout entry; 2026 dispensing article | 1940s–1950s gaps, 1934 article and culture links remain; numeric quantity endpoints kept out of ambiguous inclusive table ladders | This country commit |
+
+Russia and Ukraine verified in the successful 4,908-page build (27 October); both audits report zero errors/warnings. Russia proposal history was picked up by another contributor’s shared-history commit before the profile commit. Shared build retries were required; no other contributor’s files were changed.
