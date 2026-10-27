@@ -26,17 +26,33 @@ segments:
   possession:
     text: >-
       The 2004 drug law makes unauthorised possession an offence carrying a maximum FJ$1 million fine,
-      life imprisonment, or both. The 2012 Sulua court guidelines favour fines, community service,
+      life imprisonment, or both.[@act2004] The 2012 Sulua court guidelines favour fines, community service,
       counselling or discharge with a warning for up to 100 g, reserving suspended or short prison terms
       for the worst cases. Higher weight bands run from one to three years, three to seven years and
-      seven to fourteen years. The law signed on 2 October 2026 sets a separate personal-use offence for
+      seven to fourteen years.[@seru] The law signed on 2 October 2026 sets a separate personal-use offence for
       cannabis plant material, with a maximum FJ$500 fine or three months in prison, or both, and
-      restricts custody to prior-conviction or exceptional cases; it provides for commencement by
-      ministerial Gazette notice.
+      restricts custody to prior-conviction or exceptional cases; at 28 g a rebuttable presumption
+      of supply begins.[@act2026] It provides for commencement by ministerial Gazette
+      notice.[@act2026]
     sources:
       - act2004
       - seru
       - act2026
+    currency: FJD
+    penalties:
+      - upto: 28 g
+        treatment: criminal
+        prison: 3 months
+        fine: 500
+        note: Diversion into support programmes; custody only with prior convictions or in exceptional cases; 2026 Act commences by Gazette notice
+      - over: 28 g
+        treatment: criminal
+        term: Presumed supply
+        note: Rebuttable presumption; penalty then depends on the supply provisions
+      - label: Unauthorised possession under the 2004 Act
+        treatment: criminal
+        fine: 1000000
+        note: Maximum FJ$1 million fine, life imprisonment, or both, until the 2026 Act replaces the 2004 Act
   cultivation:
     text: >-
       Unauthorised cannabis cultivation is an offence. The 2023 Seru guidelines combine plant count with
@@ -79,6 +95,22 @@ segments:
     sources:
       - act2004
 context:
+  recreational:
+    text: >-
+      Recreational possession, cultivation and supply are criminal offences with no legal
+      market.[@act2004] The October 2026 law creates a separate personal-use offence for cannabis
+      plant material — at most a FJ$500 fine or three months in prison — with diversion into
+      support programmes, but it commences only by ministerial Gazette notice.[@act2026]
+    sources:
+      - act2004
+      - act2026
+  hemp:
+    text: >-
+      Hemp and plant parts derived from it at no more than 1% THC are excluded from the schedule’s
+      references to the cannabis plant; a person claiming the exemption in a prosecution bears
+      the burden of proving it.[@hemp2022]
+    sources:
+      - hemp2022
   production:
     text: >-
       The 2022 amendment excludes hemp and hemp-derived plant parts at no more than 1% THC from the
