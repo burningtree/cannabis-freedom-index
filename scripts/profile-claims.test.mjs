@@ -542,3 +542,13 @@ test('Arizona distinguishes legal and petty concentrate caps and gift conditions
  assert.match(az.segments.possession,/medical patients.*separate statutory protections/);
  assert.doesNotMatch(az.segments.possession,/more than 2.5 oz is a felony/);
 });
+
+// Issue #212
+test('Maryland preserves all three legal and civil product bands and gift limits (#212)',()=>{
+ const md=country('us/md');
+ for(const text of [md.summary,md.segments.possession,md.segments.sharing,md.answers.carry.text])for(const cap of ['1.5 oz','12 g','750 mg'])assert.ok(text.includes(cap),cap);
+ for(const cap of ['2.5 oz','20 g','1,250 mg'])assert.ok(md.answers.caught.text.includes(cap),cap);
+ assert.match(md.segments.possession,/combined allowance/);
+ assert.match(md.segments.sharing,/reciprocal transaction/);
+ assert.match(md.segments.cultivation,/qualifying medical patient.*four/s);
+});
