@@ -45,3 +45,8 @@ SA rewrite, so this batch makes no history-entry edits; history additions are de
 | Zimbabwe (zw) | | | |
 | Malawi (mw) | | | |
 | Namibia (na) | | | |
+
+## 2026-10-27 ~21:50 UTC — zw.yaml answers.culture incident (resolved)
+- After my zw rewrite, an invalid `answers.culture` block (verbatim copy of my context.culture text) was found in countries/zw.yaml and broke `npm run build` (`Unrecognized key: "culture"`).
+- User confirmed no other agent is editing Zimbabwe; treated the block as my own artifact and deleted it, keeping answers.buy.
+- Build passes again after removal; zw verification re-run clean.

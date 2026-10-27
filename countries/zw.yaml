@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 716
 recreational: illegal
 medical: none
-updated: '2026-10-27'
+updated: 2026-10-27
 summary: >-
   Recreational cannabis remains criminalised. The criminal code provides a fine, up to five years in
   prison, or both for unlawful possession, use or personal cultivation. Medical production and industrial
@@ -19,100 +19,149 @@ segments:
   possession:
     text: >-
       Section 157 of the criminal code punishes unlawful acquisition or possession with a fine up to
-      level ten, up to five years in prison, or both. Where addiction is established, a court may order
-      treatment in addition to or instead of another sentence. In July 2026 prosecutors reported an
-      effective four-year term for possession of 19.49 kg.
+      level ten, up to five years in prison, or both.[@code] Where addiction is established, a court
+      may order treatment in addition to or instead of another sentence.[@code] In July 2026
+      prosecutors reported an effective four-year term for possession of 19.49 kg, as [that
+      report](/history/zimbabwe-dagga-prison-report-2026/) records.[@npa2026]
     sources:
       - code
       - npa2026
+    penalties:
+      - label: Unlawful acquisition or possession (section 157)
+        treatment: criminal
+        term: Possession
+        prison: 5 years
+        note: Fine up to level ten, or both. Treatment possible if addicted
   cultivation:
     text: >-
-      Unlawful growing for personal consumption falls under section 157, with a fine up to level ten, up
-      to five years in prison, or both. Growing for dealing falls under section 156, whose ordinary
-      maximum is fifteen years, with a fine alone or alongside imprisonment also available. Medicinal
-      production and industrial hemp have separate licence and permit routes.
+      Unlawful growing for personal consumption falls under section 157, with a fine up to level ten,
+      up to five years in prison, or both.[@code] Growing for dealing falls under section 156, whose
+      ordinary maximum is fifteen years, with a fine alone or alongside imprisonment also
+      available.[@code] Medicinal production and industrial hemp have separate licence and permit
+      routes.[@si62,hemp19,hemp20]
     sources:
       - code
       - si62
       - hemp19
       - hemp20
+    penalties:
+      - label: Growing for own consumption (section 157)
+        treatment: criminal
+        term: Personal cultivation
+        prison: 5 years
+        note: Fine up to level ten, or both. Treatment possible if addicted
+      - label: Growing for dealing (section 156)
+        treatment: criminal
+        term: Unlicensed cultivation for supply
+        prison: 15 years
+        note: Fine alone or alongside imprisonment also available
   enforcement:
     text: >-
       A National Prosecuting Authority bulletin dated 17 July 2026 reported that Clever Makwarimba
       received an effective four-year sentence for unlawful possession of 19.49 kg of cannabis after a
-      roadside bag search. It is a dated example of custody under the cannabis prohibition.
+      roadside bag search.[@npa2026] It is a dated example of custody under the cannabis
+      prohibition.[@npa2026] Courts may also order treatment where addiction is
+      established.[@code]
     sources:
       - npa2026
+      - code
   sharing:
     text: >-
-      Unlawful supply, delivery or distribution falls under the criminal code’s dealing offence, with a
-      fine, up to fifteen years in prison, or both. The special aggravated-dealing tier expressly
-      excludes cannabis plant, prepared cannabis and cannabis resin.
+      Unlawful supply, delivery or distribution falls under the criminal code's dealing offence, with a
+      fine, up to fifteen years in prison, or both.[@code] The special aggravated-dealing tier expressly
+      excludes cannabis plant, prepared cannabis and cannabis resin.[@code]
     sources:
       - code
+    penalties:
+      - label: Unlawful dealing (section 156)
+        treatment: criminal
+        term: Dealing
+        prison: 15 years
+        note: Fine, or both. Aggravated tier excludes cannabis
   consumption:
     text: >-
       Section 157 expressly criminalises unlawfully ingesting, smoking or otherwise consuming a dangerous
-      drug, including cannabis. It provides a fine up to level ten, up to five years in prison, or both,
-      with a possible treatment order where addiction is established.
+      drug, including cannabis.[@code] It provides a fine up to level ten, up to five years in prison, or
+      both, with a possible treatment order where addiction is established.[@code]
     sources:
       - code
+    penalties:
+      - label: Ingesting, smoking or consuming (section 157)
+        treatment: criminal
+        term: Drug use
+        prison: 5 years
+        note: Fine up to level ten, or both. Treatment possible if addicted
   access:
     text: >-
-      Recreational retail supply is prohibited. Medicinal and scientific production is licensed
-      separately; the medicines regulator also opened applications for hemp-based CBD complementary
-      medicines in 2022.
+      Recreational retail supply is prohibited.[@code] Medicinal and scientific production is licensed
+      separately under the [2018 regulations](/history/zimbabwe-medical-2018/); the medicines regulator
+      also opened applications for hemp-based CBD complementary medicines in 2022.[@si62,mcaz2022]
     sources:
       - code
       - si62
       - mcaz2022
 context:
+  recreational:
+    text: >-
+      Cannabis is prohibited: unlawful acquisition, possession, use and personal growing carry a fine
+      up to level ten, up to five years, or both, with treatment possible where addiction is
+      established.[@code] Dealing carries up to fifteen years; the aggravated tier excludes
+      cannabis.[@code] Enforcement bites: prosecutors reported an effective four-year term for 19.49
+      kg in July 2026.[@npa2026]
+    sources:
+      - code
+      - npa2026
+  medical:
+    text: >-
+      Production for medicinal and scientific purposes is licensed.[@si62] In its 2022 report, the medicines
+      regulator described production as export-oriented, with local use limited to research and
+      development, and separately recorded acceptance of hemp-based CBD complementary-medicine
+      applications.[@mcaz2022] No patient route to psychoactive cannabis was verified from these production
+      licences or CBD application records.[@mcaz2022]
+    sources:
+      - si62
+      - mcaz2022
+  hemp:
+    status: high
+    text: >-
+      The 2023 amendment defines industrial hemp at no more than 1% delta-9 THC by dry weight,
+      including seed, parts and derivatives, and excludes it from the cannabis-plant branch of the
+      dangerous-drug definition.[@hemp23] Separate hemp authorisations (2019) and permits (2020,
+      one-year general and merchant permits, three-year research permits at original fees of US$200
+      and US$500) predate it; the 2020 rules use 0.3%, and the amendment is not evidence that every
+      agricultural condition was rewritten to 1%.[@hemp19,hemp20] Hemp-based CBD medicines enter a
+      separate product-registration route opened by the medicines regulator in 2022.[@mcaz2022]
+    sources:
+      - hemp23
+      - hemp19
+      - hemp20
+      - mcaz2022
   production:
     status: medical
     text: >-
-      The 2018 regulations introduced five-year medicinal and scientific production licences. The
-      regulator’s 2022 review recorded fifty-nine licences issued and cannabis growing witnessed
-      at five inspected sites, alongside eighteen visited sites with no development. Industrial
+      The 2018 regulations introduced five-year medicinal and scientific production licences.[@si62]
+      The regulator's 2022 review recorded fifty-nine licences issued and cannabis growing witnessed
+      at five inspected sites, alongside eighteen visited sites with no development.[@mcaz2022] Industrial
       hemp has a separate authorisation and permit system under the 2019 and 2020
       rules.[@si62,mcaz2022,hemp19,hemp20] The [July 2026
       amendments](/history/zimbabwe-medical-producer-controls-2026/) place administration and
-      enforcement with the Medicines Control Authority, with five-year licences, an inspectorate,
-      accredited-laboratory contaminant tests and regulatory testing before export. Indoor or
-      greenhouse cultivation is the default; justified outdoor exemptions require separation and
-      security conditions. Unexported stock remaining twelve months after harvest triggers
-      notification, inspection and destruction.[@si108]
+      enforcement with the Medicines Control Authority.[@si108] They provide five-year licences, an
+      inspectorate, accredited-laboratory contaminant tests and regulatory testing before
+      export.[@si108] Indoor or greenhouse cultivation is the default; justified outdoor exemptions
+      require separation and security conditions.[@si108] Unexported stock remaining twelve months
+      after harvest triggers notification, inspection and destruction.[@si108]
     sources:
       - si62
       - mcaz2022
       - hemp19
       - hemp20
       - si108
-  products:
-    text: >-
-      The 2023 criminal-code amendment defines industrial hemp at no more than 1% delta-9 THC by dry
-      weight, including seeds and derivatives, and excludes it from the cannabis-plant branch of the
-      dangerous-drug definition. The original 2020 hemp permit rules use 0.3%. Hemp-based CBD medicines
-      enter a separate product-registration route opened by the medicines regulator in 2022.
-    sources:
-      - hemp23
-      - hemp20
-      - mcaz2022
-  medical:
-    text: >-
-      Production for medicinal and scientific purposes is licensed.[@si62] In its 2022 report, the medicines
-      regulator described production as export-oriented, with local use limited to research and
-      development, and separately recorded acceptance of hemp-based CBD complementary-medicine
-      applications. No patient route to psychoactive cannabis was verified from these production
-      licences or CBD application records.[@mcaz2022]
-    sources:
-      - si62
-      - mcaz2022
   consequences:
     text: >-
-      Unlawful possession, use and personal cultivation can bring a fine, imprisonment or both. Where
-      addiction is established, the court may impose treatment in addition to or instead of another
-      sentence. Prosecutors reported a four-year custodial sentence in a 19.49 kg possession case in July
-      2026.
+      Unlawful possession, use and personal cultivation can bring a fine, imprisonment or both.[@code]
+      Where addiction is established, the court may impose treatment in addition to or instead of another
+      sentence.[@code] Prosecutors reported a four-year custodial sentence in a 19.49 kg possession case
+      in July 2026.[@npa2026]
     sources:
       - code
       - npa2026
@@ -123,9 +172,10 @@ context:
     clones_trade: regulated
     text: >-
       The criminal code excludes seeds processed so that they cannot germinate from its cannabis-plant
-      definition; viable cannabis seed is otherwise covered. The medicinal-production regulations provide
-      for licensed seed and plant supply with specified labels. Industrial-hemp seeds and propagation are
-      separately subject to the hemp definitions and permit rules.
+      definition; viable cannabis seed is otherwise covered.[@code] The medicinal-production
+      regulations provide for licensed seed and plant supply with specified labels.[@si62]
+      Industrial-hemp seeds and propagation are separately subject to the hemp definitions and permit
+      rules.[@hemp20,hemp23]
     sources:
       - code
       - si62
@@ -134,8 +184,8 @@ context:
   clubs:
     status: none
     text: >-
-      Unlawful recreational cultivation and supply are criminal offences under the code.
-      Medical-production licences and industrial-hemp permits authorise specified activities.
+      Unlawful recreational cultivation and supply are criminal offences under the code.[@code]
+      Medical-production licences and industrial-hemp permits authorise specified activities.[@si62,hemp20]
     sources:
       - code
       - si62
@@ -143,32 +193,33 @@ context:
   visitors:
     status: none
     text: >-
-      Recreational supply is prohibited. The criminal code makes unlawful possession and consumption
-      punishable by a fine up to level ten, up to five years in prison, or both.
+      Recreational supply is prohibited.[@code] The criminal code makes unlawful possession and
+      consumption punishable by a fine up to level ten, up to five years in prison, or both.[@code]
     sources:
       - code
   driving:
     status: impairment
     text: >-
       Road Traffic Act section 55(2) prohibits driving or attempting to drive on a road when drugs,
-      alcohol or their combination prevent proper vehicle control. The Ministry's published text provides
-      a fine up to level twelve or up to ten years' imprisonment or both for ordinary vehicles. For a
-      commuter omnibus or heavy vehicle it specifies two to fifteen years, subject to section 88A's
-      exception to mandatory penalties. The published disqualification provisions normally require at
-      least six months for an ordinary first conviction, twelve months for a second similar conviction
-      within the stated ten-year period, and a lifetime ban for a third or later conviction.
-      Commuter-omnibus and heavy-vehicle convictions carry additional lifetime restrictions on those
-      vehicle classes. Courts can decline the ban for recorded special circumstances surrounding the
-      offence; personal circumstances of the offender do not qualify. Licence cancellation follows for
-      the affected vehicle classes. No monetary conversion of the fine level, current roadside tariff or
-      numerical THC limit is asserted here.
+      alcohol or their combination prevent proper vehicle control.[@trafficact] The Ministry's
+      published text provides a fine up to level twelve or up to ten years' imprisonment or both for
+      ordinary vehicles.[@trafficact] For a commuter omnibus or heavy vehicle it specifies two to
+      fifteen years, subject to section 88A's exception to mandatory penalties.[@trafficact] The
+      published disqualification provisions normally require at least six months for an ordinary first
+      conviction, twelve months for a second similar conviction within the stated ten-year period, and
+      a lifetime ban for a third or later conviction.[@trafficact] Commuter-omnibus and heavy-vehicle
+      convictions carry additional lifetime restrictions on those vehicle classes.[@trafficact] Courts
+      can decline the ban for recorded special circumstances surrounding the offence; personal
+      circumstances of the offender do not qualify.[@trafficact] Licence cancellation follows for the
+      affected vehicle classes.[@trafficact] No monetary conversion of the fine level, current
+      roadside tariff or numerical THC limit is asserted here.[@trafficact]
     sources:
       - trafficact
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 627 kg of herbal cannabis seized
-      in 2023. The UN publishes them as kilogram equivalents, and countries count seizures differently,
-      so the figures are not comparable across borders.
+      in 2023.[@unodc_szr] The UN publishes them as kilogram equivalents, and countries count seizures
+      differently, so the figures are not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
 answers:
@@ -243,3 +294,12 @@ sources:
     locator: >-
       Gazette scan, printed pp.1651–1668; sections 3A, 8, 23, 28, 34, 40, 44A, 48A, 77A–C and 83
       as amended; loaded and read in browser
+  duvall19:
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: >-
+      ch. 4 (suruma word geography: 1895 Quelimane wordlist, 1914 colonial ban, Ndau
+      speakers near the Zimbabwe border in 2005; read in the local PDF)
