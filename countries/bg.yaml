@@ -25,6 +25,18 @@ segments:
       - wiki
       - dr
       - nr2007
+    currency: BGN
+    penalties:
+      - label: Possession of a high-risk drug
+        treatment: criminal
+        fine: 10000
+        prison_min: 1 year
+        prison: 6 years
+        note: One to six years and a fine of up to 10,000 leva
+      - label: Minor possession case
+        treatment: criminal
+        fine: 1000
+        note: Fine of up to 1,000 leva instead — still a criminal conviction
   cultivation:
     text: >-
       Cultivation is a crime with prison terms; the penal code has a separate offence for growing
@@ -45,6 +57,12 @@ segments:
     sources:
       - wiki
       - dr14
+    penalties:
+      - label: Distribution
+        treatment: criminal
+        prison_min: 2 years
+        prison: 8 years
+        note: Two to eight years or more
   consumption:
     text: Use is not separately punished, but possession is.
     sources:
@@ -55,6 +73,18 @@ segments:
       - wiki
       - cmsg
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Cannabis is a class A high-risk drug with heroin
+      and cocaine: possession brings one to six years and up to 10,000 leva, or up to 1,000
+      leva in minor cases — still a criminal conviction.[@wiki,dr,nr2007] Most small cases end
+      in the minor-case fine, but prison happens, and reform is a political taboo.[@dr]
+      Distribution brings two to eight years or more.[@wiki,dr14]
+    sources:
+      - wiki
+      - dr
+      - nr2007
+      - dr14
   production:
     status: medical
     text: >-
@@ -135,6 +165,20 @@ context:
       - mzh
       - zknvp
       - cmsg
+  hemp:
+    status: standard
+    text: >-
+      Only registered farmers may grow hemp, for fibre, feed/food seed or sowing seed, under a
+      free three-year agriculture-ministry permit for plants below 0.3% THC — though the
+      narcotics act consolidation read still says 0.2%, a conflict not treated here as a
+      liability ruling.[@ord1,mzh,zknvp] CBD cannot be produced domestically but may be
+      imported and sold; any THC trace makes a product controlled.[@mondaq,nutra]
+    sources:
+      - ord1
+      - mzh
+      - zknvp
+      - mondaq
+      - nutra
   clubs:
     status: none
     text: >-
