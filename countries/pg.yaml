@@ -3,11 +3,12 @@ region: Oceania
 iso_numeric: 598
 recreational: illegal
 medical: none
-updated: 2026-10-12
+updated: '2026-10-27'
 summary: >-
-  Cannabis is a strictly prohibited Schedule I substance. Ten grams or less can bring two years in
-  prison; more than two kilograms falls in a 16-years-to-life tier, and courts do jail users and
-  transporters under the law.
+  Cannabis possession and cultivation are prohibited. The Controlled Substance Act has quantity
+  tiers, including up to two years for 10 g or less. A separate Dangerous Drugs Act charge has
+  been used for cannabis and carries a maximum of forty years and/or K1 million; the quantity
+  tiers are not a guarantee of the only charge or penalty.
 scores:
   possession: 0
   cultivation: 1
@@ -18,27 +19,37 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis, cannabis resin and cannabis oil are Schedule I substances under the Controlled
-      Substance Act 2021. Schedule VII sets up to two years in prison or a K15,000 fine for 10 g or
-      less, up to 15 years or K25,000 for more than 10 g but less than 2 kg, and 16 years to life or
-      K26,000–2 million for more than 2 kg. Courts apply the Act to small possession: one man
-      received 18 months for nine packets in 2023.
+      The Controlled Substance Act 2021 lists cannabis, resin and oil in Schedule I. Its Schedule
+      VII sets up to two years and/or K15,000 for 10 g or less, up to fifteen years and/or K25,000
+      above 10 g but below 2 kg, and sixteen years to life and/or K26,000–2 million above 2 kg.[@csa21]
+      Separately, Dangerous Drugs Act section 3, replaced from 13 January 2022, sets a maximum
+      forty years and/or K1 million for knowing unauthorised possession or conveyance. It has been
+      used in cannabis cases.[@dda2021,dda_case] The Controlled Substance Act says it prevails
+      where criminal laws conflict; how that affects a particular charge needs legal assessment.[@csa21]
     sources:
-      - controlled
-      - small_case
+      - csa21
+      - dda2021
+      - dda_case
   cultivation:
     text: >-
-      Section 34 expressly prohibits cultivating a Schedule I plant. Schedule VII grades fewer than
-      five plants at up to two years or K15,000, more than five at up to 15 years or K25,000, and
-      more than 20 at 16 years to life or K26,000–2 million.
+      The Controlled Substance Act prohibits Schedule I cultivation and has quantity tiers of
+      up to two years, up to fifteen years and sixteen years to life, with fines also possible.[@csa21]
+      Dangerous Drugs Act section 3 separately covers knowing unauthorised cultivation, with a
+      maximum forty years and/or K1 million. The Controlled Substance Act's priority rule for
+      inconsistent criminal laws matters to the applicable charge; plant tiers alone do not
+      exhaust the reported enforcement framework.[@dda2021,csa21]
     sources:
-      - controlled
+      - csa21
+      - dda2021
   enforcement:
     text: >-
-      Prison is used at both ends of the scale: a court imposed 18 months for nine packets in 2023,
-      while two men with 14–20 kg received 25 years in 2025. In August 2026, a court ordered a man
-      caught with 4.7 kg to pay K30,000 or serve 20 years.
+      Courts use both statutes. A June 2024 report describes a conviction under Dangerous Drugs Act
+      section 3(1)(d) for 1.3 kg of marijuana: K15,000, with three years in default; the prosecutor
+      invoked the forty-year/K1 million maximum.[@dda_case] Other reported sentences include
+      eighteen months for nine packets in 2023, twenty-five years for 14–20 kg in 2025, and
+      K30,000 or twenty years for 4.7 kg in 2026. Maximum penalties are not typical sentences.[@small_case,long_case,police]
     sources:
+      - dda_case
       - small_case
       - long_case
       - police
@@ -113,12 +124,15 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under the Controlled Substance Act 2021,
-      10 g or less of cannabis carries up to two years in prison or a fine of K15,000, and more
-      than 10 g up to fifteen years.
+      There is no legal recreational supply. Cannabis possession can lead to prison under either
+      reported charging route: the Controlled Substance Act's quantity tiers include up to two
+      years for 10 g or less, while Dangerous Drugs Act section 3 has a forty-year/K1 million
+      maximum and has been used for cannabis possession. The former Act's conflict rule requires
+      legal assessment; do not treat its lower tiers as exhaustive punishment limits.[@csa21,dda2021,dda_case]
     sources:
-      - controlled
-      - small_case
+      - csa21
+      - dda2021
+      - dda_case
   driving:
     status: impairment
     text: >-
@@ -139,6 +153,14 @@ context:
       - traffic2014
       - trafficrules
 sources:
+  dda_case:
+    title: The National — Man with disability fined K15,000 (26 June 2024)
+    url: https://www.thenational.com.pg/man-with-disability-fined-k15000/
+    locator: Section 3(1)(d), 1.3 kg; statutory maximum cited by prosecution and actual fine/default sentence
+  dda2021:
+    title: Papua New Guinea — certified Dangerous Drugs (Amendment) Act 20 of 2021 (PacLII)
+    url: https://www.paclii.org/pg/legis/num_act/dda2021260/
+    locator: Section 3 replacement; certified and operative 13 January 2022
   traffic2014:
     title: "Papua New Guinea Road Traffic Authority — Road Traffic Act 2014 (PDF)"
     url: https://rta.gov.pg/pdfs/resources/legislation/acts-of-parliament/RoadTrafficAct2014.pdf

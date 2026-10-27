@@ -386,3 +386,14 @@ test('fixed THC classes require numerical evidence; Kenya remains unverified (#1
     assert.ok(d.sources.some(k => p.sources[k]?.url), name+' needs a source for its numerical rule');
   }
 });
+
+// Issue #195
+test('PNG quantity tiers cannot hide the alternative forty-year charging route (#195)', () => {
+  const pg = country('pg');
+  for (const text of [pg.summary,pg.segments.possession.text,pg.segments.cultivation.text,pg.context.visitors.text]) {
+    assert.match(text, /forty years|forty-year/);
+  }
+  assert.match(pg.segments.possession.text, /prevails where criminal laws conflict/);
+  assert.match(pg.segments.enforcement.text, /three years in default/);
+  assert.match(pg.sources.dda2021.locator, /13 January 2022/);
+});

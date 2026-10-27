@@ -62,3 +62,25 @@ profile for a numerical concentration and source. That audit found New Zealand's
 existing fixed-threshold description lacked the number: read the official 2025/247
 notice and added 5 ng/mL THC in oral fluid, an evidential laboratory threshold,
 not the separate roadside device threshold. Its source/commencement is recorded.
+
+## #195 — PNG overlapping cannabis offences
+
+Read the certified No.20 of 2021 on PacLII in the normal browser:
+https://www.paclii.org/pg/legis/num_act/dda2021260/ . Certification and operation are
+13 January 2022. Replacement section 3 covers knowing unauthorised cultivation,
+manufacture, export, possession/conveyance; maximum K1 million and/or forty years,
+triable summarily. Read the Controlled Substance Act original, section 3(2), which
+says its provisions prevail in an inconsistency; its Schedule VII is not the only
+reported charging route. Read The National's 26 June 2024 report in full: 1.3 kg,
+Dangerous Drugs Act 3(1)(d), actual K15,000 with three years in default, prosecution
+invoking the maximum. Preserve the difference between maximum and actual sentence.
+
+No.37 of 2021 is a different amendment proposing repeal of section 3; the April
+2022 commencement index marks it N.I.F., while No.20 is operative. That catalogue
+alone does not establish later non-commencement. Searches did not recover a later
+commencement/repeal or binding judgment settling the overlap. Accordingly the
+profile reports the enacted provision and demonstrated charging practice, identifies
+the conflict rule and avoids promising an exhaustive small-quantity ceiling or
+purporting to decide which provision must prevail in an individual prosecution.
+Scores remain: possession 0, enforcement 1 (severe imprisonment already recorded).
+No unverified new historical score step or commencement event was invented.
