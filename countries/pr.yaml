@@ -33,6 +33,21 @@ segments:
       fine of $1,000 to $10,000 and up to six months of community service instead of prison.
     sources:
       - ley4
+    currency: USD
+    penalties:
+      - label: Possession without prescription (Article 404)
+        treatment: criminal
+        prison: 3 years
+        fine: 5000
+        note: Two to five years with mitigating or aggravating circumstances
+      - label: Repeat possession conviction
+        repeat: 2
+        treatment: criminal
+        prison: 6 years
+      - label: Treatment-track alternative
+        treatment: criminal
+        fine: 10000
+        note: Fine of $1,000–$10,000 and up to six months of community service instead of prison; once in a lifetime dismissal after probation
   cultivation:
     text: >-
       Growing cannabis outside the licensed medical industry is production of a controlled
@@ -74,19 +89,21 @@ segments:
       - stats26
       - retailStart
 context:
+  recreational:
+    text: >-
+      There is no legal adult-use supply. Unauthorised possession remains a felony with a fixed
+      three-year term, though first offenders can earn probation with dismissal once in a
+      lifetime, and courts can order fines with community service instead of prison after a
+      treatment assessment.[@ley4] Medical dispensaries serve patients only.[@medicalLaw]
+    sources:
+      - ley4
+      - medicalLaw
   production:
     status: medical
     text: >-
       The Medical Cannabis Regulatory Board had issued 498 licences for cultivation, transport,
       research and sale by 2024. All production serves the medical market.
     sources:
-      - platea
-  products:
-    text: >-
-      Medical cannabis products sold in licensed dispensaries; smoking is not an approved form of
-      use. Industrial hemp-derived products such as CBD are covered by a 2020 circular letter.
-    sources:
-      - medicalLaw
       - platea
   medical:
     text: >-
