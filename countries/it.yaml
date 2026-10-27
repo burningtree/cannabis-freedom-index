@@ -35,6 +35,10 @@ segments:
     sources:
       - dpnsee
       - giq
+    penalties:
+      - label: Personal-use possession (Article 75, administrative)
+        treatment: civil
+        note: No fine; prefect can suspend driving licence, passport or firearms licence for one to three months, or warn a first small case
   cultivation:
     text: >-
       Cultivation is a crime on paper, but in 2019 the Court of Cassation's united sections ruled
@@ -58,6 +62,12 @@ segments:
       the courts.
     sources:
       - dpnsee
+    penalties:
+      - label: Dealing, minor cannabis case
+        treatment: criminal
+        prison_min: 6 months
+        prison: 4 years
+        note: Six months to four years; larger cases carry far more
   consumption:
     text: >-
       Use itself is not an offence, but being found with cannabis triggers the same administrative
@@ -79,6 +89,18 @@ segments:
       - giq
       - ilpost26
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Personal-use possession is administrative, not
+      criminal: the prefect can suspend a driving licence, passport or firearms licence for
+      one to three months, or warn a first small case — there is no fine.[@dpnsee,giq]
+      Small home growing for own use is not punishable under the 2019 Cassation ruling, with
+      no fixed plant number.[@diritto,giq] Dealing brings prison: six months to four years
+      for minor cannabis cases.[@dpnsee,giq]
+    sources:
+      - dpnsee
+      - giq
+      - diritto
   production:
     status: medical
     text: >-
@@ -138,6 +160,17 @@ context:
       is no fixed THC limit.
     sources:
       - cc10
+  hemp:
+    status: strict
+    text: >-
+      Hemp farming for fibre and seed stays legal, but the 2025 decree criminalised
+      low-THC hemp flowers and flower-derived products whatever their THC content,
+      shuttering the cannabis-light shops; of 25 court cases tracked by the hemp trade,
+      18 ended with the goods returned.[@hemp] Flower production is not licensed — only
+      the military pharmaceutical plant grows medical cannabis under state
+      control.[@hemp]
+    sources:
+      - hemp
   arrests:
     text: >-
       The EU drugs agency's statistical bulletin records 37,963 cannabis-related drug law
