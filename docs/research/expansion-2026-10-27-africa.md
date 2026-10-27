@@ -6,11 +6,11 @@ Dirty-at-start files were lt + test + source-archive (none in batch).
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Egypt | x | | |
-| Ethiopia | x | | |
-| Liberia | x | | |
-| Congo | x | | |
-| Ghana | x | | |
+| Egypt | x | | dc87240 |
+| Ethiopia | x | | a8e03da (shared) |
+| Liberia | x | | 1c73a58 |
+| Congo | x | | 895f763 |
+| Ghana | x | | 9979177 |
 
 ## Egypt (eg) — done 2026-10-27 ~23:12 UTC
 - Profile: hemp (none) + arrests + culture (TNI/Soueif-verified hashish bans) added; products folded into medical; penalties: possession 1–3y step, cultivation note-step (life/death), 3 sharing steps with death:true + EGP fines; inline citations everywhere; history links (1960, 1884, 1868, Russell 1930).
