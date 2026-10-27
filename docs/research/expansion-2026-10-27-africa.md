@@ -10,7 +10,7 @@ Dirty-at-start files were lt + test + source-archive (none in batch).
 | Ethiopia | x | | |
 | Liberia | x | | |
 | Congo | x | | |
-| Ghana | | | |
+| Ghana | x | | |
 
 ## Egypt (eg) — done 2026-10-27 ~23:12 UTC
 - Profile: hemp (none) + arrests + culture (TNI/Soueif-verified hashish bans) added; products folded into medical; penalties: possession 1–3y step, cultivation note-step (life/death), 3 sharing steps with death:true + EGP fines; inline citations everywhere; history links (1960, 1884, 1868, Russell 1930).
@@ -43,4 +43,12 @@ Dirty-at-start files were lt + test + source-archive (none in batch).
 - Article: congo-french-equatorial-africa-1926 (Congo-angled mirror of chad article: 1907 French Congo governor circular, Middle Congo focus, 1916-law afterlife in 2024 Owando report).
 - Gaps closed except driving/black_market (unsourced) and colonial decades; 3 of 15 texts link history.
 - Gotcha: audit flags notes repeating table prison ranges — keep notes to conditions/exceptions.
+- Audit 0/0, history 47 pass / answers 93 pass. Build + HTML verify pending.
+
+## Ghana (gh) — done 2026-10-27 ~00:40 UTC
+- Profile: recreational + hemp (status high, licensed scheme) + driving (RTA s4) + arrests (KTU 10 students) sections added; products folded (no THC products into recreational/medical) and deleted; possession (2 steps) + cultivation (legal/illegal steps) penalty tables, penalty units in notes per sb convention; inline citations everywhere; history links (2020 Act, 2022 SC, 2023 re-enactment, PNDCL 236 via article).
+- New sources: GhanaLegal RTA Act 683 s4 (verified text); Ghanaian Times Feb 2026 (840 kg cannabis, Dec 2025–Jan 2026 patrols) for black_market; Citi Newsroom Aug 2026 (KTU cannabis-ice-cream arrests) for arrests.
+- Article: ghana-hassan-possession-acquittal-1962 (top backlog candidate; full 1962 judgment read — 800g leaves, s47(1) prepared-for-smoking wording, acquittal; dropped bare-ghalii [@2] to satisfy article-cite test).
+- Gaps closed except culture (optional, no atlas entries) and old decades; 4 of 17 texts link history.
+- Gotcha: YAML colons in source titles must be quoted; fine-only/unit fines go in notes, not fine fields.
 - Audit 0/0, history 47 pass / answers 93 pass. Build + HTML verify pending.
