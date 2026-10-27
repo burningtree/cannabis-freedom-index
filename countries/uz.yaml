@@ -3,11 +3,13 @@ region: Asia
 iso_numeric: 860
 recreational: illegal
 medical: none
-updated: 2026-10-25
+updated: '2026-10-28'
 summary: >-
   Small personal cannabis holdings can bring a fine or up to fifteen days of administrative
-  detention. Larger holdings without intent to supply remain criminal, with up to three years
-  in prison for the basic offence. Growing and supplying cannabis are criminal offences.
+  detention; above 1 g of dried cannabis they become criminal, with up to three years in prison
+  for the basic offence. Growing and supplying cannabis are criminal, and since June 2026 public
+  use is an administrative offence. Industrial hemp is licensed at 0.2% THC; medical cannabis has
+  no patient route.
 scores:
   possession: 2
   cultivation: 1
@@ -18,32 +20,79 @@ scores:
 segments:
   possession:
     text: >-
-      Small quantities held without intent to supply fall under administrative article 56:
-      a fine of one to two basic calculation units or up to fifteen days of detention, with
-      confiscation.[@admin56] The Supreme Court confirms that small personal holdings belong
-      under administrative law.[@court17] Above that band, article 276 allows a fine of up to
-      fifty basic calculation units, community service, corrective work, restriction of liberty
-      for one to three years or imprisonment for up to three years. Large quantities or repeat
-      offending can bring restriction of liberty or imprisonment for three to five years.
-      Voluntary surrender can remove punishment for the basic offence. Article 273 covers
-      intent to supply or actual supply, with longer sentences in its higher bands.[@cc276]
+      Small quantities held without intent to supply fall under administrative article 56: a fine
+      of one to two basic calculation units or up to fifteen days of detention, with
+      confiscation.[@admin56] The Supreme Court confirms that small personal holdings belong under
+      administrative law.[@court17] Above that band, article 276 allows a fine of up to fifty basic
+      calculation units, community service, corrective work, restriction of liberty for one to
+      three years or imprisonment for up to three years. Large quantities or repeat offending can
+      bring restriction of liberty or imprisonment for three to five years. Voluntary surrender can
+      remove punishment for the basic offence.[@cc276] Supply itself falls under article 273, with
+      longer sentences [@cc276]. The thresholds are 1 g of dried cannabis or 10 g of undried
+      cannabis for the small band, and 10 g or 50 g for the large band; hashish lines are 0.2 g and
+      2 g, resin 0.1 g and 0.5 g.[@quantities]
     sources:
       - admin56
       - court17
       - cc276
+      - quantities
+    currency: UZS
+    penalties:
+      - upto: 1 g
+        treatment: civil
+        term: Small amount, Article 56
+        fine_min: 440000
+        fine: 880000
+        prison: 15 days
+        note: Dried cannabis; confiscation; detention if a fine is insufficient
+      - over: 1 g
+        upto: 10 g
+        treatment: criminal
+        term: Above small, Article 276(1)
+        fine: 22000000
+        prison: 3 years
+        note: Fine, community service, corrective labour or restriction of liberty for 1–3 years
+      - over: 10 g
+        treatment: criminal
+        term: Large amount, Article 276(2)
+        prison_min: 3 years
+        prison: 5 years
+        note: Restriction of liberty or imprisonment
   cultivation:
     text: >-
-      Unauthorised cannabis growing is criminal. The ordinary offence carries a fine of
-      twenty-five to fifty basic calculation units, community service, corrective work,
-      restriction of liberty for one to three years or imprisonment for up to three years.
-      Repeat offending, acting with others by prior agreement or a medium-sized growing area
-      can bring a fine of fifty to one hundred units or three to five years of restriction of
-      liberty or imprisonment. Organised or large-area growing carries five to ten years.[@cc276]
-      The Supreme Court puts growing areas below 250 square metres in the ordinary band and says
-      sowing is a completed offence even before germination.[@court17]
+      Unauthorised cannabis growing is criminal. The ordinary offence carries a fine of twenty-five
+      to fifty basic calculation units, community service, corrective work, restriction of liberty
+      for one to three years or imprisonment for up to three years. Repeat offending, acting with
+      others by prior agreement or a medium-sized growing area can bring a fine of fifty to one
+      hundred units or three to five years of restriction of liberty or imprisonment. Organised or
+      large-area growing carries five to ten years.[@cc276] The Supreme Court puts growing areas
+      below 250 square metres in the ordinary band and says sowing is a completed offence even
+      before germination.[@court17]
     sources:
       - cc276
       - court17
+    currency: UZS
+    penalties:
+      - label: Ordinary growing area, Article 270(1)
+        treatment: criminal
+        term: Sowing or growing
+        fine_min: 11000000
+        fine: 22000000
+        prison: 3 years
+        note: Fine, community service, corrective labour or restriction of liberty for 1–3 years
+      - label: Repeat, group or medium area, Article 270(2)
+        treatment: criminal
+        term: Sowing or growing
+        fine_min: 22000000
+        fine: 44000000
+        prison_min: 3 years
+        prison: 5 years
+        note: Fine, or restriction of liberty or imprisonment for 3–5 years
+      - label: Organised or large area, Article 270(3)
+        treatment: criminal
+        term: Sowing or growing
+        prison_min: 5 years
+        prison: 10 years
   enforcement:
     text: >-
       Even small personal holdings can bring up to fifteen days of administrative detention.[@admin56]
@@ -60,66 +109,157 @@ segments:
     text: >-
       Giving drugs away, lending them and using them to repay a debt count as supply under
       Supreme Court guidance.[@court17] Article 273 covers supply and holding with intent to
-      supply. Its penalties range from a fine or up to three years in prison in the lowest
-      band to fifteen to twenty years for large quantities or organised supply across borders
-      or through telecommunications or the internet.[@cc276]
+      supply. Its penalties run from a fine of up to fifty basic calculation units, community
+      service or up to three years in prison in the lowest band to fifteen to twenty years for
+      large quantities or organised supply across borders or through telecommunications or the
+      internet.[@cc276]
     sources:
       - court17
       - cc276
+    currency: UZS
+    penalties:
+      - label: Supply, or holding with intent to supply, Article 273(1)
+        treatment: criminal
+        term: Supply
+        fine: 22000000
+        prison: 3 years
+        note: Fine, community service, corrective labour or restriction of liberty for 1–3 years
+      - label: Small-amount supply, Article 273(2)
+        treatment: criminal
+        term: Supply
+        prison_min: 3 years
+        prison: 5 years
+      - label: Above-small amount, Article 273(3)
+        treatment: criminal
+        term: Supply
+        prison_min: 5 years
+        prison: 7 years
+      - label: Aggravated supply, Article 273(4)
+        treatment: criminal
+        term: Supply
+        prison_min: 7 years
+        prison: 10 years
+      - label: Organised group, Article 273(5)
+        treatment: criminal
+        term: Supply
+        prison_min: 10 years
+        prison: 15 years
+      - label: Large amount, cross-border or internet-organised, Article 273(6)
+        treatment: criminal
+        term: Supply
+        prison_min: 15 years
+        prison: 20 years
   consumption:
     text: >-
-      Since 12 June 2026, public drug use is a separate administrative offence. Citizens face
-      a fine of twenty to forty basic calculation units or up to fifteen days of detention,
-      with confiscation. Prescribed medical use is excepted.[@admin56]
+      Since 12 June 2026, public drug use is a separate administrative offence. Citizens face a
+      fine of twenty to forty basic calculation units or up to fifteen days of detention, with
+      confiscation. Prescribed medical use is excepted.[@admin56]
     sources:
       - admin56
+    currency: UZS
+    penalties:
+      - label: Public use, Article 187¹
+        treatment: civil
+        term: Use
+        fine_min: 8800000
+        fine: 17600000
+        prison: 15 days
+        note: Confiscation; detention if a fine is insufficient; prescribed medical use excepted
   access:
-    text: None.
+    text: >-
+      There is no legal source of cannabis for adults or patients.[@l813] The 1999 narcotics law
+      allows controlled narcotics for medicine through licensed channels, but no cannabis-based
+      medicine or patient-access programme was found.[@sputnik2019] The only cannabis production
+      announced has been industrial hemp and an export-oriented medical project.[@kursiv22,azattyq2020]
     sources:
-      - ecoi
+      - l813
+      - sputnik2019
+      - kursiv22
+      - azattyq2020
 context:
-  production:
-    status: none
-    text: None.
+  recreational:
+    text: >-
+      Adults have no legal way to buy cannabis. A small amount for personal use is an
+      administrative offence carrying a fine or up to fifteen days' detention; above 1 g of dried
+      cannabis it becomes a crime with up to three years in prison, and sale carries three to
+      twenty years depending on the band.[@admin56,cc276] In 2025 the authorities recorded 15,400
+      drug crimes: 41% for personal possession, 36% for trafficking and 13% for cultivation.[@gazeta2026]
+      No price or purity data were found.
     sources:
-      - ecoi
-  products:
-    text: None.
-    sources:
-      - ecoi
+      - admin56
+      - cc276
+      - gazeta2026
   medical:
-    text: No medical cannabis.
+    text: >-
+      No approved cannabis medicine or patient-access programme was found.[@sputnik2019] A 2019
+      report said the sale of medical cannabis was prohibited and that only one state-linked
+      company held a licence for narcotic medicines.[@sputnik2019] In November 2020 the state
+      signed a project with the Maltese company Melabis to grow cannabis on 3,000 hectares in
+      Sirdaryo with 0.1–0.2% THC, mainly for export; no domestic medicine or patient route
+      followed in the sources read.[@azattyq2020] Medical status stays none.
     sources:
-      - ecoi
+      - sputnik2019
+      - azattyq2020
+  hemp:
+    status: strict
+    text: >-
+      Industrial hemp may be grown only under licence, with a THC ceiling of 0.2%.[@l813] The
+      first large project, RS Success Agro, received 5,000 hectares in Sirdaryo and had 3,800
+      hectares under hemp at the end of 2022; its first seed harvest averaged 500 kg per hectare
+      and tested at 0.09% THC.[@kursiv22] The licence cost about $80,000, and police escort
+      transports across public roads.[@kursiv22] The state has published no national area or
+      harvest figure in the sources read.
+    sources:
+      - l813
+      - kursiv22
+  production:
+    status: hemp
+    text: >-
+      The commercial cannabis route is licensed industrial hemp, not medicine or adult
+      supply.[@l813,kursiv22] Article 21 of the 1999 narcotics law makes cultivation a state
+      monopoly, allowing it for state scientific institutions and, since 2020, for companies with
+      an industrial licence.[@l813] The Melabis project is licensed to grow low-THC cannabis for
+      medical export, but no domestic product or patient programme was found.[@azattyq2020]
+    sources:
+      - l813
+      - kursiv22
+      - azattyq2020
   consequences:
-    text: Registered users face restrictions on employment and driving.
+    text: >-
+      A diagnosis of drug dependence is entered in a mandatory register shared with law
+      enforcement.[@ecoi] The register can bar dozens of occupations, including work in food
+      production and education and driving a vehicle, and a diagnosis of chronic drug dependence
+      can be a ground for depriving a parent of parental rights under Article 79 of the Family
+      Code.[@ecoi] A small possession offence can still bring up to fifteen days' administrative
+      detention.[@admin56]
     sources:
       - ecoi
+      - admin56
   planting:
     seeds: grey
     seeds_trade: unclear
     clones: licensed
     clones_trade: regulated
     text: >-
-      Under the 1999 narcotics law, cultivating narcotic-containing plants is a state
-      monopoly. Article 21 allows it only for state institutions for scientific purposes and,
-      since a 2020 amendment, for companies holding a licence for industrial purposes. The law
-      does not mention seeds.
+      Under the 1999 narcotics law, cultivating narcotic-containing plants is a state monopoly.
+      Article 21 allows it only for state institutions for scientific purposes and, since a 2020
+      amendment, for companies holding a licence for industrial purposes.[@l813] The law does not
+      mention seeds. Clones are plants, so only licensed growers may hold or trade them.[@l813]
     sources:
       - l813
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@cc276,l813]
     sources:
-      - ecoi
-      - kun
+      - cc276
+      - l813
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply. Small personal holdings can bring a fine of one
-      to two basic calculation units or up to fifteen days of administrative detention.[@admin56]
+      There is no legal recreational supply. Small personal holdings can bring a fine of one to
+      two basic calculation units or up to fifteen days of administrative detention.[@admin56]
       Larger personal holdings fall under criminal article 276, with a fine or up to three years
       in prison for the basic offence. Supplying cannabis or holding it with intent to supply
       falls under article 273 and carries higher penalties in its upper bands.[@cc276]
@@ -131,34 +271,44 @@ context:
     text: >-
       The Code of Administrative Responsibility punishes driving in a state of alcoholic
       intoxication or under the influence of narcotic drugs, psychotropic substances or other
-      substances that affect a person's mental and volitional activity. The penalty is a fine
-      of forty base calculation units and loss of the licence for three years; a driver with
-      no licence is fined fifty units or held for 15 days. The article sets no THC level.
+      substances that affect a person's mental and volitional activity.[@koao131] The penalty is a
+      fine of forty base calculation units and loss of the licence for three years; a driver with
+      no licence is fined fifty units or held for 15 days.[@koao131] The article sets no THC
+      level.[@koao131]
     sources:
       - koao131
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 664 kg of herbal
-      cannabis seized in 2024, against 661 kg in 2023, and 579 kg of cannabis resin seized
-      in 2024, against 623 kg in 2023. The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across
-      borders.
+      In 2025 the authorities recorded 15,400 drug crimes and seized 3.4 tonnes of narcotic,
+      psychotropic and potent substances.[@gazeta2026] Hashish made up 48% of the seized drugs and
+      opium 27%; the report gives no marijuana share.[@gazeta2026] The police found 14 underground
+      drug laboratories during the year, and 53% of all drug crimes were recorded in Tashkent city,
+      Tashkent region and Fergana region.[@gazeta2026] No price or purity data were found.
     sources:
-      - unodc_szr
+      - gazeta2026
   arrests:
     text: >-
-      The Supreme Court's press service reported that courts convicted 2,889 people of
-      drug offences in the first eleven months of 2025. Almost all, 2,875, were convicted
-      under article 273 of the Criminal Code, which covers handling drugs with intent to supply
-      or supplying them, and 2,650 of them were sent to prison; 225 received fines, corrective
-      labour or other alternatives. Only 14 people were convicted under article 271, the
-      offence of unlawfully taking drugs from others, 13 of whom were imprisoned. In
-      2024 the courts convicted 3,020 people under article 273. The figures are not split
-      by drug. Article 271 concerns taking drugs by theft, fraud and other forms of
-      appropriation; personal possession without intent to supply is article 276.[@anhor25, cc276]
+      The Supreme Court's press service reported that courts convicted 2,889 people of drug
+      offences in the first eleven months of 2025.[@anhor25] Almost all, 2,875, were convicted under article
+      273 of the Criminal Code, which covers handling drugs with intent to supply or supplying
+      them, and 2,650 of them were sent to prison; 225 received fines, corrective labour or other
+      alternatives.[@anhor25] Only 14 people were convicted under article 271, the offence of unlawfully
+      taking drugs from others, 13 of whom were imprisoned.[@anhor25] In 2024 the courts convicted 3,020
+      people under article 273.[@anhor25] The anti-drug agency separately reported more than 11,000
+      people prosecuted for drug crimes in 2025 and 1,956 administrative drug offences.[@gazeta2026]
+      The figures are not split by drug.
     sources:
       - anhor25
-      - cc276
+      - gazeta2026
+  culture:
+    text: >-
+      Cannabis and hashish are known across Central Asia by the Russian slang
+      [anasha](/culture/language/anasha/), borrowed from Uzbek and Tajik, and the atlas entry traces
+      the word and its association with the wild hemp of the Chu valley.[@talkingdrugs] The Soviet
+      south was the drug's main domestic source, and the plant remained part of rural life even
+      while the criminal code treated its growers as offenders.[@talkingdrugs]
+    sources:
+      - talkingdrugs
 sources:
   koao131:
     title: Uzbekistan — Code of Administrative Responsibility, Article 131 (Lex.uz)
@@ -166,28 +316,55 @@ sources:
   l813:
     title: Закон Республики Узбекистан № 813-I «О наркотических средствах и психотропных веществах», 19 August 1999, current text (Lex.uz)
     url: https://lex.uz/ru/acts/86028
+    locator: "Articles 5, 21 and 21¹ on lists, the state monopoly, licensed industrial growing and the 0.2% THC ceiling."
+  quantities:
+    type: law
+    title: "Uzbekistan — Resolution No. 330, Appendix 4: amounts of narcotic drugs, as amended by Resolution No. 878 of 27 October 2018"
+    url: https://lex.uz/docs/4025388
+    locator: "Dried cannabis 1/10 g, undried 10/50 g, hashish 0.2/2 g, resin 0.1/0.5 g for the small and large bands."
   ecoi:
     title: ecoi.net — civil-society submission to the UN on drug policy in Uzbekistan
     url: https://www.ecoi.net/en/file/local/2068926/INT_CESCR_CSS_UZB_47615_E.doc
+    locator: "Sections on mandatory registration, employment restrictions, driving and Article 79 of the Family Code."
   kun:
     title: Kun.uz — Uzbekistan strengthens punishments for illegal promotion of potent substances (2024)
     url: >-
       https://kun.uz/en/news/2024/10/07/uzbekistan-strengthens-punishments-for-illegal-promotion-of-potent-substances
-  unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
-    url: https://data.unodc.org/datareport/drug-seizure
+  gazeta2026:
+    title: "Gazeta.uz — Более 11 тысяч человек привлекли к ответственности за наркопреступления в 2025 году (4 February 2026)"
+    url: https://www.gazeta.uz/ru/2026/02/04/drug-crimes/
+    locator: "15,400 drug crimes, 3.4 tonnes seized, hashish 48%, opium 27%, 14 laboratories, 11,000+ prosecuted, 1,956 administrative offences, 53% in three regions."
   anhor25:
     title: "Anhor.uz — В Узбекистане осудили почти 3 тысячи человек за незаконный оборот наркотиков с начала 2025 года (17 December 2025)"
     url: https://anhor.uz/news/v-uzbekistane-38/
   cc276:
     title: Uzbekistan — Criminal Code, articles 270–276, edition effective 15 October 2026
     url: https://lex.uz/docs/111457?ONDATE=15.10.2026%2001
-    locator: Articles 270, 271, 273 and 276; Lex.uz marks the Russian 2026 translations as unofficial. Edition selected to exclude future December 2026 changes.
+    locator: "Articles 270, 271, 273 and 276; Lex.uz marks the Russian 2026 translations as unofficial. Edition selected to exclude future December 2026 changes."
   admin56:
     title: Uzbekistan — Code of Administrative Responsibility, articles 56 and 187¹, September 2026 edition
     url: https://lex.uz/docs/97661?ONDATE=12.09.2026%2002
-    locator: Small personal holdings and public use; article 187¹ introduced by Law ZRU-1151, effective 12 June 2026. Russian 2026 text marked unofficial by Lex.uz.
+    locator: "Small personal holdings and public use; article 187¹ introduced by Law ZRU-1151, effective 12 June 2026. Russian 2026 text marked unofficial by Lex.uz."
   court17:
     title: Uzbekistan — Supreme Court Plenum Resolution 12 of 28 April 2017, consolidated text
     url: https://lex.uz/ru/docs/3203272
-    locator: Paragraphs 4, 19, 20–21 and 34; small holdings, cultivation, appropriation, gifting and sentencing alternatives.
+    locator: "Paragraphs 4, 19, 20–21 and 34; small holdings, cultivation, appropriation, gifting and sentencing alternatives."
+  sputnik2019:
+    title: "Sputnik Uzbekistan — Каннабис в Узбекистане: будет ли легализован медицинский препарат (10 July 2019)"
+    url: https://uz.sputniknews.ru/20190710/Kannabis-v-Uzbekistane-budet-li-legalizovan-meditsinskiy-preparat-11968880.html
+    locator: "Sale of medical cannabis prohibited; only one company holds a narcotic-medicine licence."
+  azattyq2020:
+    title: "Azattyq — Узбекистан заключил первое соглашение о выращивании в стране марихуаны для медицинских целей (28 November 2020)"
+    url: https://www.azattyqasia.org/a/30973503.html
+    locator: "Melabis project: 3,000 hectares in Sirdaryo, 0.1–0.2% THC, $33m, mainly export."
+  kursiv22:
+    title: Kursiv — Uzbekistan bets on hemp production (5 December 2022)
+    url: https://kz.kursiv.media/en/2022-12-05/uzbekistan-bets-on-hemp-production/
+    locator: "0.2% THC ceiling, 0.09% tested, 3,800 hectares, 500 kg seed per hectare, $80,000 licence, police escort."
+  talkingdrugs:
+    title: TalkingDrugs — История каннабиса в Советском Союзе (25 January 2018)
+    url: https://www.talkingdrugs.org/istorija-cannabisa-v-ussr/
+    locator: "Uzbek SSR possession criminal only with intent to supply; anasha and the Chu valley; Soviet hemp history."
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    url: https://data.unodc.org/datareport/drug-seizure
