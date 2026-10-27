@@ -75,8 +75,8 @@ Chosen from `country-gaps.cjs --rank 25 --region Europe`; profiles checked afres
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Russia | Four penalty tables; recreational, hemp and culture sections; products folded; production status corrected to hemp; Wikipedia-only medical/consequences/clubs/enforcement replaced; May 2026 sentencing proposal recorded | 1950s gap; further enforcement statistics and research/genetics; first build blocked by another contributor’s invalid Namibia citation; retry follows | This country commit |
-| Ukraine | Four penalty tables; recreational/hemp sections; 0.2% transitional hemp ceiling corrected; products folded into patient access; July 2026 digital rollout entry; 2026 dispensing article | 1940s–1950s gaps, 1934 article and culture links remain; numeric quantity endpoints kept out of ambiguous inclusive table ladders | This country commit |
+| Russia | Four penalty tables; recreational, hemp and culture sections; products folded; production status corrected to hemp; Wikipedia-only medical/consequences/clubs/enforcement replaced; May 2026 sentencing proposal recorded | 1950s gap; further enforcement statistics and research/genetics; first build blocked by another contributor’s invalid Namibia citation; retry follows | be8b67c |
+| Ukraine | Four penalty tables; recreational/hemp sections; 0.2% transitional hemp ceiling corrected; products folded into patient access; July 2026 digital rollout entry; 2026 dispensing article | 1940s–1950s gaps, 1934 article and culture links remain; numeric quantity endpoints kept out of ambiguous inclusive table ladders | bc48fb1 |
 
 Russia and Ukraine verified in the successful 4,908-page build (27 October); both audits report zero errors/warnings. Russia proposal history was picked up by another contributor’s shared-history commit before the profile commit. Shared build retries were required; no other contributor’s files were changed.
 
@@ -93,3 +93,21 @@ Moldova validation: profile audit zero errors/warnings; article citation and his
 Four penalty tables distinguish imprisonment, short custody, criminal fine alternatives and public-use repeat liability. Recreational/hemp sections added, products folded; medical/visitor text now cites the Health Ministry’s 2025 INCB traveller declaration explicitly prohibiting cannabis medicines. 2026 fine-base entry added (BYN45), with 2026 money values verified against the tax ministry and current Article 50/19.3 reproductions. Core texts converted to inline citations; existing scores retained. No new article: current 2025 reform already has one, while the two older Soviet key entries need stronger original sources. Remaining 1940s/1950s/1980s history gaps and driving/arrest research are documented gaps.
 
 Moldova and Belarus pages verified in the successful 4,916-page build, including four tables each and updated context. Both profile audits report zero errors/warnings.
+
+### Lithuania
+
+Four penalty tables, recreational and culture sections; products folded; hemp smoking-product zero-THC rule distinguished from crop/finished-goods limits. Replaced generic legal claims with current statutory text (Temidy reproductions, official primary sources where reachable), including administrative growing under ANK340 and the large-quantity crime under BK265. Cultivation corrected 1→2; 2017 and 2019 before-vectors rebased to 2 so the correction attaches to the 2003 code’s verified large-quantity-only cultivation offence, rather than suggesting a new growing reform in 2019 or 2026. Earlier cultivation boundaries remain a research target. Existing medical event sharpened to 1 May with contemporary LRT evidence; 2019 medical article added. Three new entries: October 2018 medical vote, April 2023 zero-THC smoking rule, April 2025 committee debate. Culture links both existing atlas entries (Kanapinis and cannabis) using the Folk Culture Centre and Klaipėda accounts.
+
+Remaining: 1950s/1960s, 1974 article, cultivation plant-count case law, current drug-driving primary evidence and medical cost/coverage. No safe plant count inferred. The 2018 official analysis verifies 5 g plant material; other product thresholds are not inferred from it. Production/licensing and garden-hemp improvements already committed by another contributor were preserved.
+
+### Europe batch validation and commits
+
+| Country | Commit | Added tables | Added history | Added articles |
+|---|---|---:|---:|---:|
+| Russia | be8b67c | 4 | 1 (included earlier by concurrent shared-history commit) | 0 |
+| Ukraine | bc48fb1 | 4 | 1 | 1 |
+| Moldova | c487fda | 4 | 3 | 1 |
+| Belarus | fc42142 | 4 | 1 | 0 |
+| Lithuania | This country commit | 4 | 3 | 1 |
+
+Final checks: `npm run build` passed (4,921 pages); `npm run seo:audit` passed (4,923 HTML files and 216,929 links); all five targeted profile audits have zero errors and warnings; history tests 47/47 and answer/profile tests 93/93. Built HTML checked for all twenty penalty tables, hemp sections and rendered citations; all three new articles render on their history pages. Both changed score chains report zero flagged steps. All five country-gap reports show no missing standard sections, no missing penalty tables and no Wikipedia-only texts. The final Lithuania commit also records the unscored reason for Ukraine’s July digital-preparation notice. `source-archive.json` and other contributors’ country changes were left out of these commits.

@@ -9,7 +9,7 @@ summary: >-
   repeatedly debated. Cannabinoid medicines are permitted.
 scores:
   possession: 1
-  cultivation: 1
+  cultivation: 2
   enforcement: 2
   sharing: 1
   consumption: 1
@@ -17,44 +17,139 @@ scores:
 segments:
   possession:
     text: >-
-      Since 2017 possession of any amount, however small, is a criminal offence — before that, small
-      amounts were an administrative matter. Typical outcomes are a fine, restriction of liberty or
-      short arrest, plus a criminal record. A bill to replace this with warnings or fines of €50–300
-      has been in parliament for years; a contradictory vote added administrative liability without
-      removing the criminal one, and the committee postponed it again in 2025.
+      Since [January 2017](/history/lithuania-criminalisation-2017/), small unauthorised possession
+      is handled as a criminal misdemeanour; previously administrative liability overlapped with the
+      criminal provision.[@lawsummary] For no more than 5 g of cannabis, Article 259(2) permits
+      community service, restriction of liberty, a fine or short custody of ten to forty-five
+      days.[@analysis18,bk259,bk49] Other ordinary personal possession carries alternatives
+      including up to two years in prison; very large quantities fall under Article 260(3), with ten
+      to fifteen years even without intent to supply.[@bk259,bk260] The ordinary criminal fine bands
+      are 15–500 penalty units for a misdemeanour and 50–2,000 for a non-serious crime, with one
+      penalty unit worth EUR50.[@bk47,bk11,finebase]
     sources:
-      - lrt1
-      - lib
+      - lawsummary
+      - analysis18
+      - bk259
+      - bk49
+      - bk260
+      - bk47
+      - bk11
+      - finebase
+    currency: EUR
+    penalties:
+      - upto: 5 g
+        treatment: criminal
+        term: Baudžiamasis nusižengimas, Article 259(2)
+        prison_min: 10 days
+        prison: 45 days
+        fine_min: 750
+        fine: 25000
+        note: >-
+          Short custody or a fine, community service or restriction of liberty; cannabis plant
+          material
+      - label: Other ordinary personal possession
+        treatment: criminal
+        term: Article 259(1)
+        prison: 2 years
+        fine_min: 2500
+        fine: 100000
+        note: Prison or a fine, community service, restriction of liberty or short custody
+      - label: Very large quantity, including without intent to supply
+        treatment: criminal
+        term: Article 260(3)
+        prison_min: 10 years
+        prison: 15 years
   cultivation:
     text: >-
-      Unauthorised narcotic cannabis cultivation remains a crime.[@lib] Compliant fibre hemp is
-      lawful, including tightly regulated garden cultivation on up to 0.1 ha at no more than twenty
-      plants per 100 m².[@hempguide]
+      Unauthorised growing below the criminal large-quantity classification brings an administrative
+      fine of EUR30–150.[@ank340,bk265] Growing a large quantity contrary to the rules can bring a
+      fine, restriction of liberty, short custody or up to five years in prison.[@bk265] The
+      ordinary criminal fine band for this offence is 100–4,000 penalty units,
+      EUR5,000–200,000.[@bk47,bk11,finebase] Compliant fibre hemp has a separate agricultural and
+      small-garden route.[@hempguide]
     sources:
-      - lib
+      - ank340
+      - bk265
+      - bk47
+      - bk11
+      - finebase
       - hempguide
+    currency: EUR
+    penalties:
+      - label: Unauthorised growing below criminal large-quantity classification
+        treatment: civil
+        term: ANK 340
+        fine_min: 30
+        fine: 150
+      - label: Large-quantity unlawful growing
+        treatment: criminal
+        term: BK 265
+        prison: 5 years
+        fine_min: 5000
+        fine: 200000
+        note: >-
+          Prison or a fine, restriction of liberty or short custody; no fixed plant safe limit
+          verified
   enforcement:
     text: >-
-      Thousands of mostly young people acquire criminal records each year for small amounts — the
-      main argument behind the stalled reform.
+      Small possession remains within criminal law, even though the available sanctions include
+      community work, fines and restriction of liberty.[@bk259] The drug-control department
+      describes the January 2017 shift from overlapping administrative and criminal liability to
+      criminal-misdemeanour treatment.[@lawsummary]
     sources:
-      - lrt2
-      - lrt1
+      - bk259
+      - lawsummary
   sharing:
-    text: Supply is a crime with prison.
+    text: >-
+      Selling or otherwise distributing a controlled drug carries two to eight years in
+      prison.[@bk260] Large-quantity supply carries eight to ten years; very large quantities ten to
+      fifteen.[@bk260] The law makes no general exception for giving cannabis to a friend.[@bk260]
     sources:
-      - lib
+      - bk260
+    penalties:
+      - label: Ordinary sale or other distribution
+        treatment: criminal
+        term: Article 260(1)
+        prison_min: 2 years
+        prison: 8 years
+      - label: Large-quantity distribution
+        treatment: criminal
+        term: Article 260(2)
+        prison_min: 8 years
+        prison: 10 years
+      - label: Very large quantity
+        treatment: criminal
+        term: Article 260(3)
+        prison_min: 10 years
+        prison: 15 years
   consumption:
     text: >-
-      Use without possession is an administrative offence; in practice users are charged with
-      possession.
+      Use without a doctor’s prescription is an administrative offence with a EUR30–150 fine;
+      repetition brings EUR150–230 and can lead to an obligation to attend an intervention
+      programme.[@ank71] Voluntarily seeking healthcare for the use can exempt the administrative
+      offence.[@ank71] Possession is separately criminalised.[@bk259]
     sources:
-      - lib
+      - ank71
+      - bk259
+    currency: EUR
+    penalties:
+      - label: Use without prescription
+        treatment: civil
+        term: ANK 71(1)
+        fine_min: 30
+        fine: 150
+      - label: Repeated use offence
+        repeat: 2
+        treatment: civil
+        term: ANK 71(2)
+        fine_min: 150
+        fine: 230
+        note: An intervention programme may also be ordered
   access:
     text: >-
-      Prescription-only cannabinoid medicine is obtainable through the medicines system. The state
-      register lists Epidyolex (cannabidiol oral solution) as registered and a 100 ml package as
-      currently supplied.
+      Prescription-only cannabinoid medicine is obtainable through the medicines system.[@vapris]
+      The state register lists Epidyolex (cannabidiol oral solution) as registered and a 100 ml
+      package as currently supplied.[@vapris]
     sources:
       - vapris
 context:
@@ -64,27 +159,32 @@ context:
       Compliant fibre hemp has an agricultural growing and processing route.[@hempguide] Separately,
       the medicines agency provides licences to manufacture medicinal products containing Schedule I
       substances; applicants need a pharmaceutical manufacturing licence and the additional
-      controlled-substance licence.[@manufacture] This medicines route is distinct from the fibre-hemp
-      rules for fields and gardens.[@hempguide,manufacture]
+      controlled-substance licence.[@manufacture] This medicines route is distinct from the
+      fibre-hemp rules for fields and gardens.[@hempguide,manufacture]
     sources:
       - hempguide
       - manufacture
-  products:
-    text: Registered cannabinoid medicines only.
-    sources:
-      - lib
   medical:
     text: >-
-      Cannabis-based medicines have been permitted since 2019, but only as registered
-      pharmaceuticals. Epidyolex is registered as a prescription medicine and is currently supplied.
+      The [medical reform effective in May 2019](/history/lithuania-medical-2019/) permits
+      registered cannabis-based medicines whose safety and effectiveness have been
+      demonstrated.[@medicalvote] The state medicines register lists prescription Epidyolex, a
+      cannabidiol oral solution, with a 100 ml package currently supplied.[@vapris] Pharmaceutical
+      manufacture requires the relevant medicines and controlled-substance licences.[@manufacture]
     sources:
-      - lib
+      - medicalvote
       - vapris
+      - manufacture
   consequences:
-    text: The criminal record blocks certain jobs and travel for years.
+    text: >-
+      Small possession is a criminal misdemeanour, so an administrative use fine does not describe
+      the whole exposure of someone also holding cannabis.[@bk259,ank71] Article 259 provides
+      exemption from liability for specified personal acts when a person voluntarily seeks medical
+      help or surrenders the drugs.[@bk259] Repeated unlawful use can also bring an obligation to
+      attend an intervention programme.[@ank71]
     sources:
-      - lrt2
-      - lib
+      - bk259
+      - ank71
   planting:
     seeds: licensed
     seeds_trade: regulated
@@ -103,19 +203,18 @@ context:
   driving:
     status: zero
     text: >-
-      No THC limit is set; the administrative offence is committed if a drug is detected.
-      Police may stop at random and test on suspicion, there is no roadside oral-fluid test,
-      and blood or urine is taken at a hospital. The penalty is a fine of 300 to 860 euros and
-      a ban of one to three years, with no prison sentence.
+      No THC limit is set; the administrative offence is committed if a drug is detected. Police may
+      stop at random and test on suspicion, there is no roadside oral-fluid test, and blood or urine
+      is taken at a hospital. The penalty is a fine of 300 to 860 euros and a ban of one to three
+      years, with no prison sentence.
     sources:
       - euda_dd
   arrests:
     text: >-
-      The EU drugs agency's statistical bulletin records 764 cannabis-related drug law
-      offences in Lithuania in 2024, against 783 in 2023. Of the 2024 total, 682 were for use
-      or possession for use. It was about twice as high in 2021 and 2022. Countries count
-      these differently (offences or offenders, criminal or administrative), so the figure is
-      not comparable across borders.
+      The EU drugs agency's statistical bulletin records 764 cannabis-related drug law offences in
+      Lithuania in 2024, against 783 in 2023. Of the 2024 total, 682 were for use or possession for
+      use. It was about twice as high in 2021 and 2022. Countries count these differently (offences
+      or offenders, criminal or administrative), so the figure is not comparable across borders.
     sources:
       - euda_dlo
   clubs:
@@ -133,18 +232,20 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Since 2017 possession of any amount,
-      however small, is a criminal offence; typical outcomes are a fine, restriction of liberty
-      or short arrest, plus a criminal record.
+      Visitors have no lawful recreational seller.[@bk260] Small possession is a criminal
+      misdemeanour and can bring short custody as well as non-custodial alternatives.[@bk259,bk49]
+      Use without a prescription is separately punishable by an administrative fine.[@ank71]
     sources:
-      - lrt1
-      - lib
+      - bk260
+      - bk259
+      - bk49
+      - ank71
   black_market:
     text: >-
-      The EU drugs agency's statistical bulletin records 230 kg of herbal cannabis and 410
-      kg of cannabis resin seized in Lithuania in 2024, against 198 kg and 3.7 kg in 2023.
-      Herbal cannabis was seized on 2,067 occasions and resin on 157. Countries record
-      seizures differently, so the figures are not comparable across borders.
+      The EU drugs agency's statistical bulletin records 230 kg of herbal cannabis and 410 kg of
+      cannabis resin seized in Lithuania in 2024, against 198 kg and 3.7 kg in 2023. Herbal cannabis
+      was seized on 2,067 occasions and resin on 157. Countries record seizures differently, so the
+      figures are not comparable across borders.
     sources:
       - euda_szr
   hemp:
@@ -153,34 +254,72 @@ context:
       Fibre hemp uses approved catalogue varieties at no more than 0.3% THC and certified
       seed.[@hempcurrent,hempguide] It may also be grown among or beside garden plants on up to 0.1
       ha, with at most twenty plants per 100 m², notification and seed-label requirements, and no
-      marketing of garden-grown products.[@hempguide]
+      marketing of garden-grown products.[@hempguide] Finished hemp goods have a separate general
+      0.2% total-THC ceiling and lower category-specific limits.[@hempcurrent] Hemp products sold
+      for smoking must contain zero THC under the rules effective from April 2023.[@hempfaq]
     sources:
       - hempcurrent
+      - hempguide
+      - hempfaq
+  recreational:
+    text: >-
+      Adults have no lawful recreational seller; ordinary distribution remains punishable by
+      imprisonment.[@bk260] A small amount for oneself still attracts criminal-misdemeanour
+      proceedings.[@bk259] Parliament’s [contradictory 2022
+      votes](/history/lithuania-half-step-2022/) left the reform bill unfinished, and a committee
+      returned to it in [April 2025](/history/lithuania-cannabis-committee-2025/).[@lrt1,debate25]
+    sources:
+      - bk260
+      - bk259
+      - lrt1
+      - debate25
+  culture:
+    text: >-
+      [Kanapinis, the hemp man](/culture/traditions/kanapinis-the-hemp-man/), appears in Shrove
+      Tuesday celebrations as the lean rival of the fat Lašininis.[@folklore] The Folk Culture
+      Centre’s account links him to hemp-seed foods eaten during Lent.[@folklore] Klaipėda’s
+      ethnocultural centre describes the pair organising games during the city’s present-day
+      carnival.[@klaipeda] [Cannabis](/culture/language/cannabis/) also retains a lawful
+      agricultural role through the separate fibre-hemp rules.[@hempguide]
+    sources:
+      - folklore
+      - klaipeda
       - hempguide
 sources:
   hempcurrent:
     title: Lithuanian Food and Veterinary Service — hemp plant and finished-food THC limits
-    url: https://vmvt.lrv.lt/lt/veiklos-sritys/maisto-sauga/maisto-produktai/pluostiniu-kanapiu-maisto-produktai/
+    url: >-
+      https://vmvt.lrv.lt/lt/veiklos-sritys/maisto-sauga/maisto-produktai/pluostiniu-kanapiu-maisto-produktai/
   hempguide:
     title: State Plant Service — hemp growing and gardening requirements (2024)
     url: https://vatzum.lrv.lt/media/viesa/saugykla/2024/5/_3dr9BKvgq8.pdf
   de_cang:
-    title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
+    title: >-
+      Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations,
+      since 2024)
     url: https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz
   mt_cap628:
-    title: Malta — Authority on the Responsible Use of Cannabis Act (Cap. 628), licensing non-profit cannabis associations since 2021
+    title: >-
+      Malta — Authority on the Responsible Use of Cannabis Act (Cap. 628), licensing non-profit
+      cannabis associations since 2021
     url: https://legislation.mt/eli/cap/628/eng
   pardal20:
-    title: Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe, European Journal of Criminology (2020, PDF)
-    url: https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
+    title: >-
+      Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe, European
+      Journal of Criminology (2020, PDF)
+    url: >-
+      https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
   euda_dlo:
-    title: "EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)"
+    title: 'EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)'
     url: https://www.euda.europa.eu/data/stats2026/dlo_en
   euda_dd:
     title: EUDA — Legal approaches to drugs and driving, country table (last updated May 2025)
-    url: https://www.euda.europa.eu/publications/topic-overviews/legal-approaches-to-drugs-and-driving/html_en
+    url: >-
+      https://www.euda.europa.eu/publications/topic-overviews/legal-approaches-to-drugs-and-driving/html_en
   xiv386:
-    title: Pluoštinių kanapių įstatymo Nr. XII-336 pakeitimo įstatymas, 10 June 2021, Nr. XIV-386 (e-seimas)
+    title: >-
+      Pluoštinių kanapių įstatymo Nr. XII-336 pakeitimo įstatymas, 10 June 2021, Nr. XIV-386
+      (e-seimas)
     url: https://e-seimas.lrs.lt/rs/legalact/TAD/dcde7ec2cdd111eb91e294a1358e77e9/
   lrt1:
     title: LRT — Lithuanian parliament takes half step toward cannabis decriminalisation
@@ -197,7 +336,9 @@ sources:
     title: Lithuanian State Medicines Control Agency — Epidyolex registration and supply status
     url: https://vapris.vvkt.lt/vvkt-web/public/medications/view/29165?lang=en
   euda_szr:
-    title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
+    title: >-
+      EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of
+      seizures)
     url: https://www.euda.europa.eu/data/stats2026/szr_en
   manufacture:
     title: Lithuanian State Medicines Control Agency — controlled-medicine manufacturing licences
@@ -206,3 +347,64 @@ sources:
     locator: >-
       Manufacturing medicinal products containing Schedule I substances requires both pharmaceutical
       and controlled-substance licences
+  bk259:
+    type: law
+    title: Lithuania Criminal Code — Article 259, current statutory text at Temidy
+    url: https://www.temidy.lt/kodeksai/baudziamasis-kodeksas/259-straipsnis
+  bk260:
+    type: law
+    title: Lithuania Criminal Code — Article 260, current statutory text at Temidy
+    url: https://www.temidy.lt/kodeksai/baudziamasis-kodeksas/260-straipsnis
+  bk265:
+    type: law
+    title: Lithuania Criminal Code — Article 265, current statutory text at Temidy
+    url: https://www.temidy.lt/kodeksai/baudziamasis-kodeksas/265-straipsnis
+  bk49:
+    type: law
+    title: Lithuania Criminal Code — Article 49, current statutory text at Temidy
+    url: https://www.temidy.lt/kodeksai/baudziamasis-kodeksas/49-straipsnis
+  bk47:
+    type: law
+    title: Lithuania Criminal Code — Article 47, current statutory text at Temidy
+    url: https://www.temidy.lt/kodeksai/baudziamasis-kodeksas/47-straipsnis
+  bk11:
+    type: law
+    title: Lithuania Criminal Code — Article 11, current statutory text at Temidy
+    url: https://www.temidy.lt/kodeksai/baudziamasis-kodeksas/11-straipsnis
+  ank340:
+    type: law
+    title: Lithuania Administrative Offences Code — Article 340, October 2026 text at Temidy
+    url: https://www.temidy.lt/kodeksai/administraciniu-nusizengimu-kodeksas/340-straipsnis
+  ank71:
+    type: law
+    title: Lithuania Administrative Offences Code — Article 71, October 2026 text at Temidy
+    url: https://www.temidy.lt/kodeksai/administraciniu-nusizengimu-kodeksas/71-straipsnis
+  finebase:
+    type: law
+    title: Lithuania Government — Resolution 1031, penalty base EUR50 from 1 January 2018
+    url: https://www.e-tar.lt/rs/actualedition/TAR.2D5D2004E0FB/eLWIXvveMy/
+  lawsummary:
+    title: Lithuania Drug, Tobacco and Alcohol Control Department — National drug laws
+    url: https://ntakd.lrv.lt/en/facts-and-numbers/
+  analysis18:
+    type: report
+    title: Lithuania drug-control department — Analysis of legal, health and social systems (2018)
+    url: https://ntakd.lrv.lt/uploads/ntakd/documents/files/Analize_final.pdf
+    locator: 'Personal cannabis quantity: no more than 5 g; criminal misdemeanour under Article 259(2)'
+  medicalvote:
+    title: LRT — Lithuania approves registered cannabis medicines, 11 October 2018
+    url: >-
+      https://www.lrt.lt/naujienos/lietuvoje/2/230014/nuspresta-lietuva-iteisino-kanapiu-naudojima-medicinoje
+  debate25:
+    title: BNS via Made in Vilnius — Committee returns to cannabis reform bill, 7 April 2025
+    url: >-
+      https://www.madeinvilnius.lt/en/news/Lithuanian-news/Parliament-withdraws-bill-to-decriminalize-small-amounts-of-cannabis/
+  hempfaq:
+    title: Lithuania Drug, Tobacco and Alcohol Control Department — CBD hemp smoking-product FAQ
+    url: https://ntakd.lrv.lt/lt/duk-1/
+  folklore:
+    title: Lithuanian Folk Culture Centre — Shrove Tuesday, account by J. Kudirka
+    url: https://www.lnkc.lt/eknygos/thelt/node18.html
+  klaipeda:
+    title: Klaipėda Ethnocultural Centre — Shrove Tuesday
+    url: https://www.etnocentras.lt/shrove-tuesday/
