@@ -9,7 +9,7 @@ disputed:
 flag: 🏳️
 recreational: illegal
 medical: none
-updated: 2026-10-25
+updated: 2026-10-28
 summary: >-
   Small possession can bring a fine or up to thirty days’ administrative arrest. Large personal
   possession can carry up to three years in prison. Growing below the criminal threshold brings a
@@ -26,71 +26,239 @@ segments:
     text: >-
       Possession without intent to supply is administrative when it falls below the criminal
       offence: a fine of 50–300 statutory calculation units or up to thirty days’ administrative
-      arrest.[@admin] A legally defined large amount can bring a fine, work penalties or up to three
-      years in prison; an especially large amount carries three to ten years.[@mj]
+      arrest.[@admin] Under presidential decree, possession of dried marijuana becomes a criminal
+      large amount at 1.5 grams, punishable by a fine, work penalties or up to three years in
+      prison.[@decree228,mj] An especially large amount begins at 500 grams and carries three to
+      ten years.[@decree228,mj]
     sources:
       - admin
+      - decree228
       - mj
+    penalties:
+      - upto: 1.5 g
+        treatment: civil
+        term: Administrative offence (ст. 6.12 КоАП)
+        prison: 30 days
+        note: Fine of 50–300 statutory calculation units or up to 30 days' administrative arrest
+      - over: 1.5 g
+        upto: 500 g
+        treatment: criminal
+        term: Large amount (ст. 226 ч. 1 УК)
+        prison: 3 years
+        note: Fine, compulsory work, corrective labour or up to three years in prison
+      - over: 500 g
+        treatment: criminal
+        term: Especially large amount (ст. 226 ч. 2 УК)
+        prison_min: 3 years
+        prison: 10 years
+        note: Three to ten years in prison; optional fine up to 2,000 calculation units
   cultivation:
     text: >-
-      Growing below the criminal threshold can bring a warning or a fine of up to fifty statutory
-      calculation units.[@admin] Large-scale cultivation carries a fine, compulsory work or up to
-      two years in prison; group cultivation or an especially large grow carries three to eight
-      years. The president’s quantity rules determine the criminal threshold.[@mj]
+      Growing cannabis below the criminal threshold of twenty plants is an administrative offence
+      punished by a warning or a fine of up to fifty statutory calculation units.[@admin,plants]
+      Cultivating twenty or more plants constitutes large-scale cultivation under the criminal code,
+      punishable by a fine, compulsory work or up to two years in prison.[@mj,plants] Cultivation
+      exceeding 330 plants or carried out by an organised group carries three to eight years in
+      prison.[@mj,plants]
     sources:
       - admin
       - mj
+      - plants
+    penalties:
+      - upto: 20 plants
+        treatment: civil
+        term: Administrative offence (ст. 10.6 КоАП)
+        note: Warning or a fine of up to 50 statutory calculation units
+      - over: 20 plants
+        upto: 330 plants
+        treatment: criminal
+        term: Large scale (ст. 229 ч. 1 УК)
+        prison: 2 years
+        note: Fine, compulsory work or up to two years in prison
+      - over: 330 plants
+        treatment: criminal
+        term: Especially large scale (ст. 229 ч. 2 УК)
+        prison_min: 3 years
+        prison: 8 years
+        note: Group cultivation or an especially large grow; three to eight years in prison
   enforcement:
     text: >-
       Personal possession can lead to custody through either administrative arrest, for up to thirty
       days, or a criminal prison sentence for a large amount.[@admin,mj] The criminal code also
-      permits fines and work penalties for its ordinary personal-possession offence. The 2012 reform
-      introduced those alternatives to a prison-only penalty.[@mj,reform]
+      permits fines and work penalties for its ordinary personal-possession offence.[@mj,reform]
+      The [2012 reform](/history/transnistria-small-grow-possession-reform-2012/) introduced those
+      alternatives to a prison-only penalty, though police continue active seasonal enforcement
+      operations.[@reform,mak2018]
     sources:
       - admin
       - mj
       - reform
+      - mak2018
   sharing:
     text: >-
       The Supreme Court’s drug-case guidance treats unpaid transfers, including gifts and loans, as
       supply alongside sales and exchanges.[@sc] The ordinary unlawful supply offence carries four
       to eight years in prison; aggravated tiers carry five to twelve or ten to twenty years.[@mj]
+      The maximum penalty for basic supply had reached fifteen years before being revised downward in
+      [2012](/history/transnistria-small-grow-possession-reform-2012/).[@mj,reform]
     sources:
       - sc
       - mj
+      - reform
+    penalties:
+      - label: Unlawful supply or sale
+        treatment: criminal
+        term: Article 226-1(1)
+        prison_min: 4 years
+        prison: 8 years
+        note: Includes gifts, loans, exchanges and sales
+      - label: Group supply or large amount
+        treatment: criminal
+        term: Article 226-1(2)
+        prison_min: 5 years
+        prison: 12 years
+      - label: Organised group or especially large amount
+        treatment: criminal
+        term: Article 226-1(3)
+        prison_min: 10 years
+        prison: 20 years
   consumption:
     text: >-
-      Using drugs without a doctor’s prescription is a separate administrative offence. Its ordinary
-      penalty is a fine of 50–150 statutory calculation units or up to fifteen days’ arrest, with a
-      one-year restriction on driving rights. The code exempts someone who voluntarily seeks medical
-      treatment for that use from liability for the use offence.[@admin]
+      Using drugs without a doctor’s prescription is a separate administrative offence.[@admin]
+      Its ordinary penalty is a fine of 50–150 statutory calculation units or up to fifteen days’
+      arrest, alongside a [one-year restriction on driving rights](/history/transnistria-drug-use-driving-ban-2023/).[@admin,uselaw]
+      The code exempts someone who voluntarily seeks medical treatment for that use from liability
+      for the use offence.[@admin]
     sources:
       - admin
+      - uselaw
+    penalties:
+      - label: Unprescribed drug consumption
+        treatment: civil
+        term: Article 6.13(1)
+        prison: 15 days
+        note: Fine of 50–150 statutory calculation units or up to 15 days' arrest, plus 1-year driving restriction
   access:
-    text: No legal source.
+    text: >-
+      No legal retail dispensary, pharmacy supply or adult-use distribution exists anywhere in
+      the breakaway territory.[@mj] Commercial cannabis transactions are prohibited and prosecuted
+      as illicit drug supply.[@mj]
     sources:
       - mj
 context:
+  recreational:
+    text: >-
+      Adults face complete prohibition across Transnistria, with no legal coffeeshops, dispensaries
+      or social clubs.[@mj] Unauthorised possession of dried marijuana below 1.5 grams is an
+      administrative offence punishable by a fine or up to thirty days of detention under the
+      [2014 administrative code](/history/transnistria-administrative-drug-code-2014/).[@admin,decree228]
+      Larger quantities trigger criminal charges under Article 226 of the Criminal Code, carrying up
+      to three years in prison, while amounts over 500 grams carry three to ten years.[@mj,decree228]
+      Consumers rely exclusively on illicit local home-growing or street supply, facing seasonal
+      eradication operations from territorial militia.[@mak2018,mak2024]
+    sources:
+      - mj
+      - admin
+      - decree228
+      - mak2018
+      - mak2024
+  medical:
+    text: >-
+      Transnistria operates no medical cannabis programme, and local health authorities recognise
+      no therapeutic role for cannabis or cannabinoid preparations.[@mj,narcotics2002] Pharmacies
+      are barred from stocking or dispensing products containing THC, and neither Sativex nor
+      Epidiolex is registered in the territory's pharmaceutical formulary.[@narcotics2002] Patients
+      caught possessing cannabis face ordinary administrative or criminal sanctions without medical
+      defence.[@admin,mj] In 2018, police in Dubossary [prosecuted a 55-year-old woman](/history/transnistria-medical-homegrow-police-2018/)
+      who grew thirteen plants to prepare topical rubbing tinctures for joint pain.[@mak2018]
+    sources:
+      - mj
+      - narcotics2002
+      - admin
+      - mak2018
+  hemp:
+    status: none
+    text: >-
+      The [2002 narcotics law](/history/transnistria-narcotics-law-2002/) prohibits growing plants of
+      the genus Cannabis, reserving cultivation exclusively to state enterprises under strict
+      governmental quotas.[@narcotics2002] The legal code recognises no permissive THC threshold for
+      commercial hemp, and no licensed agricultural hemp sector exists in the territory.[@narcotics2002,mj]
+      Retail trade in CBD oils or non-intoxicating hemp flower is absent from local stores, and any
+      harvested plant material containing cannabinoids is treated as a controlled drug.[@mj]
+      Landholders who discover wild hemp on their property must destroy it upon receiving an official
+      order.[@admin]
+    sources:
+      - narcotics2002
+      - mj
+      - admin
   production:
     status: none
-    text: None known.
+    text: >-
+      Commercial cannabis production is completely prohibited throughout Transnistria.[@mj,narcotics2002]
+      The territory's legal rules leave no avenue for private commercial cannabis farms,
+      extraction laboratories or processing facilities.[@narcotics2002] While the 2002 drug statute
+      theoretically contemplates potential state-enterprise cultivation under government quotas for
+      research or medical needs, no state cannabis operations have ever operated in practice.[@narcotics2002]
+      Unauthorised commercial growing or manufacture is prosecuted as illicit drug trafficking under
+      Article 226-1 of the Criminal Code, drawing sentences of up to twenty years.[@mj]
     sources:
       - mj
-  products:
-    text: No legal cannabis products are known.
+      - narcotics2002
+  black_market:
+    text: >-
+      Cannabis consumed in Transnistria is sourced primarily from illegal outdoor home-growing
+      during the summer months or smuggled across the river from right-bank [Moldova](/country/md/).[@mak2018,mak2024]
+      In towns such as Tiraspol and Bender, retail distribution increasingly operates through
+      anonymous Telegram channels with dead-drop pickups (*zakladki*), which local narcotics officers
+      regularly intercept.[@telegram2024] Dried marijuana remains the most common form of cannabis
+      on the illicit market.[@mak2024,telegram2024] Cross-border smuggling from Ukraine has declined
+      sharply following the full closure of the eastern border in 2022, concentrating supply routes
+      on the Moldovan boundary.[@mak2024]
     sources:
-      - mj
-  medical:
-    text: No medical cannabis programme is known.
+      - mak2018
+      - mak2024
+      - telegram2024
+  driving:
+    status: consumption
+    text: >-
+      Operating any motor vehicle while intoxicated by narcotic substances is prohibited under
+      Article 12.8 of the Administrative Offences Code.[@admin] Since a [reform enacted in November 2023](/history/transnistria-drug-use-driving-ban-2023/),
+      any person penalised for unprescribed drug use under Article 6.13 automatically receives a
+      mandatory one-year restriction on driving rights, regardless of whether they were operating
+      a vehicle at the time.[@admin,uselaw] Unlicensed offenders are prohibited from taking a driving
+      test during that one-year interval.[@vote] Convictions are established through medical examinations
+      and biological tests conducted by authorised healthcare clinics.[@admin]
     sources:
+      - admin
+      - uselaw
+      - vote
+  arrests:
+    text: >-
+      Drug enforcement is carried out by the Ministry of Internal Affairs and the Investigative
+      Committee, producing dozens of criminal prosecutions and hundreds of administrative citations
+      annually.[@admin,mj,mak2024] Much of the territory's cultivation enforcement is concentrated in
+      the annual seasonal "Mak" campaign, running from May to October to eradicate garden plots and
+      wild cannabis stands.[@mak2018,mak2024] In September 2011, the Ministry of Justice [counted 241 prisoners](/history/transnistria-drug-prison-count-2011/)
+      serving sentences for drug offences, representing 11% of the total sentenced prison population,
+      alongside more than 200 people under supervised suspended sentences.[@prison2011]
+    sources:
+      - admin
       - mj
+      - mak2018
+      - mak2024
+      - prison2011
   consequences:
     text: >-
-      The 2023 reform added a one-year restriction on driving rights to the ordinary offence of drug
-      use without a prescription, alongside its fine or administrative arrest. Specified public-use
-      offences also carry the one-year restriction.[@admin,uselaw] A person without a licence cannot
-      take a driving test during the restriction.[@vote]
+      A conviction for criminal drug possession under Article 226 creates a formal criminal record
+      that restricts employment in civil service, education and law enforcement.[@mj] The 2023 reform
+      added a [one-year restriction on driving rights](/history/transnistria-drug-use-driving-ban-2023/)
+      to the ordinary administrative offence of drug use without a prescription, alongside its fine
+      or administrative arrest.[@admin,uselaw] Specified public-use offences also carry the one-year
+      restriction, and an unlicensed individual cannot take a driving test during that period.[@admin,vote]
+      Foreign nationals caught possessing or using cannabis face administrative detention and mandatory
+      expulsion from the territory.[@admin]
     sources:
+      - mj
       - admin
       - uselaw
       - vote
@@ -101,61 +269,84 @@ context:
     clones_trade: banned
     text: >-
       The Supreme Court’s 2004 guidance describes sowing as planting seeds or seedlings without
-      permission on any land, with completion at the time of sowing. It also includes tending plants
-      and improving varieties within cultivation.[@sc] Today the criminal offence requires a legally
-      defined large scale; cultivation below that threshold is administrative.[@mj,admin]
+      permission on any land, with the offence completed at the time of sowing.[@sc] It also treats
+      tending plants and improving crop varieties as unlawful cultivation.[@sc] Today cultivation
+      below twenty plants is an administrative contravention, while larger crops trigger criminal
+      penalties under Article 229 of the Criminal Code.[@mj,admin,plants]
     sources:
       - sc
       - mj
       - admin
+      - plants
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      No cannabis social clubs or consumer associations exist in Transnistria.[@mj] The territory's
+      legal rules prohibit collective cultivation and treat any transfer of cannabis between
+      individuals as criminal drug supply under Article 226-1 of the Criminal Code.[@mj,sc] Unlicensed
+      premises used for consuming drugs are subject to closure and criminal charges for maintaining
+      a drug den under Article 230.[@mj]
     sources:
       - mj
+      - sc
   visitors:
     status: none
     text: >-
-      The administrative code separately punishes foreign nationals and stateless people. Possession
-      falling below the criminal offence carries a fine or up to thirty days’ arrest, with
-      expulsion; use without a prescription carries a fine or up to fifteen days’ arrest, also with
-      expulsion.[@admin]
+      There is no legal route for foreign visitors or tourists to acquire or use cannabis in
+      Transnistria.[@admin,mj] The administrative code provides specific sanctions for foreign
+      citizens and stateless individuals: possession falling below the criminal threshold carries a
+      fine or up to thirty days' administrative arrest coupled with mandatory expulsion from the
+      territory.[@admin] Unprescribed use carries a fine or up to fifteen days' arrest, also accompanied
+      by expulsion.[@admin]
     sources:
       - admin
+      - mj
 sources:
   mj:
     title: Supreme Council of Transnistria — Criminal Code, consolidated through 1 September 2026
     url: https://vspmr.org/file.xp?file=133707
-    locator: Articles 226, 226-1 and 229
+    locator: Articles 226, 226-1, 229 and 230
   sc:
     title: Supreme Court of Transnistria — Drug-case guidance of 22 December 2004
-    url: >-
-      https://ul-test.gospmr.org/documents/e85d928a-f3f7-464a-ac89-0eb401b45b67/8d4b7ff6-0f94-4b31-84c9-54776fb72b3b/html/
+    url: https://ul-test.gospmr.org/documents/e85d928a-f3f7-464a-ac89-0eb401b45b67/8d4b7ff6-0f94-4b31-84c9-54776fb72b3b/html/
     locator: "Paragraphs 3, 5 and 15: gathering, gifts and cultivation"
   admin:
-    title: >-
-      Supreme Council of Transnistria — Administrative Offences Code, consolidated through 18 August
-      2026
+    title: "Supreme Council of Transnistria — Administrative Offences Code, consolidated through 18 August 2026"
     url: https://vspmr.org/file.xp?file=134144
-    locator: Articles 6.12–6.13, 10.5–10.6 and 34.1–34.2; original Code dated 21 January 2014
+    locator: Articles 6.12–6.13, 10.5–10.6, 12.8 and 34.1–34.2; original Code dated 21 January 2014
+  decree228:
+    title: President of Transnistria — Decree 228 of 11 April 2011 on drug quantity thresholds (amended by Decree 67 of 3 March 2014)
+    url: https://ul-test.gospmr.org/documents/e85d928a-f3f7-464a-ac89-0eb401b45b67/8d4b7ff6-0f94-4b31-84c9-54776fb72b3b/html/
+    locator: Consolidated table of narcotic sizes; cannabis/marijuana large amount over 1.5 g, especially large amount over 500 g
+  plants:
+    title: "Novosti Pridnestrovya — Tiraspol resident faces criminal proceedings for growing cannabis (14 April 2021)"
+    url: https://novostipmr.com/ru/content/za-nezakonnoe-vyraschivanie-konopli-tiraspolchaninu-grozit-ugolovnaya
+    locator: "Up to 20 plants administrative under Article 10.6 KoAP; 20 or more criminal under Article 229 UK"
+  narcotics2002:
+    title: Transnistria — Narcotic Drugs and Psychotropic Substances Law, 7 June 2002
+    url: https://ul-test.gospmr.org/documents/8a37b575-f86c-4bc9-be6c-b16d8ddd7e77/bd6e93a9-7236-4bcf-85bc-54ccab4dbb1b/html/
+    locator: Articles 12, 16, 32–34 and 59
   uselaw:
     title: President of Transnistria — Law 334-ZID-VII of 8 November 2023
     url: https://president.gospmr.org/file.xp?file=83184
-    locator: >-
-      Article 1(4)–(6): drug use and public-use sanctions; article 2, fourteen days after official
-      publication
+    locator: "Article 1(4)–(6): drug use and public-use sanctions; article 2, fourteen days after official publication"
   vote:
-    title: >-
-      Novosti Pridnestrovya — Drug users will be unable to take a driving test for a year (25
-      October 2023)
-    url: >-
-      https://novostipmr.com/ru/content/upotrebivshie-narkotiki-voditeli-ne-smogut-peresdavat-na-prava-v
+    title: "Novosti Pridnestrovya — Drug users will be unable to take a driving test for a year (25 October 2023)"
+    url: https://novostipmr.com/ru/content/upotrebivshie-narkotiki-voditeli-ne-smogut-peresdavat-na-prava-v
   reform:
     title: President of Transnistria — Law 185-ZID-V of 8 October 2012
-    url: >-
-      https://ul-test.gospmr.org/documents/cac523ef-4b09-484f-b187-15405cd4f2d4/03a327c2-3135-4895-b729-8c6071810042/html/
-    locator: >-
-      Article 1(157)–(158), (162): personal possession, supply and cultivation; article 2, effective
-      1 October 2012
+    url: https://ul-test.gospmr.org/documents/cac523ef-4b09-484f-b187-15405cd4f2d4/03a327c2-3135-4895-b729-8c6071810042/html/
+    locator: "Article 1(157)–(158), (162): personal possession, supply and cultivation; article 2, effective 1 October 2012"
+  mak2018:
+    title: "Novosti Pridnestrovya — Dubossary residents face proceedings for growing prohibited plants (11 June 2018)"
+    url: https://novostipmr.com/ru/content/zhiteley-dubossarskogo-rayona-privlekut-k-otvetstvennosti-za
+  mak2024:
+    title: "Novosti Pridnestrovya — Bender resident faces criminal proceedings after police find 64 cannabis plants (16 August 2024)"
+    url: https://novostipmr.com/ru/content/zhitel-bender-ustroil-u-sebya-v-ogorode-narkoplantaciyu
+  telegram2024:
+    title: "Novosti Pridnestrovya — Tiraspol police detain woman retrieving dead-drop drug package (23 October 2024)"
+    url: https://novostipmr.com/ru/content/v-tiraspole-zaderzhali-devushku-podnyavshuyu-zakladku
+  prison2011:
+    title: "Novy Region — Transnistria reports its drug-offence prison population (1 September 2011)"
+    url: https://newdaynews.ru/pmr/346378.html
+    locator: "Justice ministry press service: 241 imprisoned for drug offences, 11% of sentenced prisoners"
