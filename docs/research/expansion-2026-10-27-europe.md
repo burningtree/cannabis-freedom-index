@@ -9,7 +9,7 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 | Slovenia | x | | |
 | Albania | x | | |
 | Kosovo | x | | |
-| Malta | | | |
+| Malta | x | | |
 | Estonia | | | |
 
 ## Slovenia (si) — done 2026-10-27 ~23:00 UTC
@@ -35,3 +35,12 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 - Gaps closed except old decades; 3 of 17 texts link history.
 - Gotcha: audit flags WRITING.md avoid-words ("establishes"); currency only with fine figures.
 - Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
+
+## Malta (mt) — done 2026-10-27 ~00:40 UTC
+- Profile: recreational + hemp (standard, no-track-found) + culture (qanneb, association scene) sections added; possession table (7g legal / 7–28g civil €50–100 / >28g criminal) + cultivation legal step; inline citations everywhere; history links (2021 legalisation).
+- Products NOT deleted: committed answers test (#160/#178) pins products text verbatim — restored after my deletion broke it; fold warning stands.
+- New source: Wiktionary qanneb (from Arabic qinnab, means hemp, verified).
+- Article: malta-hashish-to-tunisia-1895 (Duvall ch.9 note 95 p.319 verified in local PDF; shira naming, Malta sourcing, rope-island angle, 1939/2021 bookends).
+- Gaps closed except old decades; culture connects both atlas entries; 1+ texts link history.
+- Gotcha: committed tests beat guide rules — check answers:test before deleting pinned sections.
+- Audit 0 errors + 1 warning (products kept for test), answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
