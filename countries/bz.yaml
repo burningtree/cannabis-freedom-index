@@ -3,7 +3,7 @@ region: North America
 iso_numeric: 84
 recreational: decriminalised
 medical: none
-updated: 2026-10-14
+updated: '2026-10-27'
 summary: >-
   Since 2017 adults may possess up to 10 g and use it on private premises. A regulated market law
   was shelved.
@@ -35,10 +35,14 @@ segments:
     sources:
       - act
   cultivation:
-    text: Not allowed. Growing any amount of cannabis remains a criminal offence.
+    text: >-
+      Unauthorised drug-cannabis cultivation remains a criminal offence.[@wiki,tni] Industrial hemp is
+      a separate registered commercial crop under the hemp regulations, with a 0.3% THC ceiling in the
+      2020 consolidation.[@hemp_regs]
     sources:
       - wiki
       - tni
+      - hemp_regs
   enforcement:
     text: >-
       Small private possession is unpunished and minor violations are fines. Cultivation, larger
@@ -163,6 +167,17 @@ context:
       possession and trafficking.
     sources:
       - gb25
+  hemp:
+    status: standard
+    text: >-
+      Industrial hemp may contain no more than 0.3% THC under the 2020 amended
+      regulations.[@hemp_regs] Commercial growers and processors must register their activities and
+      fields or facilities with the agricultural authorities; a growing field must be at least one
+      acre.[@hemp_original] Movement requires a permit, and research on industrial hemp has a separate
+      licence.[@hemp_original]
+    sources:
+      - hemp_regs
+      - hemp_original
 sources:
   motortraffic2020:
     title: "Belize Attorney General's Ministry — Motor Vehicles and Road Traffic Act, Cap. 230, revised edition 2020 (PDF)"
@@ -182,9 +197,17 @@ sources:
   hemp_regs:
     title: Belize Misuse of Drugs (Industrial Hemp) Regulations, consolidated through 2020
     url: https://www.agm.gov.bz/uploads/laws/63f5161530204_Cap_103_Misuse_of_Drugs_Regulations_1.pdf
+    locator: >-
+      Regulations 3, 5–7 and 10–12; 0.3% in 2020 consolidation (S.I. 75/2020), registration, one-acre
+      minimum and industrial-hemp research
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
   gb25:
     title: "Greater Belize Media — police year-end figures on drugs and firearms (31 December 2025)"
     url: https://www.greaterbelize.com/?p=76658
+  hemp_original:
+    type: law
+    title: Belize — Misuse of Drugs (Industrial Hemp) Regulations 2019, original gazette reproduction
+    url: https://www.policytracker.bz/wp-content/uploads/2019/09/industrial-hemp-regulations-2019.pdf
+    locator: Regulations 5–7 and 10–12; original 1% threshold superseded by S.I. 75/2020

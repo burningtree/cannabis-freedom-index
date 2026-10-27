@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 428
 recreational: decriminalised
 medical: none
-updated: '2026-10-26'
+updated: '2026-10-27'
 summary: >-
   The first-offence small-quantity tier depends on the product: up to 1 g dried cannabis, 5 g
   undried, 0.1 g hashish or 0.05 g resin/oil/extract. Above the relevant ceiling, or after a repeat
@@ -31,12 +31,14 @@ segments:
       - kl
   cultivation:
     text: >-
-      Growing any number of plants is a criminal offence. Section 256 of the Criminal Law punishes
-      unauthorised sowing or growing of plants containing narcotic substances with up to two years
-      in prison, short-term detention, probation, community service or a fine, and up to five
-      years for a large area grown by an organised group.
+      Unauthorised sowing or growing of narcotic plants is criminal under section 256: up to two
+      years, short-term detention, probation, community service or a fine, and up to five years for a
+      large area grown by an organised group.[@kl] Outdoor sowing hemp for industry and gardening is
+      permitted under Article 6(2); Article 7 separately permits authorised research
+      cultivation.[@control]
     sources:
       - kl
+      - control
   enforcement:
     text: >-
       Small quantities are defined by product: 1 g dried marijuana, 5 g undried, 0.1 g hashish and
@@ -70,13 +72,13 @@ context:
   production:
     status: medical
     text: >-
-      Industrial hemp only. Fibre hemp returned to Latvian fields in 2009, when the first hundred
-      hectares were sown; growers have been mistaken for drug producers, as in 2018, when police
-      pulled up a pensioner's 363 plants and later apologised.
+      Industrial and garden sowing hemp may be grown outdoors under Article 6(2).[@control]
+      Separately, the State Agency of Medicines may permit controlled-plant cultivation for medical or
+      veterinary scientific research, chemical and physical analysis, and education under Article
+      7.[@control] This research route does not establish an operating patient-supply
+      industry.[@control]
     sources:
-      - wiki
-      - lvp10
-      - lsm21
+      - control
   products:
     text: No legal THC products.
     sources:
@@ -170,6 +172,16 @@ context:
       seizures differently, so the figures are not comparable across borders.
     sources:
       - euda_szr
+  hemp:
+    status: standard
+    text: >-
+      Sowing hemp may be grown for industry and gardening in open fields; indoor growing and
+      greenhouses are excluded.[@control] Industrial growers use certified EU-listed seed or
+      officially tested conservation-variety seed. The agriculture ministry describes this crop under
+      the below-0.3% THC standard.[@control,agriculture2024]
+    sources:
+      - control
+      - agriculture2024
 sources:
   de_cang:
     title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
@@ -243,6 +255,21 @@ sources:
     locator: >-
       Annex 2, section 7, item 4: cannabis product-specific small/large quantities, official English
       translation
+  control:
+    type: law
+    title: Latvia — Law on legal circulation of controlled substances, current consolidation
+    url: >-
+      https://likumi.lv/ta/id/40283-par-narkotisko-un-psihotropo-vielu-un-zalu-likumigas-aprites-kartibu
+    locator: >-
+      Articles 6(2) and 7; outdoor industrial/garden hemp and State Agency of Medicines
+      research-cultivation permit; indexed 2026 text read
+  agriculture2024:
+    type: report
+    title: Latvian Ministry of Agriculture — Agriculture in Latvia 2024, September 2025
+    url: https://www.zm.gov.lv/lv/media/17777/download?attachment=
+    locator: >-
+      Oilseed and fibre-crop section: industrial/garden hemp, approved certified seed, THC below 0.3%;
+      indexed passage read
 answers:
   carry:
     answer: 'no'

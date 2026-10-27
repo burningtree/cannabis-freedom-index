@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 440
 recreational: illegal
 medical: limited
-updated: 2026-10-25
+updated: '2026-10-27'
 summary: >-
   Possession of any amount has been a criminal offence since 2017; decriminalisation has been
   repeatedly debated. Cannabinoid medicines are permitted.
@@ -26,9 +26,13 @@ segments:
       - lrt1
       - lib
   cultivation:
-    text: Cultivation is a crime.
+    text: >-
+      Unauthorised narcotic cannabis cultivation remains a crime.[@lib] Compliant fibre hemp is
+      lawful, including tightly regulated garden cultivation on up to 0.1 ha at no more than twenty
+      plants per 100 m².[@hempguide]
     sources:
       - lib
+      - hempguide
   enforcement:
     text: >-
       Thousands of mostly young people acquire criminal records each year for small amounts — the
@@ -56,9 +60,15 @@ segments:
 context:
   production:
     status: medical
-    text: Industrial hemp only.
+    text: >-
+      Compliant fibre hemp has an agricultural growing and processing route.[@hempguide] Separately,
+      the medicines agency provides licences to manufacture medicinal products containing Schedule I
+      substances; applicants need a pharmaceutical manufacturing licence and the additional
+      controlled-substance licence.[@manufacture] This medicines route is distinct from the fibre-hemp
+      rules for fields and gardens.[@hempguide,manufacture]
     sources:
-      - lib
+      - hempguide
+      - manufacture
   products:
     text: Registered cannabinoid medicines only.
     sources:
@@ -137,6 +147,16 @@ context:
       seizures differently, so the figures are not comparable across borders.
     sources:
       - euda_szr
+  hemp:
+    status: standard
+    text: >-
+      Fibre hemp uses approved catalogue varieties at no more than 0.3% THC and certified
+      seed.[@hempcurrent,hempguide] It may also be grown among or beside garden plants on up to 0.1
+      ha, with at most twenty plants per 100 m², notification and seed-label requirements, and no
+      marketing of garden-grown products.[@hempguide]
+    sources:
+      - hempcurrent
+      - hempguide
 sources:
   hempcurrent:
     title: Lithuanian Food and Veterinary Service — hemp plant and finished-food THC limits
@@ -179,3 +199,10 @@ sources:
   euda_szr:
     title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
     url: https://www.euda.europa.eu/data/stats2026/szr_en
+  manufacture:
+    title: Lithuanian State Medicines Control Agency — controlled-medicine manufacturing licences
+    url: >-
+      https://vvkt.lrv.lt/en/licensing-of-pharmaceutical-activity-342/licensing-of-activity-related-to-narcotic-and-psychotropic-substances-of-schedule-ii-and-iii-or-psychotropic-substances-of-schedule-iii/
+    locator: >-
+      Manufacturing medicinal products containing Schedule I substances requires both pharmaceutical
+      and controlled-substance licences

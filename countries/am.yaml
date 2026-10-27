@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 51
 recreational: decriminalised
 medical: none
-updated: 2026-10-14
+updated: '2026-10-27'
 summary: >-
   Possession of small amounts without intent to sell is an administrative offence punished by a
   fine.
@@ -62,14 +62,14 @@ segments:
       - pan26
 context:
   production:
-    status: medical
+    status: hemp
     text: >-
-      Since June 2021 industrial hemp with no more than 0.3% THC may be produced and processed.
-      Licences are issued by the health ministry to companies only, for up to ten years, with
-      separate licences for growing and for trade and processing, a minimum capital of 10
-      million drams and growing in greenhouses. Six companies held licences in January 2022.
-      No cannabis with more THC may be produced.
+      The verified production route covers licensed industrial hemp, defined by CBD content greater
+      than THC and a THC ceiling of 0.3%.[@hempact] The programme described in 2022 required corporate
+      licences for production and processing; six companies held licences in January that
+      year.[@evn22]
     sources:
+      - hempact
       - evn22
   products:
     text: >-
@@ -150,6 +150,14 @@ context:
       comparable across borders.
     sources:
       - unodc_szr
+  hemp:
+    status: standard
+    text: >-
+      Licensed industrial hemp must have CBD content greater than THC and no more than 0.3% THC in the
+      sampled material.[@hempact] Companies may apply for industrial-hemp production and processing
+      licences; this agricultural category is separate from psychoactive cannabis.[@hempact]
+    sources:
+      - hempact
 sources:
   list1129:
     title: Armenia — Government Decision N 1129-N of 15 September 2003, list of controlled narcotic drugs and psychotropic substances (consolidated English translation, 2019)
@@ -188,3 +196,8 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  hempact:
+    type: law
+    title: Armenia — Narcotic Drugs and Psychotropic Substances Act, official consolidation
+    url: https://arlis.am/hy/acts/218654
+    locator: Article 3 industrial-hemp definition; industrial-hemp cultivation and licensing provisions
