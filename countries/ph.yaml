@@ -34,11 +34,34 @@ segments:
       - death
       - ra_primary
       - irr
+    currency: PHP
+    penalties:
+      - label: Under 300 g marijuana or 5 g resin
+        treatment: criminal
+        prison_min: 12 years
+        prison: 20 years
+        fine: 400000
+        note: Twelve years and one day to twenty years and ₱300,000–400,000
+      - label: 300 g to under 500 g, or 5 g to under 10 g resin
+        treatment: criminal
+        prison_min: 20 years
+        fine: 500000
+        note: Twenty years and one day to life and ₱400,000–500,000
+      - label: 500 g or more, or 10 g or more resin
+        treatment: criminal
+        fine: 10000000
+        note: Life imprisonment and ₱500,000–10 million; maximum at gatherings regardless of amount
   cultivation:
     text: >-
       Cultivating any marijuana plant carries life imprisonment and a fine of
       ₱500,000–10 million. The land or greenhouse can also be confiscated.
     sources: [ra, death]
+    currency: PHP
+    penalties:
+      - label: Cultivating any plant
+        treatment: criminal
+        fine: 10000000
+        note: Life imprisonment and ₱500,000–10 million; land or greenhouse confiscated
   enforcement:
     text: >-
       Ordinary small possession carries more than twelve years, while Section 13 requires maximum
@@ -59,35 +82,64 @@ segments:
     sources:
       - ra
       - death
+    currency: PHP
+    penalties:
+      - label: Sale, delivery or gift
+        treatment: criminal
+        fine: 10000000
+        note: Life imprisonment and ₱500,000–10 million, no lower tier
   consumption:
     text: >-
       Use is a separate offence. After a confirmatory positive test, a first offence means at least
       six months in a government rehabilitation centre; a second brings six years and one day to 12
       years in prison and a ₱50,000–200,000 fine.
     sources: [ra]
+    currency: PHP
+    penalties:
+      - label: First use offence
+        treatment: civil
+        note: At least six months in a government rehabilitation centre
+      - label: Second use offence
+        treatment: criminal
+        prison_min: 6 years
+        prison: 12 years
+        fine: 200000
+        note: Six years and one day to twelve years and ₱50,000–200,000
   access:
     text: >-
       No dispensary or ordinary pharmacy route exists. For a seriously ill patient, a treating
       physician or health institution may seek an FDA compassionate special permit to import an
       unregistered cannabis-based medicine for restricted use.
     sources: [pna, fda]
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Republic Act 9346 prohibited the death penalty in 2006, so trafficking now draws life
+      imprisonment instead; unauthorised importation carries life regardless of quantity.[@death,ra_primary]
+    sources: [death, ra_primary]
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited at any amount: possession starts at over twelve years,
+      selling or giving away brings life imprisonment, and use brings rehabilitation or prison.
+      A 2026 medical bill has not become law.[@ra,death,house]
+    sources:
+      - ra
+      - death
+      - house
   production:
     status: none
     text: None. Republic Act 9165 prohibits every form of unauthorised cannabis cultivation.
     sources: [ra]
-  products:
-    text: >-
-      No cannabis or CBD consumer products are lawful. The statutory definition covers every part
-      of the plant and its seeds, resin, extract and tincture.
-    sources: [ra, ddb]
   medical:
     text: >-
-      There is no medical-cannabis programme. The health department says marijuana remains illegal
-      unless an FDA compassionate special permit covers its use and importation. On 24 February
-      2026, two House committees approved a consolidated medical-cannabis bill subject to style and
-      amendments, but it has not become law.
-    sources: [pna, fda, house]
+      There is no medical-cannabis programme and no lawful cannabis or CBD consumer products;
+      the definition covers every part of the plant, its seeds, resin, extract and tincture.
+      The health department says marijuana remains illegal unless an FDA compassionate special
+      permit covers its use and importation. On 24 February 2026, two House committees approved
+      a consolidated medical-cannabis bill subject to style and amendments, but it has not
+      become law.
+    sources: [pna, fda, house, ra, ddb]
   consequences:
     text: >-
       Foreign nationals are deported after serving their sentence. Qualifying defendants may seek
