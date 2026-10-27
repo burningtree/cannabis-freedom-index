@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 36
 recreational: partial
 medical: legal
-updated: 2026-10-25
+updated: 2026-10-27
 summary: >-
   In the ACT an adult is outside the local small-possession and one-or-two-plant offences, within
   the limits ACT Policing states. Elsewhere, infringement notices, expiation fees, cautions and
@@ -47,6 +47,8 @@ segments:
       counselling.[@viclegalaid] In Tasmania, possessing or using a controlled plant is an offence
       of 50 penalty units or two years.[@tasact] ACT Policing states that Commonwealth law is
       applicable across Australia, including in the ACT, and that police may use it.[@actpolice]
+      The 2020 Territory reform is traced in the
+      [ACT legalisation](/history/australia-act-legalises-2020/).
     sources:
       - actpolice
       - actamend
@@ -58,6 +60,25 @@ segments:
       - nswguide
       - viclegalaid
       - tasact
+    currency: AUD
+    penalties:
+      - label: ACT adult exemption (50 g dried or 150 g fresh)
+        treatment: legal
+        term: Personal use
+        note: 18 and over, in the ACT; no sharing or sale; Commonwealth law still applies
+      - label: Simple cannabis offence (South Australia, expiation)
+        treatment: civil
+        term: Personal use
+        fine: 400
+        note: From $250 under 25 g to $400 for 25–100 g
+      - label: Cannabis Intervention Requirement (Western Australia)
+        treatment: civil
+        term: Personal use
+        note: One-off requirement for use or up to 10 g; the offence stays criminal
+      - label: Criminal possession elsewhere
+        treatment: criminal
+        term: Possession
+        note: Charges remain available in every state; amounts and tariffs vary
   cultivation:
     text: >-
       In the ACT, section 162 does not apply to a person 18 or older who cultivates one or two
@@ -81,6 +102,21 @@ segments:
       - ntact
       - nswdmt
       - wacir
+    currency: AUD
+    penalties:
+      - label: ACT home grow (one or two plants, household maximum four)
+        treatment: legal
+        term: Personal use
+        note: 18 and over, at home, no public access, no artificial cultivation; plants and harvest for the grower only
+      - label: One non-hydroponic plant (South Australia, expiation)
+        treatment: civil
+        term: Personal use
+        fine: 400
+      - label: General cultivation (Northern Territory example)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 2 years
+        note: "Under traffickable quantity: 200 penalty units or two years; five or more plants is traffickable"
   enforcement:
     text: >-
       In the ACT, growing other than where the person lives, or where the public can lawfully go,
@@ -99,7 +135,7 @@ segments:
   sharing:
     text: >-
       Even in the ACT it is an offence to give or sell cannabis to another person; plants and
-      harvest are for the grower only.
+      harvest are for the grower only.[@conv,ct]
     sources:
       - conv
       - ct
@@ -129,33 +165,47 @@ context:
     status: medical
     text: >-
       Federal licences cover cultivation and manufacture of medicinal cannabis and exports; hemp is
-      licensed by the states. No adult-use production.
-    sources:
-      - tga
-      - wiki
-  products:
-    text: >-
-      A wide range of prescription flower, oils, vapes and edibles in the medical channel, almost
-      all 'unapproved' products supplied under special-access rules. Nothing for general sale.
+      licensed by the states.[@tga] No adult-use production.
     sources:
       - tga
   medical:
     text: >-
       Among the easiest medical systems to use: any doctor can prescribe through the special-access
-      or authorised-prescriber pathways with no fixed list of conditions. Not subsidised, and
-      regulators have been tightening telehealth prescribing.
+      or authorised-prescriber pathways with no fixed list of conditions.[@tga] A wide range of
+      prescription flower, oils, vapes and edibles moves through the medical channel, almost all
+      'unapproved' products under special-access rules, with nothing for general sale.[@tga] Not
+      subsidised, and regulators have been tightening telehealth prescribing.[@tga]
     sources:
       - tga
-      - wiki
+  recreational:
+    text: >-
+      Adult use is partly decriminalised, not legal: the ACT exempts possession and home growing,
+      other states and territories answer small amounts with expiation fees, cautions or diversion,
+      and no jurisdiction has lawful sales.[@actpolice,conv] A federal Greens bill to legalise and
+      regulate recreational cannabis was voted down 13–24 in the Senate in November
+      2024.[@stratcann24] The federal vote is traced in the
+      [Senate rejection](/history/australia-senate-rejects-legalisation-2024/).
+    sources:
+      - actpolice
+      - conv
+      - stratcann24
+  hemp:
+    status: high
+    text: >-
+      Hemp is a state-licensed crop, not a Commonwealth one: growers hold state licences for
+      cultivation and processing, with crops capped at about 1% THC — Queensland, Western Australia
+      and South Australia each run their own licensing Acts and approved-seed rules.[@qldhemp]
+    sources:
+      - qldhemp
   consequences:
     text: >-
       Victoria removed automatic licence bans for eligible unimpaired medicinal-cannabis drivers in
-      March 2025. NSW Act 33 of 2026 received assent on 23 September 2026, but commencement of its
-      patient scheme was not established in this review. The announced scheme requires a
+      March 2025.[@aap26] NSW Act 33 of 2026 received assent on 23 September 2026, but commencement of its
+      patient scheme was not established in this review.[@nswReform26,nswParliament26] The announced scheme requires a
       prescription, registration and education, excludes learner, provisional and commercial
-      drivers, and retains a 24-hour ban after a positive roadside test. Queensland Act 23 of 2026
+      drivers, and retains a 24-hour ban after a positive roadside test.[@nswReform26] Queensland Act 23 of 2026
       received assent on 21 September 2026, with new presence-offence fine provisions commencing on
-      1 December 2026.
+      1 December 2026.[@qldAct26,qldCommence26]
     sources:
       - aap26
       - nswReform26
@@ -170,26 +220,41 @@ context:
     text: >-
       Even in the Australian Capital Territory, where adults may grow two plants, selling or
       supplying cannabis seeds is illegal and there is no legal way to obtain them; the only
-      lawful cannabis is what a resident grows. Commonwealth law is unchanged, and elsewhere
-      in Australia growing is an offence or a fine.
+      lawful cannabis is what a resident grows.[@adf] Commonwealth law is unchanged, and elsewhere
+      in Australia growing is an offence or a fine.[@adf]
     sources:
       - adf
+  culture:
+    text: >-
+      A foil-wrapped deal is a tinny in New Zealand and a foilie in Australia, sold from
+      ordinary-looking tinny houses to anyone with cash — a trade researchers found drew younger
+      and more Maori buyers without spreading harder drugs, deflating a 2000s panic that the houses
+      pushed methamphetamine.[@nzdf07] Its vocabulary is traced in
+      [tinny](/culture/language/tinny/). Nimbin in New South Wales calls itself the cannabis capital:
+      its MardiGrass protest-carnival has run every May since 1993 — the sixteenth was in 2008 —
+      vowing to repeat until prohibition ends.[@mardi08] Its story is traced in
+      [Nimbin MardiGrass](/culture/traditions/nimbin-mardigrass/) and the federal
+      [2023 bill](/history/australia-legalising-cannabis-bill-2023/) and
+      [2024 rejection](/history/australia-senate-rejects-legalisation-2024/).
+    sources:
+      - nzdf07
+      - mardi08
   driving:
     status: zero
     text: >-
       Road law belongs to the states, and the general model is a presence offence: detected THC
-      can be enough without proof of impairment. Victoria removed automatic licence bans for
-      eligible unimpaired medicinal-cannabis drivers in March 2025. NSW Act 33 of 2026 received
+      can be enough without proof of impairment.[@aap26] Victoria removed automatic licence bans for
+      eligible unimpaired medicinal-cannabis drivers in March 2025.[@aap26] NSW Act 33 of 2026 received
       assent on 23 September, but commencement of its patient scheme was not established in this
-      review; the government expected rollout in late 2026 or early 2027. Its announced scheme
+      review; the government expected rollout in late 2026 or early 2027.[@nswReform26,nswParliament26] Its announced scheme
       requires a prescription, registration and education, excludes learner, provisional and
-      commercial drivers, and retains a 24-hour ban after a positive roadside test. Laboratory
+      commercial drivers, and retains a 24-hour ban after a positive roadside test.[@nswReform26] Laboratory
       THC below 50 ng/ml would bring no further action; the first two detections at or above that
       level within two years would bring warnings, and the third a $722 fine and a minimum
-      three-month suspension. Impaired driving and mixed-drug offences remain punishable.
+      three-month suspension.[@nswReform26] Impaired driving and mixed-drug offences remain punishable.[@aap26]
       Queensland Act 23/2026 received assent on 21 September, with new presence-offence
-      fine provisions commencing on 1 December 2026. Its further testing and suspension
-      amendments still awaited proclamation in the reviewed legislative history.
+      fine provisions commencing on 1 December 2026.[@qldAct26,qldCommence26] Its further testing and suspension
+      amendments still awaited proclamation in the reviewed legislative history.[@qldCommence26]
     sources:
       - aap26
       - nswReform26
@@ -204,8 +269,8 @@ context:
       Institute proposed allowing not-for-profit clubs that would grow for adult members, for
       the large majority of users who would not grow their own; the bill's wording, which made
       it a crime to cultivate more than a few plants, made the model unworkable, and the law
-      as passed lets a person grow only for themselves. Giving cannabis to another person
-      remains an offence even there.
+      as passed lets a person grow only for themselves.[@ct19,conv] Giving cannabis to another person
+      remains an offence even there.[@ct]
     sources:
       - ct19
       - conv
@@ -214,24 +279,24 @@ context:
     status: none
     text: >-
       In the ACT, selling, sharing or giving cannabis is an offence, so a visitor has no lawful
-      adult-use purchase there. The sources behind this profile describe no separate rule for
+      adult-use purchase there.[@actpolice] The sources behind this profile describe no separate rule for
       visitors.
     sources:
       - actpolice
   arrests:
     text: >-
       The national Illicit Drug Data Report counted 66,285 cannabis arrests in Australia in
-      2020-21, 14% fewer than the year before. Nine in ten were consumer arrests, for
-      possession or use, and one in ten were provider arrests, for supply.
+      2020-21, 14% fewer than the year before.[@nceta] Nine in ten were consumer arrests, for
+      possession or use, and one in ten were provider arrests, for supply.[@nceta]
     sources:
       - nceta
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 5,312 kg of herbal
       cannabis seized in 2024, against 6,372 kg in 2023, and 55.2 kg of cannabis resin
-      seized in 2024, against 53.9 kg in 2023. The UN publishes them as kilogram
+      seized in 2024, against 53.9 kg in 2023.[@unodc_szr] The UN publishes them as kilogram
       equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
 sources:
@@ -311,12 +376,29 @@ sources:
     title: Controlled Substances (Controlled Drugs, Precursors and Plants) Regulations 2014 (SA)
     url: https://www.legislation.sa.gov.au/_legislation-documents/lz/c/r/controlled-substances-controlled-drugs-precursors-and-plants-regulations-2014/current/2014.236.auth.pdf
     locator: "Schedule 5 item 6 and regulation 15; version 27 June 2024"
-  wiki:
-    title: Wikipedia — Cannabis in Australia
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Australia
   tga:
     title: Therapeutic Goods Administration — Medicinal cannabis hub
     url: https://www.tga.gov.au/products/unapproved-therapeutic-goods/medicinal-cannabis-hub
+  stratcann24:
+    title: "StratCann — Australian Senate rejects cannabis legalization bill (27 Nov 2024)"
+    url: https://stratcann.com/news/australian-senate-rejects-cannabis-legalization-bill/
+    locator: 13–24 vote against the Legalising Cannabis Bill 2023 at second reading
+  qldhemp:
+    title: "Business Queensland — Growing industrial cannabis or hemp in Queensland"
+    url: https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/crops/field/industrial-cannabis-hemp
+    locator: Licensed grower/researcher licences; no more than 1% THC; medicinal extraction under industrial licence prohibited
+  convact20:
+    title: "The Conversation — ACT cannabis laws come into effect on Friday, but they may not be what you hoped for (27 Jan 2020)"
+    url: https://theconversation.com/act-cannabis-laws-come-into-effect-on-friday-but-they-may-not-be-what-you-hoped-for-130050
+    locator: 50 g dried, two plants per person, four per household; seeds gap; Commonwealth conflict
+  mardi08:
+    title: "Nimbin MardiGrass — 2008 programme (XVI)"
+    url: https://www.nimbinmardigrass.com/archives-history/2008/program08.html
+    locator: Sixteenth edition in 2008; HEMP Embassy reform rally, Hemp Olympix, volunteer-run
+  nzdf07:
+    title: "NZ Drug Foundation — Mythbusters: P and tinny houses (1 Feb 2007)"
+    url: https://drugfoundation.org.nz/news-and-reports/p-and-tinny-houses
+    locator: 2003 Turner release; 2005 monitoring study; no lacing or free-sample cases found
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
