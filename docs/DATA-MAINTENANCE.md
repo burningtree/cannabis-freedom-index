@@ -1075,6 +1075,15 @@ restriction, and the Norway "1965 tinctures" entry became Norway's first cannabi
 
 ## Reporting back
 
+A [Luxembourg, Switzerland and Taiwan extension](research/profile-extension-lu-ch-tw-2026-10-27.md)
+on 27 October 2026 adds seven context sections, four penalty tables, two articles and
+two history entries, and corrects five existing history records. It separates Luxembourg's
+warning payment from criminal fines, Swiss trial duration from the enabling law's lifetime,
+and Taiwan's parliamentary vote from commencement. Taiwan's medical label becomes `limited`
+on the official hospital-application framework; access remains 0 without verified routine
+dispensing. All current segment scores are preserved. The note records the medical-stock,
+trial-sample and product-specific limits on the evidence.
+
 A [review of all 20 open bug reports #220–240](research/bug-review-220-240-2026-10-27.md)
 on 27 October 2026 corrects seventeen profiles, their short answers, specimen-specific
 driving thresholds and conditional penalties. Taiwan and Dominica gain penalty tables;

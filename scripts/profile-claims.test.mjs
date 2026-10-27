@@ -796,3 +796,52 @@ test('Singapore repeat consumption includes LT tiers and exemptions (#240)', () 
   assert.match(d.segments.consumption.text, /women and men over 50/);
   assert.match(d.answers.caught.text, /13 years and 12 strokes/);
 });
+
+test('Luxembourg penalty comparisons distinguish warning payments, criminal fines and growing conditions', () => {
+  const d = country('lu'), p = d.segments.possession, g = d.segments.cultivation;
+  assert.equal(p.penalties[0].treatment, 'criminal');
+  assert.equal(p.penalties[0].fine, 500);
+  assert.match(p.penalties[0].note, /€145.*alternative to court/);
+  const possession = penaltySummary(p.penalties.map(penaltyRow));
+  assert.equal(possession.freeUpTo, 0);
+  assert.equal(possession.smallPrisonDays, 180);
+  const growing = penaltySummary(g.penalties.map(penaltyRow));
+  assert.equal(growing.freeUpTo, 4);
+  assert.equal(growing.smallPrisonDays, 0);
+  assert.equal(g.penalties[2].upto, undefined);
+  assert.match(g.penalties[2].note, /within the four-plant cap/);
+  assert.match(d.answers.caught.text, /criminal fine/);
+  assert.match(d.context.medical.text, /60 g per 28 days.*stopped restocking/);
+});
+
+test('Swiss small-possession table excludes consumption and trial research retains scope', () => {
+  const d = country('ch'), p = d.segments.possession;
+  const summary = penaltySummary(p.penalties.map(penaltyRow));
+  assert.equal(summary.freeUpTo, 10);
+  assert.equal(summary.crimeFrom, 10);
+  assert.equal(summary.smallPrisonDays, 0);
+  assert.match(p.penalties[0].note, /consuming.*separately/);
+  assert.equal(d.context.hemp.status, 'high');
+  assert.equal(d.context.production.status, 'pilot');
+  assert.equal(d.context.research.status, 'licensed');
+  assert.match(d.context.research.text, /enrolled participants, not the whole country/);
+  const pilot = events().find(e => e.id === 'switzerland-pilot-law-2021');
+  assert.match(pilot.description, /law ran for ten years.*trial was limited to five years/);
+});
+
+test('Taiwan distinguishes legislative passage, effective growing penalties and exceptional medicine permission', () => {
+  const d = country('tw'), p = d.segments.cultivation;
+  assert.equal(penaltySummary(p.penalties.map(penaltyRow)).smallPrisonDays, 7 * 365);
+  assert.equal(p.penalties[0].prison_min, '1 year');
+  assert.equal(p.penalties[1].prison, '15 years');
+  assert.equal(d.medical, 'limited');
+  assert.equal(d.scores.access, 0);
+  assert.match(d.context.medical.text, /Dravet and Lennox–Gastaut/);
+  assert.equal(d.context.hemp.status, undefined);
+  const all = events();
+  assert.equal(all.find(e => e.id === 'taiwan-personal-cultivation-amendment-2022').date, '2022-05-04');
+  const explanation = all.find(e => e.id === 'taiwan-cbd-rule-2020');
+  assert.equal(explanation.date, '2020-05-07');
+  assert.equal(explanation.category, 'medical');
+  assert.match(all.find(e => e.id === 'taiwan-interpretation-790-2020').description, /after that deadline.*up to half/);
+});

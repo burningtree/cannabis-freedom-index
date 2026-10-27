@@ -2,7 +2,7 @@ name: Taiwan
 region: Asia
 iso_numeric: 158
 recreational: illegal
-medical: none
+medical: limited
 updated: '2026-10-27'
 summary: "Category 2 narcotic: up to three years for use; growing for personal use carries one to seven years since 2022, other cultivation at least five."
 scores:
@@ -37,13 +37,36 @@ segments:
     sources:
       - moj
   cultivation:
+    currency: TWD
+    penalties:
+      - over: 0 plants
+        treatment: criminal
+        prison_min: 1 year
+        prison: 7 years
+        fine: 1000000
+        note: >-
+          Minor personal-use cultivation under article 12(3); the circumstances, not a plant-count
+          cap, determine eligibility
+      - label: Cultivation with intent to manufacture outside the minor personal-use tier
+        treatment: criminal
+        prison_min: 5 years
+        prison: 15 years
+        fine: 5000000
+        note: >-
+          Five-year minimum under article 12(2); ordinary fixed-term ceiling under Criminal Code
+          article 33
     text: >-
-      Growing cannabis was punished with a minimum of five years until the Constitutional Court
-      found that disproportionate. A 2022 amendment set one to seven years and a fine of up to NT$1
-      million for growing for personal use where circumstances are minor.
+      Cultivating cannabis with intent to manufacture narcotics carries at least five years and an
+      optional fine up to NT$5 million. Since 4 May 2022, minor personal-use cases carry one to
+      seven years and an optional fine up to NT$1 million.[@moj,mojhistory] The lower band
+      requires those circumstances; it is not a permitted plant allowance.[@courtclarification]
+      The ordinary fixed-term ceiling for the general tier is fifteen years, before any separately
+      applicable enhancement.[@code33]
     sources:
-      - tn
-      - ts
+      - moj
+      - mojhistory
+      - courtclarification
+      - code33
   enforcement:
     text: >-
       Strictly enforced, with arrests rising and little political appetite for reform despite annual
@@ -62,25 +85,26 @@ segments:
     sources:
       - ts
   access:
-    text: None.
+    text: >-
+      Individual prescription imports of CBD medicines are possible; specified hospitals may apply
+      for controlled cannabinoid preparations for two rare epilepsy syndromes. Routine operating
+      THC supply was not verified.[@moh2020]
     sources:
-      - aj
+      - moh2020
 context:
   production:
     text: None; even industrial hemp cultivation is not permitted.
     sources:
       - aj
-  products:
-    text: >-
-      CBD is regulated as a medicine and may be imported for personal use with a prescription; THC
-      content must be negligible.
-    sources:
-      - aj
-      - ts
   medical:
-    text: No medical cannabis programme beyond prescription CBD.
+    text: >-
+      CBD medicines have a prescription-and-import route, with individual approval required for
+      personal imports.[@moh2020] The Health Ministry also describes a special hospital
+      application route for controlled cannabinoid preparations for Dravet and Lennox–Gastaut
+      syndromes.[@moh2020] This is a narrow authorisation framework; routine patient dispensing of
+      THC preparations was not established in the reviewed evidence.[@moh2020]
     sources:
-      - aj
+      - moh2020
   consequences:
     text: A conviction is a criminal record; rehabilitation orders are recorded.
     sources:
@@ -145,6 +169,25 @@ context:
       Taiwan.
     sources:
       - tt24
+  recreational:
+    text: >-
+      Holding, using and growing cannabis remain controlled offences; the lower personal-growing
+      band still carries prison.[@moj] The court identifies very small crops for the grower’s own
+      use as an example of a minor case, leaving the assessment to judges.[@courtclarification]
+      There is no adult-use retail permission in these provisions.[@moj]
+    sources:
+      - moj
+      - courtclarification
+  hemp:
+    text: >-
+      CBD is regulated separately from cannabis and THC as a medicine.[@moh2020] Product-specific
+      exceptions need separate reading: the 2026 cosmetics guidance allows hemp-seed oil
+      ingredients only with a final-product THC residue of no more than 10 ppm.[@cosmetics2026]
+      That cosmetic threshold is not a permission to grow cannabis plants.[@moj,cosmetics2026]
+    sources:
+      - moh2020
+      - cosmetics2026
+      - moj
 sources:
   rtmpa35:
     title: Taiwan — Road Traffic Management and Penalty Act, Article 35 (Laws and Regulations Database, amended 28 May 2025)
@@ -165,6 +208,27 @@ sources:
   tt24:
     title: "Taipei Times — 'Zombie vape' use increases 58-fold: prosecutors (28 October 2024)"
     url: https://www.taipeitimes.com/News/Taiwan/archives/2024/10/28/2003825985
+  court790:
+    title: Taiwan Judicial Yuan — Interpretation 790, 20 March 2020
+    url: https://cons.judicial.gov.tw/jcc/zh-tw/jep03/show?expno=790
+  courtclarification:
+    title: Taiwan Judicial Yuan — Clarification of the minor-cultivation ruling, 6 April 2020
+    url: https://www.judicial.gov.tw/en/cp-1637-193125-c56ca-2.html
+  mojhistory:
+    title: Taiwan Ministry of Justice — Narcotics Hazard Prevention Act legislative history
+    url: https://law.moj.gov.tw/ENG/LawClass/LawHistory.aspx?pcode=C0000008
+    locator: '2022 entry: articles 12 and 36 promulgated and effective 4 May 2022'
+  moh2020:
+    title: Taiwan Ministry of Health and Welfare — Response to medical cannabis petition, 7 May 2020
+    url: https://www.mohw.gov.tw/cp-16-53091-1.html
+  cosmetics2026:
+    title: >-
+      Taiwan Food and Drug Administration — Hemp-seed oil cosmetics and THC residues, 19 January
+      2026
+    url: https://www.fda.gov.tw/tc/csmnewsContent.aspx?id=7574&mid=271
+  code33:
+    title: Taiwan Criminal Code — article 33, ordinary fixed-term imprisonment ceiling
+    url: https://mojlaw.moj.gov.tw/ENG/LawContentE.aspx?LSID=fl001424&media=print
 answers:
   caught:
     answer: 'no'
@@ -172,3 +236,8 @@ answers:
     text: >-
       Possession can bring prison; more than 20 g of pure Category 2 narcotic carries six months
       to five years
+  buy:
+    answer: limited
+    text: >-
+      Narrow prescription/import and special hospital authorisation routes exist; routine THC
+      dispensing was not verified

@@ -22,11 +22,24 @@ answers:
     text: Up to 10 g is not punishable and cannot be confiscated
 segments:
   possession:
+    penalties:
+      - upto: 10 g
+        treatment: legal
+        note: >-
+          Personal-use possession is not punishable and cannot be confiscated for destruction;
+          consuming it remains separately punishable
+      - over: 10 g
+        treatment: criminal
+        term: Personal-use offence
+        note: >-
+          A fine under article 19a; minor cases may be discontinued. Supply offences have
+          different penalties
     text: >-
       Possessing up to 10 g of cannabis for personal use is not punishable.[@bag] The Federal
       Supreme Court also ruled that cannabis held under that exemption cannot be confiscated for
       destruction.[@court23] Cannabis with less than 1% total THC falls outside narcotics
-      control.[@law]
+      control.[@law] Outside the small-quantity exemption, unauthorised personal-use possession is
+      punishable by a fine under article 19a; minor cases may be discontinued.[@court23]
     sources:
       - bag
       - court23
@@ -82,25 +95,16 @@ segments:
       - bag
 context:
   production:
+    status: pilot
     text: >-
       Medical growers need a Swissmedic establishment licence and a separate cultivation licence
       for each crop, with traceability and a written agreement for the harvest.[@swissmedic]
-      Producers supplying scientific trials need an exceptional licence from the Federal Office
-      of Public Health.[@faq] Hemp below 1% THC falls outside narcotics control.[@law]
+      Producers supplying scientific trials need an exceptional licence from the Federal Office of
+      Public Health.[@faq] Hemp below 1% THC falls outside narcotics control.[@law]
     sources:
       - swissmedic
       - faq
       - law
-  products:
-    text: >-
-      Pilot trials may supply flower, hashish, extracts and products intended for eating or
-      drinking, subject to quality controls.[@faq] Products below 1% THC still face rules for
-      their category, such as medicines, food or tobacco products.[@law] Cannabinoids and
-      cannabinoid-containing extracts sold as foods require novel-food authorisation.[@food]
-    sources:
-      - faq
-      - law
-      - food
   medical:
     text: >-
       Since 1 August 2022 doctors can prescribe cannabis medicines, including flower and
@@ -111,12 +115,17 @@ context:
       - medical
   consequences:
     text: >-
-      Possessing up to 10 g for personal use is exempt from punishment, while consuming it can
-      still bring a fine.[@bag] Driving rules separately presume unfitness once THC reaches 1.5
-      micrograms per litre of blood, a rule upheld by the Federal Supreme Court.[@drive]
+      Personal possession up to 10 g is unpunished and protected against confiscation for
+      destruction; consuming cannabis can still bring a fine.[@court23,bag] The driving section
+      explains a separate whole-blood THC threshold and its measurement-confidence
+      deduction.[@drive,drive_tolerance] Prescribed use has a distinct exception to the automatic
+      finding of unfitness.[@vrv]
     sources:
+      - court23
       - bag
       - drive
+      - drive_tolerance
+      - vrv
   planting:
     seeds: illegal
     seeds_trade: banned
@@ -159,14 +168,14 @@ context:
   black_market:
     text: >-
       A 2020 study led by Addiction Switzerland, based on research in Vaud and extrapolated
-      nationally, estimated annual cannabis consumption at 40–60 tonnes and market value at up
-      to CHF500 million.[@swi20] It described imported hashish coming almost entirely from
-      Morocco and illegal cannabis being mixed with cheaper legal CBD products.[@swi20] In the
-      later scientific trials, the federal evaluation reports that most participants obtained
-      their cannabis exclusively through the legal trial supply.[@results]
+      nationally, estimated annual cannabis consumption at 40–60 tonnes and market value at up to
+      CHF500 million.[@swi20] It described imported hashish coming almost entirely from Morocco
+      and illegal cannabis being mixed with cheaper legal CBD products.[@swi20] In the later
+      trials, the university evaluation found legal outlets had become the main source for most
+      participants.[@evaluation2025]
     sources:
       - swi20
-      - results
+      - evaluation2025
   visitors:
     status: residents
     text: >-
@@ -186,6 +195,40 @@ context:
       drugs.[@bfs_pks24]
     sources:
       - bfs_pks24
+  recreational:
+    text: >-
+      Registered trial participants can buy controlled cannabis products through approved outlets,
+      including pharmacies and social clubs.[@faq] The studies accept adults who already use
+      cannabis and live in the participating canton.[@participation] Outside those routes, the
+      general supply ban remains, while products below 1% THC follow separate product rules.[@law]
+    sources:
+      - faq
+      - participation
+      - law
+  hemp:
+    status: high
+    text: >-
+      Hemp below 1% total THC falls outside narcotics control, with separate rules depending on
+      whether it is sold as a medicine, food or smoking product.[@law] Low THC alone does not make
+      CBD foods marketable: cannabinoid-rich extracts generally require novel-food
+      authorisation.[@food] Ordinary hemp seeds and seed oil have a different food history from
+      cannabinoid extracts.[@food]
+    sources:
+      - law
+      - food
+  research:
+    status: licensed
+    text: >-
+      Researchers can seek federal permission for controlled adult-use supply trials, with defined
+      populations, products and evaluation plans.[@pilotbasis,faq] Lausanne and Northwestern
+      Switzerland universities evaluated seven trials containing about 10,400 adults in June
+      2025.[@evaluation2025] Their report combines trial data, case studies and expert interviews;
+      early movement towards legal supply describes enrolled participants, not the whole
+      country.[@evaluation2025]
+    sources:
+      - pilotbasis
+      - faq
+      - evaluation2025
 sources:
   swi20:
     title: >-
@@ -252,3 +295,16 @@ sources:
     title: Zurich Administrative Court — VB.2017.00712, 22 February 2018, section 4.3
     url: >-
       https://entscheidsuche.ch/docs/ZH_Verwaltungsgericht/ZH_VG_001_-VB-2017-00712_2018-02-22.html
+  evaluation2025:
+    title: >-
+      Hadorn, Mavrot and Novet — Cannabis pilot trials in Swiss cities, Part Two: executive
+      summary, 17 November 2025
+    url: >-
+      https://www.bag.admin.ch/dam/en/sd-web/l6svZGPjJ1bp/Analyse_Pilotversuche_Cannabis_Executive%20Summary_2025_EN.pdf
+    locator: Abstract and sections on methods and trial conditions; data through July 2025
+  pilotbasis:
+    title: >-
+      Federal Office of Public Health — Pilot trials with cannabis: legal basis and ten-year
+      experimental article
+    url: >-
+      https://www.bag.admin.ch/bag/de/home/gesund-leben/sucht-und-gesundheit/cannabis/pilotprojekte.html

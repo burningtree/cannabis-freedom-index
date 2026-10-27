@@ -5,8 +5,9 @@ recreational: legal
 medical: legal
 updated: '2026-10-27'
 summary: >-
-  Since 2023 adults may grow four plants per household and consume at home. Carrying up to 3 g in
-  public is a fine. There is no legal recreational market.
+  Adults may grow four plants from seed per household and use their harvest at home. Small
+  possession elsewhere can bring a €145 warning payment or a criminal fine. There is no legal
+  recreational retail market.
 scores:
   possession: 4
   cultivation: 4
@@ -16,29 +17,59 @@ scores:
   access: 1
 segments:
   possession:
+    currency: EUR
+    penalties:
+      - upto: 3 g
+        treatment: criminal
+        fine: 500
+        note: >-
+          Away from the authorised home; €145 warning payment is an alternative to court. Lawfully
+          grown harvest may be kept at home
+      - over: 3 g
+        treatment: criminal
+        prison_min: 8 days
+        prison: 6 months
+        fine: 2500
+        note: Unauthorised personal possession; the home-grown harvest exception remains separate
     text: >-
-      At home there is no gram limit on what your own plants produce. In public, cannabis is still
-      prohibited: carrying up to 3 g is no longer a crime but brings a €145 fine, and anything above
-      3 g is a criminal offence. So possession is only really free inside your own home.
+      Adults may keep the harvest of their lawful home-grown plants at home. Away from the
+      authorised home, personal possession up to 3 g can be settled by a €145 warning payment; the
+      court alternative is a €25–500 criminal fine. Above 3 g, the personal-possession range is
+      eight days to six months and/or €251–2,500.[@loi2023]
     sources:
-      - mondaq
-      - cms
+      - loi2023
   cultivation:
+    currency: EUR
+    penalties:
+      - upto: 4 plants
+        treatment: legal
+        note: >-
+          Adults, from seed, per household, at the authorised residence and hidden from public
+          view
+      - over: 4 plants
+        treatment: criminal
+        prison_min: 8 days
+        prison: 5 years
+        fine: 250000
+      - label: Cultivation outside the authorised residence
+        treatment: criminal
+        prison_min: 8 days
+        prison: 5 years
+        fine: 250000
+        note: Applies even within the four-plant cap
     text: >-
-      Since 21 July 2023 adults may grow up to four plants per household — not per person — from
-      seed, at their usual residence, indoors or out as long as the plants cannot be seen from the
-      public road. Exceeding four plants or growing elsewhere is a criminal offence with fines.
+      Adults may grow four plants per household from seed at their home or habitual residence, out
+      of public view. More than four plants, or cultivation outside the authorised location,
+      carries eight days to five years and/or €500–250,000.[@loi2023]
     sources:
-      - mondaq
-      - idpc
+      - loi2023
   enforcement:
     text: >-
-      Home use and growing within the limits are unpunished, and small public possession is a fixed
-      fine rather than a prosecution. Above 3 g in public, more than four plants, and any supply
-      remain criminal.
+      Home cultivation and use are allowed within the conditions. Small unauthorised possession
+      can receive a €145 warning payment or a criminal fine. More than 3 g, breaches of the
+      cultivation conditions and use in specified settings can bring prison.[@homeguide]
     sources:
-      - mondaq
-      - cms
+      - homeguide
   sharing:
     text: >-
       Not allowed. Home-grown cannabis is for the household's own use, and handing it to anyone
@@ -48,11 +79,12 @@ segments:
       - mondaq
   consumption:
     text: >-
-      Legal at home only. Consumption in public remains prohibited, and using in front of minors is
-      an aggravating circumstance.
+      Adults may use their lawful harvest at home. Public use can receive a €145 warning payment
+      or €25–500 criminal fine. Use at work, in schools or in the presence of minors can bring
+      eight days to six months and/or €251–2,500; using together with minors carries six months to
+      two years and/or €500–25,000.[@homeguide]
     sources:
-      - idpc
-      - mondaq
+      - homeguide
   access:
     text: >-
       There is no legal place to buy cannabis. Seeds can be bought in shops or online; a planned
@@ -68,27 +100,29 @@ context:
       under state contract.
     sources:
       - guide
-  products:
-    text: >-
-      Whatever a household makes from its four plants for its own use. Nothing may be sold; low-THC
-      hemp products are sold under separate rules.
-    sources:
-      - guide
-      - cms
   medical:
     text: >-
-      Medical cannabis has been available since 2018 for a short list of conditions such as chronic
-      pain, chemotherapy-related nausea and multiple-sclerosis spasticity, prescribed by trained
-      doctors and dispensed free of charge by hospital pharmacies.
+      Patients obtain prescribed cannabis free from hospital pharmacies, through a doctor with the
+      required certified training.[@patientguide] Eligibility covers specified severe pain
+      conditions, chemotherapy-related nausea or vomiting, and multiple-sclerosis spasticity;
+      patients must meet a residence, nationality or Luxembourg insurance
+      condition.[@patientguide] From January 2025 the programme reduced the flower allowance to 60
+      g per 28 days and stopped restocking THC-dominant flower, with existing stock dispensable
+      until exhausted.[@med2025,medfaq] CBD-dominant and balanced flower and three cannabinoid
+      profiles of oil remained in the announced programme.[@med2025]
     sources:
-      - guide
+      - patientguide
+      - med2025
+      - medfaq
   consequences:
     text: >-
-      The €145 fine leaves no criminal record. Drug-driving law uses a very low THC blood threshold,
-      so a home user can be over the limit well after use.
+      Paying a €145 warning and receiving a court-imposed criminal fine are different outcomes
+      under the small-possession procedure.[@loi2023] Driving has a separate offence threshold of
+      1 ng/mL or more in blood serum.[@healthfaq] Home-growing permission provides no exemption
+      from that road rule.[@healthfaq]
     sources:
-      - mondaq
-      - guide
+      - loi2023
+      - healthfaq
   planting:
     seeds: legal
     seeds_trade: open
@@ -104,13 +138,15 @@ context:
   visitors:
     status: none
     text: >-
-      Nobody can buy cannabis legally in Luxembourg, resident or not. The only lawful source
-      is up to four plants grown at a person's own habitual residence, which a visitor does
-      not have, and passing cannabis to someone else is banned. In public a visitor is treated
-      like anyone else: up to 3 g brings a fine of 145 euros, more than that is a criminal
-      offence.
+      Recreational shops are not authorised.[@homeguide] A visitor carrying up to 3 g away from an
+      authorised residence can receive the €145 warning payment or a criminal fine; larger amounts
+      can bring prison.[@loi2023] Medical eligibility is broader than residence alone: Luxembourg
+      nationality or insurance can also qualify a patient, subject to the programme’s medical
+      conditions.[@patientguide]
     sources:
-      - pplu25
+      - homeguide
+      - loi2023
+      - patientguide
   driving:
     status: limit
     text: >-
@@ -160,6 +196,25 @@ context:
       - pplu25
       - pardal20
       - le25
+  recreational:
+    text: >-
+      Home growing is the lawful personal supply route: adults can raise four plants from seed per
+      household at their usual residence.[@loi2023] The permission does not create shops or a
+      right to pass cannabis to another household.[@homeguide] Carrying the harvest away from home
+      brings the separate possession rules into play.[@loi2023]
+    sources:
+      - loi2023
+      - homeguide
+  hemp:
+    status: standard
+    text: >-
+      Hemp from authorised industrial varieties is treated separately, with a field-crop THC
+      reference of 0.3%.[@foodhemp] That crop threshold does not authorise the same concentration
+      in food.[@foodhemp] Hemp seeds and their oil have an established food use, while
+      cannabinoid-rich CBD extracts require novel-food authorisation before sale as
+      food.[@foodhemp]
+    sources:
+      - foodhemp
 sources:
   pardal20:
     title: Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe, European Journal of Criminology (2020, PDF)
@@ -201,3 +256,39 @@ sources:
   healthfaq:
     title: Luxembourg Ministry of Health — Cannabis FAQ, effects on drivers
     url: https://santesecu.public.lu/en/support/faq/cannabis.html
+  homeguide:
+    title: 'Luxembourg Health Ministry — Home cultivation: permissions and applicable sanctions'
+    url: >-
+      https://santesecu.public.lu/en/espace-citoyen/departement-sante/prevention/05-cannabis/usage-non-medical/culture-domicile.html
+  med2025:
+    title: Luxembourg Health Ministry — Changes to the medical cannabis programme, 29 November 2024
+    url: >-
+      https://gouvernement.lu/fr/actualites/toutes_actualites/communiques/2024/11-novembre/29-modifications-cannabis-medicinal.html
+  medfaq:
+    title: >-
+      Luxembourg Health Ministry — Medical cannabis FAQ: flower stock replenishment from 1 January
+      2025
+    url: https://santesecu.public.lu/fr/support/faq/cannabis.html
+  patientguide:
+    title: >-
+      Luxembourg Health Ministry — Cannabis and hemp products, medical eligibility and hospital
+      dispensing
+    url: >-
+      https://securite-alimentaire.public.lu/dam-assets/fr/professionnel/Denrees-alimentaires/Nouveaux-aliments/cannabis-produits-derives-du-cannabis-et-du-chanvre-fr.pdf
+    locator: Medical section, pp. 10–11
+  foodhemp:
+    title: Luxembourg food-safety authority — Hemp/cannabis and CBD extracts
+    url: >-
+      https://securite-alimentaire.public.lu/fr/professionnel/Denrees-alimentaires/Nouveaux-aliments/Denrees-alimentaires-base-chanvre-CBD.html
+answers:
+  carry:
+    answer: limited
+    text: >-
+      Home-grown harvest may stay at home; up to 3 g elsewhere can bring a €145 warning payment
+      or criminal fine
+  caught:
+    answer: limited
+    label: Fine or prison
+    text: >-
+      Small unauthorised possession can bring a warning payment or criminal fine; over 3 g and
+      cultivation breaches can bring prison
