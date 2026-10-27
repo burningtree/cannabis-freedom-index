@@ -3,12 +3,12 @@ region: Europe
 iso_numeric: 620
 recreational: decriminalised
 medical: legal
-updated: 2026-10-23
+updated: '2026-10-27'
 summary: >-
-  All drugs were decriminalised in 2001. Since 1 October 2023, 25 g of flower and 5 g of hashish
-  are the ten-day reference amounts: proven personal possession stays an administrative matter
-  for a dissuasion commission even above them, while a larger amount can still start a criminal
-  inquiry. Cultivation remains a crime. Portugal is a major medical exporter.
+  All drugs were decriminalised in 2001. Since 1 October 2023, 25 g of flower and 5 g of hashish are
+  the ten-day reference amounts: proven personal possession stays an administrative matter for a
+  dissuasion commission even above them, while a larger amount can still start a criminal inquiry.
+  Cultivation remains a crime. Portugal is a major medical exporter.
 scores:
   possession: 3
   cultivation: 1
@@ -19,161 +19,231 @@ scores:
 segments:
   possession:
     text: >-
-      Since July 2001, possession for personal use is an administrative matter. Police confiscate
-      the cannabis and refer the person to a regional dissuasion commission, which can suspend
-      the case, fine them or recommend treatment. Since 1 October 2023 the figures of 25 g of
-      flower and 5 g of hashish are the average ten-day amounts. Holding more is a sign that the
-      purpose may be something other than personal use, and the police can still seize it and
-      open an inquiry. Where a judicial authority finds the cannabis was only for personal use,
-      it closes the criminal case and sends the person to the commission.
+      Personal-use possession is an administrative offence under the [2001
+      reform](/history/portugal-decriminalisation-2001/), with confiscation and referral to a
+      dissuasion commission.[@use] Since [1 October
+      2023](/history/portugal-personal-use-quantity-2023/), exceeding the ten-day reference amount
+      is evidence of a possible different purpose, rather than an automatic possession crime: proven
+      exclusive personal use is referred back to the commission.[@law55] The existing reference
+      amounts are 25 g flower and 5 g resin.[@qmhc] For a non-dependent user, the statutory cannabis
+      fine converts to €24.94–149.64; first cases without an earlier administrative proceeding must
+      be provisionally suspended.[@use,euro]
     sources:
-      - law
+      - use
       - law55
       - qmhc
+      - euro
+    currency: EUR
     penalties:
-      - label: Personal-use possession (administrative)
+      - label: Personal-use possession or use
         treatment: civil
-        note: Confiscation and referral to a dissuasion commission, which can suspend the case, fine or recommend treatment; 25 g flower and 5 g hashish are the ten-day reference amounts
+        term: Law 30/2000, Articles 2, 11, 15–16
+        fine_min: 24.94
+        fine: 149.64
+        note: >-
+          Fine range for non-dependent users; first proceedings must be suspended if statutory
+          conditions apply; dependent users receive non-monetary sanctions
   cultivation:
     text: >-
-      Not covered by decriminalisation. Growing any number of plants, even one for yourself, is a
-      criminal offence under the drug-trafficking law.
+      Growing for personal use remains criminal under current Article 40(1): up to three months in
+      prison or a fine of up to thirty days.[@drug] The court may waive punishment under paragraph
+      5.[@drug] There is no statutory one-plant exemption; growing for supply falls under the
+      separate trafficking provisions.[@drug]
     sources:
-      - qmhc
-      - grow
+      - drug
+    penalties:
+      - label: Unauthorised cultivation for personal use
+        treatment: criminal
+        term: Decree-Law 15/93, Article 40(1), (5)
+        prison: 3 months
+        note: Or a fine of up to thirty days; punishment may be waived; no statutory plant allowance
+      - label: Unauthorised cultivation for supply — ordinary offence
+        treatment: criminal
+        term: Article 21(1)
+        prison_min: 4 years
+        prison: 12 years
+        note: Lesser-gravity and other special provisions can apply
   enforcement:
     text: >-
-      Personal use is handled with administrative sanctions, often waived. Above the ten-day
-      reference amount, a criminal inquiry can continue until exclusive personal use is shown.
-      Growing and dealing carry prison sentences.
+      Personal use and possession go through dissuasion commissions, with mandatory provisional
+      suspension for a first non-dependent case where the statutory conditions apply.[@use] The 2023
+      clarification keeps proven exclusive personal possession administrative even beyond the
+      ten-day reference amount.[@law55] Cultivation and supplying another person remain outside that
+      protection.[@drug]
     sources:
-      - qmhc
-      - law
+      - use
       - law55
+      - drug
   sharing:
     text: >-
-      Supplying cannabis to someone else is trafficking, with a reduced sentence available for
-      people who deal only to fund their own use.
+      Article 21 covers offering, giving and providing cannabis to another person as well as
+      selling; its ordinary range is four–twelve years.[@drug] Considerably reduced seriousness can
+      bring one–five years under Article 25.[@drug] Article 26 permits up to three years or a fine
+      where the exclusive aim is obtaining drugs for personal use, but excludes holdings above its
+      separate five-day amount.[@drug]
     sources:
-      - qmhc
-      - erowid
+      - drug
+    penalties:
+      - label: Ordinary unlawful cannabis supply, including giving
+        treatment: criminal
+        term: Article 21(1)
+        prison_min: 4 years
+        prison: 12 years
+      - label: Trafficking of considerably reduced seriousness
+        treatment: criminal
+        term: Article 25(a)
+        prison_min: 1 year
+        prison: 5 years
+      - label: Trafficker-consumer within the specific statutory conditions
+        treatment: criminal
+        term: Article 26(1), (3)
+        prison: 3 years
+        note: >-
+          Or a criminal fine; exclusive personal-use funding purpose and no more than the five-day
+          amount
   consumption:
     text: >-
-      Using is an administrative infraction handled by the dissuasion commission. In practice
-      first-time non-dependent users usually have proceedings suspended with no sanction.
+      Use is an administrative offence, including in private.[@use] The commission must
+      provisionally suspend a first non-dependent user’s proceeding where there is no previous
+      proceeding under the law.[@use] Where a sanction is imposed, non-dependent users may receive a
+      fine or a non-monetary measure; dependent users receive non-monetary sanctions.[@use]
     sources:
-      - law
-      - qmhc
+      - use
+    currency: EUR
+    penalties:
+      - label: Cannabis consumption — administrative proceeding
+        treatment: civil
+        term: Law 30/2000, Articles 2, 11, 15–16
+        fine_min: 24.94
+        fine: 149.64
+        note: >-
+          Fine range for non-dependent users; first proceedings must be suspended if statutory
+          conditions apply; dependent users receive non-monetary sanctions
   access:
     text: >-
-      No legal source for adult use: no shops, no clubs, no home growing. Bills to regulate have
-      been debated without passing. The only lawful route is medical: since 2018 a doctor may
-      prescribe approved cannabis preparations, dispensed in pharmacies, but few products are
-      authorised and take-up is low.
+      Decriminalisation provides no general recreational shop or supply authorisation, and personal
+      growing remains criminal.[@drug,use] The [2018 medical law](/history/portugal-medical-2018/)
+      permits prescribed authorised cannabis products dispensed through pharmacies.[@medical18]
+      INFARMED’s first-half 2026 report lists sixteen marketing authorisations and 5,413 prescribed
+      packages; authorisations are not a count of products stocked by every pharmacy.[@inf26]
     sources:
-      - grow
-      - qmhc
+      - drug
+      - use
+      - medical18
+      - inf26
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. Since 2001 personal-use possession is
-      administrative: police confiscate and refer to a dissuasion commission, which can
-      suspend, fine or recommend treatment. 25 g of flower and 5 g of hashish are the
-      average ten-day amounts; more signals possible dealing.[@law,law55,qmhc] Growing any
-      number of plants, even one, stays criminal.[@qmhc,grow]
+      Possession and consumption for personal use are administrative offences, handled through
+      commissions rather than criminal sentencing.[@use] The ten-day amount guides assessment of
+      purpose, while proven exclusive personal possession remains within that route above the
+      reference.[@law55] Growing for personal use still carries a criminal penalty; supplying
+      another person is separately punishable.[@drug]
     sources:
-      - law
+      - use
       - law55
-      - qmhc
-      - grow
+      - drug
   production:
     status: medical
     text: >-
-      Portugal is one of Europe's largest licensed medical cannabis producers, with dozens of
-      companies cultivating almost entirely for export under licence from the medicines agency.
+      INFARMED’s report records 27 valid cultivation authorisations and 24 manufacturing
+      authorisations at its 2 June 2026 update.[@inf26] It reports exports of 66,305 kg of plant,
+      preparations and substances in the first half of 2026, compared with 79,883 kg in all of
+      2025.[@inf26] Germany was the largest destination, with 37,442 kg.[@inf26] Licensing and
+      inspections cover security, records, traceability and product quality.[@inf26]
     sources:
-      - grow
-  products:
-    text: Low-THC hemp products and prescription medical preparations only.
-    sources:
-      - grow
+      - inf26
   medical:
     text: >-
-      Legal since 2018 and regulated by the medicines agency. A doctor may prescribe approved
-      cannabis preparations when conventional treatments have failed, dispensed in pharmacies; few
-      products are authorised and take-up is low.
+      Any doctor may prescribe authorised products for the approved indications when conventional
+      treatment has failed or causes significant adverse effects, with dispensing confined to
+      pharmacies.[@inf] The 2018 law also permits the patient to hold and transport the prescribed
+      quantity for personal treatment.[@medical18] The first-half 2026 report records sixteen
+      marketing authorisations and 5,413 prescribed packages, against 7,023 packages across
+      2025.[@inf26] These package counts are not unique patient totals.[@inf26]
     sources:
-      - grow
-      - qmhc
+      - inf
+      - medical18
+      - inf26
   consequences:
     text: >-
-      No criminal record for use. Commission proceedings are confidential, though they can include
-      bans on visiting certain places or holding certain licences.
+      Personal use or possession is an administrative offence rather than a criminal
+      conviction.[@use] Commission sanctions can include restrictions on specified places,
+      activities or travel and periodic reporting.[@use] Growing and supply remain criminal, so the
+      personal-possession rule does not prevent a record for those offences.[@drug]
     sources:
-      - law
-      - qmhc
+      - use
+      - drug
   planting:
     seeds: licensed
     seeds_trade: regulated
     clones: licensed
     clones_trade: regulated
     text: >-
-      Industrial hemp cultivation requires annual authorisation, certified seed and sowing under
-      prescribed conditions; it must be grown outdoors from seed, and transplanting plants is not
-      allowed. Medical cultivation and wholesale trade in the plant or parts of it are separately
-      licensed through INFARMED. Seeds and clones are therefore confined to authorised industrial
-      or medical channels, not general adult sale.
+      Certified sowing-seed producers must be licensed by DGAV, with common-catalogue varieties;
+      seed multiplication above 0.3% THC also needs prior INFARMED permission.[@propagation]
+      Producers of rooted clones require medical-cannabis licensing, phytosanitary registration and
+      documented movements to other authorised professionals.[@propagation] Industrial
+      fibre/feed-seed cultivation is a separate DGAV authorisation and does not allow
+      transplants.[@dgav]
     sources:
-      - hemp_rules
-      - cannabis_rules
+      - propagation
+      - dgav
   hemp:
     status: strict
     text: >-
-      Industrial hemp needs annual authorisation, certified seed and sowing outdoors from
-      seed under prescribed conditions; transplanting plants is not allowed.[@hemp_rules]
-      Medical cultivation and wholesale go through separate INFARMED licences.[@cannabis_rules]
+      DGAV authorises cultivation for fibre and seeds not intended for sowing, including food or
+      animal-feed uses.[@dgav] Applications are annual and require certified seed; the crop must be
+      sown outdoors, without transplanting.[@dgav] The [March 2023
+      amendment](/history/portugal-hemp-thc-limit-2023/) sets the statutory THC ceiling at no more
+      than 0.3% for eligible common-catalogue varieties.[@hemp23] Other crop purposes require an
+      INFARMED route.[@dgav]
     sources:
-      - hemp_rules
-      - cannabis_rules
+      - dgav
+      - hemp23
   driving:
     status: impairment
     text: >-
-      Driving under the influence of a psychotropic substance is forbidden. A driver is under
-      that influence when an examination under the road code, and the rules that complement it,
-      says so in a medical or expert report. Detection alone is not that report. The fine is
-      500 to 2,500 euros. Where there are signs of influence, or after a crash with a death or
-      a serious injury, the driver is tested. A positive screen bars driving for 48 hours,
-      unless a new screen is negative sooner. That bar is not the offence. A Supreme Court
-      judgment published on 15 July 2024, about an insurer's claim after a crash, held that
-      the insurer must prove the substance diminished the driver's fitness to drive safely,
-      shown by a medical or expert examination. In that case 0.8 ng/mL of THC and 4.3 ng/mL
-      of THC-COOH, without such a report, did not establish influence.
+      Driving under the influence of a psychotropic substance is forbidden.[@ce81,ce157,stj10] A
+      driver is under that influence when an examination under the road code, and the rules that
+      complement it, says so in a medical or expert report.[@ce81,ce157,stj10] Detection alone is
+      not that report.[@ce81,ce157,stj10] The fine is 500 to 2,500 euros.[@ce81,ce157,stj10] Where
+      there are signs of influence, or after a crash with a death or a serious injury, the driver is
+      tested.[@ce81,ce157,stj10] A positive screen bars driving for 48 hours, unless a new screen is
+      negative sooner.[@ce81,ce157,stj10] That bar is not the offence.[@ce81,ce157,stj10] A Supreme
+      Court judgment published on 15 July 2024, about an insurer's claim after a crash, held that
+      the insurer must prove the substance diminished the driver's fitness to drive safely, shown by
+      a medical or expert examination.[@ce81,ce157,stj10] In that case 0.8 ng/mL of THC and 4.3
+      ng/mL of THC-COOH, without such a report, did not establish influence.[@ce81,ce157,stj10]
     sources:
       - ce81
       - ce157
       - stj10
   arrests:
     text: >-
-      The EU drugs agency's statistical bulletin records 12,109 cannabis-related drug law
-      offences in Portugal in 2024, against 16,304 in 2023. Of the 2024 total, 6,637 were for
-      use or possession for use. Use is an administrative matter handled by dissuasion
-      commissions, and the agency warns that the 2017 to 2021 figures are incomplete.
-      Countries count these differently (offences or offenders, criminal or administrative),
-      so the figure is not comparable across borders.
+      The EU drugs agency's statistical bulletin records 12,109 cannabis-related drug law offences
+      in Portugal in 2024, against 16,304 in 2023.[@euda_dlo] Of the 2024 total, 6,637 were for use
+      or possession for use.[@euda_dlo] Use is an administrative matter handled by dissuasion
+      commissions, and the agency warns that the 2017 to 2021 figures are incomplete.[@euda_dlo]
+      Countries count these differently (offences or offenders, criminal or administrative), so the
+      figure is not comparable across borders.[@euda_dlo]
     sources:
       - euda_dlo
   clubs:
     status: underground
     text: >-
-      The sources disagree. A Europe-wide survey of cannabis social clubs carried out in 2018 and
-      2019 found, after online searches and contact with people in the field, that there did not
-      seem to be any active club in Portugal. A 2024 trade-press guide describes private member
+      The sources disagree.[@pardal20,giq24,de_cang,mt_cap628] A Europe-wide survey of cannabis
+      social clubs carried out in 2018 and 2019 found, after online searches and contact with people
+      in the field, that there did not seem to be any active club in
+      Portugal.[@pardal20,giq24,de_cang,mt_cap628] A 2024 trade-press guide describes private member
       associations that grow collectively for their members and operate discreetly in a legal grey
       area, mainly in Lisbon and Porto and reportedly in the Algarve; joining takes a referral from
       a member, often proof of Portuguese residency and an annual fee of 50 to 150 euros, and clubs
-      vet newcomers carefully to avoid police attention. The authorities have not endorsed the
-      clubs' reading of the law, and no law in Portugal provides for them. Malta (since 2021) and
-      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.
+      vet newcomers carefully to avoid police attention.[@pardal20,giq24,de_cang,mt_cap628] The
+      authorities have not endorsed the clubs' reading of the law, and no law in Portugal provides
+      for them.[@pardal20,giq24,de_cang,mt_cap628] Malta (since 2021) and Germany (since 2024)
+      license non-profit cannabis associations, but only under their own
+      laws.[@pardal20,giq24,de_cang,mt_cap628]
     sources:
       - pardal20
       - giq24
@@ -182,56 +252,78 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession for personal use is an
-      administrative matter: police confiscate it and refer the person to a regional dissuasion
-      commission, which can suspend the case, fine them or recommend treatment. Since 1 October
-      2023, 25 g of flower and 5 g of hashish are reference amounts for ten days. A larger amount
-      can still start a criminal inquiry until exclusive personal use is shown.
+      There is no general recreational supply route, and growing for personal use remains a
+      crime.[@drug] The personal-use administrative regime does not make cannabis a legal retail
+      product.[@use,drug] Above the ten-day reference amount an inquiry may be needed; proven
+      exclusive personal possession goes back to the commission.[@law55]
     sources:
-      - law
+      - drug
+      - use
       - law55
-      - qmhc
   black_market:
     text: >-
-      The EU drugs agency's statistical bulletin records 1,845 kg of herbal cannabis and
-      7,344 kg of cannabis resin seized in Portugal in 2024, against 1,549 kg and 37,945
-      kg in 2023. Herbal cannabis was seized on 798 occasions and resin on 4,446. Plant seizures came to 2,635 plants. Countries record seizures differently, so the
-      figures are not comparable across borders.
+      The EU drugs agency's statistical bulletin records 1,845 kg of herbal cannabis and 7,344 kg of
+      cannabis resin seized in Portugal in 2024, against 1,549 kg and 37,945 kg in 2023.[@euda_szr]
+      Herbal cannabis was seized on 798 occasions and resin on 4,446.[@euda_szr] Plant seizures came
+      to 2,635 plants.[@euda_szr] Countries record seizures differently, so the figures are not
+      comparable across borders.[@euda_szr]
     sources:
       - euda_szr
+  culture:
+    text: >-
+      The [João Goulão atlas entry](/culture/people/joao-goulao/) follows the physician associated
+      with Portugal’s approach to drug use.[@goulao26] In February 2026 parliament commended his
+      role in designing, implementing and consolidating the prevention, harm-reduction and treatment
+      model.[@goulao26] The [2001 reform](/history/portugal-decriminalisation-2001/) gives that
+      approach a concrete mechanism: commission proceedings and conditional suspension for
+      personal-use cases.[@use]
+    sources:
+      - goulao26
+      - use
 sources:
   de_cang:
-    title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
+    title: >-
+      Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations,
+      since 2024)
     url: https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz
   mt_cap628:
-    title: Malta — Authority on the Responsible Use of Cannabis Act (Cap. 628), licensing non-profit cannabis associations since 2021
+    title: >-
+      Malta — Authority on the Responsible Use of Cannabis Act (Cap. 628), licensing non-profit
+      cannabis associations since 2021
     url: https://legislation.mt/eli/cap/628/eng
   giq24:
     title: GrowerIQ — Portugal cannabis café and social club guide (25 September 2024)
     url: https://groweriq.ca/2024/09/25/portugal-cannabiscafe/
   pardal20:
-    title: Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe, European Journal of Criminology (2020, PDF)
-    url: https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
+    title: >-
+      Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe, European
+      Journal of Criminology (2020, PDF)
+    url: >-
+      https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
   euda_dlo:
-    title: "EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)"
+    title: 'EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)'
     url: https://www.euda.europa.eu/data/stats2026/dlo_en
   ce81:
     title: Código da Estrada, artigo 81.º (PGDL, versão actualizada)
-    url: https://www.pgdlisboa.pt/leis/lei_mostra_articulado.php?artigo_id=349A0081&nid=349&tabela=leis&ficha=1&pagina=1
-    locator: "Paragraphs 1, 5 and 6(b)"
+    url: >-
+      https://www.pgdlisboa.pt/leis/lei_mostra_articulado.php?artigo_id=349A0081&nid=349&tabela=leis&ficha=1&pagina=1
+    locator: Paragraphs 1, 5 and 6(b)
   ce157:
     title: Código da Estrada, artigo 157.º (PGDL, versão actualizada)
-    url: https://www.pgdlisboa.pt/leis/lei_mostra_articulado.php?artigo_id=349A0157&nid=349&tabela=leis&ficha=1&pagina=1
-    locator: "Paragraphs 1 to 3"
+    url: >-
+      https://www.pgdlisboa.pt/leis/lei_mostra_articulado.php?artigo_id=349A0157&nid=349&tabela=leis&ficha=1&pagina=1
+    locator: Paragraphs 1 to 3
   stj10:
-    title: "Acórdão do Supremo Tribunal de Justiça n.º 10/2024 (Diário da República, 15 July 2024, PDF)"
+    title: Acórdão do Supremo Tribunal de Justiça n.º 10/2024 (Diário da República, 15 July 2024, PDF)
     url: https://files.diariodarepublica.pt/1s/2024/07/13500/0000700039.pdf
-    locator: "Sumário; the insurer must prove diminished fitness"
+    locator: Sumário; the insurer must prove diminished fitness
   law:
     title: Lei n.º 30/2000 — regime jurídico do consumo de estupefacientes (Diário da República)
     url: https://diariodarepublica.pt/dr/detalhe/lei/30-2000-599720
   law55:
-    title: Lei n.º 55/2023 — personal possession above the ten-day amount (Diário da República, 8 September 2023)
+    title: >-
+      Lei n.º 55/2023 — personal possession above the ten-day amount (Diário da República, 8
+      September 2023)
     url: https://diariodarepublica.pt/dr/detalhe/lei/55-2023-221432122
   qmhc:
     title: The Portuguese experience — overview of the decriminalisation model (PDF)
@@ -243,11 +335,57 @@ sources:
     title: Erowid — Portugal drug law and policy summary
     url: https://www.erowid.org/law/countries/law_portugal.shtml
   hemp_rules:
-    title: Portaria n.º 14/2022 — technical rules for industrial cannabis cultivation (Diário da República)
+    title: >-
+      Portaria n.º 14/2022 — technical rules for industrial cannabis cultivation (Diário da
+      República)
     url: https://files.dre.pt/1s/2022/01/00300/0002000023.pdf
   cannabis_rules:
     title: Decreto Regulamentar n.º 2/2020 — industrial hemp authorisation (Diário da República)
     url: https://files.dre.pt/1s/2020/08/15000/0000800010.pdf
   euda_szr:
-    title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
+    title: >-
+      EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of
+      seizures)
     url: https://www.euda.europa.eu/data/stats2026/szr_en
+  drug:
+    title: Lisbon District Prosecutor-General — Decree-Law 15/93, current consolidation through May 2026
+    url: https://pgdlisboa.pt/leis/lei_print_articulado.php?nid=181&tabela=leis
+    locator: Articles 21, 25, 26 and 40; Table I-C cannabis
+  use:
+    title: Lisbon District Prosecutor-General — Law 30/2000, current consolidation
+    url: https://pgdlisboa.pt/leis/lei_print_articulado.php?nid=186&tabela=leis
+    locator: Articles 2, 4–5, 11, 15–17; cannabis fine in Article 16(2)
+  euro:
+    title: European Commission — Portugal and the euro, fixed conversion rate
+    url: >-
+      https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/portugal-and-euro_en?prefLang=pt
+    locator: EUR1 = PTE200.482
+  medical18:
+    title: Diário da República — Law 33/2018 on cannabis medicines
+    url: https://dre.pt/application/file/a/115712610
+    locator: Articles 1–9 and 13; published 18 July, effective 1 August 2018
+  inf:
+    title: INFARMED — Cannabis for medicinal purposes, prescribing and licensing
+    url: https://www.infarmed.pt/web/infarmed/canabis-medicinal
+  inf26:
+    title: INFARMED — Medicinal cannabis activity report, first half of 2026
+    url: >-
+      https://www.infarmed.pt/documents/15786/0/Relat%C3%B3rio%2BCan%C3%A1bis%2BMedicinal%2B-%2BEvolu%C3%A7%C3%A3o%2Bda%2BAtividade%2B-%2B2026%2B1S/4792804c-5fce-25d2-9fbf-b83e519ffa28
+    locator: Tables 1–6; valid authorisations updated 2 June 2026; prescriptions measured in packages
+  dgav:
+    title: DGAV — Hemp cultivation procedure, March 2023
+    url: https://www.dgav.pt/wp-content/uploads/2023/03/Procedimento_-Cs_v6.pdf
+    locator: Annual application, fibre/food-feed seed purposes, outdoor sowing and no transplants
+  hemp23:
+    title: Diário da República — Portaria 64/2023, industrial hemp THC ceiling
+    url: >-
+      https://www.dgav.pt/wp-content/uploads/2023/03/Portaria_64_2023_2a_alteracao_a_Portaria_83_2021_canabis.pdf
+    locator: 'Article 2: no more than 0.3%; Article 3: effective 4 March 2023'
+  propagation:
+    title: DGAV / INFARMED — Technical clarification 7/2023, cannabis seed and plant propagation
+    url: https://www.dgav.pt/wp-content/uploads/2023/10/7_DGAV_ET_Cannabis.pdf
+    locator: Certified seed producers and medical plant/clone producers; October 2023
+  goulao26:
+    title: ICAD — Parliament approves commendation for João Goulão
+    url: https://www.icad.pt/NewsArticle/Article/424
+    locator: Report 3 March 2026; parliamentary vote 27 February 2026
