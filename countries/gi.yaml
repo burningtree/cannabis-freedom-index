@@ -31,6 +31,19 @@ segments:
     sources:
       - law
       - police
+    currency: GBP
+    penalties:
+      - label: Summary, lower court
+        treatment: criminal
+        prison: 12 months
+        note: Or a fine
+      - label: Indictment, higher court
+        treatment: criminal
+        prison: 5 years
+        note: Or a fine
+      - label: About 127 g of resin in 2025
+        treatment: criminal
+        fine: 800
   cultivation:
     text: >-
       Cultivating any cannabis plant is an offence, subject to authorised exceptions. The
@@ -40,6 +53,15 @@ segments:
     sources:
       - law
       - m21
+    currency: GBP
+    penalties:
+      - label: Summary, lower court
+        treatment: criminal
+        prison: 9 months
+        note: Fine also available
+      - label: Indictment, higher court
+        treatment: criminal
+        prison: 14 years
   enforcement:
     text: >-
       Courts can impose fines or prison for possession; the statutory maxima depend on how the
@@ -57,6 +79,14 @@ segments:
       imprisonment in a higher-court trial; fines are also available.[@law]
     sources:
       - law
+      - supply
+    penalties:
+      - label: Indictment, higher court
+        treatment: criminal
+        note: Up to life imprisonment; fines also available
+      - label: Possession with intent to supply, reported case
+        treatment: criminal
+        note: 200 hours of community work
   consumption:
     text: >-
       Unauthorised possession associated with cannabis use is criminal. Occupiers who knowingly
@@ -75,7 +105,23 @@ segments:
       - law
       - gov19
       - gov23
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Gibraltar abolished capital punishment on 8 November 1965, in line with British practice;
+      its last hanging for murder was in 1931. No cannabis offence carries a capital
+      sentence.[@cpu]
+    sources: [cpu]
 context:
+  recreational:
+    text: >-
+      Adult-use supply is prohibited: possession can bring up to twelve months in prison or a
+      fine in lower-court proceedings, or five years or a fine in a higher-court trial, and
+      supply can carry up to life imprisonment.[@law] A 2025 case with about 127 g of resin
+      ended in an £800 fine.[@police]
+    sources:
+      - law
+      - police
   production:
     status: medical
     text: >-
@@ -85,24 +131,19 @@ context:
     sources:
       - law
       - m21
-  products:
-    text: >-
-      The rules distinguish the specifically defined cannabis-extract mouth spray in Schedule 2
-      from GHA-approved cannabis-based medicines in Schedule 2A. The latter require
-      medical-practitioner involvement and product approval.[@reg] Public dispensing under the
-      GHA route was assigned to St Bernard’s Hospital pharmacy.[@gov19]
-    sources:
-      - reg
-      - gov19
   medical:
     text: >-
       GHA doctors must complete training before authorising cannabis medicines. Eligible
       conditions are treatment-resistant multiple-sclerosis spasticity, severe refractory
       epilepsy, severe life-altering pain, and intractable chemotherapy-related nausea and
-      vomiting. Products require GHA approval, and smoking is prohibited.[@reg] The government
-      reported completed doctor training and a supply agreement in September 2023.[@gov23]
+      vomiting. Products require GHA approval, and smoking is prohibited.[@reg] The rules
+      distinguish the defined cannabis-extract mouth spray from GHA-approved cannabis-based
+      medicines, and public dispensing runs through St Bernard's Hospital pharmacy.[@reg,gov19]
+      The government reported completed doctor training and a supply agreement in September
+      2023.[@gov23]
     sources:
       - reg
+      - gov19
       - gov23
   consequences:
     text: >-
@@ -129,6 +170,9 @@ context:
       - law
       - reg
 sources:
+  cpu:
+    title: Capital Punishment UK — The End of Capital Punishment in Europe
+    url: https://capitalpunishmentuk.org/the-end-of-capital-punishment-in-europe/
   law:
     type: law
     title: Crimes Act 2011 — current consolidated edition
