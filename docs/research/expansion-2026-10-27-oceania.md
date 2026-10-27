@@ -25,3 +25,11 @@ Dirty-at-start files were ru/test/source-archive/layouts — none in batch.
 - Article: papua-new-guinea-controlled-substance-act-2022 (tiers + two charging routes, from PacLII + case reports).
 - Gotchas fixed: answers block must sit after ALL context sections (this profile orders visitors/driving last); every listed source must be cited inline (build-enforced, audit-silent); note values with colons need quotes.
 - Audit 0/0, history+answers tests pass, build 4903 pages, HTML verified (2 pen tables PGK, 14 history links).
+
+## New Zealand (nz) — done 2026-10-27 ~22:57 UTC
+- Profile: recreational + hemp (high, 1%) + tinny culture sections added; products folded into medical; penalties: possession (3mo/NZ$500), cultivation (7y indictment, legal notified hemp); inline citations everywhere; history links (1975 Act, 2019 discretion, 2020 referendum, 2020 scheme).
+- Sources read: PMCSA cannabis page (referendum 50.7/48.4, 2019 law change, equity); NZDF tinny mythbusters (already fetched for au).
+- Article: new-zealand-medicinal-scheme-2020 (1 April 2020 opening + referendum context).
+- No history entries added (20 entries). Culture kept to tinny (no NZ march source verified).
+- Gotcha: a source defined under context instead of top-level breaks the build ("Unrecognized key"); every listed source must be cited inline (build-enforced).
+- Audit 0/0, history+answers tests pass, build green (after waiting out a concurrent agent build), HTML verified (2 pen tables NZD, 21 history links, tinny link).
