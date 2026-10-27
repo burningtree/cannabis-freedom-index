@@ -36,6 +36,16 @@ segments:
     sources:
       - tntv24
       - bora24
+    currency: XPF
+    penalties:
+      - label: Laliberté case, possession and use (June 2024)
+        treatment: criminal
+        fine: 2000000
+        note: Prosecutor had also asked for a six-month suspended sentence
+      - upto: 21.8 g
+        treatment: criminal
+        fine: 11000
+        note: Bora Bora customs case, 21.8 g of herb
   cultivation:
     text: >-
       Growing cannabis is prohibited even for therapeutic use; only the low-THC hemp pilot under the
@@ -46,6 +56,14 @@ segments:
     sources:
       - tntv24
       - relaxe24
+    currency: XPF
+    penalties:
+      - label: 93 plants, guilty plea (2024)
+        treatment: criminal
+        fine: 150000
+      - label: About 100 plants for a sick child's oil (2024)
+        treatment: criminal
+        note: Acquitted after the prosecutor asked the court to waive punishment
   enforcement:
     text: >-
       Drug offences are a priority for the State. In 2025 drug-law offences rose by 32.9%, made up
@@ -80,9 +98,41 @@ segments:
     sources:
       - lnc23b
       - lnc25
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Criminal law stays with the French State, which abolished the death penalty in 1981; no
+      cannabis offence carries a capital sentence.[@wikipdp]
+    sources: [wikipdp]
 context:
+  recreational:
+    text: >-
+      There is no lawful source for adults: cannabis, known locally as paka, is widely grown
+      and banned. Cases go to the court in Papeete and usually end in fines; a 2025
+      enforcement review found users who reach court mostly receive fines.[@bilan25,tntv24]
+    sources:
+      - bilan25
+      - tntv24
+  culture:
+    text: >-
+      Cannabis is known as paka and grows widely across the islands. Use is common among the
+      young: in a 2009 pupil survey 29.3% had ever smoked paka and 20.4% had done so in the
+      past year.[@spf]
+    sources:
+      - spf
+  hemp:
+    status: standard
+    text: >-
+      The 2025 arrêtés allow at most ten approved growers on 1.5 hectares in all, 0.15 hectares
+      each, for people resident more than ten years; plants must stay at or below 0.3% THC. The
+      permitted products are seeds, food, dried leaves, infusions and food supplements, while
+      CBD oil still awaits further arrêtés.[@lnc25] In August 2026 nine growers were chosen for
+      a one-year pilot, with first harvests expected in April 2027.[@cann26]
+    sources:
+      - lnc25
+      - cann26
   production:
-    status: none
+    status: medical
     text: >-
       The only licensed growing is a pilot under the law of 23 August 2024. Arrêtés published in
       February 2025 allow at most ten approved growers on 1.5 hectares in all: 0.15 hectares each,
@@ -94,14 +144,6 @@ context:
       - lnc25
       - cann26
       - ops25
-  products:
-    text: >-
-      The 2025 arrêtés list seeds, food, dried leaves, infusions and food supplements among the
-      permitted hemp products; CBD oil needs further arrêtés from the health and economy ministries.
-      Before the 2024 law, CBD vape liquids, oils, monoï and creams were sold in a legal grey area.
-    sources:
-      - lnc25
-      - lnc23b
   medical:
     text: >-
       The Assembly first adopted a law on poisonous substances in November 2022, promulgated on 5
@@ -181,3 +223,6 @@ sources:
   cann26:
     title: "Le Cannabiste — Polynésie : neuf producteurs lancent le cannabis thérapeutique (4 August 2026)"
     url: https://lecannabiste.com/cannabis-therapeutique-la-polynesie-francaise-lance-sa-filiere-de-culture/
+  wikipdp:
+    title: Wikipedia — Capital punishment in France (death penalty abolished 1981)
+    url: https://en.wikipedia.org/wiki/Capital_punishment_in_France
