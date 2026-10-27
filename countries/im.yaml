@@ -32,6 +32,16 @@ segments:
     sources:
       - iom24a
       - iom24b
+    currency: GBP
+    penalties:
+      - label: Half a gram in 2024
+        treatment: criminal
+        fine: 300
+        note: Plus £125 costs
+      - label: 2.6 g in 2024
+        treatment: criminal
+        fine: 750
+        note: Plus £125 costs
   cultivation:
     text: >-
       Growing cannabis is an offence even for one plant: in 2022 a man who grew a single plant for
@@ -40,6 +50,12 @@ segments:
     sources:
       - mr22
       - gsc
+    currency: GBP
+    penalties:
+      - label: Single plant in 2022
+        treatment: criminal
+        fine: 700
+        note: Plus £125 costs
   enforcement:
     text: >-
       Small amounts usually end in a fine and a conviction. Supply is punished with prison: a man
@@ -54,6 +70,11 @@ segments:
       for sharing without payment.
     sources:
       - mr24
+    penalties:
+      - label: Concerned in supplying 1.5 kg in 2024
+        treatment: criminal
+        prison: 3 years
+        note: Plus ten months
   consumption:
     text: >-
       Use is dealt with through the possession offence. There are no places where it is tolerated.
@@ -67,7 +88,22 @@ segments:
       island's health service.
     sources:
       - cd24
+context_not_applicable:
+  death_penalty:
+    text: >-
+      The Isle of Man formally abolished capital punishment in 1993; the last execution on the
+      island was in 1872. No cannabis offence carries a capital sentence.[@wikipdp]
+    sources: [wikipdp]
 context:
+  recreational:
+    text: >-
+      There is no lawful recreational supply: possession of even half a gram goes to court and
+      usually ends in a fine of a few hundred pounds.[@iom24a,iom24b] In May 2026 Tynwald rejected
+      a citizens' jury on a regulated market, reaffirming harm-reduction principles instead.[@iom26]
+    sources:
+      - iom24a
+      - iom24b
+      - iom26
   production:
     status: medical
     text: >-
@@ -76,19 +112,14 @@ context:
       use.
     sources:
       - gsc
-  products:
-    text: >-
-      Prescribed cannabis-based medicines, imported through licensed pharmacies, which may set up
-      supply chains with UK wholesalers. An average of about 335 products a month was dispensed in
-      the pilot year.
-    sources:
-      - cd24
   medical:
     text: >-
       From December 2022 a single pharmacy in Onchan dispensed private prescriptions in a year-long
       pilot. Since July 2024 any registered island pharmacy may apply to dispense, and private
       clinics may register to prescribe on the island; prescriptions must come from a doctor on the
-      GMC specialist register. Clinics are inspected yearly and pharmacies every six months.
+      GMC specialist register. Clinics are inspected yearly and pharmacies every six months. About
+      335 products a month were dispensed in the pilot year through licensed pharmacies supplied
+      via UK wholesalers.
     sources:
       - cd24
   consequences:
@@ -113,6 +144,9 @@ context:
     sources:
       - cd24
 sources:
+  wikipdp:
+    title: Wikipedia — Capital punishment in the Isle of Man
+    url: https://en.wikipedia.org/wiki/Capital_punishment_in_the_Isle_of_Man
   iom24a:
     title: Isle of Man Today — Woman fined hundreds for possessing half a gram of cannabis (3 May 2024)
     url: https://www.iomtoday.co.im/news/woman-fined-hundreds-for-possessing-half-a-gram-of-cannabis-684520
