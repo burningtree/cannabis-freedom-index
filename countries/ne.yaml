@@ -23,12 +23,34 @@ segments:
       500,000–1 million CFA francs, or both. Non-oil cannabis derivatives carry one to six months,
       a fine of 250,000–500,000 francs, or both. No gram limit is given.
     sources: [law, compilation]
+    currency: XOF
+    penalties:
+      - label: Small personal quantity, high-risk incl. cannabis oil (Article 145)
+        treatment: criminal
+        prison_min: 2 months
+        prison: 1 year
+        fine: 1000000
+        note: Fine of 500,000–1,000,000 CFA francs; no gram limit
+      - label: Small personal quantity, non-oil cannabis derivatives
+        treatment: criminal
+        prison_min: 1 month
+        prison: 6 months
+        fine: 500000
+        note: Fine of 250,000–500,000 CFA francs
   cultivation:
     text: >-
       Article 8 prohibits growing cannabis and requires landowners, operators and occupiers to
       destroy plants growing on their land. Article 145 expressly includes a small personal crop
       in the shorter penalty tiers described for possession, without a fixed plant limit.
     sources: [law]
+    currency: XOF
+    penalties:
+      - label: Small personal crop (Article 145)
+        treatment: criminal
+        prison_min: 1 month
+        prison: 1 year
+        fine: 1000000
+        note: Same short tiers as possession; fine up to 1,000,000 CFA francs; no plant limit
   enforcement:
     text: >-
       The law allows prison or a fine alone for small personal quantities. Courts may invite a
@@ -42,6 +64,20 @@ segments:
       to five years, a fine of 100,000–500,000 CFA francs, or both. General high-risk trafficking
       under Article 96 carries ten to twenty years, a fine of 1–20 million francs, or both.
     sources: [law]
+    currency: XOF
+    penalties:
+      - label: Giving or offering for another person's consumption
+        treatment: criminal
+        prison_min: 1 year
+        prison: 5 years
+        fine: 500000
+        note: Fine of 100,000–500,000 CFA francs
+      - label: General high-risk trafficking (Article 96)
+        treatment: criminal
+        prison_min: 10 years
+        prison: 20 years
+        fine: 20000000
+        note: Fine of 1–20 million CFA francs
   consumption:
     text: >-
       Article 144 prohibits using controlled drugs outside a medical prescription and permits
@@ -54,16 +90,22 @@ segments:
     sources:
       - law
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Small quantities for personal consumption carry
+      shorter prison terms and fines of 250,000–1,000,000 CFA francs; no gram or plant limit
+      is given.[@law,compilation] Convicted foreigners can be permanently excluded from the
+      country.[@law]
+    sources: [law, compilation]
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    text: No licensed production. Article 8 prohibits growing cannabis and requires destruction of plants on occupied land.
+    sources: [law]
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No patient programme is documented. Article 144 prohibits use outside a medical
+      prescription but sets up no route for patients to obtain cannabis.[@law]
+    sources: [law]
   consequences:
     text: >-
       For the production, trafficking and related offences listed in Articles 94–102, courts may
