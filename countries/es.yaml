@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 724
 recreational: partial
 medical: limited
-updated: 2026-10-23
+updated: '2026-10-27'
 summary: >-
   Private use and cultivation out of public view are not crimes; possession or use in public brings
   fines from €601. Hundreds of cannabis social clubs operate in a legal grey zone.
@@ -14,7 +14,6 @@ scores:
   sharing: 2
   consumption: 3
   access: 3
-# The channel the access score cannot name (src/lib/answers.js).
 answers:
   buy:
     answer: limited
@@ -22,86 +21,142 @@ answers:
 segments:
   possession:
     text: >-
-      Possession for personal use in a private place is not an offence; courts generally treat up to
-      about 100 g as personal. In public it is different: carrying any amount is a serious
-      administrative infraction with a fine of €601 to €30,000 and confiscation.
+      Possession exclusively for personal use in private falls outside the trafficking
+      offence.[@penal,tni] The law gives no general 100 g allowance.[@penal] Unlawful possession in
+      public places or collective transport is a serious administrative offence, even without intent
+      to supply, carrying €601–30,000.[@boe] Drugs may be confiscated.[@boe]
     sources:
-      - wiki
+      - penal
+      - tni
       - boe
+    currency: EUR
+    penalties:
+      - label: Exclusively personal possession in private
+        treatment: legal
+        note: No statutory gram allowance; evidence of intended supply changes the case
+      - label: Unlawful possession in public or collective transport
+        treatment: civil
+        fine_min: 601
+        fine: 30000
+        term: Articles 36.16 and 39
+        note: Confiscation possible; supply remains criminal
   cultivation:
     text: >-
-      Growing for your own use in private is not a crime, and there is no fixed plant limit — courts
-      look at whether the amount is consistent with personal use. Plants visible from a public place
-      bring a €601–30,000 fine.
+      Private cultivation exclusively for personal use falls outside the supply offence; there is no
+      statutory household plant allowance.[@penal,tni] Growing unlawfully where the plants are
+      visible to the public brings €601–30,000 where it is not already a crime.[@boe] Growing for
+      supply can be prosecuted under Article 368.[@penal]
     sources:
-      - wiki
-      - local
+      - penal
+      - tni
+      - boe
+    currency: EUR
+    penalties:
+      - label: Private cultivation exclusively for personal use
+        treatment: legal
+        note: No statutory plant cap; this does not authorise collective supply
+      - label: Unlawful cultivation visible to the public, where not criminal
+        treatment: civil
+        fine_min: 601
+        fine: 30000
+        term: Articles 36.18 and 39
+      - label: Cultivation for cannabis supply — ordinary offence
+        treatment: criminal
+        term: Criminal Code Article 368
+        prison_min: 1 year
+        prison: 3 years
+        note: Plus a fine of one to twice the drug’s value; aggravated cases carry higher penalties
   enforcement:
     text: >-
-      Users face administrative fines, not criminal charges. Trafficking is punished with one to
-      three years in prison for cannabis, more for large quantities.
-    sources:
-      - local
-      - wiki
-  sharing:
-    text: >-
-      Courts recognise 'shared consumption' among a closed group of adult users as non-criminal,
-      which is the doctrine cannabis clubs rely on. Outside that narrow setting, handing over
-      cannabis is trafficking.
-    sources:
-      - tni
-      - wiki
-  consumption:
-    text: >-
-      Legal at home and inside private clubs. Consuming in streets, parks, bars, vehicles or public
-      transport is fined from €601.
+      The [2015 public-security law](/history/spain-public-safety-law-2015/) treats public
+      possession and use as administrative offences.[@boe] Cannabis supply ordinarily brings one to
+      three years in prison and a fine of one to twice the drug’s value; aggravated circumstances
+      raise the penalty.[@penal,tni]
     sources:
       - boe
-      - local
-  access:
+      - penal
+      - tni
+  sharing:
     text: >-
-      No legal shops. Hundreds of cannabis social clubs — private non-profit associations,
-      concentrated in Catalonia and the Basque Country — supply members in a tolerated grey zone.
-      Clubs have been raided and their organisers convicted, and membership is meant for residents.
+      Courts recognise a narrow shared-consumption exception for a small, closed group of existing
+      users.[@tni] Organised, continuing distribution to a large membership can fall outside it: the
+      Ebers case concerned 290 members.[@ebers] Supply need not make a profit to engage Article 368;
+      the ordinary cannabis penalty is one to three years plus a value-based fine.[@penal,tni]
     sources:
       - tni
-      - wiki
+      - ebers
+      - penal
+    penalties:
+      - label: Cannabis supply outside the narrow shared-consumption exception
+        treatment: criminal
+        term: Criminal Code Article 368
+        prison_min: 1 year
+        prison: 3 years
+        note: Plus a fine of one to twice the drug’s value; aggravated cases carry higher penalties
+  consumption:
+    text: >-
+      Private personal consumption is not a criminal offence.[@tni] Public use, including in public
+      establishments and collective transport, carries €601–30,000 under the [2015
+      law](/history/spain-public-safety-law-2015/).[@boe] A club’s private status does not settle
+      the legality of its supply.[@ebers]
+    sources:
+      - tni
+      - boe
+      - ebers
+    currency: EUR
+    penalties:
+      - label: Private personal consumption
+        treatment: legal
+      - label: Public consumption or use on collective transport
+        treatment: civil
+        fine_min: 601
+        fine: 30000
+        term: Articles 36.16 and 39
+  access:
+    text: >-
+      There are no general recreational retail licences.[@tni] Private [cannabis social
+      clubs](/culture/traditions/cannabis-social-clubs/) collectively supply members, but
+      registration as an association does not authorise drug distribution.[@tdpf18,ebers] Organisers
+      have faced prosecution, and Barcelona clubs have faced closure action.[@ice24]
+    sources:
+      - tni
+      - tdpf18
+      - ebers
+      - ice24
 context:
   recreational:
     text: >-
-      Adults get cannabis at home or in a private club: possession for personal use in private
-      is no offence (courts treat about 100 g as personal), and growing for own use in
-      private is no crime with no fixed plant limit.[@wiki,boe,local] In public, any amount
-      brings a €601–30,000 fine and confiscation.[@wiki,boe] Trafficking means one to three
-      years, more for large quantities.[@local,wiki]
+      Personal use and exclusively personal possession in private fall outside criminal trafficking
+      rules.[@penal,tni] Unlawful public possession or use still brings €601–30,000.[@boe] Clubs
+      developed collective growing and distribution around the shared-consumption doctrine, but that
+      doctrine does not provide a general club supply licence.[@tdpf18,ebers]
     sources:
-      - wiki
+      - penal
+      - tni
       - boe
-      - local
+      - tdpf18
+      - ebers
   production:
     status: medical
     text: >-
-      No licensing for adult-use production; clubs grow collectively at their own legal risk. The
-      medicines agency licenses a few companies for medical and research cultivation, mostly for
-      export.
+      The medicines agency’s July 2026 list names authorised medical and scientific growers,
+      including Linneo Health, Medical Plants and Ondara.[@aempslist] Other permissions cover seeds,
+      cuttings or validation batches rather than unrestricted production.[@aempslist] These
+      authorisations are distinct from recreational clubs and from the agricultural exception for
+      fibre, grain and seed.[@aempsgrow,tni]
     sources:
+      - aempslist
+      - aempsgrow
       - tni
-      - wiki
-  products:
-    text: >-
-      Clubs offer flower, hash and extracts informally. CBD products are sold widely though not
-      approved for consumption.
-    sources:
-      - wiki
   medical:
     text: >-
-      A royal decree in force on 10 October 2025 lets hospital specialists prescribe a
-      standardised cannabis solution when authorised medicines have failed, and hospital
-      pharmacies make it up and hand it out.[@boe903] The national formulary limits it to
-      muscle stiffness from multiple sclerosis, severe epilepsy, nausea and vomiting from
-      chemotherapy and chronic pain, as an oral solution.[@aemps043] In July 2026 one company registered
-      the first two extracts, and on 17 October it said about 50 hospitals would start
-      receiving them, with availability possible by the end of the month.[@elmundo17]
+      A royal decree in force on 10 October 2025 lets hospital specialists prescribe a standardised
+      cannabis solution when authorised medicines have failed, and hospital pharmacies make it up
+      and hand it out.[@boe903] The national formulary lists muscle stiffness from multiple
+      sclerosis, severe epilepsy, nausea and vomiting from chemotherapy and chronic pain, as an oral
+      solution; other indications follow the special-access medicine rules.[@aemps043] In July 2026
+      one company registered the first two extracts, and on 17 October it said about 50 hospitals
+      would start receiving them, with availability possible by the end of the month.[@elmundo17]
       Ordinary pharmacies cannot dispense them.[@boe903]
     sources:
       - boe903
@@ -109,10 +164,10 @@ context:
       - elmundo17
   consequences:
     text: >-
-      Fines are not a criminal record.[@local] Roadside saliva tests detect any THC, with a €1,000 fine and
-      six licence points regardless of impairment.[@boe_ts] A medicine used under a doctor's
-      prescription for treatment is outside that presence rule when the driver can still drive
-      with due care.[@boe_ts]
+      Fines are not a criminal record.[@local] Roadside saliva tests detect any THC, with a €1,000
+      fine and six licence points regardless of impairment.[@boe_ts] A medicine used under a
+      doctor's prescription for treatment is outside that presence rule when the driver can still
+      drive with due care.[@boe_ts]
     sources:
       - local
       - boe_ts
@@ -122,109 +177,146 @@ context:
     clones: grey
     clones_trade: unclear
     text: >-
-      Grow shops have sold cannabis seeds openly since about 2000, alongside soil, lamps and
-      fertiliser. Shop owners interviewed in 2018 said the trade is legal because seeds
-      contain no THC, and that what the buyer then grows at home is the buyer's affair. The
-      sources read do not cover cuttings.
+      Grow shops interviewed in 2018 described selling seeds alongside soil, lamps and
+      fertiliser.[@grow] They said seeds contained no THC and that responsibility for subsequent
+      growing lay with the buyer.[@grow] The report did not determine the position of
+      cuttings.[@grow]
     sources:
       - grow
   clubs:
     status: tolerated
     text: >-
-      Spain has the largest network of cannabis social clubs in Europe, built on court
-      doctrine and not on any law: private use and growing for one's own use are not crimes,
-      and 'shared consumption' among a closed group of adults has long been tolerated. The
-      first club was founded in 2001. Estimates run from about 400 clubs in 2018 to a peak of
-      800 to 1,000 in the late 2010s, most of them in Catalonia and the Basque Country. A club
-      registers as a non-profit association, admits adults on the word of an existing member,
-      grows for its expected membership and hands out about 3 g a day for use on the premises,
-      charging fees to cover costs. Clubs follow their own codes or those of regional
-      federations. The Supreme Court convicted the organisers of three clubs in 2015, finding that
-      what they did was not genuine private consumption, and police raids and investigations
-      continue. Some Barcelona clubs grew to thousands of members by admitting tourists, and
-      since 2024 the city has fined clubs and ordered some to close. In July 2026 the
-      government approved a draft tobacco law that would remove the exemption for private
-      smokers' clubs on which the clubs also rely.
+      The [social-club model](/culture/traditions/cannabis-social-clubs/) developed around private
+      personal use and the narrow shared-consumption doctrine.[@tdpf18,tni] Transform estimated
+      roughly 400 clubs or similar associations in 2018, concentrated in Catalonia and the Basque
+      Country.[@tdpf18] Its description includes admission through existing members, projected
+      member consumption, cost-covering fees and voluntary rules.[@tdpf18] These are operating
+      practices rather than a national legal allowance.[@tni] In the Ebers litigation, organised
+      supply to 290 members fell outside the private shared-use rationale; a later constitutional
+      appeal concerned the defendants’ procedural rights.[@ebers] ICEERS reported Barcelona fines
+      and closure orders in 2024.[@ice24] A July 2026 tobacco-law draft would remove the exemption
+      for private smokers’ clubs on which cannabis clubs also rely.[@boc26]
     sources:
       - tdpf18
-      - boc26
+      - tni
+      - ebers
       - ice24
+      - boc26
   black_market:
     text: >-
-      Spain is Europe's main entry point for Moroccan hashish and also a grower of herbal
-      cannabis. State security forces seized 257 tonnes of hashish in 2025, up 29% on 2024 but
-      at the low end of the series: 357 tonnes in 2023, 318 in 2022 and 672 in 2021. They also
-      seized 875,000 cannabis plants. The interior ministry says police pressure on the coast
-      has pushed traffickers to alternate beach landings with lorries and other vehicles;
-      speedboats used for smuggling were banned in 2018, and supplying them with fuel at sea
-      became a crime in 2026. The figures leave out seizures by the regional police forces.
+      The Interior Ministry reported state-force seizures of 257 tonnes of hashish in 2025, up 29%
+      on 2024.[@int26] It compared this with 357 tonnes in 2023, 318 in 2022 and 672 in 2021, and
+      recorded 875,000 cannabis plants seized in 2025.[@int26] Police pressure had pushed smugglers
+      to alternate beach landings with road transport, according to the ministry.[@int26] These
+      figures exclude regional police seizures.[@int26]
     sources:
       - int26
   driving:
     status: zero
     text: >-
-      Article 14 of the road traffic law forbids driving with drugs in the body. No impairment
-      has to be shown and no threshold applies. The fine is 1,000 euros and six licence
-      points.[@boe_ts] The ban leaves out a substance used under a doctor's prescription for
-      treatment, when the driver can still drive with the care the law requires.[@boe_ts]
-      In the first year
-      or so after the 2014 change, more than 20,000 drivers were sanctioned.[@int15]
+      Article 14 of the road traffic law forbids driving with drugs in the body. No impairment has
+      to be shown and no threshold applies. The fine is 1,000 euros and six licence points.[@boe_ts]
+      The ban leaves out a substance used under a doctor's prescription for treatment, when the
+      driver can still drive with the care the law requires.[@boe_ts] In the first year or so after
+      the 2014 change, more than 20,000 drivers were sanctioned.[@int15]
     sources:
       - boe_ts
       - int15
   arrests:
     text: >-
-      The typical outcome for a user is a fine, not an arrest. In 2023 the state security
-      forces imposed 198,570 sanctions under the article of the public-security law that
-      punishes using or holding drugs in public places, which carries fines from 601 euros;
-      they brought in about 130 million euros, 74% of everything collected under that law and
-      21% more than in 2022. The figure covers all drugs, though cannabis is the commonest.
-      Another 109 sanctions were for growing plants in public view. A reform agreed by the
-      governing parties in 2024 would cut the possession fine to between 100 and 500 euros.
+      An account of the Interior Ministry’s 2023 yearbook reported 198,570 sanctions for public drug
+      possession or use, collecting about €130 million.[@ep24] This was an all-drug total, without a
+      cannabis-specific count.[@ep24] It also reported 109 sanctions for cultivation visible to the
+      public.[@ep24] The governing parties agreed a lower-fine proposal in 2024, but the
+      consolidated statute still sets €601–30,000 for serious offences.[@ep24,boe]
     sources:
       - ep24
+      - boe
   research:
     status: licensed
     text: >-
-      The medicines agency licenses a few companies for medical and research cultivation,
-      mostly for export; there is no adult-use production licensing.[@tni,wiki] No separate
-      research programme, trial or published study was established by the retained sources.
+      AEMPS lists nine holders of research cultivation authorisations as of 31 July 2026, including
+      the Institute of Plant Molecular and Cellular Biology, Phytoplant Research and Trichome
+      Pharma.[@aempslist] Its separate medical/scientific list also authorises Oils4Cure to grow for
+      a clinical trial.[@aempslist] These are cultivation permissions; the list gives no trial
+      outcome.[@aempslist]
     sources:
-      - tni
-      - wiki
+      - aempslist
   visitors:
     status: none
     text: >-
-      There are no legal shops for anyone. What exists is the tolerated network of private
-      members' clubs, which are closed associations rather than a lawful point of sale; nothing
-      in the law gives a visitor a right to join or buy. Carrying or using cannabis in public
-      brings the same fine for a visitor as for a resident.
+      Club membership gives no general exemption from the criminal rules on supply.[@ebers]
+      Associations are intended as closed groups rather than public shops.[@tdpf18] Visitors face
+      the same public-possession and public-use provisions, with fines from €601.[@boe]
     sources:
-      - tni
-      - wiki
+      - ebers
+      - tdpf18
       - boe
+  hemp:
+    status: strict
+    text: >-
+      Industrial cultivation for fibre, grain or seed can proceed without prior AEMPS authorisation
+      when the agricultural conditions are met: certified seed from eligible varieties and THC no
+      higher than 0.3%.[@hempmapa] Harvesting flowers is outside that exception; low THC alone does
+      not remove the medicines agency’s cultivation controls.[@aempsgrow] Spain also has an older
+      fibre-hemp history: a [1940 decree](/history/spain-hemp-production-decree-1940/) regulated
+      production, movement and prices while directing support for growers.[@hemp40]
+    sources:
+      - hempmapa
+      - aempsgrow
+      - hemp40
+  culture:
+    text: >-
+      Spain’s [cannabis social clubs](/culture/traditions/cannabis-social-clubs/) built a
+      collective, non-profit supply model around membership and shared cultivation.[@tdpf18] Members
+      pay production costs and associations use internal rules to limit distribution and contact
+      with outsiders.[@tdpf18] The [2001 history entry](/history/spain-social-clubs-2001/) marks the
+      model’s emergence, although its continuing legal exposure differs from countries that later
+      wrote clubs into law.[@tdpf18,tni]
+    sources:
+      - tdpf18
+      - tni
 sources:
   ep24:
-    title: Europa Press via Alicante Plaza — La reforma de la 'ley mordaza' reducirá la recaudación de multas por tenencia de drogas (6 October 2024), from the interior ministry's statistical yearbook
-    url: https://alicanteplaza.es/alicanteplaza/lareformadelaleymordazareduciralarecaudaciondemultasportenenciadedrogas2
+    title: >-
+      Europa Press via Alicante Plaza — La reforma de la 'ley mordaza' reducirá la recaudación de
+      multas por tenencia de drogas (6 October 2024), from the interior ministry's statistical
+      yearbook
+    url: >-
+      https://alicanteplaza.es/alicanteplaza/lareformadelaleymordazareduciralarecaudaciondemultasportenenciadedrogas2
   int15:
-    title: Ministerio del Interior — La DGT incrementa los controles preventivos de drogas y alcohol entre los conductores (10 August 2015)
-    url: https://www.interior.gob.es/opencms/es/detalle/articulo/La-DGT-incrementa-los-controles-preventivos-de-drogas-y-alcohol-entre-los-conductores-00001/
+    title: >-
+      Ministerio del Interior — La DGT incrementa los controles preventivos de drogas y alcohol
+      entre los conductores (10 August 2015)
+    url: >-
+      https://www.interior.gob.es/opencms/es/detalle/articulo/La-DGT-incrementa-los-controles-preventivos-de-drogas-y-alcohol-entre-los-conductores-00001/
   int26:
-    title: Ministerio del Interior — Las Fuerzas de Seguridad del Estado decomisaron 370 toneladas de cocaína, hachís, heroína y marihuana en 2025 (19 August 2026)
-    url: https://www.interior.gob.es/opencms/es/detalle/articulo/Las-Fuerzas-de-Seguridad-del-Estado-decomisaron-370-toneladas-de-cocaina-hachis-heroina-y-marihuana-en-2025/
+    title: >-
+      Ministerio del Interior — Las Fuerzas de Seguridad del Estado decomisaron 370 toneladas de
+      cocaína, hachís, heroína y marihuana en 2025 (19 August 2026)
+    url: >-
+      https://www.interior.gob.es/opencms/es/detalle/articulo/Las-Fuerzas-de-Seguridad-del-Estado-decomisaron-370-toneladas-de-cocaina-hachis-heroina-y-marihuana-en-2025/
   tdpf18:
-    title: "Transform Drug Policy Foundation — Cannabis social clubs in Spain: legalisation without commercialisation (16 November 2018)"
-    url: https://transformdrugs.org/blog/cannabis-social-clubs-in-spain-legalisation-without-commercialisation
+    title: >-
+      Transform Drug Policy Foundation — Cannabis social clubs in Spain: legalisation without
+      commercialisation (16 November 2018)
+    url: >-
+      https://transformdrugs.org/blog/cannabis-social-clubs-in-spain-legalisation-without-commercialisation
   boc26:
-    title: Business of Cannabis — Is cannabis legal in Spain? Clubs, courts and a market in limbo (2 October 2026)
+    title: >-
+      Business of Cannabis — Is cannabis legal in Spain? Clubs, courts and a market in limbo (2
+      October 2026)
     url: https://businessofcannabis.com/is-cannabis-legal-in-spain-clubs-courts-and-a-market-in-limbo
   ice24:
-    title: "ICEERS — Cannabis clubs in Barcelona: a world benchmark at risk of extinction (12 July 2024)"
-    url: https://www.iceers.org/en/press-releases/cannabis-clubs-barcelona-world-benchmark-risk-extinction/
+    title: 'ICEERS — Cannabis clubs in Barcelona: a world benchmark at risk of extinction (12 July 2024)'
+    url: >-
+      https://www.iceers.org/en/press-releases/cannabis-clubs-barcelona-world-benchmark-risk-extinction/
   grow:
-    title: "elDiario.es — Grow shops: la paradoja de una legislación que permite comprar semillas de marihuana pero no plantarlas (2018)"
-    url: https://www.eldiario.es/cantabria/sociedad/grow-paradoja-legislacion-marihuana-plantarlas_1_2090531.html
+    title: >-
+      elDiario.es — Grow shops: la paradoja de una legislación que permite comprar semillas de
+      marihuana pero no plantarlas (2018)
+    url: >-
+      https://www.eldiario.es/cantabria/sociedad/grow-paradoja-legislacion-marihuana-plantarlas_1_2090531.html
   wiki:
     title: Wikipedia — Cannabis in Spain
     url: https://en.wikipedia.org/wiki/Cannabis_in_Spain
@@ -232,7 +324,7 @@ sources:
     title: The Local — What are the penalties for drug possession in Spain?
     url: https://www.thelocal.es/20230119/what-are-the-penalties-for-drug-possession-in-spain
   tni:
-    title: "Transnational Institute — Cannabis regulation in Europe: country report Spain"
+    title: 'Transnational Institute — Cannabis regulation in Europe: country report Spain'
     url: https://www.tni.org/files/publication-downloads/cr_spain_final.pdf
   boe:
     title: Ley Orgánica 4/2015 de protección de la seguridad ciudadana (BOE)
@@ -241,15 +333,48 @@ sources:
     title: BOE — Real Decreto Legislativo 6/2015, texto refundido de la Ley de Tráfico
     url: https://www.boe.es/buscar/act.php?id=BOE-A-2015-11722
     locator: >-
-      Article 14(1) excludes a substance used under a doctor's prescription for treatment when
-      the driver can still drive with due care. Article 80(2)(a) sets the 1,000-euro fine for
-      the drug-presence offence in article 77(c). Annex II assigns six licence points.
+      Article 14(1) excludes a substance used under a doctor's prescription for treatment when the
+      driver can still drive with due care. Article 80(2)(a) sets the 1,000-euro fine for the
+      drug-presence offence in article 77(c). Annex II assigns six licence points.
   boe903:
-    title: BOE — Real Decreto 903/2025, de 7 de octubre, fórmulas magistrales de preparados estandarizados de cannabis
+    title: >-
+      BOE — Real Decreto 903/2025, de 7 de octubre, fórmulas magistrales de preparados
+      estandarizados de cannabis
     url: https://www.boe.es/eli/es/rd/2025/10/07/903
   aemps043:
     title: AEMPS — Formulario Nacional FN/2026/FMT/043, preparado estandarizado de cannabis solución oral
-    url: https://www.aemps.gob.es/formulario-nacional/monografias/formulas-magistrales-tipificadas/fn_2026_fmt_043.pdf
+    url: >-
+      https://www.aemps.gob.es/formulario-nacional/monografias/formulas-magistrales-tipificadas/fn_2026_fmt_043.pdf
   elmundo17:
     title: El Mundo — Luz verde al cannabis medicinal en España (17 October 2026)
     url: https://www.elmundo.es/salud/2026/10/17/6ad24320fdddff917d8b4598.html
+  penal:
+    title: BOE — Criminal Code, Organic Law 10/1995, consolidated April 2026
+    url: https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444
+    locator: >-
+      Articles 368–370: cultivation for supply, trafficking, facilitating consumption; ordinary and
+      aggravated penalties
+  hempmapa:
+    title: Spanish Agriculture Ministry — Information note on hemp cultivation
+    url: >-
+      https://www.mapa.gob.es/es/agricultura/temas/producciones-agricolas/notainformativasobreelcultivodecanamo_tcm30-560351.pdf
+    locator: >-
+      Industrial cultivation for fibre, grain and seed; certified varieties and 0.3% THC; flower
+      excluded
+  aempsgrow:
+    title: 'AEMPS — Narcotic drugs and psychotropic substances: cannabis cultivation'
+    url: https://www.aemps.gob.es/medicamentos-de-uso-humano/estupefacientes-y-psicotropos/
+  aempslist:
+    title: AEMPS — Current cannabis cultivation authorisations, 31 July 2026
+    url: >-
+      https://www.aemps.gob.es/%20medicamentos-de-uso-humano/estupefacientes-y-psicotropos/autorizaciones-vigentes-%20emitidas-por-la-aemps-para-el-cultivo-de-plantas-de-cannabis/?lang=va
+  ebers:
+    title: Spanish Constitutional Court — Judgment 146/2017, Ebers appeal
+    url: https://www.boe.es/boe/dias/2018/01/17/pdfs/BOE-A-2018-608.pdf
+    locator: >-
+      Facts and procedural ruling: organised distribution to 290 members; conviction annulled for
+      procedural guarantees
+  hemp40:
+    title: BOE, 7 July 1940 — Decree of 28 June on organising and expanding hemp cultivation
+    url: https://www.boe.es/gazeta/dias/1940/07/07/pdfs/BOE-1940-189.pdf
+    locator: Printed pp. 4687–4688, articles 1–6
