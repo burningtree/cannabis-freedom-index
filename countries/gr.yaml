@@ -23,6 +23,11 @@ segments:
       criminal record.
     sources:
       - nk
+    penalties:
+      - label: Personal-use quantity (misdemeanour)
+        treatment: civil
+        prison: 5 months
+        note: Up to five months, usually suspended or replaced by treatment; not entered on the ordinary record
   cultivation:
     text: >-
       Growing a number of plants consistent with personal use falls under the same misdemeanour, up
@@ -35,6 +40,11 @@ segments:
       years.
     sources:
       - nk
+    penalties:
+      - label: Trafficking and production for trafficking
+        treatment: criminal
+        prison_min: 8 years
+        note: At least eight years
   sharing:
     text: Supply is a felony, with a reduced sentence where the supplier is a dependent user.
     sources:
@@ -51,6 +61,15 @@ segments:
       - launch2024
       - patient2024
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Obtaining or possessing a personal-use quantity
+      is a misdemeanour with up to five months, usually suspended or replaced by treatment
+      and not entered on the ordinary record; growing a personal-use number of plants falls
+      under the same misdemeanour.[@nk] Anything more counts as production for trafficking,
+      which carries at least eight years.[@nk]
+    sources:
+      - nk
   production:
     status: medical
     text: >-
@@ -122,6 +141,17 @@ context:
     sources:
       - n4139
       - nk
+  hemp:
+    status: standard
+    text: >-
+      Hemp foods, cosmetics and supplements within set THC limits are legal, and the hemp
+      limit rose from 0.2% to 0.3% THC in May 2026.[@l5302] Retail sale, distribution,
+      purchase and use of dried hemp flower by consumers stays prohibited even at 0.3% or
+      less, with an industrial-processing exception.[@l5302] Hemp varieties under the limit
+      follow separate certified-seed rules.[@n4139]
+    sources:
+      - l5302
+      - n4139
   visitors:
     status: none
     text: >-
