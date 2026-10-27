@@ -28,7 +28,9 @@ export const MED_HELP = {
 // Explanations that exist for each country but are not part of the score.
 // "Death penalty" comes first and exists only for countries whose law provides for it;
 // "Seeds and clones" exists only where it has been researched and carries a status for each.
-export const CONTEXT = [["death_penalty", "Death penalty"], ["production", "Commercial production"], ["products", "Products"], ["planting", "Seeds and clones"], ["medical", "Medical use"], ["clubs", "Cannabis clubs"], ["black_market", "Black market"], ["driving", "Driving"], ["visitors", "Visitors and foreigners"], ["arrests", "Arrests and prisoners"], ["consequences", "Other consequences"]];
+// The order goes from how people get and use cannabis, through the market, to the police
+// (docs/COUNTRY-CONTEXTS.md).
+export const CONTEXT = [["death_penalty", "Death penalty"], ["medical", "Medical cannabis"], ["clubs", "Cannabis clubs"], ["planting", "Seeds and clones"], ["products", "Products"], ["production", "Cannabis industry"], ["black_market", "Black market"], ["visitors", "Visitors and foreigners"], ["driving", "Driving"], ["arrests", "Arrests and prisoners"], ["consequences", "Beyond the penalty"]];
 export const CONTEXT_NAMES = CONTEXT.map(([, name]) => name);
 
 // File values → short codes used in class names and filters.
