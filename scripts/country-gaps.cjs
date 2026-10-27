@@ -60,10 +60,13 @@ function gapsOf(id) {
     missingRequired: unit ? [] : REQUIRED.filter((k) => !ctx[k]),
     missingResearched: unit ? [] : RESEARCHED.filter((k) => !ctx[k]),
     missingOptional: unit ? [] : OPTIONAL.filter((k) => !ctx[k]),
+    // a state's own sections; the rest are shown from its country
+    unitOwn: unit ? Object.keys(ctx) : [],
+    unitBorrowed: unit ? [...REQUIRED, ...RESEARCHED].filter((k) => !ctx[k]) : [],
     deathWithoutSection: p.recreational === "death" && !ctx.death_penalty,
     products: !unit && Boolean(ctx.products),
     statuses: ["hemp", "production", "research"].filter((k) => ctx[k] && !ctx[k].status).map((k) => `${k}.status`),
-    penalties: unit ? [] : ["possession", "cultivation"].filter((k) => p.segments?.[k] && !p.segments[k].penalties),
+    penalties: ["possession", "cultivation"].filter((k) => p.segments?.[k] && !(typeof p.segments[k] === "object" && p.segments[k].penalties)),
     uncited: blocks.filter(([, b]) => b?.text && !/\[@/.test(b.text)).map(([k]) => k),
     unsourced: blocks.filter(([, b]) => b?.text && !(b.sources ?? []).length).map(([k]) => k),
     wikiOnly: blocks.filter(([, b]) => (b?.sources ?? []).length && b.sources.every(wiki)).map(([k]) => k),
@@ -98,12 +101,16 @@ function printOne(g) {
   out(`${g.name} (${g.file}), reviewed ${g.updated}, recreational ${g.rec}, medical ${g.med}`);
   out();
   out("PROFILE");
-  if (g.unit) out(`  a state or province file: context sections live in countries/${g.id.split("/")[0]}/index.yaml`);
+  if (g.unit) {
+    out(`  a state or province file: sections it does not write are shown from countries/${g.id.split("/")[0]}/index.yaml`);
+    list("its own context sections", g.unitOwn);
+    list("shown from the country (write where the state differs)", g.unitBorrowed);
+  }
   if (!g.unit) { list("missing standard sections", g.missingRequired); list("missing researched sections", g.missingResearched); list("optional sections not written", g.missingOptional); }
   if (g.deathWithoutSection) out("  ! recreational is \"death\" but there is no death_penalty section");
   if (g.products) out("  products still present: fold it into recreational, medical and hemp, then delete it");
   list("statuses not set", g.statuses);
-  if (!g.unit) list("penalty tables missing", g.penalties);
+  list("penalty tables missing", g.penalties);
   list("texts without inline citations", g.uncited);
   list("texts with no source at all", g.unsourced);
   list("texts resting only on Wikipedia", g.wikiOnly);

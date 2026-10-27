@@ -155,6 +155,29 @@ const countries = defineCollection({
     }),
 });
 
+// A state's or province's own context: the same sections as a country's, each optional. Its sources
+// are numbers into the file's numbered `sources` list (as its segments cite [@2]); a section it does
+// not write is shown from its country, marked as national. Statuses use the country vocabularies.
+const unitBlock = z.object({
+  text: z.string().min(1),
+  sources: z.array(z.number().int().positive()).optional(),
+  status: z.string().optional(),
+  seeds: plantingStatus.optional(), seeds_trade: plantingTrade.optional(), clones: plantingStatus.optional(), clones_trade: plantingTrade.optional(),
+}).strict();
+const UNIT_SECTIONS = ["death_penalty", "planting", ...Object.keys(STATUS_SECTIONS), ...OPTIONAL_CONTEXT_IDS, ...CONTEXT_IDS];
+const unitContext = z.object({
+  ...Object.fromEntries([...new Set(UNIT_SECTIONS)].map((k) => [k, unitBlock.optional()])),
+  spotlights: z.array(z.object({ title: z.string().min(1), text: z.string().min(1), sources: z.array(z.number().int().positive()).optional() }).strict()).min(1).optional(),
+}).strict()
+  .superRefine((ctx, issue) => {
+    for (const [key, section] of Object.entries(STATUS_SECTIONS)) {
+      const st = (ctx as Record<string, { status?: string } | undefined>)[key]?.status;
+      if (st && !(st in section.statuses)) issue.addIssue({ code: "custom", message: `context.${key}.status "${st}" is not one of ${Object.keys(section.statuses).join(", ")}` });
+    }
+  });
+// a state's segment: its plain text, or the text with a penalty table
+const unitSegment = z.union([z.string().min(1), z.object({ text: z.string().min(1), currency: z.string().regex(/^[A-Z]{3}$/).optional(), penalties: z.array(penalty).min(1).optional() }).strict()]);
+
 // countries/us/ca.yaml → id "us/ca"
 const units = defineCollection({
   loader: glob({
@@ -171,8 +194,9 @@ const units = defineCollection({
       seo_description: z.string().min(50).max(300).optional(),
       scores: perSegment(score),
       answers,
-      segments: perSegment(z.string().min(1)),
+      segments: perSegment(unitSegment),
       sources: z.array(source),
+      context: unitContext.optional(),
       // optional: how many people used cannabis in the past year, from the country's own survey.
       // The age band is the survey's (NSDUH 12+, Canadian Cannabis Survey 16+, NDSHS 14+), so it is
       // shown with the figure and not compared with the countries' 15–64.

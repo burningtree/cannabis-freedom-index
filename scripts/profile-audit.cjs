@@ -33,7 +33,7 @@ for (const id of ids) {
 
   // ── penalty tables ──
   for (const [seg, block] of Object.entries(p.segments ?? {})) {
-    const rows = block?.penalties;
+    const rows = typeof block === "object" ? block?.penalties : null; // a state's segment may be plain text
     if (!rows) continue;
     const where = `segments.${seg}.penalties`;
     if (!["possession", "cultivation", "sharing", "consumption"].includes(seg)) err(id, where, `penalty tables belong on possession, cultivation, sharing (supply and trafficking) or consumption (where using is itself an offence), not ${seg}`);
@@ -77,8 +77,8 @@ for (const id of ids) {
 
   // ── context sections ──
   const ctx = p.context ?? {};
-  if (!unit) {
-    if (ctx.products && ctx.recreational && ctx.hemp) warn(id, "context.products", "recreational and hemp exist: fold products into them and delete it");
+  {
+    if (!unit && ctx.products && ctx.recreational && ctx.hemp) warn(id, "context.products", "recreational and hemp exist: fold products into them and delete it");
     for (const [key, b] of Object.entries(ctx)) {
       const items = Array.isArray(b) ? b.map((x, i) => [`context.${key}[${i}]`, x]) : [[`context.${key}`, b]];
       for (const [where, it] of items) {
@@ -96,7 +96,7 @@ for (const id of ids) {
           if (bare > 1) warn(id, where, `${bare} sentences without a citation mark`);
         }
         if (AVOID.test(text)) warn(id, where, `uses a word WRITING.md asks to avoid ("${text.match(AVOID)[0]}")`);
-        if (/gov\.uk\/foreign-travel-advice/.test(JSON.stringify(it.sources?.map((k) => p.sources?.[k])))) warn(id, where, "rests on GOV.UK travel advice, meant only for the UK and closed countries");
+        if (!unit && /gov\.uk\/foreign-travel-advice/.test(JSON.stringify(it.sources?.map((k) => p.sources?.[k])))) warn(id, where, "rests on GOV.UK travel advice, meant only for the UK and closed countries");
       }
     }
     if (ctx.research?.text && !SCIENCE.test(ctx.research.text)) err(id, "context.research", "does not mention any science (studies, universities, trials, discoveries, research permits): it is about scientific research, not policy");

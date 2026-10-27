@@ -22,6 +22,7 @@ import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment
 import { TREATMENT, punishmentText, punishmentExtra } from "../lib/penalties.js";
 import { viewByMetric } from "../lib/map-views.js";
 import { Icon } from "astro-icon/components";
+import PenaltyTable from "./PenaltyTable.astro";
 import { answersFor } from "../lib/answers.js";
 import CultureList from "./CultureList.astro";
 import { cultureOf } from "../lib/culture.js";
@@ -58,14 +59,18 @@ const unitParts = sub ? sub.segCite.map((text, i) => citeParts(text, unitRefs,
   (k) => /^[1-9]\d*$/.test(k) && sub.sources[+k - 1],
   citedKeys(text) ?? sub.sources.map((_, i) => String(i + 1)),
   `countries/${c.slug}/${sub.id}.yaml: ${SEGMENTS[i].id}`)) : [];
-const ctxParts = d ? Object.fromEntries(d.context.filter(Boolean).map((x) => [x.key, x.items ? x.items.map((item, i) => partsOf(item, ctxRefs, `${x.key}[${i}]`)) : partsOf(x, ctxRefs, x.key)])) : {};
+// The context shown: a country's sections, or for a state its own, with its country's sections in
+// place of those it does not write (marked `national`). Its sources: the state's numbered list.
+const ctxList = sub ? c.details.context.map((nat, i) => sub.context[i] ?? (nat && { ...nat, national: true })) : d?.context ?? null;
+const srcList = sub ? sub.sources : d?.sources ?? [];
+const ctxParts = ctxList ? Object.fromEntries(ctxList.filter(Boolean).map((x) => [x.key, x.items ? x.items.map((item, i) => partsOf(item, ctxRefs, `${x.key}[${i}]`)) : partsOf(x, ctxRefs, x.key)])) : {};
 // a maximum fine in the profile's currency: "€5,500", "$300"
 const money = (n, currency) => new Intl.NumberFormat("en-GB", { style: "currency", currency, maximumFractionDigits: 0 }).format(n);
 // a chip inside a context section leads to the world map coloured by the same status
 const mapOf = (metric) => (viewByMetric[metric] ? `${base}map/${viewByMetric[metric].slug}/` : undefined);
 const onMap = (help) => `${help} · See the world map`;
 // the recreational and medical status chips lead to their own context sections, where those exist
-const ctxHas = (key) => Boolean(d?.context.some((x) => x?.key === key));
+const ctxHas = (key) => Boolean(ctxList?.some((x) => x?.key === key));
 const INCB = ["International Narcotics Control Board — Travellers carrying medicines containing controlled substances", "https://www.incb.org/incb/en/travellers/index.html", null, "https://www.incb.org/incb/en/travellers/index.html"];
 // 48,000,000 → "48 million", 770,000 → "770,000"
 const people = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)} million` : n.toLocaleString("en-GB"));
@@ -90,7 +95,8 @@ const answers = answersFor(v);
 const method = (segId) => `${base}#${segId ? `method-${segId}` : "methodology"}`;
 
 // outside datasets with figures for the country, listed in their own tab
-const datasetCount = sub ? 0 : Object.keys(datasetsOf(c.slug)).length;
+// a state shows its country's datasets, marked as national
+const datasetCount = Object.keys(datasetsOf(c.slug)).length;
 // The right-hand side is split into tabs so that the history is one click away instead of at
 // the bottom of a long page: [id, label, count]. Labels are kept short so that the row fits; the
 // panels' headings say it in full ("provinces and territories", "national estimate"). A single state has only its score breakdown.
@@ -99,7 +105,10 @@ const datasetCount = sub ? 0 : Object.keys(datasetsOf(c.slug)).length;
 const tabs = (sub
   ? [
       ["score", "Score breakdown"],
+      ["context", "Context"],
       history.length > 0 && ["history", "History", history.length],
+      datasetCount > 0 && ["datasets", "Datasets", datasetCount],
+      ["sources", "Sources", srcList.length],
       ["units", `Other ${group.plural.split(" ")[0]}`, group.units.length - 1],
     ]
   : [
@@ -157,9 +166,9 @@ const culture = cultureOf(c);
         ? <a class={`chip s-${v.med}`} href="#seg-ctx-medical" data-seg-link="ctx-medical" title={MED_HELP[v.med]}>Medical: {MED_LABEL[v.med]}</a>
         : <span class={`chip s-${v.med}`} title={MED_HELP[v.med]}>Medical: {MED_LABEL[v.med]}</span>}
     </div>
-    {d && d.context.some((x) => x && (x.status || x.seeds)) && (
+    {ctxList && ctxList.some((x) => x && (x.status || x.seeds)) && (
       <div class="d-chips d-chips-ctx">
-        {d.context.filter((x) => x && (x.status || x.seeds)).map((x) => x.seeds ? (
+        {ctxList.filter((x) => x && (x.status || x.seeds)).map((x) => x.seeds ? (
           <>
             <a class={`chip s-${PLANTING_STATUS[x.seeds].tone}`} href={`#seg-ctx-${x.key}`} data-seg-link={`ctx-${x.key}`} title={PLANTING_STATUS[x.seeds].help[0]}>Seeds: {PLANTING_STATUS[x.seeds].label}</a>
             <a class={`chip s-${PLANTING_STATUS[x.clones].tone}`} href={`#seg-ctx-${x.key}`} data-seg-link={`ctx-${x.key}`} title={PLANTING_STATUS[x.clones].help[1]}>Clones: {PLANTING_STATUS[x.clones].label}</a>
@@ -321,6 +330,7 @@ const culture = cultureOf(c);
         </summary>
         <div class="why">
           {sub.seg && <p><Cited parts={unitParts[i]} /></p>}
+          {sub.segPenalties[i] && <PenaltyTable penalties={sub.segPenalties[i]} />}
         </div>
       </details>
     ))}
@@ -347,21 +357,7 @@ const culture = cultureOf(c);
           {seg && (
             <div class="why">
               <p><Cited parts={segParts[i]} /></p>
-              {seg.penalties && (
-                <table class="pen">
-                  <thead><tr><td>Amount</td><td>What happens</td><td>Punishment</td><td>Fine</td></tr></thead>
-                  <tbody>
-                    {seg.penalties.rows.map((r) => (
-                      <tr>
-                        <td data-label="Amount">{r.amount}{r.note && <span class="pen-note">{r.note}</span>}</td>
-                        <td data-label="What happens"><span class={`pen-t s-${TREATMENT[r.treatment].tone}`} title={TREATMENT[r.treatment].help}>{TREATMENT[r.treatment].label}</span>{r.term && <span class="pen-note">{r.term}</span>}</td>
-                        <td data-label="Punishment" class:list={{ "pen-death": r.death }}>{punishmentText(r) ?? "—"}{punishmentExtra(r) && <span class="pen-note">{punishmentExtra(r)}</span>}</td>
-                        <td data-label="Fine">{r.fine && r.fineMin ? `${money(r.fineMin, seg.penalties.currency)} – ${money(r.fine, seg.penalties.currency)}` : r.fine ? `Up to ${money(r.fine, seg.penalties.currency)}` : r.fineMin ? `At least ${money(r.fineMin, seg.penalties.currency)}` : "—"}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
+              {seg.penalties && <PenaltyTable penalties={seg.penalties} />}
             </div>
           )}
         </details>
@@ -371,12 +367,14 @@ const culture = cultureOf(c);
 
     </div>
 
-    {d && (
+    {ctxList && (
       <div class="c-panel" id="panel-context" data-panel="context" role="tabpanel" aria-labelledby="tab-context" hidden>
         <h2 class="d-h">More context <span>not part of the score</span></h2>
-        {d.context.filter(Boolean).map((x) => (
+        {sub && <p class="d-hint">Sections written for {sub.name} come first in their place; the others hold for all of {c.name} and are marked so.</p>}
+        {ctxList.filter(Boolean).map((x) => (
           <div class="segrow" data-seg={`ctx-${x.key}`} id={`seg-ctx-${x.key}`}>
             <div class="segrow-top"><span>{CONTEXT_ICONS[x.key] && <Icon name={CONTEXT_ICONS[x.key]} class="ctx-icon" aria-hidden="true" />}{x.name}<SourceTip label="What this covers" inline>{x.help}</SourceTip></span></div>
+            {x.national && <p class="ctx ctx-general">For all of {c.name}; nothing written for {sub.name} yet.</p>}
             {x.key === "recreational" && (
               <div class="d-chips"><a class={`chip s-${v.rec}`} href={mapOf("status:rec")} title={onMap(REC_HELP[v.rec])}>Recreational: {REC_LABEL[v.rec]}</a></div>
             )}
@@ -422,17 +420,18 @@ const culture = cultureOf(c);
           more={sub ? <>Only the entries about {sub.name}. <a href={`${countryUrl}#history`}>All {nationalCount} entries on the national page →</a></> : null} />
       </div>
     )}
-    {d && datasetCount > 0 && (
+    {datasetCount > 0 && (
       <div class="c-panel" id="panel-datasets" data-panel="datasets" role="tabpanel" aria-labelledby="tab-datasets" hidden>
+        {sub && <p class="d-hint">These figures are for all of {c.name}; no dataset here is broken down by {group.label.toLowerCase()} yet.</p>}
         <CountryDatasetTab c={c} />
       </div>
     )}
-    {d && (
+    {(d || sub) && (
       <div class="c-panel" id="panel-sources" data-panel="sources" role="tabpanel" aria-labelledby="tab-sources" hidden>
         <section class="c-sources">
-          <h2 class="d-h">All sources <span>{d.sources.length} cited in this profile</span></h2>
+          <h2 class="d-h">All sources <span>{srcList.length} cited in this profile</span></h2>
           <ol>
-            {d.sources.map((source) => <SourceCitation source={source} />)}
+            {srcList.map((source) => <SourceCitation source={source} />)}
           </ol>
         </section>
       </div>

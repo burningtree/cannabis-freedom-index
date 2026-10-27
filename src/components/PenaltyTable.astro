@@ -1,0 +1,22 @@
+---
+// A segment's penalty steps as a plain table (src/lib/penalties.js), under its text on a country's or
+// a state's page. `penalties` is { rows, currency, summary }.
+import { TREATMENT, punishmentText, punishmentExtra } from "../lib/penalties.js";
+const { penalties } = Astro.props;
+// a fine in the profile's currency: "€5,500", "$300"
+const money = (n) => new Intl.NumberFormat("en-GB", { style: "currency", currency: penalties.currency, maximumFractionDigits: 0 }).format(n);
+const fine = (r) => (r.fine && r.fineMin ? `${money(r.fineMin)} – ${money(r.fine)}` : r.fine ? `Up to ${money(r.fine)}` : r.fineMin ? `At least ${money(r.fineMin)}` : "—");
+---
+<table class="pen">
+  <thead><tr><td>Amount</td><td>What happens</td><td>Punishment</td><td>Fine</td></tr></thead>
+  <tbody>
+    {penalties.rows.map((r) => (
+      <tr>
+        <td data-label="Amount">{r.amount}{r.note && <span class="pen-note">{r.note}</span>}</td>
+        <td data-label="What happens"><span class={`pen-t s-${TREATMENT[r.treatment].tone}`} title={TREATMENT[r.treatment].help}>{TREATMENT[r.treatment].label}</span>{r.term && <span class="pen-note">{r.term}</span>}</td>
+        <td data-label="Punishment" class:list={{ "pen-death": r.death }}>{punishmentText(r) ?? "—"}{punishmentExtra(r) && <span class="pen-note">{punishmentExtra(r)}</span>}</td>
+        <td data-label="Fine">{fine(r)}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

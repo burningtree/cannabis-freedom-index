@@ -197,6 +197,23 @@ export function subunitsOf(id) {
     .map(({ id: path, data }) => {
       const s = scoreList(data.scores);
       const raw = scoreOf(s);
+      const file = `countries/${path}.yaml`;
+      const sources = [...data.sources.map(pair), ...groupSources]; // the unit's own sources first
+      // a segment is its text, or { text, currency, penalties }
+      const segText = (seg) => (typeof seg === "string" ? seg : seg.text);
+      // a context section cited by number into the unit's sources; with no `sources`, all of them
+      const numbered = (block, where) => {
+        const keys = (block.sources ?? []).map(String);
+        for (const k of keys) if (!sources[+k - 1]) throw new Error(`${file}: ${where} cites source ${k}, but the file lists ${data.sources.length}`);
+        return { t: stripCites(block.text), src: keys.map((k) => sources[+k - 1]), cite: { text: block.text, keys, of: (k) => /^[1-9]\d*$/.test(k) && sources[+k - 1] } };
+      };
+      const ctx = data.context ?? {};
+      const context = CONTEXT.map(([key, name, help]) => {
+        const b = ctx[key];
+        if (!b) return null;
+        if (key === "spotlights") return { key, name, help, ...numbered({ text: b.map((x) => `${x.title}. ${x.text}`).join(" "), sources: [...new Set(b.flatMap((x) => x.sources ?? []))] }, key), items: b.map((x, i) => ({ title: x.title, ...numbered(x, `${key}[${i}]`) })) };
+        return { key, name, help, ...numbered(b, `context.${key}`), ...(key === "planting" && b.seeds && plantingOf(b)), ...(STATUS_SECTIONS[key] && b.status && { kind: key, status: b.status }) };
+      });
       return {
         id: path.split("/")[1], raw, s,
         score: Math.round(raw),
@@ -208,9 +225,12 @@ export function subunitsOf(id) {
         note: data.summary,
         reviewed: isoDate(data.updated),
         worldRank: 1 + countries.filter((c) => c.raw > raw).length,
-        seg: SEGMENTS.map((seg) => stripCites(data.segments[seg.id])),
-        segCite: SEGMENTS.map((seg) => data.segments[seg.id]),          // six explanations, in SEGMENTS order
-        sources: [...data.sources.map(pair), ...groupSources],      // the unit's own source first
+        seg: SEGMENTS.map((seg) => stripCites(segText(data.segments[seg.id]))),
+        segCite: SEGMENTS.map((seg) => segText(data.segments[seg.id])),          // six explanations, in SEGMENTS order
+        // penalty steps of a segment, as for a country (penalties.js); null where it has none
+        segPenalties: SEGMENTS.map((seg) => { const b = data.segments[seg.id], rows = typeof b === "object" ? b.penalties?.map(penaltyRow) : null; return rows ? { rows, currency: b.currency ?? null, summary: penaltySummary(rows) } : null; }),
+        context, // the unit's own context sections, in CONTEXT order; null where it writes none
+        sources,
         use: data.use ? { ...data.use, source: pair(data.use.source) } : null, // past-year use from its country's survey
       };
     })

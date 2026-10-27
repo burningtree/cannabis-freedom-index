@@ -13,8 +13,34 @@ scores:
   consumption: 4
   access: 6
 segments:
-  possession: Adults 21+ may hold 28.5 g of flower and 8 g of concentrate.
-  cultivation: Six plants per household. More than six is a misdemeanour with up to six months.
+  possession:
+    text: >-
+      Adults 21+ may hold 28.5 g of flower and 8 g of concentrate. More is a misdemeanour with up
+      to six months in jail and a $500 fine.[@1]
+    currency: USD
+    penalties:
+      - upto: 28.5 g
+        treatment: legal
+        note: Adults 21 and over; up to 8 g of concentrate besides
+      - over: 28.5 g
+        treatment: criminal
+        term: Misdemeanor
+        prison: 6 months
+        fine: 500
+  cultivation:
+    text: >-
+      Six plants per household. More than six is a misdemeanour with up to six months and a $500
+      fine.[@1]
+    currency: USD
+    penalties:
+      - upto: 6 plants
+        treatment: legal
+        note: Per household, adults 21 and over
+      - over: 6 plants
+        treatment: criminal
+        term: Misdemeanor
+        prison: 6 months
+        fine: 500
   enforcement: >-
     Among the mildest in the country: most personal offences beyond the limits are infractions or
     misdemeanours.
@@ -24,6 +50,14 @@ segments:
     any compensation. These are the ordinary adult-use gift permissions.[@2]
   consumption: Private use and licensed consumption lounges; smoking in public is a $100 infraction.
   access: Licensed shops and delivery, although many cities and counties ban sales.
+context:
+  recreational:
+    text: >-
+      Since Proposition 64 in 2016, adults 21 and over may grow six plants and keep up to an ounce
+      of flower and 8 g of concentrate; the same law licenses commercial growing and retail
+      sales.[@1] Under-18s caught with any amount get an infraction
+      with drug counselling and community service, not a criminal record.[@1]
+    sources: [1]
 sources:
   - title: NORML — California laws and penalties
     url: https://norml.org/laws/california-penalties/

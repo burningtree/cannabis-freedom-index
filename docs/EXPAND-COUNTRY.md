@@ -95,6 +95,13 @@ How every section reads:
 - Don't explain words for cannabis or common jargon by hand: the term layer does it. Add new
   jargon to `glossary.yaml`, or write a Culture/Language entry for a local word for cannabis.
 
+## 5b. States and provinces (United States, Canada, Australia)
+
+For a federation, expand the national profile first, then its states or provinces one by one:
+penalty tables from each state's law, and context sections where the state differs from the
+country (DATA-MAINTENANCE.md, "State and province files"). A state section the country already
+covers well need not be repeated. `node scripts/country-gaps.cjs us/ca` is a state's work list.
+
 ## 6. Culture and the atlas
 
 - If you meet a tradition, a person or a local word for cannabis worth an entry, write one

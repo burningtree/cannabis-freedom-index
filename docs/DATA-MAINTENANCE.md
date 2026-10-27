@@ -572,6 +572,48 @@ one-line texts in the four original sections (`products`, `production`, `medical
 - After editing, run `npm run build`; the schema rejects unknown sections, uncited sources and
   malformed penalty steps.
 
+## State and province files
+
+The United States, Canada and Australia have a file per state, province or territory
+(`countries/us/ca.yaml`) besides the national profile (`countries/us/index.yaml`). A state file
+can hold everything a country profile holds:
+
+```yaml
+segments:
+  possession: Adults 21+ may hold 28.5 g of flower.     # plain text, as before, or:
+  cultivation:
+    text: >-
+      Six plants per household. More is a misdemeanour with up to six months and a $500 fine.[@1]
+    currency: USD
+    penalties: [...]                                       # exactly as in a country profile
+context:
+  recreational:
+    text: >-
+      Since Proposition 64 in 2016, adults 21 and over may grow six plants…[@1]
+    sources: [1]                                           # numbers into the file's `sources` list
+  clubs:
+    status: tolerated                                      # statuses as in a country profile
+    text: >-
+      …
+    sources: [2, 3]
+sources:
+  - title: NORML — California laws and penalties
+    url: https://norml.org/laws/california-penalties/
+```
+
+- **Sources are numbered**: a state file keeps its `sources` as a list, and both its segments and
+  its context sections cite them by number (`[@2]`, `sources: [2]`).
+- **Write only what differs.** A section a state does not write is shown from the national
+  profile, marked "For all of the United States; nothing written for California yet". Write the
+  state's own section where its law or practice differs: recreational use, medical cannabis,
+  clubs, driving, visitors, arrests are the usual ones; hemp and industry often too.
+- **Penalty tables** go on the state's segments as in a country (possession, cultivation, sharing,
+  consumption), with the state's own figures.
+- A state page shows its country's datasets, marked as national, until a dataset has rows for
+  states.
+- `node scripts/country-gaps.cjs us/ca` lists a state's own sections and those it borrows;
+  `node scripts/profile-audit.cjs us/ca` checks it. California is the model.
+
 ## Penalty steps
 
 A segment may carry a small table of what happens at each amount or for each offence, under the
