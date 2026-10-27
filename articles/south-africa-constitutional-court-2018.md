@@ -22,9 +22,10 @@ to control cannabis internationally.
 
 Apartheid made the law harsher. The [1971 Act](/history/south-africa-mandatory-minimums-1971/)
 set a minimum of two years in prison for a first possession offence, and the
-government called it the toughest drug law in the Western world. The
-[1992 law](/history/south-africa-drugs-act-1992/) removed the minimums but kept
-possession a crime.
+government called it the toughest drug law in the Western world. An
+[amendment in 1986](/history/south-africa-sentencing-discretion-1986/) removed the
+minimums, and the [1992 law](/history/south-africa-drugs-act-1992/) kept possession a
+crime.
 
 ## Three applicants
 
