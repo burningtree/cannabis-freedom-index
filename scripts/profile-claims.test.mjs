@@ -627,3 +627,14 @@ test('Oregon separates concentrates from licensed-origin extracts and ordinary g
  assert.match(x.segments.sharing,/more than 1 ounce.*not more than 2 ounces.*Class B misdemeanour/);
  assert.match(x.answers.carry.text,/extracts.*1 oz.*licensed-source/);
 });
+
+// Issue #218
+test('California gifts retain the separate concentrate cap and adult no-payment conditions (#218)',()=>{
+ const x=country('us/ca');
+ assert.match(x.segments.sharing,/adult 21\+.*another adult 21\+/);
+ assert.match(x.segments.sharing,/28.5 g of non-concentrated cannabis/);
+ assert.match(x.segments.sharing,/8 g of concentrated cannabis.*contained in cannabis products/);
+ assert.match(x.segments.sharing,/without any compensation/);
+ assert.ok(x.sources.some(s=>s.url.includes('leginfo.legislature.ca.gov')));
+ assert.equal(x.scores.sharing,5);
+});
