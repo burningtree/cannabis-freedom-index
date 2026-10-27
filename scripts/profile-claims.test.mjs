@@ -540,6 +540,7 @@ test('Arizona distinguishes legal and petty concentrate caps and gift conditions
  for(const text of [az.segments.possession,az.segments.enforcement,az.answers.caught.text])assert.match(text,/12.5 g/);
  assert.match(az.segments.sharing,/not advertised or promoted/);
  assert.match(az.segments.possession,/medical patients.*separate statutory protections/);
+ assert.match(az.segments.possession,/unauthorised leaf possession below two pounds is a class 6 felony/);
  assert.doesNotMatch(az.segments.possession,/more than 2.5 oz is a felony/);
 });
 
