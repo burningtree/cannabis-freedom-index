@@ -11,6 +11,7 @@
 // link to an atlas entry. Unknown countries or entries stop the build.
 import { SEGMENTS, countries, changes, regions, segAvg, worldAvg } from "./countries.js";
 import { cultureEntries } from "./culture.js";
+import { markTerms } from "./terms.js";
 
 const seg = (id) => SEGMENTS.findIndex((s) => s.id === id);
 const P = seg("possession"), C = seg("cultivation"), S = seg("sharing"), A = seg("access");
@@ -192,9 +193,11 @@ const fromCulture = [
   { kicker: "Customs · Brazil", culture: "traditions/the-diamba-circles", history: "brazil-iglesias-diamba-essay-1918", text: "In Maranhão, [[BR|Brazil]], [[c:language/diamba|diamba]] smokers met on Saturdays at an elder's house and [[c:traditions/the-diamba-circles|sang between puffs]], answering each verse with \u201cDizô! Dizô!\u201d. A doctor's 1918 account of their circle was quoted for decades in the case for a ban." },
 ];
 
-// Turn the inline [[…|…]] links into parts the component can render, checking each target.
+// Turn the inline [[…|…]] links into parts the component can render, checking each target. Words
+// for cannabis and jargon in the plain text become { label, term } parts (src/lib/terms.js), once
+// per fact; a word whose atlas entry the fact already links is not marked again.
 function parse(text) {
-  return text.split(/(\[\[[^\]]+\]\])/).filter(Boolean).map((part) => {
+  const linked = text.split(/(\[\[[^\]]+\]\])/).filter(Boolean).map((part) => {
     const m = part.match(/^\[\[([^|]+)\|([^\]]+)\]\]$/);
     if (!m) return part;
     if (m[1].startsWith("h:")) {
@@ -211,6 +214,9 @@ function parse(text) {
     if (!country) throw new Error(`facts.js: unknown country "${m[1]}"`);
     return { label: m[2], country };
   });
+  const seen = new Set(linked.filter((p) => p.entry?.section === "language").map((p) => `l:${p.entry.slug}`));
+  return linked.flatMap((part) => (typeof part !== "string" ? [part]
+    : markTerms(part, seen).map((w) => (w.term ? { label: w.t, term: w.term } : w.t))));
 }
 
 export function getFacts() {

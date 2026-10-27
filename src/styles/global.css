@@ -764,6 +764,21 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 .term-g { cursor: help; }
 /* stronger than the solid underline of ordinary links in these texts */
 :is(.prose, .lede, .ctx, .why p) a.term:not(.cite a) { color: inherit; text-decoration: underline dashed; text-decoration-color: var(--muted); text-decoration-thickness: 1px; }
+/* the glossary (src/pages/glossary.astro): a letter bar, then terms with their explanations */
+.gls-letters { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+.gls-letters a { padding: 4px 9px; border: 1px solid var(--border); border-radius: var(--r); font: 400 13px var(--mono); color: var(--text-2); text-decoration: none; }
+.gls-letters a:hover { color: var(--text); border-color: var(--muted); }
+.gls-letter { margin: 26px 0 6px; font: 400 28px/1 var(--display); color: var(--muted); }
+.gls-list { margin: 0; display: grid; gap: 0; }
+.gls-item { display: grid; grid-template-columns: minmax(160px, 260px) minmax(0, 1fr); gap: 6px 24px; padding: 12px 0; border-top: 1px solid var(--border); scroll-margin-top: 90px; }
+.gls-item:target { background: color-mix(in srgb, var(--text) 5%, transparent); }
+.gls-item dt a { font: 400 20px/1.2 var(--display); color: var(--text); text-decoration: none; }
+.gls-item dt a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.gls-item dt small { display: block; margin-top: 4px; color: var(--muted); font-size: 12.5px; }
+.gls-item dd { margin: 0; color: var(--text-2); font-size: 15px; line-height: 1.55; max-width: 72ch; }
+/* a word with an article of its own in the atlas */
+.gls-badge { display: inline-block; margin-left: 8px; padding: 1px 6px; border: 1px solid var(--border); border-radius: 2px; font: 400 10px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--text-2); vertical-align: 3px; }
+@media (max-width: 640px) { .gls-item { grid-template-columns: 1fr; } }
 /* one country spotlight inside its section */
 .ctx-spot + .ctx-spot { margin-top: 14px; }
 .ctx-spot-h { margin: 0 0 4px; font: 400 18px/1.2 var(--display); color: var(--text); }

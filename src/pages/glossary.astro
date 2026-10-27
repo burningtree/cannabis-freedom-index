@@ -1,0 +1,56 @@
+---
+// The glossary: every word the term layer explains (glossary.yaml) and every word for cannabis that
+// has an entry in Culture/Language, in one list from A to Z. The words with an article of their own
+// are marked "Atlas entry" and lead to it. The same words are marked in running text across the site
+// (src/lib/terms.js); each term here has an anchor, /glossary/#decriminalised.
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import { cultureEntries } from "../lib/culture.js";
+import { termAnchor as anchor } from "../lib/terms.js";
+
+const base = import.meta.env.BASE_URL;
+const plain = (t) => t.normalize("NFD").replace(/[̀-ͯ]/g, "");
+const sortKey = (t) => plain(t).replace(/^[^A-Za-z0-9]+/, "").toLowerCase();
+const letterOf = (t) => (/^[a-z]/.test(sortKey(t)) ? sortKey(t)[0].toUpperCase() : "#");
+
+const explained = (await getCollection("glossary")).map(({ data }) => ({ id: anchor(data.id), title: data.id, also: data.also ?? [], text: data.text, url: null }));
+const withArticle = cultureEntries.filter((e) => e.section === "language")
+  .map((e) => ({ id: anchor(e.title), title: e.title, also: e.also ?? [], text: e.summary, url: `${base}${e.url}` }));
+const all = [...explained, ...withArticle].sort((a, b) => sortKey(a.title).localeCompare(sortKey(b.title)));
+// grouped by first letter, for the letter bar and the headings
+const groups = [];
+for (const t of all) { const l = letterOf(t.title); if (groups.at(-1)?.l !== l) groups.push({ l, items: [] }); groups.at(-1).items.push(t); }
+---
+<Base title="Glossary" description={`${all.length} words explained in plain language: the terms of cannabis law, from decriminalised to per se limit, and words for cannabis from around the world, ${withArticle.length} of them with an article of their own.`}>
+  <main class="changes-page glossary-page">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Cannabis Freedom Index</p>
+      <h1>Glossary</h1>
+      <p class="lede">The words of drug law and of the cannabis trade that this site uses, and the words people use for cannabis itself, each explained in a sentence or two. The {withArticle.length} marked "Atlas entry" have a whole article in the <a href={`${base}culture/language/`}>cultural atlas</a>. Across the site, the first time one of these words appears in a text it has a dashed underline: hover or tap it for the explanation.</p>
+      <nav class="gls-letters" aria-label="Terms by letter">
+        {groups.map((g) => <a href={`#letter-${g.l === "#" ? "num" : g.l}`}>{g.l}</a>)}
+      </nav>
+    </section>
+
+    <section class="section gls-body">
+      {groups.map((g) => (
+        <div class="gls-group" id={`letter-${g.l === "#" ? "num" : g.l}`}>
+          <h2 class="gls-letter">{g.l}</h2>
+          <dl class="gls-list">
+            {g.items.map((t) => (
+              <div class="gls-item" id={t.id}>
+                <dt>
+                  {t.url ? <a href={t.url}>{t.title}</a> : <a href={`#${t.id}`}>{t.title}</a>}
+                  {t.url && <span class="gls-badge">Atlas entry</span>}
+                  {t.also.length > 0 && <small>also {t.also.slice(0, 6).join(", ")}{t.also.length > 6 ? "…" : ""}</small>}
+                </dt>
+                <dd>{t.text}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
+    </section>
+  </main>
+</Base>
+

@@ -12,6 +12,7 @@ const groups = [
   ["history", "From the history", "Moments from two centuries of cannabis law, oldest first."],
   ["culture", "From the culture", "Words, customs, faiths and people from the cultural atlas."],
 ].map(([id, name, sub]) => ({ id, name, sub, facts: facts.filter((f) => f.group === id) }));
+import FactText from "../components/FactText.astro";
 ---
 <Base title="Did you know?" description={`${facts.length} curious cases from the Cannabis Freedom Index: strange rules, forgotten laws and what the scores show, each linked to its source page.`}>
   <main class="changes-page">
@@ -31,11 +32,7 @@ const groups = [
             <li class="dyk-fact">
               <p class="dyk-kicker">{f.kicker}</p>
               <p class="dyk-text">
-                {f.parts.map((part) => typeof part === "string" ? part
-                  : part.country ? <a href={`${base}country/${part.country.slug}/`}>{part.label}</a>
-                  : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
-            : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
-          : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
+                <FactText parts={f.parts} />
               </p>
               {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
             </li>

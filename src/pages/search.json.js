@@ -5,6 +5,8 @@
 //   ic: an Iconoir icon, shown in place of the flag (pages); a history entry shows its kind's icon with the flag small in its corner
 //   n: what is shown and matched   s: the smaller second line, matched too   u: address under the site root
 //   g: words matched but not shown (a history entry's tags)
+import { getCollection } from "astro:content";
+import { termAnchor } from "../lib/terms.js";
 import { places, countries, subunitsOf, changes, articles, historyPeriods, CHANGE_CATEGORIES, CHANGE_TAGS, estimateNote } from "../lib/countries.js";
 import { MAP_VIEWS } from "../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries, cultureSection } from "../lib/culture.js";
@@ -22,7 +24,7 @@ const rows = [
     ["Map", "World map of scores", "#map"], ["Rankings", "Every country by score", "#rankings"], ["Methodology", "How the scores are made", "#methodology"],
     ["History", "Laws, rulings and treaties", "history/"], ["Can I?", "Plain answers per country", "can-i/"], ["Compare", "Countries side by side", "compare/"],
     ["Download the data", "Scores, history and yearly panel", "data/"], ["Score changes", "Every score change", "score-changes/"], ["Changelog", "Every change to the site, data and text", "changelog/"],
-    ["Articles", "The longer reads on single events", "articles/"], ["About", "What the project is, its aims and commitments", "about/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "A cultural atlas of cannabis", "culture/"], ["Culture: People", "Officials, preachers, scientists and presidents", "culture/people/"], ["Culture: Stories", "The people behind the laws", "culture/stories/"], ["Sources", "Every source the index cites", "sources/"],
+    ["Articles", "The longer reads on single events", "articles/"], ["About", "What the project is, its aims and commitments", "about/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "A cultural atlas of cannabis", "culture/"], ["Culture: People", "Officials, preachers, scientists and presidents", "culture/people/"], ["Culture: Stories", "The people behind the laws", "culture/stories/"], ["Sources", "Every source the index cites", "sources/"], ["Glossary", "The words of cannabis law, explained", "glossary/"], ["Charts", "The history and the scores in charts", "charts/"], ["World map", "Every country coloured by its score, full screen", "map/"], ["Map poster", "The world map as a printable poster", "map/poster/"],
   ].map(([n, s, u]) => ({ t: "p", n, s, u, ic: PAGE_ICONS[u] })),
   // the exhibitions: one row each, its rooms' names matched but not listed
   { t: "p", n: "Exhibitions", s: "One episode at a time, in rooms of its own", u: "exhibitions/", ic: EXHIBITION_ICON },
@@ -34,6 +36,8 @@ const rows = [
     t: "u", n: e.title, s: [cultureSection(e.section).name, ...(e.spelling ?? []).map((w) => w.text), ...(e.also ?? [])].join(" · "), u: e.url, f: e.countries[0].flag,
     ...(e.image && { img: (await getImage({ src: e.image.src, width: 96, height: 96, fit: "cover", format: "webp" })).src }),
   })))),
+  // every term of the glossary, found by its other forms too, opens its place on the glossary page
+  ...(await getCollection("glossary")).map(({ data }) => ({ t: "p", n: data.id, s: `Glossary · ${data.text}`, u: `glossary/#${termAnchor(data.id)}`, ic: "iconoir:book-stack", ...(data.also?.length && { g: data.also.join(" ") }) })),
   // every map view, history kind, history tag and history period has its own page
   ...MAP_VIEWS.filter((v) => v.slug).map((v) => ({ t: "p", n: v.title, s: "Map", u: `map/${v.slug}/`, ic: MAP_VIEW_ICON })),
   ...Object.entries(CHANGE_CATEGORIES).map(([kind, k]) => ({ t: "p", n: `History: ${k.label}`, s: k.help, u: `history/kind/${kind}/`, ic: k.icon })),

@@ -6,6 +6,7 @@ import { factsOf } from "../lib/facts.js";
 const { c } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const facts = factsOf(c);
+import FactText from "./FactText.astro";
 ---
 {facts.length > 0 && (
   <section class="dyk dyk-country" aria-label={`Did you know? ${c.name}`}>
@@ -18,10 +19,7 @@ const facts = factsOf(c);
         <li class="dyk-fact">
           <p class="dyk-kicker">{f.kicker}</p>
           <p class="dyk-text">
-            {f.parts.map((part) => typeof part === "string" ? part
-              : part.country ? (part.country.id === c.id ? <b>{part.label}</b> : <a href={`${base}country/${part.country.slug}/`}>{part.label}</a>)
-              : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
-              : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
+            <FactText parts={f.parts} here={c.id} />
           </p>
           {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
         </li>

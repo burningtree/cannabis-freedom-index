@@ -56,6 +56,7 @@ const cards = {
   "score-changes": page("Score changes", "Every change to a score, newest first.", [[num(scored), "SCORE CHANGES"]]),
   changelog: page("Changelog", "Every change to the site, its data and its text, and exactly what changed.", [], `CHANGELOG · ${BRAND}`),
   data: page("Download the data", "Scores, history and a yearly panel since 1900 as CSV and JSON, free to reuse with attribution."),
+  glossary: page("Glossary", "The words of cannabis law explained in plain language, and the words for cannabis from around the world."),
   "did-you-know": page("Did you know?", "Strange rules, forgotten laws and what the scores show.", [[String(getFacts().length), "CURIOUS CASES"]]),
   articles: page("Articles", "Moments from the history of cannabis law told in full.", [[num(articles.size), "ARTICLES"]]),
   charts: page("Cannabis (un)freedom in charts", "How prohibition spread after 1860, the waves of law, the regions, use and the law, drawn from the index's scores and history.", indexFacts, `CHARTS · ${BRAND}`),

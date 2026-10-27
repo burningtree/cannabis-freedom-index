@@ -52,6 +52,9 @@ function load() {
 let cache = null;
 const terms = () => (cache ??= load());
 
+// a term's anchor on the glossary page: "Per se limit" → "per-se-limit" (/glossary/#per-se-limit)
+export const termAnchor = (t) => String(t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 // A plain text split into parts: { t } plain, { t, term } a marked word, where term is
 // { kind: "language", url, title } or { kind: "glossary", title, text }. `seen` holds the keys of
 // the words already marked on this page; `here` is the page's own path ("culture/language/bhang/"),

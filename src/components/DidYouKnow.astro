@@ -10,6 +10,7 @@ const base = import.meta.env.BASE_URL;
 const { group } = Astro.props;
 const facts = getFacts().filter((f) => !group || f.group === group);
 const PER_PAGE = 3;
+import FactText from "./FactText.astro";
 ---
 <section class="dyk" id="dyk" aria-label="Did you know?" data-per-page={PER_PAGE}>
   <div class="dyk-top">
@@ -26,11 +27,7 @@ const PER_PAGE = 3;
       <li class="dyk-fact" hidden={i >= PER_PAGE}>
         <p class="dyk-kicker">{f.kicker}</p>
         <p class="dyk-text">
-          {f.parts.map((part) => typeof part === "string" ? part
-            : part.country ? <a href={`${base}country/${part.country.slug}/`} data-country={part.country.id}>{part.label}</a>
-            : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
-            : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
-          : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
+          <FactText parts={f.parts} />
         </p>
         {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
       </li>

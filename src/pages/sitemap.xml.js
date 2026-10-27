@@ -50,6 +50,7 @@ export function GET({ site }) {
     ["exhibitions/", null],
     ["culture/", null],
     ["did-you-know/", null],
+    ["glossary/", null],
     // stories is a section too, listed above with its own file's date
     ...CULTURE_SECTIONS.filter((x) => !x.soon && x.id !== "stories").map((x) => [`culture/${x.id}/`, null]),
     ...historyPeriods.map((p) => [`history/period/${p.slug}/`, null]),

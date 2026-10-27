@@ -1,0 +1,15 @@
+---
+// The text of one "Did you know?" case (src/lib/facts.js): plain text, links to countries, history and
+// atlas entries, and marked words (src/lib/terms.js). `here` is the country whose page this is, named
+// in bold instead of linked. Marked words carry the class term-f, so the page-wide rule that marks a
+// word only once (src/middleware.js) leaves them alone: the home page shows its cases a few at a time.
+const { parts, here = null } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+{parts.map((part) => typeof part === "string" ? part
+  : part.term ? (part.term.kind === "language"
+    ? <a class="term term-l term-f" href={`${base}${part.term.url}`}>{part.label}</a>
+    : <span class="term term-g term-f" tabindex="0" role="button" data-title={part.term.title} data-text={part.term.text}>{part.label}</span>)
+  : part.country ? (here && part.country.id === here ? <b>{part.label}</b> : <a href={`${base}country/${part.country.slug}/`} data-country={part.country.id}>{part.label}</a>)
+  : part.entry ? <a href={`${base}${part.entry.url}`}>{part.label}</a>
+  : <a href={`${base}history/${part.change.id}/`}>{part.label}</a>)}
