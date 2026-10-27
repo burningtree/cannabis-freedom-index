@@ -17,10 +17,11 @@ scores:
 segments:
   possession:
     text: >-
-      Article 141 of Law 97-039 sets two to six months in prison, a fine, or both for small personal
-      quantities of cannabis derivatives other than oil. Cannabis oil falls under a three-month
-      to one-year range, also with a fine alternative. The general trafficking provisions can
-      apply to holdings outside the small-personal-quantity rule and allow forced labour or a fine.
+      Article 141 of Law 97-039 sets two to six months in prison, a fine of FMG 10,000 to
+      250,000, or both for small personal quantities of cannabis derivatives other than oil.
+      Cannabis oil falls under a three-month to one-year range, with the same fine alternative.
+      The general trafficking provisions can apply to holdings outside the small-personal-quantity
+      rule and allow forced labour or a fine.
     sources:
       - law
     currency: MGA
@@ -29,12 +30,14 @@ segments:
         treatment: criminal
         prison_min: 2 months
         prison: 6 months
-        note: Two to six months in prison, a fine, or both; fine amount not stated in the retained text
+        fine: 50000
+        note: Up to 50,000 ariary; the law states FMG 10,000–250,000 (5 FMG = 1 ariary); prison, fine, or both
       - label: Small personal quantity, cannabis oil
         treatment: criminal
         prison_min: 3 months
         prison: 1 year
-        note: Three months to one year in prison, a fine, or both; fine amount not stated in the retained text
+        fine: 50000
+        note: Law states FMG 10,000–250,000; prison, fine, or both
   cultivation:
     text: >-
       Cultivation is prohibited and landholders must destroy cannabis crops. The general production
@@ -43,6 +46,12 @@ segments:
     sources:
       - law
       - gi
+    currency: MGA
+    penalties:
+      - label: Culture or production of high-risk drugs (Article 95)
+        treatment: criminal
+        fine: 1000000
+        note: Forced labour and/or a fine; the law states FMG 50,000–5,000,000; small personal growing falls under Article 141
   enforcement:
     text: >-
       Small-personal-quantity offences allow a fine instead of imprisonment. GI-TOC fieldwork
@@ -54,7 +63,8 @@ segments:
     text: >-
       General trafficking offences allow forced labour, a fine, or both. Offering or giving
       high-risk drugs directly for another person's consumption has a separate one-to-five-year
-      prison range, a fine, or both under Article 99.
+      prison range and a fine of FMG 10,000 to 1,000,000, or both, under Article 99, doubled in
+      Article 108 cases such as organised gangs or supply to minors.
     sources:
       - law
     currency: MGA
@@ -63,7 +73,8 @@ segments:
         treatment: criminal
         prison_min: 1 year
         prison: 5 years
-        note: One to five years in prison, a fine, or both; fine amount not stated in the retained text
+        fine: 200000
+        note: Up to 200,000 ariary; the law states FMG 10,000–1,000,000; doubled in Article 108 cases
   consumption:
     text: Use is punished alongside possession.
     sources:
@@ -72,6 +83,12 @@ segments:
     text: None.
     sources:
       - law
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Madagascar abolished the death penalty, voted by the National Assembly in December 2014
+      and promulgated in January 2015; no cannabis offence carries a capital sentence.[@amn15]
+    sources: [amn15]
 context:
   recreational:
     text: >-
@@ -84,17 +101,31 @@ context:
       - law
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    text: No licensed production. The law punishes growing or producing high-risk drugs with forced labour, a fine, or both.
+    sources:
+      - law
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No patient programme is documented. The law bans drug use outside medical prescription
+      but sets up no route for patients to obtain cannabis.[@law]
+    sources:
+      - law
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      Conviction brings mandatory confiscation of seized plants and substances, equipment used
+      for the offence and its proceeds; drugs found on an illicit user are seized and confiscated
+      even without prosecution.[@law]
+    sources:
+      - law
+  culture:
+    text: >-
+      Cannabis has been grown and used long enough to carry its own Malagasy name, rongony:
+      the 1997 law still repeals the 1960 ordinance on the consumption of *chanvre indien dit
+      rongony*.[@law] It was already prohibited under the Merina kingdom in
+      [1787](/history/madagascar-merina-ban-1787/).[@molet]
+    sources:
+      - law
+      - molet
   clubs:
     status: none
     text: >-
@@ -131,6 +162,19 @@ sources:
     url: >-
       https://riskbulletins.globalinitiative.net/esa-obs-018/02-madagascars-large-scale-cannabis-market-criminal-enterprise.html
   law:
-    title: Madagascar Ministry of Commerce — Law 97-039, Articles 8, 95–99 and 140–141 (PDF)
+    title: Madagascar Ministry of Commerce — Law 97-039, Articles 8, 95–99, 108, 140–141 and 148 (PDF)
     url: >-
       https://www.pic.commerce.mg/sites/default/files/2023-08/Loi%2097-039.pdf
+    locator: Fines in Malagasy francs (5 FMG = 1 ariary); Article 148 repeals the 1960 rongony ordinance.
+  molet:
+    type: book
+    title: La conception malgache du monde, du surnaturel et de l’homme en Imerina, tome 1
+    authors:
+      - Louis Molet
+    publisher: L’Harmattan
+    year: 1979
+    locator: p. 214, Le chanvre; citing Tantara, p. 674
+    url: https://horizon.documentation.ird.fr/exl-doc/pleins_textes/divers14-04/09821.pdf
+  amn15:
+    title: Amnesty International — Death sentences and executions 2015 (Madagascar promulgated abolition in January)
+    url: https://jogar.amnistia.pt/www.amnistia.pt/files/Relatoriosvarios/DP2015_AnnualReportOnDeathPenalty.pdf
