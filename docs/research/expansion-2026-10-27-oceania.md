@@ -33,3 +33,9 @@ Dirty-at-start files were ru/test/source-archive/layouts — none in batch.
 - No history entries added (20 entries). Culture kept to tinny (no NZ march source verified).
 - Gotcha: a source defined under context instead of top-level breaks the build ("Unrecognized key"); every listed source must be cited inline (build-enforced).
 - Audit 0/0, history+answers tests pass, build green (after waiting out a concurrent agent build), HTML verified (2 pen tables NZD, 21 history links, tinny link).
+
+## Solomon Islands (sb) — done 2026-10-27 ~23:00 UTC
+- Profile: recreational + hemp (none) + black_market (SBD 1m haul) + arrests (2016 case + haul, gap noted) added; products folded into medical; penalties: 2 possession steps (6mo/5,000pu summary, 10y/100,000pu assessors), 2 cultivation steps; inline citations everywhere; history links (1941 Act, 2026 bill).
+- No history entries added (7 entries). No article (backlog only 1949 tweak + estimate). No culture (no atlas entries).
+- FCDO travel-advice citation in visitors dropped — audit flags it even alongside statute cites.
+- Audit 0/0, history+answers tests pass, build 4914 pages, HTML verified (2 pen tables, 8 history links).
