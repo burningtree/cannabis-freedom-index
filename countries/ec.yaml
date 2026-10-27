@@ -3,7 +3,7 @@ region: South America
 iso_numeric: 218
 recreational: decriminalised
 medical: limited
-updated: 2026-10-13
+updated: 2026-10-27
 summary: >-
   The constitution treats use as a health issue, though the possession threshold table was repealed
   in 2023. Medical cannabis and hemp are legal.
@@ -18,68 +18,139 @@ segments:
   possession:
     text: >-
       Article 364 of the constitution treats drug use as a health matter and forbids criminalising
-      users. Until November 2023 a threshold table treated up to 10 g of cannabis as personal use;
-      President Noboa repealed it, so there is now no safe amount. A person caught with any quantity
-      must convince police and a judge that it is for their own use.
+      users.[@lc] Until November 2023 a threshold table treated up to 10 g of cannabis as personal use;
+      President Noboa repealed it — a campaign promise — so there is now no safe amount.[@eu] A person caught with any quantity
+      must convince police and a judge that it is for their own use, under rules first set in 2013
+      to guide the non-criminalisation principle.[@eu] The repeal is traced in the
+      [2023 threshold repeal](/history/ecuador-threshold-table-repealed-2023/).
     sources:
-      - wiki
       - lc
+      - eu
+    penalties:
+      - label: Personal use (Constitution article 364)
+        treatment: tolerated
+        term: Personal use
+        note: Health matter; users must not be criminalised — no safe amount since November 2023
+      - label: Possession deemed trafficking, smallest band (COIP article 220.1)
+        treatment: criminal
+        term: Possession
+        prison_min: 3 years
+        prison: 5 years
+        note: 3–5 years when personal use is not accepted
   cultivation:
     text: >-
       Growing cannabis with THC for personal use is not authorised. Only non-psychoactive cannabis
-      under 1% THC may be cultivated, under licence.
+      under 1% THC may be cultivated, under licence from the agriculture authority — the 2019 reform
+      excluded it from controlled substances.[@pbp19,giq]
     sources:
       - giq
-      - wiki
+      - pbp19
+    penalties:
+      - label: Growing psychoactive cannabis without authorisation
+        treatment: criminal
+        term: Unlicensed cultivation
+        note: No personal-use allowance; licences cover below-1% THC only
+      - label: Licensed hemp under Agreement 109
+        treatment: legal
+        term: Licensed hemp
+        note: Seven licence classes; companies, cooperatives, associations and universities only
   enforcement:
     text: >-
       The constitution protects users in principle, but since 2023 enforcement has hardened under an
       anti-micro-trafficking drive, and small-scale possession cases can lead to pre-trial
-      detention.
+      detention.[@lc,eu] In June 2025 the solidarity law brought back quantity parameters —
+      no longer gram thresholds — to separate consumers from traffickers, a debate traced in the
+      [2025 solidarity law](/history/ecuador-solidarity-law-2025/).[@eu]
     sources:
       - lc
       - eu
   sharing:
-    text: Any supply is trafficking, graded by quantity.
+    text: >-
+      Any supply is trafficking, graded by quantity under COIP article 220: three to five years at
+      the smallest band, five to seven at the next, nineteen to twenty-two above that, and
+      twenty-two to twenty-six at the largest.[@coip25]
     sources:
-      - lc
+      - coip25
+    penalties:
+      - label: Trafficking, smallest band (article 220.1)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 3 years
+        prison: 5 years
+      - label: Trafficking, second band (article 220.1)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 7 years
+      - label: Trafficking, third band (article 220.1)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 19 years
+        prison: 22 years
+      - label: Trafficking, largest band (article 220.1)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 22 years
+        prison: 26 years
   consumption:
     text: >-
       Use itself is not a crime under the constitution, but with the thresholds gone, anyone using
-      in public risks being processed as a small-scale dealer.
+      in public risks being processed as a small-scale dealer.[@lc,eu]
     sources:
       - lc
       - eu
   access:
-    text: No adult-use source. Low-THC medical and wellness products are sold legally.
+    text: >-
+      No adult-use source exists. Low-THC medical and wellness products are sold legally under the
+      licensed hemp and medical rules.[@pbp19,giq]
     sources:
-      - wiki
       - giq
+      - pbp19
 context:
   production:
-    status: medical
+    status: hemp
     text: >-
       The agriculture ministry issues several classes of licence for non-psychoactive cannabis and
-      hemp (under 1% THC), which has attracted commercial growers.
+      hemp (under 1% THC), which has attracted commercial growers.[@giq]
     sources:
-      - giq
-  products:
-    text: Hemp and low-THC products; prescription preparations with tight THC limits.
-    sources:
-      - wiki
       - giq
   medical:
     text: >-
-      Medical cannabis was legalised in 2019, on prescription, limited largely to low-THC
-      preparations.
+      Medical cannabis was legalised in 2019: the December reform excluded below-1% THC cannabis
+      from controlled substances and made holding cannabis medicines for therapeutic, palliative
+      or medicinal use — including alternative medicine — no longer punishable with a professional
+      diagnosis of disease, effective mid-2020 with agriculture-ministry regulations to
+      follow.[@pbp19] Products in practice stay low-THC, with prescription preparations under
+      tight limits.[@giq]
     sources:
-      - wiki
-  consequences:
+      - pbp19
+      - giq
+  recreational:
     text: >-
-      No record if a case is closed as personal use; the risk lies in being charged as a dealer in
-      the first place.
+      Adult use sits in a constitutional grey zone rather than a market: the 2008 constitution
+      treats use as a health matter and forbids criminalising users, but there is no legal supply
+      and no safe amount since the 2023 repeal.[@lc,eu] The constitutional guarantee is traced in the
+      [2008 constitution](/history/ecuador-constitution-2008/).
     sources:
       - lc
+      - eu
+  hemp:
+    status: high
+    text: >-
+      Hemp is the licensed crop: below-1% THC cannabis excluded from control in 2019, grown under
+      agriculture-ministry licences that drew commercial growers, with Agreement 109 setting seven
+      licence classes for seed, sowing and production.[@pbp19,giq,mag109]
+    sources:
+      - pbp19
+      - giq
+      - mag109
+  consequences:
+    text: >-
+      No record follows if a case is closed as personal use; the risk lies in being charged as a dealer in
+      the first place, where the smallest band starts at three years.[@lc,coip25]
+    sources:
+      - lc
+      - coip25
   planting:
     seeds: licensed
     seeds_trade: regulated
@@ -87,44 +158,46 @@ context:
     clones_trade: regulated
     text: >-
       The agriculture ministry's Agreement 109 sets up seven licences for cannabis with less
-      than 1% THC. Licence 1 covers importing and selling seeds or cuttings, and Licence 2
+      than 1% THC.[@mag109] Licence 1 covers importing and selling seeds or cuttings, and Licence 2
       sowing and producing them; only registered companies, cooperatives, associations and
-      universities may apply. Nothing in the scheme covers seed or cuttings of psychoactive
-      varieties.
+      universities may apply.[@mag109] Nothing in the scheme covers seed or cuttings of psychoactive
+      varieties.[@mag109]
     sources:
       - mag109
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and no law provides for them: any supply counts as
-      trafficking, graded by quantity.
+      trafficking, graded by quantity under article 220.[@lc,coip25]
     sources:
       - lc
+      - coip25
   visitors:
     status: none
     text: >-
       There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. Whatever legal supply exists is medical, for patients with a prescription or
-      registration. The sources behind this profile describe no separate rule for visitors.
+      cannabis.[@giq] Whatever legal supply exists is medical, for patients with a prescription:
+      holding cannabis medicines for therapeutic use with a professional diagnosis is not
+      punishable.[@pbp19] The sources describe no separate rule for visitors.[@giq]
     sources:
-      - wiki
       - giq
+      - pbp19
   driving:
     status: impairment
     text: >-
       COIP article 384 penalises driving under the effects of narcotic or psychotropic
       substances with thirty days' deprivation of liberty and deduction of fifteen
-      licence points; the vehicle is seized preventively for twenty-four hours. This
-      is distinct from article 385's graded alcohol limits. Its special rule for
+      licence points; the vehicle is seized preventively for twenty-four hours.[@trafficcoip] This
+      is distinct from article 385's graded alcohol limits.[@trafficcoip] Its special rule for
       public passenger, commercial and freight drivers states zero tolerance for
       consumption of narcotic or psychotropic substances and specifies ninety days'
       deprivation of liberty and loss of thirty points on exceeding the stated
-      limit. That wording does not establish a numerical laboratory THC cutoff.
+      limit.[@trafficcoip] That wording does not establish a numerical laboratory THC cutoff.[@trafficcoip]
       Under article 376, a drug-influenced driver causing a crash that kills one or
-      more people faces ten to twelve years and definitive licence revocation.
+      more people faces ten to twelve years and definitive licence revocation.[@trafficcoip]
       These are the provisions in the government-hosted consolidation updated to
       24 October 2025; implementing drug-testing procedures and later amendments
-      remain verification targets. No fixed waiting time after cannabis use is inferred.
+      remain verification targets. No fixed waiting time after cannabis use is inferred.[@trafficcoip]
     sources:
       - trafficcoip
   black_market:
@@ -132,9 +205,19 @@ context:
       Figures reported by the government to the UN drugs office record 28,591 kg of herbal
       cannabis seized in 2024, against 19,514 kg in 2023. The UN publishes them as
       kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
+  arrests:
+    text: >-
+      Seizures run near thirty tons a year: 28,591 kg of herbal cannabis in 2024, up from
+      19,514 kg in 2023.[@unodc_szr] Possession cases since the 2023 repeal turn on convincing
+      police and judges of personal use, with pre-trial detention in the mix for small-scale
+      cases.[@lc,eu]
+    sources:
+      - unodc_szr
+      - lc
+      - eu
 sources:
   trafficcoip:
     title: "Ecuador Quito Fire Service transparency portal — COIP, Lexis consolidation updated 24 October 2025 (PDF)"
@@ -143,9 +226,6 @@ sources:
   mag109:
     title: Ministerio de Agricultura y Ganadería — Capacitación nacional sobre el proceso para la obtención de licencias de cáñamo, Acuerdo Ministerial 109 (2024, PDF)
     url: https://www.agricultura.gob.ec/wp-content/uploads/downloads/2024/03/Capacitacion-proceso-para-obtener-licencias-de-canamo.pdf
-  wiki:
-    title: Wikipedia — Cannabis in Ecuador
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Ecuador
   lc:
     title: "LegalClarity — Cannabis laws in Ecuador: is it legal?"
     url: https://legalclarity.org/cannabis-laws-in-ecuador-is-it-legal/
@@ -159,3 +239,16 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  pbp19:
+    title: "Pérez Bustamante & Ponce — The National Assembly of Ecuador decriminalizes production and consumption of medical cannabis (10 Jan 2020)"
+    url: https://www.pbplaw.com/en/publications/the-national-assembly-of-ecuador-decriminalizes-production-and-consumption-of-medical-cannabis/
+    locator: >-
+      24 Dec 2019 reform published; hemp below 1% THC excluded from controlled substances;
+      COIP art 220: holding cannabis medicines for therapeutic use with diagnosis no longer
+      punishable; effective June 2020; MAG regulations by Oct 2020
+  coip25:
+    title: "Ecuador Quito Fire Service transparency portal — COIP, Lexis consolidation updated 24 October 2025 (PDF)"
+    url: https://lotaip.bomberosquito.gob.ec/transparencia/2026/archivos/coip26.pdf
+    locator: >-
+      Government-hosted consolidation; article 220.1 trafficking bands 3–5 / 5–7 / 19–22 /
+      22–26 years; read via pdftotext
