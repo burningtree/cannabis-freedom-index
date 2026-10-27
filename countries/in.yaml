@@ -43,6 +43,13 @@ segments:
       - boom
       - ndps
       - maharashtra2025
+    currency: INR
+    penalties:
+      - label: Small quantity, NDPS
+        treatment: criminal
+        prison: 1 year
+        fine: 10000
+        note: Up to one year, ₹10,000, or both for up to 1 kg of ganja or 100 g of charas; consumption alone up to six months
   cultivation:
     text: >-
       Cultivating the cannabis plant is an offence with up to ten years. States may permit and
@@ -51,6 +58,11 @@ segments:
     sources:
       - ipl
       - hg
+    penalties:
+      - label: Cultivation
+        treatment: criminal
+        prison: 10 years
+        note: Up to ten years unless a state government permits it
   enforcement:
     text: >-
       Arrests for small quantities are common and bail can be difficult under the NDPS Act;
@@ -65,6 +77,11 @@ segments:
     sources:
       - cbn
       - ndps31a
+    penalties:
+      - label: Repeat qualifying trafficking, Section 31A
+        treatment: criminal
+        death: true
+        note: Discretionary death for repeat offences of at least 20 kg of hashish or 500 g of THC
   consumption:
     text: >-
       Consuming ganja or charas is an offence; addicts who volunteer for treatment can be exempted
@@ -88,6 +105,18 @@ segments:
       - boom
       - maharashtra2025
 context:
+  recreational:
+    text: >-
+      Flower and resin are criminal nationwide, with small quantities up to one year and repeat
+      trafficking open to discretionary death. Leaf-only bhang falls outside the NDPS cannabis
+      definition and is sold in licensed shops in states such as Uttar Pradesh and Rajasthan,
+      but state law differs and Maharashtra restricts it.[@ndps,hg,boom,maharashtra2025,cbn]
+    sources:
+      - ndps
+      - hg
+      - boom
+      - maharashtra2025
+      - cbn
   death_penalty:
     text: >-
       Section 31A of the NDPS Act makes death a discretionary sentence for certain repeat offences.
@@ -103,14 +132,10 @@ context:
     sources:
       - ipl
       - hg
-  products:
-    text: Bhang, hemp-seed foods, and Ayurvedic cannabis-leaf medicines.
-    sources:
-      - hg
   medical:
     text: >-
       No national medical programme, but cannabis-leaf preparations are sold as Ayurvedic medicines,
-      some on prescription.
+      some on prescription; bhang and hemp-seed foods are the lawful consumer products.
     sources:
       - hg
       - ipl
