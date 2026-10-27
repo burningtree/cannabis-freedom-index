@@ -3,10 +3,11 @@ region: Africa
 iso_numeric: 454
 recreational: illegal
 medical: limited
-updated: 2026-10-12
+updated: 2026-10-27
 summary: >-
-  The 2020 Cannabis Regulation Act legalised cultivation for medical and industrial use.
-  Recreational use of the famous 'Malawi Gold' remains illegal.
+  The 2020 Cannabis Regulation Act legalised cultivation for medical and industrial use,
+  including industrial hemp at up to 1% THC, under a licensing authority. Recreational
+  use of the famous 'Malawi Gold' remains illegal.
 scores:
   possession: 1
   cultivation: 1
@@ -17,59 +18,194 @@ scores:
 segments:
   possession:
     text: >-
-      Recreational possession of chamba is a criminal offence under the Dangerous Drugs Act. Small
-      amounts typically bring a fine or a short sentence.
+      Recreational possession of chamba is a criminal offence. Under the Dangerous Drugs
+      Act (Cap. 35:02), acting in contravention — including unlicensed possession under
+      Regulation 4(a) of the Dangerous Drugs Regulations — draws a fine of K500,000
+      and up to life imprisonment, as amended in 1995.[@dda] Parliament confirmed in
+      March 2024 that being found with chamba without a licence remains an offence and
+      that the amendment "does not legalise smoking".[@nation24] Courts impose well
+      below the maximum in practice: eight years' hard labour for 134 kg was sent for
+      High Court review over excess and fair-trial compliance.[@salc22]
     sources:
-      - giq
-      - bg
+      - dda
+      - nation24
+      - salc22
+    currency: MWK
+    penalties:
+      - label: Unlicensed possession (Regulation 4(a), DDA s19(1))
+        treatment: criminal
+        term: Possession
+        fine: 500000
+        note: Maximum of life imprisonment
   cultivation:
     text: >-
-      Unlicensed cultivation is a crime: under the 2020 Act, growing, processing or distributing
-      cannabis illegally carries up to 25 years in prison and a large fine. 'Malawi Gold' is
-      nonetheless grown widely in remote areas.
+      Growing without a Cannabis Regulatory Authority licence is a crime under two
+      regimes. The 2020 Act punishes anyone who cultivates, propagates, produces,
+      processes, stores, distributes or uses cannabis in contravention with a K50 million
+      fine and 25 years in prison — about US$70,000 at passage, according to AP
+      reporting.[@cra20,bg] Cultivation is separately an offence under Regulation 6 of
+      the Dangerous Drugs Regulations as read with section 19 of the Dangerous Drugs
+      Act.[@dda] Police still uproot unlicensed gardens: in May 2024 Jenda police
+      arrested two men growing 350 and 100 plants after they failed to produce
+      permits.[@fom24]
     sources:
-      - giq
+      - cra20
       - bg
+      - dda
+      - fom24
+    currency: MWK
+    penalties:
+      - label: Unlicensed cultivation and related acts (2020 Act s50(1))
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 25 years
+        fine: 50000000
+        note: About US$70,000 at 2020 passage (AP)
+      - label: Unlicensed cultivation (Dangerous Drugs Regulations reg 6, DDA s19(1))
+        treatment: criminal
+        term: Unlicensed cultivation
+        fine: 500000
+        note: Maximum of life imprisonment
   enforcement:
-    text: Fines and short sentences for users, with very long maximums for unlicensed growing and trade.
+    text: >-
+      Police enforce actively, from roadblocks to tip-off raids: 30 bags (100 kg)
+      seized at a Senzani checkpoint in October 2025,[@fom25] 15 kg found in a Lilongwe
+      bedroom in February 2026,[@fom26] and two unlicensed growers arrested in Mzimba in
+      May 2024.[@fom24] Officers may arrest without warrant anyone reasonably suspected
+      of an offence against the Dangerous Drugs Act.[@dda] Sentences can be severe — eight
+      years' hard labour for a 17-year-old with 134 kg — but the High Court reviews such
+      cases for excess and fair-trial compliance.[@salc22]
     sources:
-      - giq
+      - fom25
+      - fom26
+      - fom24
+      - dda
+      - salc22
   sharing:
-    text: Illegal distribution carries the same heavy penalties.
+    text: >-
+      Supply is punished as heavily as growing: distributing cannabis in contravention of
+      the 2020 Act draws the same K50 million fine and 25 years.[@cra20] Seizures show an
+      export-scale trade: police recorded 952 trafficking cases and 36.6 tonnes seized in
+      1999 alone,[@pana00] and road interceptions continue — 100 kg stopped in Ntcheu in
+      October 2025[@fom25] after 30-bag loads were already moving by vehicle. The crop's
+      fame travels under its own name: [Malawi Gold](/culture/language/chamba/).
     sources:
-      - giq
+      - cra20
+      - pana00
+      - fom25
   consumption:
-    text: Recreational use is not authorised by the 2020 Act and remains illegal.
+    text: >-
+      Smoking chamba recreationally remains a criminal offence. The March 2024 amendment
+      debate confirmed the law "does not legalise smoking",[@nation24] and use falls
+      under the Dangerous Drugs Act's general prohibition, punishable with a K500,000
+      fine and up to life imprisonment.[@dda]
     sources:
-      - act
-      - giq
+      - nation24
+      - dda
   access:
-    text: No legal source for adult use.
+    text: >-
+      No legal source for adult use: licensing covers medicinal, industrial and
+      scientific production only, and parliament has not decriminalised recreational
+      use.[@giq]
     sources:
       - giq
 context:
   production:
     status: medical
     text: >-
-      The Cannabis Regulation Act 2020 created a Cannabis Regulatory Authority that licenses
-      cultivation, processing, storage, export and research for medicinal, industrial and scientific
-      purposes — part of a drive to replace tobacco as an export crop.
+      The Cannabis Regulation Act 2020 created a Cannabis Regulatory Authority that
+      licenses cultivation, processing, storage, export and research for medicinal,
+      industrial and scientific purposes — part of a drive to replace tobacco as an
+      export crop.[@cra20,bg] In April 2021 the Authority had issued 86 licences to 35
+      companies and cooperatives for industrial hemp production.[@fa21] A March 2024
+      amendment brought the local variety — chamba — into the licensed
+      system.[@nation24] By late 2025 the Authority was issuing cultivation, processing
+      and export licences as tobacco earnings declined.[@heka25]
     sources:
-      - act
+      - cra20
       - bg
-  products:
-    text: Licensed medicinal and hemp products.
+      - fa21
+      - nation24
+      - heka25
+  recreational:
+    text: >-
+      Recreational cannabis is fully illegal: the licensing scheme covers medicinal,
+      industrial and scientific production only, and parliament "has not decriminalized
+      it for recreational use".[@giq] What is illegal is famous — Malawi Gold, the local
+      sativa, draws cannabis tourists.[@giq] Parliament's March 2024 debate turned on the word
+      chamba itself: the amendment regulated "a locally produced variety", while the
+      Leader of the House stressed that growing it without a licence, or being found
+      with it, stays an offence.[@nation24] Its names are traced in
+      [chamba](/culture/language/chamba/).
     sources:
-      - act
+      - giq
+      - nation24
+  hemp:
+    status: high
+    text: >-
+      Industrial hemp is a licensed crop, defined as cannabis plant material with no more
+      than 1% delta-9 THC, or another ceiling the Minister gazettes.[@cra20] The Act
+      licenses open-field hemp cultivation subject to security conditions — fencing or
+      armed guards, intrusion alarms, monthly inspections, product bar-coding and
+      distance from schools and markets.[@cra20] First licences went out in 2021, 86 to
+      35 companies and cooperatives,[@fa21] and licensed production is geared to
+      processing and export as tobacco earnings fall.[@heka25] Early results
+      disappointed: a Mchinji cooperative leader said industrial hemp took long to find
+      any buyer, with imported seed expensive, while high-THC cannabis had buyers on the
+      ground — the gap the 2024 amendment addressed.[@voa24]
+    sources:
+      - cra20
+      - fa21
+      - heka25
+      - voa24
   medical:
-    text: Medical use is provided for in the Act, under licence; patient access is limited in practice.
+    text: >-
+      The Act provides for medicinal cannabis as approved final products — processed
+      flowers, extracts, resin, crude oil, distillates and isolates — with qualified
+      patients tracked through a registry and caregivers for minors and the critically
+      ill.[@cra20] Malawian clinicians argue the country should exploit the plant's
+      medical and economic potential, including CBD-based therapies.[@mmj22] Licensed
+      production so far is export- and research-oriented, and no patient-facing
+      dispensing system is documented in the sources read.[@heka25,zenred]
     sources:
-      - act
-      - giq
+      - cra20
+      - mmj22
+      - heka25
+      - zenred
+  black_market:
+    text: >-
+      Police recorded 952 trafficking cases and seized 36.6 tonnes in 1999
+      alone.[@pana00] The trade runs on in bulk: 100 kg stopped at a Senzani checkpoint
+      in October 2025,[@fom25] and 15 kg found in a Lilongwe bedroom in February
+      2026.[@fom26] Growing and packing traditions — remote hillside plots, women
+      cultivating and men selling, flowering tops bound in leaf-wrapped cobs — are
+      described in [chamba](/culture/language/chamba/).
+    sources:
+      - pana00
+      - fom25
+      - fom26
+  arrests:
+    text: >-
+      Arrests run from street level to bulk: a 62-year-old woman held with 15 kg in
+      Lilongwe in February 2026,[@fom26] two growers with 350 and 100 plants in Mzimba in
+      May 2024,[@fom24] and 100 kg seized at Senzani in October 2025.[@fom25] Punishment
+      can be heavy — eight years' hard labour imposed on an unrepresented 17-year-old
+      for 134 kg in June 2022 — but the High Court in Blantyre took the case up for
+      review the next month over fair-trial and child-justice concerns.[@salc22]
+    sources:
+      - fom26
+      - fom24
+      - fom25
+      - salc22
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction is a criminal record. Forfeited cannabis is burned or destroyed in
+      front of a police officer of sergeant rank or above.[@dda] Unlicensed possession
+      carries up to life imprisonment on the books,[@dda] and unlicensed growing or
+      dealing up to 25 years plus a K50 million fine under the 2020 Act.[@cra20]
     sources:
-      - giq
+      - dda
+      - cra20
   planting:
     seeds: licensed
     seeds_trade: regulated
@@ -86,20 +222,25 @@ context:
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      No cannabis clubs are known, and the law leaves no room for them: growing cannabis
+      and supplying it to another person are both prohibited.
     sources:
-      - giq
-      - bg
+      - cra20
+      - dda
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Recreational possession is a criminal
-      offence under the Dangerous Drugs Act; small amounts typically bring a fine or a short
-      sentence.
+      There is no legal recreational supply for anyone: possession without a licence is a
+      criminal offence under the Dangerous Drugs Act, and parliament confirmed in 2024
+      that the law does not legalise smoking.[@dda,nation24] Medical visitors have no
+      route either — no patient-access framework operates, medical cannabis is not
+      available domestically or to tourists, and importing cannabis products, even with a
+      prescription, remains legally risky and is not officially permitted.[@zenred] Do not
+      buy on the street: street sales are illegal.[@zenred]
     sources:
-      - giq
-      - bg
+      - dda
+      - nation24
+      - zenred
   driving:
     status: impairment
     text: >-
@@ -115,6 +256,35 @@ context:
       against subsequent revisions and are not presented as current ticket tariffs.
     sources:
       - roadtraffic
+  culture:
+    text: >-
+      Cannabis is chamba in Malawi, and the word travelled with the crop's fame: Malawi
+      Gold, the local sativa sold in hard leaf-wrapped cobs. Duvall documents a deep
+      vocabulary — pre-1915 Chichewa could discuss several cannabis varieties including
+      one grown for oilseed, and Yao speakers gave the word chamba — and places the
+      "chamba heartland" among Chichewa speakers in a 1906 account of smokers taking
+      hemp "instead of food and drink" when tired.[@duvall19] The names are traced in
+      [chamba](/culture/language/chamba/).[@duvall19] Duvall describes earth-pipe smoking
+      stretching "from the Cape to the Congo" into the 1900s — a pipe of shaped earth
+      that left nothing for police to find, and was made for that reason under
+      prohibition; its use among the Ngoni, who moved north into today's Malawi, is
+      described in [the earth pipe](/culture/traditions/the-earth-pipe/).[@duvall19] A
+      pre-1922 oral history recorded at Lake Malawi tells of an island discovered by
+      "hearing the cough of a man who was smoking hemp," the performance cough described
+      in [the smoker's cough](/culture/traditions/the-smokers-cough/).[@duvall19]
+      Malawi's Rastafari
+      community, about 15,000 people, uses cannabis for spiritual and medicinal
+      purposes;[@voa24] its courtroom victories so far concern religious expression
+      rather than the herb — in January 2020 the High Court ordered the country's
+      7,000-odd government schools to admit Rastafari children with dreadlocks.[@salc20]
+    sources:
+      - duvall19
+      - salc20
+      - voa24
+answers:
+  buy:
+    answer: no
+    text: No patient or adult-use purchase route verified
 sources:
   roadtraffic:
     title: "Malawi Government Trade Portal — Road Traffic Act, Chapter 69:01 (PDF)"
@@ -123,13 +293,91 @@ sources:
   cra20:
     title: Cannabis Regulation Act, 2020 (Act No. 6 of 2020), assented 30 April 2020 (FAOLEX, PDF)
     url: https://faolex.fao.org/docs/pdf/mlw199875.pdf
-  act:
-    title: Cannabis Regulation Act, No. 6 of 2020 (UNEP LEAP)
-    url: https://leap.unep.org/en/countries/mw/national-legislation/cannabis-regulation-act-no-6-2020
+    locator: >-
+      Definitions (cannabis, industrial hemp at 1% THC, marijuana (chamba), medicinal
+      cannabis, qualified patient); ss 24-25 licence types; s34 production practices;
+      ss 47, 50-51 offences and penalties; read in full via pdftotext
+  dda:
+    title: "Malawi Government Trade Portal — Dangerous Drugs Act, Chapter 35:02 (PDF)"
+    url: https://malawitradeportal.org/upload/files/drugs_dangerous_drugs_act_pdf_15068_.pdf
+    locator: >-
+      Act 25 of 1956(F), commenced 1 April 1956; s19(1) offences and penalties (K500,000
+      and life imprisonment, as amended by Act 20 of 1995); s19(3) forfeiture; s20 arrest
+      without warrant; read in full via pdftotext
+  nation24:
+    title: "Nation Online — MPs nod to Cannabis Regulation Amendment Bill (29 Mar 2024)"
+    url: https://mwnation.com/mps-nod-to-cannabisregulation-amendment-bill/
+  voa24:
+    title: "Voice of America — Lameck Masina, Malawi parliament to debate cannabis farming (22 Mar 2024)"
+    url: https://www.voanews.com/a/malawi-parliament-to-debate-cannabis-farming/7538900.html
+    locator: >-
+      Dimba's $200M rising to $700M claim; tobacco 13% of GDP, 60% of forex; Mchinji
+      hemp cooperative's unsold crop and costly imported seed; Rastafari spokesman
+      Galawanda; Drug Fight Malawi opposition; Leader of the House caution
+  fa21:
+    title: "FurtherAfrica — Malawi issues 86 licenses for cannabis production (12 April 2021)"
+    url: https://furtherafrica.com/2021/04/12/malawi-issues-86-licenses-for-cannabis-production/
+    locator: 86 licences to 35 companies and cooperatives for industrial hemp production
+  heka25:
+    title: "HeKa Consultants — Malawi Positions Cannabis as Successor to Failing Tobacco Industry (Dec 2025)"
+    url: https://www.hekaconsultants.com/publications.html
+    locator: CRA issuing cultivation, processing and export licences as tobacco declines
+  zenred:
+    title: "ZennJet — Malawi RED: medical cannabis travel guide (Aug 2025, PDF)"
+    url: https://zennjet.com/wp-content/uploads/2025/08/102-MALAWI-RED.pdf
+    locator: >-
+      No active patient-access framework; not available domestically or to tourists;
+      importing even with a prescription legally risky; recreational chamba illegal
   giq:
     title: GrowerIQ — How to get a cannabis license in Malawi
     url: https://groweriq.ca/how-to-get-a-cannabis-license-in-malawi/
+    locator: >-
+      2020 Act covers medicinal, industrial and scientific use only; parliament has not
+      decriminalised recreational use; Malawi Gold tourism note
   bg:
     title: Boston Globe (AP) — Malawi legalizes cannabis cultivation for certain uses
     url: >-
       https://www.bostonglobe.com/2020/03/02/marijuana/malawi-legalizes-cannabis-cultivation-certain-uses
+    locator: Up to 25 years and a $70,000 fine for unlicensed growing/processing/distribution
+  salc22:
+    title: "Southern Africa Litigation Centre — High Court in Malawi to review harsh sentence imposed on youth for hemp possession (11 July 2022)"
+    url: https://www.southernafricalitigationcentre.org/malawi-high-court-to-review-harsh-sentence-imposed-on-youth-for-hemp-possession/
+    locator: >-
+      17-year-old, 78 bags (134 kg), 15 June 2022; Reg 4(a) plus DDA s19(1), life maximum;
+      8 years' hard labour; High Court review 12 July 2022
+  salc20:
+    title: "Southern Africa Litigation Centre — Malawi's Rastafarians win landmark dreadlock ruling (Jan 2020)"
+    url: https://www.southernafricalitigationcentre.org/malawis-rastafarians-win-landmark-dreadlock-ruling/
+    locator: >-
+      Judge Zione Ntaba, 14 January order; 7,000-odd government schools to admit
+      Rastafari children with dreadlocks; 15,000 Rastafarians in Malawi
+  fom24:
+    title: "Face of Malawi — Two men arrested for cultivating Indian hemp without permits (6 May 2024)"
+    url: https://www.faceofmalawi.com/2024/05/06/two-men-arrested-for-cultivating-indian-hemp-without-permits/
+    locator: Jenda Police, Mzimba; 350 plants plus 2 kg and 100 plants; samples to Lunyangwa
+  fom25:
+    title: "Face of Malawi — Two men arrested in Ntcheu for possession of 100kg of cannabis (15 Oct 2025)"
+    url: https://www.faceofmalawi.com/2025/10/15/two-men-arrested-in-ntcheu-for-possession-of-100kg-of-cannabis/
+    locator: Senzani checkpoint; 30 bags, 100 kg; fake plates; charged under the Dangerous Drugs Act
+  fom26:
+    title: "Face of Malawi — 62-year-old woman arrested for possessing 15kg chamba stash in Lilongwe (4 Feb 2026)"
+    url: https://www.faceofmalawi.com/2026/02/04/62-year-old-woman-arrested-for-15kg-chamba-stash-in-lilongwe/
+    locator: Kawale; tip-off raid; 15 kg in bedroom; charged with possession without a permit
+  pana00:
+    title: "PANA via MAPINC — Malawi: Wire: Malawi Illegal Drug Trade Booms (2000)"
+    url: http://www.mapinc.org/drugnews/v00/n202/a06.html
+    locator: 952 trafficking cases in 1999; 36,569 kg seized
+  mmj22:
+    title: "Malawi Medical Journal — Bandawe, Medical cannabis and cannabidiol: A new harvest for Malawi, 34(2) 2022"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9356517/
+    locator: Abstract and AJOL record; country benefits only if medical/scientific community leads
+  duvall19:
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: >-
+      Ch. 4 (pre-1915 Chichewa/Mang'anja cannabis vocabulary incl. 1892 Scott
+      dictionary; Yao chamba word map); ch. 5 (leaf-wrapped packets; 1906 Chichewa
+      "chamba heartland" account; pre-1922 Lake Malawi cough story); read in the local PDF

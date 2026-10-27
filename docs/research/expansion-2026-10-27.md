@@ -50,3 +50,12 @@ SA rewrite, so this batch makes no history-entry edits; history additions are de
 - After my zw rewrite, an invalid `answers.culture` block (verbatim copy of my context.culture text) was found in countries/zw.yaml and broke `npm run build` (`Unrecognized key: "culture"`).
 - User confirmed no other agent is editing Zimbabwe; treated the block as my own artifact and deleted it, keeping answers.buy.
 - Build passes again after removal; zw verification re-run clean.
+
+## Malawi (mw) — done 2026-10-27 ~22:05 UTC
+- Profile rewritten (135 → ~340 lines): recreational, hemp (status high, 1% THC), black_market, arrests, culture sections added; products folded; possession + cultivation penalty steps (segment-level currency MWK; life maxima as notes since parseDuration has no life);	inline [@x,y] multi-citation form; answers.buy.
+- Primary law verified in full via pdftotext: Cannabis Regulation Act 2020 (FAOLEX) — s50(1)/s51 K50M + 25 yrs, hemp 1%, qualified-patient registry; Dangerous Drugs Act Cap 35:02 (trade portal) — Act 25 of 1956(F), 1 Apr 1956 commencement, s19(1) K500,000 + life (as amended 1995), s20 warrantless arrest.
+- News: SALC youth review (2022), dreadlocks order Jan 2020 (Ntaba), Face of Malawi seizures (Jenda May 2024, Ntcheu Oct 2025, Kawale Feb 2026), PANA 2000 (952 cases/36.6t 1999), VOA/Nation 2024 debate, FurtherAfrica 86 licences 2021, HeKa Dec 2025, ZennJet RED guide, MMJ Bandawe 2022, GrowerIQ.
+- Duvall re-read for Malawi passages (local PDF): ch.4 Chichewa vocabulary/1892 Scott dictionary/Yao chamba map; ch.5 packets, 1906 heartland, pre-1922 Lake Malawi cough story. Culture links: chamba, earth-pipe (Ngoni), smoker's-cough.
+- History: added malawi-dangerous-drugs-act-1956 (unscored, fills 1950s gap); related-links on 2020/2021/2024 entries. No 1980s/1940s source found; post-2024 news checked (seizures only, nothing score-moving).
+- Articles: malawi-local-chamba-2024, malawi-medical-industrial-2020 (mw entries without an article: 8 → 7, counting the new 1956 entry).
+- Audit 0/0, history+answers tests pass, build 4876 pages, HTML verified (2 pen tables, 12 history + 4 culture links).
