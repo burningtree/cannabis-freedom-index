@@ -21,12 +21,29 @@ segments:
       the value seized, or either punishment alone under Article 832 of the 2016 Penal Code. The
       rule expressly includes cannabis oil and other cannabis derivatives. No gram limit is given.
     sources: [cp16]
+    penalties:
+      - label: Small personal buying or possession (Article 832)
+        treatment: criminal
+        prison_min: 1 year
+        prison: 3 years
+        note: Fine equal to three times the value seized, or either punishment alone; no gram limit
   cultivation:
     text: >-
       Article 832 applies the same shorter tier to a small quantity grown for personal consumption,
       without a fixed plant limit. Ordinary high-risk cultivation and production carry ten to twenty
       years, a fine of three times the value seized, or either punishment alone under Article 819.
     sources: [cp16]
+    penalties:
+      - label: Small quantity grown for personal consumption (Article 832)
+        treatment: criminal
+        prison_min: 1 year
+        prison: 3 years
+        note: Fine equal to three times the value seized; no plant limit
+      - label: Ordinary high-risk cultivation and production (Article 819)
+        treatment: criminal
+        prison_min: 10 years
+        prison: 20 years
+        note: Fine of three times the value seized, or either punishment alone
   enforcement:
     text: >-
       In a 2019 Dixinn hearing, prosecutors requested prison terms for some cannabis defendants
@@ -42,6 +59,24 @@ segments:
       seized, or either alone, for directly supplying high-risk drugs. Ordinary high-risk trafficking
       carries ten to twenty years, a value-based fine, or either alone.
     sources: [cp16]
+    currency: GNF
+    penalties:
+      - label: Giving narcotics for another person's use (Article 835)
+        treatment: criminal
+        prison_min: 1 year
+        prison: 3 years
+        fine: 5000000
+        note: Fine of 1–5 million Guinean francs, or either punishment alone
+      - label: Directly supplying high-risk drugs (Article 821)
+        treatment: criminal
+        prison_min: 5 years
+        prison: 10 years
+        note: Fine of three times the value seized, or either alone
+      - label: Ordinary high-risk trafficking
+        treatment: criminal
+        prison_min: 10 years
+        prison: 20 years
+        note: Value-based fine, or either punishment alone
   consumption:
     text: >-
       Article 831 prohibits using controlled drugs outside a medical prescription and provides for
@@ -54,19 +89,39 @@ segments:
       Recreational production and supply are criminal offences. The retained sources do not
       identify a lawful recreational source.
     sources: [cp16]
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Guinea abolished the death penalty for ordinary crimes in the 2016 criminal code and
+      under military law in 2017; no cannabis offence carries a capital sentence.[@hrw_gn]
+    sources: [hrw_gn]
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Small personal buying or possession brings one to
+      three years and a fine of three times the value seized; convicted foreigners can also be
+      permanently excluded from the country.[@cp16]
+    sources: [cp16]
+  culture:
+    text: >-
+      An [1891 French-Mandingo
+      dictionary](/history/guinea-mandingo-dictionary-diamba-1891/) translated *diamba*
+      specifically as tobacco for smoking, while *sira* meant tobacco in general — one of
+      many European records of the cannabis word as tobacco across Manding
+      languages.[@duvall]
+    sources:
+      - duvall
   production:
     status: none
     text: >-
       Ordinary high-risk drug cultivation and production are criminal offences. The retained
       sources do not identify licensed cannabis producers.
     sources: [cp16]
-  products:
-    text: The retained sources do not identify cannabis products available through a lawful patient supply programme.
-    sources: []
   medical:
-    text: The retained sources do not establish an operating medical cannabis programme.
-    sources: []
+    text: >-
+      No patient programme is documented. The 2016 code prohibits use outside a medical
+      prescription but sets up no route for patients to obtain cannabis.[@cp16]
+    sources: [cp16]
   consequences:
     text: >-
       Courts can impose additional penalties for drug offences, including restrictions on travel,
@@ -107,3 +162,14 @@ sources:
     title: Guinéenews — Court report on the cannabis hearing at Dixinn, 17 January 2019
     url: https://guineenews.org/2019/01/17/justice-larticle-832-du-code-penal-pour-sauver-des-presumes-drogues/
     locator: Prosecution requests and defence arguments at the 16 January hearing; judgment deferred
+  duvall:
+    type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: ch. 7, printed p. 138 with notes 80–82 (pp. 291–292); 1891 Péroz dictionary distinction
+  hrw_gn:
+    title: Human Rights Watch — submission on Guinea to the Universal Periodic Review (2016 abolition)
+    url: https://www.hrw.org/news/2019/07/19/submission-universal-periodic-review-guinea
