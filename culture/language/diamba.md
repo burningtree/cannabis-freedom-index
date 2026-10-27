@@ -11,6 +11,9 @@ countries:
   - sl
   - ao
   - br
+  - lr
+  - sn
+  - gm
 history:
   - sierra-leone-cannabis-long-in-use-1851
   - angola-livingstone-observation-1857
@@ -18,6 +21,10 @@ history:
   - brazil-decree-law-891-1938
   - angola-portuguese-ban-1913
   - brazil-rio-pango-ban-1830
+  - liberia-congo-recaptive-diamba-smoking-1890
+  - gambia-1859-tobacco-record-recaptives
+  - sierra-leone-seamen-regional-trafficking-1938
+  - senegal-yamba-clinical-study-1962
 history_cards:
   - sierra-leone-cannabis-long-in-use-1851
 image:
@@ -51,8 +58,9 @@ sources:
     year: 2019
     isbn: "9781478004530"
     locator: >-
-      ch. 4, pp. 89–94, especially pp. 89–92; notes 121–161, pp. 267–270; p. 191 and chapter 9 notes
-      51–53, pp. 316–317
+      ch. 4, pp. 89–94, especially pp. 89–92; notes 121–161, pp. 267–270; ch. 7, printed
+      pp. 145–151 with notes 166–200 (pp. 296–298); p. 191 and chapter 9 notes 51–53,
+      pp. 316–317
     url: https://www.dukeupress.edu/the-african-roots-of-marijuana
   - title: Wikipedia — Cannabis in Sierra Leone
     url: https://en.wikipedia.org/wiki/Cannabis_in_Sierra_Leone
@@ -109,6 +117,16 @@ He also distinguished *Maconie*, a preparation using flowers and seeds, from *Ma
 It found local uses. Midwives gave it in childbirth, and fishermen took it to get through their work. Sierra Leonean sailors and dockers then carried the habit along the coast, to Ghana and the Gambia.
 
 British colonial [drug controls adopted in 1926](/history/sierra-leone-dangerous-drugs-ordinance-1926/) made growing and possessing cannabis offences. It did not go away. A doctor told the country's Truth and Reconciliation Commission in 2003 that it was so commonly used "that I don't think people consider it a crime any more".
+
+## West Africa: recaptives, sailors and mistaken tobacco
+
+Cannabis was absent in West Africa until the 1800s, when it arrived with Central African recaptives: people taken off slave ships and resettled, above all in Sierra Leone. By mid-century the word *diamba* was in use in Sierra Leone, Liberia and Senegambia, and travellers recorded that freed "Congo" slaves had brought it. The word then entered languages from Senegal to Côte d'Ivoire, although Europeans translated many of its cognates as "tobacco", probably because they did not know or care what Africans were smoking.
+
+An [1859 record of *diamba* as tobacco in Senegambia](/history/gambia-1859-tobacco-record-recaptives/) may be that region's earliest trace of the plant. An Englishwoman in Sierra Leone had already written in 1847 of "tobacco of poisonous-smelling qualities", a pipe that likely held something other than true tobacco.
+
+Liberia shows the same arrival pattern. The United States Navy resettled several hundred "Congoes" near Monrovia in the 1820s and 1830s, and the Swiss naturalist Johann Büttikofer reported that [the "Congo-negroes" in Liberia nearly all smoked hemp](/history/liberia-congo-recaptive-diamba-smoking-1890/), "a habit brought with them from their old home". They farmed *diamba* and smoked it in calabash water pipes of the Central African kind.
+
+By the 1950s the herb, called *yamba*, was [grown and smoked pretty much everywhere in Senegal](/history/senegal-yamba-clinical-study-1962/). And once colonial prohibitions started in 1926, Sierra Leonean sailors turned traffickers, [carrying *diamba* to ports from Gambia to Ghana](/history/sierra-leone-seamen-regional-trafficking-1938/) and onward to Senegal and Nigeria. The same seamen's English is the likely source of Ghana's word for the plant, [*wee*](/history/ghana-first-illegal-cultivation-report-1960/), taken as a corruption of "weed".
 
 ## Brazil
 
