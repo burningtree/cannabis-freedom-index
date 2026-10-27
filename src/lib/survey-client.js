@@ -12,6 +12,7 @@ import { generateSecretKey, getPublicKey, finalizeEvent } from "nostr-tools/pure
 import { encrypt, decrypt, getConversationKey } from "nostr-tools/nip44";
 import { nsecEncode, npubEncode, naddrEncode, decode } from "nostr-tools/nip19";
 import { SimplePool } from "nostr-tools/pool";
+import { normalizeURL } from "nostr-tools/utils";
 
 const KEY = "cfi-survey-key";
 const toHex = (u8) => Array.from(u8, (b) => b.toString(16).padStart(2, "0")).join("");
@@ -56,7 +57,8 @@ export function restore(text) {
 export const forget = () => set(KEY, null);
 
 // ── What this browser knows about its own submissions ──
-// { items: [{ type: "response" | "observation" | "price", id, answers, updated, event, relays }] }
+// `relays` is a display count; `relayUrls` keeps known/possible destinations across versions.
+// `deleting` persists the replacement and per-relay ACKs until delivery is confirmed everywhere.
 const storeKey = (cfg) => `cfi-survey-${cfg.edition}-mine`;
 export function mine(cfg) { try { return JSON.parse(get(storeKey(cfg)) ?? "null") ?? { items: [] }; } catch { return { items: [] }; } }
 export const remember = (cfg, store) => set(storeKey(cfg), JSON.stringify(store));
@@ -72,7 +74,7 @@ export function sign(cfg, item, removed = false) {
   const plain = JSON.stringify(removed ? { type: item.type, edition: cfg.edition, deleted: true } : { type: item.type, edition: cfg.edition, answers: item.answers });
   const tags = [["d", dTag(cfg, item)], ["t", cfg.topic], ["alt", `State of Cannabis ${cfg.edition}: an anonymous survey answer`]];
   if (cfg.pubkey) tags.push(["p", cfg.pubkey]);
-  return finalizeEvent({ kind: cfg.kind, created_at: Math.floor(Date.now() / 1000), tags, content: cfg.pubkey ? encrypt(plain, getConversationKey(sk, cfg.pubkey)) : plain }, sk);
+  return finalizeEvent({ kind: cfg.kind, created_at: Math.max(Math.floor(Date.now() / 1000), (item.event?.created_at ?? 0) + 1), tags, content: cfg.pubkey ? encrypt(plain, getConversationKey(sk, cfg.pubkey)) : plain }, sk);
 }
 // a deletion request (NIP-09) for events of ours, for relays that honour it
 export function deletion(cfg, events) {
@@ -92,71 +94,133 @@ export function reference(cfg, item) {
 }
 
 // ── Relays ──
-const within = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error("timed out")), ms))]);
-// Offers every event to every relay; returns for each event how many relays stored it.
-export async function publish(cfg, events) {
-  const pool = new SimplePool();
+const within = async (p, ms) => {
+  let timer;
+  try { return await Promise.race([p, new Promise((_, no) => { timer = setTimeout(() => no(new Error("timed out")), ms); })]); }
+  finally { clearTimeout(timer); }
+};
+const urls = (...lists) => [...new Set(lists.flat().filter(Boolean).map(normalizeURL))];
+const unknownRelays = (item) => !!(item.relayUnknown || item.deleting?.unknown || (item.relays > 0 && !Array.isArray(item.relayUrls)));
+export const relayTargets = (cfg, item) => urls(item.relayUrls ?? [], item.deleting?.relayUrls ?? [], unknownRelays(item) ? cfg.relays : []);
+export const hasRemoteCopy = (cfg, item) => unknownRelays(item) || relayTargets(cfg, item).length > 0;
+// Save possible destinations BEFORE sending: a timeout or a reload can hide a successful write.
+// Old count-only records have unknown destinations and cannot be confirmed deleted automatically.
+export const withRelayAttempt = (cfg, item, previous = item) => ({ ...item, relayUrls: urls(relayTargets(cfg, previous), cfg.relays), relayUnknown: unknownRelays(previous) });
+export const withRelayResult = (item, sent) => ({ ...item, relays: sent.relays, relayUrls: urls(item.relayUrls ?? [], sent.attemptedRelays, sent.acceptedRelays) });
+export const deletionRelays = (cfg, items) => urls(cfg.relays, ...items.map((i) => relayTargets(cfg, i)));
+
+// Offers every event to every configured relay. Counts are for display; identities decide deletion.
+export async function publish(cfg, events, { pool = new SimplePool(), timeout = 8000 } = {}) {
+  const destinations = urls(cfg.relays);
   try {
     return await Promise.all(events.map(async (event) => {
-      const results = await Promise.allSettled(pool.publish(cfg.relays, event).map((p) => within(p, 8000)));
-      return { id: event.id, relays: results.filter((r) => r.status === "fulfilled").length, error: results.find((r) => r.status === "rejected")?.reason?.message ?? null };
+      const results = await Promise.allSettled(pool.publish(destinations, event).map((p) => within(p, timeout)));
+      const acceptedRelays = destinations.filter((_, k) => results[k].status === "fulfilled");
+      return { id: event.id, relays: acceptedRelays.length, acceptedRelays, attemptedRelays: destinations,
+        error: results.find((r) => r.status === "rejected")?.reason?.message ?? null };
     }));
-  } finally { pool.close(cfg.relays); }
+  } finally { pool.close(destinations); }
 }
-// A relay's reason for refusing an event is free text written by the relay (NIP-01), not by this
-// site: shown only as text (never as HTML), on one line and short.
+// A relay's reason is untrusted text, never HTML.
 export const relayReason = (sent) => {
   const text = sent.find((r) => r.error)?.error;
   return text ? String(text).replace(/[\u0000-\u001f\u007f]+/g, " ").trim().slice(0, 160) : null;
 };
 
-// Deleting: an empty replacement is signed for each part, and published with one deletion request
-// (NIP-09). A part counts as deleted only when its replacement reached at least as many relays as
-// the part was stored on; a part that was never sent has nothing to delete there. Every other part
-// stays, marked as a pending deletion, so it can be tried again: nothing is forgotten on the
-// strength of a request that no relay took. Relays may still keep older copies, which stay
-// encrypted; a deletion request is a request, and the page says so.
-// gone: the parts to delete; sent: publish()'s results, the replacements in the same order first.
-export function deletionOutcome(gone, sent) {
+// Reuse the same replacement across retries; ACKs accumulated across reloads concern this event.
+export function startDeletion(cfg, item) {
+  const relayUrls = relayTargets(cfg, item);
+  if (item.deleting?.replacement) return { ...item, deleting: { ...item.deleting, relayUrls, of: relayUrls.length } };
+  return { ...item, deleting: { relayUrls, unknown: unknownRelays(item), acceptedRelays: [],
+    reached: 0, of: relayUrls.length, replacement: sign(cfg, item, true) } };
+}
+// Only an ACK for the replacement from EACH possible holder counts. NIP-09 ACKs alone never do.
+export function deletionOutcome(gone, sent, cfg = { relays: [] }) {
   const done = [], pending = [];
-  gone.forEach((i, k) => {
-    const reached = i.relays > 0 ? sent[k]?.relays ?? 0 : 0;
-    if (!(i.relays > 0) || reached >= i.relays) done.push(i.id);
-    else pending.push({ id: i.id, reached, of: i.relays });
+  gone.forEach((item, k) => {
+    const relayUrls = relayTargets(cfg, item), unknown = unknownRelays(item);
+    const result = sent[k], replacement = item.deleting?.replacement;
+    const acceptedRelays = urls(item.deleting?.acceptedRelays ?? [], !replacement || result?.id === replacement.id ? result?.acceptedRelays ?? [] : []).filter((u) => relayUrls.includes(u));
+    if (!unknown && acceptedRelays.length === relayUrls.length) done.push(item.id);
+    else pending.push({ ...item.deleting, id: item.id, relayUrls, acceptedRelays, unknown, reached: acceptedRelays.length, of: relayUrls.length });
   });
   return { done, pending };
 }
+export function applyDeletionOutcome(store, { done, pending }) {
+  const waiting = new Map(pending.map(({ id, ...state }) => [id, state]));
+  return { ...store, items: store.items.filter((i) => !done.includes(i.id)).map((i) => waiting.has(i.id) ? { ...i, deleting: waiting.get(i.id) } : i) };
+}
 
-// What the relays hold under this browser's key, decrypted: the newest version of each part, and
-// on how many relays that version sits. Each relay is asked by itself, so that one slow or
-// unreachable relay neither hides the others nor inflates the count.
-export async function fetchMine(cfg) {
-  const sk = secret();
-  if (!sk || !cfg.open) return [];
-  const filter = { kinds: [cfg.kind], authors: [getPublicKey(sk)], "#t": [cfg.topic] };
-  const perRelay = await Promise.all(cfg.relays.map(async (url) => {
-    const pool = new SimplePool();
-    try { return await within(pool.querySync([url], filter), 8000); } catch { return []; } finally { pool.close([url]); }
-  }));
-  const newest = new Map(); // d tag → { event, relays }
-  for (const events of perRelay) {
-    for (const e of events) {
-      const d = e.tags.find((t) => t[0] === "d")?.[1];
-      if (!d) continue;
-      const had = newest.get(d);
-      if (!had || had.event.created_at < e.created_at) newest.set(d, { event: e, relays: 1 });
-      else if (had.event.id === e.id) had.relays++;
-    }
+// querySync treats a closed/timed-out subscription like EOSE. Use a single relay subscription,
+// with our deadline earlier than the library's synthetic EOSE timeout, to distinguish real EOSE.
+export async function fetchRelay(url, filter, { pool = new SimplePool(), timeout = 8000 } = {}) {
+  const events = [];
+  try {
+    const relay = await within(pool.ensureRelay(url, { connectionTimeout: timeout }), timeout);
+    await within(new Promise((yes, no) => relay.subscribe([filter], {
+      onevent: (event) => events.push(event), oneose: yes,
+      onclose: (reason) => no(new Error(reason)), eoseTimeout: timeout * 2,
+    })), timeout);
+    return { url: normalizeURL(url), ok: true, events };
+  } catch (e) { return { url: normalizeURL(url), ok: false, error: String(e.message ?? e), events }; }
+  finally { pool.close([url]); }
+}
+const newer = (a, b) => !b || a.created_at > b.created_at || (a.created_at === b.created_at && a.id < b.id);
+// Keep holders of older versions too: a newer response on B does not erase the copy on A.
+export function mineFromRelays(cfg, perRelay, open) {
+  const slots = new Map();
+  for (const { url, events } of perRelay) for (const event of events) {
+    const d = event.tags.find((t) => t[0] === "d")?.[1];
+    if (!d) continue;
+    const slot = slots.get(d) ?? new Map();
+    const relayUrl = normalizeURL(url);
+    if (newer(event, slot.get(relayUrl))) slot.set(relayUrl, event);
+    slots.set(d, slot);
   }
-  const out = [];
-  for (const [d, { event, relays }] of newest) {
+  const items = [];
+  for (const [d, versions] of slots) {
     try {
-      const p = JSON.parse(event.content.startsWith("{") ? event.content : decrypt(event.content, getConversationKey(sk, cfg.pubkey)));
-      if (p.deleted || p.edition !== cfg.edition) continue;
-      out.push({ type: p.type, id: p.type === "response" ? "response" : d.split(/:(?:place|price):/)[1], answers: p.answers, updated: event.created_at, event, relays });
+      const all = [...versions].map(([url, event]) => ({ url, event, p: open(event) })).filter(({ p }) => p.edition === cfg.edition);
+      const latest = all.reduce((best, v) => newer(v.event, best?.event) ? v : best, null);
+      if (!latest) continue;
+      // A tombstone on B must not hide an older response still visible on A after key restore.
+      const live = latest.p.deleted ? all.filter(({ p }) => !p.deleted).reduce((best, v) => newer(v.event, best?.event) ? v : best, null) : latest;
+      if (!live) continue;
+      const { event, p } = live, relayUrls = urls(all.map((v) => v.url));
+      const id = p.type === "response" ? "response" : d.split(/:(?:place|price):/)[1];
+      if (!id || !["response", "observation", "price"].includes(p.type)) continue;
+      const deleting = latest.p.deleted ? { relayUrls, unknown: false, replacement: latest.event,
+        acceptedRelays: all.filter((v) => v.event.id === latest.event.id).map((v) => v.url),
+        reached: all.filter((v) => v.event.id === latest.event.id).length, of: relayUrls.length } : null;
+      items.push({ type: p.type, id, answers: p.answers, updated: event.created_at, event, relays: relayUrls.length, relayUrls, ...(deleting ? { deleting } : {}) });
     } catch {}
   }
-  return out;
+  return { items, relays: perRelay.map(({ events, ...status }) => status) };
+}
+export async function fetchMine(cfg) {
+  const sk = secret();
+  if (!sk || !cfg.open) return { items: [], relays: [] };
+  const known = mine(cfg).items.flatMap((i) => relayTargets(cfg, i));
+  const filter = { kinds: [cfg.kind], authors: [getPublicKey(sk)], "#t": [cfg.topic] };
+  const perRelay = await Promise.all(urls(cfg.relays, known).map((url) => fetchRelay(url, filter)));
+  return mineFromRelays(cfg, perRelay, (event) => JSON.parse(event.content.startsWith("{") ? event.content : decrypt(event.content, getConversationKey(sk, cfg.pubkey))));
+}
+// Sync never infers erasure from absence. Pending deletions keep their original response,
+// replacement and relay identities, even on a complete empty snapshot; retries confirm delivery.
+export function mergeMine(cfg, store, snapshot) {
+  const merged = new Map(store.items.map((i) => [i.id, i]));
+  for (const found of snapshot.items) {
+    const local = merged.get(found.id);
+    if (!local) { merged.set(found.id, found); continue; }
+    let item = local.deleting || !newer(found.event, local.event) ? local : found;
+    if (found.deleting && !local.deleting) item = found;
+    if (local.deleting && newer(found.event, local.deleting.replacement ?? local.event)) {
+      // A newer edit needs a newer replacement; earlier deletion ACKs no longer suffice.
+      item = { ...found, deleting: { ...local.deleting, replacement: null, acceptedRelays: [], reached: 0 } };
+    }
+    merged.set(found.id, { ...item, relays: Math.max(local.relays ?? 0, found.relays ?? 0), relayUrls: urls(relayTargets(cfg, local), found.relayUrls), relayUnknown: unknownRelays(local) });
+  }
+  return { ...store, items: [...merged.values()] };
 }
 
 // ── The public view ──

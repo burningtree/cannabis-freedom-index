@@ -1087,6 +1087,16 @@ back up the key or restore one. The key is a pseudonym: it ties one person's par
 not to the person. While `open` is false, or no public key and relays are set, nothing is sent
 and submissions wait in the browser.
 
+**Deletion retries.** Store relay URLs before publishing, including possible destinations after a
+timeout, and keep holders of older versions when editing. Counts are for display only. A deletion
+reuses a saved, newer empty replacement and accumulates its ACKs by relay URL across retries and
+reloads; an ACK for the NIP-09 request alone cannot confirm replacement. Retired configured relays
+are still deletion targets. Count-only legacy submissions have unknown destinations and stay
+unconfirmed. Sync reports real end-of-stored-events separately from connection/timeout failures,
+and never prunes a pending deletion merely because a query returns nothing. Even a relay ACK
+confirms delivery, not physical erasure of historical copies. `npm run survey:test` covers swapped
+relay ACKs, offline sync, partial retries, legacy state and older remote versions (#181).
+
 **To try it before opening.** Run a relay of your own, then in the browser's console set
 `localStorage["cfi-survey-test"] = JSON.stringify({pubkey: "<hex>", relays: ["ws://localhost:7447"]})`.
 That browser alone then submits to that relay.

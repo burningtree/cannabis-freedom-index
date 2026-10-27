@@ -325,16 +325,19 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
         const client = await import("../../lib/survey-client.js");
         const live = client.effective(cfg);
         const now = Math.floor(Date.now() / 1000);
-        const items = [{ type: "response", id: "response", answers: personal() }, ...allReports()];
+        let items = [{ type: "response", id: "response", answers: personal() }, ...allReports()];
         // Reports that were sent before and are no longer in the form are deleted. Until a relay
         // confirms it, each stays stored as a pending deletion (client.deletionOutcome), so it is
         // not forgotten on the strength of a request nobody took; /survey/me/ can try it again.
         const before = client.mine(live).items;
-        const gone = before.filter((old) => old.relays > 0 && !items.some((i) => i.id === old.id));
-        const pendingAll = gone.map((g) => ({ ...g, deleting: { reached: 0, of: g.relays } }));
-        for (const i of items) { i.event = client.sign(live, i); i.updated = now; i.relays = 0; }
-        const removals = gone.map((old) => client.sign(live, old, true));
-        client.remember(live, { items: [...items, ...pendingAll] });
+        const gone = before.filter((old) => client.hasRemoteCopy(live, old) && !items.some((i) => i.id === old.id)).map((i) => client.startDeletion(live, i));
+        items = items.map((i) => {
+          const previous = before.find((old) => old.id === i.id);
+          i.event = client.sign(live, { ...i, event: previous?.deleting?.replacement ?? previous?.event });
+          i.updated = i.event.created_at; i.relays = 0;
+          return live.open ? client.withRelayAttempt(live, i, previous) : { ...i, relayUrls: previous?.relayUrls ?? [], relayUnknown: previous?.relayUnknown || (previous?.relays > 0 && !previous?.relayUrls) };
+        });
+        if (!client.remember(live, { items: [...items, ...gone] })) throw new Error("this browser could not save relay and deletion retry state");
         try { localStorage.removeItem(DRAFT); } catch {}
         const parts = `${items.length} part${items.length === 1 ? "" : "s"}`;
         if (!live.open) {
@@ -343,10 +346,12 @@ const cond = (x) => (x.if ? JSON.stringify(x.if) : undefined);
           return;
         }
         result.textContent = "Sending…";
-        const sent = await client.publish(live, [...items.map((i) => i.event), ...removals, ...(gone.length ? [client.deletion(live, gone.map((g) => g.event))] : [])]);
-        items.forEach((i, k) => (i.relays = sent[k].relays));
-        const { pending } = client.deletionOutcome(gone, sent.slice(items.length));
-        client.remember(live, { items: [...items, ...pendingAll.filter((g) => pending.some((p) => p.id === g.id)).map((g) => ({ ...g, deleting: { reached: pending.find((p) => p.id === g.id).reached, of: g.relays } }))] });
+        const sent = await client.publish(live, items.map((i) => i.event));
+        items = items.map((i, k) => client.withRelayResult(i, sent[k]));
+        // Only deletions go to retired relay destinations; new answers go to today's configuration.
+        const removed = gone.length ? await client.publish({ ...live, relays: client.deletionRelays(live, gone) }, [...gone.map((i) => i.deleting.replacement), client.deletion(live, gone.map((g) => g.event))]) : [];
+        const outcome = client.deletionOutcome(gone, removed, live);
+        if (!client.remember(live, client.applyDeletionOutcome({ items: [...items, ...gone] }, outcome))) throw new Error("this browser could not save the result; retry state is kept");
         if (items.every((i) => i.relays > 0)) {
           result.innerHTML = `<p><strong>Thank you.</strong> Your ${parts} ${items.length === 1 ? "is" : "are"} stored on ${Math.min(...items.map((i) => i.relays))} of ${live.relays.length} relay${live.relays.length === 1 ? "" : "s"}. You can change or delete what you sent at any time from this browser.</p><p><a class="go solid" href="../me/">Your submissions →</a> <a class="go" href="../">See the results</a></p>`;
           button.hidden = true;
