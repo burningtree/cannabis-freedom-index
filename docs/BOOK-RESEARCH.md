@@ -11,7 +11,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 | [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 15 / 36 | 4 | 17 | 47 | 0 | matches recorded hash |
 | [Cannabis: A History](#booth-cannabis-history-2003) | verified | 1 / 26 | 1 | 24 | 5 | 0 | matches recorded hash |
 | [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 6 | 3 | 13 | 0 | matches recorded hash |
-| [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 3 | 10 | 8 | 0 | matches recorded hash |
+| [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 3 | 10 | 10 | 0 | matches recorded hash |
 | [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 3 | 6 | 56 | 0 | matches recorded hash |
 | [Reefer Wellness: Understanding Cannabis Science, Culture, and Medicine](#kirk-reefer-wellness-2025) | verified | 0 / 8 | 0 | 8 | 0 | 0 | matches recorded hash |
 | [The Emperor Wears No Clothes](#herer-emperor-wears-no-clothes-undated) | verified | 1 / 16 | 1 | 14 | 1 | 0 | matches recorded hash |
@@ -163,7 +163,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | 1. Cannabis in the Ancient World | indexed_only | — | — | — |
 | 2. Hashish and the Arabs | selected_pages_read | pp. 41–43; printed 42–43 visually inspected (PDF 51–52) | articles/egypt-cafour-cannabis-destruction-1253.md; articles/egypt-cairo-cannabis-destruction-1324.md; articles/egypt-hashish-suppression-1378.md | See docs/research/earliest-ban-articles-2026-10-15.md. Abel’s 1253 date conflicts with the pre-1244 recital in de Sacy’s translated al-Maqrizi. Wider siege/crop-campaign claims need comparison with Rosenthal and the underlying Arabic histories. |
 | 3. Rope and Riches | indexed_only | — | — | — |
-| 4. Cannabis Comes to the New World | selected_pages_read | pp. 102; printed p. 102 visually inspected (PDF p. 109) | cuba-hemp-trial-1793; guatemala-hemp-introduction-1793 | — |
+| 4. Cannabis Comes to the New World | selected_pages_read | pp. 100, 102; printed pp. 100, 102 visually inspected | cuba-hemp-trial-1793; guatemala-hemp-introduction-1793; changes.yaml#chile-quillota-hemp-1545; changes.yaml#mexico-cuadrado-hemp-limit-1550 | — |
 | 5. New Uses for the Old Hemp Plant | indexed_only | — | — | — |
 | 6. The Indian Hemp Drug Debate | indexed_only | — | — | — |
 | 7. The African Dagga Cultures | indexed_only | — | — | — |
