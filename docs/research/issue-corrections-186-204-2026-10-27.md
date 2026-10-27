@@ -94,3 +94,11 @@ It explains the enacted 2022 exception: up to 15 g counselling, above 15 through
 three-year-minimum statement with local-law-specific visitor guidance. Possession
 remains an offence; supply and border import are not authorised by this exception.
 Existing scores and history already capture the reform and do not change.
+
+## #197 — REPROCANN physician requirements
+
+Read current Resolution 800/2021 article 7, as replaced by 1780/2025 article 5,
+and the official REPROCANN FAQ. All participating physicians require REFEPS
+registration, accredited academic cannabis training and registered digital signature;
+article 7 also requires bilateral informed consent. Removed the any-doctor opening.
+No new diagnosis-list restriction or numerical score change inferred.

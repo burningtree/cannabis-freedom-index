@@ -405,3 +405,10 @@ test('Guyana visitors retain the noncustodial cannabis exception (#196)', () => 
   assert.doesNotMatch(gy, /minimum jail sentence.*3 years/);
   assert.match(gy, /does not authorise bringing cannabis across the border/);
 });
+
+// Issue #197
+test('REPROCANN requires qualified, digitally registered prescribers (#197)', () => {
+  const ar = country('ar').context.medical.text;
+  assert.doesNotMatch(ar, /any doctor/);
+  for (const rule of ['REFEPS','accredited academic training','digital signature','bilateral informed consent']) assert.ok(ar.includes(rule),rule);
+});
