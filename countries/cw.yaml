@@ -10,7 +10,7 @@ dependency:
     prosecution service is shared with Sint Maarten and the Caribbean Netherlands.
 recreational: illegal
 medical: limited
-updated: '2026-10-23'
+updated: '2026-10-27'
 summary: >-
   Cannabis possession, use, growing and supply remain prohibited. Prosecutors’ guidance calls for
   confiscation and dismissal in the 0–25 g band, subject to exceptions, and a fine request in the
@@ -27,29 +27,36 @@ scores:
 segments:
   possession:
     text: >-
-      Possession of cannabis or resin is prohibited. For intentional offences the statute permits
-      life imprisonment, a fixed term up to 24 years, a fine up to NAf 6.25 million, or the fixed
-      term and fine together.[@law] Prosecutors’ guidance is much milder: confiscation and a
-      potentially conditional dismissal in the 0–25 g band, and a fine request up to NAf 500 in the
-      25–50 g band. Exceptions include minors, repeat offending, dealing indications, another
-      offence and specified settings such as carnival parades or workplaces.[@guide]
+      Possession of cannabis or resin is prohibited. For intentional offences the statute permits life
+      imprisonment, a fixed term up to 24 years, a fine up to Cg 6.25 million, or the fixed term and
+      fine together.[@law] Prosecutors’ guidance is much milder: confiscation and a potentially
+      conditional dismissal in the 0–25 g band, and a fine request up to Cg 500 in the 25–50 g band.
+      Exceptions include minors, repeat offending, dealing indications, another offence and specified
+      settings such as carnival parades or workplaces.[@guide] The older law and prosecution guidance
+      state amounts in Netherlands Antillean guilders; the Caribbean guilder replaced that currency
+      one for one in 2025.[@currency2025]
     sources:
       - law
       - guide
-    currency: ANG
+      - currency2025
+    currency: XCG
     penalties:
       - upto: 25 g
         treatment: criminal
-        note: Prosecution guidance — confiscation and a potentially conditional dismissal, subject to exceptions
+        note: >-
+          Prosecution guidance — confiscation and a potentially conditional dismissal, subject to
+          exceptions
       - label: 25 to 50 g
         treatment: criminal
         fine: 500
-        note: Prosecutors request a fine of up to NAf 500, subject to exceptions
+        note: Prosecutors request a fine of up to Cg 500, subject to exceptions
       - label: Intentional possession (statutory maximum)
         treatment: criminal
         fine: 6250000
         prison: 24 years
-        note: Life imprisonment, a fixed term of up to 24 years, a fine of up to NAf 6.25 million, or term and fine together; statute retains far higher maxima than the guidance
+        note: >-
+          Life imprisonment, a fixed term of up to 24 years, a fine of up to Cg 6.25 million, or term
+          and fine together; statute retains far higher maxima than the guidance
   cultivation:
     text: >-
       Growing any plant of the genus Cannabis is prohibited.[@law] Prosecutors assess grow cases
@@ -100,14 +107,16 @@ segments:
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. Prosecutors confiscate and may conditionally dismiss
-      the 0–25 g band, and request a fine of up to NAf 500 in the 25–50 g band — but the statute
-      still permits life imprisonment, 24 years or a NAf 6.25 million fine, and the guidance
-      does not apply to minors, repeat or dealing-indicated cases, or settings like carnival
-      parades.[@guide,law]
+      There is no legal recreational supply. Prosecutors confiscate and may conditionally dismiss the
+      0–25 g band, and request a fine of up to Cg 500 in the 25–50 g band — but the statute still
+      permits life imprisonment, 24 years or a Cg 6.25 million fine, and the guidance does not apply
+      to minors, repeat or dealing-indicated cases, or settings like carnival parades.[@guide,law] The
+      older law and prosecution guidance state amounts in Netherlands Antillean guilders; the
+      Caribbean guilder replaced that currency one for one in 2025.[@currency2025]
     sources:
       - guide
       - law
+      - currency2025
   production:
     status: medical
     text: >-
@@ -186,3 +195,8 @@ sources:
     title: Curaçao Chronicle — Opposition parties want approval of medical cannabis bill, 7 April 2023
     url: >-
       https://www.curacaochronicle.com/post/unknown/opposition-parties-want-approval-of-medical-cannabis-bill
+  currency2025:
+    title: Central Bank of Curaçao and Sint Maarten — Caribbean guilder FAQ
+    url: >-
+      https://www.centralbank.cw/functions/banknotes-coins/caribbean-guilder/frequently-asked-questions
+    locator: 31 March 2025 introduction, 30 June end of NAf cash circulation, Cg/XCG and 1:1 conversion

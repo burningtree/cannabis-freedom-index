@@ -15,6 +15,17 @@ export const TREATMENT = {
 const GRAMS = { g: 1, kg: 1000, oz: 28.3495, lb: 453.592 };
 const DAYS = { day: 1, week: 7, month: 30, year: 365 };
 
+// Keep statutory cents after currency conversion; whole-number fines stay compact.
+export function formatFine(value, currency) {
+  const formatter = new Intl.NumberFormat("en-GB", {
+    style: "currency", currency, minimumFractionDigits: 0,
+    maximumFractionDigits: Number.isInteger(value) ? 0 : 2,
+  });
+  return currency === "XCG"
+    ? formatter.formatToParts(value).map((part) => part.type === "currency" ? "Cg" : part.value).join("")
+    : formatter.format(value);
+}
+
 // "1 oz" → { value: 1, unit: "oz", grams: 28.35 }; "5 plants" → { value: 5, unit: "plants", plants: 5 }
 export function parseAmount(text) {
   const m = /^(\d+(?:\.\d+)?)\s*(g|kg|oz|lb|plants?)$/.exec(String(text).trim());

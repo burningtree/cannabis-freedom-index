@@ -3,10 +3,10 @@ region: Europe
 iso_numeric: 100
 recreational: illegal
 medical: none
-updated: 2026-10-23
+updated: '2026-10-27'
 summary: >-
-  A 'high-risk' drug: one to six years for possession, with a fine of up to 1,000 leva for minor
-  cases that still counts as a conviction.
+  A 'high-risk' drug: one to six years for possession, with a fine of up to €511.29 for minor cases
+  that still counts as a conviction.
 scores:
   possession: 1
   cultivation: 0
@@ -17,26 +17,28 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis is a class A 'high-risk' drug, grouped with heroin and cocaine. Possession carries
-      one to six years in prison and a fine of up to 10,000 leva under Article 354a of the Penal
-      Code. For 'minor cases' a separate provision allows a fine of up to 1,000 leva instead — still
-      a criminal conviction, not an administrative penalty.
+      Cannabis is a high-risk drug.[@wiki] Ordinary possession carries one to six years and a fine of
+      €1,022.58–5,112.92; a minor case carries a fine up to €511.29, still a criminal
+      conviction.[@code,eurolaw,euro2026] These are the legacy BGN2,000–10,000 and BGN1,000 tariffs,
+      converted at BGN1.95583 per euro and rounded to cents.[@code,eurolaw,euro2026]
     sources:
       - wiki
-      - dr
-      - nr2007
-    currency: BGN
+      - code
+      - eurolaw
+      - euro2026
+    currency: EUR
     penalties:
       - label: Possession of a high-risk drug
         treatment: criminal
-        fine: 10000
+        fine: 5112.92
         prison_min: 1 year
         prison: 6 years
-        note: One to six years and a fine of 2,000 to 10,000 leva (Penal Code article 354a)
+        note: Prison and a fine; legacy BGN tariff converted at the official rate
+        fine_min: 1022.58
       - label: Minor possession case
         treatment: criminal
-        fine: 1000
-        note: A fine of up to 1,000 leva instead — still a criminal conviction
+        fine: 511.29
+        note: Fine instead of prison; still a criminal conviction
   cultivation:
     text: >-
       Cultivation is a crime with prison terms; the penal code has a separate offence for growing
@@ -75,16 +77,19 @@ segments:
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. Cannabis is a class A high-risk drug with heroin
-      and cocaine: possession brings one to six years and up to 10,000 leva, or up to 1,000
-      leva in minor cases — still a criminal conviction.[@wiki,dr,nr2007] Most small cases end
-      in the minor-case fine, but prison happens, and reform is a political taboo.[@dr]
-      Distribution brings two to eight years or more.[@wiki,dr14]
+      There is no legal recreational supply. Cannabis is a class A high-risk drug with heroin and
+      cocaine: possession brings one to six years and up to €5,112.92, or up to €511.29 in minor cases
+      — still a criminal conviction.[@wiki,dr,nr2007] Most small cases end in the minor-case fine, but
+      prison happens, and reform is a political taboo.[@dr] Distribution brings two to eight years or
+      more.[@wiki,dr14] Euro amounts apply the 2026 conversion at BGN1.95583 per euro and statutory
+      cent rounding.[@euro2026,eurolaw]
     sources:
       - wiki
       - dr
       - nr2007
       - dr14
+      - euro2026
+      - eurolaw
   production:
     status: medical
     text: >-
@@ -114,30 +119,36 @@ context:
       - nutra
   medical:
     text: >-
-      No medical cannabis programme — unlike neighbouring Greece and Romania, there is not even a
-      law on paper. A doctor who prescribes cannabis faces up to five years in prison and a fine of
-      up to 3,000 leva. In October 2015 the national drugs council declared that Bulgaria had no
-      need for medical marijuana, and since June 2016 licences for cannabis may be issued only for
-      medical research.
+      No medical cannabis programme — unlike neighbouring Greece and Romania, there is not even a law
+      on paper. A doctor who prescribes cannabis faces up to five years in prison and a fine of up to
+      €1,533.88. In October 2015 the national drugs council declared that Bulgaria had no need for
+      medical marijuana, and since June 2016 licences for cannabis may be issued only for medical
+      research.[@wiki,cmsg,dr16] Euro amounts apply the 2026 conversion at BGN1.95583 per euro and
+      statutory cent rounding.[@euro2026,eurolaw]
     sources:
       - wiki
       - cmsg
       - dr16
+      - euro2026
+      - eurolaw
   consequences:
     text: The retained sources do not establish collateral consequences beyond the penalties described above.
     sources: []
   driving:
     status: zero
     text: >-
-      Driving after using drugs is an offence in itself, with no level set: police use a roadside
-      test for seven drugs, marijuana among them, and a positive result opens criminal
-      proceedings. Since July 2023 the fine is 1,000 to 5,000 leva, 2,000 to 10,000 for a repeat,
-      and refusing a test after an accident brings up to a year in prison. The car is confiscated
-      if the driver owns it, a rule the Constitutional Court upheld in July 2025.
+      Driving after using drugs is an offence in itself, with no level set: police use a roadside test
+      for seven drugs, marijuana among them, and a positive result opens criminal proceedings. Since
+      July 2023 the fine is €511.29–2,556.46, €1,022.58–5,112.92 for a repeat, and refusing a test
+      after an accident brings up to a year in prison. The car is confiscated if the driver owns it, a
+      rule the Constitutional Court upheld in July 2025.[@ccee22,sg23,bnr25] Euro amounts apply the
+      2026 conversion at BGN1.95583 per euro and statutory cent rounding.[@euro2026,eurolaw]
     sources:
       - ccee22
       - sg23
       - bnr25
+      - euro2026
+      - eurolaw
   arrests:
     text: >-
       The only yearly series found ends in 2006. Convictions for drug crimes of all kinds rose
@@ -194,13 +205,16 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession carries one to six years in
-      prison and a fine of up to 10,000 leva under Article 354a of the Penal Code, with a fine
-      alone possible in minor cases.
+      There is no legal recreational supply for anyone. Possession carries one to six years in prison
+      and a fine of up to €5,112.92 under Article 354a of the Penal Code, with a fine alone possible
+      in minor cases.[@dr,nr2007,wiki] Euro amounts apply the 2026 conversion at BGN1.95583 per euro
+      and statutory cent rounding.[@euro2026,eurolaw]
     sources:
       - dr
       - nr2007
       - wiki
+      - euro2026
+      - eurolaw
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 10,759 kg of herbal cannabis and
@@ -277,3 +291,22 @@ sources:
   euda_szr:
     title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
     url: https://www.euda.europa.eu/data/stats2026/szr_en
+  euro2026:
+    title: European Central Bank — Bulgaria introduces the euro, 1 January 2026
+    url: https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260101~c830245e42.en.html
+    locator: Official conversion rate BGN1.95583 per EUR1
+  eurolaw:
+    type: law
+    title: Bulgaria — Euro Introduction Act, consolidation through 30 December 2025
+    url: >-
+      https://elhovo-rs.justice.bg/upload/136279/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD%20%D0%B7%D0%B0%20%D0%B2%D1%8A%D0%B2%D0%B5%D0%B6%D0%B4%D0%B0%D0%BD%D0%B5%20%D0%BD%D0%B0%20%D0%B5%D0%B2%D1%80%D0%BE%D1%82%D0%BE%20%D0%B2%20%D0%A0%D0%91.pdf
+    locator: >-
+      Articles 11–13: continuity, automatic conversion of existing legal amounts, full-rate division
+      and cent rounding
+  code:
+    type: law
+    title: Bulgaria — Penal Code, current consolidation reproduced by Lex.bg
+    url: https://lex.bg/laws/ldoc/1589654529
+    locator: >-
+      Article 354a(3)(1) and (5): possession fine BGN2,000–10,000, minor case up to BGN1,000; read
+      with Euro Introduction Act
