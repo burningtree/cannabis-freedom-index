@@ -3,78 +3,193 @@ region: Europe
 iso_numeric: 498
 recreational: decriminalised
 medical: none
-updated: 2026-10-13
-summary: Possession of small amounts is an administrative offence.
+updated: '2026-10-27'
+summary: >-
+  Small personal possession remains an administrative offence, with higher fines from August 2026.
+  Supplying drugs carries prison terms; authorised industrial hemp has a separate route.
 scores:
   possession: 3
-  cultivation: 1
+  cultivation: 2
   enforcement: 3
-  sharing: 1
+  sharing: 0
   consumption: 2
   access: 0
 segments:
   possession:
     text: >-
-      Buying or possessing a small amount without intent to distribute — up to about 2 g of dried
-      cannabis — is an administrative offence under Article 85 of the Contravention Code, punished
-      with a fine or community service. The government has moved to raise these fines sharply. Above
-      the threshold it is a crime.
+      Small personal possession without intent to supply is a contravention; since 28 August 2026 an
+      individual faces a fine of 200–300 conventional units, MDL10,000–15,000.[@reform26,units] For
+      a large amount, criminal Article 217(2) allows a fine of 400–700 units, MDL20,000–35,000,
+      community work or up to one year in prison.[@reform26,units] Statutory aggravation raises the
+      maximum to four years; especially large amounts carry one to six years.[@reform26] The
+      ministry was preparing replacement quantity tables in July 2026, so the old reported 2 g
+      figure is not used here as a verified current ceiling.[@transition26]
     sources:
-      - wiki
-      - logos
+      - reform26
+      - units
+      - transition26
+    currency: MDL
+    penalties:
+      - label: Small amount without intent to supply
+        treatment: civil
+        term: Contravention, Article 85(2)
+        fine_min: 10000
+        fine: 15000
+      - label: Large amount without intent to supply
+        treatment: criminal
+        term: Article 217(2)
+        prison: 1 year
+        fine_min: 20000
+        fine: 35000
+        note: Prison or a fine, or community work
+      - label: Aggravated personal handling
+        treatment: criminal
+        term: Article 217(3)
+        prison: 4 years
+        note: Occupational disqualification also applies
+      - label: Especially large amount
+        treatment: criminal
+        term: Article 217(4)
+        prison_min: 1 year
+        prison: 6 years
+        note: Occupational disqualification also applies
   cultivation:
     text: >-
-      Cultivation is a criminal offence under Article 217 of the Criminal Code, with prison terms.
-      Article 14 of Law 201/2025 forbids growing controlled plants, cannabis included, to obtain
-      narcotic substances; industrial hemp may be grown with an authorisation from the food
-      safety agency.
+      Unauthorised cultivation without intent to supply, where it falls below the criminal offence,
+      attracts a 200–400-unit fine, MDL10,000–20,000.[@reform26,units] Large-quantity personal
+      cultivation is criminal but the ordinary penalty is a 200–400-unit fine or up to 100 hours of
+      community work.[@reform26] Statutory aggravation permits up to four years in prison, and
+      especially large quantities one to six years.[@reform26] Cannabis cultivation for drugs is
+      prohibited; authorised industrial hemp follows a separate route.[@l201]
     sources:
-      - cann
+      - reform26
+      - units
       - l201
+    currency: MDL
+    penalties:
+      - label: Personal cultivation below the criminal classification
+        treatment: civil
+        term: Contravention, Article 87(1)
+        fine_min: 10000
+        fine: 20000
+      - label: Large personal cultivation
+        treatment: criminal
+        term: Article 217(1)
+        fine_min: 10000
+        fine: 20000
+        note: Fine or community work
+      - label: Aggravated personal cultivation
+        treatment: criminal
+        term: Article 217(3)
+        prison: 4 years
+      - label: Especially large personal cultivation
+        treatment: criminal
+        term: Article 217(4)
+        prison_min: 1 year
+        prison: 6 years
+      - label: Cultivation with intent to supply
+        treatment: criminal
+        term: Article 217-1(1)
+        prison_min: 2 years
+        prison: 6 years
+        note: Community work is an alternative
   enforcement:
     text: >-
-      Users face fines or community service. Anything above the small threshold, and all cultivation
-      and dealing, carries two to seven years or more.
+      The [August 2026 reform](/history/moldova-drug-penalties-2026/) raised small-possession fines
+      while retaining their contraventional classification.[@reform26] Larger personal quantities
+      can lead to prison, and the new supply tiers reach seventeen years.[@reform26]
     sources:
-      - wiki
-      - logos
+      - reform26
   sharing:
     text: >-
-      Supply is a crime. Law 201/2025 lets controlled substances and plants circulate only for
-      scientific, forensic or medical purposes.
+      Giving or otherwise transferring drugs falls under unlawful supply, whose ordinary penalty is
+      six to ten years in prison.[@reform26] Production for supply carries ten to twelve years;
+      large quantities and other aggravating circumstances twelve to fifteen; especially large
+      quantities or organised crime fifteen to seventeen.[@reform26]
     sources:
-      - wiki
-      - l201
+      - reform26
+    penalties:
+      - label: Ordinary supply or handling for supply
+        treatment: criminal
+        term: Article 217-1(2)
+        prison_min: 6 years
+        prison: 10 years
+      - label: Production for supply
+        treatment: criminal
+        term: Article 217-1(3)
+        prison_min: 10 years
+        prison: 12 years
+      - label: Large amount or other statutory aggravation
+        treatment: criminal
+        term: Article 217-1(4)
+        prison_min: 12 years
+        prison: 15 years
+      - label: Especially large amount or organised crime
+        treatment: criminal
+        term: Article 217-1(5)
+        prison_min: 15 years
+        prison: 17 years
   consumption:
     text: >-
-      Using without a prescription is an administrative offence with the same fine or community
-      service.
+      Unlawful use outside the criminal public-use offence brings a 100–140-unit fine,
+      MDL5,000–7,000, or 50–60 hours of community work.[@reform26,units] Public use and use in
+      specified institutions or venues remain criminal, punishable by a 750–1,050-unit fine,
+      MDL37,500–52,500, or 180–240 hours of community work.[@reform26,units]
     sources:
-      - wiki
-      - cann
+      - reform26
+      - units
+    currency: MDL
+    penalties:
+      - label: Use where no criminal offence applies
+        treatment: civil
+        term: Contravention, Article 85(1)
+        fine_min: 5000
+        fine: 7000
+        note: Fine or community work
+      - label: Public use or use at specified places
+        treatment: criminal
+        term: Article 217-5(1)
+        fine_min: 37500
+        fine: 52500
+        note: Fine or community work
   access:
-    text: No legal source.
+    text: >-
+      There is no lawful recreational supplier; unauthorised distribution is criminal.[@reform26]
+      The general controlled-substance law provides medical and scientific channels but prohibits
+      growing cannabis to obtain drugs.[@l201]
     sources:
-      - cann
+      - reform26
+      - l201
 context:
   production:
-    status: none
-    text: No licensed production for consumption; hemp is restricted.
+    status: hemp
+    text: >-
+      Authorised industrial hemp is the lawful commercial crop, with uses expanded from fibre, seed
+      and oil to stalks, biomass and other permitted derivatives.[@hemp26] Farmers may market the
+      crop domestically or export it under their authorisation, and must report production annually
+      to ANSA.[@hemp26] Growing cannabis to obtain narcotic substances remains prohibited.[@l201]
     sources:
-      - cann
-  products:
-    text: No legal products.
-    sources:
-      - cann
+      - hemp26
+      - l201
   medical:
-    text: No medical cannabis programme.
+    text: >-
+      The general controlled-substance law provides medical uses for authorised substances, while
+      prohibiting cannabis cultivation to produce narcotics.[@l201] The reviewed sources establish
+      no operating patient cannabis programme or dispensing route.[@cann] Industrial-hemp
+      authorisations concern non-medical products.[@l201]
     sources:
+      - l201
       - cann
-      - wiki
   consequences:
-    text: Administrative offences are not criminal convictions.
+    text: >-
+      The 2026 small-possession provision permits a temporary ban on the relevant activity alongside
+      fines.[@reform26] Criminal convictions create a criminal-record status until it is
+      extinguished or rehabilitation occurs.[@units] The reform retains exemptions for voluntary
+      surrender or seeking treatment in contraventional cases, and conditional cooperation-based
+      release for first criminal personal-handling offences.[@reform26]
     sources:
-      - wiki
+      - reform26
+      - units
   planting:
     seeds: licensed
     seeds_trade: regulated
@@ -82,40 +197,62 @@ context:
     clones_trade: regulated
     text: >-
       Law 201/2025 leaves seeds, and leaves without flowering tops, out of its definition of
-      cannabis. Article 14 bans growing cannabis for drugs and allows hemp with up to 0.3% THC
-      only under an authorisation from the food safety agency, using registered varieties.
-      Distributors of seed for sowing may supply it only to authorisation holders.
+      cannabis.[@l201] Article 14 bans growing cannabis for drugs and allows hemp with up to 0.3%
+      THC only under an authorisation from the food safety agency, using registered
+      varieties.[@l201] Distributors of seed for sowing may supply it only to authorisation
+      holders.[@l201]
     sources:
       - l201
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and no law provides for them: supplying cannabis is a
-      crime.
+      Distributing cannabis to other people falls under the criminal supply offence.[@reform26]
+      Providing premises for illegal drug consumption is itself punishable under Article
+      219.[@reform26]
     sources:
-      - wiki
+      - reform26
   visitors:
-    status: none
     text: >-
-      There is no legal recreational supply for anyone. Buying or possessing a small amount
-      without intent to distribute, up to about 2 g of dried cannabis, is an administrative
-      offence under Article 85 of the Contravention Code, punished with a fine or community
-      service.
+      Visitors have no legal recreational supplier.[@reform26] Small personal possession can bring a
+      MDL10,000–15,000 administrative fine; criminal handling rules apply at higher quantity
+      classifications or with statutory aggravation.[@reform26,units] Public use is a separate
+      criminal offence.[@reform26]
     sources:
-      - wiki
-      - logos
+      - reform26
+      - units
+    status: none
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 34.9 kg of herbal
-      cannabis seized in 2024, against 66.4 kg in 2023, and 20.6 kg of cannabis resin
-      seized in 2024, against 26.1 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      Figures reported by the government to the UN drugs office record 34.9 kg of herbal cannabis
+      seized in 2024, against 66.4 kg in 2023, and 20.6 kg of cannabis resin seized in 2024, against
+      26.1 kg in 2023. The UN publishes them as kilogram equivalents, and countries count seizures
+      differently, so the figures are not comparable across borders.
     sources:
       - unodc_szr
+  recreational:
+    text: >-
+      Adults have no legal recreational supply, and passing cannabis to another person is a criminal
+      offence.[@reform26] Small personal possession remains outside criminal law but can carry a
+      substantial fine under the [2026 reform](/history/moldova-drug-penalties-2026/).[@reform26]
+      Public use is separately criminalised even when the ordinary use offence is a
+      contravention.[@reform26]
+    sources:
+      - reform26
+  hemp:
+    status: standard
+    text: >-
+      Industrial and horticultural hemp is defined with a THC ceiling of 0.3%.[@l201] Growers need
+      authorisation from the food-safety agency and must use registered varieties.[@l201] The [April
+      2026 rules](/history/moldova-hemp-processing-rules-2026/) provide flowering-time laboratory
+      sampling, farm records and inspections.[@hemp26]
+    sources:
+      - l201
+      - hemp26
 sources:
   l201:
-    title: Lege nr. 201/2025 cu privire la circulația substanțelor stupefiante, psihotrope și a plantelor care conțin astfel de substanțe, Monitorul Oficial 28 August 2025 (FAOLEX PDF)
+    title: >-
+      Lege nr. 201/2025 cu privire la circulația substanțelor stupefiante, psihotrope și a plantelor
+      care conțin astfel de substanțe, Monitorul Oficial 28 August 2025 (FAOLEX PDF)
     url: https://faolex.fao.org/docs/pdf/mol240625.pdf
   wiki:
     title: Wikipedia — Cannabis in Moldova
@@ -127,5 +264,30 @@ sources:
     title: Logos Press — Moldova to sharply increase drug-related fines
     url: https://logos-pres.md/en/news/drug-fines-will-increase-dramatically
   unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    title: >-
+      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
+      Report data)
     url: https://data.unodc.org/datareport/drug-seizure
+  reform26:
+    type: law
+    title: Moldova — Law 173 of 30 July 2026, in force 28 August 2026 (statutory text at Bizlex)
+    url: >-
+      https://bizlex.ru/ro/document/173-30-07-2026-lege-pentru-modificarea-unor-acte-normative-privind-prevenirea-s-i-combaterea-circulat-iei-ilegale-a
+    locator: >-
+      Article I: criminal articles 217–217-7, 219; Article III: contravention articles 85–88;
+      Article V: commencement
+  units:
+    title: Moldova National Bureau of Statistics — legal glossary, fines and criminal records
+    url: https://statistica.gov.md/ro/glossary
+  hemp26:
+    title: Moldova Government — Industrial-hemp authorisation and processing rules, 29 April 2026
+    url: >-
+      https://gov.md/en/comunicate-de-presa/moldovan-government-approves-new-rules-growing-processing-marketing-industrial
+  hemp24:
+    title: Moldova Government — Farmers to be able to grow industrial hemp, 13 November 2024
+    url: https://www.gov.md/index.php/ro/node/591
+  transition26:
+    title: Moldova Interior Ministry — Consultation on drug quantity classifications, 6 July 2026
+    url: >-
+      https://particip.gov.md/ro/document/stages/anunt-privind-initierea-elaborarii-proiectului-de-hotarare-a-guvernului-privind-aprobarea-cantitatilor-substantelor-supuse-controlului/17790
+    locator: Law 201/2025 commencement 28 August 2026; replacement quantity tables under development
