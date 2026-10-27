@@ -7,7 +7,7 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Slovenia | x | | |
-| Albania | | | |
+| Albania | x | | |
 | Kosovo | | | |
 | Malta | | | |
 | Estonia | | | |
@@ -19,3 +19,11 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 - Gaps closed except old decades (1940s/60s/70s/80s) and 1930-code article (Serbia mirror would duplicate; referendum picked instead); 3+ texts link history/culture.
 - Gotchas: article YAML titles with colons must be quoted; penalties only on possession/cultivation/sharing/consumption.
 - Audit 0/0, answers 93 pass; history test shows only ir.yaml failures (another agent's uncommitted Iran file, left alone). Build + HTML verify pending.
+
+## Albania (al) — done 2026-10-27 ~23:30 UTC
+- Profile: hemp (standard, licensed-scheme-only) + culture (kanëp, Lazarat-to-drones) + arrests (field-focused) sections added; products folded (no consumer products into recreational) and deleted; possession table (tolerated dose + criminal over-dose) + cultivation table (unlicensed/licensed); inline citations everywhere; history links (Lazarat 2014, 2023 law, 2023 medical entry).
+- New source: GI-TOC Western Balkans Apr 2026 (read; no licences in ~3y, zones delay, N. Macedonia warning, medical-use ban) for production/recreational/cultivation; Albanian kanëp verified on Wikipedia etymology page.
+- Article: albania-no-licences-issued-2026 (slow rollout, N. Macedonia warning, export-yes-patients-no, paper law).
+- Gaps closed except old decades (1930s–80s) and culture beyond language; arrests section notes no user-level data.
+- Gotcha: consequences one-liner must say more or go; "no X found" sentences need no cite.
+- Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
