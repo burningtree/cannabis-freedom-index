@@ -858,3 +858,77 @@ test('Taiwan distinguishes legislative passage, effective growing penalties and 
   assert.equal(explanation.category, 'medical');
   assert.match(all.find(e => e.id === 'taiwan-interpretation-790-2020').description, /after that deadline.*up to half/);
 });
+
+test('visitor guidance separates importation from domestic possession (#242–247)', () => {
+  for (const [id, range] of [
+    ['kr', /life imprisonment or at least five years/],
+    ['tw', /life imprisonment or at least ten years/],
+    ['hk', /life imprisonment and HK\$5 million/],
+    ['id', /up to fifteen years/],
+    ['jp', /one to ten years/],
+    ['my', /three to five years/],
+  ]) {
+    const visitor = country(id).context.visitors;
+    assert.match(visitor.text, /import|border/i, id);
+    assert.match(visitor.text, range, id);
+  }
+  const kr = country('kr').segments.possession;
+  assert.doesNotMatch(kr.text, /This includes.*brought or mailed from abroad/);
+  assert.match(country('tw').context.visitors.text, /Article 17.*reduction/);
+  assert.match(country('id').context.visitors.text, /over 1 kg or more than five plants/);
+});
+
+test('Fiji keeps unverified future personal-use penalties out of active rows (#248–249)', () => {
+  const fj = country('fj');
+  assert.equal(fj.context.production.status, 'none');
+  assert.equal(fj.segments.possession.penalties.length, 1);
+  assert.equal(fj.segments.possession.penalties[0].fine, 1000000);
+  assert.match(fj.segments.possession.text, /awaiting verified commencement/);
+});
+
+test('hemp cultivation exceptions and research routes remain explicit (#250–253, #257, #260–267, #270–271)', () => {
+  for (const id of ['am', 'be', 'bz', 'ee', 'fi', 'kz', 'lt', 'lv', 'ro']) {
+    assert.equal(country(id).context.hemp.status, 'standard', id);
+    assert.match(country(id).context.hemp.text, /0\.3%/, id);
+  }
+  for (const id of ['am', 'bz']) assert.equal(country(id).context.production.status, 'hemp', id);
+  for (const id of ['gi', 'ml']) assert.equal(country(id).context.production.status, 'none', id);
+  for (const id of ['gg', 'hu', 'kz', 'lv']) {
+    assert.equal(country(id).context.production.status, 'medical', id);
+    assert.match(country(id).context.production.text, /licen|permit/i, id);
+  }
+  assert.match(country('ps').context.production.text, /Article 3/);
+  assert.equal(country('be').context.production.status, 'medical');
+  assert.match(country('be').context.production.text, /Article 6/);
+  assert.equal(country('rs').context.production.status, 'medical');
+  assert.match(country('rs').context.production.text, /Article 25/);
+  assert.match(country('ee').context.production.text, /medicines-manufacturing licence/);
+  assert.match(country('lt').context.production.text, /manufacturing licence/);
+  assert.doesNotMatch(country('co').segments.cultivation.text, /rests on case law rather than/);
+  assert.match(country('co').segments.cultivation.text, /exempt.*licensing and state quotas/);
+});
+
+test('current fines use euro and Caribbean-guilder units without dropping cents (#254–255, #258–259)', async () => {
+  const { formatFine } = await import('../src/lib/penalties.js');
+  const hr = country('hr').segments.possession, bg = country('bg').segments.possession;
+  assert.equal(hr.currency, 'EUR');
+  assert.equal(hr.penalties[0].fine_min, 663.61);
+  assert.equal(hr.penalties[0].fine, 2654.46);
+  assert.equal(bg.currency, 'EUR');
+  assert.equal(bg.penalties[0].fine, 5112.92);
+  assert.equal(bg.penalties[1].fine, 511.29);
+  assert.equal(country('cw').segments.possession.currency, 'XCG');
+  assert.match(country('sx').segments.possession.text, /Cg 500/);
+  assert.equal(formatFine(2654.46, 'EUR'), '€2,654.46');
+  assert.equal(formatFine(500, 'EUR'), '€500');
+  assert.match(formatFine(500, 'XCG'), /^Cg\s*500$/);
+});
+
+test('Jordan CBD permission, Czech serum and Romanian supply penalties stay distinct (#256, #268–269)', () => {
+  assert.equal(country('jo').medical, 'limited');
+  assert.equal(country('jo').scores.access, 0);
+  assert.match(country('cz').context.driving.text, /2 ng\/ml of delta-9-THC in blood serum/);
+  const row = country('ro').segments.sharing.penalties[0];
+  assert.equal(row.prison_min, '3 years');
+  assert.equal(row.prison, '10 years');
+});
