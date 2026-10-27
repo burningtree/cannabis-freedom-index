@@ -48,6 +48,17 @@ segments:
       $1,000 and a year for a repeat.
     sources:
       - pit20
+    currency: USD
+    penalties:
+      - label: Using cannabis while driving, first offence
+        treatment: civil
+        fine: 500
+        note: Plus licence suspension for up to six months
+      - label: Using cannabis while driving, repeat offence
+        repeat: 2
+        treatment: civil
+        fine: 1000
+        note: Plus licence suspension for up to a year
   sharing:
     text: >-
       Adults 21 and over may give another adult up to one ounce of usable cannabis, 16 ounces of
@@ -74,18 +85,36 @@ segments:
       - firstShop
       - ccr25
 context:
+  recreational:
+    text: >-
+      Adults 21 and over may possess up to one ounce in public and eight ounces at home, plus
+      solid and liquid products and five grams of extracts, and may give those amounts to
+      another adult without payment.[@pit20] They may grow six mature and twelve immature
+      plants per household with a $75 annual registry card.[@codeHome,codeRegistry] Use is legal
+      in private and in licensed lounges.[@pit20,ccr25]
+    sources:
+      - pit20
+      - codeHome
+      - codeRegistry
+      - ccr25
+  hemp:
+    status: standard
+    text: >-
+      A 2020 hemp law put production under the Division of Agriculture with a 0.3% THC
+      ceiling, under licensing rules consistent with the federal hemp framework; wilful
+      violations can bring up to a year in prison, a $2,500 fine, or both.[@hemp20] The
+      [transfer](/history/cnmi-hemp-agriculture-transfer-2020/) removed hemp from the cannabis
+      commission's remit.
+    sources:
+      - hemp20
   production:
     status: open
     text: >-
       Licensed producers grow under canopy classes; the commission counted eight producer
       licensees in 2025, and licensees employed about sixty people. There is no certified testing
-      laboratory in the Commonwealth.
-    sources:
-      - ccr25
-  products:
-    text: >-
-      Flower, extracts, edibles and other products from licensed processors. In 2025 the
-      commission was working on potency limits for concentrates, edibles, tinctures and topicals.
+      laboratory in the Commonwealth. Products are flower, extracts and edibles from licensed
+      processors, with potency limits for concentrates, edibles, tinctures and topicals in
+      progress in 2025.[@ccr25]
     sources:
       - ccr25
   medical:
@@ -149,3 +178,8 @@ sources:
     title: Marianas Variety — First cannabis store opens doors to Saipan community, 20 July 2021
     url: >-
       https://www.mvariety.com/business/first-cannabis-store-opens-doors-to-saipan-community/article_48e87c4c-e85d-11eb-8dad-1f1aea8d7909.html/
+  hemp20:
+    type: law
+    title: CNMI — Public Law 21-25, hemp production under the Division of Agriculture (18 May 2020)
+    url: https://www.cnmilaw.org/pdf/public_laws/21/pl21-25.pdf
+    locator: Sections 2–4 and 7; 0.3% THC ceiling; wilful violations up to a year and $2,500
