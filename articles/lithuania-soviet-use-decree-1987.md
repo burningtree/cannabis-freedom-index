@@ -6,15 +6,24 @@ sources:
     locator: 22 June 1987 decree making drug use a misdemeanour and repeat use a crime; 25 October 1990 conclusion
     url: https://hrw.org/reports/2007/russia1107/2.htm
   - title: Wikipedia — Drug policy of the Soviet Union
-    locator: 1974 decree reproduced in Article 224 of all republics' codes; 1987 escalation
+    locator: Soviet drug-policy background and the 1987 escalation
     url: https://en.wikipedia.org/wiki/Drug_policy_of_the_Soviet_Union
+  - type: law
+    title: >-
+      RSFSR Presidium — Decree of 15 July 1974 amending criminal and health legislation
+      (Economics.kiev.ua transcription)
+    url: https://www.economics.kiev.ua/download/ZakonySSSR/data03/tex14496.htm
+    year: 1974
+    locator: >-
+      Preamble; section 1(a), Criminal Code articles 224–225; section 1(b), articles 224.2 and
+      226.1; sections 4–5, compulsory treatment; transcription rather than an inspected gazette scan
 ---
 
 In June 1987, using drugs became punishable across the Soviet Union — including in Lithuania. A 22 June decree of the Presidium of the USSR Supreme Soviet made illicit drug use a misdemeanour, and a second case within a year a crime carrying up to two years' imprisonment or corrective labour.[@1]
 
-## Thirteen years after possession fell
+## Republican possession laws came before the use offence
 
-Possession without intent to sell had already been a crime since the 1974 decree on reinforcing the fight against drug addiction, punishable by up to three years and copied into Article 224 of every republic's penal code.[@2] That decree had also raised production and trafficking to ten to fifteen years and created offences of seducing another person into drugs and stealing narcotics.[@2] The 1987 decree closed the remaining gap: not just holding drugs, but consuming them.[@1,2] For Lithuania, still the Lithuanian SSR, it arrived as union law, needing no republic vote.[@1,2]
+The [1974 controls](/history/soviet-union-possession-criminalised-1974/) were implemented through republican legislation. Russia's July rewrite punished possession without intent to supply with up to three years in prison or one year of corrective labour; supply carried up to ten years, or six to fifteen in aggravated cases.[@3] The Russian rule appeared in Article 224 of its criminal code. The 1987 Union decree escalated the treatment of consumption itself.[@1,2]
 
 ## Treatment by compulsion
 

@@ -1037,3 +1037,16 @@ test("Thailand's replacement Code precedes cannabis delisting and preserves dist
  assert.match(replacement,/before detection.*prescribed conditions.*written certification/s);
  assert.match(replacement,/9 June 2022/);
 });
+
+
+test("The 1974 drug-law account separates Russian implementation and conditional penalty bands",()=>{
+ const e=byId['soviet-union-possession-criminalised-1974'];
+ assert.equal(e.date,'1974-04-25');assert.match(e.description,/one year of corrective labour/);
+ assert.match(e.description,/up to ten years.*six to fifteen years.*aggravated/s);
+ assert.doesNotMatch(e.description,/Article 224 of every republic/);
+ const r=byId['russia-drug-code-amendments-1974'];assert.equal(r.date,'1974-07-15');
+ assert.equal(r.before,undefined);assert.match(r.unscored,/without duplicating a score change/);
+ assert.match(r.description,/evading treatment/);
+ const article=fs.readFileSync('articles/lithuania-soviet-use-decree-1987.md','utf8');
+ assert.doesNotMatch(article,/copied into Article 224 of every republic|trafficking to ten to fifteen/);
+});
