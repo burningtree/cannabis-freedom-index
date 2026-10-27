@@ -33,6 +33,16 @@ segments:
       options in specified cases.[@law]
     sources:
       - law
+    currency: KYD
+    penalties:
+      - upto: 1 lb
+        treatment: criminal
+        fine: 20000
+        prison: 7 years
+        note: Rises to ten years on a repeat conviction
+      - over: 1 lb
+        treatment: criminal
+        note: Larger amounts attract higher repeat-offence penalties
   cultivation:
     text: >-
       Producing cannabis without authorisation is an offence, and the Act’s definition of production
@@ -67,6 +77,17 @@ segments:
       Prescribed medical extracts and tinctures have an express lawful-use exception.[@law]
     sources:
       - law
+    currency: KYD
+    penalties:
+      - label: Unauthorised consumption
+        treatment: criminal
+        fine: 3000
+        prison: 3 years
+      - label: Unauthorised consumption, third or later conviction
+        repeat: 3
+        treatment: criminal
+        fine: 10000
+        prison: 10 years
   access:
     text: >-
       A locally licensed medical doctor may prescribe cannabis extracts or tinctures for a patient
@@ -76,6 +97,17 @@ segments:
     sources:
       - law
 context:
+  recreational:
+    text: >-
+      There is no lawful recreational supply. Possession, use, growing and supply remain
+      criminal offences, though voters backed decriminalising small amounts in April
+      2025.[@answer] After a public consultation on 30 grams, four plants and clearing old
+      convictions, the premier expected reform recommendations and legislation in November or
+      December 2026.[@lrc,timetable]
+    sources:
+      - answer
+      - lrc
+      - timetable
   production:
     status: medical
     text: >-
@@ -86,15 +118,6 @@ context:
     sources:
       - law
       - cronos
-  products:
-    text: >-
-      Cannabis and resin are controlled drugs. Extracts, tinctures and specified cannabinol
-      derivatives fall within the Act’s hard-drug classification, while prescribed medical extracts
-      and tinctures have a lawful-use exception.[@law] The 2026 reform consultation asked whether
-      any decriminalisation should cover dried cannabis alone.[@lrc]
-    sources:
-      - law
-      - lrc
   medical:
     text: >-
       The medical-extract amendment commenced on 18 November 2016. A doctor licensed locally may
