@@ -18,6 +18,13 @@
 - Blocked: bacn.gov.py URL guessing failed; no site: hits. 1972 text still
   wanted — the 1925 estimate stands.
 
+## Haiti / Dominican Republic first laws (open, 27 Oct)
+- Haiti 1925 estimate: no early drug-law source surfaced (occupation-era
+  vector plausible but unsourced — not pursued as a claim).
+- Dominican Republic 1925 estimate: no pre-1960s drug-law source surfaced
+  (Trujillo-era searches return only general histories).
+- Both stay estimates; revisit via French/Spanish legal archives.
+
 ## Austria BGBl 244/1928
 - Blocked again: ALEX bot-wall ("Sicherheitsüberprüfung"), RIS historic
   PDF 404, no secondary with the domestic rules' content. Entry unchanged.
