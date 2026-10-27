@@ -342,3 +342,14 @@ test('San Marino distinguishes authorised flower from verified dispensing (#187)
   assert.equal(sm.medical, 'limited');
   assert.deepEqual(sm.scores, { possession: 1, cultivation: 1, enforcement: 2, sharing: 1, consumption: 1, access: 1 });
 });
+
+// Issue #186
+test('GDELT observations are labelled as daily global shares, never local attention (#186)', () => {
+  const news = yaml.load(fs.readFileSync(path.join(root, 'datasets/datasets.yaml'), 'utf8')).find(d => d.id === 'news');
+  assert.match(news.about, /denominator stays global/);
+  assert.match(news.profile.headline, /global news/);
+  assert.match(news.origin, /arithmetic means of daily global-coverage percentages/);
+  assert.match(news.map.lede, /not cannabis attention within its own press/);
+  const chart = fs.readFileSync(path.join(root, 'src/pages/charts.astro'), 'utf8');
+  assert.doesNotMatch(chart, /press talks about cannabis most|attention and the score go together/);
+});

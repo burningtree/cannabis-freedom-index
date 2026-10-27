@@ -1637,28 +1637,32 @@
   name: Cannabis in the news
   publisher: The GDELT Project
   credit: GDELT
-  title: The GDELT Project — DOC 2.0 API, share of online news articles mentioning cannabis or marijuana, by the country of the source
+  title: The GDELT Project — DOC 2.0 API, cannabis articles from each source country as a share of global coverage
   url: https://www.gdeltproject.org/
   data_url: https://api.gdeltproject.org/api/v2/doc/doc?query=(cannabis%20OR%20marijuana)%20sourcecountry:germany&mode=timelinevol&format=json&startdatetime=20170101000000
   data_label: DOC 2.0 API, Germany as an example
-  when: 2017 to 2026
+  when: 2017 to 2025
   about: >-
-    Of all the online news articles GDELT monitors from a country's own news sites, the share
-    that mention cannabis or marijuana, averaged over each year; GDELT translates 65 languages
-    to find the words. A measure of attention: how much a country's press talks about cannabis,
-    whatever it says. Countries with few monitored sites give noisier figures.
+    Cannabis or marijuana articles from each source country as a percentage of all global news
+    monitored by GDELT, averaged equally over returned daily percentages. The denominator stays
+    global when a source-country filter is applied. This measures contribution to global indexed
+    coverage, not the share of that country's news about cannabis. Uneven outlet coverage,
+    national news output and the global denominator affect comparisons.
   origin: >-
     Downloaded on 22 October 2026 by scripts/fetch-open-data.py (news), one request per country
-    by name; `days` is how many days of a year GDELT returned.
+    by name using TimelineVol; `days` is how many daily observations GDELT returned. Values
+    are arithmetic means of daily global-coverage percentages, not ratios of annual article
+    totals. Denominator corrected in the descriptions on 27 October 2026; stored values unchanged.
+    Method: https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/
   profile:
-    headline: "{share} of news articles mention cannabis"
+    headline: "{share} of global news: cannabis articles from here"
     details: "{year} average, {days} days"
     each: "{share} in {year}"
     years: [2018, 2021]
   country: { column: country, by: id }
   year: { column: year }
   fields:
-    share: { column: share, format: percent, about: "Share of the country's news articles that mention cannabis: map, Charts page and profile" }
+    share: { column: share, format: percent, about: "Daily global-coverage share of cannabis articles from this source country, averaged by year" }
     days: { column: days, about: "Days of the year with data" }
   map:
     field: share
@@ -1669,15 +1673,15 @@
     label: Cannabis in the news
     missing: Too little news monitored by GDELT
     steps: [[0, "Under 0.001%"], [0.001, "0.001–0.003%"], [0.003, "0.003–0.01%"], [0.01, "0.01–0.03%"], [0.03, "0.03% or more"]]
-    title: How much each country's news talks about cannabis
+    title: Cannabis news from each country as a share of global coverage
     lede: >-
-      The share of a country's online news articles that mention cannabis or marijuana, the
-      average of the latest full year, from the GDELT Project. The stronger the blue, the more the
-      press talks about it.
+      Cannabis or marijuana articles from each country's news sites as a share of all global
+      news indexed by GDELT, averaged over the latest full year. This is each country's
+      contribution to global coverage, not cannabis attention within its own press.
     sub: >-
-      The stronger the blue, the larger the share of news articles that mention cannabis.
+      The stronger the blue, the larger the contribution to global indexed cannabis coverage.
     note: >-
-      The GDELT Project, DOC 2.0 API. Attention, not opinion; not part of the score.
+      The GDELT Project, DOC 2.0 API TimelineVol. Global denominator; uneven outlet coverage. Not part of the score.
   pages:
     - { label: its map, path: map/in-the-news/ }
     - { label: the Charts page, path: charts/#in-the-news }

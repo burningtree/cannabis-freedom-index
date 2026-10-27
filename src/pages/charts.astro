@@ -733,7 +733,7 @@ const punishTreat = countries.map((c) => {
   return off && tr ? { c, punish: off.offences, treat: tr.cannabis, offYear: off.year, trYear: tr.year, share: tr.cannabis_share } : null;
 }).filter(Boolean).sort((a, b) => a.c.name.localeCompare(b.c.name));
 
-// ── In the news: the share of each country's news articles that mention cannabis ──
+// ── Cannabis articles by source country, as a share of global GDELT coverage ──
 const NEWS = DATASETS.news; // absent until datasets/gdelt-cannabis-news.csv has been fetched
 const NEWS_YEAR = NOW - 1; // the latest full year
 const newsRows = NEWS ? countries.map((c) => {
@@ -742,11 +742,6 @@ const newsRows = NEWS ? countries.map((c) => {
   return last ? { c, rows, share: last.share } : null;
 }).filter(Boolean).sort((a, b) => b.share - a.share) : [];
 const newsTop = newsRows.slice(0, 20);
-// on a log scale, so only the countries with any measurable share
-const newsSome = newsRows.filter((n) => n.share > 0);
-const newsFit = newsSome.length > 20 ? corr(newsSome.map((n) => ({ x: Math.log10(n.share), y: n.c.raw }))) : { r: 0 };
-// "The United States' press", "Germany's press"
-const pressOf = (name) => `${/^United |^Netherlands|^Philippines/.test(name) ? "The " : ""}${name}${name.endsWith("s") ? "'" : "'s"}`;
 const sparkOf = (rows) => { const top = Math.max(...rows.map((r) => r.share)); return rows.map((r, i) => `${i ? "L" : "M"}${pct(r.year, 2017, NEWS_YEAR).toFixed(1)},${(100 - (r.share / top) * 90).toFixed(1)}`).join(""); };
 
 // ── The sharpest borders: neighbours whose laws differ most ──
@@ -1876,8 +1871,8 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     {NEWS && newsRows.length > 0 && (
     <section class="ch" id="in-the-news">
       <p class="ch-kicker"><a href="#in-the-news">{kick("in-the-news")}</a></p>
-      <h2>{pressOf(newsTop[0].c.name)} press talks about cannabis most: {(newsTop[0].share / newsTop[1].share).toFixed(0)} times the share in {pressOf(newsTop[1].c.name).replace(/^The /, "the ")} news in {NEWS_YEAR}</h2>
-      <p class="ch-dek">Of all the online news GDELT monitors from each country's own sites, the share of articles that mention cannabis or marijuana in {NEWS_YEAR}, the {newsTop.length} highest of {newsRows.length} countries. Beside each, its share year by year since 2017. Attention, not opinion: a crackdown makes news as much as a reform. Across the {newsSome.length} countries with any measurable share, attention and the score go together with r = {newsFit.r.toFixed(2)}.</p>
+      <h2>{newsTop[0].c.name} contributes the largest global share of indexed cannabis news in {NEWS_YEAR}</h2>
+      <p class="ch-dek">Cannabis or marijuana articles from each source country, divided by all global news monitored by GDELT: the {newsTop.length} highest daily-average shares of {newsRows.length} countries in {NEWS_YEAR}. Beside each, its series since 2017. These figures reflect national news output and uneven outlet coverage as well as cannabis reporting. They do not measure the share of cannabis stories within each country's press, or public opinion.</p>
       <ol class="ch-bars ch-news" data-no-preview>
         {newsTop.map((n) => (
           <li>
@@ -1891,7 +1886,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
         ))}
       </ol>
       <p class="ch-source">{NEWS.title}; years with fewer than 200 days of data left out. <a href={`${base}sources/#dataset-news`}>About the dataset</a>.</p>
-      <p class="ch-more"><a href={`${base}map/in-the-news/`}>News attention on the map →</a> <a href="#looked-it-up">Wikipedia page views →</a></p>
+      <p class="ch-more"><a href={`${base}map/in-the-news/`}>Global news contributions on the map →</a> <a href="#looked-it-up">Wikipedia page views →</a></p>
     </section>
     )}
     {chapterAt.has("what-goes-with-it") && <h2 class="ch-chapter">{chapterAt.get("what-goes-with-it")}</h2>}
@@ -2358,7 +2353,7 @@ const kick = (id) => { const i = sections.findIndex(([x]) => x === id); return `
     // in the news
     document.querySelectorAll("[data-news]").forEach((a) => card(a, () => {
       const [name, share, rows, score, tier] = D.news[a.dataset.news];
-      return `<b>${esc(name)}</b><span class="ch-tip-sub">share of the country's news articles mentioning cannabis</span>` + rows.map(([y, v]) => `<span class="ch-tip-row">${y}<em>${v.toFixed(3)}%</em></span>`).join("")
+      return `<b>${esc(name)}</b><span class="ch-tip-sub">cannabis articles from this country as a share of global indexed news</span>` + rows.map(([y, v]) => `<span class="ch-tip-row">${y}<em>${v.toFixed(3)}%</em></span>`).join("")
         + `<span class="ch-tip-row">Score<em>${score} · ${esc(tier)}</em></span><span class="ch-tip-go">Open its datasets →</span>`;
     }));
 

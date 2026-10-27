@@ -13,7 +13,7 @@
   python3 scripts/fetch-open-data.py books       # how often books name cannabis, by language (Google Books Ngram)
   python3 scripts/fetch-open-data.py trials      # clinical trials of cannabis medicines, by country and year
   python3 scripts/fetch-open-data.py parties     # political parties founded to legalise cannabis (Wikidata)
-  python3 scripts/fetch-open-data.py news        # the share of each country's news that mentions cannabis (GDELT)
+  python3 scripts/fetch-open-data.py news        # cannabis articles by source country / global GDELT coverage
 
 gbif      GBIF occurrence search, genus Cannabis (all its species and synonyms), faceted by the
           country where a record was made and by year: every year with a record. Writes
@@ -65,9 +65,12 @@ trials    ClinicalTrials.gov (API v2): every registered study whose intervention
 parties   Wikidata: political parties whose name or ideology mentions cannabis, with their country
           and the year they were founded (and dissolved, if they were). Writes
           datasets/wikidata-cannabis-parties.csv, one row per party.
-news      The GDELT Project's DOC 2.0 API: for the online news published in each country, the
-          share of articles that mention cannabis or marijuana (GDELT matches the words in 65
-          languages through its own translation), day by day from 2017, averaged here by year (`days` is how many days a year has).
+news      The GDELT DOC 2.0 TimelineVol API: cannabis articles from each source country
+          divided by ALL GLOBAL indexed articles, not that country's output. Source-country
+          filtering does not change the denominator. Annual values are equal-weight means
+          of returned daily percentages, not annual article-count ratios (`days` counts points).
+          Historical availability must be checked on each run; an API response is not proof
+          that every requested historical day was returned.
           Countries are asked for by name, one every ten seconds and after a minute's wait when
           GDELT refuses, so a run takes about forty minutes. Writes datasets/gdelt-cannabis-news.csv.
 The OpenStreetMap count of cannabis shops is made by scripts/osm-shops.mjs, which needs the
