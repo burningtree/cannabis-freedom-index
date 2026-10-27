@@ -4,7 +4,7 @@ summary: A hollow gourd made into a smoking vessel, documented in nineteenth-cen
 also: [mutopa, nkondo, gourd pipe]
 countries: [ao, cd]
 related: [language/diamba, traditions/bena-riamba, traditions/the-morning-pipe]
-history: [dr-congo-bena-riamba-1881, us-water-pipe-patent-1980]
+history: [dr-congo-bena-riamba-1881, us-water-pipe-patent-1980, cape-verde-coconut-water-pipe-1672]
 image:
   src: ../../src/assets/culture/mutopa-calabash-pipe-1890.jpg
   fit: contain
@@ -34,6 +34,8 @@ Its importance is both social and technical. Shared pipes accompanied conversati
 ## A material that could travel
 
 Duvall identifies an 1832 Angolan account as the earliest description in his sources of calabash-based water pipes in sub-Saharan Africa. By the late nineteenth century, accounts placed related vessels across a much wider region. This is a history of surviving descriptions, rather than a date for the technology's invention.
+
+A coconut-based variant was described even earlier: the [earliest known description of a coconut water pipe comes from the Cape Verde islands in 1672](/history/cape-verde-coconut-water-pipe-1672/), on Portugal's shipping route into an Indian Ocean where sailors had already met such pipes.
 
 Gourds supplied a light container that could be combined with a bowl and stem. Many historical African water pipes were portable, unlike the large floor-standing vessels familiar from some Middle Eastern settings. Travellers carried pipes and smoking material between settlements; some carried only selected components and found replacements along the way.
 
