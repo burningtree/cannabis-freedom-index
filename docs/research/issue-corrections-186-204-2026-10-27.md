@@ -17,3 +17,11 @@ an article-weighted annual ratio. The CSV is unchanged. A future country-normali
 series requires matched local numerator/denominator counts over identical complete
 intervals, validated historical API availability and rate limits; it must use a
 separate definition/file. Do not rescale these percentages to pretend to recover it.
+
+## #191 — Exact use/freedom quotient
+
+Zero index scores have an undefined quotient, represented by null and a hatched map
+with an explicit tooltip explanation. Positive scores below one retain their actual
+unrounded denominator. Regression covers scores 0, 0.5 and 1 plus missing prevalence.
+The map lede and legend state the zero-score exclusion. Survey ages/years and estimate
+markers remain qualified; this ratio is not an age-standardised comparison.

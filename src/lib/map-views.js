@@ -22,7 +22,7 @@ export const MAP_VIEWS = [
   { slug: "share-of-adults", metric: "prevalence", title: "Past-year cannabis use, by country",
     lede: "The share of people in each survey’s age band who used cannabis in the past year. Ages and years vary, and some surveys include children. Rates are not age-standardised; do not compare countries directly. The stronger the blue, the higher the reported share." },
   { slug: "use-against-freedom", metric: "ratio", title: "Cannabis use against cannabis freedom, by country",
-    lede: "The share of people who use cannabis divided by the country's index score: where use runs far ahead of what the law allows." },
+    lede: "The share of people who use cannabis divided by the country's unrounded index score (undefined at zero): where use runs far ahead of what the law allows." },
   { slug: "culture", metric: "culture", title: "Cannabis culture around the world",
     lede: "How much of each country's cannabis culture the atlas covers: the words for the plant, the customs and faiths it belongs to, and the people who shaped its laws. The stronger the blue, the more entries." },
   { slug: "recreational", metric: "status:rec", title: "Where recreational cannabis is legal",

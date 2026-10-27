@@ -85,15 +85,16 @@ const legend = [...TIERS].reverse().map((t, i, arr) => ({
 const MED_ORDER = ["yes", "limited", "no"];
 // What the browser needs for the map: scores only, no prose.
 // `ratio` is the share of people who use cannabis divided by the index score: how far use runs
-// ahead of freedom. A score below 1 counts as 1, so that a zero does not divide.
+// ahead of freedom. A zero score has no defined quotient and is shown as unavailable.
 // `culture` is how many atlas entries a country appears in, with the names of the first few
 // (most important first), for the map's Culture view.
 // `ds` holds the country's figures from the outside datasets (datasets.js), for the Society views.
+import { useFreedomRatio } from "../lib/use-freedom-ratio.js";
 const mapData = places.map((c) => {
   const { id, num, name, flag, raw, score, rank, s, use, planting, clubs, driving, visitors, rec, med } = c;
   const atlas = cultureOf(c);
   return { id, num, name, flag, raw, score, rank, s, planting, clubs, driving, visitors, rec, med, fe: estimateNote(c), prices: SHOW_PRICES ? flatLatestPricesFor(id) : {},
-    use: { ...use, ages: useAges(use), ratio: +(use.prevalence / Math.max(raw, 1)).toFixed(2), culture: atlas.length },
+    use: { ...use, ages: useAges(use), ratio: useFreedomRatio(use.prevalence, raw), culture: atlas.length },
     atlas: atlas.slice(0, 4).map((e) => e.title), ds: datasetMapValues(c) };
 });
 // States, provinces and territories of the federations, for the map's "show states" switch.
@@ -110,7 +111,7 @@ const USE_SCALES = {
   ratio: {
     label: "Use relative to freedom",
     steps: [[0, "Under 0.15"], [0.15, "0.15–0.3"], [0.3, "0.3–0.5"], [0.5, "0.5–1"], [1, "1 or more"]],
-    note: "Survey-age cannabis-use share divided by the index score. Ages and survey years vary. Rates are not age-standardised; do not compare countries directly.",
+    note: "Survey-age cannabis-use share divided by the unrounded index score. Undefined at score zero (hatched on the map). Ages and survey years vary. Rates are not age-standardised; do not compare countries directly.",
   },
   culture: {
     label: "Entries in the cultural atlas",
@@ -936,8 +937,9 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         const rateMark = c.use.estimate ? "~" : "";
         const usersText = c.use.users == null ? "—" : `${c.use.estimate || c.use.users_approximate ? "~" : ""}${compact(c.use.users)}`;
         if (metric === "ratio") {
-          return head(c.flag, c.name, `${rateMark}${c.use.ratio}`, useColor(c))
+          return head(c.flag, c.name, c.use.ratio == null ? null : `${rateMark}${c.use.ratio}`, useColor(c))
             + row(`Share aged ${c.use.ages}`, `${rateMark}${c.use.prevalence}%`) + row("Index", `${c.score} / 100`)
+            + (c.use.ratio == null ? para("Ratio unavailable: the index score is zero.") : "")
             + para(USE_SCALES.ratio.note) + foot(c);
         }
         if (isUse()) {
