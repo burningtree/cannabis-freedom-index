@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 410
 recreational: illegal
 medical: limited
-updated: 2026-10-13
+updated: '2026-10-27'
 summary: >-
   Up to five years for use, enforced even for use abroad by citizens. A few cannabinoid medicines
   can be imported through a state agency.
@@ -17,19 +17,22 @@ scores:
 segments:
   possession:
     text: >-
-      Under the Narcotics Control Act, possessing, acquiring, transporting or storing cannabis
-      carries up to five years in prison or a fine of up to 50 million won. This includes edibles,
-      vapes and gummies brought or mailed from abroad.
+      Simple possession, acquisition, transport or storage of cannabis carries up to five years in
+      prison or a fine up to 50 million won.[@slg] Unauthorised import or export, including possession
+      for that purpose, is a separate offence carrying life imprisonment or at least five years under
+      Article 58(1)(5).[@nca2026] Customs controls also cover cannabis products such as vape
+      cartridges and CBD oil.[@customs]
     sources:
-      - kt2
       - slg
+      - nca2026
+      - customs
     currency: KRW
     penalties:
       - label: Possession, acquisition, transport or storage
         treatment: criminal
         prison: 5 years
         fine: 50000000
-        note: Up to five years or up to 50 million won, including edibles and vapes from abroad
+        note: Simple possession; prison or a fine. Import/export is a separate offence
   cultivation:
     text: >-
       Cultivation falls under the same up-to-five-year provision, with heavier penalties when for
@@ -154,13 +157,17 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under the Narcotics Control Act,
-      possessing, acquiring, transporting or storing cannabis carries up to five years in prison
-      or a fine of up to 50 million won, and this includes edibles, vapes and gummies brought or
-      mailed from abroad.
+      Bringing or mailing cannabis into South Korea without authorisation can be prosecuted as
+      importation: Article 58(1)(5) provides life imprisonment or at least five years.[@nca2026]
+      Customs prohibits cannabis, resin, cannabis vape cartridges and CBD oil; products legally bought
+      abroad can be controlled at entry.[@customs] Simple domestic possession carries up to five years
+      or a fine up to 50 million won.[@slg] Patients seeking approved cannabis medicines must use the
+      separate medical-records and import-approval route.[@mfds]
     sources:
-      - kt2
+      - nca2026
+      - customs
       - slg
+      - mfds
   driving:
     status: impairment
     text: >-
@@ -221,3 +228,13 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  nca2026:
+    type: law
+    title: South Korea — Narcotics Control Act, current from 2 October 2026
+    url: >-
+      https://law.go.kr/LSW/lsLawLinkInfo.do?chrClsCd=010202&lsId=002025&lsJoLnkSeq=1000526799&print=print
+    locator: Articles 58(1)(5), 58(2) and 61; cannabis import/export versus simple possession
+  customs:
+    title: Incheon Airport Customs — prohibited narcotics, cannabis and CBD products
+    url: https://www2.customs.go.kr/incheon_airport/cm/cntnts/cntntsView.do?cntntsId=6689&mi=12546
+    locator: Cannabis, cannabis resin, vape cartridges and CBD oil; passenger and postal controls

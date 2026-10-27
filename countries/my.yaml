@@ -17,13 +17,15 @@ scores:
 segments:
   possession:
     text: >-
-      Section 6 of the Dangerous Drugs Act 1952 punishes possession of cannabis, or of the seeds
-      of the plant, with a fine of up to RM20,000, up to five years in prison, or both. Section
-      39A raises this by weight: 20 g or more but under 50 g brings two to five years and three
-      to nine strokes of the cane; 50 g or more brings five years to life and at least ten
-      strokes. A person found with 200 g or more is presumed to be trafficking.
+      Section 6 of the Dangerous Drugs Act 1952 punishes possession of cannabis, or of the seeds of
+      the plant, with a fine of up to RM20,000, up to five years in prison, or both.[@dda] Section 39A
+      raises this by weight: 20 g or more but under 50 g brings two to five years and three to nine
+      strokes of the cane; 50 g or more brings five years to life and at least ten strokes.[@dda] A
+      person found with 200 g or more is presumed to be trafficking.[@dda] Adult caning is capped at
+      twenty-four strokes; women and men over fifty are exempt for these offences.[@cpc288]
     sources:
       - dda
+      - cpc288
     currency: MYR
     penalties:
       - label: Basic possession, Section 6
@@ -35,24 +37,37 @@ segments:
         treatment: criminal
         prison_min: 2 years
         prison: 5 years
-        note: Two to five years and three to nine strokes of the cane
+        note: Caning exclusions apply
+        caning:
+          - 3
+          - 9
       - label: 50 g or more, Section 39A
         treatment: criminal
         prison_min: 5 years
-        note: Five years to life and at least ten strokes; 200 g or more presumed trafficking
+        note: >-
+          Life imprisonment available; at 200 g, rebuttable trafficking presumption; caning exclusions
+          apply
+        caning:
+          - 10
+          - 24
   cultivation:
     text: >-
-      Section 6B forbids planting or cultivating any plant from which cannabis can be obtained,
-      and allowing it on land one owns or occupies. The penalty is imprisonment for life and at
-      least six strokes of the cane, with no lesser tier for a single plant, and a person found
-      on the land is presumed to be the grower. Only a public officer authorised by the Minister
-      may grow, for research, educational, experimental or medical purposes.
+      Section 6B forbids planting or cultivating any plant from which cannabis can be obtained, and
+      allowing it on land one owns or occupies.[@dda] The penalty is imprisonment for life and at
+      least six strokes of the cane, with no lesser tier for a single plant, and a person found on the
+      land is presumed to be the grower.[@dda] Only a public officer authorised by the Minister may
+      grow, for research, educational, experimental or medical purposes.[@dda] Adult caning is capped
+      at twenty-four strokes; women and men over fifty are exempt for these offences.[@cpc288]
     sources:
       - dda
+      - cpc288
     penalties:
       - label: Planting or cultivating, Section 6B
         treatment: criminal
-        note: Life imprisonment and at least six strokes, even for a single plant
+        note: Life imprisonment, even for a single plant; caning exclusions apply
+        caning:
+          - 6
+          - 24
   enforcement:
     text: >-
       Prison and caning for possession, and the death penalty still available for trafficking. The
@@ -162,10 +177,11 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under the Dangerous Drugs Act possession
-      of any amount is an offence, 20 g or more brings caning as well as prison, and a person
-      found with 200 g or more is presumed to be trafficking, which carries death or life
-      imprisonment with at least twelve strokes.
+      Importing cannabis without ministerial authorisation is a separate offence under section 4,
+      carrying three to five years in prison.[@dda] Simple possession is also an offence; 20 g or more
+      brings caning as well as prison, while 200 g or more creates a rebuttable trafficking
+      presumption.[@dda] If trafficking is established under section 39B, the sentence is death or
+      life imprisonment, with at least twelve strokes where death is not imposed.[@dda]
     sources:
       - dda
   driving:
@@ -207,8 +223,12 @@ sources:
     url: https://www.apad.gov.my/index.php/en/source-of-information/akta/668-act-333-road-transport-act-1987/file
     locator: Sections 44, 45 and 45A
   dda:
-    title: "Malaysia — Dangerous Drugs Act 1952 (Act 234), incorporating amendments up to Act 846 (Ministry of Health, Pharmaceutical Services, PDF)"
-    url: https://pharmacy.moh.gov.my/sites/default/files/document-upload/dangerous-drugs-act-1952-act-234_2.pdf
+    title: >-
+      Malaysia — Dangerous Drugs Act 1952 (Act 234), incorporating amendments up to Act 846 (Ministry
+      of Health, Pharmaceutical Services, PDF)
+    url: >-
+      https://pharmacy.moh.gov.my/sites/default/files/document-upload/dangerous-drugs-act-1952-act-234_2.pdf
+    locator: Sections 4(1)–(2), 6, 37(da), 39A and 39B; current text incorporating Act 846
   dda52:
     title: Dangerous Drugs Act 1952 (Act 234), reprint as at 1 January 2006, as notified to the WTO (PDF)
     url: https://www.importlicensing.wto.org/sites/default/files/members/91/Act%20No.234%20-%20Dangerous%20Drugs%201952_01.01.2006.pdf
@@ -227,3 +247,10 @@ sources:
   fmt25:
     title: "Free Malaysia Today — 102 tonnes of drugs seized in 1 year, say police (19 February 2025)"
     url: https://www.freemalaysiatoday.com/category/nation/2025/02/19/102-tonnes-of-drugs-seized-in-1-year-say-police
+  cpc288:
+    type: law
+    title: Malaysia — Criminal Procedure Code, sections 288–289
+    url: https://www.easylaw.com.my/statutes/criminal/criminal-procedure-code
+    locator: >-
+      Adult caning cap of 24; women and men over 50 excluded for these offences; text checked against
+      2024 appellate judgment and official indexed statute
