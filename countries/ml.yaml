@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 466
 recreational: illegal
 medical: none
-updated: 2026-10-21
+updated: 2026-10-27
 summary: >-
   Cannabis is illegal. The 2001 law gives small personal supplies, including cultivation,
   a lighter penalty with a fine-only option. Ordinary high-risk drug cultivation carries
@@ -18,79 +18,190 @@ scores:
 segments:
   possession:
     text: >-
-      Article 138 of the 2001 drug law covers small quantities possessed, bought or grown
-      for personal use. A high-risk plant or substance, including cannabis oil, carries
-      three months to one year, a fine of 25,000–100,000 CFA francs, or both. A cannabis
-      derivative other than oil carries two to six months, a fine of 15,000–75,000 francs,
-      or both. The law gives no numeric quantity threshold.
+      Article 138 of the [2001 drug law](/history/mali-drug-law-2001/) covers small
+      quantities possessed, bought or grown for personal use.[@law] A high-risk plant or
+      substance, including cannabis oil, carries three months to one year, a fine of
+      25,000–100,000 CFA francs, or both.[@law] A cannabis derivative other than oil
+      carries two to six months, a fine of 15,000–75,000 francs, or both; a lower-risk
+      tier carries one to three months and 10,000–50,000 francs, with waiver for minors
+      and first-time offenders.[@law] The law gives no numeric quantity threshold.[@law]
     sources:
       - law
+    currency: XAF
+    penalties:
+      - label: Cannabis oil, small amount for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 3 months
+        prison: 1 year
+        fine_min: 25000
+        fine: 100000
+        note: Prison or a fine, or both
+      - label: Other cannabis derivatives, small amount for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 6 months
+        fine_min: 15000
+        fine: 75000
+        note: Prison or a fine, or both
+      - label: Lower-risk tier, small amount for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 month
+        prison: 3 months
+        fine_min: 10000
+        fine: 50000
+        note: Prison or a fine, or both. Waiver for minors and first offenders
   cultivation:
     text: >-
       Article 9 prohibits cannabis cultivation and requires landholders to destroy plants
-      growing on their land. Article 94 sets five to ten years and a fine of 200,000–2
-      million CFA francs for ordinary high-risk drug cultivation. Article 138 gives a
-      lighter tier, including a fine-only option, for small personal quantities.
+      growing on their land.[@law] Article 94 sets five to ten years and a fine of
+      200,000–2 million CFA francs for ordinary high-risk drug cultivation.[@law]
+      Article 138 gives the lighter personal-use tiers for small personal
+      quantities.[@law]
     sources:
       - law
+    currency: XAF
+    penalties:
+      - label: Cannabis oil, small amount grown for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 3 months
+        prison: 1 year
+        fine_min: 25000
+        fine: 100000
+        note: Prison or a fine, or both
+      - label: Other derivatives, small amount grown for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 6 months
+        fine_min: 15000
+        fine: 75000
+        note: Prison or a fine, or both
+      - label: Ordinary high-risk cultivation (article 94)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 200000
+        fine: 2000000
+        note: Prison and a fine
   enforcement:
     text: >-
       Small personal quantities can attract imprisonment, a fine alone, or both under
-      Article 138. Ordinary high-risk drug cultivation and international trafficking
-      require prison and a fine under Articles 94–95. The retained sources do not establish
-      how consistently these rules are enforced across the country.
+      Article 138.[@law] Ordinary high-risk drug cultivation and international
+      trafficking require prison and a fine under Articles 94–95.[@law] The retained
+      sources do not establish how consistently these rules are enforced across the
+      country.[@law]
     sources:
       - law
   sharing:
     text: >-
       Article 98 sets six months to three years, a fine of 20,000–200,000 CFA francs, or
-      both for giving or offering a high-risk drug directly for another person's consumption.
-      General local trafficking carries five to ten years, a fine, or both under Article 96.
+      both for giving or offering a high-risk drug directly for another person's
+      consumption.[@law] General local trafficking carries five to ten years, a fine,
+      or both under Article 96.[@law] International trafficking carries five to ten
+      years and a fine of 5 to 50 million francs (Article 95).[@law]
     sources:
       - law
+    currency: XAF
+    penalties:
+      - label: Giving or offering for another person's own use (article 98)
+        treatment: criminal
+        term: Supply to a user
+        prison_min: 6 months
+        prison: 3 years
+        fine_min: 20000
+        fine: 200000
+        note: Prison or a fine, or both
+      - label: Local trafficking (article 96)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 10 years
+        note: Prison or a fine, or both
+      - label: International trafficking (article 95)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 5000000
+        fine: 50000000
+        note: Prison and a fine
   consumption:
     text: >-
       Article 137 prohibits using controlled drugs outside a medical prescription and
-      provides for seizure and confiscation. Article 138 sets the personal-possession
-      penalties described above.
+      provides for seizure and confiscation.[@law] The personal-use tiers of Article 138
+      cover possession, purchase and cultivation, not use as such.[@law]
     sources:
       - law
+    penalties:
+      - label: Use outside a medical prescription
+        treatment: criminal
+        term: Illicit use
+        note: Seizure and confiscation ordered
   access:
     text: >-
-      The retained sources establish no operating cannabis supply programme for patients
-      or recreational users. The authorities granted a limited industrial-hemp production
-      authorisation in 2017 and withdrew it in February 2020.
+      There is no recreational route: unauthorised growing, handling and use are all
+      offences.[@law] The 2017 industrial-hemp authorisation for medical exports was
+      withdrawn in 2020, and no operating patient supply was found in the sources
+      reviewed.[@hemp2020,law]
     sources:
       - law
       - hemp2020
 context:
+  recreational:
+    text: >-
+      Cannabis is prohibited, but small personal supplies, including cultivation, fall
+      under the lighter Article 138 tiers with a fine-only option, while ordinary
+      cultivation and trafficking draw five to ten years.[@law] Minors and first-time
+      offenders may be excused punishment.[@law] The industrial-hemp project that
+      briefly supplied a medical-export channel closed in 2020, as [its
+      withdrawal](/history/mali-hemp-authorisation-withdrawn-2020/) records.[@hemp2020]
+    sources:
+      - law
+      - hemp2020
+  medical:
+    text: >-
+      The sources reviewed establish no operating medical cannabis programme: the 2017
+      authorisation served exports only and was withdrawn in 2020, and use outside a
+      medical prescription is prohibited.[@hemp2020,law]
+    sources:
+      - law
+      - hemp2020
+  hemp:
+    status: none
+    text: >-
+      No hemp exception operates today: the 2017 industrial-hemp authorisation for
+      medical exports, capped at a reported two-tenths of one percent THC, was
+      withdrawn in February 2020 after the producers sought to change the agreed
+      terms.[@hemp2019,hemp2020] The reviewed law sets no general hemp line and bans
+      cannabis cultivation everywhere.[@law]
+    sources:
+      - law
+      - hemp2019
+      - hemp2020
   production:
     status: medical
     text: >-
-      African Seeds received permission in 2017 for a supervised industrial-hemp project
-      intended for medical exports. In May 2020, the central drug office's director
-      confirmed that the authorisation had been withdrawn on 25 February after the
-      producers sought changes to the agreed terms.
+      The law provides for authorised medical growing, and African Seeds received
+      permission in 2017 for a supervised industrial-hemp project intended for medical
+      exports.[@law,hemp2019] In February 2020 the drug office withdrew the
+      authorisation after the producers sought changes to the agreed terms, and no
+      current licensed production was found in the sources reviewed.[@hemp2020]
     sources:
-      - hemp2020
-      - hemp2019
-  products:
-    text: >-
-      The reported industrial-hemp authorisation initially covered seed exports, with a
-      2018 amendment adding oil. The authorisation was withdrawn in 2020; the retained
-      sources establish no current consumer product supply.
-    sources:
+      - law
       - hemp2019
       - hemp2020
-  medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
   consequences:
     text: >-
       For the offences listed in Articles 94–102, Article 112 allows courts to ban a
       foreigner from the territory for ten to twenty years and restrict civic rights or
-      driving for one to five years. A professional ban can last five to ten years or
-      permanently. The personal-use offence in Article 138 is outside that stated list.
+      driving for one to five years.[@law] A professional ban can last five to ten
+      years or permanently.[@law] The personal-use offence in Article 138 is outside
+      that stated list.[@law]
     sources:
       - law
   planting:
@@ -99,53 +210,47 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      Article 9 of Law 01-078 bans growing the cannabis plant anywhere in the country and
-      obliges whoever owns or occupies land to destroy any plants that come up. The law
-      defines a narcotic by reference to the schedules of the 1961 convention. A limited
-      authorisation for industrial-hemp seed production and export was granted in 2017
-      and withdrawn in 2020; the retained sources do not settle general seed sales.
+      Article 9 of Law 01-078 bans growing the cannabis plant anywhere in the country
+      and obliges whoever owns or occupies land to destroy any plants that come
+      up.[@law] The offence articles read do not mention seeds.[@law]
     sources:
-      - l01078
-      - hemp2019
-      - hemp2020
+      - law
   clubs:
     status: none
     text: >-
-      The retained sources establish no authorised cannabis clubs. The law prohibits
-      cannabis cultivation and punishes giving or offering high-risk drugs for another
-      person's consumption.
+      No cannabis clubs are known, and the law leaves no room for them: cannabis
+      cultivation is prohibited, and giving or offering high-risk drugs for another
+      person's consumption is punished.[@law]
     sources:
       - law
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. Article 112 permits a ten-to-twenty-year territorial ban on foreigners
-      convicted of the specified offences in Articles 94–102.
+      There is no legal recreational supply for anyone, so a visitor has no lawful way
+      to buy cannabis.[@law] Article 112 permits a ten-to-twenty-year territorial ban
+      on foreigners convicted of the specified offences in Articles 94–102.[@law]
     sources:
       - law
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 32,000 kg of herbal
-      cannabis seized in 2023, against 22,217 kg in 2022, and 440 kg of cannabis resin
-      seized in 2023, against 1,874 kg in 2022. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      Figures reported by the government to the UN drugs office record 32,000 kg of
+      herbal cannabis seized in 2023, against 22,217 kg in 2022, and 440 kg of cannabis
+      resin seized in 2023, against 1,874 kg in 2022.[@unodc_szr] The UN publishes them
+      as kilogram equivalents, and countries count seizures differently, so the figures
+      are not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
 sources:
-  l01078:
-    title: Loi n° 01-078 du 18 juillet 2001 portant sur le contrôle des drogues et des précurseurs, UN document E/NL.2008/21 (UNODC SHERLOC, scanned PDF)
-    url: https://sherloc.unodc.org/cld/uploads/res/document/mli/loi-01-078_html/mali-loi_stupefiants_2.pdf
+  law:
+    title: Mali — Law 01-078 of 18 July 2001, original official gazette
+    url: https://sgg-mali.ml/JO/2002/mali-jo-2002-29.pdf
+    locator: Articles 9, 94–95, 98, 137–138 read in full; Articles 96, 112 per the October triage read
   hemp2019:
     title: Maliweb / Le Fondement — Reported industrial-hemp licence conditions, 11 November 2019
     url: https://www.maliweb.net/societe/culture-du-cannabis-industriel-au-mali-les-raisons-a-retenir-2847302.html
   hemp2020:
     title: Maliweb — OCS director Adama Tounkara explains the authorisation and withdrawal, 25 May 2020
     url: https://www.maliweb.net/societe/culture-du-chanvre-industriel-au-mali-les-precisions-du-directeur-general-de-locs-2875623.html
-  law:
-    title: Mali — Law 01-078 of 18 July 2001, original official gazette, Articles 9, 94–98, 112 and 137–138
-    url: https://sgg-mali.ml/JO/2002/mali-jo-2002-29.pdf
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
