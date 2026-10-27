@@ -39,3 +39,13 @@ Explicit state and national public-use answers feed profiles, /can-i/ and SEO FA
 Audited remaining US consumption-3/4 descriptions: the other departures from private
 use concern licensed lounges/hospitality premises, not a verified general outdoor
 public permission. National prose now names the state/local distinction.
+
+## #193 — Thailand recreational classification
+
+Read the official TAT notice of 27 June 2025 and government statement of 17 July
+2026 (https://www.thaigov.go.th/th/news/166528). Both support medical prescription
+control of flower. Changed recreational partial→illegal; retained existing scores,
+medical status and distinctions for cultivation, seeds and non-flower plant parts.
+The classification is not a claim that the entire plant has been rescheduled as a
+narcotic. Existing explanation of prescription access and practical shop closures
+remains. Added the direct official notice to visitor sources.

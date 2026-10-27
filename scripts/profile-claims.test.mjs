@@ -365,3 +365,13 @@ test('US outdoor public-use permissions reach quick answers and scores (#192)', 
   }
   assert.equal(country('us/index').answers.public.answer, 'limited');
 });
+
+// Issue #193
+test('Thailand medical-only flower status agrees with its explanation (#193)', () => {
+  const th = country('th');
+  assert.equal(th.recreational, 'illegal');
+  assert.equal(th.medical, 'legal');
+  assert.match(th.summary, /requires a prescription/);
+  assert.match(th.summary, /Recreational use is officially no longer permitted/);
+  assert.match(th.context.planting.text, /seed|plant/i);
+});
