@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 643
 recreational: illegal
 medical: none
-updated: '2026-10-26'
+updated: '2026-10-27'
 summary: >-
   The administrative tier is product-specific: up to 6 g of marijuana plant material, 2 g of hashish
   or 0.4 g of cannabis oil. Above the relevant threshold, criminal penalties apply. Drug propaganda
@@ -26,148 +26,302 @@ segments:
       bring a 4,000–5,000 rouble fine or up to fifteen days’ detention; foreigners also face
       expulsion.[@koap68] Classification and the applicable weight of a preparation must be
       established; not every liquid or carrier mixture is automatically hashish oil.[@quantities]
+      Especially large personal possession carries ten to fifteen years; the latter two tiers allow
+      an additional fine up to RUB500,000 or an income-based fine.[@uk228] The table follows
+      marijuana plant material; resin and oil keep their separate thresholds.[@quantities]
     sources:
       - quantities
       - uk228
       - koap68
+    currency: RUB
+    penalties:
+      - upto: 6 g
+        treatment: civil
+        term: Administrative offence
+        prison: 15 days
+        fine_min: 4000
+        fine: 5000
+        note: Fine or detention; marijuana plant material only
+      - over: 6 g
+        upto: 100 g
+        treatment: criminal
+        term: Significant amount
+        prison: 3 years
+        fine: 40000
+        note: Prison or a fine, or other statutory alternatives; income-based fine also possible
+      - over: 100 g
+        upto: 100000 g
+        treatment: criminal
+        term: Large amount
+        prison_min: 3 years
+        prison: 10 years
+        fine: 500000
+        note: Additional fine optional; income-based alternative possible
+      - over: 100000 g
+        treatment: criminal
+        term: Especially large amount
+        prison_min: 10 years
+        prison: 15 years
+        fine: 500000
+        note: Additional fine optional; income-based alternative possible
   cultivation:
     text: >-
-      Growing plants that contain narcotics is an administrative offence under Article 10.5.1 of
-      the Code of Administrative Offences when it is not a crime: a fine of 3,000 to 5,000
-      roubles or up to 15 days' arrest. Growing in a 'large amount', which for cannabis starts
-      at 20 plants, is a crime under Article 231 of the Criminal Code, with a fine, compulsory
-      labour or up to two years in prison; in an 'especially large amount' or by a group it
-      carries up to eight years.
+      Unauthorised growing of fewer than twenty cannabis plants brings a RUB3,000–5,000 fine or up
+      to fifteen days of administrative detention.[@koap1051,plants] From twenty plants the criminal
+      maximum is two years, with alternatives including a fine up to RUB300,000 or an income-based
+      fine; from 330 plants, or for group growing, it is eight years.[@uk231,plants] These plant
+      counts are separate from the weight rules for harvested cannabis.[@plants,quantities]
     sources:
       - koap1051
+      - plants
       - uk231
-      - har2
+      - quantities
+    currency: RUB
+    penalties:
+      - upto: 19 plants
+        treatment: civil
+        term: Administrative offence
+        prison: 15 days
+        fine_min: 3000
+        fine: 5000
+        note: Fine or detention
+      - over: 19 plants
+        upto: 329 plants
+        treatment: criminal
+        term: Large amount
+        prison: 2 years
+        fine: 300000
+        note: Prison or a fine, or other statutory alternatives; income-based fine possible
+      - over: 329 plants
+        treatment: criminal
+        term: Especially large amount
+        prison: 8 years
+      - label: Group cultivation
+        treatment: criminal
+        term: Article 231(2)
+        prison: 8 years
   enforcement:
     text: >-
-      Article 228 is known as the 'people's article' because so many prisoners are held under it.
-      The low thresholds, planted-evidence scandals and long sentences for anything resembling
-      supply make this far harsher than the 6 g rule suggests.[@wiki] The 6 g figure is for plant
-      material: cannabis/hashish oil has significant and large grading figures of 0.4 g and 5 g,
-      with criminal penalties above the applicable thresholds.[@quantities,uk228]
+      Even administrative personal possession permits detention, while larger quantities bring
+      criminal prosecution under Article 228.[@koap68,uk228] The Supreme Court’s sentencing review
+      prompted a [proposal to lower prison
+      terms](/history/russia-possession-sentence-proposal-2026/) for possession without intent to
+      supply.[@proposal26]
     sources:
-      - wiki
-      - quantities
+      - koap68
       - uk228
+      - proposal26
   sharing:
     text: >-
       Any sale or transfer, including giving cannabis away, falls under Article 228.1 of the
       Criminal Code: four to eight years in prison in the basic case, five to twelve when done
-      through the internet or in places such as schools, transport or entertainment venues,
-      eight to fifteen for a 'significant amount' or a group, ten to twenty for a 'large
-      amount', and fifteen to twenty years or life for an 'especially large amount'.
+      through the internet or in places such as schools, transport or entertainment venues, eight to
+      fifteen for a 'significant amount' or a group, ten to twenty for a 'large amount', and fifteen
+      to twenty years or life for an 'especially large amount'.[@uk2281] The last tier also permits
+      life imprisonment; optional fines in the aggravated tiers reach RUB500,000 or RUB1 million,
+      with income-based alternatives.[@uk2281]
     sources:
       - uk2281
+    currency: RUB
+    penalties:
+      - label: Ordinary supply
+        treatment: criminal
+        term: Article 228.1(1)
+        prison_min: 4 years
+        prison: 8 years
+      - label: Internet supply or specified places
+        treatment: criminal
+        term: Article 228.1(2)
+        prison_min: 5 years
+        prison: 12 years
+        fine: 500000
+        note: Additional fine optional; income-based alternative possible
+      - label: Significant amount or prior group agreement
+        treatment: criminal
+        term: Article 228.1(3)
+        prison_min: 8 years
+        prison: 15 years
+        fine: 500000
+        note: Additional fine optional; income-based alternative possible
+      - label: Large amount or other statutory aggravation
+        treatment: criminal
+        term: Article 228.1(4)
+        prison_min: 10 years
+        prison: 20 years
+        fine: 1000000
+        note: Additional fine optional; income-based alternative possible
+      - label: Especially large amount
+        treatment: criminal
+        term: Article 228.1(5)
+        prison_min: 15 years
+        prison: 20 years
+        fine: 1000000
+        note: Life imprisonment is an alternative; additional fine optional
   consumption:
     text: >-
       Using a narcotic without a doctor's prescription, or refusing a medical examination when
-      police have grounds to suspect use, is an administrative offence under Article 6.9: a fine
-      of 4,000 to 5,000 roubles or up to 15 days' arrest, and for a foreigner the same with
-      expulsion from Russia. A person who goes voluntarily to a medical organisation for
-      treatment is released from liability.
+      police have grounds to suspect use, is an administrative offence under Article 6.9: a fine of
+      4,000 to 5,000 roubles or up to 15 days' arrest, and for a foreigner the same with expulsion
+      from Russia. A person who goes voluntarily to a medical organisation for treatment is released
+      from liability.[@koap69]
     sources:
       - koap69
+    currency: RUB
+    penalties:
+      - label: Use without prescription or qualifying refusal of examination
+        treatment: civil
+        term: Article 6.9
+        prison: 15 days
+        fine_min: 4000
+        fine: 5000
+        note: Fine or detention; foreign nationals also face expulsion
   access:
     text: >-
-      No legal source: any sale or transfer, including a gift, falls under Article 228.1 of the
-      Criminal Code, and using a narcotic without a doctor's prescription is an administrative
-      offence under Article 6.9.
+      There is no lawful recreational supplier: giving or selling cannabis is prosecuted under the
+      supply offence.[@uk2281] Marijuana, hashish and cannabis oil are on Schedule I of the
+      controlled-drug list.[@schedule]
     sources:
       - uk2281
-      - koap69
+      - schedule
 context:
   production:
-    status: medical
+    status: hemp
     text: >-
-      Registered varieties of hemp may be grown for industry if the leaves and flowering tops
-      hold no more than 0.1% THC; seed of the fourth and later generations may not be sown. The
-      area was about 2,000 hectares in 2012 and 10,200 in 2019, against nearly a million in the
-      Soviet Union of 1928. Growing cannabis for medicine is not allowed. No other production.
+      The lawful cannabis crop is industrial hemp meeting the registered-variety and 0.1% THC
+      conditions.[@res101] The same decree authorises opium poppy for medical drug production, while
+      its cannabis permission covers industrial uses.[@res101] Commercial supply of psychoactive
+      cannabis remains a criminal offence.[@uk2281]
     sources:
       - res101
-      - konop
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+      - uk2281
   medical:
-    text: No medical cannabis; cannabis is on the list of substances banned from medical use.
+    text: >-
+      Patients have no domestic medical-cannabis dispensing route: marijuana, hashish and cannabis
+      oil are listed among prohibited Schedule I narcotics.[@schedule] The cultivation decree
+      permits medical poppy and industrial hemp.[@res101] A foreign prescription does not create an
+      exemption from the reviewed cannabis possession offence.[@koap68,uk228]
     sources:
-      - wiki
+      - schedule
+      - res101
+      - koap68
+      - uk228
   consequences:
     text: >-
-      Users can be placed on a narcological register, which blocks driving licences and some jobs.
-      'Propaganda' of drugs, including online, is also penalised.
+      Foreign nationals face expulsion alongside the fine or detention for administrative possession
+      and use.[@koap68,koap69] A person who voluntarily seeks treatment for drug use can be exempted
+      from the use offence.[@koap69] Voluntary surrender may exempt administrative possession, while
+      the criminal exemption also requires active assistance and excludes drugs seized during arrest
+      or a search.[@koap68,uk228]
     sources:
-      - wiki
+      - koap68
+      - koap69
+      - uk228
   planting:
     seeds: grey
     seeds_trade: open
     clones: illegal
     clones_trade: banned
     text: >-
-      Lawyers answering on a Russian legal advice site say hemp seeds are part of the plant
-      but contain no narcotic, are not on the government's lists, and may be bought and sold
-      for any purpose except sowing. Growing is what the law punishes: fewer than 20 plants is
-      an administrative offence with a fine or up to 15 days' arrest, and 20 or more is a
-      crime under Article 231 of the Criminal Code.
+      Lawyers answering on a Russian legal advice site say hemp seeds are part of the plant but
+      contain no narcotic, are not on the government's lists, and may be bought and sold for any
+      purpose except sowing. Growing is what the law punishes: fewer than 20 plants is an
+      administrative offence with a fine or up to 15 days' arrest, and 20 or more is a crime under
+      Article 231 of the Criminal Code.
     sources:
       - har1
       - har2
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      A collective cannot lawfully supply recreational cannabis to its members: transfers fall under
+      the criminal supply prohibition.[@uk2281] Unauthorised cultivation remains punishable even
+      below the criminal plant threshold.[@koap1051,uk231]
     sources:
-      - wiki
+      - uk2281
+      - koap1051
+      - uk231
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply. The 6 g administrative ceiling concerns marijuana plant
-      material; hashish has a 2 g ceiling and cannabis/hashish oil 0.4 g. Above the applicable
-      figure, criminal possession penalties can apply; larger oil cases above the 5 g grading figure
-      can bring three to ten years. Foreigners can be expelled even for administrative
-      possession.[@quantities,uk228,koap68]
+      There is no legal recreational supply.[@uk2281] The 6 g administrative ceiling concerns
+      marijuana plant material; hashish has a 2 g ceiling and cannabis/hashish oil 0.4
+      g.[@quantities] Above the applicable figure, criminal possession penalties can apply; larger
+      oil cases above the 5 g grading figure can bring three to ten years.[@uk228] Foreigners can be
+      expelled even for administrative possession.[@quantities,uk228,koap68]
     sources:
       - quantities
       - uk228
       - koap68
+      - uk2281
   driving:
     status: zero
     text: >-
-      The Code of Administrative Offences punishes driving in a state of intoxication with a
-      fine of 45,000 roubles and loss of the licence for one and a half to two years, where
-      the act is not a crime. A note to the article defines the state: for alcohol it gives
-      measured levels, but for drugs liability arises from the presence of narcotic or
-      psychotropic substances in the body, with no level set.
+      The Code of Administrative Offences punishes driving in a state of intoxication with a fine of
+      45,000 roubles and loss of the licence for one and a half to two years, where the act is not a
+      crime. A note to the article defines the state: for alcohol it gives measured levels, but for
+      drugs liability arises from the presence of narcotic or psychotropic substances in the body,
+      with no level set.
     sources:
       - koap128
   arrests:
     text: >-
       Russian figures cover all drugs together. In 2024 courts convicted 69,900 people of drug
-      crimes, 50,800 of them under Article 228, the possession article: about 13% of all
-      512,800 convictions that year, a share that has held steady for several years. One in
-      five of those convicted under Article 228 as the main charge was sent to prison, most
-      often for three to five years, and fewer than 1% were released from punishment. By
-      various estimates about a third of all prisoners are serving time for drugs. The
-      Interior Ministry counted 69,700 people prosecuted for drug crimes in 2024, nearly 10%
-      fewer than in 2023, while seizures reached a seven-year record of 37.8 tonnes.
+      crimes, 50,800 of them under Article 228, the possession article: about 13% of all 512,800
+      convictions that year, a share that has held steady for several years. One in five of those
+      convicted under Article 228 as the main charge was sent to prison, most often for three to
+      five years, and fewer than 1% were released from punishment. By various estimates about a
+      third of all prisoners are serving time for drugs. The Interior Ministry counted 69,700 people
+      prosecuted for drug crimes in 2024, nearly 10% fewer than in 2023, while seizures reached a
+      seven-year record of 37.8 tonnes.
     sources:
       - komm25
       - rtvi25
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 6,847 kg of herbal
-      cannabis seized in 2024, against 7,868 kg in 2023, and 3,262 kg of cannabis resin
-      seized in 2024, against 5,314 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      Figures reported by the government to the UN drugs office record 6,847 kg of herbal cannabis
+      seized in 2024, against 7,868 kg in 2023, and 3,262 kg of cannabis resin seized in 2024,
+      against 5,314 kg in 2023. The UN publishes them as kilogram equivalents, and countries count
+      seizures differently, so the figures are not comparable across borders.
     sources:
       - unodc_szr
+  recreational:
+    text: >-
+      Adults have no legal shop or home-growing allowance for psychoactive
+      cannabis.[@uk2281,koap1051] Even the lowest possession tier permits detention, and giving
+      cannabis to a friend falls under the criminal supply law.[@koap68,uk2281] A [May 2026
+      proposal](/history/russia-possession-sentence-proposal-2026/) sought lower prison maxima for
+      personal possession; the reviewed criminal code still sets the existing
+      tiers.[@proposal26,uk228]
+    sources:
+      - uk2281
+      - koap1051
+      - koap68
+      - proposal26
+      - uk228
+  hemp:
+    status: strict
+    text: >-
+      Industrial hemp may be grown from registered varieties containing no more than 0.1% THC in the
+      dry leaves and flowering tops.[@res101] The [2020 rules](/history/russia-hemp-varieties-2020/)
+      require approved varieties and forbid sowing seed of the fourth and later
+      reproductions.[@res101] The permitted use is industrial production unrelated to making
+      narcotic drugs.[@res101]
+    sources:
+      - res101
+  culture:
+    text: >-
+      Russian drug schedules use both [cannabis](/culture/language/cannabis/) and
+      [anasha](/culture/language/anasha/), the latter as a name for hashish.[@quantities] The
+      [Indian hemp](/culture/language/indian-hemp/) wording of earlier Soviet bans contrasts with
+      the modern decree’s botanical category covering the genus Cannabis.[@soviet1960,plants] The
+      atlas’s [Scythian vapour bath](/culture/traditions/the-scythian-vapour-bath/) connects to
+      archaeological cannabis finds in Russia’s Altai mountains, discussed alongside the 2019 Pamir
+      residue research.[@archaeology]
+    sources:
+      - quantities
+      - plants
+      - archaeology
+      - soviet1960
 sources:
   koap69:
     title: Russia — Code of Administrative Offences, Article 6.9 (text at zakonrf.info)
@@ -182,20 +336,30 @@ sources:
     title: Russia — Criminal Code, Article 231 (text at zakonrf.info)
     url: https://www.zakonrf.info/uk/231/
   res101:
-    title: Government of the Russian Federation — Resolution No. 101 of 6 February 2020 (text at rulaws.ru)
+    title: >-
+      Government of the Russian Federation — Resolution No. 101 of 6 February 2020 (text at
+      rulaws.ru)
     url: https://rulaws.ru/goverment/Postanovlenie-Pravitelstva-RF-ot-06.02.2020-N-101/
   konop:
     title: Wikipedia (Russian) — Коноплеводство
-    url: https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D0%BE%D0%BF%D0%BB%D0%B5%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE
+    url: >-
+      https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D0%BE%D0%BF%D0%BB%D0%B5%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE
   res1002:
-    title: Pravo.ru — Правительство установило размеры наркотиков для целей статей 228, 228-1, 229 и 229-1 УК РФ
+    title: >-
+      Pravo.ru — Правительство установило размеры наркотиков для целей статей 228, 228-1, 229 и
+      229-1 УК РФ
     url: https://pravo.ru/news/view/78447/
   komm25:
-    title: Kommersant — drug convictions in 2024 and the Supreme Court's proposal to soften Article 228 (14 December 2025)
+    title: >-
+      Kommersant — drug convictions in 2024 and the Supreme Court's proposal to soften Article 228
+      (14 December 2025)
     url: https://www.kommersant.ru/doc/8272083
   rtvi25:
-    title: RTVI — record quantity of drugs seized in Russia in 2024, Interior Ministry statistics (4 February 2025)
-    url: https://rtvi.com/news/nelzya-ignorirovat-afganistan-v-rossii-za-god-izyali-rekordnoe-kolichestvo-narkotikov/
+    title: >-
+      RTVI — record quantity of drugs seized in Russia in 2024, Interior Ministry statistics (4
+      February 2025)
+    url: >-
+      https://rtvi.com/news/nelzya-ignorirovat-afganistan-v-rossii-za-god-izyali-rekordnoe-kolichestvo-narkotikov/
   koap128:
     title: Russia — Code of Administrative Offences, Article 12.8 (text at zakonrf.info)
     url: https://www.zakonrf.info/koap/12.8/
@@ -209,7 +373,9 @@ sources:
     title: Wikipedia — Cannabis in Russia
     url: https://en.wikipedia.org/wiki/Cannabis_in_Russia
   unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    title: >-
+      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
+      Report data)
     url: https://data.unodc.org/datareport/drug-seizure
   quantities:
     title: Russian Government — Decree 1002, Schedule I quantity table
@@ -226,6 +392,24 @@ sources:
     title: Russia — Administrative Offences Code, Article 6.8
     url: https://www.zakonrf.info/koap/6.8/
     locator: Personal possession; fine, detention and foreign-national expulsion
+  plants:
+    title: Russian Government — Resolution 934, cultivation quantity table
+    url: >-
+      https://www.consultant.ru/document/cons_doc_LAW_107635/7ea886b69330065e94046e0cbc2a75b007dd9104/
+  schedule:
+    title: Russian Government — Resolution 681, Schedule I narcotic drugs
+    url: >-
+      https://www.consultant.ru/document/cons_doc_LAW_19243/7ac9c85f0a0db1d3e34e809c298f55a60e6c891d/
+  proposal26:
+    title: Vedomosti — Supreme Court submits proposal to reduce possession sentences, 15 May 2026
+    url: https://www.vedomosti.ru/society/news/2026/05/15/1197701-sroki-za-pokupku-narkotikov
+  archaeology:
+    title: University of Chinese Academy of Sciences — The origins of cannabis smoking (2019)
+    url: >-
+      https://news-en.ucas.ac.cn/index.php/lastnews/2734-the-origins-of-cannabis-smoking-marijuana-use-in-the-first-millennium-bc
+  soviet1960:
+    title: Wikipedia — Cannabis in Russia
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Russia
 answers:
   carry:
     answer: 'no'

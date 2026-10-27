@@ -68,3 +68,11 @@ SA rewrite, so this batch makes no history-entry edits; history additions are de
 - History: added namibia-dealing-presumption-upheld-2026 (unscored, year precision); related-links on 2021 entry. No 2010s/1980s/1920s-60s source found.
 - Article: namibia-constitutional-challenge-2021 (2021→2023→2026 arc + Swartbooi sidebar).
 - Audit 0/0, history+answers tests pass, build 4881 pages, HTML verified (2 pen tables NAD, 11 history links).
+
+## Europe batch: Russia, Ukraine, Moldova, Belarus and Lithuania
+
+Chosen from `country-gaps.cjs --rank 25 --region Europe`; profiles checked afresh before each country because other contributors are active.
+
+| Country | Done | Left | Commit |
+|---|---|---|---|
+| Russia | Four penalty tables; recreational, hemp and culture sections; products folded; production status corrected to hemp; Wikipedia-only medical/consequences/clubs/enforcement replaced; May 2026 sentencing proposal recorded | 1950s gap; further enforcement statistics and research/genetics; first build blocked by another contributor’s invalid Namibia citation; retry follows | This country commit |
