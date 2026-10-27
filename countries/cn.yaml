@@ -54,6 +54,15 @@ segments:
       - psapl25
       - spc16
       - nia
+    currency: CNY
+    penalties:
+      - label: Small possession, Article 84 (from 2026)
+        treatment: civil
+        fine: 3000
+        note: Ten to fifteen days' detention plus a fine of up to 3,000 yuan; lighter cases five days or 1,000 yuan
+      - label: Relatively large amount, crime threshold
+        treatment: criminal
+        note: Crime of illegal possession from 30 kg of leaf, 2 kg of resin or 1 kg of oil
   cultivation:
     text: >-
       Growing cannabis for drug use is prohibited and the plants are uprooted. A small number of
@@ -66,6 +75,15 @@ segments:
       - psapl25
       - spc16
       - cms
+    currency: CNY
+    penalties:
+      - label: Small growing, Article 83
+        treatment: civil
+        fine: 5000
+        note: Ten to fifteen days' detention plus up to 5,000 yuan; lighter cases five days or 1,000 yuan; no penalty if uprooted before maturing
+      - label: Growing as a crime, Article 351
+        treatment: criminal
+        note: Crime from 5,000 plants
   enforcement:
     text: >-
       Short detention for users, extreme penalties for supply. Citizens have been warned that using
@@ -83,6 +101,15 @@ segments:
       - lc
       - wiki
       - spc16
+    penalties:
+      - label: Trafficking any amount, Article 347
+        treatment: criminal
+        death: true
+        note: No minimum quantity; large amounts can bring life or death
+      - label: Large amount, heaviest tier
+        treatment: criminal
+        death: true
+        note: From 150 kg of leaf, 10 kg of resin or 5 kg of oil
   consumption:
     text: >-
       Using a drug is an administrative offence under the same Article 84 as small possession:
@@ -100,6 +127,17 @@ segments:
     sources:
       - cms
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Small possession and use bring administrative detention
+      and fines, larger amounts are crimes from 30 kg of leaf, and trafficking any amount can
+      bring life or death. Citizens are warned that use abroad can be punished on
+      return.[@psapl25,spc16,wiki,lc]
+    sources:
+      - psapl25
+      - spc16
+      - wiki
+      - lc
   death_penalty:
     text: >-
       Trafficking in a 'large amount' falls in the tier of the Criminal Law that carries fifteen
@@ -117,14 +155,11 @@ context:
     sources:
       - wiki
       - cms
-  products:
-    text: >-
-      No THC products. CBD is not permitted in food or medicines, was banned from cosmetics, and in
-      2024 was placed under precursor-chemical controls.
-    sources:
-      - cms
   medical:
-    text: No medical cannabis of any kind.
+    text: >-
+      No medical cannabis of any kind and no THC products. CBD is not permitted in food or
+      medicines, was banned from cosmetics, and in 2024 was placed under precursor-chemical
+      controls.
     sources:
       - cms
       - wiki
