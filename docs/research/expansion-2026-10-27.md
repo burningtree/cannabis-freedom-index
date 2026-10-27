@@ -11,7 +11,7 @@ Prior history groundwork exists in `docs/research/`: `history-dr-congo-gap-2026-
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | DR Congo (cd) | recreational + hemp sections, products folded, 4 penalty tables, inline citations + history/culture links throughout, culture section linking all 4 atlas entries, 1 new history entry (1977 psychotropics accession) | 1920s–1960s, 1980s–1990s still empty (no post-1917 penal statute found; Leganet indexes only the 1903/1917 ordinance); no arrests/driving/planting sections (no reliable source); no article (no score-moving entry lacks one) | |
-| Cameroon (cm) | | | |
+| Cameroon (cm) | recreational + hemp sections, products folded, 4 penalty tables (XAF fines verified in Law 97/019), inline citations + history links throughout, production/medical rewritten with sources, 5 new history entries (1962/1981/1991 treaty accessions, 2002 narcotics subdirectorate, 2014 airport cells) | 1930s–1940s still empty; no arrests section; first-restriction estimate still unverified and article-less by choice (no article on an undated estimate) | |
 | Uganda (ug) | | | |
 | Rwanda (rw) | | | |
 | Central African Republic (cf) | | | |

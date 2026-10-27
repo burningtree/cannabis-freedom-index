@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 120
 recreational: illegal
 medical: none
-updated: 2026-10-21
+updated: 2026-10-27
 summary: >-
   Growing cannabis is banned. The main offences allow 10 to 20 years in prison, a fine,
   or both; a small amount possessed, bought or grown for personal use falls under a
@@ -18,72 +18,202 @@ scores:
 segments:
   possession:
     text: >-
-      Article 102 of Law 97/019 sets a lighter tier for holding, buying or growing a small amount
-      meant for personal use: 2 months to 1 year, a fine of 25,000 to 1,250,000 CFA francs,
-      or both for a high-risk plant or substance, including cannabis oil. A cannabis derivative
-      other than oil carries 1 to 6 months, a fine of 25,000 to 500,000 CFA francs, or both.
-      The court may waive the penalty if the person solemnly promises
-      not to reoffend. Larger amounts fall under Article 93 (10 to 20 years).
+      Article 102 of [Law 97/019 of 7 August 1997](/history/cameroon-drug-law-1997/) sets a
+      lighter tier for holding, buying or growing a small amount meant for personal
+      use.[@loi97] For a high-risk plant or substance, including cannabis oil, the penalty is
+      2 months to 1 year in prison and a fine of 25,000 to 1,250,000 CFA francs, or either
+      alone.[@loi97] A cannabis derivative other than oil carries 1 to 6 months and a fine of
+      25,000 to 500,000 CFA francs, or either alone.[@loi97] The court may waive the penalty
+      if the person solemnly promises not to reoffend.[@loi97] Larger amounts fall under
+      Article 93 (10 to 20 years).[@loi97]
     sources:
       - loi97
+    currency: XAF
+    penalties:
+      - label: Cannabis oil, small amount for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 1 year
+        fine_min: 25000
+        fine: 1250000
+        note: Prison or a fine, or both
+      - label: Other cannabis derivatives, small amount for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 month
+        prison: 6 months
+        fine_min: 25000
+        fine: 500000
+        note: Prison or a fine, or both
+      - label: Above personal use (trafficking, article 93)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 250000
+        fine: 125000000
+        note: Prison or a fine, or both
   cultivation:
     text: >-
-      Article 8 bans growing the cannabis plant, and landowners must destroy plantations that
-      appear on their land. Article 91 punishes cultivation of high-risk drugs with 10 to 20 years,
-      a fine of 250,000 to 1,250,000 CFA francs, or both; Article 102 gives the lighter personal-use
-      tier for a small amount.
+      Article 8 bans growing the cannabis plant anywhere in the country, and obliges
+      landholders to destroy plantations that appear on their land.[@loi97] Article 91 punishes
+      cultivation of high-risk drugs with 10 to 20 years in prison and a fine of 250,000 to
+      1,250,000 CFA francs, or either alone; Article 102 gives the lighter personal-use tier
+      for a small amount.[@loi97]
     sources:
       - loi97
+    currency: XAF
+    penalties:
+      - label: Growing high-risk drugs (article 91)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 250000
+        fine: 1250000
+        note: Prison or a fine, or both. Growers must destroy volunteer plantations
+      - label: Cannabis oil, small amount for personal use (article 102)
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 1 year
+        fine_min: 25000
+        fine: 1250000
+        note: Prison or a fine, or both. Same tier as possession
+      - label: Other derivatives, small amount for personal use (article 102)
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 month
+        prison: 6 months
+        fine_min: 25000
+        fine: 500000
+        note: Prison or a fine, or both. Same tier as possession
   enforcement:
     text: >-
-      The statute allows prison, a fine, or both for personal-use offences and the main
-      cultivation and trafficking offences. Courts can waive personal-use punishment after
-      a solemn promise not to reoffend. How often these options are used is not shown by the statute.
+      Personal-use offences carry prison, a fine, or both, and courts can waive punishment
+      after a solemn promise not to reoffend.[@loi97] The main cultivation and trafficking
+      offences run 10 to 20 years in prison.[@loi97] How often each option is used is not shown
+      by the statute, but police describe systematic crop raids in the Northwest, Southwest
+      and West and map production, transit and consumption zones.[@abena17]
     sources:
       - loi97
+      - abena17
   sharing:
     text: >-
-      Article 95 punishes giving or offering a high-risk drug to a person for their own use with 2
-      to 5 years, a fine of 50,000 to 2,500,000 CFA francs, or both. General selling and distributing
-      offences allow 10 to 20 years, a fine, or both (Article 93).
+      Article 95 punishes giving or offering a high-risk drug to a person for their own use
+      with 2 to 5 years in prison and a fine of 50,000 to 2,500,000 CFA francs, or either
+      alone.[@loi97] General selling and distributing offences allow 10 to 20 years and a fine
+      of 250,000 to 125,000,000 CFA francs, or either alone (Article 93).[@loi97]
     sources:
       - loi97
+    currency: XAF
+    penalties:
+      - label: Giving or offering for another person's own use (article 95)
+        treatment: criminal
+        term: Supply to a user
+        prison_min: 2 years
+        prison: 5 years
+        fine_min: 50000
+        fine: 2500000
+        note: Prison or a fine, or both
+      - label: Selling or distributing (trafficking, article 93)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 250000
+        fine: 125000000
+        note: Prison or a fine, or both
   consumption:
     text: >-
       Article 101 forbids using controlled drugs without a medical prescription and orders any
-      drug found on a user seized. The penalty set for the user in the text is the
-      possession tier of Article 102.
+      drug found on a user seized.[@loi97] The penalty set for the user in the text is the
+      possession tier of Article 102.[@loi97]
     sources:
       - loi97
+    currency: XAF
+    penalties:
+      - label: Cannabis oil, use without a prescription
+        treatment: criminal
+        term: Use without prescription
+        prison_min: 2 months
+        prison: 1 year
+        fine_min: 25000
+        fine: 1250000
+        note: Penalty is the possession tier (article 102). Prison or a fine, or both
+      - label: Other derivatives, use without a prescription
+        treatment: criminal
+        term: Use without prescription
+        prison_min: 1 month
+        prison: 6 months
+        fine_min: 25000
+        fine: 500000
+        note: Penalty is the possession tier (article 102). Prison or a fine, or both
   access:
     text: >-
-      Cannabis and its resin are placed in Table I, according to the justice ministry's
-      2017 presentation. Article 9 prohibits ordinary handling of Table I drugs, subject
-      to Article 77, which allows ministerial authorisation for medical or scientific
-      research, training and forensic work in strictly necessary quantities. The retained
-      sources establish no operating cannabis treatment supply programme.
+      Cannabis and its resin are placed in Table I, according to the justice ministry's 2017
+      presentation.[@spm17] Article 9 prohibits ordinary handling of Table I drugs, subject to
+      Article 77, which allows ministerial authorisation for medical or scientific research,
+      training and forensic work in strictly necessary quantities.[@loi97] No operating patient
+      supply programme was found in the sources reviewed.[@loi97]
     sources:
       - loi97
       - spm17
 context:
+  recreational:
+    text: >-
+      The justice ministry calls cannabis one of the most produced and consumed drugs in
+      Cameroon, trafficked by several networks and hitting young users hard.[@spm17] Growing,
+      selling, holding and using it are all prohibited, with personal use punished more lightly
+      than trafficking under the [1997 drug law](/history/cameroon-drug-law-1997/).[@loi97]
+      Police map production, transit and consumption zones and raid crops in the Northwest,
+      Southwest and West, though they admit the impact is mixed.[@abena17] Trafficking methods
+      keep evolving: in March 2025 gendarmes at Manki in the Noun department seized 50 sacks
+      hidden with soap cartons, detaining three men while the defence ministry hunted the rest
+      of the network, as [that seizure](/history/cameroon-noun-seizure-2025/) records.[@jdc25]
+    sources:
+      - spm17
+      - loi97
+      - abena17
+      - jdc25
+  medical:
+    text: >-
+      Cannabis and its resin sit in Table I of high-risk drugs, and article 9 prohibits ordinary
+      handling, leaving only the narrow route of article 77: ministerial authorisation for
+      research, training or forensic work in strictly necessary quantities.[@loi97,spm17] No
+      patient programme operates under that route in the sources reviewed.[@loi97]
+    sources:
+      - loi97
+      - spm17
+  hemp:
+    status: none
+    text: >-
+      The drug law makes no hemp exception: cannabis and its resin sit in Table I of high-risk
+      drugs, and article 8 bans growing the plant anywhere in the country.[@spm17,loi97] No
+      separate fibre, food or CBD regime appears in the sources reviewed.[@loi97]
+    sources:
+      - loi97
+      - spm17
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
-  medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No licensed production exists: article 8 bans growing opium poppy, coca and cannabis
+      anywhere, while ministerial authorisation under article 77 is limited to research,
+      training and forensic work in strictly necessary quantities.[@loi97] What the country
+      grows is illicit: police map production zones and raid plantations in the Northwest,
+      Southwest and West.[@abena17]
+    sources:
+      - loi97
+      - abena17
   consequences:
     text: >-
       For offences listed in Articles 91–99, courts may impose a country ban on foreigners
       lasting two to ten years or permanently, and restrictions on civic rights, travel,
-      driving or professional work; the professional ban can also be permanent. Article 113
-      permits treatment instead of or alongside punishment for convicted people with drug
-      dependence in the specified cases. Evading treatment carries two to five years,
-      a fine, or both.
+      driving or professional work; the professional ban can also be permanent.[@loi97] Article
+      113 permits treatment instead of or alongside punishment for convicted people with drug
+      dependence in the specified cases.[@loi97] Evading treatment carries two to five years,
+      a fine, or both.[@loi97]
     sources:
       - loi97
   planting:
@@ -93,24 +223,24 @@ context:
     clones_trade: banned
     text: >-
       Article 8 of Law 97/019 bans growing the cannabis plant anywhere in the country and
-      obliges landholders to destroy plantations that appear on their land. The law speaks of
-      plants and substances and does not mention seeds.
+      obliges landholders to destroy plantations that appear on their land.[@loi97] The law
+      speaks of plants and substances and does not mention seeds.[@loi97]
     sources:
       - loi97
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@loi97]
     sources:
       - loi97
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. For convictions under Articles
-      91–99 of the drug law, Article 111 allows courts to bar a foreigner from Cameroon for
-      two to ten years or permanently. The personal-use offence in Article 102 is outside
-      that stated list.
+      There is no legal recreational supply for anyone.[@spm17,loi97] For convictions under
+      Articles 91–99 of the drug law, Article 111 allows courts to bar a foreigner from
+      Cameroon for two to ten years or permanently.[@loi97] The personal-use offence in
+      Article 102 is outside that stated list.[@loi97]
     sources:
       - spm17
       - loi97
@@ -118,20 +248,23 @@ context:
     status: impairment
     text: >-
       Article 103 of the drug law punishes driving under the influence of cannabis with the
-      penalties the Penal Code sets for driving while drunk or intoxicated, given by the justice
-      ministry as six months to ten years in prison and a fine of 20,000 to 1,000,000 CFA
-      francs, or one of the two. Where someone is killed or injured the penalties for that
-      offence are doubled. No measured limit is mentioned.
+      penalties the Penal Code sets for driving while drunk or intoxicated.[@loi97] The justice
+      ministry gives those as six months to ten years in prison and a fine of 20,000 to
+      1,000,000 CFA francs, or one of the two.[@spm17] Where someone is killed or injured the
+      penalties for that offence are doubled.[@loi97] No measured limit is mentioned.[@loi97]
     sources:
       - spm17
+      - loi97
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 6,861 kg of herbal
-      cannabis seized in 2024, against 6,639 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      cannabis seized in 2024, against 6,639 kg in 2023.[@unodc_szr] The UN publishes them as
+      kilogram equivalents, and countries count seizures differently, so the figures are not
+      comparable across borders.[@unodc_szr] Police describe the Northwest, Southwest and West
+      as proven cannabis-growing basins hit by punch crop raids, with mixed impact.[@abena17]
     sources:
       - unodc_szr
+      - abena17
 sources:
   spm17:
     title: "Cameroon, Prime Minister's Office — presentation by magistrate Bikele Noah Lambert on the legal framework and penalties for cannabis, 23 August 2017 (PDF)"
@@ -142,3 +275,9 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  abena17:
+    title: "Cameroon, Prime Minister's Office — presentation by police commissioner Armand Abena on action against cannabis, 23 August 2017 (PDF)"
+    url: https://www.spm.gov.cm/site/sites/default/files/expos%C3%A9_abena.pdf
+  jdc25:
+    title: "Journal du Cameroun — La gendarmerie intercepte 50 sacs de chanvre indien dans le Noun (29 March 2025)"
+    url: https://fr.journalducameroun.com/lutte-contre-le-trafic-de-stupefiants-la-gendarmerie-intercepte-50-sacs-de-chanvre-indien-dans-le-noun/
