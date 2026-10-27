@@ -91,3 +91,14 @@
 ## Austria BGBl 244/1928
 - Blocked again: ALEX bot-wall ("Sicherheitsüberprüfung"), RIS historic
   PDF 404, no secondary with the domestic rules' content. Entry unchanged.
+
+## Sierra Leone 1920 ban claim (decided: keep 1926, do not add)
+- Wikipedia claims cannabis was first banned in Sierra Leone in 1920 as an addendum to the
+  1913 Opium Act, citing Akyeampong/Hill/Kleinman (2015). The proximate source is
+  Akyeampong, "Diaspora and Drug Trafficking in West Africa" (African Affairs 104/416,
+  2005, p. 432) — but Duvall (African Roots, ch. 9 note 52, p. 316) notes Akyeampong cites
+  no source for the 1920 listing and states "I have not identified a 1920 listing."
+- Duvall's archival position: Sierra Leone's 1926 Dangerous Drugs Ordinance No. 10 is the
+  control start ("Sailors became drug traffickers once colonial prohibitions started in
+  1926", ch. 7 with note 195). Keep the 1926 first-ban entry. Revisit only if the 1913
+  Opium Ordinance or a 1920 amendment text surfaces.
