@@ -142,3 +142,17 @@
   (archive.org nsia volumes were Vol II money-laundering; state.gov archive down). The
   same volume (p.525) would also verify Senegal's Operation Cannabis V — double reason to
   find it. Do not add until read.
+
+## Colombia 1939/1946 restrictions + Barranquilla 1920s (open: unread)
+- Wikipedia: late-colonial hemp fibre with fringe psychoactive use; 1920s recreational use in
+  Atlantic ports (Barranquilla, Caribbean spillover) leading to restrictions in 1939 and 1946;
+  1960s-70s Sierra Nevada/Uraba boom (covered by 1973 Santa Marta entry/article). Cited to
+  Henderson 2015 (McFarland, pp.27–) and Nahas et al. 1999 (p.640). Neither local. Do not
+  add the 1939/1946 laws or the Barranquilla emergence until one is read.
+
+## Chile 1940s sailors + 1970s school survey (open: unread)
+- Wikipedia: 1940s US sailors using cannabis in Antofagasta/Tocopilla brothels; 1960s-70s
+  diffusion via foreign sailors then hippies; early-1970s Education Ministry report of 60%
+  of high-school students having tried cannabis. Cited to Nahas 1992 (p.210), Saenz
+  Rovner 2009 (p.99), Fernandez Labbe 2014 (p.147), Morris 1973 (p.260). None local. The
+  1545 Quillota entry (Abel + Dewey 1913) is covered. Do not add until read.
