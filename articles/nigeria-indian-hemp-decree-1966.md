@@ -1,6 +1,6 @@
 ---
-model: muse-spark
-written: 2026-10-28
+model: opus-5.5
+written: 2026-10-11
 sources:
   - type: chapter
     title: "The Origins of Cannabis Prohibition in Nigeria and the Indian Hemp Decree of 1966"
@@ -10,56 +10,64 @@ sources:
     publisher: MIT Press
     year: 2021
     isbn: "9780262366137"
-    locator: "pp. 225-246: 1961-1962 seizure boom, cocoa downturn, Daily Times hemp boom, 1966 decree penalties, Lambo and the sidelined doctors, soldiers' use"
+    locator: "pp. 229–238"
+  - title: "Wikipedia — Cannabis in Nigeria"
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Nigeria
 ---
 
-Soon after soldiers seized power in 1966, Nigeria's military government
-issued the Indian Hemp Decree: death for cultivating cannabis, twenty-one
-years for importing it, and tough penalties for use and possession.[@1] It
-was the country's first drug law focused on a single substance, and it tried
-to end a complex social problem by eliminating supply and criminals.[@1]
+In 1966 Nigeria made growing cannabis punishable by death.[@1,2] The law came from soldiers
+who had held power for a few months, and it had more to do with their fear of disorder
+than with the drug.
 
-## A boom discovered
+## A problem the colony ignored
 
-Police reporting on cannabis expanded sharply in the early 1960s, and the
-press sensationalised a hemp boom in Lagos.[@1] Seizures tell the story:
-823 kilograms nationwide in 1961, then 7.2 tons the year after, with
-twenty-eight farms identified in 1962.[@1] Police arrested three to five
-hundred Nigerians a year for possession or cultivation in the first half of
-the decade, mostly in Lagos — far more than the narcotics squad's handful
-of cases in the early 1950s.[@1] Part of the increase was vigilance rather
-than growth, but use had been rising steadily since the war.[@1]
+Under British rule cannabis was covered by the Dangerous Drugs Ordinances of
+[1927](/history/nigeria-dangerous-drugs-ordinance-1927/) and
+[1935](/history/nigeria-dangerous-drugs-1935/), written to satisfy the Geneva
+conventions. The colonial government did not treat it as a local problem. Its reports
+to international bodies said Indian hemp was not grown in Nigeria, even after a
+[police squad](/history/nigeria-police-narcotics-squad-1953/) formed in 1953 found
+otherwise.
 
-## Cocoa and soldiers
-
-A downturn in cocoa mattered: as prices fell, farmers in the fertile forest
-belt turned to a crop that was cheap and easy to produce, and Nigeria's
+After independence in 1960 the trade grew quickly. Seizures rose from 823 kilograms in
+1961 to [7.2 tons](/history/nigeria-cannabis-seizures-jump-1962/) the next year.
+Police were arresting three to five hundred Nigerians a year for possession or
+cultivation, mostly in Lagos.[@1] A downturn in cocoa prices pushed farmers in the
+fertile forest belt toward a crop that was cheap and easy to produce, and the
 cannabis centre sits in the cocoa belt to this day.[@1] Smoking spread from
-ex-soldiers and port workers, who used it as an aid to physical labour, to
-far wider classes, helped by a retail price that was a fraction of prices
-elsewhere.[@1] Newspapers tied the spread to urban deviance and to political
-violence in the Western Region before the civil war, casting cannabis as a
-danger to youth.[@1]
+ex-soldiers and port workers, who used it as an aid to physical labour, to far
+wider classes, helped by Lagos retail prices that were a fraction of prices
+elsewhere.[@1]
 
-## Doctors sidelined
+## The coup
 
-Psychiatrists around Adeoye Lambo had put cannabis on the national agenda
-and urged a mix of medical, educational, legal and socioeconomic
-measures.[@1] The decree shared almost nothing with their views.[@1] The
-military governors framed hemp smoking, even among schoolchildren, as proof
-of the indiscipline rotting the country, and used the decree to
-demonstrate determination and reassert control — including over their own
-cannabis-using rank and file.[@1] Police officials monopolised drug control
-from 1966 on.[@1]
+In 1966 a military government took over after political violence, in a year of coups
+and counter-coups. Newspapers had been linking cannabis to thuggery and to the unrest
+in the Western Region, and even traditionally moderate papers such as the state-owned
+Daily Times ran lurid coverage of the Lagos hemp boom, mostly based on arrest reports
+rather than evidence.[@1] The new rulers took up the theme: indiscipline among the
+young, and among soldiers — one military governor cited widespread schoolchild
+smoking as proof that discipline had gone lax.[@1]
 
-## The harsh line held, loosely
+## The decree
 
-The civil war that began in 1967 interrupted the new policy and spread
-cannabis use further, including among the soldiers behind the decree.[@1]
-Use and cultivation kept growing despite the harsh laws, so the decree was
-amended in 1975 with reduced penalties.[@1] Yet the 1966 decree, the
-colonial ordinance and the military approach to social reform stayed the
-base of Nigeria's punitive, supply-oriented control.[@1] The timeline runs
-through the [1984 Decree 20](/history/nigeria-decree-20-1984/) and the
-[1989 NDLEA law](/history/nigeria-ndlea-decree-1989/); the
-[Nigeria profile](/country/ng/) follows the later history.[@1]
+The Indian Hemp Decree was the first Nigerian drug law about a single substance.
+
+- **Cultivation:** death.
+- **Importation:** twenty-one years in prison.
+- **Use and possession:** tough penalties as well.
+
+It set aside the one medical voice available. The psychiatrist
+[Thomas Adeoye Lambo](/history/nigeria-lambo-addiction-study-1965/) had published a
+study the year before treating cannabis use as a matter for medicine, education and
+long-term social policy. The decree shared very little with it. Drug control became,
+and stayed, a police matter.
+
+## What happened next
+
+The civil war that began in 1967 interrupted enforcement and, by one account, made
+cannabis more popular among the soldiers themselves. In
+[1975](/history/nigeria-death-penalty-removed-1975/) the penalties were reduced.
+
+In the index the decree took [Nigeria's](/country/ng/) enforcement score to the bottom
+of the scale.
