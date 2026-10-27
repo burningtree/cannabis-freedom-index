@@ -31,6 +31,24 @@ segments:
     sources:
       - da
       - po
+    penalties:
+      - upto: 5 g
+        treatment: criminal
+        prison: 3 years
+        note: Drug-dependent person presumed to possess for use; use is three years
+      - label: Non-dependent person with 5 g or less
+        treatment: criminal
+        prison: 15 years
+        note: Presumed dealing; dealing is fifteen years
+      - over: 5 g
+        upto: 14 g
+        treatment: criminal
+        prison_min: 5 years
+        prison: 10 years
+        note: Presumed peddling
+      - over: 14 g
+        treatment: criminal
+        note: Presumed trafficking, which is life imprisonment
   cultivation:
     text: The retained sources identify cultivation as an offence but do not give its sentence.
     sources:
@@ -48,10 +66,20 @@ segments:
   sharing:
     text: >-
       Trafficking carries life imprisonment, now defined as the remainder of a person's life with no
-      pardon or commutation.
+      pardon or commutation.[@at] Bringing more than 350 g of cannabis into the country can carry the
+      death penalty, only on a unanimous full Supreme Court verdict.[@po,mi]
     sources:
       - at
       - mi
+      - po
+    penalties:
+      - label: Trafficking
+        treatment: criminal
+        note: Life imprisonment, defined as the remainder of life with no pardon or commutation
+      - label: Bringing more than 350 g of cannabis into the country
+        treatment: criminal
+        death: true
+        note: Only on a unanimous full Supreme Court verdict; otherwise life
   consumption:
     text: >-
       Use of cannabis is an offence of three years. The Drug Court can take a dependent person who
@@ -72,19 +100,34 @@ context:
       - po
       - mi
       - at
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Even 5 g or less makes a non-dependent person
+      presumed to be dealing, at fifteen years; a dependent person with the same amount is
+      presumed to hold it for use, at three years.[@da] British travel advice warns that even
+      small quantities can lead to arrest, long sentences, whipping and, for the most serious
+      offences, death.[@fcdo]
+    sources:
+      - da
+      - fcdo
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    text: No licensed production. Cultivation is an offence.
+    sources:
+      - mi
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No patient programme is documented. Cannabis is a Schedule 1 drug and use is an offence
+      of three years.[@da]
+    sources:
+      - da
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      Beyond prison, offenders can face whipping, and trafficking means life defined as the
+      remainder of life with no pardon or commutation.[@fcdo,at]
+    sources:
+      - fcdo
+      - at
   clubs:
     status: none
     text: >-
