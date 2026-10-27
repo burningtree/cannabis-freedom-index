@@ -46,12 +46,16 @@
 - Rest of Wiki Nigeria history already covered (1927/1935/1966/1975/1984/
   Decree 20/1994/1999/2019 entries).
 
-## Leeward Islands 1937 (E/NL.1952/54 read in full, 27 Oct)
-- The 2-page filing is only the Dangerous Drugs (Application) Order 1951
+## Leeward Islands 1937 (filings read in full, 27 Oct)
+- E/NL.1952/54 is only the Dangerous Drugs (Application) Order 1951
   (No. 32, 17 Nov 1951) under s.14(2) of the 1937 Act (No. 23/1937):
   Part V extended to dihydrocodeine, acetyldihydrocodeine and two
   synthetics. No cannabis content — the AG entry's caution stands as
   written; no new item.
+- E/NL.1949/19 is only the Dominica Dangerous Drugs Order 1948
+  (No. 21, 14 July 1948) under the same s.14(2): Part V extended to
+  amidone and metopon. No cannabis content — the DM entry's caution
+  stands; no new item.
 
 ## Curaçao 1929 (still untraced)
 - CVDR repository hosts only the 1960 consolidation (re-read via html
