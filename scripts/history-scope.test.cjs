@@ -1000,3 +1000,13 @@ test("every article's inline citations resolve to its own front-matter sources",
   }
   assert.deepEqual(bad, []);
 });
+
+test("every change id is unique (dev server rejects duplicate slugs)", () => {
+  const seen = new Set();
+  const dupes = [];
+  for (const e of changes) {
+    if (seen.has(e.id)) dupes.push(e.id);
+    seen.add(e.id);
+  }
+  assert.deepEqual(dupes, []);
+});
