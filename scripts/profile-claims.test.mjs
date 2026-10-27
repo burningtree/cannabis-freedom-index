@@ -552,3 +552,13 @@ test('Maryland preserves all three legal and civil product bands and gift limits
  assert.match(md.segments.sharing,/reciprocal transaction/);
  assert.match(md.segments.cultivation,/qualifying medical patient.*four/s);
 });
+
+// Issue #213
+test('Delaware possession and gifts distinguish leaf, concentrate and product THC (#213)',()=>{
+ const de=country('us/de');
+ for(const text of [de.summary,de.segments.possession,de.segments.sharing,de.answers.carry.text])for(const cap of ['1 oz','12 g','750 mg'])assert.ok(text.includes(cap),cap);
+ assert.match(de.segments.possession,/Unauthorised leaf possession/);
+ assert.match(de.segments.possession,/at 175 g, felony quantity provisions begin/);
+ assert.match(de.segments.sharing,/Gifts tied to another transaction/);
+ assert.ok(de.sources.some(s=>s.locator?.includes('21 October 2026')));
+});
