@@ -136,3 +136,19 @@ use exceptions retained. Kept ingestion distinct from seized marijuana possessio
 consumption is already 0 (use crime), enforcement 2 allows imprisonment; evaluation
 and probation are not mandatory jail. New historical entries deferred because the
 current code suffices to correct this omission without guessing a national step.
+
+## #202 — Grenada public and school-area use
+
+Read original Act 1/2026 sections 13A–13E, amended Fifth Schedule and definitions;
+visually check printed pages 15–16 and 24. Section 13B ordinary public/workplace/
+conveyance use includes a five-metre opening/intake buffer: optional EC$300 notice,
+EC$5,000 summary fine. Section 13C separately prohibits use on school premises or
+public/open areas within 100 yards during operating hours: maxima EC$250,000/seven
+years summarily, EC$500,000/twenty years on indictment. Not mandatory sentences.
+Private dwellings not operated as schools/licensed childcare are excepted; separate
+Rastafari declared-event protections remain. Summary, segments, visitor advice,
+consequences, quick answers and existing reform event now distinguish these offences.
+Consumption 3 remains private-use permission; enforcement 6 still describes lawful
+ordinary possession, now explicitly limited in prose/answers rather than reassurance
+about every use location. An aggravated location offence alone does not prove a
+change in ordinary small-possession sentencing practice sufficient for a new band.

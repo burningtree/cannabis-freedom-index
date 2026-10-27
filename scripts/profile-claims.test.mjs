@@ -438,3 +438,14 @@ test('South Dakota distinguishes ingestion sanctions from seized possession (#20
   assert.match(sd.segments.consumption, /ten years of the first conviction/);
   assert.match(sd.answers.caught.text, /Possession.*ingestion/);
 });
+
+// Issue #202
+test('Grenada public use distinguishes tickets, courts and school-area prison (#202)', () => {
+  const gd = country('gd');
+  for (const text of [gd.summary,gd.segments.consumption.text,gd.context.visitors.text,gd.answers.public.text,gd.answers.caught.text]) assert.match(text,/twenty years/);
+  assert.match(gd.segments.consumption.text, /optional EC\$300 notice/);
+  assert.match(gd.segments.consumption.text, /EC\$5,000 fine/);
+  assert.match(gd.segments.consumption.text, /100 yards during school operating hours/);
+  assert.match(gd.segments.consumption.text, /Private dwellings.*excepted/);
+  assert.match(events().find(e=>e.id==='grenada-decriminalisation-2026').description,/twenty years on indictment/);
+});
