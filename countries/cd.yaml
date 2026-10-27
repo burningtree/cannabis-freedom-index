@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 180
 recreational: illegal
 medical: limited
-updated: 2026-10-15T00:00:00.000Z
+updated: 2026-10-27T00:00:00.000Z
 summary: >-
   Recreational cannabis is prohibited. A 2022 ministerial order specifies licensing and controls for
   medical and scientific cannabis activities; an operating patient programme was not verified.
@@ -17,102 +17,220 @@ scores:
 segments:
   possession:
     text: >-
-      Article 2 of the 2022 order prohibits possession for purposes other than medical and
-      scientific use. It does not set a small personal-use allowance.
+      Growing, selling, transporting and holding cannabis for smoking have been prohibited since the
+      [1903 ban on growing and holding cannabis for smoking](/history/congo-free-state-hemp-ordinance-1903/),
+      whose article 1 states the prohibition.[@ord1903] A 1917 amendment extended it expressly to
+      smoking and consumption in any other form.[@ord1903] Breaches carry fifteen days to a year of
+      penal servitude and a fine of 100 to 1,000 francs, with either punishment available
+      alone.[@ord1903] Researchers describe the cannabis law as unchanged since 1917.[@laudati2019]
     sources:
-      - order2022
+      - ord1903
+      - laudati2019
+    penalties:
+      - label: Holding cannabis for smoking
+        treatment: criminal
+        term: Infraction
+        prison_min: 15 days
+        prison: 1 year
+        note: Prison or a fine, or both
   cultivation:
     text: >-
-      Article 97 requires health-ministry authorisation for medical or scientific cultivation.
-      Non-industrial cultivation requires a prior derogation under article 101; recreational growing
-      remains prohibited.
+      Cultivation falls under the same 1903 prohibition, whose article 1 bans growing cannabis for
+      smoking.[@ord1903] The ordinance orders crops destroyed and makes growers pay for the
+      destruction.[@ord1903] Field studies describe growers hiding plots far from homes and roads
+      for fear of discovery and uprooting.[@laudati2019]
     sources:
-      - order2022
+      - ord1903
+      - laudati2019
+    penalties:
+      - label: Growing cannabis for smoking
+        treatment: criminal
+        term: Infraction
+        prison_min: 15 days
+        prison: 1 year
+        note: Crops ordered destroyed. Prison or a fine, or both
   enforcement:
     text: >-
-      Article 121 refers violations to the Penal Code and pharmacy and health legislation. Those
-      cross-references do not by themselves establish a precise cannabis sentence or actual
-      enforcement frequency.
+      The statute sets fifteen days to a year of penal servitude, a fine, or either alone; it sets
+      no small personal-use allowance.[@ord1903] The 2022 order refers breaches to the Penal Code
+      and pharmacy and health legislation rather than setting sentences itself.[@order2022] How
+      often users are jailed is not shown by the statutes, but field studies describe a working
+      fear of arrest and seizure that pushes growers to sell quickly and cheaply.[@laudati2019]
+      Seized sacks are publicly burned, including in the eastern cities of Goma and
+      Bukavu.[@laudati2019]
     sources:
+      - ord1903
       - order2022
+      - laudati2019
   sharing:
     text: >-
-      Recreational commercialisation is prohibited by article 2. The licensed cannabis sector
-      remains subject to authorisations and controls. No personal gifting exemption was established.
+      Sale and transport fall under the same 1903 prohibition as holding.[@ord1903] The 2022 order
+      reserves authorised activities to medical and scientific purposes, leaving no personal
+      gifting exemption.[@order2022]
     sources:
+      - ord1903
       - order2022
+    penalties:
+      - label: Selling or transporting cannabis for smoking
+        treatment: criminal
+        term: Infraction
+        prison_min: 15 days
+        prison: 1 year
+        note: Prison or a fine, or both
   consumption:
     text: >-
-      Article 72 prohibits use outside a medical prescription; article 2 reserves authorised
-      activities to medical and scientific purposes.
+      Consumption became an express offence with the [1917 amendment covering smoking and use in
+      any other form](/history/belgian-congo-consumption-offence-1917/), which also ordered
+      smoking equipment seized and confiscated.[@ord1903] The 2022 order separately prohibits use
+      outside a medical prescription.[@order2022]
     sources:
+      - ord1903
       - order2022
+    penalties:
+      - label: Smoking or otherwise consuming cannabis
+        treatment: criminal
+        term: Infraction
+        prison_min: 15 days
+        prison: 1 year
+        note: Equipment seized and confiscated. Prison or a fine, or both
   access:
     text: >-
-      There is no recreational route. Article 112 requires express authorisation for imports of
-      finished medical cannabis products; an operating patient supply service was not established.
+      There is no recreational route: the [2022 licensing controls](/history/dr-congo-cannabis-licensing-order-2022/)
+      prohibit activities for purposes other than medical and scientific use.[@order2022] Imports
+      of finished medical cannabis products need express authorisation under article
+      112.[@order2022] An operating patient supply service was not verified, so access stays shut
+      in practice.[@order2022]
     sources:
       - order2022
 context:
+  recreational:
+    text: >-
+      Cannabis is prohibited, yet the DR Congo counts among Africa's most significant producers,
+      mostly for local consumption.[@order2022,laudati2019] In the east, researchers found
+      households for whom cannabis is the most important cash crop, with close to 90% of
+      households in some producing areas relying on trade income and growers earning roughly 200
+      to 1,000 US dollars a year.[@laudati2019] A Kinshasa anti-drug association study in the
+      late 1990s already recorded rising production, with average cannabis plots growing from one
+      to three hectares.[@laudati2019] Smoking houses feature in daily life: in 2026 the
+      government of Kasaï Oriental [formally banned selling and using
+      cannabis](/history/dr-congo-kasai-oriental-ban-2026/) across the province, calling
+      late-night smoking houses meeting places for criminals.[@acp2026kasai]
+    sources:
+      - order2022
+      - laudati2019
+      - acp2026kasai
+  medical:
+    text: >-
+      The public-health law of 13 December 2018 allows narcotics cultivation, production,
+      possession and sale for medical and scientific purposes under authorisation, and tasked the
+      health minister with setting the conditions.[@law2018] The [2021 ministerial
+      order](/history/dr-congo-medical-2021/) set five-year authorisations for Congolese
+      organisations operating at industrial scale, with medical varieties capped at 0.2% THC and
+      high CBD content.[@order2021] A [revised order in 2022](/history/dr-congo-cannabis-licensing-order-2022/)
+      kept every non-medical purpose prohibited and barred prescribing or dispensing narcotics in
+      kind.[@order2022] No operating patient supply was verified, so the framework licenses
+      production without reaching patients.[@order2022]
+    sources:
+      - law2018
+      - order2021
+      - order2022
+  hemp:
+    status: none
+    text: >-
+      The reviewed laws provide no general hemp exception: the 2022 order prohibits every activity
+      for purposes other than medical and scientific use.[@order2022] The law's THC ceiling
+      applies to licensed medical cultivation, not to hemp as a crop.[@order2022] Fibre or food
+      uses of hemp have no separate regime in the sources reviewed.[@order2022]
+    sources:
+      - order2022
   production:
     status: medical
     text: >-
-      The 2022 order regulates licensed medical and scientific cannabis cultivation and production.
-      Industrial plots require at least five hectares; smaller operations need prior derogation.
+      The 2022 order regulates licensed medical and scientific cannabis cultivation and
+      production: industrial plots need at least five hectares, and smaller operations need a
+      prior derogation.[@order2022] Imports and exports of semi-finished and finished products
+      need authorisation, while raw cannabis exports are prohibited.[@order2022] The licences
+      exist in the order, but no operating production for patients was verified.[@order2022]
+      Alongside this licensed framework, smallholder cannabis feeds a large illicit trade, with
+      cross-border sellers fetching up to three times more outside the country.[@laudati2019]
     sources:
       - order2022
-  products:
-    text: >-
-      Article 112 restricts imports of finished medical cannabis products to express authorisation.
-      Article 113 permits exports of semi-finished and finished products under authorisation, while
-      prohibiting raw cannabis exports.
-    sources:
-      - order2022
-  medical:
-    text: >-
-      The order provides a regulated medical and scientific framework. Article 100 specifies at most
-      0.2% THC for medical cultivation and no THC ceiling for scientific cultivation. This does not
-      verify patient availability.
-    sources:
-      - order2022
+      - laudati2019
   consequences:
     text: >-
-      Article 119 permits withdrawal of a cannabis-sector licence for breaches, illicit trafficking,
-      recreational diversion or refusal of inspection. Article 120 provides a corrective-measures
-      process.
+      Licence holders face withdrawal of their authorisation for breaches, illicit trafficking,
+      recreational diversion or refusing inspection, under articles 119 and 120, which also
+      provide a corrective-measures process.[@order2022] Beyond the licensed sector, the
+      ordinance-law punishes breaches with prison, a fine, or both.[@ord1903]
     sources:
       - order2022
+      - ord1903
   clubs:
     status: none
     text: >-
-      The reviewed order establishes medical and scientific licensing, not recreational social
-      clubs. Article 97 excludes non-profit associations from its ordinary agricultural-operator
-      provision.
+      The reviewed order provides for medical and scientific licensing, not recreational
+      social clubs.[@order2022] Article 97 excludes non-profit associations from its ordinary
+      agricultural-operator provision.[@order2022]
     sources:
       - order2022
   visitors:
     status: none
     text: >-
       There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. The sources behind this profile describe no separate rule for visitors.
+      cannabis.[@order2022] The sources reviewed state no separate rule for visitors.[@order2022]
     sources:
-      - wiki
+      - order2022
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 1,800 kg of herbal cannabis
-      seized in 2024, against 1,200 kg in 2023. The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across borders.
+      Figures reported by the government to the UN drugs office record 1,800 kg of herbal
+      cannabis seized in 2024, against 1,200 kg in 2023, with the usual warning that countries
+      count seizures differently.[@unodc_szr] Seized sacks are publicly burned, as in Goma and
+      Bukavu in the east.[@laudati2019] Researchers describe an active cross-border trade, with
+      sellers fetching up to three times more by carrying cannabis into neighbouring
+      Burundi.[@laudati2019]
     sources:
       - unodc_szr
+      - laudati2019
+  culture:
+    text: >-
+      Cannabis smoking in the basin predates the colonial ban: in the Lulua Valley of the 1870s
+      and 1880s, the [Bena Riamba](/culture/traditions/bena-riamba/) movement made sacramental
+      smoking a bond of its society of friendship, and the theology fell to the religious leader
+      [Sangula Meta](/culture/people/sangula-meta/).[@duvall19] Their encounter with the German
+      travellers Pogge and Wissmann in 1881 is recorded as a [history
+      entry](/history/dr-congo-bena-riamba-1881/), and the [1903
+      ban](/history/congo-free-state-hemp-ordinance-1903/) wrote prohibition over these
+      customs.[@ord1903,laudati2019] Smoking technology travelled with the custom:
+      calabash-based water pipes, earliest documented in Angola in 1832, were widespread from
+      Sierra Leone to South Africa by the late 1800s, a history kept in [the calabash water
+      pipe](/culture/traditions/the-calabash-water-pipe/).[@duvall19] So did its sounds:
+      nineteenth-century travellers often suspected the loud coughing that followed a pipe, heard
+      by Burton on the lower Congo in 1874, was put on, and the atlas keeps these accounts in
+      [the smoker's cough](/culture/traditions/the-smokers-cough/).[@duvall19] Colonial
+      campaigns had pushed use almost entirely underground by 1940, and today many Congolese view
+      participants as delinquent, with churches often a barrier to the trade.[@laudati2019]
+    sources:
+      - duvall19
+      - ord1903
+      - laudati2019
 sources:
-  wiki:
-    title: Wikipedia — Cannabis in the Democratic Republic of the Congo
-    url: https://en.wikipedia.org/wiki/Cannabis_in_the_Democratic_Republic_of_the_Congo
-  unodc_szr:
+  ord1903:
+    title: Leganet.cd — Ordonnance-loi du 22 janvier 1903, mesures contre l'usage de fumer le chanvre
+    url: https://www.leganet.be/Legislation/DroitSocial/Secu/OL.22.01.1903.htm
+  laudati2019:
+    title: Ann Laudati — Living Dangerously (EchoGéo 48, 2019)
+    url: https://journals.openedition.org/echogeo/17676
+  acp2026kasai:
     title: >-
-      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
-      Report data)
-    url: https://data.unodc.org/datareport/drug-seizure
+      Agence Congolaise de Presse — Kasaï Oriental, interdiction de vente et consommation de
+      cannabis (25 May 2026)
+    url: https://acp.cd/province/kasai-oriental-interdiction-de-vente-et-consommation-de-cannabis-gouvernement-provincial/
+  law2018:
+    title: Law 18/035 of 13 December 2018 on the organisation of public health
+    url: https://droitcongolais.info/files/812.12.18.2_Loi-du-13-decembre-2018_sante-publique.pdf
+  order2021:
+    title: Ministerial Order 1250/CAB/MIN/S/0002/DC/OWE/2021 of 27 February 2021
+    url: https://droitcongolais.info/files/811.02.21-Arrete-du-27-fevrier-2021_Stupefiants-et-psychotropes.pdf
   order2022:
     title: >-
       DR Congo — Ministerial order 1250/CAB/MIN/SPHP/038/DCA/CPh/2022 of 24 November 2022 (Journal
@@ -120,3 +238,18 @@ sources:
     url: >-
       https://www.droitcongolais.info/files/811.11.22-Arrete-du-24-novembre-2022_Stupefiants-a-des-fins-medicales.pdf
     locator: Articles 2, 72, 96–123, particularly 97, 100–102, 112 and 119–121
+  unodc_szr:
+    title: >-
+      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
+      Report data)
+    url: https://data.unodc.org/datareport/drug-seizure
+  duvall19:
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: >-
+      ch. 3, printed pp. 60-61 (calabash water pipes); ch. 5, printed pp. 105-106 (coughing
+      accounts, Burton 1874 lower Congo); ch. 6, printed pp. 112-119 (Bena Riamba, Sangula Meta);
+      read in the local PDF
