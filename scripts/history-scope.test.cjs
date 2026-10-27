@@ -1023,3 +1023,17 @@ test("Korea's 1957 original text is distinguished from local-hemp practice",()=>
   assert.ok(text.includes('lsiSeq=7835'));
  }
 });
+
+
+test("Thailand's replacement Code precedes cannabis delisting and preserves distinct historical penalties",()=>{
+ const e=byId['thailand-narcotics-code-2021'];
+ assert.equal(e.date,'2021-12-09');assert.equal(e.category,'easing');assert.equal(e.before,undefined);
+ assert.match(e.unscored,/remain criminal/);
+ for(const cap of ['two years','40,000','one year','20,000'])assert.ok(e.description.includes(cap));
+ assert.ok(e.related.includes('thailand-decriminalisation-2022'));
+ const old=fs.readFileSync('articles/thailand-narcotics-act-1979.md','utf8');
+ assert.match(old,/50,000 baht/);assert.match(old,/two to fifteen/);
+ const replacement=fs.readFileSync('articles/thailand-narcotics-code-2021.md','utf8');
+ assert.match(replacement,/before detection.*prescribed conditions.*written certification/s);
+ assert.match(replacement,/9 June 2022/);
+});
