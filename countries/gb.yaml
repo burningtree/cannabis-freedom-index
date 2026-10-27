@@ -24,6 +24,11 @@ segments:
       usually a month or less.
     sources:
       - sa
+    penalties:
+      - label: Possession of a Class B drug
+        treatment: criminal
+        prison: 5 years
+        note: Unlimited fine and/or up to five years; out-of-court disposals usual first
   cultivation:
     text: >-
       Growing any number of plants is production of a controlled drug, with up to 14 years on
@@ -31,6 +36,11 @@ segments:
     sources:
       - sa
       - boc
+    penalties:
+      - label: Production of a Class B drug
+        treatment: criminal
+        prison: 14 years
+        note: Unlimited fine and/or up to 14 years on indictment
   enforcement:
     text: >-
       Mostly out-of-court disposals and fines for users, with wide variation between police forces.
@@ -38,9 +48,18 @@ segments:
     sources:
       - sa
   sharing:
-    text: Supply, including giving cannabis to a friend, carries up to 14 years.
+    text: >-
+      Supply, including giving cannabis to a friend, carries up to 14 years and an unlimited
+      fine; the Sentencing Council's maximum for a Class B supply offence is 14 years'
+      custody and/or an unlimited fine.[@sa,sc]
     sources:
       - sa
+      - sc
+    penalties:
+      - label: Supply of a Class B drug (including giving to a friend)
+        treatment: criminal
+        prison: 14 years
+        note: Unlimited fine and/or up to 14 years
   consumption:
     text: >-
       Use is prosecuted through the possession offence. Letting your premises be used for smoking
@@ -57,6 +76,34 @@ segments:
       - pp
       - bmj
 context:
+  recreational:
+    text: >-
+      There is no legal way to buy cannabis for adult use: all of it is supplied illegally,
+      mostly high-strength herbal cannabis, and used in private.[@iea18] In England and Wales
+      users who are caught usually get a cannabis warning, a community resolution or a £90
+      penalty notice before any prosecution; of those who reach court, about 60% are
+      fined.[@sa] A 2025 London commission urged decriminalising small-quantity possession,
+      and the government answered in 2026 that it has no plans to change the
+      law.[@londondc,parl26]
+    sources:
+      - iea18
+      - sa
+      - londondc
+      - parl26
+  research:
+    status: licensed
+    text: >-
+      Britain ran one of the largest cannabis trials of its era: [the MRC-funded CAMS
+      study](/history/uk-cams-trial-results-2003/) treated 630 multiple-sclerosis patients at
+      33 UK centres with oral cannabis extract, THC or placebo, finding no effect on the
+      primary spasticity scale but improvements patients reported themselves.[@cams] GW
+      Pharmaceuticals has [worked under Home Office
+      licences](/history/uk-gw-pharmaceuticals-licence-1998/) since 1998, and its Sativex
+      mouth spray became the first licensed natural cannabis derivative, approved in the UK in
+      2010.[@reading]
+    sources:
+      - cams
+      - reading
   production:
     status: medical
     text: >-
@@ -222,6 +269,21 @@ sources:
   sa:
     title: Sentencing Academy — Possession of a Class B drug
     url: https://www.sentencingacademy.org.uk/snapshot/possession-of-a-class-b-drug/
+  cams:
+    title: The Lancet — CAMS study abstract (Zajicek et al., 2003; 630 patients, 33 UK centres)
+    url: https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(03)14738-1/abstract
+  reading:
+    title: University of Reading — GW Pharmaceuticals operates under Home Office licence; Sativex approved in the UK (2011)
+    url: https://archive.reading.ac.uk/news-events/2011/April/pr360923.html
+  londondc:
+    title: OnLondon — mayor's commission seeks decriminalisation of small-amount possession (28 May 2025)
+    url: https://www.onlondon.co.uk/mayors-commission-seeks-decriminalisation-of-possession-of-small-amounts-of-cannabis-for-personal-use/
+  parl26:
+    title: UK Parliament — written answer on cannabis decriminalisation (10 September 2026, no plans to change the law)
+    url: https://questions-statements.parliament.uk/written-questions/detail/2026-09-08/28146
+  sc:
+    title: "Sentencing Council — Supplying a controlled drug (Class B maximum: 14 years and/or unlimited fine)"
+    url: http://www.sentencingcouncil.org.uk/offences/item/supplying-or-offering-to-supply-a-controlled-drug-possession-of-a-controlled-drug-with-intent-to-supply-it-to-another/
   boc:
     title: Business of Cannabis — UK cannabis regulation overview
     url: https://businessofcannabis.com/eu-cannabis-regulation/uk/
