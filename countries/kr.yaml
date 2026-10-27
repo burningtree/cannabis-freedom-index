@@ -23,12 +23,26 @@ segments:
     sources:
       - kt2
       - slg
+    currency: KRW
+    penalties:
+      - label: Possession, acquisition, transport or storage
+        treatment: criminal
+        prison: 5 years
+        fine: 50000000
+        note: Up to five years or up to 50 million won, including edibles and vapes from abroad
   cultivation:
     text: >-
       Cultivation falls under the same up-to-five-year provision, with heavier penalties when for
       sale.
     sources:
       - kt2
+    currency: KRW
+    penalties:
+      - label: Cultivation
+        treatment: criminal
+        prison: 5 years
+        fine: 50000000
+        note: Same ceiling; heavier when for sale
   enforcement:
     text: >-
       Strict and actively enforced, with customs screening, hair testing and prosecutions of
@@ -40,6 +54,11 @@ segments:
     text: Supplying or selling is punished more severely, with a minimum of one year.
     sources:
       - slg
+    penalties:
+      - label: Supply or sale
+        treatment: criminal
+        prison_min: 1 year
+        note: Minimum one year; punished more severely than possession
   consumption:
     text: >-
       Smoking or ingesting cannabis is itself an offence with up to five years. Korean criminal law
@@ -57,6 +76,26 @@ segments:
     sources:
       - mfds
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited, including edibles and vapes from abroad. Possession
+      brings up to five years, supply at least one year, and smoking or ingesting up to five
+      years; citizens are prosecuted for use abroad, detected by hair tests months
+      later.[@kt2,slg,kt1,filter]
+    sources:
+      - kt2
+      - slg
+      - kt1
+      - filter
+  hemp:
+    status: standard
+    text: >-
+      Hemp is grown under permit for fibre and seed in designated areas. Since July 2020 two
+      districts of Andong form a regulation-free zone where hemp with less than 0.3% THC may be
+      grown and CBD extracted as a pharmaceutical raw material.[@slg,asiae20]
+    sources:
+      - slg
+      - asiae20
   production:
     status: medical
     text: >-
@@ -66,19 +105,17 @@ context:
     sources:
       - slg
       - asiae20
-  products:
-    text: No consumer products, CBD included, unless approved as a medicine.
-    sources:
-      - kt2
   medical:
     text: >-
       In November 2018 South Korea became the first East Asian country to allow cannabis-based
       medicines, but only a handful of approved pharmaceuticals for conditions such as severe
-      epilepsy, imported patient by patient through a state orphan-drug centre.
+      epilepsy, imported patient by patient through a state orphan-drug centre. No consumer
+      products, CBD included, unless approved as a medicine.
     sources:
       - mfds
       - slg
       - filter
+      - kt2
   consequences:
     text: >-
       A drug conviction carries heavy social stigma, ends careers, and leads to deportation for
