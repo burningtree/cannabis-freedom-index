@@ -24,6 +24,14 @@ segments:
       and subsequent changes has not been verified.
     sources:
       - pharmacy2000
+    currency: XAF
+    penalties:
+      - label: Possessing narcotics without legitimate reason (Articles 134–135)
+        treatment: criminal
+        prison_min: 1 year
+        prison: 6 years
+        fine: 3000000
+        note: Fine of 300,000–3,000,000 CFA francs; consolidation with the 1995 drug law unverified
   cultivation:
     text: >-
       Article 136 of the 2000 pharmacy law doubles the ordinary narcotics penalties for
@@ -31,6 +39,14 @@ segments:
       Current consolidated penalties remain unverified; see possession.
     sources:
       - pharmacy2000
+    currency: XAF
+    penalties:
+      - label: Illicit cultivation (Article 136, doubled penalties)
+        treatment: criminal
+        prison_min: 2 years
+        prison: 12 years
+        fine: 6000000
+        note: Doubled fine of 600,000–6,000,000 CFA francs; consolidation unverified
   enforcement:
     text: >-
       Article 38 of the 2017 Penal Code allows up to two years of confinement in a special
@@ -49,6 +65,13 @@ segments:
       penalties remain unverified; see possession.
     sources:
       - pharmacy2000
+    currency: XAF
+    penalties:
+      - label: Helping someone else use narcotics, free or paid
+        treatment: criminal
+        prison_min: 1 year
+        prison: 6 years
+        note: Fine and/or prison; five-to-twenty-year residence restriction; consolidation unverified
   consumption:
     text: >-
       The 1966 decree expressly prohibited cannabis use. Article 134 of the 2000 pharmacy
@@ -65,17 +88,37 @@ segments:
     sources:
       - decree1966
       - pharmacy2000
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Chad fully abolished the death penalty in April 2020, when parliament unanimously
+      removed it for terrorism offences after the 2017 code had ended it for ordinary crimes;
+      no cannabis offence carries a capital sentence.[@ohchr]
+    sources: [ohchr]
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Possessing narcotics without a legitimate reason
+      brings one to six years in prison, a fine of 300,000 to three million CFA francs, or
+      both under the 2000 pharmacy law, whose consolidation with the 1995 drug law remains
+      unverified.[@pharmacy2000] British travel advice calls the penalties severe and usually
+      custodial.[@fcdo]
+    sources:
+      - pharmacy2000
+      - fcdo
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    text: No licensed production. Illicit cultivation carries two to twelve years and a doubled fine.
+    sources:
+      - pharmacy2000
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No patient programme is documented. The 2000 law regulates controlled medicines and the
+      1966 decree let the health minister grant exceptions for scientific research, but no
+      route for patients to obtain cannabis is provided for.[@pharmacy2000,decree1966]
+    sources:
+      - pharmacy2000
+      - decree1966
   consequences:
     text: >-
       The 2000 pharmacy law requires a five to twenty year residence restriction for
@@ -120,6 +163,9 @@ sources:
   pc2017:
     title: Tchad — Code pénal, Loi n° 2017-01 du 8 mai 2017 (FAOLEX copy)
     url: https://faolex.fao.org/docs/pdf/cha213367.pdf
+  ohchr:
+    title: UN Human Rights — civil society paved the road to ending capital punishment in Chad (April 2020 unanimous abolition)
+    url: https://www.ohchr.org/en/stories/2020/10/civil-society-organizations-pave-road-end-capital-punishment-chad
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
