@@ -29,9 +29,8 @@ segments:
     penalties:
       - label: Personal use, Article 37
         treatment: criminal
-        fine_min: 1000
-        fine_max: 5000
-        repeat: treatment instead (six months to a year in a clinic)
+        fine: 5000
+        note: Prison and 1,000 to 5,000 dinars; court may order treatment in a clinic for six months to a year instead
   cultivation:
     text: >-
       Article 30 bans growing, holding or trading in the Table 5 plants, seeds included, except for
@@ -62,8 +61,13 @@ segments:
         note: Life imprisonment available
       - label: Supply without payment, Article 35
         treatment: criminal
-        fine_min: 2000
-        fine_max: 5000
+        fine: 5000
+        note: Prison and 2,000 to 5,000 dinars
+      - label: Trading or growing for trade, Article 34
+        treatment: criminal
+        death: true
+        fine: 50000
+        note: Death or life imprisonment and 10,000 to 50,000 dinars
   consumption:
     text: >-
       Article 37 punishes actually using drugs with prison and a fine of 1,000 to 5,000 dinars,
@@ -92,14 +96,6 @@ context:
       dinars.
     sources:
       - law7
-    currency: LYD
-    penalties:
-      - label: Trading or growing for trade, Article 34
-        treatment: criminal
-        death: true
-        fine_min: 10000
-        fine_max: 50000
-        note: Life imprisonment as alternative
   production:
     status: none
     text: >-
