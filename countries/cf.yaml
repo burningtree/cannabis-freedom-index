@@ -3,10 +3,10 @@ region: Africa
 iso_numeric: 140
 recreational: illegal
 medical: none
-updated: 2026-10-21
+updated: 2026-10-27
 summary: >-
-  Cannabis is prohibited. The 2001 drug law distinguishes small personal possession and growing
-  from ordinary production and trafficking, with a fine alone possible for small personal quantities.
+  Cannabis is prohibited. The 2001 drug law distinguishes small personal possession and
+  growing from ordinary production and trafficking, with a fine alone possible for small personal quantities.
 scores:
   possession: 1
   cultivation: 1
@@ -17,94 +17,211 @@ scores:
 segments:
   possession:
     text: >-
-      Small quantities held or bought for personal consumption have a separate penalty under the
-      2001 law. High-risk plants or substances, including cannabis oil, carry two months to one year,
-      a fine of 25,000–1.25 million CFA francs, or both. Cannabis derivatives other than oil carry
-      one to six months, a fine of 25,000–500,000 francs, or both. No gram limit is given.
-    sources: [law2001]
+      Small quantities held or bought for personal consumption have a separate penalty
+      under Article 110 of the [2001 drug law](/history/car-drug-law-2001/).[@law2001]
+      High-risk plants or substances, including cannabis oil, carry two months to one year,
+      a fine of 25,000–1.25 million CFA francs, or both.[@law2001] Cannabis derivatives
+      other than oil carry one to six months, a fine of 25,000–500,000 francs, or
+      both.[@law2001] No gram limit is given.[@law2001]
+    sources:
+      - law2001
+    currency: XAF
+    penalties:
+      - label: Cannabis oil, small amount for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 1 year
+        fine_min: 25000
+        fine: 1250000
+        note: Prison or a fine, or both
+      - label: Other cannabis derivatives, small amount for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 month
+        prison: 6 months
+        fine_min: 25000
+        fine: 500000
+        note: Prison or a fine, or both
   cultivation:
     text: >-
-      Cannabis growing is prohibited, and landowners and occupiers must destroy cannabis plants
-      growing on their land. Small personal cultivation falls under the shorter penalty tiers
-      described for possession, with no fixed plant limit. Ordinary high-risk cultivation and
-      production carry ten to twenty years, a fine of 250,000–125 million CFA francs, or both.
-    sources: [law2001]
+      Cannabis growing is prohibited, and landowners and occupiers must destroy cannabis
+      plants growing on their land.[@law2001] Small personal cultivation falls under the
+      shorter penalty tiers described for possession, with no fixed plant
+      limit.[@law2001] Ordinary high-risk cultivation and production carry ten to twenty
+      years, a fine of 250,000–125 million CFA francs, or both.[@law2001]
+    sources:
+      - law2001
+    currency: XAF
+    penalties:
+      - label: Cannabis oil, small amount grown for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 1 year
+        fine_min: 25000
+        fine: 1250000
+        note: Prison or a fine, or both
+      - label: Other derivatives, small amount grown for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 month
+        prison: 6 months
+        fine_min: 25000
+        fine: 500000
+        note: Prison or a fine, or both
+      - label: Ordinary high-risk cultivation and production
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 250000
+        fine: 125000000
+        note: Prison or a fine, or both
   enforcement:
     text: >-
       British travel advice warns of severe penalties for drug use and possession, including
-      prison. In November 2024, the anti-drug office destroyed cannabis and other products seized
-      along the Oubangui river, in Boy-Rabe and at Combattant market in Bangui. The 2001 law allows
-      courts to order care for a dependent person convicted of specified offences; evading it
-      carries two to five years, a fine, or both.
-    sources: [fcdo, rnl2024, law2001]
+      prison.[@fcdo] In November 2024, the anti-drug office destroyed cannabis and other
+      products seized along the Oubangui river, in Boy-Rabe and at Combattant market in
+      Bangui, as [that destruction](/history/car-bangui-seized-cannabis-destroyed-2024/)
+      records.[@rnl2024] The 2001 law allows courts to order care for a dependent person
+      convicted of specified offences; evading it carries two to five years, a fine, or
+      both.[@law2001]
+    sources:
+      - fcdo
+      - rnl2024
+      - law2001
   sharing:
     text: >-
-      Giving or offering a high-risk drug directly for another person's consumption carries two
-      to five years, a fine of 25,000–2.5 million CFA francs, or both. General high-risk supply
-      and trafficking carry ten to twenty years, a fine of 250,000–125 million francs, or both.
-    sources: [law2001]
+      Giving or offering a high-risk drug directly for another person's consumption carries
+      two to five years, a fine of 25,000–2.5 million CFA francs, or both.[@law2001]
+      General high-risk supply and trafficking carry ten to twenty years, a fine of
+      250,000–125 million francs, or both.[@law2001]
+    sources:
+      - law2001
+    currency: XAF
+    penalties:
+      - label: Giving or offering for another person's own use
+        treatment: criminal
+        term: Supply to a user
+        prison_min: 2 years
+        prison: 5 years
+        fine_min: 25000
+        fine: 2500000
+        note: Prison or a fine, or both
+      - label: General high-risk supply and trafficking
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 250000
+        fine: 125000000
+        note: Prison or a fine, or both
   consumption:
     text: >-
-      The drug law prohibits using controlled drugs outside a medical prescription. Drugs found
-      with a person using them illicitly can be confiscated even without prosecution. The separate
-      small-personal-quantity penalty expressly lists possession, purchase and growing.
-    sources: [law2001]
+      The drug law prohibits using controlled drugs outside a medical prescription. Drugs
+      found with a person using them illicitly can be confiscated even without
+      prosecution.[@law2001] The separate small-personal-quantity penalty expressly lists
+      possession, purchase and growing.[@law2001]
+    sources:
+      - law2001
+    penalties:
+      - label: Use outside a medical prescription
+        treatment: criminal
+        term: Illicit use
+        note: Confiscation possible without prosecution; no fixed prison term stated
   access:
     text: >-
-      Recreational supply is prohibited. Licensed operations involving controlled drugs in the
-      medical schedules are limited to medical purposes. The health minister can also authorise
-      strictly necessary quantities for medical or scientific research, teaching and forensic work.
-    sources: [law2001]
+      Recreational supply is prohibited.[@law2001] Licensed operations involving controlled
+      drugs in the medical schedules are limited to medical purposes.[@law2001] The health
+      minister can also authorise strictly necessary quantities for medical or scientific
+      research, teaching and forensic work.[@law2001]
+    sources:
+      - law2001
 context:
-  production:
-    status: medical
+  recreational:
     text: >-
-      The law prohibits cannabis cultivation and requires destruction of plants found on occupied
-      land. It allows specific health-minister authorisations for research, teaching and forensic
-      work involving controlled plants and substances.
-    sources: [law2001]
-  products:
-    text: The retained sources do not identify cannabis products available through a lawful patient supply programme.
-    sources: []
+      Cannabis is prohibited: the 2001 law bans growing, supply and trafficking, and
+      punishes use outside a medical prescription.[@law2001] Giving it to another person
+      is punishable even when meant for that person's own use.[@law2001] Police action
+      is visible: in November 2024 the anti-drug office publicly burned cannabis and
+      other products seized along the Oubangui river, in Boy-Rabe and at Combattant
+      market in Bangui, as [that destruction](/history/car-bangui-seized-cannabis-destroyed-2024/)
+      records.[@rnl2024]
+    sources:
+      - law2001
+      - rnl2024
   medical:
     text: >-
-      The law regulates licensed operations involving controlled medicines and permits specific
-      research authorisations. The retained sources do not establish an operating medical cannabis programme.
-    sources: [law2001]
+      The law regulates licensed operations involving controlled medicines and permits
+      specific research authorisations, but the sources reviewed establish no operating
+      medical cannabis programme.[@law2001]
+    sources:
+      - law2001
+  hemp:
+    status: none
+    text: >-
+      The drug law makes no hemp exception: cannabis growing is banned everywhere, and no
+      THC line or fibre regime appears in the reviewed text.[@law2001] Research
+      authorisations cover strictly necessary quantities for medical or scientific work,
+      not a hemp crop.[@law2001]
+    sources:
+      - law2001
+  production:
+    status: none
+    text: >-
+      No licensed production exists: growing is banned everywhere, while health-minister
+      authorisation is limited to research, teaching and forensic work in strictly
+      necessary quantities.[@law2001] What the country grows is illicit, and seized crops
+      and products are publicly destroyed, most recently in Bangui in November
+      2024.[@rnl2024]
+    sources:
+      - law2001
+      - rnl2024
   consequences:
     text: >-
-      For specified production, trafficking and supply offences, courts may add restrictions on
-      residence, travel, civic rights, driving or professional activity. They may exclude a foreigner
-      permanently or for two to ten years, with removal after the prison term. These additional
-      penalties apply to Articles 95–103; small personal quantities are dealt with separately in
-      Article 110.
-    sources: [law2001]
+      For specified production, trafficking and supply offences, courts may add
+      restrictions on residence, travel, civic rights, driving or professional
+      activity.[@law2001] They may exclude a foreigner permanently or for two to ten
+      years, with removal after the prison term.[@law2001] These additional penalties
+      apply to Articles 95–103; small personal quantities are dealt with separately in
+      Article 110.[@law2001]
+    sources:
+      - law2001
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known. Cannabis cultivation is prohibited, and giving drugs to another
-      person is punishable even when intended for that person's own consumption.
-    sources: [law2001]
+      No cannabis clubs are known, and the law leaves no room for them: cannabis
+      cultivation is prohibited, and giving drugs to another person is punishable even
+      when intended for that person's own consumption.[@law2001]
+    sources:
+      - law2001
   visitors:
     status: none
     text: >-
-      Visitors have no lawful recreational supply route. British travel advice warns of heavy
-      fines and prison for drug use and possession. The drug law also permits exclusion of a
-      convicted foreigner for the production, trafficking and supply offences listed in its
-      additional-penalty clause.
-    sources: [law2001, fcdo]
+      Visitors have no lawful recreational supply route.[@law2001] Possession and
+      personal growing carry the Article 110 tiers, while supply and trafficking run ten
+      to twenty years.[@law2001] The drug law also permits exclusion of a convicted
+      foreigner for the production, trafficking and supply offences listed in its
+      additional-penalty clause.[@law2001]
+    sources:
+      - law2001
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 374 kg of herbal
-      cannabis seized in 2024, against 242 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
-    sources: [unodc_szr]
+      cannabis seized in 2024, against 242 kg in 2023.[@unodc_szr] The UN publishes them
+      as kilogram equivalents, and countries count seizures differently, so the figures are
+      not comparable across borders.[@unodc_szr] Seized cannabis is publicly destroyed:
+      the November 2024 burning in Bangui covered cannabis taken along the Oubangui river,
+      in Boy-Rabe and at Combattant market.[@rnl2024]
+    sources:
+      - unodc_szr
+      - rnl2024
 sources:
   law2001:
     title: Central African Republic — Drug Law 01.011 of 18 July 2001, complete text held by UNODC
     url: https://sherloc.unodc.org/cld/uploads/res/document/caf/loi-01011_html/CAF-_loi_01011-fr.pdf
-    locator: Articles 8–12, 86, 95–100, 109–110, 119–121 and 142
+    locator: Articles 8–9, 86, 95–99, 109–111, 119, 121 and 142
   rnl2024:
     title: Radio Ndeke Luka — Report on seized drugs destroyed in Bangui, 6 November 2024
     url: https://www.radiondekeluka.org/76428-bangui-la-police-detruit-une-quantite-importante-de-drogues-et-medicaments-nuisibles
