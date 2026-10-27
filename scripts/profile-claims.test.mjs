@@ -487,3 +487,13 @@ test('Saint Kitts separates the private-use ruling from later statutory bands (#
   assert.doesNotMatch(article,/is now treated as a minor infraction/);
   assert.deepEqual(kn.scores,{possession:4,cultivation:3,enforcement:5,sharing:1,consumption:3,access:1});
 });
+
+// Issue #207
+test('South Carolina separates simple possession from an intent inference (#207)', () => {
+  const sc=country('us/sc');
+  assert.doesNotMatch(sc.segments.possession,/More than 1 oz is a felony/);
+  assert.match(sc.segments.possession,/Simple possession above 1 oz is also a misdemeanour/);
+  assert.match(sc.segments.possession,/prima facie evidence of intent to distribute/);
+  assert.match(sc.segments.enforcement,/trafficking offence starts at 10 pounds/);
+  assert.match(sc.answers.caught.text,/can support a felony intent-to-distribute charge/);
+});
