@@ -25,6 +25,11 @@ segments:
     sources:
       - btk461
       - btk
+    penalties:
+      - label: Possession or use of a small amount (up to 6 g total THC)
+        treatment: criminal
+        prison: 2 years
+        note: Up to two years; diversion via admission, six months of treatment and identifying the seller, closed after two uses
   cultivation:
     text: >-
       Section 178 of the Criminal Code puts growing in the same offence as producing, acquiring
@@ -36,6 +41,15 @@ segments:
     sources:
       - btk
       - btk461
+    penalties:
+      - label: Growing (section 178)
+        treatment: criminal
+        prison_min: 2 years
+        prison: 8 years
+        note: Two to eight years; up to two years where the amount is small (up to five plants)
+      - label: Growing a small amount for own use (section 180)
+        treatment: criminal
+        note: Not punished with admission, six months of treatment and help identifying the seller
   enforcement:
     text: >-
       Among the EU's strictest regimes, tightened further in 2025 with a 'war on drugs' package that
@@ -51,6 +65,22 @@ segments:
       18, or near a school, carries five to ten years under section 177.
     sources:
       - btk
+    penalties:
+      - label: Offering, handing over or selling (section 176)
+        treatment: criminal
+        prison_min: 2 years
+        prison: 8 years
+        note: Two to eight years; up to two years where a small amount is offered or handed over
+      - label: Significant amount
+        treatment: criminal
+        prison_min: 5 years
+        prison: 20 years
+        note: Five to twenty years or life
+      - label: Supplying under-18s or near schools (section 177)
+        treatment: criminal
+        prison_min: 5 years
+        prison: 10 years
+        note: Five to ten years
   consumption:
     text: >-
       Consumption itself is a criminal offence. In 2025 the constitution was amended to state that
@@ -65,6 +95,19 @@ segments:
     sources:
       - btk
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Possessing or using a small amount — up to 6
+      grams of total THC — is a crime with up to two years, avoidable only by admitting it,
+      completing six months of treatment and identifying the seller, a route closed after
+      two uses.[@btk461,btk] Consumption itself is criminal, and the 2025 package forces
+      users into an informer role.[@cms,boc] Growing brings two to eight years, or up to two
+      where the amount is small.[@btk]
+    sources:
+      - btk461
+      - btk
+      - cms
+      - boc
   production:
     text: Industrial hemp only.
     sources:
@@ -97,6 +140,16 @@ context:
       mention cuttings.
     sources:
       - d162
+  hemp:
+    text: >-
+      Only low-THC hemp from the national or EU variety list may be grown, sown from sealed
+      certified seed, and only low-THC hemp seed may be marketed.[@d162] Breeding, research
+      growing and seed production of high-THC hemp are reserved for organisations licensed
+      by the public health authority.[@d162] CBD products sit in a restricted grey
+      zone.[@wiki]
+    sources:
+      - d162
+      - wiki
   driving:
     status: impairment
     text: >-
@@ -114,6 +167,14 @@ context:
       criminal or administrative), so the figure is not comparable across borders.
     sources:
       - euda_dlo
+  research:
+    text: >-
+      High-THC research growing is licensed, not outlawed: breeding, research growing and
+      seed production of high-THC hemp are reserved for organisations holding a public
+      health authority licence under Decree 162/2003.[@d162] No separate research
+      programme, trial or published study was established by the retained sources.
+    sources:
+      - d162
   clubs:
     status: underground
     text: >-
