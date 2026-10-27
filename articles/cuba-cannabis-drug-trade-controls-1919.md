@@ -29,6 +29,12 @@ sources:
     title: Cuba — Law 21 of 1979, drug provisions supplied to the United Nations
     url: https://digitallibrary.un.org/record/50858/files/e-nl-1985-88-91-s.pdf
     locator: E/NL.1985/90 within E/NL.1985/88–91, printed/PDF page 12, articles 217–218.
+  - type: book
+    title: 'Marihuana in Latin America: The Threat it Constitutes'
+    authors: [Pablo Osvaldo Wolff]
+    publisher: Linacre Press
+    year: 1949
+    locator: 'pp. 36–38'
 ---
 
 Cuba's drug law of 25 July 1919 regulated marijuana alongside opium and morphine, according to historian Dayron Oliva Hernández. Authorised import and production were reserved to recognised pharmacists and druggists. His account describes a system in which drug possession could also fall within the punishable definition of trafficking.[@1]
@@ -43,13 +49,17 @@ The chapter places those rules within an older legal setting. Cuba still used th
 
 The legislation's reach went beyond commercial dealing. Oliva Hernández writes that its definition of trafficking extended to simple possession and that drug offences could bring imprisonment and fines. He cites a contemporary booklet containing the law and its regulations.[@1]
 
-That broad reach meant a person could encounter the criminal system through holding a controlled drug, alongside the restrictions on who could import and manufacture it. The licensed trade and the punishment of unauthorised activity formed parts of the same system.[@1]
+That broad reach meant holding a controlled drug could bring a person into the criminal system, under judges applying the colonial code with political and police pressure behind them.[@1]
 
 ## Opium policing targeted Chinese immigrants
 
 The chapter examines these controls through Cuba's treatment of Chinese immigration. It describes a campaign that portrayed Chinese men as unhealthy, dangerous and associated with opium, then used police and sanitary powers against them. These were prejudiced descriptions that the historian analyses critically.[@1]
 
 His examples of police operations concern opium. The specialised narcotics bureau, created in 1934, reported seventeen operations and twenty-two Chinese people arrested during its first four months. Marijuana's inclusion in the law belongs to this wider drug-control history; the reported arrests concern the opium campaign.[@1]
+
+## A 1949 survey traced the supply to Mexico
+
+Three decades later, Pablo Osvaldo Wolff's 1949 survey reported that marijuana had reached Cuba some thirty years earlier with Portuguese sailors, and that the island's supply still came mostly from Mexico while home growing increased as wartime shipping shrank.[@4] Cuba's police had already put the problem on record at the First Pan American Congress of Forensic Medicine and Criminology in Havana in September 1946.[@4] The cheap cigarette form, easy to hide, put it within reach of people with slight means.[@4]
 
 ## Later governments kept punishing cannabis
 
