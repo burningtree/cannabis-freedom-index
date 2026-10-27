@@ -24,6 +24,13 @@ segments:
     sources:
       - et525
       - et525wipo
+    currency: ETB
+    penalties:
+      - label: Personal use (Article 525(4))
+        treatment: criminal
+        prison: 7 years
+        fine: 50000
+        note: Rigorous imprisonment up to seven years and fine up to 50,000 Birr; statutory ceilings
   cultivation:
     text: >-
       Growing for one's own use falls under the same ceiling of seven years. Growing with the
@@ -34,6 +41,22 @@ segments:
     sources:
       - et525
       - et525wipo
+    currency: ETB
+    penalties:
+      - label: Growing for own use
+        treatment: criminal
+        prison: 7 years
+        note: Same seven-year ceiling as personal use
+      - label: Growing with intent to traffic
+        treatment: criminal
+        prison_min: 5 years
+        fine: 100000
+        note: At least five years and fine up to 100,000 Birr; no maximum term stated
+      - label: Aggravated trafficking
+        treatment: criminal
+        prison_min: 10 years
+        fine: 200000
+        note: At least ten years and fine up to 200,000 Birr; no maximum term stated
   enforcement:
     text: >-
       The personal-use offence is rigorous imprisonment of up to seven years. Trafficking-intent
@@ -49,6 +72,19 @@ segments:
     sources:
       - et525
       - et525wipo
+    penalties:
+      - label: Supply for another person's private use
+        treatment: criminal
+        prison: 7 years
+        note: Personal-use offence ceiling
+      - label: Supply with intent to traffic
+        treatment: criminal
+        prison_min: 5 years
+        note: At least five years; no maximum term stated
+      - label: Aggravated supply
+        treatment: criminal
+        prison_min: 10 years
+        note: At least ten years; no maximum term stated
   consumption:
     text: >-
       Use is an offence. This applies equally in Shashamane, the Rastafari settlement, despite its
@@ -60,12 +96,24 @@ segments:
     sources:
       - leaf
 context:
-  production:
-    status: none
-    text: None.
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Personal use can bring rigorous imprisonment of up
+      to seven years and a fine of up to 50,000 Birr.[@et525] Rastafari who [settled at
+      Shashamane in the 1960s](/history/ethiopia-shashamane-settlement-1965/) get no
+      exception: use is an offence there too.[@leaf]
+    sources:
+      - et525
+      - leaf
+  culture:
+    text: >-
+      In the 1960s Rastafari from the Caribbean [settled on land set aside for them near
+      Shashamane](/history/ethiopia-shashamane-settlement-1965/); the town became known for
+      growing cannabis, mostly for local use, with no exception in the law.[@leaf]
     sources:
       - leaf
-  products:
+  production:
+    status: none
     text: None.
     sources:
       - leaf
@@ -80,8 +128,12 @@ context:
       - rep19
       - fort19
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      The retained sources describe no consequence beyond the sentence itself: personal use
+      brings rigorous imprisonment of up to seven years and a fine of up to 50,000 Birr, with
+      no account found of how often ordinary users are jailed.[@et525]
+    sources:
+      - et525
   visitors:
     status: none
     text: >-
