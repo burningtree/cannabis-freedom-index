@@ -3,13 +3,12 @@ region: Europe
 iso_numeric: 70
 recreational: illegal
 medical: limited
-updated: 2026-10-23
+updated: '2026-10-27'
 summary: >-
-  Illegal. In the Federation, unauthorized possession of a narcotic drug is a criminal offence
-  with up to one year in prison, including for personal use. Republika Srpska's criminal code
-  does not copy that offence. A December 2025 decision opened the way to cannabis-based
-  medicines, but the prescribing rules it depends on will not be adopted in the Federation
-  before 2027.
+  Illegal. In the Federation, unauthorized possession of a narcotic drug is a criminal offence with
+  up to one year in prison, including for personal use. Republika Srpska's criminal code does not
+  copy that offence. A December 2025 decision opened the way to cannabis-based medicines, but the
+  prescribing rules it depends on will not be adopted in the Federation before 2027.
 scores:
   possession: 1
   cultivation: 1
@@ -20,137 +19,250 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis is illegal. In the Federation, article 239(3) of the criminal code punishes
-      unauthorized possession of a narcotic drug with up to one year in prison. That paragraph
-      sets no smaller tier for a personal amount. Republika Srpska's criminal code, consolidated
-      through 2023, punishes unauthorized production and trade, including holding a drug in order
-      to sell it, and enabling another person to use a drug. It has no matching standalone
-      possession offence. Brčko District's possession penalty was not established from a statute
-      read for this entry.
+      In the Federation, Article 239(3) makes unauthorised possession criminal, with up to one year
+      and no smaller personal-amount tier.[@fbihcc] Republika Srpska and Brčko’s current criminal
+      codes lack a matching standalone possession offence, although holding for sale remains
+      criminal.[@rsnow,brcko] The state drug law separately prohibits unauthorised possession and
+      provides a BAM1,000–3,000 individual fine.[@state] This is not a single uniform criminal
+      regime across the country.[@fbihcc,rsnow,brcko]
     sources:
       - fbihcc
-      - rscc
+      - rsnow
+      - brcko
+      - state
+    currency: BAM
+    penalties:
+      - label: Federation — unauthorised possession
+        treatment: criminal
+        term: Federation Criminal Code 239(3)
+        prison: 1 year
+        note: No statutory smaller personal-amount tier
+      - label: State drug law — individual unlawful possession offence
+        treatment: civil
+        term: Articles 4(1) and 85(3)
+        fine_min: 1000
+        fine: 3000
+        note: >-
+          Entity and district criminal rules differ; this is not a guarantee of a fine instead of
+          prosecution
   cultivation:
-    text: Growing cannabis is a criminal offence.
+    text: >-
+      Unauthorised drug production ordinarily carries one–ten years under both the Federation and
+      Republika Srpska codes.[@fbihcc,rsnow] Republika Srpska expressly includes growing
+      psychoactive cannabis within production.[@rsnow] The state law allows hemp cultivation only
+      for specified fibre and seed purposes with a foreign-trade ministry permit.[@state] It
+      separately fines individuals BAM5,000–10,000 for growing that hemp without the permit.[@state]
     sources:
-      - cann
+      - fbihcc
+      - rsnow
+      - state
+    currency: BAM
+    penalties:
+      - label: Republika Srpska — unauthorised psychoactive cannabis growing
+        treatment: criminal
+        term: Article 207(1), (5)
+        prison_min: 1 year
+        prison: 10 years
+      - label: Federation — unauthorised drug production
+        treatment: criminal
+        term: Article 238(1)
+        prison_min: 1 year
+        prison: 10 years
+        note: No household plant allowance stated here
+      - label: State law — individual grows industrial hemp without required permit
+        treatment: civil
+        term: Articles 25 and 83(3)
+        fine_min: 5000
+        fine: 10000
+        note: Industrial hemp offence; not a safe tariff for psychoactive cannabis growing
   enforcement:
     text: >-
-      In the Federation, unauthorized possession can bring up to one year in prison. The statute
-      sets that maximum. Growers and dealers face the longer production and trade sentences.
+      The Federation prosecutes possession under Article 239(3); production and trade have longer
+      prison ranges.[@fbihcc] In Republika Srpska, police issued a public-use ticket after seeing a
+      person smoke marijuana in Vlasenica on [26 February
+      2026](/history/bosnia-vlasenica-public-use-ticket-2026/).[@ticket26] That example concerns
+      public-use enforcement, rather than a cannabis arrest total.[@ticket26]
     sources:
       - fbihcc
-      - rscc
+      - ticket26
   sharing:
-    text: Sale and supply are crimes with prison.
+    text: >-
+      Sale and other unlawful distribution ordinarily carry one–ten years in the Federation,
+      Republika Srpska and Brčko.[@fbihcc,rsnow,brcko] Giving drugs for another person to use, or
+      providing premises for use, has a separate offence: three months–five years in the Federation
+      and Brčko, one–eight years in Republika Srpska.[@fbihcc,brcko,rsnow] These provisions do not
+      require a sale.[@fbihcc,rsnow,brcko]
     sources:
-      - cann
+      - fbihcc
+      - rsnow
+      - brcko
+    penalties:
+      - label: Federation / Republika Srpska / Brčko — ordinary unlawful sale or distribution
+        treatment: criminal
+        term: FBiH238(1), RS207(1), BD232(1)
+        prison_min: 1 year
+        prison: 10 years
+        note: Aggravated offences carry higher penalties
+      - label: Federation / Brčko — giving for use or enabling use
+        treatment: criminal
+        term: FBiH239(1), BD233(1)
+        prison_min: 3 months
+        prison: 5 years
+      - label: Republika Srpska — giving for use or enabling use
+        treatment: criminal
+        term: RS208(1)
+        prison_min: 1 year
+        prison: 8 years
   consumption:
-    text: Use is not separately criminalised; 'enabling' others to use is.
+    text: >-
+      The state drug law prohibits use outside its authorised conditions.[@state] Republika Srpska
+      separately fines public consumption BAM700–1,700 under Article 17 of its public-order law;
+      police applied it to marijuana use in February 2026.[@publicrs,ticket26] Enabling someone
+      else’s use is a different criminal offence, described under sharing.[@fbihcc,rsnow,brcko]
     sources:
-      - wiki
+      - state
+      - publicrs
+      - ticket26
+      - fbihcc
+      - rsnow
+      - brcko
+    currency: BAM
+    penalties:
+      - label: Republika Srpska — public drug consumption
+        treatment: civil
+        term: Public Order and Peace Law, Article 17
+        fine_min: 700
+        fine: 1700
+        note: This row is specific to Republika Srpska; other jurisdictions have their own rules
   access:
     text: >-
-      No legal source yet. On 29 December 2025 the Council of Ministers moved cannabis, its resin,
-      extracts and tinctures from the table of prohibited substances to the table of substances under
-      strict control, so that cannabis-based medicines can be prescribed. Prescribing still depends
-      on entity rulebooks. In September 2026 the Federation health ministry said it would not adopt
-      its new rulebook until the first quarter of 2027; Republika Srpska's amendments were still in
-      their final drafting stage. Without the rules, the medicines agency cannot send the UN control
-      board the estimate it needs before imports can be approved.
+      The [29 December 2025 decision](/history/bosnia-medical-use-approved-2025/) removed the main
+      scheduling obstacle to controlled medical use.[@mcpsep26] By the September 2026 follow-up, the
+      prescribing framework remained unfinished: the Federation planned its new rulebook for the
+      first quarter of 2027, while Republika Srpska was finalising amendments.[@mcpsep26] The
+      medicines agency said the rules were needed before it could provide the requirements estimate
+      for approved imports.[@mcpsep26]
     sources:
-      - gi
-      - para25
-      - para26
       - mcpsep26
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. In the Federation unauthorised possession brings
-      up to one year with no smaller personal tier; Republika Srpska has no standalone
-      possession offence but punishes production, trade and enabling use.[@fbihcc,rscc] Use
-      itself is not separately criminalised, while sale and supply bring prison.[@wiki,cann]
+      There is no general recreational authorisation under the state law.[@state] Possession is
+      criminal in the Federation, while the current Republika Srpska and Brčko codes do not
+      reproduce that standalone offence.[@fbihcc,rsnow,brcko] Public use in Republika Srpska brings
+      a separate fine; supplying another user can bring prison even without
+      payment.[@publicrs,fbihcc,rsnow,brcko]
     sources:
+      - state
       - fbihcc
-      - rscc
-      - wiki
-      - cann
+      - rsnow
+      - brcko
+      - publicrs
   production:
-    status: medical
-    text: Industrial hemp only, under tightly regulated permits with large fines for violations.
+    status: hemp
+    text: >-
+      The state law allows a foreign-trade ministry permit for hemp grown for fibre and specified
+      seed purposes.[@state] Applicants generally need a production-and-purchase contract with a
+      registered operator, or must themselves be registered for the relevant activity.[@state] These
+      agricultural rules do not create a general recreational production licence.[@state]
     sources:
-      - cms
-  products:
-    text: No legal THC products.
-    sources:
-      - cms
+      - state
   medical:
     text: >-
-      The Council of Ministers approved medical use on 29 December 2025, after a decade of
-      campaigning that began with a state task force in 2016. Only pharmaceutical preparations
-      prescribed by a doctor are allowed; the Agency for Medicines and Medical Devices oversees
-      import and distribution, and growing cannabis for medicine remains prohibited. No patient
-      could be treated by September 2026. The Federation drafted changes covering indications,
-      prescribing doctors, registers, doses and pharmaceutical forms, but said it would replace the
-      rulebook only in the first quarter of 2027. Republika Srpska's amendments were still in their
-      final drafting stage.
+      The December 2025 rescheduling opened a route to controlled cannabis medicines.[@mcpsep26] In
+      September 2026 the Ministry of Civil Affairs reported that the implementing framework was
+      still incomplete after almost nine months.[@mcpsep26] Required work covered prescribing
+      indications, authorised specialties, registers, doses and pharmaceutical forms.[@mcpsep26] The
+      Federation planned a new rulebook in early 2027; Republika Srpska’s amendments were still
+      being finalised.[@mcpsep26]
     sources:
-      - gi
-      - para25
-      - para26
       - mcpsep26
-      - wiki
   consequences:
     text: >-
-      In the Federation, unauthorized possession is a criminal offence under article 239(3), so a
-      conviction is a criminal record. An indictment is not itself a conviction.
+      A Federation possession conviction is a criminal conviction under Article 239(3).[@fbihcc] The
+      state law also provides confiscation of unlawfully held drugs and plants.[@state] Different
+      jurisdictional routes mean the Republika Srpska public-use fine cannot be treated as the
+      national consequence for possession.[@publicrs,fbihcc,state]
     sources:
       - fbihcc
+      - state
+      - publicrs
   planting:
     seeds: licensed
     seeds_trade: regulated
     clones: illegal
     clones_trade: banned
     text: >-
-      Industrial hemp may be grown only for fibre, for seed used as animal feed, and for
-      further reproduction, processing and marketing of seed, with THC in the dry plant no
-      higher than 0.2%. Only people and companies authorised by the competent body may grow
-      hemp or place it on the market.
+      Industrial hemp growing requires a permit for the specified fibre and seed purposes.[@state]
+      The medicines agency describes an industrial ceiling of 0.2% THC in dry plant matter.[@alm22]
+      This does not supply a general route to recreational cuttings or home growing.[@state]
     sources:
-      - cmsg
+      - state
+      - alm22
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      Giving cannabis for someone else to use or making premises available for use falls within the
+      entity and district enabling-use offences.[@fbihcc,rsnow,brcko] The state hemp permit covers
+      specified crop purposes, rather than collective recreational supply.[@state]
     sources:
-      - cann
+      - fbihcc
+      - rsnow
+      - brcko
+      - state
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. In the Federation, unauthorized possession
-      can bring up to one year in prison under article 239(3) of the criminal code. Republika
-      Srpska's criminal code does not contain that standalone possession offence. Brčko District's
-      penalty was not established from a statute read for this entry.
+      Visitors face the rules of the jurisdiction where they are found: the Federation criminalises
+      unauthorised possession, while Republika Srpska and Brčko have different criminal
+      provisions.[@fbihcc,rsnow,brcko] The state law also prohibits unauthorised possession, so
+      absence of a matching criminal paragraph is not permission to carry cannabis.[@state] Medical
+      rescheduling has not by itself completed the domestic prescribing and import
+      system.[@mcpsep26]
     sources:
       - fbihcc
-      - rscc
+      - rsnow
+      - brcko
+      - state
+      - mcpsep26
+  hemp:
+    status: strict
+    text: >-
+      Permitted crop purposes are fibre, seed for animal feed, further propagation and seed
+      processing.[@state] A ministry permit is required, with reporting duties where diversion is
+      suspected.[@state] The medicines agency’s [2022
+      explanation](/history/bosnia-agency-cannabis-warning-2022/) identifies a ceiling of 0.2% THC
+      in dry plant matter.[@alm22] That agricultural exception does not authorise cannabis flowers
+      or CBD oil as a general medicine.[@alm22,mcpsep26]
+    sources:
+      - state
+      - alm22
+      - mcpsep26
 sources:
   para25:
-    title: Paragraf.ba — Council of Ministers amends the list of narcotic drugs to allow medical cannabis (31 December 2025)
+    title: >-
+      Paragraf.ba — Council of Ministers amends the list of narcotic drugs to allow medical cannabis
+      (31 December 2025)
     url: https://www.paragraf.ba/dnevne-vijesti/31122025/31122025-vijest2.html
   para26:
-    title: Paragraf.ba — Deadline agreed for amending the rulebook on cannabis-based medicines (14 July 2026)
+    title: >-
+      Paragraf.ba — Deadline agreed for amending the rulebook on cannabis-based medicines (14 July
+      2026)
     url: https://www.paragraf.ba/dnevne-vijesti/14072026/14072026-vijest4.html
   mcpsep26:
-    title: Bosnia and Herzegovina Ministry of Civil Affairs — second follow-up meeting on medical cannabis (22 September 2026)
+    title: >-
+      Bosnia and Herzegovina Ministry of Civil Affairs — second follow-up meeting on medical
+      cannabis (22 September 2026)
     url: >-
       https://www.mcp.gov.ba/hr/portal/objava/odrzan-drugi-follow-up-sastanak-o-primjeni-kanabisa-u-medicinske-svrhe-1790073591914
   cmsg:
     title: CMS — Cannabis law and legislation in Bosnia and Herzegovina (expert guide)
-    url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/bosnia-and-herzegovina
+    url: >-
+      https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/bosnia-and-herzegovina
   gi:
-    title: "Global Initiative — How cannabis legalization reshaped illicit markets in the Western Balkans (April 2026)"
+    title: >-
+      Global Initiative — How cannabis legalization reshaped illicit markets in the Western Balkans
+      (April 2026)
     url: https://globalinitiative.net/analysis/cannabis-legalization-illicit-markets-western-balkans/
   wiki:
     title: Wikipedia — Cannabis in Bosnia and Herzegovina
@@ -165,8 +277,42 @@ sources:
   fbihcc:
     title: Paragraf — Criminal Code of the Federation of Bosnia and Herzegovina, consolidated text
     url: https://www.paragraf.ba/propisi/fbih/krivicni-zakon-federacije-bosne-i-hercegovine.html
-    locator: Article 239, possession and enabling use of narcotic drugs, paragraph 3
+    locator: >-
+      Articles 238–239: production/supply one–ten years; giving for use three months–five years;
+      possession up to one year
   rscc:
     title: Criminal Code of Republika Srpska, consolidated text through Official Gazette 73/2023
     url: https://www.jusufbasic.com/documents/Krivicni-zakonik-Republike-Srpske-2017.pdf
-    locator: Articles 207 and 208; header lists Official Gazette 64/2017, 104/2018, 15/2021, 89/2021 and 73/2023
+    locator: >-
+      Articles 207 and 208; header lists Official Gazette 64/2017, 104/2018, 15/2021, 89/2021 and
+      73/2023
+  state:
+    title: Bosnia and Herzegovina — Law on prevention and suppression of drug abuse, Gazette 8/2006
+    url: >-
+      https://fmoh.gov.ba/uploads/files/Zakon_o_sprecavanju_i_suzbijanju_zloupotrebe_opojnih_droga%20(1).pdf
+    locator: Articles 4–5, 25, 83, 85, 99–103; adopted 28 November 2005, published 7 February 2006
+  rsnow:
+    title: Paragraf — Republika Srpska Criminal Code, consolidated through Gazette 78/2026
+    url: https://www.paragraf.ba/propisi/republika-srpska/krivicni-zakon-republike-srpske.html
+    locator: Articles 207–208; cannabis growing included in production by 207(5)
+  brcko:
+    title: Brčko District Criminal Code, consolidated 19/2020 with 2024 amendments
+    url: https://advokat-prnjavorac.com/Krivicni-zakon-Brcko-distrikta-BiH.html
+    locator: >-
+      Articles 232–233, production/supply and enabling use; no standalone possession paragraph in
+      current text
+  publicrs:
+    title: Republika Srpska — Public Order and Peace Law, 11/2015 and 58/2019
+    url: https://advokat-prnjavorac.com/zakoni/Zakon-o-javnom-redu-i-miru-Republike-Srpske.pdf
+    locator: 'Article 17, public drug consumption: BAM700–1,700'
+  ticket26:
+    title: Republika Srpska Interior Ministry — Daily bulletin for 26 February 2026
+    url: >-
+      https://mup.vladars.rs/novi-panel/uploads/informisanje_javnosti/najave/20260227_114510_csxil.pdf
+    locator: 'Vlasenica: public marijuana use ticket under Article 17'
+  alm22:
+    title: Agency for Medicines and Medical Devices — Cannabis public notice, 4 August 2022
+    url: https://almbih.gov.ba/saopa-tenje-za-javnost-vezano-za-kanabis/
+    locator: >-
+      Industrial hemp purposes and 0.2% dry-matter THC; historic medicine warning before 2025
+      rescheduling
