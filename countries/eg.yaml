@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 818
 recreational: death
 medical: none
-updated: 2026-10-13
+updated: 2026-10-27
 summary: >-
   Hashish and bango are widely used, but the law is harsh: prison for possession, and large-scale
   trafficking can carry the death penalty.
@@ -18,50 +18,89 @@ segments:
   possession:
     text: >-
       Anti-Narcotics Law 182 of 1960, as amended, covers cannabis in every form — hashish, the local
-      herbal 'bango', and extracts. Possession for personal use carries a minimum of one year in
-      prison plus a fine. Courts may send dependent users to treatment instead.
+      herbal 'bango', and extracts.[@law] Possession for personal use carries a minimum of one year in
+      prison plus a fine; a newspaper summary of the law gives one to three years at the judge's
+      discretion.[@law,watan19] Courts may send dependent users to treatment instead — a 1960 provision
+      letting habitual users enter a sanatorium voluntarily, in place of the sentence.[@law] The 1960
+      law is traced in the [1960 entry](/history/egypt-law-182-1960/).
     sources:
       - law
+      - watan19
+    penalties:
+      - label: Possession for personal use
+        treatment: criminal
+        term: Possession
+        prison_min: 1 year
+        prison: 3 years
+        note: Plus a fine; sanatorium treatment possible for dependent users
   cultivation:
     text: >-
       Cultivation is punished with life imprisonment, or death where trafficking intent is
-      established.
+      established.[@law] Growing bans date to an [1884 prohibition](/history/egypt-cultivation-ban-1884/).
     sources:
       - law
+    penalties:
+      - label: Unlawful cultivation
+        treatment: criminal
+        term: Unlicensed cultivation
+        note: Life imprisonment; death where trafficking intent is established
   enforcement:
     text: >-
       Severe law, uneven enforcement: widespread use is tolerated in some settings while others are
-      jailed, and high-profile arrests at the airport over small amounts are common.
+      jailed, and high-profile arrests at the airport over small amounts are common.[@es] The
+      [hashish in Egypt](/culture/traditions/hashish-in-egypt/) account traces both the custom and
+      the six-century campaign against it.
     sources:
       - es
   sharing:
     text: >-
       Supply is trafficking. Under the narcotics law as amended in 1989, holding, buying or
       selling a drug with intent to trade carries death or life at hard labour and a fine of
-      100,000 to 500,000 pounds (Article 34), and importing carries death (Article 33). Even
+      100,000 to 500,000 pounds (Article 34), and importing carries death (Article 33).[@parl24,law] Even
       offering a drug to another person without payment brings life at hard labour and a fine of
-      50,000 to 200,000 pounds (Article 35).
+      50,000 to 200,000 pounds (Article 35).[@parl24]
     sources:
       - parl24
       - law
-      - es
+    currency: EGP
+    penalties:
+      - label: Importing for supply (article 33)
+        treatment: criminal
+        term: Trafficking
+        death: true
+        fine_min: 100000
+        fine: 500000
+        note: Death or life at hard labour; 100,000–500,000 pounds
+      - label: Dealing with intent to trade (article 34)
+        treatment: criminal
+        term: Trafficking
+        death: true
+        fine_min: 100000
+        fine: 500000
+        note: Death or life at hard labour; 100,000–500,000 pounds
+      - label: Offering without payment (article 35)
+        treatment: criminal
+        term: Trafficking
+        fine_min: 50000
+        fine: 200000
+        note: Life at hard labour; 50,000–200,000 pounds
   consumption:
     text: >-
       Use is a crime, punished through possession for personal use. An Egyptian newspaper's
       summary of Law 182 of 1960 gives one to three years in prison and a fine for a person
-      caught with narcotics for their own use, with the exact sentence left to the judge.
+      caught with narcotics for their own use, with the exact sentence left to the judge.[@watan19,law]
     sources:
       - watan19
       - law
   access:
-    text: No legal source.
+    text: No legal source.[@law]
     sources:
       - law
 context:
   death_penalty:
     text: >-
       Cultivation is punished with life imprisonment, or death where an intent to traffic is
-      established. Importing for supply carries life imprisonment or the death penalty.
+      established. Importing for supply carries life imprisonment or the death penalty.[@law,es]
     sources:
       - law
       - es
@@ -76,17 +115,31 @@ context:
       - es
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    text: >-
+      No licensed production operates: cultivation is punished with life imprisonment, or death
+      where trafficking intent is established.[@law]
+    sources:
+      - law
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No medical cannabis programme operates: use is a crime punished through possession, and the
+      1960 law's only medical route is sanatorium treatment for dependent users, not patient
+      supply.[@law]
+    sources:
+      - law
+  hemp:
+    status: none
+    text: >-
+      No hemp exception operates: Law 182 bans growing the Table V plants and bars handing over
+      those plants or their seeds at any stage of growth.[@l182]
+    sources:
+      - l182
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      A conviction brings a criminal record and, beyond the prison terms and fines above, the
+      severest trafficking sentences in the region's law.[@law]
+    sources:
+      - law
   planting:
     seeds: illegal
     seeds_trade: banned
@@ -97,7 +150,7 @@ context:
       possess, buy, sell or hand over those plants at any stage of growth "or their seeds",
       apart from plant parts exempted in a separate table. The copy read did not reproduce the
       tables, so the entry assumes cannabis is on Table V, as the rest of this profile
-      describes.
+      describes.[@l182]
     sources:
       - l182
   clubs:
@@ -105,40 +158,61 @@ context:
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
       supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      penalty for the most serious drug offences.[@law]
     sources:
       - law
-      - es
   visitors:
     status: none
     text: >-
       There is no legal recreational supply for anyone. Under the narcotics law a person caught
-      with a drug for their own use faces one to three years in prison and a fine. Bringing
+      with a drug for their own use faces one to three years in prison and a fine.[@watan19,law] Bringing
       narcotics into or out of the country falls under Article 33, which allows the death
       sentence and a fine of 100,000 to 500,000 pounds, and dealing inside the country under
-      Article 34, with life imprisonment or death.
+      Article 34, with life imprisonment or death.[@parl24,law]
     sources:
       - watan19
       - law
+      - parl24
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 39,411 kg of herbal
       cannabis seized in 2024, against 239,528 kg in 2023, and 124,382 kg of cannabis
       resin seized in 2024, against 191,046 kg in 2023. The UN publishes them as kilogram
       equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
+  arrests:
+    text: >-
+      High-profile cases make the news rather than statistics: an actress was released on bail in
+      2022 over suspected drug use, and airport arrests over small amounts are reported as
+      routine.[@es]
+    sources:
+      - es
   driving:
     status: impairment
     text: >-
       Amendments to the traffic law published in November 2014 made driving under the
-      influence punishable by at least one year in prison. If the driver injures someone
+      influence punishable by at least one year in prison.[@es_traffic14] If the driver injures someone
       the minimum is two years and a fine of 10,000 pounds; if someone is killed or
       permanently disabled, three to seven years and 20,000 pounds, with the licence
-      revoked. The report of the amendments does not distinguish drugs from alcohol.
+      revoked.[@es_traffic14] The report of the amendments does not distinguish drugs from alcohol.[@es_traffic14]
     sources:
       - es_traffic14
+  culture:
+    text: >-
+      Hashish use was associated with the Sufis, and after Napoleon's 1798 invasion the Emperor
+      banned his soldiers from smoking or drinking cannabis extracts in 1800 — perhaps the first
+      penal cannabis law.[@tni16] Egypt then banned and re-banned it for a century: cultivation, use
+      and import first forbidden in 1868, taxed in 1874, confiscated in 1877, criminal to grow in
+      1884 — yet hashish stayed cheap, homegrown or smuggled from Greece, and the laws largely
+      ineffectual.[@tni16] The bans are traced in [hashish in Egypt](/culture/traditions/hashish-in-egypt/)
+      and the [1868 ban](/history/egypt-first-ban-1868/). A 1971 UN study of 850 imprisoned users
+      and 839 controls documented the café pattern: heavy users took coffee alongside, and most
+      stuck to smoking.[@soueif71]
+    sources:
+      - tni16
+      - soueif71
   research:
     status: licensed
     text: >-
@@ -183,3 +257,13 @@ sources:
     year: 1975
     isbn: '9789027976699'
     locator: pp. 195–205
+  tni16:
+    title: "Transnational Institute — The Rise and Decline of Cannabis Prohibition, chapter 1"
+    url: https://www.tni.org/files/download/rise_and_decline_ch1.pdf
+    locator: >-
+      Sufi association; Napoleon's 1800 soldier ban; 1868 first Egyptian ban; 1874 tax; 1877
+      confiscation; 1884 cultivation crime; ineffectual enforcement; read via pdftotext
+  soueif71:
+    title: "M. I. Soueif — The use of cannabis in Egypt: A behavioural study, Bulletin on Narcotics 23(4), 17–28 (1971)"
+    url: https://www.unodc.org/unodc/en/data-and-analysis/bulletin/bulletin_1971-01-01_4_page004.html
+    locator: 850 hashish takers and 839 controls, male prisoners; coffee use; smoking preference
