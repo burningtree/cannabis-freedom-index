@@ -24,6 +24,12 @@ segments:
     sources:
       - dr
       - lc
+    penalties:
+      - label: Personal-use possession of a risk drug
+        treatment: criminal
+        prison_min: 3 months
+        prison: 2 years
+        note: Three months to two years or a fine; users often end with a fine or community service; THC-as-compound high-risk listing can raise the penalty
   cultivation:
     text: Growing for personal use falls under the same three-months-to-two-years provision.
     sources:
@@ -40,6 +46,12 @@ segments:
     text: Supply is trafficking, with two to seven years for risk drugs.
     sources:
       - lc
+    penalties:
+      - label: Trafficking in risk drugs
+        treatment: criminal
+        prison_min: 2 years
+        prison: 7 years
+        note: Two to seven years
   consumption:
     text: Use is not separately punished, but possession for use is.
     sources:
@@ -49,6 +61,16 @@ segments:
     sources:
       - pp
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Personal-use possession brings three months to
+      two years or a fine, though users often end with a fine or community service; growing
+      for personal use falls under the same provision.[@dr,lc] A wrinkle: the plant and resin
+      are 'risk drugs' but THC as a compound is 'high-risk', which can raise the
+      penalty.[@dr,lc] Supply is trafficking: two to seven years.[@lc]
+    sources:
+      - dr
+      - lc
   production:
     text: >-
       Cultivation, import and sale of cannabis for medical use are allowed under Law 339/2005
@@ -58,6 +80,16 @@ context:
   products:
     text: CBD products with negligible THC.
     sources:
+      - cms
+  hemp:
+    text: >-
+      No fibre-hemp THC limit was established by the retained sources, but the law's edges
+      leave room: seeds fall outside the criminal law because they contain no THC and are
+      sold openly, and CBD products with negligible THC circulate.[@lc,cms] Only medical
+      cultivation is licensed, under Law 339/2005 with strict authorisation and
+      supervision.[@cms]
+    sources:
+      - lc
       - cms
   medical:
     text: >-
