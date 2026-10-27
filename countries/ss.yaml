@@ -23,6 +23,17 @@ segments:
     sources:
       - law
       - eye
+    currency: SSP
+    penalties:
+      - label: Statutory maximum
+        treatment: criminal
+        prison: 5 years
+        note: Up to five years, a fine, or both
+      - label: Bor bhang case in 2022
+        treatment: criminal
+        prison: 1 year
+        fine: 50000
+        note: One jailed a year, four six months; five others fined SSP 50,000 each
   cultivation:
     text: >-
       Growing for personal consumption carries up to five years in prison, a fine, or both. Growing
@@ -45,6 +56,12 @@ segments:
       the listed aggravating circumstances.[@law]
     sources:
       - law
+    currency: SSP
+    penalties:
+      - label: Dealing, ordinary maximum
+        treatment: criminal
+        prison: 14 years
+        note: Up to fourteen years, a fine, or both; death-or-life tier requires a non-cannabis drug
   consumption:
     text: >-
       Ingesting, smoking or otherwise consuming a dangerous drug can bring up to five years in
@@ -56,25 +73,28 @@ segments:
     text: None.
     sources:
       - law
-context:
+context_not_applicable:
   death_penalty:
     text: >-
-      Section 383(3) defines the aggravating circumstances for death or life imprisonment as
-      applying when the drug was a dangerous drug other than cannabis. Cannabis in that chapter
-      means the flowering or fruiting tops. The cannabis plant, prepared cannabis and cannabis resin
-      are defined separately and are not repeated in the exclusion. Other dealing is up to fourteen
-      years, a fine, or both. No later statute replacing these sections was found.
-    sources:
-      - law
-  production:
-    status: medical
+      Section 383(3) expressly limits the death-or-life tier to a dangerous drug other than
+      cannabis, so no cannabis offence carries a capital sentence; ordinary dealing is up to
+      fourteen years, a fine, or both.[@law]
+    sources: [law]
+context:
+  recreational:
     text: >-
-      The code’s professional-handling exception permits specified practitioners and institutions to
-      manufacture or compound controlled drugs where necessary for their work.[@law]
+      All recreational use is prohibited: possession or use can bring up to five years, a fine,
+      or both, and dealing up to fourteen years. A 2022 Bor bhang case ended with prison terms
+      and SSP 50,000 fines.[@law,eye]
     sources:
       - law
-  products:
-    text: None.
+      - eye
+  production:
+    status: none
+    text: >-
+      No lawful cannabis production. The code only lets named professionals handle controlled
+      drugs where necessary for their professional roles; no production or supply route
+      operates.[@law]
     sources:
       - law
   medical:
