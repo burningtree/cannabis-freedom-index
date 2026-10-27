@@ -431,6 +431,25 @@ Rules:
   references.
 - When you revise any section, look for names, bodies and dated changes that could be linked.
 
+### Words explained automatically
+
+Don't link or explain words for cannabis or common jargon by hand. When the pages are built, the
+first appearance on a page of a word with a Culture/Language entry (bhang, dagga, ganja) becomes a
+dashed link to that entry, and the first appearance of a word from `glossary.yaml`
+(decriminalised, per se limit, Single Convention) gets a dashed underline with its explanation on
+hover or tap (`src/lib/terms.js`). This covers profile sections, history entries, articles and
+atlas entries; the source texts stay as they are.
+
+- To explain a new word, add it to `glossary.yaml` with its other forms in `also` and one or two
+  plain sentences. A new language entry in `culture/language/` is picked up by itself, with its
+  `also` forms.
+- Everyday words that would light up in unrelated sentences (pot, grass, joint, "Sensi" in Sensi
+  Seeds) are listed in `SKIP_ENTRIES` and `SKIP_FORMS` in `src/lib/terms.js`; add a form there
+  when it marks the wrong thing.
+- Locally, Astro keeps rendered Markdown in `.astro/data-store.json`; after changing the glossary
+  or the skip lists, delete that file (and `node_modules/.astro/data-store.json`) so articles and
+  atlas entries are marked again. The deploy builds from scratch.
+
 ### Country spotlights
 
 `spotlights` is a list. Each item has a short `title`, a `text` written like any section, and its
@@ -521,7 +540,7 @@ segments:
         treatment: criminal
         term: Minor offence (overtreding)   # the law's own word, shown but never compared
         prison: 1 month         # the maximum: days, weeks, months or years
-        prison_min: 5 days      # a minimum sentence, where the law sets one (needs prison)
+        prison_min: 5 days      # a minimum sentence, where the law sets one; alone it reads "at least"
         fine: 5500              # the maximum, in `currency`
       - label: Growing as a business      # a step that is not about an amount
         treatment: criminal

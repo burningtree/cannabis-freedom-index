@@ -35,13 +35,12 @@ const penalty = z.object({
   treatment: z.enum(Object.keys(TREATMENT) as [string, ...string[]]),
   term: z.string().min(1).optional(),
   prison: z.string().refine((s) => parseDuration(s), { message: 'a duration such as "5 days" or "2 years"' }).optional(),
-  prison_min: z.string().refine((s) => parseDuration(s), { message: 'a duration such as "6 months"' }).optional(),
+  prison_min: z.string().refine((s) => parseDuration(s), { message: 'a duration such as "6 months"' }).optional(), // alone: "at least"
   caning: z.tuple([z.number().int().positive(), z.number().int().positive()]).optional(), // [fewest, most] strokes
   death: z.literal(true).optional(),
   fine: z.number().positive().optional(),
   note: z.string().min(1).optional(),
-}).strict().refine((r) => r.upto || r.over || r.label, { message: "a penalty step needs upto, over or a label" })
-  .refine((r) => !r.prison_min || r.prison, { message: "prison_min needs prison, the maximum" });
+}).strict().refine((r) => r.upto || r.over || r.label, { message: "a penalty step needs upto, over or a label" });
 // a segment: its cited text, and for possession and cultivation optionally the penalty steps
 const segment = cited.extend({ currency: z.string().regex(/^[A-Z]{3}$/).optional(), penalties: z.array(penalty).min(1).optional() })
   .refine((s) => !s.penalties?.some((r) => r.fine) || s.currency, { message: "penalties with a fine need a currency" });
@@ -361,4 +360,10 @@ const datasets = defineCollection({
     .refine((d) => !d.map || d.map.field in d.fields, { message: "map.field must be one of the fields" }),
 });
 
-export const collections = { countries, units, segments, changes, prices, articles, culture, datasets };
+// glossary.yaml: words a reader may not know, explained on hover in every text (src/lib/terms.js)
+const glossary = defineCollection({
+  loader: file("glossary.yaml"),
+  schema: z.object({ id: z.string().min(1), also: z.array(z.string().min(1)).optional(), text: z.string().min(10) }).strict(),
+});
+
+export const collections = { countries, units, segments, changes, prices, articles, culture, datasets, glossary };

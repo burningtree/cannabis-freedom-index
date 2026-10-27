@@ -2,9 +2,15 @@
 // A text with its citations as superscript numbers linked to a list of references (src/lib/cite.js).
 // `parts` comes from citeParts(). The text is plain apart from Markdown links, [name](url): a full
 // URL opens in a new tab, and one starting with "/" is a page of this site and gets the base path.
+// Words for cannabis and jargon are marked as the page is built (src/lib/terms.js), once per page:
+// the set of words already marked lives in Astro.locals for the page being rendered.
 import { linkParts } from "../lib/cite.js";
+import { markTerms } from "../lib/terms.js";
 const { parts } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+const seen = (Astro.locals.termsSeen ??= new Set());
+const here = Astro.url.pathname.startsWith(base) ? Astro.url.pathname.slice(base.length) : "";
+const words = (t) => markTerms(t, seen, here);
 ---
 {parts.map((p) => p.refs
   ? p.refs.map((r) => <sup class="cite"><a href={`#${r.id}`} aria-label={`Source ${r.n}`}>[{r.n}]</a></sup>)
@@ -12,4 +18,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     ? (x.href.startsWith("/")
       ? <a href={base + x.href.slice(1)}>{x.t}</a>
       : <a href={x.href} target="_blank" rel="noopener noreferrer">{x.t}</a>)
-    : x.t))}
+    : words(x.t).map((w) => !w.term ? w.t
+      : w.term.kind === "language" ? <a class="term term-l" href={base + w.term.url}>{w.t}</a>
+      : <span class="term term-g" tabindex="0" role="button" data-title={w.term.title} data-text={w.term.text}>{w.t}</span>)))}

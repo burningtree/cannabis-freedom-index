@@ -2,7 +2,7 @@
 title: Kif
 summary: From the Arabic for pleasure. In Morocco it means chopped cannabis mixed with tobacco, smoked in a long thin pipe.
 origin: Arabic
-also: [kief, keef]
+also: [kief, keef, kef]
 spelling:
   - { text: "كيف", lang: Arabic, say: "kīf" }
 countries: [ma]

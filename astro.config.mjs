@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import { unified } from "@astrojs/markdown-remark";
 import icon from "astro-icon";
+import { markTerms } from "./src/lib/terms.js";
 
 // Fully static output: one HTML file per page, including one per country.
 //
@@ -28,6 +29,34 @@ function markdownLinks() {
     node.children?.forEach(walk);
   };
   return walk;
+}
+
+// Words for cannabis and jargon in articles and culture entries, marked once per text as the page
+// is built (src/lib/terms.js): a word with a Culture/Language entry links to it, a glossary word gets
+// a dashed underline and its explanation on hover. Links, headings, code and citations are left alone,
+// and an atlas entry's own word is not marked on its own page.
+function markdownTerms() {
+  const SKIP = new Set(["a", "code", "pre", "sup", "h1", "h2", "h3", "h4", "h5", "h6", "figcaption", "button"]);
+  return (tree, file) => {
+    const src = String(file?.path ?? file?.history?.[0] ?? "").replace(/\\/g, "/");
+    const m = src.match(/culture\/(language|traditions|people)\/([^/]+)\.md$/);
+    const here = m ? `culture/${m[1]}/${m[2]}/` : "";
+    const seen = new Set();
+    const walk = (node) => {
+      if (node.type === "element" && SKIP.has(node.tagName)) return;
+      if (!node.children) return;
+      node.children = node.children.flatMap((child) => {
+        if (child.type !== "text") { walk(child); return [child]; }
+        const parts = markTerms(child.value, seen, here);
+        if (parts.length === 1 && !parts[0].term) return [child];
+        return parts.map((w) => !w.term ? { type: "text", value: w.t }
+          : w.term.kind === "language"
+            ? { type: "element", tagName: "a", properties: { href: base + w.term.url, className: ["term", "term-l"] }, children: [{ type: "text", value: w.t }] }
+            : { type: "element", tagName: "span", properties: { className: ["term", "term-g"], tabIndex: 0, role: "button", dataTitle: w.term.title, dataText: w.term.text }, children: [{ type: "text", value: w.t }] });
+      });
+    };
+    walk(tree);
+  };
 }
 
 // A picture in Markdown whose title has the form "Caption | Credit | https://link-to-file" becomes
@@ -111,7 +140,7 @@ export default defineConfig({
   // inlines the SVG at build time, so only the icons a page uses end up in it.
   integrations: [icon()],
   markdown: {
-    processor: unified({ remarkPlugins: [markdownFigures, markdownCitations], rehypePlugins: [markdownLinks] }),
+    processor: unified({ remarkPlugins: [markdownFigures, markdownCitations], rehypePlugins: [markdownLinks, markdownTerms] }),
   },
   // pictures in Markdown get a set of widths, so a phone does not download the 1280-pixel file
   image: { layout: "constrained" },

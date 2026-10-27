@@ -752,6 +752,12 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 }
 /* the icon beside a context section's heading (CONTEXT_ICONS) */
 .ctx-icon { width: .8em; height: .8em; margin-right: 10px; vertical-align: -1px; color: var(--muted); }
+/* the term layer (src/lib/terms.js): words for cannabis and jargon, marked in running text as the pages are built */
+.term { color: inherit; text-decoration: underline dashed; text-decoration-color: var(--muted); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.term:hover, .term:focus-visible { text-decoration-color: currentColor; }
+.term-g { cursor: help; }
+/* stronger than the solid underline of ordinary links in these texts */
+:is(.prose, .lede, .ctx, .why p) a.term:not(.cite a) { color: inherit; text-decoration: underline dashed; text-decoration-color: var(--muted); text-decoration-thickness: 1px; }
 /* one country spotlight inside its section */
 .ctx-spot + .ctx-spot { margin-top: 14px; }
 .ctx-spot-h { margin: 0 0 4px; font: 400 18px/1.2 var(--display); color: var(--text); }

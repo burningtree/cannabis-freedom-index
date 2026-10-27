@@ -467,6 +467,34 @@ const schemas = jsonld ? [jsonld].flat() : [];
     })();
   </script>
   <script is:inline>
+    // The term layer's explanations. Words for cannabis and jargon are marked as the page is built
+    // (src/lib/terms.js); a jargon word (.term-g) carries its explanation, shown here in a card in the
+    // style of the preview cards: at once on hover or focus, and on a tap for touch screens.
+    (function () {
+      var html = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+      var tip = null, current = null;
+      function show(el) {
+        if (!tip) { tip = document.createElement("div"); tip.className = "hc hc-term"; tip.setAttribute("role", "tooltip"); document.body.appendChild(tip); }
+        current = el;
+        tip.innerHTML = '<p class="hc-eyebrow">Explained</p><b class="hc-title">' + html(el.dataset.title) + '</b><p class="hc-text">' + html(el.dataset.text) + "</p>";
+        tip.hidden = false;
+        var r = el.getBoundingClientRect(), m = 10, w = tip.offsetWidth, h = tip.offsetHeight;
+        var below = r.bottom + 8 + h < window.innerHeight || r.top - 8 - h < 0;
+        tip.style.left = Math.min(Math.max(m, r.left), window.innerWidth - w - m) + "px";
+        tip.style.top = (below ? r.bottom + 8 : r.top - 8 - h) + "px";
+      }
+      function hide() { current = null; if (tip) tip.hidden = true; }
+      var termOf = function (e) { return e.target.closest && e.target.closest(".term-g"); };
+      document.addEventListener("pointerover", function (e) { var el = termOf(e); if (el && e.pointerType !== "touch") show(el); });
+      document.addEventListener("pointerout", function (e) { var el = termOf(e); if (el && !el.contains(e.relatedTarget)) hide(); });
+      document.addEventListener("click", function (e) { var el = termOf(e); if (el) { if (current === el) hide(); else show(el); } else if (current) hide(); });
+      document.addEventListener("focusin", function (e) { var el = termOf(e); if (el) show(el); });
+      document.addEventListener("focusout", function (e) { if (termOf(e)) hide(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(); });
+      window.addEventListener("scroll", hide, { passive: true, capture: true });
+    })();
+  </script>
+  <script is:inline>
     // Side panes stick beside the text only when the whole pane fits the window; otherwise its end
     // could never be reached until the page ends.
     (() => {

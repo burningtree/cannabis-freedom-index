@@ -14,7 +14,7 @@ import { places, countries, changes, articles, subunitsOf, historyPeriods, CHANG
 import { SITE } from "../lib/exports.js";
 import { MAP_VIEWS } from "../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries } from "../lib/culture.js";
-import { commits } from "../lib/gitlog.js";
+import { commits, pageCount, pageOf } from "../lib/gitlog.js";
 import { lastChanged } from "../lib/lastmod.js";
 
 export function GET({ site }) {
@@ -60,6 +60,8 @@ export function GET({ site }) {
     ...changes.map((ch) => [`history/${ch.id}/`, articles.has(ch.id) ? lastChanged(`articles/${ch.id}.md`) : null]),
     // the changelog
     ["changelog/", committed[0]?.date.slice(0, 10) ?? null],
+    // its later pages, each dated by the newest commit it lists
+    ...Array.from({ length: pageCount() - 1 }, (_, i) => [`changelog/page/${i + 2}/`, pageOf(i + 2)[0]?.date.slice(0, 10) ?? null]),
     ...committed.map((c) => [`changelog/${c.short}/`, c.date.slice(0, 10)]),
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

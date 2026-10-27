@@ -23,7 +23,7 @@ const shown = [...new Set([1, n - 2, n - 1, n, n + 1, n + 2, pages])].filter((k)
 const first = (n - 1) * PAGE_SIZE + 1, last = Math.min(n * PAGE_SIZE, total);
 const row = (c) => ({ c, url: `${base}changelog/${c.short}/`, sum: summaryOf(c) });
 ---
-<Base title={n === 1 ? "Changelog" : `Changelog, page ${n}`} description="Every change made to the Cannabis Freedom Index, its data and its texts, newest first, each with exactly what changed.">
+<Base title={n === 1 ? "Changelog" : `Changelog, page ${n}`} description={n === 1 ? "Every change made to the Cannabis Freedom Index, its data and its texts, newest first, each with exactly what changed." : `Changes to the Cannabis Freedom Index, page ${n} of ${pages}: commits ${first} to ${last}, from ${when(items.at(-1).date)} to ${when(items[0].date)}, each with exactly what changed.`}>
   <main class="changes-page gl">
     <section class="hero hero-sm">
       <p class="eyebrow">Changelog <span>{total} commits</span>{pages > 1 && <span>page {n} of {pages}</span>}</p>

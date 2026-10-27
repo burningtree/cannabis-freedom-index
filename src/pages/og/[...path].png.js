@@ -11,7 +11,7 @@ import { survey, results } from "../../lib/survey.js";
 import { getFacts } from "../../lib/facts.js";
 import { renderOg, flagOf, photoOf, collageOf, TIER_HEX } from "../../og/render.js";
 import { openExhibitions, exhibitionPath } from "../../lib/exhibitions.js";
-import { commits, summaryOf } from "../../lib/gitlog.js";
+import { commits, summaryOf, pageCount, pageOf, PAGE_SIZE } from "../../lib/gitlog.js";
 
 const BRAND = `CANNABIS FREEDOM INDEX · ${DATA_SNAPSHOT}`;
 const num = (n) => n.toLocaleString("en-GB");
@@ -83,6 +83,8 @@ for (const e of openExhibitions) if (e.og) cards[exhibitionPath(e).slice(0, -1)]
   photo: { collage: e.og.posters },
 }];
 // each change in the changelog
+// the changelog's later pages
+for (let n = 2; n <= pageCount(); n++) cards[`changelog/page/${n}`] = page(`Changelog, page ${n}`, `Commits ${(n - 1) * PAGE_SIZE + 1}–${(n - 1) * PAGE_SIZE + pageOf(n).length}, from ${pageOf(n).at(-1)?.date.slice(0, 10)} to ${pageOf(n)[0]?.date.slice(0, 10)}.`, [], `CHANGELOG · ${BRAND}`);
 for (const c of commits) cards[`changelog/${c.short}`] = page(c.subject, summaryOf(c).map(([n, w]) => `${n} ${w}`).join(" · ") || "Changes to the site.", [], `CHANGELOG · ${c.date.slice(0, 10)}`);
 for (const v of MAP_VIEWS) cards[v.slug ? `map/${v.slug}` : "map"] = page(v.title, v.lede, [], `MAP · ${BRAND}`);
 for (const [kind, k] of Object.entries(CHANGE_CATEGORIES)) cards[`history/kind/${kind}`] = page(k.label, `${k.help}. Every such entry in the history of cannabis.`, [[num(dated.filter((ch) => ch.category === kind).length), "ENTRIES"]], "HISTORY OF CANNABIS");

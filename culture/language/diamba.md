@@ -7,6 +7,7 @@ origin: Central African
 also:
   - liamba
   - riamba
+  - yamba
 countries:
   - sl
   - ao

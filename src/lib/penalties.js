@@ -51,11 +51,11 @@ export function penaltyRow(row) {
   };
 }
 
-// How the punishment reads in the table: "Up to 3 years", "6 months – 5 years", "10–20 years",
+// How the punishment reads in the table: "Up to 3 years", "At least 5 years", "6 months – 5 years", "10–20 years",
 // "Death penalty"; strokes of the cane go on their own line (punishmentExtra)
 export function punishmentText(r) {
   if (r.death) return "Death penalty";
-  if (!r.prison) return null;
+  if (!r.prison) return r.prisonMin ? `At least ${r.prisonMin.text}` : null; // a minimum with no maximum set
   if (!r.prisonMin) return `Up to ${r.prison.text}`;
   const [a, ua] = r.prisonMin.text.split(" "), [b, ub] = r.prison.text.split(" ");
   return ua.replace(/s$/, "") === ub.replace(/s$/, "") ? `${a}–${b} ${ub}` : `${r.prisonMin.text} – ${r.prison.text}`;
@@ -77,7 +77,7 @@ export function penaltySummary(rows) {
   return {
     freeUpTo: free.length ? Math.max(...free) : 0,
     crimeFrom: crime ? size(crime.over) ?? 0 : null,
-    smallPrisonDays: first.filter(covers).reduce((m, r) => Math.max(m, r.prison?.days ?? 0), 0),
+    smallPrisonDays: first.filter(covers).reduce((m, r) => Math.max(m, r.prison?.days ?? r.prisonMin?.days ?? 0), 0),
     // whether any step of the ladder allows caning or the death penalty
     caning: rows.some((r) => r.caning),
     death: rows.some((r) => r.death),
