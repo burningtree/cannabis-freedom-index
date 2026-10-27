@@ -24,6 +24,19 @@ segments:
       years.[@code]
     sources:
       - code
+    penalties:
+      - label: Lowest quantity band
+        treatment: criminal
+        prison: 2 years
+        note: Fine of 100–500 calculation units or up to two years
+      - label: Next band
+        treatment: criminal
+        prison_min: 2 years
+        prison: 5 years
+      - label: Aggravated or larger cases
+        treatment: criminal
+        prison_min: 5 years
+        note: Five to eight or eight to twelve years
   cultivation:
     text: >-
       Unauthorised cultivation in the lowest plant-count band carries a fine of 200–500
@@ -32,6 +45,19 @@ segments:
       to a separate plant-count list.[@code]
     sources:
       - code
+    penalties:
+      - label: Lowest plant-count band
+        treatment: criminal
+        prison: 2 years
+        note: Fine of 200–500 calculation units or up to two years
+      - label: Next band
+        treatment: criminal
+        prison_min: 2 years
+        prison: 5 years
+      - label: Aggravated or larger grows
+        treatment: criminal
+        prison_min: 5 years
+        note: Five to eight or eight to twelve years
   enforcement:
     text: >-
       The Criminal Code permits prison for personal possession even in its lowest quantity
@@ -50,6 +76,16 @@ segments:
     sources:
       - law
       - code
+    penalties:
+      - label: Lowest quantity band
+        treatment: criminal
+        prison: 5 years
+        note: Up to five years; supply includes gifts, exchanges, debt payments and loans
+      - label: Larger or aggravated cases
+        treatment: criminal
+        prison_min: 5 years
+        prison: 20 years
+        note: Five–eight, eight–twelve and twelve–twenty year tiers
   consumption:
     text: >-
       The drug law prohibits use without a doctor’s prescription and provides for medical
@@ -67,6 +103,15 @@ segments:
       - code
       - law
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited: unlawful possession without intent to supply starts at
+      a fine or up to two years, supply at up to five years rising to twenty, and gifts count
+      as supply. A 2010 review criticised arrest-target-driven enforcement.[@code,law,reform]
+    sources:
+      - code
+      - law
+      - reform
   production:
     status: medical
     text: >-
@@ -77,14 +122,12 @@ context:
     sources:
       - law
       - code
-  products:
+  research:
+    status: licensed
     text: >-
-      The Criminal Code separates personal possession from possession intended for supply and
-      refers to a quantity annex for the different controlled substances. Its cultivation
-      offence refers to a separate plant-count list.[@code] The drug law governs licensed
-      controlled-drug production and distribution.[@law]
+      Scientific cultivation of drug-containing plants is reserved for licensed research
+      institutions under the drug law; no wider research programme was verified.[@law]
     sources:
-      - code
       - law
   medical:
     text: >-
