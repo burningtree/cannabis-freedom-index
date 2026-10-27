@@ -353,3 +353,15 @@ test('GDELT observations are labelled as daily global shares, never local attent
   const chart = fs.readFileSync(path.join(root, 'src/pages/charts.astro'), 'utf8');
   assert.doesNotMatch(chart, /press talks about cannabis most|attention and the score go together/);
 });
+
+// Issue #192
+test('US outdoor public-use permissions reach quick answers and scores (#192)', () => {
+  for (const id of ['us/ct','us/ri','us/mn']) {
+    const p = country(id);
+    assert.equal(p.scores.consumption, 5);
+    assert.equal(p.answers.public.answer, 'limited');
+    assert.match(p.answers.public.text, /outdoor public/);
+    assert.doesNotMatch(p.segments.consumption, /private only/i);
+  }
+  assert.equal(country('us/index').answers.public.answer, 'limited');
+});

@@ -25,3 +25,17 @@ with an explicit tooltip explanation. Positive scores below one retain their act
 unrounded denominator. Regression covers scores 0, 0.5 and 1 plus missing prevalence.
 The map lede and legend state the zero-score exclusion. Survey ages/years and estimate
 markers remain qualified; this ratio is not an age-standardised comparison.
+
+## #192 — US outdoor public consumption
+
+Read Connecticut's official Where can I use cannabis FAQ, Rhode Island statute
+21-28.11-29 and Minnesota OCM Adult-Use Cannabis guidance. The respective URLs are
+recorded in the profiles. Tobacco bans, additional local restrictions, schools,
+transport and child-exposure rules remain distinct. Corrected CT and MN consumption
+3→5 and RI 4→5: legal public use with many restrictions, rather than unrestricted
+wherever-tobacco permission (7). States have no independent national score steps;
+these corrections do not change the federal profile score or national history.
+Explicit state and national public-use answers feed profiles, /can-i/ and SEO FAQs.
+Audited remaining US consumption-3/4 descriptions: the other departures from private
+use concern licensed lounges/hospitality premises, not a verified general outdoor
+public permission. National prose now names the state/local distinction.

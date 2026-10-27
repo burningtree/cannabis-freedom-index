@@ -3,7 +3,7 @@ region: North America
 iso_numeric: 840
 recreational: partial
 medical: legal
-updated: 2026-10-26
+updated: '2026-10-27'
 summary: >-
   Adult-use cannabis is still federally illegal, yet about half the states run licensed markets and
   40 allow medical use; in April 2026 state-licensed medical cannabis was moved to Schedule III.
@@ -23,6 +23,9 @@ scores:
   access: 5
 # State/federal differences and supply channels the national scores cannot name (src/lib/answers.js).
 answers:
+  public:
+    answer: limited
+    text: State and local rules vary; some permit outdoor public smoking, while many allow private use only
   buy:
     answer: 'yes'
     text: In licensed dispensaries in the states that allow it, to adults 21+
@@ -67,10 +70,14 @@ segments:
       - norml
   consumption:
     text: >-
-      Even in legal states use is almost always confined to private property; public consumption is
-      a ticketable offence, landlords and hotels can ban it, and it is prohibited on all federal
-      land. Only a few states license consumption lounges.
+      State and local rules vary. Many states confine use to private property or licensed lounges.
+      Connecticut, Rhode Island and Minnesota permit some outdoor public smoking, subject to
+      tobacco restrictions, specific excluded locations and local ordinances.[@ctpublic,ripublic,mnpublic]
+      Federal property remains off-limits, and landlords or hotels can restrict smoking.[@norml,ncsl]
     sources:
+      - ctpublic
+      - ripublic
+      - mnpublic
       - norml
       - ncsl
   access:
@@ -220,6 +227,15 @@ context:
       - wikicsc
       - oregon_icaa
 sources:
+  mnpublic:
+    title: Minnesota Office of Cannabis Management — Adult-use cannabis
+    url: https://mn.gov/ocm/consumers/adult-use/
+  ripublic:
+    title: Rhode Island General Laws — section 21-28.11-29
+    url: https://webserver.rilegislature.gov/Statutes/TITLE21/21-28.11/21-28.11-29.htm
+  ctpublic:
+    title: Connecticut government — Where can I use cannabis?
+    url: https://portal.ct.gov/cannabis/knowledge-base/articles/where-you-can-use-cannabis
   oregon_icaa:
     title: Oregon Health Authority — Indoor Clean Air Act FAQ, April 2025
     url: https://www.oregon.gov/oha/PH/PREVENTIONWELLNESS/TOBACCOPREVENTION/SMOKEFREEWORKPLACELAW/Documents/ICAA_FAQ_English.pdf
