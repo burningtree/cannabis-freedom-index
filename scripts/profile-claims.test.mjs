@@ -497,3 +497,15 @@ test('South Carolina separates simple possession from an intent inference (#207)
   assert.match(sc.segments.enforcement,/trafficking offence starts at 10 pounds/);
   assert.match(sc.answers.caught.text,/can support a felony intent-to-distribute charge/);
 });
+
+// Issue #208
+test('Kansas possession explains the three qualifying-conviction bands (#208)', () => {
+  const ks=country('us/ks');
+  assert.doesNotMatch(ks.segments.possession,/Any amount is a misdemeanour/);
+  assert.match(ks.segments.possession,/Class B.*six months/);
+  assert.match(ks.segments.possession,/Class A.*one year/);
+  assert.match(ks.segments.possession,/Two or more qualifying priors.*drug severity level 5 felony/);
+  assert.match(ks.segments.possession,/out-of-state laws/);
+  assert.match(ks.answers.caught.text,/third is a felony/);
+  assert.match(ks.segments.access,/0.3% THC.*5% of its CBD/s);
+});

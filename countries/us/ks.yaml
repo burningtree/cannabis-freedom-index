@@ -1,10 +1,10 @@
 name: Kansas
 recreational: illegal
 medical: none
-updated: 2026-10-24
+updated: 2026-10-27
 summary: >-
   No medical programme. A first possession offence is a misdemeanour with up to six months in jail;
-  later offences can be felonies.
+  a second qualifying offence carries up to a year, and a third is a drug severity level 5 felony.
 scores:
   possession: 1
   cultivation: 0
@@ -13,9 +13,18 @@ scores:
   consumption: 1
   access: 0
 segments:
-  possession: Any amount is a misdemeanour with up to six months and a $1,000 fine.
+  possession: >-
+    Unauthorised marijuana or THC possession is a Class B nonperson misdemeanour on a first
+    conviction, with up to six months in jail. One qualifying prior conviction makes it a
+    Class A nonperson misdemeanour, with up to one year. Two or more qualifying priors make it
+    a drug severity level 5 felony, sentenced under the drug grid and criminal history.[@5,6]
+    Qualifying priors include convictions under the repealed Kansas possession section,
+    substantially similar out-of-state laws, and qualifying city ordinances or county
+    resolutions.[@5]
   cultivation: More than four plants is a felony with several years.
-  enforcement: Jail is possible for a first offence; penalties rise for repeat offences.
+  enforcement: >-
+    Jail is possible on a first possession conviction. A second qualifying conviction remains a
+    misdemeanour; a third or later is a drug severity level 5 felony.[@5,6]
   sharing: Selling under 25 g is a felony.
   consumption: Illegal.
   access: >-
@@ -27,6 +36,11 @@ segments:
     more than 5% of its CBD concentration. They must carry a qualifying Kansas physician’s
     letter dated within the previous 15 months and show it to an officer on request. This is a
     defence to prosecution; Kansas has no licensed medical dispensaries.[@4,5]
+answers:
+  caught:
+    answer: no
+    label: Jail or felony
+    text: First possession can bring six months, a second qualifying offence a year; a third is a felony
 sources:
   - title: NORML — Kansas laws and penalties
     url: https://norml.org/laws/kansas-penalties-2/
@@ -42,9 +56,12 @@ sources:
     url: >-
       https://kslegislature.gov/b2025_26/laws/065_000_0000_chapter/065_062_0000_article/065_062_0035_section/065_062_0035_k/
     locator: 'K.S.A. 65-6235(b): treatment oil, independent laboratory verification and THC/CBD ratio'
-  - title: Kansas Revisor of Statutes — Possession of controlled substances
-    url: https://www.ksrevisor.gov/statutes/chapters/ch21/021_057_0006.html
-    locator: 'K.S.A. 21-5706(d): affirmative defence, qualifying condition and physician letter'
+  - title: Kansas Legislature — Possession of controlled substances
+    url: https://kslegislature.gov/b2025_26/laws/021_000_0000_chapter/021_057_0000_article/021_057_0006_section/021_057_0006_k/
+    locator: 'K.S.A. 21-5706(c)(3), (d): repeat marijuana/THC possession and treatment-oil defence'
+  - title: Kansas Legislature — Misdemeanour imprisonment terms
+    url: https://kslegislature.gov/b2025_26/laws/021_000_0000_chapter/021_066_0000_article/021_066_0002_section/021_066_0002_k/
+    locator: 'K.S.A. 21-6602(a)(1)–(2): Class A and B maximum jail terms'
 use:
   note: Includes vaping; a model-based estimate.
   share: 18.6
