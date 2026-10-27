@@ -562,3 +562,14 @@ test('Delaware possession and gifts distinguish leaf, concentrate and product TH
  assert.match(de.segments.sharing,/Gifts tied to another transaction/);
  assert.ok(de.sources.some(s=>s.locator?.includes('21 October 2026')));
 });
+
+// Issue #214
+test('Montana combines product equivalents and preserves strict civil boundaries (#214)',()=>{
+ const mt=country('us/mt');
+ for(const text of [mt.summary,mt.segments.possession,mt.segments.sharing,mt.answers.carry.text])for(const cap of ['1 oz','8 g','800 mg'])assert.ok(text.includes(cap),cap);
+ assert.match(mt.segments.possession,/more than 8 g but less than 16 g/);
+ assert.match(mt.segments.possession,/choice of a fine.*community service/s);
+ assert.match(mt.segments.enforcement,/presumption of a deferred prison sentence/);
+ assert.match(mt.answers.grow.text,/Montana residents/);
+ assert.doesNotMatch(mt.segments.enforcement,/felony above 2 oz/);
+});
