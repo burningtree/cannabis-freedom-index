@@ -509,3 +509,14 @@ test('Kansas possession explains the three qualifying-conviction bands (#208)', 
   assert.match(ks.answers.caught.text,/third is a felony/);
   assert.match(ks.segments.access,/0.3% THC.*5% of its CBD/s);
 });
+
+// Issue #209
+test('Maine carries, gifts and purchases retain the concentrate sub-limit (#209)', () => {
+  const me=country('us/me');
+  for(const text of [me.summary,me.segments.possession,me.segments.sharing,me.segments.access,me.answers.carry.text]) {
+    assert.match(text,/2.5 oz/);
+    assert.match(text,/at most 10 g/);
+  }
+  assert.match(me.segments.possession,/entire harvest.*residence or grow location/);
+  assert.doesNotMatch(me.segments.possession,/From 2.5 to 8 oz is a crime/);
+});
