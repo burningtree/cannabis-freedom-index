@@ -25,6 +25,11 @@ segments:
     sources:
       - law93
       - l3
+    penalties:
+      - label: Personal use, Article 38
+        treatment: criminal
+        prison: 5 years
+        note: Residential treatment instead for a person proved dependent; voluntary entry protects from prosecution
   cultivation:
     text: >-
       Articles 28–29 prohibit growing or dealing in the plants in schedule 5, which expressly includes
@@ -51,6 +56,17 @@ segments:
       twenty-five years to trading and running or preparing premises for drug use.[@law93]
     sources:
       - law93
+    penalties:
+      - label: Unpaid supply or facilitating use, Article 35
+        treatment: criminal
+        death: true
+        prison: 25 years
+        note: Death or twenty-five years
+      - label: Trading or preparing premises, Article 34
+        treatment: criminal
+        death: true
+        prison: 25 years
+        note: Death or twenty-five years
   consumption:
     text: >-
       Article 38 sets five years for holding or buying drugs, or growing listed plants, for
@@ -70,6 +86,14 @@ segments:
     sources:
       - law93
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Personal use carries five years with a treatment
+      alternative, while unpaid supply, trading and growing for trade can bring death or
+      twenty-five years.[@law93,l3]
+    sources:
+      - law93
+      - l3
   death_penalty:
     text: >-
       Article 33 prescribes death for importing or manufacturing narcotics for trade. Articles
@@ -79,14 +103,27 @@ context:
       - law93
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    text: >-
+      No lawful cannabis production. Growing licences are limited to government departments and
+      scientific institutes for research; all other growing is prohibited.[@law93,l3]
+    sources:
+      - law93
+      - l3
+  research:
+    status: licensed
+    text: >-
+      Article 30 allows government departments and scientific institutes to obtain licences to
+      grow controlled plants for research; this is the only licensed growing route.[@law93,l3]
+    sources:
+      - law93
+      - l3
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No cannabis treatment programme operates. Pharmacy dispensing under the general medicines
+      framework requires a medical prescription, but no cannabis-specific prescribing route was
+      verified.[@law93]
+    sources:
+      - law93
   consequences:
     text: >-
       Articles 36 and 43 provide for confiscation of criminal proceeds, drugs and equipment or
