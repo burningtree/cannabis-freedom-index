@@ -30,6 +30,14 @@ segments:
       not prescribe caning.
     sources:
       - mda
+    currency: BND
+    penalties:
+      - label: Cultivation, Section 8
+        treatment: criminal
+        prison_min: 3 years
+        prison: 20 years
+        fine: 40000
+        note: Three years to twenty years and B$5,000–40,000; no caning in this row
   enforcement:
     text: >-
       Severe statutory penalties apply, including caning for specified trafficking offences. Death
@@ -46,6 +54,11 @@ segments:
     sources:
       - hoc
       - mda
+    penalties:
+      - label: Trafficking over 500 g
+        treatment: criminal
+        death: true
+        note: Mandatory death sentence on the statute book; imposed but not carried out in decades
   consumption:
     text: Consumption is itself an offence, proved by urine test.
     sources:
@@ -55,6 +68,15 @@ segments:
     sources:
       - mda
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited: consumption itself is an offence proved by urine test,
+      cultivation starts at three years, and trafficking over 500 g carries a mandatory death
+      sentence that is imposed but not carried out.[@mda,hoc,wiki]
+    sources:
+      - mda
+      - hoc
+      - wiki
   death_penalty:
     text: >-
       Trafficking carries a mandatory death sentence on the statute book. Death sentences are
@@ -64,13 +86,11 @@ context:
       - wiki
   production:
     status: none
-    text: None.
+    text: >-
+      No lawful cannabis production. Section 8 prohibits cultivating any plant of the genus
+      cannabis, starting at three years and B$5,000.[@mda]
     sources:
-      - wiki
-  products:
-    text: None.
-    sources:
-      - wiki
+      - mda
   medical:
     text: No medical cannabis.
     sources:
