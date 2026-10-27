@@ -28,6 +28,23 @@ segments:
     sources:
       - act
       - sn
+    currency: KES
+    penalties:
+      - label: Personal consumption (proved to court)
+        treatment: criminal
+        fine: 100000
+        prison: 5 years
+        note: Fine up to 100,000 shillings or up to five years; court may add at least six months of treatment or rehabilitation
+      - label: Possession treated as trafficking, 1 to 100 g
+        treatment: criminal
+        fine: 30000000
+        prison: 30 years
+        note: Fine of at least 30 million shillings or thirty years, or both
+      - label: Possession treated as trafficking, above 100 g
+        treatment: criminal
+        fine: 50000000
+        prison: 50 years
+        note: Fine of at least 50 million shillings or fifty years, or both
   cultivation:
     text: >-
       Section 6 punishes cultivating a prohibited plant, or letting premises be used for it, with a
@@ -38,6 +55,13 @@ segments:
       returns to the owner.
     sources:
       - act
+    currency: KES
+    penalties:
+      - label: Cultivating a prohibited plant or letting premises be used for it
+        treatment: criminal
+        fine: 250000
+        prison: 20 years
+        note: Fine of 250,000 shillings or three times the plants' market value, whichever is greater, up to twenty years, or both; land or lease consequences under section 7
   enforcement:
     text: >-
       One of Africa's harshest laws on paper since 2022. Courts in practice impose much shorter
@@ -52,6 +76,18 @@ segments:
       million shillings or three times the market value, or fifty years, above 100 g.
     sources:
       - act
+    currency: KES
+    penalties:
+      - label: Trafficking, 1 to 100 g
+        treatment: criminal
+        fine: 30000000
+        prison: 30 years
+        note: Fine of at least 30 million shillings or thirty years, or both
+      - label: Trafficking, above 100 g
+        treatment: criminal
+        fine: 50000000
+        prison: 50 years
+        note: Fine of at least 50 million shillings or three times the market value, or fifty years
   consumption:
     text: >-
       Smoking, inhaling, sniffing or otherwise using a narcotic drug, or being found without
@@ -59,6 +95,13 @@ segments:
       than 250,000 shillings, at least five years in prison, or both.
     sources:
       - act
+    currency: KES
+    penalties:
+      - label: Using a narcotic drug or frequenting a place used for it
+        treatment: criminal
+        fine: 250000
+        prison_min: 5 years
+        note: Fine of not less than 250,000 shillings, at least five years in prison, or both
   access:
     text: >-
       None. The national drug agency has repeatedly insisted cannabis remains prohibited despite
@@ -66,6 +109,17 @@ segments:
     sources:
       - cfm
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. A person who satisfies the court the cannabis was
+      solely for their own consumption faces up to five years or a fine of up to 100,000
+      shillings; otherwise possession is treated as trafficking, with at least 30 million
+      shillings or thirty years for 1 to 100 g.[@act,sn] Courts in practice impose much
+      shorter terms and fines for small amounts, but arrests are frequent.[@sn,cfm]
+    sources:
+      - act
+      - sn
+      - cfm
   production:
     text: None.
     sources:

@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 834
 recreational: illegal
 medical: none
-updated: 2026-10-26
+updated: 2026-10-27
 summary: >-
   Mainland Tanzania provides at least thirty years for unlawful cannabis cultivation. A separate
   small-personal-use tier allows a fine, prison or both; trafficking penalties can reach life
@@ -26,6 +26,13 @@ segments:
     sources:
       - act2023
       - agn2022
+    currency: TZS
+    penalties:
+      - label: Small quantity proved for personal consumption
+        treatment: criminal
+        fine: 500000
+        prison: 3 years
+        note: Fine of at least 500,000 shillings, a three-year prison term, or both
   cultivation:
     text: >-
       Unlawful cultivation of prohibited plants carries at least thirty years in prison on the
@@ -34,6 +41,12 @@ segments:
     sources:
       - act2023
       - ham2022
+    currency: TZS
+    penalties:
+      - label: Unlawful cultivation of prohibited plants (mainland)
+        treatment: criminal
+        prison_min: 30 years
+        note: At least thirty years in prison; no fine tier stated
   enforcement:
     text: >-
       Long sentences have been imposed for cannabis: the Court of Appeal upheld thirty years for
@@ -53,6 +66,12 @@ segments:
       These trafficking quantities are separate from the small-personal-use tier.[@act2023]
     sources:
       - act2023
+    currency: TZS
+    penalties:
+      - label: Trafficking not more than 100 kg of cannabis
+        treatment: criminal
+        prison_min: 30 years
+        note: At least thirty years; larger amounts fall in the life-imprisonment tier
   consumption:
     text: >-
       The Act's small-quantity and consumption rule allows a fine of at least 500,000 shillings,
@@ -61,11 +80,28 @@ segments:
       use.[@act2023]
     sources:
       - act2023
+    currency: TZS
+    penalties:
+      - label: Small-quantity consumption outside the listed group
+        treatment: criminal
+        fine: 500000
+        prison: 3 years
+        note: Fine of at least 500,000 shillings, three years in prison, or both
   access:
     text: None.
     sources:
       - uk
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Mainland law has a small-personal-use tier — a fine
+      of at least 500,000 shillings, three years, or both — but the burden is on the holder to
+      prove personal consumption, and trafficking penalties start at thirty years.[@act2023]
+      Long sentences have been imposed for cannabis, including thirty years for cultivation in
+      a 2022 case.[@ham2022]
+    sources:
+      - act2023
+      - ham2022
   production:
     text: >-
       Mainland law prohibits unauthorised cannabis cultivation. The drug-law amendments effective 2
