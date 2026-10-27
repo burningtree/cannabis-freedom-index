@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 300
 recreational: illegal
 medical: limited
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Personal use is a misdemeanour that is rarely jailed. Medical cannabis was legalised in 2017 and
   production licences are issued.
@@ -17,46 +17,78 @@ scores:
 segments:
   possession:
     text: >-
-      Under Law 4139/2013, obtaining or possessing cannabis in a quantity that indicates personal
-      use is a misdemeanour punishable by up to five months in prison. In practice sentences are
-      usually suspended or replaced by treatment, and the conviction is not entered on the ordinary
-      criminal record.
+      Under Law 4139/2013, using drugs or obtaining or processing them for personal use, in
+      quantities for one's own needs, carries at most five months in prison.[@euda_cdr18,n4139] The
+      offence stays off the criminal record if no further relevant offence follows within five
+      years, and courts can suspend the penalty for offenders entering a recognised treatment
+      programme.[@euda_cdr18] No fixed quantity defines personal use; the judge decides on the
+      substance, its quantity and purity, and the offender's needs.[@euda_cdr18]
+      [Personal use became a minor offence in 2013.](/history/greece-law-4139-2013/)
     sources:
-      - nk
+      - euda_cdr18
+      - n4139
     penalties:
       - label: Personal-use quantity (misdemeanour)
         treatment: civil
+        term: Possession
         prison: 5 months
-        note: Up to five months, usually suspended or replaced by treatment; not entered on the ordinary record
+        note: Usually suspended or replaced by treatment; off the record if no repeat within five years
   cultivation:
     text: >-
-      Growing a number of plants consistent with personal use falls under the same misdemeanour, up
-      to five months. Anything more is treated as production for trafficking.
+      Growing cannabis plants in numbers and areas justified for personal use falls under the same
+      personal-use misdemeanour, at most five months.[@euda_cdr18] Anything more counts as
+      production for trafficking.[@euda_cdr18]
+      [Personal use became a minor offence in 2013.](/history/greece-law-4139-2013/)
     sources:
-      - nk
+      - euda_cdr18
+    penalties:
+      - label: Personal-use numbers and areas
+        treatment: civil
+        term: Cultivation
+        prison: 5 months
+        note: Judge decides what counts as personal use; suspended or replaced by treatment in practice
+      - label: Production for trafficking
+        treatment: criminal
+        term: Cultivation
+        prison_min: 8 years
+        note: Amounts beyond personal use; fines and life terms in special cases (see supply)
   enforcement:
     text: >-
-      Prison is legally possible for users but rare in practice. Trafficking carries at least eight
-      years.
+      Prison is legally possible for users but rare in practice, with treatment alternatives and
+      suspended sentences.[@euda_cdr18] Trafficking carries at least eight years, up to life in
+      special cases.[@euda_cdr18]
+      [Personal use became a minor offence in 2013.](/history/greece-law-4139-2013/)
     sources:
-      - nk
+      - euda_cdr18
+  sharing:
+    text: >-
+      Supply is a felony. Addicted suppliers, and those sharing within a group, face up to three
+      years instead; dependent dealers who complete treatment can be conditionally released after a
+      fifth of the sentence.[@euda_cdr18]
+      [Personal use became a minor offence in 2013.](/history/greece-law-4139-2013/)
+    sources:
+      - euda_cdr18
+    currency: EUR
     penalties:
       - label: Trafficking and production for trafficking
         treatment: criminal
+        term: Supply
         prison_min: 8 years
-        note: At least eight years
-  sharing:
-    text: Supply is a felony, with a reduced sentence where the supplier is a dependent user.
-    sources:
-      - nk
+        note: Up to life for offences by medical staff, teachers or therapists
+        fine_min: 50000
+        fine: 500000
   consumption:
-    text: Use is covered by the same personal-use misdemeanour.
+    text: >-
+      Use is covered by the same personal-use misdemeanour, at most five months, usually suspended
+      or replaced by treatment.[@euda_cdr18]
+      [Personal use became a minor offence in 2013.](/history/greece-law-4139-2013/)
     sources:
-      - nk
+      - euda_cdr18
   access:
     text: >-
       No adult-use source. Finished pharmaceutical cannabis became available on prescription in
-      February 2024, following the 2017 rescheduling and 2018 production framework.
+      February 2024, following the 2017 rescheduling and 2018 production framework.[@launch2024,patient2024]
+      [Patients first obtained prescriptions in February 2024.](/history/greece-prescriptions-2024/)
     sources:
       - launch2024
       - patient2024
@@ -65,52 +97,60 @@ context:
     text: >-
       There is no legal recreational supply. Obtaining or possessing a personal-use quantity
       is a misdemeanour with up to five months, usually suspended or replaced by treatment
-      and not entered on the ordinary record; growing a personal-use number of plants falls
-      under the same misdemeanour.[@nk] Anything more counts as production for trafficking,
-      which carries at least eight years.[@nk]
+      and not entered on the record absent a repeat within five years; growing a personal-use
+      number of plants falls under the same misdemeanour.[@euda_cdr18] Anything more counts as
+      production for trafficking, which carries at least eight years.[@euda_cdr18]
+      [Personal use became a minor offence in 2013.](/history/greece-law-4139-2013/)
     sources:
-      - nk
+      - euda_cdr18
   production:
     status: medical
     text: >-
       Greece issues licences for cultivation and processing of pharmaceutical cannabis, simplified
-      by a 2021 law, aimed largely at export.
+      by a 2021 law, aimed largely at export.[@mondaq,boc]
+      [The state monopoly on selling medical cannabis products ended in 2021.](/history/greece-law-4801-2021/)
     sources:
       - mondaq
       - boc
   products:
     text: >-
       Prescription pharmaceutical cannabis products. Hemp foods, cosmetics and supplements within
-      set THC limits are legal, and the hemp limit rose from 0.2% to 0.3% THC in May 2026. The same
+      set THC limits are legal, and the hemp limit rose from 0.2% to 0.3% THC in May 2026.[@l5302] The same
       law prohibits retail sale, distribution, purchase and use by consumers of dried hemp flower,
-      even at 0.3% THC or less; an industrial-processing exception remains. Prescribed pharmaceutical
-      cannabis is regulated separately. A July 2026 law banned smokable or vapable plant products
-      with added cannabinoids.
+      even at 0.3% THC or less; an industrial-processing exception remains.[@l5302,eof26] Prescribed pharmaceutical
+      cannabis is regulated separately.[@mondaq] A July 2026 law banned smokable or vapable plant products
+      with added cannabinoids.[@l5322]
+      [Dried hemp flower sales to consumers were prohibited in May 2026.](/history/greece-hemp-flower-ban-2026/)
+      [Smokable products with added cannabinoids were banned in July 2026.](/history/greece-sprayed-products-ban-2026/)
     sources:
       - l5302
       - l5322
       - eof26
       - mondaq
-      - boc
   medical:
     text: >-
-      Medical cannabis was enabled in 2017 and production regulated in 2018. Patients first obtained
-      finished prescription products in February 2024; on 27 February the health minister met the
-      first patient prescribed one.
+      Medical cannabis was enabled in 2017 and production regulated in 2018.[@mondaq] Patients first
+      obtained finished prescription products in February 2024; on 27 February the health minister met
+      the first patient prescribed one.[@patient2024,launch2024]
+      [Medical use became lawful in 2017.](/history/greece-medical-use-2017/)
+      [Patients first obtained prescriptions in February 2024.](/history/greece-prescriptions-2024/)
     sources:
       - patient2024
       - launch2024
+      - mondaq
   consequences:
-    text: Personal-use convictions are kept off the standard criminal record.
+    text: >-
+      Personal-use convictions are kept off the standard criminal record, provided no further
+      relevant offence follows within five years.[@euda_cdr18]
     sources:
-      - nk
+      - euda_cdr18
   arrests:
     text: >-
       The EU drugs agency's statistical bulletin records 12,399 cannabis-related drug law
-      offences in Greece in 2024, against 10,124 in 2023. Of the 2024 total, 8,359 were for
-      use or possession for use. Since 2018 the figure is the sum of offences for all cannabis
-      products. Countries count these differently (offences or offenders, criminal or
-      administrative), so the figure is not comparable across borders.
+      offences in Greece in 2024, against 10,124 in 2023.[@euda_dlo] Of the 2024 total, 8,359 were for
+      use or possession for use.[@euda_dlo] Since 2018 the figure is the sum of offences for all cannabis
+      products.[@euda_dlo] Countries count these differently (offences or offenders, criminal or
+      administrative), so the figure is not comparable across borders.[@euda_dlo]
     sources:
       - euda_dlo
   clubs:
@@ -118,9 +158,10 @@ context:
     text: >-
       No club is confirmed. A Europe-wide survey of cannabis social clubs carried out in 2018 and
       2019 received no answer from Greece but, because of contradictory sources, could not rule out
-      that clubs were active there. No law in Greece provides for them; Malta (since 2021) and
-      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.
-      Nothing more recent was found.
+      that clubs were active there, and nothing more recent than that survey was found.[@pardal20] No law in Greece provides for them; Malta (since 2021) and
+      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.[@mt_cap628,de_cang]
+      [Malta legalised non-profit cannabis associations in 2021.](/history/malta-legalisation-2021/)
+      [Germany licensed them in 2024.](/history/germany-cultivation-associations-2024/)
     sources:
       - pardal20
       - de_cang
@@ -134,13 +175,13 @@ context:
       The drug law deals with seeds only inside its licensing regime for medical cannabis.
       Under Article 2A a producer holding a state approval may import seed for sowing and
       propagating material of varieties with more than 0.2% THC, while making such seed or
-      propagating material available to others, or exporting it, is prohibited. For everyone
+      propagating material available to others, or exporting it, is prohibited.[@n4139] For everyone
       else, growing plants in a number that fits personal use is the same misdemeanour as
-      possession. No provision or court ruling on unsown seeds kept by an individual was
-      found. Hemp varieties under the THC limit follow separate rules with certified seed.
+      possession.[@euda_cdr18] No provision or court ruling on unsown seeds kept by an individual was
+      found. Hemp varieties under the THC limit follow separate rules with certified seed.[@n4139]
     sources:
       - n4139
-      - nk
+      - euda_cdr18
   hemp:
     status: standard
     text: >-
@@ -149,6 +190,7 @@ context:
       purchase and use of dried hemp flower by consumers stays prohibited even at 0.3% or
       less, with an industrial-processing exception.[@l5302] Hemp varieties under the limit
       follow separate certified-seed rules.[@n4139]
+      [Dried hemp flower sales to consumers were prohibited in May 2026.](/history/greece-hemp-flower-ban-2026/)
     sources:
       - l5302
       - n4139
@@ -157,24 +199,25 @@ context:
     text: >-
       There is no legal recreational supply for anyone. Under Law 4139/2013, obtaining or
       possessing cannabis in a quantity that indicates personal use is a misdemeanour punishable
-      by up to five months in prison, usually suspended or replaced by treatment.
+      by up to five months in prison, usually suspended or replaced by treatment.[@euda_cdr18]
+      [Personal use became a minor offence in 2013.](/history/greece-law-4139-2013/)
     sources:
-      - nk
+      - euda_cdr18
   driving:
     status: impairment
     text: >-
       Road Traffic Code Law 5209/2025 article 46 prohibits driving under toxic-substance
-      or medication influence. Paragraph 8 sets at least two months' imprisonment,
+      or medication influence.[@roadcode2025] Paragraph 8 sets at least two months' imprisonment,
       a criminal fine of at least EUR200 and mandatory court removal of the driving
-      licence for three to six months. These are drug provisions, not the EUR1,200
-      and 180-day alcohol schedule. Police and port authorities may test drivers;
-      a drug-test refusal creates the paragraph 6 presumption of drug influence.
+      licence for three to six months.[@roadcode2025] These are drug provisions, not the EUR1,200
+      and 180-day alcohol schedule.[@roadcode2025] Police and port authorities may test drivers;
+      a drug-test refusal creates the paragraph 6 presumption of drug influence.[@roadcode2025]
       Fatal accidents require blood sampling, with medically certified alternatives
-      for surviving persons who cannot give blood. Injury and ordinary roadside
-      checks use scientifically appropriate methods. Article 132(2)(e) made article
+      for surviving persons who cannot give blood.[@roadcode2025] Injury and ordinary roadside
+      checks use scientifically appropriate methods.[@roadcode2025] Article 132(2)(e) made article
       46 effective on publication, 13 June 2025, despite the code's general three-month
-      commencement rule. The ministry's November 2025 reply identifies the 2011 joint
-      testing decision as applicable alongside article 46. No operative numerical THC
+      commencement rule.[@roadcode2025] The ministry's November 2025 reply identifies the 2011 joint
+      testing decision as applicable alongside article 46.[@drugtestingreply] No operative numerical THC
       cutoff, general prescription defence or complete repeat-offence schedule was
       verified in this pass; later procedural amendments require separate review.
     sources:
@@ -184,10 +227,22 @@ context:
     text: >-
       The EU drugs agency's statistical bulletin records 5,216 kg of herbal cannabis and
       218 kg of cannabis resin seized in Greece in 2024, against 6,116 kg and 349 kg in
-      2023. Herbal cannabis was seized on 9,447 occasions and resin on 904. Plant seizures came to 52,271 plants. Countries record seizures differently, so the
-      figures are not comparable across borders.
+      2023.[@euda_szr] Herbal cannabis was seized on 9,447 occasions and resin on 904.[@euda_szr] Plant seizures came to 52,271 plants.[@euda_szr] Countries record seizures differently, so the
+      figures are not comparable across borders.[@euda_szr]
     sources:
       - euda_szr
+  culture:
+    text: >-
+      Cannabis runs through Greece's urban music. [Rebetiko](/culture/traditions/rebetiko-and-the-tekes/),
+      the bouzouki music of the early-twentieth-century urban poor, was born partly in the *tekés*,
+      the hashish den, and its smoking songs (*hasiklidika*) named the habit plainly.[@rebetiko] Sung by the
+      Asia Minor refugees who brought the cannabis habit with them after 1922, the songs were
+      censored from 1937, when Metaxas closed every tekés in the country; the censorship was not
+      formally revoked until 1981.[@rebetiko] From the late 1950s the old songs found a wide new
+      public, and the hashish den with its water pipe lives on in that musical memory.[@rebetiko]
+      [Refugees and soldiers from Asia Minor spread hashish in Greece in 1922.](/history/greece-asia-minor-refugees-1922/)
+    sources:
+      - rebetiko
 sources:
   patient2024:
     title: Greek Ministry of Health — meeting with the first prescribed patient (27 February 2024)
@@ -230,10 +285,13 @@ sources:
     title: OENET — ΕΟΦ, απαγόρευση λιανικής πώλησης προϊόντων κάνναβης με μορφή ξηρού άνθους (21 May 2026)
     url: >-
       https://www.oenet.gr/τελευταία-νέα/φάρμακα/item/135567-eof-apagoreusi-lianikis-pwlisis-proiontwn-kannavis-me-morfi-xirou-anthou
-  nk:
-    title: Neos Kosmos — Hopes run high for marijuana law reform in Greece
-    url: >-
-      https://neoskosmos.com/en/2019/10/02/news/greece/hopes-run-high-for-marijuana-law-reform-in-greece
+  euda_cdr18:
+    title: EMCDDA — Greece Country Drug Report 2018 (PDF)
+    url: https://www.euda.europa.eu/system/files/publications/8879/greece-cdr-2018-with-numbers.pdf
+    locator: Drug laws and drug law offences, page 3
+  rebetiko:
+    title: Cannabis Freedom Index — Rebetiko and the tekés (atlas)
+    url: https://cannabisfreedom.fyi/culture/traditions/rebetiko-and-the-tekes/
   mondaq:
     title: Mondaq — The new legislative regime on pharmaceutical cannabis (Greece)
     url: >-
