@@ -34,4 +34,12 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 - Gotcha: committed pin tests constrain penalty tables (ro sharing 3–10y); terms can be added safely.
 - Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
 | Bulgaria | | | |
-| Sweden | | | |
+| Sweden | x | | |
+
+## Sweden (se) — done 2026-10-28 ~00:40 UTC
+- Profile: culture (CBD ruling) added; possession table (minor/ordinary) + cultivation step + sharing terms added; inline citations everywhere incl. pinned products text (kept: test pins /14 July 2026/ verbatim); history links (1988 use crime, 2011 Sativex).
+- No new web sources (MPA Sativex page JS-blocked; GW announcement 403; wrote from checked entry + profile-confirmed facts).
+- Article: sweden-sativex-2011 (22 Dec 2011, MS spasticity non-responders, licence route unchanged).
+- Gaps closed except old decades; research section pre-existing; culture links CBD atlas entry.
+- Gotcha: notes must not state minimums — use prison_min; committed pin tests (sharing 3–10y, products text) constrain edits.
+- Audit 0 errors + 1 warning (products kept for test), answers 93 + history 47 pass. Build + HTML verify pending.

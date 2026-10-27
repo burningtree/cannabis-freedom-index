@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 752
 recreational: illegal
 medical: limited
-updated: 2026-10-25
+updated: 2026-10-27
 summary: "Zero-tolerance model: use itself is criminal and police can compel drug tests."
 scores:
   possession: 1
@@ -17,57 +17,78 @@ segments:
     text: >-
       Possession of any amount is a crime. A 'minor drug offence' — small personal amounts — brings
       income-based day-fines or up to six months in prison; ordinary offences carry up to three
-      years.
+      years.[@nordic]
     sources:
       - nordic
+    penalties:
+      - label: Minor drug offence
+        treatment: criminal
+        term: Possession
+        prison: 6 months
+        note: Small personal amounts; income-based day-fines or up to six months
+      - label: Ordinary drug offence
+        treatment: criminal
+        term: Possession
+        prison: 3 years
+        note: Up to three years
   cultivation:
-    text: Cultivation is a drug offence, prosecuted with prison for anything beyond a plant or two.
+    text: Cultivation is a drug offence, prosecuted with prison for anything beyond a plant or two.[@nordic]
     sources:
       - nordic
+    penalties:
+      - label: Beyond a plant or two
+        treatment: criminal
+        term: Cultivation
+        note: Prosecuted with prison; tariff not stated in retained sources
   enforcement:
     text: >-
       Zero tolerance in practice: tens of thousands of use and possession cases a year, almost all
-      ending in day-fines.
+      ending in day-fines.[@nordic,scan]
     sources:
       - nordic
       - scan
   sharing:
     text: >-
       Transferring narcotics is an offence under section 1 of the Narcotic Drugs Punishments Act,
-      with up to three years in prison and at least six months where the drugs are meant for sale. A
+      with up to three years in prison and at least six months where the drugs are meant for sale.[@nsl] A
       minor offence brings a fine or up to six months, a gross one two to seven years and an
-      exceptionally gross one six to ten.
+      exceptionally gross one six to ten.[@nsl]
     sources:
       - nsl
     penalties:
       - label: Minor drug offence
         treatment: criminal
+        term: Supply
         prison: 6 months
         note: Fine or up to six months for small personal amounts
       - label: Ordinary drug offence
         treatment: criminal
+        term: Supply
+        prison_min: 6 months
         prison: 3 years
-        note: At least six months where the drugs are meant for sale
+        note: Six months minimum where the drugs are meant for sale
       - label: Gross drug offence
         treatment: criminal
+        term: Aggravated supply
         prison_min: 2 years
         prison: 7 years
       - label: Exceptionally gross drug offence
         treatment: criminal
+        term: Aggravated supply
         prison_min: 6 years
         prison: 10 years
   consumption:
     text: >-
-      Sweden criminalised drug use itself in 1988. Police who suspect someone is under the influence
+      Sweden criminalised drug use itself in [1988](/history/sweden-use-criminalised-1988/). Police who suspect someone is under the influence
       can detain them and compel a urine or blood test; a positive result is enough for a
-      conviction. This is the defining feature of the Swedish model and the reason this segment
+      conviction.[@scan] This is the defining feature of the Swedish model and the reason this segment
       scores zero.
     sources:
       - scan
   access:
     text: >-
-      Prescription access is narrow but lawful. Sativex and Epidyolex are approved medicines, and
-      a doctor may apply for an individual licence for another medicine.
+      Prescription access is narrow but lawful. [Sativex (2011)](/history/sweden-sativex-2011/) and Epidyolex are approved medicines, and
+      a doctor may apply for an individual licence for another medicine.[@lva]
     sources:
       - lva
 context:
@@ -106,30 +127,40 @@ context:
       - uu22
   production:
     status: none
-    text: No licensed production.
+    text: >-
+      No licensed production of cannabis for medical or recreational use was found.[@nordic]
+      Licensed hemp farming exists, but it is an agricultural route for EU-listed varieties, not
+      a drug-production channel.[@cannintel]
     sources:
       - nordic
+      - cannintel
   products:
     text: >-
       Two approved cannabinoid medicines. Delta-9-THCA-A became a narcotic on 14 July 2026 under SFS
       2026:1109; products marketed as THCA do not escape control merely because the acid converts to
-      THC when heated. This classification is distinct from the rules for CBD.
+      THC when heated.[@thca2026] This classification is distinct from the rules for CBD.[@lva]
     sources:
       - lva
       - thca2026
   medical:
     text: >-
       Limited to two approved prescription medicines; anything else requires an individual licence
-      application by the patient's doctor to the Medical Products Agency, rarely granted.
+      application by the patient's doctor to the Medical Products Agency, rarely granted.[@scan,lva]
     sources:
       - scan
       - lva
   consequences:
     text: >-
       Fines are entered in the criminal register, visible to some employers, and police report users
-      to licensing authorities, which can cost a driving licence.
+      to licensing authorities, which can cost a driving licence.[@nordic]
     sources:
       - nordic
+  culture:
+    text: >-
+      Sweden's CBD argument belongs to the [CBD](/culture/language/cbd/) atlas entry: the Supreme
+      Court ruled in 2019 that CBD oil containing THC falls under the narcotics law.[@cannintel]
+    sources:
+      - cannintel
   planting:
     seeds: grey
     seeds_trade: open
@@ -137,9 +168,9 @@ context:
     clones_trade: banned
     text: >-
       The narcotics control ordinance defines cannabis as the above-ground parts of any plant
-      of the genus Cannabis "with the exception of seeds", so seeds are not narcotics. A
+      of the genus Cannabis "with the exception of seeds", so seeds are not narcotics.[@nk] A
       cutting is an above-ground part of the plant and is covered, and producing narcotics is
-      an offence under the Narcotic Drugs Penal Act.
+      an offence under the Narcotic Drugs Penal Act.[@nsl]
     sources:
       - nk
       - nsl
@@ -147,10 +178,10 @@ context:
     status: zero
     text: >-
       No THC limit is set: the offence is committed if a drug is detected, though there is no
-      liability where it was taken in accordance with a medical prescription. Police may stop
+      liability where it was taken in accordance with a medical prescription.[@euda_dd] Police may stop
       at random and test on suspicion; there is no roadside oral-fluid test. Penalties are
       day-fines or up to two years in prison, a ban of one month to three years, and the
-      vehicle can be forfeited.
+      vehicle can be forfeited.[@euda_dd]
     sources:
       - euda_dd
   clubs:
@@ -158,9 +189,9 @@ context:
     text: >-
       No clubs are known. A Europe-wide survey of cannabis social clubs carried out in 2018 and 2019
       found, after online searches and contact with people in the field, that there did not seem to
-      be any active club in Sweden. No law in Sweden provides for them; Malta (since 2021) and
-      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.
-      Nothing more recent was found.
+      be any active club in Sweden.[@pardal20] No law in Sweden provides for them; Malta (since 2021) and
+      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.[@de_cang,mt_cap628]
+      Nothing more recent was found.[@pardal20]
     sources:
       - pardal20
       - de_cang
@@ -170,26 +201,26 @@ context:
     text: >-
       There is no legal recreational supply for anyone. Possession of any amount is a crime: a
       minor drug offence, covering small personal amounts, brings income-based day-fines or up
-      to six months in prison, and ordinary offences up to three years.
+      to six months in prison, and ordinary offences up to three years.[@nordic]
     sources:
       - nordic
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 2,652 kg of herbal cannabis and
       7,273 kg of cannabis resin seized in Sweden in 2024, against 2,060 kg and 8,849 kg
-      in 2023. Herbal cannabis was seized on 6,071 occasions and resin on 15,973.
+      in 2023.[@euda_szr] Herbal cannabis was seized on 6,071 occasions and resin on 15,973.
       Countries record seizures differently, so the figures are not comparable across
-      borders.
+      borders.[@euda_szr]
     sources:
       - euda_szr
   arrests:
     text: >-
       The crime prevention council Brå counted 125,142 reported offences against the
-      Narcotics Penal Act in 2025, 4 per cent fewer than in 2024. Possession made up 57
-      per cent and personal use 36 per cent. Reported possession has almost doubled since 2016, and the
-      total is 38 per cent higher than that year. Brå notes that the number of reported
+      Narcotics Penal Act in 2025, 4 per cent fewer than in 2024.[@bra26] Possession made up 57
+      per cent and personal use 36 per cent.[@bra26] Reported possession has almost doubled since 2016, and the
+      total is 38 per cent higher than that year.[@bra26] Brå notes that the number of reported
       drug offences mainly reflects how much the police search and intervene. The
-      statistics are not split by substance.
+      statistics are not split by substance.[@bra26]
     sources:
       - bra26
 sources:
