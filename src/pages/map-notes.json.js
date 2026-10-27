@@ -2,12 +2,13 @@
 // segment's explanation and of the context sections the map can be coloured by. Fetched once, the
 // first time a country is hovered, so the home page itself carries only scores.
 //   n: summary   s: the six segment explanations, in SEGMENTS order
-//   x: context sections by key (planting, medical, clubs, driving, visitors)
+//   x: context sections by key (planting, medical and every section with a status: clubs, driving, visitors, hemp, production, research)
 // States and provinces are keyed like their map shapes ("us/ca") and carry n and s only.
 import { places, countries, subunitsOf } from "../lib/countries.js";
 import { short } from "../lib/short.js";
+import { STATUS_SECTIONS } from "../lib/segment-ids.js";
 
-const MAP_CONTEXT = ["planting", "medical", "clubs", "driving", "visitors"];
+const MAP_CONTEXT = ["planting", "medical", ...Object.keys(STATUS_SECTIONS)];
 
 const notes = {};
 for (const c of places) {

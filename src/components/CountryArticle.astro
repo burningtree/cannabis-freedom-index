@@ -19,6 +19,8 @@ import References from "./References.astro";
 import { references, citeParts, citedKeys } from "../lib/cite.js";
 import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
+import { TREATMENT, punishmentText, punishmentExtra } from "../lib/penalties.js";
+import { viewByMetric } from "../lib/map-views.js";
 import { answersFor } from "../lib/answers.js";
 import CultureList from "./CultureList.astro";
 import { cultureOf } from "../lib/culture.js";
@@ -55,7 +57,14 @@ const unitParts = sub ? sub.segCite.map((text, i) => citeParts(text, unitRefs,
   (k) => /^[1-9]\d*$/.test(k) && sub.sources[+k - 1],
   citedKeys(text) ?? sub.sources.map((_, i) => String(i + 1)),
   `countries/${c.slug}/${sub.id}.yaml: ${SEGMENTS[i].id}`)) : [];
-const ctxParts = d ? Object.fromEntries(d.context.filter(Boolean).map((x) => [x.key, partsOf(x, ctxRefs, x.key)])) : {};
+const ctxParts = d ? Object.fromEntries(d.context.filter(Boolean).map((x) => [x.key, x.items ? x.items.map((item, i) => partsOf(item, ctxRefs, `${x.key}[${i}]`)) : partsOf(x, ctxRefs, x.key)])) : {};
+// a maximum fine in the profile's currency: "€5,500", "$300"
+const money = (n, currency) => new Intl.NumberFormat("en-GB", { style: "currency", currency, maximumFractionDigits: 0 }).format(n);
+// a chip inside a context section leads to the world map coloured by the same status
+const mapOf = (metric) => (viewByMetric[metric] ? `${base}map/${viewByMetric[metric].slug}/` : undefined);
+const onMap = (help) => `${help} · See the world map`;
+// the recreational and medical status chips lead to their own context sections, where those exist
+const ctxHas = (key) => Boolean(d?.context.some((x) => x?.key === key));
 const INCB = ["International Narcotics Control Board — Travellers carrying medicines containing controlled substances", "https://www.incb.org/incb/en/travellers/index.html", null, "https://www.incb.org/incb/en/travellers/index.html"];
 // 48,000,000 → "48 million", 770,000 → "770,000"
 const people = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)} million` : n.toLocaleString("en-GB"));
@@ -140,8 +149,12 @@ const culture = cultureOf(c);
     </div>
     <p class="d-note">{v.note}</p>
     <div class="d-chips">
-      <span class={`chip s-${v.rec}`} title={REC_HELP[v.rec]}>Recreational: {REC_LABEL[v.rec]}</span>
-      <span class={`chip s-${v.med}`} title={MED_HELP[v.med]}>Medical: {MED_LABEL[v.med]}</span>
+      {ctxHas("recreational")
+        ? <a class={`chip s-${v.rec}`} href="#seg-ctx-recreational" data-seg-link="ctx-recreational" title={REC_HELP[v.rec]}>Recreational: {REC_LABEL[v.rec]}</a>
+        : <span class={`chip s-${v.rec}`} title={REC_HELP[v.rec]}>Recreational: {REC_LABEL[v.rec]}</span>}
+      {ctxHas("medical")
+        ? <a class={`chip s-${v.med}`} href="#seg-ctx-medical" data-seg-link="ctx-medical" title={MED_HELP[v.med]}>Medical: {MED_LABEL[v.med]}</a>
+        : <span class={`chip s-${v.med}`} title={MED_HELP[v.med]}>Medical: {MED_LABEL[v.med]}</span>}
     </div>
     {d && d.context.some((x) => x && (x.status || x.seeds)) && (
       <div class="d-chips d-chips-ctx">
@@ -333,6 +346,21 @@ const culture = cultureOf(c);
           {seg && (
             <div class="why">
               <p><Cited parts={segParts[i]} /></p>
+              {seg.penalties && (
+                <table class="pen">
+                  <thead><tr><td>Amount</td><td>What happens</td><td>Punishment</td><td>Fine, at most</td></tr></thead>
+                  <tbody>
+                    {seg.penalties.rows.map((r) => (
+                      <tr>
+                        <td data-label="Amount">{r.amount}{r.note && <span class="pen-note">{r.note}</span>}</td>
+                        <td data-label="What happens"><span class={`pen-t s-${TREATMENT[r.treatment].tone}`} title={TREATMENT[r.treatment].help}>{TREATMENT[r.treatment].label}</span>{r.term && <span class="pen-note">{r.term}</span>}</td>
+                        <td data-label="Punishment" class:list={{ "pen-death": r.death }}>{punishmentText(r) ?? "—"}{punishmentExtra(r) && <span class="pen-note">{punishmentExtra(r)}</span>}</td>
+                        <td data-label="Fine, at most">{r.fine ? money(r.fine, seg.penalties.currency) : "—"}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
             </div>
           )}
         </details>
@@ -347,21 +375,34 @@ const culture = cultureOf(c);
         <h2 class="d-h">More context <span>not part of the score</span></h2>
         {d.context.filter(Boolean).map((x) => (
           <div class="segrow" data-seg={`ctx-${x.key}`} id={`seg-ctx-${x.key}`}>
-            <div class="segrow-top"><span>{x.name === "Death penalty" ? "☠️ " : ""}{x.name}</span></div>
+            <div class="segrow-top"><span>{x.name === "Death penalty" ? "☠️ " : ""}{x.name}<SourceTip label="What this covers" inline>{x.help}</SourceTip></span></div>
+            {x.key === "recreational" && (
+              <div class="d-chips"><a class={`chip s-${v.rec}`} href={mapOf("status:rec")} title={onMap(REC_HELP[v.rec])}>Recreational: {REC_LABEL[v.rec]}</a></div>
+            )}
+            {x.key === "medical" && (
+              <div class="d-chips"><a class={`chip s-${v.med}`} href={mapOf("status:med")} title={onMap(MED_HELP[v.med])}>Medical: {MED_LABEL[v.med]}</a></div>
+            )}
             {x.status && (
               <div class="d-chips">
-                <span class={`chip s-${STATUS_SECTIONS[x.kind].statuses[x.status].tone}`} title={STATUS_SECTIONS[x.kind].statuses[x.status].help}>{STATUS_SECTIONS[x.kind].chip}: {STATUS_SECTIONS[x.kind].statuses[x.status].label}</span>
+                <a class={`chip s-${STATUS_SECTIONS[x.kind].statuses[x.status].tone}`} href={mapOf(`status:${x.kind}`)} title={onMap(STATUS_SECTIONS[x.kind].statuses[x.status].help)}>{STATUS_SECTIONS[x.kind].chip}: {STATUS_SECTIONS[x.kind].statuses[x.status].label}</a>
               </div>
             )}
             {x.seeds && (
               <div class="d-chips">
-                <span class={`chip s-${PLANTING_STATUS[x.seeds].tone}`} title={PLANTING_STATUS[x.seeds].help[0]}>Seeds: {PLANTING_STATUS[x.seeds].label}</span>
-                <span class={`chip s-${PLANTING_TRADE[x.seeds_trade].tone}`} title={PLANTING_TRADE[x.seeds_trade].help[0]}>Seed sales: {PLANTING_TRADE[x.seeds_trade].label}</span>
-                <span class={`chip s-${PLANTING_STATUS[x.clones].tone}`} title={PLANTING_STATUS[x.clones].help[1]}>Clones: {PLANTING_STATUS[x.clones].label}</span>
-                <span class={`chip s-${PLANTING_TRADE[x.clones_trade].tone}`} title={PLANTING_TRADE[x.clones_trade].help[1]}>Clone sales: {PLANTING_TRADE[x.clones_trade].label}</span>
+                <a class={`chip s-${PLANTING_STATUS[x.seeds].tone}`} href={mapOf("plant:seeds")} title={onMap(PLANTING_STATUS[x.seeds].help[0])}>Seeds: {PLANTING_STATUS[x.seeds].label}</a>
+                <a class={`chip s-${PLANTING_TRADE[x.seeds_trade].tone}`} href={mapOf("plant:seeds_trade")} title={onMap(PLANTING_TRADE[x.seeds_trade].help[0])}>Seed sales: {PLANTING_TRADE[x.seeds_trade].label}</a>
+                <a class={`chip s-${PLANTING_STATUS[x.clones].tone}`} href={mapOf("plant:clones")} title={onMap(PLANTING_STATUS[x.clones].help[1])}>Clones: {PLANTING_STATUS[x.clones].label}</a>
+                <a class={`chip s-${PLANTING_TRADE[x.clones_trade].tone}`} href={mapOf("plant:clones_trade")} title={onMap(PLANTING_TRADE[x.clones_trade].help[1])}>Clone sales: {PLANTING_TRADE[x.clones_trade].label}</a>
               </div>
             )}
-            <p class="ctx"><Cited parts={ctxParts[x.key]} /></p>
+            {x.items
+              ? x.items.map((item, i) => (
+                  <div class="ctx-spot">
+                    <h3 class="ctx-spot-h">{item.title}</h3>
+                    <p class="ctx"><Cited parts={ctxParts[x.key][i]} /></p>
+                  </div>
+                ))
+              : <p class="ctx"><Cited parts={ctxParts[x.key]} /></p>}
           </div>
         ))}
         {travel && (

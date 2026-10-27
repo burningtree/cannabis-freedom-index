@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 702
 recreational: death
 medical: limited
-updated: 2026-10-23
+updated: 2026-10-27
 summary: >-
   Death for trafficking more than 500 g of cannabis, more than 200 g of cannabis resin, or more
   than 1,000 g of cannabis mixture, with narrow exceptions. Larger possession amounts bring a
@@ -21,19 +21,58 @@ segments:
     text: >-
       Cannabis is a Class A controlled drug. Possessing less than 330 g of cannabis, less than
       130 g of resin, or less than 660 g of mixture carries up to 10 years, a fine of up to
-      S$20,000, or both.[@mda_sch] From 330 g to 500 g of cannabis the sentence is at least 10 years
+      S$20,000, or both.[@mda_sch] Anyone holding more than 15 g is presumed to hold it for
+      trafficking unless they prove otherwise.[@wmda] From 330 g to 500 g of cannabis the sentence is at least 10 years
       and 5 strokes of the cane, and at most 20 years and 10 strokes. More than 500 g is at least
       20 years and 10 strokes, and at most 30 years and 15 strokes.[@mda_sch] Resin uses 130 g and
       200 g for those same steps, and mixture uses 660 g and 1,000 g.[@cnb_can]
     sources:
+      - wmda
       - mda_sch
       - cnb_can
+    currency: SGD
+    penalties:
+      - upto: 15 g
+        treatment: criminal
+        term: Offence under the Misuse of Drugs Act
+        prison: 10 years
+        fine: 20000
+        note: Using it is a separate offence, proved by a urine test, with at least a year in prison
+      - over: 15 g
+        upto: 330 g
+        treatment: criminal
+        term: Presumed trafficking
+        prison_min: 5 years
+        prison: 20 years
+        caning: [5, 15]
+        note: Unless the holder proves it was not for trafficking; possession alone carries up to 10 years or S$20,000
+      - over: 330 g
+        upto: 500 g
+        treatment: criminal
+        term: Presumed trafficking
+        prison_min: 20 years
+        prison: 30 years
+        caning: [15, 15]
+        note: Or life imprisonment. If the presumption is rebutted, possession carries 10–20 years and 5–10 strokes
+      - over: 500 g
+        treatment: criminal
+        term: Presumed trafficking, a capital offence
+        death: true
+        note: If the presumption is rebutted, possession carries 20–30 years and 10–15 strokes
   cultivation:
     text: >-
       Cultivating cannabis brings at least three years or a fine of at least S$5,000, and up to
       20 years or a fine of S$40,000, or both.[@mda_sch]
     sources:
       - mda_sch
+    currency: SGD
+    penalties:
+      - over: 0 plants
+        treatment: criminal
+        term: Cultivation
+        prison: 20 years
+        fine: 40000
+        note: At least three years or a fine of at least S$5,000
   enforcement:
     text: >-
       Trafficking, importing or exporting more than 500 g of cannabis, more than 200 g of cannabis
@@ -77,16 +116,37 @@ context:
       - cnb_can
       - mda_sch
       - cnb_execution
-  production:
-    text: None. No licensed production exists.
-    sources:
-      - wiki
-  products:
+  recreational:
     text: >-
-      None. CBD products are also prohibited; a pharmaceutical cannabinoid can be approved for an
-      individual patient.
+      There is no legal way to get or use cannabis in Singapore, and using it is itself a crime,
+      proved by a urine test the police can require.[@cnb_can] Citizens and permanent residents who
+      use drugs abroad, even where cannabis is legal, face the same penalties as if they had used them
+      at home.[@cnb] Cannabis is the third most common drug among people arrested, after
+      methamphetamine and heroin: in 2025 the [Central Narcotics Bureau](https://www.cnb.gov.sg/)
+      arrested 250 people for using it, 8% of all drug users arrested, and seven in ten of them were
+      caught for the first time.[@cnb25] The bureau says permissive attitudes among young people are
+      its main worry; six in ten new cannabis users arrested were under 30.[@cnb25]
     sources:
+      - cnb_can
+      - cnb
+      - cnb25
+  hemp:
+    status: none
+    text: >-
+      Singapore makes no exception for hemp. The law defines cannabis as any part of a plant of the
+      genus Cannabis, so seeds, low-THC hemp and CBD products are all controlled drugs.[@mda1973]
+      A pharmaceutical cannabinoid can be approved for an individual
+      patient.[@wiki]
+    sources:
+      - mda1973
       - wiki
+  production:
+    status: none
+    text: >-
+      None. No licensed production exists, and growing a single plant is a crime with at least
+      three years in prison or a S$5,000 fine.[@mda_sch]
+    sources:
+      - mda_sch
   medical:
     text: >-
       No medical cannabis programme. In rare cases the health regulator has approved a cannabidiol
@@ -143,7 +203,71 @@ context:
       disqualification.
     sources:
       - rta67
+  arrests:
+    text: >-
+      The Central Narcotics Bureau arrested 250 people for using cannabis in 2025, 8% of all drug
+      users arrested; 70% of them were new users, and 52% were under 30.[@cnb25] Cannabis seizures
+      rose by 21.7%, from 101 kg in 2024 to 123 kg in 2025.[@cnb25]
+    sources:
+      - cnb25
+  culture:
+    text: >-
+      Singapore's stance took shape around 1970, when the government saw the hippie culture
+      spreading along the jet routes as a gateway to drugs and escapism. Long-haired foreigners were
+      turned away, and in 1972 Operation Snip Snip made long-haired men cut their hair before they
+      could enter; civil servants who refused were dismissed.[@nlb24] The idea of a drug-free
+      society has stayed at the centre of policy: the narcotics bureau runs prevention campaigns in
+      schools, and describes legalisation abroad as a cautionary tale.[@cnb25,cnb]
+    sources:
+      - nlb24
+      - cnb25
+      - cnb
+  research:
+    status: restricted
+    text: >-
+      Singapore studies cannabis without growing it. In 2018 the [National Research
+      Foundation](https://www.nrf.gov.sg/) put S$25 million into a five-year synthetic biology
+      programme, one strand of which aimed to make cannabis-derived medicines, mostly CBD, from
+      engineered microbes rather than plants.[@idpc18] The plant itself stays illegal for any
+      purpose.[@idpc18]
+    sources:
+      - idpc18
+  spotlights:
+    - title: Fifteen grams makes a trafficker
+      text: >-
+        Above 15 g of cannabis, the law presumes that the holder is a trafficker, and it is for the
+        accused to prove otherwise.[@wmda] Trafficking brings at least five years and five strokes of
+        the cane, and above 500 g the death penalty; Singapore carried out a cannabis execution as
+        recently as April 2026.[@cnb_can,cnb_execution]
+      sources:
+        - wmda
+        - cnb_can
+        - cnb_execution
+    - title: The law travels with you
+      text: >-
+        A Singaporean or permanent resident who smokes a joint in Bangkok or Amsterdam, where it may
+        be legal, commits the same offence as at home, and can be tested on return.[@cnb,mh] Using
+        cannabis carries at least a year in prison, so a holiday habit can end in a cell.[@cnb_can]
+      sources:
+        - cnb
+        - mh
+        - cnb_can
+
 sources:
+  cnb25:
+    type: report
+    title: Central Narcotics Bureau — Annual Statistics Report 2025 (10 February 2026)
+    url: https://isomer-user-content.by.gov.sg/266/8df707ca-fd80-496f-9099-d263dc5a747a/CNB%20Annual%20Statistics%20Report%202025.pdf
+    year: 2026
+  wmda:
+    title: Wikipedia — Misuse of Drugs Act (Singapore), section 17 presumption amounts
+    url: https://en.wikipedia.org/wiki/Misuse_of_Drugs_Act_(Singapore)
+  nlb24:
+    title: BiblioAsia (National Library Board) — Andrea Kee, Singapore's Hippie Hysteria and the Ban on Long Hair (April–June 2024)
+    url: https://biblioasia.nlb.gov.sg/vol-20/issue-1/apr-jun-2024/hippies-operation-snip-snip-long-hair/
+  idpc18:
+    title: IDPC — Singapore announces medical cannabis research, despite maintaining death penalty for cannabis trafficking (February 2018)
+    url: https://idpc.net/news/2018/02/singapore-announces-medical-cannabis-research-despite-maintaining-death-penalty-for-cannabis-trafficking
   rta67:
     title: Singapore — Road Traffic Act 1961, section 67 (Singapore Statutes Online)
     url: https://sso.agc.gov.sg/Act/RTA1961?ProvIds=P14-#pr67-

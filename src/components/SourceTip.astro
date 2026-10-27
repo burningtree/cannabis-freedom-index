@@ -2,9 +2,12 @@
 // A small "i" in the corner of a figure that shows where the figure comes from: on hover, or on a
 // click or tap (for touch screens; the script in Base.astro toggles it and closes it again). The
 // slot is the source text, with its links. The parent needs `position: relative`.
+// `label` names the note ("Source" by default); `inline` sets the "i" in the line of text, beside a
+// heading, instead of in the parent's corner.
 import { Icon } from "astro-icon/components";
+const { label = "Source", inline = false } = Astro.props;
 ---
-<span class="src-tip">
-  <button type="button" class="src-tip-btn" aria-label="Source" aria-expanded="false"><Icon name="iconoir:info-circle" aria-hidden="true" /></button>
-  <span class="src-tip-pop" role="tooltip"><b>Source</b> <slot /></span>
+<span class:list={["src-tip", { "src-tip-inline": inline }]}>
+  <button type="button" class="src-tip-btn" aria-label={label} aria-expanded="false"><Icon name="iconoir:info-circle" aria-hidden="true" /></button>
+  <span class="src-tip-pop" role="tooltip"><b>{label}</b> <slot /></span>
 </span>

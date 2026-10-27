@@ -43,7 +43,7 @@ export const MAP_VIEWS = [
     lede: "Whether cannabis cuttings may be sold or handed on in each country." },
   ...Object.entries(STATUS_SECTIONS).map(([key, section]) => ({
     slug: key, metric: `status:${key}`, column: key,
-    title: { clubs: "Cannabis clubs by country", driving: "Cannabis and driving: the rule in every country", visitors: "Can visitors buy cannabis? Country by country" }[key] ?? `${section.name} by country`,
+    title: { clubs: "Cannabis clubs by country", driving: "Cannabis and driving: the rule in every country", visitors: "Can visitors buy cannabis? Country by country", hemp: "The THC limit for hemp, country by country", production: "Who may produce cannabis legally? Country by country", research: "Can scientists study cannabis? Country by country" }[key] ?? `${section.name} by country`,
     lede: section.sub,
   })),
 ];

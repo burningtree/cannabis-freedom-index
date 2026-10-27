@@ -2,6 +2,7 @@
 import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, MED_LABEL, places, changes, formatDate, dateTime, segmentPoints } from "./countries.js";
 import { archivedUrl } from "./archive.js";
 import { tierOf } from "./tiers.js";
+import { STATUS_SECTIONS } from "./segment-ids.js";
 import { priceObservations } from "./prices.js";
 
 export const SITE = "https://cannabisfreedom.fyi";
@@ -25,9 +26,8 @@ export const scoreRows = places.map((c) => ({
   seeds_trade: c.planting?.seeds_trade ?? "",
   clones: c.planting?.clones ?? "",
   clones_trade: c.planting?.clones_trade ?? "",
-  clubs: c.clubs ?? "", // these three are empty until researched; see STATUS_SECTIONS
-  driving: c.driving ?? "",
-  visitors: c.visitors ?? "",
+  // clubs, driving, visitors, hemp, production, research: empty until researched; see STATUS_SECTIONS
+  ...Object.fromEntries(Object.keys(STATUS_SECTIONS).map((key) => [key, c[key] ?? ""])),
   population: c.population,
   users: c.use.users,
   users_share_percent: c.use.prevalence,

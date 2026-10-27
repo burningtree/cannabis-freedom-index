@@ -3,7 +3,7 @@ region: North America
 iso_numeric: 388
 recreational: decriminalised
 medical: legal
-updated: 2026-10-23
+updated: 2026-10-27
 summary: >-
   Since 2015 up to 2 oz is a petty offence with no record, five plants per household are allowed,
   and Rastafari sacramental use is legal. Licensed herb houses serve patients and visitors.
@@ -31,13 +31,34 @@ segments:
       penalty — no arrest, no court, no criminal record. Above 2 oz it is still a criminal offence.
       Rastafari adherents and holders of a medical permit may possess lawfully.
     sources:
+      - moj15
       - fact
+    currency: JMD
+    penalties:
+      - upto: 2 oz
+        treatment: civil
+        term: Ticket (fixed penalty notice)
+        fine: 500
+        note: No arrest, court or criminal record; under-18s and dependent users are also sent for counselling. Rastafari and medical patients are exempt
+      - over: 2 oz
+        treatment: criminal
+        term: Criminal offence
+        note: A fine, prison or both, and a criminal record
   cultivation:
     text: >-
       Each household may legally grow up to five ganja plants on its premises; where several
       households share a property, each gets five. More than that is an offence unless licensed.
     sources:
+      - moj15
       - fact
+    penalties:
+      - upto: 5 plants
+        treatment: legal
+        note: Per household, on its own premises
+      - over: 5 plants
+        treatment: criminal
+        term: Criminal offence
+        note: Unless licensed, or authorised for Rastafari sacramental or research purposes
   enforcement:
     text: >-
       Small-scale possession and public smoking mean a ticket. Possession over 2 oz, unlicensed
@@ -71,23 +92,20 @@ segments:
     sources:
       - moj15
 context:
-  production:
+  recreational:
     text: >-
-      The Cannabis Licensing Authority issues cultivator, processor, transporter, retail and
-      research licences in tiers by size. Fees, security rules and banking problems kept many
-      traditional small growers outside the legal industry; in 2026 the authority widened fee-free
-      routes in for them, with two-year transition periods and collective cultivation of up to ten
-      acres for community groups.
+      Ganja is part of everyday Jamaican life, but there is still no legal recreational market.
+      Since 2015 an adult with up to 2 ounces gets a J$500 ticket instead of an arrest, and a
+      household may grow five plants.[@moj15] Licensed herb houses sell flower, oils and edibles,
+      but only for medical or therapeutic use, on a doctor's recommendation or, for visitors, a
+      permit.[@cla,fact] Most ganja is still grown and sold outside the licensed system, and tourists
+      and locals alike buy it on the street.[@ap21,gl26]
     sources:
-      - cla
-      - mh
-  products:
-    text: >-
-      Licensed retailers offer flower, oils, edibles and other preparations for medical or
-      therapeutic purposes. Hemp is licensed separately.
-    sources:
+      - moj15
       - cla
       - fact
+      - ap21
+      - gl26
   medical:
     text: >-
       Any registered medical practitioner can recommend ganja for medical or therapeutic purposes,
@@ -95,6 +113,31 @@ context:
     sources:
       - fact
       - cla
+  hemp:
+    status: high
+    text: >-
+      The law defines hemp as a ganja plant with less than 1% THC and takes it out of the ganja
+      rules; growing, processing and trading it need a licence from the [Cannabis Licensing
+      Authority](https://www.cla.org.jm/).[@moj15] Hemp can be made into cloth, paper and rope,
+      and into medicines, drinks and cosmetics.[@moj15]
+    sources:
+      - moj15
+  production:
+    status: medical
+    text: >-
+      The Cannabis Licensing Authority issues cultivator, processor, transporter, retail and
+      research licences in tiers by size.[@cla] The legal industry is small but growing: the
+      regulator put its value at US$63.5 million in 2025, up from US$38.9 million in 2024, on
+      15.4 hectares of licensed land, and the first four exports of ganja products, oils, balms
+      and lotions, left the island that year.[@gl26] Fees, security rules and banking problems kept
+      many traditional small growers outside the legal industry; in 2026 the authority [widened
+      fee-free routes in for them](/history/jamaica-small-grower-routes-2026/), with two-year
+      transition periods and collective cultivation of up to ten acres for community
+      groups.[@cla,mh]
+    sources:
+      - cla
+      - gl26
+      - mh
   consequences:
     text: >-
       Tickets leave no criminal record, and earlier convictions for small quantities can be
@@ -179,7 +222,81 @@ context:
       were 25 per cent fewer than in 2014.
     sources:
       - hri25
+  culture:
+    text: >-
+      Ganja came to Jamaica with indentured labourers from India in the mid-19th century, and the Hindi word
+      [ganja](/culture/language/ganja/) came with it.[@cjm] By the early 1970s it was drunk as
+      [tea](/culture/traditions/ganja-tea-in-jamaica/) and tonic in rural households far more than
+      it was smoked, as the anthropologists Vera Rubin and Lambros Comitas found in the national
+      study they [published in 1972](/history/jamaica-ganja-study-published-1972/).[@rubin] For
+      [Rastafari](/culture/traditions/rastafari-sacrament/) it became a sacrament, smoked in shared
+      reasoning; the early preacher [Leonard Howell](/culture/people/leonard-howell/) founded
+      Pinnacle, a community that grew it with its food until colonial police broke it up.[@rasta,howell]
+      Reggae carried the herb to the world through singers such as [Bob
+      Marley](/culture/people/bob-marley/) and [Peter Tosh](/culture/people/peter-tosh/), whose 1976
+      album Legalize It made legalisation a song.[@tosh]
+    sources:
+      - cjm
+      - rubin
+      - rasta
+      - howell
+      - tosh
+  research:
+    status: licensed
+    text: >-
+      Jamaican doctors turned folk knowledge into medicine. The pharmacologist Manley West and the
+      eye surgeon Albert Lockhart of the University of the West Indies noticed that fishermen who
+      drank ganja tea saw better at night, and after years of work produced Canasol, an eye drop
+      for glaucoma, and later Asmasol for asthma; both men received the Order of Merit.[@west]
+      Today accredited universities and bodies approved by the Scientific Research Council may grow
+      ganja for research under a licence.[@moj15]
+    sources:
+      - west
+      - moj15
+  spotlights:
+    - title: A sacrament in law
+      text: >-
+        Jamaica's 2015 reform wrote the Rastafari sacrament into law. Adherents aged 18 and over may
+        possess ganja for religious purposes, smoke it at registered places of worship, and apply
+        to grow it, and Rastafari organisations may hold events where it is used.[@moj15]
+      sources:
+        - moj15
+    - title: Ganja's farmers, outside the ganja industry
+      text: >-
+        The growers who supplied Jamaica for generations mostly stayed outside the licensed
+        industry, kept out by fees, security rules and banks; in 2021 the island even ran short of
+        ganja after drought and lockdowns.[@ap21,cla] The legal sector covers just 15.4 hectares,
+        and the regulator's figures leave out the far larger illegal crop.[@gl26] The 2026 fee-free
+        routes are meant to bring the traditional growers in.[@mh]
+      sources:
+        - ap21
+        - cla
+        - gl26
+        - mh
+
 sources:
+  cjm:
+    title: Wikipedia — Cannabis in Jamaica
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Jamaica
+  rubin:
+    type: book
+    title: "Ganja in Jamaica: A Medical Anthropological Study of Chronic Marihuana Use"
+    authors: [Vera Rubin, Lambros Comitas]
+    publisher: Mouton
+    year: 1975
+    url: https://doi.org/10.1515/9783110812077
+  rasta:
+    title: Comitas Institute for Anthropological Study — Lighting the Chalice, JA–RT 004 (5 August 1969)
+    url: https://www.cifas.us/comitas-gallery-jamaica
+  howell:
+    title: Michael Barnett — The Legacy of Charismatic Leadership in the Rastafari Movement, IDEAZ 15 (2020), pp. 56–79
+    url: https://www.ideaz-institute.com/Ideaz%20J%20Volumes/IDEAZ15.pdf
+  tosh:
+    title: Wikipedia — Peter Tosh
+    url: https://en.wikipedia.org/wiki/Peter_Tosh
+  west:
+    title: Wikipedia — Manley West
+    url: https://en.wikipedia.org/wiki/Manley_West
   rta2018:
     title: "Jamaica Parliament — Road Traffic Act 2018 (PDF)"
     url: https://www.japarliament.gov.jm/attachments/article/339/the%20road%20traffic%20act%202018.pdf

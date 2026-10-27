@@ -326,6 +326,240 @@ are defined once in `PLANTING_STATUS` in `src/lib/segment-ids.js`; the country p
 table, the per-country JSON and `scores.csv` (columns `seeds`, `seeds_trade`, `clones`, `clones_trade`)
 all read from there, together with `PLANTING_TRADE`.
 
+## Writing context sections well
+
+The *More context* tab is where a reader learns how cannabis actually works in a country, beyond
+the six scores. Every section is unscored. This part says what each section holds and how to
+write it; the plain-language rules in `docs/WRITING.md` apply throughout. The Netherlands, Czechia
+and Germany are written this way and can serve as models.
+
+### The sections, in page order
+
+| Key | Shown as | Holds | Required? |
+|---|---|---|---|
+| `death_penalty` | Death penalty | Whether the law allows execution for cannabis, and whether it is carried out | Where the law provides for it |
+| `recreational` | Recreational use | How adults actually get and use cannabis, legally or not: shops, clubs, home growing, dealers, which products, typical price and strength | Yes, for every country (replacing `products`) |
+| `medical` | Medical cannabis | The whole patient story: who qualifies, who prescribes, which forms, cost and insurance, where it is made | Yes |
+| `clubs` | Cannabis clubs | Members' clubs and their footing, with a `status` | When researched |
+| `planting` | Seeds and clones | Seed and cutting law, with four statuses | When researched |
+| `hemp` | Hemp and CBD | The THC limit, who may grow hemp, how much is grown, CBD sales, loophole products such as HHC | Yes, for every country |
+| `production` | Cannabis industry | The legal commercial sector: who may grow, process and sell for profit, licences, size, imports and exports | Yes |
+| `black_market` | Black market | The illegal market: size, origin, prices, how openly it is sold | When researched |
+| `visitors` | Visitors and foreigners | Whether a non-resident can get cannabis legally, and what happens to a foreigner caught | When researched |
+| `driving` | Driving | What the law needs to convict a driver, with a `status` | When researched |
+| `arrests` | Arrests and prisoners | Published counts, with year and who counted | When researched |
+| `consequences` | Beyond the penalty | What follows a person beyond the punishment: records, registers, licences, jobs, deportation | Yes |
+| `culture` | Culture and traditions | How cannabis sits in the country's life: customs, faith, words, music and film, festivals, famous figures, attitudes (polls), and what prohibition did to them | Recommended wherever a tradition or Culture entry exists |
+| `genetics` | Genetics and heritage | Local cannabis plants, who keeps them, what the law did to them | Only where a real account exists |
+| `research` | Research | Scientific research in the country: who studies cannabis, what they found, what the law allows researchers | Where there is something to say |
+| `spotlights` | Country spotlights | One to three things that make cannabis different here, each with a title | Only where something passes the test below |
+
+`products` is being folded into `recreational`, `medical` and `hemp`; when you revise a country,
+move its content and delete the section. The schema accepts both during the move.
+
+### Statuses for hemp, industry and research
+
+`hemp`, `production` and `research` may carry a `status`, like `clubs` or `driving`. It shows as a
+chip on the country page, colours a world-map view and fills a rankings column. It is optional
+while countries are researched; set it only when the section's text states the fact it rests on.
+
+```yaml
+  hemp:
+    status: standard      # high (up to 1% THC) | standard (0.3%) | strict (below 0.3%) | none (no exception for hemp)
+  production:
+    status: medical       # open (licensed adult market) | state (state-run) | pilot (trials only) | medical (medicine, research or export only) | none
+  research:
+    status: licensed      # open | licensed (special licence or permit) | restricted (synthetic or narrow routes only) | blocked
+```
+
+- `hemp` is the THC line in law, not how big the hemp industry is.
+- `production` describes who may produce for sale. A country with both a pilot for adults and a
+  medical industry is `pilot`; one with only medical licences is `medical`.
+- `research` needs a stated route: a permit, a licence, a state agency that supplies researchers.
+  If the text does not say how researchers get cannabis, leave the status out.
+
+### How to write a section
+
+- **Start with what a person meets.** The first sentence answers the section's question for an
+  ordinary adult in that country ("There is still nowhere to buy cannabis legally, so…"). Law
+  numbers and institutions come after, and only when they help.
+- **Three to seven sentences.** Long enough to explain, short enough to read on a phone. If a
+  subject needs more, it probably needs a history article or a Culture entry, linked from here.
+- **The whole country.** Describe the national picture. A city or region goes in `spotlights`,
+  or in the text only as an example, named as such.
+- **One section, one subject.** Don't repeat a scored segment or another section: `recreational`
+  is the user's side, `production` the businesses behind the supply, `black_market` the illegal
+  trade. Point to the other section instead of retelling it.
+- **Numbers with their frame.** Every figure needs its year, its unit and what it counts:
+  "registered users", "approved associations", "tonnes imported". Say "about" when the source
+  rounds. A figure from `datasets/` can be quoted with its year; the page also shows the dataset,
+  so don't build a paragraph on a number that the next refresh will change.
+- **Proposals are not law.** A bill, a government plan or an announcement is described as such,
+  with its date and where it stands ("none of this had been adopted").
+- **Cite every sentence** with inline marks, `[@key]`, as in the segments. Every key in the
+  section's `sources` must be cited in its text, or the build fails.
+- **Prefer primary sources**: the statute, the regulator, the statistics office, the official
+  evaluation. A good newspaper is fine for practice and for what officials said. Wikipedia is a
+  last resort and never the only source for a figure.
+
+### Links
+
+Texts may contain Markdown links, `[name](url)`, and should use them generously: a reader who
+meets a name, a body or a dated change should be one click from more. Link, in this order of
+preference:
+
+- **A dated event that has a history entry**: a law, ruling, report or ban mentioned with its
+  date. Put the link on the words that name the change, for example
+  `[From 30 July 2026](/history/germany-flower-reimbursement-ended-2026/)` or
+  `[legal since 1 July 2024](/history/germany-cultivation-associations-2024/)`. If the event has
+  no entry yet, write one in `changes.yaml` (it is found history anyway) and link it.
+- **A person, tradition or word that has a Culture entry**, for example
+  `[Lumír Hanuš](/culture/people/lumir-hanus/)`.
+- **An organisation, authority or project the text names**: link its own website the first time
+  it appears, for example `[Federal Office for Agriculture and Food](https://www.ble.de/)`,
+  `[EKOCAN project](https://www.uke.de/ekocan)`. Use the official home page or project page, not a
+  news story about it. External links open in a new tab and show a small ↗.
+
+Rules:
+
+- A link is not a source. The sentence still needs its `[@key]`.
+- Link a target once per section, on its first mention, and on a few words, never a whole
+  sentence.
+- Internal links start with `/` and must point at a page that exists: check the history id in
+  `changes.yaml` or the Culture file name.
+- Don't link generic words (police, pharmacy, government) or a source that is already in the
+  references.
+- When you revise any section, look for names, bodies and dated changes that could be linked.
+
+### Country spotlights
+
+`spotlights` is a list. Each item has a short `title`, a `text` written like any section, and its
+own `sources`:
+
+```yaml
+spotlights:
+  - title: Grow it, but don't share it
+    text: >-
+      Since 2026 an adult may grow three plants … [@z167,z40]
+    sources: [z167, z40]
+```
+
+- **The test:** would a reader learn something important, specific and surprising that the
+  scores and the other sections do not tell them? If not, leave it out. Most countries will have
+  none to three, and none is better than filler.
+- **Good subjects:** a contradiction in the system (use is legal but buying is not), a place that
+  differs from the national rule (Christiania, Bavaria, the ten Dutch experiment towns), an
+  institution found nowhere else (Uruguay's registry, Malta's associations), a market the law
+  created by accident (Germany's prescription boom).
+- **Titles** are a few plain words that say the point, not a label: "The back door", "Twenty-one,
+  not eighteen".
+- A spotlight may draw on facts from other sections, but it tells them as one story with its
+  consequence for people.
+
+### Culture and traditions
+
+`culture` gives the context around the Culture entries that belong to the country. Those already
+show as a list of cards on the page; this section tells the story that connects them, and the law
+around them.
+
+- **Link every Culture entry it mentions**, and the culture-category history entries
+  (`/history/<id>/`). Don't retell an entry; give it a sentence or two of context and let the link
+  do the rest.
+- **Mention what has no entry yet**: a festival, a musician, a movement, a word. Each one is a lead
+  for a future Culture entry; note it in the research log or write the entry.
+- **Cover the range**, as far as sources allow: old customs (ritual, folk medicine, hemp crafts and
+  food), modern culture (words, music, film, festivals, marches), well-known figures, and how
+  people see it today. A poll needs its year, its question and who asked.
+- **Show the link to the law** where there is one: what prohibition did to a custom, how a
+  tradition shaped the rules (the coffeeshop, Rastafari, bhang shops).
+- The plant itself belongs in `genetics`, scientific work in `research`, and one striking story in
+  `spotlights`.
+
+### Research
+
+`research` is about science, not policy monitoring: universities and institutes, notable studies
+and what they found, landmark discoveries (link them to their history entries), clinical trials,
+and whether the law lets researchers obtain cannabis. The paper and trial counts in
+`datasets/openalex-cannabis-papers.csv` and `datasets/clinicaltrials-cannabis.csv` give a first
+line; cite them with the dataset as the source. An official evaluation of a cannabis law belongs
+here when it is run as a study, with its findings.
+
+### Genetics and heritage
+
+Only where a real account exists. Name populations with their evidence (field studies, genebanks,
+genetic studies), not seed-shop strain names. Never give exact growing locations or farmers'
+names. "Not documented" never means "does not exist", so leave the section out rather than
+writing "none".
+
+### YAML pitfalls
+
+- A source title containing a colon followed by a space must be quoted:
+  `title: "ABDA — Die Apotheke: Zahlen, Daten, Fakten 2026"`.
+- Texts use `>-` folded blocks; a line inside must not start with `- ` or it becomes a list.
+- After editing, run `npm run build`; the schema rejects unknown sections, uncited sources and
+  malformed penalty steps.
+
+## Penalty steps
+
+Possession and cultivation may carry a small table of what happens at each amount, under the
+segment's text. It never changes a score; it makes the text checkable and lets countries be
+compared (`src/lib/penalties.js`).
+
+```yaml
+segments:
+  possession:
+    text: >-
+      … [@ow11,sr23]
+    sources: [gov, ow11, sr23]
+    currency: EUR               # needed once any step has a fine
+    penalties:
+      - upto: 5 g               # amounts: g, kg, oz, lb or plants
+        treatment: tolerated    # legal | tolerated | civil | criminal
+        note: Not prosecuted; police may seize it
+      - over: 5 g
+        upto: 30 g
+        treatment: criminal
+        term: Minor offence (overtreding)   # the law's own word, shown but never compared
+        prison: 1 month         # the maximum: days, weeks, months or years
+        prison_min: 5 days      # a minimum sentence, where the law sets one (needs prison)
+        fine: 5500              # the maximum, in `currency`
+      - label: Growing as a business      # a step that is not about an amount
+        treatment: criminal
+        prison: 6 years
+      - upto: 1 oz
+        repeat: 2               # a second offence; leave out for the first
+        treatment: criminal
+```
+
+- `treatment` is what happens in practice to a first offender: `legal`, `tolerated` (against the
+  law but not prosecuted by policy), `civil` (an administrative offence outside the criminal
+  record, shown as "Administrative") or `criminal`.
+- `prison` and `fine` are the law's maximum for that step. Leave them out where nothing is
+  imposed in practice (a tolerated amount), and say so in `note`.
+- The text and the table must agree, and the table's figures need the same inline citations in the
+  text: cite the statute and, for fines set by category, the law that sets the amounts.
+- From the first-offence steps the build works out three figures for comparison: the most a
+  person may have without being prosecuted, the amount where it becomes a crime, and the longest
+  prison term for a small amount (5 g, or one plant). They appear in `/api/<country>.json` under
+  each segment's `penalties.summary`.
+- **When a country has two sets of limits** (at home and elsewhere, as in Czechia and Germany),
+  write the steps for one set, say which in the first row's `note`, and give the other set in
+  each row's `note`. Don't mix the two in one ladder.
+- **Steps not about an amount** ("growing commercially", "a large quantity as set by the courts")
+  get a `label` and no amount; they show in the table but don't count in the comparison figures.
+- **Minimums, caning and death.** Where the law sets a minimum sentence, give it as `prison_min`
+  ("6 months – 5 years"). Corporal punishment goes in `caning: [fewest, most]` strokes, and a step
+  that carries the death penalty gets `death: true` (no `prison` needed). They show in the
+  Punishment column, and `penalties.summary` records whether a ladder reaches caning or death.
+- **Presumptions.** Where an amount is presumed to be for trafficking (Singapore above 15 g),
+  give the trafficking punishment in the step, call it "Presumed trafficking" in `term`, and say
+  in `note` what applies if the presumption is rebutted.
+- **Criminal fines without a fixed maximum** (day fines, as in Germany) are left out of `fine`;
+  say "a criminal fine instead of prison is possible" in `note`.
+- Write the steps for a first offender aged over the legal age. Different rules for young people
+  or repeat offences go in a spotlight, in the text, or in rows with `repeat`.
+- The Netherlands, Czechia and Germany have them; use those as models.
+
 ## Research scope beyond law
 
 The history also covers cannabis cultivation, food, fibre, medicine, trade, science,

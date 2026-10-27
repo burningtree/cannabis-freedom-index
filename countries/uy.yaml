@@ -3,7 +3,7 @@ region: South America
 iso_numeric: 858
 recreational: legal
 medical: legal
-updated: 2026-10-23
+updated: 2026-10-27
 summary: >-
   First country to legalise (2013). Registered residents choose between growing six plants, joining
   a club, or buying up to 40 g a month in pharmacies at state-set prices.
@@ -27,18 +27,42 @@ segments:
       That exemption stands whether or not the cannabis came from a pharmacy, a club or a
       registered home grow. A harvest from up to six plants at home, or a club's harvest, is
       covered when it was grown as the law allows. The regulating decree authorises possession for
-      personal use on the same 40 g measure.
+      personal use on the same 40 g measure. Possession that a judge finds is not for personal use
+      carries two to twelve years.
     sources:
       - art7
       - d39
+      - uy1494
+    penalties:
+      - upto: 40 g
+        treatment: legal
+        note: Presumed to be for personal use, wherever it came from
+      - over: 40 g
+        treatment: criminal
+        term: Delito, if a judge finds it is not for personal use
+        prison_min: 2 years
+        prison: 12 years
+        note: A larger amount can still be judged personal
   cultivation:
     text: >-
       Registered residents may grow up to six flowering plants per household with an annual harvest
       of at most 480 g. Registration with the state regulator IRCCA is mandatory, and choosing home
-      growing excludes you from pharmacies and clubs. Unregistered growing is an offence.
+      growing excludes you from pharmacies and clubs. Unregistered growing is an offence, with
+      twenty months to ten years in prison, though a judge weighs whether it was for personal use.
     sources:
       - law
       - ircca
+      - uy1494
+    penalties:
+      - upto: 6 plants
+        treatment: legal
+        note: Registered home growers, up to 480 g a year
+      - over: 6 plants
+        treatment: criminal
+        term: Delito
+        prison_min: 20 months
+        prison: 10 years
+        note: A judge weighs whether it was for personal use. Growing without registration is also an offence
   enforcement:
     text: >-
       Personal possession is exempt when the cannabis is for the person's own use, whether or not
@@ -73,22 +97,25 @@ segments:
       - ircca
       - wiki
 context:
-  production:
+  recreational:
     text: >-
-      Cannabis for pharmacies is grown by a handful of companies chosen by state tender, on
-      state-controlled land, with the state setting price and genetics. Membership clubs (15–45
-      members, up to 99 plants) are the only other producers. There is no open commercial licensing.
+      Uruguay is the only country where the state runs the whole market. A resident who wants
+      cannabis legally signs up with the regulator [IRCCA](https://www.ircca.gub.uy/) for one of
+      three routes: buying in a pharmacy, joining a club, or growing at home.[@law,ircca25] In a
+      pharmacy, a fingerprint check allows up to 10 g a week at a price the state sets.[@law] Only a
+      few state-chosen flower varieties are on sale, launched at very low strength and since raised
+      to about 20% THC, and there are no edibles, concentrates or vapes.[@wiki,ircca] Banks,
+      fearing trouble with the United States, refused to serve the legal trade, so pharmacies
+      cannot take cards; only 40 were selling cannabis in December 2024, too few to cover the
+      country.[@snd26] In 2024 about 46% of people who used cannabis were registered for a legal
+      route; many others get it from friends or unregistered growers.[@sndmar]
     sources:
       - law
-      - wiki
-  products:
-    text: >-
-      Pharmacies sell only a few state-specified flower varieties with capped THC — launched at very
-      low potency and since raised, with the newest variety at up to about 20%. No edibles,
-      concentrates or vapes in the legal market.
-    sources:
+      - ircca25
       - wiki
       - ircca
+      - snd26
+      - sndmar
   medical:
     text: >-
       Medical cannabis is legal and a 2019 law aimed to widen access, but few registered products
@@ -97,6 +124,32 @@ context:
     sources:
       - ircca
       - wiki
+  hemp:
+    status: high
+    text: >-
+      Cannabis with no more than 1% THC counts as non-psychoactive hemp, licensed by the
+      agriculture ministry rather than the cannabis regulator.[@uyxxi] In 2024, 31 companies were
+      authorised to grow it, on about 100 hectares in the open and almost 23,000 m² under cover,
+      half of the outdoor area in Canelones.[@uyxxi] Low-THC flowers are Uruguay's most valuable
+      cannabis export, sold mainly to Switzerland and Czechia, and low-THC seed its largest by
+      weight, sent mostly to Argentina.[@uyxxi]
+    sources:
+      - uyxxi
+  production:
+    status: state
+    text: >-
+      Cannabis for pharmacies is grown by a handful of companies chosen by state tender, on
+      state-controlled land, with the state setting price and genetics.[@law,wiki] Membership clubs
+      (15–45 members, up to 99 plants) are the only other producers of recreational
+      cannabis.[@law] A separate medical and industrial sector, promoted by the state agency
+      [Uruguay XXI](https://www.uruguayxxi.gub.uy/) and open to foreign investors, employs about
+      700 people. In 2025 it produced 28.2 tonnes of medical cannabis, mostly non-psychoactive, and
+      exported 45 tonnes of cannabis products worth about US$2.6 million: high-THC flower mainly
+      to Germany and Portugal, medicines mainly to Brazil.[@uyxxi]
+    sources:
+      - law
+      - wiki
+      - uyxxi
   consequences:
     text: >-
       Three state registries hold the identity of every legal buyer, grower and club member. Driving
@@ -176,7 +229,77 @@ context:
       evaluation says the law reduced police and court action over minor cannabis conduct.
     sources:
       - snd26
+  culture:
+    text: >-
+      Uruguay legalised cannabis against the opinion of most Uruguayans. The idea entered public
+      debate with the first Global Marijuana March in Montevideo in 2005, and was carried through by
+      President [José Mujica](/culture/people/jose-mujica/), a former guerrilla, in
+      [2013](/history/uruguay-legalisation-2013/).[@snd26,mujica] At the end of 2013, 66% opposed
+      the law, and in 2014 60%.[@snd26] Ten years later opinion had shifted: in 2024 28% were neutral,
+      and among those with a view, supporters slightly outnumbered opponents; people who use
+      cannabis back it overwhelmingly.[@snd26] The [cannabis
+      club](/culture/traditions/cannabis-social-clubs/), borrowed from Spain, became part of the
+      law itself.[@law]
+    sources:
+      - snd26
+      - mujica
+      - law
+  genetics:
+    text: >-
+      Uruguay has no old cannabis tradition of its own; its genetics are new. Licensed growers
+      have been breeding national varieties, and the seed institute
+      [INASE](https://www.inase.uy/) had more than 40 Uruguayan cultivars on its register in 2025,
+      up from 11 a year earlier. About 88% are psychoactive, bred by at least ten companies,
+      licensed producers and membership clubs.[@uyxxi] Seeds and cuttings may only move inside the
+      regulated system.[@d120]
+    sources:
+      - uyxxi
+      - d120
+  research:
+    status: licensed
+    text: >-
+      The cannabis regulator had granted 14 research licences by 2026, eight to private companies
+      and six to public institutions such as the University of the Republic and the Clemente
+      Estable Institute; they work on new varieties, extraction and medical extracts.[@uyxxi] In
+      February 2025 the national research agency, the university, the drugs board and IRCCA set up a
+      cannabis research fund.[@uyxxi] The law itself is studied closely: the government's
+      [second evaluation](/history/uruguay-second-evaluation-2026/), in 2026, measured who uses the
+      legal routes, what remains of the black market and how opinion has changed.[@snd26]
+    sources:
+      - uyxxi
+      - snd26
+  spotlights:
+    - title: A registered user, by fingerprint
+      text: >-
+        Legal cannabis in Uruguay comes with registration. Every buyer, home grower and club member
+        is on a state register, a person may use only one route, and pharmacies check a fingerprint
+        before selling.[@law,ircca25] The registers are what let the state set prices, limit
+        amounts and keep the market for residents, but they also mean that most people who use
+        cannabis prefer not to sign up: in 2024 only about 46% were registered.[@sndmar]
+      sources:
+        - law
+        - ircca25
+        - sndmar
+    - title: The clubs overtook the pharmacies
+      text: >-
+        The pharmacy route was meant to be the heart of the system, but it never grew enough: banks
+        would not serve it and only a few dozen pharmacies took part.[@snd26] By March 2026 about
+        575 clubs with some 20,200 members said they supplied more than half of all legal cannabis,
+        about 4.75 tonnes against 4.25 tonnes sold in pharmacies, and they were pressing to be
+        allowed to serve tourists.[@inf26]
+      sources:
+        - snd26
+        - inf26
+
 sources:
+  uy1494:
+    type: law
+    title: Decreto-Ley N° 14.294, articles 30 and 31, as amended (IMPO)
+    url: https://www.impo.com.uy/bases/decretos-ley/14294-1974
+    locator: "Art. 30: unauthorised production, 20 months to 10 years for cannabis; art. 31: possession not for personal use, 2 to 12 years; 40 g presumed personal"
+  mujica:
+    title: "Brookings / WOLA — Walsh and Ramsey, Uruguay's Drug Policy: Major Innovations, Major Challenges (2015)"
+    url: https://www.brookings.edu/wp-content/uploads/2016/07/Walsh-Uruguay-final.pdf
   sndmar:
     title: "Secretaría Nacional de Drogas / Observatorio Uruguayo de Drogas — Regulación del mercado de cannabis en Uruguay: segunda evaluación de la Ley 19.172 (March 2026, PDF)"
     url: https://www.gub.uy/junta-nacional-drogas/sites/junta-nacional-drogas/files/documentos/publicaciones/Regulacion_mar2026_0.pdf

@@ -8,6 +8,7 @@ import { getCollection } from "astro:content";
 import { places, changes, SEGMENTS, CONTEXT } from "./countries.js";
 import { cultureEntries, cultureSection } from "./culture.js";
 import { archivedUrl } from "./archive.js";
+import { sectionSources } from "./segment-ids.js";
 
 const placeOf = new Map(places.map((c) => [c.slug, c]));
 const changeOf = new Map(changes.map((ch) => [ch.id, ch]));
@@ -23,7 +24,7 @@ for (const { id, data } of await getCollection("countries")) {
   const slug = id.split("/")[0], c = placeOf.get(slug);
   // which sections cite each source key
   const at = new Map();
-  for (const [name, block] of Object.entries({ ...data.segments, ...data.context })) for (const key of block?.sources ?? []) at.set(key, [...(at.get(key) ?? []), SECTION_NAME.get(name) ?? name]);
+  for (const [name, block] of Object.entries({ ...data.segments, ...data.context })) for (const key of sectionSources(block)) at.set(key, [...(at.get(key) ?? []), SECTION_NAME.get(name) ?? name]);
   for (const [key, s] of Object.entries(data.sources)) cites.push({ s, where: slug, owner: c && countryOwner(c), at: at.get(key) ?? [] });
   for (const s of data.subunits?.sources ?? []) cites.push({ s, where: slug, owner: c && countryOwner(c), at: [`${data.subunits.plural.replace(/^./, (x) => x.toUpperCase())} overview`] });
 }

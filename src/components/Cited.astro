@@ -1,8 +1,15 @@
 ---
 // A text with its citations as superscript numbers linked to a list of references (src/lib/cite.js).
-// `parts` comes from citeParts(); the text itself is plain, so it is written out as it is.
+// `parts` comes from citeParts(). The text is plain apart from Markdown links, [name](url): a full
+// URL opens in a new tab, and one starting with "/" is a page of this site and gets the base path.
+import { linkParts } from "../lib/cite.js";
 const { parts } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 {parts.map((p) => p.refs
   ? p.refs.map((r) => <sup class="cite"><a href={`#${r.id}`} aria-label={`Source ${r.n}`}>[{r.n}]</a></sup>)
-  : p.t)}
+  : linkParts(p.t).map((x) => x.href
+    ? (x.href.startsWith("/")
+      ? <a href={base + x.href.slice(1)}>{x.t}</a>
+      : <a href={x.href} target="_blank" rel="noopener noreferrer">{x.t}</a>)
+    : x.t))}

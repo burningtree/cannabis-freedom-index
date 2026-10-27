@@ -1,7 +1,13 @@
 // The scored segments, in display order, and the unscored context sections.
 // Shared by the data schema and the loader so the two cannot drift apart.
 export const SEGMENT_IDS = ["possession", "cultivation", "enforcement", "sharing", "consumption", "access"];
-export const CONTEXT_IDS = ["production", "products", "medical", "consequences"];
+export const CONTEXT_IDS = ["production", "medical", "consequences"];
+// Optional plain cited sections (docs/COUNTRY-CONTEXTS.md). `products` is being folded into
+// `recreational`, `medical` and `hemp`; it stays valid until every country has moved.
+export const OPTIONAL_CONTEXT_IDS = ["recreational", "products", "hemp", "black_market", "arrests", "culture", "genetics", "research"];
+// `spotlights` is the one section that is a list: [{ title, text, sources }], one item per spotlight.
+// The source keys a section cites, whichever shape it has.
+export const sectionSources = (block) => (Array.isArray(block) ? block.flatMap((item) => item.sources) : block?.sources ?? []);
 // Seeds and clones: an optional context section. Not part of the score. Each has two statuses:
 // whether an adult may have and plant them (PLANTING_STATUS) and whether they may be sold or
 // handed on (PLANTING_TRADE). `help` is [what it means for seeds, what it means for clones].
@@ -44,6 +50,28 @@ export const VISITORS_STATUS = {
   residents: { label: "Residents only", tone: "partial", help: "Legal supply is reserved for residents; a visitor has no legal way to buy" },
   none: { label: "No legal access", tone: "illegal", help: "There is no legal recreational supply for anyone; visitors face the same penalties as locals, often with deportation on top" },
 };
+// Hemp and CBD: the THC limit under which the plant counts as hemp, not cannabis. Not part of the score.
+export const HEMP_STATUS = {
+  high: { label: "Up to 1% THC", tone: "legal", help: "Plants with up to 1% THC count as hemp, a higher line than the usual 0.3%" },
+  standard: { label: "Up to 0.3% THC", tone: "decrim", help: "Plants with up to about 0.3% THC count as hemp, the line used in the EU and the United States" },
+  strict: { label: "Below 0.3% THC", tone: "partial", help: "Hemp is allowed only under a lower THC line than 0.3%, or under unusually tight conditions" },
+  none: { label: "No hemp", tone: "illegal", help: "The law makes no exception for hemp: every cannabis plant, seed and CBD product is a controlled drug" },
+};
+// Cannabis industry: who may produce cannabis legally for sale. Not part of the score.
+export const INDUSTRY_STATUS = {
+  open: { label: "Licensed market", tone: "legal", help: "Companies can obtain licences to grow and sell cannabis for adults" },
+  state: { label: "State-run", tone: "decrim", help: "Adult-use cannabis is produced only by the state or under state contracts and tenders" },
+  pilot: { label: "Pilots only", tone: "decrim", help: "Legal supply for adults exists only in trials or experiments; elsewhere only medical production is licensed" },
+  medical: { label: "Medical only", tone: "partial", help: "Licensed production exists for medicine, research or export, but not for adults' recreational use" },
+  none: { label: "None", tone: "illegal", help: "No legal cannabis production of any kind" },
+};
+// Research: whether scientists can obtain cannabis to study. Not part of the score.
+export const RESEARCH_STATUS = {
+  open: { label: "Open", tone: "legal", help: "Researchers can obtain and study cannabis under ordinary research rules" },
+  licensed: { label: "By licence", tone: "decrim", help: "Researchers can grow, import or hold cannabis under a special licence or permit" },
+  restricted: { label: "Restricted", tone: "partial", help: "Research is limited to narrow routes, such as synthetic cannabinoids or approved medicines, not the plant" },
+  blocked: { label: "Blocked", tone: "illegal", help: "No legal route for researchers to obtain cannabis is known" },
+};
 // Context sections that carry one status each: the label on the page, the vocabulary, the map
 // colour of each status (a tier number, 5 green to 0 red) and the wording around the map.
 export const STATUS_SECTIONS = {
@@ -56,6 +84,16 @@ export const STATUS_SECTIONS = {
   visitors: { name: "Visitors and foreigners", chip: "Visitors", statuses: VISITORS_STATUS, tiers: { open: 5, residents: 3, none: 0 },
     sub: "Green means visitors can buy on the same terms as residents, yellow that legal supply is for residents only, red that nobody has legal access.",
     note: "Whether someone who does not live in the country can get cannabis legally." },
+  // the three below are newer: their status is optional while countries are researched
+  hemp: { name: "Hemp THC limit", chip: "Hemp", statuses: HEMP_STATUS, tiers: { high: 5, standard: 4, strict: 2, none: 0 }, optional: true,
+    sub: "Green means plants with up to 1% THC count as hemp, light green the usual 0.3% line, orange a stricter line, red no exception for hemp at all.",
+    note: "The THC limit under which a cannabis plant counts as legal hemp." },
+  production: { name: "Cannabis industry", chip: "Industry", statuses: INDUSTRY_STATUS, tiers: { open: 5, state: 4, pilot: 3, medical: 2, none: 0 }, optional: true,
+    sub: "Green means a licensed market for adults, light green a state-run or pilot supply, orange licensed production for medicine only, red no legal production.",
+    note: "Who may produce cannabis legally for sale." },
+  research: { name: "Cannabis research", chip: "Research", statuses: RESEARCH_STATUS, tiers: { open: 5, licensed: 4, restricted: 2, blocked: 0 }, optional: true,
+    sub: "Green means open research, light green research under licence, orange narrow routes only, red no known route.",
+    note: "Whether scientists can obtain cannabis to study." },
 };
 // What kind of event a History entry is, in the order the legend lists them. `icon` is shown on
 // the site; `emoji` stands in where only text fits (the chart tooltips, previews, OG pictures).

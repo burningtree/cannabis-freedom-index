@@ -4,7 +4,8 @@ import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
 import { z } from "astro/zod";
 import { isMixedCannabisPrice } from "./lib/price-selection.js";
-import { SEGMENT_IDS, CONTEXT_IDS, CHANGE_CATEGORIES, CHANGE_TAGS, PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "./lib/segment-ids.js";
+import { TREATMENT, parseAmount, parseDuration } from "./lib/penalties.js";
+import { SEGMENT_IDS, CONTEXT_IDS, OPTIONAL_CONTEXT_IDS, sectionSources, CHANGE_CATEGORIES, CHANGE_TAGS, PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "./lib/segment-ids.js";
 
 const score = z.number().int().min(0).max(10);
 const perSegment = <T extends z.ZodTypeAny>(value: T) =>
@@ -25,14 +26,39 @@ const source = z.object({
 }).strict();
 const webSource = source.refine((s) => Boolean(s.url), { message: "price sources need a URL" });
 const cited = z.object({ text: z.string().min(1), sources: z.array(z.string()) }).strict();
+// a penalty step of a segment (src/lib/penalties.js): an amount ("30 g", "1 oz", "5 plants") or a
+// `label` for a step that is not about an amount, what the law does, and its maximum prison and fine
+const amount = z.string().refine((s) => parseAmount(s), { message: 'an amount such as "5 g", "1 oz" or "5 plants"' });
+const penalty = z.object({
+  upto: amount.optional(), over: amount.optional(), label: z.string().min(1).optional(),
+  repeat: z.number().int().min(2).optional(),
+  treatment: z.enum(Object.keys(TREATMENT) as [string, ...string[]]),
+  term: z.string().min(1).optional(),
+  prison: z.string().refine((s) => parseDuration(s), { message: 'a duration such as "5 days" or "2 years"' }).optional(),
+  prison_min: z.string().refine((s) => parseDuration(s), { message: 'a duration such as "6 months"' }).optional(),
+  caning: z.tuple([z.number().int().positive(), z.number().int().positive()]).optional(), // [fewest, most] strokes
+  death: z.literal(true).optional(),
+  fine: z.number().positive().optional(),
+  note: z.string().min(1).optional(),
+}).strict().refine((r) => r.upto || r.over || r.label, { message: "a penalty step needs upto, over or a label" })
+  .refine((r) => !r.prison_min || r.prison, { message: "prison_min needs prison, the maximum" });
+// a segment: its cited text, and for possession and cultivation optionally the penalty steps
+const segment = cited.extend({ currency: z.string().regex(/^[A-Z]{3}$/).optional(), penalties: z.array(penalty).min(1).optional() })
+  .refine((s) => !s.penalties?.some((r) => r.fine) || s.currency, { message: "penalties with a fine need a currency" });
+// a country spotlight: one thing that makes cannabis different there, with a short title
+const spotlight = z.object({ title: z.string().min(1), text: z.string().min(1), sources: z.array(z.string()) }).strict();
 // seeds and clones: the same cited text, plus for each a status for having and planting them
 // (PLANTING_STATUS) and one for selling or handing them on (PLANTING_TRADE)
 const plantingStatus = z.enum(Object.keys(PLANTING_STATUS) as [string, ...string[]]);
 const plantingTrade = z.enum(Object.keys(PLANTING_TRADE) as [string, ...string[]]);
 const planting = z.object({ seeds: plantingStatus, seeds_trade: plantingTrade, clones: plantingStatus, clones_trade: plantingTrade, text: z.string().min(1), sources: z.array(z.string()) }).strict();
 // clubs, driving, visitors: the cited text plus one status from that section's vocabulary (STATUS_SECTIONS)
-const statusSections = Object.fromEntries(Object.entries(STATUS_SECTIONS).map(([key, section]) => [key,
-  z.object({ status: z.enum(Object.keys(section.statuses) as [string, ...string[]]), text: z.string().min(1), sources: z.array(z.string()) }).strict().optional()]));
+// the newer ones (`optional` in STATUS_SECTIONS) may leave the status out; a standard section (production) stays required
+const statusSections = Object.fromEntries(Object.entries(STATUS_SECTIONS).map(([key, section]) => {
+  const status = z.enum(Object.keys(section.statuses) as [string, ...string[]]);
+  const block = z.object({ status: section.optional ? status.optional() : status, text: z.string().min(1), sources: z.array(z.string()) }).strict();
+  return [key, (CONTEXT_IDS as string[]).includes(key) ? block : block.optional()];
+}));
 const status = {
   // "death": illegal, and the law allows the death penalty for cannabis offences, in practice trafficking.
   recreational: z.enum(["legal", "partial", "decriminalised", "illegal", "death"]),
@@ -85,12 +111,12 @@ const countries = defineCollection({
       seo_description: z.string().min(50).max(300).optional(),
       scores: perSegment(score),
       answers,
-      segments: perSegment(cited),
-      // the four standard sections, plus `death_penalty` where the law provides for one and,
+      segments: perSegment(segment),
+      // the three standard sections, plus `death_penalty` where the law provides for one and,
       // where they have been researched, `planting` (seeds and clones), the sections with a status
-      // (`clubs`, `driving`, `visitors`), `black_market` (the illegal market) and `arrests`
-      // (arrests and prisoners, as far as the country publishes them)
-      context: z.object({ death_penalty: cited.optional(), planting: planting.optional(), ...statusSections, black_market: cited.optional(), arrests: cited.optional(), ...Object.fromEntries(CONTEXT_IDS.map((id) => [id, cited])) }).strict(),
+      // (`clubs`, `driving`, `visitors`), the plain optional ones (OPTIONAL_CONTEXT_IDS) and the
+      // list of `spotlights`
+      context: z.object({ death_penalty: cited.optional(), planting: planting.optional(), ...Object.fromEntries(OPTIONAL_CONTEXT_IDS.map((id) => [id, cited.optional()])), spotlights: z.array(spotlight).min(1).optional(), ...Object.fromEntries(CONTEXT_IDS.map((id) => [id, cited])), ...statusSections }).strict(),
       sources: z.record(z.string(), source),
       subunits: z
         .object({
@@ -108,9 +134,9 @@ const countries = defineCollection({
       if (data.recreational === "death" && !data.context.death_penalty) {
         ctx.addIssue({ code: "custom", message: 'a country marked "recreational: death" needs a context.death_penalty section' });
       }
-      const blocks = { ...data.segments, ...data.context } as Record<string, { sources: string[] }>;
+      const blocks = { ...data.segments, ...data.context } as Record<string, unknown>;
       for (const [name, block] of Object.entries(blocks)) {
-        for (const key of block.sources) {
+        for (const key of sectionSources(block)) {
           if (!(key in data.sources)) ctx.addIssue({ code: "custom", message: `"${name}" cites unknown source "${key}"` });
         }
       }

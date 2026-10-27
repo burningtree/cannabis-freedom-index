@@ -9,8 +9,26 @@
 
 export const CITE_MARK = /\s?\[@([^\]]+)\]/g;
 
-// the text without its marks, for every place that shows it as plain text (lists, previews, search)
-export const stripCites = (text) => (text ?? "").replace(CITE_MARK, "");
+// A Markdown link in a text, [name](url), to a full URL or a page of this site ("/culture/…").
+// A citation mark is never one: its brackets start with "@" and are not followed by "(".
+export const LINK_MARK = /\[([^\]@][^\]]*)\]\(((?:https?:\/\/|\/)[^)\s]+)\)/g;
+
+// a plain stretch of text split into text and links: [{ t }, { t, href }, …]
+export function linkParts(text) {
+  const out = [];
+  let last = 0;
+  for (const m of (text ?? "").matchAll(LINK_MARK)) {
+    if (m.index > last) out.push({ t: text.slice(last, m.index) });
+    out.push({ t: m[1], href: m[2] });
+    last = m.index + m[0].length;
+  }
+  if (last < (text ?? "").length) out.push({ t: text.slice(last) });
+  return out;
+}
+
+// the text without its marks, and its links reduced to their names, for every place that shows it
+// as plain text (lists, previews, search)
+export const stripCites = (text) => (text ?? "").replace(CITE_MARK, "").replace(LINK_MARK, "$1");
 
 // the keys a text cites, in order of first appearance; null when it has no marks at all
 export function citedKeys(text) {

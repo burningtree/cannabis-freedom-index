@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 276
 recreational: legal
 medical: legal
-updated: 2026-10-23
+updated: 2026-10-27
 summary: >-
   Since April 2024 any adult may carry 25 g. People who have lived in Germany for six months may keep
   50 g at home, grow three plants and join a non-profit growing association. There are no shops, but
@@ -26,24 +26,63 @@ segments:
       Any adult may carry up to 25 g of dried cannabis.[@kcang3, bmg] Someone who has lived in Germany
       for six months may keep up to 50 g at home, and the amount they hold in total stops at
       50 g.[@kcang3, kcang1] More than 25 g and up to 30 g away from home, or more than 50 g and up to
-      60 g at home, is an administrative offence; above that it is a crime.[@kcang, bmg] Bringing
-      cannabis into the country, or taking it out, is a crime.[@kcang2]
+      60 g at home, is an administrative offence with a fine of up to €30,000; above that it is a
+      crime with up to three years in prison or a fine.[@kcang36, kcang34, bmg] Bringing cannabis
+      into the country, or taking it out, is a crime.[@kcang2]
     sources:
       - bmg
-      - kcang
       - kcang1
       - kcang2
       - kcang3
+      - kcang34
+      - kcang36
+    currency: EUR
+    penalties:
+      - upto: 25 g
+        treatment: legal
+        note: Away from home; at home a resident may keep up to 50 g in total
+      - over: 25 g
+        upto: 30 g
+        treatment: civil
+        term: Administrative offence (Ordnungswidrigkeit)
+        fine: 30000
+        note: At home, over 50 g and up to 60 g
+      - over: 30 g
+        treatment: criminal
+        term: Crime (Straftat)
+        prison: 3 years
+        note: At home, over 60 g; a criminal fine instead of prison is possible
+      - label: A 'not small amount' (nicht geringe Menge), as set by the courts
+        treatment: criminal
+        term: Crime, especially serious case
+        prison_min: 3 months
+        prison: 5 years
   cultivation:
     text: >-
       Someone who has lived in Germany for six months may grow up to three plants at that home, out of
       the reach of children.[@kcang9, kcang1, bmg] Cannabis above the 50 g home limit must be
-      destroyed.[@bmg] A fourth plant is a crime.[@kcang]
+      destroyed.[@bmg] A fourth plant is a crime with up to three years in prison or a fine, and
+      growing to make a living from it up to five years.[@kcang34]
     sources:
       - bmg
-      - kcang
       - kcang1
       - kcang9
+      - kcang34
+    currency: EUR
+    penalties:
+      - upto: 3 plants
+        treatment: legal
+        note: Residents of six months, at their home
+      - over: 3 plants
+        treatment: criminal
+        term: Crime (Straftat)
+        prison: 3 years
+        note: A criminal fine instead of prison is possible
+      - label: Growing commercially (gewerbsmäßig)
+        treatment: criminal
+        term: Crime, especially serious case
+        prison_min: 3 months
+        prison: 5 years
   enforcement:
     text: >-
       Within the limits nothing is punished; small overages are fines. Selling, giving away, or
@@ -80,33 +119,70 @@ segments:
       - kcang1
       - kcang16
 context:
-  production:
+  recreational:
     text: >-
-      Commercial recreational production is not permitted at all; associations must grow for their
-      own members with member labour. Medical cultivation and import need a licence from the federal
-      medicines agency.
-    sources:
-      - kcang
-      - medcang
-  products:
-    text: >-
-      Associations may hand out only flower and hashish. Edibles such as THC gummies or cookies
-      remain banned, as do extracts for the adult-use channel.
+      Adults may [carry and use cannabis](/history/germany-cannabis-act-2024/), but there is still no shop to buy it in. The legal routes
+      are growing three plants at home or joining a non-profit [growing
+      association](/history/germany-cultivation-associations-2024/), and both are
+      open only to people who have lived in Germany for six months.[@bmg,kcang1] Associations may
+      hand out only flower and hashish; edibles such as THC gummies, and extracts, stay
+      banned.[@bmg] The government's evaluation found that in 2024 associations supplied less than
+      0.1% of the cannabis adults used and pharmacies 12 to 14%, much of it on private
+      prescriptions. Most still came from the illegal market, typically through friends and
+      acquaintances rather than street dealers.[@dhv25,abda26] Researchers at the economic institute
+      DIW found no structural change in how much people use in the short term.[@diw26]
     sources:
       - bmg
+      - kcang1
+      - dhv25
+      - abda26
+      - diw26
+  hemp:
+    status: standard
+    text: >-
+      Only farms may grow hemp, from certified EU varieties with at most 0.3% THC. Sowing must be
+      reported to the [Federal Office for Agriculture and Food](https://www.ble.de/) by 1 July, which also tests plants
+      during flowering.[@nh24] After a record in 2024, the area fell in 2025 to 5,274 hectares on
+      496 farms, with Lower Saxony growing the most.[@nh25] HHC, a semi-synthetic cannabinoid that
+      had been sold as a legal alternative, has been [banned under the law on new psychoactive
+      substances](/history/germany-hhc-banned-2024/) since 21 June 2024, including its possession. The Federal Institute for Risk
+      Assessment still found HHC gummies on sale in 2025, and makers switching to untested
+      relatives of it.[@bfr25]
+    sources:
+      - nh24
+      - nh25
+      - bfr25
+  production:
+    status: medical
+    text: >-
+      Commercial recreational production is not permitted at all; associations must grow for their
+      own members with member labour.[@kcang] The [second step the government promised in
+      2023](/history/germany-two-pillar-plan-2023/),
+      regional pilot projects with licensed shops, never became law, and the federal agriculture
+      office refused applications for such pilots on that ground.[@tsp25] The legal cannabis
+      business is medical. Growing and importing medical cannabis need a licence from the federal
+      medicines agency, [BfArM](https://www.bfarm.de/).[@medcang] Imports of medical flower almost tripled, from about 73 tonnes in
+      2024 to 201 tonnes in 2025, mostly from Canada and Portugal; the pharmacists' association
+      [ABDA](https://www.abda.de/)
+      puts the jump down to the growing number of private prescriptions.[@abda26]
+    sources:
+      - kcang
+      - tsp25
+      - medcang
+      - abda26
   medical:
     text: >-
       Cannabis is no longer a narcotic in law: any doctor can prescribe it on an ordinary
       prescription, dispensed by pharmacies.[@medcang] Statutory insurance covers extracts in
       standardised quality, and medicines containing dronabinol or nabilone, for a serious illness
       when a standard treatment is unavailable or unsuitable and there is a realistic chance of a
-      noticeable benefit.[@sgb31] From 30 July 2026, the date the insurers' doctors' association
+      noticeable benefit.[@sgb31] [From 30 July 2026](/history/germany-flower-reimbursement-ended-2026/), the date the insurers' doctors' association
       gives for the change, that cover no longer includes dried flower.[@kbv] A first insured
       prescription starts with a six-month trial of an authorised cannabis finished medicine.[@sgb31]
       A patient already on an extract or a compounded preparation before that date can continue
       without the trial.[@kbv] Switching off flower needs a fresh insurer approval, unless the
       doctor is in a group excused from approval.[@kbv] A private prescription is separate from
-      this insured cover.[@bmg] A government bill to require an in-person consultation before prescribing,
+      this insured cover.[@bmg] A [government bill](/history/germany-medical-restrictions-bill-2025/) to require an in-person consultation before prescribing,
       aimed at telemedicine platforms, went through parliamentary hearings in January 2026. The
       bill, which would also ban mail-order dispensing of flower, was not put to a final vote before
       the summer recess and had not been passed as of September 2026.[@juravendis, boc]
@@ -140,7 +216,8 @@ context:
   clubs:
     status: regulated
     text: >-
-      Non-commercial cultivation associations have been legal since 1 July 2024, each needing
+      Non-commercial cultivation associations have been [legal since 1 July
+      2024](/history/germany-cultivation-associations-2024/), each needing
       a permit from its state. A member must have lived in Germany for six months.[@bmg, kcang1] By
       August 2026 a nationwide count found 455 approved out of 896
       applications, with North Rhine-Westphalia and Lower Saxony ahead and Bavaria far behind.[@hj26]
@@ -165,7 +242,8 @@ context:
   driving:
     status: limit
     text: >-
-      Driving with at least 3.5 ng of THC per millilitre of blood serum is an administrative
+      Driving with at least [3.5 ng of THC per millilitre of blood
+      serum](/history/germany-driving-limit-2024/) is an administrative
       offence under section 24a, with a statutory fine ceiling of €3,000; combining that level
       with alcohol has a €5,000 ceiling. Drivers under 21 or in their probationary period face a
       separate cannabis prohibition under section 24c, rather than permission up to 3.5 ng/ml.
@@ -200,7 +278,115 @@ context:
     sources:
       - diw26
 
+  culture:
+    text: >-
+      Hemp was once a farm crop with customs of its own. In Swabia and Baden young couples jumped
+      the Midsummer fire hand in hand so that the hemp would grow 'three ells high', one of the
+      rites James Frazer collected in The Golden Bough; it is described in [the hemp
+      dance](/culture/traditions/the-hemp-dance/).[@frazer] The modern story begins with
+      [Hasch](/culture/traditions/hasch-in-the-gdr/), the word and the drug of West Germany's
+      student movement of the late 1960s.[@duden] Across the border, East German state security
+      reported hashish smuggled along the transit routes to West Berlin in 1970, and the GDR wrote
+      its own narcotics law in 1973.[@ddr70,ddr73] Campaigners have marched in the [Hanfparade
+      in Berlin](/history/germany-hanfparade-1997/) every August since 1997.[@hanfp] The 2024 law
+      is closely tied to [Karl Lauterbach](/culture/people/karl-lauterbach/), a doctor who opposed
+      legalisation for years, changed his mind in 2021 and steered it through as health
+      minister.[@dw21] Germans remain divided: in a 2025 Pew survey 31% called using marijuana
+      morally acceptable, 25% unacceptable and 42% not a moral question.[@pew26]
+    sources:
+      - frazer
+      - duden
+      - ddr70
+      - ddr73
+      - hanfp
+      - dw21
+      - pew26
+  research:
+    status: licensed
+    text: >-
+      German researchers published 260 papers on cannabis in 2025, and 41
+      clinical trials with a cannabis treatment had been registered in Germany by October
+      2026.[@openalex,ctgov] The Cannabis Act itself is being studied: the law requires an
+      evaluation, run by the [EKOCAN project](https://www.uke.de/ekocan) at the universities of
+      Hamburg, Düsseldorf and Tübingen. Its first interim report, in October 2025, estimated adult
+      demand at about 743 tonnes a year and traced where the cannabis came from.[@dhv25] The
+      [second, in April 2026](/history/germany-second-evaluation-2026/), found a growing share
+      coming from home growing and pharmacies, no rise in use that could be put down to the reform,
+      and fewer young people sent to early-intervention programmes; it also said routine
+      prescribing of high-THC medical cannabis was not justified by studies.[@eko26]
+      Researchers may hold, grow or import cannabis for science only with a permit, and doing so
+      without one is a crime.[@kcang34]
+    sources:
+      - openalex
+      - ctgov
+      - dhv25
+      - eko26
+      - kcang34
+  spotlights:
+    - title: Legal to have, almost nowhere to get
+      text: >-
+        [Since April 2024](/history/germany-cannabis-act-2024/) an adult may carry 25 g, but the
+        law created no shops. The [promised second step](/history/germany-two-pillar-plan-2023/),
+        licensed sales in pilot regions, never came.[@bmg,tsp25] Growing associations
+        are the only legal supply apart from a home grow: by August 2026, 455 had been approved out
+        of 896 applications.[@hj26] In 2024 they covered less than 0.1% of what adults used.[@dhv25]
+      sources:
+        - bmg
+        - tsp25
+        - hj26
+        - dhv25
+    - title: The prescription boom
+      text: >-
+        When cannabis stopped being a narcotic in April 2024, any doctor could prescribe it on an
+        ordinary prescription, and online clinics began issuing private prescriptions in large
+        numbers.[@medcang,abda26,juravendis] Imports of medical flower nearly tripled in 2025, and
+        pharmacies now supply a far larger share of German cannabis than the
+        associations.[@abda26,dhv25] The government has [proposed](/history/germany-medical-restrictions-bill-2025/) requiring an in-person consultation
+        and banning mail-order flower; as of September 2026 the bill had not passed.[@juravendis,boc]
+      sources:
+        - medcang
+        - abda26
+        - dhv25
+        - juravendis
+        - boc
+    - title: Bavaria's own rules
+      text: >-
+        Bavaria went further than the federal law. Its 2024
+        Cannabisfolgenbegrenzungsgesetz bans smoking and vaping cannabis at folk festivals such as
+        the Oktoberfest, in beer gardens and in Munich's English Garden, and lets towns ban it in
+        places such as outdoor pools.[@by24] It has also approved far fewer growing associations
+        than North Rhine-Westphalia or Lower Saxony.[@hj26]
+      sources:
+        - by24
+        - hj26
+
 sources:
+  frazer:
+    type: book
+    title: "The Golden Bough: The Magic Art and the Evolution of Kings, Part I, Volume I (third edition)"
+    authors: [James George Frazer]
+    publisher: Macmillan
+    year: 1911
+    url: https://www.gutenberg.org/cache/epub/59607/pg59607-images.html
+  duden:
+    title: Duden — Hasch
+    url: https://www.duden.de/rechtschreibung/Hasch
+  ddr70:
+    title: DDR im Blick — Störung und Missbrauch des Reise- und Güterverkehrs Berlin–BRD (state security report, 1970)
+    url: https://www.ddr-im-blick.de/jahrgaenge/jahrgang-1970/report/stoerung-und-missbrauch-des-reise-und-gueterverkehrs-berlin-brd/
+  ddr73:
+    type: law
+    title: Gesetz über den Verkehr mit Suchtmitteln (Suchtmittelgesetz), Gesetzblatt der DDR, Teil I (1973)
+    url: https://www.gvoon.de/art/dokumente/1973/gesetzblatt-gbl-ddr-teil-1-1973/pdf/gesetzblatt-gbl-ddr-teil-1-1973-seite_572.pdf
+  hanfp:
+    title: Wikipedia — Hanfparade
+    url: https://en.wikipedia.org/wiki/Hanfparade
+  dw21:
+    title: "Deutsche Welle via TNI/UNGASS on Drugs — German SPD health expert calls on next government to legalize cannabis (13 October 2021)"
+    url: https://ungassondrugs.org/en/site_content/item/10356-german-spd-health-expert-calls-on-next-government-to-legalize-cannabis.html
+  pew26:
+    title: Pew Research Center — In 25-country survey, Americans especially likely to view fellow citizens as morally bad (5 March 2026), survey of 2025
+    url: https://www.pewresearch.org/religion/2026/03/05/in-25-country-survey-americans-especially-likely-to-view-fellow-citizens-as-morally-bad/
   stvg24c:
     title: "Straßenverkehrsgesetz § 24c — alcohol and cannabis prohibition for novice drivers"
     url: https://www.gesetze-im-internet.de/stvg/__24c.html
@@ -213,6 +399,46 @@ sources:
   kcang16:
     title: Konsumcannabisgesetz § 16, Mitgliedschaft (gesetze-im-internet.de)
     url: https://www.gesetze-im-internet.de/kcang/__16.html
+  abda26:
+    type: report
+    title: "ABDA — Die Apotheke: Zahlen, Daten, Fakten 2026, pp. 90–91, Medizinisches Cannabis"
+    url: https://www.abda.de/fileadmin/user_upload/assets/ZDF/ZDF-2026/ZDF_2026_90_91_Medizinisches_Cannabis.pdf
+    year: 2026
+  nh24:
+    title: "top agrar — Nische Nutzhanf: Das ist beim Anbau zu beachten (1 March 2024)"
+    url: https://www.topagrar.com/acker/news/nische-nutzhanf-das-ist-beim-anbau-zu-beachten-20000904.html
+  nh25:
+    title: "top agrar — Nutzhanfanbau: Die Nische schrumpft (1 October 2025), on BLE figures"
+    url: https://www.topagrar.com/perspektiven/news/nutzhanfanbau-die-nische-schrumpft-20018503.html
+  bfr25:
+    type: report
+    title: BfR — Psychoaktive Wirkungen durch den Konsum von Hexahydrocannabinol (HHC)-haltigen Erzeugnissen zu erwarten, opinion 019/2025 (4 June 2025)
+    url: https://www.bfr.bund.de/stellungnahme/psychoaktive-wirkungen-durch-den-konsum-von-hexahydrocannabinol-hhc-haltigen-erzeugnissen-zu-erwarten/
+  tsp25:
+    title: "Tagesspiegel Background — Konsumcannabis-Modellprojekte: BLE lehnt Modellvorhaben wegen fehlender zweiter Säule ab"
+    url: https://background.tagesspiegel.de/gesundheit-und-e-health/briefing/ble-lehnt-modellvorhaben-wegen-fehlender-zweiter-saeule-ab
+  by24:
+    title: beck-aktuell — Bayern beschließt Cannabis-Verbot für Volksfeste und Biergärten (16 April 2024)
+    url: https://www.beck-aktuell.de/heute-im-recht/rechtspolitik-gesetzgebung/bayern-beschliesst-cannabis-verbot-fuer-volksfeste-und-biergaerten-2024-04-16
+  openalex:
+    title: OpenAlex — works mentioning cannabis or cannabinoids, by author country (datasets/openalex-cannabis-papers.csv)
+    url: https://openalex.org/
+  ctgov:
+    title: ClinicalTrials.gov — registered studies with a cannabis or cannabinoid intervention, as of 26 October 2026 (datasets/clinicaltrials-cannabis.csv)
+    url: https://clinicaltrials.gov/
+  eko26:
+    title: Universität Tübingen — Neue Zwischenergebnisse zur Evaluation des Konsumcannabisgesetzes (KCanG) (1 April 2026)
+    url: https://uni-tuebingen.de/universitaet/aktuelles-und-publikationen/attempto-online/newsfullview-attempto/article/neue-zwischenergebnisse-zur-evaluation-des-konsumcannabisgesetzes-kcang
+  kcang34:
+    type: law
+    title: "Konsumcannabisgesetz § 34 — Strafvorschriften"
+    url: https://www.gesetze-im-internet.de/kcang/__34.html
+    locator: Paragraphs 1 (no. 1, 2), 3 (no. 1, 4)
+  kcang36:
+    type: law
+    title: "Konsumcannabisgesetz § 36 — Bußgeldvorschriften"
+    url: https://www.gesetze-im-internet.de/kcang/__36.html
+    locator: Paragraph 1 no. 1; paragraph 2 (fine up to €30,000)
   kcang1:
     title: "Konsumcannabisgesetz § 1 — definitions of home (Wohnsitz) and habitual residence"
     url: https://www.gesetze-im-internet.de/kcang/__1.html

@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 203
 recreational: legal
 medical: legal
-updated: 2026-10-23
+updated: 2026-10-27
 summary: >-
   Since 1 January 2026 adults aged 21+ may grow three plants and keep 100 g of cannabis at home or
   25 g elsewhere. Recreational sales remain illegal. Pharmacies dispense medical cannabis on
@@ -25,6 +25,31 @@ segments:
     sources:
       - z167
       - z40
+    currency: CZK
+    penalties:
+      - upto: 25 g
+        treatment: legal
+        note: Amounts outside the home; at home every limit is four times higher (100 g, 200 g, 2 kg, 20 kg)
+      - over: 25 g
+        upto: 50 g
+        treatment: civil
+        term: Administrative offence (přestupek)
+        fine: 50000
+      - over: 50 g
+        upto: 500 g
+        treatment: criminal
+        term: Crime (trestný čin)
+        prison: 6 months
+      - over: 500 g
+        upto: 5 kg
+        treatment: criminal
+        term: Crime (trestný čin)
+        prison: 3 years
+      - over: 5 kg
+        treatment: criminal
+        term: Crime (trestný čin)
+        prison_min: 6 months
+        prison: 5 years
   cultivation:
     text: >-
       Adults aged 21+ may grow, harvest and process up to three cannabis plants for themselves on
@@ -33,6 +58,31 @@ segments:
     sources:
       - z167
       - z40
+    currency: CZK
+    penalties:
+      - upto: 3 plants
+        treatment: legal
+        note: Adults aged 21 and over, on property they may use
+      - over: 3 plants
+        upto: 5 plants
+        treatment: civil
+        term: Administrative offence (přestupek)
+        fine: 50000
+      - over: 5 plants
+        upto: 50 plants
+        treatment: criminal
+        term: Crime (trestný čin)
+        prison: 6 months
+      - over: 50 plants
+        upto: 500 plants
+        treatment: criminal
+        term: Crime (trestný čin)
+        prison: 3 years
+      - over: 500 plants
+        treatment: criminal
+        term: Crime (trestný čin)
+        prison_min: 6 months
+        prison: 5 years
   enforcement:
     text: >-
       Possession and growing within the age and quantity limits are lawful; the next band above
@@ -68,34 +118,139 @@ segments:
       - z40
       - sukl
 context:
-  production:
+  recreational:
     text: >-
-      Medical cannabis growers need a licence from the State Institute for Drug Control, which
-      inspects the cultivation site before granting it.[@z167] Personal growers aged 21+ may grow up
-      to three plants for themselves; that permission does not allow them to supply other
-      people.[@z167, z40]
+      There is still nowhere to buy cannabis legally, so adults who use it either grow their own,
+      up to three plants, or buy from dealers.[@z167,z40] The national monitoring centre reports
+      that home growing covers personal and community demand, and that dealers increasingly sell
+      through social networks, darknet markets and couriers.[@nms25] Herbal cannabis seized by
+      police in 2024 averaged 11% THC.[@nms25] Home growers may dry their harvest and make
+      ointments, but concentrating cannabinoids by chemical extraction is still treated as illegal
+      manufacture.[@advd] Giving any of it to a friend is a crime.[@z40]
     sources:
       - z167
       - z40
-  products:
-    text: >-
-      The personal-use rules cover home-grown cannabis and its processing within the plant and
-      possession limits.[@z167] A legal commentary distinguishes ordinary drying or making ointments
-      from manufacture using chemical extraction to concentrate cannabinoids, which remains a
-      criminal offence.[@advd] Medical patients can obtain prescribed flower and extracts through
-      pharmacies.[@sukl]
-    sources:
-      - z167
+      - nms25
       - advd
-      - sukl
   medical:
     text: >-
       Patients receive medical flower or extracts on an electronic prescription, dispensed through
       pharmacies.[@sukl] Approved prescribers include general practitioners as well as the listed
-      specialists.[@sukl] Public health insurance covers 90% of the cost of up to 30 g a month;
-      reimbursement above that quantity needs the insurer's approval.[@sukl]
+      specialists; [since April 2025](/history/czechia-general-practitioners-2025/) GPs may prescribe for long-term pain that nothing else relieves,
+      and by early 2026 more than 800 doctors were prescribing, over 250 of them GPs.[@sukl,ct26]
+      Pharmacies dispensed a record amount in 2025, almost half as much again as in 2024.[@ct26]
+      Public health insurance [covers 90%](/history/czechia-medical-insurance-2020/) of the cost of up to 30 g a month; reimbursement above
+      that quantity needs the insurer's approval.[@sukl] The [State Institute for Drug
+      Control](https://sukl.gov.cz/) licenses growers and publishes the list of prescribers.[@z167,ct26]
     sources:
       - sukl
+      - ct26
+      - z167
+  hemp:
+    status: high
+    text: >-
+      [Since 2022](/history/czechia-hemp-one-percent-2022/) the law counts as technical hemp any plant from which no more than 1% THC can be
+      obtained, or one grown from an EU-listed variety; it is not treated as cannabis, and the 1%
+      line also runs through the criminal and administrative rules.[@z167,z40] Farmers growing more
+      than 100 m² must report it.[@z167] Hemp is a small crop, about 140 hectares in 2024.[@fao]
+      CBD products are sold openly.[@tight26] HHC, a semi-synthetic cannabinoid that had been sold
+      in shops to anyone, minors included, was [moved onto the list of banned addictive substances](/history/czechia-hhc-banned-2026/) by the government on 16 March
+      2026, so holding it is now a crime.[@ct23,hhc26] In June 2026 the new government [announced plans](/history/czechia-tightening-plan-2026/)
+      to cut the hemp limit to 0.3% and ban CBD products; none of this had been adopted.[@tight26]
+    sources:
+      - z167
+      - z40
+      - fao
+      - ct23
+      - hhc26
+      - tight26
+  production:
+    status: medical
+    text: >-
+      There is no legal commercial market for recreational cannabis: growing for others and
+      selling are crimes.[@z40] Medical cannabis may be grown only under a [five-year
+      licence](/history/czechia-medical-cultivation-opened-2022/) from
+      the State Institute for Drug Control, granted after it has inspected the growing site.[@z167]
+      Hemp farming and the CBD trade are legal businesses within the 1% THC limit.[@z167] Since
+      November 2025 licensed businesses may also sell kratom under the new law on
+      psychomodulatory substances; cannabis is not on that list.[@pm25,hhc26]
+    sources:
+      - z40
+      - z167
+      - pm25
+      - hhc26
+  culture:
+    text: >-
+      Czech cannabis culture is above all a culture of growing at home. Long before the 2026 law,
+      the national monitoring centre found that home growers covered much of what people used,
+      sharing with friends and their community.[@nms25] Use is common: UNODC puts past-year use at
+      9.4% of people aged 15 to 64 in 2023.[@unodc] Medicine is a thread running through it: the
+      psychotherapist Dušan Dvořák and his association Konopí je lék ('cannabis is medicine')
+      openly grew and handed out cannabis for patients for decades, until a three-year prison sentence in 2019 made him a cause célèbre.[@rp19]
+      The chemist [Lumír Hanuš](/culture/people/lumir-hanus/) became one of the best-known voices
+      for medical cannabis, and the drug coordinator [Jindřich Vobořil](/culture/people/jindrich-voboril/) of
+      the push to regulate it.[@hanus,ct23] Every year Prague's exhibition grounds host Cannafest,
+      a cannabis trade fair billed as one of the largest in the world.[@e15cf]
+    sources:
+      - nms25
+      - unodc
+      - rp19
+      - hanus
+      - ct23
+      - e15cf
+  research:
+    text: >-
+      Czech cannabis science goes back to Palacký University in Olomouc, where Zdeněk Krejčí's
+      department reported antibacterial effects of cannabis in 1955, and where the chemist
+      [Lumír Hanuš](/culture/people/lumir-hanus/) grew and analysed cannabis from the 1970s.[@hanus]
+      In Jerusalem in 1992 he was first author of the paper describing [anandamide](/history/anandamide-discovered-1992/), the first
+      cannabinoid found in the human brain.[@science92] Czech researchers publish around fifty
+      papers on cannabis a year, 57 in 2025, and 14 clinical trials with a cannabis treatment had
+      been registered in the country by October 2026.[@openalex,ctgov] The government's [National
+      Monitoring Centre for Drugs and Addiction](https://www.drogy-info.cz/) reports every year on
+      use, seizures, potency and the drug market.[@nms25]
+    sources:
+      - hanus
+      - science92
+      - openalex
+      - ctgov
+      - nms25
+  spotlights:
+    - title: Grow it, but don't share it
+      text: >-
+        [Since 2026](/history/czechia-home-grow-2026/) an adult may grow three plants and keep 100 g at home, but may not give a single
+        joint to anyone else: any supply, even a gift between friends, is a crime with up to a year
+        in prison.[@z167,z40] A legal commentary warns that friends who grow together and divide the
+        harvest are taking part in that crime.[@advd] The law therefore protects the lone home
+        grower, and leaves anyone who cannot grow, or does not want to, with dealers.[@z40]
+      sources:
+        - z167
+        - z40
+        - advd
+    - title: Twenty-one, not eighteen
+      text: >-
+        The permission to possess and grow starts at 21, not at 18, the age of adulthood. Anyone
+        under 21 who keeps up to 200 g at home or 50 g elsewhere, or grows up to five plants,
+        commits an administrative offence with a fine of up to CZK 50,000; above that the criminal
+        rules apply as for everyone.[@z167,z40]
+      sources:
+        - z167
+        - z40
+    - title: A legal market for kratom first
+      text: >-
+        The 2024 reform created a new class of 'psychomodulatory' substances, which licensed
+        businesses may sell to adults under state rules instead of banning them.[@pm25] The first
+        government list, in force since November 2025, holds only kratom and kratom extract;
+        substances with unknown effects go on a second list to be studied for up to two years.[@pm25,hhc26]
+        HHC went the other way, onto the banned list, in March 2026.[@hhc26] The scheme came from
+        the former drug policy coordinator [Jindřich Vobořil](/culture/people/jindrich-voboril/),
+        who had proposed it for CBD and HHC as well as kratom.[@ct23] The new government has
+        announced it wants kratom off sale altogether.[@tight26]
+      sources:
+        - pm25
+        - hhc26
+        - ct23
+        - tight26
   consequences:
     text: >-
       People aged 18–20 remain outside the personal possession and growing permission, which starts
@@ -173,6 +328,48 @@ context:
       - z40
       - advd
 sources:
+  unodc:
+    title: UNODC — World Drug Report 2026, annual prevalence of cannabis use (datasets/unodc-cannabis-use.csv)
+    url: https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html
+  rp19:
+    title: Radio Prague International — Recidivist large-scale marijuana grower, medical cannabis advocate Dušan Dvořák gets 3-year sentence (5 December 2019)
+    url: https://english.radio.cz/node/8113655
+  e15cf:
+    title: e15 — Konopný byznys skokově roste, točí se v něm miliardy (photo gallery, Cannafest)
+    url: https://www.e15.cz/galerie/byznys/obchod-a-sluzby/130940/konopny-byznys-skokove-roste-toci-se-v-nem-miliardy
+  ct26:
+    title: ČT24 — Lékárny vydaly loni rekordní množství léčebného konopí (26 January 2026)
+    url: https://ct24.ceskatelevize.cz/clanek/domaci/lekarny-vydaly-loni-rekordni-mnozstvi-lecebneho-konopi-369593
+  fao:
+    title: FAOSTAT — hemp area harvested, Czechia (datasets/faostat-hemp.csv)
+    url: https://www.fao.org/faostat/
+  ct23:
+    title: ČT24 — Psychomodulační látky (topic page; ČTK reports of 23 May 2023 and 23 January 2024)
+    url: https://ct24.ceskatelevize.cz/tema/psychomodulacni-latky-16599
+  hhc26:
+    title: Advokátní deník (ČTK) — Vláda zařadila konopný HHC na seznam zakázaných látek, držení bude trestné (17 March 2026)
+    url: https://advokatnidenik.cz/2026/03/17/vlada-zaradila-konopny-hhc-na-seznam-zakazanych-latek-drzeni-bude-trestne/
+  tight26:
+    title: Advokátní deník (ČTK) — Navrhovaná změna protidrogové politiky představuje návrat před rok 1989 (10 June 2026)
+    url: https://advokatnidenik.cz/2026/06/10/navrhovana-zmena-protidrogove-politiky-predstavuje-navrat-pred-rok-1989/
+  pm25:
+    title: Právní prostor — Nařízení vlády č. 456/2025 Sb., o seznamu psychomodulačních látek (27 November 2025)
+    url: https://pravniprostor.cz/zmeny-v-legislative/vyslo-ve-sbirce-zakonu/narizeni-vlady-o-seznamu-psychomodulacnich-latek
+  hanus:
+    title: Wikipedia — Lumír Ondřej Hanuš
+    url: https://en.wikipedia.org/wiki/Lum%C3%ADr_Ond%C5%99ej_Hanu%C5%A1
+  science92:
+    type: journal
+    title: Devane, Hanuš, Breuer et al. — Isolation and structure of a brain constituent that binds to the cannabinoid receptor
+    container: Science 258
+    year: 1992
+    url: https://doi.org/10.1126/science.1470919
+  openalex:
+    title: OpenAlex — works mentioning cannabis or cannabinoids, by author country (datasets/openalex-cannabis-papers.csv)
+    url: https://openalex.org/
+  ctgov:
+    title: ClinicalTrials.gov — registered studies with a cannabis or cannabinoid intervention, as of 26 October 2026 (datasets/clinicaltrials-cannabis.csv)
+    url: https://clinicaltrials.gov/
   police_thc:
     title: "Czech Police — Kanabidiol: road-traffic prohibition and 2 ng/ml THC threshold"
     url: https://archiv.policie.gov.cz/clanek/kanabidiol.aspx
@@ -202,11 +399,11 @@ sources:
   z167:
     title: Addictive Substances Act 167/1998 — current text (Zákony pro lidi)
     url: https://www.zakonyprolidi.cz/cs/1998-167
-    locator: §§ 2, 5(12)–(13), 24c and 39
+    locator: §§ 2, 5(12)–(13), 24c, 29b, 33k and 39(2), (4), (7)
   z40:
     title: Criminal Code 40/2009 — current text (Zákony pro lidi)
     url: https://www.zakonyprolidi.cz/cs/2009-40
-    locator: §§ 283a and 285
+    locator: §§ 283a and 285(1), (2), (4), (5)
   smoking:
     title: Health Protection Act 65/2017 — smoking restrictions (Zákony pro lidi)
     url: https://www.zakonyprolidi.cz/cs/2017-65

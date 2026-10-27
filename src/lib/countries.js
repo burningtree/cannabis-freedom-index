@@ -6,6 +6,7 @@ import { sourceTuple } from "./sources.js";
 import { stripCites } from "./cite.js";
 import { datasetsOf, latestOf } from "./datasets.js";
 import { TIERS, tierIndex } from "./tiers.js";
+import { penaltyRow, penaltySummary } from "./penalties.js";
 export { CHANGE_CATEGORIES, CHANGE_TAGS };
 
 export const DATA_SNAPSHOT = "2026";
@@ -30,14 +31,38 @@ export const MED_HELP = {
 // "Seeds and clones" exists only where it has been researched and carries a status for each.
 // The order goes from how people get and use cannabis, through the market, to the police
 // (docs/COUNTRY-CONTEXTS.md).
-export const CONTEXT = [["death_penalty", "Death penalty"], ["medical", "Medical cannabis"], ["clubs", "Cannabis clubs"], ["planting", "Seeds and clones"], ["products", "Products"], ["production", "Cannabis industry"], ["black_market", "Black market"], ["visitors", "Visitors and foreigners"], ["driving", "Driving"], ["arrests", "Arrests and prisoners"], ["consequences", "Beyond the penalty"]];
+export const CONTEXT = [
+  ["death_penalty", "Death penalty", "Whether the law allows execution for cannabis offences, and whether it is carried out"],
+  ["recreational", "Recreational use", "How adults actually get and use cannabis here, legally or not"],
+  ["medical", "Medical cannabis", "How patients get cannabis as medicine: who qualifies, who prescribes, what forms there are and what it costs"],
+  ["clubs", "Cannabis clubs", "Whether members' clubs that grow and share cannabis exist, and on what footing"],
+  ["planting", "Seeds and clones", "Whether seeds and cuttings may be bought, kept, planted and sold"],
+  ["products", "Products", "Which cannabis products are on sale; being folded into the recreational, medical and hemp sections"],
+  ["hemp", "Hemp and CBD", "Low-THC hemp for fibre, food and CBD, and loophole products such as HHC"],
+  ["production", "Cannabis industry", "The legal commercial sector: who may grow, process and sell for profit, and on what terms"],
+  ["black_market", "Black market", "The illegal market: how big it is, where the cannabis comes from, prices and how openly it is sold"],
+  ["visitors", "Visitors and foreigners", "Whether someone who does not live here can get cannabis legally, and what happens to a foreigner who is caught"],
+  ["driving", "Driving", "What the law needs to convict a driver who has used cannabis"],
+  ["arrests", "Arrests and prisoners", "Published counts of arrests, offences, convictions and prisoners"],
+  ["consequences", "Beyond the penalty", "What follows a person beyond the punishment itself: records, drug registers, lost licences, jobs, deportation"],
+  ["culture", "Culture and traditions", "How cannabis sits in the country's life: customs, faith, words, music and film, festivals and attitudes, and what prohibition did to them"],
+  ["genetics", "Genetics and heritage", "Local cannabis plants, the people who keep them, and what bans and new laws did to them"],
+  ["research", "Research", "Scientific research on cannabis in the country: who studies it, what they found, and what the law allows"],
+  ["spotlights", "Country spotlights", "What makes cannabis different here: places, institutions and practices the scores do not show"],
+];
 export const CONTEXT_NAMES = CONTEXT.map(([, name]) => name);
+export const CONTEXT_HELP = Object.fromEntries(CONTEXT.map(([key, , help]) => [key, help]));
 
 // File values → short codes used in class names and filters.
 const REC_CODE = { legal: "legal", partial: "partial", decriminalised: "decrim", illegal: "illegal", death: "death" };
 const MED_CODE = { legal: "yes", limited: "limited", none: "no" };
 const isoDate = (d) => d.toISOString().slice(0, 10);
 const pair = sourceTuple;
+// the spotlights as one cited block (for the API, comparisons and plain-text lists) plus each item
+const spotlightsOf = (list, cited) => ({
+  ...cited({ text: list.map((x) => `${x.title}. ${x.text}`).join(" "), sources: [...new Set(list.flatMap((x) => x.sources))] }),
+  items: list.map((x) => ({ title: x.title, ...cited(x) })),
+});
 const plantingOf = ({ seeds, seeds_trade, clones, clones_trade }) => ({ seeds, seeds_trade, clones, clones_trade });
 
 // ── Segments ──────────────────────────────────────────
@@ -109,12 +134,16 @@ const everyPlace = (await getCollection("countries"))
       note: data.summary,
       details: {
         reviewed: isoDate(data.updated),
-        segments: SEGMENTS.map((seg) => cited(data.segments[seg.id])), // in SEGMENTS order
-        context: CONTEXT.map(([key, name]) => (data.context[key] ? { key, name, ...cited(data.context[key]), ...(key === "planting" && plantingOf(data.context[key])), ...(STATUS_SECTIONS[key] && { kind: key, status: data.context[key].status }) } : null)), // null: no such section
+        // in SEGMENTS order; possession and cultivation may carry penalty steps (penalties.js)
+        segments: SEGMENTS.map((seg) => {
+          const block = data.segments[seg.id], rows = block.penalties?.map(penaltyRow);
+          return { ...cited(block), ...(rows && { penalties: { rows, currency: block.currency ?? null, summary: penaltySummary(rows) } }) };
+        }),
+        context: CONTEXT.map(([key, name, help]) => (data.context[key] ? { key, name, help, ...(key === "spotlights" ? spotlightsOf(data.context.spotlights, cited) : cited(data.context[key])), ...(key === "planting" && plantingOf(data.context[key])), ...(STATUS_SECTIONS[key] && { kind: key, status: data.context[key].status }) } : null)), // null: no such section
         sources: Object.values(data.sources).map(pair),
       },
       planting: data.context.planting ? plantingOf(data.context.planting) : null,
-      // one status per section in STATUS_SECTIONS (clubs, driving, visitors), null until researched
+      // one status per section in STATUS_SECTIONS (clubs, driving, visitors, hemp, production, research), null until researched
       ...Object.fromEntries(Object.keys(STATUS_SECTIONS).map((key) => [key, data.context[key]?.status ?? null])),
       subunitMeta: data.subunits ?? null,
     };

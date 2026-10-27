@@ -4,6 +4,7 @@
 import { getCollection } from "astro:content";
 import { places, changes } from "./countries.js";
 import { sourceTuple } from "./sources.js";
+import { LINK_MARK } from "./cite.js";
 
 // The parts of the atlas, in menu order. `entries: true` means the section is made of files in
 // /culture/<id>/; the others are single pages. `soon` marks a part with nothing to read yet.
@@ -56,6 +57,17 @@ export const cultureEntries = (await getCollection("culture"))
 // and so must links from one entry to another
 for (const e of cultureEntries) for (const [, path] of (e.entry.body ?? "").matchAll(/\]\(\/(culture\/(?:language|traditions|people)\/[^/)#]+)\/?[^)]*\)/g)) {
   if (!cultureEntries.some((x) => x.url === path + "/")) throw new Error(`culture/${e.entry.id}.md: the text links to /${path}/, which does not exist`);
+}
+// Links in a country profile's segment and context texts to a history entry or a culture entry
+// must lead somewhere too (docs/DATA-MAINTENANCE.md, Links)
+const historyIds = new Set(changes.map((ch) => ch.id));
+for (const c of places) {
+  const blocks = [...c.details.segments, ...c.details.context.filter(Boolean).flatMap((x) => x.items ?? [x])];
+  for (const b of blocks) for (const [, , href] of (b?.cite?.text ?? "").matchAll(LINK_MARK)) {
+    const history = /^\/history\/([^/#]+)\/?$/.exec(href), culture = /^\/(culture\/(?:language|traditions|people)\/[^/#]+)\/?$/.exec(href);
+    if (history && !historyIds.has(history[1])) throw new Error(`countries/${c.slug}.yaml: a text links to ${href}, but there is no history entry "${history[1]}"`);
+    if (culture && !cultureEntries.some((x) => x.url === culture[1] + "/")) throw new Error(`countries/${c.slug}.yaml: a text links to ${href}, which does not exist`);
+  }
 }
 
 // Related entries, for the side of each entry page: the ones named in `related` first, in their

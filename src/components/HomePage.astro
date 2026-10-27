@@ -91,9 +91,11 @@ const MED_ORDER = ["yes", "limited", "no"];
 // `ds` holds the country's figures from the outside datasets (datasets.js), for the Society views.
 import { useFreedomRatio } from "../lib/use-freedom-ratio.js";
 const mapData = places.map((c) => {
-  const { id, num, name, flag, raw, score, rank, s, use, planting, clubs, driving, visitors, rec, med } = c;
+  const { id, num, name, flag, raw, score, rank, s, use, planting, rec, med } = c;
   const atlas = cultureOf(c);
-  return { id, num, name, flag, raw, score, rank, s, planting, clubs, driving, visitors, rec, med, fe: estimateNote(c), prices: SHOW_PRICES ? flatLatestPricesFor(id) : {},
+  // one value per section in STATUS_SECTIONS (clubs, driving, visitors, hemp, production, research)
+  const statuses = Object.fromEntries(Object.keys(STATUS_SECTIONS).map((key) => [key, c[key]]));
+  return { id, num, name, flag, raw, score, rank, s, planting, ...statuses, rec, med, fe: estimateNote(c), prices: SHOW_PRICES ? flatLatestPricesFor(id) : {},
     use: { ...use, ages: useAges(use), ratio: useFreedomRatio(use.prevalence, raw), culture: atlas.length },
     atlas: atlas.slice(0, 4).map((e) => e.title), ds: datasetMapValues(c) };
 });
@@ -130,7 +132,7 @@ const PLANTING_FIELDS = { seeds: "Seeds", seeds_trade: "Seed sales", clones: "Cl
 const PLANTING_COLOR = { legal: 5, conditional: 4, licensed: 4, grey: 3, illegal: 0, open: 5, "regulated-sale-plus-gifts": 4, regulated: 4, gift: 3, unclear: 2, banned: 0 };
 const plantingScale = (statuses) => Object.fromEntries(Object.entries(statuses).map(([k, v]) => [k, { label: v.label, help: v.help, color: `var(--t${PLANTING_COLOR[k]})` }]));
 const PLANTING_SCALES = { status: plantingScale(PLANTING_STATUS), trade: plantingScale(PLANTING_TRADE) };
-// Sections with one status (clubs, driving, visitors) on the map: one option each.
+// Sections with one status (clubs, driving, visitors, hemp, production, research) on the map: one option each.
 // The two headline statuses of every profile, offered on the map the same way. `complete` marks
 // sections every country has, so their legend needs no "not researched" entry.
 const LAW_SECTIONS = {
@@ -556,7 +558,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     const plantScale = (field) => PLANTING.scales[field.endsWith("_trade") ? "trade" : "status"];
     const plantOf = (c, field = plantField()) => plantScale(field)[c.planting?.[field]];
     const plantColor = (c) => plantOf(c)?.color ?? "url(#hatch)";
-    const isClubs = () => metric.startsWith("status:"); // coloured by a section's one status: clubs, driving, visitors
+    const isClubs = () => metric.startsWith("status:"); // coloured by a section's one status (STATUS_SECTIONS)
     const statusKey = () => metric.split(":")[1];
     const clubsOf = (c) => PLANTING.sections[statusKey()].scale[c[statusKey()]];
     const clubsColor = (c) => clubsOf(c)?.color ?? "url(#hatch)";

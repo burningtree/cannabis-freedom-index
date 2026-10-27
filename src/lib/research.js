@@ -13,7 +13,9 @@ import { datasetsOf, latestOf } from "./datasets.js";
 const WEAK = /cannabisregulations\.ai|tripbase\.com|sensiseeds\.com/;
 const WIKI = /wikipedia\.org/;
 const solid = (src) => src && (!src.url || !(WEAK.test(src.url) || WIKI.test(src.url))); // a book has no url
-const SECTIONS = [...CONTEXT_IDS, "planting", ...Object.keys(STATUS_SECTIONS), "black_market", "arrests"];
+const SECTIONS = [...new Set([...CONTEXT_IDS, "products", "planting", ...Object.keys(STATUS_SECTIONS).filter((k) => !STATUS_SECTIONS[k].optional), "black_market", "arrests"])];
+// a profile that has folded `products` into `recreational` and `hemp` has not lost a section
+const researched = (context, k) => k === "products" && !context.products ? Boolean(context.recreational?.sources.length && context.hemp?.sources.length) : Boolean(context[k]?.sources.length);
 const NOW = new Date();
 const THIS_YEAR = NOW.getFullYear();
 const total = (scores) => SEGMENTS.reduce((sum, seg) => sum + (scores[seg.id] * seg.weight) / 10, 0);
@@ -32,7 +34,7 @@ export const research = (await getCollection("countries")).map(({ id: slug, data
   add("profile", "Every score is cited", SEGMENTS.length - uncited.length, SEGMENTS.length, uncited.map((s) => `${s.name}: no source`));
   const soft = SEGMENTS.filter((seg) => data.segments[seg.id].sources.length && !src(data.segments[seg.id].sources).some(solid));
   add("profile", "Every score rests on more than Wikipedia", SEGMENTS.length - uncited.length - soft.length, SEGMENTS.length, soft.map((s) => `${s.name}: only Wikipedia or a weak site`));
-  const empty = SECTIONS.filter((k) => !data.context[k]?.sources.length);
+  const empty = SECTIONS.filter((k) => !researched(data.context, k));
   add("profile", "Context sections researched", SECTIONS.length - empty.length, SECTIONS.length, empty.map((k) => `${k.replace("_", " ")}: ${data.context[k] ? "no source" : "missing"}`));
   const use = latestOf(slug).cannabis_use ?? {};
   add("profile", "Use is a measured figure", use.year && !use.estimate ? 1 : 0, 1, use.year && !use.estimate ? [] : ["prevalence of use is an estimate"]);

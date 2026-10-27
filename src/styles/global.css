@@ -729,10 +729,38 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 /* general guidance inside a context section */
 .ctx + .ctx { margin-top: 8px; }
 .ctx-general { color: var(--muted); font-size: 12.5px; }
+/* penalty steps under a segment (penalties.js): a plain table, stacked into one block per row on
+   narrow screens. Plain cells only: the global th style is for sortable tables. */
+.pen { width: 100%; margin: 14px 0 4px; border-collapse: collapse; table-layout: fixed; font-size: 14px; line-height: 1.45; }
+.pen td { padding: 8px 12px 8px 0; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+.pen thead td { padding-bottom: 6px; color: var(--muted); font-size: 12px; }
+.pen td:nth-child(1) { width: 34%; }
+.pen td:nth-child(2) { width: 30%; }
+.pen td:nth-child(3), .pen td:nth-child(4) { width: 18%; font-variant-numeric: tabular-nums; }
+.pen-note { display: block; margin-top: 2px; color: var(--muted); font-size: 12.5px; }
+.pen-death { color: var(--t0); font-weight: 600; }
+/* what happens: a coloured dot and the word, the dot in the colour of the matching chips */
+.pen-t { display: inline-flex; align-items: center; gap: 6px; }
+.pen-t::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dot, var(--muted)); flex: none; }
+@media (max-width: 560px) {
+  .pen, .pen tbody, .pen tr, .pen td { display: block; width: auto !important; }
+  .pen thead { display: none; }
+  .pen tr { padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .pen td { padding: 2px 0; border: 0; }
+  .pen td:nth-child(n+2)::before { content: attr(data-label) ": "; color: var(--muted); }
+  .pen td:nth-child(1) { font-weight: 500; }
+}
+/* one country spotlight inside its section */
+.ctx-spot + .ctx-spot { margin-top: 14px; }
+.ctx-spot-h { margin: 0 0 4px; font: 400 18px/1.2 var(--display); color: var(--text); }
 
 /* ── Changelog, downloads, licence ──────────────────── */
 .page-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
 .lede a, .prose a { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+/* links written into a profile's segment and context texts (Cited.astro), not its citation numbers */
+.ctx a:not(.cite a), .why p a:not(.cite a) { color: var(--text); text-decoration: underline; text-decoration-color: var(--muted); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.ctx a:not(.cite a):hover, .why p a:not(.cite a):hover { text-decoration-color: currentColor; }
+.ctx a[target="_blank"]:not(.cite a)::after, .why p a[target="_blank"]:not(.cite a)::after { content: "↗"; display: inline-block; margin-left: 2px; color: var(--muted); font-size: .85em; text-decoration: none; }
 .log-card { margin-top: 24px; overflow-x: auto; }
 .log td { font-size: 14px; }
 .log th { cursor: default; }
@@ -1150,6 +1178,10 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .src-tip-pop a:hover { color: var(--text); text-decoration-color: currentColor; }
 @media (hover: hover) { .src-tip:hover .src-tip-pop { display: block; } }
 .src-tip.open .src-tip-pop, .src-tip:has(.src-tip-btn:focus-visible) .src-tip-pop { display: block; }
+/* the inline variant, beside a heading (what a context section covers): opens to the right */
+.src-tip.src-tip-inline { position: relative; top: auto; right: auto; display: inline-block; margin-left: 6px; vertical-align: middle; }
+.src-tip-inline .src-tip-btn { width: 20px; height: 20px; }
+.src-tip-inline .src-tip-pop { right: auto; left: 0; font: 400 12px/1.5 Inter, sans-serif; letter-spacing: 0; }
 .cd-block h3 { padding-right: 32px; }
 .cd-block p.cd-more { margin-top: 6px; font-size: 12px; }
 .cd-more a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }

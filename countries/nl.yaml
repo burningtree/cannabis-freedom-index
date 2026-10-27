@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 528
 recreational: partial
 medical: legal
-updated: 2026-10-10
+updated: 2026-10-27
 summary: >-
   Formally illegal but tolerated: coffeeshops sell up to 5 g per person and five plants are usually
   only confiscated. A regulated supply-chain experiment now covers ten municipalities.
@@ -32,16 +32,54 @@ segments:
     text: >-
       Cannabis is formally illegal under the Opium Act. Under the toleration policy the Public
       Prosecution Service does not prosecute possession of up to 5 g of marijuana or hash, though
-      police may still confiscate it. Larger amounts can be prosecuted.
+      police may still confiscate it.[@gov] Larger amounts can be prosecuted: up to 30 g is a minor
+      offence with at most a month's detention or a €5,500 fine, and more than 30 g is a crime
+      with up to two years in prison or a €110,000 fine.[@ow11,sr23]
     sources:
       - gov
+      - ow11
+      - sr23
+    currency: EUR
+    penalties:
+      - upto: 5 g
+        treatment: tolerated
+        note: Not prosecuted; police may seize it
+      - over: 5 g
+        upto: 30 g
+        treatment: criminal
+        term: Minor offence (overtreding)
+        prison: 1 month
+        fine: 5500
+      - over: 30 g
+        treatment: criminal
+        term: Crime (misdrijf)
+        prison: 2 years
+        fine: 110000
   cultivation:
     text: >-
       Not legal. Up to five plants for personal use are normally not prosecuted, but police will
       seize them. More than five plants is prosecuted, growers face back-charges for electricity,
-      and tenants risk eviction.
+      and tenants risk eviction.[@gov] Growing is a crime with up to two years in prison, or six
+      years when done as a business.[@ow11,sr23]
     sources:
       - gov
+      - ow11
+      - sr23
+    currency: EUR
+    penalties:
+      - upto: 5 plants
+        treatment: tolerated
+        note: Not prosecuted; police seize the plants
+      - over: 5 plants
+        treatment: criminal
+        term: Crime (misdrijf)
+        prison: 2 years
+        fine: 110000
+      - label: Growing as a business
+        treatment: criminal
+        term: Crime (misdrijf)
+        prison: 6 years
+        fine: 110000
   enforcement:
     text: >-
       Users are effectively left alone, with confiscation the worst outcome for small amounts.
@@ -71,28 +109,144 @@ segments:
     sources:
       - gov
 context:
-  production:
+  recreational:
     text: >-
-      Production has always been illegal — the 'back door' problem. Since April 2025 an experiment
-      lets ten licensed growers legally supply all coffeeshops in ten participating municipalities,
-      running through 2029. Everywhere else, supply remains criminal.
+      Most adults who buy cannabis legally do so in a coffeeshop. At the end of 2024 there were
+      563, in 103 municipalities; most towns have none.[@kb24] About two-thirds are places where
+      customers may also smoke; a quarter only sell to take away, a share that grew after smoking
+      rooms were banned in July 2022.[@kb24] Shops sell weed and hashish, and many sell space cake
+      and other edibles.[@gov,exp] In early 2025 a gram of the most popular Dutch-grown weed
+      cost about €11 and held about 16% THC on average; imported hashish cost about €10.[@thc25]
+      Many people also buy outside the shops, mostly from delivery services and dealers they reach
+      by phone, because it is cheaper and they can buy more at once.[@tri26]
     sources:
-      - exp
+      - kb24
       - gov
-  products:
-    text: >-
-      Coffeeshops sell flower and hashish, plus edibles such as space cake. Concentrates are in a
-      weaker position, and the experiment's products are tested and labelled.
-    sources:
       - exp
-      - gov
+      - thc25
+      - tri26
   medical:
     text: >-
-      Doctors have been able to prescribe pharmacy-dispensed medicinal cannabis since 2003, produced
-      under contract for the government's Office of Medicinal Cannabis. Health insurers usually do
-      not reimburse it.
+      Doctors have been able to prescribe medicinal cannabis since 2003. Pharmacies dispense it as
+      dried flower from the government's [Office of Medicinal Cannabis](https://www.cannabisbureau.nl/), which holds a legal
+      monopoly on buying and selling it.[@bmc,mc26] Health insurers usually do not pay for
+      it.[@bmc] The office's [contract with its only Dutch grower ended on 1 January
+      2026](/history/netherlands-medical-grower-contract-ends-2026/). It is
+      supplying pharmacies from stock for now, will switch to imported cannabis in the course of
+      2027, and will stop exporting to patients abroad at the end of 2026. The government plans a
+      law ending the monopoly, so that companies can supply pharmacies directly, in mid-2028.[@mc26]
     sources:
       - bmc
+      - mc26
+  hemp:
+    status: standard
+    text: >-
+      Farmers may grow hemp from certified seed of approved EU varieties with no more than 0.3%
+      THC; inspectors sample the field shortly before harvest, and harvesting needs written
+      permission.[@rvo26] Seeds are outside the Opium Act, so they are sold openly.[@opiumwet]
+      CBD itself is not a listed drug, but a law firm's guide reads the Act's definitions of hemp
+      and hemp oil as covering CBD extracted from the plant.[@blen23] HHC, a
+      semi-synthetic cannabinoid sold in the gaps of the law, was put on List I, the hard-drugs
+      list, by a [decree published in January 2026](/history/netherlands-hhc-banned-2026/).[@stb26]
+    sources:
+      - rvo26
+      - opiumwet
+      - blen23
+      - stb26
+  production:
+    status: pilot
+    text: >-
+      For decades coffeeshops could sell cannabis but nobody could legally grow it for them: the
+      'back door' problem.[@gov] An experiment changes this in ten municipalities: Almere, Arnhem,
+      Breda, Groningen, Heerlen, Maastricht, Nijmegen, Tilburg, Voorne aan Zee and Zaanstad. Up to
+      ten licensed growers supply them, tracked from plant to sale; [since 7 April
+      2025](/history/netherlands-regulated-supply-only-2025/) the shops
+      there may sell nothing else.[@tri26,exp] The growers report heavy start-up costs, and hashish
+      was short at first.[@tri26] Medicinal cannabis was grown by one company under contract to the
+      state until 2026.[@mc26] Everywhere else, growing for sale is a crime.[@gov]
+    sources:
+      - gov
+      - exp
+      - tri26
+      - mc26
+  culture:
+    text: >-
+      For many people abroad the Netherlands means the [coffeeshop](/culture/traditions/the-coffeeshop/),
+      a café that sells cannabis over the counter.[@wcs] It grew out of an idea of the early 1970s:
+      a commission chaired by the criminal lawyer [Louk Hulsman](/culture/people/louk-hulsman/)
+      argued that pushing cannabis users into the same criminal world as heroin users exposed them
+      to harder drugs, and recommended taking cannabis use out of criminal law.[@cedro] Amsterdam
+      became a meeting place for growers and breeders: the [Hash, Marihuana & Hemp
+      Museum](/history/netherlands-hemp-museum-1985/) opened in 1985, and the [Cannabis
+      Cup](/culture/traditions/the-cannabis-cup/), a contest where judges smoke and score the
+      year's cannabis, began there in 1988.[@whm,cupsite] Near the harbour, the artists' village of
+      [Ruigoord](/culture/traditions/ruigoord/) has kept a festival culture with its own
+      cannabis rules since the 1970s.[@onh] The everyday word is [wiet](/culture/language/wiet/),
+      borrowed from English weed.[@wikt] Tolerance is not the same as approval: in a 2025 Pew
+      survey 45% of Dutch adults called using marijuana morally acceptable, 32% unacceptable and
+      20% not a moral question at all.[@pew26]
+    sources:
+      - wcs
+      - cedro
+      - whm
+      - cupsite
+      - onh
+      - wikt
+      - pew26
+  research:
+    status: licensed
+    text: >-
+      Dutch researchers publish over a hundred papers on cannabis a year, 140 in 2025, and 21
+      clinical trials with a cannabis or cannabinoid treatment had been registered in the country by
+      October 2026.[@openalex,ctgov] [Maastricht University](https://www.maastrichtuniversity.nl/) has studied cannabis and driving on real
+      roads since the 1990s. Its 2020 trial, published in JAMA, had 26 users drive about 100 km at a
+      time in a test car after inhaling THC, CBD or a placebo: THC made drivers weave in their lane
+      about as much as a blood alcohol level above 0.05%, for up to about four hours, while CBD alone
+      had little or no effect.[@um20] Since the late 1990s the [Trimbos Institute](https://www.trimbos.nl/) has tested the
+      strength of cannabis bought anonymously in coffeeshops every year.[@thc25] Researchers get
+      their cannabis through the Office of Medicinal Cannabis, which is also the only legal
+      supplier to pharmacies.[@mc26]
+    sources:
+      - openalex
+      - ctgov
+      - um20
+      - thc25
+      - mc26
+  spotlights:
+    - title: The back door
+      text: >-
+        A coffeeshop may sell cannabis and keep up to 500 grams in stock, but for decades nobody
+        could legally grow it or deliver it to the shop.[@gov,tri26] Owners had to buy from criminal
+        growers, which is why the shop front is tolerated while the 'back door' stays a crime. The
+        government's answer is an experiment: in ten towns, licensed growers deliver tested
+        cannabis tracked from plant to sale, and the shops may hold a week's stock instead of 500
+        grams.[@tri26] The first evaluation, in 2026, found more choice and cheaper weed, and no
+        clear change in how much people use.[@tri26]
+      sources:
+        - gov
+        - tri26
+    - title: A different rule in every town
+      text: >-
+        Toleration is national, but the details are local. Only 103 municipalities have a
+        coffeeshop, and 102 of them cap how many there may be.[@kb24] 81 write the residents-only
+        rule into their policy; how strictly it is enforced varies, mostly in the south and along
+        the borders.[@kb24,gov] Some border towns are watching for fewer German customers since
+        Germany legalised possession and home growing in April 2024.[@kb24] Prices differ too: in
+        2025 a gram of the most popular weed cost about €13 in Amsterdam and under €11
+        elsewhere.[@thc25]
+      sources:
+        - kb24
+        - gov
+        - thc25
+    - title: The end of the smoking room
+      text: >-
+        Since July 2022 coffeeshops may no longer have a separate smoking room. Officials in
+        municipalities say the shops have become more like take-away counters, and that the
+        coffeeshop's social role, a safe and supervised place to use cannabis, is under pressure.
+        Some fear people now smoke in the street instead.[@kb24] At the end of 2024 a quarter of
+        all coffeeshops sold only to take away.[@kb24]
+      sources:
+        - kb24
   consequences:
     text: >-
       Tolerated possession leaves no criminal record. Drivers are subject to a per-se THC blood
@@ -142,7 +296,7 @@ context:
   visitors:
     status: residents
     text: >-
-      On paper coffeeshops are for residents only: since 1 January 2013 the national rules say
+      On paper coffeeshops are for [residents only](/history/netherlands-residents-only-2012/): since 1 January 2013 the national rules say
       only people aged 18 or over who are registered in a Dutch municipality may enter and
       buy, and owners are meant to check an identity document or residence permit. Whether the
       rule is enforced differs from one municipality to the next, which is why visitors can
@@ -170,6 +324,27 @@ context:
     sources:
       - euda_dlo
 sources:
+  wcs:
+    title: Wikipedia — Coffeeshop (Netherlands)
+    url: https://en.wikipedia.org/wiki/Coffeeshop_(Netherlands)
+  cedro:
+    title: "CEDRO — Peter Cohen, The case of the two Dutch drug policy commissions (1994)"
+    url: https://cedro-uva.org/lib/cohen.case.html
+  whm:
+    title: "Wikipedia — Hash, Marihuana & Hemp Museum"
+    url: https://en.wikipedia.org/wiki/Hash%2C_Marihuana_%26_Hemp_Museum
+  cupsite:
+    title: Cannabis Cup — Welcome to Amsterdam, Birthplace of the Cannabis Cup
+    url: https://cannabiscup.com/welcome-amsterdam-birthplace-cannabis-cup/
+  onh:
+    title: Oneindig Noord-Holland — Ruigoord
+    url: https://onh.nl/verhaal/ruigoord
+  wikt:
+    title: Wiktionary — wiet, Dutch entry
+    url: https://en.wiktionary.org/wiki/wiet
+  pew26:
+    title: Pew Research Center — In 25-country survey, Americans especially likely to view fellow citizens as morally bad (5 March 2026), survey of 2025
+    url: https://www.pewresearch.org/religion/2026/03/05/in-25-country-survey-americans-especially-likely-to-view-fellow-citizens-as-morally-bad/
   euda_dlo:
     title: "EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)"
     url: https://www.euda.europa.eu/data/stats2026/dlo_en
@@ -204,3 +379,55 @@ sources:
   bmc:
     title: Office of Medicinal Cannabis (Bureau voor Medicinale Cannabis)
     url: https://english.cannabisbureau.nl/
+  ow11:
+    type: law
+    title: Opiumwet — articles 3, 11 and 13 (version in force from 1 January 2026, wetten.overheid.nl)
+    url: https://wetten.overheid.nl/BWBR0001941/2026-01-01
+    locator: Art. 11(1), (2), (3) and (6); art. 13 (overtredingen and misdrijven)
+  sr23:
+    type: law
+    title: Wetboek van Strafrecht — article 23, fine categories (amounts from 1 January 2026)
+    url: https://wetten.overheid.nl/BWBR0001854/2026-01-01
+    locator: "Art. 23(4): second category €5,500, fifth category €110,000"
+  kb24:
+    type: report
+    title: Tweede Kamer 24077 nr. 558 — Minister of Justice's letter on the report 'Coffeeshops in Nederland 2024' (2 October 2025)
+    url: https://www.eerstekamer.nl/behandeling/20251002/brief_regering_rapport_coffeeshops/document3/f=/vmrdgz6kyezl.pdf
+    year: 2025
+  thc25:
+    type: report
+    title: Trimbos Institute — THC-monitor 2024–2025 (January 2026)
+    url: https://www.trimbos.nl/wp-content/uploads/2026/01/THC-monitor-2024-2025.pdf
+    year: 2026
+    locator: Samenvatting
+  tri26:
+    type: report
+    title: Breuer&Intraval, RAND Europe and Trimbos Institute — Onderzoek Experiment Gesloten Coffeeshopketen, first follow-up measurement 2025 (2026)
+    url: https://www.trimbos.nl/wp-content/uploads/2026/09/TRI-41-040_Onderzoek-Experiment-Gesloten-Coffeeshopketen.-.pdf
+    year: 2026
+    locator: Summary; chapter 2 (design and municipalities)
+  mc26:
+    type: report
+    title: Tweede Kamer 29477 nr. 986 — Health Minister's letter on medicinal cannabis (3 July 2026)
+    url: https://berthub.eu/tkconv/getraw/2026D35328
+    year: 2026
+  rvo26:
+    title: RVO — Hennep, GLB 2026
+    url: https://www.rvo.nl/onderwerpen/glb-2026/hennep
+  blen23:
+    title: Blenheim — Cannabis (CBD and THC) and hemp in the Netherlands (29 September 2023)
+    url: https://www.blenheim.nl/en/blog/cannabis-cbd-and-thc-and-hemp-in-the-netherlands/
+  openalex:
+    title: OpenAlex — works mentioning cannabis or cannabinoids, by author country (datasets/openalex-cannabis-papers.csv)
+    url: https://openalex.org/
+  ctgov:
+    title: ClinicalTrials.gov — registered studies with a cannabis or cannabinoid intervention, as of 26 October 2026 (datasets/clinicaltrials-cannabis.csv)
+    url: https://clinicaltrials.gov/
+  um20:
+    title: Maastricht University — Cannabis types have different effects on driving (1 December 2020), on the trial published in JAMA
+    url: https://www.maastrichtuniversity.nl/node/43780
+  stb26:
+    type: law
+    title: Besluit van 19 januari 2026, Stb. 2026, 11 — HHC and other substances added to Opium Act lists I and II
+    url: https://www.njb.nl/wetgeving/staatsbladen/lijst-i-en-ii-opiumwet/
+    year: 2026

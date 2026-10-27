@@ -45,9 +45,10 @@ about the country.
 | 10 | `driving` | Driving | Unchanged |
 | 11 | `arrests` | Arrests and prisoners | Unchanged |
 | 12 | `consequences` | Beyond the penalty | Renamed: records, drug registers, lost licences, tests at work, deportation |
+| — | `culture` (new, optional) | Culture and traditions | How cannabis sits in the country's life; links the Culture entries |
 | 13 | `genetics` (new, optional) | Genetics and heritage | Local plants and who keeps them |
-| 14 | `research` (new, optional) | Research | Whether scientists can study cannabis, and what research from here gave the world |
-| 15 | `local` (new, optional) | Local differences | Places where the rules, or life under them, differ from the national picture |
+| 14 | `research` (new, optional) | Research | Scientific research on cannabis in the country |
+| 15 | `spotlights` (new, optional) | Country spotlights | A list: what makes cannabis different here, each with a title |
 
 `products` is removed once its content has moved into `recreational`, `medical` and `hemp`.
 `production` keeps its key and becomes the industry section.
@@ -99,35 +100,52 @@ and what bans, eradication or imported hybrids did to them.
 
 ### `research`: Research
 
-Optional. Write it where there is something to say. It covers two things. First, whether a
-university can get a licence and plants to study (blocked in many countries, a single farm in
-the U.S. for decades). Second, what research from here gave the world: Mechoulam and THC in
-Israel, Hanuš in Czechoslovakia, the Swiss pilot trials, O'Shaughnessy in Calcutta. Discoveries
-link to their History entries and researchers to Culture/People.
+Optional. Scientific research on cannabis done in the country: who studies it, notable studies
+and what they found, landmark discoveries (Mechoulam and THC in Israel, Hanuš in
+Czechoslovakia, O'Shaughnessy in Calcutta), and whether the law lets researchers get cannabis to
+study. The paper and trial counts in `datasets/openalex-cannabis-papers.csv` and
+`datasets/clinicaltrials-cannabis.csv` give a first line. Discoveries link to their History
+entries and researchers to Culture/People. Policy monitoring belongs here only where it is real
+science (lab testing, controlled trials), not routine counting.
 
-### `local`: Local differences
+### `spotlights`: Country spotlights
 
-Optional, and the only new section that is a list, because a country can have several such
-places:
+Optional. The only section that is a list: one to three things that make cannabis different in
+this country, each with a short title. They follow the editorial test from #224: would a reader
+learn something important, specific and surprising that the scores and the other sections do not
+tell them?
 
 ```yaml
-local:
-  - place: Christiania, Copenhagen
+spotlights:
+  - title: The back door
+    text: >-
+      A coffeeshop may sell cannabis … [@gov,tri26]
+    sources: [gov, tri26]
+  - title: A different rule in every town
     text: >-
       …
     sources: [...]
-  - place: …
 ```
 
-Use it for places that are not a legal unit of their own (federal states already have
-`subunits`), or where practice differs from the law. Examples: Pusher Street, Barcelona's clubs,
-the Rif, the Bekaa, Malana, Dutch border towns, Swiss pilot cities, U.S. tribal lands. Each
-entry says how the place differs from the national rule, and never presents one city as the
-country.
+A spotlight can be a place (Christiania, the Rif, the Bekaa, U.S. tribal lands), an institution
+(Uruguay's state registry, Brazil's patient associations) or a contradiction (use is legal but
+buying is not). Never present one city as the country, and link to Culture or History where the
+subject has an entry.
+
+## On the page
+
+- Every section has a small **?** beside its heading. Hovering or focusing it shows what the
+  section covers (`CONTEXT` in `src/lib/countries.js`).
+- The **Recreational** and **Medical** status chips at the top of the page link to their
+  sections, and each section shows its chip again.
+- Spotlights show as titled items inside one *Country spotlights* section.
 
 ## How sections stay distinct
 
 - A section never repeats a scored segment; it explains what the score leaves out.
+- Texts link generously with Markdown, `[name](url)`: dated events to their history entries,
+  people and traditions to Culture, and named organisations to their websites. The rules are in
+  `docs/DATA-MAINTENANCE.md`, "Writing context sections well". A link is not a source.
 - A custom or a word belongs in Culture, and a dated event in `changes.yaml`. The section links
   to them.
 - If research shows a scored fact is wrong, fix the score the usual way
@@ -139,10 +157,10 @@ country.
    rename *Medical use* → *Medical cannabis*, *Other consequences* → *Beyond the penalty* and
    *Commercial production* → *Cannabis industry*.
    The API lists `context` in this order, and each entry carries its `key`.
-2. **Schema:** add `recreational`, `hemp`, `genetics`, `research` and `local` as optional, and
+2. **Schema:** add `recreational`, `hemp`, `genetics`, `research` and `spotlights` as optional, and
    keep `products` valid while countries move over.
 3. **Data, in batches by region:** move `products` into `recreational`, `medical` and `hemp`,
    and widen `production` into the industry section, keeping every source and citation. Write `genetics`, `research` and
-   `local` where there is something real to say.
+   `spotlights` where there is something real to say.
 4. **Clean-up:** once no country uses `products`, remove it and make
    `recreational` and `hemp` required.
