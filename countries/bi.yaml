@@ -22,6 +22,14 @@ segments:
       leaves drug classification to health-ministry orders.
     sources:
       - cp17
+    currency: BIF
+    penalties:
+      - label: Illicit possession (Penal Code Article 510)
+        treatment: criminal
+        prison_min: 1 year
+        prison: 5 years
+        fine: 100000
+        note: Fine of FBu 50,000–100,000
   cultivation:
     text: >-
       Growing narcotic plants is prohibited outside conditions set by the health ministry. The
@@ -30,6 +38,20 @@ segments:
       years and a fine up to one million francs, and orders confiscated crops destroyed.
     sources:
       - cp17
+    currency: BIF
+    penalties:
+      - label: Unauthorised growing (regulatory offence)
+        treatment: criminal
+        prison_min: 1 year
+        prison: 5 years
+        fine: 250000
+        note: Fine of FBu 100,000–250,000
+      - label: Illicit production
+        treatment: criminal
+        prison_min: 10 years
+        prison: 15 years
+        fine: 1000000
+        note: Fine of up to FBu 1,000,000; confiscated crops destroyed
   enforcement:
     text: >-
       Mainline's country briefing reports that people who use drugs face arrest, imprisonment or
@@ -46,6 +68,20 @@ segments:
       to one million francs; organised-group penalties are doubled.
     sources:
       - cp17
+    currency: BIF
+    penalties:
+      - label: Helping someone else use, free or paid
+        treatment: criminal
+        prison_min: 1 year
+        prison: 5 years
+        fine: 1000000
+        note: Fine of FBu 50,000–1,000,000; includes providing a place for use
+      - label: Production, import, manufacture or export
+        treatment: criminal
+        prison_min: 10 years
+        prison: 15 years
+        fine: 1000000
+        note: Fine of up to FBu 1,000,000; doubled for organised groups
   consumption:
     text: >-
       Illicit consumption carries one to five years in prison, a fine of 50,000 to 100,000 Burundian
@@ -62,19 +98,43 @@ segments:
     sources:
       - cp17
       - ml
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Burundi removed the death penalty from its law in the penal-code revision voted in
+      November 2008 and signed in April 2009; no cannabis offence carries a capital
+      sentence.[@hrw,wcadp]
+    sources: [hrw, wcadp]
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Adults who use it risk one to five years in prison,
+      a fine of 50,000 to 100,000 francs, or both, plus court-ordered supervision meant to
+      prevent repeat use.[@cp17] A [1977 American congressional
+      report](/history/burundi-us-report-1977/) already described the ban as rarely
+      enforced.[@us77]
+    sources:
+      - cp17
+      - us77
   production:
     status: none
     text: No licensed production.
     sources:
       - wiki
-  products:
-    text: No legal products.
+  medical:
+    text: >-
+      No patient route is documented. Cannabis is illegal, and the 2017 code bans growing,
+      selling, transporting and holding controlled drugs outside health-ministry conditions,
+      with no medical programme provided for.[@wiki,cp17]
     sources:
       - wiki
-  medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+      - cp17
+  culture:
+    text: >-
+      One name is recorded: a 1977 American report noted that older and poorer Burundians
+      sometimes called cannabis *chanvre à fumer*, smoking hemp.[@us77]
+    sources:
+      - us77
   consequences:
     text: >-
       The drug provisions require confiscation of controlled plants and substances and equipment
@@ -109,3 +169,15 @@ sources:
     locator: >-
       Context, Policies, Peer Involvement, Human Rights and Prison; document combines older material
       with updates through mid-2025, and uses the 2009 code numbering
+  us77:
+    title: US House Select Committee on Narcotics Abuse and Control — Decriminalization of Marihuana hearings (1977), p. 22
+    url: https://books.google.com/books?id=MFMtAAAAMAAJ&pg=PA22
+    locator: >-
+      Cannabis illegal in Burundi; cultivation, transport or possession punishable by fines of
+      100–100,000 francs, rarely enforced; sometimes called chanvre à fumer.
+  hrw:
+    title: Human Rights Watch — Burundi assembly abolishes death penalty (22 November 2008 vote)
+    url: https://www.Hrw.Org/news/2008/12/03/burundi-assembly-abolishes-death-penalty-criminalizes-torture
+  wcadp:
+    title: World Coalition Against the Death Penalty — Burundi abolishes the death penalty (signed April 2009)
+    url: https://worldcoalition.org/burundi-abolishes-the-death-penalty/
