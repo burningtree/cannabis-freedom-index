@@ -3,7 +3,7 @@ region: South America
 iso_numeric: 152
 recreational: decriminalised
 medical: limited
-updated: 2026-10-13
+updated: 2026-10-27
 summary: >-
   Private personal use is not punishable and courts accept personal cultivation as a defence. Public
   use is a minor offence. A 2026 law could let trafficking penalties reach small amounts once its
@@ -19,29 +19,60 @@ segments:
   possession:
     text: >-
       Possession for 'exclusive personal use in the near term' in private is not punished under Law
-      20.000. The law sets no gram threshold, so police and prosecutors decide whether an amount
-      looks like personal use or small-scale dealing. Carrying it in public is a minor offence.
+      20.000.[@tni,ley] The law sets no gram threshold, so police and prosecutors decide whether an amount
+      looks like personal use or small-scale dealing.[@ley] Carrying it in public is a minor offence.[@tni]
+      Non-punishable private use dates to a [1995 law](/history/chile-private-use-1995/).
     sources:
       - tni
       - ley
+    penalties:
+      - label: Exclusive personal use in private
+        treatment: tolerated
+        term: Personal use
+        note: Not punished; no gram threshold — police and prosecutors decide
+      - label: Public carrying as minor offence
+        treatment: civil
+        term: Personal use
+        note: Fine, community service, mandatory treatment or licence suspension
+      - label: Amounts treated as small-scale dealing
+        treatment: criminal
+        term: Trafficking
+        prison_min: 541 days
+        prison: 5 years
+        note: Micro-trafficking band for amounts not accepted as personal
   cultivation:
     text: >-
       Growing is an offence unless you can show it is for your own exclusive personal use — a
       defence accepted by the Supreme Court since 2015, and strengthened for patients by a 2023 law
-      that treats a medical prescription as justification. There is no plant number, and homes are
-      still raided over a handful of plants.
+      that treats a medical prescription as justification.[@tni,dc] There is no plant number, and homes are
+      still raided over a handful of plants.[@dc]
     sources:
       - tni
       - dc
+    penalties:
+      - label: Growing shown to be for exclusive personal use
+        treatment: tolerated
+        term: Personal use
+        note: Defence accepted since 2015; raids still happen
+      - label: Growing with a medical prescription
+        treatment: legal
+        term: Medical growing
+        note: Prescription as justification since 2023
+      - label: Growing without authorisation or accepted justification
+        treatment: criminal
+        term: Unlicensed cultivation
+        note: Punished; small-scale dealing bands apply
   enforcement:
     text: >-
       Private users are not punished, but the lack of thresholds means people are still arrested and
-      charged with micro-trafficking, which carries prison of 541 days to five years. In May 2026
+      charged with micro-trafficking, which carries prison of 541 days to five years.[@tni,ley] In May 2026
       the Supreme Court replaced such a sentence, for 21 g, with a fine, holding that possession
-      alone does not show an intention to deal. Law 21.817, published on 23 May 2026, will punish
+      alone does not show an intention to deal.[@dcs26] Law 21.817, published on 23 May 2026, will punish
       small amounts as trafficking for substances that a regulation lists as capable of serious
-      harm. The ministry has until late November 2026 to write that list; whether cannabis will
-      be on it had not been settled when this was written, and this score would fall if it is.
+      harm.[@ley21817,ep26] The ministry has until late November 2026 to write that list; whether cannabis will
+      be on it had not been settled when this was written, and this score would fall if it is.[@bio26]
+      The 2026 turn is traced in the [reform](/history/chile-drug-law-reform-2026/) and its
+      [challenge](/history/chile-drug-law-reform-challenged-2026/).
     sources:
       - ep26
       - bio26
@@ -52,21 +83,21 @@ segments:
   sharing:
     text: >-
       Any transfer is treated as trafficking or small-scale dealing, and even consuming together in
-      private can be a minor offence if the group gathered for that purpose.
+      private can be a minor offence if the group gathered for that purpose.[@ley,tni]
     sources:
       - ley
       - tni
   consumption:
     text: >-
       Private solo use is not an offence. Using or carrying in public places is a minor offence
-      punished with a fine, community service, mandatory treatment or licence suspension.
+      punished with a fine, community service, mandatory treatment or licence suspension.[@tni,ley]
     sources:
       - tni
       - ley
   access:
     text: >-
-      No legal adult-use source. Pharmacies can sell cannabis-based medicines on prescription. A
-      2025 bill proposing home and collective cultivation of up to six plants has not passed.
+      No legal adult-use source. Pharmacies can sell cannabis-based medicines on prescription.[@dc] A
+      2025 bill proposing home and collective cultivation of up to six plants has not passed.[@dc,tni]
     sources:
       - dc
       - tni
@@ -75,25 +106,40 @@ context:
     status: medical
     text: >-
       Cultivation requires authorisation from the agriculture service, granted only for a few
-      medical and research projects.
+      medical and research projects.[@tni,ley]
     sources:
       - tni
       - ley
-  products:
-    text: A few prescription cannabis medicines; otherwise only what a person grows for themselves.
-    sources:
-      - tni
   medical:
     text: >-
-      Cannabis medicines can be prescribed and sold in pharmacies since 2015, and patients with a
-      prescription may grow their own. Products are few and expensive, so most patients self-supply.
+      Cannabis medicines can be prescribed and sold in pharmacies since a 2015 decree, and patients
+      with a prescription may grow their own — a few prescription products, otherwise only what a
+      person grows.[@tni,dc] Products are few and expensive, so most patients self-supply.[@dc]
+      The decree is traced in the [2015 decision](/history/chile-medical-decree-2015/).
     sources:
       - tni
       - dc
+  recreational:
+    text: >-
+      Adult use is decriminalised, not legal: private personal use and growing for it go
+      unpunished, public use is a minor offence, and there are no lawful sales.[@tni,ley] The
+      line dates to a [1995 law](/history/chile-private-use-1995/) and is now under pressure from
+      the 2026 reform and its court challenge.
+    sources:
+      - tni
+      - ley
+  hemp:
+    status: none
+    text: >-
+      No hemp exception operates: cultivation needs agriculture-service authorisation, granted only
+      for a few medical and research projects, with no fibre or food regime.[@tni,ley]
+    sources:
+      - tni
+      - ley
   consequences:
     text: >-
       Public-use offences can bring suspension of a driving licence and mandatory treatment
-      programmes.
+      programmes.[@tni,ley]
     sources:
       - tni
       - ley
@@ -105,21 +151,21 @@ context:
     text: >-
       Law 20.000 punishes sowing, planting or growing cannabis without authorisation from the
       agriculture service, unless the grower shows the plants are for exclusive personal use
-      or, since 2023, holds a medical prescription. It mentions seeds only where an authorised
+      or, since 2023, holds a medical prescription.[@ley] It mentions seeds only where an authorised
       grower diverts them to trafficking, and does not say where a personal grower may obtain
-      seeds or plants.
+      seeds or plants.[@ley]
     sources:
       - ley
   clubs:
     status: tolerated
     text: >-
       No law licenses clubs, but small medical ones have formed on the strength of a 2015
-      Supreme Court ruling that growing for private use, alone or in a group, is not a crime.
+      Supreme Court ruling that growing for private use, alone or in a group, is not a crime.[@td16,tni]
       The first reported, Botánica Orgánica Cannabis Internacional in the northern city of
       Arica, opened in September 2016 with about 20 members, supplying people with a
       prescription who could not grow for themselves; no action by the authorities against it
-      was reported. The footing is narrow: under the drug law any transfer of cannabis can be
-      treated as dealing. How many such clubs exist today was not found.
+      was reported.[@td16] The footing is narrow: under the drug law any transfer of cannabis can be
+      treated as dealing.[@ley,tni] How many such clubs exist today was not found in the sources read.[@td16]
     sources:
       - td16
       - ley
@@ -127,9 +173,10 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession for exclusive personal use in
+      There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
+      cannabis.[@tni] Possession for exclusive personal use in
       private is not punished under Law 20.000, which sets no gram threshold, so police and
-      prosecutors decide whether an amount looks like personal use or small-scale dealing.
+      prosecutors decide whether an amount looks like personal use or small-scale dealing.[@ley,tni]
     sources:
       - tni
       - ley
@@ -137,28 +184,28 @@ context:
     status: zero
     text: >-
       The Traffic Law makes it a crime to drive under the influence of narcotic or
-      psychotropic substances and, unlike for alcohol, sets no levels. In August 2025 the
+      psychotropic substances and, unlike for alcohol, sets no levels.[@dc25] In August 2025 the
       Santiago Court of Appeals held that the offence needs only the presence of the drug:
       visible effects do not have to be proved, and a positive roadside drug test confirmed by
-      a blood test is enough. It overturned the acquittal of a bus driver on that ground and
-      ordered a new trial.
+      a blood test is enough.[@dc25] It overturned the acquittal of a bus driver on that ground and
+      ordered a new trial.[@dc25]
     sources:
       - dc25
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 31,132 kg of herbal
-      cannabis seized in 2024, against 39,302 kg in 2023. The UN publishes them as
+      cannabis seized in 2024, against 39,302 kg in 2023.[@unodc_szr] The UN publishes them as
       kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
   arrests:
     text: >-
       Figures the Supreme Court gave in early 2025 to the deputy Ana María Gazmuri, who
       published them, show 31,048 people charged with offences under the drug law, Ley
-      20.000, during 2024. Of those, 12,328, about four in ten, were charged with small-
-      scale dealing (microtráfico), and 759 specifically with growing cannabis. The reply
-      did not separate cannabis from other drugs beyond that.
+      20.000, during 2024.[@uchile25] Of those, 12,328, about four in ten, were charged with small-
+      scale dealing (microtráfico), and 759 specifically with growing cannabis.[@uchile25] The reply
+      did not separate cannabis from other drugs beyond that.[@uchile25]
     sources:
       - uchile25
 sources:

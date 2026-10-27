@@ -31,3 +31,8 @@ None busy at batch start (dirty files were fj/hk/id/jp/kr/my/ru/tw + test + sour
 - Culture sourced fresh: Duvall Kimbundu/macohna-diamba (local PDF verified), Garat TNI 46 (Paraguay brick trade, pdftotext), Columbia GFE (ADPF 187 2011 unanimous), MacRae/Chacruna (Santa Maria naming), Labate/Feeney redalyc (ICEFLU renunciation), Souza LoC PDF (diamba clubs, Iglésias 1918).
 - No history entries added (51 entries, no empty decades). No article (1976 entry's book not local; coverage already 13 with articles).
 - Audit 0/0, history+answers tests pass, build 4889 pages, HTML verified (2 pen tables, 52 history links, 6 atlas culture links).
+
+## Chile (cl) — done 2026-10-27 ~22:37 UTC
+- Profile: recreational + hemp (none) added; products folded into medical; penalties: 3 possession steps (tolerated private, civil public, 541d–5y micro-trafficking), 3 cultivation steps (tolerated defence, legal prescription grow, criminal unlicensed); inline citations on all 16 texts; history links (1995, 2015 decree, 2026 reform + challenge).
+- No history entries added (18 entries, full modern coverage). No article (1995 law text not verifiable in session; 3 articles exist). No culture section (no atlas entries, no Duvall Chile material found).
+- Audit 0/0, history+answers tests pass, build 4898 pages, HTML verified (2 pen tables, 19 history links).
