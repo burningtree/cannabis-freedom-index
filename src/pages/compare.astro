@@ -1,7 +1,8 @@
 ---
 import { USE_COMPARISON_NOTE } from "../lib/use-labels.js";
 import Base from "../layouts/Base.astro";
-import { SEGMENTS, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries, places, estimateNote, segAvg } from "../lib/countries.js";
+import { SEGMENTS, CONTEXT, CONTEXT_NAMES, REC_LABEL, MED_LABEL, countries, places, estimateNote, segAvg } from "../lib/countries.js";
+import { TREATMENT } from "../lib/penalties.js";
 import { flatLatestPricesFor } from "../lib/prices.js";
 import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
@@ -16,6 +17,11 @@ const meta = {
   useComparisonNote: USE_COMPARISON_NOTE,
   segments: SEGMENTS.map((s) => ({ name: s.name, weight: s.weight })),
   context: CONTEXT_NAMES,
+  contextKeys: CONTEXT.map(([key]) => key),
+  treatment: TREATMENT,
+  // the world map of each status, for the chips of "Rules at a glance"
+  maps: Object.fromEntries([...Object.keys(STATUS_SECTIONS).map((k) => [k, `status:${k}`]), ...["seeds", "seeds_trade", "clones", "clones_trade"].map((k) => [k, `plant:${k}`])]
+    .filter(([, m]) => viewByMetric[m]).map(([k, m]) => [k, `map/${viewByMetric[m].slug}/`])),
   planting: PLANTING_STATUS,
   plantingTrade: PLANTING_TRADE,
   sections: STATUS_SECTIONS,
@@ -150,7 +156,19 @@ const presets = [
     const plantingChip = (what, set, key, i) => `<span class="chip s-${set[key].tone}" title="${esc(set[key].help[i])}">${what}: ${set[key].label}</span>`;
     const statusChips = (entry) => entry.seeds ? `<div class="d-chips">${plantingChip("Seeds", META.planting, entry.seeds, 0)}${plantingChip("Seed sales", META.plantingTrade, entry.seeds_trade, 0)}${plantingChip("Clones", META.planting, entry.clones, 1)}${plantingChip("Clone sales", META.plantingTrade, entry.clones_trade, 1)}</div>` : "";
     const clubsChip = (entry) => entry.status ? `<div class="d-chips"><span class="chip s-${META.sections[entry.kind].statuses[entry.status].tone}" title="${esc(META.sections[entry.kind].statuses[entry.status].help)}">${META.sections[entry.kind].chip}: ${META.sections[entry.kind].statuses[entry.status].label}</span></div>` : "";
-    const prose = (entry) => entry ? `${statusChips(entry)}${clubsChip(entry)}<p class="cmp-text">${esc(entry.t)}</p>${sources(entry)}` : "";
+    // a segment's penalty steps (src/lib/penalties.js), as a compact table under its text
+    const money = (n, cur) => { try { return new Intl.NumberFormat("en-GB", { style: "currency", currency: cur, maximumFractionDigits: 0 }).format(n); } catch { return `${n} ${cur}`; } };
+    const punish = (r) => r.death ? "Death penalty" : r.prison && r.prisonMin ? `${r.prisonMin.text} – ${r.prison.text}` : r.prison ? `up to ${r.prison.text}` : r.prisonMin ? `at least ${r.prisonMin.text}` : "";
+    const fineOf = (r, cur) => r.fine && r.fineMin ? `${money(r.fineMin, cur)}–${money(r.fine, cur)}` : r.fine ? `up to ${money(r.fine, cur)}` : r.fineMin ? `at least ${money(r.fineMin, cur)}` : "";
+    const penaltyTable = (pen) => !pen?.rows?.length ? "" : `<ul class="cmp-pen">${pen.rows.map((r) => {
+      const t = META.treatment[r.treatment];
+      const what = [punish(r), r.caning ? `${r.caning[0] === r.caning[1] ? r.caning[0] : r.caning.join("–")} strokes` : "", fineOf(r, pen.currency)].filter(Boolean).join(" · ");
+      return `<li><span class="cmp-pen-amount">${esc(r.amount)}</span> <span class="pen-t s-${t.tone}" title="${esc(t.help)}">${t.label}</span>${what ? ` <span class="cmp-sub">${esc(what)}</span>` : ""}</li>`;
+    }).join("")}</ul>`;
+    const prose = (entry) => entry ? `${statusChips(entry)}${clubsChip(entry)}<p class="cmp-text">${esc(entry.t)}</p>${penaltyTable(entry.penalties)}${sources(entry)}` : "";
+    // the comparable figures of a penalty ladder: amounts in grams or plants, prison in days
+    const daysText = (d) => d >= 365 ? `${+(d / 365).toFixed(1)} ${d >= 730 ? "years" : "year"}` : d >= 30 ? `${Math.round(d / 30)} months` : `${d} days`;
+    const amountText = (v, unit) => unit === "plants" ? `${+v.toFixed(1)} ${v === 1 ? "plant" : "plants"}` : v >= 1000 ? `${+(v / 1000).toFixed(1)} kg` : `${+v.toFixed(v < 10 ? 1 : 0)} g`;
     const priceCell = (p) => p
       ? `<div class="cmp-val"><b>$${p.usd.toFixed(2)}</b><span>/g</span></div><div class="cmp-sub">${p.price} ${p.currency}/g · ${p.date}</div>`
       : `<span class="cmp-sub">No data</span>`;
@@ -266,6 +284,46 @@ const presets = [
         row("Land neighbours", cs.map((c) => c.nb.length ? `<div class="cmp-nb">${c.nb.map((id) => byId.get(id)).filter(Boolean).sort((a, b) => b.raw - a.raw).map((n) => `<button type="button" data-add="${n.id}" title="Add ${esc(n.name)} to the comparison" ${selected.includes(n.id) ? "disabled" : ""}><i style="background:${tierColor(n.raw)}"></i>${n.flag} ${esc(n.name)} <b>${n.score}</b></button>`).join("")}</div>` : `<span class="cmp-sub">None by land</span>`)),
       ];
       if (showText) rows.push(row("In short", cs.map((c) => `<p class="cmp-text">${esc(details.get(c.id)?.note ?? "")}</p>`)));
+
+      // Penalties compared: the figures worked out from each country's penalty steps
+      const pen = (c, seg) => details.get(c.id)?.segments?.[SEG_IDS.indexOf(seg)]?.penalties?.summary;
+      if (cs.some((c) => pen(c, "possession") || pen(c, "cultivation"))) {
+        rows.push(`<tr class="cmp-divider"><th colspan="${cs.length + 1}">Penalties compared · from each country's penalty table</th></tr>`);
+        const none = (c) => `<span class="cmp-sub">${details.has(c.id) ? "No table yet" : "…"}</span>`;
+        // `zero` is how nothing reads: "Nothing" for an allowance, "Any amount" for where a crime starts
+        const figure = (label, seg, pick, unit, better, zero) => {
+          const vals = cs.map((c) => pick(pen(c, seg)));
+          if (vals.every((v) => v == null)) return;
+          const nums = vals.filter((v) => Number.isFinite(v));
+          const best = nums.length > 1 && nums.some((v) => v !== nums[0]) ? (better > 0 ? Math.max(...nums) : Math.min(...nums)) : null;
+          rows.push(row(label, cs.map((c, k) => {
+            const v = vals[k];
+            if (v == null) return pen(c, seg) ? `<span class="cmp-sub">—</span>` : none(c);
+            const text = unit === "days" ? (v === 0 ? "No prison" : daysText(v)) : v === 0 ? zero : amountText(v, unit);
+            return `<div class="cmp-val${v === best ? " best" : ""}"><b>${text}</b></div>`;
+          })));
+        };
+        figure("Possession without prosecution<small>legal or tolerated, up to</small>", "possession", (s) => s?.freeUpTo, "g", 1, "Nothing");
+        figure("Possession becomes a crime<small>from</small>", "possession", (s) => (s ? s.crimeFrom : null), "g", 1, "Any amount");
+        figure("Prison for a small amount<small>the law's maximum for 5 g</small>", "possession", (s) => s?.smallPrisonDays, "days", -1, "No prison");
+        figure("Plants without prosecution<small>legal or tolerated, up to</small>", "cultivation", (s) => s?.freeUpTo, "plants", 1, "None");
+        figure("Growing becomes a crime<small>from</small>", "cultivation", (s) => (s ? s.crimeFrom : null), "plants", 1, "Any plant");
+        const harsh = cs.map((c) => { const ss = SEG_IDS.map((sg) => details.get(c.id)?.segments?.[SEG_IDS.indexOf(sg)]?.penalties?.summary).filter(Boolean); return ss.length ? { caning: ss.some((x) => x.caning), death: ss.some((x) => x.death) } : null; });
+        if (harsh.some((h) => h && (h.caning || h.death))) rows.push(row("Caning or the death penalty<small>anywhere in the tables</small>", cs.map((c, k) => harsh[k] ? (harsh[k].death || harsh[k].caning ? `<b class="cmp-harsh">${[harsh[k].death && "Death penalty", harsh[k].caning && "Caning"].filter(Boolean).join(" · ")}</b>` : `<span class="cmp-sub">Neither</span>`) : none(c))));
+      }
+
+      // Rules at a glance: every status of the context sections, as chips that lead to their world map
+      const ctxOf = (c, key) => details.get(c.id)?.context?.[META.contextKeys.indexOf(key)];
+      const chip = (key, label, set, value, help) => value && set[value] ? `<a class="chip s-${set[value].tone}" href="${base}${META.maps[key] ?? "map/"}" title="${esc(help ?? set[value].help)} · See the world map">${label}: ${esc(set[value].label)}</a>` : `<span class="cmp-sub">${details.size ? "Not researched" : "…"}</span>`;
+      const glance = [
+        ...Object.entries(META.sections).map(([key, sec]) => [sec.name, (c) => chip(key, sec.chip, sec.statuses, ctxOf(c, key)?.status), (c) => ctxOf(c, key)?.status]),
+        ["Seeds", (c) => chip("seeds", "Seeds", META.planting, ctxOf(c, "planting")?.seeds, META.planting[ctxOf(c, "planting")?.seeds]?.help?.[0]), (c) => ctxOf(c, "planting")?.seeds],
+        ["Clones", (c) => chip("clones", "Clones", META.planting, ctxOf(c, "planting")?.clones, META.planting[ctxOf(c, "planting")?.clones]?.help?.[1]), (c) => ctxOf(c, "planting")?.clones],
+      ].filter(([, , has]) => cs.some((c) => has(c)));
+      if (glance.length) {
+        rows.push(`<tr class="cmp-divider"><th colspan="${cs.length + 1}">Rules at a glance — not part of the score</th></tr>`);
+        glance.forEach(([label, cell]) => rows.push(row(label, cs.map((c) => `<div class="d-chips">${cell(c)}</div>`))));
+      }
 
       const priceRows = [
         ["Street flower", "street"],
