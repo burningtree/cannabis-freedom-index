@@ -25,9 +25,20 @@ sources:
     year: 2021
     isbn: '9780262045209'
     locator: 'ch. 10, Changing Patterns and Perceptions in the 1960s; Doctors and Addiction; notes 34–74 (EPUB)'
+  - type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: ch. 7, printed pp. 151–152; Burton 1861 Lagos diamba, sole pre-WWII record, did not persist
 ---
 
 Nigerian psychiatrist Tolani Asuni wrote in 1964 that *Cannabis sativa* is not indigenous to Nigeria: the evidence pointed to introduction during and after the Second World War by soldiers returning from the Middle East, the Far East and North Africa, and also by sailors.[@1][@2] There was no traditional name for the plant, though local terms had since emerged — a sign of a recent arrival rather than a long-established custom.[@1][@2]
+
+## One earlier sighting that did not stick
+
+Asuni's picture has exactly one known exception. [Richard Burton found diamba smoked in calabash water pipes at Lagos in 1861](/history/nigeria-lagos-diamba-1861/) — the only Nigerian record before the war — but that iteration did not persist and is known only through Burton's drug-focused eyes.[@4]
 
 ## A postwar crop becomes visible
 
