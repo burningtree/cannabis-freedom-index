@@ -31,6 +31,15 @@ segments:
       the 0.67 g found in the car.
     sources:
       - be19
+    currency: GBP
+    penalties:
+      - label: 2.44 g in 2019
+        treatment: criminal
+        fine: 650
+        note: 32 days in prison if not paid
+      - label: 0.67 g in a car in 2019
+        treatment: criminal
+        fine: 400
   cultivation:
     text: >-
       Growing cannabis is prosecuted as production of a Class B drug, even for a few plants. In 2024
@@ -40,6 +49,15 @@ segments:
     sources:
       - gp24
       - be22
+    currency: GBP
+    penalties:
+      - label: Four plants in 2024
+        treatment: criminal
+        fine: 5000
+        note: 240 hours of community service in place of two years in prison
+      - label: 141-plant basement grow in 2022
+        treatment: criminal
+        prison: 4 years
   enforcement:
     text: >-
       Users found with small amounts are fined and convicted. In 2023 the Committee for Home Affairs
@@ -55,6 +73,11 @@ segments:
       four years for supplying cannabis. No distinction is made for sharing without payment.
     sources:
       - be22
+    penalties:
+      - label: Supply in 2022
+        treatment: criminal
+        prison: 4 years
+        note: No distinction for sharing without payment
   consumption:
     text: >-
       Use is dealt with through the possession offence. There are no places where it is tolerated.
@@ -67,7 +90,23 @@ segments:
       prescription under licence; the patient bears the cost.
     sources:
       - mhc
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Guernsey abolished the death penalty for murder in 1964 and for all offences in 2003; no
+      cannabis offence carries a capital sentence.[@wikipdp]
+    sources: [wikipdp]
 context:
+  recreational:
+    text: >-
+      There is no lawful recreational supply. Possession ends in a criminal conviction, usually
+      with a fine of a few hundred pounds; importing even a small amount is treated severely,
+      with up to 21 years available and a three-year starting point for up to 2 kg.[@be19,be26]
+      A 2023 review of non-punitive approaches stalled.[@be23]
+    sources:
+      - be19
+      - be26
+      - be23
   production:
     status: none
     text: >-
@@ -75,19 +114,14 @@ context:
       dispensing prescribed medicines.
     sources:
       - mhc
-  products:
-    text: >-
-      Prescribed cannabis-based medicines that meet pharmaceutical standards. The health service
-      funds only Epidyolex for two rare epilepsies, Sativex for some multiple sclerosis symptoms and
-      nabilone for chemotherapy nausea.
-    sources:
-      - mhc
   medical:
     text: >-
       Guernsey doctors may prescribe privately, and residents can use an on-island clinic and
       pharmacy. Prescriptions from the UK or Jersey can be imported with an import licence for each
       prescription, at £30 per licence; importing without one is a criminal offence. The health
-      committee will not fund cannabis medicines for chronic pain.
+      committee will not fund cannabis medicines for chronic pain. The health service funds only
+      Epidyolex for two rare epilepsies, Sativex for some multiple sclerosis symptoms and nabilone
+      for chemotherapy nausea.
     sources:
       - mhc
   consequences:
@@ -113,6 +147,17 @@ context:
       importing up to 2 kg is three years in prison.
     sources:
       - be26
+    currency: GBP
+    penalties:
+      - label: 16.15 g import in 2025
+        treatment: criminal
+        prison: 12 months
+        fine: 1000
+        note: Suspended for two years
+      - label: Importing up to 2 kg, guideline
+        treatment: criminal
+        prison: 3 years
+        note: Starting point; up to 21 years available
 sources:
   be19:
     title: Bailiwick Express — "It's just a little puff" (29 October 2019)
@@ -128,6 +173,9 @@ sources:
       Bailiwick Express — "You have been foolish": visitor who claimed cannabis was decriminalised
       jailed over Guernsey import (12 January 2026)
     url: https://www.bailiwickexpress.com/news/you-have-been-foolish-visitor-who-claimed-cannabis-was-decriminalised-jailed-over-guernsey-import/
+  wikipdp:
+    title: Wikipedia — Capital punishment in Guernsey
+    url: https://en.wikipedia.org/wiki/Capital_punishment_in_Guernsey
   mhc:
     title: States of Guernsey — Medicinal cannabis
     url: https://gov.gg/mhc
