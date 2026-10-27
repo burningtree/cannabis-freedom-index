@@ -1075,6 +1075,19 @@ restriction, and the Norway "1965 tinctures" entry became Norway's first cannabi
 
 ## Reporting back
 
+A [review of all 20 open bug reports #220–240](research/bug-review-220-240-2026-10-27.md)
+on 27 October 2026 corrects seventeen profiles, their short answers, specimen-specific
+driving thresholds and conditional penalties. Taiwan and Dominica gain penalty tables;
+Dominica and Saint Lucia gain recreational context. New Jersey's possession score becomes
+5 and North Dakota's consumption score 3, without changing the US national chain.
+Four history additions record Michigan's adult reform, New Jersey's possession protections,
+North Dakota's ingestion reform and Saint Lucia's December growing regulations; the latter separates the growing step
+from September possession reform. Dominica's reform date now uses assent and gazetting.
+West Virginia's report missed the mandatory small-possession procedure in §401(c);
+Saint Lucia's report omitted §8A(b)'s punishment exemption. The note explains both
+qualifications and records source-retrieval limits. Check the entire statute before
+implementing a report's proposed legal interpretation.
+
 A [2000–2009 history pass](research/history-2000s-2026-10-17.md) on 17 October
 2026 adds Canada's 2002 Senate report and 2003 Bill C-38, Germany's 2005
 exceptional-permit judgment, and England and Wales's 2005 Quayle appeals. It

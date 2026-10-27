@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 56
 recreational: decriminalised
 medical: limited
-updated: 2026-10-13
+updated: '2026-10-27'
 summary: >-
   For adults, up to 3 g or one plant is the lowest prosecution priority — usually a simple police
   record. Medical access is confined to a few pharmaceutical products.
@@ -17,26 +17,25 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis remains illegal, but for adults possession of up to 3 g for personal use has the
-      lowest prosecution priority: police make a simplified record and usually nothing further
-      happens. This does not apply to minors, or where there is public nuisance or an aggravating
-      circumstance such as being near a school.
+      Cannabis possession remains an offence. Adults with up to 3 g for personal use, without
+      aggravating circumstances or public nuisance, normally receive a simplified police report
+      and lowest prosecution priority. Prosecutors may still bring charges with reasons.[@justice]
     sources:
-      - dpf
-      - wiki
+      - justice
   cultivation:
     text: >-
-      One cultivated plant per adult falls under the same lowest-priority rule as 3 g. It is not
-      legal — the plant can be seized — and anything more is prosecuted.
+      One plant for adult personal use receives the same low prosecution priority as 3 g, subject
+      to the other conditions. Growing remains unlawful; the policy gives no immunity from
+      prosecution.[@justice]
     sources:
-      - dpf
-      - wiki
+      - justice
   enforcement:
     text: >-
-      Adult users within the 3 g rule are not prosecuted. Above it, or with nuisance, fines and
-      prison of three months to a year are possible, and dealing is punished more heavily.
+      Police normally send a simplified report for eligible small adult possession. Prosecutors
+      retain discretion to prosecute with reasons; fines remain possible within the low-priority
+      threshold.[@justice] Larger quantities and dealing can bring prison.[@cms]
     sources:
-      - dpf
+      - justice
       - cms
   sharing:
     text: >-
@@ -111,12 +110,13 @@ context:
   driving:
     status: limit
     text: >-
-      Belgium has a fixed limit of 1 nanogram of THC per millilitre of blood: at or above it a
-      driver is treated as impaired without further proof, and a separate provision covers
-      impairment by any substance. Police may stop and test at random, using a saliva test at
-      the roadside and a blood test at a hospital as evidence. The driving ban runs from one
-      month to five years and the fine from 1,000 to 10,000 euros.
+      The roadside THC saliva screen uses 25 ng/mL; evidentiary saliva analysis uses 10 ng/mL.
+      Blood analysis, where saliva testing or analysis cannot be performed under article 63,
+      measures THC in plasma at a 1 ng/mL threshold. These specimen-specific values are distinct
+      from proof of actual impairment.[@trafficlaw] The driving ban runs from one month to five
+      years and the fine from 1,000 to 10,000 euros.[@euda_dd]
     sources:
+      - trafficlaw
       - euda_dd
   arrests:
     text: >-
@@ -130,13 +130,10 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. For adults, possession of up to 3 g for
-      personal use has the lowest prosecution priority: police make a simplified record and
-      usually nothing further happens, unless there is public nuisance or an aggravating
-      circumstance.
+      No legal recreational supply exists. The adult 3 g/one-plant policy is a low prosecution
+      priority, with no guaranteed immunity; fines and prosecution remain possible.[@justice]
     sources:
-      - dpf
-      - wiki
+      - justice
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 9,983 kg of herbal cannabis and
@@ -176,3 +173,22 @@ sources:
   euda_szr:
     title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
     url: https://www.euda.europa.eu/data/stats2026/szr_en
+  justice:
+    title: 'Belgian Federal Justice — Cannabis: possession, prosecution discretion and sanctions'
+    url: >-
+      https://www.justice.belgium.be/fr/themes_et_dossiers/securite_et_criminalite/drogues/cannabis
+  trafficlaw:
+    title: Road Traffic Act of 16 March 1968 — articles 37bis, 61bis, 62ter and 63
+    url: https://www.codedelaroute.be/fr/reglementation/1968031601~invynqx4tj
+answers:
+  carry:
+    answer: limited
+    text: >-
+      Up to 3 g for adult personal use normally has low prosecution priority; prosecution and
+      fines remain possible
+  caught:
+    answer: limited
+    label: Prosecutorial discretion
+    text: >-
+      A simplified report is usual within the policy conditions; prosecutors can still bring
+      charges

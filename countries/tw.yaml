@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 158
 recreational: illegal
 medical: none
-updated: 2026-10-13
+updated: '2026-10-27'
 summary: "Category 2 narcotic: up to three years for use; growing for personal use carries one to seven years since 2022, other cultivation at least five."
 scores:
   possession: 0
@@ -14,11 +14,28 @@ scores:
   access: 0
 segments:
   possession:
+    currency: TWD
+    penalties:
+      - over: 0 g
+        treatment: criminal
+        prison: 2 years
+        fine: 200000
+        note: >-
+          Ordinary Category 2 possession; the separate pure-narcotic threshold below increases the
+          sentence
+      - label: More than 20 g pure Category 2 narcotic
+        treatment: criminal
+        prison_min: 6 months
+        prison: 5 years
+        fine: 700000
+        note: Pure narcotic weight, not 20 g of flower
     text: >-
-      Cannabis is a Category 2 narcotic under the Narcotics Hazard Prevention Act, alongside
-      amphetamines. Possession carries up to two years in prison.
+      Cannabis is a Category 2 narcotic. Ordinary possession carries up to two years, detention or
+      a fine up to NT$200,000. Above 20 g of pure Category 2 narcotic, the range is six months to
+      five years, with an additional fine up to NT$700,000. Pure narcotic weight is not the gross
+      weight of cannabis flower.[@moj]
     sources:
-      - ts
+      - moj
   cultivation:
     text: >-
       Growing cannabis was punished with a minimum of five years until the Constitutional Court
@@ -92,11 +109,12 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Cannabis is a Category 2 narcotic under
-      the Narcotics Hazard Prevention Act, and possession carries up to two years in prison.
+      There is no legal recreational supply. Ordinary Category 2 possession carries up to two
+      years, detention or NT$200,000; more than 20 g pure narcotic brings six months to five years
+      and an additional fine up to NT$700,000. Flower weight alone does not establish that
+      pure-drug threshold.[@moj]
     sources:
-      - ts
-      - aj
+      - moj
   driving:
     status: zero
     text: >-
@@ -147,3 +165,10 @@ sources:
   tt24:
     title: "Taipei Times — 'Zombie vape' use increases 58-fold: prosecutors (28 October 2024)"
     url: https://www.taipeitimes.com/News/Taiwan/archives/2024/10/28/2003825985
+answers:
+  caught:
+    answer: 'no'
+    label: Prison
+    text: >-
+      Possession can bring prison; more than 20 g of pure Category 2 narcotic carries six months
+      to five years

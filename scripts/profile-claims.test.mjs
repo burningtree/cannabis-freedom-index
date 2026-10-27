@@ -7,6 +7,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { penaltyRow, penaltySummary } from "../src/lib/penalties.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
@@ -650,4 +651,148 @@ test('Argentina consumption-based driving law does not become detectable-THC zer
  assert.doesNotMatch(rule.text,/so any use counts/);
  for(const key of ['ley24449','ley27714','trafficregs'])assert.ok(rule.sources.includes(key));
  assert.deepEqual(ar.scores,{possession:3,cultivation:3,enforcement:3,sharing:1,consumption:3,access:1});
+});
+
+test('Michigan gifts preserve concentrate, recipient-age and advertising conditions (#220)', () => {
+  const text = country('us/mi').segments.sharing;
+  assert.match(text, /another adult 21\+/);
+  assert.match(text, /2\.5 oz.*15 g.*concentrate/);
+  assert.match(text, /without payment/);
+  assert.match(text, /not advertised or promoted/);
+});
+
+test('New Jersey distinguishes protected possession from uncharged, seizable excess (#221)', () => {
+  const d = country('us/nj');
+  assert.match(d.segments.possession, /proof-of-purchase/);
+  assert.match(d.segments.possession, /1 oz through 6 oz.*not a criminal.*confiscated/);
+  assert.equal(d.scores.possession, 5);
+  assert.match(d.answers.carry.text, /1–6 oz.*seized/);
+  assert.match(d.answers.caught.text, /6 oz.*criminal/);
+});
+
+test('Taiwan pure-drug aggravation does not become a 20 g flower threshold (#222)', () => {
+  const d = country('tw'), p = d.segments.possession;
+  assert.match(p.text, /20 g of pure.*six months to five years/);
+  assert.match(p.text, /not the gross weight.*flower/);
+  assert.match(d.context.visitors.text, /20 g pure narcotic/);
+  assert.equal(p.penalties[1].prison_min, '6 months');
+  assert.equal(p.penalties[1].fine, 700000);
+  assert.equal(p.penalties[1].upto, undefined);
+  assert.equal(penaltySummary(p.penalties.map(penaltyRow)).smallPrisonDays, 730);
+});
+
+test('Vermont retains the precisely defined seller-conviction exception (#223)', () => {
+  const d = country('us/vt');
+  assert.match(d.segments.possession, /§4230.*§4237.*1 July 2018/);
+  assert.match(d.segments.possession, /\$200, \$300 or \$500/);
+  assert.match(d.segments.possession, /over 1–2 oz.*one year/);
+  assert.match(d.segments.cultivation, /4230i/);
+  for (const key of ['carry', 'grow', 'caught']) assert.match(d.answers[key].text, /seller|selling/);
+});
+
+test('North Dakota separates adult ingestion from possession and separate THC bands (#225, #233)', () => {
+  const d = country('us/nd');
+  assert.equal(d.scores.consumption, 3);
+  assert.match(d.segments.consumption, /adults 21\+.*not itself an offence/);
+  assert.match(d.segments.consumption, /under-21.*Class B/);
+  assert.match(d.segments.possession, /over 500 g.*Class A/);
+  assert.match(d.segments.possession, /under 2 g, 2–6 g and over 6 g/);
+  assert.match(d.segments.possession, /360 days.*3,000/);
+  assert.match(d.answers.caught.text, /separately scheduled THC/);
+  const event = events().find(e => e.id === 'us-north-dakota-possession-ingestion-2019');
+  assert.equal(event.subunit, 'nd');
+  assert.equal(event.before, undefined);
+});
+
+test('Belgian low priority does not guarantee immunity (#226)', () => {
+  const d = country('be');
+  assert.match(d.segments.possession.text, /Prosecutors may still bring charges/);
+  assert.match(d.segments.cultivation.text, /no immunity/);
+  assert.match(d.answers.caught.text, /still bring charges/);
+  assert.doesNotMatch(d.segments.enforcement.text, /are not prosecuted/);
+});
+
+test('Driving limits preserve sample matrices and Swiss measurement tolerance (#227–229)', () => {
+  const be = country('be').context.driving, lu = country('lu').context.driving, ch = country('ch').context.driving;
+  assert.equal(be.status, 'limit');
+  assert.match(be.text, /saliva screen.*25 ng\/mL.*saliva analysis.*10 ng\/mL/);
+  assert.match(be.text, /plasma.*1 ng\/mL/);
+  assert.match(lu.text, /1 ng\/mL or more in blood serum/);
+  assert.equal(ch.status, 'zero');
+  assert.match(ch.text, /1\.5 ng\/mL.*whole blood/);
+  assert.match(ch.text, /30%.*2\.2 ng\/mL/);
+  assert.match(ch.text, /physician’s prescription.*exempt/);
+});
+
+test('West Virginia retains mandatory small-possession and gift procedures, with conditional dismissal (#230)', () => {
+  const d = country('us/wv');
+  assert.match(d.segments.possession, /requires a first possession offence involving less than 15 g/);
+  assert.match(d.segments.possession, /court may defer/);
+  assert.match(d.segments.possession, /Dismissal follows successful probation/);
+  assert.match(d.segments.sharing, /unpaid distribution of less than 15 g must be handled/);
+  assert.match(d.answers.caught.text, /must follow §407.*discretionary.*successful probation/);
+});
+
+test('Minnesota possession answers preserve separate product caps and patient exception (#231)', () => {
+  const d = country('us/mn');
+  assert.match(d.segments.possession, /8 g concentrate.*800 mg THC/);
+  assert.match(d.segments.possession, /Registered patients.*exception/);
+  assert.match(d.segments.possession, /8–16 g.*800–1,600 mg/);
+  assert.match(d.answers.carry.text, /flower.*8 g concentrate.*800 mg/);
+});
+
+test('Wisconsin priors can involve other drugs and other jurisdictions (#232)', () => {
+  const d = country('us/wi');
+  assert.match(d.segments.possession, /federal or state drug laws/);
+  assert.match(d.segments.possession, /need not involve cannabis or Wisconsin/);
+  assert.match(d.answers.caught.text, /first cannabis case/);
+});
+
+test('Arkansas felony escalation requires four priors, Tennessee ten plants starts Class D (#234–235)', () => {
+  const ar = country('us/ar'), tn = country('us/tn');
+  assert.match(ar.segments.possession, /at least 1 oz|At least 1 oz/);
+  assert.match(ar.segments.possession, /four previous convictions/);
+  assert.match(tn.segments.cultivation, /10–19 plants regardless of weight is Class D \(2–12 years\)/);
+  assert.match(tn.answers.grow.text, /exactly ten plants/);
+});
+
+test('Indiana hash thresholds and possession priors remain distinct from delivery (#236)', () => {
+  const d = country('us/in');
+  assert.match(d.segments.possession, /prior drug conviction.*30 g.*5 g hash/);
+  assert.match(d.segments.sharing, /30 g marijuana or 5 g hash/);
+  assert.match(d.segments.sharing, /below those amounts with a prior/);
+});
+
+test('Saint Lucia school rules retain the broad section 8A punishment exception (#237, #239)', () => {
+  const d = country('lc');
+  assert.match(d.segments.cultivation.text, /100 yards.*nursery.*universities.*off-site/);
+  assert.match(d.segments.possession.text, /section 37/);
+  assert.match(d.segments.possession.text, /burden of rebutting presumed supply/);
+  assert.match(d.segments.possession.text, /interaction.*not resolved/);
+  assert.match(d.answers.grow.text, /100 yards/);
+  assert.match(d.answers.caught.text, /supply.*presumption/);
+  const e = events().find(e => e.id === 'saint-lucia-home-growing-regulations-2021');
+  assert.equal(e.date, '2021-12-22');
+  assert.equal(e.before.cultivation, 1);
+});
+
+test('Dominica school-premises presumption is rebuttable and convictions have separate penalties (#238)', () => {
+  const d = country('dm');
+  assert.match(d.segments.possession.text, /section 7\(2\)/);
+  assert.match(d.segments.possession.text, /school-premises.*unless the accused proves otherwise/);
+  assert.doesNotMatch(d.segments.possession.text, /100 yards/);
+  assert.match(d.segments.enforcement.text, /7–15 years.*life on indictment/);
+  assert.match(d.segments.enforcement.text, /not automatic/);
+  assert.equal(d.segments.possession.penalties[1].prison_min, '7 years');
+  assert.equal(events().find(e => e.id === 'dominica-decriminalisation-2020').date, '2020-10-30');
+});
+
+test('Singapore repeat consumption includes LT tiers and exemptions (#240)', () => {
+  const d = country('sg');
+  assert.match(d.segments.consumption.text, /at least one year.*10 years/);
+  assert.match(d.segments.consumption.text, /LT1.*5–7 years and 3–6 strokes/);
+  assert.match(d.segments.consumption.text, /LT2.*7–13 years and 6–12 strokes/);
+  assert.match(d.segments.consumption.text, /prior convictions or admissions/);
+  assert.match(d.segments.consumption.text, /women and men over 50/);
+  assert.match(d.answers.caught.text, /13 years and 12 strokes/);
 });

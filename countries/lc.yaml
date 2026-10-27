@@ -3,10 +3,10 @@ region: North America
 iso_numeric: 662
 recreational: legal
 medical: none
-updated: 2026-10-12
+updated: '2026-10-27'
 summary: >-
-  Since 2021 adults may hold up to 30 g and grow four plants per household. There is no legal
-  market.
+  Adults have a 30 g possession exemption and may grow four plants per dwelling-house, subject
+  to school-location restrictions. There is no legal market.
 scores:
   possession: 5
   cultivation: 4
@@ -17,25 +17,33 @@ scores:
 segments:
   possession:
     text: >-
-      Under the amendment passed by the House on 14 September 2021 and in force from 27 September, a person holding 30 g or less of cannabis or cannabis resin 'is not
-      guilty of an offence', for personal, private use by adults. Above 30 g the ordinary offences
-      apply.
+      Section 8A exempts possession of up to 30 g cannabis or resin from the ordinary possession
+      offence and prosecution and punishment under section 37.[@exemption8a] Section 12 separately
+      prohibits possession in or within 100 yards of school premises and places the burden of
+      rebutting presumed supply on the accused. Its interaction with the broad section 8A
+      punishment exemption is not resolved in the reviewed texts.[@school12,exemption8a]
     sources:
-      - law
-      - mh
+      - exemption8a
+      - school12
   cultivation:
     text: >-
-      Up to four plants per household are permitted alongside the 30 g rule. The limit is per
-      household, not per adult.
+      Up to four plants per dwelling-house are permitted.[@cult_regs] Cultivation in or within 100
+      yards of school premises is prohibited, including nursery schools, universities and their
+      off-site playing fields.[@schoolgrow]
     sources:
       - cult_regs
+      - schoolgrow
   enforcement:
     text: >-
-      Nothing within the limits; above them the Drugs Act penalties, including prison for
-      trafficking, still apply.
+      The quantity exemptions have location restrictions: school-zone possession and its
+      rebuttable supply presumption are addressed separately in section 12.[@school12] Section 8A
+      also disapplies section 37 punishment for up to 30 g; the reviewed texts do not settle that
+      interaction.[@exemption8a] Growing within 100 yards of school premises is
+      prohibited.[@schoolgrow]
     sources:
-      - law
-      - mh
+      - school12
+      - exemption8a
+      - schoolgrow
   sharing:
     text: >-
       The 2021 amendment is limited to personal private use. Supplying cannabis to others remains an
@@ -64,10 +72,6 @@ context:
     sources:
       - rsa_act
       - bill_review
-  products:
-    text: Only home-grown cannabis and resin within the 30 g limit.
-    sources:
-      - law
   medical:
     text: No medical cannabis programme is in operation.
     sources:
@@ -103,13 +107,13 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says there are
-      severe penalties for all drug offences and tells travellers to pack their own luggage
-      and carry nothing through customs for anyone else.
+      There is no legal recreational shop. School-location restrictions qualify the 30 g and
+      four-plant allowances; possession rules and the scope of the punishment exemption need to be
+      read together.[@exemption8a,school12,schoolgrow]
     sources:
-      - rsa_act
-      - bill_review
-      - fcdo
+      - exemption8a
+      - school12
+      - schoolgrow
   driving:
     status: impairment
     text: >-
@@ -129,6 +133,16 @@ context:
       - traffic75
       - traffic106
       - traffic2026
+  recreational:
+    text: >-
+      Home growing provides a personal supply of up to four plants per dwelling-house, with a
+      100-yard school exclusion. There is no authorised recreational retail
+      market.[@cult_regs,schoolgrow,rsa_act,bill_review]
+    sources:
+      - cult_regs
+      - schoolgrow
+      - rsa_act
+      - bill_review
 sources:
   traffic75:
     title: "Saint Lucia Attorney General's Chambers — Motor Vehicles and Road Traffic Act, 2023 revised laws"
@@ -170,3 +184,32 @@ sources:
     title: Saint Lucia government — Cannabis and Industrial Hemp Bill 2025 public consultation
     url: >-
       https://finance.govt.lc/news/cannabis-and-industrial-hemp-bill-2025-for-public-review-and-comment
+  school12:
+    title: Saint Lucia Attorney General — Drugs (Prevention of Misuse) Act, section 12
+    url: >-
+      https://attorneygeneralchambers.com/laws-of-saint-lucia/drugs-prevention-of-misuse-act//section-12-02
+  schoolgrow:
+    title: Saint Lucia Attorney General — Cannabis Cultivation Regulations, regulation 8
+    url: >-
+      https://attorneygeneralchambers.com/laws-of-saint-lucia/drugs-prevention-of-misuse-act/section-8-01
+  exemption8a:
+    title: Saint Lucia Attorney General — Drugs (Prevention of Misuse) Act, section 8A
+    url: >-
+      https://attorneygeneralchambers.com/laws-of-saint-lucia/drugs-prevention-of-misuse-act/section-8a
+answers:
+  carry:
+    answer: limited
+    text: >-
+      The 30 g exemption coexists with separate school-zone possession rules and a rebuttable
+      supply presumption
+  grow:
+    answer: limited
+    text: >-
+      Four plants per dwelling-house, excluding cultivation in or within 100 yards of school
+      premises
+  caught:
+    answer: limited
+    label: School-location restrictions
+    text: >-
+      School-location restrictions qualify the possession and growing allowances; a supply
+      presumption can arise

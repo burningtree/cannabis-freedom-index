@@ -3,8 +3,11 @@ region: North America
 iso_numeric: 212
 recreational: legal
 medical: none
-updated: 2026-10-12
-summary: Since 2020 adults may hold up to 28 g and a household may grow three plants.
+updated: '2026-10-27'
+summary: >-
+  The 2020 reform exempts up to 28 g from ordinary possession penalties and permits three plants
+  at a permanent home. School-premises possession can trigger a rebuttable trafficking
+  presumption.
 scores:
   possession: 5
   cultivation: 4
@@ -14,13 +17,27 @@ scores:
   access: 0
 segments:
   possession:
+    penalties:
+      - upto: 28 g
+        treatment: legal
+        note: >-
+          Ordinary possession exemption only; school-premises trafficking presumption and separate
+          offences remain
+      - label: School-premises trafficking conviction
+        treatment: criminal
+        prison_min: 7 years
+        prison: 15 years
+        note: >-
+          Summary conviction; indictment can bring life. Possession on school premises raises a
+          rebuttable presumption, not an automatic trafficking conviction
     text: >-
-      Since the Drugs (Prevention of Misuse) (Amendment) Act of 2020, a person holding 28
-      g or less of cannabis or cannabis resin is not guilty of an offence (section 7A).
-      Holding more than 28 g remains unlawful. Earlier convictions for 28 g or less are
-      treated as spent, except for people under 18.
+      The 2020 reform exempts up to 28 g cannabis or resin from the ordinary section 7(2)
+      possession offence; earlier adult small-possession convictions are spent.[@act2020] Section
+      16(3) separately presumes school-premises possession is for trafficking unless the accused
+      proves otherwise, including school playing fields and off-site facilities.[@act1988]
     sources:
       - act2020
+      - act1988
   cultivation:
     text: >-
       A person aged 18 or older may grow up to three cannabis plants at the place where
@@ -29,7 +46,11 @@ segments:
     sources:
       - act2020
   enforcement:
-    text: Nothing within the 28 g and three-plant limits. Larger amounts and dealing remain criminal.
+    text: >-
+      The ordinary 28 g exemption leaves separate trafficking offences in place.[@act2020] A
+      school-premises trafficking conviction brings 7–15 years summarily with a substantial fine,
+      or life on indictment. The possession presumption can be rebutted; these are not automatic
+      sentences for small possession.[@act1988]
     sources:
       - act2020
       - act1988
@@ -61,10 +82,6 @@ context:
     text: No commercial licensing is in operation.
     sources:
       - wiki
-  products:
-    text: Only what a household grows for itself.
-    sources:
-      - wiki
   medical:
     text: No functioning medical cannabis programme.
     sources:
@@ -89,13 +106,12 @@ context:
   visitors:
     status: none
     text: >-
-      There is no lawful place to buy cannabis for anyone. The 2020 amendment removed
-      penalties for adults aged 18 and over holding 28 g or less, and the minister presented
-      it as applying to Dominicans and as recognising personal religious use; holding more
-      than 28 g remains unlawful. No licensing regime for sales exists.
+      There is no lawful recreational supply. The 28 g ordinary-possession exemption leaves
+      school-premises trafficking rules in place; possession there raises a rebuttable presumption
+      with the burden on the accused.[@act2020,act1988]
     sources:
-      - caricom20
-      - wiki
+      - act2020
+      - act1988
   black_market:
     text: >-
       All sales are illegal. Police figures suggest cannabis is a small part of the drugs
@@ -131,6 +147,13 @@ context:
       established from the reviewed text.
     sources:
       - trafficpublished
+  recreational:
+    text: >-
+      Adults can grow three plants at their permanent home. Supplying cannabis remains unlawful,
+      so the reform provides no legal retail route.[@act2020,act1988]
+    sources:
+      - act2020
+      - act1988
 sources:
   trafficpublished:
     title: "Dominica Government — Vehicles and Road Traffic Act, Chapter 46:50 (PDF)"
@@ -161,3 +184,15 @@ sources:
       CARICOM Today — Dominica parliament passes legislation to decriminalise small amounts of
       marijuana
     url: https://today.caricom.org/?p=46558
+answers:
+  carry:
+    answer: limited
+    text: >-
+      Up to 28 g is exempt from ordinary possession penalties; school-premises possession raises
+      a rebuttable trafficking presumption
+  caught:
+    answer: limited
+    label: Location matters
+    text: >-
+      School-premises possession can trigger a rebuttable trafficking presumption and severe
+      penalties on conviction
