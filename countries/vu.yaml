@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 548
 recreational: illegal
 medical: limited
-updated: '2026-10-24'
+updated: 2026-10-27
 summary: >-
   Cannabis possession, supply and unlicensed growing are crimes. Court guidance distinguishes
   small personal grows from commercial cultivation. Medical-cannabis licences authorise
@@ -25,6 +25,18 @@ segments:
       - law
       - aru
       - lovis
+    currency: VUV
+    penalties:
+      - label: General maximum (Dangerous Drugs Act)
+        treatment: criminal
+        term: Possession
+        prison: 20 years
+        fine: 100000000
+        note: VT100 million or twenty years or both; courts grade by purpose and scale
+      - label: Small personal possession (court guidance)
+        treatment: criminal
+        term: Possession
+        note: Fine or community sentence in small personal cases
   cultivation:
     text: >-
       Unlicensed cannabis growing is criminal.[@kaiding] Courts distinguish small personal
@@ -35,6 +47,18 @@ segments:
       - kaiding
       - lovis
       - hemp
+    currency: VUV
+    penalties:
+      - label: General maximum (Dangerous Drugs Act)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 20 years
+        fine: 100000000
+        note: VT100 million or twenty years or both
+      - label: Small personal grow (court guidance)
+        treatment: criminal
+        term: Personal use
+        note: Fines and community measures usual; short custody possible in serious cases
   enforcement:
     text: >-
       The general drug-law maximum is twenty years or VT100 million, or both.[@law] Sentencing
@@ -81,24 +105,41 @@ context:
     sources:
       - hemp
       - clarification
-  products:
-    text: >-
-      The drug law lists cannabis, resin and resin-based preparations, and excludes separated
-      mature stalks and their fibre from its cannabis definition.[@law] The industry Act defines
-      hemp at no more than 0.3% delta-9 THC on a dry-weight basis.[@hemp]
-    sources:
-      - law
-      - hemp
   medical:
     text: >-
-      Medical cannabis under the industry licensing Act is grown for export.[@hemp] The drug law
+      Medical cannabis under the industry licensing Act is grown for export — the drug law lists
+      cannabis, resin and resin-based preparations, while separated mature stalks and fibre sit
+      outside its cannabis definition, and the industry Act defines hemp at no more than 0.3%
+      delta-9 THC.[@law,hemp] The drug law
       separately provides medical or scientific import permits and exemptions for medicines
       prescribed and properly supplied by qualified practitioners or pharmacists.[@law]
       Officials reaffirmed the export industry’s prohibition on local sales in January
-      2026.[@clarification]
+      2026.[@clarification] The 2023 licensing rules are traced in the
+      [2023 rules](/history/vanuatu-export-cannabis-rules-signed-2023/).
     sources:
       - hemp
       - law
+      - clarification
+  recreational:
+    text: >-
+      Recreational cannabis is fully prohibited: possession, supply and unlicensed growing are
+      crimes with a twenty-year, VT100 million maximum, though courts apply a lesser
+      personal-use category in small cases.[@law,aru] There is no personal-use allowance in the
+      statute, only sentencing mitigation.
+    sources:
+      - law
+      - aru
+  hemp:
+    status: strict
+    text: >-
+      Hemp at no more than 0.3% delta-9 THC may be grown only under the industry licensing Act,
+      whose rules were signed in February 2023 for licensed importation, cultivation, processing
+      and export — with standards for each stage and licences taking effect after gazette
+      publication.[@hemp,pina23] Licensed production is export-oriented; officials reaffirmed in
+      January 2026 that local sales were prohibited.[@clarification]
+    sources:
+      - hemp
+      - pina23
       - clarification
   consequences:
     text: >-
@@ -143,19 +184,34 @@ context:
     status: impairment
     text: >-
       Road Traffic (Control) Act section 16 prohibits driving on a road when a drug or alcohol
-      makes proper vehicle control impossible, and permits arrest without a warrant. The
+      makes proper vehicle control impossible, and permits arrest without a warrant.[@traffic2020] The
       official 2020 consolidation's section 53(3) sets up to VT100,000 or one year's
       imprisonment or both for that offence, rather than the lower general penalty for other
-      contraventions. Under section 55 the court may also disqualify the driver for up to five
+      contraventions.[@traffic2020] Under section 55 the court may also disqualify the driver for up to five
       years and endorse the licence; that is a discretionary maximum, not an automatic five-year
-      ban. Section 54(2) allows detention of a vehicle involved in an offence seriously
-      jeopardising road-user safety. The Supreme Court distinguishes court punishment from
+      ban.[@traffic2020] Section 54(2) allows detention of a vehicle involved in an offence seriously
+      jeopardising road-user safety.[@traffic2020] The Supreme Court distinguishes court punishment from
       separate public- transport impoundment and permit processes; the vehicle owner must not
-      simply be treated as the offending driver. No numeric THC allowance, operational roadside
-      drug-screening protocol or medical-use defence was established in these reviewed sources.
+      simply be treated as the offending driver.[@trafficjudgment] No numeric THC allowance, operational roadside
+      drug-screening protocol or medical-use defence was established in these reviewed sources.[@traffic2020]
     sources:
       - traffic2020
       - trafficjudgment
+  black_market:
+    text: >-
+      No seizure statistics or trade-scale account was verified in the sources read; the profile
+      rests on court records of personal and commercial grows rather than market measurement.[@lovis,kaiding]
+    sources:
+      - lovis
+      - kaiding
+  arrests:
+    text: >-
+      A first offender with five plants received a suspended sentence in 2024 after three months
+      and two days in custody before bail, and courts grade personal against commercial
+      operations.[@kaiding,lovis]
+    sources:
+      - kaiding
+      - lovis
 sources:
   law:
     type: law
@@ -209,6 +265,13 @@ sources:
     locator: >-
       p. 3 assent 10 December 2021 and commencement 17 January 2022; sections 1–2, 10–16, 23–24
       and 27
+  pina23:
+    type: report
+    title: Vanuatu regulates cultivation of cannabis and hemp
+    container: PINA / PACNEWS
+    url: https://pina.com.fj/2023/02/09/vanuatu-regulates-cultivation-of-cannabis-and-hemp/
+    year: 2023
+    locator: 8 February signing; standards for import, cultivation, harvest, production, export; licences after gazette
   clarification:
     type: report
     title: Government maintains tight control on medical cannabis and industrial hemp
