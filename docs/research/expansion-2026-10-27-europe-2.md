@@ -33,7 +33,15 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 - Gaps closed except old decades; 2 of 18 texts link history/culture.
 - Gotcha: committed pin tests constrain penalty tables (ro sharing 3–10y); terms can be added safely.
 - Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
-| Bulgaria | | | |
+| Bulgaria | x | | |
+
+## Bulgaria (bg) — done 2026-10-28 ~00:50 UTC
+- Profile: culture (CBD market) added; cultivation table (unlicensed/hemp-type/legal hemp) + possession/sharing terms; products folded (CBD import into recreational, THC-trace rule) and deleted; inline citations everywhere incl. consequences; production status medical→hemp (audit-suggested, hemp-only text); history links (2004 repeal, 2024 bill).
+- No new web sources (Novinite 2018 march verified: Liberation Society, users ×5 in 15 years).
+- Article: bulgaria-personal-dose-abolished-2004 (single-dose repeal, wholesalers=users, harshest-in-Europe, 2018 march legacy).
+- Gaps closed except old decades; 3 of 18 texts link history/culture.
+- Gotcha: production status must match text (medical vs hemp-only); terms don't disturb pin tests.
+- Audit 0/0, answers 93 + history 47 pass (Iran fixed). Build + HTML verify pending.
 | Sweden | x | | |
 
 ## Sweden (se) — done 2026-10-28 ~00:40 UTC

@@ -20,7 +20,8 @@ segments:
       Cannabis is a high-risk drug.[@wiki] Ordinary possession carries one to six years and a fine of
       €1,022.58–5,112.92; a minor case carries a fine up to €511.29, still a criminal
       conviction.[@code,eurolaw,euro2026] These are the legacy BGN2,000–10,000 and BGN1,000 tariffs,
-      converted at BGN1.95583 per euro and rounded to cents.[@code,eurolaw,euro2026]
+      converted at BGN1.95583 per euro and rounded to cents.[@code,eurolaw,euro2026] There has been no
+      personal dose since the [2004 single-dose repeal](/history/bulgaria-personal-dose-abolished-2004/).
     sources:
       - wiki
       - code
@@ -30,6 +31,7 @@ segments:
     penalties:
       - label: Possession of a high-risk drug
         treatment: criminal
+        term: Possession
         fine: 5112.92
         prison_min: 1 year
         prison: 6 years
@@ -37,40 +39,55 @@ segments:
         fine_min: 1022.58
       - label: Minor possession case
         treatment: criminal
+        term: Possession
         fine: 511.29
         note: Fine instead of prison; still a criminal conviction
   cultivation:
     text: >-
       Cultivation is a crime with prison terms; the penal code has a separate offence for growing
-      hemp-type plants. In 2014 a multiple sclerosis patient with two plants was fined 1,000 leva
-      on appeal after a first acquittal.
+      hemp-type plants.[@wiki] In 2014 a multiple sclerosis patient with two plants was fined 1,000 leva
+      on appeal after a first acquittal.[@nr2007,dr]
     sources:
       - wiki
       - nr2007
       - dr
+    penalties:
+      - label: Unlicensed growing
+        treatment: criminal
+        term: Cultivation
+        note: Crime with prison terms; tariff not stated in retained sources
+      - label: Hemp-type plants
+        treatment: criminal
+        term: Cultivation
+        note: Separate penal-code offence
+      - label: Licensed hemp
+        treatment: legal
+        term: Hemp
+        note: Free three-year permit, below 0.3% THC
   enforcement:
     text: >-
       Most small cases end in the minor-case fine, but prison sentences for possession do occur, and
-      reform is described as a political taboo.
+      reform is described as a political taboo.[@dr]
     sources:
       - dr
   sharing:
-    text: Distribution carries two to eight years or more.
+    text: Distribution carries two to eight years or more.[@wiki,dr14]
     sources:
       - wiki
       - dr14
     penalties:
       - label: Distribution
         treatment: criminal
+        term: Distribution
         prison_min: 2 years
         prison: 8 years
         note: Two to eight years or more
   consumption:
-    text: Use is not separately punished, but possession is.
+    text: Use is not separately punished, but possession is.[@dr]
     sources:
       - dr
   access:
-    text: None. Production, import and sale are prohibited, and nothing containing THC is legally sold.
+    text: None. Production, import and sale are prohibited, and nothing containing THC is legally sold.[@wiki,cmsg]
     sources:
       - wiki
       - cmsg
@@ -82,16 +99,19 @@ context:
       — still a criminal conviction.[@wiki,dr,nr2007] Most small cases end in the minor-case fine, but
       prison happens, and reform is a political taboo.[@dr] Distribution brings two to eight years or
       more.[@wiki,dr14] Euro amounts apply the 2026 conversion at BGN1.95583 per euro and statutory
-      cent rounding.[@euro2026,eurolaw]
+      cent rounding.[@euro2026,eurolaw] Nothing with THC is legally sold: CBD may be imported
+      and sold, but a product with any THC trace counts as a controlled preparation.[@mondaq,nutra]
     sources:
       - wiki
       - dr
       - nr2007
       - dr14
+      - mondaq
+      - nutra
       - euro2026
       - eurolaw
   production:
-    status: medical
+    status: hemp
     text: >-
       A registered farmer who declares no conviction for a customs offence under articles 242 to
       242a, or a drug offence under articles 354a to 354c, of the Penal Code may grow hemp under
@@ -101,22 +121,13 @@ context:
       will not be taken, used or processed, and a crop over 0.3% is destroyed.[@ord1] Article 29(1)
       of the narcotics act, in the consolidation that was read, still says below 0.2%.[@zknvp] That
       conflict is not treated here as a ruling on criminal liability for a crop between the two
-      figures. Parliament rejected a bill to allow hemp processing in April 2024.[@bta24] No other
+      figures. Parliament rejected a bill to allow hemp processing in [April 2024](/history/bulgaria-hemp-processing-bill-rejected-2024/).[@bta24] No other
       production.
     sources:
       - mzh
       - ord1
       - zknvp
       - bta24
-  products:
-    text: >-
-      CBD is not regulated as a drug: it cannot be produced in Bulgaria but may be imported and
-      sold, and in May 2019 the food authorities certified one firm's CBD supplements for open
-      sale. The risk lies in THC, for which the law sets no permitted trace amount, so a product
-      containing any counts as a controlled preparation. Nothing with THC is legally sold.
-    sources:
-      - mondaq
-      - nutra
   medical:
     text: >-
       No medical cannabis programme — unlike neighbouring Greece and Romania, there is not even a law
@@ -132,16 +143,18 @@ context:
       - euro2026
       - eurolaw
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: The retained sources do not establish collateral consequences beyond the penalties described above.[@dr,code]
+    sources:
+      - dr
+      - code
   driving:
     status: zero
     text: >-
       Driving after using drugs is an offence in itself, with no level set: police use a roadside test
-      for seven drugs, marijuana among them, and a positive result opens criminal proceedings. Since
+      for seven drugs, marijuana among them, and a positive result opens criminal proceedings.[@ccee22] Since
       July 2023 the fine is €511.29–2,556.46, €1,022.58–5,112.92 for a repeat, and refusing a test
-      after an accident brings up to a year in prison. The car is confiscated if the driver owns it, a
-      rule the Constitutional Court upheld in July 2025.[@ccee22,sg23,bnr25] Euro amounts apply the
+      after an accident brings up to a year in prison.[@sg23] The car is confiscated if the driver owns it, a
+      rule the Constitutional Court upheld in July 2025.[@bnr25] Euro amounts apply the
       2026 conversion at BGN1.95583 per euro and statutory cent rounding.[@euro2026,eurolaw]
     sources:
       - ccee22
@@ -153,10 +166,10 @@ context:
     text: >-
       The only yearly series found ends in 2006. Convictions for drug crimes of all kinds rose
       from 232 people in 2000 to 525 in 2003, 921 in 2005 and 1,587 in 2006, the year the
-      penal code was amended. In 2006 prosecutors monitored 4,223 proceedings
+      penal code was amended.[@nr2007] In 2006 prosecutors monitored 4,223 proceedings
       for acquiring or keeping drugs against 204 for dealing, and the sentence most often imposed
       by the courts was prison of up to three years. Figures by drug were not published, but
-      cannabis was the most widely used. No recent national figures were found.
+      cannabis was the most widely used. No recent national figures were found.[@nr2007]
     sources:
       - nr2007
   planting:
@@ -195,9 +208,9 @@ context:
     text: >-
       No clubs are known. A Europe-wide survey of cannabis social clubs carried out in 2018 and 2019
       found, after online searches and contact with people in the field, that there did not seem to
-      be any active club in Bulgaria. No law in Bulgaria provides for them; Malta (since 2021) and
-      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.
-      Nothing more recent was found.
+      be any active club in Bulgaria.[@pardal20] No law in Bulgaria provides for them; Malta (since 2021) and
+      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.[@de_cang,mt_cap628]
+      Nothing more recent was found.[@pardal20]
     sources:
       - pardal20
       - de_cang
@@ -219,10 +232,18 @@ context:
     text: >-
       The EU drugs agency's statistical bulletin records 10,759 kg of herbal cannabis and
       5.4 kg of cannabis resin seized in Bulgaria in 2024, against 9,721 kg and 19 kg in
-      2023. Herbal cannabis was seized on 3,332 occasions and resin on 56. Plant seizures came to 34,558 plants. Countries record seizures differently, so the figures are
-      not comparable across borders.
+      2023.[@euda_szr] Herbal cannabis was seized on 3,332 occasions and resin on 56. Plant seizures came to 34,558 plants. Countries record seizures differently, so the figures are
+      not comparable across borders.[@euda_szr]
     sources:
       - euda_szr
+  culture:
+    text: >-
+      Bulgaria's CBD market belongs to the [CBD](/culture/language/cbd/) atlas entry: CBD cannot
+      be produced domestically but certified supplements have been openly sold since May
+      2019.[@mondaq,nutra]
+    sources:
+      - mondaq
+      - nutra
 sources:
   de_cang:
     title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
