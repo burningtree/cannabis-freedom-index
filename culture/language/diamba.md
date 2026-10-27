@@ -25,6 +25,7 @@ history:
   - gambia-1859-tobacco-record-recaptives
   - sierra-leone-seamen-regional-trafficking-1938
   - senegal-yamba-clinical-study-1962
+  - ghana-first-illegal-cultivation-report-1960
 history_cards:
   - sierra-leone-cannabis-long-in-use-1851
 image:
