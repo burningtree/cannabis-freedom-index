@@ -349,14 +349,14 @@ const culture = cultureOf(c);
               <p><Cited parts={segParts[i]} /></p>
               {seg.penalties && (
                 <table class="pen">
-                  <thead><tr><td>Amount</td><td>What happens</td><td>Punishment</td><td>Fine, at most</td></tr></thead>
+                  <thead><tr><td>Amount</td><td>What happens</td><td>Punishment</td><td>Fine</td></tr></thead>
                   <tbody>
                     {seg.penalties.rows.map((r) => (
                       <tr>
                         <td data-label="Amount">{r.amount}{r.note && <span class="pen-note">{r.note}</span>}</td>
                         <td data-label="What happens"><span class={`pen-t s-${TREATMENT[r.treatment].tone}`} title={TREATMENT[r.treatment].help}>{TREATMENT[r.treatment].label}</span>{r.term && <span class="pen-note">{r.term}</span>}</td>
                         <td data-label="Punishment" class:list={{ "pen-death": r.death }}>{punishmentText(r) ?? "—"}{punishmentExtra(r) && <span class="pen-note">{punishmentExtra(r)}</span>}</td>
-                        <td data-label="Fine, at most">{r.fine ? money(r.fine, seg.penalties.currency) : "—"}</td>
+                        <td data-label="Fine">{r.fine && r.fineMin ? `${money(r.fineMin, seg.penalties.currency)} – ${money(r.fine, seg.penalties.currency)}` : r.fine ? `Up to ${money(r.fine, seg.penalties.currency)}` : r.fineMin ? `At least ${money(r.fineMin, seg.penalties.currency)}` : "—"}</td>
                       </tr>
                     ))}
                   </tbody>

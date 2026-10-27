@@ -38,7 +38,6 @@ segments:
         term: Offence under the Misuse of Drugs Act
         prison: 10 years
         fine: 20000
-        note: Using it is a separate offence, proved by a urine test, with at least a year in prison
       - over: 15 g
         upto: 330 g
         treatment: criminal
@@ -71,9 +70,11 @@ segments:
       - over: 0 plants
         treatment: criminal
         term: Cultivation
+        prison_min: 3 years
         prison: 20 years
+        fine_min: 5000
         fine: 40000
-        note: At least three years or a fine of at least S$5,000
+        note: Prison or a fine, or both
   enforcement:
     text: >-
       Trafficking, importing or exporting more than 500 g of cannabis, more than 200 g of cannabis
@@ -109,6 +110,27 @@ segments:
       - judiciary2026
       - cnbtoolkit
       - mh
+    currency: SGD
+    penalties:
+      - label: Using cannabis, a first conviction
+        treatment: criminal
+        term: Consumption, proved by a urine test
+        prison_min: 1 year
+        prison: 10 years
+        fine: 20000
+      - label: Repeat use after qualifying earlier convictions (LT1, section 33A)
+        treatment: criminal
+        term: Long-term imprisonment 1
+        prison_min: 5 years
+        prison: 7 years
+        caning: [3, 6]
+        note: Women and men over 50 are not caned
+      - label: Repeat use after an LT1 term (LT2, section 33A)
+        treatment: criminal
+        term: Long-term imprisonment 2
+        prison_min: 7 years
+        prison: 13 years
+        caning: [6, 12]
   access:
     text: None. There is no legal source of any kind.
     sources:

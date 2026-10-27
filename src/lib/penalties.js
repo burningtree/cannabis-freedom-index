@@ -47,6 +47,7 @@ export function penaltyRow(row) {
     caning: row.caning ?? null, // [fewest, most] strokes of the cane
     death: row.death === true,
     fine: row.fine ?? null,
+    fineMin: row.fine_min ?? null,
     note: row.note ?? null,
   };
 }

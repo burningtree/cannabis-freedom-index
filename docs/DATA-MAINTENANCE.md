@@ -398,22 +398,27 @@ for overall 100%; full context coverage alone is insufficient. Run
 
 ### Statuses for hemp, industry and research
 
-`hemp`, `production` and `research` may carry a `status`, like `clubs` or `driving`. It shows as a
-chip on the country page, colours a world-map view and fills a rankings column. It is optional
-while countries are researched; set it only when the section's text states the fact it rests on.
+`hemp`, `production` and `research` carry a `status`, like `clubs` or `driving`: a filled section
+must have one. It shows as a chip on the country page, colours a world-map view and fills a
+rankings column. **The status must say what the section's text says.** When you are not sure, read
+the text again; don't pick the nearest-sounding value, and never fill statuses in bulk without
+reading each text.
 
 ```yaml
   hemp:
     status: standard      # high (up to 1% THC) | standard (0.3%) | strict (below 0.3%) | none (no exception for hemp)
   production:
-    status: medical       # open (licensed adult market) | state (state-run) | pilot (trials only) | medical (medicine, research or export only) | none
+    status: medical       # open (licensed adult market) | state (state-run) | pilot (trials only) | medical (medicine, research or export only) | hemp (licensed low-THC hemp only) | none
   research:
     status: licensed      # open | licensed (special licence or permit) | restricted (synthetic or narrow routes only) | blocked
 ```
 
 - `hemp` is the THC line in law, not how big the hemp industry is.
 - `production` describes who may produce for sale. A country with both a pilot for adults and a
-  medical industry is `pilot`; one with only medical licences is `medical`.
+  medical industry is `pilot`; one with only medical licences is `medical`; one where only
+  low-THC hemp may be grown or processed is `hemp`; one whose text begins "None" is `none`.
+  Licences that exist on paper but have never been issued still count as `medical` if the law
+  provides them; say so in the text.
 - `research` needs a stated route: a permit, a licence, a state agency that supplies researchers.
   If the text does not say how researchers get cannabis, leave the status out.
 
@@ -549,6 +554,16 @@ genetic studies), not seed-shop strain names. Never give exact growing locations
 names. "Not documented" never means "does not exist", so leave the section out rather than
 writing "none".
 
+### Checking a profile
+
+`npm run profiles:audit` checks every profile (or `node scripts/profile-audit.cjs ke de` some of
+them) for what the schema cannot see: one-line sections ("None."), statuses that contradict their
+text, a Research section with no science in it, more than three spotlights, sentences without a
+citation in a text that uses marks, words WRITING.md asks to avoid, GOV.UK travel advice outside
+the UK. Errors must be fixed before committing; `--warnings` also shows the softer warnings. The
+one-line texts in the four original sections (`products`, `production`, `medical`,
+`consequences`) are old debt: rewrite them when you work on a country.
+
 ### YAML pitfalls
 
 - A source title containing a colon followed by a space must be quoted:
@@ -559,9 +574,21 @@ writing "none".
 
 ## Penalty steps
 
-Possession and cultivation may carry a small table of what happens at each amount, under the
+A segment may carry a small table of what happens at each amount or for each offence, under the
 segment's text. It never changes a score; it makes the text checkable and lets countries be
-compared (`src/lib/penalties.js`).
+compared (`src/lib/penalties.js`). Tables belong on four segments only:
+
+| Segment | What its table holds |
+|---|---|
+| `possession` | steps by amount held (grams), from legal or tolerated to criminal |
+| `cultivation` | steps by plants grown |
+| `sharing` | supply, sale and trafficking: by amount, or labelled steps ("supply to a minor") |
+| `consumption` | only where using cannabis is itself an offence (Japan, Singapore, the Philippines) |
+
+Never on `enforcement` or `access`: those segments describe practice and supply routes, not
+offences. A trafficking ladder goes on `sharing`. Never in a context section either (`driving`,
+`visitors` and the others): the schema rejects it there, and the section's text already states
+the penalty.
 
 ```yaml
 segments:
@@ -581,6 +608,7 @@ segments:
         prison: 1 month         # the maximum: days, weeks, months or years
         prison_min: 5 days      # a minimum sentence, where the law sets one; alone it reads "at least"
         fine: 5500              # the maximum, in `currency`
+        fine_min: 500           # a minimum fine, where the law sets one; alone it reads "at least"
       - label: Growing as a business      # a step that is not about an amount
         treatment: criminal
         prison: 6 years
@@ -605,10 +633,23 @@ segments:
   each row's `note`. Don't mix the two in one ladder.
 - **Steps not about an amount** ("growing commercially", "a large quantity as set by the courts")
   get a `label` and no amount; they show in the table but don't count in the comparison figures.
-- **Minimums, caning and death.** Where the law sets a minimum sentence, give it as `prison_min`
-  ("6 months – 5 years"). Corporal punishment goes in `caning: [fewest, most]` strokes, and a step
-  that carries the death penalty gets `death: true` (no `prison` needed). They show in the
-  Punishment column, and `penalties.summary` records whether a ladder reaches caning or death.
+- **Every figure in its field, never only in the note.** Minimum prison: `prison_min`; minimum
+  fine: `fine_min`; strokes of the cane or lashes: `caning: [fewest, most]`; the death penalty:
+  `death: true` (no `prison` needed). The table then shows "6 months – 5 years", "At least
+  S$5,000", "and 3–6 strokes of the cane". `penalties.summary` records whether a ladder reaches
+  caning or death. The audit (below) fails on minimums or caning written only in a note.
+- **Prison or a fine.** When the law gives alternatives ("at least three years or a fine of at
+  least S$5,000"), fill both minimums and say in `note`: "Prison or a fine, or both" (or "Prison
+  or a fine"). Without that note the table reads as prison and a fine together.
+- **Notes are for conditions and exceptions** ("not prosecuted; police may seize it", "women and
+  men over 50 are not caned", "at home, over 60 g"), in one short line. Don't repeat figures the
+  fields already show; longer explanations go in the segment text.
+- **`term` is the law's own word** for the offence ("Ordnungswidrigkeit", "misdemeanor",
+  "Consumption, proved by a urine test"). Give it for every civil and criminal step; it is shown,
+  never compared.
+- **Steps run in order and join up.** Each amount step starts where the one before ends
+  (`over:` equals the previous `upto:`), treatments get no milder as amounts grow, and one ladder
+  counts either grams or plants, never both.
 - **Presumptions.** Where an amount is presumed to be for trafficking (Singapore above 15 g),
   give the trafficking punishment in the step, call it "Presumed trafficking" in `term`, and say
   in `note` what applies if the presumption is rebutted.
@@ -616,7 +657,14 @@ segments:
   say "a criminal fine instead of prison is possible" in `note`.
 - Write the steps for a first offender aged over the legal age. Different rules for young people
   or repeat offences go in a spotlight, in the text, or in rows with `repeat`.
-- The Netherlands, Czechia and Germany have them; use those as models.
+- **Repeat offences with their own punishment** (Singapore's LT1 and LT2) get labelled steps of
+  their own, as in Singapore's consumption table.
+- Models: the Netherlands, Czechia and Germany (amount ladders), Singapore (presumptions, caning,
+  the death penalty, a consumption table), Kenya and Tanzania once their notes are moved into
+  fields.
+- **Check before committing:** `npm run profiles:audit` (or `node scripts/profile-audit.cjs <id>`)
+  lists mistakes the schema cannot catch: tables on the wrong segment, figures left in notes,
+  steps out of order, a punishment on a legal step.
 
 ## Research scope beyond law
 

@@ -66,6 +66,7 @@ export const INDUSTRY_STATUS = {
   state: { label: "State-run", tone: "decrim", help: "Adult-use cannabis is produced only by the state or under state contracts and tenders" },
   pilot: { label: "Pilots only", tone: "decrim", help: "Legal supply for adults exists only in trials or experiments; elsewhere only medical production is licensed" },
   medical: { label: "Medical only", tone: "partial", help: "Licensed production exists for medicine, research or export, but not for adults' recreational use" },
+  hemp: { label: "Hemp only", tone: "partial", help: "Only low-THC hemp may be grown or processed under licence; no cannabis is produced legally for medicine or adults" },
   none: { label: "None", tone: "illegal", help: "No legal cannabis production of any kind" },
 };
 // Research: whether scientists can obtain cannabis to study. Not part of the score.
@@ -91,8 +92,8 @@ export const STATUS_SECTIONS = {
   hemp: { name: "Hemp THC limit", chip: "Hemp", statuses: HEMP_STATUS, tiers: { high: 5, standard: 4, strict: 2, none: 0 }, optional: true,
     sub: "Green means plants with up to 1% THC count as hemp, light green the usual 0.3% line, orange a stricter line, red no exception for hemp at all.",
     note: "The THC limit under which a cannabis plant counts as legal hemp." },
-  production: { name: "Cannabis industry", chip: "Industry", statuses: INDUSTRY_STATUS, tiers: { open: 5, state: 4, pilot: 3, medical: 2, none: 0 }, optional: true,
-    sub: "Green means a licensed market for adults, light green a state-run or pilot supply, orange licensed production for medicine only, red no legal production.",
+  production: { name: "Cannabis industry", chip: "Industry", statuses: INDUSTRY_STATUS, tiers: { open: 5, state: 4, pilot: 3, medical: 2, hemp: 1, none: 0 }, optional: true,
+    sub: "Green means a licensed market for adults, light green a state-run or pilot supply, orange licensed production for medicine only, darker orange licensed hemp only, red no legal production.",
     note: "Who may produce cannabis legally for sale." },
   research: { name: "Cannabis research", chip: "Research", statuses: RESEARCH_STATUS, tiers: { open: 5, licensed: 4, restricted: 2, blocked: 0 }, optional: true,
     sub: "Green means open research, light green research under licence, orange narrow routes only, red no known route.",

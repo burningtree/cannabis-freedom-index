@@ -40,11 +40,12 @@ const penalty = z.object({
   caning: z.tuple([z.number().int().positive(), z.number().int().positive()]).optional(), // [fewest, most] strokes
   death: z.literal(true).optional(),
   fine: z.number().positive().optional(),
+  fine_min: z.number().positive().optional(), // a minimum fine; alone it reads "at least"
   note: z.string().min(1).optional(),
 }).strict().refine((r) => r.upto || r.over || r.label, { message: "a penalty step needs upto, over or a label" });
 // a segment: its cited text, and for possession and cultivation optionally the penalty steps
 const segment = cited.extend({ currency: z.string().regex(/^[A-Z]{3}$/).optional(), penalties: z.array(penalty).min(1).optional() })
-  .refine((s) => !s.penalties?.some((r) => r.fine) || s.currency, { message: "penalties with a fine need a currency" });
+  .refine((s) => !s.penalties?.some((r) => r.fine || r.fine_min) || s.currency, { message: "penalties with a fine need a currency" });
 // a country spotlight: one thing that makes cannabis different there, with a short title
 const spotlight = z.object({ title: z.string().min(1), text: z.string().min(1), sources: z.array(z.string()) }).strict();
 // seeds and clones: the same cited text, plus for each a status for having and planting them

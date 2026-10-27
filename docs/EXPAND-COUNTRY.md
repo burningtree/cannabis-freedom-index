@@ -43,9 +43,10 @@ today:
 - Check the six segment texts and scores against what you find. If the law or practice has
   changed, **change the score too**, calibrated against comparable countries (look at a peer with
   a similar law and its scores), and add the change as a history entry with `before`.
-- Add the **penalty tables** for possession and cultivation from the statute
-  (DATA-MAINTENANCE.md, "Penalty steps"): amounts, treatment, the law's term, minimum and maximum
-  prison, caning or death where they apply, and the fine.
+- Add the **penalty tables** from the statute (DATA-MAINTENANCE.md, "Penalty steps"): possession
+  and cultivation by amount, supply and trafficking on `sharing`, and `consumption` only where using
+  is itself an offence. Put every figure in its field (minimum and maximum prison, minimum and
+  maximum fine, caning, death), the law's word in `term`, and only conditions in `note`.
 
 ## 3. History
 
@@ -79,8 +80,8 @@ sections well"):
 - **Where there is something real to say:** `culture` (connect every atlas entry of the country),
   `research` (science, not policy counting), `genetics` (real local plants only), `spotlights`
   (one to three things the scores do not show).
-- Set the statuses where the text states the fact: `hemp`, `production`, `research`, `clubs`,
-  `driving`, `visitors`.
+- Set the statuses: `hemp`, `production`, `research`, `clubs`, `driving`, `visitors`. Each must
+  say what its text says; read the text before choosing, and never fill statuses in bulk.
 
 How every section reads:
 
@@ -114,6 +115,7 @@ How every section reads:
 
 ```bash
 npm run build          # must pass; it checks schemas, citations and internal links
+npm run profiles:audit # must report no errors for your country (node scripts/profile-audit.cjs <id>)
 npm run seo:audit      # what the deploy runs after the build
 node scripts/country-gaps.cjs ke   # the list should be shorter
 ```
