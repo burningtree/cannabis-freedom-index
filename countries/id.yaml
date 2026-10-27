@@ -26,6 +26,20 @@ segments:
     sources:
       - uu35
       - uu2026
+    currency: IDR
+    penalties:
+      - label: Planting or possessing plant form
+        treatment: criminal
+        prison: 12 years
+        fine: 2000000000
+        note: Up to twelve years and/or a category VI fine (Rp2 billion); no death penalty or minimum
+      - label: Over 1 kg or at least six plants
+        treatment: criminal
+        note: Life imprisonment or up to twenty years and/or a higher fine
+      - label: Personal use, Article 127
+        treatment: criminal
+        prison: 4 years
+        note: Up to four years; proven abuse victims must receive rehabilitation
   cultivation:
     text: >-
       Planting cannabis is punished under Article 111. Since 2 January 2026, the basic penalty is up
@@ -54,6 +68,28 @@ segments:
     sources:
       - uu2026
       - uu35
+    currency: IDR
+    penalties:
+      - label: Sale, purchase, brokerage or delivery
+        treatment: criminal
+        prison: 20 years
+        fine: 2000000000
+        note: Life imprisonment or up to twenty years and/or a category VI fine
+      - label: Over 1 kg or at least six plants for sale
+        treatment: criminal
+        death: true
+        prison: 20 years
+        note: Death, life or up to twenty years and/or a higher fine
+      - label: Giving to another to use, Article 116(1)
+        treatment: criminal
+        prison: 15 years
+        fine: 2000000000
+        note: Up to fifteen years and/or a category VI fine
+      - label: Giving causing death or disability, Article 116(2)
+        treatment: criminal
+        death: true
+        prison: 20 years
+        note: Death, life or up to twenty years and/or a higher fine
   consumption:
     text: >-
       Using a Class I narcotic for oneself is a crime with up to four years in prison under
@@ -82,23 +118,40 @@ context:
     sources:
       - uu2026
       - uu35
+  recreational:
+    text: >-
+      All recreational use is prohibited. Planting or possessing plant-form cannabis carries up
+      to twelve years, personal use up to four years with rehabilitation, and aggravated sale
+      can bring death; tourists in Bali are regularly jailed for years over a few
+      grams.[@uu35,uu2026,sun,gp]
+    sources:
+      - uu35
+      - uu2026
+      - sun
+      - gp
+  research:
+    status: restricted
+    text: >-
+      No licensed cannabis research route operates. The Constitutional Court rejected a medical
+      challenge but urged the government to research therapeutic use; medical use stays
+      prohibited.[@tempo,sun]
+    sources:
+      - tempo
+      - sun
   production:
     status: none
     text: None. Cannabis has long been grown illicitly in Aceh, where the army burns fields each year.
     sources:
       - gp
-  products:
-    text: None; CBD is treated as cannabis.
-    sources:
-      - gp
   medical:
     text: >-
-      Prohibited absolutely: Class I narcotics may not be used for health services. The
-      Constitutional Court rejected a challenge brought by mothers of children with cerebral palsy,
-      while urging the government to research therapeutic use.
+      Prohibited absolutely: Class I narcotics may not be used for health services, and CBD is
+      treated as cannabis. The Constitutional Court rejected a challenge brought by mothers of
+      children with cerebral palsy, while urging the government to research therapeutic use.
     sources:
       - tempo
       - sun
+      - gp
   consequences:
     text: Long pre-trial detention, deportation and blacklisting for foreigners.
     sources:
