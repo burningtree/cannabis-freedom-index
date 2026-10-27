@@ -603,3 +603,15 @@ test('New Mexico keeps product-specific public, gift and felony quantities (#215
  assert.match(x.segments.possession,/homegrown harvest.*moving residence/);
  assert.match(x.answers.caught.text,/felonies.*extract and edible/);
 });
+
+// Issue #216
+test('Massachusetts distinguishes product THC equivalents from gross weight (#216)',()=>{
+ const x=country('us/ma');
+ for(const text of [x.summary,x.segments.sharing,x.answers.carry.text])assert.match(text,/equivalent/);
+ assert.match(x.segments.possession,/10 g of active THC/);
+ assert.match(x.segments.possession,/1,000 mg of active THC/);
+ assert.match(x.segments.possession,/Mixed purchases share one combined equivalent allowance/);
+ assert.match(x.segments.possession,/September 2026 regulations/);
+ assert.match(x.segments.sharing,/without payment and without publicly advertising/);
+ assert.match(x.segments.possession,/10 oz plus cannabis from lawful homegrown/);
+});
