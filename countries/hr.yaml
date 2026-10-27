@@ -28,6 +28,13 @@ segments:
       - nn39
       - wiki
       - tripalo
+    currency: HRK
+    penalties:
+      - label: Small amount for personal use (misdemeanour since 2013)
+        treatment: administrative
+        fine: 20000
+        prison: 90 days
+        note: Fine of 5,000–20,000 kuna or up to 90 days' detention; no fixed gram threshold
   cultivation:
     text: >-
       Growing even a few plants for yourself remains a criminal offence: Article 190 of the
@@ -39,6 +46,17 @@ segments:
       - kz
       - index19
       - nl19
+    penalties:
+      - label: Unauthorised cultivation as production (Article 190)
+        treatment: criminal
+        prison_min: 6 months
+        prison: 5 years
+        note: Six months to five years
+      - label: Cultivation where the drug is meant for sale
+        treatment: criminal
+        prison_min: 3 years
+        prison: 12 years
+        note: Three to twelve years
   enforcement:
     text: >-
       A user can be fined 5,000 to 20,000 kuna or detained for up to 90 days. Growing and dealing
@@ -54,6 +72,17 @@ segments:
       190 of the Criminal Code, and three to fifteen where a child or a school is involved. Giving
       a drug to another person to use, or providing a place to use it, carries six months to five
       years under Article 191.
+    penalties:
+      - label: Selling, offering or brokering (Article 190)
+        treatment: criminal
+        prison_min: 3 years
+        prison: 12 years
+        note: Three to twelve years; three to fifteen where a child or a school is involved
+      - label: Giving for use or providing a place (Article 191)
+        treatment: criminal
+        prison_min: 6 months
+        prison: 5 years
+        note: Six months to five years
     sources:
       - kz
   consumption:
@@ -73,6 +102,18 @@ segments:
       - pp
       - nl22
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Since 2013 small-amount personal possession is a
+      misdemeanour, not a crime: 5,000–20,000 kuna (about €650–2,650) or up to 90 days'
+      detention, with no fixed gram threshold — courts assess personal use.[@zszd,nn39,wiki]
+      Growing even a few plants for yourself stays criminal: six months to five years, or
+      three to twelve where the drug is meant for sale.[@kz]
+    sources:
+      - zszd
+      - nn39
+      - wiki
+      - kz
   production:
     text: >-
       Hemp cultivation is permitted, and a 2019 change allowed domestic production of medical
@@ -119,6 +160,17 @@ context:
       with no more than 0.2% THC is exempt, and its growers must register before sowing.
     sources:
       - zszd
+  hemp:
+    text: >-
+      Industrial hemp of EU-listed varieties at no more than 0.2% THC is exempt from the
+      growing ban, with registration before sowing; acquiring and possessing seed counts as
+      growing outside medical, veterinary, scientific and teaching use.[@zszd] Low-THC hemp
+      products are sold, but prescription medical cannabis remains practically
+      unavailable.[@mjb,pp25]
+    sources:
+      - zszd
+      - mjb
+      - pp25
   driving:
     status: impairment
     text: >-
@@ -140,6 +192,16 @@ context:
       administrative), so the figure is not comparable across borders.
     sources:
       - euda_dlo
+  research:
+    text: >-
+      Drug-ban exemptions cover medical, veterinary, scientific and teaching use, and the
+      2019 change allowed domestic medical-cannabis production — but no authorised producer
+      or distributor was on sale by 2025, leaving research without a domestic supply
+      chain.[@zszd,pp25] No separate research programme, trial or published study was
+      established by the retained sources.
+    sources:
+      - zszd
+      - pp25
   clubs:
     status: none
     text: >-

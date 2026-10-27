@@ -27,6 +27,16 @@ segments:
       - code
       - stock24
       - prosecutor
+    penalties:
+      - label: Small amount for personal use
+        treatment: criminal
+        prison: 3 years
+        note: Fine or up to three years, with possible waiver; prosecutors may defer with obligations
+      - label: Large quantity, even for personal use
+        treatment: criminal
+        prison_min: 3 years
+        prison: 10 years
+        note: Three to ten years; three years upheld for about 372 g in 2024
   cultivation:
     text: >-
       Unauthorised growing of psychoactive cannabis carries two to eight years in prison, raised
@@ -38,6 +48,12 @@ segments:
       - amendment19
       - harvest19
       - zpks
+    penalties:
+      - label: Unauthorised growing of psychoactive cannabis
+        treatment: criminal
+        prison_min: 2 years
+        prison: 8 years
+        note: Two to eight years
   enforcement:
     text: >-
       Small personal possession can receive a fine, waiver of punishment or deferred prosecution;
@@ -54,6 +70,17 @@ segments:
       to five years under the facilitating-consumption offence. Unauthorised sale and other supply
       carry three to twelve years, with aggravated offences for minors, specified locations and
       abuse of professional roles.
+    penalties:
+      - label: Giving drugs to consume or providing premises (facilitation)
+        treatment: criminal
+        prison_min: 6 months
+        prison: 5 years
+        note: Six months to five years
+      - label: Unauthorised sale and other supply
+        treatment: criminal
+        prison_min: 3 years
+        prison: 12 years
+        note: Three to twelve years, aggravated for minors, specified locations and professional roles
     sources:
       - code
   consumption:
@@ -72,6 +99,17 @@ segments:
       - code
       - assembly18
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Small-amount personal possession brings a fine or
+      up to three years, with possible waiver; prosecutors may defer eligible cases with
+      obligations like community work or treatment.[@code,prosecutor] A large quantity brings
+      three to ten years even for personal use — three years were upheld for about 372 g in
+      2024.[@code,stock24] Unauthorised growing brings two to eight years.[@code]
+    sources:
+      - code
+      - stock24
+      - prosecutor
   production:
     text: >-
       Licensed hemp cultivation is allowed for fibre, animal-feed seed, propagation and specified
@@ -102,6 +140,16 @@ context:
       - schedules26
       - zpks
       - assembly18
+  research:
+    text: >-
+      List-2 substances, including cannabis, are permitted for research and exceptionally for
+      therapy under legal controls, and the minister can authorise imports of unregistered
+      controlled medicines for named patients through a licensed wholesaler.[@schedules26,zpks]
+      No separate research programme, trial or published study was established by the retained
+      sources.
+    sources:
+      - schedules26
+      - zpks
   consequences:
     text: >-
       Small personal possession remains a criminal offence, though the court may waive punishment.
@@ -124,6 +172,18 @@ context:
     sources:
       - zpks
       - hemp13
+  hemp:
+    text: >-
+      Licensed hemp is confined to fibre, animal-feed seed, propagation and specified seed
+      activities: registered varieties below 0.3% THC, documented seed and a one-year
+      agriculture permit.[@zpks,hemp13] Cannabis varieties capable of more than 0.3% THC are
+      prohibited, and cannabis and resin stay on controlled-drug lists 1 and 2; the 2018
+      consultation rejected legalising medical cannabis oil.[@hemp13,schedules26,proposal18]
+    sources:
+      - zpks
+      - hemp13
+      - schedules26
+      - proposal18
   clubs:
     status: none
     text: >-
