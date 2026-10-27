@@ -5,8 +5,6 @@ sources:
   - title: "The Conversation — ACT cannabis laws come into effect on Friday, but they may not be what you hoped for (27 Jan 2020)"
     url: https://theconversation.com/act-cannabis-laws-come-into-effect-on-friday-but-they-may-not-be-what-you-hoped-for-130050
     locator: 50 g dried, two plants per person, four per household; seeds gap; Commonwealth conflict
-  - title: "The Canberra Times — ACT cannabis laws come into effect"
-    url: https://www.canberratimes.com.au/story/6601233/act-cannabis-laws-come-into-effect-on-friday-but-they-may-not-be-what-you-hoped-for/
   - title: Drugs of Dependence Amendment Act 2019 (ACT)
     url: https://legislation.act.gov.au/a/2019-34
     locator: Notified 10 October 2019; remainder commenced 31 January 2020
@@ -21,20 +19,20 @@ sources:
 On 31 January 2020 the Australian Capital Territory became the first Australian
 jurisdiction to let adults off for small-scale cannabis. Territory residents 18 or
 older could hold up to 50 grams of dried cannabis and grow two plants each — four per
-household — at home, out of public view and reach of children.[@1,3]
+household — at home, out of public view and reach of children.[@1,2]
 
 ## What it did not do
 
 The fine print disappointed anyone expecting Amsterdam. Hydroponic and artificial
 cultivation stayed offences, as did growing where the public could lawfully go — each
-carrying up to 50 penalty units or two years.[@4] Harvested cannabis left within a
-child's reach drew the same.[@4] Selling, sharing or giving cannabis to anyone else
+carrying up to 50 penalty units or two years.[@3] Harvested cannabis left within a
+child's reach drew the same.[@3] Selling, sharing or giving cannabis to anyone else
 remained a crime, and the law offered no legal way to obtain the seeds the two plants
 had to start from: the supplier would be committing an offence.[@1]
 
 Above it all hung the Commonwealth. Federal law still criminalised possession across
 Australia, including in the Territory, and ACT Policing said openly that federal law
-could be used.[@1,5] The reform was a local exemption from Territory offences, not a
+could be used.[@1,4] The reform was a local exemption from Territory offences, not a
 right good against the country.
 
 ## The pattern it set
