@@ -18,18 +18,19 @@ segments:
   possession:
     text: >-
       Under Law 143/2000, possessing a 'risk drug' such as cannabis for personal use is a crime
-      punished with three months to two years in prison or a fine. Since the 2014 criminal code,
-      users can often end up with a fine or community service. A wrinkle: cannabis plant and resin
-      are 'risk drugs', but THC as a compound is listed as 'high-risk', which can raise the penalty.
+      punished with three months to two years in prison or a fine.[@dr] Since the 2014 criminal code,
+      users can often end up with a fine or community service.[@lc] A wrinkle: cannabis plant and resin
+      are 'risk drugs', but THC as a compound is listed as 'high-risk', which can raise the penalty.[@dr,lc]
     sources:
       - dr
       - lc
     penalties:
       - label: Personal-use possession of a risk drug
         treatment: criminal
+        term: Possession
         prison_min: 3 months
         prison: 2 years
-        note: Three months to two years or a fine; users often end with a fine or community service; THC-as-compound high-risk listing can raise the penalty
+        note: Or a fine; users often end with a fine or community service; THC-as-compound high-risk listing can raise the penalty
   cultivation:
     text: >-
       Unauthorised growing for personal use falls under the three-months-to-two-years
@@ -39,10 +40,21 @@ segments:
       - lc
       - dr
       - hemp125
+    penalties:
+      - label: Unauthorised growing for personal use
+        treatment: criminal
+        term: Cultivation
+        prison_min: 3 months
+        prison: 2 years
+        note: Or a fine; users often end with a fine or community service
+      - label: Licensed fibre hemp
+        treatment: legal
+        term: Hemp
+        note: County authorisation, approved EU seed, 0.3% THC checks
   enforcement:
     text: >-
       Fines and suspended sentences are common for users; prison remains available and is used for
-      repeat cases.
+      repeat cases.[@dr,lc]
     sources:
       - dr
       - lc
@@ -56,15 +68,16 @@ segments:
     penalties:
       - label: Trafficking in risk drugs
         treatment: criminal
+        term: Trafficking
         prison_min: 3 years
         prison: 10 years
         note: Risk-drug cannabis plant or resin; disqualification of certain rights
   consumption:
-    text: Use is not separately punished, but possession for use is.
+    text: Use is not separately punished, but possession for use is.[@dr]
     sources:
       - dr
   access:
-    text: None.
+    text: None.[@pp]
     sources:
       - pp
 context:
@@ -75,20 +88,18 @@ context:
       falls under the same provision.[@dr,lc] A wrinkle: the plant and resin are 'risk drugs' but THC
       as a compound is 'high-risk', which can raise the penalty.[@dr,lc] Risk-drug supply carries
       three to ten years under the [2023
-      amendment](/history/romania-trafficking-sentences-raised-2023/).[@trafficking2023]
+      amendment](/history/romania-trafficking-sentences-raised-2023/).[@trafficking2023] Only CBD
+      products with negligible THC circulate lawfully.[@cms]
     sources:
       - dr
       - lc
       - trafficking2023
+      - cms
   production:
     status: medical
     text: >-
       Cultivation, import and sale of cannabis for medical use are allowed under Law 339/2005
       with strict government authorisation and supervision.[@cms]
-    sources:
-      - cms
-  products:
-    text: CBD products with negligible THC.
     sources:
       - cms
   hemp:
@@ -110,21 +121,29 @@ context:
       - cms
       - medical339
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction is a criminal record.[@lc] No spent-conviction or expungement route for drug
+      offences was found in the retained sources.
     sources:
       - lc
+  culture:
+    text: >-
+      Romanian has its own form of the ancient word: cânepă, kin to hemp and hanf, traced in the
+      atlas entry [cannabis](/culture/language/cannabis/).[@cannabiset]
+    sources:
+      - cannabiset
   driving:
     status: capacity
     text: >-
       Driving a vehicle that needs a licence, while under the influence of a psychoactive
       substance, carries one to five years in prison and a ban on exercising rights. Public
       passenger transport, dangerous goods, a driving lesson or a driving test raises that to
-      two to seven years, again with a ban on exercising rights. Law 172 of 31 May 2024 set
+      two to seven years, again with a ban on exercising rights.[@cp336] Law 172 of 31 May 2024 set
       those sentences. Since 28 January 2025 a binding ruling of the High Court of Cassation
       and Justice has required two things: the substance in a biological sample, and proof
-      that it was capable of affecting the ability to drive. The ruling sets no THC number.
+      that it was capable of affecting the ability to drive.[@iccj25] The ruling sets no THC number.
       Proof that the driver made a mistake on the road is outside what the prosecution must
-      show.
+      show.[@iccj25]
     sources:
       - iccj25
       - cp336
@@ -133,10 +152,10 @@ context:
     text: >-
       Clubs exist without any legal basis. A Europe-wide survey of cannabis social clubs carried out
       in 2018 and 2019 received answers from one club in Romania, and its authors could not say how
-      many more were active. The study notes that clubs sit in a legally sensitive position and that
+      many more were active.[@pardal20] The study notes that clubs sit in a legally sensitive position and that
       many have been dissolved after court decisions or police raids. No law in Romania provides for
       them; Malta (since 2021) and Germany (since 2024) license non-profit cannabis associations,
-      but only under their own laws. Nothing more recent was found.
+      but only under their own laws.[@de_cang,mt_cap628] Nothing more recent was found.[@pardal20]
     sources:
       - pardal20
       - de_cang
@@ -158,18 +177,27 @@ context:
     status: none
     text: >-
       There is no legal recreational supply for anyone. Under Law 143/2000, possessing cannabis
-      for personal use is a crime punished with three months to two years in prison or a fine.
+      for personal use is a crime punished with three months to two years in prison or a fine.[@dr,lc]
     sources:
       - dr
       - lc
+  arrests:
+    text: >-
+      DIICOT's 2025 activity report records 1,969.9 kg of cannabis seized and 2,258 cannabis
+      crops or plants discovered, with traffickers bringing drugs from Western Europe in parcels
+      sent to trial.[@actmedia26] No account of routine user-level arrests was found.
+    sources:
+      - actmedia26
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 861 kg of herbal cannabis and 43
-      kg of cannabis resin seized in Romania in 2024, against 940 kg and 43 kg in 2023.
-      Herbal cannabis was seized on 3,529 occasions and resin on 285. Countries record
-      seizures differently, so the figures are not comparable across borders.
+      kg of cannabis resin seized in Romania in 2024, against 940 kg and 43 kg in 2023.[@euda_szr]
+      Herbal cannabis was seized on 3,529 occasions and resin on 285. DIICOT's 2025 report adds
+      1,969.9 kg of cannabis and 2,258 crops or plants seized nationally.[@actmedia26] Countries record
+      seizures differently, so the figures are not comparable across borders.[@euda_szr]
     sources:
       - euda_szr
+      - actmedia26
 sources:
   de_cang:
     title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
@@ -201,6 +229,12 @@ sources:
   pp:
     title: Prohibition Partners — Romania medical cannabis market overview 2025
     url: https://prohibitionpartners.com/2025/10/05/romania-medical-cannabis-market-overview-2025/
+  actmedia26:
+    title: ActMedia — DIICOT 2025 activity report on drug trafficking and consumption (23 February 2026)
+    url: https://actmedia.eu/daily/diicot-romania-emerging-drug-consumption-market-connected-to-european-distribution-networks/118247
+  cannabiset:
+    title: Wikipedia — Etymology of cannabis (Romanian cânepă)
+    url: https://en.wikipedia.org/wiki/Etymology_of_cannabis
   cms:
     title: CMS Expert Guide — Cannabis law and legislation in Romania
     url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/romania

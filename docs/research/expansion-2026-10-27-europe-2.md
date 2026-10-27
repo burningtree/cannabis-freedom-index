@@ -24,6 +24,14 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 - Left out: arrests (no dated citable cannabis arrests). Gaps otherwise closed; culture links both atlas entries; 2 of 18 texts link history.
 - Gotcha: audit wants every sentence cited — restructure long Unsourced runs; never invent shop claims, cite acquiring offence instead.
 - Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
-| Romania | | | |
+| Romania | x | | |
+
+## Romania (ro) — done 2026-10-28 ~00:30 UTC
+- Profile: arrests (DIICOT 2025: 1,969.9 kg, 2,258 crops/plants) + culture (cânepă) sections added; products folded (negligible-THC CBD into recreational) and deleted; cultivation table added (personal 3mo–2y / legal hemp); possession/sharing penalty terms added (pin test checks prison fields, untouched); inline citations everywhere; history links (2023 amendment, 2023 proposal via article).
+- New source: ActMedia DIICOT 2025 report (read; seizure + trial figures) for arrests/black_market; etymology page for cânepă.
+- Article: romania-three-gram-proposal-2023 (1,000–3,000 lei fines, revenue for prevention, medical exemption, Senate rejection; Senate PDF scanned-unreadable, entry-verified + Wikipedia-corroborated arc).
+- Gaps closed except old decades; 2 of 18 texts link history/culture.
+- Gotcha: committed pin tests constrain penalty tables (ro sharing 3–10y); terms can be added safely.
+- Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
 | Bulgaria | | | |
 | Sweden | | | |
