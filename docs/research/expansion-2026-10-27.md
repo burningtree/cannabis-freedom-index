@@ -59,3 +59,12 @@ SA rewrite, so this batch makes no history-entry edits; history additions are de
 - History: added malawi-dangerous-drugs-act-1956 (unscored, fills 1950s gap); related-links on 2020/2021/2024 entries. No 1980s/1940s source found; post-2024 news checked (seizures only, nothing score-moving).
 - Articles: malawi-local-chamba-2024, malawi-medical-industrial-2020 (mw entries without an article: 8 → 7, counting the new 1956 entry).
 - Audit 0/0, history+answers tests pass, build 4876 pages, HTML verified (2 pen tables, 12 history + 4 culture links).
+
+## Namibia (na) — done 2026-10-27 ~22:15 UTC
+- Profile rewritten: recreational, hemp (none), black_market, culture sections added; products folded (was "None"); possession + cultivation penalty steps (segment-level NAD; rands in 1971 text); wiki-only texts replaced; answers.buy; inline [@x,y] form.
+- Tariffs from UNAM LL.M. thesis (Apr 2017, quotes Act verbatim): s2(a) dealing R30k/15yrs first, R50k/25yrs after; s2(b) possession/use R20k/10yrs first, R30k/15yrs after; s10 115 g presumption. Practice: Mwatongwe 2020 (2yrs), Hafeni 2016 (N$3k/18mo), Swartbooi 12mo.
+- News: Swartbooi presumption challenge dismissed 2026 (Prinsloo, nam1); Jaftha/Ndungula 2021 suit (Amoomo, nam2); Jaftha jailed Oct 2023 (Sun, verified); Claasen dismissal July 2026 (verified); New Era Mar 2025 stats; ZennJet RED guide (no medical framework, dronabinol only, foreign scripts incl. CBD not recognised, 2020 petition failed).
+- Duvall re-read: dagga/dukan etymology debate, diffusion into Namibia (1880s travellers, east, Ovambo-Herero), Herero onyungu. Culture section has history link (1971 Act) since no atlas entries exist for na.
+- History: added namibia-dealing-presumption-upheld-2026 (unscored, year precision); related-links on 2021 entry. No 2010s/1980s/1920s-60s source found.
+- Article: namibia-constitutional-challenge-2021 (2021→2023→2026 arc + Swartbooi sidebar).
+- Audit 0/0, history+answers tests pass, build 4881 pages, HTML verified (2 pen tables NAD, 11 history links).

@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 516
 recreational: illegal
 medical: none
-updated: 2026-10-15T00:00:00.000Z
+updated: 2026-10-27
 summary: >-
   Prohibited under a 1971 Act; over 115 g is presumed dealing. Court challenges by cannabis
   activists have failed so far.
@@ -17,65 +17,161 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis (dagga) is prohibited by the apartheid-era Abuse of Dependence-Producing Substances
-      and Rehabilitation Centres Act of 1971. Possession is a crime; small amounts typically bring a
-      fine or a short or suspended sentence. Holding more than 115 g creates a legal presumption of
-      dealing, which the High Court upheld in 2026.
-    sources:
-      - nam1
-      - wiki
-  cultivation:
-    text: >-
-      Section 1 includes cultivation within dealing; section 2(a) prohibits dealing in a prohibited
-      dependence-producing drug or its plant. Cannabis is listed in Schedule Part I.
+      Cannabis (dagga) is prohibited under the 1971 Act. Possession or use draws up to 10
+      years or a R20,000 fine on first conviction, and 15 years or R30,000
+      after.[@act41,unam17] Holding more than 115 g creates a legal presumption of
+      dealing, which the High Court upheld in 2026 when it dismissed Juvani Swartbooi's
+      innocent-until-proven-guilty challenge — Swartbooi himself had drawn 12 months for
+      dealing.[@nam1] Review courts routinely impose far less than the maxima: two years
+      for dealing in 2020,[@mw20] and N$3,000 or 18 months in 2016.[@haf16]
     sources:
       - act41
+      - unam17
+      - nam1
+      - mw20
+      - haf16
+    currency: NAD
+    penalties:
+      - label: Possession or use, first conviction (section 2(b))
+        treatment: criminal
+        term: Possession
+        prison: 10 years
+        fine: 20000
+        note: Rands in the 1971 text
+      - label: Possession or use, second or subsequent conviction (section 2(b))
+        treatment: criminal
+        term: Possession
+        prison: 15 years
+        fine: 30000
+        note: Rands in the 1971 text
+  cultivation:
+    text: >-
+      Section 1 includes cultivation within dealing, and section 2(a) prohibits dealing in
+      a prohibited drug or its plant; cannabis is listed in Schedule Part I.[@act41] A
+      first conviction draws up to 15 years or R30,000, later ones 25 years or
+      R50,000.[@unam17]
+    sources:
+      - act41
+      - unam17
+    currency: NAD
+    penalties:
+      - label: Cultivation as dealing, first conviction (sections 1, 2(a))
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 15 years
+        fine: 30000
+        note: Cultivation counts as dealing; rands in the 1971 text
+      - label: Cultivation as dealing, second or subsequent conviction (sections 1, 2(a))
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 25 years
+        fine: 50000
+        note: Rands in the 1971 text
   enforcement:
     text: >-
-      Cannabis accounts for most drug arrests. Ganja Users of Namibia and the Rastafari United Front
-      have marched and sued to have the 1971 Act struck down, so far without success.
+      Cannabis accounts for most drug arrests: the March 2025 police statement counted 160
+      drug suspects (151 of them Namibian) and valued the cannabis seized at about N$3.1
+      million out of N$3.5 million total.[@newera25] Ganja Users of Namibia and the
+      Rastafari United Front have marched and sued to strike the 1971 Act down, so far
+      without success: the 2021 challenge was dismissed on prematurity grounds in July
+      2026, and the 115 g presumption survived a separate 2026 attack.[@nam2,nam26,nam1]
     sources:
+      - newera25
       - nam2
+      - nam26
       - nam1
   sharing:
     text: >-
-      The Act’s definitions extend dealing to supply and sale to disposal without payment. Section
-      2(a) therefore reaches unpaid transfers; the 2006 bill is not used here as an enacted penalty
-      tariff.
+      Section 1's dealing definition reaches supply, sale and even disposal without
+      payment, so section 2(a) punishes unpaid transfers as dealing — up to 15 years or
+      R30,000 on first conviction, 25 years or R50,000 after.[@act41,unam17]
     sources:
       - act41
+      - unam17
   consumption:
     text: >-
-      Section 2(b) expressly criminalises use as well as possession of a prohibited
-      dependence-producing drug or plant.
+      Section 2(b) expressly criminalises use as well as possession of a prohibited drug
+      or plant: up to 10 years or R20,000 on first conviction.[@act41,unam17]
     sources:
       - act41
+      - unam17
   access:
     text: >-
-      No recreational supply route. Sections 4–5 preserve specified medicine-related provisions but
-      do not establish an ordinary cannabis supply service.
+      No recreational supply route exists. Sections 4–5 preserve specified
+      medicine-related provisions but do not establish an ordinary cannabis supply
+      service.[@act41]
     sources:
       - act41
 context:
   production:
     status: none
-    text: None.
-    sources:
-      - wiki
-  products:
-    text: None.
-    sources:
-      - wiki
-  medical:
-    text: No medical cannabis.
-    sources:
-      - wiki
-  consequences:
     text: >-
-      Section 8 provides forfeiture of drugs, plants and specified property connected with an
-      offence, subject to the Act’s safeguards for other interests.
+      No licensed production operates: the 1971 Act criminalises cultivation and
+      production, and reform petitions — including a 2020 petition to parliament by
+      cannabis and hemp groups — have not changed the law.[@act41,zenna]
     sources:
       - act41
+      - zenna
+  recreational:
+    text: >-
+      Recreational cannabis is fully prohibited: the 1971 Act criminalises possessing or
+      using a prohibited dependence-producing drug or plant, and cannabis (dagga) — whole
+      plant, portions and products — sits in Schedule Part I.[@act41] Reform has come
+      through the courts and lost: Ganja Users of Namibia and the Rastafari United Front
+      sued in August 2021, calling the ban irrational, outdated and partly
+      racist;[@nam2] their leader Brian Jaftha was jailed for two years for possession
+      in October 2023;[@jaf23] and in July 2026 Judge Claasen upheld the government's
+      special plea, holding cannabis policy is for the executive and legislature while
+      the Law Reform and Development Commission reviews the law.[@nam26]
+    sources:
+      - act41
+      - nam2
+      - jaf23
+      - nam26
+  hemp:
+    status: none
+    text: >-
+      No hemp exception operates: "Cannabis (Dagga) and the whole plant or any portion or
+      product thereof" is prohibited, and only processed seed products with almost no THC
+      and no whole seeds are exempt under the 2008 medicines regulations.[@act41,gn178]
+    sources:
+      - act41
+      - gn178
+  medical:
+    text: >-
+      No medical cannabis: cannabis remains illegal for medical use with no legal
+      framework. Only synthetic THC (dronabinol) may be prescribed under tight
+      restriction, with no domestic supply or dispensary network.[@zenna]
+    sources:
+      - zenna
+  black_market:
+    text: >-
+      Cannabis dominates drug seizures: the March 2025 police statement valued seized
+      cannabis at about N$3.1 million out of N$3.5 million total.[@newera25] The
+      statement prints the cannabis weight as 312,560 kilogrammes, which on its own
+      valuation would price cannabis at ten Namibian dollars a kilogram, so the unit is
+      probably grams.[@newera25]
+    sources:
+      - newera25
+  arrests:
+    text: >-
+      The Namibian Police's media statement for March 2025 counted 160 suspects arrested
+      for drugs that month, 151 of them Namibian, and valued the cannabis seized at about
+      3.1 million Namibian dollars out of a total of over 3.5 million. The statement
+      prints the cannabis weight as 312,560 kilogrammes, which on its own valuation would
+      price cannabis at ten Namibian dollars a kilogram, so the unit is probably
+      grams.[@newera25]
+    sources:
+      - newera25
+  consequences:
+    text: >-
+      Section 8 provides forfeiture of drugs, plants and specified property connected with
+      an offence, subject to the Act's safeguards for other interests. Repeat convictions
+      raise every tariff: dealing goes from 15 to 25 years, possession from 10 to
+      15.[@act41,unam17]
+    sources:
+      - act41
+      - unam17
   planting:
     seeds: illegal
     seeds_trade: banned
@@ -85,48 +181,61 @@ context:
       The 1971 Act lists as a prohibited dependence-producing drug "Cannabis (Dagga) and the whole
       plant or any portion or product thereof", which takes in seed and cuttings alike. The 2008
       medicines regulations exempt only processed products made from cannabis seed that contain
-      almost no THC and no whole seeds.
+      almost no THC and no whole seeds.[@act41,gn178]
     sources:
       - act41
       - gn178
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      No cannabis clubs are known, and the law leaves no room for them: growing cannabis
+      and supplying it to another person are both prohibited.[@act41]
     sources:
-      - wiki
+      - act41
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession is a crime under the Abuse of
-      Dependence-Producing Substances and Rehabilitation Centres Act of 1971; small amounts
-      typically bring a fine or a short or suspended sentence.
+      There is no legal recreational supply for anyone: possession is a crime under the
+      1971 Act.[@act41] Medical visitors have no route either. Namibia does not recognise
+      foreign medical cannabis prescriptions — bringing cannabis in any form, including
+      CBD, hemp oil or edibles, is illegal — and while synthetic THC may be prescribed,
+      there is no supply or dispensary network for a tourist to use.[@zenna]
     sources:
-      - nam1
-      - wiki
+      - act41
+      - zenna
   driving:
     status: impairment
     text: >-
       The published Road Traffic and Transport Act section 82(1) prohibits driving a vehicle on a
-      public road while under the influence of a drug having a narcotic effect. It also covers
-      occupying the driver’s seat of a motor vehicle with its engine running. This is a
+      public road while under the influence of a drug having a narcotic effect.[@traffic2008]
+      It also covers
+      occupying the driver's seat of a motor vehicle with its engine running.[@traffic2008] This is a
       drug-influence offence; the separate blood-alcohol and breath-alcohol provisions do not
-      establish a cannabis concentration limit. The available NamibLII edition is dated 9 December
+      establish a cannabis concentration limit.[@traffic2008] The available NamibLII edition is dated 9 December
       2008, so it is a qualified statutory baseline rather than certification of all current
-      amendments. A current cannabis fine, prison ceiling, licence-ban tariff and drug-specific
-      sampling or refusal procedure were not established in this review.
+      amendments.[@traffic2008] A current cannabis fine, prison ceiling, licence-ban tariff and drug-specific
+      sampling or refusal procedure were not established in this review.[@traffic2008]
     sources:
       - traffic2008
-  arrests:
+  culture:
     text: >-
-      The Namibian Police's media statement for March 2025 counted 160 suspects arrested for drugs
-      that month, 151 of them Namibian, and valued the cannabis seized at about 3.1 million Namibian
-      dollars out of a total of over 3.5 million. The statement prints the cannabis weight as
-      312,560 kilogrammes, which on its own valuation would price cannabis at ten Namibian dollars a
-      kilogram, so the unit is probably grams.
+      Dagga is the southern African word for cannabis, and its origin is disputed. In the
+      1950s a German missionary in what is now Namibia guessed it came from the Arabic
+      dukhan (smoke), taken via Khoikhoi — a derivation reported with no historical,
+      linguistic or other evidence supplied.[@duvall19] Travellers carried dagga north into
+      Namibia into the 1880s; it also arrived from the east and from Angola, where
+      Ovambo speakers introduced cannabis, tobacco and pipes to Herero
+      speakers.[@duvall19] Herero keeps a dedicated word for the water pipe:
+      onyungu.[@duvall19] The word survived into the statute book: the
+      [1971 Act](/history/namibia-south-african-act-1971/) still calls it "Cannabis
+      (Dagga)".[@act41]
     sources:
-      - newera25
+      - duvall19
+      - act41
+answers:
+  buy:
+    answer: no
+    text: No patient or adult-use purchase route verified
 sources:
   traffic2008:
     title: NamibLII — Road Traffic and Transport Act 22 of 1999, edition dated 9 December 2008
@@ -140,25 +249,73 @@ sources:
       1971), Schedule Part I (Namibia Legal Information Institute)
     url: https://namiblii.org/akn/na/act/1971/41/eng@1986-01-01
     locator: >-
-      Sections 1–2, 4–5 and 8, and Schedule Part I; annotated Namibian consolidation, not the South
+      Sections 1–2 offences and tariffs, 4–5 medicine provisions, 8 forfeiture, 10
+      presumptions, Schedule Part I; annotated Namibian consolidation, not the South
       African replacement law
   gn178:
     title: >-
       Regulations relating to Medicines and Related Substances, Government Notice 178 of 2008
       (Namibia Legal Information Institute)
     url: https://namiblii.org/akn/na/act/gn/2008/178/eng@2008-07-25
-  wiki:
-    title: Wikipedia — Cannabis in Namibia
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Namibia
+  unam17:
+    title: "University of Namibia — LL.M. thesis on drug offences under Act 41 of 1971 (April 2017)"
+    url: https://repository.unam.edu.na/server/api/core/bitstreams/2221ac39-e683-445d-8e2e-a977f80a80be/content
+    locator: >-
+      Quotes sections 2–3 verbatim: s2(a) dealing R30,000/15 years first, R50,000/25 years
+      after; s2(b) possession/use R20,000/10 years first, R30,000/15 years after; thesis PDF
+      read via pdftotext
   nam1:
     title: >-
       The Namibian — High Court rejects bid to declare cannabis possession law unconstitutional
       (2026)
     url: >-
       https://www.namibian.com.na/high-court-rejects-bid-to-declare-cannabis-possession-law-unconstitutional/
+    locator: >-
+      Swartbooi; 12 months in Lüderitz 2021; s10 115 g presumption challenged March 2022;
+      DJP Prinsloo dismissal; prosecution must prove 115 g beyond reasonable doubt
+  nam26:
+    title: "The Namibian — Attempt to legalise cannabis fails in High Court (12 July 2026)"
+    url: https://www.namibian.com.na/attempt-to-legalise-cannabis-fails-in-high-court/
+    locator: >-
+      Judge Claasen; government special plea upheld; LRDC review; polycentricity; 2021
+      Jaftha/Ndungula claim details; Amoomo
   nam2:
     title: The Namibian — Lawsuit filed to legalise dagga
     url: https://www.namibian.com.na/lawsuit-filed-to-legalise-dagga/
+    locator: >-
+      Amoomo files for Jaftha (2 matters) and Ndungula (8 cases); dignity, equality,
+      privacy, culture, religion; racist-agenda claim
+  jaf23:
+    title: "Namibian Sun — Cannabis activist jailed (18 Oct 2023)"
+    url: https://www.namibiansun.com/crime/cannabis-activist-jailed2023-10-18
+    locator: >-
+      Jaftha two years Monday; arrested five years earlier; untested material, deceased
+      investigating officer; Amoomo free representation; amnesty and expungement claims
   newera25:
     title: New Era — Police seize drugs worth N$3.5 million in March 2025 (16 April 2025)
     url: https://neweralive.na/?p=341887
+  mw20:
+    title: "S v Mwatongwe [2020] NAHCNLD 88 (20 July 2020)"
+    url: https://namiblii.org/akn/na/judgment/nahcnld/2020/88/eng@2020-07-20/source.pdf
+    locator: s2(a) dealing in cannabis, two years' imprisonment
+  haf16:
+    title: "S v Hafeni [2017] NAHCNLD 50 (13 June 2017)"
+    url: https://namiblii.org/akn/na/judgment/nahcnld/2017/50/eng@2017-06-13/source.pdf
+    locator: s2(a) dealing in cannabis, N$3,000 or 18 months (sentenced Dec 2016)
+  zenna:
+    title: "ZennJet — Namibia RED: medical cannabis travel guide (Aug 2025, PDF)"
+    url: https://zennjet.com/wp-content/uploads/2025/08/119-NAMIBIA-RED.pdf
+    locator: >-
+      Illegal for medical and recreational use; no medical framework; dronabinol only, no
+      supply; foreign prescriptions (incl. CBD/hemp oil/edibles) not recognised; 2020
+      CHAN/GUN/RUF petition failed
+  duvall19:
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: >-
+      Dagga/dukan etymology debate (1950s missionary, no evidence); dagga carried north
+      into Namibia into the 1880s, plus east and Angola/Ovambo-Herero routes; Herero
+      onyungu water-pipe word; read in the local PDF
