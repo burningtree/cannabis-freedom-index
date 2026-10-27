@@ -8,6 +8,7 @@ import fontDisplayItalic from "@fontsource/instrument-serif/files/instrument-ser
 import Leaf from "../components/Leaf.astro";
 import { Icon } from "astro-icon/components";
 import { SEARCH_ICONS, RESULT_KIND_ICONS } from "../lib/search-icons.js";
+import { build } from "../lib/build-info.js";
 
 // `seoTitle` replaces the whole <title> (search-result wording); `jsonld` is one schema.org
 // object or a list of them; `type` is the Open Graph type of the page.
@@ -126,9 +127,12 @@ const schemas = jsonld ? [jsonld].flat() : [];
   </dialog>
 
   <footer class="footer">
+    <div class="footer-main">
     <p>Cannabis Freedom Index · Informational only, not legal advice · Map data © Natural Earth</p>
     <p class="footer-links"><a href={`${base}about/`}>About</a> · <a href={`${base}sources/`}>Sources</a> · <a href={`${base}glossary/`}>Glossary</a> · <a href={`${base}changelog/`}>Changelog</a> · <a href={`${base}rss.xml`}>RSS</a> · <a href={`${base}data/`}>Download the data</a> · <a href={`${base}llms.txt`} title="A plain-text guide to this site for language models">For AI: llms.txt</a> · <a href={`${base}data/#licence`}>Licence: data CC BY 4.0, code MIT</a></p>
     <p>Open source — the scores, explanations and code are on <a href={repo} target="_blank" rel="noopener noreferrer">GitHub</a>. Spotted a mistake or a law that changed? <a href={`${repo}/issues`} target="_blank" rel="noopener noreferrer">Open an issue</a> or send a pull request.</p>
+    </div>
+    <p class="footer-build">{build.short && <>Build <a href={`${repo}/commit/${build.sha}`} target="_blank" rel="noopener noreferrer" title="The commit this site was built from">{build.short}</a> · </>}<time datetime={build.date}>{build.label}</time></p>
   </footer>
 
   <script is:inline>

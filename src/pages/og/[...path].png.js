@@ -97,7 +97,8 @@ for (const c of places) {
   for (const sub of subunitsOf(c.id)?.units ?? []) cards[`country/${c.slug}/${sub.id}`] = countryCard(c, sub);
 }
 
-export const getStaticPaths = () => Object.entries(cards).map(([path, card]) => ({ params: { path }, props: { card } }));
+// `npm run build:quick` (SKIP_OG=1) draws no cards, to check a small change fast; the deploy always draws them
+export const getStaticPaths = () => process.env.SKIP_OG ? [] : Object.entries(cards).map(([path, card]) => ({ params: { path }, props: { card } }));
 
 const draw = async ([kind, props]) => kind === "culture" ? renderOg(kind, { ...props, photo: await photoOf(props.photo.file, props.photo.fit) })
   : kind === "exhibition" ? renderOg(kind, { ...props, photo: await collageOf(props.photo.collage, 480, 630) })

@@ -1147,6 +1147,11 @@ tbody tr:hover .cname { text-decoration: underline; text-underline-offset: 4px; 
 .answers li, .answers a { border-radius: 0; }
 
 .footer { text-align: left; font-size: 10.5px; padding: 28px clamp(16px, 4vw, 40px) 48px; margin-top: clamp(64px, 9vw, 120px); border-top: 1px solid var(--text); }
+/* the build stamp (commit and date) sits on the right, under the rest on a phone */
+.footer { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px 32px; flex-wrap: wrap; }
+.footer-main { flex: 1 1 520px; min-width: 0; }
+.footer .footer-build { margin: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.footer-build a { font-family: var(--mono); }
 
 /* ══ Country profile ═════════════════════════════════════════════════════════
    Three parts: a masthead (name, verdict, one big number, five plain answers), a rail of

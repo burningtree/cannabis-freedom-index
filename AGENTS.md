@@ -14,4 +14,4 @@ cannabis law (`changes.yaml`, `articles/`) and a cultural atlas (`culture/`), bu
 - Others work here at the same time: check `git status` first, don't touch files with someone
   else's uncommitted changes, and commit only your own files.
 - Don't start dev or preview servers; check with `npm run build` (one build at a time) and the
-  HTML in `dist/`.
+  HTML in `dist/`. For a small frontend change, `npm run build:quick` skips the preview images.
