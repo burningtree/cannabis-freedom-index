@@ -25,6 +25,13 @@ segments:
     sources:
       - law7
       - law2002
+    currency: LYD
+    penalties:
+      - label: Personal use, Article 37
+        treatment: criminal
+        fine_min: 1000
+        fine_max: 5000
+        repeat: treatment instead (six months to a year in a clinic)
   cultivation:
     text: >-
       Article 30 bans growing, holding or trading in the Table 5 plants, seeds included, except for
@@ -47,6 +54,16 @@ segments:
     sources:
       - law7
       - law2002
+    currency: LYD
+    penalties:
+      - label: Supply for payment, Article 35
+        treatment: criminal
+        prison: 10 years
+        note: Life imprisonment available
+      - label: Supply without payment, Article 35
+        treatment: criminal
+        fine_min: 2000
+        fine_max: 5000
   consumption:
     text: >-
       Article 37 punishes actually using drugs with prison and a fine of 1,000 to 5,000 dinars,
@@ -60,6 +77,14 @@ segments:
     sources:
       - law7
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Personal use carries prison and a 1,000 to 5,000 dinar
+      fine, and any one-off act, however small, can be treated as trafficking under the 2002
+      amendment.[@law7,law2002]
+    sources:
+      - law7
+      - law2002
   death_penalty:
     text: >-
       Article 34 of Law 7 of 1990 punishes trading in drugs, or growing or importing Table 5 plants
@@ -67,16 +92,27 @@ context:
       dinars.
     sources:
       - law7
+    currency: LYD
+    penalties:
+      - label: Trading or growing for trade, Article 34
+        treatment: criminal
+        death: true
+        fine_min: 10000
+        fine_max: 50000
+        note: Life imprisonment as alternative
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    text: >-
+      No lawful cannabis production. Planting, holding and trading the listed plants is banned
+      except for licensed medical or scientific purposes.
+    sources:
+      - law7
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No medical cannabis programme beyond licensed scientific or medical handling under the
+      Law 7 licensing system; none exists for personal use.
+    sources:
+      - law7
   consequences:
     text: The retained sources do not establish collateral consequences beyond the penalties described above.
     sources: []
