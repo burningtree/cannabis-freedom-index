@@ -1075,6 +1075,14 @@ restriction, and the Norway "1965 tinctures" entry became Norway's first cannabi
 
 ## Reporting back
 
+An [editorial review of issue #200](research/issue-200-news-review-2026-10-27.md)
+on 27 October 2026 adds nine history entries, three articles and context across
+eight profiles. Kenya's existing Rastafari ruling gains the full judgment; Dutch
+and Swiss study findings retain their causal limits, Vermont's event sales remain
+separate from consumption, and Zimbabwe's producer changes are checked against the
+original gazette. The conditional Lesotho lead is excluded pending its committee
+report. All scores and historical score vectors are preserved.
+
 A [Luxembourg, Switzerland and Taiwan extension](research/profile-extension-lu-ch-tw-2026-10-27.md)
 on 27 October 2026 adds seven context sections, four penalty tables, two articles and
 two history entries, and corrects five existing history records. It separates Luxembourg's

@@ -14,9 +14,6 @@ sources:
     authors: [Horace Campbell]
     year: 1987
     locator: pp. 163–166 (cited via Price 2000)
-  - title: Wikipedia — Cannabis in Grenada
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Grenada
-    locator: History section; Hamid 1998 on the growers' role in the coup, Steele 2003 on the clampdown
 ---
 
 Grenada's Rastafarians helped make the 1979 revolution and were then jailed by it. They joined the New Jewel Movement from the start, served in its army and built its schools and roads — and within two years many were detained without trial for growing the herb.[@1]
