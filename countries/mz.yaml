@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 508
 recreational: illegal
 medical: none
-updated: 2026-10-21
+updated: 2026-10-27
 summary: >-
   Use and personal possession carry up to two years plus a fine, with possible waivers for
   occasional users. More than three days' personal supply brings a one-year minimum.
@@ -17,99 +17,209 @@ scores:
 segments:
   possession:
     text: >-
-      Law 3/97 punishes use and personal possession with up to two years in prison plus a fine.
-      Above three days' average personal supply, the law sets a one-year minimum. Courts may
-      waive punishment for occasional users under Article 55(4). A separate exemption for
-      minors requires no repeat offence, a promise to stop and acceptance of treatment if dependent.
+      Law 3/97 punishes use and personal possession with up to two years in prison plus
+      a fine.[@law97] Above three days' average personal supply, the law sets a
+      one-year minimum.[@law97] Courts may waive punishment for occasional users under
+      Article 55(4), while a separate exemption for minors requires no repeat offence,
+      a promise to stop and acceptance of treatment if dependent.[@law97]
     sources:
       - law97
+    penalties:
+      - label: Personal use or holding (article 55(1))
+        treatment: criminal
+        term: Drug use
+        prison: 2 years
+        note: Plus a fine. Waiver and treatment possible
+      - label: Above three days' average personal supply (article 55(2))
+        treatment: criminal
+        term: Drug use
+        prison_min: 1 year
+        note: One-year minimum
   cultivation:
     text: >-
-      Unauthorised cannabis cultivation carries three days to one year in prison under Article 34.
-      Growing for personal use carries up to one year or a fine under Article 55(3), with possible
-      waivers for occasional users.
+      Unauthorised cannabis cultivation carries three days to one year in prison under
+      Article 34.[@law97] Growing for personal use carries up to one year or a fine
+      under Article 55(3), with possible waivers for occasional users.[@law97]
     sources:
       - law97
+    penalties:
+      - label: Unauthorised cultivation (article 34)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 3 days
+        prison: 1 year
+        note: Waiver possible for occasional users
+      - label: Growing for personal use (article 55(3))
+        treatment: criminal
+        term: Personal use
+        prison: 1 year
+        note: Or a fine. Waiver possible for occasional users
   enforcement:
     text: >-
-      Legal researchers argue criminalising use is counter-productive; in practice arrests are
-      selective — a well-known rapper critical of the government was detained over a small amount of
-      suruma in 2011.
-    sources:
-      - ref
-      - gv
-  sharing:
-    text: >-
-      Giving or selling cannabis without authority falls within trafficking, ordinarily punished
-      with sixteen to twenty years. Small-scale or substantially less serious cases can receive
-      two to eight years plus a fine. In May 2024 the Supreme Court applied that lesser offence
-      to a seller with 590 grams, reducing his sentence from seventeen years to six.
+      Courts may waive punishment for occasional users and suspend sentences on
+      treatment conditions.[@law97] In May 2024 the Supreme Court applied the lesser
+      Article 36 offence to a seller with 590 grams gross, cutting his sentence from
+      seventeen years to six years plus a fine, as [that
+      case](/history/mozambique-cannabis-seller-sentence-reduced-2024/)
+      records.[@court24]
     sources:
       - law97
       - court24
-  consumption:
-    text: Consumption is itself criminalised under Article 55.
+  sharing:
+    text: >-
+      Giving or selling cannabis without authority falls within trafficking,
+      ordinarily punished with sixteen to twenty years.[@law97] Small-scale or
+      substantially less serious cases can receive two to eight years plus a fine under
+      Article 36; in May 2024 the Supreme Court applied that lesser offence to a seller
+      with 590 grams, reducing his sentence from seventeen years to
+      six.[@law97,court24]
     sources:
       - law97
+      - court24
+    currency: MZN
+    penalties:
+      - label: Trafficking (article 33)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 16 years
+        prison: 20 years
+        note: Plus a fine
+      - label: Small-scale trafficking (article 36)
+        treatment: criminal
+        term: Small-scale trafficking
+        prison_min: 2 years
+        prison: 8 years
+        fine_min: 10000
+        fine: 30000
+        note: Law states 10–30 million pre-2006 meticais
+  consumption:
+    text: >-
+      Consumption is itself criminalised under Article 55, which distinguishes
+      personal use (up to two years plus a fine) from supply above three days'
+      average, carrying a one-year minimum.[@law97]
+    sources:
+      - law97
+    penalties:
+      - label: Personal use (article 55(1))
+        treatment: criminal
+        term: Drug use
+        prison: 2 years
+        note: Plus a fine. Waiver and treatment possible
+      - label: Above three days' average personal supply (article 55(2))
+        treatment: criminal
+        term: Drug use
+        prison_min: 1 year
+        note: One-year minimum
   access:
     text: >-
-      None: Law 3/97 punishes use and possession of drugs with prison.
+      There is no recreational route: unauthorised growing, handling and use are all
+      offences under Law 3/97.[@law97]
     sources:
-      - ref
+      - law97
 context:
+  recreational:
+    text: >-
+      Cannabis is prohibited, but personal use and holding fall under the lighter
+      Article 55 bands, with waiver and treatment routes for occasional users and
+      minors.[@law97] Supply draws the heavy trafficking tariffs, though courts apply
+      the lesser Article 36 offence to small-scale sellers, as the 2024 Supreme Court
+      cut from seventeen to six years for 590 grams shows.[@law97,court24]
+    sources:
+      - law97
+      - court24
+  medical:
+    text: >-
+      The sources reviewed establish no operating medical cannabis programme:
+      treatment provisions address dependent users, not patient supply.[@law97]
+    sources:
+      - law97
+  hemp:
+    status: none
+    text: >-
+      No hemp exception operates: the law punishes unauthorised growing, production
+      and manufacture, with an exception only for authorised industrial, scientific
+      and therapeutic activities.[@law97] No THC line for hemp and no general fibre
+      or food regime was found in the provisions reviewed.[@law97]
+    sources:
+      - law97
   production:
     status: none
-    text: None.
+    text: >-
+      No licensed cannabis production was found: the law punishes unauthorised
+      production and manufacture, excepting only authorised industrial, scientific
+      and therapeutic activities.[@law97]
     sources:
-      - wiki
-  products:
-    text: None.
-    sources:
-      - wiki
-  medical:
-    text: No medical cannabis.
-    sources:
-      - wiki
+      - law97
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction brings a criminal record and, for trafficking, long prison terms
+      plus fines.[@law97,ref] Courts may suspend sentences on treatment conditions,
+      and the Supreme Court reduces excessive trafficking sentences on appeal: seventeen
+      years to six, plus a fine, for 590 grams in 2024.[@law97,court24]
     sources:
+      - law97
       - ref
+      - court24
+  planting:
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      Article 34 of Law 3/97 punishes unauthorised cannabis cultivation; the
+      provisions reviewed do not mention seeds.[@law97] Growing for personal use
+      falls under the lighter Article 55(3) tier.[@law97]
+    sources:
+      - law97
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      No cannabis clubs are known, and the law leaves no room for them: growing
+      cannabis and supplying it to another person are both prohibited.[@law97]
     sources:
-      - wiki
-      - ref
+      - law97
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Use and personal possession carry up to
-      two years plus a fine, with a one-year minimum above three days' personal supply. Courts
-      may waive punishment for occasional users.
+      There is no legal recreational supply for anyone.[@law97] Use and personal
+      possession carry up to two years plus a fine, with a one-year minimum above
+      three days' personal supply.[@law97]
     sources:
       - law97
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 1,856 kg of herbal
-      cannabis seized in 2024, against 1,853 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      Figures reported by the government to the UN drugs office record 1,856 kg of
+      herbal cannabis seized in 2024, against 1,853 kg in 2023.[@unodc_szr] The UN
+      publishes them as kilogram equivalents, and countries count seizures
+      differently, so the figures are not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
   arrests:
     text: >-
-      The annual report of the Central Office for Drug Prevention and Combat, presented by
-      the public prosecutor's office in Maputo, counted at least 732 people detained for
-      drug use and trafficking in 2024, 229 fewer than in 2023; Sofala province had the
-      most, 199. Seizures of cannabis were almost unchanged at 1,856 kg, against 1,853 kg
-      the year before, with 44 kg of hashish.
+      The annual report of the Central Office for Drug Prevention and Combat counted
+      at least 732 people detained for drug use and trafficking in 2024, 229 fewer
+      than in 2023; Sofala province had the most, 199.[@rtp25] Seizures of cannabis
+      were almost unchanged at 1,856 kg, against 1,853 kg the year before, with 44 kg
+      of hashish.[@rtp25]
     sources:
       - rtp25
+  culture:
+    text: >-
+      Across the border the plant is mbanje, but in Mozambique it is suruma: Duvall
+      records the name in an 1895 Quelimane wordlist, in the colonial law that banned
+      it in 1914, and among Ndau speakers near the Zimbabwe border in
+      2005.[@duvall19] The atlas traces the word in
+      [mbanje](/culture/language/mbanje/), whose history runs from [an 1851 Sierra
+      Leone account](/history/sierra-leone-cannabis-long-in-use-1851/) of seeds
+      brought by recaptives to the Kasai [Bena Riamba](/culture/traditions/bena-riamba/)
+      movement.[@duvall19] Smoking itself has deep local roots: the atlas keeps an
+      1800 engraving of a Delagoa Bay water-pipe smoker in [the smoker's
+      cough](/culture/traditions/the-smokers-cough/).[@duvall19]
+    sources:
+      - duvall19
 sources:
   law97:
-    title: "Mozambique — Law 3/97, original gazette, Articles 33–36 and 55–59"
+    title: "Mozambique — Law 3/97 of 13 March 1997, original gazette (Articles 33–36, 55–59 read via OCR in the October 2026 pass and reconfirmed here)"
     url: https://reformar.co.mz/documentos-diversos/lei-3-97-de-13-de-marco-criacao-da-lei-de-psicotropicos-e-estupefacientes.pdf/@@download/file/Lei%203.97%20de%2013%20de%20Mar%C3%A7o.pdf
   court24:
     title: "Mozambique Supreme Court — Raiva Rafael Meponda, appeal 31/2022-P, 2 May 2024"
@@ -120,15 +230,19 @@ sources:
       (PDF)
     url: >-
       https://reformar.co.mz/publicacoes/criminalizacao-do-consumo-de-droga-em-mocambique-artigo-23-04-2023-final.pdf/@@download/file/As%20Problem%C3%A1ticas%20da%20Criminaliza%C3%A7%C3%A3o%20do%20Consumo%20de%20Drogas%20Il%C3%ADcitas%20Em%20Mo%C3%A7ambique.pdf
-  wiki:
-    title: Wikipedia — Cannabis in Mozambique
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Mozambique
-  gv:
-    title: "Global Voices — Mozambique: behind the detention of MC Azagaia (2011)"
-    url: https://globalvoices.org/2011/08/04/mozambique-behind-the-detention-of-mc-azagaia/
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
   rtp25:
     title: "RTP Notícias (Lusa) — Moçambique apreendeu droga avaliada em 22,5 milhões de euros em 2024"
     url: https://www.rtp.pt/noticias/mundo/mocambique-apreendeu-droga-avaliada-em-225-milhoes-de-euros-em-2024_n1656793
+  duvall19:
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: >-
+      ch. 4 (suruma in the 1895 Quelimane wordlist, in the 1914 colonial ban, and
+      among Ndau speakers in 2005; read in the local PDF); ch. 6, printed pp.
+      112–119 (Bena Riamba)

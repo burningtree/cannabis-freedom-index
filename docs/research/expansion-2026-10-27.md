@@ -31,3 +31,17 @@ heritage for ci/sn/tg/ml). Prior groundwork: `history-mali-gap-2026-10-21`,
 | Togo (tg) | recreational + hemp + arrests + driving sections, products folded, 2015 code + 1998 law fully verified by own reads (incl. art 268 drug-driving), 4 penalty tables, citations + links throughout, 2026 transit-corridor report read | 1920s–1950s + 1980s + 2000s still empty; first-restriction estimate article-less by choice | |
 | Mali (ml) | recreational + hemp sections, products folded, 2001 law penalty provisions verified in own gazette read (arts 94–95/98/137–138), hemp 2017–2020 saga re-read in both Maliweb pieces, 4 penalty tables, citations + links throughout | 1930s–1950s still empty; no driving/arrests sections; nothing new since 2020 found | |
 | Guinea-Bissau (gw) | recreational + hemp sections, products folded, Decree-Law 2-B/93 verified in own Portuguese read (arts 3/20–22), 4 prison-only penalty tables (no fine figures in law), citations + history links throughout | 1920s–1960s + 1980s + 2000s–2020s still empty (cocaine-dominated news, nothing cannabis-specific recent); no driving/arrests sections; first-restriction estimate article-less by choice | |
+
+## Batch 3, 27 October 2026: Southern Africa
+
+Chosen from `country-gaps.cjs --rank 25`: Mozambique, Zimbabwe, Malawi, Namibia
+(neighbours; shared SADC history; South Africa skipped as BUSY — another agent is
+reworking its entries and articles). Note: changes.yaml holds that agent's uncommitted
+SA rewrite, so this batch makes no history-entry edits; history additions are deferred.
+
+| Country | Done | Left | Commit |
+|---|---|---|---|
+| Mozambique (mz) | recreational + hemp + culture(mbanje/suruma) sections, products folded, Law 3/97 penalties re-verified (REFORMAR analysis + 2024 Supreme Court judgment read), 4 penalty tables incl. art 36 fine in current meticais, citations + links throughout | 1920s–2000s gaps mostly remain; no driving section; no new history entries (changes.yaml blocked) | |
+| Zimbabwe (zw) | | | |
+| Malawi (mw) | | | |
+| Namibia (na) | | | |
