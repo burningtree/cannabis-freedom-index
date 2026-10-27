@@ -38,6 +38,14 @@ segments:
       - jep22
       - hs
       - p116
+    penalties:
+      - upto: 15 g
+        treatment: criminal
+        note: Parish Hall enquiry; written caution or level 1 fine, not on the criminal record
+      - label: Possession prosecuted in court
+        treatment: criminal
+        prison: 5 years
+        note: Up to five years in prison or a fine
   cultivation:
     text: >-
       Growing cannabis is production of a Class B drug, with up to 14 years in prison or a fine.
@@ -46,6 +54,11 @@ segments:
     sources:
       - mdl
       - hs
+    penalties:
+      - label: Production of a Class B drug
+        treatment: criminal
+        prison: 14 years
+        note: Or a fine; personal cultivation has no exemption
   enforcement:
     text: >-
       Users with small amounts are mostly handled at the Parish Hall with cautions or fines. Class B
@@ -60,6 +73,11 @@ segments:
       law draws no line for giving cannabis to a friend without payment.
     sources:
       - mdl
+    penalties:
+      - label: Supplying or offering to supply a Class B drug
+        treatment: criminal
+        prison: 14 years
+        note: Or a fine; no exception for giving to a friend without payment
   consumption:
     text: >-
       Use is dealt with through the possession offence. In June 2024 the States Assembly rejected
@@ -74,7 +92,25 @@ segments:
       in 2022, roughly 6% of the working population.
     sources:
       - benum
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Total abolition took effect in Jersey with the 2006 Human Rights Order giving effect to the
+      13th Protocol; no cannabis offence carries a capital sentence.[@wikipdp]
+    sources: [wikipdp]
 context:
+  recreational:
+    text: >-
+      There is no lawful recreational supply. Small amounts are usually settled at a Parish Hall
+      enquiry with a written caution or a fine, neither of which appears on the person's
+      criminal record; larger amounts and repeat cases go to court.[@mdl,hs,p116] In June 2024
+      the Assembly rejected decriminalising personal possession and recreational use by 23 votes
+      to 22, and a fresh debate was put off until after the June 2026 election.[@be24,hs]
+    sources:
+      - mdl
+      - hs
+      - p116
+      - be24
   production:
     status: medical
     text: >-
@@ -84,14 +120,6 @@ context:
       earlier shipment to Australia.
     sources:
       - jepship
-  products:
-    text: >-
-      Prescribed medical cannabis is dispensed by pharmacies. Some cannabis
-      extracts, including cannabis oil, are in the same class as heroin; in 2024 the health minister
-      proposed moving cannabinol and its derivatives from Class A to Class B.
-    sources:
-      - benum
-      - be24
   medical:
     text: >-
       Medical cannabis is prescribed privately by doctors, some at cannabis clinics, and patients
@@ -157,3 +185,6 @@ sources:
   wq201:
     title: States Assembly of Jersey — WQ.201/2026, answer tabled 12 October 2026
     url: https://www.statesassembly.je/getattachment/0ca87632-b6c1-4e9c-9d99-80e90eaef827/WQ-201-2026.pdf?ext=.pdf&lang=en-GB
+  wikipdp:
+    title: Wikipedia — Capital punishment in the United Kingdom (Jersey total abolition via the 2006 Human Rights Order, 13th Protocol)
+    url: https://en.m.wikipedia.org/wiki/Capital_punishment_in_the_United_Kingdom
