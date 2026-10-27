@@ -102,3 +102,13 @@ and the official REPROCANN FAQ. All participating physicians require REFEPS
 registration, accredited academic cannabis training and registered digital signature;
 article 7 also requires bilateral informed consent. Removed the any-doctor opening.
 No new diagnosis-list restriction or numerical score change inferred.
+
+## #198 — Greek consumer-side dried hemp prohibition
+
+Read Law 5302/2026 article 43(2), reproduced by Taxheaven, lines naming purchase
+and use by consumers and the industrial-processing exception. The AADE landing
+page itself did not expose the statute text. Profile now names consumer activities,
+keeps dried flower (≤0.3% THC) distinct from food/cosmetics and prescribed medicines,
+and preserves the industrial exception. Existing May 2026 history already described
+buying/using correctly; clarified its title. No unverified criminal tariff inferred.
+No score change: ordinary non-medical consumption remains unlawful in its existing band.

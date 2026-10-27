@@ -412,3 +412,12 @@ test('REPROCANN requires qualified, digitally registered prescribers (#197)', ()
   assert.doesNotMatch(ar, /any doctor/);
   for (const rule of ['REFEPS','accredited academic training','digital signature','bilateral informed consent']) assert.ok(ar.includes(rule),rule);
 });
+
+// Issue #198
+test('Greek dried hemp restrictions cover consumers and preserve product scope (#198)', () => {
+  const gr = country('gr').context.products.text;
+  assert.match(gr, /purchase and use by consumers of dried hemp flower/);
+  assert.match(gr, /industrial-processing exception/);
+  assert.match(gr, /Prescribed pharmaceutical cannabis is regulated separately/);
+  assert.match(events().find(e=>e.id==='greece-hemp-flower-ban-2026').description, /consumers buying or using/);
+});
