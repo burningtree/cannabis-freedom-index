@@ -26,6 +26,11 @@ segments:
     sources:
       - act1994
       - actfull
+    penalties:
+      - label: Personal use, Article 20(1)
+        treatment: criminal
+        prison: 5 years
+        note: Up to five years plus a court-set fine; treatment bar for dependent users who seek help
   cultivation:
     text: >-
       Article 20(1) expressly includes cultivation to extract drugs for personal consumption in the
@@ -43,6 +48,12 @@ segments:
       cases are handled, especially during the current conflict.
     sources:
       - hashishcase
+    currency: SDG
+    penalties:
+      - label: 657.3 g hashish with trafficking intent in 2018
+        treatment: criminal
+        fine: 10000
+        note: Life imprisonment upheld, fine reduced to 10,000 pounds
   sharing:
     text: >-
       Article 16 covers providing narcotics or facilitating access whether paid or unpaid: at least
@@ -51,6 +62,15 @@ segments:
       is not exempt.
     sources:
       - act1994
+    penalties:
+      - label: Supply paid or unpaid, Article 16
+        treatment: criminal
+        prison: 10 years
+        note: At least ten years plus a court-set fine
+      - label: Aggravated supply, Articles 15-17
+        treatment: criminal
+        death: true
+        note: Death or life imprisonment for repeat, minors, schools, or organised-crime cases
   consumption:
     text: >-
       Use itself is prohibited by article 12(2) and punishable under article 20(1) by up to five
@@ -69,6 +89,14 @@ segments:
     sources:
       - actfull
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Personal use carries up to five years plus a court-set
+      fine, while any gift or unpaid supply falls under the minimum-ten-year supply provision and
+      aggravated trafficking can carry death.[@act1994,actfull]
+    sources:
+      - act1994
+      - actfull
   death_penalty:
     text: >-
       The published 1994 Act text distinguishes ordinary and aggravated offences. Article 15 starts
@@ -87,11 +115,6 @@ context:
     sources:
       - dab16
       - dab17
-  products:
-    text: >-
-      Reliable national information about legally available cannabis products was not established by
-      the retained sources.
-    sources: []
   medical:
     text: >-
       Article 12 permits medical and scientific activities under ministerial licence, and article 14
