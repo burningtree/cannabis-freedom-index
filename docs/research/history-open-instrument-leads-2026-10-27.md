@@ -25,6 +25,18 @@
   (Trujillo-era searches return only general histories).
 - Both stay estimates; revisit via French/Spanish legal archives.
 
+## Andorra (decided: keep estimate)
+- Andorra's first Criminal Code dates only to 2005 (Law 9/2005; art. 499
+  minor offence, 500-1,200 euros). No earlier Andorran drug law surfaced;
+  pre-2005 coverage would have been customary or co-princely law, untraced.
+  1925 estimate stands as structural.
+
+## St Vincent 1937 (decided: keep entry as is)
+- E/NL.1948/11 (1947 application order) and E/NL.1956/92 (1955 order),
+  both read: technical extensions of Part V to scheduled synthetics,
+  nothing cannabis-specific beyond the 1947 order already described in
+  the 1937 entry. No new items; 1937 ordinance text still untraced.
+
 ## Austria BGBl 244/1928
 - Blocked again: ALEX bot-wall ("Sicherheitsüberprüfung"), RIS historic
   PDF 404, no secondary with the domestic rules' content. Entry unchanged.
