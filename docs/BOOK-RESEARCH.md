@@ -11,7 +11,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 | [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 15 / 36 | 4 | 17 | 42 | 0 | matches recorded hash |
 | [Cannabis: A History](#booth-cannabis-history-2003) | verified | 1 / 26 | 1 | 24 | 5 | 0 | matches recorded hash |
 | [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 6 | 3 | 11 | 0 | matches recorded hash |
-| [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 2 | 11 | 6 | 0 | matches recorded hash |
+| [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 3 | 10 | 8 | 0 | matches recorded hash |
 | [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 3 | 6 | 55 | 0 | matches recorded hash |
 | [Reefer Wellness: Understanding Cannabis Science, Culture, and Medicine](#kirk-reefer-wellness-2025) | verified | 0 / 8 | 0 | 8 | 0 | 0 | matches recorded hash |
 | [The Emperor Wears No Clothes](#herer-emperor-wears-no-clothes-undated) | verified | 1 / 16 | 1 | 14 | 1 | 0 | matches recorded hash |
@@ -156,14 +156,14 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 - **ID:** `abel-marihuana-first-twelve-thousand-years-1980`
 - **Local file:** `books/Marihuana The First Twelve Thousand Years (Ernest L. Abel (auth.)).pdf`
 - **Last recorded review:** 2026-10-15
-- **Coverage:** Title, copyright and contents examined; selected pp. 214–220 in chapter 12 and pp. 41–43 in chapter 2 read. Other chapter bodies not yet reviewed.
+- **Coverage:** Title, copyright and contents examined; selected pp. 214–220 in chapter 12, pp. 41–43 in chapter 2 and printed p. 102 in chapter 4 read. Other chapter bodies not yet reviewed.
 
 | Chapter / unit | Status | Actually examined | Applied to | Next research |
 |---|---|---|---|---|
 | 1. Cannabis in the Ancient World | indexed_only | — | — | — |
 | 2. Hashish and the Arabs | selected_pages_read | pp. 41–43; printed 42–43 visually inspected (PDF 51–52) | articles/egypt-cafour-cannabis-destruction-1253.md; articles/egypt-cairo-cannabis-destruction-1324.md; articles/egypt-hashish-suppression-1378.md | See docs/research/earliest-ban-articles-2026-10-15.md. Abel’s 1253 date conflicts with the pre-1244 recital in de Sacy’s translated al-Maqrizi. Wider siege/crop-campaign claims need comparison with Rosenthal and the underlying Arabic histories. |
 | 3. Rope and Riches | indexed_only | — | — | — |
-| 4. Cannabis Comes to the New World | indexed_only | — | — | — |
+| 4. Cannabis Comes to the New World | selected_pages_read | pp. 102; printed p. 102 visually inspected (PDF p. 109) | cuba-hemp-trial-1793; guatemala-hemp-introduction-1793 | — |
 | 5. New Uses for the Old Hemp Plant | indexed_only | — | — | — |
 | 6. The Indian Hemp Drug Debate | indexed_only | — | — | — |
 | 7. The African Dagga Cultures | indexed_only | — | — | — |
