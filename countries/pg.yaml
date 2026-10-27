@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 598
 recreational: illegal
 medical: none
-updated: '2026-10-27'
+updated: 2026-10-27
 summary: >-
   Cannabis possession and cultivation are prohibited. The Controlled Substance Act has quantity
   tiers, including up to two years for 10 g or less. A separate Dangerous Drugs Act charge has
@@ -26,10 +26,36 @@ segments:
       forty years and/or K1 million for knowing unauthorised possession or conveyance. It has been
       used in cannabis cases.[@dda2021,dda_case] The Controlled Substance Act says it prevails
       where criminal laws conflict; how that affects a particular charge needs legal assessment.[@csa21]
+      The 2022 regime is traced in the
+      [Controlled Substance Act entry](/history/papua-new-guinea-controlled-substance-act-2022/).
     sources:
       - csa21
       - dda2021
       - dda_case
+    currency: PGK
+    penalties:
+      - label: 10 g or less (Controlled Substance Act, Schedule VII)
+        treatment: criminal
+        term: Possession
+        prison: 2 years
+        fine: 15000
+      - label: Above 10 g but below 2 kg (Schedule VII)
+        treatment: criminal
+        term: Possession
+        prison: 15 years
+        fine: 25000
+      - label: Above 2 kg (Schedule VII)
+        treatment: criminal
+        term: Possession
+        prison_min: 16 years
+        fine: 2000000
+        note: Sixteen years to life; K26,000 to K2 million
+      - label: Knowing unauthorised possession or conveyance (Dangerous Drugs Act s3)
+        treatment: criminal
+        term: Possession
+        prison: 40 years
+        fine: 1000000
+        note: Maximum; separate charging route used for cannabis
   cultivation:
     text: >-
       The Controlled Substance Act prohibits Schedule I cultivation and has quantity tiers of
@@ -41,6 +67,27 @@ segments:
     sources:
       - csa21
       - dda2021
+    currency: PGK
+    penalties:
+      - label: Fewer than five plants (Controlled Substance Act)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 2 years
+      - label: More than five plants
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 15 years
+      - label: More than twenty plants
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 16 years
+        note: Sixteen years to life
+      - label: Knowing unauthorised cultivation (Dangerous Drugs Act s3)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 40 years
+        fine: 1000000
+        note: Maximum; separate charging route
   enforcement:
     text: >-
       Courts use both statutes. A June 2024 report describes a conviction under Dangerous Drugs Act
@@ -56,19 +103,20 @@ segments:
   sharing:
     text: >-
       Facilitating another person's use, whether free or for consideration, carries up to 12 months
-      or K50,000. Selling or distributing for financial or material benefit is trafficking and is
-      punished under the quantity-based Schedule VII tiers.
+      or K50,000.[@controlled] Selling or distributing for financial or material benefit is trafficking and is
+      punished under the quantity-based Schedule VII tiers.[@csa21]
     sources:
       - controlled
+      - csa21
   consumption:
     text: >-
       The Act does not set out a separate simple own-use offence, but consuming cannabis ordinarily
-      requires illegal possession. Possessing and selling consumption implements, facilitating
-      another person's use and inciting use are separate offences.
+      requires illegal possession.[@controlled] Possessing and selling consumption implements, facilitating
+      another person's use and inciting use are separate offences.[@controlled]
     sources:
       - controlled
   access:
-    text: None. Schedule I cannabis has no adult-use or patient-access channel.
+    text: None. Schedule I cannabis has no adult-use or patient-access channel.[@controlled]
     sources:
       - controlled
 context:
@@ -76,37 +124,68 @@ context:
     status: none
     text: >-
       None. The 2023–2027 development plan calls for an industrial-hemp policy framework, but that
-      policy intention did not legalise cultivation. A 2024 National Research Institute study said
-      Papua New Guinea was not yet ready to legalise hemp production.
+      policy intention did not legalise cultivation.[@development_plan] A 2024 National Research Institute study said
+      Papua New Guinea was not yet ready to legalise hemp production.[@hemp_study]
     sources:
-      - controlled
       - development_plan
       - hemp_study
-  products:
-    text: >-
-      Cannabis flower, resin, oil and Cannabis sativa plants are all in Schedule I. Cannabis fibre
-      is excluded from the Act's definition of cannabis, but the plant needed to produce it remains
-      prohibited; there is no general CBD or low-THC exemption.
-    sources:
-      - controlled
   medical:
     text: >-
       No medical-cannabis programme. Schedule I is described as having no medical value, and the
-      Act's prescribed-medication defence applies only to Schedules II–IV.
+      Act's prescribed-medication defence applies only to Schedules II–IV.[@controlled] Cannabis flower,
+      resin, oil and plants are all in Schedule I; fibre is excluded from the definition but the plant
+      needed to produce it remains prohibited, with no general CBD or low-THC exemption.[@controlled]
     sources:
       - controlled
+  recreational:
+    text: >-
+      Recreational cannabis is fully prohibited, with prison the default across both charging
+      routes: up to two years for 10 g or less under the Controlled Substance Act, and up to forty
+      years under the Dangerous Drugs Act route still used for cannabis.[@csa21,dda_case] There is no
+      personal-use allowance, and the tiers are not a guarantee of the only charge.[@csa21]
+    sources:
+      - csa21
+      - dda_case
+  hemp:
+    status: none
+    text: >-
+      No hemp exception operates: the plant needed to produce fibre remains prohibited, and a 2024
+      National Research Institute study said the country was not yet ready to legalise hemp
+      production, despite the development plan's call for a policy framework.[@hemp_study,development_plan]
+    sources:
+      - hemp_study
+      - development_plan
   consequences:
     text: >-
       A conviction produces a criminal record and may bring a fine, imprisonment or both. Courts
       sometimes make a long default prison term the alternative to a fine, as in the 2026 order of
-      K30,000 or 20 years for 4.7 kg.
+      K30,000 or 20 years for 4.7 kg.[@police]
     sources:
+      - police
+  black_market:
+    text: >-
+      Reported cases run to bulk weight: twenty-five years for 14–20 kg in 2025, and K30,000 or
+      twenty years for 4.7 kg in 2026.[@long_case,police] These are enforcement outcomes, not a
+      measure of the trade's size, on which no verified figures were found.
+    sources:
+      - long_case
+      - police
+  arrests:
+    text: >-
+      Sentences run from street level to decades: eighteen months for nine packets in 2023,[@small_case]
+      K15,000 (three years in default) for 1.3 kg in 2024,[@dda_case] twenty-five years for 14–20 kg
+      in 2025,[@long_case] and K30,000 or twenty years for 4.7 kg in 2026.[@police] Maximum penalties
+      are not typical sentences.
+    sources:
+      - small_case
+      - dda_case
+      - long_case
       - police
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@controlled]
     sources:
       - controlled
   planting:
@@ -119,13 +198,13 @@ context:
       including the flowering or fruiting top, leaf, seed, stalk or any other part. A
       controlled plant is a growing cannabis plant or a cutting of one, and the penalty scale
       counts plants, seedlings, cuttings and saplings together: five or more is an indictable
-      offence.
+      offence.[@csa21]
     sources:
       - csa21
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply. Cannabis possession can lead to prison under either
+      There is no legal recreational supply.[@csa21] Cannabis possession can lead to prison under either
       reported charging route: the Controlled Substance Act's quantity tiers include up to two
       years for 10 g or less, while Dangerous Drugs Act section 3 has a forty-year/K1 million
       maximum and has been used for cannabis possession. The former Act's conflict rule requires
@@ -139,20 +218,24 @@ context:
     text: >-
       Road Traffic Act section 42 criminalises driving on a public street under the
       influence of alcohol or a drug, including occupying the driving seat and trying
-      to put the vehicle in motion. A first offence carries up to K5,000 or six months'
-      imprisonment or both; repetition raises these maxima to K10,000 and three years.
+      to put the vehicle in motion.[@traffic2014] A first offence carries up to K5,000 or six months'
+      imprisonment or both; repetition raises these maxima to K10,000 and three years.[@traffic2014]
       If that driving causes bodily or fatal injury to another person, section 42(2)
-      provides up to K60,000 or ten years or both. Section 44 requires disqualification
+      provides up to K60,000 or ten years or both.[@traffic2014] Section 44 requires disqualification
       of at least six months for the ordinary offence and twelve months for the injury
-      offence. Police must facilitate a requested medical examination after arrest.
+      offence.[@traffic2014] Police must facilitate a requested medical examination after arrest.[@traffic2014]
       Section 43 permits officers, on reasonable grounds, to forbid driving, take keys
-      and immobilise or remove a vehicle for the necessary period. The 2017 Road User
+      and immobilise or remove a vehicle for the necessary period.[@traffic2014] The 2017 Road User
       Rules separately describe impaired mental or motor skills and an officer-administered
-      impairment test; their numerical alcohol rules are not THC limits. No quantified
-      THC allowance or general prescribed-cannabis defence was verified.
+      impairment test; their numerical alcohol rules are not THC limits.[@trafficrules] No quantified
+      THC allowance or general prescribed-cannabis defence was verified.[@traffic2014,trafficrules]
     sources:
       - traffic2014
       - trafficrules
+answers:
+  buy:
+    answer: no
+    text: No patient or adult-use purchase route verified
 sources:
   dda_case:
     title: The National — Man with disability fined K15,000 (26 June 2024)

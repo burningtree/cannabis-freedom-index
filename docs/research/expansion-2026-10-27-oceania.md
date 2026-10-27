@@ -17,3 +17,11 @@ Dirty-at-start files were ru/test/source-archive/layouts — none in batch.
 - Article: australia-act-legalises-2020 (from Conversation + ACT legislation).
 - No history entries added. YAML gotcha fixed: note values containing colons must be quoted.
 - Audit 0/0, history+answers tests pass, build green, HTML verified (2 pen tables, 25 history links, tinny+mardigrass culture links).
+
+## Papua New Guinea (pg) — done 2026-10-27 ~22:50 UTC
+- Profile: recreational + hemp (none) + black_market + arrests sections added; products folded into medical; penalties: 4 possession steps (2y/K15k, 15y/K25k, 16y–life/K26k–2M, DDA 40y/K1M), 4 cultivation steps; inline citations everywhere; history link (2022 entry); answers.buy.
+- Recent commits on pg were small verifications, file clean — proceeded.
+- No history entries added (13 entries; 1930s/40s/60s/2010s lack sources). No culture section (no atlas entries, no Duvall PNG material).
+- Article: papua-new-guinea-controlled-substance-act-2022 (tiers + two charging routes, from PacLII + case reports).
+- Gotchas fixed: answers block must sit after ALL context sections (this profile orders visitors/driving last); every listed source must be cited inline (build-enforced, audit-silent); note values with colons need quotes.
+- Audit 0/0, history+answers tests pass, build 4903 pages, HTML verified (2 pen tables PGK, 14 history links).
