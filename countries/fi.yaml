@@ -24,6 +24,10 @@ segments:
     sources:
       - vks
       - polguide
+    penalties:
+      - upto: 10 g
+        treatment: criminal
+        note: Ordinarily 10 day-fines (income-based), range 10–15; 15–20 for continuous use; statute allows up to six months
   cultivation:
     text: >-
       Chapter 50 section 1(2) criminalises cultivating or attempting to cultivate hemp for use as a
@@ -44,6 +48,11 @@ segments:
       prison.
     sources:
       - criminal50
+    penalties:
+      - label: Ordinary narcotics offence (Chapter 50, section 1)
+        treatment: criminal
+        prison: 2 years
+        note: Fine or up to two years for sale, brokering or other distribution
   consumption:
     text: >-
       Unlawful use is the same drug-use offence, a fine or imprisonment for at most six months.
@@ -60,6 +69,23 @@ segments:
       - fimea
       - fimea_permit
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Adults buy hashish or home-grown weed from dealers
+      and use in private: unlawful use, or possessing a small amount for one's own use, is a
+      drug-use offence punished with day-fines or up to six months.[@vks,polguide]
+    sources:
+      - vks
+      - polguide
+  hemp:
+    status: strict
+    text: >-
+      Industrial hemp may be grown under strict rules with no more than 0.2% THC.[@mfi] CBD is
+      controlled by Fimea as a prescription medicine, and no CBD extract has novel-food
+      authorisation, so foods and supplements with CBD may not be marketed.[@mfi,ruoka]
+    sources:
+      - mfi
+      - ruoka
   production:
     status: none
     text: No licensed production.
@@ -200,3 +226,9 @@ sources:
     title: Finlex — Criminal Code 39/1889, Chapter 50, current Finnish text
     url: https://www.finlex.fi/fi/lainsaadanto/1889/39-001
     locator: Chapter 50, sections 1(2), 1(4), 2a and 7
+  mfi:
+    title: MyCannabis — cannabis laws in Finland (industrial hemp up to 0.2% THC; Fimea controls CBD as medicine)
+    url: https://www.mycannabis.com/is-weed-legal-in-finland/
+  ruoka:
+    title: Finnish Food Authority — hemp as food (no authorised CBD novel-food use; THC limits for hemp seed)
+    url: https://www.ruokavirasto.fi/en/foodstuffs/food-sector/food-ingredients-and-contents/novel-foods/hemp-as-food/

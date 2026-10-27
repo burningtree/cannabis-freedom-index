@@ -39,6 +39,23 @@ segments:
       exceptionally gross one six to ten.
     sources:
       - nsl
+    penalties:
+      - label: Minor drug offence
+        treatment: criminal
+        prison: 6 months
+        note: Fine or up to six months for small personal amounts
+      - label: Ordinary drug offence
+        treatment: criminal
+        prison: 3 years
+        note: At least six months where the drugs are meant for sale
+      - label: Gross drug offence
+        treatment: criminal
+        prison_min: 2 years
+        prison: 7 years
+      - label: Exceptionally gross drug offence
+        treatment: criminal
+        prison_min: 6 years
+        prison: 10 years
   consumption:
     text: >-
       Sweden criminalised drug use itself in 1988. Police who suspect someone is under the influence
@@ -54,6 +71,39 @@ segments:
     sources:
       - lva
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Adults buy hashish or domestically grown weed from
+      dealers and use in private, because use itself has been a crime since 1988: police who
+      suspect someone is under the influence can detain them and compel a urine or blood
+      test.[@scan,nordic] Possession of any amount brings income-based day-fines or up to six
+      months.[@nordic]
+    sources:
+      - scan
+      - nordic
+  hemp:
+    status: standard
+    text: >-
+      Sweden grows EU-listed hemp varieties with up to 0.3% THC under permits from the Board of
+      Agriculture — about 1,740 hectares in 2025.[@cannintel,axf] CBD for oral use or inhalation
+      counts as a medicine and needs Medical Products Agency approval; the Supreme Court ruled
+      in 2019 that CBD oil containing THC is not legal.[@cannintel]
+    sources:
+      - cannintel
+      - axf
+  research:
+    status: restricted
+    text: >-
+      Sweden produced the landmark 1987 Lancet study linking heavy cannabis use to
+      schizophrenia: 45,570 conscripts followed for 15 years, with a sixfold risk for those who
+      had used more than fifty times.[@lancet87] Karolinska Institutet researchers still publish
+      cannabis-trial meta-research, and Uppsala's pharmacy faculty publicly calls for more
+      cannabis research; controlled supply reaches researchers only through narrow
+      medicines-agency routes.[@ki22,uu22]
+    sources:
+      - lancet87
+      - ki22
+      - uu22
   production:
     status: none
     text: No licensed production.
@@ -167,6 +217,28 @@ sources:
   nsl:
     title: Narkotikastrafflag (1968:64) — Sveriges riksdag
     url: https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/narkotikastrafflag-196864_sfs-1968-64/
+  cannintel:
+    title: CannIntelligence — Sweden CBD and cannabis regulation (August 2023)
+    url: https://cannintelligence.com/wp-content/uploads/2024/04/Sweden-CBD-and-cannabis-regulation_CannIntelligence_Regulatory-report.pdf
+    locator: >-
+      Board of Agriculture permits EU-listed hemp varieties, max 0.3% THC; CBD for oral use or
+      inhalation is a medicinal product needing agency approval; 2019 Supreme Court ruling
+      against THC-containing CBD oil.
+  axf:
+    title: Axfoundation — hemp as a crop in Sweden (permit rules, 1,740 ha in 2025)
+    url: https://www.axfoundation.se/en/projects/hemp-carbon-sequestration
+  lancet87:
+    title: The Lancet Psychiatry — Cannabis and psychosis (reviews Andreasson et al., Lancet 1987)
+    url: https://www.thelancet.com/journals/lanpsy/article/PIIS2215-0366(15)00167-4/fulltext
+    locator: >-
+      15-year follow-up of 45,570 Swedish conscripts; 21 schizophrenia cases among 752 who had
+      used cannabis more than 50 times. Original: Andreasson et al., Lancet 1987; 330:1483-1486.
+  ki22:
+    title: Karolinska Institutet — cannabis pain-trial meta-research (JAMA Network Open, 2022)
+    url: https://news.cision.com/karolinska-institutet/r/positive-media-coverage-of-cannabis-studies-regardless-of-therapeutic-effect,c3673663
+  uu22:
+    title: Uppsala University — Fred Nyberg calls for more cannabis research (2022)
+    url: https://www.uu.se/en/news/2022/2022-02-15-we-need-to-do-more-research-on-cannabis
   nordic:
     title: "Nordic Alcohol and Drug Policy Network — Sweden: cannabis"
     url: https://nordicalcohol.org/sweden-cannabis

@@ -23,6 +23,22 @@ segments:
       DKK 3,000 for a second and DKK 4,000 thereafter.
     sources:
       - prosecutor
+    currency: DKK
+    penalties:
+      - upto: 9.9 g
+        treatment: criminal
+        fine: 2000
+        note: First offence; guideline fine for up to 9.9 g of hash
+      - upto: 9.9 g
+        repeat: 2
+        treatment: criminal
+        fine: 3000
+        note: Second offence
+      - upto: 9.9 g
+        repeat: 3
+        treatment: criminal
+        fine: 4000
+        note: Third and later offences
   cultivation:
     text: >-
       Growing cannabis for its THC is illegal and prosecuted; penalties scale with the number of
@@ -35,10 +51,25 @@ segments:
     sources:
       - prosecutor
   sharing:
-    text: Supply is a crime, with prison for anything beyond trivial amounts.
+    text: >-
+      Supply is a crime.[@order2026,prosecutor] Ordinary supply is punished under the
+      Euphoriants Act with a fine or up to two years in prison; aggravated supply under Penal Code section 191 — to a
+      considerable number of people, for a large payment or in otherwise aggravating
+      circumstances — carries up to ten years.[@esarep,dkcode]
     sources:
       - order2026
       - prosecutor
+      - esarep
+      - dkcode
+    penalties:
+      - label: Ordinary supply (Euphoriants Act)
+        treatment: criminal
+        prison: 2 years
+        note: Fine or up to two years
+      - label: Aggravated supply (Penal Code section 191)
+        treatment: criminal
+        prison: 10 years
+        note: Considerable number of buyers, large payment or other aggravating circumstances
   consumption:
     text: Use is not itself named as an offence, but possession is, so users are fined when caught.
     sources:
@@ -52,6 +83,34 @@ segments:
       - pusher
       - medical
 context:
+  recreational:
+    text: >-
+      There is no legal way to buy cannabis. Most adults buy hashish from dealers and smoke at
+      home: possession of any amount is an offence, punished with fines that rise with repeat
+      offences.[@prosecutor] Copenhagen's open hash market on Pusher Street was dug up and
+      closed in 2024, scattering the trade.[@pusher] Use itself is not a separate offence, but
+      users are fined through possession.[@order2026]
+    sources:
+      - prosecutor
+      - pusher
+      - order2026
+  hemp:
+    status: strict
+    text: >-
+      Industrial hemp has been legal since 1998: growers register the crop with the Agricultural
+      Agency and use approved varieties with no more than 0.2% THC.[@dma,groweriq] CBD sits in a
+      grey zone, sold as prescription products or unauthorised food rather than on an open
+      consumer market.[@groweriq]
+    sources:
+      - dma
+      - groweriq
+  spotlights:
+    - title: The street that sold hash openly
+      text: >-
+        Christiania's Pusher Street sold cannabis openly for decades until it was dug up and
+        closed in 2024, ending the country's most famous open market.[@pusher]
+      sources:
+        - pusher
   production:
     status: medical
     text: >-
@@ -155,6 +214,21 @@ sources:
   prosecutor:
     title: Director of Public Prosecutions — Narcotics charging guidance (2026)
     url: https://www.retsinformation.dk/eli/retsinfo/2026/9741
+  esarep:
+    title: "EU technical report on drug legislation — Denmark: penalty under the Euphoriant Substances Act is a fine or up to two years"
+    url: https://euagenda.eu/upload/publications/untitled-71826-en.pdf
+    locator: Serious drug offences under PC section 191; the Euphoriant Substances Act penalty is a fine or up to two years.
+  dkcode:
+    title: Danish Criminal Code (English) — section 191 on aggravated supply of euphoriant drugs
+    url: https://counterterrorlaw.info/assets/downloads/Danish_Criminal_Code.pdf
+    locator: "Section 191(1): supply to a considerable number of persons, for a large payment or in aggravating circumstances carries up to ten years."
+  dma:
+    title: Danish Medicines Agency — development authorisation; commercial hemp up to 0.2% THC via the Agricultural Agency
+    url: https://laegemiddelstyrelsen.dk/en/special/medicinal-cannabis-/development-authorisation/
+    locator: Commercial cultivation of industrial hemp with no more than 0.2% THC is authorised by the Danish Agricultural Agency.
+  groweriq:
+    title: GrowerIQ — hemp cultivation in Denmark (legal since 1998, registration, 0.2% THC)
+    url: https://groweriq.ca/2024/06/26/hemp-cultivation-in-denmark/
   medical:
     title: Danish Medicines Agency — The medical cannabis scheme
     url: https://laegemiddelstyrelsen.dk/da/special/medicinsk-cannabis/ordningen-med-medicinsk-cannabis/

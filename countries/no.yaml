@@ -25,6 +25,10 @@ segments:
     sources:
       - sn
       - tni
+    penalties:
+      - upto: 15 g
+        treatment: criminal
+        note: Fine entered on the criminal record; people with drug dependency are no longer punished for small amounts
   cultivation:
     text: >-
       Growing cannabis is a crime, prosecuted as drug production: section 231 of the Penal Code
@@ -32,6 +36,14 @@ segments:
       prison, and section 232 raises the maximum to ten years for an aggravated offence.
     sources:
       - strl
+    penalties:
+      - label: Drug production (Penal Code section 231)
+        treatment: criminal
+        prison: 2 years
+        note: Fine or up to two years
+      - label: Aggravated drug production (Penal Code section 232)
+        treatment: criminal
+        prison: 10 years
   enforcement:
     text: >-
       Fines for most users, none for dependent users with small amounts. A 2021 government bill to
@@ -62,6 +74,27 @@ segments:
       - strl
       - wiki
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Adults buy hashish from dealers and use in private:
+      possession of up to 15 g for personal use normally ends in a fine that goes on the criminal
+      record, and use itself is an offence fined the same way.[@sn,tni] People with drug
+      dependency are no longer punished for small amounts after the 2022 rulings and guidelines,
+      but recreational users still are.[@ra22]
+    sources:
+      - sn
+      - tni
+      - ra22
+  hemp:
+    status: none
+    text: >-
+      Norway has no hemp exception: cultivating cannabis is illegal for any purpose, a ban in
+      place since the mid-1960s, and the country has no hemp market.[@sensi_no] CBD products
+      with any detectable THC count as narcotics; only THC-free products sit outside drug
+      control.[@dcbd]
+    sources:
+      - sensi_no
+      - dcbd
   production:
     status: none
     text: No licensed production.
@@ -173,6 +206,12 @@ sources:
   wiki:
     title: Wikipedia — Cannabis in Norway
     url: https://en.wikipedia.org/wiki/Cannabis_in_Norway
+  sensi_no:
+    title: Sensi Seeds — cannabis in Norway (hemp production illegal, banned in the 1960s)
+    url: https://sensiseeds.com/en/blog/countries/cannabis-in-norway-laws-use-history/
+  dcbd:
+    title: DailyCBD — CBD in Norway (zero-THC rule, hemp cultivation banned)
+    url: https://dailycbd.com/en/norway/
   euda_szr:
     title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
     url: https://www.euda.europa.eu/data/stats2026/szr_en
