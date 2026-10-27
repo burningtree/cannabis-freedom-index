@@ -10,7 +10,15 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 | Albania | x | | |
 | Kosovo | x | | |
 | Malta | x | | |
-| Estonia | | | |
+| Estonia | x | | |
+
+## Estonia (ee) — done 2026-10-28 ~00:10 UTC
+- Profile: recreational + culture (hemp dance, bride custom, Frazer) sections added; products folded (special-application medicines into medical) and deleted; possession table (civil small / criminal supply-small / large 1–10y, €2,400 fine) + cultivation table (unlicensed / licensed hemp); inline citations everywhere; history links (Epidyolex 2019).
+- New sources: ERR Jan 2026 (read; 10→30 doses, €2,400 fine stays, dealer proof dropped) for enforcement/recreational; Frazer Golden Bough Gutenberg (verified leaping quote) + Benet 1975 chapter (in-repo chain) for culture.
+- Article: estonia-thirty-dose-proposal-2026 (potency broke the line, users vs dealers, what it changes).
+- Left out: arrests (no dated citable cannabis arrests found; EUDA offence figures not verified). Gaps otherwise closed except old decades.
+- Gotcha: fine-unit fines go in fine fields with currency (300 × €8 = €2,400).
+- Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
 
 ## Slovenia (si) — done 2026-10-27 ~23:00 UTC
 - Profile: hemp (standard) + culture (Metelkova) sections added; products folded (flower/preparations into medical, low-THC products into hemp) and deleted; possession civil table (€41.73–208.65, no prison) + cultivation table (unlicensed 1–10y Art 186, legal licensed step); inline citations everywhere; history links (referendum, personal-use bill, medical law).

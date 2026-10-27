@@ -30,24 +30,56 @@ segments:
       - ndps
       - karist
       - riiko
+    currency: EUR
+    penalties:
+      - label: Small quantity for personal use
+        treatment: civil
+        term: Misdemeanour
+        fine: 2400
+        note: Fine up to 300 fine units (at 8 euros each) or detention; no gram figure in statute
+      - label: Small quantity to supply
+        treatment: criminal
+        term: Supply
+        prison: 3 years
+        note: Systematic trafficking or mediation, holding to supply, or taking across the border
+      - label: Large quantity
+        treatment: criminal
+        term: Handling
+        prison_min: 1 year
+        prison: 10 years
+        note: Enough to intoxicate at least ten people; group, repeat or gain extends it
   cultivation:
     text: >-
       Growing narcotic cannabis illegally is a criminal offence; section 188 of the Penal Code
-      provides a fine or up to five years in prison.[@narko,cann] EU-listed industrial hemp varieties
+      provides a fine or up to five years in prison, and one to ten years for a group or a repeat
+      offender.[@narko,cann] EU-listed industrial hemp varieties
       with no more than 0.3% THC may be grown for agriculture. Growing cannabis to manufacture a
       narcotic substance, including for medical use, remains prohibited.[@ravim]
     sources:
       - narko
       - cann
       - ravim
+    penalties:
+      - label: Unlicensed growing
+        treatment: criminal
+        term: Cultivation
+        prison: 5 years
+        note: Fine or up to five years; group or repeat one to ten years
+      - label: Licensed EU hemp varieties
+        treatment: legal
+        term: Hemp
+        note: EU-listed varieties up to 0.3% THC for agriculture
   enforcement:
     text: >-
       A small quantity for personal use, or use without a prescription, is a fine of up to 300
-      fine units or detention. Handling a large quantity, enough to intoxicate at least ten
-      people, carries one to ten years. Supplying a small quantity can bring up to three years.
+      fine units or detention.[@ndps] Handling a large quantity, enough to intoxicate at least ten
+      people, carries one to ten years. Supplying a small quantity can bring up to three years.[@karist]
+      In January 2026 the justice minister proposed raising the large-quantity threshold from 10
+      to 30 doses and easing dealer convictions.[@err26]
     sources:
       - ndps
       - karist
+      - err26
   sharing:
     text: >-
       Supply is a crime. Systematic trafficking or mediation of a small quantity, possessing a
@@ -66,11 +98,26 @@ segments:
       - ndps
   access:
     text: >-
-      A narrow medical route is lawful. Epidyolex is authorised, and a doctor may seek permission
-      for an unauthorised cannabinoid medicine or standardised cannabis for an individual patient.
+      A narrow medical route is lawful. [Epidyolex was authorised in 2019](/history/estonia-epidyolex-2019/),
+      and a doctor may seek permission for an unauthorised cannabinoid medicine or standardised
+      cannabis for an individual patient.[@ravim]
     sources:
       - ravim
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. A small quantity for personal use is a misdemeanour
+      with a fine of up to 300 fine units or detention, with no gram figure in the
+      statute.[@ndps] Handling a large quantity, enough to intoxicate at least ten people,
+      carries one to ten years.[@karist] Courts have treated 7.5 grams at 7 to 10 per cent THC as
+      already enough for ten people, with less needed at higher potency.[@riiko] In January 2026 the
+      justice minister proposed raising the large-quantity threshold from 10 to 30
+      doses.[@err26]
+    sources:
+      - ndps
+      - karist
+      - riiko
+      - err26
   production:
     status: medical
     text: >-
@@ -80,22 +127,19 @@ context:
       medicinal production requires a medicines-manufacturing licence.[@ravim]
     sources:
       - ravim
-  products:
-    text: Cannabinoid-based medicines on special application only.
-    sources:
-      - ravim
   medical:
     text: >-
-      Access is narrow: Epidyolex is authorised, while a doctor may apply case by case for an
-      unauthorised cannabinoid medicine or standardised cannabis. Domestic cultivation for medical
-      use remains prohibited.
+      Access is narrow: [Epidyolex was authorised in 2019](/history/estonia-epidyolex-2019/), while a doctor may apply case by case for an
+      unauthorised cannabinoid medicine or standardised cannabis; those medicines are available
+      on special application only.[@ravim] Domestic cultivation for medical
+      use remains prohibited.[@ravim]
     sources:
       - ravim
   consequences:
     text: >-
       A final decision imposing a penalty for a misdemeanour is entered in the penal register,
-      except a decision in a warning procedure. Data on a fine or detention for a misdemeanour
-      are deleted and archived one year after the fine is paid or the detention is served.
+      except a decision in a warning procedure.[@karreg] Data on a fine or detention for a misdemeanour
+      are deleted and archived one year after the fine is paid or the detention is served.[@karreg]
     sources:
       - karreg
   driving:
@@ -103,20 +147,30 @@ context:
     text: >-
       There is no THC limit: a driver in whom a drug is detected is removed from the road and
       dealt with for the drug-use offence, with a fine of up to 1,200 euros or administrative
-      arrest of up to 30 days. The criminal code separately punishes impaired driving with up
-      to three years in prison, four for a repeat offence, and a ban of up to three years.
+      arrest of up to 30 days.[@euda_dd] The criminal code separately punishes impaired driving with up
+      to three years in prison, four for a repeat offence, and a ban of up to three years.[@euda_dd]
       Police need suspicion to stop a driver but may test at random; the evidential test is
-      blood taken at a hospital.
+      blood taken at a hospital.[@euda_dd]
     sources:
       - euda_dd
+  culture:
+    text: >-
+      Estonia has a place in [the hemp dance](/culture/traditions/the-hemp-dance/): the atlas records
+      an Estonian wedding custom of showering a new bride with hemp collected from
+      neighbours.[@benet75] The wider European custom behind it — dancing and leaping high to make
+      crops, including hemp, grow high — was collected by James Frazer as imitative
+      magic.[@frazer11]
+    sources:
+      - benet75
+      - frazer11
   clubs:
     status: none
     text: >-
       No club is confirmed. A Europe-wide survey of cannabis social clubs carried out in 2018 and
       2019 received no answer from Estonia but, because of contradictory sources, could not rule out
-      that clubs were active there. No law in Estonia provides for them; Malta (since 2021) and
-      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.
-      Nothing more recent was found.
+      that clubs were active there.[@pardal20] No law in Estonia provides for them; Malta (since 2021) and
+      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.[@de_cang,mt_cap628]
+      Nothing more recent was found.[@pardal20]
     sources:
       - pardal20
       - de_cang
@@ -129,9 +183,9 @@ context:
     text: >-
       Section 188 of the Penal Code makes the illegal growing of cannabis a crime, punished
       with a fine or up to five years in prison, and one to ten years for a group or a repeat
-      offender, so a cutting or seedling is covered as a growing plant. The national drug
+      offender, so a cutting or seedling is covered as a growing plant.[@narko] The national drug
       information centre's summary of Estonian drug law says nothing about seeds, and no
-      provision banning them was found.
+      provision banning them was found.[@narko]
     sources:
       - narko
   visitors:
@@ -150,9 +204,9 @@ context:
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 102 kg of herbal cannabis and 1.7
-      kg of cannabis resin seized in Estonia in 2024, against 70 kg and 68 kg in 2023.
+      kg of cannabis resin seized in Estonia in 2024, against 70 kg and 68 kg in 2023.[@euda_szr]
       Herbal cannabis was seized on 660 occasions and resin on 43. Countries record
-      seizures differently, so the figures are not comparable across borders.
+      seizures differently, so the figures are not comparable across borders.[@euda_szr]
     sources:
       - euda_szr
   hemp:
@@ -215,6 +269,27 @@ sources:
   leaf:
     title: Leafwell — Is marijuana legal in Estonia?
     url: https://leafwell.com/blog/is-marijuana-legal-in-estonia
+  err26:
+    title: ERR News — Estonia to ease punishments for drug use (12 January 2026)
+    url: https://news.err.ee/1609908592/estonia-to-ease-punishments-for-drug-use
+  benet75:
+    type: chapter
+    title: Early Diffusion and Folk Uses of Hemp
+    authors: [Sula Benet]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: pp. 43–44 (Estonian wedding hemp custom)
+  frazer11:
+    type: book
+    title: The Golden Bough, Part I, Volume I (third edition)
+    authors: [James George Frazer]
+    publisher: Macmillan
+    year: 1911
+    locator: Leaping high to make crops grow high, hemp at Carnival
+    url: https://www.gutenberg.org/cache/epub/59607/pg59607-images.html
   euda_szr:
     title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
     url: https://www.euda.europa.eu/data/stats2026/szr_en
