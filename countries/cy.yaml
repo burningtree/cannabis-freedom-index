@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 196
 recreational: illegal
 medical: limited
-updated: "2026-10-23"
+updated: "2026-10-27"
 summary: >-
   Cannabis possession and home growing remain crimes. Young first offenders have a two-year prison
   cap for personal-use offences; medical oil has a restricted approval-and-prescription route,
@@ -19,97 +19,140 @@ segments:
   possession:
     text: >-
       Cannabis is a Class B drug. Unauthorised personal possession carries up to eight years in
-      prison, a fine, or both. The prison sentence for use, possession or transport for personal use
+      prison, a fine, or both.[@code] The prison sentence for use, possession or transport for personal use
       cannot exceed two years if the offender was under twenty-five at the time and has no previous
-      conviction under the drug law or regulations. Thirty grams or more creates a rebuttable
-      presumption of supply intent.
+      conviction under the drug law or regulations.[@thresholds03] Thirty grams or more creates a rebuttable
+      presumption of supply intent.[@thresholds03]
     sources:
       - code
       - thresholds03
+    penalties:
+      - label: Personal possession
+        treatment: criminal
+        term: Possession
+        prison: 8 years
+        note: Fine or up to eight years, or both
+      - label: Young first offender, personal use
+        treatment: criminal
+        term: Possession
+        prison: 2 years
+        note: Under 25 with no previous conviction; ceiling of two years
+      - label: 30 g or more
+        treatment: criminal
+        term: Presumed supply
+        note: Rebuttable presumption of supply intent
   cultivation:
     text: >-
       Unauthorised growing or planting is a separate offence carrying up to life imprisonment, a
-      fine, or both. Three or more plants create a rebuttable presumption of supply intent; fewer
-      plants remain subject to the cultivation offence. Licensed industrial hemp and medical
-      production have separate rules.
+      fine, or both.[@code] Three or more plants create a rebuttable presumption of supply intent; fewer
+      plants remain subject to the cultivation offence.[@code,thresholds03] Licensed industrial hemp and medical
+      production have separate rules.[@hemp,medical19]
     sources:
       - code
       - hemp
       - medical19
+      - thresholds03
+    penalties:
+      - label: Unauthorised growing or planting
+        treatment: criminal
+        term: Cultivation
+        note: Up to life imprisonment, a fine, or both
+      - label: Three or more plants
+        treatment: criminal
+        term: Presumed supply
+        note: Rebuttable presumption of supply intent
+      - label: Licensed hemp or medical production
+        treatment: legal
+        term: Licensed production
+        note: Industrial-hemp and medical licences only
   enforcement:
     text: >-
       The statute allows prison or a fine for personal possession and requires courts to consider
       age, exclusive personal use, dependence, cooperation and willingness to undergo treatment when
-      sentencing. Young first offenders have a two-year prison cap for personal-use offences.
-      Cultivation and supply carry much higher statutory maxima.
+      sentencing.[@code] Young first offenders have a two-year prison cap for personal-use offences.[@thresholds03]
+      Cultivation and supply carry much higher statutory maxima, up to life.[@code]
     sources:
       - code
       - thresholds03
   sharing:
     text: >-
       Supplying, offering, distributing or handing over cannabis on any terms is an offence; the law
-      gives no general adult gifting allowance. The Class B supply offence carries up to life
-      imprisonment, a fine, or both.
+      gives no general adult gifting allowance.[@code] The Class B supply offence carries up to life
+      imprisonment, a fine, or both.[@code]
     sources:
       - code
   consumption:
     text: >-
       Smoking, taking or using cannabis is an offence, with life imprisonment, a fine, or both in
-      the general penalty table. The two-year prison ceiling applies to qualifying young first
-      offenders convicted of personal-use offences. Authorised medical use falls under separate
-      rules.
+      the general penalty table.[@code] The two-year prison ceiling applies to qualifying young first
+      offenders convicted of personal-use offences.[@thresholds03] Authorised medical use falls under separate
+      rules.[@medical19]
     sources:
       - code
       - medical19
+      - thresholds03
   access:
     text: >-
-      There is no legal recreational supply. The 2019 regulations establish licensed medical
-      production and prescription pharmacy preparations, with separate approval for minors.
-      Panaxia announced a government purchase and delivery of imported medical oils in 2021.
+      There is no legal recreational supply. The [2019 regulations](/history/cyprus-medical-expanded-2019/) establish licensed medical
+      production and prescription pharmacy preparations, with separate approval for minors.[@medical19]
+      Panaxia announced a government purchase and delivery of imported medical oils in 2021.[@delivery21]
     sources:
       - delivery21
       - medical19
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Personal possession is a criminal offence carrying up
+      to eight years, with a two-year ceiling for qualifying young first offenders; 30 g or more
+      presumes supply intent.[@code,thresholds03] Unauthorised growing can bring life
+      imprisonment.[@code] In October 2025 [Volt proposed a regulated adult market](/history/cyprus-volt-regulation-proposal-2025/) with licensed
+      production, retail and clubs, but it remains a proposal.[@volt]
+    sources:
+      - code
+      - thresholds03
+      - volt
   production:
     status: medical
     text: >-
       The 2019 medical regulations provide an initial three-producer licensing process, with
-      controls over premises, staff, testing, records and trade. They protect that initial group
+      controls over premises, staff, testing, records and trade.[@medical19] They protect that initial group
       against additional licences for up to fifteen years. Industrial hemp has separate
       producer/supplier licences and registered premises; its agricultural definition now refers to
-      the EU’s 0.3% standard.
+      the EU’s 0.3% standard.[@hemp,hemp24,euhemp]
     sources:
       - medical19
       - hemp
       - hemp24
       - euhemp
-  products:
+  hemp:
+    status: standard
     text: >-
-      Medical products include the two cannabis-oil concentrations selected in the government’s 2021
-      Panaxia agreement. The medical regulations also cover pharmacy-prepared cannabis medicines.
-      The industrial-hemp law expressly leaves derivatives such as seed oil, flour, foods and drinks
-      outside its scope, so its crop definition does not itself authorise every finished product.
+      Industrial hemp has licensed production and supply with registered premises, and since 2024
+      its definition refers to the EU 0.3% standard.[@hemp,hemp24] The hemp law expressly leaves
+      derivatives such as seed oil, flour, foods and drinks outside its scope.[@hemp]
     sources:
-      - order21
-      - medical19
       - hemp
+      - hemp24
   medical:
     text: >-
       The 2017 official explanation required individual ministerial approval and a doctor’s
-      prescription for cannabis oil. The 2019 regulations provide for doctors to prescribe cannabis
+      prescription for cannabis oil.[@ministry17] The 2019 regulations provide for doctors to prescribe cannabis
       pharmacy preparations to adults where appropriate, with separate justified applications for
-      patients under eighteen; smoking is excluded as a prescribed route. Imported oil supply was
-      documented in March 2021.
+      patients under eighteen; smoking is excluded as a prescribed route.[@medical19] Medical products
+      include the two cannabis-oil concentrations selected in the government’s 2021 Panaxia
+      agreement, and pharmacy-prepared cannabis medicines.[@order21,medical19] Imported oil supply was
+      documented in March 2021.[@delivery21]
     sources:
       - ministry17
       - medical19
       - delivery21
+      - order21
   consequences:
     text: >-
-      Possession, growing, supply and use remain criminal offences. Courts may consider youth,
+      Possession, growing, supply and use remain criminal offences.[@code] Courts may consider youth,
       exclusive personal use, dependence, remorse and willingness to undergo treatment when
       sentencing. The drug law also gives a convicting court power to disqualify a person from
-      holding or obtaining a driving licence.
+      holding or obtaining a driving licence.[@code]
     sources:
       - code
   planting:
@@ -119,10 +162,10 @@ context:
     clones_trade: banned
     text: >-
       Supplying cannabis seeds while knowing the recipient plans to grow illegally is an offence;
-      the seed-import restriction was added in 2019. Licensed industrial-hemp production and seed
-      supply have an express statutory exception. The hemp-production definition refers to the EU’s
-      0.3% threshold, while the narcotics law’s reproduced hemp definition still states 0.2%.
-      Ordinary cannabis planting remains prohibited.
+      the seed-import restriction was added in 2019.[@code,seeds00,amendment19] Licensed industrial-hemp production and seed
+      supply have an express statutory exception.[@exemption16,hemp] The hemp-production definition refers to the EU’s
+      0.3% threshold, while the narcotics law’s reproduced hemp definition still states 0.2%.[@hemp24]
+      Ordinary cannabis planting remains prohibited.[@code]
     sources:
       - code
       - seeds00
@@ -135,24 +178,24 @@ context:
     text: >-
       The traffic law requires impairment and sets no THC limit, but in practice drivers are
       usually prosecuted under the narcotics law, since using and possessing drugs is a crime
-      in itself and no effect on driving has to be shown. Police may stop and test at random
+      in itself and no effect on driving has to be shown.[@euda_dd] Police may stop and test at random
       with an oral-fluid test, and a second roadside sample is sent as evidence. Suspension
-      and fine are left to the court, and prison of up to one year is possible.
+      and fine are left to the court, and prison of up to one year is possible.[@euda_dd]
     sources:
       - euda_dd
   arrests:
     text: >-
       The EU drugs agency's statistical bulletin records 770 cannabis-related drug law
-      offences in Cyprus in 2024, against 846 in 2023. Of the 2024 total, 602 were for use or
+      offences in Cyprus in 2024, against 846 in 2023.[@euda_dlo] Of the 2024 total, 602 were for use or
       possession for use. Countries count these differently (offences or offenders, criminal
-      or administrative), so the figure is not comparable across borders.
+      or administrative), so the figure is not comparable across borders.[@euda_dlo]
     sources:
       - euda_dlo
   clubs:
     status: none
     text: >-
       Collective recreational growing and supply fall under the prohibitions on cannabis cultivation
-      and supply. Volt’s 2025 policy proposes club licences as part of a wider regulated market.
+      and supply.[@code] [Volt’s 2025 policy](/history/cyprus-volt-regulation-proposal-2025/) proposes club licences as part of a wider regulated market.[@volt]
     sources:
       - code
       - volt
@@ -161,15 +204,15 @@ context:
     text: >-
       There is no legal recreational supply. Personal possession is a criminal offence carrying up
       to eight years, a fine, or both, with the statutory two-year ceiling for qualifying young
-      first offenders.
+      first offenders.[@code]
     sources:
       - code
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 617 kg of herbal cannabis and 2.4
-      kg of cannabis resin seized in Cyprus in 2024, against 554 kg and 16 kg in 2023.
+      kg of cannabis resin seized in Cyprus in 2024, against 554 kg and 16 kg in 2023.[@euda_szr]
       Herbal cannabis was seized on 814 occasions and resin on 31. Plant seizures came to 14 plants. Countries record seizures differently, so the figures are not
-      comparable across borders.
+      comparable across borders.[@euda_szr]
     sources:
       - euda_szr
 sources:
