@@ -18,9 +18,20 @@ sources:
     publisher: Imprenta Nacional
     locator: Court cases identifying canyac with cannabis indica or sativa
     url: https://books.google.com/books?id=VR0rAQAAMAAJ
+  - type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: ch. 7, printed pp. 152–153; Jamaican labour migrants, canyack/ganja link, 1905 banana workers, ganja tea
 ---
 
 On 20 January 1923 the US Army banned marijuana possession around the Panama Canal: Circular No. 5 from the Panama Canal Department headquarters, the first curb on record.[@1] Soldiers had been smoking a "weed" with strange effects since about 1916, and by 1922 the habit was prevalent enough to show up in delinquency cases.[@1]
+
+## Jamaican hands brought it
+
+The plant most likely arrived with tens of thousands of Caribbean labourers — mostly Jamaicans — who came from the 1850s to work plantations, build railroads and dig the canal.[@4] Few were African natives or "Congo" descendants; most knew the plant as ganja, and the local name canyack may trace to ganja, with Costa Rica's 1970s canchac as a possible link in between.[@4] The one direct record dates to around 1905, when banana-plantation workers on the Atlantic slope grew cannabis for smoking.[@4] An echo persisted into the 1920s, when "colored people" valued cannabis tea as a therapeutic beverage — a Central African-rooted practice Jamaicans kept into the 1970s.[@4]
 
 ## A governor's committee investigated for eight months
 
