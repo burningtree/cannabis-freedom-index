@@ -102,3 +102,12 @@
   control start ("Sailors became drug traffickers once colonial prohibitions started in
   1926", ch. 7 with note 195). Keep the 1926 first-ban entry. Revisit only if the 1913
   Opium Ordinance or a 1920 amendment text surfaces.
+
+## Liberia Taylor cannabis fundraising / Senegal Casamance rebel taxes (open: unread)
+- Wikipedia (Cannabis in Liberia) claims Charles Taylor funded NPFL fighters in the First
+  Liberian Civil War by selling cannabis from NPFL-held territory, citing Guy Arnold, The
+  International Drugs Trade (Routledge 2013), p. 183. Same page also underlies the Senegal
+  Casamance claim (rebels taxing growers by the 1990s, several million dollars a year by
+  1995 per Siegel/Bunt/Zaitch 2012, p. 28).
+- Arnold 2005 edition on archive.org is borrow-restricted (401 on OCR text). Do not add
+  either entry until Arnold 2013 p. 183 or the Siegel chapter is read.
