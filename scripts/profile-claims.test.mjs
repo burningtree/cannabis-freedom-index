@@ -638,3 +638,16 @@ test('California gifts retain the separate concentrate cap and adult no-payment 
  assert.ok(x.sources.some(s=>s.url.includes('leginfo.legislature.ca.gov')));
  assert.equal(x.scores.sharing,5);
 });
+
+// Issue #219
+test('Argentina consumption-based driving law does not become detectable-THC zero tolerance (#219)',()=>{
+ const ar=country('ar'), rule=ar.context.driving;
+ assert.equal(rule.status,'consumption');
+ assert.match(rule.text,/no numerical THC cutoff/);
+ assert.match(rule.text,/separate zero-blood-alcohol rule/);
+ assert.match(rule.text,/Testing can provide evidence of consumption/);
+ assert.match(rule.text,/federal jurisdiction.*provincial and municipal/s);
+ assert.doesNotMatch(rule.text,/so any use counts/);
+ for(const key of ['ley24449','ley27714','trafficregs'])assert.ok(rule.sources.includes(key));
+ assert.deepEqual(ar.scores,{possession:3,cultivation:3,enforcement:3,sharing:1,consumption:3,access:1});
+});

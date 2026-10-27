@@ -236,8 +236,11 @@ context:
   in blood or saliva is an offence by itself), `consumption` (a prohibition after drug consumption
   without a verified laboratory THC cutoff) or `zero` (any detectable THC). Do not infer a
   detectable-THC offence merely from a prohibition after consumption, and do not use `zero` when
-  a binding ruling requires more than detection. Give the limit and its unit, the penalty and
-  licence consequences, and any separate rule for medical patients, novice or professional drivers.
+  a binding ruling requires more than detection. A `zero` classification needs a cited provision
+  or controlling judgment establishing a detectable-THC offence; a testing power or a separate
+  zero-alcohol rule is insufficient. Argentina's article 48(a) is a `consumption` baseline,
+  with provincial/municipal implementation qualified in its profile. Give the limit and its unit,
+  the penalty and licence consequences, and any separate rule for medical patients, novice or professional drivers.
 - Use `driving.status: unknown` when a reviewed law mentions drug-driving but the cannabis-specific
   conviction trigger remains unverified. Keep the sourced explanation; the map leaves it hatched.
   A `limit` classification needs a numerical THC concentration, unit and supporting primary
