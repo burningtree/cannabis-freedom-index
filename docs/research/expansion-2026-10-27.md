@@ -28,6 +28,6 @@ heritage for ci/sn/tg/ml). Prior groundwork: `history-mali-gap-2026-10-21`,
 |---|---|---|---|
 | Côte d'Ivoire (ci) | recreational + hemp + driving + culture(diamba) sections, products folded, outdated Koaci-2021/Leafwell claims replaced with 2022 law tariffs (incl. art 7 direct-supply tier), 4 penalty tables, citations + links throughout, 2025 Moossou seizure read | 1930s–1950s + 2000s–2010s still empty; no arrests section (no reliable source) | |
 | Senegal (sn) | recreational + hemp + culture(yamba/diamba) sections, products folded, weak thesis-only claims replaced with 1997 Code provisions verified in full SHERLOC text (arts 8–108) + thesis for art 109/120 practice nuance, 3 penalty tables incl. 2007 forced-labour revision, citations + links throughout, Feb 2026 gendarmerie practice figures read | 1930s–1950s + 2010s still empty; no driving section (no reliable source) | |
-| Togo (tg) | | | |
+| Togo (tg) | recreational + hemp + arrests + driving sections, products folded, 2015 code + 1998 law fully verified by own reads (incl. art 268 drug-driving), 4 penalty tables, citations + links throughout, 2026 transit-corridor report read | 1920s–1950s + 1980s + 2000s still empty; first-restriction estimate article-less by choice | |
 | Mali (ml) | | | |
 | Guinea-Bissau (gw) | | | |

@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 768
 recreational: illegal
 medical: none
-updated: '2026-10-21'
+updated: 2026-10-27
 summary: >-
   Cannabis remains illegal. The 2015 code sets one to three years for small personal-use amounts, a
   fine, or both; judges can substitute treatment for a person with drug dependence.
@@ -17,113 +17,223 @@ scores:
 segments:
   possession:
     text: >-
-      The 2015 criminal code sets one to three years in prison and a fine of 500,000–3 million CFA
-      francs, or either penalty alone, for a small amount held, bought or grown for personal
-      consumption. It gives no numerical quantity in that clause. Judges can waive qualifying
-      sentences and replace punishment with treatment for a person with drug dependence.
+      The [2015 criminal code](/history/togo-personal-use-penalties-2015/) sets one to
+      three years in prison and a fine of 500,000–3 million CFA francs, or either penalty
+      alone, for a small amount held, bought or grown for personal consumption.[@code15]
+      It gives no numerical quantity in that clause.[@code15] Judges can waive qualifying
+      sentences and replace punishment with treatment for a person with drug
+      dependence.[@code15]
     sources:
       - code15
+    currency: XAF
+    penalties:
+      - label: Small amount for personal use (article 267)
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 500000
+        fine: 3000000
+        note: Prison or a fine, or both. Waiver and treatment possible
   cultivation:
     text: >-
-      The 1998 drug law bans cannabis cultivation nationwide and requires landholders to destroy
-      plants growing on their land. The 2015 code expressly includes small amounts grown for
-      personal consumption in its one-to-three-year or fine-only rule. General high-risk drug
-      cultivation carries twenty to thirty years and a fine of 50 million–100 million CFA francs, or
-      either penalty alone.
+      The 1998 drug law bans cannabis cultivation nationwide and requires landholders to
+      destroy plants growing on their land.[@l98008] The 2015 code expressly includes
+      small amounts grown for personal consumption in its one-to-three-year or
+      fine-only rule.[@code15] General high-risk drug cultivation carries twenty to
+      thirty years and a fine of 50 million–100 million CFA francs, or either penalty
+      alone.[@code15]
     sources:
       - l98008
       - code15
+    currency: XAF
+    penalties:
+      - label: Small amount grown for personal use (article 267)
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 500000
+        fine: 3000000
+        note: Prison or a fine, or both. Waiver and treatment possible
+      - label: General high-risk cultivation (article 253)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 20 years
+        prison: 30 years
+        fine_min: 50000000
+        fine: 100000000
+        note: Prison or a fine, or both. Aggravation can double the maximum
   enforcement:
     text: >-
-      The code permits a fine alone for small personal-use amounts and treatment instead of the
-      penalty for a person with drug dependence. Authorities also report large cannabis seizures: a
-      September 2020 bus operation recovered 1,541.60 kg and led to three arrests; more than 5,291
-      kg seized in 2024 was destroyed in January 2026.
+      The code permits a fine alone for small personal-use amounts and treatment
+      instead of the penalty for a person with drug dependence.[@code15] Authorities
+      also report large cannabis seizures: a September 2020 bus operation recovered
+      1,541.60 kg and led to three arrests, as [that interception](/history/togo-cannabis-bus-seizure-2020/)
+      records; more than 5,291 kg seized in 2024 was destroyed in January 2026, as
+      [that destruction](/history/togo-drug-seizures-2025/) records.[@atop20,rt26a]
     sources:
       - code15
       - atop20
       - rt26a
   sharing:
     text: >-
-      Giving or offering a high-risk drug for another person’s own consumption carries five to ten
-      years and a fine of 500,000–25 million CFA francs, or either penalty alone. General high-risk
-      drug supply carries twenty to thirty years and a fine of 50 million–100 million francs, or
-      either penalty alone. Aggravated offences can have their maximum doubled, capped at fifty
-      years.
+      Giving or offering a high-risk drug for another person's own consumption carries
+      five to ten years and a fine of 500,000–25 million CFA francs, or either penalty
+      alone.[@code15] General high-risk drug supply carries twenty to thirty years and
+      a fine of 50 million–100 million francs, or either penalty alone.[@code15]
+      Aggravated offences can have their maximum doubled, capped at fifty
+      years.[@code15]
     sources:
       - code15
-      - atop20
+    currency: XAF
+    penalties:
+      - label: Giving or offering for another person's own use (article 256)
+        treatment: criminal
+        term: Supply to a user
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 500000
+        fine: 25000000
+        note: Prison or a fine, or both
+      - label: General high-risk supply (articles 253–254)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        prison: 30 years
+        fine_min: 50000000
+        fine: 100000000
+        note: Prison or a fine, or both. Aggravation can double the maximum
   consumption:
     text: >-
-      The 2015 code prohibits using controlled substances outside a medical prescription and
-      requires their seizure and judicial confiscation even when the person is not prosecuted. Small
-      amounts for personal consumption fall under its separate one-to-three-year, fine, or combined
-      penalty.
+      The 2015 code prohibits using controlled substances outside a medical
+      prescription and requires their seizure and judicial confiscation even when the
+      person is not prosecuted.[@code15] Small amounts for personal consumption fall
+      under its separate one-to-three-year, fine, or combined penalty.[@code15]
     sources:
       - code15
+    currency: XAF
+    penalties:
+      - label: Small amount for personal use (article 267)
+        treatment: criminal
+        term: Drug use
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 500000
+        fine: 3000000
+        note: Prison or a fine, or both. Waiver and treatment possible
   access:
     text: >-
-      Adult-use cannabis supply is prohibited. The code punishes giving or offering high-risk drugs
-      for personal consumption as well as sale and other forms of supply.
+      Adult-use cannabis supply is prohibited.[@code15] The code punishes giving or
+      offering high-risk drugs for personal consumption as well as sale and other forms
+      of supply.[@code15]
+    sources:
+      - code15
+context:
+  recreational:
+    text: >-
+      Cannabis is prohibited, but small personal-use amounts fall under a lighter
+      one-to-three-year tier with waiver and treatment options, while supply and
+      cultivation draw decades in prison.[@code15] Use persists regardless: a September
+      2020 bus interception found 1,541.60 kg hidden with second-hand clothes on a
+      Ghanaian bus bound for Benin, and 2025 seizures topped 50 tonnes, mainly
+      cannabis, as those [operations](/history/togo-cannabis-bus-seizure-2020/) and
+      [reports](/history/togo-drug-seizures-report-2026/) record.[@atop20,rt26b]
     sources:
       - code15
       - atop20
-context:
+      - rt26b
+  medical:
+    text: >-
+      The sources reviewed establish no operating medical cannabis programme: use
+      outside a medical prescription is prohibited, and the Code's licences cover
+      scheduled medical activities without a cannabis patient supply.[@code15]
+    sources:
+      - code15
+  hemp:
+    status: none
+    text: >-
+      The provisions reviewed set no THC line for hemp and no fibre or food exception;
+      unauthorised growing, production and manufacture of listed drugs are punished
+      regardless of claimed use.[@code15,l98008]
+    sources:
+      - code15
+      - l98008
   production:
     status: none
     text: >-
-      Cannabis cultivation is prohibited nationwide; landholders must destroy plants growing on
-      their land.
+      No licensed production exists: the 1998 law bans cannabis cultivation nationwide
+      and obliges landholders to destroy plants, and no licensed cannabis production was
+      found in the sources reviewed.[@l98008]
     sources:
       - l98008
-  medical:
-    text: >-
-      Controlled medicines are subject to health-ministry licensing under the 1998 law, while the
-      2015 code prohibits use outside a medical prescription. Cannabis cultivation remains expressly
-      banned by the drug law.
-    sources:
-      - l98008
-      - code15
   consequences:
     text: >-
-      Courts must confiscate substances and plants involved in small personal-use offences, together
-      with equipment used for the offence, and may order their destruction. Treatment ordered in
-      place of punishment can itself lead to one to five years, a fine, or both if the person evades
-      it.
+      Courts must confiscate substances and plants involved in small personal-use
+      offences, together with equipment used for the offence, and may order their
+      destruction.[@code15] Treatment ordered in place of punishment can itself lead to
+      one to five years, a fine, or both if the person evades it.[@code15]
     sources:
+      - code15
+  planting:
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      The 1998 drug law bans cannabis cultivation nationwide and requires landholders
+      to destroy plants growing on their land; the offence articles do not mention
+      seeds.[@l98008] The 2015 code expressly includes small amounts grown for personal
+      consumption in its lighter tier.[@code15]
+    sources:
+      - l98008
       - code15
   clubs:
     status: none
     text: >-
-      The cultivation ban and penalties for supplying another person also restrict collective
-      growing and sharing through a club.
+      The cultivation ban and penalties for supplying another person also restrict
+      collective growing and sharing through a club.[@l98008,code15]
     sources:
       - l98008
       - code15
   visitors:
     status: none
     text: >-
-      Visitors face the same cannabis cultivation, possession and supply offences. For the
-      production and trafficking offences listed in the code, courts may also exclude a foreign
-      national from Togo permanently or for five to ten years.
+      Visitors face the same cannabis cultivation, possession and supply
+      offences.[@l98008,code15] For the production and trafficking offences listed in
+      the code, courts may also exclude a foreign national from Togo permanently or
+      for five to ten years.[@code15]
     sources:
       - l98008
       - code15
+  arrests:
+    text: >-
+      In September 2020 three suspected traffickers of Beninese, Ghanaian and Togolese
+      nationality were presented to the press with 1,541.60 kg of cannabis found on a
+      Ghanaian bus bound for Benin.[@atop20]
+    sources:
+      - atop20
+  driving:
+    status: impairment
+    text: >-
+      Driving under the influence of a high-risk drug used illicitly carries one to
+      three years in prison and a fine of 1 to 3 million francs; refusing screening
+      carries the same.[@code15] Penalties cumulate with homicide or injury convictions,
+      and no numerical limit is stated.[@code15]
+    sources:
+      - code15
   black_market:
     text: >-
-      Cannabis is the main drug the authorities seize. Of 5,729 kg of drugs seized across Togo in
-      2024 and burned in Lomé in January 2026, more than 5,291 kg was cannabis, beside 51.77 kg of
-      cocaine and 8.5 kg of methamphetamine. The authorities put seizures in 2025 at more than 50
-      tonnes, mainly cannabis.
+      Cannabis is the main drug the authorities seize. Of 5,729 kg of drugs seized
+      across Togo in 2024 and burned in Lomé in January 2026, more than 5,291 kg was
+      cannabis, beside 51.77 kg of cocaine and 8.5 kg of methamphetamine.[@rt26a] The
+      authorities put seizures in 2025 at more than 50 tonnes, mainly cannabis, as
+      [that report](/history/togo-drug-seizures-report-2026/) records, describing Togo
+      as a transit platform on the Abidjan–Lagos corridor with local consumption on
+      the side.[@rt26b]
     sources:
       - rt26a
       - rt26b
-  products:
-    text: >-
-      Preparations containing controlled substances follow the same controls as those substances. A
-      mixture containing substances under different controls follows the strictest applicable rules.
-    sources:
-      - l98008
 sources:
   l98008:
     title: Togo — drug-control law of 18 March 1998, reproduced by UNODC SHERLOC
