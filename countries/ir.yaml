@@ -3,8 +3,12 @@ region: Asia
 iso_numeric: 364
 recreational: death
 medical: none
-updated: 2026-10-13
-summary: Possession is punished with fines and lashes; large-scale trafficking can carry the death penalty.
+updated: '2026-10-28'
+summary: >-
+  Possession is punished with fines and lashes, and trafficking more than 5 kg of cannabis can
+  carry death; 795 people were executed for drug offences in 2025. A 2017 amendment narrowed the
+  capital threshold but did not stop the rise. Since October 2026 industrial hemp may be grown
+  under permit, while medical cannabis still has no patient route.
 scores:
   possession: 1
   cultivation: 1
@@ -15,142 +19,407 @@ scores:
 segments:
   possession:
     text: >-
-      Article 5 of the Anti-Narcotics Law grades buying, keeping, hiding or carrying bhang,
-      hashish and the other drugs of its lighter list by weight. Up to 50 g brings a fine and up
-      to 50 lashes, with no prison; 50 to 500 g a larger fine and 10 to 74 lashes; prison begins
-      above 500 g, with two to five years for 500 g to 5 kg and five to ten years for 5 to 20
-      kg. The tiers are those of the text as amended in the early 1990s; the fine amounts have
-      since been raised and are not given here.
+      Article 5 of the Anti-Narcotics Law grades keeping, hiding or carrying bhang, hashish and
+      the other drugs on its lighter list by weight.[@anl] Up to 50 g brings a fine of up to 3
+      million rials and up to 50 lashes, with no prison; 50 to 500 g a fine of 5 to 15 million
+      rials and 10 to 74 lashes; 500 g to 5 kg two to five years, a fine of 15 to 60 million
+      rials and 40 to 74 lashes; and 5 to 20 kg five to ten years, a fine of 60 to 200 million
+      rials and 50 to 74 lashes.[@anl] A second conviction at 5 kg or more adds confiscation of
+      property, and a third is capital.[@anl] Above 20 kg the law adds a fine of 2 million rials
+      per kilogram and the Article 4 penalties; above 100 kg it imposes life imprisonment.[@anl]
+      The fines are the amounts written into the 1997 text.[@anl] The 2017 amendment requires an
+      aggravating factor before a death sentence, including more than 50 kg of cannabis.[@ecpm]
     sources:
-      - anlfa
       - anl
-      - lc
-      - wiki
+      - ecpm
+    currency: IRR
+    penalties:
+      - upto: 50 g
+        treatment: criminal
+        term: Keeping or carrying
+        fine: 3000000
+        caning: [1, 50]
+        note: Fine and lashes; no prison
+      - over: 50 g
+        upto: 500 g
+        treatment: criminal
+        term: Keeping or carrying
+        fine_min: 5000000
+        fine: 15000000
+        caning: [10, 74]
+        note: No prison on a first offence
+      - over: 500 g
+        upto: 5 kg
+        treatment: criminal
+        term: Keeping or carrying
+        prison_min: 2 years
+        prison: 5 years
+        fine_min: 15000000
+        fine: 60000000
+        caning: [40, 74]
+      - over: 5 kg
+        upto: 20 kg
+        treatment: criminal
+        term: Keeping or carrying
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 60000000
+        fine: 200000000
+        caning: [50, 74]
+        note: Property confiscated on a second conviction; a third is capital
+      - over: 20 kg
+        upto: 100 kg
+        treatment: criminal
+        term: Keeping or carrying
+        death: true
+        note: Death available above 50 kg or with another aggravating factor; otherwise up to 30 years
+      - label: More than 100 kg
+        treatment: criminal
+        term: Keeping or carrying
+        fine_min: 60000000
+        fine: 200000000
+        caning: [50, 74]
+        note: Life imprisonment, 2 million rials per kilogram and the fines and lashes above; a further conviction is capital
   cultivation:
     text: >-
-      The law punishes growing cannabis only when it is done to produce narcotics, with fines and
-      flogging that escalate on repeat offences; growing the plant as such is not an offence. A
-      2021 study found cannabis grown across the countryside, mostly on a small scale for local
-      demand, and websites selling seeds and growing equipment openly.
+      Article 2 punishes growing poppy, coca or cannabis only when it is done to produce
+      narcotics.[@anl] The crop is destroyed and the fine rises with each conviction: 10 to 100
+      million rials the first time, 50 to 500 million and 30 to 70 lashes the second, 100 million
+      to 1 billion, 1 to 70 lashes and two to five years the third, and death the fourth.[@anl]
+      A landowner or tenant who orders the crop gets the same punishment as the grower.[@anl] The
+      2017 amendment requires an aggravating factor before a death sentence.[@ecpm] Growing
+      cannabis without intent to produce drugs is not a crime, and since October 2026 industrial
+      hemp may be grown under permit.[@hemp]
     sources:
       - anl
-      - cgh
-      - lc
+      - ecpm
+      - hemp
+    currency: IRR
+    penalties:
+      - label: First cultivation offence
+        treatment: criminal
+        term: Cultivation
+        fine_min: 10000000
+        fine: 100000000
+      - label: Second cultivation offence
+        repeat: 2
+        treatment: criminal
+        term: Cultivation
+        fine_min: 50000000
+        fine: 500000000
+        caning: [30, 70]
+      - label: Third cultivation offence
+        repeat: 3
+        treatment: criminal
+        term: Cultivation
+        prison_min: 2 years
+        prison: 5 years
+        fine_min: 100000000
+        fine: 1000000000
+        caning: [1, 70]
+      - label: Fourth cultivation offence
+        repeat: 4
+        treatment: criminal
+        term: Cultivation
+        death: true
   enforcement:
     text: >-
-      Corporal punishment for small amounts and the death penalty for large ones. A 2017 amendment
-      raised the capital threshold for hashish and opium from 5 kg to 50 kg and limited it mainly to
-      armed or organised trafficking, though drug executions have since risen again. Practice
-      towards users is far milder than the text: fieldwork published in 2021 found few police
-      interventions over cannabis use, with arrests concentrated on heroin, methamphetamine and
-      alcohol, and described the laxity as deliberate policy. The score follows the law, which
-      still provides for flogging.
+      The law is enforced most heavily at the borders and against traffickers. In the Iranian
+      year 1403, which ended in March 2025, the anti-narcotics police reported 570,232 people
+      arrested, including 375,438 addicts and 194,794 traffickers or distributors, and 372 tonnes
+      of drugs seized; the figures cover all drugs and give no cannabis breakdown.[@irna]
+      Fieldwork in Tehran found cannabis use itself rarely prosecuted, with police attention
+      concentrated on heroin, methamphetamine and alcohol.[@cgh] Drug executions, however, rose to
+      795 in 2025, 48.5% of all executions recorded that year.[@ecpm] The law still provides for
+      flogging and death, so the score stays at the floor.[@anl]
     sources:
-      - ihr
-      - lc
+      - irna
       - cgh
+      - ecpm
+      - anl
   sharing:
     text: >-
-      Supply is trafficking under Article 4 of the Anti-Narcotics Law, which covers importing,
-      producing, distributing and selling: up to 50 g brings a fine and up to 50 lashes, 50 to
-      500 g a fine, 20 to 74 lashes and up to three years in prison where the court sees fit,
-      and 500 g to 5 kg three to fifteen years; at the top end the penalty is execution.
+      Article 4 covers importing, exporting, producing, distributing, dealing in or selling
+      bhang, hashish and the other drugs on its list.[@anl] Up to 50 g brings a fine of up to 4
+      million rials and up to 50 lashes; 50 to 500 g a fine of 4 to 50 million rials, 20 to 74
+      lashes and up to three years if the court thinks prison necessary; 500 g to 5 kg a fine of
+      50 to 200 million rials, 50 to 74 lashes and three to fifteen years.[@anl] More than 5 kg
+      carries death and confiscation, but if the drugs were not distributed and weighed 20 kg or
+      less, life imprisonment and 74 lashes.[@anl] The 2017 amendment requires an aggravating
+      factor, including more than 50 kg of cannabis, before a death sentence; without one the
+      maximum is 30 years.[@ecpm] The law has no separate offence for giving cannabis away;
+      distribution falls under the same Article 4 ladder.[@anl]
     sources:
-      - anlfa
       - anl
-      - lc
-      - ihr
+      - ecpm
+    currency: IRR
+    penalties:
+      - upto: 50 g
+        treatment: criminal
+        term: Distribution or sale
+        fine: 4000000
+        caning: [1, 50]
+        note: Fine and lashes; no prison
+      - over: 50 g
+        upto: 500 g
+        treatment: criminal
+        term: Distribution or sale
+        fine_min: 4000000
+        fine: 50000000
+        caning: [20, 74]
+        prison: 3 years
+        note: Prison only if the court considers it necessary
+      - over: 500 g
+        upto: 5 kg
+        treatment: criminal
+        term: Distribution or sale
+        prison_min: 3 years
+        prison: 15 years
+        fine_min: 50000000
+        fine: 200000000
+        caning: [50, 74]
+      - over: 5 kg
+        treatment: criminal
+        term: Distribution or sale
+        death: true
+        note: Life and 74 lashes if not distributed and 20 kg or less; death needs an aggravating factor
   consumption:
     text: >-
-      Use is an offence, but dependent users who enter treatment are exempt from punishment. Hashish
-      use is common and, in private, often overlooked. A 2021 study calls toleration of cannabis
-      use the norm, including in a few places known for it, such as the village of Qalat near
-      Shiraz, where it is smoked in cafes.
-    sources:
-      - wiki
-      - cgh
-  access:
-    text: >-
-      None. The Anti-Narcotics Law authorises prohibited substances only exceptionally, for
-      medical and industrial purposes with the permission of the Ministry of Health.
+      Using cannabis is a crime for anyone who is not an addict: Article 19 imposes 20 to 74
+      lashes and a fine of 1 to 5 million rials for the drugs on the Article 4 list, which
+      includes bhang and hashish.[@anl] Addicts also commit an offence, but Article 15 protects
+      them from prosecution while they are in treatment, and Article 16 sets a fine of 1 to 8
+      million rials and up to 30 lashes.[@anl] In private, use is often overlooked; Ghiabi's
+      fieldwork describes toleration in the circles he studied, including the village of Qalat
+      near Shiraz, where cannabis is smoked in cafes.[@cgh] A systematic review put past-year use
+      at 1.3% among men and 0.2% among women, rising to 4.9% among young men in 2016–2020.[@plos]
     sources:
       - anl
-      - wiki
+      - cgh
+      - plos
+    currency: IRR
+    penalties:
+      - label: Use by a non-addict
+        treatment: criminal
+        term: Use
+        fine_min: 1000000
+        fine: 5000000
+        caning: [20, 74]
+      - label: Use by an addict
+        treatment: criminal
+        term: Use
+        fine_min: 1000000
+        fine: 8000000
+        caning: [1, 30]
+        note: Prosecution suspended while the person is in treatment
+  access:
+    text: >-
+      There is no legal source of cannabis for adults or patients.[@anl] The Anti-Narcotics Law
+      allows prohibited substances only exceptionally, for medical and industrial purposes with
+      the permission of the Ministry of Health.[@anl] A 2021 systematic review found no licit or
+      medical production of cannabis in Iran.[@plos] The October 2026 hemp directive allows
+      industrial hemp with no more than 0.3% THC and leaves a licensed route for cannabis above
+      that level for medicine under the poppy rules, but no medicine or patient programme has been
+      approved.[@hemp]
+    sources:
+      - anl
+      - plos
+      - hemp
 context:
   death_penalty:
     text: >-
-      The death penalty applies to large quantities. A 2017 amendment raised the capital threshold
-      for hashish and opium from 5 kg to 50 kg and limited it mainly to armed or organised
-      trafficking, though drug executions have since risen again.
+      The Anti-Narcotics Law makes death the punishment for more than 5 kg of cannabis, and for a
+      third conviction at 5 kg or more.[@anl] A 2017 amendment narrowed it: a court may impose
+      death only where the trafficking involved weapons, a leadership or financing role, a prior
+      serious drug conviction, or more than 50 kg of cannabis (2 kg of heroin, 3 kg of other hard
+      drugs).[@ecpm] Without one of those factors the maximum is 30 years.[@ecpm] In practice the
+      courts have moved the other way: 795 people were executed for drug offences in 2025, 48.5%
+      of all executions, up from 503 in 2024 and an average of 26 a year in 2018–2020.[@ecpm]
+      Only three of the 795 were announced by the authorities.[@ecpm] In October 2025 a
+      parliamentary commission spokesperson proposed removing death from eight drug offences, but
+      no text or timetable was published.[@ecpm]
     sources:
-      - ihr
-      - lc
-  production:
-    status: none
-    text: None.
+      - anl
+      - ecpm
+  recreational:
+    text: >-
+      Adults have no legal way to buy cannabis.[@anl] Possession up to 50 g is punished with a
+      fine and lashes rather than prison, but the amount, the lashes and the risk of a custodial
+      sentence rise steeply with weight.[@anl] The market is illegal and easy to reach: Ghiabi's
+      fieldwork found that the time needed to obtain hashish or cannabis anywhere in Tehran had
+      fallen from fifteen minutes to seven, and that dealers advertised through Instagram stories
+      and delivered to the door.[@cgh] Herbal cannabis is sold as gol ('flower'), a product
+      marketed as stronger and more modern than hashish, which took over from resin around
+      2000.[@cgh] Dealers and users in Tehran put gol at about 50,000 tuman a gram at the time of
+      the fieldwork, roughly 0.80 US dollars.[@cgh] The state counts 2.8 to 4.4 million regular
+      users of illicit drugs, with opiates still the main drug.[@incsr]
     sources:
-      - wiki
-  products:
-    text: None.
-    sources:
-      - wiki
+      - anl
+      - cgh
+      - incsr
   medical:
-    text: No medical cannabis programme.
+    text: >-
+      There is no approved medical cannabis programme.[@plos] A 2021 systematic review found no
+      licit or medical production of cannabis, and the law treats cannabis as a prohibited
+      drug.[@plos] Researchers argued in 2024 that medical cannabis production and legalisation
+      should be on the agenda, because the objections to recreational legalisation do not apply to
+      medicine; the article is a proposal, not a change in the law.[@ajp] The October 2026 hemp
+      directive says cannabis above 0.3% THC for medicine would follow the rules for Iranian
+      poppy, but no patient route or approved medicine has been announced.[@hemp]
     sources:
-      - wiki
+      - plos
+      - ajp
+      - hemp
+  hemp:
+    status: standard
+    text: >-
+      Hemp may be grown only under a permit, under a directive communicated in October
+      2026.[@hemp] The rule allows farmers to grow certified seed with less than 0.3% THC and a
+      CBD-dominant profile, with a licence from the provincial Jihad Agriculture
+      organisation.[@hemp] The legal basis is Article 28 of the 1961 Single Convention and
+      Article 2 of the Anti-Narcotics Law, which makes cultivation a crime only when it is done to
+      produce narcotics.[@single,anl] Cannabis above 0.3% THC for medicine falls under the rules
+      for Iranian poppy.[@hemp] In June 2026 the drug control headquarters said no permits had
+      been issued for narcotic-plant cultivation; the October directive covers industrial hemp,
+      not narcotic plants.[@tasnim,hemp]
+    sources:
+      - hemp
+      - anl
+      - single
+      - tasnim
+  production:
+    status: hemp
+    text: >-
+      The legal commercial route that has been announced is industrial hemp.[@hemp] The October
+      2026 directive allows fibre, seed, oil and CBD production under permit, and leaves a
+      licensed route for cannabis above 0.3% THC for medicine under the poppy rules.[@hemp] There
+      is no adult-use market and no approved medical product.[@anl,plos] In June 2026 the drug
+      control headquarters said no permits had been issued for narcotic-plant cultivation.[@tasnim]
+    sources:
+      - hemp
+      - anl
+      - plos
+      - tasnim
   consequences:
-    text: A drug conviction is a criminal record, and flogging sentences are carried out.
+    text: >-
+      A drug conviction is a criminal record, and flogging sentences are carried out.[@anl] The
+      law also provides for confiscation of property in the most serious trafficking
+      cases.[@anl] A government employee convicted under Articles 4 or 5 is dismissed for six
+      months on a first offence, a year on a second, and permanently on a third.[@anl] A drug
+      offence can also lead to the death penalty, which the authorities carry out.[@ecpm]
     sources:
-      - lc
+      - anl
+      - ecpm
   planting:
     seeds: grey
     seeds_trade: open
     clones: grey
     clones_trade: unclear
     text: >-
-      The Anti-Narcotics Law punishes growing cannabis only when it is done "for the purpose
-      of producing narcotic drugs" (Article 2). Article 3 punishes storing or carrying the
-      seeds of the poppy and the flowering or fruiting tops of cannabis, and for cannabis
-      requires proof of intent to produce narcotics; cannabis seed is not named. This is the
-      text as amended in 1997; the 2010 and 2017 amendments were not read.
+      The Anti-Narcotics Law punishes growing cannabis only when it is done "for the purpose of
+      producing narcotic drugs" (Article 2).[@anl] Article 3 punishes storing or carrying the
+      seeds of the poppy and the flowering or fruiting tops of cannabis, and for cannabis requires
+      proof of intent to produce narcotics; cannabis seed is not named.[@anl] The 1961 Single
+      Convention leaves seeds out of its definition of cannabis.[@single] Seeds are sold openly
+      online, and growers buy them; clones are plants, so keeping or trading them falls under the
+      cultivation offence.[@cgh,anl]
     sources:
       - anl
-  black_market:
-    text: >-
-      The whole market is illegal and, by a 2021 study based on fieldwork, easy to reach: officials
-      said the time needed to obtain hashish or cannabis anywhere in Tehran had fallen from
-      fifteen minutes to seven. Hashish is mass-produced in Afghanistan and Pakistan and comes
-      in along the opiate routes. Herbal cannabis is widely grown in Iran, mostly on a small
-      scale, and sold as gol ("flower"), a high-THC product that took over the market from about
-      2000. Dealers advertise through Instagram stories and deliver to the door. Dealers and
-      users in Tehran put gol at about 50,000 tuman a gram, roughly 0.80 US dollars, with
-      imported hashish cheaper.
-    sources:
+      - single
       - cgh
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      supplying it to another person are both prohibited.[@anl] The most serious drug offences
+      carry death.[@ecpm]
     sources:
-      - wiki
-      - lc
-      - ihr
+      - anl
+      - ecpm
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under the Anti-Narcotics Law, possessing
-      a small quantity of cannabis or hashish, roughly under 50 g, is punished with a fine and
-      up to 50 lashes rather than prison; penalties climb steeply with quantity, to long
-      imprisonment.
+      There is no legal recreational supply for anyone.[@anl] A visitor who carries a small amount
+      of cannabis or hashish, roughly under 50 g, faces a fine and up to 50 lashes rather than
+      prison; the penalty rises steeply with quantity, to long imprisonment and death.[@anl] The
+      law makes no exception for visitors.[@anl]
     sources:
-      - lc
-      - wiki
+      - anl
+  driving:
+    status: impairment
+    text: >-
+      Driving after using cannabis is an offence when the police can show intoxication or
+      incapacity from narcotics.[@traffic] Article 10(b) of the 2011 Traffic Violations Law
+      requires officers to use equipment to establish the condition; if it is proved, they stop
+      the driver, issue a fine of 2 million rials, seize the licence for six months and refer the
+      case to court.[@traffic] The law sets no THC limit; the test is the driver's condition.[@traffic]
+    sources:
+      - traffic
+  black_market:
+    text: >-
+      The whole market is illegal and, by Ghiabi's fieldwork, easy to reach: officials said the
+      time needed to obtain hashish or cannabis anywhere in Tehran had fallen from fifteen minutes
+      to seven.[@cgh] Hashish is mass-produced in Afghanistan and Pakistan and comes in along the
+      opiate routes; cannabis is grown indoors and outdoors across Iran, though there are no
+      precise figures on how much.[@cgh,plos] Dealers advertise through Instagram stories and
+      deliver to the door.[@cgh] The United States government estimates that about 9,000 tonnes of
+      drugs transit Iran each year and that Iran seizes about 1,000 tonnes, mostly on the eastern
+      borders; opiates make up 80% of seizures.[@incsr]
+    sources:
+      - cgh
+      - plos
+      - incsr
+  arrests:
+    text: >-
+      In the Iranian year 1403 (March 2024–March 2025), the anti-narcotics police reported 570,232
+      people arrested: 375,438 addicts and 194,794 traffickers or distributors.[@irna] They also
+      reported 372 tonnes of drugs seized.[@irna] The figures cover all drugs and give no breakdown
+      for cannabis.[@irna] A separate US report estimates 2.8 to 4.4 million regular users and 1.3
+      to 1.6 million treatment seekers a year.[@incsr]
+    sources:
+      - irna
+      - incsr
+  culture:
+    text: >-
+      Cannabis has been part of Persian life for centuries: hashish was used by Sufi orders and
+      prescribed by physicians, and jurists argued for centuries over whether it was
+      forbidden.[@ghiabi2018] In the twentieth century, [bang](/culture/language/bhang/) and
+      [charas](/culture/language/charas/) were the older names; from about 2000, herbal cannabis
+      sold as [gol](/culture/language/gol/) ('flower') spread in Tehran's universities and arts
+      circles, presented as cleaner and more modern than [hashish](/culture/language/hashish/).[@cgh]
+      Ghiabi's fieldwork describes a vocabulary that separates gol from hashish and the social
+      identities attached to each.[@cgh] The 2018 survey of senior Shia clerics found that six of
+      the eight who replied treated cannabis as lawful only under conditions, and most favoured
+      supervised medical use.[@ghiabi2018]
+    sources:
+      - cgh
+      - ghiabi2018
 sources:
-  anlfa:
-    title: "Iran — Anti-Narcotics Law, Articles 4 and 5, text with the amendments of 1989–1993 (Persian Wikisource)"
-    url: https://fa.wikisource.org/wiki/%D9%82%D8%A7%D9%86%D9%88%D9%86_%D9%85%D8%A8%D8%A7%D8%B1%D8%B2%D9%87_%D8%A8%D8%A7_%D9%85%D9%88%D8%A7%D8%AF_%D9%85%D8%AE%D8%AF%D8%B1
+  anl:
+    type: law
+    title: "Iran — The Law for Combating Drugs (Anti-Narcotics Law), 1988, as amended on 8 November 1997 (English translation)"
+    url: https://www.iranrights.org/library/document/4019
+    locator: "Articles 1–7, 15–16 and 19; possession, supply, cultivation, use and employment consequences."
+  ecpm:
+    type: report
+    title: "Iran Human Rights and ECPM — Annual Report on the Death Penalty in Iran 2025"
+    url: https://www.ecpm.org/app/uploads/2026/04/RAPPORT_IRAN_2025_ENG.pdf
+    year: 2026
+    locator: "2025 at a glance, pp. 10–11; the 2017 amendment, pp. 37–38; the October 2025 bill, p. 39; drug executions, pp. 60–62."
+  incsr:
+    type: report
+    title: "US Department of State — 2025 International Narcotics Control Strategy Report, Volume 1: Drug and Chemical Control"
+    url: https://www.state.gov/2025-international-narcotics-control-strategy-report
+    year: 2025
+    locator: "Iran country report, pp. 233–234: transit and seizure estimates, 2.8–4.4 million regular users, 1.3–1.6 million treatment seekers."
+  plos:
+    type: journal
+    title: "Evidence for an increase in cannabis use in Iran – A systematic review and trend analysis"
+    authors: [Yasna Rostam-Abadi, Jaleh Gholami, Masoumeh Amin-Esmaeili, Shahab Baheshmat, Marziyeh Hamzehzadeh, Hossein Rafiemanesh, Morteza Nasserbakht, Leila Ghalichi, Anousheh Safarcherati, Farhad Taremian, Ramin Mojtabai, Afarin Rahimi-Movaghar]
+    container: PLOS ONE
+    year: 2021
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8404985/
+    locator: "16(8):e0256563; prevalence figures in the abstract; 'no licit or medical production' in the introduction; cultivation data in the discussion."
   cgh:
     type: chapter
     title: "“We Smoke Flowers”: On “Being High” in Postrevolutionary Iran"
@@ -159,17 +428,42 @@ sources:
     editors: [Lucas Richert, James H. Mills]
     publisher: MIT Press
     year: 2021
-    isbn: "9780262366137"
-    locator: "pp. 285–289"
-  anl:
-    title: Abdorrahman Boroumand Center — The Law for Combatting Drugs, 1988, as amended on 8 November 1997 (English translation)
-    url: https://www.iranrights.org/library/document/4019
-  wiki:
-    title: Wikipedia — Cannabis in Iran
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Iran
-  ihr:
-    title: Iran Human Rights — Execution trends six months after the new Anti-Narcotics Law
-    url: https://iranhr.net/en/print/5/3325/
-  lc:
-    title: LegalClarity — Is weed legal in Iran? Laws and penalties
-    url: https://legalclarity.org/is-weed-legal-in-iran-laws-and-penalties/
+    isbn: "9780262045209"
+    locator: "pp. 271–296, especially pp. 285–289 on gol, Qalat, prices and delivery."
+  ghiabi2018:
+    type: journal
+    title: "Islam and cannabis: Legalisation and religious debate in Iran"
+    authors: [Maziyar Ghiabi, Maryam Maarefvand, Hamed Bahari, Hossein Alavi]
+    container: International Journal of Drug Policy
+    year: 2018
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6153265/
+    locator: "Volume 56, pp. 1–7; the survey of senior clerics and the history of use."
+  irna:
+    title: "IRNA — 372 tonnes of drugs seized last year; more than 570,000 defendants arrested (2 June 2025)"
+    url: https://www.irna.ir/news/85849485/
+    locator: "Deputy head of the Drug Control Headquarters; 570,232 arrests, 375,438 addicts, 194,794 traffickers and distributors; 372 tonnes seized."
+  traffic:
+    type: law
+    title: "Iran — Traffic Violations Law (قانون رسیدگی به تخلفات رانندگی), Article 10(b)"
+    url: https://hamrahyaar.com/books/mavad/186790
+    locator: "Approved 1389 (2010–11); 2,000,000 rial fine, six-month licence seizure and referral to court for driving while intoxicated by narcotics or psychotropics."
+  hemp:
+    title: "Hamshahri Online — Industrial hemp cultivation allowed in Iran: the details (21 Mehr 1405 / 13 October 2026)"
+    url: https://www.hamshahrionline.ir/news/1076416/
+    locator: "Directive on supervision of industrial hemp cultivation; certified seed below 0.3% THC and CBD-dominant; permit from the provincial Jihad Agriculture organisation; above 0.3% for medicine follows the poppy rules."
+  tasnim:
+    title: "Tasnim News Agency — No permits have been issued for cultivating narcotic plants (28 Khordad 1405 / 18 June 2026)"
+    url: https://tasnimnews.ir/fa/news/1405/03/28/3620579/
+    locator: "Deputy for counter-narcotics at the Drug Control Headquarters; no permits for narcotic-plant cultivation; marijuana legalisation not on the agenda."
+  single:
+    title: "United Nations Treaty Collection — Single Convention on Narcotic Drugs, 1961: status of participants"
+    url: https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=VI-15&chapter=6&clang=_en
+    locator: "Iran signed on 30 March 1961 and ratified on 30 August 1972."
+  ajp:
+    type: journal
+    title: "Considerations before the legalization of recreational and medical cannabis in Iran"
+    authors: [Ahmad Shamabadi, Shahin Akhondzadeh]
+    container: Asian Journal of Psychiatry
+    year: 2024
+    url: https://pubmed.ncbi.nlm.nih.gov/39255648/
+    locator: "Volume 101, 104237; argues that medical cannabis production and legalisation should be on the agenda."
