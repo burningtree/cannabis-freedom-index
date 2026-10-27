@@ -6,7 +6,8 @@ medical: limited
 updated: '2026-10-27'
 summary: >-
   Possession carries up to seven years, and since December 2024 use itself is a crime. The same
-  reform allowed cannabis-derived pharmaceuticals; THC-free CBD is legal.
+  reform allowed cannabis-derived medicines, though none has been approved yet; CBD is legal only
+  within strict THC limits, and CBN was banned in June 2026.
 scores:
   possession: 0
   cultivation: 0
@@ -17,192 +18,477 @@ scores:
 segments:
   possession:
     text: >-
-      Possession of any amount is a crime. Amendments in force from 12 December 2024 moved cannabis
-      under the narcotics law and raised the maximum for possession from five to seven years in
-      prison. First offenders with small amounts commonly receive a suspended sentence, but arrest,
-      weeks of detention and public naming are routine.
+      Possessing any amount of cannabis is a crime, with up to seven years in prison.[@narcotics]
+      The 2024 reform moved cannabis from the Cannabis Act into the narcotics law and raised the
+      maximum from five to seven years.[@giq] Possession for profit carries one to ten years and a
+      fine of up to 3 million yen.[@narcotics] First offenders with small amounts often receive a
+      suspended sentence, but arrest, weeks of detention and public naming are routine.[@giq]
     sources:
+      - narcotics
       - giq
-      - dia
     currency: JPY
     penalties:
-      - label: Possession of any amount (since 2024)
+      - label: Possession of any amount
         treatment: criminal
+        term: Possession
         prison: 7 years
-        note: Maximum raised from five to seven years; first small-amount offenders commonly suspended
+        note: Raised from five years in December 2024; first small-amount offenders often receive a suspended sentence
+      - label: Possession for profit
+        treatment: criminal
+        term: Possession for profit
+        prison_min: 1 year
+        prison: 10 years
+        fine: 3000000
+        note: Prison, or prison and a fine
   cultivation:
     text: >-
-      Unauthorised cultivation is imprisonment of not less than one year and not more than ten
-      years. Cultivation for profit is a separate offence: imprisonment of not less than one year,
-      or that imprisonment and a fine of up to 5 million yen. The Act licences cultivation for
-      taking raw material and for research.
+      Growing cannabis without a licence carries not less than one year and not more than ten years
+      in prison.[@cannabis] Growing for profit carries the same range, with a fine of up to 5
+      million yen.[@cannabis] Since March 2025 a Type 1 grower must use seed from plants with no more
+      than 0.3% delta-9 THC; using stronger seed carries up to seven years, or not less than one year
+      and not more than ten years and a 3 million yen fine for profit.[@cannabis,mhlw_licensing] The law also licenses growers producing
+      pharmaceutical raw material and research cannabis, both with health-ministry
+      licences.[@cannabis] Knowingly providing land, equipment or seed for unlicensed growing carries
+      up to five years.[@cannabis]
     sources:
-      - ccaegov
+      - cannabis
+      - mhlw_licensing
     currency: JPY
     penalties:
       - label: Unauthorised cultivation
         treatment: criminal
+        term: Cultivation
         prison_min: 1 year
         prison: 10 years
       - label: Cultivation for profit
         treatment: criminal
+        term: Cultivation for profit
         prison_min: 1 year
+        prison: 10 years
         fine: 5000000
-        note: At least one year and/or up to 5 million yen
+        note: Prison, or prison and a fine
+      - label: Growing with seed above 0.3% THC (Type 1)
+        treatment: criminal
+        term: Seed-rule violation
+        prison: 7 years
+      - label: Growing with seed above 0.3% THC for profit
+        treatment: criminal
+        term: Seed-rule violation for profit
+        prison_min: 1 year
+        prison: 10 years
+        fine: 3000000
+        note: Prison, or prison and a fine
+      - label: Providing land, equipment or seed for unlicensed growing
+        treatment: criminal
+        term: Facilitating cultivation
+        prison: 5 years
   enforcement:
     text: >-
-      Strict and consistently enforced, with record arrest numbers among people in their twenties.
-      Sentences are often suspended, but the process itself is punishing.
+      Police investigated a record 6,832 people for cannabis offences in 2025, 754 more than the
+      year before.[@kyodo_investigations,mugglehead] More than 70% were under 30, including 3,633 in
+      their twenties; 1,373 were under 20, the most since 1990.[@mugglehead,mainichi] About 700 were
+      pursued under the new offence of use itself.[@mugglehead] Sentences are often suspended, but
+      arrest, detention and public naming are punishment in themselves.[@giq]
     sources:
+      - kyodo_investigations
+      - mugglehead
+      - mainichi
       - giq
   sharing:
-    text: Transfer to another person carries up to seven years, whether or not for payment.
+    text: >-
+      Passing cannabis to another person is a crime whether or not money changes hands, with up to
+      seven years in prison.[@narcotics] Transfer for profit carries one to ten years and a fine of
+      up to 3 million yen.[@narcotics] Importing, exporting or manufacturing cannabis carries one to
+      ten years; for profit, at least one year and a fine of up to 5 million
+      yen.[@narcotics,mhlw_travel]
     sources:
-      - giq
+      - narcotics
+      - mhlw_travel
+    currency: JPY
     penalties:
       - label: Transfer, with or without payment
         treatment: criminal
+        term: Transfer
         prison: 7 years
+      - label: Transfer for profit
+        treatment: criminal
+        term: Transfer for profit
+        prison_min: 1 year
+        prison: 10 years
+        fine: 3000000
+        note: Prison, or prison and a fine
+      - label: Import, export or manufacture
+        treatment: criminal
+        term: Import, export or manufacture
+        prison_min: 1 year
+        prison: 10 years
+      - label: Import, export or manufacture for profit
+        treatment: criminal
+        term: Import, export or manufacture for profit
+        prison_min: 1 year
+        fine: 5000000
+        note: Prison, or prison and a fine; no maximum prison term
   consumption:
     text: >-
-      Until 2024 Japan punished possession but not use — a quirk meant to protect hemp farmers. The
-      amendment closed it: using cannabis is now itself a crime with up to seven years.
+      Using cannabis is a crime with up to seven years in prison, whether or not any is found on the
+      person.[@narcotics] Until December 2024 Japan punished possession but not use; the amendment
+      closed that gap.[@giq] In the first year about 700 people were investigated under the new
+      offence.[@mugglehead] Use for profit carries one to ten years and a fine of up to 3 million
+      yen.[@narcotics]
     sources:
+      - narcotics
+      - giq
+      - mugglehead
+    currency: JPY
+    penalties:
+      - label: Use
+        treatment: criminal
+        term: Use
+        prison: 7 years
+      - label: Use for profit
+        treatment: criminal
+        term: Use for profit
+        prison_min: 1 year
+        prison: 10 years
+        fine: 3000000
+        note: Prison, or prison and a fine
+  access:
+    text: >-
+      There is no legal source of THC cannabis for adults.[@narcotics,giq] The law now allows
+      cannabis-derived medicines, but no cannabis medicine has been approved in
+      Japan.[@dia,jazz_trial] CBD products are legal only if residual THC stays within strict limits:
+      10 ppm in oils and powders, 0.1 ppm in aqueous products and 1 ppm in other
+      products.[@mhlw_cbd] CBN, another cannabinoid sold in some CBD products, was banned from 1 June
+      2026, with a narrow exception for patients who have no alternative treatment.[@mhlw_cbn]
+    sources:
+      - narcotics
       - giq
       - dia
-    penalties:
-      - label: Use (since December 2024)
-        treatment: criminal
-        prison: 7 years
-  access:
-    text: No legal source of THC cannabis.
-    sources:
-      - em
+      - jazz_trial
+      - mhlw_cbd
+      - mhlw_cbn
 context:
   recreational:
     text: >-
-      All recreational use is prohibited: possession of any amount brings up to seven years, use
-      itself has been a crime since December 2024, and transfer brings up to seven years whether
-      or not money changes hands. Record arrests skew young, with app-based buying
-      common.[@giq,dia,mh26]
+      Adults have no legal way to buy cannabis for fun.[@narcotics] Possession and use carry up to
+      seven years, and transfer does too, even without payment.[@narcotics] Police investigated a
+      record 6,832 people in 2025; more than 40% of those under 30 said they had bought through apps
+      such as X and Telegram.[@mugglehead] Police seized 315 kg of concentrates in 2025, more than
+      three times the 2024 figure.[@mugglehead] CBD is the legal alternative, but only within the
+      residue limits.[@mhlw_cbd]
     sources:
-      - giq
+      - narcotics
+      - mugglehead
+      - mhlw_cbd
+  medical:
+    text: >-
+      Japan allows cannabis-derived medicines in law, but no cannabis medicine has been
+      approved.[@dia] The 2024 reform created the approval route, and in June 2024 the health
+      ministry gave orphan designation to Jazz's cannabidiol for Dravet syndrome, Lennox-Gastaut
+      syndrome and tuberous sclerosis complex.[@jazz_orphan] The Japanese Phase 3 trial then missed
+      its primary endpoint in August 2024, and Jazz and Nippon Zoki agreed in April 2026 to prepare a
+      future introduction.[@jazz_trial,nz] Medical use means a licensed pharmaceutical, not herbal
+      cannabis, and CBD products are legal only within the THC residue limits.[@mhlw_cbd] CBN was
+      banned from June 2026, except for patients with no alternative.[@mhlw_cbn]
+    sources:
       - dia
-      - mh26
+      - jazz_orphan
+      - jazz_trial
+      - nz
+      - mhlw_cbd
+      - mhlw_cbn
+  hemp:
+    status: standard
+    text: >-
+      Hemp may be grown only under licence, and [since March 2025](/history/japan-cannabis-cultivation-licences-2025/)
+      the legal line for Type 1 growers is seed from plants with no more than 0.3% delta-9
+      THC.[@cannabis,mhlw_licensing] The plant's seeds and mature stalks are outside the definition of
+      cannabis, which is why hemp seed can be sold for food; but a licensed grower must treat seed so
+      it cannot germinate before passing it on, except to another grower.[@cannabis] Production is
+      tiny: 35 growers on 9 hectares in 2019, about 90% of it in Tochigi, down from more than
+      [25,000 farms before the 1948 law](/history/japan-cannabis-control-act-1948/).[@usda,stripes]
+      Tottori prefecture [banned hemp growing in
+      2016](/history/japan-tottori-hemp-ban-2016/) after arrests at a licensed firm.[@tottori] CBD
+      products are legal only within residual-THC limits of 10 ppm in oils and powders, 0.1 ppm in
+      aqueous products and 1 ppm in other products; CBN was [banned from June
+      2026](/history/japan-cbn-ban-2026/).[@mhlw_cbd,mhlw_cbn]
+    sources:
+      - cannabis
+      - mhlw_licensing
+      - usda
+      - stripes
+      - tottori
+      - mhlw_cbd
+      - mhlw_cbn
   production:
     status: medical
     text: >-
-      The same reform replaced the old plant-part rule with THC thresholds and created licence
-      categories for hemp and for pharmaceutical raw material.
+      Commercial production is confined to licensed hemp and pharmaceutical raw material; there is
+      no adult-use market.[@cannabis] Type 1 licences from prefectural governors cover raw material
+      for manufactured products, Type 2 licences from the health ministry cover pharmaceutical
+      ingredients, and a separate licence covers research.[@cannabis,mhlw_licensing] The
+      pharmaceutical route is still nascent: no cannabis medicine has been approved, and Jazz's April
+      2026 deal with Nippon Zoki is preparation for a future launch.[@nz] Hemp fibre and food
+      production is small: 35 growers on 9 hectares in 2019, about 90% in Tochigi.[@usda]
     sources:
-      - dia
-      - em
-  medical:
-    text: >-
-      The 2024 law lifted the ban on cannabis-derived medicines, opening the way for an approved
-      cannabidiol drug for severe epilepsy. There is no herbal medical cannabis. CBD products are
-      legal and popular, subject to very strict residual-THC limits set in parts per million;
-      nothing with meaningful THC is lawful.
-    sources:
-      - dia
-      - giq
-      - em
+      - cannabis
+      - mhlw_licensing
+      - nz
+      - usda
   consequences:
     text: >-
-      An arrest typically costs a person their job or university place, and foreigners are deported
-      and barred from re-entry.
+      An arrest typically costs a person their job or university place.[@giq] Foreigners are deported
+      after a cannabis conviction, and the immigration law bars them from landing again for five
+      years, or ten if they have been deported before.[@immigration] A cannabis penalty in any
+      country is also a ground for refusing entry.[@immigration]
     sources:
       - giq
+      - immigration
   planting:
     seeds: grey
     seeds_trade: open
     clones: illegal
     clones_trade: banned
     text: >-
-      The Act defines cannabis as the plant excluding its seed and mature stalk. Knowingly providing
-      raw materials, including cannabis seeds, for unlicensed cultivation is up to five years. A
-      licensed cultivator who transfers seeds without making them unable to germinate, except to
-      another licensed cultivator or in a case the ministry sets, commits a separate offence of up
-      to three years or a fine of up to 500,000 yen, or both.
+      The Act defines cannabis as the plant excluding its seed and mature stalk, so an adult can buy
+      and hold hemp seed without committing a cannabis offence.[@cannabis] Sowing it without a licence
+      is cultivation, and a seller who knowingly provides seed for unlicensed growing can be jailed
+      for up to five years.[@cannabis] Licensed growers must treat seed so it cannot germinate before
+      passing it on, except to another licensed grower; untreated germinable seed needs the health
+      minister's permission to import.[@cannabis] Clones are plants, so keeping or trading them
+      without a licence is illegal.[@cannabis]
     sources:
-      - ccaegov
-  arrests:
-    text: >-
-      Police investigated a record 6,832 people for cannabis offences in 2025, 754 more than
-      the year before, according to the National Police Agency. About 700 of them were pursued
-      under the new offence of use itself, which took effect in December 2024. Young people
-      stand out: 1,373 of those investigated were under 20, up more than a fifth and the most
-      since 1990, and more than 40% of those under 30 said they had bought through apps such
-      as X and Telegram. Seizures of cannabis concentrates rose more than 300% to 315 kg.
-    sources:
-      - mh26
+      - cannabis
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      No cannabis clubs are known, and the law leaves no room for them: growing and supplying
+      cannabis are both crimes.[@cannabis,giq]
     sources:
+      - cannabis
       - giq
-      - dia
   visitors:
     status: none
     text: >-
-      Bringing cannabis into Japan is a separate import offence carrying one to ten years in prison;
-      export and manufacture have the same ordinary range.[@mhlwtravel] The Health Ministry warns
-      travellers about cannabis cookies, chocolate and vape cartridges bought legally
-      overseas.[@mhlwtravel] Simple possession separately carries up to seven years.[@mhlwtravel]
-      First offenders with small possession amounts commonly receive a suspended sentence, but arrest,
-      weeks of detention and public naming are routine.[@giq]
+      No visitor can buy cannabis legally in Japan.[@narcotics] Bringing it in is an import offence
+      carrying one to ten years, and possession carries up to seven.[@mhlw_travel] The health ministry
+      warns that cannabis cookies, chocolate and vape cartridges bought legally abroad are still
+      illegal in Japan.[@mhlw_travel] A foreigner convicted of a cannabis offence is deported and
+      barred from re-entry for five years, or ten after a previous deportation.[@immigration]
     sources:
-      - mhlwtravel
-      - giq
+      - narcotics
+      - mhlw_travel
+      - immigration
   driving:
     status: impairment
     text: >-
-      The Road Traffic Act forbids driving in a state in which normal driving may not be
-      possible because of overwork, illness, drugs or other reasons. The law sets no THC
-      level; the test is the driver's condition. Where that condition comes from narcotics,
-      cannabis, opium or stimulants, the penalty is up to five years in prison or a fine of up
-      to one million yen.
+      The Road Traffic Act forbids driving when normal driving may not be possible because of drugs,
+      illness, overwork or another reason.[@rta66] The law sets no THC level; the test is the driver's
+      condition.[@rta66] Where the condition comes from cannabis, narcotics, opium or stimulants, the
+      penalty is up to five years in prison or a fine of up to 1 million yen.[@rta66]
     sources:
       - rta66
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 452 kg of herbal
-      cannabis seized in 2024, against 850 kg in 2023, and 11.8 kg of cannabis resin
-      seized in 2024, against 1 kg in 2023. The UN publishes them as kilogram equivalents,
-      and countries count seizures differently, so the figures are not comparable across
-      borders.
+      Police and customs count seizures separately. The government reported 452 kg of herbal cannabis
+      seized in 2024, down from 850 kg in 2023, and 11.8 kg of resin, up from 1 kg.[@unodc_szr]
+      Customs seized a record 1,531 kg in 2025, 3.5 times the 2024 figure, after a 1.046-tonne
+      container from Vietnam was found in June.[@jt_customs,kyodo_seizure] The United States supplied
+      43% of detected cannabis cases, Thailand 27% and Vietnam 8%.[@jt_customs] UN figures are
+      kilogram equivalents reported by governments and are not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
+      - jt_customs
+      - kyodo_seizure
+  arrests:
+    text: >-
+      Police investigated a record 6,832 people for cannabis offences in 2025, 754 more than
+      2024.[@kyodo_investigations,mugglehead] More than 70% were under 30, including 3,633 in their
+      twenties.[@mugglehead,mainichi] Of the 1,373 under-20 cases, 173 were for use, and the under-20
+      total was the highest since 1990.[@mainichi] About 700 people were investigated under the new
+      use offence, and police seized 315 kg of concentrates, more than three times the 2024
+      amount.[@mugglehead]
+    sources:
+      - kyodo_investigations
+      - mugglehead
+      - mainichi
+  culture:
+    text: >-
+      Hemp sits deep in Japanese life: the character [*ma*](/culture/language/ma/) names the plant and
+      carries the sense of numbness, and the word *taima* is still the everyday name for
+      cannabis.[@li] In Shinto, hemp fibre stands for purity: priests wave an
+      [ōnusa](/culture/traditions/hemp-in-shinto/) hung with hemp, shrine ropes were once made of it,
+      and the Ise shrine's talisman began as a hemp wand.[@stripes] Hemp seed has been one of the
+      seven spices in [shichimi](/culture/traditions/hemp-seed-in-shichimi/) since the shops of Edo
+      mixed it in the seventeenth century.[@stripes,shichimi_wiki] Modern protest is small but persistent:
+      [Marijuana March Tokyo](/culture/traditions/global-marijuana-march/) has been held yearly since
+      2001.[@gmm_wiki] The 1948 law and the 2024 use ban did not erase these customs, but they pushed
+      most hemp production and public ritual onto a narrow licensed footing.[@cannabis,dw]
+    sources:
+      - li
+      - stripes
+      - shichimi_wiki
+      - gmm_wiki
+      - cannabis
+      - dw
+  research:
+    status: licensed
+    text: >-
+      Cannabis research needs a health-ministry licence to grow the plant, and the law sets a
+      separate research-grower category.[@cannabis] Japanese authors published 87 cannabis papers in
+      2025, up from 59 in 2024, and two cannabis trials were registered in the country as of October
+      2026.[@openalex,ctgov] The most visible recent work is clinical: Jazz ran a 62-patient Phase 3
+      trial in Japanese children with severe epilepsies, and Japanese clinicians documented the HHCH
+      gummy poisonings that led to the 2023 ban.[@jazz_trial,jma_hhch] In May 2025 a national Hemp
+      Cannabinoid Consortium was set up to promote domestic research on cannabis-derived
+      medicines.[@pj_consortium]
+    sources:
+      - cannabis
+      - openalex
+      - ctgov
+      - jazz_trial
+      - jma_hhch
+      - pj_consortium
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Cannabis offences carry imprisonment or fines under the Cannabis Act and the Narcotics Act;
+      neither provides a capital sentence. The maximum for unauthorised cultivation is ten years.
+    sources:
+      - cannabis
+      - narcotics
 sources:
-  rta66:
-    title: Japan — Road Traffic Act (Act No. 105 of 1960), Articles 66 and 117-2 (e-Gov)
-    url: https://laws.e-gov.go.jp/law/335AC0000000105
-  mh26:
-    title: Mugglehead — Cannabis-related police investigations skyrocketed in Japan last year (8 April 2026), on National Police Agency figures
-    url: https://mugglehead.com/cannabis-related-police-investigations-skyrocketed-in-japan-last-year/
-  ccaegov:
-    title: "Cannabis Control Act (Act No. 124 of 1948), current text on e-Gov"
+  cannabis:
+    type: law
+    title: "Act on the Regulation of Cannabis Plant Cultivation (Act No. 124 of 1948, formerly the Cannabis Control Act), current text on e-Gov"
     url: https://laws.e-gov.go.jp/law/323AC0000000124
-    locator: "Articles 1, 18, 24, 24-4 and 24-6. Unauthorised cultivation is one to ten years."
-  dia:
-    title: "DIA Global Forum — Cannabis-derived drugs in Japan: new legislation and outlook (2025)"
-    url: >-
-      https://globalforum.diaglobal.org/issue/february-2025/cannabis-derived-drugs-in-japan-new-legislation-and-outlook/
+    locator: "Articles 2, 5, 12-3, 13, 18, 19, 24, 24-2, 24-4 and 24-6; renamed 12 December 2024, cultivation provisions in force 1 March 2025."
+  narcotics:
+    type: law
+    title: "Narcotics and Psychotropics Control Act (Act No. 14 of 1953), current text on e-Gov"
+    url: https://laws.e-gov.go.jp/law/328AC0000000014
+    locator: "Articles 27, 65, 66 and 66-2; use and possession, import and manufacture, and profit aggravations."
+  mhlw_licensing:
+    title: "Japan Ministry of Health, Labour and Welfare — Part of the Act amending the Cannabis Control Act and the Narcotics and Psychotropics Control Act comes into force on 1 March 2025"
+    url: https://www.mhlw.go.jp/stf/newpage_43079.html
+    locator: "Type 1 and Type 2 grower licences, research licences, 0.3% delta-9 THC seed rule, and the 12 December 2024 residue limits."
+  mhlw_travel:
+    title: "Japan Ministry of Health, Labour and Welfare — About the penalties for drug offenses in Japan"
+    url: https://www.mhlw.go.jp/content/11120000/001682852.pdf
+    locator: "Page 1: cannabis possession/transfer up to 7 years, import/export/manufacturing 1–10 years, use up to 7 years, cultivation 1–10 years; warning about cannabis products bought abroad."
+  mhlw_cbd:
+    title: "Japan Ministry of Health, Labour and Welfare — Interpretation and examples of products under the Cabinet Order designating narcotics, cannabis and psychotropics"
+    url: https://www.mhlw.go.jp/content/11120000/001313370.pdf
+    locator: "Residual delta-9 THC limits: 10 ppm in oils and powders, 0.1 ppm in aqueous products, 1 ppm in other products."
+  mhlw_cbn:
+    title: "Japan Ministry of Health, Labour and Welfare — Designation of CBN as a designated drug"
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/yakubuturanyou/other/CBN_shitei.html
+    locator: "CBN banned from 1 June 2026; patient confirmation certificate for people with no alternative treatment."
+  jt_cbn:
+    title: "The Japan Times — Japan to ban cannabis ingredient CBN from June"
+    url: https://www.japantimes.co.jp/news/2026/05/31/japan/japan-ban-cannabis-ingredient-cbn-june/
+    locator: "31 May 2026; ban from 1 June; penalties up to five years."
+  jazz_orphan:
+    title: "Pharma Japan — Japan grants orphan tag to cannabidiol, 6 more APIs"
+    url: https://pj.jiho.jp/article/251119
+    locator: "10 June 2024; orphan designation granted on 6 June 2024 for Dravet syndrome, Lennox-Gastaut syndrome and tuberous sclerosis complex."
+  jazz_trial:
+    title: "Jazz Pharmaceuticals — Provides update on cannabidiol oral solution Phase 3 trial in Japan in treatment-resistant epilepsies"
+    url: https://www.prnewswire.com/news-releases/jazz-pharmaceuticals-provides-update-on-cannabidiol-oral-solution-phase-3-trial-in-japan-in-treatment-resistant-epilepsies-302228873.html
+    locator: "22 August 2024; 62 Japanese patients aged 1–18; primary endpoint not met."
+  nz:
+    title: "Pharma Japan — Jazz, Nippon Zoki ink deal to bring cannabis-derived epilepsy drug to Japan"
+    url: https://pj.jiho.jp/article/255231
+    locator: "22 April 2026; agreement announced 21 April 2026 for the future introduction of GWP42003-P (cannabidiol)."
+  kyodo_investigations:
+    title: "Kyodo News — Japan sees record cannabis-related police probes in 2025"
+    url: https://english.kyodonews.net/articles/-/73469
+    locator: "2 April 2026; 6,832 people investigated, up 754 from 2024."
+  mugglehead:
+    title: "Mugglehead — Cannabis-related police investigations hit record high in Japan last year"
+    url: https://mugglehead.com/cannabis-related-police-investigations-skyrocketed-in-japan-last-year/
+    locator: "8 April 2026, on National Police Agency figures: 1,373 under 20, about 700 use cases, 315 kg of concentrates."
+  mainichi:
+    title: "The Mainichi — Cannabis investigations hit record high in Japan in 2025"
+    url: https://mainichi.jp/english/articles/20260226/p2a/00m/0na/035000c
+    locator: "26 February 2026; 1,373 under-20 cases, 173 of them for use, and more than 70% of all cases under 30."
+  jt_customs:
+    title: "The Japan Times — Japan's customs seized second-highest amount of illegal drugs in 2025"
+    url: https://www.japantimes.co.jp/news/2026/02/18/japan/crime-legal/drug-seizure-finance-ministry
+    locator: "18 February 2026; cannabis seizures 1,531 kg in 2025, 3.5 times 2024; US 43%, Thailand 27%, Vietnam 8% of cases."
+  kyodo_seizure:
+    title: "Kyodo News — Record 1 ton of cannabis, worth $35 mil., seized in Japan"
+    url: https://english.kyodonews.net/articles/-/59168
+    locator: "13 August 2025; 1.046 tonnes, worth about ¥5.2 billion, in a container from Vietnam."
+  asahi_hhch:
+    title: "The Asahi Shimbun — Health ministry eyes all-out ban on HHCH-like substances"
+    url: https://www.asahi.com/ajw/articles/15073258
+    locator: "2 December 2023; HHCH sale, possession and use banned after gummy poisonings."
+  jma_hhch:
+    title: "JMA Journal — Challenges in regulating synthetic new psychoactive substances: lessons from Japan's generic scheduling against hexahydrocannabihexol"
+    authors: [Natsuki Yokoyama, Tatsuki Ikejiri, Hayase Hakariya]
+    url: https://www.jmaj.jp/detail.php?id=10.31662%2Fjmaj.2024-0110
+    locator: "2025; 8(1):270–272; HHCH regulated from 2 December 2023."
+  usda:
+    title: "USDA Foreign Agricultural Service — The Japanese market for hemp fiber"
+    url: https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=The%20Japanese%20Market%20for%20Hemp%20Fiber_Tokyo_Japan_JA2023-0064
+    locator: "35 growers and 9 hectares in 2019; about 90% of production in Tochigi."
+  dw:
+    title: "Deutsche Welle — Japan hemp business wants to distance itself from image of narcotics"
+    url: https://www.dw.com/en/japans-hemp-business-wants-to-distance-itself-from-image-of-narcotics/a-56345992
+    locator: "26 January 2021; 37,300 farmers and 5,000 hectares in 1952; 7.6 hectares in 2015; 30 growers in 2017."
+  stripes:
+    title: "Stripes Japan — Weed in Japan: history of hemp in the Land of the Rising Sun"
+    url: https://japan.stripes.com/travel/weed-in-japan-history-of-hemp-in-the-land-of-the-rising-sun.html
+    locator: "25,000 farms before 1948; 1947 photograph of Emperor Hirohito visiting Tochigi hemp farms; shrine ropes, Ise talisman and shichimi."
+  tottori:
+    title: "Ganjapreneur — Japanese prefecture ends hemp growing program after cannabis arrests"
+    url: https://www.ganjapreneur.com/japanese-prefecture-ends-hemp-growing-program-after-cannabis-arrests
+    locator: "December 2016; Tottori assembly bans hemp production after arrests at a licensed firm."
+  immigration:
+    type: law
+    title: "Japan — Immigration Control and Refugee Recognition Act (Act No. 319 of 1951), English translation"
+    url: https://www.japaneselawtranslation.go.jp/en/laws/view/3546/en
+    locator: "Article 5(1)(v) bars landing after a cannabis penalty; Article 24(iv)(h) grounds deportation; Article 5(1)(ix) sets five- and ten-year re-entry bans."
   giq:
     title: "GrowerIQ — Japan's cannabis law reform: criminalizing use while opening the door to medicine"
     url: https://groweriq.ca/2026/04/09/japan-cannabis-law-reform-2024/
+  dia:
+    title: "DIA Global Forum — Cannabis-derived drugs in Japan: new legislation and outlook"
+    url: https://globalforum.diaglobal.org/issue/february-2025/cannabis-derived-drugs-in-japan-new-legislation-and-outlook/
   em:
-    title: "Euromonitor — Key trends for cannabis in Japan: law amendments and the CBD market"
-    url: >-
-      https://www.euromonitor.com/article/key-trends-for-cannabis-in-japan-law-amendments-and-new-opportunities-in-cbd-market
+    title: "Euromonitor — Key trends for cannabis in Japan: law amendments and the new CBD market"
+    url: https://www.euromonitor.com/article/key-trends-for-cannabis-in-japan-law-amendments-and-new-opportunities-in-cbd-market
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
-  mhlwtravel:
-    title: Japan Ministry of Health, Labour and Welfare — About the penalties for drug offenses in Japan
-    url: https://www.mhlw.go.jp/content/11120000/001682852.pdf
-    locator: >-
-      Page 2: cannabis import/export/manufacturing 1–10 years, possession up to 7 years; cookies,
-      chocolate and vape cartridges
+  li:
+    type: chapter
+    title: "The Origin and Use of Cannabis in Eastern Asia: Their Linguistic-Cultural Implications"
+    authors: [Hui-Lin Li]
+    container: Cannabis and Culture
+    editors: [Vera Rubin]
+    publisher: Mouton
+    year: 1975
+    isbn: 90-279-7669-4
+    locator: pp. 51–62
+  shichimi_wiki:
+    title: "Wikipedia (Japanese) — 七味唐辛子 (Shichimi tōgarashi)"
+    url: https://ja.wikipedia.org/wiki/%E4%B8%83%E5%91%B3%E5%94%90%E8%BE%9B%E5%AD%90
+  gmm_wiki:
+    title: "Wikipedia — Global Marijuana March"
+    url: https://en.wikipedia.org/wiki/Global_Marijuana_March
+  openalex:
+    title: "OpenAlex — works mentioning cannabis or cannabinoids, by author country (datasets/openalex-cannabis-papers.csv)"
+    url: https://openalex.org/
+  ctgov:
+    title: "ClinicalTrials.gov — registered studies with a cannabis or cannabinoid intervention, as of 26 October 2026 (datasets/clinicaltrials-cannabis.csv)"
+    url: https://clinicaltrials.gov/
+  pj_consortium:
+    title: "Pharma Japan — Japan consortium to promote domestic R&D of cannabis-derived meds"
+    url: https://pj.jiho.jp/article/253006
+    locator: "14 May 2025; Hemp Cannabinoid Consortium set up to promote domestic research."
+  rta66:
+    type: law
+    title: "Japan — Road Traffic Act (Act No. 105 of 1960), Articles 66 and 117-2 (e-Gov)"
+    url: https://laws.e-gov.go.jp/law/335AC0000000105

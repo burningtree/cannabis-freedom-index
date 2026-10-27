@@ -900,7 +900,8 @@ test("Maldives quantity presumptions, Kuwait decree-law 159, and Japan cultivati
   assert.match(kuwait.description, /159 of 2025/);
   assert.doesNotMatch(kuwait.description, /no\. 59/);
   assert.match(jp.segments.cultivation.text, /not less than one year and not more than ten years/);
-  assert.doesNotMatch(jp.segments.cultivation.text, /seven years/);
+  assert.match(jp.segments.cultivation.text, /stronger seed carries up to seven years/);
+  assert.doesNotMatch(jp.segments.cultivation.text, /Growing cannabis without a licence carries seven years/);
   assert.match(jp.context.planting.text, /up to five years/);
   assert.equal(jp.scores.cultivation, 0);
 });
