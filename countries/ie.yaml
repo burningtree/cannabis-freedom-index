@@ -33,6 +33,25 @@ segments:
       - hrs2026
       - ll
       - oe
+      - costings
+      - lrc
+    currency: EUR
+    penalties:
+      - label: First cannabis possession offence (summary)
+        treatment: criminal
+        fine: 1000
+        note: Class D fine (max €1,000)
+      - label: Second cannabis possession offence (summary)
+        repeat: 2
+        treatment: criminal
+        fine: 1000
+        note: Class D fine
+      - label: Third or later cannabis possession offence (summary)
+        repeat: 3
+        treatment: criminal
+        fine: 2500
+        prison: 12 months
+        note: Class C fine (max €2,500) and/or up to 12 months
   cultivation:
     text: Cultivation is a criminal offence, with prison possible even for a few plants.
     sources:
@@ -47,9 +66,21 @@ segments:
       - hrs2026
       - ll
   sharing:
-    text: Supply, including unpaid sharing, is an offence.
+    text: >-
+      Supply, including unpaid sharing, is an offence under section 15:[@gov] on summary
+      conviction a fine and/or up to twelve months, on indictment an unlimited fine and/or up
+      to life imprisonment.[@lrc]
     sources:
       - gov
+      - lrc
+    penalties:
+      - label: Supply (summary conviction)
+        treatment: criminal
+        prison: 12 months
+        note: Fine and/or up to twelve months
+      - label: Supply (conviction on indictment)
+        treatment: criminal
+        note: Unlimited fine and/or up to life imprisonment
   consumption:
     text: Use is prosecuted through the possession offence.
     sources:
@@ -65,13 +96,29 @@ segments:
       - hrs2026
 
 context:
+  recreational:
+    text: >-
+      There is no legal way to buy cannabis. Adults buy illegally and use in private: possession
+      remains a crime, with the first two offences fine-only and prison possible from the
+      third.[@costings,lrc] Since 1 September 2026, eligible first-time adult cases can instead
+      be referred to the Health Referral Scheme, at Garda discretion.[@hrs2026]
+    sources:
+      - costings
+      - lrc
+      - hrs2026
+  hemp:
+    status: strict
+    text: >-
+      Industrial hemp may be grown only with a Health Products Regulatory Authority licence,
+      using EU-listed varieties under 0.2% THC.[@oireachtas,teagasc] No amount of THC is exempt
+      in finished products, which leaves CBD oils and foods in a grey
+      zone.[@teagasc]
+    sources:
+      - oireachtas
+      - teagasc
   production:
     status: none
     text: No licensed cannabis production.
-    sources:
-      - gov
-  products:
-    text: A few specified medical products; CBD products in a grey zone.
     sources:
       - gov
   medical:
@@ -170,6 +217,25 @@ sources:
   hrs2026:
     title: An Garda Síochána — Health Referral Scheme begins 1 September 2026
     url: https://www.garda.ie/en/about-us/our-departments/office-of-corporate-communications/press-releases/2026/september/31-08-2026-an-garda-siochana-will-implement-the-health-referral-scheme-from-1st-september-2026.html
+  costings:
+    title: Department of Justice — costings of an alternative approach to personal drug possession (penalty tiers from the Irish Statute Book)
+    url: https://assets.gov.ie/47482/c93eef2f53df462d941e303ff13aacee.pdf
+    locator: >-
+      First offence: Class D fine (max €1,000) summary, €1,270 indictment; second: Class D
+      summary, €2,540 indictment; third or later: Class C (max €2,500) and/or up to 12 months
+      summary, fine and/or up to 3 years indictment.
+  lrc:
+    title: Law Reform Commission — Misuse of Drugs Act 1977, revised section 27 (penalties)
+    url: https://revisedacts.lawreform.ie/eli/1977/act/12/section/27/revised/en/html
+    locator: >-
+      Section 3 possession tiers; section 15 supply: summary fine and/or up to twelve
+      months, indictment unlimited fine and/or up to life.
+  teagasc:
+    title: Teagasc — industrial hemp production (HPRA licence, under 0.2% THC, no THC exemption for finished products)
+    url: https://teagasc.ie/rural-economy/rural-development/diversification/industrial-hemp-production
+  oireachtas:
+    title: Houses of the Oireachtas — hemp needs an HPRA licence, varieties under 0.2% THC (November 2019)
+    url: https://www.oireachtas.ie/en/debates/question/2019-11-26/375//
   de_cang:
     title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
     url: https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz
