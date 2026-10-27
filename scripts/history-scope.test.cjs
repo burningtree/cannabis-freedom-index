@@ -1010,3 +1010,16 @@ test("every change id is unique (dev server rejects duplicate slugs)", () => {
   }
   assert.deepEqual(dupes, []);
 });
+
+
+test("Korea's 1957 original text is distinguished from local-hemp practice",()=>{
+ const e=byId['south-korea-narcotics-act-1957'];
+ assert.equal(e.date,'1957-06-23');
+ assert.match(e.sources[0].url,/lsiSeq=7835/);
+ assert.match(e.description,/no import-only qualification/);
+ for(const id of ['south-korea-narcotics-act-1957','south-korea-habit-forming-drugs-law-1970','south-korea-entertainers-arrested-1975']){
+  const text=fs.readFileSync(`articles/${id}.md`,'utf8');
+  assert.doesNotMatch(text,/banned only imported|forbidden only imported/);
+  assert.ok(text.includes('lsiSeq=7835'));
+ }
+});

@@ -17,6 +17,10 @@ sources:
   - title: Wikipedia — Cannabis in South Korea
     url: https://en.wikipedia.org/wiki/Cannabis_in_South_Korea
     locator: 1957 Act's Indian-marijuana limit; 1976 all-forms ban merged into the Narcotics Control Act in 2000
+  - type: law
+    title: South Korea National Law Information Center — Narcotics Act, original 1957 text
+    url: https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=7835
+    locator: Articles 2(3), 4 and 6; Indian hemp definition and regulated conduct
 ---
 
 In July 1970 South Korea criminalised its own hemp, closing a thirteen-year
@@ -25,8 +29,10 @@ years — until the day it was turned on the country's pop stars.[@1]
 
 ## The loophole America hated
 
-The 1957 Narcotics Act banned only imported "Indian marijuana".[@1,3]
-Home-grown cannabis stayed legal, and from the early 1960s it sold openly
+The [1957 Narcotics Act](/history/south-korea-narcotics-act-1957/) named
+“Indian hemp”, Cannabis sativa L.; the text has no import-only qualification.[@4]
+VanVolkenburg describes Korean hemp remaining outside its reach in practice,
+and from the early 1960s it sold openly
 around the American bases as "happy smoke".[@1] In 1966 the United States
 Forces Korea command asked Seoul to remove the loophole, and kept asking:
 American military arrests for marijuana rose from eight in 1966 to 635 in

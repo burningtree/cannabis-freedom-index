@@ -21,6 +21,10 @@ sources:
     url: https://gwangjunewsgic.com/arts-culture/korean-culture/shin-jung-hyeon/?shared=email&msg=fail
   - title: Wikipedia — Cannabis in South Korea
     url: https://en.wikipedia.org/wiki/Cannabis_in_South_Korea
+  - type: law
+    title: South Korea National Law Information Center — Narcotics Act, original 1957 text
+    url: https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=7835
+    locator: Articles 2(3), 4 and 6; Indian hemp definition and regulated conduct
 ---
 
 On 3 December 1975 South Korean prosecutors arrested three folk singers for smoking marijuana.[@1] Within a month more than eighty entertainers had been taken in.[@1] The country's strict cannabis law, passed the following year, grew out of that winter, and the winter itself grew out of a five-year campaign against the way young people looked and sounded.[@1]
@@ -41,7 +45,7 @@ By 1974 Korean folk, rock and pop had topped the charts for the first time. Park
 
 ## A law nobody knew about
 
-Korean hemp had always been legal: the 1957 Narcotics Act banned only imported Indian marijuana.[@2,4] Washington pressed Seoul to close the loophole around the American bases, and in July 1970 parliament passed the Habit-Forming Drug Control bill, through the [marijuana criminalisation of July 1970](/history/south-korea-habit-forming-drugs-law-1970/).[@2] For four years arrests stayed inside the camp towns, so home smokers never realised the law had changed.[@2]
+VanVolkenburg describes the 1957 law’s “Indian marijuana” category as leaving Korean hemp alone in practice.[@2] The [original statute](/history/south-korea-narcotics-act-1957/) names Cannabis sativa L. without an import-only qualification.[@5] Washington pressed Seoul to close the loophole around the American bases, and in July 1970 parliament passed the Habit-Forming Drug Control bill, through the [marijuana criminalisation of July 1970](/history/south-korea-habit-forming-drugs-law-1970/).[@2] For four years arrests stayed inside the camp towns, so home smokers never realised the law had changed.[@2]
 
 ## The arrests
 
@@ -51,7 +55,7 @@ Most of those arrested were not sent to prison. The Entertainers' Association ba
 
 ## The law that came after
 
-Hemp had been an ordinary crop, grown in every province into the 1930s and on 9,000 hectares in the late 1950s.[@4] A law of 1957 had forbidden only imported "Indian marijuana".[@4] The [Cannabis Control Act of 1976](/history/south-korea-cannabis-control-act-1976/) banned the plant as a drug in every form, and in 2000 it was folded into a single narcotics law, with the ban unchanged.[@4]
+Hemp had been an ordinary crop, grown in every province into the 1930s and on 9,000 hectares in the late 1950s.[@4] The 1957 law named “Indian hemp”; local hemp continued to circulate in the period described by contemporary reporting.[@5,2] The [Cannabis Control Act of 1976](/history/south-korea-cannabis-control-act-1976/) banned the plant as a drug in every form, and in 2000 it was folded into a single narcotics law, with the ban unchanged.[@4]
 
 ## Why the index moves before the ban
 

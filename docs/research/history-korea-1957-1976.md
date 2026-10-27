@@ -1,5 +1,10 @@
 # Korea 1957–1976 — import ban, paper criminalisation, crackdown, total ban
 
+**Original-text correction (27 October 2026):** the “import-only” description
+below is superseded by [the primary-law review](history-korea-1957-primary-2026-10-27.md).
+The original law names Cannabis sativa L. without an import-only qualification.
+The local-hemp distinction is reported practice; its legal interpretation remains open.
+
 Replaces the flat 1976-only story (1976 entry previously had `before` = FREE)
 with a four-step chain, all from read sources.
 
