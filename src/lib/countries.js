@@ -19,11 +19,11 @@ export const REC_HELP = {
   illegal: "A crime, punished with anything from a fine to prison",
   death: "A crime, and the law allows the death penalty for cannabis offences, in practice trafficking",
 };
-export const MED_LABEL = { yes: "Legal", limited: "Limited", no: "None" };
+export const MED_LABEL = { yes: "Legal", limited: "Limited", no: "None verified" };
 export const MED_HELP = {
   yes: "Patients have an established legal route to cannabis or cannabis-based medicine",
-  limited: "Access is case-specific, pharmaceutical-only, regional, a pilot, production-only or not yet operational",
-  no: "No legal medical use; proposals and CBD or industrial hemp alone do not qualify",
+  limited: "A patient treatment route is case-specific, pharmaceutical-only, regional, a pilot or not yet operational",
+  no: "No patient treatment route verified; research/export licences and CBD or industrial hemp alone do not establish one",
 };
 // Explanations that exist for each country but are not part of the score.
 // "Death penalty" comes first and exists only for countries whose law provides for it;

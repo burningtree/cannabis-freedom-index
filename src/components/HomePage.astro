@@ -140,8 +140,8 @@ const LAW_SECTIONS = {
     note: "The legal status of cannabis for adults. The index score measures much more than this one label." },
   med: { name: "Medical status", complete: true, statuses: Object.fromEntries(MED_ORDER.map((k) => [k, { label: MED_LABEL[k], help: MED_HELP[k] }])),
     tiers: { yes: 5, limited: 3, no: 0 },
-    sub: "Green means a medical cannabis programme is legal, yellow that access is limited, red that there is none.",
-    note: "Whether patients can get cannabis legally. Medical programmes are not part of the score." },
+    sub: "Green means an established patient route, yellow a restricted or unimplemented patient route, red that no patient route is verified.",
+    note: "Documented patient treatment routes. Research/export licences alone do not qualify. Medical status is not part of the score." },
 };
 const MAP_SECTIONS = { ...LAW_SECTIONS, ...STATUS_SECTIONS };
 const STATUS_SCALES = Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, { name: section.name,

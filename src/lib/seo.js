@@ -39,7 +39,7 @@ const REC_SENTENCE = {
   illegal: "is illegal",
   death: "is illegal, with the death penalty for trafficking",
 };
-const MED_SENTENCE = { yes: "Medical cannabis: legal.", limited: "Medical cannabis: limited.", no: "No medical cannabis." };
+const MED_SENTENCE = { yes: "Medical cannabis: legal.", limited: "Medical cannabis: limited.", no: "No patient cannabis treatment route verified." };
 const monthYear = (iso) => new Date(iso).toLocaleString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
 const lower = (s) => s[0].toLowerCase() + s.slice(1);
 export function placeDescription(x, name, reviewed) {

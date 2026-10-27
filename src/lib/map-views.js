@@ -28,7 +28,7 @@ export const MAP_VIEWS = [
   { slug: "recreational", metric: "status:rec", title: "Where recreational cannabis is legal",
     lede: "The legal status of cannabis for adults in every country: legal, tolerated, decriminalised, illegal, or punishable by death." },
   { slug: "medical", metric: "status:med", title: "Where medical cannabis is legal",
-    lede: "Whether patients can get cannabis legally in each country: a full programme, limited access, or none." },
+    lede: "Documented patient treatment routes: established, restricted or not yet operational, or none verified. Research and export licences alone do not qualify." },
   // the outside datasets (datasets.js), one view each
   ...MAPPED.map((ds) => ({ slug: ds.map.slug, metric: `data:${ds.id}`, title: ds.map.title, lede: ds.map.lede })),
   ...(SHOW_PRICES ? PRICE_MARKETS.map((market) => ({ slug: `price-${market}`, metric: `price:${market}`, title: `Cannabis prices by country: ${PRICE_MARKET_LABEL[market].toLowerCase()}`,

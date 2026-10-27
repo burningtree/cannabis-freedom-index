@@ -1578,8 +1578,14 @@ penalty from a context heading alone: it may discuss an abolished or excluded pe
 
 For medical access, date a score increase to an operating route for obtaining the relevant
 cannabis product, rather than enactment, production licences or a patient-registry proposal.
-CBD-only sales do not establish access to psychoactive cannabis. A framework still being
-implemented can retain `medical: limited` with access zero. Greece’s finished prescription
+CBD-only sales do not establish access to psychoactive cannabis. An enacted patient treatment
+framework still being implemented can retain `medical: limited` with access zero. A specific
+individual medical-use/import authorisation can also qualify, as in Tuvalu; verify its legal
+basis separately from issued licences and medicine availability. Research registration or
+export-production licensing alone does not qualify. Use `medical: none` (displayed as “None
+verified”) when no patient route has been verified, and retain research/production permissions
+in context. This records an evidence gap, not a categorical finding that every exceptional
+treatment is illegal. Keep quick answers and metadata equally precise. Greece’s finished prescription
 products reached patients in February 2024; Panama’s 2021 framework and 2026 CBD listings
 alone do not establish a working THC medicine route.
 

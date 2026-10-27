@@ -37,9 +37,9 @@ const status = {
   // "death": illegal, and the law allows the death penalty for cannabis offences, in practice trafficking.
   recreational: z.enum(["legal", "partial", "decriminalised", "illegal", "death"]),
   // "legal": an established patient route for cannabis or cannabis-based medicine.
-  // "limited": case-specific or pharmaceutical-only access, or legal authority limited to a pilot,
-  // one region, research/production, or a framework that is not yet operational.
-  // "none": no legal medical use; a proposal, CBD/hemp alone, or a future programme does not qualify.
+  // "limited": a specific patient treatment route, including individual authorisation, approved
+  // medicines, regional/pilot schemes or an enacted patient framework not yet operational.
+  // "none": no patient route verified; research/export licences, proposals or CBD/hemp alone do not qualify.
   medical: z.enum(["legal", "limited", "none"]),
 };
 

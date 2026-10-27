@@ -574,3 +574,18 @@ test('Montana combines product equivalents and preserves strict civil boundaries
  assert.match(mt.answers.grow.text,/Montana residents/);
  assert.doesNotMatch(mt.segments.enforcement,/felony above 2 oz/);
 });
+
+// Issue #205
+test('Medical labels require a patient route, not research or export licensing (#205)',()=>{
+ for(const id of ['fm','ls','al','sl','zw','so','gh','lb','np']) {
+  const x=country(id);assert.equal(x.medical,'none',id);assert.equal(x.scores.access,0,id);
+  assert.match(x.answers.buy.text,/route verified/);
+ }
+ const tv=country('tv');assert.equal(tv.medical,'limited');assert.equal(tv.scores.access,0);
+ assert.match(tv.context.medical.text,/Section 14A.*medical use and import/s);
+ assert.match(tv.answers.buy.text,/ministerial licence.*not verified/);
+ const labels=fs.readFileSync(path.join(root,'src/lib/countries.js'),'utf8');
+ assert.match(labels,/no: "None verified"/);assert.doesNotMatch(labels,/production-only/);
+ const seo=fs.readFileSync(path.join(root,'src/lib/seo.js'),'utf8');
+ assert.match(seo,/No patient cannabis treatment route verified/);
+});
