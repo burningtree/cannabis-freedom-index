@@ -2,8 +2,8 @@
 title: Zamal on Réunion
 summary: On Réunion cannabis arrived with enslaved Malagasy and indentured labourers, and found a place in their rites, gardens and remedies. In Tamil temples the gods were said to ask for it through possessed priests. Most of those uses had faded by the 1970s.
 also: [zamal, candia, ciga, Malbar, marche sur le feu]
-countries: [fr]
-history: [france-use-criminalised-1970]
+countries: [fr, re]
+history: [france-use-criminalised-1970, reunion-zamal-malagasy-roots-1729, reunion-youth-zamal-groups-1971]
 related: [language/zamal, traditions/sadhus-and-the-chillum, traditions/kumina]
 image:
   src: ../../src/assets/culture/reunion-marche-sur-le-feu.jpg
@@ -31,7 +31,7 @@ sources:
     locator: pp. 227–234, especially pp. 229–231
 ---
 
-Réunion, a French island in the Indian Ocean, was settled from the late seventeenth century by Europeans, by enslaved Africans and Malagasy, and after slavery by indentured labourers, most of them from south India. Cannabis, called [*zamal*](/culture/language/zamal/), was present by 1770, when it was pressed in a herbarium. The French drug observatory says it came with slavery and indenture, and that people from Africa, Madagascar, the Comoros, China and India treated themselves with plants including zamal, following the knowledge of the places they came from.
+Réunion, a French island in the Indian Ocean, was settled from the late seventeenth century by Europeans, by enslaved Africans and Malagasy, and after slavery by indentured labourers, most of them from south India. Cannabis, called [*zamal*](/culture/language/zamal/), was present by 1770, when it was pressed in a herbarium. The French drug observatory says it [came with slavery](/history/reunion-zamal-malagasy-roots-1729/) and indenture, and that people from Africa, Madagascar, the Comoros, China and India treated themselves with plants including zamal, following the knowledge of the places they came from.
 
 The fullest account of what each community did with it is by the physician and anthropologist Jean Benoist, who studied the island in the early 1970s. It is an outsider's account, written when many of the customs were already fading, and it is the source of most of what follows. Benoist himself stressed that the plant, though widely known, was rarely used.
 
@@ -67,6 +67,6 @@ By Benoist's time most of this had stopped. Strict laws, he wrote, had made heal
 
 ## From custom to market
 
-After Réunion became a French department in 1946, money, schools and migrants changed the island. Benoist saw two new kinds of use: Comorian labourers in the shanty towns around Le Port and Saint-Denis, and lycée pupils and young people from mainland France smoking on the beaches. The authorities, he wrote, chose discretion, judging that the habit was no threat to society. By then the rituals had shrunk to something "purely symbolic".
+After Réunion became a French department in 1946, money, schools and migrants changed the island. Benoist saw [two new kinds of use](/history/reunion-youth-zamal-groups-1971/): Comorian labourers in the shanty towns around Le Port and Saint-Denis, and lycée pupils and young people from mainland France smoking on the beaches. The authorities, he wrote, chose discretion, judging that the habit was no threat to society. By then the rituals had shrunk to something "purely symbolic".
 
 French law treats the island like the mainland: the [1970 drug law](/history/france-use-criminalised-1970/) made any use a crime. The observatory's report for 2021 found cannabis grown locally and sold through small networks of acquaintances, never made into resin. Many islanders believed that a plant or two for one's own use was legal, which it is not. Zamal was the third most common reason for treatment at addiction centres, after alcohol and tobacco, and good local zamal was becoming scarce as imported hybrid strains spread.

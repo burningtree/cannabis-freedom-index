@@ -6,8 +6,8 @@ spelling:
   - { text: "zamal", lang: Réunion Creole }
   - { text: "jamala", lang: "Malagasy (Drury, 1729)" }
 also: [jamala, amale, candia, ciga, chimique]
-countries: [fr, mg]
-history: [madagascar-merina-ban-1787, france-use-criminalised-1970]
+countries: [fr, mg, re]
+history: [madagascar-merina-ban-1787, france-use-criminalised-1970, reunion-zamal-malagasy-roots-1729]
 related: [traditions/zamal-on-reunion, language/ganja, language/dagga]
 model: gpt-6
 written: 2026-10-14
@@ -45,7 +45,7 @@ Mauritius, the next island, does not use it. There, Benoist noted, cannabis is [
 
 The anthropologist Jean Benoist, writing in the early 1970s, judged that the word looks Malagasy but is not found in the Malagasy of his day. He relied on the linguist Robert Chaudenson, whose study of Réunion Creole noted a form *jamala* in Robert Drury's vocabulary of the language of western Madagascar, published in 1729. That was when Réunion, empty until the late seventeenth century, was only beginning to be settled.
 
-Benoist's conclusion was that the plant probably came to Réunion with enslaved people from Madagascar, and the word with it. In Madagascar itself the plant had been banned by the [Merina kingdom in 1787](/history/madagascar-merina-ban-1787/). The word then became the island's ordinary term, and seems to have travelled back to Madagascar with migrants from Réunion. *Zamal* is now counted among the Malagasy words for cannabis, beside *rangani*.
+Benoist's conclusion was that [the plant probably came to Réunion with enslaved people from Madagascar](/history/reunion-zamal-malagasy-roots-1729/), and the word with it. In Madagascar itself the plant had been banned by the [Merina kingdom in 1787](/history/madagascar-merina-ban-1787/). The word then became the island's ordinary term, and seems to have travelled back to Madagascar with migrants from Réunion. *Zamal* is now counted among the Malagasy words for cannabis, beside *rangani*.
 
 The [Paris museum’s Commerson specimen](https://science.mnhn.fr/institution/mnhn/collection/p/item/p00108129), MNHN-P-P00108129, records *Cannabis sativa* collected on Île Bourbon, the island’s former name. This is botanical evidence of the plant’s early presence, not evidence that the sheet was labelled *zamal*. The precise introduction of cannabis to Réunion remains uncertain.
 
