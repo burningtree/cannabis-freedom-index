@@ -5,7 +5,8 @@ import { glob, file } from "astro/loaders";
 import { z } from "astro/zod";
 import { isMixedCannabisPrice } from "./lib/price-selection.js";
 import { TREATMENT, parseAmount, parseDuration } from "./lib/penalties.js";
-import { SEGMENT_IDS, CONTEXT_IDS, OPTIONAL_CONTEXT_IDS, sectionSources, CHANGE_CATEGORIES, CHANGE_TAGS, PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "./lib/segment-ids.js";
+import { SEGMENT_IDS, CONTEXT_IDS, OPTIONAL_CONTEXT_IDS, CONTEXT_RESEARCH_IDS, sectionSources, CHANGE_CATEGORIES, CHANGE_TAGS, PLANTING_STATUS, PLANTING_TRADE, STATUS_SECTIONS } from "./lib/segment-ids.js";
+import { hasContextExplanation } from "./lib/context-coverage.js";
 
 const score = z.number().int().min(0).max(10);
 const perSegment = <T extends z.ZodTypeAny>(value: T) =>
@@ -117,6 +118,10 @@ const countries = defineCollection({
       // (`clubs`, `driving`, `visitors`), the plain optional ones (OPTIONAL_CONTEXT_IDS) and the
       // list of `spotlights`
       context: z.object({ death_penalty: cited.optional(), planting: planting.optional(), ...Object.fromEntries(OPTIONAL_CONTEXT_IDS.map((id) => [id, cited.optional()])), spotlights: z.array(spotlight).min(1).optional(), ...Object.fromEntries(CONTEXT_IDS.map((id) => [id, cited])), ...statusSections }).strict(),
+      // Research-only exceptions: absence of evidence is a gap, not an exception.
+      context_not_applicable: z.object(Object.fromEntries(CONTEXT_RESEARCH_IDS.map(id => [id,
+        z.object({ text: z.string().refine(hasContextExplanation, { message: "explain why this category does not apply" }), sources: z.array(z.string()).min(1) }).strict().optional(),
+      ]))).strict().optional(),
       sources: z.record(z.string(), source),
       subunits: z
         .object({
@@ -135,6 +140,12 @@ const countries = defineCollection({
         ctx.addIssue({ code: "custom", message: 'a country marked "recreational: death" needs a context.death_penalty section' });
       }
       const blocks = { ...data.segments, ...data.context } as Record<string, unknown>;
+      for (const [name, block] of Object.entries(data.context_not_applicable ?? {})) {
+        if (data.context[name]) ctx.addIssue({ code: "custom", message: `"${name}" has context content and a not-applicable explanation; choose one` });
+        for (const key of block.sources) {
+          if (!(key in data.sources)) ctx.addIssue({ code: "custom", message: `"context_not_applicable.${name}" cites unknown source "${key}"` });
+        }
+      }
       for (const [name, block] of Object.entries(blocks)) {
         for (const key of sectionSources(block)) {
           if (!(key in data.sources)) ctx.addIssue({ code: "custom", message: `"${name}" cites unknown source "${key}"` });

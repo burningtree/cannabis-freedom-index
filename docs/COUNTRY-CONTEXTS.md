@@ -1,6 +1,9 @@
 # Context sections: fix and extend
 
-Status: **proposal**, 27 October 2026. Nothing here is built yet. It comes out of issue #224.
+Status: **implemented structure; country migration in progress**, 27 October 2026.
+It comes out of issue #224. Research progress now targets every current category:
+cited content or a sourced explanation that it does not apply. See
+[the coverage rules](DATA-MAINTENANCE.md#context-coverage-on-research-progress).
 
 Everything stays in the country profile, `countries/<cc>.yaml`, under `context`. Every section
 keeps today's shape (`text` and `sources`, with an optional `status` where noted). Nothing here
@@ -95,8 +98,9 @@ and what bans, eradication or imported hybrids did to them.
 
 - Seed-shop strain names are not evidence ("Malawi Gold" does not prove a living landrace).
 - No exact grow locations and no farmers' names.
-- "Not documented" never means "does not exist", so leave the section out rather than writing
-  "none".
+- "Not documented" never means "does not exist". Leave the section out while researching;
+  Research progress records it as a gap. An explained exception needs evidence that the
+  category does not apply, not simply that no account has been found.
 
 ### `research`: Research
 

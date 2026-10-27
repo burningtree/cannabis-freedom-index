@@ -999,6 +999,7 @@ test("country sections and history entries have complete, valid inline citation 
     };
     visit(profile.segments, `countries/${file}: segments`);
     visit(profile.context, `countries/${file}: context`);
+    visit(profile.context_not_applicable, `countries/${file}: context_not_applicable`);
   }
   assert.deepEqual(bad, []);
 });

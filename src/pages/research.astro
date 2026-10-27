@@ -10,6 +10,7 @@ const base = import.meta.env.BASE_URL;
 const num = (n) => n.toLocaleString("en-US");
 const example = research[0].checks;
 const points = (part) => example.filter((c) => c.part === part).reduce((a, c) => a + c.of, 0);
+const parts = [["profile", "Profile"], ["context", "Context"], ["history", "History"]];
 const stats = [
   [`${T.average}%`, "Average"],
   [`${T.byPopulation}%`, "Weighted by population"],
@@ -17,6 +18,8 @@ const stats = [
   [num(T.good), "At 75% or more"],
   [num(T.poor), "Below 40%"],
   [num(T.estimates), "First ban only estimated"],
+  [`${T.contexts.pct}%`, "Context categories covered"],
+  [num(T.contexts.missing), "Context gaps"],
 ];
 ---
 <Base title="Research progress" description="How much of each country's profile and history has been researched, and what is still missing." noindex>
@@ -24,7 +27,8 @@ const stats = [
     <section class="hero hero-sm">
       <p class="eyebrow">Internal</p>
       <h1>Research progress</h1>
-      <p class="lede">For each of the {num(T.places)} countries and territories: how much of the profile is filled in and sourced, how many history entries there are, and how complete that history looks. The figure is the share of points a country has out of {points("profile")} for its profile and {points("history")} for its history.</p>
+      <p class="lede">For each of the {num(T.places)} countries and territories: how much of the profile and context is filled in and sourced, and how complete the history looks. The figure is the share of points a country has out of {points("profile")} for its profile, {points("context")} for context and {points("history")} for history.</p>
+      <p class="lede">The context target is every category in every country: cited content, or a cited explanation of why it does not apply. Missing information and bare “None” placeholders remain gaps. The old Products section does not replace recreational, medical or hemp coverage.</p>
       <p class="lede">The checks only see what is in the files. They cannot know that nothing is missing, so they stop at 99%. A country shows 100% only when every check passes and someone has signed it off by hand, with <code>complete: YYYY-MM-DD</code> in its file.</p>
     </section>
 
@@ -40,13 +44,24 @@ const stats = [
         <p class="sub">Each check gives points; a partly met check gives part of them.</p>
       </div></div>
       <div class="rs-checks">
-        {["profile", "history"].map((part) => (
+        {parts.map(([part, label]) => (
           <table class="src-table">
-            <thead><tr><th>{part === "profile" ? "Profile" : "History"}</th><th class="num">Points</th></tr></thead>
+            <thead><tr><th>{label}</th><th class="num">Points</th></tr></thead>
             <tbody>{example.filter((c) => c.part === part).map((c) => <tr><td>{c.label}</td><td class="num">{c.of}</td></tr>)}</tbody>
           </table>
         ))}
       </div>
+    </section>
+
+    <section class="section" aria-labelledby="contextCoverageTitle">
+      <div class="section-head"><div>
+        <h2 id="contextCoverageTitle">Context coverage</h2>
+        <p class="sub">{num(T.contexts.filled)} filled sections and {num(T.contexts.notApplicable)} explained as not applicable, out of {num(T.contexts.total)} country-category pairs. The target is 100% coverage; unavailable evidence still needs research.</p>
+      </div></div>
+      <div class="rs-scroll"><table class="src-table rs-context-table">
+        <thead><tr><th>Category</th><th class="num">Filled</th><th class="num">Not applicable, explained</th><th class="num">Gaps</th><th class="num">Covered</th></tr></thead>
+        <tbody>{T.contexts.sections.map(s => <tr><th scope="row">{s.label}</th><td class="num">{s.filled}</td><td class="num">{s.notApplicable}</td><td class="num">{s.missing}</td><td class="num">{s.pct}%</td></tr>)}</tbody>
+      </table></div>
     </section>
 
     <section class="section">
@@ -61,6 +76,7 @@ const stats = [
           <th data-sort="name">Country</th>
           <th class="num" data-sort="pct" aria-sort="descending">Research</th>
           <th class="num" data-sort="profile">Profile</th>
+          <th class="num" data-sort="context" title="Cited content or a sourced not-applicable explanation for every context category">Context</th>
           <th class="num" data-sort="history">History</th>
           <th class="num" data-sort="entries">Entries</th>
           <th class="num" data-sort="scored" title="Entries that moved a score">Scored</th>
@@ -71,11 +87,14 @@ const stats = [
           <th class="num" data-sort="reviewed">Reviewed</th>
         </tr></thead>
         {research.map((r) => (
-          <tbody data-name={r.name.toLowerCase()} data-region={r.region.toLowerCase()} data-pct={r.pct} data-profile={r.profile} data-history={r.history} data-entries={r.entries} data-scored={r.scored} data-articles={r.articles} data-first={r.first === "est." ? 9998 : r.first === "—" ? 9999 : r.first} data-silent={r.silent} data-gap={r.gap ?? -1} data-reviewed={r.reviewed}>
+          <tbody data-name={r.name.toLowerCase()} data-region={r.region.toLowerCase()} data-pct={r.pct} data-profile={r.profile} data-context={r.context} data-history={r.history} data-entries={r.entries} data-scored={r.scored} data-articles={r.articles} data-first={r.first === "est." ? 9998 : r.first === "—" ? 9999 : r.first} data-silent={r.silent} data-gap={r.gap ?? -1} data-reviewed={r.reviewed}>
             <tr class="rs-row" tabindex="0" aria-expanded="false">
               <th scope="row"><a href={`${base}country/${r.slug}/`}>{r.flag} {r.name}</a>{r.disputed && <small> territory</small>}</th>
               <td class="num"><span class="rs-bar" style={`--p:${r.pct}%`}><b>{r.pct}%</b></span></td>
               <td class="num">{r.profile}%</td>
+              <td class="num rs-context-count" title={`${r.contextCoverage.filled} filled; ${r.contextCoverage.notApplicable} explained as not applicable; ${r.contextCoverage.missing} gaps`}>
+                {r.context}% <small>{r.contextCoverage.covered}/{r.contextCoverage.total}</small>
+              </td>
               <td class="num">{r.history}%</td>
               <td class="num">{r.entries}</td>
               <td class="num">{r.scored}</td>
@@ -85,13 +104,19 @@ const stats = [
               <td class="num">{r.gap ?? "—"}</td>
               <td class="num mono">{r.reviewed}</td>
             </tr>
-            <tr class="rs-more" hidden><td colspan="11">
+            <tr class="rs-more" hidden><td colspan="12">
               <div class="rs-missing">
-                {["profile", "history"].map((part) => (
+                {parts.map(([part, label]) => (
                   <div>
-                    <h3>{part === "profile" ? "Profile" : "History"}</h3>
+                    <h3>{label}</h3>
                     <ul>
-                      {r.checks.filter((c) => c.part === part).map((c) => (
+                      {part === "context" ? r.contextCoverage.sections.map(s => (
+                        <li class={s.state === "filled" || s.state === "not_applicable" ? "ok" : ""}>
+                          <span>{s.state === "filled" || s.state === "not_applicable" ? "✓" : "·"} {s.label} <small>{s.state === "not_applicable" ? "Not applicable, explained" : s.state === "filled" ? "Filled" : "Gap"}</small></span>
+                          {s.reason && <em>{s.reason}</em>}
+                          {s.references.length > 0 && <span class="rs-context-sources">{s.references.map((source, i) => source.url ? <a href={source.url} target="_blank" rel="noopener noreferrer">Source {i + 1}: {source.title}</a> : <span>{source.title}</span>)}</span>}
+                        </li>
+                      )) : r.checks.filter((c) => c.part === part).map((c) => (
                         <li class={c.got >= c.of ? "ok" : ""}>
                           <span>{c.got >= c.of ? "✓" : "·"} {c.label} <small>{Math.round(c.got * 10) / 10} of {c.of}</small></span>
                           {c.missing.length > 0 && <em>{c.missing.slice(0, 12).join("; ")}{c.missing.length > 12 && `; and ${c.missing.length - 12} more`}</em>}

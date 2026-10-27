@@ -357,6 +357,45 @@ and Germany are written this way and can serve as models.
 `products` is being folded into `recreational`, `medical` and `hemp`; when you revise a country,
 move its content and delete the section. The schema accepts both during the move.
 
+### Context coverage on Research progress
+
+The completion target on `/research/` is all sixteen current context categories for
+every country. Each category needs cited content, or a sourced explanation of why
+it does not apply. This is a research target: partially researched profiles remain
+publishable. It does not change the cannabis freedom score.
+
+The page shows coverage by category and by country, and lists every gap when a
+country's row is expanded. Filled sections and explained exceptions are counted
+separately. Empty text, bare `None` / `N/A` placeholders, missing sources and unknown
+source keys do not count. Every spotlight in a section needs its own cited text.
+The retired `products` section earns no replacement-category credit.
+
+For a reviewed exception, use country-level `context_not_applicable`, with the
+category's existing key and a cited explanation. For example, **only after checking
+the law for that country**:
+
+```yaml
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Cannabis offences carry fines or imprisonment under the criminal code;
+      none of the applicable offences provides a capital sentence.
+    sources: [criminal_code]
+```
+
+Source keys must exist in the country's `sources`. The research page displays the
+explanation and references. A category cannot have both regular context content
+and a not-applicable explanation. For a category that has relevant negative facts,
+such as a law prohibiting commercial cultivation, explain those facts in its usual
+context section instead. Missing statistics, an undocumented landrace or a study
+not yet found are research gaps, not proof that a category is inapplicable. Do not
+invent spotlights or traditions to make the percentage rise.
+
+Context now contributes its own sixteen points to the research percentage, beside
+the profile and history checks. The existing manual sign-off is still required
+for overall 100%; full context coverage alone is insufficient. Run
+`npm run research:test` when changing coverage rules.
+
 ### Statuses for hemp, industry and research
 
 `hemp`, `production` and `research` may carry a `status`, like `clubs` or `driving`. It shows as a

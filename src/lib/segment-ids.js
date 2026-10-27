@@ -5,6 +5,9 @@ export const CONTEXT_IDS = ["production", "medical", "consequences"];
 // Optional plain cited sections (docs/COUNTRY-CONTEXTS.md). `products` is being folded into
 // `recreational`, `medical` and `hemp`; it stays valid until every country has moved.
 export const OPTIONAL_CONTEXT_IDS = ["recreational", "products", "hemp", "black_market", "arrests", "culture", "genetics", "research"];
+// Completion targets include every current context category. The retired Products section
+// cannot substitute for its recreational, medical and hemp replacements.
+export const CONTEXT_RESEARCH_IDS = ["death_penalty", "recreational", "medical", "clubs", "planting", "hemp", "production", "black_market", "visitors", "driving", "arrests", "consequences", "culture", "genetics", "research", "spotlights"];
 // `spotlights` is the one section that is a list: [{ title, text, sources }], one item per spotlight.
 // The source keys a section cites, whichever shape it has.
 export const sectionSources = (block) => (Array.isArray(block) ? block.flatMap((item) => item.sources) : block?.sources ?? []);

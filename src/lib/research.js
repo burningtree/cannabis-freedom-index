@@ -4,8 +4,9 @@
 // 100%: that needs `complete: <date>` in the country file, set by hand once someone has gone
 // through the country and found nothing left to add.
 import { getCollection } from "astro:content";
-import { SEGMENTS, dateTime, articles } from "./countries.js";
-import { CONTEXT_IDS, STATUS_SECTIONS } from "./segment-ids.js";
+import { SEGMENTS, CONTEXT, dateTime, articles } from "./countries.js";
+import { CONTEXT_RESEARCH_IDS } from "./segment-ids.js";
+import { contextCoverage } from "./context-coverage.js";
 import { archivedUrl } from "./archive.js";
 import { datasetsOf, latestOf } from "./datasets.js";
 
@@ -13,9 +14,7 @@ import { datasetsOf, latestOf } from "./datasets.js";
 const WEAK = /cannabisregulations\.ai|tripbase\.com|sensiseeds\.com/;
 const WIKI = /wikipedia\.org/;
 const solid = (src) => src && (!src.url || !(WEAK.test(src.url) || WIKI.test(src.url))); // a book has no url
-const SECTIONS = [...new Set([...CONTEXT_IDS, "products", "planting", ...Object.keys(STATUS_SECTIONS).filter((k) => !STATUS_SECTIONS[k].optional), "black_market", "arrests"])];
-// a profile that has folded `products` into `recreational` and `hemp` has not lost a section
-const researched = (context, k) => k === "products" && !context.products ? Boolean(context.recreational?.sources.length && context.hemp?.sources.length) : Boolean(context[k]?.sources.length);
+const CONTEXT_SECTIONS = CONTEXT.filter(([key]) => CONTEXT_RESEARCH_IDS.includes(key));
 const NOW = new Date();
 const THIS_YEAR = NOW.getFullYear();
 const total = (scores) => SEGMENTS.reduce((sum, seg) => sum + (scores[seg.id] * seg.weight) / 10, 0);
@@ -34,8 +33,9 @@ export const research = (await getCollection("countries")).map(({ id: slug, data
   add("profile", "Every score is cited", SEGMENTS.length - uncited.length, SEGMENTS.length, uncited.map((s) => `${s.name}: no source`));
   const soft = SEGMENTS.filter((seg) => data.segments[seg.id].sources.length && !src(data.segments[seg.id].sources).some(solid));
   add("profile", "Every score rests on more than Wikipedia", SEGMENTS.length - uncited.length - soft.length, SEGMENTS.length, soft.map((s) => `${s.name}: only Wikipedia or a weak site`));
-  const empty = SECTIONS.filter((k) => !researched(data.context, k));
-  add("profile", "Context sections researched", SECTIONS.length - empty.length, SECTIONS.length, empty.map((k) => `${k.replace("_", " ")}: ${data.context[k] ? "no source" : "missing"}`));
+  const coverage = contextCoverage(data, CONTEXT_SECTIONS);
+  add("context", "Every context category filled or explained", coverage.covered, coverage.total,
+    coverage.sections.filter(s => s.state === "missing" || s.state === "incomplete").map(s => `${s.label}: ${s.reason}`));
   const use = latestOf(slug).cannabis_use ?? {};
   add("profile", "Use is a measured figure", use.year && !use.estimate ? 1 : 0, 1, use.year && !use.estimate ? [] : ["prevalence of use is an estimate"]);
   const age = (NOW - data.updated) / 864e5;
@@ -83,7 +83,8 @@ export const research = (await getCollection("countries")).map(({ id: slug, data
   return {
     slug, name: data.name, flag: data.flag ?? flagOf(slug), region: data.region, disputed: Boolean(data.disputed || data.dependency),
     population: datasetsOf(slug).population?.at(-1).population ?? 0,
-    pct, profile: Math.floor(share("profile") * 100), history: Math.floor(share("history") * 100), signed,
+    pct, profile: Math.floor(share("profile") * 100), context: coverage.pct, history: Math.floor(share("history") * 100), signed,
+    contextCoverage: { ...coverage, sections: coverage.sections.map(s => ({ ...s, references: src(s.sources) })) },
     entries: own.length, scored: scored.length, articles: own.filter((e) => articles.has(e.id)).length,
     first: first ? (first.estimate ? "est." : first.date.slice(0, 4)) : "—",
     gap: gaps.length ? Math.max(...gaps) : null, silent: silent.length,
@@ -102,4 +103,18 @@ export const researchTotals = {
   poor: research.filter((r) => r.pct < 40).length,
   entries: entries.length,
   estimates: research.filter((r) => r.first === "est.").length,
+  contexts: (() => {
+    const filled = research.reduce((n, r) => n + r.contextCoverage.filled, 0);
+    const notApplicable = research.reduce((n, r) => n + r.contextCoverage.notApplicable, 0);
+    const total = research.reduce((n, r) => n + r.contextCoverage.total, 0);
+    return { filled, notApplicable, total, covered: filled + notApplicable, missing: total - filled - notApplicable,
+      pct: total ? Math.floor(100 * (filled + notApplicable) / total) : 0,
+      sections: CONTEXT_SECTIONS.map(([key, label]) => {
+        const sections = research.map(r => r.contextCoverage.sections.find(s => s.key === key));
+        const filled = sections.filter(s => s.state === "filled").length;
+        const notApplicable = sections.filter(s => s.state === "not_applicable").length;
+        return { key, label, filled, notApplicable, missing: research.length - filled - notApplicable, pct: Math.floor(100 * (filled + notApplicable) / research.length) };
+      }),
+    };
+  })(),
 };
