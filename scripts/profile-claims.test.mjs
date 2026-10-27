@@ -470,3 +470,20 @@ test('French B2 visibility has its own three-year clock and restricted audience 
   assert.match(text, /ten years in a national database/);
   assert.match(events().find(e=>e.id==='france-fixed-fine-2026').description,/B2 criminal record for three years/);
 });
+
+// Issue #206
+test('Saint Kitts separates the private-use ruling from later statutory bands (#206)', () => {
+  const kn=country('kn');
+  assert.doesNotMatch(kn.segments.possession.text,/Above that it is a criminal offence/);
+  assert.match(kn.segments.possession.text,/any amount in private for their own private use/);
+  assert.match(kn.segments.possession.text,/Parliament power to regulate quantities/);
+  assert.match(kn.segments.possession.text,/56 g.*15 g/);
+  assert.match(kn.segments.cultivation.text,/EC\$50 ticket.*five plants/);
+  assert.match(kn.segments.enforcement.text,/three days in prison for default/);
+  assert.match(kn.answers.carry.text,/separate from protection for private personal use/);
+  assert.match(kn.context.visitors.text,/Importation and supply are outside/);
+  assert.match(events().find(e=>e.id==='saint-kitts-decriminalisation-2019').description,/Parliament power to set quantity limits/);
+  const article=fs.readFileSync(path.join(root,'articles/saint-kitts-decriminalisation-2019.md'),'utf8');
+  assert.doesNotMatch(article,/is now treated as a minor infraction/);
+  assert.deepEqual(kn.scores,{possession:4,cultivation:3,enforcement:5,sharing:1,consumption:3,access:1});
+});

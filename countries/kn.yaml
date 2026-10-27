@@ -3,8 +3,10 @@ region: North America
 iso_numeric: 659
 recreational: decriminalised
 medical: limited
-updated: 2026-10-12
-summary: A 2019 court ruling protected private adult use; small amounts are decriminalised.
+updated: 2026-10-27
+summary: >-
+  A 2019 ruling protects adults' private personal use and growing. Later laws set ticket and
+  licence rules; 56 g is the statutory ticket threshold, not the court's privacy test.
 scores:
   possession: 4
   cultivation: 3
@@ -15,31 +17,43 @@ scores:
 segments:
   possession:
     text: >-
-      In May 2019 the High Court ruled that adults may possess and use cannabis in private.
-      Parliament then made possession of small amounts a ticketable infraction instead of a crime —
-      a small fixed fine — first up to 15 g, raised in February 2020 to 56 g. Above that it is a
-      criminal offence.
+      In May 2019 the High Court declared the blanket ban unconstitutional for adults possessing
+      any amount in private for their own private use. It also expressly left Parliament power
+      to regulate quantities. The ruling does not protect supply or importation.[@judgment]
+      Under the 2023 amendment, unlicensed possession of up to 56 g of cannabis or 15 g of resin,
+      secured against access by minors, vulnerable people and unauthorised persons, carries an
+      EC$50 ticket in public or private; the person retains the cannabis. Licence exceptions also
+      apply.[@drugs23] Above 56 g, private personal-use constitutional protection is a separate,
+      fact-dependent question alongside later legislation; the ticket threshold alone does not
+      establish that every private possession is criminal.[@judgment,drugs23]
     sources:
-      - wiki
-      - norml
+      - judgment
+      - drugs23
   cultivation:
     text: >-
-      The same court ruling protects growing in private for personal use, and the 2019 amendments
-      treat five plants or fewer as a ticketable matter rather than a crime. It is tolerated rather
-      than positively licensed. Since April 2026 adults can also apply, under the 2023 Freedom of
-      Conscience (Cannabis) Act, for a licence to grow up to five plants in a secured part of a
-      private home.
+      The 2019 ruling likewise protected adults growing any amount in private for their own use,
+      while leaving Parliament power to set limits.[@judgment] The 2023 amendment provides an
+      EC$50 ticket for unlicensed growing of up to five plants in a secured private home; the
+      grower retains the plants. This statutory band and the constitutional private-use protection
+      are separate questions.[@drugs23,judgment] Adults can also apply under the 2023 Freedom of
+      Conscience (Cannabis) Act for a licence to grow up to five secured home plants; application
+      forms became available in April 2026.[@conscience23,gov26]
     sources:
-      - norml
-      - wiki
+      - judgment
+      - drugs23
+      - conscience23
       - gov26
   enforcement:
     text: >-
-      Small amounts and a few plants mean a ticket. Public smoking is fined more heavily, and larger
-      quantities and dealing remain criminal.
+      The statutory small-possession and five-plant routes carry EC$50 tickets. Default can lead
+      to up to ten hours of community service, then three days in prison for default on that
+      service. Unauthorised public smoking carries an EC$500 ticket, then up to twenty hours of
+      service and five days for default.[@drugs23] A private personal-use claim above the ticket
+      bands depends on the circumstances and later law; dealing and importation are outside
+      the 2019 private-use protection.[@judgment]
     sources:
-      - wiki
-      - sknis19
+      - drugs23
+      - judgment
   sharing:
     text: >-
       Supply to another person remains an offence. Rastafari sacramental use in registered places of
@@ -49,11 +63,14 @@ segments:
       - wiki
   consumption:
     text: >-
-      Private use by adults is protected. Smoking in public is an offence with a substantially
-      higher fine than simple possession.
+      Private personal use by adults is protected by the 2019 ruling.[@judgment] Public smoking
+      outside legally designated or authorised religious places carries a higher ticket than
+      possession. A Freedom of Conscience licence permits smoking in designated public
+      places.[@drugs23,conscience23]
     sources:
-      - wiki
-      - sknis19
+      - judgment
+      - drugs23
+      - conscience23
   access:
     text: >-
       No adult-use shops. The Cannabis Act, fully brought into force in April 2023, sets up a
@@ -121,16 +138,18 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says cannabis
-      for personal use has been decriminalised but that a licence is needed to use it, with
-      fines for smoking in some public places or without a licence. Other drug offences carry
-      severe penalties: up to 10 years in prison and a fine of up to 400,000 East Caribbean
-      dollars or three times the street value in the Magistrates Court, and at least 15 years
-      in the High Court.
+      There are no legal adult-use shops. Unlicensed possession within the secured 56 g cannabis
+      or 15 g resin band carries an EC$50 ticket, including on private premises.[@sknis23,drugs23]
+      The 2019 ruling separately protects adult private personal use; quantities above the
+      statutory band require a fact-specific assessment under that ruling and later law.
+      Importation and supply are outside its protection.[@judgment] Temporary Freedom of
+      Conscience licences are available for seven days; public smoking is restricted to
+      designated or authorised religious places.[@conscience23,drugs23]
     sources:
       - sknis23
-      - wiki
-      - fcdo
+      - drugs23
+      - judgment
+      - conscience23
   driving:
     status: impairment
     text: >-
@@ -151,7 +170,33 @@ context:
     sources:
       - traffic2020
       - traffic2025
+answers:
+  carry:
+    answer: limited
+    text: The secured 56 g cannabis or 15 g resin ticket band is separate from protection for private personal use
+  grow:
+    answer: limited
+    text: Five secured home plants have ticket or licence routes; private personal-use protection is a separate question
+  caught:
+    answer: limited
+    label: Ticket or court assessment
+    text: EC$50 within statutory possession or home-grow bands; private-use protection above them depends on the case and later law
+  public:
+    answer: limited
+    text: Licensed use in designated public places or authorised religious use; other public smoking carries an EC$500 ticket
 sources:
+  judgment:
+    title: Eastern Caribbean Supreme Court High Court — Ras Sankofa Maccabbee v Commissioner of Police, 3 May 2019
+    url: https://www.worldcourts.com/ecsc/eng/decisions/2019.05.03_Maccabbee_v_Commissioner_Police.htm
+    locator: 'SKBHCV2017/0234, paragraphs 102–107: private adult own use, legislative limits and orders'
+  drugs23:
+    title: Saint Kitts and Nevis Law Commission — Drugs Amendment Act 12 of 2023
+    url: https://lawcommission.gov.kn/wp-content/documents/Annual-Laws/2023/ACTs/Act-12-of-2023-Drugs-Prevention-Abatement-of-the-Misuse-and-Abuse-of-Drugs-Amendment-Act.pdf
+    locator: 'Sections 4–5: possession and public-smoking tickets, licence exceptions and secured home cultivation'
+  conscience23:
+    title: Saint Kitts and Nevis Law Commission — Freedom of Conscience (Cannabis) Act 14 of 2023
+    url: https://lawcommission.gov.kn/wp-content/documents/Annual-Laws/2023/ACTs/Act-14-of-2023-Freedom-of-Conscience-Cannabis-Act.pdf
+    locator: 'Sections 3–4: adult licences, designated public places, five home plants and seven-day temporary licences'
   traffic2020:
     title: "Saint Kitts and Nevis Law Commission — Vehicles and Road Traffic Act, Chapter 15.06, revised edition 2020 (PDF)"
     url: https://lawcommission.gov.kn/wp-content/documents/Revised-Acts-of-St-Kitts-and-Nevis/Revised-Acts-of-St-Kitts-and-Nevis-2020/Ch-15_06-Vehicles-and-Road-Traffic-Act.pdf
