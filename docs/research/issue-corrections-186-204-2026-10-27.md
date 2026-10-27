@@ -162,3 +162,16 @@ sharing and the 2023 event. Updated the official PDF URL. No statement that life
 means confinement until death, and no attempt to replace the statutory wording
 with case-specific resentencing outcomes. Existing visitor/enforcement wording
 already says death/life. Scores remain unchanged; death remains discretionary.
+
+## #204 — French B2 record visibility
+
+Read Légifrance article 775 as in force 20 August 2026 and article 775-1 in the
+normal browser after automatic verification, plus Constitutional Council decision
+2026-915 DC paragraphs 295–314 reproduced by Pappers and Service Public F14710.
+Paid criminal fixed fines generally appear on B2 until three years from payment;
+the statute separately specifies the increased-fine finality clock. Access is
+limited to authorities/administrations/employers enumerated in article 776; it is
+not a public record available to every employer. Judicial exclusion is available
+under 775-1. Kept B2 visibility separate from ten-year retention in another database.
+Updated consequences and the existing August reform event, without duplicating it.
+Enforcement remains inside the existing criminal fine/prison-possible band.

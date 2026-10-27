@@ -460,3 +460,13 @@ test('Malaysia section 39B preserves the statutory life alternative (#203)', () 
   assert.match(e.description,/death or life imprisonment/);
   assert.doesNotMatch(e.description,/30 to 40/);
 });
+
+// Issue #204
+test('French B2 visibility has its own three-year clock and restricted audience (#204)', () => {
+  const text = country('fr').context.consequences.text;
+  assert.match(text, /bulletin no. 2.*three years from payment/);
+  assert.match(text, /Only specified authorities/);
+  assert.match(text, /Judicial exclusion can be requested/);
+  assert.match(text, /ten years in a national database/);
+  assert.match(events().find(e=>e.id==='france-fixed-fine-2026').description,/B2 criminal record for three years/);
+});
