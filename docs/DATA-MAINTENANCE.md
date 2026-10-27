@@ -1898,3 +1898,17 @@ first restriction and enforcement score bands remain unresolved. Its estimated
 window is narrowed to 1925–1931, changing historical interpolation while keeping
 all score vectors and the current country score unchanged. See `docs/research/history-guernsey-early-gap-2026-10-26.md` for original
 sources, the 1924/1927 checks, limits and remaining primary-text leads.
+
+### Bermuda's policing and prescribing gap (27 October 2026)
+
+Added five contextual events and an article from the Wooding Commission and
+original 1966, 1973 and 2005 instruments. The largest recorded interval falls
+from 89 to 36 years. The inquiry's 24 January 1969 signature is distinct from
+the March publication statement. The 1966 entry uses enactment; the 1973 entry
+uses actual designation/regulation commencement, without assigning the entire
+1972 framework to that final stage. Drug-search counts are not cannabis-only
+counts. Ministerial licensing and a rebuttable supply presumption do not establish
+new personal-user score bands. The first restriction, 1936 original and first
+1973 commencement stage remain open. No profile, estimate window or score vector
+changes. See `docs/research/history-bermuda-early-gap-2026-10-27.md` for source
+pages, dating limits and remaining leads.
