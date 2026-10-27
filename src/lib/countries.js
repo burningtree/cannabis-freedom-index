@@ -52,6 +52,14 @@ export const CONTEXT = [
 ];
 export const CONTEXT_NAMES = CONTEXT.map(([, name]) => name);
 export const CONTEXT_HELP = Object.fromEntries(CONTEXT.map(([key, , help]) => [key, help]));
+// the Iconoir icon shown beside each section's heading; the death penalty and medical match the history categories
+export const CONTEXT_ICONS = {
+  death_penalty: "iconoir:warning-triangle", recreational: "iconoir:peace-hand", medical: "iconoir:pharmacy-cross-circle",
+  clubs: "iconoir:community", planting: "iconoir:flower", products: "iconoir:package", hemp: "iconoir:leaf",
+  production: "iconoir:industry", black_market: "iconoir:cash", visitors: "iconoir:airplane", driving: "iconoir:car",
+  arrests: "iconoir:lock", consequences: "iconoir:user-xmark", culture: "iconoir:palette", genetics: "iconoir:dna",
+  research: "iconoir:flask", spotlights: "iconoir:sparks", border: "iconoir:suitcase",
+};
 
 // File values → short codes used in class names and filters.
 const REC_CODE = { legal: "legal", partial: "partial", decriminalised: "decrim", illegal: "illegal", death: "death" };
