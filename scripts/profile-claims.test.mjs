@@ -520,3 +520,15 @@ test('Maine carries, gifts and purchases retain the concentrate sub-limit (#209)
   assert.match(me.segments.possession,/entire harvest.*residence or grow location/);
   assert.doesNotMatch(me.segments.possession,/From 2.5 to 8 oz is a crime/);
 });
+
+// Issue #210
+test('Alaska protects lawful on-site harvest without extending carry limits (#210)', () => {
+  const ak=country('us/ak');
+  assert.match(ak.segments.possession,/no additional weight cap/);
+  assert.match(ak.segments.possession,/does not authorise carrying the whole crop off-site/);
+  assert.match(ak.segments.possession,/less than 4 oz at home/);
+  assert.match(ak.segments.possession,/felony threshold does not override.*lawful on-site harvest/s);
+  assert.match(ak.segments.cultivation,/twelve plants, six mature/);
+  assert.match(ak.answers.carry.text,/carry 1 oz.*harvest may be kept where grown/);
+  assert.deepEqual(ak.scores,{possession:5,cultivation:4,enforcement:6,sharing:5,consumption:4,access:6});
+});
