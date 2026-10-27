@@ -31,6 +31,41 @@ segments:
       - ndca
       - ok
       - wiki
+    currency: NPR
+    penalties:
+      - label: Use
+        treatment: criminal
+        prison: 1 month
+        fine: 2000
+        note: Up to one month or up to 2,000 rupees
+      - label: Up to 50 g stored, bought or sold
+        treatment: criminal
+        prison: 3 months
+        fine: 3000
+      - label: 50 g to 500 g
+        treatment: criminal
+        prison_min: 1 month
+        prison: 1 year
+        fine: 5000
+        note: One month to one year and 1,000 to 5,000 rupees
+      - label: 500 g to 2 kg
+        treatment: criminal
+        prison_min: 6 months
+        prison: 2 years
+        fine: 10000
+        note: Six months to two years and 2,000 to 10,000 rupees
+      - label: 2 kg to 10 kg
+        treatment: criminal
+        prison_min: 1 year
+        prison: 3 years
+        fine: 25000
+        note: One to three years and 5,000 to 25,000 rupees
+      - label: 10 kg or more
+        treatment: criminal
+        prison_min: 2 years
+        prison: 10 years
+        fine: 100000
+        note: Two to ten years and 15,000 to 100,000 rupees
   cultivation:
     text: >-
       Cultivation is prohibited. Up to 25 plants can bring up to three months or a fine of up
@@ -43,6 +78,17 @@ segments:
       - ndca
       - ktm12
       - png
+    currency: NPR
+    penalties:
+      - label: Up to 25 plants
+        treatment: criminal
+        prison: 3 months
+        fine: 3000
+      - label: More than 25 plants
+        treatment: criminal
+        prison: 3 years
+        fine: 25000
+        note: Up to three years and 5,000 to 25,000 rupees
   enforcement:
     text: >-
       Use can bring up to a month or a fine. Storage and sale follow quantity bands that
@@ -75,6 +121,16 @@ segments:
       - wiki
       - ktm07
 context:
+  recreational:
+    text: >-
+      Illegal since 1976 but widely tolerated: the plant grows wild, enforcement is relaxed in
+      much of the country, and devotees smoke openly at Shiva temples during Maha Shivaratri
+      while police look the other way. Legalisation bills resurface regularly; no legal source
+      exists.[@wiki,ok,nt26]
+    sources:
+      - wiki
+      - ok
+      - nt26
   production:
     status: none
     text: >-
@@ -86,19 +142,17 @@ context:
       - b360
       - ktm12
       - png
-  products:
-    text: No legal consumer products.
-    sources:
-      - wiki
   medical:
     text: >-
       Medical use appears in federal plans.[@b360] Gandaki's 2026 Act is a cultivation framework
       for medicinal and industrial cannabis, and a patient still has no lawful supply under it.[@ktm07]
       A review on 13 October had not found the commencement notice that section 1(2) requires.[@png]
+      No legal consumer products exist.[@wiki]
     sources:
       - b360
       - ktm07
       - png
+      - wiki
   consequences:
     text: A drug conviction carries a criminal record.
     sources:
