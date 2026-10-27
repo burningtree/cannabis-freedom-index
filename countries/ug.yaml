@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 800
 recreational: illegal
 medical: limited
-updated: 2026-10-12
+updated: 2026-10-27
 summary: >-
   Possession carries up to twenty years with no lesser tier for personal use; a handful of
   licences exist for medical cultivation for export.
@@ -17,117 +17,205 @@ scores:
 segments:
   possession:
     text: >-
-      Section 4 of the Narcotic Drugs and Psychotropic Substances (Control) Act 2024 makes
-      possession of a narcotic drug an offence with a fine of up to 50,000 currency points, a
+      Section 4 of the [2024 narcotics law](/history/uganda-narcotics-commencement-2025/)
+      makes possessing a narcotic drug an offence: a fine of up to 50,000 currency points, a
       billion shillings, or three times the drug's market value if that is more, up to twenty
-      years in prison, or both. No lesser tier is set for a small amount or for personal use.
-      The Act was re-enacted after the Constitutional Court annulled the 2016 law for lack of a
-      quorum.
+      years in prison, or both.[@gaz24] No lesser tier is set for a small amount or for
+      personal use.[@gaz24] The law was re-enacted after the Constitutional Court annulled
+      the 2016 version for lack of a quorum.[@ugstd23]
     sources:
       - gaz24
-      - ab
+      - ugstd23
+    currency: UGX
+    penalties:
+      - label: Possession of a narcotic drug
+        treatment: criminal
+        term: Possession
+        prison: 20 years
+        fine: 1000000000
+        note: Fine is 50,000 points or three times the market value if more. Prison, a fine, or both
   cultivation:
     text: >-
-      Section 11 forbids knowingly cultivating or gathering a prohibited plant without a licence
-      from the health minister. The penalty is a fine of up to 120 currency points, 2.4 million
-      shillings, or three times the market value of the plants if that is more, up to five years
-      in prison, or both; a second or later offence brings imprisonment for life.
+      Section 11 forbids knowingly cultivating or gathering a prohibited plant without a
+      licence from the health minister.[@gaz24] The penalty is a fine of up to 120 currency
+      points, 2.4 million shillings, or three times the market value of the plants if that is
+      more, up to five years in prison, or both; a second or later offence brings imprisonment
+      for life.[@gaz24] Courts must order any prohibited plants found destroyed on
+      conviction.[@gaz24]
     sources:
       - gaz24
+    currency: UGX
+    penalties:
+      - label: Growing a prohibited plant without a licence
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 5 years
+        fine: 2400000
+        note: Fine is 120 points or three times the market value if more. Repeat offence brings life
+      - label: Second or later offence
+        treatment: criminal
+        term: Repeat cultivation
+        note: Life imprisonment
   enforcement:
     text: >-
-      One of East Africa's stricter laws, combining long sentences, large fines and asset
-      forfeiture.
+      The 2024 Act pairs long prison terms with fines up to a billion shillings and orders
+      property linked to offences forfeited.[@gaz24,ugstd23] Researchers describe a strict
+      criminal-justice approach that pushes users away from health and social support.[@ml]
     sources:
-      - ab
+      - gaz24
+      - ugstd23
       - ml
   sharing:
     text: >-
-      Trafficking carries a fine of up to 50,000 currency points or three times the drug's
-      market value, imprisonment for life, or both (Section 5). The Act's definition of
-      trafficking includes giving and supplying, so passing cannabis to another person unpaid is
-      treated the same way.
+      Trafficking carries a fine of up to 50,000 currency points, a billion shillings, or three
+      times the drug's market value if that is more, imprisonment for life, or both (Section
+      5).[@gaz24] The Act's definition of trafficking includes giving and supplying, so passing
+      cannabis to another person unpaid is treated the same way.[@gaz24]
     sources:
       - gaz24
+    currency: UGX
+    penalties:
+      - label: Trafficking, including giving and supplying (section 5)
+        treatment: criminal
+        term: Trafficking
+        fine: 1000000000
+        note: Life imprisonment. Fine is 50,000 points or three times the market value if more
   consumption:
     text: >-
       Section 6 makes it an offence to smoke, inhale, sniff, chew or otherwise use a narcotic
       drug, to be found without excuse in a place people use for it, or to possess a pipe or
       other utensil for it: a fine of up to 50,000 currency points, up to ten years in prison,
-      or both.
+      or both.[@gaz24]
     sources:
       - gaz24
+    currency: UGX
+    penalties:
+      - label: Use, dens and pipes (section 6)
+        treatment: criminal
+        term: Use of a narcotic drug
+        prison: 10 years
+        fine: 1000000000
+        note: Prison or a fine, or both
   access:
-    text: No legal source.
+    text: >-
+      There is no recreational route: the [2024 narcotics
+      law](/history/uganda-narcotics-commencement-2025/) bans possession, use and unlicensed
+      growing outright, with medical licences the only exception.[@gaz24] Section 14 allows
+      the drug authority to license medical sale, manufacture, production and distribution,
+      and growers are licensed case by case by the health ministry.[@gaz24,ugstd23] The
+      sources reviewed describe an export-oriented licensed sector, not a patient
+      supply.[@gaz24,mmj26]
     sources:
-      - ab
+      - gaz24
+      - ugstd23
+      - mmj26
 context:
+  recreational:
+    text: >-
+      Cannabis is manufactured within Uganda and smoking it (sada) is practised alongside
+      khat chewing, though exact user numbers are unknown.[@ml] Use clusters in Kampala
+      slum hotspots such as Kisenyi, and prisons report drug use.[@ml] The law treats every
+      user as a criminal: up to ten years for use and twenty for possession under the [2024
+      law](/history/uganda-narcotics-commencement-2025/), with no small-amount
+      tier.[@gaz24] Researchers say the criminal-justice approach pushes users away from
+      health and social support.[@ml]
+    sources:
+      - ml
+      - gaz24
+  medical:
+    text: >-
+      Medical use is permitted in principle: section 14 provides for licences for medical
+      sale, manufacture, production and distribution, and growers need health-ministry
+      licences.[@gaz24,ugstd23] In practice the licensed sector serves exports, which
+      ministers promote as export diversification while warning holders against diverting
+      crops to the street.[@mmj26] There is no accessible patient programme in the sources
+      reviewed.[@gaz24,mmj26]
+    sources:
+      - gaz24
+      - ugstd23
+      - mmj26
+  hemp:
+    status: none
+    text: >-
+      The Act sets no THC line for hemp: it lists cannabis and cannabis resin as narcotics
+      and cannabis among prohibited plants, banning unlicensed growing outright.[@gaz24]
+      Ministers court medical cannabis and industrial hemp investors under that same
+      licensing regime.[@mmj26]
+    sources:
+      - gaz24
+      - mmj26
   production:
     status: medical
     text: >-
-      The 2024 Act allows licensed cultivation strictly for medical use, with all licences issued by
-      the health ministry. A few export-oriented projects have operated.
+      The health minister may license cultivation or gathering of prohibited plants, with
+      procedures set by regulation; the drug authority licenses medical production and
+      exports.[@gaz24] Licensed growers serve the export market, which ministers promote as
+      export diversification while warning against diversion.[@mmj26]
     sources:
-      - ab
-      - act
-  products:
-    text: No legal consumer products.
-    sources:
-      - ab
-  medical:
-    text: Medical use is permitted in principle under licence; there is no accessible patient programme.
-    sources:
-      - ab
-      - ml
+      - gaz24
+      - mmj26
   consequences:
-    text: A conviction is a criminal record; property can be forfeited.
+    text: >-
+      A conviction brings a criminal record, and the Act orders conveyances, equipment and
+      proceeds linked to offences forfeited.[@gaz24,ugstd23]
     sources:
-      - ab
+      - gaz24
+      - ugstd23
   planting:
     seeds: grey
     seeds_trade: open
     clones: illegal
     clones_trade: banned
     text: >-
-      The 2024 narcotics act defines cannabis as the flowering or fruiting tops of the plant,
-      "excluding the seeds", so loose seed is not itself a narcotic drug. Cultivating is
-      defined to include "sowing or scattering the seed", and growing the plant without a
-      licence is an offence.
+      The Act defines cannabis as the flowering or fruiting tops of the plant, excluding the
+      seeds, so loose seed is not itself a narcotic drug.[@gaz24] Cultivating is defined to
+      include sowing or scattering the seed, and growing the plant without a licence is an
+      offence.[@gaz24]
     sources:
-      - ndps24
+      - gaz24
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@gaz24]
     sources:
-      - ab
-      - act
+      - gaz24
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. The 2024 Act sets up to twenty years in
-      prison for possession, up to ten for using a drug or being found where it is used, and
-      life for trafficking.
+      There is no legal recreational supply for anyone.[@gaz24] The 2024 Act sets up to twenty
+      years in prison for possession, up to ten for using a drug or being found where it is
+      used, and life for trafficking.[@gaz24]
     sources:
       - gaz24
   driving:
     status: impairment
     text: >-
       Section 112 of the Traffic and Road Safety Act prohibits driving or attempting to drive
-      under drug influence. It expressly includes pharmaceutical and prescribed drugs, with
-      no numerical THC allowance stated. Conviction carries up to 300 currency points
-      (UGX6 million), up to three years' imprisonment, or both. Section 113 permits blood
-      or urine testing on reasonable suspicion; refusal of a required blood specimen carries
-      up to 100 currency points and is prima facie evidence of drug influence or excess
-      alcohol. The 2023 Regulations allow police to escort a suspected drug-influenced driver
-      for a medical test and impound the vehicle. A fixed cannabis-specific licence-ban
-      duration was not established: the consolidated Act's section 46 contains an alcohol
-      condition alongside a cross-reference to section 112, which must not be presented
-      as an unconditional drug-driving ban.
+      under drug influence.[@trafficact] It expressly includes pharmaceutical and prescribed
+      drugs, with no numerical THC allowance stated.[@trafficact] Conviction carries up to 300
+      currency points (UGX6 million), up to three years' imprisonment, or both.[@trafficact]
+      Section 113 permits blood or urine testing on reasonable suspicion; refusal of a
+      required blood specimen carries up to 100 currency points and is prima facie evidence
+      of drug influence or excess alcohol.[@trafficact] The 2023 Regulations allow police to
+      escort a suspected drug-influenced driver for a medical test and impound the
+      vehicle.[@drugtraffic2023] A fixed cannabis-specific licence-ban duration was not
+      established: the consolidated Act's section 46 contains an alcohol condition alongside
+      a cross-reference to section 112, which must not be presented as an unconditional
+      drug-driving ban.[@trafficact]
     sources:
       - trafficact
       - drugtraffic2023
+  black_market:
+    text: >-
+      Uganda is a transit country: drugs move overland through less-supervised borders such
+      as Busia and Bunagana, and Entebbe airport is described as a major trafficking
+      route.[@ml] Cannabis is manufactured within the country, and most use-and-dealing
+      hotspots sit in Kampala slums such as Kisenyi, Katwe and Bwaise.[@ml] The 2024 Act
+      answers trafficking with life imprisonment and property forfeiture.[@gaz24]
+    sources:
+      - ml
+      - gaz24
 sources:
   trafficact:
     title: "ULII — Traffic and Road Safety Act 1998, consolidated through the 2020 amendment"
@@ -140,16 +228,12 @@ sources:
   gaz24:
     title: "Uganda — Narcotic Drugs and Psychotropic Substances (Control) Act, 2024 (Act 2 of 2024), Gazette text (ULII, PDF)"
     url: https://media.ulii.org/media/legislation/109240/source_file/9ca5653ec0919d44/ug-act-2024-2-publication-document.pdf
-  ndps24:
-    title: Narcotic Drugs and Psychotropic Substances (Control) Act, 2024, section 2 (Uganda Legal Information Institute)
-    url: https://ulii.org/en/akn/ug/act/2024/2/eng@2024-02-23
-  act:
-    title: Narcotic Drugs and Psychotropic Substances (Control) Act, 2024 (ULII)
-    url: https://ulii.org/akn/ug/act/2024/2
-  ab:
-    title: "African Business — Uganda: House passes new strict narcotics law after court ruling"
-    url: >-
-      https://african.business/2023/08/apo-newsfeed/uganda-house-passes-new-strict-narcotics-law-after-court-ruling
   ml:
     title: Mainline — Uganda country sheet on drug policy (PDF)
     url: https://mainline.nl/wp-content/uploads/2025/08/Uganda.pdf
+  ugstd23:
+    title: UG Standard — Parliament passes new strict narcotics law after court setback (23 August 2023)
+    url: https://www.ugstandard.com/parliament-passes-new-strict-narcotics-law-after-court-setback/
+  mmj26:
+    title: MMJ Daily — Uganda warns medical cannabis licence holders against diverting crop to the illicit market (5 October 2026)
+    url: https://www.mmjdaily.com/article/9879859/uganda-warns-medical-cannabis-licence-holders-against-diverting-crop-to-illicit-market/
