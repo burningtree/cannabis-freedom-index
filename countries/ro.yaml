@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 642
 recreational: illegal
 medical: limited
-updated: 2026-10-23
+updated: '2026-10-27'
 summary: >-
   Possession for personal use carries prison of three months to two years or a fine. Medical access
   is largely theoretical.
@@ -31,10 +31,14 @@ segments:
         prison: 2 years
         note: Three months to two years or a fine; users often end with a fine or community service; THC-as-compound high-risk listing can raise the penalty
   cultivation:
-    text: Growing for personal use falls under the same three-months-to-two-years provision.
+    text: >-
+      Unauthorised growing for personal use falls under the three-months-to-two-years
+      provision.[@lc,dr] Licensed agricultural fibre hemp has a separate route, with county
+      authorisation, approved seed and THC testing.[@hemp125]
     sources:
       - lc
       - dr
+      - hemp125
   enforcement:
     text: >-
       Fines and suspended sentences are common for users; prison remains available and is used for
@@ -43,15 +47,18 @@ segments:
       - dr
       - lc
   sharing:
-    text: Supply is trafficking, with two to seven years for risk drugs.
+    text: >-
+      Supplying cannabis plant or resin falls under risk-drug trafficking: three to ten years in
+      prison and disqualification of certain rights under Article 2(1), as amended in
+      2023.[@trafficking2023]
     sources:
-      - lc
+      - trafficking2023
     penalties:
       - label: Trafficking in risk drugs
         treatment: criminal
-        prison_min: 2 years
-        prison: 7 years
-        note: Two to seven years
+        prison_min: 3 years
+        prison: 10 years
+        note: Risk-drug cannabis plant or resin; disqualification of certain rights
   consumption:
     text: Use is not separately punished, but possession for use is.
     sources:
@@ -63,14 +70,16 @@ segments:
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. Personal-use possession brings three months to
-      two years or a fine, though users often end with a fine or community service; growing
-      for personal use falls under the same provision.[@dr,lc] A wrinkle: the plant and resin
-      are 'risk drugs' but THC as a compound is 'high-risk', which can raise the
-      penalty.[@dr,lc] Supply is trafficking: two to seven years.[@lc]
+      There is no legal recreational supply. Personal-use possession brings three months to two years
+      or a fine, though users often end with a fine or community service; growing for personal use
+      falls under the same provision.[@dr,lc] A wrinkle: the plant and resin are 'risk drugs' but THC
+      as a compound is 'high-risk', which can raise the penalty.[@dr,lc] Risk-drug supply carries
+      three to ten years under the [2023
+      amendment](/history/romania-trafficking-sentences-raised-2023/).[@trafficking2023]
     sources:
       - dr
       - lc
+      - trafficking2023
   production:
     status: medical
     text: >-
@@ -83,16 +92,15 @@ context:
     sources:
       - cms
   hemp:
-    status: none
+    status: standard
     text: >-
-      No fibre-hemp THC limit was established by the retained sources, but the law's edges
-      leave room: seeds fall outside the criminal law because they contain no THC and are
-      sold openly, and CBD products with negligible THC circulate.[@lc,cms] Only medical
-      cultivation is licensed, under Law 339/2005 with strict authorisation and
-      supervision.[@cms]
+      Licensed fibre-hemp farming is lawful: agricultural rules require county cultivation
+      authorisation and approved EU-catalogue seed, with a 0.3% THC standard.[@hemp125,hemp2025]
+      Growers must preserve the crop after flowering for THC sampling and provide cultivation and
+      delivery records for support.[@hemp125]
     sources:
-      - lc
-      - cms
+      - hemp125
+      - hemp2025
   medical:
     text: >-
       Cannabis may be prescribed for medical use only as a pharmaceutical product.[@cms] The
@@ -139,17 +147,13 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      Seeds fall outside the criminal law because they contain no THC: Law 143/2000 punishes
-      growing, using and trafficking the plant, not trading its seed. Many online shops sell
-      them openly with cash on delivery, some as souvenirs or collectors' items and some with
-      descriptions of the effects, from about 14 lei a seed. The line is germination: an
-      antidrug official put it that the moment the plant sprouts you are holding an illegal
-      drug, and growing for personal use is an offence under Article 4. Growing without
-      authorisation under the 2005 law on plants and substances with narcotic content is
-      likewise illegal, so cuttings and seedlings are covered.
+      Cannabis seeds are sold openly, including as souvenirs, while unauthorised psychoactive
+      cultivation is criminal.[@adv17,cdep] Authorised agricultural hemp is different: county
+      licences, approved seed and THC checks provide a lawful growing route.[@hemp125]
     sources:
       - adv17
       - cdep
+      - hemp125
   visitors:
     status: none
     text: >-
@@ -210,3 +214,24 @@ sources:
     title: Romania — Law 339/2005, original text reproduced by a family medical practice
     url: https://www.medfamsv.ro/index_htm_files/lege_339_2005.pdf
     locator: Articles 5, 11–12, 37–38, 54 and 56; annex Table II, narcotics item 18
+  trafficking2023:
+    type: law
+    title: Romania — Law 45/2023 amending Law 143/2000
+    url: https://legis.medleg.ro/legislatie/2023-lege-45
+    locator: >-
+      Article I point 3: Law 143 Article 2(1), risk-drug trafficking three to ten years; published 2
+      March 2023
+  hemp125:
+    type: law
+    title: Romania — Agriculture Ministry Order 125/2024, consolidated Article 17
+    url: https://legislatie.just.ro/Public/DetaliiDocument/307721
+    locator: >-
+      Article 17: approved EU seed, 0.3% THC agricultural standard, county cultivation authorisation,
+      flowering and THC checks; indexed official text and 2025 reproduction read
+  hemp2025:
+    type: law
+    title: Romania — Agriculture Ministry hemp support sanctions, 6 August 2025
+    url: https://legislatie.just.ro/Public/FormaPrintabila/00000G3B9H4MEFCAEQ31WSUM1QWOU65F
+    locator: >-
+      PD-12 eligibility conditions: certified common-catalogue varieties and no more than 0.3% THC;
+      indexed official passage read

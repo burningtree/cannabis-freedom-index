@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 398
 recreational: illegal
 medical: none
-updated: 2026-10-25
+updated: '2026-10-27'
 summary: >-
   Unauthorized possession of even a small amount, without intent to sell, is a criminal offence
   under Article 296, with a fine, corrective work, community service or up to 40 days' arrest.
@@ -75,13 +75,14 @@ context:
   production:
     status: medical
     text: >-
-      Since 2025 licensed companies may grow listed hemp varieties for industry. The country's
-      cannabis is otherwise wild: some 140,000 hectares in the Chu valley, which the interior
-      ministry once estimated could yield 140,000 tonnes of marijuana a year, policed each
-      summer in an operation named Poppy.
+      Licensed companies may cultivate approved low-THC hemp for industrial purposes unrelated to
+      making narcotic drugs.[@hemp797] Article 22 separately permits licensed scientific cultivation
+      within state quotas; growing cannabis to manufacture narcotic medicines is prohibited except for
+      the cases referred to Article 18.[@current279] The industrial-hemp licences therefore describe a
+      separate crop from the controlled scientific route.[@hemp797,current279]
     sources:
-      - nat09
-      - fp14
+      - hemp797
+      - current279
   products:
     text: Reliable national information about legally available cannabis products was not established by the retained sources.
     sources: []
@@ -170,6 +171,16 @@ context:
       total for arrests.
     sources:
       - inbiz24
+  hemp:
+    status: standard
+    text: >-
+      Licensed companies may grow approved industrial hemp with no more than 0.3% THC by dry
+      mass.[@hemp797] The [rules revised in April
+      2026](/history/kazakhstan-hemp-security-testing-revised-2026/) require approved original or
+      elite seed, secured growing sites, seed testing before sowing and THC tests during growth and
+      before harvest. Crops above the ceiling must be destroyed.[@hemp797]
+    sources:
+      - hemp797
 sources:
   cc300:
     title: Kazakhstan — Criminal Code of 3 July 2014, Article 300 (kodeksy-kz.com)
@@ -221,3 +232,17 @@ sources:
   inbiz24:
     title: "Inbusiness.kz — Более 20 тонн наркотиков изъяли казахстанские полицейские с начала июня 2024 года (11 November 2024)"
     url: https://inbusiness.kz/ru/last/bolee-20-tonn-narkotikov-izyali-kazahstanskie-policejskie-s-nachala-iyunya-2024-goda
+  hemp797:
+    type: law
+    title: Kazakhstan — Resolution 797 of 26 September 2025, amended by Resolution 259 of 11 April 2026
+    url: https://old.adilet.zan.kz/rus/docs/P2500000797
+    locator: >-
+      Resolution point 2 and cultivation requirements 3–7: corporate licences, 0.3% dry-mass THC,
+      seed, site security, testing and destruction
+  current279:
+    type: law
+    title: Kazakhstan — Narcotic Drugs Act, current Article 22
+    url: https://old.adilet.zan.kz/rus/docs/Z980000279_/compare/eng
+    locator: >-
+      Article 22(1)–(2), (5)–(7): licensed scientific cultivation, restriction on medicinal-drug crops
+      and industrial hemp; indexed current text read
