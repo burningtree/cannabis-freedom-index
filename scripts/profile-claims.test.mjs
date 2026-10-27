@@ -449,3 +449,14 @@ test('Grenada public use distinguishes tickets, courts and school-area prison (#
   assert.match(gd.segments.consumption.text, /Private dwellings.*excepted/);
   assert.match(events().find(e=>e.id==='grenada-decriminalisation-2026').description,/twenty years on indictment/);
 });
+
+// Issue #203
+test('Malaysia section 39B preserves the statutory life alternative (#203)', () => {
+  const text = country('my').segments.sharing.text;
+  assert.match(text, /death or life imprisonment/);
+  assert.match(text, /at least twelve strokes/);
+  assert.doesNotMatch(text, /30 to 40|30–40/);
+  const e = events().find(e=>e.id==='malaysia-mandatory-death-abolished-2023');
+  assert.match(e.description,/death or life imprisonment/);
+  assert.doesNotMatch(e.description,/30 to 40/);
+});

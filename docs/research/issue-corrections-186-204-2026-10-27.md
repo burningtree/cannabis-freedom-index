@@ -152,3 +152,13 @@ Consumption 3 remains private-use permission; enforcement 6 still describes lawf
 ordinary possession, now explicitly limited in prose/answers rather than reassurance
 about every use location. An aggravated location offence alone does not prove a
 change in ordinary small-possession sentencing practice sufficient for a new band.
+
+## #203 — Malaysian statutory life sentence
+
+Downloaded/read Ministry of Health Act 234 incorporating Act 846, printed p.38:
+39B(2) says death or imprisonment for life, plus at least twelve strokes if death
+is not imposed; (2A)/(2B) deleted. Removed the universal 30–40-year conversion from
+sharing and the 2023 event. Updated the official PDF URL. No statement that life
+means confinement until death, and no attempt to replace the statutory wording
+with case-specific resentencing outcomes. Existing visitor/enforcement wording
+already says death/life. Scores remain unchanged; death remains discretionary.
