@@ -106,7 +106,9 @@ Sources and follow-up:
 - Retrieve *Ley y Reglamento regulando la distribución, prescripción y empleo de
   los productos narcóticos* (Habana: Rambla, Bouza y Cía., 1919), cited on p. 363.
   Verify its cannabis schedule, penalties and commencement before sharpening the
-  estimate or assigning new historical segment values.
+  estimate or assigning new historical segment values. 27 Oct 2026: HathiTrust
+  catalog/API is Cloudflare-walled (403/challenge); no digitised copy found via
+  title search. Still wanted.
 - Other original-text leads are the 1924 narcotics decree discussed by Antonio
   Gil Carballo and Social Defence Code article 461. Do not import an opium-only
   decree into the cannabis timeline without a named schedule or equivalent proof.

@@ -22,10 +22,20 @@ Bulletin article (read in full on UNODC). No scores or profiles changed.
 Our timeline already covers everything dated in the article: 1948 Act, 1950
 farms, 1968 foreigners, 1980 McCartney, 1982 definition, 1985 upholding, 2003
 Hokkaido, 2008 sumo and drug strategy, 2016 Tottori, 2021 panel, 2023 reform,
-2024 use crime, plus the conventions. Open leads, not entries: Hirohito's
-pre-1948 industrial-hemp assurances (Japan Times, unread, paywalled);
-dappo-habu crackdowns after two 2010s driving incidents (Vice 2022, unread,
-undated).
+2024 use crime, plus the conventions.
+
+## Lead resolutions (27 October 2026, second pass)
+
+- Hirohito's 1947 Tochigi visit is now `japan-hirohito-hemp-assurance-1947`
+  (culture/hemp context: changed no law). Sourced from Stars and Stripes
+  "Reefer gladness" (Wayback 2022 capture, read in full: 1947 photo, "it is
+  said" assurance account, 25,000 pre-ban farms, licence costs and chemical
+  fibres) plus the audit-read Wikipedia. The Japan Times piece stays unread
+  behind paywall; the entry hedges with "its director says".
+- dappo-habu (2010s "loophole herb" driving incidents and crackdowns):
+  CLOSED as out of scope. Dappo habu is synthetic cannabinoids sprayed on
+  herbs; herbal cannabis was already banned since 1948, and no dappo measure
+  changed cannabis rules. No entry (cf. Cuba Dictamen 476 handling).
 
 ## Validation and tree note
 
