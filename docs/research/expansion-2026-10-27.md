@@ -87,3 +87,9 @@ Four penalty tables and recreational/hemp sections; products folded, industry st
 Limits: Legis blocked full retrieval; e-Lex September pages omit the enacted July amendment although its future consolidation includes it. Used the original amending law reproduced by Bizlex, with Gazette publication corroboration. Numerical drug/plant thresholds withheld pending the replacement schedules; old 2 g is no longer presented as verified. 1940s–1960s/1980s/2010s gaps, first-ban territory/date and two older articles remain. Medical access retained at zero; no operating programme verified.
 
 Moldova validation: profile audit zero errors/warnings; article citation and history tests pass except the global citation test, blocked by another contributor's `countries/sb.yaml` `[@@st]` citation. A missing visitor status was corrected after schema validation; the next build reached prerendering but collided with a concurrent shared-dist build. Final batch build will recheck the page.
+
+### Belarus
+
+Four penalty tables distinguish imprisonment, short custody, criminal fine alternatives and public-use repeat liability. Recreational/hemp sections added, products folded; medical/visitor text now cites the Health Ministry’s 2025 INCB traveller declaration explicitly prohibiting cannabis medicines. 2026 fine-base entry added (BYN45), with 2026 money values verified against the tax ministry and current Article 50/19.3 reproductions. Core texts converted to inline citations; existing scores retained. No new article: current 2025 reform already has one, while the two older Soviet key entries need stronger original sources. Remaining 1940s/1950s/1980s history gaps and driving/arrest research are documented gaps.
+
+Moldova and Belarus pages verified in the successful 4,916-page build, including four tables each and updated context. Both profile audits report zero errors/warnings.

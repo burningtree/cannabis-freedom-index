@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 112
 recreational: illegal
 medical: none
-updated: "2026-10-22"
+updated: '2026-10-27'
 summary: >-
   Personal possession can bring short custody, restriction of liberty or two to five years in
   prison. A 2025 reform widened sentencing options; growing for drugs and recreational supply remain
@@ -19,52 +19,160 @@ segments:
   possession:
     text: >-
       Acquiring or possessing drugs without intent to supply can bring short custody, restriction of
-      liberty for up to five years, or two to five years in prison. The short-custody option was
-      added in March 2025; the code defines that sentence as one to three months in strict
-      isolation. The offence gives no small-personal-amount exemption.
+      liberty for up to five years, or two to five years in prison.[@code25] The short-custody
+      option was added in March 2025; the code defines that sentence as one to three months in
+      strict isolation.[@code19,explanation25] The offence gives no small-personal-amount
+      exemption.[@code25]
     sources:
       - code25
       - code19
       - explanation25
+    penalties:
+      - label: Personal possession — imprisonment option
+        treatment: criminal
+        term: Article 328(1)
+        prison_min: 2 years
+        prison: 5 years
+        note: Short custody or restriction of liberty are alternatives
+      - label: Personal possession — short-custody option
+        treatment: criminal
+        term: Arrest (Article 54)
+        prison_min: 1 month
+        prison: 3 months
+        note: An alternative to imprisonment or restriction of liberty
   cultivation:
     text: >-
-      Sowing or growing drug-containing plants for sale or to obtain drugs is a separate offence.
-      The basic penalty is a fine, short custody, restriction of liberty for up to three years or
-      prison for up to three years. Repeat and group cases carry heavier penalties. There is no
-      personal home-growing allowance.
+      Growing drug-containing plants for sale or to obtain drugs is a crime, with a fine, short
+      custody, restriction of liberty up to three years or imprisonment up to three years.[@growing]
+      Group or repeat cultivation carries restriction of liberty up to five years or three to seven
+      years in prison; organised-group cultivation carries five to fifteen years with an optional
+      fine.[@growing] Criminal fines ordinarily run from thirty to one thousand base values; at the
+      2026 value of BYN45 this is BYN1,350–45,000.[@finerange,base26]
     sources:
-      - code19
-      - law12
+      - growing
+      - finerange
+      - base26
+    currency: BYN
+    penalties:
+      - label: Ordinary unlawful cultivation for drugs or supply
+        treatment: criminal
+        term: Article 329(1)
+        prison: 3 years
+        fine_min: 1350
+        fine: 45000
+        note: Prison or a fine, short custody or restriction of liberty; fine values use 2026 base
+      - label: Repeat, group or specified previous drug offence
+        treatment: criminal
+        term: Article 329(2)
+        prison_min: 3 years
+        prison: 7 years
+        note: Restriction of liberty is an alternative; group condition also applies to first offenders
+      - label: Organised-group cultivation
+        treatment: criminal
+        term: Article 329(3)
+        prison_min: 5 years
+        prison: 15 years
+        fine_min: 1350
+        fine: 45000
+        note: Additional fine optional; fine values use 2026 base
   enforcement:
     text: >-
       The 2025 reform added short custody for personal offences and restriction of liberty for basic
-      supply. In June 2026 prosecutors reported restriction of liberty made up 48% of drug sentences
-      in the previous year, most often in personal-use cases. This means supervised obligations and
-      can involve an open correctional institution or supervision outside one.
+      supply.[@prosecutor26,explanation25,code19] In June 2026 prosecutors reported restriction of
+      liberty made up 48% of drug sentences in the previous year, most often in personal-use
+      cases.[@prosecutor26,explanation25,code19] This means supervised obligations and can involve
+      an open correctional institution or supervision outside
+      one.[@prosecutor26,explanation25,code19]
     sources:
       - prosecutor26
       - explanation25
       - code19
   sharing:
     text: >-
-      Unlawful supply is criminalised. The basic supply offence
-      now carries restriction of liberty for three to five years or prison for three to eight years,
-      with an optional fine on the prison sentence. Aggravated supply carries longer terms.
+      Unlawful supply is criminalised. The basic supply offence now carries restriction of liberty
+      for three to five years or prison for three to eight years, with an optional fine on the
+      prison sentence. Aggravated supply carries longer terms.[@code25] Aggravated supply carries
+      six to fifteen years; organised-group or specified laboratory production eight to twenty; and
+      supply causing death by negligence twelve to twenty-five, with optional fines.[@code25]
+      Optional criminal fines use the ordinary thirty-to-one-thousand-base range, BYN1,350–45,000 at
+      the 2026 base value.[@finerange,base26]
     sources:
       - code25
+      - finerange
+      - base26
+    penalties:
+      - label: Ordinary supply — imprisonment option
+        treatment: criminal
+        term: Article 328(2)
+        prison_min: 3 years
+        prison: 8 years
+        note: >-
+          Restriction of liberty is an alternative; additional fine optional; fine values use the
+          2026 base
+        fine_min: 1350
+        fine: 45000
+      - label: Aggravated supply
+        treatment: criminal
+        term: Article 328(3)
+        prison_min: 6 years
+        prison: 15 years
+        note: Additional fine optional; fine values use the 2026 base
+        fine_min: 1350
+        fine: 45000
+      - label: Organised group or specified laboratory production
+        treatment: criminal
+        term: Article 328(4)
+        prison_min: 8 years
+        prison: 20 years
+        note: Additional fine optional; fine values use the 2026 base
+        fine_min: 1350
+        fine: 45000
+      - label: Supply causing death by negligence
+        treatment: criminal
+        term: Article 328(5)
+        prison_min: 12 years
+        prison: 25 years
+        note: Additional fine optional; fine values use the 2026 base
+        fine_min: 1350
+        fine: 45000
+    currency: BYN
   consumption:
     text: >-
-      Public drug use and specified drug-related public or workplace intoxication can lead to
-      criminal punishment when repeated within a year after an administrative penalty for the same
-      conduct: a fine, short custody or restriction of liberty for up to two years. Possession is a
-      separate criminal offence.
+      Public drug use without prescription brings an administrative fine of ten to fifteen base
+      values, BYN450–675 at the 2026 rate.[@publicuse,base26] Specified drug-related public
+      intoxication brings five to ten values and workplace intoxication eight to twelve.[@publicuse]
+      Repeating qualifying conduct within a year after an administrative penalty is criminal: a
+      fine, one to three months of short custody or restriction of liberty up to two
+      years.[@repeatuse,code19] A criminal fine under Article 50 is ordinarily thirty to one
+      thousand base values, BYN1,350–45,000 in 2026.[@finerange,base26]
     sources:
+      - publicuse
+      - base26
+      - repeatuse
       - code19
+      - finerange
+    currency: BYN
+    penalties:
+      - label: Public use without prescription
+        treatment: civil
+        term: Article 19.3(5)
+        fine_min: 450
+        fine: 675
+        note: 2026 base value
+      - label: Repeat qualifying public use after administrative penalty
+        repeat: 2
+        treatment: criminal
+        term: Article 328-2
+        prison_min: 1 month
+        prison: 3 months
+        fine_min: 1350
+        fine: 45000
+        note: Short custody or a fine, or restriction of liberty; fine values use 2026 base
   access:
     text: >-
-      Recreational acquisition and supply remain criminal offences. The Health Ministry’s list
-      places marijuana, hashish and cannabis oil among dangerous narcotic drugs not used for medical
-      purposes.
+      Recreational acquisition and supply remain criminal offences.[@code25,list25] The Health
+      Ministry’s list places marijuana, hashish and cannabis oil among dangerous narcotic drugs not
+      used for medical purposes.[@code25,list25]
     sources:
       - code25
       - list25
@@ -73,33 +181,30 @@ context:
     status: none
     text: >-
       Unauthorised drug manufacture and processing are criminalised, with heavier penalties where
-      supply is intended. Growing drug-containing plants has a separate criminal offence; the
-      environmental list also names Cannabis sativa among plants barred from introduction and
-      establishment.
+      supply is intended.[@code25,code19,hemp16] Growing drug-containing plants has a separate
+      criminal offence; the environmental list also names Cannabis sativa among plants barred from
+      introduction and establishment.[@code25,code19,hemp16]
     sources:
       - code25
       - code19
       - hemp16
-  products:
-    text: >-
-      Marijuana, hashish and cannabis oil appear in list 5 of the Health Ministry’s controlled-drug
-      list, headed dangerous narcotic drugs not used for medical purposes. The marijuana definition
-      covers THC-containing cannabis plant parts, with specific exclusions for whole seeds
-      unaccompanied by other plant parts and for root systems.
-    sources:
-      - list25
   medical:
     text: >-
-      Marijuana, hashish and cannabis oil are classified as dangerous narcotic drugs not used for
-      medical purposes in the reviewed Health Ministry list, consolidated through February 2025.
+      Cannabis and cannabis-based preparations are prohibited for medical use under the Health
+      Ministry’s traveller guidance supplied to the INCB.[@traveller] Marijuana, hashish and
+      cannabis oil also appear in the controlled-drug list headed dangerous narcotics not used
+      medically.[@list25] A foreign prescription therefore does not permit a visitor to bring
+      cannabis medicine under the general controlled-medicines travel allowance.[@traveller]
     sources:
+      - traveller
       - list25
   consequences:
     text: >-
       Personal possession remains a criminal offence even when the court chooses short custody or
-      restriction of liberty. Restriction of liberty imposes supervised obligations and can be
-      served in an open correctional institution or without placement there. The May 2025 amnesty
-      widened eligibility for people with no previous convictions, subject to individual conditions.
+      restriction of liberty.[@code19,code25,amnestyGuide] Restriction of liberty imposes supervised
+      obligations and can be served in an open correctional institution or without placement
+      there.[@code19,code25,amnestyGuide] The May 2025 amnesty widened eligibility for people with
+      no previous convictions, subject to individual conditions.[@code19,code25,amnestyGuide]
     sources:
       - code19
       - code25
@@ -111,9 +216,10 @@ context:
     clones_trade: banned
     text: >-
       The narcotics law prohibits sowing or growing drug-containing plants, subject to exceptions in
-      legislation. Growing to obtain drugs is punishable under a separate cultivation offence. The
-      marijuana definition excludes whole seeds when unaccompanied by other plant parts; that
-      exclusion gives no permission to germinate them.
+      legislation.[@law12,code19,list25] Growing to obtain drugs is punishable under a separate
+      cultivation offence.[@law12,code19,list25] The marijuana definition excludes whole seeds when
+      unaccompanied by other plant parts; that exclusion gives no permission to germinate
+      them.[@law12,code19,list25]
     sources:
       - law12
       - code19
@@ -122,30 +228,53 @@ context:
     status: none
     text: >-
       Collective drug cultivation and recreational supply fall under the criminal prohibitions on
-      growing drug-containing plants and supplying drugs. The basic supply offence includes
-      restriction of liberty or prison.
+      growing drug-containing plants and supplying drugs.[@law12,code25] The basic supply offence
+      includes restriction of liberty or prison.[@law12,code25]
     sources:
       - law12
       - code25
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply. Personal possession is criminalised and can bring short
-      custody or two to five years in prison. The criminal code excludes foreign citizens and
-      stateless people without permanent residence from the restriction-of-liberty sentence
-      available to eligible residents.
+      Visitors have no legal recreational supplier and personal possession remains
+      criminal.[@code25] Foreign citizens and stateless people without permanent residence cannot
+      receive the restriction-of-liberty sentence otherwise available to eligible
+      residents.[@code19] Cannabis medicines are excluded from the traveller medicines allowance,
+      even with a prescription.[@traveller]
     sources:
       - code25
       - code19
+      - traveller
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 69.3 kg of herbal
-      cannabis seized in 2024, against 88.1 kg in 2023, and 485 kg of cannabis resin
-      seized in 2024, against 671 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      Figures reported by the government to the UN drugs office record 69.3 kg of herbal cannabis
+      seized in 2024, against 88.1 kg in 2023, and 485 kg of cannabis resin seized in 2024, against
+      671 kg in 2023.[@unodc_szr] The UN publishes them as kilogram equivalents, and countries count
+      seizures differently, so the figures are not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
+  recreational:
+    text: >-
+      Adults have no legal shop or personal-growing allowance for drug cannabis.[@code25,law12]
+      Personal possession remains criminal even when a court uses the shorter custody option added
+      in [March 2025](/history/belarus-drug-sentencing-options-2025/).[@code25] Public consumption
+      has a separate administrative offence that can become criminal after
+      repetition.[@publicuse,repeatuse]
+    sources:
+      - code25
+      - law12
+      - publicuse
+      - repeatuse
+  hemp:
+    status: none
+    text: >-
+      The narcotics law prohibits sowing or growing drug-containing plants, subject to legislative
+      exceptions.[@law12] The environmental list also bars introducing or establishing Cannabis
+      sativa, following the [2016 revision](/history/belarus-cultivation-ban-2016/).[@hemp16] The
+      reviewed rules provide no general low-THC growing allowance for households.[@law12,hemp16]
+    sources:
+      - law12
+      - hemp16
 sources:
   unodc_szr:
     title: >-
@@ -200,7 +329,7 @@ sources:
       short custody 0.14% to 3.4%; all-drug figures
   amnestyGuide:
     type: web
-    title: "LawPike — Amnesty 2025: changes and exclusions"
+    title: 'LawPike — Amnesty 2025: changes and exclusions'
     url: https://www.lawpike.by/articles/amnistiya2025
     locator: >-
       Article 13 reproduced: first-conviction exception for parts 1–4 of article 328; separate
@@ -215,3 +344,21 @@ sources:
     locator: >-
       List 5, items 5.1, 5.4 and 5.5: hashish, marijuana and cannabis oil, not used medically;
       marijuana definition excludes whole seeds unaccompanied by other plant parts and root systems
+  growing:
+    title: Belarus Criminal Code — Article 329 (statutory text at Zakony-by)
+    url: https://zakony-by.com/ugolovnyj_kodeks_rb/329.htm
+  publicuse:
+    title: Belarus Administrative Offences Code — Article 19.3(3)–(5)
+    url: https://zakony-by.com/koap_rb/19.3.htm
+  repeatuse:
+    title: Belarus Criminal Code — Article 328-2, repeated public-use offence
+    url: https://zakony-by.com/ugolovnyj_kodeks_rb/328-2.htm
+  finerange:
+    title: Belarus Criminal Code — Article 50, criminal fine range
+    url: https://zakony-by.com/ugolovnyj_kodeks_rb/50.htm
+  base26:
+    title: Belarus Ministry of Taxes — Base value becomes BYN45 from 1 January 2026
+    url: https://nalog.gov.by/news/33270/
+  traveller:
+    title: Belarus Ministry of Health — Traveller medicines guidance supplied to INCB (2025)
+    url: https://www.incb.org/documents/Travellers/files/BYE_RUS_2025.pdf
