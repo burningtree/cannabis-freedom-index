@@ -10,7 +10,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 |---|---|---:|---:|---:|---:|---:|---|
 | [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 15 / 36 | 4 | 17 | 42 | 0 | matches recorded hash |
 | [Cannabis: A History](#booth-cannabis-history-2003) | verified | 1 / 26 | 1 | 24 | 5 | 0 | matches recorded hash |
-| [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 6 | 3 | 11 | 0 | matches recorded hash |
+| [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 6 | 3 | 12 | 0 | matches recorded hash |
 | [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 3 | 10 | 8 | 0 | matches recorded hash |
 | [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 3 | 6 | 55 | 0 | matches recorded hash |
 | [Reefer Wellness: Understanding Cannabis Science, Culture, and Medicine](#kirk-reefer-wellness-2025) | verified | 0 / 8 | 0 | 8 | 0 | 0 | matches recorded hash |
@@ -141,7 +141,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 |---|---|---|---|---|
 | 1. Introduction | indexed_only | — | — | — |
 | 2. Imperial Merchants, Victorian Science, and Hemp to 1842 | indexed_only | — | — | — |
-| 3. Smuggling, Trade and Taxation in Nineteenth-Century British India | selected_pages_read | pp. 47–65 | — | No new legal events (1854 and Act II of 1876 already have entries). Rich material on cultivation in the Ganja Mahal (the poddar or "ganja-doctor", trampling, flat and round ganja, the bow to the crop) for a possible culture entry. |
+| 3. Smuggling, Trade and Taxation in Nineteenth-Century British India | selected_pages_read | pp. 47–65 | articles/bangladesh-bengal-ganja-licences-1876.md | No new legal events (1854 and Act II of 1876 already have entries). Remaining Ganja Mahal cultivation detail (the poddar or "ganja-doctor", trampling, flat and round ganja, the bow to the crop) for a possible culture entry. |
 | 4. Medicine, Murder, and Madness in Mid-century | selected_pages_read | pp. 83–84 | changes.yaml#burma-hemp-drugs-prohibited-1874; articles/burma-hemp-drugs-prohibited-1874.md | — |
 | 5. Ganja in Parliament, 1891–1894 | selected_pages_read | pp. 93–98 | articles/india-commons-ganja-question-1891.md | — |
 | 6. Reports, Experiments, and Hallucinations, 1894–1912 | selected_pages_read | pp. 123 (n. 78)–138 | changes.yaml#india-bengal-public-warehouses-1904; articles/india-bengal-public-warehouses-1904.md; changes.yaml#india-assam-ganja-report-1918; changes.yaml#india-hemp-drugs-revenue-1921; changes.yaml#guyana-indian-hemp-ordinance-1913 | Mills (p. 123 n. 78, p. 139) describes British Guiana's 1913 Indian Hemp Ordinance as a licensed bonded-warehouse system, while the site scores it as a ban (49 → 9). Check the ordinance text before changing the gy chain. |
