@@ -1050,3 +1050,19 @@ test("The 1974 drug-law account separates Russian implementation and conditional
  const article=fs.readFileSync('articles/lithuania-soviet-use-decree-1987.md','utf8');
  assert.doesNotMatch(article,/copied into Article 224 of every republic|trafficking to ten to fifteen/);
 });
+
+test("India's 2001 reform retains the original penalty, bail exceptions and appeal cutoff",()=>{
+ const r=byId['india-ndps-amendment-2001'];
+ assert.equal(r.date,'2001-10-02');assert.match(r.description,/six months or a fine or both/);
+ assert.match(r.description,/commercial quantities and separately named serious offences/);
+ assert.ok(r.sources.some(s=>s.url.includes('ncb-annual-report-2001.pdf')));
+ assert.ok(!r.sources.some(s=>s.url.includes('wikipedia.org')));
+ const q=byId['india-cannabis-quantity-cutoffs-2001'];assert.equal(q.date,'2001-10-19');
+ assert.equal(q.before,undefined);assert.match(q.description,/small quantity is less than.*commercial quantity is greater than/s);
+ const appeal=byId['india-basheer-pending-appeals-2004'];assert.equal(appeal.date,'2004-02-09');
+ assert.equal(appeal.before,undefined);assert.match(appeal.description,/appeals already pending on 2 October 2001/);
+ const later=byId['india-ndps-amendment-2014'];assert.equal(later.date,'2014-05-01');
+ assert.equal(later.category,'death');assert.match(later.description,/six months to one year/);
+ const old=fs.readFileSync('articles/india-ndps-act-1985.md','utf8');
+ assert.doesNotMatch(old,/Up to 1 kg|20 kg or more|bhang stayed\s+legal/);
+});
