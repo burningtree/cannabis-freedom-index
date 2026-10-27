@@ -1,5 +1,8 @@
 # Micronesia 1974 Controlled Substances Act (estimate replaced)
 
+**Superseded chronology/scoring:** the [primary-text review](history-ttpi-chronology-review-2026-10-27.md) separates the earlier statute challenged in Bermudes from Public Law 5-110. The 1974 replacement is no longer treated as a verified first ban; provisional first-restriction estimates are restored separately. The notes below record the earlier interpretation and must not be used as its verification.
+
+
 - Replaced `fm-first-restriction-estimate` (1925 window) with
   `micronesia-controlled-substances-act-1974` (ban, 1974, before all-10,
   checked): COM P.L. No. 5-110, First Special Session 23 July-9 August

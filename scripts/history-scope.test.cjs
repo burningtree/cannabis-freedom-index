@@ -1066,3 +1066,22 @@ test("India's 2001 reform retains the original penalty, bail exceptions and appe
  const old=fs.readFileSync('articles/india-ndps-act-1985.md','utf8');
  assert.doesNotMatch(old,/Up to 1 kg|20 kg or more|bhang stayed\s+legal/);
 });
+
+test("The 1974 Trust Territory Act is separate from Bermudes' predecessor law",()=>{
+ for(const c of ['fm','pw','mp']){
+  const first=scored(c)[0];assert.equal(first.id,c+'-first-restriction-estimate');
+  assert.equal(first.estimate,true);assert.deepEqual(first.window,[1925,1974]);
+ }
+ for(const id of ['micronesia-controlled-substances-act-1974','palau-controlled-substances-act-1974','cnmi-controlled-substances-act-1974']){
+  const e=byId[id];assert.equal(e.category,'other');assert.equal(e.before,undefined);
+  assert.match(e.description,/reserves schedule changes to Congress/);
+  assert.match(e.description,/sterilised seeds/);
+  assert.doesNotMatch(e.description,/struck down days later|first time|first prohibition/);
+  assert.match(e.unscored,/not a verified first prohibition/);
+ }
+ const code=byId['micronesia-criminal-code-1980'];assert.match(code.description,/published in 1980/);
+ assert.match(code.description,/More than one ounce but less than 2\.2 pounds.*three months/s);
+ const article=fs.readFileSync('articles/micronesia-controlled-substances-act-1974.md','utf8');
+ assert.doesNotMatch(article,/Tested the same week|first time the whole Trust Territory|struck down days later/);
+ assert.match(article,/Congress has\nsole authority/);
+});

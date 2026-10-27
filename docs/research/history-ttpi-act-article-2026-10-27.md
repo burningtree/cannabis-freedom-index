@@ -1,5 +1,8 @@
 # TTPI Controlled Substances Act article (new, 383 words)
 
+**Superseded chronology/scoring:** the [primary-text review](history-ttpi-chronology-review-2026-10-27.md) separates the earlier statute challenged in Bermudes from Public Law 5-110. The 1974 replacement is no longer treated as a verified first ban; provisional first-restriction estimates are restored separately. The notes below record the earlier interpretation and must not be used as its verification.
+
+
 - Wrote `articles/micronesia-controlled-substances-act-1974.md`: P.L. 5-110
   (July-Aug 1974 special session), marihuana definition, Schedule I →
   director-recommendation scheme → Bermudes test (23 July 1974: power to
