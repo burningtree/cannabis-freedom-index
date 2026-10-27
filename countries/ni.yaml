@@ -24,12 +24,31 @@ segments:
     sources:
       - clr
       - cp641
+    penalties:
+      - upto: 5 g
+        treatment: criminal
+        note: "Minor offence: 70–100 day-fines (income-based) and 30–60 days of community service, no prison"
+      - over: 5 g
+        upto: 20 g
+        treatment: criminal
+        prison_min: 6 months
+        prison: 3 years
+      - over: 20 g
+        treatment: criminal
+        prison_min: 3 years
+        prison: 8 years
   cultivation:
     text: >-
       Growing drug plants for exploitation or trade carries five to ten years in prison and a fine
       under Article 349 of the Penal Code.
     sources:
       - cp641
+    penalties:
+      - label: Growing for exploitation or trade (Article 349)
+        treatment: criminal
+        prison_min: 5 years
+        prison: 10 years
+        note: Plus a fine of unstated amount
   enforcement:
     text: >-
       A fine and community service under 5 g, described by one analysis as de facto
@@ -46,6 +65,20 @@ segments:
       school.
     sources:
       - cp641
+    penalties:
+      - label: Selling or distributing drugs (Article 359)
+        treatment: criminal
+        prison_min: 5 years
+        prison: 15 years
+        note: Rises by a third with minors involved or near a school
+      - label: International selling or distributing
+        treatment: criminal
+        prison_min: 10 years
+        prison: 20 years
+      - label: Transporting drugs (Article 352)
+        treatment: criminal
+        prison_min: 5 years
+        prison: 15 years
   consumption:
     text: Use is not separately punished beyond the minor-possession offence.
     sources:
@@ -55,17 +88,34 @@ segments:
     sources:
       - clr
       - cp641
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Nicaragua abolished the death penalty for all crimes in 1979; the 1987 constitution
+      states that there is no death penalty in the country. No cannabis offence carries a
+      capital sentence.[@wcadp]
+    sources: [wcadp]
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Under 5 g is a minor offence punished with
+      day-fines and community service but no prison, though it is still recorded; larger
+      amounts bring prison in two steps.[@clr,cp641]
+    sources:
+      - clr
+      - cp641
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    text: No licensed production. Growing drug plants for exploitation or trade carries five to ten years.
+    sources:
+      - cp641
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No patient programme is documented. Law 735 criminalises cannabis and the code sets no
+      medical route.[@clr,cp641]
+    sources:
+      - clr
+      - cp641
   consequences:
     text: The minor offence is still recorded.
     sources:
@@ -115,6 +165,9 @@ sources:
     title: "Cannabis Law Report — Cannabis policy in Nicaragua: de facto decriminalization, part 1"
     url: >-
       https://journal.cannabislawreport.com/nicaragua-cannabis-policy-in-nicaragua-de-facto-decriminalization-part-1/
+  wcadp:
+    title: World Coalition Against the Death Penalty — Nicaragua makes abolition irreversible (1979, constitution article 23)
+    url: http://www.worldcoalition.org/Nicaragua-makes-abolition-irreversible.html
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
