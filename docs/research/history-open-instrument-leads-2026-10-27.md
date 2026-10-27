@@ -111,3 +111,34 @@
   1995 per Siegel/Bunt/Zaitch 2012, p. 28).
 - Arnold 2005 edition on archive.org is borrow-restricted (401 on OCR text). Do not add
   either entry until Arnold 2013 p. 183 or the Siegel chapter is read.
+
+## St Vincent 1970s cultivation boom (open: unread)
+- Wikipedia claims commercial cultivation began in the 1970s (previously Colombian/Trinidadian
+  supply), banana collapse pushed youth into growing, 1980s US interdiction backfired, 1990s
+  exports to neighbours, cannabis as major cash crop with grower alliances. Cited to Regis
+  2006 (UGA Press, pp.147–), Klein/Day/Harriott 2013 (Zed, pp.239–), Barker 2005 (pp.105–).
+- Barker 2005 on archive.org is borrow-restricted. Klein/Regis not found open. Do not add
+  until one is read. Existing entries cover 1937, 1998 US eradication, 2007 RSS eradication.
+
+## Fiji 1993 "incipient" problem (open: unread)
+- Wikipedia cites INCSR April 1993, p.35: Fiji faced an "incipient" cannabis problem as youths
+  were exposed by foreign travelers. Also Fiji Senate Ad-hoc Select Committee report (2006),
+  p.13, likely recaps drug history. HathiTrust/state.gov paths blocked or down; Senate PDF
+  not found via search. Do not add until read. Early law (1879/1886/1905) already covered.
+
+## Mali colonial-law basis + aphrodisiac + Arab resin networks (open: unread)
+- Wikipedia: laws based on French colonial-era laws (US House hearings 1977 p.35; Shafer
+  Commission 1973 p.148); cannabis as aphrodisiac (Rätsch 2001, p.128); resin route run by
+  Malian Arabs (Wehrey/Boukhars 2013, p.67). None read. The INCB 2007 resin-route entry
+  (mali-morocco-resin-route-2007) covers the trafficking geography from a primary.
+
+## Kenya Gazette 1913/1914 + 1999 seizure + 1991 study (open: unread)
+- Wikipedia cites Kenya Gazette 15 Oct 1913 (p.882) and 4 Mar 1914 (p.203) for the Opium
+  Ordinance ban effective 1 Jan 1914. No 1913/1914 Gazette scan found on archive.org
+  (1927 volumes exist; Google Books IDs untraced). The kenya-ban-1914 entry stands on
+  Carrier + Wiki.
+- 1999 seizure of 450 acres and the 1991 study (cannabis third after alcohol and tobacco)
+  cite INCSR 2000 (pp.506–) and an unidentified study. INCSR 2000 not found open
+  (archive.org nsia volumes were Vol II money-laundering; state.gov archive down). The
+  same volume (p.525) would also verify Senegal's Operation Cannabis V — double reason to
+  find it. Do not add until read.
