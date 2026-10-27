@@ -19,7 +19,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 | [Cannabis: Evolution and Ethnobotany](#cannabis-evolution-and-ethnobotany) | awaiting_verification | not indexed | 0 | 0 | 0 | 0 | matches recorded hash |
 | [Commodifying Cannabis: A Cultural History of a Complex Plant in the Atlantic World](#commodifying-cannabis-a-cultural-history-of-a-complex-plant-in-the-atlantic-world) | verified | 0 / 9 | 2 | 7 | 0 | 0 | matches recorded hash |
 | [Ganja in Jamaica: The Effects of Marijuana Use](#ganja-in-jamaica-the-effects-of-marijuana-use) | verified | 3 / 14 | 1 | 10 | 14 | 0 | matches recorded hash |
-| [Home Grown: Marijuana and the Origins of Mexico’s War on Drugs](#home-grown-marijuana-and-the-origins-of-mexico-s-war-on-drugs) | verified | 1 / 11 | 1 | 9 | 6 | 0 | matches recorded hash |
+| [Home Grown: Marijuana and the Origins of Mexico’s War on Drugs](#home-grown-marijuana-and-the-origins-of-mexico-s-war-on-drugs) | verified | 1 / 11 | 2 | 8 | 7 | 0 | matches recorded hash |
 | [Intoxicating Zion: A Social History of Hashish in Mandatory Palestine and Israel](#intoxicating-zion-a-social-history-of-hashish-in-mandatory-palestine-and-israel) | verified | 0 / 8 | 6 | 2 | 18 | 0 | matches recorded hash |
 | [The Flowers of Good: The Science and the History of Marijuana Liberation](#the-flowers-of-good-the-science-and-the-history-of-marijuana-liberation) | verified | 1 / 15 | 1 | 13 | 10 | 0 | matches recorded hash |
 | [The Marijuana Conviction: A History of Marijuana Prohibition in the United States](#the-marijuana-conviction-a-history-of-marijuana-prohibition-in-the-united-states) | verified | 7 / 16 | 4 | 5 | 43 | 0 | matches recorded hash |
@@ -359,7 +359,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | The Discovery of Marijuana in Mexico | indexed_only | — | — | — |
 | The Place of Marijuana in Mexico, 1846–1920 | indexed_only | — | — | — |
 | Explaining the Missing Counterdiscourse I: The Science of Drugs and Madness | indexed_only | — | — | — |
-| Explaining the Missing Counterdiscourse II: People, Environments, and Degeneration | indexed_only | — | — | — |
+| Explaining the Missing Counterdiscourse II: People, Environments, and Degeneration | selected_pages_read | pp. 136–137 | changes.yaml#mexico-military-hospital-ban-1882 | — |
 | Did Marijuana Really Cause “Madness” and Violence in Mexico? | indexed_only | — | — | — |
 | National Legislation and the Birth of Mexico’s War on Drugs | read | pp. 181–202 | changes.yaml#mexico-oaxaca-ban-1882; changes.yaml#mexico-cosala-ban-1888; changes.yaml#mexico-state-of-mexico-ban-1891; changes.yaml#mexico-culiacan-ban-1896; changes.yaml#mexico-city-thirty-days-1908; changes.yaml#mexico-ban-1920 | The 1883 pharmacy regulation was never enacted; its text became the 1891 Sanitary Code, so it was not added as an entry. |
 | Postscript: Mexican Ideas Move North | selected_pages_read | pp. 203–204 | — | — |
