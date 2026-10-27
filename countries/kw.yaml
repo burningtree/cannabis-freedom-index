@@ -25,6 +25,24 @@ segments:
       centres. Separate lower-schedule rules provide different penalties.[@law25]
     sources:
       - law25
+    currency: KWD
+    penalties:
+      - label: Personal consumption, possession or purchase
+        treatment: criminal
+        fine: 5000
+        prison: 5 years
+        note: Up to five years and KD5,000; rehabilitation instead of prosecution possible
+      - label: Personal-use offence in specified places
+        treatment: criminal
+        fine: 10000
+        prison: 10 years
+        note: Up to ten years and KD10,000 in prisons, schools, treatment centres and other specified places
+      - label: Providing a controlled drug for consumption without payment
+        treatment: criminal
+        fine: 10000
+        prison_min: 5 years
+        prison: 10 years
+        note: Five to ten years and KD5,000–10,000
   cultivation:
     text: >-
       Cultivation for trafficking of a plant in the prohibited-plant table can bring death or
@@ -35,6 +53,17 @@ segments:
     sources:
       - law25
       - research26
+    currency: KWD
+    penalties:
+      - label: Personal-use cultivation of a prohibited-plant-table plant
+        treatment: criminal
+        fine: 5000
+        prison: 3 years
+        note: Up to three years and KD5,000
+      - label: Cultivation for trafficking
+        treatment: criminal
+        fine: 2000000
+        note: Death or life imprisonment and KD100,000–2 million, or the seized substances' value if higher
   enforcement:
     text: >-
       Prosecutors may order up to three months in rehabilitation instead of starting a
@@ -69,6 +98,15 @@ segments:
     sources:
       - law25
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Personal consumption, possession and purchase
+      carry up to five years and KD5,000, rising to ten years and KD10,000 in prisons,
+      schools and treatment centres.[@law25] Prosecutors may order up to three months in
+      rehabilitation instead of prosecution, and courts have a treatment route.[@law25]
+      Providing for consumption without payment brings five to ten years.[@law25]
+    sources:
+      - law25
   death_penalty:
     text: >-
       The enacted 2025 law provides death or life imprisonment for specified importing,
@@ -124,6 +162,15 @@ context:
     sources:
       - law25
       - research26
+  hemp:
+    text: >-
+      The retained sources establish no separate low-THC hemp or CBD retail regime: cannabis
+      plants and seeds sit in the prohibited-plant table, and licensing runs through the
+      institutional medical-or-scientific route, with seed records, a responsible pharmacist,
+      secure sites and supervised destruction.[@law25,research26]
+    sources:
+      - law25
+      - research26
   clubs:
     status: none
     text: >-
@@ -169,6 +216,15 @@ context:
       drugs.
     sources:
       - gn_kw24
+  research:
+    text: >-
+      Institutional research is the only lawful route to the plant: Health Ministry Decision
+      289/2026 grants eligible institutions two-year permits for controlled-plant medical and
+      scientific research, with seed records, a responsible pharmacist, secure growing sites
+      and supervised destruction when the purpose or licence ends.[@research26] No separate
+      research programme, trial or published study was established by the retained sources.
+    sources:
+      - research26
 sources:
   law25:
     type: law
