@@ -71,14 +71,38 @@ in `scripts/profile-claims.test.mjs`.
 
 ## 5. Commit, answer, close
 
-- Commit per issue, or per group, with the issue number in the message:
-  `Czechia: name serum for the 2 ng/mL driving limit (#268)`. Only your own files.
-- For a batch of five or more, write `docs/research/bug-review-<date>.md`: a table of issue,
+Use GitHub's own mechanisms, not notes elsewhere: a closing keyword in the commit, and the
+issue's own comment thread and close action through `gh`.
+
+- **Commit** per issue, or per group, with a closing keyword and the issue number in the message
+  body, one line per issue, so GitHub links the commit to the issue and closes it again when the
+  commit reaches `main`:
+
+  ```text
+  Czechia: name serum for the 2 ng/mL driving limit
+
+  Fixes #268
+  ```
+
+  Use `Fixes #n` only for an issue the commit resolves; for a partial fix write `Refs #n`. Commit
+  only your own files.
+- **Comment and close at once**, once the fix is committed: the commit is not pushed yet, so the
+  keyword alone would leave the issue open. Write the comment to a file and pass it to `gh`:
+
+  ```bash
+  gh issue close 268 --reason completed --comment "$(cat /path/to/comment-268.md)"
+  ```
+
+  The comment says in a few lines what changed, which sources were read (with links), what was not
+  confirmed and why, and the commit hash, and that the fix is committed but not yet pushed or
+  deployed, unless it is.
+- **Resolved** (confirmed, or partly confirmed with the rest explained): close with
+  `--reason completed`.
+- **Disproved:** change nothing in the data, and close with `--reason "not planned"` and a comment
+  that quotes the source that disproves the report.
+- **Not resolved** (a source could not be opened, the law is unclear, or the fix needs a decision
+  from the maintainer): leave the issue open and add a comment with what was checked and what is
+  still needed: `gh issue comment 268 --body-file /path/to/comment-268.md`.
+- For a batch of five or more, also write `docs/research/bug-review-<date>.md`: a table of issue,
   profile and resolution (including what was disproved), and the sources read with their limits.
-- Answer each issue with a short comment: what changed, which sources were read, what was not
-  confirmed and why, and the commit hash. Say that the fix is committed locally and not yet pushed
-  or deployed, unless it is.
-- **Comment and close only when the user asked you to** in this request (`gh issue comment`,
-  `gh issue close --reason completed`). Otherwise list the drafted comments in your report and ask.
-  Close a disproved report with `--reason "not planned"` and the source that disproves it.
 - Never push unless the user asks.

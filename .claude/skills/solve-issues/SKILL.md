@@ -12,6 +12,8 @@ this skill only points to it.
    issues by severity (`gh issue list --label bug --state open`). Group issues about the same
    country or the same kind of mistake.
 3. For each issue: read the cited source yourself, decide what is confirmed, fix the data, run the
-   checks, and commit only your own files with `(#<number>)` in the message.
-4. Comment on and close issues only when the user asked for it; otherwise report the drafted
-   comments. Never push unless asked.
+   checks, and commit only your own files with `Fixes #<number>` in the message body (`Refs #<number>`
+   for a partial fix).
+4. Answer on GitHub with `gh`: close a resolved issue with `gh issue close <n> --reason completed
+   --comment …`, a disproved one with `--reason "not planned"` and the source, and leave an
+   unresolved one open with `gh issue comment`. Never push unless asked.
