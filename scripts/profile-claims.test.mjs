@@ -397,3 +397,11 @@ test('PNG quantity tiers cannot hide the alternative forty-year charging route (
   assert.match(pg.segments.enforcement.text, /three years in default/);
   assert.match(pg.sources.dda2021.locator, /13 January 2022/);
 });
+
+// Issue #196
+test('Guyana visitors retain the noncustodial cannabis exception (#196)', () => {
+  const gy = country('gy').context.visitors.text;
+  assert.match(gy, /up to 30 g.*cannot bring imprisonment/);
+  assert.doesNotMatch(gy, /minimum jail sentence.*3 years/);
+  assert.match(gy, /does not authorise bringing cannabis across the border/);
+});

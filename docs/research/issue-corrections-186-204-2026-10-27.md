@@ -84,3 +84,13 @@ the conflict rule and avoids promising an exhaustive small-quantity ceiling or
 purporting to decide which provision must prevail in an individual prosecution.
 Scores remain: possession 0, enforcement 1 (severe imprisonment already recorded).
 No unverified new historical score step or commencement event was invented.
+
+## #196 — Guyana small-possession exception
+
+Read the Ministry of Legal Affairs Attorney General statement of 25 September 2024:
+https://www.mola.gov.gy/post/illegal-for-police-to-lock-up-persons-for-small-amounts-of-ganja-nandlall .
+It explains the enacted 2022 exception: up to 15 g counselling, above 15 through
+30 g community service, no imprisonment. Replaced the generic foreign travel
+three-year-minimum statement with local-law-specific visitor guidance. Possession
+remains an offence; supply and border import are not authorised by this exception.
+Existing scores and history already capture the reform and do not change.
