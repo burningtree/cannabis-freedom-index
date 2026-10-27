@@ -8,7 +8,7 @@ Dirty-at-start files were lt + test + source-archive (none in batch).
 |---|---|---|---|
 | Egypt | x | | |
 | Ethiopia | x | | |
-| Liberia | | | |
+| Liberia | x | | |
 | Congo | | | |
 | Ghana | | | |
 
@@ -26,4 +26,13 @@ Dirty-at-start files were lt + test + source-archive (none in batch).
 - Article: ethiopia-criminal-code-2005 (personal-use/trafficking split, matches existing history id — no changes.yaml edit needed; Japan agent held changes.yaml).
 - No history entries added (15 entries, 2005 + Shashamane 1965 already committed). Deferred gaps: 1920s/30s/70s/80s/2020s decades, nothing since 2019.
 - Gotcha: history test requires every listed section source to be cited inline (medical leaf); driving checker wants each sentence cited.
-- Audit 0/0, history 47 pass / answers 93 pass. Build + HTML verify pending (Japan agent building).
+- Audit 0/0, history 47 pass / answers 93 pass. Build green after clearing stale dist/.prerender (raced another agent's build); HTML verified (penalty labels, customs/17-suspects/ZennJet/sacrament strings, 2005 article body).
+- Committed inside a8e03da (another agent swept my staged files into their research-page commit; content verified identical).
+
+## Liberia (lr) — done 2026-10-27 ~23:45 UTC
+- Profile: recreational + hemp + arrests + culture sections added; products folded (resin/extracts/tinctures into recreational/medical) and deleted; production/medical one-liners expanded; possession + cultivation penalty tables (2 steps each, term fields, no fines stated); inline citations everywhere; history links (2023 overhaul, 2022 bail debate, 2014 law, 1890 diamba) + diamba atlas entry.
+- New sources: Analyst Liberia Nov 2025 (178 arrests, L$40M seizures, all 15 counties) for arrests; New Dawn Jun 2026 (1,419.34 kg, US$20.8M, Jul 2025–Jun 2026) for black_market; Duvall ch.7 p.147 (verified in local PDF) for culture.
+- Article: liberia-non-bailable-2023 already existed (committed 1a44b8d by another agent, fuller than my draft — restored it, added only 2025-enforcement closing + [@1]–[@5] cites to satisfy the article-citation test).
+- Gaps closed: no missing sections/tables/uncited texts; 4 of 18 texts link history/culture. Deferred: 1920s–60s decades, new history entries (changes.yaml held by another agent).
+- Gotcha: article test requires EVERY front-matter source cited inline (vacuous pass breaks on first cite); hemp/planting-style structured sections — planting needs seeds/seeds_trade/clones/clones_trade.
+- Audit 0/0, history 47 pass / answers 93 pass. Build + HTML verify pending.
