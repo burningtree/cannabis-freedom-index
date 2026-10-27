@@ -36,6 +36,21 @@
 - Read: TTR vol. 7 case PDF (Bermudes, full); fsmlaw.org Appendix B
   (chapter text with PL citation).
 
+## Timor-Leste (lead: UU 9/1976 application unconfirmed)
+- Indonesia's Law 9 of 1976 (26 July 1976; 2yr personal use, 6yr
+  growing/possession/small supply, life for trafficking — see
+  indonesia-narcotics-law-1976) postdates the invasion by months and
+  would have applied in the 27th province, but no source stating East
+  Timor application was found (Wiki Timor-Leste is a stub: illegal,
+  locally grown joints, Indonesian hashish). Portuguese-era application
+  of the 1926 law likewise unconfirmed.
+
+## Oman (lead: RD 7/74 drug chapter unreadable in English)
+- Penal Code RD 7/74 (promulgated 16 Feb 1974, in force 1 April 1974;
+  decree.om confirms dates, text Arabic-only). Hull thesis on Omani drug
+  policy (worktribe) download fails; ROP-hosted English PDF dead.
+- Estimate stands until the 1974 code's drug provisions are read.
+
 ## Andorra (decided: keep estimate)
 - Andorra's first Criminal Code dates only to 2005 (Law 9/2005; art. 499
   minor offence, 500-1,200 euros). No earlier Andorran drug law surfaced;
