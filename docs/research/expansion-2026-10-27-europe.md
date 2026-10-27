@@ -8,7 +8,7 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 |---|---|---|---|
 | Slovenia | x | | |
 | Albania | x | | |
-| Kosovo | | | |
+| Kosovo | x | | |
 | Malta | | | |
 | Estonia | | | |
 
@@ -26,4 +26,12 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 - Article: albania-no-licences-issued-2026 (slow rollout, N. Macedonia warning, export-yes-patients-no, paper law).
 - Gaps closed except old decades (1930s–80s) and culture beyond language; arrests section notes no user-level data.
 - Gotcha: consequences one-liner must say more or go; "no X found" sentences need no cite.
+- Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
+
+## Kosovo (xk) — done 2026-10-27 ~00:05 UTC
+- Profile: recreational + hemp (none) + black_market + arrests (Jan 2025 Pristina 25.2 kg / 4 arrests) sections added; products folded (Table I contents into medical) and deleted; possession table (first <3g / other) + cultivation table; driving fully cited; history links (2019 code, 2025 seizure).
+- No new web sources needed (kp25 already in profile). Left out: culture (optional, no atlas entries).
+- Article: kosovo-cannabis-reform-opinion-2019 (Shaipi 2019 Kosovo 2.0 piece read and verified: checkpoints/raids yielded little, 10% of 5,500 survey; code context + 2025 seizure close).
+- Gaps closed except old decades; 3 of 17 texts link history.
+- Gotcha: audit flags WRITING.md avoid-words ("establishes"); currency only with fine figures.
 - Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.

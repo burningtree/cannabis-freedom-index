@@ -2,7 +2,7 @@ name: Kosovo
 region: Europe
 recreational: illegal
 medical: none
-updated: '2026-10-24'
+updated: '2026-10-27'
 summary: >-
   Possession is criminal. A first offence with less than three grams can bring a fine or up to
   one year in prison.
@@ -16,25 +16,45 @@ scores:
 segments:
   possession:
     text: >-
-      Unauthorised possession carries a fine and one to three years in prison. For a first
+      Unauthorised possession carries a fine and one to three years in prison under the [2019
+      Criminal Code](/history/kosovo-criminal-code-2019/), which kept prison possible even for first-time
+      possession.[@code2019] For a first
       offence involving less than three grams of cannabis or hashish for personal use, the
       penalty is a fine or up to one year; the drugs are confiscated.[@code2019]
     sources:
       - code2019
+    penalties:
+      - label: First offence, under 3 g for personal use
+        treatment: criminal
+        term: Possession
+        prison: 1 year
+        note: Fine or up to one year; drugs confiscated
+      - label: Other unauthorised possession
+        treatment: criminal
+        term: Possession
+        prison_min: 1 year
+        prison: 3 years
+        note: Fine and one to three years
   cultivation:
     text: >-
       Growing cannabis to produce narcotic drugs carries one to ten years in prison, with
-      confiscation of the plants and cultivation equipment. The drug law also prohibits growing
+      confiscation of the plants and cultivation equipment.[@code2019] The drug law also prohibits growing
       plants from which narcotics can be obtained.[@code2019,l128]
     sources:
       - code2019
       - l128
+    penalties:
+      - label: Growing to produce narcotic drugs
+        treatment: criminal
+        term: Production
+        prison_min: 1 year
+        prison: 10 years
+        note: Plants and equipment confiscated
   enforcement:
     text: >-
       The small-possession tier permits a fine for a first offence below three grams, with
-      imprisonment also available.[@code2019] Police continue to investigate supply: in January
-      2025 they arrested four men after seizing 25.2 kg of suspected marijuana in
-      Pristina.[@kp25]
+      imprisonment also available.[@code2019] Police continue to investigate supply: in the [January
+      2025 Pristina seizure](/history/kosovo-operation-starti-2025/) they arrested four men after seizing 25.2 kg of suspected marijuana.[@kp25]
     sources:
       - code2019
       - kp25
@@ -62,6 +82,15 @@ segments:
     sources:
       - l128
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. Possessing cannabis for personal use is a criminal
+      offence, including below three grams for a first-time offender, where the penalty is a
+      fine or up to one year with confiscation.[@code2019] The [2019
+      code](/history/kosovo-criminal-code-2019/) deliberately kept prison possible for first-time
+      possession.[@code2019]
+    sources:
+      - code2019
   production:
     status: medical
     text: >-
@@ -72,19 +101,20 @@ context:
     sources:
       - l128
       - code2019
-  products:
-    text: >-
-      Table I expressly includes cannabis, cannabis resin and cannabis extracts and tinctures.
-      Activities involving them are restricted to scientific research, education and police
-      purposes.[@l128]
-    sources:
-      - l128
   medical:
     text: >-
       Cannabis is in Table I, whose exceptions cover scientific research, education and police
-      work. The law’s ordinary medical prescribing and licensed health-institution routes
+      work. The table expressly includes cannabis, resin, extracts and tinctures.[@l128] The law’s ordinary medical prescribing and licensed health-institution routes
       concern other tables, leaving patients without a cannabis prescribing route under this
       law.[@l128]
+    sources:
+      - l128
+  hemp:
+    status: none
+    text: >-
+      No hemp regime was found: cannabis in any form sits in Table I, restricted to scientific
+      research, education and police purposes, with no THC threshold, licence, or fibre
+      exemption located.[@l128]
     sources:
       - l128
   consequences:
@@ -129,21 +159,34 @@ context:
     status: zero
     text: >-
       Road Traffic Law 08/L-186 article 232 prohibits driving under narcotic or other
-      prohibited-drug influence. Article 234(3) establishes drugs in the body through
+      prohibited-drug influence. Article 234(3) confirms drugs in the body through
       appropriate equipment, medical examination or blood and urine analysis; no separate
-      numerical THC allowance is specified. The drug provisions use this presence evidence
+      numerical THC allowance is specified.[@traffic2024] The drug provisions use this presence evidence
       rather than an alcohol concentration band. Article 232(3) sets a EUR150 fine, three
-      months' driving prohibition and two negative points. Article 241 authorises police
+      months' driving prohibition and two negative points.[@traffic2024] Article 241 authorises police
       screening and referral for medical examination or blood and urine analysis, including
       after a positive drug screen. A motor driver or instructor refusing the required control,
       examination or samples faces the separate EUR150 refusal fine, at least six months'
-      driving prohibition and three points; the non-driver refusal tariff differs. Article 216
+      driving prohibition and three points; the non-driver refusal tariff differs.[@traffic2024] Article 216
       requires testing after serious accidents, with a doctor's exception where samples would
-      harm health. No general prescription defence was verified. Kosovo Police's May 2026
-      statement confirms continued implementation of this 2024 law.
+      harm health. No general prescription defence was verified.[@traffic2024] Kosovo Police's May 2026
+      statement confirms continued implementation of this 2024 law.[@trafficimplementation2026]
     sources:
       - traffic2024
       - trafficimplementation2026
+  black_market:
+    text: >-
+      In the January 2025 Pristina operation police seized 25.2 kg of suspected marijuana and
+      arrested four men, the largest recent seizure in the retained sources.[@kp25] No wider
+      seizure series was found.
+    sources:
+      - kp25
+  arrests:
+    text: >-
+      Police arrested four men in Pristina in January 2025 after seizing 25.2 kg of suspected
+      marijuana.[@kp25] No account of routine user-level arrests was found.
+    sources:
+      - kp25
 sources:
   traffic2024:
     title: Kosovo Police — Official Gazette Law 08/L-186 on Road Traffic Provisions (PDF)
