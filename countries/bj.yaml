@@ -23,6 +23,14 @@ segments:
       country, but raids and arrests are active in Cotonou and at borders.
     sources:
       - wiki
+    currency: XOF
+    penalties:
+      - label: Unauthorised possession of a narcotic
+        treatment: criminal
+        prison_min: 2 years
+        prison: 5 years
+        fine: 5000000
+        note: Reported figures; fine of 500,000–5,000,000 CFA francs
   cultivation:
     text: Cultivation is a crime with heavy sentences.
     sources:
@@ -45,6 +53,12 @@ segments:
     sources:
       - idpc17
       - wiki
+    penalties:
+      - label: Export, import and international transport (Article 96)
+        treatment: criminal
+        prison_min: 5 years
+        prison: 10 years
+        note: Fine of three times the value seized
   consumption:
     text: >-
       Use is prohibited, but a 2017 review of the 1997 Act found that the law does not state a
@@ -56,22 +70,36 @@ segments:
       No legal source: the 1997 Act forbids using drugs and punishes import, export and transport.
     sources:
       - idpc17
+context_not_applicable:
+  death_penalty:
+    text: >-
+      The death penalty, abolished in 2016, no longer applies to any drug offence.[@idpc17,wiki]
+    sources: [idpc17, wiki]
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Possession is reported to carry two to five years
+      and a fine of 500,000 to 5 million CFA francs; there is some informal tolerance outside
+      the cities, but raids and arrests are active in Cotonou and at borders.[@wiki]
+    sources:
+      - wiki
   production:
     status: none
-    text: No licensed production.
+    text: No licensed production. Article 8 of Law 97-025 bans growing the cannabis plant anywhere in the country.
     sources:
-      - wiki
-  products:
-    text: No legal products.
-    sources:
-      - wiki
+      - l97025
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No patient programme is documented. The 1997 Act forbids using drugs and the retained
+      sources set no medical route.[@idpc17]
+    sources:
+      - idpc17
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      The retained sources describe no consequence beyond the sentence itself: the 1997 Act
+      fixes minimum fines and prison terms with no alternatives to prison.[@idpc17]
+    sources:
+      - idpc17
   planting:
     seeds: grey
     seeds_trade: unclear
