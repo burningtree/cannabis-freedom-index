@@ -615,3 +615,15 @@ test('Massachusetts distinguishes product THC equivalents from gross weight (#21
  assert.match(x.segments.sharing,/without payment and without publicly advertising/);
  assert.match(x.segments.possession,/10 oz plus cannabis from lawful homegrown/);
 });
+
+// Issue #217
+test('Oregon separates concentrates from licensed-origin extracts and ordinary gifts (#217)',()=>{
+ const x=country('us/or');
+ assert.match(x.segments.possession,/16 oz of cannabinoid concentrates/);
+ assert.match(x.segments.possession,/separate 1 oz household allowance.*licensed retailer/);
+ assert.match(x.segments.possession,/production method/);
+ assert.match(x.segments.enforcement,/more than one-quarter ounce.*Class C felony/);
+ assert.match(x.segments.sharing,/no matching ordinary adult extract-gift exemption/);
+ assert.match(x.segments.sharing,/more than 1 ounce.*not more than 2 ounces.*Class B misdemeanour/);
+ assert.match(x.answers.carry.text,/extracts.*1 oz.*licensed-source/);
+});
