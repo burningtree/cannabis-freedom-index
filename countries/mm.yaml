@@ -28,10 +28,23 @@ segments:
       - tni
       - law
       - gnlm26
+    penalties:
+      - label: Small quantity for personal use, Section 16
+        treatment: criminal
+        prison_min: 5 years
+        prison: 10 years
+      - label: Over 100 g, deemed for sale (2025)
+        treatment: criminal
+        note: Possession of more than 100 g deemed possession for sale
   cultivation:
     text: Cultivation carries a minimum of five years.
     sources:
       - tni
+    penalties:
+      - label: Cultivation
+        treatment: criminal
+        prison_min: 5 years
+        note: Minimum five years, no maximum stated in retained sources
   enforcement:
     text: >-
       A public-health reform on paper, undermined because users are usually caught in possession.
@@ -46,6 +59,12 @@ segments:
     sources:
       - tni
       - gnlm26
+    penalties:
+      - label: Production, sale, import or export
+        treatment: criminal
+        prison_min: 15 years
+        death: true
+        note: Fifteen years to life imprisonment, or death; life means incarceration until death
   consumption:
     text: >-
       Drug use itself carries no prison term. A court must send a user to a rehabilitation centre
@@ -67,15 +86,25 @@ context:
     sources:
       - tni
       - gnlm26
+  recreational:
+    text: >-
+      All recreational use is prohibited. Possession of even a small quantity for personal use
+      risks five to ten years, over 100 g is deemed for sale, and trafficking can bring death;
+      use itself leads to treatment rather than prison.[@tni18,tni,law,gnlm26,idpc]
+    sources:
+      - tni18
+      - tni
+      - law
+      - gnlm26
+      - idpc
   production:
     status: none
-    text: None.
+    text: >-
+      No lawful cannabis production. Cultivation carries a minimum of five years; production
+      for sale falls under the fifteen-years-to-death trafficking tier.[@tni,gnlm26]
     sources:
       - tni
-  products:
-    text: None.
-    sources:
-      - tni
+      - gnlm26
   medical:
     text: No medical cannabis.
     sources:
