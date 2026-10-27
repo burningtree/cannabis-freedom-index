@@ -25,6 +25,17 @@
   (Trujillo-era searches return only general histories).
 - Both stay estimates; revisit via French/Spanish legal archives.
 
+## Trust Territory Controlled Substances Act (lead, 27 Oct)
+- COM P.L. No. 5-110 ("Trust Territory Controlled Substances Act"),
+  63 TTC ch. 4: marihuana defined (all parts/seeds/resin), Schedule I
+  (§259), delegation-to-Health-Director scheme (§§ 301-302) struck down
+  in Trust Territory v. Bermudes (23 July 1974, possession and sale
+  prosecution; §303 charge). Enactment year unknown (5th Congress,
+  ≤1974). FSM adopted it into the 1980 code. Find the COM journal date
+  to replace the fm estimate.
+- Read: TTR vol. 7 case PDF (Bermudes, full); fsmlaw.org Appendix B
+  (chapter text with PL citation).
+
 ## Andorra (decided: keep estimate)
 - Andorra's first Criminal Code dates only to 2005 (Law 9/2005; art. 499
   minor offence, 500-1,200 euros). No earlier Andorran drug law surfaced;
