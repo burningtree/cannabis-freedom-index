@@ -22,6 +22,17 @@ segments:
       prison and a fine of five to twenty million kip.[@penal]
     sources:
       - penal
+    currency: LAK
+    penalties:
+      - label: Under 5 g for consumption
+        treatment: civil
+        note: Treatment, not prison
+      - label: 5 to 10 g dried for consumption
+        treatment: criminal
+        prison_min: 6 months
+        prison: 2 years
+        fine: 20000000
+        note: Five to twenty million kip
   cultivation:
     text: >-
       Ordinary cannabis cultivation is prohibited under the narcotics rules.[@outlook] Approved
@@ -45,6 +56,23 @@ segments:
       weight bands, reaching life imprisonment above 500 grams.[@penal]
     sources:
       - penal
+    currency: LAK
+    penalties:
+      - label: Trading under 5 kg dried cannabis
+        treatment: criminal
+        prison_min: 6 months
+        prison: 3 years
+      - label: Trading 5 to 10 kg
+        treatment: criminal
+        prison_min: 3 years
+        prison: 7 years
+      - label: Regular, organised, or over 10 kg
+        treatment: criminal
+        prison_min: 5 years
+        prison: 10 years
+      - label: THC, hashish or derivatives over 500 g
+        treatment: criminal
+        note: Life imprisonment
   consumption:
     text: >-
       Consumption or possession for consumption of under five grams of cannabis leads to treatment.
@@ -60,6 +88,22 @@ segments:
       - hemp
       - penal
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited: under five grams for consumption leads to treatment,
+      five to ten grams to prison, and trading even small amounts to prison terms that reach
+      life for large extract quantities.[@penal]
+    sources:
+      - penal
+  hemp:
+    status: high
+    text: >-
+      Licensed hemp cultivation, processing and trade use registered seeds and qualified staff,
+      with prescribed dried flower up to 1% THC; medicines have a 0.2% ceiling. Registered
+      consumer products include supplements, cosmetics and CBD beverages.[@jetro,hemp]
+    sources:
+      - jetro
+      - hemp
   production:
     status: medical
     text: >-
@@ -67,12 +111,6 @@ context:
       registered seeds and qualified technical staff.[@jetro]
     sources:
       - jetro
-  products:
-    text: >-
-      The hemp rules distinguish prescribed flower and medicines from registered consumer products,
-      including supplements, cosmetics and CBD beverages.[@hemp]
-    sources:
-      - hemp
   medical:
     text: >-
       The legal review describes prescribed dried hemp flower with a 1% THC ceiling, and medical
