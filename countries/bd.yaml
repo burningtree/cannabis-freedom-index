@@ -28,6 +28,22 @@ segments:
     sources:
       - palo18
       - netra
+    penalties:
+      - label: Herbal cannabis up to 5 kg
+        treatment: criminal
+        prison_min: 6 months
+        prison: 5 years
+        note: Six months to five years plus a fine
+      - label: Herbal cannabis 5 to 15 kg
+        treatment: criminal
+        prison_min: 5 years
+        prison: 7 years
+        note: Plus a fine
+      - label: Herbal cannabis above 15 kg
+        treatment: criminal
+        prison_min: 7 years
+        prison: 10 years
+        note: Plus a fine; hashish as Class A reaches heavier tiers
   cultivation:
     text: >-
       Growing cannabis is a crime under the Narcotics Control Act 2018: one to five years in prison
@@ -36,6 +52,19 @@ segments:
     sources:
       - nca18
       - wiki
+    penalties:
+      - label: Up to 50 plants
+        treatment: criminal
+        prison_min: 1 year
+        prison: 5 years
+      - label: Up to 500 plants
+        treatment: criminal
+        prison_min: 5 years
+        prison: 7 years
+      - label: Above 500 plants
+        treatment: criminal
+        prison_min: 7 years
+        prison: 10 years
   enforcement:
     text: >-
       Heavily and visibly policed. A 2018 anti-drug drive was accompanied by hundreds of alleged
@@ -59,12 +88,24 @@ segments:
       - nca36a
       - dt
       - netra
+    currency: BDT
+    penalties:
+      - label: Digital buying or selling, Section 36A
+        treatment: criminal
+        death: true
+        fine: 2000000
+        note: Any term of imprisonment or death, plus up to 2 million taka; recovery not required
   consumption:
     text: >-
       Consumption carries three months to two years; the law does not say what quantity establishes
       the charge.
     sources:
       - netra
+    penalties:
+      - label: Consumption
+        treatment: criminal
+        prison_min: 3 months
+        prison: 2 years
   access:
     text: >-
       None: the Narcotics Control Act 2018 makes growing cannabis a crime whatever the number of
@@ -72,6 +113,17 @@ segments:
     sources:
       - nca18
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Herbal cannabis brings six months to ten years by
+      weight, consumption three months to two years, and digital buying or selling can bring
+      death; a licensed ganja trade ended in 1989.[@palo18,netra,nca18,nca36a,wiki]
+    sources:
+      - palo18
+      - netra
+      - nca18
+      - nca36a
+      - wiki
   death_penalty:
     text: >-
       The 2018 act provides for death or life imprisonment for the largest quantities of Class A
@@ -89,11 +141,9 @@ context:
       - nca36a
   production:
     status: none
-    text: None.
-    sources:
-      - wiki
-  products:
-    text: None.
+    text: >-
+      No lawful cannabis production. A legal, state-licensed ganja trade existed until
+      1989.[@wiki]
     sources:
       - wiki
   medical:
@@ -165,6 +215,13 @@ context:
       in the provisions reviewed.
     sources:
       - traffic2018
+    currency: BDT
+    penalties:
+      - label: Driving after intoxicants, Section 92(1)
+        treatment: criminal
+        prison: 3 months
+        fine: 10000
+        note: Up to three months, up to Tk10,000, or both, plus one driver point
 sources:
   palo18:
     title: "Prothom Alo — কোন মাদকের জন্য কী সাজা (what sentence for which drug), on the Narcotics Control Bill as passed, 28 October 2018"
