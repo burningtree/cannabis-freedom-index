@@ -52,10 +52,11 @@ const plantingStatus = z.enum(Object.keys(PLANTING_STATUS) as [string, ...string
 const plantingTrade = z.enum(Object.keys(PLANTING_TRADE) as [string, ...string[]]);
 const planting = z.object({ seeds: plantingStatus, seeds_trade: plantingTrade, clones: plantingStatus, clones_trade: plantingTrade, text: z.string().min(1), sources: z.array(z.string()) }).strict();
 // clubs, driving, visitors: the cited text plus one status from that section's vocabulary (STATUS_SECTIONS)
-// the newer ones (`optional` in STATUS_SECTIONS) may leave the status out; a standard section (production) stays required
+// a filled hemp, industry or research section must also carry its status chip; only the whole
+// section may be left out
 const statusSections = Object.fromEntries(Object.entries(STATUS_SECTIONS).map(([key, section]) => {
   const status = z.enum(Object.keys(section.statuses) as [string, ...string[]]);
-  const block = z.object({ status: section.optional ? status.optional() : status, text: z.string().min(1), sources: z.array(z.string()) }).strict();
+  const block = z.object({ status, text: z.string().min(1), sources: z.array(z.string()) }).strict();
   return [key, (CONTEXT_IDS as string[]).includes(key) ? block : block.optional()];
 }));
 const status = {

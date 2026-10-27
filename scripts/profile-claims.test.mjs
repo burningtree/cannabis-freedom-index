@@ -829,6 +829,19 @@ test('Swiss small-possession table excludes consumption and trial research retai
   assert.match(pilot.description, /law ran for ten years.*trial was limited to five years/);
 });
 
+test('every filled hemp, industry or research context carries its status chip', () => {
+  const bad = [];
+  const walkDir = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? walkDir(path.join(dir, e.name)) : e.name.endsWith('.yaml') ? [path.join(dir, e.name)] : []);
+  for (const f of walkDir(path.join(root, 'countries'))) {
+    const c = yaml.load(fs.readFileSync(f, 'utf8'));
+    for (const s of ['hemp', 'production', 'research']) {
+      if (c.context?.[s] && c.context[s].status === undefined) bad.push(`${path.relative(root, f)}#${s}`);
+    }
+  }
+  assert.deepEqual(bad, []);
+});
+
 test('Taiwan distinguishes legislative passage, effective growing penalties and exceptional medicine permission', () => {
   const d = country('tw'), p = d.segments.cultivation;
   assert.equal(penaltySummary(p.penalties.map(penaltyRow)).smallPrisonDays, 7 * 365);
@@ -837,7 +850,7 @@ test('Taiwan distinguishes legislative passage, effective growing penalties and 
   assert.equal(d.medical, 'limited');
   assert.equal(d.scores.access, 0);
   assert.match(d.context.medical.text, /Dravet and Lennox–Gastaut/);
-  assert.equal(d.context.hemp.status, undefined);
+  assert.equal(d.context.hemp.status, 'strict');
   const all = events();
   assert.equal(all.find(e => e.id === 'taiwan-personal-cultivation-amendment-2022').date, '2022-05-04');
   const explanation = all.find(e => e.id === 'taiwan-cbd-rule-2020');
