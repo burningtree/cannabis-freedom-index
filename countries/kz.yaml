@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 398
 recreational: illegal
 medical: none
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Unauthorized possession of even a small amount, without intent to sell, is a criminal offence
   under Article 296, with a fine, corrective work, community service or up to 40 days' arrest.
@@ -22,81 +22,168 @@ segments:
       Article 296 of the Criminal Code covers acquiring, keeping, making or carrying drugs
       without intent to sell. The basic offence brings a fine of up to 160 monthly calculation
       indices, corrective work, up to 160 hours of community service or arrest of up to 40 days;
-      a 'large amount' raises this to 200 indices, 200 hours or 50 days; an 'especially large
-      amount' brings three to seven years in prison. The amounts are set in a government table.
-      A person who voluntarily hands over drugs acquired for personal use, or seeks medical
-      help, is released from criminal liability.
+      a large amount raises this to 200 indices, 200 hours or 50 days; an especially large amount
+      brings three to seven years in prison.[@cc296] The amounts are set in a government table,
+      which the sources read did not reproduce, so the table below uses the code's bands rather
+      than gram lines.[@cc296] A person who voluntarily hands over drugs acquired for personal
+      use, or seeks medical help, is released from criminal liability.[@cc296]
     sources:
       - cc296
-      - zakon
+    currency: KZT
+    penalties:
+      - label: Small amount, Article 296(2)
+        treatment: criminal
+        term: Acquisition, keeping or carrying without intent to sell
+        prison: 40 days
+        note: Fine up to 160 monthly calculation indices, corrective work or up to 160 hours of community service
+      - label: Large amount, Article 296(3)
+        treatment: criminal
+        term: Acquisition, keeping or carrying without intent to sell
+        prison: 50 days
+        note: Fine up to 200 monthly calculation indices, corrective work or up to 200 hours of community service
+      - label: Especially large amount, Article 296(4)
+        treatment: criminal
+        term: Acquisition, keeping or carrying without intent to sell
+        prison_min: 3 years
+        prison: 7 years
   cultivation:
     text: >-
       Article 300 of the Criminal Code punishes sowing or growing cannabis and other prohibited
       plants with a fine of up to 2,000 monthly calculation indices, corrective work, up to 600
-      hours of community service, or restriction of liberty or prison for up to two years. A
-      large amount, a group or a repeat offence brings three to eight years; an especially large
-      amount or a criminal group seven to twelve. Since 2025, licensed companies may grow
-      registered hemp varieties containing no more than 0.3% THC; individuals may not.
+      hours of community service, or restriction of liberty or prison for up to two years.[@cc300]
+      A large amount, a group or a repeat offence brings three to eight years; an especially large
+      amount or a criminal group seven to twelve.[@cc300] Since 2025, licensed companies may grow
+      registered hemp varieties containing no more than 0.3% THC; individuals may not.[@tn25,l279]
     sources:
       - cc300
       - tn25
       - l279
+    currency: KZT
+    penalties:
+      - label: Ordinary cultivation, Article 300(1)
+        treatment: criminal
+        term: Sowing or growing
+        prison: 2 years
+        note: Fine up to 2,000 monthly calculation indices, corrective work, up to 600 hours of community service or restriction of liberty
+      - label: Group, repeat or large amount, Article 300(2)
+        treatment: criminal
+        term: Sowing or growing
+        prison_min: 3 years
+        prison: 8 years
+      - label: Criminal group or especially large amount, Article 300(3)
+        treatment: criminal
+        term: Sowing or growing
+        prison_min: 7 years
+        prison: 12 years
+        note: Property may be confiscated
   enforcement:
     text: >-
       Fines or short arrest for the smallest amounts, years in prison above them. The Interior
-      Ministry has itself proposed not jailing people for simple possession.
+      Ministry has itself proposed not jailing people for simple possession.[@nt] The state also
+      counts drug crime as a large share of its caseload: 1,607 drug crimes in the Karasora-2024
+      operation, and more than 26 tonnes of drugs seized in the first nine months of 2025.[@inbiz24,tca25]
     sources:
       - nt
+      - inbiz24
+      - tca25
   sharing:
     text: >-
       Article 297 of the Criminal Code punishes acquiring, storing or transporting drugs for
       sale, and selling them, with five to eight years in prison and confiscation of property;
       six to ten years for a large amount; seven to twelve for a group, a repeat offence, an
       especially large amount or a public place; and fifteen to twenty for a criminal group, an
-      official, or sale in a school or to a minor.
+      official, or sale in a school or to a minor.[@cc297]
     sources:
       - cc297
+    penalties:
+      - label: Acquisition, keeping or transport for sale, or sale
+        treatment: criminal
+        term: Article 297(1)
+        prison_min: 5 years
+        prison: 8 years
+        note: Property confiscated
+      - label: Large amount
+        treatment: criminal
+        term: Article 297(2)
+        prison_min: 6 years
+        prison: 10 years
+        note: Property confiscated
+      - label: Group, repeat, especially large amount or public place
+        treatment: criminal
+        term: Article 297(3)
+        prison_min: 7 years
+        prison: 12 years
+        note: Property confiscated
+      - label: Criminal group, official, school or minor
+        treatment: criminal
+        term: Article 297(4)
+        prison_min: 15 years
+        prison: 20 years
+        note: Property confiscated
   consumption:
     text: >-
       Using drugs for non-medical purposes in a public place is an offence under the first part
       of Article 296: a fine of up to 80 monthly calculation indices, corrective work, up to 80
-      hours of community service or arrest of up to 20 days. A person who voluntarily seeks
-      medical help is released from liability. Officials have proposed softening the treatment
-      of users.
+      hours of community service or arrest of up to 20 days.[@cc296] A person who voluntarily seeks
+      medical help is released from liability.[@cc296] Officials have proposed softening the
+      treatment of users.[@nt]
     sources:
       - cc296
-      - zakon
       - nt
+    currency: KZT
+    penalties:
+      - label: Public non-medical use, Article 296(1)
+        treatment: criminal
+        term: Use
+        prison: 20 days
+        note: Fine up to 80 monthly calculation indices, corrective work or up to 80 hours of community service
   access:
-    text: No legal source.
+    text: >-
+      There is no legal source of cannabis for adults or patients.[@zakon] Licensed cultivation
+      covers scientific study and industrial hemp, not a retail or patient supply.[@current279] A
+      proposal to move simple possession out of criminal law has not been enacted.[@zakon]
     sources:
       - zakon
+      - current279
 context:
+  recreational:
+    text: >-
+      Adults have no legal way to buy cannabis. Possession without intent to sell is criminal even
+      in the smallest band, with a fine or up to 40 days' arrest; an especially large amount
+      brings three to seven years.[@cc296] Public use is a separate crime with a fine, community
+      service or up to 20 days' arrest.[@cc296] The market is supplied from wild and planted
+      cannabis in the south, and police run an annual eradication and enforcement operation in the
+      Chu valley.[@mvd24] No price or purity data were found.
+    sources:
+      - cc296
+      - mvd24
+  medical:
+    text: >-
+      No approved cannabis medicine or patient-access programme was found in the sources
+      read.[@current279] The narcotics law allows a narrow route for producing narcotic medicines
+      under Article 18, but licensed cannabis cultivation is described as scientific study and
+      industrial hemp, not medicine for patients.[@current279] Medical status stays none.
+    sources:
+      - current279
   production:
-    status: medical
+    status: hemp
     text: >-
       Licensed companies may cultivate approved low-THC hemp for industrial purposes unrelated to
       making narcotic drugs.[@hemp797] Article 22 separately permits licensed scientific cultivation
-      within state quotas; growing cannabis to manufacture narcotic medicines is prohibited except for
-      the cases referred to Article 18.[@current279] The industrial-hemp licences therefore describe a
-      separate crop from the controlled scientific route.[@hemp797,current279]
+      within state quotas; growing cannabis to manufacture narcotic medicines is prohibited except
+      for the cases referred to Article 18.[@current279] The industrial-hemp licences therefore
+      describe a separate crop from the controlled scientific route.[@hemp797,current279]
     sources:
       - hemp797
       - current279
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
-  medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
   consequences:
     text: >-
-      Unauthorised possession in the ordinary and large bands is a lesser criminal offence, with
-      fines, work or short arrest; especially large holdings can bring three to seven years in prison.[@cc296,cc10]
-      Under Article 79, a person convicted of a lesser criminal offence is treated as having no
-      formal conviction status (sudimost), the status used for repeat-offending and sentencing rules.[@cc79]
-      A ministry proposal to move ordinary personal possession out of criminal law remains a
-      proposal.[@zakon]
+      Unauthorized possession in the ordinary and large bands is a lesser criminal offence, with
+      fines, work or short arrest; especially large holdings can bring three to seven years in
+      prison.[@cc296,cc10] Under Article 79, a person convicted of a lesser criminal offence is
+      treated as having no formal conviction status (sudimost), the status used for
+      repeat-offending and sentencing rules.[@cc79] A ministry proposal to move ordinary personal
+      possession out of criminal law remains a proposal.[@zakon]
     sources:
       - cc296
       - cc10
@@ -108,25 +195,26 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      The 1998 narcotics law lists the cannabis plant as any plant of the genus containing
-      THC, "with the exception of seeds and roots, if they are not accompanied by the plant
-      itself or other parts of plant". Sowing and growing hemp counts as cultivating a
-      narcotic plant and is a controlled activity. Since 2025 licensed companies may grow
-      listed hemp varieties with up to 0.3% THC, and only from original or elite registered
-      seed; individuals may not.
+      The 1998 narcotics law lists the cannabis plant as any plant of the genus containing THC,
+      "with the exception of seeds and roots, if they are not accompanied by the plant itself or
+      other parts of plant".[@l279] Sowing and growing hemp counts as cultivating a narcotic plant
+      and is a controlled activity.[@cc300] Since 2025 licensed companies may grow listed hemp
+      varieties with up to 0.3% THC, and only from original or elite registered seed; individuals
+      may not.[@tn25,l279]
     sources:
       - tn25
       - l279
+      - cc300
   black_market:
     text: >-
       The market is supplied from inside the country, from wild and planted cannabis in the
-      south. Every summer the interior ministry runs an operation called Karasora against
-      growing, harvesting and transit, with helicopter and drone reconnaissance over the
-      Almaty, Zhetysu, Turkistan, Kyzylorda and Ulytau regions. In 2024 it removed more than
-      15 tonnes of drugs in 70 days and recorded 450 drug crimes, 102 of them for cultivation;
-      flights alone found over 9,000 cannabis plants. In the first nine months of 2025 police
-      seized more than 26 tonnes of drugs, 35% more than a year earlier, including over nine
-      tonnes of marijuana and more than 600 kg of hashish.
+      south.[@mvd24] Every summer the interior ministry runs an operation called Karasora against
+      growing, harvesting and transit, with helicopter and drone reconnaissance over the Almaty,
+      Zhetysu, Turkistan, Kyzylorda and Ulytau regions.[@mvd24] In 2024 it removed more than 15
+      tonnes of drugs in 70 days and recorded 450 drug crimes, 102 of them for cultivation;
+      flights alone found over 9,000 cannabis plants.[@mvd24] In the first nine months of 2025
+      police seized more than 26 tonnes of drugs, 35% more than a year earlier, including over
+      nine tonnes of marijuana and more than 600 kg of hashish.[@tca25]
     sources:
       - mvd24
       - tca25
@@ -135,10 +223,10 @@ context:
     text: >-
       There is no legal recreational supply for anyone. The Criminal Code's penalties run from
       fines or up to 40 days' arrest for holding drugs without intent to sell to five to eight
-      years in prison, with confiscation of property, for holding or carrying them for sale.
-      Advertising or promoting drugs is a separate crime under Article 299-1, added in 2019: up
-      to three years in prison, or three to six when done online, through the media or in a
-      place where many people gather.
+      years in prison, with confiscation of property, for holding or carrying them for
+      sale.[@cc296,cc297] Advertising or promoting drugs is a separate crime under Article 299-1,
+      added in 2019: up to three years in prison, or three to six when done online, through the
+      media or in a place where many people gather.[@cc2991]
     sources:
       - cc296
       - cc297
@@ -146,31 +234,41 @@ context:
   driving:
     status: impairment
     text: >-
-      The Code of Administrative Offences punishes driving 'in a state of alcoholic, narcotic
-      or toxic intoxication' with 15 days of administrative arrest and loss of the licence for
-      seven years; where harm or damage results, 20 days. A repeat within a year brings 20
-      days and eight years. The article names a state of intoxication, not a measured level,
-      and the Constitutional Court upheld it in October 2023.
+      The Code of Administrative Offences punishes driving "in a state of alcoholic, narcotic or
+      toxic intoxication" with 15 days of administrative arrest and loss of the licence for seven
+      years; where harm or damage results, 20 days.[@koap608] A repeat within a year brings 20 days
+      and eight years.[@koap608] The article names a state of intoxication, not a measured level,
+      and the Constitutional Court upheld it in October 2023.[@koap608]
     sources:
       - koap608
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@cc300,cc297]
     sources:
       - cc300
       - cc297
   arrests:
     text: >-
-      In the interior ministry's operation Karasora-2024, between 1 June and 31
-      October 2024, police recorded 1,607 drug crimes: 799 of sale, 245 of cultivation and 194
-      of possession. They seized 21.5 tonnes of drugs, among them about 4.5 tonnes of
-      marijuana and more than 16 tonnes of cannabis plants, and destroyed over 380
-      hectares of wild hemp in the Shu district of Zhambyl region. The ministry gave no
-      total for arrests.
+      In the interior ministry's operation Karasora-2024, between 1 June and 31 October 2024,
+      police recorded 1,607 drug crimes: 799 of sale, 245 of cultivation and 194 of possession.[@inbiz24]
+      They seized 21.5 tonnes of drugs, among them about 4.5 tonnes of marijuana and more than 16
+      tonnes of cannabis plants, and destroyed over 380 hectares of wild hemp in the Shu district
+      of Zhambyl region.[@inbiz24] The ministry gave no total for arrests.[@inbiz24]
     sources:
       - inbiz24
+  culture:
+    text: >-
+      Wild cannabis grows across the Chu valley in the south, known in Russian as
+      [anasha](/culture/language/anasha/) or dichka. The Soviet authorities declared it a narcotic
+      in 1969 and tried to burn and spray the fields; the plants grew back.[@nat09] In 2009 the
+      interior ministry estimated that the valley could yield 140,000 tonnes of marijuana and
+      5,000 to 6,000 tonnes of hashish a year.[@nat09] A 2014 proposal to lease the fields to
+      international pharmaceutical companies came to nothing.[@fp14]
+    sources:
+      - nat09
+      - fp14
   hemp:
     status: standard
     text: >-
@@ -185,6 +283,7 @@ sources:
   cc300:
     title: Kazakhstan — Criminal Code of 3 July 2014, Article 300 (kodeksy-kz.com)
     url: https://kodeksy-kz.com/ka/ugolovnyj_kodeks/300.htm
+    locator: "Parts 1–3, text checked 22 October 2026."
   cc2991:
     title: Kazakhstan — Criminal Code of 3 July 2014, Article 299-1 (kodeksy-kz.com)
     url: https://kodeksy-kz.com/ka/ugolovnyj_kodeks/299-1.htm
@@ -197,9 +296,11 @@ sources:
   cc296:
     title: Kazakhstan — Criminal Code of 3 July 2014, Article 296, text current to October 2026 (kodeksy-kz.com)
     url: https://kodeksy-kz.com/ka/ugolovnyj_kodeks/296.htm
+    locator: "Parts 1–4 and notes; checked 22 October 2026."
   cc297:
     title: Kazakhstan — Criminal Code of 3 July 2014, Article 297, text current to October 2026 (kodeksy-kz.com)
     url: https://kodeksy-kz.com/ka/ugolovnyj_kodeks/297.htm
+    locator: "Parts 1–4; checked 22 October 2026."
   nat09:
     title: The National — Roots of drug trade run deep (14 September 2009)
     url: https://www.thenationalnews.com/world/asia/roots-of-drug-trade-run-deep-1.545105
@@ -209,6 +310,7 @@ sources:
   koap608:
     title: Kazakhstan — Code of Administrative Offences, Article 608 (Adilet)
     url: https://adilet.zan.kz/rus/docs/K1400000235
+    locator: "Article 608, current text checked October 2026."
   mvd24:
     title: "МВД Республики Казахстан — Қарасора: свыше 15 тонн наркотиков изъято из незаконного оборота (13 August 2024)"
     url: https://www.gov.kz/memleket/entities/qriim/press/news/details/826512?lang=ru
@@ -223,12 +325,10 @@ sources:
     url: https://importlicensing.wto.org/sites/default/files/members/75/Law%20of%20the%20Republic%20of%20Kazakhstan%20No.279-I%20-%20Narcotic%20Drugs%20Psychotropic%20Substances_17.07.1998.pdf
   zakon:
     title: Zakon.kz — Kazakhstan plans to change punishment for drug use
-    url: >-
-      https://www.zakon.kz/pravo/6529660-v-kazakhstane-planiruyut-izmenit-nakazanie-za-upotreblenie-narkotikov.html
+    url: https://www.zakon.kz/pravo/6529660-v-kazakhstane-planiruyut-izmenit-nakazanie-za-upotreblenie-narkotikov.html
   nt:
     title: NewTimes.kz — Interior Ministry proposes not jailing people for drug possession
-    url: >-
-      https://newtimes.kz/obshchestvo/222949-mvd-predlozhilo-ne-sazhat-kazakhstantsev-v-tiurmu-za-khranenie-narkotikov
+    url: https://newtimes.kz/obshchestvo/222949-mvd-predlozhilo-ne-sazhat-kazakhstantsev-v-tiurmu-za-khranenie-narkotikov
   inbiz24:
     title: "Inbusiness.kz — Более 20 тонн наркотиков изъяли казахстанские полицейские с начала июня 2024 года (11 November 2024)"
     url: https://inbusiness.kz/ru/last/bolee-20-tonn-narkotikov-izyali-kazahstanskie-policejskie-s-nachala-iyunya-2024-goda
@@ -236,13 +336,9 @@ sources:
     type: law
     title: Kazakhstan — Resolution 797 of 26 September 2025, amended by Resolution 259 of 11 April 2026
     url: https://old.adilet.zan.kz/rus/docs/P2500000797
-    locator: >-
-      Resolution point 2 and cultivation requirements 3–7: corporate licences, 0.3% dry-mass THC,
-      seed, site security, testing and destruction
+    locator: "Resolution point 2 and cultivation requirements 3–7: corporate licences, 0.3% dry-mass THC, seed, site security, testing and destruction."
   current279:
     type: law
     title: Kazakhstan — Narcotic Drugs Act, current Article 22
     url: https://old.adilet.zan.kz/rus/docs/Z980000279_/compare/eng
-    locator: >-
-      Article 22(1)–(2), (5)–(7): licensed scientific cultivation, restriction on medicinal-drug crops
-      and industrial hemp; indexed current text read
+    locator: "Article 22(1)–(2), (5)–(7): licensed scientific cultivation, restriction on medicinal-drug crops and industrial hemp; indexed current text read."
