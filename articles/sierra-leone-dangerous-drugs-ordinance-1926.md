@@ -6,7 +6,7 @@ sources:
     title: Dangerous Drugs Ordinance, Chapter 154, revised text
     authors:
       - Government of Sierra Leone
-    locator: pp. 1619–1623, sections 1–2 and 9–13; 1926 ordinance with amendments of 1928 and 1932 listed
+    locator: pp. 1619–1623, sections 1–2 and 9–13; 1926 ordinance with amendments of 1928 and 1932 listed; Supreme Court and summary penalties with forfeiture
     url: https://www.sierra-leone.org/Laws/Cap%20154.pdf
   - type: book
     title: The African Roots of Marijuana
@@ -31,13 +31,13 @@ Growers and people holding cannabis faced criminal offences under Sierra Leone's
 
 Cannabis had been [described in Sierra Leone in 1851](/history/sierra-leone-cannabis-long-in-use-1851/), when colonial surgeon R. O. Clarke wrote about diamba cultivation and smoking.[@2] The local plant had a history well before international controls arrived.[@2]
 
-Yet knowledge of it was uneven.[@2] Historian Chris Duvall recounts how the president of Sierra Leone's Chamber of Commerce told an inquiry in 1899 that there was nothing resembling bhang or Indian hemp in the colony.[@2] The international names could obscure a plant already known to local growers and smokers.[@2]
+Yet knowledge of it was uneven.[@2] Historian Chris Duvall recounts how the president of Sierra Leone's Chamber of Commerce told an inquiry in 1899 that there was nothing resembling bhang or Indian hemp in the colony.[@2] The Geneva Convention itself listed only hashish, esrar and charas — plus "djamba", mentioned probably on behalf of the Central African colonies — while Sierra Leone's ordinance copied the "whatever name" formula without showing any awareness that diamba was the drug it meant.[@2]
 
 ## The law reached plants as well as resin
 
 The [1925 Geneva convention](/history/geneva-opium-convention-1925/) provided the stated reason for the ordinance.[@1] Its definition of Indian hemp described dried flowering or fruiting tops of female cannabis plants whose resin had not been removed, whatever commercial name they carried.[@1]
 
-The revised law's offences reached further.[@1] Growing the plant, possessing it or any part of it, and selling or otherwise dealing in it were offences, with an exception for medical preparations.[@1] Separate rules prohibited importing or exporting cannabis resin and made producing, holding or dealing in resin offences.[@1] The controls therefore reached farmers, holders and traders along the supply chain.[@1]
+The revised law's offences reached further.[@1] Growing the plant, possessing it or any part of it, and selling or otherwise dealing in it were offences, with an exception for medical preparations.[@1] Conviction in the Supreme Court risked ten years with hard labour or a £1,000 fine; summary conviction, twelve months or £250; and the drugs were forfeited either way.[@1] Separate rules prohibited importing or exporting cannabis resin and made producing, holding or dealing in resin offences.[@1] The controls therefore reached farmers, holders and traders along the supply chain.[@1]
 
 ## Medicines followed pharmacy rules
 
