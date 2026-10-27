@@ -24,6 +24,15 @@ segments:
       user it finds dependent, on condition of treatment (Article 26).
     sources:
       - lei3
+    penalties:
+      - label: Personal use, up to three days' supply
+        treatment: criminal
+        prison: 3 months
+        note: The statute sets prison, not a fine
+      - label: Personal use, over three days' supply
+        treatment: criminal
+        prison: 1 year
+        note: Amount exceeds the average individual need for three days
   cultivation:
     text: >-
       Growing for your own use falls under the same Article 23 offence (up to three months, or
@@ -31,6 +40,15 @@ segments:
       purpose is trafficking under Article 4: 8 to 12 years.
     sources:
       - lei3
+    penalties:
+      - label: Growing for own use
+        treatment: criminal
+        prison: 3 months
+        note: Up to a year above three days' supply
+      - label: Unauthorised cultivation (trafficking, Article 4)
+        treatment: criminal
+        prison_min: 8 years
+        prison: 12 years
   enforcement:
     text: >-
       The statute sets prison, not a fine, for personal use, but only up to three months, and
@@ -45,6 +63,15 @@ segments:
       sets up to two years and a fine, unless the amount exceeds five days' supply.
     sources:
       - lei3
+    penalties:
+      - label: Getting the drug for personal use (Article 9)
+        treatment: criminal
+        prison: 2 years
+        note: Up to two years and a fine, unless over five days' supply
+      - label: Giving or handing to another person (trafficking, Article 4)
+        treatment: criminal
+        prison_min: 8 years
+        prison: 12 years
   consumption:
     text: >-
       Using cannabis is itself a crime under Article 23 (up to three months in prison).
@@ -56,22 +83,49 @@ segments:
       4; the law leaves authorised activity to licences.
     sources:
       - lei3
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Angola abolished the death penalty by constitution in 1992; no cannabis offence carries
+      a capital sentence.[@wikipdp]
+    sources: [wikipdp]
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Using it, or holding, buying or growing it for
+      one's own use, brings up to three months in prison, or up to a year above three days'
+      supply; a dependent user's sentence can be suspended for treatment.[@lei3]
+    sources:
+      - lei3
+  culture:
+    text: >-
+      Cannabis is known as *diamba* or *liamba*.[@wiki] [Livingstone
+      recorded](/history/angola-livingstone-observation-1857/) that under Portuguese rule a
+      slave's use was considered a crime, while diamba was sold openly in Luanda's
+      market.[@tni_rd] A 2009 UN drugs report called cannabis the most common illicit drug in
+      the country, grown in almost every province.[@incb09]
+    sources:
+      - wiki
+      - tni_rd
+      - incb09
   production:
     status: none
     text: No licensed production.
     sources:
       - wiki
-  products:
-    text: No legal products.
-    sources:
-      - wiki
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No patient programme is documented. Law 3/99 punishes use and personal possession
+      without authorisation, with suspension for treatment only for dependent users.[@lei3]
+    sources:
+      - lei3
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      The retained sources describe no consequence beyond the sentence itself, which a court
+      can suspend for a dependent user on condition of treatment; anonymous healthcare is
+      guaranteed to a user who asks for it.[@lei3]
+    sources:
+      - lei3
   planting:
     seeds: grey
     seeds_trade: unclear
@@ -116,6 +170,15 @@ sources:
   wiki:
     title: Wikipedia — Cannabis in Angola
     url: https://en.wikipedia.org/wiki/Cannabis_in_Angola
+  tni_rd:
+    title: Transnational Institute — The Rise and Decline of Cannabis Prohibition, chapter 1 (2014, PDF)
+    url: https://www.tni.org/files/download/rise_and_decline_ch1.pdf
+  incb09:
+    title: INCB — Report of the International Narcotics Control Board for 2009 (p. 35)
+    url: https://www.incb.org/documents/Publications/AnnualReports/AR2009/AR_09_English.pdf
+  wikipdp:
+    title: Wikipedia — Capital punishment in Angola (abolished by constitution in 1992)
+    url: https://en.wikipedia.org/wiki/Capital_punishment_in_Angola
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
