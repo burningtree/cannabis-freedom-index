@@ -156,3 +156,10 @@
   of high-school students having tried cannabis. Cited to Nahas 1992 (p.210), Saenz
   Rovner 2009 (p.99), Fernandez Labbe 2014 (p.147), Morris 1973 (p.260). None local. The
   1545 Quillota entry (Abel + Dewey 1913) is covered. Do not add until read.
+
+## Guyana 1970s Rastafari + 2015 demo (open: unread)
+- Wikipedia: indentured ganja custom faded by early 20th c.; Rastafari gains in the 1970s
+  brought renewed interest; 2015 demo at AG office after Vibert Butts arrest (Stabroek News,
+  4 Dec 2015). Cited to Hamid 2002 (Ganja Complex, p.41), Cambridge 2015 (Musical Life in
+  Guyana, p.273). Stabroek page Cloudflare-walled. Early laws (1861/1913/1937) covered via
+  Mills + Banks. Do not add until Hamid or Cambridge is read.
