@@ -1,14 +1,16 @@
 name: North Macedonia
 region: Europe
 iso_numeric: 807
-recreational: illegal
+recreational: decriminalised
 medical: limited
-updated: 2026-10-13
+updated: '2026-10-27'
 summary: >-
-  Medical cannabis was legalised in 2016 and many producers are licensed for export. Recreational
-  use is illegal.
+  Since February 2023, the Criminal Code expressly excludes possession for personal use from
+  punishment. Drug use still brings a separate misdemeanour fine, and unauthorised production and
+  supply remain criminal. Licensed companies may grow for medical or scientific purposes; domestic
+  patient access remains limited.
 scores:
-  possession: 1
+  possession: 3
   cultivation: 1
   enforcement: 2
   sharing: 1
@@ -17,153 +19,286 @@ scores:
 segments:
   possession:
     text: >-
-      Possession for personal use is not explicitly criminalised as such, but there is no defined
-      threshold, and people caught with small amounts are routinely charged under the offence of
-      'enabling the use of narcotics' or with unauthorised production and trade. In practice it is
-      treated as a crime.
+      Since [25 February 2023](/history/north-macedonia-personal-possession-exemption-2023/),
+      Article 215(6) expressly excludes possession of narcotic drugs and psychotropic substances for
+      personal use from punishment.[@law23] The Constitutional Court rejected a challenge to that
+      provision in [December
+      2025](/history/north-macedonia-possession-exemption-upheld-2025/).[@court25] Neither provision
+      supplies a numeric cannabis allowance; holding for sale remains within the
+      production-and-trade offence.[@law23,court25] A 2023 rights report documented continued police
+      mistreatment of drug users after the amendment.[@margins23]
     sources:
-      - gi
+      - law23
+      - court25
+      - margins23
+    penalties:
+      - label: Holding cannabis for sale — ordinary offence
+        treatment: criminal
+        term: Article 215(1)
+        prison_min: 3 years
+        prison: 10 years
+        note: >-
+          These supply-related rows do not apply to possession exclusively for oneself, which
+          Article 215(6) excludes from criminal punishment
+      - label: Smaller-quantity Article 215 offence
+        treatment: criminal
+        term: Article 215(2)
+        prison_min: 6 months
+        prison: 3 years
+        note: A reduced production/supply offence, not a personal-possession allowance
   cultivation:
-    text: Unlicensed cultivation is a crime with prison.
+    text: >-
+      Unlicensed cannabis production remains criminal, with the ordinary Article 215 range of
+      three–ten years and six months–three years for a smaller-quantity offence.[@court25] The drug
+      law permits corporate medical/scientific growing only with health ministry approval and
+      government consent, followed by agriculture ministry planting permission.[@drugs] The
+      personal-possession exemption does not create a home-growing licence.[@law23,drugs]
     sources:
-      - gi
-      - kp
+      - court25
+      - drugs
+      - law23
+    penalties:
+      - label: Unauthorised cannabis production — ordinary offence
+        treatment: criminal
+        term: Article 215(1)
+        prison_min: 3 years
+        prison: 10 years
+      - label: Smaller-quantity production offence
+        treatment: criminal
+        term: Article 215(2)
+        prison_min: 6 months
+        prison: 3 years
+        note: No fixed lawful plant count is created by this reduced tariff
   enforcement:
     text: >-
-      Users are prosecuted through neighbouring offences; sentences for production and trade are
-      heavy.
+      The 2023 amendment makes the personal-possession exclusion explicit.[@law23] Coalition Margins
+      nevertheless documented police violations affecting recreational drug users in its
+      February–August 2023 reporting period.[@margins23] Production, sale and enabling another
+      person’s use remain criminal, so those allegations need to be distinguished from possession
+      exclusively for oneself.[@court25]
     sources:
-      - gi
+      - law23
+      - margins23
+      - court25
   sharing:
-    text: Supply is a crime.
+    text: >-
+      Ordinary sale and unlawful distribution carry three–ten years under Article 215(1), with a
+      smaller-quantity range of six months–three years.[@court25] Giving drugs for another person to
+      use or making premises available for use can instead engage Article 216(1), carrying one–five
+      years.[@court25] The personal-possession exemption does not extend to encouraging or enabling
+      someone else’s use.[@court25]
     sources:
-      - gi
+      - court25
+    penalties:
+      - label: Ordinary cannabis sale or unlawful distribution
+        treatment: criminal
+        term: Article 215(1)
+        prison_min: 3 years
+        prison: 10 years
+      - label: Smaller-quantity production/distribution offence
+        treatment: criminal
+        term: Article 215(2)
+        prison_min: 6 months
+        prison: 3 years
+      - label: Giving drugs for use or enabling another person’s use
+        treatment: criminal
+        term: Article 216(1)
+        prison_min: 1 year
+        prison: 5 years
+        note: Aggravated cases have higher penalties
   consumption:
     text: >-
-      Use is not itself an offence in the Criminal Code, though it brings police attention and
-      related charges.
+      The public-order law has a separate drug-use misdemeanour in Article 20, carrying a fine of
+      €100–250 payable in denars.[@public] Its public-place rules include some conduct visible from
+      a public place or producing public consequences.[@public] This use offence is distinct from
+      the Criminal Code exemption for possession exclusively for oneself.[@court25,law23]
     sources:
-      - gi
+      - public
+      - court25
+      - law23
+    currency: EUR
+    penalties:
+      - label: Drug use prosecuted under the public-order law
+        treatment: civil
+        term: Public Order Misdemeanours Law, Article 20
+        fine_min: 100
+        fine: 250
+        note: Statutory euro amount paid in denar equivalent; separate from personal possession
   access:
-    text: No adult-use source. Pharmacies can dispense cannabis oils on prescription.
+    text: >-
+      There is no general recreational supply route under the production and distribution
+      provisions.[@court25] The [2016 framework](/history/north-macedonia-medical-2016/) permits
+      licensed medical/scientific cultivation.[@drugs] Domestic treatment is mainly through pharmacy
+      cannabis oils on specialist prescription, with limited patient access reported in 2025.[@pp]
     sources:
+      - court25
+      - drugs
       - pp
-      - kp
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. Use itself is not an offence in the Criminal
-      Code, but people caught with small amounts are routinely charged with enabling use
-      or unauthorised production and trade, and there is no defined threshold — in practice
-      it is treated as a crime.[@gi] Unlicensed cultivation is a crime with
-      prison.[@gi,kp]
+      Personal possession is expressly excluded from criminal punishment by the 2023
+      amendment.[@law23] It creates no gram allowance, home-growing licence or retail
+      system.[@law23,drugs,court25] Drug use remains subject to its separate public-order fine,
+      while production, distribution and enabling another person’s use can bring
+      prison.[@public,court25]
     sources:
-      - gi
-      - kp
+      - law23
+      - drugs
+      - court25
+      - public
   production:
     status: medical
     text: >-
-      Medical cultivation and manufacturing were legalised in March 2016, and by 2022 the state had
-      issued 66 licences — far more than the domestic market needs. Exports were at first limited to
-      oils and extracts, with dried flower exports opened later; diversion from licensed sites has
-      been a recurring scandal.
+      The drug law permits companies to cultivate for medical or scientific purposes with health
+      ministry approval and prior government consent.[@drugs] Agriculture ministry permission is
+      also required before planting, with cultivation plans, inspections and harvest
+      records.[@drugs] A 2025 market report counted 66 licences issued by 2022, but said only part
+      of that cohort achieved commercial output or export certification.[@pp] The same report
+      described exports centred on oils and extracts, with dried flower still restricted.[@pp]
     sources:
-      - pp
-      - gi
-  products:
-    text: Prescription oils and extracts.
-    sources:
-      - kp
+      - drugs
       - pp
   medical:
     text: >-
-      Legal since 2016 for a list of serious conditions, on specialist prescription, dispensed in
-      pharmacies.
+      Medical/scientific cultivation entered the statutory framework in 2016.[@drugs] A 2025 market
+      report describes specialist-prescribed products for conditions including multiple sclerosis,
+      epilepsy, HIV/AIDS and certain cancers, with few dispensing pharmacies.[@pp] It reports that
+      patients pay the treatment cost and that domestic access remains limited despite the
+      production industry.[@pp]
     sources:
-      - kp
+      - drugs
       - pp
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      Article 215(6) excludes criminal punishment for possession exclusively for personal
+      use.[@law23,court25] A conviction for production, supply or enabling another user remains a
+      criminal outcome.[@court25] The public-order drug-use fine is a separate misdemeanour
+      proceeding.[@public]
     sources:
-      - gi
+      - law23
+      - court25
+      - public
   planting:
     seeds: licensed
     seeds_trade: regulated
     clones: licensed
     clones_trade: regulated
     text: >-
-      The narcotics law defines medical cannabis as all above-ground parts of the plant
-      "including the seeds". Cannabis may be grown only for medical or scientific purposes, by
-      companies holding health ministry approval given with the government's consent, and they
-      need a further approval from the agriculture ministry before sowing or planting.
+      Medical/scientific growers need health ministry approval with government consent, plus
+      agriculture ministry permission before sowing or planting.[@drugs] Approved plans and records
+      cover seeds, seedlings, transplants and plant counts.[@drugs] These are licensed corporate
+      channels, not a household right to grow.[@drugs]
     sources:
-      - cms
+      - drugs
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      Providing drugs or premises for another person to use can bring one–five years under Article
+      216(1).[@court25] The personal-possession exemption protects possession for oneself, without
+      authorising collective supply.[@court25] Medical/scientific cultivation needs corporate
+      approvals.[@drugs]
     sources:
-      - gi
-      - kp
+      - court25
+      - drugs
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession for personal use is not
-      explicitly criminalised, but there is no defined threshold, and people caught with small
-      amounts are routinely charged under the offence of enabling the use of narcotics.
+      The personal-possession exemption in Article 215(6) does not specify a citizenship
+      condition.[@law23] It supplies no lawful recreational purchase route, while drug use remains
+      subject to the public-order offence.[@court25,public] Holding for sale, distributing and
+      enabling another person to use cannabis remain criminal.[@court25]
     sources:
-      - gi
+      - law23
+      - court25
+      - public
   driving:
     status: impairment
     text: >-
-      Drug-related inability to drive safely can lead to immediate removal from
-      traffic and temporary licence withdrawal under Road Safety Law article 341.
-      The Interior Ministry's published consolidation includes amendments through
-      Gazette 193/2025. Articles 336–338 provide police testing, medical examination
-      and blood/urine analysis, with health safeguards. Article 336(6) specifies a
-      EUR500-equivalent refusal fine and one year's driving prohibition in that
-      consolidation; the neighbouring EUR400 provision concerns alcohol findings,
-      not a generic cannabis-driving tariff. Drug driving also engages Criminal Code
-      article 297-a: the ministry reported a drug-related arrest under that article
-      in January 2026. The Constitutional Court confirms that Gazette 16/2026 changed
-      article 297-a and added mandatory-ban and vehicle-confiscation provisions,
-      applicable from 1 February. The final criminal amendment and its correction
-      were not fully retrieved here, so exact current criminal penalties, ban lengths
-      and confiscation conditions remain unresolved. No numerical THC allowance,
-      positive-test-only offence or general prescription defence is inferred.
+      Drug-related inability to drive safely can lead to immediate removal from traffic and
+      temporary licence withdrawal under Road Safety Law article
+      341.[@roadtrafficpublished,criminalamendment2026,drugenforcement2026] The Interior Ministry's
+      published consolidation includes amendments through Gazette
+      193/2025.[@roadtrafficpublished,criminalamendment2026,drugenforcement2026] Articles 336–338
+      provide police testing, medical examination and blood/urine analysis, with health
+      safeguards.[@roadtrafficpublished,criminalamendment2026,drugenforcement2026] Article 336(6)
+      specifies a EUR500-equivalent refusal fine and one year's driving prohibition in that
+      consolidation; the neighbouring EUR400 provision concerns alcohol findings, not a generic
+      cannabis-driving tariff.[@roadtrafficpublished,criminalamendment2026,drugenforcement2026] Drug
+      driving also engages Criminal Code article 297-a: the ministry reported a drug-related arrest
+      under that article in January
+      2026.[@roadtrafficpublished,criminalamendment2026,drugenforcement2026] The Constitutional
+      Court confirms that Gazette 16/2026 changed article 297-a and added mandatory-ban and
+      vehicle-confiscation provisions, applicable from 1
+      February.[@roadtrafficpublished,criminalamendment2026,drugenforcement2026] The final criminal
+      amendment and its correction were not fully retrieved here, so exact current criminal
+      penalties, ban lengths and confiscation conditions remain
+      unresolved.[@roadtrafficpublished,criminalamendment2026,drugenforcement2026] No numerical THC
+      allowance, positive-test-only offence or general prescription defence is
+      inferred.[@roadtrafficpublished,criminalamendment2026,drugenforcement2026]
     sources:
       - roadtrafficpublished
       - criminalamendment2026
       - drugenforcement2026
   black_market:
     text: >-
-      The licensed medical cannabis industry has itself become a source for the illegal
-      market. Police actions against licensed companies seized 561 kg and 8,723 stems in
-      2022 and 4.6 tonnes and 3,799 plants in 2023, and the government revoked 26 licences
-      between 2021 and 2024, out of 75 companies authorised since 2018. In early 2026
-      police seized about 40 tonnes of cannabis in North Macedonia, part of the largest
-      drug bust in the region's history, and the authorities pledged to close the grey
-      zones in the oversight of medical cannabis.
+      Investigations have repeatedly involved licensed medical growers: GI-TOC reported seizures of
+      561 kg and 8,723 stems in 2022, then 4.6 tonnes and 3,799 plants in 2023.[@gi24] On 7 February
+      2026 the Interior Ministry reported about nine tonnes of marijuana and more than 1,300 bottles
+      of semi-finished cannabis oil seized in Skopje, plus over 31 tonnes of marijuana and biomass
+      in the east.[@raid26] These were mixed material categories seized during an investigation,
+      rather than forty tonnes of finished retail flower.[@raid26] Prosecutors said the
+      investigation continued on 9 February.[@jorm26]
     sources:
       - gi24
-      - gi26
+      - raid26
+      - jorm26
+  hemp:
+    status: strict
+    text: >-
+      The drug law defines industrial hemp separately from seed oil and resin extracts.[@drugs] Its
+      seed-oil definition refers to no more than 10 mg/kg THC; that product definition is not a
+      general crop THC allowance.[@drugs] Growing still requires a purpose and conditions authorised
+      by the law, and the verified cannabis cultivation route is for licensed medical or scientific
+      companies.[@drugs]
+    sources:
+      - drugs
+  arrests:
+    text: >-
+      The [March 2024 Chibuk operation](/history/north-macedonia-chibuk-operation-2024/) included
+      the arrest of former mayor Boro Stojchev.[@gi24] GI-TOC reported that he pleaded guilty and
+      received five years and three months for his role in the drug case.[@gi24] His son’s company
+      had obtained a cultivation licence in 2020; this was a supply investigation, rather than a
+      sentence for possession solely for personal use.[@gi24]
+    sources:
+      - gi24
 sources:
   roadtrafficpublished:
-    title: "North Macedonia Interior Ministry — Road Safety Law, editorial consolidation through Gazette 193/2025 (PDF)"
+    title: >-
+      North Macedonia Interior Ministry — Road Safety Law, editorial consolidation through Gazette
+      193/2025 (PDF)
     url: https://portal.mdt.gov.mk/post-body-files/zakoni-mvr-file-jL7k.pdf
-    locator: "Cover footnote; articles 336–338 and 341; article 336(5) alcohol penalty distinguished from 336(6) refusal"
+    locator: >-
+      Cover footnote; articles 336–338 and 341; article 336(5) alcohol penalty distinguished from
+      336(6) refusal
   criminalamendment2026:
-    title: "North Macedonia Constitutional Court — decision U.162/2023 and U.163/2023, 25 February 2026"
-    url: https://ustavensud.mk/2026/02/%D1%83-%D0%B1%D1%80-162-2023-%D0%B8-%D1%83-%D0%B1%D1%80-163-2023-2/
-    locator: "Reasoning II: Gazette 16/2026, published 29 January; traffic amendments apply from 1 February; articles 297-a, 300-a and 300-b"
+    title: North Macedonia Constitutional Court — decision U.162/2023 and U.163/2023, 25 February 2026
+    url: >-
+      https://ustavensud.mk/2026/02/%D1%83-%D0%B1%D1%80-162-2023-%D0%B8-%D1%83-%D0%B1%D1%80-163-2023-2/
+    locator: >-
+      Reasoning II: Gazette 16/2026, published 29 January; traffic amendments apply from 1 February;
+      articles 297-a, 300-a and 300-b
   drugenforcement2026:
-    title: "North Macedonia Interior Ministry — January 2026 road-enforcement report"
-    url: https://mvr.gov.mk/mk-MK/odnosi-so-javnost/novosti/vo-mesec-januari-15943-soobrakjajni-prekrsoci-liseni-od-sloboda-74-lica-za-bezobdzirno-upravuvanje-na-vozilo-soglasno-clen-297-a-od-krivicniot-zakonik
-    locator: "One drug-related article 297-a arrest among 74 reckless-driving arrests; January reporting predates February amendment application"
+    title: North Macedonia Interior Ministry — January 2026 road-enforcement report
+    url: >-
+      https://mvr.gov.mk/mk-MK/odnosi-so-javnost/novosti/vo-mesec-januari-15943-soobrakjajni-prekrsoci-liseni-od-sloboda-74-lica-za-bezobdzirno-upravuvanje-na-vozilo-soglasno-clen-297-a-od-krivicniot-zakonik
+    locator: >-
+      One drug-related article 297-a arrest among 74 reckless-driving arrests; January reporting
+      predates February amendment application
   cms:
     title: CMS — Cannabis law and legislation in North Macedonia (expert guide)
-    url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/north-macedonia
+    url: >-
+      https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/north-macedonia
   pp:
     title: Prohibition Partners — North Macedonia medical cannabis market overview 2025
     url: >-
@@ -176,8 +311,53 @@ sources:
     title: Karanović & Partners — Medical cannabis in North Macedonia
     url: https://www.karanovicpartners.com/news/medical-cannabis-in-north-macedonia
   gi24:
-    title: "Global Initiative Against Transnational Organized Crime — Risk Bulletin 19, legalized medical cannabis in North Macedonia, August 2024"
-    url: https://riskbulletins.globalinitiative.net/see-obs-019/06-legalized-medical-cannabis-north-macedonia.html
+    title: >-
+      Global Initiative Against Transnational Organized Crime — Risk Bulletin 19, legalized medical
+      cannabis in North Macedonia, August 2024
+    url: >-
+      https://riskbulletins.globalinitiative.net/see-obs-019/06-legalized-medical-cannabis-north-macedonia.html
   gi26:
-    title: "Global Initiative Against Transnational Organized Crime — cannabis legalization and illicit markets in the Western Balkans, 30 April 2026"
+    title: >-
+      Global Initiative Against Transnational Organized Crime — cannabis legalization and illicit
+      markets in the Western Balkans, 30 April 2026
     url: https://globalinitiative.net/analysis/cannabis-legalization-illicit-markets-western-balkans/
+  law23:
+    title: Official Gazette 36/2023 — Criminal Code amendment
+    url: https://www.slvesnik.com.mk/Issues/75a2a79bf50f4420a995d414a3bb73f1.pdf
+    locator: >-
+      17 February 2023; Article 25 inserts personal-possession exemption in 215(6); Article 34,
+      eighth-day commencement
+  court25:
+    title: Constitutional Court — U.243/2024, 24 December 2025
+    url: https://ustavensud.mk/2025/12/%D1%83-%D0%B1%D1%80-243-2024/
+    locator: >-
+      Declines review of Article 215(6); reasoning II–III reproduces production/supply ranges and
+      personal-use exemption
+  code:
+    title: President’s Office — Criminal Code, consolidation through 248/2018
+    url: https://pretsedatel.mk/wp-content/uploads/2020/03/Krivicen-zakonik.pdf
+    locator: Articles 215–216; read with the 2023 amendment and 2025 court decision
+  drugs:
+    title: MALMED — Drug Control Law, consolidation through Gazette 193/2017
+    url: >-
+      https://malmed.gov.mk/wp-content/uploads/Zakon_za_kontrola_opojni_drogi_psihotropni_supstancii-Redakciski_precisten_tekst.pdf
+    locator: Definitions; Articles 4, 28, 29-a–29-f, 95-b and 100–101; transitional provisions for 37/2016
+  public:
+    title: Public Order Misdemeanours Law, consolidation through 171/2022
+    url: https://nsp.mk/zppjrm/zakon_za_prekrshoci_protiv_javniot_red_i_mir.pdf
+    locator: Articles 3 and 20; drug-use fine EUR100–250 payable in denars
+  margins23:
+    title: Coalition Margins — Documented human-rights violations, February–August 2023
+    url: https://coalition.org.mk/wp-content/uploads/2023/09/izvestaj-7.pdf
+    locator: Police violations involving recreational drug users after the personal-possession amendment
+  raid26:
+    title: Interior Ministry — More than 40 tonnes seized; operation continues, 7 February 2026
+    url: >-
+      https://mvr.gov.mk/mk-MK/odnosi-so-javnost/novosti/zapleneti-nad-40-toni-droga-akcijata-prodolzuva
+    locator: >-
+      Nine tonnes marijuana plus 1,300 oil bottles in Skopje; over 31 tonnes marijuana and biomass
+      in eastern region
+  jorm26:
+    title: Public Prosecutor — Continuing investigation of cannabis seizures, 9 February 2026
+    url: >-
+      https://jorm.gov.mk/obvinitelstvoto-kontinuirano-prezema-dejstvija-povrzani-so-zaplenetata-marihuana/
