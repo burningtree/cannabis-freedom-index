@@ -42,4 +42,4 @@ By 2015 Japan grew hemp on 7.6 hectares, and by March 2017 only 30 people held g
 
 The law still draws a careful line. "Cannabis" excludes the plant's seed and mature stalk, which is why hemp seed can be sold for food and why shrine ropes can be hemp.[@5] Since March 2025 a Type 1 grower must use seed from plants with no more than 0.3% delta-9 THC, and must treat seed before passing it on.[@5]
 
-The 1948 Act did not end hemp in Japan. It narrowed who could grow it, then left the crop to compete with cheaper fibres. The [1950 farms](/history/japan-hemp-farms-1950/) are a reminder that prohibition and economic change did different parts of the work, and that the [licensed remnant](/country/jp/) is what survived both.
+The 1948 Act did not end hemp in Japan. It narrowed who could grow it, then left the crop to compete with cheaper fibres. The 1950 farms are a reminder that prohibition and economic change did different parts of the work, and that the [licensed remnant](/country/jp/) is what survived both.
