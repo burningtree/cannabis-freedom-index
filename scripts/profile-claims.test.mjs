@@ -430,3 +430,11 @@ test('Dominican visitors see all three prison tiers and hashish thresholds (#199
   assert.match(d, /Distribution or sale intent.*any quantity/);
   assert.match(d, /exact pound-boundary/);
 });
+
+// Issue #201
+test('South Dakota distinguishes ingestion sanctions from seized possession (#201)', () => {
+  const sd = country('us/sd');
+  for (const rule of ['mandatory evaluation','supervised probation','Class 6 felony','Class 5 felony','authorised use is excepted']) assert.ok(sd.segments.consumption.includes(rule),rule);
+  assert.match(sd.segments.consumption, /ten years of the first conviction/);
+  assert.match(sd.answers.caught.text, /Possession.*ingestion/);
+});

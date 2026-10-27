@@ -123,3 +123,16 @@ leaves exact boundary equality unresolved; no invented inclusive cutoff. Summary
 possession and visitor text now include the upper tier. Intent-based distribution
 at any amount remains. The existing most-restrictive possession/enforcement bands
 already cover custodial punishment and do not change.
+
+## #201 — South Dakota ingestion penalties
+
+Read current official SDCL 22-42-5.1 and the 2026 session-law chapter 115 section 2.
+First violation: Class 1 misdemeanor plus mandatory evaluation and supervised
+probation; second: same class, possible one-year jail plus probation, evaluation and
+recommended treatment; third or later within ten years of first conviction: Class 6.
+State-correctional inmates and parolees: Class 5. Prescribed/otherwise authorised
+use exceptions retained. Kept ingestion distinct from seized marijuana possession
+22-42-6 and its ounce tiers. Quick caught answer now names both. No score change:
+consumption is already 0 (use crime), enforcement 2 allows imprisonment; evaluation
+and probation are not mandatory jail. New historical entries deferred because the
+current code suffices to correct this omission without guessing a national step.
