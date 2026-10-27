@@ -34,3 +34,13 @@ off the extracted pages.
 ## Not read
 
 Remainder of chapters 3 and 5, and chapters 7–10, stay with the earlier notes' follow-ups.
+
+## Addendum, same day: ch. 4 p. 89 for Côte d'Ivoire
+
+Printed p. 89 (viewer p. 93 of the local PDF): the chamba-cognate band runs through
+western Africa with a patch from Côte d'Ivoire to Senegal; terms there kept the
+initial j sound, commonly written diamba in French and Portuguese, with published
+spellings varying among diamba, liamba, riamba and iamba through European
+transcription difficulty. Applied to `countries/ci.yaml` `context.culture` (diamba
+word patch, spelling variation). Interpretation caution kept: spelling variation
+reflects transcription, not distinct plants.

@@ -3,10 +3,11 @@ region: Africa
 iso_numeric: 384
 recreational: illegal
 medical: none
-updated: 2026-10-13
+updated: 2026-10-27
 summary: >-
-  Possession is a crime; a 2022 law reframed drug use as a health matter and lets courts order
-  treatment instead of prison.
+  Possession for personal use carries one to three months with treatment as the default
+  response; supply and cultivation carry five to ten years. A licensing regime for
+  medical cannabis does not operate.
 scores:
   possession: 1
   cultivation: 1
@@ -17,110 +18,232 @@ scores:
 segments:
   possession:
     text: >-
-      Possession is a crime. Under Law 2022-407 of 13 June 2022, holding a drug for one's own use
-      carries one to three months in prison and a fine of 50,000 to 500,000 CFA francs, and a court
-      can order treatment in place of the sentence. The law it replaced, of 1988, set one to five
-      years. How often the alternative is applied is unclear.
+      Possession is a crime. Under [Law 2022-407 of 13 June 2022](/history/ivory-coast-drug-law-2022/),
+      holding a drug for one's own use carries one to three months in prison and a fine
+      of 50,000 to 500,000 CFA francs.[@l407] Prosecutors must order appropriate care
+      before trial, and judges may substitute treatment for the prison term.[@l407,issup]
     sources:
       - l407
       - issup
+    currency: XAF
+    penalties:
+      - label: Holding a drug for one's own use
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 month
+        prison: 3 months
+        fine_min: 50000
+        fine: 500000
+        note: Or court-ordered treatment instead
   cultivation:
     text: >-
-      Growing without authorisation carries five to ten years in prison and a fine of 500,000 to
-      50 million francs under Article 3 of Law 2022-407.
+      Growing without authorisation carries five to ten years in prison and a fine of
+      500,000 to 50 million francs under Article 3 of Law 2022-407.[@l407]
     sources:
       - l407
+    currency: XAF
+    penalties:
+      - label: Growing table 1 and 2 drugs without authorisation
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 500000
+        fine: 50000000
+        note: Prison or a fine, or both
   enforcement:
     text: >-
-      The 2022 law softened the approach to users on paper; courts still hand down prison sentences
-      for small-scale sellers.
-    sources:
-      - koaci
-  sharing:
-    text: >-
-      Supply and trafficking carry five to ten years or more, with fines of up to 50 million CFA
-      francs.
-    sources:
-      - koaci
-  consumption:
-    text: >-
-      Using is punished through possession: holding a drug for one's own use carries one to three
-      months in prison and a fine of 50,000 to 500,000 CFA francs. The law exempts people taking
-      part in a harm-reduction programme, on conditions set by decree. Driving after using a drug is
-      a separate offence with one to five years.
+      The 2022 law cut the penalty for holding drugs for personal use to one to three
+      months and made treatment the default response: prosecutors must order care before
+      trial, and judges may substitute treatment for a prison term.[@l407,issup]
+      Evading court-ordered care means serving the prison term.[@issup] On the roads,
+      customs keep intercepting cannabis loads, most recently 74 kg at the Moossou bridge
+      entrance to Abidjan in October 2025.[@koaci25]
     sources:
       - l407
-  access:
-    text: No legal source.
+      - issup
+      - koaci25
+  sharing:
+    text: >-
+      Unauthorised buying or holding for sale, offering, distribution, brokerage and
+      delivery carry five to ten years in prison and a fine of 500,000 to 50 million
+      francs.[@l407] International trafficking carries five to ten years and a fine of 1
+      to 100 million francs.[@l407] Giving or offering a drug to a person for their own
+      use carries one to three years and a fine of 200,000 to 5 million francs.[@l407]
     sources:
-      - leaf
+      - l407
+    currency: XAF
+    penalties:
+      - label: Supply and delivery (article 4)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 500000
+        fine: 50000000
+        note: Prison or a fine, or both
+      - label: Giving or offering for another person's own use (article 7)
+        treatment: criminal
+        term: Supply to a user
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 200000
+        fine: 5000000
+        note: Prison or a fine, or both
+  consumption:
+    text: >-
+      Holding a drug for one's own use carries one to three months in prison and a fine
+      of 50,000 to 500,000 CFA francs.[@l407] People taking part in a harm-reduction
+      programme are exempt on conditions set by decree.[@l407] Driving after using a drug
+      is a separate offence with one to five years.[@l407]
+    sources:
+      - l407
+    currency: XAF
+    penalties:
+      - label: Holding a drug for one's own use
+        treatment: criminal
+        term: Drug use
+        prison_min: 1 month
+        prison: 3 months
+        fine_min: 50000
+        fine: 500000
+        note: Or court-ordered treatment instead
+  access:
+    text: >-
+      There is no recreational route: unauthorised holding, use and supply are all
+      offences under the 2022 law.[@l407] Medical or research licences exist only where
+      the law provides authorisation; no operating patient supply was found in the
+      sources reviewed.[@l407]
+    sources:
+      - l407
 context:
+  recreational:
+    text: >-
+      Cannabis is prohibited, but the 2022 law treats users as patients first:
+      prosecutors must order care before trial and judges may substitute treatment for
+      prison.[@l407,issup] Holding for personal use still carries one to three months
+      and a fine, and supply five to ten years.[@l407] Enforcement continues on the
+      roads: in October 2025 customs stopped 74 kg hidden in a ride-hailing car at the
+      Moossou bridge entrance to Abidjan, as [that seizure](/history/ivory-coast-customs-seizure-2025/)
+      records.[@koaci25]
+    sources:
+      - l407
+      - issup
+      - koaci25
+  medical:
+    text: >-
+      The sources reviewed establish no operating medical cannabis programme.[@l407] The
+      2022 law punishes unauthorised holding and use without a medical-use exception for
+      cannabis.[@l407]
+    sources:
+      - l407
+  hemp:
+    status: none
+    text: >-
+      The provisions reviewed set no THC line for hemp and no fibre or food
+      exception.[@l407] Unauthorised growing of listed drugs is punished regardless of
+      claimed use.[@l407]
+    sources:
+      - l407
   production:
     status: none
-    text: No licensed production.
+    text: >-
+      No licensed production exists: unauthorised growing, production and manufacture
+      carry five to ten years, and no licensed cannabis production was found in the
+      sources reviewed.[@l407]
     sources:
-      - leaf
-  products:
-    text: No legal products.
-    sources:
-      - leaf
-  medical:
-    text: No medical cannabis programme.
-    sources:
-      - leaf
+      - l407
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      Judges may add loss of civic rights, a travel ban with passport withdrawal for five
+      to ten years, or a weapons ban.[@l407] Completing court-ordered treatment brings an
+      absolute discharge for use offences; evading it means serving the prison
+      term.[@l407,issup]
+    sources:
+      - l407
+      - issup
   planting:
     seeds: grey
     seeds_trade: unclear
     clones: illegal
     clones_trade: banned
     text: >-
-      Article 3 of Law 2022-407 punishes growing a listed drug without authorisation with five
-      to ten years in prison and a fine of 500,000 to 50 million francs. The offence articles
-      do not mention seeds. The text read is a chapter-by-chapter copy on a legal information
-      site.
+      Article 3 of Law 2022-407 punishes growing a listed drug without authorisation with
+      five to ten years in prison and a fine of 500,000 to 50 million francs.[@l407] The
+      offence articles do not mention seeds.[@l407]
     sources:
       - l407
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      No cannabis clubs are known, and the law leaves no room for them: unauthorised
+      growing and supply are both prohibited.[@l407]
     sources:
       - l407
-      - koaci
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession is a crime. The law of June
-      2022 treats use as a public-health matter and lets courts order treatment instead of
-      prison for users; the 1988 law it replaced set one to five years for personal use.
+      There is no legal recreational supply for anyone.[@l407] Holding for personal use
+      carries one to three months, a fine, or court-ordered treatment instead.[@l407,issup]
     sources:
-      - leaf
+      - l407
+      - issup
+  driving:
+    status: impairment
+    text: >-
+      Driving under the influence of a drug consumed illicitly carries one to five years
+      in prison and a fine of 200,000 to 2 million francs.[@l407] Courts cancel the
+      licence for six months to five years, definitively on repeat offending; refusing
+      screening is a separate offence, and penalties cumulate with homicide or injury
+      convictions.[@l407] No numerical limit is stated; screening procedures are set by
+      ministerial order.[@l407]
+    sources:
+      - l407
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 10,760 kg of herbal
-      cannabis seized in 2024, against 13,267 kg in 2023. The UN publishes them as
-      kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      Figures reported by the government to the UN drugs office record 10,760 kg of
+      herbal cannabis seized in 2024, against 13,267 kg in 2023.[@unodc_szr] The UN
+      publishes them as kilogram equivalents, and countries count seizures differently,
+      so the figures are not comparable across borders.[@unodc_szr] In October 2025 a
+      customs unit seized 74 kg hidden in a ride-hailing car at the Moossou bridge
+      entrance to Abidjan, detaining the driver and two passengers.[@koaci25]
     sources:
       - unodc_szr
+      - koaci25
+  culture:
+    text: >-
+      In Côte d'Ivoire cannabis is called diamba, part of a word patch running from
+      Côte d'Ivoire to Senegal whose Central African origin Duvall reconstructs,
+      commonly written with an initial j in French and Portuguese.[@duvall19] European
+      listeners rendered the unfamiliar initial sound many ways — diamba, liamba,
+      riamba — without a change in meaning.[@duvall19] The atlas traces the word in
+      [diamba](/culture/language/diamba/), which also names the Kasai [Bena
+      Riamba](/culture/traditions/bena-riamba/) movement, under a century of bans from
+      the [1916 extension](/history/french-west-africa-poisonous-substances-act-1916-ci/)
+      of French poison law to the 2022 drug law.[@duvall19,l407]
+    sources:
+      - duvall19
+      - l407
 sources:
   issup:
-    title: "ISSUP — Alternative à l'incarcération pour les usagers de drogues: cas de la Côte d'Ivoire"
+    title: "ISSUP — Alternative à l'incarcération pour les usagers de drogues: cas de la Côte d'Ivoire (May 2024, PDF)"
     url: https://www.issup.net/files/2024-05/ALTERNATIVE%20A%20L%E2%80%99INCARCERATION%20POUR%20LES%20USAGERS%20DE%20DROGUES%20%20CAS%20DE%20LA%20CO%CC%82TE%20D%E2%80%99IVOIRE.pdf
   l407:
-    title: Loi n° 2022-407 du 13 juin 2022 relative à la lutte contre le trafic et l'usage illicites des stupéfiants — incriminations et peines (Loidici.biz)
+    title: Loi n° 2022-407 du 13 juin 2022 relative à la lutte contre le trafic et l'usage illicites des stupéfiants (Loidici.biz, chapter-by-chapter copy)
     url: https://loidici.biz/2025/07/27/chapitre-1-incriminations-et-peines/lois-article-par-article/plus-de-textes-de-lois/73180/naty/
-  koaci:
-    title: "Koaci — Trafic et consommation de stupéfiants: peines de cinq à dix ans (2021)"
-    url: >-
-      https://www.koaci.com/article/2021/10/13/cote-divoire/societe/cote-divoire-trafic-et-consommation-de-stupefiants-la-peine-demprisonnement-desormais-fixee-de-cinq-a-dix-ans-et-une-amende-de-500000-a-50000000-fcfa_154621.html
-  leaf:
-    title: Leafwell — Is marijuana legal in Côte d'Ivoire?
-    url: https://leafwell.com/blog/is-marijuana-legal-in-cote-divoire
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  duvall19:
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: >-
+      ch. 4, printed p. 89 (diamba word patch from Côte d'Ivoire to Senegal, initial-j
+      spellings, transcription variation); ch. 6, printed pp. 112–119 (Bena Riamba);
+      read in the local PDF
+  koaci25:
+    title: "Koaci — Côte d'Ivoire: les douanes saisissent 74 kg de cannabis sur l'axe Aboisso-Abidjan (15 October 2025)"
+    url: https://www.koaci.com/article/2025/10/15/cote-divoire/societe/cote-divoire-trafic-de-drogue-les-douanes-ivoiriennes-saisissent-74-kg-de-cannabis-sur-laxe-aboisso-abidjan_191160.html

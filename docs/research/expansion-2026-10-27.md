@@ -15,3 +15,19 @@ Prior history groundwork exists in `docs/research/`: `history-dr-congo-gap-2026-
 | Uganda (ug) | recreational + hemp + black_market sections, products folded, 4 penalty tables (UGX fines verified in 2024 Act), inline citations throughout, dead African Business source replaced with UG Standard, new commencement article (494 words) | 1910s–1970s + 2000s still empty (HRAPF colonial lead undated; 1971 Convention shares the 1988 Single Convention date); no arrests section; no atlas entries so no culture section | |
 | Rwanda (rw) | recreational + hemp + black_market sections, products folded, 4 penalty tables (RWF fines verified in 2018/2019/2023 laws), inline citations + history links throughout, culture re-cited to Codere chapter read locally, FDA register re-verified with zero hits, 2 new history entries (1971 psychotropics, 2017 Rubavu seizure) | 1920s–1950s + 1990s still empty; no clubs/driving sections (no reliable source); first-restriction estimate article-less by choice | |
 | Central African Republic (cf) | recreational + hemp sections, products folded, 4 penalty tables (XAF fines verified in Law 01.011), inline citations + history links throughout, production status medical→none (research-only authorisations, consistent with Cameroon), FCDO advice removed from visitor-facing texts per new audit rule, 1 new history entry (1971 psychotropics, same-day as other two) | 1930s–1990s still empty (Empire-era Wikipedia lead is an undated survey claim, IA copy restricted); no planting/driving/arrests sections; 1926 decree article left to the Chad federation piece | |
+
+## Batch 2, 27 October 2026: West Africa
+
+Chosen from `country-gaps.cjs --rank 25`: francophone West Africa plus Guinea-Bissau
+(Mano River/Casamance/Sahel trafficking links; shared French colonial drug-law
+heritage for ci/sn/tg/ml). Prior groundwork: `history-mali-gap-2026-10-21`,
+`history-senegal-triage-2026-10-26`, `history-togo-gap-2026-10-21`,
+`guinea-bissau-equatorial-guinea-laws-2026-10-15`.
+
+| Country | Done | Left | Commit |
+|---|---|---|---|
+| Côte d'Ivoire (ci) | recreational + hemp + driving + culture(diamba) sections, products folded, outdated Koaci-2021/Leafwell claims replaced with 2022 law tariffs (incl. art 7 direct-supply tier), 4 penalty tables, citations + links throughout, 2025 Moossou seizure read | 1930s–1950s + 2000s–2010s still empty; no arrests section (no reliable source) | |
+| Senegal (sn) | | | |
+| Togo (tg) | | | |
+| Mali (ml) | | | |
+| Guinea-Bissau (gw) | | | |
