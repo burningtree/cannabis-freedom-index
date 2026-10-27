@@ -26,6 +26,20 @@ segments:
     sources:
       - ly
       - mondaq
+    currency: AED
+    penalties:
+      - label: First personal-use offence
+        treatment: criminal
+        fine: 100000
+        prison_min: 3 months
+        note: At least three months in prison or a fine of AED 10,000–100,000; court may order treatment for up to a year instead
+      - label: Personal-use amount at a port of entry (non-residents, 2024 rule)
+        treatment: criminal
+        fine: 20000
+        note: Fine of AED 5,000–20,000
+      - label: Possession with intent to traffic or promote
+        treatment: criminal
+        note: Death penalty available under Decree-Law 30 of 2021
   cultivation:
     text: >-
       Growing cannabis outside a licence is a serious crime with long prison terms. Licensed
@@ -60,6 +74,18 @@ segments:
     sources:
       - l500
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. A first personal-use offence brings at least three
+      months or an AED 10,000–100,000 fine, with treatment possible instead; repeat offences
+      bring longer mandatory terms, and even trace amounts count.[@ly,mondaq] Non-residents
+      caught at ports of entry with personal-use amounts pay AED 5,000–20,000 under a 2024
+      rule.[@ly] Supply is trafficking, with death available for trafficking or
+      promotion.[@dl30]
+    sources:
+      - ly
+      - mondaq
+      - dl30
   death_penalty:
     text: >-
       Federal Decree-Law 30 of 2021 provides the death penalty for trafficking or promotion involving
