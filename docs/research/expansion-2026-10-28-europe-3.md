@@ -10,7 +10,8 @@ only own lines in changes.yaml.
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Greece | penalties, citations, culture, 2 entries, 1 article | 1900s/1910s unsourced; left for a later pass | 73a4443 |
-| Austria | | | |
+| Austria | hemp, cultivation table, culture, 1960s entry, 1998 article | 1930s unsourced; left for a later pass | |
+| Serbia | arrests, citations, links, products fold, 2006 article (no new entries; Yugoslav decades unsourced) | 1940s/60s/70s/80s/90s unsourced; left for a later pass | |
 | Serbia | | | |
 | Croatia | | | |
 | Hungary | | | |
