@@ -4,6 +4,8 @@ How to take one country and fill in what is missing: its history, articles, cont
 penalty tables and links. Written for any agent or person working on the data. The detailed rules
 live in the other guides; this file is the order of work and the rules that are easy to miss.
 
+For a batch of several countries, or several agents at once, see `docs/EXPAND-COUNTRIES.md`.
+
 Read first, once: `docs/DATA-MAINTENANCE.md` (data, sources, history entries, context sections,
 penalty steps), `docs/WRITING.md` (how every text reads), and `docs/CULTURE.md` if you write an
 atlas entry.

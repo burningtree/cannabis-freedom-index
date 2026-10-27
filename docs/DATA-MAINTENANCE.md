@@ -935,7 +935,9 @@ node scripts/data-status.cjs chain de     # one country's full timeline
 ## Workflow that has worked
 
 To expand one country end to end (history, articles, context sections, penalty tables, links),
-follow `docs/EXPAND-COUNTRY.md`; `node scripts/country-gaps.cjs <id>` prints its work list.
+follow `docs/EXPAND-COUNTRY.md`; `node scripts/country-gaps.cjs <id>` prints its work list. For a
+batch of countries, follow `docs/EXPAND-COUNTRIES.md`; `node scripts/country-gaps.cjs --rank` ranks
+them by how much is missing.
 
 1. **Pick countries.** `node scripts/data-status.cjs thin` lists places with two or fewer
    entries; `unchecked` and `estimates` list what still needs a source. Go by population, or by

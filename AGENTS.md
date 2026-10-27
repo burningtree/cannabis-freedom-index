@@ -5,6 +5,8 @@ cannabis law (`changes.yaml`, `articles/`) and a cultural atlas (`culture/`), bu
 
 - **To expand or research a country**, follow `docs/EXPAND-COUNTRY.md`. Start with
   `node scripts/country-gaps.cjs <id>`.
+- **To work through several countries**, follow `docs/EXPAND-COUNTRIES.md`. Start with
+  `node scripts/country-gaps.cjs --rank 25` (optionally `--region Africa`).
 - Data rules: `docs/DATA-MAINTENANCE.md`. How texts read: `docs/WRITING.md`. Atlas entries:
   `docs/CULTURE.md`.
 - Others work here at the same time: check `git status` first, don't touch files with someone
