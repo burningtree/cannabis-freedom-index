@@ -46,6 +46,12 @@ segments:
     sources:
       - law
       - police
+    currency: DKK
+    penalties:
+      - label: Basic offence
+        treatment: criminal
+        prison: 2 years
+        note: Fine or up to two years in prison
   sharing:
     text: >-
       Unauthorised sale, supply and receipt of controlled drugs are prohibited, with no
@@ -70,7 +76,23 @@ segments:
     sources:
       - chief
       - current
+context_not_applicable:
+  death_penalty:
+    text: >-
+      The Faroe Islands sit under the Danish abolition: Denmark abolished the death penalty in
+      1933, with full abolition for war crimes completed by 1994. No cannabis offence carries a
+      capital sentence.[@wikipdp]
+    sources: [wikipdp]
 context:
+  recreational:
+    text: >-
+      Recreational possession and growing remain offences, including small personal quantities,
+      which police prosecute when discovered. The basic drug-law offence carries a fine or up
+      to two years in prison.[@current,police,law]
+    sources:
+      - current
+      - police
+      - law
   production:
     status: medical
     text: >-
@@ -80,25 +102,20 @@ context:
       0.3 hectares.[@current]
     sources:
       - current
-  products:
-    text: >-
-      Official prescribing guidance describes dronabinol and cannabidiol preparations made from
-      plant extracts as oils and capsules.[@guidance] In July 2019 the Pharmacy Service also
-      ordered cannabis flower from the Netherlands at a doctor’s request, alongside the drops
-      already supplied to patients.[@flower]
-    sources:
-      - guidance
-      - flower
   medical:
     text: >-
       The Chief Medical Officer confirms a medical-cannabis trial has operated since April
       2019.[@chief] Joint prescribing guidance identifies pain, multiple sclerosis, spinal-cord
       injury and chemotherapy-related nausea among treatment areas, with conventional medicines
       tried first and the decision documented.[@guidance] It recommends specialist prescribing
-      for neurological conditions and chemotherapy-related symptoms.[@guidance]
+      for neurological conditions and chemotherapy-related symptoms.[@guidance] Official
+      guidance describes dronabinol and cannabidiol preparations as oils and capsules, and in
+      July 2019 the Pharmacy Service also ordered cannabis flower from the Netherlands at a
+      doctor's request.[@guidance,flower]
     sources:
       - chief
       - guidance
+      - flower
   consequences:
     text: >-
       The Pharmacy Service tells patients they may not drive while receiving medical
@@ -159,6 +176,9 @@ context:
     sources:
       - police
 sources:
+  wikipdp:
+    title: Wikipedia — Capital punishment in Denmark
+    url: https://en.wikipedia.org/wiki/Capital_punishment_in_Denmark
   law:
     title: Lógasavn — Faroese euphoriant-substances order, consolidated in 2015
     url: https://logir.fo/ViewLaw.aspx?id=1711314942
