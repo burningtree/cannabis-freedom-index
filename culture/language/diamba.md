@@ -14,6 +14,7 @@ countries:
   - lr
   - sn
   - gm
+  - ci
 history:
   - sierra-leone-cannabis-long-in-use-1851
   - angola-livingstone-observation-1857
@@ -122,6 +123,8 @@ British colonial [drug controls adopted in 1926](/history/sierra-leone-dangerous
 ## West Africa: recaptives, sailors and mistaken tobacco
 
 Cannabis was absent in West Africa until the 1800s, when it arrived with Central African recaptives: people taken off slave ships and resettled, above all in Sierra Leone. By mid-century the word *diamba* was in use in Sierra Leone, Liberia and Senegambia, and travellers recorded that freed "Congo" slaves had brought it. The word then entered languages from Senegal to Côte d'Ivoire, although Europeans translated many of its cognates as "tobacco", probably because they did not know or care what Africans were smoking.
+
+East of Sierra Leone the same word family runs in a patch from Côte d'Ivoire to Senegal, in non-Bantu languages whose cognates kept the initial *j* sound commonly written *diamba*.
 
 An [1859 record of *diamba* as tobacco in Senegambia](/history/gambia-1859-tobacco-record-recaptives/) may be that region's earliest trace of the plant. An Englishwoman in Sierra Leone had already written in 1847 of "tobacco of poisonous-smelling qualities", a pipe that likely held something other than true tobacco.
 
