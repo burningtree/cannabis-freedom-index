@@ -112,3 +112,14 @@ keeps dried flower (≤0.3% THC) distinct from food/cosmetics and prescribed med
 and preserves the industrial exception. Existing May 2026 history already described
 buying/using correctly; clarified its title. No unverified criminal tariff inferred.
 No score change: ordinary non-medical consumption remains unlawful in its existing band.
+
+## #199 — Dominican upper trafficking tier
+
+Downloaded and read the law notified by the Dominican Republic to the WTO, articles
+6(a)–(c) and 75, including the 1995 distribution-intent amendment. Up to 20 g marijuana
+is six months–two years; above 20 g and below one pound three–ten; above one pound
+five–twenty. Hashish uses 5 g and one-quarter pound. The text's below/above wording
+leaves exact boundary equality unresolved; no invented inclusive cutoff. Summary,
+possession and visitor text now include the upper tier. Intent-based distribution
+at any amount remains. The existing most-restrictive possession/enforcement bands
+already cover custodial punishment and do not change.

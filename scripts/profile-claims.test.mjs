@@ -421,3 +421,12 @@ test('Greek dried hemp restrictions cover consumers and preserve product scope (
   assert.match(gr, /Prescribed pharmaceutical cannabis is regulated separately/);
   assert.match(events().find(e=>e.id==='greece-hemp-flower-ban-2026').description, /consumers buying or using/);
 });
+
+// Issue #199
+test('Dominican visitors see all three prison tiers and hashish thresholds (#199)', () => {
+  const d = country('do').context.visitors.text;
+  assert.match(d, /above one pound, five to twenty years/);
+  assert.match(d, /Hashish uses lower boundaries: 5 g and one-quarter pound/);
+  assert.match(d, /Distribution or sale intent.*any quantity/);
+  assert.match(d, /exact pound-boundary/);
+});
