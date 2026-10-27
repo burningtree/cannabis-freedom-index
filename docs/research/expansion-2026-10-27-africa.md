@@ -9,7 +9,7 @@ Dirty-at-start files were lt + test + source-archive (none in batch).
 | Egypt | x | | |
 | Ethiopia | x | | |
 | Liberia | x | | |
-| Congo | | | |
+| Congo | x | | |
 | Ghana | | | |
 
 ## Egypt (eg) — done 2026-10-27 ~23:12 UTC
@@ -35,4 +35,12 @@ Dirty-at-start files were lt + test + source-archive (none in batch).
 - Article: liberia-non-bailable-2023 already existed (committed 1a44b8d by another agent, fuller than my draft — restored it, added only 2025-enforcement closing + [@1]–[@5] cites to satisfy the article-citation test).
 - Gaps closed: no missing sections/tables/uncited texts; 4 of 18 texts link history/culture. Deferred: 1920s–60s decades, new history entries (changes.yaml held by another agent).
 - Gotcha: article test requires EVERY front-matter source cited inline (vacuous pass breaks on first cite); hemp/planting-style structured sections — planting needs seeds/seeds_trade/clones/clones_trade.
+- Audit 0/0, history 47 pass / answers 93 pass. Build + HTML verify pending.
+
+## Congo (cg) — done 2026-10-27 ~00:10 UTC
+- Profile: recreational + hemp + arrests sections added; products folded (oil/derivatives distinction into recreational) and deleted; production/medical wiki one-liners replaced with statute text (Art 7 ban, Art 8 medical-only authorisations); possession (3 steps) + cultivation (2 steps) penalty tables with XAF fines and term fields; inline citations everywhere; history links (2025 law, 2024 Owando, 1926 decree).
+- No new web sources needed (2025 law + ACI Owando already in profile). Left out: driving (no drug-driving source found), black_market (no citable seizure figures), culture (optional, no atlas entries).
+- Article: congo-french-equatorial-africa-1926 (Congo-angled mirror of chad article: 1907 French Congo governor circular, Middle Congo focus, 1916-law afterlife in 2024 Owando report).
+- Gaps closed except driving/black_market (unsourced) and colonial decades; 3 of 15 texts link history.
+- Gotcha: audit flags notes repeating table prison ranges — keep notes to conditions/exceptions.
 - Audit 0/0, history 47 pass / answers 93 pass. Build + HTML verify pending.

@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 178
 recreational: illegal
 medical: none
-updated: "2026-10-21"
+updated: "2026-10-27"
 summary: >-
   The 2025 law allows a fine alone for small personal possession, purchase or growing; cannabis
   derivatives other than oil carry a one-to-six-month prison range.
@@ -17,28 +17,72 @@ scores:
 segments:
   possession:
     text: >-
-      For a small amount bought, held or grown for personal use, Article 53 sets two months to one
-      year, a 100,000–500,000 CFA franc fine, or both for high-risk drugs including cannabis oil.
+      For a small amount bought, held or grown for personal use, Article 53 of the [2025 drug
+      law](/history/congo-drug-law-2025/) sets two months to one
+      year, a 100,000–500,000 CFA franc fine, or both for high-risk drugs including cannabis oil.[@loi2025]
       Cannabis derivatives other than oil carry one to six months, a 50,000–250,000 franc fine, or
       both. No numerical small-quantity threshold is defined. Article 40 separately sets one to
       twelve months, a 1–2 million franc fine, or either alone for high-risk drugs held or used for
-      personal consumption.
+      personal consumption.[@loi2025]
     sources:
       - loi2025
+    currency: XAF
+    penalties:
+      - label: Small personal amount, cannabis oil
+        treatment: criminal
+        term: Possession
+        prison_min: 2 months
+        prison: 1 year
+        fine_min: 100000
+        fine: 500000
+        note: Prison, fine, or both; no quantity threshold defined
+      - label: Small personal amount, other derivatives
+        treatment: criminal
+        term: Possession
+        prison_min: 1 month
+        prison: 6 months
+        fine_min: 50000
+        fine: 250000
+        note: One to six months, fine 50,000–250,000 francs, or both
+      - label: Holding or use for personal consumption
+        treatment: criminal
+        term: Use
+        prison_min: 1 month
+        prison: 1 year
+        fine_min: 1000000
+        fine: 2000000
+        note: Article 40; one to twelve months, fine 1–2 million francs, or either alone
   cultivation:
     text: >-
       Article 7 bans growing plants classified as narcotics by the international conventions and
-      requires landowners, operators and occupiers to destroy such plants. Ordinary high-risk
+      requires landowners, operators and occupiers to destroy such plants.[@l30] Ordinary high-risk
       cultivation carries five to ten years, a 5–20 million CFA franc fine, or both under Article
-      37. Small personal growing is covered by Article 53 and can result in a fine alone.
+      37. Small personal growing is covered by Article 53 and can result in a fine alone.[@loi2025]
     sources:
       - loi2025
+      - l30
+    currency: XAF
+    penalties:
+      - label: Ordinary high-risk cultivation
+        treatment: criminal
+        term: Cultivation
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 5000000
+        fine: 20000000
+        note: Five to ten years, fine 5–20 million francs, or both
+      - label: Small personal growing
+        treatment: criminal
+        term: Cultivation
+        fine_min: 50000
+        fine: 500000
+        note: Article 53; can result in a fine alone (50,000–500,000 francs depending on oil or other derivatives)
   enforcement:
     text: >-
       In November 2024, the official news agency reported cannabis arrests and a house search in
-      Owando, with suspects presented to the prosecutor. The report still cited the colonial 1916
+      Owando, with suspects presented to the prosecutor.[@owando2024] The report still cited the colonial 1916
       poisonous-substances law. Outcomes of ordinary personal-use cases under the 2025 law remain
-      unknown.
+      unknown.[@owando2024,loi2025] The arrests are traced in the [November 2024 Owando account](/history/congo-owando-cannabis-arrests-2024/).
     sources:
       - owando2024
       - loi2025
@@ -47,43 +91,52 @@ segments:
       Giving or offering a high-risk drug directly for another person’s consumption carries one to
       two years, a 500,000–1 million CFA franc fine, or either alone under Article 43. General
       high-risk supply under Article 39 carries two to ten years, a 5–20 million franc fine, or
-      both.
+      both.[@loi2025]
     sources:
       - loi2025
   consumption:
     text: >-
       Article 52 prohibits drug use outside medical prescriptions and permits confiscation even
-      without prosecution. Article 40 provides one to twelve months, a 1–2 million CFA franc fine,
-      or either penalty alone for high-risk drugs held or used for personal consumption.
+      without prosecution.[@loi2025] Article 40 provides one to twelve months, a 1–2 million CFA franc fine,
+      or either penalty alone for high-risk drugs held or used for personal consumption.[@loi2025]
     sources:
       - loi2025
   access:
     text: >-
       No lawful source for personal use. Authorisations under the law are for medical use only
-      (Article 8).
+      (Article 8).[@loi2025]
     sources:
       - loi2025
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. A small personal amount of cannabis oil can bring two
+      months to one year, a 100,000–500,000 franc fine, or both; other derivatives one to six
+      months or a 50,000–250,000 franc fine — and the 2025 law allows a fine alone.[@loi2025] No
+      numerical small-quantity threshold is defined, and the ban reaches back to the [1926 colonial
+      decree](/history/congo-french-equatorial-africa-1926/).[@loi2025]
+    sources:
+      - loi2025
   production:
     status: none
-    text: No licensed production.
-    sources:
-      - wiki
-  products:
     text: >-
-      Reliable national information about legally available cannabis products was not established by
-      the retained sources.
-    sources: []
-  medical:
-    text: No medical cannabis programme.
+      No licensed production was found. Article 7 bans growing plants classed as narcotic by the
+      international conventions anywhere in the country, and obliges landowners, operators and
+      occupiers to destroy them.[@l30]
     sources:
-      - wiki
+      - l30
+  medical:
+    text: >-
+      No medical cannabis programme was found. Authorisations under the law are for medical use
+      only under Article 8, with no programme or product pathway located.[@loi2025]
+    sources:
+      - loi2025
   consequences:
     text: >-
       For offences under Articles 40–54, courts can order a foreigner’s expulsion, residence
-      restrictions, driving restrictions and professional bans under Article 61. For prison
+      restrictions, driving restrictions and professional bans under Article 61.[@loi2025] For prison
       sentences of at least one year under Articles 40–54, Article 74 restricts specified release
-      and sentence-adjustment measures before two-thirds of the term has been served.
+      and sentence-adjustment measures before two-thirds of the term has been served.[@loi2025]
     sources:
       - loi2025
   planting:
@@ -94,15 +147,33 @@ context:
     text: >-
       Article 7 of Law 30-2025 bans growing plants classed as narcotic by the international
       conventions anywhere in the country, and obliges whoever owns or occupies land to destroy
-      them. The law does not mention seeds.
+      them. The law does not mention seeds.[@l30]
     sources:
       - l30
+  hemp:
+    status: none
+    text: >-
+      No hemp regime was found: no THC threshold, licence, or fibre exemption was located in the
+      2025 law. The colonial starting point was a hemp ban — the 1926 decree prohibited hemp
+      cultivation across French Equatorial Africa — and no later instrument was found to undo
+      it for fibre.[@loi2025]
+    sources:
+      - loi2025
+  arrests:
+    text: >-
+      In November 2024 the official news agency reported cannabis arrests and a house search in
+      Owando, with suspects presented to the prosecutor, in the last enforcement account before
+      the 2025 law.[@owando2024] Outcomes of ordinary personal-use cases under the new law remain
+      unknown.[@loi2025]
+    sources:
+      - owando2024
+      - loi2025
   clubs:
     status: none
     text: >-
       The drug law prohibits cultivation and supply and provides no recreational club exception.
       Facilitating high-risk use, including through premises, carries five to ten years, a fine, or
-      both under Article 41.
+      both under Article 41.[@loi2025]
     sources:
       - loi2025
   visitors:
@@ -110,7 +181,7 @@ context:
     text: >-
       Recreational supply is prohibited for visitors. A small personal quantity can attract a fine
       alone under Article 53, while Article 61 allows courts to expel foreigners convicted of
-      offences under Articles 40–54, including the personal-quantity offence.
+      offences under Articles 40–54, including the personal-quantity offence.[@loi2025]
     sources:
       - loi2025
 sources:
@@ -125,9 +196,6 @@ sources:
       lutte contre la production, la détention, la fabrication, le transport, le trafic et l'usage
       illicites des stupéfiants
     url: https://www.sgg.cg/textes-officiels/lois/2025/congo-loi-2025-30.pdf
-  wiki:
-    title: Wikipedia — Cannabis in the Republic of the Congo
-    url: https://en.wikipedia.org/wiki/Cannabis_in_the_Republic_of_the_Congo
   owando2024:
     title: ACI — Owando arrests involving cannabis and an agriculture official (20 November 2024)
     url: >-
