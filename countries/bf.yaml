@@ -24,6 +24,26 @@ segments:
       one to six months and the same fine. It gives no gram limit. General personal possession
       of high-risk drugs carries two to five years and a fine of 1–5 million francs.
     sources: [code18]
+    currency: XOF
+    penalties:
+      - label: Small personal quantity, high-risk incl. cannabis oil
+        treatment: criminal
+        prison_min: 1 month
+        prison: 1 year
+        fine: 600000
+        note: Fine of 250,000–600,000 CFA francs; no gram limit
+      - label: Small personal quantity, cannabis derivatives other than oil
+        treatment: criminal
+        prison_min: 1 month
+        prison: 6 months
+        fine: 600000
+        note: Fine of 250,000–600,000 CFA francs; no gram limit
+      - label: General personal possession of high-risk drugs
+        treatment: criminal
+        prison_min: 2 years
+        prison: 5 years
+        fine: 5000000
+        note: Fine of 1–5 million CFA francs
   cultivation:
     text: >-
       Small personal cultivation falls under the same shorter penalty tiers as small personal
@@ -31,6 +51,20 @@ segments:
       and production carry eleven to twenty-one years and a fine of 5–25 million CFA francs.
       The 1999 drug code already distinguished small personal growing from ordinary production.
     sources: [code18, code99]
+    currency: XOF
+    penalties:
+      - label: Small personal cultivation
+        treatment: criminal
+        prison_min: 1 month
+        prison: 1 year
+        fine: 600000
+        note: Same shorter tiers as small personal possession; no plant limit
+      - label: Ordinary high-risk cultivation and production
+        treatment: criminal
+        prison_min: 11 years
+        prison: 21 years
+        fine: 25000000
+        note: Fine of 5–25 million CFA francs
   enforcement:
     text: >-
       Mainline's 2025 country sheet reports severe repression by police and courts and imprisonment
@@ -44,6 +78,20 @@ segments:
       to five years and a fine of 500,000–2 million CFA francs in the 2018 code. General local
       trafficking carries eleven to twenty-one years and a fine of 5–25 million francs.
     sources: [code18]
+    currency: XOF
+    penalties:
+      - label: Giving or offering for another person's consumption
+        treatment: criminal
+        prison_min: 2 years
+        prison: 5 years
+        fine: 2000000
+        note: Fine of 500,000–2 million CFA francs
+      - label: General local trafficking
+        treatment: criminal
+        prison_min: 11 years
+        prison: 21 years
+        fine: 25000000
+        note: Fine of 5–25 million CFA francs
   consumption:
     text: >-
       The 2018 code prohibits using controlled drugs outside a medical prescription. Its general
@@ -58,16 +106,31 @@ segments:
       unauthorised production and supply.
     sources: [code99, code18]
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Small quantities for personal use carry shorter
+      prison terms and fines of 250,000–600,000 CFA francs; general possession brings two to
+      five years and up to 5 million.[@code18] Police and courts repress users severely, and
+      treatment ordered instead of punishment is rarely implemented for lack of
+      facilities.[@ml]
+    sources: [code18, ml]
+  death_penalty:
+    text: >-
+      The Penal Code adopted on 20 October 2026 restores the death penalty and its execution
+      procedure for certain offences.[@parliament26] The cannabis offences in the retained
+      2018 texts carry imprisonment and fines, not death; the new code's drug articles have
+      not been reviewed.[@code18]
+    sources: [parliament26, code18]
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    text: No licensed production. Unauthorised production carries eleven to twenty-one years and a fine of 5–25 million CFA francs.
+    sources: [code18]
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No patient programme is documented. The 2018 code prohibits using controlled drugs
+      outside a medical prescription but sets up no route for patients to obtain
+      cannabis.[@code18]
+    sources: [code18]
   consequences:
     text: >-
       For specified production, supply and related offences, the 2018 code allows additional
