@@ -24,6 +24,12 @@ segments:
     sources:
       - giq
       - dia
+    currency: JPY
+    penalties:
+      - label: Possession of any amount (since 2024)
+        treatment: criminal
+        prison: 7 years
+        note: Maximum raised from five to seven years; first small-amount offenders commonly suspended
   cultivation:
     text: >-
       Unauthorised cultivation is imprisonment of not less than one year and not more than ten
@@ -32,6 +38,17 @@ segments:
       taking raw material and for research.
     sources:
       - ccaegov
+    currency: JPY
+    penalties:
+      - label: Unauthorised cultivation
+        treatment: criminal
+        prison_min: 1 year
+        prison: 10 years
+      - label: Cultivation for profit
+        treatment: criminal
+        prison_min: 1 year
+        fine: 5000000
+        note: At least one year and/or up to 5 million yen
   enforcement:
     text: >-
       Strict and consistently enforced, with record arrest numbers among people in their twenties.
@@ -42,6 +59,10 @@ segments:
     text: Transfer to another person carries up to seven years, whether or not for payment.
     sources:
       - giq
+    penalties:
+      - label: Transfer, with or without payment
+        treatment: criminal
+        prison: 7 years
   consumption:
     text: >-
       Until 2024 Japan punished possession but not use — a quirk meant to protect hemp farmers. The
@@ -49,11 +70,25 @@ segments:
     sources:
       - giq
       - dia
+    penalties:
+      - label: Use (since December 2024)
+        treatment: criminal
+        prison: 7 years
   access:
     text: No legal source of THC cannabis.
     sources:
       - em
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited: possession of any amount brings up to seven years, use
+      itself has been a crime since December 2024, and transfer brings up to seven years whether
+      or not money changes hands. Record arrests skew young, with app-based buying
+      common.[@giq,dia,mh26]
+    sources:
+      - giq
+      - dia
+      - mh26
   production:
     status: medical
     text: >-
@@ -62,20 +97,16 @@ context:
     sources:
       - dia
       - em
-  products:
-    text: >-
-      CBD products are legal and popular, subject to very strict residual-THC limits set in parts
-      per million. Nothing with meaningful THC is lawful.
-    sources:
-      - em
-      - dia
   medical:
     text: >-
       The 2024 law lifted the ban on cannabis-derived medicines, opening the way for an approved
-      cannabidiol drug for severe epilepsy. There is no herbal medical cannabis.
+      cannabidiol drug for severe epilepsy. There is no herbal medical cannabis. CBD products are
+      legal and popular, subject to very strict residual-THC limits set in parts per million;
+      nothing with meaningful THC is lawful.
     sources:
       - dia
       - giq
+      - em
   consequences:
     text: >-
       An arrest typically costs a person their job or university place, and foreigners are deported
