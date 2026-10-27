@@ -29,6 +29,17 @@ segments:
       often consider fines, probation or community service, especially for first offenders.[@clic]
     sources:
       - clic
+    currency: HKD
+    penalties:
+      - label: Possession (indictment)
+        treatment: criminal
+        prison: 7 years
+        fine: 1000000
+      - label: Possession (summary conviction)
+        treatment: criminal
+        prison: 3 years
+        fine: 100000
+        note: First offenders with very small quantities often get fines, probation or community service
   cultivation:
     text: >-
       Growing any cannabis plant carries up to fifteen years and HK$100,000.[@hkpf] It is a
@@ -40,6 +51,18 @@ segments:
     sources:
       - hkpf
       - guidelines
+    currency: HKD
+    penalties:
+      - label: Cultivating a cannabis plant
+        treatment: criminal
+        prison: 15 years
+        fine: 100000
+      - upto: 5 kg
+        treatment: criminal
+        note: Estimated annual yield below two years' custody under the 2023 guidelines
+      - over: 150 kg
+        treatment: criminal
+        note: Estimated annual yield above ten years' custody under the 2023 guidelines
   enforcement:
     text: >-
       Courts generally consider a treatment-suitability report before custody; for very small
@@ -61,6 +84,15 @@ segments:
     sources:
       - hkpf
       - guidelines
+    currency: HKD
+    penalties:
+      - label: Trafficking (including giving away any amount)
+        treatment: criminal
+        fine: 5000000
+        note: Life imprisonment and HK$5 million maximum
+      - upto: 2 kg
+        treatment: criminal
+        note: Herbal cannabis and resin starting band of up to sixteen months since January 2023
   consumption:
     text: >-
       Smoking, inhaling, ingesting or injecting a dangerous drug is an offence carrying up to seven
@@ -68,6 +100,12 @@ segments:
     sources:
       - hkpf
       - cbdcontrol
+    currency: HKD
+    penalties:
+      - label: Consuming a dangerous drug
+        treatment: criminal
+        prison: 7 years
+        fine: 1000000
   access:
     text: >-
       Possession and use must comply with the ordinance or a licence granted by the Director of
@@ -75,23 +113,30 @@ segments:
       authorities in sections 22 and 24.[@law]
     sources:
       - law
+context_not_applicable:
+  death_penalty:
+    text: >-
+      Hong Kong formally abolished the death penalty on 23 April 1993; no cannabis offence
+      carries a capital sentence.[@wikipdp]
+    sources: [wikipdp]
 context:
+  recreational:
+    text: >-
+      There is no legal way to get cannabis. Possession and use carry up to seven years;
+      first offenders with very small quantities often get fines, probation or community
+      service instead.[@clic] CBD has been a controlled dangerous drug since 1 February
+      2023.[@cbdcontrol]
+    sources:
+      - clic
+      - cbdcontrol
   production:
     status: none
     text: >-
-      Manufacturing a dangerous drug carries up to life imprisonment and HK$5 million. Cultivating a
-      cannabis plant is a separate offence carrying up to fifteen years and HK$100,000.[@hkpf]
+      No licensed cannabis production is documented. Manufacturing a dangerous drug carries up to
+      life imprisonment and HK$5 million; cultivating a cannabis plant is a separate offence
+      carrying up to fifteen years and HK$100,000.[@hkpf]
     sources:
       - hkpf
-  products:
-    text: >-
-      CBD products, including skincare, edible oils and supplements, became subject to
-      dangerous-drug controls in February 2023.[@cbdcontrol] In July, a traveller was jailed for two
-      months overall on CBD-possession, ketamine-possession and injection-equipment counts; two
-      personal-care bottles contained about 5 g of CBD.[@cbdcase]
-    sources:
-      - cbdcontrol
-      - cbdcase
   medical:
     text: >-
       Cannabis and cannabis resin are excluded from the ordinary professional and pharmacy
@@ -178,3 +223,6 @@ sources:
     locator: >-
       Annex A, paragraphs 6–11: market, stated grounds for control and CBD pharmaceutical regulation
       since 13 December 2019
+  wikipdp:
+    title: Wikipedia — Capital punishment in Hong Kong (formally abolished 23 April 1993)
+    url: https://en.wikipedia.org/wiki/Capital_punishment_in_Hong_Kong
