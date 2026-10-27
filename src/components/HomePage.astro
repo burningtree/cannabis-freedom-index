@@ -145,7 +145,7 @@ const LAW_SECTIONS = {
 };
 const MAP_SECTIONS = { ...LAW_SECTIONS, ...STATUS_SECTIONS };
 const STATUS_SCALES = Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, { name: section.name,
-  scale: Object.fromEntries(Object.entries(section.statuses).map(([k, v]) => [k, { label: v.label, help: v.help, color: `var(--t${section.tiers[k]})` }])) }]));
+  scale: Object.fromEntries(Object.entries(section.statuses).map(([k, v]) => [k, { label: v.label, help: v.help, color: section.tiers[k] == null ? "url(#hatch)" : `var(--t${section.tiers[k]})` }])) }]));
 // the map's views in groups, as [metric, label]: the tabs and rows of the view picker
 const datasetViews = (group) => MAPPED.filter((ds) => ds.map.group === group).map((ds) => [`data:${ds.id}`, ds.map.label]);
 const MAP_GROUPS = [
@@ -518,7 +518,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
   <script type="application/json" id="cfi-datasets" set:html={JSON.stringify(datasetScales)} />
   <script type="application/json" id="cfi-freedom-years" set:html={JSON.stringify(FREEDOM_YEARS)} />
   <script type="application/json" id="cfi-price-scale" set:html={JSON.stringify(PRICE_SCALE)} />
-  <script type="application/json" id="cfi-planting" set:html={JSON.stringify({ fields: PLANTING_FIELDS, scales: PLANTING_SCALES, sections: STATUS_SCALES, subs: Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, section.complete ? section.sub : `${section.sub} Hatched countries have not been researched yet. Not part of the score.`])) })} />
+  <script type="application/json" id="cfi-planting" set:html={JSON.stringify({ fields: PLANTING_FIELDS, scales: PLANTING_SCALES, sections: STATUS_SCALES, subs: Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, section.complete ? section.sub : `${section.sub} ${key === "driving" ? "Hatched countries have an unverified trigger or have not been researched yet." : "Hatched countries have not been researched yet."} Not part of the score.`])) })} />
   <script type="application/json" id="cfi-segments" set:html={JSON.stringify(SEGMENTS.map((s) => ({ name: s.name, desc: s.desc, levels: s.levels })))} />
 
   <script>

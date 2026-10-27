@@ -375,3 +375,14 @@ test('Thailand medical-only flower status agrees with its explanation (#193)', (
   assert.match(th.summary, /Recreational use is officially no longer permitted/);
   assert.match(th.context.planting.text, /seed|plant/i);
 });
+
+// Issue #194
+test('fixed THC classes require numerical evidence; Kenya remains unverified (#194)', () => {
+  assert.equal(country('ke').context.driving.status, 'unknown');
+  for (const name of fs.readdirSync(path.join(root,'countries')).filter(n=>n.endsWith('.yaml'))) {
+    const p = country(name.slice(0,-5)), d = p.context?.driving;
+    if (d?.status !== 'limit') continue;
+    assert.match(d.text, /\d+(?:\.\d+)?\s*(?:nanograms?|microgram(?:me)?s?|ng|µg|mg)/i, name);
+    assert.ok(d.sources.some(k => p.sources[k]?.url), name+' needs a source for its numerical rule');
+  }
+});

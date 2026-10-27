@@ -49,3 +49,16 @@ medical status and distinctions for cultivation, seeds and non-flower plant part
 The classification is not a claim that the entire plant has been rescheduled as a
 narcotic. Existing explanation of prescription access and practical shop closures
 remains. Added the direct official notice to visitor sources.
+
+## #194 — Verified driving trigger and numerical limits
+
+Read Kenya's 2026 Drink-Driving Rules in the normal browser at Kenya Law, regulation
+3: the prescribed concentrations are expressly blood-alcohol concentrations. Section
+44's general prescribed-limits phrase is insufficient to label a fixed THC offence.
+Added an explicit unknown reviewed trigger, hatched on the map, retaining the cited
+legal text and penalties without inventing an impairment or detectable-THC test.
+No claim that drug driving is lawful. The regression audits every fixed-limit
+profile for a numerical concentration and source. That audit found New Zealand's
+existing fixed-threshold description lacked the number: read the official 2025/247
+notice and added 5 ng/mL THC in oral fluid, an evidential laboratory threshold,
+not the separate roadside device threshold. Its source/commencement is recorded.

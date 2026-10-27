@@ -238,6 +238,10 @@ context:
   detectable-THC offence merely from a prohibition after consumption, and do not use `zero` when
   a binding ruling requires more than detection. Give the limit and its unit, the penalty and
   licence consequences, and any separate rule for medical patients, novice or professional drivers.
+- Use `driving.status: unknown` when a reviewed law mentions drug-driving but the cannabis-specific
+  conviction trigger remains unverified. Keep the sourced explanation; the map leaves it hatched.
+  A `limit` classification needs a numerical THC concentration, unit and supporting primary
+  source, not merely the phrase "prescribed limits" or an alcohol threshold.
 - **`visitors.status`** is whether someone who does not live in the country can get cannabis
   legally: `open` (same terms as residents), `residents` (legal supply is for residents only) or
   `none` (no legal recreational supply for anyone). Say also what a visitor may possess or use,

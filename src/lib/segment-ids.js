@@ -31,6 +31,7 @@ export const CLUBS_STATUS = {
 };
 // Driving after use: what the law needs to convict a driver. Not part of the score.
 export const DRIVING_STATUS = {
+  unknown: { label: "Drug-driving trigger unverified", tone: "grey", help: "Drug-driving rules were reviewed, but no cannabis-specific offence trigger or THC cutoff was established" },
   impairment: { label: "Impairment must be shown", tone: "legal", help: "The reviewed driving offence requires evidence of drug influence or impairment; additional offences may apply" },
   capacity: { label: "Capable of affecting driving", tone: "decrim", help: "A conviction needs the drug in a biological sample and proof it was capable of affecting driving. A driving mistake is outside that proof" },
   limit: { label: "Fixed THC limit", tone: "decrim", help: "A set THC level in blood or saliva is an offence by itself, whether or not the driver is impaired" },
@@ -49,8 +50,8 @@ export const STATUS_SECTIONS = {
   clubs: { name: "Cannabis clubs", chip: "Clubs", statuses: CLUBS_STATUS, tiers: { regulated: 5, tolerated: 4, underground: 2, none: 0 },
     sub: "Green means cannabis clubs are regulated or tolerated, orange that they work underground, red that none are known.",
     note: "The footing cannabis clubs stand on. Licensed shops and pharmacies are not counted as clubs." },
-  driving: { name: "Driving", chip: "Driving", statuses: DRIVING_STATUS, tiers: { impairment: 5, capacity: 4, limit: 3, consumption: 2, zero: 0 },
-    sub: "Green marks a drug-influence or impairment offence, light green a rule that needs proof the drug could affect driving, yellow a fixed THC limit, orange a prohibition after consumption, and red a detectable-THC offence. Read each profile for additional rules.",
+  driving: { name: "Driving", chip: "Driving", statuses: DRIVING_STATUS, tiers: { impairment: 5, capacity: 4, limit: 3, consumption: 2, zero: 0, unknown: null },
+    sub: "Green marks a drug-influence or impairment offence, light green a rule that needs proof the drug could affect driving, yellow a fixed THC limit, orange a prohibition after consumption, and red a detectable-THC offence. Hatched means the cannabis-specific trigger is unverified. Read each profile for additional rules.",
     note: "What the law needs to convict a driver who has used cannabis." },
   visitors: { name: "Visitors and foreigners", chip: "Visitors", statuses: VISITORS_STATUS, tiers: { open: 5, residents: 3, none: 0 },
     sub: "Green means visitors can buy on the same terms as residents, yellow that legal supply is for residents only, red that nobody has legal access.",
