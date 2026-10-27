@@ -2,7 +2,9 @@
 // how many of them checked against a source), long-read articles, culture entries, and distinct web
 // pages cited by the profiles, the history, the articles and the atlas. For the chart on
 // /research/. Counted straight from each commit's files without parsing them (a history entry is a
-// line "- id:", a cited page a `url:` field), so it stays quick; a commit never changes, so each is
+// block starting "- id:", a cited page a `url:` field), so it stays quick. Estimated entries
+// (`estimate: true`, a first restriction assumed where no law is known) are left out, as on the
+// History page: they are not researched history and can never be checked; a commit never changes, so each is
 // counted once and kept in .cache/progress. Without git, or in a shallow copy, the chart shows the
 // commits there are.
 import { execFileSync } from "node:child_process";
@@ -11,7 +13,7 @@ import path from "node:path";
 
 const ROOT = process.cwd();
 const CACHE = path.join(ROOT, ".cache", "progress");
-const VERSION = "1"; // raise to count every commit again after changing what is counted
+const VERSION = "2"; // raise to count every commit again after changing what is counted
 const git = (...args) => {
   try { return execFileSync("git", args, { cwd: ROOT, maxBuffer: 1 << 29, stdio: ["ignore", "pipe", "ignore"] }).toString(); } catch { return ""; }
 };
@@ -21,8 +23,10 @@ const lines = (text) => text.split("\n").filter(Boolean);
 function countAt(hash) {
   const file = path.join(CACHE, `${VERSION}-${hash}.json`);
   if (existsSync(file)) return JSON.parse(readFileSync(file, "utf8"));
-  const entries = +git("grep", "-h", "-c", "^- id:", hash, "--", "changes.yaml").trim() || 0;
-  const checked = +git("grep", "-h", "-c", "^  checked: true", hash, "--", "changes.yaml").trim() || 0;
+  // each history entry is a block from its "- id:" line to the next; estimates are not counted
+  const blocks = git("show", `${hash}:changes.yaml`).split(/^(?=- id:)/m).filter((b) => b.startsWith("- id:") && !/^  estimate: true\s*$/m.test(b));
+  const entries = blocks.length;
+  const checked = blocks.filter((b) => /^  checked: true\s*$/m.test(b)).length;
   const md = (dir) => lines(git("ls-tree", "-r", "--name-only", hash, "--", dir)).filter((f) => f.endsWith(".md")).length;
   // a `url:` field holds its address on the same line, or on the next when folded (url: >-)
   const urls = new Set();
