@@ -9,7 +9,7 @@ Generated from [books.yaml](books.yaml) and the local `books/` inventory. Refres
 | Book | Bibliography | Fully read / listed units | Partial | Indexed only | Applied targets | Illustrations | Local file |
 |---|---|---:|---:|---:|---:|---:|---|
 | [Cannabis and Culture](#rubin-cannabis-and-culture-1975) | verified | 15 / 36 | 4 | 17 | 61 | 0 | matches recorded hash |
-| [Cannabis: A History](#booth-cannabis-history-2003) | verified | 1 / 26 | 1 | 24 | 5 | 0 | matches recorded hash |
+| [Cannabis: A History](#booth-cannabis-history-2003) | verified | 2 / 26 | 1 | 23 | 6 | 0 | matches recorded hash |
 | [Cannabis Britannica: Empire, Trade, and Prohibition, 1800–1928](#mills-cannabis-britannica-2003) | verified | 0 / 9 | 6 | 3 | 13 | 0 | matches recorded hash |
 | [Marihuana: The First Twelve Thousand Years](#abel-marihuana-first-twelve-thousand-years-1980) | verified | 0 / 13 | 3 | 10 | 10 | 0 | matches recorded hash |
 | [Cannabis: Global Histories](#richert-mills-cannabis-global-histories-2021) | verified | 6 / 15 | 3 | 6 | 56 | 0 | matches recorded hash |
@@ -107,7 +107,7 @@ Missing local books are expected on other checkouts. A changed hash requires edi
 | 4. The Shrub Of Emotion, The Morsel Of Thought | indexed_only | — | — | — |
 | 5. Myths And Murderers | indexed_only | — | — | — |
 | 6. The Herb Pantagruelion | read | Complete chapter | culture/language/hemp.md; articles/france-rabelais-pantagruelion-1546.md | Verify medieval papal prohibitions, Turner/Culpeper titles and dates, and competing British excise dates against original sources. Do not treat folklore or medicinal claims as demonstrated effects. |
-| 7. A La Mode Du Hachisch | indexed_only | — | — | — |
+| 7. A La Mode Du Hachisch | read | pp. 151 (yamba grown and smoked pretty much everywhere in Senegal by the 1950s; viewer pp. 149–156 of the local PDF extracted) | countries/sn.yaml | — |
 | 8. The Pastor’S Son From Poughkeepsie | indexed_only | — | — | — |
 | 9. Cannabis Rx | indexed_only | — | — | — |
 | 10. Loosening The Girders Of The Soul | indexed_only | — | — | — |

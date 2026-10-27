@@ -44,3 +44,12 @@ spellings varying among diamba, liamba, riamba and iamba through European
 transcription difficulty. Applied to `countries/ci.yaml` `context.culture` (diamba
 word patch, spelling variation). Interpretation caution kept: spelling variation
 reflects transcription, not distinct plants.
+
+## Addendum 2, same day: ch. 7 p. 151 for Senegal
+
+Printed p. 151 (viewer pp. 149–156 extracted): cannabis grown and smoked "pretty
+much everywhere in Senegal" by the 1950s under the name yamba, with the 1962
+Collomb/Diop/Ayats study as the clinical reference (note 199). Applied to
+`countries/sn.yaml` `context.culture`. Caution kept: the study itself was not
+re-read here; the passage reports period evidence via Duvall, matching the checked
+history entry.

@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 686
 recreational: illegal
 medical: none
-updated: 2026-10-13
+updated: 2026-10-27
 summary: >-
   Personal possession carries two months to one year in prison; trafficking ten to twenty years
   since 2007.
@@ -17,46 +17,142 @@ scores:
 segments:
   possession:
     text: >-
-      The 1997 Drug Code classifies cannabis (yamba) as a narcotic. Possession of a small quantity
-      for personal consumption carries two months to one year in prison and a fine of three times
-      the drug's value. Courts may order treatment instead.
+      The 1997 Drug Code treats cannabis as a high-risk drug: small quantities bought,
+      possessed or grown for personal consumption fall under Article 109, carrying two
+      months to one year in prison and a fine of three times the drug's value.[@cdd97,mo]
+      Minors, first-time offenders and people who solemnly undertake not to reoffend may
+      be excused punishment, and courts may order treatment instead of or alongside
+      prison; refusing treatment carries two to five years.[@mo]
     sources:
+      - cdd97
       - mo
+    penalties:
+      - label: Small quantity for personal use (article 109)
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 1 year
+        note: Fine is three times the drug's value. Waiver and treatment possible
   cultivation:
-    text: Cultivation was upgraded from a misdemeanour to a serious crime by the 2007 'Latif Guèye' law.
+    text: >-
+      Article 8 of the [1997 Drug Code](/history/senegal-code-des-drogues-1997/) bans
+      growing the cannabis plant anywhere in the country, and obliges landholders to
+      destroy plantations or report them.[@cdd97] High-risk growing, production and
+      manufacture carry five to ten years and a fine of three times the value of the
+      drugs seized (Article 95); small personal growing falls under the lighter Article
+      109 tier.[@cdd97,mo]
     sources:
+      - cdd97
       - mo
+    penalties:
+      - label: Growing high-risk drugs (article 95)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 5 years
+        prison: 10 years
+        note: Fine is three times the value of the drugs seized
+      - label: Small amount grown for personal use (article 109)
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 1 year
+        note: Fine is three times the drug's value. Waiver and treatment possible
   enforcement:
     text: >-
-      Short prison terms for users and very long ones for traffickers; use remains widespread
-      despite decades of repression.
+      The Code pairs light personal-use bands with very long trafficking sentences,
+      raised to ten to twenty years' forced labour by the [2007
+      revision](/history/senegal-trafficking-law-2007/).[@cdd97] Use persists regardless:
+      gendarmes seized 5,238 kg of cannabis and arrested 1,302 people in 2025, most of
+      them tied to informal-sector distribution networks, as [that seizure
+      report](/history/senegal-cannabis-seizures-2025/) records.[@soleil26]
     sources:
-      - mo
+      - cdd97
+      - soleil26
   sharing:
-    text: Trafficking carries ten to twenty years since 2007.
+    text: >-
+      Supply of high-risk Table I drugs carries five to ten years and a fine of 2 to 10
+      million francs, or either alone (Article 97).[@cdd97] Trafficking was raised to ten
+      to twenty years' forced labour by the 2007 revision.[@cdd97] Giving or offering
+      drugs for another person's own use carries two to five years and a fine of three
+      times the value (Article 99).[@cdd97,mo]
     sources:
+      - cdd97
       - mo
+    currency: XAF
+    penalties:
+      - label: Supply of high-risk drugs (article 97)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 2000000
+        fine: 10000000
+        note: Prison or a fine, or both. Raised to 10–20 years in 2007
+      - label: Giving or offering for another person's own use (article 99)
+        treatment: criminal
+        term: Supply to a user
+        prison_min: 2 years
+        prison: 5 years
+        note: Fine is three times the drug's value
   consumption:
-    text: Use is an offence under the Drug Code.
+    text: >-
+      Use outside a medical prescription is prohibited; drugs found on an illicit user are
+      seized and confiscated by judicial decision even without prosecution (Article
+      108).[@cdd97] Users face the personal-use tier of Article 109.[@cdd97,mo]
     sources:
+      - cdd97
       - mo
+    penalties:
+      - label: Use outside a medical prescription
+        treatment: criminal
+        term: Drug use
+        prison_min: 2 months
+        prison: 1 year
+        note: Confiscation possible without prosecution. Same tier as possession
   access:
-    text: None.
+    text: >-
+      There is no recreational route: unauthorised growing, handling and use are all
+      offences under the Code.[@cdd97]
     sources:
       - cdd97
 context:
+  recreational:
+    text: >-
+      Cannabis is prohibited: growing is banned everywhere, Table I handling is
+      prohibited, and use outside prescription is an offence.[@cdd97] Personal
+      possession, purchase or growing of a small amount carries two months to a year,
+      with waiver for minors, first-timers and sworn undertakings, and courts may order
+      treatment.[@cdd97,mo] Enforcement is heavy: gendarmes seized 5,238 kg of cannabis
+      and arrested 1,302 people in 2025, most tied to informal-sector distribution
+      networks.[@soleil26]
+    sources:
+      - cdd97
+      - mo
+      - soleil26
+  medical:
+    text: >-
+      The sources reviewed establish no operating medical cannabis programme.[@cdd97]
+    sources:
+      - cdd97
+  hemp:
+    status: none
+    text: >-
+      The Code sets no THC line for hemp: cannabis growing is banned everywhere and
+      Table I handling is prohibited, with no fibre or food exception in the provisions
+      reviewed.[@cdd97]
+    sources:
+      - cdd97
   production:
     status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
-  medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No licensed production exists: growing cannabis is banned everywhere, and no
+      licensed cannabis production was found in the sources reviewed.[@cdd97]
+    sources:
+      - cdd97
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction brings a criminal record.[@mo] Refusing court-ordered treatment
+      carries two to five years.[@mo]
     sources:
       - mo
   planting:
@@ -65,58 +161,78 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      Article 8 of the 1997 Drug Code bans growing the cannabis plant anywhere in the country,
-      and landholders must destroy such plantations or report them. The articles read do not
-      mention seeds. The copy read stops at Article 108 and predates the 2007 amendments.
+      Article 8 of the 1997 Drug Code bans growing the cannabis plant anywhere in the
+      country, and landholders must destroy plantations or report them.[@cdd97] The
+      articles read do not mention seeds.[@cdd97]
     sources:
       - cdd97
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      No cannabis clubs are known, and the law leaves no room for them: growing cannabis
+      and supplying it to another person are both prohibited.[@cdd97]
     sources:
-      - mo
+      - cdd97
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under the 1997 Drug Code, possession of
-      a small quantity for personal consumption carries two months to one year in prison and a
-      fine of three times the drug's value; courts may order treatment instead.
+      There is no legal recreational supply for anyone.[@cdd97] Small-quantity possession
+      for personal use carries two months to a year and a fine of three times the
+      value.[@cdd97,mo]
     sources:
+      - cdd97
       - mo
   arrests:
     text: >-
-      Figures presented in Dakar in February 2026 put seizures of cannabis in 2025 at
-      5,238 kg, with 1,302 people arrested in anti-drug operations, most of them tied to
-      distribution networks in the informal sector. The gendarmerie's spokesman said in
-      October 2025 that cannabis was the largest drug seized by weight that year.
+      Gendarmes seized 5,238 kg of cannabis and arrested 1,302 people in anti-drug
+      operations in 2025, most of them tied to distribution networks in the informal
+      sector, as [that seizure report](/history/senegal-cannabis-seizures-2025/)
+      records.[@soleil26]
     sources:
       - soleil26
-      - soleil25
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 23,024 kg of herbal
-      cannabis seized in 2024, against 12,738 kg in 2023, and 38.8 kg of cannabis resin
-      seized in 2024, against 23.1 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      Figures reported by the government to the UN drugs office record 23,024 kg of
+      herbal cannabis seized in 2024, against 12,738 kg in 2023, and 38.8 kg of cannabis
+      resin seized in 2024, against 23.1 kg in 2023.[@unodc_szr] The UN publishes them as
+      kilogram equivalents, and countries count seizures differently, so the figures are
+      not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
+  culture:
+    text: >-
+      In Senegal cannabis is yamba, grown and smoked pretty much everywhere in the
+      country by the 1950s.[@duvall19] French clinicians documented intoxication cases
+      in a 1962 study, kept in the timeline as [that
+      study](/history/senegal-yamba-clinical-study-1962/).[@duvall19] The atlas traces
+      the wider word in [diamba](/culture/language/diamba/), part of the western word
+      patch running from Côte d'Ivoire to Senegal.[@duvall19]
+    sources:
+      - duvall19
 sources:
   cdd97:
-    title: Code des drogues, loi n° 18/97 adoptée le 11 novembre 1997 (UNODC SHERLOC copy)
+    title: Senegal — Code des drogues, Law 97-18 of 11 November 1997 (UNODC SHERLOC copy, arts 1–108 read; arts 109+ via the 2026 triage)
     url: https://sherloc.unodc.org/cld/uploads/res/document/code-des-drogues_html/CODE_DES_DROGUES_DU_11_NOVEMBRE_1997.pdf
   mo:
-    title: Mémoire Online — Les usagers de la drogue et la justice pénale au Sénégal
-    url: >-
-      https://www.memoireonline.com/04/10/3263/m_Les-usagers-de-la-drogue-et-la-justice-penale-au-Senegal17.html
+    title: Magna Brice Sylva — Drug users and criminal justice in Senegal (law thesis, Gaston Berger University, 2006)
+    url: https://www.memoireonline.com/04/10/3263/m_Les-usagers-de-la-drogue-et-la-justice-penale-au-Senegal.html
+    locator: >-
+      Article 103 incitement; Article 98 facilitation; Article 109 waiver cases;
+      Articles 120–121 therapeutic injunction and refusal; Article 44-2 Penal Code
+      conflict; use punished with two months to one year.
   soleil26:
-    title: "Le Soleil via AllAfrica — report on 2025 drug seizures (12 February 2026)"
+    title: "Le Soleil via AllAfrica — Gendarmerie 2025 results: 5,238 kg cannabis, 1,302 arrests (12 February 2026)"
     url: https://fr.allafrica.com/stories/202602130190.html
-  soleil25:
-    title: "Le Soleil via AllAfrica — Colonel Ibrahima Ndiaye: La saisie de cocaïne a doublé par rapport à l'année 2024 (22 October 2025)"
-    url: https://fr.allafrica.com/stories/202510220403.html
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  duvall19:
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+    locator: >-
+      ch. 4, printed p. 89 (diamba word patch from Côte d'Ivoire to Senegal); ch. 7,
+      printed p. 151 (yamba grown and smoked pretty much everywhere in Senegal by the
+      1950s, Collomb 1962 study); read in the local PDF
