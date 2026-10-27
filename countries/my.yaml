@@ -24,6 +24,22 @@ segments:
       strokes. A person found with 200 g or more is presumed to be trafficking.
     sources:
       - dda
+    currency: MYR
+    penalties:
+      - label: Basic possession, Section 6
+        treatment: criminal
+        prison: 5 years
+        fine: 20000
+        note: Up to RM20,000, up to five years, or both
+      - label: 20 g or more but under 50 g, Section 39A
+        treatment: criminal
+        prison_min: 2 years
+        prison: 5 years
+        note: Two to five years and three to nine strokes of the cane
+      - label: 50 g or more, Section 39A
+        treatment: criminal
+        prison_min: 5 years
+        note: Five years to life and at least ten strokes; 200 g or more presumed trafficking
   cultivation:
     text: >-
       Section 6B forbids planting or cultivating any plant from which cannabis can be obtained,
@@ -33,6 +49,10 @@ segments:
       may grow, for research, educational, experimental or medical purposes.
     sources:
       - dda
+    penalties:
+      - label: Planting or cultivating, Section 6B
+        treatment: criminal
+        note: Life imprisonment and at least six strokes, even for a single plant
   enforcement:
     text: >-
       Prison and caning for possession, and the death penalty still available for trafficking. The
@@ -46,6 +66,11 @@ segments:
       imprisonment; a person not sentenced to death also receives at least twelve strokes of the cane.[@dda]
     sources:
       - dda
+    penalties:
+      - label: Trafficking, Section 39B (since 2023)
+        treatment: criminal
+        death: true
+        note: Discretionary death or life imprisonment, plus at least twelve strokes if not death
   consumption:
     text: >-
       Section 15 makes consuming or self-administering a listed drug an offence with a fine of
@@ -53,6 +78,13 @@ segments:
     sources:
       - dda
       - wiki
+    currency: MYR
+    penalties:
+      - label: Consumption, Section 15
+        treatment: criminal
+        prison: 2 years
+        fine: 5000
+        note: Up to RM5,000 or up to two years
   access:
     text: >-
       None. The Dangerous Drugs Act 1952 allows cannabis to be imported only with the
@@ -61,6 +93,14 @@ segments:
     sources:
       - dda
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Possession starts at up to five years, weight bands add
+      caning, 200 g or more is presumed trafficking, and trafficking can bring discretionary death;
+      consumption brings up to two years.[@dda,wiki]
+    sources:
+      - dda
+      - wiki
   death_penalty:
     text: >-
       The death penalty remains available for trafficking, which is presumed from 200 g of cannabis.
@@ -71,18 +111,24 @@ context:
       - mh
   production:
     status: none
-    text: None.
+    text: >-
+      No lawful cannabis production. Only a public officer authorised by the Minister may grow,
+      for research, educational, experimental or medical purposes.[@dda]
     sources:
-      - wiki
-  products:
-    text: None; hemp-derived CBD products require registration as medicines.
+      - dda
+  research:
+    status: licensed
+    text: >-
+      Only a public officer authorised by the Minister may grow cannabis, for research,
+      educational, experimental or medical purposes; no wider research programme
+      operates.[@dda]
     sources:
-      - wiki
+      - dda
   medical:
     text: >-
       Medical or research use is lawful only with authorisation from the health minister, which is
-      rarely granted. The government has studied a medical framework for several years without
-      enacting one.
+      rarely granted. Hemp-derived CBD products require registration as medicines. The government
+      has studied a medical framework for several years without enacting one.
     sources:
       - wiki
   consequences:
