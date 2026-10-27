@@ -36,6 +36,20 @@
 - Read: TTR vol. 7 case PDF (Bermudes, full); fsmlaw.org Appendix B
   (chapter text with PL citation).
 
+## Nigeria cross-check (27 Oct): two leads dead
+- "British colonial authorities grew cannabis/coca in the 1930s" is NOT in
+  its cited source (Count the Costs Nigeria paper, read in full:
+  cocaine/heroin only). Do not add without the real source.
+- 1950s farmer arrests + US/Europe trickle (Deviant Globalization p.116):
+  book not on archive.org (only a PopTech talk), Google Books walled.
+  Needs library access.
+- Rest of Wiki Nigeria history already covered (1927/1935/1966/1975/1984/
+  Decree 20/1994/1999/2019 entries).
+
+## Curaçao 1929 (still untraced)
+- CVDR repository hosts only the 1960 consolidation (re-read via html
+  variant: same repeal note for P.B. 1940 no. 138). No 1929 text.
+
 ## Timor-Leste (lead: UU 9/1976 application unconfirmed)
 - Indonesia's Law 9 of 1976 (26 July 1976; 2yr personal use, 6yr
   growing/possession/small supply, life for trafficking — see
