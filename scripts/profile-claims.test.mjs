@@ -532,3 +532,13 @@ test('Alaska protects lawful on-site harvest without extending carry limits (#21
   assert.match(ak.answers.carry.text,/carry 1 oz.*harvest may be kept where grown/);
   assert.deepEqual(ak.scores,{possession:5,cultivation:4,enforcement:6,sharing:5,consumption:4,access:6});
 });
+
+// Issue #211
+test('Arizona distinguishes legal and petty concentrate caps and gift conditions (#211)',()=>{
+ const az=country('us/az');
+ for(const text of [az.summary,az.segments.possession,az.segments.sharing,az.answers.carry.text])assert.match(text,/5 g of concentrate/);
+ for(const text of [az.segments.possession,az.segments.enforcement,az.answers.caught.text])assert.match(text,/12.5 g/);
+ assert.match(az.segments.sharing,/not advertised or promoted/);
+ assert.match(az.segments.possession,/medical patients.*separate statutory protections/);
+ assert.doesNotMatch(az.segments.possession,/more than 2.5 oz is a felony/);
+});
