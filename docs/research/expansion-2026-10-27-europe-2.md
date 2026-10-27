@@ -15,7 +15,15 @@ Dirty-at-start files were ir.yaml + source-archive (not in batch).
 - Gaps closed except old decades; 3 of 17 texts link history.
 - Gotcha: death field is literal-true-only — never write death:false; audit treats repeating ranges in notes as warnings.
 - Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
-| Latvia | | | |
+| Latvia | x | | |
+
+## Latvia (lv) — done 2026-10-28 ~00:20 UTC
+- Profile: recreational + culture (hemp-seed butter, 2009 revival link) sections added; products folded (no THC products into medical) and deleted; possession table (civil €280 first / criminal repeat / over-ceiling) + cultivation table (s256 tariffs / legal hemp); inline citations everywhere; history links (2009 revival).
+- New source: enciklopedija.lv butter article (verified: roast/grind, bread/potatoes, scarcity fat) for culture; LV portāls 2010 (read in Latvian: 114 ha Krāslava, 0.2–0.3%, Riga ropes, police-station warning) already in profile, reused for article.
+- Article: latvia-hemp-revival-2009 (114 ha, police-escort warning, processing plans, food twin, Art 6(2) base layer).
+- Left out: arrests (no dated citable cannabis arrests). Gaps otherwise closed; culture links both atlas entries; 2 of 18 texts link history.
+- Gotcha: audit wants every sentence cited — restructure long Unsourced runs; never invent shop claims, cite acquiring offence instead.
+- Audit 0/0, answers 93 pass; history fails only on ir.yaml (not mine). Build + HTML verify pending.
 | Romania | | | |
 | Bulgaria | | | |
 | Sweden | | | |

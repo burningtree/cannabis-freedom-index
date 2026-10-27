@@ -29,6 +29,21 @@ segments:
       - euda
       - lvp14
       - kl
+    currency: EUR
+    penalties:
+      - label: First small possession
+        treatment: civil
+        term: Misdemeanour
+        fine: 280
+        note: Administrative fine up to €280 and a written warning
+      - label: Repeat within twelve months
+        treatment: criminal
+        term: Possession
+        note: Short imprisonment, community service or a fine
+      - label: Above the product ceiling
+        treatment: criminal
+        term: Possession
+        note: Criminal from the outset (1 g dried, 5 g undried, 0.1 g hashish, 0.05 g resin/oil/extracts)
   cultivation:
     text: >-
       Unauthorised sowing or growing of narcotic plants is criminal under section 256: up to two
@@ -39,6 +54,21 @@ segments:
     sources:
       - kl
       - control
+    penalties:
+      - label: Unauthorised sowing or growing
+        treatment: criminal
+        term: Cultivation
+        prison: 2 years
+        note: Fine, detention, probation, community service, or up to two years
+      - label: Large area, organised group
+        treatment: criminal
+        term: Cultivation
+        prison: 5 years
+        note: Up to five years
+      - label: Outdoor industrial or garden hemp
+        treatment: legal
+        term: Hemp
+        note: Permitted under Article 6(2); EU-listed seed
   enforcement:
     text: >-
       Small quantities are defined by product: 1 g dried marijuana, 5 g undried, 0.1 g hashish and
@@ -53,22 +83,31 @@ segments:
     text: >-
       Supply is a crime. Section 253.1 of the Criminal Law sets two to eight years in prison for
       unauthorised sale, and five to fifteen years for large amounts, organised groups or supply
-      to minors or in schools, bars and public events. Selling a small amount carries up to three
-      years under Section 253.2.
+      to minors or in schools, bars and public events.[@kl] Selling a small amount carries up to three
+      years under Section 253.2.[@kl]
     sources:
       - kl
   consumption:
-    text: Use is an administrative offence the first time and a crime if repeated within a year.
+    text: Use is an administrative offence the first time and a crime if repeated within a year.[@euda,wiki]
     sources:
       - euda
       - wiki
   access:
     text: >-
       No legal source: Section 253.2 of the Criminal Law covers acquiring or storing even a small
-      amount, and unauthorised use.
+      amount, and unauthorised use.[@kl]
     sources:
       - kl
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply. First-offence small possession brings an
+      administrative fine up to €280 and a warning; repeating within twelve months, or exceeding
+      the product ceiling, can bring a criminal charge.[@euda,lvp14] Use is an administrative
+      offence the first time and a crime if repeated.[@euda]
+    sources:
+      - euda
+      - lvp14
   production:
     status: medical
     text: >-
@@ -79,29 +118,34 @@ context:
       industry.[@control]
     sources:
       - control
-  products:
-    text: No legal THC products.
-    sources:
-      - wiki
   medical:
     text: >-
-      No medical cannabis programme. In 2018 the health minister said there were more important
+      No medical cannabis programme and no legal THC products. In 2018 the health minister said there were more important
       things to discuss; in April 2025 one of the governing parties decided to seek a rule
-      letting doctors prescribe cannabis medicines, saying patients now obtain them illegally.
+      letting doctors prescribe cannabis medicines, saying patients now obtain them illegally.[@wiki,lsm18,bt25]
     sources:
       - wiki
       - lsm18
       - bt25
   consequences:
-    text: A repeat offence brings a criminal record.
+    text: A repeat offence brings a criminal record.[@euda]
     sources:
       - euda
+  culture:
+    text: >-
+      Latvia's hemp food is traced in [hemp-seed butter](/culture/traditions/latvian-hemp-seed-butter/):
+      roasted, ground hemp seeds eaten with rye bread, a household fat when dairy was
+      scarce.[@butter] The same crop returned to the fields in 2009, when farmers around Krāslava
+      sowed 114 hectares of fibre hemp.[@lvp10]
+    sources:
+      - butter
+      - lvp10
   arrests:
     text: >-
       In 2019 Latvia registered 3,159 drug crimes, 7.9% of all recorded crime, most of them use or
-      possession of small amounts. Courts convicted 1,370 people and 3,203 received administrative
+      possession of small amounts.[@spkc20] Courts convicted 1,370 people and 3,203 received administrative
       penalties; since 2018 the number punished administratively has risen and the number
-      convicted has fallen. Marijuana is the drug most often seized. The figures cover all drugs.
+      convicted has fallen. Marijuana is the drug most often seized. The figures cover all drugs.[@spkc20]
     sources:
       - spkc20
   planting:
@@ -112,9 +156,9 @@ context:
     text: >-
       The agriculture ministry stated in 2017 that the narcotics law does not apply to seeds,
       so trade in Indian hemp seed is not prohibited in Latvia, while sowing and growing those
-      plants is banned and punished under section 256 of the Criminal Law. The same answer
+      plants is banned and punished under section 256 of the Criminal Law.[@zm17] The same answer
       also cites the Criminal Law's section on trade, so the position on selling is less clear
-      than its headline, and it is given as informative, not binding.
+      than its headline, and it is given as informative, not binding.[@zm17]
     sources:
       - zm17
   driving:
@@ -122,18 +166,18 @@ context:
     text: >-
       Criminal Law section 262(1¹) makes it a crime to drive a vehicle, or to instruct a
       learner, while under the influence of narcotic, psychotropic, toxic or other intoxicating
-      substances. The Latvian text sets the punishment at up to one year in prison, short-term
+      substances.[@kl262] The Latvian text sets the punishment at up to one year in prison, short-term
       deprivation of liberty, or probationary supervision, and loss of the driving licence for
       five years. If the driving causes slight bodily injury the prison term can reach four
       years, five years for moderate injury, three to ten years for serious injury or one death,
-      and three to fifteen years for two or more deaths. Road Traffic Law section 62(5) keeps
+      and three to fifteen years for two or more deaths.[@kl262] Road Traffic Law section 62(5) keeps
       an administrative fine for a cyclist, an electric-scooter rider or a moped driver under
       that influence: 34 fine units (€170) for a bicycle or scooter, and 240 to 400 units
-      (€1,200 to €2,000) for a moped, with the moped rider losing the licence for five years.
-      One fine unit is €5. The Administrative Liability Law lists a warning, a fine, loss of a
-      right, and a ban on using a right. Cabinet Regulation No. 719 has the doctor record
+      (€1,200 to €2,000) for a moped, with the moped rider losing the licence for five years.[@kl262,csl]
+      One fine unit is €5, and the Administrative Liability Law lists a warning, a fine, loss of a
+      right, and a ban on using a right.[@csl,aal] Cabinet Regulation No. 719 has the doctor record
       clinical symptoms and laboratory tests, and it allows a finding that a substance was used
-      when influence is not found. That regulation sets no THC figure.
+      when influence is not found.[@mk719] That regulation sets no THC figure.[@mk719]
     sources:
       - kl262
       - csl
@@ -144,9 +188,9 @@ context:
     text: >-
       No clubs are known. A Europe-wide survey of cannabis social clubs carried out in 2018 and 2019
       found, after online searches and contact with people in the field, that there did not seem to
-      be any active club in Latvia. No law in Latvia provides for them; Malta (since 2021) and
-      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.
-      Nothing more recent was found.
+      be any active club in Latvia.[@pardal20] No law in Latvia provides for them; Malta (since 2021) and
+      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.[@de_cang,mt_cap628]
+      Nothing more recent was found.[@pardal20]
     sources:
       - pardal20
       - de_cang
@@ -154,11 +198,11 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply. The 1 g small-quantity ceiling is for dried marijuana
+      There is no legal recreational supply, and acquiring any amount is an offence.[@kl] The 1 g small-quantity ceiling is for dried marijuana
       only; undried marijuana has 5 g, hashish 0.1 g, and cannabis resin, oil, extracts and
-      tinctures 0.05 g. Exceeding the relevant ceiling can bring a criminal charge immediately;
+      tinctures 0.05 g.[@quantities] Exceeding the relevant ceiling can bring a criminal charge immediately;
       first-offence small possession can attract an administrative fine and repeating within twelve
-      months after warning can be criminal.[@quantities,kl,euda,lvp14]
+      months after warning can be criminal.[@kl,euda,lvp14]
     sources:
       - quantities
       - kl
@@ -167,9 +211,9 @@ context:
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 158 kg of herbal cannabis and 186
-      kg of cannabis resin seized in Latvia in 2024, against 190 kg and 2.7 kg in 2023.
+      kg of cannabis resin seized in Latvia in 2024, against 190 kg and 2.7 kg in 2023.[@euda_szr]
       Herbal cannabis was seized on 1,039 occasions and resin on 102. Countries record
-      seizures differently, so the figures are not comparable across borders.
+      seizures differently, so the figures are not comparable across borders.[@euda_szr]
     sources:
       - euda_szr
   hemp:
@@ -178,10 +222,13 @@ context:
       Sowing hemp may be grown for industry and gardening in open fields; indoor growing and
       greenhouses are excluded.[@control] Industrial growers use certified EU-listed seed or
       officially tested conservation-variety seed. The agriculture ministry describes this crop under
-      the below-0.3% THC standard.[@control,agriculture2024]
+      the below-0.3% THC standard.[@control,agriculture2024] Farmers sowed 114 hectares again in 2009
+      in the [hemp revival](/history/latvia-hemp-revival-2009/), when growers still feared having to prove
+      their plants harmless at a police station.[@lvp10]
     sources:
       - control
       - agriculture2024
+      - lvp10
 sources:
   de_cang:
     title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
@@ -210,6 +257,9 @@ sources:
   lsm21:
     title: LSM — Viļānu novada «kaņepju sieva» saņems 1500 eiro kompensāciju (3 February 2021)
     url: https://www.lsm.lv/raksts/zinas/latvija/vilanu-novada-kanepju-sieva-sanems-1500-eiro-kompensaciju.a391479/
+  butter:
+    title: Astra Spalvēna — kaņepju sviests, Latvian National Encyclopedia (updated 3 August 2026)
+    url: https://enciklopedija.lv/skirklis/116732
   spkc20:
     title: Slimību profilakses un kontroles centrs — Latvija, Valsts ziņojums par narkotikām 2020 (PDF)
     url: https://www.spkc.gov.lv/lv/media/15036/download
