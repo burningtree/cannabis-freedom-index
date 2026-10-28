@@ -47,5 +47,10 @@ track); Canada (separate job); Eritrea/Somaliland/Sudan (closed/recent); Africa 
 - Fixed self-inflicted schema error (cultivation fines need currency).
 - Waited out another agent's ae.yaml breakage (untouched); audit 0/0; page + all three articles verified.
 - Left: 1995 convention (imp 1, skipped).
-## ht — pending
+## ht — committed
+- Word marijuana (French (Haiti), from Le Nouvelliste's $3.8M headline); culture section (2011 1.4% prevalence + article; wikiht source added).
+- New `articles/haiti-narcotics-decree-1975.md` (known only from the 2001 preamble: 1975 decree → 1979/1980/1982/1989 changes → 2001) + `articles/haiti-mole-saint-nicolas-seizure-2026.md` (Nouvelliste: 8 nm off Môle-Saint-Nicolas, 3,200 lb, handed over) + `articles/haiti-prevalence-2011.md` (WDR 2011: 1.4%); 1975 already linked in cultivation, 2026 already linked in arrests/black_market.
+- Tables already present (Art 63 6 mo + 5,000–100,000 HTG; Art 50 5 yrs; Art 49 30 yrs); no other profile surgery needed.
+- Audit 0/0 (page + articles verified; note: build-pages review dir is per-invocation — verify all targets before rebuilding).
+- Left: 1925 estimate, driving (no section), thin decades.
 ## do — pending
