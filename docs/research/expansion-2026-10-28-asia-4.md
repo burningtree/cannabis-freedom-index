@@ -7,7 +7,7 @@ primary sources. The batch is Indonesia, Malaysia, Sri Lanka, Thailand and Vietn
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Indonesia | cultivation table, hemp and culture sections, citation conversion | 1930s–1960s still empty; Aceh 1924 entry still needs an article | this country commit |
-| Malaysia | in progress | | |
+| Malaysia | hemp and culture sections, citation conversion, table terms | 1920s–1940s and 2000s still empty; recent history pending | this country commit |
 | Sri Lanka | in progress | | |
 | Thailand | in progress | | |
 | Vietnam | in progress | | |
