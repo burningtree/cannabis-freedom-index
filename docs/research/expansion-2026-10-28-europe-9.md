@@ -68,3 +68,22 @@ Kosovo validation: four-page build and rendered profile/article inspection passe
 all tests and citations valid, audit zero errors. One explained production warning:
 text mentions research acquisition licences while cultivation remains prohibited.
 A concurrent build lock required retry; shared history staged by the two own IDs.
+
+| Montenegro | Correct €100–€2,000 structured ranges; five supply/facilitation rows; national market and complaints sections; research and confiscation; 2011 framework article; one report event | Early Yugoslav decades; local words; full enacted 2026 amendment text | this commit |
+
+Montenegro: read government 2013 consolidation, CINMED 2024 consolidation,
+Criminal Code arts. 300–301, 2014 hemp regulation, July 2026 proposal and August
+Gazette registry, and original national 2025 report. Scores/statuses unchanged.
+The 2011 article distinguishes publication from provisions visible by 2013,
+rather than dating the personal-possession fine to the original act. Research
+section explains the land-registration exception; no invented clinical study.
+The July proposal leaves possession ranges intact, but full enacted amendment
+text was not accessible from the Gazette registry. No proposal provision promoted
+to current law. Report seizure table gives 400.35285 kg marijuana, while narrative
+rounds incorrectly to about 410 kg; used table. Plant narrative says 13,191 versus
+13,254 in table: profile explicitly attributes the narrative count. Complaint
+totals cover all drugs, not cannabis-only convictions or arrests.
+
+Montenegro validation: three-page build, all tests and content/citation checks
+passed; inspected rendered fine ranges, supply rows and article. Audit zero
+errors/warnings. Retried after a concurrent build lock, without changing the lock.
