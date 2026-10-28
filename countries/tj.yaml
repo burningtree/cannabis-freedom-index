@@ -3,14 +3,14 @@ region: Asia
 iso_numeric: 762
 recreational: illegal
 medical: none
-updated: '2026-10-24'
+updated: '2026-10-28'
 summary: >-
-  Personal possession and unauthorised growing remain criminal. The code’s lowest quantity bands
-  allow a fine or up to two years in prison, with longer terms for larger amounts and aggravated
-  cases.
+  Small possession and growing are administrative; from about 100 g of dried cannabis, 20 g of
+  hashish or five plants they become criminal, with up to twelve years for possession or
+  cultivation and twenty for supply.
 scores:
-  possession: 0
-  cultivation: 0
+  possession: 2
+  cultivation: 2
   enforcement: 1
   sharing: 0
   consumption: 1
@@ -18,50 +18,95 @@ scores:
 segments:
   possession:
     text: >-
-      In the code’s lowest quantity band, unlawful possession without intent to supply carries a
-      fine of 100–500 calculation units or up to two years in prison. The next band carries two
-      to five years; aggravated or larger cases carry five to eight or eight to twelve
-      years.[@code]
+      Below the Criminal Code's lowest band, possession is administrative: under 100 g of dried
+      cannabis, 20 g of hashish or 10 g of resin brings a fine of 20–30 calculation units
+      (1,560–2,340 somoni) and confiscation.[@admin128] The criminal lowest band, 100–200 g of
+      dried cannabis or 20–100 g of hashish, carries a fine of 100–500 units or up to two years;
+      the next band two to five years; large amounts five to eight; and especially large amounts
+      eight to twelve.[@code] The gram bands come from the Justice Ministry's 2023 draft annex and
+      need checking against the gazetted table.[@draft2023]
     sources:
+      - admin128
       - code
+      - draft2023
+    currency: TJS
     penalties:
-      - label: Lowest quantity band
+      - label: Below the criminal band
+        treatment: civil
+        term: Small possession
+        fine_min: 1560
+        fine: 2340
+        note: Under 100 g dried cannabis, 20 g hashish or 10 g resin; confiscation also applies
+      - label: Lowest criminal band
         treatment: criminal
+        term: Possession
         prison: 2 years
-        note: Fine of 100–500 calculation units or up to two years
+        fine_min: 7800
+        fine: 39000
+        note: 100–200 g dried cannabis or 20–100 g hashish
       - label: Next band
         treatment: criminal
+        term: Possession
         prison_min: 2 years
         prison: 5 years
-      - label: Aggravated or larger cases
+        note: 200 g–1 kg dried cannabis or 100–500 g hashish
+      - label: Large amount
         treatment: criminal
+        term: Possession
         prison_min: 5 years
-        note: Five to eight or eight to twelve years
+        prison: 8 years
+        note: 1–10 kg dried cannabis or 500 g–5 kg hashish
+      - label: Especially large amount
+        treatment: criminal
+        term: Possession
+        prison_min: 8 years
+        prison: 12 years
+        note: Over 10 kg dried cannabis or 5 kg hashish
   cultivation:
     text: >-
-      Unauthorised cultivation in the lowest plant-count band carries a fine of 200–500
-      calculation units or up to two years in prison. The next band carries two to five years;
-      aggravated or larger grows carry five to eight or eight to twelve years. The code refers
-      to a separate plant-count list.[@code]
+      Growing one to four plants is administrative: a fine of 10–20 calculation units (780–1,560
+      somoni) with confiscation, or 5–10 units under the land rules.[@admin127] From five plants,
+      the Criminal Code applies: five to ten plants bring a fine of 200–500 units or up to two
+      years; 10–50 plants two to five years; 50–500 plants five to eight; and over 500 plants
+      eight to twelve.[@code,draft2023]
     sources:
+      - admin127
       - code
+      - draft2023
+    currency: TJS
     penalties:
-      - label: Lowest plant-count band
+      - label: One to four plants
+        treatment: civil
+        term: Small cultivation
+        fine_min: 780
+        fine: 1560
+        note: Confiscation also applies
+      - label: Five to ten plants
         treatment: criminal
+        term: Cultivation
         prison: 2 years
-        note: Fine of 200–500 calculation units or up to two years
-      - label: Next band
+        fine_min: 15600
+        fine: 39000
+      - label: 10–50 plants
         treatment: criminal
+        term: Cultivation
         prison_min: 2 years
         prison: 5 years
-      - label: Aggravated or larger grows
+      - label: 50–500 plants
         treatment: criminal
+        term: Cultivation
         prison_min: 5 years
-        note: Five to eight or eight to twelve years
+        prison: 8 years
+      - label: Over 500 plants
+        treatment: criminal
+        term: Cultivation
+        prison_min: 8 years
+        prison: 12 years
   enforcement:
     text: >-
-      The Criminal Code permits prison for personal possession even in its lowest quantity
-      band.[@code] A 2010 review involving officials and civil society criticised enforcement
+      Above the administrative band, the Criminal Code permits prison for personal possession
+      even in its lowest quantity band.[@code] A 2010 review involving officials and civil society
+      criticised enforcement
       driven by arrest and conviction targets and called for greater focus on dealers and larger
       supply networks.[@reform]
     sources:
@@ -79,10 +124,12 @@ segments:
     penalties:
       - label: Lowest quantity band
         treatment: criminal
+        term: Trafficking
         prison: 5 years
         note: Up to five years; supply includes gifts, exchanges, debt payments and loans
       - label: Larger or aggravated cases
         treatment: criminal
+        term: Trafficking
         prison_min: 5 years
         prison: 20 years
         note: Five–eight, eight–twelve and twelve–twenty year tiers
@@ -91,24 +138,30 @@ segments:
       The drug law prohibits use without a doctor’s prescription and provides for medical
       examination where there are sufficient grounds to suspect unlawful use. It requires
       registration of people diagnosed with dependence and people found to have used drugs
-      unlawfully. Voluntary treatment and compulsory treatment are governed separately.[@law]
+      unlawfully. The act of use itself has no separate criminal or administrative penalty; the
+      prohibition is enforced through examination and registration. Voluntary treatment and
+      compulsory treatment are governed separately.[@law]
     sources:
       - law
   access:
     text: >-
-      Unlawful buying and holding for personal use are criminal offences, and supply is punished
-      separately.[@code] Lawful controlled-drug activities are licensed; scientific cultivation
-      is reserved for licensed research institutions.[@law]
+      Buying or holding for personal use is administrative below the criminal band and criminal
+      above it, and supply is punished separately.[@code,admin128] Lawful controlled-drug
+      activities are licensed; scientific cultivation is reserved for licensed research
+      institutions.[@law]
     sources:
       - code
+      - admin128
       - law
 context:
   recreational:
     text: >-
-      All recreational use is prohibited: unlawful possession without intent to supply starts at
-      a fine or up to two years, supply at up to five years rising to twenty, and gifts count
-      as supply. A 2010 review criticised arrest-target-driven enforcement.[@code,law,reform]
+      All recreational use is prohibited. Small possession is an administrative fine; above the
+      lowest criminal band possession brings a fine or up to two years, supply at up to five years
+      rising to twenty, and gifts count as supply.[@admin128,code,law] A 2010 review criticised
+      arrest-target-driven enforcement.[@reform]
     sources:
+      - admin128
       - code
       - law
       - reform
@@ -131,10 +184,13 @@ context:
       - law
   medical:
     text: >-
-      The drug law provides licensed medical handling of controlled drugs and reserves
-      scientific growing for licensed research institutions. It also prohibits non-prescribed
-      use and regulates prescribing through the health ministry.[@law]
+      No medical cannabis programme exists. Cannabis, resin, hashish, oil and THC-containing hemp
+      are in the National List's section for substances "especially dangerous and not of interest
+      for medical use"; no cannabis medicine is registered or prescribed.[@nationallist] The drug
+      law's medical rules apply to controlled drugs generally, but the list excludes
+      cannabis.[@law]
     sources:
+      - nationallist
       - law
   consequences:
     text: >-
@@ -152,23 +208,23 @@ context:
     clones_trade: banned
     text: >-
       The drug law defines cultivation as sowing and growing controlled plants and reserves
-      scientific cultivation for licensed research institutions.[@law] The Criminal Code
-      penalises unauthorised growing in plant-count bands, including a fine or up to two years
-      in prison in the lowest band.[@code]
+      scientific cultivation for licensed research institutions.[@law] Growing one to four plants
+      is an administrative fine; the Criminal Code's lowest plant-count band carries a fine or up
+      to two years in prison.[@code,admin127]
     sources:
       - law
       - code
+      - admin127
   visitors:
     status: none
     text: >-
-      Unlawful acquisition and possession for personal use can bring a fine or prison, and
-      supply carries separate prison penalties.[@code] Lawful controlled-drug trade is licensed;
-      the February 2026 amendment requires authorising documents for imports and
-      exports.[@law,amend26]
+      Unlawful acquisition and possession can bring an administrative fine below the criminal
+      band and prison above it, and supply carries separate prison penalties.[@code,admin128]
+      There is no visitor exemption.[@law]
     sources:
       - code
+      - admin128
       - law
-      - amend26
   clubs:
     status: none
     text: >-
@@ -180,13 +236,77 @@ context:
       - code
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 63.7 kg of herbal
-      cannabis seized in 2024, against 90.3 kg in 2023, and 3,947 kg of cannabis resin seized in
-      2024, against 4,294 kg in 2023. The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across borders.
+      UNODC figures record 64 kg of herbal cannabis and 3,947 kg of resin in 2024, against 90 kg
+      and 4,294 kg in 2023; resin dominates because hashish transits from Afghanistan.[@unodc_szr]
+      The Drug Control Agency reported 5,280 kg of all drugs seized in 2025 and 2,963 kg in the
+      first half of 2026, when cannabis-type substances were 1,740.9 kg.[@avesta26] The figures
+      cover all drugs unless stated.[@unodc_szr]
     sources:
       - unodc_szr
+      - avesta26
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. Any Cannabis plant containing a THC isomer is a
+      Schedule 1 narcotic plant, and only licensed research institutions may grow drug-containing
+      plants for scientific purposes.[@nationallist,law] Cannabis oil and concentrate are
+      controlled, and no legal CBD market was found.[@nationallist]
+    sources:
+      - nationallist
+      - law
+  driving:
+    status: impairment
+    text: >-
+      The Road Traffic Law prohibits driving while intoxicated by alcohol, narcotics,
+      psychotropics or other intoxicants; a medical examination shows intoxication and there is
+      no THC cutoff.[@traffic1533] Administrative Code article 332 imposes 300 calculation units
+      (23,400 somoni) or 15 days' arrest, plus a five-year licence ban.[@admin332]
+    sources:
+      - traffic1533
+      - admin332
+  arrests:
+    text: >-
+      The Drug Control Agency recorded 1,167 drug crimes in 2024 and 1,003 in 2025, with 4,004
+      registered drug users at the start of 2026; the figures cover all drugs.[@avesta26] No
+      cannabis-specific arrest count is published.[@avesta26]
+    sources:
+      - avesta26
+  death_penalty:
+    text: >-
+      No cannabis offence carries death. Criminal Code article 59 lists only murder, rape,
+      terrorism, genocide and biocide; the maximum for cannabis supply is twenty years and for
+      possession or cultivation twelve.[@code]
+    sources:
+      - code
 sources:
+  admin128:
+    title: "Tajikistan — Administrative Code, article 128 (small drug possession)"
+    url: https://andoz.tj/docs/drugie-kodeksi/Code_№2__Administrative_offences_RT_ru.pdf
+    locator: "Fine 20–30 calculation units plus confiscation; code adopted 2008 and in force 1 April 2009."
+  admin127:
+    title: "Tajikistan — Administrative Code, articles 127 and 261 (small cultivation)"
+    url: https://andoz.tj/docs/drugie-kodeksi/Code_№2__Administrative_offences_RT_ru.pdf
+    locator: "Fine 10–20 or 5–10 calculation units plus confiscation."
+  admin332:
+    title: "Tajikistan — Administrative Code, article 332 (intoxicated driving)"
+    url: https://andoz.tj/docs/drugie-kodeksi/Code_№2__Administrative_offences_RT_ru.pdf
+    locator: "300 calculation units or 15 days plus a five-year licence ban."
+  draft2023:
+    title: "Tajikistan Justice Ministry — draft quantity annex (2023)"
+    url: https://mmih.tj/Search/DownloadFile?filepath=5057
+    locator: "Draft gram and plant bands; gazetted table not verified."
+  nationallist:
+    title: "Tajikistan — National List of narcotic substances, Resolution 121 of 27 February 2020"
+    url: https://akn.tj/ru/2023/04/05/national-list/
+    locator: "Cannabis, resin, hashish and oil in the section 'especially dangerous and not of interest for medical use'."
+  traffic1533:
+    title: "Tajikistan — Road Traffic Law 1533 of 17 May 2018"
+    url: https://tajtrade.tj/media/1533.pdf
+    locator: "Article 13; intoxication by alcohol, narcotics or psychotropics."
+  avesta26:
+    title: "Avesta — Cannabis still dominates Tajikistan's 2026 drug seizures (13 July 2026)"
+    url: https://avesta.tj/
+    locator: "5,280 kg in 2025; 2,963 kg in H1 2026; 1,740.9 kg cannabis-type; 1,003 crimes; 4,004 users."
   code:
     type: law
     title: Tajikistan — Criminal Code, consolidated through 17 December 2025, WIPO Lex
