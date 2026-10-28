@@ -10,7 +10,7 @@ skipped. Existing dirty/staged work, including the previous expansion note, is l
 | Slovenia | Two articles; 1964 act and EU-opinion events; scientific permit authority clarified | 1930 original code; 1940s/1970s/1980s; medical implementation and personal bill final outcome | 2b8f4788 |
 | Andorra | One article; three events; arrests section; corrected 2005 first-code claim | First prohibition/early decades; seed rules | 2d73df6 |
 | Belarus | One article; 1974 republic date/source corrected; 1987 and 2001 score transitions; sentence-review context | 1934 article; 1940s/1950s; original gazette copies | feae04f |
-| North Macedonia | Two articles; six events; production, planting and arrests context | 1930 original code/article; 1940s/1970s; full original 1964/1983/1991 laws | Country commit containing this note |
+| North Macedonia | Two articles; six events; production, planting and arrests context | 1930 original code/article; 1940s/1970s; full original 1964/1983/1991 laws | 95d0a48 |
 
 ## Portugal
 
@@ -91,3 +91,14 @@ search excerpt was not incorporated. No new cultural entry was supported by this
 
 North Macedonia validation: all 196 tests pass, zero profile audit errors/warnings; nine
 selected pages rendered and HTML inspected. Snapshot: `.cache/expansion-europe-2/mk-review/`.
+
+## Batch close
+
+Five countries completed in separate commits: Portugal 52466258, Slovenia 2b8f4788, Andorra
+2d73df6, Belarus feae04f, North Macedonia 95d0a48. Eight articles and seventeen new history
+entries in total, plus corrections to existing events and profile context. No current six-segment
+scores changed; Portugal’s hemp status and Belarus’s historical possession transitions did.
+No new atlas entries or penalty tables were necessary. The article-length check prompted small
+wording completions in the Portuguese 2023 and Slovenian 1950 articles, followed by another
+selected-page render. All new article bodies meet the 350–500-word range. Existing unrelated
+work in this shared checkout is excluded using the private-index commits described above.

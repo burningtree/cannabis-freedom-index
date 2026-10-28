@@ -19,7 +19,7 @@ Slovenia came under a federal ban on growing Indian hemp through Yugoslavia’s 
 
 ## Scientific institutions had a narrow exception
 
-Indian hemp appeared among controlled raw drugs, while its extracts, tinctures and resins were listed as preparations.[@1] Manufacturing and preparing narcotic drugs was reserved to appointed public undertakings for medical and scientific purposes.[@1] Retail supply ran through pharmacies, dispensaries and specified veterinary outlets, with registers recording drugs received and supplied.[@1]
+Under the federal law, Indian hemp appeared among controlled raw drugs, while its extracts, tinctures and resins were listed as preparations.[@1] Manufacturing and preparing narcotic drugs was reserved to appointed public undertakings for medical and scientific purposes.[@1] Retail supply ran through pharmacies, dispensaries and specified veterinary outlets, with registers recording drugs received and supplied.[@1]
 
 Unlawful production for gain and unlawful trade could bring corrective labour or up to two years in prison.[@1] Import and export offences had a separate three-year maximum, with higher penalties for specified aggravated cases.[@1] Drugs involved in those offences had to be confiscated.[@1]
 

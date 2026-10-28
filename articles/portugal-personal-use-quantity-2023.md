@@ -15,7 +15,7 @@ sources:
     locator: Articles 4–5, 11 and 15–17; confiscation, commissions and sanctions
 ---
 
-From 1 October 2023, someone holding more than Portugal’s ten-day reference amount could still have the case handled administratively if the drugs were exclusively for personal use.[@1] Exceeding the reference became evidence for investigating purpose, with the judicial authority required to end criminal proceedings when exclusive personal use was established.[@1]
+From 1 October 2023, someone holding more than Portugal’s ten-day reference amount could still have the case handled administratively if the drugs were exclusively for personal use.[@1] Exceeding the reference became evidence for investigating purpose in the individual case, with the judicial authority required to end criminal proceedings when exclusive personal use was established.[@1]
 
 ## The old quantity boundary had criminal consequences
 
