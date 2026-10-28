@@ -7,11 +7,17 @@ Explicit country list: Eritrea, Sint Maarten, Faroe Islands, Comoros, Dominican 
 | Faroe Islands | 6 articles (flower order, 2019 bill, 1956 order, 2025 stats, Norrøna seizure, 2021 records) + 3 profile links | 1955 estimate; 1960s–2000s decades | 956e891 |
 | Sint Maarten | cultivation table (art. 11(2), ordinance read locally), planting (seeds excluded from hemp definition) | 1929/1964 shared-decree articles (Curaçao covers SX, no dup); driving/market/arrests; words | f997cee |
 | Comoros | 2 articles (2025 585kg seizures, 2000 dual conventions) + who2025 source, black-market link | driving/arrests; words; 1925 estimate | e97ac9d |
-| Dominican Republic | 3 articles (1988 convention + verified Art 3 quote, 1961 Single + certified text, 1946 protocol); no profile hooks | 1925 estimate | COMMIT |
+| Dominican Republic | 3 articles (1988 convention + verified Art 3 quote, 1961 Single + certified text, 1946 protocol); no profile hooks | 1925 estimate | 7ef5459 |
+| Eritrea | verified — no new verifiable work (only 1900 estimate remains) | estimate; closed-country gaps | — |
 | Sint Maarten |  |  |  |
 | Comoros |  |  |  |
 | Dominican Republic |  |  |  |
 | Eritrea |  |  |  |
+
+## er — verified, no changes
+- Re-ran gaps the day after the 28 Oct expansion (`7541c24`): tree untouched, profile still 0 missing standard sections, all texts cited, 4/13 links, 4/5 articles.
+- Only remaining backlog item is `er-first-restriction-estimate` (1900, copy of the Ethiopia estimate, unsourced by design) — writing an article for an estimate would fabricate a source trail, so deliberately left.
+- Closed-country gaps stand: no penalty tables (no verified operative tariff), no clubs/driving/market/arrests/words (no sources), empty 1920s–1980s decades, nothing since 2024. Nothing further verifiable; no commit.
 
 ## do — committed
 - 3 articles: `dominican-republic-1988-convention-1993` (Art 3 personal-possession obligation verified in a Canadian parliamentary report quoting the convention, added as 2nd source), `dominican-republic-single-convention-1972` (certified convention text added, content verified), `dominican-republic-opium-convention-protocol-1946` (treaty-status source). No profile hooks — the profile never discusses treaty accessions, so no links added.
