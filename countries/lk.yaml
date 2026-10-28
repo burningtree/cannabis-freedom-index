@@ -3,8 +3,10 @@ region: Asia
 iso_numeric: 144
 recreational: illegal
 medical: limited
-updated: 2026-10-13
-summary: Illegal, but licensed Ayurvedic practitioners may legally dispense cannabis preparations.
+updated: '2026-10-28'
+summary: >-
+  Illegal, but licensed Ayurvedic practitioners may dispense cannabis preparations. A separate
+  export-only cultivation scheme began licensing foreign investors in 2025.
 scores:
   possession: 1
   cultivation: 1
@@ -15,172 +17,386 @@ scores:
 segments:
   possession:
     text: >-
-      The Poisons, Opium and Dangerous Drugs Ordinance prohibits possessing, consuming or using any
-      part or preparation of the hemp plant. Cannabis (ganja) accounts for the majority of drug
-      arrests in Sri Lanka; small-quantity cases are usually dealt with in magistrates' courts by a
-      fine, with prison possible.
+      The Poisons, Opium and Dangerous Drugs Ordinance bans possessing cannabis resin and
+      preparations known as bhang, hashish or ganja without a licence, and section 54A adds
+      quantity bands for possession as well as trafficking.[@ord2024] Under those bands, less than
+      1 kg brings a fine of LKR 20,000–50,000 and/or one to two years in prison; 1 kg to under 5 kg
+      brings LKR 50,000–100,000 and/or two to five years; 5 kg to under 100 kg brings
+      LKR 100,000–200,000 and/or five to ten years; and 100 kg or more brings LKR 200,000–500,000
+      and/or ten to fifteen years.[@ord2024] Small possession can also be charged under the
+      general penalty in section 78(5), which allows a magistrate's fine of LKR 1,000–10,000 and/or
+      up to five years; the sources read do not settle how often each route is used.[@ord2024]
+      Cannabis accounts for the largest share of drug arrests, and small-quantity cases usually end
+      in a magistrate's fine.[@nddcb24]
     sources:
-      - law
-      - leap
+      - ord2024
+      - nddcb24
+    currency: LKR
+    penalties:
+      - label: Under 1 kg
+        treatment: criminal
+        term: Possession
+        prison_min: 1 year
+        prison: 2 years
+        fine_min: 20000
+        fine: 50000
+        note: Section 54A quantity band; fine and/or prison
+      - label: 1 kg to under 5 kg
+        treatment: criminal
+        term: Possession
+        prison_min: 2 years
+        prison: 5 years
+        fine_min: 50000
+        fine: 100000
+        note: Section 54A quantity band; fine and/or prison
+      - label: 5 kg to under 100 kg
+        treatment: criminal
+        term: Possession
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 100000
+        fine: 200000
+        note: Section 54A quantity band; fine and/or prison
+      - label: 100 kg or more
+        treatment: criminal
+        term: Possession
+        prison_min: 10 years
+        prison: 15 years
+        fine_min: 200000
+        fine: 500000
+        note: Section 54A quantity band; fine and/or prison
+      - label: General penalty, section 78(5)
+        treatment: criminal
+        term: Possession
+        prison: 5 years
+        fine_min: 1000
+        fine: 10000
+        note: >-
+          Alternative charge before a magistrate; the High Court can impose six months to seven
+          years and LKR 10,000–25,000
   cultivation:
     text: >-
-      Section 27 of the Poisons, Opium and Dangerous Drugs Ordinance forbids anyone, without a
-      licence from the Minister, to sow, plant, cultivate, obtain or possess the hemp plant, or
-      to collect or hold its seeds, leaves, flowers or any other part.
+      Section 27 forbids sowing, planting, cultivating, obtaining or possessing a hemp plant, or
+      collecting or holding its seeds, pods, leaves, flowers or any other part, without the
+      Minister's licence.[@ord2024] "Hemp plant" means Cannabis sativa L., with no THC threshold
+      separating hemp from drug cannabis.[@ord2024] Cultivation is ordinarily punished under the
+      general penalty in section 78(5): a magistrate may impose LKR 1,000–10,000 and/or up to five
+      years, and the High Court LKR 10,000–25,000 and/or six months to seven years.[@ord2024] No
+      quantity bands apply to cultivation itself.[@ord2024]
     sources:
-      - ord
+      - ord2024
+    currency: LKR
+    penalties:
+      - label: Cultivation before a magistrate
+        treatment: criminal
+        term: Cultivation
+        prison: 5 years
+        fine_min: 1000
+        fine: 10000
+        note: Fine and/or prison under section 78(5)
+      - label: Cultivation before the High Court
+        treatment: criminal
+        term: Cultivation
+        prison_min: 6 months
+        prison: 7 years
+        fine_min: 10000
+        fine: 25000
+        note: Fine and/or prison under section 78(5)
   enforcement:
     text: >-
-      High arrest numbers and mostly fines for small amounts; repeated amendments in 2023–2026 have
-      focused on tougher enforcement against trafficking.
+      Drug enforcement is intense and built on arrest numbers rather than court outcomes. Police
+      reported 228,450 drug arrests in 2024, of whom 75,602, or 33.1 per cent, were for cannabis,
+      just ahead of heroin.[@nddcb24] Operation Yukthiya, launched in December 2023, had arrested
+      more than 100,000 people by May 2024; Human Rights Watch reported many arrests without
+      apparent evidence and hundreds of people sent to military-run rehabilitation centres.[@hrw25]
+      The police narcotics bureau seized 8,359 kg of cannabis in 2024 and 17,189 kg in 2025.[@derana26]
     sources:
-      - leap
-      - law
+      - nddcb24
+      - hrw25
+      - derana26
   sharing:
-    text: Sale and distribution are offences with heavier penalties.
+    text: >-
+      Sale, supply, transport and distribution are offences under sections 29 and 54, and section
+      54A treats trafficking by quantity.[@ord2024] The same bands as possession apply: under 1 kg
+      brings one to two years and/or LKR 20,000–50,000, rising to ten to fifteen years and/or
+      LKR 200,000–500,000 at 100 kg or more.[@ord2024] Import and export are absolutely prohibited
+      by section 28, with no licence exception.[@ord2024]
     sources:
-      - law
+      - ord2024
+    currency: LKR
+    penalties:
+      - label: Under 1 kg
+        treatment: criminal
+        term: Trafficking
+        prison_min: 1 year
+        prison: 2 years
+        fine_min: 20000
+        fine: 50000
+        note: Section 54A quantity band; fine and/or prison
+      - label: 1 kg to under 5 kg
+        treatment: criminal
+        term: Trafficking
+        prison_min: 2 years
+        prison: 5 years
+        fine_min: 50000
+        fine: 100000
+        note: Section 54A quantity band; fine and/or prison
+      - label: 5 kg to under 100 kg
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 100000
+        fine: 200000
+        note: Section 54A quantity band; fine and/or prison
+      - label: 100 kg or more
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        prison: 15 years
+        fine_min: 200000
+        fine: 500000
+        note: Section 54A quantity band; fine and/or prison
   consumption:
     text: >-
-      Section 29 of the Ordinance forbids anyone without the Minister's licence to consume or use
-      the resin of the hemp plant or its preparations known as bhang, hashish or ganja.
+      Section 29 bans consuming or using hemp resin or preparations known as bhang, hashish or
+      ganja without a licence, and section 52(2) bans knowing consumption of a dangerous drug
+      outside medical supply.[@ord2024] There is no quantity threshold, and the general penalty in
+      section 78(5) applies: LKR 1,000–10,000 and/or up to five years before a magistrate.[@ord2024]
     sources:
-      - ord
+      - ord2024
+    currency: LKR
+    penalties:
+      - label: Consumption
+        treatment: criminal
+        term: Consumption
+        prison: 5 years
+        fine_min: 1000
+        fine: 10000
+        note: >-
+          Magistrate's court; the High Court can impose six months to seven years and
+          LKR 10,000–25,000
   access:
     text: >-
-      No adult-use source. The Ordinance bans importing the plant and requires the Minister's
-      licence to possess or use its preparations; it saves only galenical preparations of hemp
-      (extract and tincture) under its dangerous-drugs chapter, and hemp rope and fibre.
+      There is no adult-use source. The Ordinance bans importing the plant and requires the
+      Minister's licence to possess or use its preparations; it saves only galenical preparations
+      of hemp, extract and tincture, under its dangerous-drugs chapter, and hemp rope and
+      fibre.[@ord2024] Registered Ayurvedic practitioners may obtain and dispense cannabis
+      preparations within the Ayurvedic system, but there is no allopathic medical-cannabis
+      registry or domestic CBD market.[@morning24]
     sources:
-      - ord
+      - ord2024
+      - morning24
 context:
   recreational:
     text: >-
       All recreational use is prohibited: the Ordinance bans possessing, consuming or using any
       part or preparation of the hemp plant, though small-quantity cases usually end in a
-      magistrate's fine. Licensed Ayurvedic practitioners may dispense cannabis preparations
-      within the medical system.[@law,leap]
+      magistrate's fine.[@ord2024] Licensed Ayurvedic practitioners may dispense cannabis
+      preparations within the medical system, and the 2025 export licences do not legalise domestic
+      use.[@morning24,dm25]
     sources:
-      - law
-      - leap
+      - ord2024
+      - morning24
+      - dm25
   production:
     status: medical
     text: >-
-      The state supplies cannabis to the Ayurvedic sector. In August 2025 seven foreign investors
-      received six-month licences to grow cannabis on Board of Investment land, on condition that
-      the whole crop is exported.
+      The state supplies cannabis to the Ayurvedic sector, largely from seized stock.[@morning24]
+      In February 2024 the Cabinet approved cultivation and export for medicinal purposes, and in
+      August 2025 seven foreign investors received six-month licences to grow on 64 acres at
+      Mirigama, with a US$2 million bond and a US$5 million minimum investment, on condition that
+      the whole crop is
+      [exported](/history/sri-lanka-export-cultivation-2025/).[@economynext24,dm25] The government
+      said in November 2025 that the next phase would be open to local investors, with cultivation
+      expected in 2026; no confirmed planting or export was found by late October 2026.[@dm25b]
     sources:
-      - leap
+      - morning24
+      - economynext24
       - dm25
+      - dm25b
   medical:
     text: >-
-      Available only within the Ayurvedic system, through licensed practitioners and the state
-      Ayurvedic drugs corporation; traditional Ayurvedic preparations contain cannabis.
+      Treatment is available only within the Ayurvedic system, through registered practitioners and
+      the state Ayurvedic Drugs Corporation; traditional Ayurvedic preparations contain
+      cannabis.[@morning24] Only registered Ayurvedic institutions and pharmacies may possess these
+      medicines, prescriptions are required, and police can enforce illegal possession.[@morning24]
+      There is no allopathic medical-cannabis registry, no domestic pharmacy flower or oil sales,
+      and the 2025 export licences are export-only.[@dm25] The legal basis dates from the
+      [Ayurveda Act of 1961](/history/sri-lanka-ayurveda-act-1961/).[@morning24]
     sources:
-      - law
+      - morning24
+      - dm25
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction is a criminal record, and people arrested in the Yukthiya crackdown could be
+      sent to rehabilitation centres rather than court.[@hrw25] Human Rights Watch reported
+      hundreds of people held in military-run centres and allegations of torture and ill-treatment,
+      while the government presented the campaign as a response to drug crime.[@hrw25]
     sources:
-      - law
+      - hrw25
   planting:
     seeds: licensed
     seeds_trade: regulated
     clones: licensed
     clones_trade: regulated
     text: >-
-      Section 27 of the Poisons, Opium and Dangerous Drugs Ordinance forbids anyone, without a
-      licence from the Minister, to sow, plant, grow or hold a hemp plant, or to collect or
-      hold its seeds, leaves, flowers or any other part. Section 28 bans bringing the plant or
-      its seeds into or out of the country. The copy read is an older consolidated text.
+      Section 27 forbids sowing, planting, growing, obtaining or holding a hemp plant, or
+      collecting or holding its seeds, pods, leaves, flowers or any other part, without the
+      Minister's licence.[@ord2024] Section 28 bans bringing the plant or its seeds into or out of
+      the country, with no licence exception.[@ord2024] There is no separate seed or clone
+      market.[@ord2024]
     sources:
-      - leap
-      - ord
+      - ord2024
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@ord2024] The Ayurvedic channel is a
+      practitioner-and-pharmacy route, not a members' club.[@morning24]
     sources:
-      - law
+      - ord2024
+      - morning24
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. The Poisons, Opium and Dangerous Drugs
-      Ordinance prohibits possessing, consuming or using any part or preparation of the hemp
-      plant; small-quantity cases are usually dealt with in magistrates' courts by a fine.
+      There is no legal recreational supply for anyone. The Ordinance prohibits possessing,
+      consuming or using any part or preparation of the hemp plant; small-quantity cases are usually
+      dealt with in magistrates' courts by a fine, but a conviction can still bring
+      prison.[@ord2024] The Ayurvedic route is for registered practitioners and patients, not
+      visitors.[@morning24]
     sources:
-      - law
-      - leap
+      - ord2024
+      - morning24
   driving:
     status: consumption
     text: >-
-      Motor Traffic Act section 151 prohibits driving on a road after consuming alcohol
-      or any drug. Suspected drug use can lead to examination by a Government medical
-      officer; the officer's report or refusal of the examination creates a rebuttable
-      evidential rule about consumption. The Act permits regulations on drug concentrations,
-      but no operative THC cutoff was established in this review. Under the 2019 amendment,
-      the ordinary section 151(1) offence carries LKR25,000–30,000 or up to three months'
-      imprisonment or both, plus licence suspension up to twelve months. Driving an omnibus
-      or other vehicle carrying passengers for payment after consumption carries the same
-      fine range or up to six months or both, plus licence cancellation. Sri Lanka Police
-      launched a mobile laboratory programme for bus drivers and conductors in January 2026.
-      Consumption, positive screening and demonstrated impairment must not be treated as
-      interchangeable evidential standards.
+      Motor Traffic Act section 151 prohibits driving on a road after consuming alcohol or any
+      drug.[@motortraffic] A suspected driver can be examined by a Government medical officer, and
+      refusal of the examination creates a rebuttable presumption of consumption; the Act permits
+      regulations on drug concentrations, but no operative THC cutoff was established in this
+      review.[@motortraffic] The ordinary offence carries LKR 25,000–30,000 and/or up to three
+      months, plus licence suspension up to twelve months; carrying passengers for payment brings
+      up to six months and licence cancellation.[@traffic2019] Causing death carries
+      LKR 100,000–150,000 and/or two to ten years, and injury or grievous injury brings lower
+      bands.[@motortraffic] Consumption and demonstrated impairment are not interchangeable
+      evidential standards.[@motortraffic]
     sources:
       - motortraffic
       - traffic2019
-      - mobiletesting
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 8,360 kg of herbal
-      cannabis seized in 2024, against 10,220 kg in 2023, and 292 kg of cannabis resin
-      seized in 2024, against 274 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      The government reported 8,360 kg of herbal cannabis seized in 2024, against 10,220 kg in
+      2023, and 292 kg of resin in 2024, against 274 kg in 2023.[@unodc_szr] The police narcotics
+      bureau counted 8,359 kg in 2024 and 17,189 kg in 2025, while local reporting separates local
+      cannabis from Kerala cannabis and gives a higher combined total for 2024.[@derana26,sunday24]
+      The UN publishes kilogram equivalents, and countries count seizures differently, so the
+      figures are not directly comparable.[@unodc_szr] Cannabis is grown illicitly in several
+      provinces and smuggled from India, and the record 2026 haul at Bandaranaike airport was kush
+      brought from Thailand.[@scmp26]
     sources:
       - unodc_szr
+      - derana26
+      - sunday24
+      - scmp26
   arrests:
     text: >-
-      Cannabis accounts for the largest share of drug arrests. The National Dangerous
-      Drugs Control Board counted 74,444 people arrested for drug offences in the first
-      half of 2023, of whom 32,908, or 44 per cent, were arrested for cannabis and 30,804
-      for heroin. The police narcotics bureau reported seizing 8,359 kg of cannabis in
-      2024 and 17,189 kg in 2025.
+      The National Dangerous Drugs Control Board counted 228,450 drug arrests in 2024, of whom
+      75,602, or 33.1 per cent, were for cannabis, 75,097 for heroin and 68,132 for
+      methamphetamine.[@nddcb24] In the first half of 2023 it had counted 74,444 drug arrests, with
+      32,908, or 44 per cent, for cannabis.[@nddcb23] The police narcotics bureau seized 8,359 kg
+      of cannabis in 2024 and 17,189 kg in 2025.[@derana26] The figures cover all drugs unless
+      stated, and the cannabis share is of arrests, not convictions.[@nddcb24]
     sources:
+      - nddcb24
       - nddcb23
       - derana26
+  hemp:
+    status: none
+    text: >-
+      There is no separate industrial-hemp regime and no THC ceiling. "Hemp plant" means Cannabis
+      sativa L., and growing it requires a section 27 Minister's licence.[@ord2024] Section 30
+      saves only galenical extract or tincture under the dangerous-drugs chapter, hemp rope and
+      cordage, and hemp fibre; hemp flower, seed for planting, CBD extract and hemp food or
+      cosmetics have no general exemption.[@ord2024] A 2023 Ayurveda amendment created
+      registration for herbal cultivations and gardens but does not expressly name
+      cannabis.[@ayurveda2023]
+    sources:
+      - ord2024
+      - ayurveda2023
+  culture:
+    text: >-
+      Cannabis sits in Sri Lanka's medicinal rather than recreational culture. It is part of the
+      Ayurvedic materia medica, and registered practitioners may prescribe preparations made from
+      it, with the state Ayurvedic Drugs Corporation supplying them.[@morning24] The plant also
+      travelled through the island's colonial opium and ganja trade, and possession became a
+      criminal matter under the [1929 ordinance](/history/sri-lanka-dangerous-drugs-enactment-1929/).[@ord2024]
+      Today there is little public cannabis culture: use is hidden, and most arrests are of small
+      users.[@nddcb24]
+    sources:
+      - morning24
+      - ord2024
+      - nddcb24
 sources:
-  motortraffic:
-    title: "Motor Traffic Act — consolidated text through 2024 (Lanka Law reproduction, PDF)"
-    url: https://lankalaw.net/wp-content/uploads/2025/03/Motor-Traffic-Consolidated-2024.pdf
-    locator: "Section 151(1), (1A), (1C) and (1D)"
-  traffic2019:
-    title: "Sri Lanka Parliament — Motor Traffic (Amendment) Act No. 10 of 2019 (PDF)"
-    url: https://www.parliament.lk/uploads/acts/gbills/english/6132.pdf
-    locator: "Sections 7–8, amending sections 216 and 216A"
-  mobiletesting:
-    title: "Sri Lanka Police — mobile laboratory service for drug-influenced drivers (January 2026)"
-    url: https://www.police.lk/?p=19622
-    locator: "Programme launched on 21 January 2026"
-  ord:
-    title: Poisons, Opium and Dangerous Drugs Ordinance, Chapter 218 — text (FAOLEX PDF)
-    url: https://faolex.fao.org/docs/pdf/SRL224816.pdf
-  dm25:
-    title: Daily Mirror — Sri Lanka approves first legal cannabis cultivation by foreign investors (13 August 2025)
-    url: https://www.dailymirror.lk/breaking-news/Sri-Lanka-approves-first-legal-cannabis-cultivation-by-foreign-investors/108-316637
-  law:
-    title: Wikipedia — Cannabis in Sri Lanka
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Sri_Lanka
-  leap:
-    title: Poisons, Opium and Dangerous Drugs Ordinance, Chapter 218 (UNEP LEAP)
-    url: >-
-      https://leap.unep.org/en/countries/lk/national-legislation/poisons-opium-and-dangerous-drugs-ordinance-chapter-218
-  unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
-    url: https://data.unodc.org/datareport/drug-seizure
+  ord2024:
+    title: "Sri Lanka — Poisons, Opium and Dangerous Drugs Ordinance, Chapter 218, consolidated 2024 (Lanka Law, PDF)"
+    url: https://lankalaw.net/wp-content/uploads/2025/03/Poisons-Opium-And-Dangerous-Drugs-Consolidated-2024.pdf
+    locator: "Sections 26–30, 52–54B and 78(5); Third Schedule Part III."
+  nddcb24:
+    title: "National Dangerous Drugs Control Board — Analytical overview of drug-related arrests in Sri Lanka, 2024"
+    url: https://www.nddcb.gov.lk/Docs/research/Trend_report_Dra_2024.pdf
+    locator: "Cannabis 75,602 of 228,450 arrests; heroin 75,097; methamphetamine 68,132."
   nddcb23:
     title: "National Dangerous Drugs Control Board — Drug related statistics, January to June 2023"
     url: https://www.nddcb.gov.lk/Docs/research/Statics_report_January_to_June_2023.pdf
   derana26:
     title: "Ada Derana — Nearly 8,000 drug addicted children and youths under 21 arrested in 2024 (28 February 2026)"
     url: https://adaderana.lk/news.php?nid=119028
+  sunday24:
+    title: "The Sunday Times — Surge in drug-related arrests in 2024 (1 June 2025)"
+    url: https://www.sundaytimes.lk/250601/news/surge-in-drug-related-arrests-in-2024-600082.html
+    locator: "Local and Kerala cannabis seizure totals for 2024."
+  hrw25:
+    title: "Human Rights Watch — World Report 2025: Sri Lanka"
+    url: https://www.hrw.org/world-report/2025/country-chapters/sri-lanka
+    locator: "Operation Yukthiya arrests, rehabilitation centres and torture allegations."
+  morning24:
+    title: "The Morning — Only registered Ayurvedic institutions may possess cannabis medicines (15 February 2024)"
+    url: https://www.themorning.lk/articles/vZVeG3mJpJhkb0CUGLuL
+    locator: "Ayurvedic Commissioner General on registered institutions, prescriptions and police enforcement."
+  economynext24:
+    title: "EconomyNext — Sri Lanka cannabis investment plan gets interest from 30 investors (23 August 2024)"
+    url: https://economynext.com/sri-lanka-cannabis-investment-plan-gets-interest-from-30-investors-177844/
+    locator: "Mirigama and Kandy Stage II; CBD/oil extraction; US$2 million deposit; export levy."
+  dm25:
+    title: "Daily Mirror — Sri Lanka approves first legal cannabis cultivation by foreign investors (13 August 2025)"
+    url: https://www.dailymirror.lk/breaking-news/Sri-Lanka-approves-first-legal-cannabis-cultivation-by-foreign-investors/108-316637
+  dm25b:
+    title: "Daily Mirror — Government to open cannabis cultivation project to local investors (4 November 2025)"
+    url: https://www.dailymirror.lk/breaking-news/Government-to-open-cannabis-cultivation-project-to-local-investors/108-324050
+  scmp26:
+    title: "SCMP (AFP) — Sri Lanka arrests 22 monks with $3.5 million worth of cannabis in record haul (27 April 2026)"
+    url: https://www.scmp.com/news/asia/south-asia/article/3351537/sri-lanka-arrests-22-monks-us35-million-worth-cannabis-record-haul
+  act7_2026:
+    title: "Sri Lanka — Act No. 7 of 2026 (PDF)"
+    url: https://documents.gov.lk/api/content-file-proxy?file=/act-content/07-2026_E_1784552846.pdf
+    locator: "New section 54AA on high-seas drug offences."
+  bill11_2026:
+    title: "Sri Lanka — Bill O 11/2026 to amend the Poisons, Opium and Dangerous Drugs Ordinance (PDF)"
+    url: https://www.parliament.lk/uploads/bills/gbills/english/6439.pdf
+    locator: "Clauses 2–5; Cannabis sativa and galenical preparations in Group B; Part III heading."
+  ayurveda2023:
+    title: "Sri Lanka — Ayurveda (Amendment) Act No. 19 of 2023 (PDF)"
+    url: https://www.parliament.lk/uploads/acts/gbills/english/6301.pdf
+    locator: "Herbal cultivation and herbal garden registration; no express cannabis clause."
+  motortraffic:
+    title: "Motor Traffic Act — consolidated text through 2024 (Lanka Law reproduction, PDF)"
+    url: https://lankalaw.net/wp-content/uploads/2025/03/Motor-Traffic-Consolidated-2024.pdf
+    locator: "Section 151(1), (1A), (1C) and (1D); sections 216, 216A and 216B."
+  traffic2019:
+    title: "Sri Lanka Parliament — Motor Traffic (Amendment) Act No. 10 of 2019 (PDF)"
+    url: https://www.parliament.lk/uploads/acts/gbills/english/6132.pdf
+    locator: "Sections 7–8, amending sections 216 and 216A"
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    url: https://data.unodc.org/datareport/drug-seizure
