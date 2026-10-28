@@ -21,3 +21,11 @@ Singapore validation: `profile-audit sg` zero errors and warnings. The profile n
 Abkhazia validation: `profile-audit xa` zero errors and warnings. The profile now adds recreational, hemp, planting, driving, black-market and arrest sections; folds products into them; and gives possession, cultivation and supply their 4 g/50 g, 1–9/10-plant and 5–15-year tiers. The summary and death-penalty section record the 1993 moratorium and 2007 law, and medical now says Schedule I cannabis cannot be prescribed. Fourteen entries cover 1961–2026; the 1934 source and date and the 2026 threshold commencement were corrected.
 
 Mongolia validation: `profile-audit mn` zero errors and warnings. The profile now states that organised-group trafficking can bring life, explains the on-paper medical/research route, gives the premises fine range, removes unverified arrest details, adds the 2026 draft seed rule, updates the seizure and driving text, and re-bases the first-restriction estimate to 1925–1986. Six entries add the 2024–2026 enforcement series; the 2024 seizure date and driving description were corrected.
+
+## Result
+
+All five countries were expanded and committed separately: North Korea `e3018fa3`, Abkhazia `197d6022`, Türkiye `bb878126`, Singapore `9a232b70` and Mongolia `c480cb72`. Each profile passes `profile-audit` with zero errors and warnings and has no missing standard or researched sections, penalty tables or inline citations. Targeted `build-pages.mjs` runs rendered each country and its changed history pages; `npm test` passes.
+
+The batch added 44 history entries and corrected several existing entries: North Korea’s death-penalty status and 2003 drug law, the Solomon Islands-style unsupported first-restriction estimate in Mongolia, the two-track Papua New Guinea law (from the previous batch), and the 1989/2019/2023 Singapore entries. The main score corrections were Türkiye’s sharing 1→0 and access 0→1, which leave its index unchanged.
+
+The main open caveats are North Korea’s lack of cannabis-specific penalties or cases, Abkhazia’s empty 1940s–1950s, Mongolia’s empty 1930s–1970s, Singapore’s lack of cannabis-specific prosecution data and Türkiye’s unverified domestic medical stock.
