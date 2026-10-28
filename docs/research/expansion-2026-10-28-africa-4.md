@@ -27,7 +27,11 @@ history) — verify and build on them, don't duplicate.
 - New `articles/liberia-congo-recaptive-diamba-smoking-1890.md` (Büttikofer + Duvall) + `articles/liberia-drug-law-bail-debate-2022.md` (WADPN).
 - Audit 0/0; page + both articles verified in review HTML.
 - Left: 1920s–60s decades; first-restriction estimate kept.
-## ga — pending
+## ga — committed
+- Per-sentence cites ×14; penalty tables for possession/cultivation/sharing/consumption (terms, XAF); products folded into medical then deleted; new recreational (tiers + 1926 AEF link via Chad, no duplicate) + hemp sections.
+- New `articles/gabon-drug-penalties-retained-2020.md` + `articles/gabon-libreville-seized-drugs-destroyed-2026.md` (both from retained gazette/ministry sources).
+- Audit 0/0; page + both articles verified in review HTML.
+- Left: driving/arrests (no sources), words/culture (no atlas entry), 1930s–50s, 1970s–80s decades.
 ## gw — pending
 ## gq — pending
 ## dj — pending
