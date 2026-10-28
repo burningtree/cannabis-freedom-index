@@ -3,7 +3,7 @@ region: North America
 iso_numeric: 84
 recreational: decriminalised
 medical: none
-updated: '2026-10-27'
+updated: '2026-10-29'
 summary: >-
   Since 2017 adults may possess up to 10 g and use it on private premises. A regulated market law
   was shelved.
@@ -27,62 +27,103 @@ segments:
   possession:
     text: >-
       Since November 2017, holding up to 10 g of cannabis or cannabis resin is not unlawful and not
-      an offence (section 7(7) of the Misuse of Drugs Act). The exception is the premises of a
+      an offence (section 7(7) of the Misuse of Drugs Act).[@act] The exception is the premises of a
       school or other educational institution: there it brings a police warning the first time
-      and a ticket of 100 Belize dollars after that, with no arrest and no criminal record. A
-      person under 18 found with cannabis must attend a treatment or counselling programme. More
-      than 10 g is a criminal offence.
+      and a ticket of 100 Belize dollars after that, with no arrest and no criminal record.[@act] A
+      person under 18 found with cannabis must attend a treatment or counselling programme.[@act] More
+      than 10 g is a criminal offence, punishable as a Class B drug with up to three years or a
+      $50,000 fine.[@act2000] Decriminalisation had been under discussion since
+      2012.(/history/belize-decriminalisation-considered-2012/)
     sources:
       - act
+      - act2000
+    currency: BZD
+    penalties:
+      - upto: 10 g
+        treatment: tolerated
+        note: Not an offence; school premises bring a warning first, then a BZ$100 ticket; under-18s face treatment or counselling
+      - over: 10 g
+        treatment: criminal
+        term: Possession of a controlled drug
+        prison: 3 years
+        fine: 50000
+        note: Class B maximum under section 7
   cultivation:
     text: >-
-      Unauthorised drug-cannabis cultivation remains a criminal offence.[@wiki,tni] Industrial hemp is
+      Cultivating any cannabis plant without lawful authority is an offence punishable under the
+      trafficking penalties of section 18: on summary conviction three to ten years plus a
+      $10,000–$100,000 fine, on indictment five to fourteen years plus a $50,000–$250,000 fine,
+      with a fine-only option under 5 kg of cannabis for special reasons recorded in
+      writing.[@act2000] Industrial hemp is
       a separate registered commercial crop under the hemp regulations, with a 0.3% THC ceiling in the
       2020 consolidation.[@hemp_regs]
     sources:
-      - wiki
-      - tni
+      - act2000
       - hemp_regs
+    currency: BZD
+    penalties:
+      - label: Cannabis cultivation, summary conviction
+        treatment: criminal
+        term: Cultivation punishable under section 18
+        prison: 10 years
+        prison_min: 3 years
+        fine: 100000
+        fine_min: 10000
+        note: Under 5 kg cannabis, fine may replace custody for recorded special reasons
+      - label: Cannabis cultivation, conviction on indictment
+        treatment: criminal
+        term: Cultivation punishable under section 18
+        prison: 14 years
+        prison_min: 5 years
+        fine: 250000
+        fine_min: 50000
+        note: Under 5 kg cannabis, fine may replace custody for recorded special reasons
   enforcement:
     text: >-
-      Small private possession is unpunished and minor violations are fines. Cultivation, larger
-      quantities and sale carry fines and prison.
+      Small private possession is unpunished and minor violations are fines.[@act,tni] Cultivation, larger
+      quantities and sale carry fines and prison under section 18.[@act2000]
     sources:
       - act
       - tni
+      - act2000
   sharing:
-    text: Supply of any kind remains a crime; the 2017 amendment covers possession and use only.
+    text: Supply of any kind remains a crime; the 2017 amendment covers possession and use only.[@act,act2000]
     sources:
-      - wiki
       - act
+      - act2000
   consumption:
     text: >-
-      Smoking is lawful on private premises with the owner's permission. Use in public places is an
-      offence punished by a fine.
+      Smoking is lawful on private premises with the owner's permission.[@act] Use in public places is an
+      offence punished by a fine.[@act]
     sources:
       - act
-      - wiki
   access:
     text: >-
       No lawful source at all: cannabis may be possessed but neither grown nor bought, since the
-      2017 amendment covers possession and use only and supply of any kind remains a crime. A 2022
+      2017 amendment covers possession and use only and supply of any kind remains a crime.[@act,tni] A 2022
       law to license a commercial industry was passed by parliament but put on hold after church
-      groups demanded a referendum.
+      groups demanded a
+      referendum.[@sps22](/history/belize-legalisation-bill-shelved-2022/) A 2025 Caye Caulker referendum on a
+      regulated industry voted no.[@gbm25ref](/history/belize-caye-caulker-referendum-2025/)
     sources:
       - act
       - tni
+      - sps22
+      - gbm25ref
 context:
   recreational:
     text: >-
       There is no legal recreational supply: up to 10 g may be possessed and used on private
       premises, but nothing may be grown or bought since supply of any kind stays a
-      crime.[@act,wiki] Smoking is lawful on private premises with the owner's permission and
+      crime.[@act,act2000] Smoking is lawful on private premises with the owner's permission and
       an offence in public places.[@act] The 2022 commercial-licensing law was shelved after
-      church groups demanded a referendum.[@act,tni]
+      church groups demanded a
+      referendum.[@tni,sps22](/history/belize-legalisation-bill-shelved-2022/)
     sources:
       - act
-      - wiki
+      - act2000
       - tni
+      - sps22
   planting:
     seeds: licensed
     seeds_trade: regulated
@@ -90,32 +131,33 @@ context:
     clones_trade: unclear
     text: >-
       The Act treats every part of a cannabis plant as cannabis, so drug-type seeds and cuttings
-      remain controlled. Industrial-hemp seed and plants at no more than 0.3% THC are available
+      remain controlled.[@act] Industrial-hemp seed and plants at no more than 0.3% THC are available
       through the registered commercial-hemp system: cultivation fields and seed import or export
-      require registration, and moving hemp seed requires a permit. The regulations do not set a
-      distinct rule for trading hemp cuttings.
+      require registration, and moving hemp seed requires a permit.[@hemp_regs] The regulations do not set a
+      distinct rule for trading hemp cuttings.[@hemp_regs]
     sources:
       - act
       - hemp_regs
   production:
     status: hemp
     text: >-
-      There is no licensed production of higher-THC cannabis. Industrial hemp may be grown in
+      There is no licensed production of higher-THC cannabis: supply of any kind remains a
+      crime.[@act,act2000] Industrial hemp may be grown in
       registered commercial fields; the shelved 2022 cannabis bill would have created a broader
-      licensing commission.
+      licensing commission.[@hemp_regs,sps22](/history/belize-legalisation-bill-shelved-2022/) Until the 1980s
+      Belize was a major export-crop producer before US-backed eradication cut production
+      sharply.(/history/belize-eradication-1985/)
     sources:
-      - wiki
+      - act
+      - act2000
       - hemp_regs
-  products:
-    text: No legal products.
-    sources:
-      - wiki
+      - sps22
   medical:
-    text: There is no medical cannabis programme.
+    text: The reviewed law provides possession and use allowances but no medical programme or licensing route.[@act]
     sources:
-      - wiki
+      - act
   consequences:
-    text: Violations under 10 g are handled by ticket without a criminal conviction.
+    text: Violations under 10 g are handled by ticket without a criminal conviction.[@act,tni]
     sources:
       - act
       - tni
@@ -123,19 +165,17 @@ context:
     status: none
     text: >-
       No cannabis clubs are known, and no law provides for them: the 2017 amendment covers
-      possession and use only, and supply of any kind remains a crime.
+      possession and use only, and supply of any kind remains a crime.[@act]
     sources:
-      - wiki
       - act
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Holding up to 10 g is not an
+      There is no legal recreational supply for anyone.[@act] Holding up to 10 g is not an
       offence except on school premises, while smoking in a public place is punished with a
-      fine; more than 10 g, and any supply, remain crimes.
+      fine; more than 10 g, and any supply, remain crimes.[@act]
     sources:
       - act
-      - wiki
   driving:
     status: impairment
     text: >-
@@ -187,9 +227,20 @@ sources:
     title: Misuse of Drugs (Amendment) Act 2017, No. 47 of 2017 (PDF, via OAS)
     url: >-
       https://oas.org/ext/Portals/33/adam/Content/1LAvBxqRKUevbza4NS5FZw/Text/Act-No.-47-of-2017-Misuse-of-Drugs-Amendment-Act-2017.pdf
-  wiki:
-    title: Wikipedia — Cannabis in Belize
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Belize
+  act2000:
+    title: Belize — Misuse of Drugs Act, Cap. 103, revised edition 2000 (PDF)
+    url: https://bco.wimp.bz/file_directory/files/legislation_(belize)/20010106MisuseDrugsAct.pdf
+    locator: >-
+      Section 8 cultivation offence punishable under section 18; section 18 trafficking ladder
+      with 5 kg cannabis proviso; Third Schedule Class B possession 3 years/$50,000; cannabis a
+      Class B drug. Read in the local PDF extraction.
+  sps22:
+    title: The San Pedro Sun — Marijuana referendum postponed (29 July 2022)
+    url: https://www.sanpedrosun.com/government/2022/07/29/marijuana-referendum-postponed/
+    locator: Assembly passed licensing bill; churches forced referendum; PM deferred vote
+  gbm25ref:
+    title: Greater Belize Media — Caye Caulker rejects cannabis legalisation in historic referendum (8 October 2025)
+    url: https://www.greaterbelize.com/caye-caulker-rejects-cannabis-legalisation-in-historic-referendum/
   tni:
     title: Amandala via TNI — Belize introduces legislation to decriminalize marijuana
     url: >-
