@@ -19,99 +19,137 @@ segments:
   possession:
     text: >-
       The Narcotics Control Act 2018 classes raw cannabis (ganja) as a Class B narcotic and
-      hashish as Class A. As reported when parliament passed it, for herbal cannabis (ganja or
+      hashish as Class A.[@palo18] As reported when parliament passed it, for herbal cannabis (ganja or
       bhang) the act sets six months to five years in prison for up to 5 kg, five to seven years
-      for 5 to 15 kg and seven to ten years above 15 kg, with a fine in each case. Hashish, as a
+      for 5 to 15 kg and seven to ten years above 15 kg, with a fine in each case.[@palo18] Hashish, as a
       Class A drug, falls under heavier tiers, which for that class can reach life imprisonment
-      or death above set quantities. An earlier version of this profile said death was possible
-      for more than two kilograms of cannabis; no source read supports that for herbal cannabis.
+      or death above set quantities.[@netra] An earlier version of this profile said death was possible
+      for more than two kilograms of cannabis; no source read supports that for herbal cannabis.[@palo18]
     sources:
       - palo18
       - netra
     penalties:
       - label: Herbal cannabis up to 5 kg
         treatment: criminal
+        term: Possession
         prison_min: 6 months
         prison: 5 years
-        note: Six months to five years plus a fine
+        note: Fine also imposed
       - label: Herbal cannabis 5 to 15 kg
         treatment: criminal
+        term: Possession
         prison_min: 5 years
         prison: 7 years
         note: Plus a fine
       - label: Herbal cannabis above 15 kg
         treatment: criminal
+        term: Possession
         prison_min: 7 years
         prison: 10 years
-        note: Plus a fine; hashish as Class A reaches heavier tiers
+        note: Plus a fine
+      - label: Hashish, resin or THC up to 10 g
+        treatment: criminal
+        term: Class A possession
+        prison_min: 1 year
+        prison: 5 years
+        note: Class A drug; fine also imposed
+      - label: Hashish, resin or THC over 10 g up to 50 g
+        treatment: criminal
+        term: Class A possession
+        prison_min: 5 years
+        prison: 10 years
+      - label: Hashish, resin or THC over 50 g
+        treatment: criminal
+        term: Class A possession
+        death: true
+        note: Death or life imprisonment plus a fine
   cultivation:
     text: >-
       Growing cannabis is a crime under the Narcotics Control Act 2018: one to five years in prison
-      for up to 50 plants, five to seven years for up to 500, and seven to ten years above that.
-      Bangladesh had a legal, state-licensed ganja trade until 1989.
+      for up to 50 plants, five to seven years for up to 500, and seven to ten years above that.[@nca18]
+      Bangladesh had a legal, state-licensed ganja trade until 1989.[@wiki]
     sources:
       - nca18
       - wiki
     penalties:
       - label: Up to 50 plants
         treatment: criminal
+        term: Cultivation
         prison_min: 1 year
         prison: 5 years
       - label: Up to 500 plants
         treatment: criminal
+        term: Cultivation
         prison_min: 5 years
         prison: 7 years
       - label: Above 500 plants
         treatment: criminal
+        term: Cultivation
         prison_min: 7 years
         prison: 10 years
   enforcement:
     text: >-
-      Heavily and visibly policed. A 2018 anti-drug drive was accompanied by hundreds of alleged
-      extrajudicial killings. On 16 August 2026 the narcotics department filed its first case
-      under section 36A, over THC and CBD products it said had been sold on Daraz.
+      Heavily and visibly policed.[@netra] A 2018 anti-drug drive was accompanied by hundreds of alleged
+      extrajudicial killings.[@netra] On 16 August 2026 the narcotics department filed its first case
+      under section 36A, over THC and CBD products it said had been sold on Daraz.[@ds36a]
     sources:
       - netra
-      - dt
       - ds36a
   sharing:
     text: >-
-      The quantity offences for herbal cannabis are the prison terms in the possession section.
+      The quantity offences for herbal cannabis are the prison terms in the possession section.[@palo18]
       Section 36A, inserted by the amendment dated 16 July 2026, is a separate offence: using a
       website, social media, an app, another digital medium, or a digital payment, e-wallet,
       virtual asset or cryptocurrency to buy, sell, supply, offer, advertise, broker or
-      communicate about a narcotic. Recovery of the drug is not required. The sentence is any
-      term of imprisonment or death, and a fine of up to 2 million taka. An international or
+      communicate about a narcotic.[@nca36a] Recovery of the drug is not required.[@nca36a] The sentence is any
+      term of imprisonment or death, and a fine of up to 2 million taka.[@nca36a] An international or
       organised case under the next subsection is any term of imprisonment, a fine of up to 5
-      million taka, or both, and that subsection does not itself state the death penalty.
+      million taka, or both, and that subsection does not itself state the death penalty.[@nca36a]
     sources:
       - nca36a
-      - dt
-      - netra
+      - palo18
     currency: BDT
     penalties:
+      - label: Hashish, resin or THC supply up to 10 g
+        treatment: criminal
+        term: Class A supply
+        prison_min: 1 year
+        prison: 5 years
+      - label: Hashish, resin or THC supply over 10 g up to 50 g
+        treatment: criminal
+        term: Class A supply
+        prison_min: 5 years
+        prison: 10 years
+      - label: Hashish, resin or THC supply over 50 g
+        treatment: criminal
+        term: Class A supply
+        death: true
+        note: Death or life imprisonment plus a fine
       - label: Digital buying or selling, Section 36A
         treatment: criminal
+        term: Digital dealing
         death: true
         fine: 2000000
         note: Any term of imprisonment or death, plus up to 2 million taka; recovery not required
   consumption:
     text: >-
       Consumption carries three months to two years; the law does not say what quantity establishes
-      the charge.
+      the charge.[@netra]
     sources:
       - netra
     penalties:
       - label: Consumption
         treatment: criminal
+        term: Consumption
         prison_min: 3 months
         prison: 2 years
   access:
     text: >-
       None: the Narcotics Control Act 2018 makes growing cannabis a crime whatever the number of
-      plants. A legal, state-licensed ganja trade existed until 1989.
+      plants.[@nca18] A legal, state-licensed ganja trade existed until 1989.[@wiki]
     sources:
       - nca18
+      - wiki
 context:
   recreational:
     text: >-
@@ -128,32 +166,49 @@ context:
     text: >-
       The 2018 act provides for death or life imprisonment for the largest quantities of Class A
       drugs: 25 g or more of heroin or cocaine, and 200 g or more of yaba when produced or
-      transported. Herbal cannabis is Class B and its top tier is seven to ten years. Hashish is
-      classed with the Class A drugs in the sources previously read, so a death sentence for a
-      cannabis product is possible in law, but no quantity for it was found. The First Schedule
-      was not re-read for this update. Separately, section 36A of the amendment dated 16 July
-      2026 punishes specified digital buying, selling, supply and advertising of a narcotic with
-      any term of imprisonment or death, and a fine of up to 2 million taka. It states no
-      cannabis quantity and no class limit. It is not the penalty for ordinary possession.
+      transported.[@palo18] Herbal cannabis is Class B and its top tier is seven to ten years.[@palo18]
+      Hashish is classed with the Class A drugs in the sources previously read, so a death sentence
+      for a cannabis product is possible in law, but no quantity for it was found.[@palo18] Separately,
+      section 36A of the amendment dated 16 July 2026 punishes specified digital buying, selling,
+      supply and advertising of a narcotic with any term of imprisonment or death, and a fine of up
+      to 2 million taka.[@nca36a] It states no cannabis quantity and no class limit, and is not the
+      penalty for ordinary possession.[@nca36a]
     sources:
       - palo18
-      - netra
       - nca36a
   production:
     status: none
     text: >-
-      No lawful cannabis production. A legal, state-licensed ganja trade existed until
-      1989.[@wiki]
+      No lawful cannabis production. A state-run ganja trade existed until 1989.[@nca18]
     sources:
-      - wiki
+      - nca18
   medical:
-    text: No medical cannabis.
+    text: >-
+      No medical cannabis programme was found. Cannabis is not on the list of approved medicines,
+      and the 2018 Act controls the plant and its preparations.[@nca18,netra] Medical status stays
+      none.[@nca18]
     sources:
-      - wiki
+      - nca18
+      - netra
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp, low-THC or CBD exception was found. The Narcotics Control Act 2018
+      controls the cannabis plant and the drugs made from its branches, leaves and flowers, and
+      section 36A covers digital sale of THC and CBD products.[@nca18,nca36a] No hemp licensing
+      scheme was found.[@nca18]
+    sources:
+      - nca18
+      - nca36a
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction is a criminal record. The 2018 anti-drug drive was accompanied by hundreds of
+      alleged extrajudicial killings, and the narcotics department says cases stay pending for
+      years.[@netra] The sources read did not establish a separate rehabilitation or treatment
+      pathway for cannabis users.[@nca18]
     sources:
       - netra
+      - nca18
   planting:
     seeds: grey
     seeds_trade: unclear
@@ -162,8 +217,8 @@ context:
     text: >-
       The Narcotics Control Act 2018 defines cultivation as sowing seed, planting or raising
       seedlings, or grafting any plant that can be a source of a drug, and section 9 bans it
-      along with sale and possession. Its penalty schedule names germinable opium poppy seed
-      but, for cannabis, only the plant and drugs made from its branches, leaves and flowers.
+      along with sale and possession.[@nca18] Its penalty schedule names germinable opium poppy seed
+      but, for cannabis, only the plant and drugs made from its branches, leaves and flowers.[@nca18]
     sources:
       - nca18
   clubs:
@@ -171,48 +226,64 @@ context:
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
       supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      penalty for the most serious drug offences.[@nca18]
     sources:
       - nca18
-      - wiki
-      - dt
-      - netra
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under the Narcotics Control Act 2018 for
+      There is no legal recreational supply for anyone.[@nca18] Under the Narcotics Control Act 2018 for
       herbal cannabis (ganja or bhang) the act sets six months to five years in prison for up to
       5 kg, five to seven years for 5 to 15 kg and seven to ten years above 15 kg; consuming a
-      drug carries three months to two years. Using a website, app or digital payment to buy or
+      drug carries three months to two years.[@palo18] Using a website, app or digital payment to buy or
       sell a narcotic is a separate offence that can be punished with any term of imprisonment
-      or death.
+      or death.[@nca36a]
     sources:
       - palo18
+      - nca18
       - nca36a
+  culture:
+    text: >-
+      Bangladesh's cannabis culture is bound up with [ganja](/culture/language/ganja/), the herbal
+      preparation, and with the spring [Bijoya](/culture/traditions/bhang-at-bijoya/) festival,
+      where bhang is traditionally consumed.[@wiki,netra] A state-run ganja trade existed until
+      1989, and the plant remains part of rural and festival life despite prohibition.[@wiki,netra]
+    sources:
+      - wiki
+      - netra
   black_market:
     text: >-
       Bangladesh's narcotics department says the country does not produce drugs but lies on a
       trafficking route, and that cannabis is smuggled in mostly from India, across the
-      western and northern borders. A July 2026 report counted at least 105 border points in
-      18 districts used for narcotics of all kinds. Authorities seized 96,358 kg of cannabis
-      in 2025, down from 114,345 kg in 2024. The department also reports shortages of staff,
-      equipment and vehicles, and drug cases that stay pending for years.
+      western and northern borders.[@ds26] A July 2026 report counted at least 105 border points in
+      18 districts used for narcotics of all kinds.[@ds26] Authorities seized 96,358 kg of cannabis
+      in 2025, down from 114,345 kg in 2024.[@ds26] The department also reports shortages of staff,
+      equipment and vehicles, and drug cases that stay pending for years.[@ds26]
     sources:
       - ds26
+  arrests:
+    text: >-
+      A Daily Star headline reported 3,152 people held in anti-narcotics drives in 2025, but a
+      divisional report also claimed more than 3,100 arrests in Rangpur alone, so the national scope
+      is uncertain.[@ds26] The narcotics department reports 96,358 kg of cannabis seized in 2025,
+      down from 114,345 kg in 2024, and a 2018 anti-drug drive was accompanied by hundreds of
+      alleged extrajudicial killings.[@ds26,netra] The sources read do not separate cannabis
+      arrests from other drugs.
+    sources:
+      - ds26
+      - netra
   driving:
     status: consumption
     text: >-
       Road Transport Act section 49(1), first part (a), prohibits a driver from driving
-      after drinking alcohol or consuming intoxicants. This is a consumption-based rule;
-      the provision does not establish a numerical THC allowance or a laboratory
-      detectable-THC standard. Section 92(1) provides up to three months' imprisonment,
+      after drinking alcohol or consuming intoxicants.[@traffic2018] This is a consumption-based rule;
+      section 49(1) does not establish a numerical THC allowance or a laboratory
+      detectable-THC standard.[@traffic2018] Section 92(1) provides up to three months' imprisonment,
       up to Tk10,000, or both, plus deduction of one driver point for violating that first
-      part. The separate Tk25,000 ceiling in section 89 concerns vehicle/environmental
-      requirements and is not the intoxication penalty. Section 12 gives the licensing
-      authority powers to suspend, withdraw or cancel licences on specified grounds,
-      including habitual drunkenness and contravening the law or licence conditions;
-      no fixed cannabis-specific ban duration or medical-use exception was established
-      in the provisions reviewed.
+      part.[@traffic2018] Section 12 gives the licensing authority powers to suspend, withdraw or cancel
+      licences on specified grounds, including habitual drunkenness and contravening the law or
+      licence conditions.[@traffic2018] No fixed cannabis-specific ban duration or medical-use exception
+      was established in the provisions reviewed.[@traffic2018]
     sources:
       - traffic2018
 sources:

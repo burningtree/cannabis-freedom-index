@@ -11,7 +11,7 @@ Kyrgyzstan, Saudi Arabia and Bangladesh.
 | Oman | in progress | | |
 | Kyrgyzstan | possession, cultivation, supply and use tables; recreational, hemp, culture and driving sections; products folded | 1940s–1950s, 1970s–1980s and 2000s still empty; driving status unverified | this country commit |
 | Saudi Arabia | in progress | | |
-| Bangladesh | in progress | | |
+| Bangladesh | Class A hashish tiers, hemp, arrests, culture links, full citations; 1922/1947/1965 history entries | 1980s ban-date conflict noted but not resolved | this country commit |
 
 China validation: `profile-audit cn` zero errors/warnings; `country-gaps cn` has no missing standard or researched sections, no missing tables and no uncited text. The build passed at 5,073 pages and the profile renders with no raw citation marks.
 
