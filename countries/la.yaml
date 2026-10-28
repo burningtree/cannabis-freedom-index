@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 418
 recreational: illegal
 medical: limited
-updated: '2026-10-23'
+updated: '2026-10-28'
 summary: >-
   Cannabis possession can lead to treatment or prison; licensed low-THC hemp medicines are
   permitted.
@@ -18,72 +18,167 @@ segments:
   possession:
     text: >-
       Possessing under five grams of cannabis for consumption leads to treatment under the Penal
-      Code. Five to ten grams of dried cannabis for consumption carries six months to two years in
-      prison and a fine of five to twenty million kip.[@penal]
+      Code.[@penal] Five to ten grams of dried cannabis for consumption carries six months to two
+      years in prison and a fine of five to twenty million kip; five to ten grams of a
+      drug-producing plant carries one to six months and the same fine.[@penal] The code has no
+      personal-use band above ten grams; prosecutors must prove trading intent for the higher
+      article 318 bands.[@penal]
     sources:
       - penal
     currency: LAK
     penalties:
       - label: Under 5 g for consumption
         treatment: civil
+        term: Consumption
         note: Treatment, not prison
       - label: 5 to 10 g dried for consumption
         treatment: criminal
+        term: Consumption
         prison_min: 6 months
         prison: 2 years
+        fine_min: 5000000
         fine: 20000000
         note: Five to twenty million kip
+      - label: 5 to 10 g of a drug-producing plant for consumption
+        treatment: criminal
+        term: Consumption
+        prison_min: 1 month
+        prison: 6 months
+        fine_min: 5000000
+        fine: 20000000
   cultivation:
     text: >-
-      Ordinary cannabis cultivation is prohibited under the narcotics rules.[@outlook] Approved
-      companies may grow low-THC hemp under the health ministry’s licensing rules.[@jetro]
+      Ordinary cannabis cultivation is prohibited under the narcotics rules.[@outlook] The Penal
+      Code's cultivation bands begin at three kilograms of raw marijuana for trade: three to ten
+      kilograms carries three months to one year and a 0.5–5 million kip fine, and more than ten
+      kilograms carries one to three years and 5–20 million kip.[@penal] There is no band for under
+      three kilograms, a statutory gap; it may be charged as possession or another offence.[@penal]
+      Approved companies may grow low-THC hemp under the health ministry's licensing rules.[@jetro]
     sources:
       - outlook
       - jetro
+      - penal
+    currency: LAK
+    penalties:
+      - label: 3 to 10 kg raw marijuana for trade
+        treatment: criminal
+        term: Cultivation
+        prison_min: 3 months
+        prison: 1 year
+        fine_min: 500000
+        fine: 5000000
+      - label: More than 10 kg raw marijuana for trade
+        treatment: criminal
+        term: Cultivation
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 5000000
+        fine: 20000000
+      - label: Under 3 kg raw marijuana
+        treatment: criminal
+        term: Cultivation
+        note: No statutory band; may be charged as possession or another offence
   enforcement:
     text: >-
       The Penal Code provides treatment for the smallest personal quantities and prison for five to
       ten grams of dried cannabis.[@penal] A November 2024 government report recorded 5,168 suspects
-      arrested across all drugs over eleven months, including 199 foreigners.[@kpl24]
+      in 3,395 drug cases over eleven months, including 199 foreigners and 3,583 kg of
+      marijuana.[@kpl24] A November 2025 report counted 21,003 cases, 31,289 suspects and 27,626 kg
+      of cannabis seized from July 2021 to October 2025.[@lt25] In October 2026 Bolikhamxay
+      destroyed more than 3,000 kg of dried cannabis.[@lt26] The case and arrest figures cover all
+      drugs.[@kpl24]
     sources:
       - penal
       - kpl24
+      - lt25
+      - lt26
   sharing:
     text: >-
       Trading less than five kilograms of dried cannabis carries six months to three years in
       prison; five to ten kilograms carries three to seven years. Regular or organised trading, or
-      more than ten kilograms, carries five to ten years. THC, hashish and derivatives have separate
-      weight bands, reaching life imprisonment above 500 grams.[@penal]
+      more than ten kilograms, carries five to ten years.[@penal] THC, hashish and derivatives have
+      separate weight bands from 0.3 g, reaching life imprisonment above 500 g.[@penal] Trading more
+      than ten grams of marijuana seeds carries one to three years.[@penal]
     sources:
       - penal
     currency: LAK
     penalties:
       - label: Trading under 5 kg dried cannabis
         treatment: criminal
+        term: Trading
         prison_min: 6 months
         prison: 3 years
+        fine_min: 1000000
+        fine: 5000000
       - label: Trading 5 to 10 kg
         treatment: criminal
+        term: Trading
         prison_min: 3 years
         prison: 7 years
+        fine_min: 5000000
+        fine: 20000000
       - label: Regular, organised, or over 10 kg
         treatment: criminal
+        term: Trading
         prison_min: 5 years
         prison: 10 years
+        fine_min: 20000000
+        fine: 50000000
+      - label: Marijuana seeds over 10 g
+        treatment: criminal
+        term: Seed trading
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 3000000
+        fine: 10000000
+      - label: THC, hashish or derivatives 0.3 g to 50 g
+        treatment: criminal
+        term: Trading
+        prison_min: 2 years
+        prison: 4 years
+        fine_min: 5000000
+        fine: 9000000
+      - label: THC, hashish or derivatives 50 g to 100 g
+        treatment: criminal
+        term: Trading
+        prison_min: 5 years
+        prison: 7 years
+        fine_min: 10000000
+        fine: 29000000
+      - label: THC, hashish or derivatives 100 g to 200 g
+        treatment: criminal
+        term: Trading
+        prison_min: 10 years
+        prison: 14 years
+        fine_min: 30000000
+        fine: 59000000
+      - label: THC, hashish or derivatives 200 g to 500 g
+        treatment: criminal
+        term: Trading
+        prison_min: 15 years
+        prison: 20 years
+        fine_min: 60000000
+        fine: 99000000
       - label: THC, hashish or derivatives over 500 g
         treatment: criminal
-        note: Life imprisonment
+        term: Trading
+        fine_min: 100000000
+        fine: 200000000
+        note: Life imprisonment and a fine of 100–200 million kip
   consumption:
     text: >-
       Consumption or possession for consumption of under five grams of cannabis leads to treatment.
       Addiction recurring after certified treatment brings escalating sanctions: public criticism
-      and a fine after the first treatment, then possible prison after later treatments.[@penal]
+      and a fine after the first treatment, then possible prison after later
+      treatments.[@penal]
     sources:
       - penal
   access:
     text: >-
-      Health ministry rules permit prescribed low-THC hemp flower and medicines through approved
-      businesses.[@hemp] Ordinary cannabis trading remains punishable under the Penal Code.[@penal]
+      Decision 3789/MOH permits prescribed low-THC hemp flower and medicines through approved
+      businesses, but no operating patient-supply route, registered pharmacy network or implemented
+      access was verified.[@hemp] Ordinary cannabis trading remains punishable under the Penal
+      Code.[@penal]
     sources:
       - hemp
       - penal
@@ -105,16 +200,18 @@ context:
       - jetro
       - hemp
   production:
-    status: medical
+    status: hemp
     text: >-
       Rules issued in December 2022 permit licensed hemp cultivation, processing and trade, with
-      registered seeds and qualified technical staff.[@jetro]
+      registered seeds and qualified technical staff; medical products are covered separately.[@jetro,hemp]
     sources:
       - jetro
+      - hemp
   medical:
     text: >-
-      The legal review describes prescribed dried hemp flower with a 1% THC ceiling, and medical
-      products with a 0.2% ceiling and CBD at least four times the THC content.[@hemp]
+      Decision 3789/MOH permits prescribed dried hemp flower with a 1% THC ceiling, and medical
+      products with a 0.2% ceiling and CBD at least four times the THC content; no operating patient
+      route was verified.[@hemp]
     sources:
       - hemp
   consequences:
@@ -153,18 +250,50 @@ context:
       - penal
   arrests:
     text: >-
-      Public Security Minister Vilay Lakhamphong reported 5,168 suspects arrested in 3,395 drug
-      cases over eleven months to parliament on 20 November 2024, including 199 foreigners. Seizures
-      included 3,583 kilograms of marijuana. The arrest total covers all drugs together.[@kpl24]
+      Public Security Minister Vilay Lakhamphong reported 5,168 suspects in 3,395 drug cases over
+      eleven months to parliament on 20 November 2024, including 199 foreigners; seizures included
+      3,583 kg of marijuana.[@kpl24] A November 2025 report counted 21,003 cases and 31,289 suspects
+      from July 2021 to October 2025, with 27,626 kg of cannabis seized.[@lt25] The arrest totals
+      cover all drugs.[@kpl24]
     sources:
       - kpl24
+      - lt25
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 3,274 kg of herbal cannabis
-      seized in 2024, against 1,045 kg in 2023. The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across borders.
+      UNODC records 3,274 kg of herbal cannabis seized in 2024, against 1,045 kg in
+      2023.[@unodc_szr] The government reported about 3.6 tonnes in 2024 and 27,626 kg from July
+      2021 to October 2025.[@kpl24,lt25] In October 2026 Bolikhamxay destroyed more than 3,000 kg of
+      dried cannabis, and Vientiane destroyed 8.578 kg in its Anti-Drug Day burn.[@lt26,kpl26] The
+      figures use different categories and periods and are not directly
+      comparable.[@unodc_szr,lt25]
     sources:
       - unodc_szr
+      - kpl24
+      - lt25
+      - lt26
+      - kpl26
+  driving:
+    status: unknown
+    text: >-
+      No cannabis-specific driving offence, THC blood or saliva limit, or medical-patient exception
+      was located in the Penal Code or the sources reviewed.[@penal] The Road Traffic Law 2012 is
+      the likely instrument for a general impairment offence, but its official text was not readable
+      in this review, so the status is unknown rather than impairment or zero.[@road2012]
+    sources:
+      - penal
+      - road2012
+  culture:
+    text: >-
+      Cannabis is known in Lao as [ganja](/culture/language/ganja/), and the country has a
+      [landrace](/culture/language/landrace/) heritage.[@outlook] The [Hmong](/culture/traditions/hmong-hemp-cloth/)
+      of the northern mountains grew, spun and wove hemp for cloth, and the leaf appears in
+      [South-East Asian cooking](/culture/traditions/south-east-asian-cooking/).[@hemp,outlook] The
+      modern law treats ordinary cannabis as a narcotic while licensing low-THC hemp for registered
+      products.[@penal,hemp]
+    sources:
+      - outlook
+      - hemp
+      - penal
 sources:
   kpl24:
     title: >-
@@ -172,6 +301,22 @@ sources:
       2024
     url: https://kpl.gov.la/en/detail.aspx?id=87453
     locator: Minister Vilay Lakhamphong’s report to the National Assembly on 20 November 2024
+  lt25:
+    title: "Laotian Times — Laos processes 21,003 drug cases, arrests 31,289 suspects since 2021 (14 November 2025)"
+    url: https://laotiantimes.com/2025/11/14/laos-processes-21003-drug-cases-arrests-31289-suspects-since-2021/
+    locator: "21,003 cases; 31,289 suspects; 27,626 kg cannabis, July 2021–October 2025."
+  lt26:
+    title: "Laotian Times — Laos destroys tonnes of drugs as police warn of new substances (23 October 2026)"
+    url: https://laotiantimes.com/2026/10/23/laos-destroys-tonnes-of-drugs-as-police-warn-of-new-substances/
+    locator: "Bolikhamxay: more than 3,000 kg dried cannabis destroyed on 14 October 2026."
+  kpl26:
+    title: "Lao News Agency — Vientiane destroys seized drugs ahead of National Anti-Drug Day (12 October 2026)"
+    url: https://kpl.gov.la/en/detail.aspx?id=109040
+    locator: "3,894.263 kg total, including 8.578 kg dried cannabis."
+  road2012:
+    type: law
+    title: "Laos — Road Traffic Law No. 23/NA, 12 December 2012"
+    locator: "General traffic and impairment rules; official text scanned and not read."
   unodc_szr:
     title: >-
       UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug

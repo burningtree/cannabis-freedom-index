@@ -7,7 +7,7 @@ sources, and India is held for a separate country pass because of its size and s
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Laos | in progress | | |
+| Laos | cultivation table, driving/culture sections, full sale tiers, updated enforcement and black market, 8 history entries | 1930s and 1960s empty; 2020 hemp permission not aligned with the criminal law | this commit |
 | Myanmar | hemp/driving/arrests sections, citations, corrected cultivation maximum, 5 history entries | no culture atlas or words; 2018 amendment text not opened | this commit |
 | Cambodia | rebuilt on the 2012 Law on Drug Control, four penalty tables, hemp/culture/driving sections, 5 history entries | 1970s and 1980s still empty: the CIA and IUCN sources were blocked | this commit |
 | Philippines | in progress | | |
@@ -18,3 +18,5 @@ Brunei validation: `profile-audit bn` zero errors/warnings; `country-gaps bn` ha
 Cambodia validation: `profile-audit kh` zero errors/warnings; `country-gaps kh` has no missing sections or tables and no uncited text; `npm test` passes 179/179; the page shows four tables. The profile now follows the 2012 Law on Drug Control, not the repealed 1996/2005 law, with the article 40 possession and sale tiers and the narrower article 45 consumption offence. The 1970s and 1980s remain empty because the CIA briefing paper and IUCN report could not be opened.
 
 Myanmar validation: `profile-audit mm` zero errors/warnings; `country-gaps mm` has no missing sections or tables, no uncited text and no empty decades; `npm test` passes 179/179; the page shows three tables. The profile now uses the 1993 law as amended in 2018 and 2025: possession and cultivation five to ten years, sale ten years to life, and production/import-export fifteen years to life or death. The 2019 Mandalay hemp prosecution supplies the hemp/CBD example. The 2018 amendment text was not opened, so its details rest on TNI and the 2025 amendment.
+
+Laos validation: `profile-audit la` zero errors/warnings; `country-gaps la` has no missing sections or tables and no uncited text; the profile-claims suite passes 83/83. The full `npm run build` was blocked by another contributor’s `countries/co.yaml` history citations and `culture/language/assassin.md`, so the Laos page could not be inspected in a successful build yet. The profile now follows Penal Code articles 318 and 320, with the 3 kg cultivation floor and the 0.3 g THC ladder, and uses `driving.status: unknown` because the 2012 Road Traffic Law was not readable.
