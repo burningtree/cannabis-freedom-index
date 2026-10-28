@@ -10,7 +10,7 @@ Kuwait and Azerbaijan. None was marked busy.
 | Georgia | 2022 seizure correction, 2024–26 crime figures, sharing additions, ancillary-rights text, 4 history entries | 1940s–1950s empty; 1934 still Wikipedia-based | this commit |
 | Laos | 2026 prohibited-list caveat, mandatory life row, 2024–26 enforcement, arrest figures, 10 history entries | no cannabis-specific prosecution outcome; driving law not readable | this commit |
 | Kuwait | products folded, black-market section, sharing/cultivation/consumption tables, 14 history entries | schedules unreadable; no retail price | this commit |
-| Azerbaijan | in progress | | |
+| Azerbaijan | 1934 primary source, 2022 threshold entry, driving/clubs/visitors/research fixes, 7 history entries | 1940s empty; no cannabis-specific enforcement series | this commit |
 
 Laos validation: `profile-audit la` zero errors and warnings. The profile now marks the over-500 g THC/hashish penalty as mandatory life, treats under-5 g possession as a treatment route rather than an administrative fine, records the 21 October 2026 prohibited-narcotics resolution against the 2022 hemp decision, and adds the 2025 arrest figures and 2024–2026 Bolikhamxay seizures. Ten entries fill the 1930s and 1960s and extend coverage to 2026.
 
@@ -19,3 +19,5 @@ Kuwait validation: `profile-audit kw` zero errors and warnings. The profile fold
 Oman validation: `profile-audit om` zero errors and warnings. The unsupported 1925 estimate was removed and the 1974 Penal Code now carries the first score step; production is marked medical on the article 7 licensing route, the death-penalty text distinguishes trafficking from personal use, the seizure and arrest figures use verified sources, and the life/mandatory-life fields are encoded. Eight entries cover 2024–2026.
 
 Georgia validation: `profile-audit ge` zero errors and warnings. The profile now adds the 20-year/life especially-large possession tier, the 2024–2026 drug-crime figures and prison population, the Article 260²/260⁴ sharing offences, the ancillary-rights consequences, deportation for visitors and the List I wording. The 2022 “3,017 kg” figure is explained as 212 kg of herb plus 2,805 plants. The April 2025 entry is dated and closed as unscored; four entries cover 1964–2026.
+
+Azerbaijan validation: `profile-audit az` zero errors and warnings. The 1934 entry now uses the primary decree, the 2022 small-amount reform is recorded, driving moves from impairment to a positive-test trigger, clubs cite Article 238, visitors add expulsion and a research section is added. Seven entries cover 1958–2026; the 1940s remain empty.
