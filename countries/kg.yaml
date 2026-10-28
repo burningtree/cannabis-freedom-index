@@ -28,15 +28,19 @@ segments:
       - offences
       - amounts
       - criminal
+    currency: KGS
     penalties:
       - label: Small personal possession
         treatment: civil
         term: Small possession
+        fine: 20000
         note: Fine of 200 calculated units or 40 hours of community work
       - label: Large personal possession
         treatment: criminal
         term: Large amount
         prison: 5 years
+        fine_min: 100000
+        fine: 200000
         note: Fine of 1,000–2,000 calculated units or up to five years
       - label: Especially large personal possession
         treatment: criminal
@@ -53,15 +57,19 @@ segments:
     sources:
       - offences
       - criminal
+    currency: KGS
     penalties:
       - label: Small unauthorised cultivation
         treatment: civil
         term: Small cultivation
+        fine: 12500
         note: Fine of 125 calculated units for an individual
       - label: Large-scale or group cultivation
         treatment: criminal
         term: Large-scale cultivation
         prison: 5 years
+        fine_min: 100000
+        fine: 200000
         note: Fine of 1,000–2,000 calculated units or up to five years
       - label: Especially large cultivation
         treatment: criminal
@@ -112,10 +120,12 @@ segments:
       a separate offence.[@offences]
     sources:
       - offences
+    currency: KGS
     penalties:
       - label: Non-medical use in a public place
         treatment: civil
         term: Use
+        fine: 1000
         note: Fine of 10 calculated units or up to 20 hours of community work
   access:
     text: >-
@@ -215,14 +225,19 @@ context:
       - rules
       - list
   driving:
-    status: unknown
+    status: impairment
     text: >-
-      No cannabis-specific driving offence or THC limit was found in the sources read. The
-      Criminal Code and Code of Offences cover drug possession, supply and public use, but the
-      traffic rules were not among the texts reviewed.[@criminal,offences]
+      Code of Offences article 193(1) punishes driving while intoxicated by alcohol, narcotics,
+      psychotropic or other intoxicating substances with a fine of 800 calculated units, or 80,000
+      som, and a two-year licence ban.[@offences] Refusing a medical examination brings 1,000 units
+      and a three-year ban.[@offences] Since 5 June 2026 a repeat within a year is criminal under
+      Criminal Code article 312-1, with a fine of 1,000–1,500 units or up to one year in prison.[@criminal]
+      There is no numeric THC limit: the medical conclusion must find acute intoxication and identify
+      the substance, so a positive test alone is not the statutory trigger.[@reg50]
     sources:
-      - criminal
       - offences
+      - criminal
+      - reg50
   culture:
     text: >-
       Cannabis in Kyrgyzstan is known as [anasha](/culture/language/anasha/), the Central Asian
@@ -273,6 +288,11 @@ sources:
       January 2025)
     url: >-
       https://24.kg/proisshestvija/316853_bolee_15tonn_narkotikov_izyyali_vkr_v2024godu_vsbnon_podveli_itogi/
+  reg50:
+    type: law
+    title: Kyrgyzstan — Regulation on medical examination for intoxication, Government Resolution No. 50 of 12 February 2015
+    url: https://zakon.kg/law/polozhenie-o-provedenii-mediczinskogo-osvidetelstvovaniya-na-predmet-opyaneniya/
+    locator: "Articles 18 and 20: 'sober' or 'acute intoxication'; laboratory identification of the substance required."
   offences:
     type: law
     title: Kyrgyzstan — Code of Offences, consolidated through 9 October 2026

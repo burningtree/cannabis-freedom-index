@@ -9,7 +9,7 @@ Kyrgyzstan, Saudi Arabia and Bangladesh.
 |---|---|---|---|
 | China | hemp and arrests sections, culture links to all seven atlas entries, citations throughout, production corrected to hemp | 1940s–1960s still empty; no cannabis-specific arrest series | this country commit |
 | Oman | in progress | | |
-| Kyrgyzstan | possession, cultivation, supply and use tables; recreational, hemp, culture and driving sections; products folded | 1940s–1950s, 1970s–1980s and 2000s still empty; driving status unverified | this country commit |
+| Kyrgyzstan | possession, cultivation, supply and use tables; recreational, hemp, culture and impairment-driving sections; products folded; 1944–2026 history | 1970s still empty | e0f394c, this follow-up |
 | Saudi Arabia | in progress | | |
 | Bangladesh | Class A hashish tiers, hemp, arrests, culture links, full citations; 1922/1947/1965 history entries | 1980s ban-date conflict noted but not resolved | this country commit |
 
