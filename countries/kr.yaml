@@ -5,8 +5,9 @@ recreational: illegal
 medical: limited
 updated: '2026-10-27'
 summary: >-
-  Up to five years for use, enforced even for use abroad by citizens. A few cannabinoid medicines
-  can be imported through a state agency.
+  Up to five years for use, enforced even for use abroad by citizens. Sale carries at least a year,
+  import or export life or at least five years, and profit-making or habitual import can bring
+  death. A few cannabinoid medicines can be imported through a state agency.
 scores:
   possession: 0
   cultivation: 0
@@ -30,52 +31,81 @@ segments:
     penalties:
       - label: Possession, acquisition, transport or storage
         treatment: criminal
+        term: Possession
         prison: 5 years
         fine: 50000000
         note: Simple possession; prison or a fine. Import/export is a separate offence
   cultivation:
     text: >-
       Cultivation falls under the same up-to-five-year provision, with heavier penalties when for
-      sale.
+      sale.[@nca2026]
     sources:
-      - kt2
+      - nca2026
     currency: KRW
     penalties:
-      - label: Cultivation
+      - label: Personal cultivation
         treatment: criminal
+        term: Cultivation
         prison: 5 years
         fine: 50000000
-        note: Same ceiling; heavier when for sale
+      - label: Cultivation for sale, export or manufacture
+        treatment: criminal
+        term: Commercial cultivation
+        prison_min: 1 year
   enforcement:
     text: >-
       Strict and actively enforced, with customs screening, hair testing and prosecutions of
-      celebrities making regular headlines. First offenders often receive suspended sentences.
+      celebrities making regular headlines.[@kt1] First offenders often receive suspended
+      sentences.[@spo25]
     sources:
       - kt1
-      - slg
+      - spo25
   sharing:
-    text: Supplying or selling is punished more severely, with a minimum of one year.
+    text: Supplying or selling is punished more severely, with a minimum of one year.[@nca2026]
     sources:
-      - slg
+      - nca2026
     penalties:
-      - label: Supply or sale
+      - label: Sale, manufacture or brokerage
         treatment: criminal
+        term: Trafficking
         prison_min: 1 year
-        note: Minimum one year; punished more severely than possession
+        note: Habitual offenders face at least three years
+      - label: Import or export
+        treatment: criminal
+        term: Import or export
+        prison_min: 5 years
+        note: Life imprisonment or at least five years
+      - label: Profit-making or habitual import or export
+        treatment: criminal
+        term: Aggravated import
+        death: true
+        prison_min: 10 years
+        note: Death or life imprisonment also available
+      - label: Giving cannabis to a minor
+        treatment: criminal
+        term: Supply to a minor
+        prison_min: 2 years
   consumption:
     text: >-
       Smoking or ingesting cannabis is itself an offence with up to five years. Korean criminal law
       follows citizens abroad: the government has repeatedly warned that Koreans who use cannabis in
       Canada, Thailand or US states where it is legal can be prosecuted on return, and hair tests
-      can detect use months later.
+      can detect use months later.[@kt1,filter]
     sources:
       - kt1
       - filter
+    currency: KRW
+    penalties:
+      - label: Smoking or ingesting cannabis
+        treatment: criminal
+        term: Personal use
+        prison: 5 years
+        fine: 50000000
   access:
     text: >-
       A patient may apply through the state orphan-drug centre to import a small number of
       foreign-approved cannabis medicines for self-treatment. The route requires medical records,
-      a doctor's opinion and approval for each import.
+      a doctor's opinion and approval for each import.[@mfds]
     sources:
       - mfds
 context:
@@ -90,67 +120,97 @@ context:
       - slg
       - kt1
       - filter
+  death_penalty:
+    text: >-
+      Death is available only for profit-making or habitual import or export of cannabis under
+      Article 58(2); ordinary possession, use, cultivation and sale are not capital.[@nca2026] The
+      prosecutors' 2025 white paper records no life or death sentence in cannabis cases in
+      2023–2025.[@spo25] No cannabis execution was found.[@spo25]
+    sources:
+      - nca2026
+      - spo25
+  research:
+    status: licensed
+    text: >-
+      Licensed academic researchers may grow or import cannabis for research with MFDS approval and
+      reporting.[@nca2026] Universities, KIST and the Andong zone do cannabis and CBD work, but no
+      patient clinical trial was verified.[@nca2026]
+    sources:
+      - nca2026
   hemp:
-    status: standard
+    status: strict
     text: >-
-      Hemp is grown under permit for fibre and seed in designated areas. Since July 2020 two
-      districts of Andong form a regulation-free zone where hemp with less than 0.3% THC may be
-      grown and CBD extracted as a pharmaceutical raw material.[@slg,asiae20]
+      No national hemp THC threshold and no general hemp regime. Cannabis is controlled even when
+      grown for fibre or seed; the 0.3% line exists only in the Andong regulation-free zone, which
+      was extended to 2027.[@slg,asiae20,andong24] The Supreme Court held in May 2025 that CBD, CBN
+      and THC are "cannabis" even when extracted from seeds, roots or mature stalks, so the seed and
+      stalk exclusions do not create a consumer CBD route.[@scourt25]
     sources:
       - slg
       - asiae20
+      - andong24
+      - scourt25
   production:
-    status: medical
+    status: hemp
     text: >-
-      Hemp is grown under permit for fibre and seed in designated areas. Since July 2020 two
-      districts of Andong form a regulation-free zone where hemp with less than 0.3% THC may be
-      grown and CBD extracted as a pharmaceutical raw material. No other production.
+      Hemp is grown under permit for fibre and seed in designated areas, and the Andong
+      regulation-free zone allows hemp below 0.3% THC for CBD extraction as a pharmaceutical raw
+      material.[@slg,asiae20] No domestic medical-cannabis production is licensed; medicines are
+      imported.[@mfds] A GMP CBD API plant broke ground in Andong in December 2025.[@gmp25]
     sources:
       - slg
       - asiae20
+      - mfds
+      - gmp25
   medical:
     text: >-
-      In November 2018 South Korea became the first East Asian country to allow cannabis-based
-      medicines, but only a handful of approved pharmaceuticals for conditions such as severe
-      epilepsy, imported patient by patient through a state orphan-drug centre. No consumer
-      products, CBD included, unless approved as a medicine.
+      South Korea allows imported cannabis medicines, not domestic production or general
+      prescribing. The MFDS approves the patient and the import, and the Korea Orphan and Essential
+      Drug Center supplies the medicine; Epidiolex, Sativex, Marinol, Canemes and Cesamet are
+      formally available, but only Epidiolex was actually distributed in 2024.[@mfds,spo25] Since
+      April 2021 Epidiolex has been reimbursed for Dravet and Lennox–Gastaut syndromes after five
+      other epilepsy drugs fail.[@nhi21] About 300 prescriptions a month were reported in early 2026,
+      and a plan to widen manufacturing was halted in October 2025.[@medical26,halt25]
     sources:
       - mfds
-      - slg
-      - filter
-      - kt2
+      - spo25
+      - nhi21
+      - medical26
+      - halt25
   consequences:
     text: >-
-      A drug conviction carries heavy social stigma, ends careers, and leads to deportation for
-      foreigners.
+      A drug conviction carries heavy social stigma and ends careers.[@slg] A foreigner sentenced
+      to imprisonment faces deportation under the Immigration Act and a five-year entry ban; a fine
+      may still lead to visa cancellation or departure.[@immigration]
     sources:
       - slg
+      - immigration
   arrests:
     text: >-
-      The prosecution service recorded 27,611 people caught for drug offences of all kinds in
-      2023, against 18,395 in 2022, the first time the figure passed 20,000; 1,477 were
-      teenagers and 3,151 foreigners. The published report did not give a figure for cannabis.
-      An older count put cannabis at about 1% of the 11,916 drug arrests of 2015.
+      The prosecution service recorded 2,459 cannabis offenders in 2025, down 25.9% from 3,317 in
+      2024 and 4,085 in 2023.[@spo25] The 2025 group included 1,016 users, 503 sellers, 335
+      smugglers, 230 possessors and 77 cultivators; 1,955 cases and 237 people detained.[@spo25]
+      All drug offenders numbered 23,403 in 2025, and smuggling offenders reached a record
+      1,772.[@spo25]
     sources:
-      - kt24
-      - wiki
+      - spo25
   planting:
     seeds: grey
-    seeds_trade: open
+    seeds_trade: unclear
     clones: illegal
     clones_trade: banned
     text: >-
       The Narcotics Control Act's definition of marijuana expressly excludes "the seeds and
       roots of the hemp plant", its mature stalks and products made from them. The hemp plant
       itself is marijuana, and only a licensed cultivator may grow it, for the purpose of
-      collecting fibre or seed.
+      collecting fibre or seed.[@nca]
     sources:
       - nca
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@kt2,slg]
     sources:
       - kt2
       - slg
@@ -162,34 +222,75 @@ context:
       Customs prohibits cannabis, resin, cannabis vape cartridges and CBD oil; products legally bought
       abroad can be controlled at entry.[@customs] Simple domestic possession carries up to five years
       or a fine up to 50 million won.[@slg] Patients seeking approved cannabis medicines must use the
-      separate medical-records and import-approval route.[@mfds]
+      separate medical-records and import-approval route.[@mfds] A foreigner sentenced to
+      imprisonment faces deportation and a five-year entry ban.[@immigration]
     sources:
       - nca2026
       - customs
       - slg
       - mfds
+      - immigration
   driving:
     status: impairment
     text: >-
       The Road Traffic Act punishes driving when normal driving is difficult because of drugs,
-      which include narcotics, psychotropics and cannabis. Under amendments in force from
+      which include narcotics, psychotropics and cannabis.[@fn26] Under amendments in force from
       April 2026 the maximum penalty rose from three years in prison or a 10 million won fine
-      to five years or 20 million won, and refusing a drug test became an offence punished at
-      the same level. Police said a prescribed medicine does not by itself lead to punishment:
-      the test is whether attention and motor skills are actually impaired. Officers may use
-      saliva tests, behavioural checks and urine or blood tests.
+      to five years or 20 million won, and from 2 April 2026 refusing a drug test became an offence
+      punished at the same level.[@fn26] Police said a prescribed medicine does not by itself lead to punishment:
+      the test is whether attention and motor skills are actually impaired.[@fn26] Officers may use
+      saliva tests, behavioural checks and urine or blood tests.[@fn26]
     sources:
       - fn26
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 99 kg of herbal
-      cannabis seized in 2024, against 114 kg in 2023, and 5.1 kg of cannabis resin seized
-      in 2024, against 3.2 kg in 2023. The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across
-      borders.
+      The 2025 white paper records 128.6 kg of herbal cannabis, 5.6 kg of resin and 0.3 kg of
+      seed seized, within a total of 1,156.4 kg of drugs of which 65.4% was imported.[@spo25]
+      UNODC's government-reported series records 99 kg of herbal cannabis and 5.1 kg of resin in
+      2024, against 114 kg and 3.2 kg in 2023; the two series use different coverage.[@unodc_szr]
+      A September 2026 case involved 646 kg shipped from Thailand, the largest domestic-sale
+      cannabis import on record.[@yakuza26]
     sources:
       - unodc_szr
+      - spo25
+      - yakuza26
 sources:
+  spo25:
+    title: "South Korea Supreme Prosecutors' Office — 2025 drug crime white paper (28 July 2026)"
+    url: https://www.spo.go.kr/common/board/Download.do?bcIdx=1108709&cbIdx=1204&streFileNm=d4ddc65d-7970-4eea-a371-8a1659a393aa.pdf
+    locator: "2,459 cannabis offenders in 2025; 128.6 kg herb; 5.6 kg resin; no life or death sentence."
+  scourt25:
+    title: "South Korea Supreme Court — 2022두60776, CBD and cannabis definition (29 May 2025)"
+    url: https://www.scourt.go.kr/portal/news/NewsViewAction.work?seqnum=10449&gubun=4&type=0
+    locator: "Cannabinoids extracted from seeds, roots or mature stalks are still cannabis."
+  andong24:
+    title: "Gyeongbuk — Andong hemp regulation-free zone extended to 2027 (25 November 2024)"
+    url: https://www.gbhemp.or.kr/
+    locator: "Extension to 2027."
+  gmp25:
+    title: "Yonhap — Andong GMP hemp API plant breaks ground (17 December 2025)"
+    url: https://www.yna.co.kr/
+    locator: "CBD API plant; December 2025."
+  halt25:
+    title: "News Tomato — MFDS halts the medical cannabis expansion plan (31 October 2025)"
+    url: https://www.newstomato.com/
+    locator: "Plan halted; rising drug arrests cited."
+  medical26:
+    title: "Chosun Biz — Medical cannabis prescriptions and the 2026 review (16 September 2026)"
+    url: https://biz.chosun.com/
+    locator: "About 300 prescriptions a month in early 2026."
+  nhi21:
+    title: "South Korea — Epidiolex reimbursement from April 2021"
+    url: https://www.hira.or.kr/
+    locator: "Dravet and Lennox–Gastaut; five prior drugs."
+  immigration:
+    title: "South Korea — Immigration Act, articles 11 and 46"
+    url: https://bigcase.ai/law/출입국관리법/제46조
+    locator: "Deportation after imprisonment; five-year entry ban."
+  yakuza26:
+    title: "Yonhap — 20 years sought over 646 kg cannabis import (29 September 2026)"
+    url: https://www.yna.co.kr/
+    locator: "Largest domestic-sale cannabis import on record."
   asiae20:
     title: Asia Economy — report on the designation of the Gyeongbuk industrial hemp zone (7 July 2020)
     url: https://view.asiae.co.kr/en/article/2020070714413417324
