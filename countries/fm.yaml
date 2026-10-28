@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 583
 recreational: illegal
 medical: none
-updated: "2026-10-27"
+updated: '2026-10-28'
 summary: >-
   Cannabis penalties vary by state. The national code’s $50 small-possession provision is not a
   nationwide ceiling: published state laws also allow custody, and the available Chuuk drug-law
@@ -23,15 +23,30 @@ segments:
       30 days, $100 or both, with a fine-only rule for first drug offenders. Kosrae classifies it as
       a category-three misdemeanor: up to six months, $500 or both. Chuuk’s website reproduces a $50
       provision in an unrevised 1980 reference appendix; this does not verify its current law. Later
-      state amendments and representative sentencing remain gaps.
+      state amendments and representative sentencing remain gaps.[@code,pohnpei2012,yapdrugs,kosraedrugs]
     sources:
       - code
       - pohnpei2012
       - yapdrugs
       - kosraedrugs
-      - kosraemisd
-      - chuukappendix
-      - chuukstatus
+    currency: USD
+    penalties:
+      - label: One ounce or less, national
+        treatment: criminal
+        term: Possession
+        fine: 50
+        note: National fine; Pohnpei, Yap and Kosrae allow custody for the same amount
+      - label: More than one ounce but under 2.2 lb, national
+        treatment: criminal
+        term: Possession
+        prison: 3 months
+        fine: 500
+      - label: 2.2 lb or more, national
+        treatment: criminal
+        term: Possession
+        prison: 1 year
+        fine: 1000
+        note: Rebuttable presumption of trafficking
   cultivation:
     text: >-
       National law treats cultivation as production/manufacture. Pohnpei similarly includes planting
@@ -39,13 +54,31 @@ segments:
       marijuana-production offence carrying up to one year, $1,000 or both. Kosrae’s trafficking
       definition includes manufacture; a 1987 court also applied possession law to growing plants.
       No recreational home-growing permission was established. These published editions do not
-      establish typical sentences or every later amendment.
+      establish typical sentences or every later amendment.[@code,pohnpei2012,yapdrugs,kosraedrugs,paulino1987]
     sources:
       - code
       - pohnpei2012
       - yapdrugs
       - kosraedrugs
       - paulino1987
+    currency: USD
+    penalties:
+      - label: National production or manufacture
+        treatment: criminal
+        term: Production
+        prison: 5 years
+        fine: 5000
+      - label: Yap marijuana production
+        treatment: criminal
+        term: Production
+        prison: 1 year
+        fine: 1000
+      - label: Kosrae trafficking, including manufacture
+        treatment: criminal
+        term: Trafficking
+        prison: 10 years
+        fine: 20000
+        note: Category 1 felony
   enforcement:
     text: >-
       The statutes do not establish a single nationwide sentencing pattern. National law and Pohnpei
@@ -54,23 +87,25 @@ segments:
       penalty allows custody even in the smallest category. The 2023 Ehsa order left national
       jurisdiction over locally grown plants open. These observations are not a representative
       sentencing survey; the country’s numerical ratings remain provisional while state amendments
-      and actual outcomes are checked.
+      and actual outcomes are checked.[@code,pohnpei2012,yapdrugs,kosraedrugs,ehsa2023]
     sources:
       - code
       - pohnpei2012
       - yapdrugs
       - kosraedrugs
-      - kosraemisd
       - ehsa2023
   sharing:
     text: >-
-      The national code treats an unpaid transfer of no more than an ounce as small possession, with
-      a maximum $50 fine. Pohnpei has the same exception from ordinary trafficking, but its
-      small-possession penalty allows one month, $100 or both. Yap’s published delivery offence has
-      no equivalent small unpaid-gift exception and carries up to three years, $5,000 or both.
-      Kosrae includes delivery in its felony trafficking definition without a gift exception in that
-      section. The national carve-out is therefore not a uniform state-law rule.
+      National section 1141, as restored by Public Law 21-08 in 2019, covers import and export and
+      sets a fifteen-year/$15,000 tier for large amounts of heroin, cocaine, LSD or crystal meth;
+      marijuana remains in the five-year/$5,000 tier.[@pl2108] An unpaid transfer of no more than an
+      ounce is treated as small possession, with a maximum $50 fine.[@code] Pohnpei has the same
+      exception, but its small-possession penalty allows one month or $100.[@pohnpei2012] Yap's
+      delivery offence has no small-gift exception and carries up to three years and $5,000; Kosrae
+      includes delivery in its felony trafficking definition without a gift exception.[@yapdrugs,kosraedrugs]
+      The national carve-out is not a uniform state-law rule.
     sources:
+      - pl2108
       - code
       - pohnpei2012
       - yapdrugs
@@ -80,12 +115,9 @@ segments:
       The national and state drug provisions reviewed focus on possession, manufacture and delivery
       rather than establishing general permission to consume. Additional conduct offences apply: Yap
       expressly prohibits marijuana consumption while driving and while in a vehicle on a highway.
-      No complete survey of municipal or public-consumption rules was established.
+      No complete survey of municipal or public-consumption rules was established.[@code,yapdriving]
     sources:
       - code
-      - pohnpei2012
-      - yapdrugs
-      - kosraedrugs
       - yapdriving
   access:
     text: >-
@@ -100,31 +132,47 @@ segments:
       - pohnpei2012
       - yapdrugs
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply in any state. Penalties vary: the national one-ounce
+      possession fine is $50, but Pohnpei, Yap and Kosrae allow custody for the same amount, and
+      Kosrae's trafficking offence is a ten-year felony.[@code,pohnpei2012,yapdrugs,kosraedrugs]
+      Locally grown cannabis is widely consumed and sold through loose networks rather than large
+      syndicates.[@ocindex25]
+    sources:
+      - code
+      - pohnpei2012
+      - yapdrugs
+      - kosraedrugs
+      - ocindex25
   production:
     status: none
     text: >-
       Sections 1132–1133 provide registration for controlled-substance manufacture and distribution,
-      including controls over Schedule I substances. These statutory powers do not establish issued
-      cannabis licences or production volumes. Locally grown plants were at issue in the 2023 Ehsa
-      proceeding, which left national jurisdiction open.
+      including controls over Schedule I substances.[@code] These statutory powers do not establish
+      issued cannabis permissions or production volumes.[@code] Locally grown plants were at issue in
+      the 2023 Ehsa proceeding, which left national jurisdiction open.[@ehsa2023]
     sources:
       - code
       - ehsa2023
-  products:
+  hemp:
+    status: none
     text: >-
-      The definition of marihuana in section 1112 includes the plant, seeds, resin and preparations,
-      while excluding mature stalks and specified fibre or seed products, including sterilised
-      non-germinating seed. This identifies statutory scope, not currently marketed legal cannabis
-      products.
+      No hemp or CBD licensing regime. National law excludes mature stalks, stalk fibre, seed oil or
+      cake and sterilised non-germinating seed from "marihuana", but that is a definitional
+      exclusion, not an industry framework.[@code] Yap's definition has no such exclusions, and
+      Kosrae's drug chapter has no definition or schedule.[@yapdrugs,kosraedrugs]
     sources:
       - code
+      - yapdrugs
+      - kosraedrugs
   medical:
     text: >-
-      The national code and Pohnpei’s published code provide controlled research registration for
-      Schedule I substances.[@code,pohnpei2012] In Yap, section 1005 expressly bars prescriptions for the listed
-      hallucinogens, which include marijuana.[@yapdrugs] No patient treatment route was verified in the
-      reviewed national and state texts. Research registration does not establish one; later state
-      amendments remain incompletely verified.
+      The national code and Pohnpei's published code provide controlled research registration for
+      Schedule I substances.[@code,pohnpei2012] In Yap, section 1005 expressly bars prescriptions for
+      the listed hallucinogens, which include marijuana.[@yapdrugs] No patient treatment route was
+      verified in the reviewed national and state texts.[@code] Research registration does not
+      establish one; later state amendments remain incompletely verified.[@code]
     sources:
       - code
       - pohnpei2012
@@ -132,10 +180,11 @@ context:
   consequences:
     text: >-
       National section 1148 and Pohnpei section 4-130 allow qualifying first possession offenders,
-      with consent, to receive probation without judgment. Successful completion leads to discharge
-      without a conviction for statutory disqualifications, and an expungement application is
-      possible, apart from a retained nonpublic eligibility record. This is discretionary and
-      once-only; the same route was not established for all four states.
+      with consent, to receive probation without judgment.[@code,pohnpei2012] Successful completion
+      leads to discharge without a conviction for statutory disqualifications, and an expungement
+      application is possible, apart from a retained nonpublic eligibility record.[@code,pohnpei2012]
+      This is discretionary and once-only; the same route was not established for all four
+      states.[@code,pohnpei2012]
     sources:
       - code
       - pohnpei2012
@@ -146,15 +195,17 @@ context:
     clones_trade: banned
     text: >-
       National and Pohnpei definitions include the plant, viable seeds, resin and preparations, with
-      specified exclusions for mature stalks, fibre and sterilised non-germinating seed. Yap defines
-      marijuana as all parts of the genus Cannabis, including seeds, without reproducing those
-      exclusions in section 1003(c); it separately prohibits marijuana production. A uniform
-      national seed exemption should not be assumed under every state law. Kosrae’s seed-specific
-      position and a current Chuuk consolidation remain unverified.
+      specified exclusions for mature stalks, fibre and sterilised non-germinating seed.[@code,pohnpei2012]
+      Yap defines marijuana as all parts of the genus Cannabis, including seeds, without reproducing
+      those exclusions in section 1003(c); it separately prohibits marijuana production.[@yapdrugs]
+      A uniform national seed exemption should not be assumed under every state law.[@yapdrugs]
+      Kosrae's seed-specific position and a current Chuuk consolidation remain
+      unverified.[@kosraedrugs]
     sources:
       - code
       - pohnpei2012
       - yapdrugs
+      - kosraedrugs
   clubs:
     status: none
     text: >-
@@ -170,29 +221,31 @@ context:
   visitors:
     status: none
     text: >-
-      No lawful recreational purchase route for visitors was established. A visitor should not treat
-      the national $50 possession provision as a state-law ceiling: Pohnpei, Yap and Kosrae publish
-      different penalties, and Yap expressly prohibits cannabis prescriptions. Current Chuuk law and
-      recognition of foreign prescriptions were not verified.
+      No lawful recreational purchase route for visitors was established.[@code] A visitor should not
+      treat the national $50 possession provision as a state-law ceiling: Pohnpei, Yap and Kosrae
+      publish different penalties, and Yap expressly prohibits cannabis
+      prescriptions.[@pohnpei2012,yapdrugs,kosraedrugs] Current Chuuk law and recognition of foreign
+      prescriptions were not verified.[@chuukstatus]
     sources:
       - code
       - pohnpei2012
       - yapdrugs
       - kosraedrugs
-      - kosraemisd
+      - chuukstatus
   driving:
     status: impairment
     text: >-
-      Rules are state-specific. Pohnpei section 71 PC 12-105 prohibits driving when drug influence
-      makes safe driving impossible, with up to one year, $500 or both in the 2012 edition. Yap
-      section 704 defines drug influence through impaired driving ability, but also mentions
-      habitual narcotic users; sections 705–706 separately prohibit marijuana consumption while
-      driving or in a vehicle on a highway. Kosrae section 13.710 prohibits driving under
-      controlled-substance influence. Chuuk’s draft section 1305 addresses narcotic drugs and other
-      drugs impairing safe operation, with separate habitual-user wording. No numerical THC limit
-      was established in these provisions; the map classification concerns the reviewed influence
-      offences, not an absence of additional rules. Later amendments and testing practice remain
-      unverified.
+      Rules are state-specific.[@pohnpei2012] Pohnpei section 71 PC 12-105 prohibits driving when
+      drug influence makes safe driving impossible, with up to one year, $500 or both in the 2012
+      edition.[@pohnpei2012] Yap section 704 defines drug influence through impaired driving ability,
+      but also mentions habitual narcotic users; sections 705–706 separately prohibit marijuana
+      consumption while driving or in a vehicle on a highway.[@yapdriving] Kosrae section 13.710
+      prohibits driving under controlled-substance influence.[@kosraedriving] Chuuk's draft section
+      1305 addresses narcotic drugs and other drugs impairing safe operation, with separate
+      habitual-user wording.[@chuukdriving] No numerical THC limit was established in these
+      provisions; the map classification concerns the reviewed influence offences, not an absence of
+      additional rules.[@pohnpei2012] Later amendments and testing practice remain
+      unverified.[@pohnpei2012]
     sources:
       - pohnpei2012
       - yapdriving
@@ -200,21 +253,27 @@ context:
       - chuukdriving
   black_market:
     text: >-
-      Historical local evidence: Oneisom’s five-month Chuuk study in 1985, published in 1991,
+      Historical local evidence: Oneisom's five-month Chuuk study in 1985, published in 1991,
       described mostly part-time or family cannabis dealing alongside a dealer network, with locally
-      grown cannabis and reported supplies from other islands. It did not establish sufficient
-      evidence of exports from Chuuk. This exploratory study is not a current nationwide market
-      estimate.
+      grown cannabis and reported supplies from other islands.[@oneisom1991] OCIndex 2025 describes
+      cannabis as widely consumed and locally cultivated, with individuals exporting to Guam, Palau
+      and the Marshall Islands rather than organised syndicates.[@ocindex25] No current nationwide
+      market estimate was found.
     sources:
       - oneisom1991
+      - ocindex25
   arrests:
     text: >-
       Historical Chuuk figures, not nationwide totals: Oneisom reproduced monthly police reports
-      showing 26 arrests in 30 reported cases in 1983 and 40 arrests in 56 cases in 1984. Daily
-      officer reports instead listed 36 cases for 1984 and did not consistently record arrests.
-      These incompatible series should not be combined, and none is a current arrest rate.
+      showing 26 arrests in 30 reported cases in 1983 and 40 arrests in 56 cases in
+      1984.[@oneisom1991] Daily officer reports instead listed 36 cases for 1984 and did not
+      consistently record arrests.[@oneisom1991] These incompatible series should not be combined,
+      and none is a current arrest rate.[@oneisom1991] The only
+      documented 2024 case is a 183 g mail-import prosecution in Pohnpei; no nationwide arrest
+      total is published.[@ehsa24]
     sources:
       - oneisom1991
+      - ehsa24
 answers:
   buy:
     answer: no
@@ -226,6 +285,19 @@ sources:
     locator: >-
       Full chapter, including registration, penalties and conditional discharge; replaces the
       narrower Schedule I page
+  pl2108:
+    type: law
+    title: "FSM — Public Law 21-08 (5 July 2019), restoring the 1997 drug-trafficking amendments"
+    url: https://www.cfsm.gov.fm/wp-content/uploads/2026/04/PUBLIC-LAW-NO.-21-08.pdf
+    locator: "Sections 1141 and 1147; import/export and the 15-year tier."
+  ehsa24:
+    title: "FSM Supreme Court — FSM v. Ehsa, 24 FSM R. 536 (Pon. 2024), 1 July 2024"
+    url: https://www.fsmlaw.org/fsm/decisions/vol24/24FSMR536-544.html
+    locator: "183 g of marijuana joints in a Pohnpei parcel; probable cause."
+  ocindex25:
+    title: "Global Initiative — OC Index 2025: Micronesia profile"
+    url: https://ocindex.net/assets/downloads/2025/english/ocindex_profile_micronesia_2025.pdf
+    locator: "Cannabis widely consumed and locally cultivated; loose networks."
   ehsa2023:
     title: FSM Supreme Court — FSM v. Ehsa, 24 FSM R. 151 (Pon. 2023), order of 27 June 2023
     url: https://www.fsmlaw.org/fsm/decisions/vol24/24FSMR151-175.html
