@@ -29,4 +29,4 @@ Kyrgyzstan validation: `profile-audit kg` zero errors/warnings; `country-gaps kg
 | Bangladesh | 2 | 3 | 0 |
 | **Total** | **13** | **15** | **1** |
 
-Final validation: `profile-audit` on all five reported zero errors and warnings; history tests pass 47/47; the build passed at **5,099 pages**; all five country pages render with no raw citation marks. Remaining gaps are only early empty decades (China 1940s–1960s, Kyrgyzstan 1970s, Oman 1930s–1960s) and the optional culture/research/spotlights/genetics sections.
+Final validation: `profile-audit` on all five reported zero errors and warnings; history tests pass 47/47; the build passed at **5,099 pages**; all five country pages render with no raw citation marks. Remaining gaps are the early empty decades (China 1940s–1960s, Kyrgyzstan 1970s, Oman 1930s–1960s), the optional culture/research/spotlights/genetics sections, and Oman’s 1925 first-restriction estimate, which has no article because it is an estimate rather than a dated instrument.
