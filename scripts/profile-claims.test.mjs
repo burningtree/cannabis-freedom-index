@@ -849,8 +849,8 @@ test('Taiwan distinguishes legislative passage, effective growing penalties and 
   assert.equal(p.penalties[1].prison, '15 years');
   assert.equal(d.medical, 'limited');
   assert.equal(d.scores.access, 0);
-  assert.match(d.context.medical.text, /Dravet and Lennox–Gastaut/);
-  assert.equal(d.context.hemp.status, 'strict');
+  assert.match(d.context.medical.text, /Dravet syndrome.*tuberous sclerosis/);
+  assert.equal(d.context.hemp.status, 'none');
   const all = events();
   assert.equal(all.find(e => e.id === 'taiwan-personal-cultivation-amendment-2022').date, '2022-05-04');
   const explanation = all.find(e => e.id === 'taiwan-cbd-rule-2020');

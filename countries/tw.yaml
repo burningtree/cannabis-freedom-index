@@ -18,6 +18,7 @@ segments:
     penalties:
       - over: 0 g
         treatment: criminal
+        term: Possession
         prison: 2 years
         fine: 200000
         note: >-
@@ -25,6 +26,7 @@ segments:
           sentence
       - label: More than 20 g pure Category 2 narcotic
         treatment: criminal
+        term: Possession
         prison_min: 6 months
         prison: 5 years
         fine: 700000
@@ -41,6 +43,7 @@ segments:
     penalties:
       - over: 0 plants
         treatment: criminal
+        term: Personal growing
         prison_min: 1 year
         prison: 7 years
         fine: 1000000
@@ -49,6 +52,7 @@ segments:
           cap, determine eligibility
       - label: Cultivation with intent to manufacture outside the minor personal-use tier
         treatment: criminal
+        term: Cultivation
         prison_min: 5 years
         prison: 15 years
         fine: 5000000
@@ -69,68 +73,128 @@ segments:
       - code33
   enforcement:
     text: >-
-      Strictly enforced, with arrests rising and little political appetite for reform despite annual
-      4/20 demonstrations in Taipei.
+      Enforcement remains strict. Prosecutors reported 2,493 kg of cannabis and 13,917 plants seized
+      in 2024, with 1,305 people prosecuted for cannabis use; the 2025 annual report recorded
+      1,469.1 kg, and a single Taichung seizure in June 2026 reached 766 kg.[@hpo25,report25,tt26]
+      Border interceptions rose even as the annual total fell, so the series are not directly
+      comparable.[@mof26] Annual 4/20 rallies continue, but no reform has passed.[@green26]
     sources:
-      - ts
-      - aj
+      - hpo25
+      - report25
+      - tt26
+      - mof26
+      - green26
   sharing:
-    text: Selling can bring life imprisonment; giving it to others is also a serious offence.
+    text: >-
+      Manufacturing, transporting or selling a Category 2 narcotic carries life imprisonment or at
+      least ten years, with a fine up to NT$15 million.[@moj] Possession with intent to sell carries
+      at least five years, and transferring or giving it to another person six months to five
+      years.[@moj] Sale or transfer to a minor or pregnant woman can be increased by up to one
+      half.[@moj] A public official who uses their position for the same conduct can face death or
+      life.[@moj]
     sources:
-      - ts
+      - moj
+    currency: TWD
+    penalties:
+      - label: Manufacture, transport or sale (article 4)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        fine: 15000000
+        note: Life imprisonment is the maximum
+      - label: Possession with intent to sell (article 5)
+        treatment: criminal
+        term: Possession for sale
+        prison_min: 5 years
+        fine: 5000000
+      - label: Transfer or gift (article 8)
+        treatment: criminal
+        term: Supply
+        prison_min: 6 months
+        prison: 5 years
+        fine: 700000
+      - label: Public official using office (article 15)
+        treatment: criminal
+        term: Official trafficking
+        death: true
+        note: Death or life imprisonment; the only capital cannabis route
   consumption:
     text: >-
-      Use is a crime with up to three years. First-time users are normally sent to observation and
-      rehabilitation instead of being prosecuted.
+      Use of a Category 2 narcotic carries up to three years.[@moj] First-time users are normally
+      sent to observation and rehabilitation for up to two months, then compulsory treatment for six
+      to twelve months, with non-prosecution after completion; a repeat within three years is
+      prosecuted.[@moj] The 2004 procedure set the earlier five-year rule.[@report25]
     sources:
-      - ts
+      - moj
+      - report25
+    currency: TWD
+    penalties:
+      - label: Use (article 10)
+        treatment: criminal
+        term: Personal use
+        prison: 3 years
+        note: First use normally leads to observation and treatment rather than prosecution
   access:
     text: >-
-      Individual prescription imports of CBD medicines are possible; specified hospitals may apply
-      for controlled cannabinoid preparations for two rare epilepsy syndromes. Routine operating
-      THC supply was not verified.[@moh2020]
+      A narrow patient route exists for one CBD medicine: Epidyolex was licensed on 19 January 2024
+      and reimbursed from 1 April 2024 for Dravet syndrome and tuberous sclerosis complex, with
+      strict prescribing criteria.[@epidyolex,nhi24] Individual imports of CBD medicines are also
+      possible with a prescription, and specified hospitals may apply for controlled cannabinoid
+      preparations.[@moh2020] No general THC or flower supply was verified, so the access score
+      stays at zero.[@moh2020]
     sources:
+      - epidyolex
+      - nhi24
       - moh2020
 context:
   production:
     status: none
-    text: None; even industrial hemp cultivation is not permitted.
+    text: >-
+      No lawful cannabis production. Cannabis plants remain Category 2 narcotics even for fibre or
+      seed, and no industrial-hemp cultivation exception exists.[@moj] Article 12 makes cultivation
+      with intent to manufacture an offence of at least five years, or one to seven years for minor
+      personal use.[@moj]
     sources:
-      - aj
+      - moj
   medical:
     text: >-
-      CBD medicines have a prescription-and-import route, with individual approval required for
-      personal imports.[@moh2020] The Health Ministry also describes a special hospital
-      application route for controlled cannabinoid preparations for Dravet and Lennox–Gastaut
-      syndromes.[@moh2020] This is a narrow authorisation framework; routine patient dispensing of
-      THC preparations was not established in the reviewed evidence.[@moh2020]
+      A patient route exists for one CBD medicine. Epidyolex was licensed on 19 January 2024 and
+      reimbursed from 1 April 2024 for Dravet syndrome from age two and tuberous sclerosis complex
+      from age one, after at least three anti-epileptic drugs have failed.[@epidyolex,nhi24] Only
+      paediatric or neurology specialists may prescribe it, with annual review.[@nhi24] Individual
+      CBD imports and a special hospital route for controlled cannabinoid preparations remain
+      available, but no general THC or flower dispensing was verified.[@moh2020]
     sources:
+      - epidyolex
+      - nhi24
       - moh2020
   consequences:
-    text: A conviction is a criminal record; rehabilitation orders are recorded.
+    text: A conviction is a criminal record; rehabilitation orders are recorded.[@moj] A foreigner
+      convicted can also be deported and banned from re-entry.[@customs2024]
     sources:
-      - ts
+      - moj
+      - customs2024
   planting:
     seeds: illegal
     seeds_trade: banned
     clones: illegal
     clones_trade: banned
     text: >-
-      The Narcotics Hazard Prevention Act names cannabis seeds directly. Possessing them
+      The Narcotics Hazard Prevention Act names cannabis seeds directly.[@moj] Possessing them
       carries up to one year in prison, possessing or transferring them with intent to sell up
-      to two years, and transporting or selling them for cultivation at least two years
+      to two years, and transporting or selling them for cultivation up to two years.[@moj]
       (Articles 13 and 14). Growing the plant is a crime under Article 12, with one to seven
-      years where the case is minor and for personal use.
+      years where the case is minor and for personal use.[@moj]
     sources:
       - moj
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@moj,tn]
     sources:
+      - moj
       - tn
-      - ts
   visitors:
     status: none
     text: >-
@@ -145,35 +209,43 @@ context:
       - customs2024
       - moj
   driving:
-    status: zero
+    status: consumption
     text: >-
-      The Road Traffic Management and Penalty Act punishes a driver found by a test to have
-      taken drugs, narcotics or similar controlled substances, with no level set. Car drivers
-      are fined 30,000 to 120,000 New Taiwan dollars and motorcyclists 15,000 to 90,000; the
-      vehicle is removed and the licence suspended for one to two years, or revoked for good
-      after a crash causing serious injury or death. Refusing the test costs 180,000 dollars
-      and the licence, and officers may take the driver for sampling by force.
+      The Road Traffic Management and Penalty Act punishes a driver found by a test to have taken
+      drugs with the maximum statutory fine: NT$120,000 for a motorcycle and NT$150,000 for a car,
+      with the vehicle impounded and the licence revoked.[@rtmpa35] Refusing the drug test costs
+      NT$270,000 and the licence, and a person confirmed by police to have used drugs can lose the
+      licence without driving.[@rtmpa35] The Criminal Code separately sets a urine THC-COOH
+      threshold of 15 ng/mL and an impairment route, with fatal drug-driving carrying three to ten
+      years.[@crim185]
     sources:
       - rtmpa35
+      - crim185
   arrests:
     text: >-
-      The Taiwan High Prosecutors' Office reported in October 2024 that seizures of
-      cannabis reached 2.3 tonnes in 2023, 9.7 times the 240.5 kg of 2021, and that 15,360
-      plants were seized in the first eight months of 2024. It described cannabis as one
-      of the most popular narcotics in Taiwan and increasingly used by young people.
-      Prosecutors said they would keep offering drug users deferred prosecution with
-      addiction treatment, after which 22.5 per cent reoffend, a lower rate than after the
-      other measures. The report gave no count of people charged over cannabis.
+      The High Prosecutors' Office reported 2,493 kg of cannabis and 13,917 plants seized in 2024,
+      with 1,305 people prosecuted for cannabis use; the annual drug report gives a slightly lower
+      2,323.3 kg for the same year.[@hpo25,report24] In 2025 the annual report recorded 1,469.1 kg,
+      48 drug labs and 13 cultivation sites, while a September sweep arrested 245 people.[@report25,newtalk25]
+      The figures combine herbal cannabis and derivatives and do not give a resin-only series.[@report25]
     sources:
-      - tt24
+      - hpo25
+      - report24
+      - report25
+      - newtalk25
   black_market:
     text: >-
-      The Taiwan High Prosecutors' Office
-      reported 2.3 tonnes of cannabis seized in 2023, against 240.5 kg in 2021, and 15,360
-      plants in the first eight months of 2024. Prosecutors called cannabis one of the most popular narcotics in
-      Taiwan.
+      Reported cannabis seizures reached 2.3 tonnes in 2023, against 240.5 kg in 2021, and the
+      High Prosecutors' Office counted 2,493 kg and 13,917 plants in 2024.[@tt24,hpo25] The 2025
+      total fell to 1,469.1 kg, but Taipei Customs alone intercepted 1,602 kg of cannabis and
+      derivatives that year.[@report25,mof26] A single Taichung case in June 2026 found 766.09 kg of
+      dried flower, the largest in a decade.[@tt26] No herb/resin split is published.[@report25]
     sources:
       - tt24
+      - hpo25
+      - report25
+      - mof26
+      - tt26
   recreational:
     text: >-
       Holding, using and growing cannabis remain controlled offences; the lower personal-growing
@@ -183,18 +255,72 @@ context:
     sources:
       - moj
       - courtclarification
-  hemp:
-    status: strict
+  death_penalty:
     text: >-
-      CBD is regulated separately from cannabis and THC as a medicine.[@moh2020] Product-specific
-      exceptions need separate reading: the 2026 cosmetics guidance allows hemp-seed oil
-      ingredients only with a final-product THC residue of no more than 10 ppm.[@cosmetics2026]
-      That cosmetic threshold is not a permission to grow cannabis plants.[@moj,cosmetics2026]
+      Ordinary cannabis possession, use, cultivation, transfer and sale are not capital; the maximum
+      for sale or transport is life imprisonment.[@moj] The only capital route is article 15(1): a
+      public official who uses their position to manufacture, transport or sell a Category 2 narcotic
+      may receive death or life.[@moj] No cannabis death sentence or execution was found.[@moj]
     sources:
-      - moh2020
+      - moj
+  research:
+    status: licensed
+    text: >-
+      Article 18 permits possession of controlled drugs for medical, research or training purposes,
+      and the Controlled Drugs Act licenses institutions.[@moj] No cannabis research programme,
+      licence or clinical trial was found.[@moj]
+    sources:
+      - moj
+  hemp:
+    status: none
+    text: >-
+      No hemp cultivation regime and no THC threshold for growers. Cannabis plants remain Category 2
+      narcotics even for fibre or seed.[@moj] CBD is regulated as a medicine, and the 2026 cosmetics
+      guidance allows hemp-seed oil only where the finished product has no more than 10 ppm THC; that
+      residue limit is not a permission to grow hemp.[@cosmetics2026,moj]
+    sources:
       - cosmetics2026
       - moj
 sources:
+  hpo25:
+    title: "Taiwan High Prosecutors' Office — 2024 drug report (1 October 2025)"
+    url: https://antidrug.moj.gov.tw/dl-3340-e2f237a9-fc37-4efe-8ad2-4de69aa1d699.html
+    locator: "2,493 kg and 13,917 plants in 2024; 1,305 use prosecutions."
+  report24:
+    title: "Taiwan — 2024 national drug report"
+    url: https://antidrug.moj.gov.tw/dl-3340-e2f237a9-fc37-4efe-8ad2-4de69aa1d699.html
+    locator: "2,323.3 kg cannabis in 2024."
+  report25:
+    title: "Taiwan — 2025 national drug report (25 February 2026)"
+    url: https://antidrug.moj.gov.tw/dl-3341-c49bc087-6ad1-4ed7-9bab-a941e02c8976.html
+    locator: "1,469.1 kg; 48 labs; 13 cultivation sites."
+  newtalk25:
+    title: "Newtalk — 245 arrested in nationwide cannabis sweep (1 October 2025)"
+    url: https://newtalk.tw/news/view/2025-10-01/996686
+    locator: "245 arrests in the 23–24 September sweep."
+  mof26:
+    title: "Taiwan Ministry of Finance — Customs intercepted 1,602 kg of cannabis in 2025 (22 January 2026)"
+    url: https://www.mof.gov.tw/eng/singlehtml/f48d641f159a4866b1d31c0916fbcc71?cntId=7390a0fd01d04c13bf13a5b1e7c547c3
+    locator: "Border interceptions; 2025."
+  tt26:
+    title: "Taipei Times — 766 kg cannabis seizure, largest in a decade (6 October 2026)"
+    url: https://www.taipeitimes.com/News/taiwan/archives/2026/10/06/2003865483
+    locator: "766.09 kg dried flower; seven arrested."
+  green26:
+    title: "New Bloom — Eighth Green Wave rally (25 April 2026)"
+    url: https://newbloommag.net/2026/04/25/eighth-420-rally/
+  epidyolex:
+    title: "Taiwan FDA — Epidyolex (cannabidiol) oral solution licence 衛部罕藥輸字第000094號"
+    url: https://mcp.fda.gov.tw/im_detail_1/%E8%A1%9B%E9%83%A8%E7%BD%95%E8%97%A5%E8%BC%B8%E5%AD%97%E7%AC%AC000094%E8%99%9F
+    locator: "Licensed 19 January 2024; Dravet and tuberous sclerosis complex."
+  nhi24:
+    title: "Taiwan NHI — reimbursement for cannabidiol medicines (Epidyolex), effective 1 April 2024"
+    url: https://www.phchb.gov.tw/home.jsp?id=473&act=view&dataserno=202403200004
+    locator: "健保審字第1130051861號; prescribing criteria."
+  crim185:
+    title: "Taiwan Criminal Code, article 185-3"
+    url: https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0000001&flno=185-3
+    locator: "15 ng/mL urine THC-COOH; impairment route; fatal drug-driving."
   rtmpa35:
     title: Taiwan — Road Traffic Management and Penalty Act, Article 35 (Laws and Regulations Database, amended 28 May 2025)
     url: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=K0040012
