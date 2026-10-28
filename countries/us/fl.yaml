@@ -21,26 +21,67 @@ scores:
   consumption: 1
   access: 3
 segments:
-  possession: >-
-    Unauthorised possession of 20 g or less of qualifying cannabis plant material is a first-degree
-    misdemeanour, with up to one year in jail and a $1,000 fine. The exception expressly excludes
-    extracted resin and its derivatives: unauthorised possession of concentrates can be a
-    third-degree felony at any weight, with up to five years and a $5,000 fine. Authorised medical
-    products and lawful hemp have separate rules.
-  cultivation: A felony.
+  possession:
+    text: >-
+      Unauthorised possession of 20 g or less of qualifying cannabis plant material is a first-degree
+      misdemeanour, with up to one year in jail and a $1,000 fine. The exception expressly excludes
+      extracted resin and its derivatives: unauthorised possession of concentrates can be a
+      third-degree felony at any weight, with up to five years and a $5,000 fine. Authorised medical
+      products and lawful hemp have separate rules.[@3,4]
+    currency: USD
+    penalties:
+      - upto: 20 g
+        treatment: criminal
+        term: First-degree misdemeanor
+        prison: 1 year
+        fine: 1000
+      - over: 20 g
+        upto: 25 lb
+        treatment: criminal
+        term: Third-degree felony
+        prison: 5 years
+        fine: 5000
+      - over: 25 lb
+        treatment: criminal
+        term: Trafficking felony
+        prison_min: 3 years
+        fine: 25000
+        note: Higher weights carry longer minimums and larger fines
+  cultivation:
+    text: >-
+      Growing is a felony, punished by plant count: fewer than 25 plants brings up to five years,
+      and the terms climb from there.[@4]
+    currency: USD
+    penalties:
+      - label: Fewer than 25 plants
+        treatment: criminal
+        term: Felony
+        prison: 5 years
+        fine: 5000
+      - label: 25 plants or more
+        treatment: criminal
+        term: Felony
+        fine: 10000
+        note: Terms rise with plant count, up to 30 years for the largest grows
   enforcement: >-
     Jail is possible for small amounts of flower; resin and concentrates fall outside the 20 g
     misdemeanour exception and can bring felony penalties. Several localities offer civil citations
-    for qualifying possession cases.
+    for qualifying possession cases.[@3,4]
   sharing: >-
     An unpaid transfer of 20 g or less of qualifying plant material is a misdemeanour. Resin and its
     derivatives are expressly excluded from that exception, so gifting a concentrate can be a
-    felony; unauthorised sales are felonies.
-  consumption: Illegal without a medical card; patients may not smoke in public.
+    felony; unauthorised sales are felonies.[@3,4]
+  consumption: Illegal without a medical card; patients may not smoke in public.[@4]
   access: >-
     A large medical programme with dispensaries statewide. A 2024 ballot measure to legalise won 56%
     but needed 60%. A second initiative for November 2026 was ruled short of valid signatures and
-    will not be on the ballot.
+    will not be on the ballot.[@4,5,8]
+context:
+  medical:
+    text: >-
+      Florida voters wrote medical cannabis into the constitution with Amendment 2 in 2016, and the
+      Medical Marijuana Use statute licenses treatment centers serving qualified patients.[@6,7]
+    sources: [7, 6]
 sources:
   - title: Florida — 2026 Statutes, section 775.083, fine limits
     url: https://www.flsenate.gov/Laws/Statutes/2026/775.083
@@ -52,6 +93,12 @@ sources:
     url: https://norml.org/laws/florida-penalties/
   - title: Ballotpedia — Florida Marijuana Legalization Initiative (2026)
     url: https://ballotpedia.org/Florida_Marijuana_Legalization_Initiative_(2026)
+  - title: Florida — 2026 Statutes, section 381.986, medical marijuana use
+    url: https://www.flsenate.gov/Laws/Statutes/2026/381.986
+  - title: Ballotpedia — Florida Medical Marijuana Legalization, Amendment 2 (2016)
+    url: https://ballotpedia.org/Florida_Medical_Marijuana_Legalization,_Amendment_2_(2016)
+  - title: Ballotpedia — Florida Amendment 3, Marijuana Legalization Initiative (2024)
+    url: https://ballotpedia.org/Florida_Amendment_3,_Marijuana_Legalization_Initiative_(2024)
 use:
   note: Includes vaping; a model-based estimate.
   share: 19.8

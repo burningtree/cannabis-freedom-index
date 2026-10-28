@@ -212,7 +212,7 @@ test('Irish referrals and Turkish product permission do not imply legal retail s
 
 test('Florida small-flower exceptions never silently include resin (#158)', () => {
   const fl = country('us/fl');
-  assert.match(fl.segments.possession, /20 g.*plant material.*resin.*felony at any weight/);
+  assert.match(fl.segments.possession.text ?? fl.segments.possession, /20 g.*plant material.*resin.*felony at any weight/);
   assert.match(fl.segments.sharing, /Resin.*excluded.*gifting a concentrate can be a felony/);
   assert.match(fl.answers.caught.text, /concentrate possession can be a felony at any weight/);
 });

@@ -14,7 +14,30 @@ File: `countries/us/ca.yaml` (the documented model state file).
 - Audit: 0 errors, 0 warnings. Review page `.cache/page-review/country/us/ca/` verified (420, Brownie Mary, Prop 215/19, 1972 all render).
 - Left: clubs/driving/visitors/arrests sections (no sourced claims found yet); atlas unlinked list is national-level, not CA-actionable.
 
-## tx — pending
-## fl — pending
+## tx (Texas) — committed
+- Penalty tables (possession 5-step ladder verified against NORML: ≤2oz Class B 180d/$2k up to
+  >50lb felony; cultivation charged by weight), city non-enforcement (Austin Prop A 2022, Dallas
+  Prop R 2024 via Marijuana Moment), medical (TCUP + HB 46 2025 via MM signing article), culture
+  (Lee Otis Johnson via Texas Monthly, Willie Nelson via NORML).
+- Corrected own overstatement: top possession term is 99 years, not life. MPP PDF bot-blocked —
+  used MM signing article instead.
+- Audit 0/0; review page verified (all new content renders, all history/culture links resolve).
+- History gap noted, not filled: no TCUP-2015 or HB46-2025 entries in changes.yaml (shared file,
+  left for a history pass).
+
+## fl (Florida) — committed
+- Penalty tables (possession 3 steps: ≤20g misd 1yr/$1k, 20g–25lb felony 5yr/$5k, 25lb+ trafficking
+  min 3yr; cultivation by plant count, verified against NORML), citations on all segments, new
+  `medical` (Amendment 2 2016 + statute 381.986), access cites (Amendment 3 2024 via Ballotpedia,
+  2026 initiative via existing source).
+- Incidental: test #158 accessor updated (`fl.segments.possession.text ?? ...`) — table form made
+  possession an object; regex assertions unchanged (file already uses `.text` for ph/vn/ws).
+  Claims suite 87/0. Committed in same change since the test covers it.
+- Ballotpedia amendment URLs bot-blocked (empty bodies) — accepted on slug convention matching the
+  already-vetted 2026 sibling URL in this file.
+- No FL history entries exist (no Amendment 2 / Amendment 3 entries) and no grounded FL culture
+  subject found — both noted, not filled.
+- Audit 0/0; review page verified.
+
 ## ny — pending
 ## pa — pending
