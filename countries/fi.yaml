@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 246
 recreational: illegal
 medical: limited
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Use itself is a criminal offence, typically fined. Medical cannabis is available to a small number
   of patients.
@@ -18,53 +18,64 @@ segments:
   possession:
     text: >-
       Unlawfully possessing a small amount for one's own use, or attempting to acquire it, is a
-      drug-use offence: a fine or imprisonment for at most six months. The Police Board's summary
-      fine table, in the instruction of 31 May 2024, lists hash and marijuana at up to 10 g. The
-      ordinary fine is 10 day-fines, the range is 10 to 15, and continuous use is 15 to 20.
+      drug-use offence: a fine or imprisonment for at most six months.[@vks] The Police Board's summary
+      fine table, in the instruction of 31 May 2024, lists hash and marijuana at up to 10 g.[@polguide] The
+      ordinary fine is 10 day-fines, the range is 10 to 15, and continuous use is 15 to 20.[@polguide]
+      [Finland created a separate lower-penalty drug-use offence in 2001.](/history/finland-summary-fines-2001/)
     sources:
       - vks
       - polguide
     penalties:
       - upto: 10 g
         treatment: criminal
+        term: Possession
         note: Ordinarily 10 day-fines (income-based), range 10–15; 15–20 for continuous use; statute allows up to six months
   cultivation:
     text: >-
       Chapter 50 section 1(2) criminalises cultivating or attempting to cultivate hemp for use as a
-      narcotic or its raw material. It is not a blanket offence covering all hemp growing.
+      narcotic or its raw material.[@criminal50] It is not a blanket offence covering all hemp growing.[@criminal50]
     sources:
       - criminal50
+    penalties:
+      - label: Cultivating hemp as a narcotic (Chapter 50, section 1)
+        treatment: criminal
+        term: Cultivation
+        prison: 2 years
+        note: Fine or up to two years, as for the ordinary narcotics offence; only growing as a drug is covered
   enforcement:
     text: >-
-      The drug-use offence can be dealt with by a summary fine. The statute still allows
-      imprisonment for at most six months.
+      The drug-use offence can be dealt with by a summary fine.[@vks,polguide] The statute still allows
+      imprisonment for at most six months.[@vks]
+      [Finland created a separate lower-penalty drug-use offence in 2001.](/history/finland-summary-fines-2001/)
     sources:
       - vks
       - polguide
   sharing:
     text: >-
       Chapter 50 section 1(4) covers sale, brokering, transfer to another and other distribution or
-      attempted distribution. The ordinary narcotics offence carries a fine or up to two years in
-      prison.
-    sources:
-      - criminal50
+      attempted distribution.[@criminal50] The ordinary narcotics offence carries a fine or up to two years in
+      prison.[@criminal50]
     penalties:
       - label: Ordinary narcotics offence (Chapter 50, section 1)
         treatment: criminal
+        term: Supply
         prison: 2 years
         note: Fine or up to two years for sale, brokering or other distribution
+    sources:
+      - criminal50
   consumption:
     text: >-
-      Unlawful use is the same drug-use offence, a fine or imprisonment for at most six months.
+      Unlawful use is the same drug-use offence, a fine or imprisonment for at most six months.[@vks]
       The small-amount limit applies to possession and attempted acquisition, not to the use
-      itself.
+      itself.[@vks]
     sources:
       - vks
   access:
     text: >-
       No recreational source. Sativex, a THC/CBD mouth spray, may be prescribed by a neurologist for
       severe multiple-sclerosis spasticity; other cannabis medicines require an individual special
-      permit and prescription.
+      permit and prescription.[@fimea,fimea_permit]
+      [Finland began granting patient-specific medical cannabis permits in 2006.](/history/finland-medical-cannabis-permits-2006/)
     sources:
       - fimea
       - fimea_permit
@@ -92,18 +103,18 @@ context:
       - ruoka
   production:
     status: none
-    text: No licensed production.
-    sources:
-      - wiki
-  products:
-    text: One approved cannabinoid medicine, plus imported medical flower by special permit.
+    text: >-
+      No licensed production exists. The only approved cannabinoid medicine is centrally
+      authorised, and medical flower reaches patients only through individual special-permit
+      imports.[@fimea,fimea_permit]
     sources:
       - fimea
       - fimea_permit
   medical:
     text: >-
       Extremely limited: a mouth spray for multiple sclerosis as a last resort, and Dutch medical
-      flower only through an individual special permit held by a small number of patients.
+      flower only through an individual special permit held by a small number of patients.[@fimea,fimea_permit,nordic]
+      [Finland began granting patient-specific medical cannabis permits in 2006.](/history/finland-medical-cannabis-permits-2006/)
     sources:
       - fimea
       - fimea_permit
@@ -111,7 +122,7 @@ context:
   consequences:
     text: >-
       Drug-user fines are recorded in police registers and can affect security clearances, some
-      professions and a driving licence.
+      professions and a driving licence.[@td,nordic]
     sources:
       - td
       - nordic
@@ -121,11 +132,11 @@ context:
     clones: grey
     clones_trade: unclear
     text: >-
-      Finnish law punishes growing hemp only when it is grown as a drug. In 2020 the Court of Appeal
+      Finnish law punishes growing hemp only when it is grown as a drug.[@yle20] In 2020 the Court of Appeal
       of Eastern Finland overturned the conviction of a man who grew hemp to collect seed for
-      breeding and had told the police beforehand. A criminal-law professor commenting on the case
+      breeding and had told the police beforehand.[@yle20] A criminal-law professor commenting on the case
       said selling seeds so that drugs are made from them is certainly a crime, while selling them
-      for other purposes can be allowed; both professors quoted stressed that it was a single case.
+      for other purposes can be allowed; both professors quoted stressed that it was a single case.[@yle20]
     sources:
       - yle20
   driving:
@@ -133,44 +144,44 @@ context:
     text: >-
       Under the criminal code a driver commits an offence if a narcotic is found in the blood at
       all, unless it comes from a medicinal product the person has a right to use; a second
-      provision covers impaired driving. Police may stop at random and test on suspicion, with an
-      oral-fluid test after a physical test and blood taken at a hospital or police station. The
+      provision covers impaired driving.[@euda_dd] Police may stop at random and test on suspicion, with an
+      oral-fluid test after a physical test and blood taken at a hospital or police station.[@euda_dd] The
       detection offence carries up to 120 day-fines or six months in prison, impaired driving at
-      least 60 day-fines or up to two years, and the ban can last up to five years.
+      least 60 day-fines or up to two years, and the ban can last up to five years.[@euda_dd]
     sources:
       - euda_dd
   clubs:
     status: none
     text: >-
-      No clubs are known. A Europe-wide survey of cannabis social clubs carried out in 2018 and 2019
+      No clubs are known: a Europe-wide survey of cannabis social clubs carried out in 2018 and 2019
       found, after online searches and contact with people in the field, that there did not seem to
-      be any active club in Finland. Nothing
-      more recent was found.
+      be any active club in Finland, and nothing more recent than that survey was found.[@pardal20]
     sources:
       - pardal20
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Unlawful use, or possession of a small
+      There is no legal recreational supply for anyone.[@vks] Unlawful use, or possession of a small
       amount for one's own use, is a drug-use offence: a fine or imprisonment for at most six
-      months.
+      months.[@vks]
+      [Finland created a separate lower-penalty drug-use offence in 2001.](/history/finland-summary-fines-2001/)
     sources:
       - vks
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 1,668 kg of herbal cannabis and 274 kg of
-      cannabis resin seized in Finland in 2024, against 1,018 kg and 211 kg in 2023. Herbal cannabis
-      was seized on 988 occasions and resin on 248. Plant seizures came to 10,373 plants. Countries
-      record seizures differently, so the figures are not comparable across borders.
+      cannabis resin seized in Finland in 2024, against 1,018 kg and 211 kg in 2023.[@euda_szr] Herbal cannabis
+      was seized on 988 occasions and resin on 248.[@euda_szr] Plant seizures came to 10,373 plants.[@euda_szr] Countries
+      record seizures differently, so the figures are not comparable across borders.[@euda_szr]
     sources:
       - euda_szr
   arrests:
     text: >-
       Statistics Finland counted 25,600 narcotics offences coming to the attention of the police,
-      customs and border guard in 2024, 1,200 more than in 2023. Of these, 17,100, about two thirds,
+      customs and border guard in 2024, 1,200 more than in 2023.[@statfi24] Of these, 17,100, about two thirds,
       were drug use offences, the lesser offence that covers use and possession of a small amount
-      for one's own use; that was 1,600 fewer than the year before. The clearance rate for narcotics
-      offences was 89.5 per cent. The figures are not split by substance.
+      for one's own use; that was 1,600 fewer than the year before.[@statfi24] The clearance rate for narcotics
+      offences was 89.5 per cent.[@statfi24] The figures are not split by substance.[@statfi24]
     sources:
       - statfi24
 sources:
@@ -195,9 +206,6 @@ sources:
       Yle — report on the Court of Appeal of Eastern Finland ruling on hemp grown for seed (16
       October 2020)
     url: https://yle.fi/a/3-11598043
-  wiki:
-    title: Wikipedia — Cannabis in Finland
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Finland
   vks:
     title: Prosecutor General — VKS:2018:2, sentencing for a drug-use offence (in force from 1 January 2019)
     url: https://www.syyttajalaitos.fi/vks20182/
