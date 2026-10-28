@@ -8,8 +8,8 @@ Scope note: stage only own lines in `changes.yaml`.
 
 | Country | Work | State | Commit |
 |---|---|---|---|
-| Honduras | possession/sharing terms, citations+links 15/15, hemp(none) section, audit 0/0, chain clean, article honduras-drug-law-1989; driving+arrests unwritten, decades 1930s/50s/60s/2000s empty, no culture section | done | PENDING |
-| Nicaragua | | | |
+| Honduras | possession/sharing terms, citations+links 15/15, hemp(none) section, audit 0/0, chain clean, article honduras-drug-law-1989; driving+arrests unwritten, decades 1930s/50s/60s/2000s empty, no culture section | done | c0436d4 |
+| Nicaragua | possession/cultivation/sharing terms, citations+links 14/15, hemp(none) section, audit 0/0, chain clean, article nicaragua-ley-285-1999; driving+arrests unwritten, decades 1980s/2020s empty, nothing since 2010, no culture section | done | PENDING |
 | El Salvador | | | |
 | Costa Rica | | | |
 | Panama | | | |
