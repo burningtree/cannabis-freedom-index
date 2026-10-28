@@ -17,7 +17,6 @@ import Cited from "./Cited.astro";
 import { references, citeParts, citedKeys } from "../lib/cite.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
 import { TREATMENT, punishmentText, punishmentExtra } from "../lib/penalties.js";
-import { viewByMetric } from "../lib/map-views.js";
 import { Icon } from "astro-icon/components";
 import PenaltyTable from "./PenaltyTable.astro";
 import { answersFor } from "../lib/answers.js";
@@ -68,9 +67,6 @@ const srcList = sub ? sub.sources : d?.sources ?? [];
 const ctxParts = ctxList ? Object.fromEntries(ctxList.filter(Boolean).map((x) => [x.key, x.items ? x.items.map((item, i) => partsOf(item, refs, `${x.key}[${i}]`)) : partsOf(x, refs, x.key)])) : {};
 // a maximum fine in the profile's currency: "€5,500", "$300"
 const money = (n, currency) => new Intl.NumberFormat("en-GB", { style: "currency", currency, maximumFractionDigits: 0 }).format(n);
-// a chip inside a context section leads to the world map coloured by the same status
-const mapOf = (metric) => (viewByMetric[metric] ? `${base}map/${viewByMetric[metric].slug}/` : undefined);
-const onMap = (help) => `${help} · See the world map`;
 // the recreational and medical status chips lead to their own context sections, where those exist
 const ctxHas = (key) => Boolean(ctxList?.some((x) => x?.key === key));
 const INCB = ["International Narcotics Control Board — Travellers carrying medicines containing controlled substances", "https://www.incb.org/incb/en/travellers/index.html", null, "https://www.incb.org/incb/en/travellers/index.html"];
@@ -372,25 +368,25 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
         <div class={g ? "ctx-wide" : "ctx-grid"}>
           {list.map((x) => (
             <div class="segrow ctx-tile" data-seg={`ctx-${x.key}`} id={`seg-ctx-${x.key}`}>
-              <div class="segrow-top"><span>{CONTEXT_ICONS[x.key] && <Icon name={CONTEXT_ICONS[x.key]} class="ctx-icon" aria-hidden="true" />}{x.key === "products" ? x.name : <a class="ctx-topic" href={`${base}context/${x.key.replace(/_/g, "-")}/`} title={`${x.name} in every country`}>{x.name}</a>}<SourceTip label="What this covers" inline>{x.help}</SourceTip></span></div>
+              <div class="segrow-top"><span>{CONTEXT_ICONS[x.key] && <Icon name={CONTEXT_ICONS[x.key]} class="ctx-icon" aria-hidden="true" />}<span class="src-tip src-tip-inline ctx-topic-tip">{x.key === "products" ? x.name : <a class="ctx-topic" href={`${base}context/${x.key.replace(/_/g, "-")}/`}>{x.name}</a>}<span class="src-tip-pop" role="tooltip"><b>What this covers</b> {x.help}{x.key !== "products" && <i>Select for every country</i>}</span></span></span></div>
               {x.national && <p class="ctx ctx-general">For all of {c.name}; nothing written for {sub.name} yet.</p>}
               {x.key === "recreational" && (
-                <div class="d-chips"><a class={`chip s-${v.rec}`} href={mapOf("status:rec")} title={onMap(REC_HELP[v.rec])}>Recreational: {REC_LABEL[v.rec]}</a></div>
+                <div class="d-chips"><span class={`chip s-${v.rec}`} title={REC_HELP[v.rec]}>Recreational: {REC_LABEL[v.rec]}</span></div>
               )}
               {x.key === "medical" && (
-                <div class="d-chips"><a class={`chip s-${v.med}`} href={mapOf("status:med")} title={onMap(MED_HELP[v.med])}>Medical: {MED_LABEL[v.med]}</a></div>
+                <div class="d-chips"><span class={`chip s-${v.med}`} title={MED_HELP[v.med]}>Medical: {MED_LABEL[v.med]}</span></div>
               )}
               {x.status && (
                 <div class="d-chips">
-                  <a class={`chip s-${STATUS_SECTIONS[x.kind].statuses[x.status].tone}`} href={mapOf(`status:${x.kind}`)} title={onMap(STATUS_SECTIONS[x.kind].statuses[x.status].help)}>{STATUS_SECTIONS[x.kind].chip}: {STATUS_SECTIONS[x.kind].statuses[x.status].label}</a>
+                  <span class={`chip s-${STATUS_SECTIONS[x.kind].statuses[x.status].tone}`} title={STATUS_SECTIONS[x.kind].statuses[x.status].help}>{STATUS_SECTIONS[x.kind].chip}: {STATUS_SECTIONS[x.kind].statuses[x.status].label}</span>
                 </div>
               )}
               {x.seeds && (
                 <div class="d-chips">
-                  <a class={`chip s-${PLANTING_STATUS[x.seeds].tone}`} href={mapOf("plant:seeds")} title={onMap(PLANTING_STATUS[x.seeds].help[0])}>Seeds: {PLANTING_STATUS[x.seeds].label}</a>
-                  <a class={`chip s-${PLANTING_TRADE[x.seeds_trade].tone}`} href={mapOf("plant:seeds_trade")} title={onMap(PLANTING_TRADE[x.seeds_trade].help[0])}>Seed sales: {PLANTING_TRADE[x.seeds_trade].label}</a>
-                  <a class={`chip s-${PLANTING_STATUS[x.clones].tone}`} href={mapOf("plant:clones")} title={onMap(PLANTING_STATUS[x.clones].help[1])}>Clones: {PLANTING_STATUS[x.clones].label}</a>
-                  <a class={`chip s-${PLANTING_TRADE[x.clones_trade].tone}`} href={mapOf("plant:clones_trade")} title={onMap(PLANTING_TRADE[x.clones_trade].help[1])}>Clone sales: {PLANTING_TRADE[x.clones_trade].label}</a>
+                  <span class={`chip s-${PLANTING_STATUS[x.seeds].tone}`} title={PLANTING_STATUS[x.seeds].help[0]}>Seeds: {PLANTING_STATUS[x.seeds].label}</span>
+                  <span class={`chip s-${PLANTING_TRADE[x.seeds_trade].tone}`} title={PLANTING_TRADE[x.seeds_trade].help[0]}>Seed sales: {PLANTING_TRADE[x.seeds_trade].label}</span>
+                  <span class={`chip s-${PLANTING_STATUS[x.clones].tone}`} title={PLANTING_STATUS[x.clones].help[1]}>Clones: {PLANTING_STATUS[x.clones].label}</span>
+                  <span class={`chip s-${PLANTING_TRADE[x.clones_trade].tone}`} title={PLANTING_TRADE[x.clones_trade].help[1]}>Clone sales: {PLANTING_TRADE[x.clones_trade].label}</span>
                 </div>
               )}
               {x.items

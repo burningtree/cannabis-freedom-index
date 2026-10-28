@@ -1250,9 +1250,9 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .ds-stand-ends { display: flex; justify-content: space-between; font: 400 9.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
 .ds-details { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
 .ds-note { color: var(--muted); }
-.ds-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; padding-top: 4px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
-.ds-links a { color: var(--muted); }
-.ds-links a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+/* the dataset's name leads to its page across every country */
+.ds-card h4 a { color: inherit; }
+.ds-card h4 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 @media (max-width: 640px) { .ds-figure b { font-size: 24px; } }
 .cd-stack { display: flex; height: 10px; overflow: hidden; border-radius: var(--r); background: var(--border); }
 .cd-stack i { display: block; height: 100%; }
@@ -3503,6 +3503,10 @@ a.ch-db-track:hover { background: color-mix(in srgb, var(--text) 6%, transparent
 /* a context section's title on a profile leads to the topic across every country */
 a.ctx-topic { color: inherit; }
 a.ctx-topic:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+/* a context section's name: what the section covers on hover or focus, the topic's page on a click */
+.src-tip.ctx-topic-tip { margin-left: 0; vertical-align: baseline; }
+.ctx-topic-tip:has(a:focus-visible) .src-tip-pop { display: block; }
+.ctx-topic-tip .src-tip-pop i { display: block; margin-top: 6px; font: 400 10.5px var(--mono); font-style: normal; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
 /* the row of topics at the top of the context pages */
 .ctxp-menu { margin: 18px 0 0; border-bottom: 1px solid var(--border); }
 .ctxp-menu ol { display: flex; gap: 4px 22px; margin: 0; padding: 0; list-style: none; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent); padding-right: 28px; }
