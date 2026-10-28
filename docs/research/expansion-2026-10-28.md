@@ -11,7 +11,7 @@ Other agents' changes in `source-archive.json` and their research notes are excl
 | Kosovo | 1950 cultivation-ban article; three documented Albanian/Serbian words; two 2026 history entries | Early Yugoslav decades; 1930 original code; 2026 table annex | 8b250a9f |
 | Croatia | 1950 cultivation-ban and 2025 sentencing articles; 2024 asset-confiscation event and profile explanation; scoring rationale | 1930 original code and 1940s/1960s–1980s history | 67ca9f1a |
 | Romania | Five history entries; 1969 and October 2026 articles; current proposal and primary-source consumption explanation | 1930s–1950s/1980s; original 2000 text retrieval; exact bill filing/status record | 721bfe2e |
-| Moldova | Two articles; 1987 possession easing and two policy events; corrected repeat maximum and historical score timing; production links | 1934 territorial/first-ban reconstruction; 1940s–1960s; current quantity-table adoption | This country’s commit |
+| Moldova | Two articles; 1987 possession easing and two policy events; corrected repeat maximum and historical score timing; production links | 1934 territorial/first-ban reconstruction; 1940s–1960s; current quantity-table adoption | 417ad934 |
 
 ## Northern Cyprus source limits
 
@@ -107,3 +107,21 @@ build, eight selected pages rendered successfully. The existing April hemp artic
 reviewed and retained; new articles cover the 1974 possession rules and October 2026 strategy.
 Earlier pages will be included in a final combined review because other builds replace the
 shared review directory. No current status or score changed.
+
+## Final validation
+
+All 196 tests pass, including the newly added history-link integrity tests. A combined review
+build rendered all 26 changed country/history pages successfully, including the earlier Kosovo
+and Croatia pages. Their HTML was inspected for the articles, linked events, rendered references
+and profile context; no unresolved citation marks remained. The snapshot is in
+`.cache/expansion-europe/final-review/` and its log in `final-build.log`. Five profile audits
+report zero errors; Kosovo retains one existing warning because research licences occur in a
+production section correctly classified as no commercial production. Moldova's history chain
+has no flagged steps. A final citation pass adds sentence-level marks to this batch's articles.
+
+Totals: five selected countries, eight new articles, thirteen new contextual/scored events
+(including the Cyprus counterpart of the 1956 colony-wide law), three locally attested words,
+and a correction of the timing of Moldova's possession easing. Current scores are unchanged.
+Unverified first-ban details, sparse decades and inaccessible annexes remain listed above.
+All shared history changes were staged by owned IDs once concurrent edits appeared; other
+contributors' profiles, history entries, source archive and assets were left out of our commits.

@@ -53,4 +53,9 @@ track); Canada (separate job); Eritrea/Somaliland/Sudan (closed/recent); Africa 
 - Tables already present (Art 63 6 mo + 5,000–100,000 HTG; Art 50 5 yrs; Art 49 30 yrs); no other profile surgery needed.
 - Audit 0/0 (page + articles verified; note: build-pages review dir is per-invocation — verify all targets before rebuilding).
 - Left: 1925 estimate, driving (no section), thin decades.
-## do — pending
+## do — committed
+- Word marihuana (Spanish (Dominican Republic), the law's word; growing marihuana = trafficking); 1975-law link added to production.
+- New `articles/dominican-republic-senate-users-bill-2026.md` (Diario Libre: Espiritusanto's Art. 75 amendment, no prison + health referral, distributor/trafficker/financier tiers stay — resolves five dangling profile links) + `articles/dominican-republic-law-168-1975.md` (FC Abogados: earliest recorded law, called ineffective by Law 50-88's preamble, cannabis content not found).
+- Tables already present (20 g / distributor / trafficker; plant-count bands); no other profile surgery needed.
+- Audit 0/0; page + both articles verified (after waiting out three concurrent agents' builds — one-build lock respected throughout).
+- Left: 1925 estimate, 1993 convention (imp 1, skipped).
