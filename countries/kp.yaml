@@ -1,12 +1,13 @@
 name: North Korea
 region: Asia
 iso_numeric: 408
-recreational: death
+recreational: illegal
 medical: none
-updated: 2026-10-10
+updated: "2026-10-28"
 summary: >-
-  Legal status is opaque. Officially a controlled substance; hemp is widely grown. Scored with low
-  confidence.
+  Legal status is opaque. Cannabis is listed as a narcotic and unauthorised storage or use is
+  prohibited; hemp is widely grown. Scored with low confidence because no cannabis-specific penalty,
+  prosecution or execution is published.
 scores:
   possession: 0
   cultivation: 0
@@ -17,106 +18,245 @@ scores:
 segments:
   possession:
     text: >-
-      Contrary to a persistent internet myth, cannabis is not legal in North Korea. The penal code
-      lists it as a controlled substance alongside cocaine and heroin, and a 2005 narcotics-control
-      law classifies cannabis and hemp resin as narcotics. What penalties are applied in practice is
-      unknown; this entry is scored with low confidence.
+      Contrary to a persistent internet myth, cannabis is not legal in North Korea. The 2003
+      Narcotics Control Law lists cannabis (대마) and cannabis resin (대마수지) as narcotics, and
+      unauthorised storage is prohibited.[@law2003] The 2022 Criminal Law provides five to ten
+      years' labour reform for grave drug-storage cases, but sets no cannabis gram threshold or base
+      term.[@cc2022] This segment is scored with low confidence.
     sources:
-      - ap
-      - lc
+      - law2003
+      - cc2022
+    penalties:
+      - label: Unauthorised storage (Criminal Law article 236)
+        treatment: criminal
+        term: Possession
+        prison_min: 5 years
+        prison: 10 years
+        note: Grave cases; no cannabis threshold or fine published
   cultivation:
     text: >-
-      Drug cultivation is prohibited. Industrial hemp with low THC is legal and widely grown for
-      cloth, oil and other consumer goods — one source of the myth.
+      Growing narcotic raw plants requires a state plan, a production licence and a land-use
+      licence, and unauthorised cultivation is prohibited.[@law2003] The Criminal Law's express
+      cultivation offence covers opium poppy, not cannabis, so the cannabis term is not
+      published.[@cc2022] Low-THC hemp is grown under official sanction for cloth, oil and food, but
+      no published THC threshold or general hemp exception was found.[@piie,ap]
     sources:
-      - wiki
-      - lc
+      - law2003
+      - cc2022
+      - piie
+      - ap
+    penalties:
+      - label: Unauthorised cultivation of a narcotic raw plant
+        treatment: criminal
+        term: Cultivation
+        note: Licensing offence; no cannabis-specific term published
   enforcement:
     text: >-
-      Unknown. Drug offences in general can bring labour-camp sentences, and executions for drug
-      trafficking have been reported.
+      Drug offences in general can bring labour-camp sentences, and executions for large-scale
+      narcotics manufacture or trafficking are reported; no cannabis execution is
+      verified.[@kinu2017,cc2022] A widely cited 2010 “firing squad” report concerned
+      methamphetamine, not marijuana, and said the authorities did not treat opium or marijuana as
+      drugs.[@guardian14]
     sources:
-      - lc
+      - kinu2017
+      - cc2022
+      - guardian14
   sharing:
-    text: Distribution is prohibited by the narcotics law.
+    text: >-
+      The 2003 law prohibits unapproved transfer or sale of narcotics.[@law2003] The 2022 Criminal
+      Law's trafficking ladder runs from up to five years to life or death for “extremely large”
+      amounts; no cannabis quantity is published.[@cc2022]
     sources:
-      - lc
+      - law2003
+      - cc2022
+    penalties:
+      - label: Narcotics trafficking, base
+        treatment: criminal
+        term: Trafficking
+        prison: 5 years
+        note: General narcotics ladder; no cannabis threshold published
+      - label: Large amount
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 10 years
+      - label: Extremely large amount
+        treatment: criminal
+        term: Trafficking
+        death: true
+        life: possible
+        note: Confiscation also applies
   consumption:
     text: >-
-      Use is prohibited. Reports of people openly smoking 'weed' probably refer to ipdambae, a rough
-      blend of herbs and tobacco leaf.
+      Use is prohibited, and the 2022 Criminal Law's use article provides up to five years' labour
+      reform in grave cases.[@law2003,cc2022] Reports of people openly smoking “weed” probably refer
+      to ipdambae, a rough blend of herbs and tobacco leaf.[@ap]
     sources:
-      - wiki
+      - law2003
+      - cc2022
       - ap
   access:
     text: >-
-      None. A Western diplomat based in Pyongyang said there should be no doubt that drugs,
-      including marijuana, are illegal.
+      None. The Swedish ambassador based in Pyongyang said there should be no doubt that drugs,
+      including marijuana, are illegal.[@ap] No medical or adult-use supply route was
+      found.[@law2003]
     sources:
       - ap
+      - law2003
 context:
   death_penalty:
     text: >-
-      Drug offences can bring labour-camp sentences, and executions for drug trafficking have been
-      reported.
+      The 2022 Criminal Law provides life or death for “extremely large” narcotics manufacture or
+      trafficking, and the 2003 law lists cannabis as a narcotic.[@cc2022,law2003] No cannabis
+      quantity, prosecution or execution is documented, and the reported 2010 firing-squad threat
+      concerned methamphetamine, not marijuana.[@guardian14]
     sources:
-      - lc
+      - cc2022
+      - law2003
+      - guardian14
   recreational:
     text: >-
-      There is no lawful recreational supply: marijuana is illegal, a criminal offence to smoke
-      with no leniency promised, even though personal cultivation may often go
-      unpunished.[@ap,wiki]
+      There is no lawful recreational supply. Cannabis is a narcotic, and unauthorised storage or
+      use is prohibited.[@law2003] A diplomat said there should be no doubt that marijuana is
+      illegal, while reports of open smoking probably refer to ipdambae.[@ap] No cannabis execution
+      is verified.[@cc2022]
     sources:
+      - law2003
       - ap
-      - wiki
+      - cc2022
   production:
     status: none
     text: >-
-      No lawful production of psychoactive cannabis. Low-THC industrial hemp is legally grown
-      at scale for cloth, oil and other goods.[@wiki,lc]
+      No lawful production of psychoactive cannabis. Low-THC hemp is grown under official sanction
+      for cloth, oil and food, but no licensed adult-use or medical cannabis production route was
+      found.[@piie,law2003]
     sources:
-      - wiki
-      - lc
+      - piie
+      - law2003
   hemp:
-    status: standard
+    status: none
     text: >-
-      Low-THC hemp is legal and widely grown for cloth, oil and other consumer goods, which
-      feeds the myth that marijuana is legal; the narcotics law still lists cannabis and hemp
-      resin as narcotics.[@wiki,lc]
+      Low-THC hemp is grown under official sanction for cloth, oil and food, which feeds the myth
+      that marijuana is legal; no published THC threshold or general low-THC exception was found,
+      and the narcotics law still lists cannabis and hemp resin as narcotics.[@piie,ap,law2003]
     sources:
-      - wiki
-      - lc
+      - piie
+      - ap
+      - law2003
   medical:
-    text: No medical cannabis.
+    text: >-
+      No medical cannabis programme or cannabis-based medicine was found. The 2003 law allows
+      approved narcotics for treatment, education and research, but that is a general
+      state-controlled route, not patient access.[@law2003]
     sources:
-      - lc
+      - law2003
   consequences:
-    text: Unknown.
+    text: >-
+      No reliable account of the ordinary sentence for cannabis possession was found. Drug offences
+      can bring labour-camp sentences, and a 2024 provincial campaign reportedly sought death even
+      for small smuggled amounts, but the reporting concerns methamphetamine and opium, not
+      cannabis.[@kinu2017,dailynk24]
     sources:
-      - lc
+      - kinu2017
+      - dailynk24
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      No cannabis clubs are known, and the law leaves no room for them: unauthorised growing and
+      supply are prohibited, and the general narcotics law provides life or death for the most
+      serious trafficking cases.[@law2003,cc2022]
     sources:
-      - wiki
-      - lc
+      - law2003
+      - cc2022
   visitors:
     status: none
     text: >-
       There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. The sources behind this profile describe no separate rule for visitors.
+      cannabis. The 2021 Drug Crime Prevention Act applies to foreigners in North Korea and to
+      cross-border smuggling or incitement; no separate visitor rule or deportation detail was
+      verified.[@law2021,law2003]
     sources:
-      - ap
+      - law2021
+      - law2003
+  planting:
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      No cannabis-specific seed rule was found.[@law2003] The 2003 law controls narcotic raw plants
+      through state plans and licences, and clones are plants under the cultivation regime.[@law2003] These statuses
+      are inferred from the licensing rules, not from a published seed provision.[@law2003]
+    sources:
+      - law2003
+  driving:
+    status: unknown
+    text: >-
+      No drug-driving provision or THC limit was found. The general narcotics ban applies, but a
+      road-traffic trigger could not be verified.[@law2003,law2021]
+    sources:
+      - law2003
+      - law2021
+  black_market:
+    text: >-
+      No cannabis seizure or price series is published. UNODC has no North Korea cannabis
+      rows.[@unodc_szr] The 2024 Hamgyong reporting concerns methamphetamine and opium, not
+      cannabis.[@dailynk24]
+    sources:
+      - unodc_szr
+      - dailynk24
+  arrests:
+    text: >-
+      No cannabis arrest or prosecution count is published. A July 2024 provincial report said drug
+      offences rose 40% year on year, with more than 900 cases in Chongjin; the reporting concerns
+      methamphetamine and opium.[@dailynk24] No cannabis execution is verified.[@kinu2017]
+    sources:
+      - dailynk24
+      - kinu2017
 sources:
-  wiki:
-    title: Wikipedia — Cannabis in North Korea
-    url: https://en.wikipedia.org/wiki/Cannabis_in_North_Korea
   ap:
     title: AP via Fox News — North Korea cheered as pot paradise, but evidence is hazy
     url: https://www.foxnews.com/world/north-korea-cheered-as-pot-paradise-but-evidence-is-hazy
-  lc:
-    title: LegalClarity — Is cannabis actually legal in North Korea?
-    url: https://legalclarity.org/is-cannabis-actually-legal-in-north-korea/
+  law2003:
+    title: North Korea — Narcotics Control Law (2003, amended 2005), MOJ Unification Law text
+    url: >-
+      https://www.unilaw.go.kr/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000021&nttId=112&menuNo=3010000&upperMenuId=3000000
+    locator: >-
+      Adopted 13 August 2003, decree 3935; amended 17 May 2005; Appendix 1 nos. 22 (cannabis resin)
+      and 119 (cannabis); articles 8–12, 35, 39–41 and 49.
+  law2021:
+    title: North Korea — Drug Crime Prevention Act (1 July 2021), MOJ Unification Law text
+    url: >-
+      https://www.unilaw.go.kr/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000021&nttId=3462&menuNo=3010000&upperMenuId=3000000
+    locator: Article 2 definition; article 7 application to foreigners; articles 11 and 20–39.
+  cc2022:
+    title: KINU — North Korea's 2022 Criminal Law drug offences (2023 report)
+    url: https://www.kinu.or.kr/main/module/report/download.do?id=21984
+    locator: >-
+      Pp. 5–6, table 2: articles 231–238; life or death for extremely large manufacture or
+      trafficking.
+  kinu2017:
+    title: KINU — North Korea Human Rights White Paper 2017
+    url: https://repo.kinu.or.kr/bitstream/2015.oak/8442/1/0001480198.pdf
+    locator: "Pp. 41–43, table II-3: 2013 criminal-code amendments and capital drug tiers."
+  piie:
+    title: PIIE — North Korean Pot
+    url: https://www.piie.com/blogs/north-korea-witness-transformation/north-korean-pot
+    locator: 1980s hemp promotion; official hemp growing for oil and fibre.
+  guardian14:
+    title: "The Guardian — Mythbusters: uncovering the truth about North Korea (13 May 2014)"
+    url: >-
+      https://www.theguardian.com/world/2014/may/13/mythbusters-uncovering-the-truth-about-north-korea-cannabis-metro
+    locator: >-
+      Drug offenders can be sentenced to death; linked 2010 report concerned methamphetamine, not
+      marijuana.
+  dailynk24:
+    title: Daily NK — North Hamgyong drug crime up 40% (17 July 2024)
+    url: https://www.dailynk.com/20240717-4/
+    locator: >-
+      Provincial report; 900+ cases in Chongjin; summer crackdown; death instruction for small
+      smuggled amounts.
+  unodc_szr:
+    title: UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents
+    url: https://data.unodc.org/datareport/drug-seizure
+    locator: No North Korea cannabis rows.
