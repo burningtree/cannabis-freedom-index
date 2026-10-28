@@ -39,7 +39,13 @@ links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0. Review build still blocked by others' files — will verify page once clear.
 - Left: 1930s/40s/50s/60s/80s empty (communist-era sources thin in reachable languages;
   no verifiable 1961 signature — Romania likely acceded 1974, already covered).
-## pt — pending
+## pt (Portugal) — committed
+- Words list (Liamba, Ganza, Charro, Cânhamo; Priberam-verified).
+- New entries: 1983 user-prominence law (Springer article; fills 1980s). New article
+  `articles/portugal-use-criminalised-1970.md` (~380 words, Springer-sourced).
+- Audit 0/0. Review build still blocked by others' files — will verify page once clear.
+- Left: 1930s/40s/50s/60s empty (Estado Novo-era sources thin); 1993 decree article still open
+  (ranked candidate).
 ## by — pending
 ## rs — pending
 ## bg — pending
