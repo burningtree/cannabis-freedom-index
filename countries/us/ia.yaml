@@ -11,14 +11,53 @@ scores:
   consumption: 1
   access: 1
 segments:
-  possession: >-
-    A first offence is a misdemeanour with up to six months and a $1,000 fine; a second, up to a
-    year; a third, up to two years.
-  cultivation: A felony with up to five years.
-  enforcement: Jail is possible; chronic users may be sent to treatment instead.
-  sharing: Sale is a felony.
-  consumption: Illegal.
-  access: A narrow medical cannabidiol programme with a cap on THC per patient; no flower.
+  possession:
+    text: >-
+      A first offence is a misdemeanour with up to six months and a $1,000 fine; a second, up to a
+      year; a third, up to two years.[@1]
+    currency: USD
+    penalties:
+      - label: First offence
+        treatment: criminal
+        term: Misdemeanor
+        prison: 6 months
+        fine: 1000
+      - label: Second offence
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 2560
+      - label: Third offence
+        treatment: criminal
+        term: Misdemeanor
+        prison: 2 years
+        fine: 8540
+        note: Chronic abusers may be sent to rehab instead
+  cultivation:
+    text: >-
+      A felony with up to five years.[@1]
+    currency: USD
+    penalties:
+      - label: Growing up to 50 kg
+        treatment: criminal
+        term: Felony
+        prison: 5 years
+        fine: 7500
+        note: Higher weights bring longer terms
+  enforcement: Jail is possible; chronic users may be sent to treatment instead.[@1]
+  sharing:
+    text: >-
+      Sale is a felony.[@1]
+    currency: USD
+    penalties:
+      - label: Sale up to 50 kg
+        treatment: criminal
+        term: Felony
+        prison: 5 years
+        fine: 7500
+        note: Higher weights bring longer terms
+  consumption: Illegal.[@1]
+  access: A narrow medical cannabidiol programme with a cap on THC per patient; no flower.[@1]
 sources:
   - title: NORML — Iowa laws and penalties
     url: https://norml.org/laws/iowa-penalties-2/

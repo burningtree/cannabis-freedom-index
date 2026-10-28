@@ -16,9 +16,19 @@ scores:
   consumption: 4
   access: 6
 segments:
-  possession: >-
-    A person 21 or older may possess up to 2.5 ounces of usable cannabis or one-fourth of an ounce
-    of concentrated cannabis.
+  possession:
+    text: >-
+      A person 21 or older may possess up to 2.5 ounces of usable cannabis or one-fourth of an ounce
+      of concentrated cannabis.[@1,3]
+    currency: USD
+    penalties:
+      - upto: 2.5 oz
+        treatment: legal
+        note: Usable cannabis; one-fourth of an ounce of concentrate
+      - label: More than 2.5 oz
+        treatment: criminal
+        term: Misdemeanor
+        fine: 600
   cultivation: >-
     A person 21 or older may grow up to six plants, in a locked enclosure out of public view, at a
     residence where no more than twelve plants are grown. Growing within 25 miles of a licensed
@@ -34,13 +44,28 @@ segments:
     A person 21 or older may give up to 2.5 ounces of usable cannabis, or up to one-fourth of an
     ounce of concentrated cannabis, without payment to another person 21 or older, so long as the
     gift is not advertised or promoted to the public.
-  consumption: Private use and licensed lounges; public use is a misdemeanour with a $600 fine.
-  access: Licensed shops since 2017.
+  consumption: >-
+    Private use and licensed lounges; public use is a misdemeanour with a $600 fine.[@1,3]
+    [Nevada approved consumption-lounge regulations in 2022.](/history/nevada-consumption-lounge-regulations-2022/)
+  access: Licensed shops since 2017.[@1,4]
+context:
+  recreational:
+    text: >-
+      Question 2 (November 2016) legalised adult use with 54% of the vote; shops opened on
+      1 July 2017. The possession and gift limits rose to 2.5 oz of usable cannabis in January
+      2024, and consumption lounges were licensed from 2022.[@4]
+      [Nevada raised the adult limits in 2024.](/history/nevada-adult-limits-raised-2024/)
+      [Nevada approved consumption-lounge regulations in 2022.](/history/nevada-consumption-lounge-regulations-2022/)
+    sources: [4]
 sources:
   - title: Nevada Legislature — NRS Chapter 678D, Adult Use of Cannabis (revised 2025, updated 15 April 2026)
     url: https://www.leg.state.nv.us/division/legal/lawlibrary/nrs/NRS-678D.html
   - title: Nevada Division of Public and Behavioral Health — Medical Marijuana Patient Cardholder Registry FAQs
     url: https://www.dpbh.nv.gov/regulatory/medical-marijuana-patient-cardholder-registry/faqs/
+  - title: NORML — Nevada laws and penalties
+    url: https://norml.org/laws/nevada-penalties-2/
+  - title: Wikipedia — Cannabis in Nevada
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Nevada
 use:
   note: Includes vaping; a model-based estimate.
   share: 29.8
