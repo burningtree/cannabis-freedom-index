@@ -30,12 +30,19 @@ All batch files verified free of others' uncommitted changes at start.
 - New `articles/kenya-hobley-bhang-customs-1902.md` (Wanga/Luo/Nandi customs from checked entry + archive.org book).
 - Audit 0/0; country + article review builds verified.
 - Left: research/spotlights/genetics optional; 1920s/1940s/2000s history decades.
-## ao — committed (review HTML pending)
+## ao — committed (verified)
 - Fixed 9 audit warnings in pre-existing rows (`term` on all 6 rows; production/hemp one-liners expanded; hemp text reworded off the "licensed hemp" trigger; culture sentences cited with new duvall19/voa18 sources).
 - Per-sentence cites on 11 flagged texts; new hemp (status none — Table I-C, no THC distinction); new arrests (Malanje 100+ crimes, Humpata detention via ANGOP reposts); words (Diamba/Liamba, wiki-backed; maconha kept to culture via Duvall).
 - Culture now links diamba/maconha/calabash/smokers-cough + Livingstone/2018 history links.
 - Two articles: `angola-livingstone-observation-1857.md` and `angola-liamba-debate-2018.md` (citation refs validated by script; front-matter parses).
 - Audit 0/0. Review HTML builds blocked by another agent's uncommitted `culture/language/rongony.md` (unquoted colon in summary breaks all builds; left untouched per repo rules). Re-verify HTML once fixed.
 - Left: driving researched section (no source found), 1920s/1930s/1960s/1980s history decades.
-## ne — pending
+## ne — committed
+- Fixed 5 `term` warnings on pre-existing rows (Possession/Cultivation/Supply/Trafficking).
+- Per-sentence cites on 12 flagged texts; new hemp (status none — Table I, no THC distinction); words (Cannabis/French, the ordinance's word — verified in the SHERLOC PDF).
+- Transit link added to black_market (`niger-resin-seizures-2006-2007`, INCB 2007 report added as incb07 source).
+- New `articles/niger-resin-seizures-2006-2007.md` (5 seizures, 5.7 tons, Morocco→Chad/Egypt route).
+- No atlas entries for Niger: culture section skipped (nothing to connect), driving/arrests researched sections skipped (no sources found).
+- Audit 0/0; country + article review builds verified (rongony fixed by its owner mid-work).
+- Left: 1930s/40s/50s/80s/2010s history decades.
 ## bj — pending

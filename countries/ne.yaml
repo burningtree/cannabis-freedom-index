@@ -14,25 +14,30 @@ scores:
   sharing: 1
   consumption: 1
   access: 0
+words:
+  - { word: Cannabis, lang: French, meaning: "cannabis; the law's word in the 1999 ordinance", sources: [law] }
 segments:
   possession:
     text: >-
-      Cannabis and cannabis resin appear in Table I, the high-risk category. Article 145 gives
-      a separate tier for small quantities held, bought or grown for personal consumption: high-risk
-      plants or substances, including cannabis oil, carry two months to one year, a fine of
-      500,000–1 million CFA francs, or both. Non-oil cannabis derivatives carry one to six months,
-      a fine of 250,000–500,000 francs, or both. No gram limit is given.
+      Cannabis and cannabis resin appear in Table I, the high-risk category.[@law] Article 145 gives
+      a separate tier for small quantities held, bought or grown for personal consumption:
+      high-risk plants or substances, including cannabis oil, carry two months to one year, a fine
+      of 500,000–1 million CFA francs, or both.[@law,compilation] Non-oil cannabis derivatives carry
+      one to six months, a fine of 250,000–500,000 francs, or both.[@law,compilation] No gram limit
+      is given.
     sources: [law, compilation]
     currency: XOF
     penalties:
       - label: Small personal quantity, high-risk incl. cannabis oil (Article 145)
         treatment: criminal
+        term: Possession
         prison_min: 2 months
         prison: 1 year
         fine: 1000000
         note: Fine of 500,000–1,000,000 CFA francs; no gram limit
       - label: Small personal quantity, non-oil cannabis derivatives
         treatment: criminal
+        term: Possession
         prison_min: 1 month
         prison: 6 months
         fine: 500000
@@ -40,40 +45,45 @@ segments:
   cultivation:
     text: >-
       Article 8 prohibits growing cannabis and requires landowners, operators and occupiers to
-      destroy plants growing on their land. Article 145 expressly includes a small personal crop
-      in the shorter penalty tiers described for possession, without a fixed plant limit.
+      destroy plants growing on their land.[@law] Article 145 expressly includes a small personal
+      crop in the shorter penalty tiers described for possession, without a fixed plant
+      limit.[@law]
     sources: [law]
     currency: XOF
     penalties:
       - label: Small personal crop (Article 145)
         treatment: criminal
+        term: Cultivation
         prison_min: 1 month
         prison: 1 year
         fine: 1000000
         note: Same short tiers as possession; fine up to 1,000,000 CFA francs; no plant limit
   enforcement:
     text: >-
-      The law allows prison or a fine alone for small personal quantities. Courts may invite a
+      The law allows prison or a fine alone for small personal quantities.[@law] Courts may invite a
       dependent person convicted of specified offences to undergo treatment instead of or alongside
-      punishment; evading those measures carries one to five years, a fine, or both. The retained
-      sources do not establish typical sentencing for cannabis users.
+      punishment; evading those measures carries one to five years, a fine, or both.[@law] The
+      retained sources do not establish typical sentencing for cannabis users.
     sources: [law]
   sharing:
     text: >-
       Giving or offering a high-risk drug directly for another person's consumption carries one
-      to five years, a fine of 100,000–500,000 CFA francs, or both. General high-risk trafficking
-      under Article 96 carries ten to twenty years, a fine of 1–20 million francs, or both.
+      to five years, a fine of 100,000–500,000 CFA francs, or both.[@law] General high-risk
+      trafficking under Article 96 carries ten to twenty years, a fine of 1–20 million francs, or
+      both.[@law]
     sources: [law]
     currency: XOF
     penalties:
       - label: Giving or offering for another person's consumption
         treatment: criminal
+        term: Supply
         prison_min: 1 year
         prison: 5 years
         fine: 500000
         note: Fine of 100,000–500,000 CFA francs
       - label: General high-risk trafficking (Article 96)
         treatment: criminal
+        term: Trafficking
         prison_min: 10 years
         prison: 20 years
         fine: 20000000
@@ -81,12 +91,13 @@ segments:
   consumption:
     text: >-
       Article 144 prohibits using controlled drugs outside a medical prescription and permits
-      confiscation even without prosecution. The separate penalty in Article 145 expressly covers
-      possession, purchase and growing for personal consumption.
+      confiscation even without prosecution.[@law] The separate penalty in Article 145 expressly
+      covers possession, purchase and growing for personal consumption.[@law]
     sources: [law]
   access:
     text: >-
-      None found. Growing, selling and holding high-risk drugs are banned (Articles 8, 96).
+      None found. Growing, selling and holding high-risk drugs are banned (Articles 8,
+      96).[@law]
     sources:
       - law
 context:
@@ -97,9 +108,17 @@ context:
       is given.[@law,compilation] Convicted foreigners can be permanently excluded from the
       country.[@law]
     sources: [law, compilation]
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the ordinance lists cannabis and cannabis resin
+      in Table I with no low-THC distinction, and no hemp production is documented.[@law]
+    sources: [law]
   production:
     status: none
-    text: No licensed production. Article 8 prohibits growing cannabis and requires destruction of plants on occupied land.
+    text: >-
+      No licensed production. Article 8 prohibits growing cannabis and requires destruction of
+      plants on occupied land.[@law]
     sources: [law]
   medical:
     text: >-
@@ -109,9 +128,9 @@ context:
   consequences:
     text: >-
       For the production, trafficking and related offences listed in Articles 94–102, courts may
-      add restrictions on residence, civic rights, travel, driving or professional activity. They may
-      exclude a convicted foreigner permanently or for ten to twenty years. Small personal quantities
-      are dealt with separately in Article 145.
+      add restrictions on residence, civic rights, travel, driving or professional activity.[@law]
+      They may exclude a convicted foreigner permanently or for ten to twenty years.[@law] Small
+      personal quantities are dealt with separately in Article 145.[@law]
     sources: [law]
   planting:
     seeds: grey
@@ -119,36 +138,40 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      Article 8 prohibits growing cannabis and requires destruction of plants on occupied land.
-      Small personal cultivation still carries criminal penalties under Article 145. The retained
-      clauses do not settle ungerminated seed possession or trade separately.
+      Article 8 prohibits growing cannabis and requires destruction of plants on occupied
+      land.[@law] Small personal cultivation still carries criminal penalties under Article
+      145.[@law] The retained clauses do not settle ungerminated seed possession or trade
+      separately.
     sources:
       - law
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@law]
     sources:
       - law
   visitors:
     status: none
     text: >-
-      Visitors have no lawful recreational supply route. For specified production and trafficking
-      offences, Article 113 permits permanent exclusion or exclusion for ten to twenty years of a
-      convicted foreigner. That clause covers Articles 94–102; small personal quantities are
-      addressed separately in Article 145.
+      Visitors have no lawful recreational supply route.[@law] For specified production and
+      trafficking offences, Article 113 permits permanent exclusion or exclusion for ten to twenty
+      years of a convicted foreigner.[@law] That clause covers Articles 94–102; small personal
+      quantities are addressed separately in Article 145.[@law]
     sources:
       - law
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 10,762 kg of herbal
       cannabis seized in 2023, against 4,272 kg in 2022, and 77.5 kg of cannabis resin
-      seized in 2023, against 10.5 kg in 2022. The UN publishes them as kilogram
+      seized in 2023, against 10.5 kg in 2022.[@unodc_szr] The UN publishes them as kilogram
       equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      comparable across borders.[@unodc_szr] Niger is also a transit country: five seizures in
+      2006–2007 netted 5.7 tons of Moroccan resin moving toward Chad, Egypt or Sudan (see the
+      [2007 resin seizures](/history/niger-resin-seizures-2006-2007/)).[@incb07]
     sources:
       - unodc_szr
+      - incb07
 sources:
   law:
     title: UNODC SHERLOC — Niger, Ordonnance n° 99-42 relative à la lutte contre la drogue (PDF)
@@ -161,3 +184,9 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  incb07:
+    type: report
+    title: Report of the International Narcotics Control Board for 2007 (E/INCB/2007/1)
+    publisher: United Nations
+    year: 2008
+    url: https://www.incb.org/documents/Publications/AnnualReports/AR2007/AR_07_Chapter_III_Africa.pdf
