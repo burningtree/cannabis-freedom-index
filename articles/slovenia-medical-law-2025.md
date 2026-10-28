@@ -1,60 +1,42 @@
 ---
-model: opus-5.5
-written: 2026-10-11
+written: '2026-10-28'
 sources:
-  - title: Uradni list RS — Zakon o konoplji za medicinske in znanstvene namene (ZKMZN), No. 60/2025
-    url: https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-2341/zakon-o-konoplji-za-medicinske-in-znanstvene-namene-zkmzn
-  - title: Business of Cannabis — Inside Slovenia's new "revolutionary" medical cannabis law (27 August 2025)
-    url: https://businessofcannabis.com/inside-slovenias-new-revolutionary-medical-cannabis-law/
-  - title: Business of Cannabis — Slovenia takes steps toward cannabis legalisation (1 August 2025)
-    url: https://businessofcannabis.com/slovenia-takes-steps-toward-cannabis-legalisation/
-  - title: IDPC / Drug Policy Network South East Europe — Slovenia voted on cannabis cultivation and use (June 2024)
-    url: https://idpc.net/news/2024/06/slovenia-voted-on-cannabis-cultivation-and-use
+  - title: Official Gazette — Medical and Scientific Cannabis Act (ZKMZN), 2025
+    url: https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-2341
+    locator: Articles 1, 8, 10–15, 24–25, 30–34, 50 and 54
+  - title: NIJZ — Prescription medicine consumption in Slovenia in 2024
+    url: https://nijz.si/wp-content/uploads/2025/05/PORABA-ZDRAVIL-2024_14_5_2025.pdf
+    locator: Printed p. 163, cannabinoid preparations and pharmacy returns
+  - title: Official Gazette — Scientific cannabis permit rules, 2026
+    url: https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2026-01-0501
+    locator: Articles 1–4; published 20 February, effective 7 March 2026
+  - title: NIJZ and Health Ministry — Cannabis in medicine
+    url: https://nijz.si/zivljenjski-slog/konoplja/uporaba-konoplje-v-medicini/
+    locator: Government decision of 19 June 2014
 ---
 
-Slovenia asked its voters two questions about cannabis in 2024. A year later
-parliament answered the easier one, more generously than almost any country in
-Europe.
+Slovenia’s Medical and Scientific Cannabis Act took effect on 20 August 2025, creating a licensing framework for domestic medical production and scientific work.[@1] Parliament adopted it on 24 July, and President Nataša Pirc Musar promulgated it on 1 August.[@1]
 
-## Before
+## Medicine access already existed
 
-Possessing a small amount is a misdemeanour with a small fine; production and dealing
-are crimes. Doctors could prescribe cannabinoid medicines from
-[2013](/history/slovenia-cannabinoids-2013/), but only on a special prescription, and
-with no legal way to grow cannabis in Slovenia every product was imported.
+Doctors had been able to prescribe registered cannabinoid medicines since the [2014 classification change](/history/slovenia-cannabinoids-2013/).[@4] NIJZ’s report on 2024 medicine consumption describes access through registered medicines, special imports and compounded preparations.[@2]
 
-In the [referendum of 9 June 2024](/history/slovenia-referendum-2024/), 66.71 per
-cent backed growing cannabis for medicine and 51.57 per cent backed growing and
-possessing it for personal use. Neither vote was binding.
+Reporting pharmacies recorded 1,666 prescriptions and 2,091 compounded cannabinoid preparations during 2024, with incomplete coverage of pharmacies.[@2] Flower and standardised extracts were permitted, but the report said their prescribing had not entered routine use.[@2] Those figures describe the year before the new production law.[@2]
 
-## The law
+## Prescribing remained a medical decision
 
-The National Assembly adopted the Act on Cannabis for Medical and Scientific Purposes
-on 24 July 2025, by 50 votes to 29 according to Business of Cannabis. It took effect
-on 20 August.
+Under the new Act, a doctor may prescribe cannabis medicines for any indication or condition on professional judgment, with at most one month’s treatment per month.[@1] Patients need an examination before the first prescription and another after twelve months for continuing treatment.[@1]
 
-For patients:
+Dispensing takes place through pharmacies, which issue a certificate documenting authorised possession and use for one month.[@1] A patient who gives cannabis dispensed in their name to somebody else faces a €200–€1,000 fine.[@1]
 
-- Any doctor may prescribe, for any indication, on professional judgment.
-- A prescription covers at most one month and is filled only in a pharmacy.
-- A new examination is needed every twelve months.
-- Passing prescribed cannabis to someone else brings a fine of 200 to 1,000 euros.
+## Producers needed authorisation
 
-For producers:
+Medical production comes under the medicines agency, [JAZMP](https://www.jazmp.si/), with requirements for secure premises, responsible personnel, quality and traceability.[@1] Growing and processing operate within that licensed chain, while retail dispensing stays with pharmacies.[@1]
 
-- Any company that meets the conditions may get a permit, valid for 15 years, from
-  the medicines agency JAZMP.
-- Growing must be indoors, in secured premises, to pharmaceutical standards.
-- A permit lapses if nothing reaches the market within two years.
+The Act separately provides for scientific production, trade and possession under Health Ministry permission.[@1] That route covers legal entities conducting research or educational work, with conditions attached to obtaining and using cannabis.[@1]
 
-## What is still open
+## Research applications gained detailed rules
 
-The implementing rules were due within 90 days to six months, and supply is still
-being built up. Home growing stays prohibited, also for patients.
+The [implementing rules effective on 7 March 2026](/history/slovenia-research-permit-rules-2026/) require a scientific plan explaining the project’s purpose, methods and goals and the responsible researchers’ credentials.[@3] Applicants must document equipment and traceability from seed or planting material through production and study.[@3]
 
-The second referendum question is unanswered. A
-[personal-use bill](/history/slovenia-personal-use-bill-2025/) from two coalition
-parties would allow four plants per adult, 7 g in public and 150 g at home; it has
-not been enacted.
-
-So only one of [Slovenia's](/country/si/) scores moved: access, from 1 to 2.
+Growing projects must follow good agricultural and collection practice, while security plans cover access to the premises.[@3] Applicants also need arrangements for destroying material and reporting its disposal.[@3] The [Slovenia profile](/country/si/) follows these licensed medical and scientific routes alongside the separate personal-possession rules.[@1,3]
