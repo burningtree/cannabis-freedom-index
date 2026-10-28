@@ -13,12 +13,42 @@ scores:
   consumption: 1
   access: 3
 segments:
-  possession: Under 1 oz is a misdemeanour with up to six months and a $1,000 fine.
-  cultivation: Illegal.
-  enforcement: Jail is possible.
-  sharing: Any sale is a felony with up to five years.
-  consumption: Illegal without a medical card; patients may not smoke it.
-  access: Medical cannabis through licensed pharmacies for card holders.
+  possession:
+    text: >-
+      Under 1 oz is a misdemeanour with up to six months and a $1,000 fine.[@1]
+    currency: USD
+    penalties:
+      - upto: 1 oz
+        treatment: criminal
+        term: Misdemeanor
+        prison: 6 months
+        fine: 1000
+      - over: 1 oz
+        upto: 1 lb
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 2500
+      - over: 1 lb
+        treatment: criminal
+        term: Felony
+        prison: 5 years
+        fine: 5000
+        note: Higher weights bring longer terms
+  cultivation: Illegal; charged by weight like possession.[@1]
+  enforcement: Jail is possible.[@1]
+  sharing:
+    text: >-
+      Any sale is a felony with up to five years.[@1]
+    currency: USD
+    penalties:
+      - label: Any sale
+        treatment: criminal
+        term: Felony
+        prison: 5 years
+        fine: 5000
+  consumption: Illegal without a medical card; patients may not smoke it.[@1]
+  access: Medical cannabis through licensed pharmacies for card holders.[@1]
 sources:
   - title: NORML — Utah laws and penalties
     url: https://norml.org/laws/utah-penalties-2/

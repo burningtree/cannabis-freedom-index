@@ -32,4 +32,9 @@ Same method as usa-1–5.
 - Possession pinned by test, untouched. No CT history entries, no culture subject — noted.
 - Audit 0/0; review page verified.
 
-## ut — pending
+## ut (Utah) — committed
+- Possession + sharing tables (NORML-verified bands), cites on all segments.
+- Cultivation table attempted then reverted: manufacture classification unverifiable (Justia
+  blocked, le.utah.gov timed out); kept cited string instead of asserting a flat felony.
+- No fitting history link (1915 ban entry doesn't match current text), no culture subject.
+- Audit 0/0; review page verified.
