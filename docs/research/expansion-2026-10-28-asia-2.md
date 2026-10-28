@@ -19,4 +19,21 @@ Afghanistan validation: `profile-audit af` zero errors/warnings; `country-gaps a
 
 Pakistan validation: `profile-audit pk` zero errors/warnings; `country-gaps pk` now has no missing standard or researched sections, no uncited text and all five atlas entries linked. The build passed at 5,019 pages; the 2022 penalty-table article renders.
 
-Israel validation: `profile-audit il` zero errors/warnings; `country-gaps il` has no empty decades, no missing sections and no scored entry without an article. History tests pass 47/47. The build passed at 5,041 pages; the profile and three article pages render with no raw citation marks. The build was briefly blocked by another contributor’s unfinished `countries/it.yaml`, which cleared without changes from this batch.
+Israel validation: `profile-audit il` zero errors/warnings; `country-gaps il` has no empty decades, no missing sections and no scored entry without an article. History tests pass 47/47. The build passed at 5,041 pages; the profile and three article pages render with no raw citation marks.
+
+
+## Batch totals
+
+| Country | New or expanded tables | New history | New articles |
+|---|---:|---:|---:|
+| Nepal | tables checked | 0 | 0 |
+| Afghanistan | 4 | 0 | 1 |
+| Pakistan | 3 | 9 | 1 |
+| Israel | 4 | 11 | 3 |
+| Armenia | 4 | 6 | 3 |
+| Iraq | 4 | 5 | 0 |
+| **Total** | **19** | **31** | **8** |
+
+All six profiles now have no missing standard or researched sections, no missing penalty tables, no uncited text and no scored entry without an article. The empty early decades that remain are Nepal (1920s–1950s, 2000s), Afghanistan (1930s, 1940s, 1980s) and Armenia (1920s, 1940s, 1950s).
+
+Final validation: `profile-audit` on all six reported zero errors and warnings; history tests pass 47/47; answer/profile claims tests pass 93/93; the build passed at **5,070 pages**; the SEO audit checked **5,072 HTML files and 221,683 internal links** with no problems. The Kazakhstan production status was restored to `medical` after the profile-claims regression test, with the licensed research and Article 18 medicine route made explicit.
