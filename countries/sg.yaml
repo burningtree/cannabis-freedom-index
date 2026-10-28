@@ -3,13 +3,13 @@ region: Asia
 iso_numeric: 702
 recreational: death
 medical: limited
-updated: '2026-10-27'
+updated: "2026-10-28"
 summary: >-
-  Death for trafficking more than 500 g of cannabis, more than 200 g of cannabis resin, or more
-  than 1,000 g of cannabis mixture, with narrow exceptions. Larger possession amounts bring a
-  mandatory prison term and caning. Ordinary consumption brings at least one year; qualifying
-  repeat use can bring 13 years and caning. Citizens can be prosecuted for use abroad.
-  Cannabinoid pharmaceuticals are approved case by case.
+  Death for trafficking more than 500 g of cannabis, more than 200 g of cannabis resin, or more than
+  1,000 g of cannabis mixture, with narrow exceptions. Larger possession amounts bring mandatory
+  prison and caning. Ordinary consumption brings at least one year; qualifying repeat use can bring
+  13 years and caning. Registered cannabinoid medicines may be prescribed, and HSA may approve an
+  unregistered one for a named patient.
 scores:
   possession: 0
   cultivation: 0
@@ -128,8 +128,8 @@ segments:
           possession-only penalties
   cultivation:
     text: >-
-      Cultivating cannabis brings at least three years or a fine of at least S$5,000, and up to
-      20 years or a fine of S$40,000, or both.[@mda_sch]
+      Cultivating cannabis brings at least three years or a fine of at least S$5,000, and up to 20
+      years or a fine of S$40,000, or both.[@mda_sch]
     sources:
       - mda_sch
     currency: SGD
@@ -144,26 +144,27 @@ segments:
         note: Prison or a fine, or both
   enforcement:
     text: >-
-      Trafficking, importing or exporting more than 500 g of cannabis, more than 200 g of cannabis
-      resin, or more than 1,000 g of cannabis mixture is a capital offence, with narrow exceptions
-      for qualifying couriers.[@mda_sch, cnb_can] From 330 g to 500 g of cannabis the trafficking
-      sentence is at least 20 years and 15 strokes of the cane, and up to 30 years or life and 15
-      strokes.[@cnb_can] Cannabis executions have been carried out as recently as April
-      2026.[@cnb_execution] Qualifying repeat consumption can also bring up to 13 years and 12
-      strokes, subject to caning exemptions.[@judiciary2026]
+      Trafficking, importing or exporting more than 500 g of cannabis, more than 200 g of cannabis resin, or
+      more than 1,000 g of cannabis mixture is a capital offence, with narrow exceptions for qualifying
+      couriers.[@mda_sch,cnb_can] From 330 g to 500 g of cannabis the trafficking sentence is at
+      least 20 years and 15 strokes, and up to 30 years or life and 15 strokes.[@cnb_can] Singapore
+      executed a cannabis importer on 16 April 2026; the previous documented cannabis execution was
+      in April 2023.[@cnb_execution,tangaraju] Qualifying repeat consumption can bring up to 13
+      years and 12 strokes, subject to caning exemptions.[@judiciary2026]
     sources:
       - cnb_can
       - mda_sch
       - cnb_execution
+      - tangaraju
       - judiciary2026
   sharing:
     text: >-
-      Giving cannabis to another person is trafficking, whether or not money changes hands. For under
-      330 g of cannabis the sentence is at least 5 years and 5 strokes of the cane, and at most 20
-      years and 15 strokes. The same first band runs to under 130 g of resin and under 660 g of
-      mixture.[@cnb_can] The higher trafficking bands use 330–500 g of plant material, 130–200 g of
-      resin or 660–1,000 g of mixture; above those upper limits the offence is capital, subject to
-      section 33B exceptions.[@cnb_can,mda_sch]
+      Giving cannabis to another person is trafficking, whether or not money changes hands. For
+      under 330 g of cannabis the sentence is at least 5 years and 5 strokes of the cane, and at
+      most 20 years and 15 strokes. The same first band runs to under 130 g of resin and under 660 g
+      of mixture.[@cnb_can] The higher trafficking bands use 330–500 g of plant material, 130–200 g
+      of resin or 660–1,000 g of cannabis mixture; above those upper limits the offence is capital, subject
+      to section 33B exceptions.[@cnb_can,mda_sch]
     sources:
       - cnb_can
       - mda_sch
@@ -236,13 +237,14 @@ segments:
         note: Section 33B provides limited sentencing exceptions
   consumption:
     text: >-
-      Ordinary cannabis consumption convictions carry at least one year and up to 10 years, with a possible S$20,000 fine.
-      Qualifying repeat cases under section 33A carry LT1 terms of 5–7 years and 3–6 strokes, or
-      LT2 terms of 7–13 years and 6–12 strokes after qualifying LT1 history. Eligibility depends
-      on the statutory combination of prior convictions or admissions; caning exemptions apply,
-      including for women and men over 50.[@judiciary2026] Cannabis is a specified drug covered by
-      these enhancements.[@cnbtoolkit] Police can require testing; citizens and permanent
-      residents can be prosecuted for use abroad.[@mh]
+      A first cannabis consumption conviction carries at least one year and up to 10 years, with a
+      possible S$20,000 fine; a second conviction carries three to 10 years, with the same possible
+      fine.[@judiciary2026] Qualifying repeat cases under section 33A carry LT1 terms of 5–7 years
+      and 3–6 strokes, or LT2 terms of 7–13 years and 6–12 strokes after qualifying LT1 history.
+      Eligibility depends on the statutory combination of prior convictions or admissions; caning
+      exemptions apply, including for women and men over 50.[@judiciary2026] Cannabis is a specified
+      drug covered by these enhancements.[@cnbtoolkit] Police can require testing; citizens and
+      permanent residents can be prosecuted for use abroad.[@mh]
     sources:
       - judiciary2026
       - cnbtoolkit
@@ -255,44 +257,62 @@ segments:
         prison_min: 1 year
         prison: 10 years
         fine: 20000
+      - label: Using cannabis, a second conviction
+        treatment: criminal
+        term: Consumption, proved by a urine test
+        prison_min: 3 years
+        prison: 10 years
+        fine: 20000
       - label: Repeat use after qualifying earlier convictions (LT1, section 33A)
         treatment: criminal
         term: Long-term imprisonment 1
         prison_min: 5 years
         prison: 7 years
-        caning: [3, 6]
+        caning:
+          - 3
+          - 6
         note: Women and men over 50 are not caned
       - label: Repeat use after an LT1 term (LT2, section 33A)
         treatment: criminal
         term: Long-term imprisonment 2
         prison_min: 7 years
         prison: 13 years
-        caning: [6, 12]
+        caning:
+          - 6
+          - 12
   access:
-    text: None. There is no legal source of any kind.
+    text: >-
+      No legal source for adults. The only lawful supply is a cannabinoid pharmaceutical prescribed
+      by a Singapore doctor, or an unregistered cannabinoid that HSA approves for a named patient
+      through the import route.[@mha2019,st2019] There is no general medical-cannabis programme or
+      pharmacy supply.
     sources:
-      - cnb
+      - mha2019
+      - st2019
 context:
   death_penalty:
     text: >-
-      Trafficking, importing or exporting more than 500 g of cannabis, more than 200 g of cannabis
-      resin, or more than 1,000 g of cannabis mixture is a capital offence, with narrow exceptions
-      for qualifying couriers.[@mda_sch, cnb_can] Cannabis executions have been carried out as
-      recently as April 2026.[@cnb_execution]
+      Trafficking, importing or exporting more than 500 g of cannabis, more than 200 g of cannabis resin, or
+      more than 1,000 g of cannabis mixture is a capital offence, with narrow exceptions for qualifying
+      couriers.[@mda_sch,cnb_can] Singapore executed a cannabis importer on 16 April 2026; he was a
+      courier, no certificate of substantive assistance was issued, and the court had no discretion
+      under section 33B.[@cnb_execution] The previous documented cannabis execution was Tangaraju
+      Suppiah in April 2023.[@tangaraju]
     sources:
       - cnb_can
       - mda_sch
       - cnb_execution
+      - tangaraju
   recreational:
     text: >-
       There is no legal way to get or use cannabis in Singapore, and using it is itself a crime,
       proved by a urine test the police can require.[@cnb_can] Citizens and permanent residents who
-      use drugs abroad, even where cannabis is legal, face the same penalties as if they had used them
-      at home.[@cnb] Cannabis is the third most common drug among people arrested, after
-      methamphetamine and heroin: in 2025 the [Central Narcotics Bureau](https://www.cnb.gov.sg/)
-      arrested 250 people for using it, 8% of all drug users arrested, and seven in ten of them were
-      caught for the first time.[@cnb25] The bureau says permissive attitudes among young people are
-      its main worry; six in ten new cannabis users arrested were under 30.[@cnb25]
+      use drugs abroad, even where cannabis is legal, face the same penalties as if they had used
+      them at home.[@cnb] Cannabis is the third most common drug among people arrested, after
+      methamphetamine and heroin: in 2025 the Central Narcotics Bureau arrested 250 people for using
+      it, 8% of all drug users arrested, and 70% of them were caught for the first time.[@cnb25] The
+      bureau says permissive attitudes among young people are its main worry; 63% of new cannabis
+      users arrested were under 30.[@cnb25]
     sources:
       - cnb_can
       - cnb
@@ -301,52 +321,63 @@ context:
     status: none
     text: >-
       Singapore makes no exception for hemp. The law defines cannabis as any part of a plant of the
-      genus Cannabis, so seeds, low-THC hemp and CBD products are all controlled drugs.[@mda1973]
-      A pharmaceutical cannabinoid can be approved for an individual
-      patient.[@wiki]
+      genus Cannabis, so seeds, low-THC hemp and CBD products are all controlled
+      drugs.[@mda1973,cnb_hemp] There is no THC limit because there is no lawful hemp category. A
+      pharmaceutical cannabinoid can be approved for an individual patient.[@mha2019]
     sources:
       - mda1973
-      - wiki
+      - cnb_hemp
+      - mha2019
   production:
     status: none
     text: >-
-      None. No licensed production exists, and growing a single plant is a crime with at least
-      three years in prison or a S$5,000 fine.[@mda_sch]
+      None. No licensed production exists, and growing a single plant is a crime with at least three
+      years in prison or a S$5,000 fine.[@mda_sch]
     sources:
       - mda_sch
   medical:
     text: >-
-      No medical cannabis programme. In rare cases the health regulator has approved a cannabidiol
-      medicine for a named patient, such as a child with drug-resistant epilepsy.
+      No medical cannabis programme. In 2019 the health ministry and CNB set out a route for
+      registered cannabinoid pharmaceuticals, prescribed by a Singapore doctor for the registered
+      condition; HSA can also approve a doctor’s application to import an unregistered cannabinoid
+      for a named patient.[@mha2019] In December 2019 a girl with drug-resistant epilepsy became the
+      first patient approved this way.[@st2019] There is no general programme, pharmacy supply or
+      insurance route.
     sources:
-      - wiki
+      - mha2019
+      - st2019
   consequences:
     text: >-
-      Users can be committed to a Drug Rehabilitation Centre and then placed under supervision with
-      regular urine tests. Foreigners are deported after sentence, and a drug record affects
-      employment for life.
+      Users can be committed to a Drug Rehabilitation Centre or placed under supervision with
+      regular urine tests.[@mha2023] A foreigner’s pass may be cancelled and re-entry prohibited,
+      and a permanent resident’s status can be reviewed; this is not automatic after every
+      sentence.[@askmha] A conviction also creates a criminal record.
     sources:
-      - wiki
-      - mh
+      - mha2023
+      - askmha
   planting:
     seeds: illegal
     seeds_trade: banned
     clones: illegal
     clones_trade: banned
     text: >-
-      The Misuse of Drugs Act defines cannabis as any part of a plant of the genus Cannabis,
-      with no exception for seeds, so seeds and cuttings are controlled drugs like the rest of
-      the plant.
+      The Misuse of Drugs Act defines cannabis as any part of a plant of the genus Cannabis, with no
+      exception for seeds, and CNB treats hemp seed products as controlled.[@mda1973,cnb_hemp]
+      Sowing a seed or keeping a cutting is cultivation; selling or giving them is
+      trafficking.[@mda1973] No published Singapore case turns specifically on viable seed, so the
+      seed status is an inference from the definition and enforcement guidance.[@cnb_hemp]
     sources:
       - mda1973
+      - cnb_hemp
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      No cannabis clubs are known, and the law leaves no room for them: supplying cannabis is
+      trafficking even without payment, cultivation is an offence, and section 11A makes arranging a
+      gathering of two or more people where cannabis is consumed or trafficked an
+      offence.[@mda1973,cnb]
     sources:
-      - wiki
+      - mda1973
       - cnb
   visitors:
     status: none
@@ -355,8 +386,8 @@ context:
       material, 130 g of resin or 660 g of mixture carries up to ten years or a S$20,000 fine, or
       both; larger possession sentences include caning.[@cnb_can] Above 15 g of plant material, 10 g
       of resin or 30 g of mixture, possession for trafficking is presumed unless rebutted.[@mda17]
-      Trafficking more than 500 g of plant material, 200 g of resin or 1,000 g of mixture is capital,
-      subject to section 33B exceptions.[@cnb_can,mda_sch]
+      Trafficking more than 500 g of plant material, 200 g of cannabis resin or 1,000 g of cannabis mixture is
+      capital, subject to section 33B exceptions.[@cnb_can,mda_sch]
     sources:
       - mda_sch
       - cnb_can
@@ -364,20 +395,21 @@ context:
   driving:
     status: impairment
     text: >-
-      The Road Traffic Act makes it an offence to drive while unfit, meaning under the
-      influence of drink, a drug or a psychoactive substance to such an extent as to be
-      incapable of having proper control of the vehicle. Unlike for alcohol, no limit is
-      prescribed for drugs. A first offence brings a fine of 2,000 to 10,000 dollars or up to
-      12 months in prison and at least two years' disqualification; a repeat offence, a fine
-      of 5,000 to 20,000 dollars and up to two years in prison, with at least five years'
-      disqualification.
+      The Road Traffic Act makes it an offence to drive while unfit, meaning under the influence of
+      drink, a drug or a psychoactive substance to such an extent as to be incapable of having
+      proper control of the vehicle.[@rta67] Unlike for alcohol, no limit is prescribed for drugs,
+      and prescribed cannabinoids are covered. A first offence brings a fine of S$2,000–10,000 or up
+      to 12 months in prison, with at least two years’ disqualification; a repeat offence brings
+      S$5,000–20,000 and up to two years, with at least five years’ disqualification; a third
+      conviction can bring a lifetime ban.[@rta67]
     sources:
       - rta67
   arrests:
     text: >-
       The Central Narcotics Bureau arrested 250 people for using cannabis in 2025, 8% of all drug
-      users arrested; 70% of them were new users, and 52% were under 30.[@cnb25] Cannabis seizures
-      rose by 21.7%, from 101 kg in 2024 to 123 kg in 2025.[@cnb25]
+      users arrested; 70% were new users, and 63% of new users were under 30.[@cnb25] Cannabis
+      seizures rose by 21.7%, from 101 kg in 2024 to 123 kg in 2025.[@cnb25] No cannabis-specific
+      prosecution or conviction count is published.[@cnb25]
     sources:
       - cnb25
   culture:
@@ -386,8 +418,9 @@ context:
       spreading along the jet routes as a gateway to drugs and escapism. Long-haired foreigners were
       turned away, and in 1972 Operation Snip Snip made long-haired men cut their hair before they
       could enter; civil servants who refused were dismissed.[@nlb24] The idea of a drug-free
-      society has stayed at the centre of policy: the narcotics bureau runs prevention campaigns in
-      schools, and describes legalisation abroad as a cautionary tale.[@cnb25,cnb]
+      society has stayed at the centre of policy: the [narcotics
+      bureau](/history/singapore-cnb-established-1971/) runs prevention campaigns in schools, and
+      describes legalisation abroad as a cautionary tale.[@cnb25,cnb]
     sources:
       - nlb24
       - cnb25
@@ -395,20 +428,19 @@ context:
   research:
     status: restricted
     text: >-
-      Singapore studies cannabis without growing it. In 2018 the [National Research
-      Foundation](https://www.nrf.gov.sg/) put S$25 million into a five-year synthetic biology
-      programme, one strand of which aimed to make cannabis-derived medicines, mostly CBD, from
-      engineered microbes rather than plants.[@idpc18] The plant itself stays illegal for any
-      purpose.[@idpc18]
+      Singapore studies cannabis without growing it. In 2018 the National Research Foundation put
+      S$25 million into a five-year synthetic-biology programme, one strand of which aimed to make
+      cannabis-derived medicines, mostly CBD, from engineered microbes rather than plants.[@idpc18]
+      No licence to grow the plant for research has been reported.[@idpc18]
     sources:
       - idpc18
   spotlights:
     - title: Fifteen grams makes a trafficker
       text: >-
         Above 15 g of cannabis plant material, 10 g of resin or 30 g of mixture, the law presumes
-        possession for trafficking unless the accused proves otherwise.[@mda17] Trafficking brings at least five years and five strokes of
-        the cane, and above 500 g the death penalty; Singapore carried out a cannabis execution as
-        recently as April 2026.[@cnb_can,cnb_execution]
+        possession for trafficking unless the accused proves otherwise.[@mda17] Trafficking brings
+        at least five years and five strokes of the cane, and above 500 g the death penalty;
+        Singapore executed a cannabis importer in April 2026.[@cnb_can,cnb_execution]
       sources:
         - mda17
         - cnb_can
@@ -426,12 +458,11 @@ context:
     text: >-
       ICA and CNB [reported a seizure of about 391 kg of
       cannabis](/history/singapore-pasir-panjang-transit-seizure-2026/) from a container at Pasir
-      Panjang on 24 September 2026. Preliminary investigations indicated it was transiting
-      Singapore for another country. The 2 October release reported an ongoing investigation, with
-      no conviction or sentence arising from the seizure.[@transit2026]
+      Panjang on 24 September 2026. Preliminary investigations indicated it was transiting Singapore
+      for another country. The 2 October release reported an ongoing investigation, with no
+      conviction or sentence arising from the seizure.[@transit2026]
     sources:
       - transit2026
-
 sources:
   mda17:
     type: law
@@ -443,17 +474,21 @@ sources:
   cnb25:
     type: report
     title: Central Narcotics Bureau — Annual Statistics Report 2025 (10 February 2026)
-    url: https://isomer-user-content.by.gov.sg/266/8df707ca-fd80-496f-9099-d263dc5a747a/CNB%20Annual%20Statistics%20Report%202025.pdf
+    url: >-
+      https://isomer-user-content.by.gov.sg/266/8df707ca-fd80-496f-9099-d263dc5a747a/CNB%20Annual%20Statistics%20Report%202025.pdf
     year: 2026
-  wmda:
-    title: Wikipedia — Misuse of Drugs Act (Singapore), section 17 presumption amounts
-    url: https://en.wikipedia.org/wiki/Misuse_of_Drugs_Act_(Singapore)
   nlb24:
-    title: BiblioAsia (National Library Board) — Andrea Kee, Singapore's Hippie Hysteria and the Ban on Long Hair (April–June 2024)
-    url: https://biblioasia.nlb.gov.sg/vol-20/issue-1/apr-jun-2024/hippies-operation-snip-snip-long-hair/
+    title: >-
+      BiblioAsia (National Library Board) — Andrea Kee, Singapore's Hippie Hysteria and the Ban on
+      Long Hair (April–June 2024)
+    url: >-
+      https://biblioasia.nlb.gov.sg/vol-20/issue-1/apr-jun-2024/hippies-operation-snip-snip-long-hair/
   idpc18:
-    title: IDPC — Singapore announces medical cannabis research, despite maintaining death penalty for cannabis trafficking (February 2018)
-    url: https://idpc.net/news/2018/02/singapore-announces-medical-cannabis-research-despite-maintaining-death-penalty-for-cannabis-trafficking
+    title: >-
+      IDPC — Singapore announces medical cannabis research, despite maintaining death penalty for
+      cannabis trafficking (February 2018)
+    url: >-
+      https://idpc.net/news/2018/02/singapore-announces-medical-cannabis-research-despite-maintaining-death-penalty-for-cannabis-trafficking
   rta67:
     title: Singapore — Road Traffic Act 1961, section 67 (Singapore Statutes Online)
     url: https://sso.agc.gov.sg/Act/RTA1961?ProvIds=P14-#pr67-
@@ -466,7 +501,8 @@ sources:
       https://www.cnb.gov.sg/educational-resources/myths-and-facts-about-drugs/cannabis/singapore's-anti-drug-laws-on-cannabis
   cnb_can:
     title: Central Narcotics Bureau — Cannabis (updated 2 July 2026)
-    url: https://www.cnb.gov.sg/singapore-drug-situation/drugs--psychoactive-substances--and-inhalants/cannabis/
+    url: >-
+      https://www.cnb.gov.sg/singapore-drug-situation/drugs--psychoactive-substances--and-inhalants/cannabis/
   mda_sch:
     title: Misuse of Drugs Act 1973, Second Schedule (Singapore Statutes Online, as at 1 June 2026)
     url: https://sso.agc.gov.sg/Act/MDA1973?ProvIds=Sc2-&ValidDate=20260601
@@ -475,11 +511,7 @@ sources:
       cannabis mixture more than 1,000 g, death. Possession bands for the same three substances.
   cnb_execution:
     title: Central Narcotics Bureau — Execution of a convicted drug importer, 16 April 2026
-    url: >-
-      https://www.cnb.gov.sg/mediaroom/news/execution-of-a-convicted-drug-importer---16-april-2026/
-  wiki:
-    title: Wikipedia — Cannabis in Singapore
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Singapore
+    url: https://www.cnb.gov.sg/mediaroom/news/execution-of-a-convicted-drug-importer---16-april-2026/
   mh:
     title: Mugglehead — Singapore is the worst place in the world to smoke weed
     url: https://mugglehead.com/singapore-is-the-worst-place-in-the-world-to-smoke-weed/
@@ -491,10 +523,9 @@ sources:
       https://www.judiciary.gov.sg/docs/default-source/criminal-docs/mda-primer-(approved-on-18-may-2026---date-inserted).pdf
   cnbtoolkit:
     title: >-
-      Central Narcotics Bureau — Commander’s Toolkit, specified drugs and long-term imprisonment,
-      p. 42
-    url: >-
-      https://www.cnb.gov.sg/docs/default-source/Singapore-PDE-Resources/cnb-commanders-toolkit.pdf
+      Central Narcotics Bureau — Commander’s Toolkit, specified drugs and long-term imprisonment, p.
+      42
+    url: https://www.cnb.gov.sg/docs/default-source/Singapore-PDE-Resources/cnb-commanders-toolkit.pdf
   mda33a:
     title: Misuse of Drugs Act — section 33A and Fourth Schedule (Singapore Statutes Online)
     url: https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr33A-
@@ -505,9 +536,41 @@ sources:
     url: >-
       https://www.ica.gov.sg/news-and-publications/newsroom/media-release/more-than-391kg-of-cannabis-detected-at-pasir-panjang-scanning-station
     locator: Paragraphs 1–3; seizure 24 September, publication 2 October
+  mha2019:
+    title: >-
+      Singapore MHA/MOH — Position on pharmaceutical products containing cannabinoids (13 February
+      2019)
+    url: >-
+      https://www.mha.gov.sg/media-room/newsroom/the-singapore-government-position-on-the-use-of-pharmaceutical-products-containing-cannabinoids/
+    locator: Registered cannabinoid pharmaceuticals and named-patient import approval.
+  st2019:
+    title: >-
+      The Straits Times — First Singapore case of cannabis-derived medication allowed (1 December
+      2019)
+    url: >-
+      https://www.straitstimes.com/singapore/health/first-spore-case-of-cannabis-derived-medication-allowed
+    locator: Girl with drug-resistant epilepsy; named-patient approval.
+  cnb_hemp:
+    title: Central Narcotics Bureau — FAQs about hemp and CBD oil products
+    url: >-
+      https://www.cnb.gov.sg/singapore-drug-situation/myths-and-facts-about-drugs/cannabis/faqs-about-hemp-and-cbd-oil-products/
+    locator: Hemp, seeds, oils and CBD treated as controlled; no THC exemption.
+  mha2023:
+    title: Singapore MHA — Oral reply on section 34 DRC and supervision (10 January 2023)
+    url: >-
+      https://www.mha.gov.sg/media-room/newsroom/oral-reply-to-pq-on-the-powers-of-director-cnb-to-commit-a-person-to-drug-treatment-under-misuse-of-drugs-act-1973-section-34/
+    locator: Drug Rehabilitation Centre or supervision after a positive test.
+  askmha:
+    title: Singapore ask.gov.sg — Immigration status after a criminal offence
+    url: https://ask.gov.sg/mha/questions/cmqu6lhuc00hw4401ussji0jr
+    locator: Pass cancellation, re-entry prohibition and PR review.
+  tangaraju:
+    title: Amnesty International / media — Tangaraju Suppiah execution, April 2023
+    url: https://www.amnesty.org/en/latest/news/2023/04/singapore-execution-of-tangaraju-suppiah/
+    locator: Cannabis trafficking execution, 26 April 2023.
 answers:
   caught:
-    answer: 'no'
+    answer: "no"
     label: Severe punishment
     text: >-
       Possession can bring prison; qualifying repeat consumption can bring up to 13 years and 12
