@@ -28,6 +28,21 @@ segments:
       - offences
       - amounts
       - criminal
+    penalties:
+      - label: Small personal possession
+        treatment: civil
+        term: Small possession
+        note: Fine of 200 calculated units or 40 hours of community work
+      - label: Large personal possession
+        treatment: criminal
+        term: Large amount
+        prison: 5 years
+        note: Fine of 1,000–2,000 calculated units or up to five years
+      - label: Especially large personal possession
+        treatment: criminal
+        term: Especially large amount
+        prison_min: 5 years
+        prison: 10 years
   cultivation:
     text: >-
       Small unauthorised cultivation carries an administrative fine of 125 calculated units for
@@ -38,6 +53,22 @@ segments:
     sources:
       - offences
       - criminal
+    penalties:
+      - label: Small unauthorised cultivation
+        treatment: civil
+        term: Small cultivation
+        note: Fine of 125 calculated units for an individual
+      - label: Large-scale or group cultivation
+        treatment: criminal
+        term: Large-scale cultivation
+        prison: 5 years
+        note: Fine of 1,000–2,000 calculated units or up to five years
+      - label: Especially large cultivation
+        treatment: criminal
+        term: Especially large cultivation
+        prison_min: 5 years
+        prison: 10 years
+        note: Confiscation also applies
   enforcement:
     text: >-
       The small-possession offence allows a fine or community work, while larger personal
@@ -57,6 +88,23 @@ segments:
     sources:
       - court
       - criminal
+    penalties:
+      - label: Ordinary supply
+        treatment: criminal
+        term: Supply
+        prison_min: 5 years
+        prison: 8 years
+        note: Confiscation also applies
+      - label: Aggravated supply
+        treatment: criminal
+        term: Supply
+        prison_min: 8 years
+        prison: 12 years
+      - label: Most serious supply
+        treatment: criminal
+        term: Supply
+        prison_min: 12 years
+        prison: 15 years
   consumption:
     text: >-
       Non-medical drug use in streets, parks, public transport and other public places carries a
@@ -64,6 +112,11 @@ segments:
       a separate offence.[@offences]
     sources:
       - offences
+    penalties:
+      - label: Non-medical use in a public place
+        treatment: civil
+        term: Use
+        note: Fine of 10 calculated units or up to 20 hours of community work
   access:
     text: >-
       Buying or holding a small personal amount remains an administrative offence, and supply is
@@ -76,7 +129,18 @@ segments:
       - rules
       - list
 context:
+  recreational:
+    text: >-
+      Small personal possession and use are administrative offences; supply and larger amounts are
+      criminal.[@offences,criminal] There is no legal recreational supply. Wild cannabis grows
+      across the Chuy valley and is subject to eradication campaigns.[@unodc] No price or purity
+      data were found.
+    sources:
+      - offences
+      - criminal
+      - unodc
   production:
+
     status: none
     text: >-
       The 2024 law includes gathering wild controlled organisms within manufacture or production
@@ -87,15 +151,6 @@ context:
       - law69
       - rules
       - list
-  products:
-    text: >-
-      The controlled list names cannabis oil, resin, straw, marijuana and extracts or
-      tinctures.[@list] The small-quantity ceilings differ by preparation: dried marijuana 20 g,
-      dried resin 3 g, oil preparation 2 g and extracts or tinctures 3 g measured as dry
-      residue.[@amounts]
-    sources:
-      - list
-      - amounts
   medical:
     text: >-
       Cannabis oil, resin, plant material, marijuana and extracts or tinctures appear in
@@ -106,6 +161,17 @@ context:
       - list
       - law69
       - rules
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception, THC limit or licensing scheme was found. Cannabis oil, resin,
+      plant material, marijuana and extracts appear in narcotic list IV, and the drug law prohibits
+      medical and veterinary use of substances on that list.[@list,law69] Wild cannabis is treated
+      as a controlled plant and eradicated.[@unodc]
+    sources:
+      - list
+      - law69
+      - unodc
   consequences:
     text: >-
       The Criminal Code offers an exemption from criminal liability for certain drug offences
@@ -148,21 +214,38 @@ context:
       - criminal
       - rules
       - list
+  driving:
+    status: unknown
+    text: >-
+      No cannabis-specific driving offence or THC limit was found in the sources read. The
+      Criminal Code and Code of Offences cover drug possession, supply and public use, but the
+      traffic rules were not among the texts reviewed.[@criminal,offences]
+    sources:
+      - criminal
+      - offences
+  culture:
+    text: >-
+      Cannabis in Kyrgyzstan is known as [anasha](/culture/language/anasha/), the Central Asian
+      word for the plant and its resin. The Chuy valley's wild hemp is the classic source, and
+      eradication campaigns there have targeted it for decades.[@unodc] The atlas entry traces the
+      word across the Soviet south.[@unodc]
+    sources:
+      - unodc
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 298 kg of herbal cannabis
       seized in 2024, against 265 kg in 2023, and 240 kg of cannabis resin seized in 2024,
-      against 235 kg in 2023. The UN publishes them as kilogram equivalents, and countries count
-      seizures differently, so the figures are not comparable across borders.
+      against 235 kg in 2023.[@unodc_szr] The UN publishes them as kilogram equivalents, and countries count
+      seizures differently, so the figures are not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
   arrests:
     text: >-
       The interior ministry's anti-drug service reported 1,163 drug crimes detected in 2024, 154
       of them committed online, and 961 people prosecuted, among them 17 minors. A further 89
-      drug-related administrative violations brought fines. More than 15 tonnes of narcotics,
-      psychotropic substances and precursors were seized. The report gives no separate figures
-      for cannabis.
+      drug-related administrative violations brought fines.[@kg24] More than 15 tonnes of narcotics,
+      psychotropic substances and precursors were seized.[@kg24] The report gives no separate figures
+      for cannabis.[@kg24]
     sources:
       - kg24
 sources:

@@ -9,8 +9,10 @@ Kyrgyzstan, Saudi Arabia and Bangladesh.
 |---|---|---|---|
 | China | hemp and arrests sections, culture links to all seven atlas entries, citations throughout, production corrected to hemp | 1940s–1960s still empty; no cannabis-specific arrest series | this country commit |
 | Oman | in progress | | |
-| Kyrgyzstan | in progress | | |
+| Kyrgyzstan | possession, cultivation, supply and use tables; recreational, hemp, culture and driving sections; products folded | 1940s–1950s, 1970s–1980s and 2000s still empty; driving status unverified | this country commit |
 | Saudi Arabia | in progress | | |
 | Bangladesh | in progress | | |
 
 China validation: `profile-audit cn` zero errors/warnings; `country-gaps cn` has no missing standard or researched sections, no missing tables and no uncited text. The build passed at 5,073 pages and the profile renders with no raw citation marks.
+
+Kyrgyzstan validation: `profile-audit kg` zero errors/warnings; `country-gaps kg` has no missing standard or researched sections, no missing tables and no uncited text. The build passed at 5,076 pages.
