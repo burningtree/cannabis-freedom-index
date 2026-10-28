@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 584
 recreational: illegal
 medical: limited
-updated: '2026-10-23'
+updated: '2026-10-28'
 summary: >-
   Cannabis offences carry fines or prison, with higher penalties for larger amounts and repeat
   convictions.
@@ -20,15 +20,65 @@ segments:
       For a first marijuana offence involving one ounce or less, the statutory range is a
       $1,000–5,000 fine or six months to one year in prison, or both. More than an ounce on a first
       offence, or an ounce or less after a previous conviction, carries $5,000–25,000 or one to five
-      years, or both.[@law]
+      years, or both; a repeat over an ounce carries $25,000–50,000 or five to fifteen years.[@law]
+      Marijuana concentrate is treated separately: under a quarter of an ounce carries $5,000–50,000
+      or one to fifteen years, and half an ounce or more carries at least $100,000 or at least
+      twenty-five years.[@law]
     sources:
       - law
+    currency: USD
+    penalties:
+      - label: Herb, one ounce or less, first offence
+        treatment: criminal
+        term: Possession
+        prison_min: 6 months
+        prison: 1 year
+        fine_min: 1000
+        fine: 5000
+      - label: Herb, over one ounce, first offence
+        treatment: criminal
+        term: Possession
+        prison_min: 1 year
+        prison: 5 years
+        fine_min: 5000
+        fine: 25000
+      - label: Herb, over one ounce, repeat
+        treatment: criminal
+        term: Possession
+        prison_min: 5 years
+        prison: 15 years
+        fine_min: 25000
+        fine: 50000
+      - label: Concentrate, under a quarter ounce, first offence
+        treatment: criminal
+        term: Possession
+        prison_min: 1 year
+        prison: 15 years
+        fine_min: 5000
+        fine: 50000
+      - label: Concentrate, half an ounce or more
+        treatment: criminal
+        term: Possession
+        prison_min: 25 years
+        fine_min: 100000
+        note: No statutory maximum for this band
   cultivation:
     text: >-
       Knowingly planting or cultivating a prohibited drug is an offence. Marijuana includes growing
-      cannabis plants, seeds and resin; the law provides no ordinary personal plant allowance.[@law]
+      cannabis plants, seeds and resin; the law provides no ordinary personal plant allowance and
+      grades cultivation by the amount of drug involved, not by plant count.[@law]
     sources:
       - law
+    currency: USD
+    penalties:
+      - label: Cultivation graded by quantity
+        treatment: criminal
+        term: Cultivation
+        prison_min: 6 months
+        prison: 15 years
+        fine_min: 1000
+        fine: 50000
+        note: Section 909 herb bands; concentrate can reach at least twenty-five years
   enforcement:
     text: >-
       The law allows a fine, imprisonment or both for the smallest first marijuana offences.[@law] A
@@ -46,6 +96,36 @@ segments:
       penalties for supplying someone under eighteen.[@law]
     sources:
       - law
+    currency: USD
+    penalties:
+      - label: Herb, one ounce or less, first offence
+        treatment: criminal
+        term: Distribution
+        prison_min: 6 months
+        prison: 1 year
+        fine_min: 1000
+        fine: 5000
+      - label: Herb, over one ounce, first offence
+        treatment: criminal
+        term: Distribution
+        prison_min: 1 year
+        prison: 5 years
+        fine_min: 5000
+        fine: 25000
+      - label: Supply to a minor, herb
+        treatment: criminal
+        term: Distribution to a minor
+        prison_min: 5 years
+        prison: 15 years
+        fine_min: 25000
+        fine: 50000
+        note: Additional to the section 909 penalty
+      - label: Supply to a minor, concentrate
+        treatment: criminal
+        term: Distribution to a minor
+        prison_min: 25 years
+        fine_min: 100000
+        note: Additional to the section 909 penalty; no statutory maximum
   consumption:
     text: >-
       Self-administration is expressly prohibited outside the law’s exceptions.[@law] In a March–May
@@ -62,27 +142,37 @@ segments:
     sources:
       - law
 context:
+  recreational:
+    text: >-
+      There is no legal way for an adult to buy cannabis, and growing a plant at home is a
+      crime.[@law] The market is small and local, with no licensed shops or clubs.[@ocindex] Cannabis
+      is the illicit drug most often reported by young people: 13.8% of high school students in the
+      2022 survey had used it in the past 30 days, against 1.0% for meth or cocaine.[@survey] Police
+      and court reports describe small quantities found alongside methamphetamine and crack, not a
+      large commercial trade.[@journal,courts2025]
+    sources:
+      - law
+      - ocindex
+      - survey
+      - journal
+      - courts2025
   production:
     status: medical
     text: >-
       Planting, cultivation, production and manufacture are prohibited outside the Act’s exceptions.
-      Practitioners handling drugs for professional work, approved research, teaching or analysis
-      require licences specifying the drug and quantity.[@law]
-    sources:
-      - law
-  products:
-    text: >-
-      The law separates marijuana from marijuana concentrate, including hashish and THC, with
-      different penalty bands. Both are expressly included in the current prohibited-drug
-      definition.[@law]
+      The Act allows licensed professional handling and approved research or teaching, but creates no
+      commercial cannabis cultivation or manufacturing licence; the government is the sole importer
+      and distributor of narcotic drugs.[@law]
     sources:
       - law
   medical:
     text: >-
-      The Act expressly extends its medical and professional exceptions to marijuana and
-      concentrates. It recognises licensed professional handling and possession under a valid
-      prescription. Practitioner licences identify the drugs and exact quantities and last one year;
-      receipt and dispensing records must be retained for two years.[@law]
+      A doctor may prescribe a narcotic drug, and the Act deems marijuana a narcotic for its medical
+      and professional sections, so possession under a valid prescription is exempt from the ban.[@law]
+      The Act creates no medical cannabis programme: no product list, patient registry or pharmacy
+      supply route was found, and the government is the sole importer of narcotic drugs.[@law] A
+      practitioner needs a one-year licence from the Board of Health Professions naming the drug and
+      quantity, and must keep records for two years.[@law]
     sources:
       - law
   consequences:
@@ -108,6 +198,59 @@ context:
       previous convictions raise the penalty range.[@law]
     sources:
       - law
+  hemp:
+    status: none
+    text: >-
+      The Act has no THC threshold for hemp. “Marijuana” covers any part of the cannabis plant,
+      growing or not, including seeds and resin, and “marijuana concentrate” covers hashish and THC;
+      the only exceptions are medical, professional and research licences.[@law] No hemp licensing
+      scheme or CBD rule was found.[@law]
+    sources:
+      - law
+  driving:
+    status: impairment
+    text: >-
+      Driving while under the influence of alcohol or drugs, including marijuana, is a crime when it
+      makes you unable to drive with the caution of a sober person.[@dui] There is no THC limit: a
+      breath test is taken if police ask, a blood test if breath testing is unavailable, and refusing
+      a test costs the licence for six months.[@dui] A first conviction carries 3 days to 1 year in
+      jail, a $100–$1,000 fine and a 30-day to 6-month licence suspension.[@dui] The Motor Traffic
+      Act’s definition of “drug” expressly includes marijuana.[@motor]
+    sources:
+      - dui
+      - motor
+  black_market:
+    text: >-
+      The cannabis market is small and local. The Global Organized Crime Index rates the cannabis
+      trade 2.5 out of 10 and says low profit margins keep large criminal actors out, while cocaine
+      and methamphetamine dominate trafficking.[@ocindex] Police reports describe small quantities
+      mixed with other drugs: a 2024 jail raid found marijuana and meth in the same cells, and a 2024
+      home search found marijuana, meth and crack.[@journal] The Marshall Islands reports no cannabis
+      seizure data to UNODC, so there is no national series of kilograms seized for 2015–2024.[@unodc_szr]
+    sources:
+      - ocindex
+      - journal
+      - unodc_szr
+  arrests:
+    text: >-
+      Police recorded charges in two possession-of-illegal-substance cases and five
+      selling-or-distribution cases in 2024, up from none of either in 2023; the figures cover all
+      drugs and do not separate cannabis.[@mipd] The High Court counted two “narcotic drugs” cases
+      among 21 criminal filings in Majuro in 2024, and in 2025 five drug-possession cases among 26
+      Majuro filings and one marijuana-selling case among five Ebeye filings.[@courts2024,courts2025]
+      The court reports give case counts, not arrest numbers, and the possession figures mix cannabis
+      with methamphetamine and cocaine.[@courts2025]
+    sources:
+      - mipd
+      - courts2024
+      - courts2025
+  death_penalty:
+    text: >-
+      No cannabis offence carries death. The Prohibited Drugs Act provides fines or imprisonment for
+      marijuana and concentrate offences; none of its penalty provisions provides a death
+      sentence.[@law]
+    sources:
+      - law
   planting:
     seeds: illegal
     seeds_trade: banned
@@ -120,6 +263,34 @@ context:
     sources:
       - law
 sources:
+  ocindex:
+    title: "Global Organized Crime Index — Marshall Islands 2025"
+    url: https://ocindex.net/country/marshall-islands
+    locator: "Cannabis trade 2.5/10; low profit margins; cocaine and methamphetamine dominate."
+  dui:
+    title: "Marshall Islands — Driving Under the Influence Act 1993 (13 MIRC Ch. 3)"
+    url: https://rmiparliament.org/cms/images/LEGISLATION/PRINCIPAL/1993/1993-0046/1993-0046_1.pdf
+    locator: "Sections 303–304 and 308; impairment standard, tests and first-conviction penalties."
+  motor:
+    title: "Marshall Islands — Motor Traffic Act 1986"
+    url: https://rmiparliament.org/cms/images/LEGISLATION/PRINCIPAL/1986/1986-0005/1986-0005_5.pdf
+    locator: "Section 102(d), definition of ‘drug’ including marijuana."
+  mipd:
+    title: "Marshall Islands Police Department — Annual Report 2024"
+    url: https://rmiparliament.org/cms/library/rmi-regulations/57-communications/58-2025-nitijela-session.html?download=842:2025-nitijela-communication-no-48-marshall-islands-police-department-annual-report-2024
+    locator: "Two possession and five selling/distribution charges in 2024; none in 2023."
+  courts2024:
+    title: "Marshall Islands High Court — 2024 Annual Report"
+    url: https://rmicourts.org/wp-content/uploads/2024-AnnualReport-Final-260115.pdf
+    locator: "Two narcotic-drug cases among 21 Majuro criminal filings."
+  courts2025:
+    title: "Marshall Islands High Court — 2025 Annual Report"
+    url: https://rmicourts.org/wp-content/uploads/2025-FINAL-Annual-Report-260603.pdf
+    locator: "Five Majuro possession cases and one Ebeye marijuana-selling case."
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents"
+    url: https://data.unodc.org/datareport/drug-seizure
+    locator: "No Marshall Islands cannabis rows, 2015–2024."
   law:
     type: law
     title: Marshall Islands Parliament — Prohibited Drugs Act 1987, consolidated through P.L. 2025-37
