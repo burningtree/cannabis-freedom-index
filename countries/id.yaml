@@ -30,14 +30,17 @@ segments:
     penalties:
       - label: Planting or possessing plant form
         treatment: criminal
+        term: Article 111
         prison: 12 years
         fine: 2000000000
-        note: Up to twelve years and/or a category VI fine (Rp2 billion); no death penalty or minimum
+        note: Up to twelve years and/or a category VI fine; no minimum term
       - label: Over 1 kg or at least six plants
         treatment: criminal
+        term: Article 111
         note: Life imprisonment or up to twenty years and/or a higher fine
       - label: Personal use, Article 127
         treatment: criminal
+        term: Article 127
         prison: 4 years
         note: Up to four years; proven abuse victims must receive rehabilitation
   cultivation:
@@ -49,10 +52,23 @@ segments:
     sources:
       - uu2026
       - uu35
+    currency: IDR
+    penalties:
+      - label: Planting or possessing plant form
+        treatment: criminal
+        term: Article 111
+        prison: 12 years
+        fine: 2000000000
+        note: Up to twelve years and/or a category VI fine; no minimum term
+      - label: Over 1 kg or at least six plants
+        treatment: criminal
+        term: Article 111
+        prison: 20 years
+        note: Life imprisonment or up to twenty years and/or a higher fine
   enforcement:
     text: >-
-      Among the harshest in the world. Tourists in Bali are regularly jailed for years over a few
-      grams, and Indonesia retains and uses the death penalty for drug trafficking.
+      Among the harshest in the world.[@sun] Tourists in Bali are regularly jailed for years over a few
+      grams, and Indonesia retains and uses the death penalty for drug trafficking.[@gp]
     sources:
       - sun
       - gp
@@ -72,21 +88,25 @@ segments:
     penalties:
       - label: Sale, purchase, brokerage or delivery
         treatment: criminal
+        term: Article 114
         prison: 20 years
         fine: 2000000000
         note: Life imprisonment or up to twenty years and/or a category VI fine
       - label: Over 1 kg or at least six plants for sale
         treatment: criminal
+        term: Article 114
         death: true
         prison: 20 years
         note: Death, life or up to twenty years and/or a higher fine
       - label: Giving to another to use, Article 116(1)
         treatment: criminal
+        term: Article 116(1)
         prison: 15 years
         fine: 2000000000
         note: Up to fifteen years and/or a category VI fine
       - label: Giving causing death or disability, Article 116(2)
         treatment: criminal
+        term: Article 116(2)
         death: true
         prison: 20 years
         note: Death, life or up to twenty years and/or a higher fine
@@ -94,25 +114,25 @@ segments:
     text: >-
       Using a Class I narcotic for oneself is a crime with up to four years in prison under
       Article 127; a judge may order treatment and rehabilitation, which counts towards the
-      sentence. An adult addict who does not report for treatment faces up to six months'
-      custody or a fine, and so does a parent who does not report an addicted child.
+      sentence.[@uu35] An adult addict who does not report for treatment faces up to six months'
+      custody or a fine, and so does a parent who does not report an addicted child.[@gp]
     sources:
       - uu35
       - gp
   access:
-    text: None.
+    text: None.[@tempo]
     sources:
       - tempo
 context:
   death_penalty:
     text: >-
       Since 2 January 2026, aggravated sale or delivery under Article 114 can bring death, life
-      imprisonment or up to twenty years and/or a higher fine. For cannabis in plant form, the
-      threshold is more than 1 kg or at least six plants. Possession and planting under Article 111
+      imprisonment or up to twenty years and/or a higher fine.[@uu2026] For cannabis in plant form, the
+      threshold is more than 1 kg or at least six plants.[@uu2026] Possession and planting under Article 111
       carry prison penalties only.[@uu2026,uu35] The new Criminal Code’s Article 610 replaces the
       former production, import, export and distribution offence in Article 113: the same plant-weight
       or plant-count threshold can bring death, life imprisonment or up to twenty years and/or a
-      category VI fine. For non-plant Class I narcotics the threshold is more than 5 g. Giving a Class
+      category VI fine. For non-plant Class I narcotics the threshold is more than 5 g.[@uu2026] Giving a Class
       I narcotic to another person to use can also bring death under Article 116(2) if it causes death
       or permanent disability.[@uu2026,uu35]
     sources:
@@ -140,20 +160,39 @@ context:
       - sun
   production:
     status: none
-    text: None. Cannabis has long been grown illicitly in Aceh, where the army burns fields each year.
+    text: None. Cannabis has long been grown illicitly in Aceh, where the army burns fields each year.[@gp]
     sources:
       - gp
   medical:
     text: >-
       Prohibited absolutely: Class I narcotics may not be used for health services, and CBD is
-      treated as cannabis. The Constitutional Court rejected a challenge brought by mothers of
-      children with cerebral palsy, while urging the government to research therapeutic use.
+      treated as cannabis.[@uu35] The Constitutional Court rejected a challenge brought by mothers of
+      children with cerebral palsy, while urging the government to research therapeutic use.[@tempo]
     sources:
       - tempo
       - sun
       - gp
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp or CBD exception was found. The Class I list covers the cannabis plant and
+      all its parts, including seeds, fruit and straw, and its products; Class I narcotics may not be
+      used for health services.[@uu35] CBD is treated as cannabis.[@tempo,@sun]
+    sources:
+      - uu35
+      - tempo
+      - sun
+  culture:
+    text: >-
+      Cannabis in Indonesia is known as [ganja](/culture/language/ganja/), and Aceh in northern
+      Sumatra is the long-standing illicit growing region.[@gp] The plant is also part of older
+      Acehnese and Malay medical and social traditions, but the modern narcotics law treats it as a
+      Class I drug with no cultural exemption.[@uu35]
+    sources:
+      - gp
+      - uu35
   consequences:
-    text: Long pre-trial detention, deportation and blacklisting for foreigners.
+    text: Long pre-trial detention, deportation and blacklisting for foreigners.[@gp]
     sources:
       - gp
   planting:
@@ -174,7 +213,7 @@ context:
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
       supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      penalty for the most serious drug offences.[@gp,sun]
     sources:
       - gp
       - sun
@@ -186,43 +225,43 @@ context:
       610.[@uu2026] For plant material over 1 kg or more than five plants, the aggravated offence can
       bring death, life imprisonment or up to twenty years and/or a category VI fine.[@uu2026] Travel
       advice warns that medicinal cannabis, oils, CBD, edibles and vapes are also illegal and screened
-      at airports.[@fcdo] Domestic plant possession separately carries up to twelve years and/or a
+      at airports.[@sun] Domestic plant possession separately carries up to twelve years and/or a
       category VI fine; personal use under Article 127 carries up to four years, with rehabilitation
       required for a person proved to be a victim of abuse.[@uu2026,uu35]
     sources:
       - uu2026
-      - fcdo
+      - sun
       - uu35
   black_market:
     text: >-
       The illegal supply is domestic and centred on Aceh, in northern Sumatra, where the
       narcotics agency speaks of illicit cannabis production and destroys hill plantations
-      every year. In one operation in November 2025 it burned about 97,000 plants, some 69
+      every year.[@mtv25] In one operation in November 2025 it burned about 97,000 plants, some 69
       tonnes wet weight, on six plots covering 6.5 hectares in North Aceh, with 151 officers
-      from the agency, army, police and other bodies. The village is one of four pilot sites
+      from the agency, army, police and other bodies.[@mtv25] The village is one of four pilot sites
       of an alternative-development programme, with Aceh Besar, Bireuen and Gayo Lues, that
-      trains growers to switch to legal crops.
+      trains growers to switch to legal crops.[@mtv25]
     sources:
       - mtv25
   arrests:
     text: >-
-      Indonesia's prison figures cover all narcotics, not cannabis alone. On 30 April 2026
+      Indonesia's prison figures cover all narcotics, not cannabis alone.[@rri26] On 30 April 2026
       prisons and detention centres held 271,602 people, 85% over capacity, and 146,376 of
-      them, 53%, were there for narcotics offences. In October 2026 the law minister said the
+      them, 53%, were there for narcotics offences.[@rri26] In October 2026 the law minister said the
       government was preparing rehabilitation and re-education centres, mainly for drug users
-      of working age, on the president's instruction.
+      of working age, on the president's instruction.[@rri26]
     sources:
       - rri26
   driving:
     status: impairment
     text: >-
-      Article 106(1) of Law 22/2009 requires proper driving with full concentration. Its official
-      explanation expressly includes alcohol or drugs affecting driving ability. Article 283
-      punishes abnormal driving or a condition that disrupts concentration with up to three
-      months' detention or a fine of up to Rp750,000. This is a driving-ability rule, not a
-      specified THC concentration in the provisions reviewed. Article 314 also permits licence
-      revocation or compensation as an additional penalty for traffic offences; licence loss is
-      not automatic under article 283.
+      Article 106(1) of Law 22/2009 requires proper driving with full concentration.[@traffic22] Its
+      official explanation expressly includes alcohol or drugs affecting driving ability.[@traffic22]
+      Article 283 punishes abnormal driving or a condition that disrupts concentration with up to
+      three months' detention or a fine of up to Rp750,000.[@traffic22] This is a driving-ability rule,
+      not a specified THC concentration in the provisions reviewed.[@traffic22] Article 314 also permits
+      licence revocation or compensation as an additional penalty for traffic offences; licence loss
+      is not automatic under article 283.[@traffic22]
     sources:
       - traffic22
 sources:
