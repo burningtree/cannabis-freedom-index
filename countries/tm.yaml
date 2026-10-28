@@ -26,6 +26,25 @@ segments:
     sources:
       - admin
       - code
+    currency: TMT
+    penalties:
+      - label: Small amount, administrative
+        treatment: civil
+        term: Small possession
+        fine_min: 100
+        fine: 300
+        note: Plus confiscation, or up to 15 days' detention
+      - label: Above the small threshold, no supply intent
+        treatment: criminal
+        term: Possession
+        prison: 5 years
+        fine_min: 4000
+        fine: 10000
+      - label: Repeated or group possession
+        treatment: criminal
+        term: Possession
+        prison_min: 3 years
+        prison: 10 years
   cultivation:
     text: >-
       Sowing or growing prohibited drug-containing plants, expressly including cannabis, allows
@@ -36,6 +55,24 @@ segments:
     sources:
       - code
       - law17
+    currency: TMT
+    penalties:
+      - label: Ordinary cultivation
+        treatment: criminal
+        term: Cultivation
+        prison_min: 2 years
+        prison: 5 years
+        note: Corrective labour up to two years is an alternative
+      - label: Repeated, group or large-scale
+        treatment: criminal
+        term: Cultivation
+        prison_min: 5 years
+        prison: 10 years
+      - label: Especially large-scale
+        treatment: criminal
+        term: Cultivation
+        prison_min: 10 years
+        prison: 15 years
   enforcement:
     text: >-
       The administrative small-amount offence allows a fine or up to 15 days’ detention.[@admin]
@@ -53,6 +90,23 @@ segments:
     sources:
       - code
       - law17
+    currency: TMT
+    penalties:
+      - label: Supply or possession with intent
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 12 years
+      - label: Repeated, group or large amount
+        treatment: criminal
+        term: Trafficking
+        prison_min: 8 years
+        prison: 20 years
+      - label: Organised or especially large
+        treatment: criminal
+        term: Trafficking
+        prison_min: 15 years
+        prison: 25 years
   consumption:
     text: >-
       Consuming narcotic drugs without a doctor’s order is prohibited.[@law17] The
@@ -79,18 +133,11 @@ context:
       institutions.[@law17]
     sources:
       - law17
-  products:
-    text: >-
-      The drug law places controlled substances in separate lists and restricts their
-      production, storage and supply. Controlled medicines for patients require special
-      prescriptions through licensed state pharmacies.[@law17]
-    sources:
-      - law17
   medical:
     text: >-
-      The general controlled-medicine rules require special prescriptions and supply through
-      licensed state pharmacies. The health ministry sets the dispensing and prescription
-      procedures.[@law17]
+      No medical cannabis programme or registered cannabis medicine was found. The general
+      controlled-medicine rules require special prescriptions and supply through licensed state
+      pharmacies, but cannabis is treated as a controlled plant rather than a medicine.[@law17]
     sources:
       - law17
   consequences:
@@ -117,13 +164,12 @@ context:
     status: none
     text: >-
       Recreational drug supply remains prohibited.[@code] The administrative code permits a fine
-      or detention for small-amount possession and use.[@admin] British travel advice warns that
-      illegal drug possession or use can lead to lengthy prison sentences in very basic
-      conditions.[@fcdo]
+      or detention for small-amount possession and use, and the criminal code applies to visitors
+      as to residents.[@admin,code] No visitor exemption was found.[@law17]
     sources:
       - code
       - admin
-      - fcdo
+      - law17
   clubs:
     status: none
     text: >-
@@ -133,10 +179,70 @@ context:
     sources:
       - law17
       - code
+  recreational:
+    text: >-
+      There is no legal recreational supply. Small-amount possession or use brings a fine of
+      100–300 TMT and confiscation, or up to 15 days' detention; above the small threshold
+      possession is criminal.[@admin,code] No adult-use outlet or tolerance policy was found.[@code]
+    sources:
+      - admin
+      - code
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. The drug law allows controlled plants to be
+      grown only by permitted enterprises and institutions for industrial, medical or scientific
+      purposes, within state quotas; no commercial hemp licence or CBD route was found.[@law17]
+    sources:
+      - law17
+  driving:
+    status: impairment
+    text: >-
+      The Administrative Code punishes driving in a state of intoxication with a licence
+      restriction of six to twelve months; a repeat brings 15 days' arrest and a one-to-two-year
+      restriction, and handing the wheel to an intoxicated person brings a fine.[@admin] The
+      Criminal Code covers intoxicated driving causing harm, with up to two years.[@code] There is
+      no numeric THC limit.[@admin]
+    sources:
+      - admin
+      - code
+  black_market:
+    text: >-
+      No official cannabis seizure series has been published since 2016. The last detailed figures
+      are 19.9 kg of herbal cannabis and 5.38 kg of resin in 2016, and 9.1 kg of herb in the first
+      nine months of 2020.[@cadap] Two 2023 border cases involved 159 kg and 60 kg of marijuana;
+      no later cannabis total was found.[@hronika23]
+    sources:
+      - cadap
+      - hronika23
+  arrests:
+    text: >-
+      No national cannabis arrest count is published. The authorities recorded 425 drug offences in
+      the first nine months of 2021 and 347 in 2020, all drugs.[@cadap] In 2026 Russia extradited a
+      Turkmen citizen charged under article 327(2) over more than 100 g of opium, showing the supply
+      tier in use but not a cannabis case.[@hronika26]
+    sources:
+      - cadap
+      - hronika26
+  death_penalty:
+    text: >-
+      No cannabis offence can carry death. Turkmenistan abolished the death penalty in 1999, the
+      Criminal Code's list of punishments contains no death penalty, and imprisonment is capped at
+      25 years; the highest cannabis supply tier is 15–25 years.[@code]
+    sources:
+      - code
 sources:
-  fcdo:
-    title: 'GOV.UK (FCDO) — Foreign travel advice: Turkmenistan, safety and security'
-    url: https://www.gov.uk/foreign-travel-advice/turkmenistan/safety-and-security
+  cadap:
+    title: "EU CADAP — Current situation of data collection and drug early warning system in Turkmenistan (May 2023)"
+    url: https://www.eu-cadap.org/wp-content/uploads/2024/04/Turkmenistan-REPORT.pdf
+    locator: "Table 1: 2016 19.9 kg herb and 5.38 kg resin; 2020 9.1 kg herb."
+  hronika23:
+    title: "Hronika Turkmenistana — 159 kg and 60 kg cannabis seizures on the border (April–May 2023)"
+    url: https://www.hronikatm.com/2023/04/shavat-drugs-smuggling/
+    locator: "159 kg from a truck; 60 kg at the Amu Darya."
+  hronika26:
+    title: "Hronika Turkmenistana — opium suspect extradited from Russia (26 October 2026)"
+    url: https://www.hronikatm.com/2026/10/a-fugitive-drug-dealer-from-turkmenistan-was-apprehended-by-police-in-transbaikalia-and-extradited-to-his-home-country/
   law17:
     title: Turkmenistan Parliament — law on narcotic drugs, psychotropic substances and precursors
     url: https://mejlis.gov.tm/single-law/125?lang=ru
