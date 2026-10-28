@@ -21,69 +21,88 @@ scores:
   sharing: 1
   consumption: 1
   access: 3
+words:
+  - { word: Marihuana, lang: Spanish (Puerto Rico), meaning: "cannabis; the legal name for all parts of Cannabis sativa in Law 4 of 1971", sources: [ley4] }
 segments:
   possession:
     text: >-
       Under Article 404 of the Controlled Substances Act (Law 4 of 1971), possessing a controlled
       substance without a prescription is a felony with a fixed prison term of three years (two to
       five with mitigating or aggravating circumstances) and a fine of up to $5,000; a repeat
-      conviction brings six years. A first offender may instead be put on probation without a
-      finding of guilt and, if it is completed, have the case dismissed once in a lifetime. After
-      a qualifying treatment assessment and with prosecution consent, a court may also impose a
-      fine of $1,000 to $10,000 and up to six months of community service instead of prison.
+      conviction brings six years.[@ley4] A first offender may instead be put on probation without
+      a finding of guilt and, if it is completed, have the case dismissed once in a
+      lifetime.[@ley4] After a qualifying treatment assessment and with prosecution consent, a
+      court may also impose a fine of $1,000 to $10,000 and up to six months of community service
+      instead of prison.[@ley4]
     sources:
       - ley4
     currency: USD
     penalties:
       - label: Possession without prescription (Article 404)
         treatment: criminal
+        term: Possession
         prison: 3 years
         fine: 5000
         note: Two to five years with mitigating or aggravating circumstances
       - label: Repeat possession conviction
         repeat: 2
         treatment: criminal
+        term: Possession
         prison: 6 years
       - label: Treatment-track alternative
         treatment: criminal
+        term: Possession
         fine: 10000
         note: Fine of $1,000–$10,000 and up to six months of community service instead of prison; once in a lifetime dismissal after probation
   cultivation:
     text: >-
       Growing cannabis outside the licensed medical industry is production of a controlled
-      substance. The medical system is built on licensed cultivators supplying dispensaries.
+      substance: marihuana sits in Schedule I as a non-narcotic, so unlawful manufacture —
+      which the Act defines to include sowing, growing and harvesting — draws a fixed twelve
+      years (five to twenty with mitigating or aggravating circumstances) and an optional fine
+      of up to $20,000 under Article 401; a repeat conviction draws a fixed twenty-five
+      years.[@ley4] The medical system is built on licensed cultivators supplying
+      dispensaries.[@medicalLaw]
     sources:
       - ley4
       - medicalLaw
+    currency: USD
+    penalties:
+      - label: Unlawful manufacture including growing (Article 401, Schedule I non-narcotic)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 12 years
+        fine: 20000
+        note: Five to twenty years with mitigating or aggravating circumstances; repeat draws a fixed 25 years
   enforcement:
     text: >-
       Possession is still prosecuted as a felony in the Court of First Instance; one 2025 case
-      reached the Court of Appeals over a challenge to the search. About 222 people were convicted
-      under Article 404 in 2022, and a San Juan politician asked the governor in 2024 to pardon
-      those convicted of cannabis possession.
+      reached the Court of Appeals over a challenge to the search.[@ta26] About 222 people were
+      convicted under Article 404 in 2022, and a San Juan politician asked the governor in 2024
+      to pardon those convicted of cannabis possession.[@metro24]
     sources:
       - ta26
       - metro24
   sharing:
     text: >-
       Distributing a controlled substance is a separate offence under the same law, with no
-      exception for sharing without payment.
+      exception for sharing without payment.[@ley4]
     sources:
       - ley4
   consumption:
     text: >-
-      Use is dealt with through the possession offence. Even medical patients may not smoke
-      cannabis.
+      Use is dealt with through the possession offence.[@ley4] Even medical patients may not smoke
+      cannabis.[@medicalLaw]
     sources:
       - ley4
       - medicalLaw
   access:
     text: >-
       There is no legal adult-use supply. The medical route requires a recommendation from an
-      authorised doctor and patient identification under the regulated programme. The health
-      department’s August 2026 report counted 110,736 active patients and 59 registered certifying
-      doctors. Dispensaries began serving patients in December 2016; the 2017 law supplied the
-      statutory structure.
+      authorised doctor and patient identification under the regulated programme.[@medicalLaw] The
+      health department’s August 2026 report counted 110,736 active patients and 59 registered
+      certifying doctors.[@stats26] Dispensaries began serving patients in December 2016; the 2017
+      law supplied the statutory structure.[@medicalLaw,retailStart]
     sources:
       - medicalLaw
       - stats26
@@ -102,16 +121,25 @@ context:
     status: medical
     text: >-
       The Medical Cannabis Regulatory Board had issued 498 licences for cultivation, transport,
-      research and sale by 2024. All production serves the medical market.
+      research and sale by 2024. All production serves the medical market.[@platea]
     sources:
       - platea
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the Controlled Substances Act lists marihuana
+      without a low-THC distinction, and the licensed system covers medical cultivation
+      only.[@ley4,medicalLaw]
+    sources:
+      - ley4
+      - medicalLaw
   medical:
     text: >-
       The May 2015 executive order directed the health secretary to authorise medical cannabis
-      through the drug law’s procedures. Dispensary sales began in December 2016, followed by the
-      2017 Medical Cannabis Act. In August 2026, anxiety was certified for 59.34% of active
-      patients, insomnia for 55.14% and chronic pain for 34.81%; patients may be certified for
-      more than one condition.
+      through the drug law’s procedures.[@order15] Dispensary sales began in December
+      2016, followed by the 2017 Medical Cannabis Act.[@retailStart,medicalLaw] In August 2026,
+      anxiety was certified for 59.34% of active patients, insomnia for 55.14% and chronic pain
+      for 34.81%; patients may be certified for more than one condition.[@stats26]
     sources:
       - order15
       - medicalLaw
@@ -121,9 +149,9 @@ context:
     text: >-
       Registered medical patients who identify themselves to an employer have statutory protection
       against discrimination, subject to exceptions involving safety, essential duties, federal
-      permissions or funding, and unauthorised workplace use or possession. A 2022 amendment also
-      prevents registered medical use from triggering the disability law’s exclusion for
-      illegal-drug users.
+      permissions or funding, and unauthorised workplace use or possession.[@medicalLaw] A 2022
+      amendment also prevents registered medical use from triggering the disability law’s
+      exclusion for illegal-drug users.[@civil22]
     sources:
       - medicalLaw
       - civil22
@@ -131,7 +159,7 @@ context:
     status: none
     text: >-
       No cannabis clubs are known. Outside licensed medical dispensaries, distribution is an
-      offence.
+      offence.[@ley4]
     sources:
       - ley4
   visitors:
@@ -139,9 +167,29 @@ context:
     text: >-
       There is no adult-use supply. For medical access, article 12 of the 2017 law recognises a
       nonresident patient’s identification from the relevant jurisdiction for entering a
-      dispensary and possessing cannabis; the programme’s applicable conditions still govern. The
-      law also provides for board rules recognising resident-jurisdiction patient cards.
+      dispensary and possessing cannabis; the programme’s applicable conditions still
+      govern.[@medicalLaw] The law also provides for board rules recognising
+      resident-jurisdiction patient cards.[@medicalLaw]
     sources:
+      - medicalLaw
+  arrests:
+    text: >-
+      About 222 people were convicted under Article 404 in 2022, and a 2025 possession case
+      reached the Court of Appeals over a challenge to the search.[@metro24,ta26]
+    sources:
+      - metro24
+      - ta26
+  planting:
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      Manufacture under the Act includes sowing, growing and harvesting, so unlicensed growing
+      falls under Article 401; the reviewed law gives seeds no separate rule.[@ley4] Licensed
+      medical cultivators supply dispensaries.[@medicalLaw]
+    sources:
+      - ley4
       - medicalLaw
 sources:
   ley4:
