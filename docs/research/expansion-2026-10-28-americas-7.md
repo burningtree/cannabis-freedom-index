@@ -20,7 +20,12 @@ track); Canada (separate job); Eritrea/Somaliland/Sudan (closed/recent); Africa 
 - Tables already present (Art 236(b) 6 mo–2 yrs; Art 235 4–10 yrs); no other profile surgery needed.
 - Audit 0/0; page + all three articles verified in review HTML.
 - Left: 1989 protocol (imp 1, skipped), 2023 courts article (imp 1 — arrests section already covers the figures), 1980s/2000s/2010s decades.
-## sx — pending
+## sx — committed
+- Possession table (≤25 g tolerated dismissal; 25–50 g criminal Cg 500 + XCG currency); products folded into medical (flower/resin vs extracts distinction moved); context.recreational (new, with shared 1929 lineage link) + context.hemp (new, none).
+- New `articles/sint-maarten-cannabis-framework-hearing-2026.md` (Native Nations framework, oversight commission, adjourned) + `articles/sint-maarten-pm-cannabis-caution-2026.md` (Mercelina: policy before deadlines, French-border coordination) + `articles/sint-maarten-health-review-cannabis-2026.md` (Connor seeks PAHO help); linked from access alongside the existing 2024-committee article; 2018-guideline article linked from enforcement.
+- Fixed self-inflicted schema error (hemp first placed under segments instead of context).
+- Audit 0/0; page + all three articles verified in review HTML.
+- Left: words (no sourced local term), driving/arrests (no sources), study-call-2022 article unlinked (no natural profile hook).
 ## ky — pending
 ## vg — pending
 ## kn — pending
