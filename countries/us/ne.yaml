@@ -13,18 +13,75 @@ scores:
   consumption: 2
   access: 1
 segments:
-  possession: >-
-    A first offence with 1 oz or less is a $300 infraction. A second brings up to five days in jail,
-    a third up to seven.
-  cultivation: Illegal; charged as manufacturing.
-  enforcement: A fine for a first offence, short jail terms after that.
-  sharing: Any sale is a felony with up to twenty years.
-  consumption: Illegal.
+  possession:
+    text: >-
+      A first offence with 1 oz or less is a $300 infraction. A second brings up to five days in jail,
+      a third up to seven.[@3]
+    currency: USD
+    penalties:
+      - upto: 1 oz
+        treatment: civil
+        term: Infraction
+        fine: 300
+        note: First offence
+      - label: Second offence up to 1 oz
+        treatment: criminal
+        term: Misdemeanor
+        prison: 5 days
+        fine: 500
+      - label: Third offence up to 1 oz
+        treatment: criminal
+        term: Misdemeanor
+        prison: 7 days
+        fine: 500
+      - over: 1 oz
+        upto: 1 lb
+        treatment: criminal
+        term: Misdemeanor
+        prison: 3 months
+        fine: 500
+      - over: 1 lb
+        treatment: criminal
+        term: Felony
+        prison: 2 years
+        fine: 10000
+  cultivation:
+    text: >-
+      Illegal; charged as manufacturing.[@3]
+    currency: USD
+    penalties:
+      - label: Growing (manufacture)
+        treatment: criminal
+        term: Felony
+        prison: 20 years
+        fine: 25000
+        note: Maximum for any amount; manufacture carries up to twenty years
+  enforcement: A fine for a first offence, short jail terms after that.[@3]
+  sharing:
+    text: >-
+      Any sale is a felony with up to twenty years.[@3]
+    currency: USD
+    penalties:
+      - label: Any sale
+        treatment: criminal
+        term: Felony
+        prison: 20 years
+        fine: 25000
+  consumption: Illegal.[@3]
   access: >-
     Voters approved medical cannabis in November 2024; the regulated programme is still being set
     up. Reporting on the 19 October 2026 commission meeting confirms that manufacturers and
     dispensaries remained unlicensed. The commission anticipates revised rules and a new
-    manufacturer application period in early 2027; this is not a confirmed patient-sales date.
+    manufacturer application period in early 2027; this is not a confirmed patient-sales date.[@1,2]
+    [Nebraska's growers face an unfinished route to patient sales.](/history/us-nebraska-medical-supply-chain-delay-2026/)
+context:
+  medical:
+    text: >-
+      Voters approved medical cannabis in November 2024, but the regulated supply chain remains
+      unfinished: as of October 2026 no manufacturers or dispensaries were licensed, with new
+      rules and applications expected in early 2027.[@1,2]
+      [Nebraska's growers face an unfinished route to patient sales.](/history/us-nebraska-medical-supply-chain-delay-2026/)
+    sources: [1, 2]
 sources:
   - title: Nebraska Medical Cannabis Commission — Rules and Regulations, anticipated implementation timeline
     url: https://mcc.nebraska.gov/rules-regulations
