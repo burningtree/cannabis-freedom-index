@@ -3,10 +3,11 @@ region: Asia
 iso_numeric: 275
 recreational: illegal
 medical: none
-updated: '2026-10-27'
+updated: "2026-10-28"
 summary: >-
-  In the West Bank, holding a drug for personal use can bring six months to two years, or a
-  fine of 1,000 to 5,000 Jordanian dinars. Gaza's penalties are a separate system.
+  The West Bank punishes personal use with six months to two years; trafficking reaches fifteen to
+  twenty-five years. Gaza's 2013 law is harsher: three to fifteen years for use and death available
+  for aggravated trafficking.
 scores:
   possession: 1
   cultivation: 0
@@ -17,76 +18,216 @@ scores:
 segments:
   possession:
     text: >-
-      In the West Bank, holding a drug for personal use is article 17(1) of Decree-Law 18 of
-      2015, as amended in 2018: six months to two years, or a fine of 1,000 to 5,000 Jordanian
-      dinars, or both. Article 16 is a separate offence, for possession that is neither for
-      sale nor for personal use: four months to one year, or 1,000 to 3,000 dinars, or both.
-      Gaza applies its own rules.
+      In the West Bank, holding a drug for personal use is article 17(1) of Decree-Law 18 of 2015,
+      as amended in 2018 and 2020: six months to two years, or a fine of 1,000–5,000 Jordanian
+      dinars, or both.[@pa2015] Article 16 is a separate offence for possession that is neither for
+      sale nor for personal use: four months to one year, or 1,000–3,000 dinars, or both.[@pa2015]
+      Gaza applies its 2013 narcotics law, under which possession for use carries three to fifteen
+      years and a 5,000–20,000 dinar fine.[@gaza2013] The Palestinian Authority says its 2015 law
+      applies in Gaza too, but Gaza courts have applied the 2013 law.[@pa2015,pchr]
     sources:
-      - ogb
-      - law
+      - pa2015
+      - gaza2013
+      - pchr
+    currency: JOD
+    penalties:
+      - label: West Bank personal use (article 17)
+        treatment: criminal
+        term: Personal use
+        prison_min: 6 months
+        prison: 2 years
+        fine_min: 1000
+        fine: 5000
+        note: Prison, fine, or both
+      - label: West Bank possession without use or sale (article 16)
+        treatment: criminal
+        term: Other possession
+        prison_min: 4 months
+        prison: 1 year
+        fine_min: 1000
+        fine: 3000
+      - label: Gaza possession or use (article 27)
+        treatment: criminal
+        term: Personal use
+        prison_min: 3 years
+        prison: 15 years
+        fine_min: 5000
+        fine: 20000
   cultivation:
     text: >-
-      In the West Bank, growing for one's own use is article 17(1): six months to two years, or
-      a fine of 1,000 to 5,000 Jordanian dinars, or both. Growing in order to sell is article
-      21: life imprisonment of at least fifteen years and a fine of at least 15,000 dinars.
-      Gaza's penalty was not read.
+      In the West Bank, growing for one's own use is article 17(1): six months to two years, or a
+      fine of 1,000–5,000 dinars, or both.[@pa2015] Growing in order to sell is article 21:
+      life imprisonment, defined as fifteen to twenty-five years, and a fine of at least 15,000
+      dinars.[@pa2015,pa2018] In Gaza, growing for use carries three to fifteen years and
+      5,000–20,000 dinars; growing for sale carries five years to life and 20,000–40,000 dinars, with
+      death available in aggravated cases.[@gaza2013]
     sources:
-      - ogb
+      - pa2015
+      - pa2018
+      - gaza2013
+    currency: JOD
+    penalties:
+      - label: West Bank growing for personal use (article 17)
+        treatment: criminal
+        term: Personal growing
+        prison_min: 6 months
+        prison: 2 years
+        fine_min: 1000
+        fine: 5000
+      - label: West Bank growing for sale (article 21)
+        treatment: criminal
+        term: Cultivation for sale
+        prison_min: 15 years
+        prison: 25 years
+        fine_min: 15000
+      - label: Gaza growing for use (article 27)
+        treatment: criminal
+        term: Personal growing
+        prison_min: 3 years
+        prison: 15 years
+        fine_min: 5000
+        fine: 20000
+      - label: Gaza growing for sale (article 28)
+        treatment: criminal
+        term: Cultivation for sale
+        prison_min: 5 years
+        note: Up to life imprisonment; death available in aggravated cases
+        fine_min: 20000
+        fine: 40000
   enforcement:
     text: >-
-      In the West Bank a person who uses a drug can be sentenced to prison or a fine under
-      article 17. In Gaza a court issued a death sentence in 2022 for possession with intent
-      to traffic, which rights groups said the law does not provide for.
+      The West Bank and Gaza enforce different laws. In the West Bank, police recorded 2,772 drug
+      cases and 3,107 arrests in 2025, including 73.851 kg of cannabis and cannabis products; the
+      figures cover all drugs.[@quds26] In Gaza, the regular courts and prosecution stopped
+      functioning after October 2023, and police report individual raids rather than annual
+      totals.[@dcaf24,memo25] A Gaza court sentenced a hashish trafficker to death in 2022, a
+      sentence the Palestinian Authority's law does not provide for but Gaza's 2013 law does.[@shams,gaza2013]
     sources:
-      - ogb
+      - quds26
+      - dcaf24
+      - memo25
       - shams
+      - gaza2013
   sharing:
     text: >-
-      In the West Bank, dealing in order to traffic is article 21: life imprisonment of at
-      least fifteen years and a fine of at least 15,000 dinars. Supplying a drug for payment
-      can bring at least ten years under article 23; without payment, at least three years.
+      In the West Bank, dealing in order to traffic is article 21: life imprisonment of fifteen to
+      twenty-five years and a fine of at least 15,000 dinars.[@pa2015] Supplying a drug for payment
+      can bring at least ten years and a fine of at least 10,000 dinars; without payment, at least
+      three years and a 3,000–5,000 dinar fine.[@pa2015] In Gaza, trafficking carries five years to
+      life and 20,000–40,000 dinars, with death available where the offence involves protected
+      places, firearms, a repeat offence or a trafficking gang.[@gaza2013]
     sources:
-      - ogb
+      - pa2015
+      - gaza2013
+    currency: JOD
+    penalties:
+      - label: West Bank supply for payment (article 23)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        fine_min: 10000
+      - label: West Bank supply without payment (article 23)
+        treatment: criminal
+        term: Supply
+        prison_min: 3 years
+        fine_min: 3000
+        fine: 5000
+      - label: Gaza trafficking (article 28)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        fine_min: 20000
+        fine: 40000
+        note: Up to life; death available in aggravated cases
+      - label: Gaza aggravated trafficking (article 29)
+        treatment: criminal
+        term: Aggravated trafficking
+        death: true
+        note: Death or life and a 20,000–60,000 dinar fine
+        fine_min: 20000
+        fine: 60000
   consumption:
     text: >-
-      Use is article 17(1): six months to two years, or a fine of 1,000 to 5,000 dinars, or
-      both. A person who comes forward for treatment, and a first-time user whom the
-      prosecutor sends to a treatment centre, is not prosecuted while they follow the
-      programme. A court may suspend the sentence so the person can be treated. A repeat
-      offence, or driving under the influence, raises the minimum to two years or a fine of
-      2,000 to 5,000 dinars.
+      Use is article 17(1) in the West Bank: six months to two years, or a fine of 1,000–5,000
+      dinars, or both.[@pa2015] A person who comes forward for treatment, and a first-time user whom
+      the prosecutor sends to a treatment centre, is not prosecuted while they follow the
+      programme.[@pa2015] A repeat offence, or driving under the influence, raises the minimum to two
+      years or a fine of 2,000–5,000 dinars.[@pa2015] In Gaza, use carries three to fifteen years
+      under article 27, with treatment diversion available.[@gaza2013]
     sources:
-      - ogb
+      - pa2015
+      - gaza2013
   access:
-    text: None.
+    text: >-
+      No legal source for patients or recreational users. Article 3 lets the health minister license
+      public or private institutions to grow prohibited plants and import plants or seeds for
+      medical and scientific purposes.[@pa2015] No registered cannabis medicine, patient registry or
+      prescription route was found.[@pa2015]
     sources:
-      - amend
+      - pa2015
+answers:
+  buy:
+    answer: no
+    text: No legal source; only institutional medical and research handling is excepted
 context:
+  recreational:
+    text: >-
+      There is no legal recreational market in either territory. In the West Bank, personal use
+      carries six months to two years and a 1,000–5,000 dinar fine; in Gaza the 2013 law carries
+      three to fifteen years.[@pa2015,gaza2013] Trafficking reaches fifteen to twenty-five years in
+      the West Bank, and death is available in Gaza for aggravated trafficking.[@pa2015,gaza2013]
+      [The 2015 law created the West Bank regime.](/history/palestine-drug-decree-law-2015/)
+    sources:
+      - pa2015
+      - gaza2013
+  death_penalty:
+    text: >-
+      The West Bank's 2015 law has no death penalty for any drug offence; its maximum is fifteen to
+      twenty-five years.[@pa2015] Gaza's 2013 law allows death or life for aggravated trafficking,
+      and death for trafficking that causes death, kills enforcement officials, involves a gang or
+      repeats an aggravated offence.[@gaza2013] Gaza courts imposed death for hashish trafficking in
+      2022 and 2023, but no execution specifically for cannabis was verified.[@shams,pchr] The
+      Palestinian Authority says its 2015 law applies in Gaza, which would exclude death, but Gaza
+      courts apply the 2013 law and the conflict is unresolved.[@pa2015,pchr]
+    sources:
+      - pa2015
+      - gaza2013
+      - shams
+      - pchr
   production:
     status: medical
     text: >-
       The health minister may license public or private institutions to grow otherwise prohibited
-      plants and import plants or seeds for medical and scientific purposes under Article 3.[@dl18]
-      The permission depends on the institution’s work and compliance with licence conditions; the
-      minister must revoke a licence if those conditions are broken.[@dl18]
+      plants and import plants or seeds for medical and scientific purposes under Article 3.[@pa2015]
+      The permission depends on the institution's work and compliance with licence conditions, and
+      the minister must revoke a licence if they are broken.[@pa2015] No operating cannabis grow was
+      found.[@pa2015]
     sources:
-      - dl18
-  products:
-    text: None.
-    sources:
-      - amend
+      - pa2015
   medical:
     text: >-
-      Medical and scientific activities require authorisation under the drug law, including
-      institutional cultivation licences under Article 3.[@dl18] The reviewed sources do not document
-      an operating cannabis patient-supply programme.[@dl18]
+      No medical cannabis programme. Article 3 allows institutional cultivation and seed imports for
+      medical and scientific work, not patient supply.[@pa2015] No registered cannabis medicine,
+      patient registry or prescription route was found.[@pa2015]
     sources:
-      - dl18
+      - pa2015
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. Article 2 bans cannabis plants and seeds at every
+      stage unless licensed under article 3, and no fibre or low-THC exception was found.[@pa2015]
+      Pure CBD's status is unstated; products containing cannabis resin or THC fall under the drug
+      law.[@pa2015]
+    sources:
+      - pa2015
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction is a criminal record, and the law provides for confiscation of drugs, equipment
+      and proceeds.[@pa2015] In Gaza, a court may deport a foreigner and bar their return under
+      article 40(1)(e); the West Bank drug law has no equivalent provision.[@gaza2013]
     sources:
-      - law
+      - pa2015
+      - gaza2013
   planting:
     seeds: illegal
     seeds_trade: banned
@@ -94,66 +235,109 @@ context:
     clones_trade: banned
     text: >-
       Article 2 of Decree-Law 18 of 2015 bans importing, growing, owning, holding, buying or
-      selling plants that yield drugs, or their seeds, at any stage of growth. The law defines
-      cultivation as sowing or planting for germination and any care of the plants or their
-      seeds. Under Article 3 the minister may license growing or seed imports for medical and
-      scientific purposes.
+      selling plants that yield drugs, or their seeds, at any stage of growth.[@pa2015] The law
+      defines cultivation as sowing or planting for germination and any care of the plants or their
+      seeds.[@pa2015] Under article 3 the minister may license growing or seed imports for medical
+      and scientific purposes.[@pa2015]
     sources:
-      - dl18
+      - pa2015
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@pa2015] Preparing or managing a place for
+      drug use is an offence in the West Bank and in Gaza.[@pa2015,gaza2013]
     sources:
-      - amend
+      - pa2015
+      - gaza2013
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. In the West Bank, holding a drug for
-      personal use can bring six months to two years or a fine of 1,000 to 5,000 Jordanian
-      dinars. Gaza's penalty was not read.
+      There is no legal supply for visitors. In the West Bank, holding a drug for personal use can
+      bring six months to two years or a 1,000–5,000 dinar fine.[@pa2015] In Gaza, possession for
+      use carries three to fifteen years, and a court may deport a foreigner after conviction.[@gaza2013]
     sources:
-      - ogb
+      - pa2015
+      - gaza2013
+  driving:
+    status: impairment
+    text: >-
+      West Bank article 17(4)(b) raises the minimum to two years or a 2,000–5,000 dinar fine for
+      driving under the influence.[@pa2015] There is no THC limit; the trigger is impairment.[@pa2015]
+      Gaza's 2013 drug law has no separate driving provision, so the general traffic law applies.[@gaza2013]
+    sources:
+      - pa2015
+      - gaza2013
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 32.3 kg of herbal
-      cannabis seized in 2023, against 29.3 kg in 2021, and 51.8 kg of cannabis resin
-      seized in 2023, against 25.6 kg in 2021. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      UNODC's last year with a herb and resin split for Palestine is 2023: about 32 kg of herbal
+      cannabis and 52 kg of resin.[@unodc_szr] In 2025 the West Bank police reported 73.851 kg of
+      cannabis and cannabis products, a combined figure that does not split herb from resin.[@quds26]
+      A Jericho seizure in July 2026 found 23 kg of hashish.[@akhbar26] Gaza reports individual raids,
+      not a series.[@memo25]
     sources:
       - unodc_szr
+      - quds26
+      - akhbar26
+      - memo25
+  arrests:
+    text: >-
+      The West Bank police recorded 2,071 drug cases in 2024, and the Public Prosecution investigated
+      1,396 cases, resolving 97%.[@wafa25] In 2025 police recorded 2,772 cases and 3,107 arrests,
+      including 250 dealers and 2,757 users.[@quds26] By 27 September 2026 they reported 2,150 cases
+      and 2,419 arrests.[@alquds26] The figures cover all drugs and the West Bank.[@quds26] No
+      comparable Gaza totals were published after October 2023.[@dcaf24]
+    sources:
+      - wafa25
+      - quds26
+      - alquds26
+      - dcaf24
 sources:
-  dl18:
-    title: >-
-      قرار بقانون رقم (18) لسنة 2015م بشأن مكافحة المخدرات والمؤثرات العقلية (Maqam, An-Najah National
-      University)
-    url: https://maqam.najah.edu/legislation/72/
-    locator: >-
-      Articles 2–3: medical/scientific purpose restrictions and ministerial institutional cultivation
-      licences
-  law:
-    title: >-
-      An-Najah University legal database — Decree-Law No. 18 of 2015 on narcotics, Article 16
-      (Arabic)
-    url: https://maqam.najah.edu/legislation/72/item/4233/
-  ogb:
-    title: >-
-      Palestinian Official Gazette bureau — Decree-Law 18 of 2015, consolidated text
-    url: https://mjr.ogb.gov.ps/MergedLegislations/ViewText/109/%D9%82%D8%B1%D8%A7%D8%B1-%D8%A8%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%B1%D9%82%D9%85-18-%D9%84%D8%B3%D9%86%D8%A9-2015%D9%85-%D8%A8%D8%B4%D8%A3%D9%86-%D9%85%D9%83%D8%A7%D9%81%D8%AD%D8%A9-%D8%A7%D9%84%D9%85%D8%AE%D8%AF%D8%B1%D8%A7%D8%AA-%D9%88%D8%A7%D9%84%D9%85%D8%A4%D8%AB%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D9%82%D9%84%D9%8A%D8%A9-%D9%81%D9%84%D8%B3%D8%B7%D9%8A%D9%86
-    locator: >-
-      Articles 16, 17 and 21. Article 17 was amended by Decree-Law 26 of 2018, article 5.
-      Personal use is six months to two years or 1,000 to 5,000 dinars. Article 16 excludes
-      both trafficking and personal use.
-  amend:
-    title: >-
-      DCAF Palestine security legislation database — Decree-Law No. 29 of 2020 amending the
-      narcotics law
-    url: https://security-legislation.ps/?p=13025
+  pa2015:
+    title: "Palestine — Decree-Law 18 of 2015 on narcotic drugs and psychotropic substances, consolidated"
+    url: https://www.mosd.gov.ps/uploads/17761635102002099296.pdf
+    locator: "Articles 2–3, 16–18, 21–25, 28–30 and 32 bis."
+  pa2018:
+    title: "Palestine — Decree-Law 26 of 2018 amending the 2015 drug law (Maqam)"
+    url: https://maqam.najah.edu/legislation/82/
+    locator: "Life imprisonment defined as fifteen to twenty-five years."
+  gaza2013:
+    title: "Gaza — Narcotics and Psychotropic Substances Law No. 7 of 2013 (Arabic PDF)"
+    url: https://alayamnews.net/wp-content/uploads/2023/08/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D9%85%D8%AE%D8%AF%D8%B1%D8%A7%D8%AA-%D9%88%D8%A7%D9%84%D9%85%D8%A4%D8%AB%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D9%82%D9%84%D9%8A%D8%A9-%D8%A7%D9%84%D9%81%D9%84%D8%B3%D8%B7%D9%8A%D9%86%D9%8A.pdf
+    locator: "Articles 26–33 and 40(1)(e)."
+  pchr:
+    title: "PCHR — death sentence for a drug trafficker in Gaza and the application of the 2013 law"
+    url: https://pchrgaza.org/ar/%D8%AD%D9%83%D9%85-%D8%A8%D8%A7%D9%84%D8%A5%D8%B9%D8%AF%D8%A7%D9%85-%D8%B9%D9%84%D9%89-%D8%AA%D8%A7%D8%AC%D8%B1-%D9%85%D8%AE%D8%AF%D8%B1%D8%A7%D8%AA-%D9%81%D9%8A-%D8%BA%D8%B2%D8%A9-%D8%A7%D9%84%D9%85/
+    locator: "Gaza courts apply the 2013 law; its legal basis is contested."
   shams:
-    title: SHAMS Center — statement on a death sentence in a drug case (2022, PDF)
+    title: "SHAMS Center — statement on a death sentence in a drug case (2022, PDF)"
     url: https://www.shams-pal.org/eng/wp-content/uploads/2022/press-releases/press10_10_2022.pdf
+    locator: "Gaza death sentence for hashish trafficking, October 2022."
+  wafa25:
+    title: "WAFA — Public Prosecution reports 1,396 drug cases in 2024 (14 April 2025)"
+    url: https://wafa.ps/Pages/Details/119026
+    locator: "1,396 cases; 97% resolved."
+  quds26:
+    title: "QudsNet — Police report 2,772 drug cases and 3,107 arrests in 2025 (31 May 2026)"
+    url: https://qudsnet.com/post/569763/%D8%A7%D9%84%D8%B4%D8%B1%D8%B7%D8%A9-%D8%A7%D8%B1%D8%AA%D9%81%D8%A7%D8%B9-%D9%85%D9%84%D8%AD%D9%88%D8%B8-%D9%81%D9%8A-%D8%AC%D9%87%D9%88%D8%AF-%D9%85%D9%83%D8%A7%D9%81%D8%AD%D8%A9-%D8%A7%D9%84%D9%85%D8%AE%D8%AF%D8%B1%D8%A7%D8%AA-%D9%88%D9%85%D8%B1%D9%88-%D8%AC%D9%8A%D9%87%D8%A7-%D8%AE%D9%84%D8%A7%D9%84-%D8%B9%D8%A7%D9%85-2025
+    locator: "2,772 cases; 3,107 arrests; 73.851 kg cannabis."
+  alquds26:
+    title: "Al-Quds — Palestinian police statistics to 27 September 2026"
+    url: https://alquds.com/ar/posts/259382-palestinian-police-crime-statistics-drugs-cybercrime-report
+    locator: "2,150 cases; 2,419 arrests."
+  akhbar26:
+    title: "Akhbar Al-Sharq — 23 kg of hashish seized in Jericho (10 July 2026)"
+    url: https://www.akhbar-sharq.com/news/61015
+    locator: "230 slabs, about 23 kg."
+  memo25:
+    title: "Middle East Monitor — Gaza police seize drugs and weapons in Zeitoun (17 November 2025)"
+    url: https://www.middleeastmonitor.com/20251117-gaza-police-seize-drugs-and-weapons-in-raid-on-zeitoun-neighbourhood/
+    locator: "21 slabs of hashish; five plants; two arrests."
+  dcaf24:
+    title: "DCAF — Gaza security and justice providers (2024)"
+    url: https://www.dcaf.ch/sites/default/files/publications/documents/GazaSecJusticeProviders2024-EN.pdf
+    locator: "Regular courts and prosecution ceased functioning after October 2023."
   unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents"
     url: https://data.unodc.org/datareport/drug-seizure
+    locator: "Palestine 2023: about 32 kg herbal cannabis and 52 kg resin."
