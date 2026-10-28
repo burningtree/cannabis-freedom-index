@@ -3,8 +3,11 @@ region: Europe
 iso_numeric: 492
 recreational: illegal
 medical: none
-updated: 2026-10-13
-summary: Six months to three years in prison for use or possession, usually suspended or fined; even CBD is prohibited.
+updated: '2026-10-28'
+summary: >-
+  Personal possession and use can bring six months to three years in prison or a fine. Group use,
+  cultivation, supply and imports face higher statutory penalties; CBD retail products have also
+  been prosecuted.
 scores:
   possession: 1
   cultivation: 1
@@ -15,120 +18,235 @@ scores:
 segments:
   possession:
     text: >-
-      Article 5 of Law 890 of 1970 on narcotics punishes unlawful use, and possession for personal
-      use, with six months to three years in prison, a fine, or one of the two. Courts usually
-      impose suspended sentences or fines — one heavy user received ten months suspended — and
-      police sometimes settle for a warning.
+      Personal possession carries six months to three years in prison, a €2,250–9,000 fine, or
+      either penalty alone under the [1970 narcotics law](/history/monaco-narcotics-law-1970/) and
+      Penal Code article 26.[@l890,trafficpenal] In an [April 2025
+      case](/history/monaco-pensioner-cannabis-cbd-conviction-2025/), a first offender received one
+      month suspended with treatment obligations.[@mt25]
     sources:
       - l890
-      - mt2
+      - trafficpenal
+      - mt25
+    currency: EUR
+    penalties:
+      - label: Possession for personal use
+        treatment: criminal
+        term: Détention aux fins d’usage personnel
+        prison_min: 6 months
+        prison: 3 years
+        fine_min: 2250
+        fine: 9000
+        note: Prison or a fine, or both
   cultivation:
     text: >-
-      Unlawful growing carries five to ten years in prison and a fine under Article 2 of Law 890 of
-      1970.
+      Unlawful cultivation carries five to ten years in prison and a category-four fine, normally
+      €18,000–90,000, whose maximum may be multiplied tenfold to €900,000.[@l890,trafficpenal]
     sources:
       - l890
-      - wiki
+      - trafficpenal
+    currency: EUR
+    penalties:
+      - label: Unlawful cultivation
+        treatment: criminal
+        term: Culture illicite de stupéfiants
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 18000
+        fine: 900000
+        note: The statute permits a tenfold increase in the ordinary category-four fine ceiling
   enforcement:
     text: >-
-      Prosecutions are routine in a small, heavily policed state, but outcomes are mostly suspended
-      sentences and fines.
+      A first offender prosecuted over cannabis and CBD products in April 2025 received a suspended
+      month in prison with two years of probation and treatment obligations.[@mt25] The case shows
+      that products bought across the French border can still lead to prosecution in Monaco.[@mt25]
     sources:
-      - mt2
-      - mt1
+      - mt25
   sharing:
     text: >-
-      Article 2 of Law 890 punishes offering, selling, buying, transporting or supplying narcotics
-      on any basis, and helping another person to use them, with five to ten years in prison and a
-      fine. The penalties double where a minor is involved or the offence takes place in or near a
-      school or prison.
+      Supply, including a gift or helping someone else use drugs, carries five to ten years in
+      prison and a fine up to €900,000.[@l890,trafficpenal] The ordinary prison and fine penalties
+      double for specified offences involving minors or protected places; importing or exporting
+      drugs has a separate ten-to-twenty-year range and a fine up to €1.8
+      million.[@l890,trafficpenal]
     sources:
       - l890
+      - trafficpenal
+    currency: EUR
+    penalties:
+      - label: Supply or facilitation, including without payment
+        treatment: criminal
+        term: Cession ou facilitation d’usage
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 18000
+        fine: 900000
+      - label: Supply involving minors or protected places
+        treatment: criminal
+        term: Circonstances aggravantes
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 36000
+        fine: 1800000
+      - label: Import or export
+        treatment: criminal
+        term: Importation ou exportation illicite
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 18000
+        fine: 1800000
   consumption:
     text: >-
-      Use is itself an offence under Law 890, and it is prosecuted: in April 2025 a pensioner
-      with a clean record was tried for possession and use over about 15 g found at his home and
-      given one month in prison, suspended, with an obligation to undergo care.
+      Individual use carries six months to three years in prison or a €2,250–9,000 fine, or
+      both.[@l890,trafficpenal] Using drugs in a group falls under the harsher article 2: five to
+      ten years and a fine whose ceiling may reach €900,000.[@l890,trafficpenal]
     sources:
-      - mt25
-      - wiki
+      - l890
+      - trafficpenal
+    currency: EUR
+    penalties:
+      - label: Individual use
+        treatment: criminal
+        term: Usage illicite
+        prison_min: 6 months
+        prison: 3 years
+        fine_min: 2250
+        fine: 9000
+        note: Prison or a fine, or both
+      - label: Group use
+        treatment: criminal
+        term: Usage en réunion
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 18000
+        fine: 900000
   access:
     text: >-
-      None. In a 2025 trial the prosecutor cited a ministerial order banning cannabis and its
-      derivatives, CBD products included, even at low THC levels.
+      There is no recreational retail exception; cannabis and its derivatives are prohibited under
+      article 32.[@order] That rule separately exempts pharmaceutical products holding the required
+      medicines authorisation.[@order]
     sources:
-      - mt25
-      - wiki
+      - order
 context:
   production:
-    status: none
-    text: None.
-    sources:
-      - wiki
-  products:
     text: >-
-      None. Even CBD products are treated as prohibited, and people have been tried for holding
-      them.
+      Cannabis businesses need a specific legal exception to operate: the general rule prohibits
+      production, manufacture and trade.[@order] The Minister of State may grant research and
+      control exemptions or permit manufacture of authorised derivatives.[@order] Authorised
+      pharmaceutical products and industrial varieties have separate routes, but an operating
+      domestic cannabis producer was not verified in this review.[@order]
     sources:
-      - mt1
+      - order
+    status: medical
   medical:
-    text: No medical cannabis.
+    text: >-
+      Authorised pharmaceutical medicines containing cannabis or THC are exempt from the general
+      prohibition under article 32.[@order] This [2019
+      change](/history/monaco-authorised-cannabis-medicines-2019/) depends on the product holding
+      the required medicines authorisation.[@order2019,order] Ordinary CBD retail products have
+      nevertheless been prosecuted, as the 2025 case illustrates.[@mt25]
     sources:
-      - wiki
-      - mt1
+      - order
+      - order2019
+      - mt25
   consequences:
-    text: A conviction is a criminal record, which can affect a residence permit.
+    text: >-
+      A cannabis case can affect permission to enter Monaco, although exclusion must have a
+      sufficient public-order basis.[@expulsion2025] In [December
+      2025](/history/monaco-cannabis-entry-ban-overturned-2025/), the Supreme Tribunal annulled an
+      exclusion order where occasional personal cannabis use punished by a fixed fine was the only
+      established misconduct.[@expulsion2025] For supply and certain other drug offences, the
+      narcotics law separately permits five to twenty years’ territorial exclusion for
+      foreigners.[@l890]
     sources:
-      - mt1
+      - expulsion2025
+      - l890
   planting:
     seeds: grey
     seeds_trade: unclear
     clones: illegal
     clones_trade: banned
     text: >-
-      Article 2 of Law 890 of 1970 punishes unlawfully growing, holding, buying or selling
-      narcotics with five to ten years in prison. The law does not mention seeds.
+      The cannabis plant is included in the general prohibition, while industrial varieties require
+      a ministerial authorisation.[@order] Unlawful cultivation carries five to ten years in prison
+      under article 2.[@l890] A separate retail rule for ungerminated seeds was not verified in the
+      provisions reviewed.[@order,l890]
     sources:
+      - order
       - l890
   clubs:
-    status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      There is no recreational club exception to the cannabis prohibition.[@order] Supplying drugs
+      without payment, facilitating another person’s use and group consumption are all covered by
+      article 2 of the narcotics law.[@l890]
     sources:
+      - order
       - l890
-      - wiki
-  visitors:
     status: none
+  visitors:
     text: >-
-      There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. The sources behind this profile describe no separate rule for visitors.
+      Visitors have no recreational purchasing route, and crossing from France does not create a
+      retail exception.[@order] Importing drugs falls under a separate and much harsher provision
+      than domestic possession for personal use.[@l890] An administrative entry ban can be
+      challenged: the [2025 Supreme Tribunal
+      ruling](/history/monaco-cannabis-entry-ban-overturned-2025/) required a sufficient factual
+      basis for a public-order risk.[@expulsion2025]
     sources:
-      - wiki
+      - order
+      - l890
+      - expulsion2025
+    status: none
   driving:
     status: consumption
     text: >-
-      Penal Code article 391-15 criminalises driving a land vehicle after use of substances
-      or plants classified as narcotics. It does not require the separate alcohol offence's
-      intoxication standard. The current text provides one month to two years' imprisonment
-      and a €2,250–9,000 fine, or either penalty alone. Article 391-15-1 allows drug screening
-      in specified circumstances including suspected offences, certain traffic violations,
-      crashes and preventive operations authorised by the Minister of State. A positive
-      screen leads to a medical, chemical or biological examination, such as blood
-      analysis; refusal carries the ordinary drug-driving penalties. The 2025 reform
-      adds higher sanctions for specified professional drivers on duty: six months to
-      three years and €9,000–18,000, or either alone. For the ordinary offence,
-      complementary penalties include
-      licence suspension up to two years, cancellation with a reapplication bar up to
-      five years, or a Monaco driving ban up to five years for foreign-licence holders.
-      No numerical THC allowance was established in the provisions reviewed.
+      Driving after using a substance classified as a narcotic carries one month to two years in
+      prison and €2,250–9,000, or either penalty alone.[@trafficpenal] Police may screen drivers in
+      specified circumstances and a positive result leads to medical, chemical or biological
+      examination; refusal is also punishable.[@trafficpenal] The 2025 reform provides six months to
+      three years and €9,000–18,000, or either alone, for specified professional drivers on
+      duty.[@trafficpenal] For the ordinary offence, additional penalties include up to two years’
+      licence suspension, cancellation with up to five years before reapplication, or a Monaco
+      driving ban up to five years for foreign-licence holders.[@trafficpenal]
     sources:
       - trafficpenal
+  recreational:
+    text: >-
+      Adults have no lawful recreational cannabis shops or personal cultivation allowance.[@order]
+      Retail products sold as CBD in neighbouring France have also led to prosecution in Monaco,
+      including sprays and chewing gum in the [2025 pensioner
+      case](/history/monaco-pensioner-cannabis-cbd-conviction-2025/).[@mt25] Group use can attract
+      the same statutory penalty as supply, making the legal distinction between individual and
+      shared consumption significant.[@l890]
+    sources:
+      - order
+      - mt25
+      - l890
+  hemp:
+    text: >-
+      A low THC label does not by itself provide permission to buy cannabis products in Monaco: a
+      2025 prosecution included CBD spray and chewing gum.[@mt25] Article 32 permits industrial or
+      commercial use of non-narcotic cannabis varieties only through a ministerial authorisation
+      route.[@order] The rule itself sets no general numerical THC exemption for retail
+      flower.[@order]
+    sources:
+      - mt25
+      - order
+    status: none
+  research:
+    text: >-
+      Researchers can seek an exemption from the Minister of State for cannabis research or control
+      work under article 32.[@order] That permission is separate from ordinary possession or
+      recreational supply.[@order] The rule also allows manufacture of authorised
+      derivatives.[@order]
+    sources:
+      - order
+    status: licensed
 sources:
   trafficpenal:
-    title: "Monaco Legimonaco — Penal Code, current consolidated text"
+    title: Monaco Legimonaco — Penal Code, current consolidated text
     url: https://legimonaco.mc/code/code-penal
-    locator: "Articles 26, 391-15, 391-15-1, 391-15-2 and 391-16; amendments by Law 1.582 of 14 November 2025"
+    locator: >-
+      Articles 26, 391-15, 391-15-1, 391-15-2 and 391-16; amendments by Law 1.582 of 14 November
+      2025
   l890:
     title: Loi n° 890 du 1er juillet 1970 sur les stupéfiants, consolidated (Legimonaco)
     url: https://legimonaco.mc/tnc/loi/1970/07-01-890/
@@ -144,5 +262,36 @@ sources:
     url: >-
       https://www.monaco-tribune.com/2023/03/un-monegasque-avec-une-grosse-consommation-de-cannabis-condamne-a-10-mois-de-prison-avec-sursis/
   mt25:
-    title: "Monaco Tribune — Un retraité jugé pour détention de cannabis et produits à base de CBD (24 April 2025)"
-    url: https://www.monaco-tribune.com/2025/04/un-retraite-juge-pour-detention-de-cannabis-et-produits-a-base-de-cbd/
+    title: >-
+      Monaco Tribune — Un retraité jugé pour détention de cannabis et produits à base de CBD (24
+      April 2025)
+    url: >-
+      https://www.monaco-tribune.com/2025/04/un-retraite-juge-pour-detention-de-cannabis-et-produits-a-base-de-cbd/
+  order:
+    title: Legimonaco — Ministerial Order 91-368, consolidated poisonous-substances rules
+    url: https://legimonaco.mc/tnc/arrete-ministeriel/1991/07-02-91-368/
+    locator: Article 32, including the 2019 pharmaceutical exception and 2023 amendment
+  order2019:
+    title: Legimonaco — Ministerial Order 2019-490 of 29 May 2019
+    url: https://legimonaco.mc/tnc/arrete-ministeriel/2019/05-29-2019-490/
+    locator: Articles 1 and 8; publication 7 June, two-month commencement delay
+  expulsion2025:
+    title: Legimonaco — Supreme Tribunal, e.A v Monaco, 1 December 2025
+    url: https://legimonaco.mc/jurisprudence/tribunal-supreme/2025/12-01-31246/
+    locator: Grounds 4–7; annulment of the 2024 exclusion order
+words:
+  - word: cannabis
+    lang: French
+    meaning: the legal and ordinary term
+    sources:
+      - order
+  - word: résine
+    lang: French
+    meaning: cannabis resin; the legal term
+    sources:
+      - order
+  - word: joint
+    lang: French
+    meaning: a cannabis cigarette; used in court reporting
+    sources:
+      - mt25
