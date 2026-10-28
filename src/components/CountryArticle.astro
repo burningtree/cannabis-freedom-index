@@ -366,13 +366,13 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
 
   {ctxList && (
     <section class="c-sec c-context" id="context">
-      <h2 class="d-h">Context <span>not part of the score</span></h2>
+      <h2 class="d-h">Context <span>not part of the score · <a href={`${base}context/`}>every country, by topic&nbsp;→</a></span></h2>
       {sub && <p class="d-hint">Sections written for {sub.name} come first in their place; the others hold for all of {c.name} and are marked so.</p>}
       {[ctxList.filter((x) => x && !x.items), ctxList.filter((x) => x && x.items)].map((list, g) => (list.length > 0 || (g === 0 && travel)) && (
         <div class={g ? "ctx-wide" : "ctx-grid"}>
           {list.map((x) => (
             <div class="segrow ctx-tile" data-seg={`ctx-${x.key}`} id={`seg-ctx-${x.key}`}>
-              <div class="segrow-top"><span>{CONTEXT_ICONS[x.key] && <Icon name={CONTEXT_ICONS[x.key]} class="ctx-icon" aria-hidden="true" />}{x.name}<SourceTip label="What this covers" inline>{x.help}</SourceTip></span></div>
+              <div class="segrow-top"><span>{CONTEXT_ICONS[x.key] && <Icon name={CONTEXT_ICONS[x.key]} class="ctx-icon" aria-hidden="true" />}{x.key === "products" ? x.name : <a class="ctx-topic" href={`${base}context/${x.key.replace(/_/g, "-")}/`} title={`${x.name} in every country`}>{x.name}</a>}<SourceTip label="What this covers" inline>{x.help}</SourceTip></span></div>
               {x.national && <p class="ctx ctx-general">For all of {c.name}; nothing written for {sub.name} yet.</p>}
               {x.key === "recreational" && (
                 <div class="d-chips"><a class={`chip s-${v.rec}`} href={mapOf("status:rec")} title={onMap(REC_HELP[v.rec])}>Recreational: {REC_LABEL[v.rec]}</a></div>

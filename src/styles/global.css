@@ -3436,3 +3436,76 @@ a.ch-db-track:hover { background: color-mix(in srgb, var(--text) 6%, transparent
   .ch-pt-num { text-align: left; }
   #work-for-a-gram .ch-bars li a { grid-template-columns: 100px minmax(0, 1fr) 115px; }
 }
+
+/* ══ Context topics (/context/, /context/<topic>/, src/lib/contexts.js) ═══════════════════════
+   Every topic a profile explains beyond its score, compared across countries: a ruled list of
+   topics with their coverage, and per topic the figures, a world map, a status table and a
+   filterable table of every profile's summary. */
+.ctxp { --map-none: color-mix(in srgb, var(--text) 9%, var(--bg)); --map-na: color-mix(in srgb, var(--muted) 55%, var(--bg)); }
+.ctxp .eyebrow a { color: inherit; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.ctxp-icon { width: .8em; height: .8em; vertical-align: -.05em; color: var(--muted); }
+.ctxp h1 .ctxp-icon { width: .7em; height: .7em; margin-right: 4px; }
+.ctxp-stats { margin-top: 22px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 700px) { .ctxp-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* the list of topics */
+.ctxp-topics { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--text); }
+.ctxp-topics a { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) minmax(8rem, 14rem); gap: 6px 28px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--border); color: inherit; }
+.ctxp-topic-name { grid-row: span 2; font: 400 22px/1.15 var(--display); }
+.ctxp-topic-help { grid-row: span 2; color: var(--text-2); font-size: 14px; line-height: 1.45; }
+.ctxp-topics a:hover .ctxp-topic-name { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.ctxp-cover, .ctxp-split { display: flex; height: 6px; overflow: hidden; border-radius: 3px; background: var(--map-none); align-self: center; }
+.ctxp-cover i, .ctxp-split i { display: block; height: 100%; }
+.ctxp-split i + i { box-shadow: inset 1px 0 0 var(--bg); }
+.ctxp-topic-n { grid-column: 3; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.ctxp-topics a > .ctxp-split { grid-column: 3; margin-top: 4px; }
+@media (max-width: 760px) {
+  .ctxp-topics a { grid-template-columns: minmax(0, 1fr); }
+  .ctxp-topic-name, .ctxp-topic-help { grid-row: auto; }
+  .ctxp-topic-n, .ctxp-topics a > .ctxp-split { grid-column: 1; }
+}
+.ctxp-key, .ctxp-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 14px 0 0; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.ctxp-key span, .ctxp-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.ctxp-key i, .ctxp-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; }
+.ctxp-key .ctxp-key-split { width: 24px; height: 6px; background: linear-gradient(90deg, var(--t5) 0 33%, var(--t3) 33% 66%, var(--t0) 66%); }
+/* the map */
+.ctxp-map { margin: 0; }
+.ctxp-map { position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: var(--r); }
+.ctxp-map svg { display: block; width: 100%; height: auto; max-height: none; cursor: grab; }
+.ctxp-map svg:active { cursor: grabbing; }
+.ctxp-map .ctxp-legend { padding: 0 14px 12px; }
+.ctxp-map path, .ctxp-map circle { stroke: var(--bg); stroke-width: .6; stroke-linejoin: round; vector-effect: non-scaling-stroke; transition: opacity .15s; }
+.ctxp-map a:hover path, .ctxp-map a:hover circle { opacity: .7; }
+.ctxp-map .ctxp-blank { fill: var(--map-none); }
+.ctxp-map-sec .sub a, .ctxp .sub a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+/* the tables */
+.ctxp-status td { vertical-align: top; }
+.ctxp-bar-col { width: 22%; }
+.src-table td.ctxp-bar-col, .src-table th.ctxp-bar-col { padding-left: 18px; }
+.ctxp-bar { display: block; height: 6px; width: var(--w); min-width: 2px; margin-top: 8px; border-radius: 3px; background: var(--c); }
+.ctxp-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; margin: 0 0 14px; }
+.ctxp-filter input[type="search"] { flex: 1 1 260px; max-width: 420px; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--r); background: var(--surface); color: var(--text); font: inherit; font-size: 14px; }
+.ctxp-filter label { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; color: var(--text-2); }
+.ctxp-count { font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.ctxp-table td { vertical-align: top; }
+.ctxp-country { white-space: nowrap; }
+.ctxp-country a { color: var(--text); }
+.ctxp-country a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ctxp-country small { display: block; margin-top: 2px; font: 400 10px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.ctxp-summary { color: var(--text-2); font-size: 14px; line-height: 1.45; }
+.ctxp-na, .ctxp-none { color: var(--muted); font-size: 13px; }
+/* on a phone each row stacks: the country and its status on one line, the summary under them */
+@media (max-width: 640px) {
+  .ctxp-table thead { display: none; }
+  .ctxp-table tr:not([hidden]) { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .ctxp-table td { padding: 0; border: 0; }
+  .ctxp-table .ctxp-country { white-space: normal; }
+  .ctxp-table .ctxp-summary { grid-column: 1 / -1; }
+  .ctxp-status th:nth-child(2), .ctxp-status td:nth-child(2) { display: none; }
+}
+/* other topics */
+.ctxp-others ul { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; padding: 0; list-style: none; }
+.ctxp-others a { color: var(--text-2); font-size: 14px; }
+.ctxp-others a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+/* a context section's title on a profile leads to the topic across every country */
+a.ctx-topic { color: inherit; }
+a.ctx-topic:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }

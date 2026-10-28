@@ -5,6 +5,7 @@
 //   ic: an Iconoir icon, shown in place of the flag (pages); a history entry shows its kind's icon with the flag small in its corner
 //   n: what is shown and matched   s: the smaller second line, matched too   u: address under the site root
 //   g: words matched but not shown (a history entry's tags)
+import { contextTopics } from "../lib/contexts.js";
 import { getCollection } from "astro:content";
 import { termAnchor } from "../lib/terms.js";
 import { places, countries, subunitsOf, changes, articles, historyPeriods, CHANGE_CATEGORIES, CHANGE_TAGS, estimateNote } from "../lib/countries.js";
@@ -24,8 +25,10 @@ const rows = [
     ["Map", "World map of scores", "#map"], ["Rankings", "Every country by score", "#rankings"], ["Methodology", "How the scores are made", "#methodology"],
     ["History", "Laws, rulings and treaties", "history/"], ["Can I?", "Plain answers per country", "can-i/"], ["Compare", "Countries side by side", "compare/"],
     ["Download the data", "Scores, history and yearly panel", "data/"], ["Score changes", "Every score change", "score-changes/"], ["Changelog", "Every change to the site, data and text", "changelog/"],
-    ["Articles", "The longer reads on single events", "articles/"], ["About", "What the project is, its aims and commitments", "about/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "A cultural atlas of cannabis", "culture/"], ["Culture: People", "Officials, preachers, scientists and presidents", "culture/people/"], ["Culture: Stories", "The people behind the laws", "culture/stories/"], ["Sources", "Every source the index cites", "sources/"], ["Research progress", "How much of each country is researched, and what is missing", "research/"], ["Glossary", "The words of cannabis law, explained", "glossary/"], ["Charts", "The history and the scores in charts", "charts/"], ["World map", "Every country coloured by its score, full screen", "map/"], ["Map poster", "The world map as a printable poster", "map/poster/"],
+    ["Articles", "The longer reads on single events", "articles/"], ["About", "What the project is, its aims and commitments", "about/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "A cultural atlas of cannabis", "culture/"], ["Culture: People", "Officials, preachers, scientists and presidents", "culture/people/"], ["Culture: Stories", "The people behind the laws", "culture/stories/"], ["Sources", "Every source the index cites", "sources/"], ["Research progress", "How much of each country is researched, and what is missing", "research/"], ["Glossary", "The words of cannabis law, explained", "glossary/"], ["Charts", "The history and the scores in charts", "charts/"], ["World map", "Every country coloured by its score, full screen", "map/"], ["Map poster", "The world map as a printable poster", "map/poster/"], ["Context", "Beyond the score: each topic compared across countries", "context/"],
   ].map(([n, s, u]) => ({ t: "p", n, s, u, ic: PAGE_ICONS[u] })),
+  // the context topics, each compared across every country
+  ...contextTopics.map((t) => ({ t: "p", n: `Context: ${t.name}`, s: t.help, u: `context/${t.slug}/`, ic: PAGE_ICONS["context/"] })),
   // the exhibitions: one row each, its rooms' names matched but not listed
   { t: "p", n: "Exhibitions", s: "One episode at a time, in rooms of its own", u: "exhibitions/", ic: EXHIBITION_ICON },
   ...openExhibitions.map((e) => ({ t: "p", n: e.title, s: `Exhibition ${e.no} · ${e.line}`, u: exhibitionPath(e), ic: EXHIBITION_ICON, g: ["exhibition", e.theme, ...(e.rooms ?? []).map((r) => r.name)].join(" ") })),

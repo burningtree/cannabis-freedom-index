@@ -1,0 +1,193 @@
+---
+// One context topic across every place, e.g. /context/clubs/: what it covers, a world map coloured
+// by its status (or by how far the research has got), the figures, and every profile's summary
+// with a link to its section. The data is in src/lib/contexts.js.
+import Base from "../../layouts/Base.astro";
+import { Icon } from "astro-icon/components";
+import { contextTopics, mapFill } from "../../lib/contexts.js";
+import { worldMap, MAP_RATIO } from "../../lib/world-map.js";
+import { tierColor } from "../../lib/tiers.js";
+
+export function getStaticPaths() {
+  return contextTopics.map((topic) => ({ params: { topic: topic.slug }, props: { topic } }));
+}
+
+const { topic } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const W = 1000, H = Math.round(W / MAP_RATIO);
+const map = worldMap(W, H, 0);
+const rowOf = new Map(topic.rows.map((r) => [r.c.id, r]));
+const pct = (n) => Math.round((n / topic.total) * 100);
+const isStatus = topic.scheme.kind === "status";
+const isDeath = topic.key === "death_penalty";
+// what a country's entry on the map says on hover
+const tipOf = (row) => !row ? "" : `${row.c.name}: ${isStatus ? row.status?.label ?? "not researched" : row.state === "filled" ? "written" : row.state === "not_applicable" ? "not applicable" : "not researched yet"}`;
+// the hover box's line: the section's first sentence, or its opening if that runs long
+const firstLine = (t) => { if (!t) return ""; const m = t.match(/^.{20,170}?[.;](?=\s|$)/); return m ? m[0] : t.length > 150 ? `${t.slice(0, 150).replace(/\s+\S*$/, "")}…` : t; };
+const sectionHref = (c) => `${base}country/${c.slug}/#seg-ctx-${topic.key}`;
+// the map's key
+const legend = isDeath
+  ? [["var(--t0)", "Provided for by law"], ["var(--map-na)", "Explained as not applicable"], ["var(--map-none)", "Not researched yet"]]
+  : isStatus
+    ? [...topic.scheme.values.filter((v) => v.tier != null).map((v) => [`var(--t${v.tier})`, v.label]), ["var(--map-none)", "Not researched yet"]]
+    : [["var(--u3)", "Written"], ["var(--map-na)", "Explained as not applicable"], ["var(--map-none)", "Not researched yet"]];
+const figures = [
+  [topic.filled, "profiles with this section"],
+  [topic.notApplicable, "explained as not applicable"],
+  [topic.missing, "not researched yet"],
+  [`${pct(topic.filled + topic.notApplicable)}%`, `of ${topic.total} places covered`],
+];
+const others = contextTopics.filter((t) => t.key !== topic.key);
+const description = `${topic.name} in every country: ${topic.help.charAt(0).toLowerCase()}${topic.help.slice(1)}. A world map, the figures and each country's summary.`;
+---
+<Base title={`${topic.name}: country by country`} description={description}>
+  <main class="changes-page ctxp">
+    <section class="hero hero-sm">
+      <p class="eyebrow"><a href={`${base}context/`}>Context</a> <span>not part of the score</span></p>
+      <h1><Icon name={topic.icon} class="ctxp-icon" aria-hidden="true" /> {topic.name}</h1>
+      <p class="lede">{topic.help}.</p>
+    </section>
+
+    <dl class="hist-stats ctxp-stats">
+      {figures.map(([n, label]) => <div><dt>{label}</dt><dd>{n}</dd></div>)}
+    </dl>
+
+    <section class="section ctxp-map-sec" aria-labelledby="ctxpMap">
+      <div class="section-head"><div>
+        <h2 id="ctxpMap">{isStatus ? topic.scheme.title : isDeath ? "Where the law provides for it" : "Where it is written"}, on the map</h2>
+        <p class="sub">Select a country for its section.{topic.mapView && <> <a href={`${base}map/${topic.mapView.slug}/`}>The interactive map&nbsp;→</a></>}</p>
+      </div></div>
+      {/* the same hover box and zoom buttons as the home page's map (src/lib/unit-map-tip.js, d3-zoom) */}
+      <figure class="unit-map ctxp-map" data-ctxp-map>
+        <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-label={`World map: ${topic.name}`}>
+          <g class="ctxp-zoom">
+            {map.shapes.map((s) => {
+              const row = s.c ? rowOf.get(s.c.id) : null;
+              return row
+                ? <a href={sectionHref(row.c)} data-tip={row.c.id} aria-label={tipOf(row)}><path d={s.d} style={`fill:${mapFill(topic, row)}`} /></a>
+                : <path d={s.d} class="ctxp-blank" />;
+            })}
+            {map.dots.map((d) => {
+              const row = rowOf.get(d.c.id);
+              return row && <a href={sectionHref(row.c)} data-tip={row.c.id} aria-hidden="true" tabindex="-1"><circle cx={d.x} cy={d.y} r={map.r * 1.6} style={`fill:${mapFill(topic, row)}`} /></a>;
+            })}
+          </g>
+        </svg>
+        <div class="map-zoom">
+          <button type="button" class="icon-btn" data-zoom="in" aria-label="Zoom in">+</button>
+          <button type="button" class="icon-btn" data-zoom="out" aria-label="Zoom out">−</button>
+          <button type="button" class="icon-btn" data-zoom="reset" aria-label="Reset zoom">⟲</button>
+        </div>
+        <div class="tooltip" hidden></div>
+        {topic.rows.map((r) => (
+          <template data-tip-for={r.c.id}>
+            <div class="tip-head"><strong><span class="tip-flag">{r.c.flag}</span>{r.c.name}</strong><span class="tip-chip" style={`--chip:${tierColor(r.c.raw)}`}>{r.c.score}</span></div>
+            <div class="tip-meta">{isStatus ? (r.status ? <span class={`chip s-${r.status.tone}`}>{r.status.label}</span> : "No status yet") : r.state === "filled" ? "Section written" : r.state === "not_applicable" ? "Explained as not applicable" : "Not researched yet"}</div>
+            {r.state !== "missing" && <p class="tip-note">{firstLine(r.state === "filled" ? r.summary : r.reason)}</p>}
+            <div class="tip-foot">Click for the section</div>
+          </template>
+        ))}
+        <figcaption class="ctxp-legend">
+          {legend.map(([color, label]) => <span><i style={`background:${color}`}></i>{label}</span>)}
+        </figcaption>
+      </figure>
+    </section>
+
+    {isStatus && (
+      <section class="section" aria-labelledby="ctxpStatuses">
+        <div class="section-head"><div>
+          <h2 id="ctxpStatuses">{topic.scheme.title}: how the {topic.total - topic.unknown} researched places divide</h2>
+          {topic.unknown > 0 && <p class="sub">{topic.unknown} places have no status yet.</p>}
+        </div></div>
+        <table class="src-table ctxp-status">
+          <thead><tr><th>Status</th><th>What it means</th><th class="num">Places</th><th class="ctxp-bar-col" aria-hidden="true"></th></tr></thead>
+          <tbody>
+            {topic.statuses.map((v) => (
+              <tr>
+                <td><span class={`chip s-${v.tone}`}>{v.label}</span></td>
+                <td>{v.help}</td>
+                <td class="num">{v.rows.length}</td>
+                <td class="ctxp-bar-col"><i class="ctxp-bar" style={`--w:${(v.rows.length / Math.max(...topic.statuses.map((x) => x.rows.length))) * 100}%;--c:${v.tier != null ? `var(--t${v.tier})` : "var(--muted)"}`}></i></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+
+    <section class="section" aria-labelledby="ctxpTable" data-ctxp-table>
+      <div class="section-head"><div>
+        <h2 id="ctxpTable">Country by country</h2>
+        <p class="sub">The opening of each profile's section; the country's page has it in full, with sources.</p>
+      </div></div>
+      <div class="ctxp-filter">
+        <input type="search" placeholder="Filter by country or word" aria-label="Filter the table" data-ctxp-q />
+        <label><input type="checkbox" data-ctxp-written checked /> Only places with a section</label>
+        <span class="ctxp-count" aria-live="polite" data-ctxp-count></span>
+      </div>
+      <table class="src-table ctxp-table">
+        <thead><tr><th>Country</th>{isStatus && <th>{topic.scheme.title}</th>}<th>What the profile says</th></tr></thead>
+        <tbody>
+          {topic.rows.map((r) => (
+            <tr data-state={r.state} data-region={r.c.region} hidden={r.state !== "filled"}>
+              <td class="ctxp-country"><a href={sectionHref(r.c)}><span aria-hidden="true">{r.c.flag}</span> {r.c.name}</a><small>{r.c.region}</small></td>
+              {isStatus && <td>{r.status ? <span class={`chip s-${r.status.tone}`}>{r.status.label}</span> : <span class="ctxp-none">—</span>}</td>}
+              <td class="ctxp-summary">{r.state === "filled" ? r.summary : r.state === "not_applicable" ? <span class="ctxp-na">Not applicable: {r.reason}</span> : <span class="ctxp-none">Not researched yet</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <nav class="section ctxp-others" aria-label="Other context topics">
+      <div class="section-head"><div><h2>Other topics</h2></div></div>
+      <ul>
+        {others.map((t) => <li><a href={`${base}context/${t.slug}/`}><Icon name={t.icon} class="ctxp-icon" aria-hidden="true" /> {t.name}</a></li>)}
+      </ul>
+    </nav>
+  </main>
+</Base>
+
+<script>
+  import "../../lib/unit-map-tip.js";
+  import { select } from "d3-selection";
+  import { zoom, zoomIdentity } from "d3-zoom";
+  import "d3-transition";
+
+  // zoom and pan, by wheel, drag or the buttons, as on the home page's map
+  for (const figure of document.querySelectorAll("[data-ctxp-map]")) {
+    const svg = select(figure.querySelector("svg"));
+    const g = svg.select(".ctxp-zoom");
+    const [, , w, h] = figure.querySelector("svg").getAttribute("viewBox").split(" ").map(Number);
+    // the dots of the small countries keep their size as the map grows
+    const dots = g.selectAll("circle").each(function () { this.dataset.r = this.getAttribute("r"); });
+    const z = zoom().scaleExtent([1, 10]).translateExtent([[0, 0], [w, h]]).on("zoom", (e) => {
+      g.attr("transform", e.transform);
+      dots.attr("r", function () { return this.dataset.r / Math.sqrt(e.transform.k); });
+    });
+    svg.call(z);
+    const act = { in: () => z.scaleBy(svg.transition().duration(250), 1.8), out: () => z.scaleBy(svg.transition().duration(250), 1 / 1.8), reset: () => z.transform(svg.transition().duration(250), zoomIdentity) };
+    figure.querySelectorAll("[data-zoom]").forEach((b) => b.addEventListener("click", act[b.dataset.zoom]));
+  }
+
+  // The table shows the places with a section by default; the box filters by country, region or
+  // any word in the summary, and the tick box brings back the places without one.
+  for (const box of document.querySelectorAll("[data-ctxp-table]")) {
+    const rows = [...box.querySelectorAll("tbody tr")];
+    const q = box.querySelector("[data-ctxp-q]"), written = box.querySelector("[data-ctxp-written]"), count = box.querySelector("[data-ctxp-count]");
+    const apply = () => {
+      const words = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      let n = 0;
+      for (const tr of rows) {
+        const text = tr.textContent.toLowerCase();
+        const show = (!written.checked || tr.dataset.state === "filled") && words.every((w) => text.includes(w));
+        tr.hidden = !show;
+        if (show) n++;
+      }
+      count.textContent = `${n} of ${rows.length}`;
+    };
+    q.addEventListener("input", apply);
+    written.addEventListener("change", apply);
+    apply();
+  }
+</script>

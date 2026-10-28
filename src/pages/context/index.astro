@@ -1,0 +1,45 @@
+---
+// Context: the topics every profile covers beyond its score, each with its own page across all
+// countries (/context/<topic>/). For each: what it covers, how far the research has got, and for a
+// topic with a status, how the places divide. The data is in src/lib/contexts.js.
+import Base from "../../layouts/Base.astro";
+import { Icon } from "astro-icon/components";
+import { contextTopics } from "../../lib/contexts.js";
+
+const base = import.meta.env.BASE_URL;
+const total = contextTopics[0].total;
+const written = contextTopics.reduce((n, t) => n + t.filled, 0);
+---
+<Base title="Context" description="Beyond the score: medical cannabis, clubs, seeds, hemp, the black market, driving, visitors, arrests and more, each compared across every country with a map and each profile's summary.">
+  <main class="changes-page ctxp">
+    <section class="hero hero-sm">
+      <p class="eyebrow">Context <span>{contextTopics.length} topics · {total} places · {written.toLocaleString("en-GB")} sections written</span></p>
+      <h1>Beyond the score</h1>
+      <p class="lede">The index scores six things the law does to people who use cannabis. Each profile also explains what the score does not: how patients get medicine, whether clubs and seeds are allowed, what the black market looks like, what happens to a driver or a visitor. Here each topic is compared across every country, with a map.</p>
+    </section>
+
+    <section class="section">
+      <ol class="ctxp-topics">
+        {contextTopics.map((t) => (
+          <li>
+            <a href={`${base}context/${t.slug}/`}>
+              <span class="ctxp-topic-name"><Icon name={t.icon} class="ctxp-icon" aria-hidden="true" /> {t.name}</span>
+              <span class="ctxp-topic-help">{t.help}</span>
+              <span class="ctxp-cover" role="img" aria-label={`${t.filled} written, ${t.notApplicable} not applicable, ${t.missing} not researched, of ${t.total}`}>
+                <i style={`width:${(t.filled / t.total) * 100}%;background:var(--u3)`}></i>
+                <i style={`width:${(t.notApplicable / t.total) * 100}%;background:var(--map-na)`}></i>
+              </span>
+              <span class="ctxp-topic-n">{t.filled} written{t.notApplicable > 0 && ` · ${t.notApplicable} n/a`}</span>
+              {t.statuses.length > 0 && (
+                <span class="ctxp-split" role="img" aria-label={t.statuses.map((v) => `${v.label}: ${v.rows.length}`).join(", ")}>
+                  {t.statuses.map((v) => <i style={`flex:${v.rows.length};background:${v.tier != null ? `var(--t${v.tier})` : "var(--muted)"}`} title={`${v.label}: ${v.rows.length}`}></i>)}
+                </span>
+              )}
+            </a>
+          </li>
+        ))}
+      </ol>
+      <p class="ctxp-key"><span><i style="background:var(--u3)"></i>Written</span><span><i style="background:var(--map-na)"></i>Explained as not applicable</span><span><i style="background:var(--map-none)"></i>Not researched yet</span><span><i class="ctxp-key-split"></i>Status, where the topic has one</span></p>
+    </section>
+  </main>
+</Base>
