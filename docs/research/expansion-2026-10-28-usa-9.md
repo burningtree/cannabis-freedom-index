@@ -16,6 +16,12 @@ Same method as usa-1–8.
 - No MT history entries, no culture subject — noted.
 - Audit 0/0; review page verified.
 
-## vt — pending
+## vt (Vermont) — committed
+- Sharing cite, history links (2013 civil-possession in enforcement, 2026 event pilot in
+  access), new `recreational` (Act 86 Jan 2018 legislature-first, Act 164 Oct 2020, shops
+  Oct 2022 via verified Wikipedia article).
+- Possession/sharing pinned by scope tests, untouched. No culture subject — noted.
+- Audit 0/0; review page verified.
+
 ## nh — pending
 ## ri — pending
