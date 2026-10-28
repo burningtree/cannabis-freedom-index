@@ -6,8 +6,8 @@ skipped. Existing dirty/staged work, including the previous expansion note, is l
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Portugal | Two articles; four events; 1993 commencement/correction clarified; hemp status corrected to standard (0.3%); HHC context | 1930s–1960s; wider primary-source club research | This country's commit |
-| Slovenia | Pending | | |
+| Portugal | Two articles; four events; 1993 commencement/correction clarified; hemp status corrected to standard (0.3%); HHC context | 1930s–1960s; wider primary-source club research | 52466258 |
+| Slovenia | Two articles; 1964 act and EU-opinion events; scientific permit authority clarified | 1930 original code; 1940s/1970s/1980s; medical implementation and personal bill final outcome | This country’s commit |
 | Andorra | Pending | | |
 | Belarus | Pending | | |
 | North Macedonia | Pending | | |
@@ -28,3 +28,18 @@ Portugal validation: profile audit 0 errors/0 warnings; selected-page build succ
 tests and citation/collection validation. Seven rendered pages inspected, including the hemp
 status and both articles. Snapshot: `.cache/expansion-europe-2/pt-review/`. Commits use a private
 Git index so other agents' staged files cannot be swept into this batch.
+
+## Slovenia
+
+Read original 1950 federal law (UN copy from the preceding batch), the 2025 cannabis Act,
+2026 research rules, TRIS notification and a 2024 original study of parliamentary discourse.
+The study supplies a 1964 event citing SFRY Gazette 18/64; that original printing remains a lead.
+It describes continued controls and minor-offence possession, so no unsupported historical
+score change is assigned. The 1930 code still needs its original text. Scientific permissions
+come from the Health Ministry, distinct from JAZMP's medical licences and shipment functions.
+The Commission's disclosed detailed opinion extends a notification standstill; it is not
+rejection by Slovenia's parliament or permission to grow. Current scores and penalties retained.
+
+Slovenia validation: zero profile-audit errors/warnings; five selected pages built and their
+HTML inspected. A second render validated the added research-rule reference. Snapshot:
+`.cache/expansion-europe-2/si-review/`.
