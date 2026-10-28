@@ -9,8 +9,8 @@ excluding other agents’ shared changes.
 | Malta | Resin article, association stock event/context, directive date corrected | Seven sparse history decades; original 2026 licensing amendment | 875cfb6 |
 | Serbia | Medical agenda-vote article; eight events; research authorisations and seizure context | Original 1964/1980/1996 laws; 1940s/1970s | cbc0790 |
 | Bulgaria | Hemp article; revised 2006 article; cultivation/supply/use tables; five events | Hemp statute/ordinance threshold conflict; original 1975/1982 printings | 532d7e5 |
-| Belgium | 2026 sentencing article; two events; possession/supply tables, medical/driving context, four words | 2015 Sativex article; 1950s; ancillary fine details | This country’s commit |
-| Estonia | Pending | | |
+| Belgium | 2026 sentencing article; two events; possession/supply tables, medical/driving context, four words | 2015 Sativex article; 1950s; ancillary fine details | 78d371d |
+| Estonia | Epidyolex article; three events; supply/use/cultivation tables; research and counselling context; driving fine corrected | Soviet-era original laws; sparse 1950s/1960s/1980s; more local vocabulary | This country’s commit |
 
 ## Malta
 
@@ -81,3 +81,23 @@ but unmarketed Epidyolex, and pharmaceutical CBD compounds. Added four locally d
 Validation: first build hit a regression test requiring the explicit phrase that prosecutors
 may still bring charges; restored that wording. The second passed all 196 tests and rendered
 three pages, inspected in HTML. Profile audit 0/0. Snapshot: `.cache/expansion-europe-3/be-review/`.
+
+## Estonia
+
+Completed after midnight on 29 October. Read the current narcotics and Penal Code texts in
+Riigi Teataja’s browser, since the web extractor received only the JavaScript shell. Selected the in-force Penal Code translation published 26 October (effective 1 October),
+confirming that the relevant provisions match the older translation. The current
+narcotics consolidation retains the ten-person test; January’s thirty-dose announcement remains
+a proposal. Added commencement of the 1997 framework, the July 2005 statutory definition and
+the January 2025 eight-euro fine unit. Updated the stale driving-related €1,200 drug-use figure
+to €2,400 and used current criminal-law text for impaired-driving penalties. Added supply and
+use tables, separate aggravated cultivation, possible life imprisonment for significant-gain
+large-quantity handling, licensed research context and the ministry’s VALIK counselling route.
+No six-segment score changes: those criminal categories and the personal-use misdemeanour
+already underlie the current bands. The new Epidyolex article distinguishes the EU prescription
+medicine from individual unauthorised-medicine requests and prohibited patient growing. EMA’s
+PDF was read locally after its page returned HTTP 429. Older Soviet entries still need original
+republic legislation; two locally sourced words retained rather than inventing additional slang.
+
+Validation: 196 tests passed; five selected pages rendered and HTML inspected; audit 0/0.
+Snapshot: `.cache/expansion-europe-3/ee-review/`.

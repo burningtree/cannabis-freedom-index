@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 233
 recreational: decriminalised
 medical: limited
-updated: '2026-10-27'
+updated: '2026-10-29'
 summary: >-
   A small quantity for personal use is a misdemeanour, punished by a fine or detention. A large
   quantity, enough to intoxicate at least ten people, carries one to ten years. Medical access
@@ -52,19 +52,24 @@ segments:
     text: >-
       Growing narcotic cannabis illegally is a criminal offence; section 188 of the Penal Code
       provides a fine or up to five years in prison, and one to ten years for a group or a repeat
-      offender.[@narko,cann] EU-listed industrial hemp varieties
+      offender.[@karist] EU-listed industrial hemp varieties
       with no more than 0.3% THC may be grown for agriculture. Growing cannabis to manufacture a
       narcotic substance, including for medical use, remains prohibited.[@ravim]
     sources:
-      - narko
-      - cann
+      - karist
       - ravim
     penalties:
       - label: Unlicensed growing
         treatment: criminal
         term: Cultivation
         prison: 5 years
-        note: Fine or up to five years; group or repeat one to ten years
+        note: Pecuniary punishment or imprisonment; Penal Code section 188(1)
+      - label: Group or relevant previous drug offence
+        treatment: criminal
+        term: Cultivation
+        prison_min: 1 year
+        prison: 10 years
+        note: Penal Code section 188(2)
       - label: Licensed EU hemp varieties
         treatment: legal
         term: Hemp
@@ -75,7 +80,7 @@ segments:
       fine units or detention.[@ndps] Handling a large quantity, enough to intoxicate at least ten
       people, carries one to ten years. Supplying a small quantity can bring up to three years.[@karist]
       In January 2026 the justice minister proposed raising the large-quantity threshold from 10
-      to 30 doses and easing dealer convictions.[@err26]
+      to 30 doses and easing dealer convictions; the current statute still says ten people.[@err26,ndps]
     sources:
       - ndps
       - karist
@@ -90,12 +95,56 @@ segments:
     sources:
       - karist
       - ndps
+    penalties:
+      - label: Small-quantity supply offence
+        treatment: criminal
+        term: Supply
+        prison: 3 years
+        note: Pecuniary punishment or prison; systematic trafficking, holding to supply or cross-border trafficking
+      - label: Small quantity, group or relevant previous offence
+        treatment: criminal
+        term: Supply
+        prison: 5 years
+        note: Pecuniary punishment or imprisonment; section 183(2)
+      - label: Large quantity
+        treatment: criminal
+        term: Handling
+        prison_min: 1 year
+        prison: 10 years
+        note: Enough to intoxicate at least ten people
+      - label: Large quantity, group or relevant previous offence
+        treatment: criminal
+        term: Handling
+        prison_min: 3 years
+        prison: 15 years
+        note: Section 184(2)
+      - label: Large quantity for significant proprietary benefit
+        treatment: criminal
+        term: Handling
+        prison_min: 6 years
+        prison: 20 years
+        life: possible
+        note: Section 184(2-1)
+      - label: Adult supplies a small quantity to a minor
+        treatment: criminal
+        term: Supply
+        prison: 5 years
+        note: Aggravating circumstances bring higher penalties under section 185
   consumption:
     text: >-
       Use without a prescription is a misdemeanour, with the same fine of up to 300 fine units
-      or detention as small-quantity possession.[@ndps]
+      or up to thirty days of court-imposed detention as small-quantity possession.[@ndps,karist]
     sources:
       - ndps
+      - karist
+    currency: EUR
+    penalties:
+      - label: Use without a prescription
+        treatment: civil
+        term: Misdemeanour
+        fine: 2400
+        prison: 30 days
+        note: Fine or court-imposed detention; adult maximum
   access:
     text: >-
       A narrow medical route is lawful. [Epidyolex was authorised in 2019](/history/estonia-epidyolex-2019/),
@@ -143,19 +192,24 @@ context:
       A final decision imposing a penalty for a misdemeanour is entered in the penal register,
       except a decision in a warning procedure.[@karreg] Data on a fine or detention for a misdemeanour
       are deleted and archived one year after the fine is paid or the detention is served.[@karreg]
+      People aged seventeen and over can seek up to six VALIK counselling sessions to reduce or
+      stop cannabis use, in Estonian or Russian.[@social]
     sources:
       - karreg
+      - social
   driving:
     status: zero
     text: >-
       There is no THC limit: a driver in whom a drug is detected is removed from the road and
-      dealt with for the drug-use offence, with a fine of up to 1,200 euros or administrative
-      arrest of up to 30 days.[@euda_dd] The criminal code separately punishes impaired driving with up
-      to three years in prison, four for a repeat offence, and a ban of up to three years.[@euda_dd]
+      dealt with for the drug-use offence.[@euda_dd] Its adult maximum is now 300 fine units
+      of eight euros, or €2,400, or up to thirty days of court-imposed detention.[@ndps,karist] The criminal code separately punishes impaired driving with up
+      to three years in prison, four for a repeat offence, and a driving ban; a repeat conviction requires a ban.[@karist]
       Police need suspicion to stop a driver but may test at random; the evidential test is
       blood taken at a hospital.[@euda_dd]
     sources:
       - euda_dd
+      - ndps
+      - karist
   culture:
     text: >-
       Estonia has a place in [the hemp dance](/culture/traditions/the-hemp-dance/): the atlas records
@@ -220,6 +274,17 @@ context:
       by-product.[@ravim]
     sources:
       - ravim
+  research:
+    status: licensed
+    text: >-
+      Scientific handling of controlled cannabis is permitted within the narcotics-law framework,
+      under State Agency of Medicines supervision.[@ndps,ravim] The agency distinguishes that
+      permission from cultivation: growing cannabis to produce a narcotic, even for medical
+      use, remains prohibited.[@ravim] Epidyolex is a standardised prescription CBD medicine;
+      that authorisation does not give researchers or patients permission to grow plants.[@ravim]
+    sources:
+      - ndps
+      - ravim
   arrests:
     text: >-
       No recent cannabis-split arrest totals were found in reachable sources. A 2021
@@ -229,6 +294,10 @@ context:
     sources:
       - ehra21
 sources:
+  social:
+    title: Estonian Ministry of Social Affairs — Narkootikumid (updated 17 April 2026)
+    url: https://www.sm.ee/narkootikumid
+    locator: VALIK programme, up to six sessions, ages seventeen and over, Estonian and Russian
   de_cang:
     title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
     url: https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz
@@ -259,16 +328,16 @@ sources:
     url: https://cannigma.com/regulation/cannabis-laws-in-estonia/
   ndps:
     title: Riigi Teataja — Act on Narcotic Drugs and Psychotropic Substances and Precursors thereof
-    url: https://www.riigiteataja.ee/en/eli/ee/506022025005/consolide/current
+    url: https://www.riigiteataja.ee/en/akt/508052026003
     locator: >-
       Section 3-1(3): a large quantity is enough to cause drug intoxication to at least ten
       people. Section 15-1(1): small-quantity possession, or use without a prescription, is a
       fine of up to 300 fine units or detention.
   karist:
     title: Riigi Teataja — Penal Code (English consolidation)
-    url: https://www.riigiteataja.ee/en/eli/ee/506012026001/consolide
+    url: https://www.riigiteataja.ee/en/akt/526102026007?leiaKehtiv
     locator: >-
-      Section 47: a fine unit is 8 euros. Section 183: small-quantity supply offences, up to
+      Sections 47–48: eight-euro fine units from 1 January 2025; adult detention up to thirty days. Section 183: small-quantity supply offences, up to
       three years. Section 184(1): large-quantity handling, one to ten years. Section 185:
       giving a small quantity to a minor, up to five years.
   riiko:
