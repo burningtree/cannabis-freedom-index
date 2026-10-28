@@ -9,7 +9,7 @@ dependency:
     Kingdom answers for it internationally, including under the UN drug conventions.
 recreational: illegal
 medical: limited
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Cannabis possession and home growing are crimes, with fines or imprisonment available. Medical
   access is limited to controlled medicines: trained public-health doctors may authorise
@@ -24,44 +24,51 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis and resin are Class B drugs. Possession can bring up to twelve months in prison
-      or a fine in lower-court proceedings, or five years or a fine in a higher-court
-      trial.[@law] In December 2025 a man found with about 127 g of resin received an £800 fine
-      in the Magistrates’ Court.[@police]
+      Cannabis and resin are Class B drugs.[@law] Possession carries up to twelve months or a
+      £10,000 fine, or both, in summary proceedings; on indictment, up to five years or a fine,
+      or both.[@law,procedure] A [December 2025 case](/history/gibraltar-possession-fine-2025/)
+      involving about 127 g of resin ended in an £800 fine.[@police]
     sources:
       - law
+      - procedure
       - police
     currency: GBP
     penalties:
       - label: Summary, lower court
         treatment: criminal
         prison: 12 months
-        note: Or a fine
+        note: Prison or a fine, or both; section 506(2), Schedule 8
+        fine: 10000
+        term: Possession
       - label: Indictment, higher court
         treatment: criminal
         prison: 5 years
-        note: Or a fine
-      - label: About 127 g of resin in 2025
-        treatment: criminal
-        fine: 800
+        note: Prison or a fine, or both; no fixed fine ceiling stated in this row
+        term: Possession
   cultivation:
     text: >-
-      Cultivating any cannabis plant is an offence, subject to authorised exceptions. The
-      cultivation offence carries up to nine months in lower-court proceedings or fourteen years
-      in a higher-court trial, with fines also available.[@law] The wider medicinal-cannabis
-      industry Act remains awaiting commencement.[@m21]
+      Growing any cannabis plant requires lawful authority under section 508.[@law] Cultivation
+      carries up to nine months or a £4,000 fine, or both, in summary proceedings; on
+      indictment, up to fourteen years or a fine, or both.[@law,procedure] The [2021 medicinal
+      industry Act](/history/gibraltar-medicinal-cannabis-act-2021/) is still marked Not In
+      Force.[@m21]
     sources:
       - law
+      - procedure
       - m21
     currency: GBP
     penalties:
       - label: Summary, lower court
         treatment: criminal
         prison: 9 months
-        note: Fine also available
+        note: Prison or a fine, or both
+        fine: 4000
+        term: Cultivation
       - label: Indictment, higher court
         treatment: criminal
         prison: 14 years
+        term: Cultivation
+        note: Prison or a fine, or both
   enforcement:
     text: >-
       Courts can impose fines or prison for possession; the statutory maxima depend on how the
@@ -74,20 +81,39 @@ segments:
       - supply
   sharing:
     text: >-
-      Supplying or offering to supply cannabis is an offence, with no payment requirement in the
-      prohibition. Class B supply or possession with intent to supply can carry up to life
-      imprisonment in a higher-court trial; fines are also available.[@law] A reported
-      possession-with-intent-to-supply case ended in 200 hours of community work.[@supply]
+      Giving, selling or offering cannabis to another person is covered by the supply
+      offence.[@law] Summary supply or possession with intent to supply carries up to twelve
+      months or a £10,000 fine, or both; on indictment the maximum is life imprisonment or a
+      fine, or both.[@law,procedure] Knowingly permitting cannabis smoking or prohibited drug
+      activity on premises carries up to twelve months or a £10,000 fine, or both, summarily; up
+      to fourteen years or a fine, or both, on indictment.[@law,procedure]
     sources:
       - law
-      - supply
+      - procedure
     penalties:
-      - label: Indictment, higher court
+      - label: Supply / possession with intent — summary
         treatment: criminal
-        note: Up to life imprisonment; fines also available
-      - label: Possession with intent to supply, reported case
+        term: Supply
+        prison: 12 months
+        fine: 10000
+        note: Prison or a fine, or both; sections 504(3), 506(3)
+      - label: Supply / possession with intent — indictment
         treatment: criminal
-        note: 200 hours of community work
+        term: Supply
+        life: possible
+        note: Life imprisonment or a fine, or both; Schedule 8
+      - label: Knowingly permitting cannabis smoking or prohibited drug activity — summary
+        treatment: criminal
+        term: Premises offence
+        prison: 12 months
+        fine: 10000
+        note: Prison or a fine, or both; section 518
+      - label: Such premises offence — indictment
+        treatment: criminal
+        term: Premises offence
+        prison: 14 years
+        note: Prison or a fine, or both; Schedule 8
+    currency: GBP
   consumption:
     text: >-
       Unauthorised possession associated with cannabis use is criminal. Occupiers who knowingly
@@ -112,7 +138,8 @@ context_not_applicable:
       Gibraltar abolished capital punishment on 8 November 1965, in line with British practice;
       its last hanging for murder was in 1931. No cannabis offence carries a capital
       sentence.[@cpu]
-    sources: [cpu]
+    sources:
+      - cpu
 context:
   recreational:
     text: >-
@@ -126,18 +153,18 @@ context:
   production:
     status: none
     text: >-
-      Unauthorised production is criminal, and cultivating cannabis has its own offence.[@law] The
-      2021 medicinal-cannabis Act provides for a wider industry licensing system but is still marked
-      Not In Force; commencement requires a ministerial notice.[@m21]
+      Unauthorised production is criminal, and cultivating cannabis has its own offence.[@law]
+      The [2021 medicinal-cannabis Act](/history/gibraltar-medicinal-cannabis-act-2021/) is
+      still marked Not In Force; commencement requires a ministerial notice.[@m21]
     sources:
       - law
       - m21
   medical:
     text: >-
-      GHA doctors must complete training before authorising cannabis medicines. Eligible
+      GHA doctors must complete training before authorising cannabis medicines.[@reg] Eligible
       conditions are treatment-resistant multiple-sclerosis spasticity, severe refractory
       epilepsy, severe life-altering pain, and intractable chemotherapy-related nausea and
-      vomiting. Products require GHA approval, and smoking is prohibited.[@reg] The rules
+      vomiting.[@reg] Products require GHA approval, and smoking is prohibited.[@reg] The rules
       distinguish the defined cannabis-extract mouth spray from GHA-approved cannabis-based
       medicines, and public dispensing runs through St Bernard's Hospital pharmacy.[@reg,gov19]
       The government reported completed doctor training and a supply agreement in September
@@ -150,9 +177,13 @@ context:
     text: >-
       Possession can lead to a fine, imprisonment or both, depending on the proceedings and
       sentence.[@law] Courts can order forfeiture and destruction or disposal of items connected
-      with drug offences.[@law]
+      with drug offences.[@law] For an adult, a fine normally has a twelve-month rehabilitation
+      period from conviction; custody of six months or less normally requires two years after
+      the sentence, including any licence period, is completed.[@procedure] Longer custodial
+      terms have longer periods, with statutory exclusions and exceptions.[@procedure]
     sources:
       - law
+      - procedure
   clubs:
     status: none
     text: >-
@@ -170,6 +201,51 @@ context:
     sources:
       - law
       - reg
+  hemp:
+    status: strict
+    text: >-
+      Hemp products derived or extracted from cannabis, including CBD products, are exempted
+      from the import/export, production/supply and possession restrictions when they contain
+      less than 0.3% THC.[@reg] The Office of Fair Trading includes them in its goods categories
+      and says Customs may require an acceptable laboratory certificate.[@oft] Growing any
+      cannabis plant remains subject to the separate cultivation restriction.[@law]
+    sources:
+      - reg
+      - oft
+      - law
+  driving:
+    status: limit
+    text: >-
+      Driving, attempting to drive or being in charge on a road or other public place with blood
+      THC above 2 micrograms per litre is an offence.[@road,limits] Driving or attempting to
+      drive carries up to six months or a £10,000 fine, or both; being in charge carries up to
+      three months or £4,000, or both.[@road,procedure] There is a conditional defence for
+      lawfully prescribed or supplied medicine taken according to directions, including advice
+      about driving intervals.[@road] Unfitness through drugs is separately prohibited.[@road]
+      In May 2024 a driver with at least 3.8 micrograms/litre THC was fined £250 and
+      disqualified for eight months.[@annual]
+    sources:
+      - road
+      - limits
+      - procedure
+      - annual
+  arrests:
+    text: >-
+      The police authority’s 2024/25 offence table records 169 drug-possession offences and 22
+      drug-supply offences, covering all drugs.[@annual] A separate section explicitly labelled
+      April 2023–March 2024 reports 212 drug-misuse offences and 181 arrests.[@annual] Its
+      examples range from a £140 fine for 5.67 g of cannabis resin to imprisonment for cocaine
+      supply.[@annual]
+    sources:
+      - annual
+  black_market:
+    text: >-
+      Police describe targeting drug suppliers, their proceeds and money laundering as linked
+      priorities.[@annual] The section for April 2023–March 2024 reports over 2.7 kg of Class B
+      drugs seized, alongside smaller Class A and C totals.[@annual] The report also describes
+      monitoring cannabis-resin transportation and sales at the land frontier.[@annual]
+    sources:
+      - annual
 sources:
   cpu:
     title: Capital Punishment UK — The End of Capital Punishment in Europe
@@ -234,3 +310,55 @@ sources:
     locator: >-
       Sean Macmichael, 19; possession and possession with intent to supply; 200 hours community
       work; cannabis resin in sofa
+  procedure:
+    title: Gibraltar — Criminal Procedure and Evidence Act 2011, current text
+    url: >-
+      https://www.gibraltarlaws.gov.gi/legislations/criminal-procedure-and-evidence-act-2011-4514/download
+    locator: Schedules 9 and 11; sections 612–616; fines and rehabilitation
+  oft:
+    title: Gibraltar Office of Fair Trading — Goods categories list
+    url: https://oft.gov.gi/goods-categories-list
+    locator: 'Q.2: hemp/CBD goods, below 0.3% THC and customs laboratory certificates'
+  road:
+    title: Gibraltar — Traffic Act 2005, current text
+    url: https://www.gibraltarlaws.gov.gi/legislations/traffic-act-1006/download
+    locator: Sections 62–63A, 63B–63E; current July 2026 consolidation
+  limits:
+    title: Gibraltar — Drug Driving (Specified Limits) Regulations 2017
+    url: >-
+      https://www.gibraltarlaws.gov.gi/legislations/drug-driving-specified-limits-regulations-2017-4054/download
+    locator: Commencement 26 January 2017; delta-9-THC 2 micrograms/litre blood
+  annual:
+    title: Gibraltar Police Authority — Annual report 2024/25
+    url: >-
+      https://www.parliament.gi/uploads/contents/papers_laid/2026/the_annual_report_of_the_gibraltar_police_authority_2024_2025.pdf
+    locator: >-
+      Printed pp. 14, 22, 31: p.14 explicitly concerns April 2023–March 2024; p.22 comparisons
+      2024/25; p.31 May 2024 drug-driving case
+words:
+  - word: Cannabis
+    lang: English
+    meaning: ordinary and statutory name
+    sources:
+      - law
+  - word: Cannabis resin
+    lang: English
+    meaning: separated resin; police and statutory usage
+    sources:
+      - law
+      - police
+  - word: Hemp
+    lang: English
+    meaning: low-THC product category
+    sources:
+      - oft
+  - word: CBD
+    lang: English
+    meaning: cannabidiol; hemp-product term
+    sources:
+      - oft
+answers:
+  caught:
+    answer: limited
+    label: Fine or prison
+    text: Possession can bring a fine or prison; the maximum depends on the court procedure
