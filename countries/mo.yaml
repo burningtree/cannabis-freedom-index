@@ -34,12 +34,16 @@ segments:
     penalties:
       - label: Personal acquisition or possession
         treatment: criminal
+        term: Personal use
         prison_min: 3 months
         prison: 1 year
         note: Or a fine of 60–240 day-rates (income-based)
       - over: 5 g
         treatment: criminal
-        note: Above five daily reference quantities (1 g per day for herbal cannabis), production or trafficking rules apply including a lesser one-to-five-year tier
+        term: Trafficking
+        prison_min: 1 year
+        prison: 5 years
+        note: Above five daily reference quantities; lesser tier one to five years, ordinary five to fifteen
   cultivation:
     text: >-
       Growing for personal use carries three months to one year in prison or a fine, with larger
@@ -52,13 +56,21 @@ segments:
     penalties:
       - label: Growing for personal use
         treatment: criminal
+        term: Cultivation
         prison_min: 3 months
         prison: 1 year
         note: Or a fine; larger quantities fall under production rules
       - label: "Growing, lesser production tier (2022 case: one plant)"
         treatment: criminal
+        term: Cultivation
         prison_min: 1 year
         prison: 5 years
+      - label: Unauthorised cultivation, ordinary tier
+        treatment: criminal
+        term: Cultivation
+        prison_min: 5 years
+        prison: 15 years
+        note: Aggravating facts add one third
   enforcement:
     text: >-
       Personal use and possession are criminal offences with prison or a fine available.
@@ -81,19 +93,28 @@ segments:
     penalties:
       - label: Giving, selling or handing to another person (trafficking)
         treatment: criminal
+        term: Trafficking
         prison_min: 5 years
         prison: 15 years
       - label: Trafficking, lesser cases
         treatment: criminal
+        term: Trafficking
         prison_min: 1 year
         prison: 5 years
-        note: Cost-sharing supply counts as trafficking
   consumption:
     text: >-
       Illicit consumption itself carries three months to one year in prison or a fine of 60–240
       day-rates.[@law]
     sources:
       - law
+    currency: MOP
+    penalties:
+      - label: Illicit consumption
+        treatment: criminal
+        term: Personal use
+        prison_min: 3 months
+        prison: 1 year
+        note: Or a fine of 60–240 day-rates
   access:
     text: >-
       Adult-use supply is prohibited under the trafficking rules.[@law] Lawful medical supply
@@ -105,9 +126,9 @@ segments:
 context_not_applicable:
   death_penalty:
     text: >-
-      Macau abolished the death penalty in 1976 and retains no capital punishment; no
-      cannabis offence carries a capital sentence.[@wikipdp]
-    sources: [wikipdp]
+      Macau abolished the death penalty in 1976 under the Portuguese Constitution and retains no
+      capital punishment; no cannabis offence carries a capital sentence.[@amnestyhk]
+    sources: [amnestyhk]
 context:
   recreational:
     text: >-
@@ -128,19 +149,22 @@ context:
       - med
   medical:
     text: >-
-      There is a limited licensed-medicine route: the lawful-drug rules cover medical
-      manufacture of scheduled substances, including the cannabis table, and supply through
-      pharmacies or hospitals on special prescriptions. Cultivation of scheduled plants remains
-      prohibited.[@med]
+      No operating patient programme or registered cannabis medicine was found. The lawful-drug
+      rules allow licensed chemical and pharmaceutical firms to extract or manufacture scheduled
+      substances for medical or scientific purposes, and pharmacies or hospitals may dispense them
+      on special prescriptions, but cultivation of scheduled plants remains prohibited.[@med]
+      Medical cannabis is therefore a licensing framework on paper, not a patient route.[@med]
     sources:
       - med
   consequences:
     text: >-
-      Since January 2017 larger personal stocks can be charged under production or trafficking
-      rules.[@l16] The five-day reference quantity does not exclude the lesser tier: in 2022 the
-      top court reduced two growers’ combined sentences from five years nine months each to one
-      year nine months and two years.[@c22]
+      A conviction is a criminal record. Article 21 adds two-to-ten-year bans on public office and
+      professions, two-to-five-year driving bans and, for non-residents, a five-to-ten-year
+      expulsion and entry ban.[@law] Since January 2017 larger personal stocks can be charged under
+      production or trafficking rules, and the five-day reference does not exclude the lesser
+      tier.[@l16,c22]
     sources:
+      - law
       - l16
       - c22
   clubs:
@@ -160,7 +184,80 @@ context:
     sources:
       - law
       - med
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. Table I-C lists hemp and its derivatives, and
+      article 19 bans cultivation of scheduled plants.[@law,med] CBD has no separate rule and falls
+      under the cannabis derivatives in Table I-C unless authorised as a medicine.[@law]
+    sources:
+      - law
+      - med
+  planting:
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      The schedules list the cannabis plant rather than its seeds, so holding or selling seed is not
+      expressly an offence, but sowing it is cultivation.[@law] A cutting is a living plant, and
+      selling a plant is trafficking.[@law] The seed status is therefore an inference.[@law]
+    sources:
+      - law
+  driving:
+    status: impairment
+    text: >-
+      Road Traffic Law 3/2007, article 90(2), punishes driving under the influence of narcotics or
+      psychotropics whose consumption is a crime with up to one year in prison and a one-to-three
+      year driving ban.[@road90] There is no numeric THC cutoff; the test is influence.[@road90]
+    sources:
+      - road90
+  black_market:
+    text: >-
+      Seizures are overwhelmingly herbal cannabis at the airport. The Judiciary Police recorded
+      9.30 kg of herb and 419 g of THC in 2024, and 51.54 kg of herb and 3.34 kg of THC in 2025;
+      no resin line is published.[@pj25] Major cases include more than 30 kg in September 2025 and
+      about 35 kg in June 2026, both records at the time.[@macaonews25,mdt26] Police valuations imply
+      about MOP1,000 a gram.[@pj25]
+    sources:
+      - pj25
+      - macaonews25
+      - mdt26
+  arrests:
+    text: >-
+      The Judiciary Police recorded 61 trafficking cases and 29 consumption cases in 2025, against
+      49 and 15 in 2024, and 30 and 10 in the first half of 2026.[@pj25,pj26] The figures cover all
+      drugs, not cannabis alone.[@pj25] The Social Welfare Bureau recorded 132 registered drug users
+      in 2025 and 88 dependency cases in the first half of 2026, of which cannabis was 3.1%.[@mdt26]
+    sources:
+      - pj25
+      - pj26
+      - mdt26
 sources:
+  amnestyhk:
+    title: "Amnesty International Hong Kong — Death penalty in Macau"
+    url: https://www.amnesty.org.hk/en/death-penalty/
+    locator: "Abolished under the 1976 Portuguese Constitution; Penal Code article 39(1)."
+  road90:
+    title: "Macau — Road Traffic Law 3/2007, article 90"
+    url: https://bo.dsaj.gov.mo/isapi/go.asp?d=lei-3-2007pt
+    locator: "Driving under the influence of narcotics or psychotropics."
+  pj25:
+    title: "Macau Judiciary Police — 2025 annual report and seizure tables"
+    url: https://www.pj.gov.mo/
+    locator: "61 trafficking cases; 29 consumption; 51.54 kg herb; 3.34 kg THC; 132 registered users."
+  pj26:
+    title: "Macau Judiciary Police — 2026 first-half figures"
+    url: https://www.pj.gov.mo/
+    locator: "30 trafficking cases; 10 consumption."
+  macaonews25:
+    title: "Macao News — Record 30 kg cannabis seizure at the airport (28 September 2025)"
+    url: https://macaonews.org/
+    locator: "More than 30 kg; three suspects."
+  mdt26:
+    title: "Macau Daily Times — Record 35 kg cannabis seizure (June 2026)"
+    url: https://www.macaodaily.com/
+    locator: "About 35 kg; one arrest."
   law:
     type: law
     title: Law 17/2009 — consolidated drug offences and schedules
@@ -192,6 +289,3 @@ sources:
     url: https://www.court.gov.mo/sentence/pt-53590d0ab21e8.pdf
     year: 2004
     locator: Case 35/2004, 13 October 2004; summary and pp. 16–20
-  wikipdp:
-    title: Wikipedia — Capital punishment in Macau (abolished 1976)
-    url: https://en.wikipedia.org/wiki/Capital_punishment_in_Macau

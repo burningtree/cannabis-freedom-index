@@ -9,7 +9,7 @@ None was marked busy.
 |---|---|---|---|
 | China | penalty tiers corrected, driving/planting fixes, 11 history entries | exact 2025 THC cutoff unread; no plant-cannabis death case verified | this commit |
 | Hong Kong | hemp/planting/driving/black-market/arrests sections, 11 history entries | cannabis-only arrest counts not published; non-viable seeds unclear | this commit |
-| Macau | in progress | | |
+| Macau | cultivation/consumption tables, hemp/planting/driving/arrests sections, 7 history entries | medical is paper-only; seeds grey; 2026 H1 seizure table unpublished | this commit |
 | Taiwan | corrected driving/medical/hemp, sharing/consumption tables, 18 history entries | 1910s and 1980s empty; access stays 0 because Epidyolex is CBD-only | this commit |
 | South Korea | in progress | | |
 
@@ -18,3 +18,5 @@ Taiwan validation: `profile-audit tw` zero errors/warnings; `country-gaps tw` ha
 China validation: `profile-audit cn` zero errors/warnings; `country-gaps cn` has no missing sections, tables or citations. The penalty tables now separate small trafficking (up to three years), serious (three to seven), relatively large (seven or more) and the 150 kg leaf/10 kg resin/5 kg oil tier where death is discretionary, and add the 150 kg possession and 30,000-plant cultivation tiers. Driving moves from `zero` to `unknown` pending the exact GB 45248-2025 THC table, with the predecessor 2 ng/mL blood and 1 ng/mL saliva values noted. The planting text now names the Narcotics Control Law and distinguishes medicinal plants from licensed industrial hemp. Eleven history entries cover 1942–2026, including the 2025 PSAPL revision, HHC scheduling and 2026 maritime seizure.
 
 Hong Kong validation: `profile-audit hk` zero errors/warnings; `country-gaps hk` has no missing sections, tables or citations. The profile now adds hemp, planting, zero-tolerance driving (any concentration in blood or urine), black-market and arrest sections, with the 2,800 kg Customs and 4,086 kg UNODC figures kept separate and the all-drug arrest counts labelled. It fills the 2023 trafficking and cultivation guideline bands with prison fields, distinguishes THC cannabis from CBD in the medical section, and replaces the Wikipedia death-penalty source with the 21 April 1993 Hansard. Eleven entries cover 1932–2026.
+
+Macau validation: `profile-audit mo` zero errors/warnings; `country-gaps mo` has no missing sections, tables or citations. The profile now adds the ordinary five-to-fifteen-year cultivation and trafficking tiers, a consumption table, a hemp section, inferred seed/clone statuses, impairment-based driving, and 2024–2026 seizure and case figures. The medical section states that the licensed-medicine framework is not an operating patient programme, and the consequences section now covers article 21 bans and expulsion. Seven entries cover 1965–2026, and the 1962 entry now records that the 1965 code replaced it.
