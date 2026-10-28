@@ -19,17 +19,29 @@ scores:
   consumption: 3
   access: 6
 segments:
-  possession: 3 oz is legal.
+  possession:
+    text: >-
+      3 oz is legal.[@2,3]
+    currency: USD
+    penalties:
+      - upto: 3 oz
+        treatment: legal
   cultivation: >-
     Adults 21+ with a state cultivation registration card may grow six flowering plants, six
     non-flowering plants 14 inches tall or more and six clones under 14 inches tall: 18 plants in
     all. They must be at one private residence, locked away and outside unaided public view. Two
     registered consumers sharing a grow may keep up to 12 of each stage, 36 in all, subject to
-    registration and shared-cultivation rules.
-  enforcement: Nothing within the limits.
-  sharing: Adults may give each other up to 3 oz without payment.
-  consumption: Private only.
-  access: Licensed shops since February 2023.
+    registration and shared-cultivation rules.[@1,2]
+  enforcement: Nothing within the limits.[@2,3]
+  sharing: Adults may give each other up to 3 oz without payment.[@2]
+  consumption: Private only.[@2]
+  access: Licensed shops since February 2023.[@4]
+context:
+  recreational:
+    text: >-
+      Amendment 3 (November 2022) legalised adult use with 53% of the vote; possession became
+      legal that December and the first licensed shops opened on 3 February 2023.[@4]
+    sources: [4]
 sources:
   - title: Missouri Department of Health — Personal cultivation regulation, 19 CSR 100-1.040
     url: https://www.law.cornell.edu/regulations/missouri/19-CSR-100-1-040
@@ -37,6 +49,8 @@ sources:
     url: https://www.revisor.mo.gov/main/OneSection.aspx?section=XIV+++2
   - title: NORML — Missouri laws and penalties
     url: https://norml.org/laws/missouri-penalties-2/
+  - title: Wikipedia — Cannabis in Missouri
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Missouri
 use:
   note: Includes vaping; a model-based estimate.
   share: 26.6
