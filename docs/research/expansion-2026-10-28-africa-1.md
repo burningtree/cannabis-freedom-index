@@ -30,6 +30,12 @@ All batch files verified free of others' uncommitted changes at start.
 - New `articles/kenya-hobley-bhang-customs-1902.md` (Wanga/Luo/Nandi customs from checked entry + archive.org book).
 - Audit 0/0; country + article review builds verified.
 - Left: research/spotlights/genetics optional; 1920s/1940s/2000s history decades.
-## ao — pending
+## ao — committed (review HTML pending)
+- Fixed 9 audit warnings in pre-existing rows (`term` on all 6 rows; production/hemp one-liners expanded; hemp text reworded off the "licensed hemp" trigger; culture sentences cited with new duvall19/voa18 sources).
+- Per-sentence cites on 11 flagged texts; new hemp (status none — Table I-C, no THC distinction); new arrests (Malanje 100+ crimes, Humpata detention via ANGOP reposts); words (Diamba/Liamba, wiki-backed; maconha kept to culture via Duvall).
+- Culture now links diamba/maconha/calabash/smokers-cough + Livingstone/2018 history links.
+- Two articles: `angola-livingstone-observation-1857.md` and `angola-liamba-debate-2018.md` (citation refs validated by script; front-matter parses).
+- Audit 0/0. Review HTML builds blocked by another agent's uncommitted `culture/language/rongony.md` (unquoted colon in summary breaks all builds; left untouched per repo rules). Re-verify HTML once fixed.
+- Left: driving researched section (no source found), 1920s/1930s/1960s/1980s history decades.
 ## ne — pending
 ## bj — pending

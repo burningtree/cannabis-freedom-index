@@ -14,73 +14,84 @@ scores:
   sharing: 1
   consumption: 1
   access: 0
+words:
+  - { word: Diamba, lang: Portuguese (Angola), meaning: "cannabis; the Bantu word sold openly in Luanda's market since the 1850s", sources: [wiki, tni_rd] }
+  - { word: Liamba, lang: Portuguese (Angola), meaning: "cannabis; the variant spelling used by police and press today", sources: [wiki, afpress24] }
 segments:
   possession:
     text: >-
       Article 23 of Law 3/99 punishes anyone who unlawfully uses, or holds, buys or grows for their
-      own use, a plant or substance in Tables I to IV with up to three months in prison. If the
-      amount exceeds the average individual need for three days, the penalty is up to one year.
-      Cannabis, its resin and its oil are in Table I-C. A court can suspend the sentence of a
-      user it finds dependent, on condition of treatment (Article 26).
+      own use, a plant or substance in Tables I to IV with up to three months in prison.[@lei3] If
+      the amount exceeds the average individual need for three days, the penalty is up to one
+      year.[@lei3] Cannabis, its resin and its oil are in Table I-C.[@lei3] A court can suspend the
+      sentence of a user it finds dependent, on condition of treatment (Article 26).[@lei3]
     sources:
       - lei3
     penalties:
       - label: Personal use, up to three days' supply
         treatment: criminal
+        term: Personal use
         prison: 3 months
         note: The statute sets prison, not a fine
       - label: Personal use, over three days' supply
         treatment: criminal
+        term: Personal use
         prison: 1 year
         note: Amount exceeds the average individual need for three days
   cultivation:
     text: >-
       Growing for your own use falls under the same Article 23 offence (up to three months, or
-      up to a year above three days' supply). Cultivation without authorisation for any other
-      purpose is trafficking under Article 4: 8 to 12 years.
+      up to a year above three days' supply).[@lei3] Cultivation without authorisation for any other
+      purpose is trafficking under Article 4: 8 to 12 years.[@lei3]
     sources:
       - lei3
     penalties:
       - label: Growing for own use
         treatment: criminal
+        term: Personal use
         prison: 3 months
         note: Up to a year above three days' supply
       - label: Unauthorised cultivation (trafficking, Article 4)
         treatment: criminal
+        term: Trafficking
         prison_min: 8 years
         prison: 12 years
   enforcement:
     text: >-
       The statute sets prison, not a fine, for personal use, but only up to three months, and
-      allows a suspended sentence with treatment. Anonymous health care is guaranteed to a user
-      who asks for it (Article 24). How often users are jailed is not shown by the statute.
+      allows a suspended sentence with treatment.[@lei3] Anonymous health care is guaranteed to a
+      user who asks for it (Article 24).[@lei3] How often users are jailed is not shown by the
+      statute.
     sources:
       - lei3
   sharing:
     text: >-
       Giving or handing cannabis to another person without authorisation is trafficking under
-      Article 4 (8 to 12 years). If the aim is only to get the drug for personal use, Article 9
-      sets up to two years and a fine, unless the amount exceeds five days' supply.
+      Article 4 (8 to 12 years).[@lei3] If the aim is only to get the drug for personal use,
+      Article 9 sets up to two years and a fine, unless the amount exceeds five days'
+      supply.[@lei3]
     sources:
       - lei3
     penalties:
       - label: Getting the drug for personal use (Article 9)
         treatment: criminal
+        term: Personal use
         prison: 2 years
         note: Up to two years and a fine, unless over five days' supply
       - label: Giving or handing to another person (trafficking, Article 4)
         treatment: criminal
+        term: Trafficking
         prison_min: 8 years
         prison: 12 years
   consumption:
     text: >-
-      Using cannabis is itself a crime under Article 23 (up to three months in prison).
+      Using cannabis is itself a crime under Article 23 (up to three months in prison).[@lei3]
     sources:
       - lei3
   access:
     text: >-
-      No lawful source for personal use. Trading without authorisation is punished under Article
-      4; the law leaves authorised activity to licences.
+      No lawful source for personal use.[@lei3] Trading without authorisation is punished under
+      Article 4; the law leaves authorised activity to licences.[@lei3]
     sources:
       - lei3
 context_not_applicable:
@@ -99,20 +110,41 @@ context:
       - lei3
   culture:
     text: >-
-      Cannabis is known as *diamba* or *liamba*.[@wiki] [Livingstone
-      recorded](/history/angola-livingstone-observation-1857/) that under Portuguese rule a
-      slave's use was considered a crime, while diamba was sold openly in Luanda's
-      market.[@tni_rd] A 2009 UN drugs report called cannabis the most common illicit drug in
-      the country, grown in almost every province.[@incb09]
+      Cannabis is known as [diamba](/culture/language/diamba/) or *liamba*.[@wiki] The
+      Portuguese [maconha](/culture/language/maconha/) comes from Kimbundu, a language of
+      Angola.[@duvall19] [Livingstone recorded](/history/angola-livingstone-observation-1857/) that
+      under Portuguese rule a slave's use was considered a crime, while diamba was sold openly
+      in Luanda's market.[@tni_rd] A 2009 UN drugs report called cannabis the most common illicit
+      drug in the country, grown in almost every province.[@incb09] The smoking technology came
+      with the plant: calabash-based water pipes, earliest documented in Angola in 1832, are kept
+      in [the calabash water pipe](/culture/traditions/the-calabash-water-pipe/).[@duvall19] The
+      travellers' tales of the loud cough that followed a pipe live on in [the smoker's
+      cough](/culture/traditions/the-smokers-cough/).[@duvall19] Angolans argued over legalising
+      liamba in 2018, with no bill in sight ([2018
+      debate](/history/angola-liamba-debate-2018/)).[@voa18]
     sources:
       - wiki
       - tni_rd
       - incb09
+      - duvall19
+      - voa18
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: Law 3/99 lists cannabis, its resin and its oil
+      in Table I-C with no low-THC distinction, and no hemp production is
+      documented.[@lei3,wiki]
+    sources:
+      - lei3
+      - wiki
   production:
     status: none
-    text: No licensed production.
+    text: >-
+      No licensed production is documented: cultivation without authorisation is punished as
+      trafficking with 8 to 12 years, and even personal-use growing is a crime.[@wiki,lei3]
     sources:
       - wiki
+      - lei3
   medical:
     text: >-
       No patient programme is documented. Law 3/99 punishes use and personal possession
@@ -133,33 +165,47 @@ context:
     clones_trade: banned
     text: >-
       Law 3/99 punishes anyone who, without authorisation, cultivates, sells, buys, transports
-      or holds plants listed in its tables with eight to twelve years in prison. The law does
-      not mention seeds.
+      or holds plants listed in its tables with eight to twelve years in prison.[@l399] The law
+      does not mention seeds.
     sources:
       - l399
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@lei3]
     sources:
       - lei3
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Law 3/99 punishes using a listed drug,
-      or holding, buying or growing it for one's own use, with up to three months in prison, or
-      up to one year where the amount exceeds the average individual need for three days.
+      There is no legal recreational supply for anyone.[@lei3] Law 3/99 punishes using a listed
+      drug, or holding, buying or growing it for one's own use, with up to three months in
+      prison, or up to one year where the amount exceeds the average individual need for three
+      days.[@lei3]
     sources:
       - lei3
+  arrests:
+    text: >-
+      No national arrest breakdown was found. Malanje province recorded more than 100
+      drug-trafficking crimes, with 5,700 liamba plants seized and destroyed.[@afpress25] A
+      31-year-old was detained when investigators dismantled a Humpata farm holding 52,165 kg of
+      liamba.[@afpress23]
+    sources:
+      - afpress25
+      - afpress23
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 22,362 kg of herbal
-      cannabis seized in 2024, against 33,032 kg in 2023. The UN publishes them as
+      cannabis seized in 2024, against 33,032 kg in 2023.[@unodc_szr] The UN publishes them as
       kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      not comparable across borders.[@unodc_szr] At home the trade runs on: in October 2024
+      investigators destroyed a two-hectare liamba field of over 20,000 plants in Lunda-Norte,
+      and a Humpata farm holding 52,165 kg was dismantled.[@afpress24,afpress23]
     sources:
       - unodc_szr
+      - afpress24
+      - afpress23
 sources:
   l399:
     title: Lei n.º 3/99 sobre o tráfico e consumo de estupefacientes, substâncias psicotrópicas e precursores (AngoLEX)
@@ -173,6 +219,21 @@ sources:
   tni_rd:
     title: Transnational Institute — The Rise and Decline of Cannabis Prohibition, chapter 1 (2014, PDF)
     url: https://www.tni.org/files/download/rise_and_decline_ch1.pdf
+  duvall19:
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+  afpress24:
+    title: "Africa-Press (ANGOP) — SIC destroys cannabis cultivation field in Lunda-Norte (30 October 2024)"
+    url: https://lesothowire.com/sic-destroys-cannabis-cultivation-field/
+  afpress23:
+    title: "Africa-Press — SIC dismantles farm with more than 52 thousand kg of liamba in Humpata"
+    url: https://www.africa-press.net/angola/all-news/sic-dismantles-farm-with-more-than-52-thousand-kg-of-liamba-in-humpata
+  afpress25:
+    title: "Africa-Press — Province records more than 100 drug trafficking crimes (Malanje)"
+    url: https://www.africa-press.net/angola/all-news/province-records-more-than-100-drug-trafficking-crimes
   incb09:
     title: INCB — Report of the International Narcotics Control Board for 2009 (p. 35)
     url: https://www.incb.org/documents/Publications/AnnualReports/AR2009/AR_09_English.pdf
@@ -182,3 +243,6 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  voa18:
+    title: VOA Português — Liberalização da "liamba" não está em debate em Angola (6 August 2018)
+    url: https://www.voaportugues.com/a/liberaliza%C3%A7%C3%A3o-da-liamba-n%C3%A3o-est%C3%A1-em-debate-em-angola/4515934.html
