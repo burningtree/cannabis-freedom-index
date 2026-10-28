@@ -26,3 +26,9 @@ history/culture links, profile-audit, review build, commit country-by-country.
 - Cultivation table (any amount misd 6mo/$1000, NORML-verified), sharing/consumption cites.
   Possession/answers pins untouched.
 - Audit 0/0; review page verified.
+
+Batch complete (all 7 committed). Verification: full `npm test` green (exit 0); per-state review
+pages verified; `dist/country/us/` spot-check shows latest tables. Full `npm run build` currently
+blocked by another agent's missing asset
+(`src/assets/culture/garreth-prince-cape-town-high-court-2013.webp`, owned by the gareth-prince.md
+editor) — not our files, left for them.
