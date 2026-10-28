@@ -310,7 +310,7 @@ test('Costa Rica permissions do not establish stocked THC patient medicines (#15
   assert.equal(cr.scores.access, 0);
   assert.match(cr.context.medical.text, /Routine pharmacy availability.*has not been established/);
   assert.match(cr.context.medical.text, /personal imports.*unregistered/);
-  assert.match(cr.context.products.text, /pharmacy-made.*exempt.*registration/);
+  assert.match(cr.context.medical.text, /pharmacy-made.*exempt.*registration/);
   assert.match(cr.answers.buy.text, /has not been verified/);
   const e = events().find((e) => e.id === 'costa-rica-medical-2022');
   assert.equal(e.before, undefined);
