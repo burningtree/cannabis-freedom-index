@@ -94,6 +94,7 @@ const presets = [
   <script type="application/json" id="cmp-meta" set:html={JSON.stringify(meta)} />
 
   <script>
+    import { punishmentText } from "../lib/penalties.js";
     import { tierOf, tierColor } from "../lib/tiers.js";
 
     const base = import.meta.env.BASE_URL;
@@ -158,7 +159,7 @@ const presets = [
     const clubsChip = (entry) => entry.status ? `<div class="d-chips"><span class="chip s-${META.sections[entry.kind].statuses[entry.status].tone}" title="${esc(META.sections[entry.kind].statuses[entry.status].help)}">${META.sections[entry.kind].chip}: ${META.sections[entry.kind].statuses[entry.status].label}</span></div>` : "";
     // a segment's penalty steps (src/lib/penalties.js), as a compact table under its text
     const money = (n, cur) => { try { return new Intl.NumberFormat("en-GB", { style: "currency", currency: cur, maximumFractionDigits: 0 }).format(n); } catch { return `${n} ${cur}`; } };
-    const punish = (r) => r.death ? "Death penalty" : r.prison && r.prisonMin ? `${r.prisonMin.text} – ${r.prison.text}` : r.prison ? `up to ${r.prison.text}` : r.prisonMin ? `at least ${r.prisonMin.text}` : "";
+    const punish = (r) => punishmentText(r) ?? "";
     const fineOf = (r, cur) => r.fine && r.fineMin ? `${money(r.fineMin, cur)}–${money(r.fine, cur)}` : r.fine ? `up to ${money(r.fine, cur)}` : r.fineMin ? `at least ${money(r.fineMin, cur)}` : "";
     const penaltyTable = (pen) => !pen?.rows?.length ? "" : `<ul class="cmp-pen">${pen.rows.map((r) => {
       const t = META.treatment[r.treatment];
@@ -299,13 +300,13 @@ const presets = [
           rows.push(row(label, cs.map((c, k) => {
             const v = vals[k];
             if (v == null) return pen(c, seg) ? `<span class="cmp-sub">—</span>` : none(c);
-            const text = unit === "days" ? (v === 0 ? "No prison" : daysText(v)) : v === 0 ? zero : amountText(v, unit);
+            const text = v === "life" ? "Life imprisonment" : unit === "days" ? (v === 0 ? "No prison" : daysText(v)) : v === 0 ? zero : amountText(v, unit);
             return `<div class="cmp-val${v === best ? " best" : ""}"><b>${text}</b></div>`;
           })));
         };
         figure("Possession without prosecution<small>legal or tolerated, up to</small>", "possession", (s) => s?.freeUpTo, "g", 1, "Nothing");
         figure("Possession becomes a crime<small>from</small>", "possession", (s) => (s ? s.crimeFrom : null), "g", 1, "Any amount");
-        figure("Prison for a small amount<small>the law's maximum for 5 g</small>", "possession", (s) => s?.smallPrisonDays, "days", -1, "No prison");
+        figure("Prison for a small amount<small>the law's maximum for 5 g</small>", "possession", (s) => s?.smallPrisonLife ? "life" : s?.smallPrisonDays, "days", -1, "No prison");
         figure("Plants without prosecution<small>legal or tolerated, up to</small>", "cultivation", (s) => s?.freeUpTo, "plants", 1, "None");
         figure("Growing becomes a crime<small>from</small>", "cultivation", (s) => (s ? s.crimeFrom : null), "plants", 1, "Any plant");
         const harsh = cs.map((c) => { const ss = SEG_IDS.map((sg) => details.get(c.id)?.segments?.[SEG_IDS.indexOf(sg)]?.penalties?.summary).filter(Boolean); return ss.length ? { caning: ss.some((x) => x.caning), death: ss.some((x) => x.death) } : null; });

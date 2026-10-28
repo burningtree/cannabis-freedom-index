@@ -69,7 +69,8 @@ segments:
         treatment: criminal
         term: Illegal possession
         prison_min: 7 years
-        note: Seven years or more, or life imprisonment, plus a fine
+        life: possible
+        note: Plus a fine
   cultivation:
     text: >-
       Growing cannabis for drug use is prohibited and the plants are uprooted.[@psapl25] A small
@@ -109,31 +110,42 @@ segments:
       - lc
   sharing:
     text: >-
-      Supplying any amount is trafficking under Article 347 of the Criminal Law, which has no
-      minimum quantity; large amounts can bring life imprisonment or death.[@lc] The 2016
-      interpretation counts 150 kg of cannabis leaf, 10 kg of resin or 5 kg of cannabis oil as the
-      "large amount" that opens the heaviest tier.[@spc16] The Criminal Law also punishes
-      transporting, manufacturing and smuggling drugs regardless of quantity.[@lc]
+      Supplying, transporting, manufacturing or smuggling any amount is a crime under Article
+      347.[@criminal347] Ordinary small-quantity cases carry up to three years, custody or
+      non-custodial supervision, plus a fine; serious small-quantity cases carry three to seven
+      years.[@criminal347] The next tier starts at 30 kg of leaf, 2 kg of resin or 1 kg of oil and
+      carries at least seven years plus a fine.[@criminal347,spc16] At 150 kg of leaf, 10 kg of resin
+      or 5 kg of oil, the sentence is fifteen years, life or death with confiscation; that tier also
+      applies to ringleaders, armed support, serious violent resistance or organised international
+      trafficking.[@criminal347,spc16]
     sources:
-      - lc
+      - criminal347
       - spc16
     penalties:
-      - label: Trafficking any amount, small or serious
+      - label: Small quantity without serious circumstances
         treatment: criminal
         term: Trafficking
+        prison: 3 years
+        note: Custody or non-custodial supervision also possible; plus a fine
+      - label: Small quantity with serious circumstances
+        treatment: criminal
+        term: Trafficking
+        prison_min: 3 years
         prison: 7 years
-        note: Up to three years for a small amount, three to seven for a serious case, plus a fine
-      - label: Relatively large amount
+        note: Plus a fine
+      - label: 30–<150 kg leaf, 2–<10 kg resin or 1–<5 kg oil; no capital aggravation
         treatment: criminal
         term: Trafficking
         prison_min: 7 years
-        note: From 30 kg of leaf, 2 kg of resin or 1 kg of oil; seven years or more plus a fine
-      - label: Large amount or aggravating facts
+        note: Plus a fine
+      - label: At least 150 kg leaf, 10 kg resin or 5 kg oil, OR Article 347 capital aggravation
         treatment: criminal
-        term: Trafficking
-        death: true
+        term: Aggravated trafficking
         prison_min: 15 years
-        note: From 150 kg of leaf, 10 kg of resin or 5 kg of oil, or a ringleader, armed cover, violence or international organised trafficking; death is discretionary
+        prison: 15 years
+        death: true
+        life: possible
+        note: Alternatively a fixed fifteen-year sentence; confiscation of property
   consumption:
     text: >-
       Using a drug is an administrative offence under the same Article 84 as small possession: 10
@@ -304,6 +316,11 @@ context:
       - wiki
       - cms
 sources:
+  criminal347:
+    type: law
+    title: China — Criminal Law, Articles 347–348 (Supreme People’s Procuratorate, English)
+    url: https://en.spp.gov.cn/2020-12/26/c_948417_13.htm
+    locator: Article 347 paragraphs 2–4; ordinary, relatively large and large/aggravated trafficking
   report25:
     title: "China — 2025 drug situation report (China Anti-Drug Network, 16 June 2026)"
     url: http://www.nncc626.com/20260616/d7b27d03f84b40e3b03b98a6e8327eb9/c.html

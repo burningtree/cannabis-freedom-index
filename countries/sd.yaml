@@ -48,28 +48,25 @@ segments:
       cases are handled, especially during the current conflict.
     sources:
       - hashishcase
-    currency: SDG
-    penalties:
-      - label: 657.3 g hashish with trafficking intent in 2018
-        treatment: criminal
-        fine: 10000
-        note: Life imprisonment upheld, fine reduced to 10,000 pounds
   sharing:
     text: >-
       Article 16 covers providing narcotics or facilitating access whether paid or unpaid: at least
-      ten years and a court-set fine outside authorised cases. Specified aggravations, including
-      repeat offences and supply to minors or at schools, allow death or life imprisonment. A gift
-      is not exempt.
+      ten years and a court-set fine outside authorised cases.[@act1994] Specified aggravations, including
+      repeat offences and supply to minors or at schools, allow death or life imprisonment.[@act1994] A gift
+      is not exempt.[@act1994]
     sources:
       - act1994
     penalties:
       - label: Supply paid or unpaid, Article 16
         treatment: criminal
-        prison: 10 years
-        note: At least ten years plus a court-set fine
+        term: Supply
+        prison_min: 10 years
+        note: Plus a court-set fine
       - label: Aggravated supply, Articles 15-17
         treatment: criminal
         death: true
+        life: possible
+        term: Aggravated supply
         note: Death or life imprisonment for repeat, minors, schools, or organised-crime cases
   consumption:
     text: >-

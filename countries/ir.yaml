@@ -19,26 +19,33 @@ scores:
 segments:
   possession:
     text: >-
-      Article 5 of the Anti-Narcotics Law grades keeping, hiding or carrying bhang, hashish and
-      the other drugs on its lighter list by weight.[@anl] Up to 50 g brings a fine of up to 3
-      million rials and up to 50 lashes, with no prison; 50 to 500 g a fine of 5 to 15 million
-      rials and 10 to 74 lashes; 500 g to 5 kg two to five years, a fine of 15 to 60 million
-      rials and 40 to 74 lashes; and 5 to 20 kg five to ten years, a fine of 60 to 200 million
-      rials and 50 to 74 lashes.[@anl] A second conviction at 5 kg or more adds confiscation of
-      property, and a third is capital.[@anl] Above 20 kg the law adds a fine of 2 million rials
-      per kilogram and the Article 4 penalties; above 100 kg it imposes life imprisonment.[@anl]
-      The fines are the amounts written into the 1997 text.[@anl] The 2017 amendment requires an
-      aggravating factor before a death sentence, including more than 50 kg of cannabis.[@ecpm]
+      Article 5 of the Anti-Narcotics Law grades keeping, hiding or carrying bhang, hashish and the
+      other drugs on its lighter list by weight.[@anl] Up to 50 g brings a fine of up to 3 million
+      rials and up to 50 lashes, with no prison; 50 to 500 g a fine of 5 to 15 million rials and 10 to
+      74 lashes; 500 g to 5 kg two to five years, a fine of 15 to 60 million rials and 40 to 74
+      lashes; and 5 to 20 kg five to ten years, a fine of 60 to 200 million rials and 50 to 74
+      lashes.[@anl] The older text adds confiscation on a second conviction at 5 kg or more and a
+      capital penalty on a third, now subject to the 2017 conditions.[@anl,reform2017] Above 20 kg the
+      older law refers to Article 4 penalties and adds a per-kilogram fine; above 100 kg it formerly
+      imposed life imprisonment.[@anl] The fines are the amounts written into the 1997 text.[@anl]
+      Since 2017, a former death sentence becomes first-degree prison up to thirty years without a
+      qualifying condition, and former life becomes second-degree prison, fifteen to twenty-five
+      years.[@reform2017,penal19] Article 45(A–C) covers weapons, leadership or financing, using
+      children or mentally incompetent people, and specified prior convictions; its separate
+      over-50-kg cannabis condition expressly concerns Article 4 offences.[@reform2017]
     sources:
       - anl
-      - ecpm
+      - reform2017
+      - penal19
     currency: IRR
     penalties:
       - upto: 50 g
         treatment: criminal
         term: Keeping or carrying
         fine: 3000000
-        caning: [1, 50]
+        caning:
+          - 1
+          - 50
         note: Fine and lashes; no prison
       - over: 50 g
         upto: 500 g
@@ -46,7 +53,9 @@ segments:
         term: Keeping or carrying
         fine_min: 5000000
         fine: 15000000
-        caning: [10, 74]
+        caning:
+          - 10
+          - 74
         note: No prison on a first offence
       - over: 500 g
         upto: 5 kg
@@ -56,7 +65,9 @@ segments:
         prison: 5 years
         fine_min: 15000000
         fine: 60000000
-        caning: [40, 74]
+        caning:
+          - 40
+          - 74
       - over: 5 kg
         upto: 20 kg
         treatment: criminal
@@ -65,21 +76,32 @@ segments:
         prison: 10 years
         fine_min: 60000000
         fine: 200000000
-        caning: [50, 74]
-        note: Property confiscated on a second conviction; a third is capital
-      - over: 20 kg
-        upto: 100 kg
+        caning:
+          - 50
+          - 74
+        note: Repeat offences have additional sanctions, subject to Article 45 conditions
+      - label: Keeping/carrying over 20–100 kg, without an Article 45 qualifying condition
         treatment: criminal
         term: Keeping or carrying
+        prison: 30 years
+        note: >-
+          First-degree imprisonment replaces the former capital penalty; monetary penalty and
+          confiscation also apply
+      - label: Keeping/carrying more than 100 kg, without an Article 45 qualifying condition
+        treatment: criminal
+        term: Keeping or carrying
+        prison_min: 15 years
+        prison: 25 years
+        note: >-
+          Second-degree imprisonment replaces former life; monetary penalty and confiscation also
+          apply
+      - label: Keeping/carrying offence formerly carrying death or life, with Article 45(A–C) aggravation
+        treatment: criminal
+        term: Aggravated keeping or carrying
         death: true
-        note: Death available above 50 kg or with another aggravating factor; otherwise up to 30 years
-      - label: More than 100 kg
-        treatment: criminal
-        term: Keeping or carrying
-        fine_min: 60000000
-        fine: 200000000
-        caning: [50, 74]
-        note: Life imprisonment, 2 million rials per kilogram and the fines and lashes above; a further conviction is capital
+        note: >-
+          A qualifying circumstance must be proved; quantity alone is not stated as an Article 5
+          capital trigger
   cultivation:
     text: >-
       Article 2 punishes growing poppy, coca or cannabis only when it is done to produce
@@ -139,26 +161,29 @@ segments:
       - anl
   sharing:
     text: >-
-      Article 4 covers importing, exporting, producing, distributing, dealing in or selling
-      bhang, hashish and the other drugs on its list.[@anl] Up to 50 g brings a fine of up to 4
-      million rials and up to 50 lashes; 50 to 500 g a fine of 4 to 50 million rials, 20 to 74
-      lashes and up to three years if the court thinks prison necessary; 500 g to 5 kg a fine of
-      50 to 200 million rials, 50 to 74 lashes and three to fifteen years.[@anl] More than 5 kg
-      carries death and confiscation, but if the drugs were not distributed and weighed 20 kg or
-      less, life imprisonment and 74 lashes.[@anl] The 2017 amendment requires an aggravating
-      factor, including more than 50 kg of cannabis, before a death sentence; without one the
-      maximum is 30 years.[@ecpm] The law has no separate offence for giving cannabis away;
-      distribution falls under the same Article 4 ladder.[@anl]
+      Article 4 covers importing, exporting, producing, distributing, dealing in or selling bhang,
+      hashish and the other drugs on its list.[@anl] Up to 50 g brings a fine of up to 4 million rials
+      and up to 50 lashes; 50 to 500 g a fine of 4 to 50 million rials, 20 to 74 lashes and up to
+      three years if the court thinks prison necessary; 500 g to 5 kg a fine of 50 to 200 million
+      rials, 50 to 74 lashes and three to fifteen years.[@anl] The older text prescribed death above 5
+      kg, or life for a qualifying first offence involving no distribution and at most 20 kg.[@anl]
+      Since 2017, death requires an Article 45 condition, including more than 50 kg for these Article
+      4 offences; without one, former death becomes prison up to thirty years and former life becomes
+      fifteen to twenty-five years.[@reform2017,penal19] The law has no separate offence for giving
+      cannabis away; distribution falls under the same Article 4 ladder.[@anl]
     sources:
       - anl
-      - ecpm
+      - reform2017
+      - penal19
     currency: IRR
     penalties:
       - upto: 50 g
         treatment: criminal
         term: Distribution or sale
         fine: 4000000
-        caning: [1, 50]
+        caning:
+          - 1
+          - 50
         note: Fine and lashes; no prison
       - over: 50 g
         upto: 500 g
@@ -166,7 +191,9 @@ segments:
         term: Distribution or sale
         fine_min: 4000000
         fine: 50000000
-        caning: [20, 74]
+        caning:
+          - 20
+          - 74
         prison: 3 years
         note: Prison only if the court considers it necessary
       - over: 500 g
@@ -177,12 +204,29 @@ segments:
         prison: 15 years
         fine_min: 50000000
         fine: 200000000
-        caning: [50, 74]
-      - over: 5 kg
+        caning:
+          - 50
+          - 74
+      - label: Distribution or sale over 5–50 kg, without Article 45 aggravation
         treatment: criminal
         term: Distribution or sale
+        prison: 30 years
+        note: First-degree prison replaces former death; monetary penalty and confiscation also apply
+      - label: Qualifying first Article 4 offence over 5–20 kg, no distribution or Article 45 aggravation
+        treatment: criminal
+        term: Article 4 first-offence exception
+        prison_min: 15 years
+        prison: 25 years
+        note: Second-degree prison replaces former life; monetary penalty and confiscation also apply
+      - label: >-
+          Article 4 offence formerly carrying death or life: over 50 kg OR another Article 45
+          condition
+        treatment: criminal
+        term: Aggravated distribution or sale
         death: true
-        note: Life and 74 lashes if not distributed and 20 kg or less; death needs an aggravating factor
+        note: >-
+          Weapons, leadership/financing, using children or specified prior convictions can qualify
+          below the weight threshold
   consumption:
     text: >-
       Using cannabis is a crime for anyone who is not an addict: Article 19 imposes 20 to 74
@@ -228,19 +272,21 @@ segments:
 context:
   death_penalty:
     text: >-
-      The Anti-Narcotics Law makes death the punishment for more than 5 kg of cannabis, and for a
-      third conviction at 5 kg or more.[@anl] A 2017 amendment narrowed it: a court may impose
-      death only where the trafficking involved weapons, a leadership or financing role, a prior
-      serious drug conviction, or more than 50 kg of cannabis (2 kg of heroin, 3 kg of other hard
-      drugs).[@ecpm] Without one of those factors the maximum is 30 years.[@ecpm] In practice the
-      courts have moved the other way: 795 people were executed for drug offences in 2025, 48.5%
-      of all executions, up from 503 in 2024 and an average of 26 a year in 2018–2020.[@ecpm]
-      Only three of the 795 were announced by the authorities.[@ecpm] In October 2025 a
-      parliamentary commission spokesperson proposed removing death from eight drug offences, but
-      no text or timetable was published.[@ecpm]
+      The older drug law prescribed death above 5 kg for Article 4 cannabis offences and for specified
+      repeat possession offences.[@anl] Since 2017, a former death or life offence requires an Article
+      45 condition before death can be imposed: weapons, leadership or financing, use of children or
+      mentally incompetent people, specified prior convictions, or more than 50 kg for Article 4
+      cannabis offences.[@reform2017] Without a qualifying condition, former death becomes prison up
+      to thirty years and former life becomes second-degree imprisonment.[@reform2017] In practice the
+      courts have moved the other way: 795 people were executed for drug offences in 2025, 48.5% of
+      all executions, up from 503 in 2024 and an average of 26 a year in 2018–2020.[@ecpm] Only three
+      of the 795 were announced by the authorities.[@ecpm] In October 2025 a parliamentary commission
+      spokesperson proposed removing death from eight drug offences, but no text or timetable was
+      published.[@ecpm]
     sources:
       - anl
       - ecpm
+      - reform2017
   recreational:
     text: >-
       Adults have no legal way to buy cannabis.[@anl] Possession up to 50 g is punished with a
@@ -395,6 +441,21 @@ context:
       - cgh
       - ghiabi2018
 sources:
+  reform2017:
+    type: law
+    title: Iran — final Article 45 amendment, approved October 2017 (Boroumand Center translation)
+    url: https://www.iranrights.org/library/document/3262
+    locator: >-
+      Article 45 opening paragraph and A–D; first/second-degree substitution; D expressly covers
+      Article 4 traditional-drug offences
+  penal19:
+    type: law
+    title: Iran — Islamic Penal Code, Books One and Two (IHRDC translation)
+    url: >-
+      https://iranhrdc.org/wp-content/uploads/pdf_en/Iranian_Codes/Translation_of_the_new_Penal_Code_Book_1and2__507475863.pdf
+    locator: >-
+      Article 19: first-degree imprisonment over twenty-five years; second degree fifteen to
+      twenty-five years
   anl:
     type: law
     title: "Iran — The Law for Combating Drugs (Anti-Narcotics Law), 1988, as amended on 8 November 1997 (English translation)"

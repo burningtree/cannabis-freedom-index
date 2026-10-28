@@ -970,3 +970,112 @@ test('Armenian scientific exceptions survive the List No. 1 description (#253)',
   assert.doesNotMatch(am.context.production.text, /There is no medical or adult-use production route/);
   assert.match(am.context.medical.text, /dronabinol/);
 });
+
+test('life imprisonment survives parsing, display and JSON export (#284)', async () => {
+  const { punishmentText } = await import('../src/lib/penalties.js');
+  const grow = country('my').segments.cultivation.penalties[0];
+  const parsed = JSON.parse(JSON.stringify(penaltyRow(grow)));
+  assert.equal(parsed.life, 'mandatory');
+  assert.equal(punishmentText(parsed), 'Life imprisonment');
+  assert.deepEqual(parsed.caning, [6, 24]);
+  assert.equal(penaltySummary([parsed]).smallPrisonLife, true);
+  assert.equal(penaltySummary([parsed]).smallPrisonDays, null);
+  assert.equal(punishmentText(penaltyRow({ label: 'Alternative', treatment: 'criminal', prison_min: '5 years', life: 'possible' })), '5 years to life imprisonment');
+  assert.equal(punishmentText(penaltyRow({ label: 'Capital alternative', treatment: 'criminal', death: true, life: 'possible' })), 'Death or life imprisonment');
+  const comparison = fs.readFileSync(path.join(root, 'src/pages/compare.astro'), 'utf8');
+  assert.match(comparison, /import \{ punishmentText \}/);
+});
+
+test('China capital trafficking stays qualified by quantity or aggravation (#276)', () => {
+  const rows = country('cn').segments.sharing.penalties;
+  assert.equal(rows.find((r) => /without serious/.test(r.label)).prison, '3 years');
+  assert.ok(rows.some((r) => /30–<150 kg leaf, 2–<10 kg resin or 1–<5 kg oil/.test(r.label) && !r.death));
+  assert.ok(rows.filter((r) => r.death).every((r) => /150 kg.*10 kg.*5 kg.*aggravation/.test(r.label)));
+  assert.equal(rows.find((r) => r.death).prison, '15 years');
+});
+
+test('Iran ordinary weight bands do not unconditionally prescribe death (#277)', () => {
+  const c = country('ir');
+  for (const seg of ['possession', 'sharing']) {
+    const rows = c.segments[seg].penalties;
+    assert.ok(rows.filter((r) => r.death).every((r) => /Article 45/.test(r.label)));
+    assert.ok(rows.filter((r) => /without.*Article 45/.test(r.label)).every((r) => !r.death && r.prison));
+  }
+  assert.equal(c.segments.sharing.penalties.find((r) => /over 5–50 kg/.test(r.label)).prison, '30 years');
+  assert.equal(c.segments.possession.penalties.find((r) => /more than 100 kg/.test(r.label)).prison, '25 years');
+  assert.match(c.segments.possession.text, /over-50-kg.*expressly concerns Article 4/);
+});
+
+test('Brunei keeps plant material and resin thresholds separate by offence (#278)', () => {
+  const rows = country('bn').segments.sharing.penalties;
+  for (const offence of ['Trafficking', 'Import or export']) {
+    assert.ok(rows.some((r) => r.label === `${offence}, resin: more than 200 g` && r.death));
+    const medium = rows.find((r) => r.label === `${offence}, resin: 130–200 g`);
+    assert.equal(medium.prison_min, '20 years');
+    assert.equal(medium.prison, '30 years');
+    assert.deepEqual(medium.caning, [15, 15]);
+    assert.ok(rows.some((r) => r.label === `${offence}, plant material: more than 500 g` && r.death));
+  }
+  assert.ok(rows.some((r) => r.label === 'Possession for trafficking, resin: 200–300 g' && !r.death));
+  assert.ok(rows.every((r) => /plant material|resin/.test(r.label)));
+});
+
+test('Singapore separates actual possession from three rebuttable trafficking triggers (#279)', () => {
+  const c = country('sg');
+  assert.match(c.segments.possession.text, /above 15 g.*10 g of resin or 30 g of mixture/);
+  assert.equal(c.segments.possession.penalties.length, 9);
+  assert.ok(c.segments.possession.penalties.every((r) => r.term === 'Possession' && !r.death));
+  assert.ok(c.segments.possession.penalties.filter((r) => /resin/.test(r.label)).every((r) => /Above 10 g.*unless rebutted/.test(r.note)));
+  assert.ok(c.segments.possession.penalties.filter((r) => /mixture/.test(r.label)).every((r) => /Above 30 g.*unless rebutted/.test(r.note)));
+  assert.ok(c.segments.sharing.penalties.some((r) => /resin: more than 200 g/.test(r.label) && r.death));
+});
+
+test('Iraq weighing discrepancies remain criminal offences (#281)', () => {
+  const r = country('iq').segments.possession.penalties.find((r) => /33\(2\)/.test(r.label));
+  assert.equal(r.treatment, 'criminal');
+  assert.equal(r.fine_min, 2000000);
+  assert.equal(r.fine, 5000000);
+  assert.match(r.note, /repeat offences carry imprisonment/);
+});
+
+test('Libya and Sudan supply minimums cannot become maximums (#282, #283)', async () => {
+  const { punishmentText } = await import('../src/lib/penalties.js');
+  const ly = country('ly').segments.sharing;
+  assert.match(ly.text, /at least ten years/);
+  assert.match(ly.text, /1996 replaced the penalties/);
+  assert.ok(ly.penalties.every((r) => !/Supply with intent|Supply without payment/.test(r.label)));
+  assert.ok(ly.sources.includes('law1996'));
+  const sd = country('sd').segments.sharing.penalties[0];
+  assert.equal(sd.prison, undefined);
+  assert.equal(punishmentText(penaltyRow(sd)), 'At least 10 years');
+});
+
+test('hemp map categories describe growing thresholds, not product residues (#285–#289)', () => {
+  for (const id of ['om', 'ph', 'tw']) assert.equal(country(id).context.hemp.status, 'none', id);
+  assert.equal(country('gh').context.hemp.status, 'standard');
+  assert.equal(country('gh').context.production.status, 'hemp');
+  assert.equal(country('co').context.hemp.status, 'high');
+  assert.match(country('co').context.hemp.text, /less than 1%/);
+  assert.match(country('tw').context.hemp.text, /finished product.*10 ppm/);
+});
+
+test('Guyana hemp law and fatal-minor capital offence remain distinct (#290, #291)', () => {
+  const c = country('gy');
+  assert.equal(c.context.production.status, 'hemp');
+  assert.equal(c.context.hemp.status, 'standard');
+  assert.match(c.context.hemp.text, /no more than 0.3% delta-9 THC/);
+  assert.equal(c.recreational, 'death');
+  assert.match(c.context.death_penalty.text, /under eighteen.*causes their death/);
+  assert.match(c.context.death_penalty.text, /Ordinary trafficking.*up to life/);
+  assert.ok(c.segments.sharing.penalties.filter((r) => r.death).every((r) => /under eighteen causing their death/.test(r.label)));
+  assert.deepEqual(c.scores, { possession: 2, cultivation: 1, enforcement: 3, sharing: 1, consumption: 2, access: 0 });
+});
+
+test('Suriname uses enacted 2023 hemp law and its actual commencement (#292)', () => {
+  const c = country('sr');
+  assert.equal(c.context.hemp.status, 'high');
+  assert.equal(c.context.production.status, 'hemp');
+  assert.match(c.context.hemp.text, /no more than 1% THC/);
+  assert.doesNotMatch(c.summary, /legalised in 2022/);
+  assert.equal(events().find((e) => e.id === 'suriname-industrial-hemp-2023').date, '2023-09-15');
+});

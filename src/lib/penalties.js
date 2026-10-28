@@ -57,6 +57,7 @@ export function penaltyRow(row) {
     prisonMin: row.prison_min ? parseDuration(row.prison_min) : null,
     caning: row.caning ?? null, // [fewest, most] strokes of the cane
     death: row.death === true,
+    life: row.life ?? null,
     fine: row.fine ?? null,
     fineMin: row.fine_min ?? null,
     note: row.note ?? null,
@@ -66,9 +67,18 @@ export function penaltyRow(row) {
 // How the punishment reads in the table: "Up to 3 years", "At least 5 years", "6 months – 5 years", "10–20 years",
 // "Death penalty"; strokes of the cane go on their own line (punishmentExtra)
 export function punishmentText(r) {
-  if (r.death) return "Death penalty";
+  if (r.death) {
+    const alternatives = [r.life && "life imprisonment", r.prison && punishmentText({ ...r, death: false, life: null })].filter(Boolean);
+    return alternatives.length === 2 ? `Death, ${alternatives[0]} or ${alternatives[1]}` : alternatives.length ? `Death or ${alternatives[0]}` : "Death penalty";
+  }
+  if (r.life === "mandatory") return "Life imprisonment";
+  if (r.life === "possible") {
+    if (r.prison) return `${punishmentText({ ...r, life: null })} or life imprisonment`;
+    return r.prisonMin ? `${r.prisonMin.text} to life imprisonment` : "Life imprisonment possible";
+  }
   if (!r.prison) return r.prisonMin ? `At least ${r.prisonMin.text}` : null; // a minimum with no maximum set
   if (!r.prisonMin) return `Up to ${r.prison.text}`;
+  if (r.prisonMin.days === r.prison.days) return r.prison.text;
   const [a, ua] = r.prisonMin.text.split(" "), [b, ub] = r.prison.text.split(" ");
   return ua.replace(/s$/, "") === ub.replace(/s$/, "") ? `${a}–${b} ${ub}` : `${r.prisonMin.text} – ${r.prison.text}`;
 }
@@ -86,10 +96,13 @@ export function penaltySummary(rows) {
   const crime = first.find((r) => r.treatment === "criminal" && (r.upto || r.over));
   // a row about an amount that includes the small one; a labelled row ("growing as a business") is not
   const covers = (r) => (r.upto || r.over) && (size(r.over) ?? 0) < small && (size(r.upto) ?? Infinity) >= small;
+  const smallRows = first.filter(covers), smallLife = smallRows.some((r) => r.life);
   return {
     freeUpTo: free.length ? Math.max(...free) : 0,
     crimeFrom: crime ? size(crime.over) ?? 0 : null,
-    smallPrisonDays: first.filter(covers).reduce((m, r) => Math.max(m, r.prison?.days ?? r.prisonMin?.days ?? 0), 0),
+    smallPrisonDays: smallLife ? null : smallRows.reduce((m, r) => Math.max(m, r.prison?.days ?? r.prisonMin?.days ?? 0), 0),
+    smallPrisonLife: smallLife,
+    life: rows.some((r) => r.life),
     // whether any step of the ladder allows caning or the death penalty
     caning: rows.some((r) => r.caning),
     death: rows.some((r) => r.death),

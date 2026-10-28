@@ -3,10 +3,10 @@ region: South America
 iso_numeric: 740
 recreational: illegal
 medical: none
-updated: 2026-10-12
+updated: '2026-10-28'
 summary: >-
-  Up to thirteen years for possession, with no Dutch-style tolerance; industrial hemp was legalised in
-  2022.
+  Up to thirteen years for possession, with no Dutch-style tolerance. The 2023 industrial-hemp law
+  provides licences for certified crops with no more than 1% THC.
 scores:
   possession: 1
   cultivation: 1
@@ -24,10 +24,13 @@ segments:
     sources:
       - wvm
   cultivation:
-    text: Article 2 of the 1998 Narcotics Act forbids growing Cannabis sativa.
+    text: >-
+      Ordinary cannabis growing remains prohibited under the Narcotics Act.[@wvm] The [2023 hemp
+      law](/history/suriname-industrial-hemp-2023/) allows licensed industrial cultivation from
+      certified seed with no more than 1% THC.[@hemp23]
     sources:
       - wvm
-      - wiki
+      - hemp23
   enforcement:
     text: >-
       The Narcotics Act sets the same maximum, up to thirteen years in prison, for possessing
@@ -65,12 +68,26 @@ context:
     sources:
       - wvm
   production:
-    status: none
-    text: Reliable national information about lawful cannabis production was not established by the retained sources.
-    sources: []
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+    status: hemp
+    text: >-
+      The [2023 hemp law](/history/suriname-industrial-hemp-2023/) provides licences for industrial
+      cultivation, storage, processing, delivery and sale, administered by a new national hemp
+      institute.[@hemp23] In November 2024 the government was still preparing the implementing
+      decisions and establishment of the institute.[@hempimpl]
+    sources:
+      - hemp23
+      - hempimpl
+  hemp:
+    status: high
+    text: >-
+      Industrial hemp must come from certified seed and contain no more than 1% THC under the [2023
+      law](/history/suriname-industrial-hemp-2023/).[@hemp23] Growing and commercial handling require
+      a licence from the national hemp institute.[@hemp23] The government’s November 2024 update
+      described preparations for implementation, with further decisions and the institute still being
+      organised.[@hempimpl]
+    sources:
+      - hemp23
+      - hempimpl
   medical:
     text: >-
       None. A push under the previous government to legalise medical use and home growing was
@@ -81,16 +98,16 @@ context:
     text: The retained sources do not establish collateral consequences beyond the penalties described above.
     sources: []
   planting:
-    seeds: grey
-    seeds_trade: unclear
+    seeds: licensed
+    seeds_trade: regulated
     clones: illegal
     clones_trade: banned
     text: >-
-      Article 2 of the 1998 Narcotics Act bans growing Cannabis sativa. Its schedule defines
-      hemp as any part of the plant of the genus Cannabis from which the resin has not been
-      extracted, without the express exception for seeds found in the Dutch law it resembles.
-      The text read is the version as amended in 2002.
+      The industrial-hemp law requires certified seed and licensed cultivation for industrial purposes
+      at no more than 1% THC.[@hemp23] Ordinary cannabis cultivation remains prohibited under the
+      Narcotics Act; its older text has no general seed exception.[@wvm]
     sources:
+      - hemp23
       - wvm
   clubs:
     status: none
@@ -110,6 +127,19 @@ context:
       - wvm
       - wiki
 sources:
+  hemp23:
+    type: law
+    title: Suriname — Wet Industriële Hennepteelt, 13 September 2023, Staatsblad 2023 no. 137
+    url: https://www.sris.sr/wp-content/uploads/2023/10/S.B.-2023-no.-137-Wet-Industriele-Hennepteelt.pdf
+    locator: >-
+      Articles 1(d)–(f), 2, 27 and 29, printed pp. 2–3 and 21–22: ≤1%, certified seed, licences, prior
+      0.3% replaced; published 14 September, effective 15 September 2023
+  hempimpl:
+    title: >-
+      Suriname Government — Preparations to implement the Industrial Hemp Cultivation Act, November
+      2024
+    url: https://gov.sr/voorbereidingen-implementatie-wet-industriele-hennepteelt-in-volle-gang/
+    locator: Commission meeting of 6 November 2024; implementing decisions and institute still in preparation
   wvm:
     title: Wet verdovende middelen, S.B. 1998 no. 14, as amended by S.B. 2002 no. 68 (De Nationale Assemblée, PDF)
     url: https://www.dna.sr/media/34ygwacb/wet_verdovende_middelen.pdf

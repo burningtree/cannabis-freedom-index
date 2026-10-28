@@ -55,13 +55,14 @@ for (const id of ids) {
         if (RANK[r.treatment] < prevRank) warn(id, at, `${r.treatment} after a harsher step; check the order`);
         prevRank = Math.max(prevRank, RANK[r.treatment]);
       }
-      if ((r.treatment === "legal" || r.treatment === "tolerated") && (r.prison || r.prison_min || r.fine || r.fine_min || r.caning || r.death)) err(id, at, `${r.treatment} with a punishment; a punishment means civil or criminal`);
-      if (r.treatment === "criminal" && !r.prison && !r.prison_min && !r.fine && !r.fine_min && !r.death && !r.note) warn(id, at, "criminal step with no punishment and no note saying why");
+      if ((r.treatment === "legal" || r.treatment === "tolerated") && (r.prison || r.prison_min || r.fine || r.fine_min || r.caning || r.death || r.life)) err(id, at, `${r.treatment} with a punishment; a punishment means civil or criminal`);
+      if (r.treatment === "criminal" && !r.prison && !r.prison_min && !r.fine && !r.fine_min && !r.death && !r.life && !r.note) warn(id, at, "criminal step with no punishment and no note saying why");
       if ((r.treatment === "criminal" || r.treatment === "civil") && !r.term) warn(id, at, "no term: give the law's own word for the offence");
       if (r.prison_min && r.prison && days(r.prison_min) > days(r.prison)) err(id, at, `prison_min ${r.prison_min} is longer than prison ${r.prison}`);
       if (r.caning && r.caning[0] > r.caning[1]) err(id, at, "caning range is reversed");
       // facts that have a field of their own but were left in the note
       const note = String(r.note ?? "");
+      if (/\blife imprisonment\b|\bimprisonment for life\b/i.test(note) && !r.life) warn(id, at, "the note mentions life imprisonment; verify the source and encode life: mandatory or possible");
       // a minimum prison term or a minimum fine written in the note instead of its field
       if (/\b(at least|minimum of|not less than)\s+(\w+\s+){0,2}(day|week|month|year)s?\b/i.test(note) && !r.prison_min) err(id, at, `the note gives a minimum prison term ("${note.slice(0, 60)}"); use prison_min`);
       const CUR = "(shillings|dollars|euros|pounds|francs|rupees|rupiah|pesos|naira|cedis|dinars|dirhams|riyals|ringgit|baht|yen|won|yuan|[A-Z]{3}|[$€£¥₹]|[A-Z]{1,2}\\$)";

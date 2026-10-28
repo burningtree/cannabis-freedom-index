@@ -57,8 +57,8 @@ export const VISITORS_STATUS = {
 export const HEMP_STATUS = {
   high: { label: "Up to 1% THC", tone: "legal", help: "Plants with up to 1% THC count as hemp, a higher line than the usual 0.3%" },
   standard: { label: "Up to 0.3% THC", tone: "decrim", help: "Plants with up to about 0.3% THC count as hemp, the line used in the EU and the United States" },
-  strict: { label: "Below 0.3% THC", tone: "partial", help: "Hemp is allowed only under a lower THC line than 0.3%, or under unusually tight conditions" },
-  none: { label: "No hemp", tone: "illegal", help: "The law makes no exception for hemp: every cannabis plant, seed and CBD product is a controlled drug" },
+  strict: { label: "Below 0.3% THC", tone: "partial", help: "Hemp cultivation is allowed under a THC limit below 0.3%" },
+  none: { label: "No hemp", tone: "illegal", help: "No general low-THC cultivation exception; product-specific exemptions and medical or research permits may still apply" },
 };
 // Cannabis industry: who may produce cannabis legally for sale. Not part of the score.
 export const INDUSTRY_STATUS = {
@@ -66,7 +66,7 @@ export const INDUSTRY_STATUS = {
   state: { label: "State-run", tone: "decrim", help: "Adult-use cannabis is produced only by the state or under state contracts and tenders" },
   pilot: { label: "Pilots only", tone: "decrim", help: "Legal supply for adults exists only in trials or experiments; elsewhere only medical production is licensed" },
   medical: { label: "Medical only", tone: "partial", help: "Licensed production exists for medicine, research or export, but not for adults' recreational use" },
-  hemp: { label: "Hemp only", tone: "partial", help: "Only low-THC hemp may be grown or processed under licence; no cannabis is produced legally for medicine or adults" },
+  hemp: { label: "Hemp only", tone: "partial", help: "Licensed production is limited to low-THC hemp; this category does not establish a higher-THC cannabis industry" },
   none: { label: "None", tone: "illegal", help: "No legal cannabis production of any kind" },
 };
 // Research: whether scientists can obtain cannabis to study. Not part of the score.

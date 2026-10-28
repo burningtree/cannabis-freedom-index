@@ -704,6 +704,7 @@ segments:
   `death: true` (no `prison` needed). The table then shows "6 months – 5 years", "At least
   S$5,000", "and 3–6 strokes of the cane". `penalties.summary` records whether a ladder reaches
   caning or death. The audit (below) fails on minimums or caning written only in a note.
+- **Life imprisonment:** `life: mandatory` for a required life sentence; `life: possible` for an alternative, combined with `prison_min`, `prison` or `death` where the law provides those alternatives. Never substitute a finite maximum for life. API rows preserve this field, and summaries include `life` and `smallPrisonLife`.
 - **Prison or a fine.** When the law gives alternatives ("at least three years or a fine of at
   least S$5,000"), fill both minimums and say in `note`: "Prison or a fine, or both" (or "Prison
   or a fine"). Without that note the table reads as prison and a fine together.
@@ -716,9 +717,10 @@ segments:
 - **Steps run in order and join up.** Each amount step starts where the one before ends
   (`over:` equals the previous `upto:`), treatments get no milder as amounts grow, and one ladder
   counts either grams or plants, never both.
-- **Presumptions.** Where an amount is presumed to be for trafficking (Singapore above 15 g),
-  give the trafficking punishment in the step, call it "Presumed trafficking" in `term`, and say
-  in `note` what applies if the presumption is rebutted.
+- **Presumptions.** State the exact product and the rebuttable trigger: Singapore uses more than
+  15 g of plant material, 10 g of resin and 30 g of mixture. Keep actual possession sentences
+  separate from trafficking sentences where a combined ladder would hide either outcome. A
+  presumption is not a conviction; label the offence and explain what happens if it is rebutted.
 - **Criminal fines without a fixed maximum** (day fines, as in Germany) are left out of `fine`;
   say "a criminal fine instead of prison is possible" in `note`.
 - Write the steps for a first offender aged over the legal age. Different rules for young people
@@ -2014,7 +2016,11 @@ left untouched. Today's scores are unchanged.
 ### Mixed legal products and maximum penalties
 
 Use `recreational: death` wherever an in-force law permits death for a cannabis offence,
-including a qualifying repeat offence, even if another preparation has a lawful route.
+including a qualifying repeat offence or a drug-supply offence requiring a death caused by the
+supplied narcotic, even if another preparation has a lawful route. Guyana’s section 6 requires
+supply or administration to someone under eighteen and proof that the narcotic caused their death;
+the category records the statutory possibility, without implying an ordinary possession or
+trafficking death sentence or a verified cannabis execution.
 This status takes precedence on the law map and in the homepage count. Explain the
 lawful preparation separately in the summary, segments and quick answers. India’s bhang
 shops coexist with NDPS section 31A; neither fact cancels the other. Do not infer a death

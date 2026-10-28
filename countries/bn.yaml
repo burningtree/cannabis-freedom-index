@@ -80,59 +80,139 @@ segments:
       - oxford26
   sharing:
     text: >-
-      Giving or distributing cannabis falls within trafficking, which means selling, giving,
-      administering, transporting, sending, delivering or distributing it.[@mda] Trafficking under
-      330 g carries five to twenty years and five to fifteen strokes; 330 g to 500 g carries twenty
-      to thirty years and fifteen strokes; more than 500 g of cannabis, or more than 200 g of resin,
-      carries a mandatory death sentence.[@mda] Import and export follow the same quantity bands but
-      start at five to thirty years below 330 g, and possession for trafficking carries death above
-      600 g of cannabis or 300 g of resin.[@mda]
+      Giving or distributing cannabis is trafficking under the Act.[@mda] For plant material, less
+      than 330 g brings five to twenty years and five to fifteen strokes; 330–500 g brings twenty to
+      thirty years and fifteen strokes; more than 500 g carries mandatory death.[@mda] Resin uses 130
+      g and 200 g for those bands.[@mda] Import and export use the same product thresholds, with five
+      to thirty years in the lowest band.[@mda] Possession for trafficking is a separate offence: its
+      intermediate band is 400–600 g of plant material or 200–300 g of resin, with death above those
+      upper limits.[@mda]
     sources:
       - mda
     currency: BND
     penalties:
-      - label: Trafficking under 330 g
+      - label: "Trafficking, plant material: less than 330 g"
         treatment: criminal
         term: Trafficking
         prison_min: 5 years
         prison: 20 years
-        note: Five to fifteen strokes
         caning:
           - 5
           - 15
-      - label: Trafficking 330 g to 500 g
+      - label: "Trafficking, plant material: 330–500 g"
         treatment: criminal
         term: Trafficking
         prison_min: 20 years
         prison: 30 years
-        note: Fifteen strokes
         caning:
           - 15
           - 15
-      - label: Trafficking over 500 g, or over 200 g resin
+      - label: "Trafficking, plant material: more than 500 g"
         treatment: criminal
         term: Trafficking
         death: true
         note: Mandatory death sentence
-      - label: Import or export under 330 g
+      - label: "Trafficking, resin: less than 130 g"
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 20 years
+        caning:
+          - 5
+          - 15
+      - label: "Trafficking, resin: 130–200 g"
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        prison: 30 years
+        caning:
+          - 15
+          - 15
+      - label: "Trafficking, resin: more than 200 g"
+        treatment: criminal
+        term: Trafficking
+        death: true
+        note: Mandatory death sentence
+      - label: "Import or export, plant material: less than 330 g"
         treatment: criminal
         term: Import or export
         prison_min: 5 years
         prison: 30 years
-        note: Five to fifteen strokes
         caning:
           - 5
           - 15
-      - label: Possession for trafficking 400 g to 600 g
+      - label: "Import or export, plant material: 330–500 g"
+        treatment: criminal
+        term: Import or export
+        prison_min: 20 years
+        prison: 30 years
+        caning:
+          - 15
+          - 15
+      - label: "Import or export, plant material: more than 500 g"
+        treatment: criminal
+        term: Import or export
+        death: true
+        note: Mandatory death sentence
+      - label: "Import or export, resin: less than 130 g"
+        treatment: criminal
+        term: Import or export
+        prison_min: 5 years
+        prison: 30 years
+        caning:
+          - 5
+          - 15
+      - label: "Import or export, resin: 130–200 g"
+        treatment: criminal
+        term: Import or export
+        prison_min: 20 years
+        prison: 30 years
+        caning:
+          - 15
+          - 15
+      - label: "Import or export, resin: more than 200 g"
+        treatment: criminal
+        term: Import or export
+        death: true
+        note: Mandatory death sentence
+      - label: "Possession for trafficking, plant material: less than 400 g"
+        treatment: criminal
+        term: Possession for trafficking
+        prison_min: 5 years
+        prison: 20 years
+        caning:
+          - 5
+          - 15
+      - label: "Possession for trafficking, plant material: 400–600 g"
         treatment: criminal
         term: Possession for trafficking
         prison_min: 20 years
         prison: 30 years
-        note: Fifteen strokes
         caning:
           - 15
           - 15
-      - label: Possession for trafficking over 600 g, or over 300 g resin
+      - label: "Possession for trafficking, plant material: more than 600 g"
+        treatment: criminal
+        term: Possession for trafficking
+        death: true
+        note: Mandatory death sentence
+      - label: "Possession for trafficking, resin: less than 200 g"
+        treatment: criminal
+        term: Possession for trafficking
+        prison_min: 5 years
+        prison: 20 years
+        caning:
+          - 5
+          - 15
+      - label: "Possession for trafficking, resin: 200–300 g"
+        treatment: criminal
+        term: Possession for trafficking
+        prison_min: 20 years
+        prison: 30 years
+        caning:
+          - 15
+          - 15
+      - label: "Possession for trafficking, resin: more than 300 g"
         treatment: criminal
         term: Possession for trafficking
         death: true
@@ -240,12 +320,12 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. The Misuse of Drugs Act applies severe
-      penalties to possession and trafficking, including caning and, for specified trafficking
-      quantities, death.[@mda,hoc]
+      There is no legal recreational supply.[@mda] Importing or exporting more than 500 g of cannabis
+      plant material or more than 200 g of resin carries mandatory death; 330–500 g of plant material
+      or 130–200 g of resin carries twenty to thirty years and fifteen strokes.[@mda] Smaller imports
+      carry five to thirty years and five to fifteen strokes.[@mda]
     sources:
       - mda
-      - hoc
   driving:
     status: impairment
     text: >-

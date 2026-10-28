@@ -39,10 +39,11 @@ const penalty = z.object({
   prison_min: z.string().refine((s) => parseDuration(s), { message: 'a duration such as "6 months"' }).optional(), // alone: "at least"
   caning: z.tuple([z.number().int().positive(), z.number().int().positive()]).optional(), // [fewest, most] strokes
   death: z.literal(true).optional(),
+  life: z.enum(["mandatory", "possible"]).optional(), // standalone life or an alternative sentence
   fine: z.number().positive().optional(),
   fine_min: z.number().positive().optional(), // a minimum fine; alone it reads "at least"
   note: z.string().min(1).optional(),
-}).strict().refine((r) => r.upto || r.over || r.label, { message: "a penalty step needs upto, over or a label" });
+}).strict().refine((r) => r.life !== "mandatory" || (!r.prison && !r.prison_min && !r.death), { message: "mandatory life cannot have an alternative prison or death sentence" }).refine((r) => r.upto || r.over || r.label, { message: "a penalty step needs upto, over or a label" });
 // a segment: its cited text, and for possession and cultivation optionally the penalty steps
 const segment = cited.extend({ currency: z.string().regex(/^[A-Z]{3}$/).optional(), penalties: z.array(penalty).min(1).optional() })
   .refine((s) => !s.penalties?.some((r) => r.fine || r.fine_min) || s.currency, { message: "penalties with a fine need a currency" });

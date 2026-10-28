@@ -37,7 +37,7 @@ const REC_SENTENCE = {
   partial: "is partly legal or tolerated",
   decrim: "is decriminalised but still prohibited",
   illegal: "is illegal",
-  death: "is illegal, with the death penalty for trafficking",
+  death: "is illegal, with the death penalty for specified cannabis offences",
 };
 const MED_SENTENCE = { yes: "Medical cannabis: legal.", limited: "Medical cannabis: limited.", no: "No patient cannabis treatment route verified." };
 const monthYear = (iso) => new Date(iso).toLocaleString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });

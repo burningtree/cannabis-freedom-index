@@ -1,12 +1,13 @@
 name: Guyana
 region: South America
 iso_numeric: 328
-recreational: illegal
+recreational: death
 medical: none
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Since 2022 possession of up to 30 g no longer carries prison, but counselling or community
-  service.
+  service. Section 6 provides death if unlawfully supplied narcotics cause the death of someone
+  under eighteen.
 scores:
   possession: 2
   cultivation: 1
@@ -26,11 +27,14 @@ segments:
       - act
   cultivation:
     text: >-
-      Section 8 of the Narcotic Drugs and Psychotropic Substances (Control) Act punishes
-      cultivating a prohibited plant, or letting land be used for it, with a fine and three to
-      five years in prison on summary conviction, or five to ten years on indictment.
+      Section 8 of the Narcotic Drugs and Psychotropic Substances (Control) Act punishes cultivating a
+      prohibited plant, or letting land be used for it, with a fine and three to five years in prison
+      on summary conviction, or five to ten years on indictment.[@cap1010] Licensed industrial hemp
+      with no more than 0.3% delta-9 THC on a dry-weight basis follows the separate [2022 hemp
+      law](/history/guyana-industrial-hemp-2022/).[@hemp22]
     sources:
       - cap1010
+      - hemp22
   enforcement:
     text: >-
       Counselling or community service for 30 g or less; prison for anything above. Rastafari groups
@@ -41,9 +45,25 @@ segments:
   sharing:
     text: >-
       Supply is trafficking. Section 5 of the Act sets a fine and three to five years in prison on
-      summary conviction, and a fine with imprisonment for life on indictment.
+      summary conviction, and a fine with imprisonment for life on indictment.[@cap1010] Section 6
+      separately provides death where unlawful supply or administration to a person under eighteen
+      causes their death.[@cap1010,canu]
     sources:
       - cap1010
+      - canu
+    penalties:
+      - label: Ordinary trafficking on indictment, section 5
+        treatment: criminal
+        term: Trafficking
+        life: mandatory
+        note: Also a statutory fine; summary conviction has a separate three-to-five-year term
+      - label: Unlawful supply/administration to a person under eighteen causing their death, section 6
+        treatment: criminal
+        term: Fatal supply to a minor
+        death: true
+        note: >-
+          Requires the statutory age and causation conditions; ordinary adult supply is a separate
+          offence
   consumption:
     text: The 2022 amendment removed the fine and prison term for smoking or otherwise using cannabis.
     sources:
@@ -53,6 +73,28 @@ segments:
     sources:
       - pi
 context:
+  death_penalty:
+    text: >-
+      Section 6 provides death on indictment for unlawfully supplying or administering a narcotic to
+      someone under eighteen when the narcotic causes their death.[@cap1010,canu] Cannabis and
+      cannabis resin are listed narcotics, so the offence’s wording includes them when those age and
+      causation conditions are proved.[@cap1010] Ordinary trafficking under section 5 carries prison
+      up to life.[@cap1010] Guyana’s last known execution was in 1997.[@wcadp]
+    sources:
+      - cap1010
+      - canu
+      - wcadp
+  hemp:
+    status: standard
+    text: >-
+      Industrial hemp is cannabis and its parts, including seeds, with no more than 0.3% delta-9 THC
+      on a dry-weight basis.[@hemp22] Cultivation, manufacturing and research require a licence under
+      the [2022 law](/history/guyana-industrial-hemp-2022/).[@hemp22] In May 2026 the government was
+      still pursuing a processing plant before large-scale cultivation could start in Regions Six and
+      Ten.[@hemp26]
+    sources:
+      - hemp22
+      - hemp26
   recreational:
     text: >-
       There is no legal recreational market. Since November 2022 there is no prison for 30 g
@@ -64,14 +106,15 @@ context:
       - act
       - pi
   production:
-    status: medical
-    text: Industrial hemp was legalised separately in 2022; no cannabis licensing.
+    status: hemp
+    text: >-
+      The [2022 Industrial Hemp Act](/history/guyana-industrial-hemp-2022/) licenses cultivation,
+      manufacturing and research involving hemp at no more than 0.3% delta-9 THC.[@hemp22] In May 2026
+      the agriculture minister said the authority and its chief executive were in place, but
+      large-scale planting awaited a processing facility.[@hemp26]
     sources:
-      - dpi
-  products:
-    text: No legal THC products.
-    sources:
-      - pi
+      - hemp22
+      - hemp26
   medical:
     text: No medical cannabis programme.
     sources:
@@ -86,12 +129,12 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      The narcotics act makes it an offence to cultivate any prohibited plant, and defines
-      cultivating to include "sowing or scattering the seed" and planting the plant "or any
-      part thereof". Its schedule lists cannabis, its preparations and derivatives without
-      naming seed. The 2022 hemp law, which licenses low-THC seed separately, was not read.
+      Cultivating a prohibited plant includes sowing its seed and planting any part of it.[@cap1010]
+      Licensed industrial hemp, including its seed, is separately permitted at no more than 0.3%
+      delta-9 THC by the 2022 Act.[@hemp22]
     sources:
       - cap1010
+      - hemp22
   clubs:
     status: none
     text: >-
@@ -147,12 +190,34 @@ context:
     sources:
       - dpi25
 sources:
+  hemp22:
+    type: law
+    title: Guyana — Industrial Hemp Act No. 13 of 2022, Official Gazette 11 August 2022
+    url: https://parliament.gov.gy/documents/acts/23476-industrial_hemp_act_2022_-_no._13_of_2022.pdf
+    locator: >-
+      Sections 2, 12 and 39; printed pp. 207, 216 and 234–235: ≤0.3% delta-9 THC dry weight,
+      licensing, Act prevails on inconsistent hemp rules
+  hemp26:
+    title: Guyana Ministry of Agriculture — Regions Six and Ten earmarked for industrial hemp, 21 May 2026
+    url: >-
+      https://agriculture.gov.gy/2026/05/21/regions-six-ten-earmarked-for-industrial-hemp-cultivation-as-govt-pursues-processing-plant-mustapha/
+    locator: Authority operational, CEO appointed; large-scale cultivation awaits processing facility
+  canu:
+    title: Guyana Customs Anti-Narcotic Unit — Guyana drug and narcotics laws
+    url: https://canu.gov.gy/guyana-drug-laws/
+    locator: >-
+      Section 6 summary: death following narcotic supply to a minor; section 5 ordinary trafficking up
+      to life
+  wcadp:
+    title: World Coalition Against the Death Penalty — Guyana (updated 27 October 2026)
+    url: https://worldcoalition.org/pays/guyana/
+    locator: Retentionist; last known execution 1997; none in 2023–2025
   ag2024:
     title: Guyana Ministry of Legal Affairs — Attorney General on small cannabis possession (25 September 2024)
     url: https://www.mola.gov.gy/post/illegal-for-police-to-lock-up-persons-for-small-amounts-of-ganja-nandlall
   reform2022:
     title: Guyana Parliament — Narcotic Drugs and Psychotropic Substances (Control) (Amendment) Act 22 of 2022
-    url: https://parliament.gov.gy/new2/documents/acts/23504-act_no._22_of_2022.pdf
+    url: https://parliament.gov.gy/documents/acts/23504-act_no._22_of_2022.pdf
   traffic2022:
     title: "Guyana Parliament — Motor Vehicles and Road Traffic (Amendment) Act No. 17 of 2022, gazette PDF"
     url: https://parliament.gov.gy/documents/acts/23499-act_no._17_of_2022_2.pdf
@@ -169,6 +234,7 @@ sources:
     title: "GOV.UK (FCDO) — Foreign travel advice: Guyana, safety and security"
     url: https://www.gov.uk/foreign-travel-advice/guyana/safety-and-security
   cap1010:
+    locator: Sections 2–6 and 8; First Schedule cannabis and cannabis resin; section 6 fatal supply to minors
     title: Narcotic Drugs and Psychotropic Substances (Control) Act, Chapter 10:10, Laws of Guyana (Ministry of Legal Affairs, PDF)
     url: https://mola.gov.gy//laws/Volume%204%20Cap.%2010.08%20-%2012.211696971083.pdf
   dpi:

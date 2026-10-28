@@ -20,45 +20,112 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis is a Class A controlled drug. Possessing less than 330 g of cannabis, less than
-      130 g of resin, or less than 660 g of mixture carries up to 10 years, a fine of up to
-      S$20,000, or both.[@mda_sch] Anyone holding more than 15 g is presumed to hold it for
-      trafficking unless they prove otherwise.[@wmda] From 330 g to 500 g of cannabis the sentence is at least 10 years
-      and 5 strokes of the cane, and at most 20 years and 10 strokes. More than 500 g is at least
-      20 years and 10 strokes, and at most 30 years and 15 strokes.[@mda_sch] Resin uses 130 g and
-      200 g for those same steps, and mixture uses 660 g and 1,000 g.[@cnb_can]
+      Cannabis is a Class A controlled drug. Possessing less than 330 g of cannabis, less than 130 g
+      of resin, or less than 660 g of mixture carries up to 10 years, a fine of up to S$20,000, or
+      both.[@mda_sch] Section 17 presumes possession for trafficking above 15 g of cannabis plant
+      material, 10 g of resin or 30 g of mixture unless the holder proves otherwise.[@mda17]
+      Trafficking can also be proved below those amounts.[@mda1973] From 330 g to 500 g of cannabis
+      the sentence is at least 10 years and 5 strokes of the cane, and at most 20 years and 10
+      strokes. More than 500 g is at least 20 years and 10 strokes, and at most 30 years and 15
+      strokes.[@mda_sch] Resin uses 130 g and 200 g for those same steps, and mixture uses 660 g and
+      1,000 g.[@cnb_can]
     sources:
-      - wmda
+      - mda17
+      - mda1973
       - mda_sch
       - cnb_can
     currency: SGD
     penalties:
-      - upto: 15 g
+      - label: "Cannabis plant material: less than 330 g"
         treatment: criminal
-        term: Offence under the Misuse of Drugs Act
+        term: Possession
         prison: 10 years
         fine: 20000
-      - over: 15 g
-        upto: 330 g
+        note: >-
+          Above 15 g, possession for trafficking is presumed unless rebutted; these are
+          possession-only penalties; prison or a fine, or both
+      - label: "Cannabis plant material: 330–500 g"
         treatment: criminal
-        term: Presumed trafficking
-        prison_min: 5 years
+        term: Possession
+        prison_min: 10 years
         prison: 20 years
-        caning: [5, 15]
-        note: Unless the holder proves it was not for trafficking; possession alone carries up to 10 years or S$20,000
-      - over: 330 g
-        upto: 500 g
+        caning:
+          - 5
+          - 10
+        note: >-
+          Above 15 g, possession for trafficking is presumed unless rebutted; these are
+          possession-only penalties
+      - label: "Cannabis plant material: more than 500 g"
         treatment: criminal
-        term: Presumed trafficking
+        term: Possession
         prison_min: 20 years
         prison: 30 years
-        caning: [15, 15]
-        note: Or life imprisonment. If the presumption is rebutted, possession carries 10–20 years and 5–10 strokes
-      - over: 500 g
+        caning:
+          - 10
+          - 15
+        note: >-
+          Above 15 g, possession for trafficking is presumed unless rebutted; these are
+          possession-only penalties
+      - label: "Cannabis resin: less than 130 g"
         treatment: criminal
-        term: Presumed trafficking, a capital offence
-        death: true
-        note: If the presumption is rebutted, possession carries 20–30 years and 10–15 strokes
+        term: Possession
+        prison: 10 years
+        fine: 20000
+        note: >-
+          Above 10 g, possession for trafficking is presumed unless rebutted; these are
+          possession-only penalties; prison or a fine, or both
+      - label: "Cannabis resin: 130–200 g"
+        treatment: criminal
+        term: Possession
+        prison_min: 10 years
+        prison: 20 years
+        caning:
+          - 5
+          - 10
+        note: >-
+          Above 10 g, possession for trafficking is presumed unless rebutted; these are
+          possession-only penalties
+      - label: "Cannabis resin: more than 200 g"
+        treatment: criminal
+        term: Possession
+        prison_min: 20 years
+        prison: 30 years
+        caning:
+          - 10
+          - 15
+        note: >-
+          Above 10 g, possession for trafficking is presumed unless rebutted; these are
+          possession-only penalties
+      - label: "Cannabis mixture: less than 660 g"
+        treatment: criminal
+        term: Possession
+        prison: 10 years
+        fine: 20000
+        note: >-
+          Above 30 g, possession for trafficking is presumed unless rebutted; these are
+          possession-only penalties; prison or a fine, or both
+      - label: "Cannabis mixture: 660–1000 g"
+        treatment: criminal
+        term: Possession
+        prison_min: 10 years
+        prison: 20 years
+        caning:
+          - 5
+          - 10
+        note: >-
+          Above 30 g, possession for trafficking is presumed unless rebutted; these are
+          possession-only penalties
+      - label: "Cannabis mixture: more than 1000 g"
+        treatment: criminal
+        term: Possession
+        prison_min: 20 years
+        prison: 30 years
+        caning:
+          - 10
+          - 15
+        note: >-
+          Above 30 g, possession for trafficking is presumed unless rebutted; these are
+          possession-only penalties
   cultivation:
     text: >-
       Cultivating cannabis brings at least three years or a fine of at least S$5,000, and up to
@@ -91,12 +158,82 @@ segments:
       - judiciary2026
   sharing:
     text: >-
-      Giving cannabis to another person is trafficking, whether or not money changes hands. For
-      under 330 g of cannabis the sentence is at least 5 years and 5 strokes of the cane, and at
-      most 20 years and 15 strokes. The same first band runs to under 130 g of resin and under
-      660 g of mixture.[@cnb_can]
+      Giving cannabis to another person is trafficking, whether or not money changes hands. For under
+      330 g of cannabis the sentence is at least 5 years and 5 strokes of the cane, and at most 20
+      years and 15 strokes. The same first band runs to under 130 g of resin and under 660 g of
+      mixture.[@cnb_can] The higher trafficking bands use 330–500 g of plant material, 130–200 g of
+      resin or 660–1,000 g of mixture; above those upper limits the offence is capital, subject to
+      section 33B exceptions.[@cnb_can,mda_sch]
     sources:
       - cnb_can
+      - mda_sch
+    penalties:
+      - label: "Cannabis plant material: less than 330 g"
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 20 years
+        caning:
+          - 5
+          - 15
+      - label: "Cannabis plant material: 330–500 g"
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        prison: 30 years
+        life: possible
+        caning:
+          - 15
+          - 15
+      - label: "Cannabis plant material: more than 500 g"
+        treatment: criminal
+        term: Trafficking
+        death: true
+        note: Section 33B provides limited sentencing exceptions
+      - label: "Cannabis resin: less than 130 g"
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 20 years
+        caning:
+          - 5
+          - 15
+      - label: "Cannabis resin: 130–200 g"
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        prison: 30 years
+        life: possible
+        caning:
+          - 15
+          - 15
+      - label: "Cannabis resin: more than 200 g"
+        treatment: criminal
+        term: Trafficking
+        death: true
+        note: Section 33B provides limited sentencing exceptions
+      - label: "Cannabis mixture: less than 660 g"
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 20 years
+        caning:
+          - 5
+          - 15
+      - label: "Cannabis mixture: 660–1000 g"
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        prison: 30 years
+        life: possible
+        caning:
+          - 15
+          - 15
+      - label: "Cannabis mixture: more than 1000 g"
+        treatment: criminal
+        term: Trafficking
+        death: true
+        note: Section 33B provides limited sentencing exceptions
   consumption:
     text: >-
       Ordinary cannabis consumption convictions carry at least one year and up to 10 years, with a possible S$20,000 fine.
@@ -214,13 +351,16 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possessing less than 330 g of cannabis can
-      bring up to ten years, a fine of up to S$20,000, or both. From 330 g the prison term is
-      mandatory and includes caning. Trafficking more than 200 g of cannabis resin can bring
-      death.[@cnb_can, mda_sch]
+      There is no legal recreational supply.[@mda_sch] Ordinary possession below 330 g of plant
+      material, 130 g of resin or 660 g of mixture carries up to ten years or a S$20,000 fine, or
+      both; larger possession sentences include caning.[@cnb_can] Above 15 g of plant material, 10 g
+      of resin or 30 g of mixture, possession for trafficking is presumed unless rebutted.[@mda17]
+      Trafficking more than 500 g of plant material, 200 g of resin or 1,000 g of mixture is capital,
+      subject to section 33B exceptions.[@cnb_can,mda_sch]
     sources:
-      - cnb_can
       - mda_sch
+      - cnb_can
+      - mda17
   driving:
     status: impairment
     text: >-
@@ -265,12 +405,12 @@ context:
   spotlights:
     - title: Fifteen grams makes a trafficker
       text: >-
-        Above 15 g of cannabis, the law presumes that the holder is a trafficker, and it is for the
-        accused to prove otherwise.[@wmda] Trafficking brings at least five years and five strokes of
+        Above 15 g of cannabis plant material, 10 g of resin or 30 g of mixture, the law presumes
+        possession for trafficking unless the accused proves otherwise.[@mda17] Trafficking brings at least five years and five strokes of
         the cane, and above 500 g the death penalty; Singapore carried out a cannabis execution as
         recently as April 2026.[@cnb_can,cnb_execution]
       sources:
-        - wmda
+        - mda17
         - cnb_can
         - cnb_execution
     - title: The law travels with you
@@ -293,6 +433,13 @@ context:
       - transit2026
 
 sources:
+  mda17:
+    type: law
+    title: Singapore — Misuse of Drugs Act 1973, section 17
+    url: https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr17-&ValidDate=20260601
+    locator: >-
+      Section 17(d)–(f): more than 15 g cannabis, 30 g mixture and 10 g resin; rebuttable
+      possession-for-trafficking presumption
   cnb25:
     type: report
     title: Central Narcotics Bureau — Annual Statistics Report 2025 (10 February 2026)

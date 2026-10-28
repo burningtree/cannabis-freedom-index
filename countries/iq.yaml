@@ -22,12 +22,14 @@ segments:
       acquiring, buying or cultivating drugs for personal use with one to three years in prison
       and a fine of 5 to 10 million dinars.[@law2017] The law sets no quantity threshold; courts
       infer intent from the circumstances, and Article 33(2)(a)'s percentage bands are a weighing
-      tolerance, not a small-amount tier.[@law2017] Allowing another person to use drugs on one's
+      tolerance, not a small-amount tier.[@law2017] The discrepancy offence carries a criminal fine
+      of 2–5 million dinars; repeating it brings imprisonment and/or a 5–10 million dinar fine.[@art33] Allowing another person to use drugs on one's
       premises, or being found in a place prepared for use, carries six months to two years and a
       3 to 5 million dinar fine.[@law2017] A court may order treatment instead of the Article 32
       penalty, and a person who voluntarily enters treatment is protected from prosecution.[@law2017]
     sources:
       - law2017
+      - art33
     currency: IQD
     penalties:
       - label: "Personal use: import, production, possession, purchase or cultivation"
@@ -38,12 +40,12 @@ segments:
         fine_min: 5000000
         fine: 10000000
         note: Treatment may replace the penalty; voluntary treatment protects from prosecution
-      - label: Possession within the weighing tolerance, Article 33(2)(a)
-        treatment: civil
-        term: Evidentiary tolerance
+      - label: Criminal weighing-discrepancy offence, Article 33(2)(a)
+        treatment: criminal
+        term: Weighing discrepancy
         fine_min: 2000000
         fine: 5000000
-        note: A weighing tolerance, not a small-quantity threshold
+        note: Specific weighing differences; repeat offences carry imprisonment and/or a higher fine
       - label: Allowing use on premises or being in a place prepared for use, Article 33(1)
         treatment: criminal
         term: Premises offence
@@ -268,6 +270,11 @@ context:
       - shafaq24
       - tnr26
 sources:
+  art33:
+    type: law
+    title: Iraq — Law 50 of 2017, Article 33 (UNODC SHERLOC, Arabic statutory text)
+    url: https://sherloc.unodc.org/cld/ar/legislation/irq/law_no._50_of_2017_on_narcotics_and_psychotropic_substances/chapter_8/article_33/article_33.html
+    locator: Article 33(2)(a)–(b); criminal fine for weighing discrepancies and repeat-offence penalties
   law2017:
     type: law
     title: "Iraq — Narcotics and Psychotropic Substances Law No. 50 of 2017"
