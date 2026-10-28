@@ -37,4 +37,11 @@ wording; cultivation tables added everywhere.
 - No Prop-207 history entry, no grounded AZ culture subject — noted.
 - Audit 0/0; review page verified.
 
-## ma — pending
+## ma (Massachusetts) — committed
+- Cultivation table (6/household-12 legal; $300 visible-plants civil penalty, verified against
+  NORML), cites on enforcement/consumption/access, new `recreational` (Question 4 2016, shops
+  20 Nov 2018 via WAMC/AP verified 200, Apr 2026 doubling, Question 8 Nov 2026 via Rockefeller).
+- Consumption lounges: CCC Dec-2025 regulations URL re-verified 200.
+- Possession/sharing/summary/answers left as strings (claims test #216 pins them). No test breakage.
+- No Question-4/Question-8 history entries, no grounded MA culture subject — noted.
+- Audit 0/0; review page verified.
