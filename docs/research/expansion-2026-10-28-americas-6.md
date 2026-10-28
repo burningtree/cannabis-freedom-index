@@ -25,7 +25,13 @@ others; kp — Asia; cw/sr — done in Americas-5; gy — another agent's blocke
 - Fixed self-inflicted warning (uncited mota sentence) + build assertion ([@em] needed adding to culture sources).
 - Audit 0/0; page + both articles verified in review HTML.
 - Left: 1925 first-restriction estimate (parallel VE estimate, not a shared decree — no link, no article), 2014 protest article (Wikipedia-only entry, skipped), cultivation tiers beyond Art. 31 bands.
-## ag — pending
+## ag — committed
+- Possession table (≤15 g legal; over-15 g criminal label row) + cultivation table (≤4 plants legal; sacramental-excess label row); products folded into medical (grow-your-own line moved).
+- New `articles/leeward-islands-dangerous-drugs-act-1937-antigua.md` (UN E/NL.1952/54; honest about the missing Act text; Dominica twin noted for later reuse) + `articles/antigua-rastafari-sacramental-authorizations-2023.md` (MCA: Nyabinghi, Rasfreeman, Wan Love Chant) + `articles/antigua-pardons-plan-2025.md` (CNW: sub-15 g pardons, passage unconfirmed); all three linked from culture/medical.
+- Culture section (rastafari-sacrament + all three articles); read both IDPC pieces to ground [@idpc1]/[@idpc2] inline cites (Feb lower-house vote + culture quote; Dec bill exceeding thresholds + dispensaries + apology).
+- Fixed two self-inflicted build assertions (idpc2 missing from possession sources; wiki never cited inline in medical).
+- Audit 0 errors + 2 pre-existing warnings (FCDO visitors advice, "establishes" in driving — both untouched); page + all three articles verified.
+- Left: words (no sourced local term), over-15 g tiers (no numbers), 1993 conventions entry (imp 1, skipped).
 ## bm — pending
 ## cr — pending
 ## gd — pending
