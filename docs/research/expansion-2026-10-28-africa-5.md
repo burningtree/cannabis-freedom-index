@@ -29,6 +29,12 @@ so/bi/et/cd/ss/cf/mz/zw/bj/ug — Africa-1/2/3; tg/lr/ga/gw/gq/dj/mu — Africa-
 - New `articles/comoros-penal-code-1995.md` (Art 328 verified in PDF extraction: 1–10 yrs, 1M–50M francs, hashish/Indian hemp named) + `articles/comoros-moheli-bubble-pipe-1626.md` (Herbert 1634 via Duvall's reading).
 - Audit 0/0; full `npm test` 193/0; page + both articles verified in review HTML.
 - Left: driving/arrests (no sources), 1920s–60s, 1980s, 2010s decades; first-restriction estimate kept.
-## re — pending
+## re — committed
+- Word Zamal (Réunion Creole, via Benoist); culture already linked both atlas entries.
+- Cultivation rewritten with real numbers from CIDJ (production offence: 20 yrs + €7.5M; courts lower for small grows) + table; possession term added.
+- Products folded into hemp then deleted; new clubs/planting (grey seeds, false 1–2-plant belief via OFDT)/black_market (OFDT 2021, fetched and read: small acquaintance networks, local production without resin transformation, €0.50→€5/g decline, imported hybrids) sections.
+- New `articles/reunion-youth-zamal-groups-1971.md` (rewrote invented closing to the entry's real psychiatric-hospital cases + alcohol contrast) + `articles/reunion-malay-amale-crime-1830.md` (both from Benoist).
+- Audit 0/0; full `npm test` 193/0 (run mid-batch); page + both articles verified in review HTML.
+- Left: driving/arrests (no sources), 1920s–70s, 1980s–2020s decades.
 ## st — pending
 ## sc — pending

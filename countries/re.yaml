@@ -22,6 +22,8 @@ scores:
   sharing: 1
   consumption: 1
   access: 1
+words:
+  - { word: Zamal, lang: Réunion Creole, meaning: "cannabis; the island's Creole word, probably of Malagasy origin", sources: [benoist] }
 segments:
   possession:
     text: >-
@@ -35,15 +37,25 @@ segments:
     penalties:
       - label: Ordinary illicit use
         treatment: criminal
+        term: Drug use
         prison: 1 year
         fine: 3750
         note: National fixed-fine procedure applies to ordinary use cases
   cultivation:
     text: >-
-      Growing cannabis is treated as production of narcotics, a serious crime with sentences far
-      above those for use, even for a few plants.[@cidj]
+      Growing cannabis is treated as production of narcotics: up to 20 years imprisonment and a
+      €7.5 million fine, even for a few plants.[@cidj] In practice courts impose far lower
+      sentences for small personal grows.[@cidj]
     sources:
       - cidj
+    currency: EUR
+    penalties:
+      - label: Growing cannabis (production of narcotics)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 20 years
+        fine: 7500000
+        note: Courts impose far lower sentences for small personal grows
   enforcement:
     text: >-
       The law is strict on paper, applied mainly through fines with the one-year prison maximum
@@ -99,12 +111,6 @@ context:
       regime; there is no other lawful cannabis product on the island.[@cx]
     sources:
       - cx
-  products:
-    text: >-
-      CBD flower and products under 0.3% THC are lawful to sell under the national French regime;
-      there is no other lawful cannabis product on the island.[@cx]
-    sources:
-      - cx
   medical:
     text: >-
       No Réunion-specific patient route exists; access follows the restricted national French
@@ -127,6 +133,36 @@ context:
     sources:
       - csp
       - cidj
+  clubs:
+    status: none
+    text: >-
+      No cannabis clubs are known, and the law leaves no room for them: cultivation is a
+      production offence and giving cannabis to another person is a specific supply
+      offence.[@cidj]
+    sources:
+      - cidj
+  planting:
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      Zamal is planted in cane fields and gardens, all of it outside any legal regime.[@benoist]
+      A widespread belief that one or two plants for personal use are legal is false: growing
+      is a production offence whatever the number of plants.[@ofdt21,cidj] Seed commerce is not
+      separately addressed in the reviewed sources.
+    sources:
+      - benoist
+      - ofdt21
+      - cidj
+  black_market:
+    text: >-
+      Trafficking runs on small networks built on mutual acquaintance, with local production
+      and no transformation into resin — resin arrives imported, by post or by mules.[@ofdt21]
+      Local zamal quality has declined over the last decade while its price rose from about
+      €0.50 to €5 a gram; imported hybrids fill the gap.[@ofdt21]
+    sources:
+      - ofdt21
   culture:
     text: >-
       Zamal — the local name, apparently of Malagasy origin though absent from present-day
@@ -158,3 +194,10 @@ sources:
   sp:
     title: Service-Public.fr — Therapeutic cannabis
     url: https://www.service-public.gouv.fr/particuliers/vosdroits/F35817?lang=en
+  ofdt21:
+    title: OFDT — Élodie Auzole, Tendances récentes et nouvelles drogues, La Réunion, résultats 2021 (November 2022)
+    url: https://www.ofdt.fr/BDD/publications/docs/syntheseTREND2021_Reunion.pdf
+    locator: >-
+      Small acquaintance-based trafficking networks; local production without resin
+      transformation (imported by post/mules); false 1–2 plant belief; declining local quality,
+      zamal €5/g vs €0.50 ten years earlier; imported hybrids. Read in the local PDF extraction.
