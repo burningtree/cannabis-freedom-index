@@ -48,3 +48,28 @@ existing sourced tráva/hašiš retained. Atlas CBD link retained; no atlas edit
 Slovakia validation: five-page build passed all tests and content/citation checks;
 inspected profile tables and CBD article. Audit zero errors; wording warning
 removed after inspection. Shared history staged by four own IDs.
+
+| Croatia | Seven supply/facilitation rows; corrected use/possession distinction; medical licence and research routes; confiscation/treatment; 2025 national seizures; two events and 2019 production article | Early Yugoslav decades; current medical stocks/licence completions; primary road-law recheck | this commit |
+
+Croatia: read current drug law, Criminal Code arts. 190–191, original 2019 and
+2015 regulations, November 2025 amendment, national 2025 police report and
+September 2025 market account. Preserved scores and statuses. The 2025 minimum
+was already correct in the profile, but absent from history: recorded 13 November
+commencement; sharing score already at floor 1, so no fictitious before step.
+Corrected “use handled as same misdemeanour” to distinguish the statutory use
+prohibition from the possession tariff. Removed Wikipedia dependence from the
+revised current-law claims. Supply aggravations and facilitation death range now
+structured; open-ended statutory minima kept without inventing a maximum.
+Medical market claim attributed to dated survey, not asserted as a verified
+October 2026 stock count. Research legal permission now explained without
+inferring absence of science from the commercial market. Kept statutory 0.2%
+hemp definition, rather than replacing it with the EU agricultural subsidy line.
+Police figures are national 2025 mass/plant counts; total seizure incidents cover
+all drugs. A local August 2026 raid appeared in search but its original failed
+retrieval, so it was not marked checked or added.
+
+Croatia validation: four-page build passed all tests/content/citations; inspected
+profile and production article. Audit zero errors/warnings. Existing regression
+checks required retaining the numeric “90 days” and “7.5 g of THC per 30 days”
+phrases; adjusted wording, preserving the underlying conditions. Shared history
+staged only for the two new IDs.
