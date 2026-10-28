@@ -3,11 +3,11 @@ region: Asia
 iso_numeric: 116
 recreational: illegal
 medical: none
-updated: '2026-10-28'
+updated: "2026-10-28"
 summary: >-
-  Cannabis is controlled under the 2012 drug law. Unlawful possession carries prison terms; the
-  law retains limited discretion for customary consumption and provides both voluntary and
-  compulsory treatment procedures.
+  Cannabis is controlled under the 2012 drug law. Unlawful possession carries prison terms; the law
+  retains limited discretion for customary consumption and cultivation and provides both voluntary
+  and compulsory treatment procedures.
 scores:
   possession: 1
   cultivation: 1
@@ -15,22 +15,22 @@ scores:
   sharing: 1
   consumption: 2
   access: 0
-# What the enforcement score cannot say (src/lib/answers.js): the law's basic penalty for
-# possession is prison, not a fine.
 answers:
   caught:
     answer: "no"
     label: Prison
-    text: Possession carries two to five years in prison, and a campaign since 2017 has brought mass arrests and detention
+    text: >-
+      Possession carries two to five years in prison, and a campaign since 2017 has brought mass
+      arrests and detention
 segments:
   possession:
     text: >-
       Article 40 punishes unlawful possession, concealment or storage of Table I drugs with two to
       five years and an optional 4–10 million riel fine for any amount.[@law] Dry cannabis of 8 to
       under 20 kg brings five to ten years and 10–20 million riel; 20 to under 60 kg brings ten to
-      twenty years and 20–40 million; 60 kg or more brings twenty to thirty years or life and
-      40–100 million.[@law] Resin and oil have separate bands from 400 g or 200 ml to 1,600 g or
-      800 ml.[@law] The published English text repeats the 20–60 kg band at the top tier; the 60 kg
+      twenty years and 20–40 million; 60 kg or more brings twenty to thirty years or life and 40–100
+      million.[@law] Resin and oil have separate bands from 400 g or 200 ml to 1,600 g or 800
+      ml.[@law] The published English text repeats the 20–60 kg band at the top tier; the 60 kg
       threshold is the intended reading and should be checked against the Khmer text.[@law]
     sources:
       - law
@@ -65,6 +65,7 @@ segments:
         fine_min: 40000000
         fine: 100000000
         note: Twenty to thirty years or life; English text repeats the 20–60 kg band
+        life: possible
       - label: Resin 400 g to under 800 g, or oil 200 ml to under 400 ml
         treatment: criminal
         term: Possession
@@ -89,10 +90,11 @@ segments:
         note: Twenty to thirty years or life
   cultivation:
     text: >-
-      Unlawful cultivation of narcotic plants in Tables I and II carries six months to two years
-      in prison; growing for distribution, manufacture or trade carries two to five years.[@law]
-      Drug-related activity requires permission or a licence from the competent
-      authorities.[@law]
+      Unlawful cultivation of narcotic plants in Tables I and II carries six months to two years in
+      prison; growing for distribution, manufacture or trade carries two to five years.[@law]
+      Article 38 also lets prosecutors exonerate, and courts acquit or reprimand, limited personal
+      growing in a non-addictive ancestral practice.[@law] Drug-related activity otherwise requires
+      permission or a licence from the competent authorities.[@law]
     sources:
       - law
     currency: KHR
@@ -117,7 +119,7 @@ segments:
       substituting alternative penalties under the Criminal Code.[@law] In 2025 police recorded
       10,743 drug cases and 27,884 suspects, up from 10,630 and 27,071 in 2024; dried cannabis
       seizures rose from 142 kg to 525 kg while total drug seizures fell from 14.9 to 5.9
-      tonnes.[@akp26] In January–July 2026 they recorded 16,498 suspects and 105 kg of dried
+      tonnes.[@akp26] In January–September 2026 they recorded 20,906 suspects and 389 kg of dried
       cannabis.[@cambodianess26] Amnesty International documents mass arrests and detention during
       the campaign begun in 2017.[@ai2023] The figures cover all drugs and do not establish a
       cannabis-only sentencing rate.[@akp26]
@@ -130,10 +132,10 @@ segments:
     text: >-
       Article 40 treats selling, buying for resale, exchanging and trading as trafficking; selling
       any amount carries two to five years and 4–10 million riel, with the same weight bands as
-      possession.[@law] Arranging another person's consumption carries two to five years and
-      4–10 million, with aggravated bands up to twenty to thirty years or life; facilitating
-      consumption, such as providing a venue, carries one to five years and 2–10 million.[@law]
-      Transfer between people is treated as transport.[@law]
+      possession.[@law] Arranging another person's consumption carries two to five years and 4–10
+      million, with aggravated bands up to twenty to thirty years or life; facilitating consumption,
+      such as providing a venue, carries one to five years and 2–10 million.[@law] Transfer between
+      people is treated as transport.[@law]
     sources:
       - law
     currency: KHR
@@ -167,6 +169,7 @@ segments:
         fine_min: 40000000
         fine: 100000000
         note: Twenty to thirty years or life
+        life: possible
       - label: Arranging another person's consumption
         treatment: criminal
         term: Arranging use
@@ -224,55 +227,56 @@ context:
   recreational:
     text: >-
       No legal recreational supply exists, though 'happy pizza' restaurants and street sellers
-      operate openly in some cities, tolerated rather than licensed. Unlawful possession carries
-      two to five years in prison.[@cann,law]
+      operate openly in some cities, tolerated rather than licensed. Unlawful possession carries two
+      to five years in prison.[@cann,law]
     sources:
       - cann
       - law
   production:
     status: none
     text: >-
-      The 2012 law allows permissions for research, clinical, scientific or industrial purposes,
-      but no cannabis production permission or operational scheme exists.[@law] In October 2026 Hun Manet
-      rejected foreign proposals to grow cannabis for medical export and ruled out amending the
-      law.[@khmertimes26]
+      The 2012 law allows permissions for research, clinical, scientific or industrial purposes, but
+      no cannabis production permission or operational scheme exists.[@law] In October 2026 Hun
+      Manet rejected foreign proposals to grow cannabis for medical export and ruled out amending
+      the law.[@khmertimes26]
     sources:
       - law
       - khmertimes26
   research:
     status: licensed
     text: >-
-      Research is one of the four permitted purposes for licensed cultivation, manufacture and
-      supply of controlled drugs; no cannabis research programme was verified beyond the
-      licensing route.[@law]
+      Article 12 lets the Minister of Health authorise individuals in a state organisation to
+      cultivate, make, buy, use or store drugs for medical, scientific or police-science research,
+      with a logbook and annual report.[@law] No actual cannabis research programme was verified
+      beyond that route.[@law]
     sources:
       - law
   medical:
     text: >-
-      No medical cannabis programme and no legal products; the licensing system permits clinical
-      and research activity but no patient supply route exists.[@law] In October 2026 the prime
-      minister rejected medical-export cultivation and any law change.[@khmertimes26]
+      No medical cannabis programme and no legal products; the licensing system permits clinical and
+      research activity but no patient supply route exists.[@law] In October 2026 the prime minister
+      rejected medical-export cultivation and any law change.[@khmertimes26]
     sources:
       - law
       - khmertimes26
   hemp:
     status: none
     text: >-
-      No legal hemp category or THC threshold. Cannabis is in Table I with no medical use;
-      article 14's industrial licensing is theoretical and no hemp scheme or licence exists.[@law]
-      The prime minister rejected cannabis cultivation in October 2026.[@khmertimes26]
+      No legal hemp category or THC threshold. Cannabis is in Table I with no medical use; article
+      14's industrial licensing is theoretical and no hemp scheme or licence exists.[@law] The prime
+      minister rejected cannabis cultivation in October 2026.[@khmertimes26]
     sources:
       - law
       - khmertimes26
   driving:
     status: impairment
     text: >-
-      Article 63 punishes driving a road, water or air vehicle under the influence of drugs with
-      one month to one year and an optional 100,000–2,000,000 riel fine; injury disabling the
-      victim for eight days or more brings one to two years and 2–4 million riel, and permanent
-      disability or death two to five years and 4–10 million.[@law] The 2015 Road Traffic Law adds
-      six licence points for drug driving and punishes refusal to stop for a test with six days to
-      one month and 100,000–800,000 riel.[@road2015] There is no THC blood limit; the offence is
+      Article 63 punishes driving a road, water or air vehicle under the influence of drugs with one
+      month to one year and an optional 100,000–2,000,000 riel fine; injury disabling the victim for
+      eight days or more brings one to two years and 2–4 million riel, and permanent disability or
+      death two to five years and 4–10 million.[@law] The 2015 Road Traffic Law adds six licence
+      points for drug driving and punishes refusal to stop for a test with six days to one month and
+      100,000–800,000 riel.[@road2015] There is no THC blood limit; the offence is
       impairment-based.[@law]
     sources:
       - law
@@ -280,9 +284,9 @@ context:
   consequences:
     text: >-
       State-centre treatment and rehabilitation can last six months to two years.[@law] The law
-      provides medical conditions, prosecutor or court decisions and appeal routes for
-      compulsory treatment.[@law] Amnesty International documented detention without proper
-      safeguards during the anti-drug campaign.[@ai2020]
+      provides medical conditions, prosecutor or court decisions and appeal routes for compulsory
+      treatment.[@law] Amnesty International documented detention without proper safeguards during
+      the anti-drug campaign.[@ai2020]
     sources:
       - law
       - ai2020
@@ -293,37 +297,42 @@ context:
     clones_trade: banned
     text: >-
       The 2012 law includes cannabis among narcotic plants and makes unauthorised cultivation an
-      offence.[@law] Licensed activity is limited to research, clinical, scientific or
-      industrial purposes.[@law] No public seed or cutting retail permission was verified in the
-      reviewed provisions.[@law]
+      offence.[@law] Table I lists cannabis, resin and oil but not seed; sowing is cultivation, so
+      seeds remain a grey area and a cutting is a plant.[@law] Licensed activity is limited to
+      research, clinical, scientific or industrial purposes, and no public seed or cutting retail
+      permission was verified.[@law]
     sources:
       - law
   clubs:
     status: none
     text: >-
-      The law criminalises unauthorised cultivation and transfer of controlled drugs between
-      people.[@law] Its licensing rules limit permission to research, clinical, scientific or
-      industrial purposes.[@law]
+      No cannabis clubs are known. The law criminalises unauthorised cultivation and transfer, and
+      article 44 makes providing a place for drug use an offence carrying one to five years and 2–10
+      million riel.[@law]
     sources:
       - law
   visitors:
     status: none
     text: >-
-      Unlawful possession of cannabis falls under the drug law's basic two-to-five-year prison
-      penalty.[@law] The reviewed law gives visitors no separate recreational possession or
-      supply permission.[@law]
+      Unlawful possession of cannabis falls under the drug law’s basic two-to-five-year prison
+      penalty.[@law] The law gives visitors no separate recreational possession or supply
+      permission, and foreigners are prosecuted: two Britons were sentenced to 14 and 10 years in
+      February 2026, and five Britons were charged over 97 kg at Techo airport in
+      September.[@khmertimes26c] Courts can order deportation after sentence.[@law]
     sources:
       - law
+      - khmertimes26c
   arrests:
     text: >-
-      Police counted 27,884 drug suspects in 2025, up from 27,071 in 2024, and 16,498 in
-      January–July 2026, 10% more than a year earlier; 889 of the 2026 suspects were
-      foreigners.[@akp26,cambodianess26] Dried cannabis seizures rose from 142 kg in 2024 to 525 kg
-      in 2025, then 105 kg in January–July 2026.[@akp26,cambodianess26] The figures cover all
-      drugs; no cannabis-only arrest count is published.[@akp26]
+      Police counted 27,884 drug suspects in 2025, up from 27,071 in 2024, and 20,906 in
+      January–September 2026; 889 of the January–July suspects were
+      foreigners.[@akp26,cambodianess26,xinhua26] Dried cannabis seizures rose from 142 kg in 2024
+      to 525 kg in 2025, then 389 kg in January–September 2026.[@akp26,xinhua26] The figures cover
+      all drugs; no cannabis-only arrest count is published.[@akp26]
     sources:
       - akp26
       - cambodianess26
+      - xinhua26
   culture:
     text: >-
       Cannabis is called [ganja](/culture/language/ganja/) in Khmer usage, and the country has a
@@ -339,24 +348,30 @@ context:
   black_market:
     text: >-
       UNODC records 142 kg of herbal cannabis seized in 2024, against 45.2 kg in 2023.[@unodc_szr]
-      The Anti-Drug Department reported 525 kg in 2025 and 105 kg in January–July 2026, while
-      plants destroyed fell from 17,785 in 2024 to 12,212 in 2025.[@akp26] A January–June 2026
-      report gave only 12.7 kg of dried cannabis, conflicting with the 105 kg figure for
-      January–July; the two may count different categories.[@cambodianess26] The figures are not
-      directly comparable.[@unodc_szr,akp26]
+      The Anti-Drug Department reported 525 kg in 2025 and 389 kg in January–September 2026; the
+      2026 figures are cumulative — 9.4 kg by May, 12.7 kg by June, 105 kg by July, 282 kg by August
+      and 389 kg by September.[@akp26,xinhua26] A 65 kg condo seizure in June 2026 was larger than
+      the entire January–June official total, so the series is not a complete count of all cannabis
+      seizures.[@khmertimes26b] Plants destroyed fell from 17,785 in 2024 to 12,212 in 2025.[@akp26]
+      The figures are not directly comparable.[@unodc_szr,akp26]
     sources:
       - unodc_szr
       - akp26
-      - cambodianess26
+      - xinhua26
+      - khmertimes26b
 sources:
   ai2023:
     type: report
-    title: 'Amnesty International — Cambodia: Submission to the UN Committee on Economic, Social and Cultural Rights'
+    title: >-
+      Amnesty International — Cambodia: Submission to the UN Committee on Economic, Social and
+      Cultural Rights
     year: 2023
     locator: ASA 23/6356/2023, printed pages 4–5; all-drug prosecution and detention evidence
     url: https://www.amnesty.org/en/wp-content/uploads/2023/01/ASA2363562023ENGLISH.pdf
   akp26:
-    title: AKP — Cambodia Cracks Down on 10,743 Drug Cases in 2025, Nearly 28,000 Suspects Arrested (6 March 2026)
+    title: >-
+      AKP — Cambodia Cracks Down on 10,743 Drug Cases in 2025, Nearly 28,000 Suspects Arrested (6
+      March 2026)
     url: https://akp.gov.kh/post/detail/364183
   lcd96:
     title: Law on Control of Drugs, 1996, English text as notified to the WTO (PDF)
@@ -372,17 +387,21 @@ sources:
     locator: Articles 10–14, 27–28, 38, 40, 45, 100–110 and 125; Table I
     url: http://nacd.gov.kh/upload/legaldocs/1/1778341557legal.pdf
   khmertimes26:
-    title: "Khmer Times — PM says no to cannabis cultivation in Cambodia (8 October 2026)"
+    title: Khmer Times — PM says no to cannabis cultivation in Cambodia (8 October 2026)
     url: https://www.khmertimeskh.com/502037272/pm-says-no-to-cannabis-cultivation-in-cambodia
-    locator: "Hun Manet rejects medical-export cultivation and law change."
+    locator: Hun Manet rejects medical-export cultivation and law change.
   cambodianess26:
-    title: "Cambodianess (Xinhua) — Cambodia reports jump in drug arrests, seizures in first 7 months of 2026 (2 August 2026)"
-    url: https://cambodianess.com/article/cambodia-reports-jump-in-drug-arrests-seizures-in-first-7-months-of-2026
-    locator: "16,498 suspects; 2.51 tonnes; 105 kg dried cannabis; 889 foreigners."
+    title: >-
+      Cambodianess (Xinhua) — Cambodia reports jump in drug arrests, seizures in first 7 months of
+      2026 (2 August 2026)
+    url: >-
+      https://cambodianess.com/article/cambodia-reports-jump-in-drug-arrests-seizures-in-first-7-months-of-2026
+    locator: 16,498 suspects; 2.51 tonnes; 105 kg dried cannabis; 889 foreigners.
   road2015:
-    title: "Cambodia — Law on Road Traffic 2015 (English translation, PDF)"
-    url: https://www.huskyandpartners.com/images/Law%20Library/Transportation/20190502-Law%20on%20Road%20Traffic_2015_En.pdf.pdf
-    locator: "Articles 43(E), 66 and 76."
+    title: Cambodia — Law on Road Traffic 2015 (English translation, PDF)
+    url: >-
+      https://www.huskyandpartners.com/images/Law%20Library/Transportation/20190502-Law%20on%20Road%20Traffic_2015_En.pdf.pdf
+    locator: Articles 43(E), 66 and 76.
   lc:
     title: LegalClarity — Is weed legal in Cambodia? The law explained
     url: https://legalclarity.org/is-weed-legal-in-cambodia-the-law-explained/
@@ -410,3 +429,21 @@ sources:
       ASA 23/2220/2020; executive summary, methodology, campaign background, detention and
       recommendations
     url: https://www.amnesty.org/en/wp-content/uploads/2021/05/ASA2322202020ENGLISH.pdf
+  xinhua26:
+    title: >-
+      Xinhua — Cambodia reports 20,906 drug suspects and 389 kg of cannabis in nine months (1
+      October 2026)
+    url: https://english.news.cn/20261001/ae03d7dd9f504cdf92f54618ac524e76/c.html
+    locator: "January–September 2026: 7,769 cases, 20,906 suspects, 3.08 t total, 389 kg cannabis herb."
+  khmertimes26b:
+    title: >-
+      Khmer Times — British national arrested with 65 kg of marijuana in Phnom Penh condo (June
+      2026)
+    url: >-
+      https://www.khmertimeskh.com/501790000/british-national-arrested-with-65kg-of-marijuana-during-phnom-penh-condo-raid
+    locator: 65 kg seizure, larger than the January–June official cannabis total.
+  khmertimes26c:
+    title: Khmer Times — Five Britons charged over Techo airport drug smuggling (September 2026)
+    url: >-
+      https://www.khmertimeskh.com/502023797/court-charges-five-british-nationals-over-drug-smuggling-attempt-through-techo-international-airport
+    locator: 97.236 kg cannabis and heroin across two airport stops.
