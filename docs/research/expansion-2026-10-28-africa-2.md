@@ -12,7 +12,15 @@ All batch files verified free of others' uncommitted changes at start.
 - No atlas entries: culture skipped; planting + driving researched sections skipped (no sources found).
 - Audit 0/0; country + both article review builds verified.
 - Left: 1930s/40s/50s/70s/80s history decades.
-## td — pending
+## td — committed
+- Per-sentence cites on 11 flagged texts; fixed 3 `term` warnings; removed FCDO travel-advice source (audit-flagged) — recreational/visitors rewritten from the pharmacy law.
+- New hemp (status none — decree + pharmacy law, no THC carve-out); words (Chanvre/French, verified in the 1966 decree PDF).
+- History links added (2017 confinement, 2025 burn); two articles: `chad-convicted-drug-users-confinement-2017.md` and `chad-police-burn-2025.md`.
+- Dropped now-unused pc2017 from visitors sources (citation-list test).
+- Blocked mid-work by another agent's Malta restructure (#160/#178 crash); green on retry (profile-claims 97/0).
+- No atlas entries: culture skipped; planting/driving/arrests skipped (no sources found). 1995 law consolidation still unverified (noted in profile).
+- Audit 0/0; country + both article review builds verified.
+- Left: 1930s/40s/50s/70s/80s history decades.
 ## so — pending
 ## bi — pending
 ## ss — pending

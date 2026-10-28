@@ -15,19 +15,22 @@ scores:
   sharing: 1
   consumption: 1
   access: 0
+words:
+  - { word: Chanvre, lang: French, meaning: "hemp; the 1966 decree's word for cannabis", sources: [decree1966] }
 segments:
   possession:
     text: >-
       The 2000 pharmacy law, Articles 134–135, provides one to six years in prison,
       a fine of 300,000 to three million CFA francs, or both for possessing narcotics
-      without a legitimate reason. Its relationship with the separate 1995 drug law
-      and subsequent changes has not been verified.
+      without a legitimate reason.[@pharmacy2000] Its relationship with the separate 1995 drug
+      law and subsequent changes has not been verified.
     sources:
       - pharmacy2000
     currency: XAF
     penalties:
       - label: Possessing narcotics without legitimate reason (Articles 134–135)
         treatment: criminal
+        term: Possession
         prison_min: 1 year
         prison: 6 years
         fine: 3000000
@@ -35,7 +38,7 @@ segments:
   cultivation:
     text: >-
       Article 136 of the 2000 pharmacy law doubles the ordinary narcotics penalties for
-      illicit cultivation: two to twelve years in prison, a doubled fine, or both.
+      illicit cultivation: two to twelve years in prison, a doubled fine, or both.[@pharmacy2000]
       Current consolidated penalties remain unverified; see possession.
     sources:
       - pharmacy2000
@@ -43,6 +46,7 @@ segments:
     penalties:
       - label: Illicit cultivation (Article 136, doubled penalties)
         treatment: criminal
+        term: Cultivation
         prison_min: 2 years
         prison: 12 years
         fine: 6000000
@@ -51,40 +55,44 @@ segments:
     text: >-
       Article 38 of the 2017 Penal Code allows up to two years of confinement in a special
       health institution for a person with drug dependence convicted of an offence punishable
-      by at least two years in prison. Under Article 41 it begins after the principal prison
-      sentence ends or is suspended. The court may shorten confinement after medical advice
-      that release no longer threatens public order. Current drug-offence penalties remain
-      unverified; see possession.
+      by at least two years in prison.[@pc2017] Under Article 41 it begins after the principal
+      prison sentence ends or is suspended.[@pc2017] The court may shorten confinement after
+      medical advice that release no longer threatens public order.[@pc2017] Current drug-offence
+      penalties remain unverified; see possession. The 2017 confinement rule is traced in the
+      [confinement entry](/history/chad-convicted-drug-users-confinement-2017/).
     sources:
       - pc2017
   sharing:
     text: >-
       The 2000 pharmacy law punishes helping someone else use narcotics, even free of
-      charge, with one to six years in prison, a fine, or both. It also requires a five
-      to twenty year residence restriction for facilitating use. Current consolidated
-      penalties remain unverified; see possession.
+      charge, with one to six years in prison, a fine, or both.[@pharmacy2000] It also requires a
+      five to twenty year residence restriction for facilitating use.[@pharmacy2000] Current
+      consolidated penalties remain unverified; see possession.
     sources:
       - pharmacy2000
     currency: XAF
     penalties:
       - label: Helping someone else use narcotics, free or paid
         treatment: criminal
+        term: Supply
         prison_min: 1 year
         prison: 6 years
         note: Fine and/or prison; five-to-twenty-year residence restriction; consolidation unverified
   consumption:
     text: >-
-      The 1966 decree expressly prohibited cannabis use. Article 134 of the 2000 pharmacy
-      law sets one to six years in prison, a fine, or both for using narcotics together.
-      Current consolidated penalties remain unverified; see possession.
+      The 1966 decree expressly prohibited cannabis use.[@decree1966] Article 134 of the 2000
+      pharmacy law sets one to six years in prison, a fine, or both for using narcotics
+      together.[@pharmacy2000] Current consolidated penalties remain unverified; see
+      possession.
     sources:
       - decree1966
       - pharmacy2000
   access:
     text: >-
-      No operating cannabis supply programme was established by the retained sources.
-      The 1966 decree allowed the health minister to grant exceptions for scientific
-      research; the 2000 law regulated controlled medicines and adopted treaty drug lists.
+      No operating cannabis supply programme was established by the retained
+      sources.[@decree1966] The 1966 decree allowed the health minister to grant exceptions for
+      scientific research; the 2000 law regulated controlled medicines and adopted treaty drug
+      lists.[@decree1966,pharmacy2000]
     sources:
       - decree1966
       - pharmacy2000
@@ -101,14 +109,23 @@ context:
       There is no legal way to get cannabis. Possessing narcotics without a legitimate reason
       brings one to six years in prison, a fine of 300,000 to three million CFA francs, or
       both under the 2000 pharmacy law, whose consolidation with the 1995 drug law remains
-      unverified.[@pharmacy2000] British travel advice calls the penalties severe and usually
-      custodial.[@fcdo]
+      unverified.[@pharmacy2000]
     sources:
       - pharmacy2000
-      - fcdo
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the 1966 decree prohibits cannabis without
+      distinction, the 2000 pharmacy law lists narcotics with no low-THC carve-out, and no hemp
+      production is documented.[@decree1966,pharmacy2000]
+    sources:
+      - decree1966
+      - pharmacy2000
   production:
     status: none
-    text: No licensed production. Illicit cultivation carries two to twelve years and a doubled fine.
+    text: >-
+      No licensed production. Illicit cultivation carries two to twelve years and a doubled
+      fine.[@pharmacy2000]
     sources:
       - pharmacy2000
   medical:
@@ -123,31 +140,34 @@ context:
     text: >-
       The 2000 pharmacy law requires a five to twenty year residence restriction for
       facilitating narcotics use and provides confiscation and professional bans in
-      specified cases. Its present application alongside the 1995 drug law remains unverified.
+      specified cases.[@pharmacy2000] Its present application alongside the 1995 drug law remains
+      unverified.
     sources:
       - pharmacy2000
   clubs:
     status: none
     text: >-
-      The retained sources establish no authorised cannabis clubs. The 2000 pharmacy law
-      punishes using narcotics together and helping others use them, including providing premises.
+      The retained sources establish no authorised cannabis clubs.[@pharmacy2000] The 2000 pharmacy
+      law punishes using narcotics together and helping others use them, including providing
+      premises.[@pharmacy2000]
     sources:
       - pharmacy2000
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says penalties
-      for drug use and possession are severe and usually include a prison sentence, and that
-      conditions in local prisons are harsh.
+      There is no separate rule for visitors and no lawful supply: the pharmacy law's narcotics
+      penalties apply to anyone, and facilitating use brings a five to twenty year residence
+      restriction.[@pharmacy2000]
     sources:
-      - pc2017
-      - fcdo
+      - pharmacy2000
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 400 kg of herbal
-      cannabis seized in 2024, against 125 kg in 2023. The UN publishes them as kilogram
+      cannabis seized in 2024, against 125 kg in 2023.[@unodc_szr] The UN publishes them as kilogram
       equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      comparable across borders.[@unodc_szr] Police still destroy seizures publicly: in November
+      2025 they burned 32 kg of herb and 34 balls of cannabis in N'Djamena under the 1995 drug
+      law (see the [2025 burn](/history/chad-police-burn-2025/)).
     sources:
       - unodc_szr
 sources:
@@ -157,9 +177,6 @@ sources:
   pharmacy2000:
     title: Chad — Law 024/PR/2000 on pharmacy, Articles 36 and 134–138
     url: https://sherloc.unodc.org/cld/uploads/res/document/tcd/loi-no-24_html/loi_no_24.pdf
-  fcdo:
-    title: "GOV.UK (FCDO) — Foreign travel advice: Chad, safety and security"
-    url: https://www.gov.uk/foreign-travel-advice/chad/safety-and-security
   pc2017:
     title: Tchad — Code pénal, Loi n° 2017-01 du 8 mai 2017 (FAOLEX copy)
     url: https://faolex.fao.org/docs/pdf/cha213367.pdf
