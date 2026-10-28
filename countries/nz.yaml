@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 554
 recreational: illegal
 medical: legal
-updated: 2026-10-27
+updated: 2026-10-28
 summary: >-
   Illegal, but since 2019 police must consider a health-based response before prosecuting. A
   legalisation referendum narrowly failed in 2020; the medical scheme has operated since.
@@ -17,8 +17,10 @@ scores:
 segments:
   possession:
     text: >-
-      Possession is a criminal offence with a maximum of three months' prison or a NZ$500 fine, and
-      a legal presumption against imprisonment.[@moh,pmcsa] Since August 2019 police must consider whether a
+      Possession is a criminal offence with a maximum of three months' prison or a NZ$500 fine. For a
+      Class C plant or seed offence, there is a legal presumption against imprisonment unless there
+      are previous convictions or exceptional circumstances; Class B preparations do not have that
+      custody presumption.[@mda,pmcsa] Since August 2019 police must consider whether a
       health-based response would be more beneficial than prosecution, and many cases now end in a
       warning or referral — but thousands are still charged.[@moh] The 1975 Act that still governs
       cannabis is traced in the [1975 Act](/history/new-zealand-misuse-of-drugs-1975/), and the 2019
@@ -26,6 +28,7 @@ segments:
     sources:
       - moh
       - pmcsa
+      - mda
     currency: NZD
     penalties:
       - label: Ordinary Class B/C personal possession
@@ -33,10 +36,10 @@ segments:
         term: Possession
         prison: 3 months
         fine: 500
-        note: Legal presumption against imprisonment; health response considered first
+        note: Class C only has the presumption against imprisonment; health response considered first
   cultivation:
     text: >-
-      Growing cannabis is a criminal offence, with up to seven years on indictment.[@pmcsa] The one
+      Growing cannabis is a criminal offence, with up to seven years.[@pmcsa] The one
       exception is low-THC hemp, at most 1% THC by dry weight: since 28 May 2026 it may be grown
       without a licence for specified purposes, such as breeding, making hemp products or
       supplying the medicinal scheme, after notifying both Police and the Ministry for Primary
@@ -47,7 +50,7 @@ segments:
       - pmcsa
     currency: NZD
     penalties:
-      - label: Growing cannabis (on indictment)
+      - label: Growing cannabis
         treatment: criminal
         term: Unlicensed cultivation
         prison: 7 years
@@ -59,7 +62,8 @@ segments:
     text: >-
       Warnings and health referrals have reduced user prosecutions since 2019, although many people
       are still charged.[@moh,nh] Ordinary Class B/C personal possession can carry up to three
-      months and/or NZ$500. Supply accusations have different penalties: up to fourteen years for
+      months and/or NZ$500. The Class C presumption against imprisonment does not apply to Class B
+      preparations.[@mda] Supply accusations have different penalties: up to fourteen years for
       Class B preparations and eight years for Class C plant offences under section 6. The supply
       presumptions differ by form and can be rebutted.[@police_penalties,mda]
     sources:
@@ -78,6 +82,30 @@ segments:
     sources:
       - mda
       - police_penalties
+    currency: NZD
+    penalties:
+      - label: Selling or supplying Class C cannabis
+        treatment: criminal
+        term: Supply
+        prison: 8 years
+      - label: Supplying Class C cannabis to a person under 18
+        treatment: criminal
+        term: Supply to a minor
+        prison: 8 years
+      - label: Giving Class C cannabis without sale
+        treatment: criminal
+        term: Gift
+        prison: 3 months
+        fine: 500
+      - label: Supplying Class B cannabis
+        treatment: criminal
+        term: Supply
+        prison: 14 years
+      - label: Possession for supply
+        treatment: criminal
+        term: Possession for supply
+        prison: 14 years
+        note: 8 years for Class C plant, 14 for Class B preparations
   consumption:
     text: >-
       Use is an offence under the same provision as possession, handled with the same police
@@ -97,23 +125,23 @@ context:
   production:
     status: medical
     text: >-
-      Since April 2020 the Medicinal Cannabis Scheme licenses commercial cultivation and
-      manufacture of medicinal cannabis. Since 28 May 2026 low-THC hemp (at most 1% THC) may be
-      grown, processed and supplied within New Zealand without a licence for specified purposes,
-      after the grower notifies Police and the Ministry for Primary Industries. Importing and
-      exporting hemp plants and seed still needs a licence.
+      Since April 2020 the Medicinal Cannabis Scheme has licensed commercial cultivation and
+      manufacture of medicinal cannabis under the Misuse of Drugs Act and the 2019
+      regulations.[@moh_industry] Since 28 May 2026 low-THC hemp (at most 1% THC) may be grown,
+      processed and supplied within New Zealand without a licence for specified purposes, after the
+      grower notifies Police and the Ministry for Primary Industries.[@hemp_regs] Importing and
+      exporting hemp plants and seed still needs a licence.[@hemp_regs]
     sources:
-      - pmcsa
-      - ref
+      - moh_industry
       - hemp_regs
-      - moh_hemp
   medical:
     text: >-
-      Any doctor can prescribe approved medicinal cannabis products for any condition. Products are
-      unsubsidised and costly.[@pmcsa] Prescription flower and oils must meet the scheme's quality
-      standard; otherwise only hemp products made from low-THC plants, such as seed and fibre
-      products — not every use of hemp flowers or extracts is allowed.[@pmcsa,moh_hemp] The scheme's
-      launch is traced in the [2020 scheme](/history/new-zealand-medicinal-scheme-2020/).
+      Any doctor or nurse practitioner can prescribe a verified medicinal cannabis product for any
+      condition; pharmacist prescribers are limited to CBD and some Class B1 dosage
+      products.[@pmcsa] Products are unsubsidised and costly.[@pmcsa] Prescription flower and oils must meet the
+      scheme's quality standard; CBD products meeting the legal definition are prescription-only
+      medicines, and hemp flower or leaf is not a food.[@pmcsa,moh_hemp] The scheme's launch is
+      traced in the [2020 scheme](/history/new-zealand-medicinal-scheme-2020/).
     sources:
       - pmcsa
       - moh_hemp
@@ -134,9 +162,10 @@ context:
       Hemp at most 1% THC may be grown without a licence for specified purposes since May 2026,
       after notifying Police and the Ministry for Primary Industries.[@hemp_regs] It gives no right to
       grow cannabis to use, and importing or exporting hemp plants and seed still needs a
-      licence.[@hemp_regs]
+      licence.[@hemp_regs] CBD remains prescription-only, and hemp leaf or flower is not a food.[@moh_hemp]
     sources:
       - hemp_regs
+      - moh_hemp
   consequences:
     text: >-
       A conviction is a criminal record affecting travel and work.[@pmcsa] Roadside oral-fluid drug testing
@@ -156,11 +185,14 @@ context:
       Primary Industries, with notifications valid for one year.[@hemp_regs] Hemp cultivars must
       contain no more than 1% THC by dry weight. Clones, tissue, seedlings and seeds of high-THC
       cultivars are not hemp, even when young material itself contains little THC.[@moh_hemp]
+      Ordinary cannabis seed is a Class C controlled drug, so possessing or germinating it remains an
+      offence; only qualifying hemp material is outside the licence requirement.[@mda,hemp_regs]
       Importing or exporting whole hemp seed or plant material still needs a licence.[@hemp_regs,
       moh_hemp]
     sources:
       - hemp_regs
       - moh_hemp
+      - mda
   clubs:
     status: underground
     text: >-
@@ -187,16 +219,19 @@ context:
     text: >-
       There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
       cannabis.[@ref] Whatever legal supply exists is medical, for patients with a prescription or
-      registration.[@pmcsa] The sources behind this profile describe no separate rule for visitors.
+      registration.[@pmcsa] A visitor may bring a prescribed medicinal cannabis product for personal
+      use with a copy of the prescription or a prescriber's letter; there is no recreational
+      route.[@healthnz]
     sources:
       - ref
       - pmcsa
+      - healthnz
   driving:
     status: limit
     text: >-
       Police can stop any driver and screen saliva at the roadside for four drugs, THC among
-      them.[@pdd2] Testing began in Wellington on 15 December 2025, with a national roll-out planned
-      from April 2026.[@pdd1] The device reacts only at or above a built-in threshold, which police
+      them.[@pdd2] Testing began in Wellington on 15 December 2025 and went nationwide on 1 July
+      2026.[@pdd1,pdd5] The device reacts only at or above a built-in threshold, which police
       say is set to show recent use and to exclude past use and passive exposure.[@pdd2] A positive
       screen leads to a second one and a saliva sample for the laboratory; two positive
       screens mean a 12-hour driving ban on the spot.[@pdd3] A fine follows only if the laboratory
@@ -213,6 +248,7 @@ context:
       - pdd2
       - pdd3
       - pdd4
+      - pdd5
   arrests:
     text: >-
       Ministry of Justice figures reported in March 2026 show 3,438 people charged with
@@ -222,18 +258,26 @@ context:
       offences, 82% came alongside charges unrelated to cannabis; 506 people were convicted of
       cannabis offences alone in 2025, against 387 in 2023.[@zb26] Police said the rise tracks higher
       use seen in wastewater testing, and that the charge figures leave out the warnings
-      officers give for possession.[@zb26]
+      officers give for possession.[@zb26] Official court finalisations for the year to 30 June 2026
+      show 5,690 cannabis charges and 3,543 people charged, down slightly from 5,854 and 3,606;
+      2,551 people were convicted, 558 received imprisonment as the most serious sentence, and 464
+      of 2,596 conviction instances were cannabis-only.[@moj26]
     sources:
       - zb26
+      - moj26
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 1,136 kg of herbal
       cannabis seized in 2024, against 812 kg in 2023, and 4.7 kg of cannabis resin seized
       in 2024, against 2.7 kg in 2023.[@unodc_szr] The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across
-      borders.[@unodc_szr]
+      countries count seizures differently, so the figures are not comparable across borders.[@unodc_szr]
+      Police plant-material seizures are larger and measured differently: Operation Beryl reported
+      more than 10 tonnes in 2025 and Operation Blackout more than five tonnes in 2026, counted as
+      cannabis material rather than dried herb.[@beryl25,blackout26]
     sources:
       - unodc_szr
+      - beryl25
+      - blackout26
 sources:
   lab2025:
     title: New Zealand — Land Transport (Concentration Level of Listed Qualifying Drugs) Notice 2025
@@ -278,8 +322,9 @@ sources:
     url: >-
       https://health.govt.nz/system/files/2021-11/misuse_of_drugs_amendment_act_2019_post-implementation_review.pdf
   ref:
-    title: Wikipedia — 2020 New Zealand cannabis referendum
-    url: https://en.wikipedia.org/wiki/2020_New_Zealand_cannabis_referendum
+    title: "Electoral Commission — Official referendum results released (6 November 2020)"
+    url: https://elections.nz/media-and-news/2020/official-referendum-results-released
+    locator: "Cannabis: 1,406,973 yes (48.4%), 1,474,635 no (50.7%)."
   pmcsa:
     title: Office of the Prime Minister's Chief Science Advisor — Cannabis in Aotearoa New Zealand
     url: https://pmcsa.ac.nz/topics/cannabis/
@@ -290,6 +335,29 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  moh_industry:
+    title: "NZ Ministry of Health — Overview of the medicinal cannabis licensing scheme (May 2026)"
+    url: https://www.health.govt.nz/system/files/2026-05/guideline-on-the-regulation-of-medicinal-cannabis-in-new-zealand-overview-of-the-medicinal-cannabis-licensing-scheme-may2026.pdf
+    locator: "Part 2 licensing: cultivation, manufacture, supply and research; MDA section 14."
+  healthnz:
+    title: "Health New Zealand — Medicinal cannabis"
+    url: https://www.healthnz.govt.nz/health-topics/tests-and-treatments/medicines/medicinal-cannabis-marijuana
+    locator: "Prescription route and bringing a prescribed product into New Zealand."
+  pdd5:
+    title: "New Zealand Police — Roadside drug testing operating nationwide (16 July 2026)"
+    url: https://www.police.govt.nz/news/release/roadside-drug-testing%C2%A0operating%C2%A0nationwide
+  moj26:
+    title: "NZ Ministry of Justice — Cannabis offences data tables, year to 30 June 2026"
+    url: https://www.justice.govt.nz/assets/Documents/Publications/487Lyf_Cannabis-offences_June-2026_v1.0.xlsx
+    locator: "5,690 finalised charges; 3,543 people charged; 2,551 convicted; 558 imprisoned; 464 cannabis-only instances."
+  beryl25:
+    title: "New Zealand Police — Operation Beryl: 120 cannabis grow houses (25 September 2025)"
+    url: https://www.police.govt.nz/news/release/police-deal-significant-blow-organised-crime-uprooting-120-cannabis-grow-houses
+    locator: "More than 10 tonnes of cannabis material; 11,000+ plants; 30 arrests."
+  blackout26:
+    title: "New Zealand Police — Operation Blackout (25 August 2026)"
+    url: https://www.police.govt.nz/news/release/blackout-operation-descends-vietnamese-organise-crime-group-linked-cannabis
+    locator: "More than five tonnes of cannabis material at 50+ properties; 12 arrests."
   mda:
     title: New Zealand Legislation — Misuse of Drugs Act 1975
     url: https://www.legislation.govt.nz/act/public/1975/116/en/latest/
