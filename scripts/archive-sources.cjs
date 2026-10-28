@@ -14,7 +14,8 @@
 // `limit` caps how many addresses one run handles (default 50), so a run stays short and polite;
 // run it again to continue. Results go to source-archive.json, which the site reads:
 //   { "<url>": { "archived": "https://web.archive.org/web/<timestamp>/<url>", "checked": "YYYY-MM-DD" } }
-// An address with no copy is recorded with "archived": null and is tried again after 30 days.
+// An address with no copy is recorded with "archived": null. `check` looks it up again after 30
+// days; `save` and `probe` leave it alone while that try is 2 days old or newer.
 //
 // An address whose site cannot be reached is marked, so that runs skip it instead of failing on it
 // every time; the source itself stays in the data and on the site:
@@ -74,6 +75,10 @@ const DEAD_DAYS = 90;
 // marked dead and seen within the last 90 days: skipped by every run
 const resting = (u) => !includeDead && archive[u]?.dead && Date.now() - Date.parse(archive[u].dead.seen) < DEAD_DAYS * 864e5;
 const stale = (u) => !resting(u) && (!archive[u] || (!archive[u].archived && Date.now() - Date.parse(archive[u].checked) > 30 * 864e5));
+// tried without a copy 2 days ago or later: `save` and `probe` skip it, the Archive just answered
+const RECENT_DAYS = 2;
+const recent = (u) => archive[u] && !archive[u].archived && (Date.parse(today) - Date.parse(archive[u].checked)) / 864e5 <= RECENT_DAYS;
+const unsaved = (u) => !archive[u]?.archived && !resting(u) && !recent(u);
 const have = all.filter((u) => archive[u]?.archived).length;
 const dead = {};
 for (const u of all) if (archive[u]?.dead) dead[archive[u].dead.reason] = (dead[archive[u].dead.reason] || 0) + 1;
@@ -191,7 +196,7 @@ if (uncited().length) console.log(`no longer cited: ${uncited().length} addresse
   if (what === "save") console.log(KEYS ? "save: logged in" : "save: anonymous (no IA_ACCESS_KEY / IA_SECRET_KEY in .env)");
   if (!["check", "save", "probe"].includes(what)) return console.log("unknown command: use status, check, save, probe or prune");
   if (what === "probe") return probe();
-  const pending = all.filter(what === "check" ? stale : (u) => !archive[u]?.archived && !resting(u));
+  const pending = all.filter(what === "check" ? stale : unsaved);
   const todo = (random ? shuffle(pending) : pending).slice(0, limit);
   let found = 0, failed = 0;
   for (const url of todo) {
@@ -221,14 +226,14 @@ if (uncited().length) console.log(`no longer cited: ${uncited().length} addresse
     write();
     await sleep(what === "check" ? 3000 : 1000);
   }
-  console.log(`${what}: handled ${todo.length} | copies recorded ${found} | failed ${failed} | still to do ${all.filter(what === "check" ? stale : (u) => !archive[u]?.archived && !resting(u)).length}`);
+  console.log(`${what}: handled ${todo.length} | copies recorded ${found} | failed ${failed} | still to do ${all.filter(what === "check" ? stale : unsaved).length}`);
 })();
 
 // Open each source without a copy as a browser would, and mark the ones that refuse or are gone.
 // One request per site at a time, a second apart; a site that answers HEAD wrongly gets a GET.
 async function probe() {
   const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128 Safari/537.36";
-  const todo = all.filter((u) => !archive[u]?.archived && !resting(u)).slice(0, limit);
+  const todo = all.filter(unsaved).slice(0, limit);
   const counts = { ok: 0, blocked: 0, gone: 0, unreachable: 0 };
   for (const url of todo) {
     let status;
