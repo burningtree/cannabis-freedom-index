@@ -10,11 +10,12 @@ sources:
 ---
 
 The official reprint of Solomon Islands' Dangerous Drugs Act traces its legislative foundation
-to Act 4 of 1941, which commenced on 14 April 1941. That is a verified date in the Act's history.
-It is not, by itself, proof that every present cannabis offence appeared in the original enactment.
+to the Dangerous Drugs Regulation, 1941 (No. 4 of 1941), which commenced on 14 April 1941. That
+is a verified date in the law's history. It is not, by itself, proof that every present cannabis
+offence appeared in the original regulation.
 
 The endnotes also list amendments from 1949, 1953, 1967 and 1968 and legal notices from 1978.
-Until the original enactment and relevant amendments are compared, the first cannabis
+Until the original regulation and relevant amendments are compared, the first cannabis
 restriction remains estimated in this database. A later consolidation cannot safely supply
 the original wording of a provision.
 
@@ -55,4 +56,5 @@ permission to cultivate cannabis or evidence of a functioning patient supply ser
 The government catalogue lists the reprint, incorporating amendments through 1 October 2009,
 as current. Parliament's committee subsequently called for submissions on Bill 9 of 2025,
 with a deadline and announced inquiry start of 17 February 2026. The proposal is retained as
-a debate event: later enactment and commencement were not established in this review.
+a debate event: it remained before Parliament on 28 October 2026, and its text would raise
+only the general assessor-court maximum in section 39(2)(a), not create new cannabis offences.
