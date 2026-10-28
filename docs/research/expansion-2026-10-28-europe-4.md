@@ -8,7 +8,7 @@ changes); stage only own lines in `changes.yaml`.
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Italy | cultivation table, citations, links, culture, 2013 medical article | 1960s unsourced; left for a later pass | |
+| Italy | cultivation table, citations, links, culture, 2013 medical article | 1960s unsourced; left for a later pass | d3ddace |
 | France | | | |
 | Slovakia | | | |
 | Finland | | | |
