@@ -3,9 +3,9 @@ region: Africa
 iso_numeric: 504
 recreational: illegal
 medical: limited
-updated: '2026-10-26'
+updated: "2026-10-28"
 summary: >-
-  Law 13-21 (2021) legalised cultivation for medical, cosmetic and industrial use in the Rif
+  Law 13-21 (2021) licenses cultivation for medical, cosmetic and industrial use in the Rif
   provinces. Recreational kif remains illegal but is widely tolerated; thousands of growers were
   pardoned in 2024.
 scores:
@@ -15,227 +15,351 @@ scores:
   sharing: 1
   consumption: 2
   access: 1
+words:
+  - word: kif
+    lang: Moroccan Arabic
+    meaning: cannabis, traditionally smoked in a sebsi pipe
+    atlas: kif
+    sources: [joseph75]
 segments:
   possession:
     text: >-
-      Unauthorised holding is prohibited separately from use. Article 2 of the 1974 law expressly
-      punishes illicit possession, import, production, transport and export with five to ten years
-      and a 5,000–50,000 dirham fine. Article 8’s lower two-month-to-one-year term concerns illicit
-      use, with a 500–5,000 dirham fine or either penalty alone; it is not a universal statutory
-      ceiling for possession.[@law1974] Traditional kif use is widely tolerated in the north, with
-      uneven enforcement.[@idpc17,cms]
+      Unauthorised holding is prohibited separately from use. Article 2 of the 1974 law punishes
+      illicit possession, import, production, transport and export with five to ten years and a
+      5,000–50,000 dirham fine, with no quantity threshold.[@law1974] Article 1 preserves a separate
+      two-to-five-year route for breaches of the 1922 poisons law, so small cases can be charged
+      under either article.[@law1974] Article 8's lower two-month-to-one-year term concerns illicit
+      use, with a 500–5,000 dirham fine or either penalty alone; it is not a universal ceiling for
+      possession.[@law1974] Traditional kif use is widely tolerated in the north, with uneven
+      enforcement.[@idpc17,cms]
     sources:
       - law1974
       - idpc17
       - cms
+    currency: MAD
+    penalties:
+      - label: Illicit possession (Article 2)
+        treatment: criminal
+        term: Possession
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 5000
+        fine: 50000
+        note: No quantity threshold
+      - label: Use (Article 8)
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 1 year
+        fine_min: 500
+        fine: 5000
+        note: Prison, fine, or either alone
+      - label: Breach through the 1922 poisons law (Article 1)
+        treatment: criminal
+        term: Possession
+        prison_min: 2 years
+        prison: 5 years
+        fine_min: 5000
+        fine: 50000
+        note: Overlapping charging route for small amounts; no published data on its use
   cultivation:
     text: >-
-      Illegal for personal use. Growing is lawful only for farmers in designated Rif provinces who
-      join a cooperative and hold an authorisation from the cannabis agency, selling their whole
-      crop to licensed processors.
+      Growing without a licence is punished under Article 2 of the 1974 law through Article 50 of
+      Law 13-21, with five to ten years and a 5,000–50,000 dirham fine and no plant-count
+      threshold.[@law1974,anrac_law] Licensed farmers may grow only in the provinces and areas fixed
+      by decree, as cooperative members who deliver the whole harvest to licensed processors.[@anrac_law,anrac_decrees]
+      A licensed grower who goes outside the permitted area or quota faces three months to two years
+      and a 5,000–100,000 dirham fine.[@anrac_law]
     sources:
-      - anrac
-      - map
+      - law1974
+      - anrac_law
+      - anrac_decrees
+    currency: MAD
+    penalties:
+      - label: Unlicensed cultivation or production
+        treatment: criminal
+        term: Cultivation
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 5000
+        fine: 50000
+        note: No plant-count threshold
+      - label: Licensed grower outside the area or quota
+        treatment: criminal
+        term: Licence breach
+        prison_min: 3 months
+        prison: 2 years
+        fine_min: 5000
+        fine: 100000
   enforcement:
     text: >-
       Users can be jailed, though often are not; traffickers face long sentences. The 2024 pardon
       was limited to growers.[@cms,ata] The statutory personal-use offence has a 500–5,000 dirham
       fine, while illicit holding has a separate five-to-ten-year penalty; charging practice must
-      not be inferred from the use offence alone.[@law1974]
+      not be inferred from the use offence alone.[@law1974] The 2025 police report counted 106,117
+      drug cases and 134,126 arrests, figures that cover all drugs.[@dgsn25]
     sources:
       - cms
       - ata
       - law1974
+      - dgsn25
   sharing:
     text: >-
-      Article 3 punishes facilitating another person’s use, whether paid or free, with two to ten
-      years and a 5,000–500,000 dirham fine. Article 2 separately punishes illicit holding and
-      transport with five to ten years.[@law1974]
+      Article 3 punishes facilitating another person's use, whether paid or free, with two to ten
+      years and a 5,000–500,000 dirham fine; the minimum rises to five years where the user is 21 or
+      younger.[@law1974] Article 2 separately punishes illicit holding and transport with five to ten
+      years.[@law1974] The 2021 law routes unlicensed supply back to the 1974 penalties.[@anrac_law]
     sources:
       - law1974
+      - anrac_law
+    currency: MAD
+    penalties:
+      - label: Facilitating use, paid or free
+        treatment: criminal
+        term: Supply
+        prison_min: 2 years
+        prison: 10 years
+        fine_min: 5000
+        fine: 500000
+        note: Minimum five years where the user is 21 or younger
   consumption:
     text: >-
       Article 8 punishes illicit use with two months to one year in prison and 500–5,000 dirhams, or
-      either penalty alone. Under its conditions, accepting medically supervised detoxification can
-      avoid prosecution.[@law1974] Use is tolerated in practice in much of the Rif.[@cms]
+      either penalty alone.[@law1974] Under its conditions, accepting medically supervised
+      detoxification can avoid prosecution.[@law1974] Use is tolerated in practice in much of the
+      Rif.[@cms]
     sources:
       - law1974
       - cms
+    currency: MAD
+    penalties:
+      - label: Use
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 1 year
+        fine_min: 500
+        fine: 5000
+        note: Prison, fine, or either alone; detoxification can avoid prosecution
   access:
-    text: No legal adult-use source; the law of 2021 explicitly excludes recreational use.
+    text: >-
+      No legal adult-use source; the 2021 law explicitly excludes recreational use.[@anrac_law,map]
+      Patients can obtain registered cannabis-based medicines through pharmacies, but there is no
+      flower, home-grow or special-access scheme.[@anrac_med26] Four epilepsy medicines had market
+      authorisation by October 2026.[@anrac_med26]
     sources:
+      - anrac_law
       - map
-      - cms
+      - anrac_med26
+answers:
+  buy:
+    answer: limited
+    text: Registered cannabis medicines on prescription; no flower or recreational supply
 context:
   recreational:
     text: >-
       There is no legal recreational market. Traditional kif smoking is widely tolerated in the
       northern growing regions, with uneven enforcement, while users elsewhere can be jailed
       though often are not.[@idpc17,cms] The 2021 law opened a legal route only for authorised
-      Rif growers selling their whole crop to licensed processors — not for users.[@anrac,map]
+      Rif growers selling their whole crop to licensed processors — not for users.[@anrac_law,map]
+      [The 2024 pardon covered growers, not users.](/history/morocco-royal-pardon-2024/)
     sources:
       - idpc17
       - cms
-      - anrac
+      - anrac_law
       - map
   culture:
     text: >-
-      The Rif’s kif economy is also its culture: cannabis ranks with the region’s chief cash
+      The Rif's kif economy is also its culture: cannabis ranks with the region's chief cash
       crops, smoked as a work stimulant that violates no religious sanction.[@joseph75] The
       [sebsi pipe](/culture/traditions/kif-and-the-sebsi/) and the word
       [kif](/culture/language/kif/) belong to Berber men of middle age and older — an
       establishment habit, not rebellion — with no ritual or Sufi blessing attached; the
-      1959 growers’ confrontation with the government is part of the same story, see [the 1959
+      1959 growers' confrontation with the government is part of the same story, see [the 1959
       confrontation](/history/morocco-kif-cultivators-1959-confrontation/).[@joseph75]
     sources:
       - joseph75
   production:
     status: medical
     text: >-
-      Law 13-21 legalised cultivation, processing, export and sale for medical, pharmaceutical and
-      industrial purposes. In 2024 the agency issued over 3,000 authorisations, most to small
-      farmers, and a royal pardon cleared thousands of growers with past convictions or warrants.
+      Law 13-21 licenses cultivation, processing, export and sale for medical, pharmaceutical and
+      industrial purposes in Al Hoceima, Chefchaouen and Taounate.[@anrac_law,anrac_decrees] In 2025
+      the agency reported 5,318 farmers holding 5,492 cultivation permits, 3,141 hectares actually
+      farmed by 4,776 farmers, and 19,576 quintals of dried cannabis; 141 products were registered
+      and seven export markets opened.[@mwn26] A royal pardon in 2024 cleared thousands of growers
+      with past convictions or warrants.[@ata] In 2026 the agency revoked 1,490 licences, nearly
+      1,300 of them from growers.[@hesp26]
     sources:
+      - anrac_law
+      - anrac_decrees
+      - mwn26
       - ata
-      - anrac
-  products:
-    text: >-
-      Licensed medical, cosmetic and food-supplement products; THC above 1% only for pharmaceutical
-      use.
-    sources:
-      - map
-      - cms
+      - hesp26
   medical:
     text: >-
-      Cannabis-based medicines can be registered and sold through pharmacies; the domestic medical
-      market is young.
+      Cannabis-based medicines can be registered and sold through pharmacies; by October 2026 four
+      epilepsy medicines had market authorisation, three from Sothema and one from Pharma 5, and five
+      medical societies had approved CBD prescribing protocols.[@anrac_med26] The regulator said more
+      than 140 cannabis products were registered, but doctors still needed convincing to
+      prescribe.[@anrac_med26] Reimbursement, dispensing volumes and patient numbers were not
+      verified.[@anrac_med26]
     sources:
-      - map
-      - ata
+      - anrac_med26
+  hemp:
+    status: high
+    text: >-
+      Industrial and food cannabis is licensed under Law 13-21 at or below 1% THC; above 1% only
+      medical and pharmaceutical use is allowed.[@anrac_law,anrac_order] There is no open hemp
+      regime: every crop needs an ANRAC authorisation in the same three provinces.[@anrac_law,anrac_decrees]
+      By March 2026, 109 CBD products — 50 supplements and 59 cosmetics — had been authorised and
+      were sold at more than 600 points.[@anrac_med26] No separate fibre or textile licensing was
+      verified.[@anrac_law]
+    sources:
+      - anrac_law
+      - anrac_order
+      - anrac_decrees
+      - anrac_med26
   consequences:
-    text: A drug conviction is a criminal record; the pardon removed that burden for many Rif farmers.
+    text: >-
+      A drug conviction is a criminal record; the pardon removed that burden for many Rif
+      farmers.[@ata] Foreigners can also face a residence ban of five to ten years and administrative
+      expulsion.[@law1974]
     sources:
       - ata
+      - law1974
   planting:
     seeds: licensed
     seeds_trade: regulated
     clones: licensed
     clones_trade: regulated
     text: >-
-      Under Law 13-21 importing or exporting cannabis seeds and plants needs an authorisation
-      from the regulator ANRAC, and licence holders may bring in only seed the agency has
-      approved. Certified lots must carry the variety's certification number and THC level.
-      The first imported seed arrived in April 2023 and went to cooperatives in Al Hoceima and
-      Chefchaouen.
+      Under Law 13-21 importing or exporting cannabis seeds and plants needs an authorisation from
+      the regulator ANRAC, and licence holders may bring in only seed the agency has approved.[@anrac_law]
+      Certified lots must carry the variety's certification number and THC level.[@anrac_law] The
+      first imported seed arrived in April 2023 and went to cooperatives in Al Hoceima and
+      Chefchaouen.[@hesp23]
     sources:
+      - anrac_law
       - hesp23
   black_market:
     text: >-
-      Morocco is the world's biggest producer of cannabis resin according to the United
-      Nations, and the illegal trade still dwarfs the legal one. Official figures put illegal
-      cultivation at 55,000 hectares in 2019, in a Rif economy on which up to 120,000 families
-      depend; hashish from there is smuggled mainly to Europe. Official estimates of
+      Morocco is the world's biggest producer of cannabis resin according to the United Nations, and
+      the illegal trade still dwarfs the legal one.[@afp24] The interior ministry put illegal
+      cultivation at 20,627 hectares in 2025, down 85% from 134,000 in 2003, while the legal area was
+      3,141 hectares; the figure is a government estimate.[@interior25] The ministry reported 344
+      tonnes of resin and 112 tonnes of raw cannabis seized in 2024, and the police reported about
+      170.8 tonnes of resin and derivatives in 2025.[@interior25,dgsn25] Official estimates of
       trafficking revenue fell from about 540 million dollars in the early 2000s to almost 350
-      million in 2020. The licensed medical and industrial sector created by the 2021 law is
-      growing but small beside it: about 3,141 hectares farmed by 4,776 licensed growers in
-      2025, producing 19,576 quintals of dried cannabis, and the regulator withdrew 1,308
-      farming licences that year after inspections.
+      million in 2020.[@afp24]
     sources:
       - afp24
-      - mwn26
+      - interior25
+      - dgsn25
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      No cannabis clubs are known, and the law leaves no room for them: unlicensed growing and
+      supplying cannabis to another person are both prohibited.[@anrac_law,law1974]
     sources:
-      - anrac
-      - map
-      - cms
+      - anrac_law
+      - law1974
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Recreational possession and use are
-      illegal under a 1974 decree, punishable by up to a year in prison and a fine; the licensed
-      growing allowed since 2021 is for medical and industrial use only.
+      There is no legal recreational supply for anyone. Recreational possession and use are illegal
+      under the 1974 law, punishable by up to a year in prison and a fine; the licensed growing
+      allowed since 2021 is for medical and industrial use only.[@law1974,anrac_law] A foreigner can
+      also face a residence ban and expulsion.[@law1974]
     sources:
-      - cms
-      - map
+      - law1974
+      - anrac_law
   arrests:
     text: >-
-      The national police's report for 2025 counts 106,117 drug cases and 134,126 people
-      arrested in them, 378 of them foreign nationals; the figures cover all drugs. Police
-      seized nearly 170 tonnes and 796 kg of cannabis resin and its derivatives during the
-      year, against 1.7 tonnes of cocaine and about 6 kg of heroin. Controlled deliveries run
-      with Spain accounted for 55 tonnes of resin and 38 arrests.
+      The national police's report for 2025 counts 106,117 drug cases and 134,126 people arrested in
+      them, 378 of them foreign nationals; the figures cover all drugs.[@dgsn25] Police seized about
+      170.8 tonnes of cannabis resin and its derivatives, against 1.731 tonnes of cocaine and about
+      6 kg of heroin.[@dgsn25] Controlled deliveries run with Spain accounted for 55.471 tonnes of
+      resin and 38 arrests.[@dgsn25] No cannabis-specific prosecution or conviction counts were
+      published.[@dgsn25]
     sources:
       - dgsn25
   driving:
     status: impairment
     text: >-
       The government's July 2024 consolidation of Road Code 52-05, article 183, prohibits driving
-      under the influence of narcotics or certain medicines after which driving is forbidden.
-      It provides six months–one year in prison and MAD5,000–10,000, or either punishment, plus
-      a court-ordered licence suspension of six months–one year. Repetition within five years
-      of a final judgment for similar conduct doubles both penalties and the suspension.
-      The same article applies to instructors accompanying learners and refusal of the specified
-      tests or checks. Article 99 provides a six-point deduction for drug-influence driving or
-      the listed refusals; it is distinct from the court suspension. Articles 213–214 distinguish
-      screening from subsequent medical, clinical and biological checks after a positive result,
-      refusal or inability to undergo screening. A numeric THC cutoff, medical-cannabis exemption
-      and amendments after this consolidation were not verified.
+      under the influence of narcotics or certain medicines after which driving is forbidden.[@road_code24]
+      It provides six months to one year in prison and MAD5,000–10,000, or either punishment, plus a
+      court-ordered licence suspension of six months to one year; repetition within five years
+      doubles both.[@road_code24] Article 99 provides a six-point deduction, and articles 213–214
+      distinguish screening from later medical and biological checks.[@road_code24] No numeric THC
+      cutoff or medical-cannabis exemption was verified.[@road_code24]
     sources:
       - road_code24
-  spotlights:
-    - title: The growers who beat the ban debate
-      text: >-
-        Rif growers faced down the government in 1959, demanding alcohol be banned too if kif
-        went — see [the 1959 confrontation](/history/morocco-kif-cultivators-1959-confrontation/).[@joseph75]
-        Law 13-21 later legalised their crop for medical and industrial sale through
-        cooperatives, and a 2024 royal pardon cleared thousands of growers.[@anrac,ata]
-      sources:
-        - joseph75
-        - anrac
-        - ata
 sources:
   road_code24:
     title: "Morocco General Secretariat of Government — Road Code 52-05, Arabic consolidation dated 10 July 2024"
     url: https://www.sgg.gov.ma/Portals/1/textesconsolides/52_05.pdf
-    locator: "Articles 99, 183 and 213–215; article 183 as amended by Law 116-14 in 2016. Published consolidation is an aid to reading; official Gazette texts govern."
-  idpc17:
-    title: "International Drug Policy Consortium and West Africa Commission on Drugs — Drug laws in West Africa, annex of country profiles (includes Morocco), November 2017 (PDF)"
-    url: https://cdn.sanity.io/files/6u5teakk/production/559d15d25cdb6c043b435899a1926f1abcb7f8f6.pdf?dl=
+    locator: "Articles 99, 183 and 213–215."
+  anrac_law:
+    title: "Morocco — Law 13-21 of 14 July 2021 on the legal uses of cannabis (ANRAC)"
+    url: https://www.anrac.gov.ma/wp-content/uploads/2023/10/13-21-Fr.pdf
+    locator: "Articles 1–8, 10, 12–13, 17, 19–20, 27, 31 and 50–55."
+  anrac_decrees:
+    title: "ANRAC — Implementing decrees (Decree 2-22-159 of 18 March 2022 and related texts)"
+    url: https://www.anrac.gov.ma/en/decrees/
+    locator: "Provinces, advisory committee and stock reporting."
+  anrac_order:
+    title: "Morocco — Joint order 1297-22 of 12 May 2022 on THC limits"
+    url: https://www.anrac.gov.ma/fr/wp-content/uploads/sites/2/2023/11/n%C2%B0-1297-22-1.pdf
+    locator: "1% THC ceiling; above 1% only medical or pharmaceutical use."
+  anrac_med26:
+    title: "ANRAC — Cannabis médical: le Maroc a les produits, reste à convaincre les médecins (8 June 2026)"
+    url: https://www.anrac.gov.ma/en/2026/06/08/cannabis-medical-le-maroc-a-les-produits-reste-a-convaincre-les-medecins/
+    locator: "Four authorised medicines; 140+ registered products; prescribing protocols."
+  interior25:
+    title: "Hespress — Morocco cuts illegal cannabis cultivation by 85 percent, interior ministry reports (3 November 2025)"
+    url: https://en.hespress.com/124730-morocco-cuts-illegal-cannabis-cultivation-by-85-percent-interior-ministry-reports.html
+    locator: "20,627 ha illegal in 2025; 344 t resin and 112 t raw cannabis seized in 2024."
+  hesp26:
+    title: "Hespress — Morocco revokes 1,490 cannabis licences over regulatory violations (15 October 2026)"
+    url: https://en.hespress.com/147360-morocco-revokes-1490-cannabis-licenses-over-regulatory-violations.html
+    locator: "1,490 licences revoked in 2026, nearly 1,300 from growers."
+  mwn26:
+    title: "Morocco World News — Morocco's legal cannabis production reaches 19,576 quintals in 2025 (22 April 2026)"
+    url: https://www.moroccoworldnews.com/2026/04/288134/moroccos-legal-cannabis-production-reaches-19576-quintals-in-2025/
+    locator: "5,318 farmers; 5,492 cultivation permits; 3,141 ha; 141 products; seven export markets."
   dgsn25:
     title: "Hespress (MAP) — DGSN en 2025: baisse de la criminalité violente et forte mobilisation contre la drogue (17 December 2025)"
     url: https://fr.hespress.com/454453-454453.html
+    locator: "106,117 cases; 134,126 arrests; about 170.8 t resin and derivatives; 55.471 t with Spain."
   afp24:
-    title: AFP via Al-Monitor — In Morocco, cannabis growers come 'out of the shadows' (27 July 2024)
+    title: "AFP via Al-Monitor — In Morocco, cannabis growers come 'out of the shadows' (27 July 2024)"
     url: https://www.al-monitor.com/originals/2024/07/morocco-cannabis-growers-come-out-shadows
-  mwn26:
-    title: Morocco World News — Morocco's legal cannabis production reaches 19,576 quintals in 2025 (22 April 2026)
-    url: https://www.moroccoworldnews.com/2026/04/288134/moroccos-legal-cannabis-production-reaches-19576-quintals-in-2025/
+    locator: "World's biggest resin producer; revenue estimates; 2024 pardon context."
   hesp23:
     title: "Hespress — Usage licite du cannabis: le Maroc reçoit ses premières graines (28 April 2023)"
     url: https://fr.hespress.com/311963-usage-licite-du-cannabis-le-maroc-recoit-ses-premieres-graines.html
-  anrac:
-    title: Wikipedia — Cannabis in Morocco
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Morocco
+    locator: "First imported seed; Al Hoceima and Chefchaouen cooperatives."
   ata:
-    title: Atalayar — Morocco issues more than 3,000 authorisations for the legal use of cannabis
-    url: >-
-      https://www.atalayar.com/en/articulo/society/morocco-issues-more-than-3000-authorisations-for-the-legal-use-of-cannabis/20240821115205204329.html
+    title: "Atalayar — Morocco issues more than 3,000 authorisations for the legal use of cannabis (21 August 2024)"
+    url: https://www.atalayar.com/en/articulo/society/morocco-issues-more-than-3000-authorisations-for-the-legal-use-of-cannabis/20240821115205204329.html
+    locator: "3,000+ authorisations; 2024 royal pardon."
   cms:
-    title: CMS Expert Guide — Cannabis law and legislation in Morocco
+    title: "CMS Expert Guide — Cannabis law and legislation in Morocco"
     url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/morocco
+    locator: "1974 penalties; 2021 licensing framework."
   map:
-    title: MAP — Questions and answers on Law 13-21 on the legal uses of cannabis
+    title: "MAP — Questions and answers on Law 13-21 on the legal uses of cannabis"
     url: https://mapnews.ma/en/print/116339
+    locator: "Recreational use excluded; licensed medical, cosmetic and industrial uses."
   law1974:
-    title: Morocco — 1974 narcotics law, government text republished by the UN
+    title: "Morocco — Dahir 1-73-282 of 21 May 1974 on narcotic drugs, republished by the UN"
     url: https://digitallibrary.un.org/record/458193/files/S_2001_1288-FR.pdf
-    locator: >-
-      Annex, Dahir 1-73-282 of 21 May 1974, arts. 1–3 and 8: illicit holding versus use; use fine
-      500–5,000 MAD
+    locator: "Annex, articles 1–3, 8 and 12–13: possession five to ten years; use two months to one year; facilitation two to ten years."
+  idpc17:
+    title: "International Drug Policy Consortium and West Africa Commission on Drugs — Drug laws in West Africa, annex of country profiles (includes Morocco), November 2017 (PDF)"
+    url: https://cdn.sanity.io/files/6u5teakk/production/559d15d25cdb6c043b435899a1926f1abcb7f8f6.pdf?dl=
+    locator: "Morocco profile: enforcement and tolerance."
   joseph75:
     type: chapter
     title: The Economic Significance of Cannabis sativa in the Moroccan Rif
