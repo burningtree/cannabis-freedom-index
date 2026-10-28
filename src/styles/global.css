@@ -3516,3 +3516,57 @@ a.ctx-topic:hover { text-decoration: underline; text-decoration-thickness: 1px; 
 /* the topic's introduction under its title */
 .ctxp-intro { max-width: 72ch; margin: 18px 0 8px; }
 .prose.ctxp-intro > p, .prose.ctxp-intro > p:first-child { font-size: 17px; line-height: 1.6; color: var(--text); }
+/* ── Datasets (/datasets/, /datasets/<slug>/): the context pages' layout, with these additions ── */
+.dsp-menu a b { font-weight: 400; color: var(--muted); margin-left: 2px; }
+.dsp-menu a.on { color: var(--text); }
+.dsp-menu .dsp-menu-sub { border-top: 1px solid var(--border); }
+.dsp-menu .dsp-menu-sub a { font-size: 10.5px; letter-spacing: .04em; }
+.dsp-n { font: 400 12px var(--mono); color: var(--muted); vertical-align: middle; margin-left: 4px; }
+.dsp-list a { grid-template-columns: minmax(0, 20rem) minmax(0, 1fr) minmax(8rem, 14rem); }
+.dsp-foot, .dsp-note { color: var(--text-2); font-size: 13.5px; line-height: 1.5; max-width: 80ch; }
+.dsp-foot a, .dsp-note a, .dsp-facts a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.dsp-intro p + p { margin-top: 12px; }
+.dsp-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px 28px; margin: 14px 0 0; max-width: 1000px; }
+.dsp-facts dt { font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.dsp-facts dd { margin: 3px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--text-2); overflow-wrap: anywhere; }
+.dsp-note { margin: 10px 0 0; }
+.dsp-ends { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+.dsp-ends-h { font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 0 0 6px; }
+.dsp-ends ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--text); }
+.dsp-ends li { display: flex; align-items: baseline; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.dsp-ends li a { flex: 1; color: var(--text); }
+.dsp-ends li b { font: 400 20px/1 var(--display); }
+.dsp-ends li small { font: 400 10.5px var(--mono); color: var(--muted); }
+.dsp-table th button { all: unset; cursor: pointer; }
+.dsp-table th button::after { content: "↕"; margin-left: 5px; color: var(--muted); opacity: .6; }
+.dsp-table th[aria-sort="ascending"] button::after { content: "↑"; opacity: 1; }
+.dsp-table th[aria-sort="descending"] button::after { content: "↓"; opacity: 1; }
+.dsp-fig { white-space: nowrap; padding-right: 24px; }
+.src-table .dsp-fig-h { padding-right: 24px; }
+.dsp-fig b { font-weight: 500; color: var(--text); }
+.dsp-fig span { display: block; font-size: 12px; color: var(--muted); white-space: normal; }
+.dsp-sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 7px; vertical-align: .05em; }
+.dsp-year { color: var(--muted); font: 400 12px var(--mono); }
+.dsp-origin { max-width: 80ch; }
+.dsp-origin p, .dsp-origin li { font-size: 14.5px; line-height: 1.55; color: var(--text-2); }
+.prose.dsp-origin > p:first-of-type { font-size: 14.5px; line-height: 1.55; }
+@media (max-width: 700px) {
+  .dsp-ends { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .dsp-table th:nth-child(3), .dsp-table th:nth-child(4) { display: none; }
+  .dsp-table .dsp-fig { text-align: right; }
+  .dsp-table .dsp-year { display: none; }
+}
+/* the home map's Datasets tab: a row per group of datasets, with its name before the views */
+.metric-rows { display: grid; gap: 8px; }
+.metric-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.metric-row-h { flex: 0 0 9.5rem; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.metric-group a.metric-page { border-color: transparent; background: none; color: var(--muted); }
+.metric-group a.metric-page:hover { color: var(--text); }
+.metric-rows a.metric-page { justify-self: start; padding-left: 0; }
+@media (max-width: 640px) {
+  .metric-group.metric-rows { display: grid; overflow: visible; }
+  .metric-row { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .metric-row::-webkit-scrollbar { display: none; }
+  .metric-row-h { flex: none; min-width: 5.5rem; }
+  .metric-row a { flex: none; }
+}

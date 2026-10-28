@@ -60,11 +60,11 @@ const groups = GROUPS.map((name) => ({ name, rows: rows.filter((r) => groupOf(r.
     <p class="d-hint">What other organisations publish about {c.name}, and where it stands among the countries each one covers. Every file is published in full on the <a href={`${base}sources/#datasets`}>sources page</a>.</p>
     {groups.length > 1 && (
       <nav class="ds-nav" aria-label="Dataset groups">
-        {groups.map((g) => <a href={`#ds-group-${g.name.toLowerCase()}`}>{g.name} <b>{g.rows.length}</b></a>)}
+        {groups.map((g) => <a href={`#ds-group-${g.name.toLowerCase().replace(/\W+/g, "-")}`}>{g.name} <b>{g.rows.length}</b></a>)}
       </nav>
     )}
     {groups.map((g) => (
-      <div class="ds-group" id={`ds-group-${g.name.toLowerCase()}`}>
+      <div class="ds-group" id={`ds-group-${g.name.toLowerCase().replace(/\W+/g, "-")}`}>
         <h3 class="ds-group-h">{g.name}</h3>
         <ol class="ds-grid">
           {g.rows.map(({ d, head, year, details, note, chart, stand }) => (

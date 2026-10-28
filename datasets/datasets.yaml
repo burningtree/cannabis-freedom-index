@@ -26,7 +26,7 @@
 #   rail      true for the few datasets also shown in the profile's opening ("Cannabis in
 #             …"); every dataset is listed in the profile's Datasets section
 #   map       optional: how one field colours the world map, on a view of its own in `group`
-#             (Society by default): `steps` are where each of the five colours starts; `format`
+#             (Society by default; Use, Law, Society, Plant and market): `steps` are where each of the five colours starts; `format`
 #             is percent, decimal or rate; `per` divides the field by the country's population
 #             and multiplies by it (100000: per 100,000 people)
 #   pages     optional: the pages that show the dataset, for one with views of its own, and
@@ -400,7 +400,7 @@
   map:
     field: herb_eur
     format: decimal
-    group: Context
+    group: Plant and market
     since: 2020
     slug: cannabis-price-europe
     label: Street price (Europe)
@@ -453,7 +453,7 @@
   map:
     field: herb_thc
     format: percent
-    group: Context
+    group: Plant and market
     since: 2020
     slug: thc-potency-europe
     label: THC potency (Europe)
@@ -507,7 +507,7 @@
     field: shops
     per: 1000000
     format: rate
-    group: Context
+    group: Plant and market
     slug: cannabis-shops-mapped
     label: Shops on the map
     missing: No cannabis shops tagged in OpenStreetMap
@@ -560,7 +560,7 @@
   map:
     field: records_total
     format: number
-    group: Context
+    group: Plant and market
     slug: cannabis-plant-records
     label: Plant records
     missing: No dated records of cannabis in GBIF
@@ -617,7 +617,7 @@
   map:
     field: hemp_ha
     format: number
-    group: Context
+    group: Plant and market
     since: 2015
     slug: hemp-grown
     label: Hemp grown
@@ -1532,7 +1532,7 @@
     field: to_date
     per: 1000000
     format: rate
-    group: Context
+    group: Plant and market
     slug: clinical-trials
     label: Clinical trials per million people
     missing: No eligible recorded actual start

@@ -1,0 +1,30 @@
+---
+// The menu at the top of /datasets/ and of each dataset's page: the groups (Use, Law, Society,
+// Context) in the first row, and on a dataset's page the datasets of its group in a second row,
+// the current one marked. Styled as the context topics' menu (ContextMenu.astro).
+import { datasetGroups } from "../lib/dataset-pages.js";
+
+const { current = null } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const group = current ? datasetGroups.find((g) => g.pages.some((p) => p.d.id === current)) : null;
+---
+<nav class="ctxp-menu dsp-menu" aria-label="Datasets">
+  <ol>
+    <li><a href={`${base}datasets/`} aria-current={current ? undefined : "page"}>All datasets</a></li>
+    {datasetGroups.map((g) => (
+      <li><a href={`${base}datasets/#${g.slug}`} class:list={{ on: g === group }}>{g.name} <b>{g.pages.length}</b></a></li>
+    ))}
+  </ol>
+  {group && (
+    <ol class="dsp-menu-sub">
+      {group.pages.map((p) => (
+        <li><a href={`${base}datasets/${p.slug}/`} aria-current={p.d.id === current ? "page" : undefined}>{p.d.name}</a></li>
+      ))}
+    </ol>
+  )}
+</nav>
+<script>
+  // bring the current dataset into view in its row
+  const on = document.querySelector('.dsp-menu a[aria-current="page"]');
+  if (on) on.parentElement.parentElement.scrollLeft = on.offsetLeft - 40;
+</script>

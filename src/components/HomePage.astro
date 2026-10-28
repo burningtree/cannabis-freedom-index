@@ -148,16 +148,22 @@ const LAW_SECTIONS = {
 const MAP_SECTIONS = { ...LAW_SECTIONS, ...STATUS_SECTIONS };
 const STATUS_SCALES = Object.fromEntries(Object.entries(MAP_SECTIONS).map(([key, section]) => [key, { name: section.name,
   scale: Object.fromEntries(Object.entries(section.statuses).map(([k, v]) => [k, { label: v.label, help: v.help, color: section.tiers[k] == null ? "url(#hatch)" : `var(--t${section.tiers[k]})` }])) }]));
-// the map's views in groups, as [metric, label]: the tabs and rows of the view picker
+// The map's views in three groups, the tabs of the view picker: the score (Freedom), what each
+// profile explains beyond it (Context, as on /context/), and what others count (Datasets, in the
+// groups of /datasets/). A group's views are [metric, label]; Datasets has rows with a label each.
 const datasetViews = (group) => MAPPED.filter((ds) => ds.map.group === group).map((ds) => [`data:${ds.id}`, ds.map.label]);
 const MAP_GROUPS = [
   { name: "Freedom", views: [["index", "Overall index"], ...SEGMENTS.map((s, i) => [String(i), s.name])] },
-  { name: "Use", views: [["users", "Number of users"], ["prevalence", "Survey share"], ["ratio", "Share of users ÷ index"], ...datasetViews("Use")] },
-  { name: "Law", views: [...Object.entries(LAW_SECTIONS).map(([key, section]) => [`status:${key}`, section.name]), ...datasetViews("Law")] },
-  { name: "Society", views: [...datasetViews("Society"), ["culture", "Atlas entries"]] },
-  ...(SHOW_PRICES ? [{ name: "Price", views: PRICE_MARKETS.map((market) => [`price:${market}`, PRICE_MARKET_LABEL[market]]) }] : []),
-  { name: "Context", views: [...Object.entries(PLANTING_FIELDS).map(([field, label]) => [`plant:${field}`, label]), ...datasetViews("Context"), ...Object.entries(STATUS_SECTIONS).map(([key, section]) => [`status:${key}`, section.name])] },
-];
+  { name: "Context", page: ["context/", "All topics"], views: [...Object.entries(LAW_SECTIONS).map(([key, section]) => [`status:${key}`, section.name]),
+    ...Object.entries(PLANTING_FIELDS).map(([field, label]) => [`plant:${field}`, label]),
+    ...Object.entries(STATUS_SECTIONS).map(([key, section]) => [`status:${key}`, section.name]), ["culture", "Atlas entries"]] },
+  { name: "Datasets", page: ["datasets/", "All datasets"], rows: [
+    { name: "Use", views: [["users", "Number of users"], ["prevalence", "Survey share"], ["ratio", "Share of users ÷ index"], ...datasetViews("Use")] },
+    { name: "Law", views: datasetViews("Law") },
+    { name: "Society", views: datasetViews("Society") },
+    { name: "Plant and market", views: [...datasetViews("Plant and market"), ...(SHOW_PRICES ? PRICE_MARKETS.map((market) => [`price:${market}`, PRICE_MARKET_LABEL[market]]) : [])] },
+  ].filter((r) => r.views.length) },
+].map((g) => ({ ...g, views: g.views ?? g.rows.flatMap((r) => r.views) }));
 const currentGroup = (MAP_GROUPS.find((g) => g.views.some(([m]) => m === current)) ?? MAP_GROUPS[0]).name;
 const streetFlower = (c) => latestPricesFor(c.id).street;
 
@@ -271,8 +277,11 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
           {MAP_GROUPS.map((g) => <button type="button" role="tab" data-group-tab={g.name} aria-selected={g.name === currentGroup ? "true" : "false"}>{g.name}</button>)}
         </div>
         {MAP_GROUPS.map((g) => (
-          <div class="metric-group" data-group={g.name} role="tabpanel" aria-label={g.name} hidden={g.name !== currentGroup}>
-            {g.views.map(([metric, label]) => <a {...viewAttrs(metric)}>{label}</a>)}
+          <div class:list={["metric-group", { "metric-rows": g.rows }]} data-group={g.name} role="tabpanel" aria-label={g.name} hidden={g.name !== currentGroup}>
+            {g.rows
+              ? g.rows.map((r) => <div class="metric-row"><span class="metric-row-h">{r.name}</span>{r.views.map(([metric, label]) => <a {...viewAttrs(metric)}>{label}</a>)}</div>)
+              : g.views.map(([metric, label]) => <a {...viewAttrs(metric)}>{label}</a>)}
+            {g.page && <a class="metric-page" href={`${base}${g.page[0]}`}>{g.page[1]}&nbsp;→</a>}
           </div>
         ))}
       </nav>

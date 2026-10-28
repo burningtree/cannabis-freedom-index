@@ -15,6 +15,7 @@ import { SITE } from "../lib/exports.js";
 import { MAP_VIEWS } from "../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries } from "../lib/culture.js";
 import { contextTopics } from "../lib/contexts.js";
+import { datasetPages } from "../lib/dataset-pages.js";
 import { commits, pageCount, pageOf } from "../lib/gitlog.js";
 import { lastChanged } from "../lib/lastmod.js";
 
@@ -36,6 +37,8 @@ export function GET({ site }) {
     ...MAP_VIEWS.map((v) => [v.slug ? `map/${v.slug}/` : "map/", latest]),
     ["context/", latest],
     ...contextTopics.map((t) => [`context/${t.slug}/`, latest]),
+    ["datasets/", latest],
+    ...datasetPages.map((p) => [`datasets/${p.slug}/`, latest]),
     // profiles
     ...places.map((c) => [`country/${c.slug}/`, c.details.reviewed]),
     ...countries.flatMap((c) => (subunitsOf(c.id)?.units ?? []).map((sub) => [`country/${c.slug}/${sub.id}/`, sub.reviewed])),

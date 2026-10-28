@@ -1,0 +1,47 @@
+---
+// Datasets: every outside dataset shown beside the index, grouped as the map's views (Use, Law,
+// Society, Context), each with its own page across all countries (/datasets/<slug>/). The data is
+// in src/lib/dataset-pages.js.
+import Base from "../../layouts/Base.astro";
+import DatasetMenu from "../../components/DatasetMenu.astro";
+import { datasetPages, datasetGroups } from "../../lib/dataset-pages.js";
+import { places } from "../../lib/countries.js";
+
+const base = import.meta.env.BASE_URL;
+const num = (n) => n.toLocaleString("en-GB");
+const figures = datasetPages.reduce((n, p) => n + p.rows.length, 0);
+const years = (p) => p.d.fileInfo.years && (p.d.fileInfo.years[0] === p.d.fileInfo.years[1] ? `${p.d.fileInfo.years[0]}` : `${p.d.fileInfo.years[0]}–${p.d.fileInfo.years[1]}`);
+---
+<Base title="Datasets" description="Figures other organisations publish about cannabis and the countries around it: use, offences, seizures, prices, potency, opinion, freedom and more, each with a world map and a table of every country.">
+  <main class="changes-page ctxp dsp">
+    <DatasetMenu />
+    <section class="hero hero-sm">
+      <p class="eyebrow">Datasets <span>{datasetPages.length} datasets · {num(figures)} country figures</span></p>
+      <h1>Datasets</h1>
+      <p class="lede">The index scores the law. Beside it the site shows what others count: how many people use cannabis, how many are arrested for it, what it costs and how strong it is, what people think of it, and how free, rich or corrupt a country is. Each dataset has a page with what it measures, how it was made, a world map and every country's figure. None of it is part of the score.</p>
+    </section>
+
+    {datasetGroups.map((g) => (
+      <section class="section" id={g.slug} aria-labelledby={`dsp-${g.slug}`}>
+        <div class="section-head"><div><h2 id={`dsp-${g.slug}`}>{g.name} <span class="dsp-n">{g.pages.length}</span></h2></div></div>
+        <ol class="ctxp-topics dsp-list">
+          {g.pages.map((p) => (
+            <li>
+              <a href={`${base}datasets/${p.slug}/`}>
+                <span class="ctxp-topic-name">{p.d.name}</span>
+                <span class="ctxp-topic-help">{p.d.credit ?? p.d.publisher} · {p.d.when}</span>
+                {p.d.worldwide
+                  ? <span class="ctxp-topic-n">Worldwide{years(p) && ` · ${years(p)}`}</span>
+                  : <>
+                      <span class="ctxp-cover" role="img" aria-label={`${p.rows.length} of ${places.length} places`}><i style={`width:${(p.rows.length / places.length) * 100}%;background:var(--u3)`}></i></span>
+                      <span class="ctxp-topic-n">{num(p.rows.length)} places{years(p) && ` · ${years(p)}`}</span>
+                    </>}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+    <p class="dsp-foot">Every file is published in full, with its source and checksum, on the <a href={`${base}sources/#datasets`}>sources page</a>.</p>
+  </main>
+</Base>

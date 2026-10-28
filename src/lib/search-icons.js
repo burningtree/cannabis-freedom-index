@@ -12,7 +12,7 @@ export const PAGE_ICONS = {
   "data/": "iconoir:download", "score-changes/": "iconoir:list", "changelog/": "iconoir:git-commit", "articles/": "iconoir:journal", "about/": "iconoir:info-circle",
   "did-you-know/": "iconoir:light-bulb", "survey/": "iconoir:graph-up", "survey/take/": "iconoir:edit-pencil",
   "culture/": "iconoir:palette", "culture/people/": "iconoir:community", "culture/stories/": "iconoir:book", "sources/": "iconoir:bookmark-book", "research/": "iconoir:percentage-circle",
-  "glossary/": "iconoir:book-stack", "context/": "iconoir:list", "charts/": "iconoir:stats-report", "map/": "iconoir:map", "map/poster/": "iconoir:media-image",
+  "glossary/": "iconoir:book-stack", "context/": "iconoir:list", "datasets/": "iconoir:database", "charts/": "iconoir:stats-report", "map/": "iconoir:map", "map/poster/": "iconoir:media-image",
 };
 // pages that come in families: a part of the cultural atlas, a map view, a history period, a history tag, an exhibition
 export const CULTURE_SECTION_ICON = "iconoir:palette", MAP_VIEW_ICON = "iconoir:map", PERIOD_ICON = "iconoir:calendar", TAG_ICON = "iconoir:hashtag", EXHIBITION_ICON = "iconoir:frame-alt";

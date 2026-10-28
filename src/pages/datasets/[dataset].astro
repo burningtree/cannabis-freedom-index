@@ -1,0 +1,251 @@
+---
+// One outside dataset across every place, e.g. /datasets/cannabis-offences/: what it measures, who
+// publishes it and how the file was made, the figures it opens with, a world map coloured as its
+// map view (or by fifths), and every place's latest figure with a link to its profile. The data
+// is in src/lib/dataset-pages.js; the same map, hover box and zoom as the context pages.
+import Base from "../../layouts/Base.astro";
+import DatasetMenu from "../../components/DatasetMenu.astro";
+import { datasetPages } from "../../lib/dataset-pages.js";
+import { figure, headField } from "../../lib/dataset-text.js";
+import { siteMap } from "../../lib/world-map.js";
+import { tierColor } from "../../lib/tiers.js";
+import { places } from "../../lib/countries.js";
+
+export function getStaticPaths() {
+  return datasetPages.map((page) => ({ params: { dataset: page.slug }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const { d, rows } = page;
+const base = import.meta.env.BASE_URL;
+const num = (n) => n.toLocaleString("en-GB");
+const map = siteMap();
+const W = map.width, H = map.height;
+const rowOf = new Map(rows.map((r) => [r.c.id, r]));
+const fillOf = (r) => (r?.step != null ? `var(--u${r.step})` : "url(#hatch)");
+const text = (r) => [r.head[0], r.head[1]].filter(Boolean).join(" ");
+const profileHref = (c) => `${base}country/${c.slug}/#ds-${d.id}`;
+// a figure written as the dataset writes it: the median of the countries
+const name = d.worldwide ? null : headField(d);
+const written = (v) => (v == null ? null : name === "per" ? d.map.format(v) : figure(null, d, { [name]: d.fields[name]?.decimals != null ? +v.toFixed(d.fields[name].decimals) : +v.toFixed(v < 10 ? 2 : v < 100 ? 1 : 0) }, name));
+const years = d.fileInfo.years && (d.fileInfo.years[0] === d.fileInfo.years[1] ? `${d.fileInfo.years[0]}` : `${d.fileInfo.years[0]}–${d.fileInfo.years[1]}`);
+const figures = d.worldwide
+  ? [["Worldwide", "not country by country"], [years ?? "—", "years in the file"], [num(d.fileInfo.files.reduce((a, f) => a + f.rows, 0)), "rows"]]
+  : [
+      [num(rows.length), `of ${places.length} places covered`],
+      [years ?? d.when, "years in the file"],
+      ...(page.median != null ? [[written(page.median), "the median country"]] : page.words ? [[num(page.answers.length), "different answers"]] : []),
+      ...(page.series ? [[num(page.series), "places with several years"]] : []),
+    ];
+const links = [
+  page.mapPage && [`${base}${page.mapPage}`, "The interactive map"],
+  page.chart && [`${base}charts/#${page.chart}`, "The chart"],
+  [`${base}sources/#dataset-${d.id}`, "The files and their checksums"],
+].filter(Boolean);
+const description = `${d.name}, country by country: ${d.about.split(/(?<=\.)\s/)[0]} From ${d.credit ?? d.publisher}, with a world map and every country's figure.`.slice(0, 300);
+---
+<Base title={`${d.name}: country by country`} description={description}>
+  <main class="changes-page ctxp dsp">
+    <DatasetMenu current={d.id} />
+    <section class="hero hero-sm">
+      <p class="eyebrow"><a href={`${base}datasets/`}>Datasets</a> <span>{page.group} · not part of the score</span></p>
+      <h1>{d.name}</h1>
+      <p class="lede">{d.publisher} · {d.when}</p>
+    </section>
+
+    <div class="prose ctxp-intro dsp-intro">
+      <p>{d.about}</p>
+      {d.map?.lede && d.map.lede !== d.about && <p>{d.map.lede}</p>}
+    </div>
+    <dl class="dsp-facts">
+      <div><dt>Published by</dt><dd><a href={d.url} target="_blank" rel="noopener noreferrer">{d.title}</a></dd></div>
+      {d.data_url && <div><dt>Data</dt><dd><a href={d.data_url} target="_blank" rel="noopener noreferrer">{d.data_label ?? "the publisher's file"}</a></dd></div>}
+      <div><dt>{d.fileInfo.files.length > 1 ? "Files here" : "File here"}</dt><dd>{d.fileInfo.files.map((f, i) => <>{i > 0 && ", "}<a href={`${base}data/datasets/${f.name}`} download>{f.name}</a></>)}</dd></div>
+      <div><dt>See also</dt><dd>{links.map(([href, label], i) => <>{i > 0 && " · "}<a href={href}>{label}</a></>)}</dd></div>
+    </dl>
+
+    <dl class="hist-stats ctxp-stats">
+      {figures.map(([n, label]) => <div><dt>{label}</dt><dd>{n}</dd></div>)}
+    </dl>
+
+    {!d.worldwide && (
+      <section class="section ctxp-map-sec" aria-labelledby="dspMap">
+        <div class="section-head"><div>
+          <h2 id="dspMap">{d.map?.label ?? d.name}, on the map</h2>
+          <p class="sub">{d.map?.sub ?? (page.colouring.kind === "fifths" ? "The stronger the blue, the higher the figure, by fifths of the places covered." : "The places the dataset covers.")} Select a country for its profile.</p>
+        </div></div>
+        <figure class="card map-card map-wrap ctxp-map" data-ctxp-map data-map-tips>
+          <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-label={`World map: ${d.name}`}>
+            <defs>
+              <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="var(--nodata)" /><rect width="2" height="5" fill="var(--hatch)" /></pattern>
+            </defs>
+            <g class="ctxp-zoom">
+              <path class="sphere" d={map.sphere} />
+              {map.shapes.map((s) => {
+                const row = s.c ? rowOf.get(s.c.id) : null;
+                return row
+                  ? <a href={profileHref(row.c)} data-tip={row.c.id} aria-label={`${row.c.name}: ${text(row)}`}><path class="country-shape has-data" d={s.d} style={`fill:${fillOf(row)}`} /></a>
+                  : <path class:list={["country-shape", { "land-only": s.antarctica }]} d={s.d} style={`fill:${s.antarctica ? "var(--land)" : "url(#hatch)"}`} />;
+              })}
+              {map.dots.map((dot) => {
+                const row = rowOf.get(dot.c.id);
+                return row && <a href={profileHref(row.c)} data-tip={row.c.id} aria-hidden="true" tabindex="-1"><circle class="country-shape has-data tiny-dot" cx={dot.x} cy={dot.y} r={map.r} style={`fill:${fillOf(row)}`} /></a>;
+              })}
+            </g>
+          </svg>
+          <div class="map-zoom">
+            <button type="button" class="icon-btn" data-zoom="in" aria-label="Zoom in">+</button>
+            <button type="button" class="icon-btn" data-zoom="out" aria-label="Zoom out">−</button>
+            <button type="button" class="icon-btn" data-zoom="reset" aria-label="Reset zoom">⟲</button>
+          </div>
+          <div class="tooltip" hidden></div>
+          {rows.map((r) => (
+            <template data-tip-for={r.c.id}>
+              <div class="tip-head"><strong><span class="tip-flag">{r.c.flag}</span>{r.c.name}</strong><span class="tip-chip" style={`--chip:${tierColor(r.c.raw)}`}>{r.c.score}</span></div>
+              <div class="tip-meta"><b>{r.head[0]}</b> {r.head[1]}</div>
+              {r.details && <p class="tip-note">{r.details}</p>}
+              <div class="tip-foot">Click for the profile</div>
+            </template>
+          ))}
+          <figcaption class="ctxp-legend">
+            {page.colouring.legend.map(([color, label]) => <span><i style={`background:${color}`}></i>{label}</span>)}
+            <span><i class="sw-nodata"></i>{d.map?.missing ?? "Not in the dataset"}</span>
+          </figcaption>
+        </figure>
+        {d.map?.note && <p class="dsp-note">{d.map.note}</p>}
+      </section>
+    )}
+
+    {page.words && page.answers.length > 0 && (
+      <section class="section" aria-labelledby="dspAnswers">
+        <div class="section-head"><div><h2 id="dspAnswers">How the {rows.length} places divide</h2></div></div>
+        <table class="src-table ctxp-status">
+          <thead><tr><th>{d.name}</th><th class="num">Places</th><th class="ctxp-bar-col" aria-hidden="true"></th></tr></thead>
+          <tbody>
+            {page.answers.map((a) => (
+              <tr><td>{a.label}</td><td class="num">{a.n}</td><td class="ctxp-bar-col"><i class="ctxp-bar" style={`--w:${(a.n / page.answers[0].n) * 100}%;--c:var(--u3)`}></i></td></tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+
+    {page.highest.length >= 3 && (
+      <section class="section dsp-ends" aria-label="Highest and lowest">
+        {[["Highest", page.highest], ["Lowest", page.lowest]].map(([label, list]) => (
+          <div>
+            <h2 class="dsp-ends-h">{label}</h2>
+            <ol>{list.map((r) => <li><a href={profileHref(r.c)}><span aria-hidden="true">{r.c.flag}</span> {r.c.name}</a><b>{r.head[0]}</b>{r.year != null && <small>{r.year}</small>}</li>)}</ol>
+          </div>
+        ))}
+      </section>
+    )}
+
+    {!d.worldwide && (
+      <section class="section" aria-labelledby="dspTable" data-dsp-table>
+        <div class="section-head"><div>
+          <h2 id="dspTable">Country by country</h2>
+          <p class="sub">Each place's latest figure, as on its profile. Select a heading to sort.</p>
+        </div></div>
+        <div class="ctxp-filter">
+          <input type="search" placeholder="Filter by country, region or word" aria-label="Filter the table" data-ctxp-q />
+          <span class="ctxp-count" aria-live="polite" data-ctxp-count></span>
+        </div>
+        <table class="src-table ctxp-table dsp-table">
+          <thead><tr>
+            <th><button type="button" data-sort="name">Country</button></th>
+            <th class="dsp-fig-h"><button type="button" data-sort="value">{d.map?.label ?? "Figure"}</button></th>
+            <th>Further figures</th>
+            <th class="num"><button type="button" data-sort="year">Year</button></th>
+          </tr></thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr data-name={r.c.name} data-value={r.mapValue ?? r.value ?? ""} data-year={r.year ?? ""}>
+                <td class="ctxp-country"><a href={profileHref(r.c)}><span aria-hidden="true">{r.c.flag}</span> {r.c.name}</a><small>{r.c.region}</small></td>
+                <td class="dsp-fig"><i class="dsp-sw" style={`background:${fillOf(r)}`}></i><b>{r.head[0]}</b>{r.head[1] && <span>{r.head[1]}</span>}</td>
+                <td class="ctxp-summary">{r.details}</td>
+                <td class="num dsp-year">{r.year ?? "—"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+
+    <section class="section prose dsp-origin" aria-labelledby="dspOrigin">
+      <h2 id="dspOrigin">How the file was made</h2>
+      <p>{d.origin}</p>
+      {Object.keys(d.notes).length > 0 && (
+        <ul>{Object.entries(d.notes).map(([slug, note]) => { const c = places.find((x) => x.slug === slug); return <li>{c ? <a href={profileHref(c)}>{c.name}</a> : slug}: {note}</li>; })}</ul>
+      )}
+      <p>The file belongs to {d.credit ?? d.publisher} and keeps its terms; cite the publisher when you use it.</p>
+    </section>
+  </main>
+</Base>
+
+<script>
+  import "../../lib/unit-map-tip.js";
+  import { select } from "d3-selection";
+  import { zoom, zoomIdentity } from "d3-zoom";
+  import "d3-transition";
+
+  // zoom and pan, by wheel, drag or the buttons, as on the context pages
+  for (const figure of document.querySelectorAll("[data-ctxp-map]")) {
+    const svg = select(figure.querySelector("svg"));
+    const g = svg.select(".ctxp-zoom");
+    const [, , w, h] = figure.querySelector("svg").getAttribute("viewBox").split(" ").map(Number);
+    const dots = g.selectAll("circle").each(function () { this.dataset.r = this.getAttribute("r"); });
+    // a dataset that covers one region (Europe, the United States) opens on it: the box around
+    // the places with a figure, if it is much smaller than the world; reset returns there. A
+    // country spread over oceans (France with its overseas regions) is left out of the box.
+    const boxes = g.selectAll(".has-data").nodes().map((n) => n.getBBox());
+    const box = (boxes.filter((b) => b.width < w * 0.12).length ? boxes.filter((b) => b.width < w * 0.12) : boxes)
+      .reduce((a, b) => (a ? { x0: Math.min(a.x0, b.x), y0: Math.min(a.y0, b.y), x1: Math.max(a.x1, b.x + b.width), y1: Math.max(a.y1, b.y + b.height) } : { x0: b.x, y0: b.y, x1: b.x + b.width, y1: b.y + b.height }), null);
+    const k = box ? Math.min(6, 0.85 / Math.max((box.x1 - box.x0) / w, (box.y1 - box.y0) / h)) : 1;
+    const home = k > 1.6 ? zoomIdentity.translate(w / 2, h / 2).scale(k).translate(-(box.x0 + box.x1) / 2, -(box.y0 + box.y1) / 2) : zoomIdentity;
+    const z = zoom().scaleExtent([1, 10]).translateExtent([[0, 0], [w, h]]).on("zoom", (e) => {
+      g.attr("transform", e.transform);
+      dots.attr("r", function () { return this.dataset.r / Math.sqrt(e.transform.k); });
+    });
+    svg.call(z);
+    z.transform(svg, home);
+    const act = { in: () => z.scaleBy(svg.transition().duration(250), 1.8), out: () => z.scaleBy(svg.transition().duration(250), 1 / 1.8), reset: () => z.transform(svg.transition().duration(250), home) };
+    figure.querySelectorAll("[data-zoom]").forEach((b) => b.addEventListener("click", act[b.dataset.zoom]));
+  }
+
+  // The table filters by any word in a row, and sorts by country, figure or year: a second click
+  // on the same heading reverses it. Places without a figure stay at the bottom.
+  for (const box of document.querySelectorAll("[data-dsp-table]")) {
+    const body = box.querySelector("tbody");
+    const rows = [...body.rows];
+    const q = box.querySelector("[data-ctxp-q]"), count = box.querySelector("[data-ctxp-count]");
+    const buttons = [...box.querySelectorAll("[data-sort]")];
+    const filter = () => {
+      const words = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      let n = 0;
+      for (const tr of rows) { const show = words.every((w) => tr.textContent.toLowerCase().includes(w)); tr.hidden = !show; if (show) n++; }
+      count.textContent = `${n} of ${rows.length}`;
+    };
+    const sort = (key, dir) => {
+      const val = (tr) => (key === "name" ? tr.dataset.name : tr.dataset[key] === "" ? null : +tr.dataset[key]);
+      rows.sort((a, b) => {
+        const x = val(a), y = val(b);
+        if (x == null || y == null) return x == null ? (y == null ? 0 : 1) : -1;
+        return (key === "name" ? x.localeCompare(y) : x - y) * dir;
+      });
+      body.append(...rows);
+      for (const b of buttons) b.closest("th").removeAttribute("aria-sort");
+      box.querySelector(`[data-sort="${key}"]`).closest("th").setAttribute("aria-sort", dir > 0 ? "ascending" : "descending");
+    };
+    for (const b of buttons) b.addEventListener("click", () => {
+      const th = b.closest("th"), key = b.dataset.sort;
+      // a figure sorts highest first, a name A to Z
+      const dir = th.getAttribute("aria-sort") ? (th.getAttribute("aria-sort") === "ascending" ? -1 : 1) : key === "name" ? 1 : -1;
+      sort(key, dir);
+    });
+    for (const b of buttons) b.closest("th").removeAttribute("aria-sort");
+    buttons[0].closest("th").setAttribute("aria-sort", "ascending");
+    q.addEventListener("input", filter);
+    filter();
+  }
+</script>

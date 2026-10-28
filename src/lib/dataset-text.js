@@ -59,10 +59,10 @@ export const CHART_OF = {
   wikipedia_views: "looked-it-up", clinical_trials: "trials", cannabis_parties: "parties", treatment: "punish-or-treat",
   gallup_us: "opinion-gap", news: "in-the-news",
 };
-export const GROUPS = ["Use", "Law", "Society", "Context"];
+export const GROUPS = ["Use", "Law", "Society", "Plant and market"];
 // datasets without a map view of their own sit with the views they belong to
-const GROUP_OF = { cannabis_use: "Use", youth_use: "Use", canada_sourcing: "Use", canada_revenue: "Society", colonial_links: "Society", religion: "Society", gallup_us: "Society", wikipedia_views: "Society", cannabis_parties: "Society" };
-export const groupOf = (d) => GROUP_OF[d.id] ?? d.map?.group ?? "Context";
+const GROUP_OF = { cannabis_use: "Use", youth_use: "Use", canada_sourcing: "Use", canada_revenue: "Society", colonial_links: "Society", religion: "Society", population: "Society", book_words: "Society", gallup_us: "Society", wikipedia_views: "Society", cannabis_parties: "Society" };
+export const groupOf = (d) => GROUP_OF[d.id] ?? d.map?.group ?? "Plant and market";
 
 // Where the country stands among every place the dataset covers, by its headline figure (the
 // latest year of a series): the share of them with a lower figure. Null for text and ranks.

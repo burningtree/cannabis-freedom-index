@@ -398,7 +398,7 @@ const datasets = defineCollection({
       also: z.string().min(1).optional(),
       map: z.object({
         field: z.string(), format: z.enum(["number", "percent", "decimal", "rate"]),
-        per: z.number().positive().optional(), group: z.enum(["Use", "Society", "Law", "Context"]).default("Society"),
+        per: z.number().positive().optional(), group: z.enum(["Use", "Society", "Law", "Plant and market"]).default("Society"),
         since: z.number().int().optional(), // a series: its latest year must be this recent to be shown
         window: z.number().int().positive().optional(), // the year slider: how many years back a figure still counts (5)
         slug: z.string().regex(/^[a-z0-9-]+$/), label: z.string(), missing: z.string(),
