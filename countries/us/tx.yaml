@@ -13,19 +13,95 @@ scores:
   consumption: 1
   access: 1
 segments:
-  possession: >-
-    2 oz or less is a misdemeanour with up to 180 days and a $2,000 fine. Any amount of concentrate
-    is a felony.
-  cultivation: Charged by weight, like possession.
-  enforcement: Jail is possible; Austin, Dallas and several other places no longer arrest for small amounts.
-  sharing: Giving 7 g or less without payment is a misdemeanour with up to 180 days.
+  possession:
+    text: >-
+      2 oz or less is a misdemeanour with up to 180 days and a $2,000 fine; the ladder climbs to
+      99 years for the largest weights. Any amount of concentrate is a felony.[@1]
+    currency: USD
+    penalties:
+      - upto: 2 oz
+        treatment: criminal
+        term: Class B misdemeanor
+        prison: 180 days
+        fine: 2000
+      - over: 2 oz
+        upto: 4 oz
+        treatment: criminal
+        term: Class A misdemeanor
+        prison: 1 year
+        fine: 4000
+      - over: 4 oz
+        upto: 5 lb
+        treatment: criminal
+        term: State jail felony
+        prison_min: 180 days
+        prison: 2 years
+        fine: 10000
+      - over: 5 lb
+        upto: 50 lb
+        treatment: criminal
+        term: Third-degree felony
+        prison_min: 2 years
+        prison: 10 years
+        fine: 10000
+      - over: 50 lb
+        treatment: criminal
+        term: Felony
+        prison_min: 2 years
+        note: Maximum rises with weight, to 99 years at the top of the ladder
+  cultivation:
+    text: >-
+      Charged by weight, like possession: growing has no separate statute and plants are weighed
+      as the marijuana they hold.[@1]
+    currency: USD
+    penalties:
+      - label: Growing
+        treatment: criminal
+        term: Charged by weight
+        note: Plants count as possessed marijuana — see the possession ladder
+  enforcement: >-
+    Jail is possible, but Austin voters barred arrests and citations for misdemeanour possession
+    in 2022 and Dallas voters did the same for up to 4 oz in 2024.[@2,3]
+    [Texas replaced its harshest-in-the-country law in 1973.](/history/us-texas-penalty-reform-1973/)
+  sharing: Giving 7 g or less without payment is a misdemeanour with up to 180 days.[@1]
   consumption: Illegal.
   access: >-
     A restricted low-THC medical programme, widened in 2025. Hemp-derived THC products are sold
-    widely in a legal grey zone.
+    widely in a legal grey zone.[@1,4]
+    [The 2018 farm bill opened hemp federally.](/history/us-farm-bill-2018/)
+    [Congress closed the hemp loophole in 2025.](/history/us-hemp-thc-limit-enacted-2025/)
+context:
+  medical:
+    text: >-
+      The Compassionate Use Programme offers low-THC cannabis for a listed set of conditions, not
+      full medical cannabis. House Bill 46, signed by the governor in 2025, added chronic pain,
+      Crohn's disease, traumatic brain injury, terminal illness and hospice care, with more
+      dispensaries and non-smoked products.[@4]
+    sources: [4]
+  culture:
+    text: >-
+      Texas produced both the punishment and the protest songs. Houston activist Lee Otis Johnson
+      got 30 years for handing an undercover officer a single joint in 1968; "Free Lee Otis" rang
+      across campuses until a federal judge freed him in 1972.[@5]
+      [Texas gave an activist 30 years for one joint.](/history/us-lee-otis-johnson-1968/)
+      Willie Nelson — Texan, NORML co-chair, arrested at Sierra Blanca in 2010 — answered with his
+      Teapot Party call to regulate and tax cannabis.[@6]
+      [Willie Nelson was arrested in Texas in 2010.](/culture/people/willie-nelson/)
+      [Willie Nelson was arrested in Texas in 2010.](/history/us-willie-nelson-arrest-2010/)
+    sources: [5, 6]
 sources:
   - title: NORML — Texas laws and penalties
     url: https://norml.org/laws/texas-penalties-2/
+  - title: Marijuana Moment — Austin voters approve decriminalization (May 2022)
+    url: https://www.marijuanamoment.net/austin-texas-voters-approve-local-marijuana-decriminalization-ballot-initiative/
+  - title: Marijuana Moment — Dallas police told not to arrest for marijuana (January 2025)
+    url: https://www.marijuanamoment.net/dallas-police-instructed-not-to-arrest-people-for-marijuana-following-voter-approval-of-decriminalization/
+  - title: Marijuana Moment — Texas governor signs bill to significantly expand medical marijuana program (June 2025)
+    url: https://www.marijuanamoment.net/texas-governor-signs-bill-to-significantly-expand-states-medical-marijuana-program/
+  - title: Texas Monthly — Lee Otis, free
+    url: https://www.texasmonthly.com/articles/lee-otis-free/
+  - title: Allen St. Pierre / NORML — Willie Nelson After His Most Recent Pot Arrest (28 November 2010)
+    url: https://norml.org/blog/2010/11/28/willie-nelson-after-his-most-recent-pot-arrest-lets-start-a-tea-pot-party/
 use:
   note: Includes vaping; a model-based estimate.
   share: 16.4
