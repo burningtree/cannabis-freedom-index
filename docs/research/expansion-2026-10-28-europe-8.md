@@ -53,3 +53,30 @@ Northern Cyprus verification: targeted three-page build passed tests and content
 validation; read rendered survey/sample, 218 programme count and testing text.
 Profile audit 0 errors/0 warnings. Existing treatment and 1972 law articles remain;
 the new article explains the 2026 survey alongside the statutory treatment route.
+
+| Liechtenstein | Four statutory tables; all required sections; hemp/CBD correction; medical production/research permits; twenty 2025 permissions; terms; six events, corrected feed-law event and 2014 amendment article | 1950s/1960s; original 2019 product-authorisation dates; full seed trade and current schedules; national arrest series | this commit |
+
+Liechtenstein: personal cultivation shares Article 21's own-consumption rule;
+substitute custody applies only to an uncollectible fine, clearly qualified in
+all affected rows. Scores remain in their criminal fine/lesser personal-growing
+bands. Changed production none → medical (statutory exceptional permissions),
+added hemp high (<1% boundary; not including 1%), and licensed research.
+Removed foreign travel advice and unsupported blanket criminal-record claim.
+Retired legacy products and converted revised text to inline primary citations.
+
+The old “2005 bans hemp entirely” record was unsupported: the 2004 statute
+expressly exempts registered agricultural varieties, and the current law uses 1%.
+Preserved its stable ID but corrected it to the actual 31 October 2011 customs
+notice documenting applicable Swiss feed rules, avoiding an inferred local 2005
+commencement. Original Swiss 2005 feed prohibition and its later revisions remain
+separate from cannabis narcotics. The 2014 amendment entry uses adoption; its
+commencement links to the HMG's 1 April 2015/refendum clause. Exceptional medical
+permissions do not prove unrestricted patient flower access. The inherited 2019
+entry's exact product-authorisation dates still need primary confirmation;
+current access is independently supported by 2025 actual permits, score unchanged.
+
+Liechtenstein verification: eight-page build passed tests/content validation and
+rendered all changed history pages. Read country tables, threshold article and
+corrected feed-law page. An existing regression required “50,000 francs”; kept
+that equivalent wording. Added two missing driving citations after inspection;
+final batch build will re-render them. No tests changed.

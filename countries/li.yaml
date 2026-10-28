@@ -3,8 +3,11 @@ region: Europe
 iso_numeric: 438
 recreational: illegal
 medical: limited
-updated: 2026-10-23
-summary: Illegal, with small-quantity cases usually diverted; authorised cannabinoid medicines are prescribable.
+updated: '2026-10-28'
+summary: >-
+  Personal possession, use and growing for one’s own consumption are criminal contraventions
+  usually punishable by a fine. Cannabis-type narcotics at or above 1% THC are controlled;
+  low-THC hemp and exceptional medical access have separate rules.
 scores:
   possession: 1
   cultivation: 1
@@ -15,135 +18,252 @@ scores:
 segments:
   possession:
     text: >-
-      Possessing cannabis for one's own use is a contravention under article 21 of the Narcotics
-      Act: a fine of up to 50,000 francs, and up to six months in prison only if the fine cannot
-      be collected.[@betmg] The court may waive punishment in a minor case.[@betmg] Other acts
-      under article 20, such as possession that is not for the possessor's own use, carry up to
-      three years.[@betmg]
+      Possession for one’s own consumption is a criminal contravention carrying a fine up to
+      50,000 francs; up to six months in custody applies only if the fine cannot be
+      collected.[@betmg] A court may waive punishment in minor cases.[@betmg] Other intentional
+      possession ordinarily carries up to three years or a fine of up to 360 day units; serious
+      cases carry one–twenty years.[@betmg]
     sources:
       - betmg
+    currency: CHF
+    penalties:
+      - label: Possession for own consumption
+        treatment: criminal
+        term: Übertretung — Article 21
+        fine: 50000
+        prison: 6 months
+        note: Custody only if the fine is uncollectible; punishment may be waived in minor cases
+      - label: Other unauthorised possession
+        treatment: criminal
+        term: Vergehen — Article 20(1)
+        prison: 3 years
+        note: Prison or a criminal fine of up to 360 day units
+      - label: >-
+          Serious case — dangerous quantity, criminal association or commercial dealing with
+          large turnover or substantial profit
+        treatment: criminal
+        term: Verbrechen — Article 20(1)–(2)
+        prison_min: 1 year
+        prison: 20 years
   cultivation:
-    text: Cultivation of cannabis above 1% THC is prohibited, with up to three years in prison.
+    text: >-
+      Unauthorised growing for one’s own consumption falls under Article 21’s fine up to
+      CHF50,000, with up to six months only if the fine cannot be collected.[@betmg] Other
+      unauthorised growing carries up to three years or a criminal fine of up to 360 day units;
+      serious cases carry one–twenty years.[@betmg] Article 6 controls cannabis-type narcotics
+      at an average total THC content of at least 1%, with exceptional permissions for research,
+      medicine development and limited medical use.[@betmg]
     sources:
-      - wiki
-      - law
+      - betmg
+    currency: CHF
+    penalties:
+      - label: Growing for own consumption
+        treatment: criminal
+        term: Übertretung — Article 21
+        fine: 50000
+        prison: 6 months
+        note: Custody only if the fine is uncollectible; punishment may be waived in minor cases
+      - label: Other unauthorised growing
+        treatment: criminal
+        term: Vergehen — Article 20(1)
+        prison: 3 years
+        note: Prison or a criminal fine of up to 360 day units
+      - label: >-
+          Serious case — dangerous quantity, criminal association or commercial dealing with
+          large turnover or substantial profit
+        treatment: criminal
+        term: Verbrechen — Article 20(1)–(2)
+        prison_min: 1 year
+        prison: 20 years
   enforcement:
     text: >-
-      Fines are the norm for users. Under article 21 of the Narcotics Act, consumption and
-      offences committed for one's own use carry a fine of up to 50,000 francs, with up to six
-      months in prison only if the fine cannot be collected, and the court may waive punishment
-      in minor cases. Other offences under article 20 carry up to three years.
+      Personal consumption and acts for one’s own consumption fall under the criminal fine
+      provision, and courts may waive punishment in minor cases.[@betmg] For dependence-related
+      offences, Article 22 lets courts defer a fine or a prison term no longer than five years
+      while the person undertakes treatment, with a probation period of one–five years.[@betmg]
+      Failure to start or continue treatment can lead to enforcement of the sentence.[@betmg]
     sources:
       - betmg
-      - wiki
   sharing:
     text: >-
-      Selling, supplying to others or putting on the market carries up to three years in prison
-      or a fine under article 20 of the Narcotics Act, and one to twenty years in serious cases
-      such as commercial dealing.
+      Giving cannabis to another person, selling it or otherwise putting it into circulation
+      ordinarily carries up to three years or a criminal fine of up to 360 day units.[@betmg]
+      Serious cases carry one–twenty years, including commercial dealing with large turnover or
+      substantial profit, criminal association or quantities capable of endangering many
+      people’s health.[@betmg]
     sources:
       - betmg
-      - wiki
+    currency: CHF
+    penalties:
+      - label: Unauthorised supply, including unpaid transfer
+        treatment: criminal
+        term: Vergehen — Article 20(1)
+        prison: 3 years
+        note: Prison or a criminal fine of up to 360 day units
+      - label: >-
+          Serious case — dangerous quantity, criminal association or commercial dealing with
+          large turnover or substantial profit
+        treatment: criminal
+        term: Verbrechen — Article 20(1)–(2)
+        prison_min: 1 year
+        prison: 20 years
   consumption:
-    text: Use is an offence under the same provisions.
+    text: >-
+      Intentional unauthorised use is a criminal contravention with a fine up to CHF50,000 and
+      up to six months in custody only if the fine cannot be collected.[@betmg] The court may
+      waive punishment in minor cases.[@betmg]
     sources:
-      - law
-      - cann
+      - betmg
+    currency: CHF
+    penalties:
+      - label: Unauthorised consumption
+        treatment: criminal
+        term: Übertretung — Article 21
+        fine: 50000
+        prison: 6 months
+        note: Custody only if the fine is uncollectible; punishment may be waived in minor cases
   access:
     text: >-
-      There is no general medical-cannabis programme, but authorised cannabinoid medicines can be
-      prescribed. The government specifically identifies Sativex as authorised for medical use in
-      Liechtenstein. Residents are not covered by neighbouring Switzerland's cannabis pilot trials.
+      Patients can receive authorised cannabinoid medicines: the government’s 2020 policy paper
+      identifies Sativex.[@govt_drug_policy] Exceptional medical use also requires Health Office
+      approval; its [2025 report](/history/liechtenstein-medical-permits-2025/) records twenty
+      Dronabinol/cannabis permissions issued that year.[@report25] Recreational supply remains
+      prohibited.[@betmg]
     sources:
-      - cann
       - govt_drug_policy
+      - report25
+      - betmg
 context:
   production:
-    status: none
-    text: No licensed production; industrial hemp has been restricted since 2005.
+    status: medical
+    text: >-
+      The Health Office can issue exceptional cultivation, manufacturing and marketing permits
+      for scientific research, medicine development and limited medical application.[@betmg]
+      Licensed operators must keep records and report their controlled-substance activity;
+      authorised growers and manufacturers also submit quarterly crop and output
+      information.[@betmg] Low-THC CBD products are separately described as legally available by
+      domestic guidance.[@youth]
     sources:
-      - cann
-  products:
-    text: Products under 1% THC occupy a grey area.
-    sources:
-      - cann
+      - betmg
+      - youth
   medical:
-    text: No medical cannabis programme, though two cannabinoid medicines can be prescribed.
+    text: >-
+      The government’s 2020 policy paper identifies Sativex as authorised for medical
+      use.[@govt_drug_policy] The 2025 government report describes exceptional cannabis
+      prescribing, usually for severe chronic pain when other medicines are
+      insufficient.[@report25] It records twenty Dronabinol/cannabis permissions that year;
+      these are authorisations, with no separate count of unique patients supplied.[@report25]
     sources:
-      - cann
-      - wiki
       - govt_drug_policy
+      - report25
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      Unlawful drugs can be confiscated under Article 28.[@betmg] A dependence-related sentence
+      may be deferred for treatment under the [1989
+      amendment](/history/liechtenstein-treatment-deferral-1989/), subject to continuing
+      treatment and the court’s conditions.[@betmg] Educators and carers in public service are
+      exempted from a duty to report a person entrusted to them for a personal-use offence under
+      Article 21.[@betmg]
     sources:
-      - wiki
+      - betmg
   planting:
     seeds: grey
     seeds_trade: unclear
     clones: illegal
     clones_trade: banned
     text: >-
-      The Narcotics Act treats cannabis-type material with an average total THC content of at
-      least 1% as a banned narcotic. Growing narcotics needs a permit from the Office of
-      Public Health, and growing without one carries up to three years in prison. The act
-      counts plants and parts of plants as substances but does not mention seeds.
+      The local Act controls cannabis-type narcotics at an average total THC content of at least
+      1% and treats plants and plant parts as substances.[@betmg] Its text does not separately
+      name seeds, so it does not establish an open seed-trade permission.[@betmg] Growing
+      controlled cannabis requires an exceptional permission; domestic youth guidance separately
+      recognises lawful low-THC CBD products.[@betmg,youth]
     sources:
       - betmg
+      - youth
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      The law prohibits unauthorised transfer of controlled cannabis to another person.[@betmg]
+      Cultivation and marketing exceptions serve research, medicine development or limited
+      medical use.[@betmg] Those permissions provide no recreational club-supply
+      authorisation.[@betmg]
     sources:
-      - wiki
-      - law
+      - betmg
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says illegal
-      drugs, including cannabis, carry severe penalties and tells travellers to expect a long
-      jail sentence and heavy fines for possessing, using or smuggling them, also when only
-      passing through the country.
+      Visitors have no authorised recreational cannabis supplier under the local drug
+      law.[@betmg] Personal possession and use fall under Article 21, while unauthorised supply
+      is separately punishable.[@betmg] Imports, exports and transit also engage the Swiss rules
+      applicable under the customs treaty.[@betmg]
     sources:
-      - cann
-      - fcdo
+      - betmg
   driving:
     status: limit
     text: >-
-      Traffic Regulations article 2(2a) treats inability to drive as established when
-      blood THC is at least 1.5 micrograms per litre (1.5 ng/mL). A driver who proves
-      use under a medical prescription is excepted from that automatic evidential
-      rule, but the general prohibition on driving while unfit still applies. Police
-      can order a blood test on suspicion of drug influence and take the licence
-      immediately; the road office and prosecution receive the report, and a medical
-      fitness assessment may follow. Road Traffic Act article 86(1) sets a fine up to
-      CHF50,000, with imprisonment up to six months if the fine is uncollectible,
-      rather than an automatic six-month custodial sentence. Article 16 specifies at
-      least three months' licence withdrawal for driving while unfit or intentionally
-      obstructing the required test, with longer periods for specified repeats.
-      Administrative withdrawal and court punishment are separate proceedings.
+      Traffic Regulations article 2(2a) treats inability to drive as established when blood THC
+      is at least 1.5 micrograms per litre (1.5 ng/mL).[@trafficvrv] A driver who proves use under a medical
+      prescription is excepted from that automatic evidential rule, but the general prohibition
+      on driving while unfit still applies.[@trafficvrv] Police can order a blood test on
+      suspicion of drug influence and take the licence immediately; the road office and
+      prosecution receive the report, and a medical fitness assessment may
+      follow.[@trafficpractice] Road Traffic Act article 86(1) sets a fine up to CHF50,000, with
+      imprisonment up to six months if the fine is uncollectible, rather than an automatic
+      six-month custodial sentence.[@trafficsvg] Article 16 specifies at least three months'
+      licence withdrawal for driving while unfit or intentionally obstructing the required test,
+      with longer periods for specified repeats.[@trafficsvg] Administrative withdrawal and court punishment
+      are separate proceedings.[@trafficsvg]
     sources:
       - trafficvrv
       - trafficsvg
       - trafficpractice
+  recreational:
+    text: >-
+      Adults remain subject to criminal penalties for unauthorised possession, use and home
+      growing for their own consumption.[@betmg] The personal-use rule provides a fine, with
+      punishment dispensable in minor cases.[@betmg] Passing controlled cannabis to someone else
+      engages the separate supply offence.[@betmg]
+    sources:
+      - betmg
+  hemp:
+    status: high
+    text: >-
+      The statutory cannabis prohibition begins at an average total THC content of 1%.[@betmg]
+      Domestic youth-protection guidance describes CBD cigarettes below that threshold as
+      legally available.[@youth] Other product rules still matter: the food authority treats
+      hemp extracts and cannabinoids such as CBD as novel foods requiring approval before use in
+      foods.[@food]
+    sources:
+      - betmg
+      - youth
+      - food
+  research:
+    status: licensed
+    text: >-
+      Research institutes can seek Health Office permission to grow, acquire, store and use
+      controlled drugs for their own scientific needs.[@betmg] Cannabis exceptions also cover
+      scientific research and medicine development under Article 6.[@betmg] Permit holders must
+      keep records and let inspectors examine their stocks, premises and documentation.[@betmg]
+    sources:
+      - betmg
 sources:
   trafficvrv:
-    title: "Liechtenstein Lilex — Traffic Regulations, current consolidation (PDF)"
+    title: Liechtenstein Lilex — Traffic Regulations, current consolidation (PDF)
     url: https://www.gesetze.li/konso/pdf/1978019000
-    locator: "Article 2(1), (2a)–(2c)"
+    locator: Article 2(1), (2a)–(2c)
   trafficsvg:
-    title: "Liechtenstein Lilex — Road Traffic Act, consolidation in force 1 January 2026 (PDF)"
+    title: Liechtenstein Lilex — Road Traffic Act, consolidation in force 1 January 2026 (PDF)
     url: https://www.gesetze.li/konso/pdf/1978018000
-    locator: "Articles 16, 86(1) and 86a"
+    locator: Articles 16, 86(1) and 86a
   trafficpractice:
-    title: "Liechtenstein Road Office — driving while unfit, administrative practice"
-    url: https://www.llv.li/de/landesverwaltung/amt-fuer-strassenverkehr/administrative-massnahmen-admas-/fahren-im-nicht-fahrfaehigen-zustand-finifaz-
-    locator: "Fahren unter Medikamenten-/Drogeneinfluss"
-  fcdo:
-    title: "GOV.UK (FCDO) — Foreign travel advice: Liechtenstein, safety and security"
-    url: https://www.gov.uk/foreign-travel-advice/liechtenstein/safety-and-security
+    title: Liechtenstein Road Office — driving while unfit, administrative practice
+    url: >-
+      https://www.llv.li/de/landesverwaltung/amt-fuer-strassenverkehr/administrative-massnahmen-admas-/fahren-im-nicht-fahrfaehigen-zustand-finifaz-
+    locator: Fahren unter Medikamenten-/Drogeneinfluss
   betmg:
-    title: Gesetz vom 20. April 1983 über die Betäubungsmittel und die psychotropen Stoffe (BMG), LGBl. 1983 Nr. 38, consolidated (Gesetze.li)
+    title: >-
+      Gesetz vom 20. April 1983 über die Betäubungsmittel und die psychotropen Stoffe (BMG),
+      LGBl. 1983 Nr. 38, consolidated (Gesetze.li)
     url: https://www.gesetze.li/konso/html/1983038000
   wiki:
     title: Wikipedia — Cannabis in Liechtenstein
@@ -156,4 +276,38 @@ sources:
     url: https://www.gesetze.li/konso/pdf/1983038000?version=13
   govt_drug_policy:
     title: Liechtenstein Government — Drug Policy Principles 2020
-    url: https://www.regierung.li/files/attachments/suchtpolitische-grundsaetze-2020-638354087178188334.pdf
+    url: >-
+      https://www.regierung.li/files/attachments/suchtpolitische-grundsaetze-2020-638354087178188334.pdf
+  youth:
+    title: Liechtenstein Youth Protection — Cannabis and CBD cigarettes
+    url: https://www.jugendschutz.li/themen/drogen/illegale-drogen/cannabis
+  food:
+    title: Liechtenstein Food Authority — Novel foods and CBD
+    url: >-
+      https://www.llv.li/de/unternehmen/sicherheit-schutz/lebensmittel-verbraucherschutz-konsumentenschutz/meldungen-und-bewilligungen-lebensmittel-und-gebrauchsgegenstaende
+  report25:
+    title: Liechtenstein Government — Accountability report 2025, p. 423, medical permits
+    url: >-
+      https://www.llv.li/serviceportal2/amtsstellen/stabstelle-regierungskanzlei/rb_2025_ii-05-gesellschaft-justiz-mg-2025.pdf
+    locator: Printed p. 423 (PDF p. 43), twenty Dronabinol/cannabis exceptional permissions
+words:
+  - word: Marihuana
+    lang: German
+    meaning: herbal cannabis
+    sources:
+      - youth
+  - word: Haschisch
+    lang: German
+    meaning: cannabis resin
+    sources:
+      - youth
+  - word: Gras
+    lang: German
+    meaning: herbal cannabis; slang
+    sources:
+      - youth
+  - word: Dope
+    lang: German
+    meaning: hashish; slang
+    sources:
+      - youth
