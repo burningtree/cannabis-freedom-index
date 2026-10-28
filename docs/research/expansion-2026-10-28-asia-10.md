@@ -7,7 +7,7 @@ None was marked busy.
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Myanmar | in progress | | |
+| Myanmar | 1891 article, threshold/2025-amendment corrections, 3 words, 4 history entries | 1891 local order cannot be excluded | this commit |
 | Iraq | 2004 article, article 23/29 corrections, six-tonne wording, 5 words, 3 history entries | amendment still in first reading | this commit |
 | Saudi Arabia | 2025 executions article, deportation/licence penalties, flogging and CBD fixes, 4 words, 3 history entries | no patient programme | this commit |
 | Malaysia | 2023 article, 936-case correction, 2018 date fix, 4 words, 4 history entries | no 2026 medical product | this commit |
@@ -20,3 +20,5 @@ Malaysia validation: `profile-audit my` zero errors and warnings. The profile no
 Saudi Arabia validation: `profile-audit sa` zero errors and warnings. The profile now records articles 56–57 on deportation, travel bans and licence revocation, notes that statutory flogging remains despite the 2020 abolition, clarifies the 2026 synthetic-CBD rule and adds four Arabic terms. Three entries cover the 2026 UN opinion, first-half executions and the August 2026 hashish execution; the 442-word 2025 executions article is in `articles/`.
 
 Iraq validation: `profile-audit iq` zero errors and warnings. The profile now cites Article 23 for the plant ban, uses “more than six tonnes” instead of the unsupported 6,183 kg, treats Article 29 as life/temporary imprisonment rather than death, and adds five Arabic/Kurdish terms. Three entries cover 2024–2026; the 482-word 2004 death-penalty article is in `articles/`.
+
+Myanmar validation: `profile-audit mm` zero errors and warnings. The 1891 entry is now a parliamentary-question debate rather than a ban, the 2025 amendment entry records the three-month rehabilitation and 45–90-hour work changes, the 100 g threshold is attributed to 2018, and the profile adds three Burmese terms. The 490-word 1891 article is in `articles/`; two new entries cover the 1881 Excise Act and the 1893–94 Indian Hemp Drugs Commission.

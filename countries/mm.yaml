@@ -3,11 +3,11 @@ region: Asia
 iso_numeric: 104
 recreational: death
 medical: none
-updated: '2026-10-28'
+updated: "2026-10-29"
 summary: >-
-  Drug use itself carries no prison term. A user who does not enter the required treatment
-  bond, or who breaks it, is sent to a rehabilitation centre for three months. Possession
-  still carries multi-year minimum sentences, and more than 100 grams is deemed to be for sale.
+  Drug use itself carries no prison term. A user who does not enter the required treatment bond, or
+  who breaks it, is sent to a rehabilitation centre for three months. Possession still carries
+  multi-year minimum sentences, and more than 100 grams is deemed to be for sale.
 scores:
   possession: 0
   cultivation: 0
@@ -18,15 +18,16 @@ scores:
 segments:
   possession:
     text: >-
-      Possession remains a serious crime under the 1993 narcotics law: a person caught with even
-      a small quantity for personal use risks five to ten years in prison, and may also be fined,
+      Possession remains a serious crime under the 1993 narcotics law: a person caught with even a
+      small quantity for personal use risks five to ten years in prison, and may also be fined,
       under Section 16.[@ndps93] In 2018 parliament rejected a clause that would have spared small
-      amounts, and softened only the treatment of use.[@tni18] The 2025 amendment deems possession
-      of more than 100 grams of marijuana, marijuana extract, or both to be possession for
-      sale.[@gnlm26]
+      amounts, and softened only the treatment of use.[@tni18] The 2018 amendment set the threshold
+      at more than 100 grams of marijuana, marijuana extract, or both; the 2025 amendment kept
+      it.[@law,gnlm26]
     sources:
       - ndps93
       - tni18
+      - law
       - gnlm26
     penalties:
       - label: Small quantity for personal use, Section 16
@@ -35,15 +36,15 @@ segments:
         prison_min: 5 years
         prison: 10 years
         note: A fine may also be imposed
-      - label: Over 100 g, deemed for sale (2025)
+      - label: Over 100 g, deemed for sale (2018; kept 2025)
         treatment: criminal
         term: Possession for sale
         note: Moves to the ten-years-to-life sale tier under Section 19
   cultivation:
     text: >-
-      Cultivation of any amount carries five to ten years and a fine under Section 16(a), not
-      merely a five-year minimum.[@ndps93] Production for sale falls under the
-      fifteen-years-to-death trafficking tier.[@gnlm26]
+      Cultivation of any amount carries five to ten years and a fine under Section 16(a), not merely
+      a five-year minimum.[@ndps93] Production for sale falls under the fifteen-years-to-death
+      trafficking tier.[@gnlm26]
     sources:
       - ndps93
       - gnlm26
@@ -57,16 +58,16 @@ segments:
   enforcement:
     text: >-
       Possession and cultivation carry five to ten years; sale and production carry ten years to
-      life, and production, sale or import and export fifteen years to life or death.[@ndps93,gnlm26]
-      Police reported 3,832 drug cases and 5,286 prosecutions in January–August 2024; the figures
-      cover all drugs.[@incsr25] Since the 2021 coup, enforcement has become more
-      arbitrary.[@tni,idpc]
+      life, and production, sale or import and export fifteen years to life or
+      death.[@ndps93,gnlm26] Police reported 3,832 drug cases and the prosecution of 5,286 people in
+      January–August 2024; the figures cover all drugs.[@incsr25] Since the 2021 coup, enforcement
+      has been uneven: the regime has burned fields and seized drugs, while cultivation has expanded
+      in resistance-held areas.[@irrawaddy25]
     sources:
       - ndps93
       - gnlm26
       - incsr25
-      - tni
-      - idpc
+      - irrawaddy25
   sharing:
     text: >-
       Possession or transport for sale carries ten years to life, and production, sale, import or
@@ -80,27 +81,29 @@ segments:
         treatment: criminal
         term: Possession for sale
         prison_min: 10 years
-        note: Ten years to life imprisonment
+        note: Ten years to life
+        life: possible
       - label: Production, sale, import or export
         treatment: criminal
         term: Trafficking
         prison_min: 15 years
         death: true
-        note: Fifteen years to life imprisonment, or death; life means incarceration until death
+        note: Fifteen years to life, or death; life means incarceration until death
+        life: possible
   consumption:
     text: >-
       Drug use itself carries no prison term. A court must send a user to a rehabilitation centre
-      for three months when the user does not enter the required bond or breaches its conditions.
-      A user sent there who flagrantly breaks the centre's rules must do unpaid manual work, such
-      as cleaning, repairing roads and bridges or planting trees, for 45 to 90 hours a
+      for three months when the user does not enter the required bond or breaches its conditions. A
+      user sent there who flagrantly breaks the centre's rules must do unpaid manual work, such as
+      cleaning, repairing roads and bridges or planting trees, for 45 to 90 hours a
       week.[@gnlm26,idpc]
     sources:
       - gnlm26
       - idpc
   access:
     text: >-
-      None. The cannabis plant itself is a narcotic drug under the 1993 law, and no medical, hemp
-      or CBD exception was found.[@ndps93] The 2019 Mandalay hemp prosecution is the leading
+      None. The cannabis plant itself is a narcotic drug under the 1993 law, and no medical, hemp or
+      CBD exception was found.[@ndps93] The 2019 Mandalay hemp prosecution is the leading
       example.[@voa19]
     sources:
       - ndps93
@@ -108,16 +111,16 @@ segments:
 context:
   death_penalty:
     text: >-
-      Production, sale, import or export carries fifteen years to life imprisonment, or death.
-      The 2025 amendment defines life imprisonment as incarceration until death.[@ndps93,gnlm26]
+      Production, sale, import or export carries fifteen years to life imprisonment, or death. The
+      2025 amendment defines life imprisonment as incarceration until death.[@ndps93,gnlm26]
     sources:
       - ndps93
       - gnlm26
   recreational:
     text: >-
-      All recreational use is prohibited. Possession of even a small quantity for personal use
-      risks five to ten years, over 100 g is deemed for sale, and trafficking can bring death;
-      use itself leads to treatment rather than prison.[@tni18,tni,law,gnlm26,idpc]
+      All recreational use is prohibited. Possession of even a small quantity for personal use risks
+      five to ten years, over 100 g is deemed for sale, and trafficking can bring death; use itself
+      leads to treatment rather than prison.[@tni18,tni,law,gnlm26,idpc]
     sources:
       - tni18
       - tni
@@ -134,17 +137,17 @@ context:
       - gnlm26
   medical:
     text: >-
-      No medical cannabis. The 1993 law defines the cannabis plant as a narcotic and makes no
-      hemp, CBD or patient exception; the 2019 Mandalay hemp prosecution is the leading
+      No medical cannabis. The 1993 law defines the cannabis plant as a narcotic and makes no hemp,
+      CBD or patient exception; the 2019 Mandalay hemp prosecution is the leading
       example.[@ndps93,voa19]
     sources:
       - ndps93
       - voa19
   consequences:
     text: >-
-      A user who does not enter the required bond, or who breaches it, is sent to a
-      rehabilitation centre for three months. A flagrant breach of that centre's rules brings
-      unpaid manual work of 45 to 90 hours a week.[@gnlm26]
+      A user who does not enter the required bond, or who breaches it, is sent to a rehabilitation
+      centre for three months. A flagrant breach of that centre's rules brings unpaid manual work of
+      45 to 90 hours a week.[@gnlm26]
     sources:
       - gnlm26
   planting:
@@ -162,16 +165,16 @@ context:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.[@ndps93,gnlm26]
+      supplying it to another person are both prohibited, and the law provides for the death penalty
+      for the most serious drug offences.[@ndps93,gnlm26]
     sources:
       - ndps93
       - gnlm26
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone.[@ndps93] Holding even a small quantity
-      for personal use carries five to ten years in prison under Section 16 of the 1993 narcotics
+      There is no legal recreational supply for anyone.[@ndps93] Holding even a small quantity for
+      personal use carries five to ten years in prison under Section 16 of the 1993 narcotics
       law.[@ndps93] More than 100 grams of marijuana, marijuana extract, or both is deemed
       possession for sale.[@gnlm26]
     sources:
@@ -180,13 +183,13 @@ context:
   black_market:
     text: >-
       Cannabis is a small part of the drugs the authorities seize. Among the drugs seized between
-      June 2024 and May 2025 and burned in June 2025 were over 597 kg of marijuana, against
-      1,744 kg of heroin, over 1,334 kg of opium, over 8,573 kg of ketamine and 281 million
-      methamphetamine tablets.[@dvb25] On 26 June 2026 the regime burned more than 50 tonnes of
-      drugs, including marijuana, valued at about US$600 million.[@ap26] Cultivation has spread in
-      Ayadaw township and along the Myinmu border in southern Sagaing since 2022–23, with
-      residents estimating more than thirty acres across six villages.[@irrawaddy25] No
-      cannabis-only seizure series is published.[@incsr25]
+      June 2024 and May 2025 and burned in June 2025 were over 597 kg of marijuana, against 1,744 kg
+      of heroin, over 1,334 kg of opium, over 8,573 kg of ketamine and 281 million methamphetamine
+      tablets.[@dvb25] On 26 June 2026 the regime burned more than 50 tonnes of drugs, including
+      marijuana, valued at about US$600 million.[@ap26] Cultivation has spread in Ayadaw township
+      and along the Myinmu border in southern Sagaing since 2022–23, with residents estimating more
+      than thirty acres across six villages.[@irrawaddy25] No cannabis-only seizure series is
+      published.[@incsr25]
     sources:
       - dvb25
       - ap26
@@ -205,21 +208,21 @@ context:
   driving:
     status: impairment
     text: >-
-      The Road Safety and Motor Vehicle Management Law 2020 prohibits driving under the influence
-      of narcotic or psychotropic substances, with up to one month in prison or a 100,000 kyat
-      fine, or both; a repeat within a year brings up to three months or 300,000 kyats.[@road2020]
-      A crash causing death can also be prosecuted under the Penal Code, with up to seven years,
-      or ten where the driver had knowledge.[@penalcode] The rule is impairment-based, with no
-      THC blood limit.[@road2020]
+      The Road Safety and Motor Vehicle Management Law 2020 prohibits driving under the influence of
+      narcotic or psychotropic substances, with up to one month in prison or a 100,000 kyat fine, or
+      both; a repeat within a year brings up to three months or 300,000 kyats.[@road2020] A crash
+      causing death can also be prosecuted under the Penal Code, with up to seven years, or ten
+      where the driver had knowledge.[@penalcode] The rule is impairment-based, with no THC blood
+      limit.[@road2020]
     sources:
       - road2020
       - penalcode
   arrests:
     text: >-
-      Police reported 3,832 drug cases and 5,286 prosecutions in January–August 2024; the figures
-      cover all drugs.[@incsr25] Seizures from June 2024 to May 2025 included 597 kg of marijuana,
-      alongside 1,744 kg of heroin and 281 million methamphetamine tablets.[@dvb25] On 26 June
-      2026 the regime burned more than 50 tonnes of drugs, including marijuana, valued at about
+      Police reported 3,832 drug cases and the prosecution of 5,286 people in January–August 2024;
+      the figures cover all drugs.[@incsr25] Seizures from June 2024 to May 2025 included 597 kg of
+      marijuana, alongside 1,744 kg of heroin and 281 million methamphetamine tablets.[@dvb25] On 26
+      June 2026 the regime burned more than 50 tonnes of drugs, including marijuana, valued at about
       US$600 million.[@ap26] No cannabis-only arrest count is published.[@incsr25]
     sources:
       - incsr25
@@ -227,11 +230,17 @@ context:
       - ap26
 sources:
   tni18:
-    title: "Transnational Institute — commentary on Myanmar's amended drug law and National Drug Control Policy, 20 March 2018"
-    url: https://www.tni.org/en/article/will-myanmar-complete-its-transition-towards-an-evidence-based-approach-to-drug-control
+    title: >-
+      Transnational Institute — commentary on Myanmar's amended drug law and National Drug Control
+      Policy, 20 March 2018
+    url: >-
+      https://www.tni.org/en/article/will-myanmar-complete-its-transition-towards-an-evidence-based-approach-to-drug-control
   ndps93:
-    title: The Narcotic Drugs and Psychotropic Substances Law, 1993, English text as notified to the WTO (PDF)
-    url: https://233773342789-lic.s3.eu-central-1.amazonaws.com/attachments/n2/myanmar/781-N2MMR21%20-%20the-narcotic-drugs-and-psychotropic-substances-law-1993.pdf
+    title: >-
+      The Narcotic Drugs and Psychotropic Substances Law, 1993, English text as notified to the WTO
+      (PDF)
+    url: >-
+      https://233773342789-lic.s3.eu-central-1.amazonaws.com/attachments/n2/myanmar/781-N2MMR21%20-%20the-narcotic-drugs-and-psychotropic-substances-law-1993.pdf
   idpc:
     title: IDPC — Upper House moves to decriminalise some drug offences in Myanmar
     url: https://idpc.net/news/2017/09/upper-house-moves-to-decriminalise-some-drug-offences
@@ -241,35 +250,77 @@ sources:
       https://ungassondrugs.org/en/country-information/258-burmamyanmar/7993-guiding-drug-law-reform-in-myanmar.html
   law:
     title: Myanmar Trade Portal — Narcotic Drugs and Psychotropic Substances Law (Amendment), 2018
-    url: https://myanmartradeportal.gov.mm/legal/354
+    url: https://web.archive.org/web/2026/https://myanmartradeportal.gov.mm/legal/354
   gnlm26:
-    title: "Global New Light of Myanmar — Second Amendment to the Narcotic Drugs and Psychotropic Substances Law, NDSC Law 17/2025 (7 January 2026, PDF)"
-    url: https://cdn.digitalagencybangkok.com/file/client-cdn/gnlm/wp-content/uploads/2026/01/7_Jan_26_gnlm.pdf
-    locator: "Enacted 31 December 2025; pages 3 and 5, sections 2(i), 9(g), 15, 19–20 and 26(g)"
+    title: >-
+      Global New Light of Myanmar — Second Amendment to the Narcotic Drugs and Psychotropic
+      Substances Law, NDSC Law 17/2025 (7 January 2026, PDF)
+    url: >-
+      https://cdn.digitalagencybangkok.com/file/client-cdn/gnlm/wp-content/uploads/2026/01/7_Jan_26_gnlm.pdf
+    locator: Enacted 31 December 2025; pages 3 and 5, sections 2(i), 9(g), 15, 19–20 and 26(g)
   incsr25:
-    title: "US State Department — 2025 International Narcotics Control Strategy Report, Burma"
-    url: https://www.state.gov/wp-content/uploads/2025/03/2025-International-Narcotics-Control-Strategy-Volume-1-Accessible.pdf
-    locator: "January–August 2024 cases and prosecutions; opium survey."
+    title: US State Department — 2025 International Narcotics Control Strategy Report, Burma
+    url: >-
+      https://www.state.gov/wp-content/uploads/2025/03/2025-International-Narcotics-Control-Strategy-Volume-1-Accessible.pdf
+    locator: January–August 2024 cases and prosecutions; opium survey.
   voa19:
-    title: "VOA/AP — Myanmar cannabis farm case (21 May 2019)"
+    title: VOA/AP — Myanmar cannabis farm case (21 May 2019)
     url: https://www.voanews.com/a/myanmar-canabis-farm-case/4926377.html
-    locator: "20-acre plantation; 349,300 plants; 20-year sentence."
+    locator: 20-acre plantation; 349,300 plants; 20-year sentence.
   road2020:
-    title: "Myanmar — Road Safety and Motor Vehicle Management Law 2020 (English PDF)"
-    url: https://aipalync.oss-ap-southeast-5.aliyuncs.com/office/documents/main/08-road-safety-and-motor-vehicle-management-law-2020-1727676335_1728548375.pdf
-    locator: "Sections 64, 81(h) and 91(a)."
+    title: Myanmar — Road Safety and Motor Vehicle Management Law 2020 (English PDF)
+    url: >-
+      https://aipalync.oss-ap-southeast-5.aliyuncs.com/office/documents/main/08-road-safety-and-motor-vehicle-management-law-2020-1727676335_1728548375.pdf
+    locator: Sections 64, 81(h) and 91(a).
   penalcode:
-    title: "Myanmar — Penal Code 1861 (ICJ English text)"
+    title: Myanmar — Penal Code 1861 (ICJ English text)
     url: https://www.icj.org/wp-content/uploads/2013/07/Myanmar-Penal-Code-1861-eng.pdf
-    locator: "Sections 279 and 304A."
+    locator: Sections 279 and 304A.
   irrawaddy25:
-    title: "The Irrawaddy — Cannabis takes root in Sagaing as Myanmar's post-coup drug boom expands (4 December 2025)"
-    url: https://www.irrawaddy.com/news/burma/cannabis-takes-root-in-sagaing-as-myanmars-post-coup-drug-boom-expands.html
-    locator: "Ayadaw and Myinmu; 30 acres across six villages; 800,000 kyats a viss."
+    title: >-
+      The Irrawaddy — Cannabis takes root in Sagaing as Myanmar's post-coup drug boom expands (4
+      December 2025)
+    url: >-
+      https://www.irrawaddy.com/news/burma/cannabis-takes-root-in-sagaing-as-myanmars-post-coup-drug-boom-expands.html
+    locator: Ayadaw and Myinmu; 30 acres across six villages; 800,000 kyats a viss.
   ap26:
-    title: "AP via NBC News — Myanmar torches $600 million of seized heroin, meth and other drugs (26 June 2026)"
-    url: https://www.nbcnews.com/world/asia/myanmar-torches-600-million-seized-heroin-meth-drugs-rcna351888
-    locator: "More than 50 tonnes burned; about US$600 million."
+    title: >-
+      AP via NBC News — Myanmar torches $600 million of seized heroin, meth and other drugs (26 June
+      2026)
+    url: >-
+      https://www.nbcnews.com/world/asia/myanmar-torches-600-million-seized-heroin-meth-drugs-rcna351888
+    locator: More than 50 tonnes burned; about US$600 million.
   dvb25:
-    title: "DVB English — report on the 26 June 2025 drug destruction ceremonies (27 June 2025)"
+    title: DVB English — report on the 26 June 2025 drug destruction ceremonies (27 June 2025)
     url: https://english.dvb.no/?p=108014
+  wikt_hce:
+    title: Wiktionary — ဆေးခြောက် (Burmese), citing Myanmar–English Dictionary (1993)
+    url: https://en.wiktionary.org/wiki/ဆေးခြောက်
+    locator: Marijuana; hemp; ganja.
+  wikt_ganja:
+    title: Wiktionary — ဂန်ဂျာ (Burmese), citing Myanmar–English Dictionary (1993)
+    url: https://en.wiktionary.org/wiki/ဂန်ဂျာ
+    locator: Ganja; cannabis.
+  wikt_bhang:
+    title: Wiktionary — ဘင်း (Burmese), citing Myanmar–English Dictionary (1993)
+    url: https://en.wiktionary.org/wiki/ဘင်း
+    locator: Bhang; hashish, marijuana, ganja.
+words:
+  - word: ဆေးခြောက်
+    lang: Burmese
+    say: hse:gyauk
+    meaning: literally 'dried medicine'; the ordinary word for marijuana, hemp and ganja
+    sources:
+      - wikt_hce
+  - word: ဂန်ဂျာ
+    lang: Burmese
+    say: gan-gya
+    meaning: ganja; from Hindi, used for cannabis and hemp
+    sources:
+      - wikt_ganja
+  - word: ဘင်း
+    lang: Burmese
+    say: bin
+    meaning: bhang; a borrowed word for hashish, marijuana and ganja
+    sources:
+      - wikt_bhang
