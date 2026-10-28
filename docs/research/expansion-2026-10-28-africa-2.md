@@ -24,7 +24,7 @@ Morocco validation: `profile-audit ma` zero errors/warnings; `country-gaps ma` h
 
 ## Batch result
 
-All five countries are committed. Final totals: 50 history entries added or corrected (Morocco 14, Algeria 8, Tunisia 15, Libya 14, Mauritania 8). Every profile has zero `profile-audit` errors and warnings, no missing standard or researched sections, no missing penalty tables and no uncited text.
+All five countries are committed. Final totals: 59 history entries added or corrected (Morocco 14, Algeria 8, Tunisia 15, Libya 14, Mauritania 8). Every profile has zero `profile-audit` errors and warnings, no missing standard or researched sections, no missing penalty tables and no uncited text.
 
 Remaining gaps:
 
