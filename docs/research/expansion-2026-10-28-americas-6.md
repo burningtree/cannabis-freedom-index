@@ -39,6 +39,11 @@ others; kp — Asia; cw/sr — done in Americas-5; gy — another agent's blocke
 - Fixed self-inflicted build assertion (enforcement [@decrim]/[@fact] inline cites).
 - Audit 0 errors + 1 pre-existing warning (production "licences" heuristic, text untouched); page + all four articles verified.
 - Left: culture (no atlas entries), over-7 g tiers (no numbers), remaining 6 entries (1973 prescribing, 2017 caution draft, etc.).
-## cr — pending
+## cr — committed
+- Word marihuana (Spanish (Costa Rica), press/law-debate usage); culture section (2010 circular + 2016 acquittal + High Club + marihuana/mota with /culture/language/mota/ link).
+- New `articles/costa-rica-home-growing-ruling-2016.md` (Resolution 00481-2018: roof grower, no trafficking proof needed) + `articles/costa-rica-prosecutors-circular-2010.md` (Circular 02-2010 + 2011 follow-up) + `articles/costa-rica-law-9161-2013.md` (Art. 77 proportionality, 120 women, Chinchilla pardons 7) + `articles/costa-rica-recreational-bill-unconstitutional-2024.md` (Delfino: file 23.383 vs conventions) + `articles/costa-rica-hemp-permits-2024.md` (MJBiz: 57 licences, 1.0%, Azul Wellness); 2010/2013 links added to enforcement.
+- Deduped a doubled `- mag` in planting sources.
+- Audit 0/0; page + all five articles verified in review HTML.
+- Left: 2019 medical pilot + treaty entries (imp 1, skipped), THC patient-supply verification (already flagged in profile).
 ## gd — pending
 ## hn — pending
