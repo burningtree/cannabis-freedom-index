@@ -28,7 +28,14 @@ of these (committed) — verify and build on them, don't duplicate.
 - Fixed two self-inflicted unquoted-colon YAML breaks (took down 4 test suites) + a dropped not_in_force cite + production guard wording, all before verifying.
 - Audit 0/0; full `npm test` 193/0; page + both articles verified in review HTML.
 - Left: driving/arrests (no sources), 1930s–2000s decades.
-## aw — pending
+## aw — committed
+- Possession penalty table from the 2025 OM instruction bands (0–30 g dismissal after surrender, tolerated; 30–100/100–300/300–500 g fine requests AWG 250/750/1,500, criminal); cultivation has no quantified tier in retained sources, left out.
+- Recreational stays a plain `illegal` chip; 1929 shared-ordinance link folded into possession text. Products folded (CBD route lives in access/medical); production restored as required section; hemp added as `context.hemp` (status none).
+- New `articles/aruba-cbd-supplement-exemption-withdrawn-2020.md` (AB 2020 no. 7 + IVA route) linked from medical; new shared `articles/curacao-first-drug-ordinance-1929.md` (CVDR/officielebekendmakingen) linked from aw possession — cw/sxm entries will reuse it.
+- Planting (grey/unclear ×4, ordinance growing controls cover seeds); no driving/arrests/black_market sources.
+- Schema lessons: penalty rows need `treatment`, no per-row `sources`; `context.production` required; hemp lives at `context.hemp` with HEMP_STATUS (none valid).
+- Audit 0/0; page + both articles verified in review HTML.
+- Left: cultivation table (no source), driving/arrests, 1930s–2000s decades.
 ## bb — pending
 ## vc — pending
 ## cw — pending
