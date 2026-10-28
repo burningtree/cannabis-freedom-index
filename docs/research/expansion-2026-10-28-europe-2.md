@@ -25,7 +25,12 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0; review page to verify with batch build.
 - Left: 1940s/60s/70s/80s empty; 1950 article covered by the same-act Serbia article
   (identical federal decree — not duplicated); 1930 code article still open (weak sources).
-## si — pending
+## si (Slovenia) — committed
+- Words (Hašiš; en.wiktionary sl-sense verified — only verified word; trava slang undocumented).
+  Culture section already complete (Metelkova + links).
+- Audit 0/0; review page to verify with batch build.
+- Left: 1940s/60s/70s/80s empty; 2013 cannabinoids article open (needs RTV Slovenija piece);
+  1950 article covered by same-act Serbia article; 1930 code article open.
 ## al — pending
 ## mk — pending
 ## ee — pending
