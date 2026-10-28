@@ -7,7 +7,7 @@ marked busy.
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| India | in progress | | |
+| India | possession/trafficking ladders, hemp/arrests sections, 10 history entries | no cannabis-specific death sentence found; state bhang rules patchy | this commit |
 | Maldives | cultivation correction, fines, hemp/planting/driving/black-market sections, 14 history entries | 1980s empty; 2025 amendment text partially unavailable | this commit |
 | Nepal | penalty tables split, Gandaki/Ilam updates, 18 history entries | Rana-era gap; Gandaki not commenced | this commit |
 | Sri Lanka | in progress | | |
@@ -18,3 +18,5 @@ Afghanistan validation: `profile-audit af` zero errors/warnings; `country-gaps a
 Maldives validation: `profile-audit mv` zero errors/warnings; `country-gaps mv` has no missing sections, tables or citations. The profile now states that the Act has no standalone cultivation offence — growing as part of dealing is trafficking — and adds fines to the possession and trafficking tables, a use table, and hemp, planting, driving and black-market sections. The 2025 amendment is described as a death tier only for importing more than 350 g at the point of entry, with whole-life sentences and a unanimous full Supreme Court requirement; no execution has taken place since 1954. The arrests and visitors sections carry the 2026 seven-month figures and 116 deportations, and 14 entries cover 1965–2026.
 
 Nepal validation: `profile-audit np` zero errors/warnings; `country-gaps np` has no missing sections, tables or citations. The profile now separates possession, sale and use: use carries one month or NPR 2,000 with a treatment undertaking, sale uses the same weight bands but with cumulative prison and fine, and possession keeps the storage bands. It records the 1976 Act’s paper medical route, the 1987 Single Convention reservation for non-medical cannabis, the 0.3% Gandaki ceiling, the Ilam fibre pilot, SoToxa testing and the 2024/25 police-wide figures (5,110 cases, 7,943 arrests, 51,439 kg). Eighteen entries cover 1980–2026.
+
+India validation: `profile-audit in` zero errors/warnings; `country-gaps in` has no missing sections, tables or citations. The possession and trafficking tables now carry the small/intermediate/commercial bands (under 1 kg, 1–20 kg, over 20 kg ganja; under 100 g, 100 g–1 kg, over 1 kg charas), cultivation carries the ten-year maximum and ₹100,000 fine, and section 31A is described as a discretionary second-conviction route for at least 20 kg of hashish or 500 g of THC with no ganja entry. The profile adds a state-licensed hemp section at Himachal's below-0.3% line, an arrest section with the 2024–2025 NCB figures, and clearer bhang/state qualifications. Ten entries cover 2011–2026.
