@@ -15,30 +15,36 @@ scores:
   sharing: 1
   consumption: 0
   access: 0
+words:
+  - { word: Cannabis, lang: French, meaning: "cannabis; the law's word in the 1999 drug code and 2018 Penal Code", sources: [code99] }
 segments:
   possession:
     text: >-
       The 2018 Penal Code sets a separate penalty for small quantities bought or held for personal
-      consumption. High-risk plants or substances, including cannabis oil, carry one month to one
-      year and a fine of 250,000–600,000 CFA francs; cannabis derivatives other than oil carry
-      one to six months and the same fine. It gives no gram limit. General personal possession
-      of high-risk drugs carries two to five years and a fine of 1–5 million francs.
+      consumption.[@code18] High-risk plants or substances, including cannabis oil, carry one month
+      to one year and a fine of 250,000–600,000 CFA francs; cannabis derivatives other than oil
+      carry one to six months and the same fine.[@code18] It gives no gram limit. General personal
+      possession of high-risk drugs carries two to five years and a fine of 1–5 million
+      francs.[@code18]
     sources: [code18]
     currency: XOF
     penalties:
       - label: Small personal quantity, high-risk incl. cannabis oil
+        term: Possession
         treatment: criminal
         prison_min: 1 month
         prison: 1 year
         fine: 600000
         note: Fine of 250,000–600,000 CFA francs; no gram limit
       - label: Small personal quantity, cannabis derivatives other than oil
+        term: Possession
         treatment: criminal
         prison_min: 1 month
         prison: 6 months
         fine: 600000
         note: Fine of 250,000–600,000 CFA francs; no gram limit
       - label: General personal possession of high-risk drugs
+        term: Possession
         treatment: criminal
         prison_min: 2 years
         prison: 5 years
@@ -47,19 +53,22 @@ segments:
   cultivation:
     text: >-
       Small personal cultivation falls under the same shorter penalty tiers as small personal
-      possession in the 2018 code. There is no fixed plant limit. Ordinary high-risk cultivation
-      and production carry eleven to twenty-one years and a fine of 5–25 million CFA francs.
-      The 1999 drug code already distinguished small personal growing from ordinary production.
+      possession in the 2018 code.[@code18] There is no fixed plant limit. Ordinary high-risk
+      cultivation and production carry eleven to twenty-one years and a fine of 5–25 million CFA
+      francs.[@code18] The 1999 drug code already distinguished small personal growing from ordinary
+      production.[@code99]
     sources: [code18, code99]
     currency: XOF
     penalties:
       - label: Small personal cultivation
+        term: Cultivation
         treatment: criminal
         prison_min: 1 month
         prison: 1 year
         fine: 600000
         note: Same shorter tiers as small personal possession; no plant limit
       - label: Ordinary high-risk cultivation and production
+        term: Cultivation
         treatment: criminal
         prison_min: 11 years
         prison: 21 years
@@ -68,25 +77,28 @@ segments:
   enforcement:
     text: >-
       Mainline's 2025 country sheet reports severe repression by police and courts and imprisonment
-      of drug users. Courts can order treatment in place of or alongside punishment, but the
+      of drug users.[@ml] Courts can order treatment in place of or alongside punishment, but the
       report describes missing protocols, facilities and clear responsibilities that leave this
-      alternative rarely implemented.
+      alternative rarely implemented.[@ml,code18]
     sources: [ml, code18]
   sharing:
     text: >-
       Giving or offering a high-risk drug directly for another person's consumption carries two
-      to five years and a fine of 500,000–2 million CFA francs in the 2018 code. General local
-      trafficking carries eleven to twenty-one years and a fine of 5–25 million francs.
+      to five years and a fine of 500,000–2 million CFA francs in the 2018 code.[@code18] General
+      local trafficking carries eleven to twenty-one years and a fine of 5–25 million
+      francs.[@code18]
     sources: [code18]
     currency: XOF
     penalties:
       - label: Giving or offering for another person's consumption
+        term: Supply
         treatment: criminal
         prison_min: 2 years
         prison: 5 years
         fine: 2000000
         note: Fine of 500,000–2 million CFA francs
       - label: General local trafficking
+        term: Trafficking
         treatment: criminal
         prison_min: 11 years
         prison: 21 years
@@ -94,16 +106,16 @@ segments:
         note: Fine of 5–25 million CFA francs
   consumption:
     text: >-
-      The 2018 code prohibits using controlled drugs outside a medical prescription. Its general
-      offence of personal use of high-risk drugs carries two to five years and a fine of
-      1–5 million CFA francs. The small-quantity rule expressly covers buying, possession and
-      growing; it does not expressly list use itself.
+      The 2018 code prohibits using controlled drugs outside a medical prescription.[@code18] Its
+      general offence of personal use of high-risk drugs carries two to five years and a fine of
+      1–5 million CFA francs.[@code18] The small-quantity rule expressly covers buying, possession
+      and growing; it does not expressly list use itself.[@code18]
     sources: [code18]
   access:
     text: >-
-      Recreational supply is prohibited. The 1999 code restricts controlled-drug commerce to
-      authorised purposes and licensed operators; the 2018 code sets criminal penalties for
-      unauthorised production and supply.
+      Recreational supply is prohibited.[@code99] The 1999 code restricts controlled-drug commerce
+      to authorised purposes and licensed operators; the 2018 code sets criminal penalties for
+      unauthorised production and supply.[@code99,code18]
     sources: [code99, code18]
 context:
   recreational:
@@ -114,6 +126,13 @@ context:
       treatment ordered instead of punishment is rarely implemented for lack of
       facilities.[@ml]
     sources: [code18, ml]
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the 1999 drug code and the 2018 Penal Code list
+      cannabis among high-risk plants and substances with no low-THC distinction, and no hemp
+      production is documented.[@code99,code18]
+    sources: [code99, code18]
   death_penalty:
     text: >-
       The Penal Code adopted on 20 October 2026 restores the death penalty and its execution
@@ -123,7 +142,9 @@ context:
     sources: [parliament26, code18]
   production:
     status: none
-    text: No licensed production. Unauthorised production carries eleven to twenty-one years and a fine of 5–25 million CFA francs.
+    text: >-
+      No licensed production. Unauthorised production carries eleven to twenty-one years and a fine
+      of 5–25 million CFA francs.[@code18]
     sources: [code18]
   medical:
     text: >-
@@ -135,31 +156,39 @@ context:
     text: >-
       For specified production, supply and related offences, the 2018 code allows additional
       penalties such as loss of civic rights, professional bans and restrictions on travel or
-      residence. Courts may order treatment in place of or alongside punishment for a dependent
-      person convicted of the offences listed in its treatment rule, including small personal
-      quantities and drug-impaired driving.
-      Parliament adopted a further replacement Penal Code on 20 October 2026.
+      residence.[@code18] Courts may order treatment in place of or alongside punishment for a
+      dependent person convicted of the offences listed in its treatment rule, including small
+      personal quantities and drug-impaired driving.[@code18]
+      Parliament adopted a further replacement Penal Code on 20 October 2026.[@parliament26]
     sources: [code18, parliament26]
   clubs:
     status: none
     text: >-
       No cannabis clubs are known. Growing cannabis and supplying it to another person remain
-      prohibited; the small-personal-quantity tier still sets criminal penalties.
+      prohibited; the small-personal-quantity tier still sets criminal penalties.[@code99,code18]
     sources: [code99, code18]
   visitors:
     status: none
     text: >-
-      Visitors have no lawful recreational supply route. For specified production and supply
-      offences, the 2018 code allows courts to exclude a convicted foreigner permanently or
-      for ten years or more. Its additional-penalty clause covers Articles 381-1–384-5, while
-      small personal quantities have a separate rule in Article 385-2.
+      Visitors have no lawful recreational supply route.[@code18] For specified production and
+      supply offences, the 2018 code allows courts to exclude a convicted foreigner permanently
+      or for ten years or more.[@code18] Its additional-penalty clause covers Articles
+      381-1–384-5, while small personal quantities have a separate rule in Article
+      385-2.[@code18]
     sources: [code18]
+  arrests:
+    text: >-
+      In 2020, 420 people were arrested for drugs, 213 of whom were referred to the Public
+      Prosecutor; seizures that year included 13,800 kg of cannabis.[@ml] In 2023 more than 300
+      tons of drugs were seized and 377 people were arrested for drug-related
+      offences.[@ml]
+    sources: [ml]
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 11,734 kg of herbal
-      cannabis seized in 2024, against 18,985 kg in 2023. The UN publishes them as
+      cannabis seized in 2024, against 18,985 kg in 2023.[@unodc_szr] The UN publishes them as
       kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      not comparable across borders.[@unodc_szr]
     sources: [unodc_szr]
 sources:
   code99:
