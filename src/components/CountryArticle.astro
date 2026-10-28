@@ -24,6 +24,7 @@ import { answersFor } from "../lib/answers.js";
 import { Image } from "astro:assets";
 import { cultureOf, cultureSection } from "../lib/culture.js";
 import { factsOf } from "../lib/facts.js";
+import { neighboursOf } from "../lib/borders.js";
 import FactText from "./FactText.astro";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
@@ -117,6 +118,17 @@ const sections = [
   group && sub && ["units", `Other ${plural}`, group.units.length - 1],
   refs.list.length > 0 && ["sources", "Sources", refs.list.length],
 ].filter(Boolean);
+
+// Beside the score: the country among its land neighbours, by score. A country with none (an island)
+// is shown among those nearest to it in rank in its region. A long list keeps the rows around the
+// country itself. Not on a state's page.
+const landNeighbours = sub ? [] : (neighboursOf.get(c.id) ?? []).map((id) => countries.find((x) => x.id === id)).filter(Boolean);
+const around = (list, size) => { const at = list.indexOf(c), from = Math.max(0, Math.min(at - Math.floor(size / 2), list.length - size)); return list.slice(from, from + size); };
+const nearby = sub || c.territory ? [] : landNeighbours.length
+  ? around([c, ...landNeighbours].sort((a, b) => b.raw - a.raw || a.name.localeCompare(b.name)), 9)
+  : around(countries.filter((x) => x.region === c.region), 5);
+// the compare page takes up to six countries: this one and the nearest in score
+const compareIds = [c, ...nearby.filter((x) => x !== c).sort((a, b) => Math.abs(a.raw - c.raw) - Math.abs(b.raw - c.raw))].slice(0, 4).map((x) => x.slug);
 
 // The score's shape: the six segments as a radar, over the world average (and, for a state, its country).
 const radarPt = (i, val, r = 40) => { const a = -Math.PI / 2 + (i * 2 * Math.PI) / SEGMENTS.length; return [50 + Math.cos(a) * r * (val / 10), 50 + Math.sin(a) * r * (val / 10)]; };
@@ -308,6 +320,21 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
           </figcaption>
         </figure>
         {scored.length > 0 && <CountryChart history={scored} context={history.filter((ch) => !ch.score)} />}
+        {nearby.length > 1 && (
+          <div class="c-near">
+            <h2>{landNeighbours.length ? `Neighbours${landNeighbours.length + 1 > nearby.length ? ` · ${nearby.length} of ${landNeighbours.length + 1}` : ""}` : `Similar scores in ${c.region}`}</h2>
+            <ol>
+              {nearby.map((x) => (
+                <li class={x === c ? "on" : undefined}>
+                  {x === c ? <span>{x.flag} {x.name}</span> : <a href={`${base}country/${x.slug}/`}>{x.flag} {x.name}</a>}
+                  <i style={`--w:${x.raw}%;--c:${tierColor(x.raw)}`}></i>
+                  <b>{x.score}</b>
+                </li>
+              ))}
+            </ol>
+            <p><a href={`${base}compare/?c=${compareIds.join(",")}`}>Compare {landNeighbours.length ? "with neighbours" : "them"} →</a></p>
+          </div>
+        )}
       </div>
       <div class="score-rows">
         {SEGMENTS.map((s, i) => {
