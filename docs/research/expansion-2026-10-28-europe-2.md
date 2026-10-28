@@ -15,7 +15,11 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0; review page to verify with batch build.
 - Deliberately not linked: global-marijuana-march (no verified Paris-march source at hand),
   mezz-mezzrow (his entry is US-focused).
-## sk — pending
+## sk (Slovakia) — committed
+- Words (Tráva, Hašiš; en.wiktionary sk-senses verified) + culture section (CBD market note,
+  links to language/cbd + 2021 delisting entry).
+- Audit 0/0; review page to verify with batch build.
+- Left: 1940s/50s/70s/80s empty; nothing since 2024 (no 2025–26 reform found).
 ## hr — pending
 ## si — pending
 ## al — pending
