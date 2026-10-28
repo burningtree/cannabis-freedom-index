@@ -26,7 +26,13 @@ track); Canada (separate job); Eritrea/Somaliland/Sudan (closed/recent); Africa 
 - Fixed self-inflicted schema error (hemp first placed under segments instead of context).
 - Audit 0/0; page + all three articles verified in review HTML.
 - Left: words (no sourced local term), driving/arrests (no sources), study-call-2022 article unlinked (no natural profile hook).
-## ky — pending
+## ky — committed
+- Word ganja (English (Cayman Islands), the LRC's word in police statistics: 73 possession + 15 supply offences in 2023).
+- First profile in this batch with zero history links: linked existing 2016-medical + 1977-penalties articles and all three new ones across possession/cultivation/access/recreational/medical/consequences/clubs.
+- New `articles/cayman-cannabis-reform-consultation-2026.md` (gov.ky + LRC paper + Oct proceedings: 30 g dried, 150 g wet, 4 plants, clearing convictions) + `articles/cayman-decriminalisation-referendum-2025.md` (55.64%, Ebanks, LRC review) + `articles/cayman-drug-vehicle-forfeiture-1978.md` (UN E/NL.1979/42–45 + 2026 Revision legislation history: CI$6,000 redemption, innocent-owner route, dated 4 July 1978).
+- Cleared 4 pre-existing ladder warnings (terms on all possession/consumption rows).
+- Audit 0/0; page + all three articles verified in review HTML.
+- Left: 1925 estimate (parallel YE estimate, no link), driving (no section — check later), 4 remaining imp-1 entries.
 ## vg — pending
 ## kn — pending
 ## ht — pending
