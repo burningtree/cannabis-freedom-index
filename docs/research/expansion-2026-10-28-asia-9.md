@@ -22,3 +22,11 @@ Bhutan validation: `profile-audit bt` zero errors and warnings. The possession t
 Pakistan validation: `profile-audit pk` zero errors and warnings. The profile now marks the penalty table as federal (Islamabad) and notes the KP, Sindh, Punjab and Balochistan statutes, corrects the mandatory-minimum wording and the 2026 prescription route, records the 75 licence applications and adds five Urdu/Punjabi/Pashto terms. Three entries cover 2019–2026; the 441-word 1995 ordinance article is in `articles/`.
 
 Bangladesh validation: `profile-audit bd` zero errors and warnings. The profile now recognises the section 9(3) licensing exception for production, fixes the access and culture wording, replaces the confused Rangpur arrest sentence with the 2026 national figures, adds six Bengali terms and corrects the 1989 article’s “two kilograms” claim. Four entries cover 2025–2026; the 467-word 1987 cultivation-ban article is in `articles/`.
+
+## Result
+
+All five countries were expanded and committed separately: Lebanon `b92bd917`, Bhutan `f8dfb74d`, Pakistan `b3b1edb0`, Bangladesh `756b1ee1` and Japan `9b7d9019`. Each profile passes `profile-audit` with zero errors and warnings and has no missing standard or researched sections, penalty tables or inline citations. Targeted `build-pages.mjs` runs rendered each country and its changed history pages; `npm test` passes.
+
+The batch added 17 history entries, 23 local cannabis terms and five key articles (Lebanon 1946, Bhutan 2004, Pakistan 1995, Bangladesh 1987, Japan 2023). It also corrected the Bangladesh 1989 article’s “two kilograms” claim. Main corrections: Lebanon’s 1946 law is now sourced to the primary text, Bhutan’s above-threshold possession is labelled trafficking, Pakistan’s federal table is distinguished from provincial statutes, Bangladesh recognises the section 9(3) licensing exception, and Japan’s cultivation-for-profit maximum is no longer overstated.
+
+The main open caveats are Lebanon’s still-unissued cultivation licences, Bhutan’s unverified 2023 commercial-hemp report, Pakistan’s missing First Schedule hashish threshold, Bangladesh’s missing First Schedule item 6, and Japan’s unparsed PMDA approval list.
