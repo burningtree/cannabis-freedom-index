@@ -11,7 +11,14 @@ Same method as usa-1/2/3. Possession tables use labelled steps where the law's f
   segments — noted, not filled.
 - Audit 0/0; review page verified.
 
-## md — pending
+## md (Maryland) — committed
+- Cites on cultivation/consumption/access, new `recreational` (Question 4 2022, shops 1 Jul 2023
+  via MM verified 200, Apr 2026 doubling, Question 8).
+- Correction: HB 1071 (2023) cut public-smoking to $50 first offence ($150 after), not $250 —
+  corroborated by MPP/AACPLL/Reason/DISA snippets; DISA article content-verified 200 and cited.
+- Possession/sharing pinned strings untouched. No MD history entries, no culture subject — noted.
+- Audit 0/0; review page verified.
+
 ## mn — pending
 ## co — pending
 ## wi — pending
