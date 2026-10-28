@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 36
 recreational: partial
 medical: legal
-updated: 2026-10-27
+updated: 2026-10-28
 summary: >-
   In the ACT an adult is outside the local small-possession and one-or-two-plant offences, within
   the limits ACT Policing states. Elsewhere, infringement notices, expiation fees, cautions and
@@ -117,6 +117,12 @@ segments:
         term: Unlicensed cultivation
         prison: 2 years
         note: "Under traffickable quantity: 200 penalty units or two years; five or more plants is traffickable"
+      - label: Commonwealth commercial cultivation
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 25 years
+        life: possible
+        note: 250 kg or 1,000 plants; up to life under Criminal Code section 303.4
   enforcement:
     text: >-
       In the ACT, growing other than where the person lives, or where the public can lawfully go,
@@ -139,6 +145,24 @@ segments:
     sources:
       - conv
       - ct
+    currency: AUD
+    penalties:
+      - label: Commonwealth trafficking, any quantity
+        treatment: criminal
+        term: Trafficking
+        prison: 10 years
+        note: Criminal Code section 302.4; state and territory ladders differ
+      - label: Commonwealth trafficking, marketable quantity
+        treatment: criminal
+        term: Trafficking
+        prison: 25 years
+        note: 25 kg cannabis; section 302.3
+      - label: Commonwealth trafficking, commercial quantity
+        treatment: criminal
+        term: Trafficking
+        prison: 25 years
+        life: possible
+        note: 125 kg cannabis; up to life under section 302.2
   consumption:
     text: >-
       In the ACT, smoking cannabis in a public place, or exposing a child to the smoke or vapour,
@@ -170,9 +194,10 @@ context:
       - tga
   medical:
     text: >-
-      Among the easiest medical systems to use: any doctor can prescribe through the special-access
-      or authorised-prescriber pathways with no fixed list of conditions.[@tga] A wide range of
-      prescription flower, oils, vapes and edibles moves through the medical channel, almost all
+      Among the easiest medical systems to use: any registered doctor can apply through the
+      special-access scheme, while an authorised prescriber needs separate TGA approval before
+      prescribing to a class of patients; there is no fixed list of conditions.[@tga] A wide range
+      of prescription flower, oils, vapes and edibles moves through the medical channel, almost all
       'unapproved' products under special-access rules, with nothing for general sale.[@tga] Not
       subsidised, and regulators have been tightening telehealth prescribing.[@tga]
     sources:
@@ -219,7 +244,8 @@ context:
     clones_trade: banned
     text: >-
       Even in the Australian Capital Territory, where adults may grow two plants, selling or
-      supplying cannabis seeds is illegal and there is no legal way to obtain them; the only
+      supplying cannabis seeds is illegal and there is no legal way to obtain them; a small quantity
+      of seed may fall inside the adult possession exemption, but the trade is banned.[@adf] The only
       lawful cannabis is what a resident grows.[@adf] Commonwealth law is unchanged, and elsewhere
       in Australia growing is an offence or a fine.[@adf]
     sources:
@@ -255,12 +281,15 @@ context:
       Queensland Act 23/2026 received assent on 21 September, with new presence-offence
       fine provisions commencing on 1 December 2026.[@qldAct26,qldCommence26] Its further testing and suspension
       amendments still awaited proclamation in the reviewed legislative history.[@qldCommence26]
+      Tasmania is the exception: a patient whose medicinal cannabis was prescribed and dispensed
+      there may drive if unimpaired.[@tasDriving26]
     sources:
       - aap26
       - nswReform26
       - nswParliament26
       - qldAct26
       - qldCommence26
+      - tasDriving26
   clubs:
     status: none
     text: >-
@@ -279,15 +308,19 @@ context:
     status: none
     text: >-
       In the ACT, selling, sharing or giving cannabis is an offence, so a visitor has no lawful
-      adult-use purchase there.[@actpolice] The sources behind this profile describe no separate rule for
-      visitors.
+      adult-use purchase there.[@actpolice] No jurisdiction has legal adult-use sales, and no
+      reciprocal route for a foreign medical prescription was found; a visitor would need an
+      Australian prescriber and the TGA pathway.[@tga]
     sources:
       - actpolice
+      - tga
   arrests:
     text: >-
       The national Illicit Drug Data Report counted 66,285 cannabis arrests in Australia in
       2020-21, 14% fewer than the year before.[@nceta] Nine in ten were consumer arrests, for
-      possession or use, and one in ten were provider arrests, for supply.[@nceta]
+      possession or use, and one in ten were provider arrests, for supply.[@nceta] The Illicit Drug
+      Data Report series had not published a newer national edition than 2020–21 when this profile
+      was reviewed.[@nceta]
     sources:
       - nceta
   black_market:
@@ -300,6 +333,10 @@ context:
     sources:
       - unodc_szr
 sources:
+  tasDriving26:
+    title: "The Conversation — Can I drive when taking medicinal cannabis? Is it safe? (29 March 2026)"
+    url: https://theconversation.com/can-i-drive-when-taking-medicinal-cannabis-is-it-safe-271090
+    locator: "Tasmania's prescribed-and-dispensed medicinal-cannabis driving exception; other states' presence rules."
   qldAct26:
     title: Queensland Government — Transport and Other Legislation Amendment Act 2026, final Act
     url: https://www.legislation.qld.gov.au/view/whole/html/asmade/act-2026-023
