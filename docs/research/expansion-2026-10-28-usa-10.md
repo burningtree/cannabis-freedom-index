@@ -9,7 +9,9 @@ history/culture links, profile-audit, review build, commit country-by-country.
 ## ar (Arkansas) — committed
 - Already complete (cultivation table, cites, pins); audit + review build verified, no changes.
 - Audit 0/0; review page verified.
-## dc — pending
+## dc (District of Columbia) — committed
+- Cites on all uncited segments (D.C. Code + OAG overview); pinned texts untouched.
+- Audit 0/0; review page verified.
 ## de — pending
 ## nd — pending
 ## sd — pending
