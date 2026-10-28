@@ -42,38 +42,88 @@ segments:
   possession:
     text: >-
       It depends entirely on the state. In roughly half the states adults 21+ may carry a capped
-      amount, typically 1 to 2.5 oz (28–70 g). In prohibition states the same amount can mean arrest
-      and jail. Under federal law, non-medical possession is still a Schedule I offence everywhere.
+      amount, typically 1 to 2.5 oz (28–70 g).[@norml,ncsl] In prohibition states the same amount can mean arrest
+      and jail.[@norml] Under federal law, non-medical possession is still a Schedule I offence everywhere,
+      with a first offence drawing up to a year and a minimum $1,000 fine.[@possession844]
+      [The 1937 tax act first restricted cannabis federally.](/history/us-marihuana-tax-act-1937/)
+      [Possession drew a year under the 1951 act.](/history/us-boggs-act-1951/)
     sources:
       - norml
       - ncsl
       - possession844
+    currency: USD
+    penalties:
+      - label: First federal simple possession (21 USC 844(a))
+        treatment: criminal
+        prison: 1 year
+        fine_min: 1000
+        term: First simple possession
+        note: Minimum $1,000 fine; state bands vary from legal to jail
+      - label: Second federal simple possession
+        treatment: criminal
+        prison: 2 years
+        prison_min: 15 days
+        fine_min: 2500
+        term: Repeat simple possession
+        note: Minimum $2,500 fine
+      - label: Third and later federal simple possession
+        treatment: criminal
+        prison: 3 years
+        prison_min: 90 days
+        fine_min: 5000
+        term: Repeat simple possession
+        note: Minimum $5,000 fine
   cultivation:
     text: >-
       Most legal states allow home growing, usually six plants per adult with a household cap, but
-      several — including Washington, New Jersey and Illinois for non-patients — ban it. In
-      prohibition states growing a single plant can be a felony.
+      several — including Washington, New Jersey and Illinois for non-patients — ban it.[@norml] In
+      prohibition states growing a single plant can be a felony.[@norml] Federally, manufacturing
+      100 or more plants draws five to forty years; fewer plants draw lower federal bands.[@usc841]
+      [The 1937 tax act first restricted cannabis federally.](/history/us-marihuana-tax-act-1937/)
+      [The 1970 act scheduled cannabis.](/history/us-controlled-substances-act-1970/)
     sources:
       - norml
+      - usc841
+    penalties:
+      - label: Federal manufacture, 100 or more plants (21 USC 841(b)(1)(B))
+        treatment: criminal
+        prison: 40 years
+        prison_min: 5 years
+        term: Large-scale manufacture
+        note: Five-year mandatory minimum; states add their own bands
+      - label: Federal manufacture, 50 to 99 plants
+        treatment: criminal
+        prison: 20 years
+        term: Mid-scale manufacture
+        note: Lower federal band; states add their own bands
+      - label: Federal manufacture, under 50 plants
+        treatment: criminal
+        prison: 5 years
+        term: Small-scale manufacture
+        note: Lower federal band; states add their own bands
   enforcement:
     text: >-
       Hundreds of thousands of cannabis arrests still happen every year, concentrated in prohibition
-      states where possession can bring jail and sale or cultivation long felony sentences. Federal
-      trafficking penalties include mandatory minimums.
+      states where possession can bring jail and sale or cultivation long felony sentences.[@norml] Federal
+      trafficking penalties include mandatory minimums.[@usc841]
+      [The 1970 act scheduled cannabis.](/history/us-controlled-substances-act-1970/)
     sources:
       - norml
+      - usc841
   sharing:
     text: >-
       Legal states generally allow adults to give up to the possession limit (commonly one ounce) to
-      another adult 21+ with no payment. Elsewhere any transfer counts as distribution.
+      another adult 21+ with no payment. Elsewhere any transfer counts as distribution.[@norml]
+      [The 1970 act scheduled cannabis.](/history/us-controlled-substances-act-1970/)
     sources:
       - norml
   consumption:
     text: >-
-      State and local rules vary. Many states confine use to private property or licensed lounges.
+      State and local rules vary. Many states confine use to private property or licensed lounges.[@norml,ncsl]
       Connecticut, Rhode Island and Minnesota permit some outdoor public smoking, subject to
       tobacco restrictions, specific excluded locations and local ordinances.[@ctpublic,ripublic,mnpublic]
       Federal property remains off-limits, and landlords or hotels can restrict smoking.[@norml,ncsl]
+      [California allowed medical use in 1996.](/history/us-california-medical-1996/)
     sources:
       - ctpublic
       - ripublic
@@ -83,21 +133,41 @@ segments:
   access:
     text: >-
       Legal states have licensed dispensaries, many with delivery, open to any adult 21+ including
-      visitors, with per-transaction limits. Licence caps and local opt-outs leave large areas
+      visitors, with per-transaction limits.[@ncsl,mm] Licence caps and local opt-outs leave large areas
       without shops, and nothing can cross state lines. About half the population has no legal
-      adult-use store.
+      adult-use store.[@ncsl]
+      [Colorado and Washington legalised in 2012.](/history/us-colorado-washington-2012/)
     sources:
       - ncsl
       - mm
+words:
+  - { word: Pot, lang: American English, meaning: "slang recorded 1938; origin disputed", atlas: pot, sources: [etympot] }
+  - { word: Reefer, lang: American English, meaning: "jazz-age word for a cannabis cigarette", atlas: reefer, sources: [etymreefer] }
+  - { word: Grass, lang: American English, meaning: "slang recorded by 1932", atlas: grass, sources: [etymgrass] }
+  - { word: Joint, lang: American English, meaning: "a hand-rolled cannabis cigarette", atlas: joint, sources: [etymjoint] }
+  - { word: Dope, lang: American English, meaning: "from Dutch doop; never cannabis alone", atlas: dope, sources: [etymdope] }
+  - { word: Marijuana, lang: Mexican Spanish, meaning: "the law's word since the 1930s", atlas: marijuana, sources: [etymmarj] }
 context:
+  recreational:
+    text: >-
+      Two systems in one country. Roughly half the states let adults 21+ buy capped amounts
+      from licensed stores for any use; the rest punish possession with arrest and jail.[@norml,ncsl]
+      Federally, non-medical cannabis stays Schedule I even where states allow it.[@hh]
+      [Colorado and Washington legalised in 2012.](/history/us-colorado-washington-2012/)
+      [The 2018 farm bill opened hemp federally.](/history/us-farm-bill-2018/)
+    sources:
+      - norml
+      - ncsl
+      - hh
   production:
     status: open
     text: >-
       States issue commercial licences, some uncapped (Oklahoma, Oregon), many tightly capped and
-      very expensive. On 28 April 2026 a DEA rule moved FDA-approved and state-licensed medical
-      cannabis to federal Schedule III. Adult-use cannabis remains Schedule I, with punitive federal
+      very expensive.[@ml,ncsl] On 28 April 2026 a DEA rule moved FDA-approved and state-licensed medical
+      cannabis to federal Schedule III.[@hh] Adult-use cannabis remains Schedule I, with punitive federal
       tax treatment and limited banking; a hearing on moving all cannabis to Schedule III ran from
-      29 June to 15 July 2026 and a decision is pending.
+      29 June to 15 July 2026 and a decision is pending.[@hh]
+      [The 2018 farm bill opened hemp federally.](/history/us-farm-bill-2018/)
     sources:
       - ml
       - hh
@@ -106,10 +176,11 @@ context:
     text: >-
       The widest product range in the world in legal states: flower, edibles (typically capped at
       100 mg THC per package), vapes, concentrates and beverages.[@norml] Hemp-derived products are sold in
-      most states, though federal and state rules on intoxicating hemp have been tightening.[@foley, hh] On
+      most states, though federal and state rules on intoxicating hemp have been tightening.[@foley,hh] On
       2 September 2026 Congress passed a funding law that moves part of the new federal hemp
       definition from 12 November to 11 December 2026.[@crs] The exclusion of cannabinoids a cannabis
       plant cannot produce naturally stays on 12 November.[@crs]
+      [Part of the new definition was delayed to December 2026.](/history/us-hemp-definition-delay-2026/)
     sources:
       - norml
       - foley
@@ -118,21 +189,25 @@ context:
   medical:
     text: >-
       40 states have medical programmes. Most require a doctor's certification for a listed
-      condition, a state patient card and an annual fee. Federal rescheduling of state-licensed
+      condition, a state patient card and an annual fee.[@ncsl] Federal rescheduling of state-licensed
       medical cannabis in 2026 acknowledged medical use, but it is still not prescribed or insured
-      like ordinary medicine.
+      like ordinary medicine.[@hh] Registered products reach patients through licensed dispensaries,
+      with per-transaction limits; hemp-derived products sit outside the prescription route.[@ncsl]
+      [California allowed medical use in 1996.](/history/us-california-medical-1996/)
+      [Medical cannabis arrived federally in 2026.](/history/us-medical-schedule-iii-2026/)
     sources:
       - ncsl
       - hh
   consequences:
     text: >-
       Federal section 922(d)(3) prohibits firearm transfers to a person known or reasonably believed
-      to be an unlawful controlled-substance user or addict. On 18 June 2026, United States v. Hemani
+      to be an unlawful controlled-substance user or addict.[@firearms922] On 18 June 2026, United States v. Hemani
       held that section 922(g)(3) could not constitutionally punish firearm possession based solely on
-      his regular marijuana use. The narrow ruling left addiction, present intoxication and individual
-      proof of danger unresolved; it did not decide purchases or transfers. Non-citizens can still
+      his regular marijuana use.[@hemani2026] The narrow ruling left addiction, present intoxication and individual
+      proof of danger unresolved; it did not decide purchases or transfers.[@hemani2026] Non-citizens can still
       face deportation or refusal of entry; federally assisted housing and employers may impose
-      consequences. Expungement varies by state.
+      consequences.[@norml,ncsl] Expungement varies by state.[@ncsl]
+      [The gun ruling narrowed 922(g)(3) in 2026.](/history/us-hemani-firearms-2026/)
     sources:
       - hemani2026
       - firearms922
@@ -147,43 +222,61 @@ context:
       The DEA said in letters of January and December 2022 that any seed, tissue culture or
       other genetic material with no more than 0.3% delta-9 THC meets the definition of hemp
       and is not federally controlled; once a seed grows into material above 0.3% it is
-      marijuana under federal law. The letters do not mention clones, and a lawyer writing on
+      marijuana under federal law.[@dea] The letters do not mention clones, and a lawyer writing on
       the first letter warns that keeping a clone counts as growing, which federally needs a
-      hemp licence. Whether a person may sow seeds or buy plants depends on state law.
+      hemp licence.[@kight] Whether a person may sow seeds or buy plants depends on state law.[@kight]
+      [The 2018 farm bill opened hemp federally.](/history/us-farm-bill-2018/)
     sources:
       - dea
       - kight
+  hemp:
+    status: standard
+    text: >-
+      The 2018 farm bill took cannabis with up to 0.3% delta-9 THC out of the Controlled
+      Substances Act, which opened a national market in hemp-derived intoxicating products such
+      as delta-8.[@dlapiper25]
+      [The 2018 farm bill opened hemp federally.](/history/us-farm-bill-2018/)
+      [A federal appeals court treated delta-8 as lawful hemp in 2022.](/history/us-delta-8-appeals-ruling-2022/)
+      Congress closed that loophole in November 2025: from late 2026 hemp means no more than
+      0.3% total THC counting THCA, excludes cannabinoids the plant cannot make itself (such as
+      CBD-converted delta-8), and caps finished products at 0.4 mg total THC per container;
+      fibre, seed oil and other non-cannabinoid uses stay legal.[@dlapiper25,crshemp]
+      [Congress closed the hemp loophole in 2025.](/history/us-hemp-thc-limit-enacted-2025/)
+      [Part of the new definition was delayed to December 2026.](/history/us-hemp-definition-delay-2026/)
+    sources:
+      - dlapiper25
+      - crshemp
   black_market:
     text: >-
       Legal states have not ended the illegal trade, and no national figure for its share was
       found. The federal drug agency's 2025 threat assessment says Chinese criminal
       organisations dominate domestic growing and distribution, with most grow sites in states
-      where cannabis is legal, producing flower averaging 25 to 30% THC. State studies give a
+      where cannabis is legal, producing flower averaging 25 to 30% THC.[@dea25] State studies give a
       sense of scale: one commissioned by Nevada in 2024 put unlicensed sales at 21 to 30% of
       that state's market, some 242 to 370 million dollars a year, and ranked Nevada second to
-      California per head among four western states. A Nevada policy report describes
-      unlicensed delivery, pop-up sales parties and large outdoor farms on remote land.
+      California per head among four western states.[@unlv25] A Nevada policy report describes
+      unlicensed delivery, pop-up sales parties and large outdoor farms on remote land.[@unlv25]
     sources:
       - dea25
       - unlv25
   arrests:
     text: >-
       Police made at least 204,036 marijuana arrests in 2024 according to FBI data, 187,792 of
-      them (92%) for possession and 16,244 for sale or manufacture. Possession of marijuana
-      alone was more than 22% of the 831,446 drug arrests nationwide. The peak was 2007, with
-      over 870,000 marijuana arrests, 48% of all drug arrests. The 2024 total is an
+      them (92%) for possession and 16,244 for sale or manufacture.[@norml24] Possession of marijuana
+      alone was more than 22% of the 831,446 drug arrests nationwide.[@norml24] The peak was 2007, with
+      over 870,000 marijuana arrests, 48% of all drug arrests.[@norml24] The 2024 total is an
       undercount: some agencies do not report to the FBI, and tens of thousands of arrests are
-      logged as unspecified drug violations.
+      logged as unspecified drug violations.[@norml24]
     sources:
       - norml24
   driving:
     status: impairment
     text: >-
       Driving law is set by each state, and most have no THC-specific rule, so a conviction
-      needs evidence of impairment. The governors' highway safety association counts 18 states
+      needs evidence of impairment.[@ghsa] The governors' highway safety association counts 18 states
       with stricter marijuana rules: ten with zero tolerance for THC or a metabolite, four
-      with zero tolerance for THC alone and four with a fixed THC limit. Colorado instead lets
-      a jury infer impairment from 5 nanograms of THC. The status shown is the majority rule,
+      with zero tolerance for THC alone and four with a fixed THC limit.[@ghsa] Colorado instead lets
+      a jury infer impairment from 5 nanograms of THC.[@ghsa] The status shown is the majority rule,
       not the law everywhere.
     sources:
       - ghsa
@@ -191,11 +284,12 @@ context:
     status: open
     text: >-
       In states with legal sales, dispensaries serve any adult aged 21 or over, visitors
-      included; nothing may be carried across a state line. For foreign visitors the danger is
+      included; nothing may be carried across a state line.[@ncsl] For foreign visitors the danger is
       federal: marijuana remains a federal controlled substance, and immigration lawyers warn
-      that conduct legal under state law can still bring severe immigration penalties.
+      that conduct legal under state law can still bring severe immigration penalties.[@ilrc]
       Admitting to possession can get any non-citizen, even a permanent resident, refused at
-      the border, and admitted use or work in the legal industry can block naturalisation.
+      the border, and admitted use or work in the legal industry can block naturalisation.[@ilrc]
+      [Colorado and Washington legalised in 2012.](/history/us-colorado-washington-2012/)
     sources:
       - ncsl
       - ilrc
@@ -203,21 +297,21 @@ context:
     status: regulated
     text: >-
       Non-profit growing clubs of the Spanish kind are not part of American law; what some states
-      license instead are places to consume, usually run for profit. Colorado licenses two kinds of
-      place, each depending on a local ordinance or resolution. A marijuana hospitality business may
+      license instead are places to consume, usually run for profit.[@wikicsc] Colorado licenses two kinds of
+      place, each depending on a local ordinance or resolution.[@cotax] A marijuana hospitality business may
       allow consumption, and section 44-10-609 forbids sale or exchange for payment on those
-      premises. A retail marijuana hospitality and sales licence under section 44-10-610 allows
-      marijuana to be sold and consumed on the same premises. Oregon does not license cannabis
-      consumption lounges. Its indoor clean-air law also covers members-only businesses and private
-      events at workplaces; private residences are treated separately. Nevada's Cannabis Compliance
-      Board licenses consumption lounges under Assembly Bill 341 of 2021. A retail lounge must be
-      attached or immediately next to an adult-use shop. An independent lounge is not, and it sells
-      single-use or ready-to-consume cannabis for use in the lounge. A city or county may limit or
-      bar them. A 2017 bill to license lounges missed its deadline. A counsel opinion that September
+      premises.[@crs609] A retail marijuana hospitality and sales licence under section 44-10-610 allows
+      marijuana to be sold and consumed on the same premises.[@crs610] Oregon does not license cannabis
+      consumption lounges.[@oregon_icaa] Its indoor clean-air law also covers members-only businesses and private
+      events at workplaces; private residences are treated separately.[@oregon_icaa] Nevada's Cannabis Compliance
+      Board licenses consumption lounges under Assembly Bill 341 of 2021.[@nvreg] A retail lounge must be
+      attached or immediately next to an adult-use shop.[@nvfaq] An independent lounge is not, and it sells
+      single-use or ready-to-consume cannabis for use in the lounge.[@nvfaq] A city or county may limit or
+      bar them.[@nvreg] A 2017 bill to license lounges missed its deadline.[@lvsun] A counsel opinion that September
       said a business could let patrons use marijuana if it was not sold, and that opinion was not a
-      licensing statute. Massachusetts approved three types of social-consumption licence in
-      December 2025. The District of Columbia went the other way and banned consumption clubs in
-      2016. In most states there is no provision at all.
+      licensing statute.[@lvsun] Massachusetts approved three types of social-consumption licence in
+      December 2025.[@macc] The District of Columbia went the other way and banned consumption clubs in
+      2016.[@mjbizdc] In most states there is no provision at all.[@wikicsc]
     sources:
       - crs609
       - crs610
@@ -227,6 +321,26 @@ context:
       - lvsun
       - wikicsc
       - oregon_icaa
+      - macc
+      - mjbizdc
+  culture:
+    text: >-
+      Cannabis grew up in American public life. In 1930s Harlem, tea pads — rooms where jazz
+      musicians and fans smoked — made "tea" and "reefer" jazz-age words.[@lochr]
+      [Harlem's tea pads shaped jazz-era smoking.](/culture/traditions/the-tea-pads-of-harlem/)
+      Protest followed prohibition: Ann Arbor's Hash Bash has run since 1972 and Seattle's
+      Hempfest since 1991.[@wikihash,wikihempfest]
+      [Hash Bash began in 1972.](/culture/traditions/hash-bash/)
+      [Hempfest has run in Seattle since 1991.](/culture/traditions/hempfest/)
+      San Francisco's medical movement — Brownie Mary handing out brownies on AIDS wards
+      alongside activist Dennis Peron — carried California to the first medical law in
+      1996.[@wikibrownie]
+      [Brownie Mary and Dennis Peron drove Proposition 215.](/culture/people/dennis-peron/)
+    sources:
+      - lochr
+      - wikihash
+      - wikihempfest
+      - wikibrownie
 sources:
   mnpublic:
     title: Minnesota Office of Cannabis Management — Adult-use cannabis
@@ -241,9 +355,57 @@ sources:
     title: Oregon Health Authority — Indoor Clean Air Act FAQ, April 2025
     url: https://www.oregon.gov/oha/PH/PREVENTIONWELLNESS/TOBACCOPREVENTION/SMOKEFREEWORKPLACELAW/Documents/ICAA_FAQ_English.pdf
     locator: Pages 3–4; private residences, business events and members-only premises.
+  macc:
+    title: MassCannabisControl — CCC unanimously approves final social consumption regulations (December 2025)
+    url: https://masscannabiscontrol.com/2025/12/massachusetts-cannabis-control-commission-unanimously-approves-final-social-consumption-regulations/
+    locator: 4-0 vote 11 December 2025; three licence types; first new business models in five years
+  mjbizdc:
+    title: MJBizDaily — Washington DC permanently bans cannabis clubs (20 April 2016)
+    url: https://mjbizdaily.com/news/washington-dc-permanently-bans-marijuana-clubs/49521/
+    locator: Council 7-6 vote; permanent ban on private marijuana clubs
+  etympot:
+    title: Online Etymology Dictionary — Pot
+    url: https://www.etymonline.com/word/pot
+  etymreefer:
+    title: Online Etymology Dictionary — Reefer
+    url: https://www.etymonline.com/word/reefer
+  etymgrass:
+    title: Online Etymology Dictionary — Grass
+    url: https://www.etymonline.com/word/grass
+  etymjoint:
+    title: Online Etymology Dictionary — Joint
+    url: https://www.etymonline.com/word/joint
+  etymdope:
+    title: Online Etymology Dictionary — Dope
+    url: https://www.etymonline.com/word/dope
+  etymmarj:
+    title: Online Etymology Dictionary — Marijuana
+    url: https://www.etymonline.com/word/marijuana
+  dlapiper25:
+    title: DLA Piper — New federal restrictions on hemp and hemp-derived products (18 November 2025)
+    url: https://www.dlapiper.com/insights/publications/2025/11/new-federal-restrictions-on-hemp-and-hemp-derived-products
+  crshemp:
+    title: Congressional Research Service — Changes to the Statutory Definition of Hemp (IF13136, updated 28 September 2026)
+    url: https://www.everycrsreport.com/files/2026-09-28_IF13136_aa36fad7d69289127cbbbafef54e2aede431b2c4.html
+  lochr:
+    title: Library of Congress — Marihuana, Topics in Chronicling America
+    url: https://guides.loc.gov/chronicling-america-marihuana
+  wikihash:
+    title: Wikipedia — Hash Bash
+    url: https://en.wikipedia.org/wiki/Hash_Bash
+  wikihempfest:
+    title: Wikipedia — Hempfest
+    url: https://en.wikipedia.org/wiki/Hempfest
+  wikibrownie:
+    title: Wikipedia — Brownie Mary
+    url: https://en.wikipedia.org/wiki/Brownie_Mary
   possession844:
     title: US Code — 21 USC 844(a), penalties for simple possession
     url: https://uscode.house.gov/us/usc/119-118/t21/s844/
+  usc841:
+    title: US Code — 21 USC 841(b)(1), penalties for manufacture
+    url: https://www.law.cornell.edu/uscode/text/21/841
+    locator: (b)(1)(B) 100+ plants five to forty years; (C) fifty-plus plants up to twenty years; (D) under fifty up to five years
   hemani2026:
     title: US Supreme Court — United States v. Hemani, No. 24-1234 (18 June 2026)
     url: https://www.supremecourt.gov/opinions/25pdf/24-1234_new_6k47.pdf
