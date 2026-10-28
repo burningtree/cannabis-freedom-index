@@ -8,8 +8,8 @@ skipped. Existing dirty/staged work, including the previous expansion note, is l
 |---|---|---|---|
 | Portugal | Two articles; four events; 1993 commencement/correction clarified; hemp status corrected to standard (0.3%); HHC context | 1930s–1960s; wider primary-source club research | 52466258 |
 | Slovenia | Two articles; 1964 act and EU-opinion events; scientific permit authority clarified | 1930 original code; 1940s/1970s/1980s; medical implementation and personal bill final outcome | 2b8f4788 |
-| Andorra | One article; three events; arrests section; corrected 2005 first-code claim | First prohibition/early decades; seed rules | This country’s commit |
-| Belarus | Pending | | |
+| Andorra | One article; three events; arrests section; corrected 2005 first-code claim | First prohibition/early decades; seed rules | 2d73df6 |
+| Belarus | One article; 1974 republic date/source corrected; 1987 and 2001 score transitions; sentence-review context | 1934 article; 1940s/1950s; original gazette copies | This country’s commit |
 | North Macedonia | Pending | | |
 
 ## Portugal
@@ -57,3 +57,19 @@ Andorra validation: all 196 tests pass; six selected pages rendered and HTML ins
 waiting for another build. Profile audit has zero errors; its production warning is a false
 positive for the explicitly proposed licence (the status correctly remains none). Snapshot:
 `.cache/expansion-europe-2/ad-review/`.
+
+## Belarus
+
+Read the federal 1974 decree and separate 1987 amendment, the reproduced former republic code,
+the replacement-code commencement law, SHERLOC’s code and the Belarusian bar’s 2025 explanation.
+The republic code’s annotations date the personal-handling offence to 31 October 1974, and the
+repeat-small-possession article to 31 July 1987. The earlier federal dates are kept distinct.
+Added the missing small-possession administrative interval and replacement-code transition;
+possession is 1 before the 1987 easing, 3 during the administrative/repeat-crime interval, then
+1 under the replacement code. Current scores are unchanged. The 1974 article replaces a
+Wikipedia-only account. The old republic gazette and original 1999 code printing remain useful
+archival leads; the accessible copies are later reproductions/consolidations. No claim that
+today’s 2025 sentencing options applied in 2001 is made. The bar confirms review is not automatic.
+
+Belarus validation: 196 tests pass, zero profile audit errors/warnings, four selected pages
+rendered and HTML inspected. Snapshot: `.cache/expansion-europe-2/by-review/`.
