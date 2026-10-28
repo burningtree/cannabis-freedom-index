@@ -3,10 +3,12 @@ region: Asia
 iso_numeric: 376
 recreational: decriminalised
 medical: legal
-updated: 2026-10-12
+updated: '2026-10-28'
 summary: >-
-  Since 2019 public possession brings a fine rather than prosecution, and private use at home is not
-  enforced. Israel runs one of the world's largest medical programmes relative to population.
+  Personal possession and use up to 15 g are administrative offences carrying a fixed fine, not a
+  criminal record, but police issued no such fines between 2022 and 2025. Above 15 g, and for all
+  growing and supply, criminal law applies. Medical cannabis is legal and large: 145,758 active
+  licences and prescriptions in June 2026.
 scores:
   possession: 3
   cultivation: 1
@@ -17,89 +19,168 @@ scores:
 segments:
   possession:
     text: >-
-      Possession of up to 15 g for personal use is an administrative offence, not a crime: a fixed
-      fine and no criminal record, under rules first introduced in 2019 and made permanent and
-      broader in 2022. Possession at home in small amounts is generally not enforced. Above 15 g, or
-      for soldiers and minors, criminal law applies.
+      Possession of up to 15 g for personal use is an administrative offence under the 2022
+      regulations, with a fine of 500 shekels for possession or private use and 1,000 shekels for
+      public use, and no criminal record.[@admin_fines] The 15 g line comes from the Dangerous
+      Drugs Ordinance's Second Schedule: above it, possession is presumed not to be for personal
+      consumption unless the accused proves otherwise.[@ddo] Above 15 g the offence carries up to
+      20 years in prison, or up to three years where the court accepts personal use.[@ddo]
+      Possession in a school by a non-student aged 16 or over carries up to five years.[@ddo]
+      Soldiers, reservists in certain police or prison units, and prisoners are outside the
+      administrative scheme.[@admin_fines] Minors have been covered by the fines since 16 February
+      2023.[@mako2023] In practice the fine scheme has not been used: police issued no
+      administrative cannabis fines between 2022 and 2025.[@meida2026]
     sources:
-      - chambers
-      - wiki
+      - admin_fines
+      - ddo
+      - mako2023
+      - meida2026
+    currency: ILS
+    penalties:
+      - upto: 15 g
+        treatment: civil
+        term: Administrative offence
+        fine: 500
+        note: Public use 1,000 shekels; no criminal record; presumed personal use
+      - over: 15 g
+        treatment: criminal
+        term: Section 7(c)
+        prison: 20 years
+        note: Presumed not for personal use; own use up to 3 years
+      - label: Possession in a school by a non-student aged 16 or over
+        treatment: criminal
+        term: Section 7(d)
+        prison: 5 years
   cultivation:
     text: >-
       Growing cannabis without a licence from the health ministry's Director-General is a criminal
-      offence, including a single plant at home. Section 6 of the Dangerous Drugs Ordinance sets a
-      maximum of twenty years in prison or a fine.
+      offence, including a single plant at home.[@ddo] Section 6 sets a maximum of twenty years in
+      prison or a fine.[@ddo] There is no personal-use exception for cultivation, and medical
+      patients must obtain their cannabis through the licensed medical system rather than growing
+      it.[@regs2024]
     sources:
       - ddo
+      - regs2024
+    penalties:
+      - label: Any cultivation, including one plant
+        treatment: criminal
+        term: Section 6
+        prison: 20 years
+        note: No personal-use exception; a health ministry licence is required
   enforcement:
     text: >-
-      Personal users get a fine. Growing, dealing and larger quantities are criminal offences with
-      prison.
+      Personal users are meant to receive a fine, while growing, dealing and larger quantities are
+      criminal. The gap between the two is wide in practice: police issued no administrative
+      cannabis fines in 2022–2025, after 50,335 fines in 2019–2022, and said the enforcement
+      framework for the 2022 regulations was still being designed.[@meida2026] Police opened 9,164
+      files for drug trafficking, possession not for personal use, cultivation or manufacture in
+      2024, a category that covers all drugs.[@police2024]
     sources:
-      - wiki
-      - chambers
+      - meida2026
+      - police2024
   sharing:
     text: >-
       Supply of any kind is treated as dealing: section 13 of the Dangerous Drugs Ordinance
       forbids supplying a drug in any way, "whether for payment or not", and section 19A sets a
-      maximum of twenty years in prison or a fine.
+      maximum of twenty years in prison or a fine.[@ddo] Giving cannabis to a minor, allowing a
+      minor to obtain or use it, or inducing a minor carries up to twenty-five years, with
+      imprisonment mandatory on conviction.[@ddo]
     sources:
       - ddo
+    penalties:
+      - label: Supply, sale, trade or import/export, paid or free
+        treatment: criminal
+        term: Section 13
+        prison: 20 years
+      - label: Supply to a minor or inducing a minor
+        treatment: criminal
+        term: Section 21
+        prison: 25 years
+        note: Imprisonment mandatory
   consumption:
     text: >-
-      Use in public is fined under the same administrative scheme. Use in a private home is in
-      practice left alone.
+      Use is covered by the same administrative scheme as possession: 500 shekels for use not in a
+      public place and 1,000 shekels for use in public, with no criminal record.[@admin_fines]
+      Private use at home is therefore an administrative offence, not a legal act, even though it
+      is rarely enforced.[@admin_fines] Police issued no cannabis fines at all between 2022 and
+      2025.[@meida2026]
     sources:
-      - wiki
-      - chambers
+      - admin_fines
+      - meida2026
+    currency: ILS
+    penalties:
+      - label: Use not in a public place
+        treatment: civil
+        term: Administrative offence
+        fine: 500
+      - label: Use in a public place
+        treatment: civil
+        term: Administrative offence
+        fine: 1000
+        note: No fines issued between 2022 and 2025
   access:
     text: >-
-      No adult-use shops. But Israel has one of the world's largest medical programmes per head,
-      with cannabis sold in ordinary pharmacies; since April 2024 many more doctors, including in
-      the health funds, can prescribe it directly instead of applying for a licence for each
-      patient.
+      There are no adult-use shops. Israel has one of the world's largest medical programmes
+      relative to population: 145,758 active licences and prescriptions in June 2026.[@imcu2026]
+      The April 2024 reform moved ten indications to health-fund prescriptions, capped at 60 g a
+      month, but chronic pain and PTSD remained under Medical Cannabis Unit licences.[@regs2024]
     sources:
-      - chambers
-      - alm
+      - imcu2026
+      - regs2024
 context:
   recreational:
     text: >-
       There is no legal recreational supply. Up to 15 g for personal use is an administrative
-      offence — a fixed fine and no record — and home use in small amounts is generally not
-      enforced; public use is fined the same way.[@chambers,wiki] Above 15 g, and for soldiers
-      and minors, criminal law applies, and any supply counts as dealing.[@chambers,ddo]
+      offence with a fixed fine and no record, and public use is fined the same way.[@admin_fines]
+      Above 15 g, and for soldiers, prisoners and all supply, criminal law applies.[@ddo] The fine
+      scheme exists but has not been used since 2022.[@meida2026] No adult-use bill was advancing
+      in 2026.
     sources:
-      - chambers
-      - wiki
+      - admin_fines
       - ddo
+      - meida2026
   production:
     status: medical
     text: >-
-      Licensed medical cultivation, manufacturing and pharmacy distribution are well developed, with
-      no cap on the number of growers. No production for adult use.
+      Licensed medical cultivation, manufacturing, import and export are well developed, with no
+      cap on the number of growers.[@regs2024] There is no production for adult use. The medical
+      sector is export-oriented and regulated by the Medical Cannabis Unit under the Dangerous
+      Drugs Ordinance.[@regs2024]
     sources:
-      - chambers
-      - alm
-  products:
-    text: >-
-      A wide range of medical flower and oils, labelled by THC and CBD content. Nothing for general
-      sale.
-    sources:
-      - chambers
+      - regs2024
   medical:
     text: >-
-      Broad by international standards: on prescription for a list of conditions including chronic
-      pain, cancer, PTSD and others, dispensed in pharmacies. The 2024 reform moved from a licence
-      model to a prescription model for many indications.
+      Medical cannabis is legal on prescription for ten indications, including active oncology,
+      inflammatory bowel disease, AIDS, multiple sclerosis, Parkinson's, Tourette syndrome,
+      epilepsy, terminal illness, autism and dementia.[@regs2024] Prescriptions are capped at 60 g
+      a month and are written by specialists or authorised health-fund and hospital physicians,
+      not primary-care doctors.[@regs2024] Chronic non-cancer pain and PTSD, the two largest
+      categories, remained under Medical Cannabis Unit licences rather than the prescription
+      route.[@aviram2025] Active licences and prescriptions reached 145,758 in June 2026.[@imcu2026]
     sources:
-      - chambers
-      - alm
+      - regs2024
+      - aviram2025
+      - imcu2026
+  hemp:
+    status: none
+    text: >-
+      There is no separate industrial-hemp regime. The Dangerous Drugs Ordinance defines cannabis
+      to include every part of the plant except oil from its seeds, so low-THC hemp still needs a
+      cultivation licence.[@ddo] In February 2022 the health minister announced that CBD below a
+      low THC threshold would leave the ordinance, but no enacted exemption was found and the
+      current schedule still catches cannabis extracts.[@cbd2022,ddo]
+    sources:
+      - ddo
+      - cbd2022
   consequences:
     text: >-
-      The administrative fine leaves no criminal record. The decriminalisation does not apply to
-      soldiers, and drug-driving rules are strict.
+      The administrative fine leaves no criminal record, but a criminal conviction for possession
+      above 15 g, cultivation or supply does.[@ddo] Soldiers, reservists in certain police or
+      prison units, and prisoners are outside the administrative scheme.[@admin_fines] A drug
+      conviction can also affect sentencing for later offences.[@ddo]
     sources:
-      - wiki
+      - ddo
+      - admin_fines
   planting:
     seeds: licensed
     seeds_trade: regulated
@@ -107,69 +188,127 @@ context:
     clones_trade: regulated
     text: >-
       The Dangerous Drugs Ordinance treats the cannabis plant, all of its components and its
-      derivatives as a dangerous drug. Cultivation, possession, distribution, transport and every
-      other activity involving the plant require the appropriate Medical Cannabis Unit licence;
-      seeds and clones are therefore available only within the licensed medical system.
+      derivatives as a dangerous drug.[@ddo] Cultivation, possession, distribution, transport and
+      every other activity involving the plant require the appropriate Medical Cannabis Unit
+      licence; seeds and clones are therefore available only within the licensed medical
+      system.[@regs2024]
     sources:
-      - knesset_med
-      - gov_licensing
+      - ddo
+      - regs2024
   clubs:
     status: tolerated
     text: >-
       No law provides for cannabis clubs, and supplying cannabis, even unpaid, is treated as
-      dealing. What exists is a bring-your-own lounge for patients. HaTachana 420 opened in
-      Tel Aviv's Florentin neighbourhood around the start of 2023 and was described as the
-      first place of its kind in the city: it grew out of a Facebook community of about 15,000
-      medical cannabis patients, admits only holders of a medical prescription, and supplies
-      nothing, members smoking what they bought at a pharmacy; its founder contrasted it with
-      Barcelona's clubs on exactly that point. No police action against it was reported. No
-      growing club, and no venue for people without a medical licence, was found, and whether
-      the lounge still operates could not be confirmed.
+      dealing.[@ddo] What exists is a bring-your-own lounge for patients. HaTachana 420 opened in
+      Tel Aviv's Florentin neighbourhood around the start of 2023 and was described as the first
+      place of its kind in the city: it grew out of a Facebook community of about 15,000 medical
+      cannabis patients, admits only holders of a medical prescription, and supplies nothing,
+      members smoking what they bought at a pharmacy.[@to23] No police action against it was
+      reported, and whether the lounge still operates could not be confirmed.
     sources:
+      - ddo
       - to23
-      - wiki
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession of up to 15 g for personal
-      use is an administrative offence, not a crime: a fixed fine and no criminal record.
+      There is no legal recreational supply for anyone. Possession of up to 15 g for personal use
+      is an administrative offence, not a crime: a fixed fine and no criminal record.[@admin_fines]
+      Above 15 g criminal law applies, and the law makes no exception for visitors.[@ddo]
     sources:
-      - chambers
-      - wiki
+      - admin_fines
+      - ddo
   driving:
     status: zero
     text: >-
-      The Traffic Ordinance makes it an offence to be 'intoxicated' while driving or in charge
-      of a vehicle, and defines an intoxicated person to include anyone who has a dangerous
-      drug, or the metabolic products of one, in their body. No level is set, so traces left
-      by earlier use count. The definition leaves out drugs that the health minister has
-      exempted on set conditions. The offence carries up to two years in prison or a fine.
+      The Traffic Ordinance makes it an offence to be "intoxicated" while driving or in charge of
+      a vehicle, and defines an intoxicated person to include anyone who has a dangerous drug, or
+      the metabolic products of one, in their body.[@pkt64] No level is set, so traces left by
+      earlier use count.[@pkt64] A medical cannabis licence is not a defence, and the patient-driving
+      regulations never came into force.[@pkt64] The offence carries up to two years in prison or a
+      fine, and a conviction brings at least two years' licence disqualification.[@pkt64]
     sources:
       - pkt64
+  black_market:
+    text: >-
+      The illicit market remains large. Police opened 9,164 files for drug trafficking, possession
+      not for personal use, cultivation or manufacture in 2024, a category covering all drugs, and
+      police laboratories tested 10.45 tonnes of cannabis and 1.6 tonnes of hashish that
+      year.[@police2024] No cannabis-specific arrest total was found, and the 9,164 figure should
+      not be read as cannabis alone.[@police2024]
+    sources:
+      - police2024
+  arrests:
+    text: >-
+      Police issued no administrative cannabis fines in 2022–2025, after 50,335 fines in
+      2019–2022.[@meida2026] UNODC data record 7,497 police contacts for drug possession in 2024,
+      covering all drugs.[@unodc] The two series measure different things and neither is
+      cannabis-specific.
+    sources:
+      - meida2026
+      - unodc
+  culture:
+    text: >-
+      Israel's cannabis science began with [Raphael Mechoulam](/culture/people/raphael-mechoulam/),
+      who isolated THC in 1964 with Yehiel Gaoni from hashish supplied by the police, and whose
+      group later found the body's own cannabinoids.[@mechoulam2020] His laboratory also hosted
+      [Lumír Hanuš](/culture/people/lumir-hanus/), the Czech chemist who co-discovered anandamide
+      in Jerusalem in 1992.[@mechoulam2020] That research tradition is why Israel's medical
+      programme is unusually large and why the country is a centre of cannabinoid science.
+    sources:
+      - mechoulam2020
 sources:
   ddo:
-    title: "Israel — Dangerous Drugs Ordinance [New Version] 1973, sections 6, 7, 13 and 19A (Hebrew Wikisource)"
+    title: "Israel — Dangerous Drugs Ordinance [New Version] 1973, sections 1, 6, 7, 13, 19A, 21, 25 and 31, Second Schedule (Hebrew Wikisource)"
     url: https://he.wikisource.org/wiki/פקודת_הסמים_המסוכנים
+    locator: "Sections 1, 6, 7(a)–(d), 9, 13, 19A, 21, 25 and 31(3); Second Schedule 15 g cannabis and resin."
+  admin_fines:
+    title: "Israel — Administrative Offences Regulations (Administrative Fine — Possession of Cannabis and Use for Personal Consumption), 5772–2022"
+    url: https://he.wikisource.org/wiki/תקנות_העבירות_המינהליות_(קנס_מינהלי_–_החזקת_קנאביס_ושימוש_בו_לצריכה_עצמית)
+    locator: "Regulations 1–6: 500/1,000 shekel fines; soldiers, reservists, prisoners excluded; minors covered after the temporary exclusion expired."
+  regs2024:
+    title: "Israel — Dangerous Drugs Regulations, 5740–1979, consolidated to 3 July 2026 (Nevo)"
+    url: https://www.nevo.co.il/law_html/law00/4217.htm
+    locator: "Regulations 4A, 11(b), 17A–17D: prescription route, ten indications, 60 g monthly cap."
   pkt64:
-    title: Israel — Traffic Ordinance, sections 62(3) and 64B (Hebrew Wikisource)
+    title: Israel — Traffic Ordinance, sections 39A, 62(3), 64B and 64D (Hebrew Wikisource)
     url: https://he.wikisource.org/wiki/פקודת_התעבורה
+    locator: "Sections 39A, 62(3), 64B(a), 64B(a3) and 64D."
+  procedure106:
+    title: Israel Ministry of Health — Procedure 106, medical cannabis, update 7 (January 2024)
+    url: https://www.gov.il/he/Departments/policies/cn-106-2019
+    locator: "Clinical guidance, 20 g starting dose, 100 g/month approval threshold, cannabis not a registered medicine."
+  imcu2026:
+    title: Israel Ministry of Health — Medical Cannabis Unit report, June 2026
+    url: https://www.gov.il/BlobFolder/reports/licenses-status-june-2026/he/subjects_cannabis_docs_licenses-status-june-2026.pdf
+    locator: "145,758 active licences and prescriptions: 112,400 licences and 33,300 prescriptions."
+  police2024:
+    title: Israel Police Statistical Yearbook 2024 (published 3 May 2026)
+    url: https://www.gov.il/he/pages/police_statistical_2024
+    locator: "9,164 drug trafficking/possession-not-for-personal-use/cultivation/manufacture files in 2024; 10.45 t cannabis and 1.6 t hashish tested."
+  meida2026:
+    title: "Movement for Freedom of Information — Police data: zero cannabis fines in the last three years (10 March 2026)"
+    url: https://www.meida.org.il/17814
+    locator: "Zero administrative cannabis fines in 2022–2025; 50,335 fines in 2019–2022; police say the framework is still in design."
+  mako2023:
+    title: "Mako — Administrative cannabis fines extend to minors from today (16 February 2023)"
+    url: https://www.mako.co.il/cannabis-news/Article-dc05a97d0095681026.htm
+  aviram2025:
+    type: journal
+    title: "Medical cannabis in Israel: a comprehensive review of trends and regulations, 2011–2025"
+    authors: [Aviram]
+    container: Journal of Cannabis Research
+    year: 2025
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12613726/
+    locator: "Patient numbers, indications, doses and product mix."
+  cbd2022:
+    title: "JPost — Israel will remove CBD from Dangerous Drug Ordinance (28 February 2022)"
+    url: https://www.jpost.com/health-and-wellness/article-698917
   to23:
     title: Time Out Tel Aviv — התחנה 420, מועדון קנאביס (10 January 2023)
     url: https://timeout.co.il/התחנה-420/
-  chambers:
-    title: "Chambers Practice Guides — Medical cannabis and cannabinoid regulation 2024: Israel"
-    url: >-
-      https://practiceguides.chambers.com/practice-guides/medical-cannabis-cannabinoid-regulation-2024/israel
-  wiki:
-    title: Wikipedia — Cannabis in Israel
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Israel
-  alm:
-    title: Al-Monitor — Israel's cannabis revolution
-    url: >-
-      https://al-monitor.com/originals/2019/02/israel-cannabis-law-pharmacy-doctors-support-group-addiction.html
-  knesset_med:
-    title: Knesset Research and Information Center — Medical Cannabis, Updated Overview (2020)
-    url: https://main.knesset.gov.il/EN/activity/mmm/MedicalCannabis-Update.pdf
-  gov_licensing:
-    title: Israel Ministry of Health — Engaging in the cannabis field
-    url: https://www.gov.il/he/pages/cannabis-licensing
+  mechoulam2020:
+    title: Journal of Cannabis Research — The father of cannabis research, Q&A with Raphael Mechoulam (30 January 2020)
+    url: https://blogs.biomedcentral.com/on-health/2020/01/30/jcr-interview-with-raphael-mechoulam/
+  unodc:
+    title: "UNODC Data Portal — police contacts for drug possession (World Drug Report 2026 data)"
+    url: https://data.unodc.org/datareport/drug-possession
