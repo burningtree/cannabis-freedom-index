@@ -38,5 +38,10 @@ atlas-backed first, then the rest. Skipped: South Africa (other agent), Eritrea
 - Profile already complete (words zatla/takrouri, culture, audit 0/0 after adding `life: possible` to the pre-existing criminal-association row).
 - New `articles/tunisia-kef-sentences-reduced-2021.md` (30-year stadium sentences → 2 years; background verified in Meshkal, reduction from the checked North Africa Post entry — NAP 403s) + `articles/tunisia-hemp-decree-1884.md` (first decree verified verbatim in the 1954 UN Bulletin text).
 - Full `npm test` 193/0; both articles verified in review HTML.
-## cg — pending
+## cg — committed
+- New driving section (`unknown`, no per se limit; Article 61 sanction) following the CF pattern.
+- New `articles/congo-senate-drug-law-debate-2025.md` (ACI piece fetched and read: Moundele-Ngollo, 20+ years without framework) + `articles/congo-three-city-drug-survey-2004.md` (239 users, ages, age-8 first contact — verified in the official-journal PDF).
+- No words (no atlas entry, no sourced local word found); black_market left (ENACT page JS-rendered, not verifiable; no seizure series found).
+- Audit 0/0; full `npm test` 193/0; page + both articles verified in review HTML.
+- Left: 1930s–40s, 1960s–80s decades.
 ## zm — pending
