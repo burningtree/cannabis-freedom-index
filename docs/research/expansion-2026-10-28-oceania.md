@@ -24,3 +24,10 @@ islands. Skip BUSY files; none of these countries have uncommitted changes.
 - Tables already present (possession/cultivation/sharing/consumption tiers + hemp standard). No other profile surgery needed.
 - Audit 0/0; page + all three articles verified in review HTML.
 - Left: 1925 estimate (parallel, skip).
+
+## nr — committed
+- Word Indian hemp (English (Nauru), the 1952 ordinance's legal name; un1952 profile source added from the checked entry).
+- New `articles/nauru-drug-bail-ban-2022.md` (Bail Amendment No. 2: drug charges unbailable incl. appeal; later one-gram case released post-sentence) linked from enforcement + `articles/nauru-medicinal-import-licences-2008.md` (annual Cabinet licences + traveller month-supply; Indian-hemp lineage to 1952) linked from medical + `articles/nauru-cannabis-test-certificates-2021.md` (colour-change certificates, 2021 rules replace 2016; KN-reagent via Doguape judgment as second source) linked from arrests.
+- Tables already present (mandatory custody bands). No other profile surgery needed.
+- Audit 0/0; page + all three articles verified in review HTML.
+- Left: 1925 estimate (undated, skip).
