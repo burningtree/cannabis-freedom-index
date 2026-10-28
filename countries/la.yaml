@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 418
 recreational: illegal
 medical: limited
-updated: '2026-10-28'
+updated: "2026-10-28"
 summary: >-
   Cannabis possession can lead to treatment or prison; licensed low-THC hemp medicines are
   permitted.
@@ -28,9 +28,9 @@ segments:
     currency: LAK
     penalties:
       - label: Under 5 g for consumption
-        treatment: civil
+        treatment: tolerated
         term: Consumption
-        note: Treatment, not prison
+        note: Treated as a victim and sent for treatment, not prison
       - label: 5 to 10 g dried for consumption
         treatment: criminal
         term: Consumption
@@ -164,13 +164,13 @@ segments:
         term: Trading
         fine_min: 100000000
         fine: 200000000
-        note: Life imprisonment and a fine of 100–200 million kip
+        note: Fine of 100–200 million kip
+        life: mandatory
   consumption:
     text: >-
       Consumption or possession for consumption of under five grams of cannabis leads to treatment.
       Addiction recurring after certified treatment brings escalating sanctions: public criticism
-      and a fine after the first treatment, then possible prison after later
-      treatments.[@penal]
+      and a fine after the first treatment, then possible prison after later treatments.[@penal]
     sources:
       - penal
   access:
@@ -185,25 +185,29 @@ segments:
 context:
   recreational:
     text: >-
-      All recreational use is prohibited: under five grams for consumption leads to treatment,
-      five to ten grams to prison, and trading even small amounts to prison terms that reach
-      life for large extract quantities.[@penal]
+      All recreational use is prohibited: under five grams for consumption leads to treatment, five
+      to ten grams to prison, and trading even small amounts to prison terms that reach life for
+      large extract quantities.[@penal]
     sources:
       - penal
   hemp:
     status: high
     text: >-
-      Licensed hemp cultivation, processing and trade use registered seeds and qualified staff,
-      with prescribed dried flower up to 1% THC; medicines have a 0.2% ceiling. Registered
-      consumer products include supplements, cosmetics and CBD beverages.[@jetro,hemp]
+      Licensed hemp cultivation, processing and trade use registered seeds and qualified staff, with
+      prescribed dried flower up to 1% THC; medicines have a 0.2% ceiling. Registered consumer
+      products include supplements, cosmetics and CBD beverages.[@jetro,hemp] The 21 October 2026
+      prohibited-narcotics resolution again lists cannabis plants and products with no published
+      hemp carve-out, leaving the licensed route legally unresolved.[@na2026]
     sources:
       - jetro
       - hemp
+      - na2026
   production:
     status: hemp
     text: >-
       Rules issued in December 2022 permit licensed hemp cultivation, processing and trade, with
-      registered seeds and qualified technical staff; medical products are covered separately.[@jetro,hemp]
+      registered seeds and qualified technical staff; medical products are covered
+      separately.[@jetro,hemp]
     sources:
       - jetro
       - hemp
@@ -211,9 +215,12 @@ context:
     text: >-
       Decision 3789/MOH permits prescribed dried hemp flower with a 1% THC ceiling, and medical
       products with a 0.2% ceiling and CBD at least four times the THC content; no operating patient
-      route was verified.[@hemp]
+      route was verified.[@hemp] The National Assembly’s 21 October 2026 prohibited-narcotics
+      resolution again lists cannabis plants and products, with no published hemp carve-out, so the
+      2022 decision still has no clear statutory bridge.[@na2026]
     sources:
       - hemp
+      - na2026
   consequences:
     text: >-
       After the first certified treatment, renewed addiction brings public criticism and a fine.
@@ -252,22 +259,27 @@ context:
     text: >-
       Public Security Minister Vilay Lakhamphong reported 5,168 suspects in 3,395 drug cases over
       eleven months to parliament on 20 November 2024, including 199 foreigners; seizures included
-      3,583 kg of marijuana.[@kpl24] A November 2025 report counted 21,003 cases and 31,289 suspects
-      from July 2021 to October 2025, with 27,626 kg of cannabis seized.[@lt25] The arrest totals
-      cover all drugs.[@kpl24]
+      3,583 kg of marijuana.[@kpl24] Calendar 2025 recorded 3,660 drug cases and 5,643 suspects,
+      including 322 foreigners; no cannabis weight was published.[@lt26crime] A November 2025 report
+      counted 21,003 cases and 31,289 suspects from July 2021 to October 2025, with 27,626 kg of
+      cannabis seized.[@lt25] The arrest totals cover all drugs.[@kpl24]
     sources:
       - kpl24
+      - lt26crime
       - lt25
   black_market:
     text: >-
       UNODC records 3,274 kg of herbal cannabis seized in 2024, against 1,045 kg in
-      2023.[@unodc_szr] The government reported about 3.6 tonnes in 2024 and 27,626 kg from July
+      2023.[@unodc_szr] A couple arrested in Bolikhamxay in March 2024 had more than 800 kg of
+      cannabis, and the province reported 1,022 kg of dried cannabis in the first half of
+      2026.[@vir24,lt26b] The government reported about 3.6 tonnes in 2024 and 27,626 kg from July
       2021 to October 2025.[@kpl24,lt25] In October 2026 Bolikhamxay destroyed more than 3,000 kg of
       dried cannabis, and Vientiane destroyed 8.578 kg in its Anti-Drug Day burn.[@lt26,kpl26] The
-      figures use different categories and periods and are not directly
-      comparable.[@unodc_szr,lt25]
+      figures use different categories and periods and are not directly comparable.[@unodc_szr,lt25]
     sources:
       - unodc_szr
+      - vir24
+      - lt26b
       - kpl24
       - lt25
       - lt26
@@ -285,10 +297,11 @@ context:
   culture:
     text: >-
       Cannabis is known in Lao as [ganja](/culture/language/ganja/), and the country has a
-      [landrace](/culture/language/landrace/) heritage.[@outlook] The [Hmong](/culture/traditions/hmong-hemp-cloth/)
-      of the northern mountains grew, spun and wove hemp for cloth, and the leaf appears in
-      [South-East Asian cooking](/culture/traditions/south-east-asian-cooking/).[@hemp,outlook] The
-      modern law treats ordinary cannabis as a narcotic while licensing low-THC hemp for registered
+      [landrace](/culture/language/landrace/) heritage.[@outlook] The
+      [Hmong](/culture/traditions/hmong-hemp-cloth/) of the northern mountains grew, spun and wove
+      hemp for cloth, and the leaf appears in [South-East Asian
+      cooking](/culture/traditions/south-east-asian-cooking/).[@hemp,outlook] The modern law treats
+      ordinary cannabis as a narcotic while licensing low-THC hemp for registered
       products.[@penal,hemp]
     sources:
       - outlook
@@ -302,21 +315,29 @@ sources:
     url: https://kpl.gov.la/en/detail.aspx?id=87453
     locator: Minister Vilay Lakhamphong’s report to the National Assembly on 20 November 2024
   lt25:
-    title: "Laotian Times — Laos processes 21,003 drug cases, arrests 31,289 suspects since 2021 (14 November 2025)"
-    url: https://laotiantimes.com/2025/11/14/laos-processes-21003-drug-cases-arrests-31289-suspects-since-2021/
-    locator: "21,003 cases; 31,289 suspects; 27,626 kg cannabis, July 2021–October 2025."
+    title: >-
+      Laotian Times — Laos processes 21,003 drug cases, arrests 31,289 suspects since 2021 (14
+      November 2025)
+    url: >-
+      https://laotiantimes.com/2025/11/14/laos-processes-21003-drug-cases-arrests-31289-suspects-since-2021/
+    locator: 21,003 cases; 31,289 suspects; 27,626 kg cannabis, July 2021–October 2025.
   lt26:
-    title: "Laotian Times — Laos destroys tonnes of drugs as police warn of new substances (23 October 2026)"
-    url: https://laotiantimes.com/2026/10/23/laos-destroys-tonnes-of-drugs-as-police-warn-of-new-substances/
+    title: >-
+      Laotian Times — Laos destroys tonnes of drugs as police warn of new substances (23 October
+      2026)
+    url: >-
+      https://laotiantimes.com/2026/10/23/laos-destroys-tonnes-of-drugs-as-police-warn-of-new-substances/
     locator: "Bolikhamxay: more than 3,000 kg dried cannabis destroyed on 14 October 2026."
   kpl26:
-    title: "Lao News Agency — Vientiane destroys seized drugs ahead of National Anti-Drug Day (12 October 2026)"
+    title: >-
+      Lao News Agency — Vientiane destroys seized drugs ahead of National Anti-Drug Day (12 October
+      2026)
     url: https://kpl.gov.la/en/detail.aspx?id=109040
-    locator: "3,894.263 kg total, including 8.578 kg dried cannabis."
+    locator: 3,894.263 kg total, including 8.578 kg dried cannabis.
   road2012:
     type: law
-    title: "Laos — Road Traffic Law No. 23/NA, 12 December 2012"
-    locator: "General traffic and impairment rules; official text scanned and not read."
+    title: Laos — Road Traffic Law No. 23/NA, 12 December 2012
+    locator: General traffic and impairment rules; official text scanned and not read.
   unodc_szr:
     title: >-
       UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
@@ -336,8 +357,26 @@ sources:
   jetro:
     title: JETRO — Laos permits medical and commercial hemp activities, 9 February 2023
     url: https://www.jetro.go.jp/biznews/2023/02/ffc44dcb116f58b4.html
-    locator: 'Opening paragraph: 26 January commencement; registered seeds and business licences'
+    locator: "Opening paragraph: 26 January commencement; registered seeds and business licences"
   hemp:
     title: Tilleke & Gibbins — Laos approves hemp-related activities, 17 February 2023
     url: https://www.tilleke.com/insights/laos-approves-hemp-related-activities/
     locator: Hemp-related activities; prescription products; legal alignment and implementation questions
+  na2026:
+    title: Lao National Assembly — prohibited-narcotics list adopted 21 October 2026
+    url: https://kpl.gov.la/En/detail.aspx?id=110307
+    locator: Resolution adopted with 97.51% support; cannabis plants and products in the prohibited list.
+  lt26crime:
+    title: Laotian Times — Drug crimes lead 2025 crime statistics (18 February 2026)
+    url: >-
+      https://laotiantimes.com/2026/02/18/drug-crimes-lead-2025-crime-statistics-despite-overall-decline/
+    locator: 3,660 drug cases; 5,643 suspects; 322 foreigners; no cannabis weight.
+  vir24:
+    title: VIR — Laos thwarts numerous major drug cases (26 March 2024)
+    url: https://vir.com.vn/laos-thwarts-numerous-major-drug-cases-109862.html
+    locator: Bolikhamxay couple arrested with more than 800 kg of cannabis.
+  lt26b:
+    title: Laotian Times — Bolikhamxay six-month drug crackdown (15 July 2026)
+    url: >-
+      https://laotiantimes.com/2026/07/15/bolikhamxay-police-seize-1-3-million-meth-pills-in-six-month-drug-crackdown/
+    locator: 1,022 kg dried cannabis; 111 cases; 162 suspects in January–June 2026.
