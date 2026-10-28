@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 704
 recreational: death
 medical: none
-updated: '2026-10-26'
+updated: '2026-10-28'
 summary: >-
   A first detection of use brings administrative monitoring; repeat detection can lead to addiction
   assessment. Criminal use penalties depend on specified rehabilitation-related statuses. Illegal
@@ -18,134 +18,213 @@ scores:
 segments:
   possession:
     text: >-
-      Article 249 of the Criminal Code, as amended from 1 July 2025, punishes illegal possession
-      that is not for sale, transport or production. The first bracket is three to five years for
+      Article 249 of the Penal Code, as amended from 1 July 2025, punishes illegal possession that
+      is not for sale, transport or production.[@a249] The first bracket is three to five years for
       1 g to under 500 g of cannabis resin, or 1 kg to under 10 kg of the listed plant parts
-      (leaves, roots, stem, branches, flowers and fruit). A prior administrative penalty or
-      conviction that has not been cleared can make a smaller amount criminal. Five kilograms or
-      more of resin, or 75 kg or more of those plant parts, is fifteen to twenty years or life.
+      (leaves, roots, stem, branches, flowers and fruit); 500 g to under 1 kg of resin, or 10 kg to
+      under 25 kg of plant parts, brings five to ten years; 1 kg to under 5 kg of resin, or 25 kg to
+      under 75 kg of plant parts, brings ten to fifteen years; and 5 kg or more of resin, or 75 kg or
+      more of plant parts, brings fifteen to twenty years or life.[@a249] A prior administrative
+      penalty or conviction that has not been cleared can make a smaller amount criminal.[@a249] An
+      additional fine of VND 5–500 million can be imposed.[@a249]
     sources:
       - a249
+    currency: VND
     penalties:
       - label: 1 g to under 500 g resin, or 1 kg to under 10 kg plant parts
         treatment: criminal
+        term: Possession
         prison_min: 3 years
         prison: 5 years
         note: First bracket; a prior uncleared penalty can criminalise smaller amounts
+      - label: 500 g to under 1 kg resin, or 10 kg to under 25 kg plant parts
+        treatment: criminal
+        term: Possession
+        prison_min: 5 years
+        prison: 10 years
+      - label: 1 kg to under 5 kg resin, or 25 kg to under 75 kg plant parts
+        treatment: criminal
+        term: Possession
+        prison_min: 10 years
+        prison: 15 years
       - label: 5 kg or more resin, or 75 kg or more plant parts
         treatment: criminal
+        term: Possession
         prison_min: 15 years
         note: Fifteen to twenty years or life
   cultivation:
     text: >-
-      Growing cannabis plants is prohibited: an administrative fine for small numbers, criminal
-      liability for larger plots or repeat offences.
+      Article 247 punishes growing cannabis.[@code] Below 500 plants, a first offence is
+      administrative: a fine of VND 5–10 million for an individual or VND 10–20 million for an
+      organisation, with the plants destroyed.[@decree282] From 500 to under 3,000 plants, or after a
+      prior reprimand, administrative penalty or uncleared conviction, the sentence is six to
+      thirty-six months.[@code] From 3,000 plants, or for organised or dangerous-recidivist
+      cultivation, it is three to seven years, with an additional fine of VND 5–50 million; plants
+      destroyed voluntarily before harvest are exempt.[@code]
     sources:
-      - ln2
+      - code
+      - decree282
+    currency: VND
+    penalties:
+      - label: Under 500 plants, first offence
+        treatment: civil
+        term: Cultivation
+        fine_min: 5000000
+        fine: 10000000
+        note: Individual; organisations VND 10–20 million; plants destroyed
+      - label: 500 to under 3,000 plants
+        treatment: criminal
+        term: Cultivation
+        prison_min: 6 months
+        prison: 36 months
+        note: Also after a prior reprimand, administrative penalty or uncleared conviction
+      - label: 3,000 plants or more
+        treatment: criminal
+        term: Cultivation
+        prison_min: 3 years
+        prison: 7 years
+        note: Also organised cultivation or dangerous recidivism; additional fine VND 5–50 million
   enforcement:
     text: >-
       Illegal cannabis sale can bring life imprisonment or death from 30 kg of resin or 150 kg
       of the listed plant parts under Article 251, as amended from 1 July 2025.[@a251] The
       preceding band, from 5 kg of resin or 75 kg of those plant parts, carries twenty years
-      or life.[@a251]
+      or life.[@a251] Production and transport are separate offences with similar tiers: the
+      2025 law removed death for transport but kept it for production from 5 kg of resin or 75 kg of
+      plant parts.[@law86]
     sources:
       - a251
+      - law86
   sharing:
     text: >-
-      Illegal sale under Article 251, as amended from 1 July 2025, is three to seven years.
-      From 5 kg to under 30 kg of cannabis resin, or 75 kg to under 150 kg of the listed plant
-      parts, the sentence is twenty years or life. From 30 kg of resin, or 150 kg of those plant
-      parts, it is life or death. The article is the sale offence.
+      Illegal sale under Article 251, as amended from 1 July 2025, is three to seven years.[@a251]
+      From 500 g to under 1 kg of cannabis resin, or 10 kg to under 25 kg of the listed plant parts,
+      the sentence is seven to fifteen years; from 1 kg to under 5 kg of resin, or 25 kg to under
+      75 kg of plant parts, it is fifteen to twenty years.[@a251] From 5 kg to under 30 kg of resin,
+      or 75 kg to under 150 kg of plant parts, it is twenty years or life; from 30 kg of resin, or
+      150 kg of those plant parts, it is life or death.[@a251] An additional fine of VND 5–500
+      million can be imposed.[@a251]
     sources:
       - a251
+    currency: VND
     penalties:
       - label: Illegal sale, base
         treatment: criminal
+        term: Sale
         prison_min: 3 years
         prison: 7 years
-      - label: 5 kg to under 30 kg resin
+      - label: 500 g to under 1 kg resin, or 10 kg to under 25 kg plant parts
         treatment: criminal
+        term: Sale
+        prison_min: 7 years
+        prison: 15 years
+      - label: 1 kg to under 5 kg resin, or 25 kg to under 75 kg plant parts
+        treatment: criminal
+        term: Sale
+        prison_min: 15 years
+        prison: 20 years
+      - label: 5 kg to under 30 kg resin, or 75 kg to under 150 kg plant parts
+        treatment: criminal
+        term: Sale
         prison: 20 years
         note: Twenty years or life
-      - label: 30 kg or more resin
+      - label: 30 kg or more resin, or 150 kg or more plant parts
         treatment: criminal
+        term: Sale
         death: true
         note: Life or death; death is alternative, not required
   consumption:
     text: >-
-      Illegal use can bring a warning or a fine of 1–2 million dong and compulsory rehabilitation
-      for people classed as addicted.[@ln1] First detection leads to one-year user monitoring;
-      further use can trigger addiction assessment and rehabilitation measures.[@a256] Since 1 July
-      2025, Article 256a imposes two to three years for use during rehabilitation or substitution
-      treatment; during post-rehabilitation management; within two years after that management ends
-      AND while under illicit-user management; or within two years of abandoning voluntary
-      rehabilitation or substitution treatment. Recidivism of this criminal offence carries three to
-      five years.[@a256]
+      Illegal use can bring a warning or a fine of VND 1–2 million, confiscation of the drug and
+      one-year user management; foreigners can also be deported.[@decree282] First detection leads
+      to that monitoring, and further use can trigger addiction assessment and rehabilitation
+      measures.[@a256] Since 1 July 2025, Article 256a imposes two to three years for use during
+      rehabilitation or substitution treatment; during post-rehabilitation management; within two
+      years after that management ends and while under illicit-user management; or within two years
+      of abandoning voluntary rehabilitation or substitution treatment, with three to five years for
+      recidivism.[@a256] Compulsory rehabilitation lasts 24 months for a first time and 36 months on
+      a repeat under the 2025 drug law, in force from 1 July 2026.[@l120]
     sources:
-      - ln1
+      - decree282
       - a256
+      - l120
     currency: VND
     penalties:
       - label: Illegal use, administrative
         treatment: civil
+        term: Use
+        fine_min: 1000000
         fine: 2000000
-        note: Warning or 1–2 million dong fine plus compulsory rehabilitation for addicts
+        note: Warning or fine; confiscation; one-year user management; deportation for foreigners
       - label: Use in rehabilitation statuses, Article 256a
         treatment: criminal
+        term: Use
         prison_min: 2 years
         prison: 3 years
       - label: Recidivism of Article 256a
         treatment: criminal
+        term: Use
         prison_min: 3 years
         prison: 5 years
   access:
     text: >-
       None. The 2025 drug law counts the cannabis plant as a narcotic plant, prohibits growing it
-      and excludes cultivation even from licensed research and production.
+      and excludes cultivation even from licensed research and production.[@l120] Decree 28/2026
+      keeps cannabis and its preparations in List I, the category absolutely prohibited in medicine
+      and social life.[@decree28] There is no prescription, import or retail channel.[@l120]
     sources:
       - l120
+      - decree28
 context:
   recreational:
     text: >-
       All recreational use is prohibited. Possession starts at three to five years, sale at
       three to seven years rising to life or death in the highest weight bands, and use brings
-      monitoring, rehabilitation or prison depending on status.[@a249,a251,a256,ln1]
+      monitoring, rehabilitation or prison depending on status.[@a249,a251,a256,decree282]
     sources:
       - a249
       - a251
       - a256
-      - ln1
+      - decree282
   death_penalty:
     text: >-
       From 1 July 2025, illegal sale of 5 kg to under 30 kg of cannabis resin, or 75 kg to under
-      150 kg of the listed plant parts, is twenty years or life. Life or death applies from 30 kg
-      of resin or 150 kg of those plant parts. Death is an alternative sentence in that bracket,
-      not a required one. The same law removed the death penalty for illegal transport.
+      150 kg of the listed plant parts, is twenty years or life.[@a251] Life or death applies from
+      30 kg of resin or 150 kg of those plant parts.[@a251] Death is an alternative sentence in that
+      bracket, not a required one.[@a251] Production from 5 kg of resin or 75 kg of plant parts can
+      also bring death, while the same law removed the death penalty for illegal transport.[@law86,mps25]
     sources:
       - a251
+      - law86
       - mps25
   production:
     status: none
     text: >-
       No lawful cannabis production. The 2025 drug law counts the cannabis plant as a narcotic
-      plant, prohibits growing it and excludes cultivation even from licensed research and
-      production.[@l120]
+      plant, prohibits growing it and excludes cultivation from every research or production
+      permission.[@l120] Traditional Hmong fibre hemp has no commercial route under that law, though
+      the craft of growing, spinning and weaving it survives in the northern mountains.[@l120]
     sources:
       - l120
   medical:
     text: >-
       No medical cannabis programme. The 2025 drug law excludes cannabis cultivation even from
-      licensed research and production routes.[@l120]
+      licensed research and production routes, and Decree 28/2026 keeps cannabis in List I,
+      absolutely prohibited in medicine and social life.[@l120,decree28] No prescription, import or
+      retail channel exists.[@l120]
     sources:
       - l120
+      - decree28
   consequences:
     text: >-
-      Local police monitor detected users. A further detection during ordinary one-year monitoring
+      Local police monitor detected users for one year. A further detection during that monitoring
       can prompt addiction assessment; Article 256a criminal liability requires one of the specified
-      rehabilitation-related statuses.[@a256] Foreigners can also face deportation.[@ln1]
+      rehabilitation-related statuses.[@a256] Compulsory rehabilitation lasts 24 months for a first
+      time and 36 months on a repeat.[@l120] Foreigners can also face deportation.[@decree282]
     sources:
       - a256
-      - ln1
+      - l120
+      - decree282
   planting:
     seeds: grey
     seeds_trade: unclear
@@ -153,68 +232,104 @@ context:
     clones_trade: banned
     text: >-
       The 2025 drug law, in force since 1 July 2026, names the cannabis plant as a narcotic
-      plant and bans growing it or teaching others to grow it. Its list of activities that can
-      be licensed leaves cultivation out. The law does not mention seeds.
+      plant and bans growing it or teaching others to grow it.[@l120] Its list of activities that
+      can be licensed leaves cultivation out.[@l120] The law does not mention seeds, and the Penal
+      Code's list of cannabis plant parts does not include them, so their status is grey.[@code]
+      Cuttings are plant parts and cannot be traded.[@code]
     sources:
       - l120
+      - code
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
       supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      penalty for the most serious drug offences.[@l120,a251]
     sources:
-      - ln2
-      - ln1
+      - l120
+      - a251
   visitors:
     status: none
     text: >-
       There is no legal recreational supply for anyone. Illegal possession that is not for sale,
       transport or production is three to five years from 1 g of cannabis resin or 1 kg of the
-      listed plant parts. A prior penalty can make a smaller amount criminal.
+      listed plant parts, and a prior penalty can make a smaller amount criminal.[@a249]
+      Foreigners can also be deported for drug use.[@decree282]
     sources:
       - a249
+      - decree282
   driving:
     status: zero
     text: >-
       Driving with narcotic drugs or other legally prohibited stimulants in the body is an
-      offence, without a quantified THC allowance in the cited provisions. Under Decree 168/2024,
-      effective 1 January 2025, car drivers face VND30–40 million and motorcycle or moped drivers
-      VND8–10 million, plus suspension of the right to use a driving licence for 22–24 months.
-      Refusing the official drug test carries the same fine and suspension for each vehicle
-      category. These are administrative penalties; accidents or other offences can bring
-      additional liability.
+      offence, without a quantified THC allowance in the cited provisions.[@traffic168] Under Decree
+      168/2024, effective 1 January 2025, car drivers face VND 30–40 million and motorcycle or moped
+      drivers VND 8–10 million, plus suspension of the right to use a driving licence for 22–24
+      months.[@traffic168] Refusing the official drug test carries the same fine and suspension for
+      each vehicle category.[@traffic168] These are administrative penalties; accidents or other
+      offences can bring additional liability.[@traffic168]
     sources:
       - traffic168
-
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 2,580 kg of herbal
-      cannabis seized in 2024, against 727 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      cannabis seized in 2024, against 727 kg in 2023.[@unodc_szr] The Ministry of Public Security
+      reported 29,928 drug cases and 51,938 suspects in 2024, with nearly 2.3 tonnes of cannabis
+      seized.[@mps24] In 2025 police reported 21,998 drug cases, 44,354 suspects and nearly 1.3
+      tonnes of cannabis.[@vietnamvn26] In October 2026 Ho Chi Minh City police dismantled an
+      inter-provincial ring, arresting 151 people and seizing 176.2 kg of cannabis.[@vnnews26] The
+      UN publishes kilogram equivalents, and agencies count cases and seizures differently, so the
+      figures are not directly comparable.[@unodc_szr]
     sources:
       - unodc_szr
+      - mps24
+      - vietnamvn26
+      - vnnews26
+  arrests:
+    text: >-
+      The Ministry of Public Security reported 29,928 drug cases and 51,938 suspects in 2024, with
+      nearly 2.3 tonnes of cannabis seized.[@mps24] In 2025 police reported 21,998 drug cases,
+      44,354 suspects and nearly 1.3 tonnes of cannabis.[@vietnamvn26] By September 2026 they
+      reported more than 17,600 cases and nearly 35,400 suspects.[@vietnamnet26] The case and suspect
+      figures cover all drugs, not cannabis alone; the cannabis figures are seizures.[@mps24]
+    sources:
+      - mps24
+      - vietnamvn26
+      - vietnamnet26
+  hemp:
+    status: none
+    text: >-
+      There is no legal hemp category and no THC threshold. The 2025 drug law treats the cannabis
+      plant as a narcotic plant, bans growing it and leaves cultivation out of the activities that
+      can be licensed, so fibre hemp has no commercial route.[@l120] Decree 28/2026 keeps cannabis
+      and its preparations in List I, absolutely prohibited in medicine and social life.[@decree28]
+      The traditional Hmong hemp cloth described in the [atlas](/culture/traditions/hmong-hemp-cloth/)
+      is a surviving craft, not a licensed crop.[@l120]
+    sources:
+      - l120
+      - decree28
+  culture:
+    text: >-
+      Cannabis is known in Vietnamese as [cần sa](/culture/language/ganja/), a name shared with the
+      rest of South-East Asia.[@ganja_wiki] The leaf was a household seasoning and medicine before
+      prohibition, and the [Hmong](/culture/traditions/hmong-hemp-cloth/) of the northern mountains
+      grew, spun and wove hemp for clothing.[@hmong_wiki] [South-East Asian
+      cooking](/culture/traditions/south-east-asian-cooking/) kept the leaf as a seasoning in some
+      dishes, though today every cannabis product is illegal.[@vn_wiki,l120]
+    sources:
+      - ganja_wiki
+      - hmong_wiki
+      - vn_wiki
+      - l120
 sources:
-  traffic168:
-    title: "Government of Vietnam — Decree 168/2024/NĐ-CP, full text"
-    url: https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-dinh-168-2024-nd-cp-quy-dinh-xu-phat-vi-pham-hanh-chinh-ve-trat-tu-atgt-duong-bo-119241231164556785.htm
-    locator: "Articles 6(11)(c\u2013d), 6(15)(c), 7(9)(e,g), 7(12)(c), 54"
-  lv256:
-    title: LuatVietnam — Tội sử dụng ma túy phải chịu trách nhiệm hình sự như thế nào từ 01/7/2025?
-    url: >-
-      https://luatvietnam.vn/linh-vuc-khac/toi-su-dung-ma-tuy-phai-chiu-trach-nhiem-hinh-su-nhu-the-nao-tu-01-7-2025-883-103136-article.html
-  l120:
-    title: Law No. 120/2025/QH15 on Drug Prevention and Control, 10 December 2025 (LuatVietnam English translation)
-    url: https://english.luatvietnam.vn/law-on-drug-prevention-and-control-no-120-2025-qh15-dated-december-10-2025-of-the-national-assembly-422329-doc1.html
-  ln1:
-    title: LawNet — How is illegal possession of drugs dealt with in Vietnam?
-    url: >-
-      https://lawnet.vn/thong-tin-phap-luat/en/hinh-su/how-are-illegal-possession-of-drugs-dealt-with-in-vietnam-102903.html
-  ln2:
-    title: LawNet — Is cannabis considered a narcotic substance in Vietnam?
-    url: >-
-      https://lawnet.vn/ngan-hang-phap-luat/en/tu-van-phap-luat/trach-nhiem-hinh-su/is-cannabis-considered-a-narcotic-substance-in-vietnam-403021
+  code:
+    title: "Vietnam — Penal Code 100/2015/QH13, consolidated text 11/VBHN-VPQH (24 February 2025, AZVLAW English)"
+    url: https://azvlaw.vn/en/criminal-code/
+    locator: "Articles 247–252; in force 1 January 2018."
+  law86:
+    title: "Vietnam — Law 86/2025/QH15 amending the Penal Code (LuatVietnam English)"
+    url: https://english.luatvietnam.vn/hinh-su/law-amend-the-penal-code-no-86-2025-qh15-404074-d1.html
+    locator: "Article 1(18)–(20), amending Articles 248–252; in force 1 July 2025."
   a249:
     title: "Chinhphu.vn — Article 249, illegal possession of narcotics, as amended by Law 86/2025/QH15 (14 July 2025)"
     url: https://xaydungchinhsach.chinhphu.vn/muc-phat-toi-tang-tru-trai-phep-chat-ma-tuy-119250714155300157.htm
@@ -223,19 +338,60 @@ sources:
     title: "Chinhphu.vn — Article 251, illegal sale of narcotics, as amended by Law 86/2025/QH15 (22 July 2025)"
     url: https://xaydungchinhsach.chinhphu.vn/muc-phat-toi-mua-ban-trai-phep-chat-ma-tuy-119250722173411884.htm
     locator: "Article 251(1), (4) and (5). In force 1 July 2025."
-  mps25:
-    title: "Ministry of Public Security — the Criminal Code amendment is in force from 1 July 2025"
-    url: https://bocongan.gov.vn/bai-viet/cong-bo-luat-sua-doi-bo-sung-mot-so-dieu-cua-bo-luat-hinh-su-co-hieu-luc-tu-0172025-d2-t45852
-    locator: "Confirms commencement and that Article 251's life-or-death bracket was separated so as to raise the quantity for a death sentence. Death was removed for illegal transport."
-  unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
-    url: https://data.unodc.org/datareport/drug-seizure
   a256:
     title: Vietnam State Audit Office — Law 86/2025/QH15 and Article 256a explanation
     url: https://sav.gov.vn/vi/bai-viet/tin-db8b5ce4-c580-4d97-59b3-08de30a94834
     locator: >-
       Article 256a(1)(a)–(d), (2); ordinary one-year monitoring versus
       rehabilitation/post-rehabilitation statuses; effective 1 July 2025
+  l120:
+    title: Law No. 120/2025/QH15 on Drug Prevention and Control, 10 December 2025 (LuatVietnam English translation)
+    url: https://english.luatvietnam.vn/law-on-drug-prevention-and-control-no-120-2025-qh15-dated-december-10-2025-of-the-national-assembly-422329-doc1.html
+    locator: "Articles 2(5), 5(1), 13(1)(a), 24, 29 and 55; in force 1 July 2026."
+  decree282:
+    title: "Vietnam — Decree 282/2025/NĐ-CP on administrative sanctions for security and public order violations (LuatVietnam English)"
+    url: https://english.luatvietnam.vn/decreeno282-2025-nd-cpdatedoctober302025ofthegovernmentprescribingsanctionsforadministrativeviolationsofregulationsonsecuritypub-417708-doc1.html
+    locator: "Article 30; drug use, cultivation and guiding cultivation; effective 15 December 2025."
+  decree28:
+    title: "Vietnam — Decree 28/2026/NĐ-CP on the lists of narcotic substances and precursors (LuatVietnam English)"
+    url: https://english.luatvietnam.vn/decree-no-28-2026-nd-cp-dated-january-19-2026-of-the-government-prescribing-the-lists-of-narcotic-substances-and-precursors-424376-doc1.html
+    locator: "Article 1 and List I; cannabis and its preparations; effective 19 January 2026."
+  traffic168:
+    title: "Government of Vietnam — Decree 168/2024/NĐ-CP, full text"
+    url: https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-dinh-168-2024-nd-cp-quy-dinh-xu-phat-vi-pham-hanh-chinh-ve-trat-tu-atgt-duong-bo-119241231164556785.htm
+    locator: "Articles 6(11)(c–d), 6(15)(c), 7(9)(e,g), 7(12)(c), 54"
+  mps24:
+    title: "Vietnam Ministry of Public Security — 29,928 drug cases and 51,938 suspects in 2024 (6 January 2025)"
+    url: https://mps.gov.vn/bai-viet/triet-pha-thanh-cong-29928-vu-bat-giu-51938-doi-tuong-pham-toi-ve-ma-tuy-trong-nam-2024-d2-t43064
+    locator: "2024 summary conference; cases, suspects and cannabis seizures."
+  vietnamvn26:
+    title: "Vietnam.vn — Nearly 22,000 drug-related crimes detected in 2025"
+    url: https://www.vietnam.vn/en/nam-2025-phat-hien-gan-22-000-vu-pham-toi-ma-tuy
+    locator: "21,998 cases, 44,354 suspects and nearly 1.3 tonnes of cannabis in 2025."
+  vietnamnet26:
+    title: "VietnamNet — Vietnam busts maritime drug ring, seizes over 1.1 tons of narcotics (2026)"
+    url: https://vietnamnet.vn/en/vietnam-busts-maritime-drug-ring-seizes-over-1-1-tons-of-narcotics-2552918.html
+    locator: "More than 17,600 cases and nearly 35,400 suspects handled by September 2026."
+  vnnews26:
+    title: "Vietnam News — Inter-provincial cannabis trafficking ring dismantled, 151 suspects detained, 176 kg seized (October 2026)"
+    url: https://vietnamnews.vn/society/1802628/inter-provincial-cannabis-trafficking-ring-dismantled-151-suspects-detained-176kg-seized.html
+    locator: "151 arrests and 176.2 kg of cannabis in Ho Chi Minh City."
+  mps25:
+    title: "Ministry of Public Security — the Criminal Code amendment is in force from 1 July 2025"
+    url: https://bocongan.gov.vn/bai-viet/cong-bo-luat-sua-doi-bo-sung-mot-so-dieu-cua-bo-luat-hinh-su-co-hieu-luc-tu-0172025-d2-t45852
+    locator: "Confirms commencement; Article 251 life-or-death bracket; death removed for illegal transport."
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    url: https://data.unodc.org/datareport/drug-seizure
+  ganja_wiki:
+    title: Wikipedia — Ganja
+    url: https://en.wikipedia.org/wiki/Ganja
+  hmong_wiki:
+    title: Wikipedia — Hmong textile art
+    url: https://en.wikipedia.org/wiki/Hmong_textile_art
+  vn_wiki:
+    title: Wikipedia — Cannabis in Vietnam
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Vietnam
 answers:
   public:
     answer: 'no'

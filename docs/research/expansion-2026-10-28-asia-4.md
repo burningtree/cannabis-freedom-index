@@ -10,10 +10,12 @@ primary sources. The batch is Indonesia, Malaysia, Sri Lanka, Thailand and Vietn
 | Malaysia | hemp/culture sections, citations, table terms, medical status corrected to none, 7 history entries | 1920s–1930s treaty application to Malaya not separately confirmed | this country commit |
 | Sri Lanka | four penalty tables, hemp/culture/driving sections, citation and source rewrite, 7 history entries | 1940s still empty: the 1941 amendment text was not located | this country commit |
 | Thailand | possession/cultivation tables, hemp/culture/driving sections, corrected possession offence and 30 g myth, 1991–2026 history | 1950s still empty | this country commit |
-| Vietnam | in progress | | |
+| Vietnam | possession/cultivation/sharing/consumption tables, hemp/culture/arrests sections, 5 history entries and 2025–2026 law updates | 2009 decriminalisation still has no article; Hmong hemp has no statutory route | this country commit |
 
 Indonesia validation: `profile-audit id` zero errors/warnings; `country-gaps id` has no missing standard or researched sections, no missing tables and no uncited text. The build was blocked by another contributor’s unfinished `articles/netherlands-five-grams-1996.md`; the profile was checked with the audit and will be rechecked in the next successful build.
 
 Malaysia validation: `profile-audit my` zero errors/warnings; `country-gaps my` has no missing sections or tables, no uncited text and no empty decades; the 5,117-page build passed and the history entries and corrected medical text are in `dist/country/my/`. The medical status changed from limited to none because no cannabis medicine is registered, not because the import authorisation was repealed.
 
 Sri Lanka validation: `profile-audit lk` zero errors/warnings; `country-gaps lk` has no missing sections, no missing tables and no Wikipedia-only text; the 5,125-page build passed and the page shows four penalty tables. The 1929 Ordinance text replaced the Wikipedia and FAOLEX citations. The 1940s remain empty because Ordinance No. 14 of 1941 is listed among the amendments but its text and effect could not be found.
+
+Vietnam validation: `profile-audit vn` zero errors/warnings; `country-gaps vn` has no missing sections, no missing tables, no uncited text and no empty decades; the 5,130-page build passed and the page shows four penalty tables. The profile now follows Law 86/2025 from 1 July 2025 and Law 120/2025 from 1 July 2026, with the full possession and sale tiers rather than only the first and last bands.
