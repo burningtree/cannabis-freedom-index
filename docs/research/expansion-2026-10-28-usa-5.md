@@ -9,7 +9,13 @@ Same method as usa-1–4. Possession tables use labelled steps where fractions d
   entry, no culture subject — noted.
 - Audit 0/0; review page verified.
 
-## in — pending
+## in (Indiana) — committed
+- Cultivation table (NORML-verified weight bands: <30g misd 1yr/$5k; 30g+ felony from 6mo,
+  higher weights longer), cites on cultivation/enforcement/consumption/access.
+- Possession/sharing pinned by test #236, untouched. No IN history entries, no culture
+  subject — noted.
+- Audit 0/0; review page verified.
+
 ## sc — pending
 ## al — pending
 ## ky — pending

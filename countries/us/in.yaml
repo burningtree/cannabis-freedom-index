@@ -18,14 +18,30 @@ segments:
     drug conviction makes it Class A, or Level 6 felony at at least 30 g marijuana or at least 5 g
     hash oil/hashish. Deceptive low-THC-hemp-extract packaging is a separate Class A trigger.
     Statutory product definitions determine which weight applies.[@2]
-  cultivation: Illegal; charged like possession for small grows and as a felony for larger ones.
-  enforcement: Jail is possible for a first offence.
+  cultivation:
+    text: >-
+      Illegal; charged like possession for small grows and as a felony for larger ones.[@1]
+    currency: USD
+    penalties:
+      - label: Growing under 30 g
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 5000
+      - label: Growing 30 g or more
+        treatment: criminal
+        term: Felony
+        prison_min: 6 months
+        prison: 2.5 years
+        fine: 10000
+        note: Higher weights bring longer terms
+  enforcement: Jail is possible for a first offence.[@1]
   sharing: >-
     Unauthorised delivery is ordinarily a Class A misdemeanour. It becomes Level 6 at at least 30
     g marijuana or 5 g hash oil/hashish, or below those amounts with a prior drug conviction;
     larger quantities and other aggravating factors increase the grade.[@3]
-  consumption: Illegal.
-  access: None. Only CBD with under 0.3% THC is legal.
+  consumption: Illegal.[@1]
+  access: None. Only CBD with under 0.3% THC is legal.[@1]
 sources:
   - title: NORML — Indiana laws and penalties
     url: https://norml.org/laws/indiana-penalties-2/
