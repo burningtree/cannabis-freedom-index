@@ -358,7 +358,7 @@ test("Gandaki, Ohio gifts and Singapore resin thresholds follow the texts that w
   assert.equal(np.scores.access, 0);
   assert.match(oh.segments.sharing, /privately owned land/);
   assert.match(oh.segments.sharing, /15 grams of extract/);
-  assert.match(oh.segments.possession, /licensed Ohio dispensary/);
+  assert.match(oh.segments.possession.text ?? oh.segments.possession, /licensed Ohio dispensary/);
   assert.equal(gift.date, "2026-03-20");
   assert.equal(gift.subunit, "oh");
   assert.equal(gift.before, undefined);

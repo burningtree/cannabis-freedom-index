@@ -13,7 +13,16 @@ where the state differs, history/culture links, audit + review build per state, 
 - Left: no IL-specific culture subject found; 2019 CRTA history entry missing (noted, not filled).
 - Audit 0/0; review page verified.
 
-## oh — pending
+## oh (Ohio) — committed
+- Inline cites on all segments (statute 3796.221 + SB 56 analysis + NORML), legal-step tables
+  (possession 2.5oz licensed/home-grow; cultivation 6/household-12) — NORML bands stale
+  post-Issue-2, so no ladder invented; new `recreational` (Issue 2 Nov 2023, shops 6 Aug 2024
+  via OSU Moritz law page, SB 56 Mar 2026 gift limits with history link).
+- Incidental: scope-test accessor updated for the new table form; assertions unchanged.
+- Left: over-limit penalties unverified (not stated in file sources); Issue-2 history entry
+  missing (noted, not filled); no OH culture subject found.
+- Audit 0/0; review page verified.
+
 ## ga — pending
 ## nc — pending
 ## mi — pending
