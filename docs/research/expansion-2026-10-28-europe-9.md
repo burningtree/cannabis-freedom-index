@@ -50,3 +50,21 @@ redactions. Existing October prescribing-plans source could not be retrieved;
 the profile now uses the accessible official audit and 2026 count. Proposed
 personal-use reforms are marked withdrawn in the Assembly record, not current law.
 All revised claims cite per sentence. No words added without a local source.
+
+| Kosovo | Supply/import table; national enforcement and market data; research/cultivation distinction; two report events; 2004 code article | Early Yugoslav decades; local words; cannabis-only 2025 arrest total | this commit |
+
+Kosovo: read the 2004 code and 2008 drug law as downloaded Ministry PDFs,
+2019 Gazette metadata and drug provisions, 2023 amendment, national SOCTA and
+2025 police annual report. Production status medical → none: the research
+exception authorises acquisition/use, not commercial cultivation; no medical
+patient supply route. Scores unchanged. Removed unsupported single-raid
+superlatives and replaced “no series found” with national marijuana case/arrest
+figures. Report totals are not convictions or personal-use-only counts. The
+annual report's drug arrest total includes every drug; cannabis-only figure not
+inferred. No precise publication day supplied for the two reports: year dates
+preserved. No sourced local vocabulary or earlier Yugoslav dates established.
+
+Kosovo validation: four-page build and rendered profile/article inspection passed;
+all tests and citations valid, audit zero errors. One explained production warning:
+text mentions research acquisition licences while cultivation remains prohibited.
+A concurrent build lock required retry; shared history staged by the two own IDs.
