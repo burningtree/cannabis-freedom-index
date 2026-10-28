@@ -3,10 +3,11 @@ region: Europe
 iso_numeric: 8
 recreational: illegal
 medical: none
-updated: "2026-10-27"
+updated: '2026-10-28'
 summary: >-
-  A 2023 law legalised licensed cultivation for medical and industrial purposes, largely for export.
-  Personal use remains illegal.
+  Licensed medical production is for export, with a separate industrial permit scheme. A small
+  personal dose is exempt from the possession offence; unlicensed growing and supply carry
+  prison terms.
 scores:
   possession: 2
   cultivation: 1
@@ -17,216 +18,445 @@ scores:
 segments:
   possession:
     text: >-
-      Possession is an offence under the Criminal Code, but the Code has long exempted a small
-      single dose held for personal use, assessed case by case rather than by a fixed gram limit.[@shteg]
-      Anything more is prosecuted, with prison terms of several years.[@shteg]
+      Article 283 excludes personal use in small doses from its possession offence.[@code2026]
+      The Supreme Court interpreted that as a single-use quantity, assessed through evidence
+      rather than a fixed gram limit.[@nikolli2015] Possession outside the exemption carries
+      five to ten years; complicity, repetition, large quantities or specified serious-harm
+      circumstances bring seven to fifteen, while organising, directing or financing the
+      activity carries ten to twenty.[@code2026]
     sources:
-      - shteg
+      - code2026
+      - nikolli2015
     penalties:
       - label: Small single dose for personal use
-        treatment: tolerated
+        treatment: legal
         term: Personal dose
-        note: Statutory exemption, assessed case by case; no gram limit
-      - label: More than a small dose
+        note: Excluded from Article 283; case-specific single-use assessment, no fixed gram limit
+      - label: Possession outside the personal-dose exemption
         treatment: criminal
         term: Possession
-        note: Prosecuted; prison terms of several years in practice
+        prison_min: 5 years
+        prison: 10 years
+        note: Article 283(1)
+      - label: Aggravated possession
+        treatment: criminal
+        term: Possession
+        prison_min: 7 years
+        prison: 15 years
+        note: >-
+          Article 283(2): complicity, repetition, large quantities or specified serious-harm
+          circumstances
   cultivation:
     text: >-
-      Unlicensed cultivation is a serious crime — Albania spent years eradicating large illegal
-      plantations, notably the [2014 Lazarat operation](/history/albania-lazarat-operation-2014/).[@shteg] Since July 2023 companies can be licensed to grow for medical and industrial
-      purposes, but by April 2026 no licence had been issued.[@kp,gitoc26]
+      Unlicensed growing carries three to seven years under Article 284.[@code2026] Complicity,
+      repetition, large quantities or specified serious-harm circumstances bring five to ten
+      years; organising, directing or financing the activity carries seven to
+      fifteen.[@code2026] The [2023 law](/history/albania-medical-2023/) provides separate
+      medical licences and industrial permits for authorised production.[@law2023]
     sources:
-      - kp
-      - shteg
-      - gitoc26
+      - code2026
+      - law2023
     penalties:
       - label: Unlicensed cultivation
         treatment: criminal
         term: Cultivation
-        note: Serious crime; eradication campaigns ongoing; tariff not stated in retained sources
-      - label: Licensed medical or industrial growing
+        prison_min: 3 years
+        prison: 7 years
+        note: Article 284(1)
+      - label: Aggravated cultivation
+        treatment: criminal
+        term: Cultivation
+        prison_min: 5 years
+        prison: 10 years
+        note: >-
+          Article 284(2): complicity, repetition, large quantities or specified serious-harm
+          circumstances
+      - label: Organising, directing or financing cultivation
+        treatment: criminal
+        term: Cultivation
+        prison_min: 7 years
+        prison: 15 years
+        note: Article 284(3)
+      - label: Authorised medical or industrial cultivation
         treatment: legal
-        term: Licensed cultivation
-        note: Fifteen-year renewable licences; export-oriented; none issued as of April 2026
+        term: Licensed/permitted cultivation
+        note: >-
+          Medical licence: fifteen years; industrial permit: five years; renewable,
+          export-oriented
   enforcement:
     text: >-
-      The personal-dose exemption protects users in principle; growers and dealers face long
-      sentences, and policing remains heavy after years of anti-cultivation campaigns.[@shteg]
+      The small-dose exclusion is statutory, while possession beyond it and unlicensed growing
+      carry prison terms.[@code2026] The single-use interpretation makes the quantity and expert
+      assessment important.[@nikolli2015] Crop eradication continues nationally, and police also
+      target imports: in October 2025 they reported two arrests and 61 kg seized at Rinas
+      airport.[@a2n25,quality2025]
     sources:
-      - shteg
+      - code2026
+      - nikolli2015
+      - a2n25
+      - quality2025
   sharing:
-    text: Supply is trafficking.[@shteg]
+    text: >-
+      Giving or selling drugs falls under Article 283, carrying five to ten years; the
+      aggravated range is seven to fifteen and organising, directing or financing carries ten to
+      twenty.[@code2026] Unlawful import, export or transit carries seven to fifteen years,
+      rising to ten to twenty in aggravated cases and at least fifteen for organisers, directors
+      or financiers.[@code2026] A professional entrusted with drugs who illegally facilitates
+      their intake or use faces three to seven years; organising a drug criminal organisation
+      carries ten to twenty and state officials facilitating it face five to fifteen.[@code2026]
     sources:
-      - shteg
+      - code2026
+    penalties:
+      - label: Giving or selling
+        treatment: criminal
+        term: Supply
+        prison_min: 5 years
+        prison: 10 years
+        note: Article 283(1)
+      - label: Aggravated supply
+        treatment: criminal
+        term: Supply
+        prison_min: 7 years
+        prison: 15 years
+        note: >-
+          Article 283(2): complicity, repetition, large quantities or specified serious-harm
+          circumstances
+      - label: Organising, directing or financing supply
+        treatment: criminal
+        term: Supply
+        prison_min: 10 years
+        prison: 20 years
+        note: Article 283(3)
+      - label: Unlawful import, export or transit
+        treatment: criminal
+        term: Trafficking
+        prison_min: 7 years
+        prison: 15 years
+        note: Article 283/a(1)
+      - label: Aggravated import, export or transit
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        prison: 20 years
+        note: >-
+          Article 283/a(2): complicity, repetition, large quantities or specified serious-harm
+          circumstances
+      - label: Organising, directing or financing trafficking
+        treatment: criminal
+        term: Trafficking
+        prison_min: 15 years
+        note: Article 283/a(3); statutory minimum, no specific maximum in this paragraph
+      - label: Professional facilitation of intake or use
+        treatment: criminal
+        term: Facilitating use
+        prison_min: 3 years
+        prison: 7 years
+        note: Article 283/b; persons entrusted with administering controlled drugs
+      - label: Organising, directing or financing a drug criminal organisation
+        treatment: criminal
+        term: Criminal organisation
+        prison_min: 10 years
+        prison: 20 years
+        note: Article 284/a(1)
+      - label: State official facilitating such organisation activity
+        treatment: criminal
+        term: Facilitation
+        prison_min: 5 years
+        prison: 15 years
+        note: Article 284/a(2)
   consumption:
-    text: Use is not separately punished where only a personal dose is involved.[@shteg]
+    text: >-
+      The possession offence excludes personal use in small doses; this does not authorise
+      growing or supplying cannabis.[@code2026] The cannabis agency confirms that general use
+      has not been legalised and that the production framework serves export.[@faq2026]
     sources:
-      - shteg
+      - code2026
+      - faq2026
   access:
-    text: No legal source for consumers; the 2023 law is aimed at export.[@kp,mjb]
+    text: >-
+      There is no legal recreational retail route; the agency describes authorised medical and
+      industrial products as exclusively for export.[@faq2026]
     sources:
-      - kp
-      - mjb
+      - faq2026
 words:
-  - { word: Bar, lang: Albanian, meaning: "colloquial for weed, marijuana", sources: [wiktionary-bar] }
-  - { word: Marihuanë, lang: Albanian, meaning: "marijuana", sources: [wiktionary-marihuane] }
-  - { word: Kanëp, lang: Albanian, meaning: "hemp; the ancient word kin to hemp and hanf", atlas: cannabis, sources: [cannabislg] }
+  - word: Bar
+    lang: Albanian
+    meaning: colloquial for weed, marijuana
+    sources:
+      - wiktionary-bar
+  - word: Marihuanë
+    lang: Albanian
+    meaning: marijuana
+    sources:
+      - wiktionary-marihuane
+  - word: Kanëp
+    lang: Albanian
+    meaning: hemp; the ancient word kin to hemp and hanf
+    atlas: cannabis
+    sources:
+      - cannabislg
+  - word: Kanabis
+    lang: Albanian
+    meaning: cannabis; official police usage
+    sources:
+      - quality2025
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. A small single dose for personal use is exempt,
-      assessed case by case with no fixed gram limit; anything more brings prison terms of
-      several years.[@shteg] Use alone is not punished within the dose, but growing and supply
-      are serious crimes, and the [2023 licensing law](/history/albania-medical-2023/) aims at export — with no
-      consumer products and, as of April 2026, no licence issued.[@shteg,kp,mjb,gitoc26]
+      A small personal dose is excluded from Article 283, with the single-use interpretation
+      assessed case by case.[@code2026,nikolli2015] Outside that exception, possession and
+      giving or selling drugs carry five to ten years.[@code2026] Home growing has no
+      personal-dose exception under Article 284.[@code2026] The cannabis agency says the [2023
+      production law](/history/albania-medical-2023/) has not legalised general use.[@faq2026]
     sources:
-      - shteg
-      - kp
-      - mjb
-      - gitoc26
+      - code2026
+      - nikolli2015
+      - faq2026
   production:
     status: medical
     text: >-
-      The law passed on 21 July 2023 creates a national cannabis agency that grants 15-year
-      renewable licences to cultivate and process cannabis for medical and industrial use, with
-      products destined for export.[@kp,mjb] Nearly three years later no licence had been issued,
-      despite the framework and cultivation zones being in place.[@gitoc26]
+      Medical production uses renewable fifteen-year licences, with production units of five to
+      ten hectares and a national cultivation ceiling of 200 hectares.[@licensing] The health
+      minister approves the licence after the agency procedure; licence conditions are reviewed
+      every three years.[@law2023,licensing] Industrial production instead uses renewable
+      five-year permits for at least one hectare.[@permits] Products are intended exclusively
+      for export.[@faq2026] A [national register
+      decision](/history/albania-cannabis-register-2026/) in July 2026 and [inspection
+      rules](/history/albania-cannabis-inspections-2026/) in October added implementation
+      measures.[@registry2026,inspection2026]
     sources:
-      - kp
-      - mjb
-      - gitoc26
+      - licensing
+      - law2023
+      - permits
+      - faq2026
+      - registry2026
+      - inspection2026
   medical:
     text: >-
-      The 2023 law concerns production for export. A domestic patient treatment route was not
-      verified in the reviewed sources.[@mjb,shteg]
+      The medical production licence covers cultivation, transport and export.[@licensing] The
+      agency says products and by-products are exclusively for export, so this framework does
+      not provide a domestic patient purchase route.[@faq2026] The licence conditions include
+      controlled premises and qualified staff, rather than a personal home-growing
+      permission.[@law2023]
     sources:
-      - mjb
-      - shteg
+      - licensing
+      - faq2026
+      - law2023
   consequences:
     text: >-
-      A conviction carries a criminal record.[@shteg] No spent-conviction or expungement route for
-      cannabis offences was found in the retained sources.
+      A conviction need not remain permanent for criminal-record purposes: Article 69 provides
+      rehabilitation after a period without another criminal offence following completion of the
+      sentence.[@code2026] The periods are two years for imprisonment up to six months or a
+      lighter punishment, five years for the six-month-to-five-year sentence bracket, seven
+      years for the five-to-ten-year bracket and ten years for the ten-to-twenty-five-year
+      bracket.[@code2026] These are the code’s general rehabilitation rules, rather than a
+      cannabis-specific pardon.[@code2026]
     sources:
-      - shteg
+      - code2026
   hemp:
-    status: standard
+    status: high
     text: >-
-      No blanket hemp regime was found: industrial growing exists only inside the licensed
-      medical-and-industrial scheme, which is export-oriented and had issued no licence as of
-      April 2026.[@kp,gitoc26]
+      Industrial cannabis is defined as varieties containing no more than 0.8% THC.[@law2023] It
+      requires a separate renewable five-year permit, covering at least one hectare, with
+      registered varieties, security and traceability conditions.[@law2023,permits] Permitted
+      activities can include seed or seedling import, propagation, cultivation, processing,
+      transport and export.[@permits] The industrial route is therefore distinct from the
+      fifteen-year medical licence, while its products remain export-oriented.[@law2023,faq2026]
     sources:
-      - kp
-      - gitoc26
+      - law2023
+      - permits
+      - faq2026
   culture:
     text: >-
       Albanian has its own form of the ancient word: kanëp, kin to hemp, hanf and konoplja,
-      traced in the atlas entry [cannabis](/culture/language/cannabis/).[@cannabislg] The plant's
-      modern history here is the illicit crop eradicated summer after summer, from [Lazarat in
-      2014](/history/albania-lazarat-operation-2014/) to the joint drone surveys of 2024–2025.[@shteg,a2n25]
+      traced in the atlas entry [cannabis](/culture/language/cannabis/).[@cannabislg] The
+      plant's modern history here is the illicit crop eradicated summer after summer, from
+      [Lazarat in 2014](/history/albania-lazarat-operation-2014/) to the joint drone surveys of
+      2024–2025.[@shteg,a2n25]
     sources:
       - cannabislg
       - shteg
       - a2n25
   arrests:
     text: >-
-      Enforcement is aimed at the crop in the field: the 2024 joint surveys destroyed 191,000
-      plants, and a year later a Tirana laboratory was set up to process the survey data.[@a2n25]
-      No account of routine user-level arrests was found.
+      Police reported two arrests at Rinas airport in [Operation Quality in October
+      2025](/history/albania-rinas-cannabis-import-2025/).[@quality2025] They said 61 kg of
+      suspected cannabis had arrived from Bangkok for sale in Albania.[@quality2025] This is one
+      trafficking operation, rather than a national total or a count of arrests for personal
+      use.[@quality2025]
     sources:
-      - a2n25
+      - quality2025
   planting:
     seeds: illegal
-    seeds_trade: banned
+    seeds_trade: regulated
     clones: illegal
-    clones_trade: banned
+    clones_trade: regulated
     text: >-
-      Article 283 of the criminal code punishes selling, offering, giving, receiving,
-      transporting or keeping narcotic substances "and seeds of narcotic plants" with five to
-      ten years in prison, apart from small doses for personal use.[@cmsg] The 2023 law on medical
-      and industrial cannabis allows cultivation only by licensed companies.[@kp]
+      Ordinary cannabis seed supply falls within Article 283, while growing requires permission
+      under Article 284.[@code2026] The authorised medical and industrial schemes allow seed or
+      seedling imports after approval by the state seed authority.[@law2023] Only registered
+      planting material may be used, and operators must notify the authorities before
+      sowing.[@law2023] Industrial permits can also cover propagation of seeds and
+      seedlings.[@permits]
     sources:
-      - cmsg
-      - kp
+      - code2026
+      - law2023
+      - permits
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.[@kp,shteg]
+      There is no licensed recreational club route in the export-only production
+      framework.[@faq2026] Growing without permission is punishable under Article 284, and
+      giving cannabis to another person is covered by Article 283.[@code2026] The small
+      personal-dose possession exception does not provide a collective growing or distribution
+      permission.[@code2026]
     sources:
-      - kp
-      - shteg
+      - faq2026
+      - code2026
   black_market:
     text: >-
-      Policing of the illegal market is aimed at the crop in the field.[@a2n25] Each summer the State Police search all twelve regions together with Italy's
-      Guardia di Finanza, flying more than 50 high-resolution drones and using helicopters
-      where the terrain is too rough.[@a2n25] Most attention goes to the highlands of Shkodra,
-      Dukagjini, Kruja and Dibra and to areas around Tepelena, Skrapar and Vlora. The joint
-      monitoring destroyed 191,000 plants in 2024.[@a2n25] Growers have been moving indoors, into so-
-      called weed houses, and in 2025 a laboratory was set up in Tirana to process the survey
-      data.[@a2n25]
+      Policing of the illegal market is aimed at the crop in the field.[@a2n25] Each summer the
+      State Police search all twelve regions together with Italy's Guardia di Finanza, flying
+      more than 50 high-resolution drones and using helicopters where the terrain is too
+      rough.[@a2n25] Most attention goes to the highlands of Shkodra, Dukagjini, Kruja and Dibra
+      and to areas around Tepelena, Skrapar and Vlora. The joint monitoring destroyed 191,000
+      plants in 2024.[@a2n25] Growers have been moving indoors, into so- called weed houses, and
+      in 2025 a laboratory was set up in Tirana to process the survey data.[@a2n25] In October
+      2025, police reported 61 kg of suspected high-THC cannabis arriving from Bangkok for sale
+      in Albania, illustrating an import case alongside the domestic crop.[@quality2025]
     sources:
       - a2n25
+      - quality2025
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession is an offence under the
-      Criminal Code, which exempts a small single dose held for personal use, assessed case by
-      case rather than by a fixed gram limit.[@shteg]
+      There is no legal recreational supply for visitors under the export-only production
+      scheme.[@faq2026] The personal-dose exception is assessed case by case and provides no
+      fixed gram allowance.[@code2026,nikolli2015] Unlawful import, export or transit carries a
+      separate seven-to-fifteen-year range before aggravations.[@code2026]
     sources:
-      - shteg
+      - faq2026
+      - code2026
+      - nikolli2015
   driving:
     status: consumption
     text: >-
       Road Code article 185 prohibits a drug or psychotropic-substance user from
       driving.[@roadcode2026] Its influence heading does not supply a numerical THC cutoff or a
       presence-based laboratory rule.[@roadcode2026] After an accident, or where drug-related
-      abnormality is suspected, traffic police may take the driver to the competent
-      public health service for checks under jointly prescribed procedures.[@roadcode2026] The
-      licensing authority can order a medical fitness review and suspend the licence
-      pending satisfactory checks.[@roadcode2026] Article 185(4) incorporates article 184(3), (5)
-      and (10), concerning accident-related vehicle detention, towing and refusal.[@roadcode2026]
-      It does not incorporate the whole alcohol concentration and penalty table.[@roadcode2026]
-      Consequently, no alcohol-limit fine, fixed drug-driving ban, THC allowance or
-      medical-use exemption is inferred here.[@roadcode2026] The transport authority's published
-      consolidation includes Law 58/2026 of 18 June 2026; the precise current drug
-      fine and operational toxicology protocol remain follow-up questions.[@roadcode2026]
+      abnormality is suspected, traffic police may take the driver to the competent public
+      health service for checks under jointly prescribed procedures.[@roadcode2026] The
+      licensing authority can order a medical fitness review and suspend the licence pending
+      satisfactory checks.[@roadcode2026] Article 185(4) incorporates article 184(3), (5) and
+      (10), concerning accident-related vehicle detention, towing and refusal.[@roadcode2026] It
+      does not incorporate the whole alcohol concentration and penalty table.[@roadcode2026]
+      Consequently, no alcohol-limit fine, fixed drug-driving ban, THC allowance or medical-use
+      exemption is inferred here.[@roadcode2026] The transport authority's published
+      consolidation includes Law 58/2026 of 18 June 2026; the precise current drug fine and
+      operational toxicology protocol remain follow-up questions.[@roadcode2026]
     sources:
       - roadcode2026
 answers:
   buy:
-    answer: no
+    answer: 'no'
     text: No patient or adult-use purchase route verified
+  carry:
+    answer: limited
+    text: Only a small single-use personal dose is excluded; no fixed gram allowance
+  caught:
+    answer: limited
+    label: Dose assessment or prison
+    text: >-
+      The personal-dose exception is assessed case by case; possession outside it carries five
+      to ten years before aggravations
 sources:
   roadcode2026:
-    title: "Albania DPSHTRR — Road Code, Law 8378 of 22 July 1998, consolidated through Law 58/2026 (PDF)"
-    url: https://www.dpshtrr.al/sites/default/files/downloads/dokumente/Ligji%20nr.8378%2C%20dat%C3%AB%2022.07.1988%20%20%E2%80%9CKodi%20Rrugor%20i%20Republik%C3%ABs%20s%C3%AB%20Shqip%C3%ABris%C3%AB%E2%80%9D%2C%20i%20ndryshuar.pdf
-    locator: "Articles 184(3), (5), (10) and 185; printed pages 122–124; cover confirms 1998 despite filename date"
+    title: >-
+      Albania DPSHTRR — Road Code, Law 8378 of 22 July 1998, consolidated through Law 58/2026
+      (PDF)
+    url: >-
+      https://www.dpshtrr.al/sites/default/files/downloads/dokumente/Ligji%20nr.8378%2C%20dat%C3%AB%2022.07.1988%20%20%E2%80%9CKodi%20Rrugor%20i%20Republik%C3%ABs%20s%C3%AB%20Shqip%C3%ABris%C3%AB%E2%80%9D%2C%20i%20ndryshuar.pdf
+    locator: >-
+      Articles 184(3), (5), (10) and 185; printed pages 122–124; cover confirms 1998 despite
+      filename date
   a2n25:
-    title: "A2 CNN — Cannabis in the country: action by Albanian and Italian police (26 May 2025)"
-    url: https://a2news.com/english/shqiperia/kronike/kanabisi-ne-vend-aksioni-i-policise-shqiptare-dhe-italiane-asg-i1149004
+    title: 'A2 CNN — Cannabis in the country: action by Albanian and Italian police (26 May 2025)'
+    url: >-
+      https://a2news.com/english/shqiperia/kronike/kanabisi-ne-vend-aksioni-i-policise-shqiptare-dhe-italiane-asg-i1149004
   cmsg:
     title: CMS — Cannabis law and legislation in Albania (expert guide)
-    url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/albania
+    url: >-
+      https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/albania
   kp:
-    title: "Karanović & Partners — Albania: legalization of cannabis for medical and industrial purposes"
+    title: >-
+      Karanović & Partners — Albania: legalization of cannabis for medical and industrial
+      purposes
     url: >-
       https://www.karanovicpartners.com/news/albania-legalization-of-cannabis-for-medical-and-industrial-purposes/
   mjb:
     title: MJBizDaily — Albania passes medical marijuana law
     url: https://mjbizdaily.com/albania-passes-medical-marijuana-law/
   shteg:
-    title: "Shteg — Cannabis legalization in Albania: new law, old risks"
+    title: 'Shteg — Cannabis legalization in Albania: new law, old risks'
     url: https://shteg.org/en/cannabis-legalization-in-albania-new-law-old-risks/
   gitoc26:
-    title: Global Initiative Against Transnational Organized Crime — how cannabis legalization reshaped illicit markets in the Western Balkans (30 April 2026)
-    url: https://globalinitiative.net/analysis/cannabis-legalization-illicit-markets-western-balkans/
+    title: >-
+      Global Initiative Against Transnational Organized Crime — how cannabis legalization
+      reshaped illicit markets in the Western Balkans (30 April 2026)
+    url: >-
+      https://globalinitiative.net/analysis/cannabis-legalization-illicit-markets-western-balkans/
   cannabislg:
     title: Wikipedia — Etymology of cannabis (Albanian kanëp)
     url: https://en.wikipedia.org/wiki/Etymology_of_cannabis
   wiktionary-bar:
-    title: "Wiktionary — bar (Albanian colloquial: weed, marijuana)"
+    title: 'Wiktionary — bar (Albanian colloquial: weed, marijuana)'
     url: https://en.wiktionary.org/wiki/bar
   wiktionary-marihuane:
-    title: "Wiktionary — marihuanë (Albanian: marijuana)"
+    title: 'Wiktionary — marihuanë (Albanian: marijuana)'
     url: https://en.wiktionary.org/wiki/marihuan%C3%AB
+  code2026:
+    title: Albanian Ministry of Justice — Criminal Code, Albanian consolidation through Law 8/2026
+    url: >-
+      https://www.drejtesia.gov.al/wp-content/uploads/2026/09/Kodi-penal-i-perditesuar-versioni-final.pdf
+    locator: >-
+      Articles 69, 283–284/a; pp. 24, 98–99; Albanian text includes January 2026 amendments
+      absent from English translation
+  law2023:
+    title: Albania — Law 61/2023 on medical and industrial cannabis
+    url: https://nacc.gov.al/wp-content/uploads/2024/05/Ligji-nr-61-2023.pdf
+    locator: Articles 3, 14–15, 19, 22–26 and 43; original text published by NACC
+  faq2026:
+    title: National Agency for Cannabis Control — Frequently asked questions
+    url: https://nacc.gov.al/en/faq/
+    locator: Questions 3–8; export-only production, no general legalisation
+  licensing:
+    title: National Agency for Cannabis Control — Medical licensing procedure
+    url: https://nacc.gov.al/en/licencimi/
+    locator: Licence duration, 5–10 hectare units, 200-hectare national limit and three-year review
+  permits:
+    title: National Agency for Cannabis Control — Industrial permit procedure
+    url: https://nacc.gov.al/procesi-i-pajisjes-me-leje/
+    locator: Five-year permits, minimum one hectare and authorised propagation/import
+  registry2026:
+    title: Albanian Council of Ministers — Decision 630 of 30 July 2026
+    url: https://nacc.gov.al/wp-content/uploads/2026/08/vendim-2026-07-30-630.pdf
+    locator: Sections I–II; national cannabis register and links to e-Albania and traceability
+  inspection2026:
+    title: Albanian Council of Ministers — Decision 748 of 2 October 2026
+    url: https://nacc.gov.al/wp-content/uploads/2026/10/Vendim-2026-10-02-748.pdf
+    locator: >-
+      Articles 1–3; supervision, control and inspection of licensed/permitted cannabis
+      activities
+  quality2025:
+    title: Albanian State Police — Operation Quality seizes 61 kg of cannabis, 21 October 2025
+    url: >-
+      https://asp.gov.al/tirane-finalizohet-operacioni-policor-i-koduar-quality-sekuestrohen-61-kg-kanabis/
+    locator: >-
+      Article publication date 21/10/2025; header clock is a different date; two arrests at
+      Rinas
+  nikolli2015:
+    title: Aleks Nikolli — The Severe Criminal Punishment of Drug Consumers in Albania (2015)
+    url: https://www.richtmann.org/journal/index.php/mjss/article/download/5781/5567/22437
+    locator: >-
+      Section 3, pp. 28–29; historical codes and single-use interpretation of the 27 March 2008
+      ruling
