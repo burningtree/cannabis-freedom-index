@@ -11,7 +11,7 @@ Other agents' changes in `source-archive.json` and their research notes are excl
 | Kosovo | 1950 cultivation-ban article; three documented Albanian/Serbian words; two 2026 history entries | Early Yugoslav decades; 1930 original code; 2026 table annex | 8b250a9f |
 | Croatia | 1950 cultivation-ban and 2025 sentencing articles; 2024 asset-confiscation event and profile explanation; scoring rationale | 1930 original code and 1940s/1960s–1980s history | 67ca9f1a |
 | Romania | Five history entries; 1969 and October 2026 articles; current proposal and primary-source consumption explanation | 1930s–1950s/1980s; original 2000 text retrieval; exact bill filing/status record | 721bfe2e |
-| Moldova | Two articles; 1987 possession easing and two policy events; corrected repeat maximum and historical score timing; production links | 1934 territorial/first-ban reconstruction; 1940s–1960s; current quantity-table adoption | 417ad934 |
+| Moldova | Two articles; 1987 possession easing and two policy events; corrected repeat maximum and historical score timing; production links | 1934 territorial/first-ban reconstruction; 1940s–1960s; current quantity-table adoption | 417ad936 |
 
 ## Northern Cyprus source limits
 
