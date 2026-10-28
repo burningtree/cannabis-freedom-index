@@ -334,10 +334,10 @@ test('India federal bhang exclusion does not override state prohibition (#180)',
 
 test('San Marino distinguishes authorised flower from verified dispensing (#187)', () => {
   const sm = country('sm');
-  assert.doesNotMatch(sm.context.products.text + sm.context.medical.text, /no flower/i);
-  assert.match(sm.context.products.text, /medical framework includes cannabis flower/);
-  assert.match(sm.context.products.text, /dispensing of flower has not been verified/);
-  assert.match(sm.context.medical.text, /home growing remains illegal/);
+  assert.doesNotMatch(sm.context.medical.text, /no flower/i);
+  assert.match(sm.context.medical.text, /authorised categories include flowers/);
+  assert.match(sm.context.medical.text, /availability of dispensed flower has not been verified/);
+  assert.match(sm.segments.cultivation.text, /Unauthorised cultivation.*remains punishable/);
   assert.match(sm.sources.l113english.locator, /Articles 1–3 and 9–11/);
   assert.match(sm.sources.asccfaq.locator, /Q3/);
   assert.equal(sm.medical, 'limited');

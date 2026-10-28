@@ -3,8 +3,11 @@ region: Europe
 iso_numeric: 674
 recreational: illegal
 medical: limited
-updated: 2026-10-26
-summary: Medical use is permitted; recreational reform has been proposed by citizens' initiative.
+updated: '2026-10-28'
+summary: >-
+  Personal possession and use remain criminal, normally carrying six months to three years under the
+  statutory scale, with a possible reduction for particularly minor personal cases. Medical
+  cultivation and prescribing have separate authorisation rules.
 scores:
   possession: 1
   cultivation: 1
@@ -15,151 +18,275 @@ scores:
 segments:
   possession:
     text: >-
-      Possession is a criminal offence. The statutory penalty for illicit possession or use of
-      narcotics is severe on paper — prison and a fine — though small personal amounts are dealt
-      with more leniently in practice.
+      Unauthorised possession, including for personal use, carries second-degree imprisonment: six
+      months to three years.[@druglaw,code2026] A judge may reduce a particularly minor personal-use
+      case by one grade, to three months–one year; the law sets no gram cutoff.[@druglaw,code2026]
     sources:
-      - cann
-      - wiki
+      - druglaw
+      - code2026
+    penalties:
+      - label: Unauthorised possession
+        treatment: criminal
+        term: Prigionia di secondo grado
+        prison_min: 6 months
+        prison: 3 years
+      - label: Particularly minor case for personal use; discretionary reduction
+        treatment: criminal
+        term: Prigionia di primo grado
+        prison_min: 3 months
+        prison: 1 year
+        note: A judge may reduce the ordinary penalty by one grade; no fixed gram threshold
   cultivation:
-    text: Home growing is illegal.
+    text: >-
+      Unauthorised cultivation or production remains punishable under the drug law; the ordinary
+      second-degree range is six months to three years.[@druglaw,code2026,l113english] Particularly
+      minor personal production may receive a one-grade reduction to three months–one
+      year.[@druglaw,code2026] The [medical industry
+      law](/history/san-marino-medical-cannabis-law-2021/) requires authorisation for its greenhouse
+      cultivation route.[@l113english]
     sources:
-      - cann
+      - druglaw
+      - code2026
+      - l113english
+    penalties:
+      - label: Unauthorised cultivation or production
+        treatment: criminal
+        term: Prigionia di secondo grado
+        prison_min: 6 months
+        prison: 3 years
+      - label: Particularly minor personal production; discretionary reduction
+        treatment: criminal
+        term: Prigionia di primo grado
+        prison_min: 3 months
+        prison: 1 year
+        note: A judge may reduce the ordinary penalty by one grade; no fixed gram threshold
   enforcement:
-    text: Criminal penalties apply, with leniency for small amounts.
+    text: >-
+      The law gives judges discretion to reduce particularly minor personal cases and to impose
+      probation, supervision or treatment conditions.[@druglaw] Those possibilities do not create a
+      fixed non-criminal allowance for possession or use.[@druglaw]
     sources:
-      - cann
+      - druglaw
   sharing:
-    text: Supply is a crime.
+    text: >-
+      Supplying cannabis for payment or free carries the ordinary six-month-to-three-year
+      range.[@druglaw,code2026] Particularly serious cases can be increased by one to three grades,
+      giving third-degree two–six years, fourth-degree four–ten years or fifth-degree six–fourteen
+      years.[@druglaw,code2026] The aggravating grounds include quality and quantity, a predominant
+      profit motive or supplying someone aged twenty-one or younger.[@druglaw]
     sources:
-      - cann
+      - druglaw
+      - code2026
+    penalties:
+      - label: Supply, including without payment
+        treatment: criminal
+        term: Prigionia di secondo grado
+        prison_min: 6 months
+        prison: 3 years
+      - label: Particularly serious offence; one-grade increase
+        treatment: criminal
+        term: Prigionia di terzo grado
+        prison_min: 2 years
+        prison: 6 years
+      - label: Particularly serious offence; two-grade increase
+        treatment: criminal
+        term: Prigionia di quarto grado
+        prison_min: 4 years
+        prison: 10 years
+      - label: Particularly serious offence; three-grade increase
+        treatment: criminal
+        term: Prigionia di quinto grado
+        prison_min: 6 years
+        prison: 14 years
   consumption:
-    text: Use is covered by the same offence as possession.
+    text: >-
+      Personal use is itself criminal and carries six months to three years, with a possible
+      reduction to three months–one year for particularly minor cases.[@druglaw,code2026] Use
+      conforming to a prescription issued or recognised by the Social Security Institute is
+      exempt.[@druglaw]
     sources:
-      - cann
+      - druglaw
+      - code2026
+    penalties:
+      - label: Unauthorised personal use
+        treatment: criminal
+        term: Prigionia di secondo grado
+        prison_min: 6 months
+        prison: 3 years
+      - label: Particularly minor personal use; discretionary reduction
+        treatment: criminal
+        term: Prigionia di primo grado
+        prison_min: 3 months
+        prison: 1 year
+        note: A judge may reduce the ordinary penalty by one grade; no fixed gram threshold
   access:
     text: >-
-      Cannabis-based medicines are available through the state pharmacy on prescription. There is
-      no adult-use source; a proposal for 30 g and four plants was shelved in 2020.
+      Medical retail supply is reserved to state pharmacies against a medical prescription; the
+      legal categories include cannabis-derived medicines and pharmaceutical
+      material.[@amend2023,asccfaq] The law authorises a patient route, while routine dispensing of
+      flower has not been verified in the reviewed sources.[@asccfaq]
     sources:
-      - l113
-      - ascc
+      - amend2023
+      - asccfaq
 context:
   production:
-    status: none
     text: >-
-      Since Law 113 of 2021 cannabis may be grown in authorised greenhouses and processed for
-      medicines only, under an authorisation from the health authority. Whether any authorisation
-      has been issued was not confirmed. There is no production for adult use.
+      Businesses can seek authorisation for medical cannabis cultivation, processing and wholesale
+      trade through the ASCC and Congress of State.[@amend2023] The rules require indoor
+      technological greenhouses, security documentation and qualified technical
+      staff.[@licensing2023] In September 2026, a local report said seven companies had obtained the
+      government’s preliminary clearance and one, Health Farm, had begun cultivation.[@industry2026]
+      Those are reported production milestones, while the state-pharmacy retail route has separate
+      requirements.[@industry2026,asccfaq]
     sources:
-      - l113
-  products:
-    text: >-
-      The authorised medical framework includes cannabis flower and preparations.[@l113english,ascc]
-      State pharmacies may retail cannabis medicines and pharmaceutical-grade raw material;
-      actual dispensing of flower has not been verified.[@asccfaq]
-    sources:
-      - l113english
-      - ascc
+      - amend2023
+      - licensing2023
+      - industry2026
       - asccfaq
+    status: medical
   medical:
     text: >-
-      The 2021 framework permits prescribed medical cannabis, including authorised flower and
-      preparations. Retail supply is through state pharmacies; home growing remains illegal.
-      Actual availability of dispensed flower has not been verified.[@l113english,asccfaq]
+      Patients have a prescription-based route, with retail sales reserved to state
+      pharmacies.[@amend2023,asccfaq] The authorised categories include flowers, preparations and
+      pharmaceutical raw material, but routine availability of dispensed flower has not been
+      verified.[@amend2023,asccfaq] The [1997 drug law](/history/san-marino-drugs-law-1997/)
+      separately exempts personal use in accordance with a prescription issued or recognised by the
+      Social Security Institute.[@druglaw]
     sources:
-      - l113english
+      - amend2023
       - asccfaq
+      - druglaw
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      In minor personal-use proceedings, a judge can order health checks, treatment, supervision or
+      community activity.[@druglaw] The law also allows conditions on driving licences, passports
+      and other permits.[@druglaw] A non-resident foreigner may face an entry or stay prohibition
+      during proceedings or the judicial measure; particularly aggravated trafficking has a separate
+      expulsion rule after imprisonment.[@druglaw]
     sources:
-      - cann
+      - druglaw
   planting:
+    text: >-
+      Medical cultivation rules require certified seed or cuttings from certified seed, with records
+      of origin and traceability.[@licensing2023] Plants must be grown in approved indoor
+      technological greenhouses for the authorised medicinal production route.[@licensing2023] The
+      2023 replacement definition includes seeds and plant parts without the original 0.2% THC
+      wording.[@amend2023]
+    sources:
+      - licensing2023
+      - amend2023
     seeds: licensed
     seeds_trade: regulated
     clones: licensed
     clones_trade: regulated
-    text: >-
-      The 2021 medical cannabis law counts the seeds as part of the cannabis plant when THC
-      exceeds 0.2% and allows seeds and plants to be grown only in authorised greenhouses for
-      medicines. Growing, processing and trading all require an authorisation from the health
-      authority.
-    sources:
-      - l113
   clubs:
-    status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      The law provides no recreational collective-growing or gifting exception: free supply is
+      punishable under the ordinary drug offence.[@druglaw] The Criminal Code also penalises
+      providing a venue for drug consumption and attending such a venue to consume drugs.[@code2026]
+      Medical retail supply is reserved to state pharmacies.[@asccfaq]
     sources:
-      - cann
+      - druglaw
+      - code2026
+      - asccfaq
+    status: none
   visitors:
-    status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice describes a
-      zero-tolerance policy towards possession and use of illegal drugs, with a prison
-      sentence or a heavy fine on conviction.
+      Visitors have no recreational supply exception: possession, import and personal use remain
+      covered by the criminal law.[@druglaw] The medical-use exception depends on a prescription
+      issued or recognised by the Social Security Institute.[@druglaw] A judge can impose an entry
+      or stay prohibition on a non-resident foreigner in the circumstances described by the
+      personal-use procedure.[@druglaw]
     sources:
-      - wiki
-      - vice
-      - fcdo
+      - druglaw
+    status: none
   driving:
     status: impairment
     text: >-
-      Road Code article 57 criminalises driving with psychophysical alteration caused
-      by narcotic or psychotropic substances or medication abuse. It permits objective
-      evidence, non-invasive checks and portable instruments approved by decree;
-      refusal to attend a health facility when the specified indications exist is
-      also punishable. Article 63 provides immediate licence withdrawal. The reviewed
-      original statute uses graded criminal penalties, whose current fine and duration
-      conversions have not been established here. Decree 170/2024 specifically approves
-      the Civil Police's Dräger DrugTest 5000 Analyzer and was ratified without
-      amendments on 16 January 2025. The April 2026 amendment to article 57 introduces
-      zero alcohol for professional transport: it is not a numerical THC limit or
-      a replacement of the drug-alteration requirement. Its novice-driver suspension
-      reduction applies only under stated non-criminal conditions and must not be
-      assumed to halve a criminal drug-driving ban. Current consolidated penalties,
-      confirmatory toxicology procedures and any prescription exception remain
-      follow-up questions; no safe waiting interval is inferred.
+      Driving with psychophysical impairment caused by drugs or medication abuse is criminal under
+      Road Code article 57.[@roadcodepublished] Article 63 provides immediate licence withdrawal,
+      while the original text uses graded criminal penalties whose current monetary conversion was
+      not verified in this review.[@roadcodepublished] The Civil Police’s Dräger DrugTest 5000 was
+      approved in 2024 and its approval ratified on 16 January
+      2025.[@drugtestapproval,drugtestratification] An April 2026 amendment added a zero-alcohol
+      rule for professional transport while leaving the drug-impairment requirement
+      distinct.[@roadamendment2026]
     sources:
       - roadcodepublished
       - drugtestapproval
       - drugtestratification
       - roadamendment2026
+  recreational:
+    text: >-
+      Recreational possession and use remain criminal, including when the cannabis is solely for the
+      holder.[@druglaw] A particularly minor personal case can receive a lower sentencing grade at
+      the judge’s discretion.[@druglaw] Free supply is also punishable, so passing cannabis to a
+      friend falls under the supply rule.[@druglaw]
+    sources:
+      - druglaw
+  hemp:
+    text: >-
+      The medical cultivation system covers the plant and its parts, including seeds, flowers and
+      resin.[@amend2023] The [2023 amendment](/history/san-marino-medical-definition-revised-2023/)
+      removed the original medical law’s reference to THC above 0.2%.[@amend2023,l113english] That
+      old definition therefore supplies no current general retail allowance for low-THC flower or
+      CBD.[@amend2023] Cultivation under the medicinal route requires approved indoor facilities and
+      authorisation.[@licensing2023]
+    sources:
+      - amend2023
+      - l113english
+      - licensing2023
+    status: none
 sources:
   l113english:
     title: San Marino Grand and General Council — Law 113/2021, official English translation
     url: https://www.consigliograndeegenerale.sm/on-line/documento17136319.html
-    locator: Articles 1–3 and 9–11; authorised cannabis includes flowers/inflorescences; prescribed therapeutic use and state-pharmacy retail
+    locator: >-
+      Articles 1–3 and 9–11; authorised cannabis includes flowers/inflorescences; prescribed
+      therapeutic use and state-pharmacy retail
   asccfaq:
     title: San Marino Health Authority — therapeutic cannabis FAQ
-    url: https://www.gov.sm/pub2/GovSM/Authority-Sanitaria/Medicinali/Medicinali-stupefacenti-e-psicotropi/Cannabis-terapeutica/FAQ---frequently-asked-questions.html
-    locator: Q3; state pharmacies alone may retail medicines and pharmaceutical-grade cannabis raw material, citing Decree 28/2023 article 6
+    url: >-
+      https://www.gov.sm/pub2/GovSM/Authority-Sanitaria/Medicinali/Medicinali-stupefacenti-e-psicotropi/Cannabis-terapeutica/FAQ---frequently-asked-questions.html
+    locator: >-
+      Q3; state pharmacies alone may retail medicines and pharmaceutical-grade cannabis raw
+      material, citing Decree 28/2023 article 6
   roadcodepublished:
-    title: "San Marino Grand and General Council — Decree 81/2008, original Road Code (PDF)"
+    title: San Marino Grand and General Council — Decree 81/2008, original Road Code (PDF)
     url: https://www.consigliograndeegenerale.sm/contents/instance18/files/document/23725leggi_7336.pdf
-    locator: "Articles 57 and 63; original published baseline, subsequent penalty amendments not fully consolidated"
+    locator: >-
+      Articles 57 and 63; original published baseline, subsequent penalty amendments not fully
+      consolidated
   drugtestapproval:
-    title: "San Marino Grand and General Council — Decree 170/2024 approving the Civil Police drug-screening instrument (PDF)"
-    url: https://www.consigliograndeegenerale.sm/on-line/home/organismi-istituzionali-e-commissioni-consiliari/commissioni-consiliari-permanenti/elenco-commissioni-consiliari-permanenti/documento17148611.html
-    locator: "Sole article: Dräger DrugTest 5000 Analyzer, product ARRH-0015-8319800"
+    title: >-
+      San Marino Grand and General Council — Decree 170/2024 approving the Civil Police
+      drug-screening instrument (PDF)
+    url: >-
+      https://www.consigliograndeegenerale.sm/on-line/home/organismi-istituzionali-e-commissioni-consiliari/commissioni-consiliari-permanenti/elenco-commissioni-consiliari-permanenti/documento17148611.html
+    locator: 'Sole article: Dräger DrugTest 5000 Analyzer, product ARRH-0015-8319800'
   drugtestratification:
-    title: "San Marino Grand and General Council — ratification of Decree 170/2024"
-    url: https://www.consigliograndeegenerale.sm/on-line/home/organismi-istituzionali-e-commissioni-consiliari/commissioni-consiliari-permanenti/elenco-commissioni-consiliari-permanenti/scheda17188271.html
-    locator: "Ratified 16 January 2025 without amendments"
+    title: San Marino Grand and General Council — ratification of Decree 170/2024
+    url: >-
+      https://www.consigliograndeegenerale.sm/on-line/home/organismi-istituzionali-e-commissioni-consiliari/commissioni-consiliari-permanenti/elenco-commissioni-consiliari-permanenti/scheda17188271.html
+    locator: Ratified 16 January 2025 without amendments
   roadamendment2026:
-    title: "San Marino Grand and General Council — Decree 53/2026 amending the Road Code (PDF)"
-    url: https://www.consigliograndeegenerale.sm/on-line/home/organismi-istituzionali-e-commissioni-consiliari/commissioni-consiliari-permanenti/documento17158153.html
-    locator: "Articles 1 and 5: professional zero-alcohol rule and conditional novice suspension reduction; ratified 19 June 2026 without amendments"
+    title: San Marino Grand and General Council — Decree 53/2026 amending the Road Code (PDF)
+    url: >-
+      https://www.consigliograndeegenerale.sm/on-line/home/organismi-istituzionali-e-commissioni-consiliari/commissioni-consiliari-permanenti/documento17158153.html
+    locator: >-
+      Articles 1 and 5: professional zero-alcohol rule and conditional novice suspension reduction;
+      ratified 19 June 2026 without amendments
   ascc:
     title: San Marino Health Authority — Therapeutic cannabis
-    url: https://www.gov.sm/pub2/GovSM/Authority-Sanitaria/Medicinali/Medicinali-stupefacenti-e-psicotropi/Cannabis-terapeutica.html
+    url: >-
+      https://www.gov.sm/pub2/GovSM/Authority-Sanitaria/Medicinali/Medicinali-stupefacenti-e-psicotropi/Cannabis-terapeutica.html
   fcdo:
-    title: "GOV.UK (FCDO) — Foreign travel advice: San Marino, safety and security"
+    title: 'GOV.UK (FCDO) — Foreign travel advice: San Marino, safety and security'
     url: https://www.gov.uk/foreign-travel-advice/san-marino/safety-and-security
   l113:
     title: Legge 23 giugno 2021 n.113 (Consiglio Grande e Generale)
-    url: https://www.consigliograndeegenerale.sm/on-line/home/in-evidenza-in-home-page/documento17125829.html
+    url: >-
+      https://www.consigliograndeegenerale.sm/on-line/home/in-evidenza-in-home-page/documento17125829.html
   wiki:
     title: Wikipedia — Cannabis in San Marino
     url: https://en.wikipedia.org/wiki/Cannabis_in_San_Marino
@@ -169,3 +296,58 @@ sources:
   vice:
     title: VICE Italia — San Marino vuole legalizzare la cannabis
     url: https://www.vice.com/it/article/san-marino-legalizzare-cannabis/
+  druglaw:
+    title: Grand and General Council — Law 139 of 26 November 1997
+    url: >-
+      https://www.consigliograndeegenerale.sm/on-line/home/archivio-leggi-decreti-e-regolamenti/documento17022035.html
+    locator: >-
+      Articles 1, 3–5 and 12; possession/use, personal-use reduction, aggravation and judicial
+      measures
+  code2026:
+    title: Grand and General Council — Criminal Code, coordinated text updated 27 February 2026
+    url: >-
+      https://www.consigliograndeegenerale.sm/on-line/home/archivio-leggi-decreti-e-regolamenti/documento17088264.html
+    locator: >-
+      Official ZIP, annotated PDF; articles 81–82 (pp. 25–26), article 244 original-text note and
+      current article 245 (pp. 101–102)
+  amend2023:
+    title: San Marino — Delegated Decree 28 of 23 February 2023
+    url: >-
+      https://www.gov.sm/pub2/GovSM/dam/jcr:723b46d7-2494-4bde-8a41-3138bd74859f/DD028-2023%20-%20modifiche%20cannabis.pdf
+    locator: 'Articles 1, 3 and 6: replacement definition, business authorisation and state-pharmacy retail'
+  licensing2023:
+    title: San Marino — Delegated Decree 53 of 21 March 2023
+    url: https://www.gov.sm/pub2/GovSM/dam/jcr:79eb5765-535d-4b5a-ac43-675a2915497e/DD053-2023.pdf
+    locator: >-
+      Articles 2–7 and 10–11; applications, indoor cultivation, certified seeds and cuttings,
+      technical staff
+  industry2026:
+    title: Tribuna Politica Web — updated drug lists and cannabis production (14 September 2026)
+    url: >-
+      https://news.tribunapoliticaweb.sm/attualita/2026/09/14/san-marino-aggiorna-lelenco-delle-sostanze-stupefacenti-e-lo-allinea-agli-standard-internazionali/
+  schedules2026:
+    title: San Marino Health Secretariat — controlled-drug schedules update (16 September 2026)
+    url: >-
+      https://www.sanita.sm/pub2/SanitaSM/dettaglio_notizia.html?idItem=e0fc203e-96b0-42ae-b510-f085dc8e8069
+    locator: Decree 136/2026 published 10 September; therapeutic prescribing rules preserved
+words:
+  - word: cannabis
+    lang: Italian
+    meaning: the medical law’s term for the plant
+    sources:
+      - amend2023
+  - word: marihuana
+    lang: Italian
+    meaning: herbal cannabis; spelling used in the drug list
+    sources:
+      - druglaw
+  - word: hashish
+    lang: Italian
+    meaning: cannabis resin; listed in the drug law
+    sources:
+      - druglaw
+  - word: sinsemilla
+    lang: Italian
+    meaning: a cannabis product named in the drug list
+    sources:
+      - druglaw

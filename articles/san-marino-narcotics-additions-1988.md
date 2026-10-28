@@ -28,4 +28,4 @@ The law paired severity with exits. A minor offence for declared personal use co
 
 ## Nine years, then rewritten
 
-The 1988 additions stood until Law No. 139 of November 1997 repealed both the 1956 law and the 1988 one, re-enacting the same cannabis core with fuller procedure, alcohol provisions and an exemption for institute-recognised medical use.[@2] The 1988 statute is thus the hinge of modern Sammarinese drug law: the moment simple possession joined supply at the top of the penalty scale. The [San Marino profile](/country/sm/) shows the regime that grew out of it.
+The 1988 additions stood until Law No. 139 of November 1997 repealed both the 1956 law and the 1988 one, re-enacting the same cannabis core with fuller procedure, alcohol provisions and an exemption for institute-recognised medical use.[@2] The 1988 statute is thus the hinge of modern Sammarinese drug law: the moment simple possession joined supply in the same statutory sentencing range. The [San Marino profile](/country/sm/) shows the regime that grew out of it.

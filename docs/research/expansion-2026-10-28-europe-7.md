@@ -10,8 +10,8 @@ with missing standard context. Work proceeds country by country.
 | Andorra | All standard context; hemp/CBD and recreational sections; cited consequences and culture; statutory sharing and consumption tables; fine minima and offence terms; 2013 amendment, 2020 cumulative arrest/fines and 2024 rejected CBD bill; CBD ruling article; corrected personal-possession penalty in 2026 article | First restriction remains estimated; 1930s–1980s unfilled; no verified planting/trade rules or arrest series. Arrest modes are described separately, avoiding an ordinary continuous-prison comparison for weekend/home/partial detention. Cultivation legislation is a proposal; no patient programme verified. | d42c4d8 |
 | Monaco | Statutory tables on four segments; group-use/import distinctions; all standard context and licensed research; four history entries; original-1970-law article and corrected description | First restriction estimated; 1930s/1950s/2000s history and market/arrest counts; medicine availability unverified | c8a4830; history in 0ee9ecf |
 | Isle of Man | Statutory maxima; hemp, planting, licensed research, arrests, patient lounges; nine history entries and pharmacy article | Early decades, driving, market detail; full current Act download blocked | b5e2921 |
-| Guernsey | Statutory tables, CBD/hemp, planting, medical lounge, market and culture; six entries and medical-access article | 1950s/1990s history, driving and arrest counts; full 2026 CBD order | this commit |
-| San Marino | pending | | |
+| Guernsey | Statutory tables, CBD/hemp, planting, medical lounge, market and culture; six entries and medical-access article | 1950s/1990s history, driving and arrest counts; full 2026 CBD order | e287d05 |
+| San Marino | Statutory tables and graded ranges; all standard context, hemp/seed correction, medical production; four history entries and 2021 law article; retained flower-access regression | 1960s, primary 2016 implementation sources, sentencing practice, complete schedules and market/arrest counts | this commit; history in 7bd5b0c |
 
 ## Validation and shared work
 
@@ -101,3 +101,51 @@ Profile audits: Guernsey 0 errors/1 explained hemp warning; Isle of Man 0/0.
 Read both built profiles in the isolated output and checked tables, DARS, hemp
 and medical-lounge links. This completes the Isle of Man inspection previously
 interrupted by another build removing the shared `dist/` directory.
+
+San Marino: read the official coordinated Criminal Code updated 27 February 2026
+(annotated PDF in the Council's ZIP), Law 139/1997, Law 113/2021, the February and
+March 2023 decrees, regulator FAQ and September 2026 official schedule announcement.
+Added second-degree ranges (six months–three years), discretionary first-degree
+personal-use reductions (three months–one year) and aggravated supply grades.
+Removed the unsourced ordinary fine claim; actual sentencing frequencies remain
+unverified, and existing scores are preserved pending practice evidence. The Code's
+current article 244 is a prescribing offence; the core production/possession/use
+penalty is sourced to the independent 1997 law. Its original article 244 wording
+supports the new adoption-dated 1974 history entry, not the current offence text.
+
+Corrected the seed/hemp account: February 2023 removed the medical law's >0.2% THC
+wording, so it cannot support a general current hemp exemption. Original full
+2026 schedules were not retrieved; their publication and continued therapeutic
+rules are sourced to the Health Secretariat. Production becomes `medical`, and a
+September report describes seven preliminary government clearances and one
+operating grower (Health Farm). That report does not verify state-pharmacy flower
+availability; medical status and access remain limited/1. Replaced foreign travel
+advice with domestic law on visitors and prescriptions. Four new history entries
+and an article on the 2021 medicinal production law. The inherited 1988 article's
+"top of the penalty scale" phrase is corrected to the same statutory range as
+supply. The 1960s, a primary reconstruction of 2016 medical implementation, actual
+sentencing practice and full market/arrest statistics remain open.
+
+San Marino's four history blocks were included by a concurrent contributor in
+`7bd5b0c` (Micronesia); no unrelated history is restaged or reverted. Updated the
+existing flower-access regression to read the standard medical/cultivation
+sections after retiring the legacy products section. All five profiles have
+zero audit errors and unchanged score vectors. The three warnings concern
+Andorra's proposed production licences, Guernsey's CBD product limits, and San
+Marino's removed historical medical THC threshold; none establishes a general
+current hemp cultivation permission.
+
+Batch totals: five expanded profiles, 26 added history entries, five new articles
+and corrections to two existing articles. Eighteen statutory penalty tables are
+present across the five profiles. Early restrictions and source limits above
+remain research gaps, not inferred events.
+
+Final validation: the shared working-tree build was temporarily blocked by
+another contributor's unfinished Palau source references. A clean snapshot of
+committed code plus this batch's remaining San Marino files passed all 183 tests
+and the full build, using the original Git history and CI mode. SEO audit passed:
+5,320 HTML files, 5,104 indexable pages, 5,104 sitemap entries and 234,773 internal
+links; no problems found. Read the San Marino profile, four new history pages and
+the 2021 article in that isolated output. Its profile audit has 0 errors and the
+explained historical-threshold warning; score triage has 0 open entries. The
+remaining gaps listed above were rerun with `country-gaps.cjs sm`.
