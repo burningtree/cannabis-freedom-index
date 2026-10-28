@@ -128,8 +128,8 @@ test('the 1798 homepage fact stays a Bengal Board recommendation (#145)', () => 
 
 test('Illinois adult limits and lawful gifts reach the state profile (#147)', () => {
   const il = country('us/il');
-  assert.match(il.segments.possession, /60 g.*10 g.*1,000/);
-  assert.match(il.segments.possession, /non-residents have half.*cumulative/);
+  assert.match(il.segments.possession.text ?? il.segments.possession, /60 g.*10 g.*1,000/);
+  assert.match(il.segments.possession.text ?? il.segments.possession, /non-residents have half.*cumulative/);
   assert.match(il.segments.sharing, /non-commercial gifts.*21\+.*possession limits/);
   assert.equal(il.scores.sharing, 5);
   assert.equal(il.scores.possession, 6);

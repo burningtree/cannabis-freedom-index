@@ -19,20 +19,72 @@ scores:
   consumption: 3
   access: 6
 segments:
-  possession: >-
-    Adults 21+ may hold 60 g of flower, 10 g of concentrate and infused products containing 1,000 mg
-    THC if resident in Illinois; non-residents have half those limits. The three product limits are
-    cumulative. These limits took effect on 12 June 2026.
-  cultivation: >-
-    Only registered medical patients may grow, up to five plants. For anyone else five plants or
-    fewer is a $200 civil violation; more is a felony.
-  enforcement: Nothing within the limits.
+  possession:
+    text: >-
+      Adults 21+ may hold 60 g of flower, 10 g of concentrate and infused products containing 1,000 mg
+      THC if resident in Illinois; non-residents have half those limits. The three product limits are
+      cumulative. These limits took effect on 12 June 2026.[@2,3]
+    currency: USD
+    penalties:
+      - upto: 60 g
+        treatment: legal
+        note: Residents; visitors half (30 g flower, 5 g concentrate)
+      - over: 60 g
+        upto: 100 g
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 2500
+      - over: 100 g
+        upto: 500 g
+        treatment: criminal
+        term: Felony
+        prison_min: 1 year
+        prison: 3 years
+        fine: 25000
+      - over: 500 g
+        treatment: criminal
+        term: Felony
+        prison_min: 2 years
+        note: Terms reach 15 years at the top of the ladder
+  cultivation:
+    text: >-
+      Only registered medical patients may grow, up to five plants. For anyone else five plants or
+      fewer is a $200 civil violation; more is a felony.[@2,3]
+    currency: USD
+    penalties:
+      - upto: 5 plants
+        treatment: civil
+        term: Civil violation
+        fine: 200
+        note: No penalty for registered medical patients growing five
+      - over: 5 plants
+        upto: 20 plants
+        treatment: criminal
+        term: Felony
+        prison_min: 1 year
+        prison: 3 years
+        fine: 25000
+      - over: 20 plants
+        treatment: criminal
+        term: Felony
+        prison_min: 2 years
+        note: Terms reach 15 years, with fines up to $100,000
+  enforcement: Nothing within the limits.[@2]
   sharing: >-
     Genuine non-commercial gifts between adults 21+ are allowed within the recipient’s possession
     limits. Sales are reserved for licensed businesses and promotional giveaways are prohibited;
-    medical patients may not give away their homegrown cannabis.
-  consumption: Private only, with licensed consumption lounges in a few towns.
-  access: Licensed shops since 2020, with some of the highest taxes in the country.
+    medical patients may not give away their homegrown cannabis.[@1,2]
+  consumption: Private only, with licensed consumption lounges in a few towns.[@4]
+  access: Licensed shops since 2020; potency-based excise taxes of 10–25% on top of sales tax keep prices among the country's highest.[@5]
+context:
+  recreational:
+    text: >-
+      Public Act 104-0463 doubled the adult possession caps from 12 June 2026: residents 21+ may
+      now hold 60 g of flower, 10 g of concentrate and 1,000 mg of infused THC, with half those
+      limits for visitors.[@2,3]
+      [Illinois doubled adult possession limits in 2026.](/history/illinois-doubled-possession-limits-2026/)
+    sources: [2, 3]
 sources:
   - title: Illinois Cannabis Regulation Oversight Officer — FAQs (possession and non-commercial gifts)
     url: https://cannabis.illinois.gov/about/faqs.html
@@ -40,6 +92,10 @@ sources:
     url: https://ilga.gov/legislation/ilcs/fulltext?DocName=041007050K10-10
   - title: NORML — Illinois laws and penalties
     url: https://norml.org/laws/illinois-penalties/
+  - title: Illinois Department of Financial and Professional Regulation — purchaser FAQ (onsite consumption lounges)
+    url: https://idfpr.illinois.gov/content/dam/soi/en/web/idfpr/faq/auc/faq-information-for-purchasers.pdf
+  - title: LegalClarity — Why is weed so expensive in Illinois (citing Illinois Department of Revenue excise rates)
+    url: https://legalclarity.org/why-is-weed-so-expensive-in-illinois/
 use:
   note: Includes vaping; a model-based estimate.
   share: 23.5
