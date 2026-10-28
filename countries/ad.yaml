@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 20
 recreational: illegal
 medical: none
-updated: 2026-10-14
+updated: '2026-10-28'
 summary: >-
   Possessing or growing cannabis for personal use is a minor offence under the Criminal Code,
   punished with a short arrest and a fine of €500–1,200. No medical programme.
@@ -17,109 +17,169 @@ scores:
 segments:
   possession:
     text: >-
-      Possessing cannabis for one's own use is a minor offence (contravenció penal) under
-      article 499 of the Criminal Code, punished with arrest and a fine of €500 to
-      €1,200.[@criminalcurrent] For minor offences arrest means at most eight weekends, a month
-      of house arrest or two months of partial daily arrest. In practice small amounts usually
-      bring a fine or a conditional sentence, often for people stopped at the border with Spain
-      or France.[@cann] The new Criminal Code passed in July 2026 keeps the same rule, as
-      article 545.[@criminaldeferred2026]
+      Possessing or importing cannabis for personal use is a criminal minor offence: arrest and a
+      €500–1,200 fine.[@criminalcurrent] Arrest can mean weekend detention, house arrest or partial
+      daily detention.[@criminalcurrent] The [replacement code passed in July
+      2026](/history/andorra-new-criminal-code-2026/) keeps the same personal-use rule but has a
+      four-month publication delay.[@criminaldeferred2026]
     sources:
       - criminalcurrent
       - criminaldeferred2026
-      - cann
     currency: EUR
     penalties:
-      - label: Possession for own use (minor offence)
+      - label: Possession or import for own use
         treatment: criminal
+        term: Contravenció penal
+        fine_min: 500
         fine: 1200
-        note: Fine €500–1,200; arrest at most eight weekends, a month of house arrest or two months of partial daily arrest
+        note: Arrest also applies; its weekend, home or partial-daily forms depend on the sentence
   cultivation:
     text: >-
-      Growing cannabis for one's own use falls under the same minor offence as possession:
-      arrest and a fine of €500 to €1,200.[@criminalcurrent] Growing to supply others is drug
-      trafficking.[@cann]
+      Growing for personal use carries arrest and a €500–1,200 fine; production for supply falls
+      under the trafficking provisions.[@criminalcurrent]
     sources:
       - criminalcurrent
-      - cann
     currency: EUR
     penalties:
-      - label: Growing for own use (minor offence)
+      - label: Growing for own use
         treatment: criminal
+        term: Contravenció penal
+        fine_min: 500
         fine: 1200
-        note: Same €500–1,200 fine and arrest forms as possession
+        note: Arrest also applies; its weekend, home or partial-daily forms depend on the sentence
   enforcement:
-    text: Fines and conditional sentences are the norm for small amounts; prison is available.
+    text: >-
+      The [2025 CBD flower appeal](/history/andorra-cbd-ruling-2025/) shows how serious a border
+      case can become: the final sentence included twelve months of immediate imprisonment and five
+      years’ expulsion for a resident convicted of large-quantity trafficking.[@cbdjudgment]
     sources:
-      - alto
+      - cbdjudgment
   sharing:
     text: >-
-      Supply is a crime; a 2025 case brought an 18-month conditional sentence for sharing a joint
-      with a minor.
+      Giving cannabis to one other person to use together carries arrest and a €600–1,500
+      fine.[@criminalcurrent] Supplying a small quantity to an adult carries up to one year in
+      prison or arrest and €500–1,000; ordinary cannabis trafficking carries up to two years and a
+      fine up to twice the drug’s value.[@criminalcurrent] Aggravated trafficking carries three to
+      six years, rising to six to twelve for specified large-scale organised or multiply aggravated
+      cases.[@criminalcurrent]
     sources:
-      - alto
+      - criminalcurrent
+    currency: EUR
+    penalties:
+      - label: Joint use with one other person
+        treatment: criminal
+        term: Cessió per al consum conjunt
+        fine_min: 600
+        fine: 1500
+        note: Arrest also applies
+      - label: Small quantity supplied to an adult
+        treatment: criminal
+        term: Tipus privilegiat
+        prison: 1 year
+        fine_min: 500
+        fine: 1000
+        note: Arrest may replace prison
+      - label: Ordinary cannabis trafficking
+        treatment: criminal
+        term: Tipus bàsic
+        prison: 2 years
+        note: Also a value-based fine
+      - label: Aggravated cannabis trafficking
+        treatment: criminal
+        term: Tipus qualificat
+        prison_min: 3 years
+        prison: 6 years
+        note: Also a value-based fine
+      - label: Specified aggravated large-scale trafficking
+        treatment: criminal
+        term: Tipus qualificat
+        prison_min: 6 years
+        prison: 12 years
+        note: Also a value-based fine
   consumption:
     text: >-
-      Using cannabis is punished like possession for one's own use, with arrest and a fine of
-      €500 to €1,200. Using it in a public place, or together with other people, brings arrest
-      and €600 to €1,500 under article 500.
+      Individual use carries arrest and €500–1,200; public or group use carries arrest and
+      €600–1,500.[@criminalcurrent]
     sources:
       - criminalcurrent
+    currency: EUR
+    penalties:
+      - label: Individual use
+        treatment: criminal
+        term: Consum individual
+        fine_min: 500
+        fine: 1200
+        note: Arrest also applies
+      - label: Public or group use
+        treatment: criminal
+        term: Consum en local públic o en grup
+        fine_min: 600
+        fine: 1500
+        note: Arrest also applies
   access:
-    text: No legal source.
+    text: >-
+      Cannabis flower containing THC has no lawful retail route, including flower sold as CBD; the
+      Constitutional Court upheld that interpretation in July 2025.[@cbdjudgment]
     sources:
-      - cann
+      - cbdjudgment
 context:
   production:
+    text: >-
+      A commercial medicinal crop was still a government plan in September 2026.[@cultivation2026]
+      The proposal envisaged one licence and indoor cultivation, with a separate cannabis bill still
+      to be brought to parliament.[@cultivation2026] Farmers’ collective representation was part of
+      the accompanying agriculture reform.[@cultivation2026]
+    sources:
+      - cultivation2026
     status: none
-    text: No licensed production.
-    sources:
-      - cann
-  products:
-    text: No legal THC products.
-    sources:
-      - cann
   medical:
-    text: No medical cannabis programme; a government-backed study of a possible model began in 2021.
+    text: >-
+      A claimed therapeutic purpose did not protect the resident convicted in the CBD flower case:
+      the court recorded that no doctor had prescribed cannabis to him.[@cbdjudgment] The [2026
+      cultivation plan](/history/andorra-medicinal-cultivation-plan-2026/) concerned future
+      medicinal production.[@cultivation2026] The report described a cannabis bill still to come,
+      leaving patients without a verified domestic dispensing programme.[@cultivation2026]
     sources:
-      - cann
+      - cbdjudgment
+      - cultivation2026
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      A resident’s cannabis conviction can affect where they may live: the [CBD flower
+      case](/history/andorra-cbd-ruling-2025/) ended with five years’ expulsion.[@cbdjudgment] The
+      appellant said it had cost him his work and home in Andorra, where his partner
+      lived.[@cbdjudgment] The Constitutional Court dismissed his appeal and ordered him to pay the
+      constitutional proceedings’ costs.[@cbdjudgment]
+    sources:
+      - cbdjudgment
   clubs:
-    status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      Cannabis sharing has no club exception in the Criminal Code: supplying another person is
+      punishable, and even joint use by two people carries arrest and a fine.[@criminalcurrent]
     sources:
-      - cann
-      - alto
-  visitors:
-    status: none
-    text: >-
-      There is no legal recreational supply for anyone. Bringing cannabis into the
-      country for one's own use is part of the same minor offence as possession, punished with
-      arrest and a fine of €500 to €1,200.
-    sources:
-      - cann
       - criminalcurrent
+    status: none
+  visitors:
+    text: >-
+      Visitors have no legal recreational supply, and bringing cannabis across the border for
+      personal use is punishable under the same rule as possession.[@criminalcurrent] Low THC
+      content did not prevent a trafficking conviction in the CBD flower case.[@cbdjudgment] That
+      resident’s final sentence also included five years’ expulsion.[@cbdjudgment]
+    sources:
+      - criminalcurrent
+      - cbdjudgment
+    status: none
   driving:
     status: zero
     text: >-
-      Traffic Code article 112(k) treats driving with drugs or analogous substances
-      in the body as a very serious administrative offence when it is not a criminal
-      offence: EUR201–400 and up to two months' licence suspension under article 115.
-      Article 82 provides authorised saliva screening and a right to a confirmatory
-      blood or saliva test. Criminal Code article 268 separately covers drug influence:
-      ordinary driving can bring up to one year's imprisonment or arrest, up to three
-      years' driving deprivation/prohibition and EUR300–3,000. Certain passenger or
-      heavy transport has higher maxima. Article 269 penalises refusing a lawful test
-      and also declining blood analysis; its ordinary fine starts at EUR600. The July
-      2026 procedural amendment requires police licence retention and judicial review
-      within ten days. The new July 2026 Criminal Code has a four-month publication
-      delay and is not yet operative on 12 October: its renumbered article 300 adds
-      blood/saliva evidence of consumption and removes the arrest alternative. No
-      numerical THC allowance or general medical-use exception was verified.
+      Driving with drugs in the body is a very serious administrative offence under Traffic Code
+      article 112(k), carrying €201–400 and up to two months’ licence suspension when it is not a
+      crime.[@trafficcode] Criminal Code article 268 separately punishes driving under drug
+      influence with up to a year in prison or arrest, a €300–3,000 fine and up to three years’
+      driving deprivation or prohibition.[@criminalcurrent] Police may use saliva screening and
+      drivers have a right to a confirmatory blood or saliva test.[@trafficcode] A July 2026
+      amendment requires police retention of the licence and judicial review within ten
+      days.[@licenceretention2026] The replacement Criminal Code has a four-month publication delay
+      and is still pending on 28 October 2026.[@criminaldeferred2026]
     sources:
       - trafficcode
       - criminalcurrent
@@ -127,30 +187,67 @@ context:
       - criminaldeferred2026
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 2.5 kg of herbal
-      cannabis seized in 2024, against 3.5 kg in 2023, and 2.9 kg of cannabis resin seized
-      in 2024, against 5.9 kg in 2023. The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across
-      borders.
+      Figures reported by the government to the UN drugs office record 2.5 kg of herbal cannabis
+      seized in 2024, against 3.5 kg in 2023, and 2.9 kg of cannabis resin seized in 2024, against
+      5.9 kg in 2023. The UN publishes them as kilogram equivalents, and countries count seizures
+      differently, so the figures are not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
+  recreational:
+    text: >-
+      Adults have no lawful cannabis shops or home-growing allowance: possession, cultivation and
+      import for personal use remain criminal offences.[@criminalcurrent] Smoking together is
+      separately punishable, including sharing with one other person.[@criminalcurrent] The [July
+      2025 CBD ruling](/history/andorra-cbd-ruling-2025/) also covers low-THC flower sold as
+      CBD.[@cbdjudgment]
+    sources:
+      - criminalcurrent
+      - cbdjudgment
+  hemp:
+    text: >-
+      Flower sold as hemp or CBD can lead to prosecution when it contains THC.[@cbdjudgment]
+      Parliament [rejected a CBD products bill in July
+      2024](/history/andorra-rejects-cbd-bill-2024/).[@cbdvote] The government’s September 2026
+      cultivation plan concerns an indoor medicinal crop, while outdoor hemp remains a possible
+      future development.[@cultivation2026]
+    sources:
+      - cbdjudgment
+      - cbdvote
+      - cultivation2026
+    status: none
+  culture:
+    text: >-
+      The word [CBD](/culture/language/cbd/) became the centre of a public dispute when flower sold
+      under that name led to imprisonment.[@cbdjudgment] Parliament rejected a bill to regulate CBD
+      products in July 2024.[@cbdvote] The constitutional appeal the following year exposed the gap
+      between buyers’ understanding of the product and its treatment under Andorran criminal
+      law.[@cbdjudgment]
+    sources:
+      - cbdjudgment
+      - cbdvote
 sources:
   trafficcode:
-    title: "Andorra Legal Portal — Traffic Code Law 12/2021, consolidated text"
+    title: Andorra Legal Portal — Traffic Code Law 12/2021, consolidated text
     url: https://portaljuridicandorra.ad/L2021012
-    locator: "Articles 82, 112(k), 115(1) and 115(2)(b); administrative offences distinguished from criminal offences"
+    locator: >-
+      Articles 82, 112(k), 115(1) and 115(2)(b); administrative offences distinguished from criminal
+      offences
   criminalcurrent:
-    title: "Andorra Legal Portal — Criminal Code Law 9/2005, consolidation 27 effective 13 February 2025"
+    title: Andorra Legal Portal — Criminal Code Law 9/2005, consolidation 27 effective 13 February 2025
     url: https://portaljuridicandorra.ad/L2005009_27
-    locator: "Articles 37, 268–269, 499–500; current penalties distinguished from deferred 2026 replacement"
+    locator: Articles 37, 268–269, 499–500; current penalties distinguished from deferred 2026 replacement
   licenceretention2026:
-    title: "Andorra Legal Portal — Law 19/2026 of 15 July, amendments in penal and penitentiary matters"
+    title: Andorra Legal Portal — Law 19/2026 of 15 July, amendments in penal and penitentiary matters
     url: https://portaljuridicandorra.ad/L2026019
-    locator: "Article 8 replaces Criminal Procedure Code article 35 bis; final provision 3 gives next-day publication commencement"
+    locator: >-
+      Article 8 replaces Criminal Procedure Code article 35 bis; final provision 3 gives next-day
+      publication commencement
   criminaldeferred2026:
-    title: "Andorra Legal Portal — new Criminal Code, Law 18/2026 of 15 July"
+    title: Andorra Legal Portal — new Criminal Code, Law 18/2026 of 15 July
     url: https://www.portaljuridicandorra.ad/L2026018
-    locator: "Articles 300, 545 and 547, final provision 5; four months after publication, not yet operative on 14 October 2026; article 301 contains an apparent drafting defect"
+    locator: >-
+      Articles 300, 545 and 547, final provision 5; four months after publication, not yet operative
+      on 14 October 2026; article 301 contains an apparent drafting defect
   cann:
     title: The Cannigma — Cannabis laws in Andorra
     url: https://cannigma.com/regulation/cannabis-laws-in-andorra/
@@ -158,5 +255,31 @@ sources:
     title: Alto — Andorra court hands 18-month conditional sentence for sharing joint with minor (2025)
     url: https://www.alto.ad/other/2025/12/andorra-hashish-smuggler-avoids-prison-via
   unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    title: >-
+      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
+      Report data)
     url: https://data.unodc.org/datareport/drug-seizure
+  cbdjudgment:
+    title: Andorra Constitutional Court — Valladolid Chamorro, judgment of 14 July 2025 (2025-34-RE)
+    url: https://www.altaveu.com/uploads/s1/21/22/75/2/sente-ncia-del-tc-sobre-el-cas-cbd.pdf
+    locator: >-
+      Pages 1–2 and 14–16; final sentence, THC-containing flower and rejection of constitutional
+      appeal
+  cbdvote:
+    title: Consell General — parliamentary record of the CBD products bill
+    url: https://seu.consellgeneral.ad/registrePublic/registrePublicacio/516?pdf=true
+    locator: Consideration rejected on 15 July 2024; government opinion dated 26 June 2024
+  cultivation2026:
+    title: Bondia — El cànnabis s’apropa al país (1 September 2026)
+    url: https://www.bondia.ad/politica/el-cannabis-s-apropa-al-pais
+words:
+  - word: cànnabis
+    lang: Catalan
+    meaning: the Criminal Code’s term for cannabis
+    sources:
+      - criminalcurrent
+  - word: cànem
+    lang: Catalan
+    meaning: hemp; used in agricultural policy
+    sources:
+      - cultivation2026

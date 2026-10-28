@@ -2,6 +2,8 @@
 model: opus-5.5
 written: 2026-10-11
 sources:
+  - title: Andorra Legal Portal — Criminal Code, article 499
+    url: https://portaljuridicandorra.ad/L2005009_27
   - title: La Veu Lliure — Andorra, single licence for medicinal cannabis cultivation (September 2026)
     url: https://laveulliure.ad/en/news/andorra-single-licence-medicinal-cannabis-cultivation
 ---
@@ -12,8 +14,8 @@ the plant be grown there.
 
 ## The law as it stands
 
-Possession is a crime in Andorra with up to a year in prison, usually settled by a
-fine or a conditional sentence. There is no legal route for patients.
+Personal possession is a criminal minor offence in Andorra, punishable with arrest
+and a €500–1,200 fine under article 499 of the current Criminal Code. There is no legal route for patients.
 
 How strictly the law is read was shown in
 [July 2025](/history/andorra-cbd-ruling-2025/). The Constitutional Court dismissed
