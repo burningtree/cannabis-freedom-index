@@ -23,7 +23,12 @@ so/bi/et/cd/ss/cf/mz/zw/bj/ug — Africa-1/2/3; tg/lr/ga/gw/gq/dj/mu — Africa-
 - New `articles/cape-verde-coconut-water-pipe-1672.md` (Duvall + Fryer 1698) + `articles/cabo-verde-drug-law-reform-vetoed-2020.md` (rewritten to the checked entry: Fonseca veto after court found delegation too broad).
 - Audit 0/0; full `npm test` 193/0; page + both articles verified in review HTML.
 - Left: driving/arrests (no sources), words (no named word found), 1920s–80s, 2000s–2010s decades; nothing post-2024 found (ENACT 2025 is the newest citable item); first-restriction estimate kept.
-## km — pending
+## km — committed
+- Per-sentence cites ×13; penalty terms + split leadership-life row (schema forbids mandatory life with prison terms on one row — review build caught it, audit did not); hemp section; products folded; production/medical/consequences rewritten from the Penal Code (were Wikipedia-only/empty); visitors de-FCDO'd, unused fcdo key removed.
+- Word Indian hemp (French (Comoros), from article 328 via verified 1995 code PDF); culture links Ali Soilih + 1975/1978 entries + indian-hemp atlas.
+- New `articles/comoros-penal-code-1995.md` (Art 328 verified in PDF extraction: 1–10 yrs, 1M–50M francs, hashish/Indian hemp named) + `articles/comoros-moheli-bubble-pipe-1626.md` (Herbert 1634 via Duvall's reading).
+- Audit 0/0; full `npm test` 193/0; page + both articles verified in review HTML.
+- Left: driving/arrests (no sources), 1920s–60s, 1980s, 2010s decades; first-restriction estimate kept.
 ## re — pending
 ## st — pending
 ## sc — pending

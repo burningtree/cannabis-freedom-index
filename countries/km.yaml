@@ -14,6 +14,8 @@ scores:
   sharing: 0
   consumption: 0
   access: 0
+words:
+  - { word: Indian hemp, lang: French (Comoros), meaning: "cannabis; named alongside hashish in article 328 of the 1995 penal code", sources: [pc1995] }
 segments:
   possession:
     text: >-
@@ -30,45 +32,55 @@ segments:
     penalties:
       - label: Holding or using narcotics (no personal-use tier)
         treatment: criminal
+        term: Possession
         prison_min: 10 years
         prison: 15 years
         fine: 20000000
         note: Fine of 10,000,000 to 20,000,000 francs; maximum doubles in listed aggravating cases
   cultivation:
     text: >-
-      Article 206 punishes illicit production or manufacture of narcotics with 10 to 20 years, and 15
-      to 25 when committed by an organised gang. Article 205 gives life imprisonment for leading a
-      group that grows, makes or supplies narcotics.
+      Article 206 punishes illicit production or manufacture of narcotics with 10 to 20 years, and
+      15 to 25 when committed by an organised gang.[@pc2020] Article 205 gives life imprisonment
+      for leading a group that grows, makes or supplies narcotics.[@pc2020]
     sources:
       - pc2020
     penalties:
       - label: Illicit production or manufacture
         treatment: criminal
+        term: Production
         prison_min: 10 years
         prison: 20 years
-        note: 15 to 25 years when committed by an organised gang; leading such a group carries life imprisonment
+        note: 15 to 25 years when committed by an organised gang
+      - label: Leading a group that grows, makes or supplies narcotics (article 205)
+        treatment: criminal
+        term: Production
+        life: mandatory
+        note: Life imprisonment for group leadership
   enforcement:
     text: >-
-      The code sets 10 to 15 years for holding or using, with no personal-use tier, and doubles the
-      maximum in listed aggravating cases (Article 214). How courts apply it is not shown by the
-      text.
+      The code sets 10 to 15 years for holding or using, with no personal-use tier, and doubles
+      the maximum in listed aggravating cases (Article 214).[@pc2020] How courts apply it is not
+      shown by the text.
     sources:
       - pc2020
   sharing:
     text: >-
       Article 210 punishes giving or offering narcotics to a person for their personal consumption
       with 5 to 10 years and a fine of 3,000,000 to 5,000,000 francs; 7 to 10 years if offered to
-      minors or at schools. Article 208 also punishes offering or transferring (10 to 15 years).
+      minors or at schools.[@pc2020] Article 208 also punishes offering or transferring (10 to 15
+      years).[@pc2020]
     sources:
       - pc2020
   consumption:
     text: >-
-      Article 208 punishes the unlawful "emploi" (use) of narcotics with 10 to 15 years.
+      Article 208 punishes the unlawful "emploi" (use) of narcotics with 10 to 15
+      years.[@pc2020]
     sources:
       - pc2020
   access:
     text: >-
-      No lawful source; acquiring and holding narcotics is punished under Article 208.
+      No lawful source; acquiring and holding narcotics is punished under Article
+      208.[@pc2020]
     sources:
       - pc2020
 context:
@@ -80,21 +92,34 @@ context:
     sources:
       - pc2020
       - wiki
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the 2020 code punishes narcotics production
+      with no low-THC distinction, and no hemp production is documented.[@pc2020] No lawful
+      cannabis products were identified in the reviewed sources.
+    sources: [pc2020]
   production:
     status: none
-    text: No licensed production.
+    text: >-
+      No licensed cannabis production exists: Article 206 punishes illicit production with ten
+      to twenty years, rising for organised gangs, and the reviewed law shows no licensing
+      route.[@pc2020]
     sources:
-      - wiki
-  products:
-    text: No legal products.
-    sources:
-      - wiki
+      - pc2020
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      The reviewed Penal Code punishes unlawful use with ten to fifteen years and sets no
+      patient programme or supply route.[@pc2020]
+    sources:
+      - pc2020
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      The reviewed provisions set the penalties themselves in Articles 205–214; no separate
+      collateral-consequence regime beyond those penalties was shown in the reviewed
+      text.[@pc2020]
+    sources:
+      - pc2020
   planting:
     seeds: grey
     seeds_trade: unclear
@@ -102,45 +127,56 @@ context:
     clones_trade: banned
     text: >-
       The 2020 Penal Code punishes the illicit production of narcotics with ten to twenty
-      years (Article 206) and does not name cultivation or seeds separately. Whether growing a
-      plant counts as production under the code was not confirmed.
+      years (Article 206) and does not name cultivation or seeds separately.[@pc2020] Whether
+      growing a plant counts as production under the code was not confirmed.
     sources:
       - pc2020
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@pc2020]
     sources:
       - pc2020
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says drug
-      trafficking and possession are serious offences that can bring a long prison sentence
-      and a fine.
+      There is no legal recreational supply for anyone.[@pc2020] Holding or using narcotics
+      carries ten to fifteen years under Article 208, with no separate visitor
+      regime in the reviewed law.[@pc2020]
     sources:
       - pc2020
-      - fcdo
+  culture:
+    text: >-
+      Cannabis was legal from 1975 to 1978 under President [Ali
+      Soilih](/culture/people/ali-soilih/), as that [1975
+      legalisation](/history/comoros-legalisation-1975/) and the [1978
+      re-ban](/history/comoros-ban-restored-1978/) record.[@wiki] The earlier code named the
+      plant [Indian hemp](/culture/language/indian-hemp/) alongside hashish in article
+      328.[@pc1995]
+    sources:
+      - wiki
+      - pc1995
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 316 kg of herbal
       cannabis seized in 2024, against 2,263 kg in 2023, and 121 kg of cannabis resin
-      seized in 2024, against 57.5 kg in 2023. The UN publishes them as kilogram
+      seized in 2024, against 57.5 kg in 2023.[@unodc_szr] The UN publishes them as kilogram
       equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
 sources:
-  fcdo:
-    title: "GOV.UK (FCDO) — Foreign travel advice: Comoros, safety and security"
-    url: https://www.gov.uk/foreign-travel-advice/comoros/safety-and-security
   pc2020:
     title: Comores — Code pénal 2020, Loi n° 20-038/AU du 29 décembre 2020, promulguée par décret n° 21-018/PR du 16 février 2021 (droit-afrique.com copy)
     url: https://counterterrorlaw.info/assets/downloads/Comores_Code_p%C3%A9nal_(2020).pdf
   wiki:
     title: Wikipedia — Cannabis in the Comoros
     url: https://en.wikipedia.org/wiki/Cannabis_in_the_Comoros
+  pc1995:
+    title: Comoros — Penal Code, Act 95-012/AF (English translation, policehumanrightsresources.org)
+    url: https://policehumanrightsresources.org/content/uploads/2016/03/Penal-Code-Comoros-1981.pdf
+    locator: Article 328 (pp. 67–68 of the local PDF extraction); hashish and Indian hemp named; 1–10 years, 1M–50M francs.
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
