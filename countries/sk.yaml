@@ -3,11 +3,11 @@ region: Europe
 iso_numeric: 703
 recreational: illegal
 medical: none
-updated: 2026-10-28
+updated: '2026-10-28'
 summary: >-
-  Possession and personal growing remain crimes: even the lowest cannabis quantity band carries up
-  to one year in prison, and up to two plants carries up to six months. Medical cannabis has no
-  lawful access programme.
+  Possession and personal growing remain crimes: even the lowest cannabis quantity band carries
+  up to one year in prison, and up to two plants carries up to six months. Medical cannabis has
+  no lawful access programme.
 scores:
   possession: 1
   cultivation: 1
@@ -19,12 +19,12 @@ segments:
   possession:
     text: >-
       Possessing even a "negligible amount" of cannabis is a crime carrying up to one year in
-      prison.[@code] The code sets that band at up to 2 g of material; above 2 g, up to 200 mg of
-      THC can still place it in the lowest band.[@code] A small amount carries six months to three
-      years; a greater amount or a repeat conviction within 24 months carries one to six
-      years.[@code]
-      [Slovakia set dose categories for personal possession in 2006.](/history/slovakia-criminal-code-dose-categories-2006/)
-      [Slovakia cut sentences for small amounts in 2024.](/history/slovakia-penal-reform-2024/)
+      prison.[@code] The code sets that band at up to 2 g of material; above 2 g, up to 200 mg
+      of THC can still place it in the lowest band.[@code] A small amount carries six months to
+      three years; a greater amount or a repeat conviction within 24 months carries one to six
+      years.[@code] [Slovakia set dose categories for personal possession in
+      2006.](/history/slovakia-criminal-code-dose-categories-2006/) [Slovakia cut sentences for
+      small amounts in 2024.](/history/slovakia-penal-reform-2024/)
     sources:
       - code
     penalties:
@@ -32,7 +32,9 @@ segments:
         treatment: criminal
         term: Possession
         prison: 1 year
-        note: Even the lowest band stays a crime; courts can withhold punishment with treatment and probation
+        note: >-
+          Even the lowest band stays a crime; courts can withhold punishment with treatment and
+          probation
       - label: Small amount
         treatment: criminal
         term: Possession
@@ -47,129 +49,195 @@ segments:
         note: Repeat conviction within 24 months raises the band
   cultivation:
     text: >-
-      Growing up to two cannabis plants solely for personal consumption, without distribution or
-      profit, carries up to six months in prison.[@code] Three to five plants carries up to two
-      years, and the next quantity band six months to three years.[@code] Sentences reach five to
-      fifteen years for the largest quantities or other aggravated cases.[@code]
-      [Slovakia set dose categories for personal possession in 2006.](/history/slovakia-criminal-code-dose-categories-2006/)
-      [Slovakia cut sentences for small amounts in 2024.](/history/slovakia-penal-reform-2024/)
+      Personal growing without distribution or profit carries up to six months for up to two
+      plants and up to two years for three to five.[@code] The quantity bands then run from six
+      months to three years for six to fifty plants, one to five years for fifty-one to two
+      hundred, two to eight years for two hundred and one to one thousand, and five to fifteen
+      years above one thousand.[@code] Child-related, repeat and serious-harm circumstances can
+      raise the sentence separately.[@code] The [2024
+      reform](/history/slovakia-penal-reform-2024/) retained criminal penalties for
+      growing.[@code]
     sources:
       - code
     penalties:
-      - label: Up to two plants for personal consumption
+      - upto: 2 plants
         treatment: criminal
         term: Cultivation
         prison: 6 months
-        note: No distribution or profit; courts can withhold punishment with treatment and probation
-      - label: Three to five plants
+        note: Personal consumption only; no distribution or profit
+      - over: 2 plants
+        upto: 5 plants
         treatment: criminal
         term: Cultivation
         prison: 2 years
-        note: Above the two-plant personal band
-      - label: Next quantity band
+        note: Personal consumption conditions; §172(3)
+      - over: 5 plants
+        upto: 50 plants
         treatment: criminal
         term: Cultivation
         prison_min: 6 months
         prison: 3 years
-        note: Larger-scale growing
-      - label: Largest quantities or aggravated cases
+        note: Quantity-only tier; separate aggravating circumstances can raise the sentence
+      - over: 50 plants
+        upto: 200 plants
+        treatment: criminal
+        term: Cultivation
+        prison_min: 1 year
+        prison: 5 years
+        note: Quantity-only tier; §172(5)
+      - over: 200 plants
+        upto: 1000 plants
+        treatment: criminal
+        term: Cultivation
+        prison_min: 2 years
+        prison: 8 years
+        note: Quantity-only tier; §172(6)
+      - over: 1000 plants
         treatment: criminal
         term: Cultivation
         prison_min: 5 years
         prison: 15 years
-        note: Highest growing band
+        note: §172(7); this range also covers specified serious harm/death or child-related cases
   enforcement:
     text: >-
       Personal possession and growing remain criminal offences.[@code] Courts can withhold
-      punishment for the lower possession and growing offences while ordering treatment and up to
-      two years of probation under the code's conditions.[@code]
-      [Slovakia cut sentences for small amounts in 2024.](/history/slovakia-penal-reform-2024/)
+      punishment for the lower possession and growing offences while ordering treatment and up
+      to two years of probation under the code's conditions.[@code] [Slovakia cut sentences for
+      small amounts in 2024.](/history/slovakia-penal-reform-2024/)
     sources:
       - code
   sharing:
     text: >-
-      Manufacturing or trafficking in the lowest quantity band carries one to five years in prison,
-      rising to ten to twenty-five years or life in the most serious cases.[@code] The code
-      separately includes obtaining cannabis for another person's personal consumption within its
-      possession rules when the quantity and no-distribution, no-profit conditions are met.[@code]
-      [Slovakia set dose categories for personal possession in 2006.](/history/slovakia-criminal-code-dose-categories-2006/)
+      Manufacturing or trafficking in the lowest quantity band carries one to five years in
+      prison, rising to ten to twenty-five years or life in the most serious cases.[@code] The
+      code separately includes obtaining cannabis for another person's personal consumption
+      within its possession rules when the quantity and no-distribution, no-profit conditions
+      are met.[@code] [Slovakia set dose categories for personal possession in
+      2006.](/history/slovakia-criminal-code-dose-categories-2006/)
     sources:
       - code
     penalties:
-      - label: Manufacturing or trafficking, lowest band
+      - label: Lowest manufacturing or trafficking tier
         treatment: criminal
-        term: Supply
+        term: Manufacture or trafficking
         prison_min: 1 year
         prison: 5 years
-        note: Lowest trafficking band
+        note: §173(1)
+      - label: Greater amount or specified use of a child
+        treatment: criminal
+        term: Manufacture or trafficking
+        prison_min: 3 years
+        prison: 10 years
+        note: §173(2)
+      - label: Significant amount or other specified aggravations
+        treatment: criminal
+        term: Manufacture or trafficking
+        prison_min: 7 years
+        prison: 15 years
+        note: '§173(3): includes repeat conviction and specified protected persons'
+      - label: Large amount, serious harm or death
+        treatment: criminal
+        term: Manufacture or trafficking
+        prison_min: 8 years
+        prison: 20 years
+        note: §173(4)
       - label: Most serious cases
         treatment: criminal
-        term: Supply
+        term: Manufacture or trafficking
         prison_min: 10 years
         prison: 25 years
-        note: Or life imprisonment in the most serious cases
+        life: possible
+        note: >-
+          §173(5): multiple victims, dangerous group, extraordinary quantity or specified
+          child-related offence
   consumption:
     text: >-
-      The code punishes possession and growing for personal consumption.[@code] Its definition of
-      possession includes buying, importing or otherwise obtaining a drug for personal use, so
-      acquiring cannabis to consume remains a criminal offence.[@code]
-      [Slovakia cut sentences for small amounts in 2024.](/history/slovakia-penal-reform-2024/)
+      The code punishes possession and growing for personal consumption.[@code] Its definition
+      of possession includes buying, importing or otherwise obtaining a drug for personal use,
+      so acquiring cannabis to consume remains a criminal offence.[@code] [Slovakia cut
+      sentences for small amounts in 2024.](/history/slovakia-penal-reform-2024/)
     sources:
       - code
   access:
     text: >-
-      There is no lawful recreational cannabis supply or medical cannabis programme.[@cms] The legal
-      guide describes medical cultivation, import and sales as prohibited.[@cms]
-      [Slovakia set dose categories for personal possession in 2006.](/history/slovakia-criminal-code-dose-categories-2006/)
+      There is no lawful recreational cannabis supply or medical cannabis programme.[@cms] The
+      legal guide describes medical cultivation, import and sales as prohibited.[@cms] [Slovakia
+      set dose categories for personal possession in
+      2006.](/history/slovakia-criminal-code-dose-categories-2006/)
     sources:
       - cms
 words:
-  - { word: Tráva, lang: Slovak, meaning: "literally grass; slang for weed (marijuana)", sources: [wiktionary-trava-sk] }
-  - { word: Hašiš, lang: Slovak, meaning: "hashish", sources: [wiktionary-hasis-sk] }
+  - word: Tráva
+    lang: Slovak
+    meaning: literally grass; slang for weed (marijuana)
+    sources:
+      - wiktionary-trava-sk
+  - word: Hašiš
+    lang: Slovak
+    meaning: hashish
+    sources:
+      - wiktionary-hasis-sk
+  - word: konopa
+    lang: Slovak
+    meaning: cannabis or hemp; official term
+    sources:
+      - z139
+  - word: CBD
+    lang: Slovak
+    meaning: cannabidiol; official abbreviation
+    atlas: cbd
+    sources:
+      - cbd2021
 context:
   culture:
     text: >-
-      Slovakia's brush with a legal market is CBD: the country took CBD off its
-      controlled-substance list in May 2021, and CBD from industrial hemp is lawful at up
-      to 0.3% THC since 2022.[@cms, wiki]
-      [Slovakia took CBD off its drug list in 2021.](/history/slovakia-cbd-delisted-2021/)
-      See [CBD](/culture/language/cbd/).
+      [CBD](/culture/language/cbd/) was removed from Slovakia’s psychotropic list in [May
+      2021](/history/slovakia-cbd-delisted-2021/).[@cbd2021] Parliament’s amendment deleted the
+      named substance while leaving the broader controlled-cannabis system in
+      place.[@cbd2021,z139] HHC and several related cannabinoids were added to the
+      controlled lists in [November 2024](/history/slovakia-hhc-controlled-2024/).[@hhc2024]
     sources:
-      - cms
-      - wiki
+      - cbd2021
+      - z139
+      - hhc2024
   recreational:
     text: >-
       There is no legal recreational supply. Even a negligible amount — up to 2 g — is a crime
-      with up to one year, and small amounts bring six months to three years.[@code] Courts
-      can withhold punishment for the lower offences while ordering treatment and up to two
-      years of probation.[@code] Growing up to two plants for personal use brings up to six
-      months.[@code]
-      [Slovakia cut sentences for small amounts in 2024.](/history/slovakia-penal-reform-2024/)
+      with up to one year, and small amounts bring six months to three years.[@code] Courts can
+      withhold punishment for the lower offences while ordering treatment and up to two years of
+      probation.[@code] Growing up to two plants for personal use brings up to six
+      months.[@code] [Slovakia cut sentences for small amounts in
+      2024.](/history/slovakia-penal-reform-2024/)
     sources:
       - code
   production:
-    status: medical
+    status: hemp
     text: >-
-      Hemp cultivation is allowed for industrial fibre and seed, or for research.[@z139] Research
-      growers need a health-ministry permit.[@z139] Varieties in the EU common catalogue, including
-      those listed when they were sown, are exempt from the cultivation permit requirement.[@z139]
-      Medical cannabis production remains prohibited.[@cms]
+      Industrial hemp growing is permitted for obtaining fibre and seed, with a permit exemption
+      for EU common-catalogue varieties.[@z139] Other cultivation and processing require Health
+      Ministry permission and measures preventing diversion.[@z139] The law permits research
+      growing under a separate authorisation; the medical cannabis guide describes no patient
+      flower-production route.[@z139,cms]
     sources:
       - z139
       - cms
   medical:
     text: >-
-      Growing, importing and selling cannabis for medical use remain prohibited; the country has no
-      medical cannabis access programme.[@cms]
+      Slovakia has no medical cannabis flower programme; the legal guide describes medical
+      cannabis cultivation, import and sale as prohibited.[@cms] Purified CBD medicines have a
+      separate assessment history: NIHO evaluated Epidyolex with clobazam for Dravet and
+      Lennox-Gastaut syndromes in children aged two and older in 2023.[@niho2023] That
+      assessment concerns a specified medicine and indications.[@niho2023]
     sources:
       - cms
+      - niho2023
   consequences:
     text: >-
       For eligible lower-level possession and growing offences, a court can withhold punishment
-      while ordering treatment.[@code] If the person completes the conditions successfully, the code
-      treats them as having no conviction for the offence; otherwise the court can impose a
-      sentence.[@code]
-      [Slovakia set dose categories for personal possession in 2006.](/history/slovakia-criminal-code-dose-categories-2006/)
+      while ordering treatment.[@code] If the person completes the conditions successfully, the
+      code treats them as having no conviction for the offence; otherwise the court can impose a
+      sentence.[@code] [Slovakia set dose categories for personal possession in
+      2006.](/history/slovakia-criminal-code-dose-categories-2006/)
     sources:
       - code
   planting:
@@ -179,33 +247,34 @@ context:
     clones_trade: banned
     text: >-
       Hemp may be grown for industrial fibre and seed or for research.[@z139] A ministry permit
-      normally lasts one year, but varieties in the EU common catalogue, including those listed when
-      sown, are exempt from that permit requirement.[@z139] Growing other cannabis for personal
-      consumption remains a crime, including up to two plants.[@code]
+      normally lasts one year, but varieties in the EU common catalogue, including those listed
+      when sown, are exempt from that permit requirement.[@z139] Growing other cannabis for
+      personal consumption remains a crime, including up to two plants.[@code]
     sources:
       - z139
       - code
   hemp:
     status: standard
     text: >-
-      Hemp may be grown for industrial fibre and seed or for research; EU-catalogue varieties
-      are exempt from the one-year ministry permit requirement.[@z139] CBD from industrial
-      hemp is lawful at up to 0.3% THC since 2022.[@wiki] CBD was removed from the controlled-substance
-      list in May 2021, though products for internal use stay prohibited.[@cms] Growing other cannabis for personal
-      consumption stays criminal, including up to two plants.[@code]
-      [Slovakia took CBD off its drug list in 2021.](/history/slovakia-cbd-delisted-2021/)
+      Industrial cultivation is restricted to fibre and seed, or research; EU common-catalogue
+      varieties are exempt from the one-year Health Ministry growing permit.[@z139] Other
+      growing, processing and production require permission, with safeguards against
+      diversion.[@z139] [CBD was removed from the psychotropic list on 1 May
+      2021](/history/slovakia-cbd-delisted-2021/).[@cbd2021] The Agriculture Ministry’s February
+      2026 notice treats CBD as a novel food and reports continuing gaps in safety
+      evidence.[@cbdfood2026]
     sources:
       - z139
-      - code
-      - wiki
-      - cms
+      - cbd2021
+      - cbdfood2026
   driving:
     status: zero
     text: >-
       The road law prohibits driving while a drug can still be present in the body, with no
-      numerical THC allowance.[@road] Driving while impaired to the point of being unfit carries up
-      to one year in prison under the Criminal Code; the same basic maximum applies to refusing the
-      prescribed drug examination.[@code] Aggravated cases carry higher sentences.[@code]
+      numerical THC allowance.[@road] Driving while impaired to the point of being unfit carries
+      up to one year in prison under the Criminal Code; the same basic maximum applies to
+      refusing the prescribed drug examination.[@code] Aggravated cases carry higher
+      sentences.[@code]
     sources:
       - road
       - code
@@ -219,20 +288,20 @@ context:
   clubs:
     status: none
     text: >-
-      A European survey conducted in 2018–19 found no active cannabis social club in Slovakia after
-      searches and contact with people in the field.[@pardal20] Current law criminalises personal
-      growing as well as trafficking, leaving clubs without an authorised route to grow and
-      distribute cannabis.[@code]
-      [Slovakia set dose categories for personal possession in 2006.](/history/slovakia-criminal-code-dose-categories-2006/)
+      A European survey conducted in 2018–19 found no active cannabis social club in Slovakia
+      after searches and contact with people in the field.[@pardal20] Current law criminalises
+      personal growing as well as trafficking, leaving clubs without an authorised route to grow
+      and distribute cannabis.[@code] [Slovakia set dose categories for personal possession in
+      2006.](/history/slovakia-criminal-code-dose-categories-2006/)
     sources:
       - pardal20
       - code
   visitors:
     status: none
     text: >-
-      Visitors have no lawful recreational supply, and personal possession remains a crime.[@cms,
-      code] The lowest cannabis quantity band carries up to one year in prison; larger quantities
-      bring higher sentences under the current weight and THC rules.[@code]
+      Visitors have no lawful recreational supply, and personal possession remains a
+      crime.[@cms, code] The lowest cannabis quantity band carries up to one year in prison;
+      larger quantities bring higher sentences under the current weight and THC rules.[@code]
       [Slovakia cut sentences for small amounts in 2024.](/history/slovakia-penal-reform-2024/)
     sources:
       - cms
@@ -240,40 +309,41 @@ context:
   research:
     status: licensed
     text: >-
-      Research growing needs a health-ministry permit: hemp may be grown for research, and EU
-      varieties aside, permits normally last one year.[@z139] No separate research programme,
-      trial or published study was established by the retained sources.
+      Research cultivation requires Health Ministry permission, with the common-catalogue
+      variety exemption separately provided by §15.[@z139] In 2023, NIHO assessed clinical and
+      economic evidence for cannabidiol with clobazam in Dravet and Lennox-Gastaut
+      syndromes.[@niho2023] Its report evaluates treatment evidence for a purified CBD
+      medicine.[@niho2023]
     sources:
       - z139
+      - niho2023
   black_market:
     text: >-
-      The EU drugs agency records 123 kg of herbal cannabis and less than 1 kg of resin seized in
-      Slovakia in 2024, against 112 kg and 9.5 kg in 2023.[@euda_szr] Herbal cannabis was seized on
-      733 occasions and resin on 26.[@euda_szr] Plant seizures totalled 210 plants.[@euda_szr]
+      The EU drugs agency records 123 kg of herbal cannabis and less than 1 kg of resin seized
+      in Slovakia in 2024, against 112 kg and 9.5 kg in 2023.[@euda_szr] Herbal cannabis was
+      seized on 733 occasions and resin on 26.[@euda_szr] Plant seizures totalled 210
+      plants.[@euda_szr]
     sources:
       - euda_szr
 sources:
-  wiki:
-    title: Wikipedia — Cannabis in Slovakia
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Slovakia
   pardal20:
     title: >-
-      Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe, European
-      Journal of Criminology (2020, PDF)
+      Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe,
+      European Journal of Criminology (2020, PDF)
     url: >-
       https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
   euda_dlo:
-    title: "EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)"
+    title: 'EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)'
     url: https://www.euda.europa.eu/data/stats2026/dlo_en
   z139:
-    title: >-
-      Zákon č. 139/1998 Z. z. o omamných látkach, psychotropných látkach a prípravkoch, znenie od 1.
-      1. 2026 (Zákony pre ľudí)
-    url: https://www.zakonypreludi.sk/print/zz/1998-139/znenie-20260101.htm
+    title: Slov-Lex — Controlled Substances Act 139/1998, current from January 2026
+    url: https://static.slov-lex.sk/static/SK/ZZ/1998/139/20260101.html
+    locator: §15; industrial fibre/seed and research; permit exemption for common-catalogue varieties
   cms:
     title: CMS Expert Guide — Cannabis law and legislation in Slovakia
-    url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/slovakia
-    locator: "Guide dated 11 July 2024: medical cannabis, industrial hemp and CBD"
+    url: >-
+      https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/slovakia
+    locator: 'Guide dated 11 July 2024: medical cannabis, industrial hemp and CBD'
   euda_szr:
     title: >-
       EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of
@@ -288,8 +358,28 @@ sources:
     url: https://static.slov-lex.sk/static/SK/ZZ/2009/8/20261001.html
     locator: § 4(2)(c)–(d)
   wiktionary-trava-sk:
-    title: "Wiktionary — tráva (Slovak slang: weed, marijuana)"
+    title: 'Wiktionary — tráva (Slovak slang: weed, marijuana)'
     url: https://en.wiktionary.org/wiki/tr%C3%A1va
   wiktionary-hasis-sk:
-    title: "Wiktionary — hašiš (Slovak: hashish)"
+    title: 'Wiktionary — hašiš (Slovak: hashish)'
     url: https://en.wiktionary.org/wiki/ha%C5%A1i%C5%A1
+  cbd2021:
+    title: Slov-Lex — Act 124/2021, effective 1 May 2021
+    url: https://static.slov-lex.sk/static/SK/ZZ/2021/124/20210501.html
+    locator: Article I point 32 removes Cannabidiol/CBD from psychotropic group II
+  hhc2024:
+    title: Slov-Lex — Act 246/2024, effective November 2024
+    url: https://static.slov-lex.sk/static/SK/ZZ/2024/246/20241101.html
+    locator: 'Schedule additions and commencement: HHC, HHC-O, HHC-P and other cannabinoids'
+  cbdfood2026:
+    title: Slovak Agriculture Ministry — CBD as a novel food, 20 February 2026
+    url: >-
+      https://www.mpsr.sk/efsa-docasna-bezpecna-uroven-pre-kanabidiol-ako-novej-potraviny/526-40-526-20125/?ver=fullversion
+    locator: Report on EFSA temporary intake level and evidence gaps; novel-food classification
+  niho2023:
+    title: NIHO — Cannabidiol/Epidyolex assessment 37A/2023
+    url: >-
+      https://niho.sk/wp-content/uploads/2023/04/NIHO_2023_kanabidiol-Epidyolex_syndromy_Dravet_Lennox-Gastaut_hodnotenie-37A.pdf
+    locator: >-
+      CBD with clobazam for Dravet and Lennox-Gastaut syndromes; clinical and economic
+      assessment
