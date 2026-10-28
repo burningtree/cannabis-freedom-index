@@ -16,6 +16,11 @@ Same method as usa-1–4. Possession tables use labelled steps where fractions d
   subject — noted.
 - Audit 0/0; review page verified.
 
-## sc — pending
+## sc (South Carolina) — committed
+- Cultivation table (<100 plants felony 5yr/$5k, NORML-verified), cites on sharing/consumption/
+  access. Possession/enforcement pinned strings untouched.
+- No SC history entries, no culture subject — noted.
+- Audit 0/0; review page verified.
+
 ## al — pending
 ## ky — pending
