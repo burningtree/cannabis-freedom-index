@@ -8,14 +8,14 @@ source-archive.json) are left alone.
 Method per EXPAND-COUNTRY.md: current law + penalty tables, history, articles, context, culture,
 links; profile-audit 0/0, review build, commit country-by-country.
 
-## de (Germany) — committed (review page pending tw.yaml fix)
+## de (Germany) — committed (review page verified)
 - Inline + per-sentence cites on all 8 flagged texts (section source lists aligned); culture links
   to language/cannabis + cannabis-social-clubs; words list (Gras, Hasch, Hanf+atlas, Joint,
   Duden-verified); new 1961 Single-Convention-signature entry (UNTC-verified, fills 1960s).
 - Audit 0/0. Review build blocked by another agent's half-done `countries/tw.yaml`
   ([@moh2020] cite test) — will verify page once fixed.
 - Left: 1930s still empty (no verifiable event found); optional genetics; Bundestag-vote article.
-## gb (United Kingdom) — committed (review page pending mo.yaml fix)
+## gb (United Kingdom) — committed (review page verified)
 - New entries: 1932 Dangerous Drugs Act (OU/JCL, fills 1930s), 1956 marihuana convictions
   (Schaffer/King, fills 1950s). New article `articles/uk-nabilone-licensed-1982.md` (Lords 1998
   report; fills score-moving gap).
@@ -25,7 +25,7 @@ links; profile-audit 0/0, review build, commit country-by-country.
   `countries/mo.yaml` (schema: missing sources) — will verify page once fixed.
 - Deliberately not linked: language/420 (not a documented British word), people/john-lennon
   (his atlas entry is about the US Sinclair campaign).
-## ua (Ukraine) — committed (review page pending death_penalty.md fix)
+## ua (Ukraine) — committed (review page verified)
 - Per-sentence cites on planting/driving/black_market/arrests (kupap added to driving sources);
   new culture section (Scythians + hemp-dance + 1934/1940 history links); words list
   (Конопля, Канабіс, Трава — uk.wiktionary/Rada/MOZ verified).
@@ -63,3 +63,9 @@ links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0. Review build still blocked by others' files — will verify page once clear.
 - Left: 1930s/40s/50s/70s/80s empty (communist-era sources thin; no verifiable 1931
   ratification found).
+
+Batch verification (28 Oct): combined review build of all 8 country pages + 9 history
+entries green (exit 0, tests 183/0); words, tables, culture links and new articles spot-checked
+in `.cache/page-review/`. Earlier blockers (tw.yaml cite test, mo.yaml schema, untracked
+death_penalty.md colon, .astro store wipe, one wrong history prefix) were all resolved or
+worked around without touching others’ files.
