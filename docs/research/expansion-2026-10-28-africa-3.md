@@ -29,6 +29,11 @@ All batch files verified free of others' uncommitted changes at start.
 - New `articles/zimbabwe-pipe-bowls-1200.md` (1200 CE bowls, Zimbabwe/Monomotapa circulation).
 - Audit 0/0; page + article verified. Builds repeatedly blocked by others' in-flight edits (hr, ro, lock); green on retry.
 - Left: 1920s–40s, 1960s–80s, 2000s history decades; first-restriction estimate kept.
-## gn — pending
+## gn — committed
+- Per-sentence cites (segments + context), penalty terms (Personal use/Supply/Trafficking/Cultivation), new hemp section, assertive production wording, reworked planting.
+- Words: Diamba (Manding, via Duvall) — 1891 dictionary distinction already in culture.
+- New `articles/guinea-mandingo-dictionary-diamba-1891.md` + `articles/guinea-drug-penalties-1998.md` (1998 code from UNODC + 1989 ordinance).
+- Audit 0/0; page + both articles verified. Review cache repeatedly wiped by concurrent builds; verified build+grep in single commands.
+- Left: 1930s–50s, 1970s, 2000s decades; no driving/black_market/arrests sourced.
 ## rw — pending
 ## cf — pending
