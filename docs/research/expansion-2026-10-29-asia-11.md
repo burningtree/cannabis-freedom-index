@@ -11,7 +11,7 @@ words. This batch closes those gaps. None was marked busy.
 | Kyrgyzstan | 6 Kyrgyz/Russian terms, culture and wild-plant fine corrections | none | this commit |
 | Singapore | 6 English/Malay/Chinese/Tamil terms, Changi seizure entry | none | this commit |
 | Oman | 4 Omani Arabic terms, 2023 committee entry | none | this commit |
-| Kuwait | in progress | | |
+| Kuwait | 3 Kuwaiti Arabic terms, HHC scheduling entry | none | this commit |
 
 Kyrgyzstan validation: `profile-audit kg` zero errors and warnings. The profile now distinguishes Russian `anasha`, Kyrgyz `кара куурай` and `нашаа`, adds the law’s Russian terms for marijuana and hashish, and corrects the wild-plant fine from “landholders” to anyone obliged to clear the plants. Six terms added.
 
@@ -20,3 +20,5 @@ Hong Kong validation: `profile-audit hk` zero errors and warnings. The profile n
 Oman validation: `profile-audit om` zero errors and warnings. The profile now carries four Omani Arabic terms (حشيش, ماريجوانا, بانجو, قنب هندي) and one entry records the 2023 move of the national drug committee to the National Security Council.
 
 Singapore validation: `profile-audit sg` zero errors and warnings. The profile now carries six terms across Singapore’s four official languages and records the 36.3 kg Changi airport seizure of April 2026.
+
+Kuwait validation: `profile-audit kw` zero errors and warnings. The profile now carries حشيش, ماريجوانا and قنب, and one entry records the May 2026 scheduling of HHC.
