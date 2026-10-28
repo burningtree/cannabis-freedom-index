@@ -53,4 +53,11 @@ All batch files verified free of others' uncommitted changes at start.
 - Two articles: `sierra-leone-seamen-regional-trafficking-1938.md` (Duvall + Akyeampong) and `sierra-leone-drugs-commencement-amendment-2008.md` (Amendment Act + cocaine plane).
 - Audit 0/0; page + both articles verified (several transient build failures from concurrent agents' mid-edits; green on retry).
 - Left: 1940s–1980s, 2010s history decades.
-## gm — pending
+## gm — committed
+- Added missing recreational section + hemp (status none); folded products into them and deleted it.
+- Possession (3-tier 2014 scale) + cultivation (unauthorised + legal-research rows) tables with GMD currency.
+- Per-sentence cites on all 15 flagged texts; words (Diamba via Duvall); new culture (diamba atlas + 2019 strategy link).
+- New `articles/gambia-drug-strategy-rehabilitation-2019.md` (treatment/alternatives call vs 1,219 arrests).
+- Planting researched section skipped (no seed-specific sources).
+- Audit 0/0; page + article verified. Final rebuild blocked by another agent's uncommitted si.yaml link to not-yet-created slovenia-hemp-inspections-2025; page content already verified green.
+- Left: 1920s, 1940s–1970s history decades.
