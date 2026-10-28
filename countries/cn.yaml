@@ -60,10 +60,16 @@ segments:
         term: Small possession
         fine: 3000
         note: Ten to fifteen days' detention plus a fine of up to 3,000 yuan; lighter cases five days or 1,000 yuan
-      - label: Relatively large amount, crime threshold
+      - label: 30–150 kg leaf, 2–10 kg resin or 1–5 kg oil
         treatment: criminal
         term: Illegal possession
-        note: Crime of illegal possession from 30 kg of leaf, 2 kg of resin or 1 kg of oil
+        prison: 3 years
+        note: Up to three years, detention or control plus a fine; serious cases three to seven years
+      - label: 150 kg or more leaf, 10 kg or more resin or 5 kg or more oil
+        treatment: criminal
+        term: Illegal possession
+        prison_min: 7 years
+        note: Seven years or more, or life imprisonment, plus a fine
   cultivation:
     text: >-
       Growing cannabis for drug use is prohibited and the plants are uprooted.[@psapl25] A small
@@ -83,10 +89,16 @@ segments:
         term: Cultivation
         fine: 5000
         note: Ten to fifteen days' detention plus up to 5,000 yuan; lighter cases five days or 1,000 yuan; no penalty if uprooted before maturing
-      - label: Growing as a crime, Article 351
+      - label: 5,000–30,000 plants, Article 351
         treatment: criminal
         term: Cultivation
-        note: Crime from 5,000 plants
+        prison: 5 years
+        note: Up to five years, detention or control plus a fine
+      - label: 30,000 or more plants, Article 351
+        treatment: criminal
+        term: Cultivation
+        prison_min: 5 years
+        note: Five years or more plus a fine or confiscation
   enforcement:
     text: >-
       Short detention for users, extreme penalties for supply.[@psapl25] Citizens have been warned
@@ -106,16 +118,22 @@ segments:
       - lc
       - spc16
     penalties:
-      - label: Trafficking any amount, Article 347
+      - label: Trafficking any amount, small or serious
+        treatment: criminal
+        term: Trafficking
+        prison: 7 years
+        note: Up to three years for a small amount, three to seven for a serious case, plus a fine
+      - label: Relatively large amount
+        treatment: criminal
+        term: Trafficking
+        prison_min: 7 years
+        note: From 30 kg of leaf, 2 kg of resin or 1 kg of oil; seven years or more plus a fine
+      - label: Large amount or aggravating facts
         treatment: criminal
         term: Trafficking
         death: true
-        note: No minimum quantity; large amounts can bring life or death
-      - label: Large amount, heaviest tier
-        treatment: criminal
-        term: Trafficking
-        death: true
-        note: From 150 kg of leaf, 10 kg of resin or 5 kg of oil
+        prison_min: 15 years
+        note: From 150 kg of leaf, 10 kg of resin or 5 kg of oil, or a ringleader, armed cover, violence or international organised trafficking; death is discretionary
   consumption:
     text: >-
       Using a drug is an administrative offence under the same Article 84 as small possession: 10
@@ -154,10 +172,13 @@ context:
       years, life imprisonment or death.[@lc] For cannabis the Supreme People's Court's 2016
       interpretation puts that amount at 150 kg of leaf, 10 kg of resin or 5 kg of oil.[@spc16]
       The death penalty is available for the most serious trafficking cases, not for possession or
-      use.[@lc]
+      use, and it is discretionary: the court may impose fifteen years or life instead.[@lc,spc16]
+      No death sentence or execution for plant cannabis was verified in 2024–2026; the recent capital
+      cannabinoid case concerned a synthetic substance.[@synthetic24]
     sources:
       - lc
       - spc16
+      - synthetic24
   production:
     status: hemp
     text: >-
@@ -206,10 +227,11 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      The Drugs Prohibition Law forbids illicitly growing cannabis plants and makes it illegal to
+      The Narcotics Control Law forbids illicitly growing cannabis plants and makes it illegal to
       trade in, transport, carry or possess seeds or seedlings of drug plants that have not been
-      inactivated.[@cmsg] Only enterprises designated by the state may cultivate such plants.[@cmsg]
-      Cannabis seed itself is listed in the Chinese Pharmacopoeia as a traditional medicine.[@cmsg]
+      inactivated.[@cmsg] State-designated enterprises may cultivate medicinal narcotic plants;
+      licensed industrial-hemp growers are a separate exception.[@cmsg] Cannabis seed itself is
+      listed in the Chinese Pharmacopoeia as a traditional medicine.[@cmsg]
     sources:
       - cmsg
   clubs:
@@ -234,30 +256,37 @@ context:
       - psapl25
       - nia
   driving:
-    status: zero
+    status: unknown
     text: >-
-      The Road Traffic Safety Law says a person who has taken state-controlled psychotropic or
-      narcotic drugs may not drive a motor vehicle.[@rtsl22] It sets no level and does not ask
-      whether the driver is impaired.[@rtsl22] The article itself carries no penalty of its own for
-      drugs; the law's detailed drunk-driving penalties refer only to alcohol.[@rtsl22]
+      The Road Traffic Safety Law prohibits driving after taking any state-controlled narcotic or
+      psychotropic drug.[@rtsl22] A mandatory national standard, GB 45248-2025, took effect on
+      1 September 2025 and sets concentration cutoffs for eleven drugs including delta-9 THC; the
+      predecessor standard used 2 ng/mL in blood and 1 ng/mL in saliva.[@gb2025] The exact 2025
+      cutoff table could not be read, so the numeric limit remains unverified.[@gb2025]
     sources:
       - rtsl22
+      - gb2025
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 328 kg of herbal cannabis
-      seized in 2024, against 421 kg in 2023.[@unodc_szr] The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not comparable
-      across borders.[@unodc_szr] No cannabis-specific price data were found.
+      seized in 2024, against 421 kg in 2023.[@unodc_szr] The series is volatile and incomplete, and
+      China publishes no cannabis-only seizure total.[@report25] In 2025 the authorities reported
+      15,000 existing cannabis users and 3,000 cannabis users punished, both down on 2024.[@report25]
+      Major cases include 735 kg seized in the South China Sea in April 2026 and 70.83 kg in transit
+      at Beijing airport in June 2025.[@gd26,beijing25]
     sources:
       - unodc_szr
+      - report25
+      - gd26
+      - beijing25
   arrests:
     text: >-
-      No cannabis-specific arrest figures were found. The available national series is the UNODC
-      seizure data, which records 328 kg of herbal cannabis in 2024.[@unodc_szr] China publishes
-      aggregate drug-user and drug-crime statistics rather than a cannabis breakdown, and those
-      aggregates were not available in the sources read.
+      China publishes aggregate drug statistics, not a cannabis arrest count. The 2025 drug report
+      recorded 27,000 drug cases and 41,000 suspects, down 27.6% and 33% on 2024, and 134,000 users
+      handled; it separately counted 15,000 existing cannabis users and 3,000 punished.[@report25]
+      The figures cover all drugs.[@report25]
     sources:
-      - unodc_szr
+      - report25
   culture:
     text: >-
       Hemp runs through Chinese material and medical culture. [Ma](/culture/language/ma/) is the
@@ -275,6 +304,26 @@ context:
       - wiki
       - cms
 sources:
+  report25:
+    title: "China — 2025 drug situation report (China Anti-Drug Network, 16 June 2026)"
+    url: http://www.nncc626.com/20260616/d7b27d03f84b40e3b03b98a6e8327eb9/c.html
+    locator: "27,000 cases; 41,000 suspects; 134,000 users; 15,000 existing cannabis users; 3,000 punished."
+  gd26:
+    title: "Guangzhou Daily — 735 kg cannabis seized in the South China Sea (22 June 2026)"
+    url: https://news.qq.com/rain/a/20260622A0AO3Y00
+    locator: "735 kg; five arrested."
+  beijing25:
+    title: "Guancha — Beijing airport transit cannabis case (16 August 2026)"
+    url: https://m.guancha.cn/internation/2026_08_16_827492.shtml
+    locator: "70.83 kg; two foreign passengers sentenced."
+  synthetic24:
+    title: "China Anti-Drug Network — Changzhou synthetic cannabinoid death sentence (18 July 2025)"
+    url: https://news.qq.com/rain/a/20250718A0ANV900
+    locator: "43.8 kg ADBB; death sentence, November 2024."
+  gb2025:
+    title: "China — GB 45248-2025, mandatory drug-driving threshold standard (in force 1 September 2025)"
+    url: https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=C18E78852C41024BEE241077E545BEED
+    locator: "Eleven drugs including delta-9 THC; exact table not readable in the open preview."
   psapl25:
     title: "China — Public Security Administration Punishments Law as revised on 27 June 2025, in force 1 January 2026, Articles 83 and 84 (State Administration for Market Regulation)"
     url: https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/bgt/art/2025/art_8a1c722747214869b28c0ad7a0f8bb7a.html
