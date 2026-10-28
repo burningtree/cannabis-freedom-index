@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 586
 recreational: illegal
 medical: limited
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Illegal, yet charas is widely used and largely tolerated in parts of the country. The cannabis
   regulator publishes licence categories and application requirements for medicinal cultivation,
@@ -19,165 +19,299 @@ segments:
   possession:
     text: >-
       Section 6 of the Control of Narcotic Substances Act forbids possessing any narcotic, and
-      Section 9 sets the sentence by drug and weight. In the consolidated text, up to 499 g of
-      charas (hashish) carries ten months to five years in prison and a fine of up to 40,000
-      rupees, and 500 to 999 g five to nine years; up to 999 g of bhang, the herbal form,
-      carries six months to three years and a fine of up to 10,000 rupees. Charas is nonetheless
-      smoked widely and police often ignore it or take a bribe, so the law's severity and daily
-      reality diverge sharply.
+      Section 9 sets the sentence by drug and weight.[@cnsa23] In the consolidated text, up to
+      499 g of charas (hashish) carries ten months to five years in prison and a fine of up to
+      40,000 rupees, and 500 to 999 g five to nine years.[@cnsa23] Up to 999 g of bhang, the
+      herbal form, carries six months to three years and a fine of up to 10,000 rupees.[@cnsa23]
+      Hashish oil has its own higher scale, starting at fourteen months to seven years for up to
+      499 g.[@cnsa23] Charas is nonetheless smoked widely and police often ignore it or take a
+      bribe, so the law's severity and daily reality diverge sharply.[@shc]
     sources:
       - cnsa23
       - shc
-      - wiki
     currency: PKR
     penalties:
-      - label: Up to 499 g charas
+      - label: Bhang up to 999 g
         treatment: criminal
-        prison_min: 10 months
-        prison: 5 years
-        fine: 40000
-        note: Ten months to five years and up to 40,000 rupees
-      - label: 500 to 999 g charas
-        treatment: criminal
-        prison_min: 5 years
-        prison: 9 years
-      - label: Up to 999 g bhang
-        treatment: criminal
+        term: Possession
         prison_min: 6 months
         prison: 3 years
         fine: 10000
-        note: Six months to three years and up to 10,000 rupees
+      - label: Charas up to 499 g
+        treatment: criminal
+        term: Possession
+        prison_min: 10 months
+        prison: 5 years
+        fine: 40000
+      - label: Hashish oil up to 499 g
+        treatment: criminal
+        term: Possession
+        prison_min: 14 months
+        prison: 7 years
+        fine: 40000
+        note: Higher bands for all three drugs are on the sharing table
   cultivation:
     text: >-
       Section 4 forbids cultivating any cannabis plant, letting land for it, or gathering any
       part of the plant; under Section 5 as amended in 2022 the penalty is one to seven years in
-      prison and a fine. The federal government, or a province it authorises, may license
-      cultivation for medical, scientific or industrial purposes only. Cannabis nonetheless
-      grows wild across the north and is farmed in the tribal districts.
+      prison and a fine.[@cnsa23] The federal government, or a province it authorises, may license
+      cultivation for medical, scientific or industrial purposes only.[@cnsa23] Cannabis
+      nonetheless grows wild across the north and is farmed in the tribal districts.[@wiki]
     sources:
       - cnsa23
       - wiki
+    currency: PKR
+    penalties:
+      - label: Unauthorised cultivation
+        treatment: criminal
+        term: Cultivation
+        prison_min: 1 year
+        prison: 7 years
+        note: Fine also imposed; a government licence is possible for medical, scientific or industrial purposes
   enforcement:
     text: >-
-      Mandatory minimum prison terms on paper, with uneven enforcement that falls hardest on the
-      poor.
+      Mandatory minimum prison terms apply on paper, with uneven enforcement that falls hardest on
+      the poor.[@shc] The Anti-Narcotics Force reported 1,652 arrests in 1,678 cases in the twelve
+      months to mid-2023, and 157.5 tonnes of drugs seized, of which 61.8 tonnes were
+      hashish.[@dt23] No national cannabis-specific arrest figures for 2024–2026 were found.
     sources:
       - shc
-      - wiki
+      - dt23
   sharing:
-    text: Supply is trafficking, with sentences up to life imprisonment for the largest quantities.
+    text: >-
+      Supply is trafficking under Sections 6 to 8, and Section 9 applies the same weight table as
+      possession. For bhang, the bands run from six months to three years for up to 999 g, to a
+      minimum of fourteen years and possible life imprisonment from 20 kg. Charas starts at ten
+      months to five years for up to 499 g and reaches a minimum of twenty years and possible life
+      imprisonment from 10 kg. Hashish oil starts at fourteen months to seven years and reaches a
+      minimum of twenty years and possible life from 5 kg.[@cnsa23]
     sources:
-      - shc
-      - na23
-      - hri24
+      - cnsa23
+    currency: PKR
+    penalties:
+      - label: Bhang up to 999 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 6 months
+        prison: 3 years
+        fine: 10000
+      - label: Bhang 1,000–9,999 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 3 years
+        prison: 7 years
+        fine_min: 10000
+        fine: 100000
+      - label: Bhang 10,000–19,999 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 7 years
+        prison: 14 years
+        fine_min: 100000
+        fine: 200000
+      - label: Bhang 20,000 g or more
+        treatment: criminal
+        term: Trafficking
+        prison_min: 14 years
+        fine_min: 200000
+        note: Life imprisonment available
+      - label: Charas up to 499 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 months
+        prison: 5 years
+        fine: 40000
+      - label: Charas 500–999 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 9 years
+        fine_min: 40000
+        fine: 80000
+      - label: Charas 1,000–4,999 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 9 years
+        prison: 14 years
+        fine_min: 80000
+        fine: 400000
+      - label: Charas 5,000–9,999 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 14 years
+        prison: 20 years
+        fine_min: 400000
+        fine: 800000
+      - label: Charas 10,000 g or more
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        fine_min: 800000
+        note: Life imprisonment available
+      - label: Hashish oil up to 499 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 14 months
+        prison: 7 years
+        fine: 40000
+      - label: Hashish oil 500–999 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 7 years
+        prison: 14 years
+        fine_min: 40000
+        fine: 80000
+      - label: Hashish oil 1,000–4,999 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 14 years
+        prison: 20 years
+        fine_min: 80000
+        fine: 400000
+      - label: Hashish oil 5,000 g or more
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        fine_min: 400000
+        note: Life imprisonment available
   consumption:
     text: >-
       The Act deals with users through registration and treatment: each province is to register
       addicts, who must carry a registration card, and the federal government pays for a first
-      compulsory detoxification. Holding the drug to use it is punished as possession. Use is
-      culturally embedded, particularly at Sufi shrines, and bhang drinks are consumed at
-      festivals.
+      compulsory detoxification.[@cnsa23] Holding the drug to use it is punished as
+      possession.[@cnsa23] Use is culturally embedded, particularly at Sufi shrines, and bhang
+      drinks are consumed at festivals.[@malang20]
     sources:
       - cnsa23
-      - wiki
+      - malang20
   access:
     text: >-
       No legal source for adults: Section 6 of the Control of Narcotic Substances Act forbids
       possessing any narcotic and Section 4 forbids cultivating any cannabis plant without a
-      government licence.
+      government licence.[@cnsa23] The Cannabis Control and Regulatory Authority licenses medical
+      and industrial production, but no patient or adult retail supply was found.[@ccra_scope]
     sources:
       - cnsa23
+      - ccra_scope
 context:
   recreational:
     text: >-
       Illegal on paper, widely used in practice: charas is smoked widely and police often ignore
-      it, and use is culturally embedded at Sufi shrines and festivals. Minimum prison terms
-      apply to possession of any amount, but no legal adult-use source exists.[@cnsa23,wiki,shc]
+      it, and use is culturally embedded at Sufi shrines and festivals.[@shc] Minimum prison terms
+      apply to possession of any amount, but no legal adult-use source exists.[@cnsa23] No price or
+      purity data were found.
     sources:
       - cnsa23
-      - wiki
       - shc
   production:
     status: medical
     text: >-
-      The cannabis regulator now publishes an application route for industrial-hemp cultivation,
+      The cannabis regulator publishes an application route for industrial-hemp cultivation,
       controlled and open-field medicinal cannabis cultivation, extraction, pharmaceutical
-      manufacturing and research.[@ccra_scope] Applicants must meet tax, police-clearance, financial,
-      technical and site-security requirements; foreign investors need a Pakistani joint-venture
-      partner holding at least 51%.[@ccra_scope] Cultivation-only applicants may apply as individuals,
-      while other activities have their own documentary requirements.[@ccra_scope]
+      manufacturing and research.[@ccra_scope] Applicants must meet tax, police-clearance,
+      financial, technical and site-security requirements; foreign investors need a Pakistani
+      joint-venture partner holding at least 51%.[@ccra_scope] Cultivation-only applicants may
+      apply as individuals, while other activities have their own documentary requirements.[@ccra_scope]
     sources:
       - ccra_scope
   medical:
     text: >-
-      No working medical programme yet and no legal consumer products; the 2024 Authority is
-      meant to license medical and industrial cannabis but is still being built.
+      No working patient programme or legal consumer product was found. The Cannabis Control and
+      Regulatory Authority licenses medicinal cultivation, extraction and pharmaceutical
+      manufacturing, but the licensing scheme is still being built and no prescription or pharmacy
+      supply route was verified.[@ccra_scope] Medical status stays limited.
     sources:
-      - wiki
+      - ccra_scope
+  hemp:
+    status: strict
+    text: >-
+      Industrial hemp is a licensed category. The regulator issues cultivation licences in three
+      size classes, from up to 50 acres to more than 250 acres, with police clearance, tax
+      registration and site-security conditions.[@ccra_scope] No published THC ceiling was found
+      in the sources read, so the licence conditions are the relevant limit.[@ccra_scope]
+    sources:
+      - ccra_scope
   consequences:
-    text: A narcotics conviction carries a criminal record.
+    text: >-
+      A narcotics conviction carries a criminal record.[@shc] The Act sets mandatory minimum
+      prison terms for possession and trafficking, and the 2023 amendment removed death from the
+      remaining federal drug-law rows while leaving life imprisonment as the maximum.[@na23]
     sources:
       - shc
+      - na23
   planting:
     seeds: grey
     seeds_trade: open
     clones: illegal
     clones_trade: banned
     text: >-
-      The Control of Narcotic Substances Act 1997 defines cannabis as the resin and the
-      flowering or fruiting tops, "excluding the seed and leaves when not accompanied by the
-      tops", so loose seed is not a narcotic drug. Section 4 forbids cultivating any cannabis
-      plant or gathering any portion of one, unless the government licenses it for medical,
-      scientific or industrial purposes.
+      The Control of Narcotic Substances Act 1997 defines cannabis as the resin and the flowering
+      or fruiting tops, "excluding the seed and leaves when not accompanied by the tops", so loose
+      seed is not a narcotic drug.[@cnsa] Section 4 forbids cultivating any cannabis plant or
+      gathering any portion of one, unless the government licenses it for medical, scientific or
+      industrial purposes.[@cnsa]
     sources:
       - cnsa
-  black_market:
-    text: >-
-      The whole market is illegal, and hashish (charas) is the drug the Anti-Narcotics Force
-      seizes most. In the twelve months to mid-2023 the force reported 157.5 tonnes of drugs
-      seized nationwide, of which 61.8 tonnes were hashish, ahead of 43.2 tonnes of opium and
-      9.3 tonnes of heroin; 1,652 people were arrested in 1,678 cases. Eight operations at sea
-      in 2023, run with foreign agencies on the force's intelligence, took another 13.3 tonnes
-      of charas, which points to a large export trade as well as a domestic one.
-    sources:
-      - dt23
   clubs:
     status: none
     text: >-
       No cannabis clubs in the modern sense are known, and the law leaves no room for them:
-      growing and supplying cannabis are prohibited. The collective use that does exist is
-      religious and much older. Malangs, the wandering mendicants found in large numbers at
-      Sufi shrines such as that of Lal Shahbaz Qalandar in Sehwan, commonly smoke charas and
-      drink bhang, which they regard as part of their devotion and an aid to ecstatic dance
-      and trance, according to a 2020 study in a Lahore university journal. That is a
-      devotional custom outside respectable society, not a members' association.
+      growing and supplying cannabis are prohibited.[@cnsa23] The collective use that does exist is
+      religious and much older. Malangs, the wandering mendicants found at Sufi shrines such as
+      Lal Shahbaz Qalandar in Sehwan, commonly smoke charas and drink bhang, which they regard as
+      part of their devotion.[@malang20] That is a devotional custom, not a members' association.
     sources:
-      - wiki
-      - shc
+      - cnsa23
       - malang20
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. The narcotics act sets minimum prison
-      terms for possession of any amount: at least ten months for up to 499 g of charas and at
-      least six months for up to 999 g of bhang, each with a fine.
+      There is no legal recreational supply for anyone. The narcotics act sets minimum prison terms
+      for possession of any amount: at least ten months for up to 499 g of charas and at least six
+      months for up to 999 g of bhang, each with a fine.[@cnsa23] The law makes no exception for
+      visitors.[@cnsa23]
     sources:
       - cnsa23
   driving:
     status: impairment
     text: >-
-      The Provincial Motor Vehicles Ordinance's section 100 prohibits driving or attempting
-      to drive while drink or drugs prevent proper vehicle control. The version published
-      by Pakistan's Ministry of Law provides up to six months' imprisonment or a fine or
-      both for a first offence, and up to two years or a fine or both for a repeat. Section
-      18(2) provides at least six months' disqualification on conviction under section 100.
-      This describes the published baseline Ordinance: provincial amendments and separate
-      highway legislation mean its fine figures should not be treated as a current uniform
-      nationwide tariff. No numeric THC threshold is stated in section 100. Current
-      provincial ticket schedules, testing procedures and any special rules for medical
-      patients remain to be verified.
+      The Provincial Motor Vehicles Ordinance's section 100 prohibits driving or attempting to
+      drive while drink or drugs prevent proper vehicle control.[@motortraffic] The published
+      version provides up to six months' imprisonment or a fine or both for a first offence, and up
+      to two years for a repeat; section 18(2) provides at least six months' disqualification.[@motortraffic]
+      No numeric THC threshold is stated, and provincial amendments mean the fine figures are not a
+      uniform nationwide tariff.[@motortraffic]
     sources:
       - motortraffic
+  black_market:
+    text: >-
+      The whole market is illegal, and hashish (charas) is the drug the Anti-Narcotics Force
+      seizes most. In the twelve months to mid-2023 the force reported 157.5 tonnes of drugs seized
+      nationwide, of which 61.8 tonnes were hashish, ahead of 43.2 tonnes of opium and 9.3 tonnes
+      of heroin; 1,652 people were arrested in 1,678 cases.[@dt23] Eight operations at sea in 2023,
+      run with foreign agencies, took another 13.3 tonnes of charas, which points to a large export
+      trade as well as a domestic one.[@dt23]
+    sources:
+      - dt23
+  arrests:
+    text: >-
+      In the twelve months to mid-2023 the Anti-Narcotics Force reported 1,652 arrests in 1,678
+      cases and 157.5 tonnes of drugs seized, including 61.8 tonnes of hashish.[@dt23] No official
+      arrest or prosecution figures for 2024–2026 were found in the sources read.
+    sources:
+      - dt23
+  culture:
+    text: >-
+      Pakistan's cannabis culture centres on [charas](/culture/language/charas/), the hand-rubbed
+      resin, and [hashish](/culture/language/hashish/) more broadly. The Hindu Kush gave its name to
+      [kush](/culture/language/kush/), and the old farmers' populations of the region are
+      [landraces](/culture/language/landrace/); the botanical split between
+      [indica and sativa](/culture/language/indica-and-sativa/) also drew on South Asian drug
+      types.[@wiki] At Sufi shrines, malangs smoke charas and drink bhang as part of their
+      devotion.[@malang20]
+    sources:
+      - wiki
+      - malang20
 sources:
   motortraffic:
     title: "Pakistan Ministry of Law and Justice — Provincial Motor Vehicles Ordinance 1965 (Pakistan Code, PDF)"
@@ -186,12 +320,10 @@ sources:
   cnsa23:
     title: "Pakistan — Control of Narcotic Substances Act, 1997, consolidated with amendments to Federal Act XXXVIII of 2023 (Sindh Judicial Academy, PDF)"
     url: https://sja.gos.pk/assets/Updated_Laws/Control%20of%20Narcotic%20Substances%20Act%2C%201997%20%28Amendments%20upto%20date%29.pdf
+    locator: "Sections 4–9 and the Section 9 table for bhang, charas and hashish oil."
   na23:
     title: National Assembly of Pakistan — Control of Narcotic Substances (Amendment) Act, 2023
     url: https://na.gov.pk/uploads/documents/64d4d874b52c0_506.pdf
-  hri24:
-    title: Harm Reduction International — The Death Penalty for Drug Offences, Global Overview 2024
-    url: https://hri.global/flagship-research/death-penalty/the-death-penalty-for-drug-offences-global-overview-2024/
   malang20:
     title: Asghar, Jawad, Rehmani & Natalia — The Malang in Pakistan Today, Journal of the Research Society of Pakistan 57(2), 2020 (PDF)
     url: https://pu.edu.pk/images/journal/history/PDF-FILES/15_57_2_20.pdf
@@ -201,6 +333,7 @@ sources:
   cnsa:
     title: Control of Narcotic Substances Act, 1997 (UNODC SHERLOC, PDF)
     url: https://sherloc.unodc.org/cld/uploads/res/document/pak/control-of-narcotic-substances-act-xxv_html/CONTROL_OF_NARCOTIC_SUBSTANCES_ACT_pakistan.pdf
+    locator: "Section 2(d) cannabis definition; Section 4 cultivation ban."
   shc:
     title: Sindh High Court — judgment applying the Control of Narcotic Substances (Amendment) Act 2022
     url: https://caselaw.shc.gov.pk/caselaw/view-file/MjE5MTk3Y2Ztcy1kYzgz
@@ -210,6 +343,4 @@ sources:
   ccra_scope:
     title: Pakistan Cannabis Control and Regulatory Authority — licence eligibility and scope
     url: https://www.elicense.ccra.gov.pk/pre-requisite
-    locator: >-
-      Applicant eligibility and licence codes A-1–A-3, B-2–B-3 and C-1; cultivation, extraction,
-      manufacture and research
+    locator: "Applicant eligibility and licence codes A-1–A-3, B-2–B-3 and C-1; cultivation, extraction, manufacture and research"
