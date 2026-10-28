@@ -22,3 +22,18 @@ Yemen validation: `profile-audit ye` zero errors/warnings; `country-gaps ye` has
 Bahrain validation: `profile-audit bh` zero errors/warnings; `country-gaps bh` has no missing sections, tables or citations. The profile now gives article 32(1) ten days to three years and a BHD3,000 fine, article 32(2) up to seven years, article 30 death or life with the five mandatory aggravating facts, and article 31 paid supply at ten years minimum. It adds cultivation and sharing tables, the 2025 Traffic Decree 30 penalties, hemp and arrest sections, the 2018–2026 hashish and CBD cases, and 10 history entries. The 1925 first-restriction estimate is retained but now states that the first verified cannabis-specific instrument is the 1954 regulation.
 
 Palestine validation: `profile-audit ps` zero errors/warnings; `country-gaps ps` has no missing sections, tables or citations. The profile now separates the West Bank's Decree-Law 18/2015 (six months to two years for use, fifteen to twenty-five years for cultivation or supply for sale) from Gaza's 2013 law (three to fifteen years for use, five years to life for trafficking, death available in aggravated cases). It adds death-penalty, hemp, driving and arrest sections, the 2024–2026 West Bank caseload, the 2023 Gaza court collapse, and 20 history entries from 1948 to 2026. The 2015 and 2020 entries now record the repeal of the prior laws and the added online-promotion and suspended-sentence provisions.
+
+## Batch result
+
+All five countries are committed. Final totals: 69 history entries added or corrected (Syria 12,
+Palestine 20, Yemen 14, Qatar 13, Bahrain 10). Every profile has zero `profile-audit` errors and
+warnings, no missing standard or researched sections, no missing penalty tables and no uncited
+text.
+
+Remaining gaps:
+
+- **Syria:** Schedule 4 and the Official Gazette issue were not read; a reported 2021 amendment is unverified; no cannabis execution was confirmed; the traffic-law trigger is unknown.
+- **Palestine:** the 1980s have no verified cannabis event; the PA and Gaza laws conflict over which applies in Gaza; 2025–2026 enforcement figures cover the West Bank only; pure CBD's status is unstated.
+- **Yemen:** the 1930s have no verified event; the 1925 first-restriction estimate is retained; no Houthi annual seizure or arrest series exists; no cannabis execution was confirmed.
+- **Qatar:** no annual cannabis arrest count; no drug execution found; the 1966 decree and its amendments were not read; CBD's status is inferred.
+- **Bahrain:** the 1930s–1960s remain empty; the 1925 first-restriction estimate is retained; the 1931 regulation's cannabis coverage is unverified; no cannabis-only arrest count exists.
