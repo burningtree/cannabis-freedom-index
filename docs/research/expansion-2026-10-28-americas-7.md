@@ -33,7 +33,12 @@ track); Canada (separate job); Eritrea/Somaliland/Sudan (closed/recent); Africa 
 - Cleared 4 pre-existing ladder warnings (terms on all possession/consumption rows).
 - Audit 0/0; page + all three articles verified in review HTML.
 - Left: 1925 estimate (parallel YE estimate, no link), driving (no section — check later), 4 remaining imp-1 entries.
-## vg — pending
+## vg — committed
+- Word weed (English (BVI), from the VINO visitor headline); possession table (≤50 g ordinary / over-50 g supply presumption / 2015 $5,000-or-6-months case row, USD currency); products folded into access (dispensary sentence + bill source); context.recreational + context.hemp (none) added.
+- New `articles/bvi-medical-cannabis-way-forward-2023.md` (Wheatley: doctors' route under existing law) + `articles/bvi-cannabis-bills-held-2020.md` (Jaspert: preparatory work + Home Office agreement; record-clearing held over trafficking concerns; unassented per 2026 review) + `articles/bvi-trafficking-vehicle-forfeiture-1996.md` (drug-law conveyance forfeiture + owner restoration); 1937 lineage links the shared AG article (same E/NL.1952/54 filing).
+- Fixed self-inflicted YAML break (products→medical fold orphaned medical's sources block; restored).
+- Audit 0 errors + 1 pre-existing heuristic warning (production "licensing"); page + all three articles verified.
+- Left: driving/arrests (no sources), 1925 estimate, culture (no atlas entries).
 ## kn — pending
 ## ht — pending
 ## do — pending
