@@ -23,5 +23,10 @@ Same method as usa-1–8.
 - Possession/sharing pinned by scope tests, untouched. No culture subject — noted.
 - Audit 0/0; review page verified.
 
-## nh — pending
+## nh (New Hampshire) — committed
+- Cultivation table (manufacture <5g felony 3yr/$25k, NORML-verified), cites on sharing/
+  consumption/access (NORML overview).
+- Possession/answers pinned by test, untouched. No NH history entries, no culture subject.
+- Audit 0/0; review page verified.
+
 ## ri — pending
