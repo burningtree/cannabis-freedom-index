@@ -48,7 +48,7 @@ The form is the same everywhere: a gathering, a march through the centre, then s
 
 ## Where marching was a crime
 
-In Brazil the march ran into the offence of *apologia*, the advocacy of a crime. Judges in several cities banned the [Marcha da Maconha](/culture/language/maconha/) on that ground.
+In Brazil the march ran into the offence of *apologia*, the advocacy of a crime. Judges in several cities banned the [Marcha da Maconha](/culture/traditions/marcha-da-maconha/) on that ground.
 
 The question went to the Supreme Court in 2009. On 15 June 2011 the ministers ruled unanimously that a demonstration for the legalisation of a drug is an exercise of freedom of expression and not incitement to commit a crime. The same offence had been used to jail the band [Planet Hemp](/history/brazil-planet-hemp-arrest-1997/) fourteen years earlier.
 
