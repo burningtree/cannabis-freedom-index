@@ -1,29 +1,19 @@
-# Expansion batch, 28 October 2026 — Oceania 1
+# Oceania batch — expansion-2026-10-28-oceania (tv, mp, nr, vu, fm, pw, to)
 
-Chosen from `country-gaps.cjs --rank 30 --region Oceania`. The batch is Solomon Islands, Marshall
-Islands, Australia, New Zealand and Papua New Guinea: the five highest-ranked Oceanian profiles,
-mixing small Pacific states with the region's two federal/medical markets. None was marked busy.
+Australia and New Zealand are done (work 1–2). This batch targets the highest-work Pacific
+islands. Skip BUSY files; none of these countries have uncommitted changes.
 
-| Country | Done | Left | Commit |
-|---|---|---|---|
-| Solomon Islands | current bill correction, 2024–26 enforcement, first restriction fixed, 8 history entries, 2 article corrections | 1930s empty; no national seizure series | this commit |
-| Marshall Islands | recreational, hemp, driving, black-market and arrest sections; possession/cultivation tables; products folded; 4 history entries | 2000s added only as a court caseload count; no kg series | this commit |
-| Australia | federal trafficking/cultivation tables, medical and driving corrections, 6 history entries, 2 articles | state ladders not tabulated; 1930s/1950s entries year-only | this commit |
-| New Zealand | possession/sharing tables, official court figures, driving and hemp updates, 9 history entries, 1975 article | 2026 election outcome unknown; blood THC levels unverified | this commit |
-| Papua New Guinea | two-track DDA/CSA correction, sharing and cultivation caveats, driving, arrests, death-penalty section, 10 history entries | 1930s and 1940s empty; no national cannabis seizure total | this commit |
+- tv Tuvalu 9k, work 28: 2 standard sections missing, products to fold, no penalty tables, 6 empty decades, only 4 history entries
+- mp Northern Mariana Islands 47k, work 12: 4 empty decades, 2 key entries without article
+- nr Nauru 12k, work 11: 3 empty decades, 2 key entries without article
+- vu Vanuatu 335k, work 9: 5 empty decades
+- fm Micronesia 114k, work 8: 2 empty decades, 1 key entry without article
+- pw Palau 18k, work 8: 2 empty decades, 1 key entry without article
+- to Tonga 104k, work 7: 3 empty decades, 1 key entry without article
 
-Solomon Islands validation: `profile-audit sb` zero errors and warnings. The profile now states that the 2025 amendment bill remained before Parliament on 28 October 2026 and would raise only the section 39(2)(a) assessor-court maximum, not create cannabis offences; it adds the 2024–2026 plant seizures and the 2025 charges. The unsupported 1925 estimate copied from Yemen was removed and the first-restriction step moved to the 1941 Dangerous Drugs Regulation as an estimate within 1925–1941. The 1949 amendment and 2026 bill descriptions were corrected, and the two related articles updated. Eight history entries extend coverage to the 1950s, 1970s, 1990s and 2010s; the 1930s remain empty for want of a verified local instrument.
-
-Marshall Islands validation: `profile-audit mh` zero errors and warnings. The profile now adds recreational, hemp, driving, black-market, arrest and death-penalty sections; folds the old products block into possession and medical; and gives possession, cultivation and distribution their quantity tables, including the concentrate ladder and the 25-year minimum with no statutory maximum. Medical and production are described as on-paper licensing routes with no commercial programme. Four enforcement entries fill the 2000s and add the 2024 jail raid, the Aiseia charges and the 2025 court caseload.
-
-New Zealand validation: `profile-audit nz` zero errors and warnings. The profile now separates the Class C custody presumption from Class B preparations, adds supply and cultivation tables, replaces the Wikipedia referendum source with the Electoral Commission result, updates drug-driving to the 1 July 2026 nationwide rollout, adds the 2025/26 Ministry of Justice court figures and distinguishes dried-herb seizures from police plant-material tonnages. The 1975 Act entry has replacement text, four citations and an article; ten history entries cover 1935–2026, and the three open directional entries (1869, 1963 and 2009) are now reviewed as unscored.
-
-Papua New Guinea validation: `profile-audit pg` zero errors and warnings. The profile now states that the Dangerous Drugs Act survived the 2021 Controlled Substance Act and is still used for cannabis; qualifies trafficking and cultivation by the medium-to-large/commercial threshold; adds the Controlled Substance Act driving offence and death-penalty section; and replaces the sentencing-only arrest text with the 1,021 drug offences recorded in 2024. The 2022 Controlled Substance Act and 2021 Dangerous Drugs amendment entries were corrected, with ten new entries covering 1967–2026. The 1930s and 1940s remain empty because no cannabis-specific local event was verified.
-
-Australia validation: `profile-audit au` zero errors and warnings. The profile now explains the Special Access Scheme and Authorised Prescriber distinction, the ACT seed-possession nuance, the Commonwealth trafficking and commercial-cultivation ladders, Tasmania's prescribed-patient driving exception, the absence of a reciprocal medical route for visitors and the 2020–21 limit of the national arrest series. The 1987 expiation and 2016 medical entries were replaced with sourced descriptions and dates, six entries fill the 1930s, 1950s and 2024–2026, and both score-moving entries now have articles.
-
-## Result
-
-All five countries were expanded and committed separately: Solomon Islands `922ee56`, Marshall Islands `37999c6`, New Zealand `97ef189`, Papua New Guinea `4d2c7ac` and Australia `c44e62b`. Each profile passes `profile-audit` with zero errors and warnings and has no missing standard or researched sections, penalty tables or inline citations. Targeted `build-pages.mjs` runs rendered each country and its changed history pages; `npm test` passes. The batch added 37 history entries, corrected the Solomon Islands first-restriction estimate, the New Zealand 1975 entry and the Papua New Guinea two-track drug law, wrote three new articles (New Zealand 1975, Australia 1987 and 2016) and corrected two Solomon Islands articles.
-
-The main open caveats are the empty 1930s in Solomon Islands, the empty 1930s and 1940s in Papua New Guinea, the year-only 1935/1959 Australian state bans, the unverified blood-THC levels in New Zealand, the unverified Solomon Islands penalty-unit value, and the all-drug rather than cannabis-specific enforcement totals in several countries.
+## tv — committed
+- Word marijuana (English (Tuvalu), from Tuvalu's own CRC report; crc12 source added).
+- Four penalty tables (possession/cultivation/sharing/consumption with prison+prison_min; label rows mirror the overlapping bands; gap notes kept); products folded into medical (Indian hemp definition + 2010 fine link); context.recreational (2025 minimums + 2012 youth report) + context.hemp (none) added; 2010 fine linked from enforcement.
+- New `articles/tuvalu-drug-fine-increase-2010.md` (2009 Act: $2,000→$4,000; consolidated law pairs with 10 yrs; 2025 minimums followed) + `articles/tuvalu-youth-cannabis-report-2012.md` (OHCHR docstore URL from entry — never invent UN URLs; 5% youth use, Fiji imports, update priority).
+- Audit 0/0; page + both articles verified in review HTML.
+- Left: cultivation gap bands (10–50 g, 4–5 plants — statute's own gaps), empty decades.
