@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 608
 recreational: illegal
 medical: limited
-updated: '2026-10-26'
+updated: '2026-10-28'
 summary: >-
   Possession carries prison at any amount. Life imprisonment can apply from 300 g of marijuana or 5 g of resin, and applies from 500 g or 10 g respectively.
   Unauthorised importation carries life regardless of quantity; possession at gatherings or with at
@@ -38,28 +38,32 @@ segments:
     penalties:
       - label: Under 300 g marijuana or 5 g resin
         treatment: criminal
+        term: Possession
         prison_min: 12 years
         prison: 20 years
         fine: 400000
         note: Twelve years and one day to twenty years and ₱300,000–400,000
       - label: 300 g to under 500 g, or 5 g to under 10 g resin
         treatment: criminal
+        term: Possession
         prison_min: 20 years
         fine: 500000
         note: Twenty years and one day to life and ₱400,000–500,000
       - label: 500 g or more, or 10 g or more resin
         treatment: criminal
+        term: Possession
         fine: 10000000
         note: Life imprisonment and ₱500,000–10 million; maximum at gatherings regardless of amount
   cultivation:
     text: >-
       Cultivating any marijuana plant carries life imprisonment and a fine of
-      ₱500,000–10 million. The land or greenhouse can also be confiscated.
-    sources: [ra, death]
+      ₱500,000–10 million.[@ra] The land or greenhouse can also be confiscated.[@ra]
+    sources: [ra]
     currency: PHP
     penalties:
       - label: Cultivating any plant
         treatment: criminal
+        term: Cultivation
         fine: 10000000
         note: Life imprisonment and ₱500,000–10 million; land or greenhouse confiscated
   enforcement:
@@ -78,39 +82,43 @@ segments:
   sharing:
     text: >-
       Selling, delivering or giving away cannabis carries life imprisonment and a
-      ₱500,000–10 million fine, with no lower quantity tier.
+      ₱500,000–10 million fine, with no lower quantity tier.[@ra]
     sources:
       - ra
-      - death
     currency: PHP
     penalties:
       - label: Sale, delivery or gift
         treatment: criminal
+        term: Sale
         fine: 10000000
         note: Life imprisonment and ₱500,000–10 million, no lower tier
   consumption:
     text: >-
       Use is a separate offence. After a confirmatory positive test, a first offence means at least
       six months in a government rehabilitation centre; a second brings six years and one day to 12
-      years in prison and a ₱50,000–200,000 fine.
+      years in prison and a ₱50,000–200,000 fine.[@ra]
     sources: [ra]
     currency: PHP
     penalties:
       - label: First use offence
         treatment: civil
-        note: At least six months in a government rehabilitation centre
+        term: Use
+        note: Six months in a government rehabilitation centre
       - label: Second use offence
         treatment: criminal
+        term: Use
         prison_min: 6 years
         prison: 12 years
         fine: 200000
         note: Six years and one day to twelve years and ₱50,000–200,000
   access:
     text: >-
-      No dispensary or ordinary pharmacy route exists. For a seriously ill patient, a treating
-      physician or health institution may seek an FDA compassionate special permit to import an
-      unregistered cannabis-based medicine for restricted use.
-    sources: [pna, fda]
+      No dispensary or ordinary pharmacy route exists.[@pna] For a seriously ill patient, a
+      treating physician or health institution may seek an FDA compassionate special permit to
+      import an unregistered cannabis-based medicine for restricted use.[@fda] CBD products with no
+      more than 0.1% THC are in Schedule 4, but they remain prescription-only and are not a consumer
+      route.[@ddb_cbd]
+    sources: [pna, fda, ddb_cbd]
 context_not_applicable:
   death_penalty:
     text: >-
@@ -129,22 +137,37 @@ context:
       - house
   production:
     status: none
-    text: None. Republic Act 9165 prohibits every form of unauthorised cannabis cultivation.
+    text: None. Republic Act 9165 prohibits every form of unauthorised cannabis cultivation.[@ra]
     sources: [ra]
   medical:
     text: >-
       There is no medical-cannabis programme and no lawful cannabis or CBD consumer products;
       the definition covers every part of the plant, its seeds, resin, extract and tincture.
       The health department says marijuana remains illegal unless an FDA compassionate special
-      permit covers its use and importation. On 24 February 2026, two House committees approved
-      a consolidated medical-cannabis bill subject to style and amendments, but it has not
-      become law.
-    sources: [pna, fda, house, ra, ddb]
+      permit covers its use and importation.[@pna,fda] A 2020 DDB regulation places CBD products
+      with no more than 0.1% THC in Schedule 4, but access still requires a specialist prescription
+      and an FDA compassionate permit; it is not a consumer route.[@ddb_cbd,fda] On 24 February
+      2026, two House committees approved a consolidated medical-cannabis bill subject to style and
+      amendments, but it has not become law.[@house,ddb]
+    sources: [pna, fda, ddb_cbd, house, ddb]
+  hemp:
+    status: strict
+    text: >-
+      No industrial-hemp category or THC threshold. Republic Act 9165 defines cannabis as any part
+      of the plant and its seeds, resin, extract and tincture, and bans cultivation, with no fibre
+      or low-THC exception.[@ra] A 2020 DDB regulation places CBD products with no more than 0.1%
+      THC in Schedule 4, but this is a controlled medical listing, not a hemp or consumer-CBD
+      market; access still needs a prescription and an FDA compassionate permit.[@ddb_cbd,fda]
+      Hemp food, fibre and cosmetics have no general exemption.[@ra]
+    sources:
+      - ra
+      - ddb_cbd
+      - fda
   consequences:
     text: >-
-      Foreign nationals are deported after serving their sentence. Qualifying defendants may seek
-      a plea bargain under the Supreme Court's drug-case framework, but acceptance is discretionary
-      rather than a right.
+      Foreign nationals are deported after serving their sentence.[@ra] Qualifying defendants may
+      seek a plea bargain under the Supreme Court's drug-case framework, but acceptance is
+      discretionary rather than a right.[@sc]
     sources: [ra, sc]
   planting:
     seeds: illegal
@@ -152,19 +175,18 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      Republic Act 9165 defines cannabis as any part of the plant "and seeds thereof", so
-      seeds fall under the same possession and sale offences as the drug. Section 16 punishes
-      planting or cultivating marijuana "regardless of quantity" with life imprisonment.
+      Republic Act 9165 defines cannabis as any part of the plant "and seeds thereof", so seeds
+      fall under the same possession and sale offences as the drug.[@ra] Section 16 punishes
+      planting or cultivating marijuana "regardless of quantity" with life imprisonment.[@ra]
     sources:
       - ra
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@ra]
     sources:
       - ra
-      - death
   visitors:
     status: none
     text: >-
@@ -186,35 +208,36 @@ context:
     text: >-
       The Anti-Drunk and Drugged Driving Act defines drugged driving by a positive
       confirmatory test for dangerous-drug use, without a numerical THC allowance or
-      separate requirement to prove impairment. With probable cause, police bring the
+      separate requirement to prove impairment.[@ra10586] With probable cause, police bring the
       driver for drug screening and, if necessary, confirmation; a crash causing injury
-      or death also requires testing. The Act provides three months in prison and a
-      PHP20,000–80,000 fine without injury or homicide. Injury raises the fine to
+      or death also requires testing.[@ra10586] The Act provides three months in prison and a
+      PHP20,000–80,000 fine without injury or homicide.[@ra10586] Injury raises the fine to
       PHP100,000–200,000 and homicide to PHP300,000–500,000, alongside the respective
-      statutory prison penalties. A nonprofessional licence is suspended for twelve
-      months on the first conviction and permanently revoked on the second. A
+      statutory prison penalties.[@ra10586] A nonprofessional licence is suspended for twelve
+      months on the first conviction and permanently revoked on the second.[@ra10586] A
       professional licence is permanently revoked on the first conviction, barring
-      any future licence. Refusal of mandatory field sobriety and drug tests brings
+      any future licence.[@ra10586] Refusal of mandatory field sobriety and drug tests brings
       confiscation and automatic licence revocation, in addition to other applicable
-      penalties.
+      penalties.[@ra10586]
     sources:
       - ra10586
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 5,920 kg of herbal
-      cannabis seized in 2024, against 2,124 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      cannabis seized in 2024, against 2,124 kg in 2023.[@unodc_szr] The UN publishes them as
+      kilogram equivalents, and countries count seizures differently, so the figures are not
+      comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
   arrests:
     text: >-
       The Philippine Drug Enforcement Agency reported that it and its partner agencies
       carried out 10,161 anti-drug operations and arrested 13,497 people in the first
-      three months of 2025. Over the five years from 2020 the agency counted 183,149
+      three months of 2025.[@journal25] Over the five years from 2020 the agency counted 183,149
       operations and 253,776 arrests, with seizures of 13.5 tonnes of shabu, 14.54 tonnes
-      of dried marijuana leaves and 1,033 kg of marijuana kush. The figures cover all
-      drugs; methamphetamine dominates the seizures by value, and the report does not say how many of the arrests were for cannabis.
+      of dried marijuana leaves and 1,033 kg of marijuana kush.[@journal25] The figures cover all
+      drugs; methamphetamine dominates the seizures by value, and the report does not say how many
+      of the arrests were for cannabis.[@journal25]
     sources:
       - journal25
 sources:
@@ -231,6 +254,10 @@ sources:
   ddb:
     title: Dangerous Drugs Board and PDEA — statement on the reclassification of cannabis
     url: https://ddb.gov.ph/joint-ddb-pdea-statement-on-the-reclassification-of-cannabis/
+  ddb_cbd:
+    title: "Philippines Dangerous Drugs Board — Board Regulation No. 3, s. 2020 on CBD products"
+    url: https://ddb.gov.ph/images/Board_Regulation/2020/BOARD_REG_NO._3_S._2020.pdf
+    locator: "CBD products with no more than 0.1% THC in Schedule 4."
   fda:
     title: FDA — 2025 guidelines for compassionate special permits
     url: >-
