@@ -3,10 +3,11 @@ region: Africa
 iso_numeric: 426
 recreational: illegal
 medical: none
-updated: "2026-10-27"
+updated: '2026-10-28'
 summary: >-
   First African country to license medical cannabis cultivation (2017), mostly for export. Personal
-  use remains illegal although matekoane is widely grown.
+  use remains illegal although matekoane is widely grown. The 2008 Act has no standalone possession
+  offence; prosecutors use its licensing and trafficking provisions.
 scores:
   possession: 1
   cultivation: 1
@@ -17,123 +18,222 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis (matekoane) is illegal to possess under the Drugs of Abuse Act 2008. Small amounts
-      usually bring a fine, though prison is available.
+      The Drugs of Abuse Act 2008 has no standalone offence of simple possession or consumption.[@doa08]
+      Prosecutors use section 9, which punishes unlicensed manufacture, acquisition or administration
+      of a drug of abuse with a minimum of five years or M20,000, or both.[@doa08] Possession with
+      intent to supply falls under trafficking in section 43, with a minimum of twenty years or
+      M1,000,000.[@doa08] There is no statutory quantity threshold.[@doa08]
     sources:
-      - wiki
-      - td
+      - doa08
+    currency: LSL
+    penalties:
+      - label: Unlicensed acquisition or administration
+        treatment: criminal
+        term: Acquisition
+        prison_min: 5 years
+        fine_min: 20000
+        note: Minimum five years or M20,000, or both
+      - label: Possession for supply or trafficking
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        fine_min: 1000000
+        note: Minimum twenty years or M1,000,000, or both
   cultivation:
     text: >-
-      Growing without a licence is a crime: a conviction for harvesting cannabis carries a minimum
-      of five years in prison or a fine of at least M20,000. Yet matekoane has been a staple cash
-      crop for highland farmers for generations, mostly sold into South Africa.
+      Cultivating cannabis without an operator licence is an offence under section 9, with a minimum
+      of five years or M20,000, or both.[@doa08] The definition covers planting, sowing, scattering
+      seed, growing, tending and harvesting.[@doa08] Producing or preparing cannabis for supply can
+      also fall under the twenty-year trafficking offence, an overlap the Act does not resolve.[@doa08]
     sources:
-      - td
-      - wiki
+      - doa08
+    currency: LSL
+    penalties:
+      - label: Unlicensed cultivation
+        treatment: criminal
+        term: Cultivation
+        prison_min: 5 years
+        fine_min: 20000
+        note: Minimum five years or M20,000, or both
+      - label: Producing for supply
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        fine_min: 1000000
   enforcement:
-    text: Fines for small amounts; the mandatory minimum for cultivation falls on small farmers.
+    text: >-
+      Small cases usually bring a fine, but the statutory minima are severe: five years or M20,000
+      for unlicensed acquisition or cultivation, and twenty years or M1,000,000 for supply.[@doa08]
+      Enforcement falls mainly on small farmers and couriers, while licensed export companies operate
+      under the 2018 and 2025 regulations.[@cgh] No cannabis-only arrest series is published.[@unodc_crimes]
     sources:
-      - td
+      - doa08
+      - cgh
+      - unodc_crimes
   sharing:
-    text: Dealing is a crime with prison.
+    text: >-
+      Trafficking includes offering, distributing, selling, delivering "on any terms whatsoever",
+      transporting, importing and exporting.[@doa08] The minimum is twenty years or M1,000,000, or
+      both, and there is no small-quantity or gift exception.[@doa08] Possessing chemicals or
+      equipment for illicit cultivation carries ten years or M50,000.[@doa08]
     sources:
-      - td
+      - doa08
+    currency: LSL
+    penalties:
+      - label: Supply or delivery, including gifts
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        fine_min: 1000000
+        note: Minimum twenty years or M1,000,000, or both
+      - label: Chemicals or equipment for illicit cultivation
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        fine_min: 50000
   consumption:
-    text: Use is an offence, widely ignored in rural areas.
+    text: >-
+      There is no standalone consumption offence in the 2008 Act.[@doa08] A user may be charged as an
+      unlicensed acquirer or administrator under section 9, with a minimum of five years or M20,000,
+      or the premises owner may be charged under section 44.[@doa08] In practice use is widely
+      tolerated in rural areas.[@cgh]
     sources:
-      - wiki
+      - doa08
+      - cgh
   access:
-    text: No legal source for local consumers.
+    text: >-
+      No legal source for local consumers. Licensed cultivation is for medical and scientific use,
+      mostly export, and there is no domestic patient or dispensary route.[@doa08,thetsane24]
     sources:
-      - td
+      - doa08
+      - thetsane24
+answers:
+  buy:
+    answer: no
+    text: No patient or adult-use purchase route verified
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. The 2008 Act has no simple-possession offence; prosecutors
+      use section 9 for unlicensed acquisition or administration (minimum five years or M20,000) and
+      section 43 for supply (minimum twenty years or M1,000,000).[@doa08] There are no quantity
+      thresholds, and giving cannabis away can be charged as trafficking.[@doa08]
+    sources:
+      - doa08
   production:
     status: medical
     text: >-
-      In 2017 Lesotho became the first African country to license cannabis cultivation for medical
-      and scientific purposes. Licences are expensive and went mainly to foreign-backed companies:
-      one went to a South African firm, the Toronto-based Supreme Cannabis Company invested in the
-      industry, and a 2021 study put the licence at 10,000 US dollars, more than smallholders can
-      afford. The sector has been dogged by allegations over how licences were awarded, and
-      traditional growers remain outside it.
+      Lesotho began licensing cannabis cultivation for medical and scientific use in 2017 and
+      published detailed licensing regulations in 2018.[@reg2018] A 2024 study counted 33 licences,
+      eight registered companies and one GMP-certified exporter to the EU; the sector is
+      export-oriented and foreign-investor-heavy.[@thetsane24] The 2025 amendment raised fees to
+      M400,000 for an operator and M100,000 for cultivation, manufacturing or testing.[@reg2025]
     sources:
-      - wiki
-      - pe
-      - cgh
-  products:
-    text: Licensed medical products are made for export.
-    sources:
-      - wiki
+      - reg2018
+      - thetsane24
+      - reg2025
   medical:
     text: >-
-      The reviewed export-production licensing does not establish a domestic patient treatment
-      route. No such route was verified.[@td]
+      No domestic patient-access scheme. Licensed production is for medical and scientific use, but
+      the 2024 research found no legal route for local patients to obtain medical cannabis.[@thetsane24]
+      No registered cannabis medicine or dispensary was verified.[@doa08]
     sources:
-      - td
+      - thetsane24
+      - doa08
+  hemp:
+    status: none
+    text: >-
+      No separate hemp or CBD regime and no THC threshold. "Cannabis" covers any part of the plant,
+      including seeds and leaves, and cannabis is a Schedule 1 drug.[@doa08] Industrial hemp would
+      need the same cannabis licence, and no consumer CBD market was found.[@doa08]
+    sources:
+      - doa08
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction is a criminal record. The 2008 Act provides for forfeiture of drugs and property
+      connected with an offence, and the 2018 regulations add licence conditions and seed-to-sale
+      controls for lawful operators.[@doa08,reg2018]
     sources:
-      - td
+      - doa08
+      - reg2018
   planting:
     seeds: licensed
     seeds_trade: regulated
     clones: licensed
     clones_trade: regulated
     text: >-
-      The Drugs of Abuse Act 2008 defines cannabis as any part of the plant "including the
-      seeds", and cultivating as including planting, sowing and scattering the seed. Seed is
-      therefore a controlled drug, lawful only for holders of a licence under the Act, such as
-      the medical cannabis producers licensed since 2018.
+      The 2008 Act defines cannabis as any part of the plant "including the seeds", and cultivation
+      as including planting, sowing and scattering the seed.[@doa08] Seed is therefore a controlled
+      drug, lawful only for holders of a licence under the Act, such as the medical cannabis
+      producers licensed since 2017.[@doa08]
     sources:
       - doa08
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@doa08]
     sources:
-      - td
-      - wiki
-  black_market:
-    text: >-
-      Unlicensed cannabis is one of Lesotho's most significant cash crops, though it appears in no
-      official economic statistics. Farmers treat it as a crop to fall back on when other income
-      declines, and for some it is the centre of their livelihood. A 2021 study of the region
-      describes the trade as quasi-legal: growing and selling remain crimes, enforcement does not
-      match the scale of production, and the law is applied only now and then. No figures for
-      Lesotho's output were found.
-    sources:
-      - cgh
+      - doa08
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Cannabis is illegal to possess under the
-      Drugs of Abuse Act 2008; small amounts usually bring a fine, though prison is available.
+      There is no legal recreational supply for anyone. The 2008 Act's licensing and trafficking
+      provisions apply to visitors as to residents, with supply carrying a minimum of twenty years or
+      M1,000,000.[@doa08]
     sources:
-      - wiki
-      - td
+      - doa08
   driving:
     status: impairment
     text: >-
-      The published Road Traffic Act section 92 makes it an offence to drive or attempt to drive a
-      motor vehicle on a public road while drink or a drug makes the driver incapable of proper
-      control. Its specimen-evidence provisions permit consideration of drug analysis from blood taken
-      with consent by a medical practitioner, or urine or breath supplied by the accused. Refusal
-      without reasonable cause supports prosecution evidence about the accused’s condition; it is not
-      worded as an automatic finding of drug impairment. The available LesLII text is the 1981
-      edition, not a verified current penalty consolidation. Current fines, licence consequences,
-      drug-testing practice and a numeric THC cutoff remain unverified.
+      Road Traffic Act section 92 makes it an offence to drive or attempt to drive on a public road
+      while drink or a drug makes the driver incapable of proper control.[@traffic1981] The 1981
+      edition sets a M1,000 fine and one year in prison, and permits blood, urine or breath evidence;
+      refusal without reasonable cause supports the prosecution's evidence of condition.[@traffic1981]
+      There is no numeric THC cutoff.[@traffic1981]
     sources:
       - traffic1981
-answers:
-  buy:
-    answer: no
-    text: No patient or adult-use purchase route verified
+  black_market:
+    text: >-
+      Unlicensed cannabis is one of Lesotho's most significant cash crops, though it appears in no
+      official economic statistics.[@cgh] Farmers treat it as a fallback when other income declines,
+      and enforcement does not match the scale of production.[@cgh] UNODC records 6,670 kg of cannabis
+      herb seized in 2024, against 2,175 kg in 2023.[@unodc_szr] No reliable output estimate was found.[@cgh]
+    sources:
+      - cgh
+      - unodc_szr
+  arrests:
+    text: >-
+      In 2024, 105 people were brought into formal contact with the police for drug offences and 88
+      were prosecuted; the figures cover all drugs and are not cannabis-specific.[@unodc_crimes]
+      UNODC records 6,670 kg of cannabis herb seized in 2024, against 2,175 kg in 2023.[@unodc_szr]
+      No 2025 or 2026 aggregate was published; recent cases concern licensed-import disputes and the
+      Srugo plants case.[@srugo26]
+    sources:
+      - unodc_crimes
+      - unodc_szr
+      - srugo26
 sources:
+  doa08:
+    title: "Lesotho — Drugs of Abuse Act 5 of 2008"
+    url: https://lesotholii.org/akn/ls/act/2008/5/eng@2008-05-27
+    locator: "Sections 3, 9, 43, 44, 87–89 and 105–108."
+  reg2018:
+    title: "Lesotho — Drugs of Abuse (Cannabis) Regulations 2018, Legal Notice 40 of 2018"
+    url: https://web.archive.org/web/20191214030045if_/https://mjbizdaily.com/wp-content/uploads/2019/07/Lesotho-Cannabis-Regulation-2018-Drugs-of-Abuse-Cannabis-Regulations.pdf
+    locator: "Gazette Vol. 63 No. 37, 18 May 2018; licensing and seed-to-sale rules."
+  reg2025:
+    title: "Mayet & Associates — Lesotho publishes the 2025 cannabis regulations amendment (7 November 2025)"
+    url: https://zmayetlaw.co.ls/lesotho-publishes-the-2025-cannabis-regulations-amendment-what-industry-operators-need-to-know/
+    locator: "Legal Notice 155 of 2025; fees and permit changes."
+  thetsane24:
+    title: "Thetsane — The legal cannabis industry in Lesotho, Journal of Cannabis Research 6:23 (16 May 2024)"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11097424/
+    locator: "33 licences, eight companies, one GMP exporter; no local patient access."
   traffic1981:
-    title: "LesLII / Office of Parliamentary Counsel — Road Traffic Act 8 of 1981, published edition"
-    url: https://lesotholii.org/akn/ls/act/1981/8/eng%401981-12-31
-    locator: "Section 92 and specimen-evidence/refusal provisions; indexed statutory extracts reviewed; later amendments and current sanctions not certified."
+    title: "Lesotho — Road Traffic Act 8 of 1981"
+    url: https://lesotholii.org/akn/ls/act/1981/8/eng@1981-12-31
+    locator: "Sections 92–94."
   cgh:
     type: chapter
     title: "Sub-Saharan Africa, Cannabis, and Contemporary Drug Policy"
@@ -143,16 +243,15 @@ sources:
     publisher: MIT Press
     year: 2021
     isbn: "9780262366137"
-    locator: "pp. 325–330"
-  doa08:
-    title: Drugs of Abuse Act, 2008 (Act 5 of 2008), section 3 (Lesotho Legal Information Institute)
-    url: https://lesotholii.org/akn/ls/act/2008/5/eng@2008-05-27
-  wiki:
-    title: Wikipedia — Cannabis in Lesotho
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Lesotho
-  td:
-    title: TalkingDrugs — Lesotho cannabis legalisation
-    url: https://www.talkingdrugs.org/lesotho-cannabis-legalisation
-  pe:
-    title: Public Eye — Green rush tainted (2025)
-    url: https://publiceyenews.com/2025/07/01/green-rush-tainted/
+    locator: "pp. 325–330."
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents"
+    url: https://data.unodc.org/datareport/drug-seizure
+  unodc_crimes:
+    title: "UNODC World Drug Report 2026 — drug-related crimes annex"
+    url: https://www.unodc.org/documents/data-and-analysis/WDR_2026/Annex/10.1_drug_related_crimes.xlsx
+    locator: "2024: 105 people in formal contact; 88 prosecuted, all drugs."
+  srugo26:
+    title: "Sunday Express — Israeli farmer demands cannabis back (25 October 2026)"
+    url: https://sundayexpress.co.ls/?p=36834
+    locator: "337 plants and 4 kg; case dismissed 2 June 2026; plants not returned."
