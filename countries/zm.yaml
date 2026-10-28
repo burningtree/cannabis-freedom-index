@@ -3,7 +3,7 @@ region: Africa
 iso_numeric: 894
 recreational: illegal
 medical: limited
-updated: 2026-10-23
+updated: '2026-10-28'
 summary: >-
   The Cannabis Act of 2021 would license medicinal growing, but it has not come into force.
   Industrial hemp has been under licence since 3 January 2025. Possession without lawful
@@ -24,23 +24,45 @@ segments:
       Since 16 January 2026 the Controlled Substances Act also makes possession of a listed
       controlled substance, without authorisation under that Act or another written law, an
       offence of up to fifteen years, and it lists cannabis and cannabis resin. The Cannabis
-      Act, which would license medicinal activity, has not come into force.
+      Act, which would license medicinal activity, has not come into force.[@ndps,csa]
     sources:
       - ndps
       - csa
+    currency: ZMW
+    penalties:
+      - label: Up to 0.5 g solids or 2.5 ml oil/liquid
+        treatment: criminal
+        term: Possession
+        prison: 15 years
+        note: Admission-of-guilt fine up to 1,200 penalty units (K480 at K0.40 per unit)
+      - label: More than 0.5 g solids or 2.5 ml oil/liquid
+        treatment: criminal
+        term: Trafficking
+        prison_min: 1 year
+        prison: 25 years
+        note: Treated as trafficking under the 1994/1995 regulations; no bail
   cultivation:
     text: >-
       Growing a plant that can be used as a drug, without lawful authority, is an offence
       under the Narcotic Drugs and Psychotropic Substances Act: a fine of up to one million
       penalty units, up to ten years, or both. The Cannabis Act would require a licence to
-      grow cannabis for medicine or research, but that Act has not come into force.
+      grow cannabis for medicine or research, but that Act has not come into
+      force.[@ndps,act]
     sources:
       - ndps
       - act
+    currency: ZMW
+    penalties:
+      - label: Unlawful cultivation
+        treatment: criminal
+        term: Cultivation
+        prison: 10 years
+        fine_min: 400000
+        note: Fine of up to 1,000,000 penalty units at K0.40 each, or both
   enforcement:
     text: >-
-      Possession and unauthorised cultivation are criminal offences. No source consulted
-      gives reliable detail on how often courts jail users.
+      Possession and unauthorised cultivation are criminal offences.[@ndps] No source consulted
+      gives reliable detail on how often courts jail users.[@ndps]
     sources:
       - ndps
   sharing:
@@ -48,59 +70,70 @@ segments:
       Trading in a drug without lawful authority can bring up to twenty-five years under the
       Narcotic Drugs and Psychotropic Substances Act. Producing, importing, selling or
       distributing a drug for cultivation or manufacture, without lawful authority, can bring
-      one to fifteen years. The Cannabis Act's distribution licence is not in force.
+      one to fifteen years.[@ndps] The Cannabis Act's distribution licence is not in
+      force.[@act]
     sources:
       - ndps
+      - act
   consumption:
     text: >-
-      Using a drug without lawful authority is an offence under the Narcotic Drugs and
-      Psychotropic Substances Act: a fine of up to 200,000 penalty units, or up to two years.
+      Using a drug without lawful authority is an offence under the Narcotic Drugs and Psychotropic
+      Substances Act: a fine of up to 200,000 penalty units, or up to two years.[@ndps]
     sources:
       - ndps
   access:
     text: >-
       There is no public retail. The Cannabis Act's medicinal licences are not in force.
-      Industrial hemp may be grown, processed and sold under a licence.
+      Industrial hemp may be grown, processed and sold under a licence.[@hemp]
     sources:
-      - act
       - hemp
 context:
-  production:
-    status: none
+  recreational:
     text: >-
-      The Cannabis Act was published on 20 May 2021. It comes into operation only on a date
-      the Minister appoints, and ZambiaLII records that it has not come into force. It would
+      All recreational use is prohibited. Possession of up to 0.5 g of cannabis solids or 2.5 ml of
+      oil is punishable by up to fifteen years, and anything above that is treated as trafficking
+      with one to twenty-five years and no bail.[@ndps] Cultivation carries up to ten years and a
+      fine of up to K400,000, and use up to two years.[@ndps] There is no personal-use exemption or
+      quantity tier below the trafficking line.[@ndps]
+    sources:
+      - ndps
+  production:
+    status: hemp
+    text: >-
+      The Cannabis Act was published on 20 May 2021.[@act] It comes into operation only on a date
+      the Minister appoints, and ZambiaLII records that it has not come into force.[@act] It would
       let the medicines regulator license cultivation, manufacture, production, storage,
-      distribution, import and export for medicinal, scientific or research purposes. The
-      Industrial Hemp Act, published the same day, has been in force since 3 January 2025.
-      It licenses growing, processing, distribution, buying, export and research on hemp of
-      not more than 0.3% THC.
+      distribution, import and export for medicinal, scientific or research purposes.[@act] The
+      Industrial Hemp Act, published the same day, has been in force since 3 January 2025.[@hemp]
+      It licenses growing, processing, distribution, buying, export and research on hemp of not
+      more than 0.3% THC.[@hemp,hemporder]
     sources:
       - act
       - hemp
       - hemporder
-  products:
+  hemp:
+    status: standard
     text: >-
-      Industrial hemp is licensed under the Act in force since 3 January 2025. Cannabis and
-      cannabis resin are listed as narcotic drugs under the Controlled Substances Act, in
-      force since 16 January 2026, which licenses manufacture, import, export and dealing in
-      controlled substances. The Cannabis Act's own medicinal-production licences are not in
-      force.
+      Industrial hemp at or below 0.3% delta-9 THC is licensed under the Industrial Hemp Act, in
+      force since 3 January 2025.[@hemp,hemporder] A licence is required to grow, process,
+      distribute, buy, export or research it, and licences run five years.[@hemp] No issued hemp
+      licences were confirmed by late October 2026; the board and trials were still being
+      launched.[@hemp26]
     sources:
       - hemp
-      - csa
-      - act
+      - hemporder
+      - hemp26
   medical:
     text: >-
       The Cannabis Act's licensing system for medicinal cannabis has not come into force.
       The Controlled Substances Act, in force since 16 January 2026, licences controlled
-      substances used as medicine and lists cannabis. No commenced Cannabis Act programme
-      for patients was read.
+      substances used as medicine and lists cannabis.[@csa] No commenced Cannabis Act programme for
+      patients was read.[@act]
     sources:
       - act
       - csa
   consequences:
-    text: A conviction under the narcotics law is a criminal conviction.
+    text: A conviction under the narcotics law is a criminal conviction.[@ndps]
     sources:
       - ndps
   planting:
@@ -109,27 +142,26 @@ context:
     clones: licensed
     clones_trade: regulated
     text: >-
-      The Industrial Hemp Act has been in force since 3 January 2025. It defines industrial
+      The Industrial Hemp Act has been in force since 3 January 2025.[@hemp] It defines industrial
       hemp to include viable seed with no more than 0.3% THC, and a person must not grow,
-      process, distribute, buy, export or research it without a licence. Import and export
-      of hemp seed must follow this Act and the seed and plant-pest laws. The Minister may
-      prescribe the varieties that may be grown.
+      process, distribute, buy, export or research it without a licence.[@hemp] Import and export
+      of hemp seed must follow this Act and the seed and plant-pest laws.[@hemp] The Minister may
+      prescribe the varieties that may be grown.[@hemp]
     sources:
       - hemp
-      - hemporder
   clubs:
     status: none
     text: >-
       No cannabis clubs are known. Growing a plant for use as a drug, and trading in a drug,
-      are both offences without lawful authority.
+      are both offences without lawful authority.[@ndps]
     sources:
       - ndps
   visitors:
     status: none
     text: >-
       There is no legal recreational supply. Possession of cannabis without lawful authority
-      is a crime under the narcotics law. The Cannabis Act's medicinal licences are not in
-      force.
+      is a crime under the narcotics law.[@ndps] The Cannabis Act's medicinal licences are not in
+      force.[@act]
     sources:
       - ndps
       - act
@@ -137,27 +169,49 @@ context:
     status: impairment
     text: >-
       Road Traffic Act section 157 prohibits driving or attempting to drive on a road when
-      intoxicating liquor or narcotic drugs make proper vehicle control impossible. It
+      intoxicating liquor or narcotic drugs make proper vehicle control impossible.[@road2002] It
       provides a fine up to 20,000 penalty units, up to five years' imprisonment, or both;
-      penalty units are not a kwacha amount. Section 156 separately covers being in charge
-      while not driving and has different penalties. The Third Schedule requires licence
-      suspension and endorsement for section 157, with cancellation also available; no
-      universal suspension length is specified in that table. The 2022 amendment requires
-      a medical examination or breathalyser test after arrest under either section, with
-      the medical examination conducted by a medical practitioner. This is an impairment
-      rule, not a specified THC concentration limit.
+      penalty units are not a kwacha amount.[@road2002] Section 156 separately covers being in
+      charge while not driving and has different penalties.[@road2002] The Third Schedule requires
+      licence suspension and endorsement for section 157, with cancellation also available; no
+      universal suspension length is specified in that table.[@road2002] The 2022 amendment
+      requires a medical examination or breathalyser test after arrest under either section, with
+      the medical examination conducted by a medical practitioner.[@road2022] This is an impairment
+      rule, not a specified THC concentration limit.[@road2002,road2022]
     sources:
       - road2002
       - road2022
+  arrests:
+    text: >-
+      The Drug Enforcement Commission reported 4,728 arrests and 43.2 tonnes of cannabis seized in
+      2024.[@dec24] In 2025 it reported 4,750 arrests, 13,156.87 kg of loose cannabis, 1,870,937.20
+      kg of plants and 997.86 kg of seeds, with 911 convictions and 3,789 people still before the
+      courts.[@dec25] The figures cover all drugs and all forms of cannabis; no cannabis-only arrest
+      series is published.[@dec24]
+    sources:
+      - dec24
+      - dec25
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 15,606 kg of herbal
       cannabis seized in 2024, against 16,577 kg in 2023. The UN publishes them as
       kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
 sources:
+  dec24:
+    title: "News Diggers! — DEC nabs 4,700 drug traffickers in 2024 (28 June 2025)"
+    url: https://diggers.news/local/2025/06/28/dec-nabs-4700-drug-traffickers-in-2024/
+    locator: "4,728 arrests; 43.2 t cannabis; 27.9 kg codeine; 1.9 kg cocaine."
+  dec25:
+    title: "Zambia Daily Mail — DEC smashes record (2 January 2026)"
+    url: https://www.daily-mail.co.zm/2026/01/02/dec-smashes-record/
+    locator: "4,750 arrests; 13,156.87 kg loose cannabis; 1,870,937.20 kg plants; 911 convictions."
+  hemp26:
+    title: "Cannabiz Africa — Zambia to begin issuing hemp licences this year (3 June 2026)"
+    url: https://cannabiz-africa.com/zambia-to-begin-issuing-hemp-licenses-this-year-after-elections-hemp-trials-to-start-in-october/
+    locator: "Board to be constituted August 2026; trials October 2026."
   road2002:
     title: "ZambiaLII — Road Traffic Act 2002, original enacted text (PDF)"
     url: https://media.zambialii.org/media/legislation/20814/source_file/adc699b881e47212/zm-act-2002-11-publication-document.pdf
