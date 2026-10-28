@@ -46,6 +46,11 @@ links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0. Review build still blocked by others' files — will verify page once clear.
 - Left: 1930s/40s/50s/60s empty (Estado Novo-era sources thin); 1993 decree article still open
   (ranked candidate).
-## by — pending
+## by (Belarus) — committed
+- New driving (zero-status; 18.15 + 317-1, zakony-by verified) and arrests (no official totals;
+  Girls-328 pattern, HRWF-verified) sections; words (Трава, Анаша; ru.wiktionary-verified).
+- Audit 0/0. Review build still blocked by others' files — will verify page once clear.
+- Left: 1940s/50s/80s empty; 1934 article covered by the same-decree Ukraine article (not
+  duplicated); 1974 possession-crime article still open.
 ## rs — pending
 ## bg — pending
