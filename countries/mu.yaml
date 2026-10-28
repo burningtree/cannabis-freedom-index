@@ -14,6 +14,8 @@ scores:
   sharing: 0
   consumption: 1
   access: 1
+words:
+  - { word: Gandia, lang: English (Mauritius), meaning: "cannabis; the Act's name for bhang, babzi, siddhi and all parts of the cannabis plant", sources: [dda] }
 segments:
   possession:
     text: >-
@@ -28,64 +30,118 @@ segments:
     penalties:
       - label: Simple possession or use
         treatment: criminal
+        term: Possession
         prison: 2 years
         fine: 50000
         note: Since November 2022, small amounts may be referred to rehabilitation instead of prosecution
   cultivation:
-    text: Cultivation is a serious offence with long prison terms; seeds are also banned.
+    text: >-
+      Section 5 bans cultivating the cannabis plant, and police may uproot any plant found
+      growing.[@dda] As a drug dealing offence under section 30, cultivation of Part I cannabis
+      herb carries penal servitude of up to 25 years and a fine of up to one million
+      rupees.[@dda] The general tier for contravening the Act's Part II provisions, which
+      include cultivation, runs to fifteen years and 500,000 rupees under section
+      29.[@dda]
     sources:
       - dda
+    currency: MUR
+    penalties:
+      - label: Cultivation as a drug dealing offence (section 30, Part I herb)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 25 years
+        fine: 1000000
+        note: Penal servitude; cannabis herb (gandia) is a Part I drug
+      - label: Contravening the Act's Part II provisions including cultivation (section 29)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 15 years
+        fine: 500000
+        note: General tier; the dealing tier above applies to cultivation as a section 30 offence
   enforcement:
     text: >-
       Still strict: prisons hold many drug offenders, which is why a 2025 proposal to depenalise
-      cannabis was framed as a way to relieve overcrowding.
+      cannabis was framed as a way to relieve overcrowding.[@aa] In 2024 the judiciary convicted
+      1,747 drug offences, 81.2% for possession, 8.2% for consumption, 6.0% for cannabis
+      cultivation and 4.0% for dealing.[@ndo24]
     sources:
       - aa
+      - ndo24
   sharing:
-    text: Dealing carries heavy sentences, up to decades for trafficking.
+    text: >-
+      Drug dealing offences under section 30 — including sale, distribution, transport and
+      cultivation — carry penal servitude of up to 25 years and a fine of up to one million
+      rupees for Part I cannabis herb.[@dda] Cannabis resin sits in Part II, whose dealing tier
+      runs from five to twenty-five years.[@dda]
     sources:
       - dda
+    currency: MUR
+    penalties:
+      - label: Drug dealing offence, Part I cannabis herb (section 30)
+        treatment: criminal
+        term: Trafficking
+        prison: 25 years
+        fine: 1000000
+        note: Penal servitude; sale, distribution, transport, cultivation
+      - label: Drug dealing offence, Part II cannabis resin (section 30)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 25 years
+        fine: 1000000
+        note: Five-to-twenty-five-year band for Part II drugs
   consumption:
-    text: Use is an offence, with the rehabilitation route available since 2022.
+    text: >-
+      Use is an offence under section 34, with the rehabilitation route available since
+      2022.[@dda,leaf]
     sources:
       - leaf
+      - dda
   access:
     text: >-
       No adult-use source. Authorised patients can receive medical cannabis through public
-      hospitals.
+      hospitals.[@mondaq]
     sources:
       - mondaq
 context:
   recreational:
     text: >-
-      There is no legal recreational market. Use is an offence, with a rehabilitation route for
-      small amounts since November 2022.[@leaf] Cannabis ('gandia') remains prohibited under the
-      2000 Act, and prisons hold many drug offenders.[@dda,aa]
+      There is no legal recreational market.[@leaf] Use is an offence, with a rehabilitation
+      route for small amounts since November 2022.[@leaf] Cannabis ('gandia') remains prohibited
+      under the 2000 Act, and prisons hold many drug offenders.[@dda,aa]
     sources:
       - leaf
       - dda
       - aa
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the Dangerous Drugs Act covers the cannabis
+      plant with no low-THC distinction, and medical cannabis is narrowly defined as capsules,
+      oil solutions or mouth sprays with no more than 30 mg of THC per millilitre — no
+      flower.[@dda,mondaq]
+    sources:
+      - dda
+      - mondaq
   production:
     status: none
-    text: No domestic production; medical products are imported with health-ministry authorisation.
-    sources:
-      - mondaq
-  products:
     text: >-
-      Medical cannabis is narrowly defined: capsules, oil solutions or mouth sprays with no more
-      than 30 mg of THC per millilitre. No flower.
+      No domestic production was established; medical products are imported with health-ministry
+      authorisation.[@mondaq]
     sources:
       - mondaq
   medical:
     text: >-
       Legal since the 2022 amendment, but only with individual authorisation from the Ministry of
-      Health, for a short list of conditions.
+      Health, for a short list of conditions.[@mondaq] Medical cannabis is narrowly defined as
+      capsules, oil solutions or mouth sprays with no more than 30 mg of THC per millilitre, with
+      no flower.[@mondaq]
     sources:
       - mondaq
   consequences:
     text: >-
       A conviction is a criminal record affecting employment; a certificate of character is required
-      for many jobs.
+      for many jobs.[@aa]
     sources:
       - aa
   planting:
@@ -96,47 +152,71 @@ context:
     text: >-
       The Dangerous Drugs Act defines gandia as "all the parts of the plant" Cannabis sativa
       or indica, with no exception for seed, and section 5 says no person shall cultivate the
-      cannabis plant. Police may uproot any plant found growing.
+      cannabis plant.[@dda] Police may uproot any plant found growing.[@dda]
     sources:
       - dda
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under section 34 of the
+      There is no legal recreational supply for anyone.[@dda] Under section 34 of the
       Dangerous Drugs Act, using or possessing any dangerous drug carries a fine of up to 50,000
       rupees and up to two years in prison, although the court may order treatment instead of
-      prison for a person who undertakes to be cured of addiction.
+      prison for a person who undertakes to be cured of addiction.[@dda]
     sources:
       - dda
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@dda]
     sources:
       - dda
+  arrests:
+    text: >-
+      In 2024 the police Anti-Drug Smuggling Unit reported 3,451 drug cases with 2,520 arrests;
+      cannabis (gandia, hashish and cannabis oil) accounted for 37.2% of ADSU arrests, behind
+      synthetic cannabinoids at 37.4%.[@ndo24] Of 4,373 drug offences registered nationally, 40.9%
+      were cannabis-related.[@ndo24]
+    sources:
+      - ndo24
+  black_market:
+    text: >-
+      Cannabis dominates seizures: in 2024 the forensic laboratory confirmed cannabis in 46.1% of
+      3,268 illicit-substance cases, and cannabis products made up 74.0% (Rs 1.2 billion) of the Rs
+      1.6 billion street value seized by the Anti-Drug Smuggling Unit.[@ndo24] Customs
+      interceptions continue: 55 kg seized at the airport from two Thailand arrivals in February
+      2025, 10.2 kg aboard a cargo vessel in August 2025, and 18 kg from an Alabama arrival in
+      December 2025.[@mra25a,mra25b,mra26]
+    sources:
+      - ndo24
+      - mra25a
+      - mra25b
+      - mra26
   driving:
     status: zero
     text: >-
       The Road Traffic Act's drug schedule lists delta-9-THC (cannabis) among drugs with zero
-      tolerance, separately from medicines with specified blood limits. Section 123E covers
-      driving, attempting to drive, being in charge and supervising a learner while under the
-      influence of a listed drug. Section 123G distinguishes a saliva or urine preliminary drug
-      test from laboratory blood or urine testing; refusal without reasonable excuse after the
-      required warning can be prima facie evidence, rather than an automatically confirmed THC
-      result. The 2022 amendment corrected the drug list to the Thirteenth Schedule and the field
-      assessment to the Fourteenth. The government's 2024–25 performance report confirms that its
-      forensic laboratory began reporting drug-driving cases in July 2022. The 2026 Act changes
-      interim licence orders and creates vehicle
-      seizure provisions, but different sections require proclamation on different dates. The
-      complete current penalty and licence regime, commencement of the seizure provisions and a
-      medical-prescription defence remain unverified here; the older ministry reprint must not be
-      used as a complete current consolidation.
+      tolerance, separately from medicines with specified blood limits.[@traffic19] Section 123E
+      covers driving, attempting to drive, being in charge and supervising a learner while under
+      the influence of a listed drug.[@traffic19] Section 123G distinguishes a saliva or urine
+      preliminary drug test from laboratory blood or urine testing; refusal without reasonable
+      excuse after the required warning can be prima facie evidence, rather than an automatically
+      confirmed THC result.[@traffic19] The 2022 amendment corrected the drug list to the
+      Thirteenth Schedule and the field assessment to the Fourteenth.[@traffic22] The
+      government's 2024–25 performance report confirms that its forensic laboratory began
+      reporting drug-driving cases in July 2022, and the drug observatory counted 1,104
+      drug-driving tests in 2024.[@traffic_performance,ndo24] The 2026 Act changes interim
+      licence orders and creates vehicle seizure provisions, but different sections require
+      proclamation on different dates.[@traffic26] The complete current penalty and licence
+      regime, commencement of the seizure provisions and a medical-prescription defence remain
+      unverified here; the older ministry reprint must not be used as a complete current
+      consolidation.
     sources:
       - traffic19
       - traffic22
       - traffic26
       - traffic_performance
+      - ndo24
 sources:
   traffic_performance:
     title: "Mauritius Prime Minister's Office — Annual Report on Performance 2024–25, Forensic Science Laboratory"
@@ -157,6 +237,27 @@ sources:
   dda:
     title: Dangerous Drugs Act, Act 41 of 2000, as at 30 June 2017 (Mauritius Legal Information Institute, PDF)
     url: https://mauritiuslii.org/akn/mu/act/2000/41/eng@2017-06-30/source
+    locator: >-
+      Section 2 definitions (gandia, hashish, Indian hemp); section 5 cultivation ban and
+      uprooting; sections 29–30 penalty and dealing tiers; First Schedule Parts I (cannabis
+      herb) and II (cannabis resin). Read in the local PDF extraction.
+  ndo24:
+    title: Mauritius National Drug Observatory Report 2024
+    url: https://www.goomanytreatmentcentre.org/uploads/documents/NATIONAL_DRUG_OBSERVATORY_REPORT_2024_Final_260216_090548.pdf
+    locator: >-
+      4,373 registered drug offences (40.9% cannabis/gandia); ADSU 3,451 cases, 2,520 arrests
+      (37.2% cannabis); 1,747 convicted offences by type; FSL 3,268 confirmed seizure cases
+      (46.1% cannabis) and 1,104 drug-driving tests; ADSU street value Rs 1.6B (74% cannabis).
+  mra25a:
+    title: MRA press release — 55 kg of cannabis seized at SSR airport (25 February 2025)
+    url: https://mra.mu/download/PressRelease250225.pdf
+  mra25b:
+    title: MRA customs seizure log (2025 monthly figures)
+    url: https://www.mra.mu/index.php/13-customs?start=10
+    locator: Aug-25 cannabis 10,200 grams; Feb-25 cannabis 55,800 grams
+  mra26:
+    title: MRA press release — cannabis worth Rs 22.5M seized (31 December 2025)
+    url: https://www.mra.mu/download/PressRelease090126.pdf
   mondaq:
     title: Mondaq — Medical cannabis in Mauritius
     url: https://www.mondaq.com/food-and-drugs-law/1269988/medical-cannabis-in-mauritius

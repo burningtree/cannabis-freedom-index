@@ -50,4 +50,11 @@ history) — verify and build on them, don't duplicate.
 - New `articles/djibouti-drug-offenders-excluded-pardon-1984.md` + `articles/djibouti-national-drug-committee-2000.md` (both from official-journal decrees).
 - Audit 0/0; page + both articles verified in review HTML.
 - Left: planting (no seed rule)/driving/arrests (no sources), words/culture (no atlas entry), 1920s, 1940s–60s, 2010s decades; first-restriction estimate kept.
-## mu — pending
+## mu — committed
+- Word Gandia (English (Mauritius), from the DDA's own definition); dda locator added (definitions, §§5/29/30, schedules from local PDF extraction).
+- Cultivation/sharing rewritten with real tiers from the Act (herb = Part I, ≤25 yrs servitude + ≤1M; resin = Part II, 5–25 yrs; general Part II tier ≤15 yrs + ≤500k); possession term added; per-sentence cites incl. long driving section.
+- Products folded into medical + new hemp (≤30 mg/mL, no flower); production status corrected to none.
+- New arrests (NDO 2024: 3,451 cases, 2,520 arrests, 37.2% cannabis; 40.9% of 4,373 offences) + black_market (FSL 46.1%, ADSU Rs 1.6B/74% cannabis; MRA 2025 seizures 55 kg Feb, 10.2 kg vessel Aug, 18 kg Alabama arrival Dec — all fetched and read).
+- New `articles/mauritius-drug-bail-khoyratty-ruling-2006.md` (2006 UKPC 13, verified via CaseMine judgment text: 3 g heroin, s.32/s.5(3A) void, separation of powers).
+- Fixed self-inflicted duplicate recreational key. Audit 0/0; page + article verified in review HTML.
+- Left: 1848 article (book chapter not read — skipped), culture (no atlas entry), 1920s, 1940s, 1970s, 2010s decades.
