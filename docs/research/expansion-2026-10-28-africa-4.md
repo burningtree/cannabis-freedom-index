@@ -32,7 +32,11 @@ history) — verify and build on them, don't duplicate.
 - New `articles/gabon-drug-penalties-retained-2020.md` + `articles/gabon-libreville-seized-drugs-destroyed-2026.md` (both from retained gazette/ministry sources).
 - Audit 0/0; page + both articles verified in review HTML.
 - Left: driving/arrests (no sources), words/culture (no atlas entry), 1930s–50s, 1970s–80s decades.
-## gw — pending
+## gw — committed (changes.yaml entry left uncommitted — see below)
+- Profile already complete (audit 0/0 unchanged); black_market extended with Feb 2026 Senegal-border flow (56 kg GW-bound convoy, 10+ t Ziguinchor seizures) + new aq26 source, linked to new history entry.
+- New `changes.yaml` entry `guinea-bissau-senegal-cannabis-convoy-2026` (checked, from AfricanQuarters 28 Oct 2026 piece which I read in full). NOT committed: tree's changes.yaml carries another agent's uncommitted full-file reorder — committing would sweep their work. Entry verified in review builds; needs re-check once their reorder lands.
+- Page + new history page verified in review HTML.
+- Left: driving/arrests (no GW-side sources found), words/culture (no atlas entry), 1920s–60s, 1980s, 2000s–2020s decades; first-restriction estimate kept; 1995 conventions entry too thin for an article.
 ## gq — pending
 ## dj — pending
 ## mu — pending
