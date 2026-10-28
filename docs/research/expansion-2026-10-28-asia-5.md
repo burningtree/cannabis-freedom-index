@@ -8,10 +8,12 @@ The batch is Mongolia, Lebanon, Bhutan, Jordan and the United Arab Emirates.
 |---|---|---|---|
 | Mongolia | in progress | | |
 | Lebanon | in progress | | |
-| Bhutan | in progress | | |
+| Bhutan | possession/cultivation/sharing tables, hemp/planting/driving/arrests sections, corrected sections and thresholds, 8 history entries; 1925 estimate replaced by the 2004 Penal Code | 1930s–1970s empty; 2018 amendment commencement unknown | this commit |
 | Jordan | hemp section, products folded, possession/cultivation/sharing tables, corrected arrest figures, 1940s/2000s history and 2024–2026 entries | 1925 first-restriction estimate still unsupported; 2003 gazette day uncertain | this commit |
 | United Arab Emirates | hemp section, products folded, possession/cultivation/sharing tables, port-fine tiers, black market and arrests, 4 history entries, corrected deportation and 2021 penalties | no cannabis-only seizure series; high-THC medical cannabis remains illegal | this commit |
 
 UAE validation: `profile-audit ae` zero errors/warnings; `country-gaps ae` has no missing sections or tables and no uncited text; `history:test` passes 47/47; the 5,143-page build passed and the page shows three tables and the 1969–2026 entries.
 
 Jordan validation: `profile-audit jo` zero errors/warnings; `country-gaps jo` has no missing sections or tables and no uncited text; `history:test` passes 47/47; the build passed and the page shows three tables. The arrests text and the 2025 history entry now use the Public Security Directorate's like-for-like crime series instead of the NCHR comparison that mixed crimes with people.
+
+Bhutan validation: `profile-audit bt` zero errors/warnings; `country-gaps bt` has no missing sections or tables and no uncited text; `npm test` passes 179/179; the 5,160-page build passed and the page shows three tables. The profile now uses the 2015/2018 Act's sections 131–134 and Schedule VII thresholds (50 g herbal, 7 g hashish, 3 ml oil, five plants), replacing the mistaken 7 g herbal figure and section 137 citation. The first recorded restriction is now the 2004 Penal Code rather than the unsupported 1925 estimate; the 1930s–1970s remain empty for lack of any cannabis-specific event.

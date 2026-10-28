@@ -3,8 +3,12 @@ region: Asia
 iso_numeric: 64
 recreational: illegal
 medical: none
-updated: 2026-10-13
-summary: Cannabis grows wild across the country but possession is a criminal offence.
+updated: '2026-10-28'
+summary: >-
+  Cannabis grows wild across the country but possession is a criminal offence: up to 50 g of
+  herbal cannabis is a misdemeanour carrying one to under three years, and larger amounts or
+  trafficking reach five to under nine years. A treatment route covers up to twice the threshold
+  in limited cases.
 scores:
   possession: 1
   cultivation: 0
@@ -15,166 +19,317 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis is controlled under the Narcotic Drugs, Psychotropic Substances and Substance Abuse
-      Act 2015. An amendment gives cannabis special treatment: a person holding up to twice the
-      scheduled quantity, who tests positive and has no trafficking record, is charged with
-      'substance abuse' — leading to treatment and counselling — instead of trafficking. Larger
-      amounts are treated as intent to supply, with prison of several years.
+      Under the Narcotic Drugs, Psychotropic Substances and Substance Abuse Act 2015, as amended
+      in 2018, cannabis is a Schedule I narcotic with no medicinal value.[@act2018] Possession up
+      to the Schedule VII thresholds — 50 g of herbal cannabis, 7 g of hashish or 3 ml of hashish
+      oil — is a misdemeanour carrying one to under three years in prison.[@act2018] Above the
+      threshold up to twice it is a fourth-degree felony carrying three to under five years, and
+      more than twice it is a third-degree felony carrying five to under nine years.[@act2018] A
+      person holding up to twice the threshold who tests positive, has no trafficking record and is
+      not shown to be trafficking is treated as a substance-abuse case under section 141A instead
+      of a trafficker.[@act2018]
     sources:
-      - tb1
+      - act2018
+    penalties:
+      - label: Up to 50 g herbal, 7 g hashish or 3 ml hashish oil
+        treatment: criminal
+        term: Illegal possession
+        prison_min: 1 year
+        prison: 3 years
+        note: Misdemeanour; Schedule VII threshold
+      - label: Above the threshold up to twice it
+        treatment: criminal
+        term: Illegal possession
+        prison_min: 3 years
+        prison: 5 years
+        note: Fourth-degree felony; section 141A may treat it as substance abuse
+      - label: More than twice the threshold
+        treatment: criminal
+        term: Illegal possession
+        prison_min: 5 years
+        prison: 9 years
+        note: Third-degree felony
   cultivation:
     text: >-
-      Cultivation is illegal, although cannabis grows prolifically across Bhutan and was
-      traditionally used to fatten pigs and, less often, for textile fibre. The national
-      broadcaster reports that growing is allowed only for medical and scientific research, not
-      for medical use. Local leaders in Samdrup Jongkhar, where it grows wild, asked Parliament
-      in 2023 to allow sale for medicinal purposes.
+      Growing, domesticating or harvesting cannabis is an offence under section 128.[@act2018]
+      Fewer than five plants is a misdemeanour carrying one to under three years; five to fewer
+      than ten is a fourth-degree felony carrying three to under five years; ten or more is a
+      third-degree felony carrying five to under nine years.[@act2018] Harvesting up to 50 g is a
+      misdemeanour, over 50 g to 100 g a fourth-degree felony, and over 100 g a third-degree
+      felony.[@act2018] Section 130 allows fibre or animal-feed production only "as prescribed
+      under rules and regulations", but the 2024 and 2026 rules contain no cannabis or hemp
+      provision, so no operational licence was found.[@act2018,regs2026]
     sources:
-      - bbs23
-      - wiki
+      - act2018
+      - regs2026
+    penalties:
+      - label: Fewer than five plants
+        treatment: criminal
+        term: Cultivation
+        prison_min: 1 year
+        prison: 3 years
+        note: Misdemeanour
+      - label: Five to fewer than ten plants
+        treatment: criminal
+        term: Cultivation
+        prison_min: 3 years
+        prison: 5 years
+        note: Fourth-degree felony
+      - label: Ten or more plants
+        treatment: criminal
+        term: Cultivation
+        prison_min: 5 years
+        prison: 9 years
+        note: Third-degree felony
+      - label: Harvest up to 50 g
+        treatment: criminal
+        term: Harvesting
+        prison_min: 1 year
+        prison: 3 years
+        note: Misdemeanour
+      - label: Harvest over 50 g to 100 g
+        treatment: criminal
+        term: Harvesting
+        prison_min: 3 years
+        prison: 5 years
+        note: Fourth-degree felony
+      - label: Harvest over 100 g
+        treatment: criminal
+        term: Harvesting
+        prison_min: 5 years
+        prison: 9 years
+        note: Third-degree felony
   enforcement:
     text: >-
-      Treatment-first for small-scale cannabis users, prison for anything that looks like dealing;
-      youth drug arrests are a prominent public concern.
+      Cannabis seizures rose from 2.37 kg in the first half of 2025 to 47.43 kg in the first half
+      of 2026, and cannabis-trafficking cases from three to thirteen, even as total drug cases fell
+      from 819 to 713.[@bhutanese26] In 2024 police arrested 3,319 people for drug offences,
+      referred 2,578 to treatment and convicted 229; the Royal Bhutan Police yearbook recorded 25
+      cannabis-trafficking and 10 cannabis-possession offences that year.[@bhutanese25,rbp24] The
+      force began a nationwide cannabis uprooting campaign in May 2025.[@uproot25]
     sources:
-      - tb1
-      - tb2
+      - bhutanese26
+      - bhutanese25
+      - rbp24
+      - uproot25
   sharing:
-    text: Trafficking carries heavy sentences, scaled to quantity.
+    text: >-
+      Section 133 makes trafficking — possessing, importing, exporting, storing, selling,
+      purchasing, transporting, distributing or supplying — an offence above the Schedule VII
+      thresholds.[@act2018] Over 50 g to 100 g of herbal cannabis, over 7 g to 14 g of hashish or
+      over 3 ml to 6 ml of oil is a fourth-degree felony carrying three to under five years; more
+      than twice the threshold is a third-degree felony carrying five to under nine years.[@act2018]
+      Because the offence requires more than the threshold, selling or sharing up to 50 g is not
+      clearly trafficking and may be charged as possession; the Act creates no separate small-scale
+      supply offence.[@act2018] Soliciting another person to use is a separate misdemeanour.[@act2018]
     sources:
-      - tb2
+      - act2018
+    penalties:
+      - label: Trafficking over the threshold up to twice it
+        treatment: criminal
+        term: Trafficking
+        prison_min: 3 years
+        prison: 5 years
+        note: Fourth-degree felony
+      - label: Trafficking more than twice the threshold
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 9 years
+        note: Third-degree felony
+      - label: Selling or sharing up to the threshold
+        treatment: criminal
+        term: Possession
+        prison_min: 1 year
+        prison: 3 years
+        note: No separate small-scale supply offence; may be charged as possession
   consumption:
     text: >-
-      Use is the 'substance abuse' offence, handled through compulsory treatment and rehabilitation,
-      with penalties for repeat cases.
+      Section 152 treats substance abuse as a treatment offence rather than a prison offence for
+      the first three findings: at least three months' compulsory treatment if addicted, or one
+      month's counselling, then at least six months, then treatment plus at least a year's community
+      service.[@act2018] A fourth finding is a misdemeanour carrying one to under three years, with
+      treatment and community service.[@act2018] The no-possession route in section 152 expressly
+      excludes cannabis; cannabis substance abuse generally requires possession of no more than the
+      Schedule VII quantity plus a positive test.[@act2018]
     sources:
-      - tb1
+      - act2018
   access:
-    text: No legal source.
+    text: >-
+      None. Cannabis is Schedule I with no medicinal value, and no patient, CBD or hemp consumer
+      route exists.[@act2018] Section 18 allows the competent authority to authorise Schedule I
+      substances for medical or scientific research, teaching or forensic work, but not
+      treatment.[@act2018]
     sources:
-      - tb1
+      - act2018
 context:
   recreational:
     text: >-
-      Illegal but treatment-first for small-scale users: up to twice the scheduled quantity with
-      a positive test and no trafficking record means treatment and counselling, not
-      trafficking charges. Cannabis grows wild and enforcement focuses on dealing; local
-      leaders asked parliament in 2023 to allow medicinal sale.[@tb1,bbs23,wiki]
+      There is no legal recreational supply. Possession up to 50 g of herbal cannabis is a
+      misdemeanour carrying one to under three years, with higher felony bands above that; a person
+      holding up to twice the threshold who tests positive and has no trafficking record may be
+      treated as a substance-abuse case instead.[@act2018] Cannabis grows wild across the country
+      and was traditionally used to fatten pigs and, less often, for textile fibre.[@bbs23] Local
+      leaders in Samdrup Jongkhar asked Parliament in 2023 to allow sale for medicinal purposes.[@bbs23]
     sources:
-      - tb1
+      - act2018
       - bbs23
-      - wiki
   production:
     status: none
     text: >-
-      No lawful cannabis production. Growing is allowed only for medical and scientific
-      research, not for medical use; no production programme operates.[@bbs23]
+      No lawful cannabis production. Section 130 allows fibre or animal-feed production only as
+      prescribed by rules, but neither the 2024 nor the 2026 narcotics rules contains a cannabis or
+      hemp provision, and no licence was found.[@act2018,regs2026]
     sources:
-      - bbs23
+      - act2018
+      - regs2026
   research:
     status: licensed
     text: >-
-      Growing is allowed only for medical and scientific research; no research programme or
-      medical use route was verified beyond that permission.[@bbs23]
+      Section 18 allows the competent authority to authorise production, import, use or holding of
+      Schedule I substances for medical or scientific research, teaching or forensic work, and the
+      2026 rules set research authorisations.[@act2018,regs2026] No active cannabis research
+      programme was verified beyond that permission.[@act2018]
     sources:
-      - bbs23
+      - act2018
+      - regs2026
   medical:
     text: >-
-      No medical cannabis programme and no legal consumer products. Growing is allowed only
-      for medical and scientific research, not for medical use.[@bbs23]
+      No medical cannabis programme. Cannabis is Schedule I, described as having no medicinal
+      value; section 18 permits research, teaching or forensic work, not treatment.[@act2018] No
+      CBD medicine was found.[@act2018]
     sources:
-      - bbs23
+      - act2018
+  hemp:
+    status: none
+    text: >-
+      There is no legal hemp category and no THC ceiling. All cannabis is Schedule I, and the
+      definition expressly includes seeds.[@act2018] Section 130's fibre and animal-feed exception
+      has not been implemented in the 2024 or 2026 rules, and no hemp licence was found.[@act2018,regs2026]
+    sources:
+      - act2018
+      - regs2026
   consequences:
-    text: Compulsory treatment is recorded; a trafficking conviction is a serious criminal record.
+    text: >-
+      A trafficking conviction is a felony with prison, and a felony conviction is a serious
+      criminal record.[@act2018] Substance-abuse findings lead to compulsory treatment and
+      counselling, and a fourth finding becomes a misdemeanour.[@act2018]
     sources:
-      - tb1
+      - act2018
+  planting:
+    seeds: illegal
+    seeds_trade: banned
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      Cannabis includes the plant, flowering tops, seeds and leaves.[@act2018] Planting a seed is
+      cultivation under section 128, and there is no seed-sale, seed-import or hemp-seed exception;
+      even fewer than five plants is a misdemeanour.[@act2018] The only exceptions are a section 18
+      research authorisation and the unoperationalised section 130 fibre and animal-feed
+      permission.[@act2018,regs2026]
+    sources:
+      - act2018
+      - regs2026
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@act2018]
     sources:
-      - tb2
+      - act2018
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says there are
-      strict penalties for possession, use and trafficking: a prison sentence and a heavy
-      fine, with sentences from a minimum of 3 years up to life depending on the type and
-      quantity of drug.
+      There is no legal recreational supply for anyone. Possession up to 50 g of herbal cannabis is
+      a misdemeanour carrying one to under three years, and larger amounts or trafficking reach
+      higher felony bands; no separate rule for visitors was found.[@act2018]
     sources:
-      - fcdo
+      - act2018
   driving:
     status: impairment
     text: >-
-      Road Safety and Transport Act section 34 prohibits driving when an addictive
-      drug makes proper vehicle control impossible. It specifies 25 penalty units;
-      section 37 requires licence/certificate cancellation after conviction and
-      disqualification for a period stated as at least six months or as determined
-      by the court. These statutory conviction consequences are distinct from the
-      regulations' administrative
-      schedule. The authority's 2021 Regulations provide standard drug-testing kits
-      and require its operating procedure under sections 454–455. Schedule X item
-      13 specifies at least six months' suspension and referral to BNCA for an
-      ordinary licence; the professional/commercial column specifies six months,
-      one demerit point and referral. Section 478 permits stopping drug-impaired
-      driving. The authority confirms regulation commencement on 1 July 2022,
-      although its linked PDF leaves the commencement field blank. No THC cutoff,
-      kit positivity presumption or complete operational confirmation/refusal protocol
-      was established. The alcohol schedule is not a cannabis fine table.
+      Road Safety and Transport Act 1999 section 34 prohibits driving while under the influence of
+      any drug of addiction to an extent that proper control is impossible; the fine is 25 penalty
+      units, or Nu 1,250.[@roadact1999] Section 37 cancels the licence and disqualifies the driver
+      for at least six months, or as the court determines.[@roadact1999] The 2026 Road Safety
+      Regulations, in force from 1 July 2026, retain drug-testing kits and a standard operating
+      procedure but set no THC cutoff.[@roadregs2026] The offence is impairment-based.[@roadact1999]
     sources:
       - roadact1999
-      - roadregulations2021
-      - regulationcommencement
+      - roadregs2026
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 13.2 kg of herbal
-      cannabis seized in 2024, and 1.3 kg of cannabis resin seized in 2024, against 1.1 kg
-      in 2023. The UN publishes them as kilogram equivalents, and countries count seizures
-      differently, so the figures are not comparable across borders.
+      The government reported 13.2 kg of herbal cannabis and 1.3 kg of cannabis resin seized in
+      2024, against 1.1 kg of resin in 2023.[@unodc_szr] The Royal Bhutan Police reported 13.15 kg
+      of leaves, 1.26 kg of hashish and 337 cannabis plants in 2024.[@rbp24] Seizures rose sharply
+      in 2026: 47.4 kg in the first half, against 2.37 kg a year earlier, including 28.5 kg in
+      parcel consignments in February and 22.34 kg at the airport in September.[@bhutanese26,kuensel26]
+      The figures use different categories and are not directly comparable.[@unodc_szr,rbp24]
     sources:
       - unodc_szr
+      - rbp24
+      - bhutanese26
+      - kuensel26
   arrests:
     text: >-
-      The Royal Bhutan Police arrested 3,319 people for drug offences in 2024, down from
-      3,667 in 2023. Of those, 343 were under
-      18 and 1,406 were aged 18 to 24; 2,578 were referred for treatment and 229 were
-      convicted. The police named cannabis products, both hashish and leaves, among the
-      three substances most often seized, with SP Plus and solvents,
-      and gave no separate count for cannabis.
+      Police arrested 3,319 people for drug offences in 2024, down from 3,667 in 2023; 2,578 were
+      referred for treatment and 229 were convicted.[@bhutanese25] The Royal Bhutan Police yearbook
+      recorded 326 drug offences that year, including 25 cannabis-trafficking and 10
+      cannabis-possession cases.[@rbp24] In the first half of 2026 police recorded 713 drug cases and
+      1,373 arrests, with 13 cannabis-trafficking and 10 possession cases.[@bhutanese26] The figures
+      use different counting bases and are not a single continuous series.[@bhutanese25,rbp24]
     sources:
       - bhutanese25
+      - rbp24
+      - bhutanese26
 sources:
+  act2018:
+    title: "Bhutan — Narcotic Drugs, Psychotropic Substances and Substance Abuse Act 2015, as amended in 2018 (BFDA consolidated PDF)"
+    url: https://bfda.gov.bt/wp-content/uploads/2025/08/NDPSSA-Act-2018.pdf
+    locator: "Sections 2(9), 6, 18, 128–134, 141A, 152–154; Schedule I item 10; Schedule VII."
+  act2015:
+    title: "Bhutan — Narcotic Drugs, Psychotropic Substances and Substance Abuse Act 2015 (BFDA PDF)"
+    url: https://bfda.gov.bt/wp-content/uploads/2025/08/NDPSSA-Act-2015.pdf
+    locator: "Sections 1(2), 128–134; Schedule VII."
+  act2005:
+    title: "Bhutan — Narcotic Drugs, Psychotropic Substances and Substance Abuse Act 2005"
+    url: http://www.bmf.bt/wp-content/uploads/2018/11/Narcotic_Drugs_act_of_Bhutan_2005Eng.pdf
+    locator: "Sections 1 and 98–99."
+  penal2004:
+    title: "Bhutan — Penal Code of Bhutan 2004"
+    url: https://judiciary.gov.bt/storage/files/1/Penal-Code-of-Bhutan-2004_English-version_.pdf
+    locator: "Sections 8–12 and 496–501; in force 11 August 2004."
+  regs2026:
+    title: "Bhutan — Narcotic Drugs, Psychotropic Substances and Substance Abuse Rules and Regulations 2026"
+    url: https://bfda.gov.bt/wp-content/uploads/2026/07/Narcotic-Drugs-Psychotropic-Substances-and-Substance-Abuse-Rules-and-Regulation-2026-.pdf
+    locator: "Section 1; sections 35–43 on research authorisations."
   roadact1999:
-    title: "Bhutan Construction and Transport Authority — public Road Safety and Transport Act 1999 download"
-    url: https://drive.google.com/file/d/0B2WOxwAY-uenX05pRHJiaTRadEE/view
-    locator: "Sections 34 and 37; public Act linked in BCTA Acts and Regulations catalogue"
-  roadregulations2021:
-    title: "Bhutan Construction and Transport Authority — public Road Safety and Transport Regulations 2021 download"
-    url: https://drive.google.com/file/d/1CB7Ky2oG1XxNpBp1XipwJl-33qwTry4Z/view
-    locator: "Sections 454–455, 478–480; Schedule X item 13, printed page 119; linked PDF has blank commencement field"
-  regulationcommencement:
-    title: "Bhutan Construction and Transport Authority — commencement announcement for 2021 Regulations"
-    url: https://bcta.gov.bt/road-safety-and-transport-regulations-2021/
-    locator: "Commencement stated as 1 July 2022; public link to the regulations"
-  wiki:
-    title: Wikipedia — Cannabis in Bhutan
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Bhutan
-  fcdo:
-    title: "GOV.UK (FCDO) — Foreign travel advice: Bhutan, safety and security"
-    url: https://www.gov.uk/foreign-travel-advice/bhutan/safety-and-security
-  tb1:
-    title: The Bhutanese — Narcotics (Amendment) Bill passed with more clarity
-    url: https://thebhutanese.bt/narcotics-amendment-bill-passed-with-more-clarity/
-  tb2:
-    title: The Bhutanese — Narcotics Drugs bill to penalize traffickers severely
-    url: https://thebhutanese.bt/narcotics-drugs-bill-to-penalize-traffickers-severely/
+    title: "Bhutan — Road Safety and Transport Act 1999"
+    url: https://moit.gov.bt/wp-content/uploads/2026/03/RST-ACT-1999_wb-1.pdf
+    locator: "Sections 2, 34 and 37; penalty unit Nu 50."
+  roadregs2026:
+    title: "Bhutan — Road Safety and Transport Rules and Regulations 2026"
+    url: https://moit.gov.bt/wp-content/uploads/2026/08/Bhutan-Road-Safety-Transport-Regulations-2026.pdf
+    locator: "Section 1; sections 162–164 and 578–579."
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
   bhutanese25:
     title: "The Bhutanese — 2024 records arrest of 3,319 individuals related to substance abuse (15 February 2025)"
     url: https://thebhutanese.bt/2024-records-arrest-of-3319-individuals-related-to-substance-abuse/
+  rbp24:
+    title: "Royal Bhutan Police — Statistical Yearbook 2024"
+    url: https://rbp.gov.bt/wp-content/uploads/2025/05/Statistical-Yearbook-2024.pdf
+    locator: "Drug offences and cannabis seizure tables."
+  bhutanese26:
+    title: "The Bhutanese — Drug-related offences drop in first 6 months of 2026 (25 July 2026)"
+    url: https://thebhutanese.bt/drug-related-offences-drop-in-first-6-months-of-2026/
+  uproot25:
+    title: "The Bhutanese — RBP initiates nationwide cannabis uprooting campaign to curb substance use (24 May 2025)"
+    url: https://thebhutanese.bt/rbp-initiates-nationwide-cannabis-uprooting-campaign-to-curb-substance-use/
+  kuensel26:
+    title: "Kuensel — Police investigate Drukair staff in 22.34kg cannabis smuggling case (23 October 2026)"
+    url: https://kuenselonline.com/news/police-investigate-drukair-staff-in-2234kg-cannabis-smuggling-case
   bbs23:
     title: "BBS — Samdrup Jongkhar local leaders call for marijuana legalisation for medicinal purposes (19 September 2023)"
     url: https://www.bbs.bt/samdrup-jongkhar-local-leaders-call-for-marijuana-legalisation-for-medicinal-purposes
