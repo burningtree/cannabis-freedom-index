@@ -29,7 +29,14 @@ All batch files verified free of others' uncommitted changes at start.
 - No atlas entries: culture skipped; planting (beyond table) + driving skipped (no sources). "Nothing since 2008" addressed via 2024–2026 enforcement sources.
 - Audit 0/0; country + article review builds verified.
 - Left: 1920s–1950s, 2010s–2020s history decades.
-## bi — pending
+## bi — committed
+- Per-sentence cites on 9 flagged texts; fixed 5 `term` warnings on pre-existing rows; culture now links the 1977 report entry.
+- New hemp (status none); words (chanvre à fumer/French via the 1977 US report); production one-liner replaced with code-based text.
+- No article (only candidates: first-restriction estimate, kept as estimate; 1977 report importance 1, already linked/cited).
+- No atlas entries beyond the recorded name; clubs/planting/driving/black_market/arrests skipped (Mainline briefing has no hard counts).
+- Audit 0/0; country review page verified.
+- SELF-INFLICTED: a Python one-liner (`write('ok')` instead of `write(t)`) truncated bi.yaml mid-work; restored from git and reapplied all edits via the edit tool; diff verified sane before building.
+- Left: 1920s–1960s history decades.
 ## ss — pending
 ## sl — pending
 ## gm — pending

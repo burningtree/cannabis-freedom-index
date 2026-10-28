@@ -14,40 +14,46 @@ scores:
   sharing: 1
   consumption: 1
   access: 0
+words:
+  - { word: "chanvre à fumer", lang: French, meaning: "smoking hemp; what older and poorer Burundians called cannabis in 1977", sources: [us77] }
 segments:
   possession:
     text: >-
       Illicit possession of a controlled drug carries one to five years in prison, a fine of 50,000
-      to 100,000 Burundian francs, or both, under Article 510 of the 2017 Penal Code. The code
-      leaves drug classification to health-ministry orders.
+      to 100,000 Burundian francs, or both, under Article 510 of the 2017 Penal Code.[@cp17] The
+      code leaves drug classification to health-ministry orders.[@cp17]
     sources:
       - cp17
     currency: BIF
     penalties:
       - label: Illicit possession (Penal Code Article 510)
         treatment: criminal
+        term: Possession
         prison_min: 1 year
         prison: 5 years
         fine: 100000
         note: Fine of FBu 50,000–100,000
   cultivation:
     text: >-
-      Growing narcotic plants is prohibited outside conditions set by the health ministry. The
-      general regulatory offence carries one to five years in prison, a fine of 100,000 to 250,000
-      Burundian francs, or both. The code separately punishes illicit production with ten to fifteen
-      years and a fine up to one million francs, and orders confiscated crops destroyed.
+      Growing narcotic plants is prohibited outside conditions set by the health
+      ministry.[@cp17] The general regulatory offence carries one to five years in prison, a fine
+      of 100,000 to 250,000 Burundian francs, or both.[@cp17] The code separately punishes illicit
+      production with ten to fifteen years and a fine up to one million francs, and orders
+      confiscated crops destroyed.[@cp17]
     sources:
       - cp17
     currency: BIF
     penalties:
       - label: Unauthorised growing (regulatory offence)
         treatment: criminal
+        term: Cultivation
         prison_min: 1 year
         prison: 5 years
         fine: 250000
         note: Fine of FBu 100,000–250,000
       - label: Illicit production
         treatment: criminal
+        term: Production
         prison_min: 10 years
         prison: 15 years
         fine: 1000000
@@ -55,46 +61,48 @@ segments:
   enforcement:
     text: >-
       Mainline's country briefing reports that people who use drugs face arrest, imprisonment or
-      fines. Its interviewees described court supervision for consumption as rarely implemented
-      because institutions lacked staff and resources. These accounts cover drugs generally; the
-      report gives no cannabis-specific imprisonment rate.
+      fines.[@ml] Its interviewees described court supervision for consumption as rarely
+      implemented because institutions lacked staff and resources.[@ml] These accounts cover drugs
+      generally; the report gives no cannabis-specific imprisonment rate.
     sources:
       - ml
   sharing:
     text: >-
-      Helping someone else use a controlled drug, for payment or free, carries one to five years in
-      prison and a fine of 50,000 to one million Burundian francs. This includes providing a place
-      for use. Production, import, manufacture and export carry ten to fifteen years and a fine up
-      to one million francs; organised-group penalties are doubled.
+      Helping someone else use a controlled drug, for payment or free, carries one to five years
+      in prison and a fine of 50,000 to one million Burundian francs.[@cp17] This includes providing
+      a place for use.[@cp17] Production, import, manufacture and export carry ten to fifteen years
+      and a fine up to one million francs; organised-group penalties are doubled.[@cp17]
     sources:
       - cp17
     currency: BIF
     penalties:
       - label: Helping someone else use, free or paid
         treatment: criminal
+        term: Facilitation
         prison_min: 1 year
         prison: 5 years
         fine: 1000000
         note: Fine of FBu 50,000–1,000,000; includes providing a place for use
       - label: Production, import, manufacture or export
         treatment: criminal
+        term: Trafficking
         prison_min: 10 years
         prison: 15 years
         fine: 1000000
         note: Fine of up to FBu 1,000,000; doubled for organised groups
   consumption:
     text: >-
-      Illicit consumption carries one to five years in prison, a fine of 50,000 to 100,000 Burundian
-      francs, or both. Judges must also impose supervision intended to prevent repeat offending.
-      This can include treatment after medical assessment or training, with further imprisonment if
-      ordered care or training is refused.
+      Illicit consumption carries one to five years in prison, a fine of 50,000 to 100,000
+      Burundian francs, or both.[@cp17] Judges must also impose supervision intended to prevent
+      repeat offending.[@cp17] This can include treatment after medical assessment or training, with
+      further imprisonment if ordered care or training is refused.[@cp17]
     sources:
       - cp17
   access:
     text: >-
       Growing, selling, transporting and holding controlled drugs are prohibited outside conditions
-      set by the health ministry. The reviewed sources establish no authorised supply for
-      recreational users.
+      set by the health ministry.[@cp17] The reviewed sources establish no authorised supply for
+      recreational users.[@cp17,ml]
     sources:
       - cp17
       - ml
@@ -116,11 +124,21 @@ context:
     sources:
       - cp17
       - us77
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the 2017 code bans growing narcotic plants outside
+      health-ministry conditions with no low-THC distinction, and no hemp production is
+      documented.[@cp17]
+    sources:
+      - cp17
   production:
     status: none
-    text: No licensed production.
+    text: >-
+      No licensed production. The 2017 code bans growing, selling, transporting and holding
+      controlled drugs outside health-ministry conditions.[@cp17]
     sources:
-      - wiki
+      - cp17
   medical:
     text: >-
       No patient route is documented. Cannabis is illegal, and the 2017 code bans growing,
@@ -131,23 +149,25 @@ context:
       - cp17
   culture:
     text: >-
-      One name is recorded: a 1977 American report noted that older and poorer Burundians
-      sometimes called cannabis *chanvre à fumer*, smoking hemp.[@us77]
+      One name is recorded: a [1977 American report](/history/burundi-us-report-1977/) noted that
+      older and poorer Burundians sometimes called cannabis *chanvre à fumer*, smoking
+      hemp.[@us77]
     sources:
       - us77
   consequences:
     text: >-
       The drug provisions require confiscation of controlled plants and substances and equipment
-      used for consumption, manufacture or transport. Courts must order confiscated crops destroyed;
-      the offender bears the cost when authorities carry out the destruction.
+      used for consumption, manufacture or transport.[@cp17] Courts must order confiscated crops
+      destroyed; the offender bears the cost when authorities carry out the
+      destruction.[@cp17]
     sources:
       - cp17
   visitors:
     status: none
     text: >-
-      The reviewed sources establish no legal recreational supply for visitors. Illicit possession
-      or consumption carries one to five years in prison, a fine of 50,000 to 100,000 Burundian
-      francs, or both.
+      The reviewed sources establish no legal recreational supply for visitors.[@cp17,ml] Illicit
+      possession or consumption carries one to five years in prison, a fine of 50,000 to 100,000
+      Burundian francs, or both.[@cp17]
     sources:
       - cp17
       - ml
