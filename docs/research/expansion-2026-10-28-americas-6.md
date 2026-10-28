@@ -52,4 +52,9 @@ others; kp — Asia; cw/sr — done in Americas-5; gy — another agent's blocke
 - Audit 0 errors + 2 pre-existing warnings (consequences/visitors uncited sentences — untouched); page + all three articles verified.
 - CORRECTION: `articles/grenada-decriminalisation-2026.md` already existed (another agent's commit 2f6cdba0, richer: 7 sources, 71 g presumption, age debate, comparison table) and I overwrote it. Restored their version byte-identical in a follow-up commit; my profile links resolve to their article. Lesson: `ls articles/` for the country before writing, even when the backlog shows no article.
 - Left: 1925 estimate (parallel YE estimate, no link), 2014/2009/treaty entries (imp 1, skipped).
-## hn — pending
+## hn — committed
+- Word marihuana (Spanish (Honduras), army communiqués + press); 2012-draft link added to consequences.
+- New `articles/honduras-penal-code-2020.md` (Decree 130-2017 + Decree 46-2020: eight existing profile links finally resolve to a page) + `articles/honduras-cultivation-proposal-2022.md` (Nasralla export plan, no bill filed, 2020 patients bill stalled) + `articles/honduras-marijuana-fields-2025.md` (13 fields, 180,000 plants, Tocoa) + `articles/honduras-draft-drug-law-2012.md` (TNI: shoot-down provision, 30-day/lempira rehab tiers, no quantity line).
+- Tables already present (Art. 311 4–7/1–3 yr tiers); no profile surgery needed beyond word + one link.
+- Audit 0/0; page + all four articles verified in review HTML.
+- Left: 1925 estimate (parallel VE estimate, no link), arrests (no figures), culture/driving (no sources).
