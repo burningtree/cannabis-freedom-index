@@ -11,7 +11,11 @@ All batch files verified free of others' uncommitted changes at start.
 - New `articles/nigeria-decree-20-1984.md` (Decree 20 retroactive executions, 1984 IHA amendments, 1986 abolition, 1989 NDLEA; Sun/country-data/gazette sources).
 - Audit 0/0; country + article review pages verified. Notes: `answers.test.mjs` crashed transiently mid-work (another agent's in-progress edit; re-ran 9/0 green); 4 audit warnings fixed per profile-audit rules.
 - Left: 1940s/2000s history decades; 1965 article candidate open.
-## cd — pending
+## cd — committed
+- Profile was already cited/tabled/linked; added planting (unlicensed banned, licensed industrial scale, no seed exception verified), words (Riamba/Tshiluba via Duvall; chanvre/French as the law's word — no atlas entry exists for either, which the words guide allows).
+- Two articles: `dr-congo-public-health-medical-exception-2018.md` (Law 18/035) and `dr-congo-medical-2021.md` (Order 1250: five-year authorisations, 0.2% THC, industrial scale).
+- Audit 0/0; country + both article review builds verified.
+- Left: driving/arrests researched sections (no sources found), 1920s–1990s history decades.
 ## tz — pending
 ## ke — pending
 ## ao — pending
