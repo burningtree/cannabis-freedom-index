@@ -5,16 +5,128 @@ recreational: illegal
 medical: none
 updated: '2026-10-28'
 summary: >-
-  The Taliban banned cannabis cultivation in March 2023, and sharia courts punish users and
-  traffickers with prison and flogging. The last codified drug law, from 2010, set hashish
-  trafficking by weight and exempted certified addicts from prosecution; no comprehensive
-  published code has replaced it since the Taliban takeover.
+  Cannabis is banned, and the Taliban's 2026 Penal Code for Courts sets fixed terms of six months
+  to seven years for use, possession, cultivation and trafficking. There is no death penalty for
+  cannabis in the code, but courts also impose flogging.
 scores:
-  possession: 0
-  cultivation: 0
+  possession:
+    text: >-
+      The Taliban's Penal Code for Courts, signed on 4 January 2026, now sets the narcotics
+      penalties. Article 101 grades sale and possession of hashish by weight: up to 5 g brings one
+      year, over 5 g up to 30 g two years, over 30 g up to 100 g two and a half years, and over
+      100 g six months for each additional 100 g, capped at seven years.[@code2026] Simple use is a
+      separate six-month offence under article 102.[@code2026] The 2010 law's exemption for a
+      certified addict holding up to 50 g of hashish is legacy; the 2026 code's only exemption is a
+      general certificate under article 114, and no cannabis exemption programme was found.[@af2010,code2026]
+      Offenders also face flogging in practice.[@am]
+    sources:
+      - code2026
+      - af2010
+      - am
+    currency: AFN
+    penalties:
+      - label: Sale or possession, up to 5 g hashish (article 101)
+        treatment: criminal
+        term: Possession
+        prison: 1 year
+      - label: Over 5 g up to 30 g hashish
+        treatment: criminal
+        term: Possession
+        prison: 2 years
+      - label: Over 30 g up to 100 g hashish
+        treatment: criminal
+        term: Possession
+        prison: 2 years 6 months
+      - label: Over 100 g hashish
+        treatment: criminal
+        term: Possession
+        prison_min: 3 years
+        prison: 7 years
+        note: Six months for each additional 100 g, capped at seven years
+  cultivation:
+    text: >-
+      Article 94 of the 2026 code grades cannabis cultivation by area: under half a jerib
+      (about 0.1 hectare) brings six months, half a jerib nine months, over half up to one jerib one
+      year, and over one jerib one year plus six months for each extra jerib and ten days for each
+      extra half-jerib, capped at seven years.[@code2026] The crop is destroyed.[@code2026] The
+      2023 Taliban decree banning cultivation nationwide remains in force.[@am]
+    sources:
+      - code2026
+      - am
+    currency: AFN
+    penalties:
+      - label: Under half a jerib
+        treatment: criminal
+        term: Cultivation
+        prison: 6 months
+      - label: Half a jerib
+        treatment: criminal
+        term: Cultivation
+        prison: 9 months
+      - label: Over half up to one jerib
+        treatment: criminal
+        term: Cultivation
+        prison: 1 year
+      - label: Over one jerib
+        treatment: criminal
+        term: Cultivation
+        prison_min: 1 year 6 months
+        prison: 7 years
+        note: Six months per extra jerib and ten days per extra half-jerib, capped at seven years
   enforcement: 0
-  sharing: 0
-  consumption: 1
+  sharing:
+    text: >-
+      Article 101 applies the hashish sale-and-possession scale to dealing: one year up to 5 g,
+      two years up to 30 g, two and a half years up to 100 g, and six months for each further
+      100 g, capped at seven years.[@code2026] Transport inside Afghanistan under article 95 runs
+      from one year under 1 kg to three years for 5–30 kg, then one year for each extra 20 kg, and
+      import under article 99 reaches seven years with one year for each extra 10 kg above 30 kg.[@code2026]
+      Repeat offences double the sentence and the vehicle is burned.[@code2026] There is no life
+      sentence or death penalty for cannabis trafficking in the 2026 code.[@code2026]
+    sources:
+      - code2026
+    currency: AFN
+    penalties:
+      - label: Sale or possession, up to 5 g hashish
+        treatment: criminal
+        term: Trafficking
+        prison: 1 year
+      - label: Over 5 g up to 30 g hashish
+        treatment: criminal
+        term: Trafficking
+        prison: 2 years
+      - label: Over 30 g up to 100 g hashish
+        treatment: criminal
+        term: Trafficking
+        prison: 2 years 6 months
+      - label: Transport, 5–30 kg hashish (article 95)
+        treatment: criminal
+        term: Transport
+        prison: 3 years
+        note: One year under 1 kg, two years for 1–5 kg, then one year per extra 20 kg above 30 kg, capped at seven years
+      - label: Import, 5–30 kg hashish (article 99)
+        treatment: criminal
+        term: Import
+        prison: 3 years
+        note: One year under 1 kg, two years for 1–5 kg, then one year per extra 10 kg above 30 kg, capped at seven years
+  consumption:
+    text: >-
+      Use is a six-month offence under article 102 of the 2026 code, with no fine.[@code2026] The
+      2010 law's exemption for a certified addict holding up to 50 g of hashish is legacy, and the
+      2026 code replaces it with a general exemption certificate that no cannabis programme
+      operates.[@af2010,code2026] In practice users are also detained in compulsory treatment camps
+      and flogged.[@aan,am]
+    sources:
+      - code2026
+      - af2010
+      - aan
+      - am
+    penalties:
+      - label: Use (article 102)
+        treatment: criminal
+        term: Use
+        prison: 6 months
+        note: No fine; flogging and compulsory treatment also reported
   access: 0
 segments:
   possession:
@@ -66,15 +178,16 @@ segments:
         note: Double the cultivation penalty
   enforcement:
     text: >-
-      Sharia punishments including flogging are applied unevenly: hashish remains widely used and
-      the cultivation ban has been enforced less thoroughly than the opium ban.[@aan] In a 2025
-      case involving hashish trafficking, a Taliban court imposed prison terms and 10 to 39
-      lashes on eleven people.[@afj] The last codified law also allowed life imprisonment for
-      large-scale trafficking and death for armed resistance that caused a death.[@sherloc]
+      Sharia punishments including flogging are applied alongside the code: hashish remains widely
+      used, and the cultivation ban has been enforced less thoroughly than the opium ban.[@aan] In
+      2025 Kabul courts imposed prison terms and 10 to 39 lashes in several hashish cases.[@afj]
+      The 2026 code's narcotics chapter has no life sentence or death penalty for cannabis, though
+      the general article 14 "spreaders of disorder" clause could in theory be used in an extreme
+      case; no cannabis case using it was found.[@code2026]
     sources:
       - aan
       - afj
-      - sherloc
+      - code2026
   sharing:
     text: >-
       Hashish trafficking is graded by weight: up to 10 g brought up to one month in prison,
@@ -167,21 +280,25 @@ context:
       - aan
   medical:
     text: >-
-      No medical cannabis programme or patient supply was found.[@cann] Cannabis is not listed as
-      a medicine in the sources read, and the 2023 cultivation ban leaves no lawful production
-      route.[@am]
+      No medical cannabis programme or patient supply was found.[@cann] The 2010 law allowed
+      government licences for medical and scientific work but listed cannabis as prohibited, and
+      the 2026 code's only paper route is a general article 114 exemption certificate.[@af2010,code2026]
+      The 2023 cultivation ban leaves no lawful production route.[@am]
     sources:
       - cann
       - am
+      - af2010
+      - code2026
   hemp:
     status: none
     text: >-
-      No industrial-hemp exception, THC limit or licensing scheme was found. The 2023 decree
-      bans cannabis cultivation, and the last codified law made no distinction for fibre
-      hemp.[@am,af2010]
+      No industrial-hemp exception, THC limit or licensing scheme was found. The 2023 decree bans
+      cannabis cultivation, and neither the 2010 law nor the 2026 code distinguishes fibre
+      hemp.[@am,af2010,code2026]
     sources:
       - am
       - af2010
+      - code2026
   consequences:
     text: >-
       A drug offence can bring imprisonment and flogging, and users can be detained in compulsory
@@ -242,12 +359,14 @@ context:
       - aan
   arrests:
     text: >-
-      No national arrest or seizure figures for cannabis have been published since the Taliban
-      takeover. The Afghanistan Justice Archive recorded a May 2025 Taliban court case in which
-      eleven people were sentenced for hashish and tablet trafficking, with prison terms of seven
-      months to three and a half years and 10 to 39 lashes.[@afj]
+      No independent national cannabis series exists. The Taliban said in October 2026 that they had
+      carried out more than 8,000 anti-drug operations and arrested more than 10,000 people, figures
+      that cover all drugs and are not independently verified.[@atlas26] The Afghanistan Justice
+      Archive recorded Kabul cases in 2025 in which 11 and 17 people were sentenced for hashish and
+      tablet offences, with prison terms of seven months to three and a half years and lashes.[@afj]
     sources:
       - afj
+      - atlas26
   culture:
     text: >-
       Afghanistan has a [charas](/culture/language/charas/) and
@@ -274,6 +393,25 @@ context:
     sources:
       - asc
 sources:
+  code2026:
+    title: "Afghanistan — Penal Code for Courts (Taliban), chapter 3, articles 94–116, signed 4 January 2026"
+    url: https://www.afghanistan-analysts.org/en/wp-content/uploads/sites/2/2026/02/20260226-penal-code-English-FINAL.pdf
+    locator: "Articles 94–102, 109–116; cultivation, transport, import, sale/possession and use."
+  xin25:
+    title: "Xinhua — 222 kg of hashish seized in Badakhshan (14 December 2025)"
+    url: https://english.news.cn/20251214/19229200670d46c690ea175f08bf00e2/c.html
+  xin26:
+    title: "Xinhua — 993 kg of cannabis destroyed in Kandahar (18 February 2026)"
+    url: https://english.news.cn/20260218/a0ffef593d824d3d89f17f2df7f6e2db/c.html
+  satp26:
+    title: "SATP — 2,700 kg of cannabis burned in Uruzgan (5 February 2026)"
+    url: https://www.satp.org/terrorism-update/taliban-interior-ministry-confiscate-37-kg-of-opium-and-2700-kg-of-cannabis-says-report
+  nation26:
+    title: "NationPress — 300 kg of hashish seized in Helmand (5 April 2026)"
+    url: https://www.nationpress.com/international/afghan-police-seize-drugs-and-arrest-traffickers
+  atlas26:
+    title: "AtlasPress — Taliban claim 8,000 anti-drug operations and 10,000 arrests (27 October 2026)"
+    url: https://atlaspress.news/en/2026/10/27/taliban-says-8000-anti-drug-operations-in-afghanistan/
   afj:
     title: Afghanistan Justice Archive — Taliban court sentences eleven people for hashish and tablet trafficking (24 May 2025)
     url: https://afghanistanjustice.org/decrees/dec3-05242025-b/
