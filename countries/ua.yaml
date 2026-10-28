@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 804
 recreational: decriminalised
 medical: limited
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Possession of up to 5 g is an administrative offence. Medical cannabis became legal in August
   2024; the first patients received prescribed capsules on 11 June 2026.
@@ -173,6 +173,10 @@ segments:
     sources:
       - dispensing2026
       - supply
+words:
+  - { word: Конопля, say: konoplya, lang: Ukrainian, meaning: "the standard word; the law's term for the plant", sources: [narcotics] }
+  - { word: Канабіс, say: kanabis, lang: Ukrainian, meaning: "the medical law's loanword", sources: [dispensing2026] }
+  - { word: Трава, say: trava, lang: Ukrainian, meaning: "literally grass; colloquial for a natural drug (cannabis)", sources: [wiktionary-trava] }
 context:
   production:
     status: medical
@@ -214,11 +218,11 @@ context:
     clones_trade: regulated
     text: >-
       The narcotics law's definition of cannabis excludes seeds, and the general seed law exempts an
-      individual's non-commercial storage and use of seed. Germinating cannabis is nevertheless
-      unlawful outside the authorised medical, scientific or industrial channels. Commercial seed
+      individual's non-commercial storage and use of seed.[@narcotics, seed_law] Germinating cannabis is nevertheless
+      unlawful outside the authorised medical, scientific or industrial channels.[@narcotics] Commercial seed
       and planting material must be certified; medical growers must obtain certified seed from a
-      registered seed or nursery operator. A cutting is planting material and also a cannabis plant,
-      so clones are confined to authorised cultivation and regulated trade.
+      registered seed or nursery operator.[@seed_order, seed_law] A cutting is planting material and also a cannabis plant,
+      so clones are confined to authorised cultivation and regulated trade.[@narcotics, seed_law]
     sources:
       - narcotics
       - seed_order
@@ -250,18 +254,19 @@ context:
     status: impairment
     text: >-
       Administrative Code article 130(1) covers driving in a state of drug intoxication and refusal
-      of the prescribed examination. Official 2026 appellate case summaries confirm a UAH17,000 fine
-      and one year's loss of driving rights for the ordinary first-offence provision. A February
+      of the prescribed examination.[@kupap] Official 2026 appellate case summaries confirm a UAH17,000 fine
+      and one year's loss of driving rights for the ordinary first-offence provision.[@drugappeal2026] A February
       case upheld a drug-driving conviction, treating the intoxication finding, rather than drug
-      type or quantity, as decisive. A September ruling set aside another conviction: a positive
+      type or quantity, as decisive.[@drugappeal2026] A September ruling set aside another conviction: a positive
       rapid test lacked mandatory laboratory confirmation and the medical report had other
-      procedural defects. These case outcomes should not be read as a universal rule that any
-      positive screening result proves the offence. Suspected drug intoxication is examined at a
+      procedural defects.[@drugtesting2026] These case outcomes should not be read as a universal rule that any
+      positive screening result proves the offence.[@drugtesting2026] Suspected drug intoxication is examined at a
       health facility under article 266 and the joint 2015 Instruction; testing and medical evidence
-      matter. A July appellate summary separately confirms that a properly established refusal can
-      attract article 130 liability without proving intoxication. No numeric THC allowance, general
-      medical-cannabis defence or complete repeat-offence tariff was established here.
+      matter.[@drugtesting2026] A July appellate summary separately confirms that a properly established refusal can
+      attract article 130 liability without proving intoxication.[@refusal2026] No numeric THC allowance, general
+      medical-cannabis defence or complete repeat-offence tariff was established here.[@drugappeal2026, drugtesting2026, refusal2026]
     sources:
+      - kupap
       - drugappeal2026
       - drugtesting2026
       - refusal2026
@@ -269,20 +274,20 @@ context:
     text: >-
       Figures reported by the government to the UN drugs office record 2,061 kg of herbal cannabis
       seized in 2024, against 1,794 kg in 2023, and 1 kg of cannabis resin seized in 2024, against
-      3.1 kg in 2023. The UN publishes them as kilogram equivalents, and countries count seizures
-      differently, so the figures are not comparable across borders.
+      3.1 kg in 2023.[@unodc_szr] The UN publishes them as kilogram equivalents, and countries count seizures
+      differently, so the figures are not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
   arrests:
     text: >-
       A data analysis by Texty.org.ua, drawing on court statistics and the National Police's annual
       report, found more than 20,000 proceedings in 2024 under article 309 of the Criminal Code,
-      possession without intent to sell, against about 17,000 under article 307 for sale. Over 2014
+      possession without intent to sell, against about 17,000 under article 307 for sale.[@texty25] Over 2014
       to 2024 about 106,000 people were convicted under article 309, of whom more than 43,000 were
       released from punishment; the most common sentence is a fine, and convictions for possession
-      were almost eight times as frequent as for sale. One in four servicemen convicted in 2024 was
-      convicted of a drug offence, 95 per cent of them under article 309. The figures cover all
-      drugs.
+      were almost eight times as frequent as for sale.[@texty25] One in four servicemen convicted in 2024 was
+      convicted of a drug offence, 95 per cent of them under article 309.[@texty25] The figures cover all
+      drugs.[@texty25]
     sources:
       - texty25
   recreational:
@@ -297,6 +302,21 @@ context:
       - admin44_current
       - quantities
       - narcotics
+  culture:
+    text: >-
+      Herodotus, writing about 440 BCE, described the Scythians of the Black Sea steppe
+      raising cannabis smoke in felt tents — the oldest account of taking the plant for its
+      effect.[@wiki-scythians] See [the Scythian vapour
+      bath](/culture/traditions/the-scythian-vapour-bath/). Folk custom kept hemp close:
+      unmarried Ukrainian girls sowed hemp seed on St Andrew's Eve to dream of their future
+      husbands.[@benet75] See [the hemp dance](/culture/traditions/the-hemp-dance/). The Soviet
+      Union banned unauthorised growing in [1934](/history/ukraine-soviet-ban-1934/), though the
+      republic's hemp fields stayed vast into the 1950s.[@istmat34]
+      [Hemp peaked under Soviet rule in 1940.](/history/ukraine-soviet-hemp-1940/)
+    sources:
+      - wiki-scythians
+      - benet75
+      - istmat34
   hemp:
     status: strict
     text: >-
@@ -463,3 +483,23 @@ sources:
   patientfaq:
     title: Ukraine Ministry of Health — Medical cannabis, patient questions and answers
     url: https://moz.gov.ua/uk/medichnij-kanabis
+  wiki-scythians:
+    title: Wikipedia — Scythians
+    url: https://en.wikipedia.org/wiki/Scythians
+  benet75:
+    type: chapter
+    title: "Early Diffusion and Folk Uses of Hemp"
+    authors: ["Sula Benet"]
+    container: "Cannabis and Culture"
+    editors: ["Vera Rubin"]
+    publisher: "Mouton"
+    year: 1975
+    isbn: "90-279-7669-4"
+    locator: "pp. 43–44"
+  istmat34:
+    type: law
+    title: USSR — decree of 27 October 1934 on prohibiting opium-poppy and Indian-hemp crops (Istmat reproduction)
+    url: https://istmat.org/node/42491
+  wiktionary-trava:
+    title: "Wiktionary — трава (colloquial: a natural drug, cannabis)"
+    url: https://uk.wiktionary.org/wiki/%D1%82%D1%80%D0%B0%D0%B2%D0%B0

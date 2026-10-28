@@ -25,7 +25,15 @@ links; profile-audit 0/0, review build, commit country-by-country.
   `countries/mo.yaml` (schema: missing sources) — will verify page once fixed.
 - Deliberately not linked: language/420 (not a documented British word), people/john-lennon
   (his atlas entry is about the US Sinclair campaign).
-## ua — pending
+## ua (Ukraine) — committed (review page pending death_penalty.md fix)
+- Per-sentence cites on planting/driving/black_market/arrests (kupap added to driving sources);
+  new culture section (Scythians + hemp-dance + 1934/1940 history links); words list
+  (Конопля, Канабіс, Трава — uk.wiktionary/Rada/MOZ verified).
+- New entries: 1934 Soviet ban article `articles/ukraine-soviet-ban-1934.md` (Istmat decree text);
+  1940 Soviet hemp peak (LOC study + Smile Seeds; fills 1940s).
+- Audit 0/0; full test suite green. Review build blocked by another agent's untracked
+  `context/death_penalty.md` (unquoted colon in title) — will verify page once fixed.
+- Left: 1950s still empty (no datable event found); optional research/spotlights/genetics.
 ## ro — pending
 ## pt — pending
 ## by — pending
