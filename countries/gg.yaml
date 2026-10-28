@@ -10,12 +10,11 @@ dependency:
     answers for it internationally, including under the UN drug conventions.
 recreational: illegal
 medical: legal
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
-  Cannabis is a Class B drug and possession leads to a criminal conviction, usually with a fine of a
-  few hundred pounds. Importing even a small amount is treated severely. Doctors may prescribe
-  medical cannabis privately, and a review of non-punitive approaches to drug possession stalled in
-  2023.
+  Recreational possession remains criminal, with fines common in small cases and much harsher
+  treatment for imports. Medical cannabis is available privately. Certain CBD preparations have a
+  retail exemption, with an age restriction applying from October 2026.
 scores:
   possession: 1
   cultivation: 1
@@ -26,68 +25,72 @@ scores:
 segments:
   possession:
     text: >-
-      Possession is a criminal offence that ends in a conviction. In 2019 the Magistrate's Court
-      fined a man £650 for 2.44 g, with 32 days in prison if he did not pay, and his friend £400 for
-      the 0.67 g found in the car.
+      Unauthorised Class B possession carries up to ten years in prison on indictment, a fine, or
+      both under the Misuse of Drugs Law.[@law] Small court cases commonly bring fines; a 2019 case
+      involving 2.44 g resulted in £650.[@be19] Home Affairs said in 2023 that people whose only
+      offence was small-quantity possession were not receiving custodial sentences.[@be23]
     sources:
+      - law
       - be19
-    currency: GBP
+      - be23
     penalties:
-      - label: 2.44 g in 2019
+      - label: Unauthorised Class B possession; indictment
         treatment: criminal
-        fine: 650
-        note: 32 days in prison if not paid
-      - label: 0.67 g in a car in 2019
-        treatment: criminal
-        fine: 400
+        term: Possession of a controlled drug
+        prison: 10 years
+        note: Prison or an uncapped criminal fine, or both; summary proceedings have lower limits
   cultivation:
     text: >-
-      Growing cannabis is prosecuted as production of a Class B drug, even for a few plants. In 2024
-      the Royal Court gave a man who grew four plants in two tents 240 hours of community service in
-      place of two years in prison, plus a £5,000 fine. In 2022 it jailed the organiser of a
-      141-plant basement grow for four years.
+      Unlicensed cannabis cultivation carries up to fourteen years on indictment, a fine, or
+      both.[@law] In a 2024 four-plant case, the court imposed 240 hours of community service in
+      place of two years in prison and a £5,000 fine.[@gp24]
     sources:
+      - law
       - gp24
-      - be22
-    currency: GBP
     penalties:
-      - label: Four plants in 2024
+      - label: Unlicensed cannabis cultivation; indictment
         treatment: criminal
-        fine: 5000
-        note: 240 hours of community service in place of two years in prison
-      - label: 141-plant basement grow in 2022
-        treatment: criminal
-        prison: 4 years
+        term: Cultivation of cannabis plant
+        prison: 14 years
+        note: Prison or an uncapped criminal fine, or both; summary proceedings have lower limits
   enforcement:
     text: >-
-      Users found with small amounts are fined and convicted. In 2023 the Committee for Home Affairs
-      said people whose only offence was possessing a small amount of drugs were not receiving
-      custodial sentences, while admitting that the courts may not use non-punitive options
-      consistently. Importation is treated much more harshly.
+      In 2023 Home Affairs said small-quantity possession cases, where no other offence was
+      involved, were not receiving custodial outcomes, while acknowledging inconsistent use of
+      alternatives.[@be23] Imports remain treated much more harshly than small domestic possession
+      cases.[@be26]
     sources:
       - be23
       - be26
   sharing:
     text: >-
-      Supply is prosecuted as such and punished with prison: a 2022 case brought sentences of up to
-      four years for supplying cannabis. No distinction is made for sharing without payment.
+      Supplying a Class B drug or possessing it with intent to supply carries up to twenty-one years
+      on indictment, a fine, or both.[@law] Supply is an offence without a separate exemption for
+      unpaid gifts.[@law]
     sources:
-      - be22
+      - law
     penalties:
-      - label: Supply in 2022
+      - label: Supply or possession with intent to supply; indictment
         treatment: criminal
-        prison: 4 years
-        note: No distinction for sharing without payment
+        term: Supply of a controlled drug
+        prison: 21 years
+        note: Prison or an uncapped criminal fine, or both; summary proceedings have lower limits
   consumption:
     text: >-
-      Use is dealt with through the possession offence. There are no places where it is tolerated.
+      Unauthorised personal use is dealt with through possession rules.[@law] Patients can use
+      prescribed cannabis, and a patient-only social lounge was operating by January
+      2025.[@mhc,lounge2025]
     sources:
-      - be19
+      - law
+      - mhc
+      - lounge2025
   access:
     text: >-
-      No legal adult-use source. Local doctors may prescribe cannabis-based medicines privately and
-      islanders can obtain them through an on-island clinic and pharmacy, or import a UK or Jersey
-      prescription under licence; the patient bears the cost.
+      Local doctors may prescribe cannabis products privately, and islanders may arrange imports
+      against UK or Jersey prescriptions through the [licensing route introduced in
+      2020](/history/guernsey-medical-access-2020/).[@mhc] Individual import licences cost £30 per
+      shipment, and the patient handles communication with the prescribing clinic and
+      pharmacy.[@mhc]
     sources:
       - mhc
 context_not_applicable:
@@ -95,18 +98,21 @@ context_not_applicable:
     text: >-
       Guernsey abolished the death penalty for murder in 1964 and for all offences in 2003; no
       cannabis offence carries a capital sentence.[@wikipdp]
-    sources: [wikipdp]
+    sources:
+      - wikipdp
 context:
   recreational:
     text: >-
-      There is no lawful recreational supply. Possession ends in a criminal conviction, usually
-      with a fine of a few hundred pounds; importing even a small amount is treated severely,
-      with up to 21 years available and a three-year starting point for up to 2 kg.[@be19,be26]
-      A 2023 review of non-punitive approaches stalled.[@be23]
+      Recreational possession and growing remain criminal offences, with fines common for small
+      possession cases.[@law,be19] Importing cannabis is treated separately and much more
+      severely.[@be26] A [2026 proposal to examine a regulated access
+      pilot](/history/guernsey-cannabis-working-group-withdrawn-2026/) was withdrawn, leaving the
+      existing recreational rules in place.[@pilot2026]
     sources:
+      - law
       - be19
       - be26
-      - be23
+      - pilot2026
   production:
     status: medical
     text: >-
@@ -119,37 +125,92 @@ context:
       - industry2026
   medical:
     text: >-
-      Guernsey doctors may prescribe privately, and residents can use an on-island clinic and
-      pharmacy. Prescriptions from the UK or Jersey can be imported with an import licence for each
-      prescription, at £30 per licence; importing without one is a criminal offence. The health
-      committee will not fund cannabis medicines for chronic pain. The health service funds only
-      Epidyolex for two rare epilepsies, Sativex for some multiple sclerosis symptoms and nabilone
-      for chemotherapy nausea.
+      Islanders can obtain pharmaceutical-standard cannabis medicines through private prescriptions
+      from local doctors, or arrange licensed imports using UK or Jersey prescriptions.[@mhc]
+      Individual imports require a prescription sent directly by the clinic, an online application
+      and a £30 licence for each shipment.[@mhc] The destination must be the patient’s residence,
+      and the patient forwards the issued licence to the dispensing pharmacy.[@mhc]
     sources:
       - mhc
   consequences:
     text: >-
-      In July 2020 the States voted to draw up non-punitive options for possessing small amounts of
-      drugs. In 2023 Home Affairs concluded that such approaches already existed and said the work
-      had all but paused; a separate review of a legal framework for cannabis was shelved.
+      An individual medical import requires a licence matching the prescription and shipment, so a
+      prescription alone does not complete the import process.[@mhc] Small recreational possession
+      can still produce a court fine and conviction.[@be19] In
+      [2023](/history/guernsey-non-punitive-review-stalls-2023/), Home Affairs acknowledged that
+      available alternatives might not be used consistently by the courts.[@be23]
     sources:
-      - gp20
+      - mhc
+      - be19
       - be23
   clubs:
-    status: none
     text: >-
-      No cannabis clubs are known. Supply is prosecuted with prison sentences.
+      The Green Retreat operates a patient social lounge where entry requires proof of a cannabis
+      prescription and identification showing the visitor is at least eighteen.[@lounge2025] ITV
+      described it in January 2025 as a self-regulating venue rather than a government-licensed
+      recreational supply association.[@lounge2025] The service provides a shared setting for
+      patients to use their own medication.[@lounge2025]
     sources:
-      - be22
+      - lounge2025
+    status: tolerated
   visitors:
-    status: none
     text: >-
-      There is no legal supply for anyone. In December 2025 the Royal Court gave a visitor who
-      brought 16.15 g from Poole a 12-month prison sentence, suspended for two years, and a £1,000
-      fine. The court said importation carries up to 21 years and the guideline starting point for
-      importing up to 2 kg is three years in prison.
+      There is no recreational purchasing route for visitors.[@law] A December 2025 visitor case
+      involving 16.15 g imported from Poole resulted in a twelve-month sentence suspended for two
+      years and a £1,000 fine.[@be26] The personal medical import process requires a matching
+      licence and a Guernsey residential delivery address.[@mhc]
     sources:
+      - law
       - be26
+      - mhc
+    status: none
+  hemp:
+    text: >-
+      Hemp flower is outside the retail CBD exemption because exempt products must contain no plant
+      material visible to the naked eye.[@cbd] The official guidance describes labelled preparations
+      containing at most 2.5% CBD and 0.1% CBN and its derivatives, including THC, relative to total
+      weight, or an aggregate CBN-and-derivatives limit of 3% relative to CBD content.[@cbd] The
+      required cannabinoid percentage must be confirmed by the States Analyst or an accredited
+      laboratory; other controlled drugs are excluded.[@cbd] From [1 October
+      2026](/history/guernsey-cbd-products-age-limit-2026/), specified THC-containing CBD
+      preparations cannot be supplied or offered to under-18s.[@age2026] Cannabis cultivation itself
+      still needs permission.[@law]
+    sources:
+      - cbd
+      - age2026
+      - law
+    status: none
+  culture:
+    text: >-
+      The [Green Retreat patient lounge](/history/guernsey-patient-lounge-operating-2025/) gives
+      medical users somewhere to meet and use their prescriptions socially.[@lounge2025] Founder
+      Bruce Caruso described a place where patients could feel safe using medication
+      responsibly.[@lounge2025] Its admission requirements distinguish that patient community from
+      the recreational market.[@lounge2025]
+    sources:
+      - lounge2025
+  planting:
+    text: >-
+      Seeds separated from the rest of the plant are excluded from the law’s cannabis
+      definition.[@law] Cultivating any cannabis plant still needs permission, so seed possession
+      and germination have different legal consequences.[@law] A clone is a living plant and falls
+      under the cultivation controls.[@law]
+    sources:
+      - law
+    seeds: grey
+    seeds_trade: open
+    clones: licensed
+    clones_trade: regulated
+  black_market:
+    text: >-
+      The authorities have identified diversion of prescribed cannabis as a concern alongside the
+      illegal market.[@diversionreport] A 2025 parliamentary response described a joint review of
+      private prescribing practices, statistical evidence and intelligence, and gaps in data and
+      oversight.[@diversionreport] It said most medicinal cannabis was prescribed privately and that
+      prescribing clinics were not regulated like other controlled-drug
+      prescribers.[@diversionreport]
+    sources:
+      - diversionreport
 sources:
   be19:
     title: Bailiwick Express — "It's just a little puff" (29 October 2019)
@@ -164,7 +225,8 @@ sources:
     title: >-
       Bailiwick Express — "You have been foolish": visitor who claimed cannabis was decriminalised
       jailed over Guernsey import (12 January 2026)
-    url: https://www.bailiwickexpress.com/news/you-have-been-foolish-visitor-who-claimed-cannabis-was-decriminalised-jailed-over-guernsey-import/
+    url: >-
+      https://www.bailiwickexpress.com/news/you-have-been-foolish-visitor-who-claimed-cannabis-was-decriminalised-jailed-over-guernsey-import/
   wikipdp:
     title: Wikipedia — Capital punishment in Guernsey
     url: https://en.wikipedia.org/wiki/Capital_punishment_in_Guernsey
@@ -173,7 +235,8 @@ sources:
     url: https://gov.gg/mhc
   gp24:
     title: Guernsey Press — "No admittance" as man grew cannabis plants in his home (1 August 2024)
-    url: https://guernseypress.com/news/2024/08/01/no-admittance-as-man-grew-cannabis-plants-in-his-home
+    url: >-
+      https://guernseypress.com/news/2024/08/01/no-admittance-as-man-grew-cannabis-plants-in-his-home
   gp20:
     title: Guernsey Press — Review is to be held on decriminalising cannabis (23 July 2020)
     url: https://guernseypress.com/news/2020/07/23/review-is-to-be-held-on-decriminalising-cannabis/
@@ -185,3 +248,49 @@ sources:
     locator: >-
       PDF page 13: revised cannabis cultivation licensing, Cannabis Agency, limited commercial
       interest and compliance costs
+  law:
+    title: Guernsey Legal Resources — Misuse of Drugs (Bailiwick of Guernsey) Law 1974, consolidated
+    url: https://guernseylegalresources.gg/CHttpHandler.ashx?fileid=251722
+    locator: >-
+      Sections 3–5 and 32; Third Schedule, pp. 89–90 and amendment notes p. 94. Archive
+      consolidation read from retained official PDF; later reform proposals and 2026 controls
+      reviewed separately.
+  cbd:
+    title: States of Guernsey — Cannabidiol (CBD) products
+    url: https://gov.gg/CBD
+    locator: Official exemption conditions; opened in ordinary browser on 28 October 2026
+  age2026:
+    title: >-
+      Bailiwick Express — Cannabis products no longer on sale to children and young people (3
+      October 2026)
+    url: >-
+      https://www.bailiwickexpress.com/news-ge/cannabis-products-no-longer-on-sale-to-children-and-young-people/
+  lounge2025:
+    title: ITV Channel — New spaces designated for medicinal cannabis in Channel Islands (9 January 2025)
+    url: >-
+      https://www.itv.com/news/channel/2025-01-08/cannabis-club-new-spaces-designated-for-medicinal-cannabis-in-channel-islands
+  pilot2026:
+    title: Guernsey Parliament — Cannabis working-group requête P2026/10 and withdrawal timeline
+    url: https://parliament.gg/parliamentary-business/propositions/P2026-10
+    locator: 'Proposal and published timeline: lodged 6 February 2026, withdrawn 25 February 2026'
+  diversionreport:
+    title: Guernsey Parliament — Health and Social Care response to Rule 14 questions 2025-7
+    url: https://parliament.gg/parliamentary-business/assets/questions/rule14-question-2025-7-1248
+    locator: Pages 1–2; prescribed cannabis diversion and clinic oversight
+words:
+  - word: cannabis
+    lang: English
+    meaning: the legal term for the plant and drug
+    sources:
+      - law
+  - word: resin
+    lang: English
+    meaning: cannabis resin; the law’s term
+    sources:
+      - law
+  - word: CBD
+    lang: English
+    meaning: cannabidiol; used in official product guidance
+    atlas: cbd
+    sources:
+      - cbd
