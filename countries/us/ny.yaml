@@ -13,19 +13,74 @@ scores:
   consumption: 6
   access: 6
 segments:
-  possession: >-
-    3 oz on your person and 5 lb at home, kept secure from anyone under 21. More than 3 oz, or more
-    than 24 g of concentrate, is a violation with a fine of up to $125. More than 16 oz, or more
-    than 5 oz of concentrate, is a class A misdemeanour.
-  cultivation: >-
-    A person 21 or older may grow three mature and three immature plants at their private
-    residence. The residence and its grounds may hold no more than six mature and six immature
-    plants, even when more than two adults live there. The plants have to be kept secure and out of
-    reach of anyone under 21.
-  enforcement: "Mild: overages are violations before they become misdemeanours."
-  sharing: Up to 3 oz, or 24 g of concentrate, may be given away without compensation.
-  consumption: Allowed almost anywhere tobacco smoking is.
-  access: Licensed shops since December 2022, after a slow rollout.
+  possession:
+    text: >-
+      3 oz on your person and 5 lb at home, kept secure from anyone under 21. More than 3 oz, or more
+      than 24 g of concentrate, is a violation with a fine of up to $125. More than 16 oz, or more
+      than 5 oz of concentrate, is a class A misdemeanour.[@1,2,5]
+    currency: USD
+    penalties:
+      - upto: 3 oz
+        treatment: legal
+        note: On your person; larger amounts may be kept at home
+      - over: 3 oz
+        upto: 16 oz
+        treatment: civil
+        term: Violation
+        fine: 125
+      - over: 16 oz
+        upto: 5 lb
+        treatment: criminal
+        term: Class A misdemeanor
+        prison: 1 year
+        fine: 1000
+      - over: 5 lb
+        upto: 10 lb
+        treatment: criminal
+        term: Felony
+        prison: 4 years
+        fine: 5000
+      - over: 10 lb
+        treatment: criminal
+        term: Felony
+        prison: 7 years
+        fine: 10000
+  cultivation:
+    text: >-
+      A person 21 or older may grow three mature and three immature plants at their private
+      residence. The residence and its grounds may hold no more than six mature and six immature
+      plants, even when more than two adults live there. The plants have to be kept secure and out of
+      reach of anyone under 21.[@4,5]
+    currency: USD
+    penalties:
+      - upto: 6 plants
+        treatment: legal
+        note: Three mature and three immature per adult; six of each per household
+      - over: 6 plants
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 1000
+  enforcement: "Mild: overages are violations before they become misdemeanours.[@5]"
+  sharing: Up to 3 oz, or 24 g of concentrate, may be given away without compensation.[@5]
+  consumption: Allowed almost anywhere tobacco smoking is.[@5]
+  access: Licensed shops since December 2022, after a slow rollout.[@9]
+context:
+  recreational:
+    text: >-
+      The Marijuana Regulation and Taxation Act, signed 31 March 2021, legalised up to 3 oz on the
+      person and 24 g of concentrate for adults 21 and over, with licensed shops and home growing
+      to follow.[@5,6]
+    sources: [5, 6]
+  culture:
+    text: >-
+      New York's cannabis story starts in Harlem. The 1930s tea pads made "tea" and "reefer"
+      jazz-age words,[@7] and Mayor La Guardia's 1944 committee found marijuana did not lead to
+      addiction, crime or harder drugs — advice the law ignored for decades.[@8]
+      [Harlem's tea pads shaped jazz-era smoking.](/culture/traditions/the-tea-pads-of-harlem/)
+      [New York's La Guardia report contradicted the official line.](/history/us-la-guardia-report-1944/)
+      [Mezz Mezzrow dealt through the jazz scene.](/culture/people/mezz-mezzrow/)
+    sources: [7, 8]
 sources:
   - title: N.Y. Penal Law § 222.15 (New York Public Law reproduction of the Senate text)
     url: https://newyork.public.law/laws/n.y._penal_law_section_222.15
@@ -35,6 +90,16 @@ sources:
     url: https://newyork.public.law/laws/n.y._penal_law_section_222.30
   - title: New York Office of Cannabis Management — Adult-use home cultivation
     url: https://cannabis.ny.gov/node/16
+  - title: NORML — New York laws and penalties
+    url: https://norml.org/laws/new-york-penalties-2/
+  - title: New York Office of Cannabis Management — Marihuana Regulation and Taxation Act (MRTA)
+    url: https://cannabis.ny.gov/marihuana-regulation-and-taxation-act-mrta
+  - title: Library of Congress — Marihuana, Topics in Chronicling America
+    url: https://guides.loc.gov/chronicling-america-marihuana
+  - title: Wikipedia — La Guardia Committee
+    url: https://en.wikipedia.org/wiki/La_Guardia_Committee
+  - title: Reuters — New York's first legal recreational marijuana shop opens (29 December 2022)
+    url: https://www.reuters.com/world/us/new-yorks-first-legal-recreational-marijuana-shop-opens-2022-12-29/
 use:
   note: Includes vaping; a model-based estimate.
   share: 22.7

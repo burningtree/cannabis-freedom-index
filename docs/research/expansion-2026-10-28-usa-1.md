@@ -39,5 +39,15 @@ File: `countries/us/ca.yaml` (the documented model state file).
   subject found — both noted, not filled.
 - Audit 0/0; review page verified.
 
-## ny — pending
+## ny (New York) — committed
+- Penalty tables (possession 5 steps, cultivation 2 steps, verified against NORML + Penal Law
+  §§222.05/222.15/222.25/222.30 via newyork.public.law), cites on all segments, new `recreational`
+  (MRTA 31 Mar 2021 via OCM page + NORML) and `culture` (Harlem tea pads, La Guardia 1944 via LoC +
+  wiki, Mezzrow link), access date (first shops Dec 2022 via Reuters).
+- Test suite caught a real error: statute §222.25 sets the violation fine at $125, not NORML's
+  $150 — reverted to $125 in text + table. Test accessors updated (`.text ??`) for the new table
+  forms; all regex assertions unchanged.
+- Left: medical section (2014 Compassionate Care Act specifics unverified), MRTA-2021 history
+  entry missing (noted, not filled — changes.yaml shared).
+
 ## pa — pending

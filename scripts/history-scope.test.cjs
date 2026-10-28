@@ -546,9 +546,9 @@ test("Maryland through Oklahoma state profiles follow the texts that were read",
   assert.match(me.segments.cultivation, /unlimited seedlings/);
   assert.doesNotMatch(me.summary, /three mature/);
   assert.equal(me.scores.cultivation, 4);
-  assert.match(ny.segments.cultivation, /six mature and six immature/);
-  assert.match(ny.segments.possession, /\$125/);
-  assert.doesNotMatch(ny.segments.possession, /\$150/);
+  assert.match(ny.segments.cultivation.text ?? ny.segments.cultivation, /six mature and six immature/);
+  assert.match(ny.segments.possession.text ?? ny.segments.possession, /\$125/);
+  assert.doesNotMatch(ny.segments.possession.text ?? ny.segments.possession, /\$150/);
   assert.equal(ny.scores.cultivation, 4);
   assert.match(ri.segments.possession, /\$150 civil/);
   assert.doesNotMatch(ri.segments.possession, /More than 1 oz is a misdemeanour/);
