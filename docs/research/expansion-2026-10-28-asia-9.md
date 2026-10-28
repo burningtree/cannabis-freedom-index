@@ -11,6 +11,8 @@ Bangladesh and Japan. None was marked busy.
 | Bhutan | in progress | | |
 | Pakistan | in progress | | |
 | Bangladesh | in progress | | |
-| Japan | in progress | | |
+| Japan | 2023 reform article, cultivation maximum fix, medical wording, 5 words, 4 history entries | no approved cannabis medicine | this commit |
 
 Lebanon validation: `profile-audit lb` zero errors and warnings. The 1946 entry is dated 18 June, sourced to the primary law and Bouquet, and now has a 484-word article. The profile splits the Law 178 penalties, corrects the field-destruction year, adds four Lebanese Arabic terms and records the 2025 HHC/THCP scheduling, Yammouneh raid, 2026 laboratory agreement and draft drug law.
+
+Japan validation: `profile-audit jp` zero errors and warnings. The cultivation-for-profit row no longer invents a ten-year maximum, the medical text says no herbal product has been approved rather than excluding herbal medicine in law, and the 2023 reform entry is dated 6 December with non-Wikipedia sources. Five Japanese terms and four history entries cover 2024–2026; the 475-word article is in `articles/`.
