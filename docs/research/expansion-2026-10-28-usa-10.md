@@ -12,7 +12,8 @@ history/culture links, profile-audit, review build, commit country-by-country.
 ## dc (District of Columbia) — committed
 - Cites on all uncited segments (D.C. Code + OAG overview); pinned texts untouched.
 - Audit 0/0; review page verified.
-## de — pending
+## de (Delaware) — committed
+- Consumption/access cites; pinned possession/sharing untouched. Audit 0/0; review verified.
 ## nd — pending
 ## sd — pending
 ## wy — pending
