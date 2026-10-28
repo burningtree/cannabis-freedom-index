@@ -3,10 +3,11 @@ region: Africa
 iso_numeric: 450
 recreational: illegal
 medical: none
-updated: 2026-10-21
+updated: "2026-10-28"
 summary: >-
-  Small personal quantities of cannabis preparations other than oil can bring two to six months,
-  a fine, or both; rongony is nonetheless grown on a large scale.
+  Small personal quantities of cannabis bring two to six months, a fine, or both; rongony is
+  nonetheless grown on a large scale. Cannabis is in Table I, with no medical, hemp or research
+  route.
 scores:
   possession: 1
   cultivation: 1
@@ -14,75 +15,147 @@ scores:
   sharing: 1
   consumption: 1
   access: 0
+words:
+  - word: rongony
+    lang: Malagasy
+    meaning: cannabis, the plant and the drug
+    atlas: rongony
+    sources: [law]
 segments:
   possession:
     text: >-
-      Article 141 of Law 97-039 sets two to six months in prison, a fine of FMG 10,000 to
-      250,000, or both for small personal quantities of cannabis derivatives other than oil.
-      Cannabis oil falls under a three-month to one-year range, with the same fine alternative.
-      The general trafficking provisions can apply to holdings outside the small-personal-quantity
-      rule and allow forced labour or a fine.
+      Article 141 of Law 97-039 sets two to six months in prison, a fine of FMG 10,000 to 250,000,
+      or both, for a small personal quantity of cannabis derivatives other than oil.[@law] Cannabis
+      oil falls under a three-month to one-year range with the same fine.[@law] The law does not
+      define a small quantity in grams, so the court decides.[@law] Possession outside that rule can
+      be prosecuted under the general offences, which provide forced labour, a fine, or both.[@law]
     sources:
       - law
     currency: MGA
     penalties:
       - label: Small personal quantity, non-oil derivatives
         treatment: criminal
+        term: Personal use
         prison_min: 2 months
         prison: 6 months
+        fine_min: 2000
         fine: 50000
-        note: Up to 50,000 ariary; the law states FMG 10,000–250,000 (5 FMG = 1 ariary); prison, fine, or both
+        note: Law states FMG 10,000–250,000 (5 FMG = 1 ariary); prison, fine, or both
       - label: Small personal quantity, cannabis oil
         treatment: criminal
+        term: Personal use
         prison_min: 3 months
         prison: 1 year
+        fine_min: 2000
         fine: 50000
         note: Law states FMG 10,000–250,000; prison, fine, or both
+      - label: Possession or use outside the small-quantity rule
+        treatment: criminal
+        term: Forced labour
+        fine_min: 2000
+        fine: 200000
+        note: Articles 9 and 97; forced labour, a fine, or both. The duration of forced labour is set by the Penal Code and was not verified.
   cultivation:
     text: >-
-      Cultivation is prohibited and landholders must destroy cannabis crops. The general production
-      offence allows forced labour, a fine, or both; Article 141 separately covers growing a small
-      quantity for personal consumption. Rongony is grown on a large scale in the north and south.
+      Cultivation is banned and landowners must destroy cannabis plants.[@law] Producing high-risk
+      drugs carries forced labour, a fine of FMG 50,000 to 5,000,000, or both, under Article 95;
+      growing a small quantity for personal use instead falls under Article 141.[@law] Aggravated
+      cases, including organised gangs, can replace fixed-term forced labour with life forced
+      labour.[@law] Rongony is grown on a large scale in the north and south.[@gitoc]
     sources:
       - law
-      - gi
+      - gitoc
     currency: MGA
     penalties:
-      - label: Culture or production of high-risk drugs (Article 95)
+      - label: Cultivation or production (Article 95)
         treatment: criminal
+        term: Forced labour
+        fine_min: 10000
         fine: 1000000
-        note: Forced labour and/or a fine; the law states FMG 50,000–5,000,000; small personal growing falls under Article 141
+        note: Law states FMG 50,000–5,000,000; forced labour, a fine, or both. Duration not verified.
+      - label: Small personal growing (Article 141)
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 6 months
+        fine_min: 2000
+        fine: 50000
+      - label: Aggravated cultivation or trafficking (Article 108)
+        treatment: criminal
+        term: Life forced labour
+        note: Organised gang, violence, minors, officials, schools or hospitals, death or grave harm
   enforcement:
     text: >-
-      Small-personal-quantity offences allow a fine instead of imprisonment. GI-TOC fieldwork
-      describes a large domestic market and difficulties policing remote growing regions.
+      Fines are an alternative, not a floor: forced labour can be replaced by a fine alone, and the
+      maximum personal-use fine is 50,000 ariary, so the law on paper is harsher than its practice
+      in small cases.[@law] The gendarmerie reports large seizures but publishes no national arrest
+      or seizure series.[@lexpress_antsohihy25] Officers describe armed traffickers in remote growing
+      areas and very thin policing.[@gitoc]
     sources:
       - law
-      - gi
+      - lexpress_antsohihy25
+      - gitoc
   sharing:
     text: >-
-      General trafficking offences allow forced labour, a fine, or both. Offering or giving
-      high-risk drugs directly for another person's consumption has a separate one-to-five-year
-      prison range and a fine of FMG 10,000 to 1,000,000, or both, under Article 99, doubled in
-      Article 108 cases such as organised gangs or supply to minors.
+      Trafficking carries forced labour, a fine of FMG 10,000 to 1,000,000, or both, under Article
+      97; international traffic carries the same with a higher fine range under Article 96.[@law]
+      Offering or giving a drug for another person's consumption carries one to five years and a
+      fine, while facilitating use carries five to ten years.[@law] Aggravated cases can bring life
+      forced labour.[@law]
     sources:
       - law
     currency: MGA
     penalties:
-      - label: Offering or giving drugs for another person's consumption (Article 99)
+      - label: Trafficking (Article 97)
         treatment: criminal
+        term: Forced labour
+        fine_min: 2000
+        fine: 200000
+        note: Forced labour, a fine, or both. Duration not verified.
+      - label: International traffic (Article 96)
+        treatment: criminal
+        term: Forced labour
+        fine_min: 10000
+        fine: 1000000
+      - label: Giving or offering for another's use (Article 99)
+        treatment: criminal
+        term: Giving or offering
         prison_min: 1 year
         prison: 5 years
+        fine_min: 2000
         fine: 200000
-        note: Up to 200,000 ariary; the law states FMG 10,000–1,000,000; doubled in Article 108 cases
+      - label: Facilitating use (Article 98)
+        treatment: criminal
+        term: Facilitating use
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 2000
+        fine: 200000
+      - label: Aggravated offence (Article 108)
+        treatment: criminal
+        term: Life forced labour
+        note: Life forced labour replaces the fixed term in aggravated cases
   consumption:
-    text: Use is punished alongside possession.
+    text: >-
+      Use outside a medical prescription is banned.[@law] There is no separate consumption penalty:
+      a user can be prosecuted under the general drug offences or, if holding a small quantity, under
+      Article 141.[@law] The medical-prescription exception cannot be used for cannabis because
+      Table I lists it as having no medical interest.[@arrete2013]
     sources:
       - law
+      - arrete2013
   access:
-    text: None.
+    text: >-
+      No legal source. Cannabis and cannabis resin are in Table I, which the 2013 order describes as
+      having no medical interest, and licensing under the 1997 law applies only to Tables II and
+      III.[@law,arrete2013] No patient, pharmacy or research route was found.[@arrete2013]
     sources:
       - law
+      - arrete2013
+answers:
+  buy:
+    answer: no
+    text: No legal source; cannabis is in Table I with no medical or research route
 context_not_applicable:
   death_penalty:
     text: >-
@@ -94,22 +167,38 @@ context:
     text: >-
       There is no legal recreational market. Rongony is grown on a large scale in the north and
       south and sold in a large domestic market that is hard to police in remote growing
-      regions.[@gi] Holding a small personal quantity can end in a fine instead of
-      prison.[@law]
+      regions.[@gitoc] Holding a small personal quantity can end in a fine instead of prison, but
+      use and supply remain crimes.[@law]
+      [The 1997 law still governs cannabis.](/history/madagascar-drug-law-1997/)
     sources:
-      - gi
+      - gitoc
       - law
   production:
     status: none
-    text: No licensed production. The law punishes growing or producing high-risk drugs with forced labour, a fine, or both.
+    text: >-
+      No licensed production. Cannabis is in Table I, and the 1997 law's licensing regime applies
+      only to Tables II and III; producing a high-risk drug is punished with forced labour, a fine,
+      or both.[@law,arrete2013]
     sources:
       - law
+      - arrete2013
   medical:
     text: >-
-      No patient programme is documented. The law bans drug use outside medical prescription
-      but sets up no route for patients to obtain cannabis.[@law]
+      No patient programme exists. The law bans use outside medical prescription, but cannabis is in
+      Table I, expressly listed as having no medical interest, and no route for patients to obtain it
+      was found.[@law,arrete2013]
     sources:
       - law
+      - arrete2013
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD exemption and no THC threshold. Article 8 bans cultivation of the cannabis
+      plant without distinguishing industrial varieties, and the 2013 order lists the plant and its
+      parts in Table I.[@law,arrete2013] No research or industrial licence was found.[@arrete2013]
+    sources:
+      - law
+      - arrete2013
   consequences:
     text: >-
       Conviction brings mandatory confiscation of seized plants and substances, equipment used
@@ -117,9 +206,21 @@ context:
       even without prosecution.[@law]
     sources:
       - law
+  planting:
+    seeds: illegal
+    seeds_trade: banned
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      Cannabis seeds and cuttings are part of a Table I plant. Article 9 bans acquiring or
+      possessing Table I plants and substances, and no seed or clone trade is licensed.[@law,arrete2013]
+    sources:
+      - law
+      - arrete2013
   culture:
     text: >-
-      Cannabis has been grown and used long enough to carry its own Malagasy name, rongony:
+      Cannabis has been grown and used long enough to carry its own Malagasy name,
+      [rongony](/culture/language/rongony/):
       the 1997 law still repeals the 1960 ordinance on the consumption of *chanvre indien dit
       rongony*.[@law] It was already prohibited under the Merina kingdom in
       [1787](/history/madagascar-merina-ban-1787/).[@molet]
@@ -130,19 +231,18 @@ context:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@law,gitoc]
     sources:
-      - gi
+      - law
+      - gitoc
   black_market:
     text: >-
       Cannabis, called rongony, is grown on a large scale for the home market and for
-      neighbouring islands. A 2021 study estimated that the commune of Antsahabe alone produces
-      at least 200 tonnes a year, and surveys in mid-2020 found a gram costing about three US
-      cents, the lowest price in the Indian Ocean islands. A farmer was paid about 20,000 ariary
-      for a kilogram, close to the price of cocoa, while a dealer selling to consumers earned
-      100,000 to 150,000. The gendarmerie seized close to 53 tonnes in 2020. Officers describe
-      armed traffickers in the growing areas, and policing is thin: about one gendarme for 4,000
-      rural residents.
+      neighbouring islands.[@gitoc] A 2021 study estimated that the commune of Antsahabe alone
+      produces at least 200 tonnes a year, and surveys in mid-2020 found a gram costing about three
+      US cents, the lowest price in the Indian Ocean islands.[@gitoc] A farmer was paid about 20,000
+      ariary for a kilogram, while a dealer selling to consumers earned 100,000 to 150,000.[@gitoc]
+      The gendarmerie seized close to 53 tonnes in 2020.[@gitoc]
     sources:
       - gitoc
   visitors:
@@ -150,22 +250,47 @@ context:
     text: >-
       There is no legal recreational supply for anyone. Small personal quantities of non-oil
       cannabis derivatives can bring two to six months in prison, a fine, or both; cannabis oil
-      has a three-month to one-year range with the same alternatives.
+      has a three-month to one-year range with the same alternatives.[@law]
     sources:
       - law
+  driving:
+    status: unknown
+    text: >-
+      Article 141 requires drivers to submit to drug screening, and refusal is punished on the
+      personal-use scale; penalties double where the offence causes involuntary homicide or
+      injury.[@law] No blood or saliva THC limit and no published order setting the tests was found,
+      and the road code was not verified.[@law]
+    sources:
+      - law
+  arrests:
+    text: >-
+      No national arrest or seizure total for 2024–2026 was published.[@lexpress_antsohihy25]
+      Reported cases include 600,000 plants on 10 hectares at Tsaratanàna in 2024 with no arrests,
+      1,440 kg seized around Antsohihy over six months in 2025 with 10 arrests, and 35 kg with
+      13 arrests at Ambohimanarina in March 2026.[@lexpress_antsohihy25,lexpress_ambohi26]
+    sources:
+      - lexpress_antsohihy25
+      - lexpress_ambohi26
 sources:
+  law:
+    title: "Madagascar — Law 97-039 of 4 November 1997 on narcotics, psychotropics and precursors"
+    url: https://www.pic.commerce.mg/sites/default/files/2023-08/Loi%2097-039.pdf
+    locator: "Articles 1–2, 6, 8–9, 11, 95–99, 108, 140–141 and 148."
+  arrete2013:
+    title: "Madagascar — Arrêté 14571/2013 of 5 July 2013 listing narcotic plants and substances"
+    url: https://cnlegis.gov.mg/page_acces_pdf/eoVcmXcmXcmXjtQ
+    locator: "Articles 4, 7 and 8; cannabis and cannabis resin in Table I, 'dépourvues d'intérêt en médecine'."
   gitoc:
     title: "Global Initiative Against Transnational Organized Crime — Risk Bulletin 18, Madagascar's large-scale cannabis market (2021)"
     url: https://riskbulletins.globalinitiative.net/esa-obs-018/02-madagascars-large-scale-cannabis-market-criminal-enterprise.html
-  gi:
-    title: Global Initiative — Madagascar's large-scale cannabis market
-    url: >-
-      https://riskbulletins.globalinitiative.net/esa-obs-018/02-madagascars-large-scale-cannabis-market-criminal-enterprise.html
-  law:
-    title: Madagascar Ministry of Commerce — Law 97-039, Articles 8, 95–99, 108, 140–141 and 148 (PDF)
-    url: >-
-      https://www.pic.commerce.mg/sites/default/files/2023-08/Loi%2097-039.pdf
-    locator: Fines in Malagasy francs (5 FMG = 1 ariary); Article 148 repeals the 1960 rongony ordinance.
+  lexpress_antsohihy25:
+    title: "L'Express de Madagascar — Antsohihy: plus d'une tonne de marijuana saisie (11 December 2025)"
+    url: https://www.lexpress.mg/2025/12/antsohihy-plus-dune-tonne-de-marijuana.html
+    locator: "1,440 kg in 114 sacks over six months; 10 arrests; 400 kg more the same day."
+  lexpress_ambohi26:
+    title: "L'Express de Madagascar — Trafic: grossistes et dealers de cannabis arrêtés (6 March 2026)"
+    url: https://www.lexpress.mg/2026/03/trafic-grossistes-et-dealers-de.html
+    locator: "35.054 kg; 13 arrests at Ambohimanarina."
   molet:
     type: book
     title: La conception malgache du monde, du surnaturel et de l’homme en Imerina, tome 1
