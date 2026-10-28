@@ -24,7 +24,11 @@ All batch files verified free of others' uncommitted changes at start.
 - Two articles: `mozambique-delagoa-bay-bang-1798.md` (White's journal, cow's-horn pipe) and `mozambique-nyusi-legalisation-studies-2024.md` (president's call for studies).
 - Driving researched section skipped (no source). Audit 0/0; page + both articles verified.
 - Left: 1920s/30s/60s/80s/2000s/2010s history decades.
-## zw — pending
+## zw — committed
+- New arrests (Nov 2025: 3 cops + 2 civilians, 11 kg SA dagga; Mar 2026: 200 kg, 11 held) + culture (mbanje atlas + pipe-bowls link) + words (Mbanje/Shona via Duvall).
+- New `articles/zimbabwe-pipe-bowls-1200.md` (1200 CE bowls, Zimbabwe/Monomotapa circulation).
+- Audit 0/0; page + article verified. Builds repeatedly blocked by others' in-flight edits (hr, ro, lock); green on retry.
+- Left: 1920s–40s, 1960s–80s, 2000s history decades; first-restriction estimate kept.
 ## gn — pending
 ## rw — pending
 ## cf — pending
