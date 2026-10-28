@@ -20,6 +20,14 @@ wording; cultivation tables added everywhere.
 - No test pins. No grounded VA culture subject; no 2021-legalization history entry (noted).
 - Audit 0/0; review page verified.
 
-## wa — pending
+## wa (Washington) — committed
+- Segments already statute-precise (7 RCWs); added inline cites throughout, no restructuring
+  (scope tests pin possession/cultivation/sharing strings — left as strings, tables skipped).
+- Verified against the live statute that >40g is a gross misdemeanour (69.50.4013/4014):
+  the file is right, NORML's felony listing is stale here.
+- New `recreational` (I-502 Nov 2012, shops 8 Jul 2014 via Roffman/Addiction DOI + 2012 history
+  link) and `culture` (Seattle Hempfest since 1991 via wiki + atlas link).
+- Audit 0/0; review page verified.
+
 ## az — pending
 ## ma — pending
