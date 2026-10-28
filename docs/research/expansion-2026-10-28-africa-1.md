@@ -22,3 +22,17 @@ Lesotho validation: `profile-audit ls` zero errors/warnings; `country-gaps ls` h
 Botswana validation: `profile-audit bw` zero errors/warnings; `country-gaps bw` has no missing sections, tables or citations; the page and seven history pages built. The profile now follows the Illicit Traffic in Narcotic Drugs and Psychotropic Substances Act 2018 as amended by Act 26/2025: 60 g or less is a P10,000 fine with no prison and rehabilitation; above that the tiers reach P20,000/three years and P500,000/ten years; trafficking and cultivation reach P500,000 with 25 and 20 years. Exactly 1 kg is a drafting gap. The Cannabis Act 2025 and the 0.7% industrial limit are covered, with the section 55 patient-possession gap flagged. The 1992 Act is marked repealed, and the 1948 prosecutions, 2007 hemp listing, 2018 Act, 2022 High Court, 2025 ESACD call, 2026 Gantsi case and Dibete rollout are in the history.
 
 Madagascar validation: `profile-audit mg` zero errors/warnings; `country-gaps mg` has no missing sections, tables or citations; the culture section links the rongony atlas entry and the profile carries a `words` entry. The profile now follows Law 97-039 and Arrêté 14571/2013: cannabis is in Table I with no medical interest, Article 141 sets two to six months and a 2,000–50,000 ariary fine for a small personal quantity (oil: three months to a year), Article 95 cultivation and Article 97 trafficking provide forced labour and fines, and Article 108 can impose life forced labour. Hemp, seeds, CBD and research have no lawful route. The 2003 drug plan, 2013 office and Table I order, and the 2025–2026 Ihosy, Antsohihy, Ambohimanarina, Namontana and Ambatondrazaka cases are in the history. Forced-labour duration and national arrest totals remain unverified.
+
+## Batch result
+
+All five countries are complete and committed: 39 history entries added or corrected (Zambia 9, Eswatini 8, Lesotho 7, Botswana 7, Madagascar 8). Every profile has zero `profile-audit` errors and warnings, no missing standard sections, no missing researched sections, no missing penalty tables and no uncited text. Final checks on the committed tree: `npm test` 183 pass; full `npm run build` 5,419 pages; `npm run seo:audit` 5,421 HTML files and 239,565 internal links with no problems.
+
+Remaining gaps, by country:
+
+- **Zambia:** the 0.5 g/2.5 ml trafficking line still rests on the 1994/1995 regulations rather than the 2021 Act; no hemp licences had been confirmed by late October 2026.
+- **Eswatini:** no medical or hemp Bill has been enacted; the reported producer licence remains disputed.
+- **Lesotho:** the 2008 Act has no standalone possession or consumption offence, so practice rests on its licensing and trafficking provisions; the 2023 medicines authority law was still not operational in 2024.
+- **Botswana:** section 55 does not list patients among those authorised to possess cannabis; the 1992 Act's repealing instrument and date were not established; exactly 1 kg falls between the two possession tiers; no national arrest totals for 2024–2026.
+- **Madagascar:** the duration of fixed-term forced labour is set in the Penal Code and was not verified; no national arrest or seizure totals for 2024–2026; the road code and drug-testing order were not located.
+
+Empty decades were left only where the research found no event: Botswana's 1930s, 1960s and 1970s, and Madagascar's 1920s–1940s and 1980s. For Madagascar these are documented non-events (the 1915 decree and 1960 ordinance remained in force), not unsearched gaps.
