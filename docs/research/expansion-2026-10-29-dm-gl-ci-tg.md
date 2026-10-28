@@ -7,7 +7,7 @@ Next-batch pick: `country-gaps --rank 120` filtered by standing skips (USA track
 | Dominica | 7 articles (1937 first ban, 2025 burn, 2011 estimate, 1994 transit, 1988 act, 2 conventions) + cultivation table, hemp, citations, 2 links | arrests; words; 1940s–80s decades | COMMIT |
 | Greenland | 5 articles (2019 parliament, 2026 response, 2024 review, 2016 plan, 1992 competence) + hemp section | penalty tables (individualized measures, no bands); researched sections; estimate | COMMIT |
 | Côte d'Ivoire | 5 articles (1988 law, 2025 seizure, 2 conventions) + arrests section, seizure link | penalty tables (no bands published); driving/planting words; empty decades | COMMIT |
-| Togo |  |  |  |
+| Togo | 3 treaty articles (profile already complete) | words (no in-country source); estimate article; empty decades | COMMIT |
 
 ## gl — committed
 - 5 articles: `greenland-low-thc-parliament-2019` (already linked ×2), `greenland-hash-prevention-response-2026` (already linked), `greenland-legalisation-report-2024`, `greenland-hash-action-plan-proposal-2016`, `greenland-drug-law-competence-1992` (already linked ×1); last two unlinked (no hooks beyond existing links).
@@ -27,3 +27,11 @@ Next-batch pick: `country-gaps --rank 120` filtered by standing skips (USA track
 - Lesson: source titles with `": "` break YAML — use a comma (`, status of participants`), matching the dm/do batches.
 - Audit 0/0; 6 pages built and verified.
 - Left: penalty tables; driving/planting/words; empty decades.
+
+## tg — committed
+- Profile already complete from 27 Oct review (full cites, penalty tables, hemp/planting/clubs/visitors/arrests/driving/black_market) — no profile edits needed.
+- 3 articles: `togo-single-convention-1963`, `togo-single-convention-protocol-1976`, `togo-1988-convention-1990` (all unlinked — no treaty hooks in profile; Single content via certified original text, Art 3 via parliamentary report quote). Estimate `tg-first-restriction-estimate` left article-less (undated assumption, per convention).
+- Words skipped: no in-country source for a Togolese/Ewe cannabis term found.
+- Lesson: article frontmatter is `sources:`-only with `[@1]` numeric cites — no id/country/title/date/lede keys (caught by schema test).
+- Audit 0/0; 4 pages built and verified.
+- Left: words; estimate article; empty 1920s–50s/1980s/2000s decades.
