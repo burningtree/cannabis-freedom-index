@@ -22,3 +22,18 @@ Hong Kong validation: `profile-audit hk` zero errors/warnings; `country-gaps hk`
 Macau validation: `profile-audit mo` zero errors/warnings; `country-gaps mo` has no missing sections, tables or citations. The profile now adds the ordinary five-to-fifteen-year cultivation and trafficking tiers, a consumption table, a hemp section, inferred seed/clone statuses, impairment-based driving, and 2024–2026 seizure and case figures. The medical section states that the licensed-medicine framework is not an operating patient programme, and the consequences section now covers article 21 bans and expulsion. Seven entries cover 1965–2026, and the 1962 entry now records that the 1965 code replaced it.
 
 South Korea validation: `profile-audit kr` zero errors/warnings; `country-gaps kr` has no missing sections, tables or citations. The profile now adds sale, import/export, profit-making import and minor-supply rows, commercial cultivation and consumption tables, the 2025 Supreme Court CBD ruling, the Andong sandbox as the only 0.3% line, and the Orphan and Essential Drug Center route with Epidiolex-only practice and the 2025 halt. It records 2,459 cannabis offenders in 2025, 128.6 kg of herb and 5.6 kg of resin, the 646 kg yakuza case, the death penalty for profit-making or habitual import only, a research section and the five-year entry ban for foreigners. Nineteen entries cover 1919–2026; the 2018 medical entry, 2000 merger date and 2023 arrests title were corrected.
+
+## Batch result
+
+All five countries are committed. Final totals: 66 history entries added or corrected (China 11,
+Hong Kong 11, Macau 7, Taiwan 18, South Korea 19). Every profile has zero `profile-audit` errors
+and warnings, no missing standard or researched sections, no missing penalty tables and no uncited
+text.
+
+Remaining gaps:
+
+- **China:** the exact GB 45248-2025 THC cutoff was not readable; no plant-cannabis death sentence or execution was verified; the 1942 law's enforcement is unknown; the 1985 score step may belong to 1987/1990.
+- **Hong Kong:** no cannabis-only arrest or prosecution count; the status of non-viable seeds is unclear; the 1993 commencement date beyond the 21 April passage was not verified.
+- **Macau:** medical cannabis is a paper licensing framework with no operating product or patient route; seeds are grey; the 2026 first-half seizure table was not published.
+- **Taiwan:** the 1910s and 1980s remain empty; the access score stays at 0 because Epidyolex is CBD-only; the 2024 seizure totals differ between the prosecution service and the annual report.
+- **South Korea:** the death penalty for profit-making or habitual import is statutory but no cannabis case was found; medical product distribution data are partial; 2026 cases are indictments or sentencing requests, not final convictions.
