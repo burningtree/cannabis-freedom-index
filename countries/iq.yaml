@@ -3,8 +3,11 @@ region: Asia
 iso_numeric: 368
 recreational: death
 medical: none
-updated: "2026-10-23"
-summary: Long prison sentences for possession; trafficking can carry life imprisonment or death.
+updated: '2026-10-28'
+summary: >-
+  Personal use carries one to three years and a fine; trafficking can bring life imprisonment or
+  death. The 2017 law has no quantity thresholds and divides use from dealing by intent. A first
+  amendment was read in parliament in August 2026 but is not law.
 scores:
   possession: 0
   cultivation: 0
@@ -15,148 +18,296 @@ scores:
 segments:
   possession:
     text: >-
-      The 2017 law sets one to three years in prison and a fine of 5–10 million dinars for drug
-      possession and other activities intended for personal use.[@law2017] Courts can order
-      treatment under a rule corrected in 2018, and people who voluntarily enter a specialist
-      hospital for treatment have conditional protection from prosecution.[@law2017,corr2018]
+      Article 32 of the 2017 law punishes importing, producing, manufacturing, possessing,
+      acquiring, buying or cultivating drugs for personal use with one to three years in prison
+      and a fine of 5 to 10 million dinars.[@law2017] The law sets no quantity threshold; courts
+      infer intent from the circumstances, and Article 33(2)(a)'s percentage bands are a weighing
+      tolerance, not a small-amount tier.[@law2017] Allowing another person to use drugs on one's
+      premises, or being found in a place prepared for use, carries six months to two years and a
+      3 to 5 million dinar fine.[@law2017] A court may order treatment instead of the Article 32
+      penalty, and a person who voluntarily enters treatment is protected from prosecution.[@law2017]
     sources:
       - law2017
-      - corr2018
+    currency: IQD
+    penalties:
+      - label: "Personal use: import, production, possession, purchase or cultivation"
+        treatment: criminal
+        term: Article 32
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 5000000
+        fine: 10000000
+        note: Treatment may replace the penalty; voluntary treatment protects from prosecution
+      - label: Possession within the weighing tolerance, Article 33(2)(a)
+        treatment: civil
+        term: Evidentiary tolerance
+        fine_min: 2000000
+        fine: 5000000
+        note: A weighing tolerance, not a small-quantity threshold
+      - label: Allowing use on premises or being in a place prepared for use, Article 33(1)
+        treatment: criminal
+        term: Premises offence
+        prison_min: 6 months
+        prison: 2 years
+        fine_min: 3000000
+        fine: 5000000
   cultivation:
     text: >-
-      Growing drug-producing plants for trade carries death or life imprisonment.[@law2017]
-      Growing for personal use falls under the separate one-to-three-year offence and its
-      fine.[@law2017]
+      Cultivating a drug-producing plant with intent to traffic carries death or life
+      imprisonment under Article 27(3).[@law2017] Growing for personal use falls under Article 32,
+      with one to three years and a fine.[@law2017] Article 24 bans the cannabis plant at every
+      stage, including seeds, except for medical or scientific purposes under the law.[@law2017]
     sources:
       - law2017
+    currency: IQD
+    penalties:
+      - label: Cultivation with intent to traffic, Article 27(3)
+        treatment: criminal
+        term: Cultivation
+        death: true
+        note: Death or life imprisonment
+      - label: Cultivation for personal use, Article 32
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 5000000
+        fine: 10000000
   enforcement:
     text: >-
       The law sets prison terms for personal-use offences and severe penalties for
-      trafficking.[@law2017] A judicial review recorded three Badra cases where general
-      mitigation led to fines alone, but challenged the amounts as below the statutory
-      minimum.[@judicial_fines]
+      trafficking.[@law2017] A judicial review recorded three Badra cases where general mitigation
+      led to fines alone, but challenged the amounts as below the statutory minimum.[@judicial_fines]
+      In 2024 the interior ministry reported 14,438 drug arrests and 8,930 convictions, with
+      6,183 kg of narcotics seized; the figures cover all drugs.[@shafaq24]
     sources:
       - law2017
       - judicial_fines
+      - shafaq24
   sharing:
     text: >-
-      Importing, exporting or producing with intent to trade carries death or life. In one case
-      three men were sentenced to death over 18 kg of hashish.
+      Importing, exporting, producing or manufacturing with intent to traffic carries death or
+      life imprisonment under Article 27.[@law2017] Possession, sale, transport, delivery or
+      mediation with intent to traffic carries life or temporary imprisonment and a 10 to 30
+      million dinar fine under Article 28.[@law2017] Providing drugs for use, encouraging use,
+      managing a place for use or inducing a minor to use carries the same Article 28
+      penalties.[@law2017] Aggravated cases, including recidivism, an official role, an
+      international gang, weapons or a school or place of worship, can attract the higher Article
+      29 penalties, including death or life.[@law2017]
     sources:
-      - hoc
-      - um
+      - law2017
+    currency: IQD
+    penalties:
+      - label: Import, export, production or manufacture with intent to traffic, Article 27
+        treatment: criminal
+        term: Trafficking
+        death: true
+        note: Death or life imprisonment
+      - label: Possession, sale, transport or delivery with intent to traffic, Article 28
+        treatment: criminal
+        term: Trafficking
+        fine_min: 10000000
+        fine: 30000000
+        note: Life or temporary imprisonment plus the fine
+      - label: Providing drugs for use, encouraging use or managing a drug premises, Article 28
+        treatment: criminal
+        term: Trafficking
+        fine_min: 10000000
+        fine: 30000000
+        note: Life or temporary imprisonment plus the fine
+      - label: Aggravated trafficking, Article 29
+        treatment: criminal
+        term: Aggravated trafficking
+        death: true
+        note: Enhanced penalties; death or life available
   consumption:
-    text: Use is a crime on the same footing as personal possession.
+    text: >-
+      There is no standalone use offence. Use is prosecuted as possession or purchase for personal
+      use under Article 32, or as providing or encouraging use under Article 28(2).[@law2017] A
+      court may order inpatient or outpatient treatment instead of the Article 32 penalty, and a
+      person who voluntarily presents for treatment is not prosecuted if they follow the
+      programme.[@law2017]
     sources:
-      - um
+      - law2017
+    currency: IQD
+    penalties:
+      - label: Use prosecuted as personal possession, Article 32
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 5000000
+        fine: 10000000
+        note: Treatment may replace the penalty
+      - label: Voluntary treatment
+        treatment: tolerated
+        term: Treatment
+        note: Protection from prosecution while the programme is followed
   access:
-    text: None.
+    text: >-
+      There is no legal cannabis supply for adults or patients. Article 18 allows individuals to
+      possess their own prescribed controlled medicine for genuine health reasons, but no
+      cannabis-based product is registered under that route.[@law2017] The Etihad Pharma Legal
+      Handbook states that medicinal cannabis is not authorised in Iraq and that no cannabinoid
+      drug has market approval.[@pharma]
     sources:
-      - um
+      - law2017
+      - pharma
 context:
   death_penalty:
     text: >-
-      Importing, exporting or producing with intent to trade, and cultivating narcotic plants
-      for trade, carry death or life imprisonment. In one case three men were sentenced to death
-      over 18 kg of hashish.
-    sources:
-      - hoc
-      - um
-  production:
-    status: none
-    text: None.
-    sources:
-      - um
-  products:
-    text: None.
-    sources:
-      - um
-  medical:
-    text: No medical cannabis.
-    sources:
-      - um
-  consequences:
-    text: >-
-      Courts can order hospital treatment for proven dependence or outpatient visits under the
-      corrected treatment rule, with further decisions based on medical
-      reports.[@law2017,corr2018] Voluntary hospital presentation can prevent prosecution, but
-      failure to follow the treatment programme can lead to legal action.[@law2017]
+      The 2017 law makes death or life the penalty for importing, exporting, producing or
+      cultivating with intent to traffic, and for aggravated trafficking.[@law2017] In 2024 courts
+      passed 144 death sentences for drug trafficking; in 2025 Harm Reduction International recorded
+      40 or more new drug death sentences, about a fifth of them cannabis-related.[@hri2025] The
+      interior ministry said 300 death sentences were imposed in the three years to November
+      2025.[@hri2025] Iraq carried out executions in 2025, but none for drug offences.[@hri2025]
     sources:
       - law2017
-      - corr2018
-  arrests:
+      - hri2025
+  recreational:
     text: >-
-      The interior ministry reported 14,438 arrests for trafficking, dealing and personal use in
-      2024, with 8,930 convictions and more than six tonnes of drugs seized; the figures cover
-      all drugs. In the Kurdistan Region, which has its own law since 2020, arrests rose from
-      142 in 2014 to 2,017 in 2022, and in October 2023 a fifth of all prisoners, 1,097 people,
-      were held for narcotics, 617 of them for use.
+      There is no legal way to buy cannabis. Personal use carries one to three years and a fine,
+      trafficking can bring death or life, and the law has no quantity threshold.[@law2017] The
+      interior ministry reported 14,438 drug arrests in 2024 and 6,183 kg seized, all drugs
+      combined.[@shafaq24] No price or purity data were found.
     sources:
+      - law2017
       - shafaq24
-      - pere23
+  production:
+    status: none
+    text: >-
+      No licensed cannabis production exists. Article 24 bans cultivating, importing, exporting,
+      possessing or selling the cannabis plant at every stage, including seeds, except for medical
+      or scientific purposes under the law.[@law2017] The 1979 amendment removed the earlier
+      fibre-and-seed exception, and no industrial-hemp licensing regime replaced it.[@law2017]
+    sources:
+      - law2017
+  medical:
+    text: >-
+      No medical cannabis programme or registered cannabis medicine was found.[@pharma] Article 18
+      permits individuals to possess their own prescribed controlled medicine, but no
+      cannabis-based product has been registered under it.[@law2017] Cannabis remains on the
+      controlled lists, and medical status stays none.[@law2017]
+    sources:
+      - pharma
+      - law2017
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception, THC limit or licensing scheme was found. Article 24 bans the
+      cannabis plant at every stage, including seeds.[@law2017] CBD has no separate exemption; it
+      is treated as a cannabis derivative unless the health ministry authorises it, and no such
+      authorisation was found.[@law2017]
+    sources:
+      - law2017
+  consequences:
+    text: >-
+      A drug conviction carries a criminal record and a prison term or fine; trafficking can bring
+      life imprisonment or death.[@law2017] Courts can order treatment for dependence, and
+      voluntary treatment can prevent prosecution if the programme is followed.[@law2017] Death
+      sentences were imposed in 2024 and 2025, but no drug executions were recorded in 2025.[@hri2025]
+    sources:
+      - law2017
+      - hri2025
+  planting:
+    seeds: illegal
+    seeds_trade: banned
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      Article 24 expressly bans the cannabis plant at every growth stage, including seeds, except
+      for medical or scientific purposes under the law.[@law2017] Clones are plants, so keeping,
+      trading or planting them falls under the same prohibition.[@law2017] No seed or clone market
+      was found.
+    sources:
+      - law2017
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      supplying it to another person are both prohibited, and the most serious drug offences carry
+      death or life imprisonment.[@law2017]
     sources:
-      - um
-      - hoc
+      - law2017
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. The sources behind this profile describe no separate rule for visitors.
+      There is no legal recreational supply for anyone. Personal use carries one to three years and
+      a fine, and the law makes no exception for visitors.[@law2017]
     sources:
-      - um
+      - law2017
+  driving:
+    status: impairment
+    text: >-
+      Traffic Law No. 8 of 2019 punishes driving under the influence of alcohol or drugs with three
+      months to one year in prison, a fine of 200,000 to 500,000 dinars, or both.[@traffic2019] A
+      repeat within a year brings six months to one year, or a fine up to 1 million dinars, or
+      both.[@traffic2019] No THC limit is set; the offence uses an "under the influence"
+      standard.[@traffic2019]
+    sources:
+      - traffic2019
+  black_market:
+    text: >-
+      The market is illegal and the authorities report large seizures. In 2024 the interior
+      ministry reported 6,183 kg of narcotics seized and 14,438 arrests, all drugs combined.[@shafaq24]
+      In 2025 the ministry said 300 death sentences and 1,147 life sentences had been imposed for
+      drug crimes in three years, against seven death sentences in the three years before
+      that.[@hri2025] No cannabis-specific price or purity data were found.
+    sources:
+      - shafaq24
+      - hri2025
+  arrests:
+    text: >-
+      In 2024 the interior ministry reported 14,438 drug arrests, 8,930 convictions, 6,183 kg
+      seized, 144 death sentences and 454 life sentences; Shafaq reported 434 life sentences, a
+      discrepancy that remains unresolved.[@shafaq24] In the first half of 2026 the ministry
+      reported 3,553 arrests and 1,977 kg seized, with 58 death sentences and 236 life
+      sentences.[@tnr26] The figures cover all drugs and give no cannabis breakdown.
+    sources:
+      - shafaq24
+      - tnr26
 sources:
-  shafaq24:
-    title: >-
-      Shafaq News — Iraq's Interior Ministry, over six tons of drugs seized in 2024 (28 December
-      2024)
-    url: https://shafaq.com/en/Iraq/Iraq-s-Interior-Ministry-over-six-tons-of-drugs-seized-in-2024
-  pere23:
-    title: >-
-      Peregraf — Kurdistan Region sees dramatic increase in drug arrests since 2014, putting
-      prisons under strain (October 2023)
-    url: https://peregraf.com/en/investigation/6175
-  tnr:
-    title: The New Region — reporting on Iraq's drug law and enforcement
-    url: https://thenewregion.com/posts/3810
-  hoc:
-    title: "Hands Off Cain — Iraq: three drug dealers sentenced to death"
-    url: https://handsoffcain.info/news/iraq-three-drug-dealers-sentenced-to-death-60482408
-  um:
-    title: >-
-      University of Mosul law journal — The criminal penal policy in Iraq's drug law No. 50 of
-      2017
-    url: https://alaw.uomosul.edu.iq/index.php/alaw/en/article/view/49027
   law2017:
     type: law
-    title: Narcotics and Psychotropic Substances Law 50 of 2017, original Gazette
-    authors:
-      - Republic of Iraq
+    title: "Iraq — Narcotics and Psychotropic Substances Law No. 50 of 2017"
+    authors: [Republic of Iraq]
     year: 2017
-    container: Al-Waqa'i al-Iraqiya, issue 4446, 8 May 2017
-    locator: >-
-      Articles 28, 32, 37, 39–40 and 50–51; original article 39(1) cross-reference corrected in
-      January 2018
-    url: https://moj.gov.iq/upload/pdf/4446.pdf
+    container: "Al-Waqa'i al-Iraqiya, issue 4446, 8 May 2017"
+    locator: "Articles 24, 27, 28, 32, 33, 39–40 and 50–51."
+    url: https://web.archive.org/web/20260602150751/https://www.moj.gov.iq/upload/pdf/4446.pdf
   corr2018:
     type: law
     title: Presidential correction to articles 17(3) and 39(1) of the 2017 drug law
-    authors:
-      - Office of the President of Iraq
+    authors: [Office of the President of Iraq]
     year: 2018
-    container: Al-Waqa'i al-Iraqiya, issue 4477, 15 January 2018
-    locator: Printed p. 27 (PDF p. 29); treatment reference changed from article 33 to article 32
+    container: "Al-Waqa'i al-Iraqiya, issue 4477, 15 January 2018"
+    locator: "Treatment reference changed from article 33 to article 32."
     url: https://moj.gov.iq/upload/pdf/4477.pdf
   judicial_fines:
     title: >-
       Supreme Judicial Council, Judicial Supervision Authority — Fines under article 32 of the
       drug law
     url: https://www.sjc.iq/view.68465/
-    locator: >-
-      Study 96/2019, published 13 June 2021; three Badra judgments dated 13 February 2019 and
-      recommendations to challenge their fines
+    locator: "Study 96/2019, published 13 June 2021; three Badra judgments dated 13 February 2019."
+  shafaq24:
+    title: "Shafaq News — Iraq: 14,000 drug traffickers and possessors arrested in 2024 (28 December 2024)"
+    url: https://www.shafaq.com/en/Iraq/Iraq-14-000-drug-traffickers-and-possessors-arrested-in-2024
+  hri2025:
+    type: report
+    title: "Harm Reduction International — The Death Penalty for Drug Offences: Global Overview 2025"
+    url: https://hri.global/wp-content/uploads/2026/03/HRI-GO-Death-penalty-drugs-2025-FINAL.pdf
+    locator: "Iraq sections: 144+ death sentences in 2024; 40+ in 2025, about a fifth cannabis-related; 300 death sentences over three years; no drug executions in 2025."
+  pharma:
+    type: report
+    title: "Etihad Law Firm — Pharma Legal Handbook: Iraq (2025)"
+    url: https://www.iraq-businessnews.com/wp-content/uploads/2025/09/Pharma-Legal-Handbook.pdf
+    locator: "Sections 08–09: medicinal cannabis not authorised; no cannabinoid drug with market approval."
+  traffic2019:
+    type: law
+    title: "Iraq — Traffic Law No. 8 of 2019, Articles 34–36"
+    url: https://www.iraqilaws.com/2023/10/8-2019.html
+    locator: "Articles 34(1)–(2), 35(2), 36(3)–(4)."
+  tnr26:
+    title: "The New Region — Iraq reports 3,553 drug arrests and 1,977 kg seized in the first half of 2026 (14 July 2026)"
+    url: https://thenewregion.com/posts/5886
