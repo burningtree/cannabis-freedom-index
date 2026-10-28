@@ -21,3 +21,11 @@ Oman validation: `profile-audit om` zero errors and warnings. The unsupported 19
 Georgia validation: `profile-audit ge` zero errors and warnings. The profile now adds the 20-year/life especially-large possession tier, the 2024–2026 drug-crime figures and prison population, the Article 260²/260⁴ sharing offences, the ancillary-rights consequences, deportation for visitors and the List I wording. The 2022 “3,017 kg” figure is explained as 212 kg of herb plus 2,805 plants. The April 2025 entry is dated and closed as unscored; four entries cover 1964–2026.
 
 Azerbaijan validation: `profile-audit az` zero errors and warnings. The 1934 entry now uses the primary decree, the 2022 small-amount reform is recorded, driving moves from impairment to a positive-test trigger, clubs cite Article 238, visitors add expulsion and a research section is added. Seven entries cover 1958–2026; the 1940s remain empty.
+
+## Result
+
+All five countries were expanded and committed separately: Laos `023fee86`, Kuwait `f1af66e8`, Oman `bdf11a90`, Georgia `b716908a` and Azerbaijan `34c4d06e`. Each profile passes `profile-audit` with zero errors and warnings and has no missing standard or researched sections, penalty tables or inline citations. Targeted `build-pages.mjs` runs rendered each country and its changed history pages; `npm test` passes.
+
+The batch added 43 history entries. It removed Oman's unsupported 1925 estimate and dated the first restriction to 1974, corrected Georgia's 2022 seizure figure and Kuwait's product/death-penalty structure, dated Georgia's April 2025 package, added Azerbaijan's 2022 threshold reform, and filled the missing Kuwait black-market and Laos 2026 prohibited-list context. The main score correction was Oman's first-restriction date; the current scores are unchanged.
+
+The main open caveats are the empty 1930s–1960s in Oman, the empty 1940s–1950s in Georgia, the empty 1940s in Azerbaijan, Mongolia-style unsourced early history in Laos, and the lack of cannabis-specific prosecution series in Kuwait and Azerbaijan.
