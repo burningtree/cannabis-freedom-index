@@ -14,4 +14,4 @@ only own lines in changes.yaml.
 | Serbia | arrests, citations, links, products fold, 2006 article (no new entries; Yugoslav decades unsourced) | 1940s/60s/70s/80s/90s unsourced; left for a later pass | dc80467 |
 | Serbia | | | |
 | Croatia | citations, links, products fold, 2025 market entry, 2013 article | 1940s/60s/70s/80s unsourced; left for a later pass | c795155 |
-| Hungary | | | |
+| Hungary | citations, links, products fold, culture, 2013 article | 1920s/40s/70s unsourced; left for a later pass | |
