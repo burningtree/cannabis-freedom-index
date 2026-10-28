@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 586
 recreational: illegal
 medical: limited
-updated: '2026-10-28'
+updated: "2026-10-28"
 summary: >-
   Illegal, yet charas is widely used and largely tolerated in parts of the country. The cannabis
   regulator publishes licence categories and application requirements for medicinal cultivation,
@@ -19,16 +19,21 @@ segments:
   possession:
     text: >-
       Section 6 of the Control of Narcotic Substances Act forbids possessing any narcotic, and
-      Section 9 sets the sentence by drug and weight.[@cnsa23] In the consolidated text, up to
-      499 g of charas (hashish) carries ten months to five years in prison and a fine of up to
-      40,000 rupees, and 500 to 999 g five to nine years.[@cnsa23] Up to 999 g of bhang, the
-      herbal form, carries six months to three years and a fine of up to 10,000 rupees.[@cnsa23]
-      Hashish oil has its own higher scale, starting at fourteen months to seven years for up to
-      499 g.[@cnsa23] Charas is nonetheless smoked widely and police often ignore it or take a
-      bribe, so the law's severity and daily reality diverge sharply.[@shc]
+      Section 9 sets the sentence by drug and weight.[@cnsa23] In the consolidated text, up to 499 g
+      of charas (hashish) carries ten months to five years in prison and a fine of up to 40,000
+      rupees, and 500 to 999 g five to nine years.[@cnsa23] Up to 999 g of bhang, the herbal form,
+      carries six months to three years and a fine of up to 10,000 rupees.[@cnsa23] Hashish oil has
+      its own higher scale, starting at fourteen months to seven years for up to 499 g.[@cnsa23]
+      Charas is nonetheless smoked widely and police often ignore it or take a bribe, so the law's
+      severity and daily reality diverge sharply.[@shc]
+            The table below is the federal table for Islamabad. Khyber Pakhtunkhwa (2019) and Sindh (2024) repealed the federal Act in their provinces; Punjab (2025) and Balochistan (2026) set their own tables, and KP’s lowest bands set only maximums.[@kp25,sindh24,punjab25,baloch26]
     sources:
       - cnsa23
       - shc
+      - kp25
+      - sindh24
+      - punjab25
+      - baloch26
     currency: PKR
     penalties:
       - label: Bhang up to 999 g
@@ -52,11 +57,11 @@ segments:
         note: Higher bands for all three drugs are on the sharing table
   cultivation:
     text: >-
-      Section 4 forbids cultivating any cannabis plant, letting land for it, or gathering any
-      part of the plant; under Section 5 as amended in 2022 the penalty is one to seven years in
-      prison and a fine.[@cnsa23] The federal government, or a province it authorises, may license
-      cultivation for medical, scientific or industrial purposes only.[@cnsa23] Cannabis
-      nonetheless grows wild across the north and is farmed in the tribal districts.[@wiki]
+      Section 4 forbids cultivating any cannabis plant, letting land for it, or gathering any part
+      of the plant; under Section 5 as amended in 2022 the penalty is one to seven years in prison
+      and a fine.[@cnsa23] The federal government, or a province it authorises, may license
+      cultivation for medical, scientific or industrial purposes only.[@cnsa23] Cannabis nonetheless
+      grows wild across the north and is farmed in the tribal districts.[@wiki]
     sources:
       - cnsa23
       - wiki
@@ -67,16 +72,20 @@ segments:
         term: Cultivation
         prison_min: 1 year
         prison: 7 years
-        note: Fine also imposed; a government licence is possible for medical, scientific or industrial purposes
+        note: >-
+          Fine also imposed; a government licence is possible for medical, scientific or industrial
+          purposes
   enforcement:
     text: >-
-      Mandatory minimum prison terms apply on paper, with uneven enforcement that falls hardest on
-      the poor.[@shc] The Anti-Narcotics Force reported 1,652 arrests in 1,678 cases in the twelve
+      Minimum prison terms apply in the federal table and most provinces, but Khyber Pakhtunkhwa’s
+      lowest bands set only maximums; enforcement is uneven and falls hardest on the
+      poor.[@shc,kp25] The Anti-Narcotics Force reported 1,652 arrests in 1,678 cases in the twelve
       months to mid-2023, and 157.5 tonnes of drugs seized, of which 61.8 tonnes were
       hashish.[@dt23] No national cannabis-specific arrest figures for 2024–2026 were found.
     sources:
       - shc
       - dt23
+      - kp25
   sharing:
     text: >-
       Supply is trafficking under Sections 6 to 8, and Section 9 applies the same weight table as
@@ -114,7 +123,8 @@ segments:
         term: Trafficking
         prison_min: 14 years
         fine_min: 200000
-        note: Life imprisonment available
+        note: available
+        life: possible
       - label: Charas up to 499 g
         treatment: criminal
         term: Trafficking
@@ -147,7 +157,8 @@ segments:
         term: Trafficking
         prison_min: 20 years
         fine_min: 800000
-        note: Life imprisonment available
+        note: available
+        life: possible
       - label: Hashish oil up to 499 g
         treatment: criminal
         term: Trafficking
@@ -173,7 +184,8 @@ segments:
         term: Trafficking
         prison_min: 20 years
         fine_min: 400000
-        note: Life imprisonment available
+        note: available
+        life: possible
   consumption:
     text: >-
       The Act deals with users through registration and treatment: each province is to register
@@ -196,10 +208,10 @@ segments:
 context:
   recreational:
     text: >-
-      Illegal on paper, widely used in practice: charas is smoked widely and police often ignore
-      it, and use is culturally embedded at Sufi shrines and festivals.[@shc] Minimum prison terms
-      apply to possession of any amount, but no legal adult-use source exists.[@cnsa23] No price or
-      purity data were found.
+      Illegal on paper, widely used in practice: charas is smoked widely and police often ignore it,
+      and use is culturally embedded at Sufi shrines and festivals.[@shc] Minimum prison terms apply
+      to possession of any amount, but no legal adult-use source exists.[@cnsa23] No price or purity
+      data were found.
     sources:
       - cnsa23
       - shc
@@ -210,35 +222,41 @@ context:
       controlled and open-field medicinal cannabis cultivation, extraction, pharmaceutical
       manufacturing and research.[@ccra_scope] Applicants must meet tax, police-clearance,
       financial, technical and site-security requirements; foreign investors need a Pakistani
-      joint-venture partner holding at least 51%.[@ccra_scope] Cultivation-only applicants may
-      apply as individuals, while other activities have their own documentary requirements.[@ccra_scope]
+      joint-venture partner holding at least 51%.[@ccra_scope] Cultivation-only applicants may apply
+      as individuals, while other activities have their own documentary requirements.[@ccra_scope]
+      By September 2026 the regulator had 75 licence applications in vetting, and the 2026 policy
+      aimed to bring about 50,000 acres of illicit cultivation under licence.[@ccra_apps]
     sources:
       - ccra_scope
+      - ccra_apps
   medical:
     text: >-
       Applicants can seek licences for medicinal cultivation, extraction, pharmaceutical
       manufacturing and research through the Cannabis Control and Regulatory Authority.[@ccra_scope]
-      Its application checklist covers production facilities and clinical research, but identifies
-      no prescription or pharmacy route through which patients can obtain cannabis medicines.[@ccra_scope]
-      Patient supply remains unverified in the sources reviewed.[@ccra_scope]
+      The 2026 national policy anticipates prescription sales through licensed pharmaceutical and
+      retail outlets, but no such outlet or patient supply had opened by October 2026.[@ccra_policy]
+      Patient supply remains unverified.
     sources:
       - ccra_scope
+      - ccra_policy
   hemp:
     status: standard
     text: >-
-      Industrial hemp is a licensed category with a THC ceiling of 0.3%. The regulator issues
-      A-1 cultivation licences in three size classes, from up to 50 acres to more than 250 acres,
-      with police clearance, tax registration and site-security conditions.[@ccra_policy] The 2026
-      licensing rules add application and issuance fees, a five-year term and THC testing.[@ccra_rules]
-      Recreational use remains illegal.[@ccra_policy]
+      Industrial hemp is a licensed category with a THC ceiling of 0.3%. The regulator issues A-1
+      cultivation licences in three size classes, from up to 50 acres to more than 250 acres, with
+      police clearance, tax registration and site-security conditions.[@ccra_policy] The 2026
+      licensing rules add application and issuance fees, a five-year term and THC
+      testing.[@ccra_rules] Recreational use remains illegal.[@ccra_policy] By September 2026 no
+      cultivation licence had been verified as issued.[@ccra_apps]
     sources:
       - ccra_policy
       - ccra_rules
+      - ccra_apps
   consequences:
     text: >-
-      A narcotics conviction carries a criminal record.[@shc] The Act sets mandatory minimum
-      prison terms for possession and trafficking, and the 2023 amendment removed death from the
-      remaining federal drug-law rows while leaving life imprisonment as the maximum.[@na23]
+      A narcotics conviction carries a criminal record.[@shc] The Act sets mandatory minimum prison
+      terms for possession and trafficking, and the 2023 amendment removed death from the remaining
+      federal drug-law rows while leaving life imprisonment as the maximum.[@na23]
     sources:
       - shc
       - na23
@@ -248,21 +266,21 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      The Control of Narcotic Substances Act 1997 defines cannabis as the resin and the flowering
-      or fruiting tops, "excluding the seed and leaves when not accompanied by the tops", so loose
-      seed is not a narcotic drug.[@cnsa] Section 4 forbids cultivating any cannabis plant or
-      gathering any portion of one, unless the government licenses it for medical, scientific or
-      industrial purposes.[@cnsa]
+      The Control of Narcotic Substances Act 1997 defines cannabis as the resin and the flowering or
+      fruiting tops, "excluding the seed and leaves when not accompanied by the tops", so loose seed
+      is not a narcotic drug.[@cnsa] Section 4 forbids cultivating any cannabis plant or gathering
+      any portion of one, unless the government licenses it for medical, scientific or industrial
+      purposes.[@cnsa]
     sources:
       - cnsa
   clubs:
     status: none
     text: >-
-      No cannabis clubs in the modern sense are known, and the law leaves no room for them:
-      growing and supplying cannabis are prohibited.[@cnsa23] The collective use that does exist is
-      religious and much older. Malangs, the wandering mendicants found at Sufi shrines such as
-      Lal Shahbaz Qalandar in Sehwan, commonly smoke charas and drink bhang, which they regard as
-      part of their devotion.[@malang20] That is a devotional custom, not a members' association.
+      No cannabis clubs in the modern sense are known, and the law leaves no room for them: growing
+      and supplying cannabis are prohibited.[@cnsa23] The collective use that does exist is
+      religious and much older. Malangs, the wandering mendicants found at Sufi shrines such as Lal
+      Shahbaz Qalandar in Sehwan, commonly smoke charas and drink bhang, which they regard as part
+      of their devotion.[@malang20] That is a devotional custom, not a members' association.
     sources:
       - cnsa23
       - malang20
@@ -278,12 +296,12 @@ context:
   driving:
     status: impairment
     text: >-
-      The Provincial Motor Vehicles Ordinance's section 100 prohibits driving or attempting to
-      drive while drink or drugs prevent proper vehicle control.[@motortraffic] The published
-      version provides up to six months' imprisonment or a fine or both for a first offence, and up
-      to two years for a repeat; section 18(2) provides at least six months' disqualification.[@motortraffic]
-      No numeric THC threshold is stated, and provincial amendments mean the fine figures are not a
-      uniform nationwide tariff.[@motortraffic]
+      The Provincial Motor Vehicles Ordinance's section 100 prohibits driving or attempting to drive
+      while drink or drugs prevent proper vehicle control.[@motortraffic] The published version
+      provides up to six months' imprisonment or a fine or both for a first offence, and up to two
+      years for a repeat; section 18(2) provides at least six months'
+      disqualification.[@motortraffic] No numeric THC threshold is stated, and provincial amendments
+      mean the fine figures are not a uniform nationwide tariff.[@motortraffic]
     sources:
       - motortraffic
   black_market:
@@ -300,10 +318,10 @@ context:
   arrests:
     text: >-
       The 2025 INCSR recorded about 93,440 drug-related arrests in the twelve months to June 2024,
-      predominantly low-level dealers, and 8 million people who had used drugs in 2024.[@incsr]
-      The number of people imprisoned under the narcotics act rose from 19,636 in 2023 to 23,367
-      in 2024 and 25,168 in June 2026, when they made up 22.31% of Pakistan's prison
-      population.[@jpp] The figures cover all drugs and give no cannabis breakdown.
+      predominantly low-level dealers, and 8 million people who had used drugs in 2024.[@incsr] The
+      number of people imprisoned under the narcotics act rose from 19,636 in 2023 to 23,367 in 2024
+      and 25,168 in June 2026, when they made up 22.31% of Pakistan's prison population.[@jpp] The
+      figures cover all drugs and give no cannabis breakdown.
     sources:
       - incsr
       - jpp
@@ -312,35 +330,42 @@ context:
       Pakistan's cannabis culture centres on [charas](/culture/language/charas/), the hand-rubbed
       resin, and [hashish](/culture/language/hashish/) more broadly. The Hindu Kush gave its name to
       [kush](/culture/language/kush/), and the old farmers' populations of the region are
-      [landraces](/culture/language/landrace/); the botanical split between
-      [indica and sativa](/culture/language/indica-and-sativa/) also drew on South Asian drug
-      types.[@wiki] At Sufi shrines, malangs smoke charas and drink bhang as part of their
-      devotion.[@malang20]
+      [landraces](/culture/language/landrace/); the botanical split between [indica and
+      sativa](/culture/language/indica-and-sativa/) also drew on South Asian drug types.[@wiki] At
+      Sufi shrines, malangs smoke charas and drink bhang as part of their devotion.[@malang20]
     sources:
       - wiki
       - malang20
 sources:
   motortraffic:
-    title: "Pakistan Ministry of Law and Justice — Provincial Motor Vehicles Ordinance 1965 (Pakistan Code, PDF)"
+    title: >-
+      Pakistan Ministry of Law and Justice — Provincial Motor Vehicles Ordinance 1965 (Pakistan
+      Code, PDF)
     url: https://pakistancode.gov.pk/pdffiles/administratorfcc61bd4cc647332fccbdffad801bab8.pdf
-    locator: "Sections 18(2) and 100"
+    locator: Sections 18(2) and 100
   cnsa23:
-    title: "Pakistan — Control of Narcotic Substances Act, 1997, consolidated with amendments to Federal Act XXXVIII of 2023 (Sindh Judicial Academy, PDF)"
-    url: https://sja.gos.pk/assets/Updated_Laws/Control%20of%20Narcotic%20Substances%20Act%2C%201997%20%28Amendments%20upto%20date%29.pdf
-    locator: "Sections 4–9 and the Section 9 table for bhang, charas and hashish oil."
+    title: >-
+      Pakistan — Control of Narcotic Substances Act, 1997, consolidated with amendments to Federal
+      Act XXXVIII of 2023 (Sindh Judicial Academy, PDF)
+    url: >-
+      https://sja.gos.pk/assets/Updated_Laws/Control%20of%20Narcotic%20Substances%20Act%2C%201997%20%28Amendments%20upto%20date%29.pdf
+    locator: Sections 4–9 and the Section 9 table for bhang, charas and hashish oil.
   na23:
     title: National Assembly of Pakistan — Control of Narcotic Substances (Amendment) Act, 2023
     url: https://na.gov.pk/uploads/documents/64d4d874b52c0_506.pdf
   malang20:
-    title: Asghar, Jawad, Rehmani & Natalia — The Malang in Pakistan Today, Journal of the Research Society of Pakistan 57(2), 2020 (PDF)
+    title: >-
+      Asghar, Jawad, Rehmani & Natalia — The Malang in Pakistan Today, Journal of the Research
+      Society of Pakistan 57(2), 2020 (PDF)
     url: https://pu.edu.pk/images/journal/history/PDF-FILES/15_57_2_20.pdf
   dt23:
     title: Daily Times / APP — ANF arrests 1,652 drug smugglers (3 July 2023)
     url: https://dailytimes.com.pk/1109318/anf-arrests-1652-drug-smugglers/
   cnsa:
     title: Control of Narcotic Substances Act, 1997 (UNODC SHERLOC, PDF)
-    url: https://sherloc.unodc.org/cld/uploads/res/document/pak/control-of-narcotic-substances-act-xxv_html/CONTROL_OF_NARCOTIC_SUBSTANCES_ACT_pakistan.pdf
-    locator: "Section 2(d) cannabis definition; Section 4 cultivation ban."
+    url: >-
+      https://sherloc.unodc.org/cld/uploads/res/document/pak/control-of-narcotic-substances-act-xxv_html/CONTROL_OF_NARCOTIC_SUBSTANCES_ACT_pakistan.pdf
+    locator: Section 2(d) cannabis definition; Section 4 cultivation ban.
   shc:
     title: Sindh High Court — judgment applying the Control of Narcotic Substances (Amendment) Act 2022
     url: https://caselaw.shc.gov.pk/caselaw/view-file/MjE5MTk3Y2Ztcy1kYzgz
@@ -348,28 +373,122 @@ sources:
     title: Wikipedia — Cannabis in Pakistan
     url: https://en.wikipedia.org/wiki/Cannabis_in_Pakistan
   ccra_policy:
-    title: "Pakistan — National Cannabis Control and Regulatory Policy, 2025 (approved 20 January 2026)"
+    title: Pakistan — National Cannabis Control and Regulatory Policy, 2025 (approved 20 January 2026)
     url: https://www.ccra.gov.pk/storage/gallery/Cannabis_Policy%202025.pdf
-    locator: "Recreational use illegal; industrial hemp THC below 0.3%; medicinal cannabis above 0.3%."
+    locator: Recreational use illegal; industrial hemp THC below 0.3%; medicinal cannabis above 0.3%.
   ccra_rules:
-    title: "Pakistan — Cannabis Control and Regulatory Authority (Licensing) Rules, 2026"
+    title: Pakistan — Cannabis Control and Regulatory Authority (Licensing) Rules, 2026
     url: https://ccra.gov.pk/storage/gallery/CCRA%20Licensing%20Rules%20CCRA.pdf
-    locator: "A-1 industrial hemp (THC at or below 0.3%), A-2/A-3 medicinal, B-1/B-2 processing and extraction, C-1/C-2 research and testing."
+    locator: >-
+      A-1 industrial hemp (THC at or below 0.3%), A-2/A-3 medicinal, B-1/B-2 processing and
+      extraction, C-1/C-2 research and testing.
   unodc:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report 2026 data)"
+    title: >-
+      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
+      Report 2026 data)
     url: https://data.unodc.org/datareport/drug-seizure
     locator: "Pakistan 2024: 167,395 kg cannabis resin and 9,859 kg herbal cannabis; 2023 resin 102,400 kg."
   incsr:
     type: report
-    title: "US Department of State — 2025 International Narcotics Control Strategy Report, Volume 1"
-    url: https://www.state.gov/wp-content/uploads/2025/03/2025-International-Narcotics-Control-Strategy-Volume-1-Accessible.pdf
-    locator: "Pakistan chapter, pp. 286–287: 138.63 t hashish, 11.1 t heroin, 16.8 t opium, 93,440 arrests, 8 million users."
+    title: US Department of State — 2025 International Narcotics Control Strategy Report, Volume 1
+    url: >-
+      https://www.state.gov/wp-content/uploads/2025/03/2025-International-Narcotics-Control-Strategy-Volume-1-Accessible.pdf
+    locator: >-
+      Pakistan chapter, pp. 286–287: 138.63 t hashish, 11.1 t heroin, 16.8 t opium, 93,440 arrests,
+      8 million users.
   jpp:
     type: report
-    title: "Justice Project Pakistan — Women, Poverty and the Failure of the CNSA (August 2026)"
+    title: Justice Project Pakistan — Women, Poverty and the Failure of the CNSA (August 2026)
     url: https://www.jpp.org.pk/wp-content/uploads/2026/08/Drug-Policy-CNSA.pdf
-    locator: "CNSA prisoners: 19,636 in 2023; 23,367 in 2024; 25,168 in June 2026; 22.31% of prison population; 76.64% undertrial."
+    locator: >-
+      CNSA prisoners: 19,636 in 2023; 23,367 in 2024; 25,168 in June 2026; 22.31% of prison
+      population; 76.64% undertrial.
   ccra_scope:
     title: Pakistan Cannabis Control and Regulatory Authority — licence eligibility and scope
     url: https://www.elicense.ccra.gov.pk/pre-requisite
-    locator: "Applicant eligibility and licence codes A-1–A-3, B-2–B-3 and C-1; cultivation, extraction, manufacture and research"
+    locator: >-
+      Applicant eligibility and licence codes A-1–A-3, B-2–B-3 and C-1; cultivation, extraction,
+      manufacture and research
+  kp25:
+    title: Khyber Pakhtunkhwa — Control of Narcotic Substances (Amendment) Act 2025
+    url: >-
+      https://web.archive.org/web/2026/https://pakp.gov.pk/wp-content/uploads/2025/03/The-Khyber-Pakhtunkhwa-Control-of-Narcotic-Substances-Amendment-Act-2025-Assem-Notification.pdf
+    locator: New penalty table; recreational-drug definition; no minimum for the lowest bhang/charas bands.
+  sindh24:
+    title: Sindh — Control of Narcotic Substances Act 2024
+    url: https://www.pas.gov.pk/uploads/acts/Sindh%20Act%20No.VIII%20of%202024.pdf
+    locator: Repeal of the federal Act in Sindh; provincial penalty table.
+  punjab25:
+    title: Punjab — Control of Narcotic Substances Act 2025
+    url: >-
+      https://citylaws.pk/wp-content/uploads/2026/02/PUNJAB-CONTROL-OF-NARCOTIC-SUBSTANCES-ACT-2025.pdf
+    locator: Provincial penalty table; savings clause.
+  baloch26:
+    title: Balochistan — Control of Narcotic Substances Act 2026
+    url: >-
+      https://pabalochistan.gov.pk/storage/9341/6a0eab44945ec_THE-BALOCHISTAN-CONTROL-OF-NARCOTIC-SUBSTANCES-ACT,-2026.pdf
+    locator: Provincial table; life imprisonment defined as 25 years.
+  ccra_apps:
+    title: >-
+      The Nation — Senate committee told CCRA has 75 licence applications in vetting (18 September
+      2026)
+    url: >-
+      https://www.nation.com.pk/18-Sep-2026/senate-body-stresses-coordination-boost-quality-seed-availability-regulate-hemp-industry
+    locator: >-
+      75 applications; vetting target 30 October; applications close 30 November; 50,000-acre policy
+      target.
+  wikt_charas:
+    title: Wiktionary — چرس
+    url: https://en.wiktionary.org/wiki/چرس
+    locator: Hashish; hand-rubbed cannabis resin.
+  wikt_bhang:
+    title: Wiktionary — بھانگ
+    url: https://en.wiktionary.org/wiki/بھانگ
+    locator: Cannabis leaves and the drink made from them; بھنگ listed as an alternative form.
+  wikt_ganja:
+    title: Wiktionary — گانجا
+    url: https://en.wiktionary.org/wiki/گانجا
+    locator: Cannabis; dried flowering tops.
+  wikt_bang:
+    title: Wiktionary — بنګ
+    url: https://en.wiktionary.org/wiki/بنګ
+    locator: Pashto for cannabis.
+  wikt_hashish:
+    title: Wiktionary — حشیش
+    url: https://en.wiktionary.org/wiki/حشیش
+    locator: Hashish; cannabis resin.
+words:
+  - word: چرس
+    lang: Urdu / Punjabi
+    say: "[tʃə.ɾəs]"
+    meaning: hand-rubbed resin; the everyday word for hashish
+    atlas: charas
+    sources:
+      - wikt_charas
+  - word: بھنگ
+    lang: Urdu / Punjabi
+    say: "[bʱɑːŋɡ]"
+    meaning: cannabis leaves and the drink made from them; the law’s word for herbal cannabis
+    atlas: bhang
+    sources:
+      - wikt_bhang
+  - word: گانجا
+    lang: Urdu / Punjabi
+    say: "[ɡɑːn.dʒɑː]"
+    meaning: dried flowering tops; a law term and common name
+    atlas: ganja
+    sources:
+      - wikt_ganja
+  - word: بنګ
+    lang: Pashto
+    say: bang
+    meaning: cannabis
+    sources:
+      - wikt_bang
+  - word: حشیش
+    lang: Urdu
+    say: "[ɦə.ʃiːʃ]"
+    meaning: resin; formal synonym of charas
+    atlas: hashish
+    sources:
+      - wikt_hashish
