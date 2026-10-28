@@ -1,7 +1,7 @@
 name: Pennsylvania
 recreational: illegal
 medical: legal
-updated: 2026-10-24
+updated: 2026-10-28
 summary: >-
   30 g or less is a misdemeanour with up to 30 days in jail, cut to a small fine in Philadelphia,
   Pittsburgh and other cities. A large medical programme operates.
@@ -13,20 +13,50 @@ scores:
   consumption: 1
   access: 3
 segments:
-  possession: >-
-    30 g or less is a misdemeanour with up to 30 days and a $500 fine; a first conviction is
-    eligible for conditional release. More is a misdemeanour with up to a year.
-  cultivation: >-
-    Growing even a small number of plants for personal use can be prosecuted as felony
-    manufacture. The ordinary statutory penalty is up to five years in prison and/or a $15,000
-    fine, with no blanket 2½-year minimum.[@2,3] Medical patients cannot grow at home; production
-    requires a licence.[@1]
+  possession:
+    text: >-
+      30 g or less is a misdemeanour with up to 30 days and a $500 fine; a first conviction is
+      eligible for conditional release. More is a misdemeanour with up to a year.[@1]
+    currency: USD
+    penalties:
+      - upto: 30 g
+        treatment: criminal
+        term: Misdemeanor
+        prison: 30 days
+        fine: 500
+        note: First convictions eligible for conditional release
+      - over: 30 g
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 5000
+  cultivation:
+    text: >-
+      Growing even a small number of plants for personal use can be prosecuted as felony
+      manufacture. The ordinary statutory penalty is up to five years in prison and/or a $15,000
+      fine, with no blanket 2½-year minimum.[@2,3] Medical patients cannot grow at home; production
+      requires a licence.[@1]
+    currency: USD
+    penalties:
+      - label: Growing any number of plants
+        treatment: criminal
+        term: Felony manufacture
+        prison: 5 years
+        fine: 15000
+        note: Four plants for personal use count as manufacture
   enforcement: >-
-    Short jail terms are possible; Philadelphia, Pittsburgh and other cities issue small fines
-    instead.
-  sharing: Giving 30 g or less without payment is a misdemeanour with up to 30 days.
-  consumption: Illegal without a medical card.
-  access: A large medical programme with dispensaries statewide.
+    Short jail terms are possible, but Philadelphia replaced criminal penalties for under 30 g
+    with a $25 civil fine in 2014, and Pittsburgh did the same with up to $100 in 2015.[@1,4]
+  sharing: Giving 30 g or less without payment is a misdemeanour with up to 30 days.[@1]
+  consumption: Illegal without a medical card.[@1]
+  access: A large medical programme with dispensaries statewide.[@1,5]
+context:
+  medical:
+    text: >-
+      The Medical Marijuana Act, signed 17 April 2016, set up a Department of Health programme:
+      ID cards for certified patients and approved caregivers, and permits for growers,
+      processors and dispensaries.[@5]
+    sources: [5]
 sources:
   - title: NORML — Pennsylvania laws and penalties
     url: https://norml.org/laws/pennsylvania-penalties-2/
@@ -37,6 +67,10 @@ sources:
     url: https://law.justia.com/cases/pennsylvania/superior-court/2008/s29044-08.html
     locator: >-
       Personal-use cultivation of four plants constitutes manufacture
+  - title: Vetrano & Feinman — Pennsylvania medical marijuana and Philadelphia/Pittsburgh decriminalization
+    url: https://www.feinman-childs-familylaw.com/impact-pennsylvanias-medical-marijuana-act-custody-support-cases/
+  - title: Pennsylvania Department of Health — Office of Medical Marijuana Report (July 2022, PDF)
+    url: https://www.pa.gov/content/dam/copapwp-pagov/en/health/documents/topics/documents/programs/medical-marijuana/MM%20Report%202022.pdf
 use:
   note: Includes vaping; a model-based estimate.
   share: 20.4

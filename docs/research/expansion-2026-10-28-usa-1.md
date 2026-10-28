@@ -50,4 +50,11 @@ File: `countries/us/ca.yaml` (the documented model state file).
 - Left: medical section (2014 Compassionate Care Act specifics unverified), MRTA-2021 history
   entry missing (noted, not filled — changes.yaml shared).
 
-## pa — pending
+## pa (Pennsylvania) — committed
+- Penalty tables (possession 2 steps: ≤30g misd 30d/$500 with conditional release, >30g misd
+  1yr/$5k; cultivation as felony manufacture 5yr/$15k incl. four-plant Van Aulen rule, verified
+  against NORML + statute PDF + case law), cites on all segments, city fines (Philly $25 2014,
+  Pittsburgh up to $100 2015 via law-firm roundup corroborated by Ballotpedia/High Times
+  snippets), new `medical` (Act signed 17 Apr 2016, DOH cards + permits, via verified DOH report PDF).
+- No PA history entries and no grounded PA culture subject — noted, not filled.
+- Audit 0/0; review page verified.
