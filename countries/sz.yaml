@@ -3,10 +3,17 @@ region: Africa
 iso_numeric: 748
 recreational: illegal
 medical: none
-updated: 2026-10-12
+updated: '2026-10-28'
 summary: >-
-  Illegal, though 'Swazi Gold' is a major smallholder cash crop. Bills to license medical and hemp
-  production have been debated for years.
+  Illegal, though "Swazi Gold" is a major smallholder cash crop. A 1922 Act and the 1929 Pharmacy
+  Act both apply; the Pharmacy Act allows up to fifteen years for possession. Bills to license
+  medical and hemp production have been debated for years but not enacted.
+words:
+  - word: insangu
+    lang: siSwati
+    meaning: cannabis
+    sources:
+      - ohda
 scores:
   possession: 1
   cultivation: 1
@@ -18,122 +25,268 @@ segments:
   possession:
     text: >-
       Possession of cannabis (insangu, or dagga) is an offence under the colonial-era Opium and
-      Habit-Forming Drugs Act of 1922, punishable by a fine or up to five years in prison. Small
-      amounts usually end in a fine.
+      Habit-Forming Drugs Act 1922, punishable by a fine of up to E2,000 or five years, or both.[@ohda]
+      The Pharmacy Act 1929 also lists cannabis as a poison: unlawful possession carries E15,000 or
+      fifteen years on a first conviction, and E20,000 or twenty years subsequently.[@pharmacy]
+      Modern possession and transport cases are often charged under the Pharmacy Act, so the lower
+      1922 maximum is not a reliable ceiling.[@pharmacy]
     sources:
-      - law
+      - ohda
+      - pharmacy
+    currency: SZL
+    penalties:
+      - label: Possession under the 1922 Act
+        treatment: criminal
+        term: Possession
+        prison: 5 years
+        fine: 2000
+      - label: Possession under the Pharmacy Act, first offence
+        treatment: criminal
+        term: Possession
+        prison: 15 years
+        fine: 15000
+      - label: Possession under the Pharmacy Act, subsequent offence
+        treatment: criminal
+        term: Possession
+        prison: 20 years
+        fine: 20000
   cultivation:
     text: >-
-      Cultivation is illegal, yet 'Swazi Gold' is a major cash crop for smallholders in the northern
-      hills, and Eswatini is among the world's largest illicit producers per head. Police
-      periodically burn fields.
+      Cultivation without authorisation is an offence under the 1922 Act, with up to E2,000 or five
+      years.[@ohda] The Act allows ministerial licences only for reasonable medical, surgical, dental
+      or veterinary demand.[@ohda] A "manufacture" charge under the Pharmacy Act could reach E15,000
+      or fifteen years, though the reported large cultivation cases have been sentenced under the
+      1922 Act.[@pharmacy]
     sources:
-      - ht
+      - ohda
+      - pharmacy
+    currency: SZL
+    penalties:
+      - label: Cultivation under the 1922 Act
+        treatment: criminal
+        term: Cultivation
+        prison: 5 years
+        fine: 2000
+      - label: Manufacture under the Pharmacy Act, first offence
+        treatment: criminal
+        term: Manufacture
+        prison: 15 years
+        fine: 15000
   enforcement:
     text: >-
-      Fines for small amounts, prison possible; enforcement falls mainly on rural growers and
-      couriers.
+      Fines are common for small amounts, with prison possible; enforcement falls mainly on rural
+      growers and couriers.[@phiri] Police destroyed fields and seized hundreds of kilograms in
+      Operation Thunder in 2025, and the Eswatini Cannabis Association accused the government of
+      spraying fields with herbicides without assessment.[@spraying25] No cannabis-only arrest series
+      is published.[@unodc_crimes]
     sources:
-      - law
+      - phiri
+      - spraying25
+      - unodc_crimes
   sharing:
-    text: Dealing carries up to fifteen years.
+    text: >-
+      Sale, supply and giving are offences under the 1922 Act, with up to E2,000 or five years.[@ohda]
+      The Pharmacy Act sets a higher sale penalty: E10,000 or ten years on a first conviction, and
+      E15,000 or fifteen years subsequently.[@pharmacy] There is no statutory quantity threshold in
+      either Act.[@ohda,pharmacy]
     sources:
-      - law
+      - ohda
+      - pharmacy
+    currency: SZL
+    penalties:
+      - label: Sale or supply under the 1922 Act
+        treatment: criminal
+        term: Supply
+        prison: 5 years
+        fine: 2000
+      - label: Sale under the Pharmacy Act, first offence
+        treatment: criminal
+        term: Sale
+        prison: 10 years
+        fine: 10000
+      - label: Sale under the Pharmacy Act, subsequent offence
+        treatment: criminal
+        term: Sale
+        prison: 15 years
+        fine: 15000
   consumption:
-    text: Use is an offence under the same Act.
+    text: >-
+      Use is an offence under section 7 of the 1922 Act, with up to E2,000 or five years.[@ohda] The
+      Pharmacy Act has no separate consumption offence; possession is the usual charge.[@pharmacy]
     sources:
-      - law
+      - ohda
+      - pharmacy
+    currency: SZL
+    penalties:
+      - label: Use
+        treatment: criminal
+        term: Use
+        prison: 5 years
+        fine: 2000
   access:
-    text: No legal source for adult use.
+    text: >-
+      No legal source for adult use, and no patient access programme. A medical and industrial
+      cannabis bill has been before Parliament in various forms since 2020 but has not been
+      enacted.[@ht,bill26]
     sources:
-      - law
+      - ht
+      - bill26
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. The 1922 Act covers possession, cultivation, sale and use
+      with up to E2,000 or five years, while the Pharmacy Act allows up to E15,000 or fifteen years
+      for possession and E10,000 or ten years for a first sale.[@ohda,pharmacy] There are no
+      statutory quantity thresholds; sentencing bands come from the 1986 Phiri judgment.[@phiri]
+    sources:
+      - ohda
+      - pharmacy
+      - phiri
   production:
+    status: medical
+    text: >-
+      The only commercial route reported is a disputed licence for medical and industrial cannabis
+      said to have been granted to US-based Profile Solutions/StemPro in 2019; VOA described it in
+      2024 as the only authorised grower.[@voa24] No patient-access scheme or domestic medical supply
+      followed, and the government denied knowledge of the deal in 2020.[@voa24] A bill to replace
+      both drug Acts with medical and industrial cannabis legislation was still pending in 2026.[@bill26]
+    sources:
+      - voa24
+      - bill26
+  medical:
+    text: >-
+      No medical programme and no patient access. The pending bill would allow medical and industrial
+      cannabis only, not adult use, and would repeal both the 1922 and 1929 Acts.[@bill26] No
+      registered cannabis medicine or domestic pharmacy route was found.[@pharmacy]
+    sources:
+      - bill26
+      - pharmacy
+  hemp:
     status: none
     text: >-
-      None yet. A government bill to license cannabis for medical and research purposes has been
-      before parliament in various forms since 2020; small farmers fear it would hand the trade to
-      large investors.
+      No low-THC or industrial-hemp exemption. "Cannabis", "dagga" and "Indian hemp" cover the whole
+      plant and all extracts, and the Pharmacy Act lists cannabis as a poison.[@ohda,pharmacy]
+      Ministry of Agriculture hemp trials were research-only; commercial cultivation awaited the
+      bill.[@bill26]
     sources:
-      - ht
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
-  medical:
-    text: No medical programme; the pending bill would create one.
-    sources:
-      - ht
+      - ohda
+      - pharmacy
+      - bill26
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction is a criminal record. The 1922 Act allows a court to suspend a driver's licence
+      for up to five years where a vehicle was used to convey drugs.[@ohda] The Pharmacy Act provides
+      for forfeiture of the drug and any vehicle or receptacle used.[@pharmacy]
     sources:
-      - law
+      - ohda
+      - pharmacy
   planting:
     seeds: illegal
     seeds_trade: banned
     clones: illegal
     clones_trade: banned
     text: >-
-      The Opium and Habit-forming Drugs Act 1922 defines cannabis, dagga, intsangu or Indian
-      hemp as "the whole or any portion of the plant" and all its extracts and preparations,
-      under whatever name. Seed and cuttings are portions of the plant, and the Act has no
-      exception for them.
+      The 1922 Act defines cannabis, dagga, intsangu or Indian hemp as "the whole or any portion of
+      the plant" and all its extracts and preparations, under whatever name.[@ohda] Seed and cuttings
+      are portions of the plant, and the Act has no exception for them.[@ohda]
     sources:
       - ohda
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@ohda]
     sources:
-      - ht
-  black_market:
-    text: >-
-      Cannabis is an export crop for smallholders. Farmers in the northern Hhohho region grow
-      the variety known as Swazi Gold and sell it at a premium to dealers and buyers in
-      neighbouring South Africa; in a country of about 1.2 million people with 24%
-      unemployment, the trade has given many households a meaningful income for decades. A
-      bill to replace the colonial-era drug law and license cannabis for medical and research
-      use is opposed by growers and activists, who fear it will hand the trade to companies
-      and undermine theirs.
-    sources:
-      - sem23
+      - ohda
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says punishments
-      for possessing or smuggling narcotic drugs can be severe and that drug offences can lead
-      to prison.
+      There is no legal recreational supply for anyone. The 1922 Act and the Pharmacy Act apply to
+      visitors as to residents, with possession exposed to up to fifteen years under the Pharmacy
+      Act.[@ohda,pharmacy]
     sources:
-      - fcdo
+      - ohda
+      - pharmacy
   driving:
     status: impairment
     text: >-
-      Road Traffic Act section 91(1) prohibits driving on a public road under the influence of a drug
-      having a narcotic effect. The published 2007 text also covers occupying a motor vehicle’s
-      driver’s seat whether its engine is running or not. That drug-influence limb is distinct from
-      the Act’s alcohol concentration offences. Section 122(2) in this edition lists a maximum E5,000
-      fine, four years’ imprisonment or both for the section 91(1) offence, but later amendments and
-      the current tariff were not certified. Current licence-disqualification rules, cannabis sampling
-      and confirmation procedures, refusal sanctions and any numeric THC cutoff remain follow-ups.
+      Road Traffic Act section 91(1) prohibits driving on a public road, or occupying the driver's
+      seat, while under the influence of a drug having a narcotic effect.[@traffic2007] Section
+      122(2) sets a maximum E5,000 fine or four years, or both.[@traffic2007] There is no numeric THC
+      limit or confirmed cannabis testing protocol.[@traffic2007]
     sources:
       - traffic2007
+  culture:
+    text: >-
+      Cannabis is known as insangu or dagga in siSwati, and smoking traditions include the
+      [earth pipe](/culture/traditions/the-earth-pipe/) and the
+      [spit-bubble game](/culture/traditions/the-spit-bubble-game/).[@ohda] "Swazi Gold" from the
+      northern hills is the country's best-known variety, grown by smallholders for decades.[@sem23]
+      Prohibition and eradication have pushed the trade underground.[@spraying25]
+    sources:
+      - ohda
+      - sem23
+      - spraying25
+  black_market:
+    text: >-
+      Cannabis is an export crop for smallholders, especially "Swazi Gold" from the northern Hhohho
+      hills, sold at a premium to dealers and buyers in South Africa.[@sem23] UNODC records 24,708 kg
+      of cannabis herb and resin seized in 2024, against 13,170 kg in 2023; the figure may include
+      plants destroyed in the field.[@unodc_szr] Police reported 2,550 people in formal contact for
+      all drug use or possession in 2024, not cannabis alone.[@unodc_crimes]
+    sources:
+      - sem23
+      - unodc_szr
+      - unodc_crimes
+  arrests:
+    text: >-
+      UNODC records 2,550 people in formal contact with the police for drug use or possession in
+      2024; the figure covers all drugs and is not a cannabis arrest count.[@unodc_crimes] Reported
+      cannabis cases include 8.4 kg sentenced to 24 months in March 2024, a 15-year transport
+      sentence in April 2024, 2,169 kg seized at Nyonyane in September 2025 and 445.6 kg recovered in
+      October 2026.[@unodc_crimes,spraying25] No annual cannabis arrest series is published.[@unodc_crimes]
+    sources:
+      - unodc_crimes
+      - spraying25
 sources:
+  ohda:
+    title: "Eswatini — Opium and Habit-forming Drugs Act 37 of 1922, 1998 consolidation"
+    url: https://eswatinilii.org/akn/sz/act/1922/37/eng@1998-12-01
+    locator: "Sections 2, 4, 7, 8, 11 and 15."
+  pharmacy:
+    title: "Eswatini — Pharmacy Act 38 of 1929, 1998 consolidation"
+    url: https://eswatinilii.org/akn/sz/act/1929/38/eng@1998-12-01
+    locator: "Section 10 and Schedule C; section 12 penalties as amended in 1993."
   traffic2007:
-    title: "EswatiniLII — Road Traffic Act 6 of 2007, published edition"
-    url: https://eswatinilii.org/akn/sz/act/2007/6/eng%402007-09-21
-    locator: "Sections 91(1) and 122(2); indexed primary extracts reviewed, full-file retrieval unavailable; 2007 tariff is qualified."
-  fcdo:
-    title: "GOV.UK (FCDO) — Foreign travel advice: Eswatini, safety and security"
-    url: https://www.gov.uk/foreign-travel-advice/eswatini/safety-and-security
+    title: "Eswatini — Road Traffic Act 6 of 2007"
+    url: https://eswatinilii.org/akn/sz/act/2007/6/eng@2007-09-21
+    locator: "Sections 91(1) and 122(2)."
+  phiri:
+    title: "Eswatini High Court — King v Phiri [1986] SZHC 13 (19 November 1986)"
+    url: https://eswatinilii.org/akn/sz/judgment/szhc/1986/13/eng@1986-11-19
+    locator: "Sentencing bands; 14.85 kg; three years, 18 months suspended."
+  ht:
+    title: "High Times — Eswatini introduces medical cannabis legislation (20 March 2024)"
+    url: https://hightimes.com/news/african-county-of-eswatini-introduces-medical-cannabis-legislation/
+  voa24:
+    title: "VOA — Eswatini moves to revise century-old colonial law to legalize medical cannabis (18 March 2024)"
+    url: https://www.voanews.com/a/eswatini-moves-to-revise-century-old-colonial-law-to-legalize-medical-cannabis/7532375.html
+    locator: "Bill; Profile Solutions as only authorised grower; three-quarters claim."
   sem23:
     title: "Semafor via Africa.com — More and more African countries are legalizing cannabis: Eswatini (May 2023)"
     url: https://africa.com/more-and-more-african-countries-are-partially-or-completely-legalizing-cannabis
-  ohda:
-    title: Opium and Habit-forming Drugs Act, 1922 (Act 37 of 1922), section 15 (Eswatini Legal Information Institute)
-    url: https://eswatinilii.org/akn/sz/act/1922/37/eng@1998-12-01
-  law:
-    title: Opium and Habit-forming Drugs Act, 1922 (EswatiniLII)
-    url: https://eswatinilii.org/akn/sz/act/1922/37
-  ht:
-    title: High Times — Eswatini introduces medical cannabis legislation
-    url: https://hightimes.com/news/african-county-of-eswatini-introduces-medical-cannabis-legislation/
+  bill26:
+    title: "Cannabiz Africa — No place for Swazi Gold or general adult use in Eswatini's new framework (10 August 2026)"
+    url: https://cannabiz-africa.com/no-place-for-swazi-gold-or-general-adult-use-in-eswatinis-new-medical-and-industrial-cannabis-framework/
+    locator: "Minister's 7 August 2026 statement; repeal of both Acts; medical/industrial only."
+  spraying25:
+    title: "Eswatini Daily News — Cannabis association calls on government to halt dagga-field spraying (1 October 2025)"
+    url: https://swazidailynews.com/4353/business/cannabis-association-calls-on-govt-to-halt-dagga-fields-spraying/
+    locator: "ECA letter; herbicide spraying; Operation Thunder."
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents"
+    url: https://data.unodc.org/datareport/drug-seizure
+  unodc_crimes:
+    title: "UNODC World Drug Report 2026 — drug-related crimes annex"
+    url: https://www.unodc.org/documents/data-and-analysis/WDR_2026/Annex/10.1_drug_related_crimes.xlsx
+    locator: "2,550 people in formal contact for drug use/possession in 2024, all drugs."
