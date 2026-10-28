@@ -14,12 +14,39 @@ scores:
   consumption: 1
   access: 1
 segments:
-  possession: >-
-    1 oz or less is a misdemeanour with up to a year and a $1,000 fine. More than 1 oz is a felony
-    with one to ten years.
-  cultivation: A felony with one to ten years.
-  enforcement: Jail is possible; Atlanta, Savannah and other cities fine small possession instead.
-  sharing: Any sale is a felony with a one-year minimum.
+  possession:
+    text: >-
+      1 oz or less is a misdemeanour with up to a year and a $1,000 fine. More than 1 oz is a felony
+      with one to ten years.[@1]
+    currency: USD
+    penalties:
+      - upto: 1 oz
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 1000
+      - over: 1 oz
+        treatment: criminal
+        term: Felony
+        prison_min: 1 year
+        prison: 10 years
+        fine: 5000
+  cultivation:
+    text: >-
+      A felony with one to ten years; grows are charged by weight in the lowest trafficking
+      band.[@1]
+    currency: USD
+    penalties:
+      - label: Growing (charged by weight)
+        treatment: criminal
+        term: Felony
+        prison_min: 1 year
+        prison: 10 years
+        fine: 5000
+  enforcement: >-
+    Jail is possible, but Atlanta cut under-1-oz possession to a $75 fine in 2017 and Savannah
+    to $150 in 2018, with more cities following.[@1,5]
+  sharing: Any sale is a felony with a one-year minimum.[@1]
   consumption: >-
     Recreational use is illegal. Registered patients may use approved medical products.[@2]
     Smoking and medical use in public are prohibited. Vaporization is prohibited for patients
@@ -31,6 +58,7 @@ segments:
     cookies and patient home growing remain prohibited. A cardholder may possess up to
     12,000 mg THC in labelled pharmaceutical packaging, with no more than 1,200 mg in each
     package.[@2,3]
+    [Georgia let patients buy flower for vaporization in 2026.](/history/us-georgia-medical-flower-2026/)
 sources:
   - title: NORML — Georgia laws and penalties
     url: https://norml.org/laws/georgia-penalties/
@@ -43,6 +71,8 @@ sources:
   - title: Georgia Code — Unlawful consumption of medical cannabis
     url: https://law.justia.com/codes/georgia/title-16/chapter-12/article-9/part-3/section-16-12-234/
     locator: "Section 16-12-234, effective 1 July 2026; smoking, vaporization age limit and public consumption"
+  - title: NORML — Georgia local decriminalization
+    url: https://norml.org/laws/local-decriminalization/georgia-local-decriminalization/
 use:
   note: Includes vaping; a model-based estimate.
   share: 19.8

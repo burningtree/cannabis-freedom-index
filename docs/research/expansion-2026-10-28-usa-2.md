@@ -23,6 +23,12 @@ where the state differs, history/culture links, audit + review build per state, 
   missing (noted, not filled); no OH culture subject found.
 - Audit 0/0; review page verified.
 
-## ga — pending
+## ga (Georgia) — committed
+- Penalty tables (possession 2 steps incl. 1yr minimum; cultivation as weight-band felony,
+  verified against NORML), cites on all uncited segments, city fines (Atlanta $75 2017, Savannah
+  $150 2018 via NORML local-decrim page, verified 200), history link (medical flower 2026 entry).
+- No test breakage (no claims test pins GA strings). No grounded GA culture subject — skipped.
+- Audit 0/0; review page verified.
+
 ## nc — pending
 ## mi — pending
