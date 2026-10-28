@@ -1,6 +1,7 @@
 // Loads the YAML data (see /countries and /segments.yaml) and derives everything the
 // pages need: index scores, ranks, averages. Runs once at build time.
 import { getCollection } from "astro:content";
+import { existsSync } from "node:fs";
 import { CHANGE_CATEGORIES, CHANGE_TAGS, SEGMENT_IDS, STATUS_SECTIONS } from "./segment-ids.js";
 import { sourceTuple } from "./sources.js";
 import { stripCites } from "./cite.js";
@@ -149,6 +150,11 @@ const everyPlace = (await getCollection("countries"))
         }),
         context: CONTEXT.map(([key, name, help]) => (data.context[key] ? { key, name, help, ...(key === "spotlights" ? spotlightsOf(data.context.spotlights, cited) : cited(data.context[key])), ...(key === "planting" && plantingOf(data.context[key])), ...(STATUS_SECTIONS[key] && { kind: key, status: data.context[key].status }) } : null)), // null: no such section
         sources: Object.values(data.sources).map(pair),
+        // the words for cannabis said there, each with its sources; an `atlas` slug must be an entry
+        words: (data.words ?? []).map((w) => {
+          if (w.atlas && !existsSync(`culture/language/${w.atlas}.md`)) throw new Error(`countries/${slug}.yaml: the word "${w.word}" links to culture/language/${w.atlas}.md, which does not exist`);
+          return { ...w, src: w.sources.map((key) => pair(data.sources[key])) };
+        }),
       },
       planting: data.context.planting ? plantingOf(data.context.planting) : null,
       // one status per section in STATUS_SECTIONS (clubs, driving, visitors, hemp, production, research), null until researched

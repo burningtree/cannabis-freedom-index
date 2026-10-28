@@ -9,7 +9,7 @@ const H = level;
 {refs.list.length > 0 && (
   <section class="refs-block">
     <H class="d-h">{title}</H>
-    <ol class="srcs refs">
+    <ol class="srcs refs" data-archive={archive || undefined}>
       {refs.list.map((r) => <SourceCitation source={r.source} archive={archive} id={r.id} n={r.n} />)}
     </ol>
   </section>

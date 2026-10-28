@@ -123,6 +123,16 @@ const countries = defineCollection({
       context_not_applicable: z.object(Object.fromEntries(CONTEXT_RESEARCH_IDS.map(id => [id,
         z.object({ text: z.string().refine(hasContextExplanation, { message: "explain why this category does not apply" }), sources: z.array(z.string()).min(1) }).strict().optional(),
       ]))).strict().optional(),
+      // The words people in the country use for cannabis, as they write them, best known first. Shown
+      // in the profile's opening; `atlas` links one to its entry in culture/language/<atlas>.md.
+      words: z.array(z.object({
+        word: z.string().min(1), // as written in its own script: "tráva"
+        lang: z.string().min(1), // "Czech", "Canadian French"
+        say: z.string().min(1).optional(), // a pronunciation or romanisation: "[traːva]"
+        meaning: z.string().min(1).optional(), // what it says, or where it is used: "grass; slang"
+        atlas: z.string().regex(/^[a-z0-9-]+$/).optional(),
+        sources: z.array(z.string()).min(1),
+      }).strict()).min(1).optional(),
       sources: z.record(z.string(), source),
       subunits: z
         .object({
@@ -141,6 +151,9 @@ const countries = defineCollection({
         ctx.addIssue({ code: "custom", message: 'a country marked "recreational: death" needs a context.death_penalty section' });
       }
       const blocks = { ...data.segments, ...data.context } as Record<string, unknown>;
+      for (const w of data.words ?? []) {
+        for (const key of w.sources) if (!(key in data.sources)) ctx.addIssue({ code: "custom", message: `the word "${w.word}" cites unknown source "${key}"` });
+      }
       for (const [name, block] of Object.entries(data.context_not_applicable ?? {})) {
         if (data.context[name]) ctx.addIssue({ code: "custom", message: `"${name}" has context content and a not-applicable explanation; choose one` });
         for (const key of block.sources) {
@@ -356,7 +369,7 @@ const datasets = defineCollection({
       id: z.string().regex(/^[a-z0-9_]+$/),
       // one CSV, or one per edition of a dataset published as a new file each time
       file: z.union([csvFile, z.array(z.object({ file: csvFile, edition: z.number().int() }).strict()).min(1)]),
-      rail: z.boolean().default(false), // also shown in the profile's side column
+      rail: z.boolean().default(false), // also shown in the profile's opening, "Cannabis in …"
       // how it reads in the profile's Datasets section: {field} templates, see datasets.yaml
       // optional for a worldwide dataset (no `country`), which no profile shows
       profile: z.object({ headline: z.string().min(1), details: z.string().optional(), years: z.array(z.number().int()).optional(), each: z.string().optional() }).strict().optional(),

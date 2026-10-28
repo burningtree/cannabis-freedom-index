@@ -1,32 +1,29 @@
 ---
 // Full write-up for one country. Rendered on its own page, and fetched into the
 // drawer on the home page — so there is a single template for both views.
-import { CONTEXT_ICONS, useAges, SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
+import { CONTEXT_ICONS, SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP, countries, changes, segAvg, segmentPoints, segmentMax, subunitsOf, formatDate } from "../lib/countries.js";
 import { TIERS, tierOf, tierColor, tierIndex } from "../lib/tiers.js";
 import { unitMap } from "../lib/unit-map.js";
 import { short } from "../lib/short.js";
 import CountryChanges from "./CountryChanges.astro";
 import CountryChart from "./CountryChart.astro";
-import PricePanel from "./PricePanel.astro";
-import CountryDatasets from "./CountryDatasets.astro";
+import CountryIntro from "./CountryIntro.astro";
+import { theName } from "../lib/seo.js";
 import CountryDatasetTab from "./CountryDatasetTab.astro";
 import { datasetsOf } from "../lib/datasets.js";
-import { USE_COMPARISON_NOTE } from "../lib/use-labels.js";
 import SourceTip from "./SourceTip.astro";
 import SourceCitation from "./SourceCitation.astro";
 import Cited from "./Cited.astro";
 import { references, citeParts, citedKeys } from "../lib/cite.js";
-import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
 import { TREATMENT, punishmentText, punishmentExtra } from "../lib/penalties.js";
 import { viewByMetric } from "../lib/map-views.js";
 import { Icon } from "astro-icon/components";
 import PenaltyTable from "./PenaltyTable.astro";
 import { answersFor } from "../lib/answers.js";
-import CultureList from "./CultureList.astro";
-import { cultureOf } from "../lib/culture.js";
+import { Image } from "astro:assets";
+import { cultureOf, cultureSection } from "../lib/culture.js";
 import { factsOf } from "../lib/facts.js";
-import { priceHistoryFor } from "../lib/prices.js";
 import FactText from "./FactText.astro";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
@@ -55,6 +52,8 @@ const scored = sub ? [] : history.filter((ch) => ch.score); // the ones that mov
 // reading order. A number shows its source in a card on hover (Base.astro); the list itself sits
 // folded in the Sources section at the end, under a summary.
 const refs = references("src");
+// the words for cannabis in the opening come first in reading order, so they take the first numbers
+const wordRefs = c.details.words.map((w) => w.src.map((x) => refs.cite(x)));
 const partsOf = (block, refs, where) => citeParts(block.cite.text, refs, (k) => block.cite.keys.includes(k) && block.cite.of(k), block.cite.keys, `countries/${c.slug}.yaml: ${where}`);
 const segParts = d ? d.segments.map((seg, i) => seg && partsOf(seg, refs, SEGMENTS[i].id)) : [];
 const unitParts = sub ? sub.segCite.map((text, i) => citeParts(text, refs,
@@ -74,12 +73,8 @@ const onMap = (help) => `${help} · See the world map`;
 // the recreational and medical status chips lead to their own context sections, where those exist
 const ctxHas = (key) => Boolean(ctxList?.some((x) => x?.key === key));
 const INCB = ["International Narcotics Control Board — Travellers carrying medicines containing controlled substances", "https://www.incb.org/incb/en/travellers/index.html", null, "https://www.incb.org/incb/en/travellers/index.html"];
-// 48,000,000 → "48 million", 770,000 → "770,000"
-const people = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)} million` : n.toLocaleString("en-GB"));
 const use = sub ? null : c.use;
 const unitUse = sub?.use ?? null; // a state's or province's own survey figure
-// a disputed territory with no survey takes the figure of the country it is part of
-const useFrom = use?.estimate_from ? countries.find((x) => x.id === use.estimate_from.toUpperCase()) : null;
 // Crossing a border with cannabis. This is general guidance, the same rule almost everywhere,
 // worded for the country's status; it is not country-specific research.
 const SCHENGEN = new Set("AT BE BG HR CZ DK EE FI FR DE GR HU IS IT LV LI LT LU MT NL NO PL PT RO SK SI ES SE CH".split(" "));
@@ -101,23 +96,25 @@ const method = (segId) => `${base}#${segId ? `method-${segId}` : "methodology"}`
 const datasetCount = Object.keys(datasetsOf(c.slug)).length;
 // words and traditions of the cultural atlas that belong to this country; a state shows its country's
 const culture = cultureOf(c);
+const CULTURE_CARDS = 8;
 const facts = sub ? [] : factsOf(c);
-// The figures at a glance: users, how people judge it, how free the country is in general, prices.
-const glance = Boolean(use || unitUse || (!sub && (c.datasets.pew_marijuana || c.datasets.hfi)) || (SHOW_PRICES && !sub && priceHistoryFor(c.id).length));
+// "Cannabis in …": the people before the law, who use it and what they think (CountryIntro.astro)
+const glance = Boolean(use || unitUse);
 // The whole profile is one page; a sticky row of links under the masthead jumps to each part and
 // marks the one in view: [id, label, count]. The ids are the old tab names, so links like #history
 // still land.
 const plural = group ? group.plural.split(" ")[0] : "";
 const sections = [
-  glance && ["overview", "At a glance"],
+  glance && ["overview", "Overview"],
   group && !sub && ["units", plural[0].toUpperCase() + plural.slice(1), group.units.length],
   ["score", group && !sub ? "National estimate" : "Score"],
   ctxList && ["context", "Context", ctxList.filter(Boolean).length + (travel ? 1 : 0)],
-  history.length > 0 && ["history", "History", history.length],
-  group && sub && ["units", `Other ${plural}`, group.units.length - 1],
-  datasetCount > 0 && ["datasets", "Datasets", datasetCount],
   culture.length > 0 && ["culture", "Culture", culture.length],
   facts.length > 0 && ["did-you-know", "Did you know", facts.length],
+  datasetCount > 0 && ["datasets", "Datasets", datasetCount],
+  // the history can run to hundreds of entries, so it comes after the shorter parts
+  history.length > 0 && ["history", "History", history.length],
+  group && sub && ["units", `Other ${plural}`, group.units.length - 1],
   refs.list.length > 0 && ["sources", "Sources", refs.list.length],
 ].filter(Boolean);
 
@@ -223,54 +220,9 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
   )}
 
   {glance && (
-    <section class="c-sec c-glance" id="overview">
-      <h2 class="d-h">At a glance <span>not part of the score{datasetCount > 0 && <> · <a href="#datasets">all {datasetCount} datasets ↓</a></>}</span></h2>
-      <div class="glance-grid">
-        {use && (
-          <dl class="c-use">
-            {use.users != null && (
-              <div>
-                <dt>Cannabis users</dt>
-                <dd>{use.estimate || use.users_approximate ? "about " : ""}{people(use.users)}</dd>
-              </div>
-            )}
-            <div>
-              <dt>Past-year share</dt>
-              <dd>{use.estimate ? "about " : ""}{use.prevalence}%</dd>
-            </div>
-            <p>{use.estimate ? "This site’s estimate" : `UNODC · survey ${use.period ?? use.year}`}</p>
-            <SourceTip><span>Past-year cannabis use among people aged {useAges(use)}. </span>{useFrom
-              ? `This site's figure: there is no survey of ${c.name} alone, so ${useFrom.name}'s rate from its ${useFrom.use.period ?? useFrom.use.year} survey is applied to an estimate of the people aged 15–64 here.`
-              : use.estimate
-              ? `This site's figure: there is no national survey, so the median rate of surveyed countries in ${c.region} is applied to people aged 15–64.`
-              : `People who used cannabis in the past year, from a ${use.period ?? use.year} survey${use.users != null ? `, applied to today's population aged ${useAges({ ages: use.population_ages || use.ages })}` : ""}${use.users_approximate ? ". The population is approximate: the survey ages cut through an age group, or were not recorded and ages 15–64 are used" : ""}${use.source === "earlier" ? ". An earlier figure: UNODC's 2026 table has none for this country" : ""}.`}<br />{USE_COMPARISON_NOTE}<br />{use.source === "wdr2026"
-              ? <><a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>, annex table 1.2</>
-              : use.source === "earlier"
-                ? <>An earlier UNODC figure, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a></>
-                : useFrom
-                ? <>{useFrom.name}'s figure from the <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>; the population aged 15–64 is this place's total times {useFrom.name}'s share of those ages</>
-                : <>A median computed on this site from surveyed countries in {c.region}, using <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a> figures</>}{use.users != null && <>. Population from the <a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer">World Bank</a>, aged {useAges({ ages: use.population_ages || use.ages })}</>}. <a href={`${base}sources/#dataset-cannabis_use`}>The whole dataset →</a></SourceTip>
-          </dl>
-        )}
-        {unitUse && (
-          <dl class="c-use">
-            {unitUse.users && (
-              <div>
-                <dt>Cannabis users</dt>
-                <dd>{people(unitUse.users)}</dd>
-              </div>
-            )}
-            <div>
-              <dt>Share aged {unitUse.ages}</dt>
-              <dd>{unitUse.share}%</dd>
-            </div>
-            <p>People who used cannabis in the past year, {unitUse.year}.{unitUse.note && ` ${unitUse.note}`} The survey's own age band, so not directly comparable with the national figures.</p>
-            <SourceTip>{unitUse.source[1] ? <a href={unitUse.source[1]} target="_blank" rel="noopener noreferrer">{unitUse.source[0]}</a> : unitUse.source[0]}</SourceTip>
-          </dl>
-        )}
-        {!sub && <CountryDatasets c={c} />}
-        {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
-      </div>
+    <section class="c-sec c-intro" id="overview">
+      <h2 class="d-h">Cannabis in {theName(sub ? sub.name : c.name)} <span>not part of the score{datasetCount > 0 && <> · <a href="#datasets">all {datasetCount} datasets ↓</a></>}</span></h2>
+      <CountryIntro c={c} sub={sub} wordRefs={wordRefs} />
     </section>
   )}
 
@@ -346,13 +298,13 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
               {SEGMENTS.map((s, i) => { const [cx, cy] = radarPt(i, v.s[i]); return <circle class="c-radar-dot" data-seg-dot={s.id} cx={cx} cy={cy} r="1.6" style={`--c:${tierColor(v.s[i] * 10)}`} />; })}
             </svg>
             {SEGMENTS.map((s, i) => { const [lx, ly] = radarPt(i, 11.5); return (
-              <a class={`c-radar-label side-${radarSide(i)}`} href={`#seg-${s.id}`} data-seg-link={s.id} style={`left:${lx.toFixed(1)}%;top:${ly.toFixed(1)}%`}>{s.name} <b>{v.s[i]}</b></a>
+              <a class={`c-radar-label side-${radarSide(i)}`} href={`#seg-${s.id}`} data-seg-link={s.id} style={`left:${lx.toFixed(1)}%;top:${ly.toFixed(1)}%`}>{s.name} <b class="own">{v.s[i]}</b><b class="avg">{segAvg[i].toFixed(1)}</b></a>
             ); })}
           </div>
           <figcaption class="c-radar-key">
             <span><i class="sw-shape" style={`--c:${tierColor(v.raw)}`}></i>{sub ? sub.name : c.name}</span>
             {sub && <span><i class="sw-nat"></i>{c.name}</span>}
-            <span><i class="sw-avg"></i>World average</span>
+            <span class="key-avg" tabindex="0" title="Show the world average alone"><i class="sw-avg"></i>World average</span>
           </figcaption>
         </figure>
         {scored.length > 0 && <CountryChart history={scored} context={history.filter((ch) => !ch.score)} />}
@@ -436,6 +388,57 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
     </section>
   )}
 
+  {culture.length > 0 && (
+    <section class="c-sec c-atlas" id="culture">
+      <h2 class="d-h">Culture <span><a href={`${base}culture/`}>the atlas →</a></span></h2>
+      {sub && <p class="d-hint">These belong to the whole country, not to {sub.name} alone.</p>}
+      {/* cards with the entry's picture; past the first eight they wait behind "Show all" */}
+      {[culture.slice(0, CULTURE_CARDS), culture.slice(CULTURE_CARDS)].map((list, g) => list.length > 0 && (() => {
+        const cards = (
+          <ul class="atlas-cards">
+            {list.map((e) => (
+              <li>
+                <a href={`${base}${e.url}`}>
+                  {e.image
+                    ? <Image src={e.image.src} alt="" width={480} height={360} fit="cover" loading="lazy" />
+                    : <span class="atlas-none" aria-hidden="true">{e.title.slice(0, 1)}</span>}
+                  <span class="atlas-body">
+                    <small>{cultureSection(e.section).name}</small>
+                    <b>{e.title}</b>
+                    {e.summary && <span class="atlas-sum">{e.summary}</span>}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        );
+        return g === 0 ? cards : <details class="atlas-more"><summary>Show all {culture.length}</summary>{cards}</details>;
+      })())}
+    </section>
+  )}
+
+  {facts.length > 0 && (
+    <section class="c-sec c-dyk" id="did-you-know">
+      <h2 class="d-h">Did you know? <span><a href={`${base}did-you-know/`}>all cases →</a></span></h2>
+      <ol class="dyk-facts dyk-all">
+        {facts.map((f) => (
+          <li class="dyk-fact">
+            <p class="dyk-kicker">{f.kicker}</p>
+            <p class="dyk-text"><FactText parts={f.parts} here={c.id} /></p>
+            {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  {datasetCount > 0 && (
+    <section class="c-sec" id="datasets">
+      {sub && <p class="d-hint">These figures are for all of {c.name}; no dataset here is broken down by {group.label.toLowerCase()} yet.</p>}
+      <CountryDatasetTab c={c} />
+    </section>
+  )}
+
   {history.length > 0 && (
     <section class="c-sec" id="history">
       <CountryChanges history={history} unitLabel={!sub && group ? group.label : null} showUnit={!sub} scoreLine={!sub}
@@ -497,34 +500,8 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
       </section>
   )}
 
-  {datasetCount > 0 && (
-    <section class="c-sec" id="datasets">
-      {sub && <p class="d-hint">These figures are for all of {c.name}; no dataset here is broken down by {group.label.toLowerCase()} yet.</p>}
-      <CountryDatasetTab c={c} />
-    </section>
-  )}
 
-  {culture.length > 0 && (
-    <section class="c-sec c-atlas" id="culture">
-      <h2 class="d-h">Culture <span><a href={`${base}culture/`}>the atlas →</a></span></h2>
-      <CultureList entries={culture} limit={9} note={sub ? `These belong to the whole country, not to ${sub.name} alone.` : null} />
-    </section>
-  )}
 
-  {facts.length > 0 && (
-    <section class="c-sec c-dyk" id="did-you-know">
-      <h2 class="d-h">Did you know? <span><a href={`${base}did-you-know/`}>all cases →</a></span></h2>
-      <ol class="dyk-facts dyk-all">
-        {facts.map((f) => (
-          <li class="dyk-fact">
-            <p class="dyk-kicker">{f.kicker}</p>
-            <p class="dyk-text"><FactText parts={f.parts} here={c.id} /></p>
-            {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
-          </li>
-        ))}
-      </ol>
-    </section>
-  )}
 
   {refs.list.length > 0 && (
     <section class="c-sec c-sources" id="sources">
@@ -550,13 +527,13 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
       </div>
       <details class="src-all">
         <summary>All {refs.list.length + uncited.length} sources</summary>
-        <ol class="srcs refs">
-          {refs.list.map((r) => <SourceCitation source={r.source} id={r.id} n={r.n} />)}
+        <ol class="srcs refs" data-archive>
+          {refs.list.map((r) => <SourceCitation source={r.source} id={r.id} n={r.n} archive />)}
         </ol>
         {uncited.length > 0 && (
           <>
             <h3>Also consulted</h3>
-            <ul class="srcs">{uncited.map((x) => <SourceCitation source={x} />)}</ul>
+            <ul class="srcs">{uncited.map((x) => <SourceCitation source={x} archive />)}</ul>
           </>
         )}
       </details>
@@ -570,6 +547,7 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
   // sight. Only on the full page: in the home page's drawer the row is hidden.
   const nav = document.querySelector(".country-page .c-nav");
   if (nav) {
+    const row = nav.querySelector("ol");
     const links = [...nav.querySelectorAll("a[data-nav]")];
     const parts = links.map((a) => document.getElementById(a.dataset.nav));
     let current = null, queued = false;
@@ -586,7 +564,7 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
       current?.removeAttribute("aria-current");
       link?.setAttribute("aria-current", "true");
       current = link;
-      if (link) nav.scrollTo({ left: link.offsetLeft - nav.clientWidth / 2 + link.offsetWidth / 2, behavior: "smooth" });
+      if (link) row.scrollTo({ left: link.offsetLeft - row.clientWidth / 2 + link.offsetWidth / 2, behavior: "smooth" });
     };
     addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(mark); } }, { passive: true });
     mark();

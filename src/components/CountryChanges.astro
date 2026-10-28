@@ -1,12 +1,12 @@
 ---
-// A country's recorded changes, newest first, at the end of the country article.
-// The same ledger rows as the History page: date, what happened, and the score before and after.
+// A country's recorded changes, newest first, in the country article: the same years as the History
+// page (HistoryYears.astro), each year large and sticky beside its entries, a busy year by month.
 // Over them, as on the History page but for this country alone: a low strip with its entries per
 // decade and its own score as a line, and filters by kind and tag that work in place, the bars
 // following the filter.
-import ScoreChange from "./ScoreChange.astro";
+import HistoryYears from "./HistoryYears.astro";
 import { Icon } from "astro-icon/components";
-import { changeDate, articles, HISTORY_FROM, dateTime, lastUpdated, CHANGE_CATEGORIES } from "../lib/countries.js";
+import { HISTORY_FROM, dateTime, lastUpdated, CHANGE_CATEGORIES } from "../lib/countries.js";
 
 // `history`: newest first. `unitLabel`: on a federation's page, the name of its parts ("State"), for
 // a filter by state; `showUnit`: label each entry with its state. `scoreLine`: draw the score (false
@@ -54,6 +54,11 @@ const tags = [...tagMap.values()].sort((a, b) => b.n - a.n || a.label.localeComp
 const unitMap = new Map();
 for (const ch of history) if (ch.unit) unitMap.set(ch.unit.id, { ...ch.unit, n: (unitMap.get(ch.unit.id)?.n ?? 0) + 1 });
 const units = unitLabel ? [...unitMap.values()].sort((a, b) => b.n - a.n || a.name.localeCompare(b.name)) : [];
+// the entries by year, newest first, as on the History page; estimated ones, with no real date, last
+const years = [
+  ...[...new Set(dated.map(yearOfEntry))].map((year) => ({ year, items: dated.filter((ch) => yearOfEntry(ch) === year) })),
+  ...(history.some((ch) => ch.estimate) ? [{ label: "Date not known", items: history.filter((ch) => ch.estimate) }] : []),
+];
 ---
 <div class="c-changes ch-hist">
   <h2 class="d-h">History <span>{history.filter((ch) => ch.confidence.key === "checked").length} of {history.length} checked against a source</span></h2>
@@ -128,21 +133,16 @@ const units = unitLabel ? [...unitMap.values()].sort((a, b) => b.n - a.n || a.na
 
   {more && <p class="ch-more">{more}</p>}
 
-  <ol class="c-ledger">
-    {history.map((ch) => (
-      <li data-kind={ch.category} data-unit={ch.unit?.id ?? ""} data-tags={ch.tags.map((t) => t.key).join(" ")} data-decade={ch.estimate ? undefined : decadeOf(ch)} data-scored={ch.score ? "" : undefined}>
-        <a href={`${base}history/${ch.id}/`}>
-          <time datetime={ch.date}>{changeDate(ch)}</time>
-          <div class="he-body">
-            <p class="he-place">{showUnit && ch.unit && <span class="he-unit">{ch.unit.name}</span>} <span class="he-kind"><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
-            <h3>{ch.title}</h3>
-            <p class="he-text">{ch.description}</p>
-          </div>
-          {ch.score ? <ScoreChange score={ch.score} of={scoreLine ? null : `${ch.country?.name ?? "National"}, national`} /> : <span></span>}
-        </a>
-      </li>
-    ))}
-  </ol>
+  {/* the same years as the History page: the year large and sticky beside its entries, a busy year by month */}
+  {years.length > 1 && (
+    <div class="hist-order ch-order" role="group" aria-label="Order of the entries">
+      <button type="button" data-order="newest" aria-pressed="true">Newest first</button>
+      <button type="button" data-order="oldest" aria-pressed="false">Oldest first</button>
+    </div>
+  )}
+  <div class="hist-years ch-years">
+    <HistoryYears years={years} here showUnit={showUnit} scoreOf={scoreLine ? null : `${history[0].country?.name ?? "National"}, national`} yearHref={(y) => `${base}history/?from=${y}&country=${history[0].country?.id ?? ""}`} />
+  </div>
 </div>
 
 <script>
@@ -150,7 +150,7 @@ const units = unitLabel ? [...unitMap.values()].sort((a, b) => b.n - a.n || a.na
   // what the kind or tag filter leaves, so the other decades stay in view to pick from; the chosen
   // decade is marked, and clicking it again shows every decade.
   for (const box of document.querySelectorAll(".ch-hist")) {
-    const rows = [...box.querySelectorAll(".c-ledger > li")];
+    const rows = [...box.querySelectorAll(".ch-years li.he")];
     const buttons = [...box.querySelectorAll(".ch-chips button")];
     const bars = [...box.querySelectorAll(".hy-bars a")];
     let filter = "", decade = null;
@@ -200,6 +200,13 @@ const units = unitLabel ? [...unitMap.values()].sort((a, b) => b.n - a.n || a.na
     }
     function apply() {
       for (const li of rows) li.hidden = !matches(li) || (decade !== null && li.dataset.decade !== decade);
+      // a month or a year with nothing left drops out, its entry in the month index too
+      for (const m of box.querySelectorAll(".ch-years .hm")) {
+        m.hidden = !m.querySelector("li.he:not([hidden])");
+        const link = box.querySelector(`.hist-mnav a[href="#${m.id}"]`);
+        if (link) link.parentElement.hidden = m.hidden;
+      }
+      for (const y of box.querySelectorAll(".ch-years .hist-year")) y.hidden = !y.querySelector("li.he:not([hidden])");
       for (const x of buttons) x.setAttribute("aria-pressed", String(x.dataset.f === filter));
       const per = new Map(), scoredPer = new Map();
       for (const li of rows) {
@@ -229,6 +236,17 @@ const units = unitLabel ? [...unitMap.values()].sort((a, b) => b.n - a.n || a.na
       name();
       showActive();
     }
+    // newest or oldest first: the years turn round, and the months and entries within each; the
+    // entries with no known date stay at the end
+    const yearsBox = box.querySelector(".ch-years");
+    const orderButtons = [...box.querySelectorAll(".ch-order button")];
+    for (const b of orderButtons) b.addEventListener("click", () => {
+      if (b.getAttribute("aria-pressed") === "true") return;
+      for (const x of orderButtons) x.setAttribute("aria-pressed", String(x === b));
+      const dated = [...yearsBox.querySelectorAll(":scope > .hist-year:not(.hist-undated)")];
+      for (const year of dated) for (const ol of year.querySelectorAll("ol")) ol.append(...[...ol.children].reverse());
+      yearsBox.prepend(...dated.reverse());
+    });
     for (const b of buttons) b.addEventListener("click", () => {
       filter = b.dataset.f === filter ? "" : b.dataset.f;
       apply();
@@ -238,7 +256,7 @@ const units = unitLabel ? [...unitMap.values()].sort((a, b) => b.n - a.n || a.na
       if (a.hasAttribute("data-empty")) return;
       decade = a.dataset.decade === decade ? null : a.dataset.decade;
       apply();
-      box.querySelector(".c-ledger").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
+      box.querySelector(".ch-years").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
     });
   }
 </script>

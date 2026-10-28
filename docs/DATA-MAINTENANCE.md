@@ -538,6 +538,26 @@ around them.
 - The plant itself belongs in `genetics`, scientific work in `research`, and one striking story in
   `spotlights`.
 
+### Words for cannabis
+
+`words` (top level, beside `context`) lists what people in the country actually call cannabis,
+shown as cards in the profile's opening, "Cannabis in …". Best known first; four to eight is plenty.
+
+```yaml
+words:
+  - { word: tráva, lang: Czech, say: "[traːva]", meaning: "'grass'; slang", atlas: grass, sources: [wikt_trava] }
+```
+
+- `word` as people write it, in its own script; `lang` the language or variety ("Canadian
+  French"); `say` a pronunciation or romanisation, where the source gives one; `meaning` what the
+  word says and its register (slang, the law's word), in a few words.
+- `atlas` links the word to its Culture/Language entry (`culture/language/<slug>.md`), when there
+  is one for the same word or its direct translation; the build fails if the entry does not exist.
+- Only words used in the country. An atlas entry that lists the country is not a reason to add its
+  word here: 420 is American slang, not a Canadian word for the plant.
+- Each word needs a source: a dictionary of the language (Wiktionary is fine for slang), a law
+  for the official term, or a study of drug slang.
+
 ### Research
 
 `research` is about science, not policy monitoring: universities and institutes, notable studies
@@ -817,8 +837,8 @@ group) and are never part of the score.
   as downloaded. Both sites block scripted downloads, so it has to be saved from a browser.
 
 To add a dataset: put its CSV in `/datasets` and add a definition to `datasets.yaml`; the map
-view follows from that. The profile block is written for each dataset in
-`src/components/CountryDatasets.astro`.
+view follows from that. The profile's opening ("Cannabis in …") is written in `src/components/CountryIntro.astro`;
+every dataset also gets a card in the Datasets section.
 
 ## Quick answers
 

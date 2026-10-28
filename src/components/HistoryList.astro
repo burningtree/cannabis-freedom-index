@@ -179,25 +179,7 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
     document.getElementById(toggle.getAttribute("aria-controls")).hidden = !open;
   });
 
-  // In a year divided into months, the month index beside it marks the month being read: the last
-  // one whose start has passed the top of the screen.
-  let spying = false;
-  addEventListener("scroll", () => {
-    if (spying) return;
-    spying = true;
-    requestAnimationFrame(() => {
-      spying = false;
-      for (const year of box.querySelectorAll(".hist-year")) {
-        const nav = year.querySelector(".hist-mnav");
-        if (!nav) continue;
-        const r = year.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > innerHeight) continue;
-        const months = [...year.querySelectorAll(".hm")].filter((m) => m.offsetParent);
-        const current = months.filter((m) => m.getBoundingClientRect().top <= 160).at(-1) ?? months[0];
-        for (const a of nav.querySelectorAll("a")) a.toggleAttribute("aria-current", a.hash === `#${current?.id}`);
-      }
-    });
-  }, { passive: true });
+  // (the month index beside a year marks the month being read: the script in HistoryYears.astro)
   const params = new URLSearchParams(location.search);
   const remember = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
   const recall = (key) => { try { return localStorage.getItem(key); } catch { return null; } };

@@ -1,15 +1,21 @@
 ---
 // Years of the History ledger, newest first: the year set large, its entries ruled beside it, a
 // busy year divided into months, listed under the year as a sticky index that marks the month in view.
-// Used by the decade and kind pages, and by the year fragments that the continuous list at
-// /history/ loads as the reader scrolls (src/pages/fragments/history/[year].astro).
+// Used by the decade and kind pages, by the year fragments that the continuous list at /history/
+// loads as the reader scrolls (src/pages/fragments/history/[year].astro), and by a country profile
+// (CountryChanges.astro) for its own history.
 import ScoreChange from "./ScoreChange.astro";
 import { Icon } from "astro-icon/components";
-import { articles, formatDate } from "../lib/countries.js";
+import { articles, formatDate, changeDate, HISTORY_FROM } from "../lib/countries.js";
 
-const { years } = Astro.props; // [{ year, items }]
+// `years`: [{ year, items }], or { label, items } for a group with no year (estimated entries).
+// On a country's profile: `here` leaves out the flag and name every entry would repeat; `showUnit`
+// names the state of an entry about one; `scoreOf` labels the score change ("Texas, national");
+// `yearHref` is where a year's heading leads.
+const { years, here = false, showUnit = false, scoreOf = null, yearHref = null } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const scoredIn = (items) => items.filter((ch) => ch.score).length;
+const decadeOf = (ch) => (ch.estimate ? undefined : +ch.date.slice(0, 4) < HISTORY_FROM ? 0 : Math.floor(+ch.date.slice(0, 4) / 10) * 10);
 const count = (n, one, many) => (n === 1 ? `1 ${one}` : `${n} ${many}`);
 // A busy year is split into months: from MONTHS_FROM entries, when they fall in more than one month.
 // Entries dated only by the year form a group of their own, "Month not known".
@@ -27,26 +33,28 @@ const monthsOf = (year, items) => {
   return items.length >= MONTHS_FROM && list.length > 1 ? list : null;
 };
 ---
-{years.map(({ year, items }) => {
-  const months = monthsOf(year, items);
+{years.map(({ year, label, items }) => {
+  const key = year ?? "x";
+  const months = year ? monthsOf(year, items) : null;
   const monthId = (m) => `m${year}-${m.key || "x"}`;
+  // the filters of a country's history work on these: kind, state, tags and decade (CountryChanges.astro)
   const entries = (list) => list.map((ch) => (
-    <li class="he" data-scored={ch.score ? "" : undefined} data-c={ch.country?.id}>
+    <li class="he" data-scored={ch.score ? "" : undefined} data-c={ch.country?.id} data-kind={ch.category} data-unit={ch.unit?.id ?? ""} data-tags={ch.tags.map((t) => t.key).join(" ")} data-decade={decadeOf(ch)}>
       <a href={`${base}history/${ch.id}/`}>
-        <time datetime={ch.date}>{ch.date.length === 4 ? "" : formatDate(ch.date).replace(` ${year}`, "")}</time>
+        <time datetime={ch.estimate ? undefined : ch.date}>{ch.estimate ? changeDate(ch) : ch.date.length === 4 ? "" : formatDate(ch.date).replace(` ${year}`, "")}</time>
         <div class="he-body">
-          <p class="he-place">{ch.place.flag} {ch.place.name}{ch.unit && ` · ${ch.unit.name}`} <span class="he-kind"><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
+          <p class="he-place">{here ? (showUnit && ch.unit && <span class="he-unit">{ch.unit.name}</span>) : <>{ch.place.flag} {ch.place.name}{ch.unit && ` · ${ch.unit.name}`}</>} <span class="he-kind"><Icon name={ch.kind.icon} class="ico" aria-hidden="true" /> {ch.kind.label}</span> <span class={`conf-mark c-${ch.confidence.key}`} title={`${ch.confidence.label}: ${ch.confidence.help}`}>{ch.confidence.mark}</span> {articles.has(ch.id) && <span class="he-article">Article</span>}</p>
           <h3>{ch.title}</h3>
           <p class="he-text">{ch.description}</p>
         </div>
-        {ch.score ? <ScoreChange score={ch.score} /> : <span></span>}
+        {ch.score ? <ScoreChange score={ch.score} of={scoreOf} /> : <span></span>}
       </a>
     </li>
   ));
   return (
-    <section class="hist-year" id={`y${year}`} data-year={year} aria-labelledby={`yh${year}`} data-scored={scoredIn(items) ? "" : undefined}>
+    <section class:list={["hist-year", { "hist-undated": !year }]} id={`y${key}`} data-year={year} aria-labelledby={`yh${key}`} data-scored={scoredIn(items) ? "" : undefined}>
       <div class="hist-side">
-        <h2 id={`yh${year}`}><a href={`${base}history/?from=${year}`} title={`Link to ${year}`}>{year}</a><small class="n-all">{count(items.length, "entry", "entries")}</small><small class="n-scored">{count(scoredIn(items), "score change", "score changes")}</small></h2>
+        <h2 id={`yh${key}`}>{year ? <a href={yearHref ? yearHref(year) : `${base}history/?from=${year}`} title={`Link to ${year}`}>{year}</a> : label}<small class="n-all">{count(items.length, "entry", "entries")}</small><small class="n-scored">{count(scoredIn(items), "score change", "score changes")}</small></h2>
         {months && (
           <ol class="hist-mnav" aria-label={`Months of ${year}`}>
             {months.map((m) => (
@@ -63,3 +71,25 @@ const monthsOf = (year, items) => {
     </section>
   );
 })}
+
+<script>
+  // In a year divided into months, the month index beside it marks the month being read: the last
+  // one whose start has passed the top of the screen (below the sticky bars, on a country profile).
+  let spying = false;
+  addEventListener("scroll", () => {
+    if (spying) return;
+    spying = true;
+    requestAnimationFrame(() => {
+      spying = false;
+      for (const year of document.querySelectorAll(".hist-year")) {
+        const nav = year.querySelector(".hist-mnav");
+        if (!nav) continue;
+        const r = year.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) continue;
+        const months = [...year.querySelectorAll(".hm")].filter((m) => m.offsetParent);
+        const current = months.filter((m) => m.getBoundingClientRect().top <= 200).at(-1) ?? months[0];
+        for (const a of nav.querySelectorAll("a")) a.toggleAttribute("aria-current", a.hash === `#${current?.id}`);
+      }
+    });
+  }, { passive: true });
+</script>

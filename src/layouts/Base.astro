@@ -463,11 +463,15 @@ const schemas = jsonld ? [jsonld].flat() : [];
           tip.addEventListener("pointerleave", function () { hideSoon(); });
         }
         current = a;
-        var link = li.querySelector("a[href]:not(.src-archived)"), cite = li.querySelector("cite"), meta = li.querySelector(".src-meta");
+        var link = li.querySelector("a[href]:not(.src-archived)"), cite = li.querySelector("cite"), meta = li.querySelector(".src-meta"), saved = li.querySelector("a.src-archived");
         var host = ""; try { host = link ? new URL(link.href).hostname.replace(/^www\./, "") : ""; } catch (err) {}
+        // the title, the full address, the details, and whether the Internet Archive keeps a copy
         tip.innerHTML = '<p class="hc-eyebrow">Source ' + esc(li.value || "") + (host ? " · " + esc(host) : link ? "" : " · print") + "</p>"
-          + (link ? '<a class="hc-title hc-src" href="' + esc(link.href) + '" target="_blank" rel="noopener noreferrer">' + esc(link.textContent) + " ↗</a>" : '<b class="hc-title hc-src">' + esc((cite || li).textContent) + "</b>")
-          + (meta ? '<p class="hc-text">' + esc(meta.textContent) + "</p>" : "");
+          + (link ? '<a class="hc-src" href="' + esc(link.href) + '" target="_blank" rel="noopener noreferrer">' + esc(link.textContent) + "</a>" : '<b class="hc-src">' + esc((cite || li).textContent) + "</b>")
+          + (link ? '<a class="hc-url" href="' + esc(link.href) + '" target="_blank" rel="noopener noreferrer">' + esc(link.href) + "</a>" : "")
+          + (meta ? '<p class="hc-text">' + esc(meta.textContent) + "</p>" : "")
+          + (saved ? '<p class="hc-arch on"><a href="' + esc(saved.href) + '" target="_blank" rel="noopener noreferrer">Archived copy ↗</a> in the Internet Archive</p>'
+            : link && li.closest("[data-archive]") ? '<p class="hc-arch">No archived copy yet</p>' : "");
         tip.hidden = false;
         var r = a.getBoundingClientRect(), m = 10, w = tip.offsetWidth, h = tip.offsetHeight;
         var below = r.bottom + 6 + h < window.innerHeight || r.top - 6 - h < 0;

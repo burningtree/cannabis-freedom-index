@@ -72,7 +72,7 @@ const groups = GROUPS.map((name) => ({ name, rows: rows.filter((r) => groupOf(r.
               style={stand ? (POLARITY[d.id] ? `--ds:${toneAt(stand.at, POLARITY[d.id])};--lo:var(--t${POLARITY[d.id] > 0 ? 1 : 5});--hi:var(--t${POLARITY[d.id] > 0 ? 5 : 1})` : `--ds:var(--u${stand.step})`) : d.id === "cannabis_use" ? "position:relative" : undefined}>
               <p class="ds-kicker"><span>{d.credit ?? d.publisher}{year != null && ` · ${year}`}</span></p>
               <h4>{d.name}</h4>
-              <p class:list={["ds-figure", { words: d.fields[headField(d)]?.type === "text" }]}>{stand && <i class="ds-swatch" title={stand.label ? `On the map: ${stand.label}` : undefined}></i>}<b>{head[0]}</b>{head[1] && <span>{head[1]}</span>}</p>
+              <p class:list={["ds-figure", { words: d.fields[headField(d)]?.type === "text" }]} title={stand?.label ? `On the map: ${stand.label}` : undefined}><b>{head[0]}</b>{head[1] && <span>{head[1]}</span>}</p>
               {chart && (
                 <figure class:list={["ds-spark", { many: chart.points.length > MANY }]}>
                   <div class="ds-spark-plot">
@@ -89,15 +89,16 @@ const groups = GROUPS.map((name) => ({ name, rows: rows.filter((r) => groupOf(r.
               )}
               {stand && (
                 <div class="ds-stand" title={`Higher than ${stand.below}% of the ${stand.n} countries with a figure`}>
+                  <span class="ds-stand-text">Higher than <b>{stand.below}%</b> of {stand.n} countries</span>
                   <span class="ds-stand-track"><i class="ds-stand-mid"></i><i class="ds-stand-me" style={`left:${stand.at * 100}%`}></i></span>
-                  <span class="ds-stand-text"><span>{TONES[d.id]?.[1] ?? "Lowest"}</span><span>Higher than <b>{stand.below}%</b> of {stand.n} countries</span><span>{TONES[d.id]?.[2] ?? "Highest"}</span></span>
+                  <span class="ds-stand-ends"><span>{TONES[d.id]?.[1] ?? "Lowest"}</span><span>{TONES[d.id]?.[2] ?? "Highest"}</span></span>
                 </div>
               )}
               {details && <p class="ds-details">{details}</p>}
               {note && (d.id === "cannabis_use" ? <SourceTip>{note}</SourceTip> : <p class="ds-details ds-note">{note}</p>)}
               <p class="ds-links">
-                {mapHref(d) && <a href={mapHref(d)}>See the map <span aria-hidden="true">→</span></a>}
-                {CHART_OF[d.id] && <a href={`${base}charts/#${CHART_OF[d.id]}`}>See the chart <span aria-hidden="true">→</span></a>}
+                {mapHref(d) && <a href={mapHref(d)}>Map</a>}
+                {CHART_OF[d.id] && <a href={`${base}charts/#${CHART_OF[d.id]}`}>Chart</a>}
                 <a href={`${base}sources/#dataset-${d.id}`}>About the data</a>
               </p>
             </li>
