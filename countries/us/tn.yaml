@@ -13,16 +13,36 @@ scores:
   consumption: 1
   access: 0
 segments:
-  possession: ½ oz or less is a misdemeanour with up to a year in jail.
+  possession:
+    text: >-
+      ½ oz or less is a misdemeanour with up to a year in jail.[@1]
+    currency: USD
+    penalties:
+      - label: Half an ounce or less
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 250
+        note: First offence; the fine rises to $500 after
   cultivation: >-
     Unauthorised production is a felony. Fewer than ten plants can fall in Class E (1–6 years),
     subject to the separate weight bands; 10–19 plants regardless of weight is Class D (2–12
     years), with up to $50,000. The 20–99 plant band is Class C (3–15 years). These are statutory
     outer ranges; offender classification affects the sentence.[@2,3]
-  enforcement: Jail is possible for a first offence.
-  sharing: Selling ½ oz or more is a felony.
-  consumption: Illegal.
-  access: None. Low-THC oil may be possessed by some patients but there is no in-state source.
+  enforcement: Jail is possible for a first offence.[@1]
+  sharing:
+    text: >-
+      Selling ½ oz or more is a felony.[@1]
+    currency: USD
+    penalties:
+      - label: Sale of half an ounce or more
+        treatment: criminal
+        term: Felony
+        prison_min: 1 year
+        prison: 6 years
+        fine: 5000
+  consumption: Illegal.[@1]
+  access: None. Low-THC oil may be possessed by some patients but there is no in-state source.[@1]
 sources:
   - title: NORML — Tennessee laws and penalties
     url: https://norml.org/laws/tennessee-penalties-2/
