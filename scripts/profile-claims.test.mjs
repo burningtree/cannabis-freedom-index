@@ -932,3 +932,41 @@ test('Jordan CBD permission, Czech serum and Romanian supply penalties stay dist
   assert.equal(row.prison_min, '3 years');
   assert.equal(row.prison, '10 years');
 });
+
+
+test('Iceland hemp growing is a conditional agricultural exception (#274)', () => {
+  const is = country('is');
+  assert.equal(is.context.hemp.status, 'strict');
+  assert.equal(is.context.production.status, 'hemp');
+  assert.match(is.segments.cultivation.text, /Industrial hemp.*lawful growing route/);
+  assert.match(is.context.hemp.text, /0.2% THC/);
+  assert.match(is.context.hemp.text, /EEA.*catalogue/);
+  assert.doesNotMatch(is.context.hemp.text, /bans cannabis cultivation outright|no hemp market|no THC threshold/);
+  assert.doesNotMatch(is.context.production.text, /No licensed production/);
+});
+
+test('Moldova and Bosnia classify their authorised hemp crop separately (#272–273)', () => {
+  for (const [id, status, limit] of [['md', 'standard', '0.3%'], ['ba', 'strict', '0.2%']]) {
+    const c = country(id);
+    assert.equal(c.context.production.status, 'hemp', id);
+    assert.equal(c.context.hemp.status, status, id);
+    assert.ok(c.context.hemp.text.includes(limit), id);
+    assert.equal(c.scores.access, 0, id);
+  }
+});
+
+test('Pakistan production applications are current without implying patient supply (#241)', () => {
+  const pk = country('pk');
+  assert.doesNotMatch(pk.context.medical.text, /still being built/);
+  assert.match(pk.context.medical.text, /Applicants can seek licences/);
+  assert.match(pk.context.medical.text, /Patient supply remains unverified/);
+  assert.equal(pk.scores.access, 0);
+});
+
+test('Armenian scientific exceptions survive the List No. 1 description (#253)', () => {
+  const am = country('am');
+  assert.match(am.context.production.text, /Article 11 permits licensed scientific use/);
+  assert.match(am.context.production.text, /substance-specific production licence/);
+  assert.doesNotMatch(am.context.production.text, /There is no medical or adult-use production route/);
+  assert.match(am.context.medical.text, /dronabinol/);
+});
