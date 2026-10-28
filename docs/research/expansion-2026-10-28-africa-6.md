@@ -23,7 +23,13 @@ atlas-backed first, then the rest. Skipped: South Africa (other agent), Eritrea
 - Words Matekoane (Sesotho) + Dagga (English (Lesotho)), both verified in the 1955 UN survey PDF I fetched and read (also the source for the 1951 penalties); new culture section linking both atlas entries + the 2017 licences history entry (fixed an atlas-summary phrase the cited sources could not support).
 - New `articles/basutoland-penalties-1951.md` (£500/three years, smoker-vs-trafficker practice, both words). Skipped the 2017 licences article (Wikipedia + unread book chapter — below bar; PMC paper is JS-gated).
 - Audit 0/0; full `npm test` 193/0; page + article verified in review HTML.
-## mw — pending
+## mw — committed
+- Word Chamba (Yao, via Duvall; culture already traced it three ways).
+- Per-sentence cites for planting/clubs/driving; `life: possible` on both pre-existing life-maximum rows.
+- Black_market extended with Nov 2025 Nkhatabay 3 t destruction + Jan 2026 Salima 5 t burn (both fetched and read: magistrate order, six-month unclaimed rule, Ndiwate, $150/kg parliament valuation).
+- New `articles/malawi-dangerous-drugs-act-1956.md` (K500,000 + life verified in the trade-portal PDF; fixed an unquoted colon in the title that broke the article-citation test). Skipped the 2015 hemp-campaign article (only Wikipedia covers the campaign itself).
+- Audit 0/0; full `npm test` 193/0; page + article verified in review HTML.
+- Left: 1940s, 1980s decades; 2015 campaign article skipped.
 ## sz — pending
 ## tn — pending
 ## cg — pending
