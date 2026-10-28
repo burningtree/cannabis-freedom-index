@@ -22,3 +22,11 @@ Saudi Arabia validation: `profile-audit sa` zero errors and warnings. The profil
 Iraq validation: `profile-audit iq` zero errors and warnings. The profile now cites Article 23 for the plant ban, uses “more than six tonnes” instead of the unsupported 6,183 kg, treats Article 29 as life/temporary imprisonment rather than death, and adds five Arabic/Kurdish terms. Three entries cover 2024–2026; the 482-word 2004 death-penalty article is in `articles/`.
 
 Myanmar validation: `profile-audit mm` zero errors and warnings. The 1891 entry is now a parliamentary-question debate rather than a ban, the 2025 amendment entry records the three-month rehabilitation and 45–90-hour work changes, the 100 g threshold is attributed to 2018, and the profile adds three Burmese terms. The 490-word 1891 article is in `articles/`; two new entries cover the 1881 Excise Act and the 1893–94 Indian Hemp Drugs Commission.
+
+## Result
+
+All five countries were expanded and committed separately: Israel `59f1a8c7`, Malaysia `45e8ac41`, Saudi Arabia `d9e62276`, Iraq `6e6f9905` and Myanmar `8c96d341`. Each profile passes `profile-audit` with zero errors and warnings and has no missing standard or researched sections, penalty tables or inline citations. Targeted `build-pages.mjs` runs rendered each country and its changed history pages; `npm test` passes.
+
+The batch added 13 new history entries, 21 local cannabis terms and five key articles (Myanmar 1891, Iraq 2004, Saudi Arabia 2025, Malaysia 2023, Israel 1925), and replaced or corrected six existing entries. Main corrections: Myanmar’s 1891 “ban” is a parliamentary question and its 100 g threshold dates from 2018, Iraq’s plant ban is Article 23 and its Article 29 row is not capital, Saudi Arabia’s deportation and statutory-flogging rules are explicit, Malaysia’s review covered 936 cases and its 2018 date is fixed, and Israel’s 15 g line is a presumption rather than a cap.
+
+The main open caveats are Israel’s unverified zero-fine practice for 2026, Malaysia’s unavailable 2025 death-row count, Saudi Arabia’s disputed 2024 execution total, Iraq’s first-reading amendment, and Myanmar’s unexcluded local 1891 order.
