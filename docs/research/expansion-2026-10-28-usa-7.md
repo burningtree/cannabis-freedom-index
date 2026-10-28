@@ -31,4 +31,8 @@ usa-5 covered mo/in/sc/al/ky. This batch: ia, nv, ar, ms, ks.
   match). No MS history entries, no culture subject — noted.
 - Audit 0/0; review page verified (one build attempt hit transient contention, rerun clean).
 
-## ks — pending
+## ks (Kansas) — committed
+- Cultivation table (>4 plants felony 46–83mo/$300k; 50+ longer, NORML-verified), cites on
+  cultivation/sharing/consumption.
+- Possession pinned by test, untouched. No KS history entries, no culture subject — noted.
+- Audit 0/0; review page verified (all figures render).
