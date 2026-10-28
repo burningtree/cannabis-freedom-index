@@ -23,12 +23,14 @@ segments:
       without intent to sell. The basic offence brings a fine of up to 160 monthly calculation
       indices, corrective work, up to 160 hours of community service or arrest of up to 40 days;
       a large amount raises this to 200 indices, 200 hours or 50 days; an especially large amount
-      brings three to seven years in prison.[@cc296] The amounts are set in a government table,
-      which the sources read did not reproduce, so the table below uses the code's bands rather
-      than gram lines.[@cc296] A person who voluntarily hands over drugs acquired for personal
+      brings three to seven years in prison.[@cc296] The government table sets herbal cannabis at
+      0.5–50 g for the small band, 50 g–1 kg for the large band and over 1 kg for the especially
+      large band; hashish is 0.5–5 g, 5–200 g and over 200 g.[@amounts470] Possession below 0.5 g
+      is below the table's small band and is not expressly addressed by the code.[@amounts470] A person who voluntarily hands over drugs acquired for personal
       use, or seeks medical help, is released from criminal liability.[@cc296]
     sources:
       - cc296
+      - amounts470
     currency: KZT
     penalties:
       - label: Small amount, Article 296(2)
@@ -92,9 +94,12 @@ segments:
       sale, and selling them, with five to eight years in prison and confiscation of property;
       six to ten years for a large amount; seven to twelve for a group, a repeat offence, an
       especially large amount or a public place; and fifteen to twenty for a criminal group, an
-      official, or sale in a school or to a minor.[@cc297]
+      official, or sale in a school or to a minor.[@cc297] A separate 2025 offence covers illegal
+      manufacture, processing or production for sale: five to ten years, rising to fifteen to
+      twenty years or life for a criminal group, an official or illegal production.[@cc2971]
     sources:
       - cc297
+      - cc2971
     penalties:
       - label: Acquisition, keeping or transport for sale, or sale
         treatment: criminal
@@ -114,6 +119,12 @@ segments:
         prison_min: 7 years
         prison: 12 years
         note: Property confiscated
+      - label: Manufacture or production for sale (Article 297-1)
+        treatment: criminal
+        term: Production
+        prison_min: 5 years
+        prison: 10 years
+        note: Higher bands reach fifteen to twenty years or life
       - label: Criminal group, official, school or minor
         treatment: criminal
         term: Article 297(4)
@@ -125,10 +136,13 @@ segments:
       Using drugs for non-medical purposes in a public place is an offence under the first part
       of Article 296: a fine of up to 80 monthly calculation indices, corrective work, up to 80
       hours of community service or arrest of up to 20 days.[@cc296] A person who voluntarily seeks
-      medical help is released from liability.[@cc296] Officials have proposed softening the
+      medical help is released from liability.[@cc296] Since January 2025, private or other
+      non-criminal use is an administrative offence under article 440-1: 40 calculation indices or
+      ten days' arrest, doubled on a repeat.[@koap440] Officials have proposed softening the
       treatment of users.[@nt]
     sources:
       - cc296
+      - koap440
       - nt
     currency: KZT
     penalties:
@@ -162,9 +176,13 @@ context:
       No approved cannabis medicine or patient-access programme was found in the sources
       read.[@current279] The narcotics law allows a narrow route for producing narcotic medicines
       under Article 18, but licensed cannabis cultivation is described as scientific study and
-      industrial hemp, not medicine for patients.[@current279] Medical status stays none.
+      industrial hemp, not medicine for patients.[@current279] In 2019 investors proposed a $15m
+      clinic and greenhouse near Kapshagay; the Interior Ministry refused, citing prison terms and
+      the UN conventions, and said it had shut an Almaty research lab in 2017.[@clinic19] Medical
+      status stays none.
     sources:
       - current279
+      - clinic19
   production:
     status: medical
     text: >-
@@ -238,7 +256,8 @@ context:
       The Code of Administrative Offences punishes driving "in a state of alcoholic, narcotic or
       toxic intoxication" with 15 days of administrative arrest and loss of the licence for seven
       years; where harm or damage results, 20 days.[@koap608] A repeat within a year brings 20 days
-      and eight years.[@koap608] The article names a state of intoxication, not a measured level,
+      and eight years; a repeat with harm brings 25 days and nine years.[@koap608] The article names a
+      state of intoxication, not a measured level,
       and the Constitutional Court upheld it in October 2023.[@koap608]
     sources:
       - koap608
@@ -256,9 +275,12 @@ context:
       police recorded 1,607 drug crimes: 799 of sale, 245 of cultivation and 194 of possession.[@inbiz24]
       They seized 21.5 tonnes of drugs, among them about 4.5 tonnes of marijuana and more than 16
       tonnes of cannabis plants, and destroyed over 380 hectares of wild hemp in the Shu district
-      of Zhambyl region.[@inbiz24] The ministry gave no total for arrests.[@inbiz24]
+      of Zhambyl region.[@inbiz24] The ministry gave no national arrest total; in the Turkestan
+      region's Karasora operation police arrested 86 people, and in Zhetysu 135 people aged 17–30
+      were detained, of whom 127 were convicted.[@polisia25]
     sources:
       - inbiz24
+      - polisia25
   culture:
     text: >-
       Wild cannabis grows across the Chu valley in the south, known in Russian as
@@ -277,10 +299,35 @@ context:
       mass.[@hemp797] The [rules revised in April
       2026](/history/kazakhstan-hemp-security-testing-revised-2026/) require approved original or
       elite seed, secured growing sites, seed testing before sowing and THC tests during growth and
-      before harvest. Crops above the ceiling must be destroyed.[@hemp797]
+      before harvest. Crops above the ceiling must be destroyed.[@hemp797] By 2026, 218 varieties
+      from 20 countries had been approved, and HHC was added to the prohibited psychotropic list on
+      24 February 2026, in force 9 March.[@hemp797,hhc26]
     sources:
       - hemp797
+      - hhc26
 sources:
+  amounts470:
+    title: "Kazakhstan — Resolution 470 of 3 July 2019 on drug quantities, as amended in 2026"
+    url: https://old.adilet.zan.kz/rus/docs/P1900000470
+    locator: "Herbal cannabis 0.5–50 g, 50 g–1 kg, over 1 kg; hashish 0.5–5 g, 5–200 g, over 200 g."
+  cc2971:
+    title: "Kazakhstan — Criminal Code, Article 297-1 (manufacture or production for sale)"
+    url: https://kodeksy-kz.com/ka/ugolovnyj_kodeks/297-1.htm
+    locator: "Parts 1–4; life imprisonment in part 4."
+  koap440:
+    title: "Kazakhstan — Administrative Code, Article 440-1 (non-medical use)"
+    url: https://kodeksy-kz.com/ka/ob_administrativnyh_pravonarusheniyah/
+    locator: "40 MCI or 10 days; repeat 80 MCI or 20 days."
+  polisia25:
+    title: "Polisia.kz — 86 arrested in Turkestan's Karasora operation (7 November 2025)"
+    url: https://polisia.kz/ru/pochti-tonna-narkotikov-iz-yata-v-turkestanskoj-oblasti/
+  hhc26:
+    title: "Kazakhstan — HHC scheduling, 24 February 2026"
+    url: https://old.adilet.zan.kz/rus/docs/P1900000470
+    locator: "HHC added to the prohibited psychotropic list; in force 9 March 2026."
+  clinic19:
+    title: "Tengrinews — Kazakhstan proposed legalising cannabis cultivation (2 May 2019)"
+    url: https://tengrinews.kz/kazakhstan_news/kazahstanu-predlojili-uzakonit-vyiraschivanie-marihuanyi-368339/
   cc300:
     title: Kazakhstan — Criminal Code of 3 July 2014, Article 300 (kodeksy-kz.com)
     url: https://kodeksy-kz.com/ka/ugolovnyj_kodeks/300.htm
