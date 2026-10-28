@@ -14,10 +14,28 @@ scores:
   consumption: 4
   access: 6
 segments:
-  possession: >-
-    Possessing up to 2 ounces is not an offence under the possession paragraphs. More than 2
-    ounces, up to 6 ounces, is a level 2 drug misdemeanour. More than 6 ounces is a level 1
-    drug misdemeanour.
+  possession:
+    text: >-
+      Possessing up to 2 ounces is not an offence under the possession paragraphs. More than 2
+      ounces, up to 6 ounces, is a level 2 drug misdemeanour. More than 6 ounces is a level 1
+      drug misdemeanour.[@1,2,6]
+    currency: USD
+    penalties:
+      - upto: 2 oz
+        treatment: legal
+      - over: 2 oz
+        upto: 6 oz
+        treatment: criminal
+        term: Level 2 drug misdemeanor
+        prison_min: 3 months
+        prison: 364 days
+        fine: 1000
+      - over: 6 oz
+        treatment: criminal
+        term: Level 1 drug misdemeanor
+        prison_min: 6 months
+        prison: 18 months
+        fine: 5000
   cultivation: >-
     A person 21 or older may grow up to six plants, no more than three of them flowering, in an
     enclosed and locked space. Two adults can therefore keep twelve at one residence, and a
@@ -26,20 +44,40 @@ segments:
     that personal permission is a separate offence: six plants or fewer is a level 1 drug
     misdemeanour, and more than six, up to thirty, is a level 4 drug felony. A medical patient
     or caregiver with the 24-plant exception, or a local law that expressly allows more plants
-    in an enclosed locked space, sits outside the twelve-plant residential offence.
-  enforcement: Nothing within the limits; open public use is a $100 petty offence.
+    in an enclosed locked space, sits outside the twelve-plant residential offence.[@1,2]
+  enforcement: Nothing within the limits; open public use is a $100 petty offence.[@1,2]
   sharing: >-
     A person 21 or older may give up to 1 ounce, with no payment, to another person 21 or older.
     Giving more than that, up to 2 ounces, with no payment is a drug petty offence and is not
     treated as a sale. A free transfer tied to payment for something else is a level 1 drug
-    misdemeanour.
-  consumption: Private use, plus licensed hospitality venues in some cities.
-  access: Licensed shops since 2014, the first in the country.
+    misdemeanour.[@1]
+  consumption: Private use, plus licensed hospitality venues in some cities.[@3,4]
+  access: >-
+    Licensed shops since 2014, the first in the country.[@2]
+    [The first licensed shops opened in 2014.](/history/us-colorado-first-shops-2014/)
+context:
+  recreational:
+    text: >-
+      Amendment 64 (November 2012) legalised adult use; the first licensed shops opened on
+      1 January 2014.[@2,5]
+      [Colorado and Washington legalised in 2012.](/history/us-colorado-washington-2012/)
+      [The first licensed shops opened in 2014.](/history/us-colorado-first-shops-2014/)
+    sources: [2, 5]
 sources:
   - title: Colorado Revised Statutes § 18-18-406 (2025), Justia reproduction
     url: https://law.justia.com/codes/colorado/title-18/article-18/part-4/section-18-18-406/
   - title: Colorado Legislative Council — Colorado Marijuana Handbook (2018)
     url: https://content.leg.colorado.gov/sites/default/files/2018_colorado_marijuana_handbook_lcs2.pdf
+  - title: "Colorado Revised Statutes § 44-10-609, marijuana hospitality business licence (2024 code, via colorado.public.law)"
+    url: https://colorado.public.law/statutes/crs_44-10-609
+    locator: "Subsection (1)(a) allows consumption under a local ordinance; subsection (2)(a) forbids sale on the premises"
+  - title: "Colorado Revised Statutes § 44-10-610, retail marijuana hospitality and sales business licence (2024 code, via colorado.public.law)"
+    url: https://colorado.public.law/statutes/crs_44-10-610
+    locator: "Subsection (1)(a) authorises sale and consumption on the licensed premises, subject to a local ordinance"
+  - title: Wikipedia — Colorado Amendment 64
+    url: https://en.wikipedia.org/wiki/Colorado_Amendment_64
+  - title: NORML — Colorado laws and penalties
+    url: https://norml.org/laws/colorado-penalties/
 use:
   note: Includes vaping; a model-based estimate.
   share: 29.6
