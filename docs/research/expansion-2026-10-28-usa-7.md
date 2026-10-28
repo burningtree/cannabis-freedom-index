@@ -17,6 +17,11 @@ usa-5 covered mo/in/sc/al/ky. This batch: ia, nv, ar, ms, ks.
 - Sharing/cultivation pinned by scope test, untouched. No culture subject — noted.
 - Audit 0/0; review page verified.
 
-## ar — pending
+## ar (Arkansas) — committed
+- Cultivation table (manufacture ≤14g misd 1yr/$2500; larger grows as intent by weight,
+  NORML-verified), cites on cultivation/enforcement/sharing/consumption/access.
+- Possession pinned by claims test, untouched. No AR history entries, no culture subject.
+- Audit 0/0; review page verified.
+
 ## ms — pending
 ## ks — pending
