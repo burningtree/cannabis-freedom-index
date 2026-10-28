@@ -1,0 +1,15 @@
+# Expansion batch, 28 October 2026 (Americas-3)
+
+Chosen from `country-gaps.cjs --rank 25 --region "North America"` and
+`--region "South America"`, largest populations first, skipping US/CA directory
+profiles (a different job) and the Americas-1/2 countries
+(mx, co, ar, gt, pe, ve, bo, ht, do, cu). Central America five: hn, ni, sv, cr, pa.
+Scope note: stage only own lines in `changes.yaml`.
+
+| Country | Work | State | Commit |
+|---|---|---|---|
+| Honduras | possession/sharing terms, citations+links 15/15, hemp(none) section, audit 0/0, chain clean, article honduras-drug-law-1989; driving+arrests unwritten, decades 1930s/50s/60s/2000s empty, no culture section | done | PENDING |
+| Nicaragua | | | |
+| El Salvador | | | |
+| Costa Rica | | | |
+| Panama | | | |
