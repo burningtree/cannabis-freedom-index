@@ -50,5 +50,10 @@ of these (committed) — verify and build on them, don't duplicate.
 - Lesson: once a segment text cites inline, every segment source must be cited inline — added [@drugs_proclamation] for the commencement date.
 - Audit 0/0; page + all four articles verified in review HTML.
 - Left: cultivation tiers (licence-only), arrests data, remaining 13 article-less entries (eradication wave 1998/2007/2008, medical 2018/2019/2022, etc.).
-## cw — pending
+## cw — committed
+- Products folded into medical (herb/resin vs extracts distinction moved; 2019 + 2023 article links); 1929 shared-ordinance link in recreational lineage; 2024 exemptions-advice link in consequences.
+- New `articles/curacao-medical-cannabis-bill-2019.md` (Chronicle + Advisory Council RA/18-19-LV; third source added for the [@3] 2023 tail) + `articles/curacao-medical-cannabis-opposition-2023.md` (MAN/KEM, Martines/McWilliam, Camelia-Römer) + `articles/curacao-opium-exemptions-advice-2024.md` (Advisory Council RA/11-24-LV + 2024 law).
+- Also cleared 5 pre-existing ladder warnings: terms on all three possession rows, `life: possible` on the statutory-maximum row, trimmed notes.
+- Audit 0/0; page + all three articles verified in review HTML.
+- Left: words (no sourced Papiamentu/Dutch local term found), culture (no atlas entries), cultivation tiers (guidance assesses individually), driving/arrests.
 ## sr — pending
