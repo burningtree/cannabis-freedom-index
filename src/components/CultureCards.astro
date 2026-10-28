@@ -14,8 +14,8 @@ const base = import.meta.env.BASE_URL;
       <a href={`${base}${e.url}`}>
         {e.image
           ? (lead && i === 0
-            ? <Image src={e.image.src} alt={e.image.alt} width={1200} height={760} fit="cover" widths={[600, 900, 1200]} sizes="(max-width: 900px) 100vw, 600px" loading="eager" />
-            : <Image src={e.image.src} alt={e.image.alt} width={600} height={400} fit="cover" widths={[300, 600]} sizes="(max-width: 600px) 100vw, 300px" />)
+            ? <Image src={e.image.src} alt={e.image.alt} width={1200} height={760} fit="cover" position={e.image.position} widths={[600, 900, 1200]} sizes="(max-width: 900px) 100vw, 600px" loading="eager" />
+            : <Image src={e.image.src} alt={e.image.alt} width={600} height={400} fit="cover" position={e.image.position} widths={[300, 600]} sizes="(max-width: 600px) 100vw, 300px" />)
           : <span class="cu-word" aria-hidden="true">{e.title}</span>}
         <p class="ev-label">{lead && i === 0 && e.featured && <span class="cu-pick">Start here · </span>}{label ? cultureSection(e.section).name : (e.origin ?? e.countries[0].name)}</p>
         <h3>{e.title}{e.spelling && e.spelling[0].text.toLowerCase() !== e.title.toLowerCase() && <span class="cu-native"> {e.spelling[0].text}</span>}</h3>
