@@ -6,12 +6,33 @@ import Base from "../../layouts/Base.astro";
 import RegionMenu from "../../components/RegionMenu.astro";
 import { regions } from "../../lib/regions.js";
 import { TIERS, tierColor, tierOf } from "../../lib/tiers.js";
-import { worldAvg } from "../../lib/countries.js";
+import { worldAvg, averageHistory, dateTime, lastUpdated } from "../../lib/countries.js";
 
 const base = import.meta.env.BASE_URL;
 const fmt = (v) => v.toFixed(1);
 // how a region's countries divide by score band, strictest first
 const bands = (r) => [...TIERS].reverse().map((t) => ({ t, n: r.members.filter((c) => tierOf(c.raw) === t).length })).filter((x) => x.n);
+
+// One chart, every region's average score at the end of each year since 1900, one line each,
+// with the world average dashed. Grey lines, named at their right end; the one under the pointer
+// is drawn in full (script below).
+const Y0 = 1900, Y1 = +lastUpdated.slice(0, 4);
+const yearEnd = (history, year) => { const t = Date.UTC(year, 11, 31, 23, 59); let v = history[0].before; for (const p of history) { if (dateTime(p.date) > t) break; v = p.after; } return v; };
+const years = Array.from({ length: Y1 - Y0 + 1 }, (_, i) => Y0 + i);
+const lines = [
+  ...regions.map((r) => ({ slug: r.slug, name: r.short, values: years.map((y) => yearEnd(r.series.history, y)) })),
+  { slug: "world", name: "World", values: years.map((y) => yearEnd(averageHistory, y)), world: true },
+];
+const CW = 960, CH = 360, PL = 34, PR = 120, PT = 12, PB = 28;
+const top = Math.ceil(Math.max(...lines.flatMap((l) => l.values)) / 10) * 10;
+const cx = (y) => PL + ((y - Y0) / (Y1 - Y0)) * (CW - PL - PR);
+const cy = (v) => PT + (1 - v / top) * (CH - PT - PB);
+for (const l of lines) l.d = l.values.map((v, i) => `${i ? "L" : "M"}${cx(years[i]).toFixed(1)},${cy(v).toFixed(1)}`).join("");
+// the names at the right end, pushed apart where lines end close together
+const labels = [...lines].sort((a, b) => b.values.at(-1) - a.values.at(-1)).map((l) => ({ l, y: cy(l.values.at(-1)) }));
+for (let i = 1; i < labels.length; i++) labels[i].y = Math.max(labels[i].y, labels[i - 1].y + 15);
+const gridY = Array.from({ length: top / 10 + 1 }, (_, i) => i * 10);
+const gridX = years.filter((y) => y % 20 === 0);
 ---
 <Base title="Regions" description="Cannabis laws by region: Europe, the European Union, Africa, Asia, the Americas and Oceania, each with its countries' scores, legal status, a map and the latest changes.">
   <main class="changes-page ctxp rgp">
@@ -20,6 +41,25 @@ const bands = (r) => [...TIERS].reverse().map((t) => ({ t, n: r.members.filter((
       <p class="eyebrow">Regions <span>world average {fmt(worldAvg)}</span></p>
       <h1>Regions</h1>
       <p class="lede">How free cannabis is continent by continent, and in groups of countries that share rules, such as the European Union. Each region has a page with a map, how its countries divide by legal status, its average over time and every country ranked.</p>
+    </section>
+
+    <section class="section" aria-labelledby="rgpTrend">
+      <div class="section-head"><div>
+        <h2 id="rgpTrend">Every region over time</h2>
+        <p class="sub">The average score of each region's countries at the end of each year, rebuilt from the recorded history. Point at a line to pick it out.</p>
+      </div></div>
+      <figure class="rgp-trend" data-rgp-trend>
+        <svg viewBox={`0 0 ${CW} ${CH}`} role="img" aria-label={`Average score by region, ${Y0} to ${Y1}: ${lines.map((l) => `${l.name} ${l.values.at(-1).toFixed(1)}`).join(", ")}`}>
+          {gridY.map((v) => <g class="rgp-grid"><line x1={PL} x2={CW - PR} y1={cy(v)} y2={cy(v)} /><text x={PL - 8} y={cy(v) + 4} text-anchor="end">{v}</text></g>)}
+          {gridX.map((y) => <text class="rgp-axis" x={cx(y)} y={CH - 8} text-anchor="middle">{y}</text>)}
+          {lines.map((l) => <path class:list={["rgp-line", { "rgp-world": l.world }]} d={l.d} data-r={l.slug}><title>{l.name}: {l.values.at(-1).toFixed(1)} in {Y1}</title></path>)}
+          {labels.map(({ l, y }) => (
+            <a href={l.world ? `${base}charts/` : `${base}region/${l.slug}/`} data-r={l.slug} class="rgp-label">
+              <text x={CW - PR + 8} y={y + 4}>{l.name} <tspan>{l.values.at(-1).toFixed(1)}</tspan></text>
+            </a>
+          ))}
+        </svg>
+      </figure>
     </section>
 
     {[["Continents", "continent"], ["Groups of countries", "grouping"]].map(([title, kind]) => (
@@ -43,3 +83,15 @@ const bands = (r) => [...TIERS].reverse().map((t) => ({ t, n: r.members.filter((
     ))}
   </main>
 </Base>
+
+<script>
+  // point at a line or its name: that region is drawn in full, the others fade
+  for (const fig of document.querySelectorAll("[data-rgp-trend]")) {
+    const set = (slug) => fig.querySelectorAll("[data-r]").forEach((el) => el.classList.toggle("on", el.dataset.r === slug));
+    fig.querySelectorAll("[data-r]").forEach((el) => {
+      el.addEventListener("mouseenter", () => { fig.classList.add("picking"); set(el.dataset.r); });
+      el.addEventListener("focus", () => { fig.classList.add("picking"); set(el.dataset.r); });
+    });
+    fig.addEventListener("mouseleave", () => { fig.classList.remove("picking"); set(null); });
+  }
+</script>

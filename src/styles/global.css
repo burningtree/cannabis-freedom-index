@@ -3610,3 +3610,15 @@ td.rgp-seg i { display: inline-block; width: 7px; height: 7px; margin-right: 5px
   .rgp-latest li { grid-template-columns: minmax(0, 1fr); }
   .rgp-seg { display: none; }
 }
+/* the regions index: every region's average over time, grey lines, the pointed one in full */
+.rgp-trend { margin: 0; }
+.rgp-trend svg { display: block; width: 100%; height: auto; overflow: visible; }
+.rgp-grid line { stroke: var(--border); stroke-width: 1; }
+.rgp-grid text, .rgp-axis { font: 400 11px var(--mono); fill: var(--muted); }
+.rgp-line { fill: none; stroke: var(--muted); stroke-width: 1.6; stroke-linejoin: round; transition: opacity .15s, stroke .15s; }
+.rgp-line.rgp-world { stroke: var(--text-2); stroke-dasharray: 5 4; }
+.rgp-label text { font: 400 12px var(--mono); fill: var(--text-2); text-transform: uppercase; letter-spacing: .03em; }
+.rgp-label tspan { fill: var(--muted); }
+.rgp-trend.picking .rgp-line:not(.on), .rgp-trend.picking .rgp-label:not(.on) { opacity: .25; }
+.rgp-line.on { stroke: var(--text); stroke-width: 2.6; }
+.rgp-label.on text { fill: var(--text); }
