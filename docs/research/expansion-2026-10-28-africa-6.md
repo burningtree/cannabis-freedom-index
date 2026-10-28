@@ -34,6 +34,9 @@ atlas-backed first, then the rest. Skipped: South Africa (other agent), Eritrea
 - Profile already complete (words, culture, all decades, audit 0/0 unchanged).
 - New `articles/swaziland-phiri-sentencing-1986.md` (bands verified in a SheriaHub mirror of the judgment — EswatiniLII 403s) + `articles/swaziland-magagula-sentencing-1989.md` (9,705 plants verified in the judgment PDF).
 - Full `npm test` 193/0; both articles verified in review HTML.
-## tn — pending
+## tn — committed
+- Profile already complete (words zatla/takrouri, culture, audit 0/0 after adding `life: possible` to the pre-existing criminal-association row).
+- New `articles/tunisia-kef-sentences-reduced-2021.md` (30-year stadium sentences → 2 years; background verified in Meshkal, reduction from the checked North Africa Post entry — NAP 403s) + `articles/tunisia-hemp-decree-1884.md` (first decree verified verbatim in the 1954 UN Bulletin text).
+- Full `npm test` 193/0; both articles verified in review HTML.
 ## cg — pending
 ## zm — pending
