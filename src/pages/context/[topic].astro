@@ -161,25 +161,7 @@ const description = `${topic.name} in every country: ${topic.help.charAt(0).toLo
 
 <script>
   import "../../lib/unit-map-tip.js";
-  import { select } from "d3-selection";
-  import { zoom, zoomIdentity } from "d3-zoom";
-  import "d3-transition";
-
-  // zoom and pan, by wheel, drag or the buttons, as on the home page's map
-  for (const figure of document.querySelectorAll("[data-ctxp-map]")) {
-    const svg = select(figure.querySelector("svg"));
-    const g = svg.select(".ctxp-zoom");
-    const [, , w, h] = figure.querySelector("svg").getAttribute("viewBox").split(" ").map(Number);
-    // the dots of the small countries keep their size as the map grows
-    const dots = g.selectAll("circle").each(function () { this.dataset.r = this.getAttribute("r"); });
-    const z = zoom().scaleExtent([1, 10]).translateExtent([[0, 0], [w, h]]).on("zoom", (e) => {
-      g.attr("transform", e.transform);
-      dots.attr("r", function () { return this.dataset.r / Math.sqrt(e.transform.k); });
-    });
-    svg.call(z);
-    const act = { in: () => z.scaleBy(svg.transition().duration(250), 1.8), out: () => z.scaleBy(svg.transition().duration(250), 1 / 1.8), reset: () => z.transform(svg.transition().duration(250), zoomIdentity) };
-    figure.querySelectorAll("[data-zoom]").forEach((b) => b.addEventListener("click", act[b.dataset.zoom]));
-  }
+  import "../../lib/static-map.js";
 
   // The table shows the places with a section by default; the box filters by country, region or
   // any word in the summary, and the tick box brings back the places without one.

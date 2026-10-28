@@ -358,17 +358,18 @@ function scoreAt(c, t) {
 // The chart starts in 1860, before the first colonial bans. Population figures begin in 1900, so
 // for earlier years the by-population average uses each country's 1900 population.
 const CHART_FROM = 1860;
-function averageOverTime(weight) {
+function averageOverTime(weight, list = countries) {
+  const ids = new Set(list.map((c) => c.id));
   const at = (t) => {
     let sum = 0, total = 0;
-    for (const c of countries) {
+    for (const c of list) {
       const w = weight(c, t);
       sum += scoreAt(c, t) * w;
       total += w;
     }
     return sum / total;
   };
-  const events = changes.filter((ch) => ch.score && !ch.estimate && !ch.country.territory).map((ch) => ({ change: ch, date: ch.date, t: dateTime(ch.date) }));
+  const events = changes.filter((ch) => ch.score && !ch.estimate && !ch.country.territory && ids.has(ch.country.id)).map((ch) => ({ change: ch, date: ch.date, t: dateTime(ch.date) }));
   for (let year = CHART_FROM; year <= +DATA_SNAPSHOT; year++) events.push({ change: null, date: `${year}-01-01`, t: Date.UTC(year, 0, 1) });
   events.sort((a, b) => a.t - b.t);
   // changes on the same day are applied one after another, in a fixed order
@@ -377,7 +378,7 @@ function averageOverTime(weight) {
     const c = e.change.country;
     const w = weight(c, e.t);
     let total = 0;
-    for (const x of countries) total += weight(x, e.t);
+    for (const x of list) total += weight(x, e.t);
     const after = at(e.t);
     return { change: e.change, date: e.date, before: after - ((e.change.raw.after - e.change.raw.before) * w) / total, after };
   });
@@ -388,13 +389,13 @@ export const averageHistoryByPopulation = averageOverTime(populationAt);
 // The world in score bands, year by year: for each year from 1860 the share of countries (or of
 // the world's people) in each tier at the end of that year, as [year, [severe … free]] with shares
 // adding up to 1. Drawn as stacked bands beside the average.
-function bandsOverTime(weight) {
+function bandsOverTime(weight, list = countries) {
   const out = [];
   for (let year = CHART_FROM; year <= +DATA_SNAPSHOT; year++) {
     const t = Date.UTC(year, 11, 31, 23, 59, 59);
     const shares = new Array(TIERS.length).fill(0);
     let total = 0;
-    for (const c of countries) {
+    for (const c of list) {
       const w = weight(c, t);
       shares[tierIndex(scoreAt(c, t))] += w;
       total += w;
@@ -405,6 +406,11 @@ function bandsOverTime(weight) {
 }
 export const bandHistory = bandsOverTime(() => 1);
 export const bandHistoryByPopulation = bandsOverTime(populationAt);
+// The same four series for a group of countries (a region page): its average and bands over time.
+export const historyOf = (list) => ({
+  history: averageOverTime(() => 1, list), historyByPopulation: averageOverTime(populationAt, list),
+  bands: bandsOverTime(() => 1, list), bandsByPopulation: bandsOverTime(populationAt, list),
+});
 
 // ── History pages ──
 // The History list reads as one continuous ledger at /history/, loaded a year at a time. Each decade

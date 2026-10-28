@@ -1,0 +1,14 @@
+---
+// The row of regions at the top of /region/ and of each region's page: the continents, then the
+// groupings such as the EU. Styled as the context topics' menu (ContextMenu.astro).
+import { regions } from "../lib/regions.js";
+
+const { current = null } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<nav class="ctxp-menu" aria-label="Regions">
+  <ol>
+    <li><a href={`${base}region/`} aria-current={current ? undefined : "page"}>All regions</a></li>
+    {regions.map((r) => <li><a href={`${base}region/${r.slug}/`} aria-current={r.slug === current ? "page" : undefined}>{r.short}</a></li>)}
+  </ol>
+</nav>

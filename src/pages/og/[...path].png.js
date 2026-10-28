@@ -9,6 +9,7 @@ import { MAP_VIEWS } from "../../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries, cultureIn, cultureSection } from "../../lib/culture.js";
 import { contextTopics } from "../../lib/contexts.js";
 import { datasetPages } from "../../lib/dataset-pages.js";
+import { regions } from "../../lib/regions.js";
 import { survey, results } from "../../lib/survey.js";
 import { getFacts } from "../../lib/facts.js";
 import { renderOg, flagOf, photoOf, collageOf, TIER_HEX } from "../../og/render.js";
@@ -89,6 +90,10 @@ for (const e of cultureEntries) {
 cards.context = page("Beyond the score", "What the score does not show, compared across every country: medicine, clubs, arrests, driving and more.", [[String(contextTopics.length), "TOPICS"], [num(contextTopics[0].total), "PLACES"], [num(contextWritten), "SECTIONS WRITTEN"]], `CONTEXT · ${BRAND}`);
 for (const t of contextTopics) cards[`context/${t.slug}`] = page(t.name, sentence(t.help),
   [[num(t.filled), "PROFILES WITH THIS SECTION"], [num(t.notApplicable), "EXPLAINED AS NOT APPLICABLE"], [num(t.missing), "NOT RESEARCHED YET"]], `CONTEXT · ${BRAND}`);
+// the regions, continents and groupings such as the EU
+cards.region = page("Regions", "How free cannabis is continent by continent, and in groups of countries such as the European Union.", [[String(regions.length), "REGIONS"], [worldAvg.toFixed(1), "WORLD AVERAGE"]], `REGIONS · ${BRAND}`);
+for (const r of regions) cards[`region/${r.slug}`] = page(`Cannabis in ${r.name}`, sentence(`${r.members[0].name} is the freest, ${r.members.at(-1).name} the harshest`),
+  [[r.avg.toFixed(1), "AVERAGE SCORE"], [num(r.members.length), "COUNTRIES"], [String(r.rec.find((x) => x.key === "legal")?.n ?? 0), "LEGAL FOR ADULTS"]], `REGIONS · ${BRAND}`);
 // the outside datasets, each with a map and every place's figure
 cards.datasets = page("Datasets", "What others count about cannabis, country by country: use, offences, prices, potency, opinion and freedom.", [[String(datasetPages.length), "DATASETS"], [num(datasetFigures), "COUNTRY FIGURES"]], `DATASETS · ${BRAND}`);
 for (const p of datasetPages) {

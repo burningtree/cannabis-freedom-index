@@ -1,0 +1,45 @@
+---
+// Regions: the continents and groupings such as the EU, each with its average score, how its
+// countries divide by score band, and a page of its own (/region/<slug>/). The data is in
+// src/lib/regions.js.
+import Base from "../../layouts/Base.astro";
+import RegionMenu from "../../components/RegionMenu.astro";
+import { regions } from "../../lib/regions.js";
+import { TIERS, tierColor, tierOf } from "../../lib/tiers.js";
+import { worldAvg } from "../../lib/countries.js";
+
+const base = import.meta.env.BASE_URL;
+const fmt = (v) => v.toFixed(1);
+// how a region's countries divide by score band, strictest first
+const bands = (r) => [...TIERS].reverse().map((t) => ({ t, n: r.members.filter((c) => tierOf(c.raw) === t).length })).filter((x) => x.n);
+---
+<Base title="Regions" description="Cannabis laws by region: Europe, the European Union, Africa, Asia, the Americas and Oceania, each with its countries' scores, legal status, a map and the latest changes.">
+  <main class="changes-page ctxp rgp">
+    <RegionMenu />
+    <section class="hero hero-sm">
+      <p class="eyebrow">Regions <span>world average {fmt(worldAvg)}</span></p>
+      <h1>Regions</h1>
+      <p class="lede">How free cannabis is continent by continent, and in groups of countries that share rules, such as the European Union. Each region has a page with a map, how its countries divide by legal status, its average over time and every country ranked.</p>
+    </section>
+
+    {[["Continents", "continent"], ["Groups of countries", "grouping"]].map(([title, kind]) => (
+      <section class="section">
+        <div class="section-head"><div><h2>{title}</h2></div></div>
+        <ol class="ctxp-topics rgp-list">
+          {regions.filter((r) => r.kind === kind).map((r) => (
+            <li>
+              <a href={`${base}region/${r.slug}/`}>
+                <span class="ctxp-topic-name">{r.name}</span>
+                <span class="ctxp-topic-help">{r.members.length} countries · freest {r.members[0].name}, harshest {r.members.at(-1).name}</span>
+                <span class="ctxp-split" role="img" aria-label={bands(r).map((x) => `${x.t.name}: ${x.n}`).join(", ")}>
+                  {bands(r).map((x) => <i style={`flex:${x.n};background:${tierColor(x.t.min)}`} title={`${x.t.name}: ${x.n}`}></i>)}
+                </span>
+                <span class="ctxp-topic-n">Average <b style={`color:${tierColor(r.avg)}`}>{fmt(r.avg)}</b> · {r.vsWorld >= 0 ? "+" : "−"}{fmt(Math.abs(r.vsWorld))} on the world</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </main>
+</Base>

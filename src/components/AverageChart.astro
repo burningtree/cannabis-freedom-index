@@ -11,7 +11,13 @@ import { TIERS, tierOf, tierColor } from "../lib/tiers.js";
 // `note` adds the caveat under the chart; `wide` draws it across the page and taller, with the two
 // figures in one row and no card around it (the Charts page).
 // `figures={false}` leaves out the two headline numbers, where the page says it otherwise.
-const { note = false, wide = false, figures = true } = Astro.props;
+// `group` draws a region instead of the world: { name ("Europe"), countries, series } with the
+// series from historyOf() in countries.js.
+const { note = false, wide = false, figures = true, group = null } = Astro.props;
+const members = group?.countries ?? countries;
+const series = group?.series ?? { history: averageHistory, historyByPopulation: averageHistoryByPopulation, bands: bandHistory, bandsByPopulation: bandHistoryByPopulation };
+const who = group?.name ?? "World"; // whose average: "World average score", "Europe average score"
+const people = group ? `of ${group.name}'s people` : "of the world's people";
 const fmt = (v) => v.toFixed(1);
 const time = dateTime;
 const endYear = +lastUpdated.slice(0, 4);
@@ -21,8 +27,8 @@ const RANGES = [
   { id: "15y", label: "Last 15 years", startYear: endYear - 15 },
 ];
 const WEIGHTS = [
-  { id: "country", label: "By country", title: "Every country counts the same", history: averageHistory, bands: bandHistory },
-  { id: "people", label: "By population", title: "Each country counts in proportion to its population", history: averageHistoryByPopulation, bands: bandHistoryByPopulation },
+  { id: "country", label: "By country", title: "Every country counts the same", history: series.history, bands: series.bands },
+  { id: "people", label: "By population", title: "Each country counts in proportion to its population", history: series.historyByPopulation, bands: series.bandsByPopulation },
 ];
 const TIER_ORDER = [...TIERS].reverse(); // severe … free, as in bandHistory
 // a date as a fractional year, so the line's steps fall where the bands' years do
@@ -59,9 +65,9 @@ function view(range, weighting) {
   const banned = (r) => r[1][0] + r[1][1];
   const bannedNow = banned(rows.at(-1)), bannedThen = banned(rows[0]);
   const sub = { big: `${Math.round(bannedNow * 100)}%`, label: weighting.id === "country" ? "Countries under prohibition or worse" : "People under prohibition or worse",
-    text: weighting.id === "country" ? `${Math.round(bannedNow * countries.length)} of ${countries.length}` : "of the world's people", delta: Math.round((bannedNow - bannedThen) * 100) };
+    text: weighting.id === "country" ? `${Math.round(bannedNow * members.length)} of ${members.length}` : people, delta: Math.round((bannedNow - bannedThen) * 100) };
   // for the readout: each year's shares in tenths of a per cent, and the average in tenths
-  const data = JSON.stringify({ y0, unit: weighting.id === "country" ? countries.length : 0, avg: avgAt, rows: rows.map(([, sh]) => sh.map((v) => Math.round(v * 1000))) });
+  const data = JSON.stringify({ y0, who, unit: weighting.id === "country" ? members.length : 0, avg: avgAt, rows: rows.map(([, sh]) => sh.map((v) => Math.round(v * 1000))) });
   return { range: range.id, weight: weighting.id, startYear: range.startYear, now, delta: now - start, layers, line, years, sub, data };
 }
 
@@ -73,9 +79,9 @@ const signed = (n, unit = "") => `${n > 0 ? "+" : n < 0 ? "−" : "±"}${Math.ab
 <section class:list={["avg", wide ? "avg-wide" : "card"]} id="avgChart" aria-labelledby="avgTitle" data-base={base}>
   {/* two figures: the world average score, and the share under prohibition or worse */}
   <div class="avg-head" hidden={!figures}>
-    <h2 id="avgTitle" class="visually-hidden">Cannabis freedom in the world over time</h2>
+    <h2 id="avgTitle" class="visually-hidden">Cannabis freedom {group ? `in ${group.name}` : "in the world"} over time</h2>
     <div class="avg-stat">
-      <p class="avg-label">World average score</p>
+      <p class="avg-label">{who} average score</p>
       <p class="avg-now">
         {views.map((v) => (
           <span class="avg-figure" data-range={v.range} data-weight={v.weight} hidden={!shown(v)}>
@@ -115,7 +121,7 @@ const signed = (n, unit = "") => `${n > 0 ? "+" : n < 0 ? "−" : "±"}${Math.ab
         {[0, 20, 40, 60, 80, 100].map((t) => <span style={`top:${100 - t}%`}>{t}</span>)}
       </div>
       <div class="avg-plot" data-bands={v.data}>
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label={`World average score and the share of ${v.weight === "country" ? "countries" : "the world's people"} in each score band, ${v.startYear} to ${endYear}`}>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label={`${who} average score and the share of ${v.weight === "country" ? "countries" : people.slice(3)} in each score band, ${v.startYear} to ${endYear}`}>
           {v.layers.map((l) => <polygon points={l.points} style={`fill:${l.color}`} />)}
           <path class="avg-over" d={v.line} />
         </svg>
@@ -129,7 +135,7 @@ const signed = (n, unit = "") => `${n > 0 ? "+" : n < 0 ? "−" : "±"}${Math.ab
   ))}
   </div>
   <p class="avg-legend" aria-hidden="true">
-    <span><i class="avg-over-key"></i>World average score</span>
+    <span><i class="avg-over-key"></i>{who} average score</span>
     {TIERS.map((t) => <span><i style={`background:${tierColor(t.min)}`}></i>{t.name}</span>)}
   </p>
   {note && <p class="avg-note">Rebuilt from the recorded changes, so it is only as complete as that list. The colours show the share of countries, or of people, in each band; the line is the world average score on the same 0–100 scale. The population view uses each year's population.</p>}
@@ -166,7 +172,7 @@ const signed = (n, unit = "") => `${n > 0 ? "+" : n < 0 ? "−" : "±"}${Math.ab
       const shares = d.rows[i];
       year = d.y0 + i;
       const amount = (v) => (d.unit ? `${Math.round((v / 1000) * d.unit)}` : `${(v / 10).toFixed(v < 100 ? 1 : 0)}%`);
-      tip.innerHTML = `<b>${year}</b><span class="tip-avg">World average<em>${(d.avg[i] / 10).toFixed(1)}</em></span>`
+      tip.innerHTML = `<b>${year}</b><span class="tip-avg">${d.who} average<em>${(d.avg[i] / 10).toFixed(1)}</em></span>`
         + NAMES.map((n, k) => [n, shares[k], k]).reverse().filter(([, v]) => v > 0)
           .map(([n, v, k]) => `<span><i style="background:var(--t${k})"></i>${n}<em>${amount(v)}</em></span>`).join("")
         + `<span class="tip-go">Click to read ${year} in the history →</span>`;

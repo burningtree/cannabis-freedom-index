@@ -7,6 +7,7 @@
 //   g: words matched but not shown (a history entry's tags)
 import { contextTopics } from "../lib/contexts.js";
 import { datasetPages } from "../lib/dataset-pages.js";
+import { regions } from "../lib/regions.js";
 import { getCollection } from "astro:content";
 import { termAnchor } from "../lib/terms.js";
 import { places, countries, subunitsOf, changes, articles, historyPeriods, CHANGE_CATEGORIES, CHANGE_TAGS, estimateNote } from "../lib/countries.js";
@@ -26,10 +27,12 @@ const rows = [
     ["Map", "World map of scores", "#map"], ["Rankings", "Every country by score", "#rankings"], ["Methodology", "How the scores are made", "#methodology"],
     ["History", "Laws, rulings and treaties", "history/"], ["Can I?", "Plain answers per country", "can-i/"], ["Compare", "Countries side by side", "compare/"],
     ["Download the data", "Scores, history and yearly panel", "data/"], ["Score changes", "Every score change", "score-changes/"], ["Changelog", "Every change to the site, data and text", "changelog/"],
-    ["Articles", "The longer reads on single events", "articles/"], ["About", "What the project is, its aims and commitments", "about/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "A cultural atlas of cannabis", "culture/"], ["Culture: People", "Officials, preachers, scientists and presidents", "culture/people/"], ["Culture: Stories", "The people behind the laws", "culture/stories/"], ["Sources", "Every source the index cites", "sources/"], ["Research progress", "How much of each country is researched, and what is missing", "research/"], ["Glossary", "The words of cannabis law, explained", "glossary/"], ["Charts", "The history and the scores in charts", "charts/"], ["World map", "Every country coloured by its score, full screen", "map/"], ["Map poster", "The world map as a printable poster", "map/poster/"], ["Context", "Beyond the score: each topic compared across countries", "context/"], ["Datasets", "What others count: use, offences, prices, opinion and more, by country", "datasets/"],
+    ["Articles", "The longer reads on single events", "articles/"], ["About", "What the project is, its aims and commitments", "about/"], ["Did you know?", "Curious cases from the index", "did-you-know/"], ["State of Cannabis", "The yearly survey and its results", "survey/"], ["Take the survey", "Anonymous, about ten minutes", "survey/take/"], ["Culture", "A cultural atlas of cannabis", "culture/"], ["Culture: People", "Officials, preachers, scientists and presidents", "culture/people/"], ["Culture: Stories", "The people behind the laws", "culture/stories/"], ["Sources", "Every source the index cites", "sources/"], ["Research progress", "How much of each country is researched, and what is missing", "research/"], ["Glossary", "The words of cannabis law, explained", "glossary/"], ["Charts", "The history and the scores in charts", "charts/"], ["World map", "Every country coloured by its score, full screen", "map/"], ["Map poster", "The world map as a printable poster", "map/poster/"], ["Context", "Beyond the score: each topic compared across countries", "context/"], ["Datasets", "What others count: use, offences, prices, opinion and more, by country", "datasets/"], ["Regions", "Cannabis laws continent by continent, and in the EU", "region/"],
   ].map(([n, s, u]) => ({ t: "p", n, s, u, ic: PAGE_ICONS[u] })),
   // the context topics, each compared across every country
   ...contextTopics.map((t) => ({ t: "p", n: `Context: ${t.name}`, s: t.help, u: `context/${t.slug}/`, ic: PAGE_ICONS["context/"] })),
+  // the regions: continents and groupings such as the EU
+  ...regions.map((r) => ({ t: "p", n: `Region: ${r.name}`, s: `${r.members.length} countries · average score ${r.avg.toFixed(1)}`, u: `region/${r.slug}/`, ic: PAGE_ICONS["region/"] })),
   // the outside datasets, each across every country
   ...datasetPages.map((p) => ({ t: "p", n: `Dataset: ${p.d.name}`, s: `${p.d.credit ?? p.d.publisher} · ${p.d.when}`, u: `datasets/${p.slug}/`, ic: PAGE_ICONS["datasets/"] })),
   // the exhibitions: one row each, its rooms' names matched but not listed

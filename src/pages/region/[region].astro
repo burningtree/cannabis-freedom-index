@@ -1,0 +1,169 @@
+---
+// One region, e.g. /region/europe/ or /region/eu/: how free cannabis is there at a glance, a map
+// opening on the region, how its countries divide by legal status, its average and score bands
+// over time, every country ranked, and the latest history. The data is in src/lib/regions.js.
+import Base from "../../layouts/Base.astro";
+import RegionMenu from "../../components/RegionMenu.astro";
+import AverageChart from "../../components/AverageChart.astro";
+import ScoreChange from "../../components/ScoreChange.astro";
+import { regions } from "../../lib/regions.js";
+import { siteMap } from "../../lib/world-map.js";
+import { tierColor, tierOf } from "../../lib/tiers.js";
+import { SEGMENTS, REC_LABEL, REC_HELP, MED_LABEL, MED_HELP, worldAvg, changeDate, countries } from "../../lib/countries.js";
+
+export function getStaticPaths() {
+  return regions.map((region) => ({ params: { region: region.slug }, props: { region } }));
+}
+
+const { region: r } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const map = siteMap();
+const W = map.width, H = map.height;
+const inRegion = new Map(r.all.map((c) => [c.id, c]));
+const num = (n) => n.toLocaleString("en-GB");
+const compact = (n) => (n >= 1e9 ? `${+(n / 1e9).toPrecision(3)} billion` : n >= 1e6 ? `${+(n / 1e6).toPrecision(3)} million` : num(n));
+const fmt = (v) => v.toFixed(1);
+const freest = r.members[0], harshest = r.members.at(-1);
+const legal = r.rec.find((x) => x.key === "legal")?.n ?? 0;
+const medical = r.med.find((x) => x.key === "yes")?.n ?? 0;
+const worldRank = (c) => countries.indexOf(c) + 1;
+const figures = [
+  [fmt(r.avg), `average score · world ${fmt(worldAvg)}`],
+  [num(r.members.length), r.territories.length ? `countries, and ${r.territories.length} territories` : "countries"],
+  [compact(r.population), "people"],
+  [num(legal), `legal for adults · ${medical} with a medical route`],
+];
+const lede = `${r.about ?? `${r.members.length} countries${r.territories.length ? ` and ${r.territories.length} territories` : ""} in ${r.name}.`} The average score is ${fmt(r.avg)} of 100, ${Math.abs(r.vsWorld) < 1 ? "about the world average" : r.vsWorld > 0 ? `${fmt(r.vsWorld)} above the world average` : `${fmt(-r.vsWorld)} below the world average`}; ${freest.name} is the freest and ${harshest.name} the harshest.`;
+const description = `Cannabis laws in ${r.name}: every country's score, legal status for adults and patients, a map and the latest changes.`;
+const bar = (list, total) => list.map((x) => ({ ...x, w: (x.n / total) * 100 }));
+const REC_TIER = { legal: 5, partial: 4, decrim: 3, illegal: 1, death: 0 }, MED_TIER = { yes: 5, limited: 3, no: 0 };
+---
+<Base title={`Cannabis in ${r.name}: laws country by country`} description={description}>
+  <main class="changes-page ctxp rgp">
+    <RegionMenu current={r.slug} />
+    <section class="hero hero-sm">
+      <p class="eyebrow"><a href={`${base}region/`}>Regions</a> <span>{r.kind === "grouping" ? `a group of countries${r.of ? ` in ${r.of}` : ""}` : "continent"}</span></p>
+      <h1>{r.name}</h1>
+      <p class="lede">{lede}</p>
+    </section>
+
+    <dl class="hist-stats ctxp-stats">
+      {figures.map(([n, label]) => <div><dt>{label}</dt><dd>{n}</dd></div>)}
+    </dl>
+
+    <section class="section ctxp-map-sec" aria-labelledby="rgpMap">
+      <div class="section-head"><div>
+        <h2 id="rgpMap">{r.name} on the map</h2>
+        <p class="sub">Each country coloured by its score: red means prison risk, green means free. Select a country for its profile.</p>
+      </div></div>
+      <figure class="card map-card map-wrap ctxp-map" data-ctxp-map data-map-tips>
+        <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-label={`Map of ${r.name}, coloured by score`}>
+          <g class="ctxp-zoom">
+            <path class="sphere" d={map.sphere} />
+            {map.shapes.map((s) => {
+              const c = s.c ? inRegion.get(s.c.id) : null;
+              return c
+                ? <a href={`${base}country/${c.slug}/`} data-tip={c.id} aria-label={`${c.name}: ${c.score}`}><path class="country-shape has-data" d={s.d} style={`fill:${tierColor(c.raw)}`} /></a>
+                : <path class="country-shape land-only" d={s.d} style="fill:var(--land)" />;
+            })}
+            {map.dots.map((d) => {
+              const c = inRegion.get(d.c.id);
+              return c && <a href={`${base}country/${c.slug}/`} data-tip={c.id} aria-hidden="true" tabindex="-1"><circle class="country-shape has-data tiny-dot" cx={d.x} cy={d.y} r={map.r} style={`fill:${tierColor(c.raw)}`} /></a>;
+            })}
+          </g>
+        </svg>
+        <div class="map-zoom">
+          <button type="button" class="icon-btn" data-zoom="in" aria-label="Zoom in">+</button>
+          <button type="button" class="icon-btn" data-zoom="out" aria-label="Zoom out">−</button>
+          <button type="button" class="icon-btn" data-zoom="reset" aria-label="Reset zoom">⟲</button>
+        </div>
+        <div class="tooltip" hidden></div>
+        {r.all.map((c) => (
+          <template data-tip-for={c.id}>
+            <div class="tip-head"><strong><span class="tip-flag">{c.flag}</span>{c.name}</strong><span class="tip-chip" style={`--chip:${tierColor(c.raw)}`}>{c.score}</span></div>
+            <div class="tip-meta"><span class={`chip s-${c.rec}`}>{REC_LABEL[c.rec]}</span> <span class={`chip s-${c.med}`}>Medical: {MED_LABEL[c.med]}</span></div>
+            <p class="tip-note">{c.note}</p>
+            <div class="tip-foot">Click for the profile</div>
+          </template>
+        ))}
+      </figure>
+    </section>
+
+    <section class="section" aria-labelledby="rgpStatus">
+      <div class="section-head"><div><h2 id="rgpStatus">How the {r.members.length} countries divide</h2></div></div>
+      <div class="rgp-splits">
+        {[["For adults", r.rec, REC_LABEL, REC_HELP, REC_TIER], ["For patients", r.med, MED_LABEL, MED_HELP, MED_TIER]].map(([label, list, LABEL, HELP, TIER]) => (
+          <div>
+            <h3 class="rgp-split-h">{label}</h3>
+            <p class="rgp-split" role="img" aria-label={list.map((x) => `${LABEL[x.key]}: ${x.n}`).join(", ")}>
+              {bar(list, r.members.length).map((x) => <i style={`flex:${x.n};background:var(--t${TIER[x.key]})`} title={`${LABEL[x.key]}: ${x.n}`}></i>)}
+            </p>
+            <ul class="rgp-split-key">
+              {list.map((x) => (
+                <li title={HELP[x.key]}>
+                  <span class={`chip s-${x.key}`}>{LABEL[x.key]}</span> <b>{x.n}</b>
+                  <small>{r.members.filter((c) => (label === "For adults" ? c.rec : c.med) === x.key).slice(0, 6).map((c) => c.name).join(", ")}{x.n > 6 ? "…" : ""}</small>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" aria-label="Over time">
+      <div class="section-head"><div><h2>{r.name} over time</h2><p class="sub">The average score and the share of countries, or of people, in each band, rebuilt from the recorded history.</p></div></div>
+      <AverageChart wide group={{ name: r.short === "EU" ? "EU" : r.name, countries: r.members, series: r.series }} />
+    </section>
+
+    <section class="section" aria-labelledby="rgpTable">
+      <div class="section-head"><div>
+        <h2 id="rgpTable">Every country, ranked</h2>
+        <p class="sub">The index score from 0 to 100 and its six parts from 0 to 10.{r.territories.length > 0 && " Territories follow, unranked."}</p>
+      </div></div>
+      <div class="rgp-table-wrap">
+        <table class="src-table rgp-table">
+          <thead><tr>
+            <th class="num">#</th><th>Country</th><th class="num">Score</th><th>Adults</th><th>Patients</th>
+            {SEGMENTS.map((s) => <th class="num rgp-seg" title={s.name}>{s.name.replace(/^Punishment & /, "").replace(/^Personal /, "").replace(/ & gifting$/, "")}</th>)}
+          </tr></thead>
+          <tbody>
+            {r.all.map((c, i) => (
+              <tr class:list={{ "rgp-territory": c.territory }}>
+                <td class="num rgp-rank">{c.territory ? "–" : i + 1}<small>{!c.territory && `#${worldRank(c)}`}</small></td>
+                <td class="ctxp-country"><a href={`${base}country/${c.slug}/`}><span aria-hidden="true">{c.flag}</span> {c.name}</a><small>{c.territory ? c.territory.label : tierOf(c.raw).name}</small></td>
+                <td class="num"><span class="pill" style={`--c:${tierColor(c.raw)}`}>{c.score}</span></td>
+                <td><span class={`chip s-${c.rec}`} title={REC_HELP[c.rec]}>{REC_LABEL[c.rec]}</span></td>
+                <td><span class={`chip s-${c.med}`} title={MED_HELP[c.med]}>{MED_LABEL[c.med]}</span></td>
+                {c.s.map((v) => <td class="num rgp-seg" style={`--c:${tierColor(v * 10)}`}><i></i>{v}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="rgp-foot">The second number under the rank is the country's place worldwide, of {countries.length}.</p>
+    </section>
+
+    {r.latest.length > 0 && (
+      <section class="section" aria-labelledby="rgpLatest">
+        <div class="section-head"><div><h2 id="rgpLatest">Latest in {r.name}</h2><p class="sub">The newest entries in the history. <a href={`${base}history/`}>All history&nbsp;→</a></p></div></div>
+        <ol class="rgp-latest">
+          {r.latest.map((ch) => (
+            <li>
+              <span class="rgp-date">{changeDate(ch)}</span>
+              <div>
+                <a class="rgp-entry" href={`${base}history/${ch.id}/`}><span class="rgp-flag" aria-hidden="true">{ch.country.flag}</span>{ch.title}</a>
+                {ch.score && ch.score.before !== ch.score.after && <ScoreChange score={ch.score} of={ch.country.name} />}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+  </main>
+</Base>
+
+<script>
+  import "../../lib/unit-map-tip.js";
+  import "../../lib/static-map.js";
+</script>
