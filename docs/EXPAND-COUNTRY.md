@@ -15,11 +15,10 @@ atlas entry.
 - **Other people and agents work in this repository at the same time.** Run `git status` and
   `git log --oneline -5` first. Don't edit files that someone else has uncommitted changes in, and
   never revert or "fix" their half-finished work unless you were asked to.
-- **Don't start dev or preview servers.** Check your work with `npm run build` and by reading the
-  built HTML in `dist/`.
-- **One build at a time.** If another `astro build` is running (`pgrep -f "astro build"`), wait
-  for it to finish; two builds at once delete each other's files and fail with "Cannot find
-  module … dist/.prerender".
+- **Don't start dev or preview servers.** Use the selected-page build in `docs/BUILDS.md` and
+  read the built HTML in `.cache/page-review/`.
+- **One build at a time.** Builds lock automatically. If another build holds the lock, wait
+  for it to finish and retry; never delete its lock.
 
 ## 1. See what is missing
 
@@ -127,13 +126,15 @@ covers well need not be repeated. `node scripts/country-gaps.cjs us/ca` is a sta
 ## 8. Check and finish
 
 ```bash
-npm run build          # must pass; runs npm test first (answers, claims, history), then checks schemas, citations and links
+node scripts/build-pages.mjs country/ke history/<changed-entry-id> # use your country's and changed entries' URL prefixes; runs all tests and content validation
 npm run profiles:audit # must report no errors for your country (node scripts/profile-audit.cjs <id>)
-npm run seo:audit      # what the deploy runs after the build
 node scripts/country-gaps.cjs ke   # the list should be shorter
 ```
 
-- Look at the built page in `dist/country/<id>/index.html` for the sections, tables and links.
+- Include changed atlas entries' `culture/<section>/<slug>` paths in the review build too.
+- Look at `.cache/page-review/country/<id>/index.html` and the changed entries for the sections,
+  tables and links. For routing or shared-link changes, run `npm run build && npm run seo:audit`;
+  routine country work does not need a full build. See `docs/BUILDS.md`.
 - Set the profile's `updated:` to today.
 - **Commit only your own files**, with a message that says what changed for the country. Leave
   other people's uncommitted changes out; if a shared file holds their changes too, stage only

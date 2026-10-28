@@ -8,7 +8,7 @@ agent or person; the data rules live in `docs/DATA-MAINTENANCE.md` and `docs/WRI
 
 - Run `git status` and `git log --oneline -5`. Others work here at the same time: don't edit files
   with someone else's uncommitted changes, and commit only your own lines.
-- Don't start dev or preview servers. One `npm run build` at a time (`pgrep -f "astro build"`).
+- Don't start dev or preview servers. Builds lock automatically; wait and retry if one is running.
 
 ## 1. Pick the issues
 
@@ -59,12 +59,13 @@ overreach (a proposed new score, a "binding" law that is only a draft).
 
 ```bash
 node scripts/profile-audit.cjs <id>   # no errors
-npm test                               # answers, profile claims, history, charts (the build runs it too)
-npm run build                          # npm test, then schemas, citations, links
-npm run seo:audit
+node scripts/build-pages.mjs country/<id> history/<changed-entry-id> # all tests/content validation, then selected pages; omit history if unchanged
 ```
 
-Read the built page in `dist/country/<id>/index.html` and confirm the corrected wording is there
+For routing or shared-link changes, also run `npm run build && npm run seo:audit`. See
+`docs/BUILDS.md`; routine data fixes need only the selected-page build.
+
+Read the built page in `.cache/page-review/country/<id>/index.html` and confirm the corrected wording is there
 and the old one is gone. If an issue shows a check the tests could have caught, add a test for it
 in `scripts/profile-claims.test.mjs`.
 

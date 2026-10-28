@@ -42,8 +42,10 @@ driving rules, access for visitors and arrest figures (see "Driving, visitors an
 | `scripts/data-status.cjs` | Counts; lists of what is unchecked, estimated, thin or weakly sourced; which profiles have a seeds-and-clones section; and a check of every country's score timeline |
 | `scripts/score-triage.cjs` | Context entries whose category says the law changed (ban, tightening, easing, …): each still to be scored or marked `unscored` (see "The score timeline must make sense") |
 
-Run everything from the project root. `npm run build` validates all data; run it after every
-batch. The dev server (`npm run dev`) does **not** pick up edits to `changes.yaml` or the schema
+Run everything from the project root. After each batch, use `node scripts/build-pages.mjs`
+with the changed country/history/atlas URL prefixes; it runs all tests and validates all data
+while rendering only the pages you review. See `docs/BUILDS.md` for full-build requirements.
+The dev server (`npm run dev`) does **not** pick up edits to `changes.yaml` or the schema
 until it is restarted.
 
 ## Adding prices
@@ -143,7 +145,8 @@ by the ECB, cite the alternative exchange-rate source in the observation note.
 - A factual correction to an existing observation should edit that observation rather than add a
   duplicate.
 - Never mix street and medical observations when deciding which value is newest.
-- Run `npm run build` after editing. The schema rejects invalid markets, dates and values.
+- Run `node scripts/build-pages.mjs country/<id> data/prices.json api/<id>.json` after editing
+  (add affected ranking/map URL prefixes). The schema rejects invalid markets, dates and values.
 - Spot-check `/data/prices.json`, `/api/<country>.json`, the country page, rankings and both price
   map modes.
 
@@ -589,7 +592,8 @@ one-line texts in the four original sections (`products`, `production`, `medical
 - A source title containing a colon followed by a space must be quoted:
   `title: "ABDA — Die Apotheke: Zahlen, Daten, Fakten 2026"`.
 - Texts use `>-` folded blocks; a line inside must not start with `- ` or it becomes a list.
-- After editing, run `npm run build`; the schema rejects unknown sections, uncited sources and
+- After editing, run `node scripts/build-pages.mjs country/<id>` (add changed history/atlas URL
+  prefixes); the schema rejects unknown sections, uncited sources and
   malformed penalty steps.
 
 ## State and province files

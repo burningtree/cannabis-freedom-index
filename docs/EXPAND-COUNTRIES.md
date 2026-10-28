@@ -30,9 +30,11 @@ For each country in the batch:
 2. `node scripts/country-gaps.cjs <id>`: the country's work list.
 3. Work through `docs/EXPAND-COUNTRY.md` in its order: current law and penalty tables, history,
    articles, context sections, culture, links.
-4. Build (`npm run build`, which runs `npm test` first; wait if another build is running), run
+4. Build (`node scripts/build-pages.mjs country/<id> history/<changed-entry-id>`, adding changed
+   atlas URL prefixes; this runs all tests and content validation; wait if another build holds
+   the lock), run
    `node scripts/profile-audit.cjs <id>` (no errors allowed), then read the built page in
-   `dist/country/<id>/`.
+   `.cache/page-review/country/<id>/`. See `docs/BUILDS.md` for when a full build is needed.
 5. **Commit that country before starting the next**, with only your own files, and a message that
    names the country and what changed ("Morocco: penalty tables, hemp and industry sections, 4
    history entries, 1980s Rif eradication article").

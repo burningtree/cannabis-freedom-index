@@ -169,10 +169,26 @@ function workOut(c) {
 // every commit, newest first: { hash, short, date, author, coauthors, subject, body, parent, files, add, del }
 // `coauthors` are the names in the commit's Co-Authored-By lines, without their addresses
 function readLog() {
+  // Listing commit IDs is cheap; recomputing --numstat over the entire history is not
+  // (even when all the detailed diffs below are cached). Fetch only missing commits.
+  // Enumerate IDs every time so branch switches and deepened shallow clones stay correct.
+  const refs = (git("log", "--format=%H %P") ?? "").trim().split("\n").filter(Boolean).map((line) => line.split(" "));
+  const hashes = refs.map(([hash]) => hash);
+  const parents = new Map(refs.map(([hash, parent]) => [hash, parent || null]));
+  const cached = new Map();
+  for (const hash of hashes) {
+    try {
+      const c = JSON.parse(readFileSync(path.join(CACHE, `log-1-${hash}.json`), "utf8"));
+      // A former shallow boundary acquires a parent when the checkout is deepened.
+      if (c.hash === hash && c.parent === parents.get(hash)) cached.set(hash, c);
+    } catch {}
+  }
+  const missing = hashes.filter((hash) => !cached.has(hash));
+  if (!missing.length) return hashes.map((hash) => cached.get(hash));
   const SEP = "\u001e", END = "\u001f";
-  const out = git("log", "--no-renames", "--numstat", `--format=${END}%H${SEP}%P${SEP}%aI${SEP}%an${SEP}%s${SEP}%b${SEP}`);
+  const out = git("log", "--no-walk=unsorted", "--no-renames", "--numstat", `--format=${END}%H${SEP}%P${SEP}%aI${SEP}%an${SEP}%s${SEP}%b${SEP}`, ...missing, "--");
   if (!out) return [];
-  return out.split(END).filter(Boolean).map((chunk) => {
+  const fresh = out.split(END).filter(Boolean).map((chunk) => {
     const [hash, parents, date, author, subject, body, stat] = chunk.split(SEP);
     const coauthors = [...new Set([...(body ?? "").matchAll(/^Co-Authored-By:\s*(.+?)\s*(?:<[^>]*>)?\s*$/gim)].map((m) => m[1]))];
     const files = (stat ?? "").trim().split("\n").filter(Boolean).map((l) => {
@@ -185,6 +201,12 @@ function readLog() {
       add: files.reduce((s, f) => s + f.add, 0), del: files.reduce((s, f) => s + f.del, 0),
     };
   });
+  mkdirSync(CACHE, { recursive: true });
+  for (const c of fresh) {
+    cached.set(c.hash, c);
+    writeFileSync(path.join(CACHE, `log-1-${c.hash}.json`), JSON.stringify(c));
+  }
+  return hashes.map((hash) => cached.get(hash));
 }
 
 // Built on this computer (not by the deploy workflow, which sets CI), the changes not yet committed

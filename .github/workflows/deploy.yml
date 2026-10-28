@@ -31,11 +31,7 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v6
       - run: npm ci
-      # Every test (npm test): each profile's quick answers ("Can I carry it?") against its own text
-      # and no sentence known to be false, the facts earlier issues corrected, research coverage,
-      # chart wording, the survey's safety. A failure stops the deploy instead of going live.
-      # (`npm run build` runs them again first, as everywhere: a few seconds.)
-      - run: npm test
+      # npm run build runs the full test suite through prebuild; a failure stops deployment.
       # The social preview images (one per page) take minutes to draw and rarely change. Each is
       # kept under a hash of its own content, so restoring the folder redraws only what is new.
       - uses: actions/cache@v4
@@ -44,6 +40,7 @@ jobs:
             .cache/og
             .cache/changelog
             .cache/progress
+            node_modules/.astro
           key: og-${{ hashFiles('src/og/**', 'package-lock.json') }}-${{ github.run_id }}
           restore-keys: |
             og-${{ hashFiles('src/og/**', 'package-lock.json') }}-

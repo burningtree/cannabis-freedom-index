@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import { unified } from "@astrojs/markdown-remark";
 import icon from "astro-icon";
 import { markTerms } from "./src/lib/terms.js";
+import { buildLock } from "./scripts/build-lock.mjs";
 
 // Fully static output: one HTML file per page, including one per country.
 //
@@ -138,7 +139,7 @@ export default defineConfig({
   redirects: { "/culture/exhibitions": "/exhibitions", "/culture/exhibitions/reefer-madness": "/reefer-madness" },
   // Icons are Iconoir (https://iconoir.com/), through astro-icon and Iconify: `<Icon name="iconoir:…" />`
   // inlines the SVG at build time, so only the icons a page uses end up in it.
-  integrations: [icon()],
+  integrations: [buildLock(), icon()],
   markdown: {
     processor: unified({ remarkPlugins: [markdownFigures, markdownCitations], rehypePlugins: [markdownLinks, markdownTerms] }),
   },
@@ -148,7 +149,7 @@ export default defineConfig({
   // running dev server has prepared (Fuse, nostr-tools), and its lazy imports would then fail
   // until it is restarted.
   vite: {
-    cacheDir: process.argv.includes("build") ? "node_modules/.vite-build" : "node_modules/.vite",
+    cacheDir: process.argv.includes("build") || process.argv[1]?.endsWith("build-pages.mjs") ? "node_modules/.vite-build" : "node_modules/.vite",
     server: { watch: { ignored: ["**/tmp/**"] } },
   },
 });
