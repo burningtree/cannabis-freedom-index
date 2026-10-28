@@ -17,7 +17,12 @@ so/bi/et/cd/ss/cf/mz/zw/bj/ug — Africa-1/2/3; tg/lr/ga/gw/gq/dj/mu — Africa-
 - New `articles/namibia-dealing-presumption-upheld-2026.md` (Swartbooi, 115 g, Prinsloo — from The Namibian) + `articles/namibia-south-african-act-1971.md` (fixed invented gov.za URL to the real namiblii consolidation before verifying).
 - Audit 0/0; page + both articles verified in review HTML.
 - Left: 1920s–60s, 1980s, 2010s decades; first-restriction estimate kept.
-## cv — pending
+## cv — committed
+- Per-sentence cites ×13 (+3 correction1993 cites to satisfy the citation-list test — every listed source must be cited inline); penalty tables for possession/cultivation (Art 20 day-fine tiers, Art 6/Art 3 year bands); products folded into medical + new hemp; recreational + new black_market (ENACT 2025, fetched and read: Santiago focus, Moroccan resin to Europe, hashish oil, tolerance note) + new culture (1672 pipe + calabash tradition links).
+- Fixed self-inflicted dropped access-sources block before verifying (caught by test, not audit).
+- New `articles/cape-verde-coconut-water-pipe-1672.md` (Duvall + Fryer 1698) + `articles/cabo-verde-drug-law-reform-vetoed-2020.md` (rewritten to the checked entry: Fonseca veto after court found delegation too broad).
+- Audit 0/0; full `npm test` 193/0; page + both articles verified in review HTML.
+- Left: driving/arrests (no sources), words (no named word found), 1920s–80s, 2000s–2010s decades; nothing post-2024 found (ENACT 2025 is the newest citable item); first-restriction estimate kept.
 ## km — pending
 ## re — pending
 ## st — pending

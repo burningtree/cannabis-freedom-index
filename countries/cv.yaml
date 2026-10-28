@@ -20,36 +20,62 @@ segments:
   possession:
     text: >-
       Article 20 of Law 78/IV/93 covers small quantities held or acquired for personal use, with up
-      to three months in prison or a fine of up to 30 days. It gives no fixed gram threshold. Lesser
-      trafficking under article 6 instead carries one to five years for Table I/II substances. The
-      case described in Constitutional Court ruling 18/2023 involved 15 g and an eighteen-month
-      lesser-trafficking sentence; the defendant disputed that classification. That case does not
-      make every 15 g possession offence trafficking or establish typical sentencing.
+      to three months in prison or a fine of up to 30 days.[@law1993,correction1993] It gives no
+      fixed gram threshold.[@law1993] Lesser trafficking under article 6 instead carries one to
+      five years for Table I/II substances.[@law1993] The case described in Constitutional Court
+      ruling 18/2023 involved 15 g and an eighteen-month lesser-trafficking sentence; the
+      defendant disputed that classification.[@tc2023] That case does not make every 15 g
+      possession offence trafficking or establish typical sentencing.
     sources:
       - law1993
       - correction1993
       - tc2023
+    penalties:
+      - label: Small quantity for personal use (article 20)
+        treatment: criminal
+        term: Personal use
+        prison: 3 months
+        note: Or a fine of up to 30 days (day-fine units); no gram threshold
+      - label: Lesser trafficking (article 6)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 1 year
+        prison: 5 years
+        note: Table I/II substances where unlawfulness is considerably reduced
   cultivation:
     text: >-
       Small cultivation intended for the grower’s own consumption falls under article 20, with up to
-      three months or a fine of up to 30 days; it is not legal home-growing. Other unauthorised
-      cultivation falls under article 3, ordinarily four to twelve years, subject to
-      lesser-trafficking provisions where applicable. Article 6 of Decree-Law 92/92 separately
-      permits Health Ministry licences for scientific or teaching cultivation. No recreational plant
-      allowance was established.
+      three months or a fine of up to 30 days; it is not legal home-growing.[@law1993] Other
+      unauthorised cultivation falls under article 3, ordinarily four to twelve years, subject to
+      lesser-trafficking provisions where applicable.[@law1993,correction1993] Article 6 of Decree-Law 92/92
+      separately permits Health Ministry licences for scientific or teaching
+      cultivation.[@licensing1992] No recreational plant allowance was established.
     sources:
       - law1993
       - correction1993
       - licensing1992
+    penalties:
+      - label: Small cultivation for own consumption (article 20)
+        treatment: criminal
+        term: Personal use
+        prison: 3 months
+        note: Or a fine of up to 30 days; not legal home-growing
+      - label: Other unauthorised cultivation (article 3)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 4 years
+        prison: 12 years
+        note: Lesser-trafficking band may apply
   enforcement:
     text: >-
-      The statute provides both fines and custody for personal consumption offences. A discretionary
-      article 20 waiver requires minority, no repeat offence and a solemn undertaking before a
-      magistrate, cumulatively. Article 22 already allowed conditional sentence suspension for a
-      dependent offender voluntarily undertaking treatment; the vetoed 2020 compulsory-treatment
-      proposal should not be mistaken for the first treatment provision. One reported eighteen-month
-      lesser-trafficking sentence for 15 g is not a representative sentencing survey; the
-      enforcement rating remains provisional.
+      The statute provides both fines and custody for personal consumption
+      offences.[@law1993] A discretionary article 20 waiver requires minority, no repeat offence
+      and a solemn undertaking before a magistrate, cumulatively.[@law1993,correction1993] Article 22 already
+      allowed conditional sentence suspension for a dependent offender voluntarily undertaking
+      treatment; the vetoed 2020 compulsory-treatment proposal should not be mistaken for the
+      first treatment provision.[@obs2020] One reported eighteen-month lesser-trafficking
+      sentence for 15 g is not a representative sentencing survey; the enforcement rating remains
+      provisional.[@tc2023]
     sources:
       - law1993
       - correction1993
@@ -58,88 +84,108 @@ segments:
   sharing:
     text: >-
       Article 3 covers offering, distributing, transferring or providing controlled drugs to another
-      person, ordinarily four to twelve years for Table I/II substances. It provides no general
-      unpaid-gift exception. Article 6 permits a lesser-trafficking band where unlawfulness is
-      considerably reduced, but does not legalise sharing. Article 12 separately addresses inciting
-      or facilitating illicit use.
+      person, ordinarily four to twelve years for Table I/II substances.[@law1993,correction1993]
+      It provides no general unpaid-gift exception.[@law1993] Article 6 permits a
+      lesser-trafficking band where unlawfulness is considerably reduced, but does not legalise
+      sharing.[@law1993] Article 12 separately addresses inciting or facilitating illicit
+      use.[@law1993]
     sources:
       - law1993
       - correction1993
   consumption:
     text: >-
       Use itself is an article 20 offence, punishable by up to three months in prison or a fine of
-      up to 30 days. The waiver is discretionary and restricted to a minor meeting all listed
-      conditions, not every first offender. Article 21 protects anonymity and professional
-      confidentiality for people who voluntarily seek health assistance.
+      up to 30 days.[@law1993,correction1993] The waiver is discretionary and restricted to a
+      minor meeting all listed conditions, not every first offender.[@law1993] Article 21 protects
+      anonymity and professional confidentiality for people who voluntarily seek health
+      assistance.[@law1993]
     sources:
       - law1993
       - correction1993
   access:
     text: >-
-      No lawful recreational supply route or operating cannabis patient service was established.
-      Decree-Law 92/92 provides scientific/teaching cultivation licences and a controlled medicines
-      system; Table II substances require special prescriptions under article 22. ERIS identifies
-      cannabis and resin as controlled under Table II-A. These statutory powers do not establish
+      No lawful recreational supply route or operating cannabis patient service was
+      established.[@licensing1992] Decree-Law 92/92 provides scientific/teaching cultivation
+      licences and a controlled medicines system; Table II substances require special
+      prescriptions under article 22.[@licensing1992] ERIS identifies cannabis and resin as
+      controlled under Table II-A.[@cosmetics2024] These statutory powers do not establish
       stocked cannabis medicines or permission for ordinary retail sales.
     sources:
       - licensing1992
       - cosmetics2024
 context:
+  recreational:
+    text: >-
+      Cannabis is prohibited, but small personal-use amounts fall under a separate three-month or
+      fine-only tier, while trafficking draws heavier multi-year terms.[@law1993] Use persists:
+      cannabis is widely consumed, locally produced and trafficked, with Santiago island a focal
+      point for cultivation and trade, as the 2025 organised-crime index records.[@enact25]
+    sources:
+      - law1993
+      - enact25
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: Law 78/IV/93 covers cannabis with no low-THC
+      distinction, and the scientific/teaching licences are not a fibre or food
+      exemption.[@law1993,licensing1992] No lawful cannabis products were identified beyond the
+      cosmetics prohibition on CBD ingredients.[@cosmetics2024]
+    sources:
+      - law1993
+      - licensing1992
+      - cosmetics2024
   production:
     status: medical
     text: >-
       Decree-Law 92/92 article 6 expressly prohibits cannabis cultivation but permits Health
-      Ministry licences for scientific or teaching purposes. Its authorisation and manufacturing
-      provisions impose controls on licensed entities; they are not a recreational or general
-      industrial-hemp exemption. Issued cannabis-growing licences and lawful output volumes were not
-      established.
+      Ministry licences for scientific or teaching purposes within the controlled-medicines
+      system.[@licensing1992] The licensing provisions impose controls on licensed entities but
+      establish no operating medical cannabis production: issued cannabis-growing licences and
+      lawful output volumes were not established.[@licensing1992]
     sources:
       - licensing1992
-  products:
-    text: >-
-      ERIS’s 6 May 2024 circular reiterates a prohibition on cannabis-related preparations and CBD
-      or other cannabinoid ingredients in cosmetics under the framework it describes. It warns that
-      a blank CBD entry in an ingredient inventory is not permission. This cosmetics guidance should
-      not be extrapolated into an unsourced rule for every food, medicine or seed product.
-    sources:
-      - cosmetics2024
   medical:
     text: >-
-      The limited label reflects a statutory framework, not a verified patient programme. Decree-Law
-      92/92 permits scientific or teaching cultivation licences and provides controlled medicines
-      authorisations, special prescriptions for Table II substances and pharmacist dispensing. ERIS
-      places cannabis and resin in Table II-A. Current cannabis prescribing practice, issued product
-      authorisations and availability remain unverified.
+      The limited label reflects a statutory framework, not a verified patient programme.
+      Decree-Law 92/92 permits scientific or teaching cultivation licences and provides controlled
+      medicines authorisations, special prescriptions for Table II substances and pharmacist
+      dispensing.[@licensing1992] ERIS places cannabis and resin in Table II-A.[@cosmetics2024]
+      Current cannabis prescribing practice, issued product authorisations and availability remain
+      unverified. ERIS’s May 2024 circular prohibits cannabis-related preparations and CBD in
+      cosmetics, which is not a patient supply route.[@cosmetics2024]
     sources:
       - licensing1992
       - cosmetics2024
   consequences:
     text: >-
       Articles 16–17 provide forfeiture of controlled substances, relevant equipment and crime
-      proceeds, subject to stated protections for good-faith third parties. Article 19 permits the
-      court to expel a foreign national convicted under the law for no more than fifteen years;
-      expulsion is discretionary, not an automatic outcome in every possession case.
+      proceeds, subject to stated protections for good-faith third parties.[@law1993] Article 19
+      permits the court to expel a foreign national convicted under the law for no more than
+      fifteen years; expulsion is discretionary, not an automatic outcome in every possession
+      case.[@law1993,correction1993]
     sources:
       - law1993
       - correction1993
   clubs:
     status: none
     text: >-
-      The reviewed framework establishes no recreational collective-growing or distribution
-      permission. Personal cultivation remains criminal and article 3 includes transfers to others.
-      Article 13 separately penalises operators who allow premises to be used for illicit
-      trafficking or consumption. No claim is made about the prevalence of informal associations.
+      The reviewed framework provides no recreational collective-growing or distribution
+      permission.[@law1993] Personal cultivation remains criminal and article 3 includes
+      transfers to others.[@law1993,correction1993] Article 13 separately penalises operators who allow
+      premises to be used for illicit trafficking or consumption.[@law1993] No claim is made
+      about the prevalence of informal associations.
     sources:
       - law1993
       - correction1993
   visitors:
     status: none
     text: >-
-      No recreational visitor purchase route was established. Personal-use custody or fines remain
-      possible under article 20, and foreign offenders can face discretionary expulsion under
-      article 19. Decree-Law 92/92 article 30 contains a medical-document rule for travellers
-      carrying Table II/III substances; it does not by itself validate a foreign cannabis
-      recommendation or every cannabis product at the border.
+      No recreational visitor purchase route was established.[@law1993] Personal-use custody or
+      fines remain possible under article 20, and foreign offenders can face discretionary
+      expulsion under article 19.[@law1993,correction1993] Decree-Law 92/92 article 30 contains a
+      medical-document rule for travellers carrying Table II/III substances; it does not by itself
+      validate a foreign cannabis recommendation or every cannabis product at the
+      border.[@licensing1992]
     sources:
       - law1993
       - correction1993
@@ -151,12 +197,31 @@ context:
     clones_trade: banned
     text: >-
       Personal-use cultivation remains criminal under article 20, while Decree-Law 92/92 reserves
-      authorised cultivation to scientific or teaching purposes. Growing cuttings has no
-      recreational exemption. The reviewed provisions do not expressly resolve isolated seed
-      possession or seed commerce; grey records that uncertainty rather than a verified permission.
+      authorised cultivation to scientific or teaching purposes, with no recreational exemption
+      for growing cuttings.[@law1993,licensing1992] The reviewed provisions do not expressly
+      resolve isolated seed possession or seed commerce; grey records that uncertainty rather
+      than a verified permission.
     sources:
       - law1993
       - licensing1992
+  culture:
+    text: >-
+      The earliest known description of a coconut water pipe comes from these islands in 1672, on
+      Portugal's shipping route into an Indian Ocean where sailors had already met such pipes, as
+      that [1672 account](/history/cape-verde-coconut-water-pipe-1672/) records.[@duvall] The
+      [calabash water-pipe tradition](/culture/traditions/the-calabash-water-pipe/) carries the
+      form across the region to this day.[@duvall]
+    sources:
+      - duvall
+  black_market:
+    text: >-
+      Cannabis is widely consumed and both locally produced and trafficked; Santiago island,
+      particularly Ribeira Grande and Santa Catarina, is a focal point for cultivation and
+      trade.[@enact25] Moroccan nationals have been linked to cannabis resin shipments through
+      Cabo Verde toward Europe, and hashish oil interceptions point to diversification.[@enact25]
+      Personal use in small quantities is described as tolerated despite the ban.[@enact25]
+    sources:
+      - enact25
 sources:
   fcdo:
     title: "GOV.UK (FCDO) — Foreign travel advice: Cape Verde, safety and security"
@@ -192,3 +257,17 @@ sources:
     locator: >-
       All three pages visually read; controlled classification and cosmetics position on p. 2. Not a
       statement about every non-cosmetic CBD product.
+  enact25:
+    title: ENACT — Organised Crime Index 2025, Cabo Verde country page
+    url: https://africa.ocindex.net/country/cabo_verde
+    locator: >-
+      Cannabis trade section, read in full in the local extraction: local production and
+      trafficking, Santiago/Ribeira Grande/Santa Catarina focus, Moroccan resin to Europe,
+      hashish oil diversification, small-quantity tolerance.
+  duvall:
+    type: book
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
