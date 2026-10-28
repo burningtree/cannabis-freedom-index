@@ -3,10 +3,10 @@ region: Oceania
 iso_numeric: 882
 recreational: illegal
 medical: none
-updated: '2026-10-26'
+updated: '2026-10-28'
 summary: >-
-  Possession carries up to 14 years; a 2017 recommendation to allow medicinal cannabis was not
-  adopted.
+  Possession, use and supply carry up to 14 years; a 2017 recommendation to regulate medicinal use
+  was not adopted. There is no medical, hemp or CBD exemption.
 scores:
   possession: 1
   cultivation: 1
@@ -18,138 +18,210 @@ segments:
   possession:
     text: >-
       Cannabis plant material is listed in the Second Schedule (Class B), item 40; processed
-      cannabis preparations and cannabis resin are also listed there. Knowing unauthorised
-      possession under section 7 carries up to fourteen years under section 18. The lower
-      non-wilful/procedural alternative is subject to the statutory conditions.[@ag2023] The Law
-      Reform Commission reported that sentences imposed were lower than the maximum.[@lrc17]
+      cannabis preparations and cannabis resin are also listed there.[@ag2023] Knowing unauthorised
+      possession under section 7 carries up to fourteen years under section 18, with no fine
+      option.[@ag2023] The lower non-wilful or procedural alternative is up to two years and a
+      SAT$500 fine.[@ag2023] The Law Reform Commission reported that sentences imposed were lower
+      than the maximum.[@lrc17]
     sources:
       - ag2023
       - lrc17
+    currency: WST
+    penalties:
+      - label: Knowing possession or attempt
+        treatment: criminal
+        term: Possession
+        prison: 14 years
+        note: No fine option
+      - label: Non-wilful or procedural breach
+        treatment: criminal
+        term: Possession
+        prison: 2 years
+        fine: 500
+        note: Fine of up to 5 penalty units, up to two years, or both
   cultivation:
     text: >-
       Section 6 of the Narcotics Act prohibits cultivating a prohibited plant or possessing any of
-      its seed; the Law Reform Commission gives the maximum as 14 years in prison.
+      its seed; the maximum is 14 years in prison, with a non-wilful alternative of up to two years
+      and a SAT$2,000 fine.[@ag2023,lrc17]
+    sources:
+      - ag2023
+      - lrc17
+    currency: WST
+    penalties:
+      - label: Wilful cultivation or seed possession
+        treatment: criminal
+        term: Cultivation
+        prison: 14 years
+      - label: Non-wilful cultivation or seed possession
+        treatment: criminal
+        term: Cultivation
+        prison: 2 years
+        fine: 2000
+        note: Fine of up to 20 penalty units, up to two years, or both
+  enforcement:
+    text: >-
+      One of the Pacific's stricter approaches, with prison used for small amounts.[@lrc17] A 2017
+      review recommended retaining the penalty structure; its narrow proposal to regulate medicinal
+      use under section 29 was not adopted.[@lrc17]
     sources:
       - lrc17
-  enforcement:
-    text: One of the Pacific's stricter approaches, with prison used for small amounts.
-    sources:
-      - wiki
-      - so2
   sharing:
     text: >-
       Supplying or administering an illegal drug to another person is an offence under section 7
-      of the Narcotics Act, as is attempting to.
+      of the Narcotics Act, as is attempting to.[@ag2023] The Class B maximum is fourteen years,
+      with no fine option.[@ag2023]
     sources:
-      - lrc17
+      - ag2023
   consumption:
     text: >-
-      Use is an offence under section 7 of the Narcotics Act, which covers procuring, consuming
-      and smoking as well as possession.
+      Use is an offence under section 7 of the Narcotics Act, which covers procuring, consuming and
+      smoking as well as possession.[@ag2023] The Class B maximum is fourteen years.[@ag2023]
     sources:
-      - lrc17
+      - ag2023
   access:
     text: >-
       None: the Narcotics Act makes possessing, using, supplying and growing cannabis offences,
-      apart from the exemptions the Act itself provides.
+      apart from the exemptions the Act itself provides.[@ag2023]
     sources:
-      - lrc17
+      - ag2023
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Possession, use and supply each carry up to 14 years
+      under Class B, and cultivation or seed possession carries the same maximum.[@ag2023]
+      Sentences are lower in practice: 250 marijuana cigarettes brought 21 months, and 61 plants
+      plus 2,876 seeds brought two years and ten months.[@lrc17]
+    sources:
+      - ag2023
+      - lrc17
   production:
     status: none
-    text: None; a proposal to allow cultivation was rejected by the prime minister.
+    text: >-
+      None; a proposal to allow cultivation was rejected by the prime minister.[@so2] No licensed
+      cannabis production exists.[@ag2023]
     sources:
       - so2
-  products:
-    text: None.
-    sources:
-      - wiki
+      - ag2023
   medical:
     text: >-
-      None. The Samoa Law Reform Commission recommended a regulated medicinal cannabis regime in its
-      2017 final report on the Narcotics Act; the government did not adopt it.
+      None.[@lrc17] The Samoa Law Reform Commission recommended regulating medicinal use under
+      section 29, not creating a dispensary scheme, and the government did not adopt it.[@lrc17] A
+      2015 request for cannabis oil was handled through a Ministry of Health import licence.[@lrc17]
     sources:
-      - so1
-      - wiki
-  consequences:
-    text: A conviction is a criminal record.
-    sources:
-      - wiki
-  clubs:
+      - lrc17
+  hemp:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      No legal hemp category or THC threshold. Cannabis sativa is a prohibited plant under section
+      2, and section 6 bans cultivation and seed possession; cannabis preparations and THC are
+      Class B.[@ag2023] No industrial-hemp licence was found.[@lrc17]
     sources:
-      - wiki
+      - ag2023
+      - lrc17
+  consequences:
+    text: >-
+      A conviction is a criminal record. Village councils have also used banishment against drug
+      offenders, a sanction the Law Reform Commission criticised as harsh and ineffective.[@lrc17]
+    sources:
+      - lrc17
   planting:
     seeds: illegal
     seeds_trade: banned
     clones: illegal
     clones_trade: banned
     text: >-
-      The Narcotics Act 1967 makes it an offence both to cultivate a prohibited plant and to
-      have in one's possession the seed of a prohibited plant, each with a maximum of 14 years
-      in prison. Cannabis is among the prohibited plants, so seeds and living plants are
-      equally banned.
+      The Narcotics Act 1967 makes it an offence both to cultivate a prohibited plant and to have
+      in one's possession the seed of a prohibited plant, each with a maximum of 14 years in
+      prison.[@ag2023] Cannabis is among the prohibited plants, so seeds and living plants are
+      equally banned.[@ag2023]
     sources:
-      - na67
+      - ag2023
+  clubs:
+    status: none
+    text: >-
+      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
+      supplying it to another person are both prohibited.[@ag2023]
+    sources:
+      - ag2023
   visitors:
     status: none
     text: >-
       There is no legal recreational supply. Unauthorised cannabis possession, use or supply falls
-      under the Class B maximum of fourteen years. Section 6 separately punishes prohibited-plant
-      cultivation and seed possession with up to fourteen years, subject to its non-wilful
-      alternative.[@ag2023]
+      under the Class B maximum of fourteen years.[@ag2023] Section 6 separately punishes
+      prohibited-plant cultivation and seed possession with up to fourteen years, subject to its
+      non-wilful alternative.[@ag2023]
     sources:
       - ag2023
   driving:
     status: impairment
     text: >-
-      The Road Traffic Ordinance's section 40(3) prohibits driving or attempting to drive
-      when alcohol, one or more drugs, or their combination makes proper vehicle control
-      impossible. A charge involving drugs must identify at least one relevant drug.
-      The definition includes narcotics and any other substance that can impair driving,
-      so it is not limited to illegal cannabis. The 2023 consolidation provides a fine up
-      to 50 penalty units, up to five years' imprisonment, or both. Conviction normally
-      brings twelve months' licence disqualification, subject to special reasons and the
-      court's power to impose a longer period. The numerical limits in section 40(1)–(2)
-      are for alcohol; no quantified THC allowance is given for the drug-impairment offence.
+      Road Traffic Ordinance section 40(3) prohibits driving or attempting to drive when alcohol,
+      one or more drugs, or their combination makes proper vehicle control impossible.[@traffic2023]
+      A charge involving drugs must identify at least one relevant drug, and the definition includes
+      narcotics and any other substance that can impair driving.[@traffic2023] The 2023
+      consolidation provides a fine up to 50 penalty units, up to five years' imprisonment, or
+      both, and conviction normally brings twelve months' licence disqualification, subject to
+      special reasons.[@traffic2023] The numerical limits in section 40(1)–(2) are for alcohol; no
+      quantified THC allowance is given.[@traffic2023]
     sources:
       - traffic2023
-  arrests:
+  black_market:
     text: >-
-      The Law Reform Commission's 2017 review gives no national arrest total but reports
-      police figures on which offences are charged. The most common drug offence is
-      possession of marijuana, and police told the Commission that most of those cases
-      involve small quantities. Possession of seeds comes second and cultivation third;
-      methamphetamine possession is less common. Reported cases peaked in 2012, 2014 and
-      2015.
+      Cannabis is the most commonly used illegal drug; possession of marijuana is the most-charged
+      drug offence, followed by seed possession and cultivation.[@lrc17] Domestic growing is
+      concentrated in the hills behind Apia; Faleatiu was raided in 2015, 2016 and 2019, and in
+      November 2019 police destroyed more than 10,000 plants and estimated their value at ST$10
+      million.[@sgn19] Recent border seizures include 214 g in a Samoa Post package in January 2025
+      and 90 g in six bottles at Faleolo in February 2026.[@coconet25,so26]
     sources:
       - lrc17
+      - sgn19
+      - coconet25
+      - so26
+  arrests:
+    text: >-
+      Media-reported raids in 2025–26 included 44 arrests in December 2025 and 55 people charged in
+      20 raids between January and May 2026, with marijuana plants and joints among the
+      seizures.[@sgn25,sgn26] No official annual cannabis arrest series is published; the last
+      systematic police data in the Law Reform Commission review covers 2012–2017.[@lrc17]
+    sources:
+      - sgn25
+      - sgn26
+      - lrc17
 sources:
+  ag2023:
+    title: "Samoa Attorney General — Narcotics Act 1967, 2023 consolidation (PDF)"
+    url: https://www.ag.gov.ws/wp-content/uploads/2024/02/Narcotics-Act-1967.pdf
+    locator: "Sections 2, 6, 7, 17–18; Second Schedule, Class B, items 1 and 40–41."
   lrc17:
     title: "Samoa Law Reform Commission — Review of the Narcotics Act 1967 (Drugs Reform), Final Report 21/17, December 2017 (PDF)"
     url: https://samoalawreform.gov.ws/wp-content/uploads/2023/10/Final-Report-Eng-21.pdf
+    locator: "Penalties, sentencing practice, medicinal-use recommendation and police data."
   traffic2023:
     title: "Samoa Attorney General — Road Traffic Ordinance 1960, 2023 consolidation (PDF)"
     url: https://www.ag.gov.ws/wp-content/uploads/2024/02/Road-Traffic-Ordinance-1960.pdf
-    locator: "Section 40(3)–(6)"
-  na67:
-    title: Samoa — Narcotics Act 1967 (PacLII)
-    url: https://www.paclii.org/ws/legis/consol_act/na1967114/
-  wiki:
-    title: Wikipedia — Cannabis in Samoa
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Samoa
-  so1:
-    title: Samoa Observer — Commission completes review of Narcotics Act
-    url: https://www.samoaobserver.ws/category/samoa/26454
+    locator: "Section 40(3)–(6)."
   so2:
-    title: Samoa Observer — P.M. slams door on cannabis cultivation proposal
+    title: "Samoa Observer — P.M. slams door on cannabis cultivation proposal"
     url: https://www.samoaobserver.ws/category/samoa/40985
-  ag2023:
-    title: Samoa Attorney General — Narcotics Act 1967, 2023 consolidation
-    url: https://www.ag.gov.ws/wp-content/uploads/2024/02/Narcotics-Act-1967.pdf
-    locator: >-
-      Sections 2, 6, 7, 17–18; Second Schedule, Class B, items 1 and 40–41, pp. 24–26; Third
-      Schedule starts p. 30
+  sgn19:
+    title: "Samoa Global News — Over $10 million tala worth cannabis in Samoa's biggest drug bust (13 November 2019)"
+    url: https://samoaglobalnews.com/over-10-million-tala-worth-cannabis-in-samoas-biggest-drug-bust-in-samoa
+    locator: "Faleatiu; 10,000+ plants; 11 arrests; ST$1,000 per plant."
+  sgn25:
+    title: "Samoa Global News — 44 arrested in December drug raids (25 December 2025)"
+    url: https://samoaglobalnews.com/185045-270174/
+    locator: "44 arrests; 2.73 g meth; 1.07 g marijuana."
+  sgn26:
+    title: "Samoa Global News — Police update on drug raids: 55 arrests over the last 4 months (26 May 2026)"
+    url: https://samoaglobalnews.com/police-update-on-drug-raids-55-arrests-over-the-last-4-months-aged-between-16-and-53-years/
+    locator: "20 raids; 55 charged; marijuana plants and joints."
+  coconet25:
+    title: "The Coconet — 214 g marijuana intercepted in Samoa Post package (1 February 2025)"
+    url: https://www.thecoconet.tv/coconet-news/214g-marijuana-intercepted-in-samoa-post-package/
+    locator: "214 g in a postal package."
+  so26:
+    title: "Samoa Observer — 90 g cannabis in six bottles seized at Faleolo (12 February 2026)"
+    url: https://www.samoaobserver.ws/category/samoa/118391
+    locator: "90 g; passenger arriving from Nadi; charged under the Narcotics Act."

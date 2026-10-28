@@ -9,6 +9,8 @@ accessible statute.
 |---|---|---|---|
 | Guam | in progress | | |
 | Tonga | in progress | | |
-| Samoa | in progress | | |
+| Samoa | rebuilt on the Narcotics Act 1967, possession/cultivation tables, recreational/hemp/black-market sections, 5 history entries | 1970s and 1980s empty | this commit |
 | French Polynesia | in progress | | |
 | Fiji | in progress | | |
+
+Samoa validation: `profile-audit ws` zero errors/warnings; `country-gaps ws` has no missing sections or tables and no uncited or Wikipedia-only text; `npm test` passes 183/183; the 5,264-page build passed and the page shows two tables. The profile now follows the Class B scale: up to 14 years for possession, use, supply, cultivation or seed possession, with no quantity threshold. The 2017 recommendation is described as regulating medicinal use, not a dispensary scheme.
