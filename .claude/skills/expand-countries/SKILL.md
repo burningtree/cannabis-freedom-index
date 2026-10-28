@@ -13,5 +13,6 @@ guides for every agent working on this repository; this skill only points to the
    country (only your own files) before the next, and keep the batch's progress note in
    `docs/research/expansion-<date>.md`.
 4. If you use subagents, follow section 4 of `docs/EXPAND-COUNTRIES.md`: each worker owns different
-   countries and returns its history entries as a `history-batch.cjs` file; only you edit
-   `changes.yaml`, build and commit.
+   countries and returns its history entries as a `history-batch.cjs` file, with its articles
+   drafted in `.cache/drafts/articles/`, not in `articles/`; only you edit `changes.yaml`, move the
+   articles in after their entries, run `npm test`, build and commit.

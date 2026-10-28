@@ -1,6 +1,7 @@
 // Loads the YAML data (see /countries and /segments.yaml) and derives everything the
 // pages need: index scores, ranks, averages. Runs once at build time.
 import { getCollection } from "astro:content";
+import { broken } from "./integrity.js";
 import { existsSync } from "node:fs";
 import { CHANGE_CATEGORIES, CHANGE_TAGS, SEGMENT_IDS, STATUS_SECTIONS } from "./segment-ids.js";
 import { sourceTuple } from "./sources.js";
@@ -317,7 +318,7 @@ export const changes = changeEntries
 
 // Long reads: articles/<change id>.md. Every article must belong to a history entry.
 export const articles = new Map((await getCollection("articles")).map((a) => [a.id, a]));
-for (const id of articles.keys()) if (!changes.some((ch) => ch.id === id)) throw new Error(`articles/${id}.md: there is no history entry "${id}" in changes.yaml`);
+for (const id of articles.keys()) if (!changes.some((ch) => ch.id === id)) { broken(`articles/${id}.md: there is no history entry "${id}" in changes.yaml`); articles.delete(id); }
 
 // A country's population at a moment in time, on a straight line between its snapshots.
 const MS_YEAR = 365.25 * 24 * 3600 * 1000;

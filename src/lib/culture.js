@@ -2,6 +2,7 @@
 // Every entry names the countries where the word is said or the custom kept, and the history
 // entries it touches; both must exist, so a typing mistake stops the build.
 import { getCollection } from "astro:content";
+import { broken } from "./integrity.js";
 import { places, changes } from "./countries.js";
 import { sourceTuple } from "./sources.js";
 import { LINK_MARK } from "./cite.js";
@@ -30,25 +31,25 @@ export const cultureEntries = (await getCollection("culture"))
     });
     const history = d.history.map((id) => {
       const ch = changes.find((x) => x.id === id);
-      if (!ch) throw new Error(`${file}: there is no history entry "${id}"`);
+      if (!ch) broken(`${file}: there is no history entry "${id}"`);
       return ch;
-    }).sort((a, b) => a.date.localeCompare(b.date));
+    }).filter(Boolean).sort((a, b) => a.date.localeCompare(b.date));
     const historyCards = d.history_cards.map((id) => {
       const ch = changes.find((x) => x.id === id);
-      if (!ch) throw new Error(`${file}: history_cards names an unknown history entry "${id}"`);
+      if (!ch) { broken(`${file}: history_cards names an unknown history entry "${id}"`); return null; }
       if (!d.history.includes(id)) throw new Error(`${file}: history_cards entry "${id}" must also be in history`);
       return ch;
-    });
+    }).filter(Boolean);
     // every history entry the text relies on is linked in the text, and every history entry the
     // text links to is listed in `history`, so the entry, its history list and the history pages
     // stay interlinked (docs/CULTURE.md, Countries and links)
     const linked = new Set([...(entry.body ?? "").matchAll(/\]\(\/history\/([^/)#]+)/g)].map((m) => m[1]));
-    for (const id of d.history) if (!linked.has(id)) throw new Error(`${file}: "${id}" is in history but the text never links to /history/${id}/; mention and link it in the text`);
-    for (const id of linked) if (!d.history.includes(id)) throw new Error(`${file}: the text links to /history/${id}/ but "${id}" is not in history`);
+    for (const id of d.history) if (!linked.has(id)) broken(`${file}: "${id}" is in history but the text never links to /history/${id}/; mention and link it in the text`);
+    for (const id of linked) if (!d.history.includes(id)) broken(`${file}: the text links to /history/${id}/ but "${id}" is not in history`);
     // links in the text to pages of this site must lead somewhere
     for (const [, kind, id] of (entry.body ?? "").matchAll(/\]\(\/(history|country)\/([^/)#]+)\/?[^)]*\)/g)) {
       const found = kind === "history" ? changes.some((x) => x.id === id) : places.some((x) => x.slug === id);
-      if (!found) throw new Error(`${file}: the text links to /${kind}/${id}/, which does not exist`);
+      if (!found) broken(`${file}: the text links to /${kind}/${id}/, which does not exist`);
     }
     return { entry, section, slug, url: `culture/${section}/${slug}/`, ...d, countries, history, historyCards, sources: d.sources.map(sourceTuple) };
   })
@@ -56,7 +57,7 @@ export const cultureEntries = (await getCollection("culture"))
   .sort((a, b) => (a.featured ?? Infinity) - (b.featured ?? Infinity) || a.title.localeCompare(b.title));
 // and so must links from one entry to another
 for (const e of cultureEntries) for (const [, path] of (e.entry.body ?? "").matchAll(/\]\(\/(culture\/(?:language|traditions|people)\/[^/)#]+)\/?[^)]*\)/g)) {
-  if (!cultureEntries.some((x) => x.url === path + "/")) throw new Error(`culture/${e.entry.id}.md: the text links to /${path}/, which does not exist`);
+  if (!cultureEntries.some((x) => x.url === path + "/")) broken(`culture/${e.entry.id}.md: the text links to /${path}/, which does not exist`);
 }
 // Links in a country profile's segment and context texts to a history entry or a culture entry
 // must lead somewhere too (docs/DATA-MAINTENANCE.md, Links)
@@ -65,8 +66,8 @@ for (const c of places) {
   const blocks = [...c.details.segments, ...c.details.context.filter(Boolean).flatMap((x) => x.items ?? [x])];
   for (const b of blocks) for (const [, , href] of (b?.cite?.text ?? "").matchAll(LINK_MARK)) {
     const history = /^\/history\/([^/#]+)\/?$/.exec(href), culture = /^\/(culture\/(?:language|traditions|people)\/[^/#]+)\/?$/.exec(href);
-    if (history && !historyIds.has(history[1])) throw new Error(`countries/${c.slug}.yaml: a text links to ${href}, but there is no history entry "${history[1]}"`);
-    if (culture && !cultureEntries.some((x) => x.url === culture[1] + "/")) throw new Error(`countries/${c.slug}.yaml: a text links to ${href}, which does not exist`);
+    if (history && !historyIds.has(history[1])) broken(`countries/${c.slug}.yaml: a text links to ${href}, but there is no history entry "${history[1]}"`);
+    if (culture && !cultureEntries.some((x) => x.url === culture[1] + "/")) broken(`countries/${c.slug}.yaml: a text links to ${href}, which does not exist`);
   }
 }
 

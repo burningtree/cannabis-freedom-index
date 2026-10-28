@@ -13,3 +13,6 @@ repository; this skill only points to it.
 3. Work through the guide's steps in order: current law and penalty tables, history, articles,
    context sections, culture and the country's words for cannabis, sources, then build and commit
    only your own files.
+   Add a history entry to `changes.yaml` before you write its article (`articles/<entry id>.md`) or
+   link to it; an article or link without its entry stops the build for everyone. Run `npm test`
+   before you finish: it names any that are missing.

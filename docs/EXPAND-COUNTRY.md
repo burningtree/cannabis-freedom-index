@@ -62,6 +62,12 @@ today:
 
 ## 4. Articles
 
+- **The history entry comes first.** An article is the long read of one entry: its file is
+  `articles/<entry id>.md`, and the entry must already be in `changes.yaml` when you save it.
+  The same holds for every `/history/<id>/` link and every atlas entry's `history:` list. Save an
+  article or a link before its entry (or rename an entry without renaming its article) and the
+  build stops for everyone working here. If you cannot add the entry yourself (a worker in a
+  batch, see EXPAND-COUNTRIES.md section 4), keep the draft out of `articles/` until it is in.
 - Pick from `article-backlog.cjs --country <id>`: score-moving entries and the current law first.
 - 350–500 words, three to five short sections, at most one small table (WRITING.md, "Articles").
 - Cite per sentence with `[@n]`. Link the earlier and later history entries and the country page.
@@ -131,6 +137,8 @@ npm run profiles:audit # must report no errors for your country (node scripts/pr
 node scripts/country-gaps.cjs ke   # the list should be shorter
 ```
 
+- Run `npm test` before you finish or hand over: it takes seconds, and
+  `scripts/history-links.test.cjs` names any article or link whose history entry is missing.
 - Include changed atlas entries' `culture/<section>/<slug>` paths in the review build too.
 - Look at `.cache/page-review/country/<id>/index.html` and the changed entries for the sections,
   tables and links. For routing or shared-link changes, run `npm run build && npm run seo:audit`;

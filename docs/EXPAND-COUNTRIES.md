@@ -68,8 +68,12 @@ Parallel work is fine if each agent owns its countries and one agent coordinates
 - **Each worker** edits only its own countries' files (profiles, articles, atlas entries for those
   countries) and returns its new or corrected history entries as a `history-batch.cjs` JSON file
   instead of editing `changes.yaml`, plus a short list of what it found and could not verify.
-- The coordinator applies each worker's history file, builds once, checks the pages, and commits
-  each country separately.
+  Its articles wait with that file, outside `articles/` (in `.cache/drafts/articles/<entry id>.md`),
+  because an article whose entry is not yet in `changes.yaml` stops the build for everyone; the
+  same goes for profile text that links to a `/history/<id>/` entry not yet added.
+- The coordinator applies each worker's history file first, then moves its drafted articles into
+  `articles/` and runs `npm test`, builds once, checks the pages, and commits each country
+  separately, with the entries and their articles in the same commit.
 - Never let two workers have the same country, and never let a worker revert or reformat a file it
   does not own.
 

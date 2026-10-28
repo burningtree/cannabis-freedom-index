@@ -21,6 +21,9 @@ cannabis law (`changes.yaml`, `articles/`) and a cultural atlas (`culture/`), bu
   (required before deployment, or when changing routing/shared links). Full HTML is in `dist/`.
   `npm run build:quick` builds all pages without social cards. Builds lock automatically;
   if another build is running, wait and retry. Never delete another process's lock.
+- A history entry goes into `changes.yaml` before its article (`articles/<entry id>.md`) or any
+  link to `/history/<id>/`; otherwise the build stops for everyone. `npm test` names any that are
+  missing (the dev server only warns and leaves them out).
 - Both builds run `npm test` first (answers, profile claims, history, charts, research, survey; a
   few seconds) and stop if a test fails. Run `npm test` alone for a quick check. A new test file
   goes into the `test` script in `package.json`.
