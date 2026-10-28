@@ -13,39 +13,9 @@ const GROUPINGS = [
     members: ["at", "be", "bg", "hr", "cy", "cz", "dk", "ee", "fi", "fr", "de", "gr", "hu", "ie", "it", "lv", "lt", "lu", "mt", "nl", "pl", "pt", "ro", "sk", "si", "es", "se"],
   },
   {
-    slug: "schengen", name: "Schengen Area", short: "Schengen", of: "Europe",
-    about: "The 29 countries without border checks between them, Bulgaria and Romania fully since 2025: a traveller crosses from a country that tolerates cannabis into one that punishes it without a passport check.",
-    members: ["at", "be", "bg", "hr", "cz", "dk", "ee", "fi", "fr", "de", "gr", "hu", "is", "it", "lv", "li", "lt", "lu", "mt", "nl", "no", "pl", "pt", "ro", "sk", "si", "es", "se", "ch"],
-  },
-  {
-    slug: "nordic", name: "Nordic countries", short: "Nordic", of: "Europe",
-    about: "Denmark, Finland, Iceland, Norway and Sweden, with Greenland and the Faroe Islands.",
-    members: ["dk", "fi", "is", "no", "se", "gl", "fo"],
-  },
-  {
-    slug: "asean", name: "ASEAN", short: "ASEAN", of: "Asia",
-    about: "The 11 members of the Association of Southeast Asian Nations, Timor-Leste the newest since 2025.",
-    members: ["bn", "kh", "id", "la", "my", "mm", "ph", "sg", "th", "vn", "tl"],
-  },
-  {
-    slug: "gcc", name: "Gulf Cooperation Council", short: "Gulf", of: "Asia",
-    about: "The six monarchies of the Gulf Cooperation Council: Bahrain, Kuwait, Oman, Qatar, Saudi Arabia and the United Arab Emirates.",
-    members: ["ae", "bh", "kw", "om", "qa", "sa"],
-  },
-  {
-    slug: "caricom", name: "Caribbean Community", short: "CARICOM", of: "North America",
-    about: "The full members of the Caribbean Community, from the Bahamas to Suriname and Guyana. Montserrat, a British territory and also a member, has no profile here yet.",
-    members: ["ag", "bs", "bb", "bz", "dm", "gd", "gy", "ht", "jm", "kn", "lc", "vc", "sr", "tt"],
-  },
-  {
-    slug: "mercosur", name: "Mercosur", short: "Mercosur", of: "South America",
-    about: "The full members of the Southern Common Market: Argentina, Bolivia, Brazil, Paraguay and Uruguay. Venezuela's membership is suspended.",
-    members: ["ar", "bo", "br", "py", "uy"],
-  },
-  {
-    slug: "g7", name: "Group of Seven", short: "G7",
-    about: "The seven large economies of the G7: Canada, France, Germany, Italy, Japan, the United Kingdom and the United States.",
-    members: ["ca", "fr", "de", "it", "jp", "gb", "us"],
+    slug: "brics", name: "BRICS", short: "BRICS",
+    about: "The ten members of BRICS: Brazil, Russia, India, China and South Africa, joined by Egypt, Ethiopia, Iran and the United Arab Emirates in 2024 and Indonesia in 2025.",
+    members: ["br", "ru", "in", "cn", "za", "eg", "et", "ir", "ae", "id"],
   },
 ];
 

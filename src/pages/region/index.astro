@@ -22,17 +22,17 @@ const years = Array.from({ length: Y1 - Y0 + 1 }, (_, i) => Y0 + i);
 const world = { slug: "world", name: "World", values: years.map((y) => yearEnd(averageHistory, y)), world: true };
 const CW = 960, CH = 360, PL = 34, PR = 120, PT = 12, PB = 28;
 const cx = (y) => PL + ((y - Y0) / (Y1 - Y0)) * (CW - PL - PR);
-// two charts behind a switch, continents and groups of countries, each with the world line
-const sets = [["continent", "Continents"], ["grouping", "Groups of countries"]].map(([kind, label]) => {
-  const lines = [...regions.filter((r) => r.kind === kind).map((r) => ({ slug: r.slug, name: r.short, values: years.map((y) => yearEnd(r.series.history, y)) })), world];
+// the continents, then the groupings, then the world
+const chart = (() => {
+  const lines = [...regions.map((r) => ({ slug: r.slug, name: r.short, values: years.map((y) => yearEnd(r.series.history, y)) })), world];
   const top = Math.ceil(Math.max(...lines.flatMap((l) => l.values)) / 10) * 10;
   const cy = (v) => PT + (1 - v / top) * (CH - PT - PB);
   const drawn = lines.map((l) => ({ ...l, d: l.values.map((v, i) => `${i ? "L" : "M"}${cx(years[i]).toFixed(1)},${cy(v).toFixed(1)}`).join("") }));
   // the names at the right end, pushed apart where lines end close together
   const labels = [...drawn].sort((a, b) => b.values.at(-1) - a.values.at(-1)).map((l) => ({ l, y: cy(l.values.at(-1)) }));
   for (let i = 1; i < labels.length; i++) labels[i].y = Math.max(labels[i].y, labels[i - 1].y + 15);
-  return { kind, label, lines: drawn, labels, cy, gridY: Array.from({ length: top / 10 + 1 }, (_, i) => i * 10) };
-});
+  return { lines: drawn, labels, cy, gridY: Array.from({ length: top / 10 + 1 }, (_, i) => i * 10) };
+})();
 const gridX = years.filter((y) => y % 20 === 0);
 ---
 <Base title="Regions" description="Cannabis laws by region: Europe, the European Union, Africa, Asia, the Americas and Oceania, each with its countries' scores, legal status, a map and the latest changes.">
@@ -49,12 +49,9 @@ const gridX = years.filter((y) => y % 20 === 0);
         <h2 id="rgpTrend">Every region over time</h2>
         <p class="sub">The average score of each region's countries at the end of each year, rebuilt from the recorded history. Point at a line to pick it out.</p>
       </div></div>
-      <div class="avg-switch rgp-switch" role="group" aria-label="Regions shown">
-        {sets.map((t, i) => <button type="button" data-set={t.kind} aria-pressed={i === 0 ? "true" : "false"}>{t.label}</button>)}
-      </div>
-      {sets.map((t, i) => (
-        <figure class="rgp-trend" data-rgp-trend data-set={t.kind} hidden={i > 0}>
-          <svg viewBox={`0 0 ${CW} ${CH}`} role="img" aria-label={`Average score, ${t.label.toLowerCase()}, ${Y0} to ${Y1}: ${t.lines.map((l) => `${l.name} ${l.values.at(-1).toFixed(1)}`).join(", ")}`}>
+      {[chart].map((t) => (
+        <figure class="rgp-trend" data-rgp-trend>
+          <svg viewBox={`0 0 ${CW} ${CH}`} role="img" aria-label={`Average score by region, ${Y0} to ${Y1}: ${t.lines.map((l) => `${l.name} ${l.values.at(-1).toFixed(1)}`).join(", ")}`}>
             {t.gridY.map((v) => <g class="rgp-grid"><line x1={PL} x2={CW - PR} y1={t.cy(v)} y2={t.cy(v)} /><text x={PL - 8} y={t.cy(v) + 4} text-anchor="end">{v}</text></g>)}
             {gridX.map((y) => <text class="rgp-axis" x={cx(y)} y={CH - 8} text-anchor="middle">{y}</text>)}
             {t.lines.map((l) => <path class:list={["rgp-line", { "rgp-world": l.world }]} d={l.d} data-r={l.slug}><title>{l.name}: {l.values.at(-1).toFixed(1)} in {Y1}</title></path>)}
@@ -100,9 +97,4 @@ const gridX = years.filter((y) => y % 20 === 0);
     });
     fig.addEventListener("mouseleave", () => { fig.classList.remove("picking"); set(null); });
   }
-  // the switch between continents and groups of countries
-  for (const btn of document.querySelectorAll(".rgp-switch button")) btn.addEventListener("click", () => {
-    btn.parentElement.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-    document.querySelectorAll("[data-rgp-trend]").forEach((f) => { f.hidden = f.dataset.set !== btn.dataset.set; });
-  });
 </script>
