@@ -9,10 +9,12 @@ None was marked busy.
 |---|---|---|---|
 | Myanmar | in progress | | |
 | Iraq | in progress | | |
-| Saudi Arabia | in progress | | |
+| Saudi Arabia | 2025 executions article, deportation/licence penalties, flogging and CBD fixes, 4 words, 3 history entries | no patient programme | this commit |
 | Malaysia | 2023 article, 936-case correction, 2018 date fix, 4 words, 4 history entries | no 2026 medical product | this commit |
 | Israel | 1925 article, 15 g presumption correction, medical cap nuance, 5 words, 1 history entry | zero-fine practice unverified for 2026 | this commit |
 
 Israel validation: `profile-audit il` zero errors and warnings. The profile now treats the 15 g line as a presumption rather than a cap, corrects the table note and the 60 g medical cap nuance, adds five Hebrew/Arabic terms and sources the 1925 ordinance to its text and the League convention. The 1925 entry has a 459-word article; one entry records the 2026 Canadian dumping inquiry.
 
 Malaysia validation: `profile-audit my` zero errors and warnings. The profile now says the 2023 reform reviewed 936 death-row cases rather than opening a general application window, drops the unsupported materia-medica clause, uses the current Act for planting and adds four Malay terms. The 2017 entry is corrected to 15 March 2018; four entries cover 2024–2026, and the 478-word 2023 article is in `articles/`.
+
+Saudi Arabia validation: `profile-audit sa` zero errors and warnings. The profile now records articles 56–57 on deportation, travel bans and licence revocation, notes that statutory flogging remains despite the 2020 abolition, clarifies the 2026 synthetic-CBD rule and adds four Arabic terms. Three entries cover the 2026 UN opinion, first-half executions and the August 2026 hashish execution; the 442-word 2025 executions article is in `articles/`.

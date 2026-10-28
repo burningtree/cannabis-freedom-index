@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 682
 recreational: death
 medical: none
-updated: 2026-10-12
+updated: "2026-10-29"
 summary: >-
   Prison for possession and use; long terms or death for trafficking. Discretionary flogging ended
   in 2020, but drug executions resumed in 2022 and continued in hashish cases through 2026.
@@ -17,10 +17,10 @@ scores:
 segments:
   possession:
     text: >-
-      Article 41 punishes possessing, buying, receiving or otherwise obtaining cannabis for
-      personal use with six months to two years in prison.[@law] There is no exempt personal amount
-      and no quantity threshold.[@law] Where personal use cannot be proved, Article 39 provides two
-      to five years and a fine of 3,000 to 30,000 riyals for possession without trade, promotion or
+      Article 41 punishes possessing, buying, receiving or otherwise obtaining cannabis for personal
+      use with six months to two years in prison.[@law] There is no exempt personal amount and no
+      quantity threshold.[@law] Where personal use cannot be proved, Article 39 provides two to five
+      years and a fine of 3,000 to 30,000 riyals for possession without trade, promotion or
       use.[@law]
     sources:
       - law
@@ -31,7 +31,9 @@ segments:
         term: Possession
         prison_min: 6 months
         prison: 2 years
-        note: No exempt personal amount; treatment substitution available for dependent and voluntary users
+        note: >-
+          No exempt personal amount; treatment substitution available for dependent and voluntary
+          users
       - label: Possession without proven purpose (Article 39)
         treatment: criminal
         term: Possession
@@ -40,10 +42,14 @@ segments:
         fine_min: 3000
         fine: 30000
         note: Flogging remains in the statute, though discretionary flogging was abolished in 2020
+        caning:
+          - 1
+          - 50
   cultivation:
     text: >-
-      Cannabis and its seeds are listed as prohibited plants.[@schedule] Unauthorised cultivation is a crime
-      and cultivation connected with supply is treated under the law's trafficking provisions.[@law]
+      Cannabis and its seeds are listed as prohibited plants.[@schedule] Unauthorised cultivation is
+      a crime and cultivation connected with supply is treated under the law's trafficking
+      provisions.[@law]
     sources:
       - law
       - schedule
@@ -69,18 +75,19 @@ segments:
   enforcement:
     text: >-
       Personal users face prison.[@law] Article 37 permits death sentences for importing, exporting,
-      manufacturing or receiving drugs for distribution, although a court may reduce the sentence
-      to at least 15 years in prison.[@law] Discretionary flogging was abolished in 2020, but executions
-      resumed in 2022 and people were executed for hashish smuggling as recently as July 2026.[@amnesty,hrw]
+      manufacturing or receiving drugs for distribution, although a court may reduce the sentence to
+      at least 15 years in prison.[@law] Discretionary flogging was abolished in 2020, but
+      executions resumed in 2022 and people were executed for hashish smuggling as recently as July
+      2026.[@amnesty,hrw]
     sources:
       - law
       - amnesty
       - hrw
   sharing:
     text: >-
-      Giving cannabis to another person for promotion, even without payment, is treated as dealing.[@law]
-      Article 38 provides five to 15 years in prison and a fine; aggravated or repeat trafficking
-      can bring longer imprisonment or death.[@law]
+      Giving cannabis to another person for promotion, even without payment, is treated as
+      dealing.[@law] Article 38 provides five to 15 years in prison and a fine; aggravated or repeat
+      trafficking can bring longer imprisonment or death.[@law]
     sources:
       - law
     currency: SAR
@@ -93,38 +100,45 @@ segments:
         fine_min: 1000
         fine: 50000
         note: Aggravated or repeat trafficking can bring longer imprisonment or death
+        caning:
+          - 1
+          - 50
       - label: Smuggling, import, manufacture or cultivation to promote (Article 37)
         treatment: criminal
         term: Trafficking
         death: true
-        note: Death; courts may reduce to a term of years and a fine in mitigating cases, or impose 25 years with aggravating factors
+        note: >-
+          Death; courts may reduce to a term of years and a fine in mitigating cases, or impose 25
+          years with aggravating factors
   consumption:
     text: >-
-      Use is a crime within Article 41's six-month-to-two-year prison range.[@law] A dependent user may be
-      sent to treatment instead, and someone who voluntarily seeks treatment can avoid prosecution
-      if the law's conditions are met.[@law]
+      Use is a crime within Article 41's six-month-to-two-year prison range.[@law] A dependent user
+      may be sent to treatment instead, and someone who voluntarily seeks treatment can avoid
+      prosecution if the law's conditions are met.[@law]
     sources:
       - law
   access:
-    text: None. Cannabis is a prohibited plant and there is no medical or adult-use supply route.[@schedule]
+    text: >-
+      None. Cannabis is a prohibited plant and there is no medical or adult-use supply
+      route.[@schedule]
     sources:
       - schedule
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. Possessing, buying or obtaining cannabis for
-      personal use brings six months to two years with no exempt amount; dependent users may
-      be sent to treatment instead, and voluntary treatment-seekers can avoid prosecution if
-      conditions are met.[@law] Giving cannabis to another person counts as dealing: five to
-      fifteen years and a fine, with death available for aggravated trafficking.[@law]
+      There is no legal recreational supply. Possessing, buying or obtaining cannabis for personal
+      use brings six months to two years with no exempt amount; dependent users may be sent to
+      treatment instead, and voluntary treatment-seekers can avoid prosecution if conditions are
+      met.[@law] Giving cannabis to another person counts as dealing: five to fifteen years and a
+      fine, with death available for aggravated trafficking.[@law]
     sources:
       - law
   death_penalty:
     text: >-
       Article 37 permits death sentences for importing, exporting, manufacturing or receiving drugs
-      for distribution, although a court may reduce the sentence to at least 15 years in prison.[@law]
-      Executions resumed in 2022, and people were executed for hashish smuggling as recently as July
-      2026.[@amnesty,hrw]
+      for distribution, although a court may reduce the sentence to at least 15 years in
+      prison.[@law] Executions resumed in 2022, and people were executed for hashish smuggling as
+      recently as July 2026.[@amnesty,hrw]
     sources:
       - law
       - amnesty
@@ -138,31 +152,35 @@ context:
       - schedule
   medical:
     text: >-
-      No medical cannabis programme.[@law] The law licenses some medicines containing controlled drugs,
-      but cannabis itself remains on the prohibited-plant schedule rather than a patient-access
-      pathway.[@schedule]
+      No medical cannabis programme.[@law] The law licenses some medicines containing controlled
+      drugs, but cannabis itself remains on the prohibited-plant schedule rather than a
+      patient-access pathway.[@schedule] The 2026 general provisions allow certified synthetic CBD
+      with no THC and controlled medical CBD preparations, but no cannabis medicine or patient route
+      was found.[@uqn26]
     sources:
       - law
       - schedule
+      - uqn26
   hemp:
     status: none
     text: >-
       Cannabis plants and seeds are on Schedule 4 and prohibited at every growth stage; there is no
       fibre, seed-food or THC-threshold exemption.[@schedule] The 2026 general provisions ban
       herbal-source CBD, while fully synthetic CBD with no THC is exempt if certified by an
-      accredited laboratory, and approved medical CBD preparations remain controlled.[@uqn26]
-      There is no industrial-hemp licensing scheme.[@schedule]
+      accredited laboratory, and approved medical CBD preparations remain controlled.[@uqn26] There
+      is no industrial-hemp licensing scheme.[@schedule]
     sources:
       - schedule
       - uqn26
   consequences:
     text: >-
-      A drug conviction carries a criminal record and the penalties in the tables.[@law] Foreign Hajj
-      or Umrah visitors caught with a personal-use amount may be deported instead of prosecuted
-      under Article 47; general deportation of foreign convicts rests on the residency law, which was
-      not verified here.[@law] Discretionary flogging was abolished in 2020, but the drug statute
-      still prescribes it and judges have reportedly continued to impose it in some drug
-      cases.[@law]
+      A drug conviction carries a criminal record and the penalties in the tables.[@law] Foreign
+      Hajj or Umrah visitors caught with a personal-use amount may be deported instead of prosecuted
+      under Article 47.[@law] Article 56 requires deportation of a non-Saudi after sentence and bars
+      return except for Hajj and Umrah; it also bans a convicted Saudi from travelling abroad for
+      the prison term or at least two years, and article 57 revokes professional and trade
+      licences.[@law] Discretionary flogging was abolished in 2020, but the drug statute still
+      prescribes it and judges have reportedly continued to impose it in some drug cases.[@law]
     sources:
       - law
   planting:
@@ -171,12 +189,11 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      Article 3 of the narcotics law bans growing the listed plants and importing, owning or
-      holding any part of them at any stage of growth, as well as their seeds; anyone who does
-      work needed for seeds or seedlings to grow counts as a grower.[@moh19] Holding or selling seeds
-      with intent to traffic carries five to fifteen years under Article 38.[@law] The Interior
-      Minister may license only government bodies and research centres to import and sow
-      seeds.[@moh19]
+      Article 3 of the narcotics law bans growing the listed plants and importing, owning or holding
+      any part of them at any stage of growth, as well as their seeds; anyone who does work needed
+      for seeds or seedlings to grow counts as a grower.[@moh19] Holding or selling seeds with
+      intent to traffic carries five to fifteen years under Article 38.[@law] The Interior Minister
+      may license only government bodies and research centres to import and sow seeds.[@moh19]
     sources:
       - moh19
       - law
@@ -194,8 +211,8 @@ context:
   black_market:
     text: >-
       Border operations in December 2024 seized 1.3 tonnes of hashish, 136 tonnes of khat and about
-      1.4 million pills, with more than 1,800 arrests.[@spa24] In June 2025 another operation took
-      4 tonnes of hashish, 180 tonnes of khat and 2,411 arrests; in August 2026 a third took 2.8
+      1.4 million pills, with more than 1,800 arrests.[@spa24] In June 2025 another operation took 4
+      tonnes of hashish, 180 tonnes of khat and 2,411 arrests; in August 2026 a third took 2.8
       tonnes of hashish, 138 tonnes of khat and 1,980 arrests.[@spa25,spa26] These are operation
       totals, not annual statistics, and no cannabis price data were found.
     sources:
@@ -207,8 +224,8 @@ context:
       No public annual arrest total was found. Single border operations reported more than 1,800
       arrests in December 2024, 2,411 in June 2025 and 1,980 in August 2026, mostly foreign
       migrants.[@spa24,spa25,spa26] In 2025 the kingdom executed 356 people, 240 of them for
-      non-lethal drug offences and 98 solely for hashish; 2024 saw 345 executions.[@hrw25] These
-      are all-drug figures except where hashish is named.
+      non-lethal drug offences and 98 solely for hashish; 2024 saw 345 executions.[@hrw25] These are
+      all-drug figures except where hashish is named.
     sources:
       - spa24
       - spa25
@@ -218,45 +235,58 @@ context:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.[@law]
+      supplying it to another person are both prohibited, and the law provides for the death penalty
+      for the most serious drug offences.[@law]
     sources:
       - law
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone.[@law] Article 41 of the narcotics law punishes
-      possessing, buying or receiving cannabis for personal use with six months to two years in
-      prison, and no amount is exempt.[@law]
+      There is no legal recreational supply for anyone.[@law] Article 41 of the narcotics law
+      punishes possessing, buying or receiving cannabis for personal use with six months to two
+      years in prison, and no amount is exempt.[@law]
     sources:
       - law
 sources:
   moh19:
-    title: نظام مكافحة المخدرات والمؤثرات العقلية ولائحته التنفيذية — Ministry of Health compilation, 2019 (PDF)
+    title: >-
+      نظام مكافحة المخدرات والمؤثرات العقلية ولائحته التنفيذية — Ministry of Health compilation,
+      2019 (PDF)
     url: https://www.moh.gov.sa/eServices/Licences/Documents/17.pdf
   uqn26:
     type: law
-    title: "Saudi Arabia — Umm al-Qura general provisions on narcotics schedules (4 September 2026)"
+    title: Saudi Arabia — Umm al-Qura general provisions on narcotics schedules (4 September 2026)
     url: https://www.uqn.gov.sa/decisions-and-regulations/4001776
-    locator: "Rule 9: herbal-source CBD banned; fully synthetic 0% THC CBD exempt if certified; approved medical CBD preparations remain controlled."
+    locator: >-
+      Rule 9: herbal-source CBD banned; fully synthetic 0% THC CBD exempt if certified; approved
+      medical CBD preparations remain controlled.
   traffic:
     type: law
-    title: "Saudi Arabia — Traffic Law, Royal Decree M/85 of 2007, Article 68 and penalty schedule"
+    title: Saudi Arabia — Traffic Law, Royal Decree M/85 of 2007, Article 68 and penalty schedule
     url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/85364e57-c01e-41ba-8def-a9a700f183e9/1
-    locator: "Article 68: driving under alcohol, drugs or warned prescription medicines; penalty schedule fine 5,000–10,000 riyals and licence suspension."
+    locator: >-
+      Article 68: driving under alcohol, drugs or warned prescription medicines; penalty schedule
+      fine 5,000–10,000 riyals and licence suspension.
   spa24:
-    title: "Saudi Press Agency — Border Guard seizes 1.3 tonnes of hashish and 136 tonnes of khat (28 December 2024)"
+    title: >-
+      Saudi Press Agency — Border Guard seizes 1.3 tonnes of hashish and 136 tonnes of khat (28
+      December 2024)
     url: https://www.spa.gov.sa/w2234434
   spa25:
-    title: "Saudi Press Agency — Border Guard seizes 4 tonnes of hashish and 180 tonnes of khat (12 June 2025)"
+    title: >-
+      Saudi Press Agency — Border Guard seizes 4 tonnes of hashish and 180 tonnes of khat (12 June
+      2025)
     url: https://www.spa.gov.sa/en/N2338988
   spa26:
-    title: "Saudi Gazette — Border Guard seizes 2.8 tonnes of hashish and 138 tonnes of khat (23 August 2026)"
-    url: https://saudigazette.com.sa/article/663959/saudi-arabia/saudi-border-guard-seizes-millions-of-tablets-138-tons-of-khat-in-anti-smuggling-operations
+    title: >-
+      Saudi Gazette — Border Guard seizes 2.8 tonnes of hashish and 138 tonnes of khat (23 August
+      2026)
+    url: >-
+      https://saudigazette.com.sa/article/663959/saudi-arabia/saudi-border-guard-seizes-millions-of-tablets-138-tons-of-khat-in-anti-smuggling-operations
   hrw25:
     title: "Human Rights Watch — Saudi Arabia: Record Number of Executions in 2025 (13 January 2026)"
     url: https://www.hrw.org/news/2026/01/13/saudi-arabia-record-number-of-executions-in-2025
-    locator: "356 executions in 2025; 240 drug-related; 98 hashish-only; 345 in 2024."
+    locator: 356 executions in 2025; 240 drug-related; 98 hashish-only; 345 in 2024.
   law:
     title: Saudi Bureau of Experts — Law of Combating Narcotics and Psychotropic Substances
     url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/221b3286-a3c6-4ea4-97c7-a9a700f18273/2
@@ -274,3 +304,39 @@ sources:
   hrw:
     title: Human Rights Watch — Saudi Arabia, new executions of Ethiopian migrants
     url: https://www.hrw.org/news/2026/07/28/saudi-arabia-new-executions-of-ethiopian-migrants
+  wikt_hashish:
+    title: Wiktionary — حشيش
+    url: https://en.wiktionary.org/wiki/حشيش
+    locator: Hashish; cannabis resin.
+  wikt_qinnab:
+    title: Wiktionary — قنب
+    url: https://en.wiktionary.org/wiki/قنب
+    locator: Hemp; cannabis.
+words:
+  - word: حشيش
+    lang: Arabic
+    say: ḥashīsh
+    meaning: hashish; cannabis resin and, generally, cannabis
+    atlas: hashish
+    sources:
+      - schedule
+      - wikt_hashish
+  - word: قنب هندي
+    lang: Arabic
+    say: qinnab hindī
+    meaning: Indian hemp; the law’s botanical name for Cannabis sativa in all forms
+    sources:
+      - schedule
+  - word: مارجوانا
+    lang: Arabic
+    say: mārjwānā
+    meaning: marijuana; borrowed name listed alongside hashish
+    sources:
+      - schedule
+  - word: قنب
+    lang: Arabic
+    say: qinnab
+    meaning: hemp, cannabis; the general plant and fibre word
+    sources:
+      - schedule
+      - wikt_qinnab
