@@ -25,6 +25,23 @@ segments:
       recommendation.[@rd67]
     sources:
       - rd67
+    currency: OMR
+    penalties:
+      - label: Personal possession, purchase, production or growing, Article 41(1)
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 1000
+        fine: 5000
+        note: Court may order residential or outpatient treatment for established dependence
+      - label: Possession without intent to trade, consume or personal use, Article 41(3)
+        treatment: criminal
+        term: Possession
+        prison_min: 3 years
+        prison: 7 years
+        fine_min: 1000
+        fine: 7000
   cultivation:
     text: >-
       Articles 3 and 7 prohibit unauthorised growing of listed plants and reserve growing licences for
@@ -34,6 +51,22 @@ segments:
       range and fine of 35,000–60,000 rials.[@rd67]
     sources:
       - rd67
+    currency: OMR
+    penalties:
+      - label: Growing for personal use, Article 41
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 1000
+        fine: 5000
+      - label: Growing for trade, Article 37
+        treatment: criminal
+        term: Trade
+        death: true
+        fine_min: 35000
+        fine: 60000
+        note: Death or life imprisonment
   enforcement:
     text: >-
       Personal possession, growing and use carry one to three years, with treatment alternatives for
@@ -52,6 +85,29 @@ segments:
       that purpose, and supply for payment.[@rd67]
     sources:
       - rd67
+    currency: OMR
+    penalties:
+      - label: Supply without payment or preparing premises for use, Article 39
+        treatment: criminal
+        term: Unpaid supply
+        prison_min: 7 years
+        prison: 15 years
+        fine_min: 5000
+        fine: 15000
+      - label: Trading or supply for payment, Article 38
+        treatment: criminal
+        term: Trading
+        prison_min: 15 years
+        fine_min: 10000
+        fine: 25000
+        note: At least fifteen years plus the fine
+      - label: Import, export, production, manufacture or growing for trade, Article 37
+        treatment: criminal
+        term: Trade
+        death: true
+        fine_min: 35000
+        fine: 60000
+        note: Death or life imprisonment
   consumption:
     text: >-
       Article 41 expressly punishes unauthorised use with the same one-to-three-year prison range and
@@ -60,6 +116,16 @@ segments:
       information is confidential under article 44.[@rd67]
     sources:
       - rd67
+    currency: OMR
+    penalties:
+      - label: Unauthorised use, Article 41
+        treatment: criminal
+        term: Use
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 1000
+        fine: 5000
+        note: Treatment may replace the penalty; voluntary treatment before detection protects from prosecution
   access:
     text: >-
       There is no recreational supply route. Articles 9 and 15 restrict authorised drug dealings to
@@ -88,22 +154,24 @@ context:
   production:
     status: none
     text: >-
-      Reliable national information about lawful cannabis production was not established by the
-      retained sources.
-    sources: []
-  products:
-    text: >-
-      Reliable national information about legally available cannabis products was not established by
-      the retained sources.
-    sources: []
+      No licensed commercial cannabis production was found. Article 7 permits growing licences only
+      for specified public bodies, colleges and research institutions, for medical or scientific
+      purposes.[@rd67] The law does not create an industrial-hemp or adult-use production route.[@rd67]
+    sources:
+      - rd67
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
+    text: >-
+      No medical cannabis programme or registered cannabis product was found. Article 27 requires a
+      licensed doctor's prescription before a pharmacy may dispense a controlled drug, but the
+      sources read do not identify a cannabis medicine or patient route.[@rd67] Medical status stays
+      none.
+    sources:
+      - rd67
   consequences:
     text: >-
       Article 61 requires permanent deportation of foreigners convicted under the law, except its
-      residual article 56 offences. It also reaches repeated accusations on serious grounds and
-      acquittals on formal grounds when evidence indicates involvement. Article 60 allows additional
+      residual article 56 offences.[@rd67] It also reaches repeated accusations on serious grounds and
+      acquittals on formal grounds when evidence indicates involvement.[@rd67] Article 60 allows additional
       measures for convicted Omanis, including health monitoring, residence restrictions, a travel ban
       and community service; article 51 provides for confiscation of drugs and property or vehicles
       used in offences.[@rd67]
@@ -116,8 +184,8 @@ context:
     clones_trade: banned
     text: >-
       Article 3 prohibits unauthorised growing and dealings in listed plants, their parts at every
-      growth stage and their seeds. Schedule 5 expressly names male and female cannabis; schedule 6
-      exempts stalk fibres and seeds treated so they cannot germinate. Article 7 permits growing
+      growth stage and their seeds.[@rd67] Schedule 5 expressly names male and female cannabis; schedule 6
+      exempts stalk fibres and seeds treated so they cannot germinate.[@rd67] Article 7 permits growing
       licences for specified public bodies, colleges and research institutions for medical or
       scientific purposes.[@rd67]
     sources:
@@ -141,8 +209,8 @@ context:
   visitors:
     status: none
     text: >-
-      There is no recreational supply route. Personal possession, use and growing carry one to three
-      years and a fine of 1,000–5,000 rials, with treatment alternatives for established dependence.
+      There is no recreational supply route.[@rd67] Personal possession, use and growing carry one to three
+      years and a fine of 1,000–5,000 rials, with treatment alternatives for established dependence.[@rd67]
       Article 61 provides for permanent deportation of foreign offenders, apart from the residual
       article 56 offences.[@rd67]
     sources:
@@ -151,18 +219,36 @@ context:
     status: impairment
     text: >-
       The amended Traffic Law article 50 bis prohibits driving on a road under the influence of
-      alcohol, a narcotic or another psychotropic substance. The police-published text provides one to
+      alcohol, a narcotic or another psychotropic substance.[@trafficRop] The police-published text provides one to
       six months’ imprisonment and OMR400–800; illness or inability to work exceeding 30 days raises
       this to six to twelve months and OMR600–1,200, while death or permanent total disability brings
-      one to three years and OMR1,500–3,000. Stronger penalties under other laws are reserved. Article
+      one to three years and OMR1,500–3,000.[@trafficRop] Stronger penalties under other laws are reserved.[@trafficRop] Article
       49 separately punishes refusal of a breath sample or medical detection test where police have
       offence-related grounds to believe the person used these substances: one to three months and
-      OMR200–500. Article 54 allows the court to withdraw a driving licence for up to one year, or two
-      years for repetition. A numeric THC cutoff, specimen-specific confirmation rules and later
-      implementing-regulation details were not established.
+      OMR200–500.[@trafficRop] Article 54 allows the court to withdraw a driving licence for up to one year, or two
+      years for repetition.[@trafficRop] A numeric THC cutoff, specimen-specific confirmation rules and later
+      implementing-regulation details were not established.[@trafficRop]
     sources:
       - trafficRop
-      - traffic2016
+  black_market:
+    text: >-
+      The Public Prosecution reported 6,741 drug cases in 2023–2024, an all-drug figure.[@omanobserver25]
+      Airport and postal seizures in 2025–2026 included 11.65 kg of marijuana at Salalah airport,
+      12.66 kg at Muscat airport, 7.29 kg in 24 postal food parcels and 2.56 kg in a parcel from
+      Canada.[@omanobserver25] The 2026 law's death-or-life tier for import and production for trade
+      shows that the border trade is treated as serious.[@rd67] No price or purity data were found.
+    sources:
+      - omanobserver25
+      - rd67
+  arrests:
+    text: >-
+      The Public Prosecution reported 6,741 drug cases in 2023–2024, an all-drug figure with no
+      cannabis breakdown.[@omanobserver25] The 2025–2026 airport and postal cases each involved a
+      handful of travellers or parcels, not a national arrest series.[@omanobserver25] The UNODC
+      data are seizure-only and should not be read as arrest figures.[@unodc_szr]
+    sources:
+      - omanobserver25
+      - unodc_szr
   research:
     status: licensed
     text: >-
@@ -185,6 +271,18 @@ sources:
     locator: >-
       Replacement article 49 and added article 50 bis; read alongside the police-published amended
       law.
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    url: https://data.unodc.org/datareport/drug-seizure
+    locator: "Oman 2020: 921 kg cannabis resin; no herbal-cannabis entry."
+  omanobserver25:
+    title: "Oman Observer — Call for awareness as drug abuse hits a high (13 July 2025)"
+    url: https://www.omanobserver.om/article/1173442/oman/call-for-awareness-as-drug-abuse-hits-a-high
+    locator: "Public Prosecution: 6,741 drug cases in 2023–2024; National Strategy 2023–2028."
+  omanobserver26:
+    title: "Oman Observer — ROP reports marijuana seizures at Salalah and Muscat airports (2025–2026)"
+    url: https://www.omanobserver.om/article/1173929/oman/rop/12kg-of-marijuana-seized-from-passengers-at-salalah-airport
+    locator: "11.65 kg at Salalah on 23 July 2025; later Muscat and postal seizures reported in 2026."
   rd67:
     title: >-
       Oman — replacement drug law issued by Royal Decree 67/2026, Arabic text reproduced by
