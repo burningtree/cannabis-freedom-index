@@ -3,11 +3,11 @@ region: Africa
 iso_numeric: 12
 recreational: death
 medical: none
-updated: 2026-10-23
+updated: "2026-10-28"
 summary: >-
-  Personal cannabis growing carries two to five years in prison and a fine. Use and personal
-  possession can bring prison, a fine or either alone, with treatment routes for qualifying users.
-  Specified aggravated drug offences can carry death sentences.
+  Personal use or possession carries two months to two years and a fine; personal growing two to
+  five years. Supply and production carry ten years to life, and the 2025 law allows death for
+  aggravated supply, never for simple use.
 scores:
   possession: 0
   cultivation: 1
@@ -18,193 +18,314 @@ scores:
 segments:
   possession:
     text: >-
-      Illicit use, buying or possession for personal consumption carries two months to two years in
-      prison and a DZD20,000–50,000 fine, or either penalty alone.[@law23] Qualifying users who
-      undergo detoxification or medical supervision can avoid prosecution under the treatment
-      provisions.[@law23]
+      Illicit use, buying or possession for personal consumption carries two months to two years and
+      a DZD20,000–50,000 fine, or either penalty alone, with no quantity threshold.[@law23] Holding
+      beyond personal use is charged under the supply offence, which carries ten to twenty years.[@law23]
+      Qualifying users who undergo detoxification or medical supervision can avoid prosecution.[@law23]
     sources:
       - law23
+    currency: DZD
+    penalties:
+      - label: Use, buying or possession for personal consumption
+        treatment: criminal
+        term: Personal use
+        prison_min: 2 months
+        prison: 2 years
+        fine_min: 20000
+        fine: 50000
+        note: No quantity threshold; prison, fine, or either alone
+      - label: Holding beyond personal use
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 5000000
+        fine: 50000000
+        note: Article 17; twenty to thirty years for officials or health professionals, life for an organised gang
   cultivation:
     text: >-
-      Growing cannabis for personal consumption carries two to five years in prison and a
-      DZD200,000–500,000 fine.[@law23] The general offence of knowingly growing cannabis unlawfully
-      carries life imprisonment; the personal-use penalty is a separate exception added in
-      2023.[@law23, l0418]
+      Growing cannabis for personal consumption carries two to five years and a DZD200,000–500,000
+      fine, an exception added in 2023.[@law23] Any other unlawful cultivation carries life
+      imprisonment where it was done knowingly.[@law23] The distinction is the purpose of the crop,
+      not a plant count.[@law23]
     sources:
       - law23
-      - l0418
+    currency: DZD
+    penalties:
+      - label: Cultivation for personal consumption
+        treatment: criminal
+        term: Personal growing
+        prison_min: 2 years
+        prison: 5 years
+        fine_min: 200000
+        fine: 500000
+      - label: Other unlawful cultivation
+        treatment: criminal
+        term: Cultivation
+        note: Life imprisonment where the cultivation was knowing
   enforcement:
     text: >-
-      The law provides treatment-linked non-prosecution and permits courts to withhold the ordinary
-      use penalty when the treatment conditions are met.[@law23] Since 2025, the maximum legal
-      penalty must be imposed when the prescribed examinations establish that an offender was under
-      drug influence during the offence.[@law25]
+      The law provides treatment-linked non-prosecution and lets courts withhold the ordinary use
+      penalty when the treatment conditions are met.[@law23] Refusing the prescribed biological or
+      medical examinations is itself punishable.[@law25] Since 2026, decrees implement drug tests for
+      public-sector recruits and for pupils, with treatment referrals for pupils who test
+      positive.[@decrees2026] The maximum legal penalty must be imposed when examinations establish
+      that an offender was under drug influence during the offence.[@law25]
     sources:
       - law23
       - law25
+      - decrees2026
   sharing:
     text: >-
-      Giving or offering drugs to another person for their personal consumption is an offence
-      carrying two to ten years in prison, with higher penalties in specified cases.[@l0418] Wider
-      production and supply offences carry ten to twenty years, twenty to thirty years for specified
-      professional or official offenders, and life when committed by an organised criminal
-      group.[@law23]
+      Giving or offering drugs to another person for personal consumption carries two to ten years
+      and a DZD100,000–500,000 fine, with the maximum doubled for minors or in schools and health
+      establishments.[@law23] Promoting drugs carries five to ten years; production, sale, transport
+      and brokerage carry ten to twenty years, twenty to thirty for officials or health professionals,
+      and life for an organised gang.[@law23] Import and export carry life, and aggravated supply,
+      production or import can bring death under Article 21 bis 2.[@law25]
     sources:
-      - l0418
       - law23
+      - law25
+    currency: DZD
+    penalties:
+      - label: Giving or offering for personal consumption
+        treatment: criminal
+        term: Supply
+        prison_min: 2 years
+        prison: 10 years
+        fine_min: 100000
+        fine: 500000
+        note: Maximum doubled for minors, schools, health or social establishments
+      - label: Promotion
+        treatment: criminal
+        term: Promotion
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 500000
+        fine: 1000000
+        note: Ten to twenty years where a minor or vulnerable person is used, or in listed places
+      - label: Production, sale, transport or brokerage
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 5000000
+        fine: 50000000
+        note: Twenty to thirty years for public agents or health professionals; life for an organised gang
+      - label: Import or export
+        treatment: criminal
+        term: Import or export
+        note: Life imprisonment
+      - label: Aggravated supply, production or import
+        treatment: criminal
+        term: Aggravated offence
+        death: true
+        note: Article 21 bis 2
   consumption:
     text: >-
-      Illicit use is a crime carrying two months to two years in prison and a DZD20,000–50,000 fine,
-      or either penalty alone.[@law23] Treatment or medical supervision can lead to non-prosecution
-      under the law’s conditions.[@law23]
+      Illicit use is a crime carrying two months to two years and a DZD20,000–50,000 fine, or either
+      penalty alone.[@law23] Treatment or medical supervision can lead to non-prosecution under the
+      law's conditions.[@law23]
     sources:
       - law23
   access:
     text: >-
-      Recreational supply is prohibited.[@l0418] Medical and scientific controlled-drug work
-      requires health-ministry authorisation, with an application and supervision procedure set out
-      in the 2007 regulations.[@care07]
+      Recreational supply is prohibited.[@l0418] Medical and scientific work with controlled drugs
+      requires health-ministry authorisation under the 2007 decree, but no registered cannabis
+      medicine, prescription route or patient programme was found.[@care07] Patients therefore have
+      no legal way to obtain cannabis.[@care07]
     sources:
       - l0418
       - care07
+answers:
+  buy:
+    answer: no
+    text: No legal source; only authorised medical and scientific handling
 context:
+  recreational:
+    text: >-
+      There is no legal recreational market. Personal use or possession carries two months to two
+      years and a DZD20,000–50,000 fine, with no quantity threshold, while holding beyond personal use
+      is treated as supply.[@law23] The death penalty applies only to aggravated supply, production or
+      import, not to simple use or personal growing.[@law25] The last execution was in 1993, though
+      courts began imposing death sentences again in October 2026.[@amnesty26,lematin26]
+      [The 2004 law remains the base.](/history/algeria-law-04-18-2004/)
+    sources:
+      - law23
+      - law25
+      - amnesty26
+      - lematin26
   death_penalty:
     text: >-
-      The 2025 law permits death sentences for specified aggravated supply offences, including
-      transnational organised crime and use or threatened use of a firearm.[@law25] It also provides
-      capital punishment for specified recruitment offences near educational establishments and for
-      repetition of an offence already carrying life imprisonment.[@law25] These provisions apply to
-      listed drug offences and include serious cannabis cases.[@law25]
+      Law 25-03 allows death for aggravated supply, production or import where the offence causes
+      death or is likely to cause serious harm to public health, involves a transnational organised
+      group, harms national security, is incited by a foreign state or uses a firearm.[@law25]
+      Article 16 bis 2 allows death for recruiting a minor in or near a school, and Article 27 allows
+      it on a repeat offence that already carries life, which on the text could include repeat
+      cultivation.[@law25] Simple use, personal possession, personal growing and a small first gift
+      cannot bring death.[@law25] No execution has been carried out since 1993; the first death
+      sentences under the new law, in October 2026, concerned cocaine, pregabalin and synthetic
+      drugs, not cannabis.[@amnesty26,lematin26]
     sources:
       - law25
+      - amnesty26
+      - lematin26
   production:
     status: medical
     text: >-
       Controlled-drug production, handling, import, export and cannabis cultivation require
       authorisation from the health minister for medical or scientific purposes.[@care07] Applicants
       must identify the operation, product, quantity and use; permits are subject to checks, stock
-      records and secure storage requirements.[@care07]
+      records and secure storage.[@care07] No commercial or recreational production is licensed.[@care07]
     sources:
       - care07
-  products:
-    text: >-
-      Reliable national information about legally available cannabis products was not established by
-      the retained sources.
-    sources: []
   medical:
     text: >-
-      The statutory medical and scientific exception is implemented through health-ministry
-      authorisation.[@l0418, care07] The 2007 procedure requires details of the proposed work, a
-      criminal-record extract and an official inquiry into the applicant; import and export permits
-      last three months per operation.[@care07]
+      No patient programme. The statutory medical and scientific exception is implemented through
+      health-ministry authorisation for production, import, export and research, not for prescribing
+      to patients.[@l0418,care07] No registered cannabis medicine or prescription route was found.[@care07]
     sources:
       - l0418
       - care07
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. The law defines the cannabis plant as any plant of
+      the genus, and the 2024 national schedule keeps cannabis, resin and its extracts and tinctures
+      in Table I.[@l0418,schedule2024] No industrial-hemp or CBD exemption was found.[@schedule2024]
+    sources:
+      - l0418
+      - schedule2024
   consequences:
     text: >-
-      The 2025 amendment allows removal of acquired Algerian nationality for crimes under the drug
-      law, following the nationality code’s procedures.[@law25] Foreigners convicted of drug-law
-      offences can face exclusion from Algeria; permanent exclusion is mandatory for the crimes
-      specified by the law.[@law25] The law also requires negative drug-screening results in
-      recruitment files for the listed public and private-sector bodies, with implementing details
-      set by regulation where needed.[@law25]
+      The 2025 law allows removal of acquired Algerian nationality for crimes under the drug law,
+      following the nationality code's procedures.[@law25] Foreigners convicted of drug offences can
+      face exclusion from Algeria, with permanent exclusion mandatory for the specified crimes.[@law25]
+      The law also requires negative drug-screening results in recruitment files for the listed
+      public and private-sector bodies.[@law25]
     sources:
       - law25
   planting:
     seeds: grey
-    seeds_trade: open
+    seeds_trade: unclear
     clones: illegal
     clones_trade: banned
     text: >-
-      Law 04-18 defines cannabis as the flowering or fruiting tops of the plant, "excluding the
-      seeds and the leaves that are not accompanied by the tops", so seed on its own is not a
-      controlled drug. The cannabis plant is defined as any plant of the genus, and growing it is
-      one of the acts the law controls.
+      Law 04-18 defines cannabis as the flowering or fruiting tops, "excluding the seeds and the
+      leaves that are not accompanied by the tops", so seed on its own is not a controlled drug.[@l0418]
+      The plant is defined as any plant of the genus, and growing it is controlled.[@l0418] No lawful
+      seed market was found, and police still seize seed; the trade status is therefore unclear.[@schedule2024]
     sources:
       - l0418
+      - schedule2024
   clubs:
     status: none
     text: >-
-      The law criminalises growing and supplying cannabis, including giving or offering it to
-      another person for personal consumption.[@l0418, law23] It provides no authorised recreational
-      club supply route.[@l0418]
+      The law criminalises growing and supplying cannabis, including giving or offering it to another
+      person for personal consumption.[@l0418,law23] It provides no authorised recreational club
+      supply route.[@l0418]
     sources:
       - l0418
       - law23
   visitors:
     status: none
     text: >-
-      Visitors have no authorised recreational supply.[@l0418] Personal use, buying or possession
-      can bring two months to two years in prison, a DZD20,000–50,000 fine, or either alone.[@law23]
-      Drug-law convictions can also bring exclusion from Algeria, with permanent exclusion required
-      for the specified crimes.[@law25]
+      Visitors have no authorised recreational supply.[@l0418] Personal use, buying or possession can
+      bring two months to two years, a DZD20,000–50,000 fine, or either alone.[@law23] Drug-law
+      convictions can also bring exclusion from Algeria, with permanent exclusion required for the
+      specified crimes.[@law25]
     sources:
       - l0418
       - law23
       - law25
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 6.2 kg of herbal cannabis
-      seized in 2024, against 25.9 kg in 2023, and 37,781 kg of cannabis resin seized in 2024,
-      against 44,536 kg in 2023. The UN publishes them as kilogram equivalents, and countries count
-      seizures differently, so the figures are not comparable across borders.
+      Algeria is mainly a transit and consumption market for Moroccan resin. UNODC records 37,781 kg
+      of resin and 6.2 kg of herbal cannabis seized in 2024, against 44,536 kg of resin and 25.9 kg of
+      herb in 2023.[@unodc_szr] The ONLCDT reported 37.239 tonnes of cannabis and 71,546 cannabis cases
+      across all services in 2025.[@observalgerie26] Domestic cultivation is small: 6,746 plants were
+      eradicated in 2023, against 605 in 2024.[@unodc_szr]
     sources:
       - unodc_szr
+      - observalgerie26
   arrests:
     text: >-
-      The national police directorate (DGSN) reported handling at least 175,920 drug cases in 2025,
-      in which 192,252 people were implicated. Its seizures that year included just over 7 tonnes of
-      cannabis, more than 665 kg of cocaine and over 20 million psychotropic pills. The figures are
-      those of the national police and are not split by drug.
+      The national police directorate (DGSN) reported 175,920 drug cases and 192,252 people implicated
+      in 2025; the figures are DGSN-only and not a national total.[@radioalg26] The ONLCDT counted
+      143,968 drug cases across all services, of which 71,546 concerned cannabis, a lower and
+      differently scoped total.[@observalgerie26] Neither series is cannabis-only for arrests.[@radioalg26]
     sources:
       - radioalg26
+      - observalgerie26
   driving:
     status: impairment
     text: >-
       Road Code 26-09, promulgated on 12 May 2026 and published on 17 May, replaces Law 01-14.
-      Article 137 provides one–two years in prison and DZD100,000–200,000 for driving, or
-      accompanying a learner, under the influence of narcotics or psychotropic substances. Article
-      143 applies the relevant intoxication penalties to refusal of the prescribed breath, medical,
-      clinical or biological examinations. Under article 160 a court may additionally withdraw or
-      suspend the licence for up to five years; this is discretionary, not an automatic five-year
-      ban. Suspected drug influence also permits vehicle immobilisation under article 173. Article
-      80 separately requires professional transport recruits to provide medical analyses showing no
-      drug consumption, with periodic and unannounced examinations during employment. No numerical
-      THC cutoff or full operational testing regulations were verified. Article 188 retains earlier
-      implementing texts until replacement regulations; older offence numbers and penalties should
-      not be substituted for the new code.
+      Article 137 provides one to two years and DZD100,000–200,000 for driving, or accompanying a
+      learner, under the influence of narcotics or psychotropic substances.[@road_code26] Article 143
+      applies the same penalties to refusal of the prescribed breath, medical, clinical or biological
+      examinations, and Article 160 allows the court to withdraw or suspend the licence for up to five
+      years.[@road_code26] No numeric THC cutoff or full testing regulation was verified.[@road_code26]
     sources:
       - road_code26
 sources:
   road_code26:
-    title: Algeria Official Gazette 36 of 17 May 2026 — Law 26-09 of 12 May 2026, Road Code
+    title: "Algeria — Law 26-09 of 12 May 2026, Road Code, Official Gazette 36 of 17 May 2026"
     url: https://www.joradp.dz/FTP/jo-francais/2026/F2026036.pdf
-    locator: >-
-      Articles 79–80, 105, 137, 143, 160, 173 and 187–190; signature date distinguished from Gazette
-      publication.
+    locator: "Articles 79–80, 105, 137, 143, 160, 173 and 187–190."
   law25:
-    title: Algerian Official Gazette 43, 13 July 2025 — Law 25-03 of 1 July
+    title: "Algeria — Law 25-03 of 1 July 2025, Official Gazette 43 of 13 July 2025"
     url: https://www.joradp.dz/FTP/jo-francais/2025/F2025043.pdf
-    locator: "Printed pp. 3–6: Articles 5 bis 10, 16 bis 2, 21 bis–21 bis 2, 26 bis and 27"
+    locator: "Printed pp. 3–6: Articles 5 bis–10, 16 bis 2, 21 bis–21 bis 2, 26 bis and 27."
   l0418:
-    title: Algerian Official Gazette 83, 26 December 2004 — Law 04-18 of 25 December
+    title: "Algeria — Law 04-18 of 25 December 2004, Official Gazette 83 of 26 December 2004"
     url: https://www.joradp.dz/FTP/jo-francais/2004/F2004083.pdf
-    locator: "Printed pp. 3–7: Articles 4–13, 17–20, 26–27 and 38"
-  unodc_szr:
-    title: >-
-      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
-      Report data)
-    url: https://data.unodc.org/datareport/drug-seizure
-  radioalg26:
-    title: >-
-      Radio Algérie — أمن وطني: حجز ما يربو عن 7 أطنان من القنب الهندي وأكثر من 665 كغ من الكوكايين
-      سنة 2025 (7 April 2026)
-    url: https://news.radioalgerie.dz/ar/node/83207
+    locator: "Printed pp. 3–7: Articles 4–13, 17–20, 26–27 and 38."
   law23:
-    title: Algerian Official Gazette 32, 9 May 2023 — Law 23-05 of 7 May
+    title: "Algeria — Law 23-05 of 7 May 2023, Official Gazette 32 of 9 May 2023"
     url: https://www.joradp.dz/FTP/jo-francais/2023/F2023032.pdf
-    locator: Printed pp. 12–16, especially amended Articles 6, 8 bis, 12, 17 and 20
+    locator: "Printed pp. 12–16, especially amended Articles 6, 8 bis, 12, 17 and 20."
   care07:
-    title: Algerian Official Gazette 49, 5 August 2007 — Decree 07-228 of 30 July
+    title: "Algeria — Decree 07-228 of 30 July 2007, Official Gazette 49 of 5 August 2007"
     url: https://www.joradp.dz/FTP/jo-francais/2007/F2007049.pdf
-    locator: "Printed pp. 3–4: Articles 1–11, medical/scientific authorisation and import records"
+    locator: "Printed pp. 3–4: Articles 1–11."
+  schedule2024:
+    title: "Algeria — Order of 14 February 2024 updating the national narcotics schedule, Official Gazette 37 of 5 June 2024"
+    url: https://www.joradp.dz/FTP/jo-francais/2024/F2024037.pdf
+    locator: "Table I, items 28–29: cannabis, resin, extracts and tinctures."
+  decrees2026:
+    title: "Algeria — Decrees 26-76 and 26-77 of 14 January 2026, Official Gazette 8 of 27 January 2026"
+    url: https://www.joradp.dz/FTP/jo-francais/2026/F2026008.pdf
+    locator: "Recruitment and pupil drug-testing procedures."
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents"
+    url: https://data.unodc.org/datareport/drug-seizure
+    locator: "Algeria: 37,781 kg resin and 6.2 kg herb in 2024; 44,536 kg resin and 25.9 kg herb in 2023."
+  radioalg26:
+    title: "Radio Algérie — National police 2025 drug results (7 April 2026)"
+    url: https://news.radioalgerie.dz/ar/node/83207
+    locator: "175,920 cases; 192,252 people implicated; DGSN only."
+  observalgerie26:
+    title: "ObservAlgérie — Algérie: bilan spectaculaire de la lutte contre le trafic de drogue (27 June 2026)"
+    url: https://observalgerie.com/2026/06/27/faits-divers/algerie-bilan-spectaculaire-de-la-lutte-contre-le-trafic-de-drogue
+    locator: "2025: 37.239 t cannabis; 143,968 cases, 71,546 cannabis."
+  aps26:
+    title: "APS — Army eliminates drug trafficker and seizes 1,660 kg of cannabis resin (4 October 2026)"
+    url: https://www.aps.dz/en/algeria/national-news/muuwfj6i-army-eliminates-drug-trafficker-seizes-1-660-kg-of-cannabis-resin
+    locator: "Bechar seizure; one trafficker killed."
+  mdn26:
+    title: "Ministry of National Defence — Drug enforcement results, 14–20 October 2026"
+    url: https://www.mdn.dz/site_principal/sommaire/actualites/fr/2026/octobre/lutte21102026fr.php
+    locator: "296 kg resin; 51 arrests in one week."
+  amnesty26:
+    title: "Amnesty International — Algeria: threats to resume executions after 30 years (15 September 2026)"
+    url: https://www.amnesty.org/en/latest/news/2026/09/algeria-threats-to-resume-executions-after-30-years-severe-blow-to-human-rights
+    locator: "No execution since 1993; ministerial statements on resuming."
+  lematin26:
+    title: "Le Matin d'Algérie — Trafic de drogue: neuf condamnations à mort (October 2026)"
+    url: https://lematindalgerie.com/trafic-de-drogue-neuf-condamnations-a-mort-premiere-application-de-la-nouvelle-loi/
+    locator: "9 death sentences, 5 October 2026; cocaine and pregabalin."
+  tsa26:
+    title: "TSA — Algérie: l'exécution de la peine de mort officiellement en vigueur (13 October 2026)"
+    url: https://www.tsa-algerie.com/algerie-lexecution-de-la-peine-de-mort-officiellement-en-vigueur
+    locator: "Government statement on resuming executions; no execution reported."
