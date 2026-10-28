@@ -13,5 +13,5 @@ only own lines in changes.yaml.
 | Austria | hemp, cultivation table, culture, 1960s entry, 1998 article | 1930s unsourced; left for a later pass | 0abe2bb |
 | Serbia | arrests, citations, links, products fold, 2006 article (no new entries; Yugoslav decades unsourced) | 1940s/60s/70s/80s/90s unsourced; left for a later pass | dc80467 |
 | Serbia | | | |
-| Croatia | | | |
+| Croatia | citations, links, products fold, 2025 market entry, 2013 article | 1940s/60s/70s/80s unsourced; left for a later pass | |
 | Hungary | | | |
