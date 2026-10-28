@@ -51,7 +51,8 @@ segments:
         treatment: criminal
         term: Possession
         prison_min: 15 years
-        note: Fifteen to twenty years or life
+        prison: 20 years
+        note: Fifteen to twenty years, or life
   cultivation:
     text: >-
       Article 247 punishes growing cannabis.[@code] Below 500 plants, a first offence is
@@ -89,9 +90,9 @@ segments:
       Illegal cannabis sale can bring life imprisonment or death from 30 kg of resin or 150 kg
       of the listed plant parts under Article 251, as amended from 1 July 2025.[@a251] The
       preceding band, from 5 kg of resin or 75 kg of those plant parts, carries twenty years
-      or life.[@a251] Production and transport are separate offences with similar tiers: the
-      2025 law removed death for transport but kept it for production from 5 kg of resin or 75 kg of
-      plant parts.[@law86]
+      or life.[@a251] Production and transport are separate offences: the 2025 law removed death for
+      transport, while production reaches life or death only from 30 kg of cannabis resin and has no
+      separate plant-parts tier.[@law86]
     sources:
       - a251
       - law86
@@ -136,7 +137,7 @@ segments:
   consumption:
     text: >-
       Illegal use can bring a warning or a fine of VND 1–2 million, confiscation of the drug and
-      one-year user management; foreigners can also be deported.[@decree282] First detection leads
+      one-year user management.[@decree282] First detection leads
       to that monitoring, and further use can trigger addiction assessment and rehabilitation
       measures.[@a256] Since 1 July 2025, Article 256a imposes two to three years for use during
       rehabilitation or substitution treatment; during post-rehabilitation management; within two
@@ -155,7 +156,7 @@ segments:
         term: Use
         fine_min: 1000000
         fine: 2000000
-        note: Warning or fine; confiscation; one-year user management; deportation for foreigners
+        note: Warning or fine; confiscation; one-year user management
       - label: Use in rehabilitation statuses, Article 256a
         treatment: criminal
         term: Use
@@ -191,8 +192,11 @@ context:
       From 1 July 2025, illegal sale of 5 kg to under 30 kg of cannabis resin, or 75 kg to under
       150 kg of the listed plant parts, is twenty years or life.[@a251] Life or death applies from
       30 kg of resin or 150 kg of those plant parts.[@a251] Death is an alternative sentence in that
-      bracket, not a required one.[@a251] Production from 5 kg of resin or 75 kg of plant parts can
-      also bring death, while the same law removed the death penalty for illegal transport.[@law86,mps25]
+      bracket, not a required one.[@a251] Production reaches life or death from 30 kg of cannabis
+      resin, with no plant-parts tier, while the same law removed the death penalty for illegal
+      transport.[@law86,mps25] Death sentences imposed before 1 July 2025 were commuted to life where
+      the quantity was at or below the new top-band floor, or where the offender was not a
+      mastermind and fewer than two aggravating circumstances applied.[@law86]
     sources:
       - a251
       - law86
@@ -220,11 +224,10 @@ context:
       Local police place detected users under ordinary one-year monitoring. A further detection
       during that monitoring can prompt addiction assessment; Article 256a criminal liability
       requires one of the specified rehabilitation-related statuses.[@a256] Compulsory rehabilitation lasts 24 months for a first
-      time and 36 months on a repeat.[@l120] Foreigners can also face deportation.[@decree282]
+      time and 36 months on a repeat.[@l120]
     sources:
       - a256
       - l120
-      - decree282
   planting:
     seeds: grey
     seeds_trade: unclear
@@ -253,8 +256,8 @@ context:
     text: >-
       There is no legal recreational supply for anyone. Illegal possession that is not for sale,
       transport or production is three to five years from 1 g of cannabis resin or 1 kg of the
-      listed plant parts, and a prior penalty can make a smaller amount criminal.[@a249]
-      Foreigners can also be deported for drug use.[@decree282]
+      listed plant parts, and a prior penalty can make a smaller amount criminal.[@a249] Simple use
+      is not a ground for expulsion under the 2025 sanctions decree.[@decree282]
     sources:
       - a249
       - decree282
@@ -301,13 +304,17 @@ context:
     text: >-
       There is no legal hemp category and no THC threshold. The 2025 drug law treats the cannabis
       plant as a narcotic plant, bans growing it and leaves cultivation out of the activities that
-      can be licensed, so fibre hemp has no commercial route.[@l120] Decree 28/2026 keeps cannabis
+      can be licensed, so fibre hemp has no commercial route.[@l120] In March 2024 the Ministry of
+      Public Security said fibre hemp grown for cloth, fodder or fuel was not in the banned plant
+      lists and was not sanctioned, while using it to extract drugs could be prosecuted; that
+      guidance predates the 2025 law and left no licensing or THC threshold.[@mpsHemp24] Decree 28/2026 keeps cannabis
       and its preparations in List I, absolutely prohibited in medicine and social life.[@decree28]
       The traditional Hmong hemp cloth described in the [atlas](/culture/traditions/hmong-hemp-cloth/)
       is a surviving craft, not a licensed crop.[@l120]
     sources:
       - l120
       - decree28
+      - mpsHemp24
   culture:
     text: >-
       Cannabis is known in Vietnamese as [cần sa](/culture/language/ganja/), a name shared with the
@@ -380,6 +387,10 @@ sources:
     title: "Ministry of Public Security — the Criminal Code amendment is in force from 1 July 2025"
     url: https://bocongan.gov.vn/bai-viet/cong-bo-luat-sua-doi-bo-sung-mot-so-dieu-cua-bo-luat-hinh-su-co-hieu-luc-tu-0172025-d2-t45852
     locator: "Confirms commencement; Article 251 life-or-death bracket; death removed for illegal transport."
+  mpsHemp24:
+    title: "Vietnam Ministry of Public Security via Tiếng Chuông — growing fibre hemp for cloth, fodder or fuel (26 March 2024)"
+    url: https://tiengchuong.chinhphu.vn/trong-su-dung-cay-gai-dau-co-bi-xu-ly-113240326101212798.htm
+    locator: "Fibre hemp not in the banned plant lists; extraction for drugs can be prosecuted."
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
