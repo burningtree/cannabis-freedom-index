@@ -13,17 +13,50 @@ scores:
   consumption: 1
   access: 0
 segments:
-  possession: >-
-    3 oz or less is a misdemeanour with up to a year in jail and a $1,000 fine. More is a felony
-    with up to five years.
-  cultivation: A felony with up to five years, for any number of plants.
-  enforcement: No decriminalisation, diversion or medical exception in state law.
-  sharing: A felony with up to five years.
-  consumption: Illegal.
+  possession:
+    text: >-
+      3 oz or less is a misdemeanour with up to a year in jail and a $1,000 fine. More is a felony
+      with up to five years.[@1]
+    currency: USD
+    penalties:
+      - upto: 3 oz
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 1000
+      - over: 3 oz
+        upto: 1 lb
+        treatment: criminal
+        term: Felony
+        prison: 5 years
+        fine: 10000
+  cultivation:
+    text: >-
+      A felony with up to five years, for up to 24 plants; heavier grows bring longer terms.[@1]
+    currency: USD
+    penalties:
+      - label: Up to 24 plants
+        treatment: criminal
+        term: Felony
+        prison: 5 years
+        fine: 15000
+        note: Heavier grows bring longer terms
+  enforcement: No decriminalisation, diversion or medical exception in state law.[@1]
+  sharing:
+    text: >-
+      A felony with up to five years.[@1]
+    currency: USD
+    penalties:
+      - label: Sale up to 1 lb
+        treatment: criminal
+        term: Felony
+        prison: 5 years
+        fine: 15000
+  consumption: Illegal.[@1]
   access: >-
     None. Even CBD products must contain no THC at all. A medical cannabis initiative failed to
     qualify for the November 2026 ballot; voters will instead decide a constitutional amendment
-    giving the legislature sole authority to legalise cannabis, which would block future initiatives.
+    giving the legislature sole authority to legalise cannabis, which would block future initiatives.[@2]
 sources:
   - title: NORML — Idaho laws and penalties
     url: https://norml.org/laws/idaho-penalties/

@@ -18,6 +18,11 @@ Same method as usa-1–7.
 - No NM history entries, no culture subject — noted.
 - Audit 0/0; review page verified.
 
-## id — pending
+## id (Idaho) — committed
+- Possession + cultivation + sharing tables (all NORML-verified bands), cites everywhere.
+  Corrected cultivation scope: lowest band is up to 24 plants, not "any number".
+- No ID history entries, no culture subject — noted.
+- Audit 0/0; review page verified.
+
 ## wv — pending
 ## hi — pending
