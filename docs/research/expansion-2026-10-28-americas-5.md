@@ -43,6 +43,12 @@ of these (committed) — verify and build on them, don't duplicate.
 - Fixed audit warning (penalty table needs inline cites in text).
 - Audit 0/0; page + all three articles verified in review HTML.
 - Left: cultivation numbers (licence-only, no tiers), arrests (only 2023 seizure figure already present), 1940s–2010s decades, treaty entries (1992/1976, imp 1, skipped).
-## vc — pending
+## vc — committed
+- Word sacrament (Rastafari, from the 2018 select-committee record via iWitness News, new profile source); culture section linking traditions/rastafari-sacrament + 2018 bill + 1937 ordinance; products folded into medical (pharmacy link).
+- Possession table: ≤56 g civil EC$500 (fine 500 + currency XCD), over 56 g criminal; enforcement carries the 2009 Vincy Pac link.
+- New `articles/saint-vincent-dangerous-drugs-1937.md` (UN E/NL.1949/33; honest about order-vs-Ordinance) + `articles/saint-vincent-first-pharmacy-2020.md` (Searchlight: Green Lava Labs, Bentick Square) + `articles/saint-vincent-religious-bill-dropped-2018.md` (iWitness: state cannot grant the sacrament) + `articles/saint-vincent-vincy-pac-2009.md` (Searchlight: Vermont deaths, Gonsalves contrast with 1998).
+- Lesson: once a segment text cites inline, every segment source must be cited inline — added [@drugs_proclamation] for the commencement date.
+- Audit 0/0; page + all four articles verified in review HTML.
+- Left: cultivation tiers (licence-only), arrests data, remaining 13 article-less entries (eradication wave 1998/2007/2008, medical 2018/2019/2022, etc.).
 ## cw — pending
 ## sr — pending
