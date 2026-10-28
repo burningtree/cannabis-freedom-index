@@ -31,15 +31,11 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v6
       - run: npm ci
-      # Every profile's quick answers ("Can I carry it?") against its own text, and no sentence
-      # known to be false (scripts/answers.test.mjs, scripts/profile-claims.test.mjs): a failure
-      # stops the deploy instead of going live.
-      - run: npm run answers:test
-      # the facts earlier issues corrected, which a later rewrite must not lose
-      - run: npm run history:test
-      - run: npm run research:test
-      # the survey: relay text never as HTML, deletions confirmed, one respondent per key
-      - run: npm run survey:test
+      # Every test (npm test): each profile's quick answers ("Can I carry it?") against its own text
+      # and no sentence known to be false, the facts earlier issues corrected, research coverage,
+      # chart wording, the survey's safety. A failure stops the deploy instead of going live.
+      # (`npm run build` runs them again first, as everywhere: a few seconds.)
+      - run: npm test
       # The social preview images (one per page) take minutes to draw and rarely change. Each is
       # kept under a hash of its own content, so restoring the folder redraws only what is new.
       - uses: actions/cache@v4

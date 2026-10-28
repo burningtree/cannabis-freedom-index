@@ -121,7 +121,7 @@ covers well need not be repeated. `node scripts/country-gaps.cjs us/ca` is a sta
 ## 8. Check and finish
 
 ```bash
-npm run build          # must pass; it checks schemas, citations and internal links
+npm run build          # must pass; runs npm test first (answers, claims, history), then checks schemas, citations and links
 npm run profiles:audit # must report no errors for your country (node scripts/profile-audit.cjs <id>)
 npm run seo:audit      # what the deploy runs after the build
 node scripts/country-gaps.cjs ke   # the list should be shorter

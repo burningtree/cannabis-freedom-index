@@ -125,8 +125,10 @@ test('compact prevalence cells and profiles keep age and sampling detail in tool
   assert.doesNotMatch(share, /<small>|useAges/);
   assert.match(home, /useShareLabel\(c.use\)/);
   assert.match(home, /useDetail\(c\).*USE_COMPARISON_NOTE/);
-  const profile = fs.readFileSync('src/components/CountryArticle.astro', 'utf8');
-  assert.match(profile, /<dt>Past-year share<\/dt>/);
+  // the profile's figure lives in its opening, "Cannabis in …" (CountryIntro.astro)
+  const profile = fs.readFileSync('src/components/CountryIntro.astro', 'utf8');
+  assert.match(profile, /<dt>Past year<\/dt>/);
+  assert.match(profile, /people aged \{ages\}/);
   assert.match(profile, /<SourceTip><span>Past-year cannabis use among people aged \{useAges\(use\)\}/);
   assert.doesNotMatch(profile, /<p>\{USE_COMPARISON_NOTE\}<\/p>/);
 });

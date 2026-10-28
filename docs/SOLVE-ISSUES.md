@@ -59,9 +59,8 @@ overreach (a proposed new score, a "binding" law that is only a draft).
 
 ```bash
 node scripts/profile-audit.cjs <id>   # no errors
-npm run answers:test                   # answers and profile claims
-npm run history:test                   # when changes.yaml changed
-npm run build                          # schemas, citations, links
+npm test                               # answers, profile claims, history, charts (the build runs it too)
+npm run build                          # npm test, then schemas, citations, links
 npm run seo:audit
 ```
 

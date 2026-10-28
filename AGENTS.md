@@ -15,3 +15,6 @@ cannabis law (`changes.yaml`, `articles/`) and a cultural atlas (`culture/`), bu
   else's uncommitted changes, and commit only your own files.
 - Don't start dev or preview servers; check with `npm run build` (one build at a time) and the
   HTML in `dist/`. For a small frontend change, `npm run build:quick` skips the preview images.
+- Both builds run `npm test` first (answers, profile claims, history, charts, research, survey; a
+  few seconds) and stop if a test fails. Run `npm test` alone for a quick check. A new test file
+  goes into the `test` script in `package.json`.

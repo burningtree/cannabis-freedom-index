@@ -5,7 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "test": "node --test scripts/answers.test.mjs scripts/profile-claims.test.mjs scripts/use-freedom-ratio.test.mjs scripts/history-scope.test.cjs scripts/context-coverage.test.mjs scripts/chart-semantics.test.cjs scripts/survey.test.mjs scripts/books-status.test.cjs",
+    "prebuild": "npm test",
     "build": "astro build",
+    "prebuild:quick": "npm test",
     "build:quick": "SKIP_OG=1 astro build",
     "preview": "astro preview",
     "books:status": "node scripts/books-status.cjs",

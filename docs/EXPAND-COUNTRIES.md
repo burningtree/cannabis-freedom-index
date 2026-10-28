@@ -30,7 +30,7 @@ For each country in the batch:
 2. `node scripts/country-gaps.cjs <id>`: the country's work list.
 3. Work through `docs/EXPAND-COUNTRY.md` in its order: current law and penalty tables, history,
    articles, context sections, culture, links.
-4. Build (`npm run build`; wait if another build is running), run
+4. Build (`npm run build`, which runs `npm test` first; wait if another build is running), run
    `node scripts/profile-audit.cjs <id>` (no errors allowed), then read the built page in
    `dist/country/<id>/`.
 5. **Commit that country before starting the next**, with only your own files, and a message that
