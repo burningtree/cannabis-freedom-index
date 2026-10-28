@@ -11,7 +11,11 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
   marcha-da-maconha culture link.
 - New article `articles/brazil-law-6368-1976.md` (~350 words, pt.wiki + entry sources).
 - Audit 0/0; review page to verify with batch build.
-## cl — pending
+## cl (Chile) — committed
+- Words (Pito, Mota, Yerba; en.wiktionary es-senses verified).
+- Audit 0/0; review page to verify with batch build.
+- Left: 1920s/1950s empty; three score-moving articles open (1995, 2015 ruling, 2015 decree —
+  need stronger sources than Wikipedia).
 ## ec — pending
 ## py — pending
 ## uy — pending
