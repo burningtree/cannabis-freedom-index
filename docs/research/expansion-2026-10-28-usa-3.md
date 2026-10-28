@@ -29,5 +29,12 @@ wording; cultivation tables added everywhere.
   link) and `culture` (Seattle Hempfest since 1991 via wiki + atlas link).
 - Audit 0/0; review page verified.
 
-## az — pending
+## az (Arizona) — committed
+- Cultivation table (6/household-12 legal; over-cap felony 9mo–2yr/$150k verified against NORML),
+  cites on consumption/access, new `recreational` (Prop 207 Nov 2020, 60%; first sales 22 Jan
+  2021 via Wikipedia article, content-verified 200).
+- Possession/sharing/enforcement left as strings (claims test pins them). No test breakage.
+- No Prop-207 history entry, no grounded AZ culture subject — noted.
+- Audit 0/0; review page verified.
+
 ## ma — pending

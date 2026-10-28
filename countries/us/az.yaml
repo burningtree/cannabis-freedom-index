@@ -21,7 +21,22 @@ segments:
     Outside these protections, possession can be prosecuted as a felony; unauthorised leaf
     possession below two pounds is a class 6 felony under §13-3405. Registered medical patients
     have separate statutory protections.[@4,5]
-  cultivation: Six plants per adult, twelve per household.
+  cultivation:
+    text: >-
+      Six plants per adult, twelve per household, for non-commercial purposes in a private
+      residence.[@1]
+    currency: USD
+    penalties:
+      - upto: 6 plants
+        treatment: legal
+        note: Per adult; twelve per household
+      - label: More than the household cap
+        treatment: criminal
+        term: Felony
+        prison_min: 9 months
+        prison: 2 years
+        fine: 150000
+        note: Lowest weight band; higher weights bring longer terms
   enforcement: >-
     No state penalty within the adult-use permission. The petty-offence band ends above 2.5 oz
     total or 12.5 g concentrate, where felony prosecution becomes possible unless another
@@ -29,8 +44,15 @@ segments:
   sharing: >-
     Adults 21+ may give another adult 21+ up to 1 oz total, including at most 5 g of concentrate,
     without payment, provided the gift is not advertised or promoted to the public.[@2]
-  consumption: Private only; smoking in public is a petty offence.
-  access: Licensed shops since 2021.
+  consumption: Private only; smoking in public is a petty offence.[@3]
+  access: Licensed shops since January 2021.[@6]
+context:
+  recreational:
+    text: >-
+      Proposition 207 (November 2020) legalised adult use with 60% of the vote; the first
+      state-licensed recreational sales followed on 22 January 2021, the fastest vote-to-sales
+      turnaround in the country.[@6]
+    sources: [6]
 answers:
   carry:
     answer: yes
@@ -54,6 +76,8 @@ sources:
   - title: Arizona Legislature — Medical marijuana immunity
     url: https://www.azleg.gov/ars/36/02811.htm
     locator: 'A.R.S. §36-2811: qualifying patient and caregiver protections'
+  - title: Wikipedia — 2020 Arizona Proposition 207
+    url: https://en.wikipedia.org/wiki/2020_Arizona_Proposition_207
 use:
   note: Includes vaping; a model-based estimate.
   share: 24.5
