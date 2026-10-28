@@ -51,3 +51,24 @@ variety authorisation. Original pre-1970 cannabis schedules, 1930s/1950s and
 records use the amendment dates named in the current consolidated law.
 
 Monaco: full build and tests passed; profile audit 0 errors/0 warnings; SEO/link audit passed and built profile tables/links inspected. Another contributor committed the four Monaco history additions and corrected 1970 description in `0ee9ecf` while working on French Polynesia; preserved that shared commit and commit the remaining Monaco files separately.
+
+Isle of Man: replaced case-outcome tables with the statute's conviction-on-information
+maxima (five years possession, fourteen cultivation/supply; fine uncapped in that
+mode). The current official PDF could not be downloaded: the official indexed
+Schedule 4 text was read, and this retrieval limit is recorded in the profile's
+source locator. No summary fine amount is inferred from older PDF versions.
+Read the 2024 government policy report through Tynwald and corrected the categorical
+claim that all small possession cases reach court. Eligible first offenders can
+use DARS; current possession/enforcement bands already cover fines/diversion and
+remain unchanged. Arrests section labels all-drug offence counts accurately.
+The 2004 Hansard reports automatic UK Class C import, but the event records the
+March arrest-power debate rather than inventing a commencement for the pending
+local bill. Early decades and the precise 2009 local reclassification instrument
+remain open. The original first-restriction estimate is preserved.
+
+Added hemp (0.2%), seed/clone permissions, licensed research, patient social
+spaces, eight history records and a pharmacy-expansion article. Club status
+`tolerated` describes a medical patient lounge without a bespoke club-licensing
+law: it does not describe recreational supply permission. The October move to
+Douglas pop-ups supersedes the old Ramsey location. The withdrawal report uses
+its publication date, explicitly distinguishing earlier withdrawal.

@@ -10,12 +10,11 @@ dependency:
     internationally, including under the UN drug conventions.
 recreational: illegal
 medical: legal
-updated: 2026-10-17
+updated: '2026-10-28'
 summary: >-
-  Cannabis is a Class B drug and possession of even half a gram goes to court, usually ending in a
-  fine of a few hundred pounds. Private medical prescriptions have been dispensed on the island
-  since 2022. Tynwald backs a harm-reduction approach to drugs but rejected a citizens' jury on a
-  regulated market in 2026.
+  Cannabis remains a Class B drug. Small possession cases can bring a fine or a drug-education
+  referral; home growing remains criminal. Private medical dispensing expanded beyond a
+  single-pharmacy pilot in 2024.
 scores:
   possession: 1
   cultivation: 1
@@ -26,145 +25,301 @@ scores:
 segments:
   possession:
     text: >-
-      Possession is a criminal offence dealt with in court. In 2024 magistrates fined a woman £300
-      plus £125 costs for half a gram, and a man £750 plus £125 costs for 2.6 g found in his bedroom,
-      which he said helped him sleep.
+      Unauthorised Class B possession carries up to five years in prison on conviction on
+      information, or a fine, or both.[@act] Small amounts can still lead to a court fine: 2024
+      cases involving half a gram and 2.6 g brought £300 and £750 respectively, each with £125
+      costs.[@iom24a,iom24b] Eligible first offenders may instead enter the Drug Arrest Referral
+      Scheme.[@policy2024]
     sources:
+      - act
       - iom24a
       - iom24b
-    currency: GBP
+      - policy2024
     penalties:
-      - label: Half a gram in 2024
+      - label: Unauthorised Class B possession; conviction on information
         treatment: criminal
-        fine: 300
-        note: Plus £125 costs
-      - label: 2.6 g in 2024
-        treatment: criminal
-        fine: 750
-        note: Plus £125 costs
+        term: Possession of a controlled drug
+        prison: 5 years
+        note: Prison or an uncapped criminal fine, or both; summary proceedings have lower limits
   cultivation:
     text: >-
-      Growing cannabis is an offence even for one plant: in 2022 a man who grew a single plant for
-      what he said was medicinal use was fined £700 plus £125 costs. Commercial growing needs a
-      licence from the Gambling Supervision Commission.
+      Unauthorised cannabis cultivation carries up to fourteen years on conviction on information,
+      or a fine, or both.[@act] Actual small-grow sentences can be much lower: a man who grew one
+      plant for claimed medicinal use was fined £700 plus £125 costs in 2022.[@mr22] Commercial
+      production needs the relevant GSC licence.[@gsc]
     sources:
+      - act
       - mr22
       - gsc
-    currency: GBP
     penalties:
-      - label: Single plant in 2022
+      - label: Unauthorised cultivation; conviction on information
         treatment: criminal
-        fine: 700
-        note: Plus £125 costs
+        term: Cultivation of cannabis plant
+        prison: 14 years
+        note: Prison or an uncapped criminal fine, or both; summary proceedings have lower limits
   enforcement:
     text: >-
-      Small amounts usually end in a fine and a conviction. Supply is punished with prison: a man
-      concerned in supplying 1.5 kg was jailed for three years and ten months in 2024.
+      Small possession cases can end in court fines, but the [Drug Arrest Referral
+      Scheme](/history/isle-of-man-drug-arrest-referral-2014/) offers eligible first offenders
+      education followed by a caution.[@iom24a,iom24b,policy2024] A 2024 government report says most
+      referrals involved cannabis and records 108 entrants in 2021/22, of whom 93 completed the
+      programme.[@policy2024]
     sources:
       - iom24a
       - iom24b
-      - mr24
+      - policy2024
   sharing:
     text: >-
-      Supplying cannabis is prosecuted as supply and punished with prison. No distinction is made
-      for sharing without payment.
+      Supply or possession with intent to supply a Class B drug carries up to fourteen years on
+      conviction on information, or a fine, or both.[@act] A 2024 case involving supply of 1.5 kg
+      brought three years and ten months in prison.[@mr24]
     sources:
+      - act
       - mr24
     penalties:
-      - label: Concerned in supplying 1.5 kg in 2024
+      - label: Supply or possession with intent to supply; conviction on information
         treatment: criminal
-        prison: 3 years
-        note: Plus ten months
+        term: Supply of a controlled drug
+        prison: 14 years
+        note: Prison or an uncapped criminal fine, or both; summary proceedings have lower limits
   consumption:
     text: >-
-      Use is dealt with through the possession offence. There are no places where it is tolerated.
+      Unauthorised use is policed through possession; patients have a separate prescription
+      route.[@iom24a,pharmacy2024] A medical-consumption lounge received planning approval in 2026
+      for adults to vaporise their own prescribed cannabis.[@loungeapproval]
     sources:
       - iom24a
+      - pharmacy2024
+      - loungeapproval
   access:
     text: >-
-      No legal adult-use source. Patients with a private prescription from a specialist doctor can
-      have it dispensed by an island pharmacy: more than 650 patients used the first licensed
-      pharmacy in its first year, mostly for chronic pain. The products are not available on the
-      island's health service.
+      There is no legal adult-use retail route.[@act] Since the [July 2024
+      expansion](/history/isle-of-man-pharmacies-dispense-2024/), registered pharmacies may apply to
+      dispense private cannabis prescriptions and private clinics may register
+      locally.[@pharmacy2024] Karsons in Onchan and Kingsley Muti in Ballasalla had both been
+      approved by August 2024.[@twopharmacies]
     sources:
-      - cd24
+      - act
+      - pharmacy2024
+      - twopharmacies
 context_not_applicable:
   death_penalty:
     text: >-
       The Isle of Man formally abolished capital punishment in 1993; the last execution on the
       island was in 1872. No cannabis offence carries a capital sentence.[@wikipdp]
-    sources: [wikipdp]
+    sources:
+      - wikipdp
 context:
   recreational:
     text: >-
-      There is no lawful recreational supply: possession of even half a gram goes to court and
-      usually ends in a fine of a few hundred pounds.[@iom24a,iom24b] In May 2026 Tynwald rejected
-      a citizens' jury on a regulated market, reaffirming harm-reduction principles instead.[@iom26]
+      Cannabis possession and home cultivation remain criminal offences, with [2024 court
+      cases](/history/isle-of-man-small-possession-fines-2024/) showing fines even for small
+      personal quantities.[@iom24a,iom24b,act] Eligible first possession cases can enter a
+      drug-education referral scheme instead of proceeding directly to court.[@policy2024] Tynwald
+      rejected a citizens’ jury on a regulated recreational market in May 2026.[@iom26]
     sources:
       - iom24a
       - iom24b
+      - act
+      - policy2024
       - iom26
   production:
-    status: medical
     text: >-
-      The Gambling Supervision Commission regulates licensed cultivation, manufacture, extraction,
-      import, export and industrial hemp. There is no production for adult
-      use.
+      The GSC licenses cultivation, storage, transport, manufacture, extraction, import, export and
+      analysis for the medicinal industry.[@gsc] Its FAQ describes the commercial system as
+      licensing specified activities for export, with an on-island company and at least two local
+      directors required.[@faq] The [withdrawal of Peel NRE’s proposed complex in
+      2026](/history/isle-of-man-peel-cannabis-plan-withdrawn-2026/) illustrates the gap between
+      licensing ambitions and construction; the BBC also reported that work had yet to start on a
+      separate approved GrowLab facility.[@withdrawal]
     sources:
       - gsc
+      - faq
+      - withdrawal
+    status: medical
   medical:
     text: >-
-      From December 2022 a single pharmacy in Onchan dispensed private prescriptions in a year-long
-      pilot. Since July 2024 any registered island pharmacy may apply to dispense, and private
-      clinics may register to prescribe on the island; prescriptions must come from a doctor on the
-      GMC specialist register. Clinics are inspected yearly and pharmacies every six months. About
-      335 products a month were dispensed in the pilot year through licensed pharmacies supplied
-      via UK wholesalers.
+      Patients pay privately for specialist prescriptions and dispensing: the island’s health
+      service does not provide the ordinary cannabis prescription route.[@pharmacy2024] The [pilot
+      launched in December 2022](/history/isle-of-man-medical-pharmacy-pilot-2022/) used Karsons
+      pharmacy in Onchan and prescriptions from registered English clinics.[@pharmacy2024] The [July
+      2024 expansion](/history/isle-of-man-pharmacies-dispense-2024/) opened applications to other
+      island pharmacies and local private prescribing clinics, with doctors required to be on the
+      GMC specialist register.[@pharmacy2024] By August 2024, Karsons and Kingsley Muti had both
+      secured approval.[@twopharmacies]
     sources:
-      - cd24
+      - pharmacy2024
+      - twopharmacies
   consequences:
     text: >-
-      In 2024 Tynwald approved policy principles for tackling the harm caused by illegal drugs. In May 2026 it rejected a motion for a citizens' jury on timelines for a regulated
-      recreational market, reaffirming those principles instead; the government said an action plan
-      would follow that summer.
+      The government’s 2024 drug-policy report describes how convictions can restrict work, travel
+      and residency, and says these effects can be amplified in a small community.[@policy2024]
+      Cautions can also appear on enhanced background checks.[@policy2024] Drug-related convictions
+      are separately relevant to commercial cannabis licensing: the GSC requires disclosure even of
+      spent convictions and says relevant drug or dishonesty convictions prevent approval.[@faq]
     sources:
-      - iom26
+      - policy2024
+      - faq
   clubs:
-    status: none
     text: >-
-      No cannabis clubs are known. Supplying cannabis to another person is prosecuted with prison
-      sentences.
+      The Green Lounge received planning approval in January 2026 for adults to vaporise their own
+      prescribed cannabis.[@loungeapproval] The [Ramsey venue left its premises in
+      September](/history/isle-of-man-green-lounge-relocates-2026/) and was holding pop-ups in
+      Douglas by October while seeking a permanent home.[@lounge] These accounts describe a patient
+      social space rather than a collective cultivation or recreational supply
+      scheme.[@loungeapproval,lounge]
     sources:
-      - mr24
+      - loungeapproval
+      - lounge
+    status: tolerated
   visitors:
-    status: none
     text: >-
-      There is no legal recreational supply for anyone, so a visitor has no lawful way to obtain
-      cannabis. Medical products are dispensed only on a private prescription.
+      There is no recreational supply route for visitors.[@act] Local medical dispensing operates
+      through licensed pharmacies and private specialist prescriptions.[@pharmacy2024] The GSC’s
+      commercial import/export licences are business permissions, separate from the
+      patient-dispensing arrangements.[@gsc,pharmacy2024]
     sources:
-      - cd24
+      - act
+      - pharmacy2024
+      - gsc
+    status: none
+  hemp:
+    text: >-
+      Industrial hemp cultivation needs a GSC licence and uses a THC ceiling of 0.2%.[@guidance] The
+      regulator distinguishes a crop whose active parts must be destroyed from a crop whose active
+      parts are used to produce medicinal CBD.[@guidance] Applicants for a With Use licence must
+      show a lawful export route.[@faq]
+    sources:
+      - guidance
+      - faq
+    status: strict
+  arrests:
+    text: >-
+      Police recorded 438 drug offences in 2023/24, compared with 480 in 2022/23, according to the
+      November 2024 government report.[@policy2024] Those totals cover all controlled drugs and
+      count recorded offences, rather than cannabis arrests.[@policy2024] The same report records
+      108 Drug Arrest Referral Scheme entrants in 2021/22, most referred for cannabis possession,
+      and 93 completions.[@policy2024]
+    sources:
+      - policy2024
+  planting:
+    text: >-
+      Seeds can be imported or exported without a GSC cannabis licence for that activity alone,
+      while shipments outside the UK/Isle of Man route require the plant-health paperwork described
+      by the regulator.[@faq] Possessing seeds without cultivating them needs no licence according
+      to GSC guidance.[@seedguide] Growing plants still needs permission, and licensed growers can
+      supply seedlings and propagated plant parts within the commercial system.[@guidance]
+    sources:
+      - faq
+      - seedguide
+      - guidance
+    seeds: grey
+    seeds_trade: open
+    clones: licensed
+    clones_trade: regulated
+  research:
+    text: >-
+      Researchers can obtain a GSC licence, separate from the commercial cultivation licence.[@faq]
+      Research permission can cover indoor male and female plants for breeding and seed production,
+      with measures to stop pollen reaching other sites.[@faq] Researchers may supply seeds,
+      seedlings and live plants, while commercial biomass sales need the additional cultivation
+      permission.[@faq]
+    sources:
+      - faq
+    status: licensed
+  culture:
+    text: >-
+      The [Green Lounge’s founders](/history/isle-of-man-green-lounge-approval-2026/) sought to reduce the stigma around medicinal cannabis by providing
+      a social space for patients.[@loungeapproval] In October 2026 the cafe’s founder described
+      keeping that community together through pop-ups after leaving the Ramsey premises.[@lounge]
+      The space offered food, drinks and activities alongside its patient focus.[@lounge]
+    sources:
+      - loungeapproval
+      - lounge
 sources:
   wikipdp:
     title: Wikipedia — Capital punishment in the Isle of Man
     url: https://en.wikipedia.org/wiki/Capital_punishment_in_the_Isle_of_Man
   iom24a:
     title: Isle of Man Today — Woman fined hundreds for possessing half a gram of cannabis (3 May 2024)
-    url: https://www.iomtoday.co.im/news/woman-fined-hundreds-for-possessing-half-a-gram-of-cannabis-684520
+    url: >-
+      https://www.iomtoday.co.im/news/woman-fined-hundreds-for-possessing-half-a-gram-of-cannabis-684520
   iom24b:
     title: Isle of Man Today — Police found cannabis in fisherman's bedroom during search (7 August 2024)
-    url: https://iomtoday.co.im/news/courts/isle-of-man-police-found-cannabis-in-fishermans-bedroom-during-search-711282
+    url: >-
+      https://iomtoday.co.im/news/courts/isle-of-man-police-found-cannabis-in-fishermans-bedroom-during-search-711282
   mr22:
     title: Manx Radio — Ramsey man caught red-handed growing cannabis (14 November 2022)
     url: https://manxradio.com/news/isle-of-man-news/ramsey-man-caught-red-handed-growing-cannabis
   mr24:
     title: Manx Radio — Douglas man admits involvement in £31k cannabis supply (11 January 2024)
-    url: https://www.manxradio.com/news/isle-of-man-news/douglas-man-admits-involvement-in-31k-cannabis-supply/
+    url: >-
+      https://www.manxradio.com/news/isle-of-man-news/douglas-man-admits-involvement-in-31k-cannabis-supply/
   gsc:
     title: Isle of Man Gambling Supervision Commission — Medicinal cannabis licensing
     url: https://www.isleofmangsc.com/cannabis/
   cd24:
-    title: Chemist+Druggist — Isle of Man pharmacies can apply to dispense medicinal cannabis (18 July 2024)
-    url: https://chemistanddruggist.co.uk/CD138366/Isle-of-Man-pharmacies-can-apply-to-dispense-medicinal-cannabis/link-M4AQMSWZG5GENOWYTRXOSHGRXI
+    title: >-
+      Chemist+Druggist — Isle of Man pharmacies can apply to dispense medicinal cannabis (18 July
+      2024)
+    url: >-
+      https://chemistanddruggist.co.uk/CD138366/Isle-of-Man-pharmacies-can-apply-to-dispense-medicinal-cannabis/link-M4AQMSWZG5GENOWYTRXOSHGRXI
   iom26:
-    title: Isle of Man Today — Tynwald rejects idea for citizens' jury on cannabis law reform (20 May 2026)
-    url: https://www.iomtoday.co.im/news/tynwald-rejects-idea-for-citizens-jury-on-cannabis-law-reform-909000
+    title: >-
+      Isle of Man Today — Tynwald rejects idea for citizens' jury on cannabis law reform (20 May
+      2026)
+    url: >-
+      https://www.iomtoday.co.im/news/tynwald-rejects-idea-for-citizens-jury-on-cannabis-law-reform-909000
+  act:
+    title: Isle of Man Legislation — Misuse of Drugs Act 1976, consolidated
+    url: https://legislation.gov.im/cms/images/LEGISLATION/PRINCIPAL/1976/1976-0021/1976-0021.pdf
+    locator: >-
+      Sections 4–6, 25 and Schedule 4: Class B possession and supply; cultivation. Full PDF
+      retrieval blocked; official indexed Schedule 4 text reviewed.
+  guidance:
+    title: Gambling Supervision Commission — full cannabis licence guidance
+    url: https://www.isleofmangsc.com/cannabis/licences-full-guidance/
+  faq:
+    title: Gambling Supervision Commission — cannabis licensing FAQ
+    url: https://www.isleofmangsc.com/cannabis/frequently-asked-questions/
+  policy2024:
+    title: >-
+      Department of Home Affairs — Policy principles to inform the Isle of Man’s approach to
+      tackling harm caused by drugs (November 2024)
+    url: https://tynwald.org.im/index.php/spfile?file=/business/opqp/sittings/20212026/2024-GD-0110.pdf
+    locator: Pages 11–14 and 17; recorded offences, consequences and Drug Arrest Referral Scheme
+  pharmacy2024:
+    title: Isle of Man Today — pharmacies can now apply to dispense medicinal cannabis (12 July 2024)
+    url: >-
+      https://www.iomtoday.co.im/news/isle-of-man-pharmacies-can-now-apply-to-dispense-medicinal-cannabis-704470
+  twopharmacies:
+    title: >-
+      Isle of Man Today — Two pharmacies can now dispense private medicinal cannabis prescriptions
+      (1 August 2024)
+    url: >-
+      https://www.iomtoday.co.im/news/two-isle-of-man-pharmacies-can-now-dispense-private-prescriptions-for-medicinal-cannabis-709557
+  lounge:
+    title: Isle of Man Today — Island cafe shuts but launches pop-ups at new location (16 October 2026)
+    url: >-
+      https://www.iomtoday.co.im/news/its-not-the-end-island-cafe-shuts-but-launches-pop-ups-at-new-location-964090
+  loungeapproval:
+    title: Manx Radio — Green Lounge gets approval (30 January 2026)
+    url: https://www.manxradio.com/news/isle-of-man-news/green-lounge-gets-approval/
+  withdrawal:
+    title: BBC — £100m medicinal cannabis complex plans withdrawn (4 June 2026)
+    url: https://www.bbc.com/news/articles/cn4pkww88k0o
+  seedguide:
+    title: GSC — Guidance for Cannabis Analysis, licence overview
+    url: https://www.isleofmangsc.com/media/454l03r3/analysis-licence-guide-v2-6-final.pdf
+    locator: 'Page 5: seeds possessed for a use other than cultivation need no licence'
+words:
+  - word: cannabis
+    lang: English
+    meaning: the law’s term for the plant and drug
+    sources:
+      - act
+  - word: medicinal cannabis
+    lang: English
+    meaning: the regulator’s term for licensed medical activity
+    sources:
+      - gsc
