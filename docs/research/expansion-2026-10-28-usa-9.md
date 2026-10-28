@@ -29,4 +29,8 @@ Same method as usa-1–8.
 - Possession/answers pinned by test, untouched. No NH history entries, no culture subject.
 - Audit 0/0; review page verified.
 
-## ri — pending
+## ri (Rhode Island) — committed
+- Cites on cultivation (home grow no penalty per Act + NORML), sharing (Cannabis Act), access.
+- Possession/answers/consumption pinned by tests, untouched. No RI history entries, no culture
+  subject — noted.
+- Audit 0/0; review page verified.
