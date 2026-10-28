@@ -30,5 +30,12 @@ where the state differs, history/culture links, audit + review build per state, 
 - No test breakage (no claims test pins GA strings). No grounded GA culture subject — skipped.
 - Audit 0/0; review page verified.
 
-## nc — pending
+## nc (North Carolina) — committed
+- Cultivation table (felony by weight, under-10-lb band verified against NORML), cites on
+  sharing/consumption, tribal access dated (medical Apr 2024, all adults Sep 2024 via EBCI tribal
+  paper The One Feather, verified 200; EBCI regulator page bot-blocked).
+- Possession left as a string: claims test #161 pins its wording and its fractions (1/2 oz,
+  1/20 oz) do not parse as table amounts. No NC history entries, no grounded culture subject.
+- Audit 0/0; review page verified.
+
 ## mi — pending
