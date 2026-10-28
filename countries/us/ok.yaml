@@ -14,9 +14,25 @@ scores:
   consumption: 1
   access: 3
 segments:
-  possession: Without a medical card, any amount is a misdemeanour with up to a year and a $1,000 fine.
-  cultivation: Registered patients may grow six mature plants and six seedlings. For others it is a felony.
-  enforcement: Jail is possible for non-patients, though uncommon for small amounts.
+  possession:
+    text: >-
+      Without a medical card, any amount is a misdemeanour with up to a year and a $1,000 fine.[@1]
+    currency: USD
+    penalties:
+      - label: Any amount without a card
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 1000
+  cultivation:
+    text: >-
+      Registered patients may grow six mature plants and six seedlings. For others it is a felony.[@4]
+    currency: USD
+    penalties:
+      - upto: 6 plants
+        treatment: legal
+        note: Six mature and six seedlings per registered patient
+  enforcement: Jail is possible for non-patients, though uncommon for small amounts.[@1]
   sharing: >-
     A person who shares less than 3 grams of medical marijuana with someone who is not authorized to
     have it, without payment or other consideration, is not subject to criminal prosecution and is
@@ -25,10 +41,17 @@ segments:
     marijuana is otherwise a Class D1 felony. Distributing to a person under 18, or using a person
     under 18 to distribute, is a Class C1 felony of two to ten years on a first offence, four to
     twenty years on a second, and ten years to life on a third.
-  consumption: Illegal without a card.
+  consumption: Illegal without a card.[@1]
   access: >-
     Medical only, but the programme has no list of qualifying conditions and dispensaries are
-    everywhere.
+    everywhere.[@1,5]
+context:
+  medical:
+    text: >-
+      State Question 788 (June 2018) created one of the most open medical programmes in the
+      country: no list of qualifying conditions, and registered patients may grow six mature
+      plants and six seedlings.[@5]
+    sources: [5]
 sources:
   - title: Oklahoma Statutes § 63-427.6 (2025 Justia reproduction)
     url: https://law.justia.com/codes/oklahoma/title-63/section-63-427-6/
@@ -38,6 +61,8 @@ sources:
     url: https://occa.state.ok.us/cases/2026/OK-CR-11/
   - title: Oklahoma Administrative Code § 442:10-2-9
     url: https://regulations.justia.com/states/oklahoma/title-442/chapter-10/subchapter-2/section-442-10-2-9/
+  - title: Ballotpedia — Oklahoma State Question 788, Medical Marijuana Legalization Initiative (June 2018)
+    url: https://ballotpedia.org/Oklahoma_State_Question_788,_Medical_Marijuana_Legalization_Initiative_(June_2018)
 use:
   note: Includes vaping; a model-based estimate.
   share: 26.4

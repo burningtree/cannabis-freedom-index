@@ -17,6 +17,12 @@ Same method as usa-1–5.
   entry, no culture subject — noted.
 - Audit 0/0; review page verified.
 
-## ok — pending
+## ok (Oklahoma) — committed
+- Possession + cultivation tables (NORML-verified: any-amount misd 1yr/$1k; patient 6+6 legal),
+  cites on possession/cultivation/enforcement/consumption/access, new `medical` (SQ 788 June
+  2018, no condition list, 6+6 grow via Ballotpedia page, bot-challenged but slug-conventional).
+- Sharing pinned by test, untouched. No OK history entries, no culture subject — noted.
+- Audit 0/0; review page verified.
+
 ## ct — pending
 ## ut — pending
