@@ -37,6 +37,12 @@ history) — verify and build on them, don't duplicate.
 - New `changes.yaml` entry `guinea-bissau-senegal-cannabis-convoy-2026` (checked, from AfricanQuarters 28 Oct 2026 piece which I read in full). NOT committed: tree's changes.yaml carries another agent's uncommitted full-file reorder — committing would sweep their work. Entry verified in review builds; needs re-check once their reorder lands.
 - Page + new history page verified in review HTML.
 - Left: driving/arrests (no GW-side sources found), words/culture (no atlas entry), 1920s–60s, 1980s, 2000s–2020s decades; first-restriction estimate kept; 1995 conventions entry too thin for an article.
-## gq — pending
+## gq — committed
+- Per-sentence cites ×11 (segments + context); new hemp section; removed FCDO reliance from recreational/visitors (audit rule) keeping decree+UN citations.
+- No articles: both candidates (1981 Getafe, 1970 Macías bhang) rest on Wikipedia alone; no primary source found. No words/culture (no atlas entry, no sourced word).
+- Penalty tables honestly impossible: reviewer deliberately left tariffs provisional pending 1993/2022 reconciliation — left missing, noted.
+- Recent-news check: nothing GQ-side cannabis-specific since 2019 (only Nigeria→Malabo cocaine route).
+- Audit 0/0; page verified in review HTML.
+- Left: 1920s–50s, 2020s decades; first-restriction estimate kept.
 ## dj — pending
 ## mu — pending
