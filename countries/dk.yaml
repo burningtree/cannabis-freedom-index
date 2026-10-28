@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 208
 recreational: illegal
 medical: legal
-updated: 2026-10-13
+updated: '2026-10-28'
 summary: >-
   Possession is punished with fines. The medical cannabis programme became permanent in 2026, and
   Denmark hosts licensed producers. Christiania's open market was shut down in 2024.
@@ -18,36 +18,56 @@ segments:
   possession:
     text: >-
       Possession of any amount is an offence. For small amounts for personal use the standard
-      outcome is a fine that rises with repeat offences; larger amounts or signs of dealing can
-      bring prison. The guideline fine for up to 9.9 g of hash is DKK 2,000 for a first offence,
-      DKK 3,000 for a second and DKK 4,000 thereafter.
+      outcome is a fine that rises with repeat offences;[@prosecutor] larger amounts or signs of dealing can
+      bring prison.[@prosecutor] The guideline fine for up to 9.9 g of hash is DKK 2,000 for a first offence,
+      DKK 3,000 for a second and DKK 4,000 thereafter.[@prosecutor]
+      [Fines replaced warnings in 2004.](/history/denmark-fines-2004/)
     sources:
       - prosecutor
     currency: DKK
     penalties:
       - upto: 9.9 g
         treatment: criminal
+        term: Possession of euphoriant substances
         fine: 2000
         note: First offence; guideline fine for up to 9.9 g of hash
       - upto: 9.9 g
         repeat: 2
         treatment: criminal
+        term: Possession of euphoriant substances
         fine: 3000
         note: Second offence
       - upto: 9.9 g
         repeat: 3
         treatment: criminal
+        term: Possession of euphoriant substances
         fine: 4000
         note: Third and later offences
   cultivation:
     text: >-
       Growing cannabis for its THC is illegal and prosecuted; penalties scale with the number of
-      plants. Licensed medical production and permitted industrial-hemp growing are exceptions.
+      plants.[@prosecutor] Larger grows face up to two years under the Euphoriants Act,[@esarep]
+      and trafficking-scale cases go under Penal Code section 191.[@dkcode] Licensed medical
+      production and permitted industrial-hemp growing are exceptions.[@order2026]
     sources:
       - order2026
       - prosecutor
+      - esarep
+      - dkcode
+    penalties:
+      - label: Growing for personal use
+        treatment: criminal
+        term: Cultivation of euphoriant substances
+        note: Fine under the charging guidance, scaling with plant numbers
+      - label: Larger or commercial growing
+        treatment: criminal
+        term: Cultivation of euphoriant substances
+        prison: 2 years
+        note: Fine or up to two years under the Euphoriants Act; trafficking-scale cases go under Penal Code section 191 (up to ten years)
   enforcement:
-    text: Fines for users; prison for cultivation and dealing, with long sentences for organised trade.
+    text: >-
+      Fines for users; prison for cultivation and dealing, with long sentences for organised trade.[@prosecutor]
+      [Fines replaced warnings in 2004.](/history/denmark-fines-2004/)
     sources:
       - prosecutor
   sharing:
@@ -56,6 +76,7 @@ segments:
       Euphoriants Act with a fine or up to two years in prison; aggravated supply under Penal Code section 191 — to a
       considerable number of people, for a large payment or in otherwise aggravating
       circumstances — carries up to ten years.[@esarep,dkcode]
+      [The six-year maximum for serious supply dates to 1969.](/history/denmark-serious-drug-supply-1969/)
     sources:
       - order2026
       - prosecutor
@@ -64,21 +85,25 @@ segments:
     penalties:
       - label: Ordinary supply (Euphoriants Act)
         treatment: criminal
+        term: Unlawful supply of euphoriant substances
         prison: 2 years
         note: Fine or up to two years
       - label: Aggravated supply (Penal Code section 191)
         treatment: criminal
+        term: Aggravated supply (Penal Code section 191)
         prison: 10 years
         note: Considerable number of buyers, large payment or other aggravating circumstances
   consumption:
-    text: Use is not itself named as an offence, but possession is, so users are fined when caught.
+    text: Use is not itself named as an offence, but possession is, so users are fined when caught.[@order2026,prosecutor]
     sources:
       - order2026
       - prosecutor
   access:
     text: >-
       No legal adult-use source. Copenhagen's open hash market on Christiania's Pusher Street was
-      dug up and closed in 2024. Medical cannabis is dispensed by pharmacies on prescription.
+      dug up and closed in 2024.[@pusher] Medical cannabis is dispensed by pharmacies on prescription.[@medical]
+      [Pusher Street was dug up and closed in 2024.](/history/denmark-pusher-street-closed-2024/)
+      [The medical scheme became permanent in 2026.](/history/denmark-medical-permanent-2026/)
     sources:
       - pusher
       - medical
@@ -90,6 +115,7 @@ context:
       offences.[@prosecutor] Copenhagen's open hash market on Pusher Street was dug up and
       closed in 2024, scattering the trade.[@pusher] Use itself is not a separate offence, but
       users are fined through possession.[@order2026]
+      [Pusher Street was dug up and closed in 2024.](/history/denmark-pusher-street-closed-2024/)
     sources:
       - prosecutor
       - pusher
@@ -115,29 +141,28 @@ context:
     status: medical
     text: >-
       Denmark licenses cultivation and manufacture of medical cannabis and hosts several
-      export-oriented producers.
+      export-oriented producers.[@bulk,law439]
+      [The medical scheme became permanent in 2026.](/history/denmark-medical-permanent-2026/)
     sources:
       - bulk
       - law439
-  products:
-    text: Prescription flower and oils under the medical scheme; low-THC products up to 0.2%.
-    sources:
-      - medical
-      - seed_answer
   medical:
     text: >-
       A pilot programme that began in 2018 let any doctor prescribe cannabis products not otherwise
-      approved as medicines. Parliament made it permanent from 1 January 2026, with partial
-      reimbursement.
+      approved as medicines, as flower and oils.[@medical] Parliament made it permanent from 1 January 2026, with partial
+      reimbursement.[@law439] Low-THC products up to 0.2% sit outside the prescription route.[@seed_answer]
+      [The pilot began in 2018.](/history/denmark-medical-pilot-2018/)
+      [The medical scheme became permanent in 2026.](/history/denmark-medical-permanent-2026/)
     sources:
       - medical
       - law439
+      - seed_answer
   consequences:
     text: >-
       A fine solely under the controlled-substances law does not appear on either the private or
-      public criminal-record certificate, although a prison sentence does. Driving is illegal above
+      public criminal-record certificate, although a prison sentence does.[@record] Driving is illegal above
       0.001 mg THC per kg of blood; higher levels can bring conditional or unconditional licence
-      disqualification.
+      disqualification.[@traffic]
     sources:
       - record
       - traffic
@@ -148,11 +173,11 @@ context:
     clones_trade: regulated
     text: >-
       Cannabis seeds are excluded from the controlled-substances order, so possession and sale are
-      lawful; germinating them is not, unless the resulting cultivation is licensed or permitted.
-      Cuttings are cannabis plant material and therefore controlled. Licensed medical businesses
-      may propagate and distribute plants or plant parts to licensed growers, while low-THC
-      industrial hemp may be grown under permit. Clones are consequently confined to regulated
-      licensed channels.
+      lawful;[@order2026] germinating them is not, unless the resulting cultivation is licensed or permitted.[@order2026]
+      Cuttings are cannabis plant material and therefore controlled.[@order2026] Licensed medical businesses
+      may propagate and distribute plants or plant parts to licensed growers,[@order2026] while low-THC
+      industrial hemp may be grown under permit.[@seed_answer] Clones are consequently confined to regulated
+      licensed channels.[@order2026,seed_trade]
     sources:
       - order2026
       - seed_answer
@@ -162,9 +187,9 @@ context:
     text: >-
       Denmark has a fixed limit of 1 nanogram of THC per millilitre of blood, alongside an
       offence of impaired driving; the rule does not apply to a substance taken in accordance
-      with a medical prescription. Police may stop and test at random, using an oral-fluid
-      test after a physical test and blood taken at a hospital. The driving ban runs from six
-      months to ten years or for life, and prison of up to a year and a half is possible.
+      with a medical prescription.[@euda_dd] Police may stop and test at random, using an oral-fluid
+      test after a physical test and blood taken at a hospital.[@euda_dd] The driving ban runs from six
+      months to ten years or for life, and prison of up to a year and a half is possible.[@euda_dd]
     sources:
       - euda_dd
   clubs:
@@ -172,9 +197,9 @@ context:
     text: >-
       No club is confirmed. A Europe-wide survey of cannabis social clubs carried out in 2018 and
       2019 received no answer from Denmark but, because of contradictory sources, could not rule out
-      that clubs were active there. No law in Denmark provides for them; Malta (since 2021) and
-      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.
-      Nothing more recent was found.
+      that clubs were active there.[@pardal20] No law in Denmark provides for them; Malta (since 2021) and
+      Germany (since 2024) license non-profit cannabis associations, but only under their own laws.[@mt_cap628,de_cang]
+      Nothing more recent was found.[@pardal20]
     sources:
       - pardal20
       - de_cang
@@ -182,19 +207,35 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Possession of any amount is an offence;
+      There is no legal recreational supply for anyone.[@prosecutor] Possession of any amount is an offence;
       for small amounts for personal use the standard outcome is a fine that rises with repeat
-      offences.
+      offences.[@prosecutor]
     sources:
       - prosecutor
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 522 kg of herbal cannabis and
       3,315 kg of cannabis resin seized in Denmark in 2024, against 384 kg and 3,965 kg in
-      2023. Herbal cannabis was seized on 1,395 occasions and resin on 14,751. Countries
-      record seizures differently, so the figures are not comparable across borders.
+      2023.[@euda_szr] Herbal cannabis was seized on 1,395 occasions and resin on 14,751.[@euda_szr] Countries
+      record seizures differently, so the figures are not comparable across borders.[@euda_szr]
     sources:
       - euda_szr
+  culture:
+    text: >-
+      For half a century hashish was sold openly from stalls on [Pusher Street](/culture/traditions/pusher-street/),
+      the main street of Copenhagen's freetown Christiania, until the residents dug the street up
+      themselves in 2024.[@pusher] The freetown began in 1971, when squatters took over an abandoned
+      barracks; its defenders argued that concentrating the trade kept it out of the rest of
+      society, the same reasoning as the Dutch coffeeshop.[@pusherstreet] Every May, Copenhagen's
+      [Global Marijuana March](/culture/traditions/global-marijuana-march/) sets out from Christiania
+      for the city hall square — smoking is illegal, but during the march the police look the other
+      way.[@mmm]
+      [Pusher Street was dug up and closed in 2024.](/history/denmark-pusher-street-closed-2024/)
+      [The six-year maximum for serious supply dates to 1969.](/history/denmark-serious-drug-supply-1969/)
+    sources:
+      - pusher
+      - pusherstreet
+      - mmm
 sources:
   de_cang:
     title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
@@ -241,6 +282,12 @@ sources:
   pusher:
     title: City of Copenhagen — Briefing on the permanent closure of Pusher Street
     url: https://www.kk.dk/sites/default/files/agenda/d27a47dc-302a-4c67-9312-c1deb82e0367/92d51cb6-293d-4d77-bb23-80f2f7118d21-bilag-19_0.pdf
+  pusherstreet:
+    title: Cannabis Freedom Index — Pusher Street (atlas)
+    url: https://cannabisfreedom.fyi/culture/traditions/pusher-street/
+  mmm:
+    title: Cannabis Freedom Index — The Global Marijuana March (atlas)
+    url: https://cannabisfreedom.fyi/culture/traditions/global-marijuana-march/
   seed_answer:
     title: Health minister's answer on cannabis seeds and THC limits (18 August 2025)
     url: https://www.ft.dk/samling/20241/almdel/mof/bilag/0/3056412.pdf
