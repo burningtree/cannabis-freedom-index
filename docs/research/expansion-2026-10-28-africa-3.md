@@ -18,7 +18,12 @@ All batch files verified free of others' uncommitted changes at start.
 - No atlas entries / no valid word source: words + culture skipped; planting skipped.
 - Audit 0/0; page + article verified. Final build delayed by others' churn (lu mid-edit phantom, lock contention); green on retry.
 - Left: 1920s–1970s, 2000s history decades.
-## mz — pending
+## mz — committed
+- Words (Suruma/Mozambican Portuguese + Mbanje/Ndau via Duvall; culture already linked both).
+- Black_market refreshed with 2025 government figure (4.4+ tonnes incl. cannabis via NewsCentral).
+- Two articles: `mozambique-delagoa-bay-bang-1798.md` (White's journal, cow's-horn pipe) and `mozambique-nyusi-legalisation-studies-2024.md` (president's call for studies).
+- Driving researched section skipped (no source). Audit 0/0; page + both articles verified.
+- Left: 1920s/30s/60s/80s/2000s/2010s history decades.
 ## zw — pending
 ## gn — pending
 ## rw — pending
