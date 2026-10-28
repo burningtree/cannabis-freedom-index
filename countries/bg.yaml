@@ -5,8 +5,8 @@ recreational: illegal
 medical: none
 updated: '2026-10-28'
 summary: >-
-  A 'high-risk' drug: one to six years for possession, with a fine of up to €511.29 for minor cases
-  that still counts as a conviction.
+  A high-risk drug: ordinary possession carries one to six years and a fine. Minor cases carry
+  a fine up to €511.29; qualifying first offenders can receive administrative release.
 scores:
   possession: 1
   cultivation: 0
@@ -18,8 +18,9 @@ segments:
   possession:
     text: >-
       Cannabis is a high-risk drug.[@wiki] Ordinary possession carries one to six years and a fine of
-      €1,022.58–5,112.92; a minor case carries a fine up to €511.29, still a criminal
-      conviction.[@code,eurolaw,euro2026] These are the legacy BGN2,000–10,000 and BGN1,000 tariffs,
+      €1,022.58–5,112.92; a minor case carries a fine up to
+      €511.29.[@code,eurolaw,euro2026] Qualifying first offenders can be released from criminal
+      responsibility with an administrative fine under Article 78a.[@code] These are the legacy BGN2,000–10,000 and BGN1,000 tariffs,
       converted at BGN1.95583 per euro and rounded to cents.[@code,eurolaw,euro2026] There has been no
       personal dose since the [2004 single-dose repeal](/history/bulgaria-personal-dose-abolished-2004/).
     sources:
@@ -41,29 +42,39 @@ segments:
         treatment: criminal
         term: Possession
         fine: 511.29
-        note: Fine instead of prison; still a criminal conviction
+        note: Fine instead of prison; qualifying Article 78a release is a separate administrative outcome
   cultivation:
     text: >-
-      Cultivation is a crime with prison terms; the penal code has a separate offence for growing
-      hemp-type plants.[@wiki] In 2014 a multiple sclerosis patient with two plants was fined 1,000 leva
-      on appeal after a first acquittal.[@nr2007,dr]
+      Unauthorised sowing or growing cannabis carries two–five years in prison and a fine of
+      €2,556.46–5,112.92.[@code,eurolaw,euro2026] A minor cultivation case carries up to one
+      year and a fine up to €511.29.[@code,eurolaw,euro2026] Licensed industrial hemp has a
+      separate agricultural permit route.[@ord1,mzh]
     sources:
-      - wiki
-      - nr2007
-      - dr
+      - code
+      - eurolaw
+      - euro2026
+      - ord1
+      - mzh
+    currency: EUR
     penalties:
-      - label: Unlicensed growing
+      - label: Unauthorised cannabis sowing or growing
         treatment: criminal
-        term: Cultivation
-        note: Crime with prison terms; tariff not stated in retained sources
-      - label: Hemp-type plants
+        term: Article 354c(1)
+        prison_min: 2 years
+        prison: 5 years
+        fine_min: 2556.46
+        fine: 5112.92
+        note: Prison and a fine; converted from BGN5,000–10,000
+      - label: Minor cultivation case
         treatment: criminal
-        term: Cultivation
-        note: Separate penal-code offence
-      - label: Licensed hemp
+        term: Article 354c(5)
+        prison: 1 year
+        fine: 511.29
+        note: Prison and a fine; qualifying administrative release may apply
+      - label: Licensed industrial hemp
         treatment: legal
-        term: Hemp
-        note: Free three-year permit, below 0.3% THC
+        term: Agriculture permit
+        note: Specified fibre and seed purposes; ministry permit below 0.3% THC
   enforcement:
     text: >-
       Most small cases end in the minor-case fine, but prison sentences for possession do occur, and
@@ -71,21 +82,59 @@ segments:
     sources:
       - dr
   sharing:
-    text: Distribution carries two to eight years or more.[@wiki,dr14]
+    text: >-
+      Producing or holding high-risk drugs for distribution, or distributing them, carries
+      two–eight years and a fine of €2,556.46–10,225.84.[@code,eurolaw,euro2026] Large-quantity
+      cases carry three–twelve years and €5,112.92–25,564.59; specified aggravated cases carry
+      five–fifteen years and €10,225.84–51,129.19.[@code,eurolaw,euro2026]
     sources:
-      - wiki
-      - dr14
+      - code
+      - eurolaw
+      - euro2026
+    currency: EUR
     penalties:
-      - label: Distribution
+      - label: Ordinary high-risk drug distribution
         treatment: criminal
-        term: Distribution
+        term: Article 354a(1)
         prison_min: 2 years
         prison: 8 years
-        note: Two to eight years or more
+        fine_min: 2556.46
+        fine: 10225.84
+        note: Prison and a fine; also covers production or possession for distribution
+      - label: Large-quantity distribution offence
+        treatment: criminal
+        term: Article 354a(2), first sentence
+        prison_min: 3 years
+        prison: 12 years
+        fine_min: 5112.92
+        fine: 25564.59
+      - label: Specified aggravated distribution offence
+        treatment: criminal
+        term: Article 354a(2), remaining provisions
+        prison_min: 5 years
+        prison: 15 years
+        fine_min: 10225.84
+        fine: 51129.19
+        note: Includes especially large quantities and specified public-place, group or professional cases
   consumption:
-    text: Use is not separately punished, but possession is.[@dr]
+    text: >-
+      Use of list-I substances is prohibited by the drug-control law.[@controlact] Its residual
+      administrative provision allows a fine of BGN2,000–5,000 where no heavier penalty applies,
+      equivalent to €1,022.58–2,556.46 after the 2026 conversion.[@controlact,eurolaw,euro2026]
+      Possession is prosecuted separately under the Penal Code.[@code]
     sources:
-      - dr
+      - controlact
+      - eurolaw
+      - euro2026
+      - code
+    currency: EUR
+    penalties:
+      - label: Prohibited drug use — residual administrative liability
+        treatment: civil
+        term: Drug Control Act, Articles 30 and 108a
+        fine_min: 1022.58
+        fine: 2556.46
+        note: Where no heavier penalty applies; converted from BGN2,000–5,000
   access:
     text: None. Production, import and sale are prohibited, and nothing containing THC is legally sold.[@wiki,cmsg]
     sources:
@@ -100,7 +149,8 @@ context:
     text: >-
       There is no legal recreational supply. Cannabis is a class A high-risk drug with heroin and
       cocaine: possession brings one to six years and up to €5,112.92, or up to €511.29 in minor cases
-      — still a criminal conviction.[@wiki,dr,nr2007] Most small cases end in the minor-case fine, but
+      under the minor-offence provision.[@code,eurolaw,euro2026] Qualifying first offenders can
+      receive administrative release under Article 78a.[@code] Most small cases end in the minor-case fine, but
       prison happens, and reform is a political taboo.[@dr] Distribution brings two to eight years or
       more.[@wiki,dr14] Euro amounts apply the 2026 conversion at BGN1.95583 per euro and statutory
       cent rounding.[@euro2026,eurolaw] Nothing with THC is legally sold: CBD may be imported
@@ -108,8 +158,8 @@ context:
     sources:
       - wiki
       - dr
-      - nr2007
       - dr14
+      - code
       - mondaq
       - nutra
       - euro2026
@@ -134,23 +184,28 @@ context:
       - bta24
   medical:
     text: >-
-      No medical cannabis programme — unlike neighbouring Greece and Romania, there is not even a law
-      on paper. A doctor who prescribes cannabis faces up to five years in prison and a fine of up to
-      €1,533.88. In October 2015 the national drugs council declared that Bulgaria had no need for
-      medical marijuana, and since June 2016 licences for cannabis may be issued only for medical
-      research.[@wiki,cmsg,dr16] Euro amounts apply the 2026 conversion at BGN1.95583 per euro and
-      statutory cent rounding.[@euro2026,eurolaw]
+      Bulgaria has no general medical cannabis programme.[@cmsg] The drug-control law allows
+      limited quantities of otherwise prohibited substances for medical, scientific and
+      laboratory research and education.[@controlact] Unlawfully prescribing controlled drugs
+      carries up to five years and a fine up to €1,533.88, with possible loss of professional
+      rights.[@code,eurolaw,euro2026]
     sources:
-      - wiki
       - cmsg
-      - dr16
-      - euro2026
-      - eurolaw
-  consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.[@dr,code]
-    sources:
-      - dr
+      - controlact
       - code
+      - eurolaw
+      - euro2026
+  consequences:
+    text: >-
+      A minor possession case can end with a criminal fine, while qualifying first offenders can
+      receive [administrative release](/history/bulgaria-administrative-release-1982/)
+      under Article 78a.[@code] The court must check the statutory conditions and exclusions,
+      including previous convictions and specified drug-use circumstances.[@code] A conviction
+      under the drug provisions can also prevent eligibility for an industrial-hemp growing
+      permit.[@ord1]
+    sources:
+      - code
+      - ord1
   driving:
     status: zero
     text: >-
@@ -249,6 +304,11 @@ context:
       - mondaq
       - nutra
 sources:
+  controlact:
+    type: law
+    title: Bulgaria — Narcotic Substances and Precursors Control Act, reproduced text
+    url: https://lex.caselaw.bg/akt/zknvp/
+    locator: Articles 30–31 and 108a–110; prohibition, research exception and residual administrative fine
   de_cang:
     title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
     url: https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz
@@ -333,8 +393,8 @@ sources:
     title: Bulgaria — Penal Code, current consolidation reproduced by Lex.bg
     url: https://lex.bg/laws/ldoc/1589654529
     locator: >-
-      Article 354a(3)(1) and (5): possession fine BGN2,000–10,000, minor case up to BGN1,000; read
-      with Euro Introduction Act
+      Articles 78a, 354a and 354c: administrative release, possession, distribution and cultivation;
+      legacy lev fines read with Euro Introduction Act
   wiktionary-treva:
     title: "Wiktionary — трева (Bulgarian colloquial: weed, marijuana)"
     url: https://en.wiktionary.org/wiki/%D1%82%D1%80%D0%B5%D0%B2%D0%B0

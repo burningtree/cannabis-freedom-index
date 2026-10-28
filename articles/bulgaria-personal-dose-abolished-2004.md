@@ -18,7 +18,7 @@ In 2004 Bulgaria repealed the single-dose exemption: paragraph 3 of Article 354a
 
 The old paragraph had drawn a line between dependence and dealing: a dependent user with a single dose stayed outside punishment.[@2] Its removal erased the only quantity-based shelter in the law. A study a year later judged the ban and its effects part of a wider failure of law and institutions.[@2]
 
-The repeal made Bulgarian law among the harshest in Europe — and it stuck. Minor cases today still end in criminal convictions with fines, and possession still carries one to six years.[@2]
+The repeal made Bulgarian law among the harshest in Europe — and it stuck. Ordinary possession still carries one to six years. Minor cases can receive a fine, while qualifying first offenders can be released from criminal responsibility with an administrative penalty under Article 78a.[@2]
 
 ## The march that followed
 
