@@ -40,4 +40,10 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0; country + article review pages verified (words, Kaya mention, article body render).
 - Note: `npm test` failed transiently mid-work on #160/#178 (working-tree test file briefly held another agent's uncommitted mt-medical variant); re-ran green (87/0 profile-claims). Stale `.cache/build.lock` (dead PID 36491) removed after verifying no astro build runs.
 - Left: 1920s/30s/40s/50s history gaps (open article was herb-house 2018 — now written).
-## tt — pending
+## tt — committed
+- Penalty tables from Act No. 24 of 2019 verified via PDF (possession 30/60/100g + 5/10/14g resin tiers, TT$50k/75k/250k fines, TT$2,000 fixed-penalty route, 30/50h community service; cultivation >4 plants TT$750k+10y summary, TT$2M/life indictment via LAAA).
+- Per-sentence cites on all 14 flagged texts; products folded into recreational; new hemp (status none — no hemp regime, stalk-fibre/seed-oil carve-outs), black_market (Oct 2025 Palo Seco/Point Fortin TT$314M seizures via TTPS release), arrests (CARICOM 2012/2015/2017 figures), culture (ganja atlas + 1925/1895 history links).
+- History links: decriminalisation-2019, cannabis-control-act-2022, ganja-ordinance-1925, venezuela-ganja-smuggling-1895. Words (Ganja/Herb).
+- New `articles/trinidad-cannabis-control-act-2022.md` (8 licence types + religious-use licences, assent/proclamation, econ source).
+- Audit 0/0; country review page verified (tables, links, words render). Article review build blocked by another agent's uncommitted gy.yaml links to not-yet-created guyana-industrial-hemp-2022; article citations validated by green test suite.
+- Left: 1930s/40s/50s/80s/2000s history gaps; 1895-smuggling + 2022-act articles now written (open: 1995 convention).

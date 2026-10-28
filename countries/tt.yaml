@@ -24,50 +24,96 @@ answers:
     answer: limited
     label: Depends on the setting
     text: Even within the quantity allowance, possession on a school bus or at specified premises with children can bring five years
+words:
+  - { word: Ganja, lang: Trinidadian English, meaning: "the standard word for cannabis, brought by indentured labourers from India in the 19th century", sources: [wiki] }
+  - { word: Herb, lang: Trinidadian English, meaning: "cannabis, especially in Rastafari and reggae-influenced usage", sources: [wiktionary-herb] }
 segments:
   possession:
     text: >-
-      The ordinary exemption is 30 g of cannabis or 5 g of resin. It does not override section 5C(b):
-      possession on a school bus, or at premises where children are present for education, sport or
-      cultural activities, carries TT$250,000 and five years on summary conviction. The separate
-      school-vicinity trafficking presumption in section 5(7) expressly excludes people covered by
-      section 5(2). Moderate overages have a ticket scheme; larger amounts remain criminal.
+      The ordinary exemption is 30 g of cannabis or 5 g of resin.[@act24] It does not override section
+      5C(b): possession on a school bus, or at premises where children are present for education, sport
+      or cultural activities, carries TT$250,000 and five years on summary conviction.[@act24] The
+      separate school-vicinity trafficking presumption in section 5(7) expressly excludes people covered
+      by section 5(2).[@act24] Moderate overages have a ticket scheme; larger amounts remain
+      criminal.[@act24]
     sources:
       - act24
+    currency: TTD
+    penalties:
+      - upto: 30 g
+        treatment: legal
+        term: Exempt personal quantity
+        note: Cannabis flower; 5 g for resin. Does not apply on school buses or at specified children's-activity premises
+      - over: 30 g
+        upto: 60 g
+        treatment: criminal
+        term: TT$50,000 fine on summary conviction
+        fine: 50000
+        note: Cannabis flower; 5–10 g for resin. A TT$2,000 fixed-penalty notice may be offered instead; an unpaid court fine can become 30 hours' community service
+      - over: 60 g
+        upto: 100 g
+        treatment: criminal
+        term: TT$75,000 fine on summary conviction
+        fine: 75000
+        note: Cannabis flower; 10–14 g for resin. An unpaid court fine can become 50 hours' community service
+      - over: 100 g
+        treatment: criminal
+        term: TT$250,000 and five years on summary conviction
+        note: Cannabis flower; over 14 g for resin. On indictment, TT$1 million and up to fifteen years
+      - label: Any amount on a school bus or at specified children's-activity premises
+        treatment: criminal
+        term: TT$250,000 and five years on summary conviction
+        note: Section 5C(b) overrides the personal-quantity exemption in these settings
   cultivation:
-    text: Each adult may grow up to four plants at home. More than four is an offence.
+    text: >-
+      Each adult may grow up to four plants at home.[@act24,wiki,tni] More than four is an
+      offence, punished far more harshly than an over-limit possession.[@act24,legalaid]
     sources:
       - wiki
       - tni
+      - act24
+      - legalaid
+    penalties:
+      - upto: 4 plants
+        treatment: legal
+        term: Home growing
+        note: Per adult, at home
+      - over: 4 plants
+        treatment: criminal
+        term: TT$750,000 and ten years on summary conviction
+        note: On indictment, TT$2 million or ten times the street value, and up to life imprisonment
   enforcement:
     text: >-
-      The quantity exemption applies in permitted settings. Section 5C(b) carries five years even for
-      small amounts in its school-bus and children’s-activity settings. Public use has a separate
-      TT$2,000 ticket scheme. Trafficking and larger quantities bring criminal penalties.
+      The quantity exemption applies in permitted settings.[@act24] Section 5C(b) carries five years
+      even for small amounts in its school-bus and children’s-activity settings.[@act24] Public use has
+      a separate TT$2,000 ticket scheme.[@act24] Trafficking and larger quantities bring criminal
+      penalties.[@act24]
     sources:
       - act24
   sharing:
     text: >-
-      The 2019 amendment removed penalties for possession and growing, not for supply. Giving
-      cannabis to another person stays under the supply offences, and selling remains a crime.
+      The 2019 amendment removed penalties for possession and growing, not for supply.[@tni] Giving
+      cannabis to another person stays under the supply offences, and selling remains a
+      crime.[@wiki,tni]
     sources:
       - wiki
       - tni
   consumption:
     text: >-
-      Private use is generally lawful. Public smoking or use falls under section 5A: a TT$50,000 court
-      fine, with a separate TT$2,000 fixed-penalty route. The five-year sentence for possession at
-      specified children’s premises is a different offence.
+      Private use is generally lawful.[@legalaid] Public smoking or use falls under section 5A: a
+      TT$50,000 court fine, with a separate TT$2,000 fixed-penalty route.[@act24] The five-year sentence
+      for possession at specified children’s premises is a different offence.[@act24]
     sources:
       - act24
       - legalaid
   access:
     text: >-
-      None in operation. The Cannabis Control Act, Act No. 10 of 2022, was assented to on 17 June
-      2022 and published in the Gazette on 23 June 2022. Section 2 brings it into operation only on
-      a date the President fixes by proclamation. Parliament's record of the 2020 bill, which
-      became that Act, still says assent is awaiting proclamation. The only lawful source today is
-      an adult's own four plants.
+      None in operation. The [Cannabis Control Act](/history/trinidad-cannabis-control-act-2022/), Act
+      No. 10 of 2022, was assented to on 17 June 2022 and published in the Gazette on 23 June
+      2022.[@cca22,cca22page] Section 2 brings it into operation only on a date the President fixes by
+      proclamation.[@cca22] Parliament's record of the 2020 bill, which became that Act, still says
+      assent is awaiting proclamation.[@ccb20] The only lawful source today is an adult's own four
+      plants.
     sources:
       - cca22
       - cca22page
@@ -75,42 +121,69 @@ segments:
 context:
   recreational:
     text: >-
-      Adults get cannabis from their own four home-grown plants: possession of 30 g of cannabis
-      or 5 g of resin is ordinarily exempt, and private use is generally lawful.[@act24,wiki]
-      There are no shops — the 2022 licensing Act was never proclaimed — and supply stays
-      criminal.[@cca22,wiki] Smoking in public brings a TT$2,000 ticket, and school buses and
-      children's-activity premises carry five-year sentences even for small
-      amounts.[@act24]
+      Adults get cannabis from their own four home-grown plants: possession of 30 g of home-grown
+      flower or 5 g of resin is ordinarily exempt, and private use is generally lawful.[@act24,wiki]
+      Nothing is lawfully sold — there are no shops, because the 2022 licensing Act was never
+      proclaimed — and supply stays criminal.[@cca22,wiki] Smoking in public brings a TT$2,000 ticket,
+      and school buses and children's-activity premises carry five-year sentences even for small
+      amounts.[@act24] The 2019 reform is traced in the [decriminalisation
+      decision](/history/trinidad-decriminalisation-2019/).
     sources:
       - act24
       - wiki
       - cca22
+  hemp:
+    status: none
+    text: >-
+      Trinidad and Tobago has no industrial-hemp or low-THC exemption: cannabis grown for fibre
+      counts as cultivation like any other.[@act24] The 2019 definition only carves out stalk fibre,
+      seed oil, sterile seed and products combined with other ingredients.[@legalaid] The unproclaimed
+      2022 licensing Act contains no hemp regime either.[@cca22]
+    sources:
+      - act24
+      - legalaid
+      - cca22
   production:
     status: none
     text: >-
-      The 2022 Act would create a Cannabis Licensing Authority and licences for cultivation,
-      processing and sale, once the President proclaims a commencement date. No proclamation is
-      recorded, so commercial cultivation is not licensed.
+      The [2022 Act](/history/trinidad-cannabis-control-act-2022/) would create a Cannabis Licensing
+      Authority and licences for cultivation, processing and sale, once the President proclaims a
+      commencement date.[@cca22] No proclamation is recorded, so commercial cultivation is not
+      licensed.[@ccb20]
     sources:
       - cca22
       - ccb20
-  products:
-    text: Home-grown flower and up to 5 g of resin. Nothing is lawfully sold.
-    sources:
-      - wiki
   medical:
     text: >-
       The 2022 Act provides for medicinal-cannabis licences, including a dispensary licence, but
-      those licences do not operate until the President proclaims a commencement date. There is no
-      working medical programme.
+      those licences do not operate until the President proclaims a commencement
+      date.[@cca22] There is no working medical programme.[@ccb20]
     sources:
       - cca22
       - ccb20
+  black_market:
+    text: >-
+      With no legal market, all cannabis beyond home growing changes hands illegally, and the islands
+      sit on a transit route: in back-to-back operations around 1 October 2025 police seized 1,177 kg
+      of Colombian "creepy" marijuana and 117 kg of cocaine at Palo Seco, days after 202 kg of
+      Colombian marijuana was taken off Point Fortin, with a combined street value over TT$314
+      million.[@ttps25] Smuggling from Venezuela is an old pattern — producers grew across the gulf
+      and ran it back in the 1890s (see the [Venezuela smuggling
+      entry](/history/trinidad-venezuela-ganja-smuggling-1895/)).
+    sources:
+      - ttps25
+  arrests:
+    text: >-
+      Before the 2019 reform, police arrested thousands a year for cannabis: 3,128 men and 265 women
+      in 2012, 3,220 men and 270 women in 2015, and 3,022 men and 201 women in
+      2017.[@caricom18]
+    sources:
+      - caricom18
   consequences:
     text: >-
       Section 5D provides discharge and expungement routes for earlier small-possession cases; a
-      pardon may follow expungement. New offences can still create a criminal record, including
-      section 5C(b) possession in specified settings involving children.
+      pardon may follow expungement.[@act24,legalaid] New offences can still create a criminal record,
+      including section 5C(b) possession in specified settings involving children.[@act24]
     sources:
       - act24
       - legalaid
@@ -121,9 +194,9 @@ context:
     clones_trade: banned
     text: >-
       The 2019 amendment defines cannabis to include the plant's seeds, other than sterilised
-      seed that cannot germinate. Seeds therefore count towards the thirty grammes an adult
-      may hold, and a person may grow or have up to four growing plants. Because seeds and
-      plants are cannabis in law, supplying them falls under the trafficking offences.
+      seed that cannot germinate.[@act24] Seeds therefore count towards the thirty grammes an adult
+      may hold, and a person may grow or have up to four growing plants.[@act24] Because seeds and
+      plants are cannabis in law, supplying them falls under the trafficking offences.[@act24]
     sources:
       - act24
   clubs:
@@ -131,38 +204,51 @@ context:
     text: >-
       No cannabis clubs are known, and no law provides for them: the 2019 amendment removed
       penalties for possession and home growing but not for supply, and selling remains a
-      crime.
+      crime.[@wiki,tni]
     sources:
       - wiki
       - tni
   visitors:
     status: none
     text: >-
-      There is no legal recreational market for visitors or residents. The ordinary personal quantity
-      allowance does not permit possession on school buses or at premises where children attend
-      education, sport or cultural activities; section 5C(b) carries TT$250,000 and five years on
-      summary conviction.
+      There is no legal recreational market for visitors or residents.[@cca22] The ordinary personal
+      quantity allowance does not permit possession on school buses or at premises where children
+      attend education, sport or cultural activities; section 5C(b) carries TT$250,000 and five years
+      on summary conviction.[@act24]
     sources:
       - act24
+      - cca22
   driving:
     status: impairment
     text: >-
       Motor Vehicles and Road Traffic Act section 70 prohibits driving, attempting to
       drive or being in charge on a road while drug influence prevents proper vehicle
-      control. The Transport Ministry's published text gives a first-conviction penalty
+      control.[@mowtdui] The Transport Ministry's published text gives a first-conviction penalty
       of TT$12,000 and three years' imprisonment, rising to TT$22,500 and five years on
-      a subsequent conviction. Two consecutive offences normally bring three years'
+      a subsequent conviction.[@mowtdui] Two consecutive offences normally bring three years'
       disqualification, subject to special reasons and the court's power to impose a
-      longer ban; a third conviction brings permanent disqualification. Police may arrest
-      without a warrant. Section 70A separately concerns alcohol concentrations: the
+      longer ban; a third conviction brings permanent disqualification.[@mowtdui] Police may arrest
+      without a warrant.[@mowtdui] Section 70A separately concerns alcohol concentrations: the
       Finance Act 2025 doubled its fines, without amending section 70's drug-impairment
-      penalty. Separately, Dangerous Drugs Act section 5C(c) covers control of a motor vehicle,
-      aircraft or ship while under cannabis influence, carrying TT$250,000 and five years on
-      summary conviction. No numeric THC allowance was established in the sources reviewed.
+      penalty.[@finance2025] Separately, Dangerous Drugs Act section 5C(c) covers control of a motor
+      vehicle, aircraft or ship while under cannabis influence, carrying TT$250,000 and five years on
+      summary conviction.[@act24] No numeric THC allowance was established in the sources
+      reviewed.[@act24,mowtdui]
     sources:
       - mowtdui
       - finance2025
       - act24
+  culture:
+    text: >-
+      Ganja came to Trinidad with indentured labourers from India, who grew it for their own use from
+      the mid-19th century; the Hindi word [ganja](/culture/language/ganja/) came with
+      them.[@wiki] The colonial state first licensed the trade — Trinidad's Ganja Ordinance of 1915
+      copied Bengal's warehouse system — then banned it in the [1925
+      ban](/history/trinidad-ganja-ordinance-1925/).[@wiki] The 1890s
+      smuggling trade across the Gulf of Paria, with growers working Venezuelan soil and running the
+      crop back, is traced in the [Venezuela smuggling entry](/history/trinidad-venezuela-ganja-smuggling-1895/).
+    sources:
+      - wiki
 sources:
   legalaid:
     title: Legal Aid and Advisory Authority — marijuana reform guidance (12 August 2024; statutory text controls)
@@ -204,3 +290,12 @@ sources:
     title: "Newsday via TNI — Experts: legal cannabis can spur Caribbean economies"
     url: >-
       https://ungassondrugs.org/en/site_content/item/10067-experts-legal-cannabis-can-spur-caribbean-economies.html
+  ttps25:
+    title: "Oipol quoting TTPS/Ministry of Homeland Security — over TT$314M in narcotics seized in back-to-back operations (2 October 2025)"
+    url: https://oipolijustblog.wordpress.com/2025/10/05/over-300m-worth-of-narcotics-seized-in-back-to-back-operations/
+  caricom18:
+    title: "Economic Analysis of the Potential Liberalization of Marijuana Laws in CARICOM — report commissioned by the CARICOM Commission on Marijuana (2018)"
+    url: https://ungassondrugs.org/images/stories/documents/CARICOM-Marijuana-Report-FINAL-July2018.pdf
+  wiktionary-herb:
+    title: "Wiktionary — herb"
+    url: https://en.wiktionary.org/wiki/herb
