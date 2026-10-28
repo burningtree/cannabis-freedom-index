@@ -36,7 +36,13 @@ of these (committed) — verify and build on them, don't duplicate.
 - Schema lessons: penalty rows need `treatment`, no per-row `sources`; `context.production` required; hemp lives at `context.hemp` with HEMP_STATUS (none valid).
 - Audit 0/0; page + both articles verified in review HTML.
 - Left: cultivation table (no source), driving/arrests, 1930s–2000s decades.
-## bb — pending
+## bb — committed
+- Word herb (Barbadian English, Rastafari sacrament use quoted in Barbados Today); culture section linking traditions/rastafari-sacrament + language/dispensary; products folded into medical (dispensary link + 2025 article link).
+- Possession table: ≤14 g civil $200 ticket (fine 200 + currency BBD), over 14 g criminal ordinary penalties; 1973 article linked from possession, 1936+1973 lineage in context.recreational.
+- New `articles/barbados-dangerous-drugs-act-1936.md` (UN E/NL.1952/22; honest that filing reproduces the 1951 order, not the Act) + `articles/barbados-narcotic-drugs-act-1973.md` (SHERLOC PDF: $5,000/5 yrs indictment, $2,500/12 mo summary, repeals 1936) + `articles/barbados-first-dispensary-2025.md` (Island Therapeutics).
+- Fixed audit warning (penalty table needs inline cites in text).
+- Audit 0/0; page + all three articles verified in review HTML.
+- Left: cultivation numbers (licence-only, no tiers), arrests (only 2023 seizure figure already present), 1940s–2010s decades, treaty entries (1992/1976, imp 1, skipped).
 ## vc — pending
 ## cw — pending
 ## sr — pending
