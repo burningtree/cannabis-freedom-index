@@ -19,7 +19,10 @@ atlas-backed first, then the rest. Skipped: South Africa (other agent), Eritrea
 - Words Dagga (English (Botswana)) + Motokwane (Setswana), both via the 2018 Act; new culture section linking the dagga atlas + 2025 Act (dropped two earth-pipe wordings whose claims the cited Act could not support).
 - New `articles/botswana-industrial-cannabis-regulations-2026.md` (0.7% THC, licence terms, elitism row) + `articles/botswana-drug-driving-ban-planned-2026.md` (Atamelang announcement vs existing s.46 offence).
 - Audit 0/0; full `npm test` 193/0; page + both articles verified in review HTML.
-## ls — pending
+## ls — committed
+- Words Matekoane (Sesotho) + Dagga (English (Lesotho)), both verified in the 1955 UN survey PDF I fetched and read (also the source for the 1951 penalties); new culture section linking both atlas entries + the 2017 licences history entry (fixed an atlas-summary phrase the cited sources could not support).
+- New `articles/basutoland-penalties-1951.md` (£500/three years, smoker-vs-trafficker practice, both words). Skipped the 2017 licences article (Wikipedia + unread book chapter — below bar; PMC paper is JS-gated).
+- Audit 0/0; full `npm test` 193/0; page + article verified in review HTML.
 ## mw — pending
 ## sz — pending
 ## tn — pending
