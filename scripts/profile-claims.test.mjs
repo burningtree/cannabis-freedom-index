@@ -293,9 +293,9 @@ test('Morocco use and holding penalties remain separate (#177)', () => {
 test('new pilot and resin permissions are recorded without inventing broad retail supply (#160, #178)', () => {
   const py = country('py'), mt = country('mt'), history = events();
   assert.match(py.context.medical.text, /488\/2025.*19 December 2025.*two-year.*pilot/);
-  assert.match(py.context.products.text, /do not demonstrate.*currently in stock/);
-  assert.match(mt.context.products.text, /solid solventless.*processing authorisation/);
-  assert.match(mt.context.products.text, /33%.*34–66%.*above 66%/);
+  assert.match(py.context.medical.text, /do not demonstrate.*currently in stock/);
+  assert.match(mt.context.medical.text, /solid solventless.*processing authorisation/);
+  assert.match(mt.context.medical.text, /33%.*34–66%.*above 66%/);
   for (const id of ['paraguay-medicinal-cannabinoid-pilot-2025', 'malta-solventless-resin-permission-2025']) {
     const e = history.find((e) => e.id === id);
     assert.equal(e.checked, true);
