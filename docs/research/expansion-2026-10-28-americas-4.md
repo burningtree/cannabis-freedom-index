@@ -33,5 +33,11 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
   Removed uyxxi from sharing sources (uncited there; fully cited in hemp/production/research).
 - Audit 0/0; review page to verify with batch build.
 - Left: 1940s/50s/60s empty.
-## jm — pending
+## jm — committed
+- Per-sentence cites on all 14 flagged texts using existing sources (moj15/fact/facts2/cla/ap21/gl26/gl25/lp26/rta2018/jcftraffic/rtaregs2022/hri25).
+- New `articles/jamaica-first-herb-house-2018.md` (Kaya Herbhouse, Drax Hall, March 2018; YardEdge/WeedWorld/JamExp/HighTimes/NUGL sources); herb-house link in recreational.
+- Words (Ganja/Spliff/Herb; lang Jamaican English; schema needs `lang`, no `pronunciation`).
+- Audit 0/0; country + article review pages verified (words, Kaya mention, article body render).
+- Note: `npm test` failed transiently mid-work on #160/#178 (working-tree test file briefly held another agent's uncommitted mt-medical variant); re-ran green (87/0 profile-claims). Stale `.cache/build.lock` (dead PID 36491) removed after verifying no astro build runs.
+- Left: 1920s/30s/40s/50s history gaps (open article was herb-house 2018 — now written).
 ## tt — pending
