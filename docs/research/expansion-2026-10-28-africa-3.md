@@ -35,16 +35,16 @@ All batch files verified free of others' uncommitted changes at start.
 - New `articles/guinea-mandingo-dictionary-diamba-1891.md` + `articles/guinea-drug-penalties-1998.md` (1998 code from UNODC + 1989 ordinance).
 - Audit 0/0; page + both articles verified. Review cache repeatedly wiped by concurrent builds; verified build+grep in single commands.
 - Left: 1930s–50s, 1970s, 2000s decades; no driving/black_market/arrests sourced.
-## rw — committed (HTML verification pending Albania fix)
+## rw — committed (HTML verified after Albania fix)
 - Words: Injaga (Kinyarwanda, via Codere) — atlas language/injaga entry already in culture.
 - New clubs section (none known, highest-category offences cited); `life: possible` on both Category I penalty rows.
 - New `articles/rwanda-possession-clause-2019.md` + `articles/rwanda-sentencing-discretion-2023.md` (both from retained Minijust law PDFs).
-- Audit 0/0; full `npm test` 193/0. Review builds blocked by committed `countries/al.yaml` linking missing `albania-cannabis-register-2026` (another agent's, left untouched) — re-verify HTML once they fix.
+- Audit 0/0; full `npm test` 193/0. Review builds green once the Albania entry landed; page + both articles verified in HTML.
 - Left: driving (no source), 1920s–50s, 1990s decades.
 
-## cf — committed (HTML verification pending Albania fix)
+## cf — committed (HTML verified after Albania fix)
 - New planting (grey/unclear, no plant or seed rule in 2001 law) + driving (`unknown`, no per se limit; courts may restrict driving as added penalty) sections.
 - Recreational links the shared 1926 AEF decree via Chad's article (no duplicate article, SS→Sudan precedent) + new Duvall `Buying and Banning` source.
 - Searched post-2024 news: nothing citable (ENACT 2025 PDF download failed; snippets not citable).
-- Audit 0/0; full `npm test` 193/0. Review builds blocked by same al.yaml issue — re-verify HTML once fixed.
+- Audit 0/0; full `npm test` 193/0. Review build green once the Albania entry landed; page verified in HTML (1926 link, driving, planting all render).
 - Left: arrests (no counts found), culture/words (no atlas entry), 1930s–90s decades.
