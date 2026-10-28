@@ -10,8 +10,8 @@ changes (bn, ph); stage only own lines in `changes.yaml`.
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Mexico | recreational+hemp sections, products folded, tables+terms, citations+links, culture (words/saints/doctor), audit 0/0, article mexico-five-gram-vote-fails-2026; standard build blocked by kh (reported) | done | |
-| Colombia | | | |
+| Mexico | recreational+hemp sections, products folded, tables+terms, citations+links, culture (words/saints/doctor), audit 0/0, article mexico-five-gram-vote-fails-2026; standard build blocked by kh (reported) | done | 1900982 |
+| Colombia | possession/cultivation tables+terms, citations+links, recreational+hemp sections, products folded, medical expanded (2016 law + 2025 flower), culture (Sierra Nevada 1973), audit 0/0, chain clean, articles colombia-medical-2016 + entry colombia-medical-flower-2025 (unscored: access stays 1); fixed dropped top-level sources: registry + same-scores build throw | done | PENDING |
 | Argentina | | | |
 | Guatemala | | | |
 | Peru | | | |
