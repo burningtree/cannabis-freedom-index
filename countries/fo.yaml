@@ -10,7 +10,7 @@ dependency:
     applies in the islands, and Denmark answers for them internationally.
 recreational: illegal
 medical: limited
-updated: "2026-10-23"
+updated: '2026-10-28'
 summary: >-
   Recreational possession and growing remain offences, including small personal quantities.
   Doctors have been able to prescribe medical cannabis through a trial scheme since April 2019.
@@ -27,17 +27,33 @@ segments:
     text: >-
       Possessing cannabis outside the authorised medical or scientific routes is
       prohibited.[@current] Faroese police say even small quantities for personal use are
-      prosecuted when discovered.[@police]
+      prosecuted when discovered.[@police] The basic drug-law penalty is a fine or up to two
+      years in prison.[@law]
     sources:
       - current
       - police
+      - law
+    penalties:
+      - label: Unauthorised possession
+        treatment: criminal
+        term: Overtrædelse — Euphoriant Substances Order § 3
+        prison: 2 years
+        note: Prison or a fine; the statute does not set a fixed monetary ceiling here
   cultivation:
     text: >-
       Growing cannabis needs permission from the medicines authority; recreational home growing
       has no authorised plant allowance.[@current] A separate permit route covers commercial
-      crops with no more than 0.2% THC on plots of at least 0.3 hectares.[@current]
+      crops with no more than 0.2% THC on plots of at least 0.3 hectares.[@current] The basic
+      drug-law penalty is a fine or up to two years in prison.[@law]
     sources:
       - current
+      - law
+    penalties:
+      - label: Unauthorised cannabis cultivation
+        treatment: criminal
+        term: Overtrædelse — Euphoriant Substances Order § 3
+        prison: 2 years
+        note: Prison or a fine; the statute does not set a fixed monetary ceiling here
   enforcement:
     text: >-
       The basic drug-law offence carries a fine or up to two years in prison.[@law] Police say
@@ -46,28 +62,43 @@ segments:
     sources:
       - law
       - police
-    currency: DKK
-    penalties:
-      - label: Basic offence
-        treatment: criminal
-        prison: 2 years
-        note: Fine or up to two years in prison
   sharing:
     text: >-
       Unauthorised sale, supply and receipt of controlled drugs are prohibited, with no
       recreational gift exception.[@current] The underlying law separately permits receipt and
-      possession through a lawful prescription.[@law]
+      possession through a lawful prescription.[@law] The basic drug-law penalty is a fine or up
+      to two years in prison.[@law] Serious cannabis smuggling can be prosecuted under Penal
+      Code § 191, which police describe as carrying up to ten years.[@smuggle24]
     sources:
       - current
       - law
+      - smuggle24
+    penalties:
+      - label: Ordinary unauthorised supply
+        treatment: criminal
+        term: Overtrædelse — Euphoriant Substances Order § 3
+        prison: 2 years
+        note: Prison or a fine; the statute does not set a fixed monetary ceiling here
+      - label: Serious cannabis smuggling under Penal Code § 191
+        treatment: criminal
+        term: Straffeloven § 191
+        prison: 10 years
   consumption:
     text: >-
       Controlled drugs may be used only for medical or scientific purposes under the
       regulations.[@current] Police prosecute small personal-possession cases when
-      discovered.[@police]
+      discovered.[@police] The basic drug-law penalty is a fine or up to two years in
+      prison.[@law]
     sources:
       - current
       - police
+      - law
+    penalties:
+      - label: Use outside permitted medical or scientific purposes
+        treatment: criminal
+        term: Overtrædelse — Euphoriant Substances Order § 3
+        prison: 2 years
+        note: Prison or a fine; the statute does not set a fixed monetary ceiling here
   access:
     text: >-
       Doctors have been able to prescribe medical cannabis through a trial scheme since April
@@ -79,16 +110,20 @@ segments:
 context_not_applicable:
   death_penalty:
     text: >-
-      The Faroe Islands sit under the Danish abolition: Denmark abolished the death penalty in
-      1933, with full abolition for war crimes completed by 1994. No cannabis offence carries a
-      capital sentence.[@wikipdp]
-    sources: [wikipdp]
+      The euphoriant-substances law sets fines or imprisonment for its offences, with an
+      ordinary maximum of two years.[@law] Police describe serious cannabis smuggling under
+      Penal Code § 191 as carrying up to ten years.[@smuggle24]
+    sources:
+      - law
+      - smuggle24
 context:
   recreational:
     text: >-
       Recreational possession and growing remain offences, including small personal quantities,
-      which police prosecute when discovered. The basic drug-law offence carries a fine or up
-      to two years in prison.[@current,police,law]
+      which police prosecute when discovered.[@current,police] The basic drug-law offence
+      carries a fine or up to two years in prison.[@law] The [June 2026
+      regulations](/history/faroes-controlled-drug-regulations-2026/) preserve medical and
+      scientific routes and a separate permitted commercial hemp crop.[@current]
     sources:
       - current
       - police
@@ -99,35 +134,44 @@ context:
       The regulations permit licensed cannabis cultivation for medical manufacturing, raw
       pharmaceutical materials and supplying other authorised growers.[@current] Commercial
       low-THC crops need a separate annual permit, with a 0.2% THC ceiling and plots of at least
-      0.3 hectares.[@current]
+      0.3 hectares.[@current] The [2026
+      regulations](/history/faroes-controlled-drug-regulations-2026/) require specified
+      premises, an approved security manager and controlled access for medical
+      growers.[@current]
     sources:
       - current
   medical:
     text: >-
-      The Chief Medical Officer confirms a medical-cannabis trial has operated since April
-      2019.[@chief] Joint prescribing guidance identifies pain, multiple sclerosis, spinal-cord
-      injury and chemotherapy-related nausea among treatment areas, with conventional medicines
-      tried first and the decision documented.[@guidance] It recommends specialist prescribing
-      for neurological conditions and chemotherapy-related symptoms.[@guidance] Official
-      guidance describes dronabinol and cannabidiol preparations as oils and capsules, and in
-      July 2019 the Pharmacy Service also ordered cannabis flower from the Netherlands at a
-      doctor's request.[@guidance,flower]
+      The Chief Medical Officer confirms a medical-cannabis trial has operated since [April
+      2019](/history/faroes-medical-cannabis-trial-2019/).[@chief] Joint prescribing guidance
+      identifies pain, multiple sclerosis, spinal-cord injury and chemotherapy-related nausea
+      among treatment areas, with conventional medicines tried first and the decision
+      documented.[@guidance] It recommends specialist prescribing for neurological conditions
+      and chemotherapy-related symptoms.[@guidance] Official guidance describes dronabinol and
+      cannabidiol preparations as oils and capsules, and in July 2019 the Pharmacy Service also
+      ordered cannabis flower from the Netherlands at a doctor's request.[@guidance,flower]
     sources:
       - chief
       - guidance
       - flower
   consequences:
     text: >-
-      The Pharmacy Service tells patients they may not drive while receiving medical
-      cannabis.[@pharmacy] It also stresses reporting adverse reactions because trial products
-      are subject to different evidence requirements from approved medicines.[@pharmacy]
+      Drug judgments recorded in the decisions section of the criminal register can appear on a
+      private criminal-record certificate under the [2021
+      rules](/history/faroes-drug-record-certificates-2021/).[@records] For fines included
+      there, the ordinary private-certificate limit is two years from the final decision; other
+      decisions usually have three- or five-year limits depending on imprisonment and
+      release.[@records] Those certificate limits concern disclosure and differ from deletion of
+      the underlying police data.[@records]
     sources:
-      - pharmacy
+      - records
   clubs:
     status: none
     text: >-
       The reviewed regulations authorise medical and scientific handling of controlled drugs;
-      they provide no recreational growing-and-supply route for clubs.[@current]
+      they provide no recreational growing-and-supply route for clubs.[@current] Distribution is
+      reserved for authorised medical or scientific recipients, with licensed growing routes for
+      medical production.[@current]
     sources:
       - current
   visitors:
@@ -140,14 +184,15 @@ context:
       - current
       - police
   planting:
-    seeds: legal
+    seeds: grey
     seeds_trade: unclear
     clones: licensed
     clones_trade: regulated
     text: >-
       The cannabis definition excludes hemp seeds and isolated hemp fibre.[@current] Growing
-      plants is separately regulated and requires a permit, including the specified low-THC
-      commercial route.[@current]
+      plants is separately regulated and requires permission, including the specified commercial
+      low-THC route.[@current] Possessing an excluded seed therefore does not provide permission
+      to germinate a recreational crop.[@current]
     sources:
       - current
   driving:
@@ -163,22 +208,33 @@ context:
       - pharmacy
   arrests:
     text: >-
-      Police recorded 62 drug-law reports in 2025, down from 107 in 2024 and 142 in
-      2021.[@police] These are reports covering controlled drugs generally, rather than a count
-      of cannabis users arrested.[@police]
+      The [2025 police statistics](/history/faroes-police-cannabis-statistics-2025/) recorded 62
+      drug-law reports in 2025, down from 107 in 2024 and 142 in 2021.[@police] These are
+      reports covering controlled drugs generally, rather than a count of cannabis users
+      arrested.[@police]
     sources:
       - police
   black_market:
     text: >-
       Police seized 29.58 kg of hashish in 2025, compared with 69.69 kg in 2024 and 16.25 kg in
       2021.[@police] Their strategic drug-enforcement focus is on organisers and larger
-      middlemen.[@police]
+      middlemen.[@police] In [January 2024](/history/faroes-norrona-hash-seizure-2024/), customs
+      found 24 kg of hashish in a car arriving on Norrøna; two suspects were charged under the
+      serious drug-offence provision.[@smuggle24]
     sources:
       - police
+      - smuggle24
+  hemp:
+    status: strict
+    text: >-
+      A commercial hemp crop needs an annual medicines-authority permit, with no more than 0.2%
+      THC and each continuous plot at least 0.3 hectares.[@current] Applications go through
+      [Búnaðarstovan](https://www.bst.fo/), with a police opinion and consultation with the
+      Chief Pharmacist.[@current] Buying, holding and processing an authorised crop is allowed,
+      but processing must not create preparations exceeding 0.2% THC.[@current]
+    sources:
+      - current
 sources:
-  wikipdp:
-    title: Wikipedia — Capital punishment in Denmark
-    url: https://en.wikipedia.org/wiki/Capital_punishment_in_Denmark
   law:
     title: Lógasavn — Faroese euphoriant-substances order, consolidated in 2015
     url: https://logir.fo/ViewLaw.aspx?id=1711314942
@@ -199,7 +255,7 @@ sources:
       Faroe Islands
     url: >-
       https://landslaeknin.stps.dk/Media/638234707850762013/Medicinsk%20cannabis%20-%20Vejledning%20til%20brug%20p%C3%A5%20F%C3%A6r%C3%B8erne.pdf
-    locator: "PDF pp. 2–3: April 2019 trial, indications, prescribers, documentation and follow-up"
+    locator: 'PDF pp. 2–3: April 2019 trial, indications, prescribers, documentation and follow-up'
   flower:
     title: Kringvarp Føroya — Medical cannabis on its way, 22 July 2019
     url: https://kvf.fo/node/96968
@@ -216,3 +272,35 @@ sources:
     url: >-
       https://logir.fo/Logtingslogarkunngerd/14-fra-02-03-1988-um-ferdslu-sum-seinast-broytt-vid-logtingslog-nr-49-fra-11
     locator: § 15(1)–(2), THC threshold, prescription conditions and unsafe driving
+  records:
+    title: Faroese criminal-register rules, Order 442/2021, current consolidation
+    url: >-
+      https://www.logir.fo/Bekendtgorelse/442-af-16-03-2021-for-Faeroerne-om-behandling-af-personoplysninger-i-Det-Centrale-Kriminalregister-Kriminalregisteret
+    locator: >-
+      Sections 11 and 38; private-certificate rules and commencement; distinction from register
+      deletion
+  smuggle24:
+    title: Føroya Politi — Two arrested over 24 kg hashish, 16 January 2024
+    url: >-
+      https://politi.fo/politistoedir/tidindilisti/tvey-folk-handtikin-fyri-at-smugla-24-kg-av-hashi-til-foeroya/2024/01/16
+words:
+  - word: kannabis
+    lang: Faroese
+    meaning: cannabis; medical and ordinary usage
+    sources:
+      - chief
+  - word: hash
+    lang: Faroese
+    meaning: cannabis resin; police usage
+    sources:
+      - smuggle24
+  - word: cannabis
+    lang: Danish
+    meaning: statutory plant name
+    sources:
+      - current
+  - word: marihuana
+    lang: Danish
+    meaning: herbal cannabis; listed common name
+    sources:
+      - current
