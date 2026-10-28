@@ -3,10 +3,10 @@ region: Africa
 iso_numeric: 788
 recreational: illegal
 medical: none
-updated: 2026-10-13
+updated: "2026-10-28"
 summary: >-
-  'Law 52' imposed a mandatory one-year sentence for use. Since 2017 judges have discretion, but
-  thousands are still jailed.
+  Law 52 still makes use or possession of any amount a crime with one to five years, though since
+  2017 judges may go below the minimum. A full rewrite has been in committee since 2025.
 scores:
   possession: 0
   cultivation: 0
@@ -14,127 +14,315 @@ scores:
   sharing: 0
   consumption: 1
   access: 0
+words:
+  - word: zatla
+    lang: Tunisian Arabic
+    say: "zaṭla"
+    meaning: cannabis, especially hashish; the everyday word
+    atlas: zatla
+    sources: [zatla_word]
+  - word: takrouri
+    lang: Arabic
+    say: "takrūrī"
+    meaning: the older name used in protectorate decrees
+    atlas: zatla
+    sources: [zatla_word]
 segments:
   possession:
     text: >-
-      Law 52 of 1992 imposed a mandatory minimum of one year in prison and a fine for possessing or
-      using cannabis (zatla), with no room for mitigating circumstances. An April 2017 amendment
-      gave judges discretion to go below that for first-time users. Prison remains the standard
-      outcome for others.
-    sources:
-      - hrw
-      - td
-  cultivation:
-    text: >-
-      Growing any narcotic plant is banned outright by Article 2 of Law 92-52. Growing for
-      trafficking carries six to ten years in prison and a fine of 5,000 to 10,000 dinars under
-      Article 5.
+      Law 92-52 punishes use or possession for personal consumption with one to five years in prison
+      and a 1,000–3,000 dinar fine, with no quantity threshold.[@l52] Since the 2017 amendment,
+      judges may apply the Penal Code's mitigating circumstances to use and possession, lowering the
+      sentence to as little as one day or converting it into a fine of up to 6,000 dinars.[@l52,l2017,penal53]
+      The change was not limited to first-time offenders, and it does not apply to trafficking.[@l2017]
+      Knowingly frequenting a drug den carries six months to three years and a 1,000–5,000 dinar
+      fine.[@l52]
     sources:
       - l52
-      - hrw
+      - l2017
+      - penal53
+    currency: TND
+    penalties:
+      - label: Use or possession for personal consumption
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 year
+        prison: 5 years
+        fine_min: 1000
+        fine: 3000
+        note: No quantity threshold; since 2017 a judge may reduce this to one day or a fine of up to 6,000 dinars
+      - label: Knowingly frequenting a drug den
+        treatment: criminal
+        term: Frequenting
+        prison_min: 6 months
+        prison: 3 years
+        fine_min: 1000
+        fine: 5000
+  cultivation:
+    text: >-
+      Article 2 bans cultivating, harvesting and producing cannabis at any stage of growth, with no
+      hemp or personal-growing exception.[@l52] Growing for trafficking carries six to ten years and
+      a 5,000–10,000 dinar fine, and a few plants grown for personal use are charged under the
+      use-or-possession offence instead.[@l52] Landowners must destroy plants that come up on their
+      land or pay 50 dinars per plant.[@l52]
+    sources:
+      - l52
+    currency: TND
+    penalties:
+      - label: Growing for trafficking
+        treatment: criminal
+        term: Cultivation for trafficking
+        prison_min: 6 years
+        prison: 10 years
+        fine_min: 5000
+        fine: 10000
+      - label: A few plants for personal use
+        treatment: criminal
+        term: Personal use
+        prison_min: 1 year
+        prison: 5 years
+        fine_min: 1000
+        fine: 3000
+        note: Charged under the use-or-possession offence where there is no evidence of trafficking
   enforcement:
     text: >-
-      Drug cases, mostly cannabis use, have accounted for a large share of Tunisia's prison
-      population, and the 2017 reform has not changed that.
+      Drug enforcement has intensified. The interior ministry told parliament that 15,253 drug cases
+      and 27,338 people were recorded in 2025, nearly 89% of them aged 19 to 40.[@tnum26] The justice
+      minister said in November 2025 that more than 10,000 prisoners were held for drug offences, in
+      a system holding over 30,000 people against a design capacity of about 18,000.[@td] A 40-article
+      bill to replace Law 52 has been in committee since April 2025 but had not been voted by October
+      2026.[@webdo26]
     sources:
+      - tnum26
       - td
-      - hrw
+      - webdo26
   sharing:
-    text: Supply carries long sentences.
+    text: >-
+      Supply for trafficking carries six to ten years and a 5,000–10,000 dinar fine; importing,
+      exporting or smuggling with intent to circulate carries ten to twenty years and a 20,000–100,000
+      dinar fine.[@l52] A criminal association for drug offences carries twenty years to life, and
+      premises used for use, storage or concealment carry ten to twenty years.[@l52] Penalties reach
+      the offence's maximum when it involves a minor, a school, a stadium, a café, a hospital or
+      another listed public place.[@l52]
     sources:
-      - hrw
+      - l52
+    currency: TND
+    penalties:
+      - label: Supply or trafficking
+        treatment: criminal
+        term: Trafficking
+        prison_min: 6 years
+        prison: 10 years
+        fine_min: 5000
+        fine: 10000
+      - label: Import, export or smuggling with intent
+        treatment: criminal
+        term: Smuggling
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 20000
+        fine: 100000
+      - label: Criminal association
+        treatment: criminal
+        term: Association
+        prison_min: 20 years
+        fine_min: 100000
+        fine: 1000000
+        note: Twenty years to life imprisonment
+      - label: Premises used for use or storage
+        treatment: criminal
+        term: Premises
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 20000
+        fine: 100000
   consumption:
     text: >-
-      Use is a crime, typically proved by a urine test taken in custody. In 2021 a court in El Kef
-      sentenced three young men to 30 years for smoking cannabis in a public stadium, triggering
-      protests.
+      Use is a crime under the same article as personal possession: one to five years and a
+      1,000–3,000 dinar fine.[@l52] Judges may now reduce that to one day or a fine, and a person who
+      asks for detoxification before the facts are discovered can avoid prosecution by completing
+      treatment.[@l52,l2017] In practice urine tests taken in custody are the usual evidence.[@hrw]
     sources:
-      - mesh
+      - l52
+      - l2017
       - hrw
   access:
-    text: None.
+    text: >-
+      No legal source. Article 2 allows narcotics only for authorised medicine, veterinary medicine,
+      pharmacy and scientific research, and no approved cannabis medicine, patient route or
+      recreational licence was found.[@l52] The medical and research exceptions run through the
+      health ministry's pharmacy directorate, not a cannabis programme.[@l52]
     sources:
-      - td
+      - l52
+answers:
+  buy:
+    answer: no
+    text: No legal source; only authorised medicine and research are excepted
 context:
+  recreational:
+    text: >-
+      There is no legal recreational market. Use or possession of any amount is a crime carrying one
+      to five years and a 1,000–3,000 dinar fine, with no quantity threshold.[@l52] Since 2017 judges
+      may apply mitigating circumstances to use and possession, down to one day or a fine, while
+      trafficking remains excluded.[@l2017] A 40-article bill to rewrite Law 52 has been in committee
+      since April 2025.[@webdo26]
+      [Law 52 has governed since 1992.](/history/tunisia-law-52-1992/)
+    sources:
+      - l52
+      - l2017
+      - webdo26
   production:
     status: none
-    text: None.
+    text: >-
+      No lawful cannabis production. Article 2 bans all agricultural and industrial operations except
+      authorised medicine, veterinary medicine, pharmacy and scientific research, and no cannabis
+      cultivation or processing for the market was authorised.[@l52]
     sources:
-      - td
-  products:
-    text: None.
-    sources:
-      - td
+      - l52
   medical:
-    text: No medical cannabis.
+    text: >-
+      No medical cannabis programme. Article 2 permits narcotics for authorised medicine and
+      pharmacy, but no approved cannabis medicine, patient registry or prescription route was
+      found.[@l52] Courts may order detoxification after conviction, and a first voluntary treatment
+      request can prevent prosecution.[@l52]
     sources:
-      - td
+      - l52
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD exemption and no THC threshold. Article 1 covers cannabis in any form and at any
+      stage of growth, and Article 2 bans all cultivation except the medical and research
+      exceptions.[@l52] No industrial-hemp licence was found.[@l52]
+    sources:
+      - l52
   consequences:
-    text: A conviction is a criminal record that blocks public-sector jobs and travel.
+    text: >-
+      A conviction is a criminal record that can block public-sector employment and travel.[@hrw]
+      Courts may also impose up to ten years of administrative surveillance and five to ten years'
+      loss of public office, civic rights and passports.[@l52] Foreigners must be expelled after
+      sentence, with a ten-year re-entry ban for a lesser offence and a lifetime ban for a serious
+      one.[@l52]
     sources:
       - hrw
+      - l52
   planting:
     seeds: grey
     seeds_trade: unclear
     clones: illegal
     clones_trade: banned
     text: >-
-      Law 92-52 covers the listed narcotic plants at any stage of their growth and bans
-      growing, holding, buying or handing them over. The articles do not mention seeds.
-      Landholders must destroy narcotic plants that come up on their own, or pay 50 dinars per
-      plant.
+      Law 92-52 covers listed narcotic plants at any stage of growth and bans growing, holding, buying
+      or handing them over, but its articles do not mention seeds; the annexed table was not
+      available.[@l52] Landowners must destroy plants that come up on their land or pay 50 dinars per
+      plant.[@l52] The seed and clone statuses here are therefore an inference, not an express rule.[@l52]
     sources:
       - l52
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@l52] The "cannabis shops" that opened in
+      2020 were advocacy spaces, not licensed clubs.[@hrw]
     sources:
       - l52
       - hrw
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Law 52 of 1992 sets a minimum of one
-      year in prison and a fine for possessing or using cannabis; since 2017 judges may go below
-      that for first-time users.
+      There is no legal recreational supply for anyone. A visitor can be prosecuted for use or
+      possession, and a foreigner convicted must be expelled after sentence, with a ten-year re-entry
+      ban for a lesser offence and a lifetime ban for a serious one.[@l52]
     sources:
-      - hrw
-      - td
-  arrests:
+      - l52
+  driving:
+    status: unknown
     text: >-
-      The interior ministry told a parliamentary committee in June 2026 that about 15,253
-      drug cases of all kinds were recorded in 2025, involving about 27,338 people, nearly
-      89% of them aged 19 to 40. The figures are not broken down by drug.
+      No cannabis-specific driving offence or THC limit was confirmed. The road code's drug provision
+      as consolidated covers alcohol, and in July 2025 the National Road Safety Observatory announced
+      rapid saliva tests without a start date or published threshold.[@saliva25] Drug-driving
+      enforcement therefore remains unverified.[@saliva25]
     sources:
-      - tnum26
+      - saliva25
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 1,815 kg of
-      cannabis resin seized in 2024, against 1,003 kg in 2023. The UN publishes them as
-      kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      UNODC records 1,815 kg of cannabis resin seized in 2024, against 1,003 kg in 2023, and does not
+      report a herbal-cannabis series for Tunisia.[@unodc_szr] Customs separately reported 760 kg of
+      cannabis in 2025, alongside 80 kg of cocaine and 13.07 million psychotropic tablets.[@lapresse25]
+      The agency counts overlap and should not be added together.[@unodc_szr,lapresse25]
     sources:
       - unodc_szr
+      - lapresse25
+  arrests:
+    text: >-
+      The interior ministry recorded 15,253 drug cases and 27,338 people in 2025, nearly 89% aged 19
+      to 40; the figures are not broken down by drug.[@tnum26] In March 2026 it reported 14,300
+      trafficking cases and 20,289 trafficking arrests for 2025, alongside 181,998 judicial cases and
+      69,164 arrests in total.[@business26] The justice minister said in November 2025 that more than
+      10,000 prisoners were held for drug offences.[@td] National Guard figures put trafficker arrests
+      at 4,982 in 2024, against 3,165 in 2023.[@lapresse24]
+    sources:
+      - tnum26
+      - business26
+      - td
+      - lapresse24
+  culture:
+    text: >-
+      Cannabis is *zatla* in everyday Tunisian Arabic and *takrouri* in the protectorate's decrees;
+      both are described in the [zatla entry](/culture/language/zatla/).[@zatla_word] The state sold
+      takrouri through its tobacco monopoly from 1890 until the 1953 ban, and the 1964 law ended the
+      remaining medical exception.[@zatla_word]
+      [Tunisia ended legal sales in 1953.](/history/tunisia-takrouri-ban-1953/)
+    sources:
+      - zatla_word
 sources:
   l52:
-    title: Loi n° 92-52 du 18 mai 1992 relative aux stupéfiants (UNODC SHERLOC copy)
-    url: https://sherloc.unodc.org/cld/uploads/res/document/tun/loi-no--92-52_html/Loi_n_92-52_du_18_mai_1992fr.pdf
-  td:
-    title: TalkingDrugs — Nine years after reform, Tunisia's drug law still fills its prisons
-    url: >-
-      https://www.talkingdrugs.org/nine-years-after-reform-tunisias-drug-law-still-fills-its-prisons/
+    title: "Tunisia — Law 92-52 of 18 May 1992 on narcotics (consolidated, DCAF legal database)"
+    url: https://legislation-securite.tn/latest-laws/loi-n-92-52-du-18-mai-1992-relative-aux-stupefiants/
+    locator: "Articles 1–9, 11–12, 14, 16–20 and 24; UNODC copy consulted for the same articles."
+  l2017:
+    title: "Tunisia — Law 2017-39 of 8 May 2017 amending Law 92-52"
+    url: https://legislation-securite.tn/latest-laws/loi-n-2017-39-du-8-mai-2017-portant-modification-de-la-loi-n-92-52-du-18-mai-1992-relative-aux-stupefiants/
+    locator: "Single article replacing Article 12; Penal Code Article 53 applies to Articles 4 and 8 only."
+  penal53:
+    title: "Tunisia — Penal Code, Article 53 (Lois.tn)"
+    url: https://www.lois.tn/code/code-penal/art/53
+    locator: "Article 53(7): where the penalty is five years or less, reduction to one day or a fine of up to double the maximum."
   hrw:
-    title: Human Rights Watch — report on Tunisia's Law 52 (PDF)
-    url: https://www.hrw.org/sites/default/files/report_pdf/tunisia0216_web_1.pdf
-  mesh:
-    title: Meshkal — After 30-year jail sentence for cannabis users, some demand decriminalization
-    url: >-
-      https://meshkal.org/after-30-year-jail-sentence-for-cannabis-users-protesters-demand-decriminalization/
+    title: "Human Rights Watch — \"All This for a Joint\": Tunisia's repressive drug law and a roadmap for its reform (2016)"
+    url: https://www.hrw.org/report/2016/02/02/all-joint/tunisias-repressive-drug-law-and-roadmap-its-reform
   tnum26:
-    title: "Tunisie Numérique — Tunisie: plus de 15 mille affaires de drogue en 2025, un phénomène préoccupant (26 June 2026)"
+    title: "Tunisie Numérique — Plus de 15 mille affaires de drogue en 2025 (26 June 2026)"
     url: https://www.tunisienumerique.com/tunisie-plus-de-15-mille-affaires-de-drogue-en-2025-un-phenomene-preoccupant/
+    locator: "15,253 cases; 27,338 people; 89% aged 19–40."
+  business26:
+    title: "Business News — Tunisie 2025: 181,998 affaires judiciaires et 20,289 arrestations pour trafic de drogue (7 March 2026)"
+    url: https://businessnews.com.tn/2026/03/07/tunisie-2025-181-998-affaires-judiciaires-et-20-289-arrestations-pour-trafic-de-drogue/1391194/
+    locator: "14,300 trafficking cases; 20,289 trafficking arrests; 181,998 judicial cases."
+  td:
+    title: "TalkingDrugs — Nine years after reform, Tunisia's drug law still fills its prisons (9 March 2026)"
+    url: https://www.talkingdrugs.org/nine-years-after-reform-tunisias-drug-law-still-fills-its-prisons/
+    locator: "Justice minister: more than 10,000 drug prisoners; prison population over 30,000."
+  lapresse24:
+    title: "La Presse — 5,000 trafiquants arrêtés en 2024 en Tunisie (28 January 2025)"
+    url: https://www.lapresse.tn/2025/01/28/fleau-des-stupefiants-5-000-trafiquants-arretes-en-2024-en-tunisie/
+    locator: "4,982 traffickers arrested in 2024; 3,165 in 2023."
+  lapresse25:
+    title: "La Presse — Saisie de 13 millions de comprimés, 80 kg de cocaïne et 760 kg de cannabis en 2025 (6 December 2025)"
+    url: https://www.lapresse.tn/2025/12/06/general-chokri-jabri-nous-avons-saisi-plus-de-13-millions-de-comprimes-de-stupefiants-80-kg-de-cocaine-et-760-kg-de-cannabis-au-cours-de-lannee-2025/
+    locator: "Customs: 760 kg cannabis; 80 kg cocaine; 13.07 million tablets."
   unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents"
     url: https://data.unodc.org/datareport/drug-seizure
+    locator: "Tunisia: 1,815 kg cannabis resin in 2024; 1,003 kg in 2023."
+  webdo26:
+    title: "Webdo — Loi 52: la Tunisie veut distinguer consommateurs et trafiquants (23 September 2026)"
+    url: https://www.webdo.tn/fr/actualite/national/loi-52-la-tunisie-veut-distinguer-consommateurs-et-trafiquants/404457/
+    locator: "Bill 11/2025 still in committee; treatment-oriented position."
+  saliva25:
+    title: "Tunisie Numérique — Tunisia to launch saliva-based drug test for drivers (27 July 2025)"
+    url: https://news-tunisia.tunisienumerique.com/tunisia-to-launch-saliva-based-drug-test-to-track-drug-impaired-drivers/
+    locator: "Announcement; no start date or threshold."
+  zatla_word:
+    title: "UltraTunisia — Interview with Karim Chiair on regulating cannabis (18 February 2021)"
+    url: https://ultratunisia.ultrasawt.com/حوار-كريم-شعير-كولاك-ندعو-لتحرير-الزطلة-من-الكيماويات-وتقنين-ومراقبة-بيعها/هيثم-المدوري/مجتمع
+    locator: "Uses zatla for cannabis and takrouri as the older name."
