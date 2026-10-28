@@ -55,3 +55,26 @@ Bosnia validation: five-page snapshot build passed all 193 tests and collection/
 citation validation; inspected profile and 1950 article. Audit zero errors and
 warnings. Shared history staged only for the three new IDs. Nationwide agency
 counts now fill the arrests/market sections with their correct scope.
+
+| Moldova | Seven supply/facilitation/smuggling rows; repeat cultivation; driving rules; four local words; two events and quantity-system article | Soviet-era first restriction's territorial scope; early decades; final replacement gram/plant table; present patient access | this commit |
+
+Moldova: read original 2025 law through FAOLEX, 2026 amendment reproduction,
+Constitutional Court's 2015 ruling, 2025 and May 2026 driving decisions and
+original ministry/police reporting. Present scores/statuses retained. New
+facilitation and smuggling rows distinguish prison/fine alternatives; group or
+repeat contraventional cultivation includes administrative arrest explicitly.
+Driving status impairment follows statutory intoxication, with no THC number
+invented. Current ordinary drug-driving provision confirmed in May 2026 court
+text; 2024 commencement verified in the 2025 decision. Four Romanian terms use
+actual local official language. Added the missing 2015 decade event, with a
+350–500-word article on the existing 2006 event and later challenge. Quantity
+table work was announced in July; final current replacement not located. Do not
+restore the old 2 g shorthand without verifying it. The existing 1934 first-ban
+entry's application before Moldavian SSR formation needs primary territorial
+research; no invented date substituted in this pass.
+
+Moldova follow-up: reopening the consultation source showed a September stage
+beyond its July announcement. Added the third event for government promotion,
+updated profile/article without treating a draft as law. Five-page snapshot
+build passed all 193 tests and content/citation checks; inspected profile and
+quantity article. Audit zero errors/warnings. Shared history staged by three IDs.
