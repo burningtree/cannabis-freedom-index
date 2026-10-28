@@ -44,4 +44,7 @@ atlas-backed first, then the rest. Skipped: South Africa (other agent), Eritrea
 - No words (no atlas entry, no sourced local word found); black_market left (ENACT page JS-rendered, not verifiable; no seizure series found).
 - Audit 0/0; full `npm test` 193/0; page + both articles verified in review HTML.
 - Left: 1930s–40s, 1960s–80s decades.
-## zm — pending
+## zm — committed
+- Profile already complete (all decades, audit 0/0 unchanged). No words: no atlas entry and no sourced local word in profile or history.
+- New `articles/zambia-penalty-increase-1985.md` (K500→K2,000, 3→15 years; dates verified in the Laws.Africa gazette stub — figures rest on the checked entry, ZambiaLII gated) + `articles/zambia-cannabis-act-2021.md` (commencement caveat verified in the 2021 Act PDF via Laws.Africa).
+- Full `npm test` 193/0; both articles verified in review HTML.
