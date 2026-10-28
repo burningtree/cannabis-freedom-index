@@ -3,16 +3,17 @@ region: Asia
 disputed:
   part_of: ge
   note: >-
-    Abkhazia has governed itself since the 1990s and is recognised by Russia and a handful of
-    other states. Most countries regard it as part of Georgia. Georgian law is not applied
-    there.
+    Abkhazia has governed itself since the 1990s and is recognised by Russia and a handful of other
+    states. Most countries regard it as part of Georgia. Georgian law is not applied there.
 flag: 🏳️
 recreational: death
 medical: none
-updated: '2026-10-24'
+updated: "2026-10-28"
 summary: >-
-  Cannabis use brings three days’ administrative arrest; possession and growing carry prison
-  terms. The most serious supply cases can bring life or death.
+  Cannabis use brings three days’ administrative arrest; possession and growing carry prison terms.
+  The highest supply tiers allow life or death on paper, but the death penalty has been under a
+  moratorium since 1993 and was barred in peacetime by the 2007 law; no cannabis execution or
+  cannabis-specific death sentence was found.
 scores:
   possession: 0
   cultivation: 0
@@ -23,58 +24,127 @@ scores:
 segments:
   possession:
     text: >-
-      Ordinary possession without intent to supply carries one to three years in prison. Large
-      quantities carry three to five years and a fine, and especially large quantities five to
-      seven years and a fine. Exemption requires voluntary surrender and active assistance
-      against drug offences.[@code] The Supreme Court confirms that the ordinary offence applies
-      regardless of quantity below those higher tiers.[@court]
+      Ordinary possession without intent to supply carries one to three years in prison.[@code] From
+      more than 4 g to 50 g is “large” and carries three to five years plus a 50,000–100,000 rouble
+      fine; more than 50 g is “especially large” and carries five to seven years plus a
+      100,000–150,000 rouble fine.[@code,thresholds2013] Exemption requires voluntary surrender and
+      active assistance against drug offences.[@code] The Supreme Court confirms that the ordinary
+      offence applies regardless of quantity below those higher tiers.[@court]
     sources:
       - code
+      - thresholds2013
       - court
+    currency: RUB
+    penalties:
+      - label: Up to 4 g
+        treatment: criminal
+        term: Possession
+        prison_min: 1 year
+        prison: 3 years
+      - label: Over 4 g to 50 g
+        treatment: criminal
+        term: Possession
+        prison_min: 3 years
+        prison: 5 years
+        fine_min: 50000
+        fine: 100000
+      - label: Over 50 g
+        treatment: criminal
+        term: Possession
+        prison_min: 5 years
+        prison: 7 years
+        fine_min: 100000
+        fine: 150000
   cultivation:
     text: >-
-      Sowing or growing prohibited drug plants, expressly including cannabis, carries six to
-      eight years in prison and a fine of 100,000–150,000 rubles. Group, organised-group or
-      large-scale growing carries ten to twelve years.[@code] An August 2026 cabinet
-      announcement set ten Cannabis plants as the large-scale threshold, with commencement tied
-      to official publication.[@plants]
+      Sowing or growing prohibited drug plants, expressly including cannabis, carries six to eight
+      years in prison and a fine of 100,000–150,000 roubles.[@code] From 1 September 2026, ten or
+      more plants, or growing by a group or organised group, carries ten to twelve years; the
+      previous large-scale threshold was five plants.[@plants] An August 2026 cabinet decision set
+      the ten-plant line.[@plants]
     sources:
       - code
       - plants
+    currency: RUB
+    penalties:
+      - label: 1–9 plants
+        treatment: criminal
+        term: Cultivation
+        prison_min: 6 years
+        prison: 8 years
+        fine_min: 100000
+        fine: 150000
+      - label: 10 or more plants
+        treatment: criminal
+        term: Cultivation
+        prison_min: 10 years
+        prison: 12 years
+      - label: Group or organised group
+        treatment: criminal
+        term: Cultivation
+        prison_min: 10 years
+        prison: 12 years
   enforcement:
     text: >-
-      Personal possession carries one to three years and ordinary cannabis cultivation six to
-      eight years in prison.[@code] Cannabis or hashish use without a doctor’s order carries
-      three days’ administrative arrest and ten days for repetition within a year.[@admin] Life
-      or death remains available in the highest supply/import tiers without mitigating
-      circumstances; the Supreme Court bars those penalties when mitigation exists.[@code,court]
+      Personal possession carries one to three years and ordinary cannabis cultivation six to eight
+      years in prison.[@code] Cannabis or hashish use without a doctor’s order carries three days’
+      administrative arrest and ten days for repetition within a year.[@admin] Life or death remains
+      in the highest supply/import tiers without mitigating circumstances, but the death penalty has
+      been under a moratorium since 1993 and is barred in peacetime by the 2007
+      law.[@code,court,moratorium]
     sources:
       - code
       - admin
       - court
+      - moratorium
   sharing:
     text: >-
-      The ordinary drug-supply offence carries five to eight years in prison and a fine, with
-      higher tiers for aggravated cases.[@code] The Supreme Court defines supply to include
-      gifts, exchanges, loans and payment of debts, and says ordinary supply liability applies
-      regardless of amount below the larger tiers.[@court]
+      The ordinary drug-supply offence carries five to eight years in prison and a 150,000–200,000
+      rouble fine, with higher tiers for aggravated cases.[@code] The Supreme Court defines supply
+      to include gifts, exchanges, loans and payment of debts, and says ordinary supply liability
+      applies regardless of amount below the larger tiers.[@court]
     sources:
       - code
       - court
+    currency: RUB
+    penalties:
+      - label: Ordinary supply
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 8 years
+        fine_min: 150000
+        fine: 200000
+      - label: Group, large amount or adult to minor
+        treatment: criminal
+        term: Trafficking
+        prison_min: 8 years
+        prison: 12 years
+        fine_min: 300000
+        fine: 600000
+      - label: Organised group, especially large or child under 14
+        treatment: criminal
+        term: Trafficking
+        prison_min: 15 years
+        death: true
+        life: possible
+        fine_min: 600000
+        fine: 1200000
+        note: Death is not carried out under the moratorium
   consumption:
     text: >-
-      Cannabis or hashish use without a doctor’s order carries three days’ administrative
-      arrest, rising to ten days for repetition within a year. Repeat liability for the
-      first-use offence cannot be imposed within fifteen days of the earlier liability decision.
-      A person voluntarily seeking medical help for illegal drug use is exempt from
-      administrative liability under this article.[@admin]
+      Cannabis or hashish use without a doctor’s order carries three days’ administrative arrest,
+      rising to ten days for repetition within a year. Repeat liability for the first-use offence
+      cannot be imposed within fifteen days of the earlier liability decision. A person voluntarily
+      seeking medical help for illegal drug use is exempt from administrative liability under this
+      article.[@admin]
     sources:
       - admin
   access:
     text: >-
-      Recreational supply is criminal, and the Supreme Court includes both paid and unpaid
-      transfers in its definition.[@code,court] The use offence expressly covers cannabis and
-      hashish taken without a doctor’s order.[@admin]
+      Recreational supply is criminal, and the Supreme Court includes both paid and unpaid transfers
+      in its definition.[@code,court] The use offence expressly covers cannabis and hashish taken
+      without a doctor’s order.[@admin]
     sources:
       - code
       - court
@@ -82,66 +152,130 @@ segments:
 context:
   death_penalty:
     text: >-
-      The highest supply/import tiers allow life or death where mitigating circumstances are
-      absent; the Supreme Court expressly bars those penalties where mitigation
-      exists.[@code,court] The code excludes women, people who offended under eighteen and men
-      aged sixty-five by sentencing from the death penalty, and allows presidential commutation
-      of death.[@code]
+      The highest supply/import tiers allow life or death where mitigating circumstances are absent;
+      the Supreme Court bars those penalties where mitigation exists.[@code,court] Abkhazia has not
+      executed anyone since 1993, and the 12 January 2007 law bars executions in peacetime while
+      leaving death sentences in the code; the few known death sentences were commuted to
+      life.[@moratorium] No cannabis-specific death or life sentence was found.
     sources:
       - code
       - court
+      - moratorium
   production:
     status: none
     text: >-
       Unlawful cannabis cultivation carries six to eight years in the ordinary tier.[@code] The
-      Supreme Court includes creating special conditions for sowing and growing, improving
-      cultivation methods and breeding higher-yield varieties within cultivation.[@court]
+      state may grow controlled plants only within quotas, and research institutions may use
+      controlled drugs for study; no commercial cannabis production exists.[@law2001]
     sources:
       - code
-      - court
-  products:
-    text: >-
-      Cannabis and hashish are expressly named in the administrative use offence.[@admin]
-      Passing controlled drugs to another person, including as a gift, falls under the criminal
-      supply rules.[@court]
-    sources:
-      - admin
-      - court
+      - law2001
   medical:
     text: >-
-      The cannabis/hashish use offence applies to use without a doctor’s order. It also exempts
-      a person who voluntarily seeks medical help for illegal drug use from administrative
-      liability under that article.[@admin]
+      No medical cannabis programme. Cannabis and hashish are in Schedule I, whose circulation is
+      banned; the narcotics law allows medical use only of less restricted schedules, so a doctor
+      cannot prescribe cannabis.[@law2001,schedule2011] The “without a doctor’s order” wording in
+      the use offence is not a medical route.[@admin]
     sources:
+      - law2001
+      - schedule2011
       - admin
   consequences:
     text: >-
-      A criminal conviction creates a criminal record until it is extinguished or removed under
-      the code’s rules.[@code] The Supreme Court requires access to legal assistance and
-      protection against self-incrimination when questioning of a detained person turns to
-      incriminating facts.[@court]
+      A criminal conviction creates a criminal record until it is extinguished or removed under the
+      code’s rules.[@code] The Supreme Court requires access to legal assistance and protection
+      against self-incrimination when questioning of a detained person turns to incriminating
+      facts.[@court]
     sources:
       - code
       - court
   clubs:
     status: none
     text: >-
-      Cannabis cultivation and running premises for drug consumption are criminal
-      offences.[@code] The Supreme Court treats gifts and other unpaid transfers as supply,
-      leaving no lawful recreational growing-and-sharing club route.[@court]
+      No cannabis clubs are known. Cultivation and running premises for drug consumption are
+      criminal offences, and the Supreme Court treats gifts and other unpaid transfers as supply,
+      leaving no lawful club route.[@code,court]
     sources:
       - code
       - court
   visitors:
     status: none
     text: >-
-      Cannabis use without a doctor’s order carries three days’ arrest, with ten for repetition
-      within a year.[@admin] Possession without supply intent and unauthorised drug import have
-      separate prison offences; giving drugs away is included in supply.[@code,court]
+      There is no legal supply for anyone. A visitor faces the same three-day arrest for cannabis
+      use and the same possession and supply penalties.[@admin,code] A October 2026 proposal for an
+      “undesirable foreign citizen” status and entry ban was not law.[@migration26]
     sources:
       - admin
       - code
+      - migration26
+  recreational:
+    text: >-
+      Cannabis is illegal for every purpose. Possession without intent to supply carries one to
+      three years, and the highest supply tiers allow life or death on paper.[@code] Cannabis and
+      hashish use without a doctor’s order is an administrative offence carrying three days’ arrest,
+      or ten for repetition within a year.[@admin] Gifts and other unpaid transfers count as
+      supply.[@court]
+    sources:
+      - code
+      - admin
       - court
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD exception operates. Cannabis is in Schedule I, whose circulation is banned, and
+      the law permits cultivation of controlled plants only through state enterprises within
+      quotas.[@law2001,schedule2011] The administrative code fines illegal sowing of listed
+      drug-hemp varieties, which implies non-drug hemp is not a criminal offence, but no THC limit,
+      hemp licensing scheme or CBD market was found.[@admin]
+    sources:
+      - law2001
+      - schedule2011
+      - admin
+  planting:
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      The Supreme Court treats acquiring seeds and germinating them outside soil, or in too little
+      soil for the plant to mature, as preparation for cultivation; sowing is criminal before the
+      plants sprout.[@court] A cutting is a plant and falls under the cultivation offence.[@code] No
+      separate seed-sale rule was found.[@court]
+    sources:
+      - court
+      - code
+  driving:
+    status: zero
+    text: >-
+      The Administrative Code makes it an offence to drive with narcotic or psychotropic substances
+      in the body, with no THC threshold.[@admin] The penalty is 500 minimum wage units (30,000
+      roubles) and six months’ licence loss; a repeat brings 15 days’ arrest and a one-year loss,
+      and refusing a test brings 15 days and six months.[@admin] Alcohol has a separate blood and
+      breath limit; the 2026 proposal for mobile testing was not in force.[@admin]
+    sources:
+      - admin
+  black_market:
+    text: >-
+      No national price or seizure series is published. A 1999 cabinet review described organised
+      marijuana cultivation in Gudauta for export and the Psou crossing as the main
+      route.[@enforcement1999] Prosecutors reported 598 cannabis roots seized in 2024–2025, mostly
+      South Krasnodar, and several small outdoor plots in
+      2025–2026.[@prosecutor26,ochamchira25,seizure26]
+    sources:
+      - enforcement1999
+      - prosecutor26
+      - ochamchira25
+      - seizure26
+  arrests:
+    text: >-
+      Abkhazia publishes prosecution and court figures, not arrest counts. The prosecutor general’s
+      office reported 33 cultivation cases and 29 convictions in 2024–2025: 12 real prison terms,
+      nine suspended, four compulsory treatment and 2.45 million roubles in fines.[@prosecutor26] A
+      1999 cabinet review recorded more than 500 drug users, only 188 registered as chronic
+      addicts.[@enforcement1999]
+    sources:
+      - prosecutor26
+      - enforcement1999
 sources:
   code:
     title: Abkhazia Supreme Court — Criminal Code
@@ -153,8 +287,8 @@ sources:
     title: Abkhazia Supreme Court — Administrative Offences Code
     url: https://supreme.vs-ra.org/images/DOCS/Reglament/kodeksobadmprav.pdf
     locator: >-
-      Article 45, as amended by Law 5601 of 3 April 2023; three days for cannabis/hashish use,
-      ten for repetition; voluntary medical-help exemption
+      Article 45, as amended by Law 5601 of 3 April 2023; three days for cannabis/hashish use, ten
+      for repetition; voluntary medical-help exemption
   court:
     title: Abkhazia Supreme Court — guidance on drug offences
     url: https://supreme.vs-ra.org/images/PDF/bul20261.pdf
@@ -168,3 +302,47 @@ sources:
     locator: >-
       25 August 2026 announcement; ten plants includes Cannabis; decision says commencement upon
       official publication
+  law2001:
+    title: Abkhazia — Law on Narcotic Drugs and Psychotropic Substances (2001)
+    url: >-
+      https://customsra.com/wp-content/uploads/2023/06/zakon-respubliki-abhazija-o-narkoticheskih-sredstvah-i-psihotropnyh-veshhestvah.pdf
+    locator: >-
+      Articles 14, 18, 31 and 34; Schedule I ban, medical use only for less restricted drugs, state
+      cultivation quotas and research licences.
+  schedule2011:
+    title: Abkhazia — 2011 list of controlled substances
+    url: https://govdoc.apsny.land/files/4335
+    locator: Cannabis and hashish in Schedule I.
+  thresholds2013:
+    title: Abkhazia — 2013 drug quantity thresholds
+    url: https://govdoc.apsny.land/files/5828
+    locator: Cannabis 4 g large and 50 g especially large; hashish 2 g and 25 g; five plants large.
+  moratorium:
+    title: Kavkazsky Uzel — Abkhazia’s death-penalty moratorium (2007)
+    url: https://m.kavkaz-uzel.eu/articles/108644/
+    locator: >-
+      Moratorium since 1993; law of 12 January 2007 bars executions in peacetime; known sentences
+      commuted to life.
+  prosecutor26:
+    title: Sputnik Abkhazia — 29 cannabis growers convicted in 2024–2025 (30 April 2026)
+    url: https://sputnik-abkhazia.ru/20260430/1062699600.html
+    locator: >-
+      33 cases, 29 convictions, 12 prison, 9 suspended, 4 treatment, 2.45m RUB fines, 598 cannabis
+      roots.
+  ochamchira25:
+    title: Sputnik Abkhazia — 15 cannabis plants found near Elyr (20 July 2025)
+    url: >-
+      https://sputnik-abkhazia.ru/20250720/zhitelya-ochamchyry-zaderzhali-po-podozreniyu-v-vyraschivanii-konopli-1056202486.html
+    locator: Packet of cannabis; 15 South Krasnodar plants; house arrest.
+  seizure26:
+    title: Sputnik Abkhazia — 82 g marijuana seized in Ochamchira (24 October 2026)
+    url: https://sputnik-abkhazia.ru/20261024/1066546890.html
+    locator: More than 82 g; purchase, possession and transport; house arrest.
+  migration26:
+    title: Sputnik Abkhazia — proposal for “undesirable foreign citizen” status (26 October 2026)
+    url: https://sputnik-abkhazia.ru/20261026/1066574906.html
+    locator: Migration service proposal; not law as of 28 October 2026.
+  enforcement1999:
+    title: Abkhazia — Cabinet resolution on drug enforcement (2 April 1999)
+    url: https://govdoc.apsny.land/files/2090
+    locator: 500+ users, 188 chronic; 22 mass-sowing cases in 1998; Gudauta export cultivation; Psou route.
