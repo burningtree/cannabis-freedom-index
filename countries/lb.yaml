@@ -3,10 +3,11 @@ region: Asia
 iso_numeric: 422
 recreational: illegal
 medical: none
-updated: "2026-10-27"
+updated: '2026-10-28'
 summary: >-
-  A 2020 law legalised cultivation for medical and industrial purposes, with slow implementation.
-  Recreational use is illegal despite the Bekaa Valley's famous hashish.
+  A 2020 law legalised licensed cultivation for medical and industrial use, but no licence had
+  been issued by August 2026. Recreational use remains illegal: a small quantity for personal use
+  brings three months to three years, while other possession or supply can bring life.
 scores:
   possession: 1
   cultivation: 1
@@ -17,129 +18,326 @@ scores:
 segments:
   possession:
     text: >-
-      Personal use and possession are crimes under the 1998 narcotics law, punishable by three
-      months to three years in prison and a fine. The law allows treatment as an alternative to
-      prosecution, but arrests of users remain common.
+      Law 673 of 16 March 1998 bans possession of cannabis, which is in Table 1 of highly dangerous
+      drugs with no medical use.[@law673] A small quantity for personal use carries three months to
+      three years in prison and a fine of LBP 2–5 million under article 127; the law sets no gram
+      threshold, leaving the boundary to the court.[@law673] Any other possession carries life
+      imprisonment with hard labour and a fine of LBP 25–100 million under article 125, read with
+      article 13.[@law673] Treatment can replace prosecution in some cases, but the Drug Addiction
+      Committee handles fewer than 10% of eligible cases.[@law673,hri26]
     sources:
-      - idpc
+      - law673
+      - hri26
+    currency: LBP
     penalties:
-      - label: Personal use and possession
+      - label: Small quantity for personal use
         treatment: criminal
+        term: Personal use
         prison_min: 3 months
         prison: 3 years
-        note: Three months to three years in prison and a fine, fine amount not stated in the retained text; treatment available as an alternative to prosecution
+        fine_min: 2000000
+        fine: 5000000
+        note: Article 127; no statutory quantity threshold
+      - label: Possession outside personal use
+        treatment: criminal
+        term: Possession
+        fine_min: 25000000
+        fine: 100000000
+        note: Life imprisonment with hard labour and a fine of LBP 25–100 million
   cultivation:
     text: >-
-      Unlicensed cultivation is a crime, yet hashish farming in the Bekaa Valley is a decades-old
-      open secret, periodically raided.
+      Article 11 bans cultivating cannabis, including seeds and plants at any stage, and article
+      125 punishes unlicensed cultivation with life imprisonment with hard labour and
+      LBP 25–100 million.[@law673] Law 178 of 2020 created a licensing exception for medical,
+      therapeutic, scientific and industrial cultivation, but it did not reschedule cannabis or
+      legalise recreational growing.[@law178] The Cannabis Regulatory Authority was appointed only
+      in July 2025, and no cultivation licence had been issued by August 2026.[@olj26,beiruter26]
+      Licensed growers who break the area or application rules face one to three years and
+      LBP 20–50 million under article 33 of Law 178.[@law178]
     sources:
-      - idpc
-      - mjb
+      - law673
+      - law178
+      - olj26
+      - beiruter26
+    currency: LBP
+    penalties:
+      - label: Unlicensed cultivation
+        treatment: criminal
+        term: Cultivation
+        fine_min: 25000000
+        fine: 100000000
+        note: Life imprisonment with hard labour and a fine of LBP 25–100 million
+      - label: Licensed cultivation outside the authorised area
+        treatment: criminal
+        term: Licensed cultivation
+        prison_min: 1 year
+        prison: 2 years
+        fine_min: 20000000
+        fine: 40000000
+        note: Licence withdrawal under Law 178 article 33
+      - label: False statement in a licence application
+        treatment: criminal
+        term: Licence application
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 30000000
+        fine: 50000000
+        note: Licence withdrawal under Law 178 article 33
+      - label: Violence or resistance to an inspector
+        treatment: criminal
+        term: Obstruction
+        prison_min: 3 months
+        prison: 2 years
+        fine_min: 10000000
+        fine: 20000000
   enforcement:
     text: >-
-      Users are jailed, often in pre-trial detention, while large growers have historically enjoyed
-      protection.
+      Enforcement is uneven: users are jailed, often in pre-trial detention, while large growers
+      have historically enjoyed political protection.[@jied] In 2023, 790 people were sentenced for
+      substance use, down from 1,202 in 2021, and 87% of prisoners were held without
+      trial.[@hri26] The army destroyed cannabis fields in the Bekaa in 2024–2025 and the interior
+      ministry announced a network bust with 720 kg of hashish in September
+      2025.[@lorient25,arabnews25]
     sources:
-      - idpc
+      - jied
+      - hri26
+      - lorient25
+      - arabnews25
   sharing:
-    text: Trafficking carries long prison sentences.
+    text: >-
+      Article 126 punishes selling or offering cannabis for personal consumption, facilitating its
+      use free or for payment, keeping a place for use, or supplying a minor with life imprisonment
+      with hard labour and LBP 25–100 million; there is no quantity threshold.[@law673] Article 125
+      covers transport, import, export, brokerage and other supply on the same terms.[@law673] The
+      law does not distinguish small-scale sharing from trafficking.[@law673]
     sources:
-      - idpc
+      - law673
+    currency: LBP
+    penalties:
+      - label: Sale, supply or brokerage
+        treatment: criminal
+        term: Trafficking
+        fine_min: 25000000
+        fine: 100000000
+        note: Life imprisonment with hard labour and a fine of LBP 25–100 million
+      - label: Giving or facilitating use
+        treatment: criminal
+        term: Facilitation
+        fine_min: 25000000
+        fine: 100000000
+        note: Includes free supply; life imprisonment with hard labour and a fine
+      - label: Supplying a minor
+        treatment: criminal
+        term: Supply to a minor
+        fine_min: 25000000
+        fine: 100000000
+        note: Life imprisonment; aggravating circumstances can double the maximum
   consumption:
-    text: Use is a criminal offence.
+    text: >-
+      Article 127 punishes use of a small quantity for personal consumption with three months to
+      three years and LBP 2–5 million.[@law673] Article 197 applies the same penalties when
+      treatment is refused.[@law673] Treatment before prosecution can exempt an addicted person on
+      certified recovery, but the committee is underused.[@law673,hri26]
     sources:
-      - idpc
+      - law673
+      - hri26
+    currency: LBP
+    penalties:
+      - label: Personal consumption
+        treatment: criminal
+        term: Use
+        prison_min: 3 months
+        prison: 3 years
+        fine_min: 2000000
+        fine: 5000000
+        note: Article 127; no statutory quantity threshold
   access:
-    text: No legal source.
+    text: >-
+      None. Cannabis is Table 1 with no medical use, and Law 178 licenses production for export and
+      industrial use, not patient access.[@law673,law178] No domestic medical-cannabis programme,
+      pharmacy product or CBD consumer market was verified.[@idpc,beiruter26]
     sources:
-      - mjb
+      - law673
+      - law178
+      - idpc
+      - beiruter26
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. Personal use and possession bring three months
-      to three years and a fine, though treatment can replace prosecution; arrests of users
-      remain common.[@idpc] Bekaa hashish farming is a decades-old open secret, periodically
-      raided, while users face jail — often pre-trial — and traffickers long
-      sentences.[@idpc,mjb]
+      There is no legal recreational supply. A small quantity for personal use brings three months
+      to three years and LBP 2–5 million; any other possession or supply can bring life.[@law673]
+      Bekaa hashish farming is a decades-old open secret, periodically raided, and users face jail
+      while large growers have historically been protected.[@jied]
     sources:
-      - idpc
-      - mjb
+      - law673
+      - jied
   production:
     status: medical
     text: >-
-      Law 178 of April 2020 legalised licensed cultivation for medical and industrial purposes,
-      aimed at export and recommended by consultants as a way to revive the economy. Implementation
-      stalled for years; a regulatory authority was only appointed in 2025.
+      Law 178 of 2020 allows licensed cultivation for medical, therapeutic, scientific and
+      industrial purposes, aimed at export.[@law178] The regulator was appointed in July 2025, but
+      no licence had been issued by August 2026 and its chairman said the timetable was too tight
+      for a 2026 harvest.[@olj26,beiruter26]
     sources:
-      - law
-      - mjb
-  products:
-    text: No legal consumer products.
-    sources:
-      - mjb
+      - law178
+      - olj26
+      - beiruter26
   medical:
-    text: The 2020 law concerns production for export; no domestic patient programme is operating.
+    text: >-
+      No patient route. Cannabis remains Table 1 "no medical use"; Law 178 licenses production, not
+      consumption, and does not reschedule the plant.[@law673,law178] Patients have no legal pathway
+      to medical cannabis, and no product or prescription route was verified.[@idpc,beiruter26]
     sources:
-      - mjb
+      - law673
+      - law178
       - idpc
+      - beiruter26
+  hemp:
+    status: strict
+    text: >-
+      Law 178 includes industrial hemp among the licensed cannabis uses and lets the regulator
+      license seeds for industrial hemp, but it leaves the THC limit to the authority; a 1% figure
+      appears in ministry guidance, not the law.[@law178,cms] No hemp licence or legal hemp market
+      existed by August 2026, and CBD remains a controlled substance.[@beiruter26,cms]
+    sources:
+      - law178
+      - cms
+      - beiruter26
   consequences:
-    text: A drug record affects employment and travel.
+    text: >-
+      A drug conviction is a criminal record. Article 152 requires permanent expulsion for a
+      foreign national convicted of a felony or repeat misdemeanour, and removal for one to five
+      years for a misdemeanour; article 161 bars early release during the first two-thirds of a
+      sentence of a year or more.[@law673] The currency collapse has made the fines nominal while
+      the life sentence remains.[@jied,cms]
     sources:
-      - idpc
+      - law673
+      - jied
+      - cms
   planting:
     seeds: licensed
     seeds_trade: regulated
     clones: licensed
     clones_trade: regulated
     text: >-
-      Under Law 178 of 2020 the cannabis regulatory authority may authorise cultivation of the
-      plant "whether in the form of seeds or seedlings" for medical, pharmaceutical and
-      industrial products. Outside such an authorisation cultivation remains a crime.
+      Law 178 article 3 lets the regulator license cannabis seeds for industrial hemp and seedlings
+      at any growth stage for medical use; outside a licence, planting is cultivation under article
+      11 and carries life.[@law178,law673] There is no personal seed or clone exception.[@law673]
     sources:
-      - cmsg
+      - law178
+      - law673
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@law673] Law 178 is a production
+      licensing route, not a members' club.[@law178]
     sources:
-      - idpc
-      - mjb
+      - law673
+      - law178
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. The sources behind this profile describe no separate rule for visitors.
+      There is no legal supply for anyone. A small quantity for personal use brings three months to
+      three years and LBP 2–5 million; other possession or supply can bring life.[@law673] A foreign
+      national convicted of a felony or repeat misdemeanour faces permanent expulsion, and a
+      misdemeanour can bring removal for one to five years.[@law673]
     sources:
-      - mjb
+      - law673
+  driving:
+    status: impairment
+    text: >-
+      Article 143 punishes driving a land vehicle under the influence of an illegally used highly
+      dangerous narcotic with three months to two years and LBP 2–5 million; the court may withdraw
+      the licence for three months to three years, permanently after a mass-casualty
+      accident.[@law673] Article 144 applies the same penalty for refusing the health ministry's
+      test or continuing to drive.[@law673] There is no per-se THC limit.[@law673]
+    sources:
+      - law673
+  culture:
+    text: >-
+      Cannabis in Lebanon is known as [hashish](/culture/language/hashish/), and the Bekaa Valley
+      has been the centre of [hashish production](/culture/traditions/hashish-in-the-bekaa/) for a
+      century.[@jied] The trade shaped village economies and political networks, and the 2020
+      licensing law was presented as a way to bring it into the legal economy.[@jied,law178] No
+      public cannabis culture is visible today; the crop remains illegal and periodically
+      eradicated.[@jied,lorient25]
+    sources:
+      - jied
+      - law178
+      - lorient25
   black_market:
     text: >-
-      Hashish from the Bekaa valley is grown entirely outside the law, because the legal
-      industry promised in 2020 has not started. The Cannabis Regulatory Authority was
-      formally set up only in the summer of 2025, five years after the law that created it;
-      its head, appointed in July 2025, said in February 2026 that the timetable was too tight
-      for a first legal harvest that year, while farmers in growing areas such as Saideh were
-      pressing for the season to begin.
+      No consolidated official cannabis seizure series is published. Reported cases include 6.4 kg
+      of hashish at Beirut airport in June 2024, army destruction of fields in the Bekaa in August
+      and September 2025, and 720 kg of hashish in a September 2025 network
+      bust.[@lorient24,lorient25,arabnews25] The Bekaa has produced hashish for a century: a 1928
+      estimate put output at 60 tonnes, and a 2022 estimate put cultivation at 20,000–40,000
+      hectares.[@jied] Fines in Law 673 have been eroded by the currency collapse, while the life
+      sentence remains.[@jied,cms]
     sources:
-      - olj26
+      - lorient24
+      - lorient25
+      - arabnews25
+      - jied
+      - cms
+  arrests:
+    text: >-
+      In 2023, 790 people were sentenced for substance use, down 35% from 1,202 in 2021, and 2,518
+      people were questioned and released without charge in 2021.[@hri26] About 87% of prisoners
+      were held without trial in 2023, with prisons at almost 200% capacity, partly because of
+      low-level drug offences.[@hri26] A 2018 study estimated that about 77% of annual drug arrests
+      targeted users and 15% low- or mid-level supply, with kingpins rarely prosecuted.[@jied] No
+      consolidated 2024–2026 cannabis arrest series was found.[@hri26]
+    sources:
+      - hri26
+      - jied
+sources:
+  law673:
+    title: "Lebanon — Law No. 673 of 16 March 1998 on narcotic drugs, psychotropic substances and precursors"
+    url: https://lebaneselegislation.com/law/243942
+    locator: "Articles 5, 11, 13, 125–127, 143–144, 150, 152, 159 and 161; Table 1."
+  law178:
+    title: "Lebanon — Law No. 178 of 28 May 2020 on licensing cannabis cultivation for medical and industrial use"
+    url: https://lebaneselegislation.com/law/285559
+    locator: "Articles 2–4, 33 and 37; Official Gazette 23/2020, 4 June 2020."
+  jied:
+    title: "JIED — Michelle Wazan, The Show Must Go On: A Brief History of Lebanon's Drug Control Politics (2023)"
+    url: https://jied.lse.ac.uk/articles/10.31389/jied.207
+    locator: "Enforcement, Bekaa production and the 1928, 1984 and 2022 estimates."
+  hri26:
+    title: "Harm Reduction International — Lebanon's Shift Toward Health-Centred Drug Policy (July 2026)"
+    url: https://hri.global/wp-content/uploads/2026/07/Lebanon.pdf
+    locator: "2021–2023 sentencing, pre-trial detention and Drug Addiction Committee figures."
+  olj26:
+    title: "L'Orient Today — Why is Lebanon still behind on regulating medicinal cannabis? (10 February 2026)"
+    url: https://today.lorientlejour.com/article/1494456/why-is-lebanon-still-behind-on-regulating-medicinal-cannabis.html
+    locator: "CRA chairman on the 2026 harvest timetable; Saideh farmers."
+  beiruter26:
+    title: "The Beiruter — The crop Lebanon legalized but never built (17 August 2026)"
+    url: https://www.thebeiruter.com/article/the-crop-lebanon-legalized-but-never-built/2323
+    locator: "No cultivation licence issued; implementing decrees not in force."
+  cms:
+    title: "CMS — Cannabis law and legislation in Lebanon (expert guide)"
+    url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/lebanon
+    locator: "THC/CBD limits, controlled CBD and the 1% industrial figure."
+  idpc:
+    title: "IDPC/Skoun — The legalization of the cultivation of cannabis in Lebanon (10 May 2023)"
+    url: https://idpc.net/publications/2023/05/the-legalization-of-the-cultivation-of-cannabis-in-lebanon-moralistic-views-vs-the-right-to
+    locator: "Law 178 does not create patient access or reschedule cannabis."
+  lorient24:
+    title: "Lebanon Debate — 6.4 kg of hashish seized at Beirut airport (18 June 2024)"
+    url: https://www.lebanondebate.com/article/653065
+    locator: "Egyptian traveller; 6.416 kg."
+  lorient25:
+    title: "L'Orient Today — Army destroys cannabis fields in North Bekaa (21 August 2025)"
+    url: https://today.lorientlejour.com/article/1474424/army-destroys-cannabis-fields-in-north-bekaa.html
+    locator: "Zarazir, Deir al-Ahmar and Shleefa; plants inside homes; one arrest."
+  arabnews25:
+    title: "Arab News — Lebanon says it busts international drug network (September 2025)"
+    url: https://www.arabnews.com/middle-east/lebanon-says-busts-international-drug-network-seizes-hashish-captagon-2615359
+    locator: "720 kg of hashish and Captagon pills."
 answers:
   buy:
     answer: no
     text: No patient or adult-use purchase route verified
-sources:
-  olj26:
-    title: L'Orient Today — Why is Lebanon still behind on regulating medicinal cannabis? (10 February 2026)
-    url: https://today.lorientlejour.com/article/1494456/why-is-lebanon-still-behind-on-regulating-medicinal-cannabis.html
-  cmsg:
-    title: CMS — Cannabis law and legislation in Lebanon (expert guide)
-    url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/lebanon
-  idpc:
-    title: IDPC — Lebanon set to legalise medical, industrial cannabis cultivation
-    url: https://idpc.net/news/2020/03/lebanon-set-to-legalise-medical-industrial-cannabis-cultivation
-  mjb:
-    title: MJBizDaily — Lebanon legalizes medical cannabis production
-    url: https://mjbizdaily.com/lebanon-legalizes-medical-cannabis-production/
-  law:
-    title: TNI — Lebanon passes legislation legalizing medical marijuana cultivation
-    url: >-
-      https://www.ungassondrugs.org/en/site_content/item/9708-lebanon-passes-legislation-legalizing-medical-marijuana-cultivation-as-economy-struggles-amid-coronavirus-fallout.html
