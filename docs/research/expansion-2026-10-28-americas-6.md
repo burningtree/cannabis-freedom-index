@@ -45,5 +45,10 @@ others; kp — Asia; cw/sr — done in Americas-5; gy — another agent's blocke
 - Deduped a doubled `- mag` in planting sources.
 - Audit 0/0; page + all five articles verified in review HTML.
 - Left: 2019 medical pilot + treaty entries (imp 1, skipped), THC patient-supply verification (already flagged in profile).
-## gd — pending
+## gd — committed
+- Word ganja (English (Grenada), from the 1857 indentured-workers record; Big Drum Nation interview added as profile source); culture section (ganja atlas + 1857 + 2026 articles).
+- Possession table (≤56 g legal adult; over-limits criminal label) + consumption table (EC$300 ticket civil; EC$5,000 court criminal; school-area 7yr/250k–20yr/500k with XCD currency) + cultivation table (≤4 plants registered legal; sacramental label row); products folded into access.
+- New `articles/grenada-decriminalisation-2026.md` (VINO + Act No. 1 of 2026 + assent report; school offence + dwelling exception) + `articles/grenada-bill-2021.md` (Peter David's 28 g/five-plant bill, lapsed at dissolution; comparison paragraph re-cited to the 2026 Act) + `articles/grenada-indian-ganja-introduction-1857.md` (Big Drum Nation + wiki); links in possession/recreational/access/culture.
+- Audit 0 errors + 2 pre-existing warnings (consequences/visitors uncited sentences — untouched); page + all three articles verified.
+- Left: 1925 estimate (parallel YE estimate, no link), 2014/2009/treaty entries (imp 1, skipped).
 ## hn — pending
