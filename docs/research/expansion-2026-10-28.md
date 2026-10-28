@@ -125,3 +125,9 @@ and a correction of the timing of Moldova's possession easing. Current scores ar
 Unverified first-ban details, sparse decades and inaccessible annexes remain listed above.
 All shared history changes were staged by owned IDs once concurrent edits appeared; other
 contributors' profiles, history entries, source archive and assets were left out of our commits.
+
+Shared-index concurrency note: while this batch's final six article citation edits and validation
+note were staged, another agent committed the shared index in `f8fabc08` (Dominican Republic).
+Those Europe edits are therefore in that commit; `b8d3b604` records the subsequent Moldova hash
+correction. The five country commits listed above remain separate. No history was rewritten to
+split the concurrent commit, and no unrelated file was edited by this batch.
