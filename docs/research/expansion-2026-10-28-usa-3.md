@@ -13,7 +13,13 @@ wording; cultivation tables added everywhere.
 - Possession left as string (claims test #221 pins it). No test breakage.
 - Audit 0/0; review page verified.
 
-## va — pending
+## va (Virginia) — committed
+- Penalty tables (possession 4 steps to 1–10yr felony; cultivation 4/10-plant bands, verified
+  against NORML), cites on all segments, new `recreational` (2021 legal, 2026 retail law after
+  vetoes, sales 1 July 2027), access links (retail draft + hemp cap 2026 entries).
+- No test pins. No grounded VA culture subject; no 2021-legalization history entry (noted).
+- Audit 0/0; review page verified.
+
 ## wa — pending
 ## az — pending
 ## ma — pending

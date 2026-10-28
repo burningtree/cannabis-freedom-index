@@ -14,19 +14,65 @@ scores:
   consumption: 3
   access: 3
 segments:
-  possession: >-
-    Legal at home and in small amounts in public; slightly larger amounts bring only a $25 civil
-    penalty, and over 4 oz in public is a misdemeanour.
-  cultivation: Four plants per household, tagged and out of public view.
-  enforcement: Among the mildest penalties for small overages anywhere in the country.
-  sharing: Adults may share up to 1 oz without payment.
-  consumption: Private only.
+  possession:
+    text: >-
+      Legal at home and in small amounts in public; slightly larger amounts bring only a $25 civil
+      penalty, and over 4 oz in public is a misdemeanour.[@3]
+    currency: USD
+    penalties:
+      - upto: 2 oz
+        treatment: legal
+        note: At home and in public
+      - over: 2 oz
+        upto: 4 oz
+        treatment: civil
+        term: Civil violation
+        fine: 25
+      - over: 4 oz
+        upto: 1 lb
+        treatment: criminal
+        term: Misdemeanor
+        fine: 500
+        note: Up to 6 months on repeat offences
+      - over: 1 lb
+        treatment: criminal
+        term: Felony
+        prison_min: 1 year
+        prison: 10 years
+        fine: 250000
+  cultivation:
+    text: >-
+      Four plants per household, tagged and out of public view.[@3]
+    currency: USD
+    penalties:
+      - upto: 4 plants
+        treatment: legal
+        note: Tagged, out of public view, secured from under-21s
+      - over: 4 plants
+        upto: 10 plants
+        treatment: civil
+        term: Civil violation
+        fine: 250
+        note: First offence; repeat offences are misdemeanours
+  enforcement: Among the mildest penalties for small overages anywhere in the country.[@3]
+  sharing: Adults may share up to 1 oz without payment.[@3]
+  consumption: Private only.[@3]
   access: >-
     No adult-use shops yet. The Cannabis Control Authority schedules retail sales for 1 July 2027;
     its timeline records an initial regulation draft in September 2026 and schedules effective
     rules for January 2027. Medical dispensaries remain the legal route to buy cannabis.
     Separately, from 15 August 2026 hemp products may contain no more than 2 mg total THC per
-    package; the former 25-to-1 CBD-to-THC exception was removed.
+    package; the former 25-to-1 CBD-to-THC exception was removed.[@1,2]
+    [Retail rules were drafted in September 2026.](/history/us-virginia-retail-rule-draft-2026/)
+    [Hemp was capped at 2 mg per package in 2026.](/history/us-virginia-hemp-thc-cap-2026/)
+context:
+  recreational:
+    text: >-
+      Possession and home growing have been legal since 2021. After years of vetoes, a retail law
+      was enacted in 2026; adult-use sales are scheduled for 1 July 2027, with effective rules in
+      January 2027.[@1,4]
+      [Retail rules were drafted in September 2026.](/history/us-virginia-retail-rule-draft-2026/)
+    sources: [1, 4]
 sources:
   - title: Virginia Cannabis Control Authority — Retail Marijuana Market, implementation timeline
     url: https://cca.virginia.gov/retailmarijuanamarket
