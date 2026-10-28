@@ -7,6 +7,10 @@ import { Icon } from "astro-icon/components";
 import ContextMenu from "../../components/ContextMenu.astro";
 import { contextTopics, mapFill } from "../../lib/contexts.js";
 import { siteMap } from "../../lib/world-map.js";
+import { getEntry, render } from "astro:content";
+import { references } from "../../lib/cite.js";
+import { sourceTuple } from "../../lib/sources.js";
+import References from "../../components/References.astro";
 import { tierColor } from "../../lib/tiers.js";
 
 export function getStaticPaths() {
@@ -14,6 +18,11 @@ export function getStaticPaths() {
 }
 
 const { topic } = Astro.props;
+// the topic's introduction (context/<key>.md), with its references numbered in the order cited
+const intro = await getEntry("contextIntros", topic.key);
+const { Content: Intro, remarkPluginFrontmatter } = intro ? await render(intro) : {};
+const refs = references("ref");
+if (intro) for (const i of remarkPluginFrontmatter.citeOrder ?? []) refs.cite(sourceTuple(intro.data.sources[i - 1]));
 const base = import.meta.env.BASE_URL;
 const map = siteMap();
 const W = map.width, H = map.height;
@@ -48,6 +57,8 @@ const description = `${topic.name} in every country: ${topic.help.charAt(0).toLo
       <h1><Icon name={topic.icon} class="ctxp-icon" aria-hidden="true" /> {topic.name}</h1>
       <p class="lede">{topic.help}.</p>
     </section>
+
+    {Intro && <div class="prose ctxp-intro"><Intro /></div>}
 
     <dl class="hist-stats ctxp-stats">
       {figures.map(([n, label]) => <div><dt>{label}</dt><dd>{n}</dd></div>)}
@@ -144,6 +155,7 @@ const description = `${topic.name} in every country: ${topic.help.charAt(0).toLo
       </table>
     </section>
 
+    {intro && <References refs={refs} archive />}
   </main>
 </Base>
 

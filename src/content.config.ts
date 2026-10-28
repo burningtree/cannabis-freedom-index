@@ -416,4 +416,16 @@ const glossary = defineCollection({
   schema: z.object({ id: z.string().min(1), also: z.array(z.string().min(1)).optional(), text: z.string().min(10) }).strict(),
 });
 
-export const collections = { countries, units, segments, changes, prices, articles, culture, datasets, glossary };
+// An introduction to each context topic for its page across every country (/context/<topic>/):
+// context/<key>.md, two short paragraphs with links and inline citations ([@n] into `sources`).
+// What a country link or a history link says rests on that page; the rest on the sources.
+const contextIntros = defineCollection({
+  loader: glob({ base: "./context", pattern: "*.md" }),
+  schema: z.object({
+    sources: z.array(source).min(1),
+    model: z.string().min(1).optional(),
+    written: z.coerce.date().optional(),
+  }).strict(),
+});
+
+export const collections = { countries, units, segments, changes, prices, articles, culture, datasets, glossary, contextIntros };
