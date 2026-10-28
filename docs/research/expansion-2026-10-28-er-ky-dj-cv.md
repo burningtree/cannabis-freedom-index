@@ -9,8 +9,16 @@ by guessing.
 |---|---|---|---|
 | Cayman Islands | 3 articles, cultivation table, hemp/planting/black-market/arrests | driving; 1925 estimate; 1930s–2000s decades | c57a250 |
 | Cabo Verde | 4 articles, arrests section, history links, pj2022 source | driving; words; 1925 estimate | 33fd927 |
-| Djibouti |  |  |  |
+| Djibouti | 3 articles, planting/arrests sections, history links | driving; words; 1925 estimate | bfc5387 |
 | Eritrea |  |  |  |
+| Eritrea |  |  |  |
+
+## er — committed
+- 2 articles: `eritrea-new-code-awaits-enforcement-2024` (2015 code unenforced, transitional law works; gov2024 + 2015 Penal Code) linked from possession/cultivation/sharing/access/recreational; `eritrea-single-convention-2002` (dual accession; added certified Single Convention text as 3rd source after verifying schedules + Art 4 limitation in the PDF, cited for the content sentence) — no profile hook, left unlinked.
+- New `recreational` + `hemp` (none) + `planting` sections; `products` folded and deleted; `medical`/production rewritten from reviewed materials; `consequences` sources filled; all 11 previously uncited texts converted to per-sentence cites; previously unused `pc2015` source now cited; unused `wiki` source removed.
+- Deliberately absent: penalty tables (no verified operative tariff — inventing one would be worse than the gap), clubs/driving/black_market/arrests (no sources in a closed country), words (no sourced term), 1925 estimate.
+- Audit 0/0; 3 pages built and verified.
+- Left: empty 1920s–1980s decades; nothing since 2024 (closed country, noted).
 
 ## dj — committed
 - 3 articles: `djibouti-balbala-cannabis-network-2026` (88 packages/12 kg, Dawan + RTD, linked from enforcement/recreational), `djibouti-cannabis-sentence-1971` (6 months + 3-year residence ban, Journal officiel archive; no profile hook — pre-1995-code case, left unlinked like mp precedent), `djibouti-free-zone-drug-exclusion-2003` (cannabis/hashish/resin/khat barred, linked from access).
