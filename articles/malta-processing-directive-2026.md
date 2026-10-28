@@ -1,6 +1,6 @@
 ---
 sources:
-  - title: ARUC — Directive 1, version 4.0, 16 January 2026, standard IX
+  - title: ARUC — Directive 1, version 4.0, 21 January 2026, standard IX
     url: https://aruc.mt/wp-content/uploads/2026/01/Directive-1-v4.0-16.01.2026.pdf
   - title: Malta — Drug Dependence (Treatment not Imprisonment) Act, Cap. 537
     url: https://legislation.mt/eli/cap/537/eng/pdf
@@ -12,7 +12,7 @@ Malta's January 2026 association directive sets out how licensed non-profit asso
 
 ## A grower's permit does not cover processing
 
-The regulator had [announced solventless resin permissions in May 2025](/history/malta-solventless-resin-permission-2025/).[@3] Version 4.0 of the directive, dated 16 January 2026, gives the operational requirements in its processing standard.[@1] An association's existing cultivation-and-distribution permit is insufficient: it must obtain a specific processing authorisation from ARUC.[@1]
+The regulator had [announced solventless resin permissions in May 2025](/history/malta-solventless-resin-permission-2025/).[@3] Version 4.0 of the directive, dated 21 January 2026, gives the operational requirements in its processing standard.[@1] An association's existing cultivation-and-distribution permit is insufficient: it must obtain a specific processing authorisation from ARUC.[@1]
 
 An applicant must identify the responsible person, describe each proposed product and method, and show the equipment, staff, processing area and estimated quantities.[@1] ARUC can refuse if the proposed process or premises do not meet the reform's harm-reduction principles and compliance requirements.[@1] This places the decision on a defined activity at the association, rather than treating every licensed grower as a resin producer.[@1]
 

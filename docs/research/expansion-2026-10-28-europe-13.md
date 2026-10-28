@@ -10,7 +10,7 @@ excluding other agents’ shared changes.
 | Serbia | Medical agenda-vote article; eight events; research authorisations and seizure context | Original 1964/1980/1996 laws; 1940s/1970s | cbc0790 |
 | Bulgaria | Hemp article; revised 2006 article; cultivation/supply/use tables; five events | Hemp statute/ordinance threshold conflict; original 1975/1982 printings | 532d7e5 |
 | Belgium | 2026 sentencing article; two events; possession/supply tables, medical/driving context, four words | 2015 Sativex article; 1950s; ancillary fine details | 78d371d |
-| Estonia | Epidyolex article; three events; supply/use/cultivation tables; research and counselling context; driving fine corrected | Soviet-era original laws; sparse 1950s/1960s/1980s; more local vocabulary | This country’s commit |
+| Estonia | Epidyolex article; three events; supply/use/cultivation tables; research and counselling context; driving fine corrected | Soviet-era original laws; sparse 1950s/1960s/1980s; more local vocabulary | 43eb8c2 |
 
 ## Malta
 
@@ -101,3 +101,12 @@ republic legislation; two locally sourced words retained rather than inventing a
 
 Validation: 196 tests passed; five selected pages rendered and HTML inspected; audit 0/0.
 Snapshot: `.cache/expansion-europe-3/ee-review/`.
+
+## Batch close
+
+Five new articles and nineteen new history entries across the five countries. Also revised the
+older Bulgarian sentencing article and corrected Malta’s existing January directive article
+to 21 January, matching its cover and issue line (the filename still says 16 January). Its
+follow-up review build passed all 196 tests and the rendered history page was inspected.
+Each country was built and audited separately. Remaining archival and article gaps are listed
+above; no score changes were required. Other agents’ files and archive updates were excluded.
