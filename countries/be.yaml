@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 56
 recreational: decriminalised
 medical: limited
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   For adults, up to 3 g or one plant is the lowest prosecution priority — usually a simple police
   record. Medical access is confined to a few pharmaceutical products.
@@ -20,45 +20,72 @@ segments:
       Cannabis possession remains an offence. Adults with up to 3 g for personal use, without
       aggravating circumstances or public nuisance, normally receive a simplified police report
       and lowest prosecution priority. Prosecutors may still bring charges with reasons.[@justice]
+      [Belgium limited police reporting for adult personal possession in 2003.](/history/belgium-law-2003/)
+      [Belgium restored uniform low-priority handling in 2005.](/history/belgium-three-grams-2005/)
     sources:
       - justice
+    currency: EUR
     penalties:
       - upto: 3 g
         treatment: criminal
-        note: Simplified police report and lowest prosecution priority; fines and prosecution remain possible
+        term: Possession
+        fine_min: 120
+        fine: 200
+        note: Simplified police report and lowest prosecution priority; no immunity
+      - label: Exceeding the user amount, nuisance or aggravating circumstances
+        treatment: criminal
+        term: Possession
+        prison_min: 3 months
+        prison: 1 year
+        fine_min: 8000
+        fine: 800000
+        note: Full prosecution under the 2005 directive
   cultivation:
     text: >-
       One plant for adult personal use receives the same low prosecution priority as 3 g, subject
       to the other conditions. Growing remains unlawful; the policy gives no immunity from
       prosecution.[@justice]
+      [Belgium limited police reporting for adult personal possession in 2003.](/history/belgium-law-2003/)
     sources:
       - justice
+    penalties:
+      - label: One plant for adult personal use
+        treatment: criminal
+        term: Cultivation
+        note: Same low priority as 3 g; no immunity from prosecution
+      - label: Growing beyond one plant
+        treatment: criminal
+        term: Cultivation
+        note: Prosecuted as production; the one-plant tolerance does not cover it
   enforcement:
     text: >-
       Police normally send a simplified report for eligible small adult possession. Prosecutors
       retain discretion to prosecute with reasons; fines remain possible within the low-priority
       threshold.[@justice] Larger quantities and dealing can bring prison.[@cms]
+      [Belgium restored uniform low-priority handling in 2005.](/history/belgium-three-grams-2005/)
     sources:
       - justice
       - cms
   sharing:
     text: >-
-      Supply is an offence. Cannabis social clubs that tried to pool members' one-plant allowances
-      have been prosecuted and convicted.
+      Supply is an offence.[@cms] Cannabis social clubs that tried to pool members' one-plant allowances
+      have been prosecuted and convicted.[@wiki,cms]
+      [Belgium limited police reporting for adult personal possession in 2003.](/history/belgium-law-2003/)
     sources:
       - wiki
       - cms
   consumption:
     text: >-
       Use in public or in the presence of minors takes a case out of the low-priority category and
-      leads to prosecution. Private use by adults is in practice left alone.
+      leads to prosecution.[@dpf] Private use by adults is in practice left alone.[@dpf,wiki]
     sources:
       - dpf
       - wiki
   access:
     text: >-
       Medical access is lawful but narrow: a specialist may prescribe Sativex for multiple-sclerosis
-      spasticity and a pharmacy may dispense it. There are no legal adult-use shops or tolerated clubs.
+      spasticity and a pharmacy may dispense it.[@fagg] There are no legal adult-use shops or tolerated clubs.[@fagg]
+      [Belgium permitted prescription Sativex in 2015.](/history/belgium-sativex-2015/)
     sources:
       - fagg
 context:
@@ -102,13 +129,14 @@ context:
   medical:
     text: >-
       Very limited: a 2015 royal decree allows cannabis-based medicines, in practice one mouth spray
-      for multiple-sclerosis spasticity. Pharmacies may not dispense herbal cannabis.
+      for multiple-sclerosis spasticity.[@fagg] Pharmacies may not dispense herbal cannabis.[@fagg]
+      [Belgium permitted prescription Sativex in 2015.](/history/belgium-sativex-2015/)
     sources:
       - fagg
   consequences:
     text: >-
-      The police record made for small possession is not a conviction. Roadside saliva tests apply a
-      very low THC threshold.
+      The police record made for small possession is not a conviction.[@dpf] Roadside saliva tests apply a
+      very low THC threshold.[@dpf,wiki]
     sources:
       - dpf
       - wiki
@@ -119,9 +147,10 @@ context:
     clones_trade: banned
     text: >-
       The 2017 royal decree says growing cannabis plants "is prohibited and cannot be
-      authorised", apart from hemp grown under EU farm rules, and it does not mention seeds.
+      authorised", apart from hemp grown under EU farm rules, and it does not mention seeds.[@ar2017]
       Growing for personal use falls under the lighter penalties of the drug law, and one
-      plant is treated with the same low priority as three grams.
+      plant is treated with the same low priority as three grams.[@ar2017]
+      [Belgium restored uniform low-priority handling in 2005.](/history/belgium-three-grams-2005/)
     sources:
       - ar2017
   clubs:
@@ -129,22 +158,23 @@ context:
     text: >-
       Clubs have no legal basis; they lean on the directive that gives lowest priority to an
       adult's possession of 3 g or one plant, arguing that members may pool their one plant
-      each. The first, Trekt Uw Plant in Antwerp, was founded in 2006, went to court twice and
-      was acquitted in 2010; others followed in Hasselt, Liège, Andenne and Namur. In 2020
-      there were five registered clubs, the largest with about 400 members. The courts have
+      each.[@leafly20] The first, Trekt Uw Plant in Antwerp, was founded in 2006, went to court twice and
+      was acquitted in 2010; others followed in Hasselt, Liège, Andenne and Namur.[@leafly20] In 2020
+      there were five registered clubs, the largest with about 400 members.[@wikibe] The courts have
       not accepted the model: organisers of the Mambo Social Club, raided in 2013, were
       convicted of possession, production and sale, the court ruling that the tolerance for
       personal possession cannot be stretched to a shared growing room, and the club stopped
-      growing.
+      growing.[@leafly20,wikibe]
+      [Antwerp activists founded Trekt Uw Plant in 2006.](/history/belgium-trekt-uw-plant-2006/)
     sources:
       - leafly20
       - wikibe
   driving:
     status: limit
     text: >-
-      The roadside THC saliva screen uses 25 ng/mL; evidentiary saliva analysis uses 10 ng/mL.
+      The roadside THC saliva screen uses 25 ng/mL; evidentiary saliva analysis uses 10 ng/mL.[@trafficlaw]
       Blood analysis, where saliva testing or analysis cannot be performed under article 63,
-      measures THC in plasma at a 1 ng/mL threshold. These specimen-specific values are distinct
+      measures THC in plasma at a 1 ng/mL threshold.[@trafficlaw] These specimen-specific values are distinct
       from proof of actual impairment.[@trafficlaw] The driving ban runs from one month to five
       years and the fine from 1,000 to 10,000 euros.[@euda_dd]
     sources:
@@ -153,10 +183,10 @@ context:
   arrests:
     text: >-
       The EU drugs agency's statistical bulletin records 45,123 cannabis-related drug law
-      offences in Belgium in 2024, against 37,940 in 2023. Of the 2024 total, 34,294 were for
-      use or possession for use. That is the highest figure in the series, which starts in
-      2007. Countries count these differently (offences or offenders, criminal or
-      administrative), so the figure is not comparable across borders.
+      offences in Belgium in 2024, against 37,940 in 2023.[@euda_dlo] Of the 2024 total, 34,294 were for
+      use or possession for use.[@euda_dlo] That is the highest figure in the series, which starts in
+      2007.[@euda_dlo] Countries count these differently (offences or offenders, criminal or
+      administrative), so the figure is not comparable across borders.[@euda_dlo]
     sources:
       - euda_dlo
   visitors:
@@ -164,16 +194,31 @@ context:
     text: >-
       No legal recreational supply exists. The adult 3 g/one-plant policy is a low prosecution
       priority, with no guaranteed immunity; fines and prosecution remain possible.[@justice]
+      [Belgium restored uniform low-priority handling in 2005.](/history/belgium-three-grams-2005/)
     sources:
       - justice
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 9,983 kg of herbal cannabis and
       711 kg of cannabis resin seized in Belgium in 2024, against 850 kg and 4,515 kg in
-      2023. Herbal cannabis was seized on 886 occasions and resin on 17. Countries record
-      seizures differently, so the figures are not comparable across borders.
+      2023.[@euda_szr] Herbal cannabis was seized on 886 occasions and resin on 17.[@euda_szr] Countries record
+      seizures differently, so the figures are not comparable across borders.[@euda_szr]
     sources:
       - euda_szr
+  culture:
+    text: >-
+      One plant became a movement. Dutch-born Antwerp activist [Joep Oomen](/culture/people/joep-oomen/)
+      read the one-plant rule and asked whether someone else could tend the plant — the answer was
+      Trekt Uw Plant, founded in 2006, Belgium's first cannabis social club, twice taken to
+      court.[@oomen] The courts never accepted the model: organisers pooling members' plants were
+      convicted, the tolerance for personal possession unable to stretch to a shared growing
+      room.[@leafly20,wikibe]
+      [Antwerp activists founded Trekt Uw Plant in 2006.](/history/belgium-trekt-uw-plant-2006/)
+      [Belgium restored uniform low-priority handling in 2005.](/history/belgium-three-grams-2005/)
+    sources:
+      - oomen
+      - leafly20
+      - wikibe
 sources:
   fagg:
     title: Belgian medicines agency (FAGG) — Questions about medicinal cannabis
@@ -196,6 +241,9 @@ sources:
   wiki:
     title: Wikipedia — Cannabis in Belgium
     url: https://en.wikipedia.org/wiki/Cannabis_in_Belgium
+  oomen:
+    title: Cannabis Freedom Index — Joep Oomen (atlas)
+    url: https://cannabisfreedom.fyi/culture/people/joep-oomen/
   cms:
     title: CMS Expert Guide — Cannabis law and legislation in Belgium
     url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/belgium
