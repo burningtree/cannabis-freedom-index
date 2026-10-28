@@ -23,7 +23,24 @@ segments:
     The legal category depends on production method: mechanical and specified non-hydrocarbon
     processes generally produce concentrates; hydrocarbons or high-heat/high-pressure carbon
     dioxide produce extracts. A product nickname alone does not establish its category.[@5]
-  cultivation: Four plants per household. From four to eight is a misdemeanour.
+  cultivation:
+    text: >-
+      Four plants per household. From four to eight is a misdemeanour.[@6]
+    currency: USD
+    penalties:
+      - upto: 4 plants
+        treatment: legal
+        note: Per household
+      - over: 4 plants
+        upto: 8 plants
+        treatment: criminal
+        term: Misdemeanor
+        prison: 6 months
+        fine: 2500
+      - over: 8 plants
+        treatment: criminal
+        term: Felony
+        note: More than twelve plants brings five years; higher counts longer terms
   enforcement: >-
     Product, quantity and source determine the offence outside the exemptions. Section 475C.337
     provides a Class B violation through twice the specified quantity limits and a Class B
@@ -38,8 +55,14 @@ segments:
     cannabinoid extracts; section 475C.305 gives no matching ordinary adult extract-gift exemption.
     Giving more than 1 ounce of usable marijuana, and not more than 2 ounces, without payment to
     another adult is a Class B misdemeanour.[@2,3]
-  consumption: Private only.
-  access: Licensed shops since 2015, with some of the lowest prices in the country.
+  consumption: Private only.[@1]
+  access: Licensed shops since 2015, with some of the lowest prices in the country.[@7,8]
+context:
+  recreational:
+    text: >-
+      Measure 91 (November 2014) legalised adult use with 56% of the vote; early sales began on
+      1 October 2015 through existing medical dispensaries.[@7]
+    sources: [7]
 answers:
   carry:
     answer: yes
@@ -61,6 +84,12 @@ sources:
   - title: Oregon Legislature — ORS chapter 475C
     url: https://www.oregonlegislature.gov/bills_laws/ors/ors475C.html
     locator: Sections 475C.009(5), (7), (8), 475C.305 and 475C.337; production-method definitions
+  - title: NORML — Oregon laws and penalties
+    url: https://norml.org/laws/oregon-penalties-2/
+  - title: Wikipedia — 2014 Oregon Ballot Measure 91
+    url: https://en.wikipedia.org/wiki/2014_Oregon_Ballot_Measure_91
+  - title: Cannabis Business Times — How much did an ounce of cannabis flower cost in 2023
+    url: https://www.cannabisbusinesstimes.com/us-states/colorado/news/15687071/how-much-did-an-ounce-of-cannabis-flower-cost-in-2023
 use:
   note: Includes vaping; a model-based estimate.
   share: 30.6
