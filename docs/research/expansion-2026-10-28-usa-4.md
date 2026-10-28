@@ -35,4 +35,10 @@ Same method as usa-1/2/3. Possession tables use labelled steps where the law's f
 - No CO culture subject beyond the national coverage — noted.
 - Audit 0/0 (after adding punishments to term-only steps); review page verified.
 
-## wi — pending
+## wi (Wisconsin) — committed
+- Cultivation + sharing tables (felony bands verified against NORML: ≤4 plants / ≤200g sale
+  3.5yr/$10k), cites on enforcement (city fines via verified NORML 2015 cities article),
+  consumption, access.
+- Possession/answers left untouched (claims test #232 pins them). 1862 poison-sales history
+  entry exists but fits no current text; no culture subject — noted.
+- Audit 0/0; review page verified.

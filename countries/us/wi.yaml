@@ -19,13 +19,35 @@ segments:
     months and $1,000. Any earlier felony or misdemeanour conviction under Chapter 961 or covered
     federal or state drug laws can trigger Class I felony treatment, with up to 3.5 years. The
     prior need not involve cannabis or Wisconsin.[@2,3]
-  cultivation: Four plants or fewer is a felony with up to 3.5 years.
+  cultivation:
+    text: >-
+      Four plants or fewer is a felony with up to 3.5 years.[@1]
+    currency: USD
+    penalties:
+      - label: Four plants or fewer
+        treatment: criminal
+        term: Felony
+        prison: 3.5 years
+        fine: 10000
+      - label: More than four plants
+        treatment: criminal
+        term: Felony
+        note: Longer terms and larger fines by weight, up to 15 years
   enforcement: >-
     Jail is possible; a qualifying earlier drug conviction can make a first cannabis case a
-    felony.[@3] Madison and Milwaukee impose small local fines.[@1]
-  sharing: Selling 200 g or less is a felony.
-  consumption: Illegal.
-  access: None, while three neighbouring states have legal shops.
+    felony.[@3] Madison, Milwaukee and other cities impose small local fines instead.[@1,4]
+  sharing:
+    text: >-
+      Selling 200 g or less is a felony.[@1]
+    currency: USD
+    penalties:
+      - label: Sale of 200 g or less
+        treatment: criminal
+        term: Felony
+        prison: 3.5 years
+        fine: 10000
+  consumption: Illegal.[@1]
+  access: None, while three neighbouring states have legal shops.[@1]
 sources:
   - title: NORML — Wisconsin laws and penalties
     url: https://norml.org/laws/wisconsin-penalties-2/
@@ -35,6 +57,8 @@ sources:
       Wisconsin Court System — Criminal Jury Instruction 6030, footnote on prior drug
       convictions
     url: https://wilawlibrary.gov/jury/files/criminal/6030.pdf
+  - title: NORML — Nine of ten largest Wisconsin cities have decriminalized possession (2015)
+    url: http://norml.org/news/2015/09/03/wisconsin-nine-of-ten-largest-cities-have-decriminalized-marijuana-possession/
 use:
   note: Includes vaping; a model-based estimate.
   share: 22.0
