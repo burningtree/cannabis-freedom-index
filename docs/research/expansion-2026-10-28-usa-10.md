@@ -18,5 +18,9 @@ history/culture links, profile-audit, review build, commit country-by-country.
 - Cultivation table (manufacture/delivery felony 10yr/$20k, NORML-verified), sharing cite,
   2019 ingestion-reclassification history link. Pins untouched.
 - Audit 0/0; review page verified.
-## sd — pending
+## sd (South Dakota) — committed (review page pending other-agent YAML fix)
+- Possession table (≤2oz misd 1yr/$2000, NORML-verified), cultivation punished by plant weight,
+  sharing/access cites. Consumption pins untouched.
+- Audit 0/0. Review build blocked by another agent's broken `culture/people/gareth-prince.md`
+  (YAML error line 35) — will verify page once fixed.
 ## wy — pending

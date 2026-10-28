@@ -13,12 +13,21 @@ scores:
   consumption: 0
   access: 3
 segments:
-  possession: 2 oz or less is a misdemeanour with up to a year and a $2,000 fine. More is a felony.
-  cultivation: Illegal; registered patients may grow a small number of plants.
+  possession:
+    text: 2 oz or less is a misdemeanour with up to a year and a $2,000 fine. More is a felony.[@1]
+    currency: USD
+    penalties:
+      - label: Possession 2 oz or less
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 2000
+        note: 2 oz–½ lb brings a 2-year felony; higher weights bring longer terms
+  cultivation: Illegal; punished by aggregate plant weight as possession or intent to distribute; registered patients may grow a small number of plants.[@1]
   enforcement: >-
     Possession of 2 oz or less can bring up to a year in jail. Unauthorised ingestion has its own
     mandatory evaluation/probation rules and felony escalation, even without a seized quantity.[@1,2]
-  sharing: Giving under ½ oz without payment is a misdemeanour with a 15-day minimum.
+  sharing: Giving under ½ oz without payment is a misdemeanour with a 15-day minimum.[@1]
   consumption: >-
     Unauthorised ingestion or an altered-state drug in the body is a separate offence. A first
     conviction is a Class 1 misdemeanour with mandatory evaluation and supervised probation,
@@ -27,7 +36,7 @@ segments:
     later violation within ten years of the first conviction is a Class 6 felony. Inmates in
     state correctional facilities and people on parole face a Class 5 felony. Valid prescribed
     or otherwise authorised use is excepted.[@2]
-  access: Medical dispensaries for card holders.
+  access: Medical dispensaries for card holders.[@1]
 answers:
   caught:
     answer: no
