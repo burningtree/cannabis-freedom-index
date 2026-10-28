@@ -428,4 +428,14 @@ const contextIntros = defineCollection({
   }).strict(),
 });
 
-export const collections = { countries, units, segments, changes, prices, articles, culture, datasets, glossary, contextIntros };
+// The same for each outside dataset's page (/datasets/<slug>/): datasets/intros/<id>.md.
+const datasetIntros = defineCollection({
+  loader: glob({ base: "./datasets/intros", pattern: "*.md" }),
+  schema: z.object({
+    sources: z.array(source).min(1),
+    model: z.string().min(1).optional(),
+    written: z.coerce.date().optional(),
+  }).strict(),
+});
+
+export const collections = { countries, units, segments, changes, prices, articles, culture, datasets, glossary, contextIntros, datasetIntros };

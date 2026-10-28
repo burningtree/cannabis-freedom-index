@@ -10,6 +10,10 @@ import { figure, headField } from "../../lib/dataset-text.js";
 import { siteMap } from "../../lib/world-map.js";
 import { tierColor } from "../../lib/tiers.js";
 import { places } from "../../lib/countries.js";
+import { getEntry, render } from "astro:content";
+import { references } from "../../lib/cite.js";
+import { sourceTuple } from "../../lib/sources.js";
+import References from "../../components/References.astro";
 
 export function getStaticPaths() {
   return datasetPages.map((page) => ({ params: { dataset: page.slug }, props: { page } }));
@@ -17,6 +21,11 @@ export function getStaticPaths() {
 
 const { page } = Astro.props;
 const { d, rows } = page;
+// the dataset's introduction (datasets/intros/<id>.md), with its references numbered in the order cited
+const intro = await getEntry("datasetIntros", d.id);
+const { Content: Intro, remarkPluginFrontmatter } = intro ? await render(intro) : {};
+const refs = references("ref");
+if (intro) for (const i of remarkPluginFrontmatter.citeOrder ?? []) refs.cite(sourceTuple(intro.data.sources[i - 1]));
 const base = import.meta.env.BASE_URL;
 const num = (n) => n.toLocaleString("en-GB");
 const map = siteMap();
@@ -27,7 +36,8 @@ const text = (r) => [r.head[0], r.head[1]].filter(Boolean).join(" ");
 const profileHref = (c) => `${base}country/${c.slug}/#ds-${d.id}`;
 // a figure written as the dataset writes it: the median of the countries
 const name = d.worldwide ? null : headField(d);
-const written = (v) => (v == null ? null : name === "per" ? d.map.format(v) : figure(null, d, { [name]: d.fields[name]?.decimals != null ? +v.toFixed(d.fields[name].decimals) : +v.toFixed(v < 10 ? 2 : v < 100 ? 1 : 0) }, name));
+const round = (v) => (Math.abs(v) < 1 ? +v.toPrecision(2) : +v.toFixed(v < 10 ? 2 : v < 100 ? 1 : 0));
+const written = (v) => (v == null ? null : d.map ? d.map.format(round(v)) : figure(null, d, { [name]: round(v) }, name));
 const years = d.fileInfo.years && (d.fileInfo.years[0] === d.fileInfo.years[1] ? `${d.fileInfo.years[0]}` : `${d.fileInfo.years[0]}–${d.fileInfo.years[1]}`);
 const figures = d.worldwide
   ? [["Worldwide", "not country by country"], [years ?? "—", "years in the file"], [num(d.fileInfo.files.reduce((a, f) => a + f.rows, 0)), "rows"]]
@@ -53,9 +63,9 @@ const description = `${d.name}, country by country: ${d.about.split(/(?<=\.)\s/)
       <p class="lede">{d.publisher} · {d.when}</p>
     </section>
 
+    {/* the introduction, or until one is written, what the dataset counts */}
     <div class="prose ctxp-intro dsp-intro">
-      <p>{d.about}</p>
-      {d.map?.lede && d.map.lede !== d.about && <p>{d.map.lede}</p>}
+      {Intro ? <Intro /> : <p>{d.about}</p>}
     </div>
     <dl class="dsp-facts">
       <div><dt>Published by</dt><dd><a href={d.url} target="_blank" rel="noopener noreferrer">{d.title}</a></dd></div>
@@ -134,8 +144,8 @@ const description = `${d.name}, country by country: ${d.about.split(/(?<=\.)\s/)
       <section class="section dsp-ends" aria-label="Highest and lowest">
         {[["Highest", page.highest], ["Lowest", page.lowest]].map(([label, list]) => (
           <div>
-            <h2 class="dsp-ends-h">{label}</h2>
-            <ol>{list.map((r) => <li><a href={profileHref(r.c)}><span aria-hidden="true">{r.c.flag}</span> {r.c.name}</a><b>{r.head[0]}</b>{r.year != null && <small>{r.year}</small>}</li>)}</ol>
+            <h2 class="dsp-ends-h">{label}{d.map && <span> · {d.map.label}</span>}</h2>
+            <ol>{list.map((r) => <li><a href={profileHref(r.c)}><span aria-hidden="true">{r.c.flag}</span> {r.c.name}</a><b>{r.shown}</b>{r.year != null && <small>{r.year}</small>}</li>)}</ol>
           </div>
         ))}
       </section>
@@ -173,13 +183,16 @@ const description = `${d.name}, country by country: ${d.about.split(/(?<=\.)\s/)
     )}
 
     <section class="section prose dsp-origin" aria-labelledby="dspOrigin">
-      <h2 id="dspOrigin">How the file was made</h2>
+      <h2 id="dspOrigin">{Intro ? "What is counted, and how the file was made" : "How the file was made"}</h2>
+      {Intro && <p>{d.about}</p>}
       <p>{d.origin}</p>
       {Object.keys(d.notes).length > 0 && (
         <ul>{Object.entries(d.notes).map(([slug, note]) => { const c = places.find((x) => x.slug === slug); return <li>{c ? <a href={profileHref(c)}>{c.name}</a> : slug}: {note}</li>; })}</ul>
       )}
       <p>The file belongs to {d.credit ?? d.publisher} and keeps its terms; cite the publisher when you use it.</p>
     </section>
+
+    {intro && <References refs={refs} archive />}
   </main>
 </Base>
 

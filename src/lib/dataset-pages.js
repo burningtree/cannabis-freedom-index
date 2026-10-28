@@ -40,8 +40,11 @@ export const datasetPages = Object.values(DATASETS).map((d) => {
     const row = series.findLast((r) => r[name] != null || name === "per") ?? series.at(-1);
     const mapRow = d.map ? series.findLast((r) => r[d.map.field] != null) : null;
     const value = words ? null : valueOf(c, d, row, name);
+    // a figure in words left empty (no long colonial rule recorded) is said as such
+    const head = words && row?.[name] == null ? ["None recorded", ""] : headline(c, d, row);
     return {
-      c, row, year: row?.year ?? null, head: headline(c, d, row), details: fill(c, d, row, d.profile?.details),
+      // a weekly series' year (2026.79) is shown as its year
+      c, row, year: row?.year != null ? Math.floor(row.year) : null, head, details: fill(c, d, row, d.profile?.details),
       value: Number.isFinite(value) ? value : null,
       mapValue: mapRow && (!d.map.since || mapRow.year >= d.map.since) ? d.map.value(mapRow, c) : null,
       years: new Set(series.map((r) => r.year).filter((y) => y != null)).size,
@@ -52,15 +55,18 @@ export const datasetPages = Object.values(DATASETS).map((d) => {
   // a figure in words: how many places give each answer, the largest first
   const answers = words ? [...rows.reduce((m, r) => m.set(r.head[0] || r.head[1], (m.get(r.head[0] || r.head[1]) ?? 0) + 1), new Map())]
     .map(([label, n]) => ({ label, n })).sort((a, b) => b.n - a.n) : [];
-  // the highest and the lowest, where countries can be compared (survey ages differ for cannabis use)
+  // the highest and the lowest, where countries can be compared (survey ages differ for cannabis use),
+  // by the figure the map shows (a rate per person, a recent year) where there is a map view
   const comparable = !words && field?.format !== "rank" && d.id !== "cannabis_use";
-  const ranked = comparable ? rows.filter((r) => r.value != null && !r.c.territory).sort((a, b) => b.value - a.value) : [];
+  const measure = (r) => (d.map ? r.mapValue : r.value);
+  const shown = (r) => (d.map ? d.map.format(r.mapValue) : r.head[0]);
+  const ranked = comparable ? rows.filter((r) => measure(r) != null && !r.c.territory).sort((a, b) => measure(b) - measure(a)).map((r) => ({ ...r, shown: shown(r) })) : [];
   const mapView = d.map ? viewByMetric[`data:${d.id}`] ?? null : null;
   const mapPage = mapView ? `map/${mapView.slug}/` : (d.pages ?? []).map((p) => p.path).find((p) => p.startsWith("map/")) ?? null;
   return {
     d, slug, group: groupOf(d), rows, colouring: col, words, answers, comparable,
     highest: ranked.slice(0, 3), lowest: ranked.slice(-3).reverse(),
-    median: ranked.length >= 5 ? median(ranked.map((r) => r.value)) : null,
+    median: ranked.length >= 5 ? median(ranked.map(measure)) : null,
     series: rows.filter((r) => r.years > 1).length,
     mapPage, chart: CHART_OF[d.id] ?? null,
   };
