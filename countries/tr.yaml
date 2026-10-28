@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 792
 recreational: illegal
 medical: limited
-updated: 2026-10-26
+updated: "2026-10-28"
 summary: >-
   Possession carries two to five years, often converted to probation and treatment. Hemp is licensed
   in selected provinces; cannabinoid medicines have a tightly controlled individual import route.
@@ -17,202 +17,243 @@ scores:
   possession: 1
   cultivation: 1
   enforcement: 2
-  sharing: 1
+  sharing: 0
   consumption: 1
-  access: 0
+  access: 1
 segments:
   possession:
     text: >-
       Buying, receiving or possessing cannabis for personal use is a crime under Article 191 of the
-      Penal Code, with two to five years in prison. For a first offence, however, prosecutors must
-      normally defer prosecution for five years and impose at least a year of supervised probation,
-      with treatment where needed. Breach the conditions or reoffend and the prison sentence
-      applies.
+      Penal Code, with two to five years in prison.[@tck] For a first offence, the prosecutor
+      normally defers prosecution for five years and imposes at least a year of supervised
+      probation, with treatment where needed; breach or reoffending brings the prison
+      term.[@tck,mondaq] The two-to-five-year range dates from the 2014 amendment; the earlier range
+      was one to two years.[@tck]
     sources:
-      - bh
+      - tck
       - mondaq
     penalties:
       - label: Personal-use possession, purchase or receipt (Article 191)
         treatment: criminal
         prison_min: 2 years
         prison: 5 years
-        note: Two to five years; first offences normally deferred for five years with supervised probation and treatment
+        note: >-
+          Two to five years since 2014; first offences normally deferred for five years with
+          supervised probation and treatment
+        term: Possession
   cultivation:
     text: >-
-      Article 23 of the 1933 narcotics law prohibits growing hemp without a permit for any
-      purpose, and unlicensed plants are destroyed. Sowing hemp to obtain cannabis carries four
-      to twelve years in prison and a heavy fine; a person who grows only the cannabis they need
-      for their own use faces one to three years. Sowing without a permit where no drug purpose
-      is shown brings a fine.
+      Article 23 of the 1933 narcotics law prohibits growing hemp without a permit for any purpose,
+      and unlicensed plants are destroyed.[@law2313] Sowing hemp to obtain cannabis carries four to
+      twelve years in prison and a judicial fine of 500–10,000 days; a person who grows only the
+      cannabis they need for their own use faces one to three years. Sowing without a permit where
+      no drug purpose is shown brings a judicial fine of at least 50 days.[@law2313]
     sources:
       - law2313
-      - bh
     penalties:
       - label: Sowing hemp to obtain cannabis
         treatment: criminal
         prison_min: 4 years
         prison: 12 years
-        note: Four to twelve years and a heavy fine
+        note: Four to twelve years and a judicial fine of 500–10,000 days
+        term: Cultivation
       - label: Growing only the cannabis needed for own use
         treatment: criminal
         prison_min: 1 year
         prison: 3 years
         note: One to three years
+        term: Cultivation
   enforcement:
     text: >-
       Probation rather than prison for first-time users, but under a criminal framework with a
-      multi-year sentence hanging over them. Dealing is punished severely.
+      two-to-five-year sentence hanging over them.[@tck] The 2025 drug report recorded 103,992
+      cannabis offences and 126,180 suspects in 2024, and 149,523 people in prison for drug
+      offences.[@tubim2025] Dealing is punished severely.[@tck]
     sources:
-      - bh
-      - mondaq
+      - tck
+      - tubim2025
   sharing:
-    text: Supplying drugs to others is punished under Article 188 with at least ten years.
+    text: >-
+      Supplying drugs to others is punished under Article 188 with at least ten years and a judicial
+      fine of 1,000–20,000 days; giving, transporting, storing or possessing for supply all fall
+      within the offence.[@tck] Manufacture, import or export carries 20–30 years.[@tck] The law
+      sets no gram threshold between use and supply, so the distinction is factual rather than a
+      quantity line.[@tck]
     sources:
-      - bh
-      - mondaq
+      - tck
     penalties:
-      - label: Supplying drugs to others (Article 188)
+      - label: Selling, giving, transporting or storing for supply (Article 188(3))
         treatment: criminal
+        term: Trafficking
         prison_min: 10 years
-        note: At least ten years
+        note: Fifteen years if the recipient is a child
+      - label: Manufacture, import or export (Article 188(1))
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        prison: 30 years
+        note: Plus a judicial fine of 2,000–20,000 days
+      - label: Aggravated supply (school or hospital within 200 m; three or more people)
+        treatment: criminal
+        term: Trafficking
+        prison_min: 15 years
+        note: Article 188(4) increases the base sentence by one half
+      - label: Organised criminal group
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        note: Article 188(5) doubles the base sentence
   consumption:
     text: >-
       Use is covered by Article 191 on the same terms as possession, and probation involves regular
-      drug tests.
+      drug tests.[@tck]
     sources:
-      - mondaq
-      - bh
+      - tck
   access:
     text: >-
-      Adult-use supply is illegal. TİTCK’s September 2026 overseas active-substance list includes
-      cannabidiol oral solution and THC/CBD mouth spray on red prescription, through the special
-      import process. Domestic cannabis-derived products require product-specific authorisation
-      under the January 2026 rules; a permission to market does not establish pharmacy stock.
+      Adult-use supply is illegal. The only verified patient route is import: TİTCK’s overseas list
+      includes cannabidiol oral solution and a THC/CBD oromucosal spray, supplied on a doctor’s
+      prescription through the overseas-medicine process.[@imports2026,titck_guide] Domestic
+      cannabis-derived products need product-specific authorisation under the January 2026 rules; a
+      permission to market does not establish pharmacy stock.[@products2026]
     sources:
       - imports2026
+      - titck_guide
       - products2026
-      - bh
-
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. Buying, receiving or possessing for personal use
-      brings two to five years, but first offences normally get five years' deferred
-      prosecution with at least a year of supervised probation and treatment; breach or
-      reoffending brings the prison term.[@bh,mondaq] Supplying others brings at least ten
-      years.[@bh,mondaq]
+      There is no legal recreational supply. Buying, receiving or possessing for personal use brings
+      two to five years, but first offences normally get five years’ deferred prosecution with at
+      least a year of supervised probation and treatment; breach or reoffending brings the prison
+      term.[@tck,mondaq] Supplying others brings at least ten years.[@tck]
     sources:
-      - bh
+      - tck
       - mondaq
   production:
     status: medical
     text: >-
-      Hemp may be grown under permit in a list of designated provinces; the state has promoted it
-      for fibre and, more recently, for low-THC medicinal products.
+      Hemp may be grown under permit in 21 designated provinces for fibre, seed and stalk; flowers
+      and leaves for medical, health and support products are grown under state grain-board
+      contracts in secure facilities.[@og2026,law2313] A 2024 regulation created a separate
+      medical-cultivation route, replaced by the 2026 rules.[@og2024,og2026]
     sources:
-      - wiki
-  products:
-    text: >-
-      The 31 January 2026 regulation creates product-specific licensing and pharmacy-sale rules.
-      Medicinal products need TİTCK authorisation before marketing; health, support and cosmetic
-      products have their own requirements. Its 0.3% provisions concern particular product
-      categories. Specially imported cannabinoid medicines use a separate route.
-    sources:
-      - products2026
-      - imports2026
+      - og2024
+      - og2026
+      - law2313
   medical:
     text: >-
-      Very limited. The special import list includes cannabidiol oral solution and THC/CBD mouth
-      spray on red prescription. For domestic cannabis-derived products, the 2025 enabling law was
-      followed by implementing rules on 31 January 2026. Routine domestic pharmacy availability has
-      not been verified.
+      Very limited. The special import list includes cannabidiol oral solution and a THC/CBD
+      oromucosal spray on red prescription, through the 25 January 2016 import
+      route.[@imports2026,cumhuriyet2016,titck_guide] The 2025 law and 31 January 2026 rules create
+      a domestic licensing and pharmacy-only track for cannabis-derived medical, health and
+      personal-care products, but no domestic medicine or routine pharmacy stock was verified;
+      availability has not been verified.[@products2026]
     sources:
       - imports2026
+      - cumhuriyet2016
+      - titck_guide
       - products2026
   consequences:
     text: >-
-      A year or more of supervision and testing; if probation is completed the case is dropped
-      without a conviction.
+      A conviction creates a criminal record and can bring a judicial fine, confiscation and, for a
+      foreigner, deportation with an entry ban of up to five years.[@tck,law6458] A year or more of
+      supervision and testing applies where prosecution is deferred; completing probation ends the
+      case without a conviction.[@tck]
     sources:
-      - bh
+      - tck
+      - law6458
   planting:
     seeds: licensed
-    seeds_trade: regulated
+    seeds_trade: unclear
     clones: licensed
-    clones_trade: regulated
+    clones_trade: unclear
     text: >-
-      Hemp may be grown for fibre, seed and stalk only with a permit from the local
-      administrative authority, in 21 named provinces, applied for between 1 January and 1
-      April each year; growing for medicines goes through the state grain board. The 2026
-      regulation as reported does not set out how seed is supplied or sold.
+      Hemp may be grown for fibre, seed and stalk only with a permit from the local administrative
+      authority, in 21 named provinces, applied for between 1 January and 1 April each year; growing
+      for medicines and health products goes through state grain-board contracts.[@og2026,law2313]
+      Only licensed growers may plant, using certified seed; the rules treat vegetative propagation
+      as cultivation and create no retail seed or clone trade.[@og2026]
     sources:
-      - evr26
+      - og2026
+      - law2313
   hemp:
-    status: strict
+    status: standard
     text: >-
-      Hemp for fibre, seed and stalk needs a local permit in 21 named provinces, applied for
-      between 1 January and 1 April each year; growing for medicines goes through the state
-      grain board.[@evr26] The 2026 product rules set 0.3% provisions for particular product
-      categories, not a general cultivation line.[@products2026]
+      Hemp for fibre, seed and stalk needs a local permit in 21 named provinces, applied for between
+      1 January and 1 April each year; growing for medicines and health products goes through state
+      grain-board contracts.[@og2026] The 2026 product rules set a 0.3% THC ceiling for support and
+      personal-care products, not a general field limit.[@products2026]
     sources:
-      - evr26
+      - og2026
       - products2026
   arrests:
     text: >-
-      The EU drugs agency's statistical bulletin records 103,992 cannabis-related drug law
-      offences in Türkiye in 2024, against 87,268 in 2023. Of the 2024 total, 83,744 were for
-      use or possession for use. The number has risen by about three-quarters since 2020 and is the highest in the series. Countries count these differently (offences or offenders, criminal or
-      administrative), so the figure is not comparable across borders.
+      The EU drugs agency’s statistical bulletin records 103,992 cannabis-related drug law offences
+      in Türkiye in 2024, against 87,268 in 2023; 83,744 of the 2024 total were for use or
+      possession for use.[@euda_dlo] The 2025 drug report gives 126,180 cannabis suspects and
+      149,523 people in prison for drug offences, all drugs.[@tubim2025] Countries count these
+      differently, so the figures are not comparable across borders.[@euda_dlo]
     sources:
       - euda_dlo
+      - tubim2025
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and giving
+      or supplying it to another person are both crimes.[@tck,law2313]
     sources:
-      - bh
-      - mondaq
+      - tck
+      - law2313
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Buying, receiving or possessing cannabis
-      for personal use is a crime with two to five years in prison under Article 191 of the
-      Penal Code.
+      There is no legal recreational supply for anyone. Buying, receiving or possessing cannabis for
+      personal use is a crime with two to five years in prison under Article 191, and a foreigner
+      can also be deported with an entry ban of up to five years.[@tck,law6458]
     sources:
-      - bh
-      - mondaq
+      - tck
+      - law6458
   driving:
-    status: zero
+    status: consumption
     text: >-
-      The Highway Traffic Law forbids anyone who has taken narcotic or stimulant substances
-      from driving, with no level set; police use roadside test kits, and a driver who objects
-      is taken for a blood, saliva or urine sample. Under the paragraph as amended in February
-      2026, a driver found to have taken such a substance is fined 150,000 lira and the
-      licence is cancelled; a new one requires a driving course and exams, which cannot begin
-      until at least five years have passed. The Penal Code applies as well.
+      The Highway Traffic Law forbids anyone who has taken narcotic or stimulant substances from
+      driving, with no numerical level set; police use roadside test kits, and a driver who objects
+      is taken for a blood, saliva or urine sample.[@ktk48] Under the paragraph as amended in
+      February 2026, a driver found to have taken such a substance is fined 150,000 lira and the
+      licence is cancelled; a new one requires a driving course and exams, which cannot begin until
+      at least five years have passed.[@ktk48] The Penal Code applies as well.[@tck]
     sources:
       - ktk48
+      - tck
   black_market:
     text: >-
-      The EU drugs agency's statistical bulletin records 47,710 kg of herbal cannabis and
-      13,751 kg of cannabis resin seized in Turkey in 2024, against 71,429 kg and 27,836
-      kg in 2023. Herbal cannabis was seized on 80,420 occasions and resin on 17,405.
-      Plant seizures came to 108,378,999 plants. Countries record seizures differently,
-      so the figures are not comparable across borders.
+      The EU drugs agency’s statistical bulletin records 47,710 kg of herbal cannabis and 13,751 kg
+      of cannabis resin seized in Türkiye in 2024, against 71,429 kg and 27,836 kg in
+      2023.[@euda_szr] The 2025 drug report gives a cannabis total of 61,501 kg, made up of 39.8
+      tonnes of hashish and 21.6 tonnes of skunk.[@tubim2025] Countries record seizures differently,
+      so the figures are not comparable across borders.[@euda_szr]
     sources:
       - euda_szr
+      - tubim2025
 sources:
   imports2026:
     title: TİTCK — Overseas Active Substance List, 28 September 2026
     url: https://www.titck.gov.tr/dinamikmodul/126
-    locator: Rows YDN02BG1099 (cannabidiol oral solution) and YDN02BG1098 (THC/CBD mouth spray); red prescription. Listing does not establish stock.
+    locator: >-
+      Rows YDN02BG1099 (cannabidiol oral solution) and YDN02BG1098 (THC/CBD mouth spray); red
+      prescription. Listing does not establish stock.
   products2026:
     title: Türkiye — Regulation on Products Derived from Hemp, Official Gazette 33154, 31 January 2026
-    url: https://www.lexpera.com.tr/mevzuat/yonetmelikler/kenevirden-elde-edilen-urunlere-dair-yonetmelik-1
-    locator: Articles 5, 24 and pharmacy-sale provisions; product-specific authorisation, not evidence of dispensing.
+    url: >-
+      https://www.lexpera.com.tr/mevzuat/yonetmelikler/kenevirden-elde-edilen-urunlere-dair-yonetmelik-1
+    locator: >-
+      Articles 5, 24 and pharmacy-sale provisions; product-specific authorisation, not evidence of
+      dispensing.
   law2313:
-    title: "Türkiye — Law No. 2313 on the Control of Narcotic Substances, consolidated text (Mevzuat Bilgi Sistemi)"
+    title: >-
+      Türkiye — Law No. 2313 on the Control of Narcotic Substances, consolidated text (Mevzuat Bilgi
+      Sistemi)
     url: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2313&MevzuatTur=1&MevzuatTertip=3
   ktk48:
     title: Türkiye — Karayolları Trafik Kanunu No. 2918, Article 48 (Mevzuat, consolidated text)
@@ -230,9 +271,37 @@ sources:
     title: Mondaq — Drug possession and criminal penalties in Turkey
     url: >-
       https://www.mondaq.com/turkey/cannabis-hemp/958784/drug-possession-and-criminal-penalties-in-turkey
-  wiki:
-    title: Wikipedia — Cannabis in Turkey
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Turkey
   euda_szr:
-    title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
+    title: >-
+      EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of
+      seizures)
     url: https://www.euda.europa.eu/data/stats2026/szr_en
+  tck:
+    title: Türkiye — Turkish Criminal Code (Law 5237), consolidated text
+    url: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5
+    locator: Articles 188 and 191; supply, manufacture, import, export and personal use.
+  tubim2025:
+    title: Türkiye — 2025 Turkey Drug Report (TUBİM)
+    url: https://narkotik.pol.tr/kurumlar/narkotik.pol.tr/Duyurular/2025/10/2025-Uyusturucu-Raporu.pdf
+    locator: Pp. 33, 50–52 and 185; 2024 cannabis offences, suspects, seizures and prisoners.
+  law6458:
+    title: Türkiye — Law 6458 on Foreigners and International Protection
+    url: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6458&MevzuatTur=1&MevzuatTertip=5
+    locator: Articles 9 and 54; deportation and entry ban.
+  og2024:
+    title: Türkiye — Medical Cannabis Cultivation Regulation, Official Gazette 13 September 2024
+    url: https://www.resmigazete.gov.tr/eskiler/2024/09/20240913-3.htm
+    locator: State grain-board contracts and secure facilities; replaced in 2026.
+  og2026:
+    title: Türkiye — Hemp Cultivation Regulation, Official Gazette 31 January 2026
+    url: https://www.resmigazete.gov.tr/eskiler/2026/01/20260131-8.htm
+    locator: 21 provinces; permit window; certified seed; research permits.
+  titck_guide:
+    title: TİTCK — Overseas medicine supply and use guide
+    url: >-
+      https://www.titck.gov.tr/storage/legislation/Yurt%20D%C4%B1%C5%9F%C4%B1%20%C4%B0la%C3%A7%20Temini%20ve%20Kullan%C4%B1m%C4%B1%20K%C4%B1lavuzu.pdf
+    locator: Import route for controlled medicines on prescription.
+  cumhuriyet2016:
+    title: "Cumhuriyet — Türkiye’de esrar yasallaştı: işte yayınlanan liste (13 February 2016)"
+    url: https://www.cumhuriyet.com.tr/haber/turkiyede-esrar-yasallasti-iste-yayinlanan-liste-480735
+    locator: 25 January 2016 overseas-list addition of THC/CBD oromucosal spray.
