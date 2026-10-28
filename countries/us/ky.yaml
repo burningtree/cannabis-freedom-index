@@ -14,23 +14,62 @@ scores:
   consumption: 1
   access: 2
 segments:
-  possession: Less than 8 oz is a misdemeanour capped at 45 days in jail and a $250 fine.
-  cultivation: >-
-    Fewer than five plants is a misdemeanour with up to a year on a first offence; five or more is a
-    felony.
-  enforcement: Short jail terms are possible; many counties cite and release.
-  sharing: Selling under 8 oz is a misdemeanour with up to a year on a first offence.
-  consumption: Illegal.
+  possession:
+    text: >-
+      Less than 8 oz is a misdemeanour capped at 45 days in jail and a $250 fine.[@2]
+    currency: USD
+    penalties:
+      - label: Less than 8 oz
+        treatment: criminal
+        term: Misdemeanor
+        prison: 45 days
+        fine: 250
+  cultivation:
+    text: >-
+      Fewer than five plants is a misdemeanour with up to a year on a first offence; five or more is a
+      felony.[@2]
+    currency: USD
+    penalties:
+      - label: Fewer than five plants
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 500
+        note: First offence
+      - label: Five or more plants
+        treatment: criminal
+        term: Felony
+        prison_min: 1 year
+        prison: 5 years
+        fine: 10000
+  enforcement: >-
+    Short jail terms are possible; Jefferson County stopped prosecuting low-level possession in
+    2019 and Louisville made it the lowest law-enforcement priority.[@2,3]
+  sharing:
+    text: >-
+      Selling under 8 oz is a misdemeanour with up to a year on a first offence.[@2]
+    currency: USD
+    penalties:
+      - label: Sale under 8 oz
+        treatment: criminal
+        term: Misdemeanor
+        prison: 1 year
+        fine: 500
+        note: First offence; repeat and larger sales are felonies
+  consumption: Illegal.[@2]
   access: >-
     A medical programme since January 2025, limited to non-smokable products. The governor's
     16 October 2026 announcement counted 26 operating dispensaries after the first Mountain
     Region location opened in Prestonsburg on 12 October, bringing coverage to all eleven
     licensing regions. Regional coverage does not establish a dispensary in every county.
+    [Kentucky's dispensaries reached all eleven regions in 2026.](/history/us-kentucky-medical-all-regions-2026/)
 sources:
   - title: Kentucky Governor — Medical Cannabis Now Available Across All Kentucky Licensing Regions (16 October 2026)
     url: https://www.kentucky.gov/Pages/Activity-stream.aspx?n=GovernorBeshear&prId=2882
   - title: NORML — Kentucky laws and penalties
     url: https://norml.org/laws/kentucky-penalties-2/
+  - title: NORML — Jefferson County to no longer prosecute low-level marijuana violations (2019)
+    url: https://norml.org/news/2019/09/05/kentucky-jefferson-county-to-no-longer-prosecute-low-level-marijuana-violations
 use:
   note: Includes vaping; a model-based estimate.
   share: 17.2

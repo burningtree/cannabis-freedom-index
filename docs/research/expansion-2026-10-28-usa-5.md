@@ -29,4 +29,10 @@ Same method as usa-1–4. Possession tables use labelled steps where fractions d
 - No test pins. No culture subject — noted.
 - Audit 0/0; review page verified.
 
-## ky — pending
+## ky (Kentucky) — committed
+- Penalty tables (possession <8oz misd 45d/$250; cultivation <5 misd / 5+ felony 1–5yr; sale
+  <8oz misd 1yr/$500; all NORML-verified), cites everywhere, enforcement specified
+  (Jefferson County non-prosecution + Louisville lowest-priority, 2019, via verified NORML
+  news item), history link (all-regions 2026 entry).
+- No test pins. No culture subject — noted.
+- Audit 0/0; review page verified.
