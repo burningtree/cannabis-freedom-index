@@ -34,7 +34,11 @@ links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0; full test suite green. Review build blocked by another agent's untracked
   `context/death_penalty.md` (unquoted colon in title) — will verify page once fixed.
 - Left: 1950s still empty (no datable event found); optional research/spotlights/genetics.
-## ro — pending
+## ro (Romania) — committed
+- Words list (Cânepă+atlas, Iarbă, Marijuana, Hașiș; DEX-verified); driving per-sentence cites.
+- Audit 0/0. Review build still blocked by others' files — will verify page once clear.
+- Left: 1930s/40s/50s/60s/80s empty (communist-era sources thin in reachable languages;
+  no verifiable 1961 signature — Romania likely acceded 1974, already covered).
 ## pt — pending
 ## by — pending
 ## rs — pending
