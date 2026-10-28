@@ -3,14 +3,14 @@ region: Asia
 iso_numeric: 51
 recreational: decriminalised
 medical: none
-updated: '2026-10-28'
+updated: "2026-10-28"
 summary: >-
-  Small possession and use are administrative offences with heavy fines, doubled in May 2026;
-  sale and large-scale growing are criminal. Industrial hemp is licensed at 0.3% THC, while
+  Small possession and use are administrative offences with heavy fines, raised sharply in May 2026;
+  sale and larger-scale growing are criminal. Industrial hemp is licensed at 0.3% THC, while
   psychoactive cannabis has no medical route.
 scores:
   possession: 3
-  cultivation: 1
+  cultivation: 2
   enforcement: 3
   sharing: 1
   consumption: 1
@@ -19,12 +19,12 @@ segments:
   possession:
     text: >-
       Since 2008 possessing a small amount for personal use without intent to sell has been an
-      administrative offence, not a crime.[@admin] The threshold is 2.5 g of dried herbal
-      cannabis; the fine was 200,000 to 400,000 drams.[@admin,amounts] From 22 May 2026 the fine
-      is 400,000 to 800,000 drams, and 800,000 to 1,100,000 for a repeat within a year.[@admin2026]
-      Above 2.5 g, possession becomes criminal: up to two years for 2.5 to 12.5 g, one to four
-      years for 12.5 to 62.5 g, and three to six years above 62.5 g.[@criminal] A person who
-      voluntarily surrenders the drug is exempt from administrative liability.[@admin]
+      administrative offence, not a crime.[@admin] The threshold is 2.5 g of dried herbal cannabis;
+      the fine was 200,000 to 400,000 drams.[@admin,amounts] From 22 May 2026 the fine is 400,000 to
+      800,000 drams, and 800,000 to 1,100,000 for a repeat within a year.[@admin2026] Above 2.5 g,
+      possession becomes criminal: up to two years for 2.5 to 12.5 g, one to four years for 12.5 to
+      62.5 g, and three to six years above 62.5 g.[@criminal] A person who voluntarily surrenders
+      the drug is exempt from administrative liability.[@admin]
     sources:
       - admin
       - admin2026
@@ -57,12 +57,12 @@ segments:
         prison: 6 years
   cultivation:
     text: >-
-      Small and significant cultivation is administrative, not criminal: up to 500 g of plant
-      material brings an 80,000 to 100,000 dram fine, and 500 g to 2.5 kg a 100,000 to 120,000
-      dram fine.[@admin,amounts] Above 2.5 kg the offence becomes criminal: up to two years for
-      2.5 to 12.5 kg, two to five years above 12.5 kg, and four to eight years for an organised
-      group or involving minors.[@criminal] Licensed companies may grow industrial hemp with no
-      more than 0.3% THC and CBD greater than THC; individuals may not.[@hempact]
+      Growing one to five plants is an administrative offence with an 80,000–100,000 dram fine; six
+      to nine plants bring 100,000–120,000 drams.[@admin,amounts] From ten plants the offence is
+      criminal: 10–100 plants carry up to two years, more than 100 plants or a group two to five
+      years, and an organised group or involving minors four to eight years.[@criminal] Licensed
+      companies may grow industrial hemp with no more than 0.3% THC and CBD greater than THC;
+      individuals may not.[@hempact]
     sources:
       - admin
       - amounts
@@ -70,33 +70,31 @@ segments:
       - hempact
     currency: AMD
     penalties:
-      - upto: 500 g
-        treatment: civil
-        term: Small amount, Article 110.2(1)
+      - treatment: civil
+        term: Small cultivation, Article 110.2(1)
         fine_min: 80000
         fine: 100000
-      - over: 500 g
-        upto: 2.5 kg
-        treatment: civil
-        term: Significant amount, Article 110.2(2)
+        label: One to five plants
+      - treatment: civil
+        term: Significant cultivation, Article 110.2(2)
         fine_min: 100000
         fine: 120000
-      - over: 2.5 kg
-        upto: 12.5 kg
-        treatment: criminal
+        label: Six to nine plants
+      - treatment: criminal
         term: Article 404(1)
         prison: 2 years
+        label: 10–100 plants
         note: Fine, community work, restriction of liberty or short-term imprisonment also available
-      - over: 12.5 kg
-        treatment: criminal
-        term: Especially large amount, Article 404(2)
+      - treatment: criminal
+        term: Article 404(2)
         prison_min: 2 years
         prison: 5 years
-      - label: Organised group or involving minors
-        treatment: criminal
+        label: More than 100 plants or a group
+      - treatment: criminal
         term: Article 404(3)
         prison_min: 4 years
         prison: 8 years
+        label: Organised group or involving minors
   enforcement:
     text: >-
       Users face a large administrative fine instead of the two months in jail that applied before
@@ -110,11 +108,11 @@ segments:
       - azat25
   sharing:
     text: >-
-      Sale or distribution is criminal: three to six years in the base case, five to ten years for
-      a group, a large amount, online sale, a school or a prison, and eight to fifteen years for an
-      organised group, an especially large amount or minors.[@criminal] There is no separate
-      offence for an unpaid gift; a small gift may be treated as circulation without intent to
-      sell, while a larger one can fall under the possession or supply provisions.[@criminal]
+      Sale or distribution is criminal: three to six years in the base case, five to ten years for a
+      group, a large amount, online sale, a school or a prison, and eight to fifteen years for an
+      organised group, an especially large amount or minors.[@criminal] There is no separate offence
+      for an unpaid gift; a small gift may be treated as circulation without intent to sell, while a
+      larger one can fall under the possession or supply provisions.[@criminal]
     sources:
       - criminal
     penalties:
@@ -153,8 +151,9 @@ segments:
   access:
     text: >-
       There is no legal recreational source.[@hca] Psychoactive cannabis remains on List No. 1 of
-      prohibited substances, and no medical cannabis programme or patient supply was found.[@list1129]
-      Industrial hemp is on List No. 2 and is licensed only for companies.[@list1129]
+      prohibited substances, and no medical cannabis programme or patient supply was
+      found.[@list1129] Industrial hemp is on List No. 2 and is licensed only for
+      companies.[@list1129]
     sources:
       - hca
       - list1129
@@ -174,17 +173,17 @@ context:
     status: hemp
     text: >-
       The verified production route is licensed industrial hemp with CBD greater than THC and no
-      more than 0.3% THC.[@hempact] Only legal entities may hold a production licence, for up to ten
-      years, with a minimum charter capital and nursery, greenhouse, warehouse and laboratory
-      requirements; production must start within two years.[@hempact] Six companies held licences
-      by January 2022.[@evn22] Cannabis outside that hemp category remains on List No. 1, but
-      Article 11 permits licensed scientific use of prohibited substances under Article
+      more than 0.3% THC; products are export-only.[@hempact] Only legal entities may hold a
+      production licence, for up to ten years, with minimum facilities and a two-year start
+      requirement.[@hempact] In January 2026 two companies held licences, one operating; no domestic
+      hemp product was verified.[@sputnik26] Cannabis outside that category remains on List No. 1,
+      but Article 11 permits licensed scientific use of prohibited substances under Article
       31.1.[@list1129,hempact] Article 14 separately requires a substance-specific production
-      licence and state quotas; the sources reviewed establish no cannabis-specific medical
-      manufacturing licence under that provision.[@hempact]
+      licence and state quotas; no cannabis-specific medical manufacturing licence was
+      established.[@hempact]
     sources:
       - hempact
-      - evn22
+      - sputnik26
       - list1129
   medical:
     text: >-
@@ -204,8 +203,8 @@ context:
       Licensed industrial hemp must have CBD content greater than THC and no more than 0.3% THC in
       the sampled material.[@hempact] Companies may apply for production and processing licences;
       this agricultural category is separate from psychoactive cannabis, which remains on List No.
-      1.[@hempact,list1129] Hemp seed is a traditional food, and seed powder was recorded on sale
-      in Yerevan markets in 2020.[@balant25]
+      1.[@hempact,list1129] Hemp seed is a traditional food, and seed powder was recorded on sale in
+      Yerevan markets in 2020.[@balant25]
     sources:
       - hempact
       - list1129
@@ -213,8 +212,8 @@ context:
   consequences:
     text: >-
       An administrative offence is not a criminal record, but users are placed on a narcological
-      register for observation, for at least a year.[@hca] The drug law lets the police order a
-      drug test on suspicion of use, and a person diagnosed as dependent can be sent to compulsory
+      register for observation, for at least a year.[@hca] The drug law lets the police order a drug
+      test on suspicion of use, and a person diagnosed as dependent can be sent to compulsory
       treatment.[@upr09] A criminal conviction for sale or large-scale growing carries a record and
       prison.[@criminal]
     sources:
@@ -222,15 +221,15 @@ context:
       - upr09
       - criminal
   planting:
-    seeds: licensed
-    seeds_trade: regulated
-    clones: licensed
-    clones_trade: regulated
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
     text: >-
       Industrial-hemp seed and planting material are available only within the licensed producer
       system; the law requires approved seed and nursery facilities.[@hempact] Psychoactive cannabis
-      is on List No. 1, and its seeds and clones fall under the general prohibition.[@list1129] No
-      open seed or clone market was found.
+      is on List No. 1, and its seeds and clones fall under the general prohibition; no explicit
+      seed rule was found, so the psychoactive-seed status is grey.[@list1129]
     sources:
       - hempact
       - list1129
@@ -253,9 +252,9 @@ context:
   driving:
     status: zero
     text: >-
-      Administrative Offences Code article 126(9) treats a driver as intoxicated when testing
-      shows narcotic or psychotropic substance content in blood or urine.[@trafficcode] A
-      separate demonstration of impaired vehicle control is not required by that definition.[@trafficcode]
+      Administrative Offences Code article 126(9) treats a driver as intoxicated when testing shows
+      narcotic or psychotropic substance content in blood or urine.[@trafficcode] A separate
+      demonstration of impaired vehicle control is not required by that definition.[@trafficcode]
       Article 126(3) provides two years' deprivation of driving rights for drug-related
       intoxication, and avoiding the prescribed examination also results in two years.[@trafficcode]
       No numerical THC allowance or prescribed-cannabis exception was found.[@trafficcode]
@@ -263,83 +262,98 @@ context:
       - trafficcode
   black_market:
     text: >-
-      In 2024 the authorities seized about 426 kg of all drugs, roughly 200 kg more than in
-      2023.[@azat25] UNODC records 327 kg of herbal cannabis seized in 2024, against 13 kg in
-      2023.[@unodc_szr] Recorded drug crimes rose from 2,266 in 2022 to 5,070 in 2023, and
-      drug-trafficking cases rose 83% in the first half of 2025.[@azat23,azat25] No price or purity
-      data were found.
+      In 2024 the authorities seized about 427 kg of all drugs; UNODC records 327 kg of herbal
+      cannabis, against 13 kg in 2023.[@azat25,unodc_szr] In 2025 police seized 768.9 kg of all
+      drugs, up 80%, and in the first half of 2026 320.6 kg.[@armenpress26] Recorded drug crimes
+      were 3,639 in 2024 and 4,170 in 2025; registered drug users stood at 7,650 on 1 January 2026,
+      mostly cannabis users.[@armenpress26] No price or purity data were found.
     sources:
       - azat25
-      - azat23
       - unodc_szr
+      - armenpress26
   arrests:
     text: >-
-      No published annual arrest count by drug was found. The available figures are seizures and
-      recorded offences: 5,070 drug crimes in 2023, and a 83% rise in drug-trafficking cases in
-      the first half of 2025.[@azat23,azat25] In 2024 there were 252 drug-trafficking cases
-      involving information or communication technology.[@azat25]
+      No published annual arrest count by drug was found. Recorded drug crimes were 5,070 in 2023,
+      3,639 in 2024 and 4,170 in 2025; 1,545 trafficking cases were recorded in the first half of
+      2026.[@azat23,armenpress26] In 2024 there were 252 drug-trafficking cases involving
+      information or communication technology.[@azat25] The figures cover all drugs, not cannabis
+      alone.[@armenpress26]
     sources:
       - azat23
       - azat25
+      - armenpress26
   culture:
     text: >-
-      Hemp seed has been part of Armenian fasting food since at least the nineteenth century, when
-      a folklorist recorded it on the Lenten table; a 1930 Soviet survey found Armenians grew
-      little hemp for fibre.[@balant25] The plant's name reached Armenian through the Greek
-      [cannabis](/culture/language/cannabis/) word, and the atlas entry traces that etymology.[@balant25]
+      Hemp seed has been part of Armenian fasting food since at least the nineteenth century, when a
+      folklorist recorded it on the Lenten table; a 1930 Soviet survey found Armenians grew little
+      hemp for fibre.[@balant25] The plant's name reached Armenian through the Greek
+      [cannabis](/culture/language/cannabis/) word, and the atlas entry traces that
+      etymology.[@balant25]
     sources:
       - balant25
 sources:
   admin:
-    title: "Armenia — Administrative Offences Code, Articles 44.1, 44.2 and 110.2 (ARLIS)"
+    title: Armenia — Administrative Offences Code, Articles 44.1, 44.2 and 110.2 (ARLIS)
     url: https://arlis.am/hy/acts/230427
-    locator: "Articles 44.1, 44.2, 110.2 and 126."
+    locator: Articles 44.1, 44.2, 110.2 and 126.
   admin2026:
-    title: "Armenia — Law HO-197-N of 21 May 2026 amending the Administrative Offences Code"
+    title: Armenia — Law HO-197-N of 21 May 2026 amending the Administrative Offences Code
     url: https://arlis.am/hy/acts/225382
-    locator: "Articles 44.1, 44.2 and 110.2; in force 22 May 2026."
+    locator: Articles 44.1, 44.2 and 110.2; in force 22 May 2026.
   criminal:
-    title: "Armenia — Criminal Code 2021, Articles 393, 396 and 404 (ARLIS)"
+    title: Armenia — Criminal Code 2021, Articles 393, 396 and 404 (ARLIS)
     url: https://arlis.am/hy/acts/230013
-    locator: "Articles 393, 396 and 404; current text."
+    locator: Articles 393, 396 and 404; current text.
   amounts:
-    title: "Armenia — Government Decision No. 707-N of 27 June 2018 on amounts of narcotic drugs"
+    title: Armenia — Government Decision No. 707-N of 27 June 2018 on amounts of narcotic drugs
     url: https://arlis.am/hy/acts/223201
     locator: "Annexes 1–2: small, significant, large and especially large amounts."
   hempact:
     type: law
     title: Armenia — Narcotic Drugs and Psychotropic Substances Act, official consolidation
     url: https://arlis.am/hy/acts/218654
-    locator: "Article 3 industrial-hemp definition; Articles 4, 11, 14 and 31.1, schedules, scientific use and production licences; Articles 45.3–45.7 hemp licensing."
+    locator: >-
+      Article 3 industrial-hemp definition; Articles 4, 11, 14 and 31.1, schedules, scientific use
+      and production licences; Articles 45.3–45.7 hemp licensing.
   list1129:
-    title: Armenia — Government Decision No. 1129-N of 21 August 2003, list of controlled narcotic drugs and psychotropic substances (consolidated text)
+    title: >-
+      Armenia — Government Decision No. 1129-N of 21 August 2003, list of controlled narcotic drugs
+      and psychotropic substances (consolidated text)
     url: https://arlis.am/hy/acts/222957
-    locator: "List No. 1 prohibited substances; List No. 2 restricted substances, including industrial hemp."
+    locator: List No. 1 prohibited substances; List No. 2 restricted substances, including industrial hemp.
   strategy2025:
-    title: "Armenia — Government Decision No. 736-L of 5 June 2025 on the 2025–2027 drug strategy"
+    title: Armenia — Government Decision No. 736-L of 5 June 2025 on the 2025–2027 drug strategy
     url: https://arlis.am/hy/acts/207984
   upr09:
-    title: Canadian HIV/AIDS Legal Network, Eurasian Harm Reduction Network & IDPC — Submission to the Universal Periodic Review of Armenia (November 2009, PDF)
-    url: https://upr-info.org/sites/default/files/documents/2013-07/js1uprarms082010jointsubmission1.pdf
+    title: >-
+      Canadian HIV/AIDS Legal Network, Eurasian Harm Reduction Network & IDPC — Submission to the
+      Universal Periodic Review of Armenia (November 2009, PDF)
+    url: >-
+      https://upr-info.org/sites/default/files/documents/2013-07/js1uprarms082010jointsubmission1.pdf
   pan26:
     title: PanARMENIAN.Net — report on a bill raising drug penalties (11 May 2026)
     url: https://www.pan.am/en/333146
   evn22:
-    title: EVN Report — Challenges and opportunities for growing industrial hemp in Armenia (8 February 2022)
+    title: >-
+      EVN Report — Challenges and opportunities for growing industrial hemp in Armenia (8 February
+      2022)
     url: https://evnreport.com/?p=12172
   balant25:
     type: journal
-    title: "Bridging past and present, exploring Cannabis traditions in Armenia"
-    authors: [Balant et al.]
+    title: Bridging past and present, exploring Cannabis traditions in Armenia
+    authors:
+      - Balant et al.
     container: Journal of Cannabis Research
     year: 2025
     url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11780856/
-    locator: "Hemp seed on the fasting table; 1930 survey; local cannabis history."
+    locator: Hemp seed on the fasting table; 1930 survey; local cannabis history.
   arm19:
     title: Armenpress — No plans to legalize weed in Armenia (25 February 2019)
     url: https://armenpress.am/en/article/965400
   azat23:
-    title: Azatutyun (RFE/RL) — report on the rise in drug crimes and officials' proposals (31 October 2023)
+    title: >-
+      Azatutyun (RFE/RL) — report on the rise in drug crimes and officials' proposals (31 October
+      2023)
     url: https://www.azatutyun.am/a/32662448.html
   azat25:
     title: Azatutyun (RFE/RL) — report on 2024 seizures, prison and 2025 trends (September 2025)
@@ -354,9 +368,24 @@ sources:
     title: IWPR — Armenia goes soft on drugs
     url: https://iwpr.net/pzil59xk
   unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    title: >-
+      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
+      Report data)
     url: https://data.unodc.org/datareport/drug-seizure
   trafficcode:
-    title: "Armenia ARLIS — Administrative Offences Code, official consolidated English text"
+    title: Armenia ARLIS — Administrative Offences Code, official consolidated English text
     url: https://arlis.am/en/acts/224995
-    locator: "Article 126(1), (3), (4), (9)–(10); amendment HO-75-N of 26 March 2025."
+    locator: Article 126(1), (3), (4), (9)–(10); amendment HO-75-N of 26 March 2025.
+  sputnik26:
+    title: Sputnik Armenia — Two licensed hemp producers in January 2026 (19 January 2026)
+    url: >-
+      https://arm.sputniknews.ru/20260119/qani-ynkerutjun-e-hajastanum-licenzavvorvel-artadrakan-kanep-atshecnelu-hamar-97828803.html
+    locator: >-
+      Two licensees, one operating; export-only products; 16 applications, 12 approved, 10
+      terminated.
+  armenpress26:
+    title: Armenpress — Police drug statistics for 2025 and H1 2026 (18 August 2026)
+    url: https://armenpress.am/hy/article/1258282
+    locator: >-
+      768.9 kg all drugs in 2025; 320.6 kg in H1 2026; 1,545 trafficking cases; 7,650 registered
+      users.

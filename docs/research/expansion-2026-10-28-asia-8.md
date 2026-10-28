@@ -6,7 +6,7 @@ Iran, Cambodia and the United Arab Emirates. None was marked busy.
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Armenia | in progress | | |
+| Armenia | plant-count cultivation, 2026 hemp licensing, 2024–26 figures, 7 history entries | 1940s empty; no annual arrest count | this commit |
 | Jordan | in progress | | |
 | Iran | 2024 fine update, treatment correction, contested death threshold, 7 history entries | no cannabis-specific execution data | this commit |
 | Cambodia | life tiers, customary cultivation, Jan–Sep 2026 figures, 5 history entries | no cannabis-only arrest count | this commit |
@@ -17,3 +17,5 @@ Cambodia validation: `profile-audit kh` zero errors and warnings. The profile re
 United Arab Emirates validation: `profile-audit ae` zero errors and warnings. The profile now separates the port fine from the after-entry personal-use penalty, corrects the driving “or either” wording, adds the 2022 UNODC cannabis figures, records mandatory life at the top quantity tiers and the Article 53 venue offence, updates the death-penalty practice and adds a research section. Five entries cover 2024–2026.
 
 Iran validation: `profile-audit ir` zero errors and warnings. The profile now uses the 2024 fine amounts, replaces the addict fine with compulsory treatment, records the 5/20/50 kg death-threshold conflict and the 2019 judicial meeting, adds the 503 (2024) and 795 (2025) drug-execution figures and dates the gol price. Seven entries cover 1932–2026; the 2017 entry date is now 14 November 2017.
+
+Armenia validation: `profile-audit am` zero errors and warnings. The profile now uses the plant-count cultivation ladder (1–5, 6–9, 10–100, over 100) and moves cultivation from 1 to 2; it records two hemp licensees in January 2026, export-only products, 2024–2026 drug figures and a licensed research route. Seven entries cover 1925–2026, including the scored 2018 threshold decision and the primary 1934 decree.
