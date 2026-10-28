@@ -8,7 +8,8 @@ in `changes.yaml`.
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| United Kingdom | profile expanded (penalty terms, citations, history/culture links, culture section, arrests rewrite), audit 0/0, article uk-doctors-take-up-indian-hemp-1843, 1843 entry +PMC source | build + verify + commit | |
+| United Kingdom | profile expanded (penalty terms, citations, history/culture links, culture section, arrests rewrite), audit 0/0, article uk-doctors-take-up-indian-hemp-1843, 1843 entry +PMC source | done | dcadb7e |
+| Netherlands | gaps: 11 texts need citations, 1930s empty, articles for five-grams-1996 + import-ban-1928, link dispensary/indica-sativa/joep-oomen | | |
 | Netherlands | | | |
 | Norway | | | |
 | Denmark | | | |
