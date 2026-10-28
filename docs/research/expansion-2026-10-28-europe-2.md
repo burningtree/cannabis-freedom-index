@@ -41,5 +41,9 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0; review page to verify with batch build.
 - Left: 1940s/60s/70s/80s empty; 1950 article covered by same-act Serbia article; 1930 code
   article open.
-## ee — pending
+## ee (Estonia) — committed
+- Arrests section (2019: 1,536 drug offences, EHRA/Swansea PDF); words (Kanep, Marihuaana;
+  en.wiktionary et-senses verified). Culture already complete.
+- Audit 0/0; review page to verify with batch build.
+- Left: 1950s/60s/80s empty; Epidyolex-2019 + 1974 + 1940 articles open.
 ## lv — pending
