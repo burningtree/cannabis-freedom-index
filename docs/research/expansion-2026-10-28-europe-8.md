@@ -38,3 +38,18 @@ Moldova verification: targeted build passed all tests and content validation,
 rendering all six selected pages. Read the built country, hemp article and strategy
 HTML; proceedings, references and October event appear. Profile audit 0 errors,
 0 warnings. Bosnia will be rendered again in the final verification pass.
+
+| Northern Cyprus | 2026 school survey and programme figures; supervision/testing detail; four sourced Turkish terms; two history entries and survey article | Early laws/amendments; planting, drug-driving trigger and nationwide arrest/market series | this commit |
+
+Northern Cyprus: downloaded and read original Gazette 68/2016, pp. 361–368;
+confirmed original eligibility, one–three years, testing interval and poverty
+fee exemption. The 2015 appeal archive exposes reasoning but locks its ending;
+no article or new outcome inferred from that incomplete view. The August panel
+was held 21 August (published 25 August), and the school sample is separate from
+the all-drug supervised-release count. September official account retrieved with
+curl after web timeouts. No current-law change or score change established.
+
+Northern Cyprus verification: targeted three-page build passed tests and content
+validation; read rendered survey/sample, 218 programme count and testing text.
+Profile audit 0 errors/0 warnings. Existing treatment and 1972 law articles remain;
+the new article explains the 2026 survey alongside the statutory treatment route.
