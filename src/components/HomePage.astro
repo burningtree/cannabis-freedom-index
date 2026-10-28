@@ -279,7 +279,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         {MAP_GROUPS.map((g) => (
           <div class:list={["metric-group", { "metric-rows": g.rows }]} data-group={g.name} role="tabpanel" aria-label={g.name} hidden={g.name !== currentGroup}>
             {g.rows
-              ? g.rows.map((r) => <div class="metric-row"><span class="metric-row-h">{r.name}</span>{r.views.map(([metric, label]) => <a {...viewAttrs(metric)}>{label}</a>)}</div>)
+              ? g.rows.map((r) => <div class="metric-row"><span class="metric-row-h">{r.name}</span><div class="metric-row-v">{r.views.map(([metric, label]) => <a {...viewAttrs(metric)}>{label}</a>)}</div></div>)
               : g.views.map(([metric, label]) => <a {...viewAttrs(metric)}>{label}</a>)}
             {g.page && <a class="metric-page" href={`${base}${g.page[0]}`}>{g.page[1]}&nbsp;→</a>}
           </div>

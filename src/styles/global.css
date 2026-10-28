@@ -3556,17 +3556,20 @@ a.ctx-topic:hover { text-decoration: underline; text-decoration-thickness: 1px; 
   .dsp-table .dsp-fig { text-align: right; }
   .dsp-table .dsp-year { display: none; }
 }
-/* the home map's Datasets tab: a row per group of datasets, with its name before the views */
-.metric-rows { display: grid; gap: 8px; }
-.metric-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-.metric-row-h { flex: 0 0 9.5rem; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+/* the home map's Datasets tab: a row per group of datasets, its name in a column of its own */
+.metric-rows { display: grid; gap: 10px; }
+.metric-row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 12px; align-items: start; }
+.metric-row-v { display: flex; flex-wrap: wrap; gap: 6px; }
+.metric-row-h { padding-top: 8px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
 .metric-group a.metric-page { border-color: transparent; background: none; color: var(--muted); }
 .metric-group a.metric-page:hover { color: var(--text); }
-.metric-rows a.metric-page { justify-self: start; padding-left: 0; }
+.metric-rows a.metric-page { justify-self: start; margin-left: calc(7.5rem + 12px); padding-left: 0; }
 @media (max-width: 640px) {
   .metric-group.metric-rows { display: grid; overflow: visible; }
-  .metric-row { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-  .metric-row::-webkit-scrollbar { display: none; }
-  .metric-row-h { flex: none; min-width: 5.5rem; }
-  .metric-row a { flex: none; }
+  .metric-row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .metric-row-h { padding-top: 0; }
+  .metric-row-v { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .metric-row-v::-webkit-scrollbar { display: none; }
+  .metric-row-v a { flex: none; }
+  .metric-rows a.metric-page { margin-left: 0; }
 }
