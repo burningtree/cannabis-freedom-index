@@ -3,8 +3,12 @@ region: Asia
 iso_numeric: 4
 recreational: illegal
 medical: none
-updated: 2026-10-12
-summary: Historically one of the world's largest hashish producers. The Taliban banned cultivation in 2023.
+updated: '2026-10-28'
+summary: >-
+  The Taliban banned cannabis cultivation in March 2023, and sharia courts punish users and
+  traffickers with prison and flogging. The last codified drug law, from 2010, set hashish
+  trafficking by weight and exempted certified addicts from prosecution; no comprehensive
+  published code has replaced it since the Taliban takeover.
 scores:
   possession: 0
   cultivation: 0
@@ -15,80 +19,250 @@ scores:
 segments:
   possession:
     text: >-
-      Possession is illegal; the pre-2021 drug law set one to five years depending on amount. Under
-      the Taliban, offenders are tried by sharia courts, with imprisonment and flogging.
+      The last codified drug law, from 2010, treats possession and trafficking on one scale. A
+      person certified as addicted and holding up to 50 g of hashish for personal use is exempt
+      from prosecution and sent to treatment; anyone else holding cannabis is dealt with on the
+      trafficking scale.[@af2010] Since 2021 the Taliban have applied sharia courts, and no
+      comprehensive published drug code replaces these provisions.[@aan] Offenders face
+      imprisonment and flogging.[@am]
     sources:
-      - cann
+      - af2010
+      - aan
       - am
+    currency: AFN
+    penalties:
+      - label: Certified addiction, up to 50 g hashish
+        treatment: tolerated
+        term: Personal use
+        note: Exempt from prosecution and referred to treatment
+      - label: Other personal possession
+        treatment: criminal
+        term: Possession
+        note: Prosecuted on the hashish or cannabis trafficking scale; Taliban courts also apply sharia punishment
   cultivation:
     text: >-
-      On 19 March 2023 the Taliban's supreme leader issued a decree banning cannabis cultivation
-      across the country: crops are destroyed and growers sent to court. Afghanistan had long been
-      one of the world's largest hashish producers.
+      Article 41 of the 2010 law punished cannabis cultivation on up to one acre with up to two
+      months in prison, with five days added for each additional quarter-acre; an organiser or
+      instigator received double, and the crop was destroyed without compensation.[@af2010] On
+      19 March 2023 the Taliban's supreme leader issued a decree banning cannabis cultivation
+      across the country: crops are destroyed and growers are brought before the courts.[@am]
     sources:
+      - af2010
       - am
-      - aan
+    currency: AFN
+    penalties:
+      - label: Up to one acre
+        treatment: criminal
+        term: Cultivation
+        prison: 2 months
+        note: Crop destroyed without compensation
+      - label: More than one acre
+        treatment: criminal
+        term: Cultivation
+        note: Two months plus five days for each additional quarter-acre; crop destroyed
+      - label: Organiser or instigator
+        treatment: criminal
+        term: Cultivation
+        note: Double the cultivation penalty
   enforcement:
     text: >-
-      Sharia punishments including flogging, applied unevenly: hashish remains widely used and the
-      cultivation ban has been enforced less thoroughly than the opium ban. In a 2025 case involving
-      hashish trafficking, a Taliban court imposed prison terms and 10–39 lashes.
+      Sharia punishments including flogging are applied unevenly: hashish remains widely used and
+      the cultivation ban has been enforced less thoroughly than the opium ban.[@aan] In a 2025
+      case involving hashish trafficking, a Taliban court imposed prison terms and 10 to 39
+      lashes on eleven people.[@afj] The last codified law also allowed life imprisonment for
+      large-scale trafficking and death for armed resistance that caused a death.[@sherloc]
     sources:
       - aan
-      - am
       - afj
+      - sherloc
   sharing:
     text: >-
-      The available cannabis-specific legislation sets prison terms rather than death for trafficking.
-      A 2025 Taliban ruling imposed seven months to three and a half years in prison, plus lashes, in a
-      case involving hashish and narcotic tablets.
+      Hashish trafficking is graded by weight: up to 10 g brought up to one month in prison,
+      10 to 100 g one to two months, 100 to 500 g two to three months, 500 g to 1 kg three to
+      six months, and 1 to 5 kg six months to one year. Above 5 kg the sentence was one year plus
+      three months for each additional 500 g, capped at ten years.[@af2010] Herbal cannabis
+      followed a separate scale, reaching three to ten years for more than 5 kg.[@af2010] The
+      2010 law also allowed life imprisonment for large-scale trafficking and death for armed
+      resistance that caused a death.[@sherloc]
     sources:
+      - af2010
       - sherloc
-      - afj
+    penalties:
+      - label: Up to 10 g hashish
+        treatment: criminal
+        term: Trafficking
+        prison: 1 month
+      - label: Over 10 g up to 100 g hashish
+        treatment: criminal
+        term: Trafficking
+        prison_min: 1 month
+        prison: 2 months
+      - label: Over 100 g up to 500 g hashish
+        treatment: criminal
+        term: Trafficking
+        prison_min: 2 months
+        prison: 3 months
+      - label: Over 500 g up to 1 kg hashish
+        treatment: criminal
+        term: Trafficking
+        prison_min: 3 months
+        prison: 6 months
+      - label: Over 1 kg up to 5 kg hashish
+        treatment: criminal
+        term: Trafficking
+        prison_min: 6 months
+        prison: 1 year
+      - label: Over 5 kg hashish
+        treatment: criminal
+        term: Trafficking
+        prison_min: 1 year
+        note: One year plus three months per additional 500 g, up to 10 years
   consumption:
-    text: Use is prohibited; drug users have been rounded up into compulsory treatment camps.
-    sources:
-      - aan
-      - cann
-  access:
-    text: None.
-    sources:
-      - cann
-context_not_applicable:
-  death_penalty:
     text: >-
-      The available cannabis-specific legislation sets prison terms rather than death for
-      trafficking.[@sherloc]
-    sources: [sherloc]
+      Use is prohibited. A person certified as addicted who uses or holds up to 50 g of hashish
+      for personal consumption is exempt from prosecution and taken to a treatment centre; an
+      addicted person with more than that can be detained for treatment and punished.[@af2010]
+      Outside that exemption, users face sharia punishment, and the Taliban have rounded drug
+      users up into compulsory treatment camps.[@aan]
+    sources:
+      - af2010
+      - aan
+    penalties:
+      - label: Certified addiction, up to 50 g hashish
+        treatment: tolerated
+        term: Use
+        note: Exempt from prosecution; treatment referral
+      - label: Use without certification
+        treatment: criminal
+        term: Use
+        note: Sharia punishment; compulsory treatment camps
+  access:
+    text: >-
+      There is no legal source of cannabis for adults or patients, and no licensed medical or
+      adult-use supply was found.[@cann] A pre-2021 plan for a licensed medical cannabis project
+      came to nothing.[@aan]
+    sources:
+      - cann
+      - aan
 context:
   recreational:
     text: >-
       There is no legal way to get cannabis. Hashish remains widely used despite the bans:
-      offenders are tried by sharia courts, facing imprisonment and flogging, and drug users
-      have been rounded up into compulsory treatment camps.[@am,aan] A 2025 Taliban ruling gave
-      seven months to three and a half years plus lashes in a hashish trafficking
-      case.[@afj]
+      offenders are tried by sharia courts, facing imprisonment and flogging, and drug users have
+      been rounded up into compulsory treatment camps.[@am,aan] A 2025 Taliban ruling gave seven
+      months to three and a half years plus lashes in a hashish trafficking case.[@afj]
     sources:
       - am
       - aan
       - afj
+  production:
+    status: none
+    text: >-
+      No licensed production exists. The 2010 law allowed cultivation only under its penalty
+      scale, and the 2023 Taliban decree bans it outright.[@af2010,am] A pre-2021 plan for a
+      licensed medical cannabis project came to nothing.[@aan]
+    sources:
+      - af2010
+      - am
+      - aan
+  medical:
+    text: >-
+      No medical cannabis programme or patient supply was found.[@cann] Cannabis is not listed as
+      a medicine in the sources read, and the 2023 cultivation ban leaves no lawful production
+      route.[@am]
+    sources:
+      - cann
+      - am
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception, THC limit or licensing scheme was found. The 2023 decree
+      bans cannabis cultivation, and the last codified law made no distinction for fibre
+      hemp.[@am,af2010]
+    sources:
+      - am
+      - af2010
+  consequences:
+    text: >-
+      A drug offence can bring imprisonment and flogging, and users can be detained in compulsory
+      treatment camps.[@aan] A 2025 trafficking case ended with prison terms of seven months to
+      three and a half years and 10 to 39 lashes for eleven people.[@afj]
+    sources:
+      - aan
+      - afj
+  planting:
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      The 2010 law controlled the cannabis plant and made no seed exception; sowing was
+      cultivation and carried the Article 41 penalties.[@af2010] Clones are plants, so keeping or
+      trading them falls under the same ban, and the 2023 decree prohibits cultivation
+      outright.[@af2010,am] No seed-sale or clone market was found.
+    sources:
+      - af2010
+      - am
+  clubs:
+    status: none
+    text: >-
+      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
+      supplying it to another person are both prohibited.[@am,af2010]
+    sources:
+      - am
+      - af2010
+  visitors:
+    status: none
+    text: >-
+      There is no legal recreational supply for anyone. Possession is illegal; under the Taliban
+      offenders are tried by sharia courts, with imprisonment and flogging.[@cann,am] The law
+      makes no exception for visitors.[@af2010]
+    sources:
+      - cann
+      - am
+      - af2010
+  driving:
+    status: unknown
+    text: >-
+      No cannabis-specific driving offence or THC limit was found in the last codified drug law
+      or in the Taliban decrees read.[@af2010,am] The status is left unverified rather than
+      treating a general traffic rule as a drug-driving offence.
+    sources:
+      - af2010
+      - am
   black_market:
     text: >-
-      Afghanistan long ranked among the world's largest hashish producers; [a 2023 Taliban
-      decree banned all cannabis cultivation](/history/afghanistan-taliban-cultivation-ban-2023/),
+      Afghanistan long ranked among the world's largest hashish producers;
+      [a 2023 Taliban decree banned all cannabis cultivation](/history/afghanistan-taliban-cultivation-ban-2023/),
       with crops destroyed and growers sent to court.[@am] The ban has been enforced less
-      thoroughly than the opium ban, and hashish remains widely used.[@aan]
+      thoroughly than the opium ban, and hashish remains widely used.[@aan] No recent national
+      production or price figures were found.
     sources:
       - am
       - aan
+  arrests:
+    text: >-
+      No national arrest or seizure figures for cannabis have been published since the Taliban
+      takeover. The Afghanistan Justice Archive recorded a May 2025 Taliban court case in which
+      eleven people were sentenced for hashish and tablet trafficking, with prison terms of seven
+      months to three and a half years and 10 to 39 lashes.[@afj]
+    sources:
+      - afj
   culture:
     text: >-
-      Afghanistan has a *chars* (resin) tradition: manufacture by sieving probably dates back
-      to the nineteenth century, and growing cannabis and trading *chars* was a major economic
+      Afghanistan has a [charas](/culture/language/charas/) and
+      [hashish](/culture/language/hashish/) tradition: manufacture by sieving probably dates back
+      to the nineteenth century, and growing cannabis and trading charas was a major economic
       asset around Balkh and the Khyber at the turn of the twentieth century.[@asc] Babur
-      described eating *majoun*, a hashish confection, in his memoirs; nineteenth-century
-      travellers from Elphinstone (1809) to Ferrier (1858) record Afghans drinking bhang and
-      smoking chillums.[@asc]
+      described eating majoun, a hashish confection, in his memoirs; nineteenth-century travellers
+      from Elphinstone to Ferrier record Afghans drinking bhang and smoking chillums.[@asc] The
+      Hindu Kush gave its name to [kush](/culture/language/kush/), and Afghan hashish plants were
+      carried to California in the 1970s; the old farmers' populations are
+      [landraces](/culture/language/landrace/).[@asc] The botanical vocabulary of
+      [indica and sativa](/culture/language/indica-and-sativa/) also drew on Afghan drug types,
+      which eighteenth- and nineteenth-century botanists placed under *Cannabis indica*.[@asc] [Chicken Street](/culture/traditions/chicken-street/)
+      in Kabul became the travellers' quarter where the hashish trade met foreign customers and
+      diplomatic pressure.[@asc]
     sources:
       - asc
   genetics:
@@ -99,35 +273,6 @@ context:
       1965.[@asc]
     sources:
       - asc
-  production:
-    status: none
-    text: None; a pre-2021 plan for a licensed medical cannabis project came to nothing.
-    sources:
-      - aan
-  medical:
-    text: No medical cannabis.
-    sources:
-      - cann
-  consequences:
-    text: Forced detention in treatment centres is the main risk for users.
-    sources:
-      - aan
-  clubs:
-    status: none
-    text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
-    sources:
-      - am
-      - aan
-  visitors:
-    status: none
-    text: >-
-      There is no legal recreational supply for anyone. Possession is illegal; under the Taliban
-      offenders are tried by sharia courts, with imprisonment and flogging.
-    sources:
-      - cann
-      - am
 sources:
   afj:
     title: Afghanistan Justice Archive — Taliban court sentences eleven people for hashish and tablet trafficking (24 May 2025)
@@ -147,9 +292,14 @@ sources:
       cannabis
     url: https://www.environmentalpeacebuilding.org/library/show/LibraryItem-6363
   asc:
-    title: Afghan Studies Center — The myth of Afghan Black, a cultural history of cannabis cultivation and hashish production
+    title: Afghan Studies Center — The myth of Afghan Black, a cultural history of cannabis cultivation and hashish production in Afghanistan
     url: https://www.afghanstudiescenter.org/the-myth-of-afghan-black-a-cultural-history-of-cannabis-cultivation-and-hashish-production-in-afghanistan/
     locator: >-
       Chars sieving probably 19th century; Balkh/Khyber trade; Babur's majoun; Elphinstone
       1809, Masson 1842, Ferrier 1858; Vavilov wild-hemp observation; Clarke 1998 on forma
       afghanica, first report 1965.
+  af2010:
+    type: law
+    title: "Afghanistan — Law on Campaign against Intoxicants, Drugs and their Control, Official Gazette 1025 (14 June 2010)"
+    url: https://www.unodc.org/cld/uploads/res/document/law-on-campaign-against-intoxicants--drugs-and-their-control_html/OG_01025.Law_on_Campaign_aginst_Intoxicants_Drugs_English.pdf
+    locator: "Articles 41 (cultivation), 46 (hashish trafficking), 47 (other listed substances, including herbal cannabis) and 57 (use and treatment exemption)."
