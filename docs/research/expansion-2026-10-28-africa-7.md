@@ -7,6 +7,14 @@ Continued per follow-up: Africa is comprehensively expanded (Africa-1..6 plus ot
 - New `articles/gabon-police-cannabis-seizures-2025.md` (GMT: Ngoma, 433→975 kg, OCLAD tonne, use-and-trafficking framing); linked from black_market.
 - Audit 0/0; page + article verified. Left: empty decades.
 
+## mu — committed (residual)
+- New `articles/mauritius-drug-bail-nordally-ruling-1986.md` (1986 MR 204 via the 2006 Khoyratty judgment: bail exclusion unconstitutional; safeguard, not exemption; links the existing 2006 article); linked from enforcement ("kept control of bail since 1986").
+- Audit 0/0; page + article verified. Left: empty decades.
+
+## rw — committed (residual)
+- New `articles/rwanda-medical-cannabis-site-2025.md` (RDB via Eastleigh Voice: 83%, double fencing outstanding, 1bn+ of 2.2bn francs, delayed export-oil launch); linked from production.
+- Audit 0/0; page + article verified. Left: empty decades.
+
 ## gm — committed (residual)
 - New `articles/gambia-autonomous-drug-agency-2005.md` (2003 Act + 2005 amendments: autonomous NDEA; renamed DLEAG 2014); linked from enforcement ("autonomous since 2005").
 - Gambia's 1900 first-restriction is a parallel ET estimate, not a shared decree — no link, no article.
