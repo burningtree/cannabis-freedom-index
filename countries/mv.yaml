@@ -22,72 +22,101 @@ segments:
       drug-dependent who has 5 g or less of cannabis, cannabis mixture or cannabis resin is presumed
       to possess it for use, and use is an offence of three years. More than 5 g and less than 14 g
       is presumed peddling, which is five to ten years, and more than 14 g is presumed trafficking,
-      which is life. A person who is not drug-dependent is presumed to be dealing even at 5 g or
-      less, and dealing is fifteen years; more than 14 g is again presumed trafficking. Specified
-      acts can raise a smaller amount to trafficking. The Drug Court can take a dependent person
+      which is life.[@da] A person who is not drug-dependent is presumed to be dealing even at 5 g or
+      less, and dealing is fifteen years; more than 14 g is again presumed trafficking.[@da] Specified
+      acts can raise a smaller amount to trafficking.[@da] The Drug Court can take a dependent person
       who pleads guilty to use or peddling and is not charged with trafficking. The presidency's
       account of the Third Amendment, ratified on 6 December 2025 and in force three months after
       ratification and gazette publication, does not describe a change to these presumptions.
     sources:
       - da
-      - po
+    currency: MVR
     penalties:
       - upto: 5 g
         treatment: criminal
+        term: Use
         prison: 3 years
         note: Drug-dependent person presumed to possess for use; use is three years
       - label: Non-dependent person with 5 g or less
         treatment: criminal
+        term: Dealing
         prison: 15 years
         note: Presumed dealing; dealing is fifteen years
       - over: 5 g
         upto: 14 g
         treatment: criminal
+        term: Peddling
         prison_min: 5 years
         prison: 10 years
         note: Presumed peddling
       - over: 14 g
         treatment: criminal
-        note: Presumed trafficking, which is life imprisonment
+        term: Trafficking
+        note: Presumed trafficking under the Act; see the trafficking table
   cultivation:
-    text: The retained sources identify cultivation as an offence but do not give its sentence.
+    text: >-
+      The Act has no standalone cultivation offence and no plant-count ladder. Cultivating a plant
+      from which a drug may be derived is an act that makes a dealer a trafficker, so life follows
+      only where dealing is proved.[@da]
     sources:
-      - mi
+      - da
+    currency: MVR
+    penalties:
+      - label: Cultivating a drug plant as part of dealing
+        treatment: criminal
+        term: Trafficking
+        note: No standalone cultivation offence; life where dealing is proved
   enforcement:
     text: >-
       The Third Amendment, ratified on 6 December 2025, adds the death penalty for bringing more
-      than 350 g of cannabis into the country on entry, and raises the penalty for importing a
-      Schedule 1 drug to 20 years. It takes effect three months after ratification and gazette
-      publication.
+      than 350 g of cannabis into the country on entry, makes life mean the rest of the prisoner's
+      life, and raises the penalty for attempting to import a Schedule 1 drug to 20 years. It took
+      effect in March 2026.[@po,mi] No execution has been carried out since 1954; 19 people were
+      under sentence of death in October 2026, and the implementation bill had not passed.[@wcadp,hrw26]
     sources:
       - po
       - mi
-      - at
+      - wcadp
+      - hrw26
   sharing:
     text: >-
-      Trafficking carries life imprisonment, now defined as the remainder of a person's life with no
-      pardon or commutation.[@at] Bringing more than 350 g of cannabis into the country can carry the
-      death penalty, only on a unanimous full Supreme Court verdict.[@po,mi]
+      Trafficking carries life imprisonment and a MVR 100,000–10,000,000 fine; from March 2026 life
+      means the remainder of the person's life, with no pardon or commutation.[@da,at] Bringing more
+      than 350 g of cannabis into the country can carry death or life, only on a unanimous full
+      Supreme Court verdict after all appeals.[@po,mi]
     sources:
+      - da
       - at
       - mi
       - po
+    currency: MVR
     penalties:
       - label: Trafficking
         treatment: criminal
-        note: Life imprisonment, defined as the remainder of life with no pardon or commutation
+        term: Trafficking
+        prison_min: 25 years
+        fine_min: 100000
+        fine: 10000000
+        note: Life; from March 2026 the remainder of life with no pardon or commutation
       - label: Bringing more than 350 g of cannabis into the country
         treatment: criminal
+        term: Import
         death: true
         note: Only on a unanimous full Supreme Court verdict; otherwise life
   consumption:
     text: >-
-      Use of cannabis is an offence of three years. The Drug Court can take a dependent person who
-      pleads guilty to use or peddling and is not charged with trafficking.
+      Use of cannabis is an offence of three years.[@da] The Drug Court can take a dependent person
+      who pleads guilty to use or peddling and is not charged with trafficking.[@da]
     sources:
       - da
+    currency: MVR
+    penalties:
+      - label: Use
+        treatment: criminal
+        term: Use
+        prison: 3 years
   access:
-    text: No legal source.
+    text: No legal source.[@mi]
     sources:
       - mi
 context:
@@ -95,67 +124,142 @@ context:
     text: >-
       The Third Amendment, ratified on 6 December 2025, provides the death penalty where more than
       350 g of cannabis is brought into the country on entry, and only if the full Supreme Court
-      agrees unanimously. It takes effect three months after ratification and gazette publication.
+      agrees unanimously. It took effect in March 2026.[@po,mi]
     sources:
       - po
       - mi
-      - at
   recreational:
     text: >-
       There is no legal way to get cannabis. Even 5 g or less makes a non-dependent person
       presumed to be dealing, at fifteen years; a dependent person with the same amount is
-      presumed to hold it for use, at three years.[@da] British travel advice warns that even
-      small quantities can lead to arrest, long sentences, whipping and, for the most serious
-      offences, death.[@fcdo]
+      presumed to hold it for use, at three years.[@da] Human Rights Watch notes that long prison
+      terms and the new capital import tier remain, while executions have been suspended since
+      1954.[@hrw26]
     sources:
       - da
-      - fcdo
+      - hrw26
   production:
     status: none
-    text: No licensed production. Cultivation is an offence.
-    sources:
-      - mi
-  medical:
-    text: >-
-      No patient programme is documented. Cannabis is a Schedule 1 drug and use is an offence
-      of three years.[@da]
+    text: No licensed production. Cultivation is not a standalone offence, but growing a drug plant as part of dealing is trafficking.[@da]
     sources:
       - da
+  medical:
+    text: >-
+      No patient programme is documented. Cannabis is a Schedule 1 drug and use is an offence of
+      three years.[@da] Dronabinol is listed in Schedule 2 as a controlled medicine, but it is not on
+      the approved drug list and no prescription route was found.[@mfda]
+    sources:
+      - da
+      - mfda
   consequences:
     text: >-
       Beyond prison, offenders can face whipping, and trafficking means life defined as the
-      remainder of life with no pardon or commutation.[@fcdo,at]
+      remainder of life with no pardon or commutation.[@hrw26,at]
     sources:
-      - fcdo
+      - hrw26
       - at
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
       supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      penalty for the most serious drug offences.[@da,at]
     sources:
+      - da
       - at
-      - mi
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says even small
-      quantities of cannabis can lead to arrest, with long prison sentences, whipping in some
-      cases and the death penalty for the most serious offences. Travellers have been caught
-      carrying controlled drugs in transit, and the advice is to carry none, even if legal in
-      the country of departure.
+      There is no legal recreational supply for anyone.[@da] Possession, use, dealing and
+      trafficking apply to visitors as to residents, and the most serious import cases can bring
+      death or life.[@po,mi] In January–July 2026 police handed 116 foreign nationals to Immigration
+      for deportation.[@etruth26]
     sources:
-      - fcdo
+      - da
+      - po
+      - mi
+      - etruth26
   arrests:
     text: >-
-      Police told a press conference in May 2024 that so far that year they had arrested
-      260 Maldivians and 16 foreigners with drugs in 56 operations, investigated 257 drug
-      cases and sent 95 to the prosecutor general, and seized about 19 kg of drugs. No
-      breakdown by drug was given.
+      Police reported 1,141 operations and 1,875 arrests in the first seven months of 2026,
+      with 1,533 cases, 634 sent to the Prosecutor General and 144 kg of drugs seized; the figures
+      cover all drugs.[@r24_26] In 2024 they reported 12,000 raids and 137 drug cases decided by the
+      Criminal Court, with 20 life sentences.[@xin25] No cannabis-only arrest count is published.[@stats26]
     sources:
-      - adhadhu24
+      - r24_26
+      - xin25
+      - stats26
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. "Cannabis" covers any part of any plant of the
+      genus, and cannabis extracts and THC are Schedule 1.[@da] No industrial-hemp or consumer-CBD
+      route was found.[@da]
+    sources:
+      - da
+  planting:
+    seeds: illegal
+    seeds_trade: banned
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      The Act defines cannabis as any part of any plant of the genus, with no seed exclusion, so
+      seeds fall under the same dealing and trafficking offences; clones are living plants.[@da]
+      No seed or clone market was found.[@da]
+    sources:
+      - da
+  driving:
+    status: unknown
+    text: >-
+      No numerical THC limit or cannabis-specific driving offence was verified. The Act's urine-test
+      presumption can prove use, not impaired driving, and the Road Traffic Act 2019 was not read.[@da]
+    sources:
+      - da
+  black_market:
+    text: >-
+      Statistics Maldives records 21,199 g of cannabis seized in 2024 and 57,954 g in 2025, without
+      splitting herb from resin; the all-drug totals were 412,138 g and 368,804 g.[@stats26] Major
+      cases include 15 kg at Velana airport in July 2024 and more than 40 kg of hashish oil in
+      chocolate-syrup bottles in December 2025.[@police24,mmtv25] No national production estimate
+      exists.[@stats26]
+    sources:
+      - stats26
+      - police24
+      - mmtv25
 sources:
+  mfda:
+    title: "Maldives Food and Drug Authority — Approved Drug List (March 2025)"
+    url: https://health.gov.mv/storage/uploads/BxopZYvP/o2p82t9z.pdf
+    locator: "No cannabis, dronabinol, nabilone, Sativex or Epidyolex entry."
+  stats26:
+    title: "Statistics Maldives — Yearbook 2026, Table 8.9, drug seizures"
+    url: https://statisticsmaldives.gov.mv/yearbook/2026/wp-content/uploads/sites/13/2026/06/8.9.pdf
+    locator: "Cannabis 21,199 g in 2024 and 57,954 g in 2025; all drugs 412,138 g and 368,804 g."
+  r24_26:
+    title: "R24 — Police seize 144 kg of drugs and arrest 1,875 people in seven months (August 2026)"
+    url: https://r24.mv/police-seize-more-than-144kg-of-drugs-arrest-1875-people/
+    locator: "1,141 operations; 1,875 arrests; 1,533 cases; 634 to the Prosecutor General."
+  xin25:
+    title: "Xinhua — Maldives reports 12,000 drug raids in 2024 (31 March 2025)"
+    url: https://english.news.cn/20250331/4bed524f6a06461c800443de562bee65/c.html
+    locator: "137 drug cases; 20 life sentences; 654 kg claimed."
+  etruth26:
+    title: "eTruth — Police seize MVR 121 million in drugs and alcohol in seven-month crackdown (2026)"
+    url: https://etruth.mv/police-seize-mvr-121-million-in-drugs-and-alcohol-in-seven-month-crackdown/
+    locator: "116 foreign nationals handed to Immigration."
+  wcadp:
+    title: "World Coalition Against the Death Penalty — Maldives"
+    url: https://worldcoalition.org/pays/maldives/
+    locator: "19 people under sentence of death; 0 executions in 2023–2025."
+  hrw26:
+    title: "Human Rights Watch — Maldives withdraws proposed death-penalty bill (16 April 2026)"
+    url: https://www.hrw.org/news/2026/04/16/maldives-withdraw-proposed-death-penalty-bill
+  police24:
+    title: "Maldives Police Service — 15 kg cannabis seized at Velana airport (27 July 2024)"
+    url: https://www.police.gov.mv/media/news/23364
+  mmtv25:
+    title: "MMTV — 40 kg of hashish oil found in chocolate-syrup bottles (25 December 2025)"
+    url: https://en.mmtv.mv/7506
   fcdo:
     title: "GOV.UK (FCDO) — Foreign travel advice: Maldives, safety and security"
     url: https://www.gov.uk/foreign-travel-advice/maldives/safety-and-security
