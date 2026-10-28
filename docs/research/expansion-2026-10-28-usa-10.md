@@ -6,7 +6,9 @@ history/culture links, profile-audit, review build, commit country-by-country.
 ## ak (Alaska) — committed
 - Sharing/consumption cites (AS 17.38 + AMCO FAQ), access cite. Possession pinned, untouched.
 - Audit 0/0; review page verified.
-## ar — pending
+## ar (Arkansas) — committed
+- Already complete (cultivation table, cites, pins); audit + review build verified, no changes.
+- Audit 0/0; review page verified.
 ## dc — pending
 ## de — pending
 ## nd — pending
