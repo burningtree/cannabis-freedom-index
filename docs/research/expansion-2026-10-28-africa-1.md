@@ -45,4 +45,11 @@ All batch files verified free of others' uncommitted changes at start.
 - No atlas entries for Niger: culture section skipped (nothing to connect), driving/arrests researched sections skipped (no sources found).
 - Audit 0/0; country + article review builds verified (rongony fixed by its owner mid-work).
 - Left: 1930s/40s/50s/80s/2010s history decades.
-## bj — pending
+## bj — committed
+- Verified Law 97-025 from the SHERLOC PDF (Articles 8, 9, 90); strengthened 4 Wikipedia-only texts with primary-law cites where verifiable.
+- Per-sentence cites on 11 flagged texts; cultivation text rewritten (Article 8 ban + destroy duty; honest no-sentence-verified table); new hemp (status none); words (Cannabis/French, the law's word).
+- 1997-law history link in recreational; new `articles/benin-drug-law-1997.md` (Articles 8/9/90, IDPC review, seizure trend).
+- Fixed 2 `term` warnings; dropped now-unused wiki source from cultivation (audit citation-list test).
+- No atlas entries for Benin: culture skipped; driving/arrests researched sections skipped (no sources found).
+- Audit 0/0; country + article review builds verified.
+- Left: 1930s/40s/50s/2000s/2010s history decades.

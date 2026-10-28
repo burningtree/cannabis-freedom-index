@@ -14,60 +14,74 @@ scores:
   sharing: 1
   consumption: 1
   access: 0
+words:
+  - { word: Cannabis, lang: French, meaning: "cannabis; the law's word in Law 97-025", sources: [l97025] }
 segments:
   possession:
     text: >-
-      Cannabis is illegal for all purposes under the 1997 drug-control Act and the 2018 Penal Code.
-      Unauthorised possession of a narcotic is reported to carry two to five years in prison and a
-      fine of 500,000 to 5 million CFA francs. There is some informal tolerance in parts of the
-      country, but raids and arrests are active in Cotonou and at borders.
+      Cannabis is illegal for all purposes under the 1997 drug-control Act and the 2018 Penal
+      Code.[@wiki] Unauthorised possession of a narcotic is reported to carry two to five years in
+      prison and a fine of 500,000 to 5 million CFA francs.[@wiki] There is some informal tolerance
+      in parts of the country, but raids and arrests are active in Cotonou and at
+      borders.[@wiki]
     sources:
       - wiki
     currency: XOF
     penalties:
       - label: Unauthorised possession of a narcotic
         treatment: criminal
+        term: Possession
         prison_min: 2 years
         prison: 5 years
         fine: 5000000
         note: Reported figures; fine of 500,000–5,000,000 CFA francs
   cultivation:
-    text: Cultivation is a crime with heavy sentences.
+    text: >-
+      Article 8 of Law 97-025 bans growing the cannabis plant anywhere in the country and obliges
+      landowners and occupiers to destroy plants that come up.[@l97025] No cultivation-specific
+      sentence was verified in the retained sources.
     sources:
-      - wiki
+      - l97025
+    penalties:
+      - label: Unauthorised cultivation (Article 8 ban)
+        treatment: criminal
+        term: Cultivation
+        note: Article 8 bans growing and requires destruction; no cultivation-specific sentence verified in the retained sources
   enforcement:
     text: >-
       A 2017 review of the 1997 Act found that it fixes minimum fines and prison terms which
       judges must stay within, offers no alternatives to prison and contains no public health or
-      human rights protections. The death penalty, abolished in 2016, no longer applies to any
-      drug offence.
+      human rights protections.[@idpc17] The death penalty, abolished in 2016, no longer applies
+      to any drug offence.[@idpc17,wiki]
     sources:
       - idpc17
       - wiki
   sharing:
     text: >-
       The 1997 Act punishes export, import and international transport of drugs with five to ten
-      years in prison and a fine of three times the value of the drugs seized (Article 96).
-      Benin serves increasingly as a transit point: seizures of cannabis rose from 82 kg in 2006
-      to 2,444 kg in 2021.
+      years in prison and a fine of three times the value of the drugs seized (Article
+      96).[@idpc17] Benin serves increasingly as a transit point: seizures of cannabis rose from
+      82 kg in 2006 to 2,444 kg in 2021.[@wiki]
     sources:
       - idpc17
       - wiki
     penalties:
       - label: Export, import and international transport (Article 96)
         treatment: criminal
+        term: Trafficking
         prison_min: 5 years
         prison: 10 years
         note: Fine of three times the value seized
   consumption:
     text: >-
       Use is prohibited, but a 2017 review of the 1997 Act found that the law does not state a
-      penalty for it; it only says that using drugs is forbidden.
+      penalty for it; it only says that using drugs is forbidden.[@idpc17]
     sources:
       - idpc17
   access:
     text: >-
-      No legal source: the 1997 Act forbids using drugs and punishes import, export and transport.
+      No legal source: the 1997 Act forbids using drugs and punishes import, export and
+      transport.[@idpc17]
     sources:
       - idpc17
 context_not_applicable:
@@ -80,12 +94,23 @@ context:
     text: >-
       There is no legal way to get cannabis. Possession is reported to carry two to five years
       and a fine of 500,000 to 5 million CFA francs; there is some informal tolerance outside
-      the cities, but raids and arrests are active in Cotonou and at borders.[@wiki]
+      the cities, but raids and arrests are active in Cotonou and at borders.[@wiki] The 1997
+      drug-control law is traced in the [1997 law](/history/benin-drug-law-1997/).
     sources:
       - wiki
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: Law 97-025 bans growing the cannabis plant
+      anywhere in the country with no low-THC distinction, and no hemp production is
+      documented.[@l97025]
+    sources:
+      - l97025
   production:
     status: none
-    text: No licensed production. Article 8 of Law 97-025 bans growing the cannabis plant anywhere in the country.
+    text: >-
+      No licensed production. Article 8 of Law 97-025 bans growing the cannabis plant anywhere in
+      the country.[@l97025]
     sources:
       - l97025
   medical:
@@ -107,32 +132,32 @@ context:
     clones_trade: banned
     text: >-
       Article 8 of Law 97-025 bans growing the cannabis plant anywhere in the country and
-      obliges whoever owns or occupies land to destroy any plants that come up. The law does
-      not mention seeds; it classifies substances by reference to the international
-      conventions.
+      obliges whoever owns or occupies land to destroy any plants that come up.[@l97025] The law
+      does not mention seeds; it classifies substances by reference to the international
+      conventions.[@l97025]
     sources:
       - l97025
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@wiki]
     sources:
       - wiki
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. The 1997 Act prohibits drug use, and
-      importing or carrying drugs across the border brings five to ten years in prison and a
-      fine of three times their value.
+      There is no legal recreational supply for anyone.[@idpc17] The 1997 Act prohibits drug use,
+      and importing or carrying drugs across the border brings five to ten years in prison and a
+      fine of three times their value.[@idpc17]
     sources:
       - idpc17
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 1,209 kg of herbal
-      cannabis seized in 2024, against 13,705 kg in 2023. The UN publishes them as
+      cannabis seized in 2024, against 13,705 kg in 2023.[@unodc_szr] The UN publishes them as
       kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
 sources:
