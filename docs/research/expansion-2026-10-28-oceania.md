@@ -17,3 +17,10 @@ islands. Skip BUSY files; none of these countries have uncommitted changes.
 - New `articles/tuvalu-drug-fine-increase-2010.md` (2009 Act: $2,000→$4,000; consolidated law pairs with 10 yrs; 2025 minimums followed) + `articles/tuvalu-youth-cannabis-report-2012.md` (OHCHR docstore URL from entry — never invent UN URLs; 5% youth use, Fiji imports, update priority).
 - Audit 0/0; page + both articles verified in review HTML.
 - Left: cultivation gap bands (10–50 g, 4–5 plants — statute's own gaps), empty decades.
+
+## mp — committed
+- Word marijuana (English (NMI), the Code's defined term incl. seeds vs usable).
+- New `articles/cnmi-first-cannabis-lounge-2021.md` (Common Wealth Cannabis, Garapan, BYO + ID checks; licence July, open 16 Aug) linked from consumption + `articles/cnmi-cannabis-drug-testing-2024.md` (PL 23-27: testing dropped except federal/safety-sensitive; no on-duty change) + `articles/cnmi-anti-drug-abuse-act-1991.md` (PL 7-42: Schedule I/II hikes, school-zone, customs, treatment plan; in force 31 Oct 1991); testing/1991 unlinked (no profile hook — employment/testing and pre-2018 history have no section).
+- Tables already present (possession/cultivation/sharing/consumption tiers + hemp standard). No other profile surgery needed.
+- Audit 0/0; page + all three articles verified in review HTML.
+- Left: 1925 estimate (parallel, skip).
