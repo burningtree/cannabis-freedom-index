@@ -23,5 +23,12 @@ usa-5 covered mo/in/sc/al/ky. This batch: ia, nv, ar, ms, ks.
 - Possession pinned by claims test, untouched. No AR history entries, no culture subject.
 - Audit 0/0; review page verified.
 
-## ms — pending
+## ms (Mississippi) — committed
+- Cultivation table (Felony term + weight note, NORML-verified deferral), cites on consumption/
+  access, new `medical` (Initiative 65 Nov 2020 74%, thrown out May 2021, Medical Cannabis Act
+  signed 2 Feb 2022 via NPR/AP verified 200).
+- Sharing text left as-is (NORML sale bands contradict the file's 3-year figure; no verified
+  match). No MS history entries, no culture subject — noted.
+- Audit 0/0; review page verified (one build attempt hit transient contention, rerun clean).
+
 ## ks — pending
