@@ -28,6 +28,7 @@ segments:
     penalties:
       - label: Personal use, Article 38
         treatment: criminal
+        term: Personal use
         prison: 5 years
         note: Residential treatment instead for a person proved dependent; voluntary entry protects from prosecution
   cultivation:
@@ -39,6 +40,23 @@ segments:
     sources:
       - law93
       - l3
+    currency: YER
+    penalties:
+      - label: Growing for personal use (Article 38)
+        treatment: criminal
+        term: Personal use
+        prison: 5 years
+      - label: Growing for trade (Article 34)
+        treatment: criminal
+        term: Trafficking
+        death: true
+        prison: 25 years
+        note: Death or twenty-five years
+      - label: Import or manufacture for trade (Article 33)
+        treatment: criminal
+        term: Import or manufacture
+        death: true
+        note: Death is mandatory
   enforcement:
     text: >-
       Personal-use holdings and growing carry five years, with residential treatment possible instead
@@ -59,11 +77,13 @@ segments:
     penalties:
       - label: Unpaid supply or facilitating use, Article 35
         treatment: criminal
+        term: Supply
         death: true
         prison: 25 years
         note: Death or twenty-five years
       - label: Trading or preparing premises, Article 34
         treatment: criminal
+        term: Trafficking
         death: true
         prison: 25 years
         note: Death or twenty-five years
@@ -72,11 +92,13 @@ segments:
       Article 38 sets five years for holding or buying drugs, or growing listed plants, for
       consumption or personal use, with a residential-treatment alternative for a person proved
       dependent. Article 40 sets up to one year for knowingly being present where drug consumption is
-      taking place in premises prepared for it, with specified family exceptions.[@law93] Qat is legal
-      and central to social life.[@albab]
+      taking place in premises prepared for it, with specified family exceptions.[@law93] Qat is a
+      separate legal crop, not a scheduled narcotic, and is central to social life, though local
+      authorities have recently restricted late-night chewing and chewing in government offices.[@wb2007,albab]
     sources:
       - law93
       - albab
+      - wb2007
   access:
     text: >-
       Article 2 prohibits unauthorised possession and drug transactions. Articles 3–4 restrict imports
@@ -104,8 +126,8 @@ context:
   production:
     status: none
     text: >-
-      No lawful cannabis production. Growing licences are limited to government departments and
-      scientific institutes for research; all other growing is prohibited.[@law93,l3]
+      No lawful cannabis production. The only exception is research growing by government
+      departments and scientific institutes; all other growing is prohibited.[@law93,l3]
     sources:
       - law93
       - l3
@@ -138,8 +160,9 @@ context:
     clones_trade: banned
     text: >-
       Articles 28–29 prohibit growing the listed plants and dealing in them at every stage of growth,
-      including their seeds. Schedule 5 expressly names male and female cannabis. Schedule 6 exempts
-      stalk fibres and cannabis seeds treated so they cannot germinate. Article 30 limits
+      including their seeds.[@law93] Schedule 5 expressly names male and female cannabis.[@law93]
+      Schedule 6 exempts stalk fibres and cannabis seeds treated so they cannot germinate.[@law93]
+      Article 30 limits
       research-growing licences to government departments and scientific institutes.[@law93, l3]
     sources:
       - law93
@@ -160,16 +183,62 @@ context:
       for trade can bring death. The statute provides no recreational supply route.[@law93]
     sources:
       - law93
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. Schedule 6 exempts only stalk fibre and cannabis
+      seeds chopped so they cannot germinate, while growing the plant remains an offence under
+      article 28.[@law93] No industrial-hemp or CBD licensing route was found.[@law93]
+    sources:
+      - law93
+  driving:
+    status: impairment
+    text: >-
+      Traffic Law 46 of 1991, article 58, punishes driving under the influence of alcohol or drugs
+      with up to two years, a fine of up to 6,500 rials, or both; the court may suspend or withdraw
+      the licence.[@traffic1991] There is no numeric THC limit or separate medical-patient defence.[@traffic1991]
+    sources:
+      - traffic1991
+  black_market:
+    text: >-
+      Hashish is the main cannabis product in reported seizures. The government's drug-control
+      administration counted 2,986 kg of hashish in 2025 and 613.7 kg in the first half of 2026 in
+      the governorates it controls; it publishes no herbal-cannabis series.[@ym26,ydn26] Qat is a
+      separate legal crop and is not part of these figures.[@wb2007] Houthi authorities report
+      individual cases rather than annual totals.[@ypa25]
+    sources:
+      - ym26
+      - ydn26
+      - wb2007
+      - ypa25
   arrests:
     text: >-
       The drug control administration of the internationally recognised government counted
       704 drug cases in 2025 in the governorates it controls, 488 of them for use, and
-      1,260 suspects, of whom 827 were users. It seized 2,986 kg of hashish, beside 1,530
-      kg of crystal methamphetamine and 169 kg of heroin. The figures do not cover areas
-      held by the Houthi authorities.
+      1,260 suspects, of whom 827 were users.[@ym26] It seized 2,986 kg of hashish, beside 1,530
+      kg of crystal methamphetamine and 169 kg of heroin.[@ym26] In the first half of 2026 it
+      reported 484 cases and 734 suspects, with 613.7 kg of hashish seized.[@ydn26] The figures do
+      not cover areas held by the Houthi authorities.[@ym26]
     sources:
       - ym26
+      - ydn26
 sources:
+  wb2007:
+    title: "World Bank — Yemen: Towards Qat Demand Reduction (2007)"
+    url: https://documents1.worldbank.org/curated/en/500871468183253500/pdf/397380YE.pdf
+    locator: "Qat is legal and taxed; about 6% of GDP and one in seven workers."
+  traffic1991:
+    title: "Yemen — Traffic Law No. 46 of 1991, article 58"
+    url: https://agoyemen.net/lib_details.php?id=11
+    locator: "Driving under the influence of alcohol or drugs: up to two years, up to 6,500 rials, or both."
+  ydn26:
+    title: "Yemen Daily News — Drug control figures for the first half of 2026 (28 July 2026)"
+    url: https://ydn.news/?p=127813
+    locator: "484 cases; 734 suspects; 613.7 kg hashish."
+  ypa25:
+    title: "Yemen Press Agency — Sana'a court sentences a hashish dealer to death (17 December 2025)"
+    url: https://en.ypagency.net/379381
+    locator: "One death sentence for hashish dealing."
   l3:
     title: Yemen — Law 3 of 1993 with schedules, Arabic text held by the House of Representatives
     url: https://yemenparliament.gov.ye/uploads/posts/documents/2018/10/1019201893432579.pdf
