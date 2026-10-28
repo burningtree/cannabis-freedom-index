@@ -21,7 +21,12 @@ history) — verify and build on them, don't duplicate.
 - New `articles/togo-drug-seizures-2025.md` (Jan 2026 destruction of 5,291 kg) + `articles/togo-drug-seizures-report-2026.md` (50+ tonnes in 2025, Abidjan–Lagos corridor).
 - Page + both articles verified in review HTML.
 - Left: words (no sourced local word found), culture (no atlas entry), 1920s–50s, 1980s, 2000s decades.
-## lr — pending
+## lr — committed
+- Word Diamba (English (Liberia), via Duvall; atlas + culture already linked).
+- Arrests refreshed with June 2026 LDEA annual report (1,831 all-drug arrests Jul 2025–Jun 2026; 8 trafficking convictions, 1–10 years, Jan–Jun 2026); black_market adds 2,353.396 kg marijuana breakdown as reported.
+- New `articles/liberia-congo-recaptive-diamba-smoking-1890.md` (Büttikofer + Duvall) + `articles/liberia-drug-law-bail-debate-2022.md` (WADPN).
+- Audit 0/0; page + both articles verified in review HTML.
+- Left: 1920s–60s decades; first-restriction estimate kept.
 ## ga — pending
 ## gw — pending
 ## gq — pending
