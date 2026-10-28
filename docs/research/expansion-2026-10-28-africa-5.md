@@ -36,5 +36,10 @@ so/bi/et/cd/ss/cf/mz/zw/bj/ug — Africa-1/2/3; tg/lr/ga/gw/gq/dj/mu — Africa-
 - New `articles/reunion-youth-zamal-groups-1971.md` (rewrote invented closing to the entry's real psychiatric-hospital cases + alcohol contrast) + `articles/reunion-malay-amale-crime-1830.md` (both from Benoist).
 - Audit 0/0; full `npm test` 193/0 (run mid-batch); page + both articles verified in review HTML.
 - Left: driving/arrests (no sources), 1920s–70s, 1980s–2020s decades.
-## st — pending
+## st — committed
+- Word Liamba (Portuguese (São Tomé), from the RSTP police-press headline); recreational cites it too.
+- Cultivation table + penalty terms; hemp section; products folded into medical then deleted; new arrests (2024 Operation 971: 9 detained + hearing; July 2025: 3 men/30 g + bail) + planting sections; visitors de-FCDO'd with unused key removed.
+- New `articles/sao-tome-cannabis-crop-raids-2024.md` (RSTP) + `articles/sao-tome-overlapping-drug-laws-2012.md` (CEJ manual).
+- Fixed production wording to the audit's no-licence guard pattern. Audit 0/0; full `npm test` 193/0 (run mid-batch); page + both articles verified in review HTML.
+- Left: driving/black_market (no sources), culture (no atlas entry), 1920s–40s, 1960s, 1980s, 2000s decades.
 ## sc — pending

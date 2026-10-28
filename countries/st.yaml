@@ -15,6 +15,8 @@ scores:
   sharing: 0
   consumption: 0
   access: 0
+words:
+  - { word: Liamba, lang: Portuguese (São Tomé), meaning: "cannabis; the police-press word for seized cannabis", sources: [park2025] }
 segments:
   possession:
     text: >-
@@ -28,20 +30,34 @@ segments:
     penalties:
       - label: Up to a three-day personal quantity
         treatment: criminal
+        term: Personal use
         prison: 3 months
         note: Fines run as day-fines up to 60 days, and courts may excuse an occasional consumer
       - label: Above a three-day personal quantity
         treatment: criminal
+        term: Possession
         prison: 1 year
         note: Fines run as day-fines up to 100 days
   cultivation:
     text: >-
       Growing cannabis for personal use falls under the same rule as personal possession: up to
       three months or a 60-day fine, rising to one year or a 100-day fine above a three-day
-      personal quantity. Other unauthorised cultivation falls under trafficking, normally
-      carrying two to twelve years.[@code2021]
+      personal quantity.[@code2021] Other unauthorised cultivation falls under trafficking,
+      normally carrying two to twelve years.[@code2021]
     sources:
       - code2021
+    penalties:
+      - label: Personal growing (three-day quantity tiers)
+        treatment: criminal
+        term: Personal use
+        prison: 3 months
+        note: Up to one year above a three-day quantity; day-fines in both bands
+      - label: Other unauthorised cultivation (trafficking)
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison_min: 2 years
+        prison: 12 years
+        note: Normal trafficking band
   enforcement:
     text: >-
       The Penal Code allows prison or a fine for a small personal amount, and lets courts excuse
@@ -79,29 +95,33 @@ context:
       There is no legal recreational market. Acquiring or holding up to a three-day personal
       quantity carries up to three months in prison or a 60-day fine, and courts may excuse an
       occasional consumer; above that amount the maximum is one year or a 100-day
-      fine.[@code2021]
+      fine.[@code2021] Police still call the seized drug liamba in press reports, as in the July
+      2025 arrests.[@park2025]
     sources:
       - code2021
+      - park2025
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the Penal Code lists cannabis leaves, flowering
+      tops, resin and oil as controlled drugs with no low-THC distinction, and no hemp production
+      is documented.[@code2021]
+    sources: [code2021]
   production:
     status: none
     text: >-
-      Unauthorised cultivation, production, manufacture, extraction or preparation of cannabis
-      falls under trafficking, normally carrying two to twelve years. Diverting drugs into
-      illicit trade in breach of an authorisation carries four to fifteen years.[@code2021]
-    sources:
-      - code2021
-  products:
-    text: >-
-      Table I-C lists cannabis leaves and flowering or fruiting tops, cannabis resin and
-      cannabis oil. These products are covered by the code’s controlled-drug
-      offences.[@code2021]
+      No licensed cannabis production exists: unauthorised cultivation, production, manufacture,
+      extraction or preparation falls under trafficking, normally carrying two to twelve years.
+      Diverting drugs into illicit trade in breach of lawful-handling rules carries four to
+      fifteen years.[@code2021]
     sources:
       - code2021
   medical:
     text: >-
-      Cannabis flower, resin and oil are listed controlled drugs. The Penal Code recognises
-      authorised controlled-drug activities and penalises doctors and pharmacists who prescribe
-      or provide drugs for non-therapeutic purposes.[@code2021]
+      Cannabis flower, resin and oil are listed controlled drugs in Table I-C.[@code2021] The
+      Penal Code recognises authorised controlled-drug activities and penalises doctors and
+      pharmacists who prescribe or provide drugs for non-therapeutic purposes.[@code2021] No
+      patient supply route was established.
     sources:
       - code2021
   consequences:
@@ -123,18 +143,30 @@ context:
   visitors:
     status: none
     text: >-
-      Visitors face the same personal-use and supply offences. A court may also order a
-      convicted foreign national’s expulsion for up to ten years.[@code2021] British travel
-      advice warns of severe penalties for drug offences and advises against carrying anything
-      through customs for someone else.[@fcdo]
+      Visitors face the same personal-use and supply offences.[@code2021] A court may also order
+      a convicted foreign national’s expulsion for up to ten years.[@code2021]
     sources:
       - code2021
-      - fcdo
+  arrests:
+    text: >-
+      In July 2024 police Operation 971 raided cannabis fields and sales points, detaining seven
+      men and two women for an initial judicial hearing, as that [operation](/history/sao-tome-cannabis-crop-raids-2024/)
+      records.[@park2025] In July 2025 police arrested three men in São Tomé with 30 g of
+      liamba, and judicial authorities imposed bail.[@park2025]
+    sources:
+      - park2025
+  planting:
+    seeds: grey
+    seeds_trade: unclear
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      Personal growing falls under the three-day-quantity tiers, not a legal home-grow
+      allowance, and other unauthorised cultivation falls under trafficking.[@code2021] The code
+      does not separately address seed possession or commerce.
+    sources:
+      - code2021
 sources:
-  fcdo:
-    title: GOV.UK — São Tomé and Príncipe, safety and security
-    url: https://www.gov.uk/foreign-travel-advice/sao-tome-and-principe/safety-and-security
-    locator: Illegal drugs and prison sentences
   code2021:
     type: law
     title: São Tomé and Príncipe — Penal Code republished with the 2021 amendment
