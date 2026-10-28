@@ -22,17 +22,32 @@ segments:
     ounces in that locked container, is a $100 fine the first time and $250 after that. Five ounces
     or more, or 8 ounces or more in the locked container, is a $500 fine the first time and a class
     C misdemeanour after that.
-  cultivation: >-
-    Six plants per adult (three mature), twelve per household. Going over brings a written warning
-    first.
-  enforcement: Nothing within the limits; small overages are warnings or civil fines.
-  sharing: Adults may give cannabis to other adults within the possession limit.
+  cultivation:
+    text: >-
+      Six plants per adult (three mature), twelve per household. Going over brings a written warning
+      first.[@5]
+    currency: USD
+    penalties:
+      - upto: 6 plants
+        treatment: legal
+        note: Three mature; twelve per household
+      - label: Over the plant count
+        treatment: tolerated
+        note: Written warning for a first offence; later offences bring fines and then jail
+  enforcement: Nothing within the limits; small overages are warnings or civil fines.[@1,2]
+  sharing: Adults may give cannabis to other adults within the possession limit.[@1]
   consumption: >-
     Private use and some outdoor public smoking or vaping are allowed. Tobacco-free places, state
     parks, beaches and waters are excluded; towns may impose additional public-use restrictions.[@4]
   access: >-
-    Licensed shops since 2023. From 1 October 2026 the 70% THC cap on concentrates is gone and the
-    potency-based tax is replaced by a flat rate.
+    Licensed shops since January 2023. From 1 October 2026 the 70% THC cap on concentrates is gone
+    and the potency-based tax is replaced by a flat rate.[@3,6]
+context:
+  recreational:
+    text: >-
+      Senate Bill 1201 (June 2021) legalised adult use; the first licensed shops opened on
+      10 January 2023.[@6]
+    sources: [6]
 answers:
   public:
     answer: limited
@@ -46,6 +61,10 @@ sources:
     url: https://themarijuanaherald.com/2026/09/daily-cannabis-news-brief-for-9-29-2026/
   - title: Connecticut government — Where can I use cannabis?
     url: https://portal.ct.gov/cannabis/knowledge-base/articles/where-you-can-use-cannabis
+  - title: NORML — Connecticut laws and penalties
+    url: https://norml.org/laws/connecticut-penalties-2/
+  - title: Wikipedia — Cannabis in Connecticut
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Connecticut
 use:
   note: Includes vaping; a model-based estimate.
   share: 25.4

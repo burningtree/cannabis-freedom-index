@@ -24,5 +24,12 @@ Same method as usa-1–5.
 - Sharing pinned by test, untouched. No OK history entries, no culture subject — noted.
 - Audit 0/0; review page verified.
 
-## ct — pending
+## ct (Connecticut) — committed
+- Cultivation table (6/household-12 legal; over-count tolerated with warning first, then fines
+  and jail; NORML-verified), cites on enforcement/sharing, access dated and cited (Jan 2023,
+  Oct 2026 tax/concentrate changes), new `recreational` (SB 1201 June 2021, shops 10 Jan 2023
+  via verified Wikipedia article).
+- Possession pinned by test, untouched. No CT history entries, no culture subject — noted.
+- Audit 0/0; review page verified.
+
 ## ut — pending
