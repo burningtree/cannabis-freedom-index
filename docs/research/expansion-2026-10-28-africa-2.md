@@ -45,5 +45,12 @@ All batch files verified free of others' uncommitted changes at start.
 - Driving/black_market skipped (no sources); planting covered by table + definition text.
 - Audit 0/0; country + article review builds verified.
 - Left: 1930s–1990s history decades.
-## sl — pending
+## sl — committed
+- Added missing recreational section (no local supply; medical-export licensing only) + hemp (status none); folded products into them and deleted it.
+- Possession + cultivation penalty tables (5y discretion / 15y pharmacy / licensed-medical-legal row — schema has no `licensed` treatment).
+- Per-sentence cites on consequences/driving/black_market; words (Diamba/Krio via Duvall; Kush/Krio via court + press); new culture (diamba + kush atlas, 1938/1926/2008 history links).
+- New arrests (891 kush arrests 2024–25 via ResearchSquare eval; 52 TOCU convictions Jan 2026; Bio special court Nov 2025) + market refresh (TOCU 2025: 300 kg cannabis + 198 kg kush).
+- Two articles: `sierra-leone-seamen-regional-trafficking-1938.md` (Duvall + Akyeampong) and `sierra-leone-drugs-commencement-amendment-2008.md` (Amendment Act + cocaine plane).
+- Audit 0/0; page + both articles verified (several transient build failures from concurrent agents' mid-edits; green on retry).
+- Left: 1940s–1980s, 2010s history decades.
 ## gm — pending

@@ -15,6 +15,9 @@ scores:
   sharing: 0
   consumption: 0
   access: 0
+words:
+  - { word: Diamba, lang: Krio, meaning: "cannabis; the coast-wide word carried by seamen and traders", sources: [duvall19] }
+  - { word: Kush, lang: Krio, meaning: "the smoked drug devastating youth since the 2020s; prosecuted as kush in court", sources: [court2023, pm1] }
 segments:
   possession:
     text: >-
@@ -25,6 +28,12 @@ segments:
     sources:
       - court2023
       - act
+    penalties:
+      - label: Unlawful drug possession
+        treatment: criminal
+        term: Possession
+        prison_min: 5 years
+        note: At least five years; courts may impose a shorter term or a fine where that would be harsh or unconscionable
   cultivation:
     text: >-
       Personal growers face criminal restrictions: growing a narcotic-producing plant requires
@@ -34,6 +43,16 @@ segments:
     sources:
       - pharmacy2001
       - medgrow
+    penalties:
+      - label: Cannabis offences (Pharmacy and Drugs Act)
+        treatment: criminal
+        term: Cultivation
+        prison_min: 15 years
+        note: At least fifteen years for cannabis offences; Board written consent required
+      - label: Licensed medical cultivation and processing for export
+        treatment: legal
+        term: Licensed medical production
+        note: Pharmacy Board guideline PBSL/GL/022; export only, no local patient supply verified
   enforcement:
     text: >-
       In August 2023 a Freetown magistrate refused bail to two men accused of cannabis and kush
@@ -68,6 +87,30 @@ segments:
     sources:
       - medgrow
 context:
+  recreational:
+    text: >-
+      There is no legal recreational supply: possession can bring at least five years (courts may
+      reduce it where harsh or unconscionable), and unlicensed cultivation at least fifteen
+      years.[@act,pharmacy2001] The only licensed cannabis activity is medical cultivation and
+      processing for export under Pharmacy Board guidelines; nothing is lawfully sold
+      locally.[@medgrow] A 2023 case refused bail to two men accused of cannabis and kush
+      possession.[@court2023]
+    sources:
+      - act
+      - pharmacy2001
+      - medgrow
+      - court2023
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the pharmacy law restricts narcotic-producing
+      plants to Board consent with no low-THC distinction, the 2008 Act lists dangerous drugs
+      without a hemp carve-out, and licensed activity is medical cultivation for
+      export.[@pharmacy2001,act,medgrow]
+    sources:
+      - pharmacy2001
+      - act
+      - medgrow
   production:
     status: medical
     text: >-
@@ -75,14 +118,6 @@ context:
       cultivate, harvest and process medical cannabis.[@medgrow] Applicants need suitable staff
       and secure premises; the Board inspects compliance and can revoke licences for security
       failures.[@medgrow]
-    sources:
-      - medgrow
-  products:
-    text: >-
-      The medical production guidelines cover cannabis as a starting material for pharmaceutical
-      products, including cannabis extracts, with quality standards for cultivation, harvesting
-      and processing.[@medgrow] Their stated purpose includes production and manufacture for
-      export.[@medgrow]
     sources:
       - medgrow
   medical:
@@ -96,9 +131,12 @@ context:
       - medgrow
       - pharmacy2001
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction is a criminal record.[@pm1] Sentences run heavy for small amounts: a youth got
+      25 years for possessing 30.5 grams of kush, and a dealer 10 years.[@pm1,pm2]
     sources:
       - pm1
+      - pm2
   planting:
     seeds: licensed
     seeds_trade: unclear
@@ -133,31 +171,75 @@ context:
     status: impairment
     text: >-
       Road Traffic Act section 102 prohibits driving or attempting to drive on a road while
-      alcohol or drugs make proper control of the vehicle impossible. The published 2007 Act
-      grades imprisonment by harm: up to six months for no or minor bodily injury to another
-      person, one to two years for aggravated bodily injury, and three to five years where death
-      occurs. The court may also order compensation. Current fines and later penalty amendments
-      were not certified; the original monetary figures should not be read as current new-leone
-      amounts. Section 107(3) requires police to consult a medical practitioner and follow that
-      advice on drug-impairment questions arising under its detention provisions. Sections
-      104–106 describe alcohol-oriented breath/specimen procedures and hospital safeguards, not
-      a verified cannabis concentration limit. Current drug toxicology, refusal rules and
-      offence-specific licence-point assignments remain follow-ups.
+      alcohol or drugs make proper control of the vehicle impossible.[@traffic2007] The published
+      2007 Act grades imprisonment by harm: up to six months for no or minor bodily injury to
+      another person, one to two years for aggravated bodily injury, and three to five years
+      where death occurs.[@traffic2007] The court may also order compensation. Current fines and
+      later penalty amendments were not certified; the original monetary figures should not be
+      read as current new-leone amounts.[@traffic2007] Section 107(3) requires police to consult
+      a medical practitioner and follow that advice on drug-impairment questions arising under
+      its detention provisions.[@traffic2007] Sections 104–106 describe alcohol-oriented
+      breath/specimen procedures and hospital safeguards, not a verified cannabis concentration
+      limit.[@traffic2007] Current drug toxicology, refusal rules and offence-specific
+      licence-point assignments remain follow-ups.
     sources:
       - traffic2007
+  arrests:
+    text: >-
+      Enforcement runs on kush: an evaluation of the 2024–2025 national response counted 891
+      kush-related arrests and 189.7 kg seized, including 47 high-level
+      traffickers.[@researchsquare25] In January 2026 the organised-crime unit reported 52
+      convictions, most in the Western Area.[@tocu26] President Bio responded in November 2025
+      with a special drug court and a joint police-army security unit.[@telegraph25]
+    sources:
+      - researchsquare25
+      - tocu26
+      - telegraph25
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 1,632 kg of herbal
-      cannabis seized in 2024, against 22,778 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not comparable
-      across borders.
+      cannabis seized in 2024, against 22,778 kg in 2023.[@unodc_szr] The UN publishes them as
+      kilogram equivalents, and countries count seizures differently, so the figures are not
+      comparable across borders.[@unodc_szr] At home the trade centres on kush: the 2025 task
+      force seized 198 kg of kush alongside 300 kg of cannabis, and police report wraps counted
+      by the hundred in Freetown raids.[@tocu26]
     sources:
       - unodc_szr
+      - tocu26
+  culture:
+    text: >-
+      Two coast-wide words meet in Sierra Leone: [diamba](/culture/language/diamba/), the
+      Bantu word carried up the coast, and [kush](/culture/language/kush/), now the street name
+      of the drug devastating youth.[@duvall19,court2023] Sierra Leonean seamen once carried
+      diamba along West African sea routes — in 1938 one was arrested with it in New York (see
+      the [1938 seamen entry](/history/sierra-leone-seamen-regional-trafficking-1938/)).[@duvall19]
+      The colonial state banned the plant in 1926 (see the [1926
+      ordinance](/history/sierra-leone-dangerous-drugs-ordinance-1926/)), and the 2008 drug law
+      took effect on a president-set date after a cocaine plane forced its urgency (see the [2008
+      commencement](/history/sierra-leone-drugs-commencement-amendment-2008/)).
+    sources:
+      - duvall19
+      - court2023
 answers:
   buy:
     answer: no
     text: No patient or adult-use purchase route verified
 sources:
+  duvall19:
+    title: The African Roots of Marijuana
+    authors: [Chris S. Duvall]
+    publisher: Duke University Press
+    year: 2019
+    isbn: "9781478004530"
+  researchsquare25:
+    title: "Research Square preprint — From Emergency Declaration to District-Level Delivery: a mixed-methods evaluation of Sierra Leone's national KUSH response (2024–2025)"
+    url: https://www.researchsquare.com/article/rs-7870467/v1
+  tocu26:
+    title: Government of Sierra Leone — Transnational Organized Crime Unit (TOCU) report (24 June 2026, PDF)
+    url: https://ons.gov.sl/assets/docs/tocu-report-final-24-jun-2026-mos.pdf
+  telegraph25:
+    title: The Sierra Leone Telegraph — President Bio announces five new measures to tackle Sierra Leone's Kush crisis (3 November 2025)
+    url: https://www.thesierraleonetelegraph.com/president-bio-announces-five-new-measures-to-tackle-sierra-leones-kush-crisis/
   traffic2007:
     title: >-
       Sierra Leone Gazette — Road Traffic Act 5 of 2007 (original Act reproduced by
