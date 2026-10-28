@@ -39,6 +39,13 @@ track); Canada (separate job); Eritrea/Somaliland/Sudan (closed/recent); Africa 
 - Fixed self-inflicted YAML break (products→medical fold orphaned medical's sources block; restored).
 - Audit 0 errors + 1 pre-existing heuristic warning (production "licensing"); page + all three articles verified.
 - Left: driving/arrests (no sources), 1925 estimate, culture (no atlas entries).
-## kn — pending
+## kn — committed
+- Word weed (English (Saint Kitts and Nevis), from the AG's "bag of weed" line at the MCA launch).
+- Possession table (≤56 g civil EC$50 keeps cannabis; 15 g resin; over-56 g tolerated constitutional question) + cultivation table (≤5 plants civil EC$50; conscience-licence legal) + consumption table (EC$500 public-smoking civil; designated-places legal); all with XCD currency; products folded into medical.
+- Culture section (rastafari-sacrament + 2023 recognition; JO apology piece read and added as profile source) + recreational/access/medical links to all three new articles + existing 2019-decriminalisation coverage left intact.
+- New `articles/saint-kitts-56-grams-2020.md` (15→56 g + Cannabis Act; ticket bands corroborated from the 2023 amendment Act) + `articles/saint-kitts-freedom-of-conscience-2023.md` (Recognition Bill + apology per JO; five-plant licences; fee waiver to end-2026) + `articles/saint-kitts-cannabis-bill-2020.md` (Authority; became Act No. 8 of 2020).
+- Fixed self-inflicted schema error (cultivation fines need currency).
+- Waited out another agent's ae.yaml breakage (untouched); audit 0/0; page + all three articles verified.
+- Left: 1995 convention (imp 1, skipped).
 ## ht — pending
 ## do — pending
