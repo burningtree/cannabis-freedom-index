@@ -58,4 +58,8 @@ links; profile-audit 0/0, review build, commit country-by-country.
   primary text; fills score-moving gap).
 - Audit 0/0. Review build still blocked by others' files — will verify page once clear.
 - Left: 1940s/60s/70s/80s/90s empty (war decades; no datable events found).
-## bg — pending
+## bg (Bulgaria) — committed
+- Words list (Трева, Марихуана, Коноп; en.wiktionary bg-senses verified).
+- Audit 0/0. Review build still blocked by others' files — will verify page once clear.
+- Left: 1930s/40s/50s/70s/80s empty (communist-era sources thin; no verifiable 1931
+  ratification found).
