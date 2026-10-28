@@ -3,10 +3,10 @@ region: Europe
 iso_numeric: 470
 recreational: legal
 medical: legal
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
-  First EU country to legalise (2021): 7 g in public, 50 g at home, four plants per household, and
-  licensed non-profit associations. Public consumption remains prohibited.
+  First EU country to legalise (2021): 7 g in public, 50 g at home, four plants per household,
+  and licensed non-profit associations. Public consumption remains prohibited.
 scores:
   possession: 4
   cultivation: 4
@@ -14,24 +14,29 @@ scores:
   sharing: 2
   consumption: 3
   access: 4
-# What the possession and access scores cannot say precisely (src/lib/answers.js).
 answers:
   carry:
-    answer: "yes"
+    answer: 'yes'
     text: Up to 7 g in public and 50 g at home; more in public brings a fine
   buy:
     answer: limited
-    text: Only as a resident member of a licensed non-profit association; tourists have no legal source
+    text: >-
+      Only as a resident member of a licensed non-profit association; tourists have no legal
+      source
 segments:
   possession:
     text: >-
       Adults 18+ may carry up to 7 g in public and keep up to 50 g of dried cannabis at home
-      under the [2021 legalisation](/history/malta-legalisation-2021/).[@cap628,euda]
-      Between 7 g and 28 g in public is not a crime but goes to a tribunal with a fine of €50–100.[@cap628]
-      Above 28 g, ordinary drug law applies.[@cap628]
+      under the [2021 legalisation](/history/malta-legalisation-2021/).[@cap537,euda] Between 7
+      g and 28 g in public is not a crime but goes to a tribunal with a fine of
+      €50–100.[@cap537] Above 28 g, ordinary drug law applies.[@cap537] If prosecuted for
+      exclusive personal possession, the Magistrates’ Court range is three–twelve months or
+      €465.87–2,329.37, or both; the Criminal Court range is one–ten years and
+      €465.87–23,293.73.[@cap101]
     sources:
-      - cap628
+      - cap537
       - euda
+      - cap101
     currency: EUR
     penalties:
       - upto: 7 g
@@ -44,110 +49,186 @@ segments:
         term: Tribunal case
         fine_min: 50
         fine: 100
-        note: Not a crime; tribunal fine €50–100
-      - over: 28 g
+        note: Personal use, without reasonable suspicion of trafficking
+      - label: Personal possession outside the exemption — Magistrates’ Court
         treatment: criminal
-        term: Possession
-        note: Ordinary drug law applies
+        term: Cap. 101, Article 22(2)(b)(ii)
+        prison_min: 3 months
+        prison: 1 year
+        fine_min: 465.87
+        fine: 2329.37
+        note: Prison or a fine, or both
+      - label: Personal possession outside the exemption — Criminal Court
+        treatment: criminal
+        term: Cap. 101, Article 22(2)(a)(ii)
+        prison_min: 1 year
+        prison: 10 years
+        fine_min: 465.87
+        fine: 23293.73
   cultivation:
     text: >-
-      Up to four plants per household (not per adult), which must not be visible from outside.[@cap628,euda] The
-      dried harvest kept at home may not exceed 50 g.[@cap628]
+      Up to four plants per household (not per adult), which must not be visible from
+      outside.[@cap537,euda] The dried harvest kept at home may not exceed 50 g.[@cap537]
+      Outside the exemption, exclusive personal growing attracts the same court-specific ranges:
+      three–twelve months or €465.87–2,329.37, or both before magistrates; one–ten years and
+      €465.87–23,293.73 in the Criminal Court.[@cap101]
     sources:
-      - cap628
+      - cap537
       - euda
+      - cap101
     penalties:
       - label: Up to four plants per household
         treatment: legal
         term: Home growing
         note: Not visible from outside; home harvest capped at 50 g
+      - label: Exclusive personal growing outside the exemption — Magistrates’ Court
+        treatment: criminal
+        term: Cap. 101, Article 22(2)(b)(ii)
+        prison_min: 3 months
+        prison: 1 year
+        fine_min: 465.87
+        fine: 2329.37
+        note: Prison or a fine, or both
+      - label: Exclusive personal growing outside the exemption — Criminal Court
+        treatment: criminal
+        term: Cap. 101, Article 22(2)(a)(ii)
+        prison_min: 1 year
+        prison: 10 years
+        fine_min: 465.87
+        fine: 23293.73
+    currency: EUR
   enforcement:
     text: >-
-      Among Europe's mildest for users: conduct inside the limits is unpunished, and small overages
-      or public use are handled by a tribunal with fines rather than courts.[@cap628,mt] Trafficking still
-      carries prison.[@cap628]
+      Among Europe's mildest for users: conduct inside the limits is unpunished, and small
+      overages or public use are handled by a tribunal with fines rather than
+      courts.[@cap537,mt] Trafficking still carries prison.[@cap537]
     sources:
-      - cap628
+      - cap537
       - mt
   sharing:
     text: >-
-      The law provides for personal use and for distribution by licensed associations to their own
-      members.[@cap628] There is no explicit right to give cannabis to another adult, and supply outside an
-      association remains trafficking.[@cap628]
+      The law provides for personal use and for distribution by licensed associations to their
+      own members.[@cap537] There is no explicit right to give cannabis to another adult, and
+      supply outside an association remains trafficking.[@cap537] Supply offences in the
+      Magistrates’ Court carry six months–ten years and €465.87–11,646.87.[@cap101] In the
+      Criminal Court, Article 22 allows life imprisonment, with a four–thirty-year alternative
+      and €2,329.37–116,468.67 where life is inappropriate or the jury verdict is not
+      unanimous.[@cap101]
     sources:
-      - cap628
+      - cap537
+      - cap101
+    currency: EUR
+    penalties:
+      - label: Supply — Magistrates’ Court
+        treatment: criminal
+        term: Article 22(2)(b)(i)
+        prison_min: 6 months
+        prison: 10 years
+        fine_min: 465.87
+        fine: 11646.87
+      - label: Supply — Criminal Court
+        treatment: criminal
+        term: Article 22(2)(a)(i)
+        life: possible
+        prison_min: 4 years
+        prison: 30 years
+        fine_min: 2329.37
+        fine: 116468.67
+        note: Finite term and fine where life is inappropriate or the jury verdict is not unanimous
   consumption:
     text: >-
-      Private only. Consuming in public is prohibited and fined €235; consuming in front of a minor
-      is fined €300–500.[@mt,cap628] Associations may not allow consumption on their premises.[@cap628]
+      Consuming in public or a place accessible to the public carries a €235 tribunal penalty;
+      odour causing a nuisance to third parties also falls under that rule.[@cap537] Knowingly
+      consuming in the presence of a person under eighteen carries €300–500, including in
+      private.[@cap537] Association premises may not be used for consumption.[@cap537]
     sources:
-      - mt
-      - cap628
+      - cap537
+    currency: EUR
+    penalties:
+      - label: Public consumption or odour nuisance
+        treatment: civil
+        term: Cap. 537, Article 4(3)
+        fine: 235
+        fine_min: 235
+      - label: Consumption knowingly in a minor’s presence
+        treatment: civil
+        term: Cap. 537, Article 4(4)
+        fine_min: 300
+        fine: 500
   access:
     text: >-
-      No shops. The only legal source besides home growing is a licensed non-profit Cannabis Harm
-      Reduction Association: maximum 500 members, residents only, one association per person, at
-      most 7 g a day and 50 g a month. Tourists have no legal source.[@aruc,cap628] Associations
-      with additional processing approval may supply approved solventless solid
+      No shops. The only legal source besides home growing is a licensed non-profit Cannabis
+      Harm Reduction Association: maximum 500 members, residents only, one association per
+      person, at most 7 g a day and 50 g a month. Tourists have no legal source.[@aruc,cap537]
+      Associations with additional processing approval may supply approved solventless solid
       resin/hash.[@processing2026]
     sources:
       - aruc
-      - cap628
+      - cap537
       - processing2026
 context:
   recreational:
     text: >-
-      Malta was the first EU country to legalise, in December 2021: adults 18+ may carry up to 7 g
-      in public, keep 50 g at home and grow four plants per household.[@cap628,euda] Licensed
-      non-profit associations supply members with flower, seeds and approved solventless
-      resin; oils, tinctures and solvent-based products are excluded.[@processing2026] Public
-      consumption stays prohibited.[@cap628]
+      Malta was the first EU country to legalise, under the [December 2021
+      reform](/history/malta-legalisation-2021/): adults 18+ may carry up to 7 g in public, keep
+      50 g at home and grow four plants per household.[@cap537,euda] Licensed non-profit
+      associations supply members with flower, seeds and approved solventless resin; oils,
+      tinctures and solvent-based products are excluded.[@processing2026] Public consumption
+      stays prohibited.[@cap537] For association allowances, a gram of processed product counts
+      as one gram of flower up to 33% THC, two grams at 34–66%, and three grams above 66%; mixed
+      supplies count together.[@processing2026]
     sources:
-      - cap628
+      - cap537
       - euda
       - processing2026
   production:
     status: open
     text: >-
-      Only licensed non-profit associations may grow, for their own members, under ARUC supervision
-      and away from schools and youth centres.[@aruc] For-profit recreational production is not allowed.
-      Medical production is separately licensed.[@aruc]
-    sources:
-      - aruc
-  products:
-    text: >-
-      Licensed associations distribute dried flower and seeds, and may produce and distribute
-      approved solid solventless resin/hash with specific processing authorisation.[@processing2026] Their
-      cultivation/distribution permit alone does not cover processing.[@processing2026] Oils, tinctures, distillates
-      and solvent-based processing are excluded.[@processing2026] Against the 7 g daily and 50 g
-      monthly flower ceilings, 1 g of processed product counts as 1 g of flower at up to 33% THC, 2
-      g at 34–66%, and 3 g above 66%. Mixed flower/resin supplies count together; individual
-      association stock must be checked.[@processing2026]
+      Licensed non-profit associations grow and distribute for their members under
+      [ARUC](https://aruc.mt/) supervision.[@processing2026] The [January 2026
+      directive](/history/malta-processing-directive-2026/) requires additional processing
+      approval for solventless solid resin, beyond the cultivation-and-distribution
+      permit.[@processing2026] Oils, tinctures, distillates and solvent-based processing are
+      excluded from that association route.[@processing2026] For medical and research
+      production, applicants need a Malta Enterprise Letter of Intent followed by Medicines
+      Authority assessment and good-practice inspections.[@medreg]
     sources:
       - processing2026
+      - medreg
   medical:
     text: >-
-      Legal since 2018 on prescription from a registered doctor, with an approval card for the
-      patient, dispensed in pharmacies.[@euda] Products are limited and paid out of pocket.[@euda]
+      Patients obtain prescribed medicinal cannabis through the separate pharmaceutical
+      route.[@medreg] The [August 2026 approved-products
+      list](/history/malta-medicinal-products-list-2026/) includes dried flower, sublingual
+      drops and standardised extracts, alongside Epidyolex oral solution.[@medlist] Product
+      authorisation is subject to the Medicines Authority’s quality and import controls,
+      including the relevant European Pharmacopoeia specifications.[@medreg]
     sources:
-      - euda
+      - medreg
+      - medlist
   consequences:
     text: >-
-      People convicted of simple possession before the reform can have the conviction struck from
-      their record.[@cap628] Association membership is recorded, though privacy rules limit access.[@aruc] Driving
-      under the influence remains an offence.[@act2026]
+      People convicted of simple possession before the reform can have the conviction struck
+      from their record.[@cap537] Association membership is recorded, though privacy rules limit
+      access.[@aruc] Driving under the influence remains an offence.[@act2026]
     sources:
-      - cap628
+      - cap537
       - aruc
       - act2026
   hemp:
-    status: standard
+    status: none
     text: >-
-      No separate hemp regime was found in the retained sources: the 2021 Act governs cannabis
-      through home growing and associations, with no THC threshold, licence, or fibre exemption
-      located for industrial hemp.[@cap628]
+      Seeds and specified non-psychoactive plant material and products with no more than 0.2%
+      psychoactive cannabinoids are excluded from the drug definition.[@cap101] The exclusion
+      supplies no separate industrial growing allowance: cultivation of the cannabis plant
+      remains an offence subject to the household and licensed exceptions.[@cap101,cap537] In
+      [March 2026 parliamentary answers](/history/malta-cbd-import-controls-2026/), customs
+      explained that non-medical CBD products also need compliance with their own product
+      regulations and documentation.[@customs26]
     sources:
-      - cap628
+      - cap101
+      - cap537
+      - customs26
   planting:
     seeds: legal
     seeds_trade: open
@@ -155,50 +236,57 @@ context:
     clones_trade: unclear
     text: >-
       The cannabis authority states that for Maltese drug law cannabis does not include the
-      seeds, while every cannabis plant falls within the definition.[@arucfaq] Adults may grow four
-      plants per household; the authority's guidance read here does not say where cuttings may
-      be obtained. Seeds, being outside the definition, are not subject to the ban on selling
-      cannabis.[@arucfaq]
+      seeds, while every cannabis plant falls within the definition.[@arucfaq] Adults may grow
+      four plants per household; the authority's guidance read here does not say where cuttings
+      may be obtained. Seeds, being outside the definition, are not subject to the ban on
+      selling cannabis.[@arucfaq]
     sources:
       - arucfaq
   clubs:
     status: regulated
     text: >-
       Non-profit Cannabis Harm Reduction Associations are the only legal source besides home
-      growing. They are licensed by the cannabis authority ARUC, and the first began handing
-      out cannabis in January 2024; in October 2026 the authority listed 24 with an operating
-      permit, spread over towns on Malta and one site on Gozo.[@chras,aruc] An association may have at most
-      500 members, who must be residents with a Maltese identity or residence card and may
-      belong to only one; tourists cannot join.[@cap628] Members may receive up to 7 g a day and 50 g a
-      month. Nothing may be consumed on the premises, advertising is banned, and since 2025
-      the premises must stand 250 metres from schools, sports facilities and youth centres.[@cap628,mi25]
+      growing. They are licensed by the cannabis authority ARUC, and the first began handing out
+      cannabis in January 2024; in October 2026 the authority listed 24 with an operating
+      permit, spread over towns on Malta and one site on Gozo.[@chras,aruc] An association may
+      have at most 500 members, who must be residents with a Maltese identity or residence card
+      and may belong to only one; tourists cannot join.[@cap537] Members may receive up to 7 g a
+      day and 50 g a month. Nothing may be consumed on the premises, advertising is banned, and
+      since 2025 the premises must stand 250 metres from schools, sports facilities and youth
+      centres.[@cap537,mi25]
     sources:
       - chras
       - aruc
-      - cap628
+      - cap537
       - mi25
   culture:
     text: >-
-      Maltese has its own hemp word, qanneb, from Arabic, familiar through ropes, textiles and
-      birdseed; the 2021 reform literally replaced qanneb indjan with cannabis in the drug
-      law.[@qanneblg,cap628] The island's cannabis culture is the licensed association scene traced in
+      Maltese has its own hemp word, [qanneb](/culture/language/qanneb/), from Arabic, familiar
+      through ropes, textiles and birdseed; the 2021 reform literally replaced qanneb indjan
+      with cannabis in the drug law.[@qanneblg,act21] The island's cannabis culture is the
+      licensed association scene traced in
       [cannabis-social-clubs](/culture/traditions/cannabis-social-clubs/), whose Maltese
-      associations began handing out cannabis in January 2024.[@chras]
+      associations began handing out cannabis in January 2024.[@chras] A [survey published in
+      December 2025](/history/malta-population-survey-published-2025/) examined 2023 substance
+      use among residents aged eighteen–sixty-five, using about 3,400 completed
+      questionnaires.[@survey25]
     sources:
       - qanneblg
-      - cap628
+      - act21
       - chras
+      - survey25
   driving:
     status: limit
     text: >-
-      A law in force since 10 March 2026 sets a permitted level of 2 microgrammes of THC per
-      litre of blood for ordinary drivers.[@act2026] Drivers of commercial vehicles, buses, coaches and
-      vehicles carrying passengers for a fee have no such allowance and are punished on
-      testing positive. Police may now require an oral-fluid drug test at random, without
-      suspicion of the particular driver, and must test any driver involved in a serious
-      accident; a driver who tests positive for THC may be sent for a blood test.[@act2026] A medical
-      cannabis card or prescription must be shown after a positive test but does not exempt
-      the driver from responsibility.[@act2026]
+      A law in force since [10 March 2026](/history/malta-drug-driving-law-2026/) sets a
+      permitted level of 2 microgrammes of THC per litre of blood for ordinary
+      drivers.[@act2026] Drivers of commercial vehicles, buses, coaches and vehicles carrying
+      passengers for a fee have no such allowance and are punished on testing positive. Police
+      may now require an oral-fluid drug test at random, without suspicion of the particular
+      driver, and must test any driver involved in a serious accident; a driver who tests
+      positive for THC may be sent for a blood test.[@act2026] A medical cannabis card or
+      prescription must be shown after a positive test but does not exempt the driver from
+      responsibility.[@act2026]
     sources:
       - act2026
   visitors:
@@ -206,49 +294,56 @@ context:
     text: >-
       The associations are for residents only. The cannabis authority states that tourists may
       not become members and that proof of residence means an identity card or residence card
-      issued by the Maltese government; a person may belong to one association at a time.[@chras] With
-      no shops, a visitor has no legal source. Consuming cannabis in public is
-      prohibited and fined €235 under the cannabis act.[@cap628,mt]
+      issued by the Maltese government; a person may belong to one association at a
+      time.[@chras] With no shops, a visitor has no legal source. Consuming cannabis in public
+      is prohibited and fined €235 under the cannabis act.[@cap537,mt]
     sources:
       - chras
-      - cap628
+      - cap537
       - mt
   arrests:
     text: >-
       The EU drugs agency's statistical bulletin records 73 cannabis-related drug law offences
-      in Malta in 2024, against 48 in 2023.[@euda_dlo] Of the 2024 total, 1 were for use or possession
-      for use. Before the 2021 reform the figure ran in the hundreds, 356 in 2018 and 278 in
-      2019. Countries count these differently (offences or offenders, criminal or
+      in Malta in 2024, against 48 in 2023.[@euda_dlo] Of the 2024 total, 1 were for use or
+      possession for use. Before the 2021 reform the figure ran in the hundreds, 356 in 2018 and
+      278 in 2019. Countries count these differently (offences or offenders, criminal or
       administrative), so the figure is not comparable across borders.[@euda_dlo]
     sources:
       - euda_dlo
   black_market:
     text: >-
-      The EU drugs agency's statistical bulletin records 214 kg of herbal cannabis and
-      4,316 kg of cannabis resin seized in Malta in 2024, against 154 kg and 1.5 kg in
-      2023.[@euda_szr] Herbal cannabis was seized on 88 occasions and resin on 20. Plant seizures came to 244 plants. Countries record seizures differently, so the figures are
-      not comparable across borders.[@euda_szr]
+      The EU drugs agency's statistical bulletin records 214 kg of herbal cannabis and 4,316 kg
+      of cannabis resin seized in Malta in 2024, against 154 kg and 1.5 kg in 2023.[@euda_szr]
+      Herbal cannabis was seized on 88 occasions and resin on 20. Plant seizures came to 244
+      plants. Countries record seizures differently, so the figures are not comparable across
+      borders.[@euda_szr]
     sources:
       - euda_szr
 sources:
   euda_dlo:
-    title: "EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)"
+    title: 'EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)'
     url: https://www.euda.europa.eu/data/stats2026/dlo_en
   act2026:
-    title: Act II of 2026 — Various Laws relating to the Prevention of Driving under the influence of Alcohol and Drugs (Amendment) Act (legislation.mt)
+    title: >-
+      Act II of 2026 — Various Laws relating to the Prevention of Driving under the influence of
+      Alcohol and Drugs (Amendment) Act (legislation.mt)
     url: https://legislation.mt/eli/act/2026/2/eng
   chras:
     title: ARUC — Associations holding an operating permit
     url: https://aruc.mt/operational-chras/
   mi25:
-    title: The Malta Independent — Parliament unanimously passes new cannabis legislation amendments (12 May 2025)
-    url: https://www.independent.com.mt/articles/2025-05-12/local-news/Parliament-unanimously-passes-new-cannabis-legislation-amendments-6736270062
+    title: >-
+      The Malta Independent — Parliament unanimously passes new cannabis legislation amendments
+      (12 May 2025)
+    url: >-
+      https://www.independent.com.mt/articles/2025-05-12/local-news/Parliament-unanimously-passes-new-cannabis-legislation-amendments-6736270062
   arucfaq:
     title: Authority on the Responsible Use of Cannabis — FAQs
     url: https://aruc.mt/faqs/
-  cap628:
-    title: Authority on the Responsible Use of Cannabis Act (Cap. 628)
-    url: https://legislation.mt/eli/cap/628/eng
+  cap537:
+    title: Malta — Drug Dependence (Treatment not Imprisonment) Act, Cap. 537, current consolidation
+    url: https://legislation.mt/eli/cap/537/eng/pdf
+    locator: 'Articles 4, 7 and 7A: personal amounts, public use, household plants and associations'
   aruc:
     title: ARUC — Authority for the Responsible Use of Cannabis
     url: https://aruc.mt/
@@ -260,7 +355,9 @@ sources:
     title: MaltaToday — 39 fined for smoking cannabis in public
     url: https://www.maltatoday.com.mt/news/national/132682/39_fined_for_smoking_cannabis_in_public
   euda_szr:
-    title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
+    title: >-
+      EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of
+      seizures)
     url: https://www.euda.europa.eu/data/stats2026/szr_en
   qanneblg:
     title: Wiktionary — qanneb (Maltese hemp, from Arabic qinnab)
@@ -273,5 +370,42 @@ sources:
     title: ARUC — Directive 1 version 4.0, 16 January 2026
     url: https://aruc.mt/wp-content/uploads/2026/01/Directive-1-v4.0-16.01.2026.pdf
     locator: >-
-      Standard IX.3–IX.5, pp. 32–34: specific processing approval, solventless solid products and
-      potency-dependent flower equivalents
+      Standard IX.3–IX.5, pp. 32–34: specific processing approval, solventless solid products
+      and potency-dependent flower equivalents
+  cap101:
+    title: Malta — Dangerous Drugs Ordinance, Cap. 101, current consolidation
+    url: https://legislation.mt/eli/cap/101/eng/pdf
+    locator: 'Articles 2, 8, 22(2): cannabis definition, offences and court-specific penalties'
+  medreg:
+    title: Malta Medicines Authority — Cannabis for medicinal and research purposes, 2026 guidance
+    url: https://medicinesauthority.gov.mt/cannabisformedicinalandresearchpurposes?l=1
+  medlist:
+    title: Malta Medicines Authority — Approved medicinal cannabis products, updated 21 August 2026
+    url: https://medicinesauthority.gov.mt/file.aspx?f=8266
+  customs26:
+    title: Malta Parliament — Oral questions, sitting 441, 4 March 2026, questions 34761–34763
+    url: https://parlament.mt/media/138134/20260304_441o_par.pdf
+  survey25:
+    title: Malta Government — Publication of the 2023 general population survey, 26 December 2025
+    url: https://www.gov.mt/en/Government/DOI/Press%20Releases/Pages/2025/12/26/PR252316en.aspx
+  act21:
+    title: Malta — Original Act LXVI/2021, articles 24–25
+    url: https://www.parlament.mt/media/115003/act-lxvi-cannabis.pdf
+words:
+  - word: qanneb
+    lang: Maltese
+    meaning: hemp; traditional word
+    atlas: qanneb
+    sources:
+      - qanneblg
+  - word: qanneb indjan
+    lang: Maltese
+    meaning: Indian hemp; former statutory term
+    atlas: qanneb
+    sources:
+      - act21
+  - word: cannabis
+    lang: English
+    meaning: current statutory term
+    sources:
+      - cap101
