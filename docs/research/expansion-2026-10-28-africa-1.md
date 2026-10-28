@@ -16,7 +16,13 @@ All batch files verified free of others' uncommitted changes at start.
 - Two articles: `dr-congo-public-health-medical-exception-2018.md` (Law 18/035) and `dr-congo-medical-2021.md` (Order 1250: five-year authorisations, 0.2% THC, industrial scale).
 - Audit 0/0; country + both article review builds verified.
 - Left: driving/arrests researched sections (no sources found), 1920s–1990s history decades.
-## tz — pending
+## tz — committed
+- Fixed 2 audit errors (`fine_min` on small-tier notes) + 4 warnings (`term` on all 4 table rows; medical/consequences expanded; culture sentences cited). Pre-existing rows fixed in own file.
+- Per-sentence cites on 9 flagged texts; products folded into recreational/medical/hemp and deleted; new hemp (status none — fibre in 2026 definition, CBD treated as cannabis), arrests (69 suspects Jun–Sep 2023; 17 detained Sep–Oct 2024), culture (bangi + smokers-cough atlas, 1935/2012/2026 history links).
+- Words (Bangi/Swahili, wiki-verified "bhang (Swahili: bangi)"). Black market extended with DCEA 2024 record figures.
+- Two articles: `tanzania-drug-law-amendment-2012.md` (life terms, 17A/17B, s.17 tier) and `tanzania-seed-possession-law-2026.md` (seeds/stalk/fibre in definition, s.11 thirty-year floor).
+- Audit 0/0; country + both article review builds verified. Blocked twice mid-work by others' uncommitted breakage (np `[@ndca]`, transient answers crash); green on retry.
+- Left: 1940s–2000s history decades (1940s/1950s/1960s/1980s/2000s).
 ## ke — pending
 ## ao — pending
 ## ne — pending

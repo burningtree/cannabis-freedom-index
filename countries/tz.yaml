@@ -15,6 +15,8 @@ scores:
   sharing: 0
   consumption: 1
   access: 0
+words:
+  - { word: Bangi, lang: Swahili, meaning: "cannabis; the Swahili word, linked to bhang and Indian Ocean exchange", sources: [wiki] }
 segments:
   possession:
     text: >-
@@ -30,7 +32,8 @@ segments:
     penalties:
       - label: Small quantity proved for personal consumption
         treatment: criminal
-        fine: 500000
+        term: Possession
+        fine_min: 500000
         prison: 3 years
         note: Fine of at least 500,000 shillings, a three-year prison term, or both
   cultivation:
@@ -45,6 +48,7 @@ segments:
     penalties:
       - label: Unlawful cultivation of prohibited plants (mainland)
         treatment: criminal
+        term: Cultivation
         prison_min: 30 years
         note: At least thirty years in prison; no fine tier stated
   enforcement:
@@ -70,6 +74,7 @@ segments:
     penalties:
       - label: Trafficking not more than 100 kg of cannabis
         treatment: criminal
+        term: Trafficking
         prison_min: 30 years
         note: At least thirty years; larger amounts fall in the life-imprisonment tier
   consumption:
@@ -84,47 +89,64 @@ segments:
     penalties:
       - label: Small-quantity consumption outside the listed group
         treatment: criminal
-        fine: 500000
+        term: Consumption
+        fine_min: 500000
         prison: 3 years
         note: Fine of at least 500,000 shillings, three years in prison, or both
   access:
-    text: None.
+    text: >-
+      No lawful access: cannabis and CBD are prohibited, with no medical programme or licensing
+      route.[@uk]
     sources:
       - uk
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. Mainland law has a small-personal-use tier — a fine
+      There is no legal recreational supply, and CBD is treated as cannabis — nothing is lawfully
+      produced or sold.[@act2023,uk] Mainland law has a small-personal-use tier — a fine
       of at least 500,000 shillings, three years, or both — but the burden is on the holder to
-      prove personal consumption, and trafficking penalties start at thirty years.[@act2023]
-      Long sentences have been imposed for cannabis, including thirty years for cultivation in
-      a 2022 case.[@ham2022]
+      prove personal consumption, and trafficking penalties start at thirty
+      years.[@act2023] Long sentences have been imposed for cannabis, including thirty years for
+      cultivation in a 2022 case.[@ham2022] The 2012 amendments made life imprisonment the
+      penalty for possession and trafficking ([2012
+      amendment](/history/tanzania-drug-law-amendment-2012/)).
     sources:
       - act2023
       - ham2022
+      - uk
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception exists: the October 2026 amendments bring mature stalk and
+      fibre into the cannabis definition, and CBD is treated as cannabis.[@act2026,uk]
+    sources:
+      - act2026
+      - uk
   production:
     status: none
     text: >-
-      Mainland law prohibits unauthorised cannabis cultivation. The drug-law amendments effective 2
-      October 2026 also broaden seed controls; the existing minimum cultivation sentence is thirty
-      years.
+      Mainland law prohibits unauthorised cannabis cultivation.[@act2023] The drug-law amendments
+      effective 2 October 2026 also broaden seed controls; the existing minimum cultivation sentence
+      is thirty years.[@act2026,registry2026]
     sources:
       - act2023
       - act2026
       - registry2026
-  products:
-    text: None; CBD is treated as cannabis.
-    sources:
-      - uk
   medical:
-    text: No medical cannabis.
+    text: >-
+      No medical cannabis programme exists: the drug law punishes possession, cultivation and
+      trafficking with no medical channel, and CBD is treated as cannabis.[@wiki,uk,act2023]
     sources:
       - wiki
       - uk
+      - act2023
   consequences:
-    text: A conviction is a criminal record.
+    text: >-
+      A conviction is a criminal record.[@wiki] Owners or occupiers who let premises be used for
+      drugs face life imprisonment under the provisions the 2012 amendments introduced.[@act2023]
     sources:
       - wiki
+      - act2023
   planting:
     seeds: illegal
     seeds_trade: banned
@@ -144,7 +166,7 @@ context:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@wiki,uk]
     sources:
       - wiki
       - uk
@@ -159,29 +181,58 @@ context:
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 2,303,200 kg of herbal
-      cannabis seized in 2024, against 1,757,560 kg in 2023. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not comparable
-      across borders.
+      cannabis seized in 2024, against 1,757,560 kg in 2023.[@unodc_szr] The UN publishes them as
+      kilogram equivalents, and countries count seizures differently, so the figures are not
+      comparable across borders.[@unodc_szr] At home the drug authority reported a record 2,300
+      tonnes of all drugs seized in 2024, and keeps destroying farms: 3,007.5 hectares in a
+      September–October 2024 crackdown alone.[@citizen25,xinhua24]
     sources:
       - unodc_szr
+      - citizen25
+      - xinhua24
+  arrests:
+    text: >-
+      Between June and September 2023 the drug authority arrested at least 69 suspects for
+      trafficking cannabis across seven regions.[@legitimate23] A September–October 2024 crackdown
+      detained 17 suspects connected with cannabis cultivation and trafficking.[@xinhua24]
+    sources:
+      - legitimate23
+      - xinhua24
   driving:
     status: impairment
     text: >-
       On the mainland, the Road Traffic Act's 2023 revised edition section 53 prohibits driving,
       attempting to drive or being in charge on a road or public place while drugs make proper
-      control impossible. Section 75(2)(b) provides TSh15,000–50,000 or two–five years in
-      prison; section 33(1)(a) requires licence cancellation and disqualification for at least
-      three years on a first section 53 conviction. These are the published 2023 provisions, not
-      a verified 2026 ticket tariff. Zanzibar has a separate Road Transport Act: section
-      123(1)(a) also uses impaired control, and its published 2003 text provides a first-offence
-      minimum fine equivalent to US$75 in shillings or at least six months in prison, or both.
-      Repeat convictions normally entail at least fifteen months' disqualification, subject to
-      the court's special-reasons exception. Later Zanzibar amendments, current testing
-      procedures and a numeric THC cutoff were not verified; alcohol thresholds must not be
-      applied to cannabis.
+      control impossible.[@traffic2023] Section 75(2)(b) provides TSh15,000–50,000 or two–five
+      years in prison; section 33(1)(a) requires licence cancellation and disqualification for at
+      least three years on a first section 53 conviction.[@traffic2023] These are the published 2023
+      provisions, not a verified 2026 ticket tariff.[@traffic2023] Zanzibar has a separate Road
+      Transport Act: section 123(1)(a) also uses impaired control, and its published 2003 text
+      provides a first-offence minimum fine equivalent to US$75 in shillings or at least six months
+      in prison, or both.[@zanzibar_traffic] Repeat convictions normally entail at least fifteen
+      months' disqualification, subject to the court's special-reasons exception.[@zanzibar_traffic]
+      Later Zanzibar amendments, current testing procedures and a numeric THC cutoff were not
+      verified; alcohol thresholds must not be applied to cannabis.[@zanzibar_traffic]
     sources:
       - traffic2023
       - zanzibar_traffic
+  culture:
+    text: >-
+      The Swahili word for the plant is [bangi](/culture/language/bangi/), tied to bhang and the
+      Indian Ocean exchange rather than any single voyage.[@wiki] Smoking was already established
+      on the coast by the 19th century, carried inland by Nyamwezi traders, before colonial
+      Tanganyika consolidated its drug law in the [Dangerous Drugs Ordinance of
+      1935](/history/tanganyika-dangerous-drugs-ordinance-1935/).[@wiki] The 2012 amendments then
+      made life imprisonment the penalty for possession and trafficking ([2012
+      amendment](/history/tanzania-drug-law-amendment-2012/)),[@act2023] and the [2026 seed
+      controls](/history/tanzania-seed-possession-law-2026/) closed the last definitional
+      gap.[@act2026] Nineteenth-century travellers already suspected the loud coughing after a
+      pipe was put on — the atlas keeps those accounts in [the smoker's
+      cough](/culture/traditions/the-smokers-cough/).[@wiki]
+    sources:
+      - wiki
+      - act2023
+      - act2026
 sources:
   registry2026:
     title: Tanzania Office of the Attorney General — Act 6 of 2026 registry
@@ -239,6 +290,12 @@ sources:
     title: The Citizen — DCEA seizes record-breaking 2,300 tonnes of drugs in 2024 (10 January 2025)
     url: >-
       https://thecitizen.co.tz/tanzania/news/national/dcea-seizes-record-breaking-2-300-tonnes-of-drugs-in-2024-4884678
+  xinhua24:
+    title: "Xinhua via African News Agency — Tanzanian authorities destroy over 3,000 hectares of cannabis (11 October 2024)"
+    url: https://africannewsagency.com/special-for-cafs-tanzanian-authorities-destroy-over-3000-hectares-of-cannabis/
+  legitimate23:
+    title: "The Legitimate — Over 60 suspects arrested in Tanzania in 3 months on charges of trafficking cannabis (15 October 2023)"
+    url: https://www.thelegitimatenews.com/over-60-suspects-arrested-in-tanzania-in-3-months-on-charges-of-trafficking-cannabis/
   act2023:
     type: law
     title: Drug Control and Enforcement Act, Chapter 95, revised edition 2023
