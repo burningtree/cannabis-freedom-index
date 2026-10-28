@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 400
 recreational: death
 medical: limited
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Cannabis remains criminal: personal plant possession can bring one to six months, a JOD200–500
   fine, or both; resin carries one to three years plus a fine. First offences leave no criminal
@@ -21,7 +21,7 @@ segments:
       Under the current schedules, cannabis plant material is in table 3: possession for personal
       use carries one to six months in prison, a JOD200–500 fine, or both. Cannabis resin is in
       table 1: personal possession carries one to three years and a JOD1,000–3,000 fine. A first
-      offence creates no criminal precedent or security record.
+      offence creates no criminal precedent or security record.[@l23,schedules26]
     sources:
       - l23
       - schedules26
@@ -29,55 +29,115 @@ segments:
     penalties:
       - label: Personal possession of cannabis plant (table 3)
         treatment: criminal
+        term: Personal possession
         fine: 500
         prison_min: 1 month
         prison: 6 months
         note: One to six months, JOD200–500 fine, or both; first offence leaves no record
       - label: Personal possession of cannabis resin (table 1)
         treatment: criminal
+        term: Personal possession
         fine: 3000
         prison_min: 1 year
         prison: 3 years
         note: One to three years and a JOD1,000–3,000 fine
   cultivation:
     text: >-
-      Growing cannabis for personal use is a separate, lesser offence from growing for trafficking.
-      The current table-3 plant classification gives personal-use growing the same one-to-six-month
-      prison term, JOD200–500 fine, or both as personal plant possession. Growing for trade carries
-      at least fifteen years of temporary hard labour plus a fine. The law separately allows plant
-      and seed handling under licences governed by regulation.
+      Growing cannabis for personal use is a separate, lesser offence from growing for
+      trafficking.[@l23] The current table-3 plant classification gives personal-use growing the
+      same one-to-six-month prison term, JOD200–500 fine, or both as personal plant
+      possession.[@l23,schedules26] Growing for trade carries at least fifteen years of temporary
+      hard labour plus a JOD10,000–20,000 fine, and aggravated trade life imprisonment with hard
+      labour and JOD20,000–30,000.[@l23] The law separately allows plant and seed handling under
+      licences governed by regulation.[@l23]
     sources:
       - l23
       - schedules26
+    currency: JOD
+    penalties:
+      - label: Growing for personal use (table 3)
+        treatment: criminal
+        term: Personal cultivation
+        prison_min: 1 month
+        prison: 6 months
+        fine_min: 200
+        fine: 500
+        note: One to six months, JOD200–500, or both; first offence leaves no record
+      - label: Growing for trade
+        treatment: criminal
+        term: Cultivation for trade
+        prison_min: 15 years
+        fine_min: 10000
+        fine: 20000
+        note: Temporary hard labour and a fine
+      - label: Aggravated cultivation for trade
+        treatment: criminal
+        term: Aggravated cultivation
+        fine_min: 20000
+        fine: 30000
+        note: Life imprisonment with hard labour and a JOD20,000–30,000 fine
   enforcement:
     text: >-
-      Personal-use offences can lead to prison. Courts may substitute inpatient or outpatient
-      treatment, and a first offence leaves no criminal precedent or security record. People who
-      seek treatment themselves or through family before being caught are protected from
-      prosecution.
+      Personal-use offences can lead to prison.[@l23] Courts may substitute inpatient or outpatient
+      treatment, and a first offence leaves no criminal precedent or security record.[@l23] People
+      who seek treatment themselves or through family before being caught are protected from
+      prosecution.[@l23]
     sources:
       - l23
   sharing:
     text: >-
-      The law defines drug distribution to include giving drugs without payment. The distribution
-      offence carries at least five years of temporary hard labour and at least a JOD5,000 fine,
-      with higher minimums where minors are involved. Trafficking carries at least fifteen years
-      plus a fine; specified international-gang cases carry mandatory death.
+      The law defines drug distribution to include giving drugs without payment.[@l23] The
+      distribution offence carries at least five years of temporary hard labour and at least a
+      JOD5,000 fine, with higher minimums where minors are involved.[@l23] Trafficking carries at
+      least fifteen years plus a fine; specified international-gang cases carry mandatory
+      death.[@l23]
     sources:
       - l23
+    currency: JOD
+    penalties:
+      - label: Distribution or promotion, including gifts
+        treatment: criminal
+        term: Distribution
+        prison_min: 5 years
+        fine_min: 5000
+        note: Temporary hard labour and a fine
+      - label: Distribution involving a minor
+        treatment: criminal
+        term: Distribution
+        prison_min: 10 years
+        fine_min: 10000
+      - label: Trafficking
+        treatment: criminal
+        term: Trafficking
+        prison_min: 15 years
+        fine_min: 10000
+        fine: 20000
+        note: Temporary hard labour and a fine
+      - label: Aggravated trafficking
+        treatment: criminal
+        term: Trafficking
+        fine_min: 20000
+        fine: 30000
+        note: Life imprisonment with hard labour and a fine
+      - label: International drug gang or linked international crime
+        treatment: criminal
+        term: Trafficking
+        death: true
+        note: Mandatory death under Article 20
   consumption:
     text: >-
-      Use and acts intended for personal use are criminal offences, with the punishment depending on
-      the substance’s schedule. Courts may order treatment instead of punishment. A person who seeks
-      treatment before being caught, directly or through family, is protected from prosecution.
+      Use and acts intended for personal use are criminal offences, with the punishment depending
+      on the substance’s schedule.[@l23,schedules26] Courts may order treatment instead of
+      punishment.[@l23] A person who seeks treatment before being caught, directly or through
+      family, is protected from prosecution.[@l23]
     sources:
       - l23
       - schedules26
   access:
     text: >-
-      Recreational supply remains prohibited. Separate 2023 rules provide for approval of CBD
-      natural medicines and preparations containing no more than 0.3% THC, dispensed on a valid
-      medical prescription, with regulatory controls on imports and exports.
+      Recreational supply remains prohibited.[@l23] Separate 2023 rules provide for approval of
+      CBD natural medicines and preparations containing no more than 0.3% THC, dispensed on a valid
+      medical prescription, with regulatory controls on imports and exports.[@cbd23]
     sources:
       - l23
       - cbd23
@@ -95,31 +155,21 @@ context:
   death_penalty:
     text: >-
       Article 20 requires death for specified aggravated trafficking offences involving
-      international drug gangs or links to other international crimes. Ordinary personal use is
-      dealt with separately under article 9. The international-gang death clause also appeared in
-      the law replaced in 2016.
+      international drug gangs or links to other international crimes.[@l23] Ordinary personal use
+      is dealt with separately under article 9.[@l23] The international-gang death clause also
+      appeared in the law replaced in 2016.[@oldlaw]
     sources:
       - l23
       - oldlaw
   production:
     status: medical
     text: >-
-      Medical, scientific and industrial drug manufacture requires authorisation. Controlled plants
-      and seeds are prohibited except through the licensing authority provided by the amended law.
-      The 2023 CBD rules set manufacturing and raw-material requirements for medicines, external-use
-      cosmetics and medical devices.
+      Medical, scientific and industrial drug manufacture requires authorisation.[@l23] Controlled
+      plants and seeds are prohibited except through the licensing authority provided by the amended
+      law.[@l23] The 2023 CBD rules set manufacturing and raw-material requirements for medicines,
+      external-use cosmetics and medical devices.[@cbd23]
     sources:
       - l23
-      - cbd23
-  products:
-    text: >-
-      The regulator’s schedules exclude CBD-dominant oils, extracts and preparations containing no
-      more than 0.3% delta-9 THC from the controlled-drug tables. The 2023 instructions separately
-      require product approval and prescriptions for CBD natural medicines and preparations. They
-      also regulate external-use cosmetics and devices and permit specified hemp seed foods with THC
-      and CBD limits.
-    sources:
-      - schedules26
       - cbd23
   medical:
     text: >-
@@ -130,11 +180,26 @@ context:
       controlled-prescription form.[@cbd_reprint]
     sources:
       - cbd_reprint
+  hemp:
+    status: standard
+    text: >-
+      No THC limit makes a cannabis plant legal hemp: controlled plants and their seeds remain
+      prohibited except through the licensing authority.[@l23] The regulator's schedules do exclude
+      CBD-dominant oils, extracts and preparations containing no more than 0.3% delta-9 THC from the
+      controlled-drug tables; that line applies to products, not to a hemp crop.[@schedules26] The 2023 instructions require product approval and
+      prescriptions for CBD medicines, regulate external-use cosmetics and devices, and permit
+      specified hemp seed foods with THC and CBD limits; these are product rules, not a licence to
+      grow hemp.[@cbd23]
+    sources:
+      - l23
+      - schedules26
+      - cbd23
   consequences:
     text: >-
       A first personal-use offence leaves no criminal precedent or security record, while
-      prosecution and a sentence remain possible. Courts may substitute treatment; the law protects
-      the identity and treatment information of people receiving it and penalises disclosure.
+      prosecution and a sentence remain possible.[@l23] Courts may substitute treatment; the law
+      protects the identity and treatment information of people receiving it and penalises
+      disclosure.[@l23]
     sources:
       - l23
   planting:
@@ -144,9 +209,9 @@ context:
     clones_trade: banned
     text: >-
       The amended narcotics law prohibits controlled plants and their seeds throughout growth, with
-      an exception for licensed handling under regulation. Personal-use cultivation has a separate
-      penalty from cultivation for trade. The 2023 food rules concern hulled, nonviable hemp seeds
-      and specified seed products.
+      an exception for licensed handling under regulation.[@l23] Personal-use cultivation has a
+      separate penalty from cultivation for trade.[@l23] The 2023 food rules concern hulled,
+      nonviable hemp seeds and specified seed products.[@cbd23]
     sources:
       - l23
       - cbd23
@@ -154,44 +219,49 @@ context:
     status: none
     text: >-
       Collective recreational supply falls under offences against unauthorised distribution,
-      including gifts. Cultivation for trade carries at least fifteen years of temporary hard labour
-      and a fine; the personal-use growing offence is separate.
+      including gifts.[@l23] Cultivation for trade carries at least fifteen years of temporary hard
+      labour and a fine; the personal-use growing offence is separate.[@l23]
     sources:
       - l23
   visitors:
     status: none
     text: >-
-      Recreational supply remains prohibited. Personal cannabis plant possession carries one to six
-      months, a JOD200–500 fine, or both; cannabis resin carries one to three years plus a
-      JOD1,000–3,000 fine. A first offence leaves no criminal precedent or security record.
+      Recreational supply remains prohibited.[@l23] Personal cannabis plant possession carries one
+      to six months, a JOD200–500 fine, or both; cannabis resin carries one to three years plus a
+      JOD1,000–3,000 fine.[@l23,schedules26] A first offence leaves no criminal precedent or
+      security record.[@l23]
     sources:
       - l23
       - schedules26
   arrests:
     text: >-
-      The annual report of the National Centre for Human Rights counted 25,776 drug cases
-      of all kinds in 2025, down from 38,782 in 2024. Cases of possession and use fell by
-      about 39% and trafficking offences by about 22%. The figures are not broken down by
-      drug.
+      Police recorded 22,031 drug crimes in 2025, down 12.8 per cent from 25,260 in 2024, with
+      possession and use falling 10 per cent to 15,720 and trafficking 19 per cent to
+      6,311.[@psd26] The 2024 total covered 38,782 people and included 3,000 kg of hashish and
+      262 kg of marijuana; 744 people entered rehabilitation.[@petra25] The figures cover all drugs
+      and are not broken down by cannabis.[@psd26]
     sources:
-      - nchr26
+      - psd26
+      - petra25
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 263 kg of herbal
       cannabis seized in 2024, against 70.5 kg in 2023, and 6,243 kg of cannabis resin
-      seized in 2023, against 7,313 kg in 2022. The UN publishes them as kilogram
-      equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      seized in 2023, against 7,313 kg in 2022.[@unodc_szr] The anti-narcotics department reported
+      3,000 kg of hashish and 262 kg of marijuana seized in 2024, alongside 27.5 million Captagon
+      pills.[@petra25] The figures use different categories and counting methods, so they are not
+      directly comparable.[@unodc_szr,petra25]
     sources:
       - unodc_szr
+      - petra25
   driving:
     status: impairment
     text: >-
       The amended Traffic Law No. 18 of 2023, in force from 12 September 2023, punishes
       driving under the influence of alcohol or drugs with one to three months in prison,
       a fine of 250 to 500 dinars, or both, as the judge decides; the judge may also
-      confiscate the licence for two months. The law gives public security officers the
-      power to test a detained driver for alcohol and drugs.
+      confiscate the licence for two months.[@roya_traffic23,jn_traffic23] The law gives public
+      security officers the power to test a detained driver for alcohol and drugs.[@roya_traffic23,jn_traffic23]
     sources:
       - roya_traffic23
       - jn_traffic23
@@ -206,6 +276,14 @@ sources:
     locator: >-
       Articles 2–6, 9, 15, 19–20 and 39; final publication and commencement notes for the 2016 law
       and 2021 amendment
+  psd26:
+    title: "Khaberni — Drug crimes in Jordan decline by 12.8% during 2025"
+    url: https://www.khaberni.com/news/803979-decline-in-drug-crimes-in-jordan-by-128-during-2025
+    locator: "22,031 crimes in 2025 against 25,260 in 2024; 15,720 possession/use; 6,311 trafficking."
+  petra25:
+    title: "Roya News — Over 38,000 arrests: Anti-Narcotics Department in Jordan releases annual report (2025)"
+    url: "https://en.royanews.tv/news/56594/Over-38,000-arrests:-Anti-Narcotics-Department-in-Jordan-releases-annual-report"
+    locator: "2024: 25,260 cases, 38,782 people, 3,000 kg hashish, 262 kg marijuana, 744 in rehabilitation."
   nchr26:
     title: The Star (Xinhua) — Jordan sees 34 pct drop in drug-related crimes in 2025 (16 September 2026)
     url: >-
