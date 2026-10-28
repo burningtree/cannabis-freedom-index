@@ -3,11 +3,11 @@ region: Asia
 iso_numeric: 512
 recreational: death
 medical: none
-updated: 2026-10-25
+updated: "2026-10-28"
 summary: >-
   Personal possession, use and growing carry one to three years and a fine, with treatment
-  alternatives for established dependence. Unpaid supply carries seven to fifteen years;
-  specified import and production offences for trade can bring death or life imprisonment.
+  alternatives for established dependence. Unpaid supply carries seven to fifteen years; specified
+  import and production offences for trade can bring death or life imprisonment.
 scores:
   possession: 0
   cultivation: 0
@@ -44,11 +44,11 @@ segments:
         fine: 7000
   cultivation:
     text: >-
-      Articles 3 and 7 prohibit unauthorised growing of listed plants and reserve growing licences for
-      specified public bodies, colleges and research institutions for medical or scientific purposes.
-      Cannabis is expressly listed. Personal-use growing carries one to three years and a fine of
-      1,000–5,000 rials under article 41; growing for trade falls under article 37’s death-or-life
-      range and fine of 35,000–60,000 rials.[@rd67]
+      Articles 3 and 7 prohibit unauthorised growing of listed plants and reserve growing licences
+      for specified public bodies, colleges and research institutions for medical or scientific
+      purposes. Cannabis is expressly listed. Personal-use growing carries one to three years and a
+      fine of 1,000–5,000 rials under article 41; growing for trade falls under article 37’s
+      death-or-life range and fine of 35,000–60,000 rials.[@rd67]
     sources:
       - rd67
     currency: OMR
@@ -67,22 +67,24 @@ segments:
         fine_min: 35000
         fine: 60000
         note: Death or life imprisonment
+        life: possible
   enforcement:
     text: >-
       Personal possession, growing and use carry one to three years, with treatment alternatives for
       established dependence. Article 57 separately punishes refusal of a drug-test sample in
       specified circumstances, including possession of drugs or equipment, signs of use in public, a
       prosecution arrest order, or a report by relatives: six months to three years and a fine of
-      100–1,000 rials. Specified import, manufacture and growing offences for trade carry death or life imprisonment.
-      Smuggling for trade and specified aggravated supply cases carry death.[@rd67]
+      100–1,000 rials. Specified import, manufacture and growing offences for trade carry death or
+      life imprisonment. Smuggling for trade and specified aggravated supply cases carry
+      death.[@rd67]
     sources:
       - rd67
   sharing:
     text: >-
-      Under article 39, supplying drugs for consumption or preparing premises for use without payment
-      carries seven to fifteen years and a fine of 5,000–15,000 rials. Article 38 separately sets at
-      least fifteen years and a fine of 10,000–25,000 rials for trading, including transfers made for
-      that purpose, and supply for payment.[@rd67]
+      Under article 39, supplying drugs for consumption or preparing premises for use without
+      payment carries seven to fifteen years and a fine of 5,000–15,000 rials. Article 38 separately
+      sets at least fifteen years and a fine of 10,000–25,000 rials for trading, including transfers
+      made for that purpose, and supply for payment.[@rd67]
     sources:
       - rd67
     currency: OMR
@@ -101,6 +103,7 @@ segments:
         fine_min: 10000
         fine: 25000
         note: At least fifteen years plus the fine
+        life: possible
       - label: Import, export, production, manufacture or growing for trade, Article 37
         treatment: criminal
         term: Trade
@@ -108,12 +111,19 @@ segments:
         fine_min: 35000
         fine: 60000
         note: Death or life imprisonment
+        life: possible
+      - label: Trading in a protected place or to a person lacking capacity, Article 38
+        treatment: criminal
+        term: Trading
+        life: mandatory
+        fine_min: 10000
+        fine: 25000
   consumption:
     text: >-
-      Article 41 expressly punishes unauthorised use with the same one-to-three-year prison range and
-      1,000–5,000-rial fine as personal holdings. Article 43 protects people seeking treatment
-      voluntarily or through specified relatives before they are caught using or prosecuted. Treatment
-      information is confidential under article 44.[@rd67]
+      Article 41 expressly punishes unauthorised use with the same one-to-three-year prison range
+      and 1,000–5,000-rial fine as personal holdings. Article 43 protects people seeking treatment
+      voluntarily or through specified relatives before they are caught using or prosecuted.
+      Treatment information is confidential under article 44.[@rd67]
     sources:
       - rd67
     currency: OMR
@@ -125,38 +135,41 @@ segments:
         prison: 3 years
         fine_min: 1000
         fine: 5000
-        note: Treatment may replace the penalty; voluntary treatment before detection protects from prosecution
+        note: >-
+          Treatment may replace the penalty; voluntary treatment before detection protects from
+          prosecution
   access:
     text: >-
       There is no recreational supply route. Articles 9 and 15 restrict authorised drug dealings to
-      listed medical, pharmaceutical, veterinary, public and research bodies, and article 27 requires
-      a licensed doctor’s prescription for pharmacy dispensing.[@rd67]
+      listed medical, pharmaceutical, veterinary, public and research bodies, and article 27
+      requires a licensed doctor’s prescription for pharmacy dispensing.[@rd67]
     sources:
       - rd67
 context:
   death_penalty:
     text: >-
       Article 37 sets death or life imprisonment and a fine of 35,000–60,000 rials for specified
-      unauthorised import, export, production, manufacture and growing offences for trade. Smuggling
-      for trade and its listed aggravated cases require death. Trading and supplying for payment are
-      separately punished under article 38, starting at fifteen years.[@rd67]
+      unauthorised import, export, production, manufacture and growing for trade.[@rd67] Smuggling
+      for trade and six listed aggravations make death mandatory; article 38 makes life mandatory
+      for trading in protected places or to a person lacking capacity.[@rd67] No possession, use or
+      personal-growing offence carries death or life.[@rd67]
     sources:
       - rd67
   recreational:
     text: >-
-      There is no legal recreational supply. Personal possession, growing and use carry one
-      to three years and a fine of 1,000–5,000 rials, with treatment alternatives for
-      established dependence.[@rd67] Refusing a drug-test sample in specified circumstances
-      brings six months to three years and 100–1,000 rials.[@rd67] Supply without payment
-      brings seven to fifteen years; trading starts at fifteen years.[@rd67]
+      There is no legal recreational supply. Personal possession, growing and use carry one to three
+      years and a fine of 1,000–5,000 rials, with treatment alternatives for established
+      dependence.[@rd67] Refusing a drug-test sample in specified circumstances brings six months to
+      three years and 100–1,000 rials.[@rd67] Supply without payment brings seven to fifteen years;
+      trading starts at fifteen years.[@rd67]
     sources:
       - rd67
   production:
-    status: none
+    status: medical
     text: >-
-      No licensed commercial cannabis production was found. Article 7 permits growing licences only
-      for specified public bodies, colleges and research institutions, for medical or scientific
-      purposes.[@rd67] The law does not create an industrial-hemp or adult-use production route.[@rd67]
+      No commercial cannabis production is known, but article 7 permits growing licences for
+      specified public bodies, colleges and research institutions for medical or scientific
+      purposes.[@rd67] No commercial or patient product licence is known to have been issued.[@rd67]
     sources:
       - rd67
   medical:
@@ -169,12 +182,11 @@ context:
       - rd67
   consequences:
     text: >-
-      Article 61 requires permanent deportation of foreigners convicted under the law, except its
-      residual article 56 offences.[@rd67] It also reaches repeated accusations on serious grounds and
-      acquittals on formal grounds when evidence indicates involvement.[@rd67] Article 60 allows additional
-      measures for convicted Omanis, including health monitoring, residence restrictions, a travel ban
-      and community service; article 51 provides for confiscation of drugs and property or vehicles
-      used in offences.[@rd67]
+      Article 61 requires permanent deportation of foreigners convicted under the law, apart from
+      residual article 56 offences.[@rd67] Drug felonies have a 25-year limitation period, suspended
+      sentences are excluded, periodic testing can last two years, and foreign final convictions
+      count towards recidivism.[@rd67] Confiscation of drugs and property or vehicles used in
+      offences is provided by article 51.[@rd67]
     sources:
       - rd67
   planting:
@@ -184,19 +196,19 @@ context:
     clones_trade: banned
     text: >-
       Article 3 prohibits unauthorised growing and dealings in listed plants, their parts at every
-      growth stage and their seeds.[@rd67] Schedule 5 expressly names male and female cannabis; schedule 6
-      exempts stalk fibres and seeds treated so they cannot germinate.[@rd67] Article 7 permits growing
-      licences for specified public bodies, colleges and research institutions for medical or
-      scientific purposes.[@rd67]
+      growth stage and their seeds.[@rd67] Schedule 5 expressly names male and female cannabis;
+      schedule 6 exempts stalk fibres and seeds treated so they cannot germinate.[@rd67] Article 7
+      permits growing licences for specified public bodies, colleges and research institutions for
+      medical or scientific purposes.[@rd67]
     sources:
       - rd67
   hemp:
     status: none
     text: >-
-      There is no general low-THC cultivation exception: schedule 5 expressly names male and
-      female cannabis, while schedule 6 exempts only stalk fibres and seeds treated so they
-      cannot germinate.[@rd67] Growing licences are confined to specified public bodies,
-      colleges and research institutions for medical or scientific purposes.[@rd67]
+      There is no general low-THC cultivation exception: schedule 5 expressly names male and female
+      cannabis, while schedule 6 exempts only stalk fibres and seeds treated so they cannot
+      germinate.[@rd67] Growing licences are confined to specified public bodies, colleges and
+      research institutions for medical or scientific purposes.[@rd67]
     sources:
       - rd67
   clubs:
@@ -209,55 +221,68 @@ context:
   visitors:
     status: none
     text: >-
-      There is no recreational supply route.[@rd67] Personal possession, use and growing carry one to three
-      years and a fine of 1,000–5,000 rials, with treatment alternatives for established dependence.[@rd67]
-      Article 61 provides for permanent deportation of foreign offenders, apart from the residual
-      article 56 offences.[@rd67]
+      There is no recreational supply route.[@rd67] A small personal import falls under article 41
+      and carries one to three years and a fine of 1,000–5,000 rials; import for trade falls under
+      article 37 and can carry death or life.[@rd67] Article 61 provides for permanent deportation
+      of foreign offenders, apart from residual article 56 offences.[@rd67]
     sources:
       - rd67
   driving:
     status: impairment
     text: >-
       The amended Traffic Law article 50 bis prohibits driving on a road under the influence of
-      alcohol, a narcotic or another psychotropic substance.[@trafficRop] The police-published text provides one to
-      six months’ imprisonment and OMR400–800; illness or inability to work exceeding 30 days raises
-      this to six to twelve months and OMR600–1,200, while death or permanent total disability brings
-      one to three years and OMR1,500–3,000.[@trafficRop] Stronger penalties under other laws are reserved.[@trafficRop] Article
-      49 separately punishes refusal of a breath sample or medical detection test where police have
-      offence-related grounds to believe the person used these substances: one to three months and
-      OMR200–500.[@trafficRop] Article 54 allows the court to withdraw a driving licence for up to one year, or two
-      years for repetition.[@trafficRop] A numeric THC cutoff, specimen-specific confirmation rules and later
+      alcohol, a narcotic or another psychotropic substance.[@trafficRop] The police-published text
+      provides one to six months’ imprisonment and OMR400–800; illness or inability to work
+      exceeding 30 days raises this to six to twelve months and OMR600–1,200, while death or
+      permanent total disability brings one to three years and OMR1,500–3,000.[@trafficRop] Stronger
+      penalties under other laws are reserved.[@trafficRop] Article 49 separately punishes refusal
+      of a breath sample or medical detection test where police have offence-related grounds to
+      believe the person used these substances: one to three months and OMR200–500.[@trafficRop]
+      Article 54 allows the court to withdraw a driving licence for up to one year, or two years for
+      repetition.[@trafficRop] A numeric THC cutoff, specimen-specific confirmation rules and later
       implementing-regulation details were not established.[@trafficRop]
     sources:
       - trafficRop
   black_market:
     text: >-
-      The Public Prosecution reported 6,741 drug cases in 2023–2024, an all-drug figure.[@omanobserver25]
-      Airport and postal seizures in 2025–2026 included 11.65 kg of marijuana at Salalah airport,
-      12.66 kg at Muscat airport, 7.29 kg in 24 postal food parcels and 2.56 kg in a parcel from
-      Canada.[@omanobserver25] The 2026 law's death-or-life tier for import and production for trade
-      shows that the border trade is treated as serious.[@rd67] No price or purity data were found.
+      The Public Prosecution reported 6,741 drug cases between 2023 and 2024, an all-drug figure
+      with 2024 higher than 2023.[@omanobserver25] Seizures are dominated by hashish and mixed
+      consignments: 30 kg of hashish in South Al Batinah in October 2024, 85 kg of hashish and
+      marijuana off Quriyat in August 2025, and 185 kg of mixed drugs at Al Barka in August
+      2026.[@times24,times25q,khaleej26] Airport and postal cases include 11.65 kg and 6.5 kg of
+      marijuana at Salalah, 12.66 kg at Muscat, and parcels from Thailand and
+      Canada.[@omanobserver25b,gulf26,ki26] No price or purity data were found.[@rd67]
     sources:
       - omanobserver25
+      - times24
+      - times25q
+      - khaleej26
+      - omanobserver25b
+      - gulf26
+      - ki26
       - rd67
   arrests:
     text: >-
-      The Public Prosecution reported 6,741 drug cases in 2023–2024, an all-drug figure with no
-      cannabis breakdown.[@omanobserver25] The 2025–2026 airport and postal cases each involved a
-      handful of travellers or parcels, not a national arrest series.[@omanobserver25] The UNODC
-      data are seizure-only and should not be read as arrest figures.[@unodc_szr]
+      The Public Prosecution reported 6,741 drug cases between 2023 and 2024, an all-drug figure
+      with no cannabis breakdown; 2024 was higher than 2023.[@omanobserver25] The 2025–2026 airport
+      and postal cases each involved a handful of travellers or parcels, not a national arrest
+      series.[@omanobserver25b] The UNODC data are seizure-only and should not be read as arrest
+      figures.[@unodc_szr]
     sources:
       - omanobserver25
+      - omanobserver25b
       - unodc_szr
   research:
     status: licensed
     text: >-
       The only lawful growing route doubles as the research route: article 7 permits growing
       licences for specified public bodies, colleges and research institutions for medical or
-      scientific purposes.[@rd67] No separate research programme, trial or published study
-      was established by the retained sources.
+      scientific purposes.[@rd67] No cannabis-specific cultivation programme or clinical trial was
+      found.[@rd67] A 2021 survey of 375 students at one college found 5.1% lifetime cannabis use,
+      but a 3.1% response rate means it cannot represent the country.[@omj21]
     sources:
       - rd67
+      - omj21
 sources:
   trafficRop:
     title: Royal Oman Police — Traffic Law, amended text (Arabic PDF)
@@ -272,17 +297,20 @@ sources:
       Replacement article 49 and added article 50 bis; read alongside the police-published amended
       law.
   unodc_szr:
-    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
+    title: >-
+      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
+      Report data)
     url: https://data.unodc.org/datareport/drug-seizure
     locator: "Oman 2020: 921 kg cannabis resin; no herbal-cannabis entry."
   omanobserver25:
-    title: "Oman Observer — Call for awareness as drug abuse hits a high (13 July 2025)"
+    title: Oman Observer — Call for awareness as drug abuse hits a high (13 July 2025)
     url: https://www.omanobserver.om/article/1173442/oman/call-for-awareness-as-drug-abuse-hits-a-high
     locator: "Public Prosecution: 6,741 drug cases in 2023–2024; National Strategy 2023–2028."
   omanobserver26:
-    title: "Oman Observer — ROP reports marijuana seizures at Salalah and Muscat airports (2025–2026)"
-    url: https://www.omanobserver.om/article/1173929/oman/rop/12kg-of-marijuana-seized-from-passengers-at-salalah-airport
-    locator: "11.65 kg at Salalah on 23 July 2025; later Muscat and postal seizures reported in 2026."
+    title: Oman Observer — ROP reports marijuana seizures at Salalah and Muscat airports (2025–2026)
+    url: >-
+      https://www.omanobserver.om/article/1173929/oman/rop/12kg-of-marijuana-seized-from-passengers-at-salalah-airport
+    locator: 11.65 kg at Salalah on 23 July 2025; later Muscat and postal seizures reported in 2026.
   rd67:
     title: >-
       Oman — replacement drug law issued by Royal Decree 67/2026, Arabic text reproduced by
@@ -291,3 +319,31 @@ sources:
     locator: >-
       Decree articles 3–4; law articles 3, 7, 9, 15, 27, 37–44, 51, 57 and 60–62; cannabis
       schedules. Effective 7 September 2026.
+  times24:
+    title: Times of Oman — 30 kg hashish seized in South Al Batinah (21 October 2024)
+    url: https://timesofoman.com/article/150132
+    locator: More than 30 kg hashish; one arrest.
+  times25q:
+    title: Times of Oman — 85 kg hashish and marijuana off Quriyat (22 August 2025)
+    url: https://timesofoman.com/article/160836
+    locator: More than 85 kg hashish and marijuana; 70,000 tablets; two arrests.
+  khaleej26:
+    title: Khaleej Times — 185 kg mixed drugs at Al Barka (23 August 2026)
+    url: https://www.khaleejtimes.com/world/gulf/oman-185kg-drugs-seized
+    locator: Hashish, marijuana, crystal meth and morphine; seven arrested.
+  omanobserver25b:
+    title: Oman Observer — Salalah airport marijuana seizures (July–September 2025)
+    url: https://www.omanobserver.om/article/1163579
+    locator: 11.65 kg and 6.5 kg at Salalah; 9 kg and 8 kg at Muscat.
+  gulf26:
+    title: Gulf News — 12.66 kg marijuana at Muscat airport (21 August 2025)
+    url: https://gulfnews.com/world/gulf/oman/oman-airport-drug-bust-1.172423
+    locator: Chinese woman arrested with 12.66 kg.
+  ki26:
+    title: Gulf Insider — Postal marijuana parcels from Thailand and Canada (June 2026)
+    url: https://www.gulf-insider.com/oman-postal-drugs
+    locator: 5.4 kg from Thailand and 2.56 kg from Canada.
+  omj21:
+    title: Oman Medical Journal — Substance use among college students (2021)
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7868041/
+    locator: 375 students; 5.1% lifetime cannabis use; 3.1% response rate.
