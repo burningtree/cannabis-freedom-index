@@ -28,6 +28,10 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0; review page to verify with batch build.
 - Left: penalty tables (Ley 1340 bands unverified); first-restriction entry is an explicit
   estimate (kept, flagged).
-## uy — pending
+## uy (Uruguay) — committed
+- Per-sentence cites on all 14 flagged texts (+genetics); words (Faso, Porro, Hierba).
+  Removed uyxxi from sharing sources (uncited there; fully cited in hemp/production/research).
+- Audit 0/0; review page to verify with batch build.
+- Left: 1940s/50s/60s empty.
 ## jm — pending
 ## tt — pending
