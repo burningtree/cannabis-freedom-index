@@ -52,5 +52,10 @@ links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0. Review build still blocked by others' files — will verify page once clear.
 - Left: 1940s/50s/80s empty; 1934 article covered by the same-decree Ukraine article (not
   duplicated); 1974 possession-crime article still open.
-## rs — pending
+## rs (Serbia) — committed
+- Words list (Vutra, Trava, Džoint, Kanabis; en.wiktionary sh-senses verified).
+- New article `articles/yugoslavia-narcotic-drugs-act-1950-rs.md` (~360 words, UN E/NL.1950/24
+  primary text; fills score-moving gap).
+- Audit 0/0. Review build still blocked by others' files — will verify page once clear.
+- Left: 1940s/60s/70s/80s/90s empty (war decades; no datable events found).
 ## bg — pending
