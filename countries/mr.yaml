@@ -3,8 +3,11 @@ region: Africa
 iso_numeric: 478
 recreational: death
 medical: none
-updated: 2026-10-21
-summary: The 1993 law allows death for repeat or aggravated high-risk drug offences; simple use can mean up to two years, a fine alone, or both.
+updated: "2026-10-28"
+summary: >-
+  The 1993 law treats possession of any amount as high-risk trafficking: 15–30 years and a large
+  fine, with death on a repeat conviction. Simple use can bring up to two years. Executions have
+  been suspended since 1987.
 scores:
   possession: 0
   cultivation: 0
@@ -15,106 +18,269 @@ scores:
 segments:
   possession:
     text: >-
-      Article 5 of the 1993 law includes possession and purchase of high-risk drugs among
-      offences carrying 15–30 years and a fine, with death for a repeat offence. The separate
-      simple-use offence carries up to two years, a fine alone, or both; its wording does not
-      extend that penalty to personal possession.
-    sources: [l9337]
+      Article 5 of Law 93-037 treats holding, buying or transporting a high-risk drug as trafficking,
+      whatever the amount: 15–30 years and a 10–100 million ouguiya fine, with death on a repeat
+      conviction.[@l9337] Cannabis is a high-risk substance in Table I under the 2008 law.[@law2008]
+      The separate use offence in Article 39 carries up to two years, a fine alone, or both, but its
+      wording covers use only, not possession.[@l9337]
+    sources:
+      - l9337
+      - law2008
+    currency: MRU
+    penalties:
+      - label: Possession, purchase or transport of any amount
+        treatment: criminal
+        term: Trafficking
+        prison_min: 15 years
+        prison: 30 years
+        fine_min: 10000000
+        fine: 100000000
+        note: Article 5; death on a repeat conviction
+      - label: Simple use
+        treatment: criminal
+        term: Use
+        prison: 2 years
+        fine_min: 50000
+        fine: 100000
+        note: Article 39; prison, fine, or one only
   cultivation:
     text: >-
-      Growing or producing high-risk drugs carries 15–30 years and a fine under Article 3 of
-      the 1993 law, with death for a repeat offence. Article 13 also permits capital punishment
-      in specified aggravated cases, including organised crime and violence or weapons.
-    sources: [l9337]
+      Growing, producing or extracting a high-risk drug carries 15–30 years and a 10–100 million
+      ouguiya fine, with death on a repeat conviction.[@l9337] The 2008 law separately bans cannabis
+      cultivation and requires landowners and occupiers to destroy plants.[@law2008] The maximum is
+      doubled, up to death, where the offence involves an organised group, violence or weapons, or
+      drugs that caused a death.[@l9337]
+    sources:
+      - l9337
+      - law2008
+    currency: MRU
+    penalties:
+      - label: Cultivation or production
+        treatment: criminal
+        term: Production
+        prison_min: 15 years
+        prison: 30 years
+        fine_min: 10000000
+        fine: 100000000
+        note: Article 3; death on a repeat conviction
+      - label: Aggravated production or trafficking
+        treatment: criminal
+        term: Aggravated offence
+        death: true
+        note: Article 13; organised group, violence or weapons, or drugs that caused a death
   enforcement:
     text: >-
-      Reliable figures on arrests or imprisonment of cannabis users remain unknown. Khalid
-      Tinasti's 2017 analysis described scarce Mauritanian drug-use data and a public debate
-      focused on trafficking. ECPM's 2024 assessment reported a moratorium on executions,
-      with the last military-court execution in 1987.
-    sources: [gdpo, ecpm2024]
+      Enforcement is focused on trafficking, and no national arrest series is published.[@unodc_szr]
+      Police reported 101 drug cases and 156 suspects in the first half of 2023, with 12 kg of
+      hashish and 7.1 kg of resin seized.[@cridem2023] In July–August 2026 the gendarmerie reported
+      dismantling more than ten networks with over 40 arrests and individual resin seizures of 202,
+      230 and 210 kg.[@lecalame2026] The death penalty remains in law but executions have been
+      suspended since 1987.[@ecpm2025]
+    sources:
+      - unodc_szr
+      - cridem2023
+      - lecalame2026
+      - ecpm2025
   sharing:
     text: >-
-      Giving a high-risk drug to another person, including without payment, falls under
-      Article 5's 15–30 years and a fine. Repeat offences carry death; Article 13 also permits
-      capital punishment for specified aggravated offences.
-    sources: [l9337]
+      Offering, delivering or transferring a high-risk drug, free or paid, falls under Article 5 and
+      carries 15–30 years and a 10–100 million ouguiya fine, with death on a repeat conviction.[@l9337]
+      Facilitating another person's use, including by providing premises, carries two to ten years,
+      and criminal association ten to twenty.[@l9337] Attempt carries five to ten years.[@l9337]
+    sources:
+      - l9337
+    currency: MRU
+    penalties:
+      - label: Supply or transfer, free or paid
+        treatment: criminal
+        term: Trafficking
+        prison_min: 15 years
+        prison: 30 years
+        fine_min: 10000000
+        fine: 100000000
+        note: Article 5; death on a repeat conviction
+      - label: Facilitating use, including premises
+        treatment: criminal
+        term: Facilitation
+        prison_min: 2 years
+        prison: 10 years
+        fine_min: 200000
+        fine: 1000000
+      - label: Criminal association
+        treatment: criminal
+        term: Association
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 100000
+        fine: 1000000
   consumption:
     text: >-
-      Illicit use carries up to two years, a fine alone, or both under Article 39. Completing
-      prescribed treatment or successful detoxification or medical supervision can prevent
-      prosecution under Articles 44 and 51. Voluntary treatment seekers can request anonymity.
-    sources: [l9337]
+      Illicit use carries up to two years, a 50,000–100,000 ouguiya fine, or one of those penalties
+      alone.[@l9337] A person who completes prescribed treatment or detoxification can avoid
+      prosecution, and those who seek treatment voluntarily may request anonymity.[@l9337]
+    sources:
+      - l9337
   access:
     text: >-
-      Recreational supply is prohibited. The 2008 parliamentary debate concerned controlled
-      medicines, with doctors prescribing and pharmacists dispensing under strict supervision.
-    sources: [l9337, assembly2008]
+      No legal source. Cannabis is in Table I of the 2008 law, which bans all operations except
+      licensed medical and scientific work on Tables II and III; the health minister may authorise
+      research quantities under Article 81.[@law2008] No patient or recreational route was found.[@law2008]
+    sources:
+      - law2008
+answers:
+  buy:
+    answer: no
+    text: No legal source; only licensed medical and research handling is excepted
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Possession of any amount is treated as trafficking under
+      Article 5, with 15–30 years and a large fine, while simple use carries up to two years.[@l9337]
+      The death penalty applies on a repeat trafficking conviction, but no executions have been
+      carried out since 1987.[@ecpm2025]
+      [The 1993 law set the framework.](/history/mauritania-drug-law-1993/)
+    sources:
+      - l9337
+      - ecpm2025
   death_penalty:
     text: >-
-      The 1993 law prescribes death for repeat high-risk production, cultivation, import,
-      export and trafficking offences under Articles 3–5. Article 13 also permits capital
-      punishment where specified offences involve organised crime, violence or weapons, or
-      drugs that caused a death. ECPM's 2024 assessment still listed these clauses and reported
-      the last execution in 1987, following a military-court conviction.
-    sources: [l9337, ecpm2024]
+      Death is prescribed for a repeat conviction under Articles 3–5, and Article 13 allows it on a
+      first conviction for organised crime, violence or weapons, or drugs that caused a death.[@l9337]
+      Mauritania has a de facto moratorium: the last execution was in 1987, and it voted against the
+      UN moratorium resolution on 17 December 2024.[@ecpm2025,amnesty2024] No drug-specific death
+      sentence was verified for 2024–2026.[@ecpm2025]
+    sources:
+      - l9337
+      - ecpm2025
+      - amnesty2024
   production:
     status: none
     text: >-
-      Tinasti's 2017 analysis cited limited earlier evidence of small cannabis production near
-      the Senegal River in the south. Current production levels remain unknown.
-    sources: [gdpo]
-  products:
-    text: Legal recreational products are prohibited by the drug law.
-    sources: [l9337]
+      No lawful cannabis production. The 1993 law punishes growing high-risk drugs with 15–30 years,
+      and the 2008 law expressly bans cannabis cultivation.[@l9337,law2008] Small-scale cultivation
+      near the Senegal River was reported in earlier research, but current output is unknown.[@gdpo]
+    sources:
+      - l9337
+      - law2008
+      - gdpo
   medical:
     text: >-
-      No operating medical cannabis programme is established by the retained sources. The
-      2008 debate addressed the controlled supply of narcotic medicines under prescription.
-    sources: [assembly2008]
+      No medical cannabis programme. Cannabis is in Table I of the 2008 law, which the annex treats
+      as having no real medical interest; licensed medical handling is limited to Tables II and
+      III.[@law2008] Article 81 allows the health minister to authorise research or scientific-police
+      quantities, not patient supply.[@law2008]
+    sources:
+      - law2008
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. The 2008 law bans cannabis cultivation without
+      distinguishing industrial varieties, and Table I covers the plant and its preparations.[@law2008]
+      No industrial licence was found.[@law2008]
+    sources:
+      - law2008
   consequences:
     text: >-
-      Article 17 of the 1993 law requires permanent territorial exclusion for foreigners
-      convicted of listed offences, including illicit use. Courts can also impose travel
-      restrictions, withdraw passports and suspend driving licences. The separate use chapter
-      contains an additional exclusion clause with inconsistent cross-references.
-    sources: [l9337]
+      Article 17 requires permanent exclusion for foreigners convicted of listed offences, including
+      illicit use, and courts can impose travel bans and suspend licences.[@l9337] The law also
+      provides civic-rights bans and confiscation.[@l9337]
+    sources:
+      - l9337
   planting:
     seeds: grey
     seeds_trade: unclear
     clones: illegal
     clones_trade: banned
     text: >-
-      Law 93-37 punishes growing a high-risk drug with 15–30 years and a fine, and death for
-      a repeat offence (Article 3). Ministerial orders determine the domestic schedules.
-      The law speaks of substances and plants and does not mention seeds.
-    sources: [l9337]
+      The 1993 law punishes growing a high-risk drug, and the 2008 law bans cannabis cultivation, but
+      neither expressly mentions seeds; the Convention excludes seeds from "cannabis".[@l9337,law2008]
+      Sowing is cultivation and clones are plants, so both fall under the ban; the seed statuses here
+      are an inference.[@law2008]
+    sources:
+      - l9337
+      - law2008
   clubs:
     status: none
     text: >-
-      The 1993 law prohibits growing and supplying high-risk drugs, including gifts, and
-      provides no recreational club exception. Facilitating another person's use, including
-      by providing premises, carries two to ten years and a fine.
-    sources: [l9337]
+      No cannabis clubs are known. Facilitating another person's use, including by providing
+      premises, carries two to ten years, and the law provides no club exception.[@l9337]
+    sources:
+      - l9337
   visitors:
     status: none
     text: >-
-      There is no recreational supply exception for visitors. Simple illicit use can bring
-      up to two years, a fine alone, or both. Article 17 requires permanent exclusion for
-      foreigners convicted of listed drug offences, including use; the use chapter also
-      contains a separate exclusion clause with inconsistent cross-references.
-    sources: [l9337]
+      There is no legal supply for visitors. A foreigner convicted of a listed drug offence,
+      including use, must be permanently excluded from Mauritania under Article 17.[@l9337]
+    sources:
+      - l9337
+  driving:
+    status: impairment
+    text: >-
+      The road code, Ordinance 2006-047, article 10(2), prohibits driving under the influence of
+      substances capable of reducing physical or mental capacity, with 11 days to three months and a
+      6,000–40,000 ouguiya fine, or one only.[@traffic2006] There is no numeric THC limit; the test is
+      impairment.[@traffic2006]
+    sources:
+      - traffic2006
+  black_market:
+    text: >-
+      UNODC records 4 kg of herbal cannabis and 40 kg of resin seized in 2024, figures that are
+      probably partial.[@unodc_szr] Press reports in July–August 2026 described individual resin
+      seizures of 202, 230 and 210 kg and more than 40 arrests, an order of magnitude above the
+      annual figure; the difference reflects reporting methods, not a verified surge.[@lecalame2026]
+    sources:
+      - unodc_szr
+      - lecalame2026
+  arrests:
+    text: >-
+      No national arrest total for 2024–2026 was published.[@unodc_szr] Police reported 101 drug
+      cases, 156 suspects, 12 kg of hashish and 7.1 kg of resin in the first half of 2023.[@cridem2023]
+      In July–August 2026 the gendarmerie reported more than ten networks dismantled and over 40
+      arrests.[@lecalame2026] A former president's sons were jailed in 2016 over 1.3 tonnes of
+      cannabis.[@northafrica2016]
+    sources:
+      - unodc_szr
+      - cridem2023
+      - lecalame2026
+      - northafrica2016
 sources:
   l9337:
-    title: Loi n° 93-37 du 20 juillet 1993, Articles 1–5, 7, 13, 17–21 and 38–51 (UNODC SHERLOC copy)
+    title: "Mauritania — Law 93-037 of 20 July 1993 on narcotic drugs and psychotropic substances (UNODC SHERLOC copy)"
     url: https://sherloc.unodc.org/cld/uploads/res/document/mrt/loi-93-37_html/mauritania-loi_stupefiants.pdf
+    locator: "Articles 1–14, 17–23, 36–39 and 42–51."
+  law2008:
+    title: "Mauritania — Law 2008-012 of 27 April 2008 on the licit market in narcotic drugs and psychotropic substances"
+    url: https://msgg.gov.mr/JO/2008/mauritanie-jo-2008-1169.pdf
+    locator: "Articles 9–12, 81 and Annex II Table I; Journal officiel 1169, printed pp. 629–644."
+  traffic2006:
+    title: "Mauritania — Ordinance 2006-047 of 6 December 2006, Road Code"
+    url: https://transports.gov.mr/sites/default/files/2024-05/A9%20-%20Ordonnance%202006-047%20du%206%20d%C3%A9cembre%202006%20portant%20code%20de%20la%20route.pdf
+    locator: "Article 10(2)."
+  ecpm2025:
+    title: "ECPM — Mauritanie: la peine de mort en droit et en pratique (2025)"
+    url: https://www.ecpm.org/app/uploads/2026/05/Brochure_pays_Mauritanie_2025_FR.pdf
+    locator: "Death-penalty provisions, last execution 1987; 2025 figures."
+  amnesty2024:
+    title: "Amnesty International — UN member states move closer to rejecting the death penalty (18 December 2024)"
+    url: https://www.amnesty.org/en/latest/news/2024/12/global-un-member-states-move-closer-to-rejecting-death-penalty-as-lawful-punishment-under-international-law
+    locator: "Vote of 17 December 2024; Mauritania voted against."
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents"
+    url: https://data.unodc.org/datareport/drug-seizure
+    locator: "Mauritania: 4 kg herbal cannabis and 40 kg resin in 2024."
+  cridem2023:
+    title: "Cridem / Sahara Media — Mauritania: 156 suspects and 101 drug cases in the first half of 2023 (14 August 2023)"
+    url: https://cridem.org/C_Info.php?article=767567
+    locator: "12 kg hashish; 7.1 kg resin; 156 suspects."
+  lecalame2026:
+    title: "Le Calame — Importantes saisies de la gendarmerie (21 August 2026)"
+    url: https://lecalame.info/?q=node%2F18839
+    locator: "More than ten networks; 202, 230 and 210 kg resin; over 40 arrests."
+  northafrica2016:
+    title: "North Africa Post — Mauritania: drug-trafficking prison sentence of ex-president's sons upheld (5 September 2016)"
+    url: https://northafricapost.com/13902-mauritania-drug-trafficking-prison-sentence-sons-ex-president-upheld.html
+    locator: "1.3 tonnes of cannabis; 15-year and 4-year sentences."
   gdpo:
-    title: Khalid Tinasti — Harm reduction, drug policy and the law in the Maghreb, focus on Tunisia and Mauritania (July 2017)
+    title: "Khalid Tinasti — Harm reduction, drug policy and the law in the Maghreb, focus on Tunisia and Mauritania (July 2017)"
     url: https://gdpo.swansea.ac.uk/2017/07/22/view-from-the-ground-harm-reduction-drug-policy-and-the-law-in-the-maghreb-focus-on-tunisia-and-mauritania/
-  ecpm2024:
-    title: ECPM — Mauritanie, la peine de mort en droit et en pratique (2024), printed pp. 2 and 6
-    url: https://www.ecpm.org/app/uploads/2024/10/Brochure-Mauritanie-2024.pdf
-  assembly2008:
-    title: AMI — National Assembly debate on narcotic and psychotropic drugs (21 February 2008)
-    url: https://ami.mr/fr/archives/5733
+    locator: "Limited evidence of small cannabis production near the Senegal River."
