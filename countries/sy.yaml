@@ -3,10 +3,11 @@ region: Asia
 iso_numeric: 760
 recreational: death
 medical: none
-updated: 2026-10-13
+updated: "2026-10-28"
 summary: >-
-  Up to three years for personal possession, with a treatment route for dependent users; death
-  penalty for growers and traffickers.
+  Personal possession for use carries three to fifteen years and a fine, with a treatment route;
+  smuggling, manufacture and cultivation carry death, and trafficking can bring death with
+  aggravating facts. Captagon dominates enforcement.
 scores:
   possession: 0
   cultivation: 0
@@ -17,160 +18,309 @@ scores:
 segments:
   possession:
     text: >-
-      Hashish is controlled under the 1993 narcotics law. Possession for personal consumption is a
-      crime, with prison terms reported at up to three years. People deemed addicts who complete
-      state rehabilitation, and have no prior record, face no further penalty. Article 43 of the
-      law, in the copy read, sets a term of detention and a fine of 100,000 to 500,000 pounds for
-      having, buying or carrying drugs for personal use; the court may suspend the sentence and
-      send an addict to a clinic for three months to a year, though not a third time.
+      Article 43 of the 1993 narcotics law punishes possessing, buying, holding or transporting a
+      drug for personal use with temporary detention and a fine of 100,000–500,000 Syrian pounds.[@law1993]
+      "Temporary detention" is three to fifteen years under article 44 of the Penal Code, where the
+      special law sets no other term, so the profile's earlier "up to three years" was wrong.[@penal1949]
+      A court may suspend the sentence and send a proven addict to a clinic for three to twelve
+      months; a person who seeks treatment, or whose spouse or close relative asks for it, is not
+      prosecuted unless caught in the act.[@law1993] Residual possession outside use or trade carries
+      up to one year and a small fine.[@law1993]
     sources:
-      - wiki
-      - l2
+      - law1993
+      - penal1949
+    currency: SYP
+    penalties:
+      - label: Possession for personal use (Article 43)
+        treatment: criminal
+        term: Personal use
+        prison_min: 3 years
+        prison: 15 years
+        fine_min: 100000
+        fine: 500000
+        note: Treatment for three to twelve months may replace the sentence
+      - label: Residual possession (Article 45)
+        treatment: criminal
+        term: Other possession
+        prison: 1 year
+        fine: 5000
   cultivation:
     text: >-
-      Cultivation can bring life imprisonment or death; the 1993 law explicitly extended the death
-      penalty to growers. Growing for personal use is not treated separately: Article 39 covers
-      all unlicensed growing, and a court may reduce death to life or to at least twenty years.
+      Growing a listed plant is banned at every stage, including seeds.[@law1993] Unlicensed
+      cultivation for trade is an Article 39 offence carrying death, with mitigation to life or at
+      least twenty years and a fine of 1–5 million pounds; mitigation is barred for a repeat offender,
+      an anti-drug official, use of a minor, an international gang or abuse of office.[@law1993]
+      Growing for personal use is charged under Article 43, with three to fifteen years.[@law1993]
+      There is no plant-count threshold.[@law1993]
     sources:
-      - wiki
-      - l2
+      - law1993
+    currency: SYP
+    penalties:
+      - label: Cultivation for personal use (Article 43)
+        treatment: criminal
+        term: Personal use
+        prison_min: 3 years
+        prison: 15 years
+        fine_min: 100000
+        fine: 500000
+      - label: Cultivation for trade (Article 39)
+        treatment: criminal
+        term: Cultivation
+        death: true
+        fine_min: 1000000
+        fine: 5000000
+        note: Mitigation to life where the court finds grounds
   enforcement:
     text: >-
-      The 1993 narcotics law grades its penalties steeply: detention and a fine for having drugs
-      for personal use, which a court may suspend to send an addict for treatment; at least ten
-      years for giving drugs to another person; life imprisonment for selling; and death or life
-      for growing. No account of how the authorities that took power in December 2024 apply the
-      law to users was found.
+      Enforcement is dominated by Captagon, not cannabis. The interior ministry reported 1,550
+      anti-narcotics operations and 90 international networks dismantled between December 2024 and
+      June 2026, with about 697 million Captagon pills, 15 tonnes of hashish and 221 tonnes of
+      precursors seized.[@sana26] The 15 tonnes are cumulative, not annual, and the figures cover all
+      drugs.[@sana26] No national cannabis-only arrest series is published.[@incsr05] The 1993 law
+      remains in force: the Raqqa criminal court applied Article 40 on 21 October 2026.[@raqqa26]
     sources:
-      - l2
+      - sana26
+      - incsr05
+      - raqqa26
   sharing:
     text: >-
-      Trafficking carries long terms, life or death for large quantities. Under the 1993 law
-      selling, or possessing for sale, brings life imprisonment and a fine of one to five
-      million pounds; giving drugs to another person without payment brings at least ten years.
+      Selling, possessing for sale, transporting for sale, brokering or managing a drug den for
+      payment carries life imprisonment and a 1–5 million pound fine.[@law1993] Death is available
+      for the same conduct with a prior drug conviction, an anti-drug official, a minor, an
+      international gang, abuse of office, or in a school, camp, prison, place of worship or sports
+      institution; without those facts the sentence is life.[@law1993] Giving drugs free or
+      facilitating use carries at least ten years, and life where a minor is involved.[@law1993]
+      Importing, manufacturing or cultivating for trade carries death.[@law1993]
     sources:
-      - wiki
-      - l2
+      - law1993
+    currency: SYP
+    penalties:
+      - label: Sale or possession for sale (Article 40)
+        treatment: criminal
+        term: Trafficking
+        fine_min: 1000000
+        fine: 5000000
+        note: Death with the Article 39(b) aggravating facts or in listed sensitive places
+      - label: Giving drugs free or facilitating use (Article 42)
+        treatment: criminal
+        term: Supply
+        prison_min: 10 years
+        fine_min: 500000
+        fine: 2000000
+        note: Life where a minor is involved or coercion, deception or enticement is used
+      - label: Import, manufacture or cultivation for trade (Article 39)
+        treatment: criminal
+        term: Trafficking
+        death: true
+        fine_min: 1000000
+        fine: 5000000
+        note: Mitigation to life where the court finds grounds
+      - label: Presence in a place prepared for drug use (Article 46)
+        treatment: criminal
+        term: Presence
+        prison_min: 6 months
+        prison: 1 year
+        fine_min: 1000
+        fine: 5000
   consumption:
     text: >-
-      Use is an offence, with the treatment route for dependent users. No case is brought against
-      a user who goes to the authorities for treatment of their own accord, or whose spouse or
-      close relative asks for it, unless they were caught in the act; treatment is confidential.
+      There is no standalone consumption offence in the 1993 law.[@law1993] A user is charged under
+      Article 43 for possessing with intent to use, with three to fifteen years and a
+      100,000–500,000 pound fine, or under Article 46 for knowingly being in a place prepared for
+      drug use, with six months to a year.[@law1993] The treatment route can suspend the sentence or
+      bar prosecution.[@law1993]
     sources:
-      - wiki
-      - l2
+      - law1993
   access:
-    text: No legal source.
+    text: >-
+      No legal source for patients or recreational users. Article 31 lets the health minister license
+      state institutions, scientific institutes and recognised research centres to grow prohibited
+      plants or import seed for medical or scientific purposes, but that is not a patient-supply
+      route.[@law1993] No registered cannabis medicine or prescription programme was found.[@law1993]
     sources:
-      - wiki
-      - l2
+      - law1993
+answers:
+  buy:
+    answer: no
+    text: No legal source; only institutional medical and research handling is excepted
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Personal possession for use carries three to fifteen years
+      and a 100,000–500,000 pound fine, with a treatment route; supply carries life or, with
+      aggravating facts, death.[@law1993] The death penalty is not available for simple possession.[@law1993]
+      [The 1993 law still governs.](/history/syria-death-penalty-1993/)
+    sources:
+      - law1993
   death_penalty:
     text: >-
-      Trafficking in large quantities can bring life imprisonment or death, and a 1993 law
-      explicitly extended the death penalty to growers. Article 39 names smuggling, making
-      drugs and growing the listed plants. Mitigation is excluded for a repeat offender, an
-      official charged with fighting drugs, someone who used a minor, or a member of an
-      international smuggling gang. A judicial source in 2014 put the range for trafficking at
-      ten years to death.
+      Article 39 imposes death for any smuggling, unlicensed manufacture or unlicensed cultivation
+      of a listed plant, with no quantity threshold; mitigation to life or at least twenty years is
+      possible unless a listed aggravating fact applies.[@law1993] Article 40 allows death for
+      trafficking, possession for sale or keeping a drug den only with a prior drug conviction, an
+      anti-drug official, a minor, an international gang, abuse of office or a sensitive location.[@law1993]
+      Simple possession under Article 43 cannot bring death.[@law1993] No cannabis death sentence or
+      execution was confirmed in 2024–2026; Syria recorded no executions in 2025, and the first
+      post-Assad death sentence, in November 2025, was for murder.[@amnesty25,euaa26]
     sources:
-      - wiki
-      - l2
-      - so14
+      - law1993
+      - amnesty25
+      - euaa26
   production:
     status: none
     text: >-
-      None. Hashish production boomed during the civil war in areas outside state control: in
-      the Kurdish enclaves from 2012 and in the hills of Idlib, where it paid for weapons. The
-      Islamic State burned fields it found. After the fall of the Assad government the security
-      forces destroyed about 15 tonnes of hashish in a few weeks.
+      No lawful cannabis production. Article 30 bans the listed plants at every stage, including
+      seeds, and the only exception is research by state institutions and recognised research
+      centres.[@law1993] Hashish production expanded during the civil war in areas outside state control,
+      in the Kurdish enclaves from 2012 and in Idlib; after the fall of the Assad government the
+      security forces destroyed about 15 tonnes of hashish.[@rudaw13,cv14,occrp25]
     sources:
-      - gn
+      - law1993
       - rudaw13
       - cv14
       - occrp25
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
   medical:
-    text: The retained sources do not establish whether a medical cannabis programme operates.
-    sources: []
-  consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
-  arrests:
     text: >-
-      No national figures for cannabis were found. A judicial source counted 620 drug cases
-      before the courts in four months of 2014, against fewer than 500 in all of 2013. In the
-      north-east, outside the state's control, the Autonomous Administration's security forces
-      reported 1,875 arrests in a campaign from September 2020 to June 2021, 1,165 of them
-      users, and 1,700 kilograms of hashish seized.
+      No medical cannabis programme. The 1993 law allows controlled narcotic medicines to be
+      prescribed and dispensed through pharmacies, but cannabis is a prohibited plant rather than a
+      listed medicine.[@law1993] Article 31 permits institutional cultivation or seed import for
+      medical or scientific research, not patient access.[@law1993]
     sources:
-      - so14
-      - aawsat21
+      - law1993
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. Article 30 bans the cannabis plant at every stage
+      of growth, including seeds, and the only exception is institutional research cultivation.[@law1993]
+      No fibre-hemp or CBD exemption was found.[@law1993]
+    sources:
+      - law1993
+  consequences:
+    text: >-
+      Article 59 requires confiscation of drugs, equipment and proceeds, and the law provides for
+      closure of premises used in an offence.[@law1993] A conviction is a criminal record. No separate
+      collateral consequence, such as deportation, was verified.[@law1993]
+    sources:
+      - law1993
   planting:
     seeds: illegal
     seeds_trade: banned
     clones: illegal
     clones_trade: banned
     text: >-
-      Article 30 of Law 2 of 1993 bans growing, importing, owning, holding or buying the
-      listed plants at any stage of growth, as well as their seeds; plant parts named in a
-      separate schedule are exempt. Only state institutions and recognised research centres
-      can be licensed to grow them or import seeds. Article 39 sets the death penalty for
-      unlicensed growing. The text read is a copy on a law firm's site.
+      Article 30 bans growing, importing, owning, holding or buying the listed plants at any stage of
+      growth, as well as their seeds; only plant parts named in a separate schedule are exempt.[@law1993]
+      Only state institutions, scientific institutes and recognised research centres may be licensed
+      to grow them or import seeds.[@law1993]
     sources:
-      - l2
+      - law1993
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      supplying it to another person are both prohibited, and the law provides death for the most
+      serious drug offences.[@law1993]
     sources:
-      - wiki
+      - law1993
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under the 1993 narcotics law, having or
-      carrying drugs for personal use brings detention and a fine of 100,000 to 500,000 pounds,
-      selling brings life imprisonment, and unlicensed growing death or life.
+      There is no legal recreational supply for anyone. Personal possession for use carries three to
+      fifteen years and a 100,000–500,000 pound fine; supplying another person carries life, or death
+      with aggravating facts.[@law1993]
     sources:
-      - l2
+      - law1993
+  driving:
+    status: unknown
+    text: >-
+      No cannabis-specific driving offence or THC limit was verified. The traffic law is Law 31 of
+      2004 as amended in 2008, and a replacement was being drafted in October 2026.[@sana_traffic]
+      Whether the current text uses an impairment test or a prohibited-substance rule could not be
+      confirmed.[@sana_traffic]
+    sources:
+      - sana_traffic
   black_market:
     text: >-
-      Hashish circulates beside the far larger Captagon trade. The interior minister said
-      in June 2025 that in the weeks after the fall of the Assad government the security
-      forces had destroyed about 15 tonnes of hashish and about 100 million Captagon
-      pills. In the north-east, the Autonomous Administration's security forces reported
-      1,700 kg of hashish and 2,637 kg of hashish paste seized, and 1,875 people arrested,
-      in a campaign from September 2020 to June 2021.
+      Hashish circulates beside the far larger Captagon trade. The interior ministry said in June
+      2026 that the security forces had destroyed about 15 tonnes of hashish and about 697 million
+      Captagon pills since December 2024, and that the hashish price rose from about $220 to $600 a
+      kilogram.[@sana26] Individual cannabis cases include 800 kg in Aleppo in June 2025 and nearly
+      500 kg in Sweida in July 2026.[@sana_jun25,sana_jul26] In the north-east, the Autonomous
+      Administration reported 1,700 kg of hashish and 2,637 kg of hashish paste seized in its
+      2020–21 campaign.[@aawsat21]
     sources:
-      - occrp25
+      - sana26
+      - sana_jun25
+      - sana_jul26
       - aawsat21
+  arrests:
+    text: >-
+      No national cannabis arrest series is published.[@incsr05] In 2004 the authorities recorded
+      3,677 arrests in 2,540 narcotics cases, all drugs.[@incsr05] The 2026 campaign figures (1,550
+      operations) also cover all drugs and Captagon.[@sana26] Recent cannabis cases include two
+      Lebanese nationals arrested in Aleppo with 800 kg in June 2025 and four people arrested in
+      Damascus with 36 kg in October 2026.[@sana_jun25,sana_oct26]
+    sources:
+      - incsr05
+      - sana26
+      - sana_jun25
+      - sana_oct26
 sources:
-  so14:
-    title: The Syrian Observer, translating Al-Watan — on drug cases before the courts (2 July 2014)
-    url: https://syrianobserver.com/?p=32505
+  law1993:
+    title: "Syria — Law No. 2 of 1993 on Narcotic Drugs (Syrian Legal Platform PDF)"
+    url: https://www.legal-sy.org/wp-content/uploads/2022/07/Drug-Laws-of-Syria-1993.pdf
+    locator: "Articles 1–2, 30–31, 39–46 and 59."
+  penal1949:
+    title: "Syria — Penal Code No. 148 of 1949"
+    url: https://syrianlegalconsulting.com/wp-content/uploads/2025/07/قانون-العقوبات-148-لعام-1949.pdf
+    locator: "Article 44: temporary detention is three to fifteen years where no special term is set."
+  sana26:
+    title: "SANA — Syria Without Drugs campaign and enforcement tally (26 June 2026)"
+    url: https://sana.sy/presidency/2511964/
+    locator: "1,550 operations; 697 million Captagon pills; 15 t hashish; price rise."
+  sana_jun25:
+    title: "SANA — Two Lebanese nationals arrested with 800 kg of hashish in Aleppo (9 June 2025)"
+    url: https://sana.sy/locals/2230245/
+    locator: "800 kg hashish; 200,000 pills."
+  sana_jul26:
+    title: "SANA — Nearly 500 kg of hashish seized in Sweida (20 July 2026)"
+    url: https://sana.sy/en/syria/2330792/
+    locator: "International smuggling attempt."
+  sana_oct26:
+    title: "SANA — Four arrested with 36 kg of hashish in Damascus (26 October 2026)"
+    url: https://sana.sy/en/syria/2353705/
+    locator: "36 kg hashish; 600 g crystal meth."
+  sana_traffic:
+    title: "SANA — Traffic law replacement being drafted (5 October 2026)"
+    url: https://sana.sy/video/2597723/
+    locator: "Replacement more than 95% drafted; current law is Law 31 of 2004 as amended in 2008."
+  raqqa26:
+    title: "Syrian News Agency — Raqqa criminal court applies Article 40 (21 October 2026)"
+    url: https://syrianewsagency.net/محكمة-جنايات-الرقة-تحكم-بالمؤبد-وغرامة-مالية-لتاجر-مخدرات-وتصدر-أحكاماً-جنائية-أخرى/
+    locator: "Life and a 1 million new-pound fine under Article 40."
+  amnesty25:
+    title: "Amnesty International — Death sentences and executions 2025"
+    url: https://www.amnesty.se/documents/314/Death_Sentences_and_Executions_2025_ENG.pdf
+    locator: "No executions recorded in Syria in 2025."
+  euaa26:
+    title: "EUAA — Syria country focus: death penalty (July 2026)"
+    url: https://dip-aws.euaa.europa.eu/syria-country-focus/15-death-penalty
+    locator: "Death-penalty procedure and practice."
+  incsr05:
+    title: "U.S. Department of State — International Narcotics Control Strategy Report 2005: Syria"
+    url: https://2001-2009.state.gov/p/nea/ci/sy/80243.htm
+    locator: "2004: 3,677 arrests in 2,540 narcotics cases."
+  occrp25:
+    title: "OCCRP — Syria moves to end Captagon empire built under Assad (6 June 2025)"
+    url: https://www.occrp.org/en/news/syria-moves-to-end-captagon-empire-built-under-assad
+    locator: "About 15 t hashish and 100 million pills destroyed after the transition."
+  aawsat21:
+    title: "Asharq Al-Awsat — Over 1,800 drug users, dealers and traders arrested in 'Rojava' (29 June 2021)"
+    url: https://english.aawsat.com/node/3053236
+    locator: "1,700 kg hashish and 2,637 kg hashish paste seized."
   rudaw13:
-    title: Rudaw — Anti-drugs campaign leads to tensions among Syrian Kurdish rivals (1 July 2013)
+    title: "Rudaw — Anti-drugs campaign leads to tensions among Syrian Kurdish rivals (1 July 2013)"
     url: https://rudaw.net/english/middleeast/syria/01072013
   cv14:
-    title: CounterVortex — ISIS burns Syrian cannabis fields (15 September 2014)
+    title: "CounterVortex — ISIS burns Syrian cannabis fields (15 September 2014)"
     url: https://classic.countervortex.org/node/13530
-  aawsat21:
-    title: Asharq Al-Awsat — Over 1,800 drug users, dealers and traders arrested in 'Rojava' territory in Syria (29 June 2021)
-    url: https://english.aawsat.com/node/3053236
-  occrp25:
-    title: OCCRP — Syria moves to end Captagon empire built under Assad (6 June 2025)
-    url: https://www.occrp.org/en/news/syria-moves-to-end-captagon-empire-built-under-assad
-  l2:
-    title: قانون المخدرات السوري رقم 2 لعام 1993 — text as reproduced by Lawyer Egypt
-    url: https://lawyeregypt.net/uncategorized/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D9%85%D8%AE%D8%AF%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D9%88%D8%B1%D9%89-%D8%B1%D9%82%D9%85-2-%D9%84%D8%B9%D8%A7%D9%85-1993/
-  wiki:
-    title: Wikipedia — Cannabis in Syria
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Syria
-  gn:
-    title: Gulf News — Amid war in Syria, hashish business booms
-    url: >-
-      https://gulfnews.com/amp/story/world%2Fmena%2Famid-war-in-syria-hashish-business-booms-1.1868090
