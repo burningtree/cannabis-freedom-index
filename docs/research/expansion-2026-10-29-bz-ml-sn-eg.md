@@ -5,9 +5,15 @@ Next-batch pick: `country-gaps --rank 120` filtered by standing skips (USA track
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Belize | 4 articles, possession+cultivation tables (Act Cap.103 read locally), products folded, citations, wiki dropped, 5 history links | conventions; 1954 convictions; 1930s/40s/60s/70s decades; words | d933a7b |
-| Mali | 5 articles (2020 withdrawal, 2013 office, 1997 prescriptions, 1972 order, 1964 convention) + 2017 link | driving/arrests; copies (2007 resin, 1926); words | COMMIT |
+| Mali | 5 articles (2020 withdrawal, 2013 office, 1997 prescriptions, 1972 order, 1964 convention) + 2017 link | driving/arrests; copies (2007 resin, 1926); words | f0ddca8 |
+| Senegal | 6 articles (1997 code, 1987 amendment, 1962 study, 2007 law, 1974 protocol, 1964 convention) + 2007 link | driving; 1926 copy; empty 1930s/40s/50s/2010s decades | COMMIT |
 | Senegal |  |  |  |
 | Egypt |  |  |  |
+
+## sn — committed
+- 6 articles: `senegal-code-des-drogues-1997` (already linked in cultivation), `senegal-trafficking-amendment-adopted-1987` (2–10yr, mandatory, users excluded; no hook, unlinked), `senegal-yamba-clinical-study-1962` (already linked in culture), `senegal-trafficking-law-2007` (linked in sharing), `senegal-single-convention-protocol-1974` + `senegal-single-convention-1964` (certified text added, content verified; no hooks, unlinked).
+- Audit 0/0; 7 pages built and verified.
+- Left: driving (no source); 1926 copy; empty 1930s/40s/50s/2010s decades.
 
 ## ml — committed
 - 5 articles: `mali-hemp-authorisation-withdrawn-2020` (already linked in recreational), `mali-drug-office-powers-2013` (2013 ordinance; no profile hook, unlinked), `mali-controlled-drug-prescriptions-1997` (7-day rule; no profile hook, unlinked), `mali-special-procedure-order-1972` (no hook, unlinked), `mali-single-convention-1964` (certified text added, content verified; no hook, unlinked). Added 2017-authorisation link in production.
