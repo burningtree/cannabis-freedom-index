@@ -11,7 +11,7 @@ dependency:
     Saint-Martin, follows French law.
 recreational: illegal
 medical: limited
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Cannabis possession remains an offence. Prosecutors can dismiss cases in the 0–25 g band after
   confiscation, subject to exceptions. The ordinance includes medical exemptions, while
@@ -55,12 +55,30 @@ segments:
         note: Prosecutors' request, subject to exceptions
   cultivation:
     text: >-
-      Growing plants of the genus Cannabis is prohibited.[@law] The prosecution guideline
+      Growing plants of the genus Cannabis is prohibited under article 2a.[@law] Article 11(2)
+      punishes intentional violations with life imprisonment, up to 24 years, or a fine of up to
+      NAf 6,250,000; non-intentional violations carry up to 12 years or up to NAf
+      3,000,000.[@law] The prosecution guideline
       requires an individual sentencing assessment for grows, considering matters such as plant
       numbers, location, professional equipment and the person’s involvement.[@guideline]
     sources:
       - law
       - guideline
+    currency: XCG
+    penalties:
+      - label: Cannabis cultivation, intentional
+        treatment: criminal
+        term: Teeltverbod — Opium Ordinance art. 2a, 11(2)
+        life: possible
+        prison: 24 years
+        fine: 6250000
+        note: Or life imprisonment; statute states guilders, converted 1:1 to XCG; guideline requires individual assessment
+      - label: Cannabis cultivation, non-intentional
+        treatment: criminal
+        term: Teeltverbod — Opium Ordinance art. 2a, 11(2)
+        prison: 12 years
+        fine: 3000000
+        note: Statute states guilders, converted 1:1 to XCG; guideline requires individual assessment
   enforcement:
     text: >-
       The small-quantity policy governs prosecutors’ decisions and sentencing
@@ -169,6 +187,19 @@ context:
       The ordinance continues to control possession and cross-border movement of cannabis.[@law]
     sources:
       - guideline
+      - law
+  planting:
+    seeds: legal
+    seeds_trade: open
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      The ordinance defines hemp as flowering or fruit-bearing tops or parts of any cannabis
+      plant, expressly excluding seeds and leaves unless they accompany the tops; loose seeds
+      are therefore outside the hemp definition.[@law] Germinating them is a different matter:
+      growing cannabis plants is prohibited under article 2a, which covers cuttings and young
+      plants alike.[@law]
+    sources:
       - law
 sources:
   law:
