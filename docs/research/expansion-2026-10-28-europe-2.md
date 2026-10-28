@@ -46,4 +46,9 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
   en.wiktionary et-senses verified). Culture already complete.
 - Audit 0/0; review page to verify with batch build.
 - Left: 1950s/60s/80s empty; Epidyolex-2019 + 1974 + 1940 articles open.
-## lv — pending
+## lv (Latvia) — committed
+- Words (Kaņepe, Marihuāna; en.wiktionary lv-senses verified); culture: kaņepe sentence +
+  language/cannabis link.
+- Audit 0/0; review page to verify with batch build.
+- Left: 1950s/60s/80s empty; 1974 + 1940 Soviet articles open (same decrees as the Ukraine
+  article, but Latvia-specific entries still article-less — noted).
