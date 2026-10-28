@@ -14,6 +14,9 @@ history/culture links, profile-audit, review build, commit country-by-country.
 - Audit 0/0; review page verified.
 ## de (Delaware) — committed
 - Consumption/access cites; pinned possession/sharing untouched. Audit 0/0; review verified.
-## nd — pending
+## nd (North Dakota) — committed
+- Cultivation table (manufacture/delivery felony 10yr/$20k, NORML-verified), sharing cite,
+  2019 ingestion-reclassification history link. Pins untouched.
+- Audit 0/0; review page verified.
 ## sd — pending
 ## wy — pending
