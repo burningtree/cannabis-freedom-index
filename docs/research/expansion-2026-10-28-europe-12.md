@@ -7,8 +7,8 @@ skipped. Existing dirty/staged work, including the previous expansion note, is l
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Portugal | Two articles; four events; 1993 commencement/correction clarified; hemp status corrected to standard (0.3%); HHC context | 1930s–1960s; wider primary-source club research | 52466258 |
-| Slovenia | Two articles; 1964 act and EU-opinion events; scientific permit authority clarified | 1930 original code; 1940s/1970s/1980s; medical implementation and personal bill final outcome | This country’s commit |
-| Andorra | Pending | | |
+| Slovenia | Two articles; 1964 act and EU-opinion events; scientific permit authority clarified | 1930 original code; 1940s/1970s/1980s; medical implementation and personal bill final outcome | 2b8f4788 |
+| Andorra | One article; three events; arrests section; corrected 2005 first-code claim | First prohibition/early decades; seed rules | This country’s commit |
 | Belarus | Pending | | |
 | North Macedonia | Pending | | |
 
@@ -43,3 +43,17 @@ rejection by Slovenia's parliament or permission to grow. Current scores and pen
 Slovenia validation: zero profile-audit errors/warnings; five selected pages built and their
 HTML inspected. A second render validated the added research-rule reference. Snapshot:
 `.cache/expansion-europe-2/si-review/`.
+
+## Andorra
+
+Read the 2013 and 2020 amendments, current and deferred replacement codes, the police’s 2024
+annual report, and two 2024 government drafting reports. The 2020 article distinguishes arrest
+AND a fine from the former alternative penalties. Corrected the 2005 “first code” claim using
+the repeal of the 1990 code. Recorded drafting promises as debate, not an operating industry.
+The arrests section uses nationwide all-offence/all-drug totals with explicit limits. The
+1925 first-ban estimate has no original source; seed legality remains unverified.
+
+Andorra validation: all 196 tests pass; six selected pages rendered and HTML inspected after
+waiting for another build. Profile audit has zero errors; its production warning is a false
+positive for the explicitly proposed licence (the status correctly remains none). Snapshot:
+`.cache/expansion-europe-2/ad-review/`.
