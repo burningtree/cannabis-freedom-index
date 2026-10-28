@@ -237,74 +237,22 @@ const schemas = jsonld ? [jsonld].flat() : [];
       try { localStorage.setItem("cfi-theme", root.dataset.theme); } catch (e) {}
     });
 
-    // "In short" answers on a country article: go to the segment they were read from,
-    // open it and light it up. Works on the country page and inside the home page drawer,
-    // so the address is left alone (the drawer uses it to know which country is open).
+    // "In short" answers on a country article, and the labels of its score shape: go to the
+    // segment they were read from and light it up. Works on the country page and inside the home
+    // page drawer, so the address is left alone (the drawer uses it to know which country is open).
     function showSegment(article, id) {
       var row = article && article.querySelector('.segrow[data-seg="' + id + '"]');
       if (!row) return;
-      var panel = row.closest(".c-panel");
-      if (panel) showTab(article, panel.dataset.panel);
-      row.open = true;
       row.classList.remove("flash");
       void row.offsetWidth; // restart the animation when the same answer is chosen twice
       row.classList.add("flash");
       row.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     }
-    // The tabs of a country article: score breakdown, more context, history, sources. One panel
-    // shows at a time. On the country's own page the tab is kept in the address (#history), so it
-    // can be linked and survives a reload; in the drawer the address belongs to the drawer.
-    function showTab(article, id, focus) {
-      var tab = article && article.querySelector('.c-tabs [data-tab="' + id + '"]');
-      if (!tab) return false;
-      article.querySelectorAll(".c-tabs [data-tab]").forEach(function (t) {
-        var on = t === tab;
-        t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
-      });
-      article.querySelectorAll(".c-panel").forEach(function (p) { p.hidden = p.dataset.panel !== id; });
-      if (focus) tab.focus();
-      return true;
-    }
-    document.addEventListener("click", function (e) {
-      var tab = e.target.closest(".c-tabs [data-tab]");
-      if (!tab) return;
-      var article = tab.closest("article.country");
-      showTab(article, tab.dataset.tab);
-      if (!article.closest("dialog")) history.replaceState(null, "", tab.dataset.tab === (article.dataset.defaultTab || "score") ? location.pathname + location.search : "#" + tab.dataset.tab);
-      // a tab chosen from far down a long panel: bring the top of the new one into view
-      var main = article.querySelector(".c-main");
-      if (main.getBoundingClientRect().top < 0) main.scrollIntoView({ block: "start" });
-    });
-    // a link to a tab from elsewhere in the article ("All datasets →" in the side column)
-    document.addEventListener("click", function (e) {
-      var link = e.target.closest && e.target.closest("a[data-tab-link]");
-      if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-      var article = link.closest("article.country");
-      if (!showTab(article, link.dataset.tabLink)) return;
-      e.preventDefault();
-      if (!article.closest("dialog")) history.replaceState(null, "", "#" + link.dataset.tabLink);
-      article.querySelector(".c-main").scrollIntoView({ block: "start" });
-    });
-    document.addEventListener("keydown", function (e) {
-      var tab = e.target.closest && e.target.closest(".c-tabs [data-tab]");
-      if (!tab || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
-      var all = Array.prototype.slice.call(tab.parentElement.children), next = all[(all.indexOf(tab) + (e.key === "ArrowRight" ? 1 : all.length - 1)) % all.length];
-      e.preventDefault(); showTab(tab.closest("article.country"), next.dataset.tab, true);
-    });
     document.addEventListener("click", function (e) {
       var link = e.target.closest("a[data-seg-link]");
       if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
       e.preventDefault();
       showSegment(link.closest("article.country"), link.dataset.segLink);
-    });
-    // "Open all" above the score breakdown opens or closes every segment at once.
-    document.addEventListener("click", function (e) {
-      var btn = e.target.closest("[data-seg-toggle]");
-      if (!btn) return;
-      var open = btn.getAttribute("aria-expanded") !== "true";
-      btn.closest("article.country").querySelectorAll(".segrow[data-seg]").forEach(function (row) { row.open = open; });
-      btn.setAttribute("aria-expanded", String(open));
-      btn.textContent = open ? "Close all" : "Open all";
     });
     // "Score over time" on a country article and the world average on the home page: a vertical seeker follows the pointer and says
     // what the score was then and which history entries sit at that point. It snaps to an entry
@@ -374,9 +322,7 @@ const schemas = jsonld ? [jsonld].flat() : [];
     document.addEventListener("pointerdown", seek);
     document.addEventListener("pointerleave", hideSeek);
 
-    // A link straight to a segment, e.g. /country/de/#seg-possession
-    // or to a tab: /country/de/#history
-    if (/^#(context|history|datasets|sources)$/.test(location.hash) && showTab(document.querySelector("article.country"), location.hash.slice(1))) document.querySelector("article.country .c-main").scrollIntoView({ block: "start" });
+    // A link straight to a segment, e.g. /country/de/#seg-possession: lit up as well as reached
     if (/^#seg-[a-z_-]+$/.test(location.hash)) showSegment(document.querySelector("article.country"), location.hash.slice(5));
   </script>
   <script is:inline>
@@ -496,6 +442,51 @@ const schemas = jsonld ? [jsonld].flat() : [];
       document.addEventListener("focusout", function (e) { if (termOf(e)) hide(); });
       document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(); });
       window.addEventListener("scroll", hide, { passive: true, capture: true });
+    })();
+  </script>
+  <script is:inline>
+    // Citation numbers ([3]) show their source in a card in the style of the preview cards, read
+    // from the numbered list the number links to, so the list can stay folded away (the country
+    // profile) or far below. The card stays open while the pointer is on it, for its link; a click
+    // or tap on the number pins it. Without JavaScript the number is a plain link to the list.
+    (function () {
+      var tip = null, current = null, timer = 0;
+      var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+      var citeOf = function (e) { return e.target.closest && e.target.closest("sup.cite a[href^='#']"); };
+      function show(a) {
+        var li = document.getElementById(a.getAttribute("href").slice(1));
+        if (!li) return;
+        clearTimeout(timer);
+        if (!tip) {
+          tip = document.createElement("div"); tip.className = "hc hc-cite"; tip.setAttribute("role", "tooltip"); document.body.appendChild(tip);
+          tip.addEventListener("pointerenter", function () { clearTimeout(timer); });
+          tip.addEventListener("pointerleave", function () { hideSoon(); });
+        }
+        current = a;
+        var link = li.querySelector("a[href]:not(.src-archived)"), cite = li.querySelector("cite"), meta = li.querySelector(".src-meta");
+        var host = ""; try { host = link ? new URL(link.href).hostname.replace(/^www\./, "") : ""; } catch (err) {}
+        tip.innerHTML = '<p class="hc-eyebrow">Source ' + esc(li.value || "") + (host ? " · " + esc(host) : link ? "" : " · print") + "</p>"
+          + (link ? '<a class="hc-title hc-src" href="' + esc(link.href) + '" target="_blank" rel="noopener noreferrer">' + esc(link.textContent) + " ↗</a>" : '<b class="hc-title hc-src">' + esc((cite || li).textContent) + "</b>")
+          + (meta ? '<p class="hc-text">' + esc(meta.textContent) + "</p>" : "");
+        tip.hidden = false;
+        var r = a.getBoundingClientRect(), m = 10, w = tip.offsetWidth, h = tip.offsetHeight;
+        var below = r.bottom + 6 + h < window.innerHeight || r.top - 6 - h < 0;
+        tip.style.left = Math.min(Math.max(m, r.left - 12), window.innerWidth - w - m) + "px";
+        tip.style.top = (below ? r.bottom + 6 : r.top - 6 - h) + "px";
+      }
+      function hide() { clearTimeout(timer); current = null; if (tip) tip.hidden = true; }
+      function hideSoon() { clearTimeout(timer); timer = setTimeout(hide, 220); }
+      document.addEventListener("pointerover", function (e) { var a = citeOf(e); if (a && e.pointerType !== "touch") show(a); });
+      document.addEventListener("pointerout", function (e) { var a = citeOf(e); if (a && !a.contains(e.relatedTarget)) hideSoon(); });
+      document.addEventListener("click", function (e) {
+        var a = citeOf(e);
+        if (a && !e.metaKey && !e.ctrlKey && !e.shiftKey && document.getElementById(a.getAttribute("href").slice(1))) { e.preventDefault(); if (current === a && !tip.hidden && e.pointerType === "touch") hide(); else show(a); }
+        else if (current && !(tip && tip.contains(e.target))) hide();
+      });
+      document.addEventListener("focusin", function (e) { var a = citeOf(e); if (a) show(a); });
+      document.addEventListener("focusout", function (e) { if (citeOf(e) && !(tip && tip.contains(e.relatedTarget))) hideSoon(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(); });
+      window.addEventListener("scroll", function () { if (current) hide(); }, { passive: true, capture: true });
     })();
   </script>
   <script is:inline>

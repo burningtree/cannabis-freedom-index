@@ -357,7 +357,7 @@ const datasets = defineCollection({
       // one CSV, or one per edition of a dataset published as a new file each time
       file: z.union([csvFile, z.array(z.object({ file: csvFile, edition: z.number().int() }).strict()).min(1)]),
       rail: z.boolean().default(false), // also shown in the profile's side column
-      // how it reads in the profile's Datasets tab: {field} templates, see datasets.yaml
+      // how it reads in the profile's Datasets section: {field} templates, see datasets.yaml
       // optional for a worldwide dataset (no `country`), which no profile shows
       profile: z.object({ headline: z.string().min(1), details: z.string().optional(), years: z.array(z.number().int()).optional(), each: z.string().optional() }).strict().optional(),
       origin: z.string().min(1), // how the file was made: downloaded as published or transcribed, and when

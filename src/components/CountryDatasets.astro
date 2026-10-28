@@ -1,16 +1,15 @@
 ---
 // What the most important outside datasets say about a country (src/lib/datasets.js, `rail` in
 // datasets.yaml), beside the index: how its people judge using marijuana (Pew) and how free it is
-// by the Human Freedom Index. Every dataset is in the profile's Datasets tab. Each is placed
-// among the countries the dataset covers. Shown in the profile's rail; nothing here is scored.
+// by the Human Freedom Index. Every dataset is in the profile's Datasets section. Each is placed
+// among the countries the dataset covers. Two tiles in the profile's "At a glance"; nothing here is scored.
 import { places } from "../lib/countries.js";
 import { DATASETS } from "../lib/datasets.js";
 import { viewByMetric } from "../lib/map-views.js";
 import SourceTip from "./SourceTip.astro";
 import { theName } from "../lib/seo.js";
 
-// `all`: how many datasets cover the country, all of them in the profile's Datasets tab
-const { c, all } = Astro.props;
+const { c } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const mapHref = (key) => `${base}map/${viewByMetric[`data:${key}`].slug}/`;
 const covered = (key) => places.filter((x) => x.datasets[key]);
@@ -47,8 +46,7 @@ const gapText = !hfi ? "" : Math.abs(gap) < hfiList.length / 8 ? "about as expec
   : gap > 0 ? "freer than its general freedom suggests" : "less free than its general freedom suggests";
 ---
 {(pew || hfi) && (
-  <section class="c-data" aria-labelledby={`cd-h-${c.id}`}>
-    <h2 id={`cd-h-${c.id}`}>Beyond the law<a href="#datasets" data-tab-link="datasets">All {all} datasets →</a></h2>
+  <>
     {pew && (
       <div class="cd-block">
         <h3>{PEW.name}</h3>
@@ -73,5 +71,5 @@ const gapText = !hfi ? "" : Math.abs(gap) < hfiList.length / 8 ? "about as expec
         <SourceTip><a href={HFI.url} target="_blank" rel="noopener noreferrer">{HFI.title}</a>, {HFI.when}.</SourceTip>
       </div>
     )}
-  </section>
+  </>
 )}

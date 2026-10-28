@@ -134,7 +134,7 @@ const parts = [
               <div><dt>Published by</dt><dd><a href={d.url} target="_blank" rel="noopener noreferrer">{d.title}</a>{d.data_url && <> · <a href={d.data_url} target="_blank" rel="noopener noreferrer">{d.data_label ?? "original data"}</a></>}</dd></div>
               <div><dt>How the file was made</dt><dd>{d.origin}</dd></div>
               <div><dt>Shown on</dt><dd>{d.map
-                ? <><a href={`${base}map/${viewByMetric[`data:${d.id}`].slug}/`}>the world map</a> and the Datasets tab of each country it covers</>
+                ? <><a href={`${base}map/${viewByMetric[`data:${d.id}`].slug}/`}>the world map</a> and the Datasets section of each country it covers</>
                 : <>{(d.pages ?? []).map((p, i, all) => <><a href={`${base}${p.path}`}>{p.label}</a>{i < all.length - 1 && ", "}</>)}{d.also && ` ${d.also}`}</>}</dd></div>
             </dl>
             <table class="src-table src-ds-fields">

@@ -28,7 +28,7 @@ const meta = {
   rec: REC_LABEL,
   med: MED_LABEL,
   total: countries.length,
-  // the outside datasets, in the groups of the profiles' Datasets tab: [id, name, group, polarity, its map or chart]
+  // the outside datasets, in the groups of the profiles' Datasets section: [id, name, group, polarity, its map or chart]
   datasets: GROUPS.flatMap((g) => Object.values(DATASETS).filter((d) => d.profile && groupOf(d) === g)
     .map((d) => [d.id, d.name, g, POLARITY[d.id] ?? 0, d.map ? `map/${viewByMetric[`data:${d.id}`].slug}/` : CHART_OF[d.id] ? `charts/#${CHART_OF[d.id]}` : `sources/#dataset-${d.id}`])),
   avg: countries.reduce((t, c) => t + c.raw, 0) / countries.length,

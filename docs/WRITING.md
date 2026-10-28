@@ -138,8 +138,9 @@ references. The same source keeps its number wherever it is cited again.
 - Texts without marks still work: all their sources are cited together after the last sentence.
   Convert them to per-sentence citations whenever a text is written or revised; there is no need
   to convert everything at once.
-- On a country page the score breakdown and the Context tab each end with their own numbered
-  references; history, article and culture pages end with one list for the whole page.
+- On a country page the score breakdown and the context share one numbering; each number shows
+  its source in a card on hover, and the full list sits folded in the Sources section at the end.
+  History, article and culture pages end with one list for the whole page.
 
 ## Words to avoid
 

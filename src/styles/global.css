@@ -354,8 +354,6 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 .d-note { color: var(--text-2); }
 .d-h { font-size: 17px; margin: 26px 0 4px; display: flex; justify-content: space-between; align-items: baseline; }
 .d-h span { color: var(--muted); font-size: 12.5px; font-family: Inter, sans-serif; font-weight: 400; letter-spacing: 0; }
-.seg-toggle { margin-left: 10px; padding: 3px 10px; font: inherit; font-size: 12.5px; color: var(--text-2); background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); cursor: pointer; }
-.seg-toggle:hover { color: var(--text); border-color: var(--muted); }
 .segrow { border-bottom: 1px solid var(--border); }
 .segrow:last-child { border: 0; }
 .segrow > summary, .segrow:not(details) { padding: 11px 10px; margin: 0 -10px; border-radius: var(--r); }
@@ -410,15 +408,7 @@ a.chip:hover { border-color: var(--muted); color: var(--text); }
 .page-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 22px; }
 .back { color: var(--text-2); font-weight: 500; }
 .back:hover { color: var(--text); }
-.country-page .c-main > .d-h:first-child { margin-top: 0; }
-/* Score over time: beside the head in the drawer, under the score breakdown on the full page */
 .country-page .why p, .country-page .ctx { font-size: 15px; max-width: 72ch; }
-.c-sources ol { margin: 6px 0 0; padding-left: 20px; color: var(--muted); font-size: 13.5px; }
-.c-sources li { padding: 3px 0; }
-.c-sources a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; overflow-wrap: anywhere; }
-.c-sources a:hover { color: var(--text); text-decoration-color: currentColor; }
-.c-sources cite { color: var(--text-2); font-style: normal; }
-.c-sources .src-meta { display: block; color: var(--muted); line-height: 1.45; }
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 44px; }
 .pager a { display: grid; gap: 2px; padding: 14px 18px; border: 1px solid var(--border); border-radius: var(--r); background: var(--surface); }
 .pager a:hover { border-color: var(--muted); }
@@ -843,7 +833,7 @@ sup.cite a:hover { text-decoration: underline; }
 .answer b { font-size: 15px; }
 .answer .t { color: var(--muted); font-size: 12.5px; line-height: 1.35; }
 /* The segment an answer points to: scrolled to, opened and lit up for a moment */
-.segrow[data-seg] { scroll-margin-top: 84px; }
+.segrow[data-seg] { scroll-margin-top: calc(var(--hdr, 57px) + 64px); }
 .segrow.flash { animation: seg-flash 2.6s ease-out; border-radius: var(--r); }
 @keyframes seg-flash {
   0%, 35% { background: color-mix(in srgb, var(--t3) 30%, transparent); box-shadow: 0 0 0 8px color-mix(in srgb, var(--t3) 30%, transparent); }
@@ -1119,7 +1109,7 @@ h3 { font-size: 22px; }
 .change-score .delta { font-size: 12px; font-weight: 400; }
 
 /* controls: outlined, squared */
-.btn, select, input[type="search"], .metric-group a, .metric-group button, .seg-toggle, .kinds a, .periods a, .col-menu > summary { background: none; }
+.btn, select, input[type="search"], .metric-group a, .metric-group button, .kinds a, .periods a, .col-menu > summary { background: none; }
 .metric-group a, .metric-group button { padding: 4px 10px; font-size: 12.5px; }
 .metric-group a[aria-current], .metric-group button[aria-pressed="true"], .periods a[aria-current="page"], .btn-primary { background: var(--text); border-color: var(--text); color: var(--bg); font-weight: 500; }
 .chip { background: none; padding: 1px 8px; font-size: 12px; }
@@ -1221,11 +1211,7 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .cd-more a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
 .cd-more a:hover { color: var(--text); text-decoration-color: currentColor; }
 /* other datasets in the rail (CountryDatasets.astro): one block per dataset */
-.c-data h2 { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 0; padding-bottom: 4px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-.c-data h2 span { color: var(--muted); opacity: .8; }
-.c-data h2 a { color: var(--text-2); }
-.c-data h2 a:hover { color: var(--text); }
-/* the Datasets tab (CountryDatasetTab.astro): cards in groups. Each card has the dataset's
+/* the Datasets section (CountryDatasetTab.astro): cards in groups. Each card has the dataset's
    name, one headline figure, the figure over the years, where the country stands among the
    countries the dataset covers, a line of further figures and links to its map and source. */
 .ds-nav { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 4px; }
@@ -1289,31 +1275,7 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .cd-key li { display: flex; align-items: center; gap: 6px; }
 .cd-key .sw { width: 10px; height: 10px; }
 .cd-key b { color: var(--text); font: 500 12px var(--mono); }
-/* the tabs over a country's right-hand side; they stay in reach while the panel scrolls */
-.c-main { scroll-margin-top: var(--hdr, 57px); }
-.drawer .c-main { scroll-margin-top: 0; }
-/* in one column the tabs follow the score chart: give them room */
-.c-rail + .c-main { margin-top: clamp(28px, 5vw, 44px); }
-.c-tabs { position: sticky; top: var(--hdr, 57px); z-index: 5; display: flex; gap: 4px 26px; overflow-x: auto; scrollbar-width: none; background: var(--bg); border-top: 1px solid var(--text); border-bottom: 1px solid var(--border); }
-.c-tabs::-webkit-scrollbar { display: none; }
-/* wide enough for the row to wrap rather than hide a tab; narrower, it scrolls, faded at the edge */
-@media (min-width: 761px) { .c-tabs { flex-wrap: wrap; overflow-x: visible; column-gap: 20px; } }
-@media (max-width: 760px) { .c-tabs { mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); padding-right: 28px; } }
-.c-tabs button { flex: none; padding: 13px 0 12px; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; background: none; cursor: pointer; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-.c-tabs button:hover { color: var(--text); }
-.c-tabs button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--text); }
-.c-tabs small { margin-left: 7px; font-size: 10.5px; color: var(--muted); }
-.c-tabs + .c-panel > .d-h:first-child, .c-tabs ~ .c-panel > .d-h:first-child, .c-tabs ~ .c-panel > :first-child > .d-h:first-child { margin-top: 26px; padding-top: 0; border-top: 0; }
-.c-tabs ~ .c-panel .c-changes, .c-tabs ~ .c-panel .c-sources { margin-top: 0; }
-.drawer .c-tabs { top: 0; }
-@media print { .c-tabs { display: none; } .c-panel[hidden] { display: block !important; } }
-.c-rail > * + * { margin-top: 22px; }
-.c-rail .c-chart { margin-top: 28px; }
-.c-rail .c-chart:first-child { margin-top: 0; }
-.c-rail .c-chart + .c-use { margin-top: 28px; }
-
 @media (min-width: 900px) {
-  .country-page .country { display: grid; grid-template-columns: minmax(260px, 320px) minmax(0, 1fr); gap: 0 clamp(40px, 6vw, 96px); align-items: start; }
   .country-page .c-top { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 0 clamp(40px, 6vw, 96px); align-items: start; margin-bottom: 40px; }
   .country-page .c-top > * { grid-column: 1; }
   .country-page .c-top > .d-score { grid-column: 2; grid-row: 1 / span 7; align-self: end; margin: 0; border-top: 0; padding-top: 0; }
@@ -1327,9 +1289,108 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
   .country-page .d-meter { margin: 22px 0 16px; }
   .country-page .d-score .tier { font-size: 36px; }
   .country-page .answers { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .country-page .c-main > .d-h:first-child { margin-top: 0; }
-  .country-page .c-rail + .c-main { margin-top: 0; }
 }
+
+/* ── One page: everything under the masthead in order, with a sticky row of links ── */
+.c-nav { position: sticky; top: var(--hdr, 57px); z-index: 5; margin-top: clamp(32px, 5vw, 56px); overflow-x: auto; scrollbar-width: none; background: var(--bg); border-top: 1px solid var(--text); border-bottom: 1px solid var(--border); }
+.c-nav::-webkit-scrollbar { display: none; }
+.c-nav ol { display: flex; gap: 4px clamp(18px, 2.4vw, 30px); margin: 0; padding: 0; list-style: none; }
+.c-nav li { flex: none; }
+.c-nav a { display: block; padding: 13px 0 11px; border-bottom: 2px solid transparent; margin-bottom: -1px; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); white-space: nowrap; }
+.c-nav a:hover { color: var(--text); }
+.c-nav a[aria-current] { color: var(--text); border-bottom-color: var(--text); }
+.c-nav small { margin-left: 6px; font-size: 10.5px; color: var(--muted); }
+@media (max-width: 760px) { .c-nav { mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent); } .c-nav ol { padding-right: 28px; } }
+.drawer .c-nav { display: none; }
+@media print { .c-nav { display: none; } }
+.c-sec { scroll-margin-top: calc(var(--hdr, 57px) + 44px); }
+.country .c-sec > .d-h, .country .c-sec > :first-child > .d-h:first-child { margin-top: clamp(48px, 6vw, 80px); font-size: clamp(26px, 3vw, 36px); }
+.c-nav + .c-sec > .d-h:first-child, .c-nav + .c-sec > :first-child > .d-h:first-child { margin-top: clamp(28px, 3vw, 40px); }
+.d-h span a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.d-h span a:hover { color: var(--text); text-decoration-color: currentColor; }
+
+/* At a glance: the figures beside the law, as tiles in one row */
+.glance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 clamp(24px, 3vw, 48px); }
+.glance-grid > * { margin: 0; padding: 14px 0 18px; border: 0; }
+.glance-grid > .c-use { align-content: start; }
+
+/* The score: its shape and its path over time beside the six segments, all open */
+.score-side { display: grid; gap: 28px; align-content: start; margin-bottom: 28px; }
+.c-radar { margin: 0; }
+.c-radar-box { position: relative; aspect-ratio: 1; width: min(230px, calc(100% - 172px)); margin: 34px auto 30px; }
+.c-radar-box svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.c-radar-ring { fill: none; stroke: var(--border); stroke-width: .5; }
+.c-radar-avg { fill: none; stroke: var(--muted); stroke-width: .7; stroke-dasharray: 2 2; }
+.c-radar-nat { fill: none; stroke: var(--text-2); stroke-width: .7; stroke-dasharray: .8 1.6; stroke-linecap: round; }
+.c-radar-shape { fill: color-mix(in srgb, var(--c) 38%, transparent); stroke: var(--c); stroke-width: 1.3; stroke-linejoin: round; }
+.c-radar-dot { fill: var(--c); stroke: var(--bg); stroke-width: .6; transform-box: fill-box; transform-origin: center; transition: transform .15s; }
+.c-radar-label { position: absolute; transform: translate(-50%, -50%); font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); width: max-content; max-width: 86px; line-height: 1.3; text-align: center; }
+.c-radar-label.side-r { transform: translate(4px, -50%); text-align: left; }
+.c-radar-label.side-l { transform: translate(calc(-100% - 4px), -50%); text-align: right; }
+.c-radar-label b { margin-left: 3px; font-weight: 500; color: var(--text); }
+.c-radar-label:hover { color: var(--text); }
+.c-radar-key { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.c-radar-key span { display: inline-flex; align-items: center; gap: 6px; }
+.c-radar-key i { display: inline-block; width: 14px; height: 0; border-top: 1.5px dashed var(--muted); }
+.c-radar-key .sw-shape { height: 10px; border: 1.5px solid var(--c); background: color-mix(in srgb, var(--c) 38%, transparent); }
+.c-radar-key .sw-nat { border-top: 1.5px dotted var(--text-2); }
+.score-side .c-chart { margin: 0; }
+/* a segment read in the text lights its corner of the shape */
+.score-grid:has(.segrow[data-seg="possession"]:hover) [data-seg-dot="possession"],
+.score-grid:has(.segrow[data-seg="cultivation"]:hover) [data-seg-dot="cultivation"],
+.score-grid:has(.segrow[data-seg="enforcement"]:hover) [data-seg-dot="enforcement"],
+.score-grid:has(.segrow[data-seg="sharing"]:hover) [data-seg-dot="sharing"],
+.score-grid:has(.segrow[data-seg="consumption"]:hover) [data-seg-dot="consumption"],
+.score-grid:has(.segrow[data-seg="access"]:hover) [data-seg-dot="access"] { transform: scale(2); }
+.score-rows .segrow { padding: 18px 0 8px; }
+.score-rows .segrow:first-child { padding-top: 6px; }
+.score-rows .why { padding: 6px 0 10px; }
+@media (min-width: 900px) {
+  .country-page .score-grid { display: grid; grid-template-columns: minmax(280px, 380px) minmax(0, 1fr); gap: 0 clamp(40px, 6vw, 96px); align-items: start; }
+  .country-page .score-side { position: sticky; top: calc(var(--hdr, 57px) + 64px); margin-bottom: 0; }
+  .country-page .c-radar-box { width: min(250px, calc(100% - 180px)); }
+}
+
+/* Context: tiles in columns, each as tall as its text; sections with several parts span the width */
+.ctx-grid { columns: 2 340px; column-gap: clamp(32px, 4vw, 64px); }
+.segrow.ctx-tile { break-inside: avoid; padding: 16px 0 18px; border-bottom: 0; border-top: 1px solid var(--border); }
+.ctx-grid > .ctx-tile:first-child { border-top: 0; padding-top: 6px; }
+.ctx-wide { margin-top: 18px; }
+.ctx-wide > .ctx-tile { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 0 clamp(32px, 4vw, 64px); border-top: 1px solid var(--text); }
+.ctx-wide > .ctx-tile > :not(.ctx-spot) { grid-column: 1 / -1; }
+.ctx-wide .ctx-spot + .ctx-spot { margin-top: 0; }
+.ctx-wide .ctx-spot { padding: 10px 0; }
+
+/* Sources: a summary, then the whole numbered list folded away; the numbers in the text show
+   each source in a card (Base.astro) */
+.src-sum { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 18px clamp(32px, 5vw, 80px); margin-top: 14px; }
+.src-figs { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 16px 24px; margin: 0; align-content: start; }
+.src-figs div { display: flex; flex-direction: column-reverse; gap: 6px; }
+.src-figs dt { font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.src-figs dd { margin: 0; font: 400 34px/1 var(--mono); letter-spacing: -.05em; }
+.src-figs dd small { font-size: 14px; color: var(--muted); letter-spacing: 0; }
+.src-figs dd.src-date { font: 400 17px/1.2 var(--display); letter-spacing: 0; }
+.src-hosts h3, .src-all h3 { margin: 0 0 6px; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.src-hosts ol { margin: 0; padding: 0; list-style: none; }
+.src-hosts li { display: grid; grid-template-columns: minmax(0, 1fr) 30% 28px; gap: 12px; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+.src-hosts li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-2); }
+.src-hosts li i { display: block; height: 3px; width: var(--w); background: var(--text-2); }
+.src-hosts li b { text-align: right; font: 500 12.5px var(--mono); }
+.src-all { margin-top: 24px; }
+.src-all > summary { display: inline-flex; align-items: center; gap: 10px; padding: 9px 14px; border: 1px solid var(--text); border-radius: var(--r); cursor: pointer; list-style: none; font: 400 11.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.src-all > summary::-webkit-details-marker { display: none; }
+.src-all > summary::after { content: "↓"; }
+.src-all[open] > summary::after { content: "↑"; }
+.src-all > summary:hover { background: var(--text); color: var(--bg); }
+.src-all .srcs { margin-top: 16px; columns: 2 420px; column-gap: 48px; }
+.src-all .srcs li { break-inside: avoid; }
+.src-all h3 { margin-top: 22px; }
+/* the card of a citation number: it can be reached, for its link */
+.hc.hc-cite { pointer-events: auto; }
+.hc-cite .hc-src { font-size: 17px; line-height: 1.25; }
+.hc-cite a.hc-src { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.hc-cite a.hc-src:hover { text-decoration-color: currentColor; }
+.hc-cite .hc-text { margin-top: 6px; color: var(--muted); font-size: 12.5px; }
 
 /* ══ History ═════════════════════════════════════════════════════════════════
    The history in numbers, the periods as a histogram you can click, the kinds as
@@ -1797,12 +1858,11 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .c-culture li a:hover b { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 /* on a country profile: compact rows, in two columns where the rail is wide enough (the drawer,
    or one column on a narrow screen), the first few shown and the rest behind "Show all" */
-.c-rail .c-culture { margin-bottom: 36px; }
-.c-rail .c-culture ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); column-gap: 24px; }
-.c-rail .c-culture li a { grid-template-columns: 40px 1fr; gap: 12px; padding: 7px 0; }
-.c-rail .c-culture img, .c-rail .c-culture-none { width: 40px; height: 40px; }
-.c-rail .c-culture-none { font-size: 19px; }
-.c-rail .c-culture li b { font-size: 17px; line-height: 1.2; }
+.c-atlas .c-culture { margin-top: 8px; }
+.c-atlas .c-culture ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); column-gap: clamp(24px, 3vw, 48px); border-top: 0; }
+.c-atlas .c-culture li a { grid-template-columns: 56px 1fr; gap: 14px; padding: 10px 0; }
+.c-atlas .c-culture img, .c-atlas .c-culture-none { width: 56px; height: 56px; }
+.c-atlas .c-culture li b { font-size: 19px; line-height: 1.2; }
 .c-culture-more summary { list-style: none; cursor: pointer; padding: 10px 0 0; font: 400 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
 .c-culture-more summary::-webkit-details-marker { display: none; }
 .c-culture-more summary:hover { color: var(--text); }
@@ -2382,9 +2442,8 @@ button.sv-row .sv-chip { font: 400 10.5px var(--mono); text-transform: uppercase
 /* the culture-only "Did you know?" on the Culture page: one gap above it, not the section's and the box's together */
 .cu-dyk { padding-top: clamp(32px, 4vw, 48px); }
 .cu-dyk .dyk { margin-top: 0; }
-/* the country's own cases, above the pager: own word in bold, not a link to the page itself */
-.dyk-country .dyk-text b { font-weight: inherit; }
-.dyk-country + .pager { margin-top: clamp(32px, 5vw, 56px); }
+/* the country's own cases on its profile: its own name in bold, not a link to the page itself */
+.c-dyk .dyk-text b { font-weight: inherit; }
 
 /* On a country page the top bar names the country once its heading has scrolled away (Base.astro). */
 .topbar-here { display: flex; align-items: baseline; gap: 8px; min-width: 0; padding-left: 20px; border-left: 1px solid var(--border); font: 400 21px/1 var(--display); white-space: nowrap; opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity .2s, transform .2s, visibility .2s; }

@@ -15,7 +15,6 @@ import { USE_COMPARISON_NOTE } from "../lib/use-labels.js";
 import SourceTip from "./SourceTip.astro";
 import SourceCitation from "./SourceCitation.astro";
 import Cited from "./Cited.astro";
-import References from "./References.astro";
 import { references, citeParts, citedKeys } from "../lib/cite.js";
 import { SHOW_PRICES } from "../lib/config.js";
 import { PLANTING_STATUS, STATUS_SECTIONS, PLANTING_TRADE } from "../lib/segment-ids.js";
@@ -26,6 +25,9 @@ import PenaltyTable from "./PenaltyTable.astro";
 import { answersFor } from "../lib/answers.js";
 import CultureList from "./CultureList.astro";
 import { cultureOf } from "../lib/culture.js";
+import { factsOf } from "../lib/facts.js";
+import { priceHistoryFor } from "../lib/prices.js";
+import FactText from "./FactText.astro";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
 const { c, sub } = Astro.props;
@@ -49,13 +51,13 @@ const unitRange = group ? `${Math.min(...group.units.map((x) => x.score))}–${M
 const history = changes.filter((ch) => ch.country === c && (!sub || ch.unit?.id === sub.id));
 const nationalCount = sub ? changes.filter((ch) => ch.country === c).length : 0;
 const scored = sub ? [] : history.filter((ch) => ch.score); // the ones that moved the score (the national one)
-// Inline citations (src/lib/cite.js): the score breakdown and the context each number their sources
-// in reading order, and list them at their end.
-const scoreRefs = references("sc"), ctxRefs = references("cx");
+// Inline citations (src/lib/cite.js): the score breakdown and the context share one numbering, in
+// reading order. A number shows its source in a card on hover (Base.astro); the list itself sits
+// folded in the Sources section at the end, under a summary.
+const refs = references("src");
 const partsOf = (block, refs, where) => citeParts(block.cite.text, refs, (k) => block.cite.keys.includes(k) && block.cite.of(k), block.cite.keys, `countries/${c.slug}.yaml: ${where}`);
-const segParts = d ? d.segments.map((seg, i) => seg && partsOf(seg, scoreRefs, SEGMENTS[i].id)) : [];
-const unitRefs = references("unit");
-const unitParts = sub ? sub.segCite.map((text, i) => citeParts(text, unitRefs,
+const segParts = d ? d.segments.map((seg, i) => seg && partsOf(seg, refs, SEGMENTS[i].id)) : [];
+const unitParts = sub ? sub.segCite.map((text, i) => citeParts(text, refs,
   (k) => /^[1-9]\d*$/.test(k) && sub.sources[+k - 1],
   citedKeys(text) ?? sub.sources.map((_, i) => String(i + 1)),
   `countries/${c.slug}/${sub.id}.yaml: ${SEGMENTS[i].id}`)) : [];
@@ -63,7 +65,7 @@ const unitParts = sub ? sub.segCite.map((text, i) => citeParts(text, unitRefs,
 // place of those it does not write (marked `national`). Its sources: the state's numbered list.
 const ctxList = sub ? c.details.context.map((nat, i) => sub.context[i] ?? (nat && { ...nat, national: true })) : d?.context ?? null;
 const srcList = sub ? sub.sources : d?.sources ?? [];
-const ctxParts = ctxList ? Object.fromEntries(ctxList.filter(Boolean).map((x) => [x.key, x.items ? x.items.map((item, i) => partsOf(item, ctxRefs, `${x.key}[${i}]`)) : partsOf(x, ctxRefs, x.key)])) : {};
+const ctxParts = ctxList ? Object.fromEntries(ctxList.filter(Boolean).map((x) => [x.key, x.items ? x.items.map((item, i) => partsOf(item, refs, `${x.key}[${i}]`)) : partsOf(x, refs, x.key)])) : {};
 // a maximum fine in the profile's currency: "€5,500", "$300"
 const money = (n, currency) => new Intl.NumberFormat("en-GB", { style: "currency", currency, maximumFractionDigits: 0 }).format(n);
 // a chip inside a context section leads to the world map coloured by the same status
@@ -89,41 +91,53 @@ const travel = sub ? null : [
     ? `A prescription from another country is not recognised by itself. Within the Schengen area a patient can carry prescribed medicine for up to 30 days with a certificate issued by their home health authority; whether cannabis qualifies depends on both countries.`
     : `A prescription or medical card from another country is generally not recognised. Travellers who need a cannabis-based medicine should ask ${c.name}'s embassy before travelling.`,
 ].filter(Boolean);
-const incbRef = travel ? ctxRefs.cite(INCB) : null; // the crossing-the-border note cites one guide
+const incbRef = travel ? refs.cite(INCB) : null; // the crossing-the-border note cites one guide
 const answers = answersFor(v);
 // The methodology lives on the home page: its section, or the description of one segment there.
 const method = (segId) => `${base}#${segId ? `method-${segId}` : "methodology"}`;
 
-// outside datasets with figures for the country, listed in their own tab
+// outside datasets with figures for the country, in their own section
 // a state shows its country's datasets, marked as national
 const datasetCount = Object.keys(datasetsOf(c.slug)).length;
-// The right-hand side is split into tabs so that the history is one click away instead of at
-// the bottom of a long page: [id, label, count]. Labels are kept short so that the row fits; the
-// panels' headings say it in full ("provinces and territories", "national estimate"). A single state has only its score breakdown.
-// A federation opens on its states or provinces, the national estimate after them; a single state
-// or province has its own breakdown, its history and the others of its country.
-const tabs = (sub
-  ? [
-      ["score", "Score breakdown"],
-      ["context", "Context"],
-      history.length > 0 && ["history", "History", history.length],
-      datasetCount > 0 && ["datasets", "Datasets", datasetCount],
-      ["sources", "Sources", srcList.length],
-      ["units", `Other ${group.plural.split(" ")[0]}`, group.units.length - 1],
-    ]
-  : [
-      group && ["units", group.plural[0].toUpperCase() + group.plural.split(" ")[0].slice(1), group.units.length],
-      ["score", group ? "National" : "Score breakdown"],
-      d && ["context", "Context"],
-      history.length > 0 && ["history", "History", history.length],
-      d && datasetCount > 0 && ["datasets", "Datasets", datasetCount],
-      d && ["sources", "Sources", d.sources.length],
-    ]).filter(Boolean);
-const firstTab = tabs[0][0];
 // words and traditions of the cultural atlas that belong to this country; a state shows its country's
 const culture = cultureOf(c);
+const facts = sub ? [] : factsOf(c);
+// The figures at a glance: users, how people judge it, how free the country is in general, prices.
+const glance = Boolean(use || unitUse || (!sub && (c.datasets.pew_marijuana || c.datasets.hfi)) || (SHOW_PRICES && !sub && priceHistoryFor(c.id).length));
+// The whole profile is one page; a sticky row of links under the masthead jumps to each part and
+// marks the one in view: [id, label, count]. The ids are the old tab names, so links like #history
+// still land.
+const plural = group ? group.plural.split(" ")[0] : "";
+const sections = [
+  glance && ["overview", "At a glance"],
+  group && !sub && ["units", plural[0].toUpperCase() + plural.slice(1), group.units.length],
+  ["score", group && !sub ? "National estimate" : "Score"],
+  ctxList && ["context", "Context", ctxList.filter(Boolean).length + (travel ? 1 : 0)],
+  history.length > 0 && ["history", "History", history.length],
+  group && sub && ["units", `Other ${plural}`, group.units.length - 1],
+  datasetCount > 0 && ["datasets", "Datasets", datasetCount],
+  culture.length > 0 && ["culture", "Culture", culture.length],
+  facts.length > 0 && ["did-you-know", "Did you know", facts.length],
+  refs.list.length > 0 && ["sources", "Sources", refs.list.length],
+].filter(Boolean);
+
+// The score's shape: the six segments as a radar, over the world average (and, for a state, its country).
+const radarPt = (i, val, r = 40) => { const a = -Math.PI / 2 + (i * 2 * Math.PI) / SEGMENTS.length; return [50 + Math.cos(a) * r * (val / 10), 50 + Math.sin(a) * r * (val / 10)]; };
+const radarPoly = (vals) => vals.map((val, i) => radarPt(i, val).map((n) => n.toFixed(2)).join(",")).join(" ");
+// a label's side of the shape: right of the corner, left of it, or centred above or below
+const radarSide = (i) => { const [lx] = radarPt(i, 10); return lx > 55 ? "r" : lx < 45 ? "l" : "c"; };
+
+// The Sources section sums the list up: how many, from how many websites, and the most cited ones.
+const hostOf = (url) => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return null; } };
+const hostCounts = [...refs.list.reduce((m, r) => { const h = r.source[1] && hostOf(r.source[1]); if (h) m.set(h, (m.get(h) ?? 0) + 1); return m; }, new Map())]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+const printCount = refs.list.filter((r) => !r.source[1]).length;
+// sources in the profile that no text cites, listed after the numbered ones
+const refKey = (x) => x[3] ?? x[1] ?? x[0];
+const citedSet = new Set(refs.list.map((r) => refKey(r.source)));
+const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
 ---
-<article class="country" data-id={c.id} data-default-tab={firstTab}>
+<article class="country" data-id={c.id}>
   {/* The masthead: name, verdict and the one big number; then the five plain answers. */}
   <div class="c-top">
     <div class="d-head">
@@ -197,67 +211,71 @@ const culture = cultureOf(c);
     <p class="d-hint">A rough guide read from the scores and the rules below, not legal advice. The details and the exceptions are in each segment: select an answer to jump to it.</p>
   </div>
 
-  {/* Figures at a glance: the score over time, users, other datasets and prices. A sticky rail on the full page. */}
-  <div class="c-rail">
-    {scored.length > 0 && <CountryChart history={scored} context={history.filter((ch) => !ch.score)} />}
-    {use && (
-      <dl class="c-use">
-        {use.users != null && (
-          <div>
-            <dt>Cannabis users</dt>
-            <dd>{use.estimate || use.users_approximate ? "about " : ""}{people(use.users)}</dd>
-          </div>
-        )}
-        <div>
-          <dt>Past-year share</dt>
-          <dd>{use.estimate ? "about " : ""}{use.prevalence}%</dd>
-        </div>
-        <p>{use.estimate ? "This site’s estimate" : `UNODC · survey ${use.period ?? use.year}`}</p>
-        <SourceTip><span>Past-year cannabis use among people aged {useAges(use)}. </span>{useFrom
-          ? `This site's figure: there is no survey of ${c.name} alone, so ${useFrom.name}'s rate from its ${useFrom.use.period ?? useFrom.use.year} survey is applied to an estimate of the people aged 15–64 here.`
-          : use.estimate
-          ? `This site's figure: there is no national survey, so the median rate of surveyed countries in ${c.region} is applied to people aged 15–64.`
-          : `People who used cannabis in the past year, from a ${use.period ?? use.year} survey${use.users != null ? `, applied to today's population aged ${useAges({ ages: use.population_ages || use.ages })}` : ""}${use.users_approximate ? ". The population is approximate: the survey ages cut through an age group, or were not recorded and ages 15–64 are used" : ""}${use.source === "earlier" ? ". An earlier figure: UNODC's 2026 table has none for this country" : ""}.`}<br />{USE_COMPARISON_NOTE}<br />{use.source === "wdr2026"
-          ? <><a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>, annex table 1.2</>
-          : use.source === "earlier"
-            ? <>An earlier UNODC figure, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a></>
-            : useFrom
-            ? <>{useFrom.name}'s figure from the <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>; the population aged 15–64 is this place's total times {useFrom.name}'s share of those ages</>
-            : <>A median computed on this site from surveyed countries in {c.region}, using <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a> figures</>}{use.users != null && <>. Population from the <a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer">World Bank</a>, aged {useAges({ ages: use.population_ages || use.ages })}</>}. <a href={`${base}sources/#dataset-cannabis_use`}>The whole dataset →</a></SourceTip>
-      </dl>
-    )}
-    {unitUse && (
-      <dl class="c-use">
-        {unitUse.users && (
-          <div>
-            <dt>Cannabis users</dt>
-            <dd>{people(unitUse.users)}</dd>
-          </div>
-        )}
-        <div>
-          <dt>Share aged {unitUse.ages}</dt>
-          <dd>{unitUse.share}%</dd>
-        </div>
-        <p>People who used cannabis in the past year, {unitUse.year}.{unitUse.note && ` ${unitUse.note}`} The survey's own age band, so not directly comparable with the national figures.</p>
-        <SourceTip>{unitUse.source[1] ? <a href={unitUse.source[1]} target="_blank" rel="noopener noreferrer">{unitUse.source[0]}</a> : unitUse.source[0]}</SourceTip>
-      </dl>
-    )}
-    {!sub && <CountryDatasets c={c} all={datasetCount} />}
-    {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
-    {culture.length > 0 && <CultureList entries={culture} heading="Culture" more={["The atlas →", `${base}culture/`]} limit={6} note={sub ? `These belong to the whole country, not to ${sub.name} alone.` : null} />}
-  </div>
-
-  <div class="c-main">
-    {tabs.length > 1 && (
-      <nav class="c-tabs" role="tablist" aria-label={`${c.name}: parts of the profile`}>
-        {tabs.map(([id, label, count], i) => (
-          <button type="button" role="tab" id={`tab-${id}`} data-tab={id} aria-controls={`panel-${id}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>{label}{count != null && <small> {count}</small>}</button>
+  {/* The rest is one page: a row of links to every part, then the parts in order. */}
+  {sections.length > 2 && (
+    <nav class="c-nav" aria-label={`${c.name}: on this page`}>
+      <ol>
+        {sections.map(([id, label, count]) => (
+          <li><a href={`#${id}`} data-nav={id}>{label}{count != null && <small>{count}</small>}</a></li>
         ))}
-      </nav>
-    )}
-    {group && (
-      <div class="c-panel" id="panel-units" data-panel="units" role="tabpanel" aria-labelledby="tab-units" hidden={firstTab !== "units"}>
-      <section class="c-units">
+      </ol>
+    </nav>
+  )}
+
+  {glance && (
+    <section class="c-sec c-glance" id="overview">
+      <h2 class="d-h">At a glance <span>not part of the score{datasetCount > 0 && <> · <a href="#datasets">all {datasetCount} datasets ↓</a></>}</span></h2>
+      <div class="glance-grid">
+        {use && (
+          <dl class="c-use">
+            {use.users != null && (
+              <div>
+                <dt>Cannabis users</dt>
+                <dd>{use.estimate || use.users_approximate ? "about " : ""}{people(use.users)}</dd>
+              </div>
+            )}
+            <div>
+              <dt>Past-year share</dt>
+              <dd>{use.estimate ? "about " : ""}{use.prevalence}%</dd>
+            </div>
+            <p>{use.estimate ? "This site’s estimate" : `UNODC · survey ${use.period ?? use.year}`}</p>
+            <SourceTip><span>Past-year cannabis use among people aged {useAges(use)}. </span>{useFrom
+              ? `This site's figure: there is no survey of ${c.name} alone, so ${useFrom.name}'s rate from its ${useFrom.use.period ?? useFrom.use.year} survey is applied to an estimate of the people aged 15–64 here.`
+              : use.estimate
+              ? `This site's figure: there is no national survey, so the median rate of surveyed countries in ${c.region} is applied to people aged 15–64.`
+              : `People who used cannabis in the past year, from a ${use.period ?? use.year} survey${use.users != null ? `, applied to today's population aged ${useAges({ ages: use.population_ages || use.ages })}` : ""}${use.users_approximate ? ". The population is approximate: the survey ages cut through an age group, or were not recorded and ages 15–64 are used" : ""}${use.source === "earlier" ? ". An earlier figure: UNODC's 2026 table has none for this country" : ""}.`}<br />{USE_COMPARISON_NOTE}<br />{use.source === "wdr2026"
+              ? <><a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>, annex table 1.2</>
+              : use.source === "earlier"
+                ? <>An earlier UNODC figure, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a></>
+                : useFrom
+                ? <>{useFrom.name}'s figure from the <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>; the population aged 15–64 is this place's total times {useFrom.name}'s share of those ages</>
+                : <>A median computed on this site from surveyed countries in {c.region}, using <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a> figures</>}{use.users != null && <>. Population from the <a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer">World Bank</a>, aged {useAges({ ages: use.population_ages || use.ages })}</>}. <a href={`${base}sources/#dataset-cannabis_use`}>The whole dataset →</a></SourceTip>
+          </dl>
+        )}
+        {unitUse && (
+          <dl class="c-use">
+            {unitUse.users && (
+              <div>
+                <dt>Cannabis users</dt>
+                <dd>{people(unitUse.users)}</dd>
+              </div>
+            )}
+            <div>
+              <dt>Share aged {unitUse.ages}</dt>
+              <dd>{unitUse.share}%</dd>
+            </div>
+            <p>People who used cannabis in the past year, {unitUse.year}.{unitUse.note && ` ${unitUse.note}`} The survey's own age band, so not directly comparable with the national figures.</p>
+            <SourceTip>{unitUse.source[1] ? <a href={unitUse.source[1]} target="_blank" rel="noopener noreferrer">{unitUse.source[0]}</a> : unitUse.source[0]}</SourceTip>
+          </dl>
+        )}
+        {!sub && <CountryDatasets c={c} />}
+        {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
+      </div>
+    </section>
+  )}
+
+  {group && !sub && (
+      <section class="c-sec c-units" id="units">
         <h2 class="d-h">{sub ? `Other ${group.plural}` : `By ${group.label.toLowerCase()}`} <span>{group.units.length} scored · national estimate {c.score}</span></h2>
         {!sub && <p class="d-hint">{group.intro}</p>}
         {map && (
@@ -308,138 +326,269 @@ const culture = cultureOf(c);
           </ul>
         )}
       </section>
-      </div>
-    )}
-    <div class="c-panel" id="panel-score" data-panel="score" role={tabs.length > 1 ? "tabpanel" : undefined} aria-labelledby={tabs.length > 1 ? "tab-score" : undefined} hidden={firstTab !== "score"}>
-    <h2 class="d-h">{group && !sub ? "National estimate" : "Score breakdown"} <span>▏world average <button type="button" class="seg-toggle" data-seg-toggle aria-expanded="false">Open all</button></span></h2>
+  )}
+
+  <section class="c-sec c-score" id="score">
+    <h2 class="d-h">{group && !sub ? "National estimate" : "Score breakdown"} <span>{v.score}/100 · <a href={method()}>how the scores are made</a></span></h2>
     {sub
-      ? <p class="d-hint">{group.intro} Select a segment to show or hide the rules. <a href={method()}>How the scores are made →</a></p>
-      : <p class="d-hint">{group && `One estimate for ${c.name} as a whole: federal law and what holds in most ${group.plural}. It is not an average of the ${group.plural}, which run from ${unitRange}. `}Select a segment to show or hide the exact rules and sources. <a href={method()}>How the scores are made →</a></p>}
-    {sub && SEGMENTS.map((s, i) => (
-      <details class="segrow" data-seg={s.id}>
-        <summary>
-          <div class="segrow-top">
-            <span>{s.name} <small>· {s.weight}%</small></span>
-            <b>{sub.s[i]}/10 <small class="vs">{c.name}: {c.s[i]}</small><i class="chev" aria-hidden="true"></i></b>
+      ? <p class="d-hint">{group.intro}</p>
+      : group && <p class="d-hint">One estimate for {c.name} as a whole: federal law and what holds in most {group.plural}. It is not an average of the {group.plural}, which run from {unitRange}.</p>}
+    <div class="score-grid">
+      <div class="score-side">
+        <figure class="c-radar" aria-label={`The six segments of ${sub ? sub.name : c.name}'s score`}>
+          <div class="c-radar-box">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              {[2.5, 5, 7.5, 10].map((r) => <polygon class="c-radar-ring" points={radarPoly(SEGMENTS.map(() => r))} />)}
+              {SEGMENTS.map((_, i) => { const [x2, y2] = radarPt(i, 10); return <line class="c-radar-ring" x1="50" y1="50" x2={x2} y2={y2} />; })}
+              <polygon class="c-radar-avg" points={radarPoly(segAvg)} />
+              {sub && <polygon class="c-radar-nat" points={radarPoly(c.s)} />}
+              <polygon class="c-radar-shape" points={radarPoly(v.s)} style={`--c:${tierColor(v.raw)}`} />
+              {SEGMENTS.map((s, i) => { const [cx, cy] = radarPt(i, v.s[i]); return <circle class="c-radar-dot" data-seg-dot={s.id} cx={cx} cy={cy} r="1.6" style={`--c:${tierColor(v.s[i] * 10)}`} />; })}
+            </svg>
+            {SEGMENTS.map((s, i) => { const [lx, ly] = radarPt(i, 11.5); return (
+              <a class={`c-radar-label side-${radarSide(i)}`} href={`#seg-${s.id}`} data-seg-link={s.id} style={`left:${lx.toFixed(1)}%;top:${ly.toFixed(1)}%`}>{s.name} <b>{v.s[i]}</b></a>
+            ); })}
           </div>
-          <div class="bar" title={`World average ${segAvg[i].toFixed(1)}/10`}>
-            <i style={`width:${sub.s[i] * 10}%;background:${tierColor(sub.s[i] * 10)}`}></i>
-            <span class="avg-tick" style={`left:calc(${segAvg[i] * 10}% - 1px)`}></span>
-          </div>
-          <div class="pts">adds {segmentPoints(i, sub.s[i]).toFixed(1)} of {segmentMax(i).toFixed(0)} points</div>
-        </summary>
-        <div class="why">
-          {sub.seg && <p><Cited parts={unitParts[i]} /></p>}
-          {sub.segPenalties[i] && <PenaltyTable penalties={sub.segPenalties[i]} />}
-        </div>
-      </details>
-    ))}
-    {sub && (
-      <section class="c-unit-sources">
-        <References refs={unitRefs} />
-      </section>
-    )}
-    {!sub && SEGMENTS.map((s, i) => {
-      const seg = d?.segments[i];
-      return (
-        <details class="segrow" data-seg={s.id}>
-          <summary>
-            <div class="segrow-top">
-              <span>{s.name} <small>· {s.weight}%</small></span>
-              <b>{c.s[i]}/10<i class="chev" aria-hidden="true"></i></b>
+          <figcaption class="c-radar-key">
+            <span><i class="sw-shape" style={`--c:${tierColor(v.raw)}`}></i>{sub ? sub.name : c.name}</span>
+            {sub && <span><i class="sw-nat"></i>{c.name}</span>}
+            <span><i class="sw-avg"></i>World average</span>
+          </figcaption>
+        </figure>
+        {scored.length > 0 && <CountryChart history={scored} context={history.filter((ch) => !ch.score)} />}
+      </div>
+      <div class="score-rows">
+        {SEGMENTS.map((s, i) => {
+          const text = sub ? sub.seg && unitParts[i] : d?.segments[i] && segParts[i];
+          const penalties = sub ? sub.segPenalties[i] : d?.segments[i]?.penalties;
+          return (
+            <div class="segrow" data-seg={s.id} id={`seg-${s.id}`}>
+              <div class="segrow-top">
+                <span>{s.name} <small>· {s.weight}%</small></span>
+                <b>{v.s[i]}/10{sub && <small class="vs">{c.name}: {c.s[i]}</small>}</b>
+              </div>
+              <div class="bar" title={`World average ${segAvg[i].toFixed(1)}/10`}>
+                <i style={`width:${v.s[i] * 10}%;background:${tierColor(v.s[i] * 10)}`}></i>
+                <span class="avg-tick" style={`left:calc(${segAvg[i] * 10}% - 1px)`}></span>
+              </div>
+              <div class="pts">adds {segmentPoints(i, v.s[i]).toFixed(1)} of {segmentMax(i).toFixed(0)} points · world average {segAvg[i].toFixed(1)}</div>
+              {(text || penalties) && (
+                <div class="why">
+                  {text && <p><Cited parts={text} /></p>}
+                  {penalties && <PenaltyTable penalties={penalties} />}
+                </div>
+              )}
             </div>
-            <div class="bar" title={`World average ${segAvg[i].toFixed(1)}/10`}>
-              <i style={`width:${c.s[i] * 10}%;background:${tierColor(c.s[i] * 10)}`}></i>
-              <span class="avg-tick" style={`left:calc(${segAvg[i] * 10}% - 1px)`}></span>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {ctxList && (
+    <section class="c-sec c-context" id="context">
+      <h2 class="d-h">Context <span>not part of the score</span></h2>
+      {sub && <p class="d-hint">Sections written for {sub.name} come first in their place; the others hold for all of {c.name} and are marked so.</p>}
+      {[ctxList.filter((x) => x && !x.items), ctxList.filter((x) => x && x.items)].map((list, g) => (list.length > 0 || (g === 0 && travel)) && (
+        <div class={g ? "ctx-wide" : "ctx-grid"}>
+          {list.map((x) => (
+            <div class="segrow ctx-tile" data-seg={`ctx-${x.key}`} id={`seg-ctx-${x.key}`}>
+              <div class="segrow-top"><span>{CONTEXT_ICONS[x.key] && <Icon name={CONTEXT_ICONS[x.key]} class="ctx-icon" aria-hidden="true" />}{x.name}<SourceTip label="What this covers" inline>{x.help}</SourceTip></span></div>
+              {x.national && <p class="ctx ctx-general">For all of {c.name}; nothing written for {sub.name} yet.</p>}
+              {x.key === "recreational" && (
+                <div class="d-chips"><a class={`chip s-${v.rec}`} href={mapOf("status:rec")} title={onMap(REC_HELP[v.rec])}>Recreational: {REC_LABEL[v.rec]}</a></div>
+              )}
+              {x.key === "medical" && (
+                <div class="d-chips"><a class={`chip s-${v.med}`} href={mapOf("status:med")} title={onMap(MED_HELP[v.med])}>Medical: {MED_LABEL[v.med]}</a></div>
+              )}
+              {x.status && (
+                <div class="d-chips">
+                  <a class={`chip s-${STATUS_SECTIONS[x.kind].statuses[x.status].tone}`} href={mapOf(`status:${x.kind}`)} title={onMap(STATUS_SECTIONS[x.kind].statuses[x.status].help)}>{STATUS_SECTIONS[x.kind].chip}: {STATUS_SECTIONS[x.kind].statuses[x.status].label}</a>
+                </div>
+              )}
+              {x.seeds && (
+                <div class="d-chips">
+                  <a class={`chip s-${PLANTING_STATUS[x.seeds].tone}`} href={mapOf("plant:seeds")} title={onMap(PLANTING_STATUS[x.seeds].help[0])}>Seeds: {PLANTING_STATUS[x.seeds].label}</a>
+                  <a class={`chip s-${PLANTING_TRADE[x.seeds_trade].tone}`} href={mapOf("plant:seeds_trade")} title={onMap(PLANTING_TRADE[x.seeds_trade].help[0])}>Seed sales: {PLANTING_TRADE[x.seeds_trade].label}</a>
+                  <a class={`chip s-${PLANTING_STATUS[x.clones].tone}`} href={mapOf("plant:clones")} title={onMap(PLANTING_STATUS[x.clones].help[1])}>Clones: {PLANTING_STATUS[x.clones].label}</a>
+                  <a class={`chip s-${PLANTING_TRADE[x.clones_trade].tone}`} href={mapOf("plant:clones_trade")} title={onMap(PLANTING_TRADE[x.clones_trade].help[1])}>Clone sales: {PLANTING_TRADE[x.clones_trade].label}</a>
+                </div>
+              )}
+              {x.items
+                ? x.items.map((item, i) => (
+                    <div class="ctx-spot">
+                      <h3 class="ctx-spot-h">{item.title}</h3>
+                      <p class="ctx"><Cited parts={ctxParts[x.key][i]} /></p>
+                    </div>
+                  ))
+                : <p class="ctx"><Cited parts={ctxParts[x.key]} /></p>}
             </div>
-            <div class="pts">adds {segmentPoints(i, c.s[i]).toFixed(1)} of {segmentMax(i).toFixed(0)} points</div>
-          </summary>
-          {seg && (
-            <div class="why">
-              <p><Cited parts={segParts[i]} /></p>
-              {seg.penalties && <PenaltyTable penalties={seg.penalties} />}
+          ))}
+          {g === 0 && travel && (
+            <div class="segrow ctx-tile">
+              <div class="segrow-top"><span><Icon name={CONTEXT_ICONS.border} class="ctx-icon" aria-hidden="true" />Crossing the border</span></div>
+              {travel.map((line, k) => <p class="ctx">{line}{k === travel.length - 1 && <Cited parts={[{ refs: [incbRef] }]} />}</p>)}
+              <p class="ctx ctx-general">General guidance that applies to almost every country, not a check of {c.name}'s customs rules.</p>
             </div>
           )}
-        </details>
-      );
-    })}
-    {d && <References refs={scoreRefs} title="References" level="h3" />}
+        </div>
+      ))}
+    </section>
+  )}
 
-    </div>
+  {history.length > 0 && (
+    <section class="c-sec" id="history">
+      <CountryChanges history={history} unitLabel={!sub && group ? group.label : null} showUnit={!sub} scoreLine={!sub}
+        more={sub ? <>Only the entries about {sub.name}. <a href={`${countryUrl}#history`}>All {nationalCount} entries on the national page →</a></> : null} />
+    </section>
+  )}
 
-    {ctxList && (
-      <div class="c-panel" id="panel-context" data-panel="context" role="tabpanel" aria-labelledby="tab-context" hidden>
-        <h2 class="d-h">More context <span>not part of the score</span></h2>
-        {sub && <p class="d-hint">Sections written for {sub.name} come first in their place; the others hold for all of {c.name} and are marked so.</p>}
-        {ctxList.filter(Boolean).map((x) => (
-          <div class="segrow" data-seg={`ctx-${x.key}`} id={`seg-ctx-${x.key}`}>
-            <div class="segrow-top"><span>{CONTEXT_ICONS[x.key] && <Icon name={CONTEXT_ICONS[x.key]} class="ctx-icon" aria-hidden="true" />}{x.name}<SourceTip label="What this covers" inline>{x.help}</SourceTip></span></div>
-            {x.national && <p class="ctx ctx-general">For all of {c.name}; nothing written for {sub.name} yet.</p>}
-            {x.key === "recreational" && (
-              <div class="d-chips"><a class={`chip s-${v.rec}`} href={mapOf("status:rec")} title={onMap(REC_HELP[v.rec])}>Recreational: {REC_LABEL[v.rec]}</a></div>
-            )}
-            {x.key === "medical" && (
-              <div class="d-chips"><a class={`chip s-${v.med}`} href={mapOf("status:med")} title={onMap(MED_HELP[v.med])}>Medical: {MED_LABEL[v.med]}</a></div>
-            )}
-            {x.status && (
-              <div class="d-chips">
-                <a class={`chip s-${STATUS_SECTIONS[x.kind].statuses[x.status].tone}`} href={mapOf(`status:${x.kind}`)} title={onMap(STATUS_SECTIONS[x.kind].statuses[x.status].help)}>{STATUS_SECTIONS[x.kind].chip}: {STATUS_SECTIONS[x.kind].statuses[x.status].label}</a>
-              </div>
-            )}
-            {x.seeds && (
-              <div class="d-chips">
-                <a class={`chip s-${PLANTING_STATUS[x.seeds].tone}`} href={mapOf("plant:seeds")} title={onMap(PLANTING_STATUS[x.seeds].help[0])}>Seeds: {PLANTING_STATUS[x.seeds].label}</a>
-                <a class={`chip s-${PLANTING_TRADE[x.seeds_trade].tone}`} href={mapOf("plant:seeds_trade")} title={onMap(PLANTING_TRADE[x.seeds_trade].help[0])}>Seed sales: {PLANTING_TRADE[x.seeds_trade].label}</a>
-                <a class={`chip s-${PLANTING_STATUS[x.clones].tone}`} href={mapOf("plant:clones")} title={onMap(PLANTING_STATUS[x.clones].help[1])}>Clones: {PLANTING_STATUS[x.clones].label}</a>
-                <a class={`chip s-${PLANTING_TRADE[x.clones_trade].tone}`} href={mapOf("plant:clones_trade")} title={onMap(PLANTING_TRADE[x.clones_trade].help[1])}>Clone sales: {PLANTING_TRADE[x.clones_trade].label}</a>
-              </div>
-            )}
-            {x.items
-              ? x.items.map((item, i) => (
-                  <div class="ctx-spot">
-                    <h3 class="ctx-spot-h">{item.title}</h3>
-                    <p class="ctx"><Cited parts={ctxParts[x.key][i]} /></p>
-                  </div>
-                ))
-              : <p class="ctx"><Cited parts={ctxParts[x.key]} /></p>}
-          </div>
+  {group && sub && (
+      <section class="c-sec c-units" id="units">
+        <h2 class="d-h">{sub ? `Other ${group.plural}` : `By ${group.label.toLowerCase()}`} <span>{group.units.length} scored · national estimate {c.score}</span></h2>
+        {!sub && <p class="d-hint">{group.intro}</p>}
+        {map && (
+          <figure class="unit-map">
+            <svg viewBox={map.viewBox} role="group" aria-label={`Map of ${c.name}: ${group.plural} coloured by score`}>
+              {map.shapes.map(({ unit: x, d }) => (
+                <a href={unitUrl(x)} data-subunit data-tip={x.id} class={sub?.id === x.id ? "current" : undefined} aria-label={`${x.name}: ${x.score}, ${tierOf(x.raw).name}`}>
+                  <path d={d} style={`fill:${tierColor(x.raw)}`} />
+                </a>
+              ))}
+              {map.dots.map(({ unit: x, x: cx, y: cy }) => (
+                <a href={unitUrl(x)} data-subunit data-tip={x.id} class={sub?.id === x.id ? "current" : undefined} aria-hidden="true" tabindex="-1">
+                  <circle cx={cx} cy={cy} r="5" style={`fill:${tierColor(x.raw)}`} />
+                </a>
+              ))}
+            </svg>
+            {/* the hover box of each, as on the home page's map with its states shown (src/lib/unit-map-tip.js) */}
+            <div class="tooltip" hidden></div>
+            {group.units.map((x) => (
+              <template data-tip-for={x.id}>
+                <div class="tip-head"><strong><span class="tip-flag">{c.flag}</span>{x.name}</strong><span class="tip-chip" style={`--chip:${tierColor(x.raw)}`}>{x.score}</span></div>
+                <div class="tip-meta">{tierOf(x.raw).name} · #{x.rank} of {group.units.length} in {c.name}</div>
+                <div class="tip-bar"><i style={`width:${Math.max(2, Math.min(100, x.raw))}%;background:${tierColor(x.raw)}`}></i></div>
+                {short(x.note) && <p class="tip-note">{short(x.note)}</p>}
+                <div class="tip-foot">Click for the full profile</div>
+              </template>
+            ))}
+            <figcaption class="unit-legend">
+              {mapTiers.map((t) => <span><i style={`background:${tierColor(t.min)}`}></i>{t.name}</span>)}
+            </figcaption>
+          </figure>
+        )}
+        <ol class="units">
+          {group.units.map((x) => (
+            <li class={sub?.id === x.id ? "current" : undefined}>
+              <a href={unitUrl(x)} data-subunit>
+                <span class="u-rank">{x.rank}</span>
+                <span class="u-name">{x.name}</span>
+                <span class="u-score">{x.score}</span>
+                <span class="bar"><i style={`width:${x.raw}%;background:${tierColor(x.raw)}`}></i></span>
+              </a>
+            </li>
+          ))}
+        </ol>
+        {!sub && (
+          <ul class="srcs">
+            {group.sources.map((source) => <SourceCitation source={source} />)}
+          </ul>
+        )}
+      </section>
+  )}
+
+  {datasetCount > 0 && (
+    <section class="c-sec" id="datasets">
+      {sub && <p class="d-hint">These figures are for all of {c.name}; no dataset here is broken down by {group.label.toLowerCase()} yet.</p>}
+      <CountryDatasetTab c={c} />
+    </section>
+  )}
+
+  {culture.length > 0 && (
+    <section class="c-sec c-atlas" id="culture">
+      <h2 class="d-h">Culture <span><a href={`${base}culture/`}>the atlas →</a></span></h2>
+      <CultureList entries={culture} limit={9} note={sub ? `These belong to the whole country, not to ${sub.name} alone.` : null} />
+    </section>
+  )}
+
+  {facts.length > 0 && (
+    <section class="c-sec c-dyk" id="did-you-know">
+      <h2 class="d-h">Did you know? <span><a href={`${base}did-you-know/`}>all cases →</a></span></h2>
+      <ol class="dyk-facts dyk-all">
+        {facts.map((f) => (
+          <li class="dyk-fact">
+            <p class="dyk-kicker">{f.kicker}</p>
+            <p class="dyk-text"><FactText parts={f.parts} here={c.id} /></p>
+            {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
+          </li>
         ))}
-        {travel && (
-          <div class="segrow">
-            <div class="segrow-top"><span><Icon name={CONTEXT_ICONS.border} class="ctx-icon" aria-hidden="true" />Crossing the border</span></div>
-            {travel.map((line, k) => <p class="ctx">{line}{k === travel.length - 1 && <Cited parts={[{ refs: [incbRef] }]} />}</p>)}
-            <p class="ctx ctx-general">General guidance that applies to almost every country, not a check of {c.name}'s customs rules.</p>
+      </ol>
+    </section>
+  )}
+
+  {refs.list.length > 0 && (
+    <section class="c-sec c-sources" id="sources">
+      <h2 class="d-h">Sources <span>hover a number in the text to see its source</span></h2>
+      <div class="src-sum">
+        <dl class="src-figs">
+          <div><dt>Cited</dt><dd>{refs.list.length}</dd></div>
+          <div><dt>Websites</dt><dd>{hostCounts.length}</dd></div>
+          {printCount > 0 && <div><dt>Print</dt><dd>{printCount}</dd></div>}
+          {updated && <div><dt>Last reviewed</dt><dd class="src-date"><time datetime={updated}>{updatedText}</time></dd></div>}
+          {scored.length > 0 && <div><dt>History checked</dt><dd>{history.filter((ch) => ch.confidence.key === "checked").length}<small>/{history.length}</small></dd></div>}
+        </dl>
+        {hostCounts.length > 0 && (
+          <div class="src-hosts">
+            <h3>Most cited</h3>
+            <ol>
+              {hostCounts.slice(0, 6).map(([h, n]) => (
+                <li><span>{h}</span><i style={`--w:${(n / hostCounts[0][1]) * 100}%`}></i><b>{n}</b></li>
+              ))}
+            </ol>
           </div>
         )}
-        <References refs={ctxRefs} title="References" level="h3" />
       </div>
-    )}
-    {history.length > 0 && (
-      <div class="c-panel" id="panel-history" data-panel="history" role="tabpanel" aria-labelledby="tab-history" hidden>
-        <CountryChanges history={history} unitLabel={!sub && group ? group.label : null} showUnit={!sub} scoreLine={!sub}
-          more={sub ? <>Only the entries about {sub.name}. <a href={`${countryUrl}#history`}>All {nationalCount} entries on the national page →</a></> : null} />
-      </div>
-    )}
-    {datasetCount > 0 && (
-      <div class="c-panel" id="panel-datasets" data-panel="datasets" role="tabpanel" aria-labelledby="tab-datasets" hidden>
-        {sub && <p class="d-hint">These figures are for all of {c.name}; no dataset here is broken down by {group.label.toLowerCase()} yet.</p>}
-        <CountryDatasetTab c={c} />
-      </div>
-    )}
-    {(d || sub) && (
-      <div class="c-panel" id="panel-sources" data-panel="sources" role="tabpanel" aria-labelledby="tab-sources" hidden>
-        <section class="c-sources">
-          <h2 class="d-h">All sources <span>{srcList.length} cited in this profile</span></h2>
-          <ol>
-            {srcList.map((source) => <SourceCitation source={source} />)}
-          </ol>
-        </section>
-      </div>
-    )}
-    {tabs.length > 1 && <noscript><style>{`.c-panel[hidden]{display:block}.c-tabs{display:none}`}</style></noscript>}
-    {updated && <p class="c-updated">Last updated: <time datetime={updated}>{updatedText}</time>{d && ` · ${d.sources.length} sources`}{scored.length > 0 && ` · history: ${history.filter((ch) => ch.confidence.key === "checked").length} of ${history.length} entries checked`}</p>}
-  </div>
+      <details class="src-all">
+        <summary>All {refs.list.length + uncited.length} sources</summary>
+        <ol class="srcs refs">
+          {refs.list.map((r) => <SourceCitation source={r.source} id={r.id} n={r.n} />)}
+        </ol>
+        {uncited.length > 0 && (
+          <>
+            <h3>Also consulted</h3>
+            <ul class="srcs">{uncited.map((x) => <SourceCitation source={x} />)}</ul>
+          </>
+        )}
+      </details>
+    </section>
+  )}
 </article>
 <script>
   import "../lib/unit-map-tip.js";
+
+  // The row of links over the profile marks the part in view, and on a phone keeps that link in
+  // sight. Only on the full page: in the home page's drawer the row is hidden.
+  const nav = document.querySelector(".country-page .c-nav");
+  if (nav) {
+    const links = [...nav.querySelectorAll("a[data-nav]")];
+    const parts = links.map((a) => document.getElementById(a.dataset.nav));
+    let current = null, queued = false;
+    const mark = () => {
+      queued = false;
+      // a part counts as being read once its heading is in the upper third of the window
+      const line = Math.max(nav.getBoundingClientRect().bottom + 24, innerHeight * 0.3);
+      let i = -1;
+      parts.forEach((el, k) => { if (el && el.getBoundingClientRect().top <= line) i = k; });
+      // at the very end of the page the last part is the one being read, however short it is
+      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) i = parts.length - 1;
+      const link = links[i] ?? null;
+      if (link === current) return;
+      current?.removeAttribute("aria-current");
+      link?.setAttribute("aria-current", "true");
+      current = link;
+      if (link) nav.scrollTo({ left: link.offsetLeft - nav.clientWidth / 2 + link.offsetWidth / 2, behavior: "smooth" });
+    };
+    addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(mark); } }, { passive: true });
+    mark();
+  }
 </script>

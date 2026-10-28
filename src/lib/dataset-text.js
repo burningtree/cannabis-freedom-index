@@ -1,7 +1,7 @@
 // How the outside datasets read for one country: the figures written out as datasets.yaml sets
 // under `profile`, the headline figure over the years, where the country stands among all the
 // countries a dataset covers, and which group and colours it takes. Shared by the profile's
-// Datasets tab (CountryDatasetTab.astro) and the compare page's data (src/pages/api/[id].json.js).
+// Datasets section (CountryDatasetTab.astro) and the compare page's data (src/pages/api/[id].json.js).
 import { places } from "./countries.js";
 import { useAges } from "./use-labels.js";
 

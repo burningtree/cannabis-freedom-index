@@ -736,7 +736,7 @@ group) and are never part of the score.
   (downloaded as published, or transcribed, and on what date). These files keep their
   publishers' terms, not the site's CC BY licence.
 - Every dataset is kept as a series, one row per country and year, so that each profile's
-  Datasets tab can chart it; the map, the headline figures and the side column use the
+  Datasets section can chart it; the map, the headline figures and "At a glance" use the
   latest year. Keep every year an extract has: do not filter to the latest when adding one.
 - A dataset view on the map with more than one year gets a year slider and a play button.
   The yearly figures are published per dataset at `/map-series/<id>.json` and loaded only for
@@ -945,7 +945,7 @@ province or territory: its own law, court ruling, ballot vote, regulator, progra
 tried there. Leave it out for federal law, national bodies and courts (a US Supreme Court ruling
 on a case from one state is still federal), and for events that span several states. The entry
 keeps its `country`, and a `before` on it is still about the national score. It is listed on the
-country's History tab, labelled with its state, and on the state's own page.
+country's History section, labelled with its state, and on the state's own page.
 
 - **`before`** is the six scores *before* the event. The scores after it are the `before` of the
   same country's next scored entry, or the country's current scores. So the chain must be

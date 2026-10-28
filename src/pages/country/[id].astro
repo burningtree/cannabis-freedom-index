@@ -2,7 +2,6 @@
 import { tierColor } from "../../lib/tiers.js";
 import Base from "../../layouts/Base.astro";
 import CountryArticle from "../../components/CountryArticle.astro";
-import CountryFacts from "../../components/CountryFacts.astro";
 import { countries, places } from "../../lib/countries.js";
 import { countrySeo } from "../../lib/seo.js";
 
@@ -25,7 +24,6 @@ const seo = countrySeo(c, Astro.site);
       <a class="btn" href={`${base}compare/?c=${c.slug}`}>Compare with other countries</a>
     </div>
     <CountryArticle c={c} />
-    <CountryFacts c={c} />
     <nav class="pager" aria-label="Neighbouring countries by rank">
       {prev
         ? <a href={`${base}country/${prev.slug}/`}><small>#{prev.rank} · ranked higher</small><span>{prev.flag} {prev.name}</span></a>

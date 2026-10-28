@@ -1,5 +1,5 @@
 ---
-// The profile's Datasets tab: every outside dataset that covers the country (src/lib/datasets.js),
+// The profile's Datasets section: every outside dataset that covers the country (src/lib/datasets.js),
 // as cards grouped like the map's views (Use, Law, Society, Context). A card has the dataset's
 // name, one headline figure and a line of further figures, written as set under `profile` in
 // datasets.yaml; the figure over the years; where the country stands among every country the
@@ -25,7 +25,8 @@ const W = 240, H = 56, PAD = 4;
 const trend = (d, series) => {
   const name = headField(d);
   const points = series.filter((r) => r.year != null && figure(d, r, name) != null)
-    .map((r) => ({ year: r.year, v: name === "per" ? d.map.value(r, c) : r[name], t: figure(d, r, name) }));
+    .map((r) => ({ year: r.year, v: name === "per" ? d.map.value(r, c) : r[name], t: figure(d, r, name) }))
+    .filter((p) => Number.isFinite(p.v)); // a headline in words (a main religion) has no line to draw
   if (new Set(points.map((p) => p.year)).size < 2) return null;
   const years = points.map((p) => p.year), vs = points.map((p) => p.v);
   const [y0, y1] = [Math.min(...years), Math.max(...years)];
