@@ -107,6 +107,12 @@ covers well need not be repeated. `node scripts/country-gaps.cjs us/ca` is a sta
 - If you meet a tradition, a person or a local word for cannabis worth an entry, write one
   (CULTURE.md): 500–900 words, with images where an open-licence image of the subject exists.
 - New history about an atlas subject goes into that entry's text with a link; the build checks it.
+- **Words for cannabis**: give the profile a `words` list, four to eight words people in the
+  country actually use, best known first, each with its spelling, language, pronunciation where
+  the source gives one, a few words on its meaning and register, a source, and `atlas:` when an
+  atlas entry covers the same word. Only words used there: an atlas entry that lists the country is
+  no reason to add its word. The rules and an example are in DATA-MAINTENANCE.md, "Words for
+  cannabis"; `country-gaps.cjs` flags a profile without them.
 
 ## 7. Sources
 

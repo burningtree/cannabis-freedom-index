@@ -11,4 +11,5 @@ repository; this skill only points to it.
 2. Run `node scripts/country-gaps.cjs <id>` and `node scripts/article-backlog.cjs --country <id>` for
    the country in the arguments (a profile file name such as `ke`, `de` or `us/ca`).
 3. Work through the guide's steps in order: current law and penalty tables, history, articles,
-   context sections, culture, sources, then build and commit only your own files.
+   context sections, culture and the country's words for cannabis, sources, then build and commit
+   only your own files.

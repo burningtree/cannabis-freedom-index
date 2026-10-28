@@ -78,6 +78,8 @@ function gapsOf(id) {
     noArticle: changes.filter((e) => !ARTICLES.has(e.id) && scored(e)).map((e) => e.id),
     atlas, unlinkedAtlas: ctx.culture ? atlas.filter((c) => !ctx.culture.text.includes(`/culture/${c}/`)) : [],
     atlasWithoutCulture: !ctx.culture && atlas.length > 0,
+    // the words people use for cannabis, shown in the profile's opening (DATA-MAINTENANCE.md, "Words for cannabis")
+    words: unit ? null : (p.words ?? []).map((w) => w.word),
   };
 }
 
@@ -85,7 +87,7 @@ function gapsOf(id) {
 const workOf = (g) => g.missingRequired.length * 4 + g.missingResearched.length * 1.5 + (g.products ? 2 : 0) + g.statuses.length
   + g.penalties.length * 2 + g.uncited.length * 0.3 + g.unsourced.length * 2 + g.wikiOnly.length + (g.deathWithoutSection ? 4 : 0)
   + g.empty.length * 1.5 + (g.stale ? 3 : 0) + (g.entries < 5 ? 5 - g.entries : 0) + g.unchecked.length + g.estimates.length * 2
-  + g.noArticle.length * 1.5 + (g.atlasWithoutCulture ? 2 : 0) + g.unlinkedAtlas.length * 0.5;
+  + g.noArticle.length * 1.5 + (g.atlasWithoutCulture ? 2 : 0) + g.unlinkedAtlas.length * 0.5 + (g.words && !g.words.length ? 1 : 0);
 
 // files someone has uncommitted changes in: those countries are being worked on now
 function busy() {
@@ -135,6 +137,7 @@ function printOne(g) {
   list("atlas entries for this country", g.atlas);
   if (g.unlinkedAtlas.length) list("atlas entries the culture section does not link", g.unlinkedAtlas);
   if (g.atlasWithoutCulture) out("  ! atlas entries exist but there is no culture section to connect them");
+  if (g.words) out(g.words.length ? `  words for cannabis: ${g.words.join(", ")}` : "  ! no words for cannabis yet: add `words` (DATA-MAINTENANCE.md, \"Words for cannabis\")");
 }
 
 function printRank(limit, region) {
