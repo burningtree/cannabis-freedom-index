@@ -3,7 +3,7 @@ region: North America
 iso_numeric: 484
 recreational: partial
 medical: limited
-updated: '2026-10-26'
+updated: '2026-10-28'
 summary: >-
   The Supreme Court struck down the ban on personal use in 2021, but Congress never passed a
   regulatory law. Adults can seek a permit to grow and consume; there is no legal market.
@@ -18,14 +18,18 @@ segments:
   possession:
     text: >-
       Without an authorization, the domestic immediate-personal-consumption rule is that up to 5 g
-      is not prosecuted, and anything over 5 g can still be prosecuted. In 2021 the Supreme Court
-      removed the legal obstacle to adult personal use. COFEPRIS may authorize a named adult to
+      is not prosecuted, and anything over 5 g can still be prosecuted.[@dgi] In 2021 the Supreme Court
+      removed the legal obstacle to adult personal use.[@dgi,tms] COFEPRIS may authorize a named adult to
       acquire seed, sow, grow, harvest, prepare, possess and transport cannabis for that person's
-      own recreational use. The declaration sets no universal gram limit for those authorizations,
-      and it excludes import, trade, supply and distribution. The Supreme Court has twice protected
+      own recreational use.[@cofepris26] The declaration sets no universal gram limit for those authorizations,
+      and it excludes import, trade, supply and distribution.[@cofepris26,cms] The Supreme Court has twice protected
       individuals held with more than 5 g, in May 2022 and February 2026, telling judges to weigh
-      whether the cannabis was for personal use. In 2026 it fell one vote short of removing the 5 g
-      rule for everyone.[@dgi,cofepris26,cms,tms,zeta22,imp26] Unauthorised import or export is a
+      whether the cannabis was for personal use.[@zeta22,imp26] In 2026 it fell one vote short of removing the 5 g
+      rule for everyone.[@imp26]
+      [The 2021 declaration ended the ban on personal use.](/history/mexico-supreme-court-2021/)
+      [Judges must weigh personal use over 5 g since 2022.](/history/mexico-five-gram-ruling-2022/)
+      [The court fell one vote short in 2026.](/history/mexico-five-gram-vote-fails-2026/)
+      Unauthorised import or export is a
       separate offence under article 194(II), carrying ten to twenty-five years and 100–500
       day-fines, including temporary entry or transit; the domestic 5 g rule does not cover
       it.[@border_code]
@@ -37,71 +41,102 @@ segments:
       - zeta22
       - imp26
       - border_code
+    currency: MXN
+    penalties:
+      - upto: 5 g
+        treatment: tolerated
+        term: Possession for immediate personal use
+        note: Not prosecuted; judges must weigh personal use even above 5 g
+      - over: 5 g
+        treatment: criminal
+        term: Possession beyond personal use
+        note: Prosecutable; authorisation or personal-use finding required
   cultivation:
     text: >-
       Growing for one's own recreational use requires a COFEPRIS authorization issued to a named
-      adult. The 2021 declaration covers sowing, cultivation and harvest for that person, and it
-      leaves the rules for acquiring seed to COFEPRIS. It sets no nationwide plant count. Growing
-      without an authorization is a crime, and obtaining legal seeds remains a separate problem.
+      adult.[@cofepris26] The 2021 declaration covers sowing, cultivation and harvest for that person, and it
+      leaves the rules for acquiring seed to COFEPRIS.[@dgi] It sets no nationwide plant count. Growing
+      without an authorization is a crime, and obtaining legal seeds remains a separate problem.[@dgi]
+      [The 2021 declaration ended the ban on personal use.](/history/mexico-supreme-court-2021/)
     sources:
       - dgi
       - cofepris26
+    penalties:
+      - label: Growing with a COFEPRIS personal-use authorization
+        treatment: legal
+        term: Authorized personal cultivation
+        note: Named adult; sowing, cultivation and harvest for own use; no plant count set
+      - label: Growing without an authorization
+        treatment: criminal
+        term: Unlawful cultivation
+        note: A crime; legal seed acquisition remains unresolved
   enforcement:
     text: >-
       Small-scale users are often released, but extortion and arbitrary detention over possession
-      are widely reported. Possession above the thresholds and any supply are federal crimes with
-      prison.
+      are widely reported.[@tms] Possession above the thresholds and any supply are federal crimes with
+      prison.[@cms]
+      [Judges must weigh personal use over 5 g since 2022.](/history/mexico-five-gram-ruling-2022/)
     sources:
       - tms
       - cms
   sharing:
     text: >-
-      Permits are strictly personal and do not allow supplying anyone else. Any transfer remains an
-      offence.
+      Permits are strictly personal and do not allow supplying anyone else.[@rmn] Any transfer remains an
+      offence.[@cms]
     sources:
       - rmn
       - cms
   consumption:
     text: >-
       Permit holders may consume in private, not in front of minors or non-consenting people, and
-      not in public. Police treatment of public use varies widely by city.
+      not in public.[@rmn] Police treatment of public use varies widely by city.[@tms]
     sources:
       - rmn
       - tms
   access:
     text: >-
-      There are no legal recreational sales or licensed dispensaries. A narrow medical route permits
-      prescribed cannabis medicines, including personal imports with prior COFEPRIS approval.
+      There are no legal recreational sales or licensed dispensaries.[@cms] A narrow medical route permits
+      prescribed cannabis medicines, including personal imports with prior COFEPRIS approval.[@dof]
       Unlicensed members-only shops and clubs operate through local tolerance, injunctions or
-      purported gifts, but they are not a lawful retail market.
+      purported gifts, but they are not a lawful retail market.[@yuc]
+      [Medical use was regulated in 2021.](/history/mexico-medical-regulation-2021/)
     sources:
       - dof
       - cms
       - yuc
 context:
+  recreational:
+    text: >-
+      Partly lawful, with no market. Adults may seek a COFEPRIS authorization to grow and
+      consume for personal use, and up to 5 g is not prosecuted.[@cofepris26,dgi] There are no
+      legal recreational sales or licensed dispensaries; unlicensed shops and clubs operate
+      through tolerance, injunctions or purported gifts.[@cms,yuc]
+      [The 2021 declaration ended the ban on personal use.](/history/mexico-supreme-court-2021/)
+    sources:
+      - cofepris26
+      - dgi
+      - cms
+      - yuc
   production:
     status: medical
     text: >-
       Medical and industrial licences exist on paper since 2021 regulations; adult-use commercial
-      production is not permitted.
+      production is not permitted.[@dof,cms,giq]
     sources:
       - dof
       - cms
       - giq
-  products:
-    text: >-
-      Low-THC and CBD products are sold; a handful of medical products are registered. No legal THC
-      retail products. The health regulator has contested the CBD trade: in July 2023 it seized
-      1,811 products from a national shop chain and said such sales fell outside health rules.
-    sources:
-      - cms
-      - zeta23
   medical:
     text: >-
       Medical cannabis was legalised in 2017 and regulations were issued in 2021, allowing
-      prescription and import of approved products. Availability is limited.
+      prescription and import of approved products.[@cms] Availability is limited, with a handful
+      of registered products; low-THC and CBD products are sold, though the regulator seized
+      1,811 CBD items from a national chain in July 2023 as outside health rules.[@cms,zeta23]
+      [Medical use was legalised in 2017.](/history/mexico-medical-2017/)
+      [Medical use was regulated in 2021.](/history/mexico-medical-regulation-2021/)
     sources:
       - cms
+      - zeta23
   consequences:
     text: >-
       The permit creates a record of your use with a federal agency. Cases under 5 g are closed
@@ -120,31 +155,38 @@ context:
     text: >-
       After the Supreme Court's 2021 ruling an adult can apply to the health regulator
       COFEPRIS for a personal-use permit, which covers acquiring seed, sowing, growing and
-      harvesting. The regulator was left to define how seed may be acquired, and the permit
-      does not allow importing, selling or distributing, so there is no legal seed trade.
-      The health regulator still treats cannabis seeds as narcotics under the health law. In
-      practice, street stands on some major avenues sell plants and seeds openly.
+      harvesting.[@tele] The regulator was left to define how seed may be acquired, and the permit
+      does not allow importing, selling or distributing, so there is no legal seed trade.[@tele,yuc]
+      The health regulator still treats cannabis seeds as narcotics under the health law.[@tele] In
+      practice, street stands on some major avenues sell plants and seeds openly.[@yuc]
     sources:
       - tele
-      - zeta23
       - yuc
+  hemp:
+    status: strict
+    text: >-
+      Industrial hemp licences exist on paper under the 2021 regulations, but with no
+      commercial growing reported; adult-use production stays banned.[@dof,giq]
+    sources:
+      - dof
+      - giq
   clubs:
     status: tolerated
     text: >-
       No law provides for cannabis clubs, and Congress has never passed the regulation the
-      Supreme Court called for, so clubs work in a grey zone across the country. They lean on
+      Supreme Court called for, so clubs work in a grey zone across the country.[@yuc] They lean on
       the constitutional freedom of association and on members' personal permits or court
       injunctions, which one drug-policy researcher calls a semi-legal backing that does not
-      cover any sale. The first, Club Xochipilli, opened in Mexico City in December 2015 after
-      the court's first ruling. Because clubs are private, barely advertise and are
-      unregistered, nobody can count them, but specialists describe a boom, with
+      cover any sale.[@ceo19] The first, Club Xochipilli, opened in Mexico City in December 2015 after
+      the court's first ruling.[@yuc] Because clubs are private, barely advertise and are
+      unregistered, nobody can count them, but specialists describe a boom, with[@yuc,mil25]
       chains now present in Mexico City, the State of Mexico, Baja California and Quintana
-      Roo, and clubs in Guadalajara. Typically a member registers with official ID and pays a
+      Roo, and clubs in Guadalajara.[@mil25] Typically a member registers with official ID and pays a
       daily, monthly or yearly fee; cannabis is handed over as a gift or against a 'donation'
-      converted into points, and some clubs ask for an injunction or a prescription.
+      converted into points, and some clubs ask for an injunction or a prescription.[@mil25,ceo19]
       Authorities mostly tolerate them, which researchers call selective inaction; clubs are
       short-lived, supply often comes from the illegal market, and raids, though reported as
-      rare, still happen.
+      rare, still happen.[@yuc,mil25]
     sources:
       - mil25
       - ceo19
@@ -153,8 +195,8 @@ context:
     text: >-
       Mexico's statistics office does not separate cannabis from other drugs. At the end of
       2023, 9.4% of the 232,003 people in prison, more than 21,000, were held for drug
-      offences: 14,867 for street-level dealing, a category that takes in many cases of simple possession, and 7,021 for trafficking. Rates in state
-      prisons were highest in Durango, Sonora and Chihuahua.
+      offences: 14,867 for street-level dealing, a category that takes in many cases of simple possession, and 7,021 for trafficking.[@uno25] Rates in state
+      prisons were highest in Durango, Sonora and Chihuahua.[@uno25]
     sources:
       - uno25
   visitors:
@@ -176,30 +218,52 @@ context:
     status: consumption
     text: >-
       The rule shown here applies to federal highways and bridges; state and municipal
-      traffic rules require separate checks. Federal regulation article 93, replaced by
-      the decree published on 13 August 2026 and effective the following day, prohibits
+      traffic rules require separate checks.[@traffic2012] Federal regulation article 93, replaced by
+      the decree published on 13 August 2026 and effective the following day, prohibits[@traffic2026]
       driving in a state of psychophysical alteration or ingestion of alcohol, narcotic
-      or psychotropic substances, including medicines affecting driving. A prescription
-      does not exempt the driver. The provision sets a fine of fifty to fifty-five daily
-      quota units; these units are not a fixed peso amount. The National Guard refers
+      or psychotropic substances, including medicines affecting driving.[@traffic2026] A prescription
+      does not exempt the driver.[@traffic2026] The amended article sets a fine of fifty to fifty-five daily
+      quota units; these units are not a fixed peso amount.[@traffic2026] The National Guard refers
       the driver to the competent authority and informs the licence issuer of the
-      infringement. Drivers must submit to drug-detection tests requested by authorised
-      transport medical personnel or National Guard personnel conducting the tests.
+      infringement.[@traffic2026] Drivers must submit to drug-detection tests requested by authorised
+      transport medical personnel or National Guard personnel conducting the tests.[@traffic2026]
       The verified federal text does not specify a numerical THC allowance or an
-      automatic nationwide cannabis-specific licence-ban duration. This ingestion-based
+      automatic nationwide cannabis-specific licence-ban duration.[@traffic2026] This ingestion-based
       wording must not be described as requiring proof of impaired control alone, or
-      as a verified laboratory rule penalising any trace of THC.
+      as a verified laboratory rule penalising any trace of THC.[@traffic2026]
     sources:
       - traffic2026
       - traffic2012
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 71,538 kg of herbal
-      cannabis seized in 2024, against 72,873 kg in 2023. The UN publishes them as
+      cannabis seized in 2024, against 72,873 kg in 2023.[@unodc_szr] The UN publishes them as
       kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
+  culture:
+    text: >-
+      Mexico gave the world the words. [Marijuana](/culture/language/marijuana/) is Mexican
+      Spanish, and in the 1930s American law took it up precisely because it sounded
+      foreign.[@marijuana] [Mota](/culture/language/mota/), Mexican and Central American slang
+      since the nineteenth century, and [sinsemilla](/culture/language/sinsemilla/), the seedless
+      technique that came north in the 1970s, travelled the same route.[@mota,sinsemilla] At home
+      the plant could be sacred: in Otomí communities [La Santa Rosa](/culture/traditions/la-santa-rosa/)
+      is kept on an altar, shared in ceremony and called the Lady-Flower.[@santa] And Mexican
+      science talked back early — in 1938 psychiatrist [Leopoldo Salazar
+      Viniegra](/culture/people/leopoldo-salazar-viniegra/) told the Academy of Medicine that the
+      madness blamed on marijuana was a myth, and his treatment-not-punishment regulation became
+      law for five months in 1940.[@salazar]
+      [Salazar called the marijuana madness a myth in 1938.](/history/mexico-salazar-marijuana-myth-1938/)
+      [Dispensaries opened under the 1940 regulation.](/history/mexico-brief-legalisation-1940/)
+      [The Senate sit-in garden lasted until 2023.](/history/mexico-planton-420-ends-2023/)
+    sources:
+      - marijuana
+      - mota
+      - sinsemilla
+      - santa
+      - salazar
 sources:
   traffic2026:
     title: "Mexico Diario Oficial — federal-road traffic amendment published 13 August 2026"
@@ -246,6 +310,21 @@ sources:
       unconstitutional
     url: >-
       https://www.transcend.org/tms/2021/07/supreme-court-in-mexico-declares-cannabis-prohibition-unconstitutional
+  marijuana:
+    title: Cannabis Freedom Index — Marijuana (atlas)
+    url: https://cannabisfreedom.fyi/culture/language/marijuana/
+  mota:
+    title: Cannabis Freedom Index — Mota (atlas)
+    url: https://cannabisfreedom.fyi/culture/language/mota/
+  sinsemilla:
+    title: Cannabis Freedom Index — Sinsemilla (atlas)
+    url: https://cannabisfreedom.fyi/culture/language/sinsemilla/
+  santa:
+    title: Cannabis Freedom Index — La Santa Rosa (atlas)
+    url: https://cannabisfreedom.fyi/culture/traditions/la-santa-rosa/
+  salazar:
+    title: Cannabis Freedom Index — Leopoldo Salazar Viniegra (atlas)
+    url: https://cannabisfreedom.fyi/culture/people/leopoldo-salazar-viniegra/
   rmn:
     title: Riviera Maya News — Cofepris clarifies what cannabis self-consumption permits allow
     url: >-
