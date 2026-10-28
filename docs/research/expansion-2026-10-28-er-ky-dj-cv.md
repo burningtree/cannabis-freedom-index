@@ -8,10 +8,15 @@ by guessing.
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Cayman Islands | 3 articles, cultivation table, hemp/planting/black-market/arrests | driving; 1925 estimate; 1930s–2000s decades | c57a250 |
-| Cabo Verde |  |  |  |
-| Cabo Verde |  |  |  |
+| Cabo Verde | 4 articles, arrests section, history links, pj2022 source | driving; words; 1925 estimate | 33fd927 |
 | Djibouti |  |  |  |
 | Eritrea |  |  |  |
+
+## dj — committed
+- 3 articles: `djibouti-balbala-cannabis-network-2026` (88 packages/12 kg, Dawan + RTD, linked from enforcement/recreational), `djibouti-cannabis-sentence-1971` (6 months + 3-year residence ban, Journal officiel archive; no profile hook — pre-1995-code case, left unlinked like mp precedent), `djibouti-free-zone-drug-exclusion-2003` (cannabis/hashish/resin/khat barred, linked from access).
+- New `planting` (grey/unclear seeds, illegal clones; Art 355 covers growing, no seed rule) + `arrests` (Balbala custody; no aggregate series) sections.
+- Audit 0/0; 4 pages built and verified.
+- Left: driving section; words; 1925 estimate; empty 1920s–1960s decades. Note: a stashed `Expand Djibouti` WIP by another agent exists in the repo but the tree was clean — proceeded; watch for overlap on their return.
 
 ## cv — committed
 - 4 articles: `cape-verde-constitutional-court-18-2023` (15 g lesser-trafficking ruling, linked from possession/enforcement), `cabo-verde-drug-law-correction-1993` (Nov 1993 republication, 7-day test, linked from enforcement), `cabo-verde-licit-drug-market-1992` (Decree-Law 92/92 licensing framework, linked from access), `cabo-verde-ribeira-grande-seizure-2022` (PJ: 717 kg in Tronco, grower on preventive detention, all incinerated; new `pj2022` source, linked from black_market + new `arrests` section).
