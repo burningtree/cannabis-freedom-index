@@ -30,7 +30,10 @@ atlas-backed first, then the rest. Skipped: South Africa (other agent), Eritrea
 - New `articles/malawi-dangerous-drugs-act-1956.md` (K500,000 + life verified in the trade-portal PDF; fixed an unquoted colon in the title that broke the article-citation test). Skipped the 2015 hemp-campaign article (only Wikipedia covers the campaign itself).
 - Audit 0/0; full `npm test` 193/0; page + article verified in review HTML.
 - Left: 1940s, 1980s decades; 2015 campaign article skipped.
-## sz — pending
+## sz — committed
+- Profile already complete (words, culture, all decades, audit 0/0 unchanged).
+- New `articles/swaziland-phiri-sentencing-1986.md` (bands verified in a SheriaHub mirror of the judgment — EswatiniLII 403s) + `articles/swaziland-magagula-sentencing-1989.md` (9,705 plants verified in the judgment PDF).
+- Full `npm test` 193/0; both articles verified in review HTML.
 ## tn — pending
 ## cg — pending
 ## zm — pending
