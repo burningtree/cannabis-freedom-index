@@ -5,11 +5,17 @@ Explicit country list: Eritrea, Sint Maarten, Faroe Islands, Comoros, Dominican 
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Faroe Islands | 6 articles (flower order, 2019 bill, 1956 order, 2025 stats, Norrøna seizure, 2021 records) + 3 profile links | 1955 estimate; 1960s–2000s decades | 956e891 |
-| Sint Maarten | cultivation table (art. 11(2), ordinance read locally), planting (seeds excluded from hemp definition) | 1929/1964 shared-decree articles (Curaçao covers SX, no dup); driving/market/arrests; words | COMMIT |
+| Sint Maarten | cultivation table (art. 11(2), ordinance read locally), planting (seeds excluded from hemp definition) | 1929/1964 shared-decree articles (Curaçao covers SX, no dup); driving/market/arrests; words | f997cee |
+| Comoros | 2 articles (2025 585kg seizures, 2000 dual conventions) + who2025 source, black-market link | driving/arrests; words; 1925 estimate | COMMIT |
 | Sint Maarten |  |  |  |
 | Comoros |  |  |  |
 | Dominican Republic |  |  |  |
 | Eritrea |  |  |  |
+
+## km — committed
+- 2 articles: `comoros-drug-seizures-reported-2025` (WHO AFRO: interior minister, 585 kg 2023–2025, 27 overdose deaths; new `who2025` source, linked from black_market), `comoros-single-convention-2000` (dual accession; certified Single Convention text added as 3rd source, content verified) — no profile hook, left unlinked.
+- Audit 0/0; 3 pages built and verified.
+- Left: driving/arrests (no sources); words; 1925 estimate; empty 1920s–2010s decades.
 
 ## sx — committed
 - Cultivation penalty table from the consolidated Opium Ordinance (read locally in Dutch): art. 2a bans growing; art. 11(2) intentional life/24yr/NAf 6.25M, non-intentional 12yr/NAf 3M; fines converted 1:1 to XCG per the profile's currency note.
