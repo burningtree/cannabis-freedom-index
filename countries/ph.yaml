@@ -101,7 +101,7 @@ segments:
     currency: PHP
     penalties:
       - label: First use offence
-        treatment: civil
+        treatment: criminal
         term: Use
         note: Six months in a government rehabilitation centre
       - label: Second use offence
@@ -115,16 +115,21 @@ segments:
     text: >-
       No dispensary or ordinary pharmacy route exists.[@pna] For a seriously ill patient, a
       treating physician or health institution may seek an FDA compassionate special permit to
-      import an unregistered cannabis-based medicine for restricted use.[@fda] CBD products with no
-      more than 0.1% THC are in Schedule 4, but they remain prescription-only and are not a consumer
-      route.[@ddb_cbd]
-    sources: [pna, fda, ddb_cbd]
+      import an unregistered cannabis-based medicine for restricted use.[@fda] Separately, a patient
+      or relative may obtain a PDEA personal-use licence under DDB Regulation 8 of 2019 to acquire,
+      possess and use an unregistered dangerous-drug product for a rare or debilitating disease,
+      with a prescription capped at a one-year supply.[@ddb_personal] CBD products with no more than
+      0.1% THC are in Schedule 4; a registered product can be prescribed, while an unregistered one
+      still needs the permit.[@ddb_cbd]
+    sources: [pna, fda, ddb_cbd, ddb_personal]
 context_not_applicable:
   death_penalty:
     text: >-
       Republic Act 9346 prohibited the death penalty in 2006, so trafficking now draws life
       imprisonment instead; unauthorised importation carries life regardless of quantity.[@death,ra_primary]
-    sources: [death, ra_primary]
+      Bills to restore death for large-scale drug trafficking were filed in 2025 and 2026, but none
+      passed; the Palace said on 20 October 2026 that the proposal needed study.[@pna_death]
+    sources: [death, ra_primary, pna_death]
 context:
   recreational:
     text: >-
@@ -141,28 +146,24 @@ context:
     sources: [ra]
   medical:
     text: >-
-      There is no medical-cannabis programme and no lawful cannabis or CBD consumer products;
-      the definition covers every part of the plant, its seeds, resin, extract and tincture.
+      There is no medical-cannabis programme and no lawful cannabis or CBD consumer products; the
+      definition covers every part of the plant, its seeds, resin, extract and tincture.[@ra]
       The health department says marijuana remains illegal unless an FDA compassionate special
       permit covers its use and importation.[@pna,fda] A 2020 DDB regulation places CBD products
-      with no more than 0.1% THC in Schedule 4, but access still requires a specialist prescription
-      and an FDA compassionate permit; it is not a consumer route.[@ddb_cbd,fda] On 24 February
+      with no more than 0.1% THC in Schedule 4; a registered product can be prescribed, while an
+      unregistered one needs the FDA permit. It is not a consumer route.[@ddb_cbd,fda] On 24 February
       2026, two House committees approved a consolidated medical-cannabis bill subject to style and
       amendments, but it has not become law.[@house,ddb]
-    sources: [pna, fda, ddb_cbd, house, ddb]
+    sources: [pna, fda, ddb_cbd, house, ddb, ra]
   hemp:
-    status: strict
+    status: none
     text: >-
-      No industrial-hemp category or THC threshold. Republic Act 9165 defines cannabis as any part
-      of the plant and its seeds, resin, extract and tincture, and bans cultivation, with no fibre
-      or low-THC exception.[@ra] A 2020 DDB regulation places CBD products with no more than 0.1%
-      THC in Schedule 4, but this is a controlled medical listing, not a hemp or consumer-CBD
-      market; access still needs a prescription and an FDA compassionate permit.[@ddb_cbd,fda]
-      Hemp food, fibre and cosmetics have no general exemption.[@ra]
+      No industrial-hemp category or low-THC threshold. Republic Act 9165 defines cannabis as any
+      part of the plant and its seeds, resin, extract and tincture, and bans cultivation, with no
+      fibre, food or cosmetics exception.[@ra] Hemp food, fibre and cosmetics have no general
+      exemption.[@ra]
     sources:
       - ra
-      - ddb_cbd
-      - fda
   consequences:
     text: >-
       Foreign nationals are deported after serving their sentence.[@ra] Qualifying defendants may
@@ -207,8 +208,8 @@ context:
     status: zero
     text: >-
       The Anti-Drunk and Drugged Driving Act defines drugged driving by a positive
-      confirmatory test for dangerous-drug use, without a numerical THC allowance or
-      separate requirement to prove impairment.[@ra10586] With probable cause, police bring the
+      confirmatory test for dangerous-drug use, without a numerical THC allowance, a separate
+      requirement to prove impairment, or a medical exception.[@ra10586] With probable cause, police bring the
       driver for drug screening and, if necessary, confirmation; a crash causing injury
       or death also requires testing.[@ra10586] The Act provides three months in prison and a
       PHP20,000–80,000 fine without injury or homicide.[@ra10586] Injury raises the fine to
@@ -223,24 +224,48 @@ context:
       - ra10586
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 5,920 kg of herbal
-      cannabis seized in 2024, against 2,124 kg in 2023.[@unodc_szr] The UN publishes them as
-      kilogram equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.[@unodc_szr]
+      Figures reported by the government to the UN drugs office record 5,920 kg of herbal cannabis
+      seized in 2024, against 2,124 kg in 2023; resin was 1 kg in 2023 and blank in 2024, which may
+      mean non-reporting rather than zero.[@unodc_szr] The PDEA reported 3,090 kg of dried leaves and
+      bricks and 939.73 kg of kush in 2024, and 1,850.6 kg of dried leaves and bricks, 546.1 kg of
+      kush and 147.9 kg of fruiting tops in 2025.[@pdea24,pdea25] A Manila port raid in March 2024
+      found 278.32 kg of kush, 2.36 litres of liquid marijuana and 880.25 g of hash.[@asean24]
     sources:
       - unodc_szr
+      - pdea24
+      - pdea25
+      - asean24
   arrests:
     text: >-
-      The Philippine Drug Enforcement Agency reported that it and its partner agencies
-      carried out 10,161 anti-drug operations and arrested 13,497 people in the first
-      three months of 2025.[@journal25] Over the five years from 2020 the agency counted 183,149
-      operations and 253,776 arrests, with seizures of 13.5 tonnes of shabu, 14.54 tonnes
-      of dried marijuana leaves and 1,033 kg of marijuana kush.[@journal25] The figures cover all
-      drugs; methamphetamine dominates the seizures by value, and the report does not say how many
-      of the arrests were for cannabis.[@journal25]
+      The PDEA reported 38,545 operations and 51,264 arrests in 2024, and 39,491 operations and
+      51,614 arrests in 2025.[@pdea24,pdea25] The figures cover all drugs; methamphetamine dominates
+      the seizures by value, and the reports do not say how many arrests were for cannabis.[@pdea25]
+      Over the five years from 2020 the agency counted 183,149 operations and 253,776 arrests, with
+      14.54 tonnes of dried marijuana leaves and 1,033 kg of marijuana kush.[@journal25]
     sources:
       - journal25
+      - pdea24
+      - pdea25
 sources:
+  ddb_personal:
+    title: "Philippines Dangerous Drugs Board — Board Regulation No. 8, s. 2019, personal-use licence"
+    url: https://ddb.gov.ph/images/Board_Regulation/2019/BOARD_REG_NO._8_S._2019.pdf
+    locator: "PDEA licence for unregistered dangerous-drug products; one-year supply; ₱500 fee."
+  pdea24:
+    title: "PDEA 2024 annual figures via GMA/Inquirer (14 January 2025)"
+    url: https://www.gmanetwork.com/news/topstories/nation/932264/pdea-38-545-drug-ops-51-264-arrests-in-2024/story/
+    locator: "38,545 operations; 51,264 arrests; 3,090 kg dried leaves/bricks; 939.73 kg kush."
+  pdea25:
+    title: "PDEA 2025 annual figures via SunStar/PNA (6–8 January 2026)"
+    url: https://www.sunstar.com.ph/manila/pdea-39-491-drug-ops-51-614-arrests-in-2025
+    locator: "39,491 operations; 51,614 arrests; cannabis seizure breakdown."
+  asean24:
+    title: "ASEAN Drug Monitoring Report 2024"
+    url: https://asean.org/wp-content/uploads/2026/04/ADM-Report-2024.pdf
+    locator: "pp. 51, 149–152, 157; Manila port raid and cannabis share."
+  pna_death:
+    title: "Philippine News Agency — Death penalty for major drug traffickers needs careful study, Palace (20 October 2026)"
+    url: https://www.pna.gov.ph/article/death-penalty-for-major-drug-traffickers-needs-careful-study-palace
   ra10586:
     title: Philippines — Republic Act No. 10586, Anti-Drunk and Drugged Driving Act of 2013 (Supreme Court E-Library)
     url: https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/57102
