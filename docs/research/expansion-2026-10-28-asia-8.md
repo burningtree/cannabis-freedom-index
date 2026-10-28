@@ -21,3 +21,9 @@ Iran validation: `profile-audit ir` zero errors and warnings. The profile now us
 Armenia validation: `profile-audit am` zero errors and warnings. The profile now uses the plant-count cultivation ladder (1–5, 6–9, 10–100, over 100) and moves cultivation from 1 to 2; it records two hemp licensees in January 2026, export-only products, 2024–2026 drug figures and a licensed research route. Seven entries cover 1925–2026, including the scored 2018 threshold decision and the primary 1934 decree.
 
 Jordan validation: `profile-audit jo` zero errors and warnings. The profile now sets hemp to none, adds the missing fine minima and mandatory-life fields, records article 19(b) life and article 12(1)(d) death, describes the 2023 CBD framework rather than implying products, and adds a licensed research section. Five entries cover 2025–2026, and the first-restriction estimate is narrowed to 1925–1961.
+
+## Result
+
+All five countries were expanded and committed separately: Armenia `1ed22f0d`, Jordan `3d9f79a0`, Iran `8cc90624`, Cambodia `5c7da317` and the United Arab Emirates `c61050d8`. Each profile passes `profile-audit` with zero errors and warnings and has no missing standard or researched sections, penalty tables or inline citations. Targeted `build-pages.mjs` runs rendered each country and its changed history pages; `npm test` passes.
+
+The batch added 28 history entries. It corrected Armenia’s cultivation ladder and score (1→2), Jordan’s hemp/death-penalty structure, Iran’s 2024 fine scale and contested death threshold, Cambodia’s life tiers and 2026 seizure series, and the UAE’s port/visitor rules and UNODC seizure figures. The main open caveats are Armenia’s empty 1940s, Jordan’s unverified 1937 cannabis coverage, Iran’s conflicting 5/20/50 kg capital thresholds, Cambodia’s incomplete cannabis seizure count and the absence of a verified cannabis execution in the UAE.
