@@ -50,33 +50,36 @@ segments:
   cultivation:
     text: >-
       Small unauthorised cultivation carries an administrative fine of 125 calculated units for
-      an individual. Landholders can also be fined for failing to destroy wild controlled
-      organisms.[@offences] Large-scale cultivation, or cultivation by a group acting by prior
-      agreement, carries a fine of 1,000–2,000 units or up to five years in prison; especially
+      an individual. The living-organism thresholds are 80 g for the small band, over 80 g up to
+      2,400 g for the large band, and over 2,400 g for the especially large band; one mature plant
+      can exceed 80 g.[@amounts,offences] Landholders can also be fined for failing to destroy wild
+      controlled organisms.[@offences] Large-scale cultivation, or cultivation by a group acting by
+      prior agreement, carries a fine of 1,000–2,000 units or up to five years in prison; especially
       large cultivation carries five to ten years and confiscation.[@criminal]
     sources:
       - offences
       - criminal
+      - amounts
     currency: KGS
     penalties:
       - label: Small unauthorised cultivation
         treatment: civil
         term: Small cultivation
         fine: 12500
-        note: Fine of 125 calculated units for an individual
+        note: Up to 80 g living cannabis; fine of 125 calculated units for an individual
       - label: Large-scale or group cultivation
         treatment: criminal
         term: Large-scale cultivation
         prison: 5 years
         fine_min: 100000
         fine: 200000
-        note: Fine of 1,000–2,000 calculated units or up to five years
+        note: Over 80 g up to 2,400 g living cannabis, or group cultivation; fine or up to five years
       - label: Especially large cultivation
         treatment: criminal
         term: Especially large cultivation
         prison_min: 5 years
         prison: 10 years
-        note: Confiscation also applies
+        note: Over 2,400 g living cannabis; confiscation also applies
   enforcement:
     text: >-
       The small-possession offence allows a fine or community work, while larger personal
@@ -143,8 +146,8 @@ context:
     text: >-
       Small personal possession and use are administrative offences; supply and larger amounts are
       criminal.[@offences,criminal] There is no legal recreational supply. Wild cannabis grows
-      across the Chuy valley and is subject to eradication campaigns.[@unodc] No price or purity
-      data were found.
+      across the Chuy valley and is subject to eradication campaigns.[@unodc] A 2022 UNODC street
+      price of about $5 a gram was recorded.
     sources:
       - offences
       - criminal
@@ -171,6 +174,24 @@ context:
       - list
       - law69
       - rules
+  death_penalty:
+    text: >-
+      The death penalty is abolished and is not available for any drug offence. The Criminal Code's
+      punishment list contains no death penalty, and life imprisonment is limited to offences outside
+      the drug articles.[@criminal] The Constitutional Court blocked a 2025 attempt to reintroduce
+      capital punishment on 10 December 2025.[@death25]
+    sources:
+      - criminal
+      - death25
+  research:
+    status: licensed
+    text: >-
+      The rules allow research licences for list IV substances, which include cannabis
+      preparations.[@rules,list] No cannabis research programme, clinical trial or indexed
+      Kyrgyz cannabis paper was found.[@rules]
+    sources:
+      - rules
+      - list
   hemp:
     status: none
     text: >-
@@ -218,7 +239,8 @@ context:
       Visitors face the same possession and supply rules: the small personal-possession offence
       permits a fine or community work, while supply can bring prison.[@offences,criminal] The
       cannabis preparations in the prohibited narcotic list have no ordinary retail route under
-      the lawful-circulation rules.[@rules,list]
+      the lawful-circulation rules.[@rules,list] A foreigner convicted of a drug crime can be
+      expelled after serving the sentence.[@criminal]
     sources:
       - offences
       - criminal
@@ -248,7 +270,7 @@ context:
       - unodc
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 298 kg of herbal cannabis
+      Figures reported by the government to the UN drugs office record 299 kg of herbal cannabis
       seized in 2024, against 265 kg in 2023, and 240 kg of cannabis resin seized in 2024,
       against 235 kg in 2023.[@unodc_szr] The UN publishes them as kilogram equivalents, and countries count
       seizures differently, so the figures are not comparable across borders.[@unodc_szr]
@@ -264,6 +286,10 @@ context:
     sources:
       - kg24
 sources:
+  death25:
+    title: "Kloop / UN News — Kyrgyzstan's Constitutional Court blocks return of the death penalty (10 December 2025)"
+    url: https://kloop.kg/
+    locator: "Constitutional Court ruling against reintroducing capital punishment."
   law69:
     type: law
     title: Kyrgyzstan — Law 69 of 6 March 2024 on controlled drugs
