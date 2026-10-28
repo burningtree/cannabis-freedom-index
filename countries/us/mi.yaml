@@ -14,21 +14,72 @@ scores:
   consumption: 4
   access: 6
 segments:
-  possession: >-
-    Adults 21+ may possess 2.5 oz, including no more than 15 g of concentrate. At their residence
-    they may keep 10 oz plus cannabis harvested from plants lawfully cultivated there, with no
-    separate weight cap on that harvest. Anything above 2.5 oz at home must be in a container or
-    area secured with locks or other functioning security devices.[@2]
-  cultivation: >-
-    Adults 21+ may grow up to twelve plants per residence for personal use, out of public view
-    and in an enclosed, secured area. The cannabis harvested there is allowed at that residence
-    in addition to the ordinary 10 oz home allowance.[@2]
-  enforcement: Overages are civil infractions at first, not crimes.
+  possession:
+    text: >-
+      Adults 21+ may possess 2.5 oz, including no more than 15 g of concentrate. At their residence
+      they may keep 10 oz plus cannabis harvested from plants lawfully cultivated there, with no
+      separate weight cap on that harvest. Anything above 2.5 oz at home must be in a container or
+      area secured with locks or other functioning security devices.[@1,2]
+    currency: USD
+    penalties:
+      - upto: 2.5 oz
+        treatment: legal
+        note: 15 g concentrate max; 10 oz at home plus the residence harvest
+      - over: 2.5 oz
+        upto: 5 oz
+        treatment: civil
+        term: Civil infraction
+        fine: 500
+        note: First offence
+      - over: 5 oz
+        treatment: criminal
+        term: Misdemeanor
+        fine: 500
+        note: Larger amounts are trafficking felonies
+  cultivation:
+    text: >-
+      Adults 21+ may grow up to twelve plants per residence for personal use, out of public view
+      and in an enclosed, secured area. The cannabis harvested there is allowed at that residence
+      in addition to the ordinary 10 oz home allowance.[@1,2]
+    currency: USD
+    penalties:
+      - upto: 12 plants
+        treatment: legal
+        note: Per residence; secured and out of public view
+      - over: 12 plants
+        upto: 24 plants
+        treatment: criminal
+        term: Misdemeanor
+        fine: 500
+        note: Personal use
+      - over: 24 plants
+        treatment: criminal
+        term: Felony
+        note: Larger and commercial grows are felonies
+  enforcement: Overages are civil infractions at first, not crimes.[@1]
   sharing: >-
     Adults 21+ may give another adult 21+ up to 2.5 oz without payment, including at most 15 g of
     concentrate, provided the gift is not advertised or promoted to the public.[@2]
-  consumption: Private use, plus licensed consumption lounges.
-  access: Licensed shops since December 2019, with some of the lowest prices in the country.
+  consumption: Private use, plus licensed consumption lounges.[@3]
+  access: Licensed shops since December 2019, with some of the lowest prices in the country.[@2,4]
+context:
+  recreational:
+    text: >-
+      Proposal 1 (November 2018) legalised adult use; licensed shops opened in December
+      2019.[@2,4]
+    sources: [2, 4]
+  culture:
+    text: >-
+      Ann Arbor wrote the protest script. John Sinclair got nine and a half to ten years for two
+      marijuana cigarettes in 1969; Lennon and Ono headlined his 1971 freedom rally, the state
+      supreme court reversed his conviction in 1972, and the city cut possession to a $5 fine that
+      year.[@5,6]
+      [John Sinclair received a lengthy sentence for two cigarettes.](/history/us-sinclair-sentence-1969/)
+      [Lennon and Ono headlined the freedom rally.](/history/us-john-sinclair-freedom-rally-1971/)
+      [The court reversed his conviction in 1972.](/history/us-sinclair-conviction-reversed-1972/)
+      [Ann Arbor set a $5 fine.](/history/us-ann-arbor-five-dollar-fine-1972/)
+      [Hash Bash began in 1972.](/culture/traditions/hash-bash/)
+    sources: [5, 6]
 sources:
   - title: NORML — Michigan laws and penalties
     url: https://norml.org/laws/michigan-penalties-2/
@@ -38,6 +89,18 @@ sources:
     locator: >-
       MCL 333.27955(1)(a)–(b); 333.27954(1)(f), (i): harvest allowance, twelve plants and secured
       storage
+  - title: Cova Software — Michigan dispensary laws, designated consumption establishments
+    url: https://www.covasoftware.com/us-dispensary-laws/michigan
+  - title: MJBizDaily via MMJDaily — Michigan May cannabis sales, $59.73 average ounce (2026)
+    url: https://www.mmjdaily.com/article/9849423/michigan-posts-258m-in-may-cannabis-sales-as-license-cap-bill-advances/
+  - title: Michigan Supreme Court — People v. Sinclair, 387 Mich. 91 (9 March 1972), via Justia
+    url: https://law.justia.com/cases/michigan/supreme-court/1972/387-mich-91-2.html
+  - type: book
+    title: "The Marijuana Conviction: A History of Marijuana Prohibition in the United States"
+    authors: [Richard J. Bonnie, Charles H. Whitebread II]
+    publisher: The Lindesmith Center
+    year: 1999
+    isbn: "1891385062"
 use:
   note: Includes vaping; a model-based estimate.
   share: 27.0

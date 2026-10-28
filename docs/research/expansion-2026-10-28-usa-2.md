@@ -38,4 +38,12 @@ where the state differs, history/culture links, audit + review build per state, 
   1/20 oz) do not parse as table amounts. No NC history entries, no grounded culture subject.
 - Audit 0/0; review page verified.
 
-## mi — pending
+## mi (Michigan) — committed
+- Penalty tables (possession 3 steps incl. civil first-overage; cultivation 12/24-plant bands,
+  verified against NORML + MJI benchbook), cites on enforcement/consumption/access, new
+  `recreational` (Proposal 1 Nov 2018, shops Dec 2019) and `culture` (Sinclair 1969 → rally 1971
+  → reversal + $5 fine 1972, Hash Bash link; claims match checked history entries, sources:
+  Justia opinion + Bonnie & Whitebread book).
+- Access prices (sub-$60/oz, among lowest) via MJBizDaily; lounges via Cova DCE page.
+- Sharing left as string (claims test #220 pins it). No test breakage.
+- Audit 0/0; review page verified (build waited out another agent's lock first).
