@@ -3,10 +3,10 @@ region: Oceania
 iso_numeric: 585
 recreational: illegal
 medical: none
-updated: 2026-10-13
+updated: '2026-10-28'
 summary: >-
-  Small-scale possession is punished by a $500 fine rather than prison; giving away under an ounce
-  is treated like possession.
+  Small possession is a $500 citation, not prison; giving away an ounce or less is treated the same.
+  Cultivation and sale are felonies carrying up to eight years.
 scores:
   possession: 2
   cultivation: 1
@@ -17,113 +17,256 @@ scores:
 segments:
   possession:
     text: >-
-      Marijuana is a Schedule I substance under Palau law, but small-scale possession is punished by
-      a fine rather than prison: $500 for a first offence and $1,000 for a second, for amounts
-      reported as up to two ounces. People are cited rather than jailed.
+      Marijuana is a Schedule II controlled substance under 34 PNC section 3106, not Schedule
+      I.[@pnc34] Possession of two ounces or less is a citation: $500 for a first offence and
+      $1,000 for each later one, with no prison.[@pnc34] More than two ounces up to one pound is a
+      first conviction of one year and up to $3,000, with eleven months normally suspended and
+      counselling or testing required; later convictions reach two years and $5,000.[@pnc34]
+      More than one pound reaches ten years and $15,000.[@pnc34] A positive blood or urine test is
+      deemed possession of under one gram.[@pnc34]
     sources:
-      - pit1
-      - it
+      - pnc34
+    currency: USD
+    penalties:
+      - label: Two ounces or less
+        treatment: civil
+        term: Possession
+        fine: 500
+        note: Citation; $1,000 for each later violation; no prison
+      - label: More than two ounces up to one pound
+        treatment: criminal
+        term: Possession
+        prison: 1 year
+        fine: 3000
+        note: Eleven months normally suspended with counselling or testing; later convictions up to two years and $5,000
+      - label: More than one pound
+        treatment: criminal
+        term: Possession
+        prison: 10 years
+        fine: 15000
   cultivation:
-    text: Cultivation is illegal and prosecuted as production.
+    text: >-
+      Production includes planting, cultivation, growing and harvesting.[@pnc34] Unauthorised
+      manufacture or production of marijuana is a felony carrying up to eight years and a $5,000
+      fine, with no plant-count tier.[@pnc34]
     sources:
-      - pit1
+      - pnc34
+    currency: USD
+    penalties:
+      - label: Cultivation or production
+        treatment: criminal
+        term: Production
+        prison: 8 years
+        fine: 5000
   enforcement:
-    text: Fines and citations for users; prison for trafficking.
+    text: >-
+      Simple possession of two ounces or less is a citation, while cultivation, sale and larger
+      possession are felonies.[@pnc34] Enforcement is overwhelmingly methamphetamine-focused;
+      cannabis cases are mainly cultivation and trafficking raids plus simple-possession
+      citations.[@it24] No aggregate cannabis-arrest count is published.[@yearbook23]
     sources:
-      - it
-      - pit1
+      - pnc34
+      - it24
+      - yearbook23
   sharing:
     text: >-
-      Trafficking carries up to eight years and a fine of up to $5,000 — but giving away less than
-      an ounce is punished like simple possession, an unusual explicit carve-out for sharing.
+      Delivery or sale of marijuana carries up to eight years and a $5,000 fine.[@pnc34] Giving
+      away one ounce or less without payment is treated like simple possession, a $500 first
+      citation or $1,000 later.[@pnc34] Selling to a person under 18 who is at least three years
+      younger can double the imprisonment to sixteen years.[@pnc34]
     sources:
-      - pit1
+      - pnc34
+    currency: USD
+    penalties:
+      - label: Sale or delivery, any amount
+        treatment: criminal
+        term: Delivery
+        prison: 8 years
+        fine: 5000
+      - label: Gift of one ounce or less
+        treatment: civil
+        term: Gift
+        fine: 500
+        note: Treated like possession; $1,000 for each later violation
+      - label: Sale to a person under 18 at least three years younger
+        treatment: criminal
+        term: Delivery to a minor
+        prison: 16 years
+        fine: 5000
   consumption:
     text: >-
-      Use is illegal; Palau has long had one of the highest reported rates of cannabis use in the
-      world. Under a drug law signed in May 2026 (RPPL 12-5), testing positive for an illegal drug
-      is treated as possession of a small amount.
+      There is no standalone cannabis-use offence in Title 34.[@pnc34] Possession is the hook, and
+      since 2026 a positive blood or urine test is deemed possession of under one gram.[@pnc34]
+      Public use would likely be charged as possession or a public-order offence; no cannabis-specific
+      consumption charge was verified.[@pnc34]
     sources:
-      - pit1
-      - pina
+      - pnc34
   access:
-    text: None.
+    text: >-
+      None. There is no dispensary, patient programme, club or home-grow right, and no hemp or CBD
+      licensing route.[@pnc34]
     sources:
-      - pit2
+      - pnc34
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Possession of two ounces or less is a $500 citation,
+      $1,000 for each later violation; more than two ounces reaches one year, and more than a pound
+      ten years.[@pnc34] Cultivation and sale carry up to eight years.[@pnc34] Use is widespread:
+      15.2 per cent of adults reported past-30-day marijuana use in the 2023 Palau Hybrid Survey,
+      and 41.6 per cent of current users used daily.[@survey23]
+    sources:
+      - pnc34
+      - survey23
   production:
     status: none
-    text: None.
+    text: >-
+      No lawful cannabis production. Planting, cultivation, growing and harvesting fall within
+      "production" and carry up to eight years and a $5,000 fine.[@pnc34] No hemp or medical
+      production permission was found.[@pnc34]
     sources:
-      - pit2
-  products:
-    text: None.
-    sources:
-      - pit2
+      - pnc34
   medical:
     text: >-
-      None. A Medical Marijuana Act was introduced in 2015 and shelved; a later president said he
-      supported medical but not recreational use, and advocates have kept pressing.
+      No medical cannabis programme. A Medical Marijuana Act was introduced in 2015 and shelved,
+      and a 2021 compassionate-use bill passed first reading without becoming law.[@pit17] There is
+      no licensed cannabis medicine, prescriber pathway or dispensary.[@pnc34]
     sources:
-      - pit2
-      - pit1
+      - pnc34
+      - pit17
+  hemp:
+    status: none
+    text: >-
+      No legal hemp category or THC threshold. "Marijuana" covers all parts of Cannabis sativa L.,
+      growing or not, seeds, resin and every derivative, excluding only mature stalks, stalk fibre,
+      seed oil or cake and sterilised non-germinating seed.[@pnc34] No hemp licensing or pilot
+      programme was found.[@pnc34]
+    sources:
+      - pnc34
   consequences:
-    text: A citation is recorded but does not mean custody.
+    text: >-
+      A citation is recorded but does not mean custody.[@pnc34] A first marijuana-possession offence
+      may be conditionally discharged and expunged under section 3308, despite the general exclusion
+      of Schedule I and II drugs in the same section.[@pnc34]
     sources:
-      - it
+      - pnc34
+  planting:
+    seeds: illegal
+    seeds_trade: banned
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      Marijuana includes seeds, and production expressly includes planting, cultivation, growing
+      and harvesting.[@pnc34] There is no personal seed or clone exception; cultivation carries up
+      to eight years and a $5,000 fine.[@pnc34]
+    sources:
+      - pnc34
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known. Trafficking carries up to eight years, with one carve-out:
-      giving away less than an ounce is punished like simple possession. Nothing in the law
-      provides for collective growing.
+      No cannabis clubs are known. Cultivation and supply are prohibited, and nothing in the law
+      provides for collective growing.[@pnc34]
     sources:
-      - pit1
+      - pnc34
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says there are
-      heavy penalties for all drug offences and that possessing even a small amount of an
-      illegal drug can bring a fine or a prison sentence.
+      There is no legal recreational supply for anyone. Possession of two ounces or less is a $500
+      citation, more than two ounces reaches one year, and more than a pound ten years.[@pnc34]
     sources:
-      - pit2
-      - fcdo
+      - pnc34
   driving:
-    status: impairment
+    status: unknown
     text: >-
-      Driving on a highway under the influence of narcotic drugs is prohibited by 42 PNC section 514. The current code provides one day to one year in prison, a fine up to US$1,000, a one-year licence suspension and up to 60 hours’ community service. A second conviction within two years raises the minimum imprisonment to 20 days, fine ceiling to US$2,500 and suspension to two years; a third or subsequent conviction within two years of the second brings at least 90 days’ imprisonment and licence revocation, with no new licence application for three years. The 2026 amendment reflected in sections 602 and 609 provides for field sobriety tests for controlled-substance impairment, subject to adopted rules, lawful arrest and a warning about refusal sanctions. Refusal can result in six-month revocation after a judicial hearing checking those conditions and reasonable grounds; nonresident driving privileges are covered too. Section 608’s concentration presumption concerns alcohol, not THC. The implementing field-sobriety rules and drug laboratory cutoffs remain unverified.
+      42 PNC section 514 prohibits driving under the influence of "narcotic drugs", but the
+      controlled-substances definition limits "narcotic drug" to opium and coca derivatives, and a
+      1974 Trust Territory case held that marijuana is not a narcotic.[@pnc42,pnc34] The 2026 drug
+      law adds field sobriety testing for "another controlled substance" and treats a positive test
+      as possession of under one gram; refusal can bring a six-month licence revocation after a
+      hearing.[@pnc42] No standalone cannabis-DUI offence was verified.[@pnc42]
     sources:
-      - vehicles2026
+      - pnc42
+      - pnc34
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 2.3 kg of herbal
-      cannabis seized in 2024. The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across
-      borders.
+      UNODC records 2.3 kg of herbal cannabis seized in 2024.[@unodc_szr] Palau's local market is
+      small and localised, with cannabis processed into cigarettes and sold through small
+      outlets.[@ocindex25] In 2019 police seized and burned over a tonne in Peleliu; in 2021 they
+      found 635 plants, 136 joints and about 250 lb; in 2024 they seized 182 plants and $31,600 in
+      cash.[@it19,it21,it24] In 2026 THC gummies hospitalised three women in Koror, and a Meyuns
+      search found 11.52 g of marijuana alongside meth.[@it26a,it26b]
     sources:
       - unodc_szr
+      - ocindex25
+      - it19
+      - it21
+      - it24
+      - it26a
+      - it26b
+  arrests:
+    text: >-
+      No aggregate cannabis-arrest count is published for 2024–2026. The 2023 statistical yearbook
+      recorded illegal marijuana cultivation cases of 11 in 2020, 10 in 2021, 14 in 2022 and 3 in
+      2023.[@yearbook23] Specific recent cases include 182 plants in Peleliu in 2024, a 14-year-old
+      selling marijuana at Palau High School in 2025, and the 2026 gummies and Meyuns
+      cases.[@it24,it25,it26a,it26b]
+    sources:
+      - yearbook23
+      - it24
+      - it25
+      - it26a
+      - it26b
 sources:
-  vehicles2026:
-    title: "Palau Code Commission — 42 PNC, Vehicles (current as of 1 October 2026)"
+  pnc34:
+    type: law
+    title: "Palau — 34 PNC, Public Health, Safety and Welfare, current as of 1 October 2026"
+    url: https://www.palaulaw.gov.pw/view/recOqO4rwPW6XfCm4?source=documents&title=34+PNC+%E2%80%94+Public+Health%2C+Safety+and+Welfare
+    locator: "Sections 3002, 3103, 3106, 3301–3308 and 3313."
+  pnc42:
+    type: law
+    title: "Palau — 42 PNC, Vehicles, current as of 1 October 2026"
     url: https://www.palaulaw.gov.pw/view/recMP6LyOQaWJn7Qo?source=documents&title=42+PNC+%E2%80%94+Vehicles
-    locator: "Sections 514, 602 and 606–609; section notes identify RPPL 12-5 amendments to the testing/refusal provisions."
-  fcdo:
-    title: "GOV.UK (FCDO) — Foreign travel advice: Palau, safety and security"
-    url: https://www.gov.uk/foreign-travel-advice/palau/safety-and-security
-  pina:
-    title: PINA / Island Times — Zero-tolerance drug law clears Palau legislature (29 April 2026)
-    url: https://pina.com.fj/2026/04/29/zero-tolerance-drug-law-clears-palau-legislature/
-  pit1:
-    title: Pacific Island Times — The legality of cannabis in Pacific countries (2020)
-    url: >-
-      https://www.pacificislandtimes.com/post/2020/06/25/the-legality-of-cannabis-in-pacific-countries
-  pit2:
-    title: Pacific Island Times — Remengesau backs medical pot, bucks recreational use (2018)
-    url: >-
-      https://www.pacificislandtimes.com/post/2018/11/30/remengasau-backs-medical-pot-bucks-recreational-use
-  it:
-    title: Island Times — Teens cited for possession of marijuana
-    url: https://islandtimes.org/teens-cited-for-possession-of-marijuana/
+    locator: "Sections 514, 602 and 606–609."
+  survey23:
+    title: "Palau Hybrid Survey 2023"
+    url: https://www.pihoa.org/wp-content/uploads/2024/03/Palau-Hybrid-Survey-2023-Report-FINAL-ENDORSED.pdf
+    locator: "15.2% past-30-day marijuana use; 41.6% of users daily."
+  yearbook23:
+    title: "Palau — 2023 Statistical Yearbook"
+    url: https://www.palaugov.pw/wp-content/uploads/2023-Statistical_Yearbook.pdf
+    locator: "Illegal marijuana cultivation cases, 2020–2023."
+  ocindex25:
+    title: "Global Initiative — OC Index 2025: Palau profile"
+    url: https://ocindex.net/assets/downloads/2025/english/ocindex_profile_palau_2025.pdf
+    locator: "Small localised cannabis market."
+  pit17:
+    title: "Pacific Island Times — Where it is illegal but tolerated (14 March 2017)"
+    url: https://www.pacificislandtimes.com/post/2017/03/14/where-it-is-illegal-but-tolerated
+    locator: "2015 Medical Marijuana Act shelved."
+  it19:
+    title: "Island Times — Ton of marijuana seized, burnt by NEA (13 August 2019)"
+    url: https://islandtimes.org/ton-of-marijuana-seized-burnt-by-nea/
+    locator: "Over one tonne in Peleliu."
+  it21:
+    title: "Island Times — 635 marijuana plants, $18,000 cash seized in Peleliu bust (26 April 2021)"
+    url: https://islandtimes.org/635-marijuana-plants-18000-cash-seized-in-peleliu-bust/
+    locator: "635 plants; 136 joints; about 250 lb."
+  it24:
+    title: "Island Times — Police seize marijuana plants, cash in Peleliu drug bust (9 July 2024)"
+    url: https://islandtimes.org/police-seize-marijuana-plants-cash-in-peleliu-drug-bust/
+    locator: "182 plants; $31,600 cash."
+  it25:
+    title: "Island Times — MOE emphasizes support not expulsion in drug policy clarification (15 August 2025)"
+    url: https://islandtimes.org/moe-emphasizes-support-not-expulsion-in-drug-policy-clarification/
+    locator: "14-year-old selling marijuana at Palau High School."
+  it26a:
+    title: "Island Times — Woman charged after THC gummies allegedly hospitalized three women (17 July 2026)"
+    url: https://islandtimes.org/woman-charged-after-thc-gummies-allegedly-hospitalized-three-women-at-koror-luncheon/
+    locator: "Koror luncheon; three women over 60."
+  it26b:
+    title: "Island Times — Two women charged with drug trafficking after Meyuns apartment search (4 August 2026)"
+    url: https://islandtimes.org/two-women-charged-with-drug-trafficking-after-meyuns-apartment-search/
+    locator: "11.52 g marijuana; 16.60 g meth; $25,551.89 cash."
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
