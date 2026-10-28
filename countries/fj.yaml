@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 242
 recreational: illegal
 medical: none
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Cannabis possession remains criminalised, with court guidelines favouring non-custodial sentences for
   up to 100 g. A separate hemp exemption was approved in 2022. A drug-law rewrite signed in October 2026
@@ -15,6 +15,12 @@ answers:
     text: >-
       For up to 100 g, guidelines favour non-custodial sentences; short or suspended custody remains
       possible in the worst cases
+words:
+  - word: Indian hemp
+    lang: English
+    meaning: cannabis
+    sources:
+      - act2004
 scores:
   possession: 1
   cultivation: 1
@@ -43,16 +49,18 @@ segments:
     penalties:
       - label: Unauthorised possession under the 2004 Act
         treatment: criminal
+        term: Possession
         fine: 1000000
         note: >-
           Statutory maximum: life imprisonment, a fine, or both; court guidelines favour non-custodial
           outcomes for up to 100 g
   cultivation:
     text: >-
-      Unauthorised cannabis cultivation is an offence. The 2023 Seru guidelines combine plant count with
-      the grower’s role: fewer than ten plants for personal use and a lesser role fall in a non-custodial
-      to suspended-sentence range. Leading-role cultivation of 100 or more plants has an eighteen-year
-      starting point and a sixteen-to-twenty-year range, before the remaining sentencing adjustments.
+      Unauthorised cannabis cultivation is an offence.[@act2004] The 2023 Seru guidelines combine
+      plant count with the grower’s role: fewer than ten plants for personal use and a lesser role fall
+      in a non-custodial to suspended-sentence range.[@seru] Leading-role cultivation of 100 or more
+      plants has an eighteen-year starting point and a sixteen-to-twenty-year range, before the
+      remaining sentencing adjustments.[@seru]
     sources:
       - act2004
       - seru
@@ -60,14 +68,17 @@ segments:
     penalties:
       - label: Fewer than ten plants, personal use, lesser role
         treatment: criminal
+        term: Cultivation
         note: Non-custodial to suspended-sentence range under the 2023 Seru guidelines
       - label: Leading role, 100 or more plants
         treatment: criminal
+        term: Cultivation
         prison_min: 16 years
         prison: 20 years
         note: Eighteen-year starting point with a sixteen-to-twenty-year range, before remaining sentencing adjustments
       - label: Unauthorised cultivation under the 2004 Act (statutory maximum)
         treatment: criminal
+        term: Cultivation
         fine: 1000000
         note: Maximum FJ$1 million fine, life imprisonment, or both
   enforcement:
@@ -75,16 +86,15 @@ segments:
       The Sulua guidelines favour outcomes outside prison for possession of up to 100 g, with custody
       available in the worst cases. Cultivation sentences can be lengthy: in May 2024 the appeal court
       applied the newer guidelines to two growers and reduced their prison terms from nineteen and
-      eighteen years to fifteen and fourteen.
+      eighteen years to fifteen and fourteen.[@appeal2024]
     sources:
-      - seru
       - appeal2024
   sharing:
     text: >-
       The 2004 law defines supply to include giving cannabis to another person. The same statutory
       maximum applies to possession and supply, and Sulua’s weight-based guidelines were applied across
-      the listed drug offences. The 2026 law signed in October separates personal use from supply, with
-      commencement to be set by ministerial notice.
+      the listed drug offences.[@act2004,seru] The 2026 law signed in October separates personal use
+      from supply, with commencement to be set by ministerial notice.[@act2026]
     sources:
       - act2004
       - seru
@@ -93,19 +103,21 @@ segments:
     penalties:
       - label: Supply under the 2004 Act (statutory maximum)
         treatment: criminal
+        term: Supply
         fine: 1000000
         note: Maximum FJ$1 million fine, life imprisonment, or both; weight-based guidelines applied across the listed drug offences
   consumption:
     text: >-
       The 2004 law expressly prohibits unauthorised use or administration of an illicit drug, including
-      cannabis. Its medical-treatment and lawful-profession exceptions are set out separately in section
-      11.
+      cannabis.[@act2004] Its medical-treatment and lawful-profession exceptions are set out separately
+      in section 11.[@act2004]
     sources:
       - act2004
   access:
     text: >-
       Recreational possession, cultivation and supply are criminal offences. Lawfully prescribed or
-      supplied treatment and authorised professional activity are covered by statutory exceptions.
+      supplied treatment and authorised professional activity are covered by statutory
+      exceptions.[@act2004]
     sources:
       - act2004
 context:
@@ -130,33 +142,26 @@ context:
     status: none
     text: >-
       Cabinet approved a policy to develop a medicinal cannabis industry in February 2024, with
-      company licensing dependent on the industry being established by law.[@cabinet2024] The separate
+      company approval dependent on the industry being established by law.[@cabinet2024] The separate
       2022 amendment concerns a low-THC hemp exemption.[@hemp2022] The October 2026 drug-law rewrite
       requires ministerial Gazette notices to commence.[@act2026]
     sources:
       - cabinet2024
       - hemp2022
       - act2026
-  products:
-    text: >-
-      The 2004 drug schedule lists cannabis, resin, oil, seed and plant material. The 2022 hemp exemption
-      concerns hemp and plant parts derived from it at no more than 1% THC; a person claiming the
-      exemption in a prosecution bears the burden of proving it.
-    sources:
-      - act2004
-      - hemp2022
   medical:
     text: >-
       Fiji has been developing a medicinal cannabis industry proposal. Separately, section 11 of the 2004
       drug law exempts lawfully prescribed or supplied treatment and permits health-authority licensing
-      of drug imports, exports or manufacture.
+      of drug imports, exports or manufacture.[@act2004,medical2024]
     sources:
       - act2004
       - medical2024
   consequences:
     text: >-
       Cannabis offences can lead to conviction, fines and imprisonment. The guidelines for possession of
-      up to 100 g also allow counselling, community service or discharge with a strong warning.
+      up to 100 g also allow counselling, community service or discharge with a strong
+      warning.[@act2004,seru]
     sources:
       - act2004
       - seru
@@ -169,25 +174,26 @@ context:
       Schedule 1 of the Illicit Drugs Control Act lists cannabis seed by name as an illicit drug,
       alongside the plant, its fruit, resin and oil, and the Act bans importing, cultivating, selling,
       supplying and possessing them. Since the 2022 amendment hemp with no more than 1% THC is excluded,
-      but a person who claims a plant is hemp must prove it.
+      but a person who claims a plant is hemp must prove it.[@act2004,hemp2022]
     sources:
       - act2004
       - hemp2022
   clubs:
     status: none
     text: >-
-      Unauthorised cannabis cultivation and supply, including giving it to another person, are prohibited
-      under the drug law.
+      Unauthorised cannabis cultivation and supply, including giving it to another person, are
+      prohibited under the drug law.[@act2004]
     sources:
       - act2004
   visitors:
     status: none
     text: >-
-      Recreational cannabis possession and supply are criminal offences. For possession up to 100 g,
-      sentencing guidelines favour fines, community service, counselling or a warning, with short or
-      suspended custody reserved for the worst cases. Section 11 of the 2004 law separately exempts
+      Recreational cannabis possession and supply are criminal offences.[@act2004] For possession up
+      to 100 g, sentencing guidelines favour fines, community service, counselling or a warning, with
+      short or suspended custody reserved for the worst cases.[@seru] Section 11 of the 2004 law
+      separately exempts
       people entering, leaving or transiting Fiji with up to one month of an illicit drug lawfully
-      prescribed or supplied for treatment of themselves or someone in their care.
+      prescribed or supplied for treatment of themselves or someone in their care.[@act2004]
     sources:
       - act2004
       - seru
@@ -195,29 +201,64 @@ context:
     status: impairment
     text: >-
       Land Transport Act section 102 makes driving or being in charge while drug influence prevents
-      proper vehicle control an offence. Police can forbid driving, take the keys and immobilise or
-      remove the vehicle until the person can control it, with a right to request review by a more senior
-      officer in the circumstances specified by the Act. The government's published statutory penalty
-      schedule lists a maximum FJ$5,000 fine or five years' imprisonment or both, plus five years'
-      disqualification, subject to the court's statutory powers concerning disqualification. These are
-      court penalties, not a roadside ticket tariff. Section 103's numerical concentration offence
-      concerns alcohol; no quantified THC threshold appears in section 102. The Trade Portal's February
-      2025 upload reproduces a text incorporating 1999 and 2000 amendments; later changes to the penalty
-      schedule remain a verification target.
+      proper vehicle control an offence.[@landtraffic] Police can forbid driving, take the keys and
+      immobilise or remove the vehicle until the person can control it, with a right to request review
+      by a more senior officer in the circumstances specified by the Act.[@landtraffic] The
+      government's published statutory penalty schedule lists a maximum FJ$5,000 fine or five years'
+      imprisonment or both, plus five years' disqualification, subject to the court's statutory powers
+      concerning disqualification.[@landtraffic] These are court penalties, not a roadside ticket
+      tariff.[@landtraffic] Section 103's numerical concentration offence concerns alcohol; no
+      quantified THC threshold appears in section 102.[@landtraffic] The Trade Portal's February 2025
+      upload reproduces a text incorporating 1999 and 2000 amendments; later changes to the penalty
+      schedule remain a verification target.[@landtraffic]
     sources:
       - landtraffic
   arrests:
     text: >-
       Fiji recorded 6,659 drug cases between 2019 and 2023, and marijuana accounted for 94 per cent of
       them, with methamphetamine and cocaine making up the rest, according to figures reported by the
-      Pacific Islands News Association.
+      Pacific Islands News Association.[@pina24]
     sources:
       - pina24
+  culture:
+    text: >-
+      Cannabis in Fiji is known as [Indian hemp](/culture/language/indian-hemp/), the colonial name
+      used in the 1938 Dangerous Drugs Ordinance.[@act2004] It is grown locally, especially on Kadavu,
+      and traditional use includes boiling leaves in coconut oil as a skin treatment.[@fijiTimes25]
+      The modern law treats it as an illicit drug, with no cultural exemption.[@act2004]
+    sources:
+      - act2004
+      - fijiTimes25
+  black_market:
+    text: >-
+      Fiji recorded 2,446 drug cases from May 2024 to May 2025, of which 2,098, or 85.7 per cent, were
+      marijuana; 50 involved juveniles and 1,506 were aged 18–35.[@fijivillage25] Operation Sasamaki,
+      launched on 1 March 2025, destroyed 18.2 tonnes of marijuana across nine phases, valued at
+      FJ$241 million, and arrested 1,239 people, mostly for possession and cultivation.[@fijisun26]
+      Kadavu is the best-known growing area, with more than 10,000 plants uprooted in 2023, while
+      methamphetamine and cocaine transshipment has surged.[@fijiTimes25] No reliable per-gram retail
+      price was found.[@fijisun26]
+    sources:
+      - fijivillage25
+      - fijisun26
+      - fijiTimes25
 sources:
   landtraffic:
     title: Fiji Government Trade Portal — Land Transport Act 1998, with 1999 and 2000 amendments (PDF)
     url: https://www.fijitradeportal.gov.fj/upload/files/legal_20250210075550.pdf
     locator: Sections 59, 102–103, 114; Schedule, section 102(1)
+  fijivillage25:
+    title: "Fijivillage — Fiji records 2,446 drug cases from May 2024 to 2025, majority involve marijuana (30 June 2025)"
+    url: https://www.fijivillage.com/news/fiji-records-2446-drug-cases-from-may-2024-to-2025-majority-involve-marijuana-5f8r2k/
+    locator: "2,098 marijuana; 343 meth; 5 cocaine; 50 juveniles."
+  fijisun26:
+    title: "Fiji Sun — $241m marijuana seized in nine-month police crackdown (26 February 2026)"
+    url: https://fijisun.com.fj/news/nation/241m-marijuana-seized-in-nine-month-police-crackdown
+    locator: "18.2 tonnes destroyed; 1,239 arrests; nine phases."
+  fijiTimes25:
+    title: "Fiji Times — 4.9 tonnes of marijuana seized in March (17 April 2025)"
+    url: https://www.fijitimes.com.fj/4-9-tonnes-of-marijuana-seized-in-march/
+    locator: "Operation Sasamaki; 3.5 tonnes from Kadavu; 96 charged."
   pina24:
     title: >-
       PINA — Coups, corruption and lack of good governance: the origins of Fiji's meth crisis (29
