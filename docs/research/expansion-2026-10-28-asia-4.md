@@ -9,7 +9,7 @@ primary sources. The batch is Indonesia, Malaysia, Sri Lanka, Thailand and Vietn
 | Indonesia | cultivation table, hemp and culture sections, citation conversion | 1930s–1960s still empty; Aceh 1924 entry still needs an article | this country commit |
 | Malaysia | hemp and culture sections, citation conversion, table terms | 1920s–1940s and 2000s still empty; recent history pending | this country commit |
 | Sri Lanka | in progress | | |
-| Thailand | in progress | | |
+| Thailand | possession/cultivation tables, hemp/culture/driving sections, corrected possession offence and 30 g myth, 1991–2026 history | 1950s still empty | this country commit |
 | Vietnam | in progress | | |
 
 Indonesia validation: `profile-audit id` zero errors/warnings; `country-gaps id` has no missing standard or researched sections, no missing tables and no uncited text. The build was blocked by another contributor’s unfinished `articles/netherlands-five-grams-1996.md`; the profile was checked with the audit and will be rechecked in the next successful build.

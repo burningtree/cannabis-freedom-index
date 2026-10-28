@@ -23,61 +23,110 @@ answers:
 segments:
   possession:
     text: >-
-      Since 25 June 2025 cannabis flower is a 'controlled herb'. Possessing it lawfully requires a
-      valid prescription from a licensed practitioner, which names the product and quantity and
-      lasts about 30 days. Without one, possession is no longer permitted — a sharp reversal from
-      the 2022–2025 free-for-all.
+      Since 26 June 2025 cannabis flower has been a "controlled herb", and lawful possession
+      requires a PT 33 prescription from a Thai-licensed practitioner naming the product and
+      quantity, for no more than 30 days.[@tilleke,thaiger] Unauthorised possession is not a clear
+      standalone criminal offence: the 1999 Act's penalty covers unlicensed sale, processing, export
+      or research, not simple possession, and the 2025 notice regulates sale rather than
+      possession.[@tilleke] The flower can be seized and the seller prosecuted. Extracts with more
+      than 0.2% THC remain narcotics, with up to two years and a 40,000 baht fine for personal
+      possession.[@tilleke]
     sources:
-      - thaiger
       - tilleke
+      - thaiger
+    currency: THB
+    penalties:
+      - label: Prescribed flower
+        treatment: legal
+        term: Controlled herb
+        note: PT 33 prescription, maximum 30 days; no criminal record
+      - label: Flower without a prescription
+        treatment: tolerated
+        term: Controlled herb
+        note: No clear standalone possession offence; seizure and seller prosecution
+      - label: Extract over 0.2% THC for personal use
+        treatment: criminal
+        term: Narcotic
+        prison: 2 years
+        fine: 40000
   cultivation:
     text: >-
-      After the 2022 delisting, households could grow after notifying the authorities through a
-      government app, and the plant itself is not a narcotic. Selling any harvest requires a licence
-      and certified cultivation standards, and rules have been tightening with each new notice.
+      Households may grow cannabis after registering through the Plookganja system, but the
+      harvested flower is a controlled herb and cannot be sold without a licence.[@tilleke,khaosod]
+      Commercial cultivation, processing and sale require a section 46 licence and certified
+      cultivation standards; unlicensed cultivation or sale carries up to one year and a 20,000 baht
+      fine.[@tilleke]
     sources:
       - tilleke
       - khaosod
+    currency: THB
+    penalties:
+      - label: Registered household growing
+        treatment: legal
+        term: Registered growing
+        note: Plookganja registration; flower controlled after harvest
+      - label: Commercial cultivation without a licence
+        treatment: criminal
+        term: Unlicensed cultivation
+        prison: 1 year
+        fine: 20000
   enforcement:
     text: >-
       Breaches of the controlled-herb rules are punished with fines and up to a year in prison
-      rather than narcotics-law sentences. Bringing cannabis into or out of the country is treated
-      as trafficking.
+      rather than narcotics-law sentences.[@tilleke] Bringing cannabis into or out of the country is treated
+      as trafficking.[@thaiger]
     sources:
       - thaiger
       - tilleke
   sharing:
     text: >-
       Supplying flower to someone without a prescription is an offence under the controlled-herb
-      rules, whether or not money changes hands.
+      rules, whether or not money changes hands.[@tilleke]
     sources:
       - tilleke
-      - thaiger
+    currency: THB
+    penalties:
+      - label: Sale without a prescription or licence
+        treatment: criminal
+        term: Unlicensed sale
+        prison: 1 year
+        fine: 20000
+      - label: Export or import without permission
+        treatment: criminal
+        term: Smuggling
+        prison: 1 year
+        fine: 20000
+        note: Customs law can add up to ten years or a 500,000 baht fine
+      - label: Extract over 0.2% THC without a licence
+        treatment: criminal
+        term: Narcotic
+        prison: 5 years
+        fine: 500000
   consumption:
     text: >-
-      Smoking in public is an offence with a fine of up to 25,000 baht. Smoking inside shops is
-      banned. Use is officially limited to medical purposes, in private.
+      Smoking in public is an offence with a fine of up to 25,000 baht.[@thaiger] Smoking inside shops is
+      banned.[@thaiger] Use is officially limited to medical purposes, in private.[@thaiger]
     sources:
       - thaiger
     currency: THB
     penalties:
       - label: Public smoking
         treatment: civil
+        term: Public smoking
         fine: 25000
         note: Fine of up to 25,000 baht; use limited to medical purposes in private
   access:
     text: >-
       Shops still exist, but from 2026 only medical facilities, pharmacies, herbal-product retailers
       and traditional healers' premises may sell, with a licensed practitioner on site who issues
-      the prescription. Of more than 18,000 registered outlets, over 7,000 closed during 2025 rather
-      than renew, and authorities are moving against roughly 6,000 unlicensed or expired outlets. A
-      draft Cannabis and Hemp Act that would restrict cannabis strictly to medical use finished
-      public consultation in June 2026. The Cabinet approved the bill on 22 September 2026 and sent
-      it to parliament; it would also make growers register their plantations and raise penalties.
+      the prescription.[@edge] Of more than 18,000 registered outlets, over 7,000 closed during 2025 rather
+      than renew, and authorities are moving against roughly 6,000 unlicensed or expired outlets.[@khaosod]
+      A draft Cannabis and Hemp Act that would restrict cannabis strictly to medical use finished
+      public consultation in June 2026.[@nation] The Cabinet approved the bill on 22 September 2026 and sent
+      it to parliament; it would also make growers register their plantations and raise penalties.[@nation]
     sources:
       - edge
       - khaosod
-      - thaiger
       - nation
 context:
   recreational:
@@ -94,27 +143,45 @@ context:
     text: >-
       Licences for cultivation, processing, export and sale are available, but growers supplying
       dispensaries must meet certified medical-grade standards, and licences are now limited to
-      healthcare-type businesses.
+      healthcare-type businesses.[@khaosod,tilleke]
     sources:
       - khaosod
       - tilleke
   medical:
     text: >-
       The medical route is the whole legal system now: doctors, Thai traditional medicine
-      practitioners and other licensed professionals can prescribe, often on site at the dispensary.
-      Foreign prescriptions are not recognised. Flower is sold on prescription; extracts with more
+      practitioners and other licensed professionals can prescribe, often on site at the dispensary.[@thaiger]
+      Foreign prescriptions are not recognised.[@thaiger] Flower is sold on prescription; extracts with more
       than 0.2% THC remain narcotics, THC edibles are tightly limited, and CBD products under the
-      threshold are sold without prescription.
+      threshold are sold without prescription.[@tilleke]
     sources:
       - thaiger
-      - khaosod
       - tilleke
+  hemp:
+    status: strict
+    text: >-
+      Hemp fibre, stalks, roots, leaves and seeds sit outside the narcotic list, but hemp flower is
+      regulated separately from fibre and the 2025 controlled-herb notice covers cannabis
+      flower.[@tilleke] No general low-THC flower exemption was verified, and commercial growing
+      still needs a licence.[@tilleke]
+    sources:
+      - tilleke
+  driving:
+    status: impairment
+    text: >-
+      The Land Traffic Act punishes driving while impaired by alcohol or another intoxicant,
+      including cannabis, with up to one year and a 5,000 to 20,000 baht fine, plus licence
+      suspension.[@traffic] Extracts above 0.2% THC remain narcotics, so driving after using them
+      falls under the separate narcotics-driving provision.[@traffic] There is no per-se THC limit,
+      and police lack an approved testing protocol, so enforcement turns on observed impairment.[@traffic]
+    sources:
+      - traffic
   consequences:
     text: >-
       No criminal record follows from lawful medical use, and thousands of earlier cannabis
-      prisoners were released in 2022. Driving under the influence is an offence, and the legal
+      prisoners were released in 2022.[@tilleke] Driving under the influence is an offence, and the legal
       position has changed several times in three years, leaving users exposed to sudden rule
-      changes.
+      changes.[@khaosod]
     sources:
       - tilleke
       - khaosod
@@ -125,21 +192,33 @@ context:
     clones_trade: unclear
     text: >-
       A 2025 law-firm guide lists cannabis and hemp plants, seeds and unprocessed parts other
-      than the flowers as deregulated; only the flower is a controlled herb. Importing seed is
-      governed by the Department of Agriculture's rules. The guide does not address the sale
-      of live plants.
+      than the flowers as deregulated; only the flower is a controlled herb.[@tg25] Importing seed is
+      governed by the Department of Agriculture's rules.[@tg25] The guide does not address the sale
+      of live plants.[@tg25]
     sources:
       - tg25
+  culture:
+    text: >-
+      Cannabis in Thailand is known as [ganja](/culture/language/ganja/), and the 2022–2025
+      dispensary boom created a new [dispensary](/culture/language/dispensary/) culture that the
+      2025 medical rules then narrowed.[@tilleke] Thai [landrace](/culture/language/landrace/)
+      varieties and the [Hmong hemp cloth](/culture/traditions/hmong-hemp-cloth/) tradition long
+      predate the modern market.[@tilleke] Cannabis also entered
+      [South-East Asian cooking](/culture/traditions/south-east-asian-cooking/) and, in the reform
+      years, the political identity of [Anutin Charnvirakul](/culture/people/anutin-charnvirakul/).[@thaiger]
+    sources:
+      - tilleke
+      - thaiger
   black_market:
     text: >-
-      The best-documented illegal trade is export. In March 2025 police at Chiang Mai airport seized more than
+      The best-documented illegal trade is export.[@ks25] In March 2025 police at Chiang Mai airport seized more than
       100 kg of cannabis flower in four days from foreign couriers bound mostly for London,
       and could charge almost none of them because carrying cannabis within Thailand was not
       an offence; the regional commander said smugglers had moved from Phuket to Bangkok to
-      Chiang Mai as checks tightened. Since then sale has been narrowed to medical channels:
+      Chiang Mai as checks tightened.[@ks25] Since then sale has been narrowed to medical channels:
       rules in force in 2026 allow only registered health facilities, pharmacies and herbal
-      shops to hold licences, and require a prescription of at most 30 days. No figure for
-      unlicensed sales since the change was found.
+      shops to hold licences, and require a prescription of at most 30 days.[@ks26] No figure for
+      unlicensed sales since the change was found.[@ks26]
     sources:
       - ks25
       - ks26
@@ -147,25 +226,24 @@ context:
     status: none
     text: >-
       No cannabis clubs are known; Thailand's cannabis trade runs through licensed shops,
-      which are businesses and not members' clubs. Supplying flower to someone without a
+      which are businesses and not members' clubs.[@tilleke] Supplying flower to someone without a
       prescription is an offence whether or not money changes hands, which leaves no room for
-      a club sharing its own harvest.
+      a club sharing its own harvest.[@tilleke]
     sources:
       - tilleke
-      - thaiger
   visitors:
     status: open
     text: >-
       Tourists are held to the same rule as residents: since June 2025 cannabis flower may be
       bought, held or used only with a prescription from a licensed Thai medical professional,
-      for at most 30 days' supply, and recreational use is illegal. The tourism authority
+      for at most 30 days' supply, and recreational use is illegal.[@tat2025] The tourism authority
       tells visitors to buy only through authorised channels and warns that unlicensed shops
-      aimed at tourists may be operating illegally. Taking cannabis out of the country without
+      aimed at tourists may be operating illegally.[@tat25] Taking cannabis out of the country without
       permission from the authorities is against Thai law, the health minister said in May 2025,
-      as cases of tourists caught smuggling it out rose. A deportation
+      as cases of tourists caught smuggling it out rose.[@euronews25] A deportation
       regulation in force since 28 August 2026 allows foreigners to be deported without a
       criminal conviction for conduct judged contrary to public order or good morals, and
-      introduces the possibility of re-entry bans.
+      introduces the possibility of re-entry bans.[@newland26]
     sources:
       - tat2025
       - tat25
@@ -175,9 +253,9 @@ context:
     text: >-
       The Royal Thai Police reported 203,637 people arrested for drug offences between 1
       October 2025 and 31 May 2026, over 20 per cent more than a year earlier, and 16,419
-      drug networks broken up. The seizures it listed were of methamphetamine tablets,
+      drug networks broken up.[@pm26] The seizures it listed were of methamphetamine tablets,
       crystal methamphetamine, ecstasy and ketamine; cannabis, removed from the narcotics
-      list in 2022, does not appear in the report.
+      list in 2022, does not appear in the report.[@pm26]
     sources:
       - pm26
 sources:
@@ -212,6 +290,10 @@ sources:
     title: Khaosod English — Thailand tightens controls on medical cannabis sales (May 2026)
     url: >-
       https://www.khaosodenglish.com/politics/2026/05/16/thailand-tightens-controls-on-medical-cannabis-sales/
+  traffic:
+    title: "Thailand — Land Traffic Act B.E. 2522, sections 43, 43 bis and 160 tris"
+    url: https://www.peesirilaw.com/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8D%E0%B8%B1%E0%B8%95%E0%B8%B4/%E0%B8%88%E0%B8%A3%E0%B8%B2%E0%B8%88%E0%B8%A3%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%9A%E0%B8%81-2522.html
+    locator: "Sections 43(2), 43 bis and 160 tris."
   tilleke:
     title: "Tilleke & Gibbins — Thailand's cannabis reset: dispensaries to clinics"
     url: https://www.tilleke.com/insights/thailands-cannabis-reset-dispensaries-to-clinics/
