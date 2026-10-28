@@ -23,7 +23,13 @@ All batch files verified free of others' uncommitted changes at start.
 - Two articles: `tanzania-drug-law-amendment-2012.md` (life terms, 17A/17B, s.17 tier) and `tanzania-seed-possession-law-2026.md` (seeds/stalk/fibre in definition, s.11 thirty-year floor).
 - Audit 0/0; country + both article review builds verified. Blocked twice mid-work by others' uncommitted breakage (np `[@ndca]`, transient answers crash); green on retry.
 - Left: 1940s–2000s history decades (1940s/1950s/1960s/1980s/2000s).
-## ke — pending
+## ke — committed
+- Fixed 6 audit errors + 10 warnings in pre-existing rows (`fine_min` floors, `term` on all 7 rows, treatment-month reword, medical/consequences/production expanded, driving + culture sentences cited). Profile had never been audit-clean.
+- Per-sentence cites on 15 flagged texts; products folded into recreational/medical/hemp and deleted; new hemp (status none — no hemp regime, tops-only definition, no CBD channel).
+- Culture links bangi + Ken Okoth (+3 history links); words (Bangi/Swahili; wiki-verified "bhang, banghi, or bangi").
+- New `articles/kenya-hobley-bhang-customs-1902.md` (Wanga/Luo/Nandi customs from checked entry + archive.org book).
+- Audit 0/0; country + article review builds verified.
+- Left: research/spotlights/genetics optional; 1920s/1940s/2000s history decades.
 ## ao — pending
 ## ne — pending
 ## bj — pending

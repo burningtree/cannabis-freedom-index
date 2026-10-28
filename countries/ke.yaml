@@ -15,6 +15,8 @@ scores:
   sharing: 0
   consumption: 1
   access: 0
+words:
+  - { word: Bangi, lang: Swahili, meaning: "cannabis; the Swahili word, also written bhang in Kenyan English", sources: [act] }
 segments:
   possession:
     text: >-
@@ -22,9 +24,9 @@ segments:
       March 2022, gives cannabis (bhang) its own tier: a person who satisfies the court that the
       cannabis was solely for their own consumption faces up to five years in prison or a fine
       of up to 100,000 shillings, and the court may add a treatment or rehabilitation programme
-      of at least six months. Where that is not shown the trafficking section applies, which
+      of at least six months.[@act] Where that is not shown the trafficking section applies, which
       also covers possession: a fine of at least 30 million shillings or thirty years for 1 to
-      100 g, and at least 50 million shillings or fifty years above 100 g.
+      100 g, and at least 50 million shillings or fifty years above 100 g.[@act,sn]
     sources:
       - act
       - sn
@@ -32,40 +34,44 @@ segments:
     penalties:
       - label: Personal consumption (proved to court)
         treatment: criminal
+        term: Possession
         fine: 100000
         prison: 5 years
-        note: Fine up to 100,000 shillings or up to five years; court may add at least six months of treatment or rehabilitation
+        note: Fine up to 100,000 shillings or up to five years; court may add six months or more of treatment or rehabilitation
       - label: Possession treated as trafficking, 1 to 100 g
         treatment: criminal
-        fine: 30000000
+        term: Trafficking
+        fine_min: 30000000
         prison: 30 years
         note: Fine of at least 30 million shillings or thirty years, or both
       - label: Possession treated as trafficking, above 100 g
         treatment: criminal
-        fine: 50000000
+        term: Trafficking
+        fine_min: 50000000
         prison: 50 years
         note: Fine of at least 50 million shillings or fifty years, or both
   cultivation:
     text: >-
       Section 6 punishes cultivating a prohibited plant, or letting premises be used for it, with a
       fine of 250,000 shillings or three times the plants’ market value, whichever is greater, up to
-      twenty years in prison, or both. Section 7 requires forfeiture of non-government land when the
-      convicted person owns it, or a lessee grew with the owner’s consent, cooperation or assistance.
-      If the lessee acted without that involvement, the offender’s lease or right ends and possession
-      returns to the owner.
+      twenty years in prison, or both.[@act] Section 7 requires forfeiture of non-government land
+      when the convicted person owns it, or a lessee grew with the owner’s consent, cooperation or
+      assistance.[@act] If the lessee acted without that involvement, the offender’s lease or right
+      ends and possession returns to the owner.[@act]
     sources:
       - act
     currency: KES
     penalties:
       - label: Cultivating a prohibited plant or letting premises be used for it
         treatment: criminal
+        term: Cultivation
         fine: 250000
         prison: 20 years
         note: Fine of 250,000 shillings or three times the plants' market value, whichever is greater, up to twenty years, or both; land or lease consequences under section 7
   enforcement:
     text: >-
-      One of Africa's harshest laws on paper since 2022. Courts in practice impose much shorter
-      terms and fines for small amounts, but arrests are frequent.
+      One of Africa's harshest laws on paper since 2022.[@sn] Courts in practice impose much shorter
+      terms and fines for small amounts, but arrests are frequent.[@sn,cfm]
     sources:
       - sn
       - cfm
@@ -73,73 +79,86 @@ segments:
     text: >-
       Section 4 punishes trafficking, and possession it treats as trafficking, with a fine of at
       least 30 million shillings or thirty years in prison for 1 to 100 g, and at least 50
-      million shillings or three times the market value, or fifty years, above 100 g.
+      million shillings or three times the market value, or fifty years, above 100 g.[@act]
     sources:
       - act
     currency: KES
     penalties:
       - label: Trafficking, 1 to 100 g
         treatment: criminal
-        fine: 30000000
+        term: Trafficking
+        fine_min: 30000000
         prison: 30 years
         note: Fine of at least 30 million shillings or thirty years, or both
       - label: Trafficking, above 100 g
         treatment: criminal
-        fine: 50000000
+        term: Trafficking
+        fine_min: 50000000
         prison: 50 years
         note: Fine of at least 50 million shillings or three times the market value, or fifty years
   consumption:
     text: >-
       Smoking, inhaling, sniffing or otherwise using a narcotic drug, or being found without
       excuse in a place people use for it, is an offence under Section 5 with a fine of not less
-      than 250,000 shillings, at least five years in prison, or both.
+      than 250,000 shillings, at least five years in prison, or both.[@act]
     sources:
       - act
     currency: KES
     penalties:
       - label: Using a narcotic drug or frequenting a place used for it
         treatment: criminal
-        fine: 250000
+        term: Use
+        fine_min: 250000
         prison_min: 5 years
         note: Fine of not less than 250,000 shillings, at least five years in prison, or both
   access:
     text: >-
       None. The national drug agency has repeatedly insisted cannabis remains prohibited despite
-      legalisation petitions.
+      legalisation petitions.[@cfm]
     sources:
       - cfm
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. A person who satisfies the court the cannabis was
-      solely for their own consumption faces up to five years or a fine of up to 100,000
-      shillings; otherwise possession is treated as trafficking, with at least 30 million
-      shillings or thirty years for 1 to 100 g.[@act,sn] Courts in practice impose much
-      shorter terms and fines for small amounts, but arrests are frequent.[@sn,cfm]
+      There is no legal recreational supply — nothing is lawfully produced or sold. A person who
+      satisfies the court the cannabis was solely for their own consumption faces up to five years
+      or a fine of up to 100,000 shillings; otherwise possession is treated as trafficking, with at
+      least 30 million shillings or thirty years for 1 to 100 g.[@act,sn] Courts in practice impose
+      much shorter terms and fines for small amounts, but arrests are frequent.[@sn,cfm]
     sources:
       - act
       - sn
       - cfm
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the Act defines cannabis as the flowering or
+      fruiting tops, excluding seeds and leaves when unaccompanied, but provides no separate hemp
+      regime.[@ndpsa] CBD has no lawful channel either, with no medical programme.[@cfm]
+    sources:
+      - ndpsa
+      - cfm
   production:
     status: none
-    text: None.
+    text: >-
+      No licensed production exists: cultivation is punished under section 6 with no licensing
+      route, and the drug agency insists cannabis remains prohibited.[@cfm,act]
     sources:
       - cfm
-  products:
-    text: None.
-    sources:
-      - cfm
+      - act
   medical:
-    text: No medical cannabis; a bill has been proposed in the Senate.
+    text: >-
+      No medical cannabis programme exists.[@cfm] A bill has been proposed in the Senate, but the
+      drug agency insists cannabis remains prohibited.[@cfm]
     sources:
       - cfm
   consequences:
     text: >-
-      A conviction creates a criminal record. Cultivation can also cost land or a lease under section
-      7: owner involvement determines whether non-government land is forfeited or an innocent owner
-      recovers it. Rights over government land revert to government. Sections 7(4) and 9–10 protect
-      qualifying security and intermediate interests and require notice and an opportunity to be
-      heard.
+      A conviction creates a criminal record.[@act] Cultivation can also cost land or a lease under
+      section 7: owner involvement determines whether non-government land is forfeited or an
+      innocent owner recovers it.[@act] Rights over government land revert to government. Sections
+      7(4) and 9–10 protect qualifying security and intermediate interests and require notice and
+      an opportunity to be heard.[@act]
     sources:
       - act
   planting:
@@ -150,35 +169,35 @@ context:
     text: >-
       The Narcotic Drugs and Psychotropic Substances (Control) Act defines cannabis as the
       flowering or fruiting tops, excluding the seeds and leaves when not accompanied by the
-      tops. Cultivating any cannabis plant counts as illicit traffic, so cuttings fall under
-      the ban; the Act does not say whether seeds may be sold.
+      tops.[@ndpsa] Cultivating any cannabis plant counts as illicit traffic, so cuttings fall
+      under the ban; the Act does not say whether seeds may be sold.[@ndpsa]
     sources:
       - ndpsa
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@act,sn]
     sources:
       - act
       - sn
   arrests:
     text: >-
-      Cannabis accounts for most drug arrests. Police statistics for 2016 show 776 people
-      arrested in relation to cannabis, against 92 for heroin and 11 for cocaine. Sentences can
-      be heavy for very little: in one case reported in a 2021 study a man received two years
-      in prison for a single "stick" worth twenty shillings. No more recent national breakdown
-      was found.
+      Cannabis accounts for most drug arrests.[@cgh] Police statistics for 2016 show 776 people
+      arrested in relation to cannabis, against 92 for heroin and 11 for cocaine.[@cgh] Sentences
+      can be heavy for very little: in one case reported in a 2021 study a man received two years
+      in prison for a single "stick" worth twenty shillings.[@cgh] No more recent national
+      breakdown was found.
     sources:
       - cgh
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Cannabis held solely for one's own
-      consumption carries up to five years in prison or a fine of up to 100,000 shillings; using
-      it carries a fine of not less than 250,000 shillings or at least five years; and
-      possession treated as trafficking carries, from one gram up to 100 grams, a fine of at
-      least 30 million shillings, thirty years in prison, or both.
+      There is no legal recreational supply for anyone.[@act] Cannabis held solely for one's own
+      consumption carries up to five years in prison or a fine of up to 100,000
+      shillings;[@act] using it carries a fine of not less than 250,000 shillings or at least five
+      years;[@act] and possession treated as trafficking carries, from one gram up to 100 grams, a
+      fine of at least 30 million shillings, thirty years in prison, or both.[@act,cfm]
     sources:
       - act
       - cfm
@@ -187,32 +206,43 @@ context:
     text: >-
       The Traffic Act makes it an offence to drive, attempt to drive or be in charge of a
       vehicle while under the influence of an alcoholic drink or a drug 'beyond the prescribed
-      limits'. The penalty is a fine of up to 100,000 shillings, up to two years in prison, or
-      both, with disqualification for twelve months. The section itself gives no figure for
-      cannabis, and no numerical THC cutoff has been verified. The reviewed 2026 Drink-Driving
-      Rules prescribe blood-alcohol concentrations, not THC; the cannabis-specific conviction
-      trigger remains unverified.[@ta44,drink2026]
+      limits'.[@ta44] The penalty is a fine of up to 100,000 shillings, up to two years in prison,
+      or both, with disqualification for twelve months.[@ta44] The section itself gives no figure
+      for cannabis, and no numerical THC cutoff has been verified.[@ta44] The reviewed 2026
+      Drink-Driving Rules prescribe blood-alcohol concentrations, not THC; the cannabis-specific
+      conviction trigger remains unverified.[@ta44,drink2026]
     sources:
       - ta44
       - drink2026
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 28,153 kg of herbal
-      cannabis seized in 2024, against 25,840 kg in 2023. The UN publishes them as
+      cannabis seized in 2024, against 25,840 kg in 2023.[@unodc_szr] The UN publishes them as
       kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
   culture:
     text: >-
-      The [Rastafari sacrament](/culture/traditions/rastafari-sacrament/) remains subject to
-      Kenya’s cannabis prohibitions. In July 2026 the [High Court dismissed a religious-use
+      The Swahili word for the plant is [bangi](/culture/language/bangi/) — locally called bhang,
+      banghi or bangi.[@wiki,act] C. W. Hobley's 1902 survey already recorded bhang grown for home
+      consumption in what is now western Kenya, smoked in gourd water-pipes with customs differing
+      by people — see the [1902 survey](/history/kenya-hobley-bhang-customs-1902/).[@hobley02] The
+      [Rastafari sacrament](/culture/traditions/rastafari-sacrament/) remains subject to Kenya’s
+      cannabis prohibitions.[@rastafari2026] In July 2026 the [High Court dismissed a religious-use
       challenge](/history/kenya-high-court-rastafari-petition-2026/), finding that the petitioners
       had not first pursued statutory licensing or exemption procedures and had not established
-      the claimed rights violations. The judge also called for a national cannabis
-      debate.[@rastafari2026]
+      the claimed rights violations.[@rastafari2026] The judge also called for a national cannabis
+      debate.[@rastafari2026] Parliament has heard the other case: [Ken
+      Okoth](/culture/people/ken-okoth/) tabled a Marijuana Control Bill in 2018 to replace
+      prohibition with regulation, taxation and relief for past convictions ([2018
+      bill](/history/kenya-marijuana-control-bill-2018/)).[@okoth18]
     sources:
       - rastafari2026
+      - wiki
+      - act
+      - hobley02
+      - okoth18
 sources:
   drink2026:
     title: Kenya Law — Traffic (Drink-Driving) Rules, Legal Notice 12 of 2026
@@ -249,6 +279,19 @@ sources:
   unodc_szr:
     title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure
+  wiki:
+    title: Wikipedia — Cannabis in Kenya
+    url: https://en.wikipedia.org/wiki/Cannabis_in_Kenya
+  hobley02:
+    type: book
+    title: Eastern Uganda, an Ethnological Survey
+    authors: [C. W. Hobley]
+    publisher: Royal Anthropological Institute
+    year: 1902
+    url: https://archive.org/details/easternugandaan00hoblgoog
+  okoth18:
+    title: The Standard — MP Okoth tables four-point bid to have bhang legalized (21 September 2018)
+    url: https://www.standardmedia.co.ke/article/2001296438/kibra-mp-okoth-tables-bid-for-legalisation-of-marijuana
   rastafari2026:
     title: >-
       High Court of Kenya — Rastafari Society of Kenya & others v Attorney General & others [2026]
