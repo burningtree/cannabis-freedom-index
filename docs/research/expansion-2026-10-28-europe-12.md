@@ -9,8 +9,8 @@ skipped. Existing dirty/staged work, including the previous expansion note, is l
 | Portugal | Two articles; four events; 1993 commencement/correction clarified; hemp status corrected to standard (0.3%); HHC context | 1930s–1960s; wider primary-source club research | 52466258 |
 | Slovenia | Two articles; 1964 act and EU-opinion events; scientific permit authority clarified | 1930 original code; 1940s/1970s/1980s; medical implementation and personal bill final outcome | 2b8f4788 |
 | Andorra | One article; three events; arrests section; corrected 2005 first-code claim | First prohibition/early decades; seed rules | 2d73df6 |
-| Belarus | One article; 1974 republic date/source corrected; 1987 and 2001 score transitions; sentence-review context | 1934 article; 1940s/1950s; original gazette copies | This country’s commit |
-| North Macedonia | Pending | | |
+| Belarus | One article; 1974 republic date/source corrected; 1987 and 2001 score transitions; sentence-review context | 1934 article; 1940s/1950s; original gazette copies | feae04f |
+| North Macedonia | Two articles; six events; production, planting and arrests context | 1930 original code/article; 1940s/1970s; full original 1964/1983/1991 laws | Country commit containing this note |
 
 ## Portugal
 
@@ -73,3 +73,21 @@ today’s 2025 sentencing options applied in 2001 is made. The bar confirms revi
 
 Belarus validation: 196 tests pass, zero profile audit errors/warnings, four selected pages
 rendered and HTML inspected. Snapshot: `.cache/expansion-europe-2/by-review/`.
+
+## North Macedonia
+
+Read the 1950 federal Act (UN copy), the 1964 legal-history study, MALMED’s consolidated drug
+law, Health Ministry application guidance, the 2025 court decision and official February/March
+2026 police and government reports. Added federal/republic history in 1964, 1983 and 1991,
+plus the ten-suspect complaint and two separate rounds of six licence withdrawals. The 1983
+and 1991 entries rest on the 2008 repeal clause; original enactments are still needed for
+penalty detail. The 1950 article supplies a missing score-moving long read, and the seizure
+article distinguishes marijuana, biomass and oil bottles, allegations, and licensing decisions.
+Updated production figures using the ministry’s dated 43-entity inspection programme instead
+of the older market-report cohort. No unverified current company total is calculated after
+withdrawals. Current scores and personal-possession exemption retained. The 2025 SOCTA PDF
+is a promising source for earlier licence totals but was too large for browser retrieval; its
+search excerpt was not incorporated. No new cultural entry was supported by this pass.
+
+North Macedonia validation: all 196 tests pass, zero profile audit errors/warnings; nine
+selected pages rendered and HTML inspected. Snapshot: `.cache/expansion-europe-2/mk-review/`.
