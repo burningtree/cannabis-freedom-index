@@ -25,59 +25,114 @@ segments:
       handling for someone under the holder’s care or guardianship, under the health authority’s
       rules. Its quantity test is treatment need, rather than the ordinary 8 g/2 g
       ceilings.[@medical_possession]
+      [The 8 g limit was fixed in 2003.](/history/peru-eight-grams-2003/)
+      [The 1978 drug law is still the base.](/history/peru-decree-law-22095-1978/)
     sources:
       - penal
       - medical_possession
+    penalties:
+      - upto: 8 g
+        treatment: tolerated
+        term: Immediate personal possession
+        note: 8 g of marijuana or 2 g of derivatives for one's own immediate use; lost if two or more drug types held
+      - label: Registered-patient treatment needs
+        treatment: tolerated
+        term: Medical-needs possession
+        note: Quantity set by treatment need for registered patients and qualifying caregivers
   cultivation:
     text: >-
       Growing for personal use is a crime: the Penal Code provides two to six years even where the
-      crop does not exceed 100 plants. The exceptions are licensed medical or scientific production
-      and registered patient associations growing for their members.
+      crop does not exceed 100 plants.[@penal] The exceptions are licensed medical or scientific production
+      and registered patient associations growing for their members.[@law31312]
+      [The 2003 law set the 100-plant line.](/history/peru-eight-grams-2003/)
+      [Association growing was allowed in 2021.](/history/peru-association-cultivation-law-2021/)
+      [A 2008 ruling barred retroactive cultivation convictions.](/history/peru-isidro-murga-cultivation-ruling-2008/)
     sources:
       - penal
       - law31312
+    penalties:
+      - upto: 100 plants
+        treatment: criminal
+        prison: 6 years
+        prison_min: 2 years
+        term: Cannabis cultivation
+        note: Even where the crop does not exceed 100 plants
+      - over: 100 plants
+        treatment: criminal
+        prison: 15 years
+        prison_min: 8 years
+        term: Larger-scale cultivation
+        note: Above the 100-plant line
+      - label: Licensed medical or association growing
+        treatment: tolerated
+        term: Authorised medical cultivation
+        note: Licensed producers and registered patient associations for their members
   enforcement:
     text: >-
-      Small possession is not punished by law. Unlicensed cultivation carries two to six years for
-      up to 100 plants and eight to fifteen years otherwise; trafficking also carries prison.
+      Small possession is not punished by law.[@penal] Unlicensed cultivation carries two to six years for
+      up to 100 plants and eight to fifteen years otherwise; trafficking also carries prison.[@penal]
+      [The 8 g limit was fixed in 2003.](/history/peru-eight-grams-2003/)
+      [The 1991 Penal Code removed punishment for immediate use.](/history/peru-penal-code-1991/)
     sources:
       - penal
   sharing:
-    text: Any supply is trafficking.
+    text: >-
+      Any supply is trafficking.[@penal]
+      [Consumers were separated from traffickers in 1972.](/history/peru-consumer-traffic-distinction-1972/)
+      [The 1991 Penal Code reorganised the offences.](/history/peru-penal-code-1991/)
     sources:
       - penal
   consumption:
     text: >-
       Use is not a separate offence, and Article 299 protects possession within the limits for one's
-      own immediate consumption.
+      own immediate consumption.[@penal]
+      [The 8 g limit was fixed in 2003.](/history/peru-eight-grams-2003/)
     sources:
       - penal
   access:
     text: >-
       No adult-use sales. Licensed pharmacies sell medical cannabis products on prescription to
-      registered patients.
+      registered patients.[@digemid] A specialist medical-cannabis pharmacy was licensed in Lima
+      in 2021.[@diris]
+      [The medical law passed in 2017.](/history/peru-medical-2017/)
+      [A specialist pharmacy was licensed in 2021.](/history/peru-first-dispensary-2021/)
     sources:
       - digemid
+      - diris
 context:
+  recreational:
+    text: >-
+      Decriminalised but with no market: Article 299 leaves immediate personal possession
+      unpunished up to 8 g, but any supply is trafficking and there are no legal sales.[@penal]
+      Peruvians joined the Global Marijuana March in 2015 while the drug agency ruled out
+      legalisation.[@tni]
+      [The 8 g limit was fixed in 2003.](/history/peru-eight-grams-2003/)
+      [Peru marched as legalisation was ruled out in 2015.](/history/peru-marijuana-march-2015/)
+    sources:
+      - penal
+      - tni
   production:
     status: medical
     text: >-
       Licences exist for medical production, import and sale; patient associations can be authorised
-      to cultivate. Law 32195 created a separate framework for industrial hemp below 1% THC, but its
-      implementing regulation remained at draft stage after public consultation.
+      to cultivate.[@reg2023,law31312] Law 32195 created a separate framework for industrial hemp below 1% THC, but its
+      implementing regulation remained at draft stage after public consultation.[@hemp_law,hemp_draft]
+      [The medical regulation arrived in 2023.](/history/peru-medical-cannabis-regulation-2023/)
+      [Association growing was allowed in 2021.](/history/peru-association-cultivation-law-2021/)
+      [Industrial hemp was legislated in 2024.](/history/peru-industrial-hemp-law-2024/)
     sources:
       - reg2023
       - law31312
       - hemp_law
       - hemp_draft
-  products:
-    text: Registered medicines, exceptional patient imports and pharmacy-compounded preparations.
-    sources:
-      - digemid
   medical:
     text: >-
       Legal since Law 30681 of 2017, on prescription with patients listed in a national registry;
-      association growing was added to improve access and affordability.
+      association growing was added to improve access and affordability.[@law30681,law31312] Registered
+      medicines, exceptional patient imports and pharmacy-compounded preparations reach patients
+      through licensed pharmacies.[@digemid]
+      [The medical law passed in 2017.](/history/peru-medical-2017/)
+      [Association growing was allowed in 2021.](/history/peru-association-cultivation-law-2021/)
     sources:
       - law30681
       - law31312
@@ -85,10 +140,12 @@ context:
   consequences:
     text: >-
       Qualifying immediate personal possession within the 8 g marijuana/2 g derivative limits is not
-      punishable; the two-drug exclusion applies to that ordinary exemption. Separate protection
+      punishable; the two-drug exclusion applies to that ordinary exemption.[@penal] Separate protection
       covers medically necessary quantities for registered patients and qualifying caregivers under
       the prescribed conditions.[@medical_possession]
+      [The 8 g limit was fixed in 2003.](/history/peru-eight-grams-2003/)
     sources:
+      - penal
       - medical_possession
   planting:
     seeds: licensed
@@ -96,31 +153,36 @@ context:
     clones: licensed
     clones_trade: regulated
     text: >-
-      Unlicensed transfer of cannabis seed is a crime, while the medical regulation defines seed to
-      include any botanical structure intended for sexual or asexual propagation. Licensed medical
-      producers may acquire, propagate, store and transport seeds and seedlings. Commercial seed
-      sales are restricted to licensed cultivators and regulated under the General Seed Law;
-      licensed patient associations must obtain seed from an authorised producer. Seeds and clones
+      Unlicensed transfer of cannabis seed is a crime under the Penal Code, while the medical regulation defines seed to
+      include any botanical structure intended for sexual or asexual propagation.[@penal,reg2023] Licensed medical
+      producers may acquire, propagate, store and transport seeds and seedlings.[@reg2023] Commercial seed
+      sales are restricted to licensed cultivators and regulated under the General Seed Law;[@reg2023]
+      licensed patient associations must obtain seed from an authorised producer.[@law31312] Seeds and clones
       are therefore confined to licensed or authorised medical and industrial-hemp cultivation and
-      regulated supply channels; the detailed hemp rules remain pending.
+      regulated supply channels; the detailed hemp rules remain pending.[@hemp_law,hemp_draft]
+      [Industrial hemp was legislated in 2024.](/history/peru-industrial-hemp-law-2024/)
+      [Hemp rules were drafted in 2025.](/history/peru-hemp-regulation-draft-2025/)
     sources:
       - penal
       - reg2023
+      - law31312
       - hemp_law
       - hemp_draft
   clubs:
     status: regulated
     text: >-
       Since July 2021 the law has allowed patient associations to grow medical cannabis
-      together and make their own derivatives; there is no recreational club model. Every
+      together and make their own derivatives; there is no recreational club model.[@law31312] Every
       member must be on the national register of cannabis patients, the health ministry issues
-      the licence and the anti-drug police set the security protocol. The law was passed at
+      the licence and the anti-drug police set the security protocol.[@law31312] The law was passed at
       the request of patient groups, who had found that few pharmacies stocked legal products;
       one of them, a group of about 60 families, had been raided by police before medical use
-      was legalised in 2017. Personal home growing, which the groups also asked for, was left
-      out.
+      was legalised in 2017.[@efe21] Personal home growing, which the groups also asked for, was left
+      out.[@efe21]
+      [Association growing was allowed in 2021.](/history/peru-association-cultivation-law-2021/)
     sources:
       - efe21
+      - law31312
   visitors:
     status: none
     text: >-
@@ -139,28 +201,54 @@ context:
     text: >-
       The Penal Code punishes driving 'under the effect of' toxic drugs, narcotics or
       psychotropic substances with six months to two years in prison, or 52 to 104 days of
-      community service, and disqualification. For alcohol the same article gives a blood
-      level; for drugs it gives none. Drivers of public transport and freight face one to
-      three years.
+      community service, and disqualification.[@cp274] For alcohol the same article gives a blood
+      level; for drugs it gives none.[@cp274] Drivers of public transport and freight face one to
+      three years.[@cp274]
     sources:
       - cp274
   black_market:
     text: >-
       Figures reported by the government to the UN drugs office record 56,327 kg of herbal
-      cannabis seized in 2024, against 38,704 kg in 2023. The UN publishes them as
+      cannabis seized in 2024, against 38,704 kg in 2023.[@unodc_szr] The UN publishes them as
       kilogram equivalents, and countries count seizures differently, so the figures are
-      not comparable across borders.
+      not comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
   arrests:
     text: >-
       The anti-drug directorate of the National Police, Dirandro, reported more than
       11,700 people detained in over 18,700 operations in 2024 and 122 criminal
-      organisations dismantled. It seized more than 165 tonnes of drugs, a record against
-      104.6 tonnes in 2023, of which more than 56 tonnes were marijuana. The detentions
-      are counted for drug trafficking as a whole and are not split by drug.
+      organisations dismantled.[@panam25] It seized more than 165 tonnes of drugs, a record against
+      104.6 tonnes in 2023, of which more than 56 tonnes were marijuana.[@panam25] The detentions
+      are counted for drug trafficking as a whole and are not split by drug.[@panam25]
     sources:
       - panam25
+  hemp:
+    status: high
+    text: >-
+      Law 32195 set the industrial-hemp line below 1% THC, a higher ceiling than the 0.3%
+      standard elsewhere, but growing still needs authorisation and the implementing regulation
+      was still a draft after public consultation.[@hemp_law,hemp_draft] There is no open
+      unlicensed hemp regime.[@hemp_law]
+      [Industrial hemp was legislated in 2024.](/history/peru-industrial-hemp-law-2024/)
+      [Hemp rules were drafted in 2025.](/history/peru-hemp-regulation-draft-2025/)
+    sources:
+      - hemp_law
+      - hemp_draft
+  culture:
+    text: >-
+      Peru's cannabis politics are patient-led. Groups of families of epileptic children pushed
+      the 2017 medical law after police raided one 60-family collective, then won association
+      growing in 2021 when pharmacies proved too few.[@efe21,law31312] Peruvians marched with the
+      [Global Marijuana March](/culture/traditions/global-marijuana-march/) in 2015 while the
+      drug agency ruled out legalisation.[@tni]
+      [The medical law passed in 2017.](/history/peru-medical-2017/)
+      [Association growing was allowed in 2021.](/history/peru-association-cultivation-law-2021/)
+      [Peru marched as legalisation was ruled out in 2015.](/history/peru-marijuana-march-2015/)
+    sources:
+      - efe21
+      - law31312
+      - tni
 sources:
   cp274:
     title: Peru — Código Penal, Article 274 (LP Derecho, updated text)
@@ -184,6 +272,14 @@ sources:
   digemid:
     title: DIGEMID — Medicinal cannabis and its derivatives
     url: https://www.digemid.minsa.gob.pe/webDigemid/uso-medicinal-del-cannabis-y-sus-derivados/
+  diris:
+    title: DIRIS Lima Centro Resolution No. 510-2021-DMID-DIRIS-LC
+    url: https://www.gob.pe/institucion/dirislimacentro/normas-legales/7013109-510-2021-dmid-diris-lc
+    locator: Specialist medical-cannabis pharmacy licence, operations from 19 April 2021
+  tni:
+    title: "Transnational Institute — Reforma de la ley de drogas en Perú, guía básica (2014, updated June 2016)"
+    url: https://www.tni.org/es/publicacion/reforma-de-la-ley-de-drogas-en-peru-guia-basica
+    locator: 2015 Marijuana March and DEVIDA's rejection of legalisation
   hemp_law:
     title: Law No. 32195 on agricultural development of industrial hemp (Congress of Peru)
     url: https://leyes.congreso.gob.pe/Documentos/2021_2026/ADLP/Texto_Consolidado/32195-TXM.pdf
