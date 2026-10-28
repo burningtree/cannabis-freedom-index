@@ -3,7 +3,7 @@ region: Asia
 iso_numeric: 268
 recreational: partial
 medical: none
-updated: '2026-10-28'
+updated: "2026-10-28"
 summary: >-
   Private cannabis consumption is legal, while possession, growing and sale remain restricted.
   Parliament restored prison for possessing more than 5 g of dried cannabis in July 2025. In June
@@ -20,8 +20,8 @@ segments:
   possession:
     text: >-
       Up to 5 g of dried cannabis is an administrative offence with a fine of 500 lari.[@admin]
-      Amendments adopted on 2 July 2025 restored prison for buying or holding more than 5 g, with
-      up to six years for the basic offence, five to eight years for 70–250 g, and eight to twenty
+      Amendments adopted on 2 July 2025 restored prison for buying or holding more than 5 g, with up
+      to six years for the basic offence, five to eight years for 70–250 g, and eight to twenty
       years or life above 250 g.[@criminal,ocm] The thresholds for fresh cannabis are 10, 140 and
       500 g; for the cannabis plant 10, 155 and 750 g; and for resin 0.05, 0.5 and 5 g.[@nlaw] A
       repeat small-quantity possession after an administrative penalty is criminal under Article
@@ -58,14 +58,15 @@ segments:
         treatment: criminal
         term: Especially large amount, Article 260(3)
         prison_min: 8 years
-        note: Eight to twenty years or life imprisonment
+        note: Life is an alternative to the twenty-year maximum
+        prison: 20 years
+        life: possible
   cultivation:
     text: >-
       Growing remains illegal, with no tolerated plant count. The 2025 amendments added a separate
-      offence of sowing or growing, punished by a fine, community service of 200 to 400 hours,
-      house arrest for six months to two years, or two to six years in prison. Aggravated growing
-      brings four to seven years, and especially large or organised growing six to
-      twelve.[@criminal,ocm]
+      offence of sowing or growing, punished by a fine, community service of 200 to 400 hours, house
+      arrest for six months to two years, or two to six years in prison. Aggravated growing brings
+      four to seven years, and especially large or organised growing six to twelve.[@criminal,ocm]
     sources:
       - criminal
       - ocm
@@ -93,8 +94,11 @@ segments:
       possession.[@admin,criminal] In its 24 June 2026 ruling on the code as it stood before May
       2025, the Constitutional Court barred imprisonment for buying or possessing 0.1315 g of
       cannabis resin for personal use, including after a prior drug conviction. It left criminal
-      liability in place.[@cc882,cc882judgment] The police seized 3,017 kg of cannabis in 2022, and
-      recorded drug charges fell from 6,922 in 2019 to 2,622 in 2022.[@mgebrishvili]
+      liability in place.[@cc882,cc882judgment] The UNODC series records 212 kg of herbal cannabis
+      and 2,805 plants in 2022; the 3,017 kg figure in some summaries adds plants as kilograms.
+      Recorded drug charges fell from 6,922 in 2019 to 2,622 in 2022.[@mgebrishvili,unodc_szr] The
+      Interior Ministry registered 5,598 drug crimes in 2024, 10,475 in 2025 and 7,533 in
+      January–June 2026; more than half were purchase or possession.[@meduza26]
     sources:
       - admin
       - criminal
@@ -102,14 +106,19 @@ segments:
       - cc882
       - cc882judgment
       - mgebrishvili
+      - unodc_szr
+      - meduza26
   sharing:
     text: >-
-      Sale of the cannabis plant or marijuana is punished with five to ten years in prison; a
-      large quantity, group, official position or repeat offence brings six to twelve, and an
-      especially large quantity or organised group twelve to seventeen.[@criminal] Production or
-      transport of drugs carries three to seven years, six to nine for aggravated cases and nine to
-      twenty or life for especially large or organised cases.[@criminal] The Court's reasoning
-      protects only the consumer's own choice; supply remains a crime.[@idpc]
+      Sale of the cannabis plant or marijuana is punished with five to ten years in prison; a large
+      quantity, group, official position or repeat offence brings six to twelve, and an especially
+      large quantity or organised group twelve to seventeen.[@criminal] Transfer without payment
+      carries three to eight years, six to ten for aggravated cases and seven to twelve for
+      especially large or organised cases; facilitating a sale carries five to ten, six to twelve or
+      twelve to seventeen.[@criminal] Production or transport of drugs carries three to seven years,
+      six to nine for aggravated cases and nine to twenty or life for especially large or organised
+      cases.[@criminal] The Court’s reasoning protects only the consumer’s own choice; supply
+      remains a crime.[@idpc]
     sources:
       - criminal
       - idpc
@@ -129,15 +138,24 @@ segments:
         term: Sale
         prison_min: 12 years
         prison: 17 years
+      - label: Transfer without payment, Article 260²(4)
+        treatment: criminal
+        term: Gift
+        prison_min: 3 years
+        prison: 8 years
+      - label: Facilitating a sale, Article 260⁴(1)
+        treatment: criminal
+        term: Facilitation
+        prison_min: 5 years
+        prison: 10 years
   consumption:
     text: >-
       On 30 July 2018 the Constitutional Court abolished all penalties for consuming cannabis,
       calling it an act protected by the right to free development of personality.[@court]
       Parliament then restricted it: not in public places, on transport, at work in certain
-      professions, or in the presence of children.[@admin,idpc] Article 45¹ now sets the fines:
-      500 to 1,000 lari for use inside a building that is not a private home, 800 to 1,200 in a
-      public place, and 1,000 to 1,500 near minors, at a school or at work; repeats are
-      higher.[@admin]
+      professions, or in the presence of children.[@admin,idpc] Article 45¹ now sets the fines: 500
+      to 1,000 lari for use inside a building that is not a private home, 800 to 1,200 in a public
+      place, and 1,000 to 1,500 near minors, at a school or at work; repeats are higher.[@admin]
     sources:
       - court
       - admin
@@ -167,8 +185,8 @@ segments:
         note: Repeat offences carry higher fines up to GEL 2,000
   access:
     text: >-
-      Georgia made use legal but left no lawful way to obtain cannabis: buying, selling and
-      growing are all still prohibited.[@idpc] No medical or retail supply route was found.[@nlaw]
+      Georgia made use legal but left no lawful way to obtain cannabis: buying, selling and growing
+      are all still prohibited.[@idpc] No medical or retail supply route was found.[@nlaw]
     sources:
       - idpc
       - nlaw
@@ -177,9 +195,9 @@ context:
     text: >-
       Private use is legal, but there is no legal way to buy cannabis. Up to 5 g of dried cannabis
       is an administrative fine; above that, possession is criminal again, with up to six years in
-      prison and higher bands above 70 g.[@admin,criminal] Public use is fined, and use near
-      minors or at school carries the highest administrative band.[@admin] Past-year use was about
-      5% of the general population, and 43% of regular users obtained cannabis by home
+      prison and higher bands above 70 g.[@admin,criminal] Public use is fined, and use near minors
+      or at school carries the highest administrative band.[@admin] Past-year use was about 5% of
+      the general population, and 43% of regular users obtained cannabis by home
       cultivation.[@mgebrishvili] No price or purity data were found.
     sources:
       - admin
@@ -188,10 +206,10 @@ context:
   medical:
     text: >-
       No approved cannabis medicine, prescription route, clinical trial or production licence was
-      found.[@nlaw] Cannabis is a Schedule I drug, and the law permits circulation only for
-      teaching, scientific, expert and forensic activity.[@nlaw] Researchers describe Georgia as
-      lacking legal access to regulated medical cannabis and a formal medical-cannabis
-      industry.[@mgebrishvili] Medical status stays none.
+      found.[@nlaw] Cannabis is a List I drug, and the law permits circulation only for teaching,
+      scientific, expert and forensic activity.[@nlaw] Researchers describe Georgia as lacking legal
+      access to regulated medical cannabis and a formal medical-cannabis industry.[@mgebrishvili]
+      Medical status stays none.
     sources:
       - nlaw
       - mgebrishvili
@@ -199,7 +217,7 @@ context:
     status: none
     text: >-
       No industrial-hemp licensing scheme, THC limit, planted area or harvest figure was found.
-      Cannabis is a Schedule I drug, and sowing or growing it is criminal under Article
+      Cannabis is a List I drug, and sowing or growing it is criminal under Article
       265¹.[@nlaw,criminal] No separate CBD exemption was found in the sources read.[@nlaw]
     sources:
       - nlaw
@@ -207,18 +225,19 @@ context:
   production:
     status: none
     text: >-
-      No licensed production was found. Cannabis is a Schedule I drug, and production, transport
-      and sale are criminal.[@nlaw,criminal] No medical, fibre or export production route was
-      found in the sources read.[@nlaw]
+      No licensed production was found. Cannabis is a List I drug, and production, transport and
+      sale are criminal.[@nlaw,criminal] No medical, fibre or export production route was found in
+      the sources read.[@nlaw]
     sources:
       - nlaw
       - criminal
   consequences:
     text: >-
-      Administrative fines leave no criminal record.[@admin] A drug conviction can bar certain
-      professions under the Law on Combating Drug-related Crime, and the same law provides five
-      years' deprivation of a driving licence for a drug-influenced driving conviction.[@trafficrights]
-      A criminal record also affects sentencing for later drug offences.[@criminal]
+      Administrative fines leave no criminal record.[@admin] A drug conviction costs the driving
+      licence and several other rights for five years under the Law on Combating Drug-related Crime;
+      an administrative cannabis offence costs the licence for three years and teaching,
+      public-service and weapons rights for five.[@trafficrights] Passive suffrage is also affected,
+      and a criminal record affects sentencing for later drug offences.[@criminal]
     sources:
       - admin
       - trafficrights
@@ -231,19 +250,18 @@ context:
     text: >-
       The narcotics law defines cannabis as the flowering and fruiting tops of the hemp plant,
       leaving out seeds and leaves that come without tops.[@nlaw] It defines sowing as putting a
-      seed into soil or planting a seedling, and sowing, growing and cultivating plants that
-      contain controlled substances is among the acts the law forbids.[@nlaw] Clones are plants, so
-      keeping or trading them falls under the cultivation offence.[@criminal] No seed-sale or clone
-      market was found.
+      seed into soil or planting a seedling, and sowing, growing and cultivating plants that contain
+      controlled substances is among the acts the law forbids.[@nlaw] Clones are plants, so keeping
+      or trading them falls under the cultivation offence.[@criminal] No seed-sale or clone market
+      was found.
     sources:
       - nlaw
       - criminal
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and no law provides for them: the Constitutional Court's
-      rulings protect only a person's own use, and sale or any other supply remains a
-      crime.[@idpc,criminal]
+      No cannabis clubs are known, and no law provides for them: the Constitutional Court's rulings
+      protect only a person's own use, and sale or any other supply remains a crime.[@idpc,criminal]
     sources:
       - idpc
       - criminal
@@ -252,64 +270,84 @@ context:
     text: >-
       There is no lawful recreational supply: buying, growing and selling remain prohibited.[@idpc]
       Up to 5 g of dried cannabis brings an administrative fine; the July 2025 amendments restored
-      prison above 5 g and for repeat small-quantity possession.[@admin,criminal] The law makes no
-      exception for visitors.[@admin]
+      prison above 5 g and for repeat small-quantity possession.[@admin,criminal] A conviction can
+      lead to deportation and an entry ban; a foreign resident received two years and a 20-year ban
+      in a 2026 case reported by Meduza.[@meduza26]
     sources:
       - idpc
       - admin
       - criminal
+      - meduza26
   driving:
     status: impairment
     text: >-
-      Criminal Code article 276(1) criminalises driving a motor vehicle under narcotic,
-      psychotropic or new psychoactive substance influence even without a crash.[@trafficcode] Its
-      sanctions include a fine, house arrest for six months to two years, community service of 200
-      to 400 hours, and/or imprisonment of up to one year.[@trafficcode] Note 2 requires clinical
-      and laboratory reports to establish drug influence; if a laboratory test is refused, a
-      clinical report alone can establish it.[@trafficcode] The Law on Combating Drug-related Crime
-      provides five years' deprivation of a driving licence on conviction.[@trafficrights]
+      Criminal Code article 276(1) criminalises driving a motor vehicle under narcotic, psychotropic
+      or new psychoactive substance influence even without a crash.[@trafficcode] Its sanctions
+      include a fine, house arrest for six months to two years, community service of 200 to 400
+      hours, and/or imprisonment of up to one year.[@trafficcode] Note 2 requires clinical and
+      laboratory reports to establish drug influence; if a laboratory test is refused, a clinical
+      report alone can establish it.[@trafficcode] The Law on Combating Drug-related Crime provides
+      five years' deprivation of a driving licence on conviction.[@trafficrights]
     sources:
       - trafficcode
       - trafficrights
   black_market:
     text: >-
-      The illicit market is well established. The Interior Ministry seized 3,017 kg of cannabis in
-      2022, and researchers describe easier access alongside rising seizures.[@mgebrishvili]
-      Home growing supplies a large share of regular users: 43% obtained cannabis that way after
-      liberalisation, and a survey of 218 growers found a mean of 2.5 plants, with 89% growing for
-      personal use and only 3% for sale.[@mgebrishvili] No price or purity data were found.
+      The illicit market is well established. The UNODC series records 212 kg of herbal cannabis and
+      2,805 plants seized in 2022; summaries that call this “3,017 kg” add plants as
+      kilograms.[@mgebrishvili,unodc_szr] Home growing supplies a large share of regular users: 43%
+      obtained cannabis that way after liberalisation, and a survey of 218 growers found a mean of
+      2.5 plants, with 89% growing for personal use and only 3% for sale.[@mgebrishvili] No price or
+      purity data were found.
     sources:
       - mgebrishvili
+      - unodc_szr
   arrests:
     text: >-
-      Recorded drug charges fell from 6,922 in 2019 to 2,622 in 2022.[@mgebrishvili] No official
-      arrest or prosecution figures for 2024–2026 were found in the sources read. The 2025
-      amendments lengthened several drug sentences and made refusing a drug test an offence.[@ocm]
+      Recorded drug charges fell from 6,922 in 2019 to 2,622 in 2022.[@mgebrishvili] The Interior
+      Ministry registered 5,598 drug crimes in 2024, 10,475 in 2025 and 7,533 in January–June 2026;
+      more than half were purchase or possession under Article 260.[@meduza26] The Prosecutor
+      General’s Office opened 119 drug cases against Russian citizens in 2024, 196 in 2025 and 234
+      in January–September 2026, and prisons held 12,344 people in June 2026.[@meduza26] The figures
+      cover all drugs, not cannabis alone.[@meduza26]
     sources:
       - mgebrishvili
-      - ocm
+      - meduza26
 sources:
   admin:
     type: law
-    title: "Georgia — Code of Administrative Offences, Article 45¹ (Legislative Herald, English consolidated text)"
+    title: >-
+      Georgia — Code of Administrative Offences, Article 45¹ (Legislative Herald, English
+      consolidated text)
     url: https://matsne.gov.ge/en/document/view/28216
-    locator: "Article 45¹(1)–(15): small purchase/storage GEL 500; use in buildings, public places, near minors, at work and repeats."
+    locator: >-
+      Article 45¹(1)–(15): small purchase/storage GEL 500; use in buildings, public places, near
+      minors, at work and repeats.
   criminal:
     type: law
-    title: "Georgia — Criminal Code, Articles 260, 260¹, 260³, 265¹ and 273 (Legislative Herald, English consolidated text)"
+    title: >-
+      Georgia — Criminal Code, Articles 260, 260¹, 260³, 265¹ and 273 (Legislative Herald, English
+      consolidated text)
     url: https://matsne.gov.ge/en/document/view/16426
-    locator: "Current text including Law No. 922 of 2 July 2025; Articles 260, 260¹, 260³, 265¹ and 273."
+    locator: Current text including Law No. 922 of 2 July 2025; Articles 260, 260¹, 260³, 265¹ and 273.
   nlaw:
     type: law
-    title: "Georgia — Law on Narcotic Drugs, Psychotropic Substances, Precursors and Narcological Assistance, English consolidated text"
+    title: >-
+      Georgia — Law on Narcotic Drugs, Psychotropic Substances, Precursors and Narcological
+      Assistance, English consolidated text
     url: https://matsne.gov.ge/en/document/download/1670322/21/en/pdf
-    locator: "Cannabis definition, Schedule I, and Annex 2 thresholds: dried 5/70/250 g, fresh 10/140/500 g, plant 10/155/750 g, resin 0.05/0.5/5 g."
+    locator: >-
+      Cannabis definition, Schedule I, and Annex 2 thresholds: dried 5/70/250 g, fresh 10/140/500 g,
+      plant 10/155/750 g, resin 0.05/0.5/5 g.
   civil:
     title: Civil.ge — Georgian Dream Criminalizes Small Marijuana Possession (2 July 2025)
     url: https://civil.ge/archives/689664
   ocm:
-    title: OC Media — Georgia to introduce 6-year prison sentence for possession of over 5 grams of marijuana (2025)
-    url: https://oc-media.org/georgia-to-introduce-6-year-prison-sentence-for-possession-of-over-5-grams-of-marijuana/
+    title: >-
+      OC Media — Georgia to introduce 6-year prison sentence for possession of over 5 grams of
+      marijuana (2025)
+    url: >-
+      https://oc-media.org/georgia-to-introduce-6-year-prison-sentence-for-possession-of-over-5-grams-of-marijuana/
   idpc:
     title: IDPC — Cannabis use can no longer be punished in Georgia, court rules
     url: https://idpc.net/news/2018/08/cannabis-use-can-no-longer-be-punished-in-georgia-court-rules
@@ -317,26 +355,52 @@ sources:
     title: Constitutional Court of Georgia — Gvianidze, Khomeriki and Gagishvili v. Parliament
     url: https://constcourt.ge/en/judicial-acts?legal=1212
   cc882:
-    title: "Constitutional Court of Georgia — Paata Cherkezishvili v Parliament, Claim No. 882 (24 June 2026)"
+    title: >-
+      Constitutional Court of Georgia — Paata Cherkezishvili v Parliament, Claim No. 882 (24 June
+      2026)
     url: https://www.constcourt.ge/en/media/news/the-first-board-of-the-constit.html
-    locator: "Press release: imprisonment for purchase and possession for personal use of 0.1315 g of cannabis resin, including after a prior drug conviction, is contrary to Article 9(2); criminalisation is not contrary to Article 12."
+    locator: >-
+      Press release: imprisonment for purchase and possession for personal use of 0.1315 g of
+      cannabis resin, including after a prior drug conviction, is contrary to Article 9(2);
+      criminalisation is not contrary to Article 12.
   cc882judgment:
     title: Constitutional Court of Georgia — Paata Cherkezishvili v Parliament, judgment 1/2/882
     url: https://constcourt.ge/ka/judicial-acts?legal=20023
-    locator: "24 June 2026; operative part 1–4. Article 260(1), (3) versions before 1 May 2025; repeat-offence branch already addressed in 2022; effective on publication."
+    locator: >-
+      24 June 2026; operative part 1–4. Article 260(1), (3) versions before 1 May 2025;
+      repeat-offence branch already addressed in 2022; effective on publication.
   trafficcode:
-    title: "Georgia Legislative Herald — Criminal Code, current consolidated English text"
+    title: Georgia Legislative Herald — Criminal Code, current consolidated English text
     url: https://matsne.gov.ge/en/document/view/16426
-    locator: "Article 276(1), (3), (5), (7), (9) and Note 2."
+    locator: Article 276(1), (3), (5), (7), (9) and Note 2.
   trafficrights:
-    title: "Georgia Legislative Herald — Law on Combating Drug-related Crime, current consolidated English text"
+    title: >-
+      Georgia Legislative Herald — Law on Combating Drug-related Crime, current consolidated English
+      text
     url: https://matsne.gov.ge/en/document/view/22132
-    locator: "Articles 2(b), 3(1)(a), 3(4¹), 5 and 6; consolidation includes 2025 amendments."
+    locator: Articles 2(b), 3(1)(a), 3(4¹), 5 and 6; consolidation includes 2025 amendments.
   mgebrishvili:
     type: journal
-    title: "Patterns of Cannabis Cultivation, Cannabis and Other Drug Use and Market Participation among Georgian Small-scale Cannabis Growers"
-    authors: [Tamar Mgebrishvili, Irma Kirtadze, Gary R. Potter, David Otiashvili]
+    title: >-
+      Patterns of Cannabis Cultivation, Cannabis and Other Drug Use and Market Participation among
+      Georgian Small-scale Cannabis Growers
+    authors:
+      - Tamar Mgebrishvili
+      - Irma Kirtadze
+      - Gary R. Potter
+      - David Otiashvili
     container: International Journal of Drug Policy
     year: 2025
     url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12353957/
-    locator: "Volume 144(Pt 3), 104842; background on 5% past-year use, 43% home cultivation, 3,017 kg seized in 2022, charges 6,922 to 2,622, and the 218-grower survey."
+    locator: >-
+      Volume 144(Pt 3), 104842; background on 5% past-year use, 43% home cultivation, 3,017 kg
+      seized in 2022, charges 6,922 to 2,622, and the 218-grower survey.
+  unodc_szr:
+    title: UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents
+    url: https://data.unodc.org/datareport/drug-seizure
+    locator: "Georgia 2022: 212 kg herbal cannabis, 2,805 plants, virtually no resin."
+  meduza26:
+    title: Meduza — Russian emigrants face drug charges in Georgia (16 October 2026)
+    url: >-
+      https://meduza.io/en/feature/2026/10/16/russian-emigrants-thought-marijuana-use-was-safe-in-georgia-now-some-are-facing-years-behind-bars
+    locator: 5,598/10,475/7,533 drug crimes; 12,344 prisoners; 119/196/234 Russian-citizen cases.
