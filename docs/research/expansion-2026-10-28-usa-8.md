@@ -24,5 +24,11 @@ Same method as usa-1–7.
 - No ID history entries, no culture subject — noted.
 - Audit 0/0; review page verified.
 
-## wv — pending
+## wv (West Virginia) — committed
+- Cultivation table (Felony term + weight note, NORML-verified manufacture deferral), cites on
+  consumption/access (statute cites already covered possession/sharing/enforcement).
+- Possession/sharing/answers pinned by test #230, untouched. No WV history entries, no culture
+  subject — noted.
+- Audit 0/0; review page verified.
+
 ## hi — pending
