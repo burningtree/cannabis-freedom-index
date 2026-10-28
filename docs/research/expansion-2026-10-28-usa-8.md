@@ -31,4 +31,10 @@ Same method as usa-1–7.
   subject — noted.
 - Audit 0/0; review page verified.
 
-## hi — pending
+## hi (Hawaii) — committed
+- Cultivation table (25–50 plants felony 5yr/$10k, NORML-verified), cites on consumption/access,
+  new `medical` (Act 228 2000 + 2015 dispensary law via verified DOH page) and `culture`
+  (pakalōlō + Green Harvest 1976, atlas-linked, sources from the checked atlas entry).
+- Possession pinned by test #161, untouched. Review blocked once by another agent's full build;
+  waited out the lock and reran clean.
+- Audit 0/0; review page verified.
