@@ -5,8 +5,9 @@ recreational: death
 medical: none
 updated: '2026-10-27'
 summary: >-
-  Class I narcotic. Since 2 January 2026, possessing the plant is up to twelve years, with no
-  statutory minimum. Aggravated sale can still be death. Medical use is prohibited.
+  Class I narcotic. Since 2 January 2026, possessing plant material is up to twelve years and
+  possessing dried cannabis over 5 g can bring life or twenty years. Aggravated sale or production
+  can still be death. Medical use is prohibited.
 scores:
   possession: 0
   cultivation: 0
@@ -21,11 +22,14 @@ segments:
       carries up to twelve years in prison and/or a category VI fine. More than 1 kg or at least six
       plants raises the penalty to life imprisonment or up to twenty years, and/or a higher fine.
       Possession under Article 111 has no death penalty or special minimum prison term.[@uu35,uu2026]
+      Dried cannabis and resin are not "plant form": the new Criminal Code's Article 609 covers them,
+      with up to twelve years for the basic offence and life or up to twenty years above 5 g.[@kuhp2023,uu2026]
       Personal use under Article 127 carries up to four years; a person proved to be a victim of drug
       abuse must receive rehabilitation.[@uu35]
     sources:
       - uu35
       - uu2026
+      - kuhp2023
     currency: IDR
     penalties:
       - label: Planting or possessing plant form
@@ -38,6 +42,12 @@ segments:
         treatment: criminal
         term: Article 111
         note: Life imprisonment or up to twenty years and/or a higher fine
+      - label: Dried cannabis or resin, Article 609
+        treatment: criminal
+        term: Article 609
+        prison: 12 years
+        fine: 2000000000
+        note: "Above 5 g: life or up to twenty years"
       - label: Personal use, Article 127
         treatment: criminal
         term: Article 127
@@ -68,10 +78,12 @@ segments:
   enforcement:
     text: >-
       Among the harshest in the world.[@sun] Tourists in Bali are regularly jailed for years over a few
-      grams, and Indonesia retains and uses the death penalty for drug trafficking.[@gp]
+      grams, and Indonesia retains the death penalty for drug trafficking but has not executed anyone
+      since July 2016.[@gp,jp26]
     sources:
       - sun
       - gp
+      - jp26
   sharing:
     text: >-
       Selling, buying, brokering or delivering a Class I narcotic carries life imprisonment or up to
@@ -92,7 +104,7 @@ segments:
         prison: 20 years
         fine: 2000000000
         note: Life imprisonment or up to twenty years and/or a category VI fine
-      - label: Over 1 kg or at least six plants for sale
+      - label: Over 1 kg, at least six plants, or over 5 g non-plant
         treatment: criminal
         term: Article 114
         death: true
@@ -119,6 +131,13 @@ segments:
     sources:
       - uu35
       - gp
+    currency: IDR
+    penalties:
+      - label: Personal use, Article 127
+        treatment: criminal
+        term: Article 127
+        prison: 4 years
+        note: Treatment and rehabilitation may count towards the sentence
   access:
     text: None.[@tempo]
     sources:
@@ -134,10 +153,13 @@ context:
       or plant-count threshold can bring death, life imprisonment or up to twenty years and/or a
       category VI fine. For non-plant Class I narcotics the threshold is more than 5 g.[@uu2026] Giving a Class
       I narcotic to another person to use can also bring death under Article 116(2) if it causes death
-      or permanent disability.[@uu2026,uu35]
+      or permanent disability.[@uu2026,uu35] Death is one of three options, not mandatory. No executions
+      have been carried out since July 2016; 639 people were on death row in April 2026, 441 for drug
+      offences, and no cannabis-specific death sentence was found in 2024–2026.[@jp26]
     sources:
       - uu2026
       - uu35
+      - jp26
   recreational:
     text: >-
       All recreational use is prohibited. Planting or possessing plant-form cannabis carries up
@@ -152,12 +174,15 @@ context:
   research:
     status: restricted
     text: >-
-      No licensed cannabis research route operates. The Constitutional Court rejected a medical
-      challenge but urged the government to research therapeutic use; medical use stays
+      In June 2025 the National Narcotics Board opened limited cannabis research to selected
+      universities and began a pharmacy study with Udayana University, while insisting this was not
+      legalisation.[@bnn25,kompas25] No patient or commercial route exists, and medical use stays
       prohibited.[@tempo,sun]
     sources:
       - tempo
       - sun
+      - bnn25
+      - kompas25
   production:
     status: none
     text: None. Cannabis has long been grown illicitly in Aceh, where the army burns fields each year.[@gp]
@@ -167,10 +192,12 @@ context:
     text: >-
       Prohibited absolutely: Class I narcotics may not be used for health services, and CBD is
       treated as cannabis.[@uu35] The Constitutional Court rejected a challenge brought by mothers of
-      children with cerebral palsy, while urging the government to research therapeutic use.[@tempo]
+      children with cerebral palsy, while urging the government to research therapeutic use; the
+      2025 BNN university programme is research only.[@tempo,bnn25]
     sources:
       - tempo
       - uu35
+      - bnn25
   hemp:
     status: none
     text: >-
@@ -221,8 +248,9 @@ context:
     text: >-
       Bringing cannabis across the border is a separate offence: since 2 January 2026, unauthorised
       Class I importation carries up to fifteen years and/or a category V fine under Article
-      610.[@uu2026] For plant material over 1 kg or more than five plants, the aggravated offence can
-      bring death, life imprisonment or up to twenty years and/or a category VI fine.[@uu2026] Travel
+      610.[@uu2026] For plant material over 1 kg or more than five plants, or for more than 5 g of
+      non-plant cannabis, the aggravated offence can bring death, life imprisonment or up to twenty
+      years and/or a category VI fine.[@uu2026] Travel
       advice warns that medicinal cannabis, oils, CBD, edibles and vapes are also illegal and screened
       at airports.[@sun] Domestic plant possession separately carries up to twelve years and/or a
       category VI fine; personal use under Article 127 carries up to four years, with rehabilitation
@@ -264,6 +292,20 @@ context:
     sources:
       - traffic22
 sources:
+  kuhp2023:
+    title: "Indonesia — Criminal Code (KUHP) Law 1/2023, articles 609–610"
+    url: https://regulasiair.com/teks/uu-1-2023/
+    locator: "Article 609 possession of non-plant cannabis; Article 610 production, import, export and distribution."
+  jp26:
+    title: "Jakarta Post — Indonesia keeps death penalty despite execution hiatus (25 October 2026)"
+    url: https://www.thejakartapost.com/indonesia/2026/10/25/indonesia-keeps-death-penalty-despite-execution-hiatus
+    locator: "No executions since July 2016; 639 on death row, 441 drug-related."
+  bnn25:
+    title: "BNN — Research on cannabis is not legalisation (June 2025)"
+    url: https://bnn.go.id/bnn-tegaskan-peluang-penelitian-ganja-bukan-upaya-legalisasi/
+  kompas25:
+    title: "Kompas — BNN and Udayana University study medical cannabis (15 July 2025)"
+    url: https://www.kompas.com/jawa-timur/read/2025/07/15/191500988/bnn-gandeng-universitas-udayana-teliti-ganja-medis-hasil-awal-masih
   uu35:
     title: Indonesia National Narcotics Agency — Law 35 of 2009 on Narcotics, original official text
     url: https://jdih.bnn.go.id/internal/assets/assets/produk/UU/2009/10/UU_Nomor_35_tahun_2009.pdf
