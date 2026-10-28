@@ -33,13 +33,15 @@ segments:
     penalties:
       - label: Possession (indictment)
         treatment: criminal
+        term: Possession
         prison: 7 years
         fine: 1000000
       - label: Possession (summary conviction)
         treatment: criminal
+        term: Possession
         prison: 3 years
         fine: 100000
-        note: First offenders with very small quantities often get fines, probation or community service
+        note: No amount threshold; first offenders with very small quantities often get fines, probation or community service
   cultivation:
     text: >-
       Growing any cannabis plant carries up to fifteen years and HK$100,000.[@hkpf] It is a
@@ -55,14 +57,28 @@ segments:
     penalties:
       - label: Cultivating a cannabis plant
         treatment: criminal
+        term: Cultivation
         prison: 15 years
         fine: 100000
       - upto: 5 kg
         treatment: criminal
-        note: Estimated annual yield below two years' custody under the 2023 guidelines
+        term: Cultivation
+        prison: 2 years
+        note: Estimated annual yield; 2023 guideline band
+      - over: 5 kg
+        upto: 50 kg
+        treatment: criminal
+        term: Cultivation
+        prison: 7 years
+      - over: 50 kg
+        upto: 150 kg
+        treatment: criminal
+        term: Cultivation
+        prison: 10 years
       - over: 150 kg
         treatment: criminal
-        note: Estimated annual yield above ten years' custody under the 2023 guidelines
+        term: Cultivation
+        prison_min: 10 years
   enforcement:
     text: >-
       Courts generally consider a treatment-suitability report before custody; for very small
@@ -88,11 +104,20 @@ segments:
     penalties:
       - label: Trafficking (including giving away any amount)
         treatment: criminal
+        term: Trafficking
         fine: 5000000
         note: Life imprisonment and HK$5 million maximum
+      - label: Trafficking, summary conviction
+        treatment: criminal
+        term: Trafficking
+        prison: 3 years
+        fine: 500000
       - upto: 2 kg
         treatment: criminal
-        note: Herbal cannabis and resin starting band of up to sixteen months since January 2023
+        term: Trafficking
+        prison_min: 1 year
+        prison: 2 years
+        note: Herbal cannabis and resin starting band; 2023 guideline range up to sixteen months
   consumption:
     text: >-
       Smoking, inhaling, ingesting or injecting a dangerous drug is an offence carrying up to seven
@@ -102,10 +127,16 @@ segments:
       - cbdcontrol
     currency: HKD
     penalties:
-      - label: Consuming a dangerous drug
+      - label: Consuming a dangerous drug (indictment)
         treatment: criminal
+        term: Consumption
         prison: 7 years
         fine: 1000000
+      - label: Consuming a dangerous drug (summary)
+        treatment: criminal
+        term: Consumption
+        prison: 3 years
+        fine: 100000
   access:
     text: >-
       Possession and use must comply with the ordinance or a licence granted by the Director of
@@ -116,8 +147,8 @@ segments:
 context_not_applicable:
   death_penalty:
     text: >-
-      Hong Kong formally abolished the death penalty on 23 April 1993; no cannabis offence
-      carries a capital sentence.[@wikipdp]
+      Hong Kong's Legislative Council passed the bill abolishing the death penalty on 21 April
+      1993, replacing it with life imprisonment; no cannabis offence carries a capital sentence.[@wikipdp]
     sources: [wikipdp]
 context:
   recreational:
@@ -140,9 +171,10 @@ context:
   medical:
     text: >-
       Cannabis and cannabis resin are excluded from the ordinary professional and pharmacy
-      authorities in the ordinance.[@law] CBD pharmaceutical products have been subject to
-      prescription-only controls since December 2019; the government reported no registered CBD
-      medicine in October 2022.[@cbdbrief]
+      authorities in the ordinance, so a doctor cannot supply THC cannabis merely as a doctor.[@law]
+      CBD is a listed dangerous drug but not excluded in the same way; CBD pharmaceutical products
+      have been prescription-only since December 2019, and the government reported no registered
+      CBD medicine in October 2022.[@cbdbrief,law]
     sources:
       - law
       - cbdbrief
@@ -174,7 +206,88 @@ context:
       - cbdcontrol
       - hkpf
       - cbdcase
+  hemp:
+    status: none
+    text: >-
+      No hemp exception and no THC threshold. "Cannabis" covers any plant or part containing THC and
+      its viable seeds, and cultivation is prohibited except for the Government Chemist.[@law]
+      Industrial hemp therefore cannot lawfully be grown.[@law]
+    sources:
+      - law
+  planting:
+    seeds: illegal
+    seeds_trade: banned
+    clones: illegal
+    clones_trade: banned
+    text: >-
+      Viable cannabis seeds are expressly part of the legal definition of cannabis, so possessing,
+      supplying or importing them is illegal, and germinating them is cultivation.[@law] Clones are
+      living plants and fall under the cultivation offence.[@law] The status of non-viable seeds is
+      unclear.[@law]
+    sources:
+      - law
+  driving:
+    status: zero
+    text: >-
+      Road Traffic Ordinance section 39K makes it an offence to drive, attempt to drive or be in
+      charge of a vehicle with any concentration of cannabis in blood or urine.[@road39k] Indictment
+      carries three years and HK$25,000, summary conviction six months and HK$10,000 for a first
+      offence, and disqualification for at least two years, or five on a repeat.[@road39k] The
+      medical defence covers a drug prescribed or supplied by a healthcare professional; cannabis is
+      not prescribable, so it does not help a recreational user.[@road39k]
+    sources:
+      - road39k
+  black_market:
+    text: >-
+      UNODC records 4,086 kg of herbal cannabis and 296 kg of resin seized in 2024, against
+      3,069 kg of herb and 296 kg of resin in 2023; the government-reported herb figure is much
+      higher than the "about 2,800 kg" Customs figure quoted by RTHK, so the two are not one
+      series.[@unodc_szr,rthk24] Major cases include 500 kg of buds in a Canadian soybean shipment
+      in September 2024, 138 kg in a frozen-pork container in March 2025, and a record 535 kg from
+      Thailand in September 2026.[@customs24b,customs25, customs26]
+    sources:
+      - unodc_szr
+      - rthk24
+      - customs24b
+      - customs25
+      - customs26
+  arrests:
+    text: >-
+      All-drug arrests were 3,243 in 2024, 4,108 in 2025 and 1,749 in the first half of 2026; the
+      conviction rate for drug prosecutions was 86% in 2025 and 87% in the first half of 2026.[@nd24,nd25,nd26h1]
+      Reported cannabis users were 678 in 2024, 705 in 2025 and 364 in the first half of 2026.[@nd24,nd25,nd26h1]
+      No cannabis-only arrest count is published.[@nd25]
+    sources:
+      - nd24
+      - nd25
+      - nd26h1
 sources:
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents"
+    url: https://data.unodc.org/datareport/drug-seizure
+    locator: "Hong Kong 2024: 4,086 kg herbal cannabis and 296 kg resin; 2023: 3,069 kg herb and 296 kg resin."
+  road39k:
+    title: "Hong Kong — Road Traffic Ordinance, Cap. 374, section 39K and Schedule 1A"
+    url: https://www.hklii.hk/en/legis/ord/374/s39K
+    locator: "Any concentration of cannabis in blood or urine; penalties and disqualification."
+  nd24:
+    title: "Hong Kong Government — Drug abuse and drug situation in 2024 (7 March 2025)"
+    url: https://www.info.gov.hk/gia/general/202503/07/P2025030700265.htm
+  nd26h1:
+    title: "Hong Kong Government — Drug situation in the first half of 2026 (15 September 2026)"
+    url: https://www.info.gov.hk/gia/general/202609/15/P2026091500331.htm
+  rthk24:
+    title: "RTHK — Customs cannabis seizure figure for 2024"
+    url: https://news.rthk.hk/rthk/en/component/k2/1870739-20260919.htm
+  customs24b:
+    title: "Hong Kong Customs — 500 kg cannabis buds in a Canadian soybean shipment (9 October 2024)"
+    url: https://www.info.gov.hk/gia/general/202410/09/P2024100900376.htm
+  customs25:
+    title: "Hong Kong Customs — 138 kg cannabis buds in a frozen-pork container (17 March 2025)"
+    url: https://www.info.gov.hk/gia/general/202503/17/P2025031700434.htm
+  customs26:
+    title: "Hong Kong Customs — record 535 kg cannabis-bud seizure (19 September 2026)"
+    url: https://www.info.gov.hk/gia/general/202609/19/P2026091800694.htm
   clic:
     title: >-
       Community Legal Information Centre, University of Hong Kong — Possession of dangerous drugs,
@@ -229,8 +342,9 @@ sources:
       Annex A, paragraphs 6–11: market, stated grounds for control and CBD pharmaceutical regulation
       since 13 December 2019
   wikipdp:
-    title: Wikipedia — Capital punishment in Hong Kong (formally abolished 23 April 1993)
-    url: https://en.wikipedia.org/wiki/Capital_punishment_in_Hong_Kong
+    title: "Hong Kong Legislative Council — Hansard, 21 April 1993"
+    url: https://www.legco.gov.hk/yr92-93/english/lc_sitg/hansard/h930421.pdf
+    locator: "Passage of the Crimes (Amendment) (No. 3) Bill, pp. 2934–2961."
   ndlaw:
     title: Hong Kong Security Bureau Narcotics Division — Legislation and law enforcement
     url: https://www.nd.gov.hk/en/anti.html
