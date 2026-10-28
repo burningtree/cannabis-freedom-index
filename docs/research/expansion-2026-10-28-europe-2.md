@@ -52,3 +52,6 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0; review page to verify with batch build.
 - Left: 1950s/60s/80s empty; 1974 + 1940 Soviet articles open (same decrees as the Ukraine
   article, but Latvia-specific entries still article-less — noted).
+
+Batch verification (28 Oct): combined review build of all 8 country pages green (exit 0,
+tests 183/0); words, culture links and new sections spot-checked in `.cache/page-review/`.
