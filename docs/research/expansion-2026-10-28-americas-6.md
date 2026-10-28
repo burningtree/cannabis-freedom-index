@@ -19,7 +19,12 @@ others; kp — Asia; cw/sr — done in Americas-5; gy — another agent's blocke
 - Hemp (status none — only in the unpassed 2025 draft) + black_market (2011 supply geography) sections added; production carries 2023/2025 article links.
 - Audit 0 errors + 1 pre-existing warning (production status none vs "licensing" in the original text — correctly none, no medical production exists); page + all four articles verified in review HTML.
 - Left: words (no sourced Kwéyòl/local term found), culture (no atlas entries), over-30 g tiers (no numbers in retained sources), 1988-convention entry (imp 1, skipped).
-## sv — pending
+## sv — committed
+- Word marihuana (Spanish (El Salvador), from the El Mundo motorbike-carrying case); culture now links /culture/language/mota/ in a cited sentence (em added to culture sources).
+- New `articles/el-salvador-drug-law-2003.md` (Decree 153: the two-gram line, 5–15 yrs growing; six existing profile links finally resolve to a page) + `articles/el-salvador-drug-law-1991.md` (Decree 728: 3–6 yrs possession, 5–10 growing), linked from possession text.
+- Fixed self-inflicted warning (uncited mota sentence) + build assertion ([@em] needed adding to culture sources).
+- Audit 0/0; page + both articles verified in review HTML.
+- Left: 1925 first-restriction estimate (parallel VE estimate, not a shared decree — no link, no article), 2014 protest article (Wikipedia-only entry, skipped), cultivation tiers beyond Art. 31 bands.
 ## ag — pending
 ## bm — pending
 ## cr — pending
