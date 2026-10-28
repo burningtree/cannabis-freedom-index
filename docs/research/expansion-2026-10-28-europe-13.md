@@ -8,8 +8,8 @@ excluding other agents’ shared changes.
 |---|---|---|---|
 | Malta | Resin article, association stock event/context, directive date corrected | Seven sparse history decades; original 2026 licensing amendment | 875cfb6 |
 | Serbia | Medical agenda-vote article; eight events; research authorisations and seizure context | Original 1964/1980/1996 laws; 1940s/1970s | cbc0790 |
-| Bulgaria | Hemp article; revised 2006 article; cultivation/supply/use tables; five events | Hemp statute/ordinance threshold conflict; original 1975/1982 printings | This country’s commit |
-| Belgium | Pending | | |
+| Bulgaria | Hemp article; revised 2006 article; cultivation/supply/use tables; five events | Hemp statute/ordinance threshold conflict; original 1975/1982 printings | 532d7e5 |
+| Belgium | 2026 sentencing article; two events; possession/supply tables, medical/driving context, four words | 2015 Sativex article; 1950s; ancillary fine details | This country’s commit |
 | Estonia | Pending | | |
 
 ## Malta
@@ -60,3 +60,24 @@ comparison with neighbouring countries. No current six-segment score changes.
 Validation: the first build identified an unused recreational source, which was removed. The
 second passed all 196 tests and rendered nine pages, inspected in HTML. Profile audit 0/0.
 Snapshot: `.cache/expansion-europe-3/bg-review/`.
+
+## Belgium
+
+Read the March 2026 drug-law amendment and amended commencement clause, the new Criminal
+Code, current Justice Ministry cannabis guidance, the current 2017 implementing decree
+(downloaded from Justel when browser retrieval failed), current traffic law, FAMHP’s product
+page and VAD/Druglijn’s Belgian vocabulary page. The amendment’s headline metadata still says
+8 April, but its changed article 32 ties commencement to the new code; the current drug-law
+annotations and ministry confirm 1 September. The June decree amendment updates article 61’s
+cross-references to levels 1 and 2. Replaced stale possession fines with €250/500/1,000 inclusive
+of the ministry’s 1.25 multiplier. Public/institutional locations and statutory aggravation
+remain separate from the three-gram prosecution policy. Added supply imprisonment levels and
+updated driving fines and the ordinary discretionary ban minimum to eight days. Ancillary
+supply fine maxima and individual mitigation require fuller treatment; no unsupported final
+fine range is calculated. Current six-segment bands retained: low-priority personal possession
+and unlawful supply remain in the same bands. FAMHP distinguishes marketed Sativex, authorised
+but unmarketed Epidyolex, and pharmaceutical CBD compounds. Added four locally documented words.
+
+Validation: first build hit a regression test requiring the explicit phrase that prosecutors
+may still bring charges; restored that wording. The second passed all 196 tests and rendered
+three pages, inspected in HTML. Profile audit 0/0. Snapshot: `.cache/expansion-europe-3/be-review/`.

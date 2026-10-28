@@ -20,34 +20,54 @@ segments:
       Cannabis possession remains an offence. Adults with up to 3 g for personal use, without
       aggravating circumstances or public nuisance, normally receive a simplified police report
       and lowest prosecution priority. Prosecutors may still bring charges with reasons.[@justice]
-      [Belgium limited police reporting for adult personal possession in 2003.](/history/belgium-law-2003/)
-      [Belgium restored uniform low-priority handling in 2005.](/history/belgium-three-grams-2005/)
+      Since [September 2026](/history/belgium-drug-penalty-levels-2026/), the level-1 personal-use
+      fine is €250 for a first offence, up to €500 for a qualifying repeat and up to €1,000 for
+      a further repeat, including the 1.25 multiplier.[@druglaw26,justice] Specified public-place
+      offences fall under level 2, which can include six months–three years in prison;
+      classification depends on the place and circumstances, beyond the prosecution-priority
+      policy.[@ar2017,penal26]
     sources:
       - justice
+      - druglaw26
+      - ar2017
+      - penal26
     currency: EUR
     penalties:
-      - upto: 3 g
+      - label: Personal-use offence eligible for level 1 — first offence
         treatment: criminal
-        term: Possession
-        fine_min: 120
-        fine: 200
-        note: Simplified police report and lowest prosecution priority; no immunity
-      - label: Exceeding the user amount, nuisance or aggravating circumstances
+        term: Drug Act, Article 2ter(1)
+        fine_min: 250
+        fine: 250
+        note: Includes 1.25 multiplier; specified public places and aggravation have different rules
+      - label: Level-1 repeat within one year after the first conviction
         treatment: criminal
-        term: Possession
-        prison_min: 3 months
-        prison: 1 year
-        fine_min: 8000
-        fine: 800000
-        note: Full prosecution under the 2005 directive
+        term: Article 2ter(1)
+        repeat: 2
+        fine: 500
+        note: Includes 1.25 multiplier
+      - label: Further level-1 repeat within one year after the second conviction
+        treatment: criminal
+        term: Article 2ter(1)
+        repeat: 3
+        fine: 1000
+        note: Includes 1.25 multiplier
+      - label: Personal-use offence in specified public or institutional places
+        treatment: criminal
+        term: Level 2 — Article 2ter(2) and decree Article 61(2)(2)
+        prison_min: 6 months
+        prison: 3 years
+        note: Other principal penalties or mitigation may apply; public road and public-access places included
   cultivation:
     text: >-
       One plant for adult personal use receives the same low prosecution priority as 3 g, subject
       to the other conditions. Growing remains unlawful; the policy gives no immunity from
-      prosecution.[@justice]
+      prosecution.[@justice] Personal cultivation without statutory aggravation can fall under
+      the level-1 regime; specified public or institutional places engage level 2.[@ar2017,druglaw26]
       [Belgium limited police reporting for adult personal possession in 2003.](/history/belgium-law-2003/)
     sources:
       - justice
+      - ar2017
+      - druglaw26
     penalties:
       - label: One plant for adult personal use
         treatment: criminal
@@ -56,7 +76,7 @@ segments:
       - label: Growing beyond one plant
         treatment: criminal
         term: Cultivation
-        note: Prosecuted as production; the one-plant tolerance does not cover it
+        note: Outside the one-plant prosecution policy; purpose, place and aggravation determine the sentencing provision
   enforcement:
     text: >-
       Police normally send a simplified report for eligible small adult possession. Prosecutors
@@ -68,12 +88,39 @@ segments:
       - cms
   sharing:
     text: >-
-      Supply is an offence.[@cms] Cannabis social clubs that tried to pool members' one-plant allowances
-      have been prosecuted and convicted.[@wiki,cms]
-      [Belgium limited police reporting for adult personal possession in 2003.](/history/belgium-law-2003/)
+      Unauthorised supply is an offence under the drug law.[@druglaw26] Since September 2026 the
+      ordinary offence carries level 3, with prison of more than three–five years before
+      mitigation; specified aggravated cases carry levels 4–6.[@druglaw26,penal26] Facilitating
+      another person’s use, including without payment, also falls under the drug-law
+      penalties.[@druglaw26]
     sources:
-      - wiki
-      - cms
+      - druglaw26
+      - penal26
+    penalties:
+      - label: Ordinary unlawful drug supply
+        treatment: criminal
+        term: Level 3 — Article 2bis
+        prison_min: 3 years
+        prison: 5 years
+        note: Lower bound is strictly more than three years; mitigation can reduce the level
+      - label: Specified aggravated supply — level 4
+        treatment: criminal
+        term: Article 2bis(3)
+        prison_min: 5 years
+        prison: 10 years
+        note: Lower bound is strictly more than five years; statutory conditions and mitigation apply
+      - label: Participation in a criminal organisation — level 5
+        treatment: criminal
+        term: Article 2bis(4)
+        prison_min: 10 years
+        prison: 15 years
+        note: Lower bound is strictly more than ten years; mitigation can reduce the level
+      - label: Leading role in a criminal organisation — level 6
+        treatment: criminal
+        term: Article 2bis(5)
+        prison_min: 15 years
+        prison: 20 years
+        note: Lower bound is strictly more than fifteen years; mitigation can reduce the level
   consumption:
     text: >-
       Use in public or in the presence of minors takes a case out of the low-priority category and
@@ -83,11 +130,13 @@ segments:
       - wiki
   access:
     text: >-
-      Medical access is lawful but narrow: a specialist may prescribe Sativex for multiple-sclerosis
-      spasticity and a pharmacy may dispense it.[@fagg] There are no legal adult-use shops or tolerated clubs.[@fagg]
-      [Belgium permitted prescription Sativex in 2015.](/history/belgium-sativex-2015/)
+      Medical supply includes marketed Sativex and pharmacy compounds prepared from pharmaceutical
+      CBD under the applicable rules.[@products26] The regulator lists Epidyolex as authorised
+      but not currently sold in Belgium.[@products26] Recreational supply remains unlawful under
+      the drug law.[@druglaw26]
     sources:
-      - fagg
+      - products26
+      - druglaw26
 context:
   recreational:
     text: >-
@@ -128,11 +177,13 @@ context:
       - activities
   medical:
     text: >-
-      Very limited: a 2015 royal decree allows cannabis-based medicines, in practice one mouth spray
-      for multiple-sclerosis spasticity.[@fagg] Pharmacies may not dispense herbal cannabis.[@fagg]
-      [Belgium permitted prescription Sativex in 2015.](/history/belgium-sativex-2015/)
+      Sativex, containing THC and CBD, is the cannabis-based speciality the medicines regulator
+      lists as authorised and available in Belgium.[@products26] Epidyolex received an EU
+      marketing authorisation in 2019, but the regulator says it is not currently sold on the
+      Belgian market.[@products26] Pharmacists may also dispense compounds made from
+      pharmaceutical CBD when they comply with the applicable rules.[@products26]
     sources:
-      - fagg
+      - products26
   consequences:
     text: >-
       The police record made for small possession is not a conviction.[@dpf] Roadside saliva tests apply a
@@ -175,11 +226,11 @@ context:
       The roadside THC saliva screen uses 25 ng/mL; evidentiary saliva analysis uses 10 ng/mL.[@trafficlaw]
       Blood analysis, where saliva testing or analysis cannot be performed under article 63,
       measures THC in plasma at a 1 ng/mL threshold.[@trafficlaw] These specimen-specific values are distinct
-      from proof of actual impairment.[@trafficlaw] The driving ban runs from one month to five
-      years and the fine from 1,000 to 10,000 euros.[@euda_dd]
+      from proof of actual impairment.[@trafficlaw] The current law allows an ordinary discretionary
+      driving ban of eight days–five years.[@trafficlaw] The level-1 fine is €1,600–16,000 before additional
+      decimes under the [2026 framework](/history/belgium-drug-driving-penalties-2026/).[@trafficlaw]
     sources:
       - trafficlaw
-      - euda_dd
   arrests:
     text: >-
       The EU drugs agency's statistical bulletin records 45,123 cannabis-related drug law
@@ -219,7 +270,29 @@ context:
       - oomen
       - leafly20
       - wikibe
+words:
+  - { word: cannabis, lang: French and Dutch, meaning: general term for the plant and drug, sources: [druglijn, justice] }
+  - { word: wiet, lang: Dutch, meaning: herbal cannabis, sources: [druglijn] }
+  - { word: marihuana, lang: Dutch, meaning: herbal cannabis, sources: [druglijn] }
+  - { word: hasj, lang: Dutch, meaning: cannabis resin, sources: [druglijn] }
 sources:
+  druglaw26:
+    type: law
+    title: Belgium — Drug-law amendment of 16 March 2026, in force 1 September
+    url: https://www.ejustice.just.fgov.be/eli/wet/2026/03/16/2026002199/justel
+    locator: Articles 4–5 and 32; levels 1–6 and personal-cannabis fines
+  penal26:
+    type: law
+    title: Belgium — Criminal Code 2024, in force 1 September 2026
+    url: https://www.ejustice.just.fgov.be/eli/loi/2024/02/29/2024A02052/justel
+    locator: Articles 2 and 36; temporal application, penalty ranges and mitigation
+  products26:
+    title: Belgian medicines regulator — Medicines and other cannabis or cannabidiol products
+    url: https://www.faag.be/en/medicines_and_other_products_based_on_cannabis_or_cannabidiol
+    locator: Sativex available, Epidyolex authorised but not marketed; pharmaceutical CBD compounds
+  druglijn:
+    title: De Druglijn / VAD — Cannabis and its names in Belgian Dutch
+    url: https://www.druglijn.be/drugs/cannabis/
   fagg:
     title: Belgian medicines agency (FAGG) — Questions about medicinal cannabis
     url: https://www.fagg-afmps.be/nl/vragen_over_medicinale_cannabis
