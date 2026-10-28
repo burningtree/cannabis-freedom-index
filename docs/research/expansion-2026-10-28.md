@@ -8,8 +8,8 @@ Other agents' changes in `source-archive.json` and their research notes are excl
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Northern Cyprus | Original 1925 statute read; precise date; first-restriction article; 1956 consolidation added for north and Cyprus | 1930s–1940s, 1960s, 1980s–2000s still thin; seed trade and drug-driving trigger unverified | fa7a5cfc |
-| Kosovo | 1950 cultivation-ban article; three documented Albanian/Serbian words; two 2026 history entries | Early Yugoslav decades; 1930 original code; 2026 table annex | This country’s commit |
-| Croatia | Pending | | |
+| Kosovo | 1950 cultivation-ban article; three documented Albanian/Serbian words; two 2026 history entries | Early Yugoslav decades; 1930 original code; 2026 table annex | 8b250a9f |
+| Croatia | 1950 cultivation-ban and 2025 sentencing articles; 2024 asset-confiscation event and profile explanation; scoring rationale | 1930 original code and 1940s/1960s–1980s history | This country’s commit |
 | Romania | Pending | | |
 | Moldova | Pending | | |
 
@@ -41,3 +41,17 @@ another agent's uncommitted `countries/ae.yaml`: mandatory life combined with an
 prison/death sentence. Kosovo pages have therefore not yet been rendered. No UAE files were
 changed. Shared `changes.yaml` is staged by owned entry IDs only, excluding concurrent UAE and
 Saint Kitts entries.
+
+## Croatia source limits
+
+Read original 1950 federal law, 2024 and 2025 gazette amendments, 2019 drug-act amendment,
+2015 prescribing rules, current code articles 78 and 190–191, and the Justice Ministry's
+2013 explanation. Current fine and detention tiers retained. The 2024 confiscation extension
+and 2025 minimum increase are recorded without a whole-point movement: existing bands already
+represent severe supply penalties, and the distinct giving-for-use offence remains unchanged.
+No reform permitting recreational home growing was verified. The 1930 code needs a primary
+source before an article can responsibly explain the first prohibition.
+
+Croatia validation: zero profile-audit errors/warnings; all 193 tests pass. Review rendering
+again stops on the concurrent UAE mandatory-life schema error before page output. Only owned
+history-entry blocks are staged; other contributors' working changes remain untouched.
