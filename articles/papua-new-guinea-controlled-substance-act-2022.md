@@ -15,8 +15,8 @@ sources:
     locator: Section 3(1)(d), 1.3 kg; K15,000 with three years in default
 ---
 
-On 31 March 2022 Papua New Guinea's Controlled Substance Act commenced, replacing the
-Dangerous Drugs Act as the country's drug law. Cannabis, its resin, its oil and
+On 31 March 2022 Papua New Guinea's Controlled Substance Act commenced alongside the
+Dangerous Drugs Act, which remained in force. Cannabis, its resin, its oil and
 cannabis plants went into Schedule I — described as having no medical value — and a
 new set of quantity tiers in Schedule VII set the punishment.[@1,2]
 
@@ -31,7 +31,7 @@ sixteen years to life.[@1]
 
 ## Two charging routes
 
-The replacement was not clean. Weeks before commencement, a January 2022 amendment
+The new regime did not replace the old one cleanly. Weeks before commencement, a January 2022 amendment
 had rewritten Dangerous Drugs Act section 3 with a maximum of forty years and/or
 K1 million for knowing unauthorised possession, conveyance or cultivation — and
 prosecutors kept using it for cannabis.[@3] A June 2024 conviction for 1.3 kg of
