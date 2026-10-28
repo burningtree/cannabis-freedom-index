@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 352
 recreational: illegal
 medical: limited
-updated: 2026-10-14
+updated: '2026-10-28'
 summary: Possession of small amounts is punished with a fine.
 scores:
   possession: 2
@@ -15,10 +15,11 @@ scores:
 segments:
   possession:
     text: >-
-      Possession of any amount is prohibited under the Addictive Drugs and Narcotics Act. For small
+      Possession of any amount is prohibited under the Addictive Drugs and Narcotics Act.[@nsfk] For small
       amounts the standard outcome is a fine — around 35,000 krónur for a first offence involving up
-      to a gram. Since 2019, minor possession is no longer entered on the offender's criminal
-      record.
+      to a gram.[@cann] Since 2019, minor possession is no longer entered on the offender's criminal
+      record.[@nsfk]
+      [Iceland wrote its cannabis ban into law in 1974.](/history/iceland-narcotics-act-1974/)
     sources:
       - nsfk
       - cann
@@ -26,30 +27,41 @@ segments:
     penalties:
       - upto: 1 g
         treatment: criminal
+        term: Possession of narcotics
         fine: 35000
         note: Around this for a first offence; off the criminal record since 2019
   cultivation:
-    text: Cultivation is a criminal offence; indoor grows are regularly raided.
+    text: >-
+      Cultivation is a criminal offence; indoor grows are regularly raided.[@cann]
+      Growing falls under the 1974 Act's bans on producing and possessing cannabis.[@act65]
+      [Iceland wrote its cannabis ban into law in 1974.](/history/iceland-narcotics-act-1974/)
     sources:
       - cann
+      - act65
+    penalties:
+      - label: Unlawful cultivation
+        treatment: criminal
+        term: Production of narcotics
+        note: Criminal offence; indoor grows are regularly raided
   enforcement:
     text: >-
       Fines for users. In 2021 the health minister introduced a government bill to decriminalise
-      possession of all drugs for personal use; it did not pass.
+      possession of all drugs for personal use; it did not pass.[@nsfk]
     sources:
       - nsfk
   sharing:
-    text: Supply is a crime with prison.
+    text: Supply is a crime with prison.[@cann]
     sources:
       - cann
   consumption:
-    text: Use is covered by the possession offence and fined.
+    text: Use is covered by the possession offence and fined.[@nsfk]
     sources:
       - nsfk
   access:
     text: >-
       No recreational source. Sativex can be obtained from a pharmacy on a neurologist's
-      prescription; the medicines agency also lists Epidyolex as available.
+      prescription; the medicines agency also lists Epidyolex as available.[@ima]
+      [Prescription access to Sativex was confirmed in 2018.](/history/iceland-sativex-access-2018/)
     sources:
       - ima
 context:
@@ -59,35 +71,40 @@ context:
       possession of any amount is prohibited, with small amounts punished by fines that have
       stayed off the criminal record since 2019.[@nsfk,cann] A 2021 government bill to
       decriminalise personal possession of all drugs did not pass.[@nsfk]
+      [Iceland wrote its cannabis ban into law in 1974.](/history/iceland-narcotics-act-1974/)
     sources:
       - nsfk
       - cann
   hemp:
-    status: none
+    status: strict
     text: >-
       Iceland bans cannabis cultivation outright; a 2020 regulation only opened a narrow
       exception letting the Medicines Agency license imports of hemp seed with no more than
       0.2% THC, for fibre and food rather than planting at home.[@grapevine] There is no hemp
-      market and no THC threshold that makes a plant legal to grow.
+      market and no THC threshold that makes a plant legal to grow.[@grapevine]
+      [Hemp seed imports were licensed in 2021.](/history/iceland-hemp-seed-imports-2021/)
     sources:
       - grapevine
   production:
     status: none
-    text: No licensed production.
+    text: >-
+      No licensed production exists: growing is a criminal offence under the 1974 Act, and the
+      only legal supply is pharmacy Sativex and Epidyolex on specialist prescription.[@act65,ima]
     sources:
-      - cann
-  products:
-    text: Prescription Sativex and Epidyolex.
-    sources:
+      - act65
       - ima
   medical:
-    text: Limited to approved cannabinoid medicines, including Sativex on specialist prescription.
+    text: >-
+      Limited to approved cannabinoid medicines: Sativex on specialist (neurologist)
+      prescription for multiple-sclerosis spasticity, and Epidyolex also listed as
+      available.[@ima]
+      [Prescription access to Sativex was confirmed in 2018.](/history/iceland-sativex-access-2018/)
     sources:
       - ima
   consequences:
     text: >-
       Keeping minor possession off the criminal record since 2019 removed the main lasting
-      consequence for users.
+      consequence for users.[@nsfk]
     sources:
       - nsfk
   planting:
@@ -96,24 +113,25 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      The drug act bans importing, selling, handing over, producing and possessing cannabis.
+      The drug act bans importing, selling, handing over, producing and possessing cannabis.[@act65]
       Since 2021 the Food and Veterinary Authority may license imports of Cannabis sativa seed
-      under conditions set by regulation; there is no such exception for plants or cuttings.
+      under conditions set by regulation; there is no such exception for plants or cuttings.[@act65]
+      [Hemp seed imports were licensed in 2021.](/history/iceland-hemp-seed-imports-2021/)
     sources:
       - act65
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@cann]
     sources:
       - cann
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. The drug act bans importing, selling,
-      handing over, producing and possessing cannabis. Small amounts for personal use are dealt
-      with by a fine.
+      There is no legal recreational supply for anyone.[@tni] The drug act bans importing, selling,
+      handing over, producing and possessing cannabis.[@act65] Small amounts for personal use are dealt
+      with by a fine.[@nsfk]
     sources:
       - tni
       - act65
@@ -123,11 +141,11 @@ context:
     text: >-
       The Traffic Act forbids driving under the influence of drugs that are banned in Iceland,
       and says that when such a drug is measured in the driver's blood the driver is deemed
-      under the influence and unfit to drive safely. No level is set, so any measurable amount
-      is enough. Police can require a saliva, urine or blood sample on suspicion, and refusing
+      under the influence and unfit to drive safely.[@umf50] No level is set, so any measurable amount
+      is enough.[@umf50] Police can require a saliva, urine or blood sample on suspicion, and refusing
       has the same consequences as drug driving: penalty points, loss of the licence for up to
       four years or more for repeat offences, and fines or prison of up to two years in
-      serious cases.
+      serious cases.[@islandis]
     sources:
       - umf50
       - islandis
@@ -135,9 +153,9 @@ context:
     text: >-
       Figures reported by the government to the UN drugs office record 290 kg of herbal
       cannabis seized in 2024, against 210 kg in 2023, and 22.8 kg of cannabis resin
-      seized in 2024, against 175 kg in 2023. The UN publishes them as kilogram
+      seized in 2024, against 175 kg in 2023.[@unodc_szr] The UN publishes them as kilogram
       equivalents, and countries count seizures differently, so the figures are not
-      comparable across borders.
+      comparable across borders.[@unodc_szr]
     sources:
       - unodc_szr
 sources:
