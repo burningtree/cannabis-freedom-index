@@ -7,10 +7,18 @@ by guessing.
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Cayman Islands |  |  |  |
+| Cayman Islands | 3 articles, cultivation table, hemp/planting/black-market/arrests | driving; 1925 estimate; 1930s–2000s decades | c57a250 |
+| Cabo Verde |  |  |  |
 | Cabo Verde |  |  |  |
 | Djibouti |  |  |  |
 | Eritrea |  |  |  |
+
+## cv — committed
+- 4 articles: `cape-verde-constitutional-court-18-2023` (15 g lesser-trafficking ruling, linked from possession/enforcement), `cabo-verde-drug-law-correction-1993` (Nov 1993 republication, 7-day test, linked from enforcement), `cabo-verde-licit-drug-market-1992` (Decree-Law 92/92 licensing framework, linked from access), `cabo-verde-ribeira-grande-seizure-2022` (PJ: 717 kg in Tronco, grower on preventive detention, all incinerated; new `pj2022` source, linked from black_market + new `arrests` section).
+- SELF-INFLICTED BUILD BREAK (fixed within minutes): new entry's source title contained an unquoted ": " (`Santiago: PJ...`), which fails YAML parsing and stops the build for everyone — my review build caught it via another agent's failing run. Fix: quote any title containing a colon+space, in `changes.yaml` AND article frontmatter (same bug was also in the seizure + licit-market article files). Added a pre-build colon scan to the routine.
+- SELF-INFLICTED (fixed): `related:` named `cabo-verde-constitutional-court-18-2023`; correct id is `cape-verde-...` — build names unknown related entries.
+- Audit 0/0; 5 pages built and verified (after a transient unrelated `mm.yaml` failure its owner fixed).
+- Left: driving section (no drug-driving source found); words (no sourced local term); 1925 estimate; conventions; empty 1920s–2010s decades.
 
 ## ky — committed
 - 3 articles: `cayman-cannabis-reform-timetable-2026` (Nov/Dec 2026 report + legislation expected), `cayman-cannabis-reform-referral-2025` (premier's LRC referral terms), `cayman-modern-drug-law-1973` (UN legislation file + 2026 Revision; 5yr/10yr ganja penalties) linked from cultivation.
