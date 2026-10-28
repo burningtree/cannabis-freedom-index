@@ -22,5 +22,11 @@ Same method as usa-1–4. Possession tables use labelled steps where fractions d
 - No SC history entries, no culture subject — noted.
 - Audit 0/0; review page verified.
 
-## al — pending
+## al (Alabama) — committed
+- Penalty tables (personal-use possession misd 1yr/$6k; growing as manufacture 2–20yr/$30k;
+  sale 2yr-minimum felony; all NORML-verified), cites on possession/cultivation/enforcement/
+  sharing, history link (first medical dispensary 2026 entry).
+- No test pins. No culture subject — noted.
+- Audit 0/0; review page verified.
+
 ## ky — pending
