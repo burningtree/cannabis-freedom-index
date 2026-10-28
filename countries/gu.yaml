@@ -9,12 +9,12 @@ dependency:
     Federal drug law applies there as in the states.
 recreational: legal
 medical: limited
-updated: '2026-10-22'
+updated: '2026-10-28'
 summary: >-
   Adults 21 and over may hold limited amounts, give cannabis away and grow six plants per residence,
-  with no more than three flowering. Medical patients gained a separate home-growing permit route in
-  2018. Commercial supply has faced years of delays: the first grower’s operating permit was
-  approved in June 2026, with further steps still required before production and sales.
+  with no more than three flowering. Medical patients have a separate home-growing permit. Commercial
+  supply has faced years of delays: the first grower's operating permit was approved in June 2026,
+  with retail still pending.
 scores:
   possession: 5
   cultivation: 4
@@ -25,63 +25,87 @@ scores:
 segments:
   possession:
     text: >-
-      The 2019 law allows adults 21 and over to hold one ounce of cannabis, eight grams of
-      concentrate or infused products containing up to 800 mg THC. It also protects possession of
-      cannabis produced by the permitted personal plants on the premises where it was grown.
+      The 2019 Cannabis Industry Act allows adults 21 and over to hold one ounce of cannabis, eight
+      grams of concentrate or infused products containing up to 800 mg THC.[@industry19,current] It
+      also protects possession of cannabis produced by the permitted personal plants on the premises
+      where it was grown.[@industry19] No current cannabis-specific penalty for possession above
+      those limits was found: the 2019 Act declassified cannabis and repealed the old marijuana
+      tiers, while the general controlled-substances provision is not a clean fit.[@ucsa]
     sources:
       - industry19
       - current
+      - ucsa
+    currency: USD
+    penalties:
+      - label: Within adult limits
+        treatment: legal
+        term: Adult possession
+        note: One ounce of flower, eight grams of concentrate or 800 mg THC in infused products
   cultivation:
     text: >-
       Adults may grow no more than six plants per residence, including no more than three mature
-      flowering plants. The growing area must be enclosed, locked and hidden from public view, on
-      property the grower lawfully possesses or uses with consent. A separate medical permit scheme
-      allows six flowering and twelve juvenile plants while no medical dispensary is operating.
-    sources:
-      - industry19
-      - home18
-  enforcement:
-    text: >-
-      Personal activities within the adult-use limits are exempt from criminal and civil punishment
-      under Guam law. Public consumption carries a fine of up to $100; breaking the home-growing
-      location or security rules while otherwise within the plant allowance carries up to $500. The
-      law expressly preserves federal enforcement.
+      flowering plants.[@industry19] The growing area must be enclosed, locked and hidden from public
+      view, on property the grower lawfully possesses or uses with consent.[@industry19,current] A
+      separate medical permit scheme allows six flowering and twelve juvenile plants while no
+      medical dispensary is operating.[@home18]
     sources:
       - industry19
       - current
+      - home18
     currency: USD
     penalties:
-      - label: Public consumption
+      - label: Within the home-grow limits
+        treatment: legal
+        term: Home growing
+        note: Six plants, no more than three flowering; enclosed, locked and not visible
+      - label: Location or security breach within the plant allowance
         treatment: civil
-        fine: 100
-        note: Fine of up to $100 unless permitted through board regulations
-      - label: Breaking home-growing location or security rules within the plant allowance
-        treatment: civil
+        term: Home growing
         fine: 500
         note: Fine of up to $500
+  enforcement:
+    text: >-
+      Personal activities within the adult-use limits are exempt from criminal and civil punishment
+      under Guam law.[@industry19] Public consumption carries a fine of up to $100, and breaking the
+      home-growing location or security rules while otherwise within the plant allowance carries up
+      to $500.[@industry19,current] The law expressly preserves federal enforcement.[@industry19]
+    sources:
+      - industry19
+      - current
   sharing:
     text: >-
       Adults may give cannabis to another person aged 21 or over without payment: up to one ounce of
-      cannabis, eight grams of concentrate or infused products containing up to 800 mg THC. The law
-      also expressly allows transfers of immature plants.
+      cannabis, eight grams of concentrate or infused products containing up to 800 mg
+      THC.[@industry19,current] The law also expressly allows transfers of immature plants.[@industry19]
     sources:
       - industry19
       - current
   consumption:
     text: >-
-      Private consumption is legal for adults 21 and over. Open public consumption is prohibited,
-      with a fine of up to $100, unless permitted through Cannabis Control Board regulations.
-      Employers and people controlling private property retain authority to restrict cannabis there.
+      Private consumption is legal for adults 21 and over.[@industry19] Open public consumption is
+      prohibited, with a fine of up to $100, unless permitted through Cannabis Control Board
+      regulations.[@industry19,current] Employers and people controlling private property retain
+      authority to restrict cannabis there.[@industry19]
     sources:
       - industry19
       - current
+    currency: USD
+    penalties:
+      - label: Private adult consumption
+        treatment: legal
+        term: Consumption
+      - label: Open public consumption
+        treatment: civil
+        term: Public consumption
+        fine: 100
+        note: Fine of up to $100
   access:
     text: >-
       The first cultivation operating permit went to Deep Green Guam on 24 June 2026, after February
-      licence approval and inspections. The tax department said further steps were required before
-      production and sales. The commercial rules distinguish a licence from an operating permit; a
-      temporary testing exemption allows qualifying licensed flower sales while no qualifying
-      laboratory is available.
+      licence approval and inspections.[@june26] The tax department said further steps were required
+      before production and sales.[@pit26] The commercial rules distinguish a licence from an
+      operating permit; a temporary testing exemption allows qualifying licensed flower sales while
+      no qualifying laboratory is available.[@rulesBody,waiver24,extension26]
     sources:
       - june26
       - pit26
@@ -92,11 +116,11 @@ context:
   recreational:
     text: >-
       Adults 21 and over may hold one ounce of cannabis, eight grams of concentrate or infused
-      products with up to 800 mg THC, give those amounts away without payment, and grow six
-      plants per residence with no more than three flowering.[@industry19,current] Private
-      consumption is legal; public consumption is fined up to $100. Personal activities within
-      the limits are exempt from criminal and civil punishment under Guam law, which expressly
-      preserves federal enforcement.[@industry19]
+      products with up to 800 mg THC, give those amounts away without payment, and grow six plants per
+      residence with no more than three flowering.[@industry19,current] Private consumption is legal;
+      public consumption is fined up to $100.[@industry19] Personal activities within the limits are
+      exempt from criminal and civil punishment under Guam law, which expressly preserves federal
+      enforcement.[@industry19]
     sources:
       - industry19
       - current
@@ -104,37 +128,106 @@ context:
     status: open
     text: >-
       The board approved a cultivation licence for Pacific Root LLC, trading as Pacific Cultivation,
-      and conditional approval for Guam Real Deal LLC, trading as Deep Green Guam, in February 2026.
-      Deep Green Guam obtained the first operating permit in June, with further steps still needed
-      before production and sales.
+      and conditional approval for Guam Real Deal LLC, trading as Deep Green Guam, in February
+      2026.[@feb26] Deep Green Guam obtained the first operating permit in June, with further steps
+      still needed before production and sales.[@june26,pit26]
     sources:
       - feb26
       - june26
       - pit26
   medical:
     text: >-
-      Voters approved medical cannabis on 4 November 2014. Since October 2018, qualified patients or
-      designated caregivers may apply for a $15 annual home-cultivation permit while no medical
-      dispensary is operating, allowing six flowering and twelve juvenile plants. December 2018
-      amendments expressly protected compliant growers from arrest, prosecution and property
-      forfeiture.
+      Voters approved medical cannabis on 4 November 2014.[@medical14] Since October 2018, qualified
+      patients or designated caregivers may apply for a $15 annual home-cultivation permit while no
+      medical dispensary is operating, allowing six flowering and twelve juvenile plants.[@home18]
+      December 2018 amendments expressly protected compliant growers from arrest, prosecution and
+      property forfeiture.[@protection18] No dispensary was operating in 2023–24.[@current]
     sources:
       - medical14
       - home18
       - protection18
+      - current
+  hemp:
+    status: none
+    text: >-
+      No operational hemp licensing regime. The cannabis definition has no hemp THC threshold, and
+      low-THC hemp is dealt with through a final Guam Hemp Plan dated November 2023 that follows the
+      federal 0.3 per cent line, but implementing rules were still draft in September
+      2025.[@hempPlan] Shops sell hemp-derived THC products under federal law; federal changes in
+      late 2026 are expected to remove most intoxicating hemp products from the federal hemp
+      definition.[@hempFederal]
+    sources:
+      - hempPlan
+      - hempFederal
+  clubs:
+    status: none
+    text: >-
+      No licensed cannabis clubs or on-site consumption lounges are known. The Act recognises
+      cultivation, testing, manufacturing and retail establishments, and public consumption is
+      fined.[@industry19,current] No tolerated club scene was found.[@industry19]
+    sources:
+      - industry19
+      - current
+  planting:
+    seeds: legal
+    seeds_trade: gift
+    clones: legal
+    clones_trade: gift
+    text: >-
+      Seeds are part of the legal cannabis definition, and adults may keep and sow them within the
+      six-plant home grow.[@industry19] Immature plants may be gifted, and licensed growers may
+      receive seeds or immature plants from adults.[@industry19,current] No retail seed or clone
+      sales are licensed yet.[@rulesBody]
+    sources:
+      - industry19
+      - current
+      - rulesBody
+  driving:
+    status: impairment
+    text: >-
+      The Safe Streets Act prohibits driving while impaired by cannabis, with a first offence
+      carrying 48 hours to one year in prison and a $1,000–5,000 fine, plus a six-month licence
+      suspension.[@traffic16] There is no THC blood limit; the standard is impairment.[@traffic16]
+      The DUI definition incorporates the controlled-substances chapter, from which cannabis was
+      removed in 2019, so the cannabis route is legally awkward.[@ucsa,traffic16]
+    sources:
+      - traffic16
+      - ucsa
+  black_market:
+    text: >-
+      With no legal retail yet, all sale is illegal. Guam Customs seized 31.2 kg of marijuana and
+      derivatives in 2023 and 136.1 kg in 2024 to 12 August, plus 4,000 marijuana cigarettes; FY2025
+      figures fell to 1.7 lb in eight seizures, valued at $34,250.[@customs24] A 2002 DEA assessment
+      priced local marijuana at $12,800 a pound, $800 an ounce and $20 a joint, with higher prices to
+      Japanese tourists, and described imports from Palau, Hawaii and Micronesia.[@ndic03]
+    sources:
+      - customs24
+      - ndic03
+  arrests:
+    text: >-
+      Guam does not publish cannabis-only arrest counts. The 2024 statistical yearbook recorded 575
+      drug or narcotic arrests in 2023, down from 788 in 2021.[@yearbook24] In 1999, 98 of 447 adult
+      drug arrests were marijuana-related.[@ndic03] Customs reported 54 drug cases in 2024 to 12
+      August, against 63 in 2023.[@customs24]
+    sources:
+      - yearbook24
+      - ndic03
+      - customs24
   consequences:
     text: >-
       Adult-use legalisation did not erase penalties already incurred or proceedings begun before
-      the law took effect. Employers may maintain workplace cannabis restrictions, and people
-      controlling private property may prohibit possession, use or growing there.
+      the law took effect.[@industry19] Employers may maintain workplace restrictions, and people
+      controlling private property may prohibit possession, use or growing there.[@industry19,employment24]
     sources:
       - industry19
+      - employment24
   visitors:
     status: none
     text: >-
       The adult-use possession and unpaid-gifting rules apply to people aged 21 and over without a
-      residency condition in those clauses. The verified June 2026 commercial milestone was a
-      grower’s operating permit, with further steps required before production and sales.
+      residency condition in those clauses.[@industry19] The verified June 2026 commercial milestone
+      was a grower's operating permit, with further steps required before production and
+      sales.[@june26,pit26]
     sources:
       - industry19
       - june26
@@ -143,69 +236,84 @@ sources:
   medical14:
     type: law
     title: Guam Legislature — voter-approved medical cannabis law, Public Law 32-237
-    url: >-
-      https://archives.guamlegislature.gov/32nd_Guam_Legislature/Public_Laws_32nd/Public%20Law%2032-237%20-%20Bill%20No%20215-32.pdf
-    locator: 'Cover: referendum approved 4 November 2014; original Sections 122403–122407'
+    url: https://archives.guamlegislature.gov/32nd_Guam_Legislature/Public_Laws_32nd/Public%20Law%2032-237%20-%20Bill%20No%20215-32.pdf
+    locator: "Cover: referendum approved 4 November 2014; original Sections 122403–122407"
   home18:
     type: law
     title: Guam Legislature — medical home-cultivation permits, Public Law 34-125
-    url: >-
-      https://archives.guamlegislature.gov/34th_Guam_Legislature/Public_Laws_34th/P.L.%20No.%2034-125.pdf
-    locator: >-
-      Signed/effective 9 October 2018; Section 122530(a)–(l), especially plant limits, $15 annual
-      permit, conditions and inspections
+    url: https://archives.guamlegislature.gov/34th_Guam_Legislature/Public_Laws_34th/P.L.%20No.%2034-125.pdf
+    locator: "Signed/effective 9 October 2018; Section 122530(a)–(l)"
   protection18:
     type: law
     title: Guam Legislature — home-cultivation patient protections, Public Law 34-165
-    url: >-
-      https://archives.guamlegislature.gov/34th_Guam_Legislature/Public_Laws_34th/P.L.%20No.%2034-165.pdf
-    locator: Signed 28 December 2018; Sections 122504–122505
+    url: https://archives.guamlegislature.gov/34th_Guam_Legislature/Public_Laws_34th/P.L.%20No.%2034-165.pdf
+    locator: "Signed 28 December 2018; Sections 122504–122505"
   industry19:
     type: law
     title: Guam Legislature — Cannabis Industry Act, Public Law 35-5
-    url: >-
-      https://archives.guamlegislature.gov/35th_Guam_Legislature/Public_Laws_35th/P.L.%20No.%2035-5.pdf
-    locator: >-
-      Signed 4 April 2019; Sections 8103–8105, 8108, 8110, 8112, 8115–8116; Section 19 immediate
-      commencement
+    url: https://archives.guamlegislature.gov/35th_Guam_Legislature/Public_Laws_35th/P.L.%20No.%2035-5.pdf
+    locator: "Signed 4 April 2019; Sections 8103–8105, 8108, 8110, 8112, 8115–8116"
   current:
     type: law
     title: Guam Judiciary — Cannabis Industry Act, compiled 5 May 2026
     url: https://col.guamcourts.gov/sites/default/files/11gc008_Q.pdf
-    locator: Sections 8103–8105 and 8108(a)(7); source note on 2024 and 2026 testing amendments
+    locator: "Sections 8103–8105 and 8108(a)(7)"
+  ucsa:
+    type: law
+    title: "Guam — Uniform Controlled Substances Act, 9 GCA chapter 67, compilation 5 December 2024"
+    url: https://col.guamcourts.gov/sites/default/files/9gc067.pdf
+    locator: "Sections 67.401.1–67.401.2 and note on marijuana declassification"
+  employment24:
+    type: law
+    title: "Guam — Responsible Cannabis User Employment Protection Act, P.L. 37-119 (22 July 2024)"
+    url: https://hr.doa.guam.gov/wp-hr-content/uploads/2026/01/Public-Law-No.-37-119.pdf
+    locator: "10 GCA §§ 122601–122602"
+  traffic16:
+    type: law
+    title: "Guam — Safe Streets Act, 16 GCA chapter 18"
+    url: https://v2021a.peaceguam.org/sites/default/files/16GCA18.pdf?theme=peace
+    locator: "Sections 18101–18104"
   rulesBody:
     type: law
     title: Guam Judiciary — Cannabis Control Board regulations, compiled 19 June 2026
     url: https://col.guamcourts.gov/sites/default/files/03gr009.pdf
-    locator: >-
-      Source note: effective 30 May 2022; Sections 9211–9212 (licence and operating permit), 9801
-      (testing and accreditation)
+    locator: "Sections 9211–9212, 9801 and 9904"
   waiver24:
     type: law
     title: Guam Legislature — temporary testing exemption, Public Law 37-116
-    url: >-
-      https://archives.guamlegislature.gov/37th_Guam_Legislature/Public_Laws_37th/Public%20Law%20No.%2037-116.pdf
-    locator: >-
-      Signed 22 July 2024; Section 2 adds 8108(a)(7), Section 3 takes effect 90 days later and
-      originally expires two years after enactment
+    url: https://archives.guamlegislature.gov/37th_Guam_Legislature/Public_Laws_37th/Public%20Law%20No.%2037-116.pdf
+    locator: "Signed 22 July 2024; Section 2 adds 8108(a)(7)"
   extension26:
     type: law
     title: Guam Legislature — extension of testing exemption, Public Law 38-117
-    url: https://guamlegislature.gov/38th_Guam_Legislature/Public_Laws_38th/Public Law 38-117.pdf
-    locator: >-
-      Governor’s letter and Sections 1–3; signed/effective 8 April 2026; two-year period extended to
-      five years
+    url: https://guamlegislature.gov/38th_Guam_Legislature/Public_Laws_38th/Public%20Law%2038-117.pdf
+    locator: "Signed/effective 8 April 2026"
   feb26:
-    title: Isla Public Media — Guam’s first cannabis establishment licenses approved (25 February 2026)
-    url: >-
-      https://www.islapublic.org/news/2026-02-25/guams-first-cannabis-establishment-licenses-approved
+    title: Isla Public Media — Guam's first cannabis establishment licenses approved (25 February 2026)
+    url: https://www.islapublic.org/news/2026-02-25/guams-first-cannabis-establishment-licenses-approved
   june26:
-    title: >-
-      Isla Public Media — Cannabis Control Board issues its first permit for a Guam cannabis
-      business (24 June 2026)
-    url: >-
-      https://www.islapublic.org/news/2026-06-24/cannabis-control-board-issues-its-first-permit-for-a-guam-cannabis-business
+    title: Isla Public Media — Cannabis Control Board issues its first permit for a Guam cannabis business (24 June 2026)
+    url: https://www.islapublic.org/news/2026-06-24/cannabis-control-board-issues-its-first-permit-for-a-guam-cannabis-business
   pit26:
     title: Pacific Island Times — first permit to operate a cannabis-growing facility (24 June 2026)
-    url: >-
-      https://www.pacificislandtimes.com/post/cannabis-board-approves-guam-s-first-permit-to-operate-12-years-since-pot-legalization
+    url: https://www.pacificislandtimes.com/post/cannabis-board-approves-guam-s-first-permit-to-operate-12-years-since-pot-legalization
+  hempPlan:
+    title: "Guam Department of Agriculture — draft hemp rules (September 2025)"
+    url: https://doag.guam.gov/wp-doag-content/uploads/2025/09/DRAFT-Proposed-Rules-for-Hemp-TITLE-22.pdf
+    locator: "Draft implementing rules; final Guam Hemp Plan dated November 2023"
+  hempFederal:
+    title: "Saul — Congress enacts hemp THC products ban: what new federal restrictions mean (18 November 2025)"
+    url: https://www.saul.com/insights/alert/congress-enacts-hemp-thc-products-ban-what-new-federal-restrictions-mean-industry
+    locator: "Federal changes taking effect in late 2026"
+  customs24:
+    title: "Guam Customs and Quarantine Agency — illegal drug seizure amounts, 2023 to date (12 August 2024)"
+    url: https://cqa.guam.gov/wp-cqa-content/uploads/2024/09/20240812-PRESS-RELEASE-Guam-Customs-Reports-Illegal-Drug-Seizure-Amounts-from-2023-to-Date-1.pdf
+    locator: "31.2 kg in 2023; 136.1 kg in 2024 to 12 August; 54 drug cases"
+  ndic03:
+    title: "US National Drug Intelligence Center — Guam Drug Threat Assessment (August 2003), marijuana"
+    url: https://www.justice.gov/archive/ndic/pubs4/4001/marijuan.htm
+    locator: "Prices and 1999 arrest breakdown"
+  yearbook24:
+    title: "Guam Bureau of Statistics — 2024 Guam Statistical Yearbook, Table 15-08"
+    url: https://bsp.guam.gov/wp-content/uploads/2026/09/2024-Guam-Statistical-Yearbook-Final.pdf
+    locator: "575 drug/narcotic arrests in 2023; 788 in 2021"
