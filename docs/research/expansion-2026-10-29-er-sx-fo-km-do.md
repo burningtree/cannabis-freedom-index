@@ -6,11 +6,17 @@ Explicit country list: Eritrea, Sint Maarten, Faroe Islands, Comoros, Dominican 
 |---|---|---|---|
 | Faroe Islands | 6 articles (flower order, 2019 bill, 1956 order, 2025 stats, Norrøna seizure, 2021 records) + 3 profile links | 1955 estimate; 1960s–2000s decades | 956e891 |
 | Sint Maarten | cultivation table (art. 11(2), ordinance read locally), planting (seeds excluded from hemp definition) | 1929/1964 shared-decree articles (Curaçao covers SX, no dup); driving/market/arrests; words | f997cee |
-| Comoros | 2 articles (2025 585kg seizures, 2000 dual conventions) + who2025 source, black-market link | driving/arrests; words; 1925 estimate | COMMIT |
+| Comoros | 2 articles (2025 585kg seizures, 2000 dual conventions) + who2025 source, black-market link | driving/arrests; words; 1925 estimate | e97ac9d |
+| Dominican Republic | 3 articles (1988 convention + verified Art 3 quote, 1961 Single + certified text, 1946 protocol); no profile hooks | 1925 estimate | COMMIT |
 | Sint Maarten |  |  |  |
 | Comoros |  |  |  |
 | Dominican Republic |  |  |  |
 | Eritrea |  |  |  |
+
+## do — committed
+- 3 articles: `dominican-republic-1988-convention-1993` (Art 3 personal-possession obligation verified in a Canadian parliamentary report quoting the convention, added as 2nd source), `dominican-republic-single-convention-1972` (certified convention text added, content verified), `dominican-republic-opium-convention-protocol-1946` (treaty-status source). No profile hooks — the profile never discusses treaty accessions, so no links added.
+- No profile changes. Audit 0/0; 3 history pages built and verified.
+- Left: 1925 estimate; empty 1930s/1950s/1960s/2000s/2010s decades.
 
 ## km — committed
 - 2 articles: `comoros-drug-seizures-reported-2025` (WHO AFRO: interior minister, 585 kg 2023–2025, 27 overdose deaths; new `who2025` source, linked from black_market), `comoros-single-convention-2000` (dual accession; certified Single Convention text added as 3rd source, content verified) — no profile hook, left unlinked.
