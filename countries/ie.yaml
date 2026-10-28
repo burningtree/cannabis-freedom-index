@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 372
 recreational: illegal
 medical: limited
-updated: 2026-10-26
+updated: '2026-10-28'
 summary: >-
   Since September 2026, eligible first-time possession cases can receive a health referral. The
   Medical Cannabis Access Programme covers only a few conditions.
@@ -25,13 +25,14 @@ segments:
   possession:
     text: >-
       Possession remains a crime. For offences from 1 September 2026, Gardaí may refer people over
-      18 with small quantities for personal use to the Health Referral Scheme. It requires a first
+      18 with small quantities for personal use to the Health Referral Scheme.[@hrs2026] It requires a first
       drug offence, no previous drug-use conviction or adult caution, an admission of possession and
-      consent. Referral is discretionary; declining it leads to prosecution. Outside diversion, the
-      first two cannabis possession offences are fine-only and a third can bring prison.
+      consent.[@hrs2026] Referral is discretionary; declining it leads to prosecution.[@hrs2026] Outside diversion, the
+      first two cannabis possession offences are fine-only and a third can bring prison.[@costings,lrc,oe]
+      [Health referrals began in September 2026.](/history/ireland-health-referral-scheme-2026/)
+      [Warnings gave way to adult cautions in 2020.](/history/ireland-adult-caution-2020/)
     sources:
       - hrs2026
-      - ll
       - oe
       - costings
       - lrc
@@ -39,29 +40,42 @@ segments:
     penalties:
       - label: First cannabis possession offence (summary)
         treatment: criminal
+        term: Possession of a controlled drug
         fine: 1000
         note: Class D fine (max €1,000)
       - label: Second cannabis possession offence (summary)
         repeat: 2
         treatment: criminal
+        term: Possession of a controlled drug
         fine: 1000
         note: Class D fine
       - label: Third or later cannabis possession offence (summary)
         repeat: 3
         treatment: criminal
+        term: Possession of a controlled drug
         fine: 2500
         prison: 12 months
         note: Class C fine (max €2,500) and/or up to 12 months
   cultivation:
-    text: Cultivation is a criminal offence, with prison possible even for a few plants.
+    text: >-
+      Cultivation is a criminal offence, with prison possible even for a few plants.[@gov]
+      Growing any cannabis plant without a ministerial licence is an offence under section 17
+      of the 1977 Act.[@mda77]
     sources:
       - gov
+      - mda77
+    penalties:
+      - label: Cultivation without a ministerial licence (section 17)
+        treatment: criminal
+        term: Cultivation of a controlled drug
+        note: Prison possible even for a few plants
   enforcement:
     text: >-
       Gardaí can offer eligible first-time offenders a health referral instead of prosecution or an
-      adult caution. The nationwide pilot began on 1 September 2026; possession remains criminal and
-      later cannabis offences can bring prison. Early caution statistics do not measure the new
-      scheme’s outcomes.
+      adult caution.[@hrs2026] The nationwide pilot began on 1 September 2026; possession remains criminal and
+      later cannabis offences can bring prison.[@hrs2026,ll] Early caution statistics do not measure the new
+      scheme’s outcomes.[@ll]
+      [Health referrals began in September 2026.](/history/ireland-health-referral-scheme-2026/)
     sources:
       - hrs2026
       - ll
@@ -70,27 +84,32 @@ segments:
       Supply, including unpaid sharing, is an offence under section 15:[@gov] on summary
       conviction a fine and/or up to twelve months, on indictment an unlimited fine and/or up
       to life imprisonment.[@lrc]
+      [Supply has been an offence since the 1977 Act.](/history/ireland-misuse-of-drugs-1977/)
     sources:
       - gov
       - lrc
     penalties:
       - label: Supply (summary conviction)
         treatment: criminal
+        term: Supply of a controlled drug
         prison: 12 months
         note: Fine and/or up to twelve months
       - label: Supply (conviction on indictment)
         treatment: criminal
+        term: Supply of a controlled drug
         note: Unlimited fine and/or up to life imprisonment
   consumption:
-    text: Use is prosecuted through the possession offence.
+    text: Use is prosecuted through the possession offence.[@gov,ll]
     sources:
       - gov
       - ll
   access:
     text: >-
       No legal adult-use source. The Medical Cannabis Access Programme and individual ministerial
-      licences provide limited medical routes. The Health Referral Scheme changes the response to
-      eligible possession cases, without creating a lawful retail supply.
+      licences provide limited medical routes.[@gov] The Health Referral Scheme changes the response to
+      eligible possession cases, without creating a lawful retail supply.[@hrs2026]
+      [The first medical licence was issued in 2016.](/history/ireland-first-medical-licence-2016/)
+      [Health referrals began in September 2026.](/history/ireland-health-referral-scheme-2026/)
     sources:
       - gov
       - hrs2026
@@ -102,6 +121,7 @@ context:
       remains a crime, with the first two offences fine-only and prison possible from the
       third.[@costings,lrc] Since 1 September 2026, eligible first-time adult cases can instead
       be referred to the Health Referral Scheme, at Garda discretion.[@hrs2026]
+      [Health referrals began in September 2026.](/history/ireland-health-referral-scheme-2026/)
     sources:
       - costings
       - lrc
@@ -118,24 +138,28 @@ context:
       - teagasc
   production:
     status: none
-    text: No licensed cannabis production.
+    text: >-
+      No licensed cannabis production exists: growing any cannabis plant without a ministerial
+      licence is an offence under section 17 of the 1977 Act.[@mda77]
     sources:
-      - gov
+      - mda77
   medical:
     text: >-
       The Medical Cannabis Access Programme covers only three conditions where standard treatment
-      has failed, prescribed by consultants; other patients need an individual ministerial licence.
+      has failed, prescribed by consultants; other patients need an individual ministerial licence.[@gov]
       In an October 2026 parliamentary answer, the minister said a review of access, possible
       additional conditions and individual licences was expected to take about twelve months
-      from its first meeting on 27 May 2026. This review has not itself expanded eligibility.
+      from its first meeting on 27 May 2026.[@review2026] This review has not itself expanded eligibility.[@review2026]
+      [The first medical licence was issued in 2016.](/history/ireland-first-medical-licence-2016/)
     sources:
       - gov
       - review2026
   consequences:
     text: >-
-      A conviction can affect travel and employment. Eligible first-time offenders may instead
+      A conviction can affect travel and employment.[@gov] Eligible first-time offenders may instead
       receive a Health Referral Scheme referral, or an adult caution; neither is a criminal
-      conviction.
+      conviction.[@hrs2026]
+      [Health referrals began in September 2026.](/history/ireland-health-referral-scheme-2026/)
     sources:
       - gov
       - hrs2026
@@ -146,9 +170,10 @@ context:
     clones_trade: banned
     text: >-
       Since 1984 the Misuse of Drugs Act has defined cannabis as any plant of the genus
-      Cannabis or any part of it, but not seed separated from the plant. Seeds are therefore
-      not a controlled drug. Growing any cannabis plant without a ministerial licence is an
-      offence under section 17, and a cutting is itself a plant.
+      Cannabis or any part of it, but not seed separated from the plant.[@mda84] Seeds are therefore
+      not a controlled drug.[@mda84] Growing any cannabis plant without a ministerial licence is an
+      offence under section 17, and a cutting is itself a plant.[@mda77]
+      [Ireland widened the legal definition of cannabis in 1984.](/history/ireland-cannabis-redefined-1984/)
     sources:
       - mda84
       - mda77
@@ -157,15 +182,15 @@ context:
     text: >-
       Ireland sets two limits in whole blood, measured within three hours of driving: 1
       nanogram of THC per millilitre, and 5 nanograms per millilitre of the metabolite
-      11-nor-9-carboxy-THC. Reaching either level is an offence without proof of impairment.
+      11-nor-9-carboxy-THC.[@rta2016,rta2010] Reaching either level is an offence without proof of impairment.[@rta2016]
       A medical exemption certificate in the prescribed form, signed by the prescribing doctor
       and stating that THC was lawfully prescribed at that time, takes the driver outside
-      those two limits. Driving while impaired remains a separate offence. Police may stop at
+      those two limits.[@si158] Driving while impaired remains a separate offence.[@rta2010] Police may stop at
       random at designated checkpoints and test on suspicion, with roadside oral-fluid tests
-      since April 2017 and blood taken at a police station. The threshold offence brings a ban
+      since April 2017 and blood taken at a police station.[@rsa,euda_dd] The threshold offence brings a ban
       of at least one year, or two years for a later offence. The impairment offence brings at
       least four years for a first offence and six for later ones. The fine is up to 5,000
-      euros and prison up to six months.
+      euros and prison up to six months.[@rsa]
     sources:
       - rta2016
       - rta2010
@@ -177,10 +202,10 @@ context:
     text: >-
       Clubs exist without any legal basis. A Europe-wide survey of cannabis social clubs carried out
       in 2018 and 2019 received answers from one club in Ireland, and its authors could not say how
-      many more were active. The study notes that clubs sit in a legally sensitive position and that
-      many have been dissolved after court decisions or police raids. No law in Ireland provides for
+      many more were active.[@pardal20] The study notes that clubs sit in a legally sensitive position and that
+      many have been dissolved after court decisions or police raids.[@pardal20] No law in Ireland provides for
       them; Malta (since 2021) and Germany (since 2024) license non-profit cannabis associations,
-      but only under their own laws. Nothing more recent was found.
+      but only under their own laws.[@mt_cap628,de_cang] Nothing more recent was found.[@pardal20]
     sources:
       - pardal20
       - de_cang
@@ -188,31 +213,44 @@ context:
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply. The Health Referral Scheme can apply to eligible
+      There is no legal recreational supply.[@hrs2026] The Health Referral Scheme can apply to eligible
       personal-possession offences committed from 1 September 2026, subject to Garda discretion and
-      the first-offence, age, admission and consent requirements. Possession remains a crime.
+      the first-offence, age, admission and consent requirements.[@hrs2026] Possession remains a crime.[@hrs2026]
+      [Health referrals began in September 2026.](/history/ireland-health-referral-scheme-2026/)
     sources:
       - hrs2026
   black_market:
     text: >-
       The EU drugs agency's statistical bulletin records 2,916 kg of herbal cannabis and
-      171 kg of cannabis resin seized in Ireland in 2024. Herbal cannabis was seized on
-      6,118 occasions and resin on 374. Countries record seizures differently, so the
-      figures are not comparable across borders.
+      171 kg of cannabis resin seized in Ireland in 2024.[@euda_szr] Herbal cannabis was seized on
+      6,118 occasions and resin on 374.[@euda_szr] Countries record seizures differently, so the
+      figures are not comparable across borders.[@euda_szr]
     sources:
       - euda_szr
   arrests:
     text: >-
       The Central Statistics Office recorded 16,119 controlled drug incidents in 2024, 7
       per cent fewer than in 2023, a fall it put largely down to fewer incidents of
-      possession for sale or supply and for personal use. A breakdown of the same series
+      possession for sale or supply and for personal use.[@cso_rc24] A breakdown of the same series
       published by the community drugs network Citywide gives 10,701 incidents of
       possession for personal use in 2024, about two thirds of the total, against 4,551
-      for sale or supply and 85 for cultivation or manufacture. The figures cover all
-      drugs and are not split by substance.
+      for sale or supply and 85 for cultivation or manufacture.[@citywide_le] The figures cover all
+      drugs and are not split by substance.[@citywide_le]
     sources:
       - cso_rc24
       - citywide_le
+  spotlights:
+    - title: A health appointment instead of a prosecution
+      text: >-
+        Since 1 September 2026, Gardaí who catch an adult with a small amount of cannabis for
+        personal use can send them to health services instead of prosecuting — provided it is a
+        first drug offence, the person admits possession and consents.[@hrs2026] Declining the
+        referral means prosecution, and later offences can bring prison.[@hrs2026] Possession
+        itself stays criminal: the scheme changes the response, not the law.[@hrs2026]
+        [Health referrals began in September 2026.](/history/ireland-health-referral-scheme-2026/)
+        [Warnings gave way to adult cautions in 2020.](/history/ireland-adult-caution-2020/)
+      sources:
+        - hrs2026
 sources:
   hrs2026:
     title: An Garda Síochána — Health Referral Scheme begins 1 September 2026
