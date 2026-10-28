@@ -30,7 +30,7 @@ const ord = (n) => n + (n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd
 // "the most", "the 2nd most"
 const rankWord = (n, word) => (n === 1 ? word : `${ord(n)} ${word}`);
 const median = (xs) => { const s = [...xs].sort((a, b) => a - b), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
-// 48,000,000 → "48 million", 770,000 → "770,000"
+// 48,000,000 → "48 million", 770,000 → "770,000"
 const people = (n) => (n >= 1e6 ? `${+(n / 1e6).toPrecision(2)} million` : n.toLocaleString("en-GB"));
 const name = theName(sub ? sub.name : c.name);
 
@@ -40,7 +40,7 @@ const unitUse = sub?.use ?? null;
 // a disputed territory with no survey takes the figure of the country it is part of
 const useFrom = use?.estimate_from ? countries.find((x) => x.id === use.estimate_from.toUpperCase()) : null;
 const share = use ? use.prevalence : unitUse?.share;
-const pct = (n) => `${(+n).toFixed(1)}%`; // 26.38 → "26.4%", 9 → "9.0%"
+const pct = (n) => `${(+n).toFixed(1)}%`; // 26.38 → "26.4%", 9 → "9.0%"
 const ages = use ? useAges(use) : unitUse?.ages;
 const users = use ? use.users : unitUse?.users;
 // "1 in 11"; with fewer than one in thirty the dots would be too many, so a bar stands in for them
@@ -117,7 +117,7 @@ const tiles = 1 + [near.length >= 3, pew, gallup, highlights.length > 0, SHOW_PR
                 ? <>An earlier UNODC figure, as collected in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_annual_cannabis_use" target="_blank" rel="noopener noreferrer">Wikipedia's list of annual cannabis use by country</a></>
                 : useFrom
                 ? <>{useFrom.name}'s figure from the <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a>; the population aged 15–64 is this place's total times {useFrom.name}'s share of those ages</>
-                : <>A median computed on this site from surveyed countries in {c.region}, using <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a> figures</>}{use.users != null && <>. Population from the <a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer">World Bank</a>, aged {useAges({ ages: use.population_ages || use.ages })}</>}. <a href={`${base}sources/#dataset-cannabis_use`}>The whole dataset →</a></SourceTip>
+                : <>A median computed on this site from surveyed countries in {c.region}, using <a href="https://www.unodc.org/unodc/en/data-and-analysis/world-drug-report-2026-annex.html" target="_blank" rel="noopener noreferrer">UNODC World Drug Report 2026</a> figures</>}{use.users != null && <>. Population from the <a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer">World Bank</a>, aged {useAges({ ages: use.population_ages || use.ages })}</>}. <a href={`${base}sources/#dataset-cannabis_use`}>The whole dataset →</a></SourceTip>
         : <SourceTip>{unitUse.source[1] ? <a href={unitUse.source[1]} target="_blank" rel="noopener noreferrer">{unitUse.source[0]}</a> : unitUse.source[0]}</SourceTip>}
     </div>
     {near.length >= 3 && (
@@ -133,7 +133,7 @@ const tiles = 1 + [near.length >= 3, pew, gallup, highlights.length > 0, SHOW_PR
             </li>
           ))}
         </ol>
-        <p class="intro-note">Past-year use, latest survey of each. Survey years and ages differ. <a href={`${base}map/${viewByMetric.prevalence.slug}/`}>On the map →</a></p>
+        <p class="intro-note">Past-year use, latest survey of each. Survey years and ages differ. <a href={`${base}map/${viewByMetric.prevalence.slug}/`}>On the map →</a></p>
       </div>
     )}
     {pew && (
@@ -147,7 +147,7 @@ const tiles = 1 + [near.length >= 3, pew, gallup, highlights.length > 0, SHOW_PR
         <ul class="cd-key">
           {pewParts.map(([label, v, color]) => <li><i class="sw" style={`background:${color}`}></i>{label} <b>{v}%</b></li>)}
         </ul>
-        <p class="intro-note">The {pewPlace <= pewList.length / 2 ? rankWord(pewPlace, "most") : rankWord(pewLeast, "least")} disapproving of the {pewList.length} countries surveyed, where the median is {pewMedian}%.{PEW.notes[c.slug] && ` ${PEW.notes[c.slug]}`} <a href={mapHref("pew_marijuana")}>On the map →</a></p>
+        <p class="intro-note">The {pewPlace <= pewList.length / 2 ? rankWord(pewPlace, "most") : rankWord(pewLeast, "least")} disapproving of the {pewList.length} countries surveyed, where the median is {pewMedian}%.{PEW.notes[c.slug] && ` ${PEW.notes[c.slug]}`} <a href={mapHref("pew_marijuana")}>On the map →</a></p>
         <SourceTip><a href={PEW.url} target="_blank" rel="noopener noreferrer">{PEW.publisher}</a>, {PEW.when}, {pew.sample.toLocaleString("en-GB")} adults (<a href={PEW.data_url} target="_blank" rel="noopener noreferrer">{PEW.data_label}</a>).</SourceTip>
       </div>
     )}
@@ -159,7 +159,7 @@ const tiles = 1 + [near.length >= 3, pew, gallup, highlights.length > 0, SHOW_PR
         <div class="cd-stack" role="img" aria-label={`Yes: ${gallupNow.legal}%`}>
           <i style={`width:${gallupNow.legal}%;background:var(--t5)`}></i>
         </div>
-        <p class="intro-note">Gallup poll of {gallupNow.date}. <a href={`${base}charts/#opinion-gap`}>The whole trend →</a></p>
+        <p class="intro-note">Gallup poll of {gallupNow.date}. <a href={`${base}charts/#opinion-gap`}>The whole trend →</a></p>
         <SourceTip><a href={GALLUP.url} target="_blank" rel="noopener noreferrer">{GALLUP.title}</a>.</SourceTip>
       </div>
     )}
@@ -178,7 +178,7 @@ const tiles = 1 + [near.length >= 3, pew, gallup, highlights.length > 0, SHOW_PR
             </li>
           ))}
         </ul>
-        <p class="intro-note">The dot: where it stands among the countries each dataset covers, lowest to highest. <a href="#datasets">All datasets ↓</a></p>
+        <p class="intro-note">The dot: where it stands among the countries each dataset covers, lowest to highest. <a href="#datasets">All datasets ↓</a></p>
       </div>
     )}
     {SHOW_PRICES && !sub && <PricePanel id={c.id} />}
@@ -191,7 +191,7 @@ const tiles = 1 + [near.length >= 3, pew, gallup, highlights.length > 0, SHOW_PR
               <b>{w.word}<Cited parts={[{ refs: wordRefs[i] ?? [] }]} /></b>
               <small>{w.lang}{w.say && <> · <span class="intro-say">{w.say}</span></>}</small>
               {w.meaning && <span class="intro-means">{w.meaning}</span>}
-              {w.atlas && <a class="intro-atlas" href={`${base}culture/language/${w.atlas}/`}>In the atlas →</a>}
+              {w.atlas && <a class="intro-atlas" href={`${base}culture/language/${w.atlas}/`}>In the atlas →</a>}
             </li>
           ))}
         </ul>

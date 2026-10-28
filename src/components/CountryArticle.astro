@@ -204,7 +204,7 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
     {c.territory && !sub && (
       <p class="c-disputed"><strong>{c.territory.kind}.</strong> {c.territory.note} See also <a href={`${base}country/${c.territory.country.slug}/`} data-country={c.territory.country.id}>{c.territory.country.flag} {c.territory.country.name}</a>.</p>
     )}
-    <h2 class="d-h">In short <span><a href={`${base}can-i/`}>all countries →</a></span></h2>
+    <h2 class="d-h">In short <span><a href={`${base}can-i/`}>all countries →</a></span></h2>
     <ul class="answers">
       {answers.map((x) => (
         <li>
@@ -233,7 +233,7 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
 
   {glance && (
     <section class="c-sec c-intro" id="overview">
-      <h2 class="d-h">Cannabis in {theName(sub ? sub.name : c.name)} <span>not part of the score{datasetCount > 0 && <> · <a href="#datasets">all {datasetCount} datasets ↓</a></>}</span></h2>
+      <h2 class="d-h">Cannabis in {theName(sub ? sub.name : c.name)} <span>not part of the score{datasetCount > 0 && <> · <a href="#datasets">all {datasetCount} datasets ↓</a></>}</span></h2>
       <CountryIntro c={c} sub={sub} wordRefs={wordRefs} />
     </section>
   )}
@@ -332,7 +332,7 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
                 </li>
               ))}
             </ol>
-            <p><a href={`${base}compare/?c=${compareIds.join(",")}`}>Compare {landNeighbours.length ? "with neighbours" : "them"} →</a></p>
+            <p><a href={`${base}compare/?c=${compareIds.join(",")}`}>Compare {landNeighbours.length ? "with neighbours" : "them"} →</a></p>
           </div>
         )}
       </div>
@@ -417,7 +417,7 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
 
   {culture.length > 0 && (
     <section class="c-sec c-atlas" id="culture">
-      <h2 class="d-h">Culture <span><a href={`${base}culture/`}>the atlas →</a></span></h2>
+      <h2 class="d-h">Culture <span><a href={`${base}culture/`}>the atlas →</a></span></h2>
       {sub && <p class="d-hint">These belong to the whole country, not to {sub.name} alone.</p>}
       {/* cards with the entry's picture; past the first eight they wait behind "Show all" */}
       {[culture.slice(0, CULTURE_CARDS), culture.slice(CULTURE_CARDS)].map((list, g) => list.length > 0 && (() => {
@@ -446,13 +446,13 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
 
   {facts.length > 0 && (
     <section class="c-sec c-dyk" id="did-you-know">
-      <h2 class="d-h">Did you know? <span><a href={`${base}did-you-know/`}>all cases →</a></span></h2>
+      <h2 class="d-h">Did you know? <span><a href={`${base}did-you-know/`}>all cases →</a></span></h2>
       <ol class="dyk-facts dyk-all">
         {facts.map((f) => (
           <li class="dyk-fact">
             <p class="dyk-kicker">{f.kicker}</p>
             <p class="dyk-text"><FactText parts={f.parts} here={c.id} /></p>
-            {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
+            {f.culture ? <a class="dyk-more" href={`${base}${f.culture.url}`}>Read the entry →</a> : f.history && <a class="dyk-more" href={`${base}history/${f.history.id}/`}>The full story →</a>}
           </li>
         ))}
       </ol>
@@ -469,7 +469,7 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
   {history.length > 0 && (
     <section class="c-sec" id="history">
       <CountryChanges history={history} unitLabel={!sub && group ? group.label : null} showUnit={!sub} scoreLine={!sub}
-        more={sub ? <>Only the entries about {sub.name}. <a href={`${countryUrl}#history`}>All {nationalCount} entries on the national page →</a></> : null} />
+        more={sub ? <>Only the entries about {sub.name}. <a href={`${countryUrl}#history`}>All {nationalCount} entries on the national page →</a></> : null} />
     </section>
   )}
 
