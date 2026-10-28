@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 296
 recreational: illegal
 medical: limited
-updated: '2026-10-23'
+updated: '2026-10-28'
 summary: >-
   Cannabis possession, growing and gifts are offences; separate rules cover prescribed extracts and
   tinctures.
@@ -23,6 +23,19 @@ segments:
     sources:
       - ddo_gov
       - folik
+    currency: AUD
+    penalties:
+      - label: Possession, High Court
+        treatment: criminal
+        term: Possession
+        prison: 10 years
+        fine: 2000
+        note: No quantity threshold; fine and/or prison
+      - label: Possession, Magistrates' Court
+        treatment: criminal
+        term: Possession
+        prison: 5 years
+        fine: 1000
   cultivation:
     text: >-
       Cultivation is prohibited for private use or otherwise, with no personal plant-count exemption
@@ -32,6 +45,19 @@ segments:
       - ddo_gov
       - morlier
       - morlier_report
+    currency: AUD
+    penalties:
+      - label: Cultivation, High Court
+        treatment: criminal
+        term: Cultivation
+        prison: 10 years
+        fine: 2000
+        note: No plant-count or quantity threshold
+      - label: Cultivation, Magistrates' Court
+        treatment: criminal
+        term: Cultivation
+        prison: 5 years
+        fine: 1000
   enforcement:
     text: >-
       The High Court imposed a fine in a 2018 cannabis-possession case and a A$250 fine for one
@@ -48,6 +74,19 @@ segments:
       sale. The ordinance contains no exemption for an unpaid adult gift.[@ddo_gov]
     sources:
       - ddo_gov
+    currency: AUD
+    penalties:
+      - label: Sale or gift, High Court
+        treatment: criminal
+        term: Supply
+        prison: 10 years
+        fine: 2000
+        note: Same maximum as possession; no separate trafficking tier
+      - label: Sale or gift, Magistrates' Court
+        treatment: criminal
+        term: Supply
+        prison: 5 years
+        fine: 1000
   consumption:
     text: >-
       Keeping cannabis for personal use is criminalised as possession. The High Court convicted a
@@ -64,6 +103,16 @@ segments:
       - reg1980
       - ddo_gov
 context:
+  recreational:
+    text: >-
+      Recreational cannabis is illegal. Possession, cultivation, sale and gifts carry the same
+      maximum — A$2,000 and ten years in the High Court, or A$1,000 and five years before a
+      magistrate — with no personal-use exemption or quantity threshold.[@ddo_gov] Reported
+      sentences are usually fines or suspended terms, even for cultivation.[@folik,utimawa25]
+    sources:
+      - ddo_gov
+      - folik
+      - utimawa25
   production:
     status: medical
     text: >-
@@ -72,23 +121,48 @@ context:
       receptacle.[@reg1980]
     sources:
       - reg1980
-  products:
+  hemp:
+    status: none
     text: >-
-      The ordinance controls cannabis plants and resin separately from the scheduled extracts and
-      tinctures.[@ddo_gov] The prescription regulations expressly cover pharmacist preparation of
-      those extracts and tinctures.[@reg1980]
+      No industrial-hemp framework. "Indian hemp" covers Cannabis sativa and C. indica and any part
+      of the plant; importing or exporting seeds is banned and cultivation is prohibited.[@ddo_gov]
+      No licence exists for hemp fibre, seed or CBD production.[@ddo_gov]
     sources:
       - ddo_gov
-      - reg1980
   medical:
     text: >-
       Lawful prescription supply authorises possession of controlled preparations, and registered
       pharmacists may prepare cannabis extracts and tinctures.[@reg1980] In 2016, a sailor’s
       prescribed marijuana remained a prohibited import; the court considered his health when
-      choosing a fine.[@afonso]
+      choosing a fine.[@afonso] No cannabis medicine is registered and no public dispensing route
+      was found.[@reg1980]
     sources:
       - reg1980
       - afonso
+  black_market:
+    text: >-
+      The local market is small-scale and domestic: police report raids on one- to two-metre plants
+      in household gardens, not large farms.[@kps25a,kps25b] In 2019 police found 1.5 kg of
+      cocaine and more than 3 kg of cannabis in the Line Islands, and Solomon Islands police
+      intercepted a cannabis parcel bound for Kiribati.[@islandtimes19,solomonstar19] No price or
+      seizure series is published.[@ddo_gov]
+    sources:
+      - kps25a
+      - kps25b
+      - islandtimes19
+      - solomonstar19
+      - ddo_gov
+  arrests:
+    text: >-
+      No annual arrest statistics are published. Police posts record a cannabis raid at Abatao on
+      28 April 2025 and a second at Takoronga on 19 May 2025.[@kps25a,kps25b] The High Court
+      sentenced a two-plant grower on 23 December 2025 to 18 months suspended for two years and a
+      A$600 fine.[@utimawa25] No 2024 cannabis arrest report was found.[@ddo_gov]
+    sources:
+      - kps25a
+      - kps25b
+      - utimawa25
+      - ddo_gov
   consequences:
     text: >-
       Courts may confiscate articles involved in a drug offence: a 2015 sentence forfeited a yacht,
@@ -131,14 +205,35 @@ context:
     status: zero
     text: >-
       The Traffic Act prohibits drug-influenced driving of any vehicle, including a bicycle, and
-      deems influence established when a saliva test shows drugs in the driver’s system. A first
-      drug-driving conviction carries ten to twenty penalty units and six to twelve months’ licence
-      disqualification. A further offence within five years carries twenty to fifty units, one to
-      two years in prison or both, plus one to two years’ disqualification. Behavioural evidence and
+      deems influence established when a saliva test shows drugs in the driver’s
+      system.[@traffic2017] A first drug-driving conviction carries ten to twenty penalty units and
+      six to twelve months’ licence disqualification.[@traffic2017] A further offence within five
+      years carries twenty to fifty units, one to two years in prison or both, plus one to two
+      years’ disqualification.[@traffic2017] Behavioural evidence and
       assessments may be used when testing is unavailable.[@traffic2017]
     sources:
       - traffic2017
 sources:
+  kps25a:
+    title: "Kiribati Police Service — Abatao cannabis raid (28 April 2025)"
+    url: https://www.facebook.com/kiribatipolice/posts/1151493030338633/
+    locator: "Cannabis plant almost two metres high; one arrest."
+  kps25b:
+    title: "Kiribati Police Service — Takoronga cannabis raid (29 May 2025)"
+    url: https://www.facebook.com/kiribatipolice/posts/1174974514657151/
+    locator: "Plantation about two metres high; second drug bust of 2025."
+  utimawa25:
+    title: "Forgotten Prisoner — Kiribati: man gets 18 months, suspended, and a $600 fine for two cannabis plants (15 October 2026)"
+    url: https://www.forgottenprisoner.org/news/kiribati-man-gets-suspended-18-months-for-two-cannabis-plants
+    locator: "Sentence 23 December 2025; two plants; 18 months suspended; A$600 fine."
+  islandtimes19:
+    title: "Island Times — Kiribati police find cocaine and marijuana packages in the Line Islands (31 December 2019)"
+    url: https://islandtimes.org/kiribati-police-find-cocaine-and-marijuana-packages-in-the-line-islands/
+    locator: "1.5 kg cocaine; more than 3 kg marijuana."
+  solomonstar19:
+    title: "Solomon Star — Two charged for attempted marijuana export to Kiribati (26 July 2019)"
+    url: https://www.solomonstarnews.com/two-charged-for-attempted-marijuana-export-to-kiribati/
+    locator: "Cannabis parcel on a Solomon Airlines flight to Kiribati."
   traffic2017:
     type: law
     title: Kiribati Land Transport Authority — signed Traffic Act 2017
