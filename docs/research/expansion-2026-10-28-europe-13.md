@@ -6,8 +6,8 @@ excluding other agents’ shared changes.
 
 | Country | Done | Left | Commit |
 |---|---|---|---|
-| Malta | Resin article, association stock event/context, directive date corrected | Seven sparse history decades; original 2026 licensing amendment | This country’s commit |
-| Serbia | Pending | | |
+| Malta | Resin article, association stock event/context, directive date corrected | Seven sparse history decades; original 2026 licensing amendment | 875cfb6 |
+| Serbia | Medical agenda-vote article; eight events; research authorisations and seizure context | Original 1964/1980/1996 laws; 1940s/1970s | This country’s commit |
 | Bulgaria | Pending | | |
 | Belgium | Pending | | |
 | Estonia | Pending | | |
@@ -26,3 +26,17 @@ the later potency bands. Early decades remain open; no unsupported historical ev
 Validation: 196 tests passed, four selected pages rendered and HTML inspected. Profile audit
 zero errors; its hemp warning concerns the product threshold, not an authorised hemp crop.
 Snapshot: `.cache/expansion-europe-3/mt-review/`.
+
+## Serbia
+
+Read the current criminal and controlled-substances laws, the March 2018 parliamentary record,
+the government’s 2018 consultation report and official 2026 police/prosecutor announcements.
+The agenda motion had ten votes in favour and 149 non-voters; patient numbers remain attributed
+to Čabradi’s speech. Added the 1964 federal framework, 1980/1996 laws identified by the later
+repeal clause, the 2016 consultation and four events in the Zemun–Konjuh investigation. Original
+1980 and 1996 printings remain archival leads; no unverified penalty changes assigned. Research
+context now explains the substance/annual-quantity consent and separate trial consent, replacing
+an unsupported negative about research activity. Current scores and penalties retained.
+
+Validation: all 196 tests pass, zero audit errors/warnings, ten selected pages rendered and HTML
+inspected. Snapshot: `.cache/expansion-europe-3/rs-review/`.
