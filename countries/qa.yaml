@@ -17,29 +17,34 @@ scores:
 segments:
   possession:
     text: >-
-      Article 37 of Law 9 of 1987, as amended by Law 3 of 2020, punishes possessing, buying,
+      Article 37 of Law 9 of 1987, as amended by Law 1 of 2006, punishes possessing, buying,
       receiving, transporting, producing or growing a listed plant for personal use with six
-      months to three years in prison and a fine of QR10,000 to QR20,000. A court may instead
-      send a proven addict to a clinic for three months to a year. Article 29 bans the listed
-      plants and their seeds.
+      months to three years in prison and a fine of QR10,000 to QR20,000; there is no quantity
+      threshold, and the law distinguishes personal use from trafficking by intent rather than
+      weight. A court may instead send a proven addict to a clinic for three months to a year.
+      Article 29 bans the listed plants and their seeds.[@l9,law2006]
     sources:
       - l9
+      - law2006
     currency: QAR
     penalties:
       - label: Personal-use possession or growing (article 37)
         treatment: criminal
+        term: Personal use
         fine: 20000
         prison_min: 6 months
         prison: 3 years
-        note: Six months to three years and QR10,000–20,000; clinic substitution for proven addicts
+        note: No quantity threshold; clinic substitution for proven addicts
       - label: Possessing or selling in order to trade
         treatment: criminal
+        term: Trafficking
         fine: 400000
         prison_min: 10 years
         prison: 20 years
         note: Ten to twenty years and QR200,000–400,000
       - label: Supplying to a user or preparing a place for use, without payment
         treatment: criminal
+        term: Supply
         fine: 200000
         prison_min: 5 years
         prison: 10 years
@@ -48,41 +53,85 @@ segments:
     text: >-
       Growing a listed plant for personal use is article 37: six months to three years and a fine
       of QR10,000 to QR20,000. Growing, importing or exporting a listed plant or its seeds for
-      trade is article 34: death or life imprisonment and a fine of QR300,000 to QR500,000.
+      trade is article 34: death or life imprisonment and a fine of QR300,000 to QR500,000.[@l9]
+      There is no plant-count threshold: the distinction is intent.[@l9]
     sources:
       - l9
+    currency: QAR
+    penalties:
+      - label: Growing for personal use (article 37)
+        treatment: criminal
+        term: Personal growing
+        prison_min: 6 months
+        prison: 3 years
+        fine_min: 10000
+        fine: 20000
+      - label: Growing or trading plants or seeds for trade (article 34)
+        treatment: criminal
+        term: Trafficking
+        death: true
+        fine_min: 300000
+        fine: 500000
+        note: Death or life imprisonment; death on a repeat within five years
   enforcement:
     text: >-
       Zero tolerance, with bags and passengers scanned at the airport; travellers have been
-      arrested with very small quantities. A courier caught there with hashish in 2021 received
-      five years, a fine of QR300,000 and deportation. A court may send an addict to a clinic
-      for three months to a year in place of the sentence, and a user who comes forward for
-      treatment is not prosecuted.
+      arrested with very small quantities.[@cann] A courier caught there with hashish in 2021
+      received five years, a fine of QR300,000 and deportation.[@dn21] A court may send an addict to
+      a clinic for three months to a year in place of the sentence, and a user who comes forward for
+      treatment is not prosecuted.[@l9]
     sources:
       - cann
-      - ap22
       - dn21
       - l9
   sharing:
     text: >-
       Possessing or selling in order to trade carries ten to twenty years and a fine of QR200,000
-      to QR400,000. Supplying a drug to a user, or preparing a place for use, carries the same
-      sentence when it is done for payment, and five to ten years and a fine of QR100,000 to
-      QR200,000 when it is done without payment. Importing or producing for trade is article 34:
-      death or life imprisonment, and death on a repeat within five years.
+      to QR400,000; life is available on a repeat.[@l9] Supplying a drug to a user, or preparing a
+      place for use, carries the same sentence when it is done for payment, and five to ten years
+      and a fine of QR100,000 to QR200,000 when it is done without payment.[@l9] Importing or
+      producing for trade is article 34: death or life imprisonment, and death on a repeat within
+      five years.[@l9] No quantity threshold applies; intent is the dividing line.[@l9]
     sources:
       - l9
+    currency: QAR
+    penalties:
+      - label: Possession or sale for trade
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        prison: 20 years
+        fine_min: 200000
+        fine: 400000
+        note: Life on a repeat
+      - label: Supply without payment or managing a drug place
+        treatment: criminal
+        term: Supply
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 100000
+        fine: 200000
+      - label: Import, production or cultivation for trade
+        treatment: criminal
+        term: Trafficking
+        death: true
+        fine_min: 300000
+        fine: 500000
+        note: Death or life; death on a repeat within five years
   consumption:
     text: >-
       Use is the same offence as possession for personal use: six months to three years and a
-      fine of QR10,000 to QR20,000. A court may send a proven addict to a clinic instead. In
-      2016 a man was sentenced to one year and QR10,000 for using drugs.
+      fine of QR10,000 to QR20,000.[@l9] A court may send a proven addict to a clinic instead.[@l9]
+      In 2016 a man was sentenced to one year and QR10,000 for using drugs.[@pen16]
     sources:
       - l9
       - pen16
   access:
-    text: None.
+    text: >-
+      No legal source for personal use. The only licensed route is research cultivation or seed
+      import for government bodies and recognised institutes under article 30.[@l9,cann]
     sources:
+      - l9
       - cann
 context:
   recreational:
@@ -99,32 +148,39 @@ context:
   death_penalty:
     text: >-
       Article 34 provides death or life imprisonment, and a fine of QR300,000 to QR500,000, for
-      importing, producing or growing for trade. A repeat of that offence within five years is
+      importing, producing or growing for trade.[@l9] A repeat of that offence within five years is
       punished by death. Courts have passed death sentences for hashish: for 160 kg in 2008, in
       the defendant's absence, for about 600 kg of hashish and opium in 2013, and for 120 kg in
-      2016. No execution for drugs was found, and in 2013 Qatar had reported no execution of any
-      kind for more than a decade.
+      2016.[@hoc08,dn13,pen16] No execution for a drug offence has been reported; Qatar's last known
+      execution, in May 2020, was for murder.[@amnesty20]
     sources:
       - l9
       - hoc08
       - dn13
       - pen16
+      - amnesty20
   production:
     status: none
-    text: None.
+    text: >-
+      No lawful cannabis production. Article 34 bans importing, producing or growing for trade, and
+      the only exception in article 30 is research by government bodies and recognised scientific
+      institutes.[@l9] No commercial or patient-production route exists.[@l9]
     sources:
-      - cann
-  products:
-    text: Reliable national information about legally available cannabis products was not established by the retained sources.
-    sources: []
+      - l9
   medical:
-    text: No medical cannabis.
+    text: >-
+      No medical cannabis programme. Cannabis is a Schedule 1 narcotic, and the only licensed route
+      is article 30 research cultivation or seed import for government bodies and recognised
+      institutes.[@l9] No registered cannabis medicine or patient prescription route was found.[@l9]
     sources:
-      - cann
+      - l9
   consequences:
-    text: Non-residents convicted of drug offences are deported.
+    text: >-
+      A court may order a non-resident deported after sentence under Penal Code article 77; courts
+      commonly do so in drug cases, but deportation is discretionary rather than automatic.[@l9,penal]
     sources:
-      - cann
+      - l9
+      - penal
   planting:
     seeds: illegal
     seeds_trade: banned
@@ -133,48 +189,52 @@ context:
     text: >-
       Law 9 of 1987 bans growing the listed plants (Article 28) and, in Article 29, importing,
       owning, holding, buying or selling them at any stage of growth, as well as their seeds;
-      plant parts named in a separate schedule are exempt. The Minister of Public Health may
-      license only government bodies and recognised research institutes to grow them or import
-      seeds.
+      Schedule 5 exempts only stalk fibre and seeds roasted enough to prevent germination.[@l9]
+      The Minister of Public Health may license only government bodies and recognised research
+      institutes to grow them or import seeds.[@l9]
     sources:
       - l9
   hemp:
     status: none
     text: >-
-      No general low-THC rule was established: article 29 bans the listed plants at every
-      stage of growth as well as their seeds, exempting only plant parts named in a separate
-      schedule.[@l9] Licences to grow or import seeds go only to government bodies and
-      recognised research institutes.[@l9]
+      No hemp or CBD regime and no THC threshold. Article 29 bans the listed plants at every stage
+      of growth as well as their seeds, and Schedule 5 exempts only stalk fibre and cannabis seeds
+      roasted enough to prevent germination.[@l9] The customs prohibited-goods list also bans hemp
+      seed and Cannabis sativa.[@customs] Licences to grow or import seed go only to government
+      bodies and recognised research institutes.[@l9]
     sources:
       - l9
+      - customs
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
       supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      penalty for the most serious drug offences.[@l9,cann]
     sources:
+      - l9
       - cann
   visitors:
     status: none
     text: >-
       There is no legal recreational supply for anyone. Possessing a drug for personal use is
-      article 37, as amended by Law 3 of 2020: six months to three years and a fine of QR10,000
-      to QR20,000.
+      article 37, as amended by Law 1 of 2006: six months to three years and a fine of QR10,000
+      to QR20,000.[@l9,law2006]
     sources:
       - l9
+      - law2006
   driving:
     status: impairment
     text: >-
       Traffic Law article 57(2) prohibits driving under the influence of alcohol, drugs
-      or other psychotropic substances. Its published English penalty provision, article
+      or other psychotropic substances.[@trafficdrug] Its published English penalty provision, article
       94, sets one month to three years' imprisonment or a QR10,000–50,000 fine for that
-      offence, without prejudice to more severe penalties in other laws. Drug-influenced
-      driving carries six traffic points. The Traffic Department can suspend a licence,
+      offence, without prejudice to more severe penalties in other laws.[@trafficpenalty] Drug-influenced
+      driving carries six traffic points.[@trafficpoints] The Traffic Department can suspend a licence,
       vehicle licence and number plates, or both, for up to ninety days under article
-      87; this administrative power is separate from the court penalty. Article 32 also
+      87; this administrative power is separate from the court penalty.[@trafficadmin] Article 32 also
       bars public-vehicle licence applicants previously convicted of drug-influenced
-      driving. The provisions reviewed do not specify a numeric THC allowance or a
+      driving.[@trafficpublic] The provisions reviewed do not specify a numeric THC allowance or a
       medical-cannabis defence.
     sources:
       - trafficdrug
@@ -186,11 +246,23 @@ context:
     text: >-
       Figures reported by the government to the UN drugs office record 195 kg of herbal
       cannabis seized in 2024, against 29 kg in 2022, and 489 kg of cannabis resin seized
-      in 2024, against 774 kg in 2022. The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across
-      borders.
+      in 2024, against 774 kg in 2022.[@unodc_szr] The UN publishes them as kilogram equivalents,
+      and countries count seizures differently, so the figures are not comparable across
+      borders.[@unodc_szr]
     sources:
       - unodc_szr
+  arrests:
+    text: >-
+      No annual cannabis arrest or prosecution count is published.[@pen24] Customs reported 6 kg of
+      hashish in car parts at Hamad International Airport in May 2025, 1.984 kg in an electric oven
+      in December 2025, 24.39 g at the Abu Samra crossing in August 2026, and 1.5 kg hidden in candy
+      wrappers at the airport in September 2026.[@ql25,pen26c,qt26] Police announced two arrests in
+      a trafficking raid in April 2024 without giving quantities.[@pen24]
+    sources:
+      - pen24
+      - ql25
+      - pen26c
+      - qt26
   research:
     status: licensed
     text: >-
@@ -201,6 +273,38 @@ context:
     sources:
       - l9
 sources:
+  law2006:
+    title: "Qatar — Law No. 1 of 2006 amending Law No. 9 of 1987 (Al Meezan)"
+    url: https://www.almeezan.qa/legislations/law/2006/1/general
+    locator: "Replaced article 37: personal-use possession, cultivation and consumption six months to three years and QR10,000–20,000."
+  penal:
+    title: "Qatar — Penal Code No. 11 of 2004, article 77 (Al Meezan, English)"
+    url: https://www.almeezan.qa/LawView.aspx?LawID=26&language=en
+    locator: "Deportation of convicted foreigners is discretionary."
+  amnesty20:
+    title: "Amnesty International — Death sentences and executions 2020"
+    url: https://www.amnesty.org/zh-hant/wp-content/uploads/2021/05/ACT5037602021ENGLISH.pdf
+    locator: "Qatar's May 2020 execution, the first in 20 years, was for murder."
+  customs:
+    title: "Qatar Customs — Prohibited goods list"
+    url: https://www.customs.gov.qa/English/Tariff/Pages/Prohibited-Goods.aspx
+    locator: "Hemp seeds (HS 1207.99.20) and Cannabis sativa (HS 1211.90.60)."
+  pen24:
+    title: "The Peninsula — Two men arrested for drug trafficking (11 April 2024)"
+    url: https://thepeninsulaqatar.com/article/11/04/2024/two-men-arrested-for-drug-trafficking-ministry-shares-scenes-from-drugs-raid
+    locator: "Two arrests; no quantity published."
+  ql25:
+    title: "Qatar Living — Customs foil attempt to smuggle 1 kg heroin and 6 kg hashish (23 May 2025)"
+    url: https://www.qatarliving.com/en/article/hamad-international-airport-customs-foil-attempt-smuggle-1-kg-heroin-6-kgs-hashish
+    locator: "6 kg hashish and 1 kg heroin in car parts."
+  pen26c:
+    title: "The Peninsula — Qatar customs foils hashish and shabu hidden in candy wrappers (3 September 2026)"
+    url: https://thepeninsulaqatar.com/article/03/09/2026/qatar-customs-foils-attempt-to-smuggle-hashish-shabu-hidden-in-candy-wrappers
+    locator: "1.5 kg hashish and 370 g shabu."
+  qt26:
+    title: "Qatar Tribune — Customs foil drug smuggling attempt at Hamad International Airport (3 September 2026)"
+    url: https://www.qatar-tribune.com/article/251983/latest-news/customs-foil-drug-smuggling-attempt-at-hamad-international-airport
+    locator: "Same seizure; cross-check."
   trafficdrug:
     title: "Qatar Al Meezan legal portal — Traffic Law No. 19 of 2007, driving prohibitions"
     url: https://www.almeezan.qa/LawArticles.aspx?LawArticleID=54165&LawId=3993&language=en
@@ -240,9 +344,10 @@ sources:
     title: قانون رقم (9) لسنة 1987 في شأن مكافحة المخدرات والمؤثرات العقلية الخطرة — Law No. 9 of 1987, consolidated (Al Meezan)
     url: https://www.almeezan.qa/LawView.aspx?opt&LawID=3989&language=ar
     locator: >-
-      Article 37, marked as amended by Law 3 of 2020: six months to three years and a fine of
+      Article 37, marked as amended by Law 1 of 2006: six months to three years and a fine of
       QR10,000 to QR20,000 for personal use. Articles 29, 34 and 35 were read in the same
-      consolidation.
+      consolidation. Law 3 of 2020 changed institutional names and inspection powers, not this
+      penalty.
   cann:
     title: The Cannigma — Cannabis laws in Qatar
     url: https://cannigma.com/regulation/cannabis-laws-in-qatar/
