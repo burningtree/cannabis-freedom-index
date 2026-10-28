@@ -22,7 +22,12 @@ of these (committed) — verify and build on them, don't duplicate.
 - New `articles/puerto-rico-first-medical-dispensaries-2016.md` (Primera Hora) + `articles/puerto-rico-medical-executive-order-2015.md` (three-page signed order PDF).
 - Audit 0/0; full `npm test` 193/0; page + both articles verified in review HTML.
 - Left: driving/black_market (no sources); nothing post-Aug-2026 found.
-## bs — pending
+## bs — committed
+- Word Indian hemp (English (Bahamas), from the DDA); per-sentence cites; penalty tables (simple: $125k/10 yrs indictment, 5–7 yrs summary; intent: $500k/30 yrs, 4–7 yrs summary, 6–7 near schools); hemp + culture (1962 link + atlas) sections; products folded into medical.
+- New `articles/bahamas-cannabis-act-2024.md` + `articles/bahamas-indian-hemp-definition-1962.md` (definition verified verbatim in the DDA PDF I fetched; 1962 facts rest on the checked UN-doc entry — digitallibrary pattern untestable here).
+- Fixed two self-inflicted unquoted-colon YAML breaks (took down 4 test suites) + a dropped not_in_force cite + production guard wording, all before verifying.
+- Audit 0/0; full `npm test` 193/0; page + both articles verified in review HTML.
+- Left: driving/arrests (no sources), 1930s–2000s decades.
 ## aw — pending
 ## bb — pending
 ## vc — pending
