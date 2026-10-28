@@ -21,7 +21,14 @@ All batch files verified free of others' uncommitted changes at start.
 - No atlas entries: culture skipped; planting/driving/arrests skipped (no sources found). 1995 law consolidation still unverified (noted in profile).
 - Audit 0/0; country + both article review builds verified.
 - Left: 1930s/40s/50s/70s/80s history decades.
-## so — pending
+## so — committed
+- Fixed 4 `term` warnings on pre-existing rows; dropped unused schedule1970 from cultivation sources (citation-list test); reworded WRITING-flagged "establishes".
+- Per-sentence cites on 12 flagged texts; cultivation penalty table added (Art 4 vs 1984 decree, relationship expressly unresolved); new hemp (status none); words (Cannabis/Hashish as Decree 227's terms).
+- New black_market (GI-TOC 2025 "small market" + Kaab TV Mogadishu-airport smuggling/189 cartons, no arrests) and arrests (Goobjoog Apr 2024, Raxanreeb Dec 2024 operations) with 4 new sources.
+- New `articles/somalia-drug-offences-decree-1984.md` (Law 25: ten-year supply tier, premises offences, National Security Court).
+- No atlas entries: culture skipped; planting (beyond table) + driving skipped (no sources). "Nothing since 2008" addressed via 2024–2026 enforcement sources.
+- Audit 0/0; country + article review builds verified.
+- Left: 1920s–1950s, 2010s–2020s history decades.
 ## bi — pending
 ## ss — pending
 ## sl — pending

@@ -15,14 +15,17 @@ scores:
   sharing: 0
   consumption: 1
   access: 0
+words:
+  - { word: Cannabis, lang: Somali, meaning: "cannabis; listed by name in Decree 227", sources: [schedule1970] }
+  - { word: Hashish, lang: Somali, meaning: "cannabis resin; listed by name in Decree 227 and used by police and press", sources: [schedule1970] }
 segments:
   possession:
     text: >-
       Article 5 of Law 46 of 1970 prescribes two to seven years and a fine of 2,000–20,000 Somali
-      shillings for unauthorised acquisition or possession of listed narcotics. Decree 227 lists
-      cannabis and hashish. These are verified historical statutory provisions; a complete later
-      consolidation and present sentencing practice across all administrations have not been
-      established.
+      shillings for unauthorised acquisition or possession of listed narcotics.[@act1970] Decree 227
+      lists cannabis and hashish.[@schedule1970] These are verified historical statutory provisions;
+      a complete later consolidation and present sentencing practice across all administrations have
+      not been established.
     sources:
       - act1970
       - schedule1970
@@ -30,6 +33,7 @@ segments:
     penalties:
       - label: Unauthorised possession, Article 5 (1970)
         treatment: criminal
+        term: Possession
         prison_min: 2 years
         prison: 7 years
         fine: 20000
@@ -38,25 +42,37 @@ segments:
     text: >-
       Article 4 of the 1970 law requires special Health Ministry authorisation to cultivate, harvest
       or process plants yielding controlled substances; breach carries six months to two years plus
-      a fine. The 1984 decree separately prescribes ten years for unlawful manufacture or
-      production, without expressly resolving its relationship to cultivation under article 4. No
-      lawful home-growing route was established.
+      a fine.[@act1970] The 1984 decree separately prescribes ten years for unlawful manufacture or
+      production, without expressly resolving its relationship to cultivation under article
+      4.[@drugs1984] No lawful home-growing route was established.
     sources:
       - act1970
-      - schedule1970
       - drugs1984
+    penalties:
+      - label: Unauthorised cultivation (Article 4, 1970)
+        treatment: criminal
+        term: Cultivation
+        prison_min: 6 months
+        prison: 2 years
+        note: Plus a fine; historical baseline
+      - label: Unlawful manufacture or production (1984 decree)
+        treatment: criminal
+        term: Production
+        prison: 10 years
+        note: Relationship to Article 4 cultivation expressly unresolved
   enforcement:
     text: >-
       Depends entirely on who controls the territory: state courts, regional administrations, or
-      Al-Shabaab, which imposes corporal punishment for intoxicants.
+      Al-Shabaab, which imposes corporal punishment for intoxicants.[@euaa]
     sources:
       - euaa
   sharing:
     text: >-
-      Article 14 of the 1970 law restricts transfers even when free to authorised recipients.
-      Article 1 of Decree-Law 5 of 1984 prescribes ten years and a 50,000-shilling fine for unlawful
-      manufacture, production, import, dealing or supplying another person. This is a statutory
-      baseline, not a verified nationwide sentencing tariff today.
+      Article 14 of the 1970 law restricts transfers even when free to authorised
+      recipients.[@act1970] Article 1 of Decree-Law 5 of 1984 prescribes ten years and a
+      50,000-shilling fine for unlawful manufacture, production, import, dealing or supplying
+      another person.[@drugs1984] This is a statutory baseline, not a verified nationwide sentencing
+      tariff today.
     sources:
       - act1970
       - drugs1984
@@ -64,6 +80,7 @@ segments:
     penalties:
       - label: Supply or production, Decree-Law 5 (1984)
         treatment: criminal
+        term: Trafficking
         prison: 10 years
         fine: 50000
         note: Ten years and 50,000 shillings; statutory baseline
@@ -71,9 +88,9 @@ segments:
     text: >-
       Article 2 of the 1984 decree punishes allowing a public or private place to be used for drug
       consumption with five years and a 25,000-shilling fine; entering such a place to consume
-      carries three years and a 20,000-shilling fine. This is a consumption-premises offence, not
-      evidence of an identical sentence for every act of private use. EUAA documents separate
-      intoxicant prohibitions in Al-Shabaab-controlled areas.
+      carries three years and a 20,000-shilling fine.[@drugs1984] This is a consumption-premises
+      offence, not evidence of an identical sentence for every act of private use. EUAA documents
+      separate intoxicant prohibitions in Al-Shabaab-controlled areas.[@euaa]
     sources:
       - drugs1984
       - euaa
@@ -81,18 +98,21 @@ segments:
     penalties:
       - label: Allowing premises for consumption (1984)
         treatment: criminal
+        term: Permitting use
         prison: 5 years
         fine: 25000
       - label: Entering premises to consume (1984)
         treatment: criminal
+        term: Consumption
         prison: 3 years
         fine: 20000
   access:
     text: >-
-      No functioning cannabis-specific patient or recreational supply route was established. The
-      1970 law does provide a general narcotics medicines framework: authorised institutions and
-      pharmacies, prescriptions, medicinal doses and record keeping. Those provisions alone do not
-      demonstrate that cannabis medicines are available.
+      No functioning cannabis-specific patient or recreational supply route was
+      established.[@act1970] The 1970 law does provide a general narcotics medicines framework:
+      authorised institutions and pharmacies, prescriptions, medicinal doses and record
+      keeping.[@act1970,schedule1970] Those provisions alone do not demonstrate that cannabis
+      medicines are available.
     sources:
       - act1970
       - schedule1970
@@ -107,12 +127,21 @@ context:
       - act1970
       - drugs1984
       - euaa
+  hemp:
+    status: none
+    text: >-
+      No industrial-hemp exception was verified: the 1970 law and Decree 227 list cannabis and
+      hashish with no low-THC distinction, and no hemp production is documented.[@act1970,schedule1970]
+    sources:
+      - act1970
+      - schedule1970
   production:
     status: none
     text: >-
       The 1970 law puts narcotic production under Health Ministry control and sets annual laboratory
-      quotas. Its cannabis schedule and the 1984 production offence establish controls, but these
-      texts do not establish the present scale of lawful or illicit cannabis cultivation.
+      quotas.[@act1970] Its cannabis schedule and the 1984 production offence establish controls,
+      but these texts do not establish the present scale of lawful or illicit cannabis
+      cultivation.[@schedule1970,drugs1984]
     sources:
       - act1970
       - schedule1970
@@ -120,15 +149,17 @@ context:
   medical:
     text: >-
       Articles 6 and 15–17 of the 1970 law regulate institutional narcotics use, dispensing on
-      prescription and inappropriate prescribing. This is a general medicines framework; a working
-      cannabis programme and cannabis-specific prescribing permission were not verified.
+      prescription and inappropriate prescribing.[@act1970] This is a general medicines framework; a
+      working cannabis programme and cannabis-specific prescribing permission were not
+      verified.
     sources:
       - act1970
   consequences:
     text: >-
-      The 1984 decree assigned drug cases to the National Security Court and its regional branches,
-      with transitional rules for pending cases and earlier offences. These historical procedural
-      provisions should not be read as proof that those institutions operate today.
+      The 1984 decree assigned drug cases to the National Security Court and its regional
+      branches, with transitional rules for pending cases and earlier offences.[@drugs1984] These
+      historical procedural provisions should not be read as proof that those institutions operate
+      today.
     sources:
       - drugs1984
   clubs:
@@ -136,21 +167,39 @@ context:
     text: >-
       The texts reviewed do not provide a recreational club exemption: the 1970 law restricts
       gratuitous transfers, and the 1984 decree punishes organising public or private
-      drug-consumption premises. This establishes the statutory restriction, not a census of
-      associations operating informally.
+      drug-consumption premises.[@act1970,drugs1984] This states the statutory restriction,
+      not a census of associations operating informally.
     sources:
       - act1970
       - drugs1984
   visitors:
     status: none
     text: >-
-      The reviewed drug laws contain no recreational visitor exemption. The historical possession
-      and supply restrictions apply generally; no verified lawful recreational purchase route for
-      visitors was established. The general prescription provisions should not be treated as
-      permission to carry cannabis across the border.
+      The reviewed drug laws contain no recreational visitor exemption.[@act1970] The historical
+      possession and supply restrictions apply generally; no verified lawful recreational purchase
+      route for visitors was established.[@act1970,drugs1984] The general prescription provisions
+      should not be treated as permission to carry cannabis across the border.[@act1970]
     sources:
       - act1970
       - drugs1984
+  black_market:
+    text: >-
+      The organised-crime index describes Somalia's cannabis market as small with low but
+      persistent criminal involvement.[@gitoc25] What trade exists is shadowed by insecurity: CCTV
+      exposed airport staff and security officials smuggling drugs including cannabis through
+      Mogadishu airport, with 189 cartons seized in September and burned — and no arrests
+      made.[@kaab26] The 2026 seizure was intercepted before the drugs left the airport.[@kaab26]
+    sources:
+      - gitoc25
+      - kaab26
+  arrests:
+    text: >-
+      In April 2024 Banadir officials arrested four suspected traffickers in Mogadishu's Juungal
+      and Yaqshi districts and confiscated sacks of hashish.[@goobjoog24] A December 2024 operation
+      in Gubadley netted four more suspects and seven loads of cannabis.[@raxanreeb24]
+    sources:
+      - goobjoog24
+      - raxanreeb24
 answers:
   buy:
     answer: no
@@ -165,6 +214,18 @@ sources:
       areas
     url: >-
       https://euaa.europa.eu/coi/somalia/2025/country-focus/13-individuals-contravening-sharia-and-customary-lawstenets/131-individuals-contravening-sharia-law-al-shabaab-controlled-areas
+  gitoc25:
+    title: "Global Initiative Against Transnational Organized Crime — Somalia country profile 2025 (PDF)"
+    url: https://globalinitiative.net/wp-content/uploads/2025/11/GI-TOC-Somalia-EN.pdf
+  kaab26:
+    title: "Kaab TV — CCTV exposes major drug smuggling operation at Mogadishu airport (25 January 2026)"
+    url: https://kaabtv.com/cctv-exposes-major-drug-smuggling-operation-at-mogadishu-airport/
+  goobjoog24:
+    title: "Goobjoog English — Banadir regional officials arrest suspected drug traffickers in Mogadishu (6 April 2024)"
+    url: https://en.goobjoog.com/banadir-regional-officials-arrest-for-suspected-drug-traffickers-in-mogadishu/
+  raxanreeb24:
+    title: "Raxanreeb Online — Somali security forces arrest drug traffickers in Mogadishu (31 December 2024)"
+    url: https://raxanreeb.com/somali-security-forces-arrest-drug-traffickers-in-mogadishu/
   act1970:
     title: >-
       Somalia — Law 46 of 3 March 1970, Official Gazette 22 August 1970, pp. 833–842 (Roma Tre
