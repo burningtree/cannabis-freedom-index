@@ -10,9 +10,11 @@ words. This batch closes those gaps. None was marked busy.
 | Hong Kong | 6 Cantonese terms, trafficking life field, atlas link | none | this commit |
 | Kyrgyzstan | 6 Kyrgyz/Russian terms, culture and wild-plant fine corrections | none | this commit |
 | Singapore | in progress | | |
-| Oman | in progress | | |
+| Oman | 4 Omani Arabic terms, 2023 committee entry | none | this commit |
 | Kuwait | in progress | | |
 
 Kyrgyzstan validation: `profile-audit kg` zero errors and warnings. The profile now distinguishes Russian `anasha`, Kyrgyz `кара куурай` and `нашаа`, adds the law’s Russian terms for marijuana and hashish, and corrects the wild-plant fine from “landholders” to anyone obliged to clear the plants. Six terms added.
 
 Hong Kong validation: `profile-audit hk` zero errors and warnings. The profile now carries six Cantonese terms (大麻, 草, 花, 牛, 大麻花, 大麻精), marks the trafficking maximum as possible life, and adds Hong Kong to the `ma` atlas entry.
+
+Oman validation: `profile-audit om` zero errors and warnings. The profile now carries four Omani Arabic terms (حشيش, ماريجوانا, بانجو, قنب هندي) and one entry records the 2023 move of the national drug committee to the National Security Council.
