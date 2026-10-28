@@ -54,15 +54,16 @@ folk singer Fakir Lalon Shah, the authorities reportedly tolerate its use.[@1]
 ## The other extreme
 
 The [Narcotics Control Act of 2018](/history/bangladesh-narcotics-control-act-2018/)
-gave courts the power to impose a death sentence for possessing more than two
-kilograms of cannabis. Harm Reduction International condemned it that October.
+set ten years as the maximum for herbal cannabis, while hashish, as a Class A
+drug, can reach life imprisonment or death. Harm Reduction International
+condemned the law that October.
 
 | | Rule |
 |---|---|
 | Before 1987 | Licensed growing, government-approved shops |
 | 1987 | Growing banned |
 | 1989 | Sale banned |
-| 2018 | Death possible above two kilograms |
+| 2018 | Ten years for herbal cannabis; life or death possible for hashish |
 
 In the index the 1989 ban ended legal access for [Bangladesh](/country/bd/) and cut
 its other scores to the level of an ordinary prohibition; the 2018 Act lowered them

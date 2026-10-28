@@ -10,7 +10,7 @@ Bangladesh and Japan. None was marked busy.
 | Lebanon | 1946 law sourced, article written, cultivation/enforcement fixes, 4 words, 4 history entries | no licence issued yet | this commit |
 | Bhutan | 2004 article, trafficking terminology, 3 words, 2 history entries | 2023 commercial-hemp report unverified | this commit |
 | Pakistan | 1995 article, federal/provincial qualification, medical route, 5 words, 3 history entries | hashish schedule threshold unverified | this commit |
-| Bangladesh | in progress | | |
+| Bangladesh | 1987 article, production/access fix, culture and arrest corrections, 6 words, 4 history entries | hashish schedule item unverified | this commit |
 | Japan | 2023 reform article, cultivation maximum fix, medical wording, 5 words, 4 history entries | no approved cannabis medicine | this commit |
 
 Lebanon validation: `profile-audit lb` zero errors and warnings. The 1946 entry is dated 18 June, sourced to the primary law and Bouquet, and now has a 484-word article. The profile splits the Law 178 penalties, corrects the field-destruction year, adds four Lebanese Arabic terms and records the 2025 HHC/THCP scheduling, Yammouneh raid, 2026 laboratory agreement and draft drug law.
@@ -20,3 +20,5 @@ Japan validation: `profile-audit jp` zero errors and warnings. The cultivation-f
 Bhutan validation: `profile-audit bt` zero errors and warnings. The possession text and table now call amounts above the Schedule VII threshold illicit trafficking, the profile has three Nepali/Dzongkha terms, and the 2004 Penal Code entry has a 423-word article. Two entries cover the 2025 Paro airport sentences and the 2026 Narcotics Rules.
 
 Pakistan validation: `profile-audit pk` zero errors and warnings. The profile now marks the penalty table as federal (Islamabad) and notes the KP, Sindh, Punjab and Balochistan statutes, corrects the mandatory-minimum wording and the 2026 prescription route, records the 75 licence applications and adds five Urdu/Punjabi/Pashto terms. Three entries cover 2019–2026; the 441-word 1995 ordinance article is in `articles/`.
+
+Bangladesh validation: `profile-audit bd` zero errors and warnings. The profile now recognises the section 9(3) licensing exception for production, fixes the access and culture wording, replaces the confused Rangpur arrest sentence with the 2026 national figures, adds six Bengali terms and corrects the 1989 article’s “two kilograms” claim. Four entries cover 2025–2026; the 467-word 1987 cultivation-ban article is in `articles/`.
