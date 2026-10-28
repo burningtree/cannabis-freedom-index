@@ -1425,11 +1425,12 @@ details.segrow .segrow-top > span, .segrow:not(details) .segrow-top > span { fon
 .ctx-grid { columns: 2 340px; column-gap: clamp(32px, 4vw, 64px); }
 .segrow.ctx-tile { break-inside: avoid; padding: 16px 0 18px; border-bottom: 0; border-top: 1px solid var(--border); }
 .ctx-grid > .ctx-tile:first-child { border-top: 0; padding-top: 6px; }
-/* a section's status chips sit on its title line, to the right; several wrap there */
-.ctx-grid > .ctx-tile { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 14px; align-items: start; }
-.ctx-grid > .ctx-tile > * { grid-column: 1 / -1; }
-.ctx-grid > .ctx-tile > .segrow-top { grid-column: 1; margin-bottom: 4px; }
-.ctx-grid > .ctx-tile > .d-chips { grid-column: 2; grid-row: 1; justify-content: flex-end; max-width: 300px; margin: 2px 0 6px; }
+/* a section's status chips follow its title on the same line; when they do not fit there, the
+   whole group moves to the next line (flex items wrap as a block) */
+.ctx-grid > .ctx-tile { display: flex; flex-wrap: wrap; align-items: center; column-gap: 14px; }
+.ctx-grid > .ctx-tile > * { flex: 1 1 100%; min-width: 0; }
+.ctx-grid > .ctx-tile > .segrow-top { flex: 0 1 auto; margin-bottom: 4px; }
+.ctx-grid > .ctx-tile > .d-chips { flex: 0 1 auto; margin: 0 0 6px; }
 .ctx-wide { margin-top: 18px; }
 .ctx-wide > .ctx-tile { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 0 clamp(32px, 4vw, 64px); border-top: 1px solid var(--text); }
 .ctx-wide > .ctx-tile > :not(.ctx-spot) { grid-column: 1 / -1; }
