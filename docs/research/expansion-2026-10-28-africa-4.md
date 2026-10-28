@@ -44,5 +44,10 @@ history) — verify and build on them, don't duplicate.
 - Recent-news check: nothing GQ-side cannabis-specific since 2019 (only Nigeria→Malabo cocaine route).
 - Audit 0/0; page verified in review HTML.
 - Left: 1920s–50s, 2020s decades; first-restriction estimate kept.
-## dj — pending
+## dj — committed
+- Per-sentence cites ×13; penalty tables for possession/cultivation/sharing/consumption (terms, DJF); products folded into hemp/medical then deleted; new recreational + hemp sections.
+- Production/medical rewritten from the Penal Code (were Wikipedia-only); unused wiki source removed.
+- New `articles/djibouti-drug-offenders-excluded-pardon-1984.md` + `articles/djibouti-national-drug-committee-2000.md` (both from official-journal decrees).
+- Audit 0/0; page + both articles verified in review HTML.
+- Left: planting (no seed rule)/driving/arrests (no sources), words/culture (no atlas entry), 1920s, 1940s–60s, 2010s decades; first-restriction estimate kept.
 ## mu — pending
