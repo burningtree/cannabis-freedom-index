@@ -3,7 +3,7 @@ region: Oceania
 iso_numeric: 520
 recreational: illegal
 medical: none
-updated: '2026-10-23'
+updated: '2026-10-28'
 summary: >-
   Unlawful possession carries at least a year in custody; growing, supply and use face much longer
   prison terms.
@@ -22,6 +22,14 @@ segments:
       illicit-drug schedule.[@act]
     sources:
       - act
+    currency: AUD
+    penalties:
+      - label: Unlawful possession, any amount
+        treatment: criminal
+        term: Possession
+        prison_min: 12 months
+        prison: 3 years
+        note: Custody is mandatory; no fine option
   cultivation:
     text: >-
       Growing cannabis without lawful authority falls under the offence carrying life imprisonment
@@ -29,6 +37,13 @@ segments:
       planting, sowing, scattering seeds, tending and harvesting.[@act]
     sources:
       - act
+    currency: AUD
+    penalties:
+      - label: Unlawful cultivation, any amount
+        treatment: criminal
+        term: Cultivation
+        prison_min: 10 years
+        note: At least ten years without parole or probation; maximum life; no fine
   enforcement:
     text: >-
       The December 2024 amendment requires custody for possession and at least ten years before
@@ -62,6 +77,15 @@ segments:
     sources:
       - act
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Since 23 December 2024 possession carries twelve months to
+      three years in custody with no fine, while cultivation, supply, use and import or export carry
+      a minimum of ten years without parole or probation and a maximum of life.[@act] There are no
+      quantity thresholds or personal-use exemptions, and bail is barred for drug charges.[@bail]
+    sources:
+      - act
+      - bail
   production:
     status: none
     text: >-
@@ -70,10 +94,12 @@ context:
       supply.[@act]
     sources:
       - act
-  products:
+  hemp:
+    status: none
     text: >-
-      The illicit-drug schedule covers cannabis plants, fruit, seeds, oil, resin and THC. Possession
-      of drugs lawfully prescribed or provided for treating a medical condition is allowed.[@act]
+      No low-THC or industrial-hemp exemption. Cannabis plant, fruit, seed, oil, resin and THC are
+      Schedule 1 illicit drugs.[@act] Customs tariff lines for "true hemp" do not create a lawful
+      farming or seed-import pathway, and no hemp licensing scheme was found.[@act]
     sources:
       - act
   medical:
@@ -123,19 +149,64 @@ context:
   driving:
     status: impairment
     text: >-
-      Driving under the influence of a drug is an offence under Motor Traffic Act section 69(1). The
-      official Service 6 consolidation retains that drug limb, and section 114 permits arrest
-      without warrant on reasonable cause for a drug-driving contravention. Section 87 allows the
-      court to suspend or cancel a licence and disqualify a convicted driver for a period it
-      considers appropriate. No numeric THC threshold is established by the reviewed traffic
-      provisions: the prescribed concentrations and breath-testing regime concern alcohol. A
-      specific cannabis fine or prison ceiling remains unresolved because section 69(1) refers to
-      section 79, while section 79(1)’s graduated penalties expressly identify the alcohol-specific
-      section 69(2). Those alcohol tariffs should not be presented as verified cannabis penalties.
-      Current drug toxicology and refusal procedures still need confirmation.
+      Driving under the influence of a drug is an offence under Motor Traffic Act section
+      69(1).[@trafficServ6] The official Service 6 consolidation retains that drug limb, and section
+      114 permits arrest without warrant on reasonable cause for a drug-driving
+      contravention.[@trafficServ6] Section 87 allows the court to suspend or cancel a licence and
+      disqualify a convicted driver for a period it considers appropriate.[@trafficServ6] No numeric
+      THC threshold is established by the reviewed traffic provisions: the prescribed concentrations
+      and breath-testing regime concern alcohol.[@trafficServ6] A specific cannabis fine or prison
+      ceiling remains unresolved because section 69(1) refers to section 79, while section 79(1)'s
+      graduated penalties expressly identify the alcohol-specific section 69(2).[@trafficServ6]
+      Those alcohol tariffs should not be presented as verified cannabis penalties.[@trafficServ6]
+      Current drug toxicology and refusal procedures still need confirmation.[@trafficServ6]
     sources:
       - trafficServ6
+  black_market:
+    text: >-
+      OCIndex 2025 scores Nauru's cannabis trade 1.5 out of 10 and reports some smuggling, primarily
+      from Fiji, alongside local use and cultivation.[@ocindex25] UNODC's 2024 Pacific report says
+      most Nauru drug users use cannabis and inhalants, with methamphetamine still limited.[@unodc24]
+      The 2024 mutual evaluation report says drug offences are increasing but mostly possession and
+      personal use, with very few cases and minimal quantities.[@mer24] No price or seizure series is
+      published.[@ocindex25]
+    sources:
+      - ocindex25
+      - unodc24
+      - mer24
+  arrests:
+    text: >-
+      Police recorded 175 crime offences in the first quarter of 2024 across categories including
+      illicit drug use and possession, but published no drug-specific breakdown.[@q1_24] Two 2023–24
+      cases involved 1.4 g and 1.1 g, and one gram respectively; the adults received fines,
+      community service and probation.[@beadan23,case] No disaggregated 2025–26 drug-arrest data
+      was found.[@mer24]
+    sources:
+      - q1_24
+      - beadan23
+      - case
+      - mer24
 sources:
+  ocindex25:
+    title: "Global Initiative — OC Index 2025: Nauru profile"
+    url: https://ocindex.net/assets/downloads/2025/english/ocindex_profile_nauru_2025.pdf
+    locator: "Cannabis trade score 1.5/10; smuggling primarily from Fiji."
+  unodc24:
+    title: "UNODC — Transnational Organized Crime in the Pacific (2024)"
+    url: https://www.unodc.org/roseap/uploads/documents/Publications/2024/TOCTA_Pacific_2024.pdf
+    locator: "Nauru: cannabis and inhalants most used; methamphetamine limited."
+  mer24:
+    title: "Nauru — Mutual Evaluation Report 2024"
+    url: https://justice.gov.nr/wp-content/uploads/2024/12/Nauru-MER-2024-Published-version-1.pdf
+    locator: "Drug offences mostly possession/personal use; few cases, minimal quantities."
+  q1_24:
+    title: "Nauru Bulletin — Police records 618 offences in first quarter (2024)"
+    url: https://www.nauru.gov.nr/government-information-office/naoero-bulletin/naoero-bulletin-2024/nauru-bulletin-7/police-records-618-offences-in-first-quarter.aspx
+    locator: "175 crime offences in Q1 2024; no drug-specific breakdown."
+  beadan23:
+    title: "District Court of Nauru — Republic v Beadan, sentence of 28 December 2023"
+    url: https://ronlaw.gov.nr/assets/docs/court/district/2023/12/Republic%20of%20Nauru%20v%20Beadan%20-%20Extempore%20Sentence%20%5B2023%5D%20NRDC%2024%3B%20Criminal%20Case%2046%20of%202023%20%2828%20December%202023%29.pdf
+    locator: "1.4 g and 1.1 g; fines, community service and probation."
   trafficServ6:
     title: RONLAW — Motor Traffic Act 2014, Service 6 consolidation
     url: https://ronlaw.gov.nr/assets/docs/acts/2014/Motor%20Traffic%20Act%202014_serv6.pdf
