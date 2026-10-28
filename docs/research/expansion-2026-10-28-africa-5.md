@@ -42,4 +42,10 @@ so/bi/et/cd/ss/cf/mz/zw/bj/ug — Africa-1/2/3; tg/lr/ga/gw/gq/dj/mu — Africa-
 - New `articles/sao-tome-cannabis-crop-raids-2024.md` (RSTP) + `articles/sao-tome-overlapping-drug-laws-2012.md` (CEJ manual).
 - Fixed production wording to the audit's no-licence guard pattern. Audit 0/0; full `npm test` 193/0 (run mid-batch); page + both articles verified in review HTML.
 - Left: driving/black_market (no sources), culture (no atlas entry), 1920s–40s, 1960s, 1980s, 2000s decades.
-## sc — pending
+## sc — committed
+- Per-sentence cites (fixed one misattributed 2016-Act cite to wiki before verifying); hemp section; products folded into medical then deleted; penalty terms added; consequences expanded past the one-liner; production reworded to the audit's no-licence guard.
+- Left the 2016 Act tariff numbers (50-year trafficking, 20-year cultivation) on Wikipedia: the Act text is unfetchable (seylii 404s, Laws.Africa 404, gazette only via snippets) — flagged, not invented. A 2022 judgment snippet suggests life max for import/export, but snippet-only is not citable.
+- New `articles/seychelles-drug-sentence-review-2016.md` (Nation judiciary notice) + `articles/seychelles-misuse-of-drugs-commencement-1995.md` (R v Francois judgment: 1 July 1995 commencement, 166.4 g resin).
+- No words (no atlas entry, no local word found), no post-2023 news found (Volcere 2025 candidacy piece is JS-blocked; noted).
+- Audit 0/0; full `npm test` 193/0 (run mid-batch); page + both articles verified in review HTML.
+- Left: driving (has section already)/arrests (no data), 1920s, 1950s–70s decades.
