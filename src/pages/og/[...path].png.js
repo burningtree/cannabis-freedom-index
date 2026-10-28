@@ -7,6 +7,8 @@ import { SEGMENTS, DATA_SNAPSHOT, REC_LABEL, MED_LABEL, countries, places, chang
 import { tierOf, tierIndex } from "../../lib/tiers.js";
 import { MAP_VIEWS } from "../../lib/map-views.js";
 import { CULTURE_SECTIONS, cultureEntries, cultureIn, cultureSection } from "../../lib/culture.js";
+import { contextTopics } from "../../lib/contexts.js";
+import { datasetPages } from "../../lib/dataset-pages.js";
 import { survey, results } from "../../lib/survey.js";
 import { getFacts } from "../../lib/facts.js";
 import { renderOg, flagOf, photoOf, collageOf, TIER_HEX } from "../../og/render.js";
@@ -39,12 +41,17 @@ function historyCard(ch) {
   }];
 }
 const page = (title, text, facts = [], eyebrow = BRAND) => ["page", { eyebrow, title, text, facts }];
+// a sentence that ends itself
+const sentence = (s) => /[.!?]$/.test(s) ? s : `${s}.`;
+const yearsOf = (d) => d.fileInfo.years && (d.fileInfo.years[0] === d.fileInfo.years[1] ? `${d.fileInfo.years[0]}` : `${d.fileInfo.years[0]}–${d.fileInfo.years[1]}`);
 
 const dated = changes.filter((ch) => !ch.estimate);
 const scored = dated.filter((ch) => ch.score).length;
 const indexFacts = [[String(places.length), "COUNTRIES AND TERRITORIES"], [worldAvg.toFixed(1), "WORLD AVERAGE OF 100"], [num(dated.length), "HISTORY ENTRIES"]];
 const historyFacts = [[num(dated.length), "ENTRIES"], [num(scored), "MOVED A SCORE"], [num(articles.size), "ARTICLES"]];
 const surveyFacts = results.mock ? [] : [[num(results.respondents), "RESPONDENTS"], [num(results.observations), "PLACE REPORTS"], [num(results.price_reports), "PRICE REPORTS"]];
+const contextWritten = contextTopics.reduce((n, t) => n + t.filled, 0);
+const datasetFigures = datasetPages.reduce((n, p) => n + p.rows.length, 0);
 
 // path (as in the address, without slashes at the ends) → [template, props]
 const cards = {
@@ -77,6 +84,19 @@ for (const e of cultureEntries) {
   cards[e.url.slice(0, -1)] = e.image?.src?.fsPath
     ? ["culture", { eyebrow, title: e.title, text: e.summary, photo: { file: e.image.src.fsPath, fit: e.image.fit }, credit: e.image.credit }]
     : page(e.title, e.summary, [], eyebrow);
+}
+// the context topics, each compared across every country
+cards.context = page("Beyond the score", "What the score does not show, compared across every country: medicine, clubs, arrests, driving and more.", [[String(contextTopics.length), "TOPICS"], [num(contextTopics[0].total), "PLACES"], [num(contextWritten), "SECTIONS WRITTEN"]], `CONTEXT · ${BRAND}`);
+for (const t of contextTopics) cards[`context/${t.slug}`] = page(t.name, sentence(t.help),
+  [[num(t.filled), "PROFILES WITH THIS SECTION"], [num(t.notApplicable), "EXPLAINED AS NOT APPLICABLE"], [num(t.missing), "NOT RESEARCHED YET"]], `CONTEXT · ${BRAND}`);
+// the outside datasets, each with a map and every place's figure
+cards.datasets = page("Datasets", "What others count about cannabis, country by country: use, offences, prices, potency, opinion and freedom.", [[String(datasetPages.length), "DATASETS"], [num(datasetFigures), "COUNTRY FIGURES"]], `DATASETS · ${BRAND}`);
+for (const p of datasetPages) {
+  const years = yearsOf(p.d);
+  const n = p.rows.length;
+  cards[`datasets/${p.slug}`] = page(p.d.name, sentence(`${p.d.publisher} · ${p.d.when}`), p.d.worldwide
+    ? [["Worldwide", "NOT COUNTRY BY COUNTRY"], ...(years ? [[years, "YEARS IN THE FILE"]] : [])]
+    : [[num(n), n === places.length ? "PLACES COVERED" : n === 1 ? "PLACE COVERED" : `OF ${places.length} PLACES COVERED`], ...(years ? [[years, "YEARS IN THE FILE"]] : [])], `DATASETS · ${BRAND}`);
 }
 // each open exhibition in its own look, with one of its posters
 for (const e of openExhibitions) if (e.og) cards[exhibitionPath(e).slice(0, -1)] = ["exhibition", {
