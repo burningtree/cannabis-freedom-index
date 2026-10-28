@@ -22,3 +22,18 @@ Philippines validation: `profile-audit ph` zero errors/warnings; `country-gaps p
 Timor-Leste validation: `profile-audit tl` zero errors/warnings; `country-gaps tl` has no missing sections, tables or citations. The profile now adds recreational, hemp, driving, black-market and arrest sections, folds away the old products block, states the 5 g herb / 2.5 g resin / 1.25 g oil threshold explicitly, adds possession and cultivation tables, and says plainly that no medical programme exists. The 2017 conviction is now “suspected” cannabis, the 2022 parcel is live seedlings, and the 2017 law is described as superseding the Indonesian law in practice. Ten entries cover 1997–2026.
 
 Indonesia validation: `profile-audit id` zero errors/warnings; `country-gaps id` has no missing sections, tables or citations. The profile now separates Article 111 plant-form possession from Article 609 dried/resin possession, where more than 5 g can bring life or twenty years, adds the Article 114 non-plant threshold, and gives Article 127 use its own penalty row. Enforcement and the death-penalty section now say Indonesia has not executed anyone since July 2016 (639 on death row, 441 for drugs, no cannabis-specific death sentence found in 2024–2026). The research section records the 2025 BNN university programme, visitors include the 5 g non-plant threshold, and medical notes that the research route is not patient access. Fourteen entries cover 1935–2026, including the 2014 Aceh qanun, the 2015/2016 executions and the 2026 Thai-buds seizure.
+
+## Batch result
+
+All five countries are committed. Final totals: 59 history entries added or corrected (Indonesia 14,
+Philippines 15, Thailand 9, Vietnam 11, Timor-Leste 10). Every profile has zero `profile-audit`
+errors and warnings, no missing standard or researched sections, no missing penalty tables and no
+uncited text.
+
+Remaining gaps:
+
+- **Indonesia:** no cannabis-specific death sentence was verified in 2024–2026; death-row figures cover all drugs; BNN’s wet plant weights and dried seizures are not comparable; district Aceh qanuns were not reviewed.
+- **Philippines:** the medical-cannabis bill’s status after September 2026 is uncertain; the 2024 PDEA breakdown comes from press reports; no national cannabis-only arrest series.
+- **Thailand:** simple possession without a prescription is not clearly a standalone offence; the public-smoking penalty figures conflict between DTAM and older press; the draft Cannabis Control Act had not passed.
+- **Vietnam:** no cannabis execution was verified; hemp’s status after the 2025 law is ambiguous; the 2026 death-penalty proposal had not been voted.
+- **Timor-Leste:** the 1930s–1990s remain empty; the 1925 estimate is unsourced; no national cannabis seizure or arrest series exists.
