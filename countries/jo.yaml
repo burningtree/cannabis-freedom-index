@@ -3,11 +3,12 @@ region: Asia
 iso_numeric: 400
 recreational: death
 medical: limited
-updated: '2026-10-28'
+updated: "2026-10-28"
 summary: >-
   Cannabis remains criminal: personal plant possession can bring one to six months, a JOD200–500
-  fine, or both; resin carries one to three years plus a fine. First offences leave no criminal
-  precedent or security record. Separate rules cover prescription CBD products and hemp seed foods.
+  fine, or both; resin carries one to three years plus a fine. First personal-use offences leave no
+  criminal precedent or security record. Separate rules cover prescription CBD products and hemp
+  seed foods.
 scores:
   possession: 0
   cultivation: 1
@@ -34,6 +35,7 @@ segments:
         prison_min: 1 month
         prison: 6 months
         note: One to six months, JOD200–500 fine, or both; first offence leaves no record
+        fine_min: 200
       - label: Personal possession of cannabis resin (table 1)
         treatment: criminal
         term: Personal possession
@@ -41,6 +43,7 @@ segments:
         prison_min: 1 year
         prison: 3 years
         note: One to three years and a JOD1,000–3,000 fine
+        fine_min: 1000
   cultivation:
     text: >-
       Growing cannabis for personal use is a separate, lesser offence from growing for
@@ -76,6 +79,7 @@ segments:
         fine_min: 20000
         fine: 30000
         note: Life imprisonment with hard labour and a JOD20,000–30,000 fine
+        life: mandatory
   enforcement:
     text: >-
       Personal-use offences can lead to prison.[@l23] Courts may substitute inpatient or outpatient
@@ -118,7 +122,8 @@ segments:
         term: Trafficking
         fine_min: 20000
         fine: 30000
-        note: Life imprisonment with hard labour and a fine
+        note: Hard labour and a fine
+        life: mandatory
       - label: International drug gang or linked international crime
         treatment: criminal
         term: Trafficking
@@ -126,8 +131,8 @@ segments:
         note: Mandatory death under Article 20
   consumption:
     text: >-
-      Use and acts intended for personal use are criminal offences, with the punishment depending
-      on the substance’s schedule.[@l23,schedules26] Courts may order treatment instead of
+      Use and acts intended for personal use are criminal offences, with the punishment depending on
+      the substance’s schedule.[@l23,schedules26] Courts may order treatment instead of
       punishment.[@l23] A person who seeks treatment before being caught, directly or through
       family, is protected from prosecution.[@l23]
     sources:
@@ -135,8 +140,8 @@ segments:
       - schedules26
   access:
     text: >-
-      Recreational supply remains prohibited.[@l23] Separate 2023 rules provide for approval of
-      CBD natural medicines and preparations containing no more than 0.3% THC, dispensed on a valid
+      Recreational supply remains prohibited.[@l23] Separate 2023 rules provide for approval of CBD
+      natural medicines and preparations containing no more than 0.3% THC, dispensed on a valid
       medical prescription, with regulatory controls on imports and exports.[@cbd23]
     sources:
       - l23
@@ -155,12 +160,13 @@ context:
   death_penalty:
     text: >-
       Article 20 requires death for specified aggravated trafficking offences involving
-      international drug gangs or links to other international crimes.[@l23] Ordinary personal use
-      is dealt with separately under article 9.[@l23] The international-gang death clause also
-      appeared in the law replaced in 2016.[@oldlaw]
+      international drug gangs or links to other international crimes.[@l23] Article 19(b) requires
+      life with hard labour for repeat trafficking, trafficking by officials or trafficking
+      involving a minor, and article 12(1)(d) provides death where an assault on an enforcement
+      official causes death.[@l23] Ordinary personal use is dealt with separately under article 9
+      and cannot carry death or life.[@l23]
     sources:
       - l23
-      - oldlaw
   production:
     status: medical
     text: >-
@@ -173,23 +179,22 @@ context:
       - cbd23
   medical:
     text: >-
-      The legal medical route is limited to approved CBD medicines and natural preparations containing
-      no more than 0.3% THC, dispensed on a valid prescription.[@cbd_reprint] Product approval
-      requires manufacturer and analytical-quality documentation; imports and exports require the
-      regulator’s stamped invoice.[@cbd_reprint] Prescribing follows the official
-      controlled-prescription form.[@cbd_reprint]
+      The legal medical route is a 2023 framework for approved CBD medicines and natural
+      preparations containing no more than 0.3% THC, dispensed on a valid
+      prescription.[@cbd_reprint] Product approval requires manufacturer and analytical-quality
+      documentation; imports and exports require the regulator’s stamped invoice.[@cbd_reprint] No
+      approved product or patient count was verified.
     sources:
       - cbd_reprint
   hemp:
-    status: standard
+    status: none
     text: >-
       No THC limit makes a cannabis plant legal hemp: controlled plants and their seeds remain
-      prohibited except through the licensing authority.[@l23] The regulator's schedules do exclude
-      CBD-dominant oils, extracts and preparations containing no more than 0.3% delta-9 THC from the
-      controlled-drug tables; that line applies to products, not to a hemp crop.[@schedules26] The 2023 instructions require product approval and
-      prescriptions for CBD medicines, regulate external-use cosmetics and devices, and permit
-      specified hemp seed foods with THC and CBD limits; these are product rules, not a licence to
-      grow hemp.[@cbd23]
+      prohibited except through a licensing authority.[@l23] The product schedules exclude
+      CBD-dominant oils, extracts and preparations below the controlled-table threshold, but that is
+      a product rule, not a hemp-growing regime.[@schedules26] The 2023 instructions permit
+      specified hemp seed foods with THC and CBD limits; no hemp-crop licence or regulation was
+      found.[@cbd23]
     sources:
       - l23
       - schedules26
@@ -236,19 +241,19 @@ context:
   arrests:
     text: >-
       Police recorded 22,031 drug crimes in 2025, down 12.8 per cent from 25,260 in 2024, with
-      possession and use falling 10 per cent to 15,720 and trafficking 19 per cent to
-      6,311.[@psd26] The 2024 total covered 38,782 people and included 3,000 kg of hashish and
-      262 kg of marijuana; 744 people entered rehabilitation.[@petra25] The figures cover all drugs
-      and are not broken down by cannabis.[@psd26]
+      possession and use falling 10 per cent to 15,720 and trafficking 19 per cent to 6,311.[@psd26]
+      The 2024 total covered 38,782 people and included 3,000 kg of hashish and 262 kg of marijuana;
+      744 people entered rehabilitation.[@petra25] The figures cover all drugs and are not broken
+      down by cannabis.[@psd26]
     sources:
       - psd26
       - petra25
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 263 kg of herbal
-      cannabis seized in 2024, against 70.5 kg in 2023, and 6,243 kg of cannabis resin
-      seized in 2023, against 7,313 kg in 2022.[@unodc_szr] The anti-narcotics department reported
-      3,000 kg of hashish and 262 kg of marijuana seized in 2024, alongside 27.5 million Captagon
+      Figures reported by the government to the UN drugs office record 263 kg of herbal cannabis
+      seized in 2024, against 70.5 kg in 2023, and 6,243 kg of cannabis resin seized in 2023,
+      against 7,313 kg in 2022.[@unodc_szr] The anti-narcotics department reported 3,000 kg of
+      hashish and 262 kg of marijuana seized in 2024, alongside 27.5 million Captagon
       pills.[@petra25] The figures use different categories and counting methods, so they are not
       directly comparable.[@unodc_szr,petra25]
     sources:
@@ -257,14 +262,24 @@ context:
   driving:
     status: impairment
     text: >-
-      The amended Traffic Law No. 18 of 2023, in force from 12 September 2023, punishes
-      driving under the influence of alcohol or drugs with one to three months in prison,
-      a fine of 250 to 500 dinars, or both, as the judge decides; the judge may also
-      confiscate the licence for two months.[@roya_traffic23,jn_traffic23] The law gives public
-      security officers the power to test a detained driver for alcohol and drugs.[@roya_traffic23,jn_traffic23]
+      The amended Traffic Law No. 18 of 2023, in force from 12 September 2023, punishes driving
+      under the influence of alcohol or drugs with one to three months in prison, a fine of 250 to
+      500 dinars, or both, as the judge decides; the judge may also confiscate the licence for two
+      months.[@roya_traffic23,jn_traffic23] The law gives public security officers the power to test
+      a detained driver for alcohol and drugs.[@roya_traffic23,jn_traffic23]
     sources:
       - roya_traffic23
       - jn_traffic23
+  research:
+    status: licensed
+    text: >-
+      Article 5 lets the health minister license scientific institutes and research centres to
+      import or possess controlled substances for medical or scientific use.[@l23] Jordan-affiliated
+      cannabis papers in OpenAlex rose to 19 in 2024 and 13 in 2025, but no specific landmark study
+      was verified.[@openalex]
+    sources:
+      - l23
+      - openalex
 sources:
   l23:
     type: law
@@ -277,12 +292,15 @@ sources:
       Articles 2–6, 9, 15, 19–20 and 39; final publication and commencement notes for the 2016 law
       and 2021 amendment
   psd26:
-    title: "Khaberni — Drug crimes in Jordan decline by 12.8% during 2025"
+    title: Khaberni — Drug crimes in Jordan decline by 12.8% during 2025
     url: https://www.khaberni.com/news/803979-decline-in-drug-crimes-in-jordan-by-128-during-2025
-    locator: "22,031 crimes in 2025 against 25,260 in 2024; 15,720 possession/use; 6,311 trafficking."
+    locator: 22,031 crimes in 2025 against 25,260 in 2024; 15,720 possession/use; 6,311 trafficking.
   petra25:
-    title: "Roya News — Over 38,000 arrests: Anti-Narcotics Department in Jordan releases annual report (2025)"
-    url: "https://en.royanews.tv/news/56594/Over-38,000-arrests:-Anti-Narcotics-Department-in-Jordan-releases-annual-report"
+    title: >-
+      Roya News — Over 38,000 arrests: Anti-Narcotics Department in Jordan releases annual report
+      (2025)
+    url: >-
+      https://en.royanews.tv/news/56594/Over-38,000-arrests:-Anti-Narcotics-Department-in-Jordan-releases-annual-report
     locator: "2024: 25,260 cases, 38,782 people, 3,000 kg hashish, 262 kg marijuana, 744 in rehabilitation."
   nchr26:
     title: The Star (Xinhua) — Jordan sees 34 pct drop in drug-related crimes in 2025 (16 September 2026)
@@ -337,3 +355,7 @@ sources:
     locator: >-
       Article 7 prescription requirement; linked articles 5–6 approval and stamped-invoice imports;
       JFDA PDF unavailable on this read
+  openalex:
+    title: OpenAlex — Cannabis papers affiliated with Jordan (repository extract)
+    url: https://openalex.org/
+    locator: 19 Jordan-affiliated cannabis papers in 2024; 13 in 2025.
