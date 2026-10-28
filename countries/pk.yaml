@@ -223,14 +223,16 @@ context:
     sources:
       - ccra_scope
   hemp:
-    status: strict
+    status: standard
     text: >-
-      Industrial hemp is a licensed category. The regulator issues cultivation licences in three
-      size classes, from up to 50 acres to more than 250 acres, with police clearance, tax
-      registration and site-security conditions.[@ccra_scope] No published THC ceiling was found
-      in the sources read, so the licence conditions are the relevant limit.[@ccra_scope]
+      Industrial hemp is a licensed category with a THC ceiling of 0.3%. The regulator issues
+      A-1 cultivation licences in three size classes, from up to 50 acres to more than 250 acres,
+      with police clearance, tax registration and site-security conditions.[@ccra_policy] The 2026
+      licensing rules add application and issuance fees, a five-year term and THC testing.[@ccra_rules]
+      Recreational use remains illegal.[@ccra_policy]
     sources:
-      - ccra_scope
+      - ccra_policy
+      - ccra_rules
   consequences:
     text: >-
       A narcotics conviction carries a criminal record.[@shc] The Act sets mandatory minimum
@@ -285,21 +287,25 @@ context:
       - motortraffic
   black_market:
     text: >-
-      The whole market is illegal, and hashish (charas) is the drug the Anti-Narcotics Force
-      seizes most. In the twelve months to mid-2023 the force reported 157.5 tonnes of drugs seized
-      nationwide, of which 61.8 tonnes were hashish, ahead of 43.2 tonnes of opium and 9.3 tonnes
-      of heroin; 1,652 people were arrested in 1,678 cases.[@dt23] Eight operations at sea in 2023,
-      run with foreign agencies, took another 13.3 tonnes of charas, which points to a large export
-      trade as well as a domestic one.[@dt23]
+      The whole market is illegal, and hashish (charas) is the drug the authorities seize most. In
+      2024 Pakistan reported seizing 167.4 tonnes of cannabis resin and 9.9 tonnes of herbal
+      cannabis, a sharp rise from 102.4 tonnes of resin in 2023.[@unodc] The 2025 INCSR recorded
+      138.63 tonnes of hashish in the twelve months to June 2024, alongside 11.1 tonnes of heroin
+      and 16.8 tonnes of opium, and estimated that cannabis had become the most popular
+      drug.[@incsr] No price or purity data were found.
     sources:
-      - dt23
+      - unodc
+      - incsr
   arrests:
     text: >-
-      In the twelve months to mid-2023 the Anti-Narcotics Force reported 1,652 arrests in 1,678
-      cases and 157.5 tonnes of drugs seized, including 61.8 tonnes of hashish.[@dt23] No official
-      arrest or prosecution figures for 2024–2026 were found in the sources read.
+      The 2025 INCSR recorded about 93,440 drug-related arrests in the twelve months to June 2024,
+      predominantly low-level dealers, and 8 million people who had used drugs in 2024.[@incsr]
+      The number of people imprisoned under the narcotics act rose from 19,636 in 2023 to 23,367
+      in 2024 and 25,168 in June 2026, when they made up 22.31% of Pakistan's prison
+      population.[@jpp] The figures cover all drugs and give no cannabis breakdown.
     sources:
-      - dt23
+      - incsr
+      - jpp
   culture:
     text: >-
       Pakistan's cannabis culture centres on [charas](/culture/language/charas/), the hand-rubbed
@@ -340,6 +346,28 @@ sources:
   wiki:
     title: Wikipedia — Cannabis in Pakistan
     url: https://en.wikipedia.org/wiki/Cannabis_in_Pakistan
+  ccra_policy:
+    title: "Pakistan — National Cannabis Control and Regulatory Policy, 2025 (approved 20 January 2026)"
+    url: https://www.ccra.gov.pk/storage/gallery/Cannabis_Policy%202025.pdf
+    locator: "Recreational use illegal; industrial hemp THC below 0.3%; medicinal cannabis above 0.3%."
+  ccra_rules:
+    title: "Pakistan — Cannabis Control and Regulatory Authority (Licensing) Rules, 2026"
+    url: https://ccra.gov.pk/storage/gallery/CCRA%20Licensing%20Rules%20CCRA.pdf
+    locator: "A-1 industrial hemp (THC at or below 0.3%), A-2/A-3 medicinal, B-1/B-2 processing and extraction, C-1/C-2 research and testing."
+  unodc:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report 2026 data)"
+    url: https://data.unodc.org/datareport/drug-seizure
+    locator: "Pakistan 2024: 167,395 kg cannabis resin and 9,859 kg herbal cannabis; 2023 resin 102,400 kg."
+  incsr:
+    type: report
+    title: "US Department of State — 2025 International Narcotics Control Strategy Report, Volume 1"
+    url: https://www.state.gov/wp-content/uploads/2025/03/2025-International-Narcotics-Control-Strategy-Volume-1-Accessible.pdf
+    locator: "Pakistan chapter, pp. 286–287: 138.63 t hashish, 11.1 t heroin, 16.8 t opium, 93,440 arrests, 8 million users."
+  jpp:
+    type: report
+    title: "Justice Project Pakistan — Women, Poverty and the Failure of the CNSA (August 2026)"
+    url: https://www.jpp.org.pk/wp-content/uploads/2026/08/Drug-Policy-CNSA.pdf
+    locator: "CNSA prisoners: 19,636 in 2023; 23,367 in 2024; 25,168 in June 2026; 22.31% of prison population; 76.64% undertrial."
   ccra_scope:
     title: Pakistan Cannabis Control and Regulatory Authority — licence eligibility and scope
     url: https://www.elicense.ccra.gov.pk/pre-requisite
