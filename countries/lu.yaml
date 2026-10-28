@@ -3,7 +3,7 @@ region: Europe
 iso_numeric: 442
 recreational: legal
 medical: legal
-updated: '2026-10-27'
+updated: '2026-10-28'
 summary: >-
   Adults may grow four plants from seed per household and use their harvest at home. Small
   possession elsewhere can bring a €145 warning payment or a criminal fine. There is no legal
@@ -23,19 +23,25 @@ segments:
         treatment: criminal
         fine: 500
         note: >-
-          Away from the authorised home; €145 warning payment is an alternative to court. Lawfully
-          grown harvest may be kept at home
+          Away from the authorised home; €145 warning payment is an alternative to court.
+          Lawfully grown harvest may be kept at home
+        fine_min: 25
+        term: Unauthorised personal possession
       - over: 3 g
         treatment: criminal
         prison_min: 8 days
         prison: 6 months
         fine: 2500
-        note: Unauthorised personal possession; the home-grown harvest exception remains separate
+        note: >-
+          Unauthorised personal possession; the home-grown harvest exception remains separate;
+          prison or a fine, or both
+        fine_min: 251
+        term: Unauthorised personal possession
     text: >-
       Adults may keep the harvest of their lawful home-grown plants at home. Away from the
-      authorised home, personal possession up to 3 g can be settled by a €145 warning payment; the
-      court alternative is a €25–500 criminal fine. Above 3 g, the personal-possession range is
-      eight days to six months and/or €251–2,500.[@loi2023]
+      authorised home, personal possession up to 3 g can be settled by a €145 warning payment;
+      the court alternative is a €25–500 criminal fine. Above 3 g, the personal-possession range
+      is eight days to six months and/or €251–2,500.[@loi2023]
     sources:
       - loi2023
   cultivation:
@@ -46,20 +52,26 @@ segments:
         note: >-
           Adults, from seed, per household, at the authorised residence and hidden from public
           view
+        term: Cultivation
       - over: 4 plants
         treatment: criminal
         prison_min: 8 days
         prison: 5 years
         fine: 250000
+        term: Cultivation
+        fine_min: 500
+        note: Prison or a fine, or both
       - label: Cultivation outside the authorised residence
         treatment: criminal
         prison_min: 8 days
         prison: 5 years
         fine: 250000
-        note: Applies even within the four-plant cap
+        note: Applies even within the four-plant cap; Prison or a fine, or both
+        term: Cultivation
+        fine_min: 500
     text: >-
-      Adults may grow four plants per household from seed at their home or habitual residence, out
-      of public view. More than four plants, or cultivation outside the authorised location,
+      Adults may grow four plants per household from seed at their home or habitual residence,
+      out of public view. More than four plants, or cultivation outside the authorised location,
       carries eight days to five years and/or €500–250,000.[@loi2023]
     sources:
       - loi2023
@@ -72,78 +84,155 @@ segments:
       - homeguide
   sharing:
     text: >-
-      Not allowed. Home-grown cannabis is for the household's own use, and handing it to anyone
-      else, paid or not, remains a supply offence.
+      Selling, offering, importing or otherwise putting cannabis into circulation carries one to
+      five years and/or €500–€1,250,000 under Article 8.[@druglaw] Specified locations raise the
+      minimums to two years and €1,000; supplying minors or causing specified serious injury can
+      bring five to ten years and €1,250–€1,250,000.[@druglaw] Organised activity or supply
+      resulting in death can bring fifteen to twenty years and €1,250–€1,250,000, with life
+      imprisonment where the death-related offence concerns a minor.[@druglaw] Facilitating
+      another person’s cannabis use carries a separate €251–€25,000 fine.[@loi2023]
     sources:
-      - cms
-      - mondaq
+      - druglaw
+      - loi2023
+    currency: EUR
+    penalties:
+      - label: Supply, sale or import
+        treatment: criminal
+        term: Supply
+        prison_min: 1 year
+        prison: 5 years
+        fine_min: 500
+        fine: 1250000
+        note: Prison or a fine, or both; Article 8
+      - label: Supply in specified locations
+        treatment: criminal
+        term: Supply
+        prison_min: 2 years
+        prison: 5 years
+        fine_min: 1000
+        fine: 1250000
+        note: >-
+          Prison or a fine, or both; prisons, schools, social-service centres or specified
+          nearby activities
+      - label: Supply to minors or causing specified serious injury
+        treatment: criminal
+        term: Aggravated supply
+        prison_min: 5 years
+        prison: 10 years
+        fine_min: 1250
+        fine: 1250000
+        note: Article 9
+      - label: Organised activity or supply causing death
+        treatment: criminal
+        term: Aggravated supply
+        prison_min: 15 years
+        prison: 20 years
+        fine_min: 1250
+        fine: 1250000
+        note: Article 10
+      - label: Death-related supply offence concerning a minor
+        treatment: criminal
+        term: Aggravated supply
+        life: mandatory
+        note: Article 10, second paragraph
+      - label: Facilitating another person’s use
+        treatment: criminal
+        term: Facilitating cannabis use
+        fine_min: 251
+        fine: 25000
+        note: Article 7-1(3)
   consumption:
     text: >-
-      Adults may use their lawful harvest at home. Public use can receive a €145 warning payment
-      or €25–500 criminal fine. Use at work, in schools or in the presence of minors can bring
-      eight days to six months and/or €251–2,500; using together with minors carries six months to
-      two years and/or €500–25,000.[@homeguide]
+      Adults may consume their lawful harvest at home.[@loi2023] Unauthorised public use can
+      bring a €145 warning payment or €25–€500 criminal fine.[@loi2023] Using in front of
+      minors, in schools or at work carries eight days to six months and/or
+      €251–€2,500.[@loi2023] Offering cannabis to minors carries six months to two years and/or
+      €500–€25,000.[@loi2023]
     sources:
-      - homeguide
+      - loi2023
+    currency: EUR
+    penalties:
+      - label: Lawful harvest at home
+        treatment: legal
+        term: Private consumption
+      - label: Unauthorised public use
+        treatment: criminal
+        term: Cannabis use
+        fine_min: 25
+        fine: 500
+        note: €145 warning payment may settle the case
+      - label: Use before minors, at school or work
+        treatment: criminal
+        term: Cannabis use
+        prison_min: 8 days
+        prison: 6 months
+        fine_min: 251
+        fine: 2500
+        note: Prison or a fine, or both; Article 7-1(4)
   access:
     text: >-
-      There is no legal place to buy cannabis. Seeds can be bought in shops or online; a planned
-      second phase with state-regulated production and sale has not been enacted. Medical cannabis
-      is dispensed through hospital pharmacies.
+      The [2023 home-growing law](/history/luxembourg-home-grow-2023/) provides a personal
+      harvest route, without recreational shops or licensed clubs.[@loi2023] Medical cannabis is
+      prescribed by specially trained doctors and dispensed through hospital pharmacies under
+      the [2018 medical law](/history/luxembourg-medical-2018/).[@druglaw]
     sources:
-      - cms
-      - guide
+      - loi2023
+      - druglaw
 context:
   production:
-    status: none
+    status: hemp
     text: >-
-      No commercial production of recreational cannabis is permitted. Medical cannabis is imported
-      under state contract.
+      Recreational commercial growing and supply remain subject to the drug-law
+      offences.[@druglaw] The schedule separately excludes authorised agricultural hemp
+      varieties and qualifying non-intoxicating commercial varieties below 1% THC.[@schedule]
+      The medical programme uses centrally procured products dispensed by hospital
+      pharmacies.[@medreport]
     sources:
-      - guide
+      - druglaw
+      - schedule
+      - medreport
   medical:
     text: >-
-      Patients obtain prescribed cannabis free from hospital pharmacies, through a doctor with the
-      required certified training.[@patientguide] Eligibility covers specified severe pain
+      Patients obtain prescribed cannabis free from hospital pharmacies, through a doctor with
+      the required certified training.[@patientguide] Eligibility covers specified severe pain
       conditions, chemotherapy-related nausea or vomiting, and multiple-sclerosis spasticity;
       patients must meet a residence, nationality or Luxembourg insurance
-      condition.[@patientguide] From January 2025 the programme reduced the flower allowance to 60
-      g per 28 days and stopped restocking THC-dominant flower, with existing stock dispensable
-      until exhausted.[@med2025,medfaq] CBD-dominant and balanced flower and three cannabinoid
-      profiles of oil remained in the announced programme.[@med2025]
+      condition.[@patientguide] From January 2025 the programme reduced the flower allowance to
+      60 g per 28 days and stopped restocking THC-dominant flower, with existing stock
+      dispensable until exhausted.[@med2025,medfaq] CBD-dominant and balanced flower and three
+      cannabinoid profiles of oil remained in the announced programme.[@med2025]
     sources:
       - patientguide
       - med2025
       - medfaq
   consequences:
     text: >-
-      Paying a €145 warning and receiving a court-imposed criminal fine are different outcomes
-      under the small-possession procedure.[@loi2023] Driving has a separate offence threshold of
-      1 ng/mL or more in blood serum.[@healthfaq] Home-growing permission provides no exemption
-      from that road rule.[@healthfaq]
+      Paying the €145 warning within forty-five days stops prosecution under the
+      small-possession procedure.[@loi2023] Immediate payment entails surrender of the cannabis
+      for destruction; a contested allegation leads to seizure for analysis.[@loi2023]
+      Court-imposed criminal fines follow a separate route.[@loi2023]
     sources:
       - loi2023
-      - healthfaq
   planting:
     seeds: legal
     seeds_trade: open
     clones: illegal
     clones_trade: banned
     text: >-
-      Home growing is authorised only from seed: up to four plants per household. Seeds must
-      be labelled with the producer's details, the number of seeds and a health warning. The
-      law gives no permission to grow from cuttings, so cuttings remain cannabis that may not
-      be sold.
+      Adults may grow up to four plants from seed per household at the authorised
+      residence.[@loi2023] Seed labels must identify the producer, quantity and health
+      warning.[@loi2023] The household permission expressly covers seed propagation; it provides
+      no corresponding permission for cuttings.[@loi2023]
     sources:
       - loi2023
   visitors:
     status: none
     text: >-
-      Recreational shops are not authorised.[@homeguide] A visitor carrying up to 3 g away from an
-      authorised residence can receive the €145 warning payment or a criminal fine; larger amounts
-      can bring prison.[@loi2023] Medical eligibility is broader than residence alone: Luxembourg
-      nationality or insurance can also qualify a patient, subject to the programme’s medical
-      conditions.[@patientguide]
+      Recreational shops are not authorised.[@homeguide] A visitor carrying up to 3 g away from
+      an authorised residence can receive the €145 warning payment or a criminal fine; larger
+      amounts can bring prison.[@loi2023] Medical eligibility is broader than residence alone:
+      Luxembourg nationality or insurance can also qualify a patient, subject to the programme’s
+      medical conditions.[@patientguide]
     sources:
       - homeguide
       - loi2023
@@ -160,71 +249,72 @@ context:
       - lf24
   black_market:
     text: >-
-      Since nothing may be sold, anyone who does not grow buys illegally; reducing that was a
-      stated aim of the 2023 law, and no data on whether it has worked were found. Luxembourg
-      is also a transit point. Customs intercepted more than two tonnes of cannabis at the
-      airport's cargo centre in 2025, and in March 2026 a single consignment of more than 123
-      kg from the United States, bound for France. The public prosecutor says drugs seized in
-      Luxembourg are as a rule destined for other European countries, not the home market, and
-      that the volumes point to structured networks.
+      RELIS’s 2025 factsheet records 426.1 kg of cannabis resin and 99 kg of herb seized
+      nationally in 2023; much of the resin was in transit.[@relis2025] Its 2024 laboratory
+      samples averaged 16.4% THC for herb and 33.5% for resin.[@relis2025] In a [May 2026
+      parliamentary answer](/history/luxembourg-synthetic-cannabinoid-samples-2026/), ministers
+      reported synthetic cannabinoids in five samples sold as CBD/THC-A products by 15
+      April.[@synthetics2026]
     sources:
-      - pj26
-      - pplu25
+      - relis2025
+      - synthetics2026
   arrests:
     text: >-
-      The EU drugs agency's statistical bulletin records 1,014 cannabis-related drug law
-      offences in Luxembourg in 2024, against 1,102 in 2023. Of the 2024 total, 880 were for
-      use or possession for use. The police annual report for 2024 separately records 207
-      arrests for drugs of all kinds, up 37% on the year before; holding up to 3 g in public
-      is normally settled with a fine of 145 euros. Countries count these differently
-      (offences or offenders, criminal or administrative), so the figure is not comparable
-      across borders.
+      EUDA records 1,014 cannabis-related drug-law offences in Luxembourg in 2024, including 880
+      for use or possession for use.[@euda_dlo] These are offences, rather than a cannabis-only
+      arrest or prisoner count.[@euda_dlo] The separate police figure reported for 2024 was 207
+      arrests involving all drugs.[@pj25]
     sources:
       - euda_dlo
       - pj25
   clubs:
     status: none
     text: >-
-      No clubs are known, and the law gives them no place. The 2023 law allows growing at home
-      and nothing else: there is no licensed retail and no provision for cannabis clubs, and
-      selling, swapping or giving cannabis to another person remains prohibited. A Europe-wide
-      survey in 2018 and 2019 found no active club in Luxembourg. A public petition in 2025
-      asked parliament to create a legal framework for clubs as an addition to home growing;
-      after twelve days it had about 100 of the 5,500 signatures needed for a debate, and the
-      press noted that the club model had hardly been seriously discussed in the country. A
-      plan for state-controlled shops was dropped in 2022.
+      The [2023 law](/history/luxembourg-home-grow-2023/) permits household growing and private
+      use, while supply and facilitating another person’s use remain
+      punishable.[@loi2023,druglaw] It provides no licensed growing-association
+      route.[@loi2023] The 2018–2019 European club survey identified no active Luxembourg
+      club.[@pardal20]
     sources:
-      - pplu25
+      - loi2023
+      - druglaw
       - pardal20
-      - le25
   recreational:
     text: >-
-      Home growing is the lawful personal supply route: adults can raise four plants from seed per
-      household at their usual residence.[@loi2023] The permission does not create shops or a
-      right to pass cannabis to another household.[@homeguide] Carrying the harvest away from home
-      brings the separate possession rules into play.[@loi2023]
+      Home growing is the lawful personal supply route: adults can raise four plants from seed
+      per household at their usual residence.[@loi2023] The permission does not create shops or
+      a right to pass cannabis to another household.[@homeguide] Carrying the harvest away from
+      home brings the separate possession rules into play.[@loi2023]
     sources:
       - loi2023
       - homeguide
   hemp:
-    status: standard
+    status: high
     text: >-
-      Hemp from authorised industrial varieties is treated separately, with a field-crop THC
-      reference of 0.3%.[@foodhemp] That crop threshold does not authorise the same concentration
-      in food.[@foodhemp] Hemp seeds and their oil have an established food use, while
-      cannabinoid-rich CBD extracts require novel-food authorisation before sale as
-      food.[@foodhemp]
+      The controlled-drug schedule excludes hemp varieties eligible under the EU agricultural
+      support system and qualifying non-intoxicating commercial varieties with less than 1%
+      THC.[@schedule] The agricultural reference of 0.3% and food-safety limits serve different
+      purposes.[@foodhemp] Smokable or vaporisable hemp flower and resin below 1% THC have been
+      subject to excise and VAT since [March
+      2019](/history/luxembourg-hemp-excise-2019/).[@excise] Cannabinoid-rich CBD food extracts
+      require novel-food authorisation.[@foodhemp]
     sources:
+      - schedule
       - foodhemp
+      - excise
 sources:
   pardal20:
-    title: Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe, European Journal of Criminology (2020, PDF)
-    url: https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
+    title: >-
+      Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe,
+      European Journal of Criminology (2020, PDF)
+    url: >-
+      https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
   le25:
-    title: "L'essentiel — Luxembourg : vers des « Cannabis Social Clubs » ? (1 August 2025)"
-    url: https://www.lessentiel.lu/fr/story/petition-en-ligne-ils-veulent-creer-des-cannabis-social-clubs-au-luxembourg-103389827
+    title: 'L''essentiel — Luxembourg : vers des « Cannabis Social Clubs » ? (1 August 2025)'
+    url: >-
+      https://www.lessentiel.lu/fr/story/petition-en-ligne-ils-veulent-creer-des-cannabis-social-clubs-au-luxembourg-103389827
   euda_dlo:
-    title: "EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)"
+    title: 'EUDA — Statistical Bulletin 2026, drug law offences: cannabis (totals and use-related)'
     url: https://www.euda.europa.eu/data/stats2026/dlo_en
   pj25:
     title: Paperjam — 10 figures that tell the story of the police in 2024 (April 2025)
@@ -234,19 +324,25 @@ sources:
     url: https://paperjam.lu/article/le-luxembourg-mis-a-lepreuve-par-les-narcotrafiquants
   lf24:
     title: Les Frontaliers — Aucune tolérance à attendre pour la conduite sous cannabis (2 May 2024)
-    url: https://www.lesfrontaliers.lu/societe/aucune-tolerance-a-attendre-pour-la-conduite-sous-cannabis/
+    url: >-
+      https://www.lesfrontaliers.lu/societe/aucune-tolerance-a-attendre-pour-la-conduite-sous-cannabis/
   pplu25:
-    title: Prohibition Partners — Luxembourg adult-use cannabis market overview 2025 (15 October 2025)
-    url: https://prohibitionpartners.com/2025/10/15/luxembourg-adult-use-cannabis-market-overview-2025/
+    title: >-
+      Prohibition Partners — Luxembourg adult-use cannabis market overview 2025 (15 October
+      2025)
+    url: >-
+      https://prohibitionpartners.com/2025/10/15/luxembourg-adult-use-cannabis-market-overview-2025/
   loi2023:
     title: Loi du 10 juillet 2023 (Mémorial A 408), article 7-2
-    url: https://mj.gouvernement.lu/dam-assets/dossiers/cannabis/loi-du-10-juillet-2023-cannabis.pdf
+    url: >-
+      https://mj.gouvernement.lu/dam-assets/dossiers/cannabis/loi-du-10-juillet-2023-cannabis.pdf
   idpc:
     title: IDPC — Growing and smoking weed at home now legal in Luxembourg
     url: https://idpc.net/news/2023/07/growing-and-smoking-weed-at-home-now-legal-in-luxembourg
   cms:
-    title: "CMS Law — Luxembourg: special legislation on recreational cannabis"
-    url: https://cms.law/en/lux/legal-updates/luxembourg-special-legislation-on-recreational-cannabis
+    title: 'CMS Law — Luxembourg: special legislation on recreational cannabis'
+    url: >-
+      https://cms.law/en/lux/legal-updates/luxembourg-special-legislation-on-recreational-cannabis
   mondaq:
     title: Mondaq — Regulation of recreational cannabis (Luxembourg)
     url: https://www.mondaq.com/cannabis-hemp/1346210/regulation-of-recreational-cannabis
@@ -267,8 +363,8 @@ sources:
       https://gouvernement.lu/fr/actualites/toutes_actualites/communiques/2024/11-novembre/29-modifications-cannabis-medicinal.html
   medfaq:
     title: >-
-      Luxembourg Health Ministry — Medical cannabis FAQ: flower stock replenishment from 1 January
-      2025
+      Luxembourg Health Ministry — Medical cannabis FAQ: flower stock replenishment from 1
+      January 2025
     url: https://santesecu.public.lu/fr/support/faq/cannabis.html
   patientguide:
     title: >-
@@ -281,6 +377,38 @@ sources:
     title: Luxembourg food-safety authority — Hemp/cannabis and CBD extracts
     url: >-
       https://securite-alimentaire.public.lu/fr/professionnel/Denrees-alimentaires/Nouveaux-aliments/Denrees-alimentaires-base-chanvre-CBD.html
+  druglaw:
+    title: Legilux — Drug law of 19 February 1973, consolidated 21 July 2023
+    url: https://legilux.public.lu/eli/etat/leg/loi/1973/02/19/n1/consolide/20230721
+    locator: Downloaded official consolidated PDF; articles 7-1–10 and 30-2
+  schedule:
+    title: Legilux — Controlled-drug schedule, consolidated 21 July 2023
+    url: https://legilux.public.lu/eli/etat/leg/rgd/1974/03/26/n1/consolide/20230721
+    locator: >-
+      Official PDF, item 15(a)(2): CAP varieties and non-intoxicating commercial varieties below
+      1% THC
+  relis2025:
+    title: Luxembourg Health Ministry — RELIS key findings 2025
+    url: >-
+      https://santesecu.public.lu/dam-assets/fr/publications/p/phenomene-des-drogues-2025/relis-factsheets.pdf
+    locator: >-
+      Cannabis market and criminality; 2023 seizures, 2024 price/strength; non-representative
+      samples
+  synthetics2026:
+    title: Luxembourg ministers — Answer to parliamentary question 3906, received 15 May 2026
+    url: https://wdocs-pub.chd.lu/docs/exped/2026/05/QP_63346_1778853953142.pdf
+    locator: >-
+      Pages 1–3, five samples marketed as CBD/THC-A containing synthetic cannabinoids as at 15
+      April 2026
+  medreport:
+    title: Luxembourg Health Ministry — Medical cannabis programme evaluation, 2022
+    url: >-
+      https://santesecu.public.lu/dam-assets/fr/publications/p/projet-cannabis-medicinal-lux/projet-cannabis-medicinal-au-luxembourg-2022-fr.pdf
+    locator: Pages 7–8, prescribing and eligibility; appendix reproduces 2018 law and regulations
+  excise:
+    title: Luxembourg Customs — Cannabis products below 1% THC
+    url: https://douanes.public.lu/fr/accises/tabacs-manufactures/produits-base-cannabis.html
+    locator: Excise and VAT from 19 March 2019; updated 13 January 2026
 answers:
   carry:
     answer: limited
@@ -293,3 +421,24 @@ answers:
     text: >-
       Small unauthorised possession can bring a warning payment or criminal fine; over 3 g and
       cultivation breaches can bring prison
+words:
+  - word: cannabis
+    lang: French
+    meaning: cannabis; official term
+    sources:
+      - loi2023
+  - word: chanvre
+    lang: French
+    meaning: hemp; official term
+    sources:
+      - schedule
+  - word: herbe
+    lang: French
+    meaning: herbal cannabis; report term
+    sources:
+      - relis2025
+  - word: résine
+    lang: French
+    meaning: cannabis resin; report term
+    sources:
+      - relis2025
