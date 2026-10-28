@@ -21,7 +21,13 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0; review page to verify with batch build.
 - Left: 1930s/40s empty; first-restriction entry is an explicit estimate (flagged, kept —
   replacing it needs archival research).
-## py — pending
+## py (Paraguay) — committed
+- Products folded into medical (section deleted); new hemp + arrests + culture (brick-weed
+  link) sections; words (Faso, Porro, Hierba); per-sentence cites on all 11 flagged texts.
+- New article `articles/paraguay-medical-2017.md` (~357 words, WLG report + Reuters).
+- Audit 0/0; review page to verify with batch build.
+- Left: penalty tables (Ley 1340 bands unverified); first-restriction entry is an explicit
+  estimate (kept, flagged).
 ## uy — pending
 ## jm — pending
 ## tt — pending
