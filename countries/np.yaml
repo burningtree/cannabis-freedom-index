@@ -32,15 +32,10 @@ segments:
       - ok
     currency: NPR
     penalties:
-      - label: Use
+      - label: Up to 50 g stored or possessed
         treatment: criminal
-        term: Use
-        prison: 1 month
-        fine: 2000
-        note: Up to one month or up to 2,000 rupees
-      - label: Up to 50 g stored, bought or sold
-        treatment: criminal
-        term: Storage or sale
+        term: Storage
+
         prison: 3 months
         fine: 3000
       - label: 50 g to 500 g
@@ -110,17 +105,62 @@ segments:
     text: >-
       Sale and distribution sit in the same quantity bands as storage: up to three months or
       a fine of up to 3,000 rupees for up to 50 grams, and two to ten years plus a fine for
-      10 kilograms or more.[@ndca]
+      10 kilograms or more.[@ndca] From 50 g upward prison and fine are cumulative, not alternatives.[@ndca]
     sources:
       - ndca
+    currency: NPR
+    penalties:
+      - label: Up to 50 g
+        treatment: criminal
+        term: Sale
+        prison: 3 months
+        fine: 3000
+      - label: 50 g to 500 g
+        treatment: criminal
+        term: Sale
+        prison_min: 1 month
+        prison: 1 year
+        fine_min: 1000
+        fine: 5000
+      - label: 500 g to 2 kg
+        treatment: criminal
+        term: Sale
+        prison_min: 6 months
+        prison: 2 years
+        fine_min: 2000
+        fine: 10000
+      - label: 2 kg to 10 kg
+        treatment: criminal
+        term: Sale
+        prison_min: 1 year
+        prison: 3 years
+        fine_min: 5000
+        fine: 25000
+      - label: 10 kg or more
+        treatment: criminal
+        term: Sale
+        prison_min: 2 years
+        prison: 10 years
+        fine_min: 15000
+        fine: 100000
   consumption:
     text: >-
       Use can bring up to one month in prison or a fine of up to 2,000 rupees.[@ndca] During
       Maha Shivaratri devotees smoke openly at Shiva temples such as Pashupatinath and police
-      have often looked the other way, though arrests were announced in 2018.[@ok]
+      have often looked the other way, though arrests were announced in 2018.[@ok] A person who
+      undertakes in writing to enter treatment for up to a month, with fortnightly reports, may
+      receive no punishment.[@ndca]
     sources:
       - ndca
       - ok
+    currency: NPR
+    penalties:
+      - label: Use
+        treatment: criminal
+        term: Use
+        prison: 1 month
+        fine: 2000
+        note: Prison or fine; a written treatment undertaking can avoid punishment
   access:
     text: >-
       No legal source. The government-licensed shops were closed in 1973, and the 1976 Act still
@@ -154,12 +194,15 @@ context:
       - png
   medical:
     text: >-
-      Medical use appears in federal plans.[@b360] Gandaki's 2026 Act is a cultivation framework
+      Medical use appears in federal plans.[@b360] The 1976 Act has a paper route: a doctor's
+      recommendation and a licensed shop under section 5, or a special government licence for
+      medicine or research under section 6, but no cannabis medicine or shop exists.[@ndca] Gandaki's 2026 Act is a cultivation framework
       for medicinal and industrial cannabis, and a patient still has no lawful supply under it.[@ktm07]
       A review on 13 October had not found the commencement notice that section 1(2) requires.[@png]
       No legal consumer products exist.[@wiki]
     sources:
       - b360
+      - ndca
       - ktm07
       - png
       - wiki
@@ -169,7 +212,7 @@ context:
       No industrial-hemp exemption was found: the 1976 Act controls cannabis and cultivation is
       prohibited.[@ndca] A 2011 fair-trade project linked Himalayan hemp craft with Italian textile
       buyers, but it created no cultivation licence.[@italy] Gandaki's 2026 framework covers
-      medicinal and industrial cannabis; it has not commenced and sets no THC limit yet.[@ktm12,png]
+      medicinal and industrial cannabis; it sets a THC ceiling but has not commenced.[@ktm12,png]
     sources:
       - ndca
       - italy
@@ -181,20 +224,23 @@ context:
     clones: illegal
     clones_trade: banned
     text: >-
-      The 1976 Act controls the cannabis plant and names no seed exception; sowing is cultivation
-      and is punished under section 14.[@ndca] Clones are plants, so keeping or trading them falls
-      under the same offence.[@ndca] No seed-sale or clone market was found.
+      The 1976 definition covers leaves, flowers, resin, fibre and extracts but not seeds; bhang
+      seeds are sold openly as food, while sowing them is cultivation punished under section 14.[@ndca]
+      Clones are plants, so keeping or trading them falls under the same offence.[@ndca] Seed trade
+      for planting remains unclear.[@ndca]
     sources:
       - ndca
   driving:
     status: unknown
     text: >-
       The Narcotic Drugs (Control) Act contains no driving offence, and the sources read did not
-      identify a cannabis-specific traffic rule or THC limit.[@ndca] The status is left unverified
-      rather than treating a general careless-driving rule as a drug-driving offence.[@ok]
+      identify a cannabis-specific traffic rule or THC limit.[@ndca] Traffic police use SoToxa
+      oral-fluid kits and THC urine tests and have booked drivers, but the Motor Vehicles Act
+      trigger was not verified; the status stays unverified rather than treating a general
+      careless-driving rule as a drug-driving offence.[@ktm_sofoxa]
     sources:
       - ndca
-      - ok
+      - ktm_sofoxa
   culture:
     text: >-
       Nepal's cannabis culture is bound up with Shaiva devotion.[@fisher1975]
@@ -234,27 +280,56 @@ context:
       - wiki
   arrests:
     text: >-
-      Narcotics Control Bureau figures for the last full fiscal year show 1,768 people
-      arrested in the police's anti-trafficking operations nationwide and 993 cases
-      registered, with 1,325 people charged; arrests were 5.55 per cent up on 2024/25.
-      Seizures included 1,603 kg of cannabis, 204 kg of imported Thai cannabis and 41.5 kg
-      of hashish.[@republica_ncb]
+      Police-wide figures for fiscal 2024/25 show 5,110 drug cases and 7,943 arrests, with
+      51,439 kg of herbal cannabis seized, a record.[@ktm_april26] The Narcotics Control Bureau's
+      anti-trafficking operations for 2025/26 recorded 993 cases, 1,768 arrests and 1,325 people
+      charged, with 1,603 kg of cannabis, 204 kg of Thai cannabis and 41.5 kg of hashish; those
+      figures cover all drugs and are not comparable with the police-wide series.[@republica_ncb]
+      In June 2025, 6,126 of 29,012 prisoners were held on drug-trafficking charges.[@ktm_prison25]
     sources:
       - republica_ncb
+      - ktm_april26
+      - ktm_prison25
   black_market:
     text: >-
-      Cannabis is grown illegally across Nepal; one campaigner quoted by Nepali Times in
-      2026 called it an open secret.[@nt26] Narcotics Control Bureau figures for the last full
-      fiscal year show police seizing 1,603 kg of cannabis and 41.5 kg of hashish, and
-      also 204 kg of cannabis imported from Thailand.[@republica_ncb]
+      Cannabis is grown illegally across Nepal, in 23 districts: the eastern hills supply herbal
+      cannabis to Bihar, while the central and western hills produce charas for Delhi and overseas
+      markets.[@nepalnews26] Police seized 51,439 kg of herbal cannabis in fiscal 2024/25, and
+      3,332 kg in a single Saptari case in July 2026.[@ktm_april26,nepalnews_saptari26] Thai cannabis
+      has also made Kathmandu airport a transit route to India.[@ok_thai25] One campaigner quoted by
+      Nepali Times called the trade an open secret.[@nt26]
     sources:
-      - republica_ncb
+      - nepalnews26
+      - ktm_april26
+      - nepalnews_saptari26
+      - ok_thai25
       - nt26
 answers:
   buy:
     answer: no
     text: No patient or adult-use purchase route verified
 sources:
+  ktm_april26:
+    title: "Kathmandu Post — Nepal police is shooting drug suspects more often (14 April 2026)"
+    url: https://kathmandupost.com/national/2026/04/14/nepal-police-is-shooting-drug-suspects-more-often-it-isn-t-reducing-drug-crime
+    locator: "5,110 cases, 7,943 arrests and 51,439 kg cannabis in FY 2024/25."
+  ktm_prison25:
+    title: "Kathmandu Post — Drug trafficking surges despite police success claims (27 June 2025)"
+    url: https://kathmandupost.com/national/2025/06/27/drug-trafficking-surges-despite-police-success-claims
+    locator: "6,126 of 29,012 prisoners held on drug-trafficking charges."
+  nepalnews26:
+    title: "Nepalnews — The inside story of Nepal–Bihar marijuana smuggling (9 June 2026)"
+    url: https://nepalnews.com/2026/06/09/the-inside-story-of-nepal-bihar-marijuana-smuggling/
+    locator: "23 cannabis-growing districts; eastern herb, western charas."
+  nepalnews_saptari26:
+    title: "Nepalnews — Police seize 3,332 kg of marijuana in Saptari (23 July 2026)"
+    url: https://nepalnews.com/2026/07/23/police-seize-3332-kg-of-marijuana-in-saptari/
+  ok_thai25:
+    title: "Onlinekhabar — Thai cannabis turns Kathmandu airport into a transit route (20 May 2025)"
+    url: https://english.onlinekhabar.com/thai-cannabis-smuggling-nexus.html
+  ktm_sofoxa:
+    title: "Kathmandu Post — Traffic police to use SoToxa to check substance use by drivers (6 June 2023)"
+    url: https://kathmandupost.com/valley/2023/06/06/traffic-police-to-use-sotoxa-to-check-substance-use-by-drivers
   wiki:
     title: Wikipedia — Cannabis in Nepal
     url: https://en.wikipedia.org/wiki/Cannabis_in_Nepal
