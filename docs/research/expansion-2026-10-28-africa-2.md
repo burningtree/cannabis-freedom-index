@@ -37,6 +37,13 @@ All batch files verified free of others' uncommitted changes at start.
 - Audit 0/0; country review page verified.
 - SELF-INFLICTED: a Python one-liner (`write('ok')` instead of `write(t)`) truncated bi.yaml mid-work; restored from git and reapplied all edits via the edit tool; diff verified sane before building.
 - Left: 1920s–1960s history decades.
-## ss — pending
+## ss — committed
+- Fixed 3 `term` warnings on pre-existing rows; culture sentences cited (added sudanord24 law source).
+- Per-sentence cites on 4 flagged texts (rest already cited); cultivation table added (personal 5y vs dealing 14y); new hemp (status none); words (Bangi/Bor+Juba reports).
+- New culture (bangi atlas + 1924/Juba history links); new `articles/south-sudan-juba-raids-2026.md` (Suk Sita/Hai Amarat, bangi + pharma syrups).
+- Skipped separate 1924 article: the same ordinance is already covered by `articles/sudan-ban-1924.md`; SS entry links that article from culture instead.
+- Driving/black_market skipped (no sources); planting covered by table + definition text.
+- Audit 0/0; country + article review builds verified.
+- Left: 1930s–1990s history decades.
 ## sl — pending
 ## gm — pending
