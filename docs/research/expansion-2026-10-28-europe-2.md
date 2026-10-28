@@ -36,6 +36,10 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
   per-sentence cites (Road Code PDF).
 - Audit 0/0; review page to verify with batch build.
 - Left: 1930s–80s empty (communist + transition decades; no datable events found).
-## mk — pending
+## mk (North Macedonia) — committed
+- Words (Трава, Марихуана, Хашиш; en.wiktionary mk-senses verified).
+- Audit 0/0; review page to verify with batch build.
+- Left: 1940s/60s/70s/80s empty; 1950 article covered by same-act Serbia article; 1930 code
+  article open.
 ## ee — pending
 ## lv — pending
