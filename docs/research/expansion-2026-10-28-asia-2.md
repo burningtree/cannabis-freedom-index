@@ -7,12 +7,11 @@ sources. The batch is Israel, Pakistan, Iraq, Armenia, Afghanistan and Nepal.
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Nepal | hemp, planting, driving and culture sections; citations converted; six atlas entries linked | 1920s–1950s and 2000s still empty; driving status left unverified | e280ebc |
-| Afghanistan | four tables from the 2010 law, hemp/planting/driving/arrests sections, culture links, 2023 ban article | 1930s, 1940s and 1980s still empty; Taliban penalties not codified | this country commit |
-| Pakistan | expanded possession, cultivation and trafficking tables; hemp, medical, black-market, arrests and culture sections; 2022 penalty-table article | 1920s and 2000s still empty; no 2024–2026 arrest figures | this country commit |
-| Israel | four tables; 15 g administrative line; zero-fine practice; medical 2024–2026; hemp/CBD; culture; 11 history entries; 3 articles | optional research/spotlights/genetics; 1985 directive still thinly sourced | this country commit |
-| Pakistan | in progress | | |
-| Iraq | in progress | | |
-| Armenia | in progress | | |
+| Afghanistan | four tables from the 2010 law, hemp/planting/driving/arrests sections, culture links, 2023 ban article | 1930s, 1940s and 1980s still empty; Taliban penalties not codified | 978dbe2 |
+| Pakistan | full federal tables, hemp/medical/black-market/arrests and culture sections, 2022 article, 1925–2026 history and 2024 data | provincial tables vary; no single 2025 arrest total | b73e700, 36fea39, 357ef34 |
+| Israel | four tables; 15 g administrative line; zero-fine practice; 2024–2026 medical; hemp/CBD; culture; 11 history entries; 3 articles | optional research/spotlights/genetics; 1985 directive still thinly sourced | 07aa706 |
+| Armenia | four tables with 2026 fines; hemp, culture and consequences; 1969–2026 history; 3 articles | 1920s, 1940s and 1950s empty | 206afe6, 357ef34 |
+| Iraq | four tables from the 2017 law; death-penalty, hemp, planting, driving, black-market and arrests sections; 1988–2026 history | optional culture/research/spotlights/genetics | edc8ab8, 357ef34 |
 
 Nepal validation: `profile-audit np` zero errors/warnings; `country-gaps np` now has no missing standard or researched sections and no uncited text. The build passed at 5,012 pages and the culture links render. The possession table was also corrected to give minimum fines and the law’s own terms.
 
