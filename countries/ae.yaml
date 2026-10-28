@@ -3,12 +3,12 @@ region: Asia
 iso_numeric: 784
 recreational: death
 medical: limited
-updated: 2026-10-23
+updated: '2026-10-28'
 summary: >-
-  A 2022 reform softened first-offence penalties (minimum three months or a fine) and made
-  deportation discretionary, but personal use remains one of the strictest regimes, including
-  for trace amounts. From 1 January 2026 a separate law allows licensed industrial hemp and
-  authorised hemp-derived medical products.
+  First-offence penalties were softened in 2022, but personal use remains one of the world's
+  strictest regimes, with trace amounts enough and mandatory deportation for foreigners from
+  1 January 2026. A separate 2026 law allows licensed industrial hemp and authorised hemp-derived
+  medical products.
 scores:
   possession: 0
   cultivation: 0
@@ -20,59 +20,165 @@ segments:
   possession:
     text: >-
       Under Federal Decree-Law 30 of 2021, a first offence of possessing or using cannabis for
-      personal use carries at least three months in prison or a fine of AED 10,000–100,000 — a
-      softening from the previous mandatory four years. Repeat offences bring longer mandatory
-      terms. Trace amounts, including residue or metabolites in the body, are enough.
+      personal use carries at least three months in prison or a fine of AED 10,000–100,000.[@dl30,lexai]
+      A second offence within three years brings at least six months or AED 20,000–100,000, and a
+      third at least six months and AED 50,000–200,000.[@lexai] There is no minimum quantity:
+      residue or metabolites in the body are enough, and purity is ignored when the weight is
+      calculated.[@dl30,lexai] Possession outside personal use follows quantity tiers, with life
+      imprisonment above 100 g and death where intent to traffic or promote is proved.[@dl30]
     sources:
-      - ly
-      - mondaq
+      - dl30
+      - lexai
     currency: AED
     penalties:
       - label: First personal-use offence
         treatment: criminal
-        fine: 100000
+        term: Personal use
         prison_min: 3 months
-        note: At least three months in prison or a fine of AED 10,000–100,000; court may order treatment for up to a year instead
-      - label: Personal-use amount at a port of entry (non-residents, 2024 rule)
+        fine_min: 10000
+        fine: 100000
+        note: Prison or fine; court may order treatment for up to a year instead
+      - label: Second personal-use offence within three years
         treatment: criminal
+        term: Personal use
+        prison_min: 6 months
+        fine_min: 20000
+        fine: 100000
+        note: Prison or fine
+      - label: Third or later personal-use offence
+        treatment: criminal
+        term: Personal use
+        prison_min: 6 months
+        fine_min: 50000
+        fine: 200000
+        note: Prison and fine; the English text misprints the maximum as 200 dirhams
+      - label: Non-resident at a port of entry, first offence
+        treatment: criminal
+        term: Personal use
+        fine_min: 5000
         fine: 20000
-        note: Fine of AED 5,000–20,000
+        note: Under 100 g of cannabis; substances seized and destroyed
+      - label: Non-resident at a port of entry, second offence
+        treatment: criminal
+        term: Personal use
+        fine_min: 10000
+        fine: 30000
+        note: Plus deportation and a three-year entry ban
+      - label: Non-resident at a port of entry, third offence
+        treatment: criminal
+        term: Personal use
+        fine_min: 50000
+        fine: 100000
+        note: Plus deportation and a permanent entry ban
+      - label: Possession outside personal use, under 20 g
+        treatment: criminal
+        term: Possession
+        fine_min: 100000
+        note: Imprisonment and a fine of at least AED 100,000
+      - label: Possession outside personal use, 20 g to 100 g
+        treatment: criminal
+        term: Possession
+        prison_min: 10 years
+        fine_min: 100000
+        note: Imprisonment and a fine of at least AED 100,000
+      - label: Possession outside personal use, over 100 g
+        treatment: criminal
+        term: Possession
+        fine_min: 500000
+        note: Life imprisonment and a fine of at least AED 500,000
       - label: Possession with intent to traffic or promote
         treatment: criminal
-        note: Death penalty available under Decree-Law 30 of 2021
+        term: Trafficking
+        death: true
+        note: Article 57; no quantity threshold
   cultivation:
     text: >-
-      Growing cannabis outside a licence is a serious crime with long prison terms. Licensed
-      industrial hemp, at or below 0.3% tetrahydrocannabinol and only in approved zones, is a
-      separate regime from 1 January 2026.
+      Growing cannabis outside a licence is a serious crime with long prison terms.[@dl30] Under
+      Article 14 and Schedule 10, fewer than five plants bring imprisonment and a fine of at least
+      AED 100,000; five to fifteen plants bring at least ten years and AED 100,000; more than fifteen
+      plants bring life imprisonment and at least AED 500,000.[@dl30,lexai] Intent to traffic or
+      promote carries death under Article 57, with no plant threshold.[@dl30] Licensed industrial
+      hemp at or below 0.3% THC, in approved zones, is a separate regime from 1 January
+      2026.[@hemp26n]
     sources:
-      - mondaq
+      - dl30
+      - lexai
       - hemp26n
+    currency: AED
+    penalties:
+      - label: Fewer than five plants
+        treatment: criminal
+        term: Cultivation
+        fine_min: 100000
+        note: Imprisonment and a fine of at least AED 100,000; personal-use intent is sentenced under Article 42
+      - label: Five to fifteen plants
+        treatment: criminal
+        term: Cultivation
+        prison_min: 10 years
+        fine_min: 100000
+        note: Imprisonment and a fine of at least AED 100,000
+      - label: More than fifteen plants
+        treatment: criminal
+        term: Cultivation
+        fine_min: 500000
+        note: Life imprisonment and a fine of at least AED 500,000
+      - label: Cultivation with intent to traffic or promote
+        treatment: criminal
+        term: Trafficking
+        death: true
+        note: Article 57; no plant threshold
   enforcement:
     text: >-
       Still one of the strictest regimes, though the 2021 law added fines and rehabilitation as
-      alternatives for first offences. A 2024 rule lets non-residents caught at ports of entry with
-      personal-use amounts pay a fine of AED 5,000–20,000.
+      alternatives for first offences.[@mondaq,ly] A 2024 rule lets non-residents caught at ports of
+      entry with personal-use amounts pay a fine of AED 5,000–20,000, with higher tiers for repeat
+      entries and deportation.[@res43] The National Anti-Narcotics Strategy 2024–2031 aims at a
+      drug-free nation by 2031.[@gulfstats24]
     sources:
       - mondaq
       - ly
+      - res43
+      - gulfstats24
   sharing:
     text: >-
       Supply is trafficking. Article 57 provides the death penalty when prohibited drugs or plants
-      are possessed or acquired with intent to traffic or promote them.
+      are possessed or acquired with intent to traffic or promote them, with no quantity
+      threshold.[@dl30] Without that intent, the quantity tiers apply: under 20 g brings imprisonment
+      and at least AED 100,000; 20 g to 100 g at least ten years and AED 100,000; more than 100 g
+      life imprisonment and at least AED 500,000.[@dl30,lexai] Facilitating another person's use is a
+      separate offence carrying at least five years and AED 50,000.[@dl30]
     sources:
       - dl30
+      - lexai
+    currency: AED
+    penalties:
+      - label: Trafficking or promotion
+        treatment: criminal
+        term: Trafficking
+        death: true
+        note: Article 57; death where intent to traffic or promote is proved
+      - label: Facilitating another person's use
+        treatment: criminal
+        term: Facilitation
+        prison_min: 5 years
+        fine_min: 50000
   consumption:
     text: >-
-      Use is an offence proved by blood or urine test, on the same terms as possession. Courts can
-      order treatment for first offenders.
+      Use is an offence proved by blood or urine test, on the same terms as possession.[@ly,mondaq]
+      Courts can order treatment for first offenders for up to a year, and prosecutors can divert
+      before charge.[@dl30,mondaq]
     sources:
       - ly
       - mondaq
+      - dl30
   access:
-    text: None.
+    text: >-
+      None. High-THC medical cannabis is not legal; the only medical route is an authorised
+      hemp-derived product under the 2026 law, and no product or pharmacy stock was
+      verified.[@dl30,national26] CBD has no open consumer route.[@national26]
     sources:
-      - l500
+      - dl30
+      - national26
 context:
   recreational:
     text: >-
@@ -89,47 +195,61 @@ context:
   death_penalty:
     text: >-
       Federal Decree-Law 30 of 2021 provides the death penalty for trafficking or promotion involving
-      prohibited narcotic substances or drug-producing plants, which include cannabis.
+      prohibited narcotic substances or drug-producing plants, which include cannabis.[@dl30] The
+      wording is mandatory where intent is proved, but no reliable public data on cannabis-specific
+      executions in 2024–2026 was found.[@dl30,lexai]
     sources:
       - dl30
+      - lexai
   production:
-    status: medical
+    status: hemp
     text: >-
-      From 1 January 2026 licensed industrial hemp is lawful. Cultivation needs a licence from
-      the Ministry of Climate Change and Environment, a local permit and security clearance, and
-      it is confined to zones that are secured, fenced and kept apart from homes and other
-      farms. Tetrahydrocannabinol must stay at or below 0.3%. An emirate may prohibit or
-      restrict the activity. No list of issued cultivation licences was read.
+      From 1 January 2026 licensed industrial hemp is lawful.[@hemp26] Cultivation needs a licence
+      from the Ministry of Climate Change and Environment, a local permit and security clearance,
+      and it is confined to zones that are secured, fenced and kept apart from homes and other
+      farms.[@hemp26n] Tetrahydrocannabinol must stay at or below 0.3%.[@hemp26] An emirate may
+      prohibit or restrict the activity.[@hemp26n] No list of issued cultivation licences was
+      read.[@hemp26,hemp26n]
     sources:
       - hemp26
       - hemp26n
-  products:
-    text: >-
-      Personal and recreational use of industrial hemp is prohibited, as are hemp foods,
-      dietary supplements, veterinary products and smoking products. Cosmetics that contain
-      hemp are prohibited except for oils from seeds or stalks. The 2026 law allows authorised
-      medical products that contain hemp compounds, and licensed manufacture of industrial
-      products kept at or below 0.3% tetrahydrocannabinol. Whether any such product is on sale
-      was not verified. A compound that can produce a narcotic or psychoactive effect stays
-      under the narcotics law.
-    sources:
-      - hemp26n
-      - ly
   medical:
     text: >-
-      The 2026 law permits medical products that contain industrial-hemp compounds or hemp raw
-      materials, under the law on medical products. It is a route for those hemp-derived
-      products. Whether a pharmacy stocks any of them was not verified.
+      No high-THC medical cannabis is legal. The 2026 hemp law permits only authorised medical
+      products that contain industrial-hemp compounds or raw materials, under the medical-products
+      law; no authorised product or pharmacy stock was verified.[@hemp26n,national26] A compound
+      that can produce a narcotic or psychoactive effect stays under the narcotics law.[@ly]
     sources:
       - hemp26n
+      - national26
+      - ly
+  hemp:
+    status: standard
+    text: >-
+      From 1 January 2026 a federal decree allows licensed industrial hemp at or below 0.3%
+      tetrahydrocannabinol.[@hemp26] Cultivation needs a licence from the Ministry of Climate Change
+      and Environment, a local permit and security clearance, and must take place in secured, fenced
+      zones apart from homes and other farms; an emirate may prohibit or restrict it.[@hemp26n]
+      Personal and recreational use of hemp remains prohibited. Hemp food is banned except roasted
+      or processed non-viable seeds; dietary supplements, veterinary products and smoking products
+      are banned; cosmetics may use THC-free seed or stalk oils and some THC-free plant
+      preparations, but not products containing THC.[@hemp26n]
+    sources:
       - hemp26
+      - hemp26n
   consequences:
     text: >-
-      Deportation of foreigners after a drug conviction, once mandatory, is now at the court's
-      discretion for first-time personal-use offences.
+      Since 1 January 2026, courts must deport any foreign national convicted under the narcotics
+      law after sentence, except the spouse or first-degree relative of a UAE citizen, or a member
+      of a resident family where deportation would seriously harm family stability or
+      care.[@decree14_2025,zaa] Before that, deportation for first-time personal use was
+      discretionary.[@mondaq] A conviction can also bring a criminal record and, for repeat
+      addiction offences, licence revocation.[@dl30]
     sources:
+      - decree14_2025
+      - zaa
       - mondaq
-      - l500
+      - dl30
   planting:
     seeds: licensed
     seeds_trade: regulated
@@ -138,12 +258,12 @@ context:
     text: >-
       Article 14 of Federal Decree-Law 30 of 2021 bans growing, importing, owning or holding
       the listed plants, or any other plant that yields drugs, at any stage of growth, as well
-      as their seeds. Landowners must report such plants on their land. Licences under that law
-      go only to government bodies and scientific institutes. From 1 January 2026 a separate
+      as their seeds.[@dl30] Landowners must report such plants on their land.[@dl30] Licences under
+      that law go only to government bodies and scientific institutes.[@dl30] From 1 January 2026 a separate
       law lets a licensed agricultural company import and export approved industrial-hemp
       seeds, and lets a licensed grower cultivate and handle seedlings, only inside approved
-      plots. Seeds and seedlings may be passed only to a person licensed for the activity.
-      Personal growing stays prohibited.
+      plots. Seeds and seedlings may be passed only to a person licensed for the activity.[@hemp26n]
+      Personal growing stays prohibited.[@dl30]
     sources:
       - dl30
       - hemp26n
@@ -151,35 +271,90 @@ context:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@dl30,mondaq]
     sources:
       - mondaq
+      - dl30
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under Federal Decree-Law 30 of 2021, a
-      first offence of possessing or using cannabis for personal use carries at least three
-      months in prison or a fine of AED 10,000 to 100,000, with longer mandatory terms for
-      repeat offences.
+      There is no legal recreational supply for anyone.[@dl30] A first personal-use offence carries
+      at least three months or AED 10,000–100,000, with longer terms for repeats.[@lexai]
+      Non-residents entering with under 100 g of cannabis for personal use can pay AED 5,000–20,000
+      on a first entry, rising to AED 10,000–30,000 plus a three-year ban on a second and
+      AED 50,000–100,000 plus a permanent ban on a third.[@res43]
     sources:
-      - ly
-      - mondaq
+      - dl30
+      - lexai
+      - res43
   driving:
     status: impairment
     text: >-
       Federal Decree-Law No. 14 of 2024 on traffic regulation, in force from 29 March
       2025, makes it an offence to drive or attempt to drive a vehicle while under the
-      influence of narcotic or psychotropic substances. The penalty is imprisonment, a
-      fine of 30,000 to 200,000 dirhams, or both, heavier than for alcohol. The licence is
-      suspended for six months on a first offence and a year on a second, and cancelled on
-      a third. Causing a death while under the influence brings at least a year in prison
-      and a fine of at least 100,000 dirhams.
+      influence of narcotic or psychotropic substances.[@gn_traffic24,trafficlaw24] The penalty is
+      imprisonment, a fine of 30,000 to 200,000 dirhams, or both, heavier than for
+      alcohol.[@gn_traffic24,trafficlaw24] The licence is suspended for six months on a first offence
+      and a year on a second, and cancelled on a third.[@gn_traffic24] Causing a death while under the
+      influence brings at least a year in prison and a fine of at least 100,000
+      dirhams.[@gn_traffic24,trafficlaw24]
     sources:
       - gn_traffic24
+      - trafficlaw24
+  black_market:
+    text: >-
+      The national police reported 12,340 kg of narcotics and psychotropics seized in 2024, 9,774
+      drug-crime reports and 13,513 suspects; the figures cover all drugs, not cannabis
+      alone.[@gulfstats24] The Emirates produce little cannabis but have long served as a
+      transshipment point for hashish from Afghanistan and Pakistan, helped by free ports and a
+      heterogeneous population.[@incsr09] No cannabis-only seizure series was found.[@gulfstats24]
+    sources:
+      - gulfstats24
+      - incsr09
+  arrests:
+    text: >-
+      Police handled 13,513 suspects in 9,774 drug-crime reports in 2024, within the 12,340 kg of
+      all narcotics and psychotropics seized that year.[@gulfstats24] The figures are not broken down
+      by drug, and no public cannabis-only arrest count was found.[@gulfstats24]
+    sources:
+      - gulfstats24
 sources:
   dl30:
     title: UAE Legislation — Federal Decree-Law No. 30 of 2021 on combating narcotics and psychotropic substances (official English text)
     url: https://www.uaelegislation.gov.ae/en/legislations/1540/download
+    locator: "Articles 10, 12, 14, 41–42, 45, 48, 57, 75, 92 and 95; Schedule 10."
+  lexai:
+    title: "Lexai — UAE Federal Decree-Law 30/2021, consolidated amended text (synced 19 October 2026)"
+    url: https://lexaidxb.com/en/legislations/uae-1540
+    locator: "Articles 42, 48, 57 and 75; Schedule 10 quantity tiers."
+  res43:
+    title: "UAE Legislation — Cabinet Resolution 43/2024 implementing Article 42 bis on port fines"
+    url: https://www.uaelegislation.gov.ae/en/legislations/2369
+    locator: "Cannabis under 100 g: AED 5,000–20,000 first, AED 10,000–30,000 second, AED 50,000–100,000 third."
+  gulfstats24:
+    title: "Gulf News — Major achievements: UAE Ministry of Interior reports seizure of over 12 tonnes of drugs (26 June 2025)"
+    url: https://gulfnews.com/uae/crime/major-achievements-uae-ministry-of-interior-reports-seizure-of-over-12-tonnes-of-drugs-1.500178003
+    locator: "2024: 12,340 kg seized, 9,774 reports, 13,513 suspects; 2024–2031 strategy."
+  national26:
+    title: "The National — UAE hemp law offers new ways to treat insomnia, anxiety and epilepsy (4 January 2026)"
+    url: https://www.thenationalnews.com/news/uae/2026/01/04/uae-hemp-law-offers-new-ways-to-treat-insomnia-anxiety-and-epilepsy/
+    locator: "High-THC medical cannabis remains illegal; authorised hemp-derived medical products."
+  decree14_2025:
+    title: "WAM — Federal decree-law issued amending the law on combating narcotic drugs and psychotropic substances (11 December 2025)"
+    url: https://www.wam.ae/en/article/bn5rrlz-federal-decree-law-issued-amending-combating
+    locator: "Article 75 mandatory deportation; effective 1 January 2026."
+  zaa:
+    title: "Zayed Alshamsi — Judicial deportation of foreign nationals under the amended narcotics law (4 August 2026)"
+    url: https://zaa.ae/blog/judicial-deportation-of-foreign-nationals-in-light-of-the-amendments-to-the-uae-law-on-combating-narcotic-drugs-and-psychotropic-substances/
+    locator: "Article 75 exceptions for citizens' spouses and resident families."
+  incsr09:
+    title: "US International Narcotics Control Strategy Report — United Arab Emirates (via the Free Library)"
+    url: https://www.thefreelibrary.com/United+Arab+Emirates.-a0168091188
+    locator: "Transshipment of Afghan and Pakistani cannabis through the Emirates."
+  trafficlaw24:
+    title: "UAE Legislation — Federal Decree-Law No. 14 of 2024 on traffic regulation"
+    url: https://uaelegislation.gov.ae/en/legislations/2598
+    locator: "Articles 35(2) and 40."
   mondaq:
     title: Mondaq — The UAE narcotics law explained
     url: https://www.mondaq.com/crime/1835052/the-uae-narcotics-law-explained
