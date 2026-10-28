@@ -3,7 +3,7 @@ title: Zamal on Réunion
 summary: On Réunion cannabis arrived with enslaved Malagasy and indentured labourers, and found a place in their rites, gardens and remedies. In Tamil temples the gods were said to ask for it through possessed priests. Most of those uses had faded by the 1970s.
 also: [zamal, candia, ciga, Malbar, marche sur le feu]
 countries: [fr, re]
-history: [france-use-criminalised-1970, reunion-zamal-malagasy-roots-1729, reunion-youth-zamal-groups-1971]
+history: [france-use-criminalised-1970, reunion-zamal-malagasy-roots-1729, reunion-youth-zamal-groups-1971, reunion-drug-trend-2025-2026]
 related: [language/zamal, traditions/sadhus-and-the-chillum, traditions/kumina]
 image:
   src: ../../src/assets/culture/reunion-marche-sur-le-feu.jpg
@@ -18,6 +18,8 @@ sources:
     url: https://classiques.uqam.ca/contemporains/benoist_jean/A_la_Reunion_le_cannabis/A_la_Reunion_le_cannabis_texte.html
   - title: OFDT — Élodie Auzole, Tendances récentes et nouvelles drogues, La Réunion, résultats 2021 (November 2022)
     url: https://www.ofdt.fr/BDD/publications/docs/syntheseTREND2021_Reunion.pdf
+  - title: OFDT — Élodie Auzole, Substances psychoactives, usagers et marchés, Tendances récentes sur l'île de La Réunion en 2025 (September 2026)
+    url: https://www.ofdt.fr/sites/ofdt/files/2026-09/rapport-trend-la-reunion-2025.pdf
   - title: Wikipedia — Cannabis in Réunion
     url: https://en.wikipedia.org/wiki/Cannabis_in_R%C3%A9union
   - type: chapter
@@ -69,4 +71,4 @@ By Benoist's time most of this had stopped. Strict laws, he wrote, had made heal
 
 After Réunion became a French department in 1946, money, schools and migrants changed the island. Benoist saw [two new kinds of use](/history/reunion-youth-zamal-groups-1971/): Comorian labourers in the shanty towns around Le Port and Saint-Denis, and lycée pupils and young people from mainland France smoking on the beaches. The authorities, he wrote, chose discretion, judging that the habit was no threat to society. By then the rituals had shrunk to something "purely symbolic".
 
-French law treats the island like the mainland: the [1970 drug law](/history/france-use-criminalised-1970/) made any use a crime. The observatory's report for 2021 found cannabis grown locally and sold through small networks of acquaintances, never made into resin. Many islanders believed that a plant or two for one's own use was legal, which it is not. Zamal was the third most common reason for treatment at addiction centres, after alcohol and tobacco, and good local zamal was becoming scarce as imported hybrid strains spread.
+French law treats the island like the mainland: the [1970 drug law](/history/france-use-criminalised-1970/) made any use a crime. The observatory's report for 2021 found cannabis grown locally and sold through small networks of acquaintances, never made into resin. Many islanders believed that a plant or two for one's own use was legal, which it is not. Zamal was the third most common reason for treatment at addiction centres, after alcohol and tobacco, and good local zamal was becoming scarce as imported hybrid strains spread. By 2025 the shift had gone further: home-grown zamal sold at about €10 a roll of roughly 10 g with quality still judged in decline, imported skunk at €10 a gram was supplanting it, and imported resin sold at about €20 a gram — see [Réunion's 2025 drug survey](/history/reunion-drug-trend-2025-2026/).
