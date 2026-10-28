@@ -3,6 +3,12 @@ region: South America
 iso_numeric: 740
 recreational: illegal
 medical: none
+words:
+  - word: ganja
+    lang: Dutch (Suriname)
+    meaning: The colonial administration's own word for cannabis, carried to Suriname by Asian immigrants; their association petitioned in 1921 to lift the ban and grant an import-and-sales concession
+    sources:
+      - wiki
 updated: '2026-10-28'
 summary: >-
   Up to thirteen years for possession, with no Dutch-style tolerance. The 2023 industrial-hemp law
@@ -18,11 +24,22 @@ segments:
   possession:
     text: >-
       Cannabis is on List II of the 1998 Narcotics Act, and Article 4 forbids possessing, holding
-      or using anything on that list. Article 11 sets up to thirteen years in prison and a fine
-      for doing so intentionally, and up to seven years otherwise. The Act names no tolerated or
+      or using anything on that list.[@wvm] Article 11 sets up to thirteen years in prison and a fine
+      for doing so intentionally, and up to seven years
+      otherwise.(/history/suriname-narcotics-act-1998/) The Act names no tolerated or
       decriminalised amount.
     sources:
       - wvm
+    penalties:
+      - label: Intentional
+        treatment: criminal
+        term: Possession, holding or use
+        prison: 13 years
+        note: Plus a fine; amount not stated in the retained sources
+      - label: Non-intentional
+        treatment: criminal
+        term: Possession, holding or use
+        prison: 7 years
   cultivation:
     text: >-
       Ordinary cannabis growing remains prohibited under the Narcotics Act.[@wvm] The [2023 hemp
@@ -34,17 +51,30 @@ segments:
   enforcement:
     text: >-
       The Narcotics Act sets the same maximum, up to thirteen years in prison, for possessing
-      cannabis as for selling or supplying it, with no tolerated amount. No figures on how small
-      cases are dealt with were found.
+      cannabis as for selling or supplying it, with no tolerated amount. No modern figures on how
+      small cases are dealt with were found; the oldest surviving enforcement snapshot is colonial:
+      fourteen opium-or-ganja possession convictions in
+      1922.(/history/suriname-opium-ganja-convictions-1922/)
     sources:
       - wvm
   sharing:
     text: >-
-      Cannabis is on List II of the narcotics law. Selling, delivering, supplying or transporting it
+      Cannabis is on List II of the narcotics law.[@wvm] Selling, delivering, supplying or transporting it
       carries up to thirteen years in prison, and importing or exporting it life or up to twenty
-      years, with heavy fines (Article 11).
+      years, with heavy fines (Article 11).[@wvm]
     sources:
       - wvm
+    penalties:
+      - label: Sale, supply or transport
+        treatment: criminal
+        term: Selling, delivering, supplying or transporting
+        prison: 13 years
+      - label: Import or export
+        treatment: criminal
+        term: Importing or exporting
+        life: possible
+        prison: 20 years
+        note: Plus heavy fines; amounts not stated in the retained sources
   consumption:
     text: >-
       Article 4 of the Narcotics Act forbids using a List II substance as well as possessing it,
@@ -116,6 +146,15 @@ context:
       supplying it to another person are both prohibited.
     sources:
       - wvm
+      - wiki
+  culture:
+    text: >-
+      [Ganja](/culture/language/ganja/) is the word Asian immigrants carried to Suriname, and the
+      colonial administration took it as its own legal term: the 1908 ordinance ended ganja imports
+      on 1 March
+      1918.(/history/suriname-ganja-import-ban-1918/) Three years later the immigrants'
+      association asked for the ban to be lifted and for a concession to import and sell it.[@wiki]
+    sources:
       - wiki
   visitors:
     status: none

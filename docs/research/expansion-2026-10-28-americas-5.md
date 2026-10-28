@@ -56,4 +56,10 @@ of these (committed) — verify and build on them, don't duplicate.
 - Also cleared 5 pre-existing ladder warnings: terms on all three possession rows, `life: possible` on the statutory-maximum row, trimmed notes.
 - Audit 0/0; page + all three articles verified in review HTML.
 - Left: words (no sourced Papiamentu/Dutch local term found), culture (no atlas entries), cultivation tiers (guidance assesses individually), driving/arrests.
-## sr — pending
+## sr — committed
+- Word ganja (Dutch (Suriname), the colonial administration's own term; meaning carries the 1921 petition); culture section linking /culture/language/ganja/ + 1918 article.
+- Possession table (intentional 13 yrs + fine / non-intentional 7 yrs) + sharing table (sale/supply/transport 13 yrs; import/export life-possible/20 yrs); 1998 article linked from possession, 1922 convictions linked from enforcement (oldest enforcement snapshot).
+- New `articles/suriname-ganja-import-ban-1918.md` (1917 colonial encyclopedia book source; dropped an unsourced 1921 tail line) + `articles/suriname-narcotics-act-1998.md` (UNODC text: Wijdenbosch, 13-yr and life/20-yr tiers, in force 20 Jan 1999) + `articles/suriname-opium-ganja-convictions-1922.md` (Koloniaal Verslag 1923: 14 convictions, 10–500 guilders, two 6-month terms, no cultivation offences).
+- Schema lesson: every penalty row needs upto/over/label — circumstance rows take a label.
+- Audit 0/0; page + all three articles verified in review HTML.
+- Left: 1921 petition article (Wikipedia-only entry, skipped deliberately), cultivation tiers (no numbers), driving/arrests, 14 remaining article-less entries.
