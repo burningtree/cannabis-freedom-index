@@ -19,6 +19,13 @@ Same method as usa-1/2/3. Possession tables use labelled steps where the law's f
 - Possession/sharing pinned strings untouched. No MD history entries, no culture subject — noted.
 - Audit 0/0; review page verified.
 
-## mn — pending
+## mn (Minnesota) — committed
+- Cultivation table (8/4-mature legal; 8–16 civil; 16+ felony bands, verified against NORML),
+  cites on sharing/access, new `recreational` (HF 100 May 2023, tribal shops Aug 2023,
+  state-licensed Sep 2025 via OCM + verified LegalClarity page).
+- Possession left as string (claims test #231 pins it). No MN history entries, no culture
+  subject — noted.
+- Audit 0/0; review page verified.
+
 ## co — pending
 ## wi — pending
