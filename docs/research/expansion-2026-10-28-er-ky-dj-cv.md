@@ -10,8 +10,7 @@ by guessing.
 | Cayman Islands | 3 articles, cultivation table, hemp/planting/black-market/arrests | driving; 1925 estimate; 1930s–2000s decades | c57a250 |
 | Cabo Verde | 4 articles, arrests section, history links, pj2022 source | driving; words; 1925 estimate | 33fd927 |
 | Djibouti | 3 articles, planting/arrests sections, history links | driving; words; 1925 estimate | bfc5387 |
-| Eritrea |  |  |  |
-| Eritrea |  |  |  |
+| Eritrea | 2 articles, recreational/hemp/planting, products folded, citations | penalty tables; clubs/driving/market/arrests; words | 7541c24 |
 
 ## er — committed
 - 2 articles: `eritrea-new-code-awaits-enforcement-2024` (2015 code unenforced, transitional law works; gov2024 + 2015 Penal Code) linked from possession/cultivation/sharing/access/recreational; `eritrea-single-convention-2002` (dual accession; added certified Single Convention text as 3rd source after verifying schedules + Art 4 limitation in the PDF, cited for the content sentence) — no profile hook, left unlinked.
