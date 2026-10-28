@@ -32,7 +32,13 @@ others; kp — Asia; cw/sr — done in Americas-5; gy — another agent's blocke
 - Fixed two self-inflicted build assertions (idpc2 missing from possession sources; wiki never cited inline in medical).
 - Audit 0 errors + 2 pre-existing warnings (FCDO visitors advice, "establishes" in driving — both untouched); page + all three articles verified.
 - Left: words (no sourced local term), over-15 g tiers (no numbers), 1993 conventions entry (imp 1, skipped).
-## bm — pending
+## bm — committed
+- Word marijuana (English (Bermuda), from the 1969 Wooding inquiry on marijuana policing; report added as profile source).
+- Possession table (≤7 g legal exemption; over-7 g criminal label row); products folded — hemp definition + 2026 proposal into new `context.hemp` (status high, ≤1% THC), resin sentence moved to enforcement.
+- New `articles/bermuda-warrantless-drug-search-powers-1966.md` (verified verbatim in the UN PDF: s25A stop-and-search; Wooding report added as second source for the 1968-inquiry tail) + `articles/bermuda-medical-consultation-2019.md` (smoked/vaped scheme) + `articles/bermuda-adult-use-licensing-plan-2020.md` (retail plan, UK block 2022) + `articles/bermuda-medical-hemp-reform-timetable-2026.md` (Q4-2026 target); 1966/2019/2020/2026 links across enforcement/medical/hemp.
+- Fixed self-inflicted build assertion (enforcement [@decrim]/[@fact] inline cites).
+- Audit 0 errors + 1 pre-existing warning (production "licences" heuristic, text untouched); page + all four articles verified.
+- Left: culture (no atlas entries), over-7 g tiers (no numbers), remaining 6 entries (1973 prescribing, 2017 caution draft, etc.).
 ## cr — pending
 ## gd — pending
 ## hn — pending

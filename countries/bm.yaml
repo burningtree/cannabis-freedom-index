@@ -10,6 +10,12 @@ dependency:
     instructed the Governor not to assent to a bill legalising cannabis.
 recreational: decriminalised
 medical: limited
+words:
+  - word: marijuana
+    lang: English (Bermuda)
+    meaning: The word the 1969 inquiry into the 1968 disturbances used for the drug when it found search powers interpreted too widely in marijuana policing
+    sources:
+      - wooding69
 updated: '2026-10-22'
 summary: >-
   Simple possession of seven grams of cannabis or less has been decriminalised since 20 December
@@ -26,14 +32,24 @@ scores:
 segments:
   possession:
     text: >-
-      Simple possession of seven grams of cannabis or less is exempt from the possession offence.
-      Police may seize any amount, and evidence of intent to supply can still be prosecuted.
-      Possession above seven grams remains an offence. The 2017 law did not automatically clear
-      older convictions; a later application process allows qualifying records to be expunged.
+      Simple possession of seven grams of cannabis or less is exempt from the possession
+      offence.[@decrim] Police may seize any amount, and evidence of intent to supply can still be
+      prosecuted.[@drugs] Possession above seven grams remains an offence.[@drugs] The 2017 law did
+      not automatically clear older convictions; a later application process allows qualifying
+      records to be expunged.[@expungeCurrent]
     sources:
       - decrim
       - drugs
       - expungeCurrent
+    penalties:
+      - treatment: legal
+        term: Exempt from possession offence
+        upto: 7 g
+        note: Simple possession; police may still seize any amount and supply intent is prosecutable
+      - label: Over 7 g
+        treatment: criminal
+        term: Ordinary possession offence
+        note: Amounts and sentences not stated in the retained sources
   cultivation:
     text: >-
       Growing a plant of the genus Cannabis is prohibited unless authorised under the drug law’s
@@ -46,10 +62,12 @@ segments:
       - blocked
   enforcement:
     text: >-
-      The seven-gram exemption concerns simple possession; police retain seizure powers, and supply
+      The seven-gram exemption concerns simple possession;[@decrim] police retain seizure powers, and supply
       intent can still lead to prosecution below that weight. Cultivation, supply and unauthorised
       imports or use remain offences. The government’s fact sheet says the earlier caution policy
-      for less than three grams ceased to have effect.
+      for less than three grams ceased to have effect.[@fact] Cannabis resin is separately defined and
+      controlled,[@drugs] and stop-and-search powers date to
+      1966.(/history/bermuda-warrantless-drug-search-powers-1966/)
     sources:
       - decrim
       - drugs
@@ -103,12 +121,15 @@ context:
       - plan
       - blocked
       - drugs
-  products:
+  hemp:
+    status: high
     text: >-
-      Since November 2019, the drug law defines hemp as cannabis sativa, or any part of it, with no
-      more than 1% THC and excludes it from the definition of cannabis. Cannabis resin is separately
-      defined and controlled. In July 2026, the government proposed clearer compliance rules for
-      hemp-derived consumer products already being sold.
+      Since November 2019, the drug law defines hemp as cannabis sativa, or any part of it, with
+      no more than 1% THC and excludes it from the definition of cannabis. In July 2026, the
+      government proposed clearer compliance rules for hemp-derived consumer products already
+      being sold, with drafting instructions for hemp reforms and initial implementation targeted
+      for the final quarter of the
+      year.(/history/bermuda-medical-hemp-reform-timetable-2026/)
     sources:
       - hemp
       - drugs
@@ -117,9 +138,12 @@ context:
     text: >-
       Named cannabinoid medicines have a prescription route under the 2014 pharmaceutical law,
       alongside the minister’s personal-import licensing powers. A 2019 proposal for locally
-      produced cannabis for medical inhalation became part of the wider licensing debate. In July
-      2026, the government targeted a further medical and hemp framework for the final quarter of
-      the year.
+      produced cannabis for medical
+      inhalation(/history/bermuda-medical-consultation-2019/) became part of the wider licensing
+      debate that produced the 2020 adult-use plan, blocked in
+      2022.(/history/bermuda-adult-use-licensing-plan-2020/) In July 2026, the government targeted
+      a further medical and hemp framework for the final quarter of the
+      year.(/history/bermuda-medical-hemp-reform-timetable-2026/)
     sources:
       - meds
       - court
@@ -196,6 +220,13 @@ sources:
     title: Government of Bermuda — decriminalisation public awareness fact sheet
     url: https://www2.gov.bm/articles/public-awareness-fact-sheet
     locator: 2018 explanation of the 20 December 2017 amendment and remaining offences
+  wooding69:
+    type: report
+    title: Bermuda Civil Disorders 1968 — Report of Commission
+    authors: [H. O. B. Wooding, Hugh W. Springer, L. P. R. Browning]
+    year: 1969
+    url: https://decouto.bm/wp-content/uploads/2025/03/Wooding-report-1969.pdf
+    locator: Paragraphs 58–62, printed pp.38–42; dates the 1966 amendment and discusses its application
   court:
     title: Jonathan Bell, The Royal Gazette — People can apply for medical cannabis (25 November 2016)
     url: >-
