@@ -10,11 +10,12 @@ dependency:
     cannabis between islands is barred while it does.
 recreational: legal
 medical: legal
-updated: "2026-10-21"
+updated: '2026-10-28'
 summary: >-
-  The Northern Mariana Islands legalised adult and medical use in September 2018. Adults 21 and
-  over may carry an ounce, keep eight at home and grow their own. Licensed shops and lounges
-  opened in 2021; the commission reported retailer-delivery rules in 2025.
+  The Northern Mariana Islands legalised adult and medical use in September 2018. Adults 21 and over
+  may carry an ounce, keep eight at home and grow their own. Licensed shops and lounges opened in
+  2021; in January 2026 the regulator moved from the Cannabis Commission to the Alcohol Beverage and
+  Tobacco Control Division.
 scores:
   possession: 6
   cultivation: 5
@@ -25,161 +26,312 @@ scores:
 segments:
   possession:
     text: >-
-      Adults 21 and over may possess up to 1 oz in a public place and up to 8 oz of usable
-      cannabis at home, plus up to 16 oz of solid and 72 oz of liquid cannabis products and 5 g of
-      extracts. Possession is barred in cannabis-free zones such as government buildings, schools,
-      federal buildings and businesses licensed to serve alcohol.
+      Adults 21 and over may possess up to one ounce in a public place and up to eight ounces of
+      usable cannabis at home, plus up to sixteen ounces of solid and seventy-two ounces of liquid
+      cannabis products and five grams of extracts.[@pit20] Possession is barred in cannabis-free
+      zones such as government buildings, schools, federal buildings and businesses licensed to
+      serve alcohol.[@law18] Exceeding a limit by up to twice brings up to thirty days and $1,250;
+      more than twice up to four times brings a year and $2,500; more than four times brings five
+      years and $5,000.[@law18]
     sources:
       - pit20
+      - law18
+    currency: USD
+    penalties:
+      - label: Up to twice the possession limit
+        treatment: criminal
+        term: Possession over the limit
+        prison: 30 days
+        fine: 1250
+      - label: More than twice but up to four times the limit
+        treatment: criminal
+        term: Possession over the limit
+        prison: 1 year
+        fine: 2500
+      - label: More than four times the limit
+        treatment: criminal
+        term: Possession over the limit
+        prison: 5 years
+        fine: 5000
   cultivation:
     text: >-
-      Adults may grow up to six mature and twelve immature plants per household or cultivation
-      site, out of public view and secured against unauthorised access and access by people under
-      21. A homegrown-registry card is required, with a statutory annual fee of $75. The 2019
-      amendment protected compliant growing while registry rules were unfinished, subject to
-      obtaining a card when available. Homegrown cannabis may not be sold.
+      Adults may grow up to six mature and twelve immature plants per household or cultivation site,
+      out of public view and secured against unauthorised access and access by people under 21.[@codeHome]
+      A homegrown-registry card is required, with a statutory annual fee of $75.[@codeRegistry] The
+      2019 amendment protected compliant growing while registry rules were unfinished, subject to
+      obtaining a card when available.[@law19] Homegrown cannabis may not be sold.[@codeHome]
+      Seven to twelve mature plants bring up to six months and $500, or a year and $1,000 on a
+      repeat; thirteen to twenty-nine bring five years and $5,000; thirty or more bring ten years and
+      $10,000.[@law18]
     sources:
       - codeHome
       - codeRegistry
-  enforcement:
-    text: >-
-      Inside the limits nothing is punished. Using cannabis while driving brings fines of up to
-      $500 and suspension of the licence for up to six months for a first offence, and up to
-      $1,000 and a year for a repeat.
-    sources:
-      - pit20
+      - law19
+      - law18
     currency: USD
     penalties:
-      - label: Using cannabis while driving, first offence
-        treatment: civil
+      - label: Seven to twelve mature plants
+        treatment: criminal
+        term: Unlawful cultivation
+        prison: 6 months
         fine: 500
-        note: Plus licence suspension for up to six months
-      - label: Using cannabis while driving, repeat offence
-        repeat: 2
-        treatment: civil
-        fine: 1000
-        note: Plus licence suspension for up to a year
+        note: Repeat offence up to one year and $1,000
+      - label: Thirteen to twenty-nine mature plants
+        treatment: criminal
+        term: Unlawful cultivation
+        prison: 5 years
+        fine: 5000
+      - label: Thirty or more mature plants
+        treatment: criminal
+        term: Unlawful cultivation
+        prison: 10 years
+        fine: 10000
+  enforcement:
+    text: >-
+      Inside the limits nothing is punished.[@law18] Public use or display, use in front of someone
+      under 21, and use in a cannabis-free zone are civil violations; under-21 possession and
+      unlicensed delivery are separate offences.[@law18] Compliance and licensing are handled by the
+      Alcohol Beverage and Tobacco Control Division after the January 2026 transfer.[@eo25,abtc26]
+    sources:
+      - law18
+      - eo25
+      - abtc26
   sharing:
     text: >-
-      Adults 21 and over may give another adult up to one ounce of usable cannabis, 16 ounces of
-      solid products, 72 ounces of liquid products, five grams of extracts or six immature plants
-      for noncommercial purposes. The recipient must accept the gift. Homegrown cannabis and
-      plants may not be sold for consideration.
+      Adults 21 and over may give another adult up to one ounce of usable cannabis, sixteen ounces
+      of solid products, seventy-two ounces of liquid products, five grams of extracts or six
+      immature plants for noncommercial purposes.[@codeHome] The recipient must accept the gift, and
+      homegrown cannabis and plants may not be sold for consideration.[@codeHome] Delivery for
+      consideration carries up to a year and $5,000; free delivery up to six months and $1,000; a
+      free gift under one ounce is a $500 fine.[@law18]
     sources:
       - codeHome
+      - law18
+    currency: USD
+    penalties:
+      - label: Delivery for consideration
+        treatment: criminal
+        term: Unlawful delivery
+        prison: 1 year
+        fine: 5000
+      - label: Free delivery
+        treatment: criminal
+        term: Unlawful delivery
+        prison: 6 months
+        fine: 1000
+      - label: Free gift under one ounce
+        treatment: civil
+        term: Gift
+        fine: 500
   consumption:
     text: >-
-      Use is legal in private, but using or displaying cannabis in a public place, on public
-      property or in front of anyone under 21 is unlawful. Licensed lounges allow on-site
-      consumption.
+      Use is legal in private, but using or displaying cannabis in a public place, on public property
+      or in front of anyone under 21 is unlawful.[@law18] Licensed lounges allow on-site
+      consumption.[@ccr25] Public use is a $250 first violation and $1,000 subsequently; use in a
+      cannabis-free zone is $500 first and $1,000 subsequently.[@law18]
     sources:
-      - pit20
+      - law18
       - ccr25
+    currency: USD
+    penalties:
+      - label: Public use or display
+        treatment: civil
+        term: Public consumption
+        fine: 250
+        note: $1,000 for a subsequent violation
+      - label: Use in a cannabis-free zone
+        treatment: civil
+        term: Public consumption
+        fine: 500
+        note: $1,000 for a subsequent violation
   access:
     text: >-
-      The commission licenses producers, processors, retailers, wholesalers, lounges and testing.
-      Saipan Select held a soft opening on 14 July 2021 and its grand opening on 16 July. Seven
-      retailers renewed licences in 2025; the commission’s 2025 report also records amended
-      retailer-delivery rules and a compliance advisory for delivery from licensed premises.
+      The Cannabis Commission licensed producers, processors, retailers, wholesalers, lounges and
+      testing; Saipan Select held a soft opening on 14 July 2021.[@firstShop] In November 2025
+      Governor Apatang transferred the regulatory duties to the Alcohol Beverage and Tobacco Control
+      Division of the Department of Commerce, effective 18 January 2026; the statute still names the
+      Commission, so the legal authority is unsettled.[@eo25,abtc26] The September 2025 list had
+      eight producers, seven retailers, two lounges and two processors, with no testing laboratory
+      or wholesaler.[@ccr25]
     sources:
       - firstShop
+      - eo25
+      - abtc26
       - ccr25
 context:
   recreational:
     text: >-
-      Adults 21 and over may possess up to one ounce in public and eight ounces at home, plus
-      solid and liquid products and five grams of extracts, and may give those amounts to
-      another adult without payment.[@pit20] They may grow six mature and twelve immature
-      plants per household with a $75 annual registry card.[@codeHome,codeRegistry] Use is legal
-      in private and in licensed lounges.[@pit20,ccr25]
+      Adults 21 and over may possess up to one ounce in public and eight ounces at home, plus solid
+      and liquid products and five grams of extracts, and may give those amounts to another adult
+      without payment.[@pit20] They may grow six mature and twelve immature plants per household with
+      a $75 annual registry card.[@codeHome,codeRegistry] Use is legal in private and in licensed
+      lounges.[@law18,ccr25]
     sources:
       - pit20
       - codeHome
       - codeRegistry
+      - law18
       - ccr25
   hemp:
     status: standard
     text: >-
-      A 2020 hemp law put production under the Division of Agriculture with a 0.3% THC
-      ceiling, under licensing rules consistent with the federal hemp framework; wilful
-      violations can bring up to a year in prison, a $2,500 fine, or both.[@hemp20] The
+      A 2020 hemp law put production under the Division of Agriculture with a 0.3% THC ceiling,
+      under licensing rules consistent with the federal hemp framework; wilful violations can bring
+      up to a year in prison, a $2,500 fine, or both.[@hemp20] The
       [transfer](/history/cnmi-hemp-agriculture-transfer-2020/) removed hemp from the cannabis
-      commission's remit.
+      commission's remit.[@hemp20]
     sources:
       - hemp20
   production:
     status: open
     text: >-
-      Licensed producers grow under canopy classes; the commission counted eight producer
-      licensees in 2025, and licensees employed about sixty people. There is no certified testing
-      laboratory in the Commonwealth. Products are flower, extracts and edibles from licensed
-      processors, with potency limits for concentrates, edibles, tinctures and topicals in
-      progress in 2025.[@ccr25]
+      Licensed producers grow under canopy classes; the September 2025 list had eight producer
+      licensees, and licensees employed about sixty people.[@ccr25] There is no certified testing
+      laboratory in the Commonwealth, and a producer-licence moratorium has been in place since
+      January 2024.[@ccr24] Products are flower, extracts and edibles from licensed processors, with
+      potency limits for concentrates, edibles, tinctures and topicals in progress in 2025.[@ccr25]
     sources:
       - ccr25
+      - ccr24
   medical:
     text: >-
-      The 2018 law covers medical as well as adult use. A patient or caregiver may grow up to
+      The 2018 law covers medical as well as adult use.[@law18] A patient or caregiver may grow up to
       twelve mature and twenty-four immature plants when a physician considers it necessary and
-      practical for treatment, with a registry card and physician statement. The 2019 law allows
-      licensed sales to patients aged eighteen to twenty-one with a valid doctor’s recommendation,
-      including qualifying recommendations from a nonresident patient’s country of origin.
+      practical for treatment, with a registry card and physician statement.[@codeHome] The 2019 law
+      allows licensed sales to patients aged eighteen to twenty-one with a valid doctor's
+      recommendation, including qualifying recommendations from a nonresident patient's country of
+      origin.[@law19]
     sources:
+      - law18
       - codeHome
       - law19
   consequences:
     text: >-
-      Cannabis excise and surtax brought in $686,979 in fiscal 2024 but only $113,880 by July
-      2025. In 2025 the commission cut licence fees by 25% and adopted rules for a seed-to-sale
-      tracking system.
+      Cannabis excise and surtax brought in $686,979 in fiscal 2024 but only $113,880 by July 2025,
+      against a $517,868 budget.[@ccr25] In 2025 the commission cut licence fees by 25% and adopted
+      rules for a seed-to-sale tracking system.[@ccr25] The revenue figure is disputed: the acting
+      chair said one retailer remitted about $20,000 a month, implying a higher annual total.[@abtc26]
     sources:
       - ccr25
+      - abtc26
+  planting:
+    seeds: legal
+    seeds_trade: unclear
+    clones: legal
+    clones_trade: gift
+    text: >-
+      "Marijuana" includes seeds, but "usable marijuana" excludes them, and adults may hold and sow
+      seeds within the six-plant home grow.[@codeHome] Clones and immature plants count toward the
+      twelve-immature limit, and adults may gift up to six immature plants.[@codeHome] Selling
+      homegrown plants or seeds for consideration is unlawful delivery; no retail seed or clone
+      licence exists.[@codeHome,law18]
+    sources:
+      - codeHome
+      - law18
+  visitors:
+    status: open
+    text: >-
+      The possession, home-grow and gifting clauses have no residency requirement, so an adult 21 or
+      over may buy at a licensed retailer and possess or gift within the caps.[@law18] Patients aged
+      18 to 21 may buy with a doctor's recommendation, including one from their home
+      country.[@law19] Federal law still bars carrying cannabis between islands and across US
+      borders, and airports and ports are enforcement points.[@ccr25]
+    sources:
+      - law18
+      - law19
+      - ccr25
+  driving:
+    status: impairment
+    text: >-
+      Driving under the influence of any drug that makes safe driving impossible is an offence under
+      9 CMC sections 7105 and 7109, with 72 hours to one year and a $500–1,000 fine on a first
+      conviction, plus a 30-day to six-month licence suspension; repeats reach one year and
+      $1,000.[@dui] There is no THC blood limit; the standard is impairment.[@dui] A separate
+      provision, 4 CMC section 53067, punishes consuming cannabis while driving with up to $500 and a
+      six-month suspension, or $1,000 and a year on a repeat.[@law18]
+    sources:
+      - dui
+      - law18
+  black_market:
+    text: >-
+      The last detailed federal picture, from 2003, found local cultivation small and mostly
+      personal, most supply coming from the Philippines and Palau, wholesale at about $1,500 a pound
+      in Saipan and joints at $2.50 before 2000–01 eradication pushed them to $20–50.[@ndic03] In
+      2025 the commission identified diversion into the illicit market, the absence of a certified
+      testing laboratory and unregulated hemp-derived intoxicants as risks; no current size estimate
+      was found.[@ccr25]
+    sources:
+      - ndic03
+      - ccr25
+  arrests:
+    text: >-
+      No cannabis-only arrest series is published. The police commissioner said in October 2026 that
+      the Department of Public Safety was handling about 40 drug cases, down from 80 to 100
+      previously, without a reporting period or cannabis breakdown.[@dps26] The DEA/CNMI task force
+      arrested 122 people and seized 9.8 kg of marijuana between 1996 and February 2002.[@ndic03]
+    sources:
+      - dps26
+      - ndic03
   clubs:
     status: none
     text: >-
       No cannabis clubs are known. Licensed lounges, where adults consume on site, take the place
-      clubs fill elsewhere.
+      clubs fill elsewhere.[@ccr25]
     sources:
       - ccr25
 sources:
   pit20:
     title: Pacific Island Times — CNMI Cannabis Commission urges responsible use of pot (21 April 2020)
-    url: >-
-      https://www.pacificislandtimes.com/post/2020/04/21/cnmi-cannabis-commission-urges-responsible-use-of-pot
+    url: https://www.pacificislandtimes.com/post/2020/04/21/cnmi-cannabis-commission-urges-responsible-use-of-pot
   ccr25:
     title: CNMI Cannabis Commission — Citizen-Centric Report FY2025 (3 September 2025)
     url: https://www.cnmileg.net/resources/files/24th%20SNILD/2025%20CCR/CNMICC%20%20CCR%202025.pdf
-  wiki:
-    title: Wikipedia — Cannabis in the Northern Mariana Islands
-    url: https://en.wikipedia.org/wiki/Cannabis_in_the_Northern_Mariana_Islands
+  ccr24:
+    title: CNMI Cannabis Commission — Citizen-Centric Report FY2024
+    url: https://cnmileg.net/resources/files/Directory/2024%20CCR/CNMICC%202024%20CCR.pdf
+    locator: "Producer-licence moratorium from 4 January 2024."
   law18:
-    title: CNMI — Cannabis Act 2018, Public Law 20-66, with governor’s item vetoes
+    title: CNMI — Cannabis Act 2018, Public Law 20-66, with governor's item vetoes
     url: https://www.cnmilaw.org/pdf/public_laws/20/pl20-66.pdf
-    locator: >-
-      Sections 106, 112, 170 and commencement; signed 21 September 2018. Vetoed fees and excise
-      terms excluded.
+    locator: "Sections 106, 112, 170 and commencement; signed 21 September 2018."
   law19:
     title: CNMI — Cannabis amendment, Public Law 21-5, 21 August 2019
     url: https://www.cnmilaw.org/pdf/public_laws/21/pl21-05.pdf
-    locator: Sections 2(D), 2(F), 2(H) and 3–5; registry, patient sales, business fees and taxes.
+    locator: "Sections 2(D), 2(F), 2(H) and 3–5."
   codeHome:
     title: CNMI Law Revision Commission — Commonwealth Code section 53006
     url: https://cnmilaw.gov/docs/cmc_section/T4/53006.pdf
-    locator: >-
-      Current posted text; household cultivation, medical allowance, gifts and conditions. Source
-      note identifies PL20-66 section 106.
+    locator: "Household cultivation, medical allowance, gifts and conditions."
   codeRegistry:
     title: CNMI Law Revision Commission — Commonwealth Code section 53012
     url: https://cnmilaw.gov/docs/cmc_section/T4/53012.pdf
-    locator: >-
-      Current posted text; registry, $75 annual fee and transition protection; amended by PL21-5
-      section 2(D).
+    locator: "Registry, $75 annual fee and transition protection."
   firstShop:
-    title: Marianas Variety — First cannabis store opens doors to Saipan community, 20 July 2021
-    url: >-
-      https://www.mvariety.com/business/first-cannabis-store-opens-doors-to-saipan-community/article_48e87c4c-e85d-11eb-8dad-1f1aea8d7909.html/
+    title: Marianas Variety — First cannabis store opens doors to Saipan community (20 July 2021)
+    url: https://www.mvariety.com/business/first-cannabis-store-opens-doors-to-saipan-community/article_48e87c4c-e85d-11eb-8dad-1f1aea8d7909.html/
   hemp20:
     type: law
     title: CNMI — Public Law 21-25, hemp production under the Division of Agriculture (18 May 2020)
     url: https://www.cnmilaw.org/pdf/public_laws/21/pl21-25.pdf
-    locator: Sections 2–4 and 7; 0.3% THC ceiling; wilful violations up to a year and $2,500
+    locator: "Sections 2–4 and 7; 0.3% THC ceiling."
+  eo25:
+    title: "CNMI Governor — Executive Order 2025-005, transfer of cannabis regulation to ABTC (18 November 2025)"
+    url: https://governor.cnmi.gov/executive-orders/2025-executive-orders/executive-order-2025-005-transfer-of-authority-for-regulation-of-cannabis-from-the-ccc-to-the-abtc-division-of-the-department-of-commerce
+    locator: "Transfer of duties; commissioners terminated for cause; effective 18 January 2026."
+  abtc26:
+    title: "CNMI Department of Commerce — transition of cannabis regulatory functions to ABTC (16 January 2026)"
+    url: https://commerce.gov.mp/sites/default/files/press_release_transition_of_cannabis_regulatory_functions_to_abtc_01-16-2026_jbl.pdf
+    locator: "ABTC began operations 20 January 2026; revenue dispute."
+  dui:
+    type: law
+    title: "CNMI — 9 CMC sections 7105 and 7109, driving under the influence"
+    url: https://cnmilaw.gov/docs/cmc_section/T9/7105.pdf
+    locator: "Impairment standard and penalties; no THC limit."
+  ndic03:
+    title: "US National Drug Intelligence Center — Northern Mariana Islands Drug Threat Assessment (October 2003)"
+    url: https://www.justice.gov/archive/ndic/pubs4/4001/marijuana.htm
+    locator: "Prices, supply sources and 1996–2002 task-force figures."
+  dps26:
+    title: "Marianas Press — DPS drug caseload (28 October 2026)"
+    url: https://marianaspress.com/
+    locator: "About 40 drug cases; no cannabis breakdown."

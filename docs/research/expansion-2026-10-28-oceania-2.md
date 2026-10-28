@@ -8,7 +8,7 @@ rank; Guam, Tonga, Samoa, French Polynesia and Fiji were completed in Oceania 1.
 |---|---|---|---|
 | Micronesia | national/state penalty tables, recreational/hemp sections, PL 21-08 trafficking update, 2024 Ehsa case and 5 history entries | 1940s–1950s empty; Chuuk current code unverified | this commit |
 | Kiribati | possession/cultivation/sharing tables, recreational/hemp/black-market/arrests sections, 9 history entries | no aggregate arrest series; 2025 judgment primary text blocked | this commit |
-| Northern Mariana Islands | in progress | | |
+| Northern Mariana Islands | possession/cultivation/sharing/consumption tables, planting/visitors/driving/black-market/arrests, regulator transfer and 5 history entries | 1930s–1960s empty; ABTC authority unsettled | this commit |
 | Palau | Schedule II correction, possession/cultivation/sharing tables, hemp/planting/driving/black-market/arrests, 9 history entries | 1930s and 1960s empty | this commit |
 | Nauru | in progress | | |
 
@@ -17,3 +17,5 @@ Palau validation: `profile-audit pw` zero errors/warnings; `country-gaps pw` has
 Micronesia validation: `profile-audit fm` zero errors/warnings; `country-gaps fm` has no missing sections or tables and no uncited text; the targeted page build passed for `/country/fm/`. The profile now distinguishes the national $50 small-possession fine from the state penalties, records the 2019 restoration of the import/export and 15-year trafficking tier, and uses the 2024 Ehsa mail-import case for current enforcement. Chuuk's current drug chapter remains unverified because the published text is a historical appendix.
 
 Kiribati validation: `profile-audit ki` zero errors/warnings; `country-gaps ki` has no missing sections or tables and no uncited text; the targeted page build passed for `/country/ki/`. The profile now records the 1948 Dangerous Drugs Ordinance's single penalty band for possession, cultivation, sale and gifts, the limited extract/tincture prescription route, and the 2025 Abatao and Takoronga raids plus the two-plant suspended sentence. The 2025 judgment itself was blocked, so its details come from a case summary.
+
+Northern Mariana Islands validation: `profile-audit mp` zero errors/warnings; `country-gaps mp` has no missing sections or tables and no uncited text; the targeted page build passed for `/country/mp/`. The profile now records the adult-use and medical limits, the over-limit and cultivation tiers, the open visitor rule with the federal transport bar, and the January 2026 transfer from the Cannabis Commission to ABTC. The statute still names the Commission, so the regulatory authority remains unsettled.
