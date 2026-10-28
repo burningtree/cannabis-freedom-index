@@ -5,11 +5,9 @@ recreational: illegal
 medical: none
 updated: '2026-10-23'
 summary: >-
-  Cannabis use, possession and growing solely for personal consumption are criminal offences,
-  punishable by up to one year in prison or a fine, with a higher ceiling above the statutory
-  quantity threshold. Courts may waive punishment for an occasional user in the lower band.
-  Trafficking carries five to fifteen years, while the law provides confidentiality and treatment
-  options for people who use drugs.
+  Cannabis use, possession and growing solely for personal consumption carry up to one year or a
+  fine; above 5 g of herb, 2.5 g of resin or 1.25 g of oil the ceiling is two years. Trafficking
+  carries five to fifteen years. Courts may waive punishment for an occasional user.
 scores:
   possession: 1
   cultivation: 1
@@ -21,20 +19,48 @@ segments:
   possession:
     text: >-
       Illicit possession or acquisition solely for personal use carries up to one year in prison or
-      a fine assessed over up to 120 days. Above five daily reference quantities the ceiling rises
-      to two years or a 240-day fine; the annex sets daily references of 1 g of herbal cannabis, 0.5
-      g of resin and 0.25 g of oil. An occasional user in the lower band may have punishment
-      waived.[@law]
+      a fine assessed over up to 120 days. Above 5 g of herbal cannabis, 2.5 g of resin or 1.25 g of
+      oil, the ceiling rises to two years or a 240-day fine. An occasional user in the lower band may
+      have punishment waived.[@law]
     sources:
       - law
+    currency: USD
+    penalties:
+      - label: Personal possession or acquisition
+        treatment: criminal
+        term: Personal use
+        prison: 1 year
+        note: Or a fine of up to 120 day-rates
+      - label: Above 5 g herb, 2.5 g resin or 1.25 g oil
+        treatment: criminal
+        term: Personal use
+        prison: 2 years
+        note: Or a fine of up to 240 day-rates
   cultivation:
     text: >-
       Growing solely for personal consumption falls under the personal-use offence: up to one year
-      in prison or a 120-day fine, rising to two years or a 240-day fine above the quantity
-      threshold.[@law] Unauthorised cultivation outside the personal-use offence falls under
+      in prison or a 120-day fine, rising to two years or a 240-day fine above the same weight
+      thresholds.[@law] Unauthorised cultivation outside the personal-use offence falls under
       trafficking, with five to fifteen years in prison.[@law]
     sources:
       - law
+    currency: USD
+    penalties:
+      - label: Growing for personal use
+        treatment: criminal
+        term: Personal growing
+        prison: 1 year
+        note: Or a fine of up to 120 day-rates
+      - label: Growing above the personal-use weight threshold
+        treatment: criminal
+        term: Personal growing
+        prison: 2 years
+        note: Or a fine of up to 240 day-rates
+      - label: Cultivation for trafficking
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 15 years
   enforcement:
     text: >-
       Prison is used in cannabis cases: Lusa reported a three-and-a-half-year sentence for
@@ -77,26 +103,18 @@ context:
   production:
     status: none
     text: >-
-      Cultivation, manufacture, trade and imports of controlled cannabis require the relevant
-      authorisation; unauthorised production and supply outside the personal-use offence attract
-      trafficking penalties.[@law] In June 2022, police reported seizing a suspected marijuana
-      parcel sent from Ireland and referring its recipient for an initial court hearing.[@police]
+      Cultivation, manufacture, trade and imports of controlled cannabis outside the personal-use
+      offence attract trafficking penalties; no lawful commercial producer was found.[@law] In June 2022, police reported seizing a package of live cannabis
+      seedlings sent from Ireland and referring its recipient for an initial court hearing.[@police]
     sources:
       - law
       - police
-  products:
-    text: >-
-      Table I-C controls cannabis leaves and flowering or fruiting tops, resin, oil and cannabis
-      seeds not intended for sowing.[@law] The 2025 pharmaceutical rules define narcotics and
-      psychotropic substances through the 2017 drug law’s schedules.[@pharma]
-    sources:
-      - law
-      - pharma
   medical:
     text: >-
-      The law places controlled-drug handling under Health Ministry licensing and supervision and
-      provides for separate implementing rules.[@law] In his November 2022 independence-anniversary
-      address, President José Ramos-Horta advocated legalising medical cannabis.[@nov]
+      No medical cannabis programme operates. The law allows Health Ministry licensing for handling
+      controlled drugs, but no implementing decree, registered cannabis medicine or prescribing
+      route was found.[@law] In his November 2022 independence-anniversary address, President José
+      Ramos-Horta advocated legalising medical cannabis, without a law following.[@nov]
     sources:
       - law
       - nov
@@ -136,7 +154,71 @@ context:
       twenty years.[@law]
     sources:
       - law
+  recreational:
+    text: >-
+      All recreational use is prohibited. Personal possession or use carries up to one year or a
+      120-day fine, or two years above 5 g of herb, 2.5 g of resin or 1.25 g of oil; trafficking
+      carries five to fifteen years.[@law] No adult-use supply exists.[@law]
+    sources:
+      - law
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. Table I-C expressly includes hemp (Cannabis
+      sativa) and its derivatives, and cultivation requires Health Ministry authorisation.[@law]
+      No industrial-hemp or consumer-CBD route was found.[@law]
+    sources:
+      - law
+  driving:
+    status: impairment
+    text: >-
+      Penal Code article 208(2) punishes driving while unfit because of narcotics or psychotropic
+      substances with up to two years or a fine, and article 88 allows a licence suspension of three
+      months to two years.[@penal2009] There is no numeric THC limit.[@penal2009]
+    sources:
+      - penal2009
+  black_market:
+    text: >-
+      No national cannabis seizure series is published, and UNODC has no Timor-Leste rows.[@unodc_szr]
+      A 2012 UNFPA assessment found cannabis locally grown and easily available, with hashish
+      brought from Indonesia; it is the only qualitative account.[@unfpa12] The 2022 case involved
+      hashish, hashish chocolate, 0.50 g of methamphetamine and $4,139.25 in cash.[@tatoli25]
+    sources:
+      - unodc_szr
+      - unfpa12
+      - tatoli25
+  arrests:
+    text: >-
+      No national cannabis arrest count is published.[@unodc_szr] The 2022 raids led to a case
+      against 13 defendants that reached pre-trial debate in May 2025 and was adjourned without a
+      date in May 2026.[@tatoli25,tatoli26] Police said in 2024 that drug samples still had to be
+      sent to Portugal for confirmation, which delayed cases.[@tatoli24]
+    sources:
+      - unodc_szr
+      - tatoli25
+      - tatoli26
+      - tatoli24
 sources:
+  unodc_szr:
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents"
+    url: https://data.unodc.org/datareport/drug-seizure
+    locator: "No Timor-Leste seizure rows in the dataset."
+  penal2009:
+    title: "Timor-Leste — Penal Code, Decree-Law 19/2009"
+    url: https://www.mj.gov.tl/jornal/files/Codigo_Penal.pdf
+    locator: "Articles 88, 75(2) and 208(2)."
+  unfpa12:
+    title: "UNFPA — Drug use in Timor-Leste: an assessment (2012)"
+    url: https://web.archive.org/web/20170517043036/http://countryoffice.unfpa.org/timor-leste/drive/Druguse.pdf
+  tatoli24:
+    title: "TATOLI — Scientific police lack drug-testing resources (26 June 2024)"
+    url: https://tatoli.tl/2024/06/26/pcic-sei-menus-rekursu-umanu-no-fasilidade-ba-teste-droga/
+  tatoli25:
+    title: "TATOLI — Court opens pre-trial debate in the 13-defendant drug case (2 June 2025)"
+    url: https://tatoli.tl/2025/06/02/tribunal-hahu-halo-debate-instrusaun-ba-kazu-droga-neebe-envolve-husi-arguidu-nain-13/
+  tatoli26:
+    title: "TATOLI — First trial hearing adjourned without a date (5 May 2026)"
+    url: https://tatoli.tl/2026/05/05/tribunal-la-konsege-julga-arguidu-nain-13-ba-kazu-droga/
   law:
     type: law
     title: Timor-Leste — Law 2/2017, final text in Jornal da República, 25 January 2017
