@@ -16,7 +16,11 @@ culture, links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0; review page to verify with batch build.
 - Left: 1920s/1950s empty; three score-moving articles open (1995, 2015 ruling, 2015 decree —
   need stronger sources than Wikipedia).
-## ec — pending
+## ec (Ecuador) — committed
+- Words (Porro, María, Hierba; en.wiktionary es-senses verified).
+- Audit 0/0; review page to verify with batch build.
+- Left: 1930s/40s empty; first-restriction entry is an explicit estimate (flagged, kept —
+  replacing it needs archival research).
 ## py — pending
 ## uy — pending
 ## jm — pending
