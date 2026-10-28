@@ -15,7 +15,16 @@ links; profile-audit 0/0, review build, commit country-by-country.
 - Audit 0/0. Review build blocked by another agent's half-done `countries/tw.yaml`
   ([@moh2020] cite test) — will verify page once fixed.
 - Left: 1930s still empty (no verifiable event found); optional genetics; Bundestag-vote article.
-## gb — pending
+## gb (United Kingdom) — committed (review page pending mo.yaml fix)
+- New entries: 1932 Dangerous Drugs Act (OU/JCL, fills 1930s), 1956 marihuana convictions
+  (Schaffer/King, fills 1950s). New article `articles/uk-nabilone-licensed-1982.md` (Lords 1998
+  report; fills score-moving gap).
+- Words list (Weed, Spliff+atlas, Draw, Dope+atlas; Wiktionary-verified); culture links to
+  language/cannabis, indian-hemp, dope, spliff, halloween rite, Marley 1977 fine (+sentence).
+- Audit 0/0; full test suite green (183/0). Review build blocked by another agent's half-done
+  `countries/mo.yaml` (schema: missing sources) — will verify page once fixed.
+- Deliberately not linked: language/420 (not a documented British word), people/john-lennon
+  (his atlas entry is about the US Sinclair campaign).
 ## ua — pending
 ## ro — pending
 ## pt — pending
