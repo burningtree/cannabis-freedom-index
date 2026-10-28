@@ -163,6 +163,7 @@ select:focus-visible, input:focus-visible, button:focus-visible, tr:focus-visibl
 @media (max-width: 640px) { .map-time { position: static; width: auto; margin: 8px 0 0; } }
 .country-shape.has-data:hover, .country-shape.active { stroke: var(--text); stroke-width: 1.4; }
 .sphere { fill: none; stroke: var(--border); }
+.tiny-dot { stroke: var(--surface); stroke-width: .8; }
 .map-zoom { position: absolute; right: 14px; top: 14px; display: grid; gap: 6px; }
 .map-msg { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); margin: 0; pointer-events: none; }
 .tooltip {
@@ -3469,13 +3470,10 @@ a.ch-db-track:hover { background: color-mix(in srgb, var(--text) 6%, transparent
 .ctxp-key .ctxp-key-split { width: 24px; height: 6px; background: linear-gradient(90deg, var(--t5) 0 33%, var(--t3) 33% 66%, var(--t0) 66%); }
 /* the map */
 .ctxp-map { margin: 0; }
-.ctxp-map { position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: var(--r); }
-.ctxp-map svg { display: block; width: 100%; height: auto; max-height: none; cursor: grab; }
+.ctxp-map svg { display: block; width: 100%; height: auto; cursor: grab; touch-action: none; }
 .ctxp-map svg:active { cursor: grabbing; }
-.ctxp-map .ctxp-legend { padding: 0 14px 12px; }
-.ctxp-map path, .ctxp-map circle { stroke: var(--bg); stroke-width: .6; stroke-linejoin: round; vector-effect: non-scaling-stroke; transition: opacity .15s; }
-.ctxp-map a:hover path, .ctxp-map a:hover circle { opacity: .7; }
-.ctxp-map .ctxp-blank { fill: var(--map-none); }
+.ctxp-map .ctxp-legend { padding: 4px 14px 12px; }
+.ctxp-map a:hover .country-shape { stroke: var(--text); stroke-width: 1.4; }
 .ctxp-map-sec .sub a, .ctxp .sub a { color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
 /* the tables */
 .ctxp-status td { vertical-align: top; }
@@ -3502,10 +3500,16 @@ a.ch-db-track:hover { background: color-mix(in srgb, var(--text) 6%, transparent
   .ctxp-table .ctxp-summary { grid-column: 1 / -1; }
   .ctxp-status th:nth-child(2), .ctxp-status td:nth-child(2) { display: none; }
 }
-/* other topics */
-.ctxp-others ul { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; padding: 0; list-style: none; }
-.ctxp-others a { color: var(--text-2); font-size: 14px; }
-.ctxp-others a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
 /* a context section's title on a profile leads to the topic across every country */
 a.ctx-topic { color: inherit; }
 a.ctx-topic:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+/* the row of topics at the top of the context pages */
+.ctxp-menu { margin: 18px 0 0; border-bottom: 1px solid var(--border); }
+.ctxp-menu ol { display: flex; gap: 4px 22px; margin: 0; padding: 0; list-style: none; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent); padding-right: 28px; }
+.ctxp-menu ol::-webkit-scrollbar { display: none; }
+.ctxp-menu li { flex: none; }
+.ctxp-menu a { display: inline-flex; align-items: center; gap: 6px; padding: 10px 0 9px; border-bottom: 2px solid transparent; margin-bottom: -1px; font: 400 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); white-space: nowrap; }
+.ctxp-menu a svg { width: 13px; height: 13px; }
+.ctxp-menu a:hover { color: var(--text); }
+.ctxp-menu a[aria-current] { color: var(--text); border-bottom-color: var(--text); }
+@media (min-width: 900px) { .ctxp-menu ol { flex-wrap: wrap; overflow: visible; mask-image: none; padding-right: 0; column-gap: 20px; } }

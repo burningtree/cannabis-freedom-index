@@ -4,8 +4,9 @@
 // with a link to its section. The data is in src/lib/contexts.js.
 import Base from "../../layouts/Base.astro";
 import { Icon } from "astro-icon/components";
+import ContextMenu from "../../components/ContextMenu.astro";
 import { contextTopics, mapFill } from "../../lib/contexts.js";
-import { worldMap, MAP_RATIO } from "../../lib/world-map.js";
+import { siteMap } from "../../lib/world-map.js";
 import { tierColor } from "../../lib/tiers.js";
 
 export function getStaticPaths() {
@@ -14,8 +15,8 @@ export function getStaticPaths() {
 
 const { topic } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const W = 1000, H = Math.round(W / MAP_RATIO);
-const map = worldMap(W, H, 0);
+const map = siteMap();
+const W = map.width, H = map.height;
 const rowOf = new Map(topic.rows.map((r) => [r.c.id, r]));
 const pct = (n) => Math.round((n / topic.total) * 100);
 const isStatus = topic.scheme.kind === "status";
@@ -27,21 +28,21 @@ const firstLine = (t) => { if (!t) return ""; const m = t.match(/^.{20,170}?[.;]
 const sectionHref = (c) => `${base}country/${c.slug}/#seg-ctx-${topic.key}`;
 // the map's key
 const legend = isDeath
-  ? [["var(--t0)", "Provided for by law"], ["var(--map-na)", "Explained as not applicable"], ["var(--map-none)", "Not researched yet"]]
+  ? [["var(--t0)", "Provided for by law"], ["var(--map-na)", "Explained as not applicable"], ["hatch", "Not researched yet"]]
   : isStatus
-    ? [...topic.scheme.values.filter((v) => v.tier != null).map((v) => [`var(--t${v.tier})`, v.label]), ["var(--map-none)", "Not researched yet"]]
-    : [["var(--u3)", "Written"], ["var(--map-na)", "Explained as not applicable"], ["var(--map-none)", "Not researched yet"]];
+    ? [...topic.scheme.values.filter((v) => v.tier != null).map((v) => [`var(--t${v.tier})`, v.label]), ["hatch", "Not researched yet"]]
+    : [["var(--u3)", "Written"], ["var(--map-na)", "Explained as not applicable"], ["hatch", "Not researched yet"]];
 const figures = [
   [topic.filled, "profiles with this section"],
   [topic.notApplicable, "explained as not applicable"],
   [topic.missing, "not researched yet"],
   [`${pct(topic.filled + topic.notApplicable)}%`, `of ${topic.total} places covered`],
 ];
-const others = contextTopics.filter((t) => t.key !== topic.key);
 const description = `${topic.name} in every country: ${topic.help.charAt(0).toLowerCase()}${topic.help.slice(1)}. A world map, the figures and each country's summary.`;
 ---
 <Base title={`${topic.name}: country by country`} description={description}>
   <main class="changes-page ctxp">
+    <ContextMenu current={topic.key} />
     <section class="hero hero-sm">
       <p class="eyebrow"><a href={`${base}context/`}>Context</a> <span>not part of the score</span></p>
       <h1><Icon name={topic.icon} class="ctxp-icon" aria-hidden="true" /> {topic.name}</h1>
@@ -58,18 +59,22 @@ const description = `${topic.name} in every country: ${topic.help.charAt(0).toLo
         <p class="sub">Select a country for its section.{topic.mapView && <> <a href={`${base}map/${topic.mapView.slug}/`}>The interactive map&nbsp;→</a></>}</p>
       </div></div>
       {/* the same hover box and zoom buttons as the home page's map (src/lib/unit-map-tip.js, d3-zoom) */}
-      <figure class="unit-map ctxp-map" data-ctxp-map>
+      <figure class="card map-card map-wrap ctxp-map" data-ctxp-map data-map-tips>
         <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-label={`World map: ${topic.name}`}>
+          <defs>
+            <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="var(--nodata)" /><rect width="2" height="5" fill="var(--hatch)" /></pattern>
+          </defs>
           <g class="ctxp-zoom">
+            <path class="sphere" d={map.sphere} />
             {map.shapes.map((s) => {
               const row = s.c ? rowOf.get(s.c.id) : null;
               return row
-                ? <a href={sectionHref(row.c)} data-tip={row.c.id} aria-label={tipOf(row)}><path d={s.d} style={`fill:${mapFill(topic, row)}`} /></a>
-                : <path d={s.d} class="ctxp-blank" />;
+                ? <a href={sectionHref(row.c)} data-tip={row.c.id} aria-label={tipOf(row)}><path class="country-shape has-data" d={s.d} style={`fill:${mapFill(topic, row)}`} /></a>
+                : <path class:list={["country-shape", { "land-only": s.antarctica }]} d={s.d} style={`fill:${s.antarctica ? "var(--land)" : "url(#hatch)"}`} />;
             })}
             {map.dots.map((d) => {
               const row = rowOf.get(d.c.id);
-              return row && <a href={sectionHref(row.c)} data-tip={row.c.id} aria-hidden="true" tabindex="-1"><circle cx={d.x} cy={d.y} r={map.r * 1.6} style={`fill:${mapFill(topic, row)}`} /></a>;
+              return row && <a href={sectionHref(row.c)} data-tip={row.c.id} aria-hidden="true" tabindex="-1"><circle class="country-shape has-data tiny-dot" cx={d.x} cy={d.y} r={map.r} style={`fill:${mapFill(topic, row)}`} /></a>;
             })}
           </g>
         </svg>
@@ -88,7 +93,7 @@ const description = `${topic.name} in every country: ${topic.help.charAt(0).toLo
           </template>
         ))}
         <figcaption class="ctxp-legend">
-          {legend.map(([color, label]) => <span><i style={`background:${color}`}></i>{label}</span>)}
+          {legend.map(([color, label]) => <span>{color === "hatch" ? <i class="sw-nodata"></i> : <i style={`background:${color}`}></i>}{label}</span>)}
         </figcaption>
       </figure>
     </section>
@@ -139,12 +144,6 @@ const description = `${topic.name} in every country: ${topic.help.charAt(0).toLo
       </table>
     </section>
 
-    <nav class="section ctxp-others" aria-label="Other context topics">
-      <div class="section-head"><div><h2>Other topics</h2></div></div>
-      <ul>
-        {others.map((t) => <li><a href={`${base}context/${t.slug}/`}><Icon name={t.icon} class="ctxp-icon" aria-hidden="true" /> {t.name}</a></li>)}
-      </ul>
-    </nav>
   </main>
 </Base>
 

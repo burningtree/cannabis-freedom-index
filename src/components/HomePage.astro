@@ -548,6 +548,7 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     // ── Map ───────────────────────────────────────────────
     let metric = $("#metric").dataset.initial; // the view this page opens on
     let paths = null;
+    let dots = null; // a dot on each place too small to see on the map (Malta, Singapore, the islands)
     const USE_SCALES = JSON.parse($("#cfi-use-scales").textContent);
     const PRICE_SCALE = JSON.parse($("#cfi-price-scale").textContent);
     const isUse = () => metric in USE_SCALES; // coloured by cannabis use, not by a score
@@ -644,9 +645,12 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
     // states and provinces have no history of their own, so they show only the latest year
     const unitsOn = () => showUnits && isScore() && dataYear == null;
 
+    // a country's colour in the current view; its dot (a place too small to see) takes the same
+    const fillOf = (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isData() ? dataColor(d.c) : isClubs() ? clubsColor(d.c) : isPlant() ? plantColor(d.c) : isPrice() ? priceColor(d.c) : isUse() ? useColor(d.c) : tierColor(metricValue(d.c)));
     function paintMap() {
       if (paths) {
-        paths.attr("fill", (d) => (d.id === "010" ? "var(--land)" : !d.c ? "url(#hatch)" : isData() ? dataColor(d.c) : isClubs() ? clubsColor(d.c) : isPlant() ? plantColor(d.c) : isPrice() ? priceColor(d.c) : isUse() ? useColor(d.c) : tierColor(metricValue(d.c))));
+        paths.attr("fill", fillOf);
+        if (dots) dots.attr("fill", fillOf);
         // a federation's own shape steps aside while its states are shown
         paths.style("display", (d) => (unitsOn() && unitPaths && d.c && FEDERATIONS.has(d.c.id) ? "none" : null));
       }
@@ -982,6 +986,16 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
         .on("pointermove", showTip)
         .on("pointerleave", () => (tip.hidden = true))
         .on("click", (e, d) => d.c && openCountry(d.c.id));
+      // a scored place smaller than a few pixels also gets a dot, so that it can be seen and hovered
+      const DOT_R = 2.8;
+      dots = g.selectAll(".tiny-dot").data(features.filter((f) => f.c && path.area(f) < 8 && Number.isFinite(path.centroid(f)[0]))).join("circle")
+        .attr("class", "country-shape has-data tiny-dot")
+        .attr("cx", (d) => path.centroid(d)[0])
+        .attr("cy", (d) => path.centroid(d)[1])
+        .attr("r", DOT_R)
+        .on("pointermove", showTip)
+        .on("pointerleave", () => (tip.hidden = true))
+        .on("click", (e, d) => openCountry(d.c.id));
 
       drawUnits = async () => {
         const shapes = (await (await fetch(unitsUrl)).json()).features.filter((f) => UNITS[f.id]);
@@ -997,7 +1011,10 @@ const columnGroups = [["Shown by default", BASE_COLUMNS], ...["Score segments", 
       markActive();
 
       const z = zoom().scaleExtent([1, 10]).translateExtent([[0, 0], [960, 480]])
-        .on("zoom", (e) => g.attr("transform", e.transform));
+        .on("zoom", (e) => {
+          g.attr("transform", e.transform);
+          dots.attr("r", DOT_R / Math.sqrt(e.transform.k)); // the dots stay small as the map grows
+        });
       svg.call(z);
       $("#zoomIn").onclick = () => svg.transition().duration(250).call(z.scaleBy, 1.8);
       $("#zoomOut").onclick = () => svg.transition().duration(250).call(z.scaleBy, 1 / 1.8);

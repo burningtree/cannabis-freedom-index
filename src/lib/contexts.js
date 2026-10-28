@@ -82,10 +82,11 @@ export const contextTopics = CONTEXT.filter(([key]) => key !== "products").map((
 });
 
 // The map colour of a place on a topic's map, as a CSS colour: a status tier on the --t scale, the
-// accent blue where the topic is written, grey where it is explained as not applicable.
+// accent blue where the topic is written, grey where it is explained as not applicable, and the
+// home map's hatching where nothing is known yet.
 export const mapFill = (topic, row) => {
-  if (!row) return "var(--map-none)";
-  if (topic.key === "death_penalty") return row.state === "filled" ? "var(--t0)" : row.state === "not_applicable" ? "var(--map-na)" : "var(--map-none)";
-  if (topic.scheme.kind === "status") return row.status?.tier != null ? `var(--t${row.status.tier})` : "var(--map-none)";
-  return row.state === "filled" ? "var(--u3)" : row.state === "not_applicable" ? "var(--map-na)" : "var(--map-none)";
+  if (!row) return "url(#hatch)";
+  if (topic.key === "death_penalty") return row.state === "filled" ? "var(--t0)" : row.state === "not_applicable" ? "var(--map-na)" : "url(#hatch)";
+  if (topic.scheme.kind === "status") return row.status?.tier != null ? `var(--t${row.status.tier})` : "url(#hatch)";
+  return row.state === "filled" ? "var(--u3)" : row.state === "not_applicable" ? "var(--map-na)" : "url(#hatch)";
 };

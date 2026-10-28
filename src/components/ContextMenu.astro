@@ -1,0 +1,23 @@
+---
+// The row of context topics at the top of /context/ and of each topic's page, to jump between
+// them; the current one is marked. Scrolls sideways where it does not fit, keeping the current one
+// in view.
+import { Icon } from "astro-icon/components";
+import { contextTopics } from "../lib/contexts.js";
+
+const { current = null } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<nav class="ctxp-menu" aria-label="Context topics">
+  <ol>
+    <li><a href={`${base}context/`} aria-current={current ? undefined : "page"}>All topics</a></li>
+    {contextTopics.map((t) => (
+      <li><a href={`${base}context/${t.slug}/`} aria-current={t.key === current ? "page" : undefined}><Icon name={t.icon} aria-hidden="true" />{t.name}</a></li>
+    ))}
+  </ol>
+</nav>
+<script>
+  // bring the current topic into view in the row
+  const on = document.querySelector('.ctxp-menu a[aria-current="page"]');
+  if (on) on.parentElement.parentElement.scrollLeft = on.offsetLeft - 40;
+</script>

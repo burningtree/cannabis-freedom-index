@@ -1,5 +1,6 @@
-// The hover box of a federation's map of its states or provinces (CountryArticle.astro): the same
-// box as on the home page's map. Each one is written into the page beside the map, in a <template>,
+// The hover box of a map drawn at build time — a federation's map of its states or provinces
+// (CountryArticle.astro), and the world map of a context topic (data-map-tips): the same box as on
+// the home page's map. Each one is written into the page beside the map, in a <template>,
 // and shown under the pointer. Listened for on the document, so that it also works in a profile
 // fetched into the home page's drawer.
 let open = null;
@@ -8,8 +9,8 @@ const hide = () => {
   open = null;
 };
 document.addEventListener("pointermove", (e) => {
-  const a = e.pointerType === "touch" ? null : e.target.closest?.(".unit-map a[data-tip]");
-  const figure = a?.closest(".unit-map");
+  const a = e.pointerType === "touch" ? null : e.target.closest?.(".unit-map a[data-tip], [data-map-tips] a[data-tip]");
+  const figure = a?.closest(".unit-map, [data-map-tips]");
   const tip = figure?.querySelector(".tooltip");
   const content = figure?.querySelector(`template[data-tip-for="${a.dataset.tip}"]`);
   if (!tip || !content) return hide();

@@ -52,6 +52,25 @@ export function worldMap(width, height, digits = 1) {
   };
 }
 
+// The home page's map drawn at build time, for pages that show the same map without its script
+// (the context topics, /context/<topic>/): the same 960 × 480 frame, the whole sphere fitted in it
+// and outlined, Antarctica as plain land, and a dot on each scored place too small to see. Fills
+// are left to the page.
+export function siteMap() {
+  const projection = geoNaturalEarth1().fitExtent([[8, 8], [952, 472]], { type: "Sphere" });
+  const path = geoPath(projection).digits(1);
+  const dots = shapes.filter((s) => s.c && !s.antarctica && path.area(s.f) < 8).map((s) => {
+    const [x, y] = path.centroid(s.f);
+    return { x: +x.toFixed(1), y: +y.toFixed(1), c: s.c };
+  }).filter((d) => Number.isFinite(d.x));
+  return {
+    width: 960, height: 480,
+    sphere: path({ type: "Sphere" }),
+    shapes: shapes.map((s) => ({ d: path(s.f), c: s.c, antarctica: s.antarctica })).filter((s) => s.d),
+    dots, r: 2.8,
+  };
+}
+
 // The map as a standalone SVG document, for the PNG images.
 export function worldMapSvg(width, height) {
   const m = worldMap(width, height);
