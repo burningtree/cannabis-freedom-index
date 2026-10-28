@@ -3,10 +3,11 @@ region: Africa
 iso_numeric: 434
 recreational: death
 medical: none
-updated: 2026-10-12
+updated: "2026-10-28"
 summary: >-
-  Cannabis is banned in every form. Trading in it can carry death or life imprisonment; personal use
-  and possession carry prison and a fine, with treatment possible instead.
+  Cannabis is banned in every form. Personal use or possession carries three to fifteen years;
+  import, production or cultivation with intent to traffic carries death or life, and death is
+  mandatory with aggravating facts.
 scores:
   possession: 0
   cultivation: 0
@@ -17,140 +18,308 @@ scores:
 segments:
   possession:
     text: >-
-      Law 7 of 1990 lists hashish and the cannabis plant among its controlled substances (Tables
-      1 and 5). Article 37 punishes holding, buying or growing for personal use with prison and a
-      fine of 1,000 to 5,000 dinars; the court may order treatment in a clinic for six months to a
-      year instead. Law 23 of 2002 added Article 35 bis: intent to traffic is established even for
-      a single act, a small quantity, or when the offender cannot prove another purpose.
+      Article 37 of Law 7 of 1990 punishes personal use, possession, purchase, transport or growing
+      for personal use with three to fifteen years and a 1,000–5,000 dinar fine; the court may order
+      six to twelve months' treatment instead, and a user who seeks treatment before prosecution can
+      avoid it.[@law7,penal] "Imprisonment" in the Penal Code means three to fifteen years, which is
+      why the article's bare wording is a long term.[@penal] Article 35 bis of 2002 lets a single act
+      or a tiny quantity establish intent to traffic, so a possession case can escalate.[@law2002]
     sources:
       - law7
       - law2002
+      - penal
     currency: LYD
     penalties:
-      - label: Personal use, Article 37
+      - label: Personal use, possession or growing
         treatment: criminal
+        term: Personal use
+        prison_min: 3 years
+        prison: 15 years
+        fine_min: 1000
         fine: 5000
-        note: Prison and 1,000 to 5,000 dinars; court may order treatment in a clinic for six months to a year instead
+        note: Article 37; treatment for six to twelve months may replace the penalty
+      - label: Drug acts without intent to traffic or use
+        treatment: criminal
+        term: Other drug offence
+        prison_min: 3 years
+        prison: 10 years
+        fine_min: 500
+        fine: 3000
+        note: Article 38
   cultivation:
     text: >-
-      Article 30 bans growing, holding or trading in the Table 5 plants, seeds included, except for
-      medical or scientific purposes. Growing for trade carries death or life imprisonment and a
-      fine (Article 34); growing for personal use falls under Article 37.
-    sources:
-      - law7
-  enforcement:
-    text: >-
-      The statute sets prison for personal use (Article 37) and allows treatment instead, and no
-      prosecution if the user comes forward for treatment on their own. How it is applied is not
-      shown by the text.
-    sources:
-      - law7
-  sharing:
-    text: >-
-      Supplying a user for payment carries life imprisonment or at least ten years (Article 35).
-      Supplying without payment carries prison and a fine of 2,000 to 5,000 dinars. Article 35 bis
-      of 2002 treats even a one-off act as trading.
+      Growing for personal use falls under Article 37: three to fifteen years and a 1,000–5,000
+      dinar fine.[@law7] Planting or trading Table 5 plants or their seeds with intent to traffic or
+      promote is an Article 34 offence carrying death or life and a 10,000–50,000 dinar fine; death
+      is mandatory where an aggravating fact applies.[@law7,law2002] There is no plant-count
+      threshold.[@law7]
     sources:
       - law7
       - law2002
     currency: LYD
     penalties:
-      - label: Supply for payment, Article 35
+      - label: Growing for personal use
         treatment: criminal
-        prison: 10 years
-        note: Life imprisonment available
-      - label: Supply without payment, Article 35
-        treatment: criminal
+        term: Personal use
+        prison_min: 3 years
+        prison: 15 years
+        fine_min: 1000
         fine: 5000
-        note: Prison and 2,000 to 5,000 dinars
-      - label: Trading or growing for trade, Article 34
+      - label: Cultivation or plant trade with intent
         treatment: criminal
+        term: Trafficking
         death: true
+        fine_min: 10000
         fine: 50000
-        note: Death or life imprisonment and 10,000 to 50,000 dinars
+        note: Death or life imprisonment; death mandatory with Article 35(2) aggravating facts
+  enforcement:
+    text: >-
+      Enforcement is split between eastern and western agencies and no national series is
+      published.[@lana24,almenassa25] The eastern agency reported 2,073 drug arrests and 951 g of
+      hashish in 2024, alongside much larger pill and cocaine seizures.[@lana24] Its Tripoli
+      counterpart recorded 238 cannabis cases and 354 suspects in the first quarter of 2025, with
+      about 359 kg seized.[@almenassa25] Courts imposed life terms for importing cannabis seeds in
+      2025 and for a cultivation operation in 2026.[@libyaherald25,libyaobserver26a]
+    sources:
+      - lana24
+      - almenassa25
+      - libyaherald25
+      - libyaobserver26a
+  sharing:
+    text: >-
+      Supply with intent to traffic carries life or ten to fifteen years and a 5,000–20,000 dinar
+      fine; supplying without payment carries three to fifteen years and a 2,000–5,000 dinar
+      fine.[@law7] Importing, producing, manufacturing or promoting drugs, or trading Table 5 plants
+      or seeds, with intent, carries death or life and a 10,000–50,000 dinar fine.[@law7,law2002]
+      A place managed for drug use carries six months to three years.[@law7]
+    sources:
+      - law7
+      - law2002
+    currency: LYD
+    penalties:
+      - label: Supply with intent to traffic
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        prison: 15 years
+        fine_min: 5000
+        fine: 20000
+        note: Life imprisonment is available
+      - label: Supply without payment
+        treatment: criminal
+        term: Supply
+        prison_min: 3 years
+        prison: 15 years
+        fine_min: 2000
+        fine: 5000
+      - label: Import, production or promotion with intent
+        treatment: criminal
+        term: Trafficking
+        death: true
+        fine_min: 10000
+        fine: 50000
+        note: Death or life; death mandatory with Article 35(2) aggravating facts
+      - label: Premises managed for drug use
+        treatment: criminal
+        term: Premises
+        prison_min: 6 months
+        prison: 3 years
+        fine_min: 100
+        fine: 500
   consumption:
     text: >-
-      Article 37 punishes actually using drugs with prison and a fine of 1,000 to 5,000 dinars,
-      unless the person is licensed; treatment can replace the penalty.
+      Use is punished under Article 37 with three to fifteen years and a 1,000–5,000 dinar
+      fine.[@law7] The court may order treatment for six to twelve months instead, and a user who
+      comes forward for treatment before prosecution is not prosecuted.[@law7] There is no
+      standalone lower penalty for consumption.[@law7]
     sources:
       - law7
+    currency: LYD
+    penalties:
+      - label: Use
+        treatment: criminal
+        term: Personal use
+        prison_min: 3 years
+        prison: 15 years
+        fine_min: 1000
+        fine: 5000
   access:
     text: >-
-      None for personal use. Medical and scientific use is allowed only under licence (Articles 30
-      and following).
+      No legal source for personal use. Articles 30–31 allow licensed medical and scientific handling,
+      including cultivation by public services and research centres, but not patient supply.[@law7]
+      No medical cannabis programme or dispensary was found.[@law7]
     sources:
       - law7
+answers:
+  buy:
+    answer: no
+    text: No legal source; licensed medical and scientific handling only
 context:
   recreational:
     text: >-
-      All recreational use is prohibited. Personal use carries prison and a 1,000 to 5,000 dinar
-      fine, and any one-off act, however small, can be treated as trafficking under the 2002
-      amendment.[@law7,law2002]
+      All recreational use is prohibited. Personal use or possession carries three to fifteen years
+      and a 1,000–5,000 dinar fine, and a single act or tiny quantity can be treated as trafficking
+      under the 2002 amendment.[@law7,law2002] Import, production or cultivation with intent carries
+      death or life, with death mandatory where an aggravating fact applies.[@law7]
+      [The 1990 law set the framework.](/history/libya-narcotics-law-1990/)
     sources:
       - law7
       - law2002
   death_penalty:
     text: >-
-      Article 34 of Law 7 of 1990 punishes trading in drugs, or growing or importing Table 5 plants
-      with intent to trade, with death or life imprisonment and a fine of 10,000 to 50,000
-      dinars.
+      Death is prescribed by Article 34 for importing, exporting, producing, manufacturing or
+      promoting drugs, or planting or trading Table 5 plants or seeds, with intent to traffic; the
+      court may choose life instead. Death becomes mandatory where an Article 35(2) aggravating fact
+      applies, such as a prior drug conviction, a minor, a school or an organised gang.[@law7,law2002]
+      Simple possession and ordinary sale do not carry death.[@law7] No recent cannabis execution was
+      found; the executions resumed in eastern Libya in August 2026 concerned military cases, while
+      recent drug death sentences concerned pills.[@hrw_exec26,amnesty_exec26]
     sources:
       - law7
+      - law2002
+      - hrw_exec26
+      - amnesty_exec26
   production:
     status: none
     text: >-
-      No lawful cannabis production. Planting, holding and trading the listed plants is banned
-      except for licensed medical or scientific purposes.
+      No commercial cannabis production. Article 34 bans importing, exporting, producing, extracting,
+      manufacturing or promoting narcotics, and planting Table 5 plants or seeds, outside the
+      medical and scientific scheme.[@law7] Articles 30–31 allow cultivation only for medical or
+      scientific institutions.[@law7]
     sources:
       - law7
   medical:
     text: >-
-      No medical cannabis programme beyond licensed scientific or medical handling under the
-      Law 7 licensing system; none exists for personal use.
+      No medical cannabis programme. Cannabis is a Table 1 narcotic and a Table 5 plant; Articles
+      30–31 let the health committee license public services, scientific institutes and research
+      centres to grow banned plants for medical or scientific work.[@law7] That is not a patient
+      route, and no approved cannabis medicine or dispensary was found.[@law7]
+    sources:
+      - law7
+  hemp:
+    status: none
+    text: >-
+      No hemp or CBD regime and no THC threshold. Table 5 bans the cannabis plant at every stage,
+      and Table 6 exempts only stalk fibre and roasted seeds that cannot germinate.[@law7] Growing
+      low-THC hemp is not licensed.[@law7]
     sources:
       - law7
   consequences:
-    text: The retained sources do not establish collateral consequences beyond the penalties described above.
-    sources: []
+    text: >-
+      A conviction can be published under Article 46, and licences can be revoked under Article
+      47.[@law7] Article 49 allows residence restrictions, banishment and bans on certain professions
+      for repeat felony offenders, and foreigners can face banishment.[@law7] The law also provides
+      confiscation of drugs, equipment and proceeds.[@law7]
+    sources:
+      - law7
   planting:
     seeds: illegal
     seeds_trade: banned
     clones: illegal
     clones_trade: banned
     text: >-
-      Article 30 of Law 7 of 1990 bans growing, importing, owning, holding, buying or selling
-      the listed plants at any stage of growth, as well as their seeds, except for medical or
-      scientific purposes under licence. Only cannabis seeds roasted so they cannot germinate,
-      and stalk fibre, are exempt. Growing or holding the plants or their seeds for personal
-      use is punished with prison and a fine of 1,000 to 5,000 dinars under Article 37.
+      Article 30 bans growing, importing, owning, holding, buying or selling the listed plants at any
+      stage of growth, as well as their seeds, except for licensed medical or scientific
+      purposes.[@law7] Only cannabis seeds roasted so they cannot germinate, and stalk fibre, are
+      exempt.[@law7] Personal growing or holding falls under Article 37; trade falls under Article 34.[@law7]
     sources:
       - law7
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited, and the law provides for the death
-      penalty for the most serious drug offences.
+      No cannabis clubs are known. Managing or preparing a place for paid drug use carries six months
+      to three years, and supply is separately prohibited.[@law7]
     sources:
       - law7
-      - law2002
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone, so a visitor has no lawful way to buy
-      cannabis. The sources behind this profile describe no separate rule for visitors.
+      There is no legal supply for visitors. They face the same offences, and a foreigner with repeat
+      drug convictions can be banished under Article 49.[@law7]
     sources:
       - law7
+  driving:
+    status: impairment
+    text: >-
+      Traffic Law 11 of 1984, article 58, punishes driving a vehicle, cart or bicycle while
+      intoxicated or narcotised with one to three years in prison, withdrawal of the licence for one
+      to three years, and confiscation of the substances.[@traffic1984] There is no numeric THC
+      limit; the trigger is a state of intoxication or narcosis.[@traffic1984]
+    sources:
+      - traffic1984
+  black_market:
+    text: >-
+      Libya is a transit route for Moroccan resin and a smaller producer of its own. UNODC puts the
+      2024 retail resin price at 20,000–35,000 dinars a kilogram and records four 2024 seizures worth
+      8.37–14.65 million dinars.[@unodc_libya26] Reported seizures range from 951 g by the eastern
+      agency in 2024 to 5.47 tonnes of resin at Misrata customs in June 2026; the figures cover
+      different agencies and are not a time series.[@lana24,libyaobserver26b]
+    sources:
+      - unodc_libya26
+      - lana24
+      - libyaobserver26b
+  arrests:
+    text: >-
+      No national arrest total was published. The eastern agency reported 2,073 drug arrests in 2024,
+      with 951 g of hashish among much larger pill and cocaine seizures.[@lana24] The Tripoli agency
+      recorded 351 cases and 550 suspects in the first quarter of 2025, including 238 cannabis cases
+      and 354 suspects.[@almenassa25] In 2025 the eastern agency reported 6.4 tonnes of hashish, and
+      Misrata customs seized 5.47 tonnes in June 2026.[@bignews25,libyaobserver26b]
+    sources:
+      - lana24
+      - almenassa25
+      - bignews25
+      - libyaobserver26b
 sources:
   law7:
-    title: Libyan Law Society — Law No. 7 of 1990 on narcotic drugs and psychotropic substances (Arabic)
+    title: "Libya — Law No. 7 of 1990 on narcotic drugs and psychotropic substances (Arabic)"
     url: https://lawsociety.ly/legislation/%d9%82%d8%a7%d9%86%d9%88%d9%86-%d8%b1%d9%82%d9%85-7-%d9%84%d8%b3%d9%86%d8%a9-1990-%d9%85-%d8%a8%d8%b4%d8%a3%d9%86-%d8%a7%d9%84%d9%85%d8%ae%d8%af%d8%b1%d8%a7%d8%aa-%d9%88%d8%a7%d9%84%d9%85%d8%a4%d8%ab/
+    locator: "Articles 1–2, 30–31, 34–39, 42, 46–49 and Tables 1, 5 and 6."
   law2002:
-    title: DCAF Libya legal database — Law No. 23 of 2002 amending and adding provisions to Law No. 7 of 1990 (Arabic)
+    title: "Libya — Law No. 23 of 2002 amending Law No. 7 of 1990 (Arabic)"
     url: https://security-legislation.ly/latest-laws/law-no-23-of-2002-amending-and-adding-certain-provisions-to-law-no-7-of-1990-on-narcotics-and-psychotropic-substances/
-  law:
-    title: >-
-      DCAF Libya security legislation database — Law No. 19 of 1996 amending Law No. 7 of 1990 on
-      narcotics
-    url: >-
-      https://security-legislation.ly/latest-laws/law-no-19-of-1996-amending-certain-provisions-of-law-no-7-of-1990-on-narcotics-and-psychotropic-substances/
+    locator: "Article 2 replacing Article 34; Article 3 adding Article 35(2); Article 4 adding Article 35 bis."
+  penal:
+    title: "Libya — Penal Code (Arabic)"
+    url: https://lawsociety.ly/legislation/%d9%85%d8%b1%d8%b3%d9%88%d9%85-%d8%a8%d8%a7%d8%b5%d8%af%d8%a7%d8%b1-%d9%82%d8%a7%d9%86%d9%88%d9%86-%d8%a7%d9%84%d8%b9%d9%82%d9%88%d8%a8%d8%a7%d8%aa/
+    locator: "Articles 19, 21 and 22; 'imprisonment' (al-sijn) is three to fifteen years."
+  traffic1984:
+    title: "Libya — Traffic Law No. 11 of 1984 (Arabic)"
+    url: https://lawsociety.ly/legislation/%d9%82%d8%a7%d9%86%d9%88%d9%86-%d8%b1%d9%82%d9%85-11-%d9%84%d8%b3%d9%86%d8%a9-1984-%d9%85-%d8%a8%d8%b4%d8%a3%d9%86-%d8%a7%d9%84%d9%85%d8%b1%d9%88%d8%b1-%d8%b9%d9%84%d9%89-%d8%a7%d9%84%d8%b7%d8%b1/
+    locator: "Article 58."
+  unodc_libya26:
+    title: "UNODC — Drug Trafficking Dynamics in Libya and across North Africa (2026)"
+    url: https://www.unodc.org/documents/data-and-analysis/Libya/Libya_regional_dynamics_report_2026.pdf
+    locator: "Cannabis section pp. 21–24; 2024 prices and seizures."
+  lana24:
+    title: "LANA — Libya's anti-narcotics agency reports its 2024 results (4 January 2025)"
+    url: https://www.lananews.com/ar/?p=392937
+    locator: "2,073 arrests; 951 g hashish; pills, cocaine and heroin."
+  almenassa25:
+    title: "Almenassa — Anti-Narcotics Agency records 351 cases and 550 suspects in Q1 2025 (24 April 2025)"
+    url: https://almenassa.ly/en/2025/04/24/anti-narcotics-agency-records-351-cases-and-550-suspects-in-q1-2025-seizing-over-40-million-dinars-worth-of-narcotics/
+    locator: "238 cannabis cases; 354 suspects; about 359 kg."
+  libyaherald25:
+    title: "Libya Herald — Tripoli Criminal Court sentences drug smuggler to life for cannabis seeds (16 April 2025)"
+    url: https://libyaherald.com/2025/04/tripoli-criminal-court-sentences-drug-smuggler-to-life-imprisonment/
+    locator: "Life imprisonment; 40,000 dinar fine."
+  libyaobserver26a:
+    title: "Libya Observer — Five sentenced over cannabis cultivation in Bayda (15 March 2026)"
+    url: https://libyaobserver.ly/inbrief/five-people-sentenced-life-and-10-years-prison-cannabis-cultivation
+    locator: "Three life terms and two ten-year terms."
+  libyaobserver26b:
+    title: "Libya Observer — Misrata customs seize more than five tonnes of hashish (25 June 2026)"
+    url: https://libyaobserver.ly/crimes/misrata-customs-seize-more-five-tonnes-hashish
+    locator: "5.47 tonnes of resin; one arrest."
+  bignews25:
+    title: "Big News Network — Libya seizes nearly $1 million worth of hashish (13 October 2026)"
+    url: https://www.bignewsnetwork.com/news/279371687/libya-seizes-nearly-1-million-worth-of-hashish-photos
+    locator: "Eastern agency 2025 total: 6.4 tonnes of hashish."
+  hrw_exec26:
+    title: "Human Rights Watch — Eastern Libya authorities carry out wave of executions (14 October 2026)"
+    url: https://www.hrw.org/news/2026/10/14/libya-eastern-authorities-carry-out-wave-of-executions
+    locator: "Military and terrorism cases, not drug offences."
+  amnesty_exec26:
+    title: "Amnesty International — Libya: dozens executed (11 September 2026)"
+    url: https://www.amnesty.org/en/documents/mde19/1455/2026/en/
+    locator: "Execution wave in eastern Libya; offences not cannabis."
