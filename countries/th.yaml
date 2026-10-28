@@ -5,9 +5,10 @@ recreational: illegal
 medical: legal
 updated: '2026-10-27'
 summary: >-
-  Removed from the narcotics list in 2022, creating thousands of dispensaries. Since June 2025
-  flower is a controlled herb that requires a prescription, and from 2026 shops must operate as
-  medical premises with a practitioner on site. Recreational use is officially no longer permitted.
+  Flower has been a controlled herb since November 2022 and since June 2025 requires a prescription,
+  which narrowed the dispensary boom to medical supply. From 2026 licences are limited to qualifying
+  medical, pharmacy, herbal and cultivation premises with trained staff. Recreational use is
+  officially no longer permitted.
 scores:
   possession: 2
   cultivation: 3
@@ -28,12 +29,13 @@ segments:
       quantity, for no more than 30 days.[@tilleke,thaiger] Unauthorised possession is not a clear
       standalone criminal offence: the 1999 Act's penalty covers unlicensed sale, processing, export
       or research, not simple possession, and the 2025 notice regulates sale rather than
-      possession.[@tilleke] The flower can be seized and the seller prosecuted. Extracts with more
+      possession.[@tilleke,dtam] The flower can be seized and the seller prosecuted. Extracts with more
       than 0.2% THC remain narcotics, with up to two years and a 40,000 baht fine for personal
       possession.[@tilleke]
     sources:
       - tilleke
       - thaiger
+      - dtam
     currency: THB
     penalties:
       - label: Prescribed flower
@@ -51,14 +53,13 @@ segments:
         fine: 40000
   cultivation:
     text: >-
-      Households may grow cannabis after registering through the Plookganja system, but the
-      harvested flower is a controlled herb and cannot be sold without a licence.[@tilleke,khaosod]
+      Households may grow cannabis without a permit, in any number of plants, under the DTAM's 2026
+      guidance, but the harvested flower is a controlled herb and cannot be sold without a licence.[@dtam]
       Commercial cultivation, processing and sale require a section 46 licence and certified
-      cultivation standards; unlicensed cultivation or sale carries up to one year and a 20,000 baht
-      fine.[@tilleke]
+      standards; unlicensed sale or processing carries up to one year and a 20,000 baht fine.[@tilleke]
     sources:
       - tilleke
-      - khaosod
+      - dtam
     currency: THB
     penalties:
       - label: Registered household growing
@@ -104,30 +105,34 @@ segments:
         fine: 500000
   consumption:
     text: >-
-      Smoking in public is an offence with a fine of up to 25,000 baht.[@thaiger] Smoking inside shops is
-      banned.[@thaiger] Use is officially limited to medical purposes, in private.[@thaiger]
+      Smoking in public is an offence carrying up to one month and a 2,000 baht fine, according to
+      the DTAM's 2026 guidance.[@dtam] Smoking inside a licensed cannabis shop is prohibited by the
+      2025 notice and can bring licence sanctions of up to one year and 20,000 baht.[@dtam] Use is
+      officially limited to medical purposes, in private.[@thaiger]
     sources:
       - thaiger
+      - dtam
     currency: THB
     penalties:
       - label: Public smoking
         treatment: civil
         term: Public smoking
-        fine: 25000
-        note: Fine of up to 25,000 baht; use limited to medical purposes in private
+        prison: 1 month
+        fine: 2000
+        note: Up to one month and a 2,000 baht fine under DTAM's 2026 guidance
   access:
     text: >-
-      Shops still exist, but from 2026 only medical facilities, pharmacies, herbal-product retailers
-      and traditional healers' premises may sell, with a licensed practitioner on site who issues
-      the prescription.[@edge] Of more than 18,000 registered outlets, over 7,000 closed during 2025 rather
-      than renew, and authorities are moving against roughly 6,000 unlicensed or expired outlets.[@khaosod]
-      A draft Cannabis and Hemp Act that would restrict cannabis strictly to medical use finished
-      public consultation in June 2026.[@nation] The Cabinet approved the bill on 22 September 2026 and sent
-      it to parliament; it would also make growers register their plantations and raise penalties.[@nation]
+      Shops still exist, but from 1 May 2026 licences are limited to qualifying hospitals, pharmacies,
+      herbal-product businesses, extract licensees, folk healers and cultivation sites selling to a
+      licensee, with at least one DTAM-trained staff member on duty.[@premises26] Of 18,433 outlets at
+      the end of 2025, 8,636 licences expired, 1,339 were renewed and 7,297 closed, leaving 11,136.[@straits26]
+      The cabinet approved a draft Cannabis Control Act on 22 September 2026; it had not passed by
+      late October.[@nation,edge]
     sources:
       - edge
-      - khaosod
       - nation
+      - premises26
+      - straits26
 context:
   recreational:
     text: >-
@@ -139,14 +144,16 @@ context:
       - tilleke
       - thaiger
   production:
-    status: open
+    status: medical
     text: >-
-      Licences for cultivation, processing, export and sale are available, but growers supplying
-      dispensaries must meet certified medical-grade standards, and licences are now limited to
-      healthcare-type businesses.[@khaosod,tilleke]
+      Licences for cultivation, processing, export and sale are available, but they are limited to
+      medical, pharmacy, herbal and cultivation operators rather than an adult-use market.[@premises26]
+      Extracts above 0.2% THC remain Category 5 narcotics, with licensees restricted to Thai juristic
+      persons, government agencies and the Thai Red Cross and old licences running to 31 December
+      2026.[@extract26]
     sources:
-      - khaosod
-      - tilleke
+      - premises26
+      - extract26
   medical:
     text: >-
       The medical route is the whole legal system now: doctors, Thai traditional medicine
@@ -158,12 +165,12 @@ context:
       - thaiger
       - tilleke
   hemp:
-    status: strict
+    status: high
     text: >-
-      Hemp fibre, stalks, roots, leaves and seeds sit outside the narcotic list, but hemp flower is
-      regulated separately from fibre and the 2025 controlled-herb notice covers cannabis
-      flower.[@tilleke] No general low-THC flower exemption was verified, and commercial growing
-      still needs a licence.[@tilleke]
+      Hemp is defined as Cannabis sativa subsp. sativa with no more than 1.0% THC in its leaves and
+      inflorescence.[@tilleke] Hemp extracts above 0.2% THC remain Category 5 narcotics, while CBD
+      products below that line may be sold as registered food, cosmetics or herbal products.[@tilleke]
+      Commercial processing and extraction need licences.[@tilleke]
     sources:
       - tilleke
   driving:
@@ -171,8 +178,8 @@ context:
     text: >-
       The Land Traffic Act punishes driving while impaired by alcohol or another intoxicant,
       including cannabis, with up to one year and a 5,000 to 20,000 baht fine, plus licence
-      suspension.[@traffic] Extracts above 0.2% THC remain narcotics, so driving after using them
-      falls under the separate narcotics-driving provision.[@traffic] There is no per-se THC limit,
+      suspension.[@traffic] All intoxicants, including cannabis and extracts, fall under the same
+      provision; there is no separate narcotics-driving offence in the traffic law.[@traffic] There is no per-se THC limit,
       and police lack an approved testing protocol, so enforcement turns on observed impairment.[@traffic]
     sources:
       - traffic
@@ -191,10 +198,11 @@ context:
     clones: legal
     clones_trade: unclear
     text: >-
-      A 2025 law-firm guide lists cannabis and hemp plants, seeds and unprocessed parts other
-      than the flowers as deregulated; only the flower is a controlled herb.[@tg25] Importing seed is
-      governed by the Department of Agriculture's rules.[@tg25] The guide does not address the sale
-      of live plants.[@tg25]
+      Plants, seeds and unprocessed parts other than the flower sit outside the narcotics list, so
+      domestic possession and trade are not narcotics offences; only the flower is a controlled
+      herb.[@tg25] Importing whole plants, cuttings and unprocessed parts is prohibited, while seed
+      imports follow Department of Agriculture and quarantine rules.[@tg25] Domestic clone sale is
+      not specifically addressed.[@tg25]
     sources:
       - tg25
   culture:
@@ -236,7 +244,7 @@ context:
     text: >-
       Tourists are held to the same rule as residents: since June 2025 cannabis flower may be
       bought, held or used only with a prescription from a licensed Thai medical professional,
-      for at most 30 days' supply, and recreational use is illegal.[@tat2025] The tourism authority
+      for at most 30 days' supply, and foreign prescriptions are not accepted.[@tat2025,dtam] The tourism authority
       tells visitors to buy only through authorised channels and warns that unlicensed shops
       aimed at tourists may be operating illegally.[@tat25] Taking cannabis out of the country without
       permission from the authorities is against Thai law, the health minister said in May 2025,
@@ -249,6 +257,7 @@ context:
       - tat25
       - euronews25
       - newland26
+      - dtam
   arrests:
     text: >-
       The Royal Thai Police reported 203,637 people arrested for drug offences between 1
@@ -259,6 +268,22 @@ context:
     sources:
       - pm26
 sources:
+  dtam:
+    title: "Thailand DTAM — medical cannabis questions and answers (2026)"
+    url: https://med-cannabis.dtam.moph.go.th/q-and-a-faq
+    locator: "Home growing without a permit; public smoking 1 month/2,000 baht; foreign prescriptions invalid."
+  premises26:
+    title: "Thailand — Ministerial Regulation (No. 2) B.E. 2569 on cannabis premises, 30 April 2026"
+    url: https://ratchakitcha.soc.go.th/documents/114061.pdf
+    locator: "Qualifying applicant status; dedicated storage; DTAM-trained staff; odour controls."
+  extract26:
+    title: "The Nation — Thailand's 2026 cannabis extract regulation (26 March 2026)"
+    url: https://www.nationthailand.com/health-wellness/40065605
+    locator: "Four permitted purposes; Thai juristic persons, government and Red Cross; old licences to 31 December 2026."
+  straits26:
+    title: "Straits Times — Over 7,000 cannabis shops in Thailand close (2026)"
+    url: https://www.straitstimes.com/asia/se-asia/over-7000-cannabis-shops-in-thailand-close-due-to-stricter-regulations-and-new-law
+    locator: "18,433 outlets; 8,636 expired; 1,339 renewed; 7,297 closed; 11,136 remain."
   tat2025:
     title: Thailand government / Tourism Authority — cannabis flower notice for tourists (27 June 2025)
     url: https://thailand.go.th/public/issue-focus-detail/cannabis-now-strictly-regulated-in-thailand--important-notice-for-tourists
