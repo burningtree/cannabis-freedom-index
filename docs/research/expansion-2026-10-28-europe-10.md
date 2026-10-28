@@ -73,3 +73,23 @@ profile and production article. Audit zero errors/warnings. Existing regression
 checks required retaining the numeric “90 days” and “7.5 g of THC per 30 days”
 phrases; adjusted wording, preserving the underlying conditions. Shared history
 staged only for the two new IDs.
+
+| Romania | Six supply/import/facilitation/death rows; high-risk personal tier; primary medical/industrial/seed conditions; treatment and confiscation; original DIICOT data; four events and 2023 article | Early decades; rehabilitation time limits; clinical research and present medical stock; 2026 proposal’s final disposition | this commit |
+
+Romania: opened current Law 143 via alternate official document 295513 after
+23629 repeatedly returned 502, current Law 339, original 2023 amendment, 2024
+assistance amendment and 2025 driving ruling, original DIICOT report mirrored by
+Digi24, and Government's February 2026 press release. The latter is explicitly a
+bill, not current enacted law. Scores/statuses unchanged. Added high-risk and
+border distinctions without equating all cannabis flower with isolated THC.
+Removed unsupported “common” sentencing claims, expungement-search placeholder,
+and ambiguous arrests wording. DIICOT counts all-drug defendants separately from
+cannabis mass and its combined “crops/plants” category. No cannabis-only detained
+count inferred. Seed trade open → regulated for cultivation seed under Article
+12(3); separated seeds and cultivation authorisations distinguished. Hashish word
+meaning no longer repeats the dictionary’s misleading leaf description. Culture
+and existing atlas link retained. No clinical study invented to fill research.
+
+Romania validation: six-page build passed tests and all content/citation checks;
+inspected profile tables and 2023 article. Audit zero errors/warnings. Shared
+history staged only for the four new IDs.

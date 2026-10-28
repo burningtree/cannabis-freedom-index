@@ -5,8 +5,8 @@ recreational: illegal
 medical: limited
 updated: '2026-10-28'
 summary: >-
-  Possession for personal use carries prison of three months to two years or a fine. Medical access
-  is largely theoretical.
+  Possession for personal use carries prison of three months to two years or a fine. Medical
+  access is largely theoretical.
 scores:
   possession: 1
   cultivation: 1
@@ -17,28 +17,34 @@ scores:
 segments:
   possession:
     text: >-
-      Under Law 143/2000, possessing a 'risk drug' such as cannabis for personal use is a crime
-      punished with three months to two years in prison or a fine.[@dr] Since the 2014 criminal code,
-      users can often end up with a fine or community service.[@lc] A wrinkle: cannabis plant and resin
-      are 'risk drugs', but THC as a compound is listed as 'high-risk', which can raise the penalty.[@dr,lc]
+      Cannabis plant or resin held for personal use falls under the risk-drug offence, carrying
+      three months to two years in prison or a fine.[@law143] The provision specifies no gram
+      threshold.[@law143] Personal-use offences involving substances classified as high-risk
+      carry six months to three years.[@law143]
     sources:
-      - dr
-      - lc
+      - law143
     penalties:
       - label: Personal-use possession of a risk drug
         treatment: criminal
         term: Possession
         prison_min: 3 months
         prison: 2 years
-        note: Or a fine; users often end with a fine or community service; THC-as-compound high-risk listing can raise the penalty
+        note: Prison or a fine; Article 4(1)
+      - label: Personal possession of a preparation classified as high-risk
+        treatment: criminal
+        term: Personal-use possession
+        prison_min: 6 months
+        prison: 3 years
+        note: Article 4(2); classification depends on the scheduled substance
   cultivation:
     text: >-
-      Unauthorised growing for personal use falls under the three-months-to-two-years
-      provision.[@lc,dr] Licensed agricultural fibre hemp has a separate route, with county
-      authorisation, approved seed and THC testing.[@hemp125]
+      Unauthorised growing of risk-drug cannabis for personal consumption carries three months
+      to two years or a fine.[@law143] Growing for supply instead falls under the
+      three-to-ten-year trafficking offence.[@law143] Agricultural hemp requires county
+      authorisation and approved seed, with the agricultural 0.3% checks applied under the
+      support rules.[@hemp125]
     sources:
-      - lc
-      - dr
+      - law143
       - hemp125
     penalties:
       - label: Unauthorised growing for personal use
@@ -46,100 +52,171 @@ segments:
         term: Cultivation
         prison_min: 3 months
         prison: 2 years
-        note: Or a fine; users often end with a fine or community service
+        note: Prison or a fine; personal consumption only
+      - label: Unauthorised growing for supply
+        treatment: criminal
+        term: Trafficking
+        prison_min: 3 years
+        prison: 10 years
+        note: Risk-drug cannabis; Article 2(1)
       - label: Licensed fibre hemp
         treatment: legal
         term: Hemp
         note: County authorisation, approved EU seed, 0.3% THC checks
   enforcement:
     text: >-
-      Fines and suspended sentences are common for users; prison remains available and is used for
-      repeat cases.[@dr,lc]
+      Personal-use possession remains criminal, with a fine available as an alternative for risk
+      drugs.[@law143] A court may waive or defer punishment for an eligible person complying
+      with the integrated assistance programme.[@law143] DIICOT’s 2025 drug chapter records
+      3,397 defendants sent to trial, including 1,472 in pre-trial detention; those totals cover
+      all drugs.[@diicot2025]
     sources:
-      - dr
-      - lc
+      - law143
+      - diicot2025
   sharing:
     text: >-
-      Supplying cannabis plant or resin falls under risk-drug trafficking: three to ten years in
-      prison and disqualification of certain rights under Article 2(1), as amended in
-      2023.[@trafficking2023]
+      Supplying risk-drug cannabis plant or resin carries three to ten years and
+      disqualification of certain rights after the [2023
+      amendment](/history/romania-trafficking-sentences-raised-2023/).[@trafficking2023]
+      Unauthorised import or export carries five to fifteen years; the corresponding high-risk
+      ranges are five to fifteen for supply and ten to twenty for import or export.[@law143]
+      Providing publicly accessible premises for drug use carries two to seven years, and
+      specified drug offences causing death carry fifteen to twenty-five years.[@law143]
     sources:
       - trafficking2023
+      - law143
     penalties:
-      - label: Trafficking in risk drugs
+      - label: Supply of risk-drug cannabis
         treatment: criminal
         term: Trafficking
         prison_min: 3 years
         prison: 10 years
-        note: Risk-drug cannabis plant or resin; disqualification of certain rights
+        note: Article 2(1); disqualification of certain rights
+      - label: Import/export of risk drugs
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 15 years
+        note: Article 3(1); disqualification of certain rights
+      - label: Supply involving a high-risk preparation
+        treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 15 years
+        note: Article 2(2); disqualification of certain rights
+      - label: Import/export involving a high-risk preparation
+        treatment: criminal
+        term: Trafficking
+        prison_min: 10 years
+        prison: 20 years
+        note: Article 3(2); disqualification of certain rights
+      - label: Providing publicly accessible premises for use
+        treatment: criminal
+        term: Facilitating use
+        prison_min: 2 years
+        prison: 7 years
+        note: Article 5; disqualification of certain rights
+      - label: Specified drug offences causing death
+        treatment: criminal
+        term: Aggravated drug offence
+        prison_min: 15 years
+        prison: 25 years
+        note: >-
+          Article 11; specified offences, including Article 2 supply; disqualification of
+          certain rights
   consumption:
     text: Use is not separately punished, but possession for use is.[@dr]
     sources:
       - dr
   access:
-    text: None.[@pp]
+    text: >-
+      There is no authorised recreational retail route under the drug-control law.[@law143]
+      Medical prescribing is restricted to pharmaceutical preparations under the
+      controlled-medicines framework.[@medical339]
     sources:
-      - pp
+      - law143
+      - medical339
 words:
-  - { word: Cânepă, lang: Romanian, meaning: "the standard word; kin to hemp and hanf", atlas: cannabis, sources: [cannabiset] }
-  - { word: Iarbă, lang: Romanian, meaning: "literally grass; slang for cannabis and marijuana", sources: [dex-iarba] }
-  - { word: Marijuana, lang: Romanian, meaning: "dried Indian-hemp leaves and flowers as a narcotic (DEX)", sources: [dex-marijuana] }
-  - { word: Hașiș, lang: Romanian, meaning: "dried leaves of a hemp kind, chewed or smoked (DEX)", sources: [dex-hasis] }
+  - word: Cânepă
+    lang: Romanian
+    meaning: the standard word; kin to hemp and hanf
+    atlas: cannabis
+    sources:
+      - cannabiset
+  - word: Iarbă
+    lang: Romanian
+    meaning: literally grass; slang for cannabis and marijuana
+    sources:
+      - dex-iarba
+  - word: Marijuana
+    lang: Romanian
+    meaning: dried Indian-hemp leaves and flowers as a narcotic (DEX)
+    sources:
+      - dex-marijuana
+  - word: Hașiș
+    lang: Romanian
+    meaning: hashish; dictionary term
+    sources:
+      - dex-hasis
 context:
   recreational:
     text: >-
-      There is no legal recreational supply. Personal-use possession brings three months to two years
-      or a fine, though users often end with a fine or community service; growing for personal use
-      falls under the same provision.[@dr,lc] A wrinkle: the plant and resin are 'risk drugs' but THC
-      as a compound is 'high-risk', which can raise the penalty.[@dr,lc] Risk-drug supply carries
-      three to ten years under the [2023
-      amendment](/history/romania-trafficking-sentences-raised-2023/).[@trafficking2023] Only CBD
-      products with negligible THC circulate lawfully.[@cms]
+      Personal-use cannabis possession and growing carry three months to two years or a fine,
+      without a statutory gram exemption.[@law143] Giving or selling cannabis to others falls
+      under the separate supply offence, carrying three to ten years for risk drugs.[@law143]
+      Treatment-programme compliance can permit waiver or deferral of punishment for
+      personal-use offences.[@law143]
     sources:
-      - dr
-      - lc
-      - trafficking2023
-      - cms
+      - law143
   production:
     status: medical
     text: >-
-      Cultivation, import and sale of cannabis for medical use are allowed under Law 339/2005
-      with strict government authorisation and supervision.[@cms]
+      Cultivation for technical, medical or scientific processing requires authorisation through
+      the county agricultural directorates, within annual estimates.[@medical339] Manufacturing
+      and handling controlled substances require separate authorisations and checks of premises,
+      personnel and technical means.[@medical339] Health authorities approve annual quantities
+      for authorised operators.[@medical339]
     sources:
-      - cms
+      - medical339
   hemp:
     status: standard
     text: >-
       Licensed fibre-hemp farming is lawful: agricultural rules require county cultivation
       authorisation and approved EU-catalogue seed, with a 0.3% THC standard.[@hemp125,hemp2025]
-      Growers must preserve the crop after flowering for THC sampling and provide cultivation and
-      delivery records for support.[@hemp125]
+      Growers must preserve the crop after flowering for THC sampling and provide cultivation
+      and delivery records for support.[@hemp125]
     sources:
       - hemp125
       - hemp2025
   medical:
     text: >-
-      Cannabis may be prescribed for medical use only as a pharmaceutical product.[@cms] The
-      controlled-substances law requires a prescription and permits patients to hold the
-      prescribed quantity of their controlled medicine.[@medical339]
+      The controlled-medicines law permits prescribing Table II and III substances only as
+      pharmaceutical preparations manufactured industrially or in a pharmacy.[@medical339]
+      Patients may possess the prescribed quantity on the basis of their
+      prescription.[@medical339] The [February 2026 cabinet
+      proposal](/history/romania-controlled-preparations-proposal-2026/) sought to clarify
+      preparations and pharmacists’ responsibilities.[@proposal2026]
     sources:
-      - cms
       - medical339
+      - proposal2026
   consequences:
     text: >-
-      A conviction is a criminal record.[@lc] No spent-conviction or expungement route for drug
-      offences was found in the retained sources.
+      Drugs and items connected with the specified offences are subject to confiscation under
+      Article 16.[@law143] Under Articles 19–20, complying with an integrated assistance
+      programme can allow a court to waive or defer punishment for personal-use
+      offences.[@law143] Failure to follow the programme during supervision can trigger the
+      Penal Code’s revocation provisions.[@law143]
     sources:
-      - lc
+      - law143
   culture:
     text: >-
       Romanian has its own form of the ancient word: cânepă, kin to hemp and hanf, traced in the
       atlas entry [cannabis](/culture/language/cannabis/).[@cannabiset] The word outlived the
       craft. In traditional households every family grew hemp and flax, working the fibres into
-      clothing, bedding, floor-coverings, ropes and bags.[@mntr] In recent decades that home-made
-      tradition has come close to extinction — under harsh legislation against hemp grown for
-      narcotic extract, and as villages emptied and aged.[@mntr]
-      [The 2000 drug-control law modernised the bans.](/history/romania-drug-control-law-2000/)
+      clothing, bedding, floor-coverings, ropes and bags.[@mntr] In recent decades that
+      home-made tradition has come close to extinction — under harsh legislation against hemp
+      grown for narcotic extract, and as villages emptied and aged.[@mntr] [The 2000
+      drug-control law modernised the bans.](/history/romania-drug-control-law-2000/)
     sources:
       - cannabiset
       - mntr
@@ -147,85 +224,101 @@ context:
     status: capacity
     text: >-
       Driving a vehicle that needs a licence, while under the influence of a psychoactive
-      substance, carries one to five years in prison and a ban on exercising rights.[@cp336] Public
-      passenger transport, dangerous goods, a driving lesson or a driving test raises that to
-      two to seven years, again with a ban on exercising rights.[@cp336] Law 172 of 31 May 2024 set
-      those sentences.[@cp336] Since 28 January 2025 a binding ruling of the High Court of Cassation
-      and Justice has required two things: the substance in a biological sample, and proof
-      that it was capable of affecting the ability to drive.[@iccj25] The ruling sets no THC number.
-      Proof that the driver made a mistake on the road is outside what the prosecution must
-      show.[@iccj25]
-      [Romania's top court raised the bar in 2025.](/history/romania-drug-driving-capacity-2025/)
+      substance, carries one to five years in prison and a ban on exercising rights.[@cp336]
+      Public passenger transport, dangerous goods, a driving lesson or a driving test raises
+      that to two to seven years, again with a ban on exercising rights.[@cp336] Law 172 of 31
+      May 2024 set those sentences.[@cp336] Since 28 January 2025 a binding ruling of the High
+      Court of Cassation and Justice has required two things: the substance in a biological
+      sample, and proof that it was capable of affecting the ability to drive.[@iccj25] The
+      ruling sets no THC number. Proof that the driver made a mistake on the road is outside
+      what the prosecution must show.[@iccj25] [Romania's top court raised the bar in
+      2025.](/history/romania-drug-driving-capacity-2025/)
     sources:
       - iccj25
       - cp336
   clubs:
     status: underground
     text: >-
-      Clubs exist without any legal basis. A Europe-wide survey of cannabis social clubs carried out
-      in 2018 and 2019 received answers from one club in Romania, and its authors could not say how
-      many more were active.[@pardal20] The study notes that clubs sit in a legally sensitive position and that
-      many have been dissolved after court decisions or police raids. No law in Romania provides for
-      them; Malta (since 2021) and Germany (since 2024) license non-profit cannabis associations,
-      but only under their own laws.[@de_cang,mt_cap628] Nothing more recent was found.[@pardal20]
+      Clubs exist without any legal basis. A Europe-wide survey of cannabis social clubs carried
+      out in 2018 and 2019 received answers from one club in Romania, and its authors could not
+      say how many more were active.[@pardal20] The study notes that clubs sit in a legally
+      sensitive position and that many have been dissolved after court decisions or police
+      raids. No law in Romania provides for them; Malta (since 2021) and Germany (since 2024)
+      license non-profit cannabis associations, but only under their own
+      laws.[@de_cang,mt_cap628] Nothing more recent was found.[@pardal20]
     sources:
       - pardal20
       - de_cang
       - mt_cap628
   planting:
     seeds: grey
-    seeds_trade: open
+    seeds_trade: regulated
     clones: illegal
     clones_trade: banned
     text: >-
-      Cannabis seeds are sold openly, including as souvenirs, while unauthorised psychoactive
-      cultivation is criminal.[@adv17,cdep] Authorised agricultural hemp is different: county
-      licences, approved seed and THC checks provide a lawful growing route.[@hemp125]
+      The controlled-medicines law excludes separated seeds from its definition of cannabis,
+      while cultivation remains subject to authorisation.[@medical339] Suppliers of cannabis
+      seed for cultivation must deliver it to holders of growing authorisations, and authorised
+      growers must use registered varieties.[@medical339] County authorisation and the
+      agricultural hemp rules govern lawful fibre crops.[@hemp125]
     sources:
-      - adv17
-      - cdep
+      - medical339
       - hemp125
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. Under Law 143/2000, possessing cannabis
-      for personal use is a crime punished with three months to two years in prison or a fine.[@dr,lc]
+      Unauthorised personal possession is criminal, carrying three months to two years or a fine
+      for risk-drug cannabis.[@law143] Unauthorised import or export carries the separate
+      five-to-fifteen-year range.[@law143] The controlled-medicines framework separately
+      recognises possession of prescribed pharmaceutical quantities under its
+      conditions.[@medical339]
     sources:
-      - dr
-      - lc
+      - law143
+      - medical339
   arrests:
     text: >-
-      DIICOT's 2025 activity report records 1,969.9 kg of cannabis seized and 2,258 cannabis
-      crops or plants discovered, with traffickers bringing drugs from Western Europe in parcels
-      sent to trial.[@actmedia26] No account of routine user-level arrests was found.
+      DIICOT’s [2025 report](/history/romania-diicot-drug-results-2025/) records 3,397
+      defendants sent to trial for drug offences, including 1,472 in pre-trial
+      detention.[@diicot2025] These are all-drug prosecution figures.[@diicot2025] Its cannabis
+      seizures are recorded separately from the defendant counts.[@diicot2025]
     sources:
-      - actmedia26
+      - diicot2025
   black_market:
     text: >-
-      The EU drugs agency's statistical bulletin records 861 kg of herbal cannabis and 43
-      kg of cannabis resin seized in Romania in 2024, against 940 kg and 43 kg in 2023.[@euda_szr]
-      Herbal cannabis was seized on 3,529 occasions and resin on 285. DIICOT's 2025 report adds
-      1,969.9 kg of cannabis and 2,258 crops or plants seized nationally.[@actmedia26] Countries record
-      seizures differently, so the figures are not comparable across borders.[@euda_szr]
+      DIICOT’s 2025 report records 1,969.9 kg of cannabis seized.[@diicot2025] It separately
+      lists 2,258 cannabis crops/plants and 881.02 kg of green plant material, equivalent to
+      264.31 kg dry material.[@diicot2025] The report describes supply from Western Europe,
+      including apparently ordinary international parcels.[@diicot2025]
     sources:
-      - euda_szr
-      - actmedia26
+      - diicot2025
 sources:
   de_cang:
-    title: Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation associations, since 2024)
+    title: >-
+      Bundesgesundheitsministerium — FAQ zum Cannabisgesetz (non-profit cultivation
+      associations, since 2024)
     url: https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz
   mt_cap628:
-    title: Malta — Authority on the Responsible Use of Cannabis Act (Cap. 628), licensing non-profit cannabis associations since 2021
+    title: >-
+      Malta — Authority on the Responsible Use of Cannabis Act (Cap. 628), licensing non-profit
+      cannabis associations since 2021
     url: https://legislation.mt/eli/cap/628/eng
   adv17:
-    title: Adevărul — Cum a ajuns comercializarea seminţelor de canabis o afacere perfect legală în România (14 September 2017, updated 2022)
-    url: https://adevarul.ro/stiri-locale/alexandria/cum-a-ajuns-comercializarea-semintelor-de-canabis-1809912.html
+    title: >-
+      Adevărul — Cum a ajuns comercializarea seminţelor de canabis o afacere perfect legală în
+      România (14 September 2017, updated 2022)
+    url: >-
+      https://adevarul.ro/stiri-locale/alexandria/cum-a-ajuns-comercializarea-semintelor-de-canabis-1809912.html
   cdep:
-    title: Camera Deputaților, Departamentul de Studii Parlamentare — Studiu informativ privind planta de cânepă (PDF)
+    title: >-
+      Camera Deputaților, Departamentul de Studii Parlamentare — Studiu informativ privind
+      planta de cânepă (PDF)
     url: https://www.cdep.ro/intranet/docs_dip/13151_studiucanabis.pdf
   pardal20:
-    title: Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe, European Journal of Criminology (2020, PDF)
-    url: https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
+    title: >-
+      Pardal, Decorte, Bone, Parés & Johansson — Mapping Cannabis Social Clubs in Europe,
+      European Journal of Criminology (2020, PDF)
+    url: >-
+      https://cdn.sanity.io/files/6u5teakk/production/f4c3728d3dc15f3ae1e89790c1f62033dcaa4140.pdf?dl=
   iccj25:
     title: High Court of Cassation and Justice — Decision No. 25 of 27 January 2025
     url: https://legislatie.just.ro/Public/DetaliiDocument/293958
@@ -235,62 +328,91 @@ sources:
     url: https://legislatie.just.ro/Public/DetaliiDocument/283429
     locator: Article 336 as replaced; Official Gazette No. 510 of 31 May 2024
   dr:
-    title: "Drugreporter — Romania: drug-related offences reduced as new criminal code is enforced"
+    title: 'Drugreporter — Romania: drug-related offences reduced as new criminal code is enforced'
     url: >-
       https://drogriporter.hu/en/romania-drug-related-offenses-reduced-as-new-criminal-code-is-enforced/
   pp:
     title: Prohibition Partners — Romania medical cannabis market overview 2025
     url: https://prohibitionpartners.com/2025/10/05/romania-medical-cannabis-market-overview-2025/
   actmedia26:
-    title: ActMedia — DIICOT 2025 activity report on drug trafficking and consumption (23 February 2026)
-    url: https://actmedia.eu/daily/diicot-romania-emerging-drug-consumption-market-connected-to-european-distribution-networks/118247
+    title: >-
+      ActMedia — DIICOT 2025 activity report on drug trafficking and consumption (23 February
+      2026)
+    url: >-
+      https://actmedia.eu/daily/diicot-romania-emerging-drug-consumption-market-connected-to-european-distribution-networks/118247
   cannabiset:
     title: Wikipedia — Etymology of cannabis (Romanian cânepă)
     url: https://en.wikipedia.org/wiki/Etymology_of_cannabis
   dex-iarba:
-    title: "dexonline — iarbă (slang: cannabis, marijuana)"
+    title: 'dexonline — iarbă (slang: cannabis, marijuana)'
     url: https://dexonline.ro/definitie/iarb%C4%83
   dex-marijuana:
-    title: "dexonline — marijuana (dried Indian-hemp leaves and flowers as a narcotic)"
+    title: dexonline — marijuana (dried Indian-hemp leaves and flowers as a narcotic)
     url: https://dexonline.ro/definitie/marijuana
   dex-hasis:
-    title: "dexonline — hașiș (dried hemp leaves, chewed or smoked)"
+    title: dexonline — hașiș (dried hemp leaves, chewed or smoked)
     url: https://dexonline.ro/definitie/hasis
   mntr:
-    title: "Agricultural History Society of Ireland — Autumn Symposium 2015 abstracts (Romanian bast-fibre tradition)"
+    title: >-
+      Agricultural History Society of Ireland — Autumn Symposium 2015 abstracts (Romanian
+      bast-fibre tradition)
     url: http://www.ahsi.ie/p/blog-page_25.html
     locator: Romanian household hemp and flax; decline under harsh anti-narcotic hemp legislation
   cms:
     title: CMS Expert Guide — Cannabis law and legislation in Romania
-    url: https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/romania
+    url: >-
+      https://cms.law/en/int/expert-guides/cms-expert-guide-to-a-legal-roadmap-to-cannabis/romania
   lc:
     title: LegalClarity — Is marijuana legal in Romania?
     url: https://legalclarity.org/is-marijuana-legal-in-romania-a-look-at-current-laws/
   euda_szr:
-    title: "EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of seizures)"
+    title: >-
+      EUDA — Statistical Bulletin 2026, seizures of drugs: cannabis (quantity and number of
+      seizures)
     url: https://www.euda.europa.eu/data/stats2026/szr_en
   medical339:
-    title: Romania — Law 339/2005, original text reproduced by a family medical practice
-    url: https://www.medfamsv.ro/index_htm_files/lege_339_2005.pdf
-    locator: Articles 5, 11–12, 37–38, 54 and 56; annex Table II, narcotics item 18
+    title: Romanian Legislative Portal — Law 339/2005, consolidated text
+    url: https://legislatie.just.ro/Public/DetaliiDocument/66456
+    locator: >-
+      Articles 11–16, 37–38 and schedules; cultivation, authorised handling and pharmaceutical
+      prescriptions
   trafficking2023:
     type: law
     title: Romania — Law 45/2023 amending Law 143/2000
     url: https://legis.medleg.ro/legislatie/2023-lege-45
     locator: >-
-      Article I point 3: Law 143 Article 2(1), risk-drug trafficking three to ten years; published 2
-      March 2023
+      Article I point 3: Law 143 Article 2(1), risk-drug trafficking three to ten years;
+      published 2 March 2023
   hemp125:
     type: law
     title: Romania — Agriculture Ministry Order 125/2024, consolidated Article 17
     url: https://legislatie.just.ro/Public/DetaliiDocument/307721
     locator: >-
-      Article 17: approved EU seed, 0.3% THC agricultural standard, county cultivation authorisation,
-      flowering and THC checks; indexed official text and 2025 reproduction read
+      Article 17: approved EU seed, 0.3% THC agricultural standard, county cultivation
+      authorisation, flowering and THC checks; indexed official text and 2025 reproduction read
   hemp2025:
     type: law
     title: Romania — Agriculture Ministry hemp support sanctions, 6 August 2025
     url: https://legislatie.just.ro/Public/FormaPrintabila/00000G3B9H4MEFCAEQ31WSUM1QWOU65F
     locator: >-
-      PD-12 eligibility conditions: certified common-catalogue varieties and no more than 0.3% THC;
-      indexed official passage read
+      PD-12 eligibility conditions: certified common-catalogue varieties and no more than 0.3%
+      THC; indexed official passage read
+  law143:
+    title: Romanian Legislative Portal — Law 143/2000, consolidated 29 March 2025
+    url: https://legislatie.just.ro/Public/DetaliiDocument/295513
+    locator: >-
+      Articles 2–5, 9, 11, 16–20 and schedules; alternate current document after main endpoint
+      returned 502
+  diicot2025:
+    title: DIICOT — Activity report for 2025, February 2026
+    url: >-
+      https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZTA4dHJhbnNjb2Rlci5yY3Mt/cmRzLnJvJTJGc3RvcmFnZSUyRjIwMjYl/MkYwMiUyRjE5JTJGMjU5ODMxOV8yNTk4/MzE5X1JhcG9ydC1ESUlDT1QtQWN0aXZp/dGF0ZS0yMDI1LnBkZiZoYXNoPTgxNGZj/MjE4NGQ4OGNhYTc5MmU0NWNhYWMxMzlmOTgy.pdf
+    locator: >-
+      Original agency report reproduced by Digi24; printed pp. 34–37; drug indictments,
+      pre-trial detention and cannabis seizures
+  proposal2026:
+    title: Romanian government — Cabinet decisions, 12 February 2026
+    url: https://agerpres.ro/comunicate/2026/02/12/comunicat-de-presa---guvern--1527539
+    locator: >-
+      Government press release reproduced by national news agency; proposed Law 339 changes, not
+      enacted text
