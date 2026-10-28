@@ -5,9 +5,15 @@ Next-batch pick: `country-gaps --rank 120` filtered by standing skips (USA track
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Dominica | 7 articles (1937 first ban, 2025 burn, 2011 estimate, 1994 transit, 1988 act, 2 conventions) + cultivation table, hemp, citations, 2 links | arrests; words; 1940s–80s decades | COMMIT |
-| Greenland |  |  |  |
+| Greenland | 5 articles (2019 parliament, 2026 response, 2024 review, 2016 plan, 1992 competence) + hemp section | penalty tables (individualized measures, no bands); researched sections; estimate | COMMIT |
 | Côte d'Ivoire |  |  |  |
 | Togo |  |  |  |
+
+## gl — committed
+- 5 articles: `greenland-low-thc-parliament-2019` (already linked ×2), `greenland-hash-prevention-response-2026` (already linked), `greenland-legalisation-report-2024`, `greenland-hash-action-plan-proposal-2016`, `greenland-drug-law-competence-1992` (already linked ×1); last two unlinked (no hooks beyond existing links).
+- New `hemp` (standard: 0.2% authorised-import route). Penalty tables deliberately not built: the Act refers breaches to Criminal Code measures (verified in the Act text) — individualized, no fixed bands.
+- Audit 0/0; 6 pages built and verified.
+- Left: researched sections (arrests/driving/planting/trafficking-supply — no sources found); 1955 estimate; empty 1960s–2020s decades.
 
 ## dm — committed
 - 7 articles: `leeward-islands-dangerous-drugs-act-1937-dominica` (score-moving first ban; entry notes law text unconfirmed), `dominica-drug-burn-2025`, `dominica-cultivation-estimate-2011`, `dominica-transit-route-seizures-1994`, `dominica-drugs-prevention-act-1988` (read the Act: cannabis = plant + every part; s.8 cultivation bands), `dominica-single-convention-1993` (certified text), `dominica-1988-convention-1993` (Art 3 verified via parliamentary report quote). Links: burn in black_market, 1988 act in cultivation; 1937/estimate/transit/conventions unlinked (no hooks).
