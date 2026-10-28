@@ -3,8 +3,10 @@ region: Oceania
 iso_numeric: 776
 recreational: illegal
 medical: none
-updated: 2026-10-10
-summary: Under 28 g carries a fine of up to T$5,000 or a year in prison; small cases usually end in fines.
+updated: '2026-10-28'
+summary: >-
+  Cannabis is a Class B drug. Under 28 g carries up to T$5,000 or a year in prison; 28 g or more
+  carries up to T$50,000 or seven years. There is no medical, hemp or CBD exemption.
 scores:
   possession: 1
   cultivation: 1
@@ -15,95 +17,238 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis is a Class B drug under the Illicit Drugs Control Act 2003. Possession of less than
-      28 g carries a maximum of a T$5,000 fine or one year in prison, or both; 28 g or more carries
-      up to T$50,000 or seven years.
+      Cannabis is a Class B drug under the Illicit Drugs Control Act 2003.[@idca] Possession of
+      less than 28 g carries a maximum of a T$5,000 fine or one year in prison, or both; 28 g or
+      more carries up to T$50,000 or seven years.[@idca] The Act grades cannabis by weight, not by
+      plant count, and there is no mandatory minimum for Class B.[@idca]
     sources:
-      - case
+      - idca
+    currency: TOP
+    penalties:
+      - label: Under 28 g
+        treatment: criminal
+        term: Possession
+        prison: 1 year
+        fine: 5000
+        note: Fine, prison, or both
+      - label: 28 g or more
+        treatment: criminal
+        term: Possession
+        prison: 7 years
+        fine: 50000
+        note: Fine, prison, or both
   cultivation:
-    text: Cultivation is an offence under the same Act, sentenced by number of plants.
+    text: >-
+      Cultivation is an offence under section 4 of the Illicit Drugs Control Act 2003.[@idca] The
+      same weight bands apply: under 28 g carries up to one year or T$5,000, and 28 g or more up to
+      seven years or T$50,000; there is no plant-count tier.[@idca] In practice a single mature
+      plant can exceed 28 g.[@havea25]
     sources:
-      - case
+      - idca
+      - havea25
+    currency: TOP
+    penalties:
+      - label: Under 28 g
+        treatment: criminal
+        term: Cultivation
+        prison: 1 year
+        fine: 5000
+        note: Fine, prison, or both
+      - label: 28 g or more
+        treatment: criminal
+        term: Cultivation
+        prison: 7 years
+        fine: 50000
+        note: Fine, prison, or both
   enforcement:
     text: >-
-      Small cannabis cases generally end in fines or suspended sentences; Tonga's enforcement effort
-      is focused on methamphetamine.
+      Cannabis remains the most common possession case, but enforcement is focused on
+      methamphetamine.[@unodc25] Police recorded 327 drug-related arrests in FY2023–24, up from 179
+      the year before, and Class A seizures rose sharply.[@police24] Cannabis cases usually end in
+      fines, suspended sentences or short prison terms; a 2025 case involving 2.3 kg brought an
+      aggregate two years.[@havea25]
     sources:
-      - case
-      - mt
+      - unodc25
+      - police24
+      - havea25
   sharing:
     text: >-
-      Supply is punished more heavily. A 2020 amendment aimed at methamphetamine lowered the
-      quantity at which possession is deemed to be supply.
+      Supply and sale carry the same Class B weight bands as possession: under 28 g up to one year
+      or T$5,000, and 28 g or more up to seven years or T$50,000.[@idca] Possession of 7 g or more
+      is deemed supply under section 4(2), but that presumption does not by itself add a higher
+      maximum.[@idca] There is no separate sale tier above the 28 g band.[@idca]
     sources:
-      - mt
-      - case
+      - idca
+    currency: TOP
+    penalties:
+      - label: Supply or sale under 28 g
+        treatment: criminal
+        term: Supply
+        prison: 1 year
+        fine: 5000
+        note: Same band as possession
+      - label: Supply or sale 28 g or more
+        treatment: criminal
+        term: Supply
+        prison: 7 years
+        fine: 50000
+        note: Same band as possession; 7 g or more is deemed supply
   consumption:
-    text: Use is an offence.
+    text: >-
+      Use is an offence under section 4, and the same weight bands apply.[@idca] Prosecutions are
+      usually framed as possession; there is no separate use tariff.[@idca]
     sources:
-      - case
+      - idca
+    currency: TOP
+    penalties:
+      - label: Use under 28 g
+        treatment: criminal
+        term: Use
+        prison: 1 year
+        fine: 5000
+      - label: Use 28 g or more
+        treatment: criminal
+        term: Use
+        prison: 7 years
+        fine: 50000
   access:
-    text: None.
+    text: >-
+      None. The Act has no patient, hemp or CBD route; section 6 is a narrow international-traveller
+      exemption for lawfully prescribed medicines, not a domestic cannabis scheme.[@idca]
     sources:
-      - mt
+      - idca
 context:
+  recreational:
+    text: >-
+      All recreational use is prohibited. Under 28 g carries up to one year or T$5,000; 28 g or more
+      up to seven years or T$50,000, whether the charge is possession, use, cultivation or
+      supply.[@idca] Sentences are often below the maximum: 117.55 g brought eight months in 2026,
+      and 2.3 kg brought two years in 2025.[@matangi26,havea25]
+    sources:
+      - idca
+      - matangi26
+      - havea25
   production:
     status: none
-    text: None.
+    text: >-
+      No lawful cannabis production. Cultivation is an offence under section 4, with no commercial
+      or hemp permission.[@idca]
     sources:
-      - mt
-  products:
-    text: None.
-    sources:
-      - mt
+      - idca
   medical:
-    text: No medical cannabis.
+    text: >-
+      No medical cannabis programme. Section 6 lets a traveller undergoing treatment possess a
+      lawfully prescribed medicine for up to one month with written doctor authority, but cannabis is
+      not a registered Tongan medicine and there is no prescribing route.[@idca]
     sources:
-      - mt
+      - idca
+  hemp:
+    status: none
+    text: >-
+      No legal hemp or CBD category. Schedule 1 covers cannabis and cannabis resin, fruit, plant,
+      seed and oil, with no THC threshold or fibre exception.[@idca] No industrial-hemp licence was
+      found.[@idca]
+    sources:
+      - idca
   consequences:
-    text: A conviction is a criminal record, which matters for seasonal-work visas abroad.
+    text: >-
+      A conviction is a criminal record, which matters for seasonal-work visas abroad.[@abc26]
+      Nearly 40% of prisoners were serving drug-related sentences in 2026, and the prison population
+      rose from about 250 to 300 in three years.[@abc26]
     sources:
-      - case
+      - abc26
   planting:
     seeds: illegal
     seeds_trade: banned
     clones: illegal
     clones_trade: banned
     text: >-
-      The Illicit Drugs Control Act lists cannabis seed, cannabis fruit and any part of any
-      plant of the genus cannabis as illicit drugs in its schedule. Possessing, growing or
-      supplying any of them is an offence under section 4. The text read is the 2016 revised
-      edition, before the 2020 amendments.
+      The Illicit Drugs Control Act lists cannabis seed, cannabis fruit and any part of any plant of
+      the genus cannabis as illicit drugs.[@idca] Possessing, growing or supplying any of them is an
+      offence under section 4.[@idca]
     sources:
       - idca
   clubs:
     status: none
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
-      supplying it to another person are both prohibited.
+      supplying it to another person are both prohibited.[@idca]
     sources:
-      - case
-      - mt
+      - idca
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice says drug taking
-      in all forms is illegal, that importing or exporting illegal drugs carries up to 30
-      years' hard labour and very large fines, and that growing or distributing them is likely
-      to be punished severely.
+      There is no legal recreational supply for anyone. Under 28 g carries up to one year or
+      T$5,000; 28 g or more up to seven years or T$50,000.[@idca] The only traveller exemption is
+      for a lawfully prescribed medicine under section 6, which does not cover recreational
+      cannabis.[@idca]
     sources:
-      - mt
-      - fcdo
+      - idca
+  driving:
+    status: unknown
+    text: >-
+      The Traffic Act 2020 has an alcohol-only drug-driving regime: breath testing and offences for
+      driving under the influence of drink, with no drug-specific offence, THC limit or roadside drug
+      test for motor vehicles.[@traffic2020] Drug impairment can support a reckless-driving charge
+      only if driving is proved reckless or dangerous.[@traffic2020] The Act's non-motor-vehicle
+      provision covers riding or driving an animal or non-motor vehicle while impaired by drink or
+      drugs.[@traffic2020]
+    sources:
+      - traffic2020
+  black_market:
+    text: >-
+      Cannabis is locally cultivated in bush allotments and outer islands, including Vava'u, 'Eua,
+      Matahau and Fua'amotu, and sold in small dealer packs.[@unodc25] UNODC records 250 kg of
+      herbal cannabis seized in 2023 and 316 g in January–June 2024; the police yearbook separately
+      reported 3,441 g of Class B drugs in FY2023–24, a category that includes cannabis, codeine,
+      ketamine and spice.[@unodc25,police24] The two series use different periods and categories and
+      are not directly comparable.[@unodc25,police24]
+    sources:
+      - unodc25
+      - police24
+  arrests:
+    text: >-
+      Police recorded 327 drug-related arrests in FY2023–24, up 83% from 179 the year before, and
+      drug operations rose 54%.[@police24] Cannabis-specific data for 2019–2023 records 557
+      possession cases and 629 offenders, of whom 39 were women.[@unodc25] No current
+      cannabis-only arrest series is published.[@police24]
+    sources:
+      - police24
+      - unodc25
 sources:
-  fcdo:
-    title: "GOV.UK (FCDO) — Foreign travel advice: Tonga, safety and security"
-    url: https://www.gov.uk/foreign-travel-advice/tonga/safety-and-security
   idca:
-    title: Illicit Drugs Control Act, Chapter 10.15, 2016 Revised Edition (Attorney General's Office, Tonga)
-    url: https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/2003/2003-0007/IllicitDrugsControlAct_2.pdf
-  case:
-    title: PacLII — Supreme Court of Tonga sentencing judgment (2021)
-    url: https://rms.paclii.org/to/cases/TOSC/2021/118.html
-  mt:
-    title: Matangi Tonga — House passes amendment to Illicit Drugs Control Act (2020)
-    url: https://matangitonga.to/print/25199
+    title: "Tonga — Illicit Drugs Control Act 2003, Chapter 4.06, 2020 revised edition (Attorney General's Office, PDF)"
+    url: https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/2003/2003-0007/IllicitDrugsControlAct_3.pdf
+    locator: "Sections 2–7, 37A; Schedule 1 Class B."
+  amend2012:
+    title: "Tonga — Illicit Drugs Control (Amendment) Act 2012 (PDF)"
+    url: https://ago.gov.to/cms/images/LEGISLATION/AMENDING/2012/2012-0018/IllicitDrugsControlAmendmentAct2012.pdf
+    locator: "Sections 3–5; Class B creation and cannabis reclassification."
+  traffic2020:
+    title: "Tonga — Traffic Act 2020, Chapter 24.03 (Attorney General's Office, PDF)"
+    url: https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/2020/2020-0058/TrafficAct2020_2.pdf
+    locator: "Sections 27–34 and 49(1)(n)."
+  drugs1930:
+    title: "Tonga — Drugs and Poisons Act 1930, Chapter 79 (Attorney General's Office, PDF)"
+    url: https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1930/1930-0011/DrugsandPoisonsAct_1.pdf
+    locator: "Part III, sections 33–39 and 43(2)."
+  police24:
+    title: "Tonga Police — Annual Report 2023–24"
+    url: https://police.gov.to/
+    locator: "327 drug-related arrests; 3,441 g Class B seized; operations up 54%."
+  unodc25:
+    title: "UNODC — Tonga's shifting transnational organised crime landscape (2025)"
+    url: https://www.unodc.org/roseap/uploads/documents/Publications/2025/Tonga_TNOC_2025.pdf
+    locator: "Cannabis cultivation and 2019–2023 case data."
+  havea25:
+    title: "Tonga Supreme Court — R v Havea sentencing remarks (22 July 2025)"
+    url: https://ago.gov.to/
+    locator: "Three plants weighing 2.3 kg; aggregate two years."
+  matangi26:
+    title: "Matangi Tonga — 60-year-old jailed for unlawful firearms and cannabis (4 February 2026)"
+    url: https://matangitonga.to/2026/02/04/60-year-old-jailed-unlawful-firearms-and-cannabis
+    locator: "117.55 g; eight months."
+  abc26:
+    title: "ABC Pacific — Drug convictions causing strain on Tonga's prison system (8 May 2026)"
+    url: https://www.abc.net.au/pacific/programs/pacificbeat/tonga-drug-convictions-prison/106161468
+    locator: "Nearly 40% of prisoners; population 250 to 300."
