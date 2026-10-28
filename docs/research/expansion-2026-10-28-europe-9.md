@@ -32,3 +32,21 @@ article. Audit: zero errors, one explained hemp warning. Updated the existing
 resin regression to read production and recreational after retiring products.
 An initial test failure from concurrent Chad citations resolved before the retry;
 no edits to Chad. Shared history was staged only for this country's five IDs.
+
+| Jersey | Primary citations throughout; £200 third-offence row; hemp/planting; record retention and visitor discretion; 2025 dispensing total; three history entries and Parish Hall article | 2000s; current driving trigger and arrest series; current industrial licence conditions; local words | this commit |
+
+Jersey: read consolidated drug law, current Attorney General directions, 2024
+public-order law, official P.116/2025 PDF, original dispensing audit, July 2026
+FOI and January 2022 scrutiny report. Corrected prescriptions/patients conflation:
+72,065 is 2025 dispensed product items, with no unique-patient total. Parish Hall
+fines remain criminal disposals in the table, not a national decriminalisation
+claim; the standing score 2 is preserved. Medical access score unchanged.
+
+Hemp section uses the scrutiny report's licence categories (≤0.2%), rather than
+importing mainland UK policy. An older FOI text was indexed but its page failed;
+no new 2017 date inferred from the inaccessible original. April 2026 disclosure
+withheld Home Office reports in confidence; no inspection findings inferred from
+redactions. Existing October prescribing-plans source could not be retrieved;
+the profile now uses the accessible official audit and 2026 count. Proposed
+personal-use reforms are marked withdrawn in the Assembly record, not current law.
+All revised claims cite per sentence. No words added without a local source.

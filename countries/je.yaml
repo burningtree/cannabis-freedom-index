@@ -10,12 +10,12 @@ dependency:
     including under the UN drug conventions.
 recreational: illegal
 medical: legal
-updated: 2026-10-26
+updated: '2026-10-28'
 summary: >-
-  Cannabis is a Class B drug, but small amounts are usually settled at a Parish Hall enquiry with a
-  written caution or a fine, neither of which appears on the person's criminal record. Private
-  medical prescriptions are unusually common, and the island licenses medical cannabis growers. A
-  decriminalisation debate was put off until after the 2026 election.
+  Cannabis is a Class B drug, but small amounts are usually settled at a Parish Hall enquiry
+  with a written caution or a fine, neither of which appears on the person's criminal record.
+  Private medical prescriptions are unusually common, and the island licenses medical cannabis
+  growers. A decriminalisation debate was put off until after the 2026 election.
 scores:
   possession: 2
   cultivation: 1
@@ -26,147 +26,203 @@ scores:
 segments:
   possession:
     text: >-
-      Cannabis is a Class B drug under the Misuse of Drugs (Jersey) Law 1978, and possession carries
-      up to five years in prison or a fine. Small amounts are dealt with at a Parish Hall enquiry:
-      under Attorney General directions, up to 15 g usually brought a written caution for a first
-      offence and again after a year. Since the 2024 public order law, a Centenier may instead
-      impose a level 1 fine for possessing a Class B drug if the person accepts it; the fine is
-      recorded by police but does not appear on the person's criminal record. Larger amounts and
-      repeat cases go to court.
+      Cannabis is a Class B drug; court prosecution for possession carries up to five years or a
+      fine, or both.[@mdl] The Attorney General’s directions allow a first or qualifying second
+      written caution for up to 15 g of herb or resin, with the second normally requiring a year
+      since the first.[@guidance] For eligible third offences, a Centenier can impose a £200
+      fine when the person admits the offence and there is no evidence of dealing or onward
+      distribution.[@guidance] A [Parish Hall fine](/history/jersey-centenier-drug-fines-2024/)
+      stays off the criminal record but remains in police records.[@p116]
     sources:
       - mdl
-      - jep22
-      - hs
+      - guidance
       - p116
     penalties:
       - upto: 15 g
         treatment: criminal
-        note: Parish Hall enquiry; written caution or level 1 fine, not on the criminal record
+        term: Parish Hall written caution
+        note: Discretionary first or qualifying second offence; no dealing or onward distribution
+      - label: Eligible third personal offence at Parish Hall
+        treatment: criminal
+        term: Article 28A; Attorney General directions
+        repeat: 3
+        fine: 200
+        note: Admission and acceptance required; within the guidance quantity ceiling
       - label: Possession prosecuted in court
         treatment: criminal
+        term: Article 8(1), Schedule 4
         prison: 5 years
-        note: Up to five years in prison or a fine
+        note: Prison or a fine, or both
+    currency: GBP
   cultivation:
     text: >-
-      Growing cannabis is production of a Class B drug, with up to 14 years in prison or a fine.
-      Personal cultivation has no exemption; one of the options put to the States Assembly in 2025
-      would only have stopped prosecuting the growing of small quantities.
+      Unauthorised cultivation is production of a Class B drug, with up to fourteen years in
+      prison or a fine, or both.[@mdl] Personal growing has no general exemption.[@mdl]
+      Ministerial cultivation licences provide a separate commercial route for medical cannabis
+      and low-THC industrial hemp.[@scrutiny22]
     sources:
       - mdl
-      - hs
+      - scrutiny22
     penalties:
-      - label: Production of a Class B drug
+      - label: Unauthorised cannabis production
         treatment: criminal
+        term: Article 5, Schedule 4
         prison: 14 years
-        note: Or a fine; personal cultivation has no exemption
+        note: Prison or a fine, or both; no general personal-plant exemption
   enforcement:
     text: >-
-      Users with small amounts are mostly handled at the Parish Hall with cautions or fines. Class B
-      convictions, which include cannabis, fell from 65 in 2020 to 35 in 2021. Production and supply
-      are prosecuted in the courts.
+      The Attorney General directs eligible small personal cases toward Parish Hall cautions and
+      summary fines.[@guidance] The directions retain discretion and require no evidence of
+      dealing or onward distribution.[@guidance] They cover herb and resin up to 15 g; cannabis
+      oil is listed with zero tolerance, while oil in confectionery requires case-by-case
+      referral to the Attorney General.[@guidance]
     sources:
-      - jep22
-      - mdl
+      - guidance
   sharing:
     text: >-
-      Supplying or offering to supply a Class B drug carries up to 14 years in prison or a fine. The
-      law draws no line for giving cannabis to a friend without payment.
+      Supplying, offering to supply or possessing cannabis with intent to supply it carries up
+      to fourteen years or a fine, or both.[@mdl] The law includes unpaid supply to another
+      person.[@mdl] The Parish Hall caution directions exclude evidence of dealing or onward
+      distribution.[@guidance]
     sources:
       - mdl
+      - guidance
     penalties:
-      - label: Supplying or offering to supply a Class B drug
+      - label: Supply, offer to supply or possession with intent to supply
         treatment: criminal
+        term: Articles 5 and 8(2), Schedule 4
         prison: 14 years
-        note: Or a fine; no exception for giving to a friend without payment
+        note: Prison or a fine, or both
   consumption:
     text: >-
-      Use is dealt with through the possession offence. In June 2024 the States Assembly rejected
-      decriminalising personal possession and recreational use by 23 votes to 22.
+      Ordinary cannabis use is addressed through the possession offence in the drug law.[@mdl]
+      Allowing premises to be used for prohibited cannabis smoking or supply is separately
+      criminalised.[@mdl] The proposed personal-use reform remained marked withdrawn on the
+      Assembly’s published record when reviewed.[@p116]
     sources:
       - mdl
-      - be24
+      - p116
   access:
     text: >-
-      There is no legal adult-use source. Doctors prescribe medical cannabis privately and
-      pharmacies dispense it: an audit counted 23,639 private prescriptions for about 4,361 patients
-      in 2022, roughly 6% of the working population.
+      Doctors can prescribe medicinal cannabis and pharmacies dispense it under controlled-drug
+      rules.[@audit24] A [July 2026 disclosure](/history/jersey-medical-dispensing-total-2026/)
+      records 72,065 cannabis-based medicinal products dispensed during 2025.[@dispense26] This
+      is a product-item count, not a count of unique patients or consultations.[@dispense26]
     sources:
-      - benum
+      - audit24
+      - dispense26
 context_not_applicable:
   death_penalty:
     text: >-
-      Total abolition took effect in Jersey with the 2006 Human Rights Order giving effect to the
-      13th Protocol; no cannabis offence carries a capital sentence.[@wikipdp]
-    sources: [wikipdp]
+      The drug law’s Schedule 4 punishes cannabis offences with finite prison terms or fines, or
+      both, without a capital penalty.[@mdl]
+    sources:
+      - mdl
 context:
   recreational:
     text: >-
-      There is no lawful recreational supply. Small amounts are usually settled at a Parish Hall
-      enquiry with a written caution or a fine, neither of which appears on the person's
-      criminal record; larger amounts and repeat cases go to court.[@mdl,hs,p116] In June 2024
-      the Assembly rejected decriminalising personal possession and recreational use by 23 votes
-      to 22, and a fresh debate was put off until after the June 2026 election.[@be24,hs]
+      Adults have no lawful general recreational supply or home-growing allowance.[@mdl]
+      Eligible small possession and personal-import cases can end at Parish Hall with a caution
+      or fine.[@guidance] The [2025 reform
+      proposition](/history/jersey-reform-debate-deferred-2026/) is marked withdrawn on the
+      Assembly’s record.[@p116]
     sources:
       - mdl
-      - hs
+      - guidance
       - p116
-      - be24
   production:
     status: medical
     text: >-
-      Commercial growing is limited to licensed medical producers. Northern Leaf, the first local
-      grower approved by the UK medicines regulator, can produce eight tonnes a year and made its
-      first commercial shipment of high-THC flower to the United Kingdom in November 2023, after an
-      earlier shipment to Australia.
+      Businesses need separate licences for cannabis cultivation and handling controlled
+      products.[@scrutiny22] The Assembly’s [2022 scrutiny
+      report](/history/jersey-medical-industry-scrutiny-2022/) identifies low-THC industrial
+      hemp, higher-THC cultivation, and production/supply permissions as distinct licence
+      categories.[@scrutiny22] It describes security, planning and ministerial oversight of the
+      medicinal industry.[@scrutiny22]
     sources:
-      - jepship
+      - scrutiny22
   medical:
     text: >-
-      Medical cannabis is prescribed privately by doctors, some at cannabis clinics, and patients
-      may also bring it in under a personal import licence. Eighteen prescribers were recorded in
-      2022 and twenty in the first half of 2023. In October 2026 the government said it planned a
-      law to regulate prescribers, to start in early 2027.
+      Patients receive medicinal cannabis as an unlicensed medicine that may lawfully be
+      prescribed.[@audit24] Pharmacists must submit monthly dispensing returns to the Chief
+      Pharmacist.[@audit24] The [2024 audit](/history/jersey-medical-dispensing-audit-2024/)
+      examined 2022 and the first half of 2023, including prescribing volumes and overlapping
+      prescribers.[@audit24] The July 2026 disclosure adds the full-year 2025 item total but no
+      unique-patient count.[@dispense26]
     sources:
-      - benum
-      - wq201
+      - audit24
+      - dispense26
   consequences:
     text: >-
-      A Parish Hall caution or a Centenier's fine does not appear on the person's criminal record,
-      while a case that goes to court can. In June 2024 the Assembly asked ministers for proposals
-      on decriminalisation, legalisation and regulation; three options were tabled in 2025, but the
-      debate set for 3 February 2026 was put off until after the June 2026 election.
+      Parish Hall cautions and Centenier fines do not appear on the person’s criminal
+      record.[@p116] The government’s proposal explains that they remain in police records
+      indefinitely, because the rehabilitation law does not address them.[@p116] Court
+      prosecution can instead result in a conviction under the drug law.[@mdl]
     sources:
-      - hs
-      - be24
       - p116
+      - mdl
   clubs:
     status: none
     text: >-
-      No cannabis clubs are known. Supplying cannabis to another person is an offence, and none of
-      the 2025 reform options would have created clubs.
+      Supplying cannabis to another person requires lawful authority under the drug law.[@mdl]
+      The legislation provides no general recreational collective-growing or membership-supply
+      exemption.[@mdl] Medical and industrial growing are licensed activities under the separate
+      routes described by the Assembly’s scrutiny report.[@scrutiny22]
     sources:
       - mdl
-      - hs
+      - scrutiny22
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply, so a visitor has no lawful way to obtain cannabis.
-      Medical cannabis requires a prescription or a personal import licence.
+      Visitors have no general recreational retail supplier.[@mdl] The current caution guidance
+      expressly allows discretion for short-stay visitors, where attending the Alcohol and Drugs
+      Service would be impractical.[@guidance] Eligibility conditions still apply, including
+      quantity and absence of onward supply.[@guidance]
     sources:
       - mdl
-      - benum
+      - guidance
+  hemp:
+    status: strict
+    text: >-
+      Industrial hemp growing is licensed separately from higher-THC cannabis.[@scrutiny22] The
+      2022 scrutiny report identifies the low-THC cultivation licence as covering plants with no
+      more than 0.2% THC.[@scrutiny22] The drug law separately excludes mature stalk, its fibre
+      and seeds once separated from the plant; flowers and leaves remain controlled
+      material.[@mdl]
+    sources:
+      - scrutiny22
+      - mdl
+  planting:
+    seeds: grey
+    seeds_trade: open
+    clones: licensed
+    clones_trade: regulated
+    text: >-
+      Seeds separated from the plant are excluded from the drug law’s cannabis definition.[@mdl]
+      Germinating them creates a plant, and unauthorised production remains criminal.[@mdl]
+      Cultivation licences and controlled-product permissions supply the route for authorised
+      growers and their plant material.[@scrutiny22]
+    sources:
+      - mdl
+      - scrutiny22
 sources:
   mdl:
-    title: Jersey Legal Information Board — Misuse of Drugs (Jersey) Law 1978, consolidated to 5 December 2025
+    title: >-
+      Jersey Legal Information Board — Misuse of Drugs (Jersey) Law 1978, consolidated to 5
+      December 2025
     url: https://jerseylaw.je/laws/current/l_10_1978
   jep22:
-    title: Jersey Evening Post — Growing calls for cannabis to be decriminalised in Jersey (14 October 2022)
-    url: https://jerseyeveningpost.com/news/2022/10/14/growing-calls-for-cannabis-to-be-decriminalised-in-jersey/
+    title: >-
+      Jersey Evening Post — Growing calls for cannabis to be decriminalised in Jersey (14
+      October 2022)
+    url: >-
+      https://jerseyeveningpost.com/news/2022/10/14/growing-calls-for-cannabis-to-be-decriminalised-in-jersey/
   hs:
     title: >-
       Harris Sliwoski — Jersey cannabis reform proposals: what could have been, and what may be
       after the election (10 February 2026)
-    url: https://harris-sliwoski.com/cannalawblog/jersey-territory-cannabis-reform-proposals-what-could-have-been-and-what-may-be-after-the-election/
+    url: >-
+      https://harris-sliwoski.com/cannalawblog/jersey-territory-cannabis-reform-proposals-what-could-have-been-and-what-may-be-after-the-election/
   be24:
     title: Bailiwick Express — Cannabis decriminalisation rejected by one vote (26 June 2024)
     url: https://www.bailiwickexpress.com/news/cannabis-decriminalisation-rejected-one-vote/
@@ -175,16 +231,37 @@ sources:
       States Assembly of Jersey — P.116/2025, Future approach to personal cannabis use in Jersey
       (19 December 2025)
     url: >-
-      https://web.archive.org/web/2026id_/https://www.statesassembly.je/getmedia/1259b610-7ac2-4a15-a98a-877a4d13a53d/P-116-2025.pdf?ext=.pdf
+      https://www.statesassembly.je/getmedia/1259b610-7ac2-4a15-a98a-877a4d13a53d/P-116-2025.pdf?ext=.pdf
   benum:
-    title: "Bailiwick Express — In numbers: Jersey's medicinal cannabis usage (3 April 2024)"
+    title: 'Bailiwick Express — In numbers: Jersey''s medicinal cannabis usage (3 April 2024)'
     url: https://www.bailiwickexpress.com/news/numbers-jerseys-medicinal-cannabis-usage/
   jepship:
-    title: Jersey Evening Post — Jersey medicinal cannabis firm makes first commercial shipment to UK (15 November 2023)
-    url: https://jerseyeveningpost.com/news/2023/11/15/jersey-medicinal-cannabis-firm-makes-first-commercial-shipment-to-uk/
+    title: >-
+      Jersey Evening Post — Jersey medicinal cannabis firm makes first commercial shipment to UK
+      (15 November 2023)
+    url: >-
+      https://jerseyeveningpost.com/news/2023/11/15/jersey-medicinal-cannabis-firm-makes-first-commercial-shipment-to-uk/
   wq201:
     title: States Assembly of Jersey — WQ.201/2026, answer tabled 12 October 2026
-    url: https://www.statesassembly.je/getattachment/0ca87632-b6c1-4e9c-9d99-80e90eaef827/WQ-201-2026.pdf?ext=.pdf&lang=en-GB
-  wikipdp:
-    title: Wikipedia — Capital punishment in the United Kingdom (Jersey total abolition via the 2006 Human Rights Order, 13th Protocol)
-    url: https://en.m.wikipedia.org/wiki/Capital_punishment_in_the_United_Kingdom
+    url: >-
+      https://www.statesassembly.je/getattachment/0ca87632-b6c1-4e9c-9d99-80e90eaef827/WQ-201-2026.pdf?ext=.pdf&lang=en-GB
+  guidance:
+    title: Jersey Attorney General — Personal amounts of certain controlled drugs, current directions
+    url: >-
+      https://www.lawofficers.je/publications/guidance-and-directives/parish-hall-enquiries/controlled-drugs/
+  audit24:
+    title: Government of Jersey — Medicinal Cannabis Dispensing Audit, 28 March 2024
+    url: >-
+      https://www.gov.je/SiteCollectionDocuments/Government%20and%20administration/Medicinal%20Cannabis%20Dispensing%20Audit%20Report.pdf
+  dispense26:
+    title: Health and Care Jersey — Cannabis prescriptions dispensed 2025, FOI published 30 July 2026
+    url: https://www.gov.je/government/freedomofinformation/pages/foi.aspx?ReportID=9582
+  scrutiny22:
+    title: >-
+      Jersey Economic and International Affairs Scrutiny Panel — Medicinal cannabis licensing, 6
+      January 2022
+    url: >-
+      https://statesassembly.je/getmedia/be3cd6fb-86d2-497c-8ae5-4b6a7cd0a47e/Report%20-%20Regulations%20for%20the%20licensing%20production%20and%20export%20of%20Medicinal%20Cannabis%20in%20Jersey%20-%206%20January%202022.pdf
+    locator: >-
+      Cultivation and processing sites, printed pp. 50–51: separate low/high THC and
+      controlled-product licences
