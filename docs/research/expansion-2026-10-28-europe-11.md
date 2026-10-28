@@ -34,3 +34,24 @@ restore others' in-progress history. Audit zero errors; one heuristic warning
 matches “unauthorised production” despite the uncommenced industry Act; none is
 the accurate production status. First build caught and corrected driving enum
 threshold → limit. Shared history staged only for the four new Gibraltar IDs.
+
+| Bosnia and Herzegovina | Six aggravated supply/enabling-use rows; 2026 road rules; agency proceedings and market context; four verified local terms; three events and 1950 article | 1940s/1960s/1980s; original first-ban text; cannabis-only national arrests; current medical implementation | this commit |
+
+Bosnia: read current Federation and Republika Srpska drug offences, current road
+consolidation and original May 2026 gazette amendment, SIPA's original 2023 report,
+December 2025 Šamac police statement and September medical follow-up. Original
+1950 statute retrieved directly from UN and read in full after browser failed.
+Added its article without changing the existing scored event. All six present
+scores retained. Aggravated offences are jurisdiction-labelled, including open
+statutory minima without fabricated maxima. Road status impairment follows
+“under influence”; no numerical THC line inferred. May 2026 reckless-driving
+rules and refusal maximum are distinguished. SIPA figures concern its own
+proceedings across all drugs; 32 people in reports are not called arrests, and
+seizures are not national totals. Four words come from actual official usage.
+Several Ministry of Security reports/destruction notices appeared in search but
+failed retrieval; no checked entries or nationwide totals added from snippets.
+
+Bosnia validation: five-page snapshot build passed all 193 tests and collection/
+citation validation; inspected profile and 1950 article. Audit zero errors and
+warnings. Shared history staged only for the three new IDs. Nationwide agency
+counts now fill the arrests/market sections with their correct scope.
