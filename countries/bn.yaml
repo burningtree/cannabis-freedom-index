@@ -3,10 +3,17 @@ region: Asia
 iso_numeric: 96
 recreational: death
 medical: none
-updated: 2026-10-15T00:00:00.000Z
+updated: '2026-10-28'
 summary: >-
   Severe penalties include prison and, for specified trafficking offences, caning or a mandatory
-  death sentence. Death sentences are imposed but have not been carried out in decades.
+  death sentence. Death sentences are imposed but no execution is known since 1957. Simple
+  possession and consumption carry up to ten years; cultivation three to twenty years.
+words:
+  - word: ganja
+    lang: Malay
+    meaning: cannabis
+    sources:
+      - dbp
 scores:
   possession: 0
   cultivation: 0
@@ -17,88 +24,197 @@ scores:
 segments:
   possession:
     text: >-
-      Section 6(a) prohibits unauthorised possession. In the reviewed 2013 consolidation, section 15
-      presumes trafficking above 15 g of cannabis unless rebutted. The separate death-penalty
-      quantity is above 500 g for specified trafficking offences; it is not the presumption
-      threshold.
+      Section 6(a) prohibits unauthorised possession of cannabis, a Class A controlled drug, with
+      up to ten years in prison and a B$20,000 fine on a first conviction and a minimum of two years
+      on a second or later conviction; the row does not provide caning.[@mda] Section 15 presumes
+      trafficking above 15 g of cannabis or 10 g of resin unless the contrary is proved.[@mda] The
+      separate death-penalty quantity is above 500 g for trafficking, not the presumption
+      threshold.[@mda]
     sources:
       - mda
+    currency: BND
+    penalties:
+      - label: Any amount, first conviction
+        treatment: criminal
+        term: Possession
+        prison: 10 years
+        fine: 20000
+        note: No caning; above 15 g cannabis or 10 g resin trafficking is presumed
+      - label: Second or later conviction
+        treatment: criminal
+        term: Possession
+        prison_min: 2 years
+        prison: 10 years
+        fine: 20000
+        note: Minimum two years under section 6; no caning
   cultivation:
     text: >-
-      Section 8 prohibits cannabis cultivation. The reviewed Second Schedule provides up to 20
-      years, B$40,000, or both, with stated minimums of three years, B$5,000, or both. That row does
-      not prescribe caning.
+      Section 8 prohibits cultivating any plant of the genus Cannabis.[@mda] The Second Schedule
+      provides three to twenty years and a B$5,000–40,000 fine, or both, and does not prescribe
+      caning.[@mda]
     sources:
       - mda
     currency: BND
     penalties:
       - label: Cultivation, Section 8
         treatment: criminal
+        term: Cultivation
         prison_min: 3 years
         prison: 20 years
+        fine_min: 5000
         fine: 40000
-        note: Three years to twenty years and B$5,000–40,000; no caning in this row
+        note: No caning in this row
   enforcement:
     text: >-
-      Severe statutory penalties apply, including caning for specified trafficking offences. Death
-      sentences are reported as imposed but not carried out. The possession and cultivation rows
-      reviewed do not support a blanket claim of mandatory caning for any quantity.
+      Severe statutory penalties apply, including caning for trafficking, import and export and
+      manufacture, but not for simple possession, consumption or cultivation.[@mda] Police recorded
+      777 drug arrests in 2024, up from 711 in 2023, while methamphetamine seizures rose above 40 kg
+      and cannabis seizures fell to 2.6 kg from 6.3 kg.[@xinhua24,unodc_szr] Death sentences are
+      still imposed: the last known one was in 2017, and no execution is known since
+      1957.[@hoc,oxford26]
     sources:
-      - hoc
       - mda
+      - xinhua24
+      - unodc_szr
+      - hoc
+      - oxford26
   sharing:
     text: >-
-      Giving or distributing cannabis falls within trafficking. Specified quantities attract the
-      mandatory death penalty; the reviewed statutory threshold for cannabis is more than 500 g.
-      Brunei has not carried out executions in decades.
+      Giving or distributing cannabis falls within trafficking, which means selling, giving,
+      administering, transporting, sending, delivering or distributing it.[@mda] Trafficking under
+      330 g carries five to twenty years and five to fifteen strokes; 330 g to 500 g carries twenty
+      to thirty years and fifteen strokes; more than 500 g of cannabis, or more than 200 g of resin,
+      carries a mandatory death sentence.[@mda] Import and export follow the same quantity bands but
+      start at five to thirty years below 330 g, and possession for trafficking carries death above
+      600 g of cannabis or 300 g of resin.[@mda]
     sources:
-      - hoc
       - mda
+    currency: BND
     penalties:
-      - label: Trafficking over 500 g
+      - label: Trafficking under 330 g
         treatment: criminal
+        term: Trafficking
+        prison_min: 5 years
+        prison: 20 years
+        note: Five to fifteen strokes
+        caning:
+          - 5
+          - 15
+      - label: Trafficking 330 g to 500 g
+        treatment: criminal
+        term: Trafficking
+        prison_min: 20 years
+        prison: 30 years
+        note: Fifteen strokes
+        caning:
+          - 15
+          - 15
+      - label: Trafficking over 500 g, or over 200 g resin
+        treatment: criminal
+        term: Trafficking
         death: true
-        note: Mandatory death sentence on the statute book; imposed but not carried out in decades
+        note: Mandatory death sentence
+      - label: Import or export under 330 g
+        treatment: criminal
+        term: Import or export
+        prison_min: 5 years
+        prison: 30 years
+        note: Five to fifteen strokes
+        caning:
+          - 5
+          - 15
+      - label: Possession for trafficking 400 g to 600 g
+        treatment: criminal
+        term: Possession for trafficking
+        prison_min: 20 years
+        prison: 30 years
+        note: Fifteen strokes
+        caning:
+          - 15
+          - 15
+      - label: Possession for trafficking over 600 g, or over 300 g resin
+        treatment: criminal
+        term: Possession for trafficking
+        death: true
+        note: Mandatory death sentence
   consumption:
-    text: Consumption is itself an offence, proved by urine test.
+    text: >-
+      Consumption is itself an offence under section 6(b), proved by urine test, with up to ten
+      years and a B$20,000 fine on a first conviction and a minimum of three years on a second or
+      later conviction; the row does not provide caning.[@mda]
     sources:
       - mda
+    currency: BND
+    penalties:
+      - label: Consumption, first conviction
+        treatment: criminal
+        term: Consumption
+        prison: 10 years
+        fine: 20000
+        note: No caning
+      - label: Second or later conviction
+        treatment: criminal
+        term: Consumption
+        prison_min: 3 years
+        prison: 10 years
+        fine: 20000
+        note: Minimum three years under section 6; no caning
   access:
-    text: 'None: the Misuse of Drugs Act makes consumption itself an offence, proved by urine test.'
+    text: >-
+      None. Possession and consumption are offences, and no patient, CBD or hemp consumer route was
+      verified.[@mda] The Misuse of Drugs Regulations let medical and dental officers prescribe
+      controlled drugs in the course of duty, but no approved cannabis medicine or patient programme
+      exists.[@regs]
     sources:
       - mda
+      - regs
 context:
   recreational:
     text: >-
       All recreational use is prohibited: consumption itself is an offence proved by urine test,
       cultivation starts at three years, and trafficking over 500 g carries a mandatory death
-      sentence that is imposed but not carried out.[@mda,hoc,wiki]
+      sentence that is imposed but not carried out.[@mda,hoc]
     sources:
       - mda
       - hoc
-      - wiki
   death_penalty:
     text: >-
-      Trafficking carries a mandatory death sentence on the statute book. Death sentences are
-      imposed but not carried out: Brunei has not executed anyone in decades.
+      Trafficking more than 500 g of cannabis or 200 g of resin carries a mandatory death sentence,
+      as does possession for trafficking above 600 g or 300 g of resin.[@mda] Death sentences are
+      still imposed but not carried out: the last known execution was in 1957 and the last known
+      death sentence in 2017.[@hoc,oxford26]
     sources:
+      - mda
       - hoc
-      - wiki
+      - oxford26
   production:
     status: none
     text: >-
       No lawful cannabis production. Section 8 prohibits cultivating any plant of the genus
-      cannabis, starting at three years and B$5,000.[@mda]
+      Cannabis, starting at three years and B$5,000.[@mda]
     sources:
       - mda
   medical:
-    text: No medical cannabis.
+    text: >-
+      No medical cannabis programme. Cannabis is Class A; the regulations allow medical and dental
+      officers to prescribe controlled drugs in the course of duty, but no approved cannabis
+      medicine or patient route was found.[@mda,regs]
     sources:
-      - wiki
+      - mda
+      - regs
+  hemp:
+    status: none
+    text: >-
+      No legal hemp category or THC threshold. The Misuse of Drugs Act defines cannabis as any
+      plant of the genus or any part of it, with no exception for fibre, seed or low-THC varieties,
+      and section 8 bans cultivation.[@mda] Cannabidiol is not named in the schedules, but
+      cannabis-derived products are likely caught; no legal retail CBD market was found.[@mda]
+    sources:
+      - mda
   consequences:
     text: >-
       Section 24 allows forfeiture of drugs and articles connected with an offence, including where
-      nobody has been convicted, subject to its notice and claim procedures.
+      nobody has been convicted, subject to its notice and claim procedures.[@mda]
     sources:
       - mda
   planting:
@@ -109,7 +225,7 @@ context:
     text: >-
       The Misuse of Drugs Act defines cannabis as any plant of the genus "or any part of such plant,
       by whatever name it is called", with no exception for seed, and section 8 makes it an offence
-      to cultivate any plant of the genus cannabis.
+      to cultivate any plant of the genus cannabis.[@mda]
     sources:
       - mda
   clubs:
@@ -117,65 +233,95 @@ context:
     text: >-
       No cannabis clubs are known, and the law leaves no room for them: growing cannabis and
       supplying it to another person are both prohibited, and the law provides for the death penalty
-      for the most serious drug offences.
+      for the most serious trafficking offences.[@mda,hoc]
     sources:
-      - wiki
+      - mda
       - hoc
   visitors:
     status: none
     text: >-
-      There is no legal recreational supply for anyone. British travel advice warns of severe
-      penalties for drug offences including, in some cases, the death penalty, with caning and long
-      prison sentences for other crimes.
+      There is no legal recreational supply for anyone. The Misuse of Drugs Act applies severe
+      penalties to possession and trafficking, including caning and, for specified trafficking
+      quantities, death.[@mda,hoc]
     sources:
-      - wiki
-      - fcdo
+      - mda
+      - hoc
   driving:
     status: impairment
     text: >-
       Road Traffic Act section 26 covers driving, attempting to drive or being in charge on a road
-      or public place while drug influence makes proper vehicle control impossible. The 2026 revised
-      text provides a B$10,000 fine and two years' imprisonment for a first conviction, and B$20,000
-      and four years for a repeat conviction. The court normally orders at least three years'
-      licence disqualification, starting on conviction or, if imprisoned, on release; it can depart
-      for stated special reasons. Where the offence causes death or serious injury, section 26A
-      allows licence suspension on charge until the court decides the case. Section 26G permits
-      analysis of blood taken for treatment after specified crashes when the person cannot provide
-      breath or consent to blood sampling, on the Police Commissioner's direction. The concentration
-      limit in section 26 concerns alcohol; no numerical THC limit is given there.
+      or public place while drug influence makes proper vehicle control impossible; a first
+      conviction brings a B$10,000 fine and two years in prison, and a repeat B$20,000 and four
+      years.[@traffic2026] The court normally orders at least three years' licence disqualification,
+      starting on conviction or release, and may depart for stated special reasons.[@traffic2026]
+      Where the offence causes death or serious injury, section 26A allows suspension on charge, and
+      section 26G allows a blood specimen after specified crashes.[@traffic2026] There is no
+      numerical THC limit; the concentration limit in section 26 concerns alcohol.[@traffic2026]
     sources:
       - traffic2026
   black_market:
     text: >-
-      Figures reported by the government to the UN drugs office record 2.6 kg of herbal cannabis
-      seized in 2024, against 6.3 kg in 2023. The UN publishes them as kilogram equivalents, and
-      countries count seizures differently, so the figures are not comparable across borders.
+      UNODC records 2.6 kg of herbal cannabis seized in 2024, against 6.3 kg in 2023.[@unodc_szr]
+      In June 2025 five Bruneian men were arrested for carrying 68 kg of cannabis to Europe via
+      third countries; in January 2026 a court kept a man charged with importing 499.89 g in custody
+      because the amount fell just below the 500 g death threshold but still carried twenty to
+      thirty years and fifteen strokes.[@star25,judiciary26] No cannabis-specific arrest series is
+      published.[@xinhua24]
     sources:
       - unodc_szr
+      - star25
+      - judiciary26
+      - xinhua24
+  arrests:
+    text: >-
+      Police recorded 777 drug arrests in 2024, up from 711 in 2023; 641 were men, 136 women, and
+      645 were locals.[@xinhua24] The figures cover all drugs, and no cannabis-specific arrest count
+      was published.[@xinhua24] Methamphetamine dominated seizures, with over 40 kg against just
+      2.6 kg of herbal cannabis.[@bruneitribune24]
+    sources:
+      - xinhua24
+      - bruneitribune24
 sources:
-  traffic2026:
-    title: Brunei Attorney General's Chambers — Road Traffic Act, Chapter 68, revised edition 2026 (PDF)
-    url: https://www.agc.gov.bn/wp-content/uploads/2026/07/CAP-68-2026-ED-ROAD-TRAFFIC-ACT.pdf
-    locator: Sections 26, 26A and 26G
-  fcdo:
-    title: 'GOV.UK (FCDO) — Foreign travel advice: Brunei, safety and security'
-    url: https://www.gov.uk/foreign-travel-advice/brunei/safety-and-security
   mda:
-    title: Misuse of Drugs Act, Chapter 27, revised edition 2013, as notified to the WTO (PDF)
-    url: >-
-      https://www.importlicensing.wto.org/sites/default/files/Misuse_of_Drugs_Act_1984_01.01.2013.pdf
-    locator: >-
-      2013 consolidation: sections 6, 8, 15 and 24; Second Schedule rows for sections 6(a), 6(b) and
-      8. This review does not certify all subsequent amendments.
-  wiki:
-    title: Wikipedia — Cannabis in Brunei
-    url: https://en.wikipedia.org/wiki/Cannabis_in_Brunei
+    title: "Brunei — Misuse of Drugs Act, Chapter 27, revised edition 2013 (Attorney General's Chambers, PDF)"
+    url: https://www.agc.gov.bn/wp-content/uploads/2026/07/CAP-27-2013-ED-MISUSE-OF-DRUGS-ACT.pdf
+    locator: "Sections 2–8, 15, 24, 28–29 and Second Schedule; First Schedule Part I Class A."
+  regs:
+    title: "Brunei — Misuse of Drugs Regulations, Chapter 27, revised edition 2013 (Attorney General's Chambers, PDF)"
+    url: https://www.agc.gov.bn/wp-content/uploads/2026/07/CAP-27-RG-1-MISUSE-OF-DRUGS-REGULATIONS.pdf
+    locator: "Regulations 4, 5(2), 11 and 14; Fourth Schedule."
+  traffic2026:
+    title: "Brunei — Road Traffic Act, Chapter 68, revised edition 2026 (Attorney General's Chambers, PDF)"
+    url: https://www.agc.gov.bn/wp-content/uploads/2026/07/CAP-68-2026-ED-ROAD-TRAFFIC-ACT.pdf
+    locator: "Sections 26, 26A and 26G."
+  xinhua24:
+    title: "Xinhua — Brunei reports 777 drug arrests in 2024 (15 April 2025)"
+    url: https://english.news.cn/20250415/bc1a2906564245bf985e4161cbe14760/c.html
+    locator: "777 arrests; 641 men, 136 women; 645 locals."
+  bruneitribune24:
+    title: "Brunei Tribune — Drug seizure in Brunei skyrockets by 811 percent, syabu most commonly seized (2025)"
+    url: https://www.bruneitribune.com/drug-seizure-in-brunei-skyrockets-by-811-percent-syabu-most-commonly-seized/
+    locator: "Over 40 kg methamphetamine against 2.6 kg herbal cannabis."
+  star25:
+    title: "The Star — Five Bruneians arrested for role in international drug syndicate (19 June 2025)"
+    url: https://www.thestar.com.my/aseanplus/aseanplus-news/2025/06/19/five-bruneians-arrested-for-role-in-international-drug-syndicate
+    locator: "68 kg cannabis to Europe via third countries."
+  judiciary26:
+    title: "Brunei Judiciary — Bail ruling in HCCT 13/2025 (28 January 2026)"
+    url: https://www.judiciary.gov.bn/wp-content/uploads/2026/04/ruling_HCCT_13_2025.pdf
+    locator: "499.89 g import; 20–30 years and 15 strokes; bail refused."
   hoc:
-    title: Hands Off Cain — Brunei Darussalam country profile
-    url: >-
-      https://www.handsoffcain.info/bancadati/asia-middle-east-australia-and-oceania/brunei-darussalam-40000080
+    title: "Hands Off Cain — Brunei Darussalam country profile"
+    url: https://www.handsoffcain.info/bancadati/asia-middle-east-australia-and-oceania/brunei-darussalam-40000080
+    locator: "Last execution 1957; de facto moratorium."
+  oxford26:
+    title: "Oxford Death Penalty Research Unit — Brunei country report 2026"
+    url: https://www.law.ox.ac.uk/sites/default/files/2026-09/Brunei%20Country%20Report%20DPRU.pdf
+    locator: "Last known death sentence 2017; moratorium."
+  dbp:
+    title: "Dewan Bahasa dan Pustaka — Kamus Dewan: ganja"
+    url: https://prpm.dbp.gov.my/cari1?keyword=ganja
+    locator: "Cannabis sativa; dried leaves and flowers smoked as a drug."
   unodc_szr:
-    title: >-
-      UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug
-      Report data)
+    title: "UNODC Data Portal — Drug seizures, reported seizures in kilogram equivalents (World Drug Report data)"
     url: https://data.unodc.org/datareport/drug-seizure

@@ -11,4 +11,6 @@ sources, and India is held for a separate country pass because of its size and s
 | Myanmar | in progress | | |
 | Cambodia | in progress | | |
 | Philippines | in progress | | |
-| Brunei | in progress | | |
+| Brunei | four penalty tables, hemp/arrests sections, corrected Class A and 1992 dates, removed the meth-only 2002 entry, 5 history entries | no cannabis-specific arrest series; pure CBD isolate status unresolved | this commit |
+
+Brunei validation: `profile-audit bn` zero errors/warnings; `country-gaps bn` has no missing sections or tables and no empty decades; `npm test` passes 179/179; the 5,193-page build passed and the page shows four tables. The profile now follows the 2013 revised Misuse of Drugs Act: simple possession and consumption up to ten years and B$20,000, cultivation three to twenty years, and mandatory death above 500 g of cannabis or 200 g of resin for trafficking. The 2012 Class A order replaced the 2013 date, the meth-only 2002 entry was removed, and the 1992 threshold is flagged as historical.
