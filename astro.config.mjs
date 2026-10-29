@@ -3,7 +3,8 @@ import { unified } from "@astrojs/markdown-remark";
 import icon from "astro-icon";
 import { markTerms } from "./src/lib/terms.js";
 import { buildLock } from "./scripts/build-lock.mjs";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
+import { createHash } from "node:crypto";
 
 // History entries that moved to the Cannabis Enforcement Tracker (raids, seizures, arrests, sentences;
 // scripts/move-to-tracker.mjs): their old addresses lead to the report there.
@@ -16,6 +17,10 @@ const movedToTracker = Object.fromEntries(JSON.parse(readFileSync("./src/data/tr
 // The site lives at https://cannabisfreedom.fyi/, so BASE_PATH is empty there; it would be
 // "/cannabis-freedom-index" on the default github.io address. Locally both are unset.
 // The base always ends with a slash because links are built as `${base}country/…`.
+// A glossary/atlas update changes rendered words even when an article itself is unchanged.
+const termsHash = createHash("sha256").update(readFileSync(new URL("./glossary.yaml", import.meta.url)));
+for (const file of readdirSync(new URL("./culture/language/", import.meta.url)).filter(file => file.endsWith(".md")).sort()) termsHash.update(readFileSync(new URL(`./culture/language/${file}`, import.meta.url)));
+const termsRevision = termsHash.digest("hex");
 const base = (process.env.BASE_PATH || "").replace(/\/+$/, "") + "/";
 
 // Links written in Markdown (articles, culture entries): one that leaves the site opens in a new
@@ -147,7 +152,7 @@ export default defineConfig({
   // inlines the SVG at build time, so only the icons a page uses end up in it.
   integrations: [buildLock(), icon()],
   markdown: {
-    processor: unified({ remarkPlugins: [markdownFigures, markdownCitations], rehypePlugins: [markdownLinks, markdownTerms] }),
+    processor: unified({ remarkPlugins: [markdownFigures, markdownCitations], rehypePlugins: [markdownLinks, [markdownTerms, { revision: termsRevision }]] }),
   },
   // pictures in Markdown get a set of widths, so a phone does not download the 1280-pixel file
   image: { layout: "constrained" },

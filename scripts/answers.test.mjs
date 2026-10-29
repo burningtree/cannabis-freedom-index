@@ -147,4 +147,5 @@ test("glossary API exports sourced multilingual cannabis vocabulary and inflecti
   assert.ok(data.recognition.prefixes.includes("konop"));
   assert.ok(data.recognition.prefixes.includes("marihuan"));
   assert.ok(!data.recognition.words.includes("decriminalised"));
+  for (const id of ["remand", "controlled delivery", "street value", "crore", "hydroponics"]) assert.ok(data.entries.some(entry => entry.kind === "glossary" && entry.id === id && entry.text.length > 20), id);
 });
