@@ -7,8 +7,8 @@ Only this batch’s own files and history blocks are committed from the shared w
 | Country | Done | Left | Commit |
 |---|---|---|---|
 | Northern Cyprus | Planting, zero-threshold driving, seizure context; three events; 1956 article | Original 1982/1989/1991 amendments; national cannabis arrest series; colonial commencement notice | a86a8de |
-| Kosovo | Aggravated penalty tiers; licensed research; cultivation-laboratory context; three events and market article | Original 1930 law and early Yugoslav decades; 2026 schedule text; additional local terms | This country’s commit |
-| Montenegro | Pending | | |
+| Kosovo | Aggravated penalty tiers; licensed research; cultivation-laboratory context; three events and market article | Original 1930 law and early Yugoslav decades; 2026 schedule text; additional local terms | 2a1ddf6 |
+| Montenegro | August law and article; reporting/schedule/customs history; research and medical travel; statutory terms | Original early laws; full current criminal-code amendment; cannabis-only arrest series | This country’s commit |
 | Isle of Man | Pending | | |
 | Croatia | Pending | | |
 
