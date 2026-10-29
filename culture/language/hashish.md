@@ -2,7 +2,7 @@
 title: Hashish
 summary: Arabic for dried grass. The word for cannabis resin from Morocco to Afghanistan.
 origin: Arabic
-also: [hash, haschisch, hachisch, hasch, hashish]
+also: [hash, haschisch, hachisch, hasch, hashish, hachís, jachís]
 spelling:
   - { text: "حشيش", lang: Arabic, say: "ḥashīsh" }
 countries: [eg, lb, ma, af, gr, ir, pk, in, np, fr]
@@ -19,6 +19,8 @@ image:
 model: gpt-6
 written: 2026-10-15
 sources:
+  - title: Wiktionary — hachís (Spanish), including jachís
+    url: https://en.wiktionary.org/wiki/hach%C3%ADs
   - title: Wellcome Collection — Shops of hashish merchants on a street in Cairo, chromolithograph by A. Preziosi, c. 1850
     url: https://wellcomecollection.org/works/d8h8evhk
   - title: Weltmuseum Wien — Flasche mit Haschischproben, Samarkand 1888, inv. 37818

@@ -10,7 +10,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import yaml from "js-yaml";
+import * as yaml from "js-yaml";
 import { answersFor } from "../src/lib/answers.js";
 import { SEGMENT_IDS } from "../src/lib/segment-ids.js";
 
@@ -133,4 +133,17 @@ test('custodial enforcement band does not manufacture an imprisonment frequency 
   assert.match(caught.text, /prison or compulsory detention/);
   assert.doesNotMatch(caught.text, /routinely|usually|typical/);
   assert.equal(placeOf('kh').result.caught.label, 'Prison');
+});
+
+// The public glossary also feeds the enforcement tracker's multilingual source check.
+test("glossary API exports sourced multilingual cannabis vocabulary and inflection rules", async () => {
+  const { glossaryAPI } = await import("../src/lib/glossary-api.js");
+  const data = glossaryAPI(path.resolve(root, ".."));
+  assert.equal(data.version, 1);
+  assert.ok(data.entries.some(e => e.kind === "glossary" && e.id === "THC"));
+  assert.ok(data.entries.some(e => e.kind === "country-word" && e.word === "konopa" && e.sources.length));
+  for (const word of ["marihuana", "konopí", "大麻", "กัญชา"]) assert.ok(data.recognition.words.includes(word), word);
+  assert.ok(data.recognition.prefixes.includes("konop"));
+  assert.ok(data.recognition.prefixes.includes("marihuan"));
+  assert.ok(!data.recognition.words.includes("decriminalised"));
 });

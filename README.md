@@ -81,3 +81,9 @@ counts are published.
   https://cannabisfreedom.fyi/.
 - Data from others keeps its own terms, listed on the
   [data page](https://cannabisfreedom.fyi/data/), which also explains the downloads and how to cite.
+
+`/api/glossary.json` publishes the glossary, language-atlas spellings and country `words` with
+source references. Its versioned `recognition` section contains cannabis-related spellings and
+inflection prefixes for consumers such as the Cannabis Enforcement Tracker. Ambiguous everyday
+words are identified separately; general legal glossary terms are not cannabis keyword matches.
+This vocabulary is a recognition aid, not an exhaustive language classifier or evidence of an event.

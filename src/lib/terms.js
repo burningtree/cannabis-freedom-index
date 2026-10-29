@@ -9,7 +9,7 @@
 // Reads the files directly, so the Markdown plugin, which runs outside Astro's collections, can use it.
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
-import yaml from "js-yaml";
+import * as yaml from "js-yaml";
 
 const ROOT = process.cwd();
 // language entries too common to mark, and forms of the others that are everyday words

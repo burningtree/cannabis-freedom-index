@@ -15,7 +15,7 @@
 import fs from "node:fs";
 import { geoContains, geoBounds, geoDistance, geoCentroid } from "d3-geo";
 import { feature } from "topojson-client";
-import yaml from "js-yaml";
+import * as yaml from "js-yaml";
 
 const SERVERS = ["https://overpass-api.de/api/interpreter", "https://overpass.private.coffee/api/interpreter", "https://maps.mail.ru/osm/tools/overpass/api/interpreter"];
 const QUERY = "[out:json][timeout:360];nwr[shop=cannabis];out center qt;";

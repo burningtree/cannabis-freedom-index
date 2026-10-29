@@ -35,7 +35,7 @@ test("no profile, article or history entry repeats a sentence known to be false"
   assert.deepEqual(found, []);
 });
 
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 const country = (id) => yaml.load(fs.readFileSync(path.join(root, 'countries', `${id}.yaml`), 'utf8'));
 const events = () => yaml.load(fs.readFileSync(path.join(root, 'changes.yaml'), 'utf8'));
 

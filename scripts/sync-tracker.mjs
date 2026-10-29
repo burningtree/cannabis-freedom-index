@@ -9,7 +9,7 @@
 //   node scripts/sync-tracker.mjs [path to the tracker checkout]   (default ../cannabis-freedom-index-tracker)
 import fs from "node:fs";
 import path from "node:path";
-import yaml from "js-yaml";
+import * as yaml from "js-yaml";
 
 const tracker = path.resolve(process.argv[2] || process.env.TRACKER_DIR || "../cannabis-freedom-index-tracker");
 const dir = path.join(tracker, "reports");

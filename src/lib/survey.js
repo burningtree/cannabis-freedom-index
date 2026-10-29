@@ -1,7 +1,7 @@
 // State of Cannabis: the questionnaire of the current edition (survey/<year>.yaml) and its counted
 // results (survey/results-<year>.json, written by scripts/survey-mock.cjs or survey-collect.cjs).
 // The form and the results page are both built from these two files.
-import yaml from "js-yaml";
+import * as yaml from "js-yaml";
 import raw from "../../survey/2026.yaml?raw";
 import results from "../../survey/results-2026.json";
 
