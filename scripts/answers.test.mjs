@@ -140,6 +140,7 @@ test("glossary API exports sourced multilingual cannabis vocabulary and inflecti
   const { glossaryAPI } = await import("../src/lib/glossary-api.js");
   const data = glossaryAPI(path.resolve(root, ".."));
   assert.equal(data.version, 1);
+  assert.ok(data.entries.find(entry => entry.kind === "language" && entry.id === "bhang")?.text.length > 20);
   assert.ok(data.entries.some(e => e.kind === "glossary" && e.id === "THC"));
   assert.ok(data.entries.some(e => e.kind === "country-word" && e.word === "konopa" && e.sources.length));
   for (const word of ["marihuana", "konopí", "大麻", "กัญชา"]) assert.ok(data.recognition.words.includes(word), word);

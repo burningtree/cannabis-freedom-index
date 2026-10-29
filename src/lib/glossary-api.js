@@ -24,7 +24,7 @@ export function glossaryAPI(root = process.cwd()) {
   const dir = path.join(root, "culture/language");
   for (const file of fs.readdirSync(dir).filter(f => f.endsWith(".md")).sort()) {
     const item = frontmatter(path.join(dir, file));
-    entries.push({ kind: "language", id: file.slice(0, -3), title: item.title, also: item.also ?? [], spelling: item.spelling ?? [], sources: item.sources ?? [], url: `/culture/language/${file.slice(0, -3)}/` });
+    entries.push({ kind: "language", id: file.slice(0, -3), title: item.title, text: item.summary, also: item.also ?? [], spelling: item.spelling ?? [], sources: item.sources ?? [], url: `/culture/language/${file.slice(0, -3)}/` });
     add([item.title, ...(item.also ?? []), ...(item.spelling ?? []).flatMap(s => [s.text, ...(!/^[\[/]/.test(s.say ?? "") ? [s.say] : [])])]);
   }
   function countries(dir, prefix = "") {
