@@ -330,7 +330,7 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
     else if (from || order === "oldest") feed.start(from || null);
   } else {
     if (order === "oldest") {
-      box.append(...[...box.children].reverse());
+      box.append(...[...box.querySelectorAll(":scope > .hist-year")].reverse());
       box.querySelectorAll(".hist-year").forEach(flip);
       box.dataset.order = "oldest";
     }
@@ -347,7 +347,7 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
     if (value === order) return;
     order = value;
     press(orderButtons, "order", order);
-    box.append(...[...box.children].reverse());
+    box.append(...[...box.querySelectorAll(":scope > .hist-year")].reverse());
     box.querySelectorAll(".hist-year").forEach(flip);
     box.dataset.order = order;
   }
@@ -380,8 +380,9 @@ const scoredAll = feed ? stats.scored : items.filter((ch) => ch.score).length;
     const topButton = document.querySelector(".hist-more-top");
     const sentinel = document.querySelector(".hist-sentinel");
     const cache = new Map();
-    // the loaded years are a run of the index from `lo` to `hi`, whatever the order
-    let lo = 0, hi = box.children.length - 1, busy = false, run = 0;
+    // the loaded years are a run of the index from `lo` to `hi`, whatever the order; only the year
+    // sections count (Astro writes the HistoryYears script into the list too)
+    let lo = 0, hi = box.querySelectorAll(":scope > .hist-year").length - 1, busy = false, run = 0;
     const step = () => (order === "newest" ? 1 : -1);
     const bottom = () => (order === "newest" ? hi + 1 : lo - 1);
     const top = () => (order === "newest" ? lo - 1 : hi + 1);
