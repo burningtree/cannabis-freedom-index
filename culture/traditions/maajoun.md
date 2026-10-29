@@ -15,9 +15,9 @@ image:
   credit_url: https://brieflands.com/articles/ans-138597
   license_url: https://creativecommons.org/licenses/by/4.0/
   aspect_ratio: 2.14
-  position: center
+  position: right
 model: deepseek-v4.1-flash
-written: 2026-10-28
+written: 2026-10-29
 sources:
   - type: journal
     title: "Product of the Edge. Maâjoun or Hashish with Ambivalent Symbolism (Produit de la marge : le Maâjoun ou le haschisch à symbolique ambivalente)"
@@ -75,7 +75,7 @@ Hadji's account comes from interviews in a particular milieu, not a national sur
 
 Alongside the classic paste, Hadji lists street varieties with blunt names.[@1]
 
-| Name | What Hadji's informants described |
+| Name | What Hadji describes |
 |---|---|
 | *Barbouqa* | Finely cut kif or plant leftovers crushed into yoghurt, sellou or biscuits |
 | *al-Qortassa*, "the bullet" | Spices and olive oil with a large dose of cannabis, sold wrapped in plastic like a cartridge |
@@ -86,7 +86,7 @@ These mixtures have little to do with the old recipe, and Hadji treats them as s
 
 A 2013 clinical case report from Fez describes two infants poisoned by maâjoun; one had eaten a piece thinking it was chocolate; his tests found cannabis and benzodiazepines.[@4]
 
-![Several dark rectangular pieces of maâjoun, some partly wrapped in aluminium foil, arranged on a white dish against a yellow cloth](../../src/assets/culture/maajoun-pieces-2013.jpg "Pieces of maâjoun from a 2013 clinical case report in Morocco. The infant in the report ate a piece thinking it was chocolate; the paper is a toxicology case, not an ethnographic study of ceremonial preparation. | Achour et al., Journal of Alcoholism & Drug Dependence, 2013, Figure 1, CC BY | https://www.longdom.org/open-access-pdfs/severe-maajoun-poisoning-in-two-infants-morocco-2329-6488.1000117.pdf")
+![Several dark rectangular pieces of maâjoun, some partly wrapped in aluminium foil, arranged on a white dish against a yellow cloth](../../src/assets/culture/maajoun-pieces-2013.jpg "Pieces of maâjoun from a 2013 clinical case report in Morocco. One infant in the report ate a piece thinking it was chocolate; the paper is a toxicology case, not an ethnographic study of ceremonial preparation. | Achour et al., Journal of Alcoholism & Drug Dependence, 2013, Figure 1, CC BY | https://www.longdom.org/open-access-pdfs/severe-maajoun-poisoning-in-two-infants-morocco-2329-6488.1000117.pdf")
 
 ## Food, drug and the law
 

@@ -433,7 +433,7 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
               <li>
                 <a href={`${base}${e.url}`}>
                   {e.image
-                    ? <Image src={e.image.src} alt="" width={480} height={360} fit="cover" loading="lazy" />
+                    ? <Image src={e.image.src} alt="" width={480} height={360} fit="cover" position={e.image.position} loading="lazy" />
                     : <span class="atlas-none" aria-hidden="true">{e.title.slice(0, 1)}</span>}
                   <span class="atlas-body">
                     <small>{cultureSection(e.section).name}</small>
