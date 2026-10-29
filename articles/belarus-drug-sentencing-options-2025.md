@@ -52,6 +52,6 @@ The reform also lowered the organised-group supply minimum from ten years to eig
 
 ## Prosecutors later reported a change in sentences
 
-In [June 2026](/history/belarus-drug-sentence-report-2026/), prosecutors reported that restriction of liberty represented 48% of drug sentences in the previous year, most commonly for personal offences. Short custody’s share rose from 0.14% to 3.4%. Those figures covered drugs generally.
+In [June 2026](https://tracker.cannabisfreedom.fyi/report/belarus-drug-sentence-report-2026/), prosecutors reported that restriction of liberty represented 48% of drug sentences in the previous year, most commonly for personal offences. Short custody’s share rose from 0.14% to 3.4%. Those figures covered drugs generally.
 
 A separate [May 2025 amnesty](/history/belarus-first-drug-offence-amnesty-2025/) widened eligibility for some existing convictions. [Belarus’s profile](/country/by/) now distinguishes these changes from the continuing criminal offences for personal possession, growing and supply.

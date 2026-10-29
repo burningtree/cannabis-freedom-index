@@ -40,6 +40,6 @@ The code also allowed additional penalties, including professional or travel res
 
 ## A later cannabis hearing tested possession and valuation
 
-At a [Dixinn hearing in January 2019](/history/guinea-dixinn-cannabis-defence-2019/), eleven young men faced cannabis allegations after arrests in Ratoma. Their lawyer, Abdoulaye Barry, challenged the evidence of possession and the basis for the fines sought by the prosecutor.
+At a [Dixinn hearing in January 2019](https://tracker.cannabisfreedom.fyi/report/guinea-dixinn-cannabis-defence-2019/), eleven young men faced cannabis allegations after arrests in Ratoma. Their lawyer, Abdoulaye Barry, challenged the evidence of possession and the basis for the fines sought by the prosecutor.
 
 The defence argued that the seized drug's value had not been shown. The judge deferred judgment. The case made the distinction between an allegation of consumption, proof of possession and valuation of the seized substance a practical issue for people prosecuted under [Guinea's](/country/gn/) drug rules.

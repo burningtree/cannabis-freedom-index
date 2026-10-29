@@ -24,14 +24,14 @@ Inspectors worked with customs and the Health Ministry’s commission responsibl
 
 ## A criminal complaint identified suspects
 
-On [20 February](/history/north-macedonia-cannabis-complaint-2026/), the Interior Ministry reported a complaint against ten suspects under the Criminal Code’s unlawful-production and distribution provision.[@3] Two were in 48-hour custody, and the investigation was examining links to cannabis found in Serbia.[@3]
+On [20 February](https://tracker.cannabisfreedom.fyi/report/north-macedonia-cannabis-complaint-2026/), the Interior Ministry reported a complaint against ten suspects under the Criminal Code’s unlawful-production and distribution provision.[@3] Two were in 48-hour custody, and the investigation was examining links to cannabis found in Serbia.[@3]
 
 The minister said some inspected companies had operated lawfully and professionally, while investigators identified serious irregularities at others.[@3] These were allegations and investigative findings, rather than an announcement that the ten suspects had been convicted.[@3]
 
 ## Licensing decisions followed the inspections
 
-The government [withdrew six cultivation approvals on 24 February](/history/north-macedonia-cannabis-licences-revoked-february-2026/) after thirteen inspections.[@4] Its explanation cited problems with storage, reporting, sale and transfer documents, and discrepancies between recorded and actual stocks.[@4] The Health Ministry planned checks across 43 entities and stronger legislation after completing the process.[@4]
+The government [withdrew six cultivation approvals on 24 February](https://tracker.cannabisfreedom.fyi/report/north-macedonia-cannabis-licences-revoked-february-2026/) after thirteen inspections.[@4] Its explanation cited problems with storage, reporting, sale and transfer documents, and discrepancies between recorded and actual stocks.[@4] The Health Ministry planned checks across 43 entities and stronger legislation after completing the process.[@4]
 
-On [10 March](/history/north-macedonia-cannabis-licences-revoked-march-2026/), the government announced six more licence withdrawals following commission inspections and failures to meet legal conditions.[@5] The later announcement concerned another set of licensing decisions; it did not describe a blanket closure of the medical sector.[@5]
+On [10 March](https://tracker.cannabisfreedom.fyi/report/north-macedonia-cannabis-licences-revoked-march-2026/), the government announced six more licence withdrawals following commission inspections and failures to meet legal conditions.[@5] The later announcement concerned another set of licensing decisions; it did not describe a blanket closure of the medical sector.[@5]
 
 The [North Macedonia profile](/country/mk/) places these events in the account of licensed production and enforcement.[@1,3,4,5] The seized quantities, criminal allegations and licence withdrawals describe different stages of that oversight process and should be read with their dates and scope attached.[@1,3,4,5]

@@ -45,4 +45,4 @@ Organising import or export also carried twenty years, with a fine tied to the v
 
 The [2020 replacement code](/history/gabon-drug-penalties-retained-2020/) kept these core drug provisions and renumbered them. It also retained confiscation and destruction of seized drugs.
 
-In [May 2026, Libreville prosecutors destroyed seized cannabis and other drugs](/history/gabon-libreville-seized-drugs-destroyed-2026/) in an operation attended by Justice Minister Augustin Emane. The ministry said the aim was to prevent seized drugs returning to sale, linking the destruction requirement to enforcement in [Gabon](/country/ga/).
+In [May 2026, Libreville prosecutors destroyed seized cannabis and other drugs](https://tracker.cannabisfreedom.fyi/report/gabon-libreville-seized-drugs-destroyed-2026/) in an operation attended by Justice Minister Augustin Emane. The ministry said the aim was to prevent seized drugs returning to sale, linking the destruction requirement to enforcement in [Gabon](/country/ga/).

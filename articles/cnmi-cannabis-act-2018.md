@@ -24,7 +24,7 @@ Adults in the Northern Mariana Islands gained legal cannabis possession, home cu
 
 ## Torres backed regulation but challenged parts of the bill
 
-An [earlier federal assessment](/history/cnmi-eradication-imports-assessment-2003/) had linked crop destruction to reduced local cultivation and a greater reliance on imported cannabis.
+An [earlier federal assessment](https://tracker.cannabisfreedom.fyi/report/cnmi-eradication-imports-assessment-2003/) had linked crop destruction to reduced local cultivation and a greater reliance on imported cannabis.
 
 Representative Joseph P. Deleon Guerrero introduced the bill that reached the governor. Its findings argued that a regulated market could provide treatment options, reduce access by young people and generate money for public services.
 

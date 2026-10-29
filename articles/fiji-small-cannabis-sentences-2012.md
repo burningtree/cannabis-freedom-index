@@ -46,4 +46,4 @@ Some judges continued using the weight bands for growing. Others developed appro
 
 In [May 2023](/history/fiji-cultivation-guidelines-2023/), the appeal court adopted a cultivation approach combining plant count with the offender’s role. Its judgment reproduced the earlier possession bands while explaining why growing required a different assessment.
 
-The change also reached older cases: in [May 2024](/history/fiji-growers-sentences-reduced-2024/), two growers won reductions of four years each. The cases show how [Fiji’s](/country/fj/) courts developed different sentencing approaches within the same broadly worded drug law.
+The change also reached older cases: in [May 2024](https://tracker.cannabisfreedom.fyi/report/fiji-growers-sentences-reduced-2024/), two growers won reductions of four years each. The cases show how [Fiji’s](/country/fj/) courts developed different sentencing approaches within the same broadly worded drug law.

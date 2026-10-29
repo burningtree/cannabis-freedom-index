@@ -58,6 +58,6 @@ The [2010 controlled-substances law](/history/serbia-controlled-substances-act-2
 
 ## The distinction became sharper in 2019
 
-The [2019 amendment](/history/serbia-drug-sentences-raised-2019/) raised cultivation sentences and added a separate offence for holding a large quantity of drugs. A [later cannabis case](/history/serbia-large-personal-stock-sentence-2024/) showed that personal use could still attract that longer sentence.
+The [2019 amendment](/history/serbia-drug-sentences-raised-2019/) raised cultivation sentences and added a separate offence for holding a large quantity of drugs. A [later cannabis case](https://tracker.cannabisfreedom.fyi/report/serbia-large-personal-stock-sentence-2024/) showed that personal use could still attract that longer sentence.
 
 For eligible smaller-possession cases, prosecutors can also defer prosecution while a person completes agreed obligations, such as a payment for public purposes, community work or treatment. [Serbia’s current profile](/country/rs/) describes that route beside the court’s sentencing options.

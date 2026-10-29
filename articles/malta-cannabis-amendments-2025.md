@@ -43,7 +43,7 @@ The odour fine was the hardest to apply. On 20 May the police commissioner, Ange
 or a vape. He urged them to pass laws that could actually be enforced.
 
 The job went instead to the regulator, the Authority for the Responsible Use of Cannabis. From mid-June
-it [took complaints](/history/malta-odour-enforcement-2025/) on a freephone line. Complaints could not be
+it [took complaints](https://tracker.cannabisfreedom.fyi/report/malta-odour-enforcement-2025/) on a freephone line. Complaints could not be
 anonymous and had to say where the smell came from; officers would first talk to those involved and
 recommend remedies, and fine only if the nuisance went on. Its chair, Joey Reno Vella, reminded the
 public that smoking in public was still illegal.

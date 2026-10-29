@@ -49,14 +49,14 @@ The regulations required secure storage, prescription checks and records of rece
 
 ## Courts applied the inherited controls to sailors
 
-In [a 2015 cultivation and import case](/history/kiribati-yacht-cannabis-sentence-2015/), the High Court sentenced Lyderic Morlier to concurrent prison terms totalling nine months and A$4,400 in fines across drug and immigration offences. It also confiscated his yacht and equipment under the ordinance’s forfeiture rule.[@3,6]
+In [a 2015 cultivation and import case](https://tracker.cannabisfreedom.fyi/report/kiribati-yacht-cannabis-sentence-2015/), the High Court sentenced Lyderic Morlier to concurrent prison terms totalling nine months and A$4,400 in fines across drug and immigration offences. It also confiscated his yacht and equipment under the ordinance’s forfeiture rule.[@3,6]
 
-The following year, [Joao Afonso’s prescribed marijuana](/history/kiribati-prescription-marijuana-sailor-2016/) remained a prohibited import despite the court accepting its medical purpose. His health and cooperation influenced the sentence: a fine, with a default prison term, while the court declined to confiscate his yacht.[@4]
+The following year, [Joao Afonso’s prescribed marijuana](https://tracker.cannabisfreedom.fyi/report/kiribati-prescription-marijuana-sailor-2016/) remained a prohibited import despite the court accepting its medical purpose. His health and cooperation influenced the sentence: a fine, with a default prison term, while the court declined to confiscate his yacht.[@4]
 
 Those cases involved different conduct and circumstances, producing different sentences under the inherited controls.[@3,4]
 
 ## One plant still led to a conviction decades later
 
-In [the 2021 Folik case](/history/kiribati-one-cannabis-plant-fine-2021/), possession of one small cannabis plant brought a conviction and a A$250 fine. The court found no evidence of use or dealing and regarded the offending as less serious than an earlier possession case involving a fisheries officer.[@5]
+In [the 2021 Folik case](https://tracker.cannabisfreedom.fyi/report/kiribati-one-cannabis-plant-fine-2021/), possession of one small cannabis plant brought a conviction and a A$250 fine. The court found no evidence of use or dealing and regarded the offending as less serious than an earlier possession case involving a fisheries officer.[@5]
 
 The plant had belonged to Folik’s late half-brother. Family circumstances and the small scale reduced the sentence, while knowing possession remained punishable. The [Kiribati profile](/country/ki/) explains these ordinary possession and cultivation restrictions alongside the separate prescription-preparation rules.[@1,2,5]

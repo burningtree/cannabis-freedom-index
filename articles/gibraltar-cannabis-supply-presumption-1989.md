@@ -59,6 +59,6 @@ The replacement also raised the summary-court maximum for Class B possession fro
 
 ## A later possession case ended in a fine
 
-In [December 2025](/history/gibraltar-possession-fine-2025/), police reported that a man found with approximately 127 grams of resin had been charged with possession and fined £800 in the Magistrates’ Court.[@4]
+In [December 2025](https://tracker.cannabisfreedom.fyi/report/gibraltar-possession-fine-2025/), police reported that a man found with approximately 127 grams of resin had been charged with possession and fined £800 in the Magistrates’ Court.[@4]
 
 That case illustrates a possession outcome under the later code. [Gibraltar’s current profile](/country/gi/) distinguishes the criminal penalties available from the particular sentences reported in individual cases.

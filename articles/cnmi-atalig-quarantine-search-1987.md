@@ -38,6 +38,6 @@ The judges also rejected his argument that the inspection should have happened b
 
 ## Cannabis enforcement continued through other routes
 
-The decision left the cannabis evidence available against Atalig. Years later, a [federal assessment in 2003](/history/cnmi-eradication-imports-assessment-2003/) described crop destruction, undercover purchases and border interception as parts of cannabis enforcement.
+The decision left the cannabis evidence available against Atalig. Years later, a [federal assessment in 2003](https://tracker.cannabisfreedom.fyi/report/cnmi-eradication-imports-assessment-2003/) described crop destruction, undercover purchases and border interception as parts of cannabis enforcement.
 
 The [Northern Mariana Islands' 2018 legalisation](/history/cnmi-cannabis-act-2018/) later allowed capped adult possession and home cultivation. The [current profile](/country/mp/) describes those permissions, alongside the continuing limits on transporting cannabis between islands.

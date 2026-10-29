@@ -62,6 +62,6 @@ Using a courier under eighteen to deliver drugs or drug-related payment was anot
 
 ## Later cases still required individual sentencing
 
-A [December 2025 possession case](/history/gibraltar-possession-fine-2025/) ended with an £800 fine after police found approximately 127 grams of cannabis resin. The police report described a possession charge and an appearance in the Magistrates’ Court the next morning.[@4]
+A [December 2025 possession case](https://tracker.cannabisfreedom.fyi/report/gibraltar-possession-fine-2025/) ended with an £800 fine after police found approximately 127 grams of cannabis resin. The police report described a possession charge and an appearance in the Magistrates’ Court the next morning.[@4]
 
 The [2019 patient rules](/history/gibraltar-medicinal-cannabis-regulations-2019/) later created a route for approved cannabis medicines through trained public doctors.[@5] The criminal code continues to provide the underlying offences described in [Gibraltar’s current profile](/country/gi/).[@1]

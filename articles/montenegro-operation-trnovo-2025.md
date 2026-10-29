@@ -44,13 +44,13 @@ The two men arrested at the site were aged 40 and 65, from Zeta and Bar. Police 
 
 ## A third arrest followed in October
 
-On [29 October 2025](/history/montenegro-trnovo-third-arrest-2025/), the Police Directorate announced the arrest of a 31-year-old man from Bar, identified as N.D. Its statement recalled the earlier discovery and two arrests, and said investigators were continuing to identify people involved in growing and distributing the cannabis.[@2]
+On [29 October 2025](https://tracker.cannabisfreedom.fyi/report/montenegro-trnovo-third-arrest-2025/), the Police Directorate announced the arrest of a 31-year-old man from Bar, identified as N.D. Its statement recalled the earlier discovery and two arrests, and said investigators were continuing to identify people involved in growing and distributing the cannabis.[@2]
 
 The October statement again put the plantation at about 13,100 plants. Police described their work as an investigation into a network producing, distributing and smuggling drugs.[@2]
 
 ## Forensic work brought two further complaints
 
-On [3 March 2026](/history/montenegro-trnovo-further-complaints-2026/), police announced supplementary criminal complaints against two men from Zeta, aged 42 and 49. Investigators cited examinations of traces, forensic results, collected information and analysis of other evidence.[@3]
+On [3 March 2026](https://tracker.cannabisfreedom.fyi/report/montenegro-trnovo-further-complaints-2026/), police announced supplementary criminal complaints against two men from Zeta, aged 42 and 49. Investigators cited examinations of traces, forensic results, collected information and analysis of other evidence.[@3]
 
 The statement distinguished these two further complaints from the three people already processed. Police said they were still working with prosecutors to identify anyone else connected with the case.[@3]
 

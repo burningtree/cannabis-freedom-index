@@ -71,6 +71,6 @@ That amendment also expanded the trafficking definition and revised the conditio
 
 ## The cultivation minimum reached the appeal courts
 
-In [March 2022](/history/tanzania-cultivation-sentence-upheld-2022/), the Court of Appeal upheld a thirty-year cultivation sentence against a man linked to a field containing 535 cannabis plants.[@5] It dropped his separate possession conviction because the plants proved cultivation rather than that additional charge.[@5]
+In [March 2022](https://tracker.cannabisfreedom.fyi/report/tanzania-cultivation-sentence-upheld-2022/), the Court of Appeal upheld a thirty-year cultivation sentence against a man linked to a field containing 535 cannabis plants.[@5] It dropped his separate possession conviction because the plants proved cultivation rather than that additional charge.[@5]
 
 The surviving sentence showed how the statutory minimum operated in [Tanzania](/country/tz/): success on one count could still leave a grower facing decades in prison.[@5]

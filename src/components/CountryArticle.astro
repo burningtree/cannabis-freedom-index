@@ -26,6 +26,7 @@ import { factsOf } from "../lib/facts.js";
 import { neighboursOf } from "../lib/borders.js";
 import { regionsOf, continentSlug } from "../lib/regions.js";
 import FactText from "./FactText.astro";
+import { enforcementOf, trackerReportUrl, trackerCountryUrl, TRACKER_TYPES } from "../lib/tracker.js";
 
 // `sub` is optional: one state, province or territory of `c`. Without it the national view is shown.
 const { c, sub } = Astro.props;
@@ -50,6 +51,11 @@ const unitRange = group ? `${Math.min(...group.units.map((x) => x.score))}–${M
 // The country's history, newest first; on a state's or province's page only the entries about it.
 const history = changes.filter((ch) => ch.country === c && (!sub || ch.unit?.id === sub.id));
 const nationalCount = sub ? changes.filter((ch) => ch.country === c).length : 0;
+// raids, seizures, arrests and sentences from the Cannabis Enforcement Tracker (src/lib/tracker.js):
+// the place's own, a country's including its states'
+const trackerId = sub ? `${c.slug}/${sub.id}` : c.slug;
+const enforcement = enforcementOf(trackerId);
+const ENFORCEMENT_SHOWN = 8;
 const scored = sub ? [] : history.filter((ch) => ch.score); // the ones that moved the score (the national one)
 // Inline citations (src/lib/cite.js): the score breakdown and the context share one numbering, in
 // reading order. A number shows its source in a card on hover (Base.astro); the list itself sits
@@ -113,6 +119,7 @@ const sections = [
   facts.length > 0 && ["did-you-know", "Did you know", facts.length],
   datasetCount > 0 && ["datasets", "Datasets", datasetCount],
   // the history can run to hundreds of entries, so it comes after the shorter parts
+  enforcement.length > 0 && ["enforcement", "Enforcement", enforcement.length],
   history.length > 0 && ["history", "History", history.length],
   group && sub && ["units", `Other ${plural}`, group.units.length - 1],
   refs.list.length > 0 && ["sources", "Sources", refs.list.length],
@@ -462,6 +469,24 @@ const uncited = srcList.filter((x) => !citedSet.has(refKey(x)));
     <section class="c-sec" id="datasets">
       {sub && <p class="d-hint">These figures are for all of {c.name}; no dataset here is broken down by {group.label.toLowerCase()} yet.</p>}
       <CountryDatasetTab c={c} />
+    </section>
+  )}
+
+  {enforcement.length > 0 && (
+    <section class="c-sec c-enforcement" id="enforcement">
+      <h2 class="d-h">Enforcement <span>{enforcement.length} {enforcement.length === 1 ? "report" : "reports"} · <a href={trackerCountryUrl(trackerId)}>the Cannabis Enforcement Tracker →</a></span></h2>
+      <p class="d-hint">How the law above is applied: raids, seizures, fields destroyed, arrests and sentences, as recorded by the Cannabis Enforcement Tracker, our companion site.</p>
+      <ol class="enf-list">
+        {enforcement.slice(0, ENFORCEMENT_SHOWN).map((r) => (
+          <li>
+            <time datetime={r.date}>{formatDate(r.date)}</time>
+            <span class="enf-type" style={`--c:${TRACKER_TYPES[r.type]?.color ?? "var(--muted)"}`}>{TRACKER_TYPES[r.type]?.label ?? r.type}</span>
+            <a href={trackerReportUrl(r)} class="enf-title">{r.title}</a>
+            <p class="enf-summary">{short(r.summary)}</p>
+          </li>
+        ))}
+      </ol>
+      {enforcement.length > ENFORCEMENT_SHOWN && <p class="enf-more"><a href={trackerCountryUrl(trackerId)}>All {enforcement.length} reports on the tracker →</a></p>}
     </section>
   )}
 

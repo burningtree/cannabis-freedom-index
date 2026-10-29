@@ -45,4 +45,4 @@ For someone with drug dependence prosecuted under the personal-use, drug-driving
 
 General high-risk drug production and supply rose from ten–twenty years under the older law to twenty–thirty years, with a fine of 50 million–100 million CFA francs or either penalty alone. Giving or offering such drugs for another person’s own consumption rose from three–five years to five–ten years, again allowing a fine alone.
 
-Authorities later described cannabis as a high-risk drug in the [2020 bus seizure](/history/togo-cannabis-bus-seizure-2020/). The difference between a small personal supply and a trafficking charge consequently remained important in [Togo](/country/tg/), alongside judges’ choices over fines, imprisonment and treatment.
+Authorities later described cannabis as a high-risk drug in the [2020 bus seizure](https://tracker.cannabisfreedom.fyi/report/togo-cannabis-bus-seizure-2020/). The difference between a small personal supply and a trafficking charge consequently remained important in [Togo](/country/tg/), alongside judges’ choices over fines, imprisonment and treatment.

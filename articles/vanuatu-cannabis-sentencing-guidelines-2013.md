@@ -54,6 +54,6 @@ The suspension meant the sentence would not require immediate imprisonment. Late
 
 ## Later cases showed different consequences
 
-In [2017, Roro Iauko](/history/vanuatu-pest-barrier-cannabis-2017/) received sixty hours of community service for plants grown as a pest barrier. The court placed his case at the lower end of the first category.[@2]
+In [2017, Roro Iauko](https://tracker.cannabisfreedom.fyi/report/vanuatu-pest-barrier-cannabis-2017/) received sixty hours of community service for plants grown as a pest barrier. The court placed his case at the lower end of the first category.[@2]
 
-In [2024, a five-plant case](/history/vanuatu-five-plants-remand-2024/) ended with a suspended sentence after the grower had already spent more than three months in custody before bail.[@4] Those distinctions inform [Vanuatu’s current profile](/country/vu/) and its account of criminal cultivation.
+In [2024, a five-plant case](https://tracker.cannabisfreedom.fyi/report/vanuatu-five-plants-remand-2024/) ended with a suspended sentence after the grower had already spent more than three months in custody before bail.[@4] Those distinctions inform [Vanuatu’s current profile](/country/vu/) and its account of criminal cultivation.

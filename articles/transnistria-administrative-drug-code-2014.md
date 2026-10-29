@@ -42,7 +42,7 @@ Growing had another dividing line. The criminal cultivation offence required a l
 
 ## The rules reached gardens and driving rights
 
-A later [police report from Dubossary in 2018](/history/transnistria-medical-homegrow-police-2018/) described officers finding cannabis in a woman’s garden and dried cannabis held by her brother. They reported the cultivation and possession separately, showing how more than one drug allegation could arise from the same household.[@3]
+A later [police report from Dubossary in 2018](https://tracker.cannabisfreedom.fyi/report/transnistria-medical-homegrow-police-2018/) described officers finding cannabis in a woman’s garden and dried cannabis held by her brother. They reported the cultivation and possession separately, showing how more than one drug allegation could arise from the same household.[@3]
 
 In [2023, a new penalty reached beyond fines and detention](/history/transnistria-drug-use-driving-ban-2023/): specified drug-use offences also brought a one-year restriction on driving rights.[@4]
 

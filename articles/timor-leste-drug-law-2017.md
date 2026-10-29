@@ -39,6 +39,6 @@ The law required the Health Ministry to arrange free assistance for people prese
 
 ## Courts and politicians continued to shape the debate
 
-Later in 2017, Lusa reported a [three-and-a-half-year sentence for Tony Crean](/history/timor-leste-cannabis-plants-conviction-2017/) in a cannabis-plant case, with his defence announcing an appeal.[@3]
+Later in 2017, Lusa reported a [three-and-a-half-year sentence for Tony Crean](https://tracker.cannabisfreedom.fyi/report/timor-leste-cannabis-plants-conviction-2017/) in a cannabis-plant case, with his defence announcing an appeal.[@3]
 
 The [2022 debate over cannabis policy](/history/timor-leste-ramos-horta-speech-2022/) returned to the relationship between punishment, health and policing. The [Timor-Leste profile](/country/tl/) explains the law’s personal-use rules, trafficking penalties and treatment provisions.[@1]

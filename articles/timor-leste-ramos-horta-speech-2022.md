@@ -30,7 +30,7 @@ President José Ramos-Horta asked Timor-Leste to rethink its treatment of cannab
 
 ## Arrests brought pressure for tougher action
 
-Police and intelligence officers had [arrested nine suspects in Dili](/history/timor-leste-dili-drug-arrests-2022/) on 11–12 August. TATOLI reported suspected cannabis and methamphetamine among the substances seized.[@2]
+Police and intelligence officers had [arrested nine suspects in Dili](https://tracker.cannabisfreedom.fyi/report/timor-leste-dili-drug-arrests-2022/) on 11–12 August. TATOLI reported suspected cannabis and methamphetamine among the substances seized.[@2]
 
 The district court placed the suspects under identity-and-residence declarations and periodic reporting. A student movement publicly challenged that decision, demanding a stronger response and threatening a demonstration.[@3]
 

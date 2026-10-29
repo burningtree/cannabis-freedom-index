@@ -3,6 +3,12 @@ import { unified } from "@astrojs/markdown-remark";
 import icon from "astro-icon";
 import { markTerms } from "./src/lib/terms.js";
 import { buildLock } from "./scripts/build-lock.mjs";
+import { readFileSync } from "node:fs";
+
+// History entries that moved to the Cannabis Enforcement Tracker (raids, seizures, arrests, sentences;
+// scripts/move-to-tracker.mjs): their old addresses lead to the report there.
+const movedToTracker = Object.fromEntries(JSON.parse(readFileSync("./src/data/tracker.json", "utf8")).reports
+  .filter((r) => r.cfi_id).map((r) => [`/history/${r.cfi_id}`, `https://tracker.cannabisfreedom.fyi/report/${r.id}/`]));
 
 // Fully static output: one HTML file per page, including one per country.
 //
@@ -136,7 +142,7 @@ export default defineConfig({
   site: process.env.SITE || "https://cannabisfreedom.fyi",
   base,
   // exhibitions moved from culture/exhibitions/ to exhibitions/, and each one to the shortest address, <slug>/
-  redirects: { "/culture/exhibitions": "/exhibitions", "/culture/exhibitions/reefer-madness": "/reefer-madness" },
+  redirects: { "/culture/exhibitions": "/exhibitions", "/culture/exhibitions/reefer-madness": "/reefer-madness", ...movedToTracker },
   // Icons are Iconoir (https://iconoir.com/), through astro-icon and Iconify: `<Icon name="iconoir:…" />`
   // inlines the SVG at build time, so only the icons a page uses end up in it.
   integrations: [buildLock(), icon()],

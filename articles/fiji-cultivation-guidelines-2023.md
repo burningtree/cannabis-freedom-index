@@ -48,4 +48,4 @@ The court treated him as leading a small commercial operation. It concluded that
 
 The guidelines required judges to consider aggravating and mitigating circumstances and make further adjustments, including for guilty pleas and time already spent in custody.
 
-In [May 2024](/history/fiji-growers-sentences-reduced-2024/), the appeal court used the new approach to reduce two growers’ sentences by four years each. Their case showed how the effort to make cultivation sentencing more consistent could change the years people spent in [Fiji’s](/country/fj/) prisons.
+In [May 2024](https://tracker.cannabisfreedom.fyi/report/fiji-growers-sentences-reduced-2024/), the appeal court used the new approach to reduce two growers’ sentences by four years each. Their case showed how the effort to make cultivation sentencing more consistent could change the years people spent in [Fiji’s](/country/fj/) prisons.

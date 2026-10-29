@@ -65,6 +65,6 @@ The corrected rule allowed hospital treatment for proven dependence or outpatien
 
 ## Judges' sentencing choices remained contested
 
-A later judicial-supervision review described [three Badra judgments in 2019](/history/iraq-badra-personal-use-fines-2019/) imposing fines alone under general mitigation rules.[@4] Inspectors challenged the one-million-dinar amounts, saying a fine chosen under those rules still had to respect the drug law's five-million minimum.[@4]
+A later judicial-supervision review described [three Badra judgments in 2019](https://tracker.cannabisfreedom.fyi/report/iraq-badra-personal-use-fines-2019/) imposing fines alone under general mitigation rules.[@4] Inspectors challenged the one-million-dinar amounts, saying a fine chosen under those rules still had to respect the drug law's five-million minimum.[@4]
 
 The debate in [Iraq](/country/iq/) continued over how criminal penalties, sentencing discretion and treatment should operate together.[@1,4]

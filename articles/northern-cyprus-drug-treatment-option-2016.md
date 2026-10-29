@@ -37,6 +37,6 @@ The route had exclusions. People convicted of selling, trading, manufacturing, e
 
 The personal-import provisions used a schedule listing cannabis and cannabis resin at twelve grams. Amounts beyond the schedule required further judicial assessment of the circumstances, quantity and purpose. The law supplied a way to deal with an offence after conviction; cannabis possession and import remained criminal.[@1]
 
-Implementation required health and social services. In its [2019 activity report](/history/northern-cyprus-treatment-support-2019/), the Social Services Department recorded regular interviews and psychosocial support for 98 people benefiting from supervised release. That was a count across drug users, without a cannabis breakdown.[@2]
+Implementation required health and social services. In its [2019 activity report](https://tracker.cannabisfreedom.fyi/report/northern-cyprus-treatment-support-2019/), the Social Services Department recorded regular interviews and psychosocial support for 98 people benefiting from supervised release. That was a count across drug users, without a cannabis breakdown.[@2]
 
 The [Northern Cyprus profile](/country/xn/) now records both the criminal offences and the treatment route introduced in 2016. Its practical benefit depended on eligibility, acceptance and completing the programme.[@1]

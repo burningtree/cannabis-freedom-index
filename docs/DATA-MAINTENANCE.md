@@ -48,6 +48,36 @@ while rendering only the pages you review. See `docs/BUILDS.md` for full-build r
 The dev server (`npm run dev`) does **not** pick up edits to `changes.yaml` or the schema
 until it is restarted.
 
+## Enforcement events go to the tracker
+
+Raids, seizures, eradication, arrests, prosecutions and sentences are recorded in the **Cannabis
+Enforcement Tracker** (tracker.cannabisfreedom.fyi; its checkout is `../cannabis-freedom-index-tracker`),
+not in `changes.yaml`. Each country profile shows them in its **Enforcement** section, from
+`src/data/tracker.json`.
+
+**Goes to the tracker:** a single enforcement event since 2000 that changes no law: an operation, a
+raid, a seizure, fields destroyed, an arrest, a trial, a sentence or an appeal that only changes a
+sentence. Add it there with the tracker's `add-report` skill (`.claude/skills/add-report/SKILL.md`
+in the tracker; one event per report, sources about that event only), then run
+`node scripts/sync-tracker.mjs` here so the profile shows it.
+
+**Stays in `changes.yaml`** (category `enforcement` where nothing else fits):
+
+- anything that changed the law or moves a score, and court rulings that set a precedent (a court
+  reading the law in a new way, striking a provision down);
+- events before 2000: they are history, not news;
+- famous and landmark cases: a celebrity or politician, a case that started a reform or a debate,
+  the first sentence under a new law (tag `famous` where it fits);
+- national statistics and the overall picture: yearly arrest or seizure figures, a crackdown or an
+  amnesty announced as policy, how police treat users;
+- executions and death sentences: the death-penalty record of the country;
+- an entry that an atlas entry lists, or that a did-you-know fact names.
+
+When in doubt, ask whether a reader of the law's history would miss it. If not, it is tracker news.
+
+`scripts/move-to-tracker.mjs` took the first 416 such entries out of the history in October 2026;
+their old `/history/<id>/` addresses redirect to the reports (astro.config.mjs).
+
 ## Adding prices
 
 Prices are deliberately simple: **street flower** and **medical flower**, always per gram. Do not

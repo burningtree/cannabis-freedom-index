@@ -59,4 +59,4 @@ convictions, and a spokesman for the No side agreed that her silence had contrib
 Possession of any amount remains illegal in [New Zealand](/country/nz/), with a maximum of three
 months in prison or a $500 fine. Since [2019](/history/new-zealand-police-discretion-2019/) police
 must consider a health response first. Charges for possession nonetheless
-[reached an eight-year high](/history/new-zealand-possession-charges-2025/) in 2025.
+[reached an eight-year high](https://tracker.cannabisfreedom.fyi/report/new-zealand-possession-charges-2025/) in 2025.

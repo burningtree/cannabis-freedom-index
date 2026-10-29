@@ -64,6 +64,6 @@ For users caught with small personal amounts, a fine and waiver remained availab
 
 ## A personal-use stock later brought three years
 
-In [2024](/history/serbia-large-personal-stock-sentence-2024/), the Supreme Court upheld three years for about 372 grams of cannabis held for personal use. It said the large-quantity offence depended on quantity, with judges assessing that issue in each case.
+In [2024](https://tracker.cannabisfreedom.fyi/report/serbia-large-personal-stock-sentence-2024/), the Supreme Court upheld three years for about 372 grams of cannabis held for personal use. It said the large-quantity offence depended on quantity, with judges assessing that issue in each case.
 
 The decision showed why a personal-use explanation could coexist with a longer possession sentence. [Serbia’s profile](/country/rs/) now distinguishes the small-personal offence, large possession, cultivation and supply when setting out the current penalties.

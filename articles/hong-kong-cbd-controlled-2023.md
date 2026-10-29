@@ -44,6 +44,6 @@ Ordinary consumers faced possession and consumption offences. Trafficking and il
 
 ## A traveller later received a prison sentence
 
-In [July 2023](/history/hong-kong-first-cbd-prison-sentence-2023/), a woman received two months overall after convictions for CBD possession, ketamine possession and having injection equipment. She had arrived from the United States in March with two personal-care bottles containing about 5 g of CBD. Officers also found ketamine and ten syringes.[@4]
+In [July 2023](https://tracker.cannabisfreedom.fyi/report/hong-kong-first-cbd-prison-sentence-2023/), a woman received two months overall after convictions for CBD possession, ketamine possession and having injection equipment. She had arrived from the United States in March with two personal-care bottles containing about 5 g of CBD. Officers also found ketamine and ten syringes.[@4]
 
 Customs described it as the first imprisonment since the CBD listing began. The [Hong Kong profile](/country/hk/) follows the rules applying to those products alongside cannabis possession, use, growing and supply.[@4]

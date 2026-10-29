@@ -53,6 +53,6 @@ This kept possession for supply criminal while changing how a prosecution had to
 
 Lawmakers passed the amended bill on 24 June. A later official table records its commencement as 26 June 1992.[@1,3]
 
-The higher ceilings left room for courts to assess individual sentences. In [Phung Hai’s 2000 appeal](/history/hong-kong-personal-cannabis-sentence-2000/), a six-month sentence for possessing 1.18 g of cannabis was cut to two months. He had two earlier drug convictions, but the prosecution did not defend the original sentence.[@4]
+The higher ceilings left room for courts to assess individual sentences. In [Phung Hai’s 2000 appeal](https://tracker.cannabisfreedom.fyi/report/hong-kong-personal-cannabis-sentence-2000/), a six-month sentence for possessing 1.18 g of cannabis was cut to two months. He had two earlier drug convictions, but the prosecution did not defend the original sentence.[@4]
 
 The [Hong Kong profile](/country/hk/) follows the later law and sentencing practice, with possession and trafficking still treated as separate offences.

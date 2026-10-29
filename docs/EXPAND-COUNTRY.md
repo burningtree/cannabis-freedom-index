@@ -50,9 +50,14 @@ today:
 ## 3. History
 
 - Fill the empty decades and the time since the latest entry: first bans, new drug laws,
-  amendments, court rulings, notable cases, raids, eradication, reports, debates, treaties.
-- **Add every dated event you find**, without asking first, if a source supports it. It belongs in
-  `changes.yaml` even if you found it while researching something else.
+  amendments, court rulings, notable cases, reports, debates, treaties.
+- **Enforcement news goes to the tracker, not here**: a raid, seizure, eradication, arrest, trial
+  or sentence since 2000 that changed no law is a report in the Cannabis Enforcement Tracker
+  (DATA-MAINTENANCE.md, "Enforcement events go to the tracker"). Famous and landmark cases,
+  precedents, national statistics, executions and anything before 2000 stay in `changes.yaml`.
+- **Add every dated event you find**, without asking first, if a source supports it, even if you
+  found it while researching something else: in `changes.yaml`, or as a tracker report if it is
+  enforcement news.
 - An event that changed what an adult may do moves the score (`before`); everything else is a
   context entry with no `before`. The score line over time must make sense (DATA-MAINTENANCE.md,
   "The score timeline must make sense").

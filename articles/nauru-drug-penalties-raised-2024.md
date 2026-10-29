@@ -30,7 +30,7 @@ Nauru made imprisonment compulsory for unlawful cannabis possession on 23 Decemb
 
 ## Small cannabis cases had ended in fines
 
-Earlier that year, a [one-gram cannabis case](/history/nauru-one-gram-cannabis-sentence-2024/) had ended with fines of A$1,500 each, community service and probation for two adults. A teenager received a smaller fine and community service, with no conviction recorded.[@2]
+Earlier that year, a [one-gram cannabis case](https://tracker.cannabisfreedom.fyi/report/nauru-one-gram-cannabis-sentence-2024/) had ended with fines of A$1,500 each, community service and probation for two adults. A teenager received a smaller fine and community service, with no conviction recorded.[@2]
 
 The magistrate had regarded imprisonment as disproportionate for the adults, taking account of the small quantity and their circumstances. He also described earlier cannabis-possession sentences ranging from fines of A$500 to A$1,000 without recorded convictions. The court was gradually increasing those sentences in response to what it considered growing prevalence.[@2]
 

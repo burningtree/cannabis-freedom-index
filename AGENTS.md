@@ -21,6 +21,11 @@ cannabis law (`changes.yaml`, `articles/`) and a cultural atlas (`culture/`), bu
   (required before deployment, or when changing routing/shared links). Full HTML is in `dist/`.
   `npm run build:quick` builds all pages without social cards. Builds lock automatically;
   if another build is running, wait and retry. Never delete another process's lock.
+- **Enforcement news** (raids, seizures, eradication, arrests, trials, sentences since 2000 that
+  change no law) goes to the Cannabis Enforcement Tracker in `../cannabis-freedom-index-tracker`
+  (its `add-report` skill), not into `changes.yaml`; then `node scripts/sync-tracker.mjs`. Famous and
+  landmark cases, precedents, statistics, executions and older events stay here. See
+  `docs/DATA-MAINTENANCE.md`, "Enforcement events go to the tracker".
 - A history entry goes into `changes.yaml` before its article (`articles/<entry id>.md`) or any
   link to `/history/<id>/`; otherwise the build stops for everyone. `npm test` names any that are
   missing (the dev server only warns and leaves them out).

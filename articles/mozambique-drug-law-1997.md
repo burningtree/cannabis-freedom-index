@@ -38,6 +38,6 @@ Occasional users could receive a waiver under the ordinary personal-use rule. A 
 
 ## The distinction reached the Supreme Court
 
-The gap between ordinary and small-scale trafficking had substantial consequences. In [May 2024](/history/mozambique-cannabis-seller-sentence-reduced-2024/), the Supreme Court reviewed a seventeen-year sentence for a Maputo seller found with 590 grams of cannabis.
+The gap between ordinary and small-scale trafficking had substantial consequences. In [May 2024](https://tracker.cannabisfreedom.fyi/report/mozambique-cannabis-seller-sentence-reduced-2024/), the Supreme Court reviewed a seventeen-year sentence for a Maputo seller found with 590 grams of cannabis.
 
 The judges treated his direct sales, simple methods and lack of an organisation as small-scale trafficking and imposed six years instead. The case showed how much the classification of an offence could change the punishment under [Mozambique's drug law](/country/mz/).

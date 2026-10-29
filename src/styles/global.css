@@ -3622,3 +3622,19 @@ td.rgp-seg i { display: inline-block; width: 7px; height: 7px; margin-right: 5px
 .rgp-trend.picking .rgp-line:not(.on), .rgp-trend.picking .rgp-label:not(.on) { opacity: .25; }
 .rgp-line.on { stroke: var(--text); stroke-width: 2.6; }
 .rgp-label.on text { fill: var(--text); }
+
+/* ── Country profile: Enforcement, from the Cannabis Enforcement Tracker ── */
+.enf-list { list-style: none; margin: 10px 0 0; padding: 0; border-top: 1px solid var(--border); }
+.enf-list li { display: grid; grid-template-columns: 9.5em 7.5em minmax(0, 1fr); gap: 2px 14px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+.enf-list time { font: 12px var(--mono); color: var(--muted); }
+.enf-type { display: inline-flex; align-items: center; gap: 6px; font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); }
+.enf-type::before { content: ""; width: 8px; height: 8px; transform: rotate(45deg); background: var(--c); flex: none; }
+.enf-title { font-weight: 500; }
+.enf-title:hover { text-decoration: underline; text-underline-offset: 3px; }
+.enf-summary { grid-column: 3; margin: 2px 0 0; color: var(--text-2); font-size: 13.5px; }
+.enf-more { margin-top: 10px; font-size: 14px; }
+.enf-more a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--muted); }
+@media (max-width: 640px) {
+  .enf-list li { grid-template-columns: 1fr auto; }
+  .enf-title, .enf-summary { grid-column: 1 / -1; }
+}

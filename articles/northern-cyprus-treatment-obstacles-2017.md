@@ -44,6 +44,6 @@ The legislation assigned those duties across several institutions. Psychiatrists
 
 ## Later reporting recorded people receiving support
 
-The [Social Services activity report for 2018–2019](/history/northern-cyprus-treatment-support-2019/) recorded regular interviews and psychosocial support for 98 people who had benefited from the law. The figure covered drug users generally, without a separate cannabis count.[@3]
+The [Social Services activity report for 2018–2019](https://tracker.cannabisfreedom.fyi/report/northern-cyprus-treatment-support-2019/) recorded regular interviews and psychosocial support for 98 people who had benefited from the law. The figure covered drug users generally, without a separate cannabis count.[@3]
 
 For readers of the [Northern Cyprus profile](/country/xn/), the early criticism helps explain what supervised release demanded in practice. The legal opportunity to avoid a sentence came with medical appointments, testing and continuing supervision, all of which required functioning services.[@2]

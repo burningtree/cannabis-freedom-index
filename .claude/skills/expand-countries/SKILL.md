@@ -16,3 +16,6 @@ guides for every agent working on this repository; this skill only points to the
    countries and returns its history entries as a `history-batch.cjs` file, with its articles
    drafted in `.cache/drafts/articles/`, not in `articles/`; only you edit `changes.yaml`, move the
    articles in after their entries, run `npm test`, build and commit.
+5. Enforcement news found on the way (raids, seizures, arrests, sentences since 2000 that change no
+   law) goes to the Cannabis Enforcement Tracker as reports, not into the history batch (DATA-MAINTENANCE.md,
+   "Enforcement events go to the tracker"); run `node scripts/sync-tracker.mjs` after they are committed there.

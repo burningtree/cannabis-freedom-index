@@ -24,7 +24,7 @@ Liberia's new drug law took effect on 21 October 2014, making personal possessio
 
 ## Drug officers had struggled to turn cases into convictions
 
-A [regional assessment published in 2011](/history/liberia-drug-enforcement-assessment-2011/) described an agency without a forensic laboratory or officers at entry and exit ports. It reported that most investigated possession and trafficking cases ended with on-the-spot fines, and only one drug conviction had been recorded in 2010.
+A [regional assessment published in 2011](https://tracker.cannabisfreedom.fyi/report/liberia-drug-enforcement-assessment-2011/) described an agency without a forensic laboratory or officers at entry and exit ports. It reported that most investigated possession and trafficking cases ended with on-the-spot fines, and only one drug conviction had been recorded in 2010.
 
 The assessors called for a stronger anti-trafficking law. The existing [public-health rules](/history/liberia-public-health-drug-controls-1976/) made unauthorised possession a second-degree misdemeanor and growing a first-degree felony.
 

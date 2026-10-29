@@ -31,7 +31,7 @@ Hong Kong’s Court of Appeal ended the lower trafficking sentencing scale for h
 
 In [the 1995 review](/history/hong-kong-cannabis-tariff-review-1995/), evidence put average THC concentration in resin at about four times that of herbal cannabis. Judges were told to adjust the resin-based trafficking scale when sentencing herbal cannabis or oil offences.[@2]
 
-That distinction appeared in [Chor Lui’s 2001 appeal](/history/hong-kong-two-cannabis-cigarettes-2001/). The judge described a lower benchmark for herbal cannabis, though he upheld two months in prison for selling two cigarettes containing 0.24 g.[@3]
+That distinction appeared in [Chor Lui’s 2001 appeal](https://tracker.cannabisfreedom.fyi/report/hong-kong-two-cannabis-cigarettes-2001/). The judge described a lower benchmark for herbal cannabis, though he upheld two months in prison for selling two cigarettes containing 0.24 g.[@3]
 
 ## Two growing operations prompted the review
 
